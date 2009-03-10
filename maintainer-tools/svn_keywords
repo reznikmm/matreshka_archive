@@ -1,0 +1,2 @@
+#!/bin/sh
+svn propset svn:keywords "Author Date Revision" $@
