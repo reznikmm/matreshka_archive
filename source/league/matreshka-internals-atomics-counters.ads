@@ -53,6 +53,10 @@ package Matreshka.Internals.Atomics.Counters is
    --  Atomicaly decrement counter value. Returns True if counter has zero
    --  value after decrement.
 
+   function Is_Zero (Self : not null access Counter) return Boolean;
+   pragma Inline (Is_Zero);
+   --  Returns True if counter has zero value.
+
 private
 
    type Counter is limited record
