@@ -57,6 +57,9 @@ package Matreshka.Internals.Atomics.Counters is
    pragma Inline (Is_Zero);
    --  Returns True if counter has zero value.
 
+   function Zero return Counter;
+   --  Initialize counter to zero value.
+
 private
 
    type Counter is limited record
