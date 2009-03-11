@@ -45,10 +45,7 @@ package body Matreshka.Generic_Persistence_Manager is
             (Class_Name);
 
    begin
-      return
-        Entity'Class
-         (Matreshka.Internals.Persistence_Manager.Constructors.Create
-           (Class_Name, Descriptor));
+      return Entity'Class (Descriptor.Proxy);
    end Create;
 
    ------------
@@ -59,5 +56,28 @@ package body Matreshka.Generic_Persistence_Manager is
    begin
       null;
    end Delete;
+
+   ----------------
+   -- Identifier --
+   ----------------
+
+   function Identifier (Object : Entity'Class) return Positive is
+   begin
+      return
+        Matreshka.Internals.Persistence_Manager.Abstract_Proxy'Class
+         (Object).Descriptor.Identifier;
+   end Identifier;
+
+   ----------
+   -- Load --
+   ----------
+
+   function Load (Identifier : Positive) return Entity'Class is
+      Descriptor : Matreshka.Internals.Persistence_Manager.Descriptor_Access
+        := Matreshka.Internals.Persistence_Manager.Load (Identifier);
+
+   begin
+      return Entity'Class (Descriptor.Proxy);
+   end Load;
 
 end Matreshka.Generic_Persistence_Manager;

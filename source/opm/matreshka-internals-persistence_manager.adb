@@ -69,6 +69,7 @@ package body Matreshka.Internals.Persistence_Manager is
 
       begin
          Ada.Text_IO.Put_Line ("Save");
+         Descriptor.Save;
 
          Descriptor.Is_Modified := False;
 
@@ -97,12 +98,7 @@ package body Matreshka.Internals.Persistence_Manager is
         new Ada.Containers.Indefinite_Hashed_Maps
              (String, Object_Constructor, Ada.Strings.Hash, "=");
 
-      package Proxy_Constructor_Maps is
-        new Ada.Containers.Indefinite_Hashed_Maps
-             (String, Proxy_Constructor, Ada.Strings.Hash, "=");
-
       Object_Constructors : Object_Constructor_Maps.Map;
-      Proxy_Constructors  : Proxy_Constructor_Maps.Map;
 
       ------------
       -- Create --
@@ -115,19 +111,6 @@ package body Matreshka.Internals.Persistence_Manager is
          return Object_Constructors.Element (Class_Name).all;
       end Create;
 
-      ------------
-      -- Create --
-      ------------
-
-      function Create
-       (Class_Name : String;
-        Descriptor : not null Descriptor_Access)
-          return Abstract_Proxy'Class
-      is
-      begin
-         return Proxy_Constructors.Element (Class_Name).all (Descriptor);
-      end Create;
-
       ----------------
       -- Initialize --
       ----------------
@@ -137,6 +120,7 @@ package body Matreshka.Internals.Persistence_Manager is
         Descriptor : not null access Abstract_Descriptor'Class)
       is
       begin
+         Descriptor.Reference;
          Self.Descriptor := Descriptor_Access (Descriptor);
       end Initialize;
 
@@ -150,18 +134,6 @@ package body Matreshka.Internals.Persistence_Manager is
       is
       begin
          Object_Constructors.Insert (Class_Name, Constructor);
-      end Register;
-
-      --------------
-      -- Register --
-      --------------
-
-      procedure Register
-       (Class_Name  : String;
-        Constructor : Proxy_Constructor)
-      is
-      begin
-         Proxy_Constructors.Insert (Class_Name, Constructor);
       end Register;
 
    end Constructors;
@@ -187,6 +159,17 @@ package body Matreshka.Internals.Persistence_Manager is
       end if;
    end Dereference;
 
+   ----------------
+   -- Descriptor --
+   ----------------
+
+   function Descriptor (Self : Abstract_Proxy'Class)
+     return not null access Abstract_Descriptor'Class
+   is
+   begin
+      return Self.Descriptor;
+   end Descriptor;
+
    --------------
    -- Finalize --
    --------------
@@ -195,6 +178,62 @@ package body Matreshka.Internals.Persistence_Manager is
    begin
       Self.Descriptor.Dereference;
    end Finalize;
+
+   ----------------
+   -- Identifier --
+   ----------------
+
+   function Identifier (Self : not null access Abstract_Descriptor'Class)
+     return Positive
+   is
+   begin
+      if Self.Identifier = 0 then
+         Ada.Text_IO.Put_Line ("Assign object identifier");
+         Ada.Text_IO.Put_Line
+          ("INSERT INTO opm_object (class_identifier)"
+             & " VALUES ((SELECT class_identifier FROM opm_class"
+             & " WHERE class_name = '"
+             & "Person"
+             & "'))");
+         Self.Identifier := 1;
+         Self.Is_New := True;
+         Self.Is_Modified := True;
+      end if;
+
+      return Self.Identifier;
+   end Identifier;
+
+   ------------
+   -- Is_New --
+   ------------
+
+   function Is_New (Self  : not null access Abstract_Descriptor'Class)
+     return Boolean
+   is
+   begin
+      return Self.Is_New;
+   end Is_New;
+
+   ----------
+   -- Load --
+   ----------
+
+   function Load (Identifier : Positive) return not null Descriptor_Access is
+      Descriptor : Descriptor_Access;
+
+   begin
+      --  Resolve class name
+
+      Ada.Text_IO.Put_Line
+       ("SELECT name FROM opm_object JOIN opm_class WHERE object_identifier ="
+          & Positive'Image (Identifier));
+
+      Descriptor := Constructors.Create ("Person");
+      Descriptor.Identifier := Identifier;
+      Descriptor.Load;
+
+      return Descriptor;
+   end Load;
 
    ---------------
    -- Reference --

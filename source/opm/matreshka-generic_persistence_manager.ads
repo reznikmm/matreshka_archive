@@ -41,4 +41,8 @@ package Matreshka.Generic_Persistence_Manager is
 
    procedure Delete (Object : Entity'Class);
 
+   function Identifier (Object : Entity'Class) return Positive;
+
+   function Load (Identifier : Positive) return Entity'Class;
+
 end Matreshka.Generic_Persistence_Manager;

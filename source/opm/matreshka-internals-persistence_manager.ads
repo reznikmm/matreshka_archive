@@ -53,9 +53,34 @@ package Matreshka.Internals.Persistence_Manager is
    procedure Set_Modified (Self : not null access Abstract_Descriptor'Class);
    --  Object is modified.
 
+   function Identifier (Self : not null access Abstract_Descriptor'Class)
+     return Positive;
+   --  Returns object's identifier. Assign new object identifier if object
+   --  doesn't have one.
+
+   function Is_New (Self  : not null access Abstract_Descriptor'Class)
+     return Boolean;
+   --  XXX It must not be visible outside this package, but it requres to
+   --  use some data set abstraction for the Save operation.
+
+   procedure Load (Self : not null access Abstract_Descriptor) is abstract;
+
+   procedure Save (Self : not null access Abstract_Descriptor) is abstract;
+
    --  Object's proxy base
 
    type Abstract_Proxy is abstract tagged private;
+
+   function Descriptor (Self : Abstract_Proxy'Class)
+     return not null access Abstract_Descriptor'Class;
+
+   function Proxy (Self : not null access Abstract_Descriptor)
+     return Abstract_Proxy'Class
+       is abstract;
+
+   --  Load operation
+
+   function Load (Identifier : Positive) return not null Descriptor_Access;
 
    --  Transactions support
 
@@ -80,33 +105,22 @@ package Matreshka.Internals.Persistence_Manager is
 
       function Create (Class_Name : String) return not null Descriptor_Access;
 
-      --  Proxy's constructors
-
-      type Proxy_Constructor is
-        not null access function (Descriptor : not null Descriptor_Access)
-          return Abstract_Proxy'Class;
-
-      procedure Register
-       (Class_Name  : String;
-        Constructor : Proxy_Constructor);
-
-      function Create
-       (Class_Name : String;
-        Descriptor : not null Descriptor_Access)
-          return Abstract_Proxy'Class;
-
    end Constructors;
 
 private
 
    type Abstract_Descriptor is abstract tagged limited record
-      Counter     : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter     : aliased Matreshka.Internals.Atomics.Counters.Counter
+        := Matreshka.Internals.Atomics.Counters.Zero;
       --  Atomic reference counter;
 
       Identifier  : Natural := 0;
       --  Internal object identifier. Zero means object not in database and
       --  new object identifier must be assigned when object is stored into
       --  database.
+
+      Is_New      : Boolean := False;
+      --  True if a object not present in database.
 
       Is_Modified : Boolean := False;
       --  Modification flag, used for optimization.
