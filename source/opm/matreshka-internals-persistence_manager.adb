@@ -34,7 +34,9 @@
 with Ada.Containers.Doubly_Linked_Lists;
 with Ada.Containers.Indefinite_Hashed_Maps;
 with Ada.Strings.Hash;
-with Ada.Text_IO;
+--with Ada.Text_IO;
+
+with SQLite;
 
 package body Matreshka.Internals.Persistence_Manager is
 
@@ -68,7 +70,7 @@ package body Matreshka.Internals.Persistence_Manager is
          Descriptor : Descriptor_Access := Descriptor_Lists.Element (Position);
 
       begin
-         Ada.Text_IO.Put_Line ("Save");
+--         Ada.Text_IO.Put_Line ("Save");
          Descriptor.Save;
 
          Descriptor.Is_Modified := False;
@@ -79,13 +81,19 @@ package body Matreshka.Internals.Persistence_Manager is
             --  XXX Object can be destroyed.
             null;
 
-            Ada.Text_IO.Put_Line ("Destroy object");
+--            Ada.Text_IO.Put_Line ("Destroy object");
          end if;
       end Process;
+
+      Statement : SQLite.SQLite_Statement_Access;
 
    begin
       Modified.Iterate (Process'Access);
       Modified.Clear;
+
+      SQLite.Prepare (Database, "COMMIT", Statement);
+      SQLite.Step (Statement);
+      SQLite.Finalize (Statement);
    end Commit;
 
    ------------------
@@ -150,11 +158,12 @@ package body Matreshka.Internals.Persistence_Manager is
          if not Self.Is_Modified then
             --  XXX Object can be destroyed.
             null;
-            Ada.Text_IO.Put_Line ("Destroy object");
+--            Ada.Text_IO.Put_Line ("Destroy object");
 
          else
-            Ada.Text_IO.Put_Line
-             ("Object's destruction postponed until end of transaction");
+            null;
+--            Ada.Text_IO.Put_Line
+--             ("Object's destruction postponed until end of transaction");
          end if;
       end if;
    end Dereference;
@@ -186,18 +195,30 @@ package body Matreshka.Internals.Persistence_Manager is
    function Identifier (Self : not null access Abstract_Descriptor'Class)
      return Positive
    is
+      Statement : SQLite.SQLite_Statement_Access;
+
    begin
       if Self.Identifier = 0 then
-         Ada.Text_IO.Put_Line ("Assign object identifier");
-         Ada.Text_IO.Put_Line
-          ("INSERT INTO opm_object (class_identifier)"
-             & " VALUES ((SELECT class_identifier FROM opm_class"
-             & " WHERE class_name = '"
-             & "Person"
-             & "'))");
-         Self.Identifier := 1;
+--         Ada.Text_IO.Put_Line ("Assign object identifier");
+
+	 --  XXX SQLite3: INSERT operation must be executed in critical
+         --  section.
+
+         SQLite.Prepare
+          (Database,
+           "INSERT INTO matreshka_object (class_identifier)"
+             & " VALUES ((SELECT class_identifier FROM matreshka_class"
+             & " WHERE class_name = ?1))",
+           Statement);
+         SQLite.Bind (Statement, 1, "Person");
+
+         SQLite.Step (Statement);
+
+         Self.Identifier := Positive (SQLite.Last_Insert_Row_Id (Database));
          Self.Is_New := True;
          Self.Is_Modified := True;
+
+         SQLite.Finalize (Statement);
       end if;
 
       return Self.Identifier;
@@ -220,17 +241,27 @@ package body Matreshka.Internals.Persistence_Manager is
 
    function Load (Identifier : Positive) return not null Descriptor_Access is
       Descriptor : Descriptor_Access;
+      Statement  : SQLite.SQLite_Statement_Access;
 
    begin
       --  Resolve class name
 
-      Ada.Text_IO.Put_Line
-       ("SELECT name FROM opm_object JOIN opm_class WHERE object_identifier ="
-          & Positive'Image (Identifier));
+      SQLite.Prepare
+       (Database,
+        "SELECT class_name FROM matreshka_object NATURAL JOIN matreshka_class"
+          & " WHERE object_identifier = ?1",
+        Statement);
+      SQLite.Bind (Statement, 1, Identifier);
 
-      Descriptor := Constructors.Create ("Person");
+      if not SQLite.Step (Statement) then
+         raise Program_Error;
+      end if;
+
+      Descriptor := Constructors.Create (SQLite.Column (Statement, 0));
       Descriptor.Identifier := Identifier;
       Descriptor.Load;
+
+      SQLite.Finalize (Statement);
 
       return Descriptor;
    end Load;
@@ -244,6 +275,19 @@ package body Matreshka.Internals.Persistence_Manager is
       Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
    end Reference;
 
+   --------------
+   -- Rollback --
+   --------------
+
+   procedure Rollback is
+      Statement : SQLite.SQLite_Statement_Access;
+
+   begin
+      SQLite.Prepare (Database, "ROLLBACK", Statement);
+      SQLite.Step (Statement);
+      SQLite.Finalize (Statement);
+   end Rollback;
+
    ------------------
    -- Set_Modified --
    ------------------
@@ -253,8 +297,24 @@ package body Matreshka.Internals.Persistence_Manager is
       if not Self.Is_Modified then
          Self.Is_Modified := True;
          Modified.Append (Descriptor_Access (Self));
-         Ada.Text_IO.Put_Line ("Modified");
+--         Ada.Text_IO.Put_Line ("Modified");
       end if;
    end Set_Modified;
 
+   -----------
+   -- Start --
+   -----------
+
+   procedure Start is
+      Statement : SQLite.SQLite_Statement_Access;
+
+   begin
+      SQLite.Prepare (Database, "BEGIN", Statement);
+      SQLite.Step (Statement);
+      SQLite.Finalize (Statement);
+   end Start;
+
+begin
+   SQLite.Initialize;
+   SQLite.Open ("person.db", Database);
 end Matreshka.Internals.Persistence_Manager;

@@ -35,6 +35,8 @@ private with Ada.Finalization;
 
 private with Matreshka.Internals.Atomics.Counters;
 
+with SQLite;
+
 package Matreshka.Internals.Persistence_Manager is
 
    --  Object's descriptor base
@@ -84,7 +86,11 @@ package Matreshka.Internals.Persistence_Manager is
 
    --  Transactions support
 
+   procedure Start;
+
    procedure Commit;
+
+   procedure Rollback;
 
    --  Constructors
 
@@ -106,6 +112,8 @@ package Matreshka.Internals.Persistence_Manager is
       function Create (Class_Name : String) return not null Descriptor_Access;
 
    end Constructors;
+
+   Database : SQLite.SQLite_Database_Access;
 
 private
 

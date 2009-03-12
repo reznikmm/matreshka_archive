@@ -34,6 +34,10 @@
 
 package Matreshka.Transactions is
 
+   procedure Start;
+
    procedure Commit;
+
+   procedure Rollback;
 
 end Matreshka.Transactions;

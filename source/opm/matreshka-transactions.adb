@@ -37,4 +37,8 @@ package body Matreshka.Transactions is
 
    procedure Commit renames Matreshka.Internals.Persistence_Manager.Commit;
 
+   procedure Start renames Matreshka.Internals.Persistence_Manager.Start;
+
+   procedure Rollback renames Matreshka.Internals.Persistence_Manager.Rollback;
+
 end Matreshka.Transactions;
