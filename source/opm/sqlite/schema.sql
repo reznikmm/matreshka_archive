@@ -35,6 +35,7 @@
 CREATE TABLE matreshka_class
  (class_identifier INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   class_name       CHARACTER VARYING NOT NULL UNIQUE CHECK (class_name <> ''));
+CREATE INDEX matreshka_class_class_name ON matreshka_class (class_name);
 
 CREATE TABLE matreshka_object
  (object_identifier INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
