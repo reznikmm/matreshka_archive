@@ -48,6 +48,8 @@ package body Matreshka.Internals.Atomics.Counters is
 
       function Is_Zero (Self : not null access Counter) return Boolean;
 
+      function Is_One (Self : not null access Counter) return Boolean;
+
    end Guard;
 
    ---------------
@@ -91,6 +93,15 @@ package body Matreshka.Internals.Atomics.Counters is
          Self.Value := Self.Value + 1;
       end Increment;
 
+      ------------
+      -- Is_One --
+      ------------
+
+      function Is_One (Self : not null access Counter) return Boolean is
+      begin
+         return Self.Value = 1;
+      end Is_One;
+
       -------------
       -- Is_Zero --
       -------------
@@ -110,6 +121,15 @@ package body Matreshka.Internals.Atomics.Counters is
    begin
       Guard.Increment (Self);
    end Increment;
+
+   ------------
+   -- Is_One --
+   ------------
+
+   function Is_One (Self : not null access Counter) return Boolean is
+   begin
+      return Guard.Is_One (Self);
+   end Is_One;
 
    -------------
    -- Is_Zero --

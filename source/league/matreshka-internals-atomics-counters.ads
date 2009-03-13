@@ -57,6 +57,10 @@ package Matreshka.Internals.Atomics.Counters is
    pragma Inline (Is_Zero);
    --  Returns True if counter has zero value.
 
+   function Is_One (Self : not null access Counter) return Boolean;
+   pragma Inline (Is_One);
+   --  Returns True if counter has one value.
+
    function Zero return Counter;
    --  Initialize counter to zero value.
 
