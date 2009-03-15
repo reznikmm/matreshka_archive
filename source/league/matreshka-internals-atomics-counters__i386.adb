@@ -31,50 +31,88 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Atomic counters. Any objects of Counter type has value 1 by default.
---  This assumption allows declaration of implicitly initialized objects in
---  the preelaborateable units.
+--  This is inefficient but fully portable version of the package.
 ------------------------------------------------------------------------------
-private with Interfaces.C;
+with Ada.Characters.Latin_1;
+with System.Machine_Code;
 
-package Matreshka.Internals.Atomics.Counters is
+package body Matreshka.Internals.Atomics.Counters is
 
-   pragma Preelaborate;
-   pragma Remote_Types;
+   use type Interfaces.C.int;
 
-   type Counter is limited private;
+   ---------------
+   -- Decrement --
+   ---------------
 
-   procedure Increment (Self : not null access Counter);
-   pragma Inline (Increment);
-   --  Atomicaly increment counter value.
+   function Decrement (Self : not null access Counter) return Boolean is
+      use Ada.Characters.Latin_1;
 
-   function Decrement (Self : not null access Counter) return Boolean;
-   pragma Inline (Decrement);
-   --  Atomicaly decrement counter value. Returns True if counter has zero
-   --  value after decrement.
+      Result : Boolean;
 
-   function Is_Zero (Self : not null access Counter) return Boolean;
-   pragma Inline (Is_Zero);
-   --  Returns True if counter has zero value.
+   begin
+      System.Machine_Code.Asm
+       (Template =>
+          "lock" & LF
+            & HT & "decl" & HT & "%0" & LF
+            & HT & "setne" & HT & "%1",
+        Outputs  =>
+          (Interfaces.C.int'Asm_Output ("=m", Self.Value),
+           Boolean'Asm_Output ("=qm", Result)),
+        Inputs   => Interfaces.C.int'Asm_Input ("m", Self.Value));
 
-   function Is_One (Self : not null access Counter) return Boolean;
-   pragma Inline (Is_One);
-   --  Returns True if counter has one value.
+      return Result;
+   end Decrement;
 
-   function Zero return Counter;
-   pragma Inline (Zero);
-   --  Initialize counter to zero value.
+   ---------------
+   -- Increment --
+   ---------------
 
-   function One return Counter;
-   pragma Inline (One);
-   --  Initialize counter to one value.
+   procedure Increment (Self : not null access Counter) is
+      use Ada.Characters.Latin_1;
 
-private
+   begin
+      System.Machine_Code.Asm
+       (Template =>
+          "lock" & LF
+            & HT & "incl" & HT & "%0",
+        Outputs  => Interfaces.C.int'Asm_Output ("=m", Self.Value),
+        Inputs   => Interfaces.C.int'Asm_Input ("m", Self.Value));
+   end Increment;
 
-   type Counter is limited record
-      Value : Interfaces.C.int := 1;
-      pragma Atomic (Value);
-   end record;
-   --  Note: Record type is used for automatic initial value assignment.
+   ------------
+   -- Is_One --
+   ------------
+
+   function Is_One (Self : not null access Counter) return Boolean is
+   begin
+      return Self.Value = 1;
+   end Is_One;
+
+   -------------
+   -- Is_Zero --
+   -------------
+
+   function Is_Zero (Self : not null access Counter) return Boolean is
+   begin
+      return Self.Value = 0;
+   end Is_Zero;
+
+   ---------
+   -- One --
+   ---------
+
+   function One return Counter is
+   begin
+      return Counter'(Value => 1);
+   end One;
+
+   ----------
+   -- Zero --
+   ----------
+
+   function Zero return Counter is
+   begin
+      return Counter'(Value => 0);
+   end Zero;
 
 end Matreshka.Internals.Atomics.Counters;
