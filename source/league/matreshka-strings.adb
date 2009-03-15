@@ -212,13 +212,16 @@ package body Matreshka.Strings is
    -----------------
 
    procedure Dereference (Self : in out String_Private_Data_Access) is
+      Aux : Utf16_String_Access := Self.Value;
+
    begin
       if Matreshka.Internals.Atomics.Counters.Decrement
           (Self.Counter'Access)
       then
          pragma Assert (Self /= Shared_Empty'Access);
 
-         Free (Self.Value);
+         Free (Self.Index_Map);
+         Free (Aux);
          Free (Self);
 
       else

@@ -100,7 +100,7 @@ private
       Counter    : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
-      Value      : Utf16_String_Access;
+      Value      : not null Utf16_String_Access;
       --  String data. Internal data always has well-formed UTF-16 encoded
       --  sequence of valid Unicode code points. Validity checks proceed only
       --  for potentially invalid user specified data, and never proceed for
