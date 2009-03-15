@@ -31,88 +31,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This is i386 specific version.
+--  Atomic test-and-set operation on access type.
 ------------------------------------------------------------------------------
-with Ada.Characters.Latin_1;
-with System.Machine_Code;
 
-package body Matreshka.Internals.Atomics.Counters is
+generic
+   type T (<>) is limited private;
+   type T_Access is access T;
 
-   use type Interfaces.C.int;
-
-   ---------------
-   -- Decrement --
-   ---------------
-
-   function Decrement (Self : not null access Counter) return Boolean is
-      use Ada.Characters.Latin_1;
-
-      Result : Boolean;
-
-   begin
-      System.Machine_Code.Asm
-       (Template =>
-          "lock" & LF
-            & HT & "decl" & HT & "%0" & LF
-            & HT & "setne" & HT & "%1",
-        Outputs  =>
-          (Interfaces.C.int'Asm_Output ("=m", Self.Value),
-           Boolean'Asm_Output ("=qm", Result)),
-        Inputs   => Interfaces.C.int'Asm_Input ("m", Self.Value));
-
-      return Result;
-   end Decrement;
-
-   ---------------
-   -- Increment --
-   ---------------
-
-   procedure Increment (Self : not null access Counter) is
-      use Ada.Characters.Latin_1;
-
-   begin
-      System.Machine_Code.Asm
-       (Template =>
-          "lock" & LF
-            & HT & "incl" & HT & "%0",
-        Outputs  => Interfaces.C.int'Asm_Output ("=m", Self.Value),
-        Inputs   => Interfaces.C.int'Asm_Input ("m", Self.Value));
-   end Increment;
-
-   ------------
-   -- Is_One --
-   ------------
-
-   function Is_One (Self : not null access Counter) return Boolean is
-   begin
-      return Self.Value = 1;
-   end Is_One;
-
-   -------------
-   -- Is_Zero --
-   -------------
-
-   function Is_Zero (Self : not null access Counter) return Boolean is
-   begin
-      return Self.Value = 0;
-   end Is_Zero;
-
-   ---------
-   -- One --
-   ---------
-
-   function One return Counter is
-   begin
-      return Counter'(Value => 1);
-   end One;
-
-   ----------
-   -- Zero --
-   ----------
-
-   function Zero return Counter is
-   begin
-      return Counter'(Value => 0);
-   end Zero;
-
-end Matreshka.Internals.Atomics.Counters;
+function Matreshka.Internals.Atomics.Generic_Test_And_Set
+ (Target         : not null access T_Access;
+  Expected_Value : T_Access;
+  New_Value      : T_Access)
+    return Boolean;
+pragma Preelaborate (Matreshka.Internals.Atomics.Generic_Test_And_Set);

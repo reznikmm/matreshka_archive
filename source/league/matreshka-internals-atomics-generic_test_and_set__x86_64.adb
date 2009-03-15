@@ -31,88 +31,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This is i386 specific version.
+--  This is x86_64 version.
 ------------------------------------------------------------------------------
 with Ada.Characters.Latin_1;
 with System.Machine_Code;
 
-package body Matreshka.Internals.Atomics.Counters is
+function Matreshka.Internals.Atomics.Generic_Test_And_Set
+ (Target         : not null access T_Access;
+  Expected_Value : T_Access;
+  New_Value      : T_Access)
+    return Boolean
+is
+   pragma Assert (T_Access'Size = System.Address'Size);
 
-   use type Interfaces.C.int;
+   use Ada.Characters.Latin_1;
 
-   ---------------
-   -- Decrement --
-   ---------------
+   Result : Boolean;
+   Dummy  : T_Access;
 
-   function Decrement (Self : not null access Counter) return Boolean is
-      use Ada.Characters.Latin_1;
+begin
+   System.Machine_Code.Asm
+    (Template =>
+       "lock" & LF
+         & HT & "cmpxchgq" & HT & "%3, %2" & LF
+         & HT & "sete" & HT & "%1",
+     Outputs  =>
+      (T_Access'Asm_Output ("=a", Dummy),
+       Boolean'Asm_Output ("=qm", Result),
+       T_Access'Asm_Output ("+m", Target.all)),
+     Inputs   =>
+      (T_Access'Asm_Input ("r", New_Value),
+       T_Access'Asm_Input ("0", Expected_Value)));
 
-      Result : Boolean;
-
-   begin
-      System.Machine_Code.Asm
-       (Template =>
-          "lock" & LF
-            & HT & "decl" & HT & "%0" & LF
-            & HT & "setne" & HT & "%1",
-        Outputs  =>
-          (Interfaces.C.int'Asm_Output ("=m", Self.Value),
-           Boolean'Asm_Output ("=qm", Result)),
-        Inputs   => Interfaces.C.int'Asm_Input ("m", Self.Value));
-
-      return Result;
-   end Decrement;
-
-   ---------------
-   -- Increment --
-   ---------------
-
-   procedure Increment (Self : not null access Counter) is
-      use Ada.Characters.Latin_1;
-
-   begin
-      System.Machine_Code.Asm
-       (Template =>
-          "lock" & LF
-            & HT & "incl" & HT & "%0",
-        Outputs  => Interfaces.C.int'Asm_Output ("=m", Self.Value),
-        Inputs   => Interfaces.C.int'Asm_Input ("m", Self.Value));
-   end Increment;
-
-   ------------
-   -- Is_One --
-   ------------
-
-   function Is_One (Self : not null access Counter) return Boolean is
-   begin
-      return Self.Value = 1;
-   end Is_One;
-
-   -------------
-   -- Is_Zero --
-   -------------
-
-   function Is_Zero (Self : not null access Counter) return Boolean is
-   begin
-      return Self.Value = 0;
-   end Is_Zero;
-
-   ---------
-   -- One --
-   ---------
-
-   function One return Counter is
-   begin
-      return Counter'(Value => 1);
-   end One;
-
-   ----------
-   -- Zero --
-   ----------
-
-   function Zero return Counter is
-   begin
-      return Counter'(Value => 0);
-   end Zero;
-
-end Matreshka.Internals.Atomics.Counters;
+   return Result;
+end Matreshka.Internals.Atomics.Generic_Test_And_Set;
