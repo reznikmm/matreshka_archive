@@ -44,6 +44,12 @@ package Matreshka.Strings is
 
    type Universal_String is tagged private;
 
+   function To_Universal_String (Item : Wide_Wide_String)
+     return Universal_String;
+
+   function To_Wide_Wide_String (Self : Universal_String)
+     return Wide_Wide_String;
+
 private
 
    procedure Read
@@ -57,15 +63,51 @@ private
    type Utf16_String_Access is
      access all Matreshka.Internals.String_Types.Utf16_String;
 
+   type Index_Modes is
+    (Undefined,     --  Index mode is undefined.
+     One_Unit,      --  All characters a BPM characters, thus represented as
+                    --  one 16-bit code unit.
+     Two_Units,     --  All characters is outside of BMP, thus represented as
+                    --  surrogate pair (two 16-bit code units).
+     Mixed_Units);  --  String has both BMP and non-BMP characters, thus index
+                    --  table is used for direct access to string's characters.
+
+   type Positive_Array is array (Positive range <>) of Positive;
+
+   type Index_Map (Length : Natural) is record
+      Map : Positive_Array (1 .. Length);
+   end record;
+   --  GNAT: GNAT uses fat pointers for arrays, thus makes impossible to define
+   --  atomic compare-and-swap operations for access-to-unconstrained-array
+   --  type.
+
+   type Index_Map_Access is access all Index_Map;
+
    type String_Private_Data is limited record
-      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter    : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
-      Value   : Utf16_String_Access;
+      Value      : Utf16_String_Access;
       --  String data. Internal data always has well-formed UTF-16 encoded
       --  sequence of valid Unicode code points. Validity checks proceed only
       --  for potentially invalid user specified data, and never proceed for
       --  the internal data.
+
+      Last       : Natural := 0;
+      --  Last used element in the Value array.
+
+      Length     : Natural := 0;
+      --  Precomputed length of the string in Unicode code points.
+
+--      Index_Mode : Index_Modes := Undefined;
+--      --  String's characters indexing mode for direct access by the
+--      --  character's index.
+--
+--      Index_Map  : aliased Index_Map_Access := null;
+--      pragma Atomic (Index_Map);
+--      --  Mapping of the string's characters index to position inside internal
+--      --  buffer. Used only if string has both BMP and non-BMP characters.
+--      --  Is built on-demand.
    end record;
 
    type String_Private_Data_Access is access all String_Private_Data;
