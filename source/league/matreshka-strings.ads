@@ -47,8 +47,10 @@ package Matreshka.Strings is
    function To_Universal_String (Item : Wide_Wide_String)
      return Universal_String;
 
-   function To_Wide_Wide_String (Self : Universal_String)
+   function To_Wide_Wide_String (Self : Universal_String'Class)
      return Wide_Wide_String;
+
+   function Length (Self : Universal_String'Class) return Natural;
 
 private
 

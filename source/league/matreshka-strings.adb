@@ -173,6 +173,15 @@ package body Matreshka.Strings is
        (Self.Data.Counter'Access);
    end Initialize;
 
+   ------------
+   -- Length --
+   ------------
+
+   function Length (Self : Universal_String'Class) return Natural is
+   begin
+      return Self.Data.Length;
+   end Length;
+
    ----------
    -- Read --
    ----------
@@ -192,6 +201,7 @@ package body Matreshka.Strings is
       Matreshka.Internals.String_Types.Utf16_String'Read (Stream, Value.all);
 
       --  XXX Value validation must be done before any other operations.
+      --  XXX Object mutation can be used here.
 
       Dereference (Item.Data);
 
@@ -302,7 +312,7 @@ package body Matreshka.Strings is
    -- To_Wide_Wide_String --
    -------------------------
 
-   function To_Wide_Wide_String (Self : Universal_String)
+   function To_Wide_Wide_String (Self : Universal_String'Class)
      return Wide_Wide_String
    is
       Result  : Wide_Wide_String (1 .. Self.Data.Length);
