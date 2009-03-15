@@ -32,6 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
+with Matreshka.Internals.Atomics.Generic_Test_And_Set;
 
 package body Matreshka.Strings is
 
@@ -76,13 +77,21 @@ package body Matreshka.Strings is
      new Ada.Unchecked_Deallocation
           (String_Private_Data, String_Private_Data_Access);
 
+   procedure Free is
+     new Ada.Unchecked_Deallocation (Index_Map, Index_Map_Access);
+
+   function Test_And_Set is
+     new Matreshka.Internals.Atomics.Generic_Test_And_Set
+          (Index_Map, Index_Map_Access);
+
    procedure Dereference (Self : in out String_Private_Data_Access);
    --  Decrement reference counter and free resources if it reach zero value.
 
    procedure To_Utf16_String
     (Source      : Wide_Wide_String;
      Destination : out Utf16_String_Access;
-     Last        : out Natural);
+     Last        : out Natural;
+     Index_Mode  : out Index_Modes);
 
    function Is_Valid_Unicode_Code_Point (Item : Wide_Wide_Character)
      return Boolean;
@@ -153,6 +162,84 @@ package body Matreshka.Strings is
       end if;
    end Dereference;
 
+   -------------
+   -- Element --
+   -------------
+
+   function Element
+    (Self  : Universal_String'Class;
+     Index : Positive)
+       return Wide_Wide_Character
+   is
+      D : constant String_Private_Data_Access := Self.Data;
+
+   begin
+      if Index > D.Length then
+         raise Constraint_Error with "Index is out of range";
+      end if;
+
+      case D.Index_Mode is
+         when Undefined =>
+            raise Program_Error;
+
+         when Single_Units =>
+            return
+              Wide_Wide_Character'Val (Wide_Character'Pos (D.Value (Index)));
+
+         when Double_Units =>
+            return
+              Unchecked_To_Wide_Wide_Character
+               (D.Value (Index * 2 - 1), D.Value (Index * 2));
+
+         when Mixed_Units =>
+            declare
+               M       : Index_Map_Access := D.Index_Map;
+               Current : Positive         := 1;
+
+            begin
+               --  Calculate index map if it is unavailable for now.
+
+               if M = null then
+                  M := new Index_Map (D.Length);
+
+                  for J in M.Map'Range loop
+                     M.Map (J) := Current;
+
+                     if D.Value (Current) in High_Surrogate_Wide_Character then
+                        Current := Current + 2;
+
+                     else
+                        Current := Current + 1;
+                     end if;
+                  end loop;
+
+                  if not Test_And_Set (D.Index_Map'Access, null, M) then
+                     --  Operation can fail if mapping has been calculated by
+                     --  another thread. In this case caomputed result is
+                     --  dropped, memory freed and already calculated mapping
+                     --  is reused.
+
+                     Free (M);
+                  end if;
+
+                  M := D.Index_Map;
+               end if;
+
+               if D.Value (M.Map (Index)) in High_Surrogate_Wide_Character then
+                  return
+                    Unchecked_To_Wide_Wide_Character
+                     (D.Value (M.Map (Index)),
+                      D.Value (M.Map (Index) + 1));
+
+               else
+                  return
+                    Wide_Wide_Character'Val
+                     (Wide_Character'Pos (D.Value (M.Map (Index))));
+               end if;
+            end;
+      end case;
+   end Element;
+
    --------------
    -- Finalize --
    --------------
@@ -207,10 +294,12 @@ package body Matreshka.Strings is
 
       Item.Data :=
         new String_Private_Data'
-             (Counter => Matreshka.Internals.Atomics.Counters.One,
-              Value   => Value,
-              Last    => Last,
-              Length  => Length);
+             (Counter    => Matreshka.Internals.Atomics.Counters.One,
+              Value      => Value,
+              Last       => Last,
+              Length     => Length,
+              Index_Mode => Undefined,
+              Index_Map  => null);
    end Read;
 
    ---------------------
@@ -220,8 +309,12 @@ package body Matreshka.Strings is
    procedure To_Utf16_String
     (Source      : Wide_Wide_String;
      Destination : out Utf16_String_Access;
-     Last        : out Natural)
+     Last        : out Natural;
+     Index_Mode  : out Index_Modes)
    is
+      Has_BMP       : Boolean := False;
+      Has_Non_BMP   : Boolean := False;
+
       Double_Length : Boolean := False;
       --  True if Destination reserve space for double code unit representation
       --  of the source code points.
@@ -240,6 +333,7 @@ package body Matreshka.Strings is
                if C <= 16#FFFF# then
                   Last := Last + 1;
                   Destination (Last) := Wide_Character'Val (C);
+                  Has_Bmp := True;
 
                else
                   if not Double_Length then
@@ -268,6 +362,8 @@ package body Matreshka.Strings is
                   Last := Last + 1;
                   Destination (Last) :=
                     Wide_Character'Val (Low_Surrogate_First + C mod 16#400#);
+
+                  Has_Non_Bmp := True;
                end if;
             end;
 
@@ -276,6 +372,23 @@ package body Matreshka.Strings is
               with "Wide_Wide_Character is not a valid Unicode code point";
          end if;
       end loop;
+
+      if Has_BMP then
+         if Has_Non_BMP then
+            Index_Mode := Mixed_Units;
+
+         else
+            Index_Mode := Single_Units;
+         end if;
+
+      else
+         if Has_Non_BMP then
+            Index_Mode := Double_Units;
+
+         else
+            Index_Mode := Undefined;
+         end if;
+      end if;
 
    exception
       when others =>
@@ -291,21 +404,33 @@ package body Matreshka.Strings is
    function To_Universal_String (Item : Wide_Wide_String)
      return Universal_String
    is
-      Value : Utf16_String_Access;
-      Last  : Natural;
+      Value      : Utf16_String_Access;
+      Last       : Natural;
+      Index_Mode : Index_Modes;
 
    begin
-      To_Utf16_String (Item, Value, Last);
+      if Item'Length = 0 then
+         Matreshka.Internals.Atomics.Counters.Increment
+          (Shared_Empty.Counter'Access);
+
+         return
+           Universal_String'
+            (Ada.Finalization.Controlled with Data => Shared_Empty'Access);
+      end if;
+
+      To_Utf16_String (Item, Value, Last, Index_Mode);
 
       return
         Universal_String'
          (Ada.Finalization.Controlled with
             Data =>
               new String_Private_Data'
-                   (Counter => Matreshka.Internals.Atomics.Counters.One,
-                    Value   => Value,
-                    Last    => Last,
-                    Length  => Item'Length));
+                   (Counter    => Matreshka.Internals.Atomics.Counters.One,
+                    Value      => Value,
+                    Last       => Last,
+                    Length     => Item'Length,
+                    Index_Mode => Index_Mode,
+                    Index_Map  => null));
    end To_Universal_String;
 
    -------------------------

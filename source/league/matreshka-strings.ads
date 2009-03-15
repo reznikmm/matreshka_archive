@@ -52,6 +52,12 @@ package Matreshka.Strings is
 
    function Length (Self : Universal_String'Class) return Natural;
 
+   function Element
+    (Self  : Universal_String'Class;
+     Index : Positive)
+       return Wide_Wide_Character;
+   --  XXX Universal_Character ???
+
 private
 
    procedure Read
@@ -67,9 +73,9 @@ private
 
    type Index_Modes is
     (Undefined,     --  Index mode is undefined.
-     One_Unit,      --  All characters a BPM characters, thus represented as
+     Single_Units,  --  All characters a BPM characters, thus represented as
                     --  one 16-bit code unit.
-     Two_Units,     --  All characters is outside of BMP, thus represented as
+     Double_Units,  --  All characters is outside of BMP, thus represented as
                     --  surrogate pair (two 16-bit code units).
      Mixed_Units);  --  String has both BMP and non-BMP characters, thus index
                     --  table is used for direct access to string's characters.
@@ -101,15 +107,15 @@ private
       Length     : Natural := 0;
       --  Precomputed length of the string in Unicode code points.
 
---      Index_Mode : Index_Modes := Undefined;
---      --  String's characters indexing mode for direct access by the
---      --  character's index.
---
---      Index_Map  : aliased Index_Map_Access := null;
---      pragma Atomic (Index_Map);
---      --  Mapping of the string's characters index to position inside internal
---      --  buffer. Used only if string has both BMP and non-BMP characters.
---      --  Is built on-demand.
+      Index_Mode : Index_Modes := Undefined;
+      --  String's characters indexing mode for direct access by the
+      --  character's index.
+
+      Index_Map  : aliased Index_Map_Access := null;
+      pragma Atomic (Index_Map);
+      --  Mapping of the string's characters index to position inside internal
+      --  buffer. Used only if string has both BMP and non-BMP characters.
+      --  Is built on-demand.
    end record;
 
    type String_Private_Data_Access is access all String_Private_Data;
