@@ -64,6 +64,9 @@ package Matreshka.Internals.Atomics.Counters is
    function Zero return Counter;
    --  Initialize counter to zero value.
 
+   function One return Counter;
+   --  Initialize counter to one value.
+
 private
 
    type Counter is limited record

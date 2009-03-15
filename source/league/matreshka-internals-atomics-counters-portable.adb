@@ -140,6 +140,15 @@ package body Matreshka.Internals.Atomics.Counters is
       return Guard.Is_Zero (Self);
    end Is_Zero;
 
+   ---------
+   -- One --
+   ---------
+
+   function One return Counter is
+   begin
+      return Counter'(Value => 1);
+   end One;
+
    ----------
    -- Zero --
    ----------
