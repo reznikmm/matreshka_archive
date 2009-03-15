@@ -58,6 +58,11 @@ package Matreshka.Strings is
        return Wide_Wide_Character;
    --  XXX Universal_Character ???
 
+   function "&"
+    (Left  : Universal_String;
+     Right : Universal_String)
+       return Universal_String;
+
 private
 
    procedure Read

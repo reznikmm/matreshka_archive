@@ -133,6 +133,70 @@ package body Matreshka.Strings is
           --  Two last codes on the each code plain.
    end Is_Valid_Unicode_Code_Point;
 
+   Index_Mode_After_Concatenation : constant
+     array (Index_Modes, Index_Modes) of Index_Modes
+       := (Undefined    => (others => Undefined),
+           Single_Units => (Undefined    => Undefined,
+                            Single_Units => Single_Units,
+                            others       => Mixed_Units),
+           Double_Units => (Undefined    => Undefined,
+                            Double_Units => Double_Units,
+                            others       => Mixed_Units),
+           Mixed_Units  => (Undefined    => Undefined,
+                            others       => Mixed_Units));
+   --  String indexing mode after concatenation. Each dimension is a valid
+   --  string indexing mode for each concatenated string.
+
+   Index_Mode_For_String : constant array (Boolean, Boolean) of Index_Modes
+     := (False => (False => Undefined,
+                   True  => Double_Units),
+         True  => (False => Single_Units,
+                   True  => Mixed_Units));
+   --  String indexing mode for the string. First index must be True is string
+   --  contains BMP characters, second index must be True is string contains
+   --  non-BMP characters.
+
+   ---------
+   -- "&" --
+   ---------
+
+   function "&"
+    (Left  : Universal_String;
+     Right : Universal_String)
+       return Universal_String
+   is
+      use type Matreshka.Internals.String_Types.Utf16_String;
+
+      L_D : constant not null String_Private_Data_Access := Left.Data;
+      R_D : constant not null String_Private_Data_Access := Right.Data;
+
+   begin
+      if L_D.Length = 0 then
+         return Right;
+
+      elsif R_D.Length = 0 then
+         return Left;
+
+      else
+         return
+           Universal_String'
+            (Ada.Finalization.Controlled with
+               Data =>
+                 new String_Private_Data'
+                      (Counter    => Matreshka.Internals.Atomics.Counters.One,
+                       Value      =>
+                         new Matreshka.Internals.String_Types.Utf16_String'
+                              (L_D.Value (1 .. L_D.Last)
+                                 & R_D.Value (1 .. R_D.Last)),
+                       Last       => L_D.Last + R_D.Last,
+                       Length     => L_D.Length + R_D.Length,
+                       Index_Mode =>
+                         Index_Mode_After_Concatenation
+                          (L_D.Index_Mode, R_D.Index_Mode),
+                       Index_Map  => null));
+      end if;
+   end "&";
+
    ------------
    -- Adjust --
    ------------
@@ -373,22 +437,7 @@ package body Matreshka.Strings is
          end if;
       end loop;
 
-      if Has_BMP then
-         if Has_Non_BMP then
-            Index_Mode := Mixed_Units;
-
-         else
-            Index_Mode := Single_Units;
-         end if;
-
-      else
-         if Has_Non_BMP then
-            Index_Mode := Double_Units;
-
-         else
-            Index_Mode := Undefined;
-         end if;
-      end if;
+      Index_Mode := Index_Mode_For_String (Has_BMP, Has_Non_BMP);
 
    exception
       when others =>
