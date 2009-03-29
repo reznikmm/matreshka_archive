@@ -31,50 +31,82 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Atomic counters. Any objects of Counter type has value 1 by default.
---  This assumption allows declaration of implicitly initialized objects in
---  the preelaborateable units.
+--  This is GCC specific version.
 ------------------------------------------------------------------------------
-private with Interfaces;
 
-package Matreshka.Internals.Atomics.Counters is
+package body Matreshka.Internals.Atomics.Counters is
 
-   pragma Preelaborate;
-   pragma Remote_Types;
+   use type Interfaces.Integer_32;
 
-   type Counter is limited private;
+   function Sync_Add_And_Fetch_32
+     (Ptr   : access Interfaces.Integer_32;
+      Value : Interfaces.Integer_32) return Interfaces.Integer_32;
+   pragma Import (Intrinsic, Sync_Add_And_Fetch_32, "__sync_add_and_fetch_4");
 
-   procedure Increment (Self : not null access Counter);
-   pragma Inline (Increment);
-   --  Atomicaly increment counter value.
+   function Sync_Sub_And_Fetch_32
+     (Ptr   : access Interfaces.Integer_32;
+      Value : Interfaces.Integer_32) return Interfaces.Integer_32;
+   pragma Import (Intrinsic, Sync_Sub_And_Fetch_32, "__sync_sub_and_fetch_4");
 
-   function Decrement (Self : not null access Counter) return Boolean;
-   pragma Inline (Decrement);
-   --  Atomicaly decrement counter value. Returns True if counter has zero
-   --  value after decrement.
+   procedure Sync_Synchronize;
+   pragma Import (Intrinsic, Sync_Synchronize, "__sync_synchronize");
 
-   function Is_Zero (Self : not null access Counter) return Boolean;
-   pragma Inline (Is_Zero);
-   --  Returns True if counter has zero value.
+   ---------------
+   -- Decrement --
+   ---------------
 
-   function Is_One (Self : not null access Counter) return Boolean;
-   pragma Inline (Is_One);
-   --  Returns True if counter has one value.
+   function Decrement (Self : not null access Counter) return Boolean is
+   begin
+      return Sync_Sub_And_Fetch_32 (Self.Value'Access, 1) = 0;
+   end Decrement;
 
-   function Zero return Counter;
-   pragma Inline (Zero);
-   --  Initialize counter to zero value.
+   ---------------
+   -- Increment --
+   ---------------
 
-   function One return Counter;
-   pragma Inline (One);
-   --  Initialize counter to one value.
+   procedure Increment (Self : not null access Counter) is
+      Dummy : Interfaces.Integer_32;
 
-private
+   begin
+      Dummy := Sync_Add_And_Fetch_32 (Self.Value'Access, 1);
+   end Increment;
 
-   type Counter is limited record
-      Value : aliased Interfaces.Integer_32 := 1;
-      pragma Atomic (Value);
-   end record;
-   --  Note: Record type is used for automatic initial value assignment.
+   ------------
+   -- Is_One --
+   ------------
+
+   function Is_One (Self : not null access Counter) return Boolean is
+   begin
+      Sync_Synchronize;
+      return Self.Value = 1;
+   end Is_One;
+
+   -------------
+   -- Is_Zero --
+   -------------
+
+   function Is_Zero (Self : not null access Counter) return Boolean is
+   begin
+      Sync_Synchronize;
+      return Self.Value = 0;
+   end Is_Zero;
+
+   ---------
+   -- One --
+   ---------
+
+   function One return Counter is
+   begin
+      return Counter'(Value => 1);
+   end One;
+
+   ----------
+   -- Zero --
+   ----------
+
+   function Zero return Counter is
+   begin
+      return Counter'(Value => 0);
+   end Zero;
 
 end Matreshka.Internals.Atomics.Counters;

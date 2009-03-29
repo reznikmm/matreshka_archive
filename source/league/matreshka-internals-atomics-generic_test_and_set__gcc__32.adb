@@ -31,10 +31,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This is x86_64 version.
+--  This is GCC version for 64-bit target.
 ------------------------------------------------------------------------------
-with Ada.Characters.Latin_1;
-with System.Machine_Code;
+with System;
 
 function Matreshka.Internals.Atomics.Generic_Test_And_Set
  (Target         : not null access T_Access;
@@ -43,25 +42,17 @@ function Matreshka.Internals.Atomics.Generic_Test_And_Set
     return Boolean
 is
    pragma Assert (T_Access'Size = System.Address'Size);
+   pragma Assert (T_Access'Size = 32);
 
-   use Ada.Characters.Latin_1;
-
-   Result : Boolean;
-   Dummy  : T_Access;
+   function Sync_Bool_Compare_And_Swap_32
+     (Ptr     : not null access T_Access;
+      Old_Val : T_Access;
+      New_Val : T_Access) return Boolean;
+   pragma Import
+     (Intrinsic,
+      Sync_Bool_Compare_And_Swap_32,
+      "__sync_bool_compare_and_swap_4");
 
 begin
-   System.Machine_Code.Asm
-    (Template =>
-       "lock" & LF
-         & HT & "cmpxchgq" & HT & "%3, %2" & LF
-         & HT & "sete" & HT & "%1",
-     Outputs  =>
-      (T_Access'Asm_Output ("=a", Dummy),
-       Boolean'Asm_Output ("=qm", Result),
-       T_Access'Asm_Output ("+m", Target.all)),
-     Inputs   =>
-      (T_Access'Asm_Input ("r", New_Value),
-       T_Access'Asm_Input ("0", Expected_Value)));
-
-   return Result;
+   return Sync_Bool_Compare_And_Swap_32 (Target, Expected_Value, New_Value);
 end Matreshka.Internals.Atomics.Generic_Test_And_Set;
