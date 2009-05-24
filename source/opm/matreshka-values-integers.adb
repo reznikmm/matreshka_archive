@@ -35,41 +35,11 @@ with Ada.Tags.Generic_Dispatching_Constructor;
 
 package body Matreshka.Values.Integers is
 
-   procedure Check (Self : Value);
-   --  Check whether Self is not null and contains integer value, otherwise
-   --  raises Constraint_Error.
-
-   procedure Check (Self : Value; Type_Hint : Value_Type);
-   --  Check where Self contains the value of the Type_Hint type.
-
    function Create is
      new Ada.Tags.Generic_Dispatching_Constructor
           (Abstract_Integer_Container,
            Matreshka.Internals.Host_Types.Longest_Integer,
            Constructor);
-
-   -----------
-   -- Check --
-   -----------
-
-   procedure Check (Self : Value) is
-   begin
-      if Self.Data = null then
-         raise Constraint_Error with "Non-empty value expected";
-      end if;
-
-      if Self.Data.all not in Abstract_Integer_Container'Class then
-         raise Constraint_Error with "Any integer value expected";
-      end if;
-   end Check;
-
-   -----------
-   -- Check --
-   -----------
-
-   procedure Check (Self : Value; Type_Hint : Value_Type) is
-   begin
-   end Check;
 
    -----------
    -- First --
@@ -79,7 +49,7 @@ package body Matreshka.Values.Integers is
      return Matreshka.Internals.Host_Types.Longest_Integer
    is
    begin
-      Check (Self);
+      Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
 
       return Abstract_Integer_Container'Class (Self.Data.all).First;
    end First;
@@ -92,7 +62,8 @@ package body Matreshka.Values.Integers is
      return Matreshka.Internals.Host_Types.Longest_Integer
    is
    begin
-      Check (Self);
+      Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
+      Check_Is_Not_Null (Self);
 
       return Abstract_Integer_Container'Class (Self.Data.all).Get;
    end Get;
@@ -103,9 +74,7 @@ package body Matreshka.Values.Integers is
 
    function Is_Abstract_Integer (Self : Value) return Boolean is
    begin
-      return
-        Self.Data /= null
-          and then Self.Data.all in Abstract_Integer_Container'Class;
+      return Self.Is_Derived_Type (Abstract_Integer_Container'Tag);
    end Is_Abstract_Integer;
 
    ----------
@@ -116,7 +85,7 @@ package body Matreshka.Values.Integers is
      return Matreshka.Internals.Host_Types.Longest_Integer
    is
    begin
-      Check (Self);
+      Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
 
       return Abstract_Integer_Container'Class (Self.Data.all).Last;
    end Last;
@@ -130,9 +99,9 @@ package body Matreshka.Values.Integers is
      To   : Matreshka.Internals.Host_Types.Longest_Integer)
    is
    begin
-      Check (Self);
-      Mutate (Self.Data);
-      Abstract_Integer_Container'Class (Self.Data.all).Set (To);
+      Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
+
+      Set (Self, Value_Type (Self.Tag), To);
    end Set;
 
    ---------
@@ -147,22 +116,19 @@ package body Matreshka.Values.Integers is
       Aux : aliased Matreshka.Internals.Host_Types.Longest_Integer := To;
 
    begin
+      Check_Is_Untyped_Or_Is_Type (Self, Ada.Tags.Tag (Type_Hint));
+
       if Self.Data = null then
          Self.Data :=
            new Abstract_Integer_Container'Class'
-                (Create
-                  (Ada.Tags.Internal_Tag (String (Type_Hint)), Aux'Access));
+                (Create (Ada.Tags.Tag (Type_Hint), Aux'Access));
 
       else
-         if Value_Type (Ada.Tags.External_Tag (Self.Data'Tag))
-              /= Type_Hint
-         then
-            raise Constraint_Error with "Wrong integer type";
-         end if;
-
          Mutate (Self.Data);
          Abstract_Integer_Container'Class (Self.Data.all).Set (To);
       end if;
+
+      Self.Tag := Ada.Tags.Tag (Type_Hint);
    end Set;
 
 end Matreshka.Values.Integers;

@@ -34,10 +34,6 @@
 
 package body Matreshka.Values.Strings is
 
-   procedure Check (Self : Value; Can_Be_Empty : Boolean);
-   --  Check whether Self is not null and contains string value, otherwise
-   --  raises Constraint_Error.
-
    --------------
    -- Allocate --
    --------------
@@ -51,30 +47,13 @@ package body Matreshka.Values.Strings is
       return new String_Container;
    end Allocate;
 
-   -----------
-   -- Check --
-   -----------
-
-   procedure Check (Self : Value; Can_Be_Empty : Boolean) is
-   begin
-      if not Can_Be_Empty and then Self.Data = null then
-         raise Constraint_Error with "Non-empty value expected";
-      end if;
-
-      if Self.Data /= null
-        and then Self.Data.all not in String_Container'Class
-      then
-         raise Constraint_Error with "String value expected";
-      end if;
-   end Check;
-
    ---------
    -- Get --
    ---------
 
    function Get (Self : Value) return Matreshka.Strings.Universal_String is
    begin
-      Check (Self, False);
+      Check_Is_Type (Self, String_Container'Tag);
 
       return String_Container'Class (Self.Data.all).Value;
    end Get;
@@ -85,9 +64,7 @@ package body Matreshka.Values.Strings is
 
    function Is_String (Self : Value) return Boolean is
    begin
-      return
-        Self.Data /= null
-          and then Self.Data.all in String_Container'Class;
+      return Self.Is_Derived_Type (String_Container'Tag);
    end Is_String;
 
    ---------
@@ -99,7 +76,7 @@ package body Matreshka.Values.Strings is
      To   : Matreshka.Strings.Universal_String)
    is
    begin
-      Check (Self, True);
+      Check_Is_Untyped_Or_Is_Type (Self, String_Container'Tag);
 
       if Self.Data = null then
          Self.Data :=
@@ -107,8 +84,10 @@ package body Matreshka.Values.Strings is
 
       else
          Mutate (Self.Data);
-         String_Container'Class (Self.Data.all).Value := To;
+         String_Container (Self.Data.all).Value := To;
       end if;
+
+      Self.Tag := String_Container'Tag;
    end Set;
 
 end Matreshka.Values.Strings;

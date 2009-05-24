@@ -32,6 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
+private with Ada.Tags;
 
 private with Matreshka.Internals.Atomics.Counters;
 
@@ -43,11 +44,20 @@ package Matreshka.Values is
 
    type Value_Type (<>) is private;
 
-   function Is_Empty (Self : Value) return Boolean;
-   --  Returns True if Value doesn't contains value.
+   function Get_Type (Self : Value) return Value_Type;
+   --  Returns current type of the value.
 
-   procedure Set_Empty (Self : in out Value);
-   --  Reset Value to be empty. Value's type information is lost.
+   procedure Set_Type
+    (Self : in out Value;
+     To   : Value_Type);
+   --  Sets type of the value. Free previous value and set current value to
+   --  null.
+
+   function Is_Null (Self : Value) return Boolean;
+   --  Returns True if object contains null value.
+
+   procedure Set_Null (Self : in out Value);
+   --  Reset Value to be null value.
 
 private
 
@@ -74,7 +84,10 @@ private
 
    procedure Dereference (Self : in out Container_Access);
 
+   type Value_Type is new Ada.Tags.Tag;
+
    type Value is new Ada.Finalization.Controlled with record
+      Tag  : Ada.Tags.Tag     := Ada.Tags.No_Tag;
       Data : Container_Access := null;
    end record;
 
@@ -82,6 +95,32 @@ private
 
    overriding procedure Finalize (Self : in out Value);
 
-   type Value_Type is new String;
+   procedure Check_Is_Not_Null (Self : Value'Class);
+   --  Raises Constraint_Error if object contains null value.
+
+   procedure Check_Is_Derived_Type
+    (Self      : Value'Class;
+     Known_Tag : Ada.Tags.Tag);
+   --  Raises Constraint_Error if object is untyped or its type not derived
+   --  from specified known type.
+
+   procedure Check_Is_Type
+    (Self      : Value'Class;
+     Known_Tag : Ada.Tags.Tag);
+   --  Raises Constraint_Error if object's type not a specified known type.
+
+   procedure Check_Is_Untyped_Or_Is_Type
+    (Self      : Value'Class;
+     Known_Tag : Ada.Tags.Tag);
+   --  Raises Constraint_Error if object not untyped and doesn't have known
+   --  type.
+
+   function Is_Derived_Type (Self : Value'Class; Known_Tag : Ada.Tags.Tag)
+     return Boolean;
+   --  Returns True if actual type is derived from known type.
+
+   function Is_Type (Self : Value'Class; Known_Tag : Ada.Tags.Tag)
+     return Boolean;
+   --  Returns True if actual type is specified known type.
 
 end Matreshka.Values;

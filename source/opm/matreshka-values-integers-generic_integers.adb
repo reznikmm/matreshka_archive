@@ -34,10 +34,6 @@
 
 package body Matreshka.Values.Integers.Generic_Integers is
 
-   procedure Check (Self : Value; Can_Be_Empty : Boolean);
-   --  Check whether Self is not null and contains integer value, otherwise
-   --  raises Constraint_Error.
-
    --------------
    -- Allocate --
    --------------
@@ -50,28 +46,6 @@ package body Matreshka.Values.Integers.Generic_Integers is
    begin
       return new Integer_Container;
    end Allocate;
-
-   -----------
-   -- Check --
-   -----------
-
-   procedure Check (Self : Value; Can_Be_Empty : Boolean) is
-   begin
-      if not Can_Be_Empty and then Self.Data = null then
-         raise Constraint_Error with "Non-empty value expected";
-      end if;
-
-      if Self.Data /= null
-        and then Self.Data.all not in Integer_Container'Class
-      then
-         if Self.Data.all not in Abstract_Integer_Container'Class then
-            raise Constraint_Error with "Wrong type of integer value";
-
-         else
-            raise Constraint_Error with "Integer value expected";
-         end if;
-      end if;
-   end Check;
 
    -----------------
    -- Constructor --
@@ -116,7 +90,8 @@ package body Matreshka.Values.Integers.Generic_Integers is
 
    function Get (Self : Value) return Num is
    begin
-      Check (Self, False);
+      Check_Is_Type (Self, Integer_Container'Tag);
+      Check_Is_Not_Null (Self);
 
       return Integer_Container'Class (Self.Data.all).Value;
    end Get;
@@ -127,9 +102,7 @@ package body Matreshka.Values.Integers.Generic_Integers is
 
    function Is_Integer (Self : Value) return Boolean is
    begin
-      return
-        Self.Data /= null
-          and then Self.Data.all in Integer_Container'Class;
+      return Self.Is_Type (Integer_Container'Tag);
    end Is_Integer;
 
    ----------
@@ -166,16 +139,10 @@ package body Matreshka.Values.Integers.Generic_Integers is
      To   : Num)
    is
    begin
-      Check (Self, True);
-
-      if Self.Data = null then
-         Self.Data :=
-           new Integer_Container'(Abstract_Container with Value => To);
-
-      else
-         Mutate (Self.Data);
-         Integer_Container'Class (Self.Data.all).Value := To;
-      end if;
+      Set
+       (Self,
+        Value_Type (Integer_Container'Tag),
+        Matreshka.Internals.Host_Types.Longest_Integer (To));
    end Set;
 
 end Matreshka.Values.Integers.Generic_Integers;
