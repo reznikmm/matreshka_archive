@@ -49,7 +49,7 @@ package body Matreshka.Values.Integers is
       end if;
 
       if Self.Data.all not in Abstract_Integer_Container'Class then
-         raise Constraint_Error with "Integer value expected";
+         raise Constraint_Error with "Any integer value expected";
       end if;
    end Check;
 
@@ -79,16 +79,16 @@ package body Matreshka.Values.Integers is
       return Abstract_Integer_Container'Class (Self.Data.all).Get;
    end Get;
 
-   ----------------
-   -- Is_Integer --
-   ----------------
+   -------------------------
+   -- Is_Abstract_Integer --
+   -------------------------
 
-   function Is_Integer (Self : Value) return Boolean is
+   function Is_Abstract_Integer (Self : Value) return Boolean is
    begin
       return
         Self.Data /= null
           and then Self.Data.all in Abstract_Integer_Container'Class;
-   end Is_Integer;
+   end Is_Abstract_Integer;
 
    ----------
    -- Last --

@@ -37,7 +37,7 @@ package Matreshka.Values.Integers is
 
    pragma Preelaborate;
 
-   function Is_Integer (Self : Value) return Boolean;
+   function Is_Abstract_Integer (Self : Value) return Boolean;
    --  Returns True if contained value has integer type.
 
    function Get (Self : Value)
