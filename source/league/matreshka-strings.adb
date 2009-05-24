@@ -282,7 +282,7 @@ package body Matreshka.Strings is
 
                   if not Test_And_Set (D.Index_Map'Access, null, M) then
                      --  Operation can fail if mapping has been calculated by
-                     --  another thread. In this case caomputed result is
+                     --  another thread. In this case computed result is
                      --  dropped, memory freed and already calculated mapping
                      --  is reused.
 
