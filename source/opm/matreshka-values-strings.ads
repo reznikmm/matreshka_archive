@@ -48,6 +48,10 @@ package Matreshka.Values.Strings is
      To   : Matreshka.Strings.Universal_String);
    --  Set contained value to specified value.
 
+   procedure Set_Type (Self : in out Value);
+
+   function Type_Of_Value return Value_Type;
+
 private
 
    type String_Container is new Abstract_Container with record

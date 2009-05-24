@@ -90,4 +90,22 @@ package body Matreshka.Values.Strings is
       Self.Tag := String_Container'Tag;
    end Set;
 
+   --------------
+   -- Set_Type --
+   --------------
+
+   procedure Set_Type (Self : in out Value) is
+   begin
+      Set_Type (Self, Type_Of_Value);
+   end Set_Type;
+
+   -------------------
+   -- Type_Of_Value --
+   -------------------
+
+   function Type_Of_Value return Value_Type is
+   begin
+      return Value_Type (String_Container'Tag);
+   end Type_Of_Value;
+
 end Matreshka.Values.Strings;

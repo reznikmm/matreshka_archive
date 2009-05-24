@@ -51,6 +51,10 @@ package Matreshka.Values.Integers.Generic_Integers is
    --  Set value. Associate the type with value if Value is empty, otherwise
    --  check integer type and raise Constraint_Error if value has wrong type.
 
+   procedure Set_Type (Self : in out Value);
+
+   function Type_Of_Value return Value_Type;
+
 private
 
    type Integer_Container is new Abstract_Integer_Container with record
