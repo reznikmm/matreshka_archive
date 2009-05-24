@@ -38,6 +38,19 @@ package body Matreshka.Values.Strings is
    --  Check whether Self is not null and contains string value, otherwise
    --  raises Constraint_Error.
 
+   --------------
+   -- Allocate --
+   --------------
+
+   overriding function Allocate (Self : not null access String_Container)
+--     return not null Container_Access
+--  XXX GNAT 20090503 bug
+     return Container_Access
+   is
+   begin
+      return new String_Container;
+   end Allocate;
+
    -----------
    -- Check --
    -----------
@@ -54,19 +67,6 @@ package body Matreshka.Values.Strings is
          raise Constraint_Error with "String value expected";
       end if;
    end Check;
-
-   --------------
-   -- Allocate --
-   --------------
-
-   overriding function Allocate (Self : not null access String_Container)
---     return not null Container_Access
---  XXX GNAT 20090503 bug
-     return Container_Access
-   is
-   begin
-      return new String_Container;
-   end Allocate;
 
    ---------
    -- Get --
@@ -100,13 +100,13 @@ package body Matreshka.Values.Strings is
    is
    begin
       Check (Self, True);
-      Mutate (Self.Data);
 
       if Self.Data = null then
          Self.Data :=
            new String_Container'(Abstract_Container with Value => To);
 
       else
+         Mutate (Self.Data);
          String_Container'Class (Self.Data.all).Value := To;
       end if;
    end Set;
