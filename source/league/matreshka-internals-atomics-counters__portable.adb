@@ -42,6 +42,8 @@ package body Matreshka.Internals.Atomics.Counters is
 
       procedure Increment (Self : not null access Counter);
 
+      procedure Decrement (Self : not null access Counter);
+
       procedure Decrement
        (Self    : not null access Counter;
         Is_Zero : out Boolean);
@@ -65,6 +67,15 @@ package body Matreshka.Internals.Atomics.Counters is
       return Result;
    end Decrement;
 
+   ---------------
+   -- Decrement --
+   ---------------
+
+   procedure Decrement (Self : not null access Counter) is
+   begin
+      Guard.Decrement (Self);
+   end Decrement;
+
    -----------
    -- Guard --
    -----------
@@ -82,6 +93,15 @@ package body Matreshka.Internals.Atomics.Counters is
       begin
          Self.Value := Self.Value - 1;
          Is_Zero    := Self.Value = 0;
+      end Decrement;
+
+      ---------------
+      -- Decrement --
+      ---------------
+
+      procedure Decrement (Self : not null access Counter) is
+      begin
+         Self.Value := Self.Value - 1;
       end Decrement;
 
       ---------------

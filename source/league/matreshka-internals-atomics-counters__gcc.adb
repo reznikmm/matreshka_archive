@@ -61,6 +61,17 @@ package body Matreshka.Internals.Atomics.Counters is
    end Decrement;
 
    ---------------
+   -- Decrement --
+   ---------------
+
+   procedure Decrement (Self : not null access Counter) is
+      Dummy : Interfaces.Integer_32;
+
+   begin
+      Dummy := Sync_Sub_And_Fetch_32 (Self.Value'Access, 1);
+   end Decrement;
+
+   ---------------
    -- Increment --
    ---------------
 

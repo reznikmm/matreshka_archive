@@ -53,6 +53,10 @@ package Matreshka.Internals.Atomics.Counters is
    --  Atomicaly decrement counter value. Returns True if counter has zero
    --  value after decrement.
 
+   procedure Decrement (Self : not null access Counter);
+   pragma Inline (Decrement);
+   --  Atomicaly decrement counter value.
+
    function Is_Zero (Self : not null access Counter) return Boolean;
    pragma Inline (Is_Zero);
    --  Returns True if counter has zero value.
