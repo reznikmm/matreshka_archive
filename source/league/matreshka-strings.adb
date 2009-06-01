@@ -184,6 +184,7 @@ package body Matreshka.Strings is
                Data =>
                  new String_Private_Data'
                       (Counter    => Matreshka.Internals.Atomics.Counters.One,
+                       Volatile   => Matreshka.Internals.Atomics.Counters.Zero,
                        Value      =>
                          new Matreshka.Internals.String_Types.Utf16_String'
                               (L_D.Value (1 .. L_D.Last)
@@ -203,9 +204,42 @@ package body Matreshka.Strings is
 
    overriding procedure Adjust (Self : in out Universal_String) is
    begin
-      Matreshka.Internals.Atomics.Counters.Increment
-       (Self.Data.Counter'Access);
+      if Matreshka.Internals.Atomics.Counters.Is_Zero
+          (Self.Data.Volatile'Access)
+      then
+         Matreshka.Internals.Atomics.Counters.Increment
+          (Self.Data.Counter'Access);
+
+      else
+         Self.Data := Copy (Self.Data);
+      end if;
    end Adjust;
+
+   ----------
+   -- Copy --
+   ----------
+
+   function Copy (Source : not null String_Private_Data_Access)
+     return not null String_Private_Data_Access
+   is
+   begin
+      return Result : not null String_Private_Data_Access
+        := new String_Private_Data'
+                (Counter    => Matreshka.Internals.Atomics.Counters.One,
+                 Volatile   => Matreshka.Internals.Atomics.Counters.Zero,
+                 Value      =>
+                   new Matreshka.Internals.String_Types.Utf16_String'
+                        (Source.Value.all),
+                 Last       => Source.Last,
+                 Length     => Source.Length,
+                 Index_Mode => Source.Index_Mode,
+                 Index_Map  => null)
+      do
+         if Source.Index_Map /= null then
+            Result.Index_Map := new Index_Map'(Source.Index_Map.all);
+         end if;
+      end return;
+   end Copy;
 
    -----------------
    -- Dereference --
@@ -362,6 +396,7 @@ package body Matreshka.Strings is
       Item.Data :=
         new String_Private_Data'
              (Counter    => Matreshka.Internals.Atomics.Counters.One,
+              Volatile   => Matreshka.Internals.Atomics.Counters.Zero,
               Value      => Value,
               Last       => Last,
               Length     => Length,
@@ -478,6 +513,7 @@ package body Matreshka.Strings is
             Data =>
               new String_Private_Data'
                    (Counter    => Matreshka.Internals.Atomics.Counters.One,
+                    Volatile   => Matreshka.Internals.Atomics.Counters.Zero,
                     Value      => Value,
                     Last       => Last,
                     Length     => Item'Length,

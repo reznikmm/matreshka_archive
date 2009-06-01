@@ -100,6 +100,13 @@ private
       Counter    : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
+      Volatile   : aliased Matreshka.Internals.Atomics.Counters.Counter
+        := Matreshka.Internals.Atomics.Counters.Zero;
+      --  Atomic volatile counter. It equals to zero when there are no external
+      --  references to the data which can be used to change the data. It is
+      --  used to track access from iterators for now. If value is greater
+      --  when zero when implicit sharing is not used.
+
       Value      : not null Utf16_String_Access;
       --  String data. Internal data always has well-formed UTF-16 encoded
       --  sequence of valid Unicode code points. Validity checks proceed only
@@ -124,6 +131,10 @@ private
    end record;
 
    type String_Private_Data_Access is access all String_Private_Data;
+
+   function Copy (Source : not null String_Private_Data_Access)
+     return not null String_Private_Data_Access;
+   --  Creates copy of string data.
 
    type Universal_String is new Ada.Finalization.Controlled with record
       Data : String_Private_Data_Access;
