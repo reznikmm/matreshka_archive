@@ -36,29 +36,6 @@ with Matreshka.Internals.Atomics.Generic_Test_And_Set;
 
 package body Matreshka.Strings is
 
-   Surrogate_First      : constant := 16#D800#;
-   High_Surrogate_First : constant := 16#D800#;
-   High_Surrogate_Last  : constant := 16#DBFF#;
-   Low_Surrogate_First  : constant := 16#DC00#;
-   Low_Surrogate_Last   : constant := 16#DFFF#;
-   Surrogate_Last       : constant := 16#DFFF#;
-
-   subtype Surrogate_Wide_Character is Wide_Character
-     range Wide_Character'Val (Surrogate_First)
-             .. Wide_Character'Val (Surrogate_Last);
-
-   subtype High_Surrogate_Wide_Character is Surrogate_Wide_Character
-     range Wide_Character'Val (High_Surrogate_First)
-             .. Wide_Character'Val (High_Surrogate_Last);
-
-   subtype Low_Surrogate_Wide_Character is Surrogate_Wide_Character
-     range Wide_Character'Val (Low_Surrogate_First)
-             .. Wide_Character'Val (Low_Surrogate_Last);
-
-   subtype Surrogate_Wide_Wide_Character is Wide_Wide_Character
-     range Wide_Wide_Character'Val (Surrogate_First)
-             .. Wide_Wide_Character'Val (Surrogate_Last);
-
    --  Unicode code point.
 
    type Code_Unit_32 is mod 2**32;
@@ -84,9 +61,6 @@ package body Matreshka.Strings is
      new Matreshka.Internals.Atomics.Generic_Test_And_Set
           (Index_Map, Index_Map_Access);
 
-   procedure Dereference (Self : in out String_Private_Data_Access);
-   --  Decrement reference counter and free resources if it reach zero value.
-
    procedure To_Utf16_String
     (Source      : Wide_Wide_String;
      Destination : out Utf16_String_Access;
@@ -97,13 +71,6 @@ package body Matreshka.Strings is
      return Boolean;
    --  Returns True if code point of the specified Wide_Wide_Character is a
    --  valid Unicode code point.
-
-   function Unchecked_To_Wide_Wide_Character
-    (High : Wide_Character;
-     Low  : Wide_Character)
-       return Wide_Wide_Character;
-   pragma Inline (Unchecked_To_Wide_Wide_Character);
-   --  Convert valid surrogate pair into the Wide_Wide_Character.
 
    Empty_String : aliased Matreshka.Internals.String_Types.Utf16_String := "";
 
@@ -245,21 +212,35 @@ package body Matreshka.Strings is
    -- Dereference --
    -----------------
 
-   procedure Dereference (Self : in out String_Private_Data_Access) is
-      Aux : Utf16_String_Access := Self.Value;
+   procedure Dereference
+    (Self     : in out String_Private_Data_Access;
+     Volatile : Boolean)
+   is
+      Aux : Utf16_String_Access;
 
    begin
-      if Matreshka.Internals.Atomics.Counters.Decrement
-          (Self.Counter'Access)
-      then
-         pragma Assert (Self /= Shared_Empty'Access);
+      if Self /= null then
+         if Volatile then
+            Matreshka.Internals.Atomics.Counters.Decrement
+             (Self.Volatile'Access);
+         end if;
 
-         Free (Self.Index_Map);
-         Free (Aux);
-         Free (Self);
+         if Matreshka.Internals.Atomics.Counters.Decrement
+             (Self.Counter'Access)
+         then
+            pragma Assert (Self /= Shared_Empty'Access);
+            pragma Assert
+                    (Matreshka.Internals.Atomics.Counters.Is_Zero
+                      (Self.Volatile'Access));
 
-      else
-         Self := null;
+            Free (Self.Index_Map);
+            Aux := Self.Value;
+            Free (Aux);
+            Free (Self);
+
+         else
+            Self := null;
+         end if;
       end if;
    end Dereference;
 
@@ -347,7 +328,7 @@ package body Matreshka.Strings is
 
    overriding procedure Finalize (Self : in out Universal_String) is
    begin
-      Dereference (Self.Data);
+      Dereference (Self.Data, False);
    end Finalize;
 
    ----------------
@@ -391,7 +372,7 @@ package body Matreshka.Strings is
       --  XXX Value validation must be done before any other operations.
       --  XXX Object mutation can be used here.
 
-      Dereference (Item.Data);
+      Dereference (Item.Data, False);
 
       Item.Data :=
         new String_Private_Data'

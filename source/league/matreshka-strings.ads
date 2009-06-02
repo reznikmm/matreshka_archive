@@ -65,6 +65,29 @@ package Matreshka.Strings is
 
 private
 
+   Surrogate_First      : constant := 16#D800#;
+   High_Surrogate_First : constant := 16#D800#;
+   High_Surrogate_Last  : constant := 16#DBFF#;
+   Low_Surrogate_First  : constant := 16#DC00#;
+   Low_Surrogate_Last   : constant := 16#DFFF#;
+   Surrogate_Last       : constant := 16#DFFF#;
+
+   subtype Surrogate_Wide_Character is Wide_Character
+     range Wide_Character'Val (Surrogate_First)
+             .. Wide_Character'Val (Surrogate_Last);
+
+   subtype High_Surrogate_Wide_Character is Surrogate_Wide_Character
+     range Wide_Character'Val (High_Surrogate_First)
+             .. Wide_Character'Val (High_Surrogate_Last);
+
+   subtype Low_Surrogate_Wide_Character is Surrogate_Wide_Character
+     range Wide_Character'Val (Low_Surrogate_First)
+             .. Wide_Character'Val (Low_Surrogate_Last);
+
+   subtype Surrogate_Wide_Wide_Character is Wide_Wide_Character
+     range Wide_Wide_Character'Val (Surrogate_First)
+             .. Wide_Wide_Character'Val (Surrogate_Last);
+
    procedure Read
     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
      Item   : out Universal_String);
@@ -136,6 +159,12 @@ private
      return not null String_Private_Data_Access;
    --  Creates copy of string data.
 
+   procedure Dereference
+    (Self     : in out String_Private_Data_Access;
+     Volatile : Boolean);
+   --  Decrement reference counter and free resources if it reach zero value.
+   --  If Volatile is True when also decrement volatile reference counter.
+
    type Universal_String is new Ada.Finalization.Controlled with record
       Data : String_Private_Data_Access;
    end record;
@@ -148,5 +177,12 @@ private
    overriding procedure Adjust (Self : in out Universal_String);
 
    overriding procedure Finalize (Self : in out Universal_String);
+
+   function Unchecked_To_Wide_Wide_Character
+    (High : Wide_Character;
+     Low  : Wide_Character)
+       return Wide_Wide_Character;
+   pragma Inline (Unchecked_To_Wide_Wide_Character);
+   --  Convert valid surrogate pair into the Wide_Wide_Character.
 
 end Matreshka.Strings;
