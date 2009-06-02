@@ -119,16 +119,12 @@ private
 
    type Index_Map_Access is access all Index_Map;
 
+   type Abstract_Iterator is tagged;
+   type Iterator_Access is access all Abstract_Iterator'Class;
+
    type String_Private_Data is limited record
       Counter    : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
-
-      Volatile   : aliased Matreshka.Internals.Atomics.Counters.Counter
-        := Matreshka.Internals.Atomics.Counters.Zero;
-      --  Atomic volatile counter. It equals to zero when there are no external
-      --  references to the data which can be used to change the data. It is
-      --  used to track access from iterators for now. If value is greater
-      --  when zero when implicit sharing is not used.
 
       Value      : not null Utf16_String_Access;
       --  String data. Internal data always has well-formed UTF-16 encoded
@@ -151,6 +147,9 @@ private
       --  Mapping of the string's characters index to position inside internal
       --  buffer. Used only if string has both BMP and non-BMP characters.
       --  Is built on-demand.
+
+      Iterators  : Iterator_Access := null;
+      --  List of iterators.
    end record;
 
    type String_Private_Data_Access is access all String_Private_Data;
@@ -160,10 +159,14 @@ private
    --  Creates copy of string data.
 
    procedure Dereference
-    (Self     : in out String_Private_Data_Access;
-     Volatile : Boolean);
+    (Self : in out String_Private_Data_Access);
    --  Decrement reference counter and free resources if it reach zero value.
-   --  If Volatile is True when also decrement volatile reference counter.
+
+   procedure Dereference
+    (Self     : in out String_Private_Data_Access;
+     Iterator : not null Iterator_Access);
+   --  Removes Iterator from the list of iterators, decrements reference
+   --  counter and free resources if it reach zero value.
 
    type Universal_String is new Ada.Finalization.Controlled with record
       Data : String_Private_Data_Access;
@@ -177,6 +180,17 @@ private
    overriding procedure Adjust (Self : in out Universal_String);
 
    overriding procedure Finalize (Self : in out Universal_String);
+
+   type Abstract_Iterator is
+     abstract new Ada.Finalization.Controlled with
+   record
+      Data : String_Private_Data_Access := null;
+      Next : Iterator_Access            := null;
+   end record;
+
+   overriding procedure Adjust (Self : in out Abstract_Iterator);
+
+   overriding procedure Finalize (Self : in out Abstract_Iterator);
 
    function Unchecked_To_Wide_Wide_Character
     (High : Wide_Character;

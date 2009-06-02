@@ -36,16 +36,4 @@ package Matreshka.Strings.Iterators is
 
    pragma Preelaborate;
 
-private
-
-   type Abstract_Iterator is
-     abstract new Ada.Finalization.Controlled with
-   record
-      Data : String_Private_Data_Access := null;
-   end record;
-
-   overriding procedure Adjust (Self : in out Abstract_Iterator);
-
-   overriding procedure Finalize (Self : in out Abstract_Iterator);
-
 end Matreshka.Strings.Iterators;

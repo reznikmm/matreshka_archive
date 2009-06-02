@@ -76,28 +76,27 @@ package body Matreshka.Strings.Iterators.Characters is
       Aux : String_Private_Data_Access;
 
    begin
-      Dereference (Self.Data, True);
+      Dereference (Self.Data, Self'Unchecked_Access);
 
-      --  Reference counter equal to one when internal data is not share. By
-      --  the convention, if volatile counter is not zero internal data is not
-      --  shared also. In all other cases internal data is shared, and
-      --  exclusive copy of data must be created.
+      --  Reference counter equal to one when internal data is not shares. By
+      --  the convention, if data has associated iterator it is not shared.
+      --  In all other cases internal data is shared, and exclusive copy of
+      --  data must be created.
 
       if not Matreshka.Internals.Atomics.Counters.Is_One
               (Item.Data.Counter'Access)
-        and then Matreshka.Internals.Atomics.Counters.Is_Zero
-                  (Item.Data.Volatile'Access)
+        and then Item.Data.Iterators = null
       then
          Aux := Copy (Item.Data);
-         Dereference (Item.Data, False);
+         Dereference (Item.Data);
          Item.Data := Aux;
       end if;
 
       Self.Data := Item.Data;
       Matreshka.Internals.Atomics.Counters.Increment
        (Self.Data.Counter'Access);
-      Matreshka.Internals.Atomics.Counters.Increment
-       (Self.Data.Volatile'Access);
+      Self.Next           := Self.Data.Iterators;
+      Self.Data.Iterators := Self'Unchecked_Access;
 
       Self.Current := Self.Data.Value'First;
    end First;
@@ -128,28 +127,27 @@ package body Matreshka.Strings.Iterators.Characters is
       Aux : String_Private_Data_Access;
 
    begin
-      Dereference (Self.Data, True);
+      Dereference (Self.Data, Self'Unchecked_Access);
 
-      --  Reference counter equal to one when internal data is not share. By
-      --  the convention, if volatile counter is not zero internal data is not
-      --  shared also. In all other cases internal data is shared, and
-      --  exclusive copy of data must be created.
+      --  Reference counter equal to one when internal data is not shares. By
+      --  the convention, if data has associated iterator it is not shared.
+      --  In all other cases internal data is shared, and exclusive copy of
+      --  data must be created.
 
       if not Matreshka.Internals.Atomics.Counters.Is_One
               (Item.Data.Counter'Access)
-        and then Matreshka.Internals.Atomics.Counters.Is_Zero
-                  (Item.Data.Volatile'Access)
+        and then Item.Data.Iterators = null
       then
          Aux := Copy (Item.Data);
-         Dereference (Item.Data, False);
+         Dereference (Item.Data);
          Item.Data := Aux;
       end if;
 
       Self.Data := Item.Data;
       Matreshka.Internals.Atomics.Counters.Increment
        (Self.Data.Counter'Access);
-      Matreshka.Internals.Atomics.Counters.Increment
-       (Self.Data.Volatile'Access);
+      Self.Next           := Self.Data.Iterators;
+      Self.Data.Iterators := Self'Unchecked_Access;
 
       Self.Current := Self.Data.Last;
 

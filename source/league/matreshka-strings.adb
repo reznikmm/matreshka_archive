@@ -151,7 +151,6 @@ package body Matreshka.Strings is
                Data =>
                  new String_Private_Data'
                       (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                       Volatile   => Matreshka.Internals.Atomics.Counters.Zero,
                        Value      =>
                          new Matreshka.Internals.String_Types.Utf16_String'
                               (L_D.Value (1 .. L_D.Last)
@@ -161,7 +160,8 @@ package body Matreshka.Strings is
                        Index_Mode =>
                          Index_Mode_After_Concatenation
                           (L_D.Index_Mode, R_D.Index_Mode),
-                       Index_Map  => null));
+                       Index_Map  => null,
+                       Iterators  => null));
       end if;
    end "&";
 
@@ -169,11 +169,23 @@ package body Matreshka.Strings is
    -- Adjust --
    ------------
 
+   overriding procedure Adjust (Self : in out Abstract_Iterator) is
+   begin
+      if Self.Data /= null then
+         Matreshka.Internals.Atomics.Counters.Increment
+          (Self.Data.Counter'Access);
+         Self.Next           := Self.Data.Iterators;
+         Self.Data.Iterators := Self'Unchecked_Access;
+      end if;
+   end Adjust;
+
+   ------------
+   -- Adjust --
+   ------------
+
    overriding procedure Adjust (Self : in out Universal_String) is
    begin
-      if Matreshka.Internals.Atomics.Counters.Is_Zero
-          (Self.Data.Volatile'Access)
-      then
+      if Self.Data.Iterators = null then
          Matreshka.Internals.Atomics.Counters.Increment
           (Self.Data.Counter'Access);
 
@@ -193,14 +205,14 @@ package body Matreshka.Strings is
       return Result : not null String_Private_Data_Access
         := new String_Private_Data'
                 (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                 Volatile   => Matreshka.Internals.Atomics.Counters.Zero,
                  Value      =>
                    new Matreshka.Internals.String_Types.Utf16_String'
                         (Source.Value.all),
                  Last       => Source.Last,
                  Length     => Source.Length,
                  Index_Mode => Source.Index_Mode,
-                 Index_Map  => null)
+                 Index_Map  => null,
+                 Iterators  => null)
       do
          if Source.Index_Map /= null then
             Result.Index_Map := new Index_Map'(Source.Index_Map.all);
@@ -212,26 +224,16 @@ package body Matreshka.Strings is
    -- Dereference --
    -----------------
 
-   procedure Dereference
-    (Self     : in out String_Private_Data_Access;
-     Volatile : Boolean)
-   is
+   procedure Dereference (Self : in out String_Private_Data_Access) is
       Aux : Utf16_String_Access;
 
    begin
       if Self /= null then
-         if Volatile then
-            Matreshka.Internals.Atomics.Counters.Decrement
-             (Self.Volatile'Access);
-         end if;
-
          if Matreshka.Internals.Atomics.Counters.Decrement
              (Self.Counter'Access)
          then
             pragma Assert (Self /= Shared_Empty'Access);
-            pragma Assert
-                    (Matreshka.Internals.Atomics.Counters.Is_Zero
-                      (Self.Volatile'Access));
+            pragma Assert (Self.Iterators = null);
 
             Free (Self.Index_Map);
             Aux := Self.Value;
@@ -241,6 +243,39 @@ package body Matreshka.Strings is
          else
             Self := null;
          end if;
+      end if;
+   end Dereference;
+
+   -----------------
+   -- Dereference --
+   -----------------
+
+   procedure Dereference
+    (Self     : in out String_Private_Data_Access;
+     Iterator : not null Iterator_Access)
+   is
+      Previous : Iterator_Access := null;
+      Current  : Iterator_Access;
+
+   begin
+      if Self /= null then
+         Current := Self.Iterators;
+
+         while Current /= Iterator loop
+            Previous := Current;
+            Current := Current.Next;
+         end loop;
+
+         if Previous = null then
+            Self.Iterators := Iterator.Next;
+
+         else
+            Previous.Next := Iterator.Next;
+         end if;
+
+         Iterator.Next := null;
+
+         Dereference (Self);
       end if;
    end Dereference;
 
@@ -326,9 +361,18 @@ package body Matreshka.Strings is
    -- Finalize --
    --------------
 
+   overriding procedure Finalize (Self : in out Abstract_Iterator) is
+   begin
+      Dereference (Self.Data, Self'Unchecked_Access);
+   end Finalize;
+
+   --------------
+   -- Finalize --
+   --------------
+
    overriding procedure Finalize (Self : in out Universal_String) is
    begin
-      Dereference (Self.Data, False);
+      Dereference (Self.Data);
    end Finalize;
 
    ----------------
@@ -372,17 +416,17 @@ package body Matreshka.Strings is
       --  XXX Value validation must be done before any other operations.
       --  XXX Object mutation can be used here.
 
-      Dereference (Item.Data, False);
+      Dereference (Item.Data);
 
       Item.Data :=
         new String_Private_Data'
              (Counter    => Matreshka.Internals.Atomics.Counters.One,
-              Volatile   => Matreshka.Internals.Atomics.Counters.Zero,
               Value      => Value,
               Last       => Last,
               Length     => Length,
               Index_Mode => Undefined,
-              Index_Map  => null);
+              Index_Map  => null,
+              Iterators  => null);
    end Read;
 
    ---------------------
@@ -494,12 +538,12 @@ package body Matreshka.Strings is
             Data =>
               new String_Private_Data'
                    (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                    Volatile   => Matreshka.Internals.Atomics.Counters.Zero,
                     Value      => Value,
                     Last       => Last,
                     Length     => Item'Length,
                     Index_Mode => Index_Mode,
-                    Index_Map  => null));
+                    Index_Map  => null,
+                    Iterators  => null));
    end To_Universal_String;
 
    -------------------------
