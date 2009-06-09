@@ -427,7 +427,7 @@ package body Matreshka.Strings is
    ----------------
 
    not overriding procedure On_Changed
-    (Self           : access Abstract_Iterator;
+    (Self           : not null access Abstract_Iterator;
      Changed_First  : Positive;
      Removed_Last   : Natural;
      Inserted_Last  : Natural)
