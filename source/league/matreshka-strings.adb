@@ -357,6 +357,33 @@ package body Matreshka.Strings is
       end case;
    end Element;
 
+   ------------------
+   -- Emit_Changed --
+   ------------------
+
+   procedure Emit_Changed
+    (Self          : not null String_Private_Data_Access;
+     Iterator      : not null Iterator_Access;
+     Changed_First : Positive;
+     Removed_Last  : Natural;
+     Inserted_Last : Natural)
+   is
+      Current : Iterator_Access := Self.Iterators;
+      Next    : Iterator_Access := Current.Next;
+
+   begin
+      loop
+         if Current /= Iterator then
+            Current.On_Changed (Changed_First, Removed_Last, Inserted_Last);
+         end if;
+
+         exit when Next = null;
+
+         Current := Next;
+         Next    := Current.Next;
+      end loop;
+   end Emit_Changed;
+
    --------------
    -- Finalize --
    --------------
@@ -394,6 +421,20 @@ package body Matreshka.Strings is
    begin
       return Self.Data.Length;
    end Length;
+
+   ----------------
+   -- On_Changed --
+   ----------------
+
+   not overriding procedure On_Changed
+    (Self           : access Abstract_Iterator;
+     Changed_First  : Positive;
+     Removed_Last   : Natural;
+     Inserted_Last  : Natural)
+   is
+   begin
+      Dereference (Self.Data, Self.all'Unchecked_Access);
+   end On_Changed;
 
    ----------
    -- Read --

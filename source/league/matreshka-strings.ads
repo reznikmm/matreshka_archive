@@ -168,6 +168,16 @@ private
    --  Removes Iterator from the list of iterators, decrements reference
    --  counter and free resources if it reach zero value.
 
+   procedure Emit_Changed
+    (Self          : not null String_Private_Data_Access;
+     Iterator      : not null Iterator_Access;
+     Changed_First : Positive;
+     Removed_Last  : Natural;
+     Inserted_Last : Natural);
+   --  Must be called when internal string data is changed. It notify all
+   --  iterators (except originator) about this change. All positions are in
+   --  code units.
+
    type Universal_String is new Ada.Finalization.Controlled with record
       Data : String_Private_Data_Access;
    end record;
@@ -187,6 +197,14 @@ private
       Data : String_Private_Data_Access := null;
       Next : Iterator_Access            := null;
    end record;
+
+   not overriding procedure On_Changed
+    (Self          : access Abstract_Iterator;
+     Changed_First : Positive;
+     Removed_Last  : Natural;
+     Inserted_Last : Natural);
+   --  Called when internal string data is changed. All positions are in code
+   --  units. Default implementation invalidate iterator.
 
    overriding procedure Adjust (Self : in out Abstract_Iterator);
 
