@@ -61,4 +61,10 @@ private
       Current : Natural := 0;
    end record;
 
+   overriding procedure On_Changed
+    (Self          : not null access Character_Iterator;
+     Changed_First : Positive;
+     Removed_Last  : Natural;
+     Inserted_Last : Natural);
+
 end Matreshka.Strings.Iterators.Characters;

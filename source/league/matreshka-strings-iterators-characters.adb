@@ -188,6 +188,25 @@ package body Matreshka.Strings.Iterators.Characters is
       end if;
    end Next;
 
+   ----------------
+   -- On_Changed --
+   ----------------
+
+   overriding procedure On_Changed
+    (Self          : not null access Character_Iterator;
+     Changed_First : Positive;
+     Removed_Last  : Natural;
+     Inserted_Last : Natural)
+   is
+   begin
+      if Self.Current in Changed_First .. Removed_Last then
+         Dereference (Self.Data, Self.all'Unchecked_Access);
+
+      elsif Self.Current > Removed_Last then
+         Self.Current := Self.Current + Inserted_Last - Removed_Last;
+      end if;
+   end On_Changed;
+
    --------------
    -- Previous --
    --------------
