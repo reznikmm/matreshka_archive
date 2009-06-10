@@ -67,6 +67,12 @@ package body Matreshka.Strings is
      Last        : out Natural;
      Index_Mode  : out Index_Modes);
 
+   procedure Unchecked_Append
+    (Value      : in out Utf16_String_Access;
+     Last       : in out Natural;
+     Index_Mode : in out Index_Modes;
+     Item       : Wide_Wide_Character);
+
    function Is_Valid_Unicode_Code_Point (Item : Wide_Wide_Character)
      return Boolean;
    --  Returns True if code point of the specified Wide_Wide_Character is a
@@ -102,14 +108,17 @@ package body Matreshka.Strings is
 
    Index_Mode_After_Concatenation : constant
      array (Index_Modes, Index_Modes) of Index_Modes
-       := (Undefined    => (others => Undefined),
-           Single_Units => (Undefined    => Undefined,
+       := (Undefined    => (Single_Units => Single_Units,
+                            Double_Units => Double_Units,
+                            Mixed_Units  => Mixed_Units,
+                            others       => Undefined),
+           Single_Units => (Undefined    => Single_Units,
                             Single_Units => Single_Units,
                             others       => Mixed_Units),
-           Double_Units => (Undefined    => Undefined,
+           Double_Units => (Undefined    => Double_Units,
                             Double_Units => Double_Units,
                             others       => Mixed_Units),
-           Mixed_Units  => (Undefined    => Undefined,
+           Mixed_Units  => (Undefined    => Mixed_Units,
                             others       => Mixed_Units));
    --  String indexing mode after concatenation. Each dimension is a valid
    --  string indexing mode for each concatenated string.
@@ -163,6 +172,48 @@ package body Matreshka.Strings is
                        Index_Map  => null,
                        Iterators  => null));
       end if;
+   end "&";
+
+   ---------
+   -- "&" --
+   ---------
+
+   function "&"
+    (Left  : Universal_String;
+     Right : Wide_Wide_Character)
+       return Universal_String
+   is
+      use type Matreshka.Internals.String_Types.Utf16_String;
+
+      L_D        : constant not null String_Private_Data_Access := Left.Data;
+      Value      : Utf16_String_Access;
+      Last       : Natural;
+      Index_Mode : Index_Modes;
+
+   begin
+      if not Is_Valid_Unicode_Code_Point (Right) then
+         raise Constraint_Error with "Invalid Wide_Wide_Character";
+      end if;
+
+      Value :=
+        new Matreshka.Internals.String_Types.Utf16_String (1 .. L_D.Last + 2);
+      Value (1 .. L_D.Last) := L_D.Value (1 .. L_D.Last);
+      Last := L_D.Last;
+      Index_Mode := L_D.Index_Mode;
+      Unchecked_Append (Value, Last, Index_Mode, Right);
+
+      return
+        Universal_String'
+         (Ada.Finalization.Controlled with
+            Data =>
+              new String_Private_Data'
+                   (Counter    => Matreshka.Internals.Atomics.Counters.One,
+                    Value      => Value,
+                    Last       => Last,
+                    Length     => L_D.Length + 1,
+                    Index_Mode => Index_Mode,
+                    Index_Map  => null,
+                    Iterators  => null));
    end "&";
 
    ------------
@@ -626,6 +677,60 @@ package body Matreshka.Strings is
 
       return Result;
    end To_Wide_Wide_String;
+
+   ----------------------
+   -- Unchecked_Append --
+   ----------------------
+
+   procedure Unchecked_Append
+    (Value      : in out Utf16_String_Access;
+     Last       : in out Natural;
+     Index_Mode : in out Index_Modes;
+     Item       : Wide_Wide_Character)
+   is
+      use type Matreshka.Internals.String_Types.Utf16_String;
+
+      C             : Code_Point := Wide_Wide_Character'Pos (Item);
+      Has_BMP       : Boolean    := False;
+      Has_Non_BMP   : Boolean    := False;
+
+   begin
+      if C <= 16#FFFF# then
+         Last := Last + 1;
+
+      else
+         Last := Last + 2;
+      end if;
+        
+      if Last > Value'Last then
+         declare
+            Aux : constant not null Utf16_String_Access
+              := new Matreshka.Internals.String_Types.Utf16_String (1 .. Last);
+
+         begin
+            Aux (Value'Range) := Value.all;
+            Free (Value);
+            Value := Aux;
+         end;
+      end if;
+
+      if C <= 16#FFFF# then
+         Has_BMP      := True;
+         Value (Last) := Wide_Character'Val (C);
+
+      else
+         Has_Non_Bmp      := True;
+         C                := C - 16#1_0000#;
+         Value (Last - 1) :=
+           Wide_Character'Val (High_Surrogate_First + C / 16#400#);
+         Value (Last)     :=
+           Wide_Character'Val (Low_Surrogate_First + C mod 16#400#);
+      end if;
+
+      Index_Mode :=
+        Index_Mode_After_Concatenation
+         (Index_Mode, Index_Mode_For_String (Has_BMP, Has_Non_BMP));
+   end Unchecked_Append;
 
    --------------------------------------
    -- Unchecked_To_Wide_Wide_Character --

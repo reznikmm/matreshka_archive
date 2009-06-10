@@ -63,6 +63,11 @@ package Matreshka.Strings is
      Right : Universal_String)
        return Universal_String;
 
+   function "&"
+    (Left  : Universal_String;
+     Right : Wide_Wide_Character)
+       return Universal_String;
+
 private
 
    Surrogate_First      : constant := 16#D800#;
