@@ -50,10 +50,10 @@ package Matreshka.Strings.Iterators.Characters is
 
    procedure Previous (Self : in out Character_Iterator'Class);
 
+   function Has_Element (Self : Character_Iterator'Class) return Boolean;
+
    function Element (Self : Character_Iterator'Class)
      return Wide_Wide_Character;
-
-   function Has_Element (Self : Character_Iterator'Class) return Boolean;
 
 private
 
