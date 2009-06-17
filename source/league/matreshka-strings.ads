@@ -35,7 +35,7 @@ private with Ada.Finalization;
 private with Ada.Streams;
 
 private with Matreshka.Internals.Atomics.Counters;
-private with Matreshka.Internals.String_Types;
+private with Matreshka.Internals.Utf16;
 
 package Matreshka.Strings is
 
@@ -70,29 +70,6 @@ package Matreshka.Strings is
 
 private
 
-   Surrogate_First      : constant := 16#D800#;
-   High_Surrogate_First : constant := 16#D800#;
-   High_Surrogate_Last  : constant := 16#DBFF#;
-   Low_Surrogate_First  : constant := 16#DC00#;
-   Low_Surrogate_Last   : constant := 16#DFFF#;
-   Surrogate_Last       : constant := 16#DFFF#;
-
-   subtype Surrogate_Wide_Character is Wide_Character
-     range Wide_Character'Val (Surrogate_First)
-             .. Wide_Character'Val (Surrogate_Last);
-
-   subtype High_Surrogate_Wide_Character is Surrogate_Wide_Character
-     range Wide_Character'Val (High_Surrogate_First)
-             .. Wide_Character'Val (High_Surrogate_Last);
-
-   subtype Low_Surrogate_Wide_Character is Surrogate_Wide_Character
-     range Wide_Character'Val (Low_Surrogate_First)
-             .. Wide_Character'Val (Low_Surrogate_Last);
-
-   subtype Surrogate_Wide_Wide_Character is Wide_Wide_Character
-     range Wide_Wide_Character'Val (Surrogate_First)
-             .. Wide_Wide_Character'Val (Surrogate_Last);
-
    procedure Read
     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
      Item   : out Universal_String);
@@ -102,7 +79,7 @@ private
      Item   : Universal_String);
 
    type Utf16_String_Access is
-     access all Matreshka.Internals.String_Types.Utf16_String;
+     access all Matreshka.Internals.Utf16.Utf16_String;
 
    type Index_Modes is
     (Undefined,     --  Index mode is undefined.
@@ -214,12 +191,5 @@ private
    overriding procedure Adjust (Self : in out Abstract_Iterator);
 
    overriding procedure Finalize (Self : in out Abstract_Iterator);
-
-   function Unchecked_To_Wide_Wide_Character
-    (High : Wide_Character;
-     Low  : Wide_Character)
-       return Wide_Wide_Character;
-   pragma Inline (Unchecked_To_Wide_Wide_Character);
-   --  Convert valid surrogate pair into the Wide_Wide_Character.
 
 end Matreshka.Strings;

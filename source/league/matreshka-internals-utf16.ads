@@ -31,11 +31,42 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package containts type declarations for UTF-16 encoded strings and
+--  useful subprograms.
+with Matreshka.Internals.Unicode;
 
-package Matreshka.Internals.String_Types is
+package Matreshka.Internals.Utf16 is
 
    pragma Pure;
 
-   type Utf16_String is new Wide_String;
+   subtype Utf16_Code_Unit is Matreshka.Internals.Unicode.Code_Unit_16;
 
-end Matreshka.Internals.String_Types;
+   subtype High_Surrogate_Utf16_Code_Unit is Utf16_Code_Unit
+     range Matreshka.Internals.Unicode.High_Surrogate_First
+             .. Matreshka.Internals.Unicode.High_Surrogate_Last;
+
+   subtype Low_Surrogate_Utf16_Code_Unit is Utf16_Code_Unit
+     range Matreshka.Internals.Unicode.Low_Surrogate_First
+             .. Matreshka.Internals.Unicode.Low_Surrogate_Last;
+
+   type Utf16_String is array (Positive range <>) of Utf16_Code_Unit;
+   pragma Pack (Utf16_String);
+   --  Internal representation of UTF-16 encoded string.
+
+   function Unchecked_To_Code_Point
+    (Item     : Utf16_String;
+     Position : Positive)
+       return Matreshka.Internals.Unicode.Code_Point;
+   pragma Inline (Unchecked_To_Code_Point);
+   --  Convert character or surrogate pair at the cpecified position in the
+   --  the Unicode code point.
+
+   procedure Unchecked_To_Code_Point
+    (Item     : Utf16_String;
+     Position : in out Positive;
+     Result   : out Matreshka.Internals.Unicode.Code_Point);
+   pragma Inline (Unchecked_To_Code_Point);
+   --  Convert character or surrogate pair at the cpecified position in the
+   --  the Unicode code point and moves position to the next character.
+
+end Matreshka.Internals.Utf16;

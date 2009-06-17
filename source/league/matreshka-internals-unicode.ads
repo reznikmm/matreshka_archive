@@ -1,0 +1,66 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--         Localization, Internationalization, Globalization for Ada        --
+--                                                                          --
+--                        Runtime Library Component                         --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+--                                                                          --
+-- Matreshka is free software;  you can  redistribute it  and/or modify  it --
+-- under terms of the  GNU General Public License as published  by the Free --
+-- Software  Foundation;  either version 2,  or (at your option)  any later --
+-- version.  Matreshka  is distributed in the hope that it will be  useful, --
+-- but   WITHOUT  ANY  WARRANTY;  without  even  the  implied  warranty  of --
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General --
+-- Public License for more details.  You should have received a copy of the --
+-- GNU General Public License distributed with Matreshka; see file COPYING. --
+-- If not, write  to  the  Free Software Foundation,  51  Franklin  Street, --
+-- Fifth Floor, Boston, MA 02110-1301, USA.                                 --
+--                                                                          --
+-- As a special exception,  if other files  instantiate  generics from this --
+-- unit, or you link  this unit with other files  to produce an executable, --
+-- this  unit  does not  by itself cause  the resulting  executable  to  be --
+-- covered  by the  GNU  General  Public  License.  This exception does not --
+-- however invalidate  any other reasons why  the executable file  might be --
+-- covered by the  GNU Public License.                                      --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
+--  This package provides declaration of several data types related to Unicode
+--  standard as well as simple useful subprograms.
+
+package Matreshka.Internals.Unicode is
+
+   pragma Pure;
+
+   --  Unicode code units.
+
+   type Code_Unit_16 is mod 2**16;
+   type Code_Unit_32 is mod 2**32;
+
+   --  Unicode code point.
+
+   subtype Code_Point is Code_Unit_32 range 0 .. 16#10_FFFF#;
+   --  Unicode code point or Unicode scalar value.
+   --  GNAT produce most efficient code for this type comparing with others
+   --  way of it declaration.
+
+   --  Surrogate ranges.
+
+   Surrogate_First      : constant := 16#D800#;
+   High_Surrogate_First : constant := 16#D800#;
+   High_Surrogate_Last  : constant := 16#DBFF#;
+   Low_Surrogate_First  : constant := 16#DC00#;
+   Low_Surrogate_Last   : constant := 16#DFFF#;
+   Surrogate_Last       : constant := 16#DFFF#;
+
+   function Is_Valid_Unicode_Code_Point (Item : Code_Unit_32) return Boolean;
+   pragma Inline (Is_Valid_Unicode_Code_Point);
+   --  Returns True if the specified code point is a valid Unicode code point.
+
+end Matreshka.Internals.Unicode;

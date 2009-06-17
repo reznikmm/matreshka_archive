@@ -33,22 +33,15 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 with Matreshka.Internals.Atomics.Generic_Test_And_Set;
+with Matreshka.Internals.Unicode;
 
 package body Matreshka.Strings is
 
-   --  Unicode code point.
-
-   type Code_Unit_32 is mod 2**32;
-
-   type Code_Point is new Code_Unit_32 range 0 .. 16#10_FFFF#;
-   for Code_Point'Size use 32;
-   --  Unicode code point or Unicode scalar value.
-   --  GNAT produce most efficient code for this type comparing with others
-   --  way of it declaration.
+   use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Utf16;
 
    procedure Free is
-     new Ada.Unchecked_Deallocation
-          (Matreshka.Internals.String_Types.Utf16_String, Utf16_String_Access);
+     new Ada.Unchecked_Deallocation (Utf16_String, Utf16_String_Access);
 
    procedure Free is
      new Ada.Unchecked_Deallocation
@@ -73,38 +66,10 @@ package body Matreshka.Strings is
      Index_Mode : in out Index_Modes;
      Item       : Wide_Wide_Character);
 
-   function Is_Valid_Unicode_Code_Point (Item : Wide_Wide_Character)
-     return Boolean;
-   --  Returns True if code point of the specified Wide_Wide_Character is a
-   --  valid Unicode code point.
-
-   Empty_String : aliased Matreshka.Internals.String_Types.Utf16_String := "";
+   Empty_String : aliased Utf16_String := Utf16_String'(1 .. 0 => 0);
 
    Shared_Empty : aliased String_Private_Data
      := (Value => Empty_String'Access, others => <>);
-
-   ---------------------------------
-   -- Is_Valid_Unicode_Code_Point --
-   ---------------------------------
-
-   function Is_Valid_Unicode_Code_Point (Item : in Wide_Wide_Character)
-     return Boolean
-   is
-   begin
-      return
-        Item < Wide_Wide_Character'Val (Code_Point'Last)
-        --  Codes outside Unicode code point range.
-
-          and then Item not in Surrogate_Wide_Wide_Character
-          --  Codes reserved for Utf18 surrogate pairs.
-
-          and then Wide_Wide_Character'Val
-                     (Wide_Wide_Character'Pos (Item)
-                        and Code_Unit_32 (16#FFFF#))
-            not in Wide_Wide_Character'Val (16#FFFE#)
-                     .. Wide_Wide_Character'Val (16#FFFF#);
-          --  Two last codes on the each code plain.
-   end Is_Valid_Unicode_Code_Point;
 
    Index_Mode_After_Concatenation : constant
      array (Index_Modes, Index_Modes) of Index_Modes
@@ -141,8 +106,6 @@ package body Matreshka.Strings is
      Right : Universal_String)
        return Universal_String
    is
-      use type Matreshka.Internals.String_Types.Utf16_String;
-
       L_D : constant not null String_Private_Data_Access := Left.Data;
       R_D : constant not null String_Private_Data_Access := Right.Data;
 
@@ -161,7 +124,7 @@ package body Matreshka.Strings is
                  new String_Private_Data'
                       (Counter    => Matreshka.Internals.Atomics.Counters.One,
                        Value      =>
-                         new Matreshka.Internals.String_Types.Utf16_String'
+                         new Utf16_String'
                               (L_D.Value (1 .. L_D.Last)
                                  & R_D.Value (1 .. R_D.Last)),
                        Last       => L_D.Last + R_D.Last,
@@ -183,20 +146,17 @@ package body Matreshka.Strings is
      Right : Wide_Wide_Character)
        return Universal_String
    is
-      use type Matreshka.Internals.String_Types.Utf16_String;
-
       L_D        : constant not null String_Private_Data_Access := Left.Data;
       Value      : Utf16_String_Access;
       Last       : Natural;
       Index_Mode : Index_Modes;
 
    begin
-      if not Is_Valid_Unicode_Code_Point (Right) then
+      if not Is_Valid_Unicode_Code_Point (Wide_Wide_Character'Pos (Right)) then
          raise Constraint_Error with "Invalid Wide_Wide_Character";
       end if;
 
-      Value :=
-        new Matreshka.Internals.String_Types.Utf16_String (1 .. L_D.Last + 2);
+      Value := new Utf16_String (1 .. L_D.Last + 2);
       Value (1 .. L_D.Last) := L_D.Value (1 .. L_D.Last);
       Last := L_D.Last;
       Index_Mode := L_D.Index_Mode;
@@ -256,9 +216,7 @@ package body Matreshka.Strings is
       return Result : not null String_Private_Data_Access
         := new String_Private_Data'
                 (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                 Value      =>
-                   new Matreshka.Internals.String_Types.Utf16_String'
-                        (Source.Value.all),
+                 Value      => new Utf16_String' (Source.Value.all),
                  Last       => Source.Last,
                  Length     => Source.Length,
                  Index_Mode => Source.Index_Mode,
@@ -351,13 +309,12 @@ package body Matreshka.Strings is
             raise Program_Error;
 
          when Single_Units =>
-            return
-              Wide_Wide_Character'Val (Wide_Character'Pos (D.Value (Index)));
+            return Wide_Wide_Character'Val (D.Value (Index));
 
          when Double_Units =>
             return
-              Unchecked_To_Wide_Wide_Character
-               (D.Value (Index * 2 - 1), D.Value (Index * 2));
+              Wide_Wide_Character'Val
+               (Unchecked_To_Code_Point (D.Value.all, Index * 2 - 1));
 
          when Mixed_Units =>
             declare
@@ -373,7 +330,9 @@ package body Matreshka.Strings is
                   for J in M.Map'Range loop
                      M.Map (J) := Current;
 
-                     if D.Value (Current) in High_Surrogate_Wide_Character then
+                     if D.Value (Current)
+                          in High_Surrogate_Utf16_Code_Unit
+                     then
                         Current := Current + 2;
 
                      else
@@ -393,17 +352,9 @@ package body Matreshka.Strings is
                   M := D.Index_Map;
                end if;
 
-               if D.Value (M.Map (Index)) in High_Surrogate_Wide_Character then
-                  return
-                    Unchecked_To_Wide_Wide_Character
-                     (D.Value (M.Map (Index)),
-                      D.Value (M.Map (Index) + 1));
-
-               else
-                  return
-                    Wide_Wide_Character'Val
-                     (Wide_Character'Pos (D.Value (M.Map (Index))));
-               end if;
+               return
+                 Wide_Wide_Character'Val
+                  (Unchecked_To_Code_Point (D.Value.all, M.Map (Index)));
             end;
       end case;
    end Element;
@@ -502,8 +453,8 @@ package body Matreshka.Strings is
    begin
       Natural'Read (Stream, Length);
       Natural'Read (Stream, Last);
-      Value := new Matreshka.Internals.String_Types.Utf16_String (1 .. Last);
-      Matreshka.Internals.String_Types.Utf16_String'Read (Stream, Value.all);
+      Value := new Utf16_String (1 .. Last);
+      Utf16_String'Read (Stream, Value.all);
 
       --  XXX Value validation must be done before any other operations.
       --  XXX Object mutation can be used here.
@@ -539,19 +490,20 @@ package body Matreshka.Strings is
       --  of the source code points.
 
    begin
-      Destination :=
-        new Matreshka.Internals.String_Types.Utf16_String (1 .. Source'Length);
+      Destination := new Utf16_String (1 .. Source'Length);
       Last := 0;
 
       for J in Source'Range loop
-         if Is_Valid_Unicode_Code_Point (Source (J)) then
+         if Is_Valid_Unicode_Code_Point
+             (Wide_Wide_Character'Pos (Source (J)))
+      then
             declare
                C : Code_Point := Wide_Wide_Character'Pos (Source (J));
 
             begin
                if C <= 16#FFFF# then
                   Last := Last + 1;
-                  Destination (Last) := Wide_Character'Val (C);
+                  Destination (Last) := Utf16_Code_Unit (C);
                   Has_Bmp := True;
 
                else
@@ -560,8 +512,7 @@ package body Matreshka.Strings is
 
                      declare
                         Aux : constant Utf16_String_Access
-                          := new Matreshka.Internals.String_Types.Utf16_String
-                                  (1 .. Source'Length * 2);
+                          := new Utf16_String (1 .. Source'Length * 2);
 
                      begin
                         Aux (1 .. Last) := Destination (1 .. Last);
@@ -576,11 +527,11 @@ package body Matreshka.Strings is
 
                   Last := Last + 1;
                   Destination (Last) :=
-                    Wide_Character'Val (High_Surrogate_First + C / 16#400#);
+                    Utf16_Code_Unit (High_Surrogate_First + C / 16#400#);
 
                   Last := Last + 1;
                   Destination (Last) :=
-                    Wide_Character'Val (Low_Surrogate_First + C mod 16#400#);
+                    Utf16_Code_Unit (Low_Surrogate_First + C mod 16#400#);
 
                   Has_Non_Bmp := True;
                end if;
@@ -647,32 +598,12 @@ package body Matreshka.Strings is
    is
       Result  : Wide_Wide_String (1 .. Self.Data.Length);
       Current : Positive := 1;
+      Code    : Code_Point;
 
    begin
       for J in Result'Range loop
-         if Self.Data.Value (Current) in Surrogate_Wide_Character then
-            if Current < Self.Data.Last
-              and then Self.Data.Value (Current)
-                         in High_Surrogate_Wide_Character
-              and then Self.Data.Value (Current + 1)
-                         in Low_Surrogate_Wide_Character
-            then
-               Result (J) :=
-                 Unchecked_To_Wide_Wide_Character
-                  (Self.Data.Value (Current), Self.Data.Value (Current + 1));
-               Current := Current + 2;
-
-            else
-               raise Constraint_Error
-                 with "Ill-formed UTF-16 string: invalid surrogate pair";
-            end if;
-
-         else
-            Result (J) :=
-              Wide_Wide_Character'Val
-               (Wide_Character'Pos (Self.Data.Value (Current)));
-            Current := Current + 1;
-         end if;
+         Unchecked_To_Code_Point (Self.Data.Value.all, Current, Code);
+         Result (J) := Wide_Wide_Character'Val (Code);
       end loop;
 
       return Result;
@@ -688,8 +619,6 @@ package body Matreshka.Strings is
      Index_Mode : in out Index_Modes;
      Item       : Wide_Wide_Character)
    is
-      use type Matreshka.Internals.String_Types.Utf16_String;
-
       C             : Code_Point := Wide_Wide_Character'Pos (Item);
       Has_BMP       : Boolean    := False;
       Has_Non_BMP   : Boolean    := False;
@@ -705,7 +634,7 @@ package body Matreshka.Strings is
       if Last > Value'Last then
          declare
             Aux : constant not null Utf16_String_Access
-              := new Matreshka.Internals.String_Types.Utf16_String (1 .. Last);
+              := new Utf16_String (1 .. Last);
 
          begin
             Aux (Value'Range) := Value.all;
@@ -716,38 +645,21 @@ package body Matreshka.Strings is
 
       if C <= 16#FFFF# then
          Has_BMP      := True;
-         Value (Last) := Wide_Character'Val (C);
+         Value (Last) := Utf16_Code_Unit (C);
 
       else
          Has_Non_Bmp      := True;
          C                := C - 16#1_0000#;
          Value (Last - 1) :=
-           Wide_Character'Val (High_Surrogate_First + C / 16#400#);
+           Utf16_Code_Unit (High_Surrogate_First + C / 16#400#);
          Value (Last)     :=
-           Wide_Character'Val (Low_Surrogate_First + C mod 16#400#);
+           Utf16_Code_Unit (Low_Surrogate_First + C mod 16#400#);
       end if;
 
       Index_Mode :=
         Index_Mode_After_Concatenation
          (Index_Mode, Index_Mode_For_String (Has_BMP, Has_Non_BMP));
    end Unchecked_Append;
-
-   --------------------------------------
-   -- Unchecked_To_Wide_Wide_Character --
-   --------------------------------------
-
-   function Unchecked_To_Wide_Wide_Character
-    (High : Wide_Character;
-     Low  : Wide_Character)
-       return Wide_Wide_Character
-   is
-   begin
-      return
-        Wide_Wide_Character'Val
-         ((Wide_Character'Pos (High) - High_Surrogate_First) * 16#400#
-            + (Wide_Character'Pos (Low) - Low_Surrogate_First)
-            + 16#1_0000#);
-   end Unchecked_To_Wide_Wide_Character;
 
    -----------
    -- Write --
@@ -760,7 +672,7 @@ package body Matreshka.Strings is
    begin
       Integer'Write (Stream, Item.Data.Length);
       Integer'Write (Stream, Item.Data.Last);
-      Matreshka.Internals.String_Types.Utf16_String'Write
+      Matreshka.Internals.Utf16.Utf16_String'Write
        (Stream, Item.Data.Value (1 .. Item.Data.Last));
    end Write;
 

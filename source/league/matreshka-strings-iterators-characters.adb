@@ -34,6 +34,8 @@
 
 package body Matreshka.Strings.Iterators.Characters is
 
+   use Matreshka.Internals.Utf16;
+
    -------------
    -- Element --
    -------------
@@ -52,17 +54,9 @@ package body Matreshka.Strings.Iterators.Characters is
          raise Constraint_Error with "Iterator out of range";
       end if;
 
-      if D.Value (Self.Current) in High_Surrogate_Wide_Character then
-         return
-           Unchecked_To_Wide_Wide_Character
-            (D.Value (Self.Current),
-             D.Value (Self.Current + 1));
-
-      else
-         return
-           Wide_Wide_Character'Val
-            (Wide_Character'Pos (D.Value (Self.Current)));
-      end if;
+      return
+        Wide_Wide_Character'Val
+         (Unchecked_To_Code_Point (D.Value.all, Self.Current));
    end Element;
 
    -----------
@@ -151,7 +145,7 @@ package body Matreshka.Strings.Iterators.Characters is
 
       Self.Current := Self.Data.Last;
 
-      if Self.Data.Value (Self.Current) in Low_Surrogate_Wide_Character then
+      if Self.Data.Value (Self.Current) in Low_Surrogate_Utf16_Code_Unit then
          Self.Current := Self.Current - 1;
          --  Move one step backward if last character is low surrogate
          --  character, thus move to first character of surrogate pair.
@@ -176,7 +170,7 @@ package body Matreshka.Strings.Iterators.Characters is
          --  when skip next character, because it is low surrogare character
          --  in the surrogate pair.
 
-         if D.Value (Self.Current) in High_Surrogate_Wide_Character then
+         if D.Value (Self.Current) in High_Surrogate_Utf16_Code_Unit then
             Self.Current := Self.Current + 2;
 
          else
@@ -226,7 +220,7 @@ package body Matreshka.Strings.Iterators.Characters is
          --  character, thus move to first character of surrogate pair.
 
          if Self.Current >= D.Value'First
-           and then D.Value (Self.Current) in Low_Surrogate_Wide_Character
+           and then D.Value (Self.Current) in Low_Surrogate_Utf16_Code_Unit
          then
             Self.Current := Self.Current - 1;
          end if;
