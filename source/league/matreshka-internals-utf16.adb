@@ -36,6 +36,94 @@ package body Matreshka.Internals.Utf16 is
 
    use Matreshka.Internals.Unicode;
 
+   --------------------
+   -- Unchecked_Next --
+   --------------------
+
+   procedure Unchecked_Next
+    (Item     : Utf16_String;
+     Position : in out Positive;
+     Code     : out Matreshka.Internals.Unicode.Code_Point)
+   is
+      pragma Suppress (Range_Check);
+
+   begin
+      if Item (Position) in High_Surrogate_Utf16_Code_Unit then
+         Code :=
+           Code_Point (Item (Position) - High_Surrogate_First) * 16#400#
+             + Code_Point ((Item (Position + 1) - Low_Surrogate_First))
+             + 16#1_0000#;
+         Position := Position + 2;
+
+      else
+         Code := Code_Point (Item (Position));
+         Position := Position + 1;
+      end if;
+   end Unchecked_Next;
+
+   --------------------
+   -- Unchecked_Next --
+   --------------------
+
+   procedure Unchecked_Next
+    (Item     : Utf16_String;
+     Position : in out Positive)
+   is
+      pragma Suppress (Range_Check);
+
+   begin
+      if Item (Position) in High_Surrogate_Utf16_Code_Unit then
+         Position := Position + 2;
+
+      else
+         Position := Position + 1;
+      end if;
+   end Unchecked_Next;
+
+   ------------------------
+   -- Unchecked_Previous --
+   ------------------------
+
+   procedure Unchecked_Previous
+    (Item     : Utf16_String;
+     Position : in out Positive;
+     Code     : out Matreshka.Internals.Unicode.Code_Point)
+   is
+      pragma Suppress (Range_Check);
+
+   begin
+      if Item (Position - 1) in Low_Surrogate_Utf16_Code_Unit then
+         Position := Position - 2;
+         Code :=
+           Code_Point (Item (Position) - High_Surrogate_First) * 16#400#
+             + Code_Point ((Item (Position + 1) - Low_Surrogate_First))
+             + 16#1_0000#;
+
+      else
+         Position := Position - 1;
+         Code := Code_Point (Item (Position));
+      end if;
+   end Unchecked_Previous;
+
+   ------------------------
+   -- Unchecked_Previous --
+   ------------------------
+
+   procedure Unchecked_Previous
+    (Item     : Utf16_String;
+     Position : in out Positive)
+   is
+      pragma Suppress (Range_Check);
+
+   begin
+      if Item (Position - 1) in Low_Surrogate_Utf16_Code_Unit then
+         Position := Position - 2;
+
+      else
+         Position := Position - 1;
+      end if;
+   end Unchecked_Previous;
+     
    -----------------------------
    -- Unchecked_To_Code_Point --
    -----------------------------
@@ -56,31 +144,6 @@ package body Matreshka.Internals.Utf16 is
 
       else
          return Code_Point (Item (Position));
-      end if;
-   end Unchecked_To_Code_Point;
-
-   -----------------------------
-   -- Unchecked_To_Code_Point --
-   -----------------------------
-
-   procedure Unchecked_To_Code_Point
-    (Item     : Utf16_String;
-     Position : in out Positive;
-     Result   : out Matreshka.Internals.Unicode.Code_Point)
-   is
-      pragma Suppress (Range_Check);
-
-   begin
-      if Item (Position) in High_Surrogate_Utf16_Code_Unit then
-         Result :=
-           Code_Point (Item (Position) - High_Surrogate_First) * 16#400#
-             + Code_Point ((Item (Position + 1) - Low_Surrogate_First))
-             + 16#1_0000#;
-         Position := Position + 2;
-
-      else
-         Result := Code_Point (Item (Position));
-         Position := Position + 1;
       end if;
    end Unchecked_To_Code_Point;
 

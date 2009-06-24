@@ -31,62 +31,70 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package containts type declarations for UTF-16 encoded strings and
---  useful subprograms.
-with Matreshka.Internals.Unicode;
 
-package Matreshka.Internals.Utf16 is
+package Matreshka.Internals.Ucd is
 
-   pragma Pure;
+   pragma Preelaborate;
 
-   subtype Utf16_Code_Unit is Matreshka.Internals.Unicode.Code_Unit_16;
+   type First_Stage_Index is mod 16#1100#;
+   type Second_Stage_Index is mod 16#100#;
 
-   subtype High_Surrogate_Utf16_Code_Unit is Utf16_Code_Unit
-     range Matreshka.Internals.Unicode.High_Surrogate_First
-             .. Matreshka.Internals.Unicode.High_Surrogate_Last;
+   type Grapheme_Cluster_Break is
+    (Other,
+     CR,
+     LF,
+     Control,
+     Prepend,
+     Extend,
+     Spacing_Mark,
+     L,
+     V,
+     T,
+     LV,
+     LVT);
+   for Grapheme_Cluster_Break'Size use 4;
 
-   subtype Low_Surrogate_Utf16_Code_Unit is Utf16_Code_Unit
-     range Matreshka.Internals.Unicode.Low_Surrogate_First
-             .. Matreshka.Internals.Unicode.Low_Surrogate_Last;
+   type Grapheme_Cluster_Break_Second_Stage is
+     array (Second_Stage_Index) of Grapheme_Cluster_Break;
 
-   type Utf16_String is array (Positive range <>) of Utf16_Code_Unit;
-   pragma Pack (Utf16_String);
-   --  Internal representation of UTF-16 encoded string.
+   type Grapheme_Cluster_Break_Second_Stage_Access is
+     not null access constant Grapheme_Cluster_Break_Second_Stage;
 
-   function Unchecked_To_Code_Point
-    (Item     : Utf16_String;
-     Position : Positive)
-       return Matreshka.Internals.Unicode.Code_Point;
-   pragma Inline (Unchecked_To_Code_Point);
-   --  Convert character or surrogate pair at the cpecified position in the
-   --  the Unicode code point.
+   type Grapheme_Cluster_Break_First_Stage is
+     array (First_Stage_Index) of Grapheme_Cluster_Break_Second_Stage_Access;
 
-   procedure Unchecked_Next
-    (Item     : Utf16_String;
-     Position : in out Positive;
-     Code     : out Matreshka.Internals.Unicode.Code_Point);
-   pragma Inline (Unchecked_Next);
-   --  Convert character or surrogate pair at the specified position in the
-   --  the Unicode code point and moves position to the next character.
+   type Sentence_Break is
+    (A_Term,
+     Close,
+     CR,
+     Extend,
+     Format,
+     O_Letter,
+     LF,
+     Lower,
+     Numeric,
+     S_Continue,
+     Sep,
+     Sp,
+     S_Term,
+     Upper,
+     Other);
+   for Sentence_Break'Size use 4;
 
-   procedure Unchecked_Next
-    (Item     : Utf16_String;
-     Position : in out Positive);
-   pragma Inline (Unchecked_Next);
-   --  Moves position to the next character.
+   type Word_Break is
+    (CR,
+     Extend_Num_Let,
+     Extend,
+     Format,
+     Katakana,
+     A_Letter,
+     LF,
+     Mid_Num_Let,
+     Mid_Letter,
+     Mid_Num,
+     Newline,
+     Numeric,
+     Other);
+   for Word_Break'Size use 4;
 
-   procedure Unchecked_Previous
-    (Item     : Utf16_String;
-     Position : in out Positive;
-     Code     : out Matreshka.Internals.Unicode.Code_Point);
-   pragma Inline (Unchecked_Previous);
-   --  Convert character or surrogate pair before the specified position in the
-   --  the Unicode code point and moves position to the previous character.
-
-   procedure Unchecked_Previous
-    (Item     : Utf16_String;
-     Position : in out Positive);
-   pragma Inline (Unchecked_Previous);
-   --  Moves position to the previous character.
-
-end Matreshka.Internals.Utf16;
+end Matreshka.Internals.Ucd;

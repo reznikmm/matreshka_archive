@@ -31,62 +31,48 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package containts type declarations for UTF-16 encoded strings and
---  useful subprograms.
-with Matreshka.Internals.Unicode;
+private with Matreshka.Internals.Ucd;
 
-package Matreshka.Internals.Utf16 is
+package Matreshka.Strings.Iterators.Grapheme_Clusters is
 
-   pragma Pure;
+   pragma Preelaborate;
 
-   subtype Utf16_Code_Unit is Matreshka.Internals.Unicode.Code_Unit_16;
+   type Grapheme_Cluster_Iterator is tagged private;
 
-   subtype High_Surrogate_Utf16_Code_Unit is Utf16_Code_Unit
-     range Matreshka.Internals.Unicode.High_Surrogate_First
-             .. Matreshka.Internals.Unicode.High_Surrogate_Last;
+   procedure First
+    (Self : in out Grapheme_Cluster_Iterator'Class;
+     Item : in out Universal_String);
 
-   subtype Low_Surrogate_Utf16_Code_Unit is Utf16_Code_Unit
-     range Matreshka.Internals.Unicode.Low_Surrogate_First
-             .. Matreshka.Internals.Unicode.Low_Surrogate_Last;
+   procedure Last
+    (Self : in out Grapheme_Cluster_Iterator'Class;
+     Item : in out Universal_String);
 
-   type Utf16_String is array (Positive range <>) of Utf16_Code_Unit;
-   pragma Pack (Utf16_String);
-   --  Internal representation of UTF-16 encoded string.
+   procedure Next (Self : in out Grapheme_Cluster_Iterator'Class);
 
-   function Unchecked_To_Code_Point
-    (Item     : Utf16_String;
-     Position : Positive)
-       return Matreshka.Internals.Unicode.Code_Point;
-   pragma Inline (Unchecked_To_Code_Point);
-   --  Convert character or surrogate pair at the cpecified position in the
-   --  the Unicode code point.
+   procedure Previous (Self : in out Grapheme_Cluster_Iterator'Class);
 
-   procedure Unchecked_Next
-    (Item     : Utf16_String;
-     Position : in out Positive;
-     Code     : out Matreshka.Internals.Unicode.Code_Point);
-   pragma Inline (Unchecked_Next);
-   --  Convert character or surrogate pair at the specified position in the
-   --  the Unicode code point and moves position to the next character.
+   function Has_Element (Self : Grapheme_Cluster_Iterator'Class) return Boolean;
 
-   procedure Unchecked_Next
-    (Item     : Utf16_String;
-     Position : in out Positive);
-   pragma Inline (Unchecked_Next);
-   --  Moves position to the next character.
+   function Element (Self : Grapheme_Cluster_Iterator'Class)
+     return Universal_String;
 
-   procedure Unchecked_Previous
-    (Item     : Utf16_String;
-     Position : in out Positive;
-     Code     : out Matreshka.Internals.Unicode.Code_Point);
-   pragma Inline (Unchecked_Previous);
-   --  Convert character or surrogate pair before the specified position in the
-   --  the Unicode code point and moves position to the previous character.
+private
 
-   procedure Unchecked_Previous
-    (Item     : Utf16_String;
-     Position : in out Positive);
-   pragma Inline (Unchecked_Previous);
-   --  Moves position to the previous character.
+   type Grapheme_Cluster_Iterator is new Abstract_Iterator with record
+      Previous_Position : Natural := 0;
+      Previous_Length   : Natural := 0;
+      Previous_State    : Matreshka.Internals.Ucd.Grapheme_Cluster_Break;
+      Current_Position  : Natural := 0;
+      Current_Length    : Natural := 0;
+      Current_State     : Matreshka.Internals.Ucd.Grapheme_Cluster_Break;
+      Next_Position     : Natural := 0;
+      Next_State        : Matreshka.Internals.Ucd.Grapheme_Cluster_Break;
+   end record;
 
-end Matreshka.Internals.Utf16;
+--   overriding procedure On_Changed
+--    (Self          : not null access Grapheme_Cluster_Iterator;
+--     Changed_First : Positive;
+--     Removed_Last  : Natural;
+--     Inserted_Last : Natural);
+
+end Matreshka.Strings.Iterators.Grapheme_Clusters;

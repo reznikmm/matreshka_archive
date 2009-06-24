@@ -602,7 +602,7 @@ package body Matreshka.Strings is
 
    begin
       for J in Result'Range loop
-         Unchecked_To_Code_Point (Self.Data.Value.all, Current, Code);
+         Unchecked_Next (Self.Data.Value.all, Current, Code);
          Result (J) := Wide_Wide_Character'Val (Code);
       end loop;
 
