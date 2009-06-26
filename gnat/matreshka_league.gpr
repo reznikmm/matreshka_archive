@@ -1,0 +1,70 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--         Localization, Internationalization, Globalization for Ada        --
+--                                                                          --
+--                        Runtime Library Component                         --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+--                                                                          --
+-- Matreshka is free software;  you can  redistribute it  and/or modify  it --
+-- under terms of the  GNU General Public License as published  by the Free --
+-- Software  Foundation;  either version 2,  or (at your option)  any later --
+-- version.  Matreshka  is distributed in the hope that it will be  useful, --
+-- but   WITHOUT  ANY  WARRANTY;  without  even  the  implied  warranty  of --
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General --
+-- Public License for more details.  You should have received a copy of the --
+-- GNU General Public License distributed with Matreshka; see file COPYING. --
+-- If not, write  to  the  Free Software Foundation,  51  Franklin  Street, --
+-- Fifth Floor, Boston, MA 02110-1301, USA.                                 --
+--                                                                          --
+-- As a special exception,  if other files  instantiate  generics from this --
+-- unit, or you link  this unit with other files  to produce an executable, --
+-- this  unit  does not  by itself cause  the resulting  executable  to  be --
+-- covered  by the  GNU  General  Public  License.  This exception does not --
+-- however invalidate  any other reasons why  the executable file  might be --
+-- covered by the  GNU Public License.                                      --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
+
+project Matreshka_League is
+
+   for Source_Dirs use
+    ("../source/league",
+     "../source/league/ucd");
+   for Object_Dir use "../.objs";
+
+   package Compiler is
+
+      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatn", "-O2");
+
+   end Compiler;
+
+   package Naming is
+
+      --  Matreshka.Internals.Atomics.Counters
+
+--      for Implementation ("Matreshka.Internals.Atomics.Counters")
+--        use "matreshka-internals-atomics-counters__portable.adb";
+--      for Implementation ("Matreshka.Internals.Atomics.Counters")
+--        use "matreshka-internals-atomics-counters__i386.adb";
+      for Implementation ("Matreshka.Internals.Atomics.Counters")
+        use "matreshka-internals-atomics-counters__gcc.adb";
+
+      --  Matreshka.Internals.Atomics.Generic_Test_And_Set
+
+--      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
+--        use "matreshka-internals-atomics-generic_test_and_set__portable.adb";
+--      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
+--        use "matreshka-internals-atomics-generic_test_and_set__x86_64.adb";
+      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
+        use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+
+   end Naming;
+
+end Matreshka_League;
