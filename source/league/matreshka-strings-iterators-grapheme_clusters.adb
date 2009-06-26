@@ -211,31 +211,8 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
     (Self : in out Grapheme_Cluster_Iterator'Class;
      Item : in out Universal_String)
    is
-      Aux : String_Private_Data_Access;
-      pragma Suppress (All_Checks);
-
    begin
-      Dereference (Self.Data, Self'Unchecked_Access);
-
-      --  Reference counter equal to one when internal data is not shares. By
-      --  the convention, if data has associated iterator it is not shared.
-      --  In all other cases internal data is shared, and exclusive copy of
-      --  data must be created.
-
-      if not Matreshka.Internals.Atomics.Counters.Is_One
-              (Item.Data.Counter'Access)
-        and then Item.Data.Iterators = null
-      then
-         Aux := Copy (Item.Data);
-         Dereference (Item.Data);
-         Item.Data := Aux;
-      end if;
-
-      Self.Data := Item.Data;
-      Matreshka.Internals.Atomics.Counters.Increment
-       (Self.Data.Counter'Access);
-      Self.Next           := Self.Data.Iterators;
-      Self.Data.Iterators := Self'Unchecked_Access;
+      Self.Attach (Item);
 
       Self.Current_Position  := Self.Data.Value'First;
       Self.Previous_Position := Self.Current_Position - 1;
@@ -269,30 +246,8 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
     (Self : in out Grapheme_Cluster_Iterator'Class;
      Item : in out Universal_String)
    is
-      Aux : String_Private_Data_Access;
-
    begin
-      Dereference (Self.Data, Self'Unchecked_Access);
-
-      --  Reference counter equal to one when internal data is not shares. By
-      --  the convention, if data has associated iterator it is not shared.
-      --  In all other cases internal data is shared, and exclusive copy of
-      --  data must be created.
-
-      if not Matreshka.Internals.Atomics.Counters.Is_One
-              (Item.Data.Counter'Access)
-        and then Item.Data.Iterators = null
-      then
-         Aux := Copy (Item.Data);
-         Dereference (Item.Data);
-         Item.Data := Aux;
-      end if;
-
-      Self.Data := Item.Data;
-      Matreshka.Internals.Atomics.Counters.Increment
-       (Self.Data.Counter'Access);
-      Self.Next           := Self.Data.Iterators;
-      Self.Data.Iterators := Self'Unchecked_Access;
+      Self.Attach (Item);
 
       Self.Next_Position     := Self.Data.Last + 1;
       Self.Current_Position  := Self.Next_Position;

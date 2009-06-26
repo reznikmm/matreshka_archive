@@ -188,6 +188,12 @@ private
    --  Called when internal string data is changed. All positions are in code
    --  units. Default implementation invalidate iterator.
 
+   procedure Attach
+    (Self : in out Abstract_Iterator'Class;
+     Item : in out Universal_String);
+   --  Attaches iterator to the specified string. Exclusive copy of the string
+   --  is created if needed.
+
    overriding procedure Adjust (Self : in out Abstract_Iterator);
 
    overriding procedure Finalize (Self : in out Abstract_Iterator);
