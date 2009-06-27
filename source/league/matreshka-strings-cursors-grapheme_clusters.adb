@@ -34,7 +34,7 @@
 with Matreshka.Internals.Ucd.Breaks;
 with Matreshka.Internals.Unicode;
 
-package body Matreshka.Strings.Iterators.Grapheme_Clusters is
+package body Matreshka.Strings.Cursors.Grapheme_Clusters is
 
    use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
@@ -62,7 +62,7 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
                              others => True));
 
 --   overriding procedure On_Changed
---    (Self          : not null access Character_Iterator;
+--    (Self          : not null access Character_Cursor;
 --     Changed_First : Positive;
 --     Removed_Last  : Natural;
 --     Inserted_Last : Natural);
@@ -83,13 +83,13 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
    --  Moves specified position to the previous character and returns value
    --  of the break property for this character.
 
-   procedure Find_Next (Self : in out Grapheme_Cluster_Iterator'Class);
+   procedure Find_Next (Self : in out Grapheme_Cluster_Cursor'Class);
    --  Finds the next break point and set Current_State, Current_Length,
    --  Next_Position, Next_State members.
    --
    --  Preconditions: Next_Position = Current_Position
 
-   procedure Find_Previous (Self : in out Grapheme_Cluster_Iterator'Class);
+   procedure Find_Previous (Self : in out Grapheme_Cluster_Cursor'Class);
    --  Finds the next break point and set Previous_Position, Previous_State,
    --  Previuos_Length members.
    --
@@ -99,7 +99,7 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
    -- Element --
    -------------
 
-   function Element (Self : Grapheme_Cluster_Iterator'Class)
+   function Element (Self : Grapheme_Cluster_Cursor'Class)
      return Universal_String
    is
       D : constant String_Private_Data_Access := Self.Data;
@@ -110,7 +110,7 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
       end if;
 
       if Self.Current_Position not in D.Value'First .. D.Last then
-         raise Constraint_Error with "Iterator out of range";
+         raise Constraint_Error with "Cursor out of range";
       end if;
 
       declare
@@ -131,7 +131,7 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
                        Length     => Self.Current_Length,
                        Index_Mode => D.Index_Mode,
                        Index_Map  => null,
-                       Iterators  => null));
+                       Cursors  => null));
       end;
    end Element;
 
@@ -139,7 +139,7 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
    -- Find_Next --
    ---------------
 
-   procedure Find_Next (Self : in out Grapheme_Cluster_Iterator'Class) is
+   procedure Find_Next (Self : in out Grapheme_Cluster_Cursor'Class) is
       D : constant not null String_Private_Data_Access := Self.Data;
 
    begin
@@ -172,7 +172,7 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
    -- Find_Previous --
    -------------------
 
-   procedure Find_Previous (Self : in out Grapheme_Cluster_Iterator'Class) is
+   procedure Find_Previous (Self : in out Grapheme_Cluster_Cursor'Class) is
       D : constant not null String_Private_Data_Access := Self.Data;
 
    begin
@@ -208,7 +208,7 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
    -----------
 
    procedure First
-    (Self : in out Grapheme_Cluster_Iterator'Class;
+    (Self : in out Grapheme_Cluster_Cursor'Class;
      Item : in out Universal_String)
    is
    begin
@@ -225,7 +225,7 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
    -- Has_Element --
    -----------------
 
-   function Has_Element (Self : Grapheme_Cluster_Iterator'Class)
+   function Has_Element (Self : Grapheme_Cluster_Cursor'Class)
      return Boolean
    is
       D : constant String_Private_Data_Access := Self.Data;
@@ -243,7 +243,7 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
    ----------
 
    procedure Last
-    (Self : in out Grapheme_Cluster_Iterator'Class;
+    (Self : in out Grapheme_Cluster_Cursor'Class;
      Item : in out Universal_String)
    is
    begin
@@ -266,7 +266,7 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
    -- Next --
    ----------
 
-   procedure Next (Self : in out Grapheme_Cluster_Iterator'Class) is
+   procedure Next (Self : in out Grapheme_Cluster_Cursor'Class) is
       D : constant String_Private_Data_Access := Self.Data;
 
    begin
@@ -290,7 +290,7 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
 --   ----------------
 --
 --   overriding procedure On_Changed
---    (Self          : not null access Character_Iterator;
+--    (Self          : not null access Character_Cursor;
 --     Changed_First : Positive;
 --     Removed_Last  : Natural;
 --     Inserted_Last : Natural)
@@ -308,7 +308,7 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
    -- Previous --
    --------------
 
-   procedure Previous (Self : in out Grapheme_Cluster_Iterator'Class) is
+   procedure Previous (Self : in out Grapheme_Cluster_Cursor'Class) is
       D : constant String_Private_Data_Access := Self.Data;
 
    begin
@@ -365,4 +365,4 @@ package body Matreshka.Strings.Iterators.Grapheme_Clusters is
          (Second_Stage_Index (C mod 16#100#));
    end Unchecked_Previous;
 
-end Matreshka.Strings.Iterators.Grapheme_Clusters;
+end Matreshka.Strings.Cursors.Grapheme_Clusters;

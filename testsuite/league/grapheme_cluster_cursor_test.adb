@@ -28,11 +28,11 @@ with Ada.Command_Line;
 with Ada.Unchecked_Deallocation;
 with Ada.Wide_Wide_Text_IO;
 
-with Matreshka.Strings.Iterators.Grapheme_Clusters;
+with Matreshka.Strings.Cursors.Grapheme_Clusters;
 
-procedure Grapheme_Cluster_Iterator_Test is
+procedure Grapheme_Cluster_Cursor_Test is
    use Matreshka.Strings;
-   use Matreshka.Strings.Iterators.Grapheme_Clusters;
+   use Matreshka.Strings.Cursors.Grapheme_Clusters;
 
    Break_Character    : constant Wide_Wide_Character := '÷';
    No_Break_Character : constant Wide_Wide_Character := '×';
@@ -78,7 +78,7 @@ procedure Grapheme_Cluster_Iterator_Test is
    -------------
 
    procedure Do_Test (Item : in out Universal_String; Data : Test_Data) is
-      J : Grapheme_Cluster_Iterator;
+      J : Grapheme_Cluster_Cursor;
       N : Natural := 1;
 
    begin
@@ -323,4 +323,4 @@ begin
    Read_Test_Data
     (Ada.Command_Line.Argument (1) & '/' & "auxiliary/GraphemeBreakTest.txt",
      Do_Test'Access);
-end Grapheme_Cluster_Iterator_Test;
+end Grapheme_Cluster_Cursor_Test;

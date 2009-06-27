@@ -31,9 +31,48 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Matreshka.Internals.Ucd;
 
-package Matreshka.Strings.Iterators is
+package Matreshka.Strings.Cursors.Grapheme_Clusters is
 
    pragma Preelaborate;
 
-end Matreshka.Strings.Iterators;
+   type Grapheme_Cluster_Cursor is tagged private;
+
+   procedure First
+    (Self : in out Grapheme_Cluster_Cursor'Class;
+     Item : in out Universal_String);
+
+   procedure Last
+    (Self : in out Grapheme_Cluster_Cursor'Class;
+     Item : in out Universal_String);
+
+   procedure Next (Self : in out Grapheme_Cluster_Cursor'Class);
+
+   procedure Previous (Self : in out Grapheme_Cluster_Cursor'Class);
+
+   function Has_Element (Self : Grapheme_Cluster_Cursor'Class) return Boolean;
+
+   function Element (Self : Grapheme_Cluster_Cursor'Class)
+     return Universal_String;
+
+private
+
+   type Grapheme_Cluster_Cursor is new Abstract_Cursor with record
+      Previous_Position : Natural := 0;
+      Previous_Length   : Natural := 0;
+      Previous_State    : Matreshka.Internals.Ucd.Grapheme_Cluster_Break;
+      Current_Position  : Natural := 0;
+      Current_Length    : Natural := 0;
+      Current_State     : Matreshka.Internals.Ucd.Grapheme_Cluster_Break;
+      Next_Position     : Natural := 0;
+      Next_State        : Matreshka.Internals.Ucd.Grapheme_Cluster_Break;
+   end record;
+
+--   overriding procedure On_Changed
+--    (Self          : not null access Grapheme_Cluster_Cursor;
+--     Changed_First : Positive;
+--     Removed_Last  : Natural;
+--     Inserted_Last : Natural);
+
+end Matreshka.Strings.Cursors.Grapheme_Clusters;

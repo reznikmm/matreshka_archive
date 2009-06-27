@@ -133,7 +133,7 @@ package body Matreshka.Strings is
                          Index_Mode_After_Concatenation
                           (L_D.Index_Mode, R_D.Index_Mode),
                        Index_Map  => null,
-                       Iterators  => null));
+                       Cursors    => null));
       end if;
    end "&";
 
@@ -173,20 +173,20 @@ package body Matreshka.Strings is
                     Length     => L_D.Length + 1,
                     Index_Mode => Index_Mode,
                     Index_Map  => null,
-                    Iterators  => null));
+                    Cursors    => null));
    end "&";
 
    ------------
    -- Adjust --
    ------------
 
-   overriding procedure Adjust (Self : in out Abstract_Iterator) is
+   overriding procedure Adjust (Self : in out Abstract_Cursor) is
    begin
       if Self.Data /= null then
          Matreshka.Internals.Atomics.Counters.Increment
           (Self.Data.Counter'Access);
-         Self.Next           := Self.Data.Iterators;
-         Self.Data.Iterators := Self'Unchecked_Access;
+         Self.Next         := Self.Data.Cursors;
+         Self.Data.Cursors := Self'Unchecked_Access;
       end if;
    end Adjust;
 
@@ -196,7 +196,7 @@ package body Matreshka.Strings is
 
    overriding procedure Adjust (Self : in out Universal_String) is
    begin
-      if Self.Data.Iterators = null then
+      if Self.Data.Cursors = null then
          Matreshka.Internals.Atomics.Counters.Increment
           (Self.Data.Counter'Access);
 
@@ -210,7 +210,7 @@ package body Matreshka.Strings is
    ------------
 
    procedure Attach
-    (Self : in out Abstract_Iterator'Class;
+    (Self : in out Abstract_Cursor'Class;
      Item : in out Universal_String)
    is
       Aux : String_Private_Data_Access;
@@ -225,7 +225,7 @@ package body Matreshka.Strings is
 
       if not Matreshka.Internals.Atomics.Counters.Is_One
               (Item.Data.Counter'Access)
-        and then Item.Data.Iterators = null
+        and then Item.Data.Cursors = null
       then
          Aux := Copy (Item.Data);
          Dereference (Item.Data);
@@ -235,8 +235,8 @@ package body Matreshka.Strings is
       Self.Data := Item.Data;
       Matreshka.Internals.Atomics.Counters.Increment
        (Self.Data.Counter'Access);
-      Self.Next           := Self.Data.Iterators;
-      Self.Data.Iterators := Self'Unchecked_Access;
+      Self.Next         := Self.Data.Cursors;
+      Self.Data.Cursors := Self'Unchecked_Access;
    end Attach;
 
    ----------
@@ -255,7 +255,7 @@ package body Matreshka.Strings is
                  Length     => Source.Length,
                  Index_Mode => Source.Index_Mode,
                  Index_Map  => null,
-                 Iterators  => null)
+                 Cursors    => null)
       do
          if Source.Index_Map /= null then
             Result.Index_Map := new Index_Map'(Source.Index_Map.all);
@@ -276,7 +276,7 @@ package body Matreshka.Strings is
              (Self.Counter'Access)
          then
             pragma Assert (Self /= Shared_Empty'Access);
-            pragma Assert (Self.Iterators = null);
+            pragma Assert (Self.Cursors = null);
 
             Free (Self.Index_Map);
             Aux := Self.Value;
@@ -294,29 +294,29 @@ package body Matreshka.Strings is
    -----------------
 
    procedure Dereference
-    (Self     : in out String_Private_Data_Access;
-     Iterator : not null Iterator_Access)
+    (Self   : in out String_Private_Data_Access;
+     Cursor : not null Cursor_Access)
    is
-      Previous : Iterator_Access := null;
-      Current  : Iterator_Access;
+      Previous : Cursor_Access := null;
+      Current  : Cursor_Access;
 
    begin
       if Self /= null then
-         Current := Self.Iterators;
+         Current := Self.Cursors;
 
-         while Current /= Iterator loop
+         while Current /= Cursor loop
             Previous := Current;
             Current := Current.Next;
          end loop;
 
          if Previous = null then
-            Self.Iterators := Iterator.Next;
+            Self.Cursors := Cursor.Next;
 
          else
-            Previous.Next := Iterator.Next;
+            Previous.Next := Cursor.Next;
          end if;
 
-         Iterator.Next := null;
+         Cursor.Next := null;
 
          Dereference (Self);
       end if;
@@ -399,17 +399,17 @@ package body Matreshka.Strings is
 
    procedure Emit_Changed
     (Self          : not null String_Private_Data_Access;
-     Iterator      : not null Iterator_Access;
+     Cursor        : not null Cursor_Access;
      Changed_First : Positive;
      Removed_Last  : Natural;
      Inserted_Last : Natural)
    is
-      Current : Iterator_Access := Self.Iterators;
-      Next    : Iterator_Access := Current.Next;
+      Current : Cursor_Access := Self.Cursors;
+      Next    : Cursor_Access := Current.Next;
 
    begin
       loop
-         if Current /= Iterator then
+         if Current /= Cursor then
             Current.On_Changed (Changed_First, Removed_Last, Inserted_Last);
          end if;
 
@@ -424,7 +424,7 @@ package body Matreshka.Strings is
    -- Finalize --
    --------------
 
-   overriding procedure Finalize (Self : in out Abstract_Iterator) is
+   overriding procedure Finalize (Self : in out Abstract_Cursor) is
    begin
       Dereference (Self.Data, Self'Unchecked_Access);
    end Finalize;
@@ -463,7 +463,7 @@ package body Matreshka.Strings is
    ----------------
 
    not overriding procedure On_Changed
-    (Self           : not null access Abstract_Iterator;
+    (Self           : not null access Abstract_Cursor;
      Changed_First  : Positive;
      Removed_Last   : Natural;
      Inserted_Last  : Natural)
@@ -503,7 +503,7 @@ package body Matreshka.Strings is
               Length     => Length,
               Index_Mode => Undefined,
               Index_Map  => null,
-              Iterators  => null);
+              Cursors    => null);
    end Read;
 
    ---------------------
@@ -620,7 +620,7 @@ package body Matreshka.Strings is
                     Length     => Item'Length,
                     Index_Mode => Index_Mode,
                     Index_Map  => null,
-                    Iterators  => null));
+                    Cursors    => null));
    end To_Universal_String;
 
    -------------------------

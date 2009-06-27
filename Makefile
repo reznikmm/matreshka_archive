@@ -9,8 +9,8 @@ ucd:
 
 check: all
 	gprbuild -p -Pgnat/matreshka_league_tests.gpr
-	.objs/character_iterator_test
-	.objs/grapheme_cluster_iterator_test $(UNIDATA)
+	.objs/character_cursor_test
+	.objs/grapheme_cluster_cursor_test $(UNIDATA)
 
 #all:
 #	gprbuild -p -Pmatreshka

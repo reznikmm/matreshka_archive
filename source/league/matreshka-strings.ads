@@ -101,8 +101,8 @@ private
 
    type Index_Map_Access is access all Index_Map;
 
-   type Abstract_Iterator is tagged;
-   type Iterator_Access is access all Abstract_Iterator'Class;
+   type Abstract_Cursor is tagged;
+   type Cursor_Access is access all Abstract_Cursor'Class;
 
    type String_Private_Data is limited record
       Counter    : aliased Matreshka.Internals.Atomics.Counters.Counter;
@@ -130,7 +130,7 @@ private
       --  buffer. Used only if string has both BMP and non-BMP characters.
       --  Is built on-demand.
 
-      Iterators  : Iterator_Access := null;
+      Cursors    : Cursor_Access := null;
       --  List of iterators.
    end record;
 
@@ -145,14 +145,14 @@ private
    --  Decrement reference counter and free resources if it reach zero value.
 
    procedure Dereference
-    (Self     : in out String_Private_Data_Access;
-     Iterator : not null Iterator_Access);
+    (Self   : in out String_Private_Data_Access;
+     Cursor : not null Cursor_Access);
    --  Removes Iterator from the list of iterators, decrements reference
    --  counter and free resources if it reach zero value.
 
    procedure Emit_Changed
     (Self          : not null String_Private_Data_Access;
-     Iterator      : not null Iterator_Access;
+     Cursor        : not null Cursor_Access;
      Changed_First : Positive;
      Removed_Last  : Natural;
      Inserted_Last : Natural);
@@ -173,15 +173,15 @@ private
 
    overriding procedure Finalize (Self : in out Universal_String);
 
-   type Abstract_Iterator is
+   type Abstract_Cursor is
      abstract new Ada.Finalization.Controlled with
    record
       Data : String_Private_Data_Access := null;
-      Next : Iterator_Access            := null;
+      Next : Cursor_Access              := null;
    end record;
 
    not overriding procedure On_Changed
-    (Self          : not null access Abstract_Iterator;
+    (Self          : not null access Abstract_Cursor;
      Changed_First : Positive;
      Removed_Last  : Natural;
      Inserted_Last : Natural);
@@ -189,13 +189,13 @@ private
    --  units. Default implementation invalidate iterator.
 
    procedure Attach
-    (Self : in out Abstract_Iterator'Class;
+    (Self : in out Abstract_Cursor'Class;
      Item : in out Universal_String);
    --  Attaches iterator to the specified string. Exclusive copy of the string
    --  is created if needed.
 
-   overriding procedure Adjust (Self : in out Abstract_Iterator);
+   overriding procedure Adjust (Self : in out Abstract_Cursor);
 
-   overriding procedure Finalize (Self : in out Abstract_Iterator);
+   overriding procedure Finalize (Self : in out Abstract_Cursor);
 
 end Matreshka.Strings;

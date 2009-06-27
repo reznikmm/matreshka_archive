@@ -24,12 +24,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Strings.Iterators.Characters;
+with Matreshka.Strings.Cursors.Characters;
 
-procedure Character_Iterator_Test is
+procedure Character_Cursor_Test is
 
    use Matreshka.Strings;
-   use Matreshka.Strings.Iterators.Characters;
+   use Matreshka.Strings.Cursors.Characters;
 
    C1 : constant Wide_Wide_String := "123";
    C2 : constant Wide_Wide_String
@@ -41,7 +41,7 @@ procedure Character_Iterator_Test is
 
    procedure Do_Test (C : Wide_Wide_String) is
       S : Universal_String := To_Universal_String (C);
-      J : Character_Iterator;
+      J : Character_Cursor;
       N : Natural;
 
    begin
@@ -101,4 +101,4 @@ procedure Character_Iterator_Test is
 begin
    Do_Test (C1);
    Do_Test (C2);
-end Character_Iterator_Test;
+end Character_Cursor_Test;

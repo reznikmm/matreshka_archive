@@ -32,7 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body Matreshka.Strings.Iterators.Characters is
+package body Matreshka.Strings.Cursors.Characters is
 
    use Matreshka.Internals.Utf16;
 
@@ -40,7 +40,7 @@ package body Matreshka.Strings.Iterators.Characters is
    -- Element --
    -------------
 
-   function Element (Self : Character_Iterator'Class)
+   function Element (Self : Character_Cursor'Class)
      return Wide_Wide_Character
    is
       D : constant String_Private_Data_Access := Self.Data;
@@ -51,7 +51,7 @@ package body Matreshka.Strings.Iterators.Characters is
       end if;
 
       if Self.Current not in D.Value'First .. D.Last then
-         raise Constraint_Error with "Iterator out of range";
+         raise Constraint_Error with "Cursor out of range";
       end if;
 
       return
@@ -64,7 +64,7 @@ package body Matreshka.Strings.Iterators.Characters is
    -----------
 
    procedure First
-    (Self : in out Character_Iterator'Class;
+    (Self : in out Character_Cursor'Class;
      Item : in out Universal_String)
    is
    begin
@@ -76,7 +76,7 @@ package body Matreshka.Strings.Iterators.Characters is
    -- Has_Element --
    -----------------
 
-   function Has_Element (Self : Character_Iterator'Class) return Boolean is
+   function Has_Element (Self : Character_Cursor'Class) return Boolean is
       D : constant String_Private_Data_Access := Self.Data;
 
    begin
@@ -92,7 +92,7 @@ package body Matreshka.Strings.Iterators.Characters is
    ----------
 
    procedure Last
-    (Self : in out Character_Iterator'Class;
+    (Self : in out Character_Cursor'Class;
      Item : in out Universal_String)
    is
    begin
@@ -109,7 +109,7 @@ package body Matreshka.Strings.Iterators.Characters is
    -- Next --
    ----------
 
-   procedure Next (Self : in out Character_Iterator'Class) is
+   procedure Next (Self : in out Character_Cursor'Class) is
       D : constant String_Private_Data_Access := Self.Data;
 
    begin
@@ -130,7 +130,7 @@ package body Matreshka.Strings.Iterators.Characters is
    ----------------
 
    overriding procedure On_Changed
-    (Self          : not null access Character_Iterator;
+    (Self          : not null access Character_Cursor;
      Changed_First : Positive;
      Removed_Last  : Natural;
      Inserted_Last : Natural)
@@ -148,7 +148,7 @@ package body Matreshka.Strings.Iterators.Characters is
    -- Previous --
    --------------
 
-   procedure Previous (Self : in out Character_Iterator'Class) is
+   procedure Previous (Self : in out Character_Cursor'Class) is
       D : constant String_Private_Data_Access := Self.Data;
 
    begin
@@ -161,4 +161,4 @@ package body Matreshka.Strings.Iterators.Characters is
       end if;
    end Previous;
 
-end Matreshka.Strings.Iterators.Characters;
+end Matreshka.Strings.Cursors.Characters;

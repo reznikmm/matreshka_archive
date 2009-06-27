@@ -29,8 +29,8 @@ with "matreshka_league";
 project Matreshka_League_Tests is
 
    for Main use
-    ("character_iterator_test.adb",
-     "grapheme_cluster_iterator_test.adb");
+    ("character_cursor_test.adb",
+     "grapheme_cluster_cursor_test.adb");
    for Object_Dir use "../.objs";
    for Source_Dirs use ("../testsuite/league");
 
