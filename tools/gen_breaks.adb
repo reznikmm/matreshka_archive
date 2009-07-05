@@ -37,6 +37,8 @@ procedure Gen_Breaks is
      := "auxiliary/WordBreakProperty.txt";
    SentenceBreakProperty_File : constant String
      := "auxiliary/SentenceBreakProperty.txt";
+   LineBreakProperty_File     : constant String
+     := "LineBreak.txt";
 
    type Code_Unit_32 is mod 2 ** 32;
    subtype Code_Point is Code_Unit_32 range 0 .. 16#10_FFFF#;
@@ -88,6 +90,85 @@ procedure Gen_Breaks is
      SContinue,
      Format,
      Extend);
+
+   --  Line_Break uses IN and IS aliases, which is reserved words in Ada, so
+   --  this type can't be declared in the same way with outher.
+
+   type Ucd_Line_Break is
+    (Ambiguous,
+     Alphabetic,
+     Break_Both,
+     Break_After,
+     Break_Before,
+     Mandatory_Break,
+     Contingent_Break,
+     Close_Punctuation,
+     Combining_Mark,
+     Carriage_Return,
+     Exclamation,
+     Glue,
+     H2,
+     H3,
+     Hyphen,
+     Ideographic,
+     Inseparable,
+     Infix_Numeric,
+     JL,
+     JT,
+     JV,
+     Line_Feed,
+     Next_Line,
+     Nonstarter,
+     Numeric,
+     Open_Punctuation,
+     Postfix_Numeric,
+     Prefix_Numeric,
+     Quotation,
+     Complex_Context,
+     Surrogate,
+     Space,
+     Break_Symbols,
+     Word_Joiner,
+     Unknown,
+     ZW_Space);
+
+   Line_Break_Value : constant array (Ucd_Line_Break) of String (1 .. 2)
+     := (Ambiguous         => "AI",
+         Alphabetic        => "AL",
+         Break_Both        => "B2",
+         Break_After       => "BA",
+         Break_Before      => "BB",
+         Mandatory_Break   => "BK",
+         Contingent_Break  => "CB",
+         Close_Punctuation => "CL",
+         Combining_Mark    => "CM",
+         Carriage_Return   => "CR",
+         Exclamation       => "EX",
+         Glue              => "GL",
+         H2                => "H2",
+         H3                => "H3",
+         Hyphen            => "HY",
+         Ideographic       => "ID",
+         Inseparable       => "IN",
+         Infix_Numeric     => "IS",
+         JL                => "JL",
+         JT                => "JT",
+         JV                => "JV",
+         Line_Feed         => "LF",
+         Next_Line         => "NL",
+         Nonstarter        => "NS",
+         Numeric           => "NU",
+         Open_Punctuation  => "OP",
+         Postfix_Numeric   => "PO",
+         Prefix_Numeric    => "PR",
+         Quotation         => "QU",
+         Complex_Context   => "SA",
+         Surrogate         => "SG",
+         Space             => "SP",
+         Break_Symbols     => "SY",
+         Word_Joiner       => "WJ",
+         Unknown           => "XX",
+         ZW_Space          => "ZW");
 
    type String_Access is access constant String;
 
@@ -181,6 +262,81 @@ procedure Gen_Breaks is
          Format    => SB_Format_Image'Access,
          Extend    => SB_Extend_Image'Access);
 
+   LB_Ambiguous_Image         : aliased constant String := "Ambiguous";
+   LB_Alphabetic_Image        : aliased constant String := "Alphabetic";
+   LB_Break_Both_Image        : aliased constant String := "Break_Both";
+   LB_Break_After_Image       : aliased constant String := "Break_After";
+   LB_Break_Before_Image      : aliased constant String := "Break_Before";
+   LB_Mandatory_Break_Image   : aliased constant String := "Mandatory_Break";
+   LB_Contingent_Break_Image  : aliased constant String := "Contingent_Break";
+   LB_Close_Punctuation_Image : aliased constant String := "Close_Punctuation";
+   LB_Combining_Mark_Image    : aliased constant String := "Combining_Mark";
+   LB_Carriage_Return_Image   : aliased constant String := "Carriage_Return";
+   LB_Exclamation_Image       : aliased constant String := "Exclamation";
+   LB_Glue_Image              : aliased constant String := "Glue";
+   LB_H2_Image                : aliased constant String := "H2";
+   LB_H3_Image                : aliased constant String := "H3";
+   LB_Hyphen_Image            : aliased constant String := "Hyphen";
+   LB_Ideographic_Image       : aliased constant String := "Ideographic";
+   LB_Inseparable_Image       : aliased constant String := "Inseparable";
+   LB_Infix_Numeric_Image     : aliased constant String := "Infix_Numeric";
+   LB_JL_Image                : aliased constant String := "JL";
+   LB_JT_Image                : aliased constant String := "JT";
+   LB_JV_Image                : aliased constant String := "JV";
+   LB_Line_Feed_Image         : aliased constant String := "Line_Feed";
+   LB_Next_Line_Image         : aliased constant String := "Next_Line";
+   LB_Nonstarter_Image        : aliased constant String := "Nonstarter";
+   LB_Numeric_Image           : aliased constant String := "Numeric";
+   LB_Open_Punctuation_Image  : aliased constant String := "Open_Punctuation";
+   LB_Postfix_Numeric_Image   : aliased constant String := "Postfix_Numeric";
+   LB_Prefix_Numeric_Image    : aliased constant String := "Prefix_Numeric";
+   LB_Quotation_Image         : aliased constant String := "Quotation";
+   LB_Complex_Context_Image   : aliased constant String := "Complex_Context";
+   LB_Surrogate_Image         : aliased constant String := "Surrogate";
+   LB_Space_Image             : aliased constant String := "Space";
+   LB_Break_Symbols_Image     : aliased constant String := "Break_Symbols";
+   LB_Word_Joiner_Image       : aliased constant String := "Word_Joiner";
+   LB_Unknown_Image           : aliased constant String := "Unknown";
+   LB_ZW_Space_Image          : aliased constant String := "ZW_Space";
+
+   Line_Break_Image : constant array (Ucd_Line_Break) of String_Access
+     := (Ambiguous         => LB_Ambiguous_Image'Access,
+         Alphabetic        => LB_Alphabetic_Image'Access,
+         Break_Both        => LB_Break_Both_Image'Access,
+         Break_After       => LB_Break_After_Image'Access,
+         Break_Before      => LB_Break_Before_Image'Access,
+         Mandatory_Break   => LB_Mandatory_Break_Image'Access,
+         Contingent_Break  => LB_Contingent_Break_Image'Access,
+         Close_Punctuation => LB_Close_Punctuation_Image'Access,
+         Combining_Mark    => LB_Combining_Mark_Image'Access,
+         Carriage_Return   => LB_Carriage_Return_Image'Access,
+         Exclamation       => LB_Exclamation_Image'Access,
+         Glue              => LB_Glue_Image'Access,
+         H2                => LB_H2_Image'Access,
+         H3                => LB_H3_Image'Access,
+         Hyphen            => LB_Hyphen_Image'Access,
+         Ideographic       => LB_Ideographic_Image'Access,
+         Inseparable       => LB_Inseparable_Image'Access,
+         Infix_Numeric     => LB_Infix_Numeric_Image'Access,
+         JL                => LB_JL_Image'Access,
+         JT                => LB_JT_Image'Access,
+         JV                => LB_JV_Image'Access,
+         Line_Feed         => LB_Line_Feed_Image'Access,
+         Next_Line         => LB_Next_Line_Image'Access,
+         Nonstarter        => LB_Nonstarter_Image'Access,
+         Numeric           => LB_Numeric_Image'Access,
+         Open_Punctuation  => LB_Open_Punctuation_Image'Access,
+         Postfix_Numeric   => LB_Postfix_Numeric_Image'Access,
+         Prefix_Numeric    => LB_Prefix_Numeric_Image'Access,
+         Quotation         => LB_Quotation_Image'Access,
+         Complex_Context   => LB_Complex_Context_Image'Access,
+         Surrogate         => LB_Surrogate_Image'Access,
+         Space             => LB_Space_Image'Access,
+         Break_Symbols     => LB_Break_Symbols_Image'Access,
+         Word_Joiner       => LB_Word_Joiner_Image'Access,
+         Unknown           => LB_Unknown_Image'Access,
+         ZW_Space          => LB_ZW_Space_Image'Access);
+
    type Group_Info is record
       Share : First_Stage;
       Count : Natural;
@@ -190,10 +346,11 @@ procedure Gen_Breaks is
       GCB : Ucd_Grapheme_Cluster_Break;
       WB  : Ucd_Word_Break;
       SB  : Ucd_Sentence_Break;
+      LB  : Ucd_Line_Break;
    end record;
 
    Values    : array (Code_Point) of Break_Values
-     := (others => (Other, Other, Other));
+     := (others => (Other, Other, Other, Unknown));
    Groups    : array (First_Stage) of Group_Info := (others => (0, 0));
    Generated : array (First_Stage) of Boolean := (others => False);
 
@@ -201,9 +358,11 @@ procedure Gen_Breaks is
    Grapheme_Cluster_Code_Points_Loaded : Natural := 0;
    Word_Code_Points_Loaded             : Natural := 0;
    Sentence_Code_Points_Loaded         : Natural := 0;
+   Line_Code_Points_Loaded             : Natural := 0;
 
    generic
       type Value_Type is (<>);
+      with function Value (Image : String) return Value_Type;
 
    procedure Generic_Read
     (File_Name : String;
@@ -221,9 +380,23 @@ procedure Gen_Breaks is
 
    procedure Fill (Code : Code_Point; Value : Ucd_Sentence_Break);
 
+   procedure Fill (Code : Code_Point; Value : Ucd_Line_Break);
+
    function First_Stage_Image (Item : First_Stage) return String;
 
    function Second_Stage_Image (Item : Second_Stage) return String;
+
+   function Value (Image : String) return Ucd_Line_Break;
+
+   ----------
+   -- Fill --
+   ----------
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Line_Break) is
+   begin
+      Values (Code).LB := Value;
+      Line_Code_Points_Loaded := Line_Code_Points_Loaded + 1;
+   end Fill;
 
    ----------
    -- Fill --
@@ -356,8 +529,7 @@ procedure Gen_Breaks is
             --  Process all code points in range
 
             for J in First_Code .. Last_Code loop
-               Process
-                (J, Value_Type'Value (Line (Field_First .. Field_Last)));
+               Process (J, Value (Line (Field_First .. Field_Last)));
             end loop;
          end if;
       end loop;
@@ -430,16 +602,35 @@ procedure Gen_Breaks is
       end if;
    end Parse_Code_Point_Range;
 
+   -----------
+   -- Value --
+   -----------
+
+   function Value (Image : String) return Ucd_Line_Break is
+   begin
+      for J in Line_Break_Value'Range loop
+         if Image = Line_Break_Value (J) then
+            return J;
+         end if;
+      end loop;
+
+      raise Constraint_Error with "Invalid value for Line_Break property";
+   end Value;
+
    --  Following instantiations must be done after Generic_Read have been seen.
 
    procedure Read_Grapheme_Break_Property is
-     new Generic_Read (Ucd_Grapheme_Cluster_Break);
+     new Generic_Read
+          (Ucd_Grapheme_Cluster_Break, Ucd_Grapheme_Cluster_Break'Value);
 
    procedure Read_Word_Break_Property is
-     new Generic_Read (Ucd_Word_Break);
+     new Generic_Read (Ucd_Word_Break, Ucd_Word_Break'Value);
 
    procedure Read_Sentence_Break_Property is
-     new Generic_Read (Ucd_Sentence_Break);
+     new Generic_Read (Ucd_Sentence_Break, Ucd_Sentence_Break'Value);
+
+   procedure Read_Line_Break_Property is
+     new Generic_Read (Ucd_Line_Break, Value);
 
 begin
    Read_Grapheme_Break_Property
@@ -450,6 +641,9 @@ begin
      Fill'Access);
    Read_Sentence_Break_Property
     (UCD_Root_Directory & '/' & SentenceBreakProperty_File,
+     Fill'Access);
+   Read_Line_Break_Property
+    (UCD_Root_Directory & '/' & LineBreakProperty_File,
      Fill'Access);
 
    --  Pack groups: reuse groups with the same values.
@@ -580,9 +774,10 @@ begin
       if not Generated (Groups (J).Share) then
          declare
             Counts  : array
-             (Ucd_Grapheme_Cluster_Break, Ucd_Word_Break, Ucd_Sentence_Break)
+             (Ucd_Grapheme_Cluster_Break, Ucd_Word_Break, Ucd_Sentence_Break,
+              Ucd_Line_Break)
                 of Natural
-                  := (others => (others => (others => 0)));
+                  := (others => (others => (others => (others => 0))));
             Default : Break_Values;
             Maximum : Natural := 0;
             Current : Break_Values;
@@ -595,17 +790,20 @@ begin
                   R : Break_Values renames Values (J * 256 + K);
 
                begin
-                  Counts (R.GCB, R.WB, R.SB) := Counts (R.GCB, R.WB, R.SB) + 1;
+                  Counts (R.GCB, R.WB, R.SB, R.LB)
+                    := Counts (R.GCB, R.WB, R.SB, R.LB) + 1;
                end;
             end loop;
 
             for J1 in Counts'Range (1) loop
                for J2 in Counts'Range (2) loop
                   for J3 in Counts'Range (3) loop
-                     if Maximum < Counts (J1, J2, J3) then
-                        Default := (J1, J2, J3);
-                        Maximum := Counts (J1, J2, J3);
-                     end if;
+                     for J4 in Counts'Range (4) loop
+                        if Maximum < Counts (J1, J2, J3, J4) then
+                           Default := (J1, J2, J3, J4);
+                           Maximum := Counts (J1, J2, J3, J4);
+                        end if;
+                     end loop;
                   end loop;
                end loop;
             end loop;
@@ -640,6 +838,8 @@ begin
                             & Word_Break_Image (Current.WB).all
                             & ", "
                             & Sentence_Break_Image (Current.SB).all
+                            & ", "
+                            & Line_Break_Image (Current.LB).all
                             & "),");
 
                      else
@@ -652,6 +852,8 @@ begin
                             & Word_Break_Image (Current.WB).all
                             & ", "
                             & Sentence_Break_Image (Current.SB).all
+                            & ", "
+                            & Line_Break_Image (Current.LB).all
                             & "),");
                      end if;
 
@@ -672,6 +874,8 @@ begin
                 & Word_Break_Image (Default.WB).all
                 & ", "
                 & Sentence_Break_Image (Default.SB).all
+                & ", "
+                & Line_Break_Image (Default.LB).all
                 & "));");
 
             Generated (J) := True;
@@ -740,6 +944,9 @@ begin
    Ada.Text_IO.Put_Line
     (Ada.Text_IO.Standard_Error,
      "SB properties loaded   :" & Natural'Image (Sentence_Code_Points_Loaded));
+   Ada.Text_IO.Put_Line
+    (Ada.Text_IO.Standard_Error,
+     "LB properties loaded   :" & Natural'Image (Line_Code_Points_Loaded));
    Ada.Text_IO.Put_Line
     (Ada.Text_IO.Standard_Error,
      "Number of reused groups:" & Natural'Image (Groups_Reused));

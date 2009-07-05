@@ -88,11 +88,52 @@ package Matreshka.Internals.Ucd is
      Extend);
    for Sentence_Break'Size use 8;
 
+   type Line_Break is
+    (Ambiguous,
+     Alphabetic,
+     Break_Both,
+     Break_After,
+     Break_Before,
+     Mandatory_Break,
+     Contingent_Break,
+     Close_Punctuation,
+     Combining_Mark,
+     Carriage_Return,
+     Exclamation,
+     Glue,
+     H2,
+     H3,
+     Hyphen,
+     Ideographic,
+     Inseparable,
+     Infix_Numeric,
+     JL,
+     JT,
+     JV,
+     Line_Feed,
+     Next_Line,
+     Nonstarter,
+     Numeric,
+     Open_Punctuation,
+     Postfix_Numeric,
+     Prefix_Numeric,
+     Quotation,
+     Complex_Context,
+     Surrogate,
+     Space,
+     Break_Symbols,
+     Word_Joiner,
+     Unknown,
+     ZW_Space);
+   for Line_Break'Size use 8;
+
    type Break_Value is record
       GCB : Grapheme_Cluster_Break;
       WB  : Word_Break;
       SB  : Sentence_Break;
+      LB  : Line_Break;
    end record;
+   for Break_Value'Size use 32;
 
    type Break_Second_Stage is array (Second_Stage_Index) of Break_Value;
 
