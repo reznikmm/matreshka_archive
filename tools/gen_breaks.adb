@@ -148,13 +148,13 @@ procedure Gen_Breaks is
    Grapheme_Cluster_Code_Points_Loaded : Natural := 0;
    Word_Code_Points_Loaded             : Natural := 0;
 
-   procedure Read_Grapheme_Break_Property
-    (Process : not null access procedure
-      (Code : Code_Point; Value : Ucd_Grapheme_Cluster_Break));
+   generic
+      type Value_Type is (<>);
 
-   procedure Read_Word_Break_Property
-    (Process : not null access procedure
-      (Code : Code_Point; Value : Ucd_Word_Break));
+   procedure Generic_Read
+    (File_Name : String;
+     Process   : not null access procedure
+      (Code : Code_Point; Value : Value_Type));
 
    procedure Parse_Code_Point_Range
     (Text       : String;
@@ -168,6 +168,27 @@ procedure Gen_Breaks is
    function First_Stage_Image (Item : First_Stage) return String;
 
    function Second_Stage_Image (Item : Second_Stage) return String;
+
+   ----------
+   -- Fill --
+   ----------
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Grapheme_Cluster_Break) is
+   begin
+      Values (Code).GCB := Value;
+      Grapheme_Cluster_Code_Points_Loaded :=
+        Grapheme_Cluster_Code_Points_Loaded + 1;
+   end Fill;
+
+   ----------
+   -- Fill --
+   ----------
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Word_Break) is
+   begin
+      Values (Code).WB := Value;
+      Word_Code_Points_Loaded := Word_Code_Points_Loaded + 1;
+   end Fill;
 
    -----------------------
    -- First_Stage_Image --
@@ -186,6 +207,97 @@ procedure Gen_Breaks is
 
       return Result;
    end First_Stage_Image;
+
+   ------------------
+   -- Generic_Read --
+   ------------------
+
+   procedure Generic_Read
+    (File_Name : String;
+     Process   : not null access procedure
+      (Code : Code_Point; Value : Value_Type))
+   is
+      File            : Ada.Text_IO.File_Type;
+      Line            : String (1 .. 1024);
+      Last            : Natural;
+      Field_First     : Positive;
+      Field_Last      : Positive;
+      Field_Separator : Positive;
+      First_Code      : Code_Point;
+      Last_Code       : Code_Point;
+
+      procedure Scan;
+
+      ----------
+      -- Scan --
+      ----------
+
+      procedure Scan is
+      begin
+         Field_Last := Field_First;
+
+         while Field_Last < Last loop
+            Field_Last := Field_Last + 1;
+
+            if Line (Field_Last) = ';' then
+               Field_Last := Field_Last - 1;
+
+               exit;
+            end if;
+         end loop;
+
+         Field_Separator := Field_Last + 1;
+
+         while Line (Field_First) = ' ' loop
+            Field_First := Field_First + 1;
+         end loop;
+
+         while Line (Field_Last) = ' ' loop
+            Field_Last := Field_Last - 1;
+         end loop;
+      end Scan;
+
+   begin
+      Ada.Text_IO.Open (File, Ada.Text_IO.In_File, File_Name);
+
+      while not Ada.Text_IO.End_Of_File (File) loop
+         Ada.Text_IO.Get_Line (File, Line, Last);
+
+         if Last /= 0 and then Line (Line'First) /= '#' then
+            --  Drop comment
+
+            for J in Line'First .. Last loop
+               if Line (J) = '#' then
+                  Last := J - 1;
+
+                  exit;
+               end if;
+            end loop;
+
+            --  Parse first field - code point range
+
+            Field_First := Line'First;
+            Scan;
+
+            Parse_Code_Point_Range
+             (Line (Field_First .. Field_Last), First_Code, Last_Code);
+
+            --  Parse second field - property's value
+
+            Field_First := Field_Separator + 1;
+            Scan;
+
+            --  Process all code points in range
+
+            for J in First_Code .. Last_Code loop
+               Process
+                (J, Value_Type'Value (Line (Field_First .. Field_Last)));
+            end loop;
+         end if;
+      end loop;
+
+      Ada.Text_IO.Close (File);
+   end Generic_Read;
 
    ------------------------
    -- Second_Stage_Image --
@@ -252,218 +364,21 @@ procedure Gen_Breaks is
       end if;
    end Parse_Code_Point_Range;
 
-   ----------------------------------
-   -- Read_Grapheme_Break_Property --
-   ----------------------------------
+   --  Following instantiations must be done after Generic_Read have been seen.
 
-   procedure Read_Grapheme_Break_Property
-    (Process : not null access procedure
-      (Code : Code_Point; Value : Ucd_Grapheme_Cluster_Break))
-   is
-      File            : Ada.Text_IO.File_Type;
-      Line            : String (1 .. 1024);
-      Last            : Natural;
-      Field_First     : Positive;
-      Field_Last      : Positive;
-      Field_Separator : Positive;
-      First_Code      : Code_Point;
-      Last_Code       : Code_Point;
+   procedure Read_Grapheme_Break_Property is
+     new Generic_Read (Ucd_Grapheme_Cluster_Break);
 
-      procedure Scan;
-
-      ----------
-      -- Scan --
-      ----------
-
-      procedure Scan is
-      begin
-         Field_Last := Field_First;
-
-         while Field_Last < Last loop
-            Field_Last := Field_Last + 1;
-
-            if Line (Field_Last) = ';' then
-               Field_Last := Field_Last - 1;
-
-               exit;
-            end if;
-         end loop;
-
-         Field_Separator := Field_Last + 1;
-
-         while Line (Field_First) = ' ' loop
-            Field_First := Field_First + 1;
-         end loop;
-
-         while Line (Field_Last) = ' ' loop
-            Field_Last := Field_Last - 1;
-         end loop;
-      end Scan;
-
-   begin
-      Ada.Text_IO.Open
-       (File,
-        Ada.Text_IO.In_File,
-        UCD_Root_Directory & '/' & GraphemeBreakProperty_File);
-
-      while not Ada.Text_IO.End_Of_File (File) loop
-         Ada.Text_IO.Get_Line (File, Line, Last);
-
-         if Last /= 0 and then Line (Line'First) /= '#' then
-            --  Drop comment
-
-            for J in Line'First .. Last loop
-               if Line (J) = '#' then
-                  Last := J - 1;
-
-                  exit;
-               end if;
-            end loop;
-
-            --  Parse first field - code point range
-
-            Field_First := Line'First;
-            Scan;
-
-            Parse_Code_Point_Range
-             (Line (Field_First .. Field_Last), First_Code, Last_Code);
-
-            --  Parse second field - property's value
-
-            Field_First := Field_Separator + 1;
-            Scan;
-
-            --  Process all code points in range
-
-            for J in First_Code .. Last_Code loop
-               Process
-                (J,
-                 Ucd_Grapheme_Cluster_Break'Value
-                  (Line (Field_First .. Field_Last)));
-            end loop;
-         end if;
-      end loop;
-
-      Ada.Text_IO.Close (File);
-   end Read_Grapheme_Break_Property;
-
-   ------------------------------
-   -- Read_Word_Break_Property --
-   ------------------------------
-
-   procedure Read_Word_Break_Property
-    (Process : not null access procedure
-      (Code : Code_Point; Value : Ucd_Word_Break))
-   is
-      File            : Ada.Text_IO.File_Type;
-      Line            : String (1 .. 1024);
-      Last            : Natural;
-      Field_First     : Positive;
-      Field_Last      : Positive;
-      Field_Separator : Positive;
-      First_Code      : Code_Point;
-      Last_Code       : Code_Point;
-
-      procedure Scan;
-
-      ----------
-      -- Scan --
-      ----------
-
-      procedure Scan is
-      begin
-         Field_Last := Field_First;
-
-         while Field_Last < Last loop
-            Field_Last := Field_Last + 1;
-
-            if Line (Field_Last) = ';' then
-               Field_Last := Field_Last - 1;
-
-               exit;
-            end if;
-         end loop;
-
-         Field_Separator := Field_Last + 1;
-
-         while Line (Field_First) = ' ' loop
-            Field_First := Field_First + 1;
-         end loop;
-
-         while Line (Field_Last) = ' ' loop
-            Field_Last := Field_Last - 1;
-         end loop;
-      end Scan;
-
-   begin
-      Ada.Text_IO.Open
-       (File,
-        Ada.Text_IO.In_File,
-        UCD_Root_Directory & '/' & WordBreakProperty_File);
-
-      while not Ada.Text_IO.End_Of_File (File) loop
-         Ada.Text_IO.Get_Line (File, Line, Last);
-
-         if Last /= 0 and then Line (Line'First) /= '#' then
-            --  Drop comment
-
-            for J in Line'First .. Last loop
-               if Line (J) = '#' then
-                  Last := J - 1;
-
-                  exit;
-               end if;
-            end loop;
-
-            --  Parse first field - code point range
-
-            Field_First := Line'First;
-            Scan;
-
-            Parse_Code_Point_Range
-             (Line (Field_First .. Field_Last), First_Code, Last_Code);
-
-            --  Parse second field - property's value
-
-            Field_First := Field_Separator + 1;
-            Scan;
-
-            --  Process all code points in range
-
-            for J in First_Code .. Last_Code loop
-               Process
-                (J, Ucd_Word_Break'Value (Line (Field_First .. Field_Last)));
-            end loop;
-         end if;
-      end loop;
-
-      Ada.Text_IO.Close (File);
-   end Read_Word_Break_Property;
-
-   ----------
-   -- Fill --
-   ----------
-
-   procedure Fill (Code : Code_Point; Value : Ucd_Grapheme_Cluster_Break) is
-   begin
-      Values (Code).GCB := Value;
-      Grapheme_Cluster_Code_Points_Loaded :=
-        Grapheme_Cluster_Code_Points_Loaded + 1;
-   end Fill;
-
-   ----------
-   -- Fill --
-   ----------
-
-   procedure Fill (Code : Code_Point; Value : Ucd_Word_Break) is
-   begin
-      Values (Code).WB := Value;
-      Word_Code_Points_Loaded := Word_Code_Points_Loaded + 1;
-   end Fill;
+   procedure Read_Word_Break_Property is
+     new Generic_Read (Ucd_Word_Break);
 
 begin
-   Read_Grapheme_Break_Property (Fill'Access);
-   Read_Word_Break_Property (Fill'Access);
+   Read_Grapheme_Break_Property
+    (UCD_Root_Directory & '/' & GraphemeBreakProperty_File,
+     Fill'Access);
+   Read_Word_Break_Property
+    (UCD_Root_Directory & '/' & WordBreakProperty_File,
+     Fill'Access);
 
    --  Pack groups: reuse groups with the same values.
 
