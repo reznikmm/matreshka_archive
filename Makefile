@@ -4,7 +4,7 @@ all:
 	gprbuild -p -Pgnat/matreshka_league.gpr
 
 ucd:
-	gprbuild -p -Pgnat/gen_breaks.gpr
+	gprbuild -p -Pgnat/tools.gpr
 	.objs/gen_breaks $(UNIDATA) > source/league/ucd/matreshka-internals-ucd-breaks.ads
 
 check: all
