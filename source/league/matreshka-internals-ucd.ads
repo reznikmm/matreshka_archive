@@ -70,9 +70,28 @@ package Matreshka.Internals.Ucd is
      Extend);
    for Word_Break'Size use 8;
 
+   type Sentence_Break is
+    (Other,
+     CR,
+     LF,
+     Sep,
+     Sp,
+     Lower,
+     Upper,
+     O_Letter,
+     Numeric,
+     A_Term,
+     S_Term,
+     Close,
+     S_Continue,
+     Format,
+     Extend);
+   for Sentence_Break'Size use 8;
+
    type Break_Value is record
       GCB : Grapheme_Cluster_Break;
       WB  : Word_Break;
+      SB  : Sentence_Break;
    end record;
 
    type Break_Second_Stage is array (Second_Stage_Index) of Break_Value;
@@ -82,23 +101,5 @@ package Matreshka.Internals.Ucd is
 
    type Break_First_Stage is
      array (First_Stage_Index) of Break_Second_Stage_Access;
-
-   type Sentence_Break is
-    (A_Term,
-     Close,
-     CR,
-     Extend,
-     Format,
-     O_Letter,
-     LF,
-     Lower,
-     Numeric,
-     S_Continue,
-     Sep,
-     Sp,
-     S_Term,
-     Upper,
-     Other);
-   for Sentence_Break'Size use 8;
 
 end Matreshka.Internals.Ucd;

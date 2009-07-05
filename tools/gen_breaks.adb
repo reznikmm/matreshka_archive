@@ -35,6 +35,8 @@ procedure Gen_Breaks is
      := "auxiliary/GraphemeBreakProperty.txt";
    WordBreakProperty_File     : constant String
      := "auxiliary/WordBreakProperty.txt";
+   SentenceBreakProperty_File : constant String
+     := "auxiliary/SentenceBreakProperty.txt";
 
    type Code_Unit_32 is mod 2 ** 32;
    subtype Code_Point is Code_Unit_32 range 0 .. 16#10_FFFF#;
@@ -67,6 +69,23 @@ procedure Gen_Breaks is
      MidNumLet,
      Numeric,
      ExtendNumLet,
+     Format,
+     Extend);
+
+   type Ucd_Sentence_Break is
+    (Other,
+     CR,
+     LF,
+     Sep,
+     Sp,
+     Lower,
+     Upper,
+     OLetter,
+     Numeric,
+     ATerm,
+     STerm,
+     Close,
+     SContinue,
      Format,
      Extend);
 
@@ -129,6 +148,39 @@ procedure Gen_Breaks is
          Format       => WB_Format_Image'Access,
          Extend       => WB_Extend_Image'Access);
 
+   SB_Other_Image      : aliased constant String := "Other";
+   SB_CR_Image         : aliased constant String := "CR";
+   SB_LF_Image         : aliased constant String := "LF";
+   SB_Sep_Image        : aliased constant String := "Sep";
+   SB_Sp_Image         : aliased constant String := "Sp";
+   SB_Lower_Image      : aliased constant String := "Lower";
+   SB_Upper_Image      : aliased constant String := "Upper";
+   SB_O_Letter_Image   : aliased constant String := "O_Letter";
+   SB_Numeric_Image    : aliased constant String := "Numeric";
+   SB_A_Term_Image     : aliased constant String := "A_Term";
+   SB_S_Term_Image     : aliased constant String := "S_Term";
+   SB_Close_Image      : aliased constant String := "Close";
+   SB_S_Continue_Image : aliased constant String := "S_Continue";
+   SB_Format_Image     : aliased constant String := "Format";
+   SB_Extend_Image     : aliased constant String := "Extend";
+
+   Sentence_Break_Image : constant array (Ucd_Sentence_Break) of String_Access
+     := (Other     => SB_Other_Image'Access,
+         CR        => SB_CR_Image'Access,
+         LF        => SB_LF_Image'Access,
+         Sep       => SB_Sep_Image'Access,
+         Sp        => SB_Sp_Image'Access,
+         Lower     => SB_Lower_Image'Access,
+         Upper     => SB_Upper_Image'Access,
+         OLetter   => SB_O_Letter_Image'Access,
+         Numeric   => SB_Numeric_Image'Access,
+         ATerm     => SB_A_Term_Image'Access,
+         STerm     => SB_S_Term_Image'Access,
+         Close     => SB_Close_Image'Access,
+         SContinue => SB_S_Continue_Image'Access,
+         Format    => SB_Format_Image'Access,
+         Extend    => SB_Extend_Image'Access);
+
    type Group_Info is record
       Share : First_Stage;
       Count : Natural;
@@ -137,16 +189,18 @@ procedure Gen_Breaks is
    type Break_Values is record
       GCB : Ucd_Grapheme_Cluster_Break;
       WB  : Ucd_Word_Break;
+      SB  : Ucd_Sentence_Break;
    end record;
 
    Values    : array (Code_Point) of Break_Values
-     := (others => (Other, Other));
+     := (others => (Other, Other, Other));
    Groups    : array (First_Stage) of Group_Info := (others => (0, 0));
    Generated : array (First_Stage) of Boolean := (others => False);
 
    Groups_Reused                       : Natural := 0;
    Grapheme_Cluster_Code_Points_Loaded : Natural := 0;
    Word_Code_Points_Loaded             : Natural := 0;
+   Sentence_Code_Points_Loaded         : Natural := 0;
 
    generic
       type Value_Type is (<>);
@@ -165,6 +219,8 @@ procedure Gen_Breaks is
 
    procedure Fill (Code : Code_Point; Value : Ucd_Word_Break);
 
+   procedure Fill (Code : Code_Point; Value : Ucd_Sentence_Break);
+
    function First_Stage_Image (Item : First_Stage) return String;
 
    function Second_Stage_Image (Item : Second_Stage) return String;
@@ -178,6 +234,16 @@ procedure Gen_Breaks is
       Values (Code).GCB := Value;
       Grapheme_Cluster_Code_Points_Loaded :=
         Grapheme_Cluster_Code_Points_Loaded + 1;
+   end Fill;
+
+   ----------
+   -- Fill --
+   ----------
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Sentence_Break) is
+   begin
+      Values (Code).SB := Value;
+      Sentence_Code_Points_Loaded := Sentence_Code_Points_Loaded + 1;
    end Fill;
 
    ----------
@@ -372,12 +438,18 @@ procedure Gen_Breaks is
    procedure Read_Word_Break_Property is
      new Generic_Read (Ucd_Word_Break);
 
+   procedure Read_Sentence_Break_Property is
+     new Generic_Read (Ucd_Sentence_Break);
+
 begin
    Read_Grapheme_Break_Property
     (UCD_Root_Directory & '/' & GraphemeBreakProperty_File,
      Fill'Access);
    Read_Word_Break_Property
     (UCD_Root_Directory & '/' & WordBreakProperty_File,
+     Fill'Access);
+   Read_Sentence_Break_Property
+    (UCD_Root_Directory & '/' & SentenceBreakProperty_File,
      Fill'Access);
 
    --  Pack groups: reuse groups with the same values.
@@ -507,9 +579,10 @@ begin
    for J in Groups'Range loop
       if not Generated (Groups (J).Share) then
          declare
-            Counts  : array (Ucd_Grapheme_Cluster_Break, Ucd_Word_Break)
-              of Natural
-                := (others => (others => 0));
+            Counts  : array
+             (Ucd_Grapheme_Cluster_Break, Ucd_Word_Break, Ucd_Sentence_Break)
+                of Natural
+                  := (others => (others => (others => 0)));
             Default : Break_Values;
             Maximum : Natural := 0;
             Current : Break_Values;
@@ -522,16 +595,18 @@ begin
                   R : Break_Values renames Values (J * 256 + K);
 
                begin
-                  Counts (R.GCB, R.WB) := Counts (R.GCB, R.WB) + 1;
+                  Counts (R.GCB, R.WB, R.SB) := Counts (R.GCB, R.WB, R.SB) + 1;
                end;
             end loop;
 
             for J1 in Counts'Range (1) loop
                for J2 in Counts'Range (2) loop
-                  if Maximum < Counts (J1, J2) then
-                     Default := (J1, J2);
-                     Maximum := Counts (J1, J2);
-                  end if;
+                  for J3 in Counts'Range (3) loop
+                     if Maximum < Counts (J1, J2, J3) then
+                        Default := (J1, J2, J3);
+                        Maximum := Counts (J1, J2, J3);
+                     end if;
+                  end loop;
                end loop;
             end loop;
 
@@ -563,6 +638,8 @@ begin
                             & Grapheme_Cluster_Break_Image (Current.GCB).all
                             & ", "
                             & Word_Break_Image (Current.WB).all
+                            & ", "
+                            & Sentence_Break_Image (Current.SB).all
                             & "),");
 
                      else
@@ -573,6 +650,8 @@ begin
                             & Grapheme_Cluster_Break_Image (Current.GCB).all
                             & ", "
                             & Word_Break_Image (Current.WB).all
+                            & ", "
+                            & Sentence_Break_Image (Current.SB).all
                             & "),");
                      end if;
 
@@ -591,6 +670,8 @@ begin
                 & Grapheme_Cluster_Break_Image (Default.GCB).all
                 & ", "
                 & Word_Break_Image (Default.WB).all
+                & ", "
+                & Sentence_Break_Image (Default.SB).all
                 & "));");
 
             Generated (J) := True;
@@ -656,6 +737,9 @@ begin
    Ada.Text_IO.Put_Line
     (Ada.Text_IO.Standard_Error,
      "WB properties loaded   :" & Natural'Image (Word_Code_Points_Loaded));
+   Ada.Text_IO.Put_Line
+    (Ada.Text_IO.Standard_Error,
+     "SB properties loaded   :" & Natural'Image (Sentence_Code_Points_Loaded));
    Ada.Text_IO.Put_Line
     (Ada.Text_IO.Standard_Error,
      "Number of reused groups:" & Natural'Image (Groups_Reused));
