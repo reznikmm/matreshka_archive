@@ -1,4 +1,4 @@
-UNIDATA = UNIDATA/5.1.0/ucd
+UNIDATA = unicode/5.1.0/ucd
 
 all:
 	gprbuild -p -Pgnat/matreshka_league.gpr
