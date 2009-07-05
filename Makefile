@@ -1,4 +1,5 @@
 UNIDATA = unicode/5.1.0/ucd
+CLDR = unicode/cldr/1.7.1
 
 all:
 	gprbuild -p -Pgnat/matreshka_league.gpr
@@ -6,6 +7,7 @@ all:
 ucd:
 	gprbuild -p -Pgnat/tools.gpr
 	.objs/gen_breaks $(UNIDATA) > source/league/ucd/matreshka-internals-ucd-breaks.ads
+	.objs/gen_segments $(CLDR)
 
 check: all
 	gprbuild -p -Pgnat/matreshka_league_tests.gpr

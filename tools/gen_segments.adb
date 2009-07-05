@@ -24,16 +24,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "xmlada";
+with Ada.Command_Line;
 
-project Tools is
+with Input_Sources.File;
 
-   for Main use ("gen_breaks.adb", "gen_segments.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use ("../tools");
+with Segments_Readers;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05");
-   end Compiler;
+procedure Gen_Segments is
 
-end Tools;
+   CLDR_Root_Directory     : constant String
+     := Ada.Command_Line.Argument (1);
+   Segments_Root_File_Name : constant String
+     := "common/segments/root.xml";
+
+   File   : Input_Sources.File.File_Input;
+   Reader : Segments_Readers.Segments_Reader;
+
+begin
+   Input_Sources.File.Open
+    (CLDR_Root_Directory & '/' & Segments_Root_File_Name, File);
+   Reader.Parse (File);
+   Input_Sources.File.Close (File);
+end Gen_Segments;

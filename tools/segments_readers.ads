@@ -24,16 +24,40 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "xmlada";
+--  This package defines SAX reader for load segments information. An
+--  implementation assumes input source is a valid file.
+------------------------------------------------------------------------------
+private with Ada.Strings.Unbounded;
 
-project Tools is
+with Sax.Attributes;
+with SAX.Readers;
+with Unicode.CES;
 
-   for Main use ("gen_breaks.adb", "gen_segments.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use ("../tools");
+package Segments_Readers is
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05");
-   end Compiler;
+   type Segments_Reader is new SAX.Readers.Reader with private;
 
-end Tools;
+   overriding procedure Start_Element
+     (Self          : in out Segments_Reader;
+      Namespace_URI : Unicode.CES.Byte_Sequence := "";
+      Local_Name    : Unicode.CES.Byte_Sequence := "";
+      Qname         : Unicode.CES.Byte_Sequence := "";
+      Attrs         : Sax.Attributes.Attributes'Class);
+
+   overriding procedure End_Element
+     (Self          : in out Segments_Reader;
+      Namespace_URI : Unicode.CES.Byte_Sequence := "";
+      Local_Name    : Unicode.CES.Byte_Sequence := "";
+      Qname         : Unicode.CES.Byte_Sequence := "");
+
+   overriding procedure Characters
+     (Self : in out Segments_Reader;
+      Ch   : Unicode.CES.Byte_Sequence);
+
+private
+
+   type Segments_Reader is new SAX.Readers.Reader with record
+      C : Ada.Strings.Unbounded.Unbounded_String;
+   end record;
+
+end Segments_Readers;
