@@ -343,7 +343,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
       Property :=
         Matreshka.Internals.Ucd.Breaks.Property
          (First_Stage_Index (C / 16#100#))
-         (Second_Stage_Index (C mod 16#100#));
+         (Second_Stage_Index (C mod 16#100#)).GCB;
    end Unchecked_Next;
 
    ------------------------
@@ -362,7 +362,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
       Property :=
         Matreshka.Internals.Ucd.Breaks.Property
          (First_Stage_Index (C / 16#100#))
-         (Second_Stage_Index (C mod 16#100#));
+         (Second_Stage_Index (C mod 16#100#)).GCB;
    end Unchecked_Previous;
 
 end Matreshka.Strings.Cursors.Grapheme_Clusters;

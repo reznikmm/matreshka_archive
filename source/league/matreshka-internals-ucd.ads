@@ -52,16 +52,36 @@ package Matreshka.Internals.Ucd is
      T,
      LV,
      LVT);
-   for Grapheme_Cluster_Break'Size use 4;
+   for Grapheme_Cluster_Break'Size use 8;
 
-   type Grapheme_Cluster_Break_Second_Stage is
-     array (Second_Stage_Index) of Grapheme_Cluster_Break;
+   type Word_Break is
+    (Other,
+     CR,
+     LF,
+     Newline,
+     Katakana,
+     A_Letter,
+     Mid_Letter,
+     Mid_Num,
+     Mid_Num_Let,
+     Numeric,
+     Extend_Num_Let,
+     Format,
+     Extend);
+   for Word_Break'Size use 8;
 
-   type Grapheme_Cluster_Break_Second_Stage_Access is
-     not null access constant Grapheme_Cluster_Break_Second_Stage;
+   type Break_Value is record
+      GCB : Grapheme_Cluster_Break;
+      WB  : Word_Break;
+   end record;
 
-   type Grapheme_Cluster_Break_First_Stage is
-     array (First_Stage_Index) of Grapheme_Cluster_Break_Second_Stage_Access;
+   type Break_Second_Stage is array (Second_Stage_Index) of Break_Value;
+
+   type Break_Second_Stage_Access is
+     not null access constant Break_Second_Stage;
+
+   type Break_First_Stage is
+     array (First_Stage_Index) of Break_Second_Stage_Access;
 
    type Sentence_Break is
     (A_Term,
@@ -79,22 +99,6 @@ package Matreshka.Internals.Ucd is
      S_Term,
      Upper,
      Other);
-   for Sentence_Break'Size use 4;
-
-   type Word_Break is
-    (CR,
-     Extend_Num_Let,
-     Extend,
-     Format,
-     Katakana,
-     A_Letter,
-     LF,
-     Mid_Num_Let,
-     Mid_Letter,
-     Mid_Num,
-     Newline,
-     Numeric,
-     Other);
-   for Word_Break'Size use 4;
+   for Sentence_Break'Size use 8;
 
 end Matreshka.Internals.Ucd;

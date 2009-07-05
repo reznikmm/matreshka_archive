@@ -33,6 +33,8 @@ procedure Gen_Breaks is
      := Ada.Command_Line.Argument (1);
    GraphemeBreakProperty_File : constant String
      := "auxiliary/GraphemeBreakProperty.txt";
+   WordBreakProperty_File     : constant String
+     := "auxiliary/WordBreakProperty.txt";
 
    type Code_Unit_32 is mod 2 ** 32;
    subtype Code_Point is Code_Unit_32 range 0 .. 16#10_FFFF#;
@@ -53,49 +55,106 @@ procedure Gen_Breaks is
      LV,
      LVT);
 
+   type Ucd_Word_Break is
+    (Other,
+     CR,
+     LF,
+     Newline,
+     Katakana,
+     ALetter,
+     MidLetter,
+     MidNum,
+     MidNumLet,
+     Numeric,
+     ExtendNumLet,
+     Format,
+     Extend);
+
    type String_Access is access constant String;
 
-   Other_Image        : aliased constant String := "Other";
-   CR_Image           : aliased constant String := "CR";
-   LF_Image           : aliased constant String := "LF";
-   Control_Image      : aliased constant String := "Control";
-   Extend_Image       : aliased constant String := "Extend";
-   Prepend_Image      : aliased constant String := "Prepend";
-   Spacing_Mark_Image : aliased constant String := "Spacing_Mark";
-   L_Image            : aliased constant String := "L";
-   V_Image            : aliased constant String := "V";
-   T_Image            : aliased constant String := "T";
-   LV_Image           : aliased constant String := "LV";
-   LVT_Image          : aliased constant String := "LVT";
+   GCB_Other_Image        : aliased constant String := "Other";
+   GCB_CR_Image           : aliased constant String := "CR";
+   GCB_LF_Image           : aliased constant String := "LF";
+   GCB_Control_Image      : aliased constant String := "Control";
+   GCB_Extend_Image       : aliased constant String := "Extend";
+   GCB_Prepend_Image      : aliased constant String := "Prepend";
+   GCB_Spacing_Mark_Image : aliased constant String := "Spacing_Mark";
+   GCB_L_Image            : aliased constant String := "L";
+   GCB_V_Image            : aliased constant String := "V";
+   GCB_T_Image            : aliased constant String := "T";
+   GCB_LV_Image           : aliased constant String := "LV";
+   GCB_LVT_Image          : aliased constant String := "LVT";
 
    Grapheme_Cluster_Break_Image : constant
      array (Ucd_Grapheme_Cluster_Break) of String_Access
-       := (Other       => Other_Image'Access,
-           CR          => CR_Image'Access,
-           LF          => LF_Image'Access,
-           Control     => Control_Image'Access,
-           Extend      => Extend_Image'Access,
-           Prepend     => Prepend_Image'Access,
-           SpacingMark => Spacing_Mark_Image'Access,
-           L           => L_Image'Access,
-           V           => V_Image'Access,
-           T           => T_Image'Access,
-           LV          => LV_Image'Access,
-           LVT         => LVT_Image'Access);
+       := (Other       => GCB_Other_Image'Access,
+           CR          => GCB_CR_Image'Access,
+           LF          => GCB_LF_Image'Access,
+           Control     => GCB_Control_Image'Access,
+           Extend      => GCB_Extend_Image'Access,
+           Prepend     => GCB_Prepend_Image'Access,
+           SpacingMark => GCB_Spacing_Mark_Image'Access,
+           L           => GCB_L_Image'Access,
+           V           => GCB_V_Image'Access,
+           T           => GCB_T_Image'Access,
+           LV          => GCB_LV_Image'Access,
+           LVT         => GCB_LVT_Image'Access);
+
+   WB_Other_Image          : aliased constant String := "Other";
+   WB_CR_Image             : aliased constant String := "CR";
+   WB_LF_Image             : aliased constant String := "LF";
+   WB_Newline_Image        : aliased constant String := "Newline";
+   WB_Katakana_Image       : aliased constant String := "Katakana";
+   WB_A_Letter_Image       : aliased constant String := "A_Letter";
+   WB_Mid_Letter_Image     : aliased constant String := "Mid_Letter";
+   WB_Mid_Num_Image        : aliased constant String := "Mid_Num";
+   WB_Mid_Num_Let_Image    : aliased constant String := "Mid_Num_Let";
+   WB_Numeric_Image        : aliased constant String := "Numeric";
+   WB_Extend_Num_Let_Image : aliased constant String := "Extend_Num_Let";
+   WB_Format_Image         : aliased constant String := "Format";
+   WB_Extend_Image         : aliased constant String := "Extend";
+
+   Word_Break_Image : constant array (Ucd_Word_Break) of String_Access
+     := (Other        => WB_Other_Image'Access,
+         CR           => WB_CR_Image'Access,
+         LF           => WB_LF_Image'Access,
+         Newline      => WB_Newline_Image'Access,
+         Katakana     => WB_Katakana_Image'Access,
+         ALetter      => WB_A_Letter_Image'Access,
+         MidLetter    => WB_Mid_Letter_Image'Access,
+         MidNum       => WB_Mid_Num_Image'Access,
+         MidNumLet    => WB_Mid_Num_Let_Image'Access,
+         Numeric      => WB_Numeric_Image'Access,
+         ExtendNumLet => WB_Extend_Num_Let_Image'Access,
+         Format       => WB_Format_Image'Access,
+         Extend       => WB_Extend_Image'Access);
 
    type Group_Info is record
       Share : First_Stage;
       Count : Natural;
    end record;
 
-   Values    : array (Code_Point) of Ucd_Grapheme_Cluster_Break
-     := (others => Other);
+   type Break_Values is record
+      GCB : Ucd_Grapheme_Cluster_Break;
+      WB  : Ucd_Word_Break;
+   end record;
+
+   Values    : array (Code_Point) of Break_Values
+     := (others => (Other, Other));
    Groups    : array (First_Stage) of Group_Info := (others => (0, 0));
    Generated : array (First_Stage) of Boolean := (others => False);
 
-   procedure Read
+   Groups_Reused                       : Natural := 0;
+   Grapheme_Cluster_Code_Points_Loaded : Natural := 0;
+   Word_Code_Points_Loaded             : Natural := 0;
+
+   procedure Read_Grapheme_Break_Property
     (Process : not null access procedure
       (Code : Code_Point; Value : Ucd_Grapheme_Cluster_Break));
+
+   procedure Read_Word_Break_Property
+    (Process : not null access procedure
+      (Code : Code_Point; Value : Ucd_Word_Break));
 
    procedure Parse_Code_Point_Range
     (Text       : String;
@@ -103,6 +162,8 @@ procedure Gen_Breaks is
      Last_Code  : out Code_Point);
 
    procedure Fill (Code : Code_Point; Value : Ucd_Grapheme_Cluster_Break);
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Word_Break);
 
    function First_Stage_Image (Item : First_Stage) return String;
 
@@ -191,11 +252,11 @@ procedure Gen_Breaks is
       end if;
    end Parse_Code_Point_Range;
 
-   ----------
-   -- Read --
-   ----------
+   ----------------------------------
+   -- Read_Grapheme_Break_Property --
+   ----------------------------------
 
-   procedure Read
+   procedure Read_Grapheme_Break_Property
     (Process : not null access procedure
       (Code : Code_Point; Value : Ucd_Grapheme_Cluster_Break))
    is
@@ -284,7 +345,100 @@ procedure Gen_Breaks is
       end loop;
 
       Ada.Text_IO.Close (File);
-   end Read;
+   end Read_Grapheme_Break_Property;
+
+   ------------------------------
+   -- Read_Word_Break_Property --
+   ------------------------------
+
+   procedure Read_Word_Break_Property
+    (Process : not null access procedure
+      (Code : Code_Point; Value : Ucd_Word_Break))
+   is
+      File            : Ada.Text_IO.File_Type;
+      Line            : String (1 .. 1024);
+      Last            : Natural;
+      Field_First     : Positive;
+      Field_Last      : Positive;
+      Field_Separator : Positive;
+      First_Code      : Code_Point;
+      Last_Code       : Code_Point;
+
+      procedure Scan;
+
+      ----------
+      -- Scan --
+      ----------
+
+      procedure Scan is
+      begin
+         Field_Last := Field_First;
+
+         while Field_Last < Last loop
+            Field_Last := Field_Last + 1;
+
+            if Line (Field_Last) = ';' then
+               Field_Last := Field_Last - 1;
+
+               exit;
+            end if;
+         end loop;
+
+         Field_Separator := Field_Last + 1;
+
+         while Line (Field_First) = ' ' loop
+            Field_First := Field_First + 1;
+         end loop;
+
+         while Line (Field_Last) = ' ' loop
+            Field_Last := Field_Last - 1;
+         end loop;
+      end Scan;
+
+   begin
+      Ada.Text_IO.Open
+       (File,
+        Ada.Text_IO.In_File,
+        UCD_Root_Directory & '/' & WordBreakProperty_File);
+
+      while not Ada.Text_IO.End_Of_File (File) loop
+         Ada.Text_IO.Get_Line (File, Line, Last);
+
+         if Last /= 0 and then Line (Line'First) /= '#' then
+            --  Drop comment
+
+            for J in Line'First .. Last loop
+               if Line (J) = '#' then
+                  Last := J - 1;
+
+                  exit;
+               end if;
+            end loop;
+
+            --  Parse first field - code point range
+
+            Field_First := Line'First;
+            Scan;
+
+            Parse_Code_Point_Range
+             (Line (Field_First .. Field_Last), First_Code, Last_Code);
+
+            --  Parse second field - property's value
+
+            Field_First := Field_Separator + 1;
+            Scan;
+
+            --  Process all code points in range
+
+            for J in First_Code .. Last_Code loop
+               Process
+                (J, Ucd_Word_Break'Value (Line (Field_First .. Field_Last)));
+            end loop;
+         end if;
+      end loop;
+
+      Ada.Text_IO.Close (File);
+   end Read_Word_Break_Property;
 
    ----------
    -- Fill --
@@ -292,11 +446,24 @@ procedure Gen_Breaks is
 
    procedure Fill (Code : Code_Point; Value : Ucd_Grapheme_Cluster_Break) is
    begin
-      Values (Code) := Value;
+      Values (Code).GCB := Value;
+      Grapheme_Cluster_Code_Points_Loaded :=
+        Grapheme_Cluster_Code_Points_Loaded + 1;
+   end Fill;
+
+   ----------
+   -- Fill --
+   ----------
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Word_Break) is
+   begin
+      Values (Code).WB := Value;
+      Word_Code_Points_Loaded := Word_Code_Points_Loaded + 1;
    end Fill;
 
 begin
-   Read (Fill'Access);
+   Read_Grapheme_Break_Property (Fill'Access);
+   Read_Word_Break_Property (Fill'Access);
 
    --  Pack groups: reuse groups with the same values.
 
@@ -307,6 +474,10 @@ begin
          then
             Groups (J).Share := K;
             Groups (K).Count := Groups (K).Count + 1;
+
+            if J /= K then
+               Groups_Reused := Groups_Reused + 1;
+            end if;
 
             exit;
          end if;
@@ -421,32 +592,38 @@ begin
    for J in Groups'Range loop
       if not Generated (Groups (J).Share) then
          declare
-            Counts  : array (Ucd_Grapheme_Cluster_Break) of Natural
-              := (others => 0);
-            Default : Ucd_Grapheme_Cluster_Break;
+            Counts  : array (Ucd_Grapheme_Cluster_Break, Ucd_Word_Break)
+              of Natural
+                := (others => (others => 0));
+            Default : Break_Values;
             Maximum : Natural := 0;
-            N       : Natural := 0;
-            Current : Ucd_Grapheme_Cluster_Break;
+            Current : Break_Values;
             First   : Second_Stage;
             Last    : Second_Stage;
 
          begin
             for K in Second_Stage loop
-               Counts (Values (J * 256 + K)) :=
-                 Counts (Values (J * 256 + K)) + 1;
+               declare
+                  R : Break_Values renames Values (J * 256 + K);
+
+               begin
+                  Counts (R.GCB, R.WB) := Counts (R.GCB, R.WB) + 1;
+               end;
             end loop;
 
-            for J in Counts'Range loop
-               if Maximum < Counts (J) then
-                  Default := J;
-                  Maximum := Counts (J);
-               end if;
+            for J1 in Counts'Range (1) loop
+               for J2 in Counts'Range (2) loop
+                  if Maximum < Counts (J1, J2) then
+                     Default := (J1, J2);
+                     Maximum := Counts (J1, J2);
+                  end if;
+               end loop;
             end loop;
 
             Ada.Text_IO.New_Line;
             Ada.Text_IO.Put_Line
              ("   Group_" & First_Stage_Image (Groups (J).Share)
-                & " : aliased constant Grapheme_Cluster_Break_Second_Stage");
+                & " : aliased constant Break_Second_Stage");
             Ada.Text_IO.Put
              ("     := (");
 
@@ -467,32 +644,25 @@ begin
                             & Second_Stage_Image (First)
                             & "# .. 16#"
                             & Second_Stage_Image (Last)
-                            & "# => "
-                            & Grapheme_Cluster_Break_Image (Current).all
-                            & ',');
+                            & "# => ("
+                            & Grapheme_Cluster_Break_Image (Current.GCB).all
+                            & ", "
+                            & Word_Break_Image (Current.WB).all
+                            & "),");
 
                      else
                         Ada.Text_IO.Put
                          ("16#"
                             & Second_Stage_Image (First)
-                            & "#           => "
-                            & Grapheme_Cluster_Break_Image (Current).all
-                            & ',');
+                            & "#           => ("
+                            & Grapheme_Cluster_Break_Image (Current.GCB).all
+                            & ", "
+                            & Word_Break_Image (Current.WB).all
+                            & "),");
                      end if;
 
-                     case N mod 2 is
-                        when 0 =>
-                           Ada.Text_IO.Set_Col (44);
-
-                        when 1 =>
-                           Ada.Text_IO.New_Line;
-                           Ada.Text_IO.Set_Col (10);
-
-                        when others =>
-                           raise Program_Error;
-                     end case;
-
-                     N := N + 1;
+                     Ada.Text_IO.New_Line;
+                     Ada.Text_IO.Set_Col (10);
                   end if;
 
                   Current := Values (J * 256 + K);
@@ -502,9 +672,11 @@ begin
             end loop;
 
             Ada.Text_IO.Put_Line
-             ("others           => "
-                & Grapheme_Cluster_Break_Image (Default).all
-                & ");");
+             ("others           => ("
+                & Grapheme_Cluster_Break_Image (Default.GCB).all
+                & ", "
+                & Word_Break_Image (Default.WB).all
+                & "));");
 
             Generated (J) := True;
          end;
@@ -525,8 +697,7 @@ begin
       end loop;
 
       Ada.Text_IO.New_Line;
-      Ada.Text_IO.Put_Line
-       ("   Property : constant Grapheme_Cluster_Break_First_Stage");
+      Ada.Text_IO.Put_Line ("   Property : constant Break_First_Stage");
       Ada.Text_IO.Put ("     := (");
 
       for J in Groups'Range loop
@@ -560,4 +731,17 @@ begin
 
    Ada.Text_IO.New_Line;
    Ada.Text_IO.Put_Line ("end Matreshka.Internals.Ucd.Breaks;");
+
+   --  Output statistic information:
+
+   Ada.Text_IO.Put_Line
+    (Ada.Text_IO.Standard_Error,
+     "GCB properties loaded  :"
+       & Natural'Image (Grapheme_Cluster_Code_Points_Loaded));
+   Ada.Text_IO.Put_Line
+    (Ada.Text_IO.Standard_Error,
+     "WB properties loaded   :" & Natural'Image (Word_Code_Points_Loaded));
+   Ada.Text_IO.Put_Line
+    (Ada.Text_IO.Standard_Error,
+     "Number of reused groups:" & Natural'Image (Groups_Reused));
 end Gen_Breaks;

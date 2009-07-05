@@ -34,18 +34,6 @@
 
 package body Matreshka.Internals.Unicode is
 
---   subtype Surrogate_Wide_Character is Wide_Character
---     range Wide_Character'Val (Surrogate_First)
---             .. Wide_Character'Val (Surrogate_Last);
---
---   subtype High_Surrogate_Wide_Character is Surrogate_Wide_Character
---     range Wide_Character'Val (High_Surrogate_First)
---             .. Wide_Character'Val (High_Surrogate_Last);
---
---   subtype Low_Surrogate_Wide_Character is Surrogate_Wide_Character
---     range Wide_Character'Val (Low_Surrogate_First)
---             .. Wide_Character'Val (Low_Surrogate_Last);
-
    subtype Surrogate_Code_Point is Code_Point
      range Surrogate_First .. Surrogate_Last;
 
@@ -60,7 +48,7 @@ package body Matreshka.Internals.Unicode is
         --  Codes outside Unicode code point range.
 
           and then Item not in Surrogate_Code_Point
-          --  Codes reserved for Utf18 surrogate pairs.
+          --  Codes reserved for Utf16 surrogate pairs.
 
           and then (Item and Code_Unit_32 (16#FFFF#))
             not in 16#FFFE# .. 16#FFFF#;
