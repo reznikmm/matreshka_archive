@@ -38,7 +38,7 @@ procedure Gen_Breaks is
    SentenceBreakProperty_File : constant String
      := "auxiliary/SentenceBreakProperty.txt";
    LineBreakProperty_File     : constant String
-     := "LineBreak.txt";
+     := "extracted/DerivedLineBreak.txt";
 
    type Code_Unit_32 is mod 2 ** 32;
    subtype Code_Point is Code_Unit_32 range 0 .. 16#10_FFFF#;
