@@ -102,8 +102,21 @@ package body Matreshka.Strings is
    ---------
 
    function "&"
-    (Left  : Universal_String;
-     Right : Universal_String)
+    (Left  : Universal_String'Class;
+     Right : Universal_Character'Class)
+       return Universal_String
+   is
+   begin
+      return Left & Right.To_Wide_Wide_Character;
+   end "&";
+
+   ---------
+   -- "&" --
+   ---------
+
+   function "&"
+    (Left  : Universal_String'Class;
+     Right : Universal_String'Class)
        return Universal_String
    is
       L_D : constant not null String_Private_Data_Access := Left.Data;
@@ -111,10 +124,10 @@ package body Matreshka.Strings is
 
    begin
       if L_D.Length = 0 then
-         return Right;
+         return Universal_String (Right);
 
       elsif R_D.Length = 0 then
-         return Left;
+         return Universal_String (Left);
 
       else
          return
@@ -142,7 +155,7 @@ package body Matreshka.Strings is
    ---------
 
    function "&"
-    (Left  : Universal_String;
+    (Left  : Universal_String'Class;
      Right : Wide_Wide_Character)
        return Universal_String
    is
@@ -321,6 +334,19 @@ package body Matreshka.Strings is
          Dereference (Self);
       end if;
    end Dereference;
+
+   --------------
+   -- Elemennt --
+   --------------
+
+   function Element
+    (Self  : Universal_String'Class;
+     Index : Positive)
+       return Universal_Character
+   is
+   begin
+      return To_Universal_Character (Self.Element (Index));
+   end Element;
 
    -------------
    -- Element --
@@ -586,6 +612,24 @@ package body Matreshka.Strings is
          raise;
    end To_Utf16_String;
 
+   ----------------------------
+   -- To_Universal_Character --
+   ----------------------------
+
+   function To_Universal_Character
+    (Self : Wide_Wide_Character)
+       return Universal_Character
+   is
+   begin
+      if Is_Valid_Unicode_Code_Point (Wide_Wide_Character'Pos (Self)) then
+         return Universal_Character'(C => Wide_Wide_Character'Pos (Self));
+
+      else
+         raise Constraint_Error
+           with "Wide_Wide_Character is not a valid Unicode code point";
+      end if;
+   end To_Universal_Character;
+
    -------------------------
    -- To_Universal_String --
    -------------------------
@@ -622,6 +666,18 @@ package body Matreshka.Strings is
                     Index_Map  => null,
                     Cursors    => null));
    end To_Universal_String;
+
+   ----------------------------
+   -- To_Wide_Wide_Character --
+   ----------------------------
+
+   function To_Wide_Wide_Character
+    (Self : Universal_Character)
+       return Wide_Wide_Character
+   is
+   begin
+      return Wide_Wide_Character'Val (Self.C);
+   end To_Wide_Wide_Character;
 
    -------------------------
    -- To_Wide_Wide_String --

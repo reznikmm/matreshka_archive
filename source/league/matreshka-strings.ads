@@ -31,10 +31,27 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package provides abstractions for Unicode characters (code points)
+--  and strings (sequences of Unicode code points). All operations in this
+--  package and its children packages depends from the current or explicitly
+--  specified locale.
+--
+--  The primary purpose of Unicode_Character type is provide the gateway to
+--  Unicode Character Database.
+--
+--  The Unicode_String type provides unbounded strings of Unicode characters.
+--  It utilizes implicit sharing technology (also known as copy-on-write), so
+--  copy operations has constant execution time.
+--
+--  Cursors child package and its children provides different kinds of
+--  iterators - character, grapheme cluster, word, sentence, line breaks.
+--  See these packages for detailed information.
+------------------------------------------------------------------------------
 private with Ada.Finalization;
 private with Ada.Streams;
 
 private with Matreshka.Internals.Atomics.Counters;
+private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
 
 package Matreshka.Strings is
@@ -42,7 +59,25 @@ package Matreshka.Strings is
    pragma Preelaborate;
    pragma Remote_Types;
 
+   type Universal_Character is tagged private;
+
    type Universal_String is tagged private;
+
+   -------------------------
+   -- Universal_Character --
+   -------------------------
+
+   function To_Wide_Wide_Character
+    (Self : Universal_Character)
+       return Wide_Wide_Character;
+
+   function To_Universal_Character
+    (Self : Wide_Wide_Character)
+       return Universal_Character;
+
+   ----------------------
+   -- Universal_String --
+   ----------------------
 
    function To_Universal_String (Item : Wide_Wide_String)
      return Universal_String;
@@ -55,20 +90,41 @@ package Matreshka.Strings is
    function Element
     (Self  : Universal_String'Class;
      Index : Positive)
+       return Universal_Character;
+
+   function Element
+    (Self  : Universal_String'Class;
+     Index : Positive)
        return Wide_Wide_Character;
-   --  XXX Universal_Character ???
 
    function "&"
-    (Left  : Universal_String;
-     Right : Universal_String)
+    (Left  : Universal_String'Class;
+     Right : Universal_Character'Class)
        return Universal_String;
 
    function "&"
-    (Left  : Universal_String;
+    (Left  : Universal_String'Class;
      Right : Wide_Wide_Character)
        return Universal_String;
 
+   function "&"
+    (Left  : Universal_String'Class;
+     Right : Universal_String'Class)
+       return Universal_String;
+
 private
+
+   -------------------------
+   -- Universal_Character --
+   -------------------------
+
+   type Universal_Character is tagged record
+      C : Matreshka.Internals.Unicode.Code_Point;
+   end record;
+
+   ----------------------
+   -- Universal_String --
+   ----------------------
 
    procedure Read
     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
@@ -172,6 +228,10 @@ private
    overriding procedure Adjust (Self : in out Universal_String);
 
    overriding procedure Finalize (Self : in out Universal_String);
+
+   ---------------------
+   -- Abstract_Cursor --
+   ---------------------
 
    type Abstract_Cursor is
      abstract new Ada.Finalization.Controlled with
