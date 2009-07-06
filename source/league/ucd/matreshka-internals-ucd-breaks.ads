@@ -2482,7 +2482,7 @@ package Matreshka.Internals.Ucd.Breaks is
    Group_0E01 : aliased constant Break_Second_Stage
      := (others           => (Extend, Extend, Extend, Combining_Mark));
 
-   Property : constant Break_First_Stage
+   Property : aliased constant Break_First_Stage
      := (16#0000# => Group_0000'Access, 16#0001# => Group_0001'Access,
          16#0002# => Group_0002'Access, 16#0003# => Group_0003'Access,
          16#0004# => Group_0004'Access, 16#0005# => Group_0005'Access,

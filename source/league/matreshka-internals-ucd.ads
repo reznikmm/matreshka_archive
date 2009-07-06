@@ -143,4 +143,6 @@ package Matreshka.Internals.Ucd is
    type Break_First_Stage is
      array (First_Stage_Index) of Break_Second_Stage_Access;
 
+   type Break_First_Stage_Access is access constant Break_First_Stage;
+
 end Matreshka.Internals.Ucd;

@@ -897,7 +897,8 @@ begin
       end loop;
 
       Ada.Text_IO.New_Line;
-      Ada.Text_IO.Put_Line ("   Property : constant Break_First_Stage");
+      Ada.Text_IO.Put_Line
+       ("   Property : aliased constant Break_First_Stage");
       Ada.Text_IO.Put ("     := (");
 
       for J in Groups'Range loop

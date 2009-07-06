@@ -31,21 +31,35 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Matreshka.Internals.Locales;
 
-package Matreshka.Strings.Cursors is
+package body Matreshka.Strings.Cursors is
 
-   pragma Preelaborate;
+   use type Matreshka.Internals.Locales.Locale_Data_Access;
 
-private
+   --------------
+   -- Finalize --
+   --------------
 
-   type Abstract_Tailored_Cursor is abstract new Abstract_Cursor with record
-      Locale : Matreshka.Internals.Locales.Locale_Data_Access;
-   end record;
+   overriding procedure Finalize (Self : in out Abstract_Tailored_Cursor) is
+   begin
+      if Self.Locale /= null then
+         Matreshka.Internals.Locales.Dereference (Self.Locale);
+      end if;
 
-   procedure Set_Locale (Self : in out Abstract_Tailored_Cursor'Class);
-   --  Set current locale.
+      Abstract_Cursor (Self).Finalize;
+   end Finalize;
 
-   overriding procedure Finalize (Self : in out Abstract_Tailored_Cursor);
+   ----------------
+   -- Set_Locale --
+   ----------------
+
+   procedure Set_Locale (Self : in out Abstract_Tailored_Cursor'Class) is
+   begin
+      if Self.Locale /= null then
+         Matreshka.Internals.Locales.Dereference (Self.Locale);
+      end if;
+
+      Self.Locale := Matreshka.Internals.Locales.Get_Locale;
+   end Set_Locale;
 
 end Matreshka.Strings.Cursors;

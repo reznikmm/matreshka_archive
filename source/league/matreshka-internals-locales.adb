@@ -31,21 +31,55 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Matreshka.Internals.Locales;
+with Ada.Unchecked_Deallocation;
 
-package Matreshka.Strings.Cursors is
+with Matreshka.Internals.Ucd.Breaks;
 
-   pragma Preelaborate;
+package body Matreshka.Internals.Locales is
 
-private
+   Default_Locale : aliased Locale_Data
+     := (Breaks => Matreshka.Internals.Ucd.Breaks.Property'Access,
+         others => <>);
 
-   type Abstract_Tailored_Cursor is abstract new Abstract_Cursor with record
-      Locale : Matreshka.Internals.Locales.Locale_Data_Access;
-   end record;
+   -----------------
+   -- Dereference --
+   -----------------
 
-   procedure Set_Locale (Self : in out Abstract_Tailored_Cursor'Class);
-   --  Set current locale.
+   procedure Dereference (Self : in out Locale_Data_Access) is
 
-   overriding procedure Finalize (Self : in out Abstract_Tailored_Cursor);
+      procedure Free is
+        new Ada.Unchecked_Deallocation (Locale_Data, Locale_Data_Access);
 
-end Matreshka.Strings.Cursors;
+   begin
+      if Matreshka.Internals.Atomics.Counters.Decrement
+          (Self.Counter'Access)
+      then
+         pragma Assert (Self /= Default_Locale'Access);
+
+         Free (Self);
+      end if;
+   end Dereference;
+
+   ----------------
+   -- Get_Locale --
+   ----------------
+
+   function Get_Locale return not null Locale_Data_Access is
+      Result : constant not null Locale_Data_Access := Default_Locale'Access;
+
+   begin
+      Reference (Result);
+
+      return Result;
+   end Get_Locale;
+
+   ---------------
+   -- Reference --
+   ---------------
+
+   procedure Reference (Self : Locale_Data_Access) is
+   begin
+      Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+   end Reference;
+
+end Matreshka.Internals.Locales;

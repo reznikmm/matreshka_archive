@@ -31,7 +31,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Ucd.Breaks;
 with Matreshka.Internals.Unicode;
 
 package body Matreshka.Strings.Cursors.Grapheme_Clusters is
@@ -70,7 +69,8 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    procedure Unchecked_Next
     (Item     : Utf16_String;
      Position : in out Positive;
-     Property : out Grapheme_Cluster_Break);
+     Property : out Grapheme_Cluster_Break;
+     Locale   : not null Matreshka.Internals.Locales.Locale_Data_Access);
    pragma Inline (Unchecked_Next);
    --  Returns value of the break property for the character at the specified
    --  position and move position to the next character.
@@ -78,7 +78,8 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    procedure Unchecked_Previous
     (Item     : Utf16_String;
      Position : in out Positive;
-     Property : out Grapheme_Cluster_Break);
+     Property : out Grapheme_Cluster_Break;
+     Locale   : not null Matreshka.Internals.Locales.Locale_Data_Access);
    pragma Inline (Unchecked_Next);
    --  Moves specified position to the previous character and returns value
    --  of the break property for this character.
@@ -144,7 +145,8 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
 
    begin
       if Self.Current_Position <= Self.Data.Last then
-         Unchecked_Next (D.Value.all, Self.Next_Position, Self.Current_State);
+         Unchecked_Next
+          (D.Value.all, Self.Next_Position, Self.Current_State, Self.Locale);
          Self.Current_Length := 1;
 
          declare
@@ -153,7 +155,8 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
 
          begin
             while Self.Next_Position <= D.Last loop
-               Unchecked_Next (D.Value.all, Aux_Position, Self.Next_State);
+               Unchecked_Next
+                (D.Value.all, Aux_Position, Self.Next_State, Self.Locale);
 
                exit when Break_Machine (Aux_State, Self.Next_State);
 
@@ -178,7 +181,10 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    begin
       if Self.Current_Position > D.Value'First then 
          Unchecked_Previous
-          (D.Value.all, Self.Previous_Position, Self.Previous_State);
+          (D.Value.all,
+           Self.Previous_Position,
+           Self.Previous_State,
+           Self.Locale);
          Self.Previous_Length := 1;
 
          while Self.Previous_Position > D.Value'First loop
@@ -187,7 +193,8 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
                Aux_State    : Grapheme_Cluster_Break;
 
             begin
-               Unchecked_Previous (D.Value.all, Aux_Position, Aux_State);
+               Unchecked_Previous
+                (D.Value.all, Aux_Position, Aux_State, Self.Locale);
 
                exit when Break_Machine (Aux_State, Self.Previous_State);
 
@@ -213,6 +220,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    is
    begin
       Self.Attach (Item);
+      Self.Set_Locale;
 
       Self.Current_Position  := Self.Data.Value'First;
       Self.Previous_Position := Self.Current_Position - 1;
@@ -248,6 +256,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    is
    begin
       Self.Attach (Item);
+      Self.Set_Locale;
 
       Self.Next_Position     := Self.Data.Last + 1;
       Self.Current_Position  := Self.Next_Position;
@@ -334,14 +343,15 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    procedure Unchecked_Next
     (Item     : Utf16_String;
      Position : in out Positive;
-     Property : out Grapheme_Cluster_Break)
+     Property : out Grapheme_Cluster_Break;
+     Locale   : not null Matreshka.Internals.Locales.Locale_Data_Access)
    is
       C : Code_Point;
 
    begin
       Unchecked_Next (Item, Position, C);
       Property :=
-        Matreshka.Internals.Ucd.Breaks.Property
+        Locale.Breaks
          (First_Stage_Index (C / 16#100#))
          (Second_Stage_Index (C mod 16#100#)).GCB;
    end Unchecked_Next;
@@ -353,14 +363,15 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    procedure Unchecked_Previous
     (Item     : Utf16_String;
      Position : in out Positive;
-     Property : out Grapheme_Cluster_Break)
+     Property : out Grapheme_Cluster_Break;
+     Locale   : not null Matreshka.Internals.Locales.Locale_Data_Access)
    is
       C : Code_Point;
 
    begin
       Unchecked_Previous (Item, Position, C);
       Property :=
-        Matreshka.Internals.Ucd.Breaks.Property
+        Locale.Breaks
          (First_Stage_Index (C / 16#100#))
          (Second_Stage_Index (C mod 16#100#)).GCB;
    end Unchecked_Previous;

@@ -31,21 +31,31 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Matreshka.Internals.Locales;
+--  This package provides type for representations of the locale's data and
+--  internal operations on locales data.
+------------------------------------------------------------------------------
+with Matreshka.Internals.Atomics.Counters;
+with Matreshka.Internals.Ucd;
 
-package Matreshka.Strings.Cursors is
+package Matreshka.Internals.Locales is
 
    pragma Preelaborate;
 
-private
-
-   type Abstract_Tailored_Cursor is abstract new Abstract_Cursor with record
-      Locale : Matreshka.Internals.Locales.Locale_Data_Access;
+   type Locale_Data is limited record
+      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Breaks  : not null Matreshka.Internals.Ucd.Break_First_Stage_Access;
    end record;
 
-   procedure Set_Locale (Self : in out Abstract_Tailored_Cursor'Class);
-   --  Set current locale.
+   type Locale_Data_Access is access all Locale_Data;
 
-   overriding procedure Finalize (Self : in out Abstract_Tailored_Cursor);
+   procedure Reference (Self : Locale_Data_Access);
+   pragma Inline (Reference);
 
-end Matreshka.Strings.Cursors;
+   procedure Dereference (Self : in out Locale_Data_Access);
+
+   function Get_Locale return not null Locale_Data_Access;
+   --  Returns current locale. Reference counter of locale is automatically
+   --  incremented, so caller is responsible to call Dereference for free
+   --  locale then it is no longer needed.
+
+end Matreshka.Internals.Locales;
