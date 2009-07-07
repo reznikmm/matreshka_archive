@@ -27,7 +27,12 @@
 with Ada.Command_Line;
 with Ada.Text_IO;
 
+with Generic_Read_Two_Fields;
+with Unicode_Types;
+
 procedure Gen_Breaks is
+
+   use Unicode_Types;
 
    UCD_Root_Directory         : constant String
      := Ada.Command_Line.Argument (1);
@@ -40,8 +45,6 @@ procedure Gen_Breaks is
    LineBreakProperty_File     : constant String
      := "extracted/DerivedLineBreak.txt";
 
-   type Code_Unit_32 is mod 2 ** 32;
-   subtype Code_Point is Code_Unit_32 range 0 .. 16#10_FFFF#;
    subtype First_Stage is Code_Point range 0 .. Code_Point'Last / 256;
    subtype Second_Stage is Code_Point range 0 .. 255;
 
@@ -360,20 +363,6 @@ procedure Gen_Breaks is
    Sentence_Code_Points_Loaded         : Natural := 0;
    Line_Code_Points_Loaded             : Natural := 0;
 
-   generic
-      type Value_Type is (<>);
-      with function Value (Image : String) return Value_Type;
-
-   procedure Generic_Read
-    (File_Name : String;
-     Process   : not null access procedure
-      (Code : Code_Point; Value : Value_Type));
-
-   procedure Parse_Code_Point_Range
-    (Text       : String;
-     First_Code : out Code_Point;
-     Last_Code  : out Code_Point);
-
    procedure Fill (Code : Code_Point; Value : Ucd_Grapheme_Cluster_Break);
 
    procedure Fill (Code : Code_Point; Value : Ucd_Word_Break);
@@ -387,6 +376,20 @@ procedure Gen_Breaks is
    function Second_Stage_Image (Item : Second_Stage) return String;
 
    function Value (Image : String) return Ucd_Line_Break;
+
+   procedure Read_Grapheme_Break_Property is
+     new Generic_Read_Two_Fields
+          (Ucd_Grapheme_Cluster_Break, Ucd_Grapheme_Cluster_Break'Value);
+
+   procedure Read_Word_Break_Property is
+     new Generic_Read_Two_Fields (Ucd_Word_Break, Ucd_Word_Break'Value);
+
+   procedure Read_Sentence_Break_Property is
+     new Generic_Read_Two_Fields
+          (Ucd_Sentence_Break, Ucd_Sentence_Break'Value);
+
+   procedure Read_Line_Break_Property is
+     new Generic_Read_Two_Fields (Ucd_Line_Break, Value);
 
    ----------
    -- Fill --
@@ -447,96 +450,6 @@ procedure Gen_Breaks is
       return Result;
    end First_Stage_Image;
 
-   ------------------
-   -- Generic_Read --
-   ------------------
-
-   procedure Generic_Read
-    (File_Name : String;
-     Process   : not null access procedure
-      (Code : Code_Point; Value : Value_Type))
-   is
-      File            : Ada.Text_IO.File_Type;
-      Line            : String (1 .. 1024);
-      Last            : Natural;
-      Field_First     : Positive;
-      Field_Last      : Positive;
-      Field_Separator : Positive;
-      First_Code      : Code_Point;
-      Last_Code       : Code_Point;
-
-      procedure Scan;
-
-      ----------
-      -- Scan --
-      ----------
-
-      procedure Scan is
-      begin
-         Field_Last := Field_First;
-
-         while Field_Last < Last loop
-            Field_Last := Field_Last + 1;
-
-            if Line (Field_Last) = ';' then
-               Field_Last := Field_Last - 1;
-
-               exit;
-            end if;
-         end loop;
-
-         Field_Separator := Field_Last + 1;
-
-         while Line (Field_First) = ' ' loop
-            Field_First := Field_First + 1;
-         end loop;
-
-         while Line (Field_Last) = ' ' loop
-            Field_Last := Field_Last - 1;
-         end loop;
-      end Scan;
-
-   begin
-      Ada.Text_IO.Open (File, Ada.Text_IO.In_File, File_Name);
-
-      while not Ada.Text_IO.End_Of_File (File) loop
-         Ada.Text_IO.Get_Line (File, Line, Last);
-
-         if Last /= 0 and then Line (Line'First) /= '#' then
-            --  Drop comment
-
-            for J in Line'First .. Last loop
-               if Line (J) = '#' then
-                  Last := J - 1;
-
-                  exit;
-               end if;
-            end loop;
-
-            --  Parse first field - code point range
-
-            Field_First := Line'First;
-            Scan;
-
-            Parse_Code_Point_Range
-             (Line (Field_First .. Field_Last), First_Code, Last_Code);
-
-            --  Parse second field - property's value
-
-            Field_First := Field_Separator + 1;
-            Scan;
-
-            --  Process all code points in range
-
-            for J in First_Code .. Last_Code loop
-               Process (J, Value (Line (Field_First .. Field_Last)));
-            end loop;
-         end if;
-      end loop;
-
-      Ada.Text_IO.Close (File);
-   end Generic_Read;
-
    ------------------------
    -- Second_Stage_Image --
    ------------------------
@@ -553,55 +466,6 @@ procedure Gen_Breaks is
       return Result;
    end Second_Stage_Image;
 
-   ----------------------------
-   -- Parse_Code_Point_Range --
-   ----------------------------
-
-   procedure Parse_Code_Point_Range
-    (Text       : String;
-     First_Code : out Code_Point;
-     Last_Code  : out Code_Point)
-   is
-      First : Positive := Text'First;
-      Last  : Natural;
-
-      procedure Scan;
-
-      ----------
-      -- Scan --
-      ----------
-
-      procedure Scan is
-      begin
-         Last := First - 1;
-
-         while Last < Text'Last loop
-            Last := Last + 1;
-
-            if Text (Last) not in '0' .. '9'
-              and then Text (Last) not in 'A' .. 'F'
-            then
-               Last := Last - 1;
-
-               exit;
-            end if;
-         end loop;
-      end Scan;
-
-   begin
-      Scan;
-      First_Code := Code_Point'Value ("16#" & Text (First .. Last) & "#");
-      Last_Code := First_Code;
-
-      First := Last + 1;
-
-      if First < Text'Last and then Text (First .. First + 1) = ".." then
-         First := First + 2;
-         Scan;
-         Last_Code := Code_Point'Value ("16#" & Text (First .. Last) & "#");
-      end if;
-   end Parse_Code_Point_Range;
-
    -----------
    -- Value --
    -----------
@@ -616,21 +480,6 @@ procedure Gen_Breaks is
 
       raise Constraint_Error with "Invalid value for Line_Break property";
    end Value;
-
-   --  Following instantiations must be done after Generic_Read have been seen.
-
-   procedure Read_Grapheme_Break_Property is
-     new Generic_Read
-          (Ucd_Grapheme_Cluster_Break, Ucd_Grapheme_Cluster_Break'Value);
-
-   procedure Read_Word_Break_Property is
-     new Generic_Read (Ucd_Word_Break, Ucd_Word_Break'Value);
-
-   procedure Read_Sentence_Break_Property is
-     new Generic_Read (Ucd_Sentence_Break, Ucd_Sentence_Break'Value);
-
-   procedure Read_Line_Break_Property is
-     new Generic_Read (Ucd_Line_Break, Value);
 
 begin
    Read_Grapheme_Break_Property
