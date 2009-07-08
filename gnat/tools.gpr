@@ -28,7 +28,7 @@ with "xmlada";
 
 project Tools is
 
-   for Main use ("gen_breaks.adb", "gen_segments.adb");
+   for Main use ("gen_breaks.adb", "gen_core_props.adb", "gen_segments.adb");
    for Object_Dir use "../.objs";
    for Source_Dirs use ("../tools");
 

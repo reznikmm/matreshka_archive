@@ -39,6 +39,154 @@ package Matreshka.Internals.Ucd is
    type First_Stage_Index is mod 16#1100#;
    type Second_Stage_Index is mod 16#100#;
 
+   type General_Category is
+    (Control,
+     Format,
+     Unassigned,
+     Private_Use,
+     Surrogate,
+
+     Lowercase_Letter,
+     Titlecase_Letter,
+     Uppercase_Letter,
+     Modifier_Letter,
+     Other_Letter,
+
+     Spacing_Mark,
+     Enclosing_Mark,
+     Nonspacing_Mark,
+
+     Decimal_Number,
+     Letter_Number,
+     Other_Number,
+
+     Connector_Punctuation,
+     Dash_Punctuation,
+     Close_Punctuation,
+     Final_Punctuation,
+     Initial_Punctuation,
+     Other_Punctuation,
+     Open_Punctuation,
+
+     Currency_Symbol,
+     Modifier_Symbol,
+     Math_Symbol,
+     Other_Symbol,
+
+     Line_Separator,
+     Paragraph_Separator,
+     Space_Separator);
+   for General_Category'Size use 5;
+
+--   subtype Other is General_Category range Control .. Surrogate;
+--   subtype Letter is General_Category range Lowercase_Letter .. Other_Letter;
+--   subtype Cased_Letter is Letter range Lowercase_Letter .. Uppercase_Letter;
+--   subtype Mark is General_Category range Spacing_Mark .. Nonspacing_Mark;
+--   subtype Number is General_Category range Decimal_Number .. Other_Number;
+--   subtype Punctuation is General_Category range Connector_Punctuation .. Open_Punctuation;
+--   subtype Symbol is General_Category range Currency_Symbol .. Other_Symbol;
+--   subtype Separator is General_Category range Line_Separator .. Space_Separator;
+
+   type Canonical_Combining_Class is mod 256;
+
+   Not_Reordered        : constant Canonical_Combining_Class := 0;
+   Overlay              : constant Canonical_Combining_Class := 1;
+   Nukta                : constant Canonical_Combining_Class := 7;
+   Kana_Voicing         : constant Canonical_Combining_Class := 8;
+   Virama               : constant Canonical_Combining_Class := 9;
+   Attached_Below_Left  : constant Canonical_Combining_Class := 200;
+   Attached_Below       : constant Canonical_Combining_Class := 202;
+   Attached_Above_Right : constant Canonical_Combining_Class := 216;
+   Below_Left           : constant Canonical_Combining_Class := 218;
+   Below                : constant Canonical_Combining_Class := 220;
+   Below_Right          : constant Canonical_Combining_Class := 222;
+   Left                 : constant Canonical_Combining_Class := 224;
+   Right                : constant Canonical_Combining_Class := 226;
+   Above_Left           : constant Canonical_Combining_Class := 228;
+   Above                : constant Canonical_Combining_Class := 230;
+   Above_Right          : constant Canonical_Combining_Class := 232;
+   Double_Below         : constant Canonical_Combining_Class := 233;
+   Double_Above         : constant Canonical_Combining_Class := 234;
+   Iota_Subscript       : constant Canonical_Combining_Class := 240;
+
+   type Boolean_Properties is
+    (ASCII_Hex_Digit,
+     Alphabetic,                    --  Derived
+     Bidi_Control,
+--     Bidi_Mirrored,                 --  XXX
+--     Composition_Exclusion,         --  XXX
+--     Full_Composition_Exclusion,    --  XXX
+     Dash,
+     Deprecated,
+     Default_Ignorable_Code_Point,  --  Derived
+     Diacritic,
+     Extender,
+     Grapheme_Base,                 --  Derived
+     Grapheme_Extend,               --  Derived
+--     Grapheme_Link,                 --  Deprecated, derived
+     Hex_Digit,
+     Hyphen,
+     ID_Continue,                   --  Derived
+     Ideographic,
+     ID_Start,                      --  Derived
+     IDS_Binary_Operator,
+     IDS_Trinary_Operator,
+     Join_Control,
+     Logical_Order_Exception,
+     Lowercase,                     --  Derived
+     Math,                          --  Derived
+     Noncharacter_Code_Point,
+     Other_Alphabetic,
+     Other_Default_Ignorable_Code_Point,
+     Other_Grapheme_Extend,
+     Other_ID_Continue,
+     Other_ID_Start,
+     Other_Lowercase,
+     Other_Math,
+     Other_Uppercase,
+     Pattern_Syntax,
+     Pattern_White_Space,
+     Quotation_Mark,
+     Radical,
+     Soft_Dotted,
+     STerm,
+     Terminal_Punctuation,
+     Unified_Ideograph,
+     Uppercase,                     --  Derived
+     Variation_Selector,
+     White_Space,
+     XID_Continue,                  --  Derived
+     XID_Start);                    --  Derived
+--     Expands_On_NFC,                --  XXX
+--     Expands_On_NFD,                --  XXX
+--     Expands_On_NFKC,               --  XXX
+--     Expands_On_NFKD);              --  XXX
+
+   type Boolean_Values is array (Boolean_Properties) of Boolean;
+   for Boolean_Values'Component_Size use 1;
+   for Boolean_Values'Size use 51;  --  43 actually used for now
+
+   type Core_Values is record
+      GC  : General_Category;
+      CCC : Canonical_Combining_Class;
+      B   : Boolean_Values;
+   end record;
+   for Core_Values'Size use 64;
+   for Core_Values use record
+      CCC at 0 range 0 .. 7;
+      GC  at 0 range 8 .. 12;
+      B   at 0 range 13 .. 63;
+   end record;
+
+   type Core_Second_Stage is array (Second_Stage_Index) of Core_Values;
+
+   type Core_Second_State_Access is access constant Core_Second_Stage;
+
+   type Core_First_Stage is
+     array (First_Stage_Index) of Core_Second_State_Access;
+
+   type Core_First_State_Access is access constant Core_First_Stage;
+
    type Grapheme_Cluster_Break is
     (Other,
      CR,
