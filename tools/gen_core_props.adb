@@ -56,6 +56,10 @@ procedure Gen_Core_Props is
    type Properties_Value is record
       GC  : Ucd_General_Category;
       CCC : Ucd_Combining_Class;
+      GCB : Ucd_Grapheme_Cluster_Break;
+      WB  : Ucd_Word_Break;
+      SB  : Ucd_Sentence_Break;
+      LB  : Ucd_Line_Break;
       BP  : Boolean_Properties_Values;
    end record;
 
@@ -64,14 +68,17 @@ procedure Gen_Core_Props is
       Count : Natural;
    end record;
 
-   Values    : array (Code_Point) of Properties_Value
-     := (others => (GC => Cn, CCC => 0, BP => (others => False)));
-   Groups    : array (First_Stage) of Group_Info := (others => (0, 0));
-   Generated : array (First_Stage) of Boolean := (others => False);
-
    procedure Fill (C : Code_Point; Value : Ucd_General_Category);
 
    procedure Fill (C : Code_Point; Value : Ucd_Combining_Class);
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Grapheme_Cluster_Break);
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Word_Break);
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Sentence_Break);
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Line_Break);
 
    procedure Fill (C : Code_Point; Value : Ucd_Prop_List_Properties);
 
@@ -85,6 +92,20 @@ procedure Gen_Core_Props is
      new Generic_Read_Two_Fields
           (Ucd_Combining_Class, Ucd_Combining_Class'Value);
 
+   procedure Read_Grapheme_Break_Property is
+     new Generic_Read_Two_Fields
+          (Ucd_Grapheme_Cluster_Break, Ucd_Grapheme_Cluster_Break'Value);
+
+   procedure Read_Word_Break_Property is
+     new Generic_Read_Two_Fields (Ucd_Word_Break, Ucd_Word_Break'Value);
+
+   procedure Read_Sentence_Break_Property is
+     new Generic_Read_Two_Fields
+          (Ucd_Sentence_Break, Ucd_Sentence_Break'Value);
+
+   procedure Read_Line_Break_Property is
+     new Generic_Read_Two_Fields (Ucd_Line_Break, Value);
+
    procedure Read_Prop_List_Properties is
      new Generic_Read_Two_Fields
           (Ucd_Prop_List_Properties, Ucd_Prop_List_Properties'Value);
@@ -93,11 +114,20 @@ procedure Gen_Core_Props is
      new Generic_Read_Two_Fields
           (Ucd_Derived_Core_Properties, Ucd_Derived_Core_Properties'Value);
 
+   Values    : array (Code_Point) of Properties_Value
+     := (others => (Cn, 0, Other, Other, Other, Unknown, (others => False)));
+   Groups    : array (First_Stage) of Group_Info := (others => (0, 0));
+   Generated : array (First_Stage) of Boolean := (others => False);
+
    Groups_Reused                              : Natural := 0;
    General_Category_Code_Points_Loaded        : Natural := 0;
    Combining_Class_Code_Points_Loaded         : Natural := 0;
    Prop_List_Properties_Code_Points_Loaded    : Natural := 0;
    Derived_Core_Properties_Code_Points_Loaded : Natural := 0;
+   Grapheme_Cluster_Code_Points_Loaded        : Natural := 0;
+   Word_Code_Points_Loaded                    : Natural := 0;
+   Sentence_Code_Points_Loaded                : Natural := 0;
+   Line_Code_Points_Loaded                    : Natural := 0;
 
    ----------
    -- Fill --
@@ -201,11 +231,64 @@ procedure Gen_Core_Props is
       Values (C).BP (To_BP (Value)) := True;
    end Fill;
 
+   ----------
+   -- Fill --
+   ----------
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Line_Break) is
+   begin
+      Values (Code).LB := Value;
+      Line_Code_Points_Loaded := Line_Code_Points_Loaded + 1;
+   end Fill;
+
+   ----------
+   -- Fill --
+   ----------
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Grapheme_Cluster_Break) is
+   begin
+      Values (Code).GCB := Value;
+      Grapheme_Cluster_Code_Points_Loaded :=
+        Grapheme_Cluster_Code_Points_Loaded + 1;
+   end Fill;
+
+   ----------
+   -- Fill --
+   ----------
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Sentence_Break) is
+   begin
+      Values (Code).SB := Value;
+      Sentence_Code_Points_Loaded := Sentence_Code_Points_Loaded + 1;
+   end Fill;
+
+   ----------
+   -- Fill --
+   ----------
+
+   procedure Fill (Code : Code_Point; Value : Ucd_Word_Break) is
+   begin
+      Values (Code).WB := Value;
+      Word_Code_Points_Loaded := Word_Code_Points_Loaded + 1;
+   end Fill;
+
 begin
    Read_General_Category
     (UCD_Root_Directory & '/' & DerivedGeneralCategory_File, Fill'Access);
    Read_Combining_Class
     (UCD_Root_Directory & '/' & DerivedCombiningClass_File, Fill'Access);
+   Read_Grapheme_Break_Property
+    (UCD_Root_Directory & '/' & GraphemeBreakProperty_File,
+     Fill'Access);
+   Read_Word_Break_Property
+    (UCD_Root_Directory & '/' & WordBreakProperty_File,
+     Fill'Access);
+   Read_Sentence_Break_Property
+    (UCD_Root_Directory & '/' & SentenceBreakProperty_File,
+     Fill'Access);
+   Read_Line_Break_Property
+    (UCD_Root_Directory & '/' & LineBreakProperty_File,
+     Fill'Access);
    Read_Prop_List_Properties
     (UCD_Root_Directory & '/' & PropList_File, Fill'Access);
    Read_Derived_Core_Properties
@@ -363,6 +446,14 @@ begin
                    & General_Category_Image (Item.GC).all
                    & ','
                    & Ucd_Combining_Class'Image (Item.CCC)
+                   & ", "
+                   & Grapheme_Cluster_Break_Image (Item.GCB).all
+                   & ", "
+                   & Word_Break_Image (Item.WB).all
+                   & ", "
+                   & Sentence_Break_Image (Item.SB).all
+                   & ", "
+                   & Line_Break_Image (Item.LB).all
                    & ',');
                Ada.Text_IO.Set_Col (Indent);
                Ada.Text_IO.Put ('(');
@@ -478,20 +569,22 @@ begin
                else
                   if Current /= Default then
                      if First /= Last then
-                        Ada.Text_IO.Put
+                        Ada.Text_IO.Put_Line
                          ("16#"
                             & Second_Stage_Image (First)
                             & "# .. 16#"
                             & Second_Stage_Image (Last)
-                            & "# => ");
+                            & "# =>");
+                        Ada.Text_IO.Set_Col (11);
                         Put (Current);
                         Ada.Text_IO.Put (',');
 
                      else
-                        Ada.Text_IO.Put
+                        Ada.Text_IO.Put_Line
                          ("16#"
                             & Second_Stage_Image (First)
-                            & "#           => ");
+                            & "#           =>");
+                        Ada.Text_IO.Set_Col (11);
                         Put (Current);
                         Ada.Text_IO.Put (',');
                      end if;
@@ -569,18 +662,31 @@ begin
 
    Ada.Text_IO.Put_Line
     (Ada.Text_IO.Standard_Error,
-     "GC loaded  :" & Integer'Image (General_Category_Code_Points_Loaded));
+     "GC loaded     :" & Integer'Image (General_Category_Code_Points_Loaded));
    Ada.Text_IO.Put_Line
     (Ada.Text_IO.Standard_Error,
-     "CCC loaded :" & Integer'Image (Combining_Class_Code_Points_Loaded));
+     "CCC loaded    :" & Integer'Image (Combining_Class_Code_Points_Loaded));
    Ada.Text_IO.Put_Line
     (Ada.Text_IO.Standard_Error,
-     "PL loaded  :" & Integer'Image (Prop_List_Properties_Code_Points_Loaded));
+     "GCB loaded    :" & Natural'Image (Grapheme_Cluster_Code_Points_Loaded));
    Ada.Text_IO.Put_Line
     (Ada.Text_IO.Standard_Error,
-     "DCP loaded :"
+     "WB loaded     :" & Natural'Image (Word_Code_Points_Loaded));
+   Ada.Text_IO.Put_Line
+    (Ada.Text_IO.Standard_Error,
+     "SB loaded     :" & Natural'Image (Sentence_Code_Points_Loaded));
+   Ada.Text_IO.Put_Line
+    (Ada.Text_IO.Standard_Error,
+     "LB loaded     :" & Natural'Image (Line_Code_Points_Loaded));
+   Ada.Text_IO.Put_Line
+    (Ada.Text_IO.Standard_Error,
+     "PL loaded     :"
+       & Integer'Image (Prop_List_Properties_Code_Points_Loaded));
+   Ada.Text_IO.Put_Line
+    (Ada.Text_IO.Standard_Error,
+     "DCP loaded    :"
        & Integer'Image (Derived_Core_Properties_Code_Points_Loaded));
    Ada.Text_IO.Put_Line
     (Ada.Text_IO.Standard_Error,
-     "Number of reused groups:" & Natural'Image (Groups_Reused));
+     "Reused groups :" & Natural'Image (Groups_Reused));
 end Gen_Core_Props;

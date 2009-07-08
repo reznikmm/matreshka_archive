@@ -76,7 +76,7 @@ package Matreshka.Internals.Ucd is
      Line_Separator,
      Paragraph_Separator,
      Space_Separator);
-   for General_Category'Size use 5;
+   for General_Category'Size use 8;
 
 --   subtype Other is General_Category range Control .. Surrogate;
 --   subtype Letter is General_Category range Lowercase_Letter .. Other_Letter;
@@ -164,28 +164,7 @@ package Matreshka.Internals.Ucd is
 
    type Boolean_Values is array (Boolean_Properties) of Boolean;
    for Boolean_Values'Component_Size use 1;
-   for Boolean_Values'Size use 51;  --  43 actually used for now
-
-   type Core_Values is record
-      GC  : General_Category;
-      CCC : Canonical_Combining_Class;
-      B   : Boolean_Values;
-   end record;
-   for Core_Values'Size use 64;
-   for Core_Values use record
-      CCC at 0 range 0 .. 7;
-      GC  at 0 range 8 .. 12;
-      B   at 0 range 13 .. 63;
-   end record;
-
-   type Core_Second_Stage is array (Second_Stage_Index) of Core_Values;
-
-   type Core_Second_State_Access is access constant Core_Second_Stage;
-
-   type Core_First_Stage is
-     array (First_Stage_Index) of Core_Second_State_Access;
-
-   type Core_First_State_Access is access constant Core_First_Stage;
+   for Boolean_Values'Size use 64;  --  43 actually used for now
 
    type Grapheme_Cluster_Break is
     (Other,
@@ -275,22 +254,33 @@ package Matreshka.Internals.Ucd is
      ZW_Space);
    for Line_Break'Size use 8;
 
-   type Break_Value is record
+   type Core_Values is record
+      GC  : General_Category;
+      CCC : Canonical_Combining_Class;
       GCB : Grapheme_Cluster_Break;
       WB  : Word_Break;
       SB  : Sentence_Break;
       LB  : Line_Break;
+      B   : Boolean_Values;
    end record;
-   for Break_Value'Size use 32;
+   for Core_Values'Size use 128;
+   for Core_Values use record
+      B   at 0 range   0 ..  63;
+      GC  at 0 range  64 ..  71;
+      CCC at 0 range  72 ..  79;
+      GCB at 0 range  80 ..  87;
+      WB  at 0 range  88 ..  95;
+      SB  at 0 range  96 .. 103;
+      LB  at 0 range 104 .. 111;
+   end record;
 
-   type Break_Second_Stage is array (Second_Stage_Index) of Break_Value;
+   type Core_Second_Stage is array (Second_Stage_Index) of Core_Values;
 
-   type Break_Second_Stage_Access is
-     not null access constant Break_Second_Stage;
+   type Core_Second_Stage_Access is access constant Core_Second_Stage;
 
-   type Break_First_Stage is
-     array (First_Stage_Index) of Break_Second_Stage_Access;
+   type Core_First_Stage is
+     array (First_Stage_Index) of Core_Second_Stage_Access;
 
-   type Break_First_Stage_Access is access constant Break_First_Stage;
+   type Core_First_Stage_Access is access constant Core_First_Stage;
 
 end Matreshka.Internals.Ucd;

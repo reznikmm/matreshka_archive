@@ -33,12 +33,12 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.Ucd.Breaks;
+with Matreshka.Internals.Ucd.Core;
 
 package body Matreshka.Internals.Locales is
 
    Default_Locale : aliased Locale_Data
-     := (Breaks => Matreshka.Internals.Ucd.Breaks.Property'Access,
+     := (Core   => Matreshka.Internals.Ucd.Core.Property'Access,
          others => <>);
 
    -----------------

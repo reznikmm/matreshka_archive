@@ -43,7 +43,7 @@ package Matreshka.Internals.Locales is
 
    type Locale_Data is limited record
       Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
-      Breaks  : not null Matreshka.Internals.Ucd.Break_First_Stage_Access;
+      Core    : not null Matreshka.Internals.Ucd.Core_First_Stage_Access;
    end record;
 
    type Locale_Data_Access is access all Locale_Data;

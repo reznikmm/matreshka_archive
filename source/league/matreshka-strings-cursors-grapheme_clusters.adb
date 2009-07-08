@@ -351,7 +351,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    begin
       Unchecked_Next (Item, Position, C);
       Property :=
-        Locale.Breaks
+        Locale.Core
          (First_Stage_Index (C / 16#100#))
          (Second_Stage_Index (C mod 16#100#)).GCB;
    end Unchecked_Next;
@@ -371,7 +371,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    begin
       Unchecked_Previous (Item, Position, C);
       Property :=
-        Locale.Breaks
+        Locale.Core
          (First_Stage_Index (C / 16#100#))
          (Second_Stage_Index (C mod 16#100#)).GCB;
    end Unchecked_Previous;
