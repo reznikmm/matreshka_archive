@@ -25,18 +25,39 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package Unicode_Types is
+package body Unicode_Types is
 
-   type Code_Unit_32 is mod 2 ** 32;
-   subtype Code_Point is Code_Unit_32 range 0 .. 16#10_FFFF#;
+   Hex_Digit : constant array (Second_Stage range 0 .. 15) of Character
+     := "0123456789ABCDEF";
 
-   subtype First_Stage is Code_Point range 0 .. Code_Point'Last / 256;
-   subtype Second_Stage is Code_Point range 0 .. 255;
+   -----------------------
+   -- First_Stage_Image --
+   -----------------------
 
-   function First_Stage_Image (Item : First_Stage) return String;
-   --  Returns image in the XXXX format.
+   function First_Stage_Image (Item : First_Stage) return String is
+      Result : String (1 .. 4);
 
-   function Second_Stage_Image (Item : Second_Stage) return String;
-   --  Returns image in the XX format.
+   begin
+      Result (4) := Hex_Digit (Item mod 16);
+      Result (3) := Hex_Digit ((Item / 16) mod 16);
+      Result (2) := Hex_Digit ((Item / 256) mod 16);
+      Result (1) := Hex_Digit ((Item / 4096) mod 16);
+
+      return Result;
+   end First_Stage_Image;
+
+   ------------------------
+   -- Second_Stage_Image --
+   ------------------------
+
+   function Second_Stage_Image (Item : Second_Stage) return String is
+      Result : String (1 .. 2);
+
+   begin
+      Result (2) := Hex_Digit (Item mod 16);
+      Result (1) := Hex_Digit ((Item / 16) mod 16);
+
+      return Result;
+   end Second_Stage_Image;
 
 end Unicode_Types;

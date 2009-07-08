@@ -368,10 +368,6 @@ procedure Gen_Breaks is
 
    procedure Fill (Code : Code_Point; Value : Ucd_Line_Break);
 
-   function First_Stage_Image (Item : First_Stage) return String;
-
-   function Second_Stage_Image (Item : Second_Stage) return String;
-
    function Value (Image : String) return Ucd_Line_Break;
 
    procedure Read_Grapheme_Break_Property is
@@ -428,40 +424,6 @@ procedure Gen_Breaks is
       Values (Code).WB := Value;
       Word_Code_Points_Loaded := Word_Code_Points_Loaded + 1;
    end Fill;
-
-   -----------------------
-   -- First_Stage_Image --
-   -----------------------
-
-   function First_Stage_Image (Item : First_Stage) return String is
-      Hex_Digit : constant array (First_Stage range 0 .. 15) of Character
-        := "0123456789ABCDEF";
-      Result    : String (1 .. 4);
-
-   begin
-      Result (4) := Hex_Digit (Item mod 16);
-      Result (3) := Hex_Digit ((Item / 16) mod 16);
-      Result (2) := Hex_Digit ((Item / 256) mod 16);
-      Result (1) := Hex_Digit ((Item / 4096) mod 16);
-
-      return Result;
-   end First_Stage_Image;
-
-   ------------------------
-   -- Second_Stage_Image --
-   ------------------------
-
-   function Second_Stage_Image (Item : Second_Stage) return String is
-      Hex_Digit : constant array (Second_Stage range 0 .. 15) of Character
-        := "0123456789ABCDEF";
-      Result    : String (1 .. 2);
-
-   begin
-      Result (2) := Hex_Digit (Item mod 16);
-      Result (1) := Hex_Digit ((Item / 16) mod 16);
-
-      return Result;
-   end Second_Stage_Image;
 
    -----------
    -- Value --
