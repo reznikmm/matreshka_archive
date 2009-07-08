@@ -45,9 +45,6 @@ procedure Gen_Breaks is
    LineBreakProperty_File     : constant String
      := "extracted/DerivedLineBreak.txt";
 
-   subtype First_Stage is Code_Point range 0 .. Code_Point'Last / 256;
-   subtype Second_Stage is Code_Point range 0 .. 255;
-
    type Ucd_Grapheme_Cluster_Break is
     (Other,
      CR,

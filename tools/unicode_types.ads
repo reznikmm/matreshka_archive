@@ -30,4 +30,7 @@ package Unicode_Types is
    type Code_Unit_32 is mod 2 ** 32;
    subtype Code_Point is Code_Unit_32 range 0 .. 16#10_FFFF#;
 
+   subtype First_Stage is Code_Point range 0 .. Code_Point'Last / 256;
+   subtype Second_Stage is Code_Point range 0 .. 255;
+
 end Unicode_Types;
