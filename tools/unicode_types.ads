@@ -212,30 +212,21 @@ package Unicode_Types is
 
    type Boolean_Properties is
     (ASCII_Hex_Digit,
-     Alphabetic,                    --  Derived
      Bidi_Control,
 --     Bidi_Mirrored,                 --  XXX
 --     Composition_Exclusion,         --  XXX
 --     Full_Composition_Exclusion,    --  XXX
      Dash,
      Deprecated,
-     Default_Ignorable_Code_Point,  --  Derived
      Diacritic,
      Extender,
-     Grapheme_Base,                 --  Derived
-     Grapheme_Extend,               --  Derived
---     Grapheme_Link,                 --  Deprecated, derived
      Hex_Digit,
      Hyphen,
-     ID_Continue,                   --  Derived
      Ideographic,
-     ID_Start,                      --  Derived
      IDS_Binary_Operator,
      IDS_Trinary_Operator,
      Join_Control,
      Logical_Order_Exception,
-     Lowercase,                     --  Derived
-     Math,                          --  Derived
      Noncharacter_Code_Point,
      Other_Alphabetic,
      Other_Default_Ignorable_Code_Point,
@@ -253,9 +244,19 @@ package Unicode_Types is
      STerm,
      Terminal_Punctuation,
      Unified_Ideograph,
-     Uppercase,                     --  Derived
      Variation_Selector,
      White_Space,
+
+     Alphabetic,                    --  Derived
+     Default_Ignorable_Code_Point,  --  Derived
+     Grapheme_Base,                 --  Derived
+     Grapheme_Extend,               --  Derived
+--     Grapheme_Link,                 --  Deprecated, derived
+     ID_Continue,                   --  Derived
+     ID_Start,                      --  Derived
+     Lowercase,                     --  Derived
+     Math,                          --  Derived
+     Uppercase,                     --  Derived
      XID_Continue,                  --  Derived
      XID_Start);                    --  Derived
 --     Expands_On_NFC,                --  XXX
