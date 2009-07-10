@@ -6,7 +6,7 @@ all:
 
 ucd:
 	gprbuild -p -Pgnat/tools.gpr
-	.objs/gen_core_props $(UNIDATA) > source/league/ucd/matreshka-internals-ucd-core.ads
+	.objs/gen_ucd $(UNIDATA) source/league/ucd
 #	.objs/gen_segments $(CLDR)
 
 check: all

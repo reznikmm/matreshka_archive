@@ -24,13 +24,44 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Unicode_Types;
+private with Ada.Text_IO;
 
-generic
-   type Value_Type is (<>);
-   with function Value (Image : String) return Value_Type;
+with Matreshka.Internals.Unicode;
 
-procedure Generic_Read_Two_Fields
- (File_Name : String;
-  Process   : not null access procedure
-   (Code : Unicode_Types.Code_Point; Value : Value_Type));
+package Ucd_Input is
+
+   type File_Type is limited private;
+
+   procedure Open (File : in out File_Type; Name : String);
+
+   function End_Of_Data (File : File_Type) return Boolean;
+
+   procedure Next_Record (File : in out File_Type);
+
+   function First_Code_Point (File : File_Type)
+     return Matreshka.Internals.Unicode.Code_Point;
+
+   function Last_Code_Point (File : File_Type)
+     return Matreshka.Internals.Unicode.Code_Point;
+
+   procedure Next_Field (File : in out File_Type);
+
+   function Field (File : File_Type) return String;
+
+   procedure Close (File : in out File_Type);
+
+private
+
+   type File_Type is limited record
+      File        : Ada.Text_IO.File_Type;
+      Line        : String (1 .. 1024);
+      Last        : Natural;
+      F_First     : Positive;
+      F_Last      : Natural;
+      F_Separator : Natural;
+      First_Code  : Matreshka.Internals.Unicode.Code_Point;
+      Last_Code   : Matreshka.Internals.Unicode.Code_Point;
+      End_Of_Data : Boolean;
+   end record;
+
+end Ucd_Input;

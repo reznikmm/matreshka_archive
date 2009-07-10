@@ -4,7 +4,7 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                        Database Schema Definition                        --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -24,16 +24,49 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "xmlada";
+with Matreshka.Internals.Ucd;
+with Matreshka.Internals.Unicode;
 
-project Tools is
+package Ucd_Data is
 
-   for Main use ("gen_ucd.adb", "gen_segments.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use ("../tools", "../source/league");
+   type Core_Values_Array is
+     array (Matreshka.Internals.Unicode.Code_Point)
+       of Matreshka.Internals.Ucd.Core_Values;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05");
-   end Compiler;
+   type Core_Values_Array_Access is access Core_Values_Array;
 
-end Tools;
+   type Code_Point_Sequence is
+     array (Positive range <>) Of Matreshka.Internals.Unicode.Code_Point;
+
+   type Code_Point_Sequence_Access is access Code_Point_Sequence;
+
+   type Optional_Code_Point (Present : Boolean := False) is record
+      case Present is
+         when True =>
+            C : Matreshka.Internals.Unicode.Code_Point;
+
+         when False =>
+            null;
+      end case;
+   end record;
+
+   type Case_Values is record
+      SUM : Optional_Code_Point;
+      SLM : Optional_Code_Point;
+      STM : Optional_Code_Point;
+--      FUM : Code_Point_Sequence_Access;
+--      FLM : Code_Point_Sequence_Access;
+--      FTM : Code_Point_Sequence_Access;
+   end record;
+
+   type Case_Values_Array is
+     array (Matreshka.Internals.Unicode.Code_Point) of Case_Values;
+
+   type Case_Values_Array_Access is access Case_Values_Array;
+
+   Core  : Core_Values_Array_Access;
+   Cases : Case_Values_Array_Access;
+
+   procedure Load (Unidata_Directory : String);
+
+end Ucd_Data;

@@ -24,16 +24,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "xmlada";
+--  Next generation of the UCD data generator. The primary goal is share code
+--  as much as possible with the base League packages.
+------------------------------------------------------------------------------
+with Ada.Command_Line;
 
-project Tools is
+with Ucd_Data;
+with Gen_Props;
 
-   for Main use ("gen_ucd.adb", "gen_segments.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use ("../tools", "../source/league");
-
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05");
-   end Compiler;
-
-end Tools;
+procedure Gen_Ucd is
+begin
+   Ucd_Data.Load (Ada.Command_Line.Argument (1));
+   Gen_Props (Ada.Command_Line.Argument (2));
+end Gen_Ucd;
