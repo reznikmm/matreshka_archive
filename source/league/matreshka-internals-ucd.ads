@@ -111,30 +111,18 @@ package Matreshka.Internals.Ucd is
 
    type Boolean_Properties is
     (ASCII_Hex_Digit,
-     Alphabetic,                    --  Derived
      Bidi_Control,
---     Bidi_Mirrored,                 --  XXX
---     Composition_Exclusion,         --  XXX
---     Full_Composition_Exclusion,    --  XXX
      Dash,
      Deprecated,
-     Default_Ignorable_Code_Point,  --  Derived
      Diacritic,
      Extender,
-     Grapheme_Base,                 --  Derived
-     Grapheme_Extend,               --  Derived
---     Grapheme_Link,                 --  Deprecated, derived
      Hex_Digit,
      Hyphen,
-     ID_Continue,                   --  Derived
      Ideographic,
-     ID_Start,                      --  Derived
      IDS_Binary_Operator,
      IDS_Trinary_Operator,
      Join_Control,
      Logical_Order_Exception,
-     Lowercase,                     --  Derived
-     Math,                          --  Derived
      Noncharacter_Code_Point,
      Other_Alphabetic,
      Other_Default_Ignorable_Code_Point,
@@ -152,15 +140,45 @@ package Matreshka.Internals.Ucd is
      STerm,
      Terminal_Punctuation,
      Unified_Ideograph,
-     Uppercase,                     --  Derived
      Variation_Selector,
      White_Space,
+
+--     Bidi_Mirrored,                 --  XXX
+--     Composition_Exclusion,         --  XXX
+--     Full_Composition_Exclusion,    --  XXX
+
+     --  Derived core properties.
+
+     Alphabetic,                    --  Derived
+     Default_Ignorable_Code_Point,  --  Derived
+     Grapheme_Base,                 --  Derived
+     Grapheme_Extend,               --  Derived
+     Grapheme_Link,                 --  Deprecated, derived
+     ID_Continue,                   --  Derived
+     ID_Start,                      --  Derived
+     Lowercase,                     --  Derived
+     Math,                          --  Derived
+     Uppercase,                     --  Derived
      XID_Continue,                  --  Derived
      XID_Start);                    --  Derived
 --     Expands_On_NFC,                --  XXX
 --     Expands_On_NFD,                --  XXX
 --     Expands_On_NFKC,               --  XXX
 --     Expands_On_NFKD);              --  XXX
+
+--  Following for speedup case conversions:
+--     Has_Lowercase_Mapping
+--     Has_Uppercase_Mapping
+--     Has_Titlecase_Mapping
+--
+--     Final_Sigma_Sensitive
+--     After_Soft_Dotted_Sensitive
+--     More_Above_Sensitive
+--     Before_Dot_Sensitive
+--     After_I_Sensitive
+--
+--     Is_Cased
+--     Is_Case_Ignorable
 
    type Boolean_Values is array (Boolean_Properties) of Boolean;
    for Boolean_Values'Component_Size use 1;
