@@ -5025,6 +5025,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -5190,6 +5191,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -5345,6 +5347,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -5487,6 +5490,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -5669,6 +5673,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -5885,6 +5890,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -6003,6 +6009,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -6178,6 +6185,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -6310,6 +6318,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -6389,6 +6398,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -6540,6 +6550,7 @@ package Matreshka.Internals.Ucd.Core is
            (Other_Alphabetic
               | Alphabetic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -7113,6 +7124,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -7246,6 +7258,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Complex_Context,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -7714,6 +7727,7 @@ package Matreshka.Internals.Ucd.Core is
          16#14#           =>
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -7731,6 +7745,7 @@ package Matreshka.Internals.Ucd.Core is
          16#34#           =>
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -7852,6 +7867,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Complex_Context,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -8331,6 +8347,7 @@ package Matreshka.Internals.Ucd.Core is
           (Spacing_Mark, 9, Spacing_Mark, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Base
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -8452,6 +8469,7 @@ package Matreshka.Internals.Ucd.Core is
           (Spacing_Mark, 9, Spacing_Mark, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Base
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -16282,6 +16300,7 @@ package Matreshka.Internals.Ucd.Core is
          16#06#           =>
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -16355,6 +16374,7 @@ package Matreshka.Internals.Ucd.Core is
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -16453,6 +16473,7 @@ package Matreshka.Internals.Ucd.Core is
           (Spacing_Mark, 9, Spacing_Mark, Extend, Extend, Combining_Mark,
            (Diacritic
               | Grapheme_Base
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -18654,6 +18675,7 @@ package Matreshka.Internals.Ucd.Core is
          16#3F#           =>
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Combining_Mark,
            (Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
