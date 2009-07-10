@@ -65,139 +65,139 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#20#           =>
           (Space_Separator, 0, Other, Other, Sp, Space,
-           (Grapheme_Base
-              | Pattern_White_Space
-              | White_Space => True,
+           (Pattern_White_Space
+              | White_Space
+              | Grapheme_Base => True,
             others => False)),
          16#21#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | Pattern_Syntax
+           (Pattern_Syntax
               | STerm
-              | Terminal_Punctuation => True,
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#22#           =>
           (Other_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#23#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#24#           =>
           (Currency_Symbol, 0, Other, Other, Other, Prefix_Numeric,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#25#           =>
           (Other_Punctuation, 0, Other, Other, Other, Postfix_Numeric,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#26#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#27#           =>
           (Other_Punctuation, 0, Other, Mid_Num_Let, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#28#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#29#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#2A#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#2B#           =>
           (Math_Symbol, 0, Other, Other, Other, Prefix_Numeric,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#2C#           =>
           (Other_Punctuation, 0, Other, Mid_Num, S_Continue, Infix_Numeric,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Terminal_Punctuation => True,
+           (Pattern_Syntax
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#2D#           =>
           (Dash_Punctuation, 0, Other, Other, S_Continue, Hyphen,
            (Dash
-              | Grapheme_Base
               | Hyphen
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#2E#           =>
           (Other_Punctuation, 0, Other, Mid_Num_Let, A_Term, Infix_Numeric,
-           (Grapheme_Base
-              | Pattern_Syntax
+           (Pattern_Syntax
               | STerm
-              | Terminal_Punctuation => True,
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#2F#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_Symbols,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#30# .. 16#39# =>
           (Decimal_Number, 0, Other, Numeric, Numeric, Numeric,
            (ASCII_Hex_Digit
-              | Grapheme_Base
               | Hex_Digit
+              | Grapheme_Base
               | ID_Continue
               | XID_Continue => True,
             others => False)),
          16#3A#           =>
           (Other_Punctuation, 0, Other, Mid_Letter, S_Continue, Infix_Numeric,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Terminal_Punctuation => True,
+           (Pattern_Syntax
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#3B#           =>
           (Other_Punctuation, 0, Other, Mid_Num, Other, Infix_Numeric,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Terminal_Punctuation => True,
+           (Pattern_Syntax
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#3C# .. 16#3E# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#3F#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | Pattern_Syntax
+           (Pattern_Syntax
               | STerm
-              | Terminal_Punctuation => True,
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#40#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#41# .. 16#46# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
            (ASCII_Hex_Digit
+              | Hex_Digit
               | Alphabetic
               | Grapheme_Base
-              | Hex_Digit
               | ID_Continue
               | ID_Start
               | Uppercase
@@ -216,26 +216,26 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#5B#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#5C#           =>
           (Other_Punctuation, 0, Other, Other, Other, Prefix_Numeric,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#5D#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#5E#           =>
           (Modifier_Symbol, 0, Other, Other, Other, Alphabetic,
            (Diacritic
-              | Grapheme_Base
-              | Math
               | Other_Math
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#5F#           =>
           (Connector_Punctuation, 0, Other, Extend_Num_Let, Other, Alphabetic,
@@ -246,15 +246,15 @@ package Matreshka.Internals.Ucd.Core is
          16#60#           =>
           (Modifier_Symbol, 0, Other, Other, Other, Alphabetic,
            (Diacritic
-              | Grapheme_Base
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#61# .. 16#66# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (ASCII_Hex_Digit
+              | Hex_Digit
               | Alphabetic
               | Grapheme_Base
-              | Hex_Digit
               | ID_Continue
               | ID_Start
               | Lowercase
@@ -273,12 +273,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#69# .. 16#6A# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -294,25 +294,25 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#7B#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#7C#           =>
           (Math_Symbol, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#7D#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#7E#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#7F# .. 16#84# =>
           (Control, 0, Control, Other, Other, Combining_Mark,
@@ -327,33 +327,33 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#A0#           =>
           (Space_Separator, 0, Other, Other, Sp, Glue,
-           (Grapheme_Base
-              | White_Space => True,
+           (White_Space
+              | Grapheme_Base => True,
             others => False)),
          16#A1#           =>
           (Other_Punctuation, 0, Other, Other, Other, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#A2#           =>
           (Currency_Symbol, 0, Other, Other, Other, Postfix_Numeric,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#A3# .. 16#A5# =>
           (Currency_Symbol, 0, Other, Other, Other, Prefix_Numeric,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#A6#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#A7#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#A8#           =>
           (Modifier_Symbol, 0, Other, Other, Other, Ambiguous,
@@ -362,8 +362,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#A9#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#AA#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Ambiguous,
@@ -377,25 +377,25 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#AB#           =>
           (Initial_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#AC#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#AD#           =>
           (Format, 0, Control, Format, Format, Break_After,
-           (Default_Ignorable_Code_Point
-              | Hyphen => True,
+           (Hyphen
+              | Default_Ignorable_Code_Point => True,
             others => False)),
          16#AE#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#AF#           =>
           (Modifier_Symbol, 0, Other, Other, Other, Alphabetic,
@@ -404,14 +404,14 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#B0#           =>
           (Other_Symbol, 0, Other, Other, Other, Postfix_Numeric,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#B1#           =>
           (Math_Symbol, 0, Other, Other, Other, Prefix_Numeric,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#B2# .. 16#B3# =>
           (Other_Number, 0, Other, Other, Other, Ambiguous,
@@ -434,16 +434,16 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#B6#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#B7#           =>
           (Other_Punctuation, 0, Other, Mid_Letter, Other, Ambiguous,
            (Diacritic
               | Extender
+              | Other_ID_Continue
               | Grapheme_Base
               | ID_Continue
-              | Other_ID_Continue
               | XID_Continue => True,
             others => False)),
          16#B8#           =>
@@ -467,9 +467,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#BB#           =>
           (Final_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#BC# .. 16#BE# =>
           (Other_Number, 0, Other, Other, Other, Ambiguous,
@@ -477,8 +477,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#BF#           =>
           (Other_Punctuation, 0, Other, Other, Other, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#C0# .. 16#D6# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -492,9 +492,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#D7#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#D8# .. 16#DE# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -518,9 +518,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#F7#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -998,12 +998,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#2F#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -3327,12 +3327,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#49#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -3398,12 +3398,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#68#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -3438,12 +3438,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#9D#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -3459,45 +3459,45 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#B0# .. 16#B1# =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#B2#           =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Lowercase
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#B3# .. 16#B8# =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#B9# .. 16#BF# =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -3506,13 +3506,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#C0# .. 16#C1# =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -3523,8 +3523,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#C6#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -3533,8 +3533,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#C7#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Ambiguous,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -3543,8 +3543,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#C8#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Break_Before,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -3553,8 +3553,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#C9# .. 16#CB# =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Ambiguous,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -3563,8 +3563,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#CC#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Break_Before,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -3573,8 +3573,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#CD#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Ambiguous,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -3583,8 +3583,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#CE# .. 16#CF# =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -3593,9 +3593,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#D0#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Ambiguous,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
               | Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -3604,9 +3604,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#D1#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
               | Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -3645,13 +3645,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#E0# .. 16#E4# =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -3662,8 +3662,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#EC#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -3677,8 +3677,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#EE#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -3797,13 +3797,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#45#           =>
           (Nonspacing_Mark, 240, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Other_Lowercase
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
               | Lowercase
-              | Other_Alphabetic
-              | Other_Lowercase
               | XID_Continue => True,
             others => False)),
          16#46#           =>
@@ -3836,10 +3836,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#4F#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Glue,
-           (Default_Ignorable_Code_Point
+           (Other_Default_Ignorable_Code_Point
+              | Default_Ignorable_Code_Point
               | Grapheme_Extend
               | ID_Continue
-              | Other_Default_Ignorable_Code_Point
               | XID_Continue => True,
             others => False)),
          16#50# .. 16#52# =>
@@ -3963,8 +3963,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#74#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -4001,13 +4001,13 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#7A#           =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
-              | Other_Lowercase => True,
+              | Lowercase => True,
             others => False)),
          16#7B# .. 16#7D# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -4021,8 +4021,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#7E#           =>
           (Other_Punctuation, 0, Other, Mid_Num, Other, Infix_Numeric,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#7F# .. 16#83# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -4044,10 +4044,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#87#           =>
           (Other_Punctuation, 0, Other, Mid_Letter, Other, Alphabetic,
-           (Grapheme_Base
-              | ID_Continue
-              | Other_ID_Continue
+           (Other_ID_Continue
               | Terminal_Punctuation
+              | Grapheme_Base
+              | ID_Continue
               | XID_Continue => True,
             others => False)),
          16#88# .. 16#8A# =>
@@ -4141,24 +4141,24 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#D0# .. 16#D1# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#D2#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -4175,13 +4175,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#D5#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -4437,13 +4437,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#F0# .. 16#F1# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -4459,36 +4459,36 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#F3#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#F4#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#F5#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -4563,12 +4563,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#56#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -4584,12 +4584,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#58#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -6490,8 +6490,8 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#59#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -6504,8 +6504,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#5C#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Alphabetic,
-           (Grapheme_Base
-              | STerm => True,
+           (STerm
+              | Grapheme_Base => True,
             others => False)),
          16#5D#           =>
           (Other_Punctuation, 0, Other, Other, S_Continue, Alphabetic,
@@ -6513,8 +6513,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#5E#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Alphabetic,
-           (Grapheme_Base
-              | STerm => True,
+           (STerm
+              | Grapheme_Base => True,
             others => False)),
          16#5F#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
@@ -6538,15 +6538,15 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#89#           =>
           (Other_Punctuation, 0, Other, Mid_Num, S_Term, Infix_Numeric,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#8A#           =>
           (Dash_Punctuation, 0, Other, Other, Other, Break_After,
            (Dash
-              | Grapheme_Base
-              | Hyphen => True,
+              | Hyphen
+              | Grapheme_Base => True,
             others => False)),
          16#8B# .. 16#90# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -6657,119 +6657,119 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#B0#           =>
           (Nonspacing_Mark, 10, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B1#           =>
           (Nonspacing_Mark, 11, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B2#           =>
           (Nonspacing_Mark, 12, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B3#           =>
           (Nonspacing_Mark, 13, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B4#           =>
           (Nonspacing_Mark, 14, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B5#           =>
           (Nonspacing_Mark, 15, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B6#           =>
           (Nonspacing_Mark, 16, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B7#           =>
           (Nonspacing_Mark, 17, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B8#           =>
           (Nonspacing_Mark, 18, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B9# .. 16#BA# =>
           (Nonspacing_Mark, 19, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#BB#           =>
           (Nonspacing_Mark, 20, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#BC#           =>
           (Nonspacing_Mark, 21, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#BD#           =>
           (Nonspacing_Mark, 22, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#BE#           =>
@@ -6779,11 +6779,11 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#BF#           =>
           (Nonspacing_Mark, 23, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C0#           =>
@@ -6792,42 +6792,42 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#C1#           =>
           (Nonspacing_Mark, 24, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C2#           =>
           (Nonspacing_Mark, 25, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C3#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#C4#           =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C5#           =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C6#           =>
@@ -6836,10 +6836,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#C7#           =>
           (Nonspacing_Mark, 18, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C8# .. 16#CF# =>
@@ -6899,8 +6899,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#0C#           =>
           (Other_Punctuation, 0, Other, Mid_Num, S_Continue, Infix_Numeric,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#0D#           =>
           (Other_Punctuation, 0, Other, Mid_Num, S_Continue, Infix_Numeric,
@@ -6912,40 +6912,40 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#10# .. 16#17# =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#18#           =>
           (Nonspacing_Mark, 30, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#19#           =>
           (Nonspacing_Mark, 31, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#1A#           =>
           (Nonspacing_Mark, 32, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#1B#           =>
           (Other_Punctuation, 0, Other, Other, Other, Exclamation,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#1C# .. 16#1D# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -6956,9 +6956,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#1F#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#20#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -6974,8 +6974,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#40#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Extender
+           (Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -6993,99 +6993,99 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#4B#           =>
           (Nonspacing_Mark, 27, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#4C#           =>
           (Nonspacing_Mark, 28, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#4D#           =>
           (Nonspacing_Mark, 29, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#4E#           =>
           (Nonspacing_Mark, 30, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#4F#           =>
           (Nonspacing_Mark, 31, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#50#           =>
           (Nonspacing_Mark, 32, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#51#           =>
           (Nonspacing_Mark, 33, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#52#           =>
           (Nonspacing_Mark, 34, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#53# .. 16#54# =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#55# .. 16#56# =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#57#           =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#58#           =>
@@ -7097,26 +7097,26 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#59# .. 16#5B# =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#5C#           =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#5D# .. 16#5E# =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#5F#           =>
@@ -7155,10 +7155,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#70#           =>
           (Nonspacing_Mark, 35, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#71# .. 16#D3# =>
@@ -7172,9 +7172,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#D4#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#D5#           =>
           (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
@@ -7187,10 +7187,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#D6# .. 16#DC# =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#DD#           =>
@@ -7209,32 +7209,32 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#E1# .. 16#E2# =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#E3#           =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#E4#           =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#E5# .. 16#E6# =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -7243,10 +7243,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#E7# .. 16#E8# =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#E9#           =>
@@ -7269,10 +7269,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#ED#           =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#EE# .. 16#EF# =>
@@ -7309,14 +7309,14 @@ package Matreshka.Internals.Ucd.Core is
    Group_0007 : aliased constant Core_Second_Stage
      := (16#00# .. 16#02# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Alphabetic,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#03# .. 16#0A# =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#0B#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
@@ -7324,8 +7324,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#0C#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#0D#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
@@ -7348,10 +7348,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#11#           =>
           (Nonspacing_Mark, 36, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#12# .. 16#2F# =>
@@ -7365,101 +7365,101 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#30#           =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#31#           =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#32# .. 16#33# =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#34#           =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#35# .. 16#36# =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#37# .. 16#39# =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#3A#           =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#3B# .. 16#3C# =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#3D#           =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#3E#           =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#3F#           =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#40# .. 16#41# =>
@@ -7539,11 +7539,11 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#A6# .. 16#B0# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B1#           =>
@@ -7596,8 +7596,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#F4# .. 16#F5# =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -7614,19 +7614,19 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#F8#           =>
           (Other_Punctuation, 0, Other, Mid_Num, S_Continue, Infix_Numeric,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#F9#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#FA#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Extender
+           (Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -7646,18 +7646,18 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#01# .. 16#02# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#03#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#04# .. 16#39# =>
@@ -7690,26 +7690,26 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#3E# .. 16#40# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#41# .. 16#48# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#49# .. 16#4C# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#4D#           =>
@@ -7766,17 +7766,17 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#62# .. 16#63# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#64# .. 16#65# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Break_After,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#66# .. 16#6F# =>
           (Decimal_Number, 0, Other, Numeric, Numeric, Numeric,
@@ -7790,8 +7790,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#71#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -7824,18 +7824,18 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#81#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#82# .. 16#83# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#84#           =>
@@ -7931,27 +7931,27 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#BE#           =>
           (Spacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#BF# .. 16#C0# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C1# .. 16#C4# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C5# .. 16#C6# =>
@@ -7959,10 +7959,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#C7# .. 16#C8# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C9# .. 16#CA# =>
@@ -7970,10 +7970,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#CB# .. 16#CC# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#CD#           =>
@@ -7997,11 +7997,11 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#D7#           =>
           (Spacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#D8# .. 16#DB# =>
@@ -8030,10 +8030,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#E2# .. 16#E3# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#E4# .. 16#E5# =>
@@ -8075,18 +8075,18 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#01# .. 16#02# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#03#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#04#           =>
@@ -8188,18 +8188,18 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#3E# .. 16#40# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#41# .. 16#42# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#43# .. 16#46# =>
@@ -8207,10 +8207,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#47# .. 16#48# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#49# .. 16#4A# =>
@@ -8218,10 +8218,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#4B# .. 16#4C# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#4D#           =>
@@ -8236,10 +8236,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#51#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#52# .. 16#58# =>
@@ -8277,10 +8277,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#70# .. 16#71# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#72# .. 16#74# =>
@@ -8294,10 +8294,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#75#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#76# .. 16#80# =>
@@ -8305,18 +8305,18 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#81# .. 16#82# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#83#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#84#           =>
@@ -8412,18 +8412,18 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#BE# .. 16#C0# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C1# .. 16#C5# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C6#           =>
@@ -8431,18 +8431,18 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#C7# .. 16#C8# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C9#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#CA#           =>
@@ -8450,10 +8450,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#CB# .. 16#CC# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#CD#           =>
@@ -8489,10 +8489,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#E2# .. 16#E3# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#E4# .. 16#E5# =>
@@ -8520,18 +8520,18 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#01#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#02# .. 16#03# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#04#           =>
@@ -8627,35 +8627,35 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#3E#           =>
           (Spacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#3F#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#40#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#41# .. 16#44# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#45# .. 16#46# =>
@@ -8663,10 +8663,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#47# .. 16#48# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#49# .. 16#4A# =>
@@ -8674,10 +8674,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#4B# .. 16#4C# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#4D#           =>
@@ -8692,19 +8692,19 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#56#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#57#           =>
           (Spacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#58# .. 16#5B# =>
@@ -8733,10 +8733,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#62# .. 16#63# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#64# .. 16#65# =>
@@ -8766,10 +8766,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#82#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#83#           =>
@@ -8894,35 +8894,35 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#BE#           =>
           (Spacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#BF#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C0#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C1# .. 16#C2# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C3# .. 16#C5# =>
@@ -8930,10 +8930,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#C6# .. 16#C8# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C9#           =>
@@ -8941,10 +8941,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#CA# .. 16#CC# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#CD#           =>
@@ -8971,11 +8971,11 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#D7#           =>
           (Spacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#D8# .. 16#E5# =>
@@ -9012,10 +9012,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#01# .. 16#03# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#04#           =>
@@ -9092,18 +9092,18 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#3E# .. 16#40# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#41# .. 16#44# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#45#           =>
@@ -9111,10 +9111,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#46# .. 16#48# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#49#           =>
@@ -9122,10 +9122,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#4A# .. 16#4C# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#4D#           =>
@@ -9140,18 +9140,18 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#55#           =>
           (Nonspacing_Mark, 84, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#56#           =>
           (Nonspacing_Mark, 91, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#57#           =>
@@ -9180,10 +9180,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#62# .. 16#63# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#64# .. 16#65# =>
@@ -9211,10 +9211,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#82# .. 16#83# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#84#           =>
@@ -9298,43 +9298,43 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#BE#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#BF#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C0# .. 16#C1# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C2#           =>
           (Spacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#C3# .. 16#C4# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C5#           =>
@@ -9342,18 +9342,18 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#C6#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C7# .. 16#C8# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C9#           =>
@@ -9361,18 +9361,18 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#CA# .. 16#CB# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#CC#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#CD#           =>
@@ -9387,11 +9387,11 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#D5# .. 16#D6# =>
           (Spacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#D7# .. 16#DD# =>
@@ -9420,10 +9420,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#E2# .. 16#E3# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#E4# .. 16#E5# =>
@@ -9451,10 +9451,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#02# .. 16#03# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#04#           =>
@@ -9519,27 +9519,27 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#3E#           =>
           (Spacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#3F# .. 16#40# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#41# .. 16#44# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#45#           =>
@@ -9547,10 +9547,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#46# .. 16#48# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#49#           =>
@@ -9558,10 +9558,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#4A# .. 16#4C# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#4D#           =>
@@ -9576,11 +9576,11 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#57#           =>
           (Spacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#58# .. 16#5F# =>
@@ -9597,10 +9597,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#62# .. 16#63# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#64# .. 16#65# =>
@@ -9637,10 +9637,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#82# .. 16#83# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#84#           =>
@@ -9718,27 +9718,27 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#CF#           =>
           (Spacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#D0# .. 16#D1# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#D2# .. 16#D4# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#D5#           =>
@@ -9746,10 +9746,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#D6#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#D7#           =>
@@ -9757,19 +9757,19 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#D8# .. 16#DE# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#DF#           =>
           (Spacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#E0# .. 16#F1# =>
@@ -9777,10 +9777,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#F2# .. 16#F3# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#F4#           =>
@@ -9814,10 +9814,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#31#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#32#           =>
@@ -9839,26 +9839,26 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#34# .. 16#37# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#38# .. 16#39# =>
           (Nonspacing_Mark, 103, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#3A#           =>
           (Nonspacing_Mark, 9, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#3B# .. 16#3E# =>
@@ -9870,11 +9870,11 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#40# .. 16#44# =>
           (Other_Letter, 0, Prepend, Other, O_Letter, Complex_Context,
-           (Alphabetic
+           (Logical_Order_Exception
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Logical_Order_Exception
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -9889,8 +9889,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#46#           =>
           (Modifier_Letter, 0, Other, Other, O_Letter, Complex_Context,
-           (Alphabetic
-              | Extender
+           (Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -9920,10 +9920,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#4D#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#4E#           =>
@@ -9945,8 +9945,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#5A# .. 16#5B# =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#5C# .. 16#80# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -10103,10 +10103,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#B1#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B2#           =>
@@ -10128,18 +10128,18 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#B4# .. 16#B7# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B8# .. 16#B9# =>
           (Nonspacing_Mark, 118, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#BA#           =>
@@ -10147,10 +10147,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#BB# .. 16#BC# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#BD#           =>
@@ -10167,11 +10167,11 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#C0# .. 16#C4# =>
           (Other_Letter, 0, Prepend, Other, O_Letter, Complex_Context,
-           (Alphabetic
+           (Logical_Order_Exception
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Logical_Order_Exception
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -10180,8 +10180,8 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#C6#           =>
           (Modifier_Letter, 0, Other, Other, O_Letter, Complex_Context,
-           (Alphabetic
-              | Extender
+           (Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -10207,10 +10207,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#CD#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#CE# .. 16#CF# =>
@@ -10265,8 +10265,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#08#           =>
           (Other_Punctuation, 0, Other, Other, Other, Glue,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#09# .. 16#0A# =>
           (Other_Punctuation, 0, Other, Other, Other, Break_Before,
@@ -10282,13 +10282,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#0D# .. 16#11# =>
           (Other_Punctuation, 0, Other, Other, Other, Exclamation,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#12#           =>
           (Other_Punctuation, 0, Other, Other, Other, Glue,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#13#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
@@ -10405,82 +10405,82 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#71#           =>
           (Nonspacing_Mark, 129, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#72#           =>
           (Nonspacing_Mark, 130, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#73#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#74#           =>
           (Nonspacing_Mark, 132, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#75# .. 16#79# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#7A# .. 16#7D# =>
           (Nonspacing_Mark, 130, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#7E#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#7F#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Break_After,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#80#           =>
           (Nonspacing_Mark, 130, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#81#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#82# .. 16#83# =>
@@ -10522,10 +10522,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#90# .. 16#97# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#98#           =>
@@ -10533,10 +10533,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#99# .. 16#BC# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#BD#           =>
@@ -10599,34 +10599,34 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#2B# .. 16#2C# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#2D# .. 16#30# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#31#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#32# .. 16#36# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#37#           =>
@@ -10638,10 +10638,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#38#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#39# .. 16#3A# =>
@@ -10653,18 +10653,18 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#3B# .. 16#3C# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#3D# .. 16#3E# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#3F#           =>
@@ -10684,9 +10684,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#4A# .. 16#4B# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Break_After,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#4C# .. 16#4F# =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
@@ -10703,18 +10703,18 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#56# .. 16#57# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#58# .. 16#59# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#5A# .. 16#5D# =>
@@ -10728,10 +10728,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#5E# .. 16#60# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#61#           =>
@@ -10745,10 +10745,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#62#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#63# .. 16#64# =>
@@ -10768,10 +10768,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#67# .. 16#68# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#69# .. 16#6D# =>
@@ -10791,10 +10791,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#71# .. 16#74# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#75# .. 16#81# =>
@@ -10808,26 +10808,26 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#82#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#83# .. 16#84# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#85# .. 16#86# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#87# .. 16#8C# =>
@@ -10926,23 +10926,23 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#5F#           =>
           (Other_Letter, 0, L, A_Letter, O_Letter, JL,
-           (Alphabetic
+           (Other_Default_Ignorable_Code_Point
+              | Alphabetic
               | Default_Ignorable_Code_Point
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Other_Default_Ignorable_Code_Point
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#60#           =>
           (Other_Letter, 0, V, A_Letter, O_Letter, JV,
-           (Alphabetic
+           (Other_Default_Ignorable_Code_Point
+              | Alphabetic
               | Default_Ignorable_Code_Point
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Other_Default_Ignorable_Code_Point
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -11169,10 +11169,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#5F#           =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#60#           =>
@@ -11181,31 +11181,31 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#61#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#62#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Alphabetic,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#63# .. 16#66# =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#67# .. 16#68# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Alphabetic,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#69# .. 16#71# =>
           (Other_Number, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
+           (Other_ID_Continue
+              | Grapheme_Base
               | ID_Continue
-              | Other_ID_Continue
               | XID_Continue => True,
             others => False)),
          16#72# .. 16#7C# =>
@@ -11266,14 +11266,14 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#6D#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#6E#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Alphabetic,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#6F# .. 16#76# =>
           (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
@@ -11289,8 +11289,8 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#80#           =>
           (Space_Separator, 0, Other, Other, Sp, Break_After,
-           (Grapheme_Base
-              | White_Space => True,
+           (White_Space
+              | Grapheme_Base => True,
             others => False)),
          16#81# .. 16#9A# =>
           (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
@@ -11323,8 +11323,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#EB# .. 16#ED# =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#EE# .. 16#F0# =>
           (Letter_Number, 0, Other, A_Letter, O_Letter, Alphabetic,
@@ -11362,10 +11362,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#12# .. 16#13# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#14#           =>
@@ -11388,10 +11388,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#32# .. 16#33# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#34#           =>
@@ -11418,10 +11418,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#52# .. 16#53# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#54# .. 16#5F# =>
@@ -11453,10 +11453,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#72# .. 16#73# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#74# .. 16#7F# =>
@@ -11473,8 +11473,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#A3#           =>
           (Other_Letter, 0, Other, Other, O_Letter, Complex_Context,
-           (Alphabetic
-              | Deprecated
+           (Deprecated
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -11496,42 +11496,42 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#B6#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#B7# .. 16#BD# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#BE# .. 16#C5# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C6#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C7# .. 16#C8# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C9# .. 16#D1# =>
@@ -11558,13 +11558,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#D4# .. 16#D5# =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#D6#           =>
           (Other_Punctuation, 0, Other, Other, Other, Nonstarter,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#D7#           =>
           (Modifier_Letter, 0, Other, Other, O_Letter, Complex_Context,
@@ -11585,8 +11585,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#DA#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#DB#           =>
           (Currency_Symbol, 0, Other, Other, Other, Prefix_Numeric,
@@ -11634,25 +11634,25 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#02#           =>
           (Other_Punctuation, 0, Other, Other, S_Continue, Exclamation,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#03#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#04# .. 16#05# =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#06#           =>
           (Dash_Punctuation, 0, Other, Other, Other, Break_Before,
            (Dash
-              | Grapheme_Base
-              | Hyphen => True,
+              | Hyphen
+              | Grapheme_Base => True,
             others => False)),
          16#07#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
@@ -11660,14 +11660,14 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#08#           =>
           (Other_Punctuation, 0, Other, Other, S_Continue, Exclamation,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#09#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#0A#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
@@ -11675,16 +11675,16 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#0B# .. 16#0D# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Default_Ignorable_Code_Point
+           (Variation_Selector
+              | Default_Ignorable_Code_Point
               | Grapheme_Extend
               | ID_Continue
-              | Variation_Selector
               | XID_Continue => True,
             others => False)),
          16#0E#           =>
           (Space_Separator, 0, Other, Other, Sp, Glue,
-           (Grapheme_Base
-              | White_Space => True,
+           (White_Space
+              | Grapheme_Base => True,
             others => False)),
          16#0F#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -11709,8 +11709,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#43#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Extender
+           (Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -11740,10 +11740,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#A9#           =>
           (Nonspacing_Mark, 228, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#AA#           =>
@@ -11773,34 +11773,34 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#20# .. 16#22# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#23# .. 16#26# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#27# .. 16#28# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#29# .. 16#2B# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#2C# .. 16#2F# =>
@@ -11808,26 +11808,26 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#30# .. 16#31# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#32#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#33# .. 16#38# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#39#           =>
@@ -11863,9 +11863,9 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#44# .. 16#45# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#46# .. 16#4F# =>
           (Decimal_Number, 0, Other, Numeric, Numeric, Numeric,
@@ -11911,10 +11911,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#B0# .. 16#C0# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C1# .. 16#C7# =>
@@ -11928,10 +11928,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#C8# .. 16#C9# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Complex_Context,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#CA# .. 16#CF# =>
@@ -11965,26 +11965,26 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#17#           =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#18#           =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#19# .. 16#1B# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#1C# .. 16#1D# =>
@@ -12000,18 +12000,18 @@ package Matreshka.Internals.Ucd.Core is
    Group_001B : aliased constant Core_Second_Stage
      := (16#00# .. 16#03# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#04#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#05# .. 16#33# =>
@@ -12032,58 +12032,58 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#35#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#36# .. 16#3A# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#3B#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#3C#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#3D# .. 16#41# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#42#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#43#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#44#           =>
@@ -12113,9 +12113,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#5A# .. 16#5B# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Break_After,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#5C#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
@@ -12123,14 +12123,14 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#5D#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#5E# .. 16#5F# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Break_After,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#60#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
@@ -12170,18 +12170,18 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#80# .. 16#81# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#82#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#83# .. 16#A0# =>
@@ -12195,34 +12195,34 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#A1#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#A2# .. 16#A5# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#A6# .. 16#A7# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#A8# .. 16#A9# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#AA#           =>
@@ -12265,26 +12265,26 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#24# .. 16#2B# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#2C# .. 16#33# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#34# .. 16#35# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#36#           =>
@@ -12307,14 +12307,14 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#3B# .. 16#3C# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Break_After,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#3D# .. 16#3F# =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#40# .. 16#49# =>
           (Decimal_Number, 0, Other, Numeric, Numeric, Numeric,
@@ -12351,8 +12351,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#78# .. 16#7A# =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -12361,9 +12361,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#7B#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
               | Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -12372,8 +12372,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#7C# .. 16#7D# =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -12382,9 +12382,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#7E# .. 16#7F# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Break_After,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -12402,32 +12402,32 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#2C# .. 16#61# =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#62#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#63# .. 16#6A# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -12447,12 +12447,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#78#           =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -12468,12 +12468,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#96#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -12489,58 +12489,58 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#9B# .. 16#A3# =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#A4#           =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Lowercase
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#A5# .. 16#A7# =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#A8#           =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Lowercase
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#A9# .. 16#BF# =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -13082,12 +13082,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#2D#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -14583,12 +14583,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#CB#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -15606,18 +15606,18 @@ package Matreshka.Internals.Ucd.Core is
    Group_0020 : aliased constant Core_Second_Stage
      := (16#00# .. 16#06# =>
           (Space_Separator, 0, Other, Other, Sp, Break_After,
-           (Grapheme_Base
-              | White_Space => True,
+           (White_Space
+              | Grapheme_Base => True,
             others => False)),
          16#07#           =>
           (Space_Separator, 0, Other, Other, Sp, Glue,
-           (Grapheme_Base
-              | White_Space => True,
+           (White_Space
+              | Grapheme_Base => True,
             others => False)),
          16#08# .. 16#0A# =>
           (Space_Separator, 0, Other, Other, Sp, Break_After,
-           (Grapheme_Base
-              | White_Space => True,
+           (White_Space
+              | Grapheme_Base => True,
             others => False)),
          16#0B#           =>
           (Format, 0, Control, Format, Format, ZW_Space,
@@ -15625,133 +15625,133 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#0C# .. 16#0D# =>
           (Format, 0, Extend, Extend, Extend, Combining_Mark,
-           (Default_Ignorable_Code_Point
-              | Grapheme_Extend
-              | Join_Control
-              | Other_Grapheme_Extend => True,
+           (Join_Control
+              | Other_Grapheme_Extend
+              | Default_Ignorable_Code_Point
+              | Grapheme_Extend => True,
             others => False)),
          16#0E# .. 16#0F# =>
           (Format, 0, Control, Format, Format, Combining_Mark,
            (Bidi_Control
-              | Default_Ignorable_Code_Point
-              | Pattern_White_Space => True,
+              | Pattern_White_Space
+              | Default_Ignorable_Code_Point => True,
             others => False)),
          16#10#           =>
           (Dash_Punctuation, 0, Other, Other, Other, Break_After,
            (Dash
-              | Grapheme_Base
               | Hyphen
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#11#           =>
           (Dash_Punctuation, 0, Other, Other, Other, Glue,
            (Dash
-              | Grapheme_Base
               | Hyphen
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#12#           =>
           (Dash_Punctuation, 0, Other, Other, Other, Break_After,
            (Dash
-              | Grapheme_Base
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#13#           =>
           (Dash_Punctuation, 0, Other, Other, S_Continue, Break_After,
            (Dash
-              | Grapheme_Base
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#14#           =>
           (Dash_Punctuation, 0, Other, Other, S_Continue, Break_Both,
            (Dash
-              | Grapheme_Base
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#15#           =>
           (Dash_Punctuation, 0, Other, Other, Other, Ambiguous,
            (Dash
-              | Grapheme_Base
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#16#           =>
           (Other_Punctuation, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#17#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#18#           =>
           (Initial_Punctuation, 0, Other, Mid_Num_Let, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#19#           =>
           (Final_Punctuation, 0, Other, Mid_Num_Let, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#1A#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#1B# .. 16#1C# =>
           (Initial_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#1D#           =>
           (Final_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#1E#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#1F#           =>
           (Initial_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#20# .. 16#21# =>
           (Other_Punctuation, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#22# .. 16#23# =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#24#           =>
           (Other_Punctuation, 0, Other, Mid_Num_Let, A_Term, Inseparable,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#25# .. 16#26# =>
           (Other_Punctuation, 0, Other, Other, Other, Inseparable,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#27#           =>
           (Other_Punctuation, 0, Other, Mid_Letter, Other, Break_After,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#28#           =>
           (Line_Separator, 0, Control, Newline, Sep, Mandatory_Break,
@@ -15770,59 +15770,59 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#2F#           =>
           (Space_Separator, 0, Other, Other, Sp, Glue,
-           (Grapheme_Base
-              | White_Space => True,
+           (White_Space
+              | Grapheme_Base => True,
             others => False)),
          16#30# .. 16#31# =>
           (Other_Punctuation, 0, Other, Other, Other, Postfix_Numeric,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#32# .. 16#34# =>
           (Other_Punctuation, 0, Other, Other, Other, Postfix_Numeric,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#35# .. 16#37# =>
           (Other_Punctuation, 0, Other, Other, Other, Postfix_Numeric,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#38#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#39#           =>
           (Initial_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#3A#           =>
           (Final_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#3B#           =>
           (Other_Punctuation, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#3C# .. 16#3D# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Nonstarter,
-           (Grapheme_Base
-              | Pattern_Syntax
+           (Pattern_Syntax
               | STerm
-              | Terminal_Punctuation => True,
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#3E#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#3F#           =>
           (Connector_Punctuation, 0, Other, Extend_Num_Let, Other, Alphabetic,
@@ -15832,56 +15832,56 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#40#           =>
           (Connector_Punctuation, 0, Other, Extend_Num_Let, Other, Alphabetic,
-           (Grapheme_Base
+           (Other_Math
+              | Grapheme_Base
               | ID_Continue
               | Math
-              | Other_Math
               | XID_Continue => True,
             others => False)),
          16#41# .. 16#43# =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#44#           =>
           (Math_Symbol, 0, Other, Mid_Num, Other, Infix_Numeric,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#45#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#46#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#47# .. 16#49# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Nonstarter,
-           (Grapheme_Base
-              | Pattern_Syntax
+           (Pattern_Syntax
               | STerm
-              | Terminal_Punctuation => True,
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#4A# .. 16#51# =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#52#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#53#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
            (Dash
-              | Grapheme_Base
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#54#           =>
           (Connector_Punctuation, 0, Other, Extend_Num_Let, Other, Alphabetic,
@@ -15891,38 +15891,38 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#55#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#56#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#57#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#58# .. 16#5B# =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#5C#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#5D# .. 16#5E# =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#5F#           =>
           (Space_Separator, 0, Other, Other, Sp, Break_After,
-           (Grapheme_Base
-              | White_Space => True,
+           (White_Space
+              | Grapheme_Base => True,
             others => False)),
          16#60#           =>
           (Format, 0, Control, Format, Format, Word_Joiner,
@@ -15930,14 +15930,14 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#61# .. 16#64# =>
           (Format, 0, Control, Format, Format, Alphabetic,
-           (Default_Ignorable_Code_Point
-              | Math
-              | Other_Math => True,
+           (Other_Math
+              | Default_Ignorable_Code_Point
+              | Math => True,
             others => False)),
          16#65# .. 16#69# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
-           (Default_Ignorable_Code_Point
-              | Other_Default_Ignorable_Code_Point => True,
+           (Other_Default_Ignorable_Code_Point
+              | Default_Ignorable_Code_Point => True,
             others => False)),
          16#6A# .. 16#6F# =>
           (Format, 0, Control, Format, Format, Combining_Mark,
@@ -15950,12 +15950,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#71#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -15988,15 +15988,15 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#7D#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math => True,
+           (Other_Math
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#7E#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math => True,
+           (Other_Math
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#7F#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Ambiguous,
@@ -16038,27 +16038,27 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#8D#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math => True,
+           (Other_Math
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#8E#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math => True,
+           (Other_Math
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#8F#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
          16#90# .. 16#94# =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -16082,58 +16082,58 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#D0# .. 16#D1# =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Grapheme_Extend
+           (Other_Math
+              | Grapheme_Extend
               | ID_Continue
               | Math
-              | Other_Math
               | XID_Continue => True,
             others => False)),
          16#D2# .. 16#D3# =>
           (Nonspacing_Mark, 1, Extend, Extend, Extend, Combining_Mark,
-           (Grapheme_Extend
+           (Other_Math
+              | Grapheme_Extend
               | ID_Continue
               | Math
-              | Other_Math
               | XID_Continue => True,
             others => False)),
          16#D4# .. 16#D7# =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Grapheme_Extend
+           (Other_Math
+              | Grapheme_Extend
               | ID_Continue
               | Math
-              | Other_Math
               | XID_Continue => True,
             others => False)),
          16#D8# .. 16#DA# =>
           (Nonspacing_Mark, 1, Extend, Extend, Extend, Combining_Mark,
-           (Grapheme_Extend
+           (Other_Math
+              | Grapheme_Extend
               | ID_Continue
               | Math
-              | Other_Math
               | XID_Continue => True,
             others => False)),
          16#DB# .. 16#DC# =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Grapheme_Extend
+           (Other_Math
+              | Grapheme_Extend
               | ID_Continue
               | Math
-              | Other_Math
               | XID_Continue => True,
             others => False)),
          16#E1#           =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Grapheme_Extend
+           (Other_Math
+              | Grapheme_Extend
               | ID_Continue
               | Math
-              | Other_Math
               | XID_Continue => True,
             others => False)),
          16#E5# .. 16#E6# =>
           (Nonspacing_Mark, 1, Extend, Extend, Extend, Combining_Mark,
-           (Grapheme_Extend
+           (Other_Math
+              | Grapheme_Extend
               | ID_Continue
               | Math
-              | Other_Math
               | XID_Continue => True,
             others => False)),
          16#E7#           =>
@@ -16162,18 +16162,18 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#EB#           =>
           (Nonspacing_Mark, 1, Extend, Extend, Extend, Combining_Mark,
-           (Grapheme_Extend
+           (Other_Math
+              | Grapheme_Extend
               | ID_Continue
               | Math
-              | Other_Math
               | XID_Continue => True,
             others => False)),
          16#EC# .. 16#EF# =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Grapheme_Extend
+           (Other_Math
+              | Grapheme_Extend
               | ID_Continue
               | Math
-              | Other_Math
               | XID_Continue => True,
             others => False)),
          16#F0#           =>
@@ -16193,12 +16193,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#02#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -16239,61 +16239,61 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#0A#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#0B# .. 16#0D# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#0E# .. 16#0F# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#10# .. 16#12# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#13#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Ambiguous,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -16303,12 +16303,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#15#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -16323,21 +16323,21 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#18#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
+           (Other_ID_Start
+              | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Other_ID_Start
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#19# .. 16#1D# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -16356,12 +16356,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#24#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -16386,21 +16386,21 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#28#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#29#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math => True,
+           (Other_Math
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#2A#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -16424,45 +16424,45 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#2C# .. 16#2D# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#2E#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
+           (Other_ID_Start
+              | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Other_ID_Start
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#2F#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#30# .. 16#31# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -16479,36 +16479,36 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#33#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#34#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#35# .. 16#38# =>
           (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -16528,24 +16528,24 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#3C# .. 16#3D# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#3E# .. 16#3F# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -16557,38 +16557,38 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#45#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#46# .. 16#47# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#48# .. 16#49# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -16652,45 +16652,45 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#60# .. 16#6B# =>
           (Letter_Number, 0, Other, A_Letter, Upper, Ambiguous,
-           (Alphabetic
+           (Other_Uppercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Other_Uppercase
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#6C# .. 16#6F# =>
           (Letter_Number, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Uppercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Other_Uppercase
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#70# .. 16#79# =>
           (Letter_Number, 0, Other, A_Letter, Lower, Ambiguous,
-           (Alphabetic
+           (Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#7A# .. 16#7F# =>
           (Letter_Number, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -16737,190 +16737,190 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#90# .. 16#94# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#95# .. 16#99# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#9A# .. 16#9B# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#9C# .. 16#9F# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#A0#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#A1# .. 16#A2# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#A3#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#A4# .. 16#A5# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#A6#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#A7#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#A8#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#A9# .. 16#AD# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#AE#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#AF#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#B0# .. 16#B1# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#B2# .. 16#B5# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#B6# .. 16#B7# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#B8# .. 16#BB# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#BC# .. 16#CD# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#CE# .. 16#CF# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#D0# .. 16#D1# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#D2#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#D3#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#D4#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#D5# .. 16#DB# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#DC#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#DD#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#DE# .. 16#E3# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#E4# .. 16#E5# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#E6# .. 16#F3# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -16928,346 +16928,346 @@ package Matreshka.Internals.Ucd.Core is
    Group_0022 : aliased constant Core_Second_Stage
      := (16#00#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#01#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#02# .. 16#03# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#04# .. 16#06# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#07# .. 16#08# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#09# .. 16#0A# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#0B#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#0C# .. 16#0E# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#0F#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#10#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#11#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#12#           =>
           (Math_Symbol, 0, Other, Other, Other, Prefix_Numeric,
            (Dash
+              | Pattern_Syntax
               | Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+              | Math => True,
             others => False)),
          16#13#           =>
           (Math_Symbol, 0, Other, Other, Other, Prefix_Numeric,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#14#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#15#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#16# .. 16#19# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#1A#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#1B# .. 16#1C# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#1D# .. 16#20# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#21# .. 16#22# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#23#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#24#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#25#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#26#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#27# .. 16#2C# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#2D#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#2E#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#2F# .. 16#33# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#34# .. 16#37# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#38# .. 16#3B# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#3C# .. 16#3D# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#3E# .. 16#47# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#48#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#49# .. 16#4B# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#4C#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#4D# .. 16#51# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#52#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#53# .. 16#5F# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#60# .. 16#61# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#62# .. 16#63# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#64# .. 16#67# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#68# .. 16#69# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#6A# .. 16#6B# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#6C# .. 16#6D# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#6E# .. 16#6F# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#70# .. 16#81# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#82# .. 16#83# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#84# .. 16#85# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#86# .. 16#87# =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#88# .. 16#94# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#95#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#96# .. 16#98# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#99#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#9A# .. 16#A4# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#A5#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#A6# .. 16#BE# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#BF#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -17275,126 +17275,126 @@ package Matreshka.Internals.Ucd.Core is
    Group_0023 : aliased constant Core_Second_Stage
      := (16#00# .. 16#07# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#08# .. 16#0B# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#0C# .. 16#11# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#12#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#13# .. 16#1F# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#20# .. 16#21# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#22# .. 16#28# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#29#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#2A#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#2B# .. 16#7B# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#7C#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#7D# .. 16#9A# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#9B# .. 16#B3# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#B4# .. 16#B5# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#B6#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#B7#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#B8# .. 16#CF# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#D0#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#D1# .. 16#DB# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#DC# .. 16#E1# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#E2#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#E3# .. 16#E7# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -17402,8 +17402,8 @@ package Matreshka.Internals.Ucd.Core is
    Group_0024 : aliased constant Core_Second_Stage
      := (16#00# .. 16#26# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#27# .. 16#3F# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -17411,8 +17411,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#40# .. 16#4A# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#4B# .. 16#5F# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -17428,19 +17428,19 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#B6# .. 16#CF# =>
           (Other_Symbol, 0, Other, A_Letter, Upper, Ambiguous,
-           (Alphabetic
-              | Grapheme_Base
-              | Other_Alphabetic
+           (Other_Alphabetic
               | Other_Uppercase
+              | Alphabetic
+              | Grapheme_Base
               | Uppercase => True,
             others => False)),
          16#D0# .. 16#E9# =>
           (Other_Symbol, 0, Other, A_Letter, Lower, Ambiguous,
-           (Alphabetic
+           (Other_Alphabetic
+              | Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
-              | Lowercase
-              | Other_Alphabetic
-              | Other_Lowercase => True,
+              | Lowercase => True,
             others => False)),
          16#EA# .. 16#FE# =>
           (Other_Number, 0, Other, Other, Other, Ambiguous,
@@ -17452,247 +17452,247 @@ package Matreshka.Internals.Ucd.Core is
    Group_0025 : aliased constant Core_Second_Stage
      := (16#00# .. 16#4B# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#4C# .. 16#4F# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#50# .. 16#74# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#75# .. 16#7F# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#80# .. 16#8F# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#90# .. 16#91# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#92# .. 16#95# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#96# .. 16#9F# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#A0# .. 16#A1# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#A2#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#A3# .. 16#A9# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#AA# .. 16#AD# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#AE# .. 16#B1# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#B2# .. 16#B3# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#B4# .. 16#B5# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#B6#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#B7#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#B8# .. 16#BB# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#BC# .. 16#BD# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#BE# .. 16#BF# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#C0#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#C1#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#C2# .. 16#C5# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#C6# .. 16#C7# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#C8#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#C9#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#CA#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#CB#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#CC# .. 16#CD# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#CE#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#CF# .. 16#D1# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#D2# .. 16#D3# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#D4# .. 16#E1# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#E2#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#E3#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#E4#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#E5#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#E6#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#E7# .. 16#EC# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#ED# .. 16#EE# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#EF#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#F0# .. 16#F7# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -17700,165 +17700,165 @@ package Matreshka.Internals.Ucd.Core is
    Group_0026 : aliased constant Core_Second_Stage
      := (16#00# .. 16#04# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#05# .. 16#06# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#07# .. 16#08# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#09#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#0A# .. 16#0D# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#0E# .. 16#0F# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#10# .. 16#13# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#14# .. 16#17# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#18# .. 16#1B# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1C#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1D#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1E#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1F# .. 16#3F# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#40#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#41#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#42#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#43# .. 16#5F# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#60# .. 16#61# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#62#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#63#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#64# .. 16#65# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#66#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#67# .. 16#6A# =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#6B#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#6C#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#6D#           =>
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#6E#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#6F#           =>
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#70# .. 16#9D# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#9E# .. 16#9F# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -17866,8 +17866,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#A0# .. 16#BC# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#BD# .. 16#BF# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -17875,8 +17875,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#C0# .. 16#C3# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -17888,8 +17888,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#01# .. 16#04# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#05#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -17897,8 +17897,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#06# .. 16#09# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#0A# .. 16#0B# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -17906,8 +17906,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#0C# .. 16#27# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#28#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -17915,8 +17915,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#29# .. 16#4B# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#4C#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -17924,8 +17924,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#4D#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#4E#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -17933,8 +17933,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#4F# .. 16#52# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#53# .. 16#55# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -17942,8 +17942,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#56#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#57#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -17951,13 +17951,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#58# .. 16#5A# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#5B# .. 16#5E# =>
           (Other_Symbol, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#5F# .. 16#60# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -17965,88 +17965,88 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#61#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#62# .. 16#63# =>
           (Other_Symbol, 0, Other, Other, Other, Exclamation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#64# .. 16#67# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#68#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#69#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#6A#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#6B#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#6C#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#6D#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#6E#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#6F#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#70#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#71#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#72#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#73#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#74#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#75#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#76# .. 16#93# =>
           (Other_Number, 0, Other, Other, Other, Ambiguous,
@@ -18054,8 +18054,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#94#           =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#95# .. 16#97# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -18063,8 +18063,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#98# .. 16#AF# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#B0#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -18072,8 +18072,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#B1# .. 16#BE# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#BF#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -18081,29 +18081,29 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#C0# .. 16#C4# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#C5#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#C6#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#C7# .. 16#CA# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#CB#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -18111,9 +18111,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#CC#           =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#CD# .. 16#CF# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -18121,79 +18121,79 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#D0# .. 16#E5# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#E6#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#E7#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#E8#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#E9#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#EA#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#EB#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#EC#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#ED#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#EE#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#EF#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -18205,217 +18205,217 @@ package Matreshka.Internals.Ucd.Core is
    Group_0029 : aliased constant Core_Second_Stage
      := (16#00# .. 16#82# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#83#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#84#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#85#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#86#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#87#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#88#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#89#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#8A#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#8B#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#8C#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#8D#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#8E#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#8F#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#90#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#91#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#92#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#93#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#94#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#95#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#96#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#97#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#98#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#99# .. 16#D7# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#D8#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#D9#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#DA#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#DB#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#DC# .. 16#FB# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#FC#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#FD#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Math
-              | Other_Math
-              | Pattern_Syntax => True,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -18427,25 +18427,25 @@ package Matreshka.Internals.Ucd.Core is
    Group_002B : aliased constant Core_Second_Stage
      := (16#00# .. 16#2F# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#30# .. 16#44# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#45# .. 16#46# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#47# .. 16#4C# =>
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Math
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#4D# .. 16#4F# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -18453,8 +18453,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#50# .. 16#54# =>
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -18651,23 +18651,23 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#7C#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#7D#           =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -19852,185 +19852,185 @@ package Matreshka.Internals.Ucd.Core is
    Group_002E : aliased constant Core_Second_Stage
      := (16#00# .. 16#01# =>
           (Other_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#02#           =>
           (Initial_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#03#           =>
           (Final_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#04#           =>
           (Initial_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#05#           =>
           (Final_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#06# .. 16#08# =>
           (Other_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#09#           =>
           (Initial_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#0A#           =>
           (Final_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#0B#           =>
           (Other_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#0C#           =>
           (Initial_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#0D#           =>
           (Final_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#0E# .. 16#15# =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#16#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#17#           =>
           (Dash_Punctuation, 0, Other, Other, Other, Break_After,
            (Dash
-              | Grapheme_Base
               | Hyphen
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#18#           =>
           (Other_Punctuation, 0, Other, Other, Other, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#19#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1A#           =>
           (Dash_Punctuation, 0, Other, Other, Other, Alphabetic,
            (Dash
-              | Grapheme_Base
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1B#           =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1C#           =>
           (Initial_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1D#           =>
           (Final_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1E# .. 16#1F# =>
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#20#           =>
           (Initial_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#21#           =>
           (Final_Punctuation, 0, Other, Other, Close, Quotation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#22#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#23#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#24#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#25#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#26#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#27#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#28#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#29#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#2A# .. 16#2D# =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#2E#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | Pattern_Syntax
+           (Pattern_Syntax
               | STerm
-              | Terminal_Punctuation => True,
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#2F#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
-              | Grapheme_Base
-              | Pattern_Syntax => True,
+           (Diacritic
+              | Pattern_Syntax
+              | Alphabetic
+              | Grapheme_Base => True,
             others => False)),
          16#30#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#31# .. 16#7F# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -20038,16 +20038,16 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#80# .. 16#99# =>
           (Other_Symbol, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Radical => True,
+           (Radical
+              | Grapheme_Base => True,
             others => False)),
          16#9A#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
          16#9B# .. 16#F3# =>
           (Other_Symbol, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Radical => True,
+           (Radical
+              | Grapheme_Base => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -20055,26 +20055,26 @@ package Matreshka.Internals.Ucd.Core is
    Group_002F : aliased constant Core_Second_Stage
      := (16#00# .. 16#D5# =>
           (Other_Symbol, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Radical => True,
+           (Radical
+              | Grapheme_Base => True,
             others => False)),
          16#D6# .. 16#EF# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
          16#F0# .. 16#F1# =>
           (Other_Symbol, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | IDS_Binary_Operator => True,
+           (IDS_Binary_Operator
+              | Grapheme_Base => True,
             others => False)),
          16#F2# .. 16#F3# =>
           (Other_Symbol, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | IDS_Trinary_Operator => True,
+           (IDS_Trinary_Operator
+              | Grapheme_Base => True,
             others => False)),
          16#F4# .. 16#FB# =>
           (Other_Symbol, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | IDS_Binary_Operator => True,
+           (IDS_Binary_Operator
+              | Grapheme_Base => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -20082,26 +20082,26 @@ package Matreshka.Internals.Ucd.Core is
    Group_0030 : aliased constant Core_Second_Stage
      := (16#00#           =>
           (Space_Separator, 0, Other, Other, Sp, Ideographic,
-           (Grapheme_Base
-              | White_Space => True,
+           (White_Space
+              | Grapheme_Base => True,
             others => False)),
          16#01#           =>
           (Other_Punctuation, 0, Other, Other, S_Continue, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Terminal_Punctuation => True,
+           (Pattern_Syntax
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#02#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax
+           (Pattern_Syntax
               | STerm
-              | Terminal_Punctuation => True,
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#03#           =>
           (Other_Punctuation, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#04#           =>
           (Other_Symbol, 0, Other, Other, Other, Ideographic,
@@ -20109,8 +20109,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#05#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Nonstarter,
-           (Alphabetic
-              | Extender
+           (Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -20119,152 +20119,152 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#06#           =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#07#           =>
           (Letter_Number, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#08#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#09#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#0A#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#0B#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#0C#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#0D#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#0E#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#0F#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#10#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#11#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#12# .. 16#13# =>
           (Other_Symbol, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#14#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#15#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#16#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#17#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#18#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#19#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1A#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1B#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1C#           =>
           (Dash_Punctuation, 0, Other, Other, Other, Nonstarter,
            (Dash
-              | Grapheme_Base
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#1D#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#1E# .. 16#1F# =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax
-              | Quotation_Mark => True,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#20#           =>
           (Other_Symbol, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#21# .. 16#29# =>
           (Letter_Number, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
@@ -20307,13 +20307,13 @@ package Matreshka.Internals.Ucd.Core is
          16#30#           =>
           (Dash_Punctuation, 0, Other, Other, Other, Ideographic,
            (Dash
-              | Grapheme_Base
-              | Pattern_Syntax => True,
+              | Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#31# .. 16#35# =>
           (Modifier_Letter, 0, Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Extender
+           (Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -20326,10 +20326,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#38# .. 16#3A# =>
           (Letter_Number, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
@@ -20565,15 +20565,15 @@ package Matreshka.Internals.Ucd.Core is
          16#9B# .. 16#9C# =>
           (Modifier_Symbol, 0, Other, Katakana, Other, Nonstarter,
            (Diacritic
+              | Other_ID_Start
               | Grapheme_Base
               | ID_Continue
-              | ID_Start
-              | Other_ID_Start => True,
+              | ID_Start => True,
             others => False)),
          16#9D# .. 16#9E# =>
           (Modifier_Letter, 0, Other, Other, O_Letter, Nonstarter,
-           (Alphabetic
-              | Extender
+           (Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -20794,14 +20794,14 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#FB#           =>
           (Other_Punctuation, 0, Other, Other, Other, Nonstarter,
-           (Grapheme_Base
-              | Hyphen => True,
+           (Hyphen
+              | Grapheme_Base => True,
             others => False)),
          16#FC#           =>
           (Modifier_Letter, 0, Other, Katakana, O_Letter, Nonstarter,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
               | Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -20810,8 +20810,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#FD# .. 16#FE# =>
           (Modifier_Letter, 0, Other, Katakana, O_Letter, Nonstarter,
-           (Alphabetic
-              | Extender
+           (Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -20848,12 +20848,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#64#           =>
           (Other_Letter, 0, Other, A_Letter, O_Letter, Ideographic,
-           (Alphabetic
+           (Other_Default_Ignorable_Code_Point
+              | Alphabetic
               | Default_Ignorable_Code_Point
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Other_Default_Ignorable_Code_Point
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -20972,12 +20972,12 @@ package Matreshka.Internals.Ucd.Core is
    Group_004D : aliased constant Core_Second_Stage
      := (16#00# .. 16#B5# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
-              | Unified_Ideograph
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -20990,12 +20990,12 @@ package Matreshka.Internals.Ucd.Core is
    Group_009F : aliased constant Core_Second_Stage
      := (16#00# .. 16#C3# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
-              | Unified_Ideograph
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -21014,8 +21014,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#15#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Nonstarter,
-           (Alphabetic
-              | Extender
+           (Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -21061,8 +21061,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#0C#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Extender
+           (Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -21071,20 +21071,20 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#0D#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#0E#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#0F#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Break_After,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#10# .. 16#1F# =>
           (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
@@ -21596,8 +21596,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#7F#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -21854,8 +21854,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#17# .. 16#1F# =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -22629,12 +22629,12 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#70#           =>
           (Modifier_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Lowercase
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
-              | Other_Lowercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -22790,8 +22790,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#88#           =>
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -22885,26 +22885,26 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#23# .. 16#24# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#25# .. 16#26# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#27#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#28# .. 16#2B# =>
@@ -22929,19 +22929,19 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#76# .. 16#77# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#78# .. 16#7F# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
          16#80# .. 16#81# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#82# .. 16#B3# =>
@@ -22955,10 +22955,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#B4# .. 16#C3# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#C4#           =>
@@ -22973,9 +22973,9 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#CE# .. 16#CF# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Break_After,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#D0# .. 16#D9# =>
           (Decimal_Number, 0, Other, Numeric, Numeric, Numeric,
@@ -23004,10 +23004,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#26# .. 16#2A# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#2B# .. 16#2D# =>
@@ -23024,9 +23024,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#2F#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Break_After,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#30# .. 16#46# =>
           (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
@@ -23039,18 +23039,18 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#47# .. 16#51# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#52#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#53#           =>
@@ -23082,42 +23082,42 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#29# .. 16#2E# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#2F# .. 16#30# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#31# .. 16#32# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#33# .. 16#34# =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#35# .. 16#36# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#37# .. 16#3F# =>
@@ -23134,10 +23134,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#43#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#44# .. 16#4B# =>
@@ -23151,18 +23151,18 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#4C#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#4D#           =>
           (Spacing_Mark, 0, Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#4E# .. 16#4F# =>
@@ -23183,9 +23183,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#5D# .. 16#5F# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Break_After,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -24479,157 +24479,157 @@ package Matreshka.Internals.Ucd.Core is
    Group_00FA : aliased constant Core_Second_Stage
      := (16#00# .. 16#0D# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#0E# .. 16#0F# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
-              | Unified_Ideograph
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#10#           =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#11#           =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
-              | Unified_Ideograph
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#12#           =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#13# .. 16#14# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
-              | Unified_Ideograph
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#15# .. 16#1E# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#1F#           =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
-              | Unified_Ideograph
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#20#           =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#21#           =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
-              | Unified_Ideograph
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#22#           =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#23# .. 16#24# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
-              | Unified_Ideograph
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#25# .. 16#26# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#27# .. 16#29# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
-              | Unified_Ideograph
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#2A# .. 16#2D# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
@@ -24639,10 +24639,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#30# .. 16#6A# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
@@ -24652,10 +24652,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#70# .. 16#D9# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
@@ -24701,11 +24701,11 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#1E#           =>
           (Nonspacing_Mark, 26, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#1F# .. 16#28# =>
@@ -24829,13 +24829,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#3E#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#3F#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#40# .. 16#4F# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -24898,10 +24898,10 @@ package Matreshka.Internals.Ucd.Core is
    Group_00FE : aliased constant Core_Second_Stage
      := (16#00# .. 16#0F# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Default_Ignorable_Code_Point
+           (Variation_Selector
+              | Default_Ignorable_Code_Point
               | Grapheme_Extend
               | ID_Continue
-              | Variation_Selector
               | XID_Continue => True,
             others => False)),
          16#10#           =>
@@ -25018,28 +25018,28 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#41#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Quotation_Mark => True,
+           (Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#42#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Quotation_Mark => True,
+           (Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#43#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Quotation_Mark => True,
+           (Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#44#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Quotation_Mark => True,
+           (Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#45# .. 16#46# =>
           (Other_Punctuation, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Pattern_Syntax => True,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)),
          16#47#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
@@ -25061,38 +25061,38 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#50#           =>
           (Other_Punctuation, 0, Other, Mid_Num, S_Continue, Close_Punctuation,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#51#           =>
           (Other_Punctuation, 0, Other, Other, S_Continue, Ideographic,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#52#           =>
           (Other_Punctuation, 0, Other, Mid_Num_Let, A_Term, Close_Punctuation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#53#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
          16#54#           =>
           (Other_Punctuation, 0, Other, Mid_Num, Other, Nonstarter,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#55#           =>
           (Other_Punctuation, 0, Other, Mid_Letter, S_Continue, Nonstarter,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#56# .. 16#57# =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#58#           =>
           (Dash_Punctuation, 0, Other, Other, S_Continue, Ideographic,
@@ -25129,9 +25129,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#61#           =>
           (Other_Punctuation, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Math
-              | Other_Math => True,
+           (Other_Math
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#62#           =>
           (Math_Symbol, 0, Other, Other, Other, Ideographic,
@@ -25141,10 +25141,10 @@ package Matreshka.Internals.Ucd.Core is
          16#63#           =>
           (Dash_Punctuation, 0, Other, Other, S_Continue, Ideographic,
            (Dash
-              | Grapheme_Base
               | Hyphen
-              | Math
-              | Other_Math => True,
+              | Other_Math
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#64# .. 16#66# =>
           (Math_Symbol, 0, Other, Other, Other, Ideographic,
@@ -25156,9 +25156,9 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#68#           =>
           (Other_Punctuation, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Math
-              | Other_Math => True,
+           (Other_Math
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#69#           =>
           (Currency_Symbol, 0, Other, Other, Other, Prefix_Numeric,
@@ -25309,14 +25309,14 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#01#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#02#           =>
           (Other_Punctuation, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Quotation_Mark => True,
+           (Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#03#           =>
           (Other_Punctuation, 0, Other, Other, Other, Ideographic,
@@ -25336,8 +25336,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#07#           =>
           (Other_Punctuation, 0, Other, Mid_Num_Let, Other, Ideographic,
-           (Grapheme_Base
-              | Quotation_Mark => True,
+           (Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#08#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
@@ -25358,20 +25358,20 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#0C#           =>
           (Other_Punctuation, 0, Other, Mid_Num, S_Continue, Close_Punctuation,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#0D#           =>
           (Dash_Punctuation, 0, Other, Other, S_Continue, Ideographic,
            (Dash
-              | Grapheme_Base
-              | Hyphen => True,
+              | Hyphen
+              | Grapheme_Base => True,
             others => False)),
          16#0E#           =>
           (Other_Punctuation, 0, Other, Mid_Num_Let, A_Term, Close_Punctuation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#0F#           =>
           (Other_Punctuation, 0, Other, Other, Other, Ideographic,
@@ -25379,20 +25379,20 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#10# .. 16#19# =>
           (Decimal_Number, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Hex_Digit
+           (Hex_Digit
+              | Grapheme_Base
               | ID_Continue
               | XID_Continue => True,
             others => False)),
          16#1A#           =>
           (Other_Punctuation, 0, Other, Mid_Letter, S_Continue, Nonstarter,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#1B#           =>
           (Other_Punctuation, 0, Other, Mid_Num, Other, Nonstarter,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#1C# .. 16#1E# =>
           (Math_Symbol, 0, Other, Other, Other, Ideographic,
@@ -25401,9 +25401,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#1F#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Exclamation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#20#           =>
           (Other_Punctuation, 0, Other, Other, Other, Ideographic,
@@ -25411,9 +25411,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#21# .. 16#26# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Ideographic,
-           (Alphabetic
+           (Hex_Digit
+              | Alphabetic
               | Grapheme_Base
-              | Hex_Digit
               | ID_Continue
               | ID_Start
               | Uppercase
@@ -25436,9 +25436,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#3C#           =>
           (Other_Punctuation, 0, Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Math
-              | Other_Math => True,
+           (Other_Math
+              | Grapheme_Base
+              | Math => True,
             others => False)),
          16#3D#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
@@ -25447,9 +25447,9 @@ package Matreshka.Internals.Ucd.Core is
          16#3E#           =>
           (Modifier_Symbol, 0, Other, Other, Other, Ideographic,
            (Diacritic
+              | Other_Math
               | Grapheme_Base
-              | Math
-              | Other_Math => True,
+              | Math => True,
             others => False)),
          16#3F#           =>
           (Connector_Punctuation, 0, Other, Extend_Num_Let, Other, Ideographic,
@@ -25464,9 +25464,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#41# .. 16#46# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Ideographic,
-           (Alphabetic
+           (Hex_Digit
+              | Alphabetic
               | Grapheme_Base
-              | Hex_Digit
               | ID_Continue
               | ID_Start
               | Lowercase
@@ -25511,29 +25511,29 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#61#           =>
           (Other_Punctuation, 0, Other, Other, S_Term, Close_Punctuation,
-           (Grapheme_Base
-              | STerm
-              | Terminal_Punctuation => True,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#62#           =>
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
-           (Grapheme_Base
-              | Quotation_Mark => True,
+           (Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#63#           =>
           (Close_Punctuation, 0, Other, Other, Close, Close_Punctuation,
-           (Grapheme_Base
-              | Quotation_Mark => True,
+           (Quotation_Mark
+              | Grapheme_Base => True,
             others => False)),
          16#64#           =>
           (Other_Punctuation, 0, Other, Other, S_Continue, Close_Punctuation,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#65#           =>
           (Other_Punctuation, 0, Other, Other, Other, Nonstarter,
-           (Grapheme_Base
-              | Hyphen => True,
+           (Hyphen
+              | Grapheme_Base => True,
             others => False)),
          16#66#           =>
           (Other_Letter, 0, Other, Katakana, O_Letter, Alphabetic,
@@ -25555,9 +25555,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#70#           =>
           (Modifier_Letter, 0, Other, Katakana, O_Letter, Nonstarter,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
               | Extender
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -25575,22 +25575,22 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#9E# .. 16#9F# =>
           (Modifier_Letter, 0, Extend, Extend, Extend, Nonstarter,
-           (Alphabetic
-              | Diacritic
+           (Diacritic
+              | Other_Grapheme_Extend
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
               | ID_Start
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#A0#           =>
           (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
+           (Other_Default_Ignorable_Code_Point
+              | Alphabetic
               | Default_Ignorable_Code_Point
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Other_Default_Ignorable_Code_Point
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -25701,8 +25701,8 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#F0# .. 16#F8# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
-           (Default_Ignorable_Code_Point
-              | Other_Default_Ignorable_Code_Point => True,
+           (Other_Default_Ignorable_Code_Point
+              | Default_Ignorable_Code_Point => True,
             others => False)),
          16#F9# .. 16#FB# =>
           (Format, 0, Control, Format, Format, Combining_Mark,
@@ -25971,8 +25971,8 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#9F#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#A0# .. 16#C3# =>
           (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
@@ -25997,8 +25997,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#D0#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#D1# .. 16#D5# =>
           (Letter_Number, 0, Other, A_Letter, O_Letter, Alphabetic,
@@ -26146,8 +26146,8 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#1F#           =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          16#20# .. 16#39# =>
           (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
@@ -26180,10 +26180,10 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#01# .. 16#03# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#04#           =>
@@ -26191,10 +26191,10 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#05# .. 16#06# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#07# .. 16#0B# =>
@@ -26202,34 +26202,34 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#0C#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#0D#           =>
           (Nonspacing_Mark, 220, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#0E#           =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#0F#           =>
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
-           (Alphabetic
+           (Other_Alphabetic
+              | Alphabetic
               | Grapheme_Extend
               | ID_Continue
-              | Other_Alphabetic
               | XID_Continue => True,
             others => False)),
          16#10# .. 16#13# =>
@@ -26341,8 +26341,8 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#70# .. 16#73# =>
           (Other_Punctuation, 0, Other, Other, Other, Break_After,
-           (Grapheme_Base
-              | Terminal_Punctuation => True,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
                               (others => False)));
@@ -26369,9 +26369,9 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#65#           =>
           (Spacing_Mark, 216, Extend, Extend, Extend, Combining_Mark,
-           (Grapheme_Extend
+           (Other_Grapheme_Extend
+              | Grapheme_Extend
               | ID_Continue
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#66#           =>
@@ -26401,9 +26401,9 @@ package Matreshka.Internals.Ucd.Core is
          16#6E# .. 16#72# =>
           (Spacing_Mark, 216, Extend, Extend, Extend, Combining_Mark,
            (Diacritic
+              | Other_Grapheme_Extend
               | Grapheme_Extend
               | ID_Continue
-              | Other_Grapheme_Extend
               | XID_Continue => True,
             others => False)),
          16#73# .. 16#7A# =>
@@ -26489,74 +26489,74 @@ package Matreshka.Internals.Ucd.Core is
    Group_01D4 : aliased constant Core_Second_Stage
      := (16#00# .. 16#19# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#1A# .. 16#21# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#22# .. 16#23# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#24# .. 16#33# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#34# .. 16#4D# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#4E# .. 16#54# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -26565,86 +26565,86 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#56# .. 16#57# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#58# .. 16#67# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#68# .. 16#81# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#82# .. 16#89# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#8A# .. 16#8B# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#8C# .. 16#9B# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#9C#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -26654,12 +26654,12 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#9E# .. 16#9F# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -26669,12 +26669,12 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#A2#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -26684,12 +26684,12 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#A5# .. 16#A6# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -26699,12 +26699,12 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#A9# .. 16#AC# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -26714,25 +26714,25 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#AE# .. 16#B5# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#B6# .. 16#B9# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -26741,13 +26741,13 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#BB#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -26756,38 +26756,38 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#BD#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#BE# .. 16#BF# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#C0# .. 16#C3# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -26796,50 +26796,50 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#C5# .. 16#CF# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#D0# .. 16#E9# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#EA# .. 16#F1# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#F2# .. 16#F3# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -26849,24 +26849,24 @@ package Matreshka.Internals.Ucd.Core is
    Group_01D5 : aliased constant Core_Second_Stage
      := (16#00# .. 16#03# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#04# .. 16#05# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -26876,12 +26876,12 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#07# .. 16#0A# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -26891,12 +26891,12 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#0D# .. 16#14# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -26906,12 +26906,12 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#16# .. 16#1C# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -26921,49 +26921,49 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#1E# .. 16#25# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#26# .. 16#27# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#28# .. 16#37# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#38# .. 16#39# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -26973,12 +26973,12 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#3B# .. 16#3E# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -26988,12 +26988,12 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#40# .. 16#44# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -27003,12 +27003,12 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#46#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -27018,12 +27018,12 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#4A# .. 16#50# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -27033,173 +27033,173 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#52# .. 16#59# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#5A# .. 16#5B# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#5C# .. 16#6B# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#6C# .. 16#85# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#86# .. 16#8D# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#8E# .. 16#8F# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#90# .. 16#9F# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#A0# .. 16#B9# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#BA# .. 16#C1# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#C2# .. 16#C3# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#C4# .. 16#D3# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#D4# .. 16#ED# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#EE# .. 16#F5# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#F6# .. 16#F7# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -27209,160 +27209,160 @@ package Matreshka.Internals.Ucd.Core is
    Group_01D6 : aliased constant Core_Second_Stage
      := (16#00# .. 16#07# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#08# .. 16#21# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#22# .. 16#29# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#2A# .. 16#2B# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#2C# .. 16#3B# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#3C# .. 16#55# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#56# .. 16#5D# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#5E# .. 16#5F# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#60# .. 16#6F# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#70# .. 16#89# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#8A# .. 16#91# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#92# .. 16#93# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Soft_Dotted
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
-              | Soft_Dotted
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#94# .. 16#A5# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -27371,12 +27371,12 @@ package Matreshka.Internals.Ucd.Core is
            (others => False)),
          16#A8# .. 16#C0# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -27388,13 +27388,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#C2# .. 16#DA# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -27405,24 +27405,24 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#DC# .. 16#E1# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#E2# .. 16#FA# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -27438,13 +27438,13 @@ package Matreshka.Internals.Ucd.Core is
    Group_01D7 : aliased constant Core_Second_Stage
      := (16#00# .. 16#14# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -27455,24 +27455,24 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#16# .. 16#1B# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#1C# .. 16#34# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -27484,13 +27484,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#36# .. 16#4E# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -27501,24 +27501,24 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#50# .. 16#55# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#56# .. 16#6E# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -27530,13 +27530,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#70# .. 16#88# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -27547,24 +27547,24 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#8A# .. 16#8F# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#90# .. 16#A8# =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
@@ -27576,13 +27576,13 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#AA# .. 16#C2# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -27593,37 +27593,37 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#C4# .. 16#C9# =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#CA#           =>
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Math
-              | Other_Math
               | Uppercase
               | XID_Continue
               | XID_Start => True,
             others => False)),
          16#CB#           =>
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
               | Lowercase
               | Math
-              | Other_Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -27658,12 +27658,12 @@ package Matreshka.Internals.Ucd.Core is
    Group_02A6 : aliased constant Core_Second_Stage
      := (16#00# .. 16#D6# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
-              | Unified_Ideograph
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -27673,10 +27673,10 @@ package Matreshka.Internals.Ucd.Core is
    Group_02FA : aliased constant Core_Second_Stage
      := (16#00# .. 16#1D# =>
           (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-           (Alphabetic
+           (Ideographic
+              | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | Ideographic
               | ID_Start
               | XID_Continue
               | XID_Start => True,
@@ -27687,8 +27687,8 @@ package Matreshka.Internals.Ucd.Core is
    Group_0E00 : aliased constant Core_Second_Stage
      := (16#00#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
-           (Default_Ignorable_Code_Point
-              | Other_Default_Ignorable_Code_Point => True,
+           (Other_Default_Ignorable_Code_Point
+              | Default_Ignorable_Code_Point => True,
             others => False)),
          16#01#           =>
           (Format, 0, Control, Format, Format, Combining_Mark,
@@ -27697,8 +27697,8 @@ package Matreshka.Internals.Ucd.Core is
             others => False)),
          16#02# .. 16#1F# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
-           (Default_Ignorable_Code_Point
-              | Other_Default_Ignorable_Code_Point => True,
+           (Other_Default_Ignorable_Code_Point
+              | Default_Ignorable_Code_Point => True,
             others => False)),
          16#20# .. 16#7F# =>
           (Format, 0, Control, Format, Format, Combining_Mark,
@@ -27711,10 +27711,10 @@ package Matreshka.Internals.Ucd.Core is
    Group_0E01 : aliased constant Core_Second_Stage
      := (16#00# .. 16#EF# =>
           (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-           (Default_Ignorable_Code_Point
+           (Variation_Selector
+              | Default_Ignorable_Code_Point
               | Grapheme_Extend
               | ID_Continue
-              | Variation_Selector
               | XID_Continue => True,
             others => False)),
          others           => (Control, 0, Other, Other, Other, Ambiguous,
