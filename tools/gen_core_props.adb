@@ -515,8 +515,8 @@ begin
 
                Counts  : array (Positive range 1 .. 256) of Value_Count_Pair
                  := (others => <>);
-               Last    : Natural  := 0;
-               Maximum : Positive := 1;
+               Last    : Natural := 0;
+               Maximum : Natural := 0;
 
             begin
                for K in Second_Stage loop
@@ -532,7 +532,11 @@ begin
                         if Counts (L).V = R then
                            F := True;
                            Counts (L).C := Counts (L).C + 1;
-                           Maximum := Positive'Max (Maximum, Counts (L).C);
+
+                           if Maximum < Counts (L).C then
+                              Maximum := Counts (L).C;
+                              Default := Counts (L).V;
+                           end if;
 
                            exit;
                         end if;
@@ -546,8 +550,6 @@ begin
                      end if;
                   end;
                end loop;
-
-               Default := Counts (Maximum).V;
             end;
 
             Ada.Text_IO.New_Line;
