@@ -24,6 +24,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Text_IO;
 with Ada.Unchecked_Deallocation;
 
 with Ucd_Input;
@@ -33,148 +34,48 @@ package body Ucd_Data is
    use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
 
+   UnicodeData_Name           : constant String := "UnicodeData.txt";
+   PropList_Name              : constant String := "PropList.txt";
+   DerivedCoreProperties_Name : constant String := "DerivedCoreProperties.txt";
+   GraphemeBreakProperty_Name : constant String
+     := "auxiliary/GraphemeBreakProperty.txt";
+   WordBreakProperty_Name     : constant String
+     := "auxiliary/WordBreakProperty.txt";
+   SentenceBreakProperty_Name : constant String
+     := "auxiliary/SentenceBreakProperty.txt";
+   LineBreak_Name             : constant String := "LineBreak.txt";
+
    subtype Primary_Core_Boolean_Properties is Boolean_Properties
      range ASCII_Hex_Digit .. White_Space;
 
    subtype Derived_Core_Boolean_Properties is Boolean_Properties
      range Alphabetic .. XID_Start;
 
---   type Boolean_Properties is
---    (ASCII_Hex_Digit,
---     Bidi_Control,
---     Dash,
---     Deprecated,
---     Diacritic,
---     Extender,
---     Hex_Digit,
---     Hyphen,
---     Ideographic,
---     IDS_Binary_Operator,
---     IDS_Trinary_Operator,
---     Join_Control,
---     Logical_Order_Exception,
---     Noncharacter_Code_Point,
---     Other_Alphabetic,
---     Other_Default_Ignorable_Code_Point,
---     Other_Grapheme_Extend,
---     Other_ID_Continue,
---     Other_ID_Start,
---     Other_Lowercase,
---     Other_Math,
---     Other_Uppercase,
---     Pattern_Syntax,
---     Pattern_White_Space,
---     Quotation_Mark,
---     Radical,
---     Soft_Dotted,
---     STerm,
---     Terminal_Punctuation,
---     Unified_Ideograph,
---     Variation_Selector,
---     White_Space,
---
-----     Bidi_Mirrored,                 --  XXX
-----     Composition_Exclusion,         --  XXX
-----     Full_Composition_Exclusion,    --  XXX
---
---     --  Derived core properties.
---
---     Alphabetic,                    --  Derived
---     Default_Ignorable_Code_Point,  --  Derived
---     Grapheme_Base,                 --  Derived
---     Grapheme_Extend,               --  Derived
---     Grapheme_Link,                 --  Deprecated, derived
---     ID_Continue,                   --  Derived
---     ID_Start,                      --  Derived
---     Lowercase,                     --  Derived
---     Math,                          --  Derived
---     Uppercase,                     --  Derived
---     XID_Continue,                  --  Derived
---     XID_Start);                    --  Derived
-----     Expands_On_NFC,                --  XXX
-----     Expands_On_NFD,                --  XXX
-----     Expands_On_NFKC,               --  XXX
-----     Expands_On_NFKD);              --  XXX
---
-----  Following for speedup case conversions:
-----     Has_Lowercase_Mapping
-----     Has_Uppercase_Mapping
-----     Has_Titlecase_Mapping
-----
-----     Final_Sigma_Sensitive
-----     After_Soft_Dotted_Sensitive
-----     More_Above_Sensitive
-----     Before_Dot_Sensitive
-----     After_I_Sensitive
-----
-----     Is_Cased
-----     Is_Case_Ignorable
-
-
---   type Line_Break is
---    (Ambiguous,
---     Alphabetic,
---     Break_Both,
---     Break_After,
---     Break_Before,
---     Mandatory_Break,
---     Contingent_Break,
---     Close_Punctuation,
---     Combining_Mark,
---     Carriage_Return,
---     Exclamation,
---     Glue,
---     H2,
---     H3,
---     Hyphen,
---     Ideographic,
---     Inseparable,
---     Infix_Numeric,
---     JL,
---     JT,
---     JV,
---     Line_Feed,
---     Next_Line,
---     Nonstarter,
---     Numeric,
---     Open_Punctuation,
---     Postfix_Numeric,
---     Prefix_Numeric,
---     Quotation,
---     Complex_Context,
---     Surrogate,
---     Space,
---     Break_Symbols,
---     Word_Joiner,
---     Unknown,
---     ZW_Space);
---   for Line_Break'Size use 8;
-
-   procedure Load_UnicodeData (File_Name : String);
+   procedure Load_UnicodeData (Unidata_Directory : String);
    --  Parse UnicodeData.txt file and fill internal data structures by the
    --  parsed values.
 
-   procedure Load_PropList (File_Name : String);
+   procedure Load_PropList (Unidata_Directory : String);
    --  Parse PropList.txt file and fill internal data structurs by the parsed
    --  values.
 
-   procedure Load_DerivedCoreProperties (File_Name : String);
+   procedure Load_DerivedCoreProperties (Unidata_Directory : String);
    --  Parse DerivedCoreProperties.txt file and fill internal data structurs by
    --  the parsed values.
 
-   procedure Load_GraphemeBreakProperty (File_Name : String);
+   procedure Load_GraphemeBreakProperty (Unidata_Directory : String);
    --  Parse GraphemeBreakProperty.txt file and fill internal data structurs by
    --  the parsed values.
 
-   procedure Load_WordBreakProperty (File_Name : String);
+   procedure Load_WordBreakProperty (Unidata_Directory : String);
    --  Parse WordBreakProperty.txt file and fill internal data structurs by the
    --  parsed values.
 
-   procedure Load_SentenceBreakProperty (File_Name : String);
+   procedure Load_SentenceBreakProperty (Unidata_Directory : String);
    --  Parse SentenceBreakProperty.txt file and fill internal data structurs by
    --  the parsed values.
 
-   procedure Load_LineBreak (File_Name : String);
+   procedure Load_LineBreak (Unidata_Directory : String);
    --  Parse LineBreak.txt file and fill internal data structurs by the parsed
    --  values.
 
@@ -206,6 +107,8 @@ package body Ucd_Data is
 
    procedure Load (Unidata_Directory : String) is
    begin
+      Ada.Text_IO.Put_Line ("Initializing ...");
+
       --  Initialize data structures to default values.
 
       Core :=
@@ -221,29 +124,29 @@ package body Ucd_Data is
 
       Cases :=
         new Case_Values_Array'
-             (others => (SUM | SLM | STM => (Present => False)));
+             (others =>
+               (SUM | SLM | STM => (Present => False),
+                FUM | FLM | FTM => (others => null)));
 
       --  Load UnicodeData.txt, PropList.txt.
 
-      Load_UnicodeData (Unidata_Directory & '/' & "UnicodeData.txt");
-      Load_PropList (Unidata_Directory & '/' & "PropList.txt");
+      Ada.Text_IO.Put_Line ("Loading UCD (" & Unidata_Directory & ") ...");
+
+      Load_UnicodeData (Unidata_Directory);
+      Load_PropList (Unidata_Directory);
 
       --  Load DerivedCoreProperties.txt.
       --  NOTE: Data in the file is derived from the other information, so
       --  it is possible to use it for verification purposes only.
 
-      Load_DerivedCoreProperties
-       (Unidata_Directory & '/' & "DerivedCoreProperties.txt");
+      Load_DerivedCoreProperties (Unidata_Directory);
 
       --  Load GraphemeBreakProperty.txt, WordBreakProperty.txt.
 
-      Load_GraphemeBreakProperty
-       (Unidata_Directory & '/' & "auxiliary/GraphemeBreakProperty.txt");
-      Load_WordBreakProperty
-       (Unidata_Directory & '/' & "auxiliary/WordBreakProperty.txt");
-      Load_SentenceBreakProperty
-       (Unidata_Directory & '/' & "auxiliary/SentenceBreakProperty.txt");
-      Load_LineBreak (Unidata_Directory & '/' & "LineBreak.txt");
+      Load_GraphemeBreakProperty (Unidata_Directory);
+      Load_WordBreakProperty (Unidata_Directory);
+      Load_SentenceBreakProperty (Unidata_Directory);
+      Load_LineBreak (Unidata_Directory);
 
       --  Compute derived properties.
 
@@ -255,14 +158,17 @@ package body Ucd_Data is
    -- Load_DerivedCoreProperties --
    --------------------------------
 
-   procedure Load_DerivedCoreProperties (File_Name : String) is
+   procedure Load_DerivedCoreProperties (Unidata_Directory : String) is
       File  : Ucd_Input.File_Type;
       First : Code_Point;
       Last  : Code_Point;
       Prop  : Derived_Core_Boolean_Properties;
 
    begin
-      Ucd_Input.Open (File, File_Name);
+      Ada.Text_IO.Put_Line ("   ... " & DerivedCoreProperties_Name);
+
+      Ucd_Input.Open
+       (File, Unidata_Directory & '/' & DerivedCoreProperties_Name);
 
       while not Ucd_Input.End_Of_Data (File) loop
          First := Ucd_Input.First_Code_Point (File);
@@ -284,14 +190,17 @@ package body Ucd_Data is
    -- Load_GraphemeBreakProperty --
    --------------------------------
 
-   procedure Load_GraphemeBreakProperty (File_Name : String) is
+   procedure Load_GraphemeBreakProperty (Unidata_Directory : String) is
       File  : Ucd_Input.File_Type;
       First : Code_Point;
       Last  : Code_Point;
       Prop  : Grapheme_Cluster_Break;
 
    begin
-      Ucd_Input.Open (File, File_Name);
+      Ada.Text_IO.Put_Line ("   ... " & GraphemeBreakProperty_Name);
+
+      Ucd_Input.Open
+       (File, Unidata_Directory & '/' & GraphemeBreakProperty_Name);
 
       while not Ucd_Input.End_Of_Data (File) loop
          First := Ucd_Input.First_Code_Point (File);
@@ -312,14 +221,16 @@ package body Ucd_Data is
    -- Load_LineBreak --
    --------------------
 
-   procedure Load_LineBreak (File_Name : String) is
+   procedure Load_LineBreak (Unidata_Directory : String) is
       File  : Ucd_Input.File_Type;
       First : Code_Point;
       Last  : Code_Point;
       Prop  : Line_Break;
 
    begin
-      Ucd_Input.Open (File, File_Name);
+      Ada.Text_IO.Put_Line ("   ... " & LineBreak_Name);
+
+      Ucd_Input.Open (File, Unidata_Directory & '/' & LineBreak_Name);
 
       while not Ucd_Input.End_Of_Data (File) loop
          First := Ucd_Input.First_Code_Point (File);
@@ -340,14 +251,16 @@ package body Ucd_Data is
    -- Load_PropList --
    -------------------
 
-   procedure Load_PropList (File_Name : String) is
+   procedure Load_PropList (Unidata_Directory : String) is
       File  : Ucd_Input.File_Type;
       First : Code_Point;
       Last  : Code_Point;
       Prop  : Primary_Core_Boolean_Properties;
 
    begin
-      Ucd_Input.Open (File, File_Name);
+      Ada.Text_IO.Put_Line ("   ... " & PropList_Name);
+
+      Ucd_Input.Open (File, Unidata_Directory & '/' & PropList_Name);
 
       while not Ucd_Input.End_Of_Data (File) loop
          First := Ucd_Input.First_Code_Point (File);
@@ -369,14 +282,17 @@ package body Ucd_Data is
    -- Load_SentenceBreakProperty --
    --------------------------------
 
-   procedure Load_SentenceBreakProperty (File_Name : String) is
+   procedure Load_SentenceBreakProperty (Unidata_Directory : String) is
       File  : Ucd_Input.File_Type;
       First : Code_Point;
       Last  : Code_Point;
       Prop  : Sentence_Break;
 
    begin
-      Ucd_Input.Open (File, File_Name);
+      Ada.Text_IO.Put_Line ("   ... " & SentenceBreakProperty_Name);
+
+      Ucd_Input.Open
+       (File, Unidata_Directory & '/' & SentenceBreakProperty_Name);
 
       while not Ucd_Input.End_Of_Data (File) loop
          First := Ucd_Input.First_Code_Point (File);
@@ -397,7 +313,7 @@ package body Ucd_Data is
    -- Load_UnicodeData --
    ----------------------
 
-   procedure Load_UnicodeData (File_Name : String) is
+   procedure Load_UnicodeData (Unidata_Directory : String) is
       type String_Access is access String;
 
       File       : Ucd_Input.File_Type;
@@ -442,7 +358,9 @@ package body Ucd_Data is
       end Process;
 
    begin
-      Ucd_Input.Open (File, File_Name);
+      Ada.Text_IO.Put_Line ("   ... " & UnicodeData_Name);
+
+      Ucd_Input.Open (File, Unidata_Directory & '/' & UnicodeData_Name);
 
       while not Ucd_Input.End_Of_Data (File) loop
 
@@ -580,14 +498,16 @@ package body Ucd_Data is
    -- Load_WordBreakProperty --
    ----------------------------
 
-   procedure Load_WordBreakProperty (File_Name : String) is
+   procedure Load_WordBreakProperty (Unidata_Directory : String) is
       File  : Ucd_Input.File_Type;
       First : Code_Point;
       Last  : Code_Point;
       Prop  : Word_Break;
 
    begin
-      Ucd_Input.Open (File, File_Name);
+      Ada.Text_IO.Put_Line ("   ... " & WordBreakProperty_Name);
+
+      Ucd_Input.Open (File, Unidata_Directory & '/' & WordBreakProperty_Name);
 
       while not Ucd_Input.End_Of_Data (File) loop
          First := Ucd_Input.First_Code_Point (File);

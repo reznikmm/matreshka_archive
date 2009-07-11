@@ -40,6 +40,15 @@ package Ucd_Data is
 
    type Code_Point_Sequence_Access is access Code_Point_Sequence;
 
+   type Full_Case_Values is record
+      Default           : Code_Point_Sequence_Access;
+      Final_Sigma       : Code_Point_Sequence_Access;
+      After_Soft_Dotted : Code_Point_Sequence_Access;
+      More_Above        : Code_Point_Sequence_Access;
+      Before_Dot        : Code_Point_Sequence_Access;
+      After_I           : Code_Point_Sequence_Access;
+   end record;
+
    type Optional_Code_Point (Present : Boolean := False) is record
       case Present is
          when True =>
@@ -54,9 +63,9 @@ package Ucd_Data is
       SUM : Optional_Code_Point;
       SLM : Optional_Code_Point;
       STM : Optional_Code_Point;
---      FUM : Code_Point_Sequence_Access;
---      FLM : Code_Point_Sequence_Access;
---      FTM : Code_Point_Sequence_Access;
+      FUM : Full_Case_Values;
+      FLM : Full_Case_Values;
+      FTM : Full_Case_Values;
    end record;
 
    type Case_Values_Array is

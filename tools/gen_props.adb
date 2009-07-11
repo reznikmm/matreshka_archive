@@ -37,6 +37,8 @@ procedure Gen_Props (Source_Directory : String) is
    use Matreshka.Internals.Unicode;
    use Ucd_Data;
 
+   Generated_Name : constant String := "matreshka-internals-ucd-core.ads";
+
    type Group_Info is record
       Share : First_Stage_Index;
       Count : Natural;
@@ -525,6 +527,8 @@ procedure Gen_Props (Source_Directory : String) is
    File      : Ada.Text_IO.File_Type;
 
 begin
+   Ada.Text_IO.Put_Line ("   ... " & Generated_Name);
+
    --  Pack groups: reuse groups with the same values.
 
    for J in Groups'Range loop
@@ -543,9 +547,7 @@ begin
    --  Generate data file
 
    Ada.Text_IO.Create
-    (File,
-     Ada.Text_IO.Out_File,
-     Source_Directory & '/' & "matreshka-internals-ucd-core.ads");
+    (File, Ada.Text_IO.Out_File, Source_Directory & '/' & Generated_Name);
    Ada.Text_IO.Put_Line
     (File,
      "-----------------------------------------------------------------------"

@@ -28,6 +28,7 @@
 --  as much as possible with the base League packages.
 ------------------------------------------------------------------------------
 with Ada.Command_Line;
+with Ada.Text_IO;
 
 with Ucd_Data;
 with Gen_Props;
@@ -35,5 +36,7 @@ with Gen_Props;
 procedure Gen_Ucd is
 begin
    Ucd_Data.Load (Ada.Command_Line.Argument (1));
+   Ada.Text_IO.Put_Line
+    ("Generating (" & Ada.Command_Line.Argument (2) & ") ...");
    Gen_Props (Ada.Command_Line.Argument (2));
 end Gen_Ucd;
