@@ -831,7 +831,8 @@ begin
                end;
             end loop;
 
-            Ada.Text_IO.Put (File, "others           => ");
+            Ada.Text_IO.Put_Line (File, "others           =>");
+            Ada.Text_IO.Set_Col (File, 11);
             Put (File, Default);
             Ada.Text_IO.Put_Line (File, ");");
 

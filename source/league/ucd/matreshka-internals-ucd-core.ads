@@ -536,8 +536,9 @@ package Matreshka.Internals.Ucd.Core is
               | Grapheme_Base
               | Math => True,
             others => False)),
-         others           => (Control, 0, Control, Other, Other, Combining_Mark,
-                              (others => False)));
+         others           =>
+          (Control, 0, Control, Other, Other, Combining_Mark,
+           (others => False)));
 
    Group_0001 : aliased constant Core_Second_Stage
      := (16#01#           =>
@@ -2007,16 +2008,17 @@ package Matreshka.Internals.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         others           => (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Uppercase
-                                 | XID_Continue
-                                 | XID_Start
-                                 | Has_Lowercase_Mapping => True,
-                               others => False)));
+         others           =>
+          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Has_Lowercase_Mapping => True,
+            others => False)));
 
    Group_0002 : aliased constant Core_Second_Stage
      := (16#00#           =>
@@ -3231,15 +3233,16 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Lowercase
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0003 : aliased constant Core_Second_Stage
      := (16#00# .. 16#14# =>
@@ -3935,17 +3938,18 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Lowercase
-                                 | XID_Continue
-                                 | XID_Start
-                                 | Has_Uppercase_Mapping
-                                 | Has_Titlecase_Mapping => True,
-                               others => False)));
+         others           =>
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)));
 
    Group_0004 : aliased constant Core_Second_Stage
      := (16#30# .. 16#55# =>
@@ -4913,16 +4917,17 @@ package Matreshka.Internals.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         others           => (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Uppercase
-                                 | XID_Continue
-                                 | XID_Start
-                                 | Has_Lowercase_Mapping => True,
-                               others => False)));
+         others           =>
+          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Has_Lowercase_Mapping => True,
+            others => False)));
 
    Group_0005 : aliased constant Core_Second_Stage
      := (16#01#           =>
@@ -5545,16 +5550,17 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Punctuation, 0, Other, Mid_Letter, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Uppercase
-                                 | XID_Continue
-                                 | XID_Start
-                                 | Has_Lowercase_Mapping => True,
-                               others => False)));
+         others           =>
+          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Has_Lowercase_Mapping => True,
+            others => False)));
 
    Group_0006 : aliased constant Core_Second_Stage
      := (16#00# .. 16#03# =>
@@ -5919,14 +5925,15 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0007 : aliased constant Core_Second_Stage
      := (16#00# .. 16#02# =>
@@ -6210,18 +6217,20 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0008 : aliased constant Core_Second_Stage
-     := (others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+     := (others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_0009 : aliased constant Core_Second_Stage
      := (16#00#           =>
@@ -6498,14 +6507,15 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_000A : aliased constant Core_Second_Stage
      := (16#00#           =>
@@ -6780,14 +6790,15 @@ package Matreshka.Internals.Ucd.Core is
           (Currency_Symbol, 0, Other, Other, Other, Prefix_Numeric,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_000B : aliased constant Core_Second_Stage
      := (16#01#           =>
@@ -7190,8 +7201,9 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_000C : aliased constant Core_Second_Stage
      := (16#00#           =>
@@ -7487,14 +7499,15 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_000D : aliased constant Core_Second_Stage
      := (16#00# .. 16#01# =>
@@ -7732,14 +7745,15 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_000E : aliased constant Core_Second_Stage
      := (16#01# .. 16#2F# =>
@@ -8126,8 +8140,9 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_000F : aliased constant Core_Second_Stage
      := (16#00#           =>
@@ -8459,8 +8474,9 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_0010 : aliased constant Core_Second_Stage
      := (16#2B# .. 16#2C# =>
@@ -8704,14 +8720,15 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, Other, O_Letter, Complex_Context,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, Other, O_Letter, Complex_Context,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0011 : aliased constant Core_Second_Stage
      := (16#5A# .. 16#5E# =>
@@ -8760,14 +8777,15 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, L, A_Letter, O_Letter, JL,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, L, A_Letter, O_Letter, JL,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0012 : aliased constant Core_Second_Stage
      := (16#49#           =>
@@ -8809,14 +8827,15 @@ package Matreshka.Internals.Ucd.Core is
          16#D7#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0013 : aliased constant Core_Second_Stage
      := (16#11#           =>
@@ -8883,37 +8902,40 @@ package Matreshka.Internals.Ucd.Core is
          16#9A# .. 16#9F# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0014 : aliased constant Core_Second_Stage
      := (16#00#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0015 : aliased constant Core_Second_Stage
-     := (others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+     := (others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0016 : aliased constant Core_Second_Stage
      := (16#6D#           =>
@@ -8960,14 +8982,15 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0017 : aliased constant Core_Second_Stage
      := (16#0D#           =>
@@ -9204,14 +9227,15 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Number, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0018 : aliased constant Core_Second_Stage
      := (16#00# .. 16#01# =>
@@ -9305,14 +9329,15 @@ package Matreshka.Internals.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0019 : aliased constant Core_Second_Stage
      := (16#00# .. 16#1C# =>
@@ -9470,14 +9495,15 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Punctuation, 0, Other, Other, Other, Complex_Context,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, Other, O_Letter, Complex_Context,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, Other, O_Letter, Complex_Context,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_001A : aliased constant Core_Second_Stage
      := (16#00# .. 16#16# =>
@@ -9517,8 +9543,9 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_001B : aliased constant Core_Second_Stage
      := (16#00# .. 16#03# =>
@@ -9739,14 +9766,15 @@ package Matreshka.Internals.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_001C : aliased constant Core_Second_Stage
      := (16#00# .. 16#23# =>
@@ -9875,8 +9903,9 @@ package Matreshka.Internals.Ucd.Core is
               | Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_001D : aliased constant Core_Second_Stage
      := (16#2C# .. 16#61# =>
@@ -10099,15 +10128,16 @@ package Matreshka.Internals.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         others           => (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Lowercase
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_001E : aliased constant Core_Second_Stage
      := (16#01#           =>
@@ -11618,16 +11648,17 @@ package Matreshka.Internals.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         others           => (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Uppercase
-                                 | XID_Continue
-                                 | XID_Start
-                                 | Has_Lowercase_Mapping => True,
-                               others => False)));
+         others           =>
+          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Has_Lowercase_Mapping => True,
+            others => False)));
 
    Group_001F : aliased constant Core_Second_Stage
      := (16#08# .. 16#0F# =>
@@ -12105,17 +12136,18 @@ package Matreshka.Internals.Ucd.Core is
            (Diacritic
               | Grapheme_Base => True,
             others => False)),
-         others           => (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Lowercase
-                                 | XID_Continue
-                                 | XID_Start
-                                 | Has_Uppercase_Mapping
-                                 | Has_Titlecase_Mapping => True,
-                               others => False)));
+         others           =>
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)));
 
    Group_0020 : aliased constant Core_Second_Stage
      := (16#00# .. 16#06# =>
@@ -12692,8 +12724,9 @@ package Matreshka.Internals.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_0021 : aliased constant Core_Second_Stage
      := (16#00# .. 16#01# =>
@@ -13355,12 +13388,13 @@ package Matreshka.Internals.Ucd.Core is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         others           => (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-                              (Other_Math
-                                 | Pattern_Syntax
-                                 | Grapheme_Base
-                                 | Math => True,
-                               others => False)));
+         others           =>
+          (Other_Symbol, 0, Other, Other, Other, Alphabetic,
+           (Other_Math
+              | Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
+            others => False)));
 
    Group_0022 : aliased constant Core_Second_Stage
      := (16#00#           =>
@@ -13544,11 +13578,12 @@ package Matreshka.Internals.Ucd.Core is
               | Grapheme_Base
               | Math => True,
             others => False)),
-         others           => (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-                              (Pattern_Syntax
-                                 | Grapheme_Base
-                                 | Math => True,
-                               others => False)));
+         others           =>
+          (Math_Symbol, 0, Other, Other, Other, Alphabetic,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
+            others => False)));
 
    Group_0023 : aliased constant Core_Second_Stage
      := (16#08# .. 16#0B# =>
@@ -13624,10 +13659,11 @@ package Matreshka.Internals.Ucd.Core is
               | Grapheme_Base
               | Math => True,
             others => False)),
-         others           => (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-                              (Pattern_Syntax
-                                 | Grapheme_Base => True,
-                               others => False)));
+         others           =>
+          (Other_Symbol, 0, Other, Other, Other, Alphabetic,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)));
 
    Group_0024 : aliased constant Core_Second_Stage
      := (16#00# .. 16#26# =>
@@ -13671,9 +13707,10 @@ package Matreshka.Internals.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         others           => (Other_Number, 0, Other, Other, Other, Ambiguous,
-                              (Grapheme_Base => True,
-                               others => False)));
+         others           =>
+          (Other_Number, 0, Other, Other, Other, Ambiguous,
+           (Grapheme_Base => True,
+            others => False)));
 
    Group_0025 : aliased constant Core_Second_Stage
      := (16#4C# .. 16#4F# =>
@@ -13870,10 +13907,11 @@ package Matreshka.Internals.Ucd.Core is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         others           => (Other_Symbol, 0, Other, Other, Other, Ambiguous,
-                              (Pattern_Syntax
-                                 | Grapheme_Base => True,
-                               others => False)));
+         others           =>
+          (Other_Symbol, 0, Other, Other, Other, Ambiguous,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)));
 
    Group_0026 : aliased constant Core_Second_Stage
      := (16#05# .. 16#06# =>
@@ -13986,10 +14024,11 @@ package Matreshka.Internals.Ucd.Core is
           (Unassigned, 0, Other, Other, Other, Unknown,
            (Pattern_Syntax => True,
             others => False)),
-         others           => (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-                              (Pattern_Syntax
-                                 | Grapheme_Base => True,
-                               others => False)));
+         others           =>
+          (Other_Symbol, 0, Other, Other, Other, Alphabetic,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)));
 
    Group_0027 : aliased constant Core_Second_Stage
      := (16#00#           =>
@@ -14240,16 +14279,18 @@ package Matreshka.Internals.Ucd.Core is
               | Grapheme_Base
               | Math => True,
             others => False)),
-         others           => (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-                              (Pattern_Syntax
-                                 | Grapheme_Base => True,
-                               others => False)));
+         others           =>
+          (Other_Symbol, 0, Other, Other, Other, Alphabetic,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)));
 
    Group_0028 : aliased constant Core_Second_Stage
-     := (others           => (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-                              (Pattern_Syntax
-                                 | Grapheme_Base => True,
-                               others => False)));
+     := (others           =>
+          (Other_Symbol, 0, Other, Other, Other, Alphabetic,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)));
 
    Group_0029 : aliased constant Core_Second_Stage
      := (16#83#           =>
@@ -14448,18 +14489,20 @@ package Matreshka.Internals.Ucd.Core is
               | Grapheme_Base
               | Math => True,
             others => False)),
-         others           => (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-                              (Pattern_Syntax
-                                 | Grapheme_Base
-                                 | Math => True,
-                               others => False)));
+         others           =>
+          (Math_Symbol, 0, Other, Other, Other, Alphabetic,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
+            others => False)));
 
    Group_002A : aliased constant Core_Second_Stage
-     := (others           => (Math_Symbol, 0, Other, Other, Other, Alphabetic,
-                              (Pattern_Syntax
-                                 | Grapheme_Base
-                                 | Math => True,
-                               others => False)));
+     := (others           =>
+          (Math_Symbol, 0, Other, Other, Other, Alphabetic,
+           (Pattern_Syntax
+              | Grapheme_Base
+              | Math => True,
+            others => False)));
 
    Group_002B : aliased constant Core_Second_Stage
      := (16#00# .. 16#2F# =>
@@ -14489,9 +14532,10 @@ package Matreshka.Internals.Ucd.Core is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (Pattern_Syntax => True,
-                               others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (Pattern_Syntax => True,
+            others => False)));
 
    Group_002C : aliased constant Core_Second_Stage
      := (16#2F#           =>
@@ -15287,16 +15331,17 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Punctuation, 0, Other, Other, Other, Exclamation,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Uppercase
-                                 | XID_Continue
-                                 | XID_Start
-                                 | Has_Lowercase_Mapping => True,
-                               others => False)));
+         others           =>
+          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Has_Lowercase_Mapping => True,
+            others => False)));
 
    Group_002D : aliased constant Core_Second_Stage
      := (16#00# .. 16#25# =>
@@ -15356,14 +15401,15 @@ package Matreshka.Internals.Ucd.Core is
          16#DF#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_002E : aliased constant Core_Second_Stage
      := (16#00# .. 16#01# =>
@@ -15555,10 +15601,11 @@ package Matreshka.Internals.Ucd.Core is
          16#9A#           =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Other_Symbol, 0, Other, Other, Other, Ideographic,
-                              (Radical
-                                 | Grapheme_Base => True,
-                               others => False)));
+         others           =>
+          (Other_Symbol, 0, Other, Other, Other, Ideographic,
+           (Radical
+              | Grapheme_Base => True,
+            others => False)));
 
    Group_002F : aliased constant Core_Second_Stage
      := (16#D6# .. 16#EF# =>
@@ -15579,10 +15626,11 @@ package Matreshka.Internals.Ucd.Core is
            (IDS_Binary_Operator
               | Grapheme_Base => True,
             others => False)),
-         others           => (Other_Symbol, 0, Other, Other, Other, Ideographic,
-                              (Radical
-                                 | Grapheme_Base => True,
-                               others => False)));
+         others           =>
+          (Other_Symbol, 0, Other, Other, Other, Ideographic,
+           (Radical
+              | Grapheme_Base => True,
+            others => False)));
 
    Group_0030 : aliased constant Core_Second_Stage
      := (16#00#           =>
@@ -16224,14 +16272,15 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, Katakana, O_Letter, Ideographic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, Katakana, O_Letter, Ideographic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0031 : aliased constant Core_Second_Stage
      := (16#00# .. 16#04# =>
@@ -16276,14 +16325,15 @@ package Matreshka.Internals.Ucd.Core is
          16#E4# .. 16#EF# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Ideographic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Ideographic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0032 : aliased constant Core_Second_Stage
      := (16#1F#           =>
@@ -16312,57 +16362,62 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Symbol, 0, Other, Katakana, Other, Ideographic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Other_Symbol, 0, Other, Other, Other, Ideographic,
-                              (Grapheme_Base => True,
-                               others => False)));
+         others           =>
+          (Other_Symbol, 0, Other, Other, Other, Ideographic,
+           (Grapheme_Base => True,
+            others => False)));
 
    Group_0033 : aliased constant Core_Second_Stage
      := (16#00# .. 16#57# =>
           (Other_Symbol, 0, Other, Katakana, Other, Ideographic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Other_Symbol, 0, Other, Other, Other, Ideographic,
-                              (Grapheme_Base => True,
-                               others => False)));
+         others           =>
+          (Other_Symbol, 0, Other, Other, Other, Ideographic,
+           (Grapheme_Base => True,
+            others => False)));
 
    Group_0034 : aliased constant Core_Second_Stage
-     := (others           => (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-                              (Ideographic
-                                 | Unified_Ideograph
-                                 | Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+     := (others           =>
+          (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_004D : aliased constant Core_Second_Stage
      := (16#B6# .. 16#BF# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-                              (Ideographic
-                                 | Unified_Ideograph
-                                 | Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_009F : aliased constant Core_Second_Stage
-     := (others           => (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-                              (Ideographic
-                                 | Unified_Ideograph
-                                 | Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+     := (others           =>
+          (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00A0 : aliased constant Core_Second_Stage
      := (16#15#           =>
@@ -16375,24 +16430,26 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Ideographic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Ideographic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00A1 : aliased constant Core_Second_Stage
-     := (others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Ideographic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+     := (others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Ideographic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00A4 : aliased constant Core_Second_Stage
      := (16#8D# .. 16#8F# =>
@@ -16402,14 +16459,15 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Symbol, 0, Other, Other, Other, Ideographic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Ideographic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Ideographic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00A6 : aliased constant Core_Second_Stage
      := (16#00# .. 16#0B# =>
@@ -17299,8 +17357,9 @@ package Matreshka.Internals.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_00A7 : aliased constant Core_Second_Stage
      := (16#00# .. 16#16# =>
@@ -18425,8 +18484,9 @@ package Matreshka.Internals.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_00A8 : aliased constant Core_Second_Stage
      := (16#02#           =>
@@ -18531,14 +18591,15 @@ package Matreshka.Internals.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00A9 : aliased constant Core_Second_Stage
      := (16#00# .. 16#09# =>
@@ -18619,8 +18680,9 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_00AA : aliased constant Core_Second_Stage
      := (16#00# .. 16#28# =>
@@ -18730,8 +18792,9 @@ package Matreshka.Internals.Ucd.Core is
               | Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_00AC : aliased constant Core_Second_Stage
      := (16#00#           =>
@@ -18824,14 +18887,15 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00AD : aliased constant Core_Second_Stage
      := (16#18#           =>
@@ -18915,14 +18979,15 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00AE : aliased constant Core_Second_Stage
      := (16#14#           =>
@@ -19006,14 +19071,15 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00AF : aliased constant Core_Second_Stage
      := (16#10#           =>
@@ -19097,14 +19163,15 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00B0 : aliased constant Core_Second_Stage
      := (16#0C#           =>
@@ -19188,14 +19255,15 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00B1 : aliased constant Core_Second_Stage
      := (16#08#           =>
@@ -19279,14 +19347,15 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00B2 : aliased constant Core_Second_Stage
      := (16#04#           =>
@@ -19370,14 +19439,15 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00D7 : aliased constant Core_Second_Stage
      := (16#18#           =>
@@ -19425,33 +19495,37 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, LVT, A_Letter, O_Letter, H3,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00D8 : aliased constant Core_Second_Stage
-     := (others           => (Surrogate, 0, Other, Other, Other, Surrogate,
-                              (others => False)));
+     := (others           =>
+          (Surrogate, 0, Other, Other, Other, Surrogate,
+           (others => False)));
 
    Group_00E0 : aliased constant Core_Second_Stage
-     := (others           => (Private_Use, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+     := (others           =>
+          (Private_Use, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_00F9 : aliased constant Core_Second_Stage
-     := (others           => (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-                              (Ideographic
-                                 | Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+     := (others           =>
+          (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
+           (Ideographic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00FA : aliased constant Core_Second_Stage
      := (16#0E# .. 16#0F# =>
@@ -19537,15 +19611,16 @@ package Matreshka.Internals.Ucd.Core is
          16#6B# .. 16#6F# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-                              (Ideographic
-                                 | Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
+           (Ideographic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00FB : aliased constant Core_Second_Stage
      := (16#00# .. 16#06# =>
@@ -19606,14 +19681,15 @@ package Matreshka.Internals.Ucd.Core is
          16#B2# .. 16#D2# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00FC : aliased constant Core_Second_Stage
      := (16#5E# .. 16#63# =>
@@ -19623,14 +19699,15 @@ package Matreshka.Internals.Ucd.Core is
               | ID_Continue
               | ID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00FD : aliased constant Core_Second_Stage
      := (16#3E#           =>
@@ -19671,14 +19748,15 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00FE : aliased constant Core_Second_Stage
      := (16#00# .. 16#0F# =>
@@ -20022,14 +20100,15 @@ package Matreshka.Internals.Ucd.Core is
          16#FD# .. 16#FE# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_00FF : aliased constant Core_Second_Stage
      := (16#00#           =>
@@ -20404,14 +20483,15 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0100 : aliased constant Core_Second_Stage
      := (16#0C#           =>
@@ -20432,14 +20512,15 @@ package Matreshka.Internals.Ucd.Core is
          16#5E# .. 16#7F# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0101 : aliased constant Core_Second_Stage
      := (16#00# .. 16#01# =>
@@ -20489,9 +20570,10 @@ package Matreshka.Internals.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         others           => (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-                              (Grapheme_Base => True,
-                               others => False)));
+         others           =>
+          (Other_Symbol, 0, Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)));
 
    Group_0102 : aliased constant Core_Second_Stage
      := (16#80# .. 16#9C# =>
@@ -20512,8 +20594,9 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_0103 : aliased constant Core_Second_Stage
      := (16#1F#           =>
@@ -20572,14 +20655,15 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
-                              (Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Other_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0104 : aliased constant Core_Second_Stage
      := (16#00# .. 16#27# =>
@@ -20620,8 +20704,9 @@ package Matreshka.Internals.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_0108 : aliased constant Core_Second_Stage
      := (16#00# .. 16#05# =>
@@ -20678,8 +20763,9 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_0109 : aliased constant Core_Second_Stage
      := (16#00# .. 16#15# =>
@@ -20713,8 +20799,9 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_010A : aliased constant Core_Second_Stage
      := (16#00#           =>
@@ -20838,8 +20925,9 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Punctuation, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_0123 : aliased constant Core_Second_Stage
      := (16#00# .. 16#6E# =>
@@ -20851,8 +20939,9 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_0124 : aliased constant Core_Second_Stage
      := (16#00# .. 16#62# =>
@@ -20869,13 +20958,15 @@ package Matreshka.Internals.Ucd.Core is
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_01D0 : aliased constant Core_Second_Stage
-     := (others           => (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-                              (Grapheme_Base => True,
-                               others => False)));
+     := (others           =>
+          (Other_Symbol, 0, Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)));
 
    Group_01D1 : aliased constant Core_Second_Stage
      := (16#27# .. 16#28# =>
@@ -20948,9 +21039,10 @@ package Matreshka.Internals.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         others           => (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-                              (Grapheme_Base => True,
-                               others => False)));
+         others           =>
+          (Other_Symbol, 0, Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)));
 
    Group_01D2 : aliased constant Core_Second_Stage
      := (16#00# .. 16#41# =>
@@ -20967,8 +21059,9 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_01D3 : aliased constant Core_Second_Stage
      := (16#00# .. 16#56# =>
@@ -20979,8 +21072,9 @@ package Matreshka.Internals.Ucd.Core is
           (Other_Number, 0, Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_01D4 : aliased constant Core_Second_Stage
      := (16#1A# .. 16#21# =>
@@ -21219,17 +21313,18 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-                              (Other_Math
-                                 | Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Math
-                                 | Uppercase
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+           (Other_Math
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Math
+              | Uppercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_01D5 : aliased constant Core_Second_Stage
      := (16#00# .. 16#03# =>
@@ -21444,17 +21539,18 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-                              (Other_Math
-                                 | Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Math
-                                 | Uppercase
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+           (Other_Math
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Math
+              | Uppercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_01D6 : aliased constant Core_Second_Stage
      := (16#00# .. 16#07# =>
@@ -21622,17 +21718,18 @@ package Matreshka.Internals.Ucd.Core is
            (Grapheme_Base
               | Math => True,
             others => False)),
-         others           => (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-                              (Other_Math
-                                 | Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Math
-                                 | Uppercase
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+           (Other_Math
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Math
+              | Uppercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_01D7 : aliased constant Core_Second_Stage
      := (16#15#           =>
@@ -21721,41 +21818,45 @@ package Matreshka.Internals.Ucd.Core is
          16#CC# .. 16#CD# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
-                              (Other_Math
-                                 | Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | Lowercase
-                                 | Math
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+         others           =>
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Other_Math
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | Math
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_01F0 : aliased constant Core_Second_Stage
      := (16#2C# .. 16#2F# =>
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         others           => (Other_Symbol, 0, Other, Other, Other, Alphabetic,
-                              (Grapheme_Base => True,
-                               others => False)));
+         others           =>
+          (Other_Symbol, 0, Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)));
 
    Group_01FF : aliased constant Core_Second_Stage
-     := (others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+     := (others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_02A6 : aliased constant Core_Second_Stage
-     := (others           => (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
-                              (Ideographic
-                                 | Unified_Ideograph
-                                 | Alphabetic
-                                 | Grapheme_Base
-                                 | ID_Continue
-                                 | ID_Start
-                                 | XID_Continue
-                                 | XID_Start => True,
-                               others => False)));
+     := (others           =>
+          (Other_Letter, 0, Other, Other, O_Letter, Ideographic,
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_02FA : aliased constant Core_Second_Stage
      := (16#00# .. 16#1D# =>
@@ -21768,8 +21869,9 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Group_0E00 : aliased constant Core_Second_Stage
      := (16#01#           =>
@@ -21782,29 +21884,33 @@ package Matreshka.Internals.Ucd.Core is
            (Deprecated
               | Default_Ignorable_Code_Point => True,
             others => False)),
-         others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (Other_Default_Ignorable_Code_Point
-                                 | Default_Ignorable_Code_Point => True,
-                               others => False)));
+         others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (Other_Default_Ignorable_Code_Point
+              | Default_Ignorable_Code_Point => True,
+            others => False)));
 
    Group_0E01 : aliased constant Core_Second_Stage
-     := (others           => (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
-                              (Variation_Selector
-                                 | Default_Ignorable_Code_Point
-                                 | Grapheme_Extend
-                                 | ID_Continue
-                                 | XID_Continue => True,
-                               others => False)));
+     := (others           =>
+          (Nonspacing_Mark, 0, Extend, Extend, Extend, Combining_Mark,
+           (Variation_Selector
+              | Default_Ignorable_Code_Point
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)));
 
    Group_0E02 : aliased constant Core_Second_Stage
-     := (others           => (Unassigned, 0, Other, Other, Other, Unknown,
-                              (Other_Default_Ignorable_Code_Point
-                                 | Default_Ignorable_Code_Point => True,
-                               others => False)));
+     := (others           =>
+          (Unassigned, 0, Other, Other, Other, Unknown,
+           (Other_Default_Ignorable_Code_Point
+              | Default_Ignorable_Code_Point => True,
+            others => False)));
 
    Group_0FFF : aliased constant Core_Second_Stage
-     := (others           => (Private_Use, 0, Other, Other, Other, Unknown,
-                              (others => False)));
+     := (others           =>
+          (Private_Use, 0, Other, Other, Other, Unknown,
+           (others => False)));
 
    Property : aliased constant Core_First_Stage
      := (16#0000# => Group_0000'Access, 16#0001# => Group_0001'Access,
