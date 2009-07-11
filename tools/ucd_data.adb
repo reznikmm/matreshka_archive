@@ -355,6 +355,18 @@ package body Ucd_Data is
          Cases (Code).SUM := SUM;
          Cases (Code).SLM := SLM;
          Cases (Code).STM := STM;
+
+         if SUM.Present then
+            Core (Code).B (Has_Uppercase_Mapping) := True;
+         end if;
+
+         if SLM.Present then
+            Core (Code).B (Has_Lowercase_Mapping) := True;
+         end if;
+
+         if STM.Present then
+            Core (Code).B (Has_Titlecase_Mapping) := True;
+         end if;
       end Process;
 
    begin

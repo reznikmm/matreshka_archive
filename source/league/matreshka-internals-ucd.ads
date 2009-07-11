@@ -160,29 +160,30 @@ package Matreshka.Internals.Ucd is
      Math,                          --  Derived
      Uppercase,                     --  Derived
      XID_Continue,                  --  Derived
-     XID_Start);                    --  Derived
+     XID_Start,                     --  Derived
 --     Expands_On_NFC,                --  XXX
 --     Expands_On_NFD,                --  XXX
 --     Expands_On_NFKC,               --  XXX
 --     Expands_On_NFKD);              --  XXX
 
---  Following for speedup case conversions:
---     Has_Lowercase_Mapping
---     Has_Uppercase_Mapping
---     Has_Titlecase_Mapping
---
---     Final_Sigma_Sensitive
---     After_Soft_Dotted_Sensitive
---     More_Above_Sensitive
---     Before_Dot_Sensitive
---     After_I_Sensitive
---
---     Is_Cased
---     Is_Case_Ignorable
+     --  Following are used by case conversion subprograms.
+
+     Is_Cased,
+     Is_Case_Ignorable,
+
+     Has_Lowercase_Mapping,
+     Has_Uppercase_Mapping,
+     Has_Titlecase_Mapping,
+
+     Final_Sigma_Sensitive,
+     After_Soft_Dotted_Sensitive,
+     More_Above_Sensitive,
+     Before_Dot_Sensitive,
+     After_I_Sensitive);
 
    type Boolean_Values is array (Boolean_Properties) of Boolean;
    for Boolean_Values'Component_Size use 1;
-   for Boolean_Values'Size use 64;  --  43 actually used for now
+   for Boolean_Values'Size use 64;  --  43 + 10 actually used for now
 
    type Grapheme_Cluster_Break is
     (Other,
@@ -300,5 +301,13 @@ package Matreshka.Internals.Ucd is
      array (First_Stage_Index) of Core_Second_Stage_Access;
 
    type Core_First_Stage_Access is access constant Core_First_Stage;
+
+   type Casing_Context is
+    (Default,
+     Final_Sigma,
+     After_Soft_Dotted,
+     More_Above,
+     Before_Dot,
+     After_I);
 
 end Matreshka.Internals.Ucd;
