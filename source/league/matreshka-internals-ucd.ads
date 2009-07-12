@@ -48,6 +48,8 @@ package Matreshka.Internals.Ucd is
    type Code_Point_Sequence is
      array (Sequence_Index range <>) of Matreshka.Internals.Unicode.Code_Point;
 
+   type Code_Point_Sequence_Access is access constant Code_Point_Sequence;
+
    ---------------------
    -- Core properties --
    ---------------------
@@ -352,7 +354,13 @@ package Matreshka.Internals.Ucd is
    type Case_Mapping_First_Stage is
      array (First_Stage_Index) of Case_Mapping_Second_Stage_Access;
 
+   type Case_Mapping_First_Stage_Access is
+     access constant Case_Mapping_First_Stage;
+
    type Casing_Context_Mapping_Sequence is
      array (Sequence_Index range <>) of Casing_Context_Mapping;
+
+   type Casing_Context_Mapping_Sequence_Access is
+     access constant Casing_Context_Mapping_Sequence;
 
 end Matreshka.Internals.Ucd;
