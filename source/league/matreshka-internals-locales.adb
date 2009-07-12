@@ -39,11 +39,11 @@ with Matreshka.Internals.Ucd.Cases;
 package body Matreshka.Internals.Locales is
 
    Default_Locale : aliased Locale_Data
-     := (Core   => Matreshka.Internals.Ucd.Core.Property'Access,
-         Case_M => Matreshka.Internals.Ucd.Cases.Mapping'Access,
-         Case_C => Matreshka.Internals.Ucd.Cases.Context'Access,
-         Case_S => Matreshka.Internals.Ucd.Cases.Data'Access,
-         others => <>);
+     := (Core          => Matreshka.Internals.Ucd.Core.Property'Access,
+         Case_Mapping  => Matreshka.Internals.Ucd.Cases.Mapping'Access,
+         Case_Context  => Matreshka.Internals.Ucd.Cases.Context'Access,
+         Case_Sequence => Matreshka.Internals.Ucd.Cases.Data'Access,
+         others        => <>);
 
    -----------------
    -- Dereference --

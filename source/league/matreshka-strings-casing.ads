@@ -31,38 +31,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides type for representations of the locale's data and
---  internal operations on locales data.
-------------------------------------------------------------------------------
-with Matreshka.Internals.Atomics.Counters;
-with Matreshka.Internals.Ucd;
+--  This package provides implementation of the Case Algorithms from the
+--  Unicode specification.
+with Matreshka.Internals.Locales;
 
-package Matreshka.Internals.Locales is
+private package Matreshka.Strings.Casing is
 
    pragma Preelaborate;
 
-   type Locale_Data is limited record
-      Counter       : aliased Matreshka.Internals.Atomics.Counters.Counter;
-      Core          : not null Matreshka.Internals.Ucd.Core_First_Stage_Access;
-      Case_Mapping  :
-        not null Matreshka.Internals.Ucd.Case_Mapping_First_Stage_Access;
-      Case_Context  :
-        not null
-          Matreshka.Internals.Ucd.Casing_Context_Mapping_Sequence_Access;
-      Case_Sequence :
-        not null Matreshka.Internals.Ucd.Code_Point_Sequence_Access;
-   end record;
+   procedure To_Uppercase
+    (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
+     Source      : Matreshka.Internals.Utf16.Utf16_String;
+     Source_Last : Natural;
+     Destination : out Utf16_String_Access;
+     Last        : out Natural;
+     Length      : out Natural;
+     Index_Mode  : out Index_Modes);
 
-   type Locale_Data_Access is access all Locale_Data;
+--   procedure To_Lowercase
+--    (Source      : Matreshka.Internals.Utf16.Utf16_String;
+--     Source_Last : Natural;
+--     Destination : out Utf16_String_Access;
+--     Last        : out Natural;
+--     Length      : out Natural;
+--     Index_Mode  : out Index_Modes);
+--
+--   procedure To_Titlecase
+--    (Source      : Matreshka.Internals.Utf16.Utf16_String;
+--     Source_Last : Natural;
+--     Destination : out Utf16_String_Access;
+--     Last        : out Natural;
+--     Length      : out Natural;
+--     Index_Mode  : out Index_Modes);
 
-   procedure Reference (Self : Locale_Data_Access);
-   pragma Inline (Reference);
-
-   procedure Dereference (Self : in out Locale_Data_Access);
-
-   function Get_Locale return not null Locale_Data_Access;
-   --  Returns current locale. Reference counter of locale is automatically
-   --  incremented, so caller is responsible to call Dereference for free
-   --  locale then it is no longer needed.
-
-end Matreshka.Internals.Locales;
+end Matreshka.Strings.Casing;

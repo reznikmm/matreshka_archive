@@ -97,6 +97,15 @@ package Matreshka.Strings is
      Index : Positive)
        return Wide_Wide_Character;
 
+   function To_Uppercase (Self : Universal_String'Class)
+     return Universal_String;
+
+   function To_Lowercase (Self : Universal_String'Class)
+     return Universal_String;
+
+   function To_Titlecase (Self : Universal_String'Class)
+     return Universal_String;
+
    function "&"
     (Left  : Universal_String'Class;
      Right : Universal_Character'Class)
@@ -228,6 +237,15 @@ private
    overriding procedure Adjust (Self : in out Universal_String);
 
    overriding procedure Finalize (Self : in out Universal_String);
+
+   Index_Mode_For_String : constant array (Boolean, Boolean) of Index_Modes
+     := (False => (False => Undefined,
+                   True  => Double_Units),
+         True  => (False => Single_Units,
+                   True  => Mixed_Units));
+   --  String indexing mode for the string. First index must be True is string
+   --  contains BMP characters, second index must be True is string contains
+   --  non-BMP characters.
 
    ---------------------
    -- Abstract_Cursor --
