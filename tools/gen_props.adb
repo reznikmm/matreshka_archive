@@ -30,12 +30,14 @@ with Matreshka.Internals.Ucd;
 with Matreshka.Internals.Unicode;
 
 with Ucd_Data;
+with Utils;
 
 procedure Gen_Props (Source_Directory : String) is
 
    use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
    use Ucd_Data;
+   use Utils;
 
    Generated_Name : constant String := "matreshka-internals-ucd-core.ads";
 
@@ -45,12 +47,6 @@ procedure Gen_Props (Source_Directory : String) is
    end record;
 
    type Constant_String_Access is access constant String;
-
-   function First_Stage_Image (Item : First_Stage_Index) return String;
-   --  Returns image in the XXXX format.
-
-   function Second_Stage_Image (Item : Second_Stage_Index) return String;
-   --  Returns image in the XX format.
 
    procedure Put (File : Ada.Text_IO.File_Type; Item : Core_Values);
    --  Put code for properties initialization.
@@ -351,23 +347,25 @@ procedure Gen_Props (Source_Directory : String) is
    BP_Expands_On_NFD_Image    : aliased constant String := "Expands_On_NFD";
    BP_Expands_On_NFKC_Image   : aliased constant String := "Expands_On_NFKC";
    BP_Expands_On_NFKD_Image   : aliased constant String := "Expands_On_NFKD";
-   BP_Is_Cased_Image          : aliased constant String := "Is_Cased";
-   BP_Is_Case_Ignorable_Image : aliased constant String := "Is_Case_Ignorable";
+   BP_Cased_Image             : aliased constant String := "Cased";
+   BP_Case_Ignorable_Image    : aliased constant String := "Case_Ignorable";
    BP_Has_Lowercase_Mapping_Image :
      aliased constant String := "Has_Lowercase_Mapping";
    BP_Has_Uppercase_Mapping_Image :
      aliased constant String := "Has_Uppercase_Mapping";
    BP_Has_Titlecase_Mapping_Image :
      aliased constant String := "Has_Titlecase_Mapping";
-   BP_Final_Sigma_Sensitive_Image :
-     aliased constant String := "Final_Sigma_Sensitive";
-   BP_After_Soft_Dotted_Sensitive_Image :
-     aliased constant String := "After_Soft_Dotted_Sensitive";
-   BP_More_Above_Sensitive_Image :
-     aliased constant String := "More_Above_Sensitive";
-   BP_Before_Dot_Sensitive_Image :
-     aliased constant String := "Before_Dot_Sensitive";
-   BP_After_I_Sensitive_Image : aliased constant String := "After_I_Sensitive";
+   BP_Casing_Context_Sensitive_Image :
+     aliased constant String := "Casing_Context_Sensitive";
+--   BP_Final_Sigma_Sensitive_Image :
+--     aliased constant String := "Final_Sigma_Sensitive";
+--   BP_After_Soft_Dotted_Sensitive_Image :
+--     aliased constant String := "After_Soft_Dotted_Sensitive";
+--   BP_More_Above_Sensitive_Image :
+--     aliased constant String := "More_Above_Sensitive";
+--   BP_Before_Dot_Sensitive_Image :
+--     aliased constant String := "Before_Dot_Sensitive";
+--   BP_After_I_Sensitive_Image : aliased constant String := "After_I_Sensitive";
 
    Boolean_Properties_Image : constant
      array (Boolean_Properties) of Constant_String_Access
@@ -425,38 +423,21 @@ procedure Gen_Props (Source_Directory : String) is
 --           Expands_On_NFD          => BP_Expands_On_NFD_Image'Access,
 --           Expands_On_NFKC         => BP_Expands_On_NFKC_Image'Access,
 --           Expands_On_NFKD         => BP_Expands_On_NFKD_Image'Access);
-           Is_Cased                => BP_Is_Cased_Image'Access,
-           Is_Case_Ignorable       => BP_Is_Case_Ignorable_Image'Access,
+           Cased                   => BP_Cased_Image'Access,
+           Case_Ignorable          => BP_Case_Ignorable_Image'Access,
 
            Has_Lowercase_Mapping   => BP_Has_Lowercase_Mapping_Image'Access,
            Has_Uppercase_Mapping   => BP_Has_Uppercase_Mapping_Image'Access,
            Has_Titlecase_Mapping   => BP_Has_Titlecase_Mapping_Image'Access,
+           Casing_Context_Sensitive =>
+             BP_Casing_Context_Sensitive_Image'Access);
 
-           Final_Sigma_Sensitive   => BP_Final_Sigma_Sensitive_Image'Access,
-           After_Soft_Dotted_Sensitive =>
-             BP_After_Soft_Dotted_Sensitive_Image'Access,
-           More_Above_Sensitive    => BP_More_Above_Sensitive_Image'Access,
-           Before_Dot_Sensitive    => BP_Before_Dot_Sensitive_Image'Access,
-           After_I_Sensitive       => BP_After_I_Sensitive_Image'Access);
-
-   -----------------------
-   -- First_Stage_Image --
-   -----------------------
-
-   function First_Stage_Image (Item : First_Stage_Index) return String is
-      To_Hex_Digit : constant
-        array (First_Stage_Index range 0 .. 15) of Character
-          := "0123456789ABCDEF";
-      Result       : String (1 .. 4);
-
-   begin
-      Result (4) := To_Hex_Digit (Item mod 16);
-      Result (3) := To_Hex_Digit ((Item / 16) mod 16);
-      Result (2) := To_Hex_Digit ((Item / 256) mod 16);
-      Result (1) := To_Hex_Digit ((Item / 4096) mod 16);
-
-      return Result;
-   end First_Stage_Image;
+--           Final_Sigma_Sensitive   => BP_Final_Sigma_Sensitive_Image'Access,
+--           After_Soft_Dotted_Sensitive =>
+--             BP_After_Soft_Dotted_Sensitive_Image'Access,
+--           More_Above_Sensitive    => BP_More_Above_Sensitive_Image'Access,
+--           Before_Dot_Sensitive    => BP_Before_Dot_Sensitive_Image'Access,
+--           After_I_Sensitive       => BP_After_I_Sensitive_Image'Access);
 
    ---------
    -- Put --
@@ -534,23 +515,6 @@ procedure Gen_Props (Source_Directory : String) is
          Ada.Text_IO.Put (File, "others => False))");
       end if;
    end Put;
-
-   ------------------------
-   -- Second_Stage_Image --
-   ------------------------
-
-   function Second_Stage_Image (Item : Second_Stage_Index) return String is
-      To_Hex_Digit : constant
-        array (Second_Stage_Index range 0 .. 15) of Character
-          := "0123456789ABCDEF";
-      Result       : String (1 .. 2);
-
-   begin
-      Result (2) := To_Hex_Digit (Item mod 16);
-      Result (1) := To_Hex_Digit ((Item / 16) mod 16);
-
-      return Result;
-   end Second_Stage_Image;
 
    Groups    : array (First_Stage_Index) of Group_Info := (others => (0, 0));
    Generated : array (First_Stage_Index) of Boolean    := (others => False);
@@ -717,10 +681,12 @@ begin
    for J in Groups'Range loop
       if not Generated (Groups (J).Share) then
          declare
-            Default : Core_Values;
-            Current : Core_Values;
-            First   : Second_Stage_Index;
-            Last    : Second_Stage_Index;
+            Default    : Core_Values;
+            Current    : Core_Values;
+            First      : Second_Stage_Index;
+            Last       : Second_Stage_Index;
+            First_Code : Code_Point;
+            Last_Code  : Code_Point;
 
          begin
             --  Looking for most useful set of values, it will be used for
@@ -789,12 +755,15 @@ begin
 
                begin
                   if K = Second_Stage_Index'First then
-                     Current := Core (Code);
-                     First   := K;
-                     Last    := First;
+                     Current    := Core (Code);
+                     First      := K;
+                     Last       := First;
+                     First_Code := Code;
+                     Last_Code := Code;
 
                   elsif Core (Code) = Current then
-                     Last := K;
+                     Last      := K;
+                     Last_Code := Code;
 
                   else
                      if Current /= Default then
@@ -805,7 +774,10 @@ begin
                                & Second_Stage_Image (First)
                                & "# .. 16#"
                                & Second_Stage_Image (Last)
-                               & "# =>");
+                               & "# =>  --  "
+                               & Code_Point_Image (First_Code)
+                               & " .. "
+                               & Code_Point_Image (Last_Code));
                            Ada.Text_IO.Set_Col (File, 11);
                            Put (File, Current);
                            Ada.Text_IO.Put (File, ',');
@@ -814,7 +786,8 @@ begin
                            Ada.Text_IO.Put_Line
                             (File, "16#"
                                & Second_Stage_Image (First)
-                               & "#           =>");
+                               & "#           =>  --  "
+                               & Code_Point_Image (First_Code));
                            Ada.Text_IO.Set_Col (File, 11);
                            Put (File, Current);
                            Ada.Text_IO.Put (File, ',');
@@ -824,9 +797,11 @@ begin
                         Ada.Text_IO.Set_Col (File, 10);
                      end if;
 
-                     Current := Core (Code);
-                     First   := K;
-                     Last    := First;
+                     Current    := Core (Code);
+                     First      := K;
+                     Last       := First;
+                     First_Code := Code;
+                     Last_Code  := First_Code;
                   end if;
                end;
             end loop;

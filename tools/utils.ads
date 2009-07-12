@@ -24,23 +24,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Next generation of the UCD data generator. The primary goal is share code
---  as much as possible with the base League packages.
-------------------------------------------------------------------------------
-with Ada.Command_Line;
-with Ada.Text_IO;
+with Matreshka.Internals.Ucd;
+with Matreshka.Internals.Unicode;
 
-with Ucd_Data;
-with Gen_Props;
-with Gen_Cases;
+package Utils is
 
-procedure Gen_Ucd is
-   Unidata_Directory : constant String := Ada.Command_Line.Argument (1);
-   Source_Directory  : constant String := Ada.Command_Line.Argument (2);
+   function Code_Point_Image (Item : Matreshka.Internals.Unicode.Code_Point)
+     return String;
+   --  Returns image of code point.
 
-begin
-   Ucd_Data.Load (Unidata_Directory);
-   Ada.Text_IO.Put_Line ("Generating (" & Source_Directory & ") ...");
-   Gen_Props (Source_Directory);
-   Gen_Cases (Source_Directory);
-end Gen_Ucd;
+   function First_Stage_Image
+    (Item : Matreshka.Internals.Ucd.First_Stage_Index)
+       return String;
+   --  Returns image in the XXXX format.
+
+   function Second_Stage_Image
+    (Item : Matreshka.Internals.Ucd.Second_Stage_Index)
+       return String;
+   --  Returns image in the XX format.
+
+end Utils;

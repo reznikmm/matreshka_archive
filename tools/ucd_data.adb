@@ -44,6 +44,7 @@ package body Ucd_Data is
    SentenceBreakProperty_Name : constant String
      := "auxiliary/SentenceBreakProperty.txt";
    LineBreak_Name             : constant String := "LineBreak.txt";
+   SpecialCasing_Name         : constant String := "SpecialCasing.txt";
 
    subtype Primary_Core_Boolean_Properties is Boolean_Properties
      range ASCII_Hex_Digit .. White_Space;
@@ -79,9 +80,19 @@ package body Ucd_Data is
    --  Parse LineBreak.txt file and fill internal data structurs by the parsed
    --  values.
 
+   procedure Load_SpecialCasing (Unidata_Directory : String);
+   --  Parse SpecialCasing.txt file and fill internal data structurs by the
+   --  parsed values.
+
+   procedure Compute_Casing_Properties;
+   --  Compute Cased and Case_Ignorable properties for all characters.
+
    procedure Parse_Code_Point
     (Text : String;
      Code : out Code_Point);
+
+   function Parse_Code_Point_Sequence (Text : String)
+     return Code_Point_Sequence;
 
    function Value (Item : String) return General_Category;
    --  Converts two-character text representation of the General_Category
@@ -100,6 +111,27 @@ package body Ucd_Data is
    function Value (Item : String) return Line_Break;
    --  Converts two-character text representation of the Line_Break into the
    --  value.
+
+   -------------------------------
+   -- Compute_Casing_Properties --
+   -------------------------------
+
+   procedure Compute_Casing_Properties is
+   begin
+      for J in Core'Range loop
+         Core (J).B (Cased) :=
+           Core (J).B (Lowercase)
+             or else Core (J).B (Uppercase)
+             or else Core (J).GC = Titlecase_Letter;
+         Core (J).B (Case_Ignorable) :=
+           Core (J).WB = Mid_Letter
+             or else Core (J).GC = Nonspacing_Mark
+             or else Core (J).GC = Enclosing_Mark
+             or else Core (J).GC = Format
+             or else Core (J).GC = Modifier_Letter
+             or else Core (J).GC = Modifier_Symbol;
+      end loop;
+   end Compute_Casing_Properties;
 
    ----------
    -- Load --
@@ -126,7 +158,8 @@ package body Ucd_Data is
         new Case_Values_Array'
              (others =>
                (SUM | SLM | STM => (Present => False),
-                FUM | FLM | FTM => (others => null)));
+                FUM | FLM | FTM =>
+                 (Default => null, others => (others => null))));
 
       --  Load UnicodeData.txt, PropList.txt.
 
@@ -148,7 +181,13 @@ package body Ucd_Data is
       Load_SentenceBreakProperty (Unidata_Directory);
       Load_LineBreak (Unidata_Directory);
 
+      --  Load SpecialCasing.txt
+
+      Load_SpecialCasing (Unidata_Directory);
+
       --  Compute derived properties.
+
+      Compute_Casing_Properties;
 
       --  Verify data.
 
@@ -309,6 +348,119 @@ package body Ucd_Data is
       Ucd_Input.Close (File);
    end Load_SentenceBreakProperty;
 
+   ------------------------
+   -- Load_SpecialCasing --
+   ------------------------
+
+   procedure Load_SpecialCasing (Unidata_Directory : String) is
+      File     : Ucd_Input.File_Type;
+      Code     : Code_Point;
+      Lower    : Code_Point_Sequence_Access;
+      Upper    : Code_Point_Sequence_Access;
+      Title    : Code_Point_Sequence_Access;
+--      Language : Languages      := Default;
+--      Context  : Casing_Context := Default;
+      Negative : Boolean        := False;
+
+   begin
+      Ada.Text_IO.Put_Line ("   ... " & SpecialCasing_Name);
+
+      Ucd_Input.Open
+       (File, Unidata_Directory & '/' & SpecialCasing_Name);
+
+      while not Ucd_Input.End_Of_Data (File) loop
+         Code := Ucd_Input.First_Code_Point (File);
+
+         --  Lowercase mapping
+
+         Lower :=
+           new Code_Point_Sequence'
+                (Parse_Code_Point_Sequence (Ucd_Input.Field (File)));
+         Ucd_Input.Next_Field (File);
+
+         --  Uppercase mapping
+
+         Upper :=
+           new Code_Point_Sequence'
+                (Parse_Code_Point_Sequence (Ucd_Input.Field (File)));
+         Ucd_Input.Next_Field (File);
+
+         --  Titlecase mapping
+
+         Title :=
+           new Code_Point_Sequence'
+                (Parse_Code_Point_Sequence (Ucd_Input.Field (File)));
+         Ucd_Input.Next_Field (File);
+
+         --  Conditions
+
+         declare
+            V : constant String := Ucd_Input.Field (File);
+
+         begin
+            if V = "Final_Sigma" then
+--               Context := Final_Sigma;
+               Core (Code).B (Casing_Context_Sensitive) := True;
+
+               if Upper'Length /= 1
+                 or else Upper (1) /= Code
+               then
+                  Core (Code).B (Has_Uppercase_Mapping) := True;
+                  Cases (Code).FUM.Positive (Final_Sigma) := Upper;
+               end if;
+
+               if Lower'Length /= 1
+                 or else Lower (1) /= Code
+               then
+                  Core (Code).B (Has_Lowercase_Mapping) := True;
+                  Cases (Code).FLM.Positive (Final_Sigma) := Lower;
+               end if;
+
+               if Title'Length /= 1
+                 or else Title (1) /= Code
+               then
+                  Core (Code).B (Has_Titlecase_Mapping) := True;
+                  Cases (Code).FTM.Positive (Final_Sigma) := Title;
+               end if;
+
+            elsif V'Length = 0 then
+               Cases (Code).FUM.Default := Upper;
+
+               if Upper'Length /= 1
+                 or else Upper (1) /= Code
+               then
+                  Core (Code).B (Has_Uppercase_Mapping) := True;
+               end if;
+
+               Cases (Code).FLM.Default := Lower;
+
+               if Lower'Length /= 1
+                 or else Lower (1) /= Code
+               then
+                  Core (Code).B (Has_Lowercase_Mapping) := True;
+               end if;
+
+               Cases (Code).FTM.Default := Title;
+
+               if Title'Length /= 1
+                 or else Title (1) /= Code
+               then
+                  Core (Code).B (Has_Titlecase_Mapping) := True;
+               end if;
+
+            else
+               --  XXX Ignore more complex contexts for now.
+
+               Ada.Text_IO.Put_Line (Ucd_Input.Field (File));
+            end if;
+         end;
+
+         Ucd_Input.Next_Record (File);
+      end loop;
+
+      Ucd_Input.Close (File);
+   end Load_SpecialCasing;
+
    ----------------------
    -- Load_UnicodeData --
    ----------------------
@@ -352,20 +504,35 @@ package body Ucd_Data is
       begin
          Core (Code).GC   := GC;
          Core (Code).CCC  := CCC;
-         Cases (Code).SUM := SUM;
-         Cases (Code).SLM := SLM;
-         Cases (Code).STM := STM;
 
-         if SUM.Present then
+         --  Simple uppercase mapping
+
+         if SUM.Present and then SUM.C /= Code then
+            Cases (Code).SUM := SUM;
             Core (Code).B (Has_Uppercase_Mapping) := True;
+
+         else
+            Cases (Code).SUM := (Present => False);
          end if;
 
-         if SLM.Present then
+         --  Simple lowercase mapping
+
+         if SLM.Present and then SLM.C /= Code then
+            Cases (Code).SLM := SLM;
             Core (Code).B (Has_Lowercase_Mapping) := True;
+
+         else
+            Cases (Code).SLM := (Present => False);
          end if;
 
-         if STM.Present then
+         --  Simple titlecase mapping
+
+         if STM.Present and then STM.C /= Code then
+            Cases (Code).STM := STM;
             Core (Code).B (Has_Titlecase_Mapping) := True;
+
+         else
+            Cases (Code).STM := (Present => False);
          end if;
       end Process;
 
@@ -564,6 +731,61 @@ package body Ucd_Data is
 
       Code := Code_Point'Value ("16#" & Text (First .. Last) & "#");
    end Parse_Code_Point;
+
+   -------------------------------
+   -- Parse_Code_Point_Sequence --
+   -------------------------------
+
+   function Parse_Code_Point_Sequence (Text : String)
+     return Code_Point_Sequence
+   is
+      First       : Positive := Text'First;
+      Last        : Natural;
+      Result      : Code_Point_Sequence (1 .. Text'Length / 4);
+      Last_Result : Sequence_Count := 0;
+
+      procedure Scan;
+
+      ----------
+      -- Scan --
+      ----------
+
+      procedure Scan is
+      begin
+         while First < Text'Last
+           and then Text (First) = ' '
+         loop
+            First := First + 1;
+         end loop;
+
+         Last := First - 1;
+
+         while Last < Text'Last loop
+            Last := Last + 1;
+
+            if Text (Last) not in '0' .. '9'
+              and then Text (Last) not in 'A' .. 'F'
+            then
+               Last := Last - 1;
+
+               exit;
+            end if;
+         end loop;
+      end Scan;
+
+   begin
+      while First < Text'Last loop
+         Scan;
+
+         Last_Result := Last_Result + 1;
+         Result (Last_Result) :=
+           Code_Point'Value ("16#" & Text (First .. Last) & "#");
+
+         First := Last + 1;
+      end loop;
+
+      return Result (1 .. Last_Result);
+   end Parse_Code_Point_Sequence;
 
    -----------
    -- Value --

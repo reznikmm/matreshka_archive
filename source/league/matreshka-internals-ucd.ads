@@ -31,6 +31,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Unicode;
 
 package Matreshka.Internals.Ucd is
 
@@ -38,6 +39,18 @@ package Matreshka.Internals.Ucd is
 
    type First_Stage_Index is mod 16#1100#;
    type Second_Stage_Index is mod 16#100#;
+
+   type Sequence_Count is range 0 .. 2 ** 16 - 1;
+   for Sequence_Count'Size use 16;
+
+   subtype Sequence_Index is Sequence_Count range 1 .. Sequence_Count'Last;
+
+   type Code_Point_Sequence is
+     array (Sequence_Index range <>) of Matreshka.Internals.Unicode.Code_Point;
+
+   ---------------------
+   -- Core properties --
+   ---------------------
 
    type General_Category is
     (Control,
@@ -168,18 +181,13 @@ package Matreshka.Internals.Ucd is
 
      --  Following are used by case conversion subprograms.
 
-     Is_Cased,
-     Is_Case_Ignorable,
+     Cased,
+     Case_Ignorable,
 
      Has_Lowercase_Mapping,
      Has_Uppercase_Mapping,
      Has_Titlecase_Mapping,
-
-     Final_Sigma_Sensitive,
-     After_Soft_Dotted_Sensitive,
-     More_Above_Sensitive,
-     Before_Dot_Sensitive,
-     After_I_Sensitive);
+     Casing_Context_Sensitive);
 
    type Boolean_Values is array (Boolean_Properties) of Boolean;
    for Boolean_Values'Component_Size use 1;
@@ -302,12 +310,49 @@ package Matreshka.Internals.Ucd is
 
    type Core_First_Stage_Access is access constant Core_First_Stage;
 
+   ------------
+   -- Casing --
+   ------------
+
    type Casing_Context is
-    (Default,
-     Final_Sigma,
+    (Final_Sigma,
      After_Soft_Dotted,
      More_Above,
      Before_Dot,
      After_I);
+
+   type Case_Mapping is record
+      Lower_First   : Sequence_Count;
+      Lower_Last    : Sequence_Count;
+      Upper_First   : Sequence_Count;
+      Upper_Last    : Sequence_Count;
+      Title_First   : Sequence_Count;
+      Title_Last    : Sequence_Count;
+      Context_First : Sequence_Count;
+      Context_Last  : Sequence_Count;
+   end record;
+
+   type Casing_Context_Mapping is record
+      Context     : Casing_Context;
+      Negative    : Boolean;
+      Lower_First : Sequence_Count;
+      Lower_Last  : Sequence_Count;
+      Upper_First : Sequence_Count;
+      Upper_Last  : Sequence_Count;
+      Title_First : Sequence_Count;
+      Title_Last  : Sequence_Count;
+   end record;
+
+   type Case_Mapping_Second_Stage is
+     array (Second_Stage_Index) of Case_Mapping;
+
+   type Case_Mapping_Second_Stage_Access is
+     access constant Case_Mapping_Second_Stage;
+
+   type Case_Mapping_First_Stage is
+     array (First_Stage_Index) of Case_Mapping_Second_Stage_Access;
+
+   type Casing_Context_Mapping_Sequence is
+     array (Sequence_Index range <>) of Casing_Context_Mapping;
 
 end Matreshka.Internals.Ucd;

@@ -35,18 +35,35 @@ package Ucd_Data is
 
    type Core_Values_Array_Access is access Core_Values_Array;
 
-   type Code_Point_Sequence is
-     array (Positive range <>) Of Matreshka.Internals.Unicode.Code_Point;
+--   type Sequence_Count is range 0 .. 2 ** 16 -1;
+--   for Sequence_Count'Size use 16;
+--
+--   subtype Sequence_Index is Sequence_Count range 1 .. Sequence_Count'Last;
+--
+--   type Code_Point_Sequence is
+--     array (Sequence_Index range <>) of Matreshka.Internals.Unicode.Code_Point;
+--
+--   type Code_Point_Sequence is
+--     array (Positive range <>) Of Matreshka.Internals.Unicode.Code_Point;
 
-   type Code_Point_Sequence_Access is access Code_Point_Sequence;
+   type Code_Point_Sequence_Access is
+     access Matreshka.Internals.Ucd.Code_Point_Sequence;
+
+   type Context_Code_Point_Sequence is
+     array (Matreshka.Internals.Ucd.Casing_Context
+              range Matreshka.Internals.Ucd.Final_Sigma
+                      .. Matreshka.Internals.Ucd.After_I)
+       of Code_Point_Sequence_Access;
 
    type Full_Case_Values is record
-      Default           : Code_Point_Sequence_Access;
-      Final_Sigma       : Code_Point_Sequence_Access;
-      After_Soft_Dotted : Code_Point_Sequence_Access;
-      More_Above        : Code_Point_Sequence_Access;
-      Before_Dot        : Code_Point_Sequence_Access;
-      After_I           : Code_Point_Sequence_Access;
+      Default  : Code_Point_Sequence_Access;
+--      Final_Sigma       : Code_Point_Sequence_Access;
+--      After_Soft_Dotted : Code_Point_Sequence_Access;
+--      More_Above        : Code_Point_Sequence_Access;
+--      Before_Dot        : Code_Point_Sequence_Access;
+--      After_I           : Code_Point_Sequence_Access;
+      Positive : Context_Code_Point_Sequence;
+      Negative : Context_Code_Point_Sequence;
    end record;
 
    type Optional_Code_Point (Present : Boolean := False) is record
@@ -67,6 +84,8 @@ package Ucd_Data is
       FLM : Full_Case_Values;
       FTM : Full_Case_Values;
    end record;
+
+   type Languages is (Default, az, lt, tr);
 
    type Case_Values_Array is
      array (Matreshka.Internals.Unicode.Code_Point) of Case_Values;
