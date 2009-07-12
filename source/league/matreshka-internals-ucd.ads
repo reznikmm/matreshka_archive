@@ -322,26 +322,26 @@ package Matreshka.Internals.Ucd is
      Before_Dot,
      After_I);
 
+   type Case_Mapping_Range is record
+      First : Sequence_Count;
+      Last  : Sequence_Count;
+   end record;
+
+   type Case_Mapping_Kinds is (Lower, Upper, Title);
+
+   type Case_Mapping_Ranges is
+     array (Case_Mapping_Kinds) of Case_Mapping_Range;
+
    type Case_Mapping is record
-      Lower_First   : Sequence_Count;
-      Lower_Last    : Sequence_Count;
-      Upper_First   : Sequence_Count;
-      Upper_Last    : Sequence_Count;
-      Title_First   : Sequence_Count;
-      Title_Last    : Sequence_Count;
+      Ranges        : Case_Mapping_Ranges;
       Context_First : Sequence_Count;
       Context_Last  : Sequence_Count;
    end record;
 
    type Casing_Context_Mapping is record
-      Context     : Casing_Context;
-      Negative    : Boolean;
-      Lower_First : Sequence_Count;
-      Lower_Last  : Sequence_Count;
-      Upper_First : Sequence_Count;
-      Upper_Last  : Sequence_Count;
-      Title_First : Sequence_Count;
-      Title_Last  : Sequence_Count;
+      Context  : Casing_Context;
+      Negative : Boolean;
+      Ranges   : Case_Mapping_Ranges;
    end record;
 
    type Case_Mapping_Second_Stage is

@@ -33,15 +33,13 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.Ucd;
-
 package body Matreshka.Strings.Casing is
 
    use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
 
---   pragma Suppress (All_Checks);
+   pragma Suppress (All_Checks);
 
    procedure Free is
      new Ada.Unchecked_Deallocation (Utf16_String, Utf16_String_Access);
@@ -54,6 +52,8 @@ package body Matreshka.Strings.Casing is
     (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
      Source      : Matreshka.Internals.Utf16.Utf16_String;
      Source_Last : Natural;
+     Kind        : Case_Mapping_Kinds;
+     Property    : Matreshka.Internals.Ucd.Boolean_Properties;
      Destination : out Utf16_String_Access;
      Last        : out Natural;
      Length      : out Natural;
@@ -120,10 +120,6 @@ package body Matreshka.Strings.Casing is
             Destination (Last)     :=
               Utf16_Code_Unit (Low_Surrogate_First + X mod 16#400#);
          end if;
-
---      Index_Mode :=
---        Index_Mode_After_Concatenation
---         (Index_Mode, Index_Mode_For_String (Has_BMP, Has_Non_BMP));
       end Append;
 
       ---------------------------------------
@@ -153,22 +149,20 @@ package body Matreshka.Strings.Casing is
          Code    : Code_Point;
 
       begin
-         Unchecked_Next (Source, Current, Code);
-
-         while Current <= Last loop
+         while Current <= Source_Last loop
             Unchecked_Next (Source, Current, Code);
 
-            if not Locale.Core
-                    (First_Stage_Index (Code / 16#100#))
-                    (Second_Stage_Index (Code mod 16#100#)).B
-                      (Case_Ignorable)
-            then
-               return
-                 not Locale.Core
-                      (First_Stage_Index (Code / 16#100#))
-                      (Second_Stage_Index (Code mod 16#100#)).B
-                        (Cased);
-            end if;
+            declare
+               R : constant Core_Values
+                 := Locale.Core
+                     (First_Stage_Index (Code / 16#100#))
+                     (Second_Stage_Index (Code mod 16#100#));
+
+            begin
+               if not R.B (Case_Ignorable) then
+                  return not R.B (Cased);
+               end if;
+            end;
          end loop;
 
          return True;
@@ -201,19 +195,22 @@ package body Matreshka.Strings.Casing is
          Code    : Code_Point;
 
       begin
+         Unchecked_Previous (Source, Current, Code);
+
          while Current > 1 loop
             Unchecked_Previous (Source, Current, Code);
 
-            if not Locale.Core
-                    (First_Stage_Index (Code / 16#100#))
-                    (Second_Stage_Index (Code mod 16#100#)).B
-                      (Case_Ignorable)
-            then
-               return Locale.Core
-                       (First_Stage_Index (Code / 16#100#))
-                       (Second_Stage_Index (Code mod 16#100#)).B
-                         (Cased);
-            end if;
+            declare
+               R : constant Core_Values
+                 := Locale.Core
+                     (First_Stage_Index (Code / 16#100#))
+                     (Second_Stage_Index (Code mod 16#100#));
+
+            begin
+               if not R.B (Case_Ignorable) then
+                  return R.B (Cased);
+               end if;
+            end;
          end loop;
 
          return False;
@@ -228,8 +225,7 @@ package body Matreshka.Strings.Casing is
 
          if Locale.Core
              (First_Stage_Index (Source_Code / 16#100#))
-             (Second_Stage_Index (Source_Code mod 16#100#)).B
-               (Has_Uppercase_Mapping)
+             (Second_Stage_Index (Source_Code mod 16#100#)).B (Property)
          then
             declare
                Mapping : constant Case_Mapping
@@ -249,7 +245,7 @@ package body Matreshka.Strings.Casing is
                           := Locale.Case_Context (J);
 
                      begin
-                        if Context.Upper_First /= 0 then
+                        if Context.Ranges (Kind).First /= 0 then
                            case Context.Context is
                               when Final_Sigma =>
                                  if (Is_Preceded_By_Final_Sigma_Context
@@ -257,8 +253,8 @@ package body Matreshka.Strings.Casing is
                                          Is_Followed_By_Final_Sigma_Context)
                                    xor Context.Negative
                                  then
-                                    for J in Context.Upper_First
-                                               .. Context.Upper_Last
+                                    for J in Context.Ranges (Kind).First
+                                               .. Context.Ranges (Kind).Last
                                     loop
                                        Append (Locale.Case_Sequence (J));
                                     end loop;
@@ -302,7 +298,9 @@ package body Matreshka.Strings.Casing is
                end if;
 
                if not Converted then
-                  for J in Mapping.Upper_First .. Mapping.Upper_Last loop
+                  for J in Mapping.Ranges (Kind).First
+                             .. Mapping.Ranges (Kind).Last
+                  loop
                      Append (Locale.Case_Sequence (J));
                   end loop;
                end if;
@@ -315,58 +313,6 @@ package body Matreshka.Strings.Casing is
 
       Index_Mode := Index_Mode_For_String (Has_BMP, Has_Non_BMP);
    end To_Uppercase;
-
---   ----------------------
---   -- Unchecked_Append --
---   ----------------------
---
---   procedure Unchecked_Append
---    (Value      : in out Utf16_String_Access;
---     Last       : in out Natural;
---     Index_Mode : in out Index_Modes;
---     Item       : Wide_Wide_Character)
---   is
---      C             : Code_Point := Wide_Wide_Character'Pos (Item);
---      Has_BMP       : Boolean    := False;
---      Has_Non_BMP   : Boolean    := False;
---
---   begin
---      if C <= 16#FFFF# then
---         Last := Last + 1;
---
---      else
---         Last := Last + 2;
---      end if;
---        
---      if Last > Value'Last then
---         declare
---            Aux : constant not null Utf16_String_Access
---              := new Utf16_String (1 .. Last);
---
---         begin
---            Aux (Value'Range) := Value.all;
---            Free (Value);
---            Value := Aux;
---         end;
---      end if;
---
---      if C <= 16#FFFF# then
---         Has_BMP      := True;
---         Value (Last) := Utf16_Code_Unit (C);
---
---      else
---         Has_Non_Bmp      := True;
---         C                := C - 16#1_0000#;
---         Value (Last - 1) :=
---           Utf16_Code_Unit (High_Surrogate_First + C / 16#400#);
---         Value (Last)     :=
---           Utf16_Code_Unit (Low_Surrogate_First + C mod 16#400#);
---      end if;
---
---      Index_Mode :=
---        Index_Mode_After_Concatenation
---         (Index_Mode, Index_Mode_For_String (Has_BMP, Has_Non_BMP));
---   end Unchecked_Append;
 
 --   procedure To_Lowercase
 --    (Source      : Matreshka.Internals.Utf16.Utf16_String;

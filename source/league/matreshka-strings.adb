@@ -35,6 +35,7 @@ with Ada.Unchecked_Deallocation;
 
 with Matreshka.Internals.Atomics.Generic_Test_And_Set;
 with Matreshka.Internals.Locales;
+with Matreshka.Internals.Ucd;
 with Matreshka.Internals.Unicode;
 with Matreshka.Strings.Casing;
 
@@ -533,8 +534,35 @@ package body Matreshka.Strings is
    function To_Lowercase (Self : Universal_String'Class)
      return Universal_String
    is
+      Locale : Matreshka.Internals.Locales.Locale_Data_Access;
+
    begin
-      return Universal_String (Self);
+      return Result : Universal_String
+        := Universal_String'
+            (Ada.Finalization.Controlled with
+               Data =>
+                 new String_Private_Data'
+                      (Counter    => Matreshka.Internals.Atomics.Counters.One,
+                       Value      => new Utf16_String (1 .. 0),
+                       Last       => 0,
+                       Length     => 0,
+                       Index_Mode => Undefined,
+                       Index_Map  => null,
+                       Cursors    => null))
+      do
+         Locale := Matreshka.Internals.Locales.Get_Locale;
+         Matreshka.Strings.Casing.To_Uppercase
+          (Locale,
+           Self.Data.Value.all,
+           Self.Data.Last,
+           Matreshka.Internals.Ucd.Lower,
+           Matreshka.Internals.Ucd.Has_Lowercase_Mapping,
+           Result.Data.Value,
+           Result.Data.Last,
+           Result.Data.Length,
+           Result.Data.Index_Mode);
+         Matreshka.Internals.Locales.Dereference (Locale);
+      end return;
    end To_Lowercase;
 
    ------------------
@@ -558,15 +586,6 @@ package body Matreshka.Strings is
       Locale : Matreshka.Internals.Locales.Locale_Data_Access;
 
    begin
---   procedure To_Uppercase
---    (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
---     Source      : Matreshka.Internals.Utf16.Utf16_String;
---     Source_Last : Natural;
---     Destination : out Utf16_String_Access;
---     Last        : out Natural;
---     Length      : out Natural;
---     Index_Mode  : out Index_Modes);
---      return Universal_String (Self);
       return Result : Universal_String
         := Universal_String'
             (Ada.Finalization.Controlled with
@@ -585,6 +604,8 @@ package body Matreshka.Strings is
           (Locale,
            Self.Data.Value.all,
            Self.Data.Last,
+           Matreshka.Internals.Ucd.Upper,
+           Matreshka.Internals.Ucd.Has_Uppercase_Mapping,
            Result.Data.Value,
            Result.Data.Last,
            Result.Data.Length,

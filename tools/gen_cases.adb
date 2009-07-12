@@ -68,7 +68,7 @@ procedure Gen_Cases (Source_Directory : String) is
    end record;
 
    Case_Info : array (Code_Point) of Case_Mapping
-     := (others => (0, 0, 0, 0, 0, 0, 0, 0));
+     := (others => (((0, 0), (0, 0), (0, 0)), 0, 0));
    Cont_Info : Casing_Context_Mapping_Sequence (Sequence_Index);
    Cont_Last : Sequence_Count := 0;
    Case_Seq  : Code_Point_Sequence (Sequence_Index);
@@ -146,19 +146,19 @@ procedure Gen_Cases (Source_Directory : String) is
    begin
       Ada.Text_IO.Put
        (File,
-        "("
-          & Sequence_Count'Image (Item.Lower_First)
+        "((("
+          & Sequence_Count'Image (Item.Ranges (Lower).First)
           & ","
-          & Sequence_Count'Image (Item.Lower_Last)
+          & Sequence_Count'Image (Item.Ranges (Lower).Last)
+          & "), ("
+          & Sequence_Count'Image (Item.Ranges (Upper).First)
           & ","
-          & Sequence_Count'Image (Item.Upper_First)
+          & Sequence_Count'Image (Item.Ranges (Upper).Last)
+          & "), ("
+          & Sequence_Count'Image (Item.Ranges (Title).First)
           & ","
-          & Sequence_Count'Image (Item.Upper_Last)
-          & ","
-          & Sequence_Count'Image (Item.Title_First)
-          & ","
-          & Sequence_Count'Image (Item.Title_Last)
-          & ","
+          & Sequence_Count'Image (Item.Ranges (Title).Last)
+          & ")),"
           & Sequence_Count'Image (Item.Context_First)
           & ","
           & Sequence_Count'Image (Item.Context_Last)
@@ -183,16 +183,16 @@ begin
             then
                Append_Mapping
                 (Cases (J).FUM.Default.all,
-                 Case_Info (J).Upper_First,
-                 Case_Info (J).Upper_Last);
+                 Case_Info (J).Ranges (Upper).First,
+                 Case_Info (J).Ranges (Upper).Last);
             end if;
 
          else
             if Cases (J).SUM.Present then
                Append_Mapping
                 (Code_Point_Sequence'(1 => Cases (J).SUM.C),
-                 Case_Info (J).Upper_First,
-                 Case_Info (J).Upper_Last);
+                 Case_Info (J).Ranges (Upper).First,
+                 Case_Info (J).Ranges (Upper).Last);
             end if;
          end if;
 
@@ -202,16 +202,16 @@ begin
             then
                Append_Mapping
                 (Cases (J).FLM.Default.all,
-                 Case_Info (J).Lower_First,
-                 Case_Info (J).Lower_Last);
+                 Case_Info (J).Ranges (Lower).First,
+                 Case_Info (J).Ranges (Lower).Last);
             end if;
 
          else
             if Cases (J).SLM.Present then
                Append_Mapping
                 (Code_Point_Sequence'(1 => Cases (J).SLM.C),
-                 Case_Info (J).Lower_First,
-                 Case_Info (J).Lower_Last);
+                 Case_Info (J).Ranges (Lower).First,
+                 Case_Info (J).Ranges (Lower).Last);
             end if;
          end if;
 
@@ -221,16 +221,16 @@ begin
             then
                Append_Mapping
                 (Cases (J).FTM.Default.all,
-                 Case_Info (J).Title_First,
-                 Case_Info (J).Title_Last);
+                 Case_Info (J).Ranges (Title).First,
+                 Case_Info (J).Ranges (Title).Last);
             end if;
 
          else
             if Cases (J).STM.Present then
                Append_Mapping
                 (Code_Point_Sequence'(1 => Cases (J).STM.C),
-                 Case_Info (J).Title_First,
-                 Case_Info (J).Title_Last);
+                 Case_Info (J).Ranges (Title).First,
+                 Case_Info (J).Ranges (Title).Last);
             end if;
          end if;
 
@@ -238,31 +238,31 @@ begin
 
          declare
             R : Casing_Context_Mapping
-              := (Final_Sigma, False, 0, 0, 0, 0, 0, 0);
+              := (Final_Sigma, False, ((0, 0), (0, 0), (0, 0)));
 
          begin
             if Cases (J).FUM.Positive (Final_Sigma) /= null then
                Append_Mapping
                 (Cases (J).FUM.Positive (Final_Sigma).all,
-                 R.Upper_First,
-                 R.Upper_Last);
+                 R.Ranges (Upper).First,
+                 R.Ranges (Upper).Last);
             end if;
 
             if Cases (J).FLM.Positive (Final_Sigma) /= null then
                Append_Mapping
                 (Cases (J).FLM.Positive (Final_Sigma).all,
-                 R.Lower_First,
-                 R.Lower_Last);
+                 R.Ranges (Lower).First,
+                 R.Ranges (Lower).Last);
             end if;
 
             if Cases (J).FTM.Positive (Final_Sigma) /= null then
                Append_Mapping
                 (Cases (J).FTM.Positive (Final_Sigma).all,
-                 R.Title_First,
-                 R.Title_Last);
+                 R.Ranges (Title).First,
+                 R.Ranges (Title).Last);
             end if;
 
-            if R /= (Final_Sigma, False, 0, 0, 0, 0, 0, 0) then
+            if R /= (Final_Sigma, False, ((0, 0), (0, 0), (0, 0))) then
                Cont_Last := Cont_Last + 1;
                Cont_Info (Cont_Last) := R;
                Case_Info (J).Context_First := Cont_Last;
@@ -460,19 +460,19 @@ begin
           & Casing_Context_Image (Cont_Info (J).Context).all
           & ", "
           & Boolean_Image (Cont_Info (J).Negative).all
+          & ", (("
+          & Sequence_Count'Image (Cont_Info (J).Ranges (Lower).First)
           & ","
-          & Sequence_Count'Image (Cont_Info (J).Lower_First)
+          & Sequence_Count'Image (Cont_Info (J).Ranges (Lower).Last)
+          & "), ("
+          & Sequence_Count'Image (Cont_Info (J).Ranges (Upper).First)
           & ","
-          & Sequence_Count'Image (Cont_Info (J).Lower_Last)
+          & Sequence_Count'Image (Cont_Info (J).Ranges (Upper).Last)
+          & "), ("
+          & Sequence_Count'Image (Cont_Info (J).Ranges (Title).First)
           & ","
-          & Sequence_Count'Image (Cont_Info (J).Upper_First)
-          & ","
-          & Sequence_Count'Image (Cont_Info (J).Upper_Last)
-          & ","
-          & Sequence_Count'Image (Cont_Info (J).Title_First)
-          & ","
-          & Sequence_Count'Image (Cont_Info (J).Title_Last)
-          & "));");
+          & Sequence_Count'Image (Cont_Info (J).Ranges (Title).Last)
+          & "))));");
    end loop;
 
    for J in Groups'Range loop

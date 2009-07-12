@@ -35,6 +35,8 @@
 --  Unicode specification.
 with Matreshka.Internals.Locales;
 
+with Matreshka.Internals.Ucd;
+
 private package Matreshka.Strings.Casing is
 
    pragma Preelaborate;
@@ -43,6 +45,8 @@ private package Matreshka.Strings.Casing is
     (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
      Source      : Matreshka.Internals.Utf16.Utf16_String;
      Source_Last : Natural;
+     Kind        : Matreshka.Internals.Ucd.Case_Mapping_Kinds;
+     Property    : Matreshka.Internals.Ucd.Boolean_Properties;
      Destination : out Utf16_String_Access;
      Last        : out Natural;
      Length      : out Natural;
