@@ -3897,20 +3897,7 @@ package Matreshka.Internals.Ucd.Core is
          16#A2#           =>  --  03A2
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         16#A3#           =>  --  03A3
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping
-              | Casing_Context_Sensitive => True,
-            others => False)),
-         16#A4# .. 16#AB# =>  --  03A4 .. 03AB
+         16#A3# .. 16#AB# =>  --  03A3 .. 03AB
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
            (Alphabetic
               | Grapheme_Base

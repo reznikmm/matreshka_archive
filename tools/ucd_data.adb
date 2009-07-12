@@ -358,9 +358,6 @@ package body Ucd_Data is
       Lower    : Code_Point_Sequence_Access;
       Upper    : Code_Point_Sequence_Access;
       Title    : Code_Point_Sequence_Access;
---      Language : Languages      := Default;
---      Context  : Casing_Context := Default;
-      Negative : Boolean        := False;
 
    begin
       Ada.Text_IO.Put_Line ("   ... " & SpecialCasing_Name);
@@ -399,9 +396,6 @@ package body Ucd_Data is
 
          begin
             if V = "Final_Sigma" then
---               Context := Final_Sigma;
-               Core (Code).B (Casing_Context_Sensitive) := True;
-
                if Upper'Length /= 1
                  or else Upper (1) /= Code
                then
@@ -451,7 +445,8 @@ package body Ucd_Data is
             else
                --  XXX Ignore more complex contexts for now.
 
-               Ada.Text_IO.Put_Line (Ucd_Input.Field (File));
+               Ada.Text_IO.Put_Line
+                ("         Ignore mapping: " & Ucd_Input.Field (File));
             end if;
          end;
 

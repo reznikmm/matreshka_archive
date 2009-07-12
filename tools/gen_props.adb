@@ -355,17 +355,6 @@ procedure Gen_Props (Source_Directory : String) is
      aliased constant String := "Has_Uppercase_Mapping";
    BP_Has_Titlecase_Mapping_Image :
      aliased constant String := "Has_Titlecase_Mapping";
-   BP_Casing_Context_Sensitive_Image :
-     aliased constant String := "Casing_Context_Sensitive";
---   BP_Final_Sigma_Sensitive_Image :
---     aliased constant String := "Final_Sigma_Sensitive";
---   BP_After_Soft_Dotted_Sensitive_Image :
---     aliased constant String := "After_Soft_Dotted_Sensitive";
---   BP_More_Above_Sensitive_Image :
---     aliased constant String := "More_Above_Sensitive";
---   BP_Before_Dot_Sensitive_Image :
---     aliased constant String := "Before_Dot_Sensitive";
---   BP_After_I_Sensitive_Image : aliased constant String := "After_I_Sensitive";
 
    Boolean_Properties_Image : constant
      array (Boolean_Properties) of Constant_String_Access
@@ -428,9 +417,7 @@ procedure Gen_Props (Source_Directory : String) is
 
            Has_Lowercase_Mapping   => BP_Has_Lowercase_Mapping_Image'Access,
            Has_Uppercase_Mapping   => BP_Has_Uppercase_Mapping_Image'Access,
-           Has_Titlecase_Mapping   => BP_Has_Titlecase_Mapping_Image'Access,
-           Casing_Context_Sensitive =>
-             BP_Casing_Context_Sensitive_Image'Access);
+           Has_Titlecase_Mapping   => BP_Has_Titlecase_Mapping_Image'Access);
 
 --           Final_Sigma_Sensitive   => BP_Final_Sigma_Sensitive_Image'Access,
 --           After_Soft_Dotted_Sensitive =>
