@@ -36,7 +36,7 @@ package Matreshka.Internals.Ucd.Cases is
 
    pragma Preelaborate;
 
-   Data : constant Code_Point_Sequence (1 .. 2238)
+   Data : aliased constant Code_Point_Sequence
      := (16#000061#, 16#000062#, 16#000063#, 16#000064#, 16#000065#,
          16#000066#, 16#000067#, 16#000068#, 16#000069#, 16#00006A#,
          16#00006B#, 16#00006C#, 16#00006D#, 16#00006E#, 16#00006F#,
@@ -486,7 +486,7 @@ package Matreshka.Internals.Ucd.Cases is
          16#010420#, 16#010421#, 16#010422#, 16#010423#, 16#010424#,
          16#010425#, 16#010426#, 16#010427#);
 
-   Context : constant Casing_Context_Mapping_Sequence (1 .. 1)
+   Context : aliased constant Casing_Context_Mapping_Sequence
      := (1 => (Final_Sigma, False, 499, 499, 0, 0, 0, 0));
 
    Group_0000 : aliased constant Case_Mapping_Second_Stage

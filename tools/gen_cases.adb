@@ -430,10 +430,7 @@ begin
 
    Ada.Text_IO.New_Line (File);
    Ada.Text_IO.Put_Line
-    (File,
-     "   Data : constant Code_Point_Sequence (1 .."
-       & Sequence_Count'Image (Last_Seq)
-       & ")");
+    (File, "   Data : aliased constant Code_Point_Sequence");
 
    for J in 1 .. Last_Seq loop
       if J = 1 then
@@ -454,10 +451,7 @@ begin
 
    Ada.Text_IO.New_Line (File);
    Ada.Text_IO.Put_Line
-    (File,
-     "   Context : constant Casing_Context_Mapping_Sequence (1 .."
-       & Sequence_Count'Image (Cont_Last)
-       & ")");
+    (File, "   Context : aliased constant Casing_Context_Mapping_Sequence");
 
    for J in 1 .. Cont_Last loop
       Ada.Text_IO.Put_Line
