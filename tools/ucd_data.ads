@@ -35,17 +35,6 @@ package Ucd_Data is
 
    type Core_Values_Array_Access is access Core_Values_Array;
 
---   type Sequence_Count is range 0 .. 2 ** 16 -1;
---   for Sequence_Count'Size use 16;
---
---   subtype Sequence_Index is Sequence_Count range 1 .. Sequence_Count'Last;
---
---   type Code_Point_Sequence is
---     array (Sequence_Index range <>) of Matreshka.Internals.Unicode.Code_Point;
---
---   type Code_Point_Sequence is
---     array (Positive range <>) Of Matreshka.Internals.Unicode.Code_Point;
-
    type Code_Point_Sequence_Access is
      access Matreshka.Internals.Ucd.Code_Point_Sequence;
 
@@ -57,11 +46,6 @@ package Ucd_Data is
 
    type Full_Case_Values is record
       Default  : Code_Point_Sequence_Access;
---      Final_Sigma       : Code_Point_Sequence_Access;
---      After_Soft_Dotted : Code_Point_Sequence_Access;
---      More_Above        : Code_Point_Sequence_Access;
---      Before_Dot        : Code_Point_Sequence_Access;
---      After_I           : Code_Point_Sequence_Access;
       Positive : Context_Code_Point_Sequence;
       Negative : Context_Code_Point_Sequence;
    end record;
