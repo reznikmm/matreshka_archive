@@ -527,6 +527,44 @@ package body Matreshka.Strings is
               Cursors    => null);
    end Read;
 
+   -----------------
+   -- To_Casefold --
+   -----------------
+
+   function To_Casefold (Self : Universal_String'Class)
+     return Universal_String
+   is
+      Locale : Matreshka.Internals.Locales.Locale_Data_Access;
+
+   begin
+      return Result : Universal_String
+        := Universal_String'
+            (Ada.Finalization.Controlled with
+               Data =>
+                 new String_Private_Data'
+                      (Counter    => Matreshka.Internals.Atomics.Counters.One,
+                       Value      => new Utf16_String (1 .. 0),
+                       Last       => 0,
+                       Length     => 0,
+                       Index_Mode => Undefined,
+                       Index_Map  => null,
+                       Cursors    => null))
+      do
+         Locale := Matreshka.Internals.Locales.Get_Locale;
+         Matreshka.Strings.Casing.Convert_Case
+          (Locale,
+           Self.Data.Value.all,
+           Self.Data.Last,
+           Matreshka.Internals.Ucd.Folding,
+           Matreshka.Internals.Ucd.Has_Case_Folding,
+           Result.Data.Value,
+           Result.Data.Last,
+           Result.Data.Length,
+           Result.Data.Index_Mode);
+         Matreshka.Internals.Locales.Dereference (Locale);
+      end return;
+   end To_Casefold;
+
    ------------------
    -- To_Lowercase --
    ------------------

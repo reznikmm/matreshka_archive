@@ -4,7 +4,7 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -24,20 +24,35 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_league";
+with Matreshka.Strings;
 
-project Matreshka_League_Tests is
+procedure Case_Folding_Test is
 
-   for Main use
-    ("character_cursor_test.adb",
-     "grapheme_cluster_cursor_test.adb",
-     "case_conversion_test.adb",
-     "case_folding_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use ("../testsuite/league");
+   use Matreshka.Strings;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8");
-   end Compiler;
+   --  Check \u00DF correctly transformed to \u0073\u0073 sequence and
+   --  Final_Sigma casing context is never used.
 
-end Matreshka_League_Tests;
+   S1S : Universal_String
+     := To_Universal_String
+         (Wide_Wide_Character'Val (16#00DF#)
+            & 'A' & Wide_Wide_Character'Val (16#03A3#) & 'Z');
+   S1E : constant Wide_Wide_String
+     := Wide_Wide_Character'Val (16#0073#)
+          & Wide_Wide_Character'Val (16#0073#)
+          & 'a' & Wide_Wide_Character'Val (16#03C3#) & 'z';
+   S2S : Universal_String
+     := To_Universal_String
+         ('A' & Wide_Wide_Character'Val (16#03A3#));
+   S2E : constant Wide_Wide_String
+     := 'a' & Wide_Wide_Character'Val (16#03C3#);
+
+begin
+   if S1S.To_Casefold.To_Wide_Wide_String /= S1E then
+      raise Program_Error;
+   end if;
+
+   if S2S.To_Casefold.To_Wide_Wide_String /= S2E then
+      raise Program_Error;
+   end if;
+end Case_Folding_Test;

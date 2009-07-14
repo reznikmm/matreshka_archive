@@ -328,7 +328,10 @@ package body Matreshka.Strings.Casing is
             begin
                Converted := False;
 
-               if Mapping.Context_First /= 0 then
+               if Kind /= Folding
+                 --  Ignore casing context mappings in the case folding mode.
+                 and then Mapping.Context_First /= 0
+               then
                   --  Character is casing context sensitive.
 
                   for J in Mapping.Context_First .. Mapping.Context_Last loop

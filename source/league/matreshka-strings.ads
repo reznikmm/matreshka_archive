@@ -109,6 +109,12 @@ package Matreshka.Strings is
    --  full case conversion (both context-dependent mappings and tailoring are
    --  used). Returns result string.
 
+   function To_Casefold (Self : Universal_String'Class)
+     return Universal_String;
+   --  Converts each character in the specified string to case folding form
+   --  using full case conversion (only tailoring is used). Returns result
+   --  string.
+
    function "&"
     (Left  : Universal_String'Class;
      Right : Universal_Character'Class)
