@@ -551,7 +551,7 @@ package body Matreshka.Strings is
                        Cursors    => null))
       do
          Locale := Matreshka.Internals.Locales.Get_Locale;
-         Matreshka.Strings.Casing.To_Uppercase
+         Matreshka.Strings.Casing.Convert_Case
           (Locale,
            Self.Data.Value.all,
            Self.Data.Last,
@@ -564,17 +564,6 @@ package body Matreshka.Strings is
          Matreshka.Internals.Locales.Dereference (Locale);
       end return;
    end To_Lowercase;
-
-   ------------------
-   -- To_Titlecase --
-   ------------------
-
-   function To_Titlecase (Self : Universal_String'Class)
-     return Universal_String
-   is
-   begin
-      return Universal_String (Self);
-   end To_Titlecase;
 
    ------------------
    -- To_Uppercase --
@@ -600,7 +589,7 @@ package body Matreshka.Strings is
                        Cursors    => null))
       do
          Locale := Matreshka.Internals.Locales.Get_Locale;
-         Matreshka.Strings.Casing.To_Uppercase
+         Matreshka.Strings.Casing.Convert_Case
           (Locale,
            Self.Data.Value.all,
            Self.Data.Last,

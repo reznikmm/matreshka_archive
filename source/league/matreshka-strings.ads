@@ -99,12 +99,15 @@ package Matreshka.Strings is
 
    function To_Uppercase (Self : Universal_String'Class)
      return Universal_String;
+   --  Converts each character in the specified string to uppercase form using
+   --  full case conversion (both context-dependent mappings and tailoring are
+   --  used). Returns result string.
 
    function To_Lowercase (Self : Universal_String'Class)
      return Universal_String;
-
-   function To_Titlecase (Self : Universal_String'Class)
-     return Universal_String;
+   --  Converts each character in the specified string to lowercase form using
+   --  full case conversion (both context-dependent mappings and tailoring are
+   --  used). Returns result string.
 
    function "&"
     (Left  : Universal_String'Class;

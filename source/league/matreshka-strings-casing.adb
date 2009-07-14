@@ -45,10 +45,10 @@ package body Matreshka.Strings.Casing is
      new Ada.Unchecked_Deallocation (Utf16_String, Utf16_String_Access);
 
    ------------------
-   -- To_Uppercase --
+   -- Convert_Case --
    ------------------
 
-   procedure To_Uppercase
+   procedure Convert_Case
     (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
      Source      : Matreshka.Internals.Utf16.Utf16_String;
      Source_Last : Natural;
@@ -312,22 +312,6 @@ package body Matreshka.Strings.Casing is
       end loop;
 
       Index_Mode := Index_Mode_For_String (Has_BMP, Has_Non_BMP);
-   end To_Uppercase;
-
---   procedure To_Lowercase
---    (Source      : Matreshka.Internals.Utf16.Utf16_String;
---     Source_Last : Natural;
---     Destination : out Utf16_String_Access;
---     Last        : out Natural;
---     Length      : out Natural;
---     Index_Mode  : out Index_Modes);
---
---   procedure To_Titlecase
---    (Source      : Matreshka.Internals.Utf16.Utf16_String;
---     Source_Last : Natural;
---     Destination : out Utf16_String_Access;
---     Last        : out Natural;
---     Length      : out Natural;
---     Index_Mode  : out Index_Modes);
+   end Convert_Case;
 
 end Matreshka.Strings.Casing;

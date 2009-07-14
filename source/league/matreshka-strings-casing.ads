@@ -41,7 +41,7 @@ private package Matreshka.Strings.Casing is
 
    pragma Preelaborate;
 
-   procedure To_Uppercase
+   procedure Convert_Case
     (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
      Source      : Matreshka.Internals.Utf16.Utf16_String;
      Source_Last : Natural;
@@ -51,21 +51,5 @@ private package Matreshka.Strings.Casing is
      Last        : out Natural;
      Length      : out Natural;
      Index_Mode  : out Index_Modes);
-
---   procedure To_Lowercase
---    (Source      : Matreshka.Internals.Utf16.Utf16_String;
---     Source_Last : Natural;
---     Destination : out Utf16_String_Access;
---     Last        : out Natural;
---     Length      : out Natural;
---     Index_Mode  : out Index_Modes);
---
---   procedure To_Titlecase
---    (Source      : Matreshka.Internals.Utf16.Utf16_String;
---     Source_Last : Natural;
---     Destination : out Utf16_String_Access;
---     Last        : out Natural;
---     Length      : out Natural;
---     Index_Mode  : out Index_Modes);
 
 end Matreshka.Strings.Casing;
