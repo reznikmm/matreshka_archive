@@ -4,7 +4,7 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -24,19 +24,33 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_league";
+with Matreshka.Strings;
 
-project Matreshka_League_Tests is
+procedure Case_Conversion_Test is
 
-   for Main use
-    ("character_cursor_test.adb",
-     "grapheme_cluster_cursor_test.adb",
-     "case_conversion_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use ("../testsuite/league");
+   use Matreshka.Strings;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8");
-   end Compiler;
+   --  This is a testcase for Final_Sigma context. \u03A3 translated to \u03C3
+   --  when there is no Final_Sigma context and to \u03C2 in Final_Sigma
+   --  context.
 
-end Matreshka_League_Tests;
+   S1S : Universal_String
+     := To_Universal_String
+         ('A' & Wide_Wide_Character'Val (16#03A3#) & 'Z');
+   S1E : constant Wide_Wide_String
+     := 'a' & Wide_Wide_Character'Val (16#03C3#) & 'z';
+   S2S : Universal_String
+     := To_Universal_String
+         ('A' & Wide_Wide_Character'Val (16#03A3#));
+   S2E : constant Wide_Wide_String
+     := 'a' & Wide_Wide_Character'Val (16#03C2#);
+
+begin
+   if S1S.To_Lowercase.To_Wide_Wide_String /= S1E then
+      raise Program_Error;
+   end if;
+
+   if S2S.To_Lowercase.To_Wide_Wide_String /= S2E then
+      raise Program_Error;
+   end if;
+end Case_Conversion_Test;

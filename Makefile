@@ -13,6 +13,7 @@ check: all
 	gprbuild -p -Pgnat/matreshka_league_tests.gpr
 	.objs/character_cursor_test
 	.objs/grapheme_cluster_cursor_test $(UNIDATA)
+	.objs/case_conversion_test
 
 #all:
 #	gprbuild -p -Pmatreshka
