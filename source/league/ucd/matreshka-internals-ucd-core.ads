@@ -199,7 +199,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#47# .. 16#5A# =>  --  0047 .. 005A
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -211,7 +212,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#5B#           =>  --  005B
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
@@ -445,7 +447,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#B6#           =>  --  00B6
           (Other_Symbol, 0, Other, Other, Other, Ambiguous,
@@ -508,7 +511,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#D7#           =>  --  00D7
           (Math_Symbol, 0, Other, Other, Other, Ambiguous,
@@ -526,9 +530,24 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
-         16#DF# .. 16#F6# =>  --  00DF .. 00F6
+         16#DF#           =>  --  00DF
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#E0# .. 16#F6# =>  --  00E0 .. 00F6
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
@@ -1019,7 +1038,7 @@ package Matreshka.Internals.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         16#48# .. 16#49# =>  --  0148 .. 0149
+         16#48#           =>  --  0148
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
@@ -1031,6 +1050,20 @@ package Matreshka.Internals.Ucd.Core is
               | Cased
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#49#           =>  --  0149
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#4B#           =>  --  014B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -1357,7 +1390,34 @@ package Matreshka.Internals.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         16#7E# .. 16#80# =>  --  017E .. 0180
+         16#7E#           =>  --  017E
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#7F#           =>  --  017F
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#80#           =>  --  0180
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
@@ -1701,7 +1761,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#C5#           =>  --  01C5
           (Titlecase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -1713,7 +1774,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Uppercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#C6#           =>  --  01C6
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -1739,7 +1801,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#C8#           =>  --  01C8
           (Titlecase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -1751,7 +1814,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Uppercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#C9#           =>  --  01C9
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -1777,7 +1841,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#CB#           =>  --  01CB
           (Titlecase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -1789,7 +1854,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Uppercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#CC#           =>  --  01CC
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2012,7 +2078,7 @@ package Matreshka.Internals.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         16#EF# .. 16#F0# =>  --  01EF .. 01F0
+         16#EF#           =>  --  01EF
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
@@ -2025,6 +2091,20 @@ package Matreshka.Internals.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
+         16#F0#           =>  --  01F0
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
          16#F1#           =>  --  01F1
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
            (Alphabetic
@@ -2036,7 +2116,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#F2#           =>  --  01F2
           (Titlecase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -2048,7 +2129,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Uppercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#F3#           =>  --  01F3
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2125,7 +2207,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)));
 
    Group_0002 : aliased constant Core_Second_Stage
@@ -2139,7 +2222,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#01#           =>  --  0201
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2164,7 +2248,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#03#           =>  --  0203
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2189,7 +2274,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#05#           =>  --  0205
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2214,7 +2300,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#07#           =>  --  0207
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2239,7 +2326,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#09#           =>  --  0209
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2264,7 +2352,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#0B#           =>  --  020B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2289,7 +2378,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#0D#           =>  --  020D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2314,7 +2404,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#0F#           =>  --  020F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2339,7 +2430,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#11#           =>  --  0211
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2364,7 +2456,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#13#           =>  --  0213
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2389,7 +2482,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#15#           =>  --  0215
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2414,7 +2508,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#17#           =>  --  0217
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2439,7 +2534,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#19#           =>  --  0219
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2464,7 +2560,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#1B#           =>  --  021B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2489,7 +2586,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#1D#           =>  --  021D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2514,7 +2612,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#1F#           =>  --  021F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2539,7 +2638,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#22#           =>  --  0222
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -2551,7 +2651,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#23#           =>  --  0223
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2576,7 +2677,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#25#           =>  --  0225
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2601,7 +2703,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#27#           =>  --  0227
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2626,7 +2729,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#29#           =>  --  0229
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2651,7 +2755,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#2B#           =>  --  022B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2676,7 +2781,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#2D#           =>  --  022D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2701,7 +2807,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#2F#           =>  --  022F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2726,7 +2833,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#31#           =>  --  0231
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2751,7 +2859,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#33#           =>  --  0233
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2776,7 +2885,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#3C#           =>  --  023C
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2801,7 +2911,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#41#           =>  --  0241
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -2813,7 +2924,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#42#           =>  --  0242
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2838,7 +2950,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#47#           =>  --  0247
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2863,7 +2976,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#49#           =>  --  0249
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2889,7 +3003,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#4B#           =>  --  024B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2914,7 +3029,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#4D#           =>  --  024D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -2939,7 +3055,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#4F# .. 16#51# =>  --  024F .. 0251
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -3603,7 +3720,8 @@ package Matreshka.Internals.Ucd.Core is
               | Cased
               | Case_Ignorable
               | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#46#           =>  --  0346
           (Nonspacing_Mark, 230, Extend, Extend, Extend, Combining_Mark,
@@ -3747,7 +3865,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#72#           =>  --  0372
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -3759,7 +3878,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#74#           =>  --  0374
           (Modifier_Letter, 0, Other, A_Letter, O_Letter, Alphabetic,
@@ -3788,7 +3908,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#78# .. 16#79# =>  --  0378 .. 0379
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -3829,7 +3950,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#87#           =>  --  0387
           (Other_Punctuation, 0, Other, Mid_Letter, Other, Alphabetic,
@@ -3850,7 +3972,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#8B#           =>  --  038B
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -3865,7 +3988,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#8D#           =>  --  038D
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -3880,7 +4004,22 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#90#           =>  --  0390
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#91# .. 16#A1# =>  --  0391 .. 03A1
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -3892,7 +4031,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#A2#           =>  --  03A2
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -3907,7 +4047,36 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#B0#           =>  --  03B0
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#C2#           =>  --  03C2
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#CF#           =>  --  03CF
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -3919,7 +4088,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#D0# .. 16#D1# =>  --  03D0 .. 03D1
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -3934,7 +4104,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#D2#           =>  --  03D2
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -3973,7 +4144,22 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#D6#           =>  --  03D6
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#D8#           =>  --  03D8
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -3985,7 +4171,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#DA#           =>  --  03DA
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -3997,7 +4184,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#DC#           =>  --  03DC
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -4009,7 +4197,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#DE#           =>  --  03DE
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -4021,7 +4210,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#E0#           =>  --  03E0
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -4033,7 +4223,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#E2#           =>  --  03E2
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -4045,7 +4236,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#E4#           =>  --  03E4
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -4057,7 +4249,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#E6#           =>  --  03E6
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -4069,7 +4262,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#E8#           =>  --  03E8
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -4081,7 +4275,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#EA#           =>  --  03EA
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -4093,7 +4288,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#EC#           =>  --  03EC
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -4105,7 +4301,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#EE#           =>  --  03EE
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -4117,7 +4314,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#F0# .. 16#F1# =>  --  03F0 .. 03F1
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -4132,7 +4330,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#F3#           =>  --  03F3
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -4158,7 +4357,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#F5#           =>  --  03F5
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -4173,7 +4373,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#F6#           =>  --  03F6
           (Math_Symbol, 0, Other, Other, Other, Alphabetic,
@@ -4190,7 +4391,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#F9# .. 16#FA# =>  --  03F9 .. 03FA
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -4202,7 +4404,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#FC#           =>  --  03FC
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -5286,241 +5489,248 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)));
 
    Group_0005 : aliased constant Core_Second_Stage
-     := (16#00#           =>  --  0500
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+     := (16#01#           =>  --  0501
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#02#           =>  --  0502
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#03#           =>  --  0503
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#04#           =>  --  0504
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#05#           =>  --  0505
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#06#           =>  --  0506
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#07#           =>  --  0507
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#08#           =>  --  0508
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#09#           =>  --  0509
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#0A#           =>  --  050A
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#0B#           =>  --  050B
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#0C#           =>  --  050C
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#0D#           =>  --  050D
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#0E#           =>  --  050E
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#0F#           =>  --  050F
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#10#           =>  --  0510
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#11#           =>  --  0511
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#12#           =>  --  0512
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#13#           =>  --  0513
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#14#           =>  --  0514
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#15#           =>  --  0515
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#16#           =>  --  0516
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#17#           =>  --  0517
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#18#           =>  --  0518
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#19#           =>  --  0519
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#1A#           =>  --  051A
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#1B#           =>  --  051B
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#1C#           =>  --  051C
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#1D#           =>  --  051D
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#1E#           =>  --  051E
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#1F#           =>  --  051F
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#20#           =>  --  0520
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#21#           =>  --  0521
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#22#           =>  --  0522
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#23#           =>  --  0523
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
          16#24# .. 16#30# =>  --  0524 .. 0530
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
-         16#31# .. 16#56# =>  --  0531 .. 0556
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
          16#57# .. 16#58# =>  --  0557 .. 0558
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
@@ -5560,6 +5770,33 @@ package Matreshka.Internals.Ucd.Core is
          16#60#           =>  --  0560
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
+         16#61# .. 16#86# =>  --  0561 .. 0586
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#87#           =>  --  0587
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
          16#88#           =>  --  0588
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
@@ -5937,17 +6174,17 @@ package Matreshka.Internals.Ucd.Core is
               | Case_Ignorable => True,
             others => False)),
          others           =>
-          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)));
 
    Group_0006 : aliased constant Core_Second_Stage
@@ -9250,7 +9487,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#C6# .. 16#CF# =>  --  10C6 .. 10CF
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -10773,281 +11011,291 @@ package Matreshka.Internals.Ucd.Core is
             others => False)));
 
    Group_001E : aliased constant Core_Second_Stage
-     := (16#00#           =>  --  1E00
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+     := (16#01#           =>  --  1E01
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#02#           =>  --  1E02
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#03#           =>  --  1E03
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#04#           =>  --  1E04
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#05#           =>  --  1E05
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#06#           =>  --  1E06
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#07#           =>  --  1E07
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#08#           =>  --  1E08
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#09#           =>  --  1E09
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#0A#           =>  --  1E0A
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#0B#           =>  --  1E0B
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#0C#           =>  --  1E0C
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#0D#           =>  --  1E0D
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#0E#           =>  --  1E0E
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#0F#           =>  --  1E0F
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#10#           =>  --  1E10
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#11#           =>  --  1E11
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#12#           =>  --  1E12
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#13#           =>  --  1E13
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#14#           =>  --  1E14
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#15#           =>  --  1E15
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#16#           =>  --  1E16
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#17#           =>  --  1E17
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#18#           =>  --  1E18
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#19#           =>  --  1E19
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#1A#           =>  --  1E1A
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#1B#           =>  --  1E1B
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#1C#           =>  --  1E1C
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#1D#           =>  --  1E1D
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#1E#           =>  --  1E1E
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#1F#           =>  --  1E1F
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#20#           =>  --  1E20
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#21#           =>  --  1E21
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#22#           =>  --  1E22
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#23#           =>  --  1E23
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#24#           =>  --  1E24
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#25#           =>  --  1E25
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#26#           =>  --  1E26
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#27#           =>  --  1E27
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#28#           =>  --  1E28
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#29#           =>  --  1E29
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#2A#           =>  --  1E2A
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#2B#           =>  --  1E2B
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#2C#           =>  --  1E2C
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
          16#2D#           =>  --  1E2D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -11063,629 +11311,695 @@ package Matreshka.Internals.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         16#2E#           =>  --  1E2E
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#2F#           =>  --  1E2F
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#30#           =>  --  1E30
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#31#           =>  --  1E31
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#32#           =>  --  1E32
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#33#           =>  --  1E33
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#34#           =>  --  1E34
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#35#           =>  --  1E35
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#36#           =>  --  1E36
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#37#           =>  --  1E37
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#38#           =>  --  1E38
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#39#           =>  --  1E39
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#3A#           =>  --  1E3A
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#3B#           =>  --  1E3B
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#3C#           =>  --  1E3C
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#3D#           =>  --  1E3D
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#3E#           =>  --  1E3E
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#3F#           =>  --  1E3F
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#40#           =>  --  1E40
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#41#           =>  --  1E41
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#42#           =>  --  1E42
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#43#           =>  --  1E43
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#44#           =>  --  1E44
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#45#           =>  --  1E45
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#46#           =>  --  1E46
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#47#           =>  --  1E47
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#48#           =>  --  1E48
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#49#           =>  --  1E49
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#4A#           =>  --  1E4A
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#4B#           =>  --  1E4B
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#4C#           =>  --  1E4C
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#4D#           =>  --  1E4D
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#4E#           =>  --  1E4E
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#4F#           =>  --  1E4F
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#50#           =>  --  1E50
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#51#           =>  --  1E51
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#52#           =>  --  1E52
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#53#           =>  --  1E53
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#54#           =>  --  1E54
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#55#           =>  --  1E55
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#56#           =>  --  1E56
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#57#           =>  --  1E57
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#58#           =>  --  1E58
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#59#           =>  --  1E59
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#5A#           =>  --  1E5A
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#5B#           =>  --  1E5B
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#5C#           =>  --  1E5C
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#5D#           =>  --  1E5D
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#5E#           =>  --  1E5E
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#5F#           =>  --  1E5F
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#60#           =>  --  1E60
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#61#           =>  --  1E61
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#62#           =>  --  1E62
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#63#           =>  --  1E63
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#64#           =>  --  1E64
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#65#           =>  --  1E65
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#66#           =>  --  1E66
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#67#           =>  --  1E67
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#68#           =>  --  1E68
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#69#           =>  --  1E69
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#6A#           =>  --  1E6A
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#6B#           =>  --  1E6B
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#6C#           =>  --  1E6C
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#6D#           =>  --  1E6D
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#6E#           =>  --  1E6E
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#6F#           =>  --  1E6F
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#70#           =>  --  1E70
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#71#           =>  --  1E71
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#72#           =>  --  1E72
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#73#           =>  --  1E73
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#74#           =>  --  1E74
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#75#           =>  --  1E75
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#76#           =>  --  1E76
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#77#           =>  --  1E77
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#78#           =>  --  1E78
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#79#           =>  --  1E79
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#7A#           =>  --  1E7A
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#7B#           =>  --  1E7B
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#7C#           =>  --  1E7C
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#7D#           =>  --  1E7D
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#7E#           =>  --  1E7E
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#7F#           =>  --  1E7F
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#80#           =>  --  1E80
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#81#           =>  --  1E81
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#82#           =>  --  1E82
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#83#           =>  --  1E83
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#84#           =>  --  1E84
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#85#           =>  --  1E85
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#86#           =>  --  1E86
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#87#           =>  --  1E87
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#88#           =>  --  1E88
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#89#           =>  --  1E89
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#8A#           =>  --  1E8A
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#8B#           =>  --  1E8B
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#8C#           =>  --  1E8C
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#8D#           =>  --  1E8D
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#8E#           =>  --  1E8E
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#8F#           =>  --  1E8F
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#90#           =>  --  1E90
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#91#           =>  --  1E91
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#92#           =>  --  1E92
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#93#           =>  --  1E93
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#94#           =>  --  1E94
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#95#           =>  --  1E95
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#96# .. 16#9B# =>  --  1E96 .. 1E9B
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#9C# .. 16#9D# =>  --  1E9C .. 1E9D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -11698,18 +12012,6 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased => True,
             others => False)),
-         16#9E#           =>  --  1E9E
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
          16#9F#           =>  --  1E9F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
@@ -11721,269 +12023,278 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased => True,
             others => False)),
-         16#A0#           =>  --  1EA0
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#A1#           =>  --  1EA1
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#A2#           =>  --  1EA2
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#A3#           =>  --  1EA3
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#A4#           =>  --  1EA4
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#A5#           =>  --  1EA5
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#A6#           =>  --  1EA6
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#A7#           =>  --  1EA7
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#A8#           =>  --  1EA8
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#A9#           =>  --  1EA9
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#AA#           =>  --  1EAA
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#AB#           =>  --  1EAB
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#AC#           =>  --  1EAC
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#AD#           =>  --  1EAD
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#AE#           =>  --  1EAE
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#AF#           =>  --  1EAF
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#B0#           =>  --  1EB0
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#B1#           =>  --  1EB1
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#B2#           =>  --  1EB2
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#B3#           =>  --  1EB3
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#B4#           =>  --  1EB4
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#B5#           =>  --  1EB5
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#B6#           =>  --  1EB6
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#B7#           =>  --  1EB7
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#B8#           =>  --  1EB8
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#B9#           =>  --  1EB9
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#BA#           =>  --  1EBA
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#BB#           =>  --  1EBB
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#BC#           =>  --  1EBC
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#BD#           =>  --  1EBD
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#BE#           =>  --  1EBE
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#BF#           =>  --  1EBF
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#C0#           =>  --  1EC0
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#C1#           =>  --  1EC1
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#C2#           =>  --  1EC2
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#C3#           =>  --  1EC3
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#C4#           =>  --  1EC4
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#C5#           =>  --  1EC5
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#C6#           =>  --  1EC6
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#C7#           =>  --  1EC7
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
-         16#C8#           =>  --  1EC8
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+         16#C9#           =>  --  1EC9
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#CA#           =>  --  1ECA
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
             others => False)),
          16#CB#           =>  --  1ECB
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -11999,319 +12310,7 @@ package Matreshka.Internals.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         16#CC#           =>  --  1ECC
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#CE#           =>  --  1ECE
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#D0#           =>  --  1ED0
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#D2#           =>  --  1ED2
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#D4#           =>  --  1ED4
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#D6#           =>  --  1ED6
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#D8#           =>  --  1ED8
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#DA#           =>  --  1EDA
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#DC#           =>  --  1EDC
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#DE#           =>  --  1EDE
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#E0#           =>  --  1EE0
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#E2#           =>  --  1EE2
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#E4#           =>  --  1EE4
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#E6#           =>  --  1EE6
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#E8#           =>  --  1EE8
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#EA#           =>  --  1EEA
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#EC#           =>  --  1EEC
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#EE#           =>  --  1EEE
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#F0#           =>  --  1EF0
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#F2#           =>  --  1EF2
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#F4#           =>  --  1EF4
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#F6#           =>  --  1EF6
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#F8#           =>  --  1EF8
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#FA#           =>  --  1EFA
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#FC#           =>  --  1EFC
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         16#FE#           =>  --  1EFE
-          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Cased
-              | Has_Lowercase_Mapping => True,
-            others => False)),
-         others           =>
+         16#CD#           =>  --  1ECD
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Grapheme_Base
@@ -12323,6 +12322,331 @@ package Matreshka.Internals.Ucd.Core is
               | Cased
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#CF#           =>  --  1ECF
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#D1#           =>  --  1ED1
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#D3#           =>  --  1ED3
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#D5#           =>  --  1ED5
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#D7#           =>  --  1ED7
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#D9#           =>  --  1ED9
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#DB#           =>  --  1EDB
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#DD#           =>  --  1EDD
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#DF#           =>  --  1EDF
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#E1#           =>  --  1EE1
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#E3#           =>  --  1EE3
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#E5#           =>  --  1EE5
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#E7#           =>  --  1EE7
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#E9#           =>  --  1EE9
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#EB#           =>  --  1EEB
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#ED#           =>  --  1EED
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#EF#           =>  --  1EEF
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#F1#           =>  --  1EF1
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#F3#           =>  --  1EF3
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#F5#           =>  --  1EF5
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#F7#           =>  --  1EF7
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#F9#           =>  --  1EF9
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#FB#           =>  --  1EFB
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#FD#           =>  --  1EFD
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         others           =>
+          (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)));
 
    Group_001F : aliased constant Core_Second_Stage
@@ -12336,7 +12660,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#16# .. 16#17# =>  --  1F16 .. 1F17
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -12351,7 +12676,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#1E# .. 16#1F# =>  --  1F1E .. 1F1F
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -12366,7 +12692,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#38# .. 16#3F# =>  --  1F38 .. 1F3F
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -12378,7 +12705,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#46# .. 16#47# =>  --  1F46 .. 1F47
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -12393,11 +12721,68 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#4E# .. 16#4F# =>  --  1F4E .. 1F4F
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
+         16#50#           =>  --  1F50
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#52#           =>  --  1F52
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#54#           =>  --  1F54
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#56#           =>  --  1F56
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
          16#58#           =>  --  1F58
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
@@ -12411,7 +12796,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#5A#           =>  --  1F5A
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -12426,7 +12812,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#5C#           =>  --  1F5C
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -12441,7 +12828,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#5E#           =>  --  1F5E
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -12456,7 +12844,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#68# .. 16#6F# =>  --  1F68 .. 1F6F
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -12468,11 +12857,26 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#7E# .. 16#7F# =>  --  1F7E .. 1F7F
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
+         16#80# .. 16#87# =>  --  1F80 .. 1F87
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
          16#88# .. 16#8F# =>  --  1F88 .. 1F8F
           (Titlecase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
            (Alphabetic
@@ -12483,7 +12887,22 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#90# .. 16#97# =>  --  1F90 .. 1F97
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#98# .. 16#9F# =>  --  1F98 .. 1F9F
           (Titlecase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -12495,7 +12914,22 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#A0# .. 16#A7# =>  --  1FA0 .. 1FA7
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#A8# .. 16#AF# =>  --  1FA8 .. 1FAF
           (Titlecase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -12507,11 +12941,40 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#B2# .. 16#B4# =>  --  1FB2 .. 1FB4
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#B5#           =>  --  1FB5
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
+         16#B6# .. 16#B7# =>  --  1FB6 .. 1FB7
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
          16#B8# .. 16#BB# =>  --  1FB8 .. 1FBB
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
            (Alphabetic
@@ -12522,7 +12985,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#BC#           =>  --  1FBC
           (Titlecase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -12534,7 +12998,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#BD#           =>  --  1FBD
           (Modifier_Symbol, 0, Other, Other, Other, Alphabetic,
@@ -12542,15 +13007,57 @@ package Matreshka.Internals.Ucd.Core is
               | Grapheme_Base
               | Case_Ignorable => True,
             others => False)),
+         16#BE#           =>  --  1FBE
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
          16#BF# .. 16#C1# =>  --  1FBF .. 1FC1
           (Modifier_Symbol, 0, Other, Other, Other, Alphabetic,
            (Diacritic
               | Grapheme_Base
               | Case_Ignorable => True,
             others => False)),
+         16#C2# .. 16#C4# =>  --  1FC2 .. 1FC4
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
          16#C5#           =>  --  1FC5
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
+         16#C6# .. 16#C7# =>  --  1FC6 .. 1FC7
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
          16#C8# .. 16#CB# =>  --  1FC8 .. 1FCB
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
            (Alphabetic
@@ -12561,7 +13068,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#CC#           =>  --  1FCC
           (Titlecase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -12573,7 +13081,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#CD# .. 16#CF# =>  --  1FCD .. 1FCF
           (Modifier_Symbol, 0, Other, Other, Other, Alphabetic,
@@ -12581,9 +13090,37 @@ package Matreshka.Internals.Ucd.Core is
               | Grapheme_Base
               | Case_Ignorable => True,
             others => False)),
+         16#D2# .. 16#D3# =>  --  1FD2 .. 1FD3
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
          16#D4# .. 16#D5# =>  --  1FD4 .. 1FD5
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
+         16#D6# .. 16#D7# =>  --  1FD6 .. 1FD7
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
          16#D8# .. 16#DB# =>  --  1FD8 .. 1FDB
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
            (Alphabetic
@@ -12594,7 +13131,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#DC#           =>  --  1FDC
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -12604,6 +13142,34 @@ package Matreshka.Internals.Ucd.Core is
            (Diacritic
               | Grapheme_Base
               | Case_Ignorable => True,
+            others => False)),
+         16#E2# .. 16#E4# =>  --  1FE2 .. 1FE4
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#E6# .. 16#E7# =>  --  1FE6 .. 1FE7
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#E8# .. 16#EC# =>  --  1FE8 .. 1FEC
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -12615,7 +13181,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#ED# .. 16#EF# =>  --  1FED .. 1FEF
           (Modifier_Symbol, 0, Other, Other, Other, Alphabetic,
@@ -12626,9 +13193,37 @@ package Matreshka.Internals.Ucd.Core is
          16#F0# .. 16#F1# =>  --  1FF0 .. 1FF1
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
+         16#F2# .. 16#F4# =>  --  1FF2 .. 1FF4
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
          16#F5#           =>  --  1FF5
           (Unassigned, 0, Other, Other, Other, Unknown,
            (others => False)),
+         16#F6# .. 16#F7# =>  --  1FF6 .. 1FF7
+          (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Cased
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
          16#F8# .. 16#FB# =>  --  1FF8 .. 1FFB
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
            (Alphabetic
@@ -12639,7 +13234,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#FC#           =>  --  1FFC
           (Titlecase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -12651,7 +13247,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Lowercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#FD#           =>  --  1FFD
           (Modifier_Symbol, 0, Other, Other, Other, Break_Before,
@@ -13490,7 +14087,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#27#           =>  --  2127
           (Other_Symbol, 0, Other, Other, Other, Alphabetic,
@@ -13525,7 +14123,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#2B#           =>  --  212B
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Ambiguous,
@@ -13537,7 +14136,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#2C# .. 16#2D# =>  --  212C .. 212D
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -13597,7 +14197,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#33#           =>  --  2133
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Alphabetic,
@@ -13794,7 +14395,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#6C# .. 16#6F# =>  --  216C .. 216F
           (Letter_Number, 0, Other, A_Letter, Upper, Alphabetic,
@@ -13807,7 +14409,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#70# .. 16#79# =>  --  2170 .. 2179
           (Letter_Number, 0, Other, A_Letter, Lower, Ambiguous,
@@ -13856,7 +14459,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#84#           =>  --  2184
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -14287,7 +14891,8 @@ package Matreshka.Internals.Ucd.Core is
               | Grapheme_Base
               | Uppercase
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#D0# .. 16#E9# =>  --  24D0 .. 24E9
           (Other_Symbol, 0, Other, A_Letter, Lower, Ambiguous,
@@ -15999,7 +16604,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)));
 
    Group_002D : aliased constant Core_Second_Stage
@@ -17217,7 +17823,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#41#           =>  --  A641
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17242,7 +17849,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#43#           =>  --  A643
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17267,7 +17875,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#45#           =>  --  A645
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17292,7 +17901,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#47#           =>  --  A647
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17317,7 +17927,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#49#           =>  --  A649
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17342,7 +17953,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#4B#           =>  --  A64B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17367,7 +17979,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#4D#           =>  --  A64D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17392,7 +18005,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#4F#           =>  --  A64F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17417,7 +18031,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#51#           =>  --  A651
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17442,7 +18057,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#53#           =>  --  A653
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17467,7 +18083,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#55#           =>  --  A655
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17492,7 +18109,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#57#           =>  --  A657
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17517,7 +18135,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#59#           =>  --  A659
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17542,7 +18161,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#5B#           =>  --  A65B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17567,7 +18187,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#5D#           =>  --  A65D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17592,7 +18213,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#5F#           =>  --  A65F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17617,7 +18239,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#63#           =>  --  A663
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17642,7 +18265,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#65#           =>  --  A665
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17667,7 +18291,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#67#           =>  --  A667
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17692,7 +18317,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#69#           =>  --  A669
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17717,7 +18343,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#6B#           =>  --  A66B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17742,7 +18369,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#6D#           =>  --  A66D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17816,7 +18444,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#81#           =>  --  A681
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17841,7 +18470,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#83#           =>  --  A683
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17866,7 +18496,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#85#           =>  --  A685
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17891,7 +18522,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#87#           =>  --  A687
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17916,7 +18548,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#89#           =>  --  A689
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17941,7 +18574,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#8B#           =>  --  A68B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17966,7 +18600,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#8D#           =>  --  A68D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -17991,7 +18626,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#8F#           =>  --  A68F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18016,7 +18652,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#91#           =>  --  A691
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18041,7 +18678,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#93#           =>  --  A693
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18066,7 +18704,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#95#           =>  --  A695
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18091,7 +18730,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#97#           =>  --  A697
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18143,7 +18783,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#23#           =>  --  A723
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18168,7 +18809,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#25#           =>  --  A725
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18193,7 +18835,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#27#           =>  --  A727
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18218,7 +18861,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#29#           =>  --  A729
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18243,7 +18887,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#2B#           =>  --  A72B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18268,7 +18913,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#2D#           =>  --  A72D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18293,7 +18939,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#2F#           =>  --  A72F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18329,7 +18976,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#33#           =>  --  A733
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18354,7 +19002,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#35#           =>  --  A735
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18379,7 +19028,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#37#           =>  --  A737
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18404,7 +19054,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#39#           =>  --  A739
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18429,7 +19080,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#3B#           =>  --  A73B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18454,7 +19106,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#3D#           =>  --  A73D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18479,7 +19132,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#3F#           =>  --  A73F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18504,7 +19158,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#41#           =>  --  A741
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18529,7 +19184,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#43#           =>  --  A743
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18554,7 +19210,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#45#           =>  --  A745
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18579,7 +19236,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#47#           =>  --  A747
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18604,7 +19262,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#49#           =>  --  A749
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18629,7 +19288,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#4B#           =>  --  A74B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18654,7 +19314,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#4D#           =>  --  A74D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18679,7 +19340,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#4F#           =>  --  A74F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18704,7 +19366,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#51#           =>  --  A751
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18729,7 +19392,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#53#           =>  --  A753
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18754,7 +19418,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#55#           =>  --  A755
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18779,7 +19444,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#57#           =>  --  A757
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18804,7 +19470,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#59#           =>  --  A759
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18829,7 +19496,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#5B#           =>  --  A75B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18854,7 +19522,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#5D#           =>  --  A75D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18879,7 +19548,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#5F#           =>  --  A75F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18904,7 +19574,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#61#           =>  --  A761
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18929,7 +19600,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#63#           =>  --  A763
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18954,7 +19626,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#65#           =>  --  A765
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -18979,7 +19652,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#67#           =>  --  A767
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -19004,7 +19678,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#69#           =>  --  A769
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -19029,7 +19704,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#6B#           =>  --  A76B
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -19054,7 +19730,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#6D#           =>  --  A76D
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -19079,7 +19756,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#6F#           =>  --  A76F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -19128,7 +19806,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#7A#           =>  --  A77A
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -19153,7 +19832,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#7C#           =>  --  A77C
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -19178,7 +19858,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#7F#           =>  --  A77F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -19203,7 +19884,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#81#           =>  --  A781
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -19228,7 +19910,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#83#           =>  --  A783
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -19253,7 +19936,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#85#           =>  --  A785
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -19278,7 +19962,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#87#           =>  --  A787
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -19319,7 +20004,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#8C#           =>  --  A78C
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,
@@ -20497,7 +21183,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#07# .. 16#12# =>  --  FB07 .. FB12
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -20513,7 +21200,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Start
               | Cased
               | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Has_Titlecase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#18# .. 16#1C# =>  --  FB18 .. FB1C
           (Unassigned, 0, Other, Other, Other, Unknown,
@@ -21102,7 +21790,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#27# .. 16#3A# =>  --  FF27 .. FF3A
           (Uppercase_Letter, 0, Other, A_Letter, Upper, Ideographic,
@@ -21114,7 +21803,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#3B#           =>  --  FF3B
           (Open_Punctuation, 0, Other, Other, Close, Open_Punctuation,
@@ -21562,7 +22252,8 @@ package Matreshka.Internals.Ucd.Core is
               | XID_Continue
               | XID_Start
               | Cased
-              | Has_Lowercase_Mapping => True,
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
             others => False)),
          16#28# .. 16#4F# =>  --  010428 .. 01044F
           (Lowercase_Letter, 0, Other, A_Letter, Lower, Alphabetic,

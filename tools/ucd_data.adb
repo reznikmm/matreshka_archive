@@ -231,11 +231,13 @@ package body Ucd_Data is
             when C | S =>
                Cases (Code).SCF := (True, 0);
                Parse_Code_Point (Ucd_Input.Field (File), Cases (Code).SCF.C);
+               Core (Code).B (Has_Case_Folding) := True;
 
             when F =>
                Cases (Code).FCF :=
                  new Code_Point_Sequence'
                       (Parse_Code_Point_Sequence (Ucd_Input.Field (File)));
+               Core (Code).B (Has_Case_Folding) := True;
 
             when T =>
                Ada.Text_IO.Put_Line ("         Ignore mapping: T");

@@ -188,7 +188,8 @@ package Matreshka.Internals.Ucd is
 
      Has_Lowercase_Mapping,
      Has_Uppercase_Mapping,
-     Has_Titlecase_Mapping);
+     Has_Titlecase_Mapping,
+     Has_Case_Folding);
 
    type Boolean_Values is array (Boolean_Properties) of Boolean;
    for Boolean_Values'Component_Size use 1;
