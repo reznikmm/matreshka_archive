@@ -64,9 +64,11 @@ package Ucd_Data is
       SUM : Optional_Code_Point;
       SLM : Optional_Code_Point;
       STM : Optional_Code_Point;
+      SCF : Optional_Code_Point;
       FUM : Full_Case_Values;
       FLM : Full_Case_Values;
       FTM : Full_Case_Values;
+      FCF : Code_Point_Sequence_Access;
    end record;
 
    type Languages is (Default, az, lt, tr);

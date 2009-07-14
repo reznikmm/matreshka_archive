@@ -68,7 +68,7 @@ procedure Gen_Cases (Source_Directory : String) is
    end record;
 
    Case_Info : array (Code_Point) of Case_Mapping
-     := (others => (((0, 0), (0, 0), (0, 0)), 0, 0));
+     := (others => (((0, 0), (0, 0), (0, 0), (0, 0)), 0, 0));
    Cont_Info : Casing_Context_Mapping_Sequence (Sequence_Index);
    Cont_Last : Sequence_Count := 0;
    Case_Seq  : Code_Point_Sequence (Sequence_Index);
@@ -84,6 +84,9 @@ procedure Gen_Cases (Source_Directory : String) is
 
    function Code_Point_Ada_Image (Item : Code_Point) return String;
    --  Returns image of code point.
+
+   function Sequence_Count_Image (Item : Sequence_Count) return String;
+   --  Returns image of Sequence count without leading space.
 
    procedure Put (File : Ada.Text_IO.File_Type; Item : Case_Mapping);
    --  Output code for specified item.
@@ -142,28 +145,47 @@ procedure Gen_Cases (Source_Directory : String) is
       end return;
    end Code_Point_Ada_Image;
 
+   ---------
+   -- Put --
+   ---------
+
    procedure Put (File : Ada.Text_IO.File_Type; Item : Case_Mapping) is
    begin
       Ada.Text_IO.Put
        (File,
         "((("
-          & Sequence_Count'Image (Item.Ranges (Lower).First)
-          & ","
-          & Sequence_Count'Image (Item.Ranges (Lower).Last)
+          & Sequence_Count_Image (Item.Ranges (Lower).First)
+          & ", "
+          & Sequence_Count_Image (Item.Ranges (Lower).Last)
           & "), ("
-          & Sequence_Count'Image (Item.Ranges (Upper).First)
-          & ","
-          & Sequence_Count'Image (Item.Ranges (Upper).Last)
+          & Sequence_Count_Image (Item.Ranges (Upper).First)
+          & ", "
+          & Sequence_Count_Image (Item.Ranges (Upper).Last)
           & "), ("
-          & Sequence_Count'Image (Item.Ranges (Title).First)
-          & ","
-          & Sequence_Count'Image (Item.Ranges (Title).Last)
-          & ")),"
-          & Sequence_Count'Image (Item.Context_First)
-          & ","
-          & Sequence_Count'Image (Item.Context_Last)
+          & Sequence_Count_Image (Item.Ranges (Title).First)
+          & ", "
+          & Sequence_Count_Image (Item.Ranges (Title).Last)
+          & "), ("
+          & Sequence_Count_Image (Item.Ranges (Folding).First)
+          & ", "
+          & Sequence_Count_Image (Item.Ranges (Folding).Last)
+          & ")), "
+          & Sequence_Count_Image (Item.Context_First)
+          & ", "
+          & Sequence_Count_Image (Item.Context_Last)
           & ")");
    end Put;
+
+   --------------------------
+   -- Sequence_Count_Image --
+   --------------------------
+
+   function Sequence_Count_Image (Item : Sequence_Count) return String is
+      Aux : constant String := Sequence_Count'Image (Item);
+
+   begin
+      return Aux (Aux'First + 1 .. Aux'Last);
+   end Sequence_Count_Image;
 
 begin
    Ada.Text_IO.Put_Line ("   ... " & Generated_Name);
@@ -231,6 +253,25 @@ begin
                 (Code_Point_Sequence'(1 => Cases (J).STM.C),
                  Case_Info (J).Ranges (Title).First,
                  Case_Info (J).Ranges (Title).Last);
+            end if;
+         end if;
+
+         if Cases (J).FCF /= null then
+            if Cases (J).FCF'Length /= 1
+              or else Cases (J).FCF (1) /= J
+            then
+               Append_Mapping
+                (Cases (J).FCF.all,
+                 Case_Info (J).Ranges (Folding).First,
+                 Case_Info (J).Ranges (Folding).Last);
+            end if;
+
+         else
+            if Cases (J).SCF.Present then
+               Append_Mapping
+                (Code_Point_Sequence'(1 => Cases (J).SCF.C),
+                 Case_Info (J).Ranges (Folding).First,
+                 Case_Info (J).Ranges (Folding).Last);
             end if;
          end if;
 
@@ -461,17 +502,17 @@ begin
           & ", "
           & Boolean_Image (Cont_Info (J).Negative).all
           & ", (("
-          & Sequence_Count'Image (Cont_Info (J).Ranges (Lower).First)
-          & ","
-          & Sequence_Count'Image (Cont_Info (J).Ranges (Lower).Last)
+          & Sequence_Count_Image (Cont_Info (J).Ranges (Lower).First)
+          & ", "
+          & Sequence_Count_Image (Cont_Info (J).Ranges (Lower).Last)
           & "), ("
-          & Sequence_Count'Image (Cont_Info (J).Ranges (Upper).First)
-          & ","
-          & Sequence_Count'Image (Cont_Info (J).Ranges (Upper).Last)
+          & Sequence_Count_Image (Cont_Info (J).Ranges (Upper).First)
+          & ", "
+          & Sequence_Count_Image (Cont_Info (J).Ranges (Upper).Last)
           & "), ("
-          & Sequence_Count'Image (Cont_Info (J).Ranges (Title).First)
-          & ","
-          & Sequence_Count'Image (Cont_Info (J).Ranges (Title).Last)
+          & Sequence_Count_Image (Cont_Info (J).Ranges (Title).First)
+          & ", "
+          & Sequence_Count_Image (Cont_Info (J).Ranges (Title).Last)
           & "))));");
    end loop;
 

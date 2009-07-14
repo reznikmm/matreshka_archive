@@ -45,6 +45,7 @@ package body Ucd_Data is
      := "auxiliary/SentenceBreakProperty.txt";
    LineBreak_Name             : constant String := "LineBreak.txt";
    SpecialCasing_Name         : constant String := "SpecialCasing.txt";
+   CaseFolding_Name           : constant String := "CaseFolding.txt";
 
    subtype Primary_Core_Boolean_Properties is Boolean_Properties
      range ASCII_Hex_Digit .. White_Space;
@@ -82,6 +83,10 @@ package body Ucd_Data is
 
    procedure Load_SpecialCasing (Unidata_Directory : String);
    --  Parse SpecialCasing.txt file and fill internal data structurs by the
+   --  parsed values.
+
+   procedure Load_CaseFolding (Unidata_Directory : String);
+   --  Parse CaseFolding.txt file and fill internal data structurs by the
    --  parsed values.
 
    procedure Compute_Casing_Properties;
@@ -157,9 +162,10 @@ package body Ucd_Data is
       Cases :=
         new Case_Values_Array'
              (others =>
-               (SUM | SLM | STM => (Present => False),
-                FUM | FLM | FTM =>
-                 (Default => null, others => (others => null))));
+               (SUM | SLM | STM | SCF => (Present => False),
+                FUM | FLM | FTM       =>
+                 (Default => null, others => (others => null)),
+                FCF                   => null));
 
       --  Load UnicodeData.txt, PropList.txt.
 
@@ -181,9 +187,10 @@ package body Ucd_Data is
       Load_SentenceBreakProperty (Unidata_Directory);
       Load_LineBreak (Unidata_Directory);
 
-      --  Load SpecialCasing.txt
+      --  Load SpecialCasing.txt, CaseFolding.txt
 
       Load_SpecialCasing (Unidata_Directory);
+      Load_CaseFolding (Unidata_Directory);
 
       --  Compute derived properties.
 
@@ -192,6 +199,53 @@ package body Ucd_Data is
       --  Verify data.
 
    end Load;
+
+   ----------------------
+   -- Load_CaseFolding --
+   ----------------------
+
+   procedure Load_CaseFolding (Unidata_Directory : String) is
+
+      type Case_Folding_Status is (C, F, S, T);
+
+      File   : Ucd_Input.File_Type;
+      Code   : Code_Point;
+      Status : Case_Folding_Status;
+
+   begin
+      Ada.Text_IO.Put_Line ("   ... " & CaseFolding_Name);
+
+      Ucd_Input.Open (File, Unidata_Directory & '/' & CaseFolding_Name);
+
+      while not Ucd_Input.End_Of_Data (File) loop
+         Code := Ucd_Input.First_Code_Point (File);
+
+         --  Status
+
+         Status := Case_Folding_Status'Value (Ucd_Input.Field (File));
+         Ucd_Input.Next_Field (File);
+
+         --  Mapping
+
+         case Status is
+            when C | S =>
+               Cases (Code).SCF := (True, 0);
+               Parse_Code_Point (Ucd_Input.Field (File), Cases (Code).SCF.C);
+
+            when F =>
+               Cases (Code).FCF :=
+                 new Code_Point_Sequence'
+                      (Parse_Code_Point_Sequence (Ucd_Input.Field (File)));
+
+            when T =>
+               Ada.Text_IO.Put_Line ("         Ignore mapping: T");
+         end case;
+
+         Ucd_Input.Next_Record (File);
+      end loop;
+
+      Ucd_Input.Close (File);
+   end Load_CaseFolding;
 
    --------------------------------
    -- Load_DerivedCoreProperties --

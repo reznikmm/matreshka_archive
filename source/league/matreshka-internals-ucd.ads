@@ -327,10 +327,13 @@ package Matreshka.Internals.Ucd is
       Last  : Sequence_Count;
    end record;
 
-   type Case_Mapping_Kinds is (Lower, Upper, Title);
+   type Case_Mapping_Kinds is (Lower, Upper, Title, Folding);
 
    type Case_Mapping_Ranges is
      array (Case_Mapping_Kinds) of Case_Mapping_Range;
+
+   type Casing_Context_Mapping_Ranges is
+     array (Case_Mapping_Kinds range Lower .. Title) of Case_Mapping_Range;
 
    type Case_Mapping is record
       Ranges        : Case_Mapping_Ranges;
@@ -341,7 +344,7 @@ package Matreshka.Internals.Ucd is
    type Casing_Context_Mapping is record
       Context  : Casing_Context;
       Negative : Boolean;
-      Ranges   : Case_Mapping_Ranges;
+      Ranges   : Casing_Context_Mapping_Ranges;
    end record;
 
    type Case_Mapping_Second_Stage is
