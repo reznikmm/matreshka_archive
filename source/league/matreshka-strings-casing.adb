@@ -127,7 +127,29 @@ package body Matreshka.Strings.Casing is
       ---------------------------------------
 
       function Is_Followed_By_Before_Dot_Context return Boolean is
+         Current : Natural := Source_Current;
+         Code    : Code_Point;
+
       begin
+         while Current <= Source_Last loop
+            Unchecked_Next (Source, Current, Code);
+
+            declare
+               R : constant Core_Values
+                 := Locale.Core
+                     (First_Stage_Index (Code / 16#100#))
+                     (Second_Stage_Index (Code mod 16#100#));
+
+            begin
+               if R.CCC = 0 or else R.CCC = 230 then
+                  return False;
+
+               elsif Code = 16#0307# then
+                  return True;
+               end if;
+            end;
+         end loop;
+
          return False;
       end Is_Followed_By_Before_Dot_Context;
 
@@ -136,7 +158,29 @@ package body Matreshka.Strings.Casing is
       ---------------------------------------
 
       function Is_Followed_By_More_Above_Context return Boolean is
+         Current : Natural := Source_Current;
+         Code    : Code_Point;
+
       begin
+         while Current <= Source_Last loop
+            Unchecked_Next (Source, Current, Code);
+
+            declare
+               R : constant Core_Values
+                 := Locale.Core
+                     (First_Stage_Index (Code / 16#100#))
+                     (Second_Stage_Index (Code mod 16#100#));
+
+            begin
+               if R.CCC = 0 then
+                  return False;
+
+               elsif R.CCC = 230 then
+                  return True;
+               end if;
+            end;
+         end loop;
+
          return False;
       end Is_Followed_By_More_Above_Context;
 
@@ -173,7 +217,31 @@ package body Matreshka.Strings.Casing is
       ------------------------------------
 
       function Is_Preceded_By_After_I_Context return Boolean is
+         Current : Natural := Source_Current;
+         Code    : Code_Point;
+
       begin
+         Unchecked_Previous (Source, Current, Code);
+
+         while Current > 1 loop
+            Unchecked_Previous (Source, Current, Code);
+
+            declare
+               R : constant Core_Values
+                 := Locale.Core
+                     (First_Stage_Index (Code / 16#100#))
+                     (Second_Stage_Index (Code mod 16#100#));
+
+            begin
+               if R.CCC = 0 or else R.CCC = 230 then
+                  return False;
+
+               elsif Code = Wide_Wide_Character'Pos ('I') then
+                  return True;
+               end if;
+            end;
+         end loop;
+
          return False;
       end Is_Preceded_By_After_I_Context;
 
@@ -182,7 +250,31 @@ package body Matreshka.Strings.Casing is
       ----------------------------------------------
 
       function Is_Preceded_By_After_Soft_Dotted_Context return Boolean is
+         Current : Natural := Source_Current;
+         Code    : Code_Point;
+
       begin
+         Unchecked_Previous (Source, Current, Code);
+
+         while Current > 1 loop
+            Unchecked_Previous (Source, Current, Code);
+
+            declare
+               R : constant Core_Values
+                 := Locale.Core
+                     (First_Stage_Index (Code / 16#100#))
+                     (Second_Stage_Index (Code mod 16#100#));
+
+            begin
+               if R.CCC = 0 or else R.CCC = 230 then
+                  return False;
+
+               elsif R.B (Soft_Dotted) then
+                  return True;
+               end if;
+            end;
+         end loop;
+
          return False;
       end Is_Preceded_By_After_Soft_Dotted_Context;
 
