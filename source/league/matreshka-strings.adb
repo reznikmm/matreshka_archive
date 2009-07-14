@@ -537,6 +537,10 @@ package body Matreshka.Strings is
       Locale : Matreshka.Internals.Locales.Locale_Data_Access;
 
    begin
+      if Self.Data.Length = 0 then
+         return Universal_String (Self);
+      end if;
+
       return Result : Universal_String
         := Universal_String'
             (Ada.Finalization.Controlled with
@@ -575,6 +579,10 @@ package body Matreshka.Strings is
       Locale : Matreshka.Internals.Locales.Locale_Data_Access;
 
    begin
+      if Self.Data.Length = 0 then
+         return Universal_String (Self);
+      end if;
+
       return Result : Universal_String
         := Universal_String'
             (Ada.Finalization.Controlled with
