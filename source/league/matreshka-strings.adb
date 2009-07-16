@@ -188,7 +188,7 @@ package body Matreshka.Strings is
    -- Adjust --
    ------------
 
-   overriding procedure Adjust (Self : in out Abstract_Cursor) is
+   overriding procedure Adjust (Self : in out Abstract_Modify_Cursor) is
    begin
       if Self.Data /= null then
          Matreshka.Internals.Atomics.Counters.Increment
@@ -218,7 +218,7 @@ package body Matreshka.Strings is
    ------------
 
    procedure Attach
-    (Self : in out Abstract_Cursor'Class;
+    (Self : in out Abstract_Modify_Cursor'Class;
      Item : in out Universal_String'Class)
    is
       Aux : String_Private_Data_Access;
@@ -445,7 +445,7 @@ package body Matreshka.Strings is
    -- Finalize --
    --------------
 
-   overriding procedure Finalize (Self : in out Abstract_Cursor) is
+   overriding procedure Finalize (Self : in out Abstract_Modify_Cursor) is
    begin
       Dereference (Self.Data, Self'Unchecked_Access);
    end Finalize;
@@ -484,7 +484,7 @@ package body Matreshka.Strings is
    ----------------
 
    not overriding procedure On_Changed
-    (Self           : not null access Abstract_Cursor;
+    (Self           : not null access Abstract_Modify_Cursor;
      Changed_First  : Positive;
      Removed_Last   : Natural;
      Inserted_Last  : Natural)

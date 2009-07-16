@@ -175,8 +175,8 @@ private
 
    type Index_Map_Access is access all Index_Map;
 
-   type Abstract_Cursor is tagged;
-   type Cursor_Access is access all Abstract_Cursor'Class;
+   type Abstract_Modify_Cursor is tagged;
+   type Cursor_Access is access all Abstract_Modify_Cursor'Class;
 
    type String_Private_Data is limited record
       Counter    : aliased Matreshka.Internals.Atomics.Counters.Counter;
@@ -205,6 +205,8 @@ private
       --  Is built on-demand.
 
       Cursors    : Cursor_Access := null;
+      pragma Atomic (Cursors);
+      pragma Volatile (Cursors);
       --  List of iterators.
    end record;
 
@@ -260,7 +262,7 @@ private
    -- Abstract_Cursor --
    ---------------------
 
-   type Abstract_Cursor is
+   type Abstract_Modify_Cursor is
      abstract new Ada.Finalization.Controlled with
    record
       Data : String_Private_Data_Access := null;
@@ -268,7 +270,7 @@ private
    end record;
 
    not overriding procedure On_Changed
-    (Self          : not null access Abstract_Cursor;
+    (Self          : not null access Abstract_Modify_Cursor;
      Changed_First : Positive;
      Removed_Last  : Natural;
      Inserted_Last : Natural);
@@ -276,13 +278,13 @@ private
    --  units. Default implementation invalidate iterator.
 
    procedure Attach
-    (Self : in out Abstract_Cursor'Class;
+    (Self : in out Abstract_Modify_Cursor'Class;
      Item : in out Universal_String'Class);
    --  Attaches iterator to the specified string. Exclusive copy of the string
    --  is created if needed.
 
-   overriding procedure Adjust (Self : in out Abstract_Cursor);
+   overriding procedure Adjust (Self : in out Abstract_Modify_Cursor);
 
-   overriding procedure Finalize (Self : in out Abstract_Cursor);
+   overriding procedure Finalize (Self : in out Abstract_Modify_Cursor);
 
 end Matreshka.Strings;

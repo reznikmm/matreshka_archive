@@ -40,20 +40,24 @@ package body Matreshka.Strings.Cursors is
    -- Finalize --
    --------------
 
-   overriding procedure Finalize (Self : in out Abstract_Tailored_Cursor) is
+   overriding procedure Finalize
+    (Self : in out Abstract_Tailored_Modify_Cursor)
+   is
    begin
       if Self.Locale /= null then
          Matreshka.Internals.Locales.Dereference (Self.Locale);
       end if;
 
-      Abstract_Cursor (Self).Finalize;
+      Abstract_Modify_Cursor (Self).Finalize;
    end Finalize;
 
    ----------------
    -- Set_Locale --
    ----------------
 
-   procedure Set_Locale (Self : in out Abstract_Tailored_Cursor'Class) is
+   procedure Set_Locale
+    (Self : in out Abstract_Tailored_Modify_Cursor'Class)
+   is
    begin
       if Self.Locale /= null then
          Matreshka.Internals.Locales.Dereference (Self.Locale);

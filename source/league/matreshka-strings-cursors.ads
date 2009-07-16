@@ -39,13 +39,16 @@ package Matreshka.Strings.Cursors is
 
 private
 
-   type Abstract_Tailored_Cursor is abstract new Abstract_Cursor with record
+   type Abstract_Tailored_Modify_Cursor is
+     abstract new Abstract_Modify_Cursor with
+   record
       Locale : Matreshka.Internals.Locales.Locale_Data_Access;
    end record;
 
-   procedure Set_Locale (Self : in out Abstract_Tailored_Cursor'Class);
+   procedure Set_Locale (Self : in out Abstract_Tailored_Modify_Cursor'Class);
    --  Set current locale.
 
-   overriding procedure Finalize (Self : in out Abstract_Tailored_Cursor);
+   overriding procedure Finalize
+    (Self : in out Abstract_Tailored_Modify_Cursor);
 
 end Matreshka.Strings.Cursors;
