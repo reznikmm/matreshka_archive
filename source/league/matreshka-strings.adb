@@ -303,10 +303,10 @@ package body Matreshka.Strings is
 
    procedure Dereference
     (Self   : in out String_Private_Data_Access;
-     Cursor : not null Cursor_Access)
+     Cursor : not null Modify_Cursor_Access)
    is
-      Previous : Cursor_Access := null;
-      Current  : Cursor_Access;
+      Previous : Modify_Cursor_Access := null;
+      Current  : Modify_Cursor_Access;
 
    begin
       if Self /= null then
@@ -420,13 +420,13 @@ package body Matreshka.Strings is
 
    procedure Emit_Changed
     (Self          : not null String_Private_Data_Access;
-     Cursor        : not null Cursor_Access;
+     Cursor        : not null Modify_Cursor_Access;
      Changed_First : Positive;
      Removed_Last  : Natural;
      Inserted_Last : Natural)
    is
-      Current : Cursor_Access := Self.Cursors;
-      Next    : Cursor_Access := Current.Next;
+      Current : Modify_Cursor_Access := Self.Cursors;
+      Next    : Modify_Cursor_Access := Current.Next;
 
    begin
       loop
