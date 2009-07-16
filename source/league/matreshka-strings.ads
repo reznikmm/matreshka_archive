@@ -277,7 +277,7 @@ private
 
    procedure Attach
     (Self : in out Abstract_Cursor'Class;
-     Item : in out Universal_String);
+     Item : in out Universal_String'Class);
    --  Attaches iterator to the specified string. Exclusive copy of the string
    --  is created if needed.
 

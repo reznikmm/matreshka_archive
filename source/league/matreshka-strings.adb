@@ -219,7 +219,7 @@ package body Matreshka.Strings is
 
    procedure Attach
     (Self : in out Abstract_Cursor'Class;
-     Item : in out Universal_String)
+     Item : in out Universal_String'Class)
    is
       Aux : String_Private_Data_Access;
 
