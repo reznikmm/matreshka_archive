@@ -121,18 +121,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
       begin
          S.all := D.Value (Self.Current_Position .. Self.Next_Position - 1);
 
-         return
-           Universal_String'
-            (Ada.Finalization.Controlled with
-               Data =>
-                 new String_Private_Data'
-                      (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                       Value      => S,
-                       Last       => L,
-                       Length     => Self.Current_Length,
-                       Index_Mode => D.Index_Mode,
-                       Index_Map  => null,
-                       Cursors  => null));
+         return Constructors.Create (S, L, Self.Current_Length, D.Index_Mode);
       end;
    end Element;
 

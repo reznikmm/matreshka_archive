@@ -126,22 +126,12 @@ package body Matreshka.Strings is
 
       else
          return
-           Universal_String'
-            (Ada.Finalization.Controlled with
-               Data =>
-                 new String_Private_Data'
-                      (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                       Value      =>
-                         new Utf16_String'
-                              (L_D.Value (1 .. L_D.Last)
-                                 & R_D.Value (1 .. R_D.Last)),
-                       Last       => L_D.Last + R_D.Last,
-                       Length     => L_D.Length + R_D.Length,
-                       Index_Mode =>
-                         Index_Mode_After_Concatenation
-                          (L_D.Index_Mode, R_D.Index_Mode),
-                       Index_Map  => null,
-                       Cursors    => null));
+           Constructors.Create
+            (new Utf16_String'
+                  (L_D.Value (1 .. L_D.Last) & R_D.Value (1 .. R_D.Last)),
+             L_D.Last + R_D.Last,
+             L_D.Length + R_D.Length,
+             Index_Mode_After_Concatenation (L_D.Index_Mode, R_D.Index_Mode));
       end if;
    end "&";
 
@@ -170,18 +160,7 @@ package body Matreshka.Strings is
       Index_Mode := L_D.Index_Mode;
       Unchecked_Append (Value, Last, Index_Mode, Right);
 
-      return
-        Universal_String'
-         (Ada.Finalization.Controlled with
-            Data =>
-              new String_Private_Data'
-                   (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                    Value      => Value,
-                    Last       => Last,
-                    Length     => L_D.Length + 1,
-                    Index_Mode => Index_Mode,
-                    Index_Map  => null,
-                    Cursors    => null));
+      return Constructors.Create (Value, Last, L_D.Length + 1, Index_Mode);
    end "&";
 
    ------------
@@ -247,6 +226,58 @@ package body Matreshka.Strings is
       Self.Data.Cursors := Self'Unchecked_Access;
    end Attach;
 
+   ------------------
+   -- Constructors --
+   ------------------
+
+   package body Constructors is
+
+      ------------
+      -- Create --
+      ------------
+
+      function Create
+       (Value      : not null Utf16_String_Access;
+        Last       : Natural;
+        Length     : Natural;
+        Index_Mode : Index_Modes)
+          return Universal_String
+      is
+      begin
+         return
+           Universal_String'
+            (Ada.Finalization.Controlled with
+               Data => Create (Value, Last, Length, Index_Mode));
+      end Create;
+
+      ------------
+      -- Create --
+      ------------
+
+      function Create
+       (Value      : not null Utf16_String_Access;
+        Last       : Natural;
+        Length     : Natural;
+        Index_Mode : Index_Modes)
+          return not null String_Private_Data_Access
+      is
+      begin
+         return Result : constant not null String_Private_Data_Access
+           := new String_Private_Data'
+                   (Counter    => Matreshka.Internals.Atomics.Counters.One,
+                    Value      => Value,
+                    Last       => Last,
+                    Length     => Length,
+                    Index_Mode => Index_Mode,
+                    Index_Map  => null,
+                    Cursors    => null)
+         do
+            null;
+         end return;
+      end Create;
+
+   end Constructors;
+
    ----------
    -- Copy --
    ----------
@@ -256,14 +287,11 @@ package body Matreshka.Strings is
    is
    begin
       return Result : not null String_Private_Data_Access
-        := new String_Private_Data'
-                (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                 Value      => new Utf16_String' (Source.Value.all),
-                 Last       => Source.Last,
-                 Length     => Source.Length,
-                 Index_Mode => Source.Index_Mode,
-                 Index_Map  => null,
-                 Cursors    => null)
+        := Constructors.Create
+            (new Utf16_String'(Source.Value.all),
+             Source.Last,
+             Source.Length,
+             Source.Index_Mode)
       do
          if Source.Index_Map /= null then
             Result.Index_Map := new Index_Map'(Source.Index_Map.all);
@@ -516,15 +544,7 @@ package body Matreshka.Strings is
 
       Dereference (Item.Data);
 
-      Item.Data :=
-        new String_Private_Data'
-             (Counter    => Matreshka.Internals.Atomics.Counters.One,
-              Value      => Value,
-              Last       => Last,
-              Length     => Length,
-              Index_Mode => Undefined,
-              Index_Map  => null,
-              Cursors    => null);
+      Item.Data := Constructors.Create (Value, Last, Length, Undefined);
    end Read;
 
    -----------------
@@ -534,35 +554,35 @@ package body Matreshka.Strings is
    function To_Casefold (Self : Universal_String'Class)
      return Universal_String
    is
-      Locale : Matreshka.Internals.Locales.Locale_Data_Access;
-
    begin
-      return Result : Universal_String
-        := Universal_String'
-            (Ada.Finalization.Controlled with
-               Data =>
-                 new String_Private_Data'
-                      (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                       Value      => new Utf16_String (1 .. 0),
-                       Last       => 0,
-                       Length     => 0,
-                       Index_Mode => Undefined,
-                       Index_Map  => null,
-                       Cursors    => null))
-      do
-         Locale := Matreshka.Internals.Locales.Get_Locale;
+      if Self.Data.Length = 0 then
+         return Universal_String (Self);
+      end if;
+
+      declare
+         Locale     : Matreshka.Internals.Locales.Locale_Data_Access
+           := Matreshka.Internals.Locales.Get_Locale;
+         Value      : Utf16_String_Access
+           := new Utf16_String (1 .. Self.Data.Last);
+         Last       : Natural     := 0;
+         Length     : Natural     := 0;
+         Index_Mode : Index_Modes := Undefined;
+
+      begin
          Matreshka.Strings.Casing.Convert_Case
           (Locale,
            Self.Data.Value.all,
            Self.Data.Last,
            Matreshka.Internals.Ucd.Folding,
            Matreshka.Internals.Ucd.Has_Case_Folding,
-           Result.Data.Value,
-           Result.Data.Last,
-           Result.Data.Length,
-           Result.Data.Index_Mode);
+           Value,
+           Last,
+           Length,
+           Index_Mode);
          Matreshka.Internals.Locales.Dereference (Locale);
-      end return;
+
+         return Constructors.Create (Value, Last, Length, Index_Mode);
+      end;
    end To_Casefold;
 
    ------------------
@@ -572,39 +592,35 @@ package body Matreshka.Strings is
    function To_Lowercase (Self : Universal_String'Class)
      return Universal_String
    is
-      Locale : Matreshka.Internals.Locales.Locale_Data_Access;
-
    begin
       if Self.Data.Length = 0 then
          return Universal_String (Self);
       end if;
 
-      return Result : Universal_String
-        := Universal_String'
-            (Ada.Finalization.Controlled with
-               Data =>
-                 new String_Private_Data'
-                      (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                       Value      => new Utf16_String (1 .. 0),
-                       Last       => 0,
-                       Length     => 0,
-                       Index_Mode => Undefined,
-                       Index_Map  => null,
-                       Cursors    => null))
-      do
-         Locale := Matreshka.Internals.Locales.Get_Locale;
+      declare
+         Locale     : Matreshka.Internals.Locales.Locale_Data_Access
+           := Matreshka.Internals.Locales.Get_Locale;
+         Value      : Utf16_String_Access
+           := new Utf16_String (1 .. Self.Data.Last);
+         Last       : Natural     := 0;
+         Length     : Natural     := 0;
+         Index_Mode : Index_Modes := Undefined;
+
+      begin
          Matreshka.Strings.Casing.Convert_Case
           (Locale,
            Self.Data.Value.all,
            Self.Data.Last,
            Matreshka.Internals.Ucd.Lower,
            Matreshka.Internals.Ucd.Has_Lowercase_Mapping,
-           Result.Data.Value,
-           Result.Data.Last,
-           Result.Data.Length,
-           Result.Data.Index_Mode);
+           Value,
+           Last,
+           Length,
+           Index_Mode);
          Matreshka.Internals.Locales.Dereference (Locale);
-      end return;
+
+         return Constructors.Create (Value, Last, Length, Index_Mode);
+      end;
    end To_Lowercase;
 
    ------------------
@@ -614,39 +630,35 @@ package body Matreshka.Strings is
    function To_Uppercase (Self : Universal_String'Class)
      return Universal_String
    is
-      Locale : Matreshka.Internals.Locales.Locale_Data_Access;
-
    begin
       if Self.Data.Length = 0 then
          return Universal_String (Self);
       end if;
 
-      return Result : Universal_String
-        := Universal_String'
-            (Ada.Finalization.Controlled with
-               Data =>
-                 new String_Private_Data'
-                      (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                       Value      => new Utf16_String (1 .. 0),
-                       Last       => 0,
-                       Length     => 0,
-                       Index_Mode => Undefined,
-                       Index_Map  => null,
-                       Cursors    => null))
-      do
-         Locale := Matreshka.Internals.Locales.Get_Locale;
+      declare
+         Locale     : Matreshka.Internals.Locales.Locale_Data_Access
+           := Matreshka.Internals.Locales.Get_Locale;
+         Value      : Utf16_String_Access
+           := new Utf16_String (1 .. Self.Data.Last);
+         Last       : Natural     := 0;
+         Length     : Natural     := 0;
+         Index_Mode : Index_Modes := Undefined;
+
+      begin
          Matreshka.Strings.Casing.Convert_Case
           (Locale,
            Self.Data.Value.all,
            Self.Data.Last,
            Matreshka.Internals.Ucd.Upper,
            Matreshka.Internals.Ucd.Has_Uppercase_Mapping,
-           Result.Data.Value,
-           Result.Data.Last,
-           Result.Data.Length,
-           Result.Data.Index_Mode);
+           Value,
+           Last,
+           Length,
+           Index_Mode);
          Matreshka.Internals.Locales.Dereference (Locale);
-      end return;
+
+         return Constructors.Create (Value, Last, Length, Index_Mode);
+      end;
    end To_Uppercase;
 
    ---------------------
@@ -770,18 +782,7 @@ package body Matreshka.Strings is
 
       To_Utf16_String (Item, Value, Last, Index_Mode);
 
-      return
-        Universal_String'
-         (Ada.Finalization.Controlled with
-            Data =>
-              new String_Private_Data'
-                   (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                    Value      => Value,
-                    Last       => Last,
-                    Length     => Item'Length,
-                    Index_Mode => Index_Mode,
-                    Index_Map  => null,
-                    Cursors    => null));
+      return Constructors.Create (Value, Last, Item'Length, Index_Mode);
    end To_Universal_String;
 
    ----------------------------

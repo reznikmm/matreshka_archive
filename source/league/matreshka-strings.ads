@@ -205,8 +205,6 @@ private
       --  Is built on-demand.
 
       Cursors    : Modify_Cursor_Access := null;
-      pragma Atomic (Cursors);
-      pragma Volatile (Cursors);
       --  List of iterators.
    end record;
 
@@ -257,6 +255,26 @@ private
    --  String indexing mode for the string. First index must be True is string
    --  contains BMP characters, second index must be True is string contains
    --  non-BMP characters.
+
+   package Constructors is
+
+      function Create
+       (Value      : not null Utf16_String_Access;
+        Last       : Natural;
+        Length     : Natural;
+        Index_Mode : Index_Modes)
+          return Universal_String;
+      --  Creates instance of Universal_String with specified parameters.
+
+      function Create
+       (Value      : not null Utf16_String_Access;
+        Last       : Natural;
+        Length     : Natural;
+        Index_Mode : Index_Modes)
+          return not null String_Private_Data_Access;
+      --  Creates internal data structure with specified parameters.
+
+   end Constructors;
 
    ---------------------
    -- Abstract_Cursor --
