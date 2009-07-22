@@ -31,48 +31,66 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Conversion;
 
-project Matreshka_League is
+with Matreshka.Internals.Host_Types;
 
-   for Source_Dirs use
-    ("../source/league",
-     "../source/league/ucd");
-   for Object_Dir use "../.objs";
+package body Matreshka.Internals.Markable_Address_Utilities is
 
-   package Compiler is
+   use Matreshka.Internals.Host_Types;
 
-      for Default_Switches ("Ada")
-        use ("-g", "-O2", "-gnat05", "-gnata", "-gnatn");
+   type Pointer is mod 2 ** Address_Size;
+   for Pointer'Size use Address_Size;
 
-   end Compiler;
+   function Convert is
+     new Ada.Unchecked_Conversion (System.Address, Pointer);
 
-   package Naming is
+   function Convert is
+     new Ada.Unchecked_Conversion (Pointer, System.Address);
 
-      --  Matreshka.Internals.Atomics.Counters
+   ---------------
+   -- Is_Marked --
+   ---------------
 
---      for Implementation ("Matreshka.Internals.Atomics.Counters")
---        use "matreshka-internals-atomics-counters__portable.adb";
---      for Implementation ("Matreshka.Internals.Atomics.Counters")
---        use "matreshka-internals-atomics-counters__i386.adb";
-      for Implementation ("Matreshka.Internals.Atomics.Counters")
-        use "matreshka-internals-atomics-counters__gcc.adb";
+   function Is_Marked (Value : System.Address) return Boolean is
+   begin
+      return (Convert (Value) and Address_Mark_Bit) /= 0;
+   end Is_Marked;
 
-      --  Matreshka.Internals.Atomics.Generic_Test_And_Set
+   ----------
+   -- Mark --
+   ----------
 
---      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
---        use "matreshka-internals-atomics-generic_test_and_set__portable.adb";
---      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
---        use "matreshka-internals-atomics-generic_test_and_set__x86_64.adb";
-      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
-        use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+   procedure Mark (Value : in out System.Address) is
+   begin
+      Value := Convert (Convert (Value) or Address_Mark_Bit);
+   end Mark;
 
-      --  Matreshka.Internals.Host_Types
+   ---------------
+   -- To_Marked --
+   ---------------
 
---      for Implementation ("Matreshka.Internals.Host_Types")
---        use "matreshka-internals-host_types__32.ads";
-      for Specification ("Matreshka.Internals.Host_Types")
-        use "matreshka-internals-host_types__64.ads";
+   function To_Marked (Value : System.Address) return System.Address is
+   begin
+      return Convert (Convert (Value) or Address_Mark_Bit);
+   end To_Marked;
 
-   end Naming;
+   -----------------
+   -- To_Unmarked --
+   -----------------
 
-end Matreshka_League;
+   function To_Unmarked (Value : System.Address) return System.Address is
+   begin
+      return Convert (Convert (Value) and Address_Mark_Mask);
+   end To_Unmarked;
+
+   ------------
+   -- Unmark --
+   ------------
+
+   procedure Unmark (Value : in out System.Address) is
+   begin
+      Value := Convert (Convert (Value) and Address_Mark_Mask);
+   end Unmark;
+
+end Matreshka.Internals.Markable_Address_Utilities;

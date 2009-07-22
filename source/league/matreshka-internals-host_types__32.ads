@@ -31,48 +31,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with System;
 
-project Matreshka_League is
+package Matreshka.Internals.Host_Types is
 
-   for Source_Dirs use
-    ("../source/league",
-     "../source/league/ucd");
-   for Object_Dir use "../.objs";
+   pragma Pure;
 
-   package Compiler is
+   --  System.Address'Size (it is not a static value, thus can't be used in
+   --  the constant declaration) as well as lower bit and its mask to be used
+   --  by markable addresses.
 
-      for Default_Switches ("Ada")
-        use ("-g", "-O2", "-gnat05", "-gnata", "-gnatn");
+   Address_Size      : constant := 32;
+   pragma Assert (System.Address'Size = Address_Size);
 
-   end Compiler;
+   Address_Mark_Bit  : constant := 16#0000_0001#;
+   Address_Mark_Mask : constant := 16#FFFF_FFFE#;
 
-   package Naming is
-
-      --  Matreshka.Internals.Atomics.Counters
-
---      for Implementation ("Matreshka.Internals.Atomics.Counters")
---        use "matreshka-internals-atomics-counters__portable.adb";
---      for Implementation ("Matreshka.Internals.Atomics.Counters")
---        use "matreshka-internals-atomics-counters__i386.adb";
-      for Implementation ("Matreshka.Internals.Atomics.Counters")
-        use "matreshka-internals-atomics-counters__gcc.adb";
-
-      --  Matreshka.Internals.Atomics.Generic_Test_And_Set
-
---      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
---        use "matreshka-internals-atomics-generic_test_and_set__portable.adb";
---      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
---        use "matreshka-internals-atomics-generic_test_and_set__x86_64.adb";
-      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
-        use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
-
-      --  Matreshka.Internals.Host_Types
-
---      for Implementation ("Matreshka.Internals.Host_Types")
---        use "matreshka-internals-host_types__32.ads";
-      for Specification ("Matreshka.Internals.Host_Types")
-        use "matreshka-internals-host_types__64.ads";
-
-   end Naming;
-
-end Matreshka_League;
+end Matreshka.Internals.Host_Types;

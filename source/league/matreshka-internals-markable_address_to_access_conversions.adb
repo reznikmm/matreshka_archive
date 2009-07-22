@@ -31,48 +31,43 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with System.Address_To_Access_Conversions;
 
-project Matreshka_League is
+with Matreshka.Internals.Markable_Address_Utilities;
 
-   for Source_Dirs use
-    ("../source/league",
-     "../source/league/ucd");
-   for Object_Dir use "../.objs";
+package body Matreshka.Internals.Markable_Address_To_Access_Conversions is
 
-   package Compiler is
+   use Matreshka.Internals.Markable_Address_Utilities;
 
-      for Default_Switches ("Ada")
-        use ("-g", "-O2", "-gnat05", "-gnata", "-gnatn");
+   package Conversions is new System.Address_To_Access_Conversions (Object); 
 
-   end Compiler;
+   ----------------
+   -- To_Address --
+   ----------------
 
-   package Naming is
+   function To_Address (Value : Object_Pointer) return System.Address is
+   begin
+      return Conversions.To_Address (Conversions.Object_Pointer (Value));
+   end To_Address;
 
-      --  Matreshka.Internals.Atomics.Counters
+   -----------------------
+   -- To_Marked_Address --
+   -----------------------
 
---      for Implementation ("Matreshka.Internals.Atomics.Counters")
---        use "matreshka-internals-atomics-counters__portable.adb";
---      for Implementation ("Matreshka.Internals.Atomics.Counters")
---        use "matreshka-internals-atomics-counters__i386.adb";
-      for Implementation ("Matreshka.Internals.Atomics.Counters")
-        use "matreshka-internals-atomics-counters__gcc.adb";
+   function To_Marked_Address (Value : Object_Pointer) return System.Address is
+   begin
+      return
+        To_Marked
+         (Conversions.To_Address (Conversions.Object_Pointer (Value)));
+   end To_Marked_Address;
 
-      --  Matreshka.Internals.Atomics.Generic_Test_And_Set
+   ----------------
+   -- To_Pointer --
+   ----------------
 
---      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
---        use "matreshka-internals-atomics-generic_test_and_set__portable.adb";
---      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
---        use "matreshka-internals-atomics-generic_test_and_set__x86_64.adb";
-      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
-        use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+   function To_Pointer (Value : System.Address) return Object_Pointer is
+   begin
+      return Object_Pointer (Conversions.To_Pointer (To_Unmarked (Value)));
+   end To_Pointer;
 
-      --  Matreshka.Internals.Host_Types
-
---      for Implementation ("Matreshka.Internals.Host_Types")
---        use "matreshka-internals-host_types__32.ads";
-      for Specification ("Matreshka.Internals.Host_Types")
-        use "matreshka-internals-host_types__64.ads";
-
-   end Naming;
-
-end Matreshka_League;
+end Matreshka.Internals.Markable_Address_To_Access_Conversions;
