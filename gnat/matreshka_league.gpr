@@ -70,8 +70,8 @@ project Matreshka_League is
 
 --      for Implementation ("Matreshka.Internals.Host_Types")
 --        use "matreshka-internals-host_types__32.ads";
-      for Specification ("Matreshka.Internals.Host_Types")
-        use "matreshka-internals-host_types__64.ads";
+--      for Specification ("Matreshka.Internals.Host_Types")
+--        use "matreshka-internals-host_types__64.ads";
 
    end Naming;
 
