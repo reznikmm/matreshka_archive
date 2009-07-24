@@ -31,6 +31,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Deallocation;
+
 with Matreshka.Internals.Atomics.Generic_Test_And_Set;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Ucd;
@@ -39,6 +41,7 @@ with Matreshka.Strings.Casing;
 
 package body Matreshka.Strings is
 
+   use Matreshka.Internals.Strings;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
 
@@ -51,10 +54,10 @@ package body Matreshka.Strings is
 
    procedure To_Utf16_String
     (Source      : Wide_Wide_String;
-     Destination : out String_Private_Data_Access);
+     Destination : out Internal_String_Access);
 
    procedure Unchecked_Append
-    (Data : in out String_Private_Data;
+    (Data : in out Internal_String;
      Item : Wide_Wide_Character);
 
    procedure Attach (Self : in out Abstract_Cursor'Class);
@@ -64,8 +67,7 @@ package body Matreshka.Strings is
    --  Detaches cursor from the list of cursors of Universal_String. Also
    --  reset associated object to null.
 
-   Shared_Empty : aliased String_Private_Data
-     := (Max_Length => 0, others => <>);
+   Shared_Empty : aliased Internal_String := (Max_Length => 0, others => <>);
 
    Index_Mode_After_Concatenation : constant
      array (Index_Modes, Index_Modes) of Index_Modes
@@ -106,8 +108,8 @@ package body Matreshka.Strings is
      Right : Universal_String'Class)
        return Universal_String
    is
-      L_D : constant not null String_Private_Data_Access := Left.Data;
-      R_D : constant not null String_Private_Data_Access := Right.Data;
+      L_D : constant not null Internal_String_Access := Left.Data;
+      R_D : constant not null Internal_String_Access := Right.Data;
 
    begin
       if L_D.Length = 0 then
@@ -118,8 +120,8 @@ package body Matreshka.Strings is
 
       else
          declare
-            D : constant String_Private_Data_Access
-              := new String_Private_Data (L_D.Last + R_D.Last);
+            D : constant Internal_String_Access
+              := new Internal_String (L_D.Last + R_D.Last);
 
          begin
             D.Value (1 .. L_D.Last) := L_D.Value (1 .. L_D.Last);
@@ -144,7 +146,7 @@ package body Matreshka.Strings is
      Right : Wide_Wide_Character)
        return Universal_String
    is
-      L_D : constant not null String_Private_Data_Access := Left.Data;
+      L_D : constant not null Internal_String_Access := Left.Data;
 
    begin
       if not Is_Valid_Unicode_Code_Point (Wide_Wide_Character'Pos (Right)) then
@@ -152,13 +154,13 @@ package body Matreshka.Strings is
       end if;
 
       declare
-         D : constant not null String_Private_Data_Access
-           := new String_Private_Data (L_D.Last + 2);
+         D : constant not null Internal_String_Access
+           := new Internal_String (L_D.Last + 2);
 
       begin
          D.Value (1 .. L_D.Last) := L_D.Value (1 .. L_D.Last);
-         D.Last       := L_D.Last;
-         D.Index_Mode := L_D.Index_Mode;
+         D.Last                  := L_D.Last;
+         D.Index_Mode            := L_D.Index_Mode;
          Unchecked_Append (D.all, Right);
 
          return Constructors.Create (D);
@@ -229,9 +231,8 @@ package body Matreshka.Strings is
       -- Create --
       ------------
 
-      function Create
-       (Data : not null String_Private_Data_Access)
-          return Universal_String
+      function Create (Data : not null Internal_String_Access)
+        return Universal_String
       is
       begin
          return Result : Universal_String
@@ -258,7 +259,7 @@ package body Matreshka.Strings is
       begin
          return
            Create
-            (new String_Private_Data'
+            (new Internal_String'
                   (Max_Length => Value'Length,
                    Counter    => Matreshka.Internals.Atomics.Counters.One,
                    Value      => Value,
@@ -290,27 +291,6 @@ package body Matreshka.Strings is
 --         end if;
 --      end return;
 --   end Copy;
-
-   -----------------
-   -- Dereference --
-   -----------------
-
-   procedure Dereference (Self : in out String_Private_Data_Access) is
-   begin
-      if Self /= null then
-         if Matreshka.Internals.Atomics.Counters.Decrement
-             (Self.Counter'Access)
-         then
-            pragma Assert (Self /= Shared_Empty'Access);
-
-            Free (Self.Index_Map);
-            Free (Self);
-
-         else
-            Self := null;
-         end if;
-      end if;
-   end Dereference;
 
    ------------
    -- Detach --
@@ -358,7 +338,7 @@ package body Matreshka.Strings is
      Index : Positive)
        return Wide_Wide_Character
    is
-      D : constant String_Private_Data_Access := Self.Data;
+      D : constant Internal_String_Access := Self.Data;
 
    begin
       if Index > D.Length then
@@ -530,7 +510,7 @@ package body Matreshka.Strings is
 
       Dereference (Item.Data);
 
-      Item.Data := new String_Private_Data (Last);
+      Item.Data := new Internal_String (Last);
       Utf16_String'Read (Stream, Item.Data.Value);
       Item.Data.Last := Last;
       Item.Data.Length := Length;
@@ -552,8 +532,8 @@ package body Matreshka.Strings is
       declare
          Locale : Matreshka.Internals.Locales.Locale_Data_Access
            := Matreshka.Internals.Locales.Get_Locale;
-         Data   : not null String_Private_Data_Access
-           := new String_Private_Data (Self.Data.Last);
+         Data   : not null Internal_String_Access
+           := new Internal_String (Self.Data.Last);
 
       begin
          Matreshka.Strings.Casing.Convert_Case
@@ -584,8 +564,8 @@ package body Matreshka.Strings is
       declare
          Locale : Matreshka.Internals.Locales.Locale_Data_Access
            := Matreshka.Internals.Locales.Get_Locale;
-         Data   : not null String_Private_Data_Access
-           := new String_Private_Data (Self.Data.Last);
+         Data   : not null Internal_String_Access
+           := new Internal_String (Self.Data.Last);
 
       begin
          Matreshka.Strings.Casing.Convert_Case
@@ -616,8 +596,8 @@ package body Matreshka.Strings is
       declare
          Locale : Matreshka.Internals.Locales.Locale_Data_Access
            := Matreshka.Internals.Locales.Get_Locale;
-         Data   : not null String_Private_Data_Access
-           := new String_Private_Data (Self.Data.Last);
+         Data   : not null Internal_String_Access
+           := new Internal_String (Self.Data.Last);
 
       begin
          Matreshka.Strings.Casing.Convert_Case
@@ -639,7 +619,7 @@ package body Matreshka.Strings is
 
    procedure To_Utf16_String
     (Source      : Wide_Wide_String;
-     Destination : out String_Private_Data_Access)
+     Destination : out Internal_String_Access)
    is
       Has_BMP       : Boolean := False;
       Has_Non_BMP   : Boolean := False;
@@ -649,7 +629,7 @@ package body Matreshka.Strings is
       --  of the source code points.
 
    begin
-      Destination := new String_Private_Data (Source'Length);
+      Destination := new Internal_String (Source'Length);
       Destination.Length := Source'Length;
 
       for J in Source'Range loop
@@ -670,15 +650,15 @@ package body Matreshka.Strings is
                      --  Reallocate buffer.
 
                      declare
-                        Aux : constant not null String_Private_Data_Access
-                          := new String_Private_Data (Source'Length * 2);
+                        Aux : constant not null Internal_String_Access
+                          := new Internal_String (Source'Length * 2);
 
                      begin
                         Aux.Value (1 .. Destination.Last) :=
                           Destination.Value (1 .. Destination.Last);
                         Aux.Last := Destination.Last;
                         Aux.Length := Destination.Length;
-                        Free (Destination);
+                        Dereference (Destination);
                         Destination := Aux;
 
                         Double_Length := True;
@@ -709,7 +689,7 @@ package body Matreshka.Strings is
 
    exception
       when others =>
-         Free (Destination);
+         Dereference (Destination);
 
          raise;
    end To_Utf16_String;
@@ -739,7 +719,7 @@ package body Matreshka.Strings is
    function To_Universal_String (Item : Wide_Wide_String)
      return Universal_String
    is
-      Data : String_Private_Data_Access;
+      Data : Internal_String_Access;
 
    begin
       if Item'Length = 0 then
@@ -799,7 +779,7 @@ package body Matreshka.Strings is
    ----------------------
 
    procedure Unchecked_Append
-    (Data : in out String_Private_Data;
+    (Data : in out Internal_String;
      Item : Wide_Wide_Character)
    is
       C             : Code_Point := Wide_Wide_Character'Pos (Item);

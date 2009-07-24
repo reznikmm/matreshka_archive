@@ -34,6 +34,7 @@
 
 package body Matreshka.Strings.Cursors.Characters is
 
+   use Matreshka.Internals.Strings;
    use Matreshka.Internals.Utf16;
 
    -------------
@@ -49,7 +50,7 @@ package body Matreshka.Strings.Cursors.Characters is
       end if;
 
       declare
-         D : constant String_Private_Data_Access := Self.Object.Data;
+         D : constant Internal_String_Access := Self.Object.Data;
 
       begin
          if Self.Current not in D.Value'First .. D.Last then
@@ -86,7 +87,7 @@ package body Matreshka.Strings.Cursors.Characters is
       end if;
 
       declare
-         D : constant String_Private_Data_Access := Self.Object.Data;
+         D : constant Internal_String_Access := Self.Object.Data;
 
       begin
          return Self.Current in D.Value'First .. D.Last;
@@ -122,7 +123,7 @@ package body Matreshka.Strings.Cursors.Characters is
       end if;
 
       declare
-         D : constant String_Private_Data_Access := Self.Object.Data;
+         D : constant Internal_String_Access := Self.Object.Data;
 
       begin
          if Self.Current in D.Value'First .. D.Last then
@@ -164,7 +165,7 @@ package body Matreshka.Strings.Cursors.Characters is
       end if;
 
       declare
-         D : constant String_Private_Data_Access := Self.Object.Data;
+         D : constant Internal_String_Access := Self.Object.Data;
 
       begin
          if Self.Current in D.Value'First .. D.Last + 1 then

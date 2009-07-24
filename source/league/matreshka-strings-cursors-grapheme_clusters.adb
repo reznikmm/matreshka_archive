@@ -35,6 +35,7 @@ with Matreshka.Internals.Unicode;
 
 package body Matreshka.Strings.Cursors.Grapheme_Clusters is
 
+   use Matreshka.Internals.Strings;
    use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
@@ -109,7 +110,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
       end if;
 
       declare
-         D : constant String_Private_Data_Access := Self.Object.Data;
+         D : constant Internal_String_Access := Self.Object.Data;
 
       begin
          if Self.Current_Position not in D.Value'First .. D.Last then
@@ -129,7 +130,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    ---------------
 
    procedure Find_Next (Self : in out Grapheme_Cluster_Cursor'Class) is
-      D : constant not null String_Private_Data_Access := Self.Object.Data;
+      D : constant not null Internal_String_Access := Self.Object.Data;
 
    begin
       if Self.Current_Position <= D.Last then
@@ -164,7 +165,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    -------------------
 
    procedure Find_Previous (Self : in out Grapheme_Cluster_Cursor'Class) is
-      D : constant not null String_Private_Data_Access := Self.Object.Data;
+      D : constant not null Internal_String_Access := Self.Object.Data;
 
    begin
       if Self.Current_Position > D.Value'First then 
@@ -227,7 +228,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
       end if;
 
       declare
-         D : constant String_Private_Data_Access := Self.Object.Data;
+         D : constant Internal_String_Access := Self.Object.Data;
 
       begin
          return Self.Current_Position in D.Value'First .. D.Last;
@@ -270,7 +271,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
       end if;
 
       declare
-         D : constant String_Private_Data_Access := Self.Object.Data;
+         D : constant Internal_String_Access := Self.Object.Data;
 
       begin
          if Self.Current_Position in D.Value'First - 1 .. D.Last then
@@ -315,7 +316,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
       end if;
 
       declare
-         D : constant String_Private_Data_Access := Self.Object.Data;
+         D : constant Internal_String_Access := Self.Object.Data;
 
       begin
          if Self.Current_Position in D.Value'First .. D.Last + 1 then

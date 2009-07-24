@@ -49,16 +49,16 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 private with Ada.Streams;
-private with Ada.Unchecked_Deallocation;
 
 private with Matreshka.Internals.Atomics.Counters;
+private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
 
 package Matreshka.Strings is
 
    pragma Preelaborate;
-   pragma Remote_Types;
+--   pragma Remote_Types;
 
    type Universal_Character is tagged private;
 
@@ -153,65 +153,8 @@ private
     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
      Item   : Universal_String);
 
-   type Index_Modes is
-    (Undefined,     --  Index mode is undefined.
-     Single_Units,  --  All characters a BPM characters, thus represented as
-                    --  one 16-bit code unit.
-     Double_Units,  --  All characters is outside of BMP, thus represented as
-                    --  surrogate pair (two 16-bit code units).
-     Mixed_Units);  --  String has both BMP and non-BMP characters, thus index
-                    --  table is used for direct access to string's characters.
-
-   type Positive_Array is array (Positive range <>) of Positive;
-
-   type Index_Map (Length : Natural) is record
-      Map : Positive_Array (1 .. Length);
-   end record;
-   --  GNAT: GNAT uses fat pointers for arrays, thus makes impossible to define
-   --  atomic compare-and-swap operations for access-to-unconstrained-array
-   --  type.
-
-   type Index_Map_Access is access all Index_Map;
-
    type Abstract_Cursor is tagged;
    type Cursor_Access is access all Abstract_Cursor'Class;
-
-   type String_Private_Data (Max_Length : Natural) is limited record
-      Counter    : aliased Matreshka.Internals.Atomics.Counters.Counter;
-      --  Atomic reference counter.
-
-      Value      : Matreshka.Internals.Utf16.Utf16_String (1 .. Max_Length);
-      --  String data. Internal data always has well-formed UTF-16 encoded
-      --  sequence of valid Unicode code points. Validity checks proceed only
-      --  for potentially invalid user specified data, and never proceed for
-      --  the internal data.
-
-      Last       : Natural := 0;
-      --  Last used element in the Value array.
-
-      Length     : Natural := 0;
-      --  Precomputed length of the string in Unicode code points.
-
-      Index_Mode : Index_Modes := Undefined;
-      --  String's characters indexing mode for direct access by the
-      --  character's index.
-
-      Index_Map  : aliased Index_Map_Access := null;
-      pragma Atomic (Index_Map);
-      --  Mapping of the string's characters index to position inside internal
-      --  buffer. Used only if string has both BMP and non-BMP characters.
-      --  Is built on-demand.
-   end record;
-
-   type String_Private_Data_Access is access all String_Private_Data;
-
---   function Copy (Source : not null String_Private_Data_Access)
---     return not null String_Private_Data_Access;
-   --  Creates copy of string data.
-
-   procedure Dereference
-    (Self : in out String_Private_Data_Access);
-   --  Decrement reference counter and free resources if it reach zero value.
 
 --   procedure Emit_Changed
 --    (Self          : not null String_Private_Data_Access;
@@ -228,7 +171,7 @@ private
    end record;
 
    type Universal_String is new Ada.Finalization.Controlled with record
-      Data    : String_Private_Data_Access;
+      Data    : Matreshka.Internals.Strings.Internal_String_Access;
       List    : aliased Cursor_List;
       Cursors : access Cursor_List;
       --  List of cursors. This member is initialized to reference to List
@@ -244,15 +187,12 @@ private
 
    overriding procedure Finalize (Self : in out Universal_String);
 
-   procedure Free is
-     new Ada.Unchecked_Deallocation
-          (String_Private_Data, String_Private_Data_Access);
-
-   Index_Mode_For_String : constant array (Boolean, Boolean) of Index_Modes
-     := (False => (False => Undefined,
-                   True  => Double_Units),
-         True  => (False => Single_Units,
-                   True  => Mixed_Units));
+   Index_Mode_For_String : constant
+     array (Boolean, Boolean) of Matreshka.Internals.Strings.Index_Modes
+       := (False => (False => Matreshka.Internals.Strings.Undefined,
+                     True  => Matreshka.Internals.Strings.Double_Units),
+           True  => (False => Matreshka.Internals.Strings.Single_Units,
+                     True  => Matreshka.Internals.Strings.Mixed_Units));
    --  String indexing mode for the string. First index must be True is string
    --  contains BMP characters, second index must be True is string contains
    --  non-BMP characters.
@@ -260,14 +200,14 @@ private
    package Constructors is
 
       function Create
-       (Data : not null String_Private_Data_Access)
+       (Data : not null Matreshka.Internals.Strings.Internal_String_Access)
           return Universal_String;
       --  Creates instance of Universal_String with specified parameters.
 
       function Create
        (Value      : Matreshka.Internals.Utf16.Utf16_String;
         Length     : Natural;
-        Index_Mode : Index_Modes)
+        Index_Mode : Matreshka.Internals.Strings.Index_Modes)
           return Universal_String;
       --  Creates instance of Universal_String with specified parameters.
 

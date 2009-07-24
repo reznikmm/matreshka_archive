@@ -31,22 +31,35 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides implementation of the Case Algorithms from the
---  Unicode specification.
-with Matreshka.Internals.Locales;
+with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.Ucd;
+package body Matreshka.Internals.Strings is
 
-private package Matreshka.Strings.Casing is
+   procedure Free is
+     new Ada.Unchecked_Deallocation (Internal_String, Internal_String_Access);
 
-   pragma Preelaborate;
+   procedure Free is
+     new Ada.Unchecked_Deallocation (Index_Map, Index_Map_Access);
 
-   procedure Convert_Case
-    (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
-     Source      : Matreshka.Internals.Utf16.Utf16_String;
-     Source_Last : Natural;
-     Kind        : Matreshka.Internals.Ucd.Case_Mapping_Kinds;
-     Property    : Matreshka.Internals.Ucd.Boolean_Properties;
-     Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
+   -----------------
+   -- Dereference --
+   -----------------
 
-end Matreshka.Strings.Casing;
+   procedure Dereference (Self : in out Internal_String_Access) is
+   begin
+      if Self /= null then
+         if Matreshka.Internals.Atomics.Counters.Decrement
+             (Self.Counter'Access)
+         then
+--            pragma Assert (Self /= Shared_Empty'Access);
+
+            Free (Self.Index_Map);
+            Free (Self);
+
+         else
+            Self := null;
+         end if;
+      end if;
+   end Dereference;
+
+end Matreshka.Internals.Strings;

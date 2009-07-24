@@ -35,6 +35,7 @@ with Ada.Unchecked_Deallocation;
 
 package body Matreshka.Strings.Casing is
 
+   use Matreshka.Internals.Strings;
    use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
@@ -49,7 +50,7 @@ package body Matreshka.Strings.Casing is
      Source_Last : Natural;
      Kind        : Case_Mapping_Kinds;
      Property    : Matreshka.Internals.Ucd.Boolean_Properties;
-     Destination : in out String_Private_Data_Access)
+     Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
    is
       Source_Current : Positive := 1;
       Source_Code    : Code_Point;
@@ -90,15 +91,15 @@ package body Matreshka.Strings.Casing is
         
          if Destination.Last > Destination.Value'Last then
             declare
-               Aux : not null String_Private_Data_Access
-                 := new String_Private_Data (Destination.Last + Source'Length);
+               Aux : not null Internal_String_Access
+                 := new Internal_String (Destination.Last + Source'Length);
 
             begin
                Aux.Value (Destination.Value'Range) := Destination.Value;
                Aux.Last := Destination.Last;
                Aux.Length := Destination.Length;
 
-               Free (Destination);
+               Dereference (Destination);
                Destination := Aux;
             end;
          end if;
