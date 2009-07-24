@@ -33,7 +33,7 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-package body Matreshka.Strings.Casing is
+package body Matreshka.Internals.Unicode.Casing is
 
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Ucd;
@@ -405,4 +405,4 @@ package body Matreshka.Strings.Casing is
       Destination.Index_Mode := Index_Mode_For_String (Has_BMP, Has_Non_BMP);
    end Convert_Case;
 
-end Matreshka.Strings.Casing;
+end Matreshka.Internals.Unicode.Casing;

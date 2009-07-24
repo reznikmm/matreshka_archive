@@ -34,10 +34,11 @@
 --  This package provides implementation of the Case Algorithms from the
 --  Unicode specification.
 with Matreshka.Internals.Locales;
-
+with Matreshka.Internals.Strings;
 with Matreshka.Internals.Ucd;
+with Matreshka.Internals.Utf16;
 
-private package Matreshka.Strings.Casing is
+package Matreshka.Internals.Unicode.Casing is
 
    pragma Preelaborate;
 
@@ -49,4 +50,4 @@ private package Matreshka.Strings.Casing is
      Property    : Matreshka.Internals.Ucd.Boolean_Properties;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
 
-end Matreshka.Strings.Casing;
+end Matreshka.Internals.Unicode.Casing;

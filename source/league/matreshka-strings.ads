@@ -187,16 +187,6 @@ private
 
    overriding procedure Finalize (Self : in out Universal_String);
 
-   Index_Mode_For_String : constant
-     array (Boolean, Boolean) of Matreshka.Internals.Strings.Index_Modes
-       := (False => (False => Matreshka.Internals.Strings.Undefined,
-                     True  => Matreshka.Internals.Strings.Double_Units),
-           True  => (False => Matreshka.Internals.Strings.Single_Units,
-                     True  => Matreshka.Internals.Strings.Mixed_Units));
-   --  String indexing mode for the string. First index must be True is string
-   --  contains BMP characters, second index must be True is string contains
-   --  non-BMP characters.
-
    package Constructors is
 
       function Create

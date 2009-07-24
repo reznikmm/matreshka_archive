@@ -37,7 +37,7 @@ with Matreshka.Internals.Atomics.Generic_Test_And_Set;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Ucd;
 with Matreshka.Internals.Unicode;
-with Matreshka.Strings.Casing;
+with Matreshka.Internals.Unicode.Casing;
 
 package body Matreshka.Strings is
 
@@ -536,7 +536,7 @@ package body Matreshka.Strings is
            := new Internal_String (Self.Data.Last);
 
       begin
-         Matreshka.Strings.Casing.Convert_Case
+         Matreshka.Internals.Unicode.Casing.Convert_Case
           (Locale,
            Self.Data.Value,
            Self.Data.Last,
@@ -568,7 +568,7 @@ package body Matreshka.Strings is
            := new Internal_String (Self.Data.Last);
 
       begin
-         Matreshka.Strings.Casing.Convert_Case
+         Matreshka.Internals.Unicode.Casing.Convert_Case
           (Locale,
            Self.Data.Value,
            Self.Data.Last,
@@ -600,7 +600,7 @@ package body Matreshka.Strings is
            := new Internal_String (Self.Data.Last);
 
       begin
-         Matreshka.Strings.Casing.Convert_Case
+         Matreshka.Internals.Unicode.Casing.Convert_Case
           (Locale,
            Self.Data.Value,
            Self.Data.Last,
