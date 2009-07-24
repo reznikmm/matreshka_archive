@@ -50,7 +50,6 @@
 private with Ada.Finalization;
 private with Ada.Streams;
 
-private with Matreshka.Internals.Atomics.Counters;
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;

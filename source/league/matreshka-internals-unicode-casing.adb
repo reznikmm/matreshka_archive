@@ -31,8 +31,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Deallocation;
-
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Unicode.Casing is
@@ -92,7 +90,7 @@ package body Matreshka.Internals.Unicode.Casing is
         
          if Destination.Last > Destination.Value'Last then
             declare
-               Aux : not null Internal_String_Access
+               Aux : constant not null Internal_String_Access
                  := new Internal_String (Destination.Last + Source.Last);
 
             begin

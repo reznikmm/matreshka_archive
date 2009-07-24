@@ -33,10 +33,10 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
+with Matreshka.Internals.Atomics.Counters;
 with Matreshka.Internals.Atomics.Generic_Test_And_Set;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Ucd;
-with Matreshka.Internals.Unicode;
 with Matreshka.Internals.Unicode.Casing;
 
 package body Matreshka.Strings is
@@ -486,6 +486,8 @@ package body Matreshka.Strings is
      Removed_Last   : Natural;
      Inserted_Last  : Natural)
    is
+      pragma Unreferenced (Changed_First, Removed_Last, Inserted_Last);
+
    begin
       Detach (Self.all);
    end On_Changed;

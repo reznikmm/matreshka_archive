@@ -81,7 +81,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
      Position : in out Positive;
      Property : out Grapheme_Cluster_Break;
      Locale   : not null Matreshka.Internals.Locales.Locale_Data_Access);
-   pragma Inline (Unchecked_Next);
+   pragma Inline (Unchecked_Previous);
    --  Moves specified position to the previous character and returns value
    --  of the break property for this character.
 
@@ -274,7 +274,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
          D : constant Internal_String_Access := Self.Object.Data;
 
       begin
-         if Self.Current_Position in D.Value'First - 1 .. D.Last then
+         if Self.Current_Position <= D.Last then
             Self.Previous_Position := Self.Current_Position;
             Self.Previous_Length   := Self.Current_Length;
             Self.Previous_State    := Self.Current_State;

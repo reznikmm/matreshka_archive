@@ -38,14 +38,17 @@ package body Matreshka.Internals.Atomics.Counters is
 
    use type Interfaces.Integer_32;
 
-   function Sync_Add_And_Fetch_32
-     (Ptr   : access Interfaces.Integer_32;
-      Value : Interfaces.Integer_32) return Interfaces.Integer_32;
+   procedure Sync_Add_And_Fetch_32
+     (Ptr   : not null access Interfaces.Integer_32;
+      Value : Interfaces.Integer_32);
    pragma Import (Intrinsic, Sync_Add_And_Fetch_32, "__sync_add_and_fetch_4");
 
    function Sync_Sub_And_Fetch_32
-     (Ptr   : access Interfaces.Integer_32;
+     (Ptr   : not null access Interfaces.Integer_32;
       Value : Interfaces.Integer_32) return Interfaces.Integer_32;
+   procedure Sync_Sub_And_Fetch_32
+     (Ptr   : not null access Interfaces.Integer_32;
+      Value : Interfaces.Integer_32);
    pragma Import (Intrinsic, Sync_Sub_And_Fetch_32, "__sync_sub_and_fetch_4");
 
    procedure Sync_Synchronize;
@@ -65,10 +68,8 @@ package body Matreshka.Internals.Atomics.Counters is
    ---------------
 
    procedure Decrement (Self : not null access Counter) is
-      Dummy : Interfaces.Integer_32;
-
    begin
-      Dummy := Sync_Sub_And_Fetch_32 (Self.Value'Access, 1);
+      Sync_Sub_And_Fetch_32 (Self.Value'Access, 1);
    end Decrement;
 
    ---------------
@@ -76,10 +77,8 @@ package body Matreshka.Internals.Atomics.Counters is
    ---------------
 
    procedure Increment (Self : not null access Counter) is
-      Dummy : Interfaces.Integer_32;
-
    begin
-      Dummy := Sync_Add_And_Fetch_32 (Self.Value'Access, 1);
+      Sync_Add_And_Fetch_32 (Self.Value'Access, 1);
    end Increment;
 
    ------------
