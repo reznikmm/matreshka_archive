@@ -49,6 +49,7 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 private with Ada.Streams;
+private with Ada.Unchecked_Deallocation;
 
 private with Matreshka.Internals.Atomics.Counters;
 private with Matreshka.Internals.Unicode;
@@ -152,9 +153,6 @@ private
     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
      Item   : Universal_String);
 
-   type Utf16_String_Access is
-     access all Matreshka.Internals.Utf16.Utf16_String;
-
    type Index_Modes is
     (Undefined,     --  Index mode is undefined.
      Single_Units,  --  All characters a BPM characters, thus represented as
@@ -178,11 +176,11 @@ private
    type Abstract_Cursor is tagged;
    type Cursor_Access is access all Abstract_Cursor'Class;
 
-   type String_Private_Data is limited record
+   type String_Private_Data (Max_Length : Natural) is limited record
       Counter    : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
-      Value      : not null Utf16_String_Access;
+      Value      : Matreshka.Internals.Utf16.Utf16_String (1 .. Max_Length);
       --  String data. Internal data always has well-formed UTF-16 encoded
       --  sequence of valid Unicode code points. Validity checks proceed only
       --  for potentially invalid user specified data, and never proceed for
@@ -207,8 +205,8 @@ private
 
    type String_Private_Data_Access is access all String_Private_Data;
 
-   function Copy (Source : not null String_Private_Data_Access)
-     return not null String_Private_Data_Access;
+--   function Copy (Source : not null String_Private_Data_Access)
+--     return not null String_Private_Data_Access;
    --  Creates copy of string data.
 
    procedure Dereference
@@ -246,6 +244,10 @@ private
 
    overriding procedure Finalize (Self : in out Universal_String);
 
+   procedure Free is
+     new Ada.Unchecked_Deallocation
+          (String_Private_Data, String_Private_Data_Access);
+
    Index_Mode_For_String : constant array (Boolean, Boolean) of Index_Modes
      := (False => (False => Undefined,
                    True  => Double_Units),
@@ -258,20 +260,16 @@ private
    package Constructors is
 
       function Create
-       (Value      : not null Utf16_String_Access;
-        Last       : Natural;
-        Length     : Natural;
-        Index_Mode : Index_Modes)
+       (Data : not null String_Private_Data_Access)
           return Universal_String;
       --  Creates instance of Universal_String with specified parameters.
 
       function Create
-       (Value      : not null Utf16_String_Access;
-        Last       : Natural;
+       (Value      : Matreshka.Internals.Utf16.Utf16_String;
         Length     : Natural;
         Index_Mode : Index_Modes)
-          return not null String_Private_Data_Access;
-      --  Creates internal data structure with specified parameters.
+          return Universal_String;
+      --  Creates instance of Universal_String with specified parameters.
 
    end Constructors;
 

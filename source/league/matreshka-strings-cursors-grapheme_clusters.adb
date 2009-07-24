@@ -116,16 +116,11 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
             raise Constraint_Error with "Cursor out of range";
          end if;
 
-         declare
-            L : constant Natural := Self.Next_Position - Self.Current_Position;
-            S : constant Utf16_String_Access := new Utf16_String (1 .. L);
-
-         begin
-            S.all := D.Value (Self.Current_Position .. Self.Next_Position - 1);
-
-            return
-              Constructors.Create (S, L, Self.Current_Length, D.Index_Mode);
-         end;
+         return
+           Constructors.Create
+            (D.Value (Self.Current_Position .. Self.Next_Position - 1),
+             Self.Next_Position - Self.Current_Position,
+             D.Index_Mode);
       end;
    end Element;
 
@@ -139,7 +134,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    begin
       if Self.Current_Position <= D.Last then
          Unchecked_Next
-          (D.Value.all, Self.Next_Position, Self.Current_State, Self.Locale);
+          (D.Value, Self.Next_Position, Self.Current_State, Self.Locale);
          Self.Current_Length := 1;
 
          declare
@@ -149,7 +144,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
          begin
             while Self.Next_Position <= D.Last loop
                Unchecked_Next
-                (D.Value.all, Aux_Position, Self.Next_State, Self.Locale);
+                (D.Value, Aux_Position, Self.Next_State, Self.Locale);
 
                exit when Break_Machine (Aux_State, Self.Next_State);
 
@@ -174,10 +169,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    begin
       if Self.Current_Position > D.Value'First then 
          Unchecked_Previous
-          (D.Value.all,
-           Self.Previous_Position,
-           Self.Previous_State,
-           Self.Locale);
+          (D.Value, Self.Previous_Position, Self.Previous_State, Self.Locale);
          Self.Previous_Length := 1;
 
          while Self.Previous_Position > D.Value'First loop
@@ -187,7 +179,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
 
             begin
                Unchecked_Previous
-                (D.Value.all, Aux_Position, Aux_State, Self.Locale);
+                (D.Value, Aux_Position, Aux_State, Self.Locale);
 
                exit when Break_Machine (Aux_State, Self.Previous_State);
 

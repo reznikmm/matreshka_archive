@@ -58,7 +58,7 @@ package body Matreshka.Strings.Cursors.Characters is
 
          return
            Wide_Wide_Character'Val
-            (Unchecked_To_Code_Point (D.Value.all, Self.Current));
+            (Unchecked_To_Code_Point (D.Value, Self.Current));
       end;
    end Element;
 
@@ -107,7 +107,7 @@ package body Matreshka.Strings.Cursors.Characters is
       Self.Current := Self.Object.Data.Last + 1;
 
       if Self.Object.Data.Length /= 0 then
-         Unchecked_Previous (Self.Object.Data.Value.all, Self.Current);
+         Unchecked_Previous (Self.Object.Data.Value, Self.Current);
       end if;
    end Last;
 
@@ -126,7 +126,7 @@ package body Matreshka.Strings.Cursors.Characters is
 
       begin
          if Self.Current in D.Value'First .. D.Last then
-            Unchecked_Next (D.Value.all, Self.Current);
+            Unchecked_Next (D.Value, Self.Current);
 
          elsif Self.Current = D.Value'First - 1 then
             Self.Current := Self.Current + 1;
@@ -168,7 +168,7 @@ package body Matreshka.Strings.Cursors.Characters is
 
       begin
          if Self.Current in D.Value'First .. D.Last + 1 then
-            Unchecked_Previous (D.Value.all, Self.Current);
+            Unchecked_Previous (D.Value, Self.Current);
          end if;
       end;
    end Previous;

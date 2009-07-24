@@ -47,9 +47,6 @@ private package Matreshka.Strings.Casing is
      Source_Last : Natural;
      Kind        : Matreshka.Internals.Ucd.Case_Mapping_Kinds;
      Property    : Matreshka.Internals.Ucd.Boolean_Properties;
-     Destination : out Utf16_String_Access;
-     Last        : out Natural;
-     Length      : out Natural;
-     Index_Mode  : out Index_Modes);
+     Destination : in out String_Private_Data_Access);
 
 end Matreshka.Strings.Casing;
