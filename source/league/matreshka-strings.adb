@@ -31,10 +31,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Deallocation;
-
 with Matreshka.Internals.Atomics.Counters;
-with Matreshka.Internals.Atomics.Generic_Test_And_Set;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Ucd;
 with Matreshka.Internals.Unicode.Casing;
@@ -44,13 +41,6 @@ package body Matreshka.Strings is
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
-
-   procedure Free is
-     new Ada.Unchecked_Deallocation (Index_Map, Index_Map_Access);
-
-   function Test_And_Set is
-     new Matreshka.Internals.Atomics.Generic_Test_And_Set
-          (Index_Map, Index_Map_Access);
 
    procedure To_Utf16_String
     (Source      : Wide_Wide_String;
@@ -359,37 +349,13 @@ package body Matreshka.Strings is
 
          when Mixed_Units =>
             declare
-               M       : Index_Map_Access := D.Index_Map;
-               Current : Positive         := 1;
+               M : Index_Map_Access := D.Index_Map;
 
             begin
                --  Calculate index map if it is unavailable for now.
 
                if M = null then
-                  M := new Index_Map (D.Length);
-
-                  for J in M.Map'Range loop
-                     M.Map (J) := Current;
-
-                     if D.Value (Current)
-                          in High_Surrogate_Utf16_Code_Unit
-                     then
-                        Current := Current + 2;
-
-                     else
-                        Current := Current + 1;
-                     end if;
-                  end loop;
-
-                  if not Test_And_Set (D.Index_Map'Access, null, M) then
-                     --  Operation can fail if mapping has been calculated by
-                     --  another thread. In this case computed result is
-                     --  dropped, memory freed and already calculated mapping
-                     --  is reused.
-
-                     Free (M);
-                  end if;
-
+                  Compute_Index_Map (D.all);
                   M := D.Index_Map;
                end if;
 
@@ -684,7 +650,7 @@ package body Matreshka.Strings is
          end if;
       end loop;
 
-      Destination.Index_Mode := Index_Mode_For_String (Has_BMP, Has_Non_BMP);
+      Destination.Index_Mode := To_Index_Mode (Has_BMP, Has_Non_BMP);
 
    exception
       when others =>
@@ -820,7 +786,7 @@ package body Matreshka.Strings is
 
       Data.Index_Mode :=
         Index_Mode_After_Concatenation
-         (Data.Index_Mode, Index_Mode_For_String (Has_BMP, Has_Non_BMP));
+         (Data.Index_Mode, To_Index_Mode (Has_BMP, Has_Non_BMP));
    end Unchecked_Append;
 
    -----------

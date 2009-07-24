@@ -94,14 +94,17 @@ package Matreshka.Internals.Strings is
    procedure Dereference (Self : in out Internal_String_Access);
    --  Decrement reference counter and free resources if it reach zero value.
 
-   Index_Mode_For_String : constant
+   procedure Compute_Index_Map (Self : in out Internal_String);
+   --  Compute index map. This operation is thread-safe.
+
+   To_Index_Mode : constant
      array (Boolean, Boolean) of Index_Modes
        := (False => (False => Undefined,
                      True  => Double_Units),
            True  => (False => Single_Units,
                      True  => Mixed_Units));
    --  String indexing mode for the string. First index must be True is string
-   --  contains BMP characters, second index must be True is string contains
+   --  contains BMP characters, second index must be True if string contains
    --  non-BMP characters.
 
 end Matreshka.Internals.Strings;

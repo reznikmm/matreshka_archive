@@ -401,7 +401,7 @@ package body Matreshka.Internals.Unicode.Casing is
          end if;
       end loop;
 
-      Destination.Index_Mode := Index_Mode_For_String (Has_BMP, Has_Non_BMP);
+      Destination.Index_Mode := To_Index_Mode (Has_BMP, Has_Non_BMP);
    end Convert_Case;
 
 end Matreshka.Internals.Unicode.Casing;
