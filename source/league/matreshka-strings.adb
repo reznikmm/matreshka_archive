@@ -70,6 +70,13 @@ package body Matreshka.Strings is
      Index_Mode : in out Index_Modes;
      Item       : Wide_Wide_Character);
 
+   procedure Attach (Self : in out Abstract_Modify_Cursor'Class);
+   --  Attaches cursor to the list of cursors of Universal_String.
+
+   procedure Detach (Self : in out Abstract_Modify_Cursor'Class);
+   --  Detaches cursor from the list of cursors of Universal_String. Also
+   --  reset associated object to null.
+
    Empty_String : aliased Utf16_String := Utf16_String'(1 .. 0 => 0);
 
    Shared_Empty : aliased String_Private_Data
@@ -169,11 +176,11 @@ package body Matreshka.Strings is
 
    overriding procedure Adjust (Self : in out Abstract_Modify_Cursor) is
    begin
-      if Self.Data /= null then
-         Matreshka.Internals.Atomics.Counters.Increment
-          (Self.Data.Counter'Access);
-         Self.Next         := Self.Data.Cursors;
-         Self.Data.Cursors := Self'Unchecked_Access;
+      Self.Next     := null;
+      Self.Previous := null;
+
+      if Self.Object /= null then
+         Attach (Self);
       end if;
    end Adjust;
 
@@ -183,14 +190,25 @@ package body Matreshka.Strings is
 
    overriding procedure Adjust (Self : in out Universal_String) is
    begin
-      if Self.Data.Cursors = null then
-         Matreshka.Internals.Atomics.Counters.Increment
-          (Self.Data.Counter'Access);
-
-      else
-         Self.Data := Copy (Self.Data);
-      end if;
+      Matreshka.Internals.Atomics.Counters.Increment
+       (Self.Data.Counter'Access);
+      Self.List    := (Head => null);
+      Self.Cursors := Self.List'Unchecked_Access;
    end Adjust;
+
+   ------------
+   -- Attach --
+   ------------
+
+   procedure Attach (Self : in out Abstract_Modify_Cursor'Class) is
+   begin
+      Self.Next                := Self.Object.Cursors.Head;
+      Self.Object.Cursors.Head := Self'Unchecked_Access;
+
+      if Self.Next /= null then
+         Self.Next.Previous := Self'Unchecked_Access;
+      end if;
+   end Attach;
 
    ------------
    -- Attach --
@@ -200,30 +218,10 @@ package body Matreshka.Strings is
     (Self : in out Abstract_Modify_Cursor'Class;
      Item : in out Universal_String'Class)
    is
-      Aux : String_Private_Data_Access;
-
    begin
-      Dereference (Self.Data, Self'Unchecked_Access);
-
-      --  Reference counter equal to one when internal data is not shared. By
-      --  the convention, if data has associated iterator it is not shared.
-      --  In all other cases internal data is shared, and exclusive copy of
-      --  data must be created.
-
-      if not Matreshka.Internals.Atomics.Counters.Is_One
-              (Item.Data.Counter'Access)
-        and then Item.Data.Cursors = null
-      then
-         Aux := Copy (Item.Data);
-         Dereference (Item.Data);
-         Item.Data := Aux;
-      end if;
-
-      Self.Data := Item.Data;
-      Matreshka.Internals.Atomics.Counters.Increment
-       (Self.Data.Counter'Access);
-      Self.Next         := Self.Data.Cursors;
-      Self.Data.Cursors := Self'Unchecked_Access;
+      Detach (Self);
+      Self.Object := Item'Unchecked_Access;
+      Attach (Self);
    end Attach;
 
    ------------------
@@ -244,10 +242,15 @@ package body Matreshka.Strings is
           return Universal_String
       is
       begin
-         return
-           Universal_String'
-            (Ada.Finalization.Controlled with
-               Data => Create (Value, Last, Length, Index_Mode));
+         return Result : Universal_String
+           := Universal_String'
+               (Ada.Finalization.Controlled with
+                  Data    => Create (Value, Last, Length, Index_Mode),
+                  List    => (Head => null),
+                  Cursors => null)
+         do
+            Result.Cursors := Result.List'Unchecked_Access;
+         end return;
       end Create;
 
       ------------
@@ -269,8 +272,7 @@ package body Matreshka.Strings is
                     Last       => Last,
                     Length     => Length,
                     Index_Mode => Index_Mode,
-                    Index_Map  => null,
-                    Cursors    => null)
+                    Index_Map  => null)
          do
             null;
          end return;
@@ -312,7 +314,6 @@ package body Matreshka.Strings is
              (Self.Counter'Access)
          then
             pragma Assert (Self /= Shared_Empty'Access);
-            pragma Assert (Self.Cursors = null);
 
             Free (Self.Index_Map);
             Aux := Self.Value;
@@ -325,42 +326,33 @@ package body Matreshka.Strings is
       end if;
    end Dereference;
 
-   -----------------
-   -- Dereference --
-   -----------------
+   ------------
+   -- Detach --
+   ------------
 
-   procedure Dereference
-    (Self   : in out String_Private_Data_Access;
-     Cursor : not null Modify_Cursor_Access)
-   is
-      Previous : Modify_Cursor_Access := null;
-      Current  : Modify_Cursor_Access;
-
+   procedure Detach (Self : in out Abstract_Modify_Cursor'Class) is
    begin
-      if Self /= null then
-         Current := Self.Cursors;
-
-         while Current /= Cursor loop
-            Previous := Current;
-            Current := Current.Next;
-         end loop;
-
-         if Previous = null then
-            Self.Cursors := Cursor.Next;
-
-         else
-            Previous.Next := Cursor.Next;
+      if Self.Object /= null then
+         if Self.Next /= null then
+            Self.Next.Previous := Self.Previous;
          end if;
 
-         Cursor.Next := null;
+         if Self.Previous /= null then
+            Self.Previous.Next := Self.Next;
 
-         Dereference (Self);
+         elsif Self.Object.Cursors.Head = Self'Unchecked_Access then
+            Self.Object.Cursors.Head := Self.Next;
+         end if;
       end if;
-   end Dereference;
 
-   --------------
-   -- Elemennt --
-   --------------
+      Self.Next     := null;
+      Self.Previous := null;
+      Self.Object   := null;
+   end Detach;
+
+   -------------
+   -- Element --
+   -------------
 
    function Element
     (Self  : Universal_String'Class;
@@ -446,28 +438,28 @@ package body Matreshka.Strings is
    -- Emit_Changed --
    ------------------
 
-   procedure Emit_Changed
-    (Self          : not null String_Private_Data_Access;
-     Cursor        : not null Modify_Cursor_Access;
-     Changed_First : Positive;
-     Removed_Last  : Natural;
-     Inserted_Last : Natural)
-   is
-      Current : Modify_Cursor_Access := Self.Cursors;
-      Next    : Modify_Cursor_Access := Current.Next;
-
-   begin
-      loop
-         if Current /= Cursor then
-            Current.On_Changed (Changed_First, Removed_Last, Inserted_Last);
-         end if;
-
-         exit when Next = null;
-
-         Current := Next;
-         Next    := Current.Next;
-      end loop;
-   end Emit_Changed;
+--   procedure Emit_Changed
+--    (Self          : not null String_Private_Data_Access;
+--     Cursor        : not null Modify_Cursor_Access;
+--     Changed_First : Positive;
+--     Removed_Last  : Natural;
+--     Inserted_Last : Natural)
+--   is
+--      Current : Modify_Cursor_Access := Self.Cursors;
+--      Next    : Modify_Cursor_Access := Current.Next;
+--
+--   begin
+--      loop
+--         if Current /= Cursor then
+--            Current.On_Changed (Changed_First, Removed_Last, Inserted_Last);
+--         end if;
+--
+--         exit when Next = null;
+--
+--         Current := Next;
+--         Next    := Current.Next;
+--      end loop;
+--   end Emit_Changed;
 
    --------------
    -- Finalize --
@@ -475,7 +467,7 @@ package body Matreshka.Strings is
 
    overriding procedure Finalize (Self : in out Abstract_Modify_Cursor) is
    begin
-      Dereference (Self.Data, Self'Unchecked_Access);
+      Detach (Self);
    end Finalize;
 
    --------------
@@ -483,7 +475,16 @@ package body Matreshka.Strings is
    --------------
 
    overriding procedure Finalize (Self : in out Universal_String) is
+      Current : Modify_Cursor_Access := Self.Cursors.Head;
+      Next    : Modify_Cursor_Access;
+
    begin
+      while Current /= null loop
+         Next := Current.Next;
+         Detach (Current.all);
+         Current := Next;
+      end loop;
+
       Dereference (Self.Data);
    end Finalize;
 
@@ -496,6 +497,8 @@ package body Matreshka.Strings is
       Self.Data := Shared_Empty'Access;
       Matreshka.Internals.Atomics.Counters.Increment
        (Self.Data.Counter'Access);
+      Self.List := (Head => null);
+      Self.Cursors := Self.List'Unchecked_Access;
    end Initialize;
 
    ------------
@@ -518,7 +521,7 @@ package body Matreshka.Strings is
      Inserted_Last  : Natural)
    is
    begin
-      Dereference (Self.Data, Self.all'Unchecked_Access);
+      Detach (Self.all);
    end On_Changed;
 
    ----------
@@ -775,9 +778,15 @@ package body Matreshka.Strings is
          Matreshka.Internals.Atomics.Counters.Increment
           (Shared_Empty.Counter'Access);
 
-         return
-           Universal_String'
-            (Ada.Finalization.Controlled with Data => Shared_Empty'Access);
+         return Result : Universal_String
+           := Universal_String'
+               (Ada.Finalization.Controlled with
+                  Data    => Shared_Empty'Access,
+                  List    => (Head => null),
+                  Cursors => null)
+         do
+            Result.Cursors := Result.List'Unchecked_Access;
+         end return;
       end if;
 
       To_Utf16_String (Item, Value, Last, Index_Mode);

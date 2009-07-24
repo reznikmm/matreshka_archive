@@ -43,20 +43,23 @@ package body Matreshka.Strings.Cursors.Characters is
    function Element (Self : Character_Cursor'Class)
      return Wide_Wide_Character
    is
-      D : constant String_Private_Data_Access := Self.Data;
-
    begin
-      if D = null then
+      if Self.Object = null then
          raise Program_Error with "Invalid iterator";
       end if;
 
-      if Self.Current not in D.Value'First .. D.Last then
-         raise Constraint_Error with "Cursor out of range";
-      end if;
+      declare
+         D : constant String_Private_Data_Access := Self.Object.Data;
 
-      return
-        Wide_Wide_Character'Val
-         (Unchecked_To_Code_Point (D.Value.all, Self.Current));
+      begin
+         if Self.Current not in D.Value'First .. D.Last then
+            raise Constraint_Error with "Cursor out of range";
+         end if;
+
+         return
+           Wide_Wide_Character'Val
+            (Unchecked_To_Code_Point (D.Value.all, Self.Current));
+      end;
    end Element;
 
    -----------
@@ -69,7 +72,7 @@ package body Matreshka.Strings.Cursors.Characters is
    is
    begin
       Self.Attach (Item);
-      Self.Current := Self.Data.Value'First;
+      Self.Current := Self.Object.Data.Value'First;
    end First;
 
    -----------------
@@ -77,14 +80,17 @@ package body Matreshka.Strings.Cursors.Characters is
    -----------------
 
    function Has_Element (Self : Character_Cursor'Class) return Boolean is
-      D : constant String_Private_Data_Access := Self.Data;
-
    begin
-      if D = null then
+      if Self.Object = null then
          raise Program_Error with "Invalid iterator";
       end if;
 
-      return Self.Current in D.Value'First .. D.Last;
+      declare
+         D : constant String_Private_Data_Access := Self.Object.Data;
+
+      begin
+         return Self.Current in D.Value'First .. D.Last;
+      end;
    end Has_Element;
 
    ----------
@@ -98,10 +104,10 @@ package body Matreshka.Strings.Cursors.Characters is
    begin
       Self.Attach (Item);
 
-      Self.Current := Self.Data.Last + 1;
+      Self.Current := Self.Object.Data.Last + 1;
 
-      if Self.Data.Length /= 0 then
-         Unchecked_Previous (Self.Data.Value.all, Self.Current);
+      if Self.Object.Data.Length /= 0 then
+         Unchecked_Previous (Self.Object.Data.Value.all, Self.Current);
       end if;
    end Last;
 
@@ -110,19 +116,22 @@ package body Matreshka.Strings.Cursors.Characters is
    ----------
 
    procedure Next (Self : in out Character_Cursor'Class) is
-      D : constant String_Private_Data_Access := Self.Data;
-
    begin
-      if D = null then
+      if Self.Object = null then
          raise Program_Error with "Invalid iterator";
       end if;
 
-      if Self.Current in D.Value'First .. D.Last then
-         Unchecked_Next (D.Value.all, Self.Current);
+      declare
+         D : constant String_Private_Data_Access := Self.Object.Data;
 
-      elsif Self.Current = D.Value'First - 1 then
-         Self.Current := Self.Current + 1;
-      end if;
+      begin
+         if Self.Current in D.Value'First .. D.Last then
+            Unchecked_Next (D.Value.all, Self.Current);
+
+         elsif Self.Current = D.Value'First - 1 then
+            Self.Current := Self.Current + 1;
+         end if;
+      end;
    end Next;
 
    ----------------
@@ -137,7 +146,7 @@ package body Matreshka.Strings.Cursors.Characters is
    is
    begin
       if Self.Current in Changed_First .. Removed_Last then
-         Dereference (Self.Data, Self.all'Unchecked_Access);
+         Self.Object := null;
 
       elsif Self.Current > Removed_Last then
          Self.Current := Self.Current + Inserted_Last - Removed_Last;
@@ -149,16 +158,19 @@ package body Matreshka.Strings.Cursors.Characters is
    --------------
 
    procedure Previous (Self : in out Character_Cursor'Class) is
-      D : constant String_Private_Data_Access := Self.Data;
-
    begin
-      if D = null then
+      if Self.Object = null then
          raise Program_Error with "Invalid iterator";
       end if;
 
-      if Self.Current in D.Value'First .. D.Last + 1 then
-         Unchecked_Previous (D.Value.all, Self.Current);
-      end if;
+      declare
+         D : constant String_Private_Data_Access := Self.Object.Data;
+
+      begin
+         if Self.Current in D.Value'First .. D.Last + 1 then
+            Unchecked_Previous (D.Value.all, Self.Current);
+         end if;
+      end;
    end Previous;
 
 end Matreshka.Strings.Cursors.Characters;

@@ -203,9 +203,6 @@ private
       --  Mapping of the string's characters index to position inside internal
       --  buffer. Used only if string has both BMP and non-BMP characters.
       --  Is built on-demand.
-
-      Cursors    : Modify_Cursor_Access := null;
-      --  List of iterators.
    end record;
 
    type String_Private_Data_Access is access all String_Private_Data;
@@ -218,24 +215,26 @@ private
     (Self : in out String_Private_Data_Access);
    --  Decrement reference counter and free resources if it reach zero value.
 
-   procedure Dereference
-    (Self   : in out String_Private_Data_Access;
-     Cursor : not null Modify_Cursor_Access);
-   --  Removes Iterator from the list of iterators, decrements reference
-   --  counter and free resources if it reach zero value.
-
-   procedure Emit_Changed
-    (Self          : not null String_Private_Data_Access;
-     Cursor        : not null Modify_Cursor_Access;
-     Changed_First : Positive;
-     Removed_Last  : Natural;
-     Inserted_Last : Natural);
+--   procedure Emit_Changed
+--    (Self          : not null String_Private_Data_Access;
+--     Cursor        : not null Modify_Cursor_Access;
+--     Changed_First : Positive;
+--     Removed_Last  : Natural;
+--     Inserted_Last : Natural);
    --  Must be called when internal string data is changed. It notify all
    --  iterators (except originator) about this change. All positions are in
    --  code units.
 
+   type Cursor_List is record
+      Head : Modify_Cursor_Access := null;
+   end record;
+
    type Universal_String is new Ada.Finalization.Controlled with record
-      Data : String_Private_Data_Access;
+      Data    : String_Private_Data_Access;
+      List    : aliased Cursor_List;
+      Cursors : access Cursor_List;
+      --  List of cursors. This member is initialized to reference to List
+      --  member.
    end record;
 
    for Universal_String'Read use Read;
@@ -280,11 +279,14 @@ private
    -- Abstract_Cursor --
    ---------------------
 
+   type Universal_String_Access is access constant Universal_String'Class;
+
    type Abstract_Modify_Cursor is
      abstract new Ada.Finalization.Controlled with
    record
-      Data : String_Private_Data_Access := null;
-      Next : Modify_Cursor_Access       := null;
+      Object   : Universal_String_Access := null;
+      Next     : Modify_Cursor_Access    := null;
+      Previous : Modify_Cursor_Access    := null;
    end record;
 
    not overriding procedure On_Changed

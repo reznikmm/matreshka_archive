@@ -103,25 +103,29 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    function Element (Self : Grapheme_Cluster_Cursor'Class)
      return Universal_String
    is
-      D : constant String_Private_Data_Access := Self.Data;
-
    begin
-      if D = null then
+      if Self.Object = null then
          raise Program_Error with "Invalid iterator";
       end if;
 
-      if Self.Current_Position not in D.Value'First .. D.Last then
-         raise Constraint_Error with "Cursor out of range";
-      end if;
-
       declare
-         L : constant Natural := Self.Next_Position - Self.Current_Position;
-         S : constant Utf16_String_Access := new Utf16_String (1 .. L);
+         D : constant String_Private_Data_Access := Self.Object.Data;
 
       begin
-         S.all := D.Value (Self.Current_Position .. Self.Next_Position - 1);
+         if Self.Current_Position not in D.Value'First .. D.Last then
+            raise Constraint_Error with "Cursor out of range";
+         end if;
 
-         return Constructors.Create (S, L, Self.Current_Length, D.Index_Mode);
+         declare
+            L : constant Natural := Self.Next_Position - Self.Current_Position;
+            S : constant Utf16_String_Access := new Utf16_String (1 .. L);
+
+         begin
+            S.all := D.Value (Self.Current_Position .. Self.Next_Position - 1);
+
+            return
+              Constructors.Create (S, L, Self.Current_Length, D.Index_Mode);
+         end;
       end;
    end Element;
 
@@ -130,10 +134,10 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    ---------------
 
    procedure Find_Next (Self : in out Grapheme_Cluster_Cursor'Class) is
-      D : constant not null String_Private_Data_Access := Self.Data;
+      D : constant not null String_Private_Data_Access := Self.Object.Data;
 
    begin
-      if Self.Current_Position <= Self.Data.Last then
+      if Self.Current_Position <= D.Last then
          Unchecked_Next
           (D.Value.all, Self.Next_Position, Self.Current_State, Self.Locale);
          Self.Current_Length := 1;
@@ -165,7 +169,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    -------------------
 
    procedure Find_Previous (Self : in out Grapheme_Cluster_Cursor'Class) is
-      D : constant not null String_Private_Data_Access := Self.Data;
+      D : constant not null String_Private_Data_Access := Self.Object.Data;
 
    begin
       if Self.Current_Position > D.Value'First then 
@@ -211,7 +215,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
       Self.Attach (Item);
       Self.Set_Locale;
 
-      Self.Current_Position  := Self.Data.Value'First;
+      Self.Current_Position  := Self.Object.Data.Value'First;
       Self.Previous_Position := Self.Current_Position - 1;
       Self.Next_Position     := Self.Current_Position;
 
@@ -225,14 +229,17 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    function Has_Element (Self : Grapheme_Cluster_Cursor'Class)
      return Boolean
    is
-      D : constant String_Private_Data_Access := Self.Data;
-
    begin
-      if D = null then
+      if Self.Object = null then
          raise Program_Error with "Invalid iterator";
       end if;
 
-      return Self.Current_Position in D.Value'First .. D.Last;
+      declare
+         D : constant String_Private_Data_Access := Self.Object.Data;
+
+      begin
+         return Self.Current_Position in D.Value'First .. D.Last;
+      end;
    end Has_Element;
 
    ----------
@@ -247,11 +254,11 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
       Self.Attach (Item);
       Self.Set_Locale;
 
-      Self.Next_Position     := Self.Data.Last + 1;
+      Self.Next_Position     := Self.Object.Data.Last + 1;
       Self.Current_Position  := Self.Next_Position;
       Self.Previous_Position := Self.Current_Position;
 
-      if Self.Data.Length /= 0 then
+      if Self.Object.Data.Length /= 0 then
          Find_Previous (Self);
          Self.Current_Position := Self.Previous_Position;
          Self.Current_Length   := Self.Previous_Length;
@@ -265,22 +272,25 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    ----------
 
    procedure Next (Self : in out Grapheme_Cluster_Cursor'Class) is
-      D : constant String_Private_Data_Access := Self.Data;
-
    begin
-      if D = null then
+      if Self.Object = null then
          raise Program_Error with "Invalid iterator";
       end if;
 
-      if Self.Current_Position in D.Value'First - 1 .. D.Last then
-         Self.Previous_Position := Self.Current_Position;
-         Self.Previous_Length   := Self.Current_Length;
-         Self.Previous_State    := Self.Current_State;
-         Self.Current_Position  := Self.Next_Position;
-         Self.Current_State     := Self.Next_State;
+      declare
+         D : constant String_Private_Data_Access := Self.Object.Data;
 
-         Find_Next (Self);
-      end if;
+      begin
+         if Self.Current_Position in D.Value'First - 1 .. D.Last then
+            Self.Previous_Position := Self.Current_Position;
+            Self.Previous_Length   := Self.Current_Length;
+            Self.Previous_State    := Self.Current_State;
+            Self.Current_Position  := Self.Next_Position;
+            Self.Current_State     := Self.Next_State;
+
+            Find_Next (Self);
+         end if;
+      end;
    end Next;
 
 --   ----------------
@@ -307,22 +317,25 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
    --------------
 
    procedure Previous (Self : in out Grapheme_Cluster_Cursor'Class) is
-      D : constant String_Private_Data_Access := Self.Data;
-
    begin
-      if D = null then
+      if Self.Object = null then
          raise Program_Error with "Invalid iterator";
       end if;
 
-      if Self.Current_Position in D.Value'First .. D.Last + 1 then
-         Self.Next_Position    := Self.Current_Position;
-         Self.Next_State       := Self.Current_State;
-         Self.Current_Position := Self.Previous_Position;
-         Self.Current_Length   := Self.Previous_Length;
-         Self.Current_State    := Self.Previous_State;
+      declare
+         D : constant String_Private_Data_Access := Self.Object.Data;
 
-         Find_Previous (Self);
-      end if;
+      begin
+         if Self.Current_Position in D.Value'First .. D.Last + 1 then
+            Self.Next_Position    := Self.Current_Position;
+            Self.Next_State       := Self.Current_State;
+            Self.Current_Position := Self.Previous_Position;
+            Self.Current_Length   := Self.Previous_Length;
+            Self.Current_State    := Self.Previous_State;
+
+            Find_Previous (Self);
+         end if;
+      end;
    end Previous;
 
    --------------------
