@@ -33,6 +33,8 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
+with Matreshka.Internals.Utf16;
+
 package body Matreshka.Internals.Unicode.Casing is
 
    use Matreshka.Internals.Strings;
@@ -46,8 +48,7 @@ package body Matreshka.Internals.Unicode.Casing is
 
    procedure Convert_Case
     (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
-     Source      : Matreshka.Internals.Utf16.Utf16_String;
-     Source_Last : Natural;
+     Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
      Kind        : Case_Mapping_Kinds;
      Property    : Matreshka.Internals.Ucd.Boolean_Properties;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
@@ -92,7 +93,7 @@ package body Matreshka.Internals.Unicode.Casing is
          if Destination.Last > Destination.Value'Last then
             declare
                Aux : not null Internal_String_Access
-                 := new Internal_String (Destination.Last + Source'Length);
+                 := new Internal_String (Destination.Last + Source.Last);
 
             begin
                Aux.Value (Destination.Value'Range) := Destination.Value;
@@ -127,8 +128,8 @@ package body Matreshka.Internals.Unicode.Casing is
          Code    : Code_Point;
 
       begin
-         while Current <= Source_Last loop
-            Unchecked_Next (Source, Current, Code);
+         while Current <= Source.Last loop
+            Unchecked_Next (Source.Value, Current, Code);
 
             declare
                R : constant Core_Values
@@ -158,8 +159,8 @@ package body Matreshka.Internals.Unicode.Casing is
          Code    : Code_Point;
 
       begin
-         while Current <= Source_Last loop
-            Unchecked_Next (Source, Current, Code);
+         while Current <= Source.Last loop
+            Unchecked_Next (Source.Value, Current, Code);
 
             declare
                R : constant Core_Values
@@ -189,8 +190,8 @@ package body Matreshka.Internals.Unicode.Casing is
          Code    : Code_Point;
 
       begin
-         while Current <= Source_Last loop
-            Unchecked_Next (Source, Current, Code);
+         while Current <= Source.Last loop
+            Unchecked_Next (Source.Value, Current, Code);
 
             declare
                R : constant Core_Values
@@ -217,10 +218,10 @@ package body Matreshka.Internals.Unicode.Casing is
          Code    : Code_Point;
 
       begin
-         Unchecked_Previous (Source, Current, Code);
+         Unchecked_Previous (Source.Value, Current, Code);
 
          while Current > 1 loop
-            Unchecked_Previous (Source, Current, Code);
+            Unchecked_Previous (Source.Value, Current, Code);
 
             declare
                R : constant Core_Values
@@ -250,10 +251,10 @@ package body Matreshka.Internals.Unicode.Casing is
          Code    : Code_Point;
 
       begin
-         Unchecked_Previous (Source, Current, Code);
+         Unchecked_Previous (Source.Value, Current, Code);
 
          while Current > 1 loop
-            Unchecked_Previous (Source, Current, Code);
+            Unchecked_Previous (Source.Value, Current, Code);
 
             declare
                R : constant Core_Values
@@ -283,10 +284,10 @@ package body Matreshka.Internals.Unicode.Casing is
          Code    : Code_Point;
 
       begin
-         Unchecked_Previous (Source, Current, Code);
+         Unchecked_Previous (Source.Value, Current, Code);
 
          while Current > 1 loop
-            Unchecked_Previous (Source, Current, Code);
+            Unchecked_Previous (Source.Value, Current, Code);
 
             declare
                R : constant Core_Values
@@ -308,8 +309,8 @@ package body Matreshka.Internals.Unicode.Casing is
       Destination.Last := 0;
       Destination.Length := 0;
 
-      while Source_Current <= Source_Last loop
-         Unchecked_Next (Source, Source_Current, Source_Code);
+      while Source_Current <= Source.Last loop
+         Unchecked_Next (Source.Value, Source_Current, Source_Code);
 
          if Locale.Core
              (First_Stage_Index (Source_Code / 16#100#))

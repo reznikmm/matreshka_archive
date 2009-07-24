@@ -538,8 +538,7 @@ package body Matreshka.Strings is
       begin
          Matreshka.Internals.Unicode.Casing.Convert_Case
           (Locale,
-           Self.Data.Value,
-           Self.Data.Last,
+           Self.Data,
            Matreshka.Internals.Ucd.Folding,
            Matreshka.Internals.Ucd.Has_Case_Folding,
            Data);
@@ -570,8 +569,7 @@ package body Matreshka.Strings is
       begin
          Matreshka.Internals.Unicode.Casing.Convert_Case
           (Locale,
-           Self.Data.Value,
-           Self.Data.Last,
+           Self.Data,
            Matreshka.Internals.Ucd.Lower,
            Matreshka.Internals.Ucd.Has_Lowercase_Mapping,
            Data);
@@ -602,8 +600,7 @@ package body Matreshka.Strings is
       begin
          Matreshka.Internals.Unicode.Casing.Convert_Case
           (Locale,
-           Self.Data.Value,
-           Self.Data.Last,
+           Self.Data,
            Matreshka.Internals.Ucd.Upper,
            Matreshka.Internals.Ucd.Has_Uppercase_Mapping,
            Data);
