@@ -70,10 +70,10 @@ package body Matreshka.Strings is
      Index_Mode : in out Index_Modes;
      Item       : Wide_Wide_Character);
 
-   procedure Attach (Self : in out Abstract_Modify_Cursor'Class);
+   procedure Attach (Self : in out Abstract_Cursor'Class);
    --  Attaches cursor to the list of cursors of Universal_String.
 
-   procedure Detach (Self : in out Abstract_Modify_Cursor'Class);
+   procedure Detach (Self : in out Abstract_Cursor'Class);
    --  Detaches cursor from the list of cursors of Universal_String. Also
    --  reset associated object to null.
 
@@ -174,7 +174,7 @@ package body Matreshka.Strings is
    -- Adjust --
    ------------
 
-   overriding procedure Adjust (Self : in out Abstract_Modify_Cursor) is
+   overriding procedure Adjust (Self : in out Abstract_Cursor) is
    begin
       Self.Next     := null;
       Self.Previous := null;
@@ -200,7 +200,7 @@ package body Matreshka.Strings is
    -- Attach --
    ------------
 
-   procedure Attach (Self : in out Abstract_Modify_Cursor'Class) is
+   procedure Attach (Self : in out Abstract_Cursor'Class) is
    begin
       Self.Next                := Self.Object.Cursors.Head;
       Self.Object.Cursors.Head := Self'Unchecked_Access;
@@ -215,7 +215,7 @@ package body Matreshka.Strings is
    ------------
 
    procedure Attach
-    (Self : in out Abstract_Modify_Cursor'Class;
+    (Self : in out Abstract_Cursor'Class;
      Item : in out Universal_String'Class)
    is
    begin
@@ -330,7 +330,7 @@ package body Matreshka.Strings is
    -- Detach --
    ------------
 
-   procedure Detach (Self : in out Abstract_Modify_Cursor'Class) is
+   procedure Detach (Self : in out Abstract_Cursor'Class) is
    begin
       if Self.Object /= null then
          if Self.Next /= null then
@@ -465,7 +465,7 @@ package body Matreshka.Strings is
    -- Finalize --
    --------------
 
-   overriding procedure Finalize (Self : in out Abstract_Modify_Cursor) is
+   overriding procedure Finalize (Self : in out Abstract_Cursor) is
    begin
       Detach (Self);
    end Finalize;
@@ -475,8 +475,8 @@ package body Matreshka.Strings is
    --------------
 
    overriding procedure Finalize (Self : in out Universal_String) is
-      Current : Modify_Cursor_Access := Self.Cursors.Head;
-      Next    : Modify_Cursor_Access;
+      Current : Cursor_Access := Self.Cursors.Head;
+      Next    : Cursor_Access;
 
    begin
       while Current /= null loop
@@ -515,7 +515,7 @@ package body Matreshka.Strings is
    ----------------
 
    not overriding procedure On_Changed
-    (Self           : not null access Abstract_Modify_Cursor;
+    (Self           : not null access Abstract_Cursor;
      Changed_First  : Positive;
      Removed_Last   : Natural;
      Inserted_Last  : Natural)

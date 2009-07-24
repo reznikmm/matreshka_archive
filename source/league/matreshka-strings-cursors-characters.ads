@@ -57,7 +57,7 @@ package Matreshka.Strings.Cursors.Characters is
 
 private
 
-   type Character_Cursor is new Abstract_Modify_Cursor with record
+   type Character_Cursor is new Abstract_Cursor with record
       Current : Natural := 0;
    end record;
 

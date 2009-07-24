@@ -175,8 +175,8 @@ private
 
    type Index_Map_Access is access all Index_Map;
 
-   type Abstract_Modify_Cursor is tagged;
-   type Modify_Cursor_Access is access all Abstract_Modify_Cursor'Class;
+   type Abstract_Cursor is tagged;
+   type Cursor_Access is access all Abstract_Cursor'Class;
 
    type String_Private_Data is limited record
       Counter    : aliased Matreshka.Internals.Atomics.Counters.Counter;
@@ -226,7 +226,7 @@ private
    --  code units.
 
    type Cursor_List is record
-      Head : Modify_Cursor_Access := null;
+      Head : Cursor_Access := null;
    end record;
 
    type Universal_String is new Ada.Finalization.Controlled with record
@@ -281,16 +281,14 @@ private
 
    type Universal_String_Access is access constant Universal_String'Class;
 
-   type Abstract_Modify_Cursor is
-     abstract new Ada.Finalization.Controlled with
-   record
+   type Abstract_Cursor is abstract new Ada.Finalization.Controlled with record
       Object   : Universal_String_Access := null;
-      Next     : Modify_Cursor_Access    := null;
-      Previous : Modify_Cursor_Access    := null;
+      Next     : Cursor_Access           := null;
+      Previous : Cursor_Access           := null;
    end record;
 
    not overriding procedure On_Changed
-    (Self          : not null access Abstract_Modify_Cursor;
+    (Self          : not null access Abstract_Cursor;
      Changed_First : Positive;
      Removed_Last  : Natural;
      Inserted_Last : Natural);
@@ -298,13 +296,13 @@ private
    --  units. Default implementation invalidate iterator.
 
    procedure Attach
-    (Self : in out Abstract_Modify_Cursor'Class;
+    (Self : in out Abstract_Cursor'Class;
      Item : in out Universal_String'Class);
    --  Attaches iterator to the specified string. Exclusive copy of the string
    --  is created if needed.
 
-   overriding procedure Adjust (Self : in out Abstract_Modify_Cursor);
+   overriding procedure Adjust (Self : in out Abstract_Cursor);
 
-   overriding procedure Finalize (Self : in out Abstract_Modify_Cursor);
+   overriding procedure Finalize (Self : in out Abstract_Cursor);
 
 end Matreshka.Strings;

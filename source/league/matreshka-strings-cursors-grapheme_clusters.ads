@@ -58,9 +58,7 @@ package Matreshka.Strings.Cursors.Grapheme_Clusters is
 
 private
 
-   type Grapheme_Cluster_Cursor is
-     new Abstract_Tailored_Modify_Cursor with
-   record
+   type Grapheme_Cluster_Cursor is new Abstract_Tailored_Cursor with record
       Previous_Position : Natural := 0;
       Previous_Length   : Natural := 0;
       Previous_State    : Matreshka.Internals.Ucd.Grapheme_Cluster_Break;
