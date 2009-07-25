@@ -57,8 +57,6 @@ package body Matreshka.Strings is
    --  Detaches cursor from the list of cursors of Universal_String. Also
    --  reset associated object to null.
 
-   Shared_Empty : aliased Internal_String := (Max_Length => 0, others => <>);
-
    Index_Mode_After_Concatenation : constant
      array (Index_Modes, Index_Modes) of Index_Modes
        := (Undefined    => (Single_Units => Single_Units,
@@ -518,6 +516,71 @@ package body Matreshka.Strings is
       Item.Data.Length := Length;
       Item.Data.Index_Mode := Undefined;
    end Read;
+
+   -----------
+   -- Slice --
+   -----------
+
+   function Slice
+    (Self : Universal_String'Class;
+     Low  : Positive;
+     High : Natural)
+       return Universal_String
+   is
+      Length : Natural;
+      First  : Positive;
+      Last   : Natural;
+
+   begin
+      if Low <= High then
+         if Low > Self.Data.Last or else High > Self.Data.Last then
+            raise Constraint_Error with "Index is out of range";
+
+         else
+            Length := High - Low + 1;
+         end if;
+
+      else
+         Length := 0;
+      end if;
+
+      case Self.Data.Index_Mode is
+         when Undefined =>
+            raise Program_Error;
+
+         when Single_Units =>
+            First := Low;
+            Last  := High;
+
+         when Double_Units =>
+            First := Low * 2 - 1;
+            Last  := High * 2;
+
+         when Mixed_Units =>
+            declare
+               M : Index_Map_Access := Self.Data.Index_Map;
+
+            begin
+               if M = null then
+                  Compute_Index_Map (Self.Data.all);
+                  M := Self.Data.Index_Map;
+               end if;
+
+               First := M.Map (Low);
+
+               if Self.Data.Value (M.Map (High))
+                    in High_Surrogate_Utf16_Code_Unit
+               then
+                  Last := M.Map (High) + 1;
+
+               else
+                  Last := M.Map (High);
+               end if;
+            end;
+      end case;
+
+      return Constructors.Create (Slice (Self.Data, First, Last, Length));
+   end Slice;
 
    -----------------
    -- To_Casefold --

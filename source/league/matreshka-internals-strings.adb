@@ -218,9 +218,61 @@ package body Matreshka.Internals.Strings is
    -- Reference --
    ---------------
 
-   procedure Reference (Self : in out Internal_String_Access) is
+   procedure Reference (Self : Internal_String_Access) is
    begin
       Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
    end Reference;
+
+   -----------
+   -- Slice --
+   -----------
+
+   function Slice
+    (Self   : not null Internal_String_Access;
+     Low    : Positive;
+     High   : Natural;
+     Length : Natural)
+       return not null Internal_String_Access
+   is
+      pragma Assert (High < Low
+                       or else (Low <= Self.Last and then High <= Self.Last));
+      pragma Assert (Length in (High - Low + 2) / 2 .. High - Low + 1);
+
+   begin
+      if High < Low then
+         Reference (Shared_Empty'Access);
+
+         return Shared_Empty'Access;
+
+      else
+         declare
+            Size : constant Natural := High - Low + 1;
+
+         begin
+            return Result : constant not null Internal_String_Access
+              := new Internal_String'
+                      (Counter    => Matreshka.Internals.Atomics.Counters.One,
+                       Max_Length => Size,
+                       Value      => Self.Value (Low .. High),
+                       Last       => Size,
+                       Length     => Length,
+                       Index_Mode => Self.Index_Mode,
+                       Index_Map  => null)
+            do
+               --  If Mixed_Units mode is used by source string, then check
+               --  can we improve it to Single_Units or Double_Units.
+
+               if Result.Index_Mode = Mixed_Units then
+                  if Result.Last = Result.Length then
+                     Result.Index_Mode := Single_Units;
+
+                  elsif Result.Last = Result.Length * 2 then
+                     Result.Index_Mode := Double_Units;
+                  end if;
+               end if;
+            end return;
+         end;
+      end if;
+   end Slice;
 
 end Matreshka.Internals.Strings;

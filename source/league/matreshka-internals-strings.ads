@@ -97,11 +97,13 @@ package Matreshka.Internals.Strings is
 
    type Internal_String_Access is access all Internal_String;
 
+   Shared_Empty : aliased Internal_String := (Max_Length => 0, others => <>);
+
 --   function Copy (Source : not null String_Private_Data_Access)
 --     return not null String_Private_Data_Access;
    --  Creates copy of string data.
 
-   procedure Reference (Self : in out Internal_String_Access);
+   procedure Reference (Self : Internal_String_Access);
    pragma Inline (Reference);
    --  Increment reference counter.
 
@@ -114,5 +116,14 @@ package Matreshka.Internals.Strings is
    procedure Append
     (Self : in out Internal_String_Access;
      Item : Internal_String_Access);
+
+   function Slice
+    (Self   : not null Internal_String_Access;
+     Low    : Positive;
+     High   : Natural;
+     Length : Natural)
+       return not null Internal_String_Access;
+   --  Returns slice from Low to High. Length specify expected length of the
+   --  result.
 
 end Matreshka.Internals.Strings;

@@ -116,6 +116,12 @@ package Matreshka.Strings is
     (Self : in out Universal_String'Class;
      Item : Universal_String'Class);
 
+   function Slice
+    (Self : Universal_String'Class;
+     Low  : Positive;
+     High : Natural)
+       return Universal_String;
+
    function To_Uppercase (Self : Universal_String'Class)
      return Universal_String;
    --  Converts each character in the specified string to uppercase form using
