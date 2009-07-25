@@ -184,6 +184,21 @@ package body Matreshka.Strings is
    end Adjust;
 
    ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self : in out Universal_String'Class;
+     Item : Universal_String'Class)
+   is
+      F : constant Natural := Self.Data.Last + 1;
+
+   begin
+      Append (Self.Data, Item.Data);
+      Emit_Changed (Self, F, 0, Self.Data.Last);
+   end Append;
+
+   ------------
    -- Attach --
    ------------
 
@@ -206,9 +221,11 @@ package body Matreshka.Strings is
      Item : in out Universal_String'Class)
    is
    begin
-      Detach (Self);
-      Self.Object := Item'Unchecked_Access;
-      Attach (Self);
+      if Self.Object /= Item'Unchecked_Access then
+         Detach (Self);
+         Self.Object := Item'Unchecked_Access;
+         Attach (Self);
+      end if;
    end Attach;
 
    ------------------
@@ -369,6 +386,23 @@ package body Matreshka.Strings is
    ------------------
    -- Emit_Changed --
    ------------------
+
+   procedure Emit_Changed
+    (Self          : Universal_String'Class;
+     Changed_First : Positive;
+     Removed_Last  : Natural;
+     Inserted_Last : Natural)
+   is
+      Current : Cursor_Access := Self.Cursors.Head;
+      Next    : Cursor_Access;
+
+   begin
+      while Current /= null loop
+         Next := Current.Next;
+         Current.On_Changed (Changed_First, Removed_Last, Inserted_Last);
+         Current := Next;
+      end loop;
+   end Emit_Changed;
 
 --   procedure Emit_Changed
 --    (Self          : not null String_Private_Data_Access;

@@ -97,6 +97,25 @@ package Matreshka.Strings is
      Index : Positive)
        return Wide_Wide_Character;
 
+   function "&"
+    (Left  : Universal_String'Class;
+     Right : Universal_Character'Class)
+       return Universal_String;
+
+   function "&"
+    (Left  : Universal_String'Class;
+     Right : Wide_Wide_Character)
+       return Universal_String;
+
+   function "&"
+    (Left  : Universal_String'Class;
+     Right : Universal_String'Class)
+       return Universal_String;
+
+   procedure Append
+    (Self : in out Universal_String'Class;
+     Item : Universal_String'Class);
+
    function To_Uppercase (Self : Universal_String'Class)
      return Universal_String;
    --  Converts each character in the specified string to uppercase form using
@@ -114,21 +133,6 @@ package Matreshka.Strings is
    --  Converts each character in the specified string to case folding form
    --  using full case conversion (only tailoring is used). Returns result
    --  string.
-
-   function "&"
-    (Left  : Universal_String'Class;
-     Right : Universal_Character'Class)
-       return Universal_String;
-
-   function "&"
-    (Left  : Universal_String'Class;
-     Right : Wide_Wide_Character)
-       return Universal_String;
-
-   function "&"
-    (Left  : Universal_String'Class;
-     Right : Universal_String'Class)
-       return Universal_String;
 
 private
 
@@ -154,6 +158,14 @@ private
 
    type Abstract_Cursor is tagged;
    type Cursor_Access is access all Abstract_Cursor'Class;
+
+   procedure Emit_Changed
+    (Self          : Universal_String'Class;
+     Changed_First : Positive;
+     Removed_Last  : Natural;
+     Inserted_Last : Natural);
+   --  Must be called when internal string data is changed. It notify all
+   --  cursors about this change. All positions are in code units.
 
 --   procedure Emit_Changed
 --    (Self          : not null String_Private_Data_Access;

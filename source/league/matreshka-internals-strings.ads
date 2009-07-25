@@ -47,6 +47,16 @@ package Matreshka.Internals.Strings is
      Mixed_Units);  --  String has both BMP and non-BMP characters, thus index
                     --  table is used for direct access to string's characters.
 
+   To_Index_Mode : constant
+     array (Boolean, Boolean) of Index_Modes
+       := (False => (False => Undefined,
+                     True  => Double_Units),
+           True  => (False => Single_Units,
+                     True  => Mixed_Units));
+   --  String indexing mode for the string. First index must be True when
+   --  string contains BMP characters, second index must be True when string
+   --  contains non-BMP characters.
+
    type Positive_Array is array (Positive range <>) of Positive;
 
    type Index_Map (Length : Natural) is record
@@ -91,20 +101,18 @@ package Matreshka.Internals.Strings is
 --     return not null String_Private_Data_Access;
    --  Creates copy of string data.
 
+   procedure Reference (Self : in out Internal_String_Access);
+   pragma Inline (Reference);
+   --  Increment reference counter.
+
    procedure Dereference (Self : in out Internal_String_Access);
    --  Decrement reference counter and free resources if it reach zero value.
 
    procedure Compute_Index_Map (Self : in out Internal_String);
    --  Compute index map. This operation is thread-safe.
 
-   To_Index_Mode : constant
-     array (Boolean, Boolean) of Index_Modes
-       := (False => (False => Undefined,
-                     True  => Double_Units),
-           True  => (False => Single_Units,
-                     True  => Mixed_Units));
-   --  String indexing mode for the string. First index must be True is string
-   --  contains BMP characters, second index must be True if string contains
-   --  non-BMP characters.
+   procedure Append
+    (Self : in out Internal_String_Access;
+     Item : Internal_String_Access);
 
 end Matreshka.Internals.Strings;
