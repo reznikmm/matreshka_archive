@@ -31,6 +31,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Utf16;
 
 package body Matreshka.Strings.Cursors.Characters is
 

@@ -52,7 +52,6 @@ private with Ada.Streams;
 
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
-private with Matreshka.Internals.Utf16;
 
 package Matreshka.Strings is
 
@@ -208,13 +207,6 @@ private
 
       function Create
        (Data : not null Matreshka.Internals.Strings.Internal_String_Access)
-          return Universal_String;
-      --  Creates instance of Universal_String with specified parameters.
-
-      function Create
-       (Value      : Matreshka.Internals.Utf16.Utf16_String;
-        Length     : Natural;
-        Index_Mode : Matreshka.Internals.Strings.Index_Modes)
           return Universal_String;
       --  Creates instance of Universal_String with specified parameters.
 

@@ -35,6 +35,7 @@ with Matreshka.Internals.Atomics.Counters;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Ucd;
 with Matreshka.Internals.Unicode.Casing;
+with Matreshka.Internals.Utf16;
 
 package body Matreshka.Strings is
 
@@ -249,29 +250,6 @@ package body Matreshka.Strings is
          do
             Result.Cursors := Result.List'Unchecked_Access;
          end return;
-      end Create;
-
-      ------------
-      -- Create --
-      ------------
-
-      function Create
-       (Value      : Matreshka.Internals.Utf16.Utf16_String;
-        Length     : Natural;
-        Index_Mode : Index_Modes)
-          return Universal_String
-      is
-      begin
-         return
-           Create
-            (new Internal_String'
-                  (Max_Length => Value'Length,
-                   Counter    => Matreshka.Internals.Atomics.Counters.One,
-                   Value      => Value,
-                   Last       => Value'Length,
-                   Length     => Length,
-                   Index_Mode => Index_Mode,
-                   Index_Map  => null));
       end Create;
 
    end Constructors;

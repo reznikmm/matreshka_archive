@@ -32,6 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Utf16;
 
 package body Matreshka.Strings.Cursors.Grapheme_Clusters is
 
@@ -120,9 +121,11 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
 
          return
            Constructors.Create
-            (D.Value (Self.Current_Position .. Self.Next_Position - 1),
-             Self.Next_Position - Self.Current_Position,
-             D.Index_Mode);
+            (Slice
+              (D,
+               Self.Current_Position,
+               Self.Next_Position - 1,
+               Self.Current_Length));
       end;
    end Element;
 
