@@ -98,9 +98,11 @@ package Matreshka.Internals.Ucd is
 --   subtype Cased_Letter is Letter range Lowercase_Letter .. Uppercase_Letter;
 --   subtype Mark is General_Category range Spacing_Mark .. Nonspacing_Mark;
 --   subtype Number is General_Category range Decimal_Number .. Other_Number;
---   subtype Punctuation is General_Category range Connector_Punctuation .. Open_Punctuation;
+--   subtype Punctuation is General_Category
+--     range Connector_Punctuation .. Open_Punctuation;
 --   subtype Symbol is General_Category range Currency_Symbol .. Other_Symbol;
---   subtype Separator is General_Category range Line_Separator .. Space_Separator;
+--   subtype Separator is General_Category
+--     range Line_Separator .. Space_Separator;
 
    type Canonical_Combining_Class is mod 256;
 

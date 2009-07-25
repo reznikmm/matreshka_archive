@@ -581,6 +581,54 @@ package body Matreshka.Strings is
       end;
    end To_Lowercase;
 
+   ----------------------------
+   -- To_Universal_Character --
+   ----------------------------
+
+   function To_Universal_Character
+    (Self : Wide_Wide_Character)
+       return Universal_Character
+   is
+   begin
+      if Is_Valid_Unicode_Code_Point (Wide_Wide_Character'Pos (Self)) then
+         return Universal_Character'(C => Wide_Wide_Character'Pos (Self));
+
+      else
+         raise Constraint_Error
+           with "Wide_Wide_Character is not a valid Unicode code point";
+      end if;
+   end To_Universal_Character;
+
+   -------------------------
+   -- To_Universal_String --
+   -------------------------
+
+   function To_Universal_String (Item : Wide_Wide_String)
+     return Universal_String
+   is
+      Data : Internal_String_Access;
+
+   begin
+      if Item'Length = 0 then
+         Matreshka.Internals.Atomics.Counters.Increment
+          (Shared_Empty.Counter'Access);
+
+         return Result : Universal_String
+           := Universal_String'
+               (Ada.Finalization.Controlled with
+                  Data    => Shared_Empty'Access,
+                  List    => (Head => null),
+                  Cursors => null)
+         do
+            Result.Cursors := Result.List'Unchecked_Access;
+         end return;
+      end if;
+
+      To_Utf16_String (Item, Data);
+
+      return Constructors.Create (Data);
+   end To_Universal_String;
+
    ------------------
    -- To_Uppercase --
    ------------------
@@ -642,7 +690,7 @@ package body Matreshka.Strings is
                if C <= 16#FFFF# then
                   Destination.Last := Destination.Last + 1;
                   Destination.Value (Destination.Last) := Utf16_Code_Unit (C);
-                  Has_Bmp := True;
+                  Has_BMP := True;
 
                else
                   if not Double_Length then
@@ -674,7 +722,7 @@ package body Matreshka.Strings is
                   Destination.Value (Destination.Last) :=
                     Utf16_Code_Unit (Low_Surrogate_First + C mod 16#400#);
 
-                  Has_Non_Bmp := True;
+                  Has_Non_BMP := True;
                end if;
             end;
 
@@ -692,54 +740,6 @@ package body Matreshka.Strings is
 
          raise;
    end To_Utf16_String;
-
-   ----------------------------
-   -- To_Universal_Character --
-   ----------------------------
-
-   function To_Universal_Character
-    (Self : Wide_Wide_Character)
-       return Universal_Character
-   is
-   begin
-      if Is_Valid_Unicode_Code_Point (Wide_Wide_Character'Pos (Self)) then
-         return Universal_Character'(C => Wide_Wide_Character'Pos (Self));
-
-      else
-         raise Constraint_Error
-           with "Wide_Wide_Character is not a valid Unicode code point";
-      end if;
-   end To_Universal_Character;
-
-   -------------------------
-   -- To_Universal_String --
-   -------------------------
-
-   function To_Universal_String (Item : Wide_Wide_String)
-     return Universal_String
-   is
-      Data : Internal_String_Access;
-
-   begin
-      if Item'Length = 0 then
-         Matreshka.Internals.Atomics.Counters.Increment
-          (Shared_Empty.Counter'Access);
-
-         return Result : Universal_String
-           := Universal_String'
-               (Ada.Finalization.Controlled with
-                  Data    => Shared_Empty'Access,
-                  List    => (Head => null),
-                  Cursors => null)
-         do
-            Result.Cursors := Result.List'Unchecked_Access;
-         end return;
-      end if;
-
-      To_Utf16_String (Item, Data);
-
-      return Constructors.Create (Data);
-   end To_Universal_String;
 
    ----------------------------
    -- To_Wide_Wide_Character --
@@ -792,7 +792,7 @@ package body Matreshka.Strings is
       else
          Data.Last := Data.Last + 2;
       end if;
-        
+
 --      if Last > Value'Last then
 --         declare
 --            Aux : constant not null Utf16_String_Access
@@ -810,7 +810,7 @@ package body Matreshka.Strings is
          Data.Value (Data.Last) := Utf16_Code_Unit (C);
 
       else
-         Has_Non_Bmp      := True;
+         Has_Non_BMP      := True;
          C                := C - 16#1_0000#;
          Data.Value (Data.Last - 1) :=
            Utf16_Code_Unit (High_Surrogate_First + C / 16#400#);

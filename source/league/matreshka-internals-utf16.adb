@@ -123,7 +123,7 @@ package body Matreshka.Internals.Utf16 is
          Position := Position - 1;
       end if;
    end Unchecked_Previous;
-     
+
    -----------------------------
    -- Unchecked_To_Code_Point --
    -----------------------------

@@ -47,7 +47,8 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
            LF            => (others => True),
            Control       => (others => True),
            Prepend       => (Other | Prepend | Extend | Spacing_Mark
-                               | L | V | T | LV | LVT => False, others => True),
+                               | L | V | T | LV | LVT => False,
+                             others => True),
            Extend        => (Extend | Spacing_Mark => False, others => True),
            Spacing_Mark  => (Extend | Spacing_Mark => False, others => True),
            L             => (Extend | Spacing_Mark | L | V | LV | LVT => False,
@@ -168,7 +169,7 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
       D : constant not null Internal_String_Access := Self.Object.Data;
 
    begin
-      if Self.Current_Position > D.Value'First then 
+      if Self.Current_Position > D.Value'First then
          Unchecked_Previous
           (D.Value, Self.Previous_Position, Self.Previous_State, Self.Locale);
          Self.Previous_Length := 1;

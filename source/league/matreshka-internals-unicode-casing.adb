@@ -87,7 +87,7 @@ package body Matreshka.Internals.Unicode.Casing is
          else
             Destination.Last := Destination.Last + 2;
          end if;
-        
+
          if Destination.Last > Destination.Value'Last then
             declare
                Aux : constant not null Internal_String_Access
@@ -108,7 +108,7 @@ package body Matreshka.Internals.Unicode.Casing is
             Destination.Value (Destination.Last) := Utf16_Code_Unit (C);
 
          else
-            Has_Non_Bmp := True;
+            Has_Non_BMP := True;
             X           := C - 16#1_0000#;
             Destination.Value (Destination.Last - 1) :=
               Utf16_Code_Unit (High_Surrogate_First + X / 16#400#);
@@ -148,6 +148,34 @@ package body Matreshka.Internals.Unicode.Casing is
          return False;
       end Is_Followed_By_Before_Dot_Context;
 
+      ----------------------------------------
+      -- Is_Followed_By_Final_Sigma_Context --
+      ----------------------------------------
+
+      function Is_Followed_By_Final_Sigma_Context return Boolean is
+         Current : Natural := Source_Current;
+         Code    : Code_Point;
+
+      begin
+         while Current <= Source.Last loop
+            Unchecked_Next (Source.Value, Current, Code);
+
+            declare
+               R : constant Core_Values
+                 := Locale.Core
+                     (First_Stage_Index (Code / 16#100#))
+                     (Second_Stage_Index (Code mod 16#100#));
+
+            begin
+               if not R.B (Case_Ignorable) then
+                  return not R.B (Cased);
+               end if;
+            end;
+         end loop;
+
+         return True;
+      end Is_Followed_By_Final_Sigma_Context;
+
       ---------------------------------------
       -- Is_Followed_By_More_Above_Context --
       ---------------------------------------
@@ -178,34 +206,6 @@ package body Matreshka.Internals.Unicode.Casing is
 
          return False;
       end Is_Followed_By_More_Above_Context;
-
-      ----------------------------------------
-      -- Is_Followed_By_Final_Sigma_Context --
-      ----------------------------------------
-
-      function Is_Followed_By_Final_Sigma_Context return Boolean is
-         Current : Natural := Source_Current;
-         Code    : Code_Point;
-
-      begin
-         while Current <= Source.Last loop
-            Unchecked_Next (Source.Value, Current, Code);
-
-            declare
-               R : constant Core_Values
-                 := Locale.Core
-                     (First_Stage_Index (Code / 16#100#))
-                     (Second_Stage_Index (Code mod 16#100#));
-
-            begin
-               if not R.B (Case_Ignorable) then
-                  return not R.B (Cased);
-               end if;
-            end;
-         end loop;
-
-         return True;
-      end Is_Followed_By_Final_Sigma_Context;
 
       ------------------------------------
       -- Is_Preceded_By_After_I_Context --
