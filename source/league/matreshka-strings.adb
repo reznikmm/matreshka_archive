@@ -505,24 +505,19 @@ package body Matreshka.Strings is
      High : Natural)
        return Universal_String
    is
+      D      : constant not null Internal_String_Access := Self.Data;
       Length : Natural;
       First  : Positive;
       Last   : Natural;
 
    begin
-      if Low <= High then
-         if Low > Self.Data.Last or else High > Self.Data.Last then
-            raise Constraint_Error with "Index is out of range";
-
-         else
-            Length := High - Low + 1;
-         end if;
-
-      else
-         Length := 0;
+      if Low <= High and then (Low > D.Length or else High > D.Length) then
+         raise Constraint_Error with "Index is out of range";
       end if;
 
-      case Self.Data.Index_Mode is
+      Length := Natural'Max (High - Low + 1, 0);
+
+      case D.Index_Mode is
          when Undefined =>
             raise Program_Error;
 
@@ -536,28 +531,26 @@ package body Matreshka.Strings is
 
          when Mixed_Units =>
             declare
-               M : Index_Map_Access := Self.Data.Index_Map;
+               M : Index_Map_Access := D.Index_Map;
 
             begin
                if M = null then
-                  Compute_Index_Map (Self.Data.all);
-                  M := Self.Data.Index_Map;
+                  Compute_Index_Map (D.all);
+                  M := D.Index_Map;
                end if;
 
                First := M.Map (Low);
 
-               if Self.Data.Value (M.Map (High))
-                    in High_Surrogate_Utf16_Code_Unit
-               then
-                  Last := M.Map (High) + 1;
+               if High = D.Length then
+                  Last := D.Last;
 
                else
-                  Last := M.Map (High);
+                  Last := M.Map (High + 1) - 1;
                end if;
             end;
       end case;
 
-      return Constructors.Create (Slice (Self.Data, First, Last, Length));
+      return Constructors.Create (Slice (D, First, Last, Length));
    end Slice;
 
    -----------------

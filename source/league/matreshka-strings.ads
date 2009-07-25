@@ -96,6 +96,12 @@ package Matreshka.Strings is
      Index : Positive)
        return Wide_Wide_Character;
 
+   function Slice
+    (Self : Universal_String'Class;
+     Low  : Positive;
+     High : Natural)
+       return Universal_String;
+
    function "&"
     (Left  : Universal_String'Class;
      Right : Universal_Character'Class)
@@ -114,12 +120,6 @@ package Matreshka.Strings is
    procedure Append
     (Self : in out Universal_String'Class;
      Item : Universal_String'Class);
-
-   function Slice
-    (Self : Universal_String'Class;
-     Low  : Positive;
-     High : Natural)
-       return Universal_String;
 
    function To_Uppercase (Self : Universal_String'Class)
      return Universal_String;
