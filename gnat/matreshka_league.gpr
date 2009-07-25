@@ -42,7 +42,13 @@ project Matreshka_League is
    package Compiler is
 
       for Default_Switches ("Ada")
-        use ("-g", "-O2", "-gnat05", "-gnata", "-gnatn", "-gnatwa");
+        use
+         ("-g", "-O2",
+          "-gnat05",
+          "-gnata",
+          "-gnatn",
+          "-gnatwa",
+          "-gnatyaAbBcdefhiIkmnoOprsStux");
 
    end Compiler;
 
