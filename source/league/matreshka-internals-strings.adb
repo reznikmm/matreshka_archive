@@ -88,38 +88,18 @@ package body Matreshka.Internals.Strings is
     (Self : in out Internal_String_Access;
      Item : Internal_String_Access)
    is
-      procedure Concatenate
-       (Result : Internal_String_Access;
-        Left   : Internal_String_Access;
-        Right  : Internal_String_Access);
-      --  Concatenates Left and Right and store result in Result. It assumes
-      --  Result and Left can be the same object.
-
-      -----------------
-      -- Concatenate --
-      -----------------
-
-      procedure Concatenate
-       (Result : Internal_String_Access;
-        Left   : Internal_String_Access;
-        Right  : Internal_String_Access)
-      is
-      begin
-         if Result /= Left then
-            Result.Value (1 .. Left.Last) := Left.Value (1 .. Left.Last);
-         end if;
-
-         Result.Value (Left.Last + 1 .. Left.Last + Right.Last) :=
-           Right.Value (1 .. Right.Last);
-         Result.Last := Left.Last + Right.Last;
-         Result.Length := Left.Length + Right.Length;
-         Result.Index_Mode :=
-           Index_Mode_After_Concatenation (Left.Index_Mode, Right.Index_Mode);
-         Free (Result.Index_Map);
-      end Concatenate;
+      Source : Internal_String_Access := Self;
+      Size   : constant Natural := Source.Last + Item.Last;
 
    begin
-      if Item.Length = 0 then
+      if Size = 0 then
+         if Self /= Shared_Empty'Access then
+            Dereference (Self);
+            Self := Shared_Empty'Access;
+            Reference (Self);
+         end if;
+
+      elsif Item.Length = 0 then
          null;
 
       elsif Self.Length = 0 then
@@ -128,30 +108,34 @@ package body Matreshka.Internals.Strings is
          Reference (Self);
 
       else
-         declare
-            Total_Size : constant Natural := Self.Last + Item.Last;
+         if Size > Self.Size
+           or else not Matreshka.Internals.Atomics.Counters.Is_One
+                        (Self.Counter'Access)
+         then
+            declare
+               New_Size : constant Natural
+                 := ((Size + Self.Last / Growth_Factor - 1)
+                        / Min_Mul_Alloc + 1) * Min_Mul_Alloc;
+            begin
+               Self := new Internal_String (New_Size);
+            end;
+         end if;
 
-         begin
-            if Total_Size > Self.Size
-              or else not Matreshka.Internals.Atomics.Counters.Is_One
-                           (Self.Counter'Access)
-            then
-               declare
-                  New_Size : constant Natural
-                    := ((Total_Size + Self.Last / Growth_Factor - 1)
-                           / Min_Mul_Alloc + 1) * Min_Mul_Alloc;
-                  Aux      : Internal_String_Access := Self;
+         if Self /= Source then
+            Self.Value (1 .. Source.Last) := Source.Value (1 .. Source.Last);
+         end if;
 
-               begin
-                  Self := new Internal_String (New_Size);
-                  Concatenate (Self, Aux, Item);
-                  Dereference (Aux);
-               end;
+         Self.Value (Source.Last + 1 .. Source.Last + Item.Last) :=
+           Item.Value (1 .. Item.Last);
+         Self.Last := Size;
+         Self.Length := Source.Length + Item.Length;
+         Self.Index_Mode :=
+           Index_Mode_After_Concatenation (Source.Index_Mode, Item.Index_Mode);
+         Free (Self.Index_Map);
 
-            else
-               Concatenate (Self, Self, Item);
-            end if;
-         end;
+         if Self /= Source then
+            Dereference (Source);
+         end if;
       end if;
    end Append;
 
