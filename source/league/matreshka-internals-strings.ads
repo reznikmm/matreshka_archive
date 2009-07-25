@@ -68,11 +68,11 @@ package Matreshka.Internals.Strings is
 
    type Index_Map_Access is access all Index_Map;
 
-   type Internal_String (Max_Length : Natural) is limited record
+   type Internal_String (Size : Natural) is limited record
       Counter    : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
-      Value      : Matreshka.Internals.Utf16.Utf16_String (1 .. Max_Length);
+      Value      : Matreshka.Internals.Utf16.Utf16_String (1 .. Size);
       --  String data. Internal data always has well-formed UTF-16 encoded
       --  sequence of valid Unicode code points. Validity checks proceed only
       --  for potentially invalid user specified data, and never proceed for
@@ -97,7 +97,7 @@ package Matreshka.Internals.Strings is
 
    type Internal_String_Access is access all Internal_String;
 
-   Shared_Empty : aliased Internal_String := (Max_Length => 0, others => <>);
+   Shared_Empty : aliased Internal_String := (Size => 0, others => <>);
 
 --   function Copy (Source : not null String_Private_Data_Access)
 --     return not null String_Private_Data_Access;

@@ -129,21 +129,21 @@ package body Matreshka.Internals.Strings is
 
       else
          declare
-            Length : constant Natural := Self.Last + Item.Last;
+            Total_Size : constant Natural := Self.Last + Item.Last;
 
          begin
-            if Length > Self.Max_Length
+            if Total_Size > Self.Size
               or else not Matreshka.Internals.Atomics.Counters.Is_One
                            (Self.Counter'Access)
             then
                declare
-                  New_Length : constant Natural
-                    := ((Length + Self.Last / Growth_Factor - 1)
+                  New_Size : constant Natural
+                    := ((Total_Size + Self.Last / Growth_Factor - 1)
                            / Min_Mul_Alloc + 1) * Min_Mul_Alloc;
-                  Aux        : Internal_String_Access := Self;
+                  Aux      : Internal_String_Access := Self;
 
                begin
-                  Self := new Internal_String (New_Length);
+                  Self := new Internal_String (New_Size);
                   Concatenate (Self, Aux, Item);
                   Dereference (Aux);
                end;
@@ -252,7 +252,7 @@ package body Matreshka.Internals.Strings is
             return Result : constant not null Internal_String_Access
               := new Internal_String'
                       (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                       Max_Length => Size,
+                       Size       => Size,
                        Value      => Self.Value (Low .. High),
                        Last       => Size,
                        Length     => Length,
