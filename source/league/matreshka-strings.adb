@@ -156,6 +156,23 @@ package body Matreshka.Strings is
       end;
    end "&";
 
+   ---------
+   -- "=" --
+   ---------
+
+   overriding function "="
+    (Left  : Universal_String'Class;
+     Right : Universal_String'Class)
+       return Boolean
+   is
+   begin
+      return
+        Left.Data = Right.Data
+          or else (Left.Data.Last = Right.Data.Last
+                     and then Left.Data.Value (1 .. Left.Data.Last)
+                                = Right.Data.Value (1 .. Right.Data.Last));
+   end "=";
+
    ------------
    -- Adjust --
    ------------

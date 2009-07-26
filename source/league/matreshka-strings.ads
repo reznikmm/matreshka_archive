@@ -107,10 +107,20 @@ package Matreshka.Strings is
      Right : Universal_Character'Class)
        return Universal_String;
 
+--   function "&"
+--    (Left  : Universal_Character'Class;
+--     Right : Universal_String'Class)
+--       return Universal_String;
+
    function "&"
     (Left  : Universal_String'Class;
      Right : Wide_Wide_Character)
        return Universal_String;
+
+--   function "&"
+--    (Left  : Wide_Wide_Character;
+--     Right : Universal_String'Class)
+--       return Universal_String;
 
    function "&"
     (Left  : Universal_String'Class;
@@ -121,11 +131,39 @@ package Matreshka.Strings is
     (Self : in out Universal_String'Class;
      Item : Universal_String'Class);
 
+--   procedure Append
+--    (Self : in out Universal_String'Class;
+--     Item : Universal_Character'Class);
+--
+--   procedure Append
+--    (Self : in out Universal_String'Class;
+--     Item : Wide_Wide_String);
+--
+--   procedure Append
+--    (Self : in out Universal_String'Class;
+--     Item : Wide_Wide_Character);
+
+--   procedure Replace
+--    (Self  : in out Universal_String'Class;
+--     Index : Positive;
+--     By    : Universal_Character'Class);
+--
+--   procedure Replace
+--    (Self  : in out Universal_String'Class;
+--     Index : Positive;
+--     By    : Wide_Wide_Characters);
+
    procedure Replace
     (Self : in out Universal_String'Class;
      Low  : Positive;
      High : Natural;
      By   : Universal_String'Class);
+
+--   procedure Replace
+--    (Self : in out Universal_String'Class;
+--     Low  : Positive;
+--     High : Natural;
+--     By   : Wide_Wide_String);
 
    function To_Uppercase (Self : Universal_String'Class)
      return Universal_String;
@@ -144,6 +182,22 @@ package Matreshka.Strings is
    --  Converts each character in the specified string to case folding form
    --  using full case conversion (only tailoring is used). Returns result
    --  string.
+
+   overriding function "="
+    (Left  : Universal_String'Class;
+     Right : Universal_String'Class)
+       return Boolean;
+   --  Binary compare two strings. Returns True iff both strings are equal.
+
+--   function "="
+--    (Left  : Universal_String'Class;
+--     Right : Wide_Wide_String)
+--       return Boolean;
+--
+--   function "="
+--    (Left  : Wide_Wide_String;
+--     Right : Universal_String'Class)
+--       return Boolean;
 
 private
 
