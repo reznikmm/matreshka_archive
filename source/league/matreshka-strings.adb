@@ -495,6 +495,64 @@ package body Matreshka.Strings is
       Item.Data.Index_Mode := Undefined;
    end Read;
 
+   -------------
+   -- Replace --
+   -------------
+
+   procedure Replace
+    (Self : in out Universal_String'Class;
+     Low  : Positive;
+     High : Natural;
+     By   : Universal_String'Class)
+   is
+      D      : constant not null Internal_String_Access := Self.Data;
+      Length : Natural;
+      First  : Positive;
+      Last   : Natural;
+
+   begin
+      if Low > D.Last + 1 or else High > D.Last then
+         raise Constraint_Error with "Index is out of range";
+      end if;
+
+      Length := Natural'Max (High - Low + 1, 0);
+
+      case D.Index_Mode is
+         when Undefined =>
+            raise Program_Error;
+
+         when Single_Units =>
+            First := Low;
+            Last  := High;
+
+         when Double_Units =>
+            First := Low * 2 - 1;
+            Last  := High * 2;
+
+         when Mixed_Units =>
+            declare
+               M : Index_Map_Access := D.Index_Map;
+
+            begin
+               if M = null then
+                  Compute_Index_Map (D.all);
+                  M := D.Index_Map;
+               end if;
+
+               First := M.Map (Low);
+
+               if High = D.Length then
+                  Last := D.Last;
+
+               else
+                  Last := M.Map (High + 1) - 1;
+               end if;
+            end;
+      end case;
+
+      Replace (Self.Data, First, Last, Length, By.Data);
+   end Replace;
+
    -----------
    -- Slice --
    -----------

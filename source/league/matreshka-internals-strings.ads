@@ -126,4 +126,11 @@ package Matreshka.Internals.Strings is
    --  Returns slice from Low to High. Length specify expected length of the
    --  result.
 
+   procedure Replace
+    (Self   : in out Internal_String_Access;
+     Low    : Positive;
+     High   : Natural;
+     Length : Natural;
+     By     : not null Internal_String_Access);
+
 end Matreshka.Internals.Strings;

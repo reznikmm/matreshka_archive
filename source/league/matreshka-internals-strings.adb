@@ -187,7 +187,7 @@ package body Matreshka.Internals.Strings is
          if Matreshka.Internals.Atomics.Counters.Decrement
              (Self.Counter'Access)
          then
---            pragma Assert (Self /= Shared_Empty'Access);
+            pragma Assert (Self /= Shared_Empty'Access);
 
             Free (Self.Index_Map);
             Free (Self);
@@ -206,6 +206,84 @@ package body Matreshka.Internals.Strings is
    begin
       Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
    end Reference;
+
+   -------------
+   -- Replace --
+   -------------
+
+   procedure Replace
+    (Self   : in out Internal_String_Access;
+     Low    : Positive;
+     High   : Natural;
+     Length : Natural;
+     By     : not null Internal_String_Access)
+   is
+      pragma Assert (Low <= Self.Last + 1);
+      pragma Assert (High < Low or else High <= Self.Last);
+      pragma Assert (Length in (High - Low + 2) / 2 .. High - Low + 1);
+
+      Source : Internal_String_Access := Self;
+      Size   : constant Natural
+        := Source.Last - Natural'Max (High - Low + 1, 0) + By.Last;
+
+   begin
+      if Size = 0 then
+         if Self /= Shared_Empty'Access then
+            Dereference (Self);
+            Self := Shared_Empty'Access;
+            Reference (Self);
+         end if;
+
+      elsif By.Size = Size then
+         Dereference (Self);
+         Self := By;
+         Reference (Self);
+
+      else
+         if Size > Self.Size
+           or else not Matreshka.Internals.Atomics.Counters.Is_One
+                        (Self.Counter'Access)
+         then
+            Self := new Internal_String (Size);
+         end if;
+
+         if High < Low then
+            Self.Value (Low + By.Last .. Size) :=
+              Source.Value (Low .. Source.Last);
+            Self.Value (Low .. Low + By.Last - 1) := By.Value (1 .. By.Last);
+
+         else
+            Self.Value (Low + By.Last .. Size) :=
+              Source.Value (High + 1 .. Source.Last);
+            Self.Value (Low .. Low + By.Last - 1) := By.Value (1 .. By.Last);
+         end if;
+
+         if Self /= Source then
+            Self.Value (1 .. Low - 1) := Source.Value (1 .. Low - 1);
+         end if;
+
+         Self.Last := Size;
+         Self.Length := Source.Length - Length + By.Length;
+         Self.Index_Mode :=
+           Index_Mode_After_Concatenation (Source.Index_Mode, By.Index_Mode);
+
+         --  If Mixed_Units mode is used by source string, then check can we
+         --  improve it to Single_Units or Double_Units.
+
+         if Self.Index_Mode = Mixed_Units then
+            if Self.Last = Self.Length then
+               Self.Index_Mode := Single_Units;
+
+            elsif Self.Last = Self.Length * 2 then
+               Self.Index_Mode := Double_Units;
+            end if;
+         end if;
+
+         if Self /= Source then
+            Dereference (Source);
+         end if;
+      end if;
+   end Replace;
 
    -----------
    -- Slice --

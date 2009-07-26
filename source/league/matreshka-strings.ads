@@ -121,6 +121,12 @@ package Matreshka.Strings is
     (Self : in out Universal_String'Class;
      Item : Universal_String'Class);
 
+   procedure Replace
+    (Self : in out Universal_String'Class;
+     Low  : Positive;
+     High : Natural;
+     By   : Universal_String'Class);
+
    function To_Uppercase (Self : Universal_String'Class)
      return Universal_String;
    --  Converts each character in the specified string to uppercase form using
