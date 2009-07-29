@@ -165,6 +165,10 @@ package Matreshka.Strings is
 --     High : Natural;
 --     By   : Wide_Wide_String);
 
+   -----------------
+   -- Conversions --
+   -----------------
+
    function To_Uppercase (Self : Universal_String'Class)
      return Universal_String;
    --  Converts each character in the specified string to uppercase form using
@@ -183,21 +187,30 @@ package Matreshka.Strings is
    --  using full case conversion (only tailoring is used). Returns result
    --  string.
 
-   overriding function "="
-    (Left  : Universal_String'Class;
-     Right : Universal_String'Class)
-       return Boolean;
-   --  Binary compare two strings. Returns True iff both strings are equal.
+   --------------------------------------
+   -- Equivalence tests and comparison --
+   --------------------------------------
 
---   function "="
---    (Left  : Universal_String'Class;
---     Right : Wide_Wide_String)
---       return Boolean;
---
---   function "="
---    (Left  : Wide_Wide_String;
---     Right : Universal_String'Class)
---       return Boolean;
+   function "=" (Left  : Universal_String; Right : Universal_String)
+     return Boolean;
+   function "=" (Left : Universal_String'Class; Right : Universal_String'Class)
+     return Boolean;
+   --  These two operators make ambiguous use of "=" for objects of the
+   --  Universal_String type. Both raise Program_Error exception.
+
+   type Relationship is (Less, Equal, Greater);
+
+   function Is_Binary_Equal
+    (Self : Universal_String'Class;
+     To   : Universal_String'Class)
+       return Boolean;
+   --  Returns True if both strings are binary equivalent.
+
+   function Binary_Compare
+    (Self : Universal_String'Class;
+     To   : Universal_String'Class)
+       return Relationship;
+   --  Compare two string as a sequences of Unicode Code Points.
 
 private
 
