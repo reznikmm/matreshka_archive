@@ -187,6 +187,11 @@ package Matreshka.Strings is
    --  using full case conversion (only tailoring is used). Returns result
    --  string.
 
+   function To_NFD (Self : Universal_String'Class)
+     return Universal_String;
+   --  Returns specified string converted into Normalization Form D (canonical
+   --  decomposition).
+
    --------------------------------------
    -- Equivalence tests and comparison --
    --------------------------------------

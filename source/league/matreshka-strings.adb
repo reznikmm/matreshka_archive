@@ -35,6 +35,7 @@ with Matreshka.Internals.Atomics.Counters;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Ucd;
 with Matreshka.Internals.Unicode.Casing;
+with Matreshka.Internals.Unicode.Normalization;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Strings is
@@ -763,6 +764,21 @@ package body Matreshka.Strings is
          return Constructors.Create (Data);
       end;
    end To_Lowercase;
+
+   ------------
+   -- To_NFD --
+   ------------
+
+   function To_NFD (Self : Universal_String'Class)
+     return Universal_String
+   is
+      Data : Internal_String_Access;
+
+   begin
+      Matreshka.Internals.Unicode.Normalization.NFD (Self.Data, Data);
+
+      return Constructors.Create (Data);
+   end To_NFD;
 
    ----------------------------
    -- To_Universal_Character --
