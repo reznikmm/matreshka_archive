@@ -43,7 +43,8 @@ project Matreshka_League is
 
       for Default_Switches ("Ada")
         use
-         ("-g", "-O2",
+         ("-g",
+          "-O2",
           "-gnat05",
           "-gnata",
           "-gnatn",
