@@ -432,6 +432,46 @@ procedure Gen_Props (Source_Directory : String) is
            Maybe => NQC_Maybe_Image'Access,
            Yes   => NQC_Yes_Image'Access);
 
+   DT_Canonical_Image : aliased constant String := "Canonical";
+   DT_Compat_Image    : aliased constant String := "Compat";
+   DT_Circle_Image    : aliased constant String := "Circle";
+   DT_Final_Image     : aliased constant String := "Final";
+   DT_Font_Image      : aliased constant String := "Font";
+   DT_Fraction_Image  : aliased constant String := "Fraction";
+   DT_Initial_Image   : aliased constant String := "Initial";
+   DT_Isolated_Image  : aliased constant String := "Isolated";
+   DT_Medial_Image    : aliased constant String := "Medial";
+   DT_Narrow_Image    : aliased constant String := "Narrow";
+   DT_No_Break_Image  : aliased constant String := "No_Break";
+   DT_None_Image      : aliased constant String := "None";
+   DT_Small_Image     : aliased constant String := "Small";
+   DT_Square_Image    : aliased constant String := "Square";
+   DT_Sub_Image       : aliased constant String := "Sub";
+   DT_Super_Image     : aliased constant String := "Super";
+   DT_Vertical_Image  : aliased constant String := "Vertical";
+   DT_Wide_Image      : aliased constant String := "Wide";
+
+   Decomposition_Type_Image : constant
+     array (Decomposition_Type) of Constant_String_Access
+       := (Canonical => DT_Canonical_Image'Access,
+           Compat    => DT_Compat_Image'Access,
+           Circle    => DT_Circle_Image'Access,
+           Final     => DT_Final_Image'Access,
+           Font      => DT_Font_Image'Access,
+           Fraction  => DT_Fraction_Image'Access,
+           Initial   => DT_Initial_Image'Access,
+           Isolated  => DT_Isolated_Image'Access,
+           Medial    => DT_Medial_Image'Access,
+           Narrow    => DT_Narrow_Image'Access,
+           No_Break  => DT_No_Break_Image'Access,
+           None      => DT_None_Image'Access,
+           Small     => DT_Small_Image'Access,
+           Square    => DT_Square_Image'Access,
+           Sub       => DT_Sub_Image'Access,
+           Super     => DT_Super_Image'Access,
+           Vertical  => DT_Vertical_Image'Access,
+           Wide      => DT_Wide_Image'Access);
+
    ---------
    -- Put --
    ---------
@@ -473,6 +513,8 @@ procedure Gen_Props (Source_Directory : String) is
           & Normalization_Quick_Check_Image (Item.NFKC_QC).all
           & ", "
           & Normalization_Quick_Check_Image (Item.NFKD_QC).all
+          & ", "
+          & Decomposition_Type_Image (Item.DT).all
           & ",");
       Ada.Text_IO.Set_Col (File, Indent);
       Ada.Text_IO.Put (File, '(');

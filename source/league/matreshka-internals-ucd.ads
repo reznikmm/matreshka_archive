@@ -202,7 +202,7 @@ package Matreshka.Internals.Ucd is
 
    type Boolean_Values is array (Boolean_Properties) of Boolean;
    for Boolean_Values'Component_Size use 1;
-   for Boolean_Values'Size use 64;  --  49 bits used for now
+   for Boolean_Values'Size use 64;  --  52 bits used for now
 
    type Grapheme_Cluster_Break is
     (Other,
@@ -292,6 +292,28 @@ package Matreshka.Internals.Ucd is
      ZW_Space);
    for Line_Break'Size use 8;
 
+   type Decomposition_Type is
+    (None,
+     Canonical,
+     Font,
+     No_Break,
+     Initial,
+     Medial,
+     Final,
+     Isolated,
+     Circle,
+     Super,
+     Sub,
+     Vertical,
+     Wide,
+     Narrow,
+     Small,
+     Square,
+     Fraction,
+     Compat);
+
+   for Decomposition_Type'Size use 8;
+
    type Normalization_Quick_Check is (No, Maybe, Yes);
    for Normalization_Quick_Check'Size use 2;
 
@@ -306,7 +328,8 @@ package Matreshka.Internals.Ucd is
       NFD_QC  : Normalization_Quick_Check;  --   2  (1) bits
       NFKC_QC : Normalization_Quick_Check;  --   2      bits
       NFKD_QC : Normalization_Quick_Check;  --   2  (1) bits
-      B       : Boolean_Values;             --  64 (49) bits
+      DT      : Decomposition_Type;         --   8  (5) bits
+      B       : Boolean_Values;             --  64 (52) bits
    end record;
    for Core_Values'Size use 128;
    for Core_Values use record
@@ -321,6 +344,7 @@ package Matreshka.Internals.Ucd is
       NFD_QC  at 0 range 114 .. 115;
       NFKC_QC at 0 range 116 .. 117;
       NFKD_QC at 0 range 118 .. 119;
+      DT      at 0 range 120 .. 127;
    end record;
 
    type Core_Second_Stage is array (Second_Stage_Index) of Core_Values;
@@ -385,5 +409,19 @@ package Matreshka.Internals.Ucd is
 
    type Casing_Context_Mapping_Sequence_Access is
      access constant Casing_Context_Mapping_Sequence;
+
+   -------------------
+   -- Normalization --
+   -------------------
+
+   type Normalization_Mapping_Range is record
+      First : Sequence_Count;
+      Last  : Sequence_Count;
+   end record;
+
+   type Normalization_Kinds is (Canonical, Compatibility);
+
+   type Normalization_Mapping_Ranges is
+     array (Normalization_Kinds) of Normalization_Mapping_Range;
 
 end Matreshka.Internals.Ucd;

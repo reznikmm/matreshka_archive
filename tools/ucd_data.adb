@@ -134,6 +134,9 @@ package body Ucd_Data is
    --  Converts one character text representation of the normalization quick
    --  check into the value.
 
+   function Value (Item : String) return Decomposition_Type;
+   --  Converts text representation of the Decomposition_Type into the value.
+
    -------------------------------
    -- Compute_Casing_Properties --
    -------------------------------
@@ -178,6 +181,7 @@ package body Ucd_Data is
                 NFC_QC  => Yes,           --  see DerivedNormalizationProps.txt
                 NFKD_QC => Yes,           --  see DerivedNormalizationProps.txt
                 NFKC_QC => Yes,           --  see DerivedNormalizationProps.txt
+                DT      => None,          --  see UCD.html
                 B       => (others => False)));
 
       Cases :=
@@ -222,7 +226,12 @@ package body Ucd_Data is
 
       Compute_Casing_Properties;
 
-      --  Verify data.
+      --  Verify data:
+      --    - DerivedGeneralCategory.txt
+      --    - DerivedCombiningClass.txt
+      --    - DerivedBinaryProperties.txt
+      --    - DerivedDecompositionType.txt
+      --    - DerivedLineBreak.txt
 
    end Load;
 
@@ -654,20 +663,11 @@ package body Ucd_Data is
    procedure Load_UnicodeData (Unidata_Directory : String) is
       type String_Access is access String;
 
-      File       : Ucd_Input.File_Type;
-      Code       : Code_Point;
-      First_Code : Code_Point;
-      Name       : String_Access;
-      GC         : General_Category;
-      CCC        : Canonical_Combining_Class;
-      SUM        : Optional_Code_Point;
-      SLM        : Optional_Code_Point;
-      STM        : Optional_Code_Point;
-
       procedure Process
        (Code : Code_Point;
         GC   : General_Category;
         CCC  : Canonical_Combining_Class;
+        DT   : Decomposition_Type;
         SUM  : Optional_Code_Point;
         SLM  : Optional_Code_Point;
         STM  : Optional_Code_Point);
@@ -683,13 +683,15 @@ package body Ucd_Data is
        (Code : Code_Point;
         GC   : General_Category;
         CCC  : Canonical_Combining_Class;
+        DT   : Decomposition_Type;
         SUM  : Optional_Code_Point;
         SLM  : Optional_Code_Point;
         STM  : Optional_Code_Point)
       is
       begin
-         Core (Code).GC   := GC;
-         Core (Code).CCC  := CCC;
+         Core (Code).GC  := GC;
+         Core (Code).CCC := CCC;
+         Core (Code).DT  := DT;
 
          --  Simple uppercase mapping
 
@@ -721,6 +723,17 @@ package body Ucd_Data is
             Cases (Code).STM := (Present => False);
          end if;
       end Process;
+
+      File       : Ucd_Input.File_Type;
+      Code       : Code_Point;
+      First_Code : Code_Point;
+      Name       : String_Access;
+      GC         : General_Category;
+      CCC        : Canonical_Combining_Class;
+      SUM        : Optional_Code_Point;
+      SLM        : Optional_Code_Point;
+      STM        : Optional_Code_Point;
+      DT         : Decomposition_Type;
 
    begin
       Ada.Text_IO.Put_Line ("   ... " & UnicodeData_Name);
@@ -756,6 +769,32 @@ package body Ucd_Data is
 
          --  Parse Decomposition_Type and Decomposition_Mapping (5)
          --  XXX Not implemented
+
+         declare
+            Field : constant String := Ucd_Input.Field (File);
+            First : Positive := Field'First;
+            Last  : Natural  := 0;
+
+         begin
+            if Field'Length /= 0 then
+               if Field (First) = '<' then
+                  Last := First + 1;
+
+                  while Field (Last) /= '>' loop
+                     Last := Last + 1;
+                  end loop;
+
+                  DT := Value (Field (First + 1 .. Last - 1));
+                  First := Last + 2;
+
+               else
+                  DT   := Canonical;
+               end if;
+
+            else
+               DT := None;
+            end if;
+         end;
 
          Ucd_Input.Next_Field (File);
 
@@ -842,11 +881,11 @@ package body Ucd_Data is
            and then Name (Name'Last - 6 .. Name'Last) = ", Last>"
          then
             for J in First_Code .. Code loop
-               Process (J, GC, CCC, SUM, SLM, STM);
+               Process (J, GC, CCC, DT, SUM, SLM, STM);
             end loop;
 
          else
-            Process (Code, GC, CCC, SUM, SLM, STM);
+            Process (Code, GC, CCC, DT, SUM, SLM, STM);
          end if;
 
          --  Cleanup.
@@ -972,6 +1011,65 @@ package body Ucd_Data is
 
       return Result (1 .. Last_Result);
    end Parse_Code_Point_Sequence;
+
+   -----------
+   -- Value --
+   -----------
+
+   function Value (Item : String) return Decomposition_Type is
+
+      type Constant_String_Access is access constant String;
+
+      Compat_Image   : aliased constant String := "compat";
+      Circle_Image   : aliased constant String := "circle";
+      Final_Image    : aliased constant String := "final";
+      Font_Image     : aliased constant String := "font";
+      Fraction_Image : aliased constant String := "fraction";
+      Initial_Image  : aliased constant String := "initial";
+      Isolated_Image : aliased constant String := "isolated";
+      Medial_Image   : aliased constant String := "medial";
+      Narrow_Image   : aliased constant String := "narrow";
+      Nobreak_Image  : aliased constant String := "noBreak";
+      Small_Image    : aliased constant String := "small";
+      Square_Image   : aliased constant String := "square";
+      Sub_Image      : aliased constant String := "sub";
+      Super_Image    : aliased constant String := "super";
+      Vertical_Image : aliased constant String := "vertical";
+      Wide_Image     : aliased constant String := "wide";
+
+      Mapping : constant
+        array (Decomposition_Type range Font .. Compat)
+          of Constant_String_Access
+            := (Compat   => Compat_Image'Access,
+                Circle   => Circle_Image'Access,
+                Final    => Final_Image'Access,
+                Font     => font_Image'Access,
+                Fraction => Fraction_Image'Access,
+                Initial  => Initial_Image'Access,
+                Isolated => Isolated_Image'Access,
+                Medial   => Medial_Image'Access,
+                Narrow   => Narrow_Image'Access,
+                No_Break => Nobreak_Image'Access,
+                Small    => Small_Image'Access,
+                Square   => Square_Image'Access,
+                Sub      => sub_Image'Access,
+                Super    => Super_Image'Access,
+                Vertical => Vertical_Image'Access,
+                Wide     => wide_Image'Access);
+
+   begin
+      if Item'Length = 0 then
+         return Canonical;
+      end if;
+
+      for J in Mapping'Range loop
+         if Mapping (J).all = Item then
+            return J;
+         end if;
+      end loop;
+
+      raise Constraint_Error with "Invalid image of Decomposition_Type";
+   end Value;
 
    -----------
    -- Value --
