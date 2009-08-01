@@ -15,6 +15,7 @@ check: all
 	.objs/grapheme_cluster_cursor_test $(UNIDATA)
 	.objs/case_conversion_test
 	.objs/case_folding_test
+	.objs/normalization_test $(UNIDATA)
 
 #all:
 #	gprbuild -p -Pmatreshka
