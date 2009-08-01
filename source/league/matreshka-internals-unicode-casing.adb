@@ -57,7 +57,7 @@ package body Matreshka.Internals.Unicode.Casing is
       Has_Non_BMP    : Boolean  := False;
       Converted      : Boolean;
 
-      procedure Append (C : Code_Point);
+      procedure Append (Code : Code_Point);
 
       function Is_Preceded_By_Final_Sigma_Context return Boolean;
 
@@ -75,17 +75,19 @@ package body Matreshka.Internals.Unicode.Casing is
       -- Append --
       ------------
 
-      procedure Append (C : Code_Point) is
-         X : Code_Point;
+      procedure Append (Code : Code_Point) is
+         Index : Positive := Destination.Last + 1;
 
       begin
          Destination.Length := Destination.Length + 1;
 
-         if C <= 16#FFFF# then
+         if Code <= 16#FFFF# then
             Destination.Last := Destination.Last + 1;
+            Has_BMP := True;
 
          else
             Destination.Last := Destination.Last + 2;
+            Has_Non_BMP := True;
          end if;
 
          if Destination.Last > Destination.Value'Last then
@@ -103,18 +105,7 @@ package body Matreshka.Internals.Unicode.Casing is
             end;
          end if;
 
-         if C <= 16#FFFF# then
-            Has_BMP                              := True;
-            Destination.Value (Destination.Last) := Utf16_Code_Unit (C);
-
-         else
-            Has_Non_BMP := True;
-            X           := C - 16#1_0000#;
-            Destination.Value (Destination.Last - 1) :=
-              Utf16_Code_Unit (High_Surrogate_First + X / 16#400#);
-            Destination.Value (Destination.Last) :=
-              Utf16_Code_Unit (Low_Surrogate_First + X mod 16#400#);
-         end if;
+         Unchecked_Store (Destination.Value, Index, Code);
       end Append;
 
       ---------------------------------------

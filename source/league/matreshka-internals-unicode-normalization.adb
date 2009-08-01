@@ -41,11 +41,6 @@ package body Matreshka.Internals.Unicode.Normalization is
    use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Utf16;
 
-   procedure Unchecked_Store
-    (Item     : in out Utf16_String;
-     Position : in out Natural;
-     Code     : Code_Point);
-
    ---------
    -- NFD --
    ---------
@@ -65,7 +60,7 @@ package body Matreshka.Internals.Unicode.Normalization is
       ------------
 
       procedure Append (Code : Code_Point) is
-         Index : Natural := Destination.Last + 1;
+         Index : Positive := Destination.Last + 1;
 
       begin
          Destination.Length := Destination.Length + 1;
@@ -350,36 +345,5 @@ package body Matreshka.Internals.Unicode.Normalization is
           (First_Non_Zero, Destination.Last + 1);
       end if;
    end NFD;
-
-   ---------------------
-   -- Unchecked_Store --
-   ---------------------
-
-   procedure Unchecked_Store
-    (Item     : in out Utf16_String;
-     Position : in out Natural;
-     Code     : Code_Point)
-   is
-      C : Code_Point := Code;
-
-   begin
-      if C <= 16#FFFF# then
-         Item (Position) := Utf16_Code_Unit (C);
-         Position := Position + 1;
-
---         Has_BMP := True;
-
-      else
-         C := C - 16#1_0000#;
-
-         Item (Position) :=
-           Utf16_Code_Unit (High_Surrogate_First + C / 16#400#);
-         Item (Position + 1) :=
-           Utf16_Code_Unit (Low_Surrogate_First + C mod 16#400#);
-         Position := Position + 2;
-
---         Has_Non_BMP := True;
-      end if;
-   end Unchecked_Store;
 
 end Matreshka.Internals.Unicode.Normalization;

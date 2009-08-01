@@ -89,4 +89,12 @@ package Matreshka.Internals.Utf16 is
    pragma Inline (Unchecked_Previous);
    --  Moves position to the previous character.
 
+   procedure Unchecked_Store
+    (Item     : in out Utf16_String;
+     Position : in out Positive;
+     Code     : Matreshka.Internals.Unicode.Code_Point);
+   pragma Inline (Unchecked_Store);
+   --  Store specified character at the specified position and move position to
+   --  the next character.
+
 end Matreshka.Internals.Utf16;
