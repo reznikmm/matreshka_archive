@@ -970,7 +970,6 @@ package body Ucd_Data is
          Ucd_Input.Next_Field (File);
 
          --  Parse Decomposition_Type and Decomposition_Mapping (5)
-         --  XXX Not implemented
 
          declare
             Field : constant String := Ucd_Input.Field (File);

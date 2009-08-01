@@ -441,6 +441,37 @@ begin
                end;
             end loop;
 
+            if Current /= Default then
+               if First /= Last then
+                  Ada.Text_IO.Put_Line
+                   (File,
+                    "16#"
+                      & Second_Stage_Image (First)
+                      & "# .. 16#"
+                      & Second_Stage_Image (Last)
+                      & "# =>  --  "
+                      & Code_Point_Image (First_Code)
+                      & " .. "
+                      & Code_Point_Image (Last_Code));
+                  Ada.Text_IO.Set_Col (File, 11);
+                  Put (File, Current);
+                  Ada.Text_IO.Put (File, ',');
+
+               else
+                  Ada.Text_IO.Put_Line
+                   (File, "16#"
+                      & Second_Stage_Image (First)
+                      & "#           =>  --  "
+                      & Code_Point_Image (First_Code));
+                  Ada.Text_IO.Set_Col (File, 11);
+                  Put (File, Current);
+                  Ada.Text_IO.Put (File, ',');
+               end if;
+
+               Ada.Text_IO.New_Line (File);
+               Ada.Text_IO.Set_Col (File, 10);
+            end if;
+
             Ada.Text_IO.Put_Line (File, "others           =>");
             Ada.Text_IO.Set_Col (File, 11);
             Put (File, Default);
