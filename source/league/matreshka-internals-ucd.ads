@@ -161,10 +161,9 @@ package Matreshka.Internals.Ucd is
      White_Space,
 
 --     Bidi_Mirrored,                 --  XXX
---     Composition_Exclusion,         --  XXX
---     Full_Composition_Exclusion,    --  XXX
 
-     --  Derived core properties.
+     --  Derived core properties. This list must include only properties
+     --  from DerivedCoreProperties.txt file.
 
      Alphabetic,                    --  Derived
      Default_Ignorable_Code_Point,  --  Derived
@@ -178,10 +177,18 @@ package Matreshka.Internals.Ucd is
      Uppercase,                     --  Derived
      XID_Continue,                  --  Derived
      XID_Start,                     --  Derived
---     Expands_On_NFC,                --  XXX
---     Expands_On_NFD,                --  XXX
---     Expands_On_NFKC,               --  XXX
---     Expands_On_NFKD);              --  XXX
+
+     --  Composition exclusion property.
+
+     Composition_Exclusion,         --  XXX
+
+     --  Derived normalization properties.
+
+     Full_Composition_Exclusion,    --  Derived
+     Expands_On_NFC,                --  Derived
+     Expands_On_NFD,                --  Derived
+     Expands_On_NFKC,               --  Derived
+     Expands_On_NFKD,               --  Derived
 
      --  Following are used by case conversion subprograms.
 
@@ -195,7 +202,7 @@ package Matreshka.Internals.Ucd is
 
    type Boolean_Values is array (Boolean_Properties) of Boolean;
    for Boolean_Values'Component_Size use 1;
-   for Boolean_Values'Size use 64;  --  43 + 10 actually used for now
+   for Boolean_Values'Size use 64;  --  49 bits used for now
 
    type Grapheme_Cluster_Break is
     (Other,
@@ -285,24 +292,35 @@ package Matreshka.Internals.Ucd is
      ZW_Space);
    for Line_Break'Size use 8;
 
+   type Normalization_Quick_Check is (No, Maybe, Yes);
+   for Normalization_Quick_Check'Size use 2;
+
    type Core_Values is record
-      GC  : General_Category;
-      CCC : Canonical_Combining_Class;
-      GCB : Grapheme_Cluster_Break;
-      WB  : Word_Break;
-      SB  : Sentence_Break;
-      LB  : Line_Break;
-      B   : Boolean_Values;
+      GC      : General_Category;           --   8  (5) bits
+      CCC     : Canonical_Combining_Class;  --   8      bits
+      GCB     : Grapheme_Cluster_Break;     --   8  (4) bits
+      WB      : Word_Break;                 --   8  (4) bits
+      SB      : Sentence_Break;             --   8  (4) bits
+      LB      : Line_Break;                 --   8  (6) bits
+      NFC_QC  : Normalization_Quick_Check;  --   2      bits
+      NFD_QC  : Normalization_Quick_Check;  --   2  (1) bits
+      NFKC_QC : Normalization_Quick_Check;  --   2      bits
+      NFKD_QC : Normalization_Quick_Check;  --   2  (1) bits
+      B       : Boolean_Values;             --  64 (49) bits
    end record;
    for Core_Values'Size use 128;
    for Core_Values use record
-      B   at 0 range   0 ..  63;
-      GC  at 0 range  64 ..  71;
-      CCC at 0 range  72 ..  79;
-      GCB at 0 range  80 ..  87;
-      WB  at 0 range  88 ..  95;
-      SB  at 0 range  96 .. 103;
-      LB  at 0 range 104 .. 111;
+      B       at 0 range   0 ..  63;
+      GC      at 0 range  64 ..  71;
+      CCC     at 0 range  72 ..  79;
+      GCB     at 0 range  80 ..  87;
+      WB      at 0 range  88 ..  95;
+      SB      at 0 range  96 .. 103;
+      LB      at 0 range 104 .. 111;
+      NFC_QC  at 0 range 112 .. 113;
+      NFD_QC  at 0 range 114 .. 115;
+      NFKC_QC at 0 range 116 .. 117;
+      NFKD_QC at 0 range 118 .. 119;
    end record;
 
    type Core_Second_Stage is array (Second_Stage_Index) of Core_Values;

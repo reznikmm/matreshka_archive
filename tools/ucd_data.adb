@@ -34,18 +34,23 @@ package body Ucd_Data is
    use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
 
-   UnicodeData_Name           : constant String := "UnicodeData.txt";
-   PropList_Name              : constant String := "PropList.txt";
-   DerivedCoreProperties_Name : constant String := "DerivedCoreProperties.txt";
-   GraphemeBreakProperty_Name : constant String
+   UnicodeData_Name                : constant String := "UnicodeData.txt";
+   PropList_Name                   : constant String := "PropList.txt";
+   DerivedCoreProperties_Name      : constant String
+     := "DerivedCoreProperties.txt";
+   GraphemeBreakProperty_Name      : constant String
      := "auxiliary/GraphemeBreakProperty.txt";
-   WordBreakProperty_Name     : constant String
+   WordBreakProperty_Name          : constant String
      := "auxiliary/WordBreakProperty.txt";
-   SentenceBreakProperty_Name : constant String
+   SentenceBreakProperty_Name      : constant String
      := "auxiliary/SentenceBreakProperty.txt";
-   LineBreak_Name             : constant String := "LineBreak.txt";
-   SpecialCasing_Name         : constant String := "SpecialCasing.txt";
-   CaseFolding_Name           : constant String := "CaseFolding.txt";
+   LineBreak_Name                  : constant String := "LineBreak.txt";
+   SpecialCasing_Name              : constant String := "SpecialCasing.txt";
+   CaseFolding_Name                : constant String := "CaseFolding.txt";
+   DerivedNormalizationProps_Name  : constant String
+     := "DerivedNormalizationProps.txt";
+   CompositionExclusions_Name      : constant String
+     := "CompositionExclusions.txt";
 
    subtype Primary_Core_Boolean_Properties is Boolean_Properties
      range ASCII_Hex_Digit .. White_Space;
@@ -89,6 +94,14 @@ package body Ucd_Data is
    --  Parse CaseFolding.txt file and fill internal data structurs by the
    --  parsed values.
 
+   procedure Load_CompositionExclusions (Unidata_Directory : String);
+   --  Parse CompositionExclusions.txt file and fill internal data structures
+   --  by the parsed values.
+
+   procedure Load_DerivedNormalizationProps (Unidata_Directory : String);
+   --  Parse DerivedNormalizationProps.txt file and fill internal data
+   --  structures by the parsed values.
+
    procedure Compute_Casing_Properties;
    --  Compute Cased and Case_Ignorable properties for all characters.
 
@@ -116,6 +129,10 @@ package body Ucd_Data is
    function Value (Item : String) return Line_Break;
    --  Converts two-character text representation of the Line_Break into the
    --  value.
+
+   function Value (Item : String) return Normalization_Quick_Check;
+   --  Converts one character text representation of the normalization quick
+   --  check into the value.
 
    -------------------------------
    -- Compute_Casing_Properties --
@@ -151,13 +168,17 @@ package body Ucd_Data is
       Core :=
         new Core_Values_Array'
              (others =>
-               (GC  => Unassigned,     --  see UCD.html
-                CCC => Not_Reordered,  --  see UCD.html
-                GCB => Other,          --  see GraphemeBreakProperty.txt
-                WB  => Other,          --  see WordBreakProperty.txt
-                SB  => Other,          --  see SentenceBreakProperty.txt
-                LB  => Unknown,        --  see LineBreak.txt
-                B   => (others => False)));
+               (GC      => Unassigned,    --  see UCD.html
+                CCC     => Not_Reordered, --  see UCD.html
+                GCB     => Other,         --  see GraphemeBreakProperty.txt
+                WB      => Other,         --  see WordBreakProperty.txt
+                SB      => Other,         --  see SentenceBreakProperty.txt
+                LB      => Unknown,       --  see LineBreak.txt
+                NFD_QC  => Yes,           --  see DerivedNormalizationProps.txt
+                NFC_QC  => Yes,           --  see DerivedNormalizationProps.txt
+                NFKD_QC => Yes,           --  see DerivedNormalizationProps.txt
+                NFKC_QC => Yes,           --  see DerivedNormalizationProps.txt
+                B       => (others => False)));
 
       Cases :=
         new Case_Values_Array'
@@ -191,6 +212,11 @@ package body Ucd_Data is
 
       Load_SpecialCasing (Unidata_Directory);
       Load_CaseFolding (Unidata_Directory);
+
+      --  Load CompositionExclusions.txt, DerivedNormalizationProps.txt
+
+      Load_CompositionExclusions (Unidata_Directory);
+      Load_DerivedNormalizationProps (Unidata_Directory);
 
       --  Compute derived properties.
 
@@ -250,6 +276,35 @@ package body Ucd_Data is
    end Load_CaseFolding;
 
    --------------------------------
+   -- Load_CompositionExclusions --
+   --------------------------------
+
+   procedure Load_CompositionExclusions (Unidata_Directory : String) is
+      File  : Ucd_Input.File_Type;
+      First : Code_Point;
+      Last  : Code_Point;
+
+   begin
+      Ada.Text_IO.Put_Line ("   ... " & CompositionExclusions_Name);
+
+      Ucd_Input.Open
+       (File, Unidata_Directory & '/' & CompositionExclusions_Name);
+
+      while not Ucd_Input.End_Of_Data (File) loop
+         First := Ucd_Input.First_Code_Point (File);
+         Last  := Ucd_Input.Last_Code_Point (File);
+
+         for J in First .. Last loop
+            Core (J).B (Composition_Exclusion) := True;
+         end loop;
+
+         Ucd_Input.Next_Record (File);
+      end loop;
+
+      Ucd_Input.Close (File);
+   end Load_CompositionExclusions;
+
+   --------------------------------
    -- Load_DerivedCoreProperties --
    --------------------------------
 
@@ -280,6 +335,86 @@ package body Ucd_Data is
 
       Ucd_Input.Close (File);
    end Load_DerivedCoreProperties;
+
+   ------------------------------------
+   -- Load_DerivedNormalizationProps --
+   ------------------------------------
+
+   procedure Load_DerivedNormalizationProps (Unidata_Directory : String) is
+
+      type Property is
+       (FC_NFKC,                     --  + mapping
+        Full_Composition_Exclusion,
+        NFD_QC,                      --  + value
+        NFC_QC,                      --  + value
+        NFKD_QC,                     --  + value
+        NFKC_QC,                     --  + value
+        Expands_On_NFD,
+        Expands_On_NFC,
+        Expands_On_NFKD,
+        Expands_On_NFKC);
+
+      File  : Ucd_Input.File_Type;
+      First : Code_Point;
+      Last  : Code_Point;
+      Prop  : Property;
+      FC_NFKC_Ignored : Boolean := False;
+
+   begin
+      Ada.Text_IO.Put_Line ("   ... " & DerivedNormalizationProps_Name);
+
+      Ucd_Input.Open
+       (File, Unidata_Directory & '/' & DerivedNormalizationProps_Name);
+
+      while not Ucd_Input.End_Of_Data (File) loop
+         First := Ucd_Input.First_Code_Point (File);
+         Last  := Ucd_Input.Last_Code_Point (File);
+         Prop  := Property'Value (Ucd_Input.Field (File));
+         Ucd_Input.Next_Field (File);
+
+         for J in First .. Last loop
+            case Prop is
+               when FC_NFKC =>
+                  if not FC_NFKC_Ignored then
+                     Ada.Text_IO.Put_Line ("         Ignore property: FC_NFKC");
+                     FC_NFKC_Ignored := True;
+                  end if;
+
+               when Full_Composition_Exclusion =>
+                  Core (J).B (Full_Composition_Exclusion) := True;
+
+               when NFD_QC =>
+                  Core (J).NFD_QC := Value (Ucd_Input.Field (File));
+
+               when NFC_QC =>
+                  Core (J).NFC_QC := Value (Ucd_Input.Field (File));
+
+               when NFKD_QC =>
+                  Core (J).NFKD_QC := Value (Ucd_Input.Field (File));
+
+               when NFKC_QC =>
+                  Core (J).NFKC_QC := Value (Ucd_Input.Field (File));
+
+               when Expands_On_NFD =>
+                  Core (J).B (Expands_On_NFD) := True;
+
+               when Expands_On_NFC =>
+                  Core (J).B (Expands_On_NFC) := True;
+
+               when Expands_On_NFKD =>
+                  Core (J).B (Expands_On_NFKD) := True;
+
+               when Expands_On_NFKC =>
+                  Core (J).B (Expands_On_NFKD) := True;
+
+            end case;
+         end loop;
+
+         Ucd_Input.Next_Record (File);
+      end loop;
+
+      Ucd_Input.Close (File);
+   end Load_DerivedNormalizationProps;
 
    --------------------------------
    -- Load_GraphemeBreakProperty --
@@ -982,6 +1117,26 @@ package body Ucd_Data is
       end loop;
 
       raise Constraint_Error with "Invalid image of Line_Break";
+   end Value;
+
+   -----------
+   -- Value --
+   -----------
+
+   function Value (Item : String) return Normalization_Quick_Check is
+      Mapping : constant array (Normalization_Quick_Check) of String (1 .. 1)
+        := (No    => "N",
+            Maybe => "M",
+            Yes   => "Y");
+
+   begin
+      for J in Mapping'Range loop
+         if Mapping (J) = Item then
+            return J;
+         end if;
+      end loop;
+
+      raise Constraint_Error with "Invalid image of Normalization_Quick_Check";
    end Value;
 
    -----------

@@ -363,9 +363,13 @@ procedure Gen_Props (Source_Directory : String) is
            Alphabetic              => BP_Alphabetic_Image'Access,
            Bidi_Control            => BP_Bidi_Control_Image'Access,
 --           Bidi_Mirrored           => BP_Bidi_Mirrored_Image'Access,
---           Composition_Exclusion   => BP_Composition_Exclusion_Image'Access,
---           Full_Composition_Exclusion =>
---             BP_Full_Composition_Exclusion_Image'Access,
+           Composition_Exclusion   => BP_Composition_Exclusion_Image'Access,
+           Expands_On_NFC          => BP_Expands_On_NFC_Image'Access,
+           Expands_On_NFD          => BP_Expands_On_NFD_Image'Access,
+           Expands_On_NFKC         => BP_Expands_On_NFKC_Image'Access,
+           Expands_On_NFKD         => BP_Expands_On_NFKD_Image'Access,
+           Full_Composition_Exclusion =>
+             BP_Full_Composition_Exclusion_Image'Access,
            Dash                    => BP_Dash_Image'Access,
            Deprecated              => BP_Deprecated_Image'Access,
            Default_Ignorable_Code_Point =>
@@ -409,10 +413,7 @@ procedure Gen_Props (Source_Directory : String) is
            White_Space             => BP_White_Space_Image'Access,
            XID_Continue            => BP_XID_Continue_Image'Access,
            XID_Start               => BP_XID_Start_Image'Access,
---           Expands_On_NFC          => BP_Expands_On_NFC_Image'Access,
---           Expands_On_NFD          => BP_Expands_On_NFD_Image'Access,
---           Expands_On_NFKC         => BP_Expands_On_NFKC_Image'Access,
---           Expands_On_NFKD         => BP_Expands_On_NFKD_Image'Access);
+
            Cased                   => BP_Cased_Image'Access,
            Case_Ignorable          => BP_Case_Ignorable_Image'Access,
 
@@ -420,6 +421,16 @@ procedure Gen_Props (Source_Directory : String) is
            Has_Uppercase_Mapping   => BP_Has_Uppercase_Mapping_Image'Access,
            Has_Titlecase_Mapping   => BP_Has_Titlecase_Mapping_Image'Access,
            Has_Case_Folding        => BP_Has_Case_Folding_Image'Access);
+
+   NQC_No_Image    : aliased constant String := "No";
+   NQC_Maybe_Image : aliased constant String := "Maybe";
+   NQC_Yes_Image   : aliased constant String := "Yes";
+
+   Normalization_Quick_Check_Image : constant
+     array (Normalization_Quick_Check) of Constant_String_Access
+       := (No    => NQC_No_Image'Access,
+           Maybe => NQC_Maybe_Image'Access,
+           Yes   => NQC_Yes_Image'Access);
 
    ---------
    -- Put --
@@ -440,8 +451,11 @@ procedure Gen_Props (Source_Directory : String) is
           & General_Category_Image (Item.GC).all
           & ','
           & Canonical_Combining_Class'Image (Item.CCC)
-          & ", "
-          & Grapheme_Cluster_Break_Image (Item.GCB).all
+          & ",");
+      Ada.Text_IO.Set_Col (File, Indent);
+      Ada.Text_IO.Put
+       (File,
+        Grapheme_Cluster_Break_Image (Item.GCB).all
           & ", "
           & Word_Break_Image (Item.WB).all
           & ", "
@@ -449,6 +463,17 @@ procedure Gen_Props (Source_Directory : String) is
           & ", "
           & Line_Break_Image (Item.LB).all
           & ',');
+      Ada.Text_IO.Set_Col (File, Indent);
+      Ada.Text_IO.Put
+       (File,
+        Normalization_Quick_Check_Image (Item.NFC_QC).all
+          & ", "
+          & Normalization_Quick_Check_Image (Item.NFD_QC).all
+          & ", "
+          & Normalization_Quick_Check_Image (Item.NFKC_QC).all
+          & ", "
+          & Normalization_Quick_Check_Image (Item.NFKD_QC).all
+          & ",");
       Ada.Text_IO.Set_Col (File, Indent);
       Ada.Text_IO.Put (File, '(');
 
