@@ -414,14 +414,23 @@ package Matreshka.Internals.Ucd is
    -- Normalization --
    -------------------
 
-   type Normalization_Mapping_Range is record
+   type Decomposition_Mapping_Range is record
       First : Sequence_Count;
       Last  : Sequence_Count;
    end record;
 
-   type Normalization_Kinds is (Canonical, Compatibility);
+   type Decomposition_Kinds is (Canonical, Compatibility);
 
-   type Normalization_Mapping_Ranges is
-     array (Normalization_Kinds) of Normalization_Mapping_Range;
+   type Decomposition_Mapping is
+     array (Decomposition_Kinds) of Decomposition_Mapping_Range;
+
+   type Decomposition_Mapping_Second_Stage is
+     array (Second_Stage_Index) of Decomposition_Mapping;
+
+   type Decomposition_Mapping_Second_Stage_Access is
+     access constant Decomposition_Mapping_Second_Stage;
+
+   type Decomposition_Mapping_First_Stage is
+     array (First_Stage_Index) of Decomposition_Mapping_Second_Stage_Access;
 
 end Matreshka.Internals.Ucd;

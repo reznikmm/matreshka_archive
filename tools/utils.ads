@@ -43,4 +43,14 @@ package Utils is
        return String;
    --  Returns image in the XX format.
 
+   function Code_Point_Ada_Image
+    (Item : Matreshka.Internals.Unicode.Code_Point)
+       return String;
+   --  Returns image of code point.
+
+   function Sequence_Count_Image
+    (Item : Matreshka.Internals.Ucd.Sequence_Count)
+       return String;
+   --  Returns image of Sequence count without leading space.
+
 end Utils;

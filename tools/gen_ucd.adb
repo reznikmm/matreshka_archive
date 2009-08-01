@@ -30,9 +30,10 @@
 with Ada.Command_Line;
 with Ada.Text_IO;
 
-with Ucd_Data;
-with Gen_Props;
 with Gen_Cases;
+with Gen_Norms;
+with Gen_Props;
+with Ucd_Data;
 
 procedure Gen_Ucd is
    Unidata_Directory : constant String := Ada.Command_Line.Argument (1);
@@ -43,4 +44,5 @@ begin
    Ada.Text_IO.Put_Line ("Generating (" & Source_Directory & ") ...");
    Gen_Props (Source_Directory);
    Gen_Cases (Source_Directory);
+   Gen_Norms (Source_Directory);
 end Gen_Ucd;

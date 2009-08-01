@@ -30,6 +30,26 @@ package body Utils is
    use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
 
+   --------------------------
+   -- Code_Point_Ada_Image --
+   --------------------------
+
+   function Code_Point_Ada_Image (Item : Code_Point) return String is
+      To_Hex_Digit : constant
+        array (Code_Point range 0 .. 15) of Character
+          := "0123456789ABCDEF";
+
+   begin
+      return Result : String (1 .. 10) := "16#XXXXXX#" do
+         Result (9) := To_Hex_Digit (Item mod 16);
+         Result (8) := To_Hex_Digit ((Item / 16) mod 16);
+         Result (7) := To_Hex_Digit ((Item / 256) mod 16);
+         Result (6) := To_Hex_Digit ((Item / 4096) mod 16);
+         Result (5) := To_Hex_Digit ((Item / 65536) mod 16);
+         Result (4) := To_Hex_Digit ((Item / 1048576) mod 16);
+      end return;
+   end Code_Point_Ada_Image;
+
    ----------------------
    -- Code_Point_Image --
    ----------------------
@@ -95,5 +115,16 @@ package body Utils is
 
       return Result;
    end Second_Stage_Image;
+
+   --------------------------
+   -- Sequence_Count_Image --
+   --------------------------
+
+   function Sequence_Count_Image (Item : Sequence_Count) return String is
+      Aux : constant String := Sequence_Count'Image (Item);
+
+   begin
+      return Aux (Aux'First + 1 .. Aux'Last);
+   end Sequence_Count_Image;
 
 end Utils;

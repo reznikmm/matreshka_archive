@@ -31,59 +31,34 @@ with Matreshka.Internals.Unicode;
 with Ucd_Data;
 with Utils;
 
-procedure Gen_Cases (Source_Directory : String) is
+procedure Gen_Norms (Source_Directory : String) is
 
    use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
    use Ucd_Data;
    use Utils;
 
-   Generated_Name : constant String := "matreshka-internals-ucd-cases.ads";
-
-   type String_Access is access constant String;
-
-   CC_Final_Sigma_Image       : aliased constant String := "Final_Sigma";
-   CC_After_Soft_Dotted_Image : aliased constant String := "After_Soft_Dotted";
-   CC_More_Above_Image        : aliased constant String := "More_Above";
-   CC_Before_Dot_Image        : aliased constant String := "Before_Dot";
-   CC_After_I_Image           : aliased constant String := "After_I";
-
-   Casing_Context_Image : array (Casing_Context) of String_Access
-     := (Final_Sigma       => CC_Final_Sigma_Image'Access,
-         After_Soft_Dotted => CC_After_Soft_Dotted_Image'Access,
-         More_Above        => CC_More_Above_Image'Access,
-         Before_Dot        => CC_Before_Dot_Image'Access,
-         After_I           => CC_After_I_Image'Access);
-
-   B_False_Image : aliased constant String := "False";
-   B_True_Image  : aliased constant String := "True";
-
-   Boolean_Image : array (Boolean) of String_Access
-    := (False => B_False_Image'Access,
-        True  => B_True_Image'Access);
-
-   type Group_Info is record
-      Share : First_Stage_Index;
-      Count : Natural;
-   end record;
-
-   Case_Info : array (Code_Point) of Case_Mapping
-     := (others => (((0, 0), (0, 0), (0, 0), (0, 0)), 0, 0));
-   Cont_Info : Casing_Context_Mapping_Sequence (Sequence_Index);
-   Cont_Last : Sequence_Count := 0;
-   Case_Seq  : Code_Point_Sequence (Sequence_Index);
-   Last_Seq  : Sequence_Count := 0;
-   Groups    : array (First_Stage_Index) of Group_Info := (others => (0, 0));
-   Generated : array (First_Stage_Index) of Boolean    := (others => False);
-   File      : Ada.Text_IO.File_Type;
+   Generated_Name : constant String := "matreshka-internals-ucd-norms.ads";
 
    procedure Append_Mapping
     (Mapping : Code_Point_Sequence;
      First   : out Sequence_Index;
      Last    : out Sequence_Count);
 
-   procedure Put (File : Ada.Text_IO.File_Type; Item : Case_Mapping);
-   --  Output code for specified item.
+   type Group_Info is record
+      Share : First_Stage_Index;
+      Count : Natural;
+   end record;
+
+   Decomposition_Data      : Code_Point_Sequence (Sequence_Index);
+   Decomposition_Data_Last : Sequence_Count := 0;
+
+   Decomposition : array (Code_Point) of Decomposition_Mapping
+     := (others => (others => (0, 0)));
+   Groups        : array (First_Stage_Index) of Group_Info
+     := (others => (0, 0));
+   File          : Ada.Text_IO.File_Type;
+   Generated     : array (First_Stage_Index) of Boolean := (others => False);
 
    --------------------
    -- Append_Mapping --
@@ -100,8 +75,8 @@ procedure Gen_Cases (Source_Directory : String) is
          Last  := 0;
       end if;
 
-      for J in 1 .. Last_Seq - Mapping'Length + 1 loop
-         if Case_Seq (J .. J + Mapping'Length - 1) = Mapping then
+      for J in 1 .. Decomposition_Data_Last - Mapping'Length + 1 loop
+         if Decomposition_Data (J .. J + Mapping'Length - 1) = Mapping then
             First := J;
             Last  := J + Mapping'Length - 1;
 
@@ -109,170 +84,55 @@ procedure Gen_Cases (Source_Directory : String) is
          end if;
       end loop;
 
-      First := Last_Seq + 1;
+      First := Decomposition_Data_Last + 1;
 
       for J in Mapping'Range loop
-         Last_Seq := Last_Seq + 1;
-         Case_Seq (Last_Seq) := Mapping (J);
+         Decomposition_Data_Last := Decomposition_Data_Last + 1;
+         Decomposition_Data (Decomposition_Data_Last) := Mapping (J);
       end loop;
 
-      Last := Last_Seq;
+      Last := Decomposition_Data_Last;
    end Append_Mapping;
 
    ---------
    -- Put --
    ---------
 
-   procedure Put (File : Ada.Text_IO.File_Type; Item : Case_Mapping) is
+   procedure Put
+    (File : Ada.Text_IO.File_Type; Item : Decomposition_Mapping)
+   is
    begin
       Ada.Text_IO.Put
        (File,
-        "((("
-          & Sequence_Count_Image (Item.Ranges (Lower).First)
+        "(("
+          & Sequence_Count_Image (Item (Canonical).First)
           & ", "
-          & Sequence_Count_Image (Item.Ranges (Lower).Last)
+          & Sequence_Count_Image (Item (Canonical).Last)
           & "), ("
-          & Sequence_Count_Image (Item.Ranges (Upper).First)
+          & Sequence_Count_Image (Item (Compatibility).First)
           & ", "
-          & Sequence_Count_Image (Item.Ranges (Upper).Last)
-          & "), ("
-          & Sequence_Count_Image (Item.Ranges (Title).First)
-          & ", "
-          & Sequence_Count_Image (Item.Ranges (Title).Last)
-          & "), ("
-          & Sequence_Count_Image (Item.Ranges (Folding).First)
-          & ", "
-          & Sequence_Count_Image (Item.Ranges (Folding).Last)
-          & ")), "
-          & Sequence_Count_Image (Item.Context_First)
-          & ", "
-          & Sequence_Count_Image (Item.Context_Last)
-          & ")");
+          & Sequence_Count_Image (Item (Compatibility).Last)
+          & "))");
    end Put;
 
 begin
    Ada.Text_IO.Put_Line ("   ... " & Generated_Name);
 
-   --  Construct casing information.
+   --  Construct normalization information.
 
    for J in Code_Point loop
-      if Core (J).B (Has_Lowercase_Mapping)
-        or else Core (J).B (Has_Uppercase_Mapping)
-        or else Core (J).B (Has_Titlecase_Mapping)
-      then
-         --  Process data for default casing context.
+      if Core (J).DT /= None then
+         Append_Mapping
+          (Norms (J) (Compatibility).all,
+           Decomposition (J) (Compatibility).First,
+           Decomposition (J) (Compatibility).Last);
 
-         if Cases (J).FUM.Default /= null then
-            if Cases (J).FUM.Default'Length /= 1
-              or else Cases (J).FUM.Default (1) /= J
-            then
-               Append_Mapping
-                (Cases (J).FUM.Default.all,
-                 Case_Info (J).Ranges (Upper).First,
-                 Case_Info (J).Ranges (Upper).Last);
-            end if;
-
-         else
-            if Cases (J).SUM.Present then
-               Append_Mapping
-                (Code_Point_Sequence'(1 => Cases (J).SUM.C),
-                 Case_Info (J).Ranges (Upper).First,
-                 Case_Info (J).Ranges (Upper).Last);
-            end if;
+         if Core (J).DT = Canonical then
+            Append_Mapping
+             (Norms (J) (Canonical).all,
+              Decomposition (J) (Canonical).First,
+              Decomposition (J) (Canonical).Last);
          end if;
-
-         if Cases (J).FLM.Default /= null then
-            if Cases (J).FLM.Default'Length /= 1
-              or else Cases (J).FLM.Default (1) /= J
-            then
-               Append_Mapping
-                (Cases (J).FLM.Default.all,
-                 Case_Info (J).Ranges (Lower).First,
-                 Case_Info (J).Ranges (Lower).Last);
-            end if;
-
-         else
-            if Cases (J).SLM.Present then
-               Append_Mapping
-                (Code_Point_Sequence'(1 => Cases (J).SLM.C),
-                 Case_Info (J).Ranges (Lower).First,
-                 Case_Info (J).Ranges (Lower).Last);
-            end if;
-         end if;
-
-         if Cases (J).FTM.Default /= null then
-            if Cases (J).FTM.Default'Length /= 1
-              or else Cases (J).FTM.Default (1) /= J
-            then
-               Append_Mapping
-                (Cases (J).FTM.Default.all,
-                 Case_Info (J).Ranges (Title).First,
-                 Case_Info (J).Ranges (Title).Last);
-            end if;
-
-         else
-            if Cases (J).STM.Present then
-               Append_Mapping
-                (Code_Point_Sequence'(1 => Cases (J).STM.C),
-                 Case_Info (J).Ranges (Title).First,
-                 Case_Info (J).Ranges (Title).Last);
-            end if;
-         end if;
-
-         if Cases (J).FCF /= null then
-            if Cases (J).FCF'Length /= 1
-              or else Cases (J).FCF (1) /= J
-            then
-               Append_Mapping
-                (Cases (J).FCF.all,
-                 Case_Info (J).Ranges (Folding).First,
-                 Case_Info (J).Ranges (Folding).Last);
-            end if;
-
-         else
-            if Cases (J).SCF.Present then
-               Append_Mapping
-                (Code_Point_Sequence'(1 => Cases (J).SCF.C),
-                 Case_Info (J).Ranges (Folding).First,
-                 Case_Info (J).Ranges (Folding).Last);
-            end if;
-         end if;
-
-         --  Process data for Final_Sigma casing context.
-
-         declare
-            R : Casing_Context_Mapping
-              := (Final_Sigma, False, ((0, 0), (0, 0), (0, 0)));
-
-         begin
-            if Cases (J).FUM.Positive (Final_Sigma) /= null then
-               Append_Mapping
-                (Cases (J).FUM.Positive (Final_Sigma).all,
-                 R.Ranges (Upper).First,
-                 R.Ranges (Upper).Last);
-            end if;
-
-            if Cases (J).FLM.Positive (Final_Sigma) /= null then
-               Append_Mapping
-                (Cases (J).FLM.Positive (Final_Sigma).all,
-                 R.Ranges (Lower).First,
-                 R.Ranges (Lower).Last);
-            end if;
-
-            if Cases (J).FTM.Positive (Final_Sigma) /= null then
-               Append_Mapping
-                (Cases (J).FTM.Positive (Final_Sigma).all,
-                 R.Ranges (Title).First,
-                 R.Ranges (Title).Last);
-            end if;
-
-            if R /= (Final_Sigma, False, ((0, 0), (0, 0), (0, 0))) then
-               Cont_Last := Cont_Last + 1;
-               Cont_Info (Cont_Last) := R;
-               Case_Info (J).Context_First := Cont_Last;
-               Case_Info (J).Context_Last := Cont_Last;
-            end if;
-         end;
       end if;
    end loop;
 
@@ -280,8 +140,9 @@ begin
 
    for J in Groups'Range loop
       for K in 0 .. J loop
-         if Case_Info (Code_Unit_32 (K) * 256 .. Code_Unit_32 (K) * 256 + 255)
-              = Case_Info
+         if Decomposition
+             (Code_Unit_32 (K) * 256 .. Code_Unit_32 (K) * 256 + 255)
+              = Decomposition
                  (Code_Unit_32 (J) * 256 .. Code_Unit_32 (J) * 256 + 255)
          then
             Groups (J).Share := K;
@@ -428,15 +289,15 @@ begin
      "-----------------------------------------------------------------------"
        & "-------");
    Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line (File, "package Matreshka.Internals.Ucd.Cases is");
+   Ada.Text_IO.Put_Line (File, "package Matreshka.Internals.Ucd.Norms is");
    Ada.Text_IO.New_Line (File);
    Ada.Text_IO.Put_Line (File, "   pragma Preelaborate;");
 
    Ada.Text_IO.New_Line (File);
    Ada.Text_IO.Put_Line
-    (File, "   Data : aliased constant Code_Point_Sequence");
+    (File, "   Decomposition_Data : aliased constant Code_Point_Sequence");
 
-   for J in 1 .. Last_Seq loop
+   for J in 1 .. Decomposition_Data_Last loop
       if J = 1 then
          Ada.Text_IO.Put (File, "     := (");
 
@@ -448,42 +309,16 @@ begin
          Ada.Text_IO.Put (File, ", ");
       end if;
 
-      Ada.Text_IO.Put (File, Code_Point_Ada_Image (Case_Seq (J)));
+      Ada.Text_IO.Put (File, Code_Point_Ada_Image (Decomposition_Data (J)));
    end loop;
 
    Ada.Text_IO.Put_Line (File, ");");
 
-   Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line
-    (File, "   Context : aliased constant Casing_Context_Mapping_Sequence");
-
-   for J in 1 .. Cont_Last loop
-      Ada.Text_IO.Put_Line
-       (File,
-        "     := (1 => ("
-          & Casing_Context_Image (Cont_Info (J).Context).all
-          & ", "
-          & Boolean_Image (Cont_Info (J).Negative).all
-          & ", (("
-          & Sequence_Count_Image (Cont_Info (J).Ranges (Lower).First)
-          & ", "
-          & Sequence_Count_Image (Cont_Info (J).Ranges (Lower).Last)
-          & "), ("
-          & Sequence_Count_Image (Cont_Info (J).Ranges (Upper).First)
-          & ", "
-          & Sequence_Count_Image (Cont_Info (J).Ranges (Upper).Last)
-          & "), ("
-          & Sequence_Count_Image (Cont_Info (J).Ranges (Title).First)
-          & ", "
-          & Sequence_Count_Image (Cont_Info (J).Ranges (Title).Last)
-          & "))));");
-   end loop;
-
    for J in Groups'Range loop
       if not Generated (Groups (J).Share) then
          declare
-            Default    : Case_Mapping;
-            Current    : Case_Mapping;
+            Default    : Decomposition_Mapping;
+            Current    : Decomposition_Mapping;
             First      : Second_Stage_Index;
             Last       : Second_Stage_Index;
             First_Code : Code_Point;
@@ -495,7 +330,7 @@ begin
 
             declare
                type Value_Count_Pair is record
-                  V : Case_Mapping;
+                  V : Decomposition_Mapping;
                   C : Natural;
                end record;
 
@@ -503,14 +338,13 @@ begin
                  := (others => <>);
                Last    : Natural  := 0;
                Maximum : Natural  := 0;
-               Index   : Positive := 1;
 
             begin
                for K in Second_Stage_Index loop
                   declare
                      C : constant Code_Point
                        := Code_Unit_32 (J) * 256 + Code_Unit_32 (K);
-                     R : Case_Mapping renames Case_Info (C);
+                     R : Decomposition_Mapping renames Decomposition (C);
                      F : Boolean := False;
 
                   begin
@@ -545,7 +379,7 @@ begin
             Ada.Text_IO.Put_Line
              (File,
               "   Group_" & First_Stage_Image (Groups (J).Share)
-                & " : aliased constant Case_Mapping_Second_Stage");
+                & " : aliased constant Decomposition_Mapping_Second_Stage");
             Ada.Text_IO.Put
              (File, "     := (");
 
@@ -556,13 +390,13 @@ begin
 
                begin
                   if K = Second_Stage_Index'First then
-                     Current    := Case_Info (Code);
+                     Current    := Decomposition (Code);
                      First      := K;
                      Last       := First;
                      First_Code := Code;
                      Last_Code  := Code;
 
-                  elsif Case_Info (Code) = Current then
+                  elsif Decomposition (Code) = Current then
                      Last      := K;
                      Last_Code := Code;
 
@@ -598,7 +432,7 @@ begin
                         Ada.Text_IO.Set_Col (File, 10);
                      end if;
 
-                     Current    := Case_Info (Code);
+                     Current    := Decomposition (Code);
                      First      := K;
                      Last       := First;
                      First_Code := Code;
@@ -632,7 +466,8 @@ begin
 
       Ada.Text_IO.New_Line (File);
       Ada.Text_IO.Put_Line
-       (File, "   Mapping : aliased constant Case_Mapping_First_Stage");
+       (File,
+        "   Mapping : aliased constant Decomposition_Mapping_First_Stage");
       Ada.Text_IO.Put (File, "     := (");
 
       for J in Groups'Range loop
@@ -667,5 +502,5 @@ begin
    end;
 
    Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line (File, "end Matreshka.Internals.Ucd.Cases;");
-end Gen_Cases;
+   Ada.Text_IO.Put_Line (File, "end Matreshka.Internals.Ucd.Norms;");
+end Gen_Norms;

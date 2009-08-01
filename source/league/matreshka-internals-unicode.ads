@@ -59,6 +59,22 @@ package Matreshka.Internals.Unicode is
    Low_Surrogate_Last   : constant := 16#DFFF#;
    Surrogate_Last       : constant := 16#DFFF#;
 
+   --  Hangul syllables constants.
+
+   Hangul_Syllable_First : constant := 16#AC00#;
+   Hangul_Syllable_Last  : constant := 16#D7A3#;
+
+   S_Base  : constant := Hangul_Syllable_First;
+   L_Base  : constant := 16#1100#;
+   V_Base  : constant := 16#1161#;  --  Note, it is Vowel_First + 1
+   T_Base  : constant := 16#11A7#;  --  Note, it is Trailing_First - 1
+
+   L_Count : constant := 19;
+   V_Count : constant := 21;
+   T_Count : constant := 28;
+   N_Count : constant := V_Count * T_Count;  --  588
+   S_Count : constant := L_Count * N_Count;  --  11172
+
    function Is_Valid_Unicode_Code_Point (Item : Code_Unit_32) return Boolean;
    pragma Inline (Is_Valid_Unicode_Code_Point);
    --  Returns True if the specified code point is a valid Unicode code point.

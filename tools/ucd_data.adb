@@ -51,6 +51,8 @@ package body Ucd_Data is
      := "DerivedNormalizationProps.txt";
    CompositionExclusions_Name      : constant String
      := "CompositionExclusions.txt";
+   NormalizationCorrections_Name   : constant String
+     := "NormalizationCorrections.txt";
 
    subtype Primary_Core_Boolean_Properties is Boolean_Properties
      range ASCII_Hex_Digit .. White_Space;
@@ -102,8 +104,15 @@ package body Ucd_Data is
    --  Parse DerivedNormalizationProps.txt file and fill internal data
    --  structures by the parsed values.
 
+   procedure Load_NormalizationCorrections (Unidata_Directory : String);
+   --  Parse NormalizationCorrections.txt file and fill internal data
+   --  structures by the parsed values.
+
    procedure Compute_Casing_Properties;
    --  Compute Cased and Case_Ignorable properties for all characters.
+
+   procedure Compute_Full_Normalization_Data;
+   --  Compute full normalization mapping for both normalization forms.
 
    procedure Parse_Code_Point
     (Text : String;
@@ -137,6 +146,10 @@ package body Ucd_Data is
    function Value (Item : String) return Decomposition_Type;
    --  Converts text representation of the Decomposition_Type into the value.
 
+   procedure Free is
+     new Ada.Unchecked_Deallocation
+          (Code_Point_Sequence, Code_Point_Sequence_Access);
+
    -------------------------------
    -- Compute_Casing_Properties --
    -------------------------------
@@ -157,6 +170,122 @@ package body Ucd_Data is
              or else Core (J).GC = Modifier_Symbol;
       end loop;
    end Compute_Casing_Properties;
+
+   -------------------------------------
+   -- Compute_Full_Normalization_Data --
+   -------------------------------------
+
+   procedure Compute_Full_Normalization_Data is
+
+      procedure Expand (Kind : Normalization_Kinds);
+
+      ------------
+      -- Expand --
+      ------------
+
+      procedure Expand (Kind : Normalization_Kinds) is
+
+         function Has_Mapping (Code : Code_Point) return Boolean;
+         --  Returns True if code point has corresponding to Kind mapping.
+
+         function Decompose (Code : Code_Point) return Code_Point_Sequence;
+         --  Returns character's decomposition.
+
+         subtype S_Hangul is Code_Point
+           range Hangul_Syllable_First .. Hangul_Syllable_Last;
+
+         ---------------
+         -- Decompose --
+         ---------------
+
+         function Decompose (Code : Code_Point) return Code_Point_Sequence is
+         begin
+            if Code in S_Hangul then
+               raise Program_Error
+                 with "Decomposition of Hangul Syllables doesn't supported"
+                        & " for now";
+
+            else
+               return Norms (Code) (Kind).all;
+            end if;
+         end Decompose;
+
+         -----------------
+         -- Has_Mapping --
+         -----------------
+
+         function Has_Mapping (Code : Code_Point) return Boolean is
+         begin
+            if Code in S_Hangul then
+               return True;
+
+            else
+               case Kind is
+                  when Canonical =>
+                     return Core (Code).DT = Canonical;
+
+                  when Compatibility =>
+                     return Core (Code).DT /= None;
+               end case;
+            end if;
+         end Has_Mapping;
+
+         Expanded : Boolean;
+
+      begin
+         loop
+            Expanded := False;
+
+            for J in Norms'Range loop
+               if Has_Mapping (J) and then J not in S_Hangul then
+                  declare
+                     M : Code_Point_Sequence_Access := null;
+                     A : Code_Point_Sequence_Access;
+
+                  begin
+                     for K in Norms (J) (Kind)'Range loop
+                        if Has_Mapping (Norms (J) (Kind) (K)) then
+                           if M = null then
+                              M :=
+                                new Code_Point_Sequence'
+                                     (Norms (J) (Kind) (1 .. K - 1)
+                                        & Decompose (Norms (J) (Kind) (K)));
+
+                           else
+                              A := M;
+                              M :=
+                                new Code_Point_Sequence'
+                                     (A.all
+                                        & Decompose (Norms (J) (Kind) (K)));
+                              Free (A);
+                           end if;
+
+                        elsif M /= null then
+                           A := M;
+                           M :=
+                             new Code_Point_Sequence'
+                                  (A.all & Norms (J) (Kind) (K));
+                           Free (A);
+                        end if;
+                     end loop;
+
+                     if M /= null then
+                        Free (Norms (J) (Kind));
+                        Norms (J) (Kind) := M;
+                        Expanded := True;
+                     end if;
+                  end;
+               end if;
+            end loop;
+
+            exit when not Expanded;
+         end loop;
+      end Expand;
+
+   begin
+      Expand (Canonical);
+      Expand (Compatibility);
+   end Compute_Full_Normalization_Data;
 
    ----------
    -- Load --
@@ -192,6 +321,8 @@ package body Ucd_Data is
                  (Default => null, others => (others => null)),
                 FCF                   => null));
 
+      Norms := new Normalization_Values_Array'(others => (others => null));
+
       --  Load UnicodeData.txt, PropList.txt.
 
       Ada.Text_IO.Put_Line ("Loading UCD (" & Unidata_Directory & ") ...");
@@ -217,14 +348,17 @@ package body Ucd_Data is
       Load_SpecialCasing (Unidata_Directory);
       Load_CaseFolding (Unidata_Directory);
 
-      --  Load CompositionExclusions.txt, DerivedNormalizationProps.txt
+      --  Load CompositionExclusions.txt, DerivedNormalizationProps.txt,
+      --  NormalizationCorrections.txt.
 
       Load_CompositionExclusions (Unidata_Directory);
       Load_DerivedNormalizationProps (Unidata_Directory);
+      Load_NormalizationCorrections (Unidata_Directory);
 
       --  Compute derived properties.
 
       Compute_Casing_Properties;
+      Compute_Full_Normalization_Data;
 
       --  Verify data:
       --    - DerivedGeneralCategory.txt
@@ -486,6 +620,61 @@ package body Ucd_Data is
       Ucd_Input.Close (File);
    end Load_LineBreak;
 
+   -----------------------------------
+   -- Load_NormalizationCorrections --
+   -----------------------------------
+
+   procedure Load_NormalizationCorrections (Unidata_Directory : String) is
+      File      : Ucd_Input.File_Type;
+      Code      : Code_Point;
+      Original  : Code_Point_Sequence_Access;
+      Corrected : Code_Point_Sequence_Access;
+
+   begin
+      Ada.Text_IO.Put_Line ("   ... " & NormalizationCorrections_Name);
+
+      Ucd_Input.Open
+       (File, Unidata_Directory & '/' & NormalizationCorrections_Name);
+
+      while not Ucd_Input.End_Of_Data (File) loop
+         Code := Ucd_Input.First_Code_Point (File);
+
+         Original :=
+           new Code_Point_Sequence'
+                (Parse_Code_Point_Sequence (Ucd_Input.Field (File)));
+         Ucd_Input.Next_Field (File);
+
+         Corrected :=
+           new Code_Point_Sequence'
+                (Parse_Code_Point_Sequence (Ucd_Input.Field (File)));
+
+         if Norms (Code) (Canonical).all /= Original.all then
+            if Norms (Code) (Canonical).all /= Corrected.all then
+               raise Program_Error with "Wrong original decomposition";
+
+            else
+               Free (Corrected);
+            end if;
+
+         else
+            Free (Norms (Code) (Canonical));
+            Norms (Code) (Canonical) := Corrected;
+
+            if Core (Code).DT /= Canonical then
+               Free (Norms (Code) (Compatibility));
+               Norms (Code) (Compatibility) :=
+                 new Code_Point_Sequence'(Corrected.all);
+            end if;
+         end if;
+
+         Free (Original);
+
+         Ucd_Input.Next_Record (File);
+      end loop;
+
+      Ucd_Input.Close (File);
+   end Load_NormalizationCorrections;
+
    -------------------
    -- Load_PropList --
    -------------------
@@ -668,6 +857,7 @@ package body Ucd_Data is
         GC   : General_Category;
         CCC  : Canonical_Combining_Class;
         DT   : Decomposition_Type;
+        DM   : Code_Point_Sequence;
         SUM  : Optional_Code_Point;
         SLM  : Optional_Code_Point;
         STM  : Optional_Code_Point);
@@ -684,6 +874,7 @@ package body Ucd_Data is
         GC   : General_Category;
         CCC  : Canonical_Combining_Class;
         DT   : Decomposition_Type;
+        DM   : Code_Point_Sequence;
         SUM  : Optional_Code_Point;
         SLM  : Optional_Code_Point;
         STM  : Optional_Code_Point)
@@ -692,6 +883,16 @@ package body Ucd_Data is
          Core (Code).GC  := GC;
          Core (Code).CCC := CCC;
          Core (Code).DT  := DT;
+
+         --  Canonical and compatibility normalization.
+
+         if DT /= None then
+            Norms (Code) (Compatibility) := new Code_Point_Sequence'(DM);
+
+            if DT = Canonical then
+               Norms (Code) (Canonical) := new Code_Point_Sequence'(DM);
+            end if;
+         end if;
 
          --  Simple uppercase mapping
 
@@ -734,6 +935,7 @@ package body Ucd_Data is
       SLM        : Optional_Code_Point;
       STM        : Optional_Code_Point;
       DT         : Decomposition_Type;
+      DM         : Code_Point_Sequence_Access;
 
    begin
       Ada.Text_IO.Put_Line ("   ... " & UnicodeData_Name);
@@ -791,8 +993,14 @@ package body Ucd_Data is
                   DT   := Canonical;
                end if;
 
+               DM :=
+                 new Code_Point_Sequence'
+                      (Parse_Code_Point_Sequence
+                        (Field (First .. Field'Last)));
+
             else
                DT := None;
+               DM := new Code_Point_Sequence (1 .. 0);
             end if;
          end;
 
@@ -881,16 +1089,17 @@ package body Ucd_Data is
            and then Name (Name'Last - 6 .. Name'Last) = ", Last>"
          then
             for J in First_Code .. Code loop
-               Process (J, GC, CCC, DT, SUM, SLM, STM);
+               Process (J, GC, CCC, DT, DM.all, SUM, SLM, STM);
             end loop;
 
          else
-            Process (Code, GC, CCC, DT, SUM, SLM, STM);
+            Process (Code, GC, CCC, DT, DM.all, SUM, SLM, STM);
          end if;
 
          --  Cleanup.
 
          Free (Name);
+         Free (DM);
 
          Ucd_Input.Next_Record (File);
       end loop;

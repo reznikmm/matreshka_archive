@@ -78,8 +78,20 @@ package Ucd_Data is
 
    type Case_Values_Array_Access is access Case_Values_Array;
 
+   type Normalization_Kinds is (Canonical, Compatibility);
+
+   type Normalization_Values is
+     array (Normalization_Kinds) of Code_Point_Sequence_Access;
+
+   type Normalization_Values_Array is
+     array (Matreshka.Internals.Unicode.Code_Point) of Normalization_Values;
+
+   type Normalization_Values_Array_Access is
+     access all Normalization_Values_Array;
+
    Core  : Core_Values_Array_Access;
    Cases : Case_Values_Array_Access;
+   Norms : Normalization_Values_Array_Access;
 
    procedure Load (Unidata_Directory : String);
 
