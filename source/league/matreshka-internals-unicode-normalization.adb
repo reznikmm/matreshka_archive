@@ -87,6 +87,10 @@ package body Matreshka.Internals.Unicode.Normalization is
          Restart        : Boolean;
 
       begin
+         --  XXX It is more efficient to use backward bulk sort: all characters
+         --  in the substring always sorted, so we need just to move last
+         --  character to appropriate position.
+
          loop
             Restart := False;
 
@@ -132,7 +136,6 @@ package body Matreshka.Internals.Unicode.Normalization is
       Length         : Natural  := 0;
       Last_Class     : Canonical_Combining_Class := 0;
       Class          : Canonical_Combining_Class;
-      Reorder        : Boolean := False;
 
    begin
       if Source.Last = 0 then
@@ -162,7 +165,6 @@ package body Matreshka.Internals.Unicode.Normalization is
                   --  Canonical Ordering is violated.
 
                   S_Index := Previous;
-                  Reorder := True;
 
                   exit;
                end if;
@@ -226,28 +228,23 @@ package body Matreshka.Internals.Unicode.Normalization is
                   (First_Stage_Index (Code / 16#100#))
                   (Second_Stage_Index (Code mod 16#100#)).CCC;
 
+               Append (Destination, Code, Source.Last - S_Index + 1);
+
                if Class /= 0 then
                   if Last_Class > Class then
-                     --  Canonical Ordering is violated.
+                     --  Canonical Ordering is violated, reorder result.
 
-                     Reorder := True;
+                     Apply_Canonical_Ordering
+                      (First_Non_Zero, Destination.Last + 1);
+
+                  else
+                     Last_Class := Class;
                   end if;
 
                else
-                  if Reorder then
-                     Apply_Canonical_Ordering
-                      (First_Non_Zero, Destination.Last + 1);
-                  end if;
-               end if;
-
-               Append (Destination, Code, Source.Last - S_Index + 1);
-
-               if Class = 0 then
-                  Reorder := False;
                   First_Non_Zero := Destination.Last + 1;
+                  Last_Class := Class;
                end if;
-
-               Last_Class := Class;
             end Common_Append;
 
             M_First : constant Sequence_Count
@@ -265,15 +262,6 @@ package body Matreshka.Internals.Unicode.Normalization is
             if M_First = 0 then
                if Code in Hangul_Syllable_First .. Hangul_Syllable_Last then
                   --  Special processing of precomposed Hangul Syllables
-
-                  --  All precomposed Hangul Syllables have zero value of
-                  --  Canonical Combining Class, thus we must apply Canonical
-                  --  Ordering for previous characters.
-
-                  if Reorder then
-                     Apply_Canonical_Ordering
-                      (First_Non_Zero, Destination.Last + 1);
-                  end if;
 
                   declare
                      C_Index : constant Code_Point := Code - S_Base;
@@ -293,7 +281,6 @@ package body Matreshka.Internals.Unicode.Normalization is
                      end if;
                   end;
 
-                  Reorder := False;
                   First_Non_Zero := Destination.Last + 1;
                   Last_Class := 0;
 
@@ -308,10 +295,6 @@ package body Matreshka.Internals.Unicode.Normalization is
             end if;
          end;
       end loop;
-
-      if Reorder then
-         Apply_Canonical_Ordering (First_Non_Zero, Destination.Last + 1);
-      end if;
    end Generic_Decomposition;
 
    ---------------------------------------
@@ -344,6 +327,10 @@ package body Matreshka.Internals.Unicode.Normalization is
          Restart        : Boolean;
 
       begin
+         --  XXX It is more efficient to use backward bulk sort: all characters
+         --  in the substring always sorted, so we need just to move last
+         --  character to appropriate position.
+
          loop
             Restart := False;
 
@@ -389,7 +376,6 @@ package body Matreshka.Internals.Unicode.Normalization is
       Length         : Natural  := 0;
       Last_Class     : Canonical_Combining_Class := 0;
       Class          : Canonical_Combining_Class;
-      Reorder        : Boolean := False;
 
    begin
       if Source.Last = 0 then
@@ -419,7 +405,6 @@ package body Matreshka.Internals.Unicode.Normalization is
                   --  Canonical Ordering is violated.
 
                   S_Index := Previous;
-                  Reorder := True;
 
                   exit;
                end if;
@@ -483,28 +468,23 @@ package body Matreshka.Internals.Unicode.Normalization is
                   (First_Stage_Index (Code / 16#100#))
                   (Second_Stage_Index (Code mod 16#100#)).CCC;
 
+               Append (Destination, Code, Source.Last - S_Index + 1);
+
                if Class /= 0 then
                   if Last_Class > Class then
-                     --  Canonical Ordering is violated.
+                     --  Canonical Ordering is violated, reorder result.
 
-                     Reorder := True;
+                     Apply_Canonical_Ordering
+                      (First_Non_Zero, Destination.Last + 1);
+
+                  else
+                     Last_Class := Class;
                   end if;
 
                else
-                  if Reorder then
-                     Apply_Canonical_Ordering
-                      (First_Non_Zero, Destination.Last + 1);
-                  end if;
-               end if;
-
-               Append (Destination, Code, Source.Last - S_Index + 1);
-
-               if Class = 0 then
-                  Reorder := False;
                   First_Non_Zero := Destination.Last + 1;
+                  Last_Class := Class;
                end if;
-
-               Last_Class := Class;
             end Common_Append;
 
             M_First : constant Sequence_Count
@@ -522,15 +502,6 @@ package body Matreshka.Internals.Unicode.Normalization is
             if M_First = 0 then
                if Code in Hangul_Syllable_First .. Hangul_Syllable_Last then
                   --  Special processing of precomposed Hangul Syllables
-
-                  --  All precomposed Hangul Syllables have zero value of
-                  --  Canonical Combining Class, thus we must apply Canonical
-                  --  Ordering for previous characters.
-
-                  if Reorder then
-                     Apply_Canonical_Ordering
-                      (First_Non_Zero, Destination.Last + 1);
-                  end if;
 
                   declare
                      C_Index : constant Code_Point := Code - S_Base;
@@ -550,7 +521,6 @@ package body Matreshka.Internals.Unicode.Normalization is
                      end if;
                   end;
 
-                  Reorder := False;
                   First_Non_Zero := Destination.Last + 1;
                   Last_Class := 0;
 
@@ -565,10 +535,6 @@ package body Matreshka.Internals.Unicode.Normalization is
             end if;
          end;
       end loop;
-
-      if Reorder then
-         Apply_Canonical_Ordering (First_Non_Zero, Destination.Last + 1);
-      end if;
    end Generic_Decomposition_Composition;
 
    ---------
