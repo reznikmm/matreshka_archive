@@ -45,15 +45,15 @@ package body Matreshka.Internals.Unicode.Normalization is
       Form          : Normalization_Form;
       Decomposition : Decomposition_Kinds;
 
-   procedure Generic_To_Normalization_Form
+   procedure Generic_Decomposition
     (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
 
-   -----------------------------------
-   -- Generic_To_Normalization_Form --
-   -----------------------------------
+   ---------------------------
+   -- Generic_Decomposition --
+   ---------------------------
 
-   procedure Generic_To_Normalization_Form
+   procedure Generic_Decomposition
     (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
    is
@@ -188,7 +188,8 @@ package body Matreshka.Internals.Unicode.Normalization is
          return;
       end if;
 
-      --  Source is not in NFD probably, so start more complex algorithm.
+      --  Source is not in Normalization Form probably, so start more complex
+      --  algorithm.
 
       Destination := new Internal_String (Source.Size);
 
@@ -200,6 +201,47 @@ package body Matreshka.Internals.Unicode.Normalization is
          Unchecked_Next (Source.Value, S_Index, Code);
 
          declare
+
+            procedure Common_Append (Code : Code_Point);
+            --  Common algorithm to append character exclude Hangul Syllable,
+            --  decomposition and appending of which are done using special
+            --  algorithm.
+
+            -------------------
+            -- Common_Append --
+            -------------------
+
+            procedure Common_Append (Code : Code_Point) is
+            begin
+               Class :=
+                 Core.Property
+                  (First_Stage_Index (Code / 16#100#))
+                  (Second_Stage_Index (Code mod 16#100#)).CCC;
+
+               if Class /= 0 then
+                  if Last_Class > Class then
+                     --  Canonical Ordering is violated.
+
+                     Reorder := True;
+                  end if;
+
+               else
+                  if Reorder then
+                     Apply_Canonical_Ordering
+                      (First_Non_Zero, Destination.Last + 1);
+                  end if;
+               end if;
+
+               Append (Destination, Code, Source.Last - S_Index + 1);
+
+               if Class = 0 then
+                  Reorder := False;
+                  First_Non_Zero := Destination.Last + 1;
+               end if;
+
+               Last_Class := Class;
+            end Common_Append;
+
             M_First : constant Sequence_Count
               := Norms.Mapping
                   (First_Stage_Index (Code / 16#100#))
@@ -248,76 +290,21 @@ package body Matreshka.Internals.Unicode.Normalization is
                   Last_Class := 0;
 
                else
-                  Class :=
-                    Core.Property
-                     (First_Stage_Index (Code / 16#100#))
-                     (Second_Stage_Index (Code mod 16#100#)).CCC;
-
-                  if Class /= 0 then
-                     if Last_Class > Class then
-                        --  Canonical Ordering is violated.
-
-                        Reorder := True;
-                     end if;
-
-                  else
-                     if Reorder then
-                        Apply_Canonical_Ordering
-                         (First_Non_Zero, Destination.Last + 1);
-                     end if;
-                  end if;
-
-                  Append (Destination, Code, Source.Last - S_Index + 1);
-
-                  if Class = 0 then
-                     Reorder := False;
-                     First_Non_Zero := Destination.Last + 1;
-                  end if;
-
-                  Last_Class := Class;
+                  Common_Append (Code);
                end if;
 
             else
                for J in M_First .. M_Last loop
-                  Code := Norms.Decomposition_Data (J);
-
-                  Class :=
-                    Core.Property
-                     (First_Stage_Index (Code / 16#100#))
-                     (Second_Stage_Index (Code mod 16#100#)).CCC;
-
-                  if Class /= 0 then
-                     if Last_Class > Class then
-                        --  Canonical Ordering is violated.
-
-                        Reorder := True;
-                     end if;
-
-                  else
-                     if Reorder then
-                        Apply_Canonical_Ordering
-                         (First_Non_Zero, Destination.Last + 1);
-                     end if;
-                  end if;
-
-                  Append (Destination, Code, Source.Last - S_Index + 1);
-
-                  if Class = 0 then
-                     Reorder := False;
-                     First_Non_Zero := Destination.Last + 1;
-                  end if;
-
-                  Last_Class := Class;
+                  Common_Append (Norms.Decomposition_Data (J));
                end loop;
             end if;
          end;
       end loop;
 
       if Reorder then
-         Apply_Canonical_Ordering
-          (First_Non_Zero, Destination.Last + 1);
+         Apply_Canonical_Ordering (First_Non_Zero, Destination.Last + 1);
       end if;
-   end Generic_To_Normalization_Form;
+   end Generic_Decomposition;
 
    ---------
    -- NFD --
@@ -327,8 +314,7 @@ package body Matreshka.Internals.Unicode.Normalization is
     (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
    is
-      procedure Convert is
-        new Generic_To_Normalization_Form (NFD, Canonical);
+      procedure Convert is new Generic_Decomposition (NFD, Canonical);
 
    begin
       Convert (Source, Destination);
@@ -342,8 +328,7 @@ package body Matreshka.Internals.Unicode.Normalization is
     (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
    is
-      procedure Convert is
-        new Generic_To_Normalization_Form (NFKD, Compatibility);
+      procedure Convert is new Generic_Decomposition (NFKD, Compatibility);
 
    begin
       Convert (Source, Destination);
