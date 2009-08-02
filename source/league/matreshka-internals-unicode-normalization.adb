@@ -157,7 +157,7 @@ package body Matreshka.Internals.Unicode.Normalization is
 
             case Core.Property
                (First_Stage_Index (Code / 16#100#))
-               (Second_Stage_Index (Code mod 16#100#)).NFD_QC
+               (Second_Stage_Index (Code mod 16#100#)).NQC (NFD)
             is
                when No | Maybe =>
                   S_Index := Previous;

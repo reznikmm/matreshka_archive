@@ -317,34 +317,36 @@ package Matreshka.Internals.Ucd is
    type Normalization_Quick_Check is (No, Maybe, Yes);
    for Normalization_Quick_Check'Size use 2;
 
+   type Normalization_Form is (NFC, NFD, NFKC, NFKD);
+
+   type Normalization_Quick_Checks is
+     array (Normalization_Form) of Normalization_Quick_Check;
+   for Normalization_Quick_Checks'Size use 8;
+   for Normalization_Quick_Checks'Component_Size
+     use Normalization_Quick_Check'Size;
+
    type Core_Values is record
-      GC      : General_Category;           --   8  (5) bits
-      CCC     : Canonical_Combining_Class;  --   8      bits
-      GCB     : Grapheme_Cluster_Break;     --   8  (4) bits
-      WB      : Word_Break;                 --   8  (4) bits
-      SB      : Sentence_Break;             --   8  (4) bits
-      LB      : Line_Break;                 --   8  (6) bits
-      NFC_QC  : Normalization_Quick_Check;  --   2      bits
-      NFD_QC  : Normalization_Quick_Check;  --   2  (1) bits
-      NFKC_QC : Normalization_Quick_Check;  --   2      bits
-      NFKD_QC : Normalization_Quick_Check;  --   2  (1) bits
-      DT      : Decomposition_Type;         --   8  (5) bits
-      B       : Boolean_Values;             --  64 (52) bits
+      GC  : General_Category;            --   8  (5) bits
+      CCC : Canonical_Combining_Class;   --   8      bits
+      GCB : Grapheme_Cluster_Break;      --   8  (4) bits
+      WB  : Word_Break;                  --   8  (4) bits
+      SB  : Sentence_Break;              --   8  (4) bits
+      LB  : Line_Break;                  --   8  (6) bits
+      NQC : Normalization_Quick_Checks;  --   8      bits
+      DT  : Decomposition_Type;          --   8  (5) bits
+      B   : Boolean_Values;              --  64 (52) bits
    end record;
    for Core_Values'Size use 128;
    for Core_Values use record
-      B       at 0 range   0 ..  63;
-      GC      at 0 range  64 ..  71;
-      CCC     at 0 range  72 ..  79;
-      GCB     at 0 range  80 ..  87;
-      WB      at 0 range  88 ..  95;
-      SB      at 0 range  96 .. 103;
-      LB      at 0 range 104 .. 111;
-      NFC_QC  at 0 range 112 .. 113;
-      NFD_QC  at 0 range 114 .. 115;
-      NFKC_QC at 0 range 116 .. 117;
-      NFKD_QC at 0 range 118 .. 119;
-      DT      at 0 range 120 .. 127;
+      B   at 0 range   0 ..  63;
+      GC  at 0 range  64 ..  71;
+      CCC at 0 range  72 ..  79;
+      GCB at 0 range  80 ..  87;
+      WB  at 0 range  88 ..  95;
+      SB  at 0 range  96 .. 103;
+      LB  at 0 range 104 .. 111;
+      NQC at 0 range 112 .. 119;
+      DT  at 0 range 120 .. 127;
    end record;
 
    type Core_Second_Stage is array (Second_Stage_Index) of Core_Values;

@@ -303,18 +303,15 @@ package body Ucd_Data is
       Core :=
         new Core_Values_Array'
              (others =>
-               (GC      => Unassigned,    --  see UCD.html
-                CCC     => Not_Reordered, --  see UCD.html
-                GCB     => Other,         --  see GraphemeBreakProperty.txt
-                WB      => Other,         --  see WordBreakProperty.txt
-                SB      => Other,         --  see SentenceBreakProperty.txt
-                LB      => Unknown,       --  see LineBreak.txt
-                NFD_QC  => Yes,           --  see DerivedNormalizationProps.txt
-                NFC_QC  => Yes,           --  see DerivedNormalizationProps.txt
-                NFKD_QC => Yes,           --  see DerivedNormalizationProps.txt
-                NFKC_QC => Yes,           --  see DerivedNormalizationProps.txt
-                DT      => None,          --  see UCD.html
-                B       => (others => False)));
+               (GC  => Unassigned,       --  see UCD.html
+                CCC => Not_Reordered,    --  see UCD.html
+                GCB => Other,            --  see GraphemeBreakProperty.txt
+                WB  => Other,            --  see WordBreakProperty.txt
+                SB  => Other,            --  see SentenceBreakProperty.txt
+                LB  => Unknown,          --  see LineBreak.txt
+                NQC => (others => Yes),  --  see DerivedNormalizationProps.txt
+                DT  => None,             --  see UCD.html
+                B   => (others => False)));
 
       Cases :=
         new Case_Values_Array'
@@ -530,16 +527,16 @@ package body Ucd_Data is
                   Core (J).B (Full_Composition_Exclusion) := True;
 
                when NFD_QC =>
-                  Core (J).NFD_QC := Value (Ucd_Input.Field (File));
+                  Core (J).NQC (NFD) := Value (Ucd_Input.Field (File));
 
                when NFC_QC =>
-                  Core (J).NFC_QC := Value (Ucd_Input.Field (File));
+                  Core (J).NQC (NFC) := Value (Ucd_Input.Field (File));
 
                when NFKD_QC =>
-                  Core (J).NFKD_QC := Value (Ucd_Input.Field (File));
+                  Core (J).NQC (NFKD) := Value (Ucd_Input.Field (File));
 
                when NFKC_QC =>
-                  Core (J).NFKC_QC := Value (Ucd_Input.Field (File));
+                  Core (J).NQC (NFKC) := Value (Ucd_Input.Field (File));
 
                when Expands_On_NFD =>
                   Core (J).B (Expands_On_NFD) := True;

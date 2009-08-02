@@ -506,14 +506,15 @@ procedure Gen_Props (Source_Directory : String) is
       Ada.Text_IO.Set_Col (File, Indent);
       Ada.Text_IO.Put
        (File,
-        Normalization_Quick_Check_Image (Item.NFC_QC).all
+        "("
+          & Normalization_Quick_Check_Image (Item.NQC (NFC)).all
           & ", "
-          & Normalization_Quick_Check_Image (Item.NFD_QC).all
+          & Normalization_Quick_Check_Image (Item.NQC (NFD)).all
           & ", "
-          & Normalization_Quick_Check_Image (Item.NFKC_QC).all
+          & Normalization_Quick_Check_Image (Item.NQC (NFKC)).all
           & ", "
-          & Normalization_Quick_Check_Image (Item.NFKD_QC).all
-          & ", "
+          & Normalization_Quick_Check_Image (Item.NQC (NFKD)).all
+          & "), "
           & Decomposition_Type_Image (Item.DT).all
           & ",");
       Ada.Text_IO.Set_Col (File, Indent);
