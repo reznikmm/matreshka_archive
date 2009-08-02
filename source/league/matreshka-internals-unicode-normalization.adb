@@ -130,12 +130,16 @@ package body Matreshka.Internals.Unicode.Normalization is
          end loop;
       end Apply_Canonical_Ordering;
 
-      S_Index        : Positive := 1;
-      First_Non_Zero : Positive := 1;
-      Code           : Code_Point;
-      Length         : Natural  := 0;
-      Last_Class     : Canonical_Combining_Class := 0;
-      Class          : Canonical_Combining_Class;
+      type Starter_State is record
+         D_Next : Positive := 1;
+      end record;
+
+      S_Index    : Positive := 1;
+      Code       : Code_Point;
+      Length     : Natural  := 0;
+      Last_Class : Canonical_Combining_Class := 0;
+      Class      : Canonical_Combining_Class;
+      Starter    : Starter_State;
 
    begin
       if Source.Last = 0 then
@@ -148,11 +152,11 @@ package body Matreshka.Internals.Unicode.Normalization is
       --  Try to do Normalization Form quick check.
 
       declare
-         Previous : Positive;
+         S_Previous : Positive;
 
       begin
          while S_Index <= Source.Last loop
-            Previous := S_Index;
+            S_Previous := S_Index;
 
             Unchecked_Next (Source.Value, S_Index, Code);
             Class :=
@@ -164,13 +168,13 @@ package body Matreshka.Internals.Unicode.Normalization is
                if Last_Class > Class then
                   --  Canonical Ordering is violated.
 
-                  S_Index := Previous;
+                  S_Index := S_Previous;
 
                   exit;
                end if;
 
             else
-               First_Non_Zero := S_Index;
+               Starter := (D_Next => S_Index);
             end if;
 
             case Core.Property
@@ -178,7 +182,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
             is
                when No | Maybe =>
-                  S_Index := Previous;
+                  S_Index := S_Previous;
 
                   exit;
 
@@ -235,14 +239,14 @@ package body Matreshka.Internals.Unicode.Normalization is
                      --  Canonical Ordering is violated, reorder result.
 
                      Apply_Canonical_Ordering
-                      (First_Non_Zero, Destination.Last + 1);
+                      (Starter.D_Next, Destination.Last + 1);
 
                   else
                      Last_Class := Class;
                   end if;
 
                else
-                  First_Non_Zero := Destination.Last + 1;
+                  Starter := (D_Next => Destination.Last + 1);
                   Last_Class := Class;
                end if;
             end Common_Append;
@@ -281,7 +285,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                      end if;
                   end;
 
-                  First_Non_Zero := Destination.Last + 1;
+                  Starter := (D_Next => Destination.Last + 1);
                   Last_Class := 0;
 
                else
@@ -370,12 +374,16 @@ package body Matreshka.Internals.Unicode.Normalization is
          end loop;
       end Apply_Canonical_Ordering;
 
-      S_Index        : Positive := 1;
-      First_Non_Zero : Positive := 1;
-      Code           : Code_Point;
-      Length         : Natural  := 0;
-      Last_Class     : Canonical_Combining_Class := 0;
-      Class          : Canonical_Combining_Class;
+      type Starter_State is record
+         D_Next : Positive := 1;
+      end record;
+
+      S_Index    : Positive := 1;
+      Code       : Code_Point;
+      Length     : Natural  := 0;
+      Last_Class : Canonical_Combining_Class := 0;
+      Class      : Canonical_Combining_Class;
+      Starter    : Starter_State;
 
    begin
       if Source.Last = 0 then
@@ -388,11 +396,11 @@ package body Matreshka.Internals.Unicode.Normalization is
       --  Try to do Normalization Form quick check.
 
       declare
-         Previous : Positive;
+         S_Previous : Positive;
 
       begin
          while S_Index <= Source.Last loop
-            Previous := S_Index;
+            S_Previous := S_Index;
 
             Unchecked_Next (Source.Value, S_Index, Code);
             Class :=
@@ -404,13 +412,13 @@ package body Matreshka.Internals.Unicode.Normalization is
                if Last_Class > Class then
                   --  Canonical Ordering is violated.
 
-                  S_Index := Previous;
+                  S_Index := S_Previous;
 
                   exit;
                end if;
 
             else
-               First_Non_Zero := S_Index;
+               Starter := (D_Next => S_Index);
             end if;
 
             case Core.Property
@@ -418,7 +426,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
             is
                when No | Maybe =>
-                  S_Index := Previous;
+                  S_Index := S_Previous;
 
                   exit;
 
@@ -475,14 +483,14 @@ package body Matreshka.Internals.Unicode.Normalization is
                      --  Canonical Ordering is violated, reorder result.
 
                      Apply_Canonical_Ordering
-                      (First_Non_Zero, Destination.Last + 1);
+                      (Starter.D_Next, Destination.Last + 1);
 
                   else
                      Last_Class := Class;
                   end if;
 
                else
-                  First_Non_Zero := Destination.Last + 1;
+                  Starter := (D_Next => Destination.Last + 1);
                   Last_Class := Class;
                end if;
             end Common_Append;
@@ -521,7 +529,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                      end if;
                   end;
 
-                  First_Non_Zero := Destination.Last + 1;
+                  Starter := (D_Next => Destination.Last + 1);
                   Last_Class := 0;
 
                else
