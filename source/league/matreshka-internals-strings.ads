@@ -32,6 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Atomics.Counters;
+with Matreshka.Internals.Unicode;
 with Matreshka.Internals.Utf16;
 
 package Matreshka.Internals.Strings is
@@ -109,5 +110,12 @@ package Matreshka.Internals.Strings is
      High   : Natural;
      Length : Natural;
      By     : not null Internal_String_Access);
+
+   procedure Append
+    (Self      : in out Internal_String_Access;
+     Code      : Matreshka.Internals.Unicode.Code_Point;
+     Increment : Natural);
+   --  Append character to the string, reallocate memory if needed. Increment
+   --  is used as minimum size increment value when relocation is applied.
 
 end Matreshka.Internals.Strings;

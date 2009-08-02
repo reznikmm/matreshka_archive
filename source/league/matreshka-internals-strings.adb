@@ -38,6 +38,7 @@ with Matreshka.Internals.Atomics.Generic_Test_And_Set;
 package body Matreshka.Internals.Strings is
 
    use Matreshka.Internals.Utf16;
+   use Matreshka.Internals.Unicode;
 
    procedure Free is
      new Ada.Unchecked_Deallocation (Internal_String, Internal_String_Access);
@@ -62,6 +63,47 @@ package body Matreshka.Internals.Strings is
    --  no memory loss as most (all?) malloc implementations are obliged to
    --  align the returned memory on the maximum alignment as malloc does not
    --  know the target alignment.
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self      : in out Internal_String_Access;
+     Code      : Code_Point;
+     Increment : Natural)
+   is
+      Index : Positive := Self.Last + 1;
+
+   begin
+      Self.Length := Self.Length + 1;
+
+      if Code <= 16#FFFF# then
+         Self.Last := Self.Last + 1;
+
+      else
+         Self.Last := Self.Last + 2;
+      end if;
+
+      if Self.Last > Self.Size then
+         declare
+            Aux : constant not null Internal_String_Access
+              := new Internal_String
+                      (Self.Last
+                         + Natural'Max (Self.Size + Increment, Self.Last));
+
+         begin
+            Aux.Value (Self.Value'Range) := Self.Value;
+            Aux.Last := Self.Last;
+            Aux.Length := Self.Length;
+
+            Dereference (Self);
+            Self := Aux;
+         end;
+      end if;
+
+      Unchecked_Store (Self.Value, Index, Code);
+   end Append;
 
    ------------
    -- Append --

@@ -49,46 +49,9 @@ package body Matreshka.Internals.Unicode.Normalization is
     (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
    is
-      procedure Append (Code : Code_Point);
-
       procedure Apply_Canonical_Ordering
        (First : Positive;
         Last  : Positive);
-
-      ------------
-      -- Append --
-      ------------
-
-      procedure Append (Code : Code_Point) is
-         Index : Positive := Destination.Last + 1;
-
-      begin
-         Destination.Length := Destination.Length + 1;
-
-         if Code <= 16#FFFF# then
-            Destination.Last := Destination.Last + 1;
-
-         else
-            Destination.Last := Destination.Last + 2;
-         end if;
-
-         if Destination.Last > Destination.Size then
-            declare
-               Aux : constant not null Internal_String_Access
-                 := new Internal_String (Destination.Last + Source.Last);
-
-            begin
-               Aux.Value (Destination.Value'Range) := Destination.Value;
-               Aux.Last := Destination.Last;
-               Aux.Length := Destination.Length;
-
-               Dereference (Destination);
-               Destination := Aux;
-            end;
-         end if;
-
-         Unchecked_Store (Destination.Value, Index, Code);
-      end Append;
 
       ------------------------------
       -- Apply_Canonical_Ordering --
@@ -262,11 +225,11 @@ package body Matreshka.Internals.Unicode.Normalization is
                        := T_Base + C_Index mod T_Count;
 
                   begin
-                     Append (L);
-                     Append (V);
+                     Append (Destination, L, Source.Last - S_Index + 3);
+                     Append (Destination, V, Source.Last - S_Index + 2);
 
                      if T /= T_Base then
-                        Append (T);
+                        Append (Destination, T, Source.Last - S_Index + 1);
                      end if;
                   end;
 
@@ -294,7 +257,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                      end if;
                   end if;
 
-                  Append (Code);
+                  Append (Destination, Code, Source.Last - S_Index + 1);
 
                   if Class = 0 then
                      Reorder := False;
@@ -327,7 +290,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                      end if;
                   end if;
 
-                  Append (Code);
+                  Append (Destination, Code, Source.Last - S_Index + 1);
 
                   if Class = 0 then
                      Reorder := False;

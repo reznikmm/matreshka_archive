@@ -55,8 +55,6 @@ package body Matreshka.Internals.Unicode.Casing is
       Source_Code    : Code_Point;
       Converted      : Boolean;
 
-      procedure Append (Code : Code_Point);
-
       function Is_Preceded_By_Final_Sigma_Context return Boolean;
 
       function Is_Followed_By_Final_Sigma_Context return Boolean;
@@ -68,41 +66,6 @@ package body Matreshka.Internals.Unicode.Casing is
       function Is_Followed_By_Before_Dot_Context return Boolean;
 
       function Is_Preceded_By_After_I_Context return Boolean;
-
-      ------------
-      -- Append --
-      ------------
-
-      procedure Append (Code : Code_Point) is
-         Index : Positive := Destination.Last + 1;
-
-      begin
-         Destination.Length := Destination.Length + 1;
-
-         if Code <= 16#FFFF# then
-            Destination.Last := Destination.Last + 1;
-
-         else
-            Destination.Last := Destination.Last + 2;
-         end if;
-
-         if Destination.Last > Destination.Value'Last then
-            declare
-               Aux : constant not null Internal_String_Access
-                 := new Internal_String (Destination.Last + Source.Last);
-
-            begin
-               Aux.Value (Destination.Value'Range) := Destination.Value;
-               Aux.Last := Destination.Last;
-               Aux.Length := Destination.Length;
-
-               Dereference (Destination);
-               Destination := Aux;
-            end;
-         end if;
-
-         Unchecked_Store (Destination.Value, Index, Code);
-      end Append;
 
       ---------------------------------------
       -- Is_Followed_By_Before_Dot_Context --
@@ -333,7 +296,15 @@ package body Matreshka.Internals.Unicode.Casing is
                                     for J in Context.Ranges (Kind).First
                                                .. Context.Ranges (Kind).Last
                                     loop
-                                       Append (Locale.Case_Sequence (J));
+                                       Append
+                                        (Destination,
+                                          Locale.Case_Sequence (J),
+                                          Source.Last - Source_Current
+                                            + Integer
+                                               (Context.Ranges (Kind).Last)
+                                            - Integer
+                                               (Context.Ranges (Kind).First)
+                                            + 2);
                                     end loop;
 
                                     Converted := True;
@@ -378,13 +349,19 @@ package body Matreshka.Internals.Unicode.Casing is
                   for J in Mapping.Ranges (Kind).First
                              .. Mapping.Ranges (Kind).Last
                   loop
-                     Append (Locale.Case_Sequence (J));
+                     Append
+                      (Destination,
+                       Locale.Case_Sequence (J),
+                       Source.Last - Source_Current
+                         + Integer (Mapping.Ranges (Kind).Last)
+                         - Integer (Mapping.Ranges (Kind).First) + 2);
                   end loop;
                end if;
             end;
 
          else
-            Append (Source_Code);
+            Append
+             (Destination, Source_Code, Source.Last - Source_Current + 1);
          end if;
       end loop;
    end Convert_Case;

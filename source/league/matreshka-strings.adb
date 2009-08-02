@@ -48,10 +48,6 @@ package body Matreshka.Strings is
     (Source      : Wide_Wide_String;
      Destination : out Internal_String_Access);
 
-   procedure Unchecked_Append
-    (Data : in out Internal_String;
-     Item : Wide_Wide_Character);
-
    procedure Attach (Self : in out Abstract_Cursor'Class);
    --  Attaches cursor to the list of cursors of Universal_String.
 
@@ -125,13 +121,14 @@ package body Matreshka.Strings is
       end if;
 
       declare
-         D : constant not null Internal_String_Access
+         D : not null Internal_String_Access
            := new Internal_String (L_D.Last + 2);
 
       begin
          D.Value (1 .. L_D.Last) := L_D.Value (1 .. L_D.Last);
          D.Last                  := L_D.Last;
-         Unchecked_Append (D.all, Right);
+         D.Length                := L_D.Length;
+         Append (D, Wide_Wide_Character'Pos (Right), 1);
 
          return Constructors.Create (D);
       end;
@@ -834,62 +831,21 @@ package body Matreshka.Strings is
     (Source      : Wide_Wide_String;
      Destination : out Internal_String_Access)
    is
-      Double_Length : Boolean := False;
-      --  True if Destination reserve space for double code unit representation
-      --  of the source code points.
-
    begin
       Destination := new Internal_String (Source'Length);
-      Destination.Length := Source'Length;
 
       for J in Source'Range loop
-         if Is_Valid_Unicode_Code_Point
+         if not Is_Valid_Unicode_Code_Point
              (Wide_Wide_Character'Pos (Source (J)))
          then
-            declare
-               C : Code_Point := Wide_Wide_Character'Pos (Source (J));
-
-            begin
-               if C <= 16#FFFF# then
-                  Destination.Last := Destination.Last + 1;
-                  Destination.Value (Destination.Last) := Utf16_Code_Unit (C);
-
-               else
-                  if not Double_Length then
-                     --  Reallocate buffer.
-
-                     declare
-                        Aux : constant not null Internal_String_Access
-                          := new Internal_String (Source'Length * 2);
-
-                     begin
-                        Aux.Value (1 .. Destination.Last) :=
-                          Destination.Value (1 .. Destination.Last);
-                        Aux.Last := Destination.Last;
-                        Aux.Length := Destination.Length;
-                        Dereference (Destination);
-                        Destination := Aux;
-
-                        Double_Length := True;
-                     end;
-                  end if;
-
-                  C := C - 16#1_0000#;
-
-                  Destination.Last := Destination.Last + 1;
-                  Destination.Value (Destination.Last) :=
-                    Utf16_Code_Unit (High_Surrogate_First + C / 16#400#);
-
-                  Destination.Last := Destination.Last + 1;
-                  Destination.Value (Destination.Last) :=
-                    Utf16_Code_Unit (Low_Surrogate_First + C mod 16#400#);
-               end if;
-            end;
-
-         else
             raise Constraint_Error
               with "Wide_Wide_Character is not a valid Unicode code point";
          end if;
+
+         Append
+          (Destination,
+           Wide_Wide_Character'Pos (Source (J)),
+           Source'Last - J);
       end loop;
 
    exception
@@ -930,48 +886,6 @@ package body Matreshka.Strings is
 
       return Result;
    end To_Wide_Wide_String;
-
-   ----------------------
-   -- Unchecked_Append --
-   ----------------------
-
-   procedure Unchecked_Append
-    (Data : in out Internal_String;
-     Item : Wide_Wide_Character)
-   is
-      C : Code_Point := Wide_Wide_Character'Pos (Item);
-
-   begin
-      if C <= 16#FFFF# then
-         Data.Last := Data.Last + 1;
-
-      else
-         Data.Last := Data.Last + 2;
-      end if;
-
---      if Last > Value'Last then
---         declare
---            Aux : constant not null Utf16_String_Access
---              := new Utf16_String (1 .. Last);
---
---         begin
---            Aux (Value'Range) := Value.all;
---            Free (Value);
---            Value := Aux;
---         end;
---      end if;
-
-      if C <= 16#FFFF# then
-         Data.Value (Data.Last) := Utf16_Code_Unit (C);
-
-      else
-         C                := C - 16#1_0000#;
-         Data.Value (Data.Last - 1) :=
-           Utf16_Code_Unit (High_Surrogate_First + C / 16#400#);
-         Data.Value (Data.Last)     :=
-           Utf16_Code_Unit (Low_Surrogate_First + C mod 16#400#);
-      end if;
-   end Unchecked_Append;
 
    -----------
    -- Write --
