@@ -49,23 +49,6 @@ package body Matreshka.Internals.Strings is
      new Matreshka.Internals.Atomics.Generic_Test_And_Set
           (Index_Map, Index_Map_Access);
 
-   Index_Mode_After_Concatenation : constant
-     array (Index_Modes, Index_Modes) of Index_Modes
-       := (Undefined    => (Single_Units => Single_Units,
-                            Double_Units => Double_Units,
-                            Mixed_Units  => Mixed_Units,
-                            others       => Undefined),
-           Single_Units => (Undefined    => Single_Units,
-                            Single_Units => Single_Units,
-                            others       => Mixed_Units),
-           Double_Units => (Undefined    => Double_Units,
-                            Double_Units => Double_Units,
-                            others       => Mixed_Units),
-           Mixed_Units  => (Undefined    => Mixed_Units,
-                            others       => Mixed_Units));
-   --  String indexing mode after concatenation. Each dimension is a valid
-   --  string indexing mode for each concatenated string.
-
    Growth_Factor : constant := 32;
    --  The growth factor controls how much extra space is allocated when
    --  we have to increase the size of an allocated unbounded string. By
@@ -129,8 +112,6 @@ package body Matreshka.Internals.Strings is
            Item.Value (1 .. Item.Last);
          Self.Last := Size;
          Self.Length := Source.Length + Item.Length;
-         Self.Index_Mode :=
-           Index_Mode_After_Concatenation (Source.Index_Mode, Item.Index_Mode);
          Free (Self.Index_Map);
 
          if Self /= Source then
@@ -264,20 +245,6 @@ package body Matreshka.Internals.Strings is
 
          Self.Last := Size;
          Self.Length := Source.Length - Length + By.Length;
-         Self.Index_Mode :=
-           Index_Mode_After_Concatenation (Source.Index_Mode, By.Index_Mode);
-
-         --  If Mixed_Units mode is used by source string, then check can we
-         --  improve it to Single_Units or Double_Units.
-
-         if Self.Index_Mode = Mixed_Units then
-            if Self.Last = Self.Length then
-               Self.Index_Mode := Single_Units;
-
-            elsif Self.Last = Self.Length * 2 then
-               Self.Index_Mode := Double_Units;
-            end if;
-         end if;
 
          if Self /= Source then
             Dereference (Source);
@@ -311,28 +278,14 @@ package body Matreshka.Internals.Strings is
             Size : constant Natural := High - Low + 1;
 
          begin
-            return Result : constant not null Internal_String_Access
-              := new Internal_String'
-                      (Counter    => Matreshka.Internals.Atomics.Counters.One,
-                       Size       => Size,
-                       Value      => Self.Value (Low .. High),
-                       Last       => Size,
-                       Length     => Length,
-                       Index_Mode => Self.Index_Mode,
-                       Index_Map  => null)
-            do
-               --  If Mixed_Units mode is used by source string, then check
-               --  can we improve it to Single_Units or Double_Units.
-
-               if Result.Index_Mode = Mixed_Units then
-                  if Result.Last = Result.Length then
-                     Result.Index_Mode := Single_Units;
-
-                  elsif Result.Last = Result.Length * 2 then
-                     Result.Index_Mode := Double_Units;
-                  end if;
-               end if;
-            end return;
+            return
+              new Internal_String'
+                   (Counter   => Matreshka.Internals.Atomics.Counters.One,
+                    Size      => Size,
+                    Value     => Self.Value (Low .. High),
+                    Last      => Size,
+                    Length    => Length,
+                    Index_Map => null);
          end;
       end if;
    end Slice;

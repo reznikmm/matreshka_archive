@@ -38,25 +38,6 @@ package Matreshka.Internals.Strings is
 
    pragma Preelaborate;
 
-   type Index_Modes is
-    (Undefined,     --  Index mode is undefined.
-     Single_Units,  --  All characters a BPM characters, thus represented as
-                    --  one 16-bit code unit.
-     Double_Units,  --  All characters is outside of BMP, thus represented as
-                    --  surrogate pair (two 16-bit code units).
-     Mixed_Units);  --  String has both BMP and non-BMP characters, thus index
-                    --  table is used for direct access to string's characters.
-
-   To_Index_Mode : constant
-     array (Boolean, Boolean) of Index_Modes
-       := (False => (False => Undefined,
-                     True  => Double_Units),
-           True  => (False => Single_Units,
-                     True  => Mixed_Units));
-   --  String indexing mode for the string. First index must be True when
-   --  string contains BMP characters, second index must be True when string
-   --  contains non-BMP characters.
-
    type Positive_Array is array (Positive range <>) of Positive;
 
    type Index_Map (Length : Natural) is record
@@ -69,26 +50,22 @@ package Matreshka.Internals.Strings is
    type Index_Map_Access is access all Index_Map;
 
    type Internal_String (Size : Natural) is limited record
-      Counter    : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
-      Value      : Matreshka.Internals.Utf16.Utf16_String (1 .. Size);
+      Value     : Matreshka.Internals.Utf16.Utf16_String (1 .. Size);
       --  String data. Internal data always has well-formed UTF-16 encoded
       --  sequence of valid Unicode code points. Validity checks proceed only
       --  for potentially invalid user specified data, and never proceed for
       --  the internal data.
 
-      Last       : Natural := 0;
+      Last      : Natural := 0;
       --  Last used element in the Value array.
 
-      Length     : Natural := 0;
+      Length    : Natural := 0;
       --  Precomputed length of the string in Unicode code points.
 
-      Index_Mode : Index_Modes := Undefined;
-      --  String's characters indexing mode for direct access by the
-      --  character's index.
-
-      Index_Map  : aliased Index_Map_Access := null;
+      Index_Map : aliased Index_Map_Access := null;
       pragma Atomic (Index_Map);
       --  Mapping of the string's characters index to position inside internal
       --  buffer. Used only if string has both BMP and non-BMP characters.

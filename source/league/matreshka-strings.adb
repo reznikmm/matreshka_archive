@@ -59,23 +59,6 @@ package body Matreshka.Strings is
    --  Detaches cursor from the list of cursors of Universal_String. Also
    --  reset associated object to null.
 
-   Index_Mode_After_Concatenation : constant
-     array (Index_Modes, Index_Modes) of Index_Modes
-       := (Undefined    => (Single_Units => Single_Units,
-                            Double_Units => Double_Units,
-                            Mixed_Units  => Mixed_Units,
-                            others       => Undefined),
-           Single_Units => (Undefined    => Single_Units,
-                            Single_Units => Single_Units,
-                            others       => Mixed_Units),
-           Double_Units => (Undefined    => Double_Units,
-                            Double_Units => Double_Units,
-                            others       => Mixed_Units),
-           Mixed_Units  => (Undefined    => Mixed_Units,
-                            others       => Mixed_Units));
-   --  String indexing mode after concatenation. Each dimension is a valid
-   --  string indexing mode for each concatenated string.
-
    ---------
    -- "&" --
    ---------
@@ -119,8 +102,6 @@ package body Matreshka.Strings is
               R_D.Value (1 .. R_D.Last);
             D.Last := L_D.Last + R_D.Last;
             D.Length := L_D.Length + R_D.Length;
-            D.Index_Mode :=
-              Index_Mode_After_Concatenation (L_D.Index_Mode, R_D.Index_Mode);
 
             return Constructors.Create (D);
          end;
@@ -150,7 +131,6 @@ package body Matreshka.Strings is
       begin
          D.Value (1 .. L_D.Last) := L_D.Value (1 .. L_D.Last);
          D.Last                  := L_D.Last;
-         D.Index_Mode            := L_D.Index_Mode;
          Unchecked_Append (D.all, Right);
 
          return Constructors.Create (D);
@@ -403,35 +383,31 @@ package body Matreshka.Strings is
          raise Constraint_Error with "Index is out of range";
       end if;
 
-      case D.Index_Mode is
-         when Undefined =>
-            raise Program_Error;
+      if D.Last = D.Length then
+         return Wide_Wide_Character'Val (D.Value (Index));
 
-         when Single_Units =>
-            return Wide_Wide_Character'Val (D.Value (Index));
+      elsif D.Last = D.Length * 2 then
+         return
+           Wide_Wide_Character'Val
+            (Unchecked_To_Code_Point (D.Value, Index * 2 - 1));
 
-         when Double_Units =>
+      else
+         declare
+            M : Index_Map_Access := D.Index_Map;
+
+         begin
+            --  Calculate index map if it is unavailable for now.
+
+            if M = null then
+               Compute_Index_Map (D.all);
+               M := D.Index_Map;
+            end if;
+
             return
               Wide_Wide_Character'Val
-               (Unchecked_To_Code_Point (D.Value, Index * 2 - 1));
-
-         when Mixed_Units =>
-            declare
-               M : Index_Map_Access := D.Index_Map;
-
-            begin
-               --  Calculate index map if it is unavailable for now.
-
-               if M = null then
-                  Compute_Index_Map (D.all);
-                  M := D.Index_Map;
-               end if;
-
-               return
-                 Wide_Wide_Character'Val
-                  (Unchecked_To_Code_Point (D.Value, M.Map (Index)));
-            end;
-      end case;
+               (Unchecked_To_Code_Point (D.Value, M.Map (Index)));
+         end;
+      end if;
    end Element;
 
    ------------------
@@ -584,7 +560,6 @@ package body Matreshka.Strings is
       Utf16_String'Read (Stream, Item.Data.Value);
       Item.Data.Last := Last;
       Item.Data.Length := Length;
-      Item.Data.Index_Mode := Undefined;
    end Read;
 
    -------------
@@ -609,38 +584,34 @@ package body Matreshka.Strings is
 
       Length := Natural'Max (High - Low + 1, 0);
 
-      case D.Index_Mode is
-         when Undefined =>
-            raise Program_Error;
+      if D.Last = D.Length then
+         First := Low;
+         Last  := High;
 
-         when Single_Units =>
-            First := Low;
-            Last  := High;
+      elsif D.Last = D.Length * 2 then
+         First := Low * 2 - 1;
+         Last  := High * 2;
 
-         when Double_Units =>
-            First := Low * 2 - 1;
-            Last  := High * 2;
+      else
+         declare
+            M : Index_Map_Access := D.Index_Map;
 
-         when Mixed_Units =>
-            declare
-               M : Index_Map_Access := D.Index_Map;
+         begin
+            if M = null then
+               Compute_Index_Map (D.all);
+               M := D.Index_Map;
+            end if;
 
-            begin
-               if M = null then
-                  Compute_Index_Map (D.all);
-                  M := D.Index_Map;
-               end if;
+            First := M.Map (Low);
 
-               First := M.Map (Low);
+            if High = D.Length then
+               Last := D.Last;
 
-               if High = D.Length then
-                  Last := D.Last;
-
-               else
-                  Last := M.Map (High + 1) - 1;
-               end if;
-            end;
-      end case;
+            else
+               Last := M.Map (High + 1) - 1;
+            end if;
+         end;
+      end if;
 
       Replace (Self.Data, First, Last, Length, By.Data);
    end Replace;
@@ -667,38 +638,34 @@ package body Matreshka.Strings is
 
       Length := Natural'Max (High - Low + 1, 0);
 
-      case D.Index_Mode is
-         when Undefined =>
-            raise Program_Error;
+      if D.Last = D.Length then
+         First := Low;
+         Last  := High;
 
-         when Single_Units =>
-            First := Low;
-            Last  := High;
+      elsif D.Last = D.Length * 2 then
+         First := Low * 2 - 1;
+         Last  := High * 2;
 
-         when Double_Units =>
-            First := Low * 2 - 1;
-            Last  := High * 2;
+      else
+         declare
+            M : Index_Map_Access := D.Index_Map;
 
-         when Mixed_Units =>
-            declare
-               M : Index_Map_Access := D.Index_Map;
+         begin
+            if M = null then
+               Compute_Index_Map (D.all);
+               M := D.Index_Map;
+            end if;
 
-            begin
-               if M = null then
-                  Compute_Index_Map (D.all);
-                  M := D.Index_Map;
-               end if;
+            First := M.Map (Low);
 
-               First := M.Map (Low);
+            if High = D.Length then
+               Last := D.Last;
 
-               if High = D.Length then
-                  Last := D.Last;
-
-               else
-                  Last := M.Map (High + 1) - 1;
-               end if;
-            end;
-      end case;
+            else
+               Last := M.Map (High + 1) - 1;
+            end if;
+         end;
+      end if;
 
       return Constructors.Create (Slice (D, First, Last, Length));
    end Slice;
@@ -867,9 +834,6 @@ package body Matreshka.Strings is
     (Source      : Wide_Wide_String;
      Destination : out Internal_String_Access)
    is
-      Has_BMP       : Boolean := False;
-      Has_Non_BMP   : Boolean := False;
-
       Double_Length : Boolean := False;
       --  True if Destination reserve space for double code unit representation
       --  of the source code points.
@@ -889,7 +853,6 @@ package body Matreshka.Strings is
                if C <= 16#FFFF# then
                   Destination.Last := Destination.Last + 1;
                   Destination.Value (Destination.Last) := Utf16_Code_Unit (C);
-                  Has_BMP := True;
 
                else
                   if not Double_Length then
@@ -920,8 +883,6 @@ package body Matreshka.Strings is
                   Destination.Last := Destination.Last + 1;
                   Destination.Value (Destination.Last) :=
                     Utf16_Code_Unit (Low_Surrogate_First + C mod 16#400#);
-
-                  Has_Non_BMP := True;
                end if;
             end;
 
@@ -930,8 +891,6 @@ package body Matreshka.Strings is
               with "Wide_Wide_Character is not a valid Unicode code point";
          end if;
       end loop;
-
-      Destination.Index_Mode := To_Index_Mode (Has_BMP, Has_Non_BMP);
 
    exception
       when others =>
@@ -980,9 +939,7 @@ package body Matreshka.Strings is
     (Data : in out Internal_String;
      Item : Wide_Wide_Character)
    is
-      C             : Code_Point := Wide_Wide_Character'Pos (Item);
-      Has_BMP       : Boolean    := False;
-      Has_Non_BMP   : Boolean    := False;
+      C : Code_Point := Wide_Wide_Character'Pos (Item);
 
    begin
       if C <= 16#FFFF# then
@@ -1005,21 +962,15 @@ package body Matreshka.Strings is
 --      end if;
 
       if C <= 16#FFFF# then
-         Has_BMP      := True;
          Data.Value (Data.Last) := Utf16_Code_Unit (C);
 
       else
-         Has_Non_BMP      := True;
          C                := C - 16#1_0000#;
          Data.Value (Data.Last - 1) :=
            Utf16_Code_Unit (High_Surrogate_First + C / 16#400#);
          Data.Value (Data.Last)     :=
            Utf16_Code_Unit (Low_Surrogate_First + C mod 16#400#);
       end if;
-
-      Data.Index_Mode :=
-        Index_Mode_After_Concatenation
-         (Data.Index_Mode, To_Index_Mode (Has_BMP, Has_Non_BMP));
    end Unchecked_Append;
 
    -----------

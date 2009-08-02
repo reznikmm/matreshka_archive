@@ -53,8 +53,6 @@ package body Matreshka.Internals.Unicode.Casing is
    is
       Source_Current : Positive := 1;
       Source_Code    : Code_Point;
-      Has_BMP        : Boolean  := False;
-      Has_Non_BMP    : Boolean  := False;
       Converted      : Boolean;
 
       procedure Append (Code : Code_Point);
@@ -83,11 +81,9 @@ package body Matreshka.Internals.Unicode.Casing is
 
          if Code <= 16#FFFF# then
             Destination.Last := Destination.Last + 1;
-            Has_BMP := True;
 
          else
             Destination.Last := Destination.Last + 2;
-            Has_Non_BMP := True;
          end if;
 
          if Destination.Last > Destination.Value'Last then
@@ -391,8 +387,6 @@ package body Matreshka.Internals.Unicode.Casing is
             Append (Source_Code);
          end if;
       end loop;
-
-      Destination.Index_Mode := To_Index_Mode (Has_BMP, Has_Non_BMP);
    end Convert_Case;
 
 end Matreshka.Internals.Unicode.Casing;
