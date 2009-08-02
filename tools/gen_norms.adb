@@ -121,7 +121,12 @@ begin
    --  Construct normalization information.
 
    for J in Code_Point loop
-      if Core (J).DT /= None then
+      --  Hangul Syllables are decomposed algorithmically, thus they are
+      --  excluded from data construction here.
+
+      if Core (J).DT /= None
+        and then J not in Hangul_Syllable_First .. Hangul_Syllable_Last
+      then
          Append_Mapping
           (Norms (J) (Compatibility).all,
            Decomposition (J) (Compatibility).First,

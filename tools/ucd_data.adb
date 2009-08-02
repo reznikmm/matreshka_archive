@@ -1087,6 +1087,14 @@ package body Ucd_Data is
          elsif Name'Length > 6
            and then Name (Name'Last - 6 .. Name'Last) = ", Last>"
          then
+            if Name.all = "<Hangul Syllable, Last>" then
+               --  Hangul Syllables are decomposed algorithmically and there
+               --  are no Decomposition Type is defined in UnicodeData.txt
+               --  for them. We set Decomposition_Type to Canonical by hand.
+
+               DT := Canonical;
+            end if;
+
             for J in First_Code .. Code loop
                Process (J, GC, CCC, DT, DM.all, SUM, SLM, STM);
             end loop;
