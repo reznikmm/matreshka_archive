@@ -50,8 +50,14 @@ procedure Gen_Norms (Source_Directory : String) is
       Count : Natural;
    end record;
 
+   type Composition_Mapping_Access is access all Composition_Mapping;
+
    Decomposition_Data      : Code_Point_Sequence (Sequence_Index);
    Decomposition_Data_Last : Sequence_Count := 0;
+   Composition_Data        : Composition_Mapping_Access;
+
+   First_Index_Last : Sequence_Count := 0;
+   Last_Index_Last  : Sequence_Count := 0;
 
    Normalization : array (Code_Point) of Normalization_Mapping
      := (others => ((others => (0, 0)), (0, 0)));
@@ -122,7 +128,7 @@ procedure Gen_Norms (Source_Directory : String) is
 begin
    Ada.Text_IO.Put_Line ("   ... " & Generated_Name);
 
-   --  Construct normalization information.
+   --  Construct decomposition information.
 
    for J in Code_Point loop
       --  Hangul Syllables are decomposed algorithmically, thus they are
@@ -142,6 +148,50 @@ begin
               Normalization (J).Decomposition (Canonical).First,
               Normalization (J).Decomposition (Canonical).Last);
          end if;
+      end if;
+   end loop;
+
+   --  Construct composition information.
+
+   for J in Code_Point loop
+      if Core (J).DT = Canonical
+        and then J not in Hangul_Syllable_First .. Hangul_Syllable_Last
+        and then not Core (J).B (Full_Composition_Exclusion)
+      then
+         declare
+            M : Code_Point_Sequence := Norms (J) (Canonical_Mapping).all;
+
+         begin
+            if Normalization (M (1)).Composition.First = 0 then
+               First_Index_Last := First_Index_Last + 1;
+               Normalization (M (1)).Composition.First := First_Index_Last;
+            end if;
+
+            if Normalization (M (2)).Composition.Last = 0 then
+               Last_Index_Last := Last_Index_Last + 1;
+               Normalization (M (2)).Composition.Last := Last_Index_Last;
+            end if;
+         end;
+      end if;
+   end loop;
+
+   Composition_Data :=
+     new Composition_Mapping'
+          (1 .. First_Index_Last => (1 .. Last_Index_Last => 16#FFFF#));
+
+   for J in Code_Point loop
+      if Core (J).DT = Canonical
+        and then J not in Hangul_Syllable_First .. Hangul_Syllable_Last
+        and then not Core (J).B (Full_Composition_Exclusion)
+      then
+         declare
+            M : Code_Point_Sequence := Norms (J) (Canonical_Mapping).all;
+
+         begin
+            Composition_Data
+             (Normalization (M (1)).Composition.First,
+              Normalization (M (2)).Composition.Last) := J;
+         end;
       end if;
    end loop;
 
@@ -319,6 +369,59 @@ begin
       end if;
 
       Ada.Text_IO.Put (File, Code_Point_Ada_Image (Decomposition_Data (J)));
+   end loop;
+
+   Ada.Text_IO.Put_Line (File, ");");
+
+   Ada.Text_IO.New_Line (File);
+   Ada.Text_IO.Put_Line
+    (File, "   Composition_Data : aliased constant Composition_Mapping (1 .. "
+       & Sequence_Count_Image (Composition_Data'Length (1))
+       & ", 1 .. "
+       & Sequence_Count_Image (Composition_Data'Length (2))
+       & ")");
+
+   for J in Composition_Data'Range (1) loop
+      if J = 1 then
+         Ada.Text_IO.Put (File, "     := (");
+
+      else
+         Ada.Text_IO.Put_Line (File, ",");
+         Ada.Text_IO.Put (File, "         ");
+      end if;
+
+      Ada.Text_IO.Put (File, Sequence_Count_Image (J) & " => (");
+
+      declare
+         N : Natural := 0;
+
+      begin
+         for K in Composition_Data'Range (2) loop
+            if Composition_Data (J, K) /= 16#FFFF# then
+               Ada.Text_IO.Put
+                (File,
+                 Sequence_Count_Image (K)
+                   & " => "
+                   & Code_Point_Ada_Image (Composition_Data (J, K))
+                   & ",");
+
+               case N mod 3 is
+                  when 0 | 1 =>
+                     Ada.Text_IO.Put (File, " ");
+
+                  when 2 =>
+                     Ada.Text_IO.Set_Col (File, 16);
+
+                  when others =>
+                     raise Program_Error;
+               end case;
+
+               N := N + 1;
+            end if;
+         end loop;
+
+         Ada.Text_IO.Put (File, "others => 16#00FFFF#)");
+      end;
    end loop;
 
    Ada.Text_IO.Put_Line (File, ");");

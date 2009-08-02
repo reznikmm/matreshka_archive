@@ -440,4 +440,8 @@ package Matreshka.Internals.Ucd is
    type Normalization_Mapping_First_Stage is
      array (First_Stage_Index) of Normalization_Mapping_Second_Stage_Access;
 
+   type Composition_Mapping is
+     array (Sequence_Index range <>, Sequence_Index range <>)
+       of Matreshka.Internals.Unicode.Code_Point;
+
 end Matreshka.Internals.Ucd;
