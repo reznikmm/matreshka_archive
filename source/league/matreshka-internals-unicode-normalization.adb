@@ -195,11 +195,13 @@ package body Matreshka.Internals.Unicode.Normalization is
             M_First : constant Sequence_Count
               := Norms.Mapping
                   (First_Stage_Index (Code / 16#100#))
-                  (Second_Stage_Index (Code mod 16#100#)) (Canonical).First;
+                  (Second_Stage_Index (Code mod 16#100#)).Decomposition
+                    (Canonical).First;
             M_Last  : constant Sequence_Count
               := Norms.Mapping
                   (First_Stage_Index (Code / 16#100#))
-                  (Second_Stage_Index (Code mod 16#100#)) (Canonical).Last;
+                  (Second_Stage_Index (Code mod 16#100#)).Decomposition
+                    (Canonical).Last;
 
          begin
             if M_First = 0 then

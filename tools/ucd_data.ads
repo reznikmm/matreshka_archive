@@ -78,7 +78,7 @@ package Ucd_Data is
 
    type Case_Values_Array_Access is access Case_Values_Array;
 
-   type Normalization_Kinds is (Canonical, Compatibility);
+   type Normalization_Kinds is (Canonical_Mapping, Canonical, Compatibility);
 
    type Normalization_Values is
      array (Normalization_Kinds) of Code_Point_Sequence_Access;

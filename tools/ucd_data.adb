@@ -221,6 +221,9 @@ package body Ucd_Data is
 
             else
                case Kind is
+                  when Canonical_Mapping =>
+                     raise Program_Error;
+
                   when Canonical =>
                      return Core (Code).DT = Canonical;
 
@@ -890,6 +893,8 @@ package body Ucd_Data is
             Norms (Code) (Compatibility) := new Code_Point_Sequence'(DM);
 
             if DT = Canonical then
+               Norms (Code) (Canonical_Mapping)
+                 := new Code_Point_Sequence'(DM);
                Norms (Code) (Canonical) := new Code_Point_Sequence'(DM);
             end if;
          end if;

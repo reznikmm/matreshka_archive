@@ -53,8 +53,8 @@ procedure Gen_Norms (Source_Directory : String) is
    Decomposition_Data      : Code_Point_Sequence (Sequence_Index);
    Decomposition_Data_Last : Sequence_Count := 0;
 
-   Decomposition : array (Code_Point) of Decomposition_Mapping
-     := (others => (others => (0, 0)));
+   Normalization : array (Code_Point) of Normalization_Mapping
+     := (others => ((others => (0, 0)), (0, 0)));
    Groups        : array (First_Stage_Index) of Group_Info
      := (others => (0, 0));
    File          : Ada.Text_IO.File_Type;
@@ -99,19 +99,23 @@ procedure Gen_Norms (Source_Directory : String) is
    ---------
 
    procedure Put
-    (File : Ada.Text_IO.File_Type; Item : Decomposition_Mapping)
+    (File : Ada.Text_IO.File_Type; Item : Normalization_Mapping)
    is
    begin
       Ada.Text_IO.Put
        (File,
-        "(("
-          & Sequence_Count_Image (Item (Canonical).First)
+        "((("
+          & Sequence_Count_Image (Item.Decomposition (Canonical).First)
           & ", "
-          & Sequence_Count_Image (Item (Canonical).Last)
+          & Sequence_Count_Image (Item.Decomposition (Canonical).Last)
           & "), ("
-          & Sequence_Count_Image (Item (Compatibility).First)
+          & Sequence_Count_Image (Item.Decomposition (Compatibility).First)
           & ", "
-          & Sequence_Count_Image (Item (Compatibility).Last)
+          & Sequence_Count_Image (Item.Decomposition (Compatibility).Last)
+          & ")), ("
+          & Sequence_Count_Image (Item.Composition.First)
+          & ", "
+          & Sequence_Count_Image (Item.Composition.Last)
           & "))");
    end Put;
 
@@ -129,14 +133,14 @@ begin
       then
          Append_Mapping
           (Norms (J) (Compatibility).all,
-           Decomposition (J) (Compatibility).First,
-           Decomposition (J) (Compatibility).Last);
+           Normalization (J).Decomposition (Compatibility).First,
+           Normalization (J).Decomposition (Compatibility).Last);
 
          if Core (J).DT = Canonical then
             Append_Mapping
              (Norms (J) (Canonical).all,
-              Decomposition (J) (Canonical).First,
-              Decomposition (J) (Canonical).Last);
+              Normalization (J).Decomposition (Canonical).First,
+              Normalization (J).Decomposition (Canonical).Last);
          end if;
       end if;
    end loop;
@@ -145,9 +149,9 @@ begin
 
    for J in Groups'Range loop
       for K in 0 .. J loop
-         if Decomposition
+         if Normalization
              (Code_Unit_32 (K) * 256 .. Code_Unit_32 (K) * 256 + 255)
-              = Decomposition
+              = Normalization
                  (Code_Unit_32 (J) * 256 .. Code_Unit_32 (J) * 256 + 255)
          then
             Groups (J).Share := K;
@@ -322,8 +326,8 @@ begin
    for J in Groups'Range loop
       if not Generated (Groups (J).Share) then
          declare
-            Default    : Decomposition_Mapping;
-            Current    : Decomposition_Mapping;
+            Default    : Normalization_Mapping;
+            Current    : Normalization_Mapping;
             First      : Second_Stage_Index;
             Last       : Second_Stage_Index;
             First_Code : Code_Point;
@@ -335,7 +339,7 @@ begin
 
             declare
                type Value_Count_Pair is record
-                  V : Decomposition_Mapping;
+                  V : Normalization_Mapping;
                   C : Natural;
                end record;
 
@@ -349,7 +353,7 @@ begin
                   declare
                      C : constant Code_Point
                        := Code_Unit_32 (J) * 256 + Code_Unit_32 (K);
-                     R : Decomposition_Mapping renames Decomposition (C);
+                     R : Normalization_Mapping renames Normalization (C);
                      F : Boolean := False;
 
                   begin
@@ -384,7 +388,7 @@ begin
             Ada.Text_IO.Put_Line
              (File,
               "   Group_" & First_Stage_Image (Groups (J).Share)
-                & " : aliased constant Decomposition_Mapping_Second_Stage");
+                & " : aliased constant Normalization_Mapping_Second_Stage");
             Ada.Text_IO.Put
              (File, "     := (");
 
@@ -395,13 +399,13 @@ begin
 
                begin
                   if K = Second_Stage_Index'First then
-                     Current    := Decomposition (Code);
+                     Current    := Normalization (Code);
                      First      := K;
                      Last       := First;
                      First_Code := Code;
                      Last_Code  := Code;
 
-                  elsif Decomposition (Code) = Current then
+                  elsif Normalization (Code) = Current then
                      Last      := K;
                      Last_Code := Code;
 
@@ -437,7 +441,7 @@ begin
                         Ada.Text_IO.Set_Col (File, 10);
                      end if;
 
-                     Current    := Decomposition (Code);
+                     Current    := Normalization (Code);
                      First      := K;
                      Last       := First;
                      First_Code := Code;
@@ -503,7 +507,7 @@ begin
       Ada.Text_IO.New_Line (File);
       Ada.Text_IO.Put_Line
        (File,
-        "   Mapping : aliased constant Decomposition_Mapping_First_Stage");
+        "   Mapping : aliased constant Normalization_Mapping_First_Stage");
       Ada.Text_IO.Put (File, "     := (");
 
       for J in Groups'Range loop
