@@ -187,10 +187,20 @@ package Matreshka.Strings is
    --  using full case conversion (only tailoring is used). Returns result
    --  string.
 
+   function To_NFC (Self : Universal_String'Class)
+     return Universal_String;
+   --  Returns specified string converted into Normalization Form C (canonical
+   --  decomposition and cacnonical composition).
+
    function To_NFD (Self : Universal_String'Class)
      return Universal_String;
    --  Returns specified string converted into Normalization Form D (canonical
    --  decomposition).
+
+   function To_NFKC (Self : Universal_String'Class)
+     return Universal_String;
+   --  Returns specified string converted into Normalization Form KC
+   --  (compatibility decomposition and canonical composition).
 
    function To_NFKD (Self : Universal_String'Class)
      return Universal_String;

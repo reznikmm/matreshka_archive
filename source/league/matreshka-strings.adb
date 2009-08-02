@@ -730,6 +730,21 @@ package body Matreshka.Strings is
    end To_Lowercase;
 
    ------------
+   -- To_NFC --
+   ------------
+
+   function To_NFC (Self : Universal_String'Class)
+     return Universal_String
+   is
+      Data : Internal_String_Access;
+
+   begin
+      Matreshka.Internals.Unicode.Normalization.NFC (Self.Data, Data);
+
+      return Constructors.Create (Data);
+   end To_NFC;
+
+   ------------
    -- To_NFD --
    ------------
 
@@ -743,6 +758,21 @@ package body Matreshka.Strings is
 
       return Constructors.Create (Data);
    end To_NFD;
+
+   -------------
+   -- To_NFKC --
+   -------------
+
+   function To_NFKC (Self : Universal_String'Class)
+     return Universal_String
+   is
+      Data : Internal_String_Access;
+
+   begin
+      Matreshka.Internals.Unicode.Normalization.NFKC (Self.Data, Data);
+
+      return Constructors.Create (Data);
+   end To_NFKC;
 
    -------------
    -- To_NFKD --

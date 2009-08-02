@@ -39,11 +39,23 @@ package Matreshka.Internals.Unicode.Normalization is
 
    pragma Preelaborate;
 
+   procedure NFC
+    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
+   --  Converts Source into Normalization Form C (canonical decomposition and
+   --  canonical composition) and returns it in Destination.
+
    procedure NFD
     (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
    --  Converts Source into Normalization Form D (canonical decomposition)
    --  and returns it in Destination.
+
+   procedure NFKC
+    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
+   --  Converts Source into Normalization Form KC (compatibility decomposition
+   --  and canonical composition) and returns it in Destination.
 
    procedure NFKD
     (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
