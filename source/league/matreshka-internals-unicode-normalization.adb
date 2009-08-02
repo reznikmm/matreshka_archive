@@ -41,11 +41,19 @@ package body Matreshka.Internals.Unicode.Normalization is
    use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Utf16;
 
-   ---------
-   -- NFD --
-   ---------
+   generic
+      Form          : Normalization_Form;
+      Decomposition : Decomposition_Kinds;
 
-   procedure NFD
+   procedure Generic_To_Normalization_Form
+    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
+
+   -----------------------------------
+   -- Generic_To_Normalization_Form --
+   -----------------------------------
+
+   procedure Generic_To_Normalization_Form
     (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
    is
@@ -65,10 +73,10 @@ package body Matreshka.Internals.Unicode.Normalization is
          Class          : Canonical_Combining_Class;
          Previous       : Positive;
          Aux            : Positive;
-         Current : Positive;
-         Code_A  : Code_Point;
-         Code_B  : Code_Point;
-         Restart : Boolean;
+         Current        : Positive;
+         Code_A         : Code_Point;
+         Code_B         : Code_Point;
+         Restart        : Boolean;
 
       begin
          loop
@@ -157,7 +165,7 @@ package body Matreshka.Internals.Unicode.Normalization is
 
             case Core.Property
                (First_Stage_Index (Code / 16#100#))
-               (Second_Stage_Index (Code mod 16#100#)).NQC (NFD)
+               (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
             is
                when No | Maybe =>
                   S_Index := Previous;
@@ -196,12 +204,12 @@ package body Matreshka.Internals.Unicode.Normalization is
               := Norms.Mapping
                   (First_Stage_Index (Code / 16#100#))
                   (Second_Stage_Index (Code mod 16#100#)).Decomposition
-                    (Canonical).First;
+                    (Decomposition).First;
             M_Last  : constant Sequence_Count
               := Norms.Mapping
                   (First_Stage_Index (Code / 16#100#))
                   (Second_Stage_Index (Code mod 16#100#)).Decomposition
-                    (Canonical).Last;
+                    (Decomposition).Last;
 
          begin
             if M_First = 0 then
@@ -309,6 +317,36 @@ package body Matreshka.Internals.Unicode.Normalization is
          Apply_Canonical_Ordering
           (First_Non_Zero, Destination.Last + 1);
       end if;
+   end Generic_To_Normalization_Form;
+
+   ---------
+   -- NFD --
+   ---------
+
+   procedure NFD
+    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
+   is
+      procedure Convert is
+        new Generic_To_Normalization_Form (NFD, Canonical);
+
+   begin
+      Convert (Source, Destination);
    end NFD;
+
+   ---------
+   -- NFD --
+   ---------
+
+   procedure NFKD
+    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
+   is
+      procedure Convert is
+        new Generic_To_Normalization_Form (NFKD, Compatibility);
+
+   begin
+      Convert (Source, Destination);
+   end NFKD;
 
 end Matreshka.Internals.Unicode.Normalization;

@@ -744,6 +744,21 @@ package body Matreshka.Strings is
       return Constructors.Create (Data);
    end To_NFD;
 
+   -------------
+   -- To_NFKD --
+   -------------
+
+   function To_NFKD (Self : Universal_String'Class)
+     return Universal_String
+   is
+      Data : Internal_String_Access;
+
+   begin
+      Matreshka.Internals.Unicode.Normalization.NFKD (Self.Data, Data);
+
+      return Constructors.Create (Data);
+   end To_NFKD;
+
    ----------------------------
    -- To_Universal_Character --
    ----------------------------

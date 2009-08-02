@@ -45,4 +45,10 @@ package Matreshka.Internals.Unicode.Normalization is
    --  Converts Source into Normalization Form D (canonical decomposition)
    --  and returns it in Destination.
 
+   procedure NFKD
+    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
+   --  Converts Source into Normalization Form KD (compatibility decomposition)
+   --  and returns it in Destination.
+
 end Matreshka.Internals.Unicode.Normalization;

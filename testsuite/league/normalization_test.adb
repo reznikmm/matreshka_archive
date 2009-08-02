@@ -60,6 +60,10 @@ procedure Normalization_Test is
      C5 : Universal_String)
    is
    begin
+      --  NFC
+      --    c2 ==  NFC(c1) ==  NFC(c2) ==  NFC(c3)
+      --    c4 ==  NFC(c4) ==  NFC(c5)
+
       -- NFD
       --   c3 ==  NFD(c1) ==  NFD(c2) ==  NFD(c3)
       --   c5 ==  NFD(c4) ==  NFD(c5)
@@ -83,6 +87,33 @@ procedure Normalization_Test is
       if C5.To_Wide_Wide_String /= C5.To_NFD.To_Wide_Wide_String then
          raise Program_Error;
       end if;
+
+      --  NFKC
+      --    c4 == NFKC(c1) == NFKC(c2) == NFKC(c3) == NFKC(c4) == NFKC(c5)
+
+      --  NFKD
+      --    c5 == NFKD(c1) == NFKD(c2) == NFKD(c3) == NFKD(c4) == NFKD(c5)
+
+      if C5.To_Wide_Wide_String /= C1.To_NFKD.To_Wide_Wide_String then
+         raise Program_Error;
+      end if;
+
+      if C5.To_Wide_Wide_String /= C2.To_NFKD.To_Wide_Wide_String then
+         raise Program_Error;
+      end if;
+
+      if C5.To_Wide_Wide_String /= C3.To_NFKD.To_Wide_Wide_String then
+         raise Program_Error;
+      end if;
+
+      if C5.To_Wide_Wide_String /= C4.To_NFKD.To_Wide_Wide_String then
+         raise Program_Error;
+      end if;
+
+      if C5.To_Wide_Wide_String /= C5.To_NFKD.To_Wide_Wide_String then
+         raise Program_Error;
+      end if;
+
    end Check;
 
    -----------

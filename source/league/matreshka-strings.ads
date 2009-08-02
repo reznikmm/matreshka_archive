@@ -192,6 +192,11 @@ package Matreshka.Strings is
    --  Returns specified string converted into Normalization Form D (canonical
    --  decomposition).
 
+   function To_NFKD (Self : Universal_String'Class)
+     return Universal_String;
+   --  Returns specified string converted into Normalization Form KD
+   --  (compatibility decomposition).
+
    --------------------------------------
    -- Equivalence tests and comparison --
    --------------------------------------
