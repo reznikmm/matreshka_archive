@@ -63,67 +63,231 @@ package body Matreshka.Internals.Unicode.Normalization is
      Last        : Positive);
    --  Move last character in the string to follow Canonical Ordering.
 
-   ----------------------------
-   -- Reorder_Last_Character --
-   ----------------------------
+   procedure Compose
+    (Destination          : Internal_String_Access;
+     Starter_Index        : Positive;
+     Next_Starter_Index   : in out Positive;
+     New_Starter_Composed : out Boolean);
+   --  Do composition of one combined character starting from Starter_Index
+   --  and up to end of string. Last character in the string must be last
+   --  character in the data or next starting character. For Hangul Syllables
+   --  this means the L, V pair composed to LV jamo, and on the next call,
+   --  LV jamo composed to LVT jamo.
 
-   procedure Reorder_Last_Character
-    (Destination : Internal_String_Access;
-     First       : Positive;
-     Last        : Positive)
+   -------------
+   -- Compose --
+   -------------
+
+   procedure Compose
+    (Destination          : Internal_String_Access;
+     Starter_Index        : Positive;
+     Next_Starter_Index   : in out Positive;
+     New_Starter_Composed : out Boolean)
    is
-      Previous_Class : Canonical_Combining_Class;
-      Class          : Canonical_Combining_Class;
-      Previous       : Positive;
-      Aux            : Positive;
-      Current        : Positive;
-      Code_A         : Code_Point;
-      Code_B         : Code_Point;
-      Restart        : Boolean;
+      Index           : Positive := Starter_Index;
+      Current         : Positive;
+      Before          : Positive;
+      Starter_Code    : Code_Point;
+      Starter_Mapping : Sequence_Count;
+      Starter_L       : Boolean;
+      Starter_LV      : Boolean;
+      New_Starter     : Code_Point;
+      Current_Code    : Code_Point;
+      Current_Mapping : Sequence_Count;
+      Last_Class      : Canonical_Combining_Class := 0;
+      Class           : Canonical_Combining_Class;
 
    begin
-      --  XXX It is more efficient to use backward bulk sort: all characters
-      --  in the substring always sorted, so we need just to move last
-      --  character to appropriate position.
+      New_Starter_Composed := False;
 
-      loop
-         Restart := False;
+      Unchecked_Next (Destination.Value, Index, Starter_Code);
+      Starter_Mapping :=
+        Norms.Mapping
+         (First_Stage_Index (Starter_Code / 16#100#))
+         (Second_Stage_Index (Starter_Code mod 16#100#)).Composition.First;
+      Starter_L := Starter_Code in L_Base .. L_Base + L_Count - 1;
+      Starter_LV :=
+        Starter_Code in Hangul_Syllable_First .. Hangul_Syllable_Last
+          and then (Starter_Code - S_Base) mod T_Count = 0;
 
-         Current := First;
-         Previous := Current;
-         Unchecked_Next (Destination.Value, Current, Code_A);
-         Previous_Class :=
-           Core.Property
-            (First_Stage_Index (Code_A / 16#100#))
-            (Second_Stage_Index (Code_A mod 16#100#)).CCC;
+      Current := Index;
 
-         loop
-            Aux := Current;
-            Unchecked_Next (Destination.Value, Current, Code_B);
+      if Starter_Mapping = 0 then
+         if Current > Destination.Last then
+            return;
 
-            Class :=
-              Core.Property
-               (First_Stage_Index (Code_B / 16#100#))
-               (Second_Stage_Index (Code_B mod 16#100#)).CCC;
+         elsif Starter_L then
+            Before := Current;
+            Unchecked_Next (Destination.Value, Current, Current_Code);
 
-            if Previous_Class > Class then
-               Unchecked_Store (Destination.Value, Previous, Code_B);
-               Current := Previous;
-               Unchecked_Store (Destination.Value, Current, Code_A);
-               Restart := True;
-
-            else
-               Previous_Class := Class;
-               Previous := Aux;
-               Code_A := Code_B;
+            if Current_Code not in V_Base .. V_Base + V_Count - 1 then
+               return;
             end if;
 
-            exit when Current >= Last;
-         end loop;
+            New_Starter :=
+              S_Base
+                + ((Starter_Code - L_Base) * V_Count + Current_Code - V_Base)
+                    * T_Count;
 
-         exit when not Restart;
+            Index := Starter_Index;
+            Unchecked_Store (Destination.Value, Index, New_Starter);
+
+            if (Starter_Code <= 16#FFFF# and then Current_Code > 16#FFFF#)
+              or else (Starter_Code > 16#FFFF#
+                         and then Current_Code <= 16#FFFF#)
+            then
+               raise Program_Error
+                 with "Different length of starter is not supported";
+            end if;
+
+            --  XXX Remove!!!
+
+            --  Current character is removed.
+
+            Destination.Value
+             (Before .. Destination.Last - (Current - Before)) :=
+                Destination.Value (Current .. Destination.Last);
+
+            if Current_Code <= 16#FFFF# then
+               Destination.Last := Destination.Last - 1;
+               Next_Starter_Index := Next_Starter_Index - 1;
+
+            else
+               Destination.Last := Destination.Last - 2;
+               Next_Starter_Index := Next_Starter_Index - 2;
+            end if;
+
+            Destination.Length := Destination.Length - 1;
+
+            Current := Before;
+            Starter_Code := New_Starter;
+            New_Starter_Composed := True;
+
+         elsif Starter_LV then
+            Before := Current;
+            Unchecked_Next (Destination.Value, Current, Current_Code);
+
+            if Current_Code not in T_Base .. T_Base + T_Count - 1 then
+               return;
+            end if;
+
+            New_Starter := Starter_Code + Current_Code - T_Base;
+
+            Index := Starter_Index;
+            Unchecked_Store (Destination.Value, Index, New_Starter);
+
+            if (Starter_Code <= 16#FFFF# and then Current_Code > 16#FFFF#)
+              or else (Starter_Code > 16#FFFF#
+                         and then Current_Code <= 16#FFFF#)
+            then
+               raise Program_Error
+                 with "Different length of starter is not supported";
+            end if;
+
+            --  XXX Remove!!!
+
+            --  Current character is removed.
+
+            Destination.Value
+             (Before .. Destination.Last - (Current - Before)) :=
+                Destination.Value (Current .. Destination.Last);
+
+            if Current_Code <= 16#FFFF# then
+               Destination.Last := Destination.Last - 1;
+               Next_Starter_Index := Next_Starter_Index - 1;
+
+            else
+               Destination.Last := Destination.Last - 2;
+               Next_Starter_Index := Next_Starter_Index - 2;
+            end if;
+
+            Destination.Length := Destination.Length - 1;
+
+            Current := Before;
+            Starter_Code := New_Starter;
+            New_Starter_Composed := True;
+         end if;
+
+         return;
+      end if;
+
+      while Current <= Destination.Last loop
+         Before := Current;
+         Unchecked_Next (Destination.Value, Current, Current_Code);
+         Current_Mapping :=
+           Norms.Mapping
+            (First_Stage_Index (Current_Code / 16#100#))
+            (Second_Stage_Index (Current_Code mod 16#100#)).
+               Composition.Last;
+         Class :=
+           Core.Property
+            (First_Stage_Index (Current_Code / 16#100#))
+            (Second_Stage_Index (Current_Code mod 16#100#)).CCC;
+
+         if Current_Mapping /= 0
+           and then ((Class = 0 and then Last_Class = 0)
+                        or else (Last_Class < Class))
+         then
+            New_Starter :=
+              Norms.Composition_Data (Starter_Mapping, Current_Mapping);
+
+            if New_Starter /= 16#FFFF# then
+               Index := Starter_Index;
+               Unchecked_Store (Destination.Value, Index, New_Starter);
+
+               if (Starter_Code <= 16#FFFF# and then Current_Code > 16#FFFF#)
+                 or else (Starter_Code > 16#FFFF#
+                            and then Current_Code <= 16#FFFF#)
+               then
+                  raise Program_Error
+                    with "Different length of starter is not supported";
+               end if;
+
+               --  XXX Remove!!!
+
+               --  Current character is removed.
+
+               Destination.Value
+                (Before .. Destination.Last - (Current - Before)) :=
+                   Destination.Value (Current .. Destination.Last);
+
+               if Current_Code <= 16#FFFF# then
+                  Destination.Last := Destination.Last - 1;
+                  Next_Starter_Index := Next_Starter_Index - 1;
+
+               else
+                  Destination.Last := Destination.Last - 2;
+                  Next_Starter_Index := Next_Starter_Index - 2;
+               end if;
+
+               Destination.Length := Destination.Length - 1;
+
+               Current := Before;
+               Starter_Code := New_Starter;
+               Starter_Mapping :=
+                 Norms.Mapping
+                  (First_Stage_Index (Starter_Code / 16#100#))
+                  (Second_Stage_Index (Starter_Code mod 16#100#)).
+                     Composition.First;
+
+               if Core.Property
+                   (First_Stage_Index (Current_Code / 16#100#))
+                   (Second_Stage_Index (Current_Code mod 16#100#)).CCC = 0
+               then
+                  New_Starter_Composed := True;
+               end if;
+
+               exit when Starter_Mapping = 0;
+
+            else
+               Last_Class := Class;
+            end if;
+
+         else
+            Last_Class := Class;
+         end if;
       end loop;
-   end Reorder_Last_Character;
+   end Compose;
 
    ---------------------------
    -- Generic_Decomposition --
@@ -314,7 +478,10 @@ package body Matreshka.Internals.Unicode.Normalization is
    is
 
       type Starter_State is record
-         D_Next : Positive := 1;
+         S_Index  : Positive := 1;
+         D_Index  : Positive := 1;
+         D_Next   : Positive := 1;
+         D_Length : Natural  := 0;
       end record;
 
       S_Index    : Positive := 1;
@@ -323,6 +490,8 @@ package body Matreshka.Internals.Unicode.Normalization is
       Last_Class : Canonical_Combining_Class := 0;
       Class      : Canonical_Combining_Class;
       Starter    : Starter_State;
+      S_Previous : Positive;
+      Composed   : Boolean := False;
 
    begin
       if Source.Last = 0 then
@@ -335,13 +504,27 @@ package body Matreshka.Internals.Unicode.Normalization is
       --  Try to do Normalization Form quick check.
 
       declare
-         S_Previous : Positive;
 
       begin
          while S_Index <= Source.Last loop
             S_Previous := S_Index;
 
             Unchecked_Next (Source.Value, S_Index, Code);
+
+            case Core.Property
+               (First_Stage_Index (Code / 16#100#))
+               (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
+            is
+               when No | Maybe =>
+                  S_Index := Starter.S_Index;
+                  Length  := Starter.D_Length;
+
+                  exit;
+
+               when Yes =>
+                  null;
+            end case;
+
             Class :=
               Core.Property
                (First_Stage_Index (Code / 16#100#))
@@ -351,27 +534,19 @@ package body Matreshka.Internals.Unicode.Normalization is
                if Last_Class > Class then
                   --  Canonical Ordering is violated.
 
-                  S_Index := S_Previous;
+                  S_Index := Starter.S_Index;
+                  Length  := Starter.D_Length;
 
                   exit;
                end if;
 
             else
-               Starter := (D_Next => S_Index);
+               Starter :=
+                (S_Index  => S_Previous,
+                 D_Index  => S_Previous,
+                 D_Next   => S_Index,
+                 D_Length => Length);
             end if;
-
-            case Core.Property
-               (First_Stage_Index (Code / 16#100#))
-               (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
-            is
-               when No | Maybe =>
-                  S_Index := S_Previous;
-
-                  exit;
-
-               when Yes =>
-                  null;
-            end case;
 
             Last_Class := Class;
             Length := Length + 1;
@@ -395,6 +570,7 @@ package body Matreshka.Internals.Unicode.Normalization is
       Destination.Length := Length;
 
       while S_Index <= Source.Last loop
+         S_Previous := S_Index;
          Unchecked_Next (Source.Value, S_Index, Code);
 
          declare
@@ -409,6 +585,8 @@ package body Matreshka.Internals.Unicode.Normalization is
             -------------------
 
             procedure Common_Append (Code : Code_Point) is
+               D_Index : Positive := Destination.Last + 1;
+
             begin
                Class :=
                  Core.Property
@@ -418,8 +596,12 @@ package body Matreshka.Internals.Unicode.Normalization is
                Append (Destination, Code, Source.Last - S_Index + 1);
 
                if Class /= 0 then
-                  if Last_Class > Class then
-                     --  Canonical Ordering is violated, reorder result.
+                  if Last_Class > Class
+                    and then not Composed
+                  then
+                     --  Canonical Ordering is violated, reorder result, but
+                     --  first check that previous starter was not composed,
+                     --  otherwise reordering will break normalization.
 
                      Reorder_Last_Character
                       (Destination, Starter.D_Next, Destination.Last + 1);
@@ -428,9 +610,19 @@ package body Matreshka.Internals.Unicode.Normalization is
                      Last_Class := Class;
                   end if;
 
+                  Composed := False;
+
                else
-                  Starter := (D_Next => Destination.Last + 1);
-                  Last_Class := Class;
+                  Compose (Destination, Starter.D_Index, D_Index, Composed);
+
+                  if not Composed then
+                     Starter :=
+                      (S_Index  => S_Previous,
+                       D_Index  => D_Index,
+                       D_Next   => Destination.Last + 1,
+                       D_Length => Destination.Length - 1);
+                     Last_Class := Class;
+                  end if;
                end if;
             end Common_Append;
 
@@ -444,6 +636,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                   (First_Stage_Index (Code / 16#100#))
                   (Second_Stage_Index (Code mod 16#100#)).Decomposition
                     (Decomposition).Last;
+--            D_Index : Positive;
 
          begin
             if M_First = 0 then
@@ -460,16 +653,25 @@ package body Matreshka.Internals.Unicode.Normalization is
                        := T_Base + C_Index mod T_Count;
 
                   begin
-                     Append (Destination, L, Source.Last - S_Index + 3);
-                     Append (Destination, V, Source.Last - S_Index + 2);
+--                     Append (Destination, L, Source.Last - S_Index + 3);
+--                     D_Index := Destination.Last + 1;
+--                     Append (Destination, V, Source.Last - S_Index + 2);
+                     Common_Append (L);
+                     Common_Append (V);
 
                      if T /= T_Base then
-                        Append (Destination, T, Source.Last - S_Index + 1);
+--                        D_Index := Destination.Last + 1;
+--                        Append (Destination, T, Source.Last - S_Index + 1);
+                        Common_Append (T);
                      end if;
                   end;
 
-                  Starter := (D_Next => Destination.Last + 1);
-                  Last_Class := 0;
+--                  Starter :=
+--                   (S_Index  => S_Previous,
+--                    D_Index  => D_Index,
+--                    D_Next   => Destination.Last + 1,
+--                    D_Length => Destination.Length - 1);
+--                  Last_Class := 0;
 
                else
                   Common_Append (Code);
@@ -482,6 +684,13 @@ package body Matreshka.Internals.Unicode.Normalization is
             end if;
          end;
       end loop;
+
+      declare
+         D_Index : Positive := Destination.Last + 1;
+
+      begin
+         Compose (Destination, Starter.D_Index, D_Index, Composed);
+      end;
    end Generic_Decomposition_Composition;
 
    ---------
@@ -541,5 +750,67 @@ package body Matreshka.Internals.Unicode.Normalization is
    begin
       Convert (Source, Destination);
    end NFKD;
+
+   ----------------------------
+   -- Reorder_Last_Character --
+   ----------------------------
+
+   procedure Reorder_Last_Character
+    (Destination : Internal_String_Access;
+     First       : Positive;
+     Last        : Positive)
+   is
+      Previous_Class : Canonical_Combining_Class;
+      Class          : Canonical_Combining_Class;
+      Previous       : Positive;
+      Aux            : Positive;
+      Current        : Positive;
+      Code_A         : Code_Point;
+      Code_B         : Code_Point;
+      Restart        : Boolean;
+
+   begin
+      --  XXX It is more efficient to use backward bulk sort: all characters
+      --  in the substring always sorted, so we need just to move last
+      --  character to appropriate position.
+
+      loop
+         Restart := False;
+
+         Current := First;
+         Previous := Current;
+         Unchecked_Next (Destination.Value, Current, Code_A);
+         Previous_Class :=
+           Core.Property
+            (First_Stage_Index (Code_A / 16#100#))
+            (Second_Stage_Index (Code_A mod 16#100#)).CCC;
+
+         loop
+            Aux := Current;
+            Unchecked_Next (Destination.Value, Current, Code_B);
+
+            Class :=
+              Core.Property
+               (First_Stage_Index (Code_B / 16#100#))
+               (Second_Stage_Index (Code_B mod 16#100#)).CCC;
+
+            if Previous_Class > Class then
+               Unchecked_Store (Destination.Value, Previous, Code_B);
+               Current := Previous;
+               Unchecked_Store (Destination.Value, Current, Code_A);
+               Restart := True;
+
+            else
+               Previous_Class := Class;
+               Previous := Aux;
+               Code_A := Code_B;
+            end if;
+
+            exit when Current >= Last;
+         end loop;
+
+         exit when not Restart;
+      end loop;
+   end Reorder_Last_Character;
 
 end Matreshka.Internals.Unicode.Normalization;
