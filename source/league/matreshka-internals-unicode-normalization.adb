@@ -442,6 +442,7 @@ package body Matreshka.Internals.Unicode.Normalization is
       Class           : Canonical_Combining_Class;
       Starter         : Starter_State;
       S_Starter       : Starter_State;
+      C_Starter       : Starter_State;
       Composed        : Boolean := True;
       Fast            : Boolean := False;
       Starter_S_Index : Positive := 1;
@@ -546,9 +547,12 @@ package body Matreshka.Internals.Unicode.Normalization is
                Append (Destination, Code, Source.Last - S_Index + 1);
 
                if Class /= 0 then
-                  if Last_Class > Class
-                    and then not Composed
-                  then
+                  if Composed then
+                     Starter := C_Starter;
+                     Last_Class := Class;
+                     Composed := False;
+
+                  elsif Last_Class > Class then
                      --  Canonical Ordering is violated, reorder result, but
                      --  only when previous starter was not composed, otherwise
                      --  reordering will break normalization.
@@ -560,12 +564,16 @@ package body Matreshka.Internals.Unicode.Normalization is
                      Last_Class := Class;
                   end if;
 
-                  Composed := False;
-
                else
                   Compose (Destination, Starter.D_Index, D_Index, Composed);
 
-                  if not Composed then
+                  if Composed then
+                     C_Starter :=
+                      (D_Index  => D_Index,
+                       D_Next   => Destination.Last + 1,
+                       D_Length => Destination.Length - 1);
+
+                  else
                      Starter :=
                       (D_Index  => D_Index,
                        D_Next   => Destination.Last + 1,
