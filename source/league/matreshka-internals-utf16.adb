@@ -36,8 +36,6 @@ package body Matreshka.Internals.Utf16 is
 
    use Matreshka.Internals.Unicode;
 
-   pragma Suppress (All_Checks);
-
    --------------------
    -- Unchecked_Next --
    --------------------
