@@ -430,20 +430,22 @@ package body Matreshka.Internals.Unicode.Normalization is
    is
 
       type Starter_State is record
-         S_Index  : Positive := 1;
          D_Index  : Positive := 1;
          D_Next   : Positive := 1;
          D_Length : Natural  := 0;
       end record;
 
-      S_Index    : Positive := 1;
-      Code       : Code_Point;
-      Length     : Natural  := 0;
-      Last_Class : Canonical_Combining_Class := 0;
-      Class      : Canonical_Combining_Class;
-      Starter    : Starter_State;
-      S_Previous : Positive;
-      Composed   : Boolean := False;
+      S_Index         : Positive := 1;
+      Code            : Code_Point;
+      Length          : Natural  := 0;
+      Last_Class      : Canonical_Combining_Class := 0;
+      Class           : Canonical_Combining_Class;
+      Starter         : Starter_State;
+      S_Starter       : Starter_State;
+      Composed        : Boolean := False;
+      Fast            : Boolean := False;
+      Starter_S_Index : Positive := 1;
+      S_Previous      : Positive;
 
    begin
       if Source.Last = 0 then
@@ -455,55 +457,51 @@ package body Matreshka.Internals.Unicode.Normalization is
 
       --  Try to do Normalization Form quick check.
 
-      declare
+      while S_Index <= Source.Last loop
+         S_Previous := S_Index;
 
-      begin
-         while S_Index <= Source.Last loop
-            S_Previous := S_Index;
+         Unchecked_Next (Source.Value, S_Index, Code);
 
-            Unchecked_Next (Source.Value, S_Index, Code);
+         case Core.Property
+            (First_Stage_Index (Code / 16#100#))
+            (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
+         is
+            when No | Maybe =>
+               S_Index := Starter_S_Index;
+               Length  := Starter.D_Length;
 
-            case Core.Property
-               (First_Stage_Index (Code / 16#100#))
-               (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
-            is
-               when No | Maybe =>
-                  S_Index := Starter.S_Index;
-                  Length  := Starter.D_Length;
+               exit;
 
-                  exit;
+            when Yes =>
+               null;
+         end case;
 
-               when Yes =>
-                  null;
-            end case;
+         Class :=
+           Core.Property
+            (First_Stage_Index (Code / 16#100#))
+            (Second_Stage_Index (Code mod 16#100#)).CCC;
 
-            Class :=
-              Core.Property
-               (First_Stage_Index (Code / 16#100#))
-               (Second_Stage_Index (Code mod 16#100#)).CCC;
+         if Class /= 0 then
+            if Last_Class > Class then
+               --  Canonical Ordering is violated.
 
-            if Class /= 0 then
-               if Last_Class > Class then
-                  --  Canonical Ordering is violated.
+               S_Index := Starter_S_Index;
+               Length  := Starter.D_Length;
 
-                  S_Index := Starter.S_Index;
-                  Length  := Starter.D_Length;
-
-                  exit;
-               end if;
-
-            else
-               Starter :=
-                (S_Index  => S_Previous,
-                 D_Index  => S_Previous,
-                 D_Next   => S_Index,
-                 D_Length => Length);
+               exit;
             end if;
 
-            Last_Class := Class;
-            Length := Length + 1;
-         end loop;
-      end;
+         else
+            Starter_S_Index := S_Previous;
+            Starter :=
+             (D_Index  => S_Previous,
+              D_Next   => S_Index,
+              D_Length => Length);
+         end if;
+
+         Last_Class := Class;
+         Length := Length + 1;
+      end loop;
 
       if S_Index > Source.Last then
          Destination := Source;
@@ -569,8 +567,7 @@ package body Matreshka.Internals.Unicode.Normalization is
 
                   if not Composed then
                      Starter :=
-                      (S_Index  => S_Previous,
-                       D_Index  => D_Index,
+                      (D_Index  => D_Index,
                        D_Next   => Destination.Last + 1,
                        D_Length => Destination.Length - 1);
                      Last_Class := Class;
@@ -590,17 +587,70 @@ package body Matreshka.Internals.Unicode.Normalization is
                     (Decomposition).Last;
 
          begin
-            if M_First = 0 then
-               --  There is no special processing for Hangul Syllables here:
-               --  they will be composed into the same character; and never
-               --  compose with the previous or following characters.
+            --  Check does the current character not affected by current
+            --  normalization form?
 
-               Common_Append (Code);
+            if Fast then
+               --  Fast mode: try to avoid decomposition and composition.
+
+               if Core.Property
+                   (First_Stage_Index (Code / 16#100#))
+                   (Second_Stage_Index (Code mod 16#100#)).NQC (Form) = Yes
+               then
+                  Common_Append (Code);
+
+                  if Starter_S_Index /= S_Previous
+                    and then Class = 0
+                    and then not Composed
+                  then
+                     --  Just processed character is starter and never compose
+                     --  with previous characters, thus we need to store
+                     --  current position.
+
+                     Starter_S_Index := S_Previous;
+                     S_Starter := Starter;
+                  end if;
+
+               else
+                  S_Index := Starter_S_Index;
+                  Starter := S_Starter;
+                  Fast := False;
+                  Destination.Last := Starter.D_Index - 1;
+                  Destination.Length := Starter.D_Length;
+               end if;
 
             else
-               for J in M_First .. M_Last loop
-                  Common_Append (Norms.Decomposition_Data (J));
-               end loop;
+               if M_First = 0 then
+                  --  There is no special processing for Hangul Syllables here:
+                  --  they will be composed into the same character; and never
+                  --  compose with the previous or following characters.
+
+                  Common_Append (Code);
+
+               else
+                  for J in M_First .. M_Last loop
+                     Common_Append (Norms.Decomposition_Data (J));
+                  end loop;
+               end if;
+
+               if Starter_S_Index /= S_Previous
+                 and then Code
+                           not in Hangul_Syllable_First .. Hangul_Syllable_Last
+                 and then Core.Property
+                           (First_Stage_Index (Code / 16#100#))
+                           (Second_Stage_Index (Code mod 16#100#)).CCC = 0
+                 and then Core.Property
+                           (First_Stage_Index (Code / 16#100#))
+                           (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
+                              = Yes
+               then
+                  --  Just processed character is starter and never compose with
+                  --  previous characters, thus we can switch back to fast mode.
+
+                  Fast := True;
+                  Starter_S_Index := S_Previous;
+                  S_Starter := Starter;
+               end if;
             end if;
          end;
       end loop;
