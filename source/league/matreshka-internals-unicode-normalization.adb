@@ -97,6 +97,46 @@ package body Matreshka.Internals.Unicode.Normalization is
       Last_Class      : Canonical_Combining_Class := 0;
       Class           : Canonical_Combining_Class;
 
+      procedure Replace_Starter_And_Pack;
+      --  Replace starter character by new character and pack string data.
+
+      ------------------------------
+      -- Replace_Starter_And_Pack --
+      ------------------------------
+
+      procedure Replace_Starter_And_Pack is
+         pragma Assert (Starter_Code <= 16#FFFF# xor Current_Code > 16#FFFF#);
+         --  Change of the size of starter character in UTF-16 form is not
+         --  supported.
+
+      begin
+         --  Save new starter.
+
+         Index := Starter_Index;
+         Unchecked_Store (Destination.Value, Index, New_Starter);
+
+         --  Copy tail of the string.
+
+         Destination.Value
+          (Before .. Destination.Last - (Current - Before)) :=
+             Destination.Value (Current .. Destination.Last);
+
+         --  Correct string's length and last index.
+
+         if Current_Code <= 16#FFFF# then
+            Destination.Last := Destination.Last - 1;
+            Next_Starter_Index := Next_Starter_Index - 1;
+
+         else
+            Destination.Last := Destination.Last - 2;
+            Next_Starter_Index := Next_Starter_Index - 2;
+         end if;
+
+         Destination.Length := Destination.Length - 1;
+
+         Starter_Code := New_Starter;
+      end Replace_Starter_And_Pack;
+
    begin
       New_Starter_Composed := False;
 
@@ -129,38 +169,9 @@ package body Matreshka.Internals.Unicode.Normalization is
                 + ((Starter_Code - L_Base) * V_Count + Current_Code - V_Base)
                     * T_Count;
 
-            Index := Starter_Index;
-            Unchecked_Store (Destination.Value, Index, New_Starter);
-
-            if (Starter_Code <= 16#FFFF# and then Current_Code > 16#FFFF#)
-              or else (Starter_Code > 16#FFFF#
-                         and then Current_Code <= 16#FFFF#)
-            then
-               raise Program_Error
-                 with "Different length of starter is not supported";
-            end if;
-
-            --  XXX Remove!!!
-
-            --  Current character is removed.
-
-            Destination.Value
-             (Before .. Destination.Last - (Current - Before)) :=
-                Destination.Value (Current .. Destination.Last);
-
-            if Current_Code <= 16#FFFF# then
-               Destination.Last := Destination.Last - 1;
-               Next_Starter_Index := Next_Starter_Index - 1;
-
-            else
-               Destination.Last := Destination.Last - 2;
-               Next_Starter_Index := Next_Starter_Index - 2;
-            end if;
-
-            Destination.Length := Destination.Length - 1;
+            Replace_Starter_And_Pack;
 
             Current := Before;
-            Starter_Code := New_Starter;
             New_Starter_Composed := True;
 
          elsif Starter_LV then
@@ -173,38 +184,8 @@ package body Matreshka.Internals.Unicode.Normalization is
 
             New_Starter := Starter_Code + Current_Code - T_Base;
 
-            Index := Starter_Index;
-            Unchecked_Store (Destination.Value, Index, New_Starter);
-
-            if (Starter_Code <= 16#FFFF# and then Current_Code > 16#FFFF#)
-              or else (Starter_Code > 16#FFFF#
-                         and then Current_Code <= 16#FFFF#)
-            then
-               raise Program_Error
-                 with "Different length of starter is not supported";
-            end if;
-
-            --  XXX Remove!!!
-
-            --  Current character is removed.
-
-            Destination.Value
-             (Before .. Destination.Last - (Current - Before)) :=
-                Destination.Value (Current .. Destination.Last);
-
-            if Current_Code <= 16#FFFF# then
-               Destination.Last := Destination.Last - 1;
-               Next_Starter_Index := Next_Starter_Index - 1;
-
-            else
-               Destination.Last := Destination.Last - 2;
-               Next_Starter_Index := Next_Starter_Index - 2;
-            end if;
-
-            Destination.Length := Destination.Length - 1;
-
+            Replace_Starter_And_Pack;
             Current := Before;
-            Starter_Code := New_Starter;
             New_Starter_Composed := True;
          end if;
 
@@ -232,38 +213,9 @@ package body Matreshka.Internals.Unicode.Normalization is
               Norms.Composition_Data (Starter_Mapping, Current_Mapping);
 
             if New_Starter /= 16#FFFF# then
-               Index := Starter_Index;
-               Unchecked_Store (Destination.Value, Index, New_Starter);
-
-               if (Starter_Code <= 16#FFFF# and then Current_Code > 16#FFFF#)
-                 or else (Starter_Code > 16#FFFF#
-                            and then Current_Code <= 16#FFFF#)
-               then
-                  raise Program_Error
-                    with "Different length of starter is not supported";
-               end if;
-
-               --  XXX Remove!!!
-
-               --  Current character is removed.
-
-               Destination.Value
-                (Before .. Destination.Last - (Current - Before)) :=
-                   Destination.Value (Current .. Destination.Last);
-
-               if Current_Code <= 16#FFFF# then
-                  Destination.Last := Destination.Last - 1;
-                  Next_Starter_Index := Next_Starter_Index - 1;
-
-               else
-                  Destination.Last := Destination.Last - 2;
-                  Next_Starter_Index := Next_Starter_Index - 2;
-               end if;
-
-               Destination.Length := Destination.Length - 1;
+               Replace_Starter_And_Pack;
 
                Current := Before;
-               Starter_Code := New_Starter;
                Starter_Mapping :=
                  Norms.Mapping
                   (First_Stage_Index (Starter_Code / 16#100#))
