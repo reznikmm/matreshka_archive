@@ -552,8 +552,8 @@ package body Matreshka.Internals.Unicode.Normalization is
                     and then not Composed
                   then
                      --  Canonical Ordering is violated, reorder result, but
-                     --  first check that previous starter was not composed,
-                     --  otherwise reordering will break normalization.
+		     --  only when previous starter was not composed, otherwise
+                     --  reordering will break normalization.
 
                      Reorder_Last_Character
                       (Destination, Starter.D_Next, Destination.Last + 1);
@@ -588,46 +588,14 @@ package body Matreshka.Internals.Unicode.Normalization is
                   (First_Stage_Index (Code / 16#100#))
                   (Second_Stage_Index (Code mod 16#100#)).Decomposition
                     (Decomposition).Last;
---            D_Index : Positive;
 
          begin
             if M_First = 0 then
-               if Code in Hangul_Syllable_First .. Hangul_Syllable_Last then
-                  --  Special processing of precomposed Hangul Syllables
+               --  There is no special processing for Hangul Syllables here:
+               --  they will be composed into the same character; and never
+               --  compose with the previous or following characters.
 
-                  declare
-                     C_Index : constant Code_Point := Code - S_Base;
-                     L       : constant Code_Point
-                       := L_Base + C_Index / N_Count;
-                     V       : constant Code_Point
-                       := V_Base + (C_Index mod N_Count) / T_Count;
-                     T       : constant Code_Point
-                       := T_Base + C_Index mod T_Count;
-
-                  begin
---                     Append (Destination, L, Source.Last - S_Index + 3);
---                     D_Index := Destination.Last + 1;
---                     Append (Destination, V, Source.Last - S_Index + 2);
-                     Common_Append (L);
-                     Common_Append (V);
-
-                     if T /= T_Base then
---                        D_Index := Destination.Last + 1;
---                        Append (Destination, T, Source.Last - S_Index + 1);
-                        Common_Append (T);
-                     end if;
-                  end;
-
---                  Starter :=
---                   (S_Index  => S_Previous,
---                    D_Index  => D_Index,
---                    D_Next   => Destination.Last + 1,
---                    D_Length => Destination.Length - 1);
---                  Last_Class := 0;
-
-               else
-                  Common_Append (Code);
-               end if;
+               Common_Append (Code);
 
             else
                for J in M_First .. M_Last loop
