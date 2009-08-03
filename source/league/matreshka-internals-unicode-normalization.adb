@@ -57,6 +57,74 @@ package body Matreshka.Internals.Unicode.Normalization is
     (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
 
+   procedure Reorder_Last_Character
+    (Destination : Internal_String_Access;
+     First       : Positive;
+     Last        : Positive);
+   --  Move last character in the string to follow Canonical Ordering.
+
+   ----------------------------
+   -- Reorder_Last_Character --
+   ----------------------------
+
+   procedure Reorder_Last_Character
+    (Destination : Internal_String_Access;
+     First       : Positive;
+     Last        : Positive)
+   is
+      Previous_Class : Canonical_Combining_Class;
+      Class          : Canonical_Combining_Class;
+      Previous       : Positive;
+      Aux            : Positive;
+      Current        : Positive;
+      Code_A         : Code_Point;
+      Code_B         : Code_Point;
+      Restart        : Boolean;
+
+   begin
+      --  XXX It is more efficient to use backward bulk sort: all characters
+      --  in the substring always sorted, so we need just to move last
+      --  character to appropriate position.
+
+      loop
+         Restart := False;
+
+         Current := First;
+         Previous := Current;
+         Unchecked_Next (Destination.Value, Current, Code_A);
+         Previous_Class :=
+           Core.Property
+            (First_Stage_Index (Code_A / 16#100#))
+            (Second_Stage_Index (Code_A mod 16#100#)).CCC;
+
+         loop
+            Aux := Current;
+            Unchecked_Next (Destination.Value, Current, Code_B);
+
+            Class :=
+              Core.Property
+               (First_Stage_Index (Code_B / 16#100#))
+               (Second_Stage_Index (Code_B mod 16#100#)).CCC;
+
+            if Previous_Class > Class then
+               Unchecked_Store (Destination.Value, Previous, Code_B);
+               Current := Previous;
+               Unchecked_Store (Destination.Value, Current, Code_A);
+               Restart := True;
+
+            else
+               Previous_Class := Class;
+               Previous := Aux;
+               Code_A := Code_B;
+            end if;
+
+            exit when Current >= Last;
+         end loop;
+
+         exit when not Restart;
+      end loop;
+   end Reorder_Last_Character;
+
    ---------------------------
    -- Generic_Decomposition --
    ---------------------------
@@ -65,71 +133,6 @@ package body Matreshka.Internals.Unicode.Normalization is
     (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
    is
-      procedure Apply_Canonical_Ordering
-       (First : Positive;
-        Last  : Positive);
-
-      ------------------------------
-      -- Apply_Canonical_Ordering --
-      ------------------------------
-
-      procedure Apply_Canonical_Ordering
-       (First : Positive;
-        Last  : Positive)
-      is
-         Previous_Class : Canonical_Combining_Class;
-         Class          : Canonical_Combining_Class;
-         Previous       : Positive;
-         Aux            : Positive;
-         Current        : Positive;
-         Code_A         : Code_Point;
-         Code_B         : Code_Point;
-         Restart        : Boolean;
-
-      begin
-         --  XXX It is more efficient to use backward bulk sort: all characters
-         --  in the substring always sorted, so we need just to move last
-         --  character to appropriate position.
-
-         loop
-            Restart := False;
-
-            Current := First;
-            Previous := Current;
-            Unchecked_Next (Destination.Value, Current, Code_A);
-            Previous_Class :=
-              Core.Property
-               (First_Stage_Index (Code_A / 16#100#))
-               (Second_Stage_Index (Code_A mod 16#100#)).CCC;
-
-            loop
-               Aux := Current;
-               Unchecked_Next (Destination.Value, Current, Code_B);
-
-               Class :=
-                 Core.Property
-                  (First_Stage_Index (Code_B / 16#100#))
-                  (Second_Stage_Index (Code_B mod 16#100#)).CCC;
-
-               if Previous_Class > Class then
-                  Unchecked_Store (Destination.Value, Previous, Code_B);
-                  Current := Previous;
-                  Unchecked_Store (Destination.Value, Current, Code_A);
-                  Restart := True;
-
-               else
-                  Previous_Class := Class;
-                  Previous := Aux;
-                  Code_A := Code_B;
-               end if;
-
-               exit when Current >= Last;
-            end loop;
-
-            exit when not Restart;
-         end loop;
-      end Apply_Canonical_Ordering;
-
       type Starter_State is record
          D_Next : Positive := 1;
       end record;
@@ -238,8 +241,8 @@ package body Matreshka.Internals.Unicode.Normalization is
                   if Last_Class > Class then
                      --  Canonical Ordering is violated, reorder result.
 
-                     Apply_Canonical_Ordering
-                      (Starter.D_Next, Destination.Last + 1);
+                     Reorder_Last_Character
+                      (Destination, Starter.D_Next, Destination.Last + 1);
 
                   else
                      Last_Class := Class;
@@ -309,70 +312,6 @@ package body Matreshka.Internals.Unicode.Normalization is
     (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
    is
-      procedure Apply_Canonical_Ordering
-       (First : Positive;
-        Last  : Positive);
-
-      ------------------------------
-      -- Apply_Canonical_Ordering --
-      ------------------------------
-
-      procedure Apply_Canonical_Ordering
-       (First : Positive;
-        Last  : Positive)
-      is
-         Previous_Class : Canonical_Combining_Class;
-         Class          : Canonical_Combining_Class;
-         Previous       : Positive;
-         Aux            : Positive;
-         Current        : Positive;
-         Code_A         : Code_Point;
-         Code_B         : Code_Point;
-         Restart        : Boolean;
-
-      begin
-         --  XXX It is more efficient to use backward bulk sort: all characters
-         --  in the substring always sorted, so we need just to move last
-         --  character to appropriate position.
-
-         loop
-            Restart := False;
-
-            Current := First;
-            Previous := Current;
-            Unchecked_Next (Destination.Value, Current, Code_A);
-            Previous_Class :=
-              Core.Property
-               (First_Stage_Index (Code_A / 16#100#))
-               (Second_Stage_Index (Code_A mod 16#100#)).CCC;
-
-            loop
-               Aux := Current;
-               Unchecked_Next (Destination.Value, Current, Code_B);
-
-               Class :=
-                 Core.Property
-                  (First_Stage_Index (Code_B / 16#100#))
-                  (Second_Stage_Index (Code_B mod 16#100#)).CCC;
-
-               if Previous_Class > Class then
-                  Unchecked_Store (Destination.Value, Previous, Code_B);
-                  Current := Previous;
-                  Unchecked_Store (Destination.Value, Current, Code_A);
-                  Restart := True;
-
-               else
-                  Previous_Class := Class;
-                  Previous := Aux;
-                  Code_A := Code_B;
-               end if;
-
-               exit when Current >= Last;
-            end loop;
-
-            exit when not Restart;
-         end loop;
-      end Apply_Canonical_Ordering;
 
       type Starter_State is record
          D_Next : Positive := 1;
@@ -482,8 +421,8 @@ package body Matreshka.Internals.Unicode.Normalization is
                   if Last_Class > Class then
                      --  Canonical Ordering is violated, reorder result.
 
-                     Apply_Canonical_Ordering
-                      (Starter.D_Next, Destination.Last + 1);
+                     Reorder_Last_Character
+                      (Destination, Starter.D_Next, Destination.Last + 1);
 
                   else
                      Last_Class := Class;

@@ -32,7 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --  This package provides implementation of the Normalization Algorithms from
---  the Unicode specification.
+--  the Unicode specification, see UAX #15 Unicode Normalization Forms.
 with Matreshka.Internals.Strings;
 
 package Matreshka.Internals.Unicode.Normalization is
