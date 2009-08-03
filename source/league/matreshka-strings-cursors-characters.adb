@@ -169,7 +169,10 @@ package body Matreshka.Strings.Cursors.Characters is
          D : constant Internal_String_Access := Self.Object.Data;
 
       begin
-         if Self.Current in D.Value'First .. D.Last + 1 then
+         if Self.Current = 1 then
+            Self.Current := 0;
+
+         elsif Self.Current in 2 .. D.Last + 1 then
             Unchecked_Previous (D.Value, Self.Current);
          end if;
       end;
