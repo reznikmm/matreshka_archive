@@ -552,7 +552,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                     and then not Composed
                   then
                      --  Canonical Ordering is violated, reorder result, but
-		     --  only when previous starter was not composed, otherwise
+                     --  only when previous starter was not composed, otherwise
                      --  reordering will break normalization.
 
                      Reorder_Last_Character
