@@ -442,7 +442,7 @@ package body Matreshka.Internals.Unicode.Normalization is
       Class           : Canonical_Combining_Class;
       Starter         : Starter_State;
       S_Starter       : Starter_State;
-      Composed        : Boolean := False;
+      Composed        : Boolean := True;
       Fast            : Boolean := False;
       Starter_S_Index : Positive := 1;
       S_Previous      : Positive;
@@ -644,8 +644,9 @@ package body Matreshka.Internals.Unicode.Normalization is
                            (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
                               = Yes
                then
-                  --  Just processed character is starter and never compose with
-                  --  previous characters, thus we can switch back to fast mode.
+                  --  Just processed character is starter and never compose
+                  --  with previous characters, thus we can switch back to fast
+                  --  mode.
 
                   Fast := True;
                   Starter_S_Index := S_Previous;
@@ -755,7 +756,7 @@ package body Matreshka.Internals.Unicode.Normalization is
             (First_Stage_Index (Code_A / 16#100#))
             (Second_Stage_Index (Code_A mod 16#100#)).CCC;
 
-         loop
+         while Current < Last loop
             Aux := Current;
             Unchecked_Next (Destination.Value, Current, Code_B);
 
@@ -775,8 +776,6 @@ package body Matreshka.Internals.Unicode.Normalization is
                Previous := Aux;
                Code_A := Code_B;
             end if;
-
-            exit when Current >= Last;
          end loop;
 
          exit when not Restart;
