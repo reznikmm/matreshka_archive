@@ -135,6 +135,34 @@ package body Matreshka.Strings is
    end "&";
 
    ---------
+   -- "<" --
+   ---------
+
+   function "<" (Left : Sort_Key; Right : Sort_Key) return Boolean is
+      L_D : constant Internal_Sort_Key_Access := Left.Data;
+      R_D : constant Internal_Sort_Key_Access := Right.Data;
+
+   begin
+      return
+        L_D /= R_D
+          and then L_D.Data (1 .. L_D.Last) < R_D.Data (1 .. R_D.Last);
+   end "<";
+
+   ----------
+   -- "<=" --
+   ----------
+
+   function "<=" (Left : Sort_Key; Right : Sort_Key) return Boolean is
+      L_D : constant Internal_Sort_Key_Access := Left.Data;
+      R_D : constant Internal_Sort_Key_Access := Right.Data;
+
+   begin
+      return
+        L_D = R_D
+          or else L_D.Data (1 .. L_D.Last) <= R_D.Data (1 .. R_D.Last);
+   end "<=";
+
+   ---------
    -- "=" --
    ---------
 
@@ -162,6 +190,50 @@ package body Matreshka.Strings is
       return False;
    end "=";
 
+   ---------
+   -- "=" --
+   ---------
+
+   overriding function "=" (Left : Sort_Key; Right : Sort_Key)
+     return Boolean
+   is
+      L_D : constant Internal_Sort_Key_Access := Left.Data;
+      R_D : constant Internal_Sort_Key_Access := Right.Data;
+
+   begin
+      return
+        L_D = R_D
+          or else L_D.Data (1 .. L_D.Last) = R_D.Data (1 .. R_D.Last);
+   end "=";
+
+   ---------
+   -- ">" --
+   ---------
+
+   function ">" (Left : Sort_Key; Right : Sort_Key) return Boolean is
+      L_D : constant Internal_Sort_Key_Access := Left.Data;
+      R_D : constant Internal_Sort_Key_Access := Right.Data;
+
+   begin
+      return
+        L_D /= R_D
+          and then L_D.Data (1 .. L_D.Last) > R_D.Data (1 .. R_D.Last);
+   end ">";
+
+   ----------
+   -- ">=" --
+   ----------
+
+   function ">=" (Left : Sort_Key; Right : Sort_Key) return Boolean is
+      L_D : constant Internal_Sort_Key_Access := Left.Data;
+      R_D : constant Internal_Sort_Key_Access := Right.Data;
+
+   begin
+      return
+        L_D = R_D
+          or else L_D.Data (1 .. L_D.Last) >= R_D.Data (1 .. R_D.Last);
+   end ">=";
+
    ------------
    -- Adjust --
    ------------
@@ -180,10 +252,18 @@ package body Matreshka.Strings is
    -- Adjust --
    ------------
 
+   overriding procedure Adjust (Self : in out Sort_Key) is
+   begin
+      Reference (Self.Data);
+   end Adjust;
+
+   ------------
+   -- Adjust --
+   ------------
+
    overriding procedure Adjust (Self : in out Universal_String) is
    begin
-      Matreshka.Internals.Atomics.Counters.Increment
-       (Self.Data.Counter'Access);
+      Reference (Self.Data);
       Self.List    := (Head => null);
       Self.Cursors := Self.List'Unchecked_Access;
    end Adjust;
@@ -464,6 +544,15 @@ package body Matreshka.Strings is
    -- Finalize --
    --------------
 
+   overriding procedure Finalize (Self : in out Sort_Key) is
+   begin
+      Dereference (Self.Data);
+   end Finalize;
+
+   --------------
+   -- Finalize --
+   --------------
+
    overriding procedure Finalize (Self : in out Universal_String) is
       Current : Cursor_Access := Self.Cursors.Head;
       Next    : Cursor_Access;
@@ -482,11 +571,20 @@ package body Matreshka.Strings is
    -- Initialize --
    ----------------
 
+   overriding procedure Initialize (Self : in out Sort_Key) is
+   begin
+      Self.Data := Shared_Empty_Key'Access;
+      Reference (Self.Data);
+   end Initialize;
+
+   ----------------
+   -- Initialize --
+   ----------------
+
    overriding procedure Initialize (Self : in out Universal_String) is
    begin
       Self.Data := Shared_Empty'Access;
-      Matreshka.Internals.Atomics.Counters.Increment
-       (Self.Data.Counter'Access);
+      Reference (Self.Data);
       Self.List := (Head => null);
       Self.Cursors := Self.List'Unchecked_Access;
    end Initialize;

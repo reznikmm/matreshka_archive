@@ -77,13 +77,38 @@ package Matreshka.Internals.Strings is
 
    Shared_Empty : aliased Internal_String := (Size => 0, others => <>);
 
+   type Sort_Key_Array is
+     array (Positive range <>) of Matreshka.Internals.Unicode.Code_Unit_16;
+
+   type Internal_Sort_Key (Size : Natural) is record
+      Counter  : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      --  Atomic reference counter.
+
+      Data     : Sort_Key_Array (1 .. Size);
+      --  Sort key data.
+
+      Last     : Natural := 0;
+      --  Last element in the data.
+   end record;
+
+   type Internal_Sort_Key_Access is access all Internal_Sort_Key;
+
+   Shared_Empty_Key : aliased Internal_Sort_Key := (Size => 0, others => <>);
+
 --   function Copy (Source : not null String_Private_Data_Access)
 --     return not null String_Private_Data_Access;
    --  Creates copy of string data.
 
+   procedure Reference (Self : Internal_Sort_Key_Access);
+   pragma Inline (Reference);
+   --  Increment reference counter.
+
    procedure Reference (Self : Internal_String_Access);
    pragma Inline (Reference);
    --  Increment reference counter.
+
+   procedure Dereference (Self : in out Internal_Sort_Key_Access);
+   --  Decrement reference counter and free resources if it reach zero value.
 
    procedure Dereference (Self : in out Internal_String_Access);
    --  Decrement reference counter and free resources if it reach zero value.

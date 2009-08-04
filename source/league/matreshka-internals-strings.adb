@@ -41,10 +41,14 @@ package body Matreshka.Internals.Strings is
    use Matreshka.Internals.Unicode;
 
    procedure Free is
-     new Ada.Unchecked_Deallocation (Internal_String, Internal_String_Access);
+     new Ada.Unchecked_Deallocation (Index_Map, Index_Map_Access);
 
    procedure Free is
-     new Ada.Unchecked_Deallocation (Index_Map, Index_Map_Access);
+     new Ada.Unchecked_Deallocation
+          (Internal_Sort_Key, Internal_Sort_Key_Access);
+
+   procedure Free is
+     new Ada.Unchecked_Deallocation (Internal_String, Internal_String_Access);
 
    function Test_And_Set is
      new Matreshka.Internals.Atomics.Generic_Test_And_Set
@@ -204,6 +208,24 @@ package body Matreshka.Internals.Strings is
    -- Dereference --
    -----------------
 
+   procedure Dereference (Self : in out Internal_Sort_Key_Access) is
+   begin
+      if Self /= null then
+         if Matreshka.Internals.Atomics.Counters.Decrement
+             (Self.Counter'Access)
+         then
+            Free (Self);
+
+         else
+            Self := null;
+         end if;
+      end if;
+   end Dereference;
+
+   -----------------
+   -- Dereference --
+   -----------------
+
    procedure Dereference (Self : in out Internal_String_Access) is
    begin
       if Self /= null then
@@ -220,6 +242,17 @@ package body Matreshka.Internals.Strings is
          end if;
       end if;
    end Dereference;
+
+   ---------------
+   -- Reference --
+   ---------------
+
+   procedure Reference (Self : Internal_Sort_Key_Access) is
+   begin
+      if Self /= null then
+         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+      end if;
+   end Reference;
 
    ---------------
    -- Reference --

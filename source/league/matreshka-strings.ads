@@ -62,6 +62,8 @@ package Matreshka.Strings is
 
    type Universal_String is tagged private;
 
+   type Sort_Key is private;
+
    -------------------------
    -- Universal_Character --
    -------------------------
@@ -232,6 +234,16 @@ package Matreshka.Strings is
        return Relationship;
    --  Compare two string as a sequences of Unicode Code Points.
 
+   ---------------------------------------
+   -- Comparison operators for Sort_Key --
+   ---------------------------------------
+
+   function "=" (Left : Sort_Key; Right : Sort_Key) return Boolean;
+   function "<" (Left : Sort_Key; Right : Sort_Key) return Boolean;
+   function "<=" (Left : Sort_Key; Right : Sort_Key) return Boolean;
+   function ">" (Left : Sort_Key; Right : Sort_Key) return Boolean;
+   function ">=" (Left : Sort_Key; Right : Sort_Key) return Boolean;
+
 private
 
    -------------------------
@@ -334,5 +346,19 @@ private
    overriding procedure Adjust (Self : in out Abstract_Cursor);
 
    overriding procedure Finalize (Self : in out Abstract_Cursor);
+
+   --------------
+   -- Sort_Key --
+   --------------
+
+   type Sort_Key is new Ada.Finalization.Controlled with record
+      Data : Matreshka.Internals.Strings.Internal_Sort_Key_Access;
+   end record;
+
+   overriding procedure Initialize (Self : in out Sort_Key);
+
+   overriding procedure Adjust (Self : in out Sort_Key);
+
+   overriding procedure Finalize (Self : in out Sort_Key);
 
 end Matreshka.Strings;
