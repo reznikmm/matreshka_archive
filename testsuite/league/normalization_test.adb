@@ -25,9 +25,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Command_Line;
-with Ada.Text_IO;
 
 with Matreshka.Strings;
+
+with Unicode_Data_File_Parsers;
 
 procedure Normalization_Test is
 
@@ -37,29 +38,50 @@ procedure Normalization_Test is
      := Ada.Command_Line.Argument (1);
    NormalizationTest_Name : constant String := "NormalizationTest.txt";
 
+   type Boolean_Array is array (Natural range <>) of Boolean;
+   for Boolean_Array'Component_Size use Boolean'Size;
+
+   type Parser is
+     new Unicode_Data_File_Parsers.Unicode_Data_File_Parser with
+   record
+      Chars  : Boolean_Array (1 .. 16#10_FFFF#) := (others => False);
+      Part_1 : Boolean := False;
+   end record;
+
+   overriding procedure Start_Section
+    (Self : in out Parser;
+     Name : String);
+
+   overriding procedure End_Section (Self : in out Parser);
+
+   overriding procedure Data
+    (Self   : in out Parser;
+     Fields : Unicode_Data_File_Parsers.String_Vectors.Vector);
+
    function Parse (Text : String) return Wide_Wide_String;
    --  Parse string into sequence of code points.
 
-   procedure Check
-    (C1 : Universal_String;
-     C2 : Universal_String;
-     C3 : Universal_String;
-     C4 : Universal_String;
-     C5 : Universal_String);
-   --  Do check.
+   ----------
+   -- Data --
+   ----------
 
-   -----------
-   -- Check --
-   -----------
-
-   procedure Check
-    (C1 : Universal_String;
-     C2 : Universal_String;
-     C3 : Universal_String;
-     C4 : Universal_String;
-     C5 : Universal_String)
+   overriding procedure Data
+    (Self   : in out Parser;
+     Fields : Unicode_Data_File_Parsers.String_Vectors.Vector)
    is
+      C1 : Universal_String;
+      C2 : Universal_String;
+      C3 : Universal_String;
+      C4 : Universal_String;
+      C5 : Universal_String;
+
    begin
+      C1 := To_Universal_String (Parse (Fields.Element (1)));
+      C2 := To_Universal_String (Parse (Fields.Element (2)));
+      C3 := To_Universal_String (Parse (Fields.Element (3)));
+      C4 := To_Universal_String (Parse (Fields.Element (4)));
+      C5 := To_Universal_String (Parse (Fields.Element (5)));
+
       --  NFC
       --    c2 ==  NFC(c1) ==  NFC(c2) ==  NFC(c3)
       --    c4 ==  NFC(c4) ==  NFC(c5)
@@ -154,7 +176,66 @@ procedure Normalization_Test is
          raise Program_Error;
       end if;
 
-   end Check;
+      if C1.Length = 0 or C2.Length = 0 or C3.Length = 0 then
+         raise Program_Error;
+      end if;
+
+      if Self.Part_1 then
+         if C1.Length /= 1 then
+            raise Program_Error;
+         end if;
+
+         Self.Chars (Wide_Wide_Character'Pos (C1.Element (1))) := True;
+      end if;
+   end Data;
+
+   -----------------
+   -- End_Section --
+   -----------------
+
+   overriding procedure End_Section (Self : in out Parser) is
+      X : Universal_String;
+
+   begin
+      if Self.Part_1 then
+         for J in Self.Chars'Range loop
+            if not Self.Chars (J) then
+               --   X == NFC(X) == NFD(X) == NFKC(X) == NFKD(X)
+
+               begin
+                  X :=
+                    To_Universal_String ((1 => Wide_Wide_Character'Val (J)));
+
+                  if X.To_Wide_Wide_String /= X.To_NFC.To_Wide_Wide_String then
+                     raise Program_Error;
+                  end if;
+
+                  if X.To_Wide_Wide_String /= X.To_NFD.To_Wide_Wide_String then
+                     raise Program_Error;
+                  end if;
+
+                  if X.To_Wide_Wide_String /= X.To_NFKC.To_Wide_Wide_String then
+                     raise Program_Error;
+                  end if;
+
+                  if X.To_Wide_Wide_String /= X.To_NFKD.To_Wide_Wide_String then
+                     raise Program_Error;
+                  end if;
+
+               exception
+                  when Constraint_Error =>
+                     --  XXX Handling of this exception can hide possible
+                     --  problem in the implementation, thus it need to be
+                     --  replaced by validity check.
+
+                     null;
+               end;
+            end if;
+         end loop;
+
+         Self.Part_1 := False;
+      end if;
+   end End_Section;
 
    -----------
    -- Parse --
@@ -210,92 +291,24 @@ procedure Normalization_Test is
       return Result (1 .. Last_Result);
    end Parse;
 
-   C1          : Universal_String;
-   C2          : Universal_String;
-   C3          : Universal_String;
-   C4          : Universal_String;
-   C5          : Universal_String;
-   File        : Ada.Text_IO.File_Type;
-   Line        : String (1 .. 1024);
-   Last        : Natural;
-   Field_First : Positive;
-   Field_Last  : Natural;
+   -------------------
+   -- Start_Section --
+   -------------------
+
+   overriding procedure Start_Section
+    (Self : in out Parser;
+     Name : String)
+   is
+   begin
+      if Name = "Part1" then
+         Self.Part_1 := True;
+      end if;
+   end Start_Section;
+
+   Test : Parser;
 
 begin
-   Ada.Text_IO.Open
-    (File,
-     Ada.Text_IO.In_File,
-     Unidata_Directory & '/' & NormalizationTest_Name);
-
-   while not Ada.Text_IO.End_Of_File (File) loop
-      Ada.Text_IO.Get_Line (File, Line, Last);
-
-      if Last /= 0
-        and then Line (1) /= '#'
-      then
-         if Line (1) = '@' then
-            null;
-
-         else
-            Field_First := 1;
-            Field_Last := 1;
-
-            while Line (Field_Last + 1) /= ';' loop
-               Field_Last := Field_Last + 1;
-            end loop;
-
-            C1 :=
-              To_Universal_String
-               (Parse (Line (Field_First .. Field_Last)));
-
-            Field_First := Field_Last + 2;
-            Field_Last := Field_First;
-
-            while Line (Field_Last + 1) /= ';' loop
-               Field_Last := Field_Last + 1;
-            end loop;
-
-            C2 :=
-              To_Universal_String
-               (Parse (Line (Field_First .. Field_Last)));
-
-            Field_First := Field_Last + 2;
-            Field_Last := Field_First;
-
-            while Line (Field_Last + 1) /= ';' loop
-               Field_Last := Field_Last + 1;
-            end loop;
-
-            C3 :=
-              To_Universal_String
-               (Parse (Line (Field_First .. Field_Last)));
-
-            Field_First := Field_Last + 2;
-            Field_Last := Field_First;
-
-            while Line (Field_Last + 1) /= ';' loop
-               Field_Last := Field_Last + 1;
-            end loop;
-
-            C4 :=
-              To_Universal_String
-               (Parse (Line (Field_First .. Field_Last)));
-
-            Field_First := Field_Last + 2;
-            Field_Last := Field_First;
-
-            while Line (Field_Last + 1) /= ';' loop
-               Field_Last := Field_Last + 1;
-            end loop;
-
-            C5 :=
-              To_Universal_String
-               (Parse (Line (Field_First .. Field_Last)));
-
-            Check (C1, C2, C3, C4, C5);
-         end if;
-      end if;
-   end loop;
-
-   Ada.Text_IO.Close (File);
+   Test.Open (Unidata_Directory & '/' & NormalizationTest_Name);
+   Test.Parse;
+   Test.Close;
 end Normalization_Test;
