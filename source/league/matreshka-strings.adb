@@ -31,7 +31,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Atomics.Counters;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Ucd;
 with Matreshka.Internals.Unicode.Casing;
@@ -916,9 +915,6 @@ package body Matreshka.Strings is
 
    begin
       if Item'Length = 0 then
-         Matreshka.Internals.Atomics.Counters.Increment
-          (Shared_Empty.Counter'Access);
-
          return Result : Universal_String
            := Universal_String'
                (Ada.Finalization.Controlled with
@@ -926,6 +922,7 @@ package body Matreshka.Strings is
                   List    => (Head => null),
                   Cursors => null)
          do
+            Reference (Result.Data);
             Result.Cursors := Result.List'Unchecked_Access;
          end return;
       end if;
