@@ -29,10 +29,12 @@ with Ada.Command_Line;
 with Matreshka.Strings;
 
 with Unicode_Data_File_Parsers;
+with Unicode_Data_File_Utilities;
 
 procedure Normalization_Test is
 
    use Matreshka.Strings;
+   use Unicode_Data_File_Utilities;
 
    Unidata_Directory      : constant String
      := Ada.Command_Line.Argument (1);
@@ -57,9 +59,6 @@ procedure Normalization_Test is
    overriding procedure Data
     (Self   : in out Parser;
      Fields : Unicode_Data_File_Parsers.String_Vectors.Vector);
-
-   function Parse (Text : String) return Wide_Wide_String;
-   --  Parse string into sequence of code points.
 
    ----------
    -- Data --
@@ -236,60 +235,6 @@ procedure Normalization_Test is
          Self.Part_1 := False;
       end if;
    end End_Section;
-
-   -----------
-   -- Parse --
-   -----------
-
-   function Parse (Text : String) return Wide_Wide_String is
-      First       : Positive := Text'First;
-      Last        : Natural;
-      Result      : Wide_Wide_String (1 .. Text'Length / 4);
-      Last_Result : Natural := 0;
-
-      procedure Scan;
-
-      ----------
-      -- Scan --
-      ----------
-
-      procedure Scan is
-      begin
-         while First < Text'Last
-           and then Text (First) = ' '
-         loop
-            First := First + 1;
-         end loop;
-
-         Last := First - 1;
-
-         while Last < Text'Last loop
-            Last := Last + 1;
-
-            if Text (Last) not in '0' .. '9'
-              and then Text (Last) not in 'A' .. 'F'
-            then
-               Last := Last - 1;
-
-               exit;
-            end if;
-         end loop;
-      end Scan;
-
-   begin
-      while First < Text'Last loop
-         Scan;
-
-         Last_Result := Last_Result + 1;
-         Result (Last_Result) :=
-           Wide_Wide_Character'Val
-            (Integer'Value ("16#" & Text (First .. Last) & "#"));
-
-         First := Last + 1;
-      end loop;
-
-      return Result (1 .. Last_Result);
-   end Parse;
 
    -------------------
    -- Start_Section --
