@@ -34,6 +34,7 @@
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Ucd;
 with Matreshka.Internals.Unicode.Casing;
+with Matreshka.Internals.Unicode.Collation;
 with Matreshka.Internals.Unicode.Normalization;
 with Matreshka.Internals.Utf16;
 
@@ -357,6 +358,29 @@ package body Matreshka.Strings is
          return Equal;
       end if;
    end Binary_Compare;
+
+   ---------------
+   -- Collation --
+   ---------------
+
+   function Collation (Self : Universal_String'Class) return Sort_Key is
+      Data   : Internal_String_Access;
+      Locale : Matreshka.Internals.Locales.Locale_Data_Access;
+
+   begin
+      Matreshka.Internals.Unicode.Normalization.NFD (Self.Data, Data);
+      Locale := Matreshka.Internals.Locales.Get_Locale;
+
+      return Result : constant Sort_Key
+        := (Ada.Finalization.Controlled
+              with Data =>
+                     Matreshka.Internals.Unicode.Collation.Construct_Sort_Key
+                      (Locale, Data))
+      do
+         Dereference (Data);
+         Matreshka.Internals.Locales.Dereference (Locale);
+      end return;
+   end Collation;
 
    ------------------
    -- Constructors --

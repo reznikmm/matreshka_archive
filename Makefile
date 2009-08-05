@@ -1,4 +1,5 @@
 UNIDATA = unicode/5.1.0/ucd
+UCADATA = unicode/UCA/5.1.0
 CLDR = unicode/cldr/1.7.1
 
 all:
@@ -16,6 +17,7 @@ check: all
 	.objs/case_conversion_test
 	.objs/case_folding_test
 	.objs/normalization_test $(UNIDATA)
+	.objs/collation_test $(UCADATA)
 
 #all:
 #	gprbuild -p -Pmatreshka

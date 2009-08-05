@@ -234,6 +234,9 @@ package Matreshka.Strings is
        return Relationship;
    --  Compare two string as a sequences of Unicode Code Points.
 
+   function Collation (Self : Universal_String'Class) return Sort_Key;
+   --  Construct sort key for string comparison.
+
    ---------------------------------------
    -- Comparison operators for Sort_Key --
    ---------------------------------------
