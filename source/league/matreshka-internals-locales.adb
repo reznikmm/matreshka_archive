@@ -33,8 +33,9 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.Ucd.Core;
 with Matreshka.Internals.Ucd.Cases;
+with Matreshka.Internals.Ucd.Colls;
+with Matreshka.Internals.Ucd.Core;
 
 package body Matreshka.Internals.Locales is
 
@@ -43,6 +44,12 @@ package body Matreshka.Internals.Locales is
          Case_Mapping  => Matreshka.Internals.Ucd.Cases.Mapping'Access,
          Case_Context  => Matreshka.Internals.Ucd.Cases.Context'Access,
          Case_Sequence => Matreshka.Internals.Ucd.Cases.Data'Access,
+         Collation_Elements =>
+           Matreshka.Internals.Ucd.Colls.Expansion_Data'Access,
+         Collation_Contractors =>
+           Matreshka.Internals.Ucd.Colls.Contraction_Data'Access,
+         Collation_Table =>
+           Matreshka.Internals.Ucd.Colls.Collation'Access,
          others        => <>);
 
    -----------------
