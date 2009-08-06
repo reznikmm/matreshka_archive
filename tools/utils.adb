@@ -99,6 +99,61 @@ package body Utils is
       return Result;
    end First_Stage_Image;
 
+   -------------------------------
+   -- Parse_Code_Point_Sequence --
+   -------------------------------
+
+   function Parse_Code_Point_Sequence (Text : String)
+     return Code_Point_Sequence
+   is
+      First       : Positive := Text'First;
+      Last        : Natural;
+      Result      : Code_Point_Sequence (1 .. Text'Length / 4);
+      Last_Result : Sequence_Count := 0;
+
+      procedure Scan;
+
+      ----------
+      -- Scan --
+      ----------
+
+      procedure Scan is
+      begin
+         while First < Text'Last
+           and then Text (First) = ' '
+         loop
+            First := First + 1;
+         end loop;
+
+         Last := First - 1;
+
+         while Last < Text'Last loop
+            Last := Last + 1;
+
+            if Text (Last) not in '0' .. '9'
+              and then Text (Last) not in 'A' .. 'F'
+            then
+               Last := Last - 1;
+
+               exit;
+            end if;
+         end loop;
+      end Scan;
+
+   begin
+      while First < Text'Last loop
+         Scan;
+
+         Last_Result := Last_Result + 1;
+         Result (Last_Result) :=
+           Code_Point'Value ("16#" & Text (First .. Last) & "#");
+
+         First := Last + 1;
+      end loop;
+
+      return Result (1 .. Last_Result);
+   end Parse_Code_Point_Sequence;
+
    ------------------------
    -- Second_Stage_Image --
    ------------------------

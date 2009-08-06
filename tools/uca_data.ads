@@ -24,22 +24,36 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_league";
+with Matreshka.Internals.Ucd;
+with Matreshka.Internals.Unicode;
 
-project Matreshka_League_Tests is
+package Uca_Data is
 
-   for Main use
-    ("character_cursor_test.adb",
-     "grapheme_cluster_cursor_test.adb",
-     "case_conversion_test.adb",
-     "case_folding_test.adb",
-     "normalization_test.adb",
-     "collation_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use ("../testsuite/league", "../tools");
+   type Collation_Element_Sequence_Access is
+     access all Matreshka.Internals.Ucd.Collation_Element_Sequence;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8");
-   end Compiler;
+   type Contraction_Data is record
+      Codes     : Matreshka.Internals.Ucd.Code_Point_Sequence_Access;
+      Expansion : Collation_Element_Sequence_Access;
+   end record;
 
-end Matreshka_League_Tests;
+   type Contraction_Data_Array is
+     array (Positive range <>) of Contraction_Data;
+
+   type Contraction_Data_Array_Access is access all Contraction_Data_Array;
+
+   type Collation_Record is record
+      Expansion   : Collation_Element_Sequence_Access;
+      Contraction : Contraction_Data_Array_Access;
+   end record;
+
+   type Collation_Data is
+     array (Matreshka.Internals.Unicode.Code_Point) of Collation_Record;
+
+   type Collation_Data_Access is access all Collation_Data;
+
+   Colls : Collation_Data_Access;
+
+   procedure Load (Uca_Directory : String);
+
+end Uca_Data;

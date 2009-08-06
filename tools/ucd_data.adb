@@ -28,11 +28,13 @@ with Ada.Text_IO;
 with Ada.Unchecked_Deallocation;
 
 with Ucd_Input;
+with Utils;
 
 package body Ucd_Data is
 
    use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
+   use Utils;
 
    UnicodeData_Name                : constant String := "UnicodeData.txt";
    PropList_Name                   : constant String := "PropList.txt";
@@ -117,9 +119,6 @@ package body Ucd_Data is
    procedure Parse_Code_Point
     (Text : String;
      Code : out Code_Point);
-
-   function Parse_Code_Point_Sequence (Text : String)
-     return Code_Point_Sequence;
 
    function Value (Item : String) return General_Category;
    --  Converts two-character text representation of the General_Category
@@ -296,7 +295,7 @@ package body Ucd_Data is
 
    procedure Load (Unidata_Directory : String) is
    begin
-      Ada.Text_IO.Put_Line ("Initializing ...");
+      Ada.Text_IO.Put_Line ("Initializing UCD ...");
 
       --  Initialize data structures to default values.
 
@@ -1174,61 +1173,6 @@ package body Ucd_Data is
 
       Code := Code_Point'Value ("16#" & Text (First .. Last) & "#");
    end Parse_Code_Point;
-
-   -------------------------------
-   -- Parse_Code_Point_Sequence --
-   -------------------------------
-
-   function Parse_Code_Point_Sequence (Text : String)
-     return Code_Point_Sequence
-   is
-      First       : Positive := Text'First;
-      Last        : Natural;
-      Result      : Code_Point_Sequence (1 .. Text'Length / 4);
-      Last_Result : Sequence_Count := 0;
-
-      procedure Scan;
-
-      ----------
-      -- Scan --
-      ----------
-
-      procedure Scan is
-      begin
-         while First < Text'Last
-           and then Text (First) = ' '
-         loop
-            First := First + 1;
-         end loop;
-
-         Last := First - 1;
-
-         while Last < Text'Last loop
-            Last := Last + 1;
-
-            if Text (Last) not in '0' .. '9'
-              and then Text (Last) not in 'A' .. 'F'
-            then
-               Last := Last - 1;
-
-               exit;
-            end if;
-         end loop;
-      end Scan;
-
-   begin
-      while First < Text'Last loop
-         Scan;
-
-         Last_Result := Last_Result + 1;
-         Result (Last_Result) :=
-           Code_Point'Value ("16#" & Text (First .. Last) & "#");
-
-         First := Last + 1;
-      end loop;
-
-      return Result (1 .. Last_Result);
-   end Parse_Code_Point_Sequence;
 
    -----------
    -- Value --

@@ -53,4 +53,7 @@ package Utils is
        return String;
    --  Returns image of Sequence count without leading space.
 
+   function Parse_Code_Point_Sequence (Text : String)
+     return Matreshka.Internals.Ucd.Code_Point_Sequence;
+
 end Utils;

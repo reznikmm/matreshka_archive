@@ -43,7 +43,9 @@ package Matreshka.Internals.Locales is
 
    type Locale_Data is limited record
       Counter       : aliased Matreshka.Internals.Atomics.Counters.Counter;
+
       Core          : not null Matreshka.Internals.Ucd.Core_First_Stage_Access;
+
       Case_Mapping  :
         not null Matreshka.Internals.Ucd.Case_Mapping_First_Stage_Access;
       Case_Context  :
@@ -51,6 +53,11 @@ package Matreshka.Internals.Locales is
           Matreshka.Internals.Ucd.Casing_Context_Mapping_Sequence_Access;
       Case_Sequence :
         not null Matreshka.Internals.Ucd.Code_Point_Sequence_Access;
+
+      Collation_Elements :
+        Matreshka.Internals.Ucd.Collation_Element_Sequence_Access;
+      Collation_Contractors : Matreshka.Internals.Ucd.Contractor_Array_Access;
+      Collation_Table : Matreshka.Internals.Ucd.Collation_First_Stage_Access;
    end record;
 
    type Locale_Data_Access is access all Locale_Data;

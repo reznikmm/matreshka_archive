@@ -31,18 +31,23 @@ with Ada.Command_Line;
 with Ada.Text_IO;
 
 with Gen_Cases;
+with Gen_Colls;
 with Gen_Norms;
 with Gen_Props;
+with Uca_Data;
 with Ucd_Data;
 
 procedure Gen_Ucd is
    Unidata_Directory : constant String := Ada.Command_Line.Argument (1);
-   Source_Directory  : constant String := Ada.Command_Line.Argument (2);
+   Uca_Directory     : constant String := Ada.Command_Line.Argument (2);
+   Source_Directory  : constant String := Ada.Command_Line.Argument (3);
 
 begin
    Ucd_Data.Load (Unidata_Directory);
+   Uca_Data.Load (Uca_Directory);
    Ada.Text_IO.Put_Line ("Generating (" & Source_Directory & ") ...");
    Gen_Props (Source_Directory);
    Gen_Cases (Source_Directory);
    Gen_Norms (Source_Directory);
+   Gen_Colls (Source_Directory);
 end Gen_Ucd;

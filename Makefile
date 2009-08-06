@@ -7,7 +7,7 @@ all:
 
 ucd:
 	gprbuild -p -Pgnat/tools.gpr
-	.objs/gen_ucd $(UNIDATA) source/league/ucd
+	.objs/gen_ucd $(UNIDATA) $(UCADATA) source/league/ucd
 #	.objs/gen_segments $(CLDR)
 
 check: all

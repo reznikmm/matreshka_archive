@@ -444,4 +444,57 @@ package Matreshka.Internals.Ucd is
      array (Sequence_Index range <>, Sequence_Index range <>)
        of Matreshka.Internals.Unicode.Code_Point;
 
+   ---------------
+   -- Collation --
+   ---------------
+
+   type Collation_Element_Kinds is (Regular, Variable);
+
+   type Collation_Weight is mod 2**16;
+   for Collation_Weight'Size use 16;
+
+   type Collation_Element is record
+      Kind      : Collation_Element_Kinds;
+      Primary   : Collation_Weight;
+      Secondary : Collation_Weight;
+      Trinary   : Collation_Weight;
+   end record;
+
+   type Collation_Element_Sequence is
+     array (Sequence_Index range <>) of Collation_Element;
+
+   type Collation_Element_Sequence_Access is
+     access constant Collation_Element_Sequence;
+
+   type Contractor_Record is record
+      Code             : Matreshka.Internals.Unicode.Code_Point;
+      Contractor_First : Sequence_Count;
+      Contractor_Last  : Sequence_Count;
+      Expansion_First  : Sequence_Count;
+      Expansion_Last   : Sequence_Count;
+   end record;
+
+   type Contractor_Array is
+     array (Sequence_Index range <>) of Contractor_Record;
+
+   type Contractor_Array_Access is access constant Contractor_Array;
+
+   type Collation_Record is record
+      Contractor_First : Sequence_Count;
+      Contractor_Last  : Sequence_Count;
+      Expansion_First  : Sequence_Count;
+      Expansion_Last   : Sequence_Count;
+   end record;
+
+   type Collation_Second_Stage is
+     array (Second_Stage_Index) of Collation_Record;
+
+   type Collation_Second_Stage_Access is
+     access constant Collation_Second_Stage;
+
+   type Collation_First_Stage is
+     array (First_Stage_Index) of Collation_Second_Stage_Access;
+
+   type Collation_First_Stage_Access is access constant Collation_First_Stage;
+
 end Matreshka.Internals.Ucd;

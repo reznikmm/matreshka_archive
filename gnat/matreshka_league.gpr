@@ -51,6 +51,14 @@ project Matreshka_League is
           "-gnatwa",
           "-gnatyaAbBcdefhiIkmnoOprsStux");
 
+      for Switches ("matreshka-internals-ucd-colls.ads") use
+         ("-g",
+          "-gnat05",
+          "-gnata",
+          "-gnatn",
+          "-gnatwa",
+          "-gnatyaAbBcdefhiIkmnoOprsStux");
+
    end Compiler;
 
    package Naming is
