@@ -422,10 +422,7 @@ begin
 
    Ada.Text_IO.New_Line (File);
    Ada.Text_IO.Put_Line
-    (File,
-     "   Expansion_Data : aliased constant Collation_Element_Sequence (1 .. "
-       & Sequence_Count_Image (Expansion_Last)
-       & ')');
+    (File, "   Expansion_Data : aliased constant Collation_Element_Sequence");
 
    for J in 1 .. Expansion_Last loop
       if J = 1 then
@@ -454,10 +451,7 @@ begin
 
    Ada.Text_IO.New_Line (File);
    Ada.Text_IO.Put_Line
-    (File,
-     "   Contraction_Data : aliased constant Contractor_Array (1 .. "
-       & Sequence_Count_Image (Contraction_Last)
-       & ')');
+    (File, "   Contraction_Data : aliased constant Contractor_Array");
 
    for J in 1 .. Contraction_Last loop
       if J = 1 then

@@ -36,7 +36,7 @@ package Matreshka.Internals.Ucd.Colls is
 
    pragma Preelaborate;
 
-   Expansion_Data : aliased constant Collation_Element_Sequence (1 .. 22843)
+   Expansion_Data : aliased constant Collation_Element_Sequence
      := (1 => (Regular, 16#0000#, 16#0000#, 16#0000#),
          2 => (Variable, 16#0201#, 16#0020#, 16#0002#),
          3 => (Variable, 16#0202#, 16#0020#, 16#0002#),
@@ -22881,7 +22881,7 @@ package Matreshka.Internals.Ucd.Colls is
          22842 => (Regular, 16#FB85#, 16#0020#, 16#0002#),
          22843 => (Regular, 16#A600#, 16#0000#, 16#0000#));
 
-   Contraction_Data : aliased constant Contractor_Array (1 .. 477)
+   Contraction_Data : aliased constant Contractor_Array
      := (1 => (16#0000B7#, 0, 0, 52, 52),
          2 => (16#000387#, 0, 0, 52, 52),
          3 => (16#0000B7#, 0, 0, 86, 86),
