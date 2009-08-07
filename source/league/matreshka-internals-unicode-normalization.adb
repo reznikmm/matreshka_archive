@@ -283,19 +283,6 @@ package body Matreshka.Internals.Unicode.Normalization is
                (First_Stage_Index (Code / 16#100#))
                (Second_Stage_Index (Code mod 16#100#)).CCC;
 
-            if Class /= 0 then
-               if Last_Class > Class then
-                  --  Canonical Ordering is violated.
-
-                  S_Index := S_Previous;
-
-                  exit;
-               end if;
-
-            else
-               Starter := (D_Next => S_Index);
-            end if;
-
             case Core.Property
                (First_Stage_Index (Code / 16#100#))
                (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
@@ -308,6 +295,19 @@ package body Matreshka.Internals.Unicode.Normalization is
                when Yes =>
                   null;
             end case;
+
+            if Class /= 0 then
+               if Last_Class > Class then
+                  --  Canonical Ordering is violated.
+
+                  S_Index := S_Previous;
+
+                  exit;
+               end if;
+
+            else
+               Starter := (D_Next => S_Index);
+            end if;
 
             Last_Class := Class;
             Length := Length + 1;
