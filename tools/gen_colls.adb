@@ -474,7 +474,7 @@ begin
           & ", "
           & Sequence_Count_Image (Contraction (J).Expansion_First)
           & ", "
-          & Sequence_Count_Image (Contraction (J).Expansion_First)
+          & Sequence_Count_Image (Contraction (J).Expansion_Last)
           & ')');
    end loop;
 
