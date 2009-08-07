@@ -266,7 +266,7 @@ package body Matreshka.Internals.Unicode.Casing is
          then
             declare
                Mapping : constant Case_Mapping
-                 := Locale.Case_Mapping
+                 := Locale.Casing.Mapping
                      (First_Stage_Index (Source_Code / 16#100#))
                      (Second_Stage_Index (Source_Code mod 16#100#));
 
@@ -282,7 +282,7 @@ package body Matreshka.Internals.Unicode.Casing is
                   for J in Mapping.Context_First .. Mapping.Context_Last loop
                      declare
                         Context : constant Casing_Context_Mapping
-                          := Locale.Case_Context (J);
+                          := Locale.Casing.Context (J);
 
                      begin
                         if Context.Ranges (Kind).First /= 0 then
@@ -298,7 +298,7 @@ package body Matreshka.Internals.Unicode.Casing is
                                     loop
                                        Append
                                         (Destination,
-                                          Locale.Case_Sequence (J),
+                                          Locale.Casing.Expansion (J),
                                           Source.Last - Source_Current
                                             + Integer
                                                (Context.Ranges (Kind).Last)
@@ -351,7 +351,7 @@ package body Matreshka.Internals.Unicode.Casing is
                   loop
                      Append
                       (Destination,
-                       Locale.Case_Sequence (J),
+                       Locale.Casing.Expansion (J),
                        Source.Last - Source_Current
                          + Integer (Mapping.Ranges (Kind).Last)
                          - Integer (Mapping.Ranges (Kind).First) + 2);

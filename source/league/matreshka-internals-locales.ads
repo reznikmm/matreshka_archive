@@ -41,29 +41,31 @@ package Matreshka.Internals.Locales is
 
    pragma Preelaborate;
 
+   type Casing_Data is record
+      Expansion :
+        not null Matreshka.Internals.Ucd.Code_Point_Sequence_Access;
+      Context   :
+        not null
+          Matreshka.Internals.Ucd.Casing_Context_Mapping_Sequence_Access;
+      Mapping   :
+        not null Matreshka.Internals.Ucd.Case_Mapping_First_Stage_Access;
+   end record;
+
    type Collation_Data is record
-      Expansion   :
+      Expansion     :
         not null Matreshka.Internals.Ucd.Collation_Element_Sequence_Access;
-      Contraction :
+      Contraction   :
         not null Matreshka.Internals.Ucd.Contractor_Array_Access;
-      Mapping     :
+      Mapping       :
         not null Matreshka.Internals.Ucd.Collation_First_Stage_Access;
-      Variable    : Matreshka.Internals.Ucd.Collation_Weight;
+      Last_Variable : Matreshka.Internals.Ucd.Collation_Weight;
    end record;
 
    type Locale_Data is limited record
-      Counter       : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
 
-      Core          : not null Matreshka.Internals.Ucd.Core_First_Stage_Access;
-
-      Case_Mapping  :
-        not null Matreshka.Internals.Ucd.Case_Mapping_First_Stage_Access;
-      Case_Context  :
-        not null
-          Matreshka.Internals.Ucd.Casing_Context_Mapping_Sequence_Access;
-      Case_Sequence :
-        not null Matreshka.Internals.Ucd.Code_Point_Sequence_Access;
-
+      Core      : not null Matreshka.Internals.Ucd.Core_First_Stage_Access;
+      Casing    : Casing_Data;
       Collation : Collation_Data;
    end record;
 

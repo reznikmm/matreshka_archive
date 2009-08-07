@@ -40,18 +40,19 @@ with Matreshka.Internals.Ucd.Core;
 package body Matreshka.Internals.Locales is
 
    Default_Locale : aliased Locale_Data
-     := (Core          => Matreshka.Internals.Ucd.Core.Property'Access,
-         Case_Mapping  => Matreshka.Internals.Ucd.Cases.Mapping'Access,
-         Case_Context  => Matreshka.Internals.Ucd.Cases.Context'Access,
-         Case_Sequence => Matreshka.Internals.Ucd.Cases.Data'Access,
-         Collation     =>
-          (Expansion   =>
+     := (Core      => Matreshka.Internals.Ucd.Core.Property'Access,
+         Casing    =>
+          (Expansion => Matreshka.Internals.Ucd.Cases.Data'Access,
+           Context   => Matreshka.Internals.Ucd.Cases.Context'Access,
+           Mapping   => Matreshka.Internals.Ucd.Cases.Mapping'Access),
+         Collation =>
+          (Expansion     =>
              Matreshka.Internals.Ucd.Colls.Expansion_Data'Access,
-           Contraction =>
+           Contraction   =>
              Matreshka.Internals.Ucd.Colls.Contraction_Data'Access,
-           Mapping     =>
+           Mapping       =>
              Matreshka.Internals.Ucd.Colls.Collation'Access,
-           Variable    => Matreshka.Internals.Ucd.Colls.Last_Variable),
+           Last_Variable => Matreshka.Internals.Ucd.Colls.Last_Variable),
          others        => <>);
 
    -----------------
