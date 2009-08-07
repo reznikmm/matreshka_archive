@@ -52,7 +52,8 @@ package body Matreshka.Internals.Locales is
              Matreshka.Internals.Ucd.Colls.Contraction_Data'Access,
            Mapping       =>
              Matreshka.Internals.Ucd.Colls.Collation'Access,
-           Last_Variable => Matreshka.Internals.Ucd.Colls.Last_Variable),
+           Last_Variable => Matreshka.Internals.Ucd.Colls.Last_Variable,
+           Backwards     => False),
          others        => <>);
 
    -----------------

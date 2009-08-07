@@ -291,12 +291,24 @@ package body Matreshka.Internals.Unicode.Collation is
          Result.Last := Result.Last + 1;
          Result.Data (Result.Last) := 0;
 
-         for J in 1 .. Collation_Array.Last loop
-            if Collation_Array.Data (J).Secondary /= 0 then
-               Result.Last := Result.Last + 1;
-               Result.Data (Result.Last) := Collation_Array.Data (J).Secondary;
-            end if;
-         end loop;
+         if Locale.Collation.Backwards then
+            for J in reverse 1 .. Collation_Array.Last loop
+               if Collation_Array.Data (J).Secondary /= 0 then
+                  Result.Last := Result.Last + 1;
+                  Result.Data (Result.Last) :=
+                    Collation_Array.Data (J).Secondary;
+               end if;
+            end loop;
+
+         else
+            for J in 1 .. Collation_Array.Last loop
+               if Collation_Array.Data (J).Secondary /= 0 then
+                  Result.Last := Result.Last + 1;
+                  Result.Data (Result.Last) :=
+                    Collation_Array.Data (J).Secondary;
+               end if;
+            end loop;
+         end if;
 
          Result.Last := Result.Last + 1;
          Result.Data (Result.Last) := 0;

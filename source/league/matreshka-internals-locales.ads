@@ -59,6 +59,9 @@ package Matreshka.Internals.Locales is
       Mapping       :
         not null Matreshka.Internals.Ucd.Collation_First_Stage_Access;
       Last_Variable : Matreshka.Internals.Ucd.Collation_Weight;
+      Backwards     : Boolean;
+      --  Sets the comparison for the second level only to be backwards
+      --  ("French").
    end record;
 
    type Locale_Data is limited record
