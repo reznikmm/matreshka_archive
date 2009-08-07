@@ -193,7 +193,8 @@ procedure Normalization_Test is
    -----------------
 
    overriding procedure End_Section (Self : in out Parser) is
-      X : Universal_String;
+      X    : Universal_String;
+      Skip : Boolean;
 
    begin
       if Self.Part_1 then
@@ -204,7 +205,14 @@ procedure Normalization_Test is
                begin
                   X :=
                     To_Universal_String ((1 => Wide_Wide_Character'Val (J)));
+                  Skip := False;
 
+               exception
+                  when Constraint_Error =>
+                     Skip := True;
+               end;
+
+               if not Skip then
                   if X.To_Wide_Wide_String /= X.To_NFC.To_Wide_Wide_String then
                      raise Program_Error;
                   end if;
@@ -220,15 +228,7 @@ procedure Normalization_Test is
                   if X.To_Wide_Wide_String /= X.To_NFKD.To_Wide_Wide_String then
                      raise Program_Error;
                   end if;
-
-               exception
-                  when Constraint_Error =>
-                     --  XXX Handling of this exception can hide possible
-                     --  problem in the implementation, thus it need to be
-                     --  replaced by validity check.
-
-                     null;
-               end;
+               end if;
             end if;
          end loop;
 
