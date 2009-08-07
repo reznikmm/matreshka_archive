@@ -31,6 +31,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package provides several subprograms for conversion of user visible
+--  data types into user readable form.
 
 package Matreshka.Strings.Debug is
 
