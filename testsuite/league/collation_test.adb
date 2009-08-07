@@ -25,8 +25,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Command_Line;
+with Ada.Text_IO;
 
 with Matreshka.Strings;
+with Matreshka.Strings.Debug;
 
 with Unicode_Data_File_Parsers;
 with Unicode_Data_File_Utilities;
@@ -34,6 +36,7 @@ with Unicode_Data_File_Utilities;
 procedure Collation_Test is
 
    use Matreshka.Strings;
+   use Matreshka.Strings.Debug;
    use Unicode_Data_File_Utilities;
 
    Unidata_Directory          : constant String
@@ -61,44 +64,68 @@ procedure Collation_Test is
     (Self   : in out Parser;
      Fields : Unicode_Data_File_Parsers.String_Vectors.Vector)
    is
-      String : Universal_String;
-      Key    : Sort_Key;
+      Current_String : Universal_String;
+      Current_Key    : Sort_Key;
+      Skip           : Boolean := False;
 
    begin
-      String := To_Universal_String (Parse (Fields.Element (1)));
-      Key    := String.Collation;
+      begin
+         Current_String := To_Universal_String (Parse (Fields.Element (1)));
 
-      if Self.Last_Key > Key then
-         raise Program_Error;
+      exception
+         when Constraint_Error =>
+            --  Data file includes several code point not treated by the
+            --  implementation as valid code points, surrogate characters for
+            --  example.
 
-      elsif Self.Last_Key = Key
-        and then Self.Last_String.Binary_Compare (String) = Greater
-      then
-         raise Program_Error;
+            Skip := True;
+      end;
+
+      if not Skip then
+         Current_Key := Current_String.Collation;
+
+         if Self.Last_Key > Current_Key then
+            Ada.Text_IO.Put_Line
+             (Debug_Image (Self.Last_String)
+                & " => "
+                & Debug_Image (Self.Last_Key));
+            Ada.Text_IO.Put_Line
+             (Debug_Image (Current_String)
+                & " => "
+                & Debug_Image (Current_Key));
+
+            raise Program_Error;
+
+         elsif Self.Last_Key = Current_Key
+           and then Self.Last_String.Binary_Compare (Current_String) = Greater
+         then
+            Ada.Text_IO.Put_Line
+             (Debug_Image (Self.Last_String)
+                & " => "
+                & Debug_Image (Self.Last_Key));
+            Ada.Text_IO.Put_Line
+             (Debug_Image (Current_String)
+                & " => "
+                & Debug_Image (Current_Key));
+
+            raise Program_Error;
+         end if;
+
+         Self.Last_String := Current_String;
+         Self.Last_Key    := Current_Key;
       end if;
-
-      Self.Last_String := String;
-      Self.Last_Key    := Key;
-
-   exception
-      when Constraint_Error =>
-         --  Data file includes several code point not treated by the
-         --  implementation as valid code points, surrogate characters for
-         --  example.
-
-         null;
    end Data;
 
-   Test_Shifted       : Parser;
    Test_Non_Ignorable : Parser;
+--   Test_Shifted       : Parser;
 
 begin
-   Test_Shifted.Open (Unidata_Directory & '/' & CollationTest_SHIFTED_Name);
-   Test_Shifted.Parse;
-   Test_Shifted.Close;
-
    Test_Non_Ignorable.Open
     (Unidata_Directory & '/' & CollationTest_NON_IGNORABLE_Name);
    Test_Non_Ignorable.Parse;
    Test_Non_Ignorable.Close;
+
+--   Test_Shifted.Open (Unidata_Directory & '/' & CollationTest_SHIFTED_Name);
+--   Test_Shifted.Parse;
+--   Test_Shifted.Close;
 end Collation_Test;
