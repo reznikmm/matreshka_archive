@@ -33,6 +33,7 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Atomics.Counters;
 with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Ucd;
 with Matreshka.Internals.Utf16;
 
 package Matreshka.Internals.Strings is
@@ -78,7 +79,7 @@ package Matreshka.Internals.Strings is
    Shared_Empty : aliased Internal_String := (Size => 0, others => <>);
 
    type Sort_Key_Array is
-     array (Positive range <>) of Matreshka.Internals.Unicode.Code_Unit_16;
+     array (Positive range <>) of Matreshka.Internals.Ucd.Collation_Weight;
 
    type Internal_Sort_Key (Size : Natural) is record
       Counter  : aliased Matreshka.Internals.Atomics.Counters.Counter;
