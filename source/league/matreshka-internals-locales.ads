@@ -48,6 +48,7 @@ package Matreshka.Internals.Locales is
         not null Matreshka.Internals.Ucd.Contractor_Array_Access;
       Mapping     :
         not null Matreshka.Internals.Ucd.Collation_First_Stage_Access;
+      Variable    : Matreshka.Internals.Ucd.Collation_Weight;
    end record;
 
    type Locale_Data is limited record

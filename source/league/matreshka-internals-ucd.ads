@@ -448,13 +448,10 @@ package Matreshka.Internals.Ucd is
    -- Collation --
    ---------------
 
-   type Collation_Element_Kinds is (Regular, Variable);
-
    type Collation_Weight is mod 2**16;
    for Collation_Weight'Size use 16;
 
    type Collation_Element is record
-      Kind      : Collation_Element_Kinds;
       Primary   : Collation_Weight;
       Secondary : Collation_Weight;
       Trinary   : Collation_Weight;

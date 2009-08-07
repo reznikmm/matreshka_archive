@@ -148,11 +148,8 @@ package body Matreshka.Internals.Unicode.Collation is
                   Base := 16#FB80#;
                end if;
 
-               Append
-                (Collation_Array,
-                 (Regular, Base + Aaaa, 16#0020#, 16#0002#));
-               Append
-                (Collation_Array, (Regular, Bbbb, 16#0000#, 16#0000#));
+               Append (Collation_Array, (Base + Aaaa, 16#0020#, 16#0002#));
+               Append (Collation_Array, (Bbbb, 16#0000#, 16#0000#));
             end;
          end if;
       end Expand;

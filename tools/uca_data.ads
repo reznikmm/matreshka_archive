@@ -29,8 +29,21 @@ with Matreshka.Internals.Unicode;
 
 package Uca_Data is
 
+   type Collation_Element_Kinds is (Regular, Variable);
+
+   type Collation_Element is record
+      Kind      : Collation_Element_Kinds;
+      Primary   : Matreshka.Internals.Ucd.Collation_Weight;
+      Secondary : Matreshka.Internals.Ucd.Collation_Weight;
+      Trinary   : Matreshka.Internals.Ucd.Collation_Weight;
+   end record;
+
+   type Collation_Element_Sequence is
+     array (Matreshka.Internals.Ucd.Sequence_Index range <>)
+       of Collation_Element;
+
    type Collation_Element_Sequence_Access is
-     access all Matreshka.Internals.Ucd.Collation_Element_Sequence;
+     access constant Collation_Element_Sequence;
 
    type Contraction_Data is record
       Codes     : Matreshka.Internals.Ucd.Code_Point_Sequence_Access;

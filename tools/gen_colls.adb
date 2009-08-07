@@ -42,8 +42,10 @@ procedure Gen_Colls (Source_Directory : String) is
 
    Generated_Name : constant String := "matreshka-internals-ucd-colls.ads";
 
-   Expansion      : Collation_Element_Sequence (Sequence_Index);
+   Expansion      :
+     Matreshka.Internals.Ucd.Collation_Element_Sequence (Sequence_Index);
    Expansion_Last : Sequence_Count := 0;
+   Last_Variable  : Collation_Weight := 0;
 
    Contraction      : Contractor_Array (Sequence_Index);
    Contraction_Last : Sequence_Count := 0;
@@ -52,7 +54,7 @@ procedure Gen_Colls (Source_Directory : String) is
      := (others => (0, 0, 0, 0));
 
    procedure Add
-    (Item  : Collation_Element_Sequence;
+    (Item  : Uca_Data.Collation_Element_Sequence;
      First : out Sequence_Count;
      Last  : out Sequence_Count);
 
@@ -66,10 +68,38 @@ procedure Gen_Colls (Source_Directory : String) is
    ---------
 
    procedure Add
-    (Item  : Collation_Element_Sequence;
+    (Item  : Uca_Data.Collation_Element_Sequence;
      First : out Sequence_Count;
      Last  : out Sequence_Count)
    is
+      function "="
+       (Left  : Matreshka.Internals.Ucd.Collation_Element_Sequence;
+        Right : Uca_Data.Collation_Element_Sequence)
+          return Boolean
+      is
+         L_Index : Sequence_Index := Left'First;
+         R_Index : Sequence_Index := Right'First;
+
+      begin
+         if Left'Length /= Right'Length then
+            return False;
+         end if;
+
+         while L_Index <= Left'Last and then R_Index <= Right'Last loop
+            if Left (L_Index).Primary /= Right (R_Index).Primary
+              or else Left (L_Index).Secondary /= Right (R_Index).Secondary
+              or else Left (L_Index).Trinary /= Right (R_Index).Trinary
+            then
+               return False;
+            end if;
+
+            L_Index := L_Index + 1;
+            R_Index := R_Index + 1;
+         end loop;
+
+         return True;
+      end "=";
+
    begin
       if Item'Length = 0 then
          First := 1;
@@ -89,7 +119,14 @@ procedure Gen_Colls (Source_Directory : String) is
 
       for J in Item'Range loop
          Expansion_Last := Expansion_Last + 1;
-         Expansion (Expansion_Last) := Item (J);
+         Expansion (Expansion_Last).Primary := Item (J).Primary;
+         Expansion (Expansion_Last).Secondary := Item (J).Secondary;
+         Expansion (Expansion_Last).Trinary := Item (J).Trinary;
+
+         if Item (J).Kind = Variable then
+            Last_Variable :=
+              Collation_Weight'Max (Last_Variable, Item (J).Primary);
+         end if;
       end loop;
 
       Last := Expansion_Last;
@@ -422,6 +459,13 @@ begin
 
    Ada.Text_IO.New_Line (File);
    Ada.Text_IO.Put_Line
+    (File,
+     "   Last_Variable : constant Collation_Weight := "
+       & Collation_Weight_Ada_Image (Last_Variable)
+       & ';');
+
+   Ada.Text_IO.New_Line (File);
+   Ada.Text_IO.Put_Line
     (File, "   Expansion_Data : aliased constant Collation_Element_Sequence");
 
    for J in 1 .. Expansion_Last loop
@@ -437,8 +481,6 @@ begin
        (File,
         Sequence_Count_Image (J)
           & " => ("
-          & Collation_Element_Kinds_Image (Expansion (J).Kind).all
-          & ", "
           & Collation_Weight_Ada_Image (Expansion (J).Primary)
           & ", "
           & Collation_Weight_Ada_Image (Expansion (J).Secondary)
