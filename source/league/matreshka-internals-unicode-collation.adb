@@ -314,6 +314,8 @@ package body Matreshka.Internals.Unicode.Collation is
                Result.Data (Result.Last) := Collation_Array.Data (J).Trinary;
             end if;
          end loop;
+
+         Free (Collation_Array);
       end return;
    end Construct_Sort_Key;
 
