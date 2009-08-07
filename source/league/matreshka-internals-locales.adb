@@ -44,12 +44,13 @@ package body Matreshka.Internals.Locales is
          Case_Mapping  => Matreshka.Internals.Ucd.Cases.Mapping'Access,
          Case_Context  => Matreshka.Internals.Ucd.Cases.Context'Access,
          Case_Sequence => Matreshka.Internals.Ucd.Cases.Data'Access,
-         Collation_Elements =>
-           Matreshka.Internals.Ucd.Colls.Expansion_Data'Access,
-         Collation_Contractors =>
-           Matreshka.Internals.Ucd.Colls.Contraction_Data'Access,
-         Collation_Table =>
-           Matreshka.Internals.Ucd.Colls.Collation'Access,
+         Collation     =>
+          (Expansion   =>
+             Matreshka.Internals.Ucd.Colls.Expansion_Data'Access,
+           Contraction =>
+             Matreshka.Internals.Ucd.Colls.Contraction_Data'Access,
+           Mapping     =>
+             Matreshka.Internals.Ucd.Colls.Collation'Access),
          others        => <>);
 
    -----------------

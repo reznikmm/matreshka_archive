@@ -41,6 +41,15 @@ package Matreshka.Internals.Locales is
 
    pragma Preelaborate;
 
+   type Collation_Data is record
+      Expansion   :
+        not null Matreshka.Internals.Ucd.Collation_Element_Sequence_Access;
+      Contraction :
+        not null Matreshka.Internals.Ucd.Contractor_Array_Access;
+      Mapping     :
+        not null Matreshka.Internals.Ucd.Collation_First_Stage_Access;
+   end record;
+
    type Locale_Data is limited record
       Counter       : aliased Matreshka.Internals.Atomics.Counters.Counter;
 
@@ -54,12 +63,7 @@ package Matreshka.Internals.Locales is
       Case_Sequence :
         not null Matreshka.Internals.Ucd.Code_Point_Sequence_Access;
 
-      Collation_Elements :
-        not null Matreshka.Internals.Ucd.Collation_Element_Sequence_Access;
-      Collation_Contractors :
-        not null Matreshka.Internals.Ucd.Contractor_Array_Access;
-      Collation_Table :
-        not null Matreshka.Internals.Ucd.Collation_First_Stage_Access;
+      Collation : Collation_Data;
    end record;
 
    type Locale_Data_Access is access all Locale_Data;

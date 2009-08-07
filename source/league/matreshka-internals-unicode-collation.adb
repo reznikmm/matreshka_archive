@@ -113,14 +113,14 @@ package body Matreshka.Internals.Unicode.Collation is
 
       procedure Expand (Code : Code_Point) is
          T : Collation_Record
-            renames Locale.Collation_Table
+            renames Locale.Collation.Mapping
                      (First_Stage_Index (Code / 16#100#))
                      (Second_Stage_Index (Code mod 16#100#));
 
       begin
          if T.Expansion_First /= 0 then
             for J in T.Expansion_First .. T.Expansion_Last loop
-               Append (Collation_Array, Locale.Collation_Elements (J));
+               Append (Collation_Array, Locale.Collation.Expansion (J));
             end loop;
 
          else
@@ -163,7 +163,7 @@ package body Matreshka.Internals.Unicode.Collation is
 
          declare
             T    : Collation_Record
-               renames Locale.Collation_Table
+               renames Locale.Collation.Mapping
                         (First_Stage_Index (Code / 16#100#))
                         (Second_Stage_Index (Code mod 16#100#));
             Skip : Boolean := False;
@@ -204,17 +204,17 @@ package body Matreshka.Internals.Unicode.Collation is
                                     or else Last_Class < Current_Class)
                      then
                         for J in Contractor_First .. Contractor_Last loop
-                           if Locale.Collation_Contractors (J).Code
+                           if Locale.Collation.Contraction (J).Code
                                 = R_Code
                            then
                               --  Match.
 
                               Matched := J;
                               Contractor_First :=
-                                Locale.Collation_Contractors
+                                Locale.Collation.Contraction
                                  (J).Contractor_First;
                               Contractor_Last :=
-                                Locale.Collation_Contractors
+                                Locale.Collation.Contraction
                                  (J).Contractor_Last;
 
                               Excludes_Last := Excludes_Last + 1;
@@ -236,16 +236,16 @@ package body Matreshka.Internals.Unicode.Collation is
 
                   if Excludes_Last /= 0 then
                      if Matched /= 0
-                       and then Locale.Collation_Contractors
+                       and then Locale.Collation.Contraction
                                  (Matched).Expansion_First /= 0
                      then
-                        for J in Locale.Collation_Contractors
+                        for J in Locale.Collation.Contraction
                                   (Matched).Expansion_First
-                                     .. Locale.Collation_Contractors
+                                     .. Locale.Collation.Contraction
                                          (Matched).Expansion_Last
                         loop
                            Append
-                            (Collation_Array, Locale.Collation_Elements (J));
+                            (Collation_Array, Locale.Collation.Expansion (J));
                         end loop;
 
                         Excludes_First := 1;
