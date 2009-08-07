@@ -186,8 +186,8 @@ package body Matreshka.Internals.Unicode.Collation is
                   R_Index          : Positive := S_Index;
                   R_Previous       : Positive;
                   R_Code           : Code_Point;
-                  Contractor_First : Sequence_Index := T.Contractor_First;
-                  Contractor_Last  : Sequence_Index := T.Contractor_Last;
+                  Contractor_First : Sequence_Count := T.Contractor_First;
+                  Contractor_Last  : Sequence_Count := T.Contractor_Last;
                   Matched          : Sequence_Count := 0;
                   Contracted       : Boolean;
 
@@ -203,8 +203,9 @@ package body Matreshka.Internals.Unicode.Collation is
 
                      Contracted := False;
 
-                     if (Current_Class = 0 and then Last_Class = 0)
-                       or else Last_Class < Current_Class
+                     if Contractor_First /= 0
+                       and then ((Current_Class = 0 and then Last_Class = 0)
+                                    or else Last_Class < Current_Class)
                      then
                         for J in Contractor_First .. Contractor_Last loop
                            if Locale.Collation_Contractors (J).Code
