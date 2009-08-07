@@ -69,12 +69,16 @@ package Matreshka.Strings is
    -------------------------
 
    function To_Wide_Wide_Character
-    (Self : Universal_Character)
+    (Self : Universal_Character'Class)
        return Wide_Wide_Character;
 
    function To_Universal_Character
     (Self : Wide_Wide_Character)
        return Universal_Character;
+
+   function Is_Legal_Unicode_Code_Point
+    (Self : Universal_Character'Class)
+       return Boolean;
 
    ----------------------
    -- Universal_String --
@@ -254,7 +258,7 @@ private
    -------------------------
 
    type Universal_Character is tagged record
-      C : Matreshka.Internals.Unicode.Code_Point;
+      Code : Matreshka.Internals.Unicode.Code_Unit_32 := 16#FFFF_FFFF#;
    end record;
 
    ----------------------

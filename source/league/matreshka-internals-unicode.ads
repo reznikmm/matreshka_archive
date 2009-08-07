@@ -84,8 +84,4 @@ package Matreshka.Internals.Unicode is
    CJK_Ideograph_B_First : constant := 16#20000#;
    CJK_Ideograph_B_Last  : constant := 16#2A6D6#;
 
-   function Is_Valid_Unicode_Code_Point (Item : Code_Unit_32) return Boolean;
-   pragma Inline (Is_Valid_Unicode_Code_Point);
-   --  Returns True if the specified code point is a valid Unicode code point.
-
 end Matreshka.Internals.Unicode;

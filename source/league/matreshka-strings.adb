@@ -32,7 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Locales;
-with Matreshka.Internals.Ucd;
+with Matreshka.Internals.Ucd.Core;
 with Matreshka.Internals.Unicode.Casing;
 with Matreshka.Internals.Unicode.Collation;
 with Matreshka.Internals.Unicode.Normalization;
@@ -41,6 +41,7 @@ with Matreshka.Internals.Utf16;
 package body Matreshka.Strings is
 
    use Matreshka.Internals.Strings;
+   use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
 
@@ -54,6 +55,10 @@ package body Matreshka.Strings is
    procedure Detach (Self : in out Abstract_Cursor'Class);
    --  Detaches cursor from the list of cursors of Universal_String. Also
    --  reset associated object to null.
+
+   function Is_Legal_Unicode_Code_Point (Code : Code_Unit_32) return Boolean;
+   --  Returns True if specified code point is in code point range and not
+   --  a non-character or unpaired surrogates.
 
    ---------
    -- "&" --
@@ -116,7 +121,7 @@ package body Matreshka.Strings is
       L_D : constant not null Internal_String_Access := Left.Data;
 
    begin
-      if not Is_Valid_Unicode_Code_Point (Wide_Wide_Character'Pos (Right)) then
+      if not Is_Legal_Unicode_Code_Point (Wide_Wide_Character'Pos (Right)) then
          raise Constraint_Error with "Invalid Wide_Wide_Character";
       end if;
 
@@ -629,6 +634,37 @@ package body Matreshka.Strings is
                                 = To.Data.Value (1 .. To.Data.Last));
    end Is_Binary_Equal;
 
+   ---------------------------------
+   -- Is_Legal_Unicode_Code_Point --
+   ---------------------------------
+
+   function Is_Legal_Unicode_Code_Point (Code : Code_Unit_32) return Boolean is
+   begin
+      return
+        Code in Code_Point
+          and then Core.Property
+                    (First_Stage_Index (Code / Second_Stage_Index'Modulus))
+                    (Second_Stage_Index
+                      (Code mod Second_Stage_Index'Modulus)).GC /= Surrogate
+          and then not Core.Property
+                        (First_Stage_Index (Code / Second_Stage_Index'Modulus))
+                        (Second_Stage_Index
+                          (Code mod Second_Stage_Index'Modulus)).B
+                            (Noncharacter_Code_Point);
+   end Is_Legal_Unicode_Code_Point;
+
+   ---------------------------------
+   -- Is_Legal_Unicode_Code_Point --
+   ---------------------------------
+
+   function Is_Legal_Unicode_Code_Point
+    (Self : Universal_Character'Class)
+       return Boolean
+   is
+   begin
+      return Is_Legal_Unicode_Code_Point (Self.Code);
+   end Is_Legal_Unicode_Code_Point;
+
    ------------
    -- Length --
    ------------
@@ -919,13 +955,7 @@ package body Matreshka.Strings is
        return Universal_Character
    is
    begin
-      if Is_Valid_Unicode_Code_Point (Wide_Wide_Character'Pos (Self)) then
-         return Universal_Character'(C => Wide_Wide_Character'Pos (Self));
-
-      else
-         raise Constraint_Error
-           with "Wide_Wide_Character is not a valid Unicode code point";
-      end if;
+      return Universal_Character'(Code => Wide_Wide_Character'Pos (Self));
    end To_Universal_Character;
 
    -------------------------
@@ -999,7 +1029,7 @@ package body Matreshka.Strings is
       Destination := new Internal_String (Source'Length);
 
       for J in Source'Range loop
-         if not Is_Valid_Unicode_Code_Point
+         if not Is_Legal_Unicode_Code_Point
              (Wide_Wide_Character'Pos (Source (J)))
          then
             raise Constraint_Error
@@ -1024,11 +1054,11 @@ package body Matreshka.Strings is
    ----------------------------
 
    function To_Wide_Wide_Character
-    (Self : Universal_Character)
+    (Self : Universal_Character'Class)
        return Wide_Wide_Character
    is
    begin
-      return Wide_Wide_Character'Val (Self.C);
+      return Wide_Wide_Character'Val (Self.Code);
    end To_Wide_Wide_Character;
 
    -------------------------

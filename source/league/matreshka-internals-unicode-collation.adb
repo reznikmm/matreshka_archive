@@ -123,17 +123,13 @@ package body Matreshka.Internals.Unicode.Collation is
                Append (Collation_Array, Locale.Collation_Elements (J));
             end loop;
 
-         elsif Locale.Core
-                (First_Stage_Index (Code / 16#100#))
-                (Second_Stage_Index (Code mod 16#100#)).B
-                  (Noncharacter_Code_Point)
-         then
-            --  XXX Such code points must be excluded from string! As well
-            --  as it is done for surrogates.
-
-            null;
-
          else
+            --  Internal representation of string assumes there are no illegal
+            --  code points like noncharacters or unpaired surrogates in the
+            --  string, thus just skip generation of corresponding weights.
+
+            --  pragma Assert (Is_Legal_Unicode_Code_Point (Code);
+
             declare
                Base : Collation_Weight := 16#FBC0#;
                Aaaa : constant Collation_Weight
