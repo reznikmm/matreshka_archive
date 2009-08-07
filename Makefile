@@ -17,6 +17,7 @@ check: all
 	.objs/case_conversion_test
 	.objs/case_folding_test
 	.objs/normalization_test $(UNIDATA)
+	.objs/additional_normalization_test
 	.objs/collation_test $(UCADATA)
 
 #all:

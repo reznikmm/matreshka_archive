@@ -4,7 +4,7 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -24,23 +24,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_league";
+with Ada.Text_IO;
 
-project Matreshka_League_Tests is
+with Matreshka.Strings;
+with Matreshka.Strings.Debug;
 
-   for Main use
-    ("character_cursor_test.adb",
-     "grapheme_cluster_cursor_test.adb",
-     "case_conversion_test.adb",
-     "case_folding_test.adb",
-     "normalization_test.adb",
-     "additional_normalization_test.adb",
-     "collation_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use ("../testsuite/league", "../tools");
+procedure Additional_Normalization_Test is
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8");
-   end Compiler;
+   use Matreshka.Strings;
+   use Matreshka.Strings.Debug;
 
-end Matreshka_League_Tests;
+   S : Universal_String
+     := To_Universal_String
+         (Wide_Wide_Character'Val (16#0FB2#)
+            & Wide_Wide_Character'Val (16#0591#)
+            & Wide_Wide_Character'Val (16#0F81#)
+            & Wide_Wide_Character'Val (16#0061#));
+   D : Universal_String := S.To_NFD;
+   E : Universal_String
+     := To_Universal_String
+         (Wide_Wide_Character'Val (16#0FB2#)
+            & Wide_Wide_Character'Val (16#0F71#)
+            & Wide_Wide_Character'Val (16#0F80#)
+            & Wide_Wide_Character'Val (16#0591#)
+            & Wide_Wide_Character'Val (16#0061#));
+
+begin
+   if not D.Is_Binary_Equal (E) then
+      Ada.Text_IO.Put_Line ("S        => " & Debug_Image (S));
+      Ada.Text_IO.Put_Line ("NFD (S)  => " & Debug_Image (D));
+      Ada.Text_IO.Put_Line ("Expected => " & Debug_Image (E));
+
+      raise Program_Error;
+   end if;
+end Additional_Normalization_Test;
