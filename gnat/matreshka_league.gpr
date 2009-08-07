@@ -34,6 +34,12 @@
 
 library project Matreshka_League is
 
+   type Address_Sizes is ("32", "64");
+   Address_Size : Address_Sizes := external ("ADDRESS_SIZE");
+
+   type Build_Type is ("RELEASE", "DEBUG");
+   Build : Build_Type := external ("BUILD", "RELEASE");
+
    for Source_Dirs use
     ("../source/league",
      "../source/league/ucd");
@@ -42,25 +48,32 @@ library project Matreshka_League is
    for Library_Name use "league";
    for Library_Dir use "../.libs";
 
+   Release_Ada_Switches := ();
+   Debug_Ada_Switches := ();
+
+   case Build is
+      when "RELEASE" =>
+         Release_Ada_Switches := ();
+
+      when "DEBUG" =>
+         Debug_Ada_Switches :=
+          ("-gnata", "-gnatwa", "-gnatyaAbBcdefhiIkmnoOprsStux");
+   end case;
+
    package Compiler is
 
-      for Default_Switches ("Ada")
-        use
-         ("-g",
-          "-O2",
-          "-gnat05",
-          "-gnata",
-          "-gnatn",
-          "-gnatwa",
-          "-gnatyaAbBcdefhiIkmnoOprsStux");
+      for Default_Switches ("Ada") use
+       ("-g",
+        "-O2",
+        "-gnat05",
+        "-gnatn")
+          & Release_Ada_Switches & Debug_Ada_Switches;
 
       for Switches ("matreshka-internals-ucd-colls.ads") use
-         ("-g",
-          "-gnat05",
-          "-gnata",
-          "-gnatn",
-          "-gnatwa",
-          "-gnatyaAbBcdefhiIkmnoOprsStux");
+       ("-g",
+        "-gnat05",
+        "-gnatn")
+          & Release_Ada_Switches & Debug_Ada_Switches;
 
    end Compiler;
 
@@ -77,12 +90,19 @@ library project Matreshka_League is
 
       --  Matreshka.Internals.Atomics.Generic_Test_And_Set
 
---      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
---        use "matreshka-internals-atomics-generic_test_and_set__portable.adb";
---      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
---        use "matreshka-internals-atomics-generic_test_and_set__x86_64.adb";
-      for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
-        use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+      case Address_Size is
+         when "32" =>
+            for Implementation
+                 ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
+              use
+                "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+
+         when "64" =>
+            for Implementation
+                 ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
+              use
+                "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+      end case;
 
       --  Matreshka.Internals.Host_Types
 

@@ -29,7 +29,7 @@ with "xmlada";
 project Tools is
 
    for Main use ("gen_ucd.adb", "gen_segments.adb");
-   for Object_Dir use "../.objs";
+   for Object_Dir use "../.objs/tools";
    for Source_Dirs use ("../tools", "../source/league");
 
    package Compiler is

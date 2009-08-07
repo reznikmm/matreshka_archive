@@ -1,0 +1,8 @@
+
+project Configure is
+
+   for Main use ("system_address_size.adb");
+   for Source_Dirs use ("../config");
+   for Object_Dir use "../.objs/configure";
+
+end Configure;
