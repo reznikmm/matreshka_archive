@@ -172,9 +172,7 @@ package body Matreshka.Internals.Unicode.Collation is
                   Excludes_First   : Positive;
                   Excludes_Last    : Natural := 0;
                   Last_Class       : Canonical_Combining_Class
-                    := Locale.Core
-                        (First_Stage_Index (Code / 16#100#))
-                        (Second_Stage_Index (Code mod 16#100#)).CCC;
+                    := Locale.Get_Core (Code).CCC;
                   Current_Class    : Canonical_Combining_Class;
                   R_Index          : Positive := S_Index;
                   R_Previous       : Positive;
@@ -189,11 +187,7 @@ package body Matreshka.Internals.Unicode.Collation is
                      R_Previous := R_Index;
                      Unchecked_Next (Source.Value, R_Index, R_Code);
 
-                     Current_Class :=
-                       Locale.Core
-                        (First_Stage_Index (R_Code / 16#100#))
-                        (Second_Stage_Index (R_Code mod 16#100#)).CCC;
-
+                     Current_Class := Locale.Get_Core (R_Code).CCC;
                      Contracted := False;
 
                      if Contractor_First /= 0

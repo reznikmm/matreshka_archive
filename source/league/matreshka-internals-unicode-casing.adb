@@ -80,10 +80,7 @@ package body Matreshka.Internals.Unicode.Casing is
             Unchecked_Next (Source.Value, Current, Code);
 
             declare
-               R : constant Core_Values
-                 := Locale.Core
-                     (First_Stage_Index (Code / 16#100#))
-                     (Second_Stage_Index (Code mod 16#100#));
+               R : constant Core_Values := Locale.Get_Core (Code);
 
             begin
                if R.CCC = 0 or else R.CCC = 230 then
@@ -111,10 +108,7 @@ package body Matreshka.Internals.Unicode.Casing is
             Unchecked_Next (Source.Value, Current, Code);
 
             declare
-               R : constant Core_Values
-                 := Locale.Core
-                     (First_Stage_Index (Code / 16#100#))
-                     (Second_Stage_Index (Code mod 16#100#));
+               R : constant Core_Values := Locale.Get_Core (Code);
 
             begin
                if not R.B (Case_Ignorable) then
@@ -139,10 +133,7 @@ package body Matreshka.Internals.Unicode.Casing is
             Unchecked_Next (Source.Value, Current, Code);
 
             declare
-               R : constant Core_Values
-                 := Locale.Core
-                     (First_Stage_Index (Code / 16#100#))
-                     (Second_Stage_Index (Code mod 16#100#));
+               R : constant Core_Values := Locale.Get_Core (Code);
 
             begin
                if R.CCC = 0 then
@@ -172,10 +163,7 @@ package body Matreshka.Internals.Unicode.Casing is
             Unchecked_Previous (Source.Value, Current, Code);
 
             declare
-               R : constant Core_Values
-                 := Locale.Core
-                     (First_Stage_Index (Code / 16#100#))
-                     (Second_Stage_Index (Code mod 16#100#));
+               R : constant Core_Values := Locale.Get_Core (Code);
 
             begin
                if R.CCC = 0 or else R.CCC = 230 then
@@ -205,10 +193,7 @@ package body Matreshka.Internals.Unicode.Casing is
             Unchecked_Previous (Source.Value, Current, Code);
 
             declare
-               R : constant Core_Values
-                 := Locale.Core
-                     (First_Stage_Index (Code / 16#100#))
-                     (Second_Stage_Index (Code mod 16#100#));
+               R : constant Core_Values := Locale.Get_Core (Code);
 
             begin
                if R.CCC = 0 or else R.CCC = 230 then
@@ -238,10 +223,7 @@ package body Matreshka.Internals.Unicode.Casing is
             Unchecked_Previous (Source.Value, Current, Code);
 
             declare
-               R : constant Core_Values
-                 := Locale.Core
-                     (First_Stage_Index (Code / 16#100#))
-                     (Second_Stage_Index (Code mod 16#100#));
+               R : constant Core_Values := Locale.Get_Core (Code);
 
             begin
                if not R.B (Case_Ignorable) then
@@ -260,10 +242,7 @@ package body Matreshka.Internals.Unicode.Casing is
       while Source_Current <= Source.Last loop
          Unchecked_Next (Source.Value, Source_Current, Source_Code);
 
-         if Locale.Core
-             (First_Stage_Index (Source_Code / 16#100#))
-             (Second_Stage_Index (Source_Code mod 16#100#)).B (Property)
-         then
+         if Locale.Get_Core (Source_Code).B (Property) then
             declare
                Mapping : constant Case_Mapping
                  := Locale.Casing.Mapping

@@ -36,6 +36,7 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Atomics.Counters;
 with Matreshka.Internals.Ucd;
+with Matreshka.Internals.Unicode;
 
 package Matreshka.Internals.Locales is
 
@@ -64,10 +65,10 @@ package Matreshka.Internals.Locales is
       --  ("French").
    end record;
 
-   type Locale_Data is limited record
+   type Locale_Data is tagged limited record
       Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
 
-      Core      : not null Matreshka.Internals.Ucd.Core_First_Stage_Access;
+      Core      : Matreshka.Internals.Ucd.Core_First_Stage_Access;
       Casing    : Casing_Data;
       Collation : Collation_Data;
    end record;
@@ -83,5 +84,11 @@ package Matreshka.Internals.Locales is
    --  Returns current locale. Reference counter of locale is automatically
    --  incremented, so caller is responsible to call Dereference for free
    --  locale then it is no longer needed.
+
+   function Get_Core
+    (Self : not null access Locale_Data'Class;
+     Code : Matreshka.Internals.Unicode.Code_Point)
+       return Matreshka.Internals.Ucd.Core_Values;
+   pragma Inline (Get_Core);
 
 end Matreshka.Internals.Locales;

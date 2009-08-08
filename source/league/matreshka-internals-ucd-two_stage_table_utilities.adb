@@ -31,91 +31,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.Ucd.Cases;
-with Matreshka.Internals.Ucd.Colls;
-with Matreshka.Internals.Ucd.Core;
-with Matreshka.Internals.Ucd.Two_Stage_Table_Utilities;
+package body Matreshka.Internals.Ucd.Two_Stage_Table_Utilities is
 
-package body Matreshka.Internals.Locales is
-
-   Default_Locale : aliased Locale_Data
-     := (Core      => Matreshka.Internals.Ucd.Core.Property'Access,
-         Casing    =>
-          (Expansion => Matreshka.Internals.Ucd.Cases.Data'Access,
-           Context   => Matreshka.Internals.Ucd.Cases.Context'Access,
-           Mapping   => Matreshka.Internals.Ucd.Cases.Mapping'Access),
-         Collation =>
-          (Expansion     =>
-             Matreshka.Internals.Ucd.Colls.Expansion_Data'Access,
-           Contraction   =>
-             Matreshka.Internals.Ucd.Colls.Contraction_Data'Access,
-           Mapping       =>
-             Matreshka.Internals.Ucd.Colls.Collation'Access,
-           Last_Variable => Matreshka.Internals.Ucd.Colls.Last_Variable,
-           Backwards     => False),
-         others        => <>);
+   use Matreshka.Internals.Unicode;
 
    -----------------
-   -- Dereference --
+   -- Generic_Get --
    -----------------
 
-   procedure Dereference (Self : in out Locale_Data_Access) is
-
-      procedure Free is
-        new Ada.Unchecked_Deallocation (Locale_Data, Locale_Data_Access);
-
-   begin
-      if Matreshka.Internals.Atomics.Counters.Decrement
-          (Self.Counter'Access)
-      then
-         pragma Assert (Self /= Default_Locale'Access);
-
-         Free (Self);
-      end if;
-   end Dereference;
-
-   --------------
-   -- Get_Core --
-   --------------
-
-   function Get_Core
-    (Self : not null access Locale_Data'Class;
+   function Generic_Get
+    (Data : First_Stage_Array;
      Code : Matreshka.Internals.Unicode.Code_Point)
-       return Matreshka.Internals.Ucd.Core_Values
+       return Element_Type
    is
-      function Get is
-        new Matreshka.Internals.Ucd.Two_Stage_Table_Utilities.Generic_Get
-             (Matreshka.Internals.Ucd.Core_Values,
-              Matreshka.Internals.Ucd.Core_Second_Stage,
-              Matreshka.Internals.Ucd.Core_Second_Stage_Access,
-              Matreshka.Internals.Ucd.Core_First_Stage);
-
    begin
-      return Get (Self.Core.all, Code);
-   end Get_Core;
+      return
+        Data
+         (First_Stage_Index (Code / Second_Stage_Index'Modulus))
+         (Second_Stage_Index (Code mod Second_Stage_Index'Modulus));
+   end Generic_Get;
 
-   ----------------
-   -- Get_Locale --
-   ----------------
-
-   function Get_Locale return not null Locale_Data_Access is
-      Result : constant not null Locale_Data_Access := Default_Locale'Access;
-
-   begin
-      Reference (Result);
-
-      return Result;
-   end Get_Locale;
-
-   ---------------
-   -- Reference --
-   ---------------
-
-   procedure Reference (Self : Locale_Data_Access) is
-   begin
-      Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
-   end Reference;
-
-end Matreshka.Internals.Locales;
+end Matreshka.Internals.Ucd.Two_Stage_Table_Utilities;

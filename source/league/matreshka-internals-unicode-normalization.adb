@@ -33,6 +33,7 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Ucd.Core;
 with Matreshka.Internals.Ucd.Norms;
+with Matreshka.Internals.Ucd.Two_Stage_Table_Utilities;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Unicode.Normalization is
@@ -73,6 +74,9 @@ package body Matreshka.Internals.Unicode.Normalization is
    --  character in the data or next starting character. For Hangul Syllables
    --  this means the L, V pair composed to LV jamo, and on the next call,
    --  LV jamo composed to LVT jamo.
+
+   function Get_Core (Code : Code_Point) return Core_Values;
+   pragma Inline (Get_Core);
 
    -------------
    -- Compose --
@@ -200,10 +204,7 @@ package body Matreshka.Internals.Unicode.Normalization is
             (First_Stage_Index (Current_Code / 16#100#))
             (Second_Stage_Index (Current_Code mod 16#100#)).
                Composition.Last;
-         Class :=
-           Core.Property
-            (First_Stage_Index (Current_Code / 16#100#))
-            (Second_Stage_Index (Current_Code mod 16#100#)).CCC;
+         Class := Get_Core (Current_Code).CCC;
 
          if Current_Mapping /= 0
            and then ((Class = 0 and then Last_Class = 0)
@@ -222,10 +223,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                   (Second_Stage_Index (Starter_Code mod 16#100#)).
                      Composition.First;
 
-               if Core.Property
-                   (First_Stage_Index (Current_Code / 16#100#))
-                   (Second_Stage_Index (Current_Code mod 16#100#)).CCC = 0
-               then
+               if Class = 0 then
                   New_Starter_Composed := True;
                end if;
 
@@ -278,15 +276,9 @@ package body Matreshka.Internals.Unicode.Normalization is
             S_Previous := S_Index;
 
             Unchecked_Next (Source.Value, S_Index, Code);
-            Class :=
-              Core.Property
-               (First_Stage_Index (Code / 16#100#))
-               (Second_Stage_Index (Code mod 16#100#)).CCC;
+            Class := Get_Core (Code).CCC;
 
-            case Core.Property
-               (First_Stage_Index (Code / 16#100#))
-               (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
-            is
+            case Get_Core (Code).NQC (Form) is
                when No | Maybe =>
                   S_Index := S_Previous;
 
@@ -346,11 +338,7 @@ package body Matreshka.Internals.Unicode.Normalization is
 
             procedure Common_Append (Code : Code_Point) is
             begin
-               Class :=
-                 Core.Property
-                  (First_Stage_Index (Code / 16#100#))
-                  (Second_Stage_Index (Code mod 16#100#)).CCC;
-
+               Class := Get_Core (Code).CCC;
                Append (Destination, Code, Source.Last - S_Index + 1);
 
                if Class /= 0 then
@@ -463,10 +451,7 @@ package body Matreshka.Internals.Unicode.Normalization is
 
          Unchecked_Next (Source.Value, S_Index, Code);
 
-         case Core.Property
-            (First_Stage_Index (Code / 16#100#))
-            (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
-         is
+         case Get_Core (Code).NQC (Form) is
             when No | Maybe =>
                S_Index := Starter_S_Index;
                Length  := Starter.D_Length;
@@ -477,10 +462,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                null;
          end case;
 
-         Class :=
-           Core.Property
-            (First_Stage_Index (Code / 16#100#))
-            (Second_Stage_Index (Code mod 16#100#)).CCC;
+         Class := Get_Core (Code).CCC;
 
          if Class /= 0 then
             if Last_Class > Class then
@@ -539,11 +521,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                D_Index : Positive := Destination.Last + 1;
 
             begin
-               Class :=
-                 Core.Property
-                  (First_Stage_Index (Code / 16#100#))
-                  (Second_Stage_Index (Code mod 16#100#)).CCC;
-
+               Class := Get_Core (Code).CCC;
                Append (Destination, Code, Source.Last - S_Index + 1);
 
                if Class /= 0 then
@@ -601,10 +579,7 @@ package body Matreshka.Internals.Unicode.Normalization is
             if Fast then
                --  Fast mode: try to avoid decomposition and composition.
 
-               if Core.Property
-                   (First_Stage_Index (Code / 16#100#))
-                   (Second_Stage_Index (Code mod 16#100#)).NQC (Form) = Yes
-               then
+               if Get_Core (Code).NQC (Form) = Yes then
                   Common_Append (Code);
 
                   if Starter_S_Index /= S_Previous
@@ -644,13 +619,8 @@ package body Matreshka.Internals.Unicode.Normalization is
                if Starter_S_Index /= S_Previous
                  and then Code
                            not in Hangul_Syllable_First .. Hangul_Syllable_Last
-                 and then Core.Property
-                           (First_Stage_Index (Code / 16#100#))
-                           (Second_Stage_Index (Code mod 16#100#)).CCC = 0
-                 and then Core.Property
-                           (First_Stage_Index (Code / 16#100#))
-                           (Second_Stage_Index (Code mod 16#100#)).NQC (Form)
-                              = Yes
+                 and then Get_Core (Code).CCC = 0
+                 and then Get_Core (Code).NQC (Form) = Yes
                then
                   --  Just processed character is starter and never compose
                   --  with previous characters, thus we can switch back to fast
@@ -671,6 +641,22 @@ package body Matreshka.Internals.Unicode.Normalization is
          Compose (Destination, Starter.D_Index, D_Index, Composed);
       end;
    end Generic_Decomposition_Composition;
+
+   --------------
+   -- Get_Core --
+   --------------
+
+   function Get_Core (Code : Code_Point) return Core_Values is
+      function Get is
+        new Matreshka.Internals.Ucd.Two_Stage_Table_Utilities.Generic_Get
+             (Matreshka.Internals.Ucd.Core_Values,
+              Matreshka.Internals.Ucd.Core_Second_Stage,
+              Matreshka.Internals.Ucd.Core_Second_Stage_Access,
+              Matreshka.Internals.Ucd.Core_First_Stage);
+
+   begin
+      return Get (Core.Property, Code);
+   end Get_Core;
 
    ---------
    -- NFC --
@@ -759,19 +745,12 @@ package body Matreshka.Internals.Unicode.Normalization is
          Current := First;
          Previous := Current;
          Unchecked_Next (Destination.Value, Current, Code_A);
-         Previous_Class :=
-           Core.Property
-            (First_Stage_Index (Code_A / 16#100#))
-            (Second_Stage_Index (Code_A mod 16#100#)).CCC;
+         Previous_Class := Get_Core (Code_A).CCC;
 
          while Current < Last loop
             Aux := Current;
             Unchecked_Next (Destination.Value, Current, Code_B);
-
-            Class :=
-              Core.Property
-               (First_Stage_Index (Code_B / 16#100#))
-               (Second_Stage_Index (Code_B mod 16#100#)).CCC;
+            Class := Get_Core (Code_B).CCC;
 
             if Previous_Class > Class then
                Unchecked_Store (Destination.Value, Previous, Code_B);

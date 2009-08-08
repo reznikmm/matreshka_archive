@@ -351,12 +351,12 @@ package Matreshka.Internals.Ucd is
 
    type Core_Second_Stage is array (Second_Stage_Index) of Core_Values;
 
-   type Core_Second_Stage_Access is access constant Core_Second_Stage;
+   type Core_Second_Stage_Access is not null access constant Core_Second_Stage;
 
    type Core_First_Stage is
      array (First_Stage_Index) of Core_Second_Stage_Access;
 
-   type Core_First_Stage_Access is access constant Core_First_Stage;
+   type Core_First_Stage_Access is not null access constant Core_First_Stage;
 
    ------------
    -- Casing --
