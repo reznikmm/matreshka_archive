@@ -217,7 +217,7 @@ package Matreshka.Strings is
    -- Equivalence tests and comparison --
    --------------------------------------
 
-   function "=" (Left : Universal_String; Right : Universal_String)
+   overriding function "=" (Left : Universal_String; Right : Universal_String)
      return Boolean;
    function "=" (Left : Universal_String'Class; Right : Universal_String'Class)
      return Boolean;
@@ -245,7 +245,7 @@ package Matreshka.Strings is
    -- Comparison operators for Sort_Key --
    ---------------------------------------
 
-   function "=" (Left : Sort_Key; Right : Sort_Key) return Boolean;
+   overriding function "=" (Left : Sort_Key; Right : Sort_Key) return Boolean;
    function "<" (Left : Sort_Key; Right : Sort_Key) return Boolean;
    function "<=" (Left : Sort_Key; Right : Sort_Key) return Boolean;
    function ">" (Left : Sort_Key; Right : Sort_Key) return Boolean;
