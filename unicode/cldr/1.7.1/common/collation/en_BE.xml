@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ldml SYSTEM "../../common/dtd/ldml.dtd">
+<ldml>
+	<identity>
+		<version number="$Revision: 1.23 $"/>
+		<generation date="$Date: 2009/05/05 23:28:47 $"/>
+		<language type="en" /> 
+		<territory type="BE" /> 
+	</identity>
+		<collations>
+			<collation type="standard" >
+				<settings backwards="on"  />
+			</collation  >
+		</collations>
+</ldml>

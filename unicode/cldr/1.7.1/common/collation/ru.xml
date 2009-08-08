@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ldml SYSTEM "../../common/dtd/ldml.dtd">
+<ldml>
+	<identity>
+		<version number="$Revision: 1.25 $"/>
+		<generation date="$Date: 2009/05/05 23:28:47 $"/>
+		<language type="ru" /> 
+	</identity>
+		<collations  validSubLocales="ru_RU ru_UA">
+			<collation type="standard" >
+				<suppress_contractions>[Ѐ-ЗК-зк-џ]</suppress_contractions>
+			</collation  >
+		</collations>
+</ldml>
