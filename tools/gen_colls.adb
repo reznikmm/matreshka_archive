@@ -24,34 +24,35 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Integer_Text_IO;
 with Ada.Text_IO;
 
-with Matreshka.Internals.Ucd;
-with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Unicode.Ucd;
 
 with Uca_Data;
 with Utils;
 
 procedure Gen_Colls (Source_Directory : String) is
 
-   use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Ucd;
    use Uca_Data;
    use Utils;
 
-   Generated_Name : constant String := "matreshka-internals-ucd-colls.ads";
+   Generated_Name : constant String
+     := "matreshka-internals-unicode-ucd-colls.ads";
 
    Expansion      :
-     Matreshka.Internals.Ucd.Collation_Element_Sequence (Sequence_Index);
+     Matreshka.Internals.Unicode.Ucd.Collation_Element_Sequence
+      (Sequence_Index);
    Expansion_Last : Sequence_Count := 0;
    Last_Variable  : Collation_Weight := 0;
 
    Contraction      : Contractor_Array (Sequence_Index);
    Contraction_Last : Sequence_Count := 0;
 
-   Collation : array (Code_Point) of Matreshka.Internals.Ucd.Collation_Record
-     := (others => (0, 0, 0, 0));
+   Collation :
+     array (Code_Point) of Matreshka.Internals.Unicode.Ucd.Collation_Record
+       := (others => (0, 0, 0, 0));
 
    procedure Add
     (Item  : Uca_Data.Collation_Element_Sequence;
@@ -59,7 +60,7 @@ procedure Gen_Colls (Source_Directory : String) is
      Last  : out Sequence_Count);
 
    function Collation_Weight_Ada_Image
-    (Item : Matreshka.Internals.Ucd.Collation_Weight)
+    (Item : Matreshka.Internals.Unicode.Ucd.Collation_Weight)
        return String;
    --  Returns image of Collation_Weigth in the form useful in Ada code.
 
@@ -72,8 +73,18 @@ procedure Gen_Colls (Source_Directory : String) is
      First : out Sequence_Count;
      Last  : out Sequence_Count)
    is
+
       function "="
-       (Left  : Matreshka.Internals.Ucd.Collation_Element_Sequence;
+       (Left  : Matreshka.Internals.Unicode.Ucd.Collation_Element_Sequence;
+        Right : Uca_Data.Collation_Element_Sequence)
+          return Boolean;
+
+      ---------
+      -- "=" --
+      ---------
+
+      function "="
+       (Left  : Matreshka.Internals.Unicode.Ucd.Collation_Element_Sequence;
         Right : Uca_Data.Collation_Element_Sequence)
           return Boolean
       is
@@ -137,7 +148,7 @@ procedure Gen_Colls (Source_Directory : String) is
    --------------------------------
 
    function Collation_Weight_Ada_Image
-    (Item : Matreshka.Internals.Ucd.Collation_Weight)
+    (Item : Matreshka.Internals.Unicode.Ucd.Collation_Weight)
        return String
    is
       To_Hex_Digit : constant
@@ -160,7 +171,7 @@ procedure Gen_Colls (Source_Directory : String) is
 
    procedure Put
     (File : Ada.Text_IO.File_Type;
-     Item : Matreshka.Internals.Ucd.Collation_Record)
+     Item : Matreshka.Internals.Unicode.Ucd.Collation_Record)
    is
    begin
       Ada.Text_IO.Put
@@ -453,7 +464,8 @@ begin
      "-----------------------------------------------------------------------"
        & "-------");
    Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line (File, "package Matreshka.Internals.Ucd.Colls is");
+   Ada.Text_IO.Put_Line
+    (File, "package Matreshka.Internals.Unicode.Ucd.Colls is");
    Ada.Text_IO.New_Line (File);
    Ada.Text_IO.Put_Line (File, "   pragma Preelaborate;");
 
@@ -525,8 +537,8 @@ begin
    for J in Groups'Range loop
       if not Generated (Groups (J).Share) then
          declare
-            Default    : Matreshka.Internals.Ucd.Collation_Record;
-            Current    : Matreshka.Internals.Ucd.Collation_Record;
+            Default    : Matreshka.Internals.Unicode.Ucd.Collation_Record;
+            Current    : Matreshka.Internals.Unicode.Ucd.Collation_Record;
             First      : Second_Stage_Index;
             Last       : Second_Stage_Index;
             First_Code : Code_Point;
@@ -538,7 +550,7 @@ begin
 
             declare
                type Value_Count_Pair is record
-                  V : Matreshka.Internals.Ucd.Collation_Record;
+                  V : Matreshka.Internals.Unicode.Ucd.Collation_Record;
                   C : Natural;
                end record;
 
@@ -552,7 +564,7 @@ begin
                   declare
                      C : constant Code_Point
                        := Code_Unit_32 (J) * 256 + Code_Unit_32 (K);
-                     R : Matreshka.Internals.Ucd.Collation_Record
+                     R : Matreshka.Internals.Unicode.Ucd.Collation_Record
                        renames Collation (C);
                      F : Boolean := False;
 
@@ -741,5 +753,5 @@ begin
    end;
 
    Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line (File, "end Matreshka.Internals.Ucd.Colls;");
+   Ada.Text_IO.Put_Line (File, "end Matreshka.Internals.Unicode.Ucd.Colls;");
 end Gen_Colls;

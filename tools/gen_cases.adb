@@ -26,19 +26,19 @@
 ------------------------------------------------------------------------------
 with Ada.Text_IO;
 
-with Matreshka.Internals.Ucd;
-with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Unicode.Ucd;
 with Ucd_Data;
 with Utils;
 
 procedure Gen_Cases (Source_Directory : String) is
 
-   use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Ucd;
    use Ucd_Data;
    use Utils;
 
-   Generated_Name : constant String := "matreshka-internals-ucd-cases.ads";
+   Generated_Name : constant String
+     := "matreshka-internals-unicode-ucd-cases.ads";
 
    type String_Access is access constant String;
 
@@ -428,7 +428,8 @@ begin
      "-----------------------------------------------------------------------"
        & "-------");
    Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line (File, "package Matreshka.Internals.Ucd.Cases is");
+   Ada.Text_IO.Put_Line
+    (File, "package Matreshka.Internals.Unicode.Ucd.Cases is");
    Ada.Text_IO.New_Line (File);
    Ada.Text_IO.Put_Line (File, "   pragma Preelaborate;");
 
@@ -698,5 +699,5 @@ begin
    end;
 
    Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line (File, "end Matreshka.Internals.Ucd.Cases;");
+   Ada.Text_IO.Put_Line (File, "end Matreshka.Internals.Unicode.Ucd.Cases;");
 end Gen_Cases;

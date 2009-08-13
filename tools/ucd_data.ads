@@ -24,24 +24,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Ucd;
-with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Unicode.Ucd;
 
 package Ucd_Data is
 
    type Core_Values_Array is
      array (Matreshka.Internals.Unicode.Code_Point)
-       of Matreshka.Internals.Ucd.Core_Values;
+       of Matreshka.Internals.Unicode.Ucd.Core_Values;
 
    type Core_Values_Array_Access is access Core_Values_Array;
 
    type Code_Point_Sequence_Access is
-     access Matreshka.Internals.Ucd.Code_Point_Sequence;
+     access Matreshka.Internals.Unicode.Ucd.Code_Point_Sequence;
 
    type Context_Code_Point_Sequence is
-     array (Matreshka.Internals.Ucd.Casing_Context
-              range Matreshka.Internals.Ucd.Final_Sigma
-                      .. Matreshka.Internals.Ucd.After_I)
+     array (Matreshka.Internals.Unicode.Ucd.Casing_Context
+              range Matreshka.Internals.Unicode.Ucd.Final_Sigma
+                      .. Matreshka.Internals.Unicode.Ucd.After_I)
        of Code_Point_Sequence_Access;
 
    type Full_Case_Values is record

@@ -27,8 +27,8 @@
 
 package body Utils is
 
-   use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Ucd;
 
    --------------------------
    -- Code_Point_Ada_Image --

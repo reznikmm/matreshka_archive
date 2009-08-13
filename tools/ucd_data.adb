@@ -32,8 +32,8 @@ with Utils;
 
 package body Ucd_Data is
 
-   use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Ucd;
    use Utils;
 
    UnicodeData_Name                : constant String := "UnicodeData.txt";

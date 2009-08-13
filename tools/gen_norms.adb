@@ -26,19 +26,19 @@
 ------------------------------------------------------------------------------
 with Ada.Text_IO;
 
-with Matreshka.Internals.Ucd;
-with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Unicode.Ucd;
 with Ucd_Data;
 with Utils;
 
 procedure Gen_Norms (Source_Directory : String) is
 
-   use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Ucd;
    use Ucd_Data;
    use Utils;
 
-   Generated_Name : constant String := "matreshka-internals-ucd-norms.ads";
+   Generated_Name : constant String
+     := "matreshka-internals-unicode-ucd-norms.ads";
 
    procedure Append_Mapping
     (Mapping : Code_Point_Sequence;
@@ -348,7 +348,8 @@ begin
      "-----------------------------------------------------------------------"
        & "-------");
    Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line (File, "package Matreshka.Internals.Ucd.Norms is");
+   Ada.Text_IO.Put_Line
+    (File, "package Matreshka.Internals.Unicode.Ucd.Norms is");
    Ada.Text_IO.New_Line (File);
    Ada.Text_IO.Put_Line (File, "   pragma Preelaborate;");
 
@@ -645,5 +646,5 @@ begin
    end;
 
    Ada.Text_IO.New_Line (File);
-   Ada.Text_IO.Put_Line (File, "end Matreshka.Internals.Ucd.Norms;");
+   Ada.Text_IO.Put_Line (File, "end Matreshka.Internals.Unicode.Ucd.Norms;");
 end Gen_Norms;

@@ -24,8 +24,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Ucd;
-with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Unicode.Ucd;
 
 package Utils is
 
@@ -34,12 +33,12 @@ package Utils is
    --  Returns image of code point.
 
    function First_Stage_Image
-    (Item : Matreshka.Internals.Ucd.First_Stage_Index)
+    (Item : Matreshka.Internals.Unicode.Ucd.First_Stage_Index)
        return String;
    --  Returns image in the XXXX format.
 
    function Second_Stage_Image
-    (Item : Matreshka.Internals.Ucd.Second_Stage_Index)
+    (Item : Matreshka.Internals.Unicode.Ucd.Second_Stage_Index)
        return String;
    --  Returns image in the XX format.
 
@@ -49,11 +48,11 @@ package Utils is
    --  Returns image of code point.
 
    function Sequence_Count_Image
-    (Item : Matreshka.Internals.Ucd.Sequence_Count)
+    (Item : Matreshka.Internals.Unicode.Ucd.Sequence_Count)
        return String;
    --  Returns image of Sequence count without leading space.
 
    function Parse_Code_Point_Sequence (Text : String)
-     return Matreshka.Internals.Ucd.Code_Point_Sequence;
+     return Matreshka.Internals.Unicode.Ucd.Code_Point_Sequence;
 
 end Utils;

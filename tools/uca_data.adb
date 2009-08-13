@@ -32,8 +32,8 @@ with Utils;
 
 package body Uca_Data is
 
-   use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Ucd;
    use Utils;
 
    All_Keys_Name : constant String := "allkeys.txt";
