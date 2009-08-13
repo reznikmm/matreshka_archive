@@ -69,7 +69,7 @@ library project Matreshka_League is
         "-gnatn")
           & Release_Ada_Switches & Debug_Ada_Switches;
 
-      for Switches ("matreshka-internals-ucd-colls.ads") use
+      for Switches ("matreshka-internals-unicode-ucd-colls.ads") use
        ("-g",
         "-gnat05",
         "-gnatn")
