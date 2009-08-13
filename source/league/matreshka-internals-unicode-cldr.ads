@@ -38,4 +38,4 @@ package Matreshka.Internals.Unicode.Cldr is
 
    pragma Pure;
 
-end Matreshka.Internals.Cldr;
+end Matreshka.Internals.Unicode.Cldr;

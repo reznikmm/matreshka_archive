@@ -38,4 +38,4 @@ package Matreshka.Internals.Unicode.Cldr.Collation is
 
    pragma Pure;
 
-end Matreshka.Internals.Cldr.Collation;
+end Matreshka.Internals.Unicode.Cldr.Collation;
