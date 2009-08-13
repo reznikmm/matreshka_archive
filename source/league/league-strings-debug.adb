@@ -36,7 +36,7 @@ with Ada.Strings.Unbounded;
 with Matreshka.Internals.Unicode.Ucd;
 with Matreshka.Internals.Utf16;
 
-package body Matreshka.Strings.Debug is
+package body League.Strings.Debug is
 
    use Ada.Strings.Unbounded;
    use Matreshka.Internals.Strings;
@@ -149,4 +149,4 @@ package body Matreshka.Strings.Debug is
       return To_String (Result);
    end Debug_Image;
 
-end Matreshka.Strings.Debug;
+end League.Strings.Debug;

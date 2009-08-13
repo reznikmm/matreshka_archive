@@ -31,15 +31,40 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides several subprograms for conversion of user visible
---  data types into user readable form.
 
-package Matreshka.Strings.Debug is
+package League.Strings.Cursors.Characters is
 
    pragma Preelaborate;
 
-   function Debug_Image (Item : Universal_String) return String;
+   type Character_Cursor is tagged private;
 
-   function Debug_Image (Item : Sort_Key) return String;
+   procedure First
+    (Self : in out Character_Cursor'Class;
+     Item : in out Universal_String);
 
-end Matreshka.Strings.Debug;
+   procedure Last
+    (Self : in out Character_Cursor'Class;
+     Item : in out Universal_String);
+
+   procedure Next (Self : in out Character_Cursor'Class);
+
+   procedure Previous (Self : in out Character_Cursor'Class);
+
+   function Has_Element (Self : Character_Cursor'Class) return Boolean;
+
+   function Element (Self : Character_Cursor'Class)
+     return Wide_Wide_Character;
+
+private
+
+   type Character_Cursor is new Abstract_Cursor with record
+      Current : Natural := 0;
+   end record;
+
+   overriding procedure On_Changed
+    (Self          : not null access Character_Cursor;
+     Changed_First : Positive;
+     Removed_Last  : Natural;
+     Inserted_Last : Natural);
+
+end League.Strings.Cursors.Characters;

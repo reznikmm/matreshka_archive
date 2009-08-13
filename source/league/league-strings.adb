@@ -38,7 +38,7 @@ with Matreshka.Internals.Unicode.Normalization;
 with Matreshka.Internals.Unicode.Ucd.Core;
 with Matreshka.Internals.Utf16;
 
-package body Matreshka.Strings is
+package body League.Strings is
 
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Unicode;
@@ -1096,4 +1096,4 @@ package body Matreshka.Strings is
        (Stream, Item.Data.Value (1 .. Item.Data.Last));
    end Write;
 
-end Matreshka.Strings;
+end League.Strings;

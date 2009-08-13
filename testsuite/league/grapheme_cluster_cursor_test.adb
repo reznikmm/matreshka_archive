@@ -28,11 +28,12 @@ with Ada.Command_Line;
 with Ada.Unchecked_Deallocation;
 with Ada.Wide_Wide_Text_IO;
 
-with Matreshka.Strings.Cursors.Grapheme_Clusters;
+with League.Strings.Cursors.Grapheme_Clusters;
 
 procedure Grapheme_Cluster_Cursor_Test is
-   use Matreshka.Strings;
-   use Matreshka.Strings.Cursors.Grapheme_Clusters;
+
+   use League.Strings;
+   use League.Strings.Cursors.Grapheme_Clusters;
 
    Break_Character    : constant Wide_Wide_Character := '÷';
    No_Break_Character : constant Wide_Wide_Character := '×';

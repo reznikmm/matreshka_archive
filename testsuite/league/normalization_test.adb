@@ -26,14 +26,14 @@
 ------------------------------------------------------------------------------
 with Ada.Command_Line;
 
-with Matreshka.Strings;
+with League.Strings;
 
 with Unicode_Data_File_Parsers;
 with Unicode_Data_File_Utilities;
 
 procedure Normalization_Test is
 
-   use Matreshka.Strings;
+   use League.Strings;
    use Unicode_Data_File_Utilities;
 
    Unidata_Directory      : constant String

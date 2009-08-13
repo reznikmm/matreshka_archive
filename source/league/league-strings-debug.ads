@@ -31,21 +31,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Matreshka.Internals.Locales;
+--  This package provides several subprograms for conversion of user visible
+--  data types into user readable form.
 
-package Matreshka.Strings.Cursors is
+package League.Strings.Debug is
 
    pragma Preelaborate;
 
-private
+   function Debug_Image (Item : Universal_String) return String;
 
-   type Abstract_Tailored_Cursor is abstract new Abstract_Cursor with record
-      Locale : Matreshka.Internals.Locales.Locale_Data_Access;
-   end record;
+   function Debug_Image (Item : Sort_Key) return String;
 
-   procedure Set_Locale (Self : in out Abstract_Tailored_Cursor'Class);
-   --  Set current locale.
-
-   overriding procedure Finalize (Self : in out Abstract_Tailored_Cursor);
-
-end Matreshka.Strings.Cursors;
+end League.Strings.Debug;

@@ -24,12 +24,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Strings.Cursors.Characters;
+with League.Strings.Cursors.Characters;
 
 procedure Character_Cursor_Test is
 
-   use Matreshka.Strings;
-   use Matreshka.Strings.Cursors.Characters;
+   use League.Strings;
+   use League.Strings.Cursors.Characters;
 
    C1 : constant Wide_Wide_String := "123";
    C2 : constant Wide_Wide_String

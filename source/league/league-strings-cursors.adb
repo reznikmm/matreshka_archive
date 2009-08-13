@@ -31,51 +31,35 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Matreshka.Internals.Unicode.Ucd;
 
-package Matreshka.Strings.Cursors.Grapheme_Clusters is
+package body League.Strings.Cursors is
 
-   pragma Preelaborate;
+   use type Matreshka.Internals.Locales.Locale_Data_Access;
 
-   type Grapheme_Cluster_Cursor is tagged private;
+   --------------
+   -- Finalize --
+   --------------
 
-   procedure First
-    (Self : in out Grapheme_Cluster_Cursor'Class;
-     Item : in out Universal_String);
+   overriding procedure Finalize (Self : in out Abstract_Tailored_Cursor) is
+   begin
+      if Self.Locale /= null then
+         Matreshka.Internals.Locales.Dereference (Self.Locale);
+      end if;
 
-   procedure Last
-    (Self : in out Grapheme_Cluster_Cursor'Class;
-     Item : in out Universal_String);
+      Abstract_Cursor (Self).Finalize;
+   end Finalize;
 
-   procedure Next (Self : in out Grapheme_Cluster_Cursor'Class);
+   ----------------
+   -- Set_Locale --
+   ----------------
 
-   procedure Previous (Self : in out Grapheme_Cluster_Cursor'Class);
+   procedure Set_Locale (Self : in out Abstract_Tailored_Cursor'Class) is
+   begin
+      if Self.Locale /= null then
+         Matreshka.Internals.Locales.Dereference (Self.Locale);
+      end if;
 
-   function Has_Element (Self : Grapheme_Cluster_Cursor'Class) return Boolean;
+      Self.Locale := Matreshka.Internals.Locales.Get_Locale;
+   end Set_Locale;
 
-   function Element (Self : Grapheme_Cluster_Cursor'Class)
-     return Universal_String;
-
-private
-
-   type Grapheme_Cluster_Cursor is new Abstract_Tailored_Cursor with record
-      Previous_Position : Natural := 0;
-      Previous_Length   : Natural := 0;
-      Previous_State    :
-        Matreshka.Internals.Unicode.Ucd.Grapheme_Cluster_Break;
-      Current_Position  : Natural := 0;
-      Current_Length    : Natural := 0;
-      Current_State     :
-        Matreshka.Internals.Unicode.Ucd.Grapheme_Cluster_Break;
-      Next_Position     : Natural := 0;
-      Next_State        :
-        Matreshka.Internals.Unicode.Ucd.Grapheme_Cluster_Break;
-   end record;
-
---   overriding procedure On_Changed
---    (Self          : not null access Grapheme_Cluster_Cursor;
---     Changed_First : Positive;
---     Removed_Last  : Natural;
---     Inserted_Last : Natural);
-
-end Matreshka.Strings.Cursors.Grapheme_Clusters;
+end League.Strings.Cursors;

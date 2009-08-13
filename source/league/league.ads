@@ -4,7 +4,7 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                            Testsuite Component                           --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -21,36 +21,19 @@
 -- If not, write  to  the  Free Software Foundation,  51  Franklin  Street, --
 -- Fifth Floor, Boston, MA 02110-1301, USA.                                 --
 --                                                                          --
+-- As a special exception,  if other files  instantiate  generics from this --
+-- unit, or you link  this unit with other files  to produce an executable, --
+-- this  unit  does not  by itself cause  the resulting  executable  to  be --
+-- covered  by the  GNU  General  Public  License.  This exception does not --
+-- however invalidate  any other reasons why  the executable file  might be --
+-- covered by the  GNU Public License.                                      --
+--                                                                          --
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
 
-procedure Case_Conversion_Test is
+package League is
 
-   use League.Strings;
+   pragma Pure;
 
-   --  This is a testcase for Final_Sigma context. \u03A3 translated to \u03C3
-   --  when there is no Final_Sigma context and to \u03C2 in Final_Sigma
-   --  context.
-
-   S1S : Universal_String
-     := To_Universal_String
-         ('A' & Wide_Wide_Character'Val (16#03A3#) & 'Z');
-   S1E : constant Wide_Wide_String
-     := 'a' & Wide_Wide_Character'Val (16#03C3#) & 'z';
-   S2S : Universal_String
-     := To_Universal_String
-         ('A' & Wide_Wide_Character'Val (16#03A3#));
-   S2E : constant Wide_Wide_String
-     := 'a' & Wide_Wide_Character'Val (16#03C2#);
-
-begin
-   if S1S.To_Lowercase.To_Wide_Wide_String /= S1E then
-      raise Program_Error;
-   end if;
-
-   if S2S.To_Lowercase.To_Wide_Wide_String /= S2E then
-      raise Program_Error;
-   end if;
-end Case_Conversion_Test;
+end League;

@@ -33,7 +33,7 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Utf16;
 
-package body Matreshka.Strings.Cursors.Grapheme_Clusters is
+package body League.Strings.Cursors.Grapheme_Clusters is
 
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Unicode;
@@ -368,4 +368,4 @@ package body Matreshka.Strings.Cursors.Grapheme_Clusters is
       Property := Locale.Get_Core (C).GCB;
    end Unchecked_Previous;
 
-end Matreshka.Strings.Cursors.Grapheme_Clusters;
+end League.Strings.Cursors.Grapheme_Clusters;

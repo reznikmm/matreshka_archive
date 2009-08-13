@@ -24,11 +24,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Strings;
+with League.Strings;
 
 procedure Case_Folding_Test is
 
-   use Matreshka.Strings;
+   use League.Strings;
 
    --  Check \u00DF correctly transformed to \u0073\u0073 sequence and
    --  Final_Sigma casing context is never used.

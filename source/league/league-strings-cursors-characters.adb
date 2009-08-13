@@ -33,7 +33,7 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Utf16;
 
-package body Matreshka.Strings.Cursors.Characters is
+package body League.Strings.Cursors.Characters is
 
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Utf16;
@@ -178,4 +178,4 @@ package body Matreshka.Strings.Cursors.Characters is
       end;
    end Previous;
 
-end Matreshka.Strings.Cursors.Characters;
+end League.Strings.Cursors.Characters;

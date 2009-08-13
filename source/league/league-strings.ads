@@ -53,7 +53,7 @@ private with Ada.Streams;
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
 
-package Matreshka.Strings is
+package League.Strings is
 
    pragma Preelaborate;
 --   pragma Remote_Types;
@@ -368,4 +368,4 @@ private
 
    overriding procedure Finalize (Self : in out Sort_Key);
 
-end Matreshka.Strings;
+end League.Strings;

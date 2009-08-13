@@ -26,13 +26,12 @@
 ------------------------------------------------------------------------------
 with Ada.Text_IO;
 
-with Matreshka.Strings;
-with Matreshka.Strings.Debug;
+with League.Strings.Debug;
 
 procedure Additional_Normalization_Test is
 
-   use Matreshka.Strings;
-   use Matreshka.Strings.Debug;
+   use League.Strings;
+   use League.Strings.Debug;
 
    S : Universal_String
      := To_Universal_String

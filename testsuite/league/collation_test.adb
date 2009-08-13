@@ -27,16 +27,15 @@
 with Ada.Command_Line;
 with Ada.Text_IO;
 
-with Matreshka.Strings;
-with Matreshka.Strings.Debug;
+with League.Strings.Debug;
 
 with Unicode_Data_File_Parsers;
 with Unicode_Data_File_Utilities;
 
 procedure Collation_Test is
 
-   use Matreshka.Strings;
-   use Matreshka.Strings.Debug;
+   use League.Strings;
+   use League.Strings.Debug;
    use Unicode_Data_File_Utilities;
 
    Unidata_Directory          : constant String
