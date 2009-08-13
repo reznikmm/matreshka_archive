@@ -35,7 +35,7 @@
 --  Unicode specification.
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Strings;
-with Matreshka.Internals.Ucd;
+with Matreshka.Internals.Unicode.Ucd;
 
 package Matreshka.Internals.Unicode.Casing is
 
@@ -44,8 +44,8 @@ package Matreshka.Internals.Unicode.Casing is
    procedure Convert_Case
     (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
      Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
-     Kind        : Matreshka.Internals.Ucd.Case_Mapping_Kinds;
-     Property    : Matreshka.Internals.Ucd.Boolean_Properties;
+     Kind        : Matreshka.Internals.Unicode.Ucd.Case_Mapping_Kinds;
+     Property    : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
 
 end Matreshka.Internals.Unicode.Casing;

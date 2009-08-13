@@ -35,31 +35,23 @@
 --  internal operations on locales data.
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Atomics.Counters;
-with Matreshka.Internals.Ucd;
-with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Unicode.Ucd;
 
 package Matreshka.Internals.Locales is
 
    pragma Preelaborate;
 
    type Casing_Data is record
-      Expansion :
-        not null Matreshka.Internals.Ucd.Code_Point_Sequence_Access;
-      Context   :
-        not null
-          Matreshka.Internals.Ucd.Casing_Context_Mapping_Sequence_Access;
-      Mapping   :
-        not null Matreshka.Internals.Ucd.Case_Mapping_First_Stage_Access;
+      Expansion : not null Unicode.Ucd.Code_Point_Sequence_Access;
+      Context   : not null Unicode.Ucd.Casing_Context_Mapping_Sequence_Access;
+      Mapping   : not null Unicode.Ucd.Case_Mapping_First_Stage_Access;
    end record;
 
    type Collation_Data is record
-      Expansion     :
-        not null Matreshka.Internals.Ucd.Collation_Element_Sequence_Access;
-      Contraction   :
-        not null Matreshka.Internals.Ucd.Contractor_Array_Access;
-      Mapping       :
-        not null Matreshka.Internals.Ucd.Collation_First_Stage_Access;
-      Last_Variable : Matreshka.Internals.Ucd.Collation_Weight;
+      Expansion     : not null Unicode.Ucd.Collation_Element_Sequence_Access;
+      Contraction   : not null Unicode.Ucd.Contractor_Array_Access;
+      Mapping       : not null Unicode.Ucd.Collation_First_Stage_Access;
+      Last_Variable : Unicode.Ucd.Collation_Weight;
       Backwards     : Boolean;
       --  Sets the comparison for the second level only to be backwards
       --  ("French").
@@ -68,7 +60,7 @@ package Matreshka.Internals.Locales is
    type Locale_Data is tagged limited record
       Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
 
-      Core      : Matreshka.Internals.Ucd.Core_First_Stage_Access;
+      Core      : Unicode.Ucd.Core_First_Stage_Access;
       Casing    : Casing_Data;
       Collation : Collation_Data;
    end record;
@@ -87,8 +79,8 @@ package Matreshka.Internals.Locales is
 
    function Get_Core
     (Self : not null access Locale_Data'Class;
-     Code : Matreshka.Internals.Unicode.Code_Point)
-       return Matreshka.Internals.Ucd.Core_Values;
+     Code : Unicode.Code_Point)
+       return Unicode.Ucd.Core_Values;
    pragma Inline (Get_Core);
 
 end Matreshka.Internals.Locales;

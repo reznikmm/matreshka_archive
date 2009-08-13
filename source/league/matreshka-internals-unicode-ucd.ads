@@ -31,9 +31,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Unicode;
 
-package Matreshka.Internals.Ucd is
+package Matreshka.Internals.Unicode.Ucd is
 
    pragma Preelaborate;
 
@@ -45,8 +44,7 @@ package Matreshka.Internals.Ucd is
 
    subtype Sequence_Index is Sequence_Count range 1 .. Sequence_Count'Last;
 
-   type Code_Point_Sequence is
-     array (Sequence_Index range <>) of Matreshka.Internals.Unicode.Code_Point;
+   type Code_Point_Sequence is array (Sequence_Index range <>) of Code_Point;
 
    type Code_Point_Sequence_Access is access constant Code_Point_Sequence;
 
@@ -441,8 +439,7 @@ package Matreshka.Internals.Ucd is
      array (First_Stage_Index) of Normalization_Mapping_Second_Stage_Access;
 
    type Composition_Mapping is
-     array (Sequence_Index range <>, Sequence_Index range <>)
-       of Matreshka.Internals.Unicode.Code_Point;
+     array (Sequence_Index range <>, Sequence_Index range <>) of Code_Point;
 
    ---------------
    -- Collation --
@@ -464,7 +461,7 @@ package Matreshka.Internals.Ucd is
      access constant Collation_Element_Sequence;
 
    type Contractor_Record is record
-      Code             : Matreshka.Internals.Unicode.Code_Point;
+      Code             : Code_Point;
       Contractor_First : Sequence_Count;
       Contractor_Last  : Sequence_Count;
       Expansion_First  : Sequence_Count;
@@ -494,4 +491,4 @@ package Matreshka.Internals.Ucd is
 
    type Collation_First_Stage_Access is access constant Collation_First_Stage;
 
-end Matreshka.Internals.Ucd;
+end Matreshka.Internals.Unicode.Ucd;

@@ -32,7 +32,7 @@
 --  This package is generated automatically
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.Ucd.Colls is
+package Matreshka.Internals.Unicode.Ucd.Colls is
 
    pragma Preelaborate;
 
@@ -61195,4 +61195,4 @@ package Matreshka.Internals.Ucd.Colls is
          16#02FA# => Group_02FA'Access, 16#0E00# => Group_0E00'Access,
          16#0E01# => Group_0E01'Access, others   => Group_0008'Access);
 
-end Matreshka.Internals.Ucd.Colls;
+end Matreshka.Internals.Unicode.Ucd.Colls;

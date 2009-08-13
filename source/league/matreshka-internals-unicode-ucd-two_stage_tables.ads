@@ -32,24 +32,20 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body Matreshka.Internals.Ucd.Two_Stage_Tables is
+package Matreshka.Internals.Unicode.Ucd.Two_Stage_Tables is
 
-   use Matreshka.Internals.Unicode;
+   pragma Preelaborate;
 
-   -----------------
-   -- Generic_Get --
-   -----------------
+   generic
+      type Element_Type is private;
+      type Second_Stage_Array is
+        array (Second_Stage_Index) of Element_Type;
+      type Second_Stage_Array_Access is
+        not null access constant Second_Stage_Array;
+      type First_Stage_Array is
+        array (First_Stage_Index) of Second_Stage_Array_Access;
 
-   function Generic_Get
-    (Data : First_Stage_Array;
-     Code : Matreshka.Internals.Unicode.Code_Point)
-       return Element_Type
-   is
-   begin
-      return
-        Data
-         (First_Stage_Index (Code / Second_Stage_Index'Modulus))
-         (Second_Stage_Index (Code mod Second_Stage_Index'Modulus));
-   end Generic_Get;
+   function Generic_Get (Data : First_Stage_Array; Code : Code_Point)
+     return Element_Type;
 
-end Matreshka.Internals.Ucd.Two_Stage_Tables;
+end Matreshka.Internals.Unicode.Ucd.Two_Stage_Tables;

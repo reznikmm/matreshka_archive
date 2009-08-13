@@ -31,14 +31,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Unicode;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Strings.Cursors.Grapheme_Clusters is
 
    use Matreshka.Internals.Strings;
-   use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Utf16;
 
    Break_Machine : constant

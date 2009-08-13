@@ -32,17 +32,17 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Locales;
-with Matreshka.Internals.Ucd.Core;
 with Matreshka.Internals.Unicode.Casing;
 with Matreshka.Internals.Unicode.Collation;
 with Matreshka.Internals.Unicode.Normalization;
+with Matreshka.Internals.Unicode.Ucd.Core;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Strings is
 
    use Matreshka.Internals.Strings;
-   use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Utf16;
 
    procedure To_Utf16_String
@@ -846,8 +846,8 @@ package body Matreshka.Strings is
          Matreshka.Internals.Unicode.Casing.Convert_Case
           (Locale,
            Self.Data,
-           Matreshka.Internals.Ucd.Folding,
-           Matreshka.Internals.Ucd.Has_Case_Folding,
+           Matreshka.Internals.Unicode.Ucd.Folding,
+           Matreshka.Internals.Unicode.Ucd.Has_Case_Folding,
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
 
@@ -877,8 +877,8 @@ package body Matreshka.Strings is
          Matreshka.Internals.Unicode.Casing.Convert_Case
           (Locale,
            Self.Data,
-           Matreshka.Internals.Ucd.Lower,
-           Matreshka.Internals.Ucd.Has_Lowercase_Mapping,
+           Matreshka.Internals.Unicode.Ucd.Lower,
+           Matreshka.Internals.Unicode.Ucd.Has_Lowercase_Mapping,
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
 
@@ -1008,8 +1008,8 @@ package body Matreshka.Strings is
          Matreshka.Internals.Unicode.Casing.Convert_Case
           (Locale,
            Self.Data,
-           Matreshka.Internals.Ucd.Upper,
-           Matreshka.Internals.Ucd.Has_Uppercase_Mapping,
+           Matreshka.Internals.Unicode.Ucd.Upper,
+           Matreshka.Internals.Unicode.Ucd.Has_Uppercase_Mapping,
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
 

@@ -32,7 +32,7 @@
 --  This package is generated automatically
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.Ucd.Norms is
+package Matreshka.Internals.Unicode.Ucd.Norms is
 
    pragma Preelaborate;
 
@@ -12903,4 +12903,4 @@ package Matreshka.Internals.Ucd.Norms is
          16#02F8# => Group_02F8'Access, 16#02F9# => Group_02F9'Access,
          16#02FA# => Group_02FA'Access, others   => Group_0007'Access);
 
-end Matreshka.Internals.Ucd.Norms;
+end Matreshka.Internals.Unicode.Ucd.Norms;

@@ -31,15 +31,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Ucd.Core;
-with Matreshka.Internals.Ucd.Norms;
-with Matreshka.Internals.Ucd.Two_Stage_Tables;
+with Matreshka.Internals.Unicode.Ucd.Core;
+with Matreshka.Internals.Unicode.Ucd.Norms;
+with Matreshka.Internals.Unicode.Ucd.Two_Stage_Tables;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Unicode.Normalization is
 
    use Matreshka.Internals.Strings;
-   use Matreshka.Internals.Ucd;
+   use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Utf16;
 
    generic
@@ -649,11 +649,11 @@ package body Matreshka.Internals.Unicode.Normalization is
    function Get_Core (Code : Code_Point) return Core_Values is
 
       function Get is
-        new Matreshka.Internals.Ucd.Two_Stage_Tables.Generic_Get
-             (Matreshka.Internals.Ucd.Core_Values,
-              Matreshka.Internals.Ucd.Core_Second_Stage,
-              Matreshka.Internals.Ucd.Core_Second_Stage_Access,
-              Matreshka.Internals.Ucd.Core_First_Stage);
+        new Matreshka.Internals.Unicode.Ucd.Two_Stage_Tables.Generic_Get
+             (Matreshka.Internals.Unicode.Ucd.Core_Values,
+              Matreshka.Internals.Unicode.Ucd.Core_Second_Stage,
+              Matreshka.Internals.Unicode.Ucd.Core_Second_Stage_Access,
+              Matreshka.Internals.Unicode.Ucd.Core_First_Stage);
 
    begin
       return Get (Core.Property, Code);

@@ -36,8 +36,8 @@ with Matreshka.Internals.Utf16;
 package body Matreshka.Internals.Unicode.Casing is
 
    use Matreshka.Internals.Strings;
-   use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Utf16;
 
    ------------------
@@ -47,8 +47,8 @@ package body Matreshka.Internals.Unicode.Casing is
    procedure Convert_Case
     (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
      Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
-     Kind        : Case_Mapping_Kinds;
-     Property    : Matreshka.Internals.Ucd.Boolean_Properties;
+     Kind        : Matreshka.Internals.Unicode.Ucd.Case_Mapping_Kinds;
+     Property    : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
      Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
    is
       Source_Current : Positive := 1;

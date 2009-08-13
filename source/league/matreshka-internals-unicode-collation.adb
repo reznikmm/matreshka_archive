@@ -33,13 +33,13 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.Ucd;
+with Matreshka.Internals.Unicode.Ucd;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Unicode.Collation is
 
    use Matreshka.Internals.Strings;
-   use Matreshka.Internals.Ucd;
+   use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Utf16;
 
    type Collation_Element_Array is

@@ -31,7 +31,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Matreshka.Internals.Ucd;
+private with Matreshka.Internals.Unicode.Ucd;
 
 package Matreshka.Strings.Cursors.Grapheme_Clusters is
 
@@ -61,12 +61,15 @@ private
    type Grapheme_Cluster_Cursor is new Abstract_Tailored_Cursor with record
       Previous_Position : Natural := 0;
       Previous_Length   : Natural := 0;
-      Previous_State    : Matreshka.Internals.Ucd.Grapheme_Cluster_Break;
+      Previous_State    :
+        Matreshka.Internals.Unicode.Ucd.Grapheme_Cluster_Break;
       Current_Position  : Natural := 0;
       Current_Length    : Natural := 0;
-      Current_State     : Matreshka.Internals.Ucd.Grapheme_Cluster_Break;
+      Current_State     :
+        Matreshka.Internals.Unicode.Ucd.Grapheme_Cluster_Break;
       Next_Position     : Natural := 0;
-      Next_State        : Matreshka.Internals.Ucd.Grapheme_Cluster_Break;
+      Next_State        :
+        Matreshka.Internals.Unicode.Ucd.Grapheme_Cluster_Break;
    end record;
 
 --   overriding procedure On_Changed

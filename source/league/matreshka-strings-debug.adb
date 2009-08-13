@@ -33,15 +33,15 @@
 ------------------------------------------------------------------------------
 with Ada.Strings.Unbounded;
 
-with Matreshka.Internals.Ucd;
+with Matreshka.Internals.Unicode.Ucd;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Strings.Debug is
 
    use Ada.Strings.Unbounded;
    use Matreshka.Internals.Strings;
-   use Matreshka.Internals.Ucd;
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Utf16;
 
    function Code_Point_Image (Item : Code_Point) return String;

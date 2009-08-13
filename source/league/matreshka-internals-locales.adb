@@ -33,27 +33,24 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.Ucd.Cases;
-with Matreshka.Internals.Ucd.Colls;
-with Matreshka.Internals.Ucd.Core;
-with Matreshka.Internals.Ucd.Two_Stage_Tables;
+with Matreshka.Internals.Unicode.Ucd.Cases;
+with Matreshka.Internals.Unicode.Ucd.Colls;
+with Matreshka.Internals.Unicode.Ucd.Core;
+with Matreshka.Internals.Unicode.Ucd.Two_Stage_Tables;
 
 package body Matreshka.Internals.Locales is
 
    Default_Locale : aliased Locale_Data
-     := (Core      => Matreshka.Internals.Ucd.Core.Property'Access,
+     := (Core      => Unicode.Ucd.Core.Property'Access,
          Casing    =>
-          (Expansion => Matreshka.Internals.Ucd.Cases.Data'Access,
-           Context   => Matreshka.Internals.Ucd.Cases.Context'Access,
-           Mapping   => Matreshka.Internals.Ucd.Cases.Mapping'Access),
+          (Expansion => Unicode.Ucd.Cases.Data'Access,
+           Context   => Unicode.Ucd.Cases.Context'Access,
+           Mapping   => Unicode.Ucd.Cases.Mapping'Access),
          Collation =>
-          (Expansion     =>
-             Matreshka.Internals.Ucd.Colls.Expansion_Data'Access,
-           Contraction   =>
-             Matreshka.Internals.Ucd.Colls.Contraction_Data'Access,
-           Mapping       =>
-             Matreshka.Internals.Ucd.Colls.Collation'Access,
-           Last_Variable => Matreshka.Internals.Ucd.Colls.Last_Variable,
+          (Expansion     => Unicode.Ucd.Colls.Expansion_Data'Access,
+           Contraction   => Unicode.Ucd.Colls.Contraction_Data'Access,
+           Mapping       => Unicode.Ucd.Colls.Collation'Access,
+           Last_Variable => Unicode.Ucd.Colls.Last_Variable,
            Backwards     => False),
          others        => <>);
 
@@ -82,16 +79,16 @@ package body Matreshka.Internals.Locales is
 
    function Get_Core
     (Self : not null access Locale_Data'Class;
-     Code : Matreshka.Internals.Unicode.Code_Point)
-       return Matreshka.Internals.Ucd.Core_Values
+     Code : Unicode.Code_Point)
+       return Unicode.Ucd.Core_Values
    is
 
       function Get is
-        new Matreshka.Internals.Ucd.Two_Stage_Tables.Generic_Get
-             (Matreshka.Internals.Ucd.Core_Values,
-              Matreshka.Internals.Ucd.Core_Second_Stage,
-              Matreshka.Internals.Ucd.Core_Second_Stage_Access,
-              Matreshka.Internals.Ucd.Core_First_Stage);
+        new Unicode.Ucd.Two_Stage_Tables.Generic_Get
+             (Matreshka.Internals.Unicode.Ucd.Core_Values,
+              Matreshka.Internals.Unicode.Ucd.Core_Second_Stage,
+              Matreshka.Internals.Unicode.Ucd.Core_Second_Stage_Access,
+              Matreshka.Internals.Unicode.Ucd.Core_First_Stage);
 
    begin
       return Get (Self.Core.all, Code);

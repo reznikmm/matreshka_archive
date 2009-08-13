@@ -32,7 +32,7 @@
 --  This package is generated automatically
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.Ucd.Core is
+package Matreshka.Internals.Unicode.Ucd.Core is
 
    pragma Preelaborate;
 
@@ -38508,4 +38508,4 @@ package Matreshka.Internals.Ucd.Core is
          16#10FE# => Group_00E0'Access, 16#10FF# => Group_0FFF'Access,
          others   => Group_0008'Access);
 
-end Matreshka.Internals.Ucd.Core;
+end Matreshka.Internals.Unicode.Ucd.Core;

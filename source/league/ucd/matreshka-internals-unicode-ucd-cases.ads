@@ -32,7 +32,7 @@
 --  This package is generated automatically
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.Ucd.Cases is
+package Matreshka.Internals.Unicode.Ucd.Cases is
 
    pragma Preelaborate;
 
@@ -4806,4 +4806,4 @@ package Matreshka.Internals.Ucd.Cases is
          16#00FB# => Group_00FB'Access, 16#00FF# => Group_00FF'Access,
          16#0104# => Group_0104'Access, others   => Group_0006'Access);
 
-end Matreshka.Internals.Ucd.Cases;
+end Matreshka.Internals.Unicode.Ucd.Cases;
