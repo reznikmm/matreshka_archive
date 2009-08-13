@@ -33,7 +33,7 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Ucd.Core;
 with Matreshka.Internals.Ucd.Norms;
-with Matreshka.Internals.Ucd.Two_Stage_Table_Utilities;
+with Matreshka.Internals.Ucd.Two_Stage_Tables;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Unicode.Normalization is
@@ -647,8 +647,9 @@ package body Matreshka.Internals.Unicode.Normalization is
    --------------
 
    function Get_Core (Code : Code_Point) return Core_Values is
+
       function Get is
-        new Matreshka.Internals.Ucd.Two_Stage_Table_Utilities.Generic_Get
+        new Matreshka.Internals.Ucd.Two_Stage_Tables.Generic_Get
              (Matreshka.Internals.Ucd.Core_Values,
               Matreshka.Internals.Ucd.Core_Second_Stage,
               Matreshka.Internals.Ucd.Core_Second_Stage_Access,

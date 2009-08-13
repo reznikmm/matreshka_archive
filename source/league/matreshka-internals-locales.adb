@@ -36,7 +36,7 @@ with Ada.Unchecked_Deallocation;
 with Matreshka.Internals.Ucd.Cases;
 with Matreshka.Internals.Ucd.Colls;
 with Matreshka.Internals.Ucd.Core;
-with Matreshka.Internals.Ucd.Two_Stage_Table_Utilities;
+with Matreshka.Internals.Ucd.Two_Stage_Tables;
 
 package body Matreshka.Internals.Locales is
 
@@ -85,8 +85,9 @@ package body Matreshka.Internals.Locales is
      Code : Matreshka.Internals.Unicode.Code_Point)
        return Matreshka.Internals.Ucd.Core_Values
    is
+
       function Get is
-        new Matreshka.Internals.Ucd.Two_Stage_Table_Utilities.Generic_Get
+        new Matreshka.Internals.Ucd.Two_Stage_Tables.Generic_Get
              (Matreshka.Internals.Ucd.Core_Values,
               Matreshka.Internals.Ucd.Core_Second_Stage,
               Matreshka.Internals.Ucd.Core_Second_Stage_Access,
