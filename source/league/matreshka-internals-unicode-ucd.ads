@@ -491,4 +491,20 @@ package Matreshka.Internals.Unicode.Ucd is
 
    type Collation_First_Stage_Access is access constant Collation_First_Stage;
 
+   -------------------------------
+   -- Two stage table utilities --
+   -------------------------------
+
+   generic
+      type Element_Type is private;
+      type Second_Stage_Array is
+        array (Second_Stage_Index) of Element_Type;
+      type Second_Stage_Array_Access is
+        not null access constant Second_Stage_Array;
+      type First_Stage_Array is
+        array (First_Stage_Index) of Second_Stage_Array_Access;
+
+   function Generic_Element (Data : First_Stage_Array; Code : Code_Point)
+     return Element_Type;
+
 end Matreshka.Internals.Unicode.Ucd;

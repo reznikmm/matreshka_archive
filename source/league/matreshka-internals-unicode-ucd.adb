@@ -32,13 +32,13 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body Matreshka.Internals.Unicode.Ucd.Two_Stage_Tables is
+package body Matreshka.Internals.Unicode.Ucd is
 
-   -----------------
-   -- Generic_Get --
-   -----------------
+   ---------------------
+   -- Generic_Element --
+   ---------------------
 
-   function Generic_Get (Data : First_Stage_Array; Code : Code_Point)
+   function Generic_Element (Data : First_Stage_Array; Code : Code_Point)
      return Element_Type
    is
    begin
@@ -46,6 +46,6 @@ package body Matreshka.Internals.Unicode.Ucd.Two_Stage_Tables is
         Data
          (First_Stage_Index (Code / Second_Stage_Index'Modulus))
          (Second_Stage_Index (Code mod Second_Stage_Index'Modulus));
-   end Generic_Get;
+   end Generic_Element;
 
-end Matreshka.Internals.Unicode.Ucd.Two_Stage_Tables;
+end Matreshka.Internals.Unicode.Ucd;
