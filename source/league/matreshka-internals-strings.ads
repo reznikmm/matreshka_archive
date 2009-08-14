@@ -39,6 +39,8 @@ package Matreshka.Internals.Strings is
 
    pragma Preelaborate;
 
+   type Internal_Hash_Type is mod 2 ** 32;
+
    type Positive_Array is array (Positive range <>) of Positive;
 
    type Index_Map (Length : Natural) is record
@@ -116,6 +118,11 @@ package Matreshka.Internals.Strings is
 
    procedure Compute_Index_Map (Self : in out Internal_String);
    --  Compute index map. This operation is thread-safe.
+
+   function Hash (Self : not null Internal_String_Access)
+     return Internal_Hash_Type;
+   --  Returns hash value for the string. MurmurHash2, by Austin Appleby is
+   --  used.
 
    procedure Append
     (Self : in out Internal_String_Access;

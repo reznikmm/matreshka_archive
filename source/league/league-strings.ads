@@ -64,6 +64,8 @@ package League.Strings is
 
    type Sort_Key is private;
 
+   type Hash_Type is mod 2 ** 32;
+
    -------------------------
    -- Universal_Character --
    -------------------------
@@ -89,6 +91,8 @@ package League.Strings is
 
    function To_Wide_Wide_String (Self : Universal_String'Class)
      return Wide_Wide_String;
+
+   function Hash (Self : Universal_String'Class) return Hash_Type;
 
    function Length (Self : Universal_String'Class) return Natural;
 

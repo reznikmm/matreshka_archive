@@ -595,6 +595,15 @@ package body League.Strings is
       Dereference (Self.Data);
    end Finalize;
 
+   ----------
+   -- Hash --
+   ----------
+
+   function Hash (Self : Universal_String'Class) return Hash_Type is
+   begin
+      return Hash_Type (Hash (Self.Data));
+   end Hash;
+
    ----------------
    -- Initialize --
    ----------------

@@ -243,6 +243,38 @@ package body Matreshka.Internals.Strings is
       end if;
    end Dereference;
 
+   ----------
+   -- Hash --
+   ----------
+
+   function Hash (Self : not null Internal_String_Access)
+     return Internal_Hash_Type
+   is
+      M     : constant Internal_Hash_Type := 16#5BD1E995#;
+      H     : Internal_Hash_Type := Internal_Hash_Type (Self.Length);
+      K     : Internal_Hash_Type;
+      C     : Code_Unit_32;
+      Index : Positive := 1;
+
+   begin
+      while Index <= Self.Last loop
+         Unchecked_Next (Self.Value, Index, C);
+
+         K := Internal_Hash_Type (C) * M;
+         K := K xor (K / 16#1000000#);
+         K := K * M;
+
+         H := H * M;
+         H := H xor K;
+      end loop;
+
+      H := H xor (H / 16#2000#);
+      H := H * M;
+      H := H xor (H / 16#8000#);
+
+      return H;
+   end Hash;
+
    ---------------
    -- Reference --
    ---------------

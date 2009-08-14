@@ -29,7 +29,8 @@ with "matreshka_league";
 project Matreshka_League_Tests is
 
    for Main use
-    ("character_cursor_test.adb",
+    ("string_hash_test.adb",
+     "character_cursor_test.adb",
      "grapheme_cluster_cursor_test.adb",
      "case_conversion_test.adb",
      "case_folding_test.adb",
