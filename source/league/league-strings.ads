@@ -81,6 +81,8 @@ package League.Strings is
    function Is_Legal_Unicode_Code_Point
     (Self : Universal_Character'Class)
        return Boolean;
+   --  Returns True when code point of the specified character is inside valid
+   --  code point range and it is not a surrogate or non-character code point.
 
    ----------------------
    -- Universal_String --
