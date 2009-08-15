@@ -119,20 +119,20 @@ package League.Strings is
      Right : Universal_Character'Class)
        return Universal_String;
 
---   function "&"
---    (Left  : Universal_Character'Class;
---     Right : Universal_String'Class)
---       return Universal_String;
+   function "&"
+    (Left  : Universal_Character'Class;
+     Right : Universal_String'Class)
+       return Universal_String;
 
    function "&"
     (Left  : Universal_String'Class;
      Right : Wide_Wide_Character)
        return Universal_String;
 
---   function "&"
---    (Left  : Wide_Wide_Character;
---     Right : Universal_String'Class)
---       return Universal_String;
+   function "&"
+    (Left  : Wide_Wide_Character;
+     Right : Universal_String'Class)
+       return Universal_String;
 
    function "&"
     (Left  : Universal_String'Class;

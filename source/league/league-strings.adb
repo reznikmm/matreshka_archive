@@ -78,6 +78,19 @@ package body League.Strings is
    ---------
 
    function "&"
+    (Left  : Universal_Character'Class;
+     Right : Universal_String'Class)
+       return Universal_String
+   is
+   begin
+      return Left.To_Wide_Wide_Character & Right;
+   end "&";
+
+   ---------
+   -- "&" --
+   ---------
+
+   function "&"
     (Left  : Universal_String'Class;
      Right : Universal_String'Class)
        return Universal_String
@@ -122,17 +135,50 @@ package body League.Strings is
 
    begin
       if not Is_Legal_Unicode_Code_Point (Wide_Wide_Character'Pos (Right)) then
-         raise Constraint_Error with "Invalid Wide_Wide_Character";
+         raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
       declare
-         D : not null Internal_String_Access := Allocate (L_D.Last + 2);
+         D : constant not null Internal_String_Access
+           := Allocate (L_D.Last + 2);
+         P : Positive := L_D.Last + 1;
 
       begin
          D.Value (1 .. L_D.Last) := L_D.Value (1 .. L_D.Last);
-         D.Last                  := L_D.Last;
-         D.Length                := L_D.Length;
-         Append (D, Wide_Wide_Character'Pos (Right), 1);
+         Unchecked_Store (D.Value, P, Wide_Wide_Character'Pos (Right));
+         D.Last                  := P - 1;
+         D.Length                := L_D.Length + 1;
+
+         return Constructors.Create (D);
+      end;
+   end "&";
+
+   ---------
+   -- "&" --
+   ---------
+
+   function "&"
+    (Left  : Wide_Wide_Character;
+     Right : Universal_String'Class)
+       return Universal_String
+   is
+      R_D : constant not null Internal_String_Access := Right.Data;
+
+   begin
+      if not Is_Legal_Unicode_Code_Point (Wide_Wide_Character'Pos (Left)) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      declare
+         D : constant not null Internal_String_Access
+           := Allocate (R_D.Last + 2);
+         P : Positive := 1;
+
+      begin
+         Unchecked_Store (D.Value, P, Wide_Wide_Character'Pos (Left));
+         D.Value (P .. P + R_D.Last - 1) := R_D.Value (1 .. R_D.Last);
+         D.Last                          := P + R_D.Last - 1;
+         D.Length                        := R_D.Length + 1;
 
          return Constructors.Create (D);
       end;
@@ -1037,8 +1083,7 @@ package body League.Strings is
          if not Is_Legal_Unicode_Code_Point
              (Wide_Wide_Character'Pos (Source (J)))
          then
-            raise Constraint_Error
-              with "Wide_Wide_Character is not a valid Unicode code point";
+            raise Constraint_Error with "Illegal Unicode code point";
          end if;
 
          Append
