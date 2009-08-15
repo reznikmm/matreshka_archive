@@ -102,6 +102,11 @@ package Matreshka.Internals.Strings is
 --     return not null String_Private_Data_Access;
    --  Creates copy of string data.
 
+   function Allocate (Size : Natural) return not null Internal_String_Access;
+   --  Allocates new instance of string with specified size. Actual size of the
+   --  allocated string can be greater. Returns reference to Shared_Empty with
+   --  incremented counter when Size is zero.
+
    procedure Reference (Self : Internal_Sort_Key_Access);
    pragma Inline (Reference);
    --  Increment reference counter.

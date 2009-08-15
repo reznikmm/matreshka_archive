@@ -94,8 +94,8 @@ package body League.Strings is
 
       else
          declare
-            D : constant Internal_String_Access
-              := new Internal_String (L_D.Last + R_D.Last);
+            D : constant not null Internal_String_Access
+              := Allocate (L_D.Last + R_D.Last);
 
          begin
             D.Value (1 .. L_D.Last) := L_D.Value (1 .. L_D.Last);
@@ -126,8 +126,7 @@ package body League.Strings is
       end if;
 
       declare
-         D : not null Internal_String_Access
-           := new Internal_String (L_D.Last + 2);
+         D : not null Internal_String_Access := Allocate (L_D.Last + 2);
 
       begin
          D.Value (1 .. L_D.Last) := L_D.Value (1 .. L_D.Last);
@@ -719,7 +718,7 @@ package body League.Strings is
 
       Dereference (Item.Data);
 
-      Item.Data := new Internal_String (Last);
+      Item.Data := Allocate (Last);
       Utf16_String'Read (Stream, Item.Data.Value);
       Item.Data.Last := Last;
       Item.Data.Length := Length;
@@ -848,8 +847,7 @@ package body League.Strings is
       declare
          Locale : Matreshka.Internals.Locales.Locale_Data_Access
            := Matreshka.Internals.Locales.Get_Locale;
-         Data   : not null Internal_String_Access
-           := new Internal_String (Self.Data.Last);
+         Data   : not null Internal_String_Access := Allocate (Self.Data.Last);
 
       begin
          Matreshka.Internals.Unicode.Casing.Convert_Case
@@ -879,8 +877,7 @@ package body League.Strings is
       declare
          Locale : Matreshka.Internals.Locales.Locale_Data_Access
            := Matreshka.Internals.Locales.Get_Locale;
-         Data   : not null Internal_String_Access
-           := new Internal_String (Self.Data.Last);
+         Data   : not null Internal_String_Access := Allocate (Self.Data.Last);
 
       begin
          Matreshka.Internals.Unicode.Casing.Convert_Case
@@ -1010,8 +1007,7 @@ package body League.Strings is
       declare
          Locale : Matreshka.Internals.Locales.Locale_Data_Access
            := Matreshka.Internals.Locales.Get_Locale;
-         Data   : not null Internal_String_Access
-           := new Internal_String (Self.Data.Last);
+         Data   : not null Internal_String_Access := Allocate (Self.Data.Last);
 
       begin
          Matreshka.Internals.Unicode.Casing.Convert_Case
@@ -1035,7 +1031,7 @@ package body League.Strings is
      Destination : out Internal_String_Access)
    is
    begin
-      Destination := new Internal_String (Source'Length);
+      Destination := Allocate (Source'Length);
 
       for J in Source'Range loop
          if not Is_Legal_Unicode_Code_Point

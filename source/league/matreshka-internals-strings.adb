@@ -62,11 +62,28 @@ package body Matreshka.Internals.Strings is
    --  append operations of small pieces. This is expressed as a factor so
    --  32 means add 1/32 of the length of the string as growth space.
 
-   Min_Mul_Alloc : constant := Standard'Maximum_Alignment;
+   Min_Mul_Alloc : constant := Standard'Maximum_Alignment / 2;
    --  Allocation will be done by a multiple of Min_Mul_Alloc This causes
    --  no memory loss as most (all?) malloc implementations are obliged to
    --  align the returned memory on the maximum alignment as malloc does not
    --  know the target alignment.
+
+   --------------
+   -- Allocate --
+   --------------
+
+   function Allocate (Size : Natural) return not null Internal_String_Access is
+   begin
+      if Size = 0 then
+         Reference (Shared_Empty'Access);
+
+         return Shared_Empty'Access;
+
+      else
+         return
+           new Internal_String ((Size / Min_Mul_Alloc + 1) * Min_Mul_Alloc);
+      end if;
+   end Allocate;
 
    ------------
    -- Append --
@@ -92,9 +109,8 @@ package body Matreshka.Internals.Strings is
       if Self.Last > Self.Size then
          declare
             Aux : constant not null Internal_String_Access
-              := new Internal_String
-                      (Self.Last
-                         + Natural'Max (Self.Size + Increment, Self.Last));
+              := Allocate
+                  (Self.Last + Natural'Max (Self.Size + Increment, Self.Last));
 
          begin
             Aux.Value (Self.Value'Range) := Self.Value;
@@ -146,7 +162,7 @@ package body Matreshka.Internals.Strings is
                  := ((Size + Self.Last / Growth_Factor - 1)
                         / Min_Mul_Alloc + 1) * Min_Mul_Alloc;
             begin
-               Self := new Internal_String (New_Size);
+               Self := Allocate (New_Size);
             end;
          end if;
 
@@ -332,7 +348,7 @@ package body Matreshka.Internals.Strings is
            or else not Matreshka.Internals.Atomics.Counters.Is_One
                         (Self.Counter'Access)
          then
-            Self := new Internal_String (Size);
+            Self := Allocate (Size);
          end if;
 
          if High < Low then
@@ -385,14 +401,13 @@ package body Matreshka.Internals.Strings is
             Size : constant Natural := High - Low + 1;
 
          begin
-            return
-              new Internal_String'
-                   (Counter   => Matreshka.Internals.Atomics.Counters.One,
-                    Size      => Size,
-                    Value     => Self.Value (Low .. High),
-                    Last      => Size,
-                    Length    => Length,
-                    Index_Map => null);
+            return Result : constant not null Internal_String_Access
+              := Allocate (Size)
+            do
+               Result.Value (1 .. Size) := Self.Value (Low .. High);
+               Result.Last              := Size;
+               Result.Length            := Length;
+            end return;
          end;
       end if;
    end Slice;

@@ -315,7 +315,7 @@ package body Matreshka.Internals.Unicode.Normalization is
       --  Source is not in Normalization Form probably, so start more complex
       --  algorithm.
 
-      Destination := new Internal_String (Source.Size);
+      Destination := Allocate (Source.Size);
 
       Destination.Value (1 .. S_Index - 1) := Source.Value (1 .. S_Index - 1);
       Destination.Last   := S_Index - 1;
@@ -495,7 +495,7 @@ package body Matreshka.Internals.Unicode.Normalization is
       --  Source is not in Normalization Form probably, so start more complex
       --  algorithm.
 
-      Destination := new Internal_String (Source.Size);
+      Destination := Allocate (Source.Size);
 
       Destination.Value (1 .. S_Index - 1) := Source.Value (1 .. S_Index - 1);
       Destination.Last   := S_Index - 1;
