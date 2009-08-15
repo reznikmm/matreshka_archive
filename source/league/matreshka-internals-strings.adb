@@ -157,13 +157,7 @@ package body Matreshka.Internals.Strings is
            or else not Matreshka.Internals.Atomics.Counters.Is_One
                         (Self.Counter'Access)
          then
-            declare
-               New_Size : constant Natural
-                 := ((Size + Self.Last / Growth_Factor - 1)
-                        / Min_Mul_Alloc + 1) * Min_Mul_Alloc;
-            begin
-               Self := Allocate (New_Size);
-            end;
+            Self := Allocate (Size + Self.Last / Growth_Factor - 1);
          end if;
 
          if Self /= Source then
