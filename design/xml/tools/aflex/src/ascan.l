@@ -24,7 +24,7 @@
 --       and case insensitive scanner generation available only in aflex
 --       (or flex if you use C.)
 --       generate scanner using the command 'aflex -is ascan.l'
--- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/ascan.l,v 1.19 1991/12/03 23:08:24 self Exp self $ 
+-- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/ascan.l,v 1.19 1991/12/03 23:08:24 self Exp self $
 
 %x SECT2 SECT2PROLOG SECT3 PICKUPDEF SC CARETISBOL NUM QUOTE
 %x FIRSTCCL CCL ACTION RECOVER BRACEERROR
@@ -135,7 +135,7 @@ ESCSEQ		\\([^\n]|[0-9]{1,3})
 
 <SECT2>^{OPTWS}\n	{ linenum := linenum + 1;
 			  -- allow blank lines in sect2;}
-			
+
 			-- this rule matches indented lines which
 			-- are not comments.
 <SECT2>^{WS}{NOT_WS}"--".*\n	{
@@ -144,7 +144,7 @@ ESCSEQ		\\([^\n]|[0-9]{1,3})
 			}
 
 <SECT2>"<"		{ ENTER(SC); return ( '<' ); }
-<SECT2>^"^"		{ return ( '^' ); } 
+<SECT2>^"^"		{ return ( '^' ); }
 <SECT2>\"		{ ENTER(QUOTE); return ( '"' ); }
 <SECT2>"{"/[0-9]		{ ENTER(NUM); return ( '{' ); }
 <SECT2>"{"[^0-9\n][^}\n]*	{ ENTER(BRACEERROR); }
@@ -448,7 +448,7 @@ end if;
 	    end if;
     	end if;
     end if;
-    
+
     if ( trace ) then
 	if ( beglin ) then
 	    int_io.put( Standard_Error, num_rules + 1 );
@@ -477,7 +477,7 @@ end if;
        		text_io.put( Standard_Error, " " );
 
 	    when SECTEND =>
-       		text_io.put_line( Standard_Error, "%%" );	   
+       		text_io.put_line( Standard_Error, "%%" );
 
 		-- we set beglin to be true so we'll start
 		-- writing out numbers as we echo rules.  aflexscan() has
@@ -508,7 +508,7 @@ end if;
 	    when PREVCCL =>
 		text_io.put( Standard_Error, '[' );
    	    	int_io.put( Standard_Error, yylval );
-		text_io.put( Standard_Error, ']' );		
+		text_io.put( Standard_Error, ']' );
 
     	    when End_Of_Input =>
     	    	text_io.put( Standard_Error, "End Marker" );
@@ -518,7 +518,7 @@ end if;
 		text_io.put_line( Standard_Error, Token'image(toktype));
     	end case;
     end if;
-	    
+
     return toktype;
 
 end get_token;
