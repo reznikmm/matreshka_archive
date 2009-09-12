@@ -23,6 +23,8 @@
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/miscS.a,v 1.9 90/01/12 15:20:19 self Exp Locker: self $
 
 with MISC_DEFS, TSTRING, TEXT_IO;
+with Unicode;
+
 package MISC is
   use MISC_DEFS;
   use TSTRING;
@@ -61,7 +63,10 @@ package MISC is
                     VALUE : in INTEGER);
   procedure MKDATA(VALUE : in INTEGER);
   function MYCTOI(NUM_ARRAY : in VSTRING) return INTEGER;
-  function MYESC(ARR : in VSTRING) return CHARACTER;
+
+   function MYESC (ARR : in VSTRING) return Unicode.Unicode_Character;
+   -- myesc - return character corresponding to escape sequence
+
   function OTOI(STR : in VSTRING) return CHARACTER;
   function READABLE_FORM(C : in CHARACTER) return VSTRING;
   procedure SYNERR(STR : in STRING);

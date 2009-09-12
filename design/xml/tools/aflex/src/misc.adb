@@ -424,66 +424,82 @@ package body MISC is
     return TOTAL;
   end MYCTOI;
 
+   -----------
+   -- MYESC --
+   -----------
 
-  -- myesc - return character corresponding to escape sequence
+   function MYESC (ARR : in VSTRING) return Unicode.Unicode_Character is
+--        use TEXT_IO;
+   begin
+      case (CHAR (ARR, TSTRING.FIRST + 1)) is
+         when 'a' =>
+            return Unicode.BEL;
 
-  function MYESC(ARR : in VSTRING) return CHARACTER is
-    use TEXT_IO;
-  begin
-    case (CHAR(ARR, TSTRING.FIRST + 1)) is
-      when 'a' =>
-        return ASCII.BEL;
-      when 'b' =>
-        return ASCII.BS;
-      when 'f' =>
-        return ASCII.FF;
-      when 'n' =>
-        return ASCII.LF;
-      when 'r' =>
-        return ASCII.CR;
-      when 't' =>
-        return ASCII.HT;
-      when 'v' =>
-        return ASCII.VT;
-      when 'u' =>
-        -- \u<Unicode>
+         when 'b' =>
+            return Unicode.BS;
 
-         declare
-            Esc_Char : constant Character
-              := Character'Val
-                (Integer'Value
-                     ("16#"
-                      & Str (TSTRING.Slice (Arr, TSTRING.First + 2, Len (Arr)))
-                      & "#"));
+         when 'f' =>
+            return Unicode.FF;
 
-         begin
-            if (ESC_CHAR = ASCII.NUL) then
-               MISC.SYNERR("escape sequence for null not allowed");
-               return ASCII.SOH;
-            end if;
+         when 'n' =>
+            return Unicode.LF;
 
-            return ESC_CHAR;
-         end;
+         when 'r' =>
+            return Unicode.CR;
 
-      when '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' =>
+         when 't' =>
+            return Unicode.HT;
 
-        -- \<octal>
-        declare
-          C, ESC_CHAR : CHARACTER;
-          SPTR        : INTEGER := TSTRING.FIRST + 1;
-        begin
-          ESC_CHAR := OTOI(TSTRING.SLICE(ARR, TSTRING.FIRST + 1, TSTRING.LEN(ARR
-            )));
-          if (ESC_CHAR = ASCII.NUL) then
-            MISC.SYNERR("escape sequence for null not allowed");
-            return ASCII.SOH;
-          end if;
+         when 'v' =>
+            return Unicode.VT;
 
-          return ESC_CHAR;
-        end;
-      when others =>
-        return CHAR(ARR, TSTRING.FIRST + 1);
-    end case;
+         when 'u' =>
+            -- \u<Unicode>
+
+            declare
+               Esc_Char : constant Unicode_Character
+                 := Unicode_Character'Val
+                     (Integer'Value
+                       ("16#"
+                          & Str
+                             (TSTRING.Slice (Arr, TSTRING.First + 2, Len (Arr)))
+                          & "#"));
+
+            begin
+               if (ESC_CHAR = Unicode.NUL) then
+                  MISC.SYNERR("escape sequence for null not allowed");
+
+                  return Unicode.SOH;
+               end if;
+
+               return ESC_CHAR;
+            end;
+
+         when '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' =>
+            -- \<octal>
+
+            declare
+               C, ESC_CHAR : Character;
+               SPTR        : INTEGER := TSTRING.FIRST + 1;
+
+            begin
+               ESC_CHAR :=
+                 OTOI (TSTRING.SLICE(ARR, TSTRING.FIRST + 1, TSTRING.LEN(ARR)));
+
+               if (ESC_CHAR = ASCII.NUL) then
+                  MISC.SYNERR("escape sequence for null not allowed");
+
+                  return Unicode.SOH;
+               end if;
+
+               return Unicode_Character'Val (Character'Pos (ESC_CHAR));
+            end;
+
+         when others =>
+            return
+              Unicode_Character'Val
+               (Character'Pos (CHAR (ARR, TSTRING.FIRST + 1)));
+      end case;
   end MYESC;
 
 

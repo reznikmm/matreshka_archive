@@ -34,6 +34,7 @@ with misc_defs, misc, sym, parse_tokens, int_io;
 with tstring, external_file_manager;
 use misc_defs, parse_tokens, tstring;
 use external_file_manager;
+with Unicode;
 
 package ascan is
     call_yylex : boolean := false;

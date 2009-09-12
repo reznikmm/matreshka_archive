@@ -1,11 +1,15 @@
-
 project Aflex is
 
    for Main use ("aflex.adb");
    for Object_Dir use ".objs";
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-gnat05", "-gnatwa");
+      for Default_Switches ("ada") use ("-gnat05", "-gnatwa");
    end Compiler;
 
+   package Binder is
+      for Default_Switches ("ada") use ("-E");
+   end Binder;
+
 end Aflex;
+

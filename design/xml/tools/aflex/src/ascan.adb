@@ -3,6 +3,7 @@ with ascan.IO; use ascan.IO;
 package body ascan is
 package ascan_DFA renames ascan.DFA;
 package ascan_IO renames ascan.IO;
+   use Unicode;
 
 beglin : boolean := false;
 i, bracelevel: integer;
@@ -867,7 +868,7 @@ when 37 =>
 								2, YYLength-1);
 
 			nmdefptr := sym.ndlookup( tmpbuf );
-			if ( nmdefptr = NUL ) then
+			if nmdefptr = TString.NUL then
 			    misc.synerr( "undefined {name}" );
 			else
 			    -- push back name surrounded by ()'s
@@ -1113,20 +1114,25 @@ when 77 =>
 when 78 => 
 --# line 350 "ascan.l"
 
-			yylval := CHARACTER'POS(misc.myesc( vstr(yytext(1..YYLength)) ));
-			return ( CHAR );
+			yylval :=
+                          Unicode_Character'Pos
+                           (Misc.MYESC (vstr (yytext (1 .. YYLength))));
+
+			return CHAR;
 			
 
 when 79 => 
---# line 355 "ascan.l"
+--# line 358 "ascan.l"
 
-			yylval := CHARACTER'POS(misc.myesc( vstr(yytext(1..YYLength)) ));
+			yylval :=
+                          Unicode_Character'Pos
+                           (misc.myesc (vstr (yytext (1 .. YYLength))));
 			ENTER(CCL);
 			return ( CHAR );
 			
 
 when 80 => 
---# line 362 "ascan.l"
+--# line 367 "ascan.l"
  if ( check_yylex_here ) then
 				return End_Of_Input;
 			  else
@@ -1135,7 +1141,7 @@ when 80 =>
 			
 
 when 81 => 
---# line 368 "ascan.l"
+--# line 373 "ascan.l"
 raise AFLEX_SCANNER_JAMMED;
 when YY_END_OF_BUFFER + INITIAL + 1 |
 YY_END_OF_BUFFER + SECT2 + 1 |
@@ -1201,7 +1207,7 @@ YY_END_OF_BUFFER + ACTION_STRING + 1 =>
             end case; -- case (yy_act)
         end loop; -- end of loop waiting for end of file
 end YYLex;
---# line 368 "ascan.l"
+--# line 373 "ascan.l"
 begin
     if (call_yylex) then
     	toktype := YYLex;

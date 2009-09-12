@@ -218,7 +218,7 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 								2, YYLength-1);
 
 			nmdefptr := sym.ndlookup( tmpbuf );
-			if ( nmdefptr = NUL ) then
+			if nmdefptr = TString.NUL then
 			    misc.synerr( "undefined {name}" );
 			else
 			    -- push back name surrounded by ()'s
@@ -348,12 +348,17 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 
 
 <SECT2,QUOTE,CCL>{ESCSEQ}	{
-			yylval := CHARACTER'POS(misc.myesc( vstr(yytext(1..YYLength)) ));
-			return ( CHAR );
+			yylval :=
+                          Unicode_Character'Pos
+                           (Misc.MYESC (vstr (yytext (1 .. YYLength))));
+
+			return CHAR;
 			}
 
 <FIRSTCCL>{ESCSEQ}	{
-			yylval := CHARACTER'POS(misc.myesc( vstr(yytext(1..YYLength)) ));
+			yylval :=
+                          Unicode_Character'Pos
+                           (misc.myesc (vstr (yytext (1 .. YYLength))));
 			ENTER(CCL);
 			return ( CHAR );
 			}
@@ -371,12 +376,14 @@ with misc_defs, misc, sym, parse_tokens, int_io;
 with tstring, external_file_manager;
 use misc_defs, parse_tokens, tstring;
 use external_file_manager;
+with Unicode;
 
 ##
     call_yylex : boolean := false;
     function get_token return Token;
 ##
 ##
+   use Unicode;
 
 beglin : boolean := false;
 i, bracelevel: integer;
