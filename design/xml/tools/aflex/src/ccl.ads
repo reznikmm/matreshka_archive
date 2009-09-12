@@ -19,14 +19,19 @@
 -- TITLE character classes routines
 -- AUTHOR: John Self (UCI)
 -- DESCRIPTION routines for character classes like [abc]
--- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/cclS.a,v 1.3 90/01/12 15:19:43 self Exp Locker: self $ 
+-- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/cclS.a,v 1.3 90/01/12 15:19:43 self Exp Locker: self $
 
-with MISC_DEFS, TEXT_IO; use MISC_DEFS, TEXT_IO; 
-package CCL is 
-  procedure CCLADD(CCLP : in INTEGER; 
-                   CH   : in CHARACTER); 
-  function CCLINIT return INTEGER; 
-  procedure CCLNEGATE(CCLP : in INTEGER); 
-  procedure LIST_CHARACTER_SET(F    : in FILE_TYPE; 
-                               CSET : in C_SIZE_BOOL_ARRAY); 
-end CCL; 
+with MISC_DEFS, TEXT_IO; use MISC_DEFS, TEXT_IO;
+with Unicode;
+
+package CCL is
+
+   procedure CCL_Add
+    (CCLP : Integer;
+     Ch   : Unicode.Unicode_Character);
+
+  function CCLINIT return INTEGER;
+  procedure CCLNEGATE(CCLP : in INTEGER);
+  procedure LIST_CHARACTER_SET(F    : in FILE_TYPE;
+                               CSET : in C_SIZE_BOOL_ARRAY);
+end CCL;

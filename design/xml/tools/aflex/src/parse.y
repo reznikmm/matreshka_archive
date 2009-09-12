@@ -457,7 +457,7 @@ singleton       :  singleton '*'
 			if ( not madeany ) then
 			    -- create the '.' character class
 			    anyccl := ccl.cclinit;
-			    ccl.ccladd( anyccl, ASCII.LF );
+			    ccl.ccl_add( anyccl, Unicode.LF );
 			    ccl.cclnegate( anyccl );
 
 			    if ( useecs ) then
@@ -550,8 +550,8 @@ ccl             :  ccl CHAR '-' CHAR
 				end if;    
     	    	    	    end if;
 
-			    for i in $2 .. $4 loop
-			        ccl.ccladd( $1, CHARACTER'VAL(i) );
+			    for J in $2 .. $4 loop
+			        ccl.ccl_add ($1, Unicode_Character'Val (J));
     	    	    	    end loop;
 			    
 			    -- keep track if this ccl is staying in
@@ -571,7 +571,7 @@ ccl             :  ccl CHAR '-' CHAR
 				$2 := misc.clower( $2 );
     	    	    	    end if;
 			end if;    
-			ccl.ccladd( $1, CHARACTER'VAL($2) );
+			ccl.ccl_add ($1, Unicode_Character'Val ($2));
 			cclsorted := cclsorted and ($2 > lastchar);
 			lastchar := $2;
 			$$ := $1;

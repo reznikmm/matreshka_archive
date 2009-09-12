@@ -4,4 +4,8 @@ project Aflex is
    for Main use ("aflex.adb");
    for Object_Dir use ".objs";
 
+   package Compiler is
+      for Default_Switches ("Ada") use ("-gnat05", "-gnatwa");
+   end Compiler;
+
 end Aflex;

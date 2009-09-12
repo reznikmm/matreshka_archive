@@ -24,13 +24,15 @@
 --       items (functions, MACROS, variables definitions) which were at the
 --       top level of flex.
 -- $Header: /co/ua/self/arcadia/alex/ada/RCS/misc_defsS.a,v 1.8 90/01/04 13:39:
--- 33 self Exp Locker: self $ 
+-- 33 self Exp Locker: self $
 
 -- 02/16/98 Wolfgang Lohmann(lohmi@acm.org):
 -- Changed constant CSize from 127 to Pos(Last Char) for porting to gnat
 
 with TEXT_IO, TSTRING;
 use TEXT_IO, TSTRING;
+
+with Unicode;
 
 package MISC_DEFS is
 
@@ -47,11 +49,11 @@ package MISC_DEFS is
     ;
   TRLCONTXT, XCLUFLG, CCLSORTED, VARLENGTH, VARIABLE_TRAIL_RULE : BOOLEAN;
 
-  MADEANY : BOOLEAN := FALSE;  -- whether we've made the '.' character class 
+  MADEANY : BOOLEAN := FALSE;  -- whether we've made the '.' character class
   PREVIOUS_CONTINUED_ACTION : BOOLEAN; -- whether the previous rule's action wa
                                        -- s '|'
 
-  -- maximum line length we'll have to deal with 
+  -- maximum line length we'll have to deal with
   MAXLINE : constant INTEGER := 1024;
 
   -- These typees are needed for the various allocators.
@@ -66,6 +68,10 @@ package MISC_DEFS is
   type BOOLEAN_PTR is access BOOLEAN_ARRAY;
   type CHAR_ARRAY is array ( INTEGER range <> ) of CHARACTER;
   type CHAR_PTR is access CHAR_ARRAY;
+
+   type Unicode_Character_Array is
+     array (Integer range <>) of Unicode.Unicode_Character;
+   type Unicode_Character_Array_Access is access Unicode_Character_Array;
 
   -- different types of states; values are useful as masks, as well, for
   -- routines like check_trailing_context()
@@ -90,7 +96,7 @@ package MISC_DEFS is
   type UNBOUNDED_DFAACC_ARRAY is array ( INTEGER range <> ) of DFAACC_TYPE;
   type DFAACC_PTR is access UNBOUNDED_DFAACC_ARRAY;
 
-  -- maximum size of file name 
+  -- maximum size of file name
 
   FILENAMESIZE : constant INTEGER := 1024;
 
@@ -156,7 +162,7 @@ package MISC_DEFS is
 
   NIL : constant INTEGER := 0;
 
-  JAM : constant INTEGER := - 1; -- to mark a missing DFA transition 
+  JAM : constant INTEGER := - 1; -- to mark a missing DFA transition
   NO_TRANSITION : constant INTEGER := NIL;
   UNIQUE : constant INTEGER := - 1; -- marks a symbol as an e.c. representative
   INFINITY : constant INTEGER := - 1; -- for x{5,} constructions
@@ -171,7 +177,7 @@ package MISC_DEFS is
   MAX_CCLS_INCREMENT : constant INTEGER := 100;
 
   -- size of table holding members of character classes
-  INITIAL_MAX_CCL_TBL_SIZE : constant INTEGER := 500;
+  Initial_Max_CCL_Table_Size : constant INTEGER := 500;
   MAX_CCL_TBL_SIZE_INCREMENT : constant INTEGER := 250;
   INITIAL_MAX_RULES : constant INTEGER := 100;
   -- default maximum number of rules
@@ -179,7 +185,7 @@ package MISC_DEFS is
 
   INITIAL_MNS : constant INTEGER := 2000; -- default maximum number of nfa stat
                                           -- es
-  MNS_INCREMENT : constant INTEGER := 1000; -- amount to bump above by if it's 
+  MNS_INCREMENT : constant INTEGER := 1000; -- amount to bump above by if it's
                                             -- not enough
 
   INITIAL_MAX_DFAS : constant INTEGER := 1000; -- default maximum number of dfa
@@ -208,12 +214,12 @@ package MISC_DEFS is
 
   INITIAL_MAX_SCS : constant INTEGER := 40; -- maximum number of start conditio
                                             -- ns
-  MAX_SCS_INCREMENT : constant INTEGER := 40; -- amount to bump by if it's not 
+  MAX_SCS_INCREMENT : constant INTEGER := 40; -- amount to bump by if it's not
                                               -- enough
 
   ONE_STACK_SIZE : constant INTEGER := 500; -- stack of states with only one ou
                                             -- t-transition
-  SAME_TRANS : constant INTEGER := - 1; -- transition is the same as "default" 
+  SAME_TRANS : constant INTEGER := - 1; -- transition is the same as "default"
                                         -- entry for state
 
   -- the following percentages are used to tune table compression:
@@ -226,7 +232,7 @@ package MISC_DEFS is
 
   -- the percentage the number of homogeneous out-transitions of a state
   -- must be of the number of total out-transitions of the state in order
-  -- that the state's transition table is first compared with a potential 
+  -- that the state's transition table is first compared with a potential
   -- template of the most common out-transition instead of with the first
   --proto in the proto queue
 
@@ -512,10 +518,10 @@ package MISC_DEFS is
   --	to represent the unique ccl's
   -- ccltbl - holds the characters in each ccl - indexed by cclmap
 
-  CURRENT_MAX_CCL_TBL_SIZE, LASTCCL, CURRENT_MAXCCLS, CCLREUSE : INTEGER;
+   Current_Max_CCL_Table_Size, LASTCCL, CURRENT_MAXCCLS, CCLREUSE : Integer;
   CCLMAP, CCLLEN, CCLNG : INT_PTR;
 
-  CCLTBL : CHAR_PTR;
+  CCLTBL : Unicode_Character_Array_Access;
 
 
   -- variables for miscellaneous information:
@@ -555,7 +561,9 @@ package MISC_DEFS is
 
   function ALLOCATE_DFAACC_UNION (SIZE : in INTEGER) return DFAACC_PTR;
 
-  function  ALLOCATE_CHARACTER_ARRAY (SIZE : in INTEGER) return CHAR_PTR;
+   function Allocate_Unicode_Character_Array
+    (Size : Integer)
+       return Unicode_Character_Array_Access;
 
   function ALLOCATE_RULE_ENUM_ARRAY (SIZE : in INTEGER) return RULE_ENUM_PTR;
 
@@ -575,8 +583,9 @@ package MISC_DEFS is
   procedure REALLOCATE_DFAACC_UNION (ARR : in out DFAACC_PTR;
       SIZE : in INTEGER);
 
-  procedure REALLOCATE_CHARACTER_ARRAY (ARR : in out CHAR_PTR;
-       SIZE : in INTEGER);
+   procedure Reallocate_Unicode_Character_Array
+     (Item : in out Unicode_Character_Array_Access;
+      Size : Integer);
 
   procedure REALLOCATE_RULE_ENUM_ARRAY (ARR : in out RULE_ENUM_PTR;
        SIZE : in INTEGER);

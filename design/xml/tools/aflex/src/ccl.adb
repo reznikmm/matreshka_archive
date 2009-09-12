@@ -19,84 +19,97 @@
 -- TITLE character classes routines
 -- AUTHOR: John Self (UCI)
 -- DESCRIPTION routines for character classes like [abc]
--- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/cclB.a,v 1.7 1993/04/27 23:17:15 self Exp $ 
+-- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/cclB.a,v 1.7 1993/04/27 23:17:15 self Exp $
 
-with MISC_DEFS, TEXT_IO, MISC, TSTRING; use MISC_DEFS, TEXT_IO; 
-package body CCL is 
+with MISC, TSTRING;
 
--- ccladd - add a single character to a ccl
-  procedure CCLADD(CCLP : in INTEGER; 
-                   CH   : in CHARACTER) is 
-    IND, LEN, NEWPOS : INTEGER; 
-  begin
-    LEN := CCLLEN(CCLP); 
-    IND := CCLMAP(CCLP); 
+package body CCL is
 
-    -- check to see if the character is already in the ccl
-    for I in 0 .. LEN - 1 loop
-      if (CCLTBL(IND + I) = CH) then 
-        return; 
-      end if; 
-    end loop; 
+   use type Unicode.Unicode_Character;
 
-    NEWPOS := IND + LEN; 
+   -- ccladd - add a single character to a ccl
 
-    if (NEWPOS >= CURRENT_MAX_CCL_TBL_SIZE) then 
-      CURRENT_MAX_CCL_TBL_SIZE := CURRENT_MAX_CCL_TBL_SIZE + 
-        MAX_CCL_TBL_SIZE_INCREMENT; 
+   ------------
+   -- CCLADD --
+   ------------
 
-      NUM_REALLOCS := NUM_REALLOCS + 1; 
+   procedure CCL_Add
+    (CCLP : Integer;
+     Ch   : Unicode.Unicode_Character)
+   is
+      IND, LEN, NEWPOS : INTEGER;
 
-      REALLOCATE_CHARACTER_ARRAY(CCLTBL, CURRENT_MAX_CCL_TBL_SIZE); 
-    end if; 
+   begin
+      LEN := CCLLEN(CCLP);
+      IND := CCLMAP(CCLP);
 
-    CCLLEN(CCLP) := LEN + 1; 
-    CCLTBL(NEWPOS) := CH; 
+      -- check to see if the character is already in the ccl
 
-  end CCLADD; 
+      for I in 0 .. LEN - 1 loop
+         if (CCLTBL(IND + I) = CH) then
+            return;
+         end if;
+      end loop;
+
+      NEWPOS := IND + LEN;
+
+      if (NEWPOS >= Current_Max_CCL_Table_Size) then
+         Current_Max_CCL_Table_Size := Current_Max_CCL_Table_Size +
+           MAX_CCL_TBL_SIZE_INCREMENT;
+
+         NUM_REALLOCS := NUM_REALLOCS + 1;
+
+         Reallocate_Unicode_Character_Array
+           (CCLTBL, Current_Max_CCL_Table_Size);
+      end if;
+
+      CCLLEN(CCLP) := LEN + 1;
+      CCLTBL(NEWPOS) := CH;
+
+   end CCL_Add;
 
   -- cclinit - make an empty ccl
 
-  function CCLINIT return INTEGER is 
+  function CCLINIT return INTEGER is
   begin
-    LASTCCL := LASTCCL + 1; 
-    if (LASTCCL >= CURRENT_MAXCCLS) then 
-      CURRENT_MAXCCLS := CURRENT_MAXCCLS + MAX_CCLS_INCREMENT; 
+    LASTCCL := LASTCCL + 1;
+    if (LASTCCL >= CURRENT_MAXCCLS) then
+      CURRENT_MAXCCLS := CURRENT_MAXCCLS + MAX_CCLS_INCREMENT;
 
-      NUM_REALLOCS := NUM_REALLOCS + 1; 
+      NUM_REALLOCS := NUM_REALLOCS + 1;
 
-      REALLOCATE_INTEGER_ARRAY(CCLMAP, CURRENT_MAXCCLS); 
-      REALLOCATE_INTEGER_ARRAY(CCLLEN, CURRENT_MAXCCLS); 
-      REALLOCATE_INTEGER_ARRAY(CCLNG, CURRENT_MAXCCLS); 
-    end if; 
+      REALLOCATE_INTEGER_ARRAY(CCLMAP, CURRENT_MAXCCLS);
+      REALLOCATE_INTEGER_ARRAY(CCLLEN, CURRENT_MAXCCLS);
+      REALLOCATE_INTEGER_ARRAY(CCLNG, CURRENT_MAXCCLS);
+    end if;
 
-    if (LASTCCL = 1) then 
+    if (LASTCCL = 1) then
 
       -- we're making the first ccl
-      CCLMAP(LASTCCL) := 0; 
+      CCLMAP(LASTCCL) := 0;
 
-    else 
+    else
 
       -- the new pointer is just past the end of the last ccl.  Since
       -- the cclmap points to the \first/ character of a ccl, adding the
       -- length of the ccl to the cclmap pointer will produce a cursor
       -- to the first free space
-      CCLMAP(LASTCCL) := CCLMAP(LASTCCL - 1) + CCLLEN(LASTCCL - 1); 
-    end if; 
+      CCLMAP(LASTCCL) := CCLMAP(LASTCCL - 1) + CCLLEN(LASTCCL - 1);
+    end if;
 
-    CCLLEN(LASTCCL) := 0; 
-    CCLNG(LASTCCL) := 0; 
+    CCLLEN(LASTCCL) := 0;
+    CCLNG(LASTCCL) := 0;
 
     -- ccl's start out life un-negated
-    return LASTCCL; 
-  end CCLINIT; 
+    return LASTCCL;
+  end CCLINIT;
 
   -- cclnegate - negate a ccl
 
-  procedure CCLNEGATE(CCLP : in INTEGER) is 
+  procedure CCLNEGATE(CCLP : in INTEGER) is
   begin
-    CCLNG(CCLP) := 1; 
-  end CCLNEGATE; 
+    CCLNG(CCLP) := 1;
+  end CCLNEGATE;
 
   -- list_character_set - list the members of a set of characters in CCL form
   --
@@ -104,38 +117,38 @@ package body CCL is
   -- characters present in the given set.  A character is present if it
   -- has a non-zero value in the set array.
 
-  procedure LIST_CHARACTER_SET(F    : in FILE_TYPE; 
-                               CSET : in C_SIZE_BOOL_ARRAY) is 
-    I, START_CHAR : INTEGER; 
+  procedure LIST_CHARACTER_SET(F    : in FILE_TYPE;
+                               CSET : in C_SIZE_BOOL_ARRAY) is
+    I, START_CHAR : INTEGER;
   begin
-    TEXT_IO.PUT(F, '['); 
+    TEXT_IO.PUT(F, '[');
 
-    I := 1; 
+    I := 1;
     while (I <= CSIZE) loop
-      if (CSET(I)) then 
-        START_CHAR := I; 
+      if (CSET(I)) then
+        START_CHAR := I;
 
-        TEXT_IO.PUT(F, ' '); 
+        TEXT_IO.PUT(F, ' ');
 
-        TSTRING.PUT(F, MISC.READABLE_FORM(CHARACTER'VAL(I))); 
+        TSTRING.PUT(F, MISC.READABLE_FORM(CHARACTER'VAL(I)));
 
-        I := I + 1; 
+        I := I + 1;
         while ((I <= CSIZE) and then (CSET(I))) loop
-          I := I + 1; 
-        end loop; 
+          I := I + 1;
+        end loop;
 
-        if (I - 1 > START_CHAR) then 
+        if (I - 1 > START_CHAR) then
 
           -- this was a run
-          TEXT_IO.PUT(F, "-"); 
-          TSTRING.PUT(F, MISC.READABLE_FORM(CHARACTER'VAL(I - 1))); 
-        end if; 
+          TEXT_IO.PUT(F, "-");
+          TSTRING.PUT(F, MISC.READABLE_FORM(CHARACTER'VAL(I - 1)));
+        end if;
 
-        TEXT_IO.PUT(F, ' '); 
-      end if; 
-      I := I + 1; 
-    end loop; 
+        TEXT_IO.PUT(F, ' ');
+      end if;
+      I := I + 1;
+    end loop;
 
-    TEXT_IO.PUT(F, ']'); 
-  end LIST_CHARACTER_SET; 
-end CCL; 
+    TEXT_IO.PUT(F, ']');
+  end LIST_CHARACTER_SET;
+end CCL;

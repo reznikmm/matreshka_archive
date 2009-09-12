@@ -23,157 +23,170 @@
 -- NOTES The real purpose of this file is to contain all miscellaneous
 --       items (functions, MACROS, variables definitions) which were at the
 --       top level of flex.
--- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/misc_defsB.a,v 1.5 90/01/12 15:20:21 self Exp Locker: self $ 
+-- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/misc_defsB.a,v 1.5 90/01/12 15:20:21 self Exp Locker: self $
 
-package body MISC_DEFS is 
+package body MISC_DEFS is
 
 -- returns true if an nfa state has an epsilon out-transition slot
 -- that can be used.  This definition is currently not used.
 
-  function FREE_EPSILON(STATE : in INTEGER) return BOOLEAN is 
+  function FREE_EPSILON(STATE : in INTEGER) return BOOLEAN is
   begin
     return ((TRANSCHAR(STATE) = SYM_EPSILON) and (TRANS2(STATE) = NO_TRANSITION)
-      and (FINALST(STATE) /= STATE)); 
-  end FREE_EPSILON; 
+      and (FINALST(STATE) /= STATE));
+  end FREE_EPSILON;
 
   -- returns true if an nfa state has an epsilon out-transition character
   -- and both slots are free
 
-  function SUPER_FREE_EPSILON(STATE : in INTEGER) return BOOLEAN is 
+  function SUPER_FREE_EPSILON(STATE : in INTEGER) return BOOLEAN is
   begin
     return ((TRANSCHAR(STATE) = SYM_EPSILON) and (TRANS1(STATE) = NO_TRANSITION)
-      ); 
-  end SUPER_FREE_EPSILON; 
+      );
+  end SUPER_FREE_EPSILON;
 
-  function ALLOCATE_INTEGER_ARRAY(SIZE : in INTEGER) return INT_PTR is 
+  function ALLOCATE_INTEGER_ARRAY(SIZE : in INTEGER) return INT_PTR is
   begin
-    return new UNBOUNDED_INT_ARRAY(0 .. SIZE); 
-  end ALLOCATE_INTEGER_ARRAY; 
+    return new UNBOUNDED_INT_ARRAY(0 .. SIZE);
+  end ALLOCATE_INTEGER_ARRAY;
 
-  procedure REALLOCATE_INTEGER_ARRAY(ARR  : in out INT_PTR; 
-                                     SIZE : in INTEGER) is 
-    NEW_ARR : INT_PTR; 
+  procedure REALLOCATE_INTEGER_ARRAY(ARR  : in out INT_PTR;
+                                     SIZE : in INTEGER) is
+    NEW_ARR : INT_PTR;
   begin
-    NEW_ARR := ALLOCATE_INTEGER_ARRAY(SIZE); 
-    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST); 
-    ARR := NEW_ARR; 
-  end REALLOCATE_INTEGER_ARRAY; 
+    NEW_ARR := ALLOCATE_INTEGER_ARRAY(SIZE);
+    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST);
+    ARR := NEW_ARR;
+  end REALLOCATE_INTEGER_ARRAY;
 
-  procedure REALLOCATE_STATE_ENUM_ARRAY(ARR  : in out STATE_ENUM_PTR; 
-                                        SIZE : in INTEGER) is 
-    NEW_ARR : STATE_ENUM_PTR; 
+  procedure REALLOCATE_STATE_ENUM_ARRAY(ARR  : in out STATE_ENUM_PTR;
+                                        SIZE : in INTEGER) is
+    NEW_ARR : STATE_ENUM_PTR;
   begin
-    NEW_ARR := ALLOCATE_STATE_ENUM_ARRAY(SIZE); 
-    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST); 
-    ARR := NEW_ARR; 
-  end REALLOCATE_STATE_ENUM_ARRAY; 
+    NEW_ARR := ALLOCATE_STATE_ENUM_ARRAY(SIZE);
+    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST);
+    ARR := NEW_ARR;
+  end REALLOCATE_STATE_ENUM_ARRAY;
 
-  procedure REALLOCATE_RULE_ENUM_ARRAY(ARR  : in out RULE_ENUM_PTR; 
-                                       SIZE : in INTEGER) is 
-    NEW_ARR : RULE_ENUM_PTR; 
+  procedure REALLOCATE_RULE_ENUM_ARRAY(ARR  : in out RULE_ENUM_PTR;
+                                       SIZE : in INTEGER) is
+    NEW_ARR : RULE_ENUM_PTR;
   begin
-    NEW_ARR := ALLOCATE_RULE_ENUM_ARRAY(SIZE); 
-    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST); 
-    ARR := NEW_ARR; 
-  end REALLOCATE_RULE_ENUM_ARRAY; 
+    NEW_ARR := ALLOCATE_RULE_ENUM_ARRAY(SIZE);
+    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST);
+    ARR := NEW_ARR;
+  end REALLOCATE_RULE_ENUM_ARRAY;
 
-  function ALLOCATE_INT_PTR_ARRAY(SIZE : in INTEGER) return INT_STAR_PTR is 
+  function ALLOCATE_INT_PTR_ARRAY(SIZE : in INTEGER) return INT_STAR_PTR is
   begin
-    return new UNBOUNDED_INT_STAR_ARRAY(0 .. SIZE); 
-  end ALLOCATE_INT_PTR_ARRAY; 
+    return new UNBOUNDED_INT_STAR_ARRAY(0 .. SIZE);
+  end ALLOCATE_INT_PTR_ARRAY;
 
-  function ALLOCATE_RULE_ENUM_ARRAY(SIZE : in INTEGER) return RULE_ENUM_PTR is 
+  function ALLOCATE_RULE_ENUM_ARRAY(SIZE : in INTEGER) return RULE_ENUM_PTR is
   begin
-    return new UNBOUNDED_RULE_ENUM_ARRAY(0 .. SIZE); 
-  end ALLOCATE_RULE_ENUM_ARRAY; 
+    return new UNBOUNDED_RULE_ENUM_ARRAY(0 .. SIZE);
+  end ALLOCATE_RULE_ENUM_ARRAY;
 
   function ALLOCATE_STATE_ENUM_ARRAY(SIZE : in INTEGER) return STATE_ENUM_PTR
-    is 
+    is
   begin
-    return new UNBOUNDED_STATE_ENUM_ARRAY(0 .. SIZE); 
-  end ALLOCATE_STATE_ENUM_ARRAY; 
+    return new UNBOUNDED_STATE_ENUM_ARRAY(0 .. SIZE);
+  end ALLOCATE_STATE_ENUM_ARRAY;
 
-  function ALLOCATE_BOOLEAN_ARRAY(SIZE : in INTEGER) return BOOLEAN_PTR is 
+  function ALLOCATE_BOOLEAN_ARRAY(SIZE : in INTEGER) return BOOLEAN_PTR is
   begin
-    return new BOOLEAN_ARRAY(0 .. SIZE); 
-  end ALLOCATE_BOOLEAN_ARRAY; 
+    return new BOOLEAN_ARRAY(0 .. SIZE);
+  end ALLOCATE_BOOLEAN_ARRAY;
 
-  function ALLOCATE_VSTRING_ARRAY(SIZE : in INTEGER) return VSTRING_PTR is 
+  function ALLOCATE_VSTRING_ARRAY(SIZE : in INTEGER) return VSTRING_PTR is
   begin
-    return new UNBOUNDED_VSTRING_ARRAY(0 .. SIZE); 
-  end ALLOCATE_VSTRING_ARRAY; 
+    return new UNBOUNDED_VSTRING_ARRAY(0 .. SIZE);
+  end ALLOCATE_VSTRING_ARRAY;
 
-  function ALLOCATE_DFAACC_UNION(SIZE : in INTEGER) return DFAACC_PTR is 
+  function ALLOCATE_DFAACC_UNION(SIZE : in INTEGER) return DFAACC_PTR is
   begin
-    return new UNBOUNDED_DFAACC_ARRAY(0 .. SIZE); 
-  end ALLOCATE_DFAACC_UNION; 
+    return new UNBOUNDED_DFAACC_ARRAY(0 .. SIZE);
+  end ALLOCATE_DFAACC_UNION;
 
-  procedure REALLOCATE_INT_PTR_ARRAY(ARR  : in out INT_STAR_PTR; 
-                                     SIZE : in INTEGER) is 
-    NEW_ARR : INT_STAR_PTR; 
+  procedure REALLOCATE_INT_PTR_ARRAY(ARR  : in out INT_STAR_PTR;
+                                     SIZE : in INTEGER) is
+    NEW_ARR : INT_STAR_PTR;
   begin
-    NEW_ARR := ALLOCATE_INT_PTR_ARRAY(SIZE); 
-    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST); 
-    ARR := NEW_ARR; 
-  end REALLOCATE_INT_PTR_ARRAY; 
+    NEW_ARR := ALLOCATE_INT_PTR_ARRAY(SIZE);
+    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST);
+    ARR := NEW_ARR;
+  end REALLOCATE_INT_PTR_ARRAY;
 
-  procedure REALLOCATE_CHARACTER_ARRAY(ARR  : in out CHAR_PTR; 
-                                       SIZE : in INTEGER) is 
-    NEW_ARR : CHAR_PTR; 
+   --------------------------------------
+   -- Allocate_Unicode_Character_Array --
+   --------------------------------------
+
+   function Allocate_Unicode_Character_Array
+    (Size : Integer)
+       return Unicode_Character_Array_Access is
+   begin
+      return new Unicode_Character_Array (0 .. Size);
+   end Allocate_Unicode_Character_Array;
+
+   ----------------------------------------
+   -- Reallocate_Unicode_Character_Array --
+   ----------------------------------------
+
+   procedure Reallocate_Unicode_Character_Array
+     (Item : in out Unicode_Character_Array_Access;
+      Size : Integer)
+   is
+      New_Item : Unicode_Character_Array_Access;
+
+   begin
+      New_Item := Allocate_Unicode_Character_Array (Size);
+      New_Item (0 .. Item'Last) := Item (0 .. Item'Last);
+      Item := New_Item;
+   end Reallocate_Unicode_Character_Array;
+
+  procedure REALLOCATE_VSTRING_ARRAY(ARR  : in out VSTRING_PTR;
+                                     SIZE : in INTEGER) is
+    NEW_ARR : VSTRING_PTR;
   begin
-    NEW_ARR := ALLOCATE_CHARACTER_ARRAY(SIZE); 
-    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST); 
-    ARR := NEW_ARR; 
-  end REALLOCATE_CHARACTER_ARRAY; 
+    NEW_ARR := ALLOCATE_VSTRING_ARRAY(SIZE);
+    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST);
+    ARR := NEW_ARR;
+  end REALLOCATE_VSTRING_ARRAY;
 
-  procedure REALLOCATE_VSTRING_ARRAY(ARR  : in out VSTRING_PTR; 
-                                     SIZE : in INTEGER) is 
-    NEW_ARR : VSTRING_PTR; 
+  procedure REALLOCATE_DFAACC_UNION(ARR  : in out DFAACC_PTR;
+                                    SIZE : in INTEGER) is
+    NEW_ARR : DFAACC_PTR;
   begin
-    NEW_ARR := ALLOCATE_VSTRING_ARRAY(SIZE); 
-    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST); 
-    ARR := NEW_ARR; 
-  end REALLOCATE_VSTRING_ARRAY; 
+    NEW_ARR := ALLOCATE_DFAACC_UNION(SIZE);
+    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST);
+    ARR := NEW_ARR;
+  end REALLOCATE_DFAACC_UNION;
 
-  function ALLOCATE_CHARACTER_ARRAY(SIZE : in INTEGER) return CHAR_PTR is 
+  procedure REALLOCATE_BOOLEAN_ARRAY(ARR  : in out BOOLEAN_PTR;
+                                     SIZE : in INTEGER) is
+    NEW_ARR : BOOLEAN_PTR;
   begin
-    return new CHAR_ARRAY(0 .. SIZE); 
-  end ALLOCATE_CHARACTER_ARRAY; 
+    NEW_ARR := ALLOCATE_BOOLEAN_ARRAY(SIZE);
+    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST);
+    ARR := NEW_ARR;
+  end REALLOCATE_BOOLEAN_ARRAY;
 
-  procedure REALLOCATE_DFAACC_UNION(ARR  : in out DFAACC_PTR; 
-                                    SIZE : in INTEGER) is 
-    NEW_ARR : DFAACC_PTR; 
+  function MAX(X, Y : in INTEGER) return INTEGER is
   begin
-    NEW_ARR := ALLOCATE_DFAACC_UNION(SIZE); 
-    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST); 
-    ARR := NEW_ARR; 
-  end REALLOCATE_DFAACC_UNION; 
+    if (X > Y) then
+      return X;
+    else
+      return Y;
+    end if;
+  end MAX;
 
-  procedure REALLOCATE_BOOLEAN_ARRAY(ARR  : in out BOOLEAN_PTR; 
-                                     SIZE : in INTEGER) is 
-    NEW_ARR : BOOLEAN_PTR; 
+  function MIN(X, Y : in INTEGER) return INTEGER is
   begin
-    NEW_ARR := ALLOCATE_BOOLEAN_ARRAY(SIZE); 
-    NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST); 
-    ARR := NEW_ARR; 
-  end REALLOCATE_BOOLEAN_ARRAY; 
+    if (X < Y) then
+      return X;
+    else
+      return Y;
+    end if;
+  end MIN;
 
-  function MAX(X, Y : in INTEGER) return INTEGER is 
-  begin
-    if (X > Y) then 
-      return X; 
-    else 
-      return Y; 
-    end if; 
-  end MAX; 
-
-  function MIN(X, Y : in INTEGER) return INTEGER is 
-  begin
-    if (X < Y) then 
-      return X; 
-    else 
-      return Y; 
-    end if; 
-  end MIN; 
-
-end MISC_DEFS; 
+end MISC_DEFS;

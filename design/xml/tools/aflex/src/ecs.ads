@@ -19,18 +19,22 @@
 -- TITLE equivalence class
 -- AUTHOR: John Self (UCI)
 -- DESCRIPTION finds equivalence classes so DFA will be smaller
--- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/ecsS.a,v 1.4 90/01/12 15:19:57 self Exp Locker: self $ 
+-- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/ecsS.a,v 1.4 90/01/12 15:19:57 self Exp Locker: self $
 
-with MISC_DEFS; use MISC_DEFS; 
-package ECS is 
-  procedure CCL2ECL; 
-  procedure CRE8ECS(FWD, BCK : in out C_SIZE_ARRAY; 
-                    NUM      : in INTEGER; 
-                    RESULT   : out INTEGER); 
-  procedure MKECCL(CCLS     : in out CHAR_ARRAY; 
-                   LENCCL   : in INTEGER; 
-                   FWD, BCK : in out UNBOUNDED_INT_ARRAY; 
-                   LLSIZ    : in INTEGER); 
-  procedure MKECHAR(TCH      : in INTEGER; 
-                    FWD, BCK : in out C_SIZE_ARRAY); 
-end ECS; 
+with MISC_DEFS; use MISC_DEFS;
+
+package ECS is
+  procedure CCL2ECL;
+  procedure CRE8ECS(FWD, BCK : in out C_SIZE_ARRAY;
+                    NUM      : in INTEGER;
+                    RESULT   : out INTEGER);
+
+   procedure MKECCL
+     (CCLS     : in out Unicode_Character_Array;
+      LENCCL   : Integer;
+      FWD, BCK : in out UNBOUNDED_INT_ARRAY;
+      LLSIZ    : Integer);
+
+  procedure MKECHAR(TCH      : in INTEGER;
+                    FWD, BCK : in out C_SIZE_ARRAY);
+end ECS;

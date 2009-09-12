@@ -24,9 +24,13 @@
 
 with MISC_DEFS, TSTRING, TEXT_IO, MISC, MAIN_BODY;
 with INT_IO, CALENDAR; use MISC, MISC_DEFS, TEXT_IO;
+with Unicode;
 
 package body MISC is
-  use TSTRING;
+
+   use TSTRING;
+   use Unicode;
+
   -- action_out - write the actions from the temporary file to lex.yy.c
 
   procedure ACTION_OUT is
@@ -84,43 +88,41 @@ package body MISC is
     end if;
   end CLOWER;
 
+   ------------
+   -- CSHELL --
+   ------------
 
-  -- cshell - shell sort a character array in increasing order
-  --
-  -- description
-  --   does a shell sort of the first n elements of array v.
-  --
-  -- passed
-  --   v - array to be sorted
-  --   n - number of elements of v to be sorted
+   procedure CSHELL
+    (V : in out Unicode_Character_Array;
+     N : Integer)
+   is
+      GAP, J, JG  : INTEGER;
+      K           : Unicode_Character;
+      LOWER_BOUND : INTEGER := V'FIRST;
 
-  procedure CSHELL(V : in out CHAR_ARRAY;
-                   N : in INTEGER) is
-    GAP, J, JG  : INTEGER;
-    K           : CHARACTER;
-    LOWER_BOUND : INTEGER := V'FIRST;
-  begin
-    GAP := N/2;
-    while GAP > 0 loop
-      for I in GAP .. N - 1 loop
-        J := I - GAP;
-        while (J >= 0) loop
-          JG := J + GAP;
+   begin
+      GAP := N / 2;
 
-          if (V(J + LOWER_BOUND) <= V(JG + LOWER_BOUND)) then
-            exit;
-          end if;
+      while GAP > 0 loop
+         for I in GAP .. N - 1 loop
+            J := I - GAP;
+            while (J >= 0) loop
+               JG := J + GAP;
 
-          K := V(J + LOWER_BOUND);
-          V(J + LOWER_BOUND) := V(JG + LOWER_BOUND);
-          V(JG + LOWER_BOUND) := K;
-          J := J - GAP;
-        end loop;
+               if (V(J + LOWER_BOUND) <= V(JG + LOWER_BOUND)) then
+                  exit;
+               end if;
+
+               K := V (J + LOWER_BOUND);
+               V(J + LOWER_BOUND) := V(JG + LOWER_BOUND);
+               V(JG + LOWER_BOUND) := K;
+               J := J - GAP;
+            end loop;
+         end loop;
+
+         GAP := GAP/2;
       end loop;
-      GAP := GAP/2;
-    end loop;
-  end CSHELL;
-
+   end CSHELL;
 
   -- dataend - finish up a block of data declarations
 
