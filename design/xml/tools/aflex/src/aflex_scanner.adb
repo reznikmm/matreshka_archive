@@ -1,10 +1,10 @@
 
-with PARSE_TOKENS, SCANNER; use PARSE_TOKENS, SCANNER; 
+with PARSE_TOKENS, Ascan; use PARSE_TOKENS, Ascan;
 
-package body AFLEX_SCANNER is 
-  function YYLEX return TOKEN is 
+package body AFLEX_SCANNER is
+  function YYLEX return TOKEN is
   begin
-    return SCANNER.GET_TOKEN; 
-  end YYLEX; 
+    return Ascan.GET_TOKEN;
+  end YYLEX;
 
-end AFLEX_SCANNER; 
+end AFLEX_SCANNER;

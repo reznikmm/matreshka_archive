@@ -1,6 +1,4 @@
-
-with ascan_dfa; use ascan_dfa; 
-package body ascan_dfa is
+package body ascan.DFA is
 function YYText return string is
     i : integer;
     str_loc : integer := 1;
@@ -41,4 +39,4 @@ begin
     yy_c_buf_p := yy_cp;
 end YY_DO_BEFORE_ACTION;
 
-end ascan_dfa;
+end ascan.DFA;

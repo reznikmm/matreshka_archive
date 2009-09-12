@@ -368,16 +368,16 @@ ESCSEQ		\\([^\n]|[0-9]{1,3})
 %%
 
 with misc_defs, misc, sym, parse_tokens, int_io;
-with tstring, ascan_dfa, ascan_io, external_file_manager;
+with tstring, external_file_manager;
 use misc_defs, parse_tokens, tstring;
-use ascan_dfa, ascan_io, external_file_manager;
+use external_file_manager;
 
-package scanner is
+##
     call_yylex : boolean := false;
     function get_token return Token;
-end scanner;
+##
 
-package body scanner is
+##
 
 beglin : boolean := false;
 i, bracelevel: integer;
@@ -522,4 +522,3 @@ end if;
     return toktype;
 
 end get_token;
-end scanner;

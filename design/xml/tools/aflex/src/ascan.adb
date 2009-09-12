@@ -1,5 +1,9 @@
 
-package body scanner is
+with ascan.DFA; use ascan.DFA; 
+with ascan.IO; use ascan.IO; 
+package body ascan is
+package ascan_DFA renames ascan.DFA;
+package ascan_IO renames ascan.IO;
 
 beglin : boolean := false;
 i, bracelevel: integer;
@@ -36,12 +40,12 @@ begin
 end check_yylex_here;
 
 function YYLex return Token is
-subtype short is integer range -32768..32767;
-    yy_act : integer;
-    yy_c : short;
+subtype short is Integer range -32768..32767;
+    yy_act : Integer;
+    yy_c   : short;
 
 -- returned upon end-of-file
-YY_END_TOK : constant integer := 0;
+YY_END_TOK : constant Integer := 0;
 YY_END_OF_BUFFER : constant := 82;
 subtype yy_state_type is integer;
 yy_current_state : yy_state_type;
@@ -86,7 +90,7 @@ yy_accept : constant array(0..206) of short :=
 
         0,   22,    4,    0,   34,    0
     ) ;
---98/02/21 Wolfgang Lohmann:
+
 yy_ec : constant array(CHARACTER'FIRST..CHARACTER'LAST) of short :=
     (   0,
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
@@ -102,7 +106,21 @@ yy_ec : constant array(CHARACTER'FIRST..CHARACTER'LAST) of short :=
 
        24,   25,   22,   22,   22,   22,   22,   22,   22,   22,
        26,   22,   22,   27,   28,   29,   22,   22,   22,   30,
-       22,   22,   31,   32,   33,    1,    others => 1
+       22,   22,   31,   32,   33,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1
     ) ;
 
 yy_meta : constant array(0..33) of short :=
@@ -392,42 +410,47 @@ yy_chk : constant array(0..913) of short :=
 
 procedure ECHO is
 begin
-   if (text_io.is_open(user_output_file)) then
-     text_io.put( user_output_file, yytext );
+   if (Text_IO.is_open(user_output_file)) then
+     Text_IO.Put( user_output_file, yytext );
    else
-     text_io.put( yytext );
+     Text_IO.Put( yytext );
    end if;
 end ECHO;
+pragma Inline (ECHO);
 
 -- enter a start condition.
 -- Using procedure requires a () after the ENTER, but makes everything
 -- much neater.
 
-procedure ENTER( state : integer ) is
+procedure ENTER( state : Integer ) is
 begin
      yy_start := 1 + 2 * state;
 end ENTER;
+pragma Inline (ENTER);
 
 -- action number for EOF rule of a given start state
-function YY_STATE_EOF(state : integer) return integer is
+function YY_STATE_EOF(state : Integer) return Integer is
 begin
      return YY_END_OF_BUFFER + state + 1;
 end YY_STATE_EOF;
+pragma Inline (YY_STATE_EOF);
 
 -- return all but the first 'n' matched characters back to the input stream
-procedure yyless(n : integer) is
+procedure yyless(n : Integer) is
 begin
         yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
         yy_cp := yy_bp + n;
         yy_c_buf_p := yy_cp;
         YY_DO_BEFORE_ACTION; -- set up yytext again
 end yyless;
+pragma Inline (yyless);
 
 -- redefine this if you have something you want each time.
 procedure YY_USER_ACTION is
 begin
         null;
 end;
+pragma Inline (YY_USER_ACTION);
 
 -- yy_get_previous_state - get the state just before the EOB char was reached
 
@@ -443,7 +466,7 @@ begin
 
     for yy_cp in yytext_ptr..yy_c_buf_p - 1 loop
 	yy_c := yy_ec(yy_ch_buf(yy_cp));
-	if ( yy_accept(yy_current_state) /= 0 ) then
+	if (yy_accept(yy_current_state) /= 0 ) then
 	    yy_last_accepting_state := yy_current_state;
 	    yy_last_accepting_cpos := yy_cp;
 	end if;
@@ -461,8 +484,9 @@ end yy_get_previous_state;
 
 procedure yyrestart( input_file : file_type ) is
 begin
-   open_input(text_io.name(input_file));
+   open_input(Text_IO.name(input_file));
 end yyrestart;
+pragma Inline (yyrestart);
 
 begin -- of YYLex
 <<new_file>>
@@ -512,7 +536,7 @@ begin -- of YYLex
 	end if;
 	loop
 		yy_c := yy_ec(yy_ch_buf(yy_cp));
-		if ( yy_accept(yy_current_state) /= 0 ) then
+		if (yy_accept(yy_current_state) /= 0 ) then
 		    yy_last_accepting_state := yy_current_state;
 		    yy_last_accepting_cpos := yy_cp;
 		end if;
@@ -716,7 +740,7 @@ when 23 =>
 
 when 24 => 
 --# line 147 "ascan.l"
- return ( '^' );  
+ return ( '^' ); 
 
 when 25 => 
 --# line 148 "ascan.l"
@@ -1201,7 +1225,7 @@ end if;
 	    end if;
     	end if;
     end if;
-    
+
     if ( trace ) then
 	if ( beglin ) then
 	    int_io.put( Standard_Error, num_rules + 1 );
@@ -1230,7 +1254,7 @@ end if;
        		text_io.put( Standard_Error, " " );
 
 	    when SECTEND =>
-       		text_io.put_line( Standard_Error, "%%" );	   
+       		text_io.put_line( Standard_Error, "%%" );
 
 		-- we set beglin to be true so we'll start
 		-- writing out numbers as we echo rules.  aflexscan() has
@@ -1261,7 +1285,7 @@ end if;
 	    when PREVCCL =>
 		text_io.put( Standard_Error, '[' );
    	    	int_io.put( Standard_Error, yylval );
-		text_io.put( Standard_Error, ']' );		
+		text_io.put( Standard_Error, ']' );
 
     	    when End_Of_Input =>
     	    	text_io.put( Standard_Error, "End Marker" );
@@ -1271,8 +1295,8 @@ end if;
 		text_io.put_line( Standard_Error, Token'image(toktype));
     	end case;
     end if;
-	    
+
     return toktype;
 
 end get_token;
-end scanner;
+end ascan;

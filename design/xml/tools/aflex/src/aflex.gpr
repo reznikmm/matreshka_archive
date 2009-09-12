@@ -1,0 +1,7 @@
+
+project Aflex is
+
+   for Main use ("aflex.adb");
+   for Object_Dir use ".objs";
+
+end Aflex;
