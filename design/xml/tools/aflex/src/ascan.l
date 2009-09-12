@@ -39,7 +39,7 @@ NOT_NAME	[^a-z_\n]+
 
 SCNAME		{NAME}
 
-ESCSEQ		\\([^\n]|[0-9]{1,3})
+ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 
 %%
 
@@ -376,7 +376,6 @@ use external_file_manager;
     call_yylex : boolean := false;
     function get_token return Token;
 ##
-
 ##
 
 beglin : boolean := false;
