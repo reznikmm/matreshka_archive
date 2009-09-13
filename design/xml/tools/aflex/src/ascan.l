@@ -90,19 +90,19 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 			}
 
 <PICKUPDEF>{NOT_WS}.*	{
-			nmdef := vstr(yytext(1..YYLength));
+			nmdef := +YYText (1 .. YYLength);
 
-			i := tstring.len( nmdef );
-			while ( i >= tstring.first ) loop
-			    if ( (CHAR(nmdef,i) /= ' ') and
-				 (CHAR(nmdef,i) /= ASCII.HT) ) then
+			i := length (nmdef);
+			while i >= 1 loop
+			    if Element (nmdef, i) /= ' '
+                              and Element (nmdef, i) /= ASCII.HT
+                            then
 				exit;
 			    end if;
 			    i := i - 1;
 			end loop;
 
-                        sym.ndinstal( +nmstr,
-				+tstring.slice(nmdef, tstring.first, i) );
+                        sym.ndinstal (+nmstr, Unbounded_Slice (nmdef, 1, i));
 			didadef := true;
 			}
 
@@ -392,6 +392,9 @@ with Unicode;
    use Parser.Tokens;
    use Unicode;
 
+   function "+" (Item : String) return Unbounded_String
+     renames To_Unbounded_String;
+
    function "+" (Item : VSTRING) return Unbounded_String is
    begin
       return To_Unbounded_String (STR (Item));
@@ -410,7 +413,8 @@ function YYLex return Token is
     didadef, indented_code : boolean;
     cclval : integer;
     nmdefptr : vstring;
-    nmdef, tmpbuf : vstring;
+    nmdef    : Unbounded_String;
+    tmpbuf   : vstring;
 
 procedure ACTION_ECHO is
 begin
