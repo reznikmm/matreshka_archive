@@ -84,7 +84,7 @@ package Misc is
    function MYESC (ARR : in VSTRING) return Unicode.Unicode_Character;
    -- myesc - return character corresponding to escape sequence
 
-  function OTOI(STR : in VSTRING) return CHARACTER;
+  function OTOI(STR : in Unbounded_String) return CHARACTER;
   function READABLE_FORM(C : in CHARACTER) return Unbounded_String;
   procedure SYNERR(STR : in STRING);
   procedure TRANSITION_STRUCT_OUT(ELEMENT_V, ELEMENT_N : in INTEGER);

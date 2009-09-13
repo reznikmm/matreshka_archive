@@ -555,7 +555,7 @@ package body MISC is
 
             begin
                ESC_CHAR :=
-                 OTOI (TSTRING.SLICE(ARR, TSTRING.FIRST + 1, TSTRING.LEN(ARR)));
+                 OTOI (To_Unbounded_String (STR (TSTRING.SLICE(ARR, TSTRING.FIRST + 1, TSTRING.LEN(ARR)))));
 
                if (ESC_CHAR = ASCII.NUL) then
                   MISC.SYNERR("escape sequence for null not allowed");
@@ -576,13 +576,13 @@ package body MISC is
 
   -- otoi - convert an octal digit string to an integer value
 
-  function OTOI(STR : in VSTRING) return CHARACTER is
+  function OTOI(STR : Unbounded_String) return CHARACTER is
     TOTAL : INTEGER := 0;
-    CNT   : INTEGER := TSTRING.FIRST;
+    CNT   : INTEGER := 1;
   begin
-    while (CNT <= TSTRING.LEN(STR)) loop
+    while CNT <= Length (STR) loop
       TOTAL := TOTAL*8;
-      TOTAL := TOTAL + CHARACTER'POS(CHAR(STR, CNT)) - CHARACTER'POS('0');
+      TOTAL := TOTAL + CHARACTER'POS(Element (STR, CNT)) - CHARACTER'POS('0');
       CNT := CNT + 1;
     end loop;
     return CHARACTER'VAL(TOTAL);
