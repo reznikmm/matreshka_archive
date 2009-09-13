@@ -21,15 +21,17 @@
 -- DESCRIPTION converts non-deterministic finite automatons to finite ones.
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/dfaB.a,v 1.18 90/01/12 15:19:48 self Exp Locker: self $
 with Ada.Integer_Text_IO;
+with Ada.Strings.Unbounded.Text_IO;
 
 with DFA, MISC, TBLCMP, CCL;
-with ECS, NFA, TSTRING, GEN, SKELETON_MANAGER;
+with ECS, NFA, GEN, SKELETON_MANAGER;
 with Unicode;
 
 package body DFA is
 
    use Ada.Integer_Text_IO;
-   use TSTRING;
+   use Ada.Strings.Unbounded;
+   use Ada.Strings.Unbounded.Text_IO;
    use Unicode;
 
   -- check_for_backtracking - check a DFA state for backtracking
@@ -415,7 +417,7 @@ package body DFA is
     NUM_START_STATES, TODO_HEAD, TODO_NEXT             : INTEGER;
     SNSRESULT                                          : BOOLEAN;
     FULL_TABLE_TEMP_FILE                               : FILE_TYPE;
-    BUF                                                : VSTRING;
+    BUF                                                : Unbounded_String;
     NUM_NXT_STATES                                     : INTEGER;
 
     -- this is so find_table_space(...) will know where to start looking in
@@ -678,8 +680,8 @@ package body DFA is
 
       RESET(FULL_TABLE_TEMP_FILE, IN_FILE);
       while (not END_OF_FILE(FULL_TABLE_TEMP_FILE)) loop
-        TSTRING.GET_LINE(FULL_TABLE_TEMP_FILE, BUF);
-        TSTRING.PUT_LINE(BUF);
+        GET_LINE(FULL_TABLE_TEMP_FILE, BUF);
+        PUT_LINE(BUF);
       end loop;
       DELETE(FULL_TABLE_TEMP_FILE);
 
