@@ -25,9 +25,9 @@ with Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
 
-with MISC_DEFS, MISC, TSTRING;
+with MISC_DEFS, MISC;
 with Ascan, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
-use MISC_DEFS, TSTRING, EXTERNAL_FILE_MANAGER;
+use MISC_DEFS, EXTERNAL_FILE_MANAGER;
 with Parser.Tokens; use Parser.Tokens;
 
 package body Gen is
@@ -152,7 +152,7 @@ package body Gen is
       for J in 1 .. NUMROWS loop
         I := J;
         while (I <= CSIZE) loop
-          TSTRING.PUT(STANDARD_ERROR, MISC.READABLE_FORM(CHARACTER'VAL(I)));
+          PUT(STANDARD_ERROR, MISC.READABLE_FORM(CHARACTER'VAL(I)));
           PUT(STANDARD_ERROR, " = ");
           PUT(STANDARD_ERROR, ECGROUP(I), 1);
           PUT(STANDARD_ERROR, "   ");
@@ -597,7 +597,7 @@ package body Gen is
   procedure MAKE_TABLES is
     DID_EOF_RULE      : BOOLEAN := FALSE;
     TOTAL_TABLE_SIZE  : INTEGER := TBLEND + NUMECS + 1;
-    BUF               : VSTRING;
+    BUF               : Unbounded_String;
   begin
     if (not FULLTBL) then
 
@@ -623,8 +623,8 @@ package body Gen is
     RESET(DEF_FILE, IN_FILE);
 
     while (not END_OF_FILE(DEF_FILE)) loop
-      TSTRING.GET_LINE(DEF_FILE, BUF);
-      TSTRING.PUT_LINE(BUF);
+      GET_LINE(DEF_FILE, BUF);
+      PUT_LINE(BUF);
     end loop;
 
     if (FULLTBL) then
@@ -680,7 +680,7 @@ package body Gen is
           PUT_LINE("|");
         end if;
         PUT("YY_END_OF_BUFFER + ");
-        TSTRING.PUT(SCNAME(I));
+        PUT(SCNAME(I));
         PUT(" + 1 ");
         DID_EOF_RULE := TRUE;
       end if;

@@ -20,12 +20,14 @@
 -- AUTHOR: John Self (UCI)
 -- DESCRIPTION routines for character classes like [abc]
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/cclB.a,v 1.7 1993/04/27 23:17:15 self Exp $
+with Ada.Strings.Unbounded.Text_IO;
 
-with MISC, TSTRING;
+with Misc;
 
 package body CCL is
 
-   use type Unicode.Unicode_Character;
+   use Ada.Strings.Unbounded.Text_IO;
+   use Unicode;
 
    -- ccladd - add a single character to a ccl
 
@@ -121,16 +123,16 @@ package body CCL is
                                CSET : in C_SIZE_BOOL_ARRAY) is
     I, START_CHAR : INTEGER;
   begin
-    TEXT_IO.PUT(F, '[');
+    PUT(F, '[');
 
     I := 1;
     while (I <= CSIZE) loop
       if (CSET(I)) then
         START_CHAR := I;
 
-        TEXT_IO.PUT(F, ' ');
+        PUT(F, ' ');
 
-        TSTRING.PUT(F, MISC.READABLE_FORM(CHARACTER'VAL(I)));
+        PUT(F, MISC.READABLE_FORM(CHARACTER'VAL(I)));
 
         I := I + 1;
         while ((I <= CSIZE) and then (CSET(I))) loop
@@ -140,15 +142,15 @@ package body CCL is
         if (I - 1 > START_CHAR) then
 
           -- this was a run
-          TEXT_IO.PUT(F, "-");
-          TSTRING.PUT(F, MISC.READABLE_FORM(CHARACTER'VAL(I - 1)));
+          PUT(F, "-");
+          PUT(F, MISC.READABLE_FORM(CHARACTER'VAL(I - 1)));
         end if;
 
-        TEXT_IO.PUT(F, ' ');
+        PUT(F, ' ');
       end if;
       I := I + 1;
     end loop;
 
-    TEXT_IO.PUT(F, ']');
+    PUT(F, ']');
   end LIST_CHARACTER_SET;
 end CCL;

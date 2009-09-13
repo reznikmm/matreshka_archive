@@ -22,11 +22,14 @@
 -- NOTES could be faster, but it isn't used much
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/symB.a,v 1.6 90/01/12 15:20:39 self Exp Locker: self $
 with Ada.Integer_Text_IO;
+with Ada.Strings.Unbounded;
 with Ada.Text_IO;
 
 with MISC, NFA;
 
 package body SYM is
+
+   use Ada.Strings.Unbounded;
 
   -- addsym - add symbol and definitions to symbol table
   --
@@ -201,9 +204,9 @@ package body SYM is
       REALLOCATE_INTEGER_ARRAY(ACTVSC, CURRENT_MAX_SCS);
     end if;
 
-    SCNAME(LASTSC) := STR;
+    SCNAME(LASTSC) := To_Unbounded_String (TSTRING.STR (STR));
 
-    ADDSYM(SCNAME(LASTSC), NUL, LASTSC, SCTBL, START_COND_HASH_SIZE, RESULT);
+    ADDSYM(VSTR (To_String (SCNAME(LASTSC))), NUL, LASTSC, SCTBL, START_COND_HASH_SIZE, RESULT);
     if (RESULT) then
       Misc.Aflex_Error ("start condition " & STR & " declared twice");
     end if;

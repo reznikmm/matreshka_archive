@@ -580,38 +580,38 @@ package body MISC is
   --
   -- The returned string is in static storage.
 
-  function READABLE_FORM(C : in CHARACTER) return VSTRING is
+  function READABLE_FORM(C : in CHARACTER) return Unbounded_String is
   begin
     if ((CHARACTER'POS(C) >= 0 and CHARACTER'POS(C) < 32) or (C = ASCII.DEL))
       then
       case C is
         when ASCII.LF =>
-          return (VSTR("\n"));
+          return +"\n";
 
         -- Newline
         when ASCII.HT =>
-          return (VSTR("\t"));
+          return +"\t";
 
         -- Horizontal Tab
         when ASCII.FF =>
-          return (VSTR("\f"));
+          return +"\f";
 
         -- Form Feed
         when ASCII.CR =>
-          return (VSTR("\r"));
+          return +"\r";
 
         -- Carriage Return
         when ASCII.BS =>
-          return (VSTR("\b"));
+          return +"\b";
 
         -- Backspace
         when others =>
-          return VSTR("\" & INTEGER'IMAGE(CHARACTER'POS(C)));
+          return +"\" & INTEGER'IMAGE(CHARACTER'POS(C));
       end case;
     elsif (C = ' ') then
-      return VSTR("' '");
+      return +"' '";
     else
-      return VSTR(C);
+      return +String'(1 .. 1 => C);
     end if;
   end READABLE_FORM;
 

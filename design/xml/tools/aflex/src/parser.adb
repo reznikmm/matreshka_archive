@@ -1,4 +1,5 @@
 with Ada.Integer_Text_IO;
+with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
 
 with Ascan;
@@ -19,6 +20,7 @@ package body Parser is
    package Parser_Shift_Reduce  renames Parser.Shift_Reduce;
 
    use Ada.Integer_Text_IO;
+   use Ada.Strings.Unbounded.Text_IO;
    use Ada.Text_IO;
 
    use Ascan;
@@ -35,14 +37,15 @@ begin
 	if ( sceof(actvsc(i)) ) then
 	    Put
              (Standard_Error, "multiple <<EOF>> rules for start condition ");
-	    tstring.put( Standard_Error, scname(actvsc(i)));
+	    Put (Standard_Error, scname (actvsc (i)));
 	    Main_Body.Aflex_End (1);
 
 	else
 	    sceof(actvsc(i)) := true;
 	    Put (Temp_Action_File, "YY_END_OF_BUFFER +");
-	    tstring.put( temp_action_file,  scname(actvsc(i)) );
+	    Put (Temp_Action_File, scname (actvsc (i)));
 	    Put_Line (Temp_Action_File, " + 1 ");
+
 	    if (i /= actvp) then
 	        Put_Line (Temp_Action_File, " |");
 	    else
@@ -50,6 +53,7 @@ begin
 	    end if;
         end if;
     end loop;
+
     misc.line_directive_out( temp_action_file );
 end build_eof_action;
 

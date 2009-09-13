@@ -65,7 +65,7 @@ package MISC_DEFS is
   type INT_STAR is access INTEGER;
   type UNBOUNDED_INT_STAR_ARRAY is array ( INTEGER range <> ) of INT_PTR;
   type INT_STAR_PTR is access UNBOUNDED_INT_STAR_ARRAY;
-  type UNBOUNDED_VSTRING_ARRAY is array ( INTEGER range <> ) of VSTRING;
+  type UNBOUNDED_VSTRING_ARRAY is array (INTEGER range <>) of Unbounded_String;
   type VSTRING_PTR is access UNBOUNDED_VSTRING_ARRAY;
   type BOOLEAN_ARRAY is array ( INTEGER range <> ) of BOOLEAN;
   type BOOLEAN_PTR is access BOOLEAN_ARRAY;
