@@ -22,9 +22,10 @@
 -- NOTES does actual generation (writing) of output aflex scanners
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/genB.a,v 1.25 1992/10/02 23:08:41 self Exp self $
 
-with MISC_DEFS, TEXT_IO, MISC, INT_IO, TSTRING, PARSE_TOKENS;
+with MISC_DEFS, TEXT_IO, MISC, INT_IO, TSTRING;
 with Ascan, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER; use MISC_DEFS, TEXT_IO,
-  TSTRING, PARSE_TOKENS, EXTERNAL_FILE_MANAGER;
+  TSTRING, EXTERNAL_FILE_MANAGER;
+with Parser.Tokens; use Parser.Tokens;
 
 package body GEN is
   INDENT_LEVEL : INTEGER := 0;  -- each level is 4 spaces

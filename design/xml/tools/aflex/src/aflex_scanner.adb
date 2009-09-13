@@ -1,10 +1,8 @@
+with Ascan;
 
-with PARSE_TOKENS, Ascan; use PARSE_TOKENS, Ascan;
+package body Aflex_Scanner is
 
-package body AFLEX_SCANNER is
-  function YYLEX return TOKEN is
-  begin
-    return Ascan.GET_TOKEN;
-  end YYLEX;
+   function YYLex return Parser.Tokens.Token
+     renames Ascan.Get_Token;
 
-end AFLEX_SCANNER;
+end Aflex_Scanner;

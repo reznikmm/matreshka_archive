@@ -1,4 +1,4 @@
-package Parse_Goto is
+package Parser.Goto_Table is
 
     type Small_Integer is range -32_000 .. 32_000;
 
@@ -227,4 +227,4 @@ subtype Nonterminal is Integer;
 -15,-17,-17,-17,-17,-17,-17,-17,
 -17,-17,-17,-17,-17,-18,-18,-20,
 -20,-20,-19,-19);
-end Parse_Goto;
+end Parser.Goto_Table;

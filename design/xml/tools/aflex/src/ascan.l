@@ -372,9 +372,10 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 			}
 %%
 
-with misc_defs, misc, sym, parse_tokens, int_io;
+with misc_defs, misc, sym, int_io;
+with Parser.Tokens; use Parser.Tokens;
 with tstring, external_file_manager;
-use misc_defs, parse_tokens, tstring;
+use misc_defs, Parser.Tokens, tstring;
 use external_file_manager;
 with Unicode;
 

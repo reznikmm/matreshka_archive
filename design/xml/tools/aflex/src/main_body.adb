@@ -22,10 +22,11 @@
 -- high level routines from other packages.
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/mainB.a,v 1.26 1992/12/29 22:46:15 self Exp self $
 
-with MISC_DEFS, MISC, COMMAND_LINE_INTERFACE, DFA, ECS, GEN, TEXT_IO, PARSER;
-with MAIN_BODY, TSTRING, PARSE_TOKENS, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
+with MISC_DEFS, MISC, COMMAND_LINE_INTERFACE, ECS, TEXT_IO, PARSER;
+with MAIN_BODY, TSTRING, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
 with EXTERNAL_FILE_MANAGER, INT_IO; use MISC_DEFS, COMMAND_LINE_INTERFACE,
   TSTRING, EXTERNAL_FILE_MANAGER;
+with Parser.Tokens;
 
 package body MAIN_BODY is
   OUTFILE_CREATED    : BOOLEAN := FALSE;
@@ -476,7 +477,7 @@ package body MAIN_BODY is
     end if;
 
   exception
-    when PARSE_TOKENS.SYNTAX_ERROR =>
+    when Parser.Tokens.Syntax_Error =>
       MISC.AFLEXERROR("fatal parse error at line " & INTEGER'IMAGE(LINENUM));
       MAIN_BODY.AFLEXEND(1);
   end READIN;

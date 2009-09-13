@@ -30,9 +30,10 @@ with Text_IO; use Text_IO;
 --# line 44 "ascan.l"
 
 
-with misc_defs, misc, sym, parse_tokens, int_io;
+with misc_defs, misc, sym, int_io;
+with Parser.Tokens; use Parser.Tokens;
 with tstring, external_file_manager;
-use misc_defs, parse_tokens, tstring;
+use misc_defs, Parser.Tokens, tstring;
 use external_file_manager;
 with Unicode;
 

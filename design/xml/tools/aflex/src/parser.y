@@ -20,20 +20,10 @@
 -- AUTHOR: John Self (UCI)
 -- DESCRIPTION lalr(1) grammar for input to AYACC.
 -- NOTES
--- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/parse.y,v 1.15 90/01/17 15:49:56 self Exp Locker: self $ 
+-- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/parse.y,v 1.15 90/01/17 15:49:56 self Exp Locker: self $
 
 %token CHAR NUMBER SECTEND SCDECL XSCDECL WHITESPACE NAME PREVCCL EOF_OP
 %token NEWLINE
-
-%with TEXT_IO
-%with ccl
-%with NFA
-%with Parse_Shift_Reduce
-%with Parse_Goto
-%with misc_defs
-%use misc_defs
-%with external_file_manager
-%use external_file_manager
 
 {
   subtype YYSType is Integer;
@@ -53,7 +43,7 @@ goal            :  initlex sect1 sect1end sect2 initforrule
 			for i in 1 .. lastsc loop
 			    scset(i) := nfa.mkbranch( scset(i), def_rule );
 			end loop;
-			
+
 			if ( spprdflt ) then
 			    text_io.put(temp_action_file,
 					"raise AFLEX_SCANNER_JAMMED;");
@@ -73,7 +63,7 @@ initlex         :
 			sym.scinstal( tstring.vstr("INITIAL"), false );
 			}
 		;
-			
+
 sect1		:  sect1 startconddecl WHITESPACE namelist1 NEWLINE
 		|
 		|  error NEWLINE
@@ -88,11 +78,11 @@ startconddecl   :  SCDECL
 			 -- these productions are separate from the s1object
 			 -- rule because the semantics must be done before
 			 -- we parse the remainder of an s1object
-			
+
 
 			xcluflg := false;
 			}
-		
+
 		|  XSCDECL
 			{ xcluflg := true; }
 		;
@@ -126,7 +116,7 @@ initforrule     :
 			}
 		;
 
-aflexrule        :  scon '^' re eol 
+aflexrule        :  scon '^' re eol
                         {
 			pat := nfa.link_machines( $3, $4 );
 			nfa.finish_rule( pat, variable_trail_rule,
@@ -135,8 +125,8 @@ aflexrule        :  scon '^' re eol
 			for i in 1 .. actvp loop
 			    scbol(actvsc(i)) :=
 				nfa.mkbranch( scbol(actvsc(i)), pat );
-			end loop;	
-				
+			end loop;
+
 			if ( not bol_needed ) then
 			    bol_needed := true;
 
@@ -148,18 +138,18 @@ aflexrule        :  scon '^' re eol
 			end if;
 			}
 
-		|  scon re eol 
+		|  scon re eol
                         {
 			pat := nfa.link_machines( $2, $3 );
 			nfa.finish_rule( pat, variable_trail_rule,
 				     headcnt, trailcnt );
 
 			for i in 1 .. actvp loop
-			    scset(actvsc(i)) := 
+			    scset(actvsc(i)) :=
 				nfa.mkbranch( scset(actvsc(i)), pat );
 			end loop;
 		        }
-                |  '^' re eol 
+                |  '^' re eol
 			{
 			pat := nfa.link_machines( $2, $3 );
 			nfa.finish_rule( pat, variable_trail_rule,
@@ -171,7 +161,7 @@ aflexrule        :  scon '^' re eol
 			for i in 1 .. lastsc loop
 			    if ( not scxclu(i) ) then
 				scbol(i) := nfa.mkbranch( scbol(i), pat );
-			    end if;	
+			    end if;
 			end loop;
 
 			if ( not bol_needed ) then
@@ -184,7 +174,7 @@ aflexrule        :  scon '^' re eol
 			    end if;
 			end if;
     	    	    	}
-                |  re eol 
+                |  re eol
 			{
 			pat := nfa.link_machines( $1, $2 );
 			nfa.finish_rule( pat, variable_trail_rule,
@@ -325,7 +315,7 @@ re              :  re '|' series
 			    varlength := true;
 			    headcnt := 0;
     	    	    	end if;
-			
+
 			if ( varlength and (headcnt = 0) ) then
 			    -- variable trailing context rule
 			    -- mark the first part of the rule as the accepting
@@ -359,14 +349,14 @@ re2		:  re '/'
 			    misc.synerr( "trailing context used twice" );
 			else
 			    trlcontxt := true;
-			end if;    
+			end if;
 
 			if ( varlength ) then
 			    -- we hope the trailing context is fixed-length
 			    varlength := false;
 			else
 			    headcnt := rulelen;
-			end if;    
+			end if;
 
 			rulelen := 0;
 
@@ -393,7 +383,7 @@ singleton       :  singleton '*'
 
 			$$ := nfa.mkclos( $1 );
 			}
-			
+
 		|  singleton '+'
 			{
 			varlength := true;
@@ -423,7 +413,7 @@ singleton       :  singleton '*'
 			    end if;
     	    	    	end if;
 			}
-				
+
 		|  singleton '{' NUMBER ',' '}'
 			{
 			varlength := true;
@@ -433,7 +423,7 @@ singleton       :  singleton '*'
 			    $$ := $1;
 			else
 			    $$ := nfa.mkrep( $1, $3, INFINITY );
-			end if;    
+			end if;
 			}
 
 		|  singleton '{' NUMBER '}'
@@ -449,7 +439,7 @@ singleton       :  singleton '*'
 			    $$ := $1;
 			else
 			    $$ := nfa.link_machines( $1, nfa.copysingl( $1, $3 - 1 ) );
-			end if;    
+			end if;
 			}
 
 		|  '.'
@@ -489,7 +479,7 @@ singleton       :  singleton '*'
 		    ecs.mkeccl( ccltbl(cclmap($1)..cclmap($1) + ccllen($1)),
 				ccllen($1),nextecm, ecgroup, CSIZE );
 			end if;
-				     
+
 			rulelen := rulelen + 1;
 
 			$$ := nfa.mkstate( -$1 );
@@ -514,7 +504,7 @@ singleton       :  singleton '*'
 
 			if ( $1 = CHARACTER'POS(ASCII.NUL) ) then
 			    misc.synerr( "null in rule" );
-			end if;    
+			end if;
 
 			if ( caseins and ($1 >= CHARACTER'POS('A')) and ($1 <= CHARACTER'POS('Z')) ) then
 			    $1 := misc.clower( $1 );
@@ -544,23 +534,23 @@ ccl             :  ccl CHAR '-' CHAR
 			    if ( caseins ) then
 				if ( ($2 >= CHARACTER'POS('A')) and ($2 <= CHARACTER'POS('Z')) ) then
 				    $2 := misc.clower( $2 );
-				end if;					    
+				end if;
 				if ( ($4 >= CHARACTER'POS('A')) and ($4 <= CHARACTER'POS('Z')) ) then
 				    $4 := misc.clower( $4 );
-				end if;    
+				end if;
     	    	    	    end if;
 
 			    for J in $2 .. $4 loop
 			        ccl.ccl_add ($1, Unicode_Character'Val (J));
     	    	    	    end loop;
-			    
+
 			    -- keep track if this ccl is staying in
 			    -- alphabetical order
 
 			    cclsorted := cclsorted and ($2 > lastchar);
 			    lastchar := $4;
     	    	    	end if;
-			
+
 			$$ := $1;
 			}
 
@@ -570,7 +560,7 @@ ccl             :  ccl CHAR '-' CHAR
 			    if ( ($2 >= CHARACTER'POS('A')) and ($2 <= CHARACTER'POS('Z')) ) then
 				$2 := misc.clower( $2 );
     	    	    	    end if;
-			end if;    
+			end if;
 			ccl.ccl_add ($1, Unicode_Character'Val ($2));
 			cclsorted := cclsorted and ($2 > lastchar);
 			lastchar := $2;
@@ -591,7 +581,7 @@ string		:  string CHAR
 			    if ( ($2 >= CHARACTER'POS('A')) and ($2 <= CHARACTER'POS('Z')) ) then
 				$2 := misc.clower( $2 );
 			    end if;
-			end if;    
+			end if;
 
 			rulelen := rulelen + 1;
 
@@ -603,20 +593,21 @@ string		:  string CHAR
 		;
 
 %%
-
-with Parse_Tokens, Parse_Goto, Parse_Shift_Reduce, Text_IO, scanner;
-with NFA, ccl, misc, misc_defs, sym, ecs, aflex_scanner;
-with tstring, int_io, main_body, text_io, external_file_manager;
-use aflex_scanner, external_file_manager;
-
-package parser is
+##
   procedure build_eof_action;
   procedure yyerror(msg: string);
   procedure YYParse;
   def_rule:integer;
-end parser;
+##
+with Text_IO;
+with NFA, ccl, misc, misc_defs, sym, ecs, aflex_scanner;
+with tstring, int_io, main_body, external_file_manager;
+use aflex_scanner, external_file_manager;
+with Unicode;
 
-package body parser is
+##
+   use Unicode;
+
 -- build_eof_action - build the "<<EOF>>" action for the active start
 --                    conditions
 
@@ -646,7 +637,7 @@ begin
 end build_eof_action;
 
 --  yyerror - eat up an error message from the parser
--- 
+--
 --  synopsis
 --     char msg[];
 --     yyerror( msg );
@@ -656,6 +647,5 @@ begin
 null;
 end yyerror;
 
-use  Parse_Goto, Parse_Shift_Reduce, Text_IO, misc_defs, tstring;
+use Text_IO, misc_defs, tstring;
 ##
-end parser;

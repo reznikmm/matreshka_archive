@@ -1,13 +1,4 @@
-with  Text_Io;
-with  Ccl;
-with  Nfa;
-with  Parse_Shift_Reduce;
-with  Parse_Goto;
-with  Misc_Defs;
-use   Misc_Defs;
-with  External_File_Manager;
-use   External_File_Manager;
-package Parse_Tokens is
+package Parser.Tokens is
 
 
   subtype YYSType is Integer;
@@ -27,4 +18,4 @@ package Parse_Tokens is
 
     Syntax_Error : exception;
 
-end Parse_Tokens;
+end Parser.Tokens;
