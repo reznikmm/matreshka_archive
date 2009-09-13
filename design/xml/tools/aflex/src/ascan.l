@@ -214,10 +214,10 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 <SECT2>"{"{NAME}"}"	{
 			nmstr := vstr(yytext(1..YYLength));
 			-- chop leading and trailing brace
-			tmpbuf := slice(vstr(yytext(1..YYLength)),
+			tmpbuf := +slice(vstr(yytext(1..YYLength)),
 								2, YYLength-1);
 
-			nmdefptr := +sym.ndlookup( +tmpbuf );
+			nmdefptr := +sym.ndlookup (tmpbuf);
 			if nmdefptr = TString.NUL then
 			    misc.synerr( "undefined {name}" );
 			else
@@ -228,8 +228,8 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 			end if;
 			}
 
-<SECT2>[/|*+?.()]	{ tmpbuf := vstr(yytext(1..YYLength));
-			  case tstring.CHAR(tmpbuf,1) is
+<SECT2>[/|*+?.()]	{ tmpbuf := +YYText (1 .. YYLength);
+			  case Element (tmpbuf, 1) is
 				when '/' => return '/';
 				when '|' => return '|';
 				when '*' => return '*';
@@ -242,8 +242,8 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 					Misc.Aflex_Error ("error in aflex case");
 			  end case;
 			}
-<SECT2>.		{ tmpbuf := vstr(yytext(1..YYLength));
-			  yylval := CHARACTER'POS(CHAR(tmpbuf,1));
+<SECT2>.		{ tmpbuf := +YYText (1 .. YYLength);
+			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 			}
 <SECT2>\n		{ linenum := linenum + 1; return Newline; }
@@ -260,8 +260,8 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 <CARETISBOL>"^"		{ ENTER(SECT2); return ( '^' ); }
 
 
-<QUOTE>[^"\n]		{ tmpbuf := vstr(yytext(1..YYLength));
-			  yylval := CHARACTER'POS(CHAR(tmpbuf,1));
+<QUOTE>[^"\n]		{ tmpbuf := +YYText (1 .. YYLength);
+			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 			}
 <QUOTE>\"		{ ENTER(SECT2); return ( '"' ); }
@@ -278,14 +278,14 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 <FIRSTCCL>"^"/-		{ return ( '^' ); }
 <FIRSTCCL>-		{ ENTER(CCL); yylval := CHARACTER'POS('-'); return ( CHAR ); }
 <FIRSTCCL>.		{ ENTER(CCL);
-			  tmpbuf := vstr(yytext(1..YYLength));
-			  yylval := CHARACTER'POS(CHAR(tmpbuf,1));
+			  tmpbuf := +YYText (1 .. YYLength);
+			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 			}
 
 <CCL>-/[^\]\n]		{ return ( '-' ); }
-<CCL>[^\]\n]		{ tmpbuf := vstr(yytext(1..YYLength));
-			  yylval := CHARACTER'POS(CHAR(tmpbuf,1));
+<CCL>[^\]\n]		{ tmpbuf := +YYText (1 .. YYLength);
+			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 			}
 <CCL>"]"		{ ENTER(SECT2); return ( ']' ); }
@@ -414,7 +414,7 @@ function YYLex return Token is
     cclval : integer;
     nmdefptr : vstring;
     nmdef    : Unbounded_String;
-    tmpbuf   : vstring;
+    tmpbuf   : Unbounded_String;
 
 procedure ACTION_ECHO is
 begin

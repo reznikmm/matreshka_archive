@@ -37,7 +37,7 @@ function YYLex return Token is
     cclval : integer;
     nmdefptr : vstring;
     nmdef    : Unbounded_String;
-    tmpbuf   : vstring;
+    tmpbuf   : Unbounded_String;
 
 procedure ACTION_ECHO is
 begin
@@ -888,10 +888,10 @@ when 37 =>
 
 			nmstr := vstr(yytext(1..YYLength));
 			-- chop leading and trailing brace
-			tmpbuf := slice(vstr(yytext(1..YYLength)),
+			tmpbuf := +slice(vstr(yytext(1..YYLength)),
 								2, YYLength-1);
 
-			nmdefptr := +sym.ndlookup( +tmpbuf );
+			nmdefptr := +sym.ndlookup (tmpbuf);
 			if nmdefptr = TString.NUL then
 			    misc.synerr( "undefined {name}" );
 			else
@@ -904,8 +904,8 @@ when 37 =>
 
 when 38 => 
 --# line 231 "ascan.l"
- tmpbuf := vstr(yytext(1..YYLength));
-			  case tstring.CHAR(tmpbuf,1) is
+ tmpbuf := +YYText (1 .. YYLength);
+			  case Element (tmpbuf, 1) is
 				when '/' => return '/';
 				when '|' => return '|';
 				when '*' => return '*';
@@ -921,8 +921,8 @@ when 38 =>
 
 when 39 => 
 --# line 245 "ascan.l"
- tmpbuf := vstr(yytext(1..YYLength));
-			  yylval := CHARACTER'POS(CHAR(tmpbuf,1));
+ tmpbuf := +YYText (1 .. YYLength);
+			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 			
 
@@ -962,8 +962,8 @@ when 46 =>
 
 when 47 => 
 --# line 263 "ascan.l"
- tmpbuf := vstr(yytext(1..YYLength));
-			  yylval := CHARACTER'POS(CHAR(tmpbuf,1));
+ tmpbuf := +YYText (1 .. YYLength);
+			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 			
 
@@ -1003,8 +1003,8 @@ when 52 =>
 when 53 => 
 --# line 280 "ascan.l"
  ENTER(CCL);
-			  tmpbuf := vstr(yytext(1..YYLength));
-			  yylval := CHARACTER'POS(CHAR(tmpbuf,1));
+			  tmpbuf := +YYText (1 .. YYLength);
+			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 			
 
@@ -1018,8 +1018,8 @@ YY_DO_BEFORE_ACTION; -- set up yytext again
 
 when 55 => 
 --# line 287 "ascan.l"
- tmpbuf := vstr(yytext(1..YYLength));
-			  yylval := CHARACTER'POS(CHAR(tmpbuf,1));
+ tmpbuf := +YYText (1 .. YYLength);
+			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 			
 
