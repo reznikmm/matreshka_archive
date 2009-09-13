@@ -20,10 +20,20 @@
 -- AUTHOR: John Self (UCI)
 -- DESCRIPTION outputs skeleton sections when called by gen.
 -- NOTES allows use of internal or external skeleton
--- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/skeleton_managerS.a,v 1.3 90/01/12 15:20:38 self Exp Locker: self $ 
+-- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/skeleton_managerS.a,v 1.3 90/01/12 15:20:38 self Exp Locker: self $
 
-with TSTRING; use TSTRING; 
-package SKELETON_MANAGER is 
-  procedure SKELOUT; 
-  procedure SET_EXTERNAL_SKELETON; 
-end SKELETON_MANAGER; 
+package Skeleton_Manager is
+
+   procedure Skel_Out;
+   -- skelout - write out one section of the skeleton file
+   --
+   -- DESCRIPTION
+   --    Either outputs internal skeleton, or from a file with "%%" dividers
+   --    if a skeleton file is specified by the user.
+   --    Copies from skelfile to stdout until a line beginning with "%%" or
+   --    EOF is found.
+
+
+   procedure Set_External_Skeleton;
+
+end Skeleton_Manager;

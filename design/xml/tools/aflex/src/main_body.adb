@@ -485,7 +485,7 @@ package body Main_Body is
   -- readin - read in the rules section of the input file(s)
   procedure READIN is
   begin
-    SKELETON_MANAGER.SKELOUT;
+    SKELETON_MANAGER.SKEL_OUT;
 
     MISC.LINE_DIRECTIVE_OUT;
 

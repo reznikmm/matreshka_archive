@@ -456,7 +456,7 @@ package body DFA is
       GEN.BODY_HEADER;
 
       -- output user code up to ##
-      SKELETON_MANAGER.SKELOUT;
+      SKELETON_MANAGER.SKEL_OUT;
 
       -- declare it "short" because it's a real long-shot that that
       -- won't be large enough

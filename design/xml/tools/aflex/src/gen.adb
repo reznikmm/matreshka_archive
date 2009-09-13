@@ -584,7 +584,7 @@ package body Gen is
       Put_Line ("end " & Misc.Basename & ";");
 
       External_File_Manager.Get_Scanner_Body_File (Output_Body_File);
-      Skeleton_Manager.Skelout;
+      Skeleton_Manager.Skel_Out;
 
       DO_SECT3_OUT;
 
@@ -611,7 +611,7 @@ package body Gen is
       BODY_HEADER;
 
       -- intent of this call is to get everything up to ##
-      SKELETON_MANAGER.SKELOUT;
+      SKELETON_MANAGER.SKEL_OUT;
 
     -- output YYLex code up to part about tables.
     end if;
@@ -641,17 +641,17 @@ package body Gen is
 
     -- generate code for yy_get_previous_state
     SET_INDENT(1);
-    SKELETON_MANAGER.SKELOUT;
+    SKELETON_MANAGER.SKEL_OUT;
 
     if (BOL_NEEDED) then
       INDENT_PUTS("yy_bp : integer := yytext_ptr;");
     end if;
-    SKELETON_MANAGER.SKELOUT;
+    SKELETON_MANAGER.SKEL_OUT;
 
     GEN_START_STATE;
-    SKELETON_MANAGER.SKELOUT;
+    SKELETON_MANAGER.SKEL_OUT;
     GEN_NEXT_STATE;
-    SKELETON_MANAGER.SKELOUT;
+    SKELETON_MANAGER.SKEL_OUT;
 
     SET_INDENT(2);
 
@@ -660,13 +660,13 @@ package body Gen is
     GEN_START_STATE;
     GEN_NEXT_MATCH;
 
-    SKELETON_MANAGER.SKELOUT;
+    SKELETON_MANAGER.SKEL_OUT;
 
     SET_INDENT(3);
     GEN_FIND_ACTION;
 
     SET_INDENT(1);
-    SKELETON_MANAGER.SKELOUT;
+    SKELETON_MANAGER.SKEL_OUT;
 
     INDENT_UP;
     GEN_BT_ACTION;
@@ -699,7 +699,7 @@ package body Gen is
       INDENT_DOWN;
     end if;
 
-    SKELETON_MANAGER.SKELOUT;
+    SKELETON_MANAGER.SKEL_OUT;
 
     -- copy remainder of input to output
     MISC.LINE_DIRECTIVE_OUT;
