@@ -21,11 +21,12 @@
 -- DESCRIPTION
 -- NOTES contains functions used in various places throughout aflex.
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/miscB.a,v 1.22 1991/07/01 21:30:37 self Exp self $
+with Ada.Calendar;
 with Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded.Text_IO;
 
 with MISC, Main_Body;
-with CALENDAR; use MISC;
+use MISC;
 
 package body MISC is
 
@@ -168,79 +169,102 @@ package body MISC is
   begin
     DATAFLUSH(CURRENT_OUTPUT);
   end DATAFLUSH;
-  -- aflex_gettime - return current time
 
-  function AFLEX_GETTIME return VSTRING is
-    use CALENDAR;
-    CURRENT_TIME                                            : TIME;
-    CURRENT_YEAR                                            : YEAR_NUMBER;
-    CURRENT_MONTH                                           : MONTH_NUMBER;
-    CURRENT_DAY                                             : DAY_NUMBER;
-    CURRENT_SECONDS                                         : DAY_DURATION;
-    MONTH_STRING, HOUR_STRING, MINUTE_STRING, SECOND_STRING : VSTRING;
-    HOUR, MINUTE, SECOND                                    : INTEGER;
-    SECONDS_PER_HOUR                                        : constant
-      DAY_DURATION := 3600.0;
-  begin
-    CURRENT_TIME := CLOCK;
-    SPLIT(CURRENT_TIME, CURRENT_YEAR, CURRENT_MONTH, CURRENT_DAY,
-      CURRENT_SECONDS);
-    case CURRENT_MONTH is
-      when 1 =>
-        MONTH_STRING := VSTR("Jan");
-      when 2 =>
-        MONTH_STRING := VSTR("Feb");
-      when 3 =>
-        MONTH_STRING := VSTR("Mar");
-      when 4 =>
-        MONTH_STRING := VSTR("Apr");
-      when 5 =>
-        MONTH_STRING := VSTR("May");
-      when 6 =>
-        MONTH_STRING := VSTR("Jun");
-      when 7 =>
-        MONTH_STRING := VSTR("Jul");
-      when 8 =>
-        MONTH_STRING := VSTR("Aug");
-      when 9 =>
-        MONTH_STRING := VSTR("Sep");
-      when 10 =>
-        MONTH_STRING := VSTR("Oct");
-      when 11 =>
-        MONTH_STRING := VSTR("Nov");
-      when 12 =>
-        MONTH_STRING := VSTR("Dec");
-    end case;
+   --------------------
+   -- Aflex_Get_Time --
+   --------------------
 
-    HOUR := INTEGER(CURRENT_SECONDS)/INTEGER(SECONDS_PER_HOUR);
-    MINUTE := INTEGER((CURRENT_SECONDS - (HOUR*SECONDS_PER_HOUR))/60);
-    SECOND := INTEGER(CURRENT_SECONDS - HOUR*SECONDS_PER_HOUR - MINUTE*60.0);
+   function Aflex_Get_Time return Unbounded_String is
 
-    if (HOUR >= 10) then
-      HOUR_STRING := VSTR(INTEGER'IMAGE(HOUR));
-    else
-      HOUR_STRING := VSTR("0" & INTEGER'IMAGE(HOUR));
-    end if;
+      use Ada.Calendar;
 
-    if (MINUTE >= 10) then
-      MINUTE_STRING := VSTR(INTEGER'IMAGE(MINUTE)(2 .. INTEGER'IMAGE(MINUTE)'
-        LENGTH));
-    else
-      MINUTE_STRING := VSTR("0" & INTEGER'IMAGE(MINUTE)(2 .. INTEGER'IMAGE(
-        MINUTE)'LENGTH));
-    end if;
+      Seconds_Per_Hour : constant Day_Duration := 3600.0;
 
-    if (SECOND >= 10) then
-      SECOND_STRING := VSTR(INTEGER'IMAGE(SECOND)(2 .. INTEGER'IMAGE(SECOND)'
-        LENGTH));
-    else
-      SECOND_STRING := VSTR("0" & INTEGER'IMAGE(SECOND)(2 .. INTEGER'IMAGE(
-        SECOND)'LENGTH));
-    end if;
+      Current_Time     : Time;
+      Current_Year     : Year_Number;
+      Current_Month    : Month_Number;
+      Current_Day      : Day_Number;
+      Current_Seconds  : Day_Duration;
+      Month_String     : Unbounded_String;
+      Hour_String      : Unbounded_String;
+      Minute_String    : Unbounded_String;
+      Second_String    : Unbounded_String;
+      Hour             : Integer;
+      Minute           : Integer;
+      Second           : Integer;
 
-    return MONTH_STRING & VSTR(INTEGER'IMAGE(CURRENT_DAY)) & HOUR_STRING & ":"
-      & MINUTE_STRING & ":" & SECOND_STRING & INTEGER'IMAGE(CURRENT_YEAR);
-  end AFLEX_GETTIME;
+   begin
+      Current_Time := Clock;
+      Split
+       (Current_Time,
+        Current_Year,
+        Current_Month,
+        Current_Day,
+        Current_Seconds);
+
+      case Current_Month is
+         when 1 =>
+            Month_String := +"Jan";
+         when 2 =>
+            Month_String := +"Feb";
+         when 3 =>
+            Month_String := +"Mar";
+         when 4 =>
+            Month_String := +"Apr";
+         when 5 =>
+            Month_String := +"May";
+         when 6 =>
+            Month_String := +"Jun";
+         when 7 =>
+            Month_String := +"Jul";
+         when 8 =>
+            Month_String := +"Aug";
+         when 9 =>
+            Month_String := +"Sep";
+         when 10 =>
+            Month_String := +"Oct";
+         when 11 =>
+            Month_String := +"Nov";
+         when 12 =>
+            Month_String := +"Dec";
+      end case;
+
+      Hour   := Integer (Current_Seconds) / Integer (Seconds_Per_Hour);
+      Minute := Integer ((Current_Seconds - (Hour * Seconds_Per_Hour)) / 60);
+      Second :=
+        Integer (Current_Seconds - Hour * Seconds_Per_Hour - Minute * 60.0);
+
+      if Hour >= 10 then
+         Hour_String := +Integer'Image (Hour) (2 .. 3);
+
+      else
+         Hour_String := +"0" & Integer'Image (Hour) (2);
+      end if;
+
+      if Minute >= 10 then
+         Minute_String := +Integer'Image (Minute) (2 .. 3);
+
+      else
+         Minute_String := +"0" & Integer'Image (Minute) (2);
+      end if;
+
+      if Second >= 10 then
+         Second_String := +Integer'Image (Second) (2 .. 3);
+
+      else
+         Second_String := +"0" & Integer'Image (Second) (2);
+      end if;
+
+      return
+        Month_String
+          & Integer'Image (Current_Day)
+          & Hour_String
+          & ":"
+          & Minute_String
+          & ":"
+          & Second_String
+          & Integer'Image (Current_Year);
+   end Aflex_Get_Time;
 
    -----------------
    -- Aflex_Error --

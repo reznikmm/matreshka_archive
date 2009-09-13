@@ -54,7 +54,9 @@ package Misc is
    procedure DATAEND;
   procedure DATAFLUSH;
   procedure DATAFLUSH(FILE : in FILE_TYPE);
-   function AFLEX_GETTIME return VSTRING;
+
+   function Aflex_Get_Time return Unbounded_String;
+   --  aflex_gettime - return current time
 
    procedure Aflex_Error (Msg : in VSTRING);
    procedure Aflex_Error (Msg : String);

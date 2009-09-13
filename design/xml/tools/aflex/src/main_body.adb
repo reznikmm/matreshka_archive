@@ -32,16 +32,13 @@ with Parser.Tokens;
 
 package body Main_Body is
 
+   use Ada.Strings.Unbounded;
    use Ada.Text_IO;
 
-  OUTFILE_CREATED    : BOOLEAN := FALSE;
-  AFLEX_VERSION      : CONSTANT STRING := "1.4a";
-  STARTTIME, ENDTIME : VSTRING;
-
-  -- aflexend - terminate aflex
-  --
-  -- note
-  --    This routine does not return.
+   OUTFILE_CREATED : Boolean := False;
+   Aflex_Version   : constant String := "1.4a";
+   Start_Time      : Unbounded_String;
+   End_Time        : Unbounded_String;
 
    ---------------
    -- Aflex_End --
@@ -50,7 +47,6 @@ package body Main_Body is
    procedure Aflex_End (Status : Integer) is
 
       use Ada.Integer_Text_IO;
-      use Ada.Strings.Unbounded;
       use Ada.Strings.Unbounded.Text_IO;
 
       TBLSIZ : Integer;
@@ -94,7 +90,7 @@ package body Main_Body is
       end if;
 
       if PrintStats then
-         EndTime := Misc.Aflex_Gettime;
+         End_Time := Misc.Aflex_Get_Time;
 
          Put_Line
           (Standard_Error,
@@ -102,7 +98,7 @@ package body Main_Body is
 
          Put_Line
           (Standard_Error,
-           "  started at " & StartTime & ", finished at " & EndTime);
+           "  started at " & Start_Time & ", finished at " & End_Time);
          Put (Standard_Error, "  ");
          Put (Standard_Error, LastNFA, 0);
          Put (Standard_Error, '/');
@@ -265,9 +261,7 @@ package body Main_Body is
       end if;
    end Aflex_End;
 
-  -- aflexinit - initialize aflex
-
-  procedure AFLEXINIT is
+  procedure Aflex_Init is
     SAWCMPFLAG, USE_STDOUT : BOOLEAN;
     OUTPUT_SPEC_FILE       : FILE_TYPE;
     INPUT_FILE             : FILE_TYPE;
@@ -402,7 +396,7 @@ package body Main_Body is
 
 
     --initialize the statistics
-    STARTTIME := MISC.AFLEX_GETTIME;
+    Start_Time := Misc.Aflex_Get_Time;
 
     begin
 
@@ -480,7 +474,7 @@ package body Main_Body is
     SET_UP_INITIAL_ALLOCATIONS;
 
 
-  end AFLEXINIT;
+  end Aflex_Init;
 
   -- readin - read in the rules section of the input file(s)
   procedure READIN is

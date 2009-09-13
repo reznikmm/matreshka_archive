@@ -27,8 +27,14 @@
 package MAIN_BODY is
 
    procedure Aflex_End (Status : Integer);
+   --  aflexend - terminate aflex
+   --
+   --  note
+   --    This routine does not return.
 
-  procedure AFLEXINIT;
+   procedure Aflex_Init;
+   --  aflexinit - initialize aflex
+
   procedure READIN;
   procedure SET_UP_INITIAL_ALLOCATIONS;
   AFLEX_TERMINATE    : exception;

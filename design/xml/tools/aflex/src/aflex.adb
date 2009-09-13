@@ -76,7 +76,7 @@ function Aflex return Integer is
    pragma Unreferenced (Copyright, Copyright_2);
 
 begin
-  MAIN_BODY.AFLEXINIT;
+  MAIN_BODY.Aflex_Init;
 
   MAIN_BODY.READIN;
 
