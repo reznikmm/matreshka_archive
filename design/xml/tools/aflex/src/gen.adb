@@ -115,7 +115,6 @@ package body GEN is
   procedure GENECS is
     I       : INTEGER;
     NUMROWS : INTEGER;
-    use TEXT_IO;
   begin
     TEXT_IO.PUT("yy_ec : constant array(CHARACTER'FIRST..");
     TEXT_IO.PUT_LINE("CHARACTER'LAST) of short :=");
@@ -168,7 +167,6 @@ package body GEN is
     END_OF_BUFFER_ACTION : INTEGER := NUM_RULES + 1;
     -- *everything* is done in terms of arrays starting at 1, so provide
     -- a null entry for the zero element of all C arrays
-    use TEXT_IO;
   begin
     TEXT_IO.PUT("yy_accept : constant array(0..");
     INT_IO.PUT(LASTDFA, 1);

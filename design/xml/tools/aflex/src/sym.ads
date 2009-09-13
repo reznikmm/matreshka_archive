@@ -20,33 +20,34 @@
 -- AUTHOR: John Self (UCI)
 -- DESCRIPTION implements only a simple symbol table using open hashing
 -- NOTES could be faster, but it isn't used much
--- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/symS.a,v 1.4 90/01/12 15:20:42 self Exp Locker: self $ 
+-- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/symS.a,v 1.4 90/01/12 15:20:42 self Exp Locker: self $
 
-with TSTRING; 
-with MISC_DEFS; 
-package SYM is 
+with TSTRING;
+with MISC_DEFS;
 
-  use TSTRING; 
-  use MISC_DEFS; 
+package SYM is
 
-  procedure ADDSYM(SYM, STR_DEF : in VSTRING; 
-                   INT_DEF      : in INTEGER; 
-                   TABLE        : in out HASH_TABLE; 
-                   TABLE_SIZE   : in INTEGER; 
-                   RESULT       : out BOOLEAN); 
+  use TSTRING;
+  use MISC_DEFS;
+
+  procedure ADDSYM(SYM, STR_DEF : in VSTRING;
+                   INT_DEF      : in INTEGER;
+                   TABLE        : in out HASH_TABLE;
+                   TABLE_SIZE   : in INTEGER;
+                   RESULT       : out BOOLEAN);
   -- result indicates success
-  procedure CCLINSTAL(CCLTXT : in VSTRING; 
-                      CCLNUM : in INTEGER); 
-  function CCLLOOKUP(CCLTXT : in VSTRING) return INTEGER; 
-  function FINDSYM(SYMBOL     : in VSTRING; 
-                   TABLE      : in HASH_TABLE; 
-                   TABLE_SIZE : in INTEGER) return HASH_LINK; 
+  procedure CCLINSTAL(CCLTXT : in VSTRING;
+                      CCLNUM : in INTEGER);
+  function CCLLOOKUP(CCLTXT : in VSTRING) return INTEGER;
+  function FINDSYM(SYMBOL     : in VSTRING;
+                   TABLE      : in HASH_TABLE;
+                   TABLE_SIZE : in INTEGER) return HASH_LINK;
 
-  function HASHFUNCT(STR       : in VSTRING; 
-                     HASH_SIZE : in INTEGER) return INTEGER; 
-  procedure NDINSTAL(ND, DEF : in VSTRING); 
-  function NDLOOKUP(ND : in VSTRING) return VSTRING; 
-  procedure SCINSTAL(STR     : in VSTRING; 
-                     XCLUFLG : in BOOLEAN); 
-  function SCLOOKUP(STR : in VSTRING) return INTEGER; 
-end SYM; 
+  function HASHFUNCT(STR       : in VSTRING;
+                     HASH_SIZE : in INTEGER) return INTEGER;
+  procedure NDINSTAL(ND, DEF : in VSTRING);
+  function NDLOOKUP(ND : in VSTRING) return VSTRING;
+  procedure SCINSTAL(STR     : in VSTRING;
+                     XCLUFLG : in BOOLEAN);
+  function SCLOOKUP(STR : in VSTRING) return INTEGER;
+end SYM;

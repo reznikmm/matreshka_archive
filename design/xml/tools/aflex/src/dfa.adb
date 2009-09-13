@@ -21,9 +21,9 @@
 -- DESCRIPTION converts non-deterministic finite automatons to finite ones.
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/dfaB.a,v 1.18 90/01/12 15:19:48 self Exp Locker: self $
 
-with DFA, INT_IO, MISC_DEFS, TEXT_IO, MISC, TBLCMP, CCL, EXTERNAL_FILE_MANAGER, Unicode;
-with ECS, NFA, TSTRING, GEN, SKELETON_MANAGER; use MISC_DEFS,
-  EXTERNAL_FILE_MANAGER;
+with DFA, INT_IO, MISC, TBLCMP, CCL;
+with ECS, NFA, TSTRING, GEN, SKELETON_MANAGER;
+with Unicode;
 
 package body DFA is
 
@@ -41,7 +41,6 @@ package body DFA is
 
   procedure CHECK_FOR_BACKTRACKING(DS    : in INTEGER;
                                    STATE : in UNBOUNDED_INT_ARRAY) is
-    use MISC_DEFS;
   begin
     if (DFAACC(DS).DFAACC_STATE = 0) then
 
@@ -88,7 +87,7 @@ package body DFA is
     NS, AR              : INTEGER;
     STATE_VAR, TYPE_VAR : STATE_ENUM;
 
-    use MISC_DEFS, MISC, TEXT_IO;
+    use MISC;
   begin
     for I in 1 .. NUM_STATES loop
       NS := NFA_STATES(I);
@@ -416,7 +415,6 @@ package body DFA is
     FULL_TABLE_TEMP_FILE                               : FILE_TYPE;
     BUF                                                : VSTRING;
     NUM_NXT_STATES                                     : INTEGER;
-    use TEXT_IO;
 
     -- this is so find_table_space(...) will know where to start looking in
     -- chk/nxt for unused records for space to put in the state

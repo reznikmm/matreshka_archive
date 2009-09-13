@@ -371,19 +371,18 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 			  end if;
 			}
 %%
+with Parser.Tokens;
 
+##
+    Call_YYLex : Boolean := False;
+    function YYLex return Parser.Tokens.Token;
+##
 with misc_defs, misc, sym, int_io;
-with Parser.Tokens; use Parser.Tokens;
-with tstring, external_file_manager;
-use misc_defs, Parser.Tokens, tstring;
-use external_file_manager;
+with tstring;
+use misc_defs, tstring;
 with Unicode;
-
 ##
-    call_yylex : boolean := false;
-    function YYLex return Token;
-##
-##
+   use Parser.Tokens;
    use Unicode;
 
 beglin : boolean := false;

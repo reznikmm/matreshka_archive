@@ -59,7 +59,7 @@ begin
 null;
 end yyerror;
 
-use Text_IO, misc_defs, tstring;
+use tstring;
 procedure YYParse is
 
    -- Rename User Defined Packages to Internal Names.

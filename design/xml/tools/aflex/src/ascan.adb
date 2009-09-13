@@ -1,8 +1,13 @@
+with misc_defs, misc, sym, int_io;
+with tstring;
+use misc_defs, tstring;
+with Unicode;
 with ascan.DFA; use ascan.DFA; 
 with ascan.IO; use ascan.IO; 
 package body ascan is
 package ascan_DFA renames ascan.DFA;
 package ascan_IO renames ascan.IO;
+   use Parser.Tokens;
    use Unicode;
 
 beglin : boolean := false;

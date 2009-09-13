@@ -29,15 +29,9 @@ with Text_IO; use Text_IO;
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/ascan.l,v 1.19 1991/12/03 23:08:24 self Exp self $
 --# line 44 "ascan.l"
 
-
-with misc_defs, misc, sym, int_io;
-with Parser.Tokens; use Parser.Tokens;
-with tstring, external_file_manager;
-use misc_defs, Parser.Tokens, tstring;
-use external_file_manager;
-with Unicode;
+with Parser.Tokens;
 
 package ascan is
-    call_yylex : boolean := false;
-    function YYLex return Token;
+    Call_YYLex : Boolean := False;
+    function YYLex return Parser.Tokens.Token;
 end ascan;

@@ -20,26 +20,25 @@
 -- AUTHOR: John Self (UCI)
 -- DESCRIPTION command line interface body for use with the VERDIX VADS system.
 -- NOTES this file is system dependent
--- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/command_lineB.a,v 1.3 90/01/12 15:19:44 self Exp Locker: self $ 
+-- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/command_lineB.a,v 1.3 90/01/12 15:19:44 self Exp Locker: self $
 
 -- 02/14/98 Wolfgang Lohmann (lohmi@acm.org)
 -- changes marked with --wl
 
-with TSTRING; use TSTRING; 
---wl with A_STRINGS; use A_STRINGS; 
+--wl with A_STRINGS; use A_STRINGS;
 --wl:
 with Ada.Command_Line;      use Ada.Command_Line;
 
---wl with COMMAND_LINE; 
+--wl with COMMAND_LINE;
 
-package body COMMAND_LINE_INTERFACE is 
-  procedure INITIALIZE_COMMAND_LINE is 
+package body COMMAND_LINE_INTERFACE is
+  procedure INITIALIZE_COMMAND_LINE is
   begin
     ARGV(0) := VSTR(Ada.Command_Line.COMMAND_name);
-    for I in 1 .. Ada.COMMAND_LINE.ARGument_Count 	--wl -1 
+    for I in 1 .. Ada.COMMAND_LINE.ARGument_Count 	--wl -1
     loop
-      ARGV(I) := VSTR(Ada.COMMAND_LINE.ARGument(I)); 
-    end loop; 
-    ARGC := Ada.COMMAND_LINE.ARGument_Count +1 ;  --wl 
-  end INITIALIZE_COMMAND_LINE; 
-end COMMAND_LINE_INTERFACE; 
+      ARGV(I) := VSTR(Ada.COMMAND_LINE.ARGument(I));
+    end loop;
+    ARGC := Ada.COMMAND_LINE.ARGument_Count +1 ;  --wl
+  end INITIALIZE_COMMAND_LINE;
+end COMMAND_LINE_INTERFACE;

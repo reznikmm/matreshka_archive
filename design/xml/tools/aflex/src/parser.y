@@ -650,5 +650,5 @@ begin
 null;
 end yyerror;
 
-use Text_IO, misc_defs, tstring;
+use tstring;
 ##
