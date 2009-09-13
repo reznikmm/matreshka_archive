@@ -79,7 +79,7 @@ package Misc is
   procedure MK2DATA(FILE  : in FILE_TYPE;
                     VALUE : in INTEGER);
   procedure MKDATA(VALUE : in INTEGER);
-  function MYCTOI(NUM_ARRAY : in VSTRING) return INTEGER;
+  function MYCTOI(NUM_ARRAY : in Unbounded_String) return INTEGER;
 
    function MYESC (ARR : in VSTRING) return Unicode.Unicode_Character;
    -- myesc - return character corresponding to escape sequence

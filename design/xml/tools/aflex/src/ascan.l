@@ -214,8 +214,8 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 <SECT2>"{"{NAME}"}"	{
 			nmstr := +YYText (1 .. YYLength);
 			-- chop leading and trailing brace
-			tmpbuf := +slice(vstr(yytext(1..YYLength)),
-								2, YYLength-1);
+			tmpbuf := Unbounded_Slice (+yytext (1 .. YYLength),
+							2, YYLength - 1);
 
 			nmdefptr := sym.ndlookup (tmpbuf);
 			if nmdefptr = Null_Unbounded_String then
@@ -292,7 +292,7 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 
 
 <NUM>[0-9]+		{
-			yylval := misc.myctoi( vstr(yytext(1..YYLength)) );
+			yylval := misc.myctoi (+YYText (1 .. YYLength));
 			return ( NUMBER );
 			}
 
@@ -394,11 +394,6 @@ with Unicode;
 
    function "+" (Item : String) return Unbounded_String
      renames To_Unbounded_String;
-
-   function "+" (Item : VSTRING) return Unbounded_String is
-   begin
-      return To_Unbounded_String (STR (Item));
-   end "+";
 
 beglin : boolean := false;
 i, bracelevel: integer;

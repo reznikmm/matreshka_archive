@@ -481,13 +481,15 @@ package body MISC is
 
   -- myctoi - return the integer represented by a string of digits
 
-  function MYCTOI(NUM_ARRAY : in VSTRING) return INTEGER is
+  function MYCTOI(NUM_ARRAY : in Unbounded_String) return INTEGER is
     TOTAL : INTEGER := 0;
-    CNT   : INTEGER := TSTRING.FIRST;
+    CNT   : INTEGER := 1;
   begin
-    while (CNT <= TSTRING.LEN(NUM_ARRAY)) loop
+    while CNT <= Length (NUM_ARRAY) loop
       TOTAL := TOTAL*10;
-      TOTAL := TOTAL + CHARACTER'POS(CHAR(NUM_ARRAY, CNT)) - CHARACTER'POS('0')
+         TOTAL :=
+           TOTAL
+             + CHARACTER'POS (Element (NUM_ARRAY, CNT)) - CHARACTER'POS('0')
         ;
       CNT := CNT + 1;
     end loop;
