@@ -363,7 +363,7 @@ package MISC_DEFS is
   DATAPOS, DATALINE, LINENUM : INTEGER;
 
   SKELFILE, YYIN, TEMP_ACTION_FILE, BACKTRACK_FILE, DEF_FILE : FILE_TYPE;
-  INFILENAME : VSTRING;
+  In_File_Name : VSTRING;
 
   -- variables for stack of states having only one out-transition:
   -- onestate - state number

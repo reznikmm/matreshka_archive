@@ -59,7 +59,7 @@ package body EXTERNAL_FILE_MANAGER is
 
   procedure GET_IO_SPEC_FILE(F : in out FILE_TYPE) is
   begin
-    if (LEN(INFILENAME) /= 0) then
+    if (LEN(In_File_Name) /= 0) then
       CREATE(F, OUT_FILE, +MISC.BASENAME & "-io." & ADA_SPEC_SUFFIX);
     else
       CREATE(F, OUT_FILE, "aflex_yy-io." & ADA_SPEC_SUFFIX);
@@ -71,7 +71,7 @@ package body EXTERNAL_FILE_MANAGER is
 
   procedure GET_IO_BODY_FILE(F : in out FILE_TYPE) is
   begin
-    if (LEN(INFILENAME) /= 0) then
+    if (LEN(In_File_Name) /= 0) then
       CREATE(F, OUT_FILE, +MISC.BASENAME & "-io." & ADA_BODY_SUFFIX);
     else
       CREATE(F, OUT_FILE, "aflex_yy-io." & ADA_BODY_SUFFIX);
@@ -83,7 +83,7 @@ package body EXTERNAL_FILE_MANAGER is
 
   procedure GET_DFA_SPEC_FILE(F : in out FILE_TYPE) is
   begin
-    if (LEN(INFILENAME) /= 0) then
+    if (LEN(In_File_Name) /= 0) then
       CREATE(F, OUT_FILE, +MISC.BASENAME & "-dfa." & ADA_SPEC_SUFFIX);
     else
       CREATE(F, OUT_FILE, "aflex_yy-dfa." & ADA_SPEC_SUFFIX);
@@ -95,7 +95,7 @@ package body EXTERNAL_FILE_MANAGER is
 
   procedure GET_DFA_BODY_FILE(F : in out FILE_TYPE) is
   begin
-    if (LEN(INFILENAME) /= 0) then
+    if (LEN(In_File_Name) /= 0) then
       CREATE(F, OUT_FILE, +MISC.BASENAME & "-dfa." & ADA_BODY_SUFFIX);
     else
       CREATE(F, OUT_FILE, "aflex_yy-dfa." & ADA_BODY_SUFFIX);
@@ -113,7 +113,7 @@ package body EXTERNAL_FILE_MANAGER is
       Out_File_Name : Unbounded_String;
 
    begin
-      if LEN (InFileName) /= 0 then
+      if LEN (In_File_Name) /= 0 then
          -- give out infile + ada_suffix
 
          Out_File_Name := Misc.Basename & "." & Ada_Spec_Suffix;
@@ -138,7 +138,7 @@ package body EXTERNAL_FILE_MANAGER is
       Out_File_Name : Unbounded_String;
 
    begin
-      if LEN (INFILENAME) /= 0 then
+      if LEN (In_File_Name) /= 0 then
          -- give out infile + ada_suffix
 
          Out_File_Name := Misc.Basename & "." & Ada_Body_Suffix;

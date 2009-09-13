@@ -21,21 +21,26 @@
 -- DESCRIPTION driver routines for aflex.  Calls drivers for all
 -- high level routines from other packages.
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/mainB.a,v 1.26 1992/12/29 22:46:15 self Exp self $
+with Ada.Command_Line;
 with Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
 
-with MISC_DEFS, MISC, COMMAND_LINE_INTERFACE, ECS, PARSER;
+with MISC_DEFS, MISC, ECS, PARSER;
 with MAIN_BODY, TSTRING, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
-use MISC_DEFS, COMMAND_LINE_INTERFACE, TSTRING;
+use MISC_DEFS, TSTRING;
 with Parser.Tokens;
 
 package body Main_Body is
 
+   use Ada.Command_Line;
    use Ada.Strings.Unbounded;
    use Ada.Text_IO;
 
-   OUTFILE_CREATED : Boolean := False;
+   function "+" (Item : Unbounded_String) return String renames To_String;
+   function "+" (Item : String) return Unbounded_String
+     renames To_Unbounded_String;
+
    Aflex_Version   : constant String := "1.4a";
    Start_Time      : Unbounded_String;
    End_Time        : Unbounded_String;
@@ -261,219 +266,244 @@ package body Main_Body is
       end if;
    end Aflex_End;
 
-  procedure Aflex_Init is
-    SAWCMPFLAG, USE_STDOUT : BOOLEAN;
-    OUTPUT_SPEC_FILE       : FILE_TYPE;
-    INPUT_FILE             : FILE_TYPE;
-    I                      : INTEGER;
-    ARG_CNT                : INTEGER;
-    FLAG_POS               : INTEGER;
-    ARG                    : VSTRING;
-    SKELNAME               : VSTRING;
-    SKELNAME_USED          : BOOLEAN := FALSE;
-  begin
-    PRINTSTATS := FALSE;
-    SYNTAXERROR := FALSE;
-    TRACE := FALSE;
-    SPPRDFLT := FALSE;
-    INTERACTIVE := FALSE;
-    CASEINS := FALSE;
-    BACKTRACK_REPORT := FALSE;
-    PERFORMANCE_REPORT := FALSE;
-    DDEBUG := FALSE;
-    FULLTBL := FALSE;
-    CONTINUED_ACTION := FALSE;
-    GEN_LINE_DIRS := TRUE;
-    USEMECS := TRUE;
-    USEECS := TRUE;
+   ----------------
+   -- Aflex_Init --
+   ----------------
 
-    SAWCMPFLAG := FALSE;
-    USE_STDOUT := FALSE;
+   procedure Aflex_Init is
+      USE_STDOUT       : BOOLEAN;
+      OUTPUT_SPEC_FILE : FILE_TYPE;
+      INPUT_FILE       : FILE_TYPE;
+      Arg_Num          : INTEGER;
+      FLAG_POS         : INTEGER;
+      Arg              : Unbounded_String;
+      SKELNAME         : Unbounded_String;
+      SKELNAME_USED    : BOOLEAN := FALSE;
 
-    -- read flags
-    COMMAND_LINE_INTERFACE.INITIALIZE_COMMAND_LINE;
+   begin
+      PRINTSTATS := FALSE;
+      SYNTAXERROR := FALSE;
+      TRACE := FALSE;
+      SPPRDFLT := FALSE;
+      INTERACTIVE := FALSE;
+      CASEINS := FALSE;
+      BACKTRACK_REPORT := FALSE;
+      PERFORMANCE_REPORT := FALSE;
+      DDEBUG := FALSE;
+      FULLTBL := FALSE;
+      CONTINUED_ACTION := FALSE;
+      GEN_LINE_DIRS := TRUE;
+      USEMECS := TRUE;
+      USEECS := TRUE;
 
-    -- load up argv
-    EXTERNAL_FILE_MANAGER.INITIALIZE_FILES;
+      USE_STDOUT := FALSE;
 
-    -- do external files setup
+      -- do external files setup
 
-    -- loop through the list of arguments
-    ARG_CNT := 1;
-    while (ARG_CNT <= ARGC - 1) loop
-      if ((CHAR(ARGV(ARG_CNT), 1) /= '-') or (LEN(ARGV(ARG_CNT)) < 2)) then
-        exit;
-      end if;
+      EXTERNAL_FILE_MANAGER.INITIALIZE_FILES;
 
-      -- loop through the flags in this argument.
-      ARG := ARGV(ARG_CNT);
-      FLAG_POS := 2;
-      while (FLAG_POS <= LEN(ARG)) loop
-        case CHAR(ARG, FLAG_POS) is
-          when 'b' =>
-            BACKTRACK_REPORT := TRUE;
-          when 'd' =>
-            DDEBUG := TRUE;
-          when 'f' =>
-            USEECS := FALSE;
-            USEMECS := FALSE;
-            FULLTBL := TRUE;
-          when 'I' =>
-            INTERACTIVE := TRUE;
-          when 'i' =>
-            CASEINS := TRUE;
-          when 'L' =>
-            GEN_LINE_DIRS := FALSE;
-          when 'p' =>
-            PERFORMANCE_REPORT := TRUE;
-          when 'S' =>
-            if (FLAG_POS /= 2) then
-              Misc.Aflex_Error ("-S flag must be given separately");
-            end if;
-            SKELNAME := SLICE(ARG, FLAG_POS + 1, LEN(ARG));
-            SKELNAME_USED := TRUE;
-            goto GET_NEXT_ARG;
-          when 's' =>
-            SPPRDFLT := TRUE;
-          when 't' =>
-            USE_STDOUT := TRUE;
-          when 'T' =>
-            TRACE := TRUE;
-          when 'v' =>
-            PRINTSTATS := TRUE;
+      --  loop through the list of arguments
+
+      Arg_Num := 1;
+
+      while Arg_Num <= Argument_Count loop
+         if Argument (Arg_Num)'Length < 2
+           or else Argument (Arg_Num) (1) /= '-'
+         then
+            exit;
+         end if;
+
+         --  loop through the flags in this argument.
+
+         Arg := +Argument (Arg_Num);
+         FLAG_POS := 2;
+
+         while FLAG_POS <= Length (Arg) loop
+            case Element (Arg, FLAG_POS) is
+               when 'b' =>
+                  BACKTRACK_REPORT := TRUE;
+
+               when 'd' =>
+                  DDEBUG := TRUE;
+
+               when 'f' =>
+                  USEECS := FALSE;
+                  USEMECS := FALSE;
+                  FULLTBL := TRUE;
+
+               when 'I' =>
+                  INTERACTIVE := TRUE;
+
+               when 'i' =>
+                  CASEINS := TRUE;
+
+               when 'L' =>
+                  GEN_LINE_DIRS := FALSE;
+
+               when 'p' =>
+                  PERFORMANCE_REPORT := TRUE;
+
+               when 'S' =>
+                  if FLAG_POS /= 2 then
+                     Misc.Aflex_Error ("-S flag must be given separately");
+                  end if;
+
+                  SKELNAME :=
+                    Unbounded_Slice (Arg, FLAG_POS + 1, Length (Arg));
+                  SKELNAME_USED := TRUE;
+
+                  goto GET_NEXT_ARG;
+
+               when 's' =>
+                  SPPRDFLT := TRUE;
+
+               when 't' =>
+                  USE_STDOUT := TRUE;
+
+               when 'T' =>
+                  TRACE := TRUE;
+
+               when 'v' =>
+                  PRINTSTATS := TRUE;
+
 -- UMASS CODES :
 --    Added an flag to indicate whether or not the aflex generated
 --    codes will be used by Ayacc extension. Ayacc extension has
 --    more power in error recovery.
-          when 'E' =>
-            Ayacc_Extension_Flag := TRUE;
+               when 'E' =>
+                  Ayacc_Extension_Flag := TRUE;
 -- END OF UMASS CODES.
-          when others =>
-            Misc.Aflex_Error ("unknown flag " & CHAR (ARG, FLAG_POS));
-        end case;
-        FLAG_POS := FLAG_POS + 1;
+
+               when others =>
+                  Misc.Aflex_Error ("unknown flag " & Element (Arg, FLAG_POS));
+            end case;
+            FLAG_POS := FLAG_POS + 1;
+         end loop;
+
+         <<GET_NEXT_ARG>> Arg_Num := Arg_Num + 1;
+
+         -- go on to next argument from list.
       end loop;
-      <<GET_NEXT_ARG>> ARG_CNT := ARG_CNT + 1;
 
-    -- go on to next argument from list.
-    end loop;
-
-    if (FULLTBL and USEMECS) then
-      Misc.Aflex_Error ("full table and -cm don't make sense together");
-    end if;
-
-    if (FULLTBL and INTERACTIVE) then
-      Misc.Aflex_Error ("full table and -I are (currently) incompatible");
-    end if;
-
-    if (ARG_CNT < ARGC) then
-      begin
-        if (ARG_CNT - ARGC > 1) then
-          Misc.Aflex_Error ("extraneous argument(s) given");
-        end if;
-
-        -- Tell aflex where to read input from.
-        INFILENAME := ARGV(ARG_CNT);
-        OPEN(INPUT_FILE, IN_FILE, STR(ARGV(ARG_CNT)));
-        SET_INPUT(INPUT_FILE);
-      exception
-        when NAME_ERROR =>
-          Misc.Aflex_Fatal ("can't open " & INFILENAME);
-      end;
-    end if;
-
-    if (not USE_STDOUT) then
-      EXTERNAL_FILE_MANAGER.GET_SCANNER_SPEC_FILE(OUTPUT_SPEC_FILE);
-      OUTFILE_CREATED := TRUE;
-    end if;
-
-    if (BACKTRACK_REPORT) then
-      EXTERNAL_FILE_MANAGER.GET_BACKTRACK_FILE(BACKTRACK_FILE);
-    end if;
-
-    LASTCCL := 0;
-    LASTSC := 0;
-
-
-    --initialize the statistics
-    Start_Time := Misc.Aflex_Get_Time;
-
-    begin
-
-      -- open the skeleton file
-      if (SKELNAME_USED) then
-        OPEN(SKELFILE, IN_FILE, STR(SKELNAME));
-        SKELETON_MANAGER.SET_EXTERNAL_SKELETON;
+      if FULLTBL and USEMECS then
+         Misc.Aflex_Error ("full table and -cm don't make sense together");
       end if;
-    exception
-      when USE_ERROR | NAME_ERROR =>
-        Misc.Aflex_Fatal ("couldn't open skeleton file " & SKELNAME);
-    end;
 
-    -- without a third argument create make an anonymous temp file.
-    begin
-      CREATE(TEMP_ACTION_FILE, OUT_FILE);
-      CREATE(DEF_FILE, OUT_FILE);
-    exception
-      when USE_ERROR | NAME_ERROR =>
-        Misc.Aflex_Fatal ("can't create temporary file");
-    end;
+      if FULLTBL and INTERACTIVE then
+         Misc.Aflex_Error ("full table and -I are (currently) incompatible");
+      end if;
 
-    LASTDFA := 0;
-    LASTNFA := 0;
-    NUM_RULES := 0;
-    NUMAS := 0;
-    NUMSNPAIRS := 0;
-    TMPUSES := 0;
-    NUMECS := 0;
-    NUMEPS := 0;
-    EPS2 := 0;
-    NUM_REALLOCS := 0;
-    HSHCOL := 0;
-    DFAEQL := 0;
-    TOTNST := 0;
-    NUMUNIQ := 0;
-    NUMDUP := 0;
-    HSHSAVE := 0;
-    EOFSEEN := FALSE;
-    DATAPOS := 0;
-    DATALINE := 0;
-    NUM_BACKTRACKING := 0;
-    ONESP := 0;
-    NUMPROTS := 0;
-    VARIABLE_TRAILING_CONTEXT_RULES := FALSE;
-    BOL_NEEDED := FALSE;
+      if Arg_Num <= Argument_Count then
+         begin
+            if (Arg_Num - Argument_Count + 1 > 1) then
+               Misc.Aflex_Error ("extraneous argument(s) given");
+            end if;
 
-    LINENUM := 1;
-    SECTNUM := 1;
-    FIRSTPROT := NIL;
+            --  Tell aflex where to read input from.
+            In_File_Name := +Argument (Arg_Num);
+            OPEN(INPUT_FILE, IN_FILE, Argument (Arg_Num));
+            SET_INPUT(INPUT_FILE);
 
-    -- used in mkprot() so that the first proto goes in slot 1
-    -- of the proto queue
+         exception
+            when NAME_ERROR =>
+               Misc.Aflex_Fatal ("can't open " & In_File_Name);
+         end;
+      end if;
 
-    LASTPROT := 1;
+      if not USE_STDOUT then
+         EXTERNAL_FILE_MANAGER.GET_SCANNER_SPEC_FILE(OUTPUT_SPEC_FILE);
+      end if;
 
-    if (USEECS) then
-    -- set up doubly-linked equivalence classes
-      ECGROUP(1) := NIL;
+      if BACKTRACK_REPORT then
+         EXTERNAL_FILE_MANAGER.GET_BACKTRACK_FILE(BACKTRACK_FILE);
+      end if;
 
-      for CNT in 2 .. CSIZE loop
-        ECGROUP(CNT) := CNT - 1;
-        NEXTECM(CNT - 1) := CNT;
-      end loop;
+      LASTCCL := 0;
+      LASTSC := 0;
 
-      NEXTECM(CSIZE) := NIL;
-    else
-    -- put everything in its own equivalence class
-      for CNT in 1 .. CSIZE loop
-        ECGROUP(CNT) := CNT;
-        NEXTECM(CNT) := BAD_SUBSCRIPT;  -- to catch errors
-      end loop;
-    end if;
+      --  initialize the statistics
 
-    SET_UP_INITIAL_ALLOCATIONS;
+      Start_Time := Misc.Aflex_Get_Time;
 
+      begin
+         --  open the skeleton file
 
+         if SKELNAME_USED then
+            OPEN(SKELFILE, IN_FILE, +SKELNAME);
+            SKELETON_MANAGER.SET_EXTERNAL_SKELETON;
+         end if;
+
+      exception
+         when USE_ERROR | NAME_ERROR =>
+            Misc.Aflex_Fatal ("couldn't open skeleton file " & SKELNAME);
+      end;
+
+      -- without a third argument create make an anonymous temp file.
+
+      begin
+         CREATE(TEMP_ACTION_FILE, OUT_FILE);
+         CREATE(DEF_FILE, OUT_FILE);
+
+      exception
+         when USE_ERROR | NAME_ERROR =>
+            Misc.Aflex_Fatal ("can't create temporary file");
+      end;
+
+      LASTDFA := 0;
+      LASTNFA := 0;
+      NUM_RULES := 0;
+      NUMAS := 0;
+      NUMSNPAIRS := 0;
+      TMPUSES := 0;
+      NUMECS := 0;
+      NUMEPS := 0;
+      EPS2 := 0;
+      NUM_REALLOCS := 0;
+      HSHCOL := 0;
+      DFAEQL := 0;
+      TOTNST := 0;
+      NUMUNIQ := 0;
+      NUMDUP := 0;
+      HSHSAVE := 0;
+      EOFSEEN := FALSE;
+      DATAPOS := 0;
+      DATALINE := 0;
+      NUM_BACKTRACKING := 0;
+      ONESP := 0;
+      NUMPROTS := 0;
+      VARIABLE_TRAILING_CONTEXT_RULES := FALSE;
+      BOL_NEEDED := FALSE;
+
+      LINENUM := 1;
+      SECTNUM := 1;
+      FIRSTPROT := NIL;
+
+      --  used in mkprot() so that the first proto goes in slot 1
+      --  of the proto queue
+
+      LASTPROT := 1;
+
+      if USEECS then
+         --  set up doubly-linked equivalence classes
+         ECGROUP(1) := NIL;
+
+         for CNT in 2 .. CSIZE loop
+            ECGROUP(CNT) := CNT - 1;
+            NEXTECM(CNT - 1) := CNT;
+         end loop;
+
+         NEXTECM(CSIZE) := NIL;
+
+      else
+         --  put everything in its own equivalence class
+
+         for CNT in 1 .. CSIZE loop
+            ECGROUP(CNT) := CNT;
+            NEXTECM(CNT) := BAD_SUBSCRIPT;  -- to catch errors
+         end loop;
+      end if;
+
+      SET_UP_INITIAL_ALLOCATIONS;
   end Aflex_Init;
 
   -- readin - read in the rules section of the input file(s)

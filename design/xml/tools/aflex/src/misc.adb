@@ -326,7 +326,7 @@ package body MISC is
    --------------
 
    function Basename return Unbounded_String is
-      End_Char_Pos   : Integer := Len (InFileName);
+      End_Char_Pos   : Integer := Len (In_File_Name);
       Start_Char_Pos : Integer;
 
    begin
@@ -338,25 +338,25 @@ package body MISC is
 
       -- find out where the end of the basename is
       while ((END_CHAR_POS >= 1) and then
-               (CHAR(INFILENAME, END_CHAR_POS) /= '.')) loop
+               (CHAR(In_File_Name, END_CHAR_POS) /= '.')) loop
          END_CHAR_POS := END_CHAR_POS - 1;
       end loop;
 
       -- find out where the beginning of the basename is
       START_CHAR_POS := END_CHAR_POS; -- start at the end of the basename
       while ((START_CHAR_POS > 1) and then
-               (CHAR(INFILENAME, START_CHAR_POS) /= '/')) loop
+               (CHAR(In_File_Name, START_CHAR_POS) /= '/')) loop
          START_CHAR_POS := START_CHAR_POS - 1;
       end loop;
 
-      if (CHAR(INFILENAME, START_CHAR_POS) = '/') then
+      if (CHAR(In_File_Name, START_CHAR_POS) = '/') then
          START_CHAR_POS := START_CHAR_POS + 1;
       end if;
 
       if (END_CHAR_POS >= 1) then
-         return +STR (SLICE(INFILENAME, START_CHAR_POS,  END_CHAR_POS - 1));
+         return +STR (SLICE(In_File_Name, START_CHAR_POS,  END_CHAR_POS - 1));
       else
-         return +STR (INFILENAME);
+         return +STR (In_File_Name);
       end if;
    end Basename;
 
@@ -368,7 +368,7 @@ package body MISC is
       Put (OUTPUT_FILE_NAME, "--# line ");
       Put (OUTPUT_FILE_NAME, LINENUM, 1);
       Put (OUTPUT_FILE_NAME, " """);
-      Put (OUTPUT_FILE_NAME, INFILENAME);
+      Put (OUTPUT_FILE_NAME, In_File_Name);
       Put_Line (OUTPUT_FILE_NAME, """");
     end if;
   end LINE_DIRECTIVE_OUT;
@@ -380,7 +380,7 @@ package body MISC is
       PUT("--# line ");
       PUT(LINENUM, 1);
       PUT(" """);
-      PUT(INFILENAME);
+      PUT(In_File_Name);
       PUT_LINE("""");
     end if;
   end LINE_DIRECTIVE_OUT;
