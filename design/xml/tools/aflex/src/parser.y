@@ -88,10 +88,10 @@ startconddecl   :  SCDECL
 		;
 
 namelist1	:  namelist1 WHITESPACE NAME
-			{ sym.scinstal( +nmstr, xcluflg ); }
+			{ sym.scinstal (nmstr, xcluflg); }
 
 		|  NAME
-			{ sym.scinstal( +nmstr, xcluflg ); }
+			{ sym.scinstal (nmstr, xcluflg); }
 
 		|  error
                         { misc.synerr( "bad start condition list" ); }
@@ -207,11 +207,11 @@ scon            :  '<' namelist2 '>'
 
 namelist2       :  namelist2 ',' NAME
                         {
-			scnum := sym.sclookup( +nmstr );
+			scnum := sym.sclookup (nmstr);
 			if (scnum = 0 ) then
 		            Put
                              (Standard_Error, "undeclared start condition ");
-		            tstring.put( Standard_Error, nmstr );
+		            Put (Standard_Error, nmstr);
 			    Main_Body.Aflex_End (1);
 
 			else
@@ -222,11 +222,11 @@ namelist2       :  namelist2 ',' NAME
 
 		|  NAME
 			{
-			scnum := sym.sclookup( +nmstr );
+			scnum := sym.sclookup (nmstr);
 			if (scnum = 0 ) then
 		            Put
                              (Standard_Error, "undeclared start condition ");
-		            tstring.put( Standard_Error,	 nmstr );
+		            Put (Standard_Error, nmstr);
 			    Main_Body.Aflex_End (1);
 
 			else

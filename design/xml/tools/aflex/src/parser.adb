@@ -391,11 +391,11 @@ when  8 =>
 
 when  9 =>
 --#line  91
- sym.scinstal( +nmstr, xcluflg ); 
+ sym.scinstal (nmstr, xcluflg); 
 
 when  10 =>
 --#line  94
- sym.scinstal( +nmstr, xcluflg ); 
+ sym.scinstal (nmstr, xcluflg); 
 
 when  11 =>
 --#line  97
@@ -521,11 +521,11 @@ when  21 =>
 when  23 =>
 --#line  209
 
-			scnum := sym.sclookup( +nmstr );
+			scnum := sym.sclookup (nmstr);
 			if (scnum = 0 ) then
 		            Put
                              (Standard_Error, "undeclared start condition ");
-		            tstring.put( Standard_Error, nmstr );
+		            Put (Standard_Error, nmstr);
 			    Main_Body.Aflex_End (1);
 
 			else
@@ -537,11 +537,11 @@ when  23 =>
 when  24 =>
 --#line  224
 
-			scnum := sym.sclookup( +nmstr );
+			scnum := sym.sclookup (nmstr);
 			if (scnum = 0 ) then
 		            Put
                              (Standard_Error, "undeclared start condition ");
-		            tstring.put( Standard_Error,	 nmstr );
+		            Put (Standard_Error, nmstr);
 			    Main_Body.Aflex_End (1);
 
 			else

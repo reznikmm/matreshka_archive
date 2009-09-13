@@ -30,8 +30,8 @@
 -- Changed constant CSize from 127 to Pos(Last Char) for porting to gnat
 with Ada.Strings.Unbounded;
 
-with TEXT_IO, TSTRING;
-use TEXT_IO, TSTRING;
+with TEXT_IO;
+use TEXT_IO;
 
 with Unicode;
 
@@ -548,7 +548,7 @@ package MISC_DEFS is
   -- num_backtracking - number of DFA states requiring back-tracking
   -- bol_needed - whether scanner needs beginning-of-line recognition
 
-  NMSTR : VSTRING;
+  NMSTR : Unbounded_String;
   SECTNUM, NUMMT, HSHCOL, DFAEQL, NUMEPS, EPS2, NUM_REALLOCS : INTEGER;
   TMPUSES, TOTNST, PEAKPAIRS, NUMUNIQ, NUMDUP, HSHSAVE : INTEGER;
   NUM_BACKTRACKING : INTEGER;

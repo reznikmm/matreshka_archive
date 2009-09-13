@@ -23,11 +23,6 @@ package body ascan is
       return To_Unbounded_String (STR (Item));
    end "+";
 
-   function "+" (Item : Unbounded_String) return VSTRING is
-   begin
-      return VSTR (To_String (Item));
-   end "+";
-
 beglin : boolean := false;
 i, bracelevel: integer;
 
@@ -668,14 +663,14 @@ when 8 =>
 when 9 => 
 --# line 73 "ascan.l"
 
-			nmstr := vstr(yytext(1..YYLength));
+			nmstr := +YYText (1 .. YYLength);
 			didadef := false;
 			ENTER(PICKUPDEF);
 			
 
 when 10 => 
 --# line 79 "ascan.l"
- nmstr := vstr(yytext(1..YYLength));
+ nmstr := +YYText (1 .. YYLength);
 			  return NAME;
 			
 
@@ -714,7 +709,7 @@ when 15 =>
 			    i := i - 1;
 			end loop;
 
-                        sym.ndinstal (+nmstr, Unbounded_Slice (nmdef, 1, i));
+                        sym.ndinstal (nmstr, Unbounded_Slice (nmdef, 1, i));
 			didadef := true;
 			
 
@@ -732,7 +727,7 @@ when 17 =>
 --# line 117 "ascan.l"
  linenum := linenum + 1;
 			  ENTER(0);
-			  nmstr := vstr(yytext(1..YYLength));
+			  nmstr := +YYText (1 .. YYLength);
 			  return NAME;
 			
 
@@ -864,10 +859,10 @@ when 36 =>
 --# line 189 "ascan.l"
 
 
-			nmstr := vstr(yytext(1..YYLength));
+			nmstr := +YYText (1 .. YYLength);
 
 			-- check to see if we've already encountered this ccl
-                        cclval := sym.ccllookup( +nmstr );
+                        cclval := sym.ccllookup (nmstr);
 			if ( cclval /= 0 ) then
 			    yylval := cclval;
 			    cclreuse := cclreuse + 1;
@@ -875,12 +870,12 @@ when 36 =>
 			else
 			    -- we fudge a bit.  We know that this ccl will
 			    -- soon be numbered as lastccl + 1 by cclinit
-			    sym.cclinstal( +nmstr, lastccl + 1 );
+			    sym.cclinstal (nmstr, lastccl + 1);
 
 			    -- push back everything but the leading bracket
 			    -- so the ccl can be rescanned
 
-			    Put_Back_String (+nmstr, 1);
+			    Put_Back_String (nmstr, 1);
 
 			    ENTER(FIRSTCCL);
 			    return ( '[' );
@@ -890,7 +885,7 @@ when 36 =>
 when 37 => 
 --# line 214 "ascan.l"
 
-			nmstr := vstr(yytext(1..YYLength));
+			nmstr := +YYText (1 .. YYLength);
 			-- chop leading and trailing brace
 			tmpbuf := +slice(vstr(yytext(1..YYLength)),
 								2, YYLength-1);
@@ -952,7 +947,7 @@ YY_DO_BEFORE_ACTION; -- set up yytext again
 
 when 44 => 
 --# line 255 "ascan.l"
- nmstr := vstr(yytext(1..YYLength));
+ nmstr := +YYText (1 .. YYLength);
 			  return NAME;
 			
 
