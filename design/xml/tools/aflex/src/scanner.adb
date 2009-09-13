@@ -5,9 +5,9 @@ with Ada.Text_IO;
 with misc_defs, misc, sym;
 use misc_defs;
 with Unicode;
-with ascan.DFA; use ascan.DFA;
-with ascan.IO; use ascan.IO;
-package body ascan is
+with scanner.DFA; use scanner.DFA;
+with scanner.IO; use scanner.IO;
+package body scanner is
    use Ada.Integer_Text_IO;
    use Ada.Strings.Unbounded;
    use Ada.Text_IO;
@@ -608,33 +608,33 @@ end if;
 
 
 when 1 => 
---# line 46 "ascan.l"
+--# line 46 "scanner.l"
  indented_code := true; 
 
 when 2 => 
---# line 47 "ascan.l"
+--# line 47 "scanner.l"
  linenum := linenum + 1; ECHO;
 				-- treat as a comment;
 			
 
 when 3 => 
---# line 50 "ascan.l"
+--# line 50 "scanner.l"
  linenum := linenum + 1; ECHO; 
 
 when 4 => 
---# line 51 "ascan.l"
+--# line 51 "scanner.l"
  return ( SCDECL ); 
 
 when 5 => 
---# line 52 "ascan.l"
+--# line 52 "scanner.l"
  return ( XSCDECL ); 
 
 when 6 => 
---# line 54 "ascan.l"
+--# line 54 "scanner.l"
  return ( WHITESPACE ); 
 
 when 7 => 
---# line 56 "ascan.l"
+--# line 56 "scanner.l"
 
 			sectnum := 2;
 			misc.line_directive_out;
@@ -643,7 +643,7 @@ when 7 =>
 			
 
 when 8 => 
---# line 63 "ascan.l"
+--# line 63 "scanner.l"
 
 			Put (Standard_Error, "old-style lex command at line ");
 			Put (Standard_Error, Linenum);
@@ -655,7 +655,7 @@ when 8 =>
 			
 
 when 9 => 
---# line 73 "ascan.l"
+--# line 73 "scanner.l"
 
 			nmstr := +YYText (1 .. YYLength);
 			didadef := false;
@@ -663,33 +663,33 @@ when 9 =>
 			
 
 when 10 => 
---# line 79 "ascan.l"
+--# line 79 "scanner.l"
  nmstr := +YYText (1 .. YYLength);
 			  return NAME;
 			
 
 when 11 => 
---# line 82 "ascan.l"
+--# line 82 "scanner.l"
  linenum := linenum + 1;
 			  -- allows blank lines in section 1;
 			
 
 when 12 => 
---# line 85 "ascan.l"
+--# line 85 "scanner.l"
  linenum := linenum + 1; return Newline; 
 
 when 13 => 
---# line 86 "ascan.l"
+--# line 86 "scanner.l"
  misc.synerr( "illegal character" );ENTER(RECOVER);
 
 when 14 => 
---# line 88 "ascan.l"
+--# line 88 "scanner.l"
  null;
 			  -- separates name and definition;
 			
 
 when 15 => 
---# line 92 "ascan.l"
+--# line 92 "scanner.l"
 
 			nmdef := +YYText (1 .. YYLength);
 
@@ -708,7 +708,7 @@ when 15 =>
 			
 
 when 16 => 
---# line 109 "ascan.l"
+--# line 109 "scanner.l"
 
 			if ( not didadef ) then
 			    misc.synerr( "incomplete name definition" );
@@ -718,7 +718,7 @@ when 16 =>
 			
 
 when 17 => 
---# line 117 "ascan.l"
+--# line 117 "scanner.l"
  linenum := linenum + 1;
 			  ENTER(0);
 			  nmstr := +YYText (1 .. YYLength);
@@ -730,7 +730,7 @@ yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
 yy_cp := yy_cp - 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
---# line 123 "ascan.l"
+--# line 123 "scanner.l"
 
 			linenum := linenum + 1;
 			ACTION_ECHO;
@@ -739,40 +739,40 @@ YY_DO_BEFORE_ACTION; -- set up yytext again
 			
 
 when 19 => 
---# line 130 "ascan.l"
+--# line 130 "scanner.l"
  linenum := linenum + 1; ACTION_ECHO; 
 
 when YY_END_OF_BUFFER +SECT2PROLOG + 1 
  =>
---# line 132 "ascan.l"
+--# line 132 "scanner.l"
  MARK_END_OF_PROLOG;
 			  return End_Of_Input;
 			
 
 when 21 => 
---# line 136 "ascan.l"
+--# line 136 "scanner.l"
  linenum := linenum + 1;
 			  -- allow blank lines in sect2;
 
 			-- this rule matches indented lines which
 			-- are not comments.
 when 22 => 
---# line 141 "ascan.l"
+--# line 141 "scanner.l"
 
 			misc.synerr("indented code found outside of action");
 			linenum := linenum + 1;
 			
 
 when 23 => 
---# line 146 "ascan.l"
+--# line 146 "scanner.l"
  ENTER(SC); return ( '<' ); 
 
 when 24 => 
---# line 147 "ascan.l"
+--# line 147 "scanner.l"
  return ( '^' ); 
 
 when 25 => 
---# line 148 "ascan.l"
+--# line 148 "scanner.l"
  ENTER(QUOTE); return ( '"' ); 
 
 when 26 => 
@@ -780,11 +780,11 @@ yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
  yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
---# line 149 "ascan.l"
+--# line 149 "scanner.l"
  ENTER(NUM); return ( '{' ); 
 
 when 27 => 
---# line 150 "ascan.l"
+--# line 150 "scanner.l"
  ENTER(BRACEERROR); 
 
 when 28 => 
@@ -792,22 +792,22 @@ yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
  yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
---# line 151 "ascan.l"
+--# line 151 "scanner.l"
  return ( '$' ); 
 
 when 29 => 
---# line 153 "ascan.l"
+--# line 153 "scanner.l"
  continued_action := true;
 			  linenum := linenum + 1;
 			  return Newline;
 			
 
 when 30 => 
---# line 158 "ascan.l"
+--# line 158 "scanner.l"
  linenum := linenum + 1; ACTION_ECHO; 
 
 when 31 => 
---# line 160 "ascan.l"
+--# line 160 "scanner.l"
 
 			-- this rule is separate from the one below because
 			-- otherwise we get variable trailing context, so
@@ -824,7 +824,7 @@ yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
 yy_cp := yy_cp - 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
---# line 171 "ascan.l"
+--# line 171 "scanner.l"
 
 			bracelevel := 0;
 			continued_action := false;
@@ -833,15 +833,15 @@ YY_DO_BEFORE_ACTION; -- set up yytext again
 			
 
 when 33 => 
---# line 178 "ascan.l"
+--# line 178 "scanner.l"
  linenum := linenum + 1; return Newline; 
 
 when 34 => 
---# line 180 "ascan.l"
+--# line 180 "scanner.l"
  return ( EOF_OP ); 
 
 when 35 => 
---# line 182 "ascan.l"
+--# line 182 "scanner.l"
 
 			sectnum := 3;
 			ENTER(SECT3);
@@ -850,7 +850,7 @@ when 35 =>
 			
 
 when 36 => 
---# line 189 "ascan.l"
+--# line 189 "scanner.l"
 
 
 			nmstr := +YYText (1 .. YYLength);
@@ -877,7 +877,7 @@ when 36 =>
 			
 
 when 37 => 
---# line 214 "ascan.l"
+--# line 214 "scanner.l"
 
 			nmstr := +YYText (1 .. YYLength);
 			-- chop leading and trailing brace
@@ -896,7 +896,7 @@ when 37 =>
 			
 
 when 38 => 
---# line 231 "ascan.l"
+--# line 231 "scanner.l"
  tmpbuf := +YYText (1 .. YYLength);
 			  case Element (tmpbuf, 1) is
 				when '/' => return '/';
@@ -913,22 +913,22 @@ when 38 =>
 			
 
 when 39 => 
---# line 245 "ascan.l"
+--# line 245 "scanner.l"
  tmpbuf := +YYText (1 .. YYLength);
 			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 			
 
 when 40 => 
---# line 249 "ascan.l"
+--# line 249 "scanner.l"
  linenum := linenum + 1; return Newline; 
 
 when 41 => 
---# line 252 "ascan.l"
+--# line 252 "scanner.l"
  return ( ',' ); 
 
 when 42 => 
---# line 253 "ascan.l"
+--# line 253 "scanner.l"
  ENTER(SECT2); return ( '>' ); 
 
 when 43 => 
@@ -936,36 +936,36 @@ yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
  yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
---# line 254 "ascan.l"
+--# line 254 "scanner.l"
  ENTER(CARETISBOL); return ( '>' ); 
 
 when 44 => 
---# line 255 "ascan.l"
+--# line 255 "scanner.l"
  nmstr := +YYText (1 .. YYLength);
 			  return NAME;
 			
 
 when 45 => 
---# line 258 "ascan.l"
+--# line 258 "scanner.l"
  misc.synerr( "bad start condition name" ); 
 
 when 46 => 
---# line 260 "ascan.l"
+--# line 260 "scanner.l"
  ENTER(SECT2); return ( '^' ); 
 
 when 47 => 
---# line 263 "ascan.l"
+--# line 263 "scanner.l"
  tmpbuf := +YYText (1 .. YYLength);
 			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 			
 
 when 48 => 
---# line 267 "ascan.l"
+--# line 267 "scanner.l"
  ENTER(SECT2); return ( '"' ); 
 
 when 49 => 
---# line 269 "ascan.l"
+--# line 269 "scanner.l"
 
 			misc.synerr( "missing quote" );
 			ENTER(SECT2);
@@ -978,7 +978,7 @@ yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
  yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
---# line 277 "ascan.l"
+--# line 277 "scanner.l"
  ENTER(CCL); return ( '^' ); 
 
 when 51 => 
@@ -986,15 +986,15 @@ yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
  yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
---# line 278 "ascan.l"
+--# line 278 "scanner.l"
  return ( '^' ); 
 
 when 52 => 
---# line 279 "ascan.l"
+--# line 279 "scanner.l"
  ENTER(CCL); yylval := CHARACTER'POS('-'); return ( CHAR ); 
 
 when 53 => 
---# line 280 "ascan.l"
+--# line 280 "scanner.l"
  ENTER(CCL);
 			  tmpbuf := +YYText (1 .. YYLength);
 			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
@@ -1006,37 +1006,37 @@ yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
  yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
---# line 286 "ascan.l"
+--# line 286 "scanner.l"
  return ( '-' ); 
 
 when 55 => 
---# line 287 "ascan.l"
+--# line 287 "scanner.l"
  tmpbuf := +YYText (1 .. YYLength);
 			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 			
 
 when 56 => 
---# line 291 "ascan.l"
+--# line 291 "scanner.l"
  ENTER(SECT2); return ( ']' ); 
 
 when 57 => 
---# line 294 "ascan.l"
+--# line 294 "scanner.l"
 
 			yylval := misc.myctoi (+YYText (1 .. YYLength));
 			return ( NUMBER );
 			
 
 when 58 => 
---# line 299 "ascan.l"
+--# line 299 "scanner.l"
  return ( ',' ); 
 
 when 59 => 
---# line 300 "ascan.l"
+--# line 300 "scanner.l"
  ENTER(SECT2); return ( '}' ); 
 
 when 60 => 
---# line 302 "ascan.l"
+--# line 302 "scanner.l"
 
 			misc.synerr( "bad character inside {}'s" );
 			ENTER(SECT2);
@@ -1044,7 +1044,7 @@ when 60 =>
 			
 
 when 61 => 
---# line 308 "ascan.l"
+--# line 308 "scanner.l"
 
 			misc.synerr( "missing }" );
 			ENTER(SECT2);
@@ -1053,48 +1053,48 @@ when 61 =>
 			
 
 when 62 => 
---# line 316 "ascan.l"
+--# line 316 "scanner.l"
  misc.synerr( "bad name in {}'s" ); ENTER(SECT2); 
 
 when 63 => 
---# line 317 "ascan.l"
+--# line 317 "scanner.l"
  misc.synerr( "missing }" );
 			  linenum := linenum + 1;
 			  ENTER(SECT2);
 			
 
 when 64 => 
---# line 322 "ascan.l"
+--# line 322 "scanner.l"
  bracelevel := bracelevel + 1; 
 
 when 65 => 
---# line 323 "ascan.l"
+--# line 323 "scanner.l"
  bracelevel := bracelevel - 1; 
 
 when 66 => 
---# line 324 "ascan.l"
+--# line 324 "scanner.l"
  ACTION_ECHO; 
 
 when 67 => 
---# line 325 "ascan.l"
+--# line 325 "scanner.l"
  ACTION_ECHO; 
 
 when 68 => 
---# line 326 "ascan.l"
+--# line 326 "scanner.l"
  linenum := linenum + 1; ACTION_ECHO; 
 
 when 69 => 
---# line 327 "ascan.l"
+--# line 327 "scanner.l"
  ACTION_ECHO;
 				  -- character constant;
 			
 
 when 70 => 
---# line 331 "ascan.l"
+--# line 331 "scanner.l"
  ACTION_ECHO; ENTER(ACTION_STRING); 
 
 when 71 => 
---# line 333 "ascan.l"
+--# line 333 "scanner.l"
 
 			linenum := linenum + 1;
 			ACTION_ECHO;
@@ -1105,31 +1105,31 @@ when 71 =>
 			
 
 when 72 => 
---# line 341 "ascan.l"
+--# line 341 "scanner.l"
  ACTION_ECHO; 
 
 when 73 => 
---# line 343 "ascan.l"
+--# line 343 "scanner.l"
  ACTION_ECHO; 
 
 when 74 => 
---# line 344 "ascan.l"
+--# line 344 "scanner.l"
  ACTION_ECHO; 
 
 when 75 => 
---# line 345 "ascan.l"
+--# line 345 "scanner.l"
  linenum := linenum + 1; ACTION_ECHO; 
 
 when 76 => 
---# line 346 "ascan.l"
+--# line 346 "scanner.l"
  ACTION_ECHO; ENTER(ACTION); 
 
 when 77 => 
---# line 347 "ascan.l"
+--# line 347 "scanner.l"
  ACTION_ECHO; 
 
 when 78 => 
---# line 350 "ascan.l"
+--# line 350 "scanner.l"
 
 			yylval :=
                           Unicode_Character'Pos
@@ -1139,7 +1139,7 @@ when 78 =>
 			
 
 when 79 => 
---# line 358 "ascan.l"
+--# line 358 "scanner.l"
 
 			yylval :=
                           Unicode_Character'Pos
@@ -1149,7 +1149,7 @@ when 79 =>
 			
 
 when 80 => 
---# line 367 "ascan.l"
+--# line 367 "scanner.l"
  if ( check_yylex_here ) then
 				return End_Of_Input;
 			  else
@@ -1158,7 +1158,7 @@ when 80 =>
 			
 
 when 81 => 
---# line 373 "ascan.l"
+--# line 373 "scanner.l"
 raise AFLEX_SCANNER_JAMMED;
 when YY_END_OF_BUFFER + INITIAL + 1 |
 YY_END_OF_BUFFER + SECT2 + 1 |
@@ -1224,7 +1224,7 @@ YY_END_OF_BUFFER + ACTION_STRING + 1 =>
             end case; -- case (yy_act)
         end loop; -- end of loop waiting for end of file
 end YYLex;
---# line 373 "ascan.l"
+--# line 373 "scanner.l"
 begin
     if (call_yylex) then
     	toktype := YYLex;
@@ -1335,4 +1335,4 @@ end if;
     return toktype;
 
 end YYLex;
-end ascan;
+end scanner;

@@ -1,4 +1,4 @@
-package body ascan.IO is
+package body scanner.IO is
 -- gets input and stuffs it into 'buf'.  number of characters read, or YY_NULL,
 -- is returned in 'result'.
 
@@ -269,4 +269,4 @@ begin
 end Close_Output;
 
 
-end ascan.IO;
+end scanner.IO;

@@ -26,7 +26,7 @@ with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
 
 with MISC_DEFS, MISC;
-with Ascan, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
+with Scanner, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
 use MISC_DEFS, EXTERNAL_FILE_MANAGER;
 with Parser.Tokens; use Parser.Tokens;
 
@@ -557,8 +557,8 @@ package body Gen is
   procedure DO_SECT3_OUT is
     GARBAGE : TOKEN;
   begin
-    Ascan.CALL_YYLEX := TRUE;
-    GARBAGE := Ascan.YYLex;
+    Scanner.CALL_YYLEX := TRUE;
+    GARBAGE := Scanner.YYLex;
   end DO_SECT3_OUT;
 
   -- make_tables - generate transition tables

@@ -1,4 +1,4 @@
-package ascan.DFA is
+package scanner.DFA is
 Aflex_Debug : Boolean := False;
 yytext_ptr : integer; -- points to start of yytext in buffer
 
@@ -25,4 +25,4 @@ yy_start : integer := 0; -- current start state number
 subtype yy_state_type is integer;
 yy_last_accepting_state : yy_state_type;
 yy_last_accepting_cpos : integer;
-end ascan.DFA;
+end scanner.DFA;

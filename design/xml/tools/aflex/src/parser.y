@@ -605,7 +605,7 @@ with Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
 
-with Ascan;
+with Scanner;
 with NFA, ccl, misc, misc_defs, sym, ecs;
 with main_body;
 with Unicode;
@@ -617,7 +617,7 @@ with Unicode;
    use Ada.Strings.Unbounded.Text_IO;
    use Ada.Text_IO;
 
-   use Ascan;
+   use Scanner;
    use Unicode;
 
    function "+" (Item : String) return Unbounded_String

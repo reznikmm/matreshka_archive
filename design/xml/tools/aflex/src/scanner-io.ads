@@ -1,7 +1,7 @@
-with ascan.DFA; use ascan.DFA;
+with scanner.DFA; use scanner.DFA;
 with text_io; use text_io;
 
-package ascan.IO is
+package scanner.IO is
 user_input_file : file_type;
 user_output_file : file_type;
 NULL_IN_INPUT : exception;
@@ -32,4 +32,4 @@ procedure Create_Output(fname : in String := "");
 procedure Close_Output;
 
 
-end ascan.IO;
+end scanner.IO;
