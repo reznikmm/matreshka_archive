@@ -39,20 +39,21 @@ package body MISC is
 
   -- action_out - write the actions from the temporary file to lex.yy.c
 
-  procedure Action_OUT is
-    Buf : VSTRING;
+   procedure Action_OUT is
+      Buf : Unbounded_String;
 
-  begin
-    while not End_Of_File (Temp_Action_File) loop
-      TSTRING.GET_LINE (Temp_Action_File, Buf);
-      if ((TSTRING.LEN(BUF) >= 2) and then ((CHAR(BUF, 1) = '%') and (CHAR(BUF,
-        2) = '%'))) then
-        exit;
-      else
-        TSTRING.PUT_LINE(BUF);
-      end if;
-    end loop;
-  end ACTION_OUT;
+   begin
+      while not End_Of_File (Temp_Action_File) loop
+         GET_LINE (Temp_Action_File, Buf);
+         if Length (BUF) >= 2
+           and then Slice (Buf, 1, 2) = "%%"
+         then
+            exit;
+         else
+            PUT_LINE(BUF);
+         end if;
+      end loop;
+   end ACTION_OUT;
 
   -- bubble - bubble sort an integer array in increasing order
   --
@@ -270,17 +271,6 @@ package body MISC is
    -- Aflex_Error --
    -----------------
 
-   procedure Aflex_Error (Msg : VSTRING) is
-   begin
-      TSTRING.PUT (Standard_Error, "aflex: " & Msg);
-      New_Line (Standard_Error);
-      Main_Body.Aflex_End (1);
-   end Aflex_Error;
-
-   -----------------
-   -- Aflex_Error --
-   -----------------
-
    procedure Aflex_Error (Msg : Unbounded_String) is
    begin
       Put (Standard_Error, "aflex: " & Msg);
@@ -298,17 +288,6 @@ package body MISC is
       New_Line (Standard_Error);
       Main_Body.Aflex_End (1);
    end Aflex_Error;
-
-   -----------------
-   -- Aflex_Fatal --
-   -----------------
-
-   procedure Aflex_Fatal (Msg : VSTRING) is
-   begin
-      TSTRING.PUT (Standard_Error, "aflex: fatal internal error " & Msg);
-      New_Line (Standard_Error);
-      Main_Body.Aflex_End (1);
-   end Aflex_Fatal;
 
    -----------------
    -- Aflex_Fatal --
@@ -402,26 +381,26 @@ package body MISC is
   end LINE_DIRECTIVE_OUT;
 
   -- all_upper - returns true if a string is all upper-case
-  function ALL_UPPER(STR : in VSTRING) return BOOLEAN is
-  begin
-    for I in 1 .. LEN(STR) loop
-      if (not ((CHAR(STR, I) >= 'A') and (CHAR(STR, I) <= 'Z'))) then
-        return FALSE;
-      end if;
-    end loop;
-    return TRUE;
-  end ALL_UPPER;
+--    function ALL_UPPER(STR : in VSTRING) return BOOLEAN is
+--    begin
+--      for I in 1 .. LEN(STR) loop
+--        if (not ((CHAR(STR, I) >= 'A') and (CHAR(STR, I) <= 'Z'))) then
+--          return FALSE;
+--        end if;
+--      end loop;
+--      return TRUE;
+--    end ALL_UPPER;
 
   -- all_lower - returns true if a string is all lower-case
-  function ALL_LOWER(STR : in VSTRING) return BOOLEAN is
-  begin
-    for I in 1 .. LEN(STR) loop
-      if (not ((CHAR(STR, I) >= 'a') and (CHAR(STR, I) <= 'z'))) then
-        return FALSE;
-      end if;
-    end loop;
-    return TRUE;
-  end ALL_LOWER;
+--    function ALL_LOWER(STR : in VSTRING) return BOOLEAN is
+--    begin
+--      for I in 1 .. LEN(STR) loop
+--        if (not ((CHAR(STR, I) >= 'a') and (CHAR(STR, I) <= 'z'))) then
+--          return FALSE;
+--        end if;
+--      end loop;
+--      return TRUE;
+--    end ALL_LOWER;
 
   -- mk2data - generate a data statement for a two-dimensional array
   --

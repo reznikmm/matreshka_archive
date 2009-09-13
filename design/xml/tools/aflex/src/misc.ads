@@ -24,7 +24,7 @@
 with Ada.Strings.Unbounded;
 with Ada.Text_IO;
 
-with MISC_DEFS, TSTRING;
+with MISC_DEFS;
 with Unicode;
 
 package Misc is
@@ -33,7 +33,7 @@ package Misc is
    use Ada.Text_IO;
 
    use MISC_DEFS;
-  use TSTRING;
+
   procedure ACTION_OUT;
   procedure BUBBLE(V : in INT_PTR;
                    N : in INTEGER);
@@ -58,16 +58,14 @@ package Misc is
    function Aflex_Get_Time return Unbounded_String;
    --  aflex_gettime - return current time
 
-   procedure Aflex_Error (Msg : in VSTRING);
    procedure Aflex_Error (Msg : Unbounded_String);
    procedure Aflex_Error (Msg : String);
    --  aflexerror - report an error message and terminate
    --  overloaded function, one for vstring, one for string.
 
-  function ALL_UPPER(STR : in VSTRING) return BOOLEAN;
-  function ALL_LOWER(STR : in VSTRING) return BOOLEAN;
+--    function ALL_UPPER(STR : in VSTRING) return BOOLEAN;
+--    function ALL_LOWER(STR : in VSTRING) return BOOLEAN;
 
-   procedure Aflex_Fatal (Msg : VSTRING);
    procedure Aflex_Fatal (Msg : Unbounded_String);
    procedure Aflex_Fatal (Msg : String);
    --  aflexfatal - report a fatal error message and terminate
