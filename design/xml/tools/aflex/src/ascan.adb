@@ -35,7 +35,7 @@ function YYLex return Token is
     toktype : Token;
     didadef, indented_code : boolean;
     cclval : integer;
-    nmdefptr : vstring;
+    nmdefptr : Unbounded_String;
     nmdef    : Unbounded_String;
     tmpbuf   : Unbounded_String;
 
@@ -50,12 +50,16 @@ begin
      New_Line (temp_action_file);
 end MARK_END_OF_PROLOG;
 
-procedure PUT_BACK_STRING(str : vstring; start : integer) is
-begin
-	for i in reverse start+1..tstring.len(str) loop
-	    unput( CHAR(str,i) );
-	end loop;
-end PUT_BACK_STRING;
+   ---------------------
+   -- Put_Back_String --
+   ---------------------
+
+   procedure Put_Back_String (Str : Unbounded_String; Start : Integer) is
+   begin
+      for J in reverse Start + 1 .. Length (Str) loop
+         unput (Element (Str, J));
+      end loop;
+   end Put_Back_String;
 
 function check_yylex_here return boolean is
 begin
@@ -876,7 +880,7 @@ when 36 =>
 			    -- push back everything but the leading bracket
 			    -- so the ccl can be rescanned
 
-			    PUT_BACK_STRING(nmstr, 1);
+			    Put_Back_String (+nmstr, 1);
 
 			    ENTER(FIRSTCCL);
 			    return ( '[' );
@@ -891,13 +895,13 @@ when 37 =>
 			tmpbuf := +slice(vstr(yytext(1..YYLength)),
 								2, YYLength-1);
 
-			nmdefptr := +sym.ndlookup (tmpbuf);
-			if nmdefptr = TString.NUL then
+			nmdefptr := sym.ndlookup (tmpbuf);
+			if nmdefptr = Null_Unbounded_String then
 			    misc.synerr( "undefined {name}" );
 			else
 			    -- push back name surrounded by ()'s
 			    unput(')');
-			    PUT_BACK_STRING(nmdefptr, 0);
+			    Put_Back_String (nmdefptr, 0);
 			    unput('(');
 			end if;
 			
