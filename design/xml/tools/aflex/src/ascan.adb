@@ -2,11 +2,9 @@ with misc_defs, misc, sym, int_io;
 with tstring;
 use misc_defs, tstring;
 with Unicode;
-with ascan.DFA; use ascan.DFA; 
-with ascan.IO; use ascan.IO; 
+with ascan.DFA; use ascan.DFA;
+with ascan.IO; use ascan.IO;
 package body ascan is
-package ascan_DFA renames ascan.DFA;
-package ascan_IO renames ascan.IO;
    use Parser.Tokens;
    use Unicode;
 
@@ -96,7 +94,7 @@ yy_accept : constant array(0..227) of short :=
         0,    0,    0,    0,    0,    0,    0,   22,    0,   22,
         0,   22,    0,    4,    0,    0,   78,   79,   34,    0,
        78,   79,    0,   78,   79,    0,    0
-    ) ;
+    );
 
 yy_ec : constant array(CHARACTER'FIRST..CHARACTER'LAST) of short :=
     (   0,
@@ -128,7 +126,7 @@ yy_ec : constant array(CHARACTER'FIRST..CHARACTER'LAST) of short :=
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1
-    ) ;
+    );
 
 yy_meta : constant array(0..35) of short :=
     (   0,
@@ -136,7 +134,7 @@ yy_meta : constant array(0..35) of short :=
         1,    1,    6,    5,    6,    1,    1,    1,    7,    8,
         1,    9,    9,    9,    9,    9,    9,    9,    9,    9,
         9,    9,    5,    1,   10
-    ) ;
+    );
 
 yy_base : constant array(0..272) of short :=
     (   0,
@@ -170,7 +168,7 @@ yy_base : constant array(0..272) of short :=
       709,  714,  723,  733,  743,  753,  761,  766,  775,  785,
       795,  805,  815,  825,  835,  844,  854,  864,  874,  884,
       894,  904
-    ) ;
+    );
 
 yy_def : constant array(0..272) of short :=
     (   0,
@@ -204,7 +202,7 @@ yy_def : constant array(0..272) of short :=
       227,  227,  227,  227,  227,  227,  227,  227,  227,  227,
       227,  227,  227,  227,  227,  227,  227,  227,  227,  227,
       227,  227
-    ) ;
+    );
 
 yy_nxt : constant array(0..950) of short :=
     (   0,
@@ -312,7 +310,7 @@ yy_nxt : constant array(0..950) of short :=
       227,  227,  227,  227,  227,  227,  227,  227,  227,  227,
       227,  227,  227,  227,  227,  227,  227,  227,  227,  227,
       227,  227,  227,  227,  227,  227,  227,  227,  227,  227
-    ) ;
+    );
 
 yy_chk : constant array(0..950) of short :=
     (   0,
@@ -420,7 +418,7 @@ yy_chk : constant array(0..950) of short :=
       227,  227,  227,  227,  227,  227,  227,  227,  227,  227,
       227,  227,  227,  227,  227,  227,  227,  227,  227,  227,
       227,  227,  227,  227,  227,  227,  227,  227,  227,  227
-    ) ;
+    );
 
 
 -- copy whatever the last rule matched to the standard output
@@ -896,7 +894,7 @@ when 38 =>
 				when '(' => return '(';
 				when ')' => return ')';
 				when others =>
-					misc.aflexerror("error in aflex case");
+					Misc.Aflex_Error ("error in aflex case");
 			  end case;
 			
 

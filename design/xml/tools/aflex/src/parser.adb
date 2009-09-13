@@ -32,7 +32,8 @@ begin
 	    text_io.put( Standard_Error,
 		"multiple <<EOF>> rules for start condition ");
 	    tstring.put( Standard_Error, scname(actvsc(i)));
-	    main_body.aflexend(1);
+	    Main_Body.Aflex_End (1);
+
 	else
 	    sceof(actvsc(i)) := true;
 	    text_io.put( temp_action_file, "YY_END_OF_BUFFER +" );
@@ -511,7 +512,8 @@ when  23 =>
 		            text_io.put( Standard_Error,
 					 "undeclared start condition ");
 		            tstring.put( Standard_Error, nmstr );
-			    main_body.aflexend( 1 );
+			    Main_Body.Aflex_End (1);
+
 			else
 			  actvp := actvp + 1;
 			    actvsc(actvp) := scnum;
@@ -519,14 +521,15 @@ when  23 =>
 			
 
 when  24 =>
---#line  223
+--#line  224
 
 			scnum := sym.sclookup( nmstr );
 			if (scnum = 0 ) then
 		            text_io.put( Standard_Error,
 					"undeclared start condition ");
 		            tstring.put( Standard_Error,	 nmstr );
-			    main_body.aflexend ( 1 );
+			    Main_Body.Aflex_End (1);
+
 			else
 			    actvp := 1;
 			    actvsc(actvp) := scnum;
@@ -534,11 +537,11 @@ when  24 =>
 			
 
 when  25 =>
---#line  237
+--#line  239
  misc.synerr( "bad start condition list" ); 
 
 when  26 =>
---#line  241
+--#line  243
 
 			if trlcontxt then
 			    misc.synerr( "trailing context used twice" );
@@ -562,7 +565,7 @@ yyval := nfa.link_machines( eps,
 			
 
 when  27 =>
---#line  262
+--#line  264
 
 		        
 yyval := nfa.mkstate( SYM_EPSILON );
@@ -578,7 +581,7 @@ yyval := nfa.mkstate( SYM_EPSILON );
 		        
 
 when  28 =>
---#line  277
+--#line  279
 
 			varlength := true;
 
@@ -589,7 +592,7 @@ yy.value_stack(yy.tos) );
 			
 
 when  29 =>
---#line  284
+--#line  286
 
 			if ( transchar(lastst(
 yy.value_stack(yy.tos))) /= SYM_EPSILON ) then
@@ -652,13 +655,13 @@ yy.value_stack(yy.tos) );
 			
 
 when  30 =>
---#line  338
+--#line  340
  
 yyval := 
 yy.value_stack(yy.tos); 
 
 when  31 =>
---#line  343
+--#line  345
 
 			-- this rule is separate from the others for "re" so
 			-- that the reduction will occur before the trailing
@@ -686,7 +689,7 @@ yy.value_stack(yy.tos-1);
 			
 
 when  32 =>
---#line  369
+--#line  371
 
 			-- this is where concatenation of adjacent patterns
 			-- gets done
@@ -698,13 +701,13 @@ yy.value_stack(yy.tos) );
 			
 
 when  33 =>
---#line  377
+--#line  379
  
 yyval := 
 yy.value_stack(yy.tos); 
 
 when  34 =>
---#line  381
+--#line  383
 
 			varlength := true;
 
@@ -714,7 +717,7 @@ yy.value_stack(yy.tos-1) );
 			
 
 when  35 =>
---#line  388
+--#line  390
 
 			varlength := true;
 
@@ -724,7 +727,7 @@ yy.value_stack(yy.tos-1) );
 			
 
 when  36 =>
---#line  395
+--#line  397
 
 			varlength := true;
 
@@ -734,7 +737,7 @@ yy.value_stack(yy.tos-1) );
 			
 
 when  37 =>
---#line  402
+--#line  404
 
 			varlength := true;
 
@@ -765,7 +768,7 @@ yy.value_stack(yy.tos-1) );
 			
 
 when  38 =>
---#line  418
+--#line  420
 
 			varlength := true;
 
@@ -784,7 +787,7 @@ yy.value_stack(yy.tos-2), INFINITY );
 			
 
 when  39 =>
---#line  430
+--#line  432
 
 			-- the singleton could be something like "(foo)",
 			-- in which case we have no idea what its length
@@ -808,7 +811,7 @@ yy.value_stack(yy.tos-1) - 1 ) );
 			
 
 when  40 =>
---#line  446
+--#line  448
 
 			if ( not madeany ) then
 			    -- create the '.' character class
@@ -832,7 +835,7 @@ yyval := nfa.mkstate( -anyccl );
 			
 
 when  41 =>
---#line  468
+--#line  470
 
 			if ( not cclsorted ) then
 			    -- sort characters for fast searching.  We use a
@@ -864,7 +867,7 @@ yy.value_stack(yy.tos) );
 			
 
 when  42 =>
---#line  489
+--#line  491
 
 			rulelen := rulelen + 1;
 
@@ -874,19 +877,19 @@ yy.value_stack(yy.tos) );
 			
 
 when  43 =>
---#line  496
+--#line  498
  
 yyval := 
 yy.value_stack(yy.tos-1); 
 
 when  44 =>
---#line  499
+--#line  501
  
 yyval := 
 yy.value_stack(yy.tos-1); 
 
 when  45 =>
---#line  502
+--#line  504
 
 			rulelen := rulelen + 1;
 
@@ -909,13 +912,13 @@ yy.value_stack(yy.tos) );
 			
 
 when  46 =>
---#line  518
+--#line  520
  
 yyval := 
 yy.value_stack(yy.tos-1); 
 
 when  47 =>
---#line  521
+--#line  523
 
 			-- *Sigh* - to be compatible Unix lex, negated ccls
 			-- match newlines
@@ -927,7 +930,7 @@ yy.value_stack(yy.tos-1);
 			
 
 when  48 =>
---#line  530
+--#line  532
 
 			if ( 
 yy.value_stack(yy.tos-2) > 
@@ -973,7 +976,7 @@ yy.value_stack(yy.tos-3);
 			
 
 when  49 =>
---#line  558
+--#line  560
 
 			if ( caseins ) then
 			    if ( (
@@ -997,7 +1000,7 @@ yy.value_stack(yy.tos-1);
 			
 
 when  50 =>
---#line  571
+--#line  573
 
 			cclsorted := true;
 			lastchar := 0;
@@ -1006,7 +1009,7 @@ yyval := ccl.cclinit;
 			
 
 when  51 =>
---#line  579
+--#line  581
 
 			if ( caseins ) then
 			    if ( (
@@ -1027,7 +1030,7 @@ yy.value_stack(yy.tos) ) );
 			
 
 when  52 =>
---#line  592
+--#line  594
  
 yyval := nfa.mkstate( SYM_EPSILON ); 
 

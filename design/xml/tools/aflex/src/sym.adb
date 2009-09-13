@@ -73,7 +73,7 @@ package body SYM is
 
   exception
     when STORAGE_ERROR =>
-      MISC.AFLEXFATAL("symbol table memory allocation failed");
+      Misc.Aflex_Fatal ("symbol table memory allocation failed");
   end ADDSYM;
 
 
@@ -116,7 +116,8 @@ package body SYM is
     return EMPTY_ENTRY;
   exception
     when STORAGE_ERROR =>
-      MISC.AFLEXFATAL("dynamic memory failure in findsym()");
+      Misc.Aflex_Fatal ("dynamic memory failure in findsym()");
+
       return EMPTY_ENTRY;
   end FINDSYM;
 
@@ -198,7 +199,7 @@ package body SYM is
 
     ADDSYM(SCNAME(LASTSC), NUL, LASTSC, SCTBL, START_COND_HASH_SIZE, RESULT);
     if (RESULT) then
-      MISC.AFLEXERROR("start condition " & STR & " declared twice");
+      Misc.Aflex_Error ("start condition " & STR & " declared twice");
     end if;
 
     SCSET(LASTSC) := NFA.MKSTATE(SYM_EPSILON);

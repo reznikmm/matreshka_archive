@@ -1,5 +1,5 @@
 package ascan.DFA is
-aflex_debug : boolean := false;
+Aflex_Debug : Boolean := False;
 yytext_ptr : integer; -- points to start of yytext in buffer
 
 -- yy_ch_buf has to be 2 characters longer than YY_BUF_SIZE because we need

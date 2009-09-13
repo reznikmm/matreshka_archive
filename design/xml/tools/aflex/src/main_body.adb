@@ -21,14 +21,19 @@
 -- DESCRIPTION driver routines for aflex.  Calls drivers for all
 -- high level routines from other packages.
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/mainB.a,v 1.26 1992/12/29 22:46:15 self Exp self $
+with Ada.Integer_Text_IO;
+with Ada.Strings.Unbounded.Text_IO;
+with Ada.Text_IO;
 
-with MISC_DEFS, MISC, COMMAND_LINE_INTERFACE, ECS, TEXT_IO, PARSER;
+with MISC_DEFS, MISC, COMMAND_LINE_INTERFACE, ECS, PARSER;
 with MAIN_BODY, TSTRING, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
-with EXTERNAL_FILE_MANAGER, INT_IO; use MISC_DEFS, COMMAND_LINE_INTERFACE,
-  TSTRING, EXTERNAL_FILE_MANAGER;
+use MISC_DEFS, COMMAND_LINE_INTERFACE, TSTRING;
 with Parser.Tokens;
 
-package body MAIN_BODY is
+package body Main_Body is
+
+   use Ada.Text_IO;
+
   OUTFILE_CREATED    : BOOLEAN := FALSE;
   AFLEX_VERSION      : CONSTANT STRING := "1.4a";
   STARTTIME, ENDTIME : VSTRING;
@@ -38,214 +43,231 @@ package body MAIN_BODY is
   -- note
   --    This routine does not return.
 
-  procedure AFLEXEND(STATUS : in INTEGER) is
-    use TEXT_IO;
-    TBLSIZ : INTEGER;
-  begin
-    TERMINATION_STATUS := STATUS;
+   ---------------
+   -- Aflex_End --
+   ---------------
 
-    TEXT_IO.PUT_LINE("end " & TSTRING.STR(MISC.BASENAME) &";");
+   procedure Aflex_End (Status : Integer) is
 
-    -- we'll return this value of the OS.
-    if (IS_OPEN(SKELFILE)) then
-      CLOSE(SKELFILE);
-    end if;
+      use Ada.Integer_Text_IO;
+      use Ada.Strings.Unbounded;
+      use Ada.Strings.Unbounded.Text_IO;
 
-    if (IS_OPEN(TEMP_ACTION_FILE)) then
-      DELETE(TEMP_ACTION_FILE);
-    end if;
+      TBLSIZ : Integer;
 
-    if (IS_OPEN(DEF_FILE)) then
-      DELETE(DEF_FILE);
-    end if;
+   begin
+      Termination_Status := Status;
 
-    if (BACKTRACK_REPORT) then
-      if (NUM_BACKTRACKING = 0) then
-        TEXT_IO.PUT_LINE(BACKTRACK_FILE, "No backtracking.");
-      else
-        if (FULLTBL) then
-          INT_IO.PUT(BACKTRACK_FILE, NUM_BACKTRACKING, 0);
-          TEXT_IO.PUT_LINE(BACKTRACK_FILE,
-            " backtracking (non-accepting) states.");
-        else
-          TEXT_IO.PUT_LINE(BACKTRACK_FILE, "Compressed tables always backtrack."
-            );
-        end if;
+      Put_Line ("end " & Misc.Basename & ";");
+
+      -- we'll return this value of the OS.
+
+      if Is_Open (SkelFile) then
+         Close (SkelFile);
       end if;
 
-      CLOSE(BACKTRACK_FILE);
-    end if;
-
-    if (PRINTSTATS) then
-      ENDTIME := MISC.AFLEX_GETTIME;
-
-      TEXT_IO.PUT_LINE(STANDARD_ERROR, "aflex version " & AFLEX_VERSION &
-        " usage statistics:");
-
-      TSTRING.PUT_LINE(STANDARD_ERROR, "  started at " & STARTTIME &
-        ", finished at " & ENDTIME);
-      TEXT_IO.PUT(STANDARD_ERROR, "  ");
-      INT_IO.PUT(STANDARD_ERROR, LASTNFA, 0);
-      TEXT_IO.PUT(STANDARD_ERROR, '/');
-      INT_IO.PUT(STANDARD_ERROR, CURRENT_MNS, 0);
-      TEXT_IO.PUT_LINE(STANDARD_ERROR, "  NFA states");
-
-      TEXT_IO.PUT(STANDARD_ERROR, "  ");
-      INT_IO.PUT(STANDARD_ERROR, LASTDFA, 0);
-      TEXT_IO.PUT(STANDARD_ERROR, '/');
-      INT_IO.PUT(STANDARD_ERROR, CURRENT_MAX_DFAS, 0);
-      TEXT_IO.PUT(STANDARD_ERROR, " DFA states (");
-      INT_IO.PUT(STANDARD_ERROR, TOTNST, 0);
-      TEXT_IO.PUT(STANDARD_ERROR, "  words)");
-
-      TEXT_IO.PUT(STANDARD_ERROR, "  ");
-      INT_IO.PUT(STANDARD_ERROR, NUM_RULES - 1, 0);
-
-      -- - 1 for def. rule
-      TEXT_IO.PUT_LINE(STANDARD_ERROR, "  rules");
-
-      if (NUM_BACKTRACKING = 0) then
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, "  No backtracking");
-      else
-        if (FULLTBL) then
-          TEXT_IO.PUT(STANDARD_ERROR, "  ");
-          INT_IO.PUT(STANDARD_ERROR, NUM_BACKTRACKING, 0);
-          TEXT_IO.PUT_LINE(STANDARD_ERROR,
-            "  backtracking (non-accepting) states");
-        else
-          TEXT_IO.PUT_LINE(STANDARD_ERROR, " compressed tables always backtrack"
-            );
-        end if;
+      if Is_Open (Temp_Action_File) then
+         Delete (Temp_Action_File);
       end if;
 
-      if (BOL_NEEDED) then
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, "  Beginning-of-line patterns used");
+      if Is_Open (Def_File) then
+         Delete (Def_File);
       end if;
 
-      TEXT_IO.PUT(STANDARD_ERROR, "  ");
-      INT_IO.PUT(STANDARD_ERROR, LASTSC, 0);
-      TEXT_IO.PUT(STANDARD_ERROR, '/');
-      INT_IO.PUT(STANDARD_ERROR, CURRENT_MAX_SCS, 0);
-      TEXT_IO.PUT_LINE(STANDARD_ERROR, " start conditions");
+      if Backtrack_Report then
+         if Num_Backtracking = 0 then
+            Put_Line (Backtrack_File, "No backtracking.");
 
-      TEXT_IO.PUT(STANDARD_ERROR, "  ");
-      INT_IO.PUT(STANDARD_ERROR, NUMEPS, 0);
-      TEXT_IO.PUT(STANDARD_ERROR, " epsilon states, ");
-      INT_IO.PUT(STANDARD_ERROR, EPS2, 0);
-      TEXT_IO.PUT_LINE(STANDARD_ERROR, "  double epsilon states");
+         else
+            if FullTbl then
+               Put (Backtrack_File, Num_Backtracking, 0);
+               Put_Line
+                (Backtrack_File, " backtracking (non-accepting) states.");
 
-      if (LASTCCL = 0) then
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, "  no character classes");
-      else
-        TEXT_IO.PUT(STANDARD_ERROR, "  ");
-        INT_IO.PUT(STANDARD_ERROR, LASTCCL, 0);
-        TEXT_IO.PUT(STANDARD_ERROR, '/');
-        INT_IO.PUT(STANDARD_ERROR, CURRENT_MAXCCLS, 0);
-        TEXT_IO.PUT(STANDARD_ERROR, " character classes needed ");
-        INT_IO.PUT(STANDARD_ERROR, CCLMAP(LASTCCL) + CCLLEN(LASTCCL), 0);
-        TEXT_IO.PUT(STANDARD_ERROR, '/');
-        INT_IO.PUT(STANDARD_ERROR, Current_Max_CCL_Table_Size, 0);
-        TEXT_IO.PUT(STANDARD_ERROR, " words of storage, ");
-        INT_IO.PUT(STANDARD_ERROR, CCLREUSE, 0);
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, "reused");
+            else
+               Put_Line
+                (Backtrack_File, "Compressed tables always backtrack.");
+            end if;
+         end if;
+
+         Close (Backtrack_File);
       end if;
 
-      TEXT_IO.PUT(STANDARD_ERROR, "  ");
-      INT_IO.PUT(STANDARD_ERROR, NUMSNPAIRS, 0);
-      TEXT_IO.PUT_LINE(STANDARD_ERROR, " state/nextstate pairs created");
+      if PrintStats then
+         EndTime := Misc.Aflex_Gettime;
 
-      TEXT_IO.PUT(STANDARD_ERROR, "  ");
-      INT_IO.PUT(STANDARD_ERROR, NUMUNIQ, 0);
-      TEXT_IO.PUT(STANDARD_ERROR, '/');
-      INT_IO.PUT(STANDARD_ERROR, NUMDUP, 0);
-      TEXT_IO.PUT_LINE(STANDARD_ERROR, " unique/duplicate transitions");
+         Put_Line
+          (Standard_Error,
+           "aflex version " & Aflex_Version & " usage statistics:");
 
-      if (FULLTBL) then
-        TBLSIZ := LASTDFA*NUMECS;
-        TEXT_IO.PUT(STANDARD_ERROR, "  ");
-        INT_IO.PUT(STANDARD_ERROR, TBLSIZ, 0);
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, " table entries");
-      else
-        TBLSIZ := 2*(LASTDFA + NUMTEMPS) + 2*TBLEND;
+         Put_Line
+          (Standard_Error,
+           "  started at " & StartTime & ", finished at " & EndTime);
+         Put (Standard_Error, "  ");
+         Put (Standard_Error, LastNFA, 0);
+         Put (Standard_Error, '/');
+         Put (Standard_Error, Current_MNS, 0);
+         Put_Line (Standard_Error, "  NFA states");
 
-        TEXT_IO.PUT(STANDARD_ERROR, "  ");
-        INT_IO.PUT(STANDARD_ERROR, LASTDFA + NUMTEMPS, 0);
-        TEXT_IO.PUT(STANDARD_ERROR, '/');
-        INT_IO.PUT(STANDARD_ERROR, CURRENT_MAX_DFAS, 0);
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, " base-def entries created");
+         Put (Standard_Error, "  ");
+         Put (Standard_Error, LastDFA, 0);
+         Put (Standard_Error, '/');
+         Put (Standard_Error, Current_Max_DFAS, 0);
+         Put (Standard_Error, " DFA states (");
+         Put (Standard_Error, TotNST, 0);
+         Put (Standard_Error, "  words)");
 
-        TEXT_IO.PUT(STANDARD_ERROR, "  ");
-        INT_IO.PUT(STANDARD_ERROR, TBLEND, 0);
-        TEXT_IO.PUT(STANDARD_ERROR, '/');
-        INT_IO.PUT(STANDARD_ERROR, CURRENT_MAX_XPAIRS, 0);
-        TEXT_IO.PUT(STANDARD_ERROR, " (peak ");
-        INT_IO.PUT(STANDARD_ERROR, PEAKPAIRS, 0);
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, ") nxt-chk entries created");
+         PUT (Standard_Error, "  ");
+         PUT (Standard_Error, Num_Rules - 1, 0);
 
-        TEXT_IO.PUT(STANDARD_ERROR, "  ");
-        INT_IO.PUT(STANDARD_ERROR, NUMTEMPS*NUMMECS, 0);
-        TEXT_IO.PUT(STANDARD_ERROR, '/');
-        INT_IO.PUT(STANDARD_ERROR, CURRENT_MAX_TEMPLATE_XPAIRS, 0);
-        TEXT_IO.PUT(STANDARD_ERROR, " (peak ");
-        INT_IO.PUT(STANDARD_ERROR, NUMTEMPS*NUMECS, 0);
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, ") template nxt-chk entries created");
+         -- - 1 for def. rule
+         Put_Line (Standard_Error, "  rules");
 
-        TEXT_IO.PUT(STANDARD_ERROR, "  ");
-        INT_IO.PUT(STANDARD_ERROR, NUMMT, 0);
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, " empty table entries");
-        TEXT_IO.PUT(STANDARD_ERROR, "  ");
-        INT_IO.PUT(STANDARD_ERROR, NUMPROTS, 0);
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, " protos created");
-        TEXT_IO.PUT(STANDARD_ERROR, "  ");
-        INT_IO.PUT(STANDARD_ERROR, NUMTEMPS, 0);
-        TEXT_IO.PUT(STANDARD_ERROR, " templates created, ");
-        INT_IO.PUT(STANDARD_ERROR, TMPUSES, 0);
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, "uses");
+         if Num_Backtracking = 0 then
+            Put_Line (Standard_Error, "  No backtracking");
+
+         else
+            if FullTbl then
+               Put (Standard_Error, "  ");
+               Put (Standard_Error, Num_Backtracking, 0);
+               Put_Line
+                (Standard_Error, "  backtracking (non-accepting) states");
+
+            else
+               Put_Line
+                (Standard_Error, " compressed tables always backtrack");
+            end if;
+         end if;
+
+         if Bol_Needed then
+            Put_Line (Standard_Error, "  Beginning-of-line patterns used");
+         end if;
+
+         Put (Standard_Error, "  ");
+         Put (Standard_Error, LASTSC, 0);
+         Put (Standard_Error, '/');
+         Put (Standard_Error, CURRENT_MAX_SCS, 0);
+         Put_Line (Standard_Error, " start conditions");
+
+         Put (Standard_Error, "  ");
+         Put (Standard_Error, NUMEPS, 0);
+         Put (Standard_Error, " epsilon states, ");
+         Put (Standard_Error, EPS2, 0);
+         Put_Line (Standard_Error, "  double epsilon states");
+
+         if LASTCCL = 0 then
+            Put_Line (Standard_Error, "  no character classes");
+
+         else
+            Put (Standard_Error, "  ");
+            Put (Standard_Error, LASTCCL, 0);
+            Put (Standard_Error, '/');
+            Put (Standard_Error, CURRENT_MAXCCLS, 0);
+            Put (Standard_Error, " character classes needed ");
+            Put (Standard_Error, CCLMAP(LASTCCL) + CCLLEN(LASTCCL), 0);
+            Put (Standard_Error, '/');
+            Put (Standard_Error, Current_Max_CCL_Table_Size, 0);
+            Put (Standard_Error, " words of storage, ");
+            Put (Standard_Error, CCLREUSE, 0);
+            Put_Line (Standard_Error, "reused");
+         end if;
+
+         Put (Standard_Error, "  ");
+         Put (Standard_Error, NUMSNPAIRS, 0);
+         Put_Line (Standard_Error, " state/nextstate pairs created");
+
+         Put (Standard_Error, "  ");
+         Put (Standard_Error, NUMUNIQ, 0);
+         Put (Standard_Error, '/');
+         Put (Standard_Error, NUMDUP, 0);
+         Put_Line (Standard_Error, " unique/duplicate transitions");
+
+         if FULLTBL then
+            TBLSIZ := LASTDFA*NUMECS;
+            Put (Standard_Error, "  ");
+            Put (Standard_Error, TBLSIZ, 0);
+            Put_Line (Standard_Error, " table entries");
+
+         else
+            TBLSIZ := 2*(LASTDFA + NUMTEMPS) + 2*TBLEND;
+
+            Put (Standard_Error, "  ");
+            Put (Standard_Error, LASTDFA + NUMTEMPS, 0);
+            Put (Standard_Error, '/');
+            Put (Standard_Error, CURRENT_MAX_DFAS, 0);
+            Put_Line (Standard_Error, " base-def entries created");
+
+            Put (Standard_Error, "  ");
+            Put (Standard_Error, TBLEND, 0);
+            Put (Standard_Error, '/');
+            Put (Standard_Error, CURRENT_MAX_XPAIRS, 0);
+            Put (Standard_Error, " (peak ");
+            Put (Standard_Error, PEAKPAIRS, 0);
+            Put_Line (Standard_Error, ") nxt-chk entries created");
+
+            Put (Standard_Error, "  ");
+            Put (Standard_Error, NUMTEMPS*NUMMECS, 0);
+            Put (Standard_Error, '/');
+            Put (Standard_Error, CURRENT_MAX_TEMPLATE_XPAIRS, 0);
+            Put (Standard_Error, " (peak ");
+            Put (Standard_Error, NUMTEMPS*NUMECS, 0);
+            Put_Line (Standard_Error, ") template nxt-chk entries created");
+
+            Put (Standard_Error, "  ");
+            Put (Standard_Error, NUMMT, 0);
+            Put_Line (Standard_Error, " empty table entries");
+            Put (Standard_Error, "  ");
+            Put (Standard_Error, NUMPROTS, 0);
+            Put_Line (Standard_Error, " protos created");
+            Put (Standard_Error, "  ");
+            Put (Standard_Error, NUMTEMPS, 0);
+            Put (Standard_Error, " templates created, ");
+            Put (Standard_Error, TMPUSES, 0);
+            Put_Line (Standard_Error, "uses");
+         end if;
+
+         if USEECS then
+            TBLSIZ := TBLSIZ + CSIZE;
+            Put_Line (Standard_Error, "  ");
+            Put (Standard_Error, NUMECS, 0);
+            Put (Standard_Error, '/');
+            Put (Standard_Error, CSIZE, 0);
+            Put_Line (Standard_Error, " equivalence classes created");
+         end if;
+
+         if USEMECS then
+            TBLSIZ := TBLSIZ + NUMECS;
+            Put (Standard_Error, "  ");
+            Put (Standard_Error, NUMMECS, 0);
+            Put (Standard_Error, '/');
+            Put (Standard_Error, CSIZE, 0);
+            Put_Line (Standard_Error, " meta-equivalence classes created");
+         end if;
+
+         Put (Standard_Error, "  ");
+         Put (Standard_Error, HSHCOL, 0);
+         Put (Standard_Error, " (");
+         Put (Standard_Error, HSHSAVE, 0);
+         Put_Line (Standard_Error, " saved) hash collisions, ");
+         Put (Standard_Error, DFAEQL, 0);
+         Put_Line (Standard_Error, " DFAs equal");
+
+         Put (Standard_Error, "  ");
+         Put (Standard_Error, NUM_REALLOCS, 0);
+         Put_Line (Standard_Error, " sets of reallocations needed");
+         Put (Standard_Error, "  ");
+         Put (Standard_Error, TBLSIZ, 0);
+         Put_Line (Standard_Error, " total table entries needed");
       end if;
 
-      if (USEECS) then
-        TBLSIZ := TBLSIZ + CSIZE;
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, "  ");
-        INT_IO.PUT(STANDARD_ERROR, NUMECS, 0);
-        TEXT_IO.PUT(STANDARD_ERROR, '/');
-        INT_IO.PUT(STANDARD_ERROR, CSIZE, 0);
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, " equivalence classes created");
+      if Status /= 0 then
+         raise Aflex_Terminate;
       end if;
-
-      if (USEMECS) then
-        TBLSIZ := TBLSIZ + NUMECS;
-        TEXT_IO.PUT(STANDARD_ERROR, "  ");
-        INT_IO.PUT(STANDARD_ERROR, NUMMECS, 0);
-        TEXT_IO.PUT(STANDARD_ERROR, '/');
-        INT_IO.PUT(STANDARD_ERROR, CSIZE, 0);
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, " meta-equivalence classes created");
-      end if;
-
-      TEXT_IO.PUT(STANDARD_ERROR, "  ");
-      INT_IO.PUT(STANDARD_ERROR, HSHCOL, 0);
-      TEXT_IO.PUT(STANDARD_ERROR, " (");
-      INT_IO.PUT(STANDARD_ERROR, HSHSAVE, 0);
-      TEXT_IO.PUT_LINE(STANDARD_ERROR, " saved) hash collisions, ");
-      INT_IO.PUT(STANDARD_ERROR, DFAEQL, 0);
-      TEXT_IO.PUT_LINE(STANDARD_ERROR, " DFAs equal");
-
-      TEXT_IO.PUT(STANDARD_ERROR, "  ");
-      INT_IO.PUT(STANDARD_ERROR, NUM_REALLOCS, 0);
-      TEXT_IO.PUT_LINE(STANDARD_ERROR, " sets of reallocations needed");
-      TEXT_IO.PUT(STANDARD_ERROR, "  ");
-      INT_IO.PUT(STANDARD_ERROR, TBLSIZ, 0);
-      TEXT_IO.PUT_LINE(STANDARD_ERROR, " total table entries needed");
-    end if;
-
-    if (STATUS /= 0) then
-      raise AFLEX_TERMINATE;
-    end if;
-  end AFLEXEND;
+   end Aflex_End;
 
   -- aflexinit - initialize aflex
 
   procedure AFLEXINIT is
-    use TEXT_IO, TSTRING;
     SAWCMPFLAG, USE_STDOUT : BOOLEAN;
     OUTPUT_SPEC_FILE       : FILE_TYPE;
     INPUT_FILE             : FILE_TYPE;
@@ -312,7 +334,7 @@ package body MAIN_BODY is
             PERFORMANCE_REPORT := TRUE;
           when 'S' =>
             if (FLAG_POS /= 2) then
-              MISC.AFLEXERROR("-S flag must be given separately");
+              Misc.Aflex_Error ("-S flag must be given separately");
             end if;
             SKELNAME := SLICE(ARG, FLAG_POS + 1, LEN(ARG));
             SKELNAME_USED := TRUE;
@@ -333,7 +355,7 @@ package body MAIN_BODY is
             Ayacc_Extension_Flag := TRUE;
 -- END OF UMASS CODES.
           when others =>
-            MISC.AFLEXERROR("unknown flag " & CHAR(ARG, FLAG_POS));
+            Misc.Aflex_Error ("unknown flag " & CHAR (ARG, FLAG_POS));
         end case;
         FLAG_POS := FLAG_POS + 1;
       end loop;
@@ -343,17 +365,17 @@ package body MAIN_BODY is
     end loop;
 
     if (FULLTBL and USEMECS) then
-      MISC.AFLEXERROR("full table and -cm don't make sense together");
+      Misc.Aflex_Error ("full table and -cm don't make sense together");
     end if;
 
     if (FULLTBL and INTERACTIVE) then
-      MISC.AFLEXERROR("full table and -I are (currently) incompatible");
+      Misc.Aflex_Error ("full table and -I are (currently) incompatible");
     end if;
 
     if (ARG_CNT < ARGC) then
       begin
         if (ARG_CNT - ARGC > 1) then
-          MISC.AFLEXERROR("extraneous argument(s) given");
+          Misc.Aflex_Error ("extraneous argument(s) given");
         end if;
 
         -- Tell aflex where to read input from.
@@ -362,7 +384,7 @@ package body MAIN_BODY is
         SET_INPUT(INPUT_FILE);
       exception
         when NAME_ERROR =>
-          MISC.AFLEXFATAL("can't open " & INFILENAME);
+          Misc.Aflex_Fatal ("can't open " & INFILENAME);
       end;
     end if;
 
@@ -391,7 +413,7 @@ package body MAIN_BODY is
       end if;
     exception
       when USE_ERROR | NAME_ERROR =>
-        MISC.AFLEXFATAL("couldn't open skeleton file " & SKELNAME);
+        Misc.Aflex_Fatal ("couldn't open skeleton file " & SKELNAME);
     end;
 
     -- without a third argument create make an anonymous temp file.
@@ -400,7 +422,7 @@ package body MAIN_BODY is
       CREATE(DEF_FILE, OUT_FILE);
     exception
       when USE_ERROR | NAME_ERROR =>
-        MISC.AFLEXFATAL("can't create temporary file");
+        Misc.Aflex_Fatal ("can't create temporary file");
     end;
 
     LASTDFA := 0;
@@ -478,8 +500,9 @@ package body MAIN_BODY is
 
   exception
     when Parser.Tokens.Syntax_Error =>
-      MISC.AFLEXERROR("fatal parse error at line " & INTEGER'IMAGE(LINENUM));
-      MAIN_BODY.AFLEXEND(1);
+      Misc.Aflex_Error
+       ("fatal parse error at line " & Integer'Image (LINENUM));
+      Main_Body.Aflex_End (1);
   end READIN;
 
   -- set_up_initial_allocations - allocate memory for internal tables
@@ -534,4 +557,5 @@ package body MAIN_BODY is
     DSS := ALLOCATE_INT_PTR_ARRAY(CURRENT_MAX_DFAS);
     DFAACC := ALLOCATE_DFAACC_UNION(CURRENT_MAX_DFAS);
   end SET_UP_INITIAL_ALLOCATIONS;
-end MAIN_BODY;
+
+end Main_Body;

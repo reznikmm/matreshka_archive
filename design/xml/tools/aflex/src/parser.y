@@ -212,7 +212,8 @@ namelist2       :  namelist2 ',' NAME
 		            text_io.put( Standard_Error,
 					 "undeclared start condition ");
 		            tstring.put( Standard_Error, nmstr );
-			    main_body.aflexend( 1 );
+			    Main_Body.Aflex_End (1);
+
 			else
 			  actvp := actvp + 1;
 			    actvsc(actvp) := scnum;
@@ -226,7 +227,8 @@ namelist2       :  namelist2 ',' NAME
 		            text_io.put( Standard_Error,
 					"undeclared start condition ");
 		            tstring.put( Standard_Error,	 nmstr );
-			    main_body.aflexend ( 1 );
+			    Main_Body.Aflex_End (1);
+
 			else
 			    actvp := 1;
 			    actvsc(actvp) := scnum;
@@ -623,7 +625,8 @@ begin
 	    text_io.put( Standard_Error,
 		"multiple <<EOF>> rules for start condition ");
 	    tstring.put( Standard_Error, scname(actvsc(i)));
-	    main_body.aflexend(1);
+	    Main_Body.Aflex_End (1);
+
 	else
 	    sceof(actvsc(i)) := true;
 	    text_io.put( temp_action_file, "YY_END_OF_BUFFER +" );

@@ -239,7 +239,7 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 				when '(' => return '(';
 				when ')' => return ')';
 				when others =>
-					misc.aflexerror("error in aflex case");
+					Misc.Aflex_Error ("error in aflex case");
 			  end case;
 			}
 <SECT2>.		{ tmpbuf := vstr(yytext(1..YYLength));

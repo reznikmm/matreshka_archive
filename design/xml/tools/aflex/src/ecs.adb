@@ -183,7 +183,7 @@ package body ECS is
     end loop;
   exception
     when STORAGE_ERROR =>
-      MISC.AFLEXFATAL("dynamic memory failure in mkeccl()");
+      Misc.Aflex_Fatal ("dynamic memory failure in mkeccl()");
   end MKECCL;
 
 

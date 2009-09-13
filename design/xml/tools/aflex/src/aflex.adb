@@ -81,7 +81,7 @@ begin
   MAIN_BODY.READIN;
 
   if (SYNTAXERROR) then
-    MAIN_BODY.AFLEXEND(1);
+    Main_Body.Aflex_End (1);
   end if;
 
   if (PERFORMANCE_REPORT) then
@@ -94,7 +94,7 @@ begin
   end if;
 
   if (VARIABLE_TRAILING_CONTEXT_RULES) then
-    MISC.AFLEXERROR("can't handle variable trailing context rules");
+      Misc.Aflex_Error ("can't handle variable trailing context rules");
   end if;
 
   -- convert the ndfa to a dfa
@@ -105,7 +105,8 @@ begin
 
   TEMPLATE_MANAGER.GENERATE_IO_FILE;
   TEMPLATE_MANAGER.GENERATE_DFA_FILE;
-  MAIN_BODY.AFLEXEND(0);
+   Main_Body.Aflex_End (0);
+
   return 0;
 
 exception

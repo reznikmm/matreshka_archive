@@ -1,4 +1,4 @@
-with ascan.DFA; use ascan.DFA; 
+with ascan.DFA; use ascan.DFA;
 with text_io; use text_io;
 
 package ascan.IO is

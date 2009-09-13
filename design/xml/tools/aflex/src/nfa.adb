@@ -147,7 +147,7 @@ package body NFA is
     end loop; 
 
     if (STATE = 0) then 
-      MISC.AFLEXFATAL("empty machine in dupmachine()"); 
+      Misc.Aflex_Fatal ("empty machine in dupmachine()"); 
     end if; 
 
     STATE_OFFSET := STATE - I + 1; 
@@ -283,7 +283,7 @@ package body NFA is
           end if; 
         end if; 
       when others => 
-        MISC.AFLEXERROR("bad state type in mark_beginning_as_normal()"); 
+        Misc.Aflex_Error ("bad state type in mark_beginning_as_normal()"); 
     end case; 
   end MARK_BEGINNING_AS_NORMAL; 
 
@@ -476,7 +476,7 @@ package body NFA is
     if (LASTNFA >= CURRENT_MNS) then 
       CURRENT_MNS := CURRENT_MNS + MNS_INCREMENT; 
       if (CURRENT_MNS >= MAXIMUM_MNS) then 
-        MISC.AFLEXERROR("input rules are too complicated (>= " & INTEGER'IMAGE(
+        Misc.Aflex_Error ("input rules are too complicated (>= " & INTEGER'IMAGE(
           CURRENT_MNS) & " NFA states) )"); 
       end if; 
 
@@ -539,7 +539,7 @@ package body NFA is
     else 
       if ((TRANSCHAR(STATEFROM) /= SYM_EPSILON) or (TRANS2(STATEFROM) /= 
         NO_TRANSITION)) then 
-        MISC.AFLEXFATAL("found too many transitions in mkxtion()"); 
+        Misc.Aflex_Fatal ("found too many transitions in mkxtion()"); 
       else 
 
         -- second out-transition for an epsilon state
@@ -565,7 +565,7 @@ package body NFA is
     end if; 
 
     if (NUM_RULES > MAX_RULE) then 
-      MISC.AFLEXERROR("too many rules  (> " & INTEGER'IMAGE(MAX_RULE) & ")!"); 
+      Misc.Aflex_Error ("too many rules  (> " & INTEGER'IMAGE(MAX_RULE) & ")!"); 
     end if; 
 
     RULE_LINENUM(NUM_RULES) := LINENUM; 

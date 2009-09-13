@@ -21,23 +21,29 @@
 -- DESCRIPTION
 -- NOTES contains functions used in various places throughout aflex.
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/miscB.a,v 1.22 1991/07/01 21:30:37 self Exp self $
+with Ada.Integer_Text_IO;
+with Ada.Strings.Unbounded.Text_IO;
 
-with MISC_DEFS, TSTRING, TEXT_IO, MISC, MAIN_BODY;
-with INT_IO, CALENDAR; use MISC, MISC_DEFS, TEXT_IO;
-with Unicode;
+with MISC, Main_Body;
+with CALENDAR; use MISC;
 
 package body MISC is
 
-   use TSTRING;
+   use Ada.Integer_Text_IO;
+   use Ada.Strings.Unbounded.Text_IO;
    use Unicode;
+
+   function "+" (Item : String) return Unbounded_String
+     renames To_Unbounded_String;
 
   -- action_out - write the actions from the temporary file to lex.yy.c
 
-  procedure ACTION_OUT is
-    BUF : VSTRING;
+  procedure Action_OUT is
+    Buf : VSTRING;
+
   begin
-    while (not TEXT_IO.END_OF_FILE(TEMP_ACTION_FILE)) loop
-      TSTRING.GET_LINE(TEMP_ACTION_FILE, BUF);
+    while not End_Of_File (Temp_Action_File) loop
+      TSTRING.GET_LINE (Temp_Action_File, Buf);
       if ((TSTRING.LEN(BUF) >= 2) and then ((CHAR(BUF, 1) = '%') and (CHAR(BUF,
         2) = '%'))) then
         exit;
@@ -132,8 +138,8 @@ package body MISC is
       DATAFLUSH;
 
       -- add terminator for initialization
-      TEXT_IO.PUT_LINE("    ) ;");
-      TEXT_IO.NEW_LINE;
+      Put_Line ("    );");
+      New_Line;
 
       DATALINE := 0;
     end if;
@@ -142,15 +148,15 @@ package body MISC is
 
   -- dataflush - flush generated data statements
 
-  procedure DATAFLUSH(FILE : in FILE_TYPE) is
+  procedure DATAFLUSH (File : in File_Type) is
   begin
-    TEXT_IO.NEW_LINE(FILE);
+    New_Line (File);
     DATALINE := DATALINE + 1;
-    if (DATALINE >= NUMDATALINES) then
+    if DATALINE >= NUMDATALINES then
 
       -- put out a blank line so that the table is grouped into
       -- large blocks that enable the user to find elements easily
-      TEXT_IO.NEW_LINE(FILE);
+      New_Line (File);
       DATALINE := 0;
     end if;
 
@@ -165,7 +171,7 @@ package body MISC is
   -- aflex_gettime - return current time
 
   function AFLEX_GETTIME return VSTRING is
-    use TSTRING, CALENDAR;
+    use CALENDAR;
     CURRENT_TIME                                            : TIME;
     CURRENT_YEAR                                            : YEAR_NUMBER;
     CURRENT_MONTH                                           : MONTH_NUMBER;
@@ -236,86 +242,110 @@ package body MISC is
       & MINUTE_STRING & ":" & SECOND_STRING & INTEGER'IMAGE(CURRENT_YEAR);
   end AFLEX_GETTIME;
 
-  -- aflexerror - report an error message and terminate
-  -- overloaded function, one for vstring, one for string.
-  procedure AFLEXERROR(MSG : in VSTRING) is
-    use TEXT_IO;
-  begin
-    TSTRING.PUT(STANDARD_ERROR, "aflex: " & MSG);
-    TEXT_IO.NEW_LINE(STANDARD_ERROR);
-    MAIN_BODY.AFLEXEND(1);
-  end AFLEXERROR;
+   -----------------
+   -- Aflex_Error --
+   -----------------
 
-  procedure AFLEXERROR(MSG : in STRING) is
-    use TEXT_IO;
-  begin
-    TEXT_IO.PUT(STANDARD_ERROR, "aflex: " & MSG);
-    TEXT_IO.NEW_LINE(STANDARD_ERROR);
-    MAIN_BODY.AFLEXEND(1);
-  end AFLEXERROR;
+   procedure Aflex_Error (Msg : VSTRING) is
+   begin
+      TSTRING.PUT (Standard_Error, "aflex: " & Msg);
+      New_Line (Standard_Error);
+      Main_Body.Aflex_End (1);
+   end Aflex_Error;
 
-  -- aflexfatal - report a fatal error message and terminate
-  -- overloaded function, one for vstring, one for string.
-  procedure AFLEXFATAL(MSG : in VSTRING) is
-    use TEXT_IO;
-  begin
-    TSTRING.PUT(STANDARD_ERROR, "aflex: fatal internal error " & MSG);
-    TEXT_IO.NEW_LINE(STANDARD_ERROR);
-    MAIN_BODY.AFLEXEND(1);
-  end AFLEXFATAL;
+   -----------------
+   -- Aflex_Error --
+   -----------------
 
-  procedure AFLEXFATAL(MSG : in STRING) is
-    use TEXT_IO;
-  begin
-    TEXT_IO.PUT(STANDARD_ERROR, "aflex: fatal internal error " & MSG);
-    TEXT_IO.NEW_LINE(STANDARD_ERROR);
-    MAIN_BODY.AFLEXEND(1);
-  end AFLEXFATAL;
+   procedure Aflex_Error (Msg : String) is
+   begin
+      Put (Standard_Error, "aflex: " & Msg);
+      New_Line (Standard_Error);
+      Main_Body.Aflex_End (1);
+   end Aflex_Error;
 
-  -- basename - find the basename of a file
-  function BASENAME return VSTRING is
-    END_CHAR_POS : INTEGER := LEN(INFILENAME);
-    START_CHAR_POS : INTEGER;
-  begin
-    if (END_CHAR_POS = 0) then
-      -- if reading standard input give everything this name
-      return VSTR("aflex_yy");
-    end if;
+   -----------------
+   -- Aflex_Fatal --
+   -----------------
 
-    -- find out where the end of the basename is
-    while ((END_CHAR_POS >= 1) and then
-           (CHAR(INFILENAME, END_CHAR_POS) /= '.')) loop
-      END_CHAR_POS := END_CHAR_POS - 1;
-    end loop;
+   procedure Aflex_Fatal (Msg : VSTRING) is
+   begin
+      TSTRING.PUT (Standard_Error, "aflex: fatal internal error " & Msg);
+      New_Line (Standard_Error);
+      Main_Body.Aflex_End (1);
+   end Aflex_Fatal;
 
-    -- find out where the beginning of the basename is
-    START_CHAR_POS := END_CHAR_POS; -- start at the end of the basename
-    while ((START_CHAR_POS > 1) and then
-           (CHAR(INFILENAME, START_CHAR_POS) /= '/')) loop
-    	START_CHAR_POS := START_CHAR_POS - 1;
-    end loop;
+   -----------------
+   -- Aflex_Fatal --
+   -----------------
 
-    if (CHAR(INFILENAME, START_CHAR_POS) = '/') then
-    	START_CHAR_POS := START_CHAR_POS + 1;
-    end if;
+   procedure Aflex_Fatal (Msg : String) is
+   begin
+      Put (Standard_Error, "aflex: fatal internal error " & Msg);
+      New_Line (Standard_Error);
+      Main_Body.Aflex_End (1);
+   end Aflex_Fatal;
 
-    if (END_CHAR_POS >= 1) then
-      return SLICE(INFILENAME, START_CHAR_POS,  END_CHAR_POS - 1);
-    else
-      return INFILENAME;
-    end if;
-  end BASENAME;
+   -----------------
+   -- Aflex_Fatal --
+   -----------------
+
+   procedure Aflex_Fatal (Msg : Unbounded_String) is
+   begin
+      Put (Standard_Error, "aflex: fatal internal error " & Msg);
+      New_Line (Standard_Error);
+      Main_Body.Aflex_End (1);
+   end Aflex_Fatal;
+
+   --------------
+   -- Basename --
+   --------------
+
+   function Basename return Unbounded_String is
+      End_Char_Pos   : Integer := Len (InFileName);
+      Start_Char_Pos : Integer;
+
+   begin
+      if End_Char_Pos = 0 then
+         -- if reading standard input give everything this name
+
+         return +"aflex_yy";
+      end if;
+
+      -- find out where the end of the basename is
+      while ((END_CHAR_POS >= 1) and then
+               (CHAR(INFILENAME, END_CHAR_POS) /= '.')) loop
+         END_CHAR_POS := END_CHAR_POS - 1;
+      end loop;
+
+      -- find out where the beginning of the basename is
+      START_CHAR_POS := END_CHAR_POS; -- start at the end of the basename
+      while ((START_CHAR_POS > 1) and then
+               (CHAR(INFILENAME, START_CHAR_POS) /= '/')) loop
+         START_CHAR_POS := START_CHAR_POS - 1;
+      end loop;
+
+      if (CHAR(INFILENAME, START_CHAR_POS) = '/') then
+         START_CHAR_POS := START_CHAR_POS + 1;
+      end if;
+
+      if (END_CHAR_POS >= 1) then
+         return +STR (SLICE(INFILENAME, START_CHAR_POS,  END_CHAR_POS - 1));
+      else
+         return +STR (INFILENAME);
+      end if;
+   end Basename;
 
   -- line_directive_out - spit out a "# line" statement
 
   procedure LINE_DIRECTIVE_OUT(OUTPUT_FILE_NAME : in FILE_TYPE) is
   begin
-    if (GEN_LINE_DIRS) then
-      TEXT_IO.PUT(OUTPUT_FILE_NAME, "--# line ");
-      INT_IO.PUT(OUTPUT_FILE_NAME, LINENUM, 1);
-      TEXT_IO.PUT(OUTPUT_FILE_NAME, " """);
-      TSTRING.PUT(OUTPUT_FILE_NAME, INFILENAME);
-      TEXT_IO.PUT_LINE(OUTPUT_FILE_NAME, """");
+    if GEN_LINE_DIRS then
+      Put (OUTPUT_FILE_NAME, "--# line ");
+      Put (OUTPUT_FILE_NAME, LINENUM, 1);
+      Put (OUTPUT_FILE_NAME, " """);
+      Put (OUTPUT_FILE_NAME, INFILENAME);
+      Put_Line (OUTPUT_FILE_NAME, """");
     end if;
   end LINE_DIRECTIVE_OUT;
 
@@ -323,11 +353,11 @@ package body MISC is
   procedure LINE_DIRECTIVE_OUT is
   begin
     if (GEN_LINE_DIRS) then
-      TEXT_IO.PUT("--# line ");
-      INT_IO.PUT(LINENUM, 1);
-      TEXT_IO.PUT(" """);
-      TSTRING.PUT(INFILENAME);
-      TEXT_IO.PUT_LINE("""");
+      PUT("--# line ");
+      PUT(LINENUM, 1);
+      PUT(" """);
+      PUT(INFILENAME);
+      PUT_LINE("""");
     end if;
   end LINE_DIRECTIVE_OUT;
 
@@ -362,21 +392,21 @@ package body MISC is
   begin
 
     if (DATAPOS >= NUMDATAITEMS) then
-      TEXT_IO.PUT(FILE, ',');
+      PUT(FILE, ',');
       DATAFLUSH(FILE);
     end if;
 
     if (DATAPOS = 0) then
 
       -- indent
-      TEXT_IO.PUT(FILE, "    ");
+      PUT(FILE, "    ");
     else
-      TEXT_IO.PUT(FILE, ',');
+      PUT(FILE, ',');
     end if;
 
     DATAPOS := DATAPOS + 1;
 
-    INT_IO.PUT(FILE, VALUE, 5);
+    PUT(FILE, VALUE, 5);
   end MK2DATA;
 
   procedure MK2DATA(VALUE : in INTEGER) is
@@ -391,21 +421,21 @@ package body MISC is
   procedure MKDATA(VALUE : in INTEGER) is
   begin
     if (DATAPOS >= NUMDATAITEMS) then
-      TEXT_IO.PUT(',');
+      PUT(',');
       DATAFLUSH;
     end if;
 
     if (DATAPOS = 0) then
 
       -- indent
-      TEXT_IO.PUT("    ");
+      PUT("    ");
     else
-      TEXT_IO.PUT(',');
+      PUT(',');
     end if;
 
     DATAPOS := DATAPOS + 1;
 
-    INT_IO.PUT(VALUE, 5);
+    PUT(VALUE, 5);
   end MKDATA;
 
 
@@ -564,18 +594,19 @@ package body MISC is
 
   procedure TRANSITION_STRUCT_OUT(ELEMENT_V, ELEMENT_N : in INTEGER) is
   begin
-    INT_IO.PUT(ELEMENT_V, 7);
-    TEXT_IO.PUT(", ");
-    INT_IO.PUT(ELEMENT_N, 5);
-    TEXT_IO.PUT(",");
+    PUT(ELEMENT_V, 7);
+    PUT(", ");
+    PUT(ELEMENT_N, 5);
+    PUT(",");
     DATAPOS := DATAPOS + TRANS_STRUCT_PRINT_LENGTH;
 
     if (DATAPOS >= 75) then
-      TEXT_IO.NEW_LINE;
+      NEW_LINE;
 
       DATALINE := DATALINE + 1;
-      if (DATALINE mod 10 = 0) then
-        TEXT_IO.NEW_LINE;
+
+      if DATALINE mod 10 = 0 then
+        NEW_LINE;
       end if;
 
       DATAPOS := 0;
@@ -644,13 +675,12 @@ package body MISC is
   end TOLOWER;
 
   procedure SYNERR(STR : in STRING) is
-    use TEXT_IO;
   begin
     SYNTAXERROR := TRUE;
-    TEXT_IO.PUT(STANDARD_ERROR, "Syntax error at line ");
-    INT_IO.PUT(STANDARD_ERROR, LINENUM);
-    TEXT_IO.PUT(STANDARD_ERROR, STR);
-    TEXT_IO.NEW_LINE(STANDARD_ERROR);
+    PUT(STANDARD_ERROR, "Syntax error at line ");
+    PUT(STANDARD_ERROR, LINENUM);
+    PUT(STANDARD_ERROR, STR);
+    NEW_LINE(STANDARD_ERROR);
   end SYNERR;
 
 end MISC;

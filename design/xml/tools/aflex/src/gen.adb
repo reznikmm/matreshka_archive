@@ -21,13 +21,18 @@
 -- DESCRIPTION
 -- NOTES does actual generation (writing) of output aflex scanners
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/genB.a,v 1.25 1992/10/02 23:08:41 self Exp self $
+with Ada.Strings.Unbounded.Text_IO;
 
 with MISC_DEFS, TEXT_IO, MISC, INT_IO, TSTRING;
 with Ascan, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER; use MISC_DEFS, TEXT_IO,
   TSTRING, EXTERNAL_FILE_MANAGER;
 with Parser.Tokens; use Parser.Tokens;
 
-package body GEN is
+package body Gen is
+
+   use Ada.Strings.Unbounded;
+   use Ada.Strings.Unbounded.Text_IO;
+
   INDENT_LEVEL : INTEGER := 0;  -- each level is 4 spaces
 
   MAX_SHORT    : constant INTEGER := 32767;
@@ -538,7 +543,7 @@ package body GEN is
     MISC.DATAEND;
   exception
     when STORAGE_ERROR =>
-      MISC.AFLEXFATAL("dynamic memory failure in gentabs()");
+      Misc.Aflex_Fatal ("dynamic memory failure in gentabs()");
   end GENTABS;
 
   -- write out a string at the current indentation level, adding a final
@@ -564,30 +569,33 @@ package body GEN is
   --
   -- Generates transition tables and finishes generating output file
 
-  procedure BODY_HEADER is
-    OUTPUT_BODY_FILE  : TEXT_IO.FILE_TYPE;
-  begin
-      TEXT_IO.PUT_LINE("package " & TSTRING.STR(MISC.BASENAME) &" is");
+   -----------------
+   -- Body_Header --
+   -----------------
+
+   procedure Body_Header is
+      Output_Body_File : File_Type;
+
+   begin
+      Put_Line ("package " & Misc.Basename & " is");
 
       DO_SECT3_OUT;
 
-      TEXT_IO.PUT_LINE("end " & TSTRING.STR(MISC.BASENAME) &";");
+      Put_Line ("end " & Misc.Basename & ";");
 
-      EXTERNAL_FILE_MANAGER.GET_SCANNER_BODY_FILE(OUTPUT_BODY_FILE);
-      SKELETON_MANAGER.SKELOUT;
-
-      DO_SECT3_OUT;
-
-      TEXT_IO.PUT("with " & TSTRING.STR(MISC.BASENAME) & ".DFA" & "; ");
-      TEXT_IO.PUT_LINE("use " & TSTRING.STR(MISC.BASENAME) & ".DFA" & "; ");
-      TEXT_IO.PUT("with " & TSTRING.STR(MISC.BASENAME) & ".IO" & "; ");
-      TEXT_IO.PUT_LINE("use " & TSTRING.STR(MISC.BASENAME) & ".IO" & "; ");
-      TEXT_IO.PUT_LINE("package body " & TSTRING.STR(MISC.BASENAME) &" is");
-      TEXT_IO.PUT_LINE("package " & TSTRING.STR(MISC.BASENAME) & "_DFA renames " & TSTRING.STR(MISC.BASENAME) & ".DFA;");
-      TEXT_IO.PUT_LINE("package " & TSTRING.STR(MISC.BASENAME) & "_IO renames " & TSTRING.STR(MISC.BASENAME) & ".IO;");
+      External_File_Manager.Get_Scanner_Body_File (Output_Body_File);
+      Skeleton_Manager.Skelout;
 
       DO_SECT3_OUT;
-  end BODY_HEADER;
+
+      Put ("with " & Misc.Basename & ".DFA; ");
+      Put_Line ("use " & Misc.Basename & ".DFA;");
+      Put ("with " & Misc.Basename & ".IO; ");
+      Put_Line ("use " & Misc.Basename & ".IO;");
+      Put_Line ("package body " & Misc.Basename & " is");
+
+      DO_SECT3_OUT;
+   end Body_Header;
 
   procedure MAKE_TABLES is
     DID_EOF_RULE      : BOOLEAN := FALSE;

@@ -172,7 +172,7 @@ package body DFA is
     TEXT_IO.NEW_LINE(F);
   exception
     when STORAGE_ERROR =>
-      MISC.AFLEXFATAL("dynamic memory failure in dump_associated_rules()");
+      Misc.Aflex_Fatal ("dynamic memory failure in dump_associated_rules()");
   end DUMP_ASSOCIATED_RULES;
 
 
@@ -366,7 +366,7 @@ package body DFA is
       if (IS_MARKED(STK(CHK_STKPOS))) then
         UNMARK_STATE(STK(CHK_STKPOS));
       else
-        MISC.AFLEXFATAL("consistency check failed in epsclosure()");
+        Misc.Aflex_Fatal ("consistency check failed in epsclosure()");
       end if;
     end loop;
 
@@ -464,7 +464,7 @@ package body DFA is
         CREATE(FULL_TABLE_TEMP_FILE, OUT_FILE);
       exception
         when USE_ERROR | NAME_ERROR =>
-          MISC.AFLEXFATAL("can't create temporary file");
+          Misc.Aflex_Fatal ("can't create temporary file");
       end;
 
       NUM_NXT_STATES := 1;
@@ -512,7 +512,7 @@ package body DFA is
 
     SNSTODS(NSET, 0, ACCSET, 0, 0, END_OF_BUFFER_STATE, SNSRESULT);
     if (not SNSRESULT) then
-      MISC.AFLEXFATAL("could not create unique end-of-buffer state");
+      Misc.Aflex_Fatal ("could not create unique end-of-buffer state");
     end if;
     NUMAS := NUMAS + 1;
     NUM_START_STATES := NUM_START_STATES + 1;
@@ -792,7 +792,7 @@ package body DFA is
 
   exception
     when STORAGE_ERROR =>
-      MISC.AFLEXFATAL("dynamic memory failure in snstods()");
+      Misc.Aflex_Fatal ("dynamic memory failure in snstods()");
   end SNSTODS;
 
   -- symfollowset - follow the symbol transitions one step
@@ -850,7 +850,7 @@ package body DFA is
       else
         if ((SYM >= CHARACTER'POS('A')) and (SYM <= CHARACTER'POS('Z')) and
           CASEINS) then
-          MISC.AFLEXFATAL("consistency check failed in symfollowset");
+          Misc.Aflex_Fatal ("consistency check failed in symfollowset");
         else
           if (SYM = SYM_EPSILON) then
             null;  -- do nothing
@@ -896,8 +896,8 @@ package body DFA is
 
       if (TCH /= SYM_EPSILON) then
         if ((TCH <  -LASTCCL) or (TCH > CSIZE)) then
-          MISC.AFLEXFATAL("bad transition character detected in sympartition()")
-            ;
+          Misc.Aflex_Fatal
+           ("bad transition character detected in sympartition()");
         end if;
 
         if (TCH > 0) then
