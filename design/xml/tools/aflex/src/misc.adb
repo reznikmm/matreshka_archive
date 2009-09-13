@@ -105,7 +105,7 @@ package body MISC is
    is
       GAP, J, JG  : INTEGER;
       K           : Unicode_Character;
-      LOWER_BOUND : INTEGER := V'FIRST;
+      LOWER_BOUND : constant INTEGER := V'FIRST;
 
    begin
       GAP := N / 2;
@@ -326,7 +326,7 @@ package body MISC is
    --------------
 
    function Basename return Unbounded_String is
-      End_Char_Pos   : Integer := Len (In_File_Name);
+      End_Char_Pos   : Natural := Length (In_File_Name);
       Start_Char_Pos : Integer;
 
    begin
@@ -337,26 +337,31 @@ package body MISC is
       end if;
 
       -- find out where the end of the basename is
-      while ((END_CHAR_POS >= 1) and then
-               (CHAR(In_File_Name, END_CHAR_POS) /= '.')) loop
-         END_CHAR_POS := END_CHAR_POS - 1;
+      while End_Char_Pos >= 1
+        and then Element (In_File_Name, End_Char_Pos) /= '.'
+      loop
+         End_Char_Pos := End_Char_Pos - 1;
       end loop;
 
       -- find out where the beginning of the basename is
-      START_CHAR_POS := END_CHAR_POS; -- start at the end of the basename
-      while ((START_CHAR_POS > 1) and then
-               (CHAR(In_File_Name, START_CHAR_POS) /= '/')) loop
-         START_CHAR_POS := START_CHAR_POS - 1;
+      Start_Char_Pos := End_Char_Pos; -- start at the end of the basename
+
+      while Start_Char_Pos > 1
+        and then Element (In_File_Name, Start_Char_Pos) /= '/'
+      loop
+         Start_Char_Pos := Start_Char_Pos - 1;
       end loop;
 
-      if (CHAR(In_File_Name, START_CHAR_POS) = '/') then
-         START_CHAR_POS := START_CHAR_POS + 1;
+      if Element (In_File_Name, Start_Char_Pos) = '/' then
+         Start_Char_Pos := Start_Char_Pos + 1;
       end if;
 
-      if (END_CHAR_POS >= 1) then
-         return +STR (SLICE(In_File_Name, START_CHAR_POS,  END_CHAR_POS - 1));
+      if (End_Char_Pos >= 1) then
+         return
+           Unbounded_Slice (In_File_Name, Start_Char_Pos,  End_Char_Pos - 1);
+
       else
-         return +STR (In_File_Name);
+         return In_File_Name;
       end if;
    end Basename;
 
@@ -533,8 +538,7 @@ package body MISC is
             -- \<octal>
 
             declare
-               C, ESC_CHAR : Character;
-               SPTR        : INTEGER := TSTRING.FIRST + 1;
+               ESC_CHAR : Character;
 
             begin
                ESC_CHAR :=

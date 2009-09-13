@@ -25,9 +25,9 @@
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/file_managerB.a,v 1.5 90/01/12 15:19:58 self Exp Locker: self $
 with Ada.Strings.Unbounded;
 
-with MISC_DEFS, TSTRING, MISC; use MISC_DEFS, TSTRING, MISC;
+with MISC_DEFS, MISC; use MISC_DEFS, MISC;
 
-package body EXTERNAL_FILE_MANAGER is
+package body External_File_Manager is
 
    use Ada.Strings.Unbounded;
 
@@ -35,75 +35,82 @@ package body EXTERNAL_FILE_MANAGER is
    function "+" (Item : String) return Unbounded_String
      renames To_Unbounded_String;
 
--- FIX comment about compiler dependent
+   --  FIX comment about compiler dependent
 
-  subtype SUFFIX_TYPE is STRING(1 .. 3);
+   Ada_Spec_Suffix : constant String := "ads";
+   Ada_Body_Suffix : constant String := "adb";
 
-  function ADA_SUFFIX return SUFFIX_TYPE is
-  begin
-    return "ada";
-  end ADA_SUFFIX;
-  pragma Inline (ADA_SUFFIX);
+   ----------------------
+   -- Get_IO_Spec_File --
+   ----------------------
 
-  function ADA_SPEC_SUFFIX return SUFFIX_TYPE is
-  begin
-    return "ads";
-  end ADA_SPEC_SUFFIX;
-  pragma Inline (ADA_SPEC_SUFFIX);
+   procedure Get_IO_Spec_File (F : in out File_Type) is
+   begin
+      if Length (In_File_Name) /= 0 then
+         Create (F, Out_File, +Misc.Basename & "-io." & Ada_Spec_Suffix);
 
-  function ADA_BODY_SUFFIX return SUFFIX_TYPE is
-  begin
-    return "adb";
-  end ADA_BODY_SUFFIX;
-  pragma Inline (ADA_BODY_SUFFIX);
+      else
+         Create (F, Out_File, "aflex_yy-io." & Ada_Spec_Suffix);
+      end if;
 
-  procedure GET_IO_SPEC_FILE(F : in out FILE_TYPE) is
-  begin
-    if (LEN(In_File_Name) /= 0) then
-      CREATE(F, OUT_FILE, +MISC.BASENAME & "-io." & ADA_SPEC_SUFFIX);
-    else
-      CREATE(F, OUT_FILE, "aflex_yy-io." & ADA_SPEC_SUFFIX);
-    end if;
-  exception
-    when USE_ERROR | NAME_ERROR =>
-      MISC.AFLEX_FATAL("could not create IO package file");
-  end GET_IO_SPEC_FILE;
+   exception
+      when Use_Error | Name_Error =>
+         Misc.Aflex_Fatal ("could not create IO package file");
+   end Get_IO_Spec_File;
 
-  procedure GET_IO_BODY_FILE(F : in out FILE_TYPE) is
-  begin
-    if (LEN(In_File_Name) /= 0) then
-      CREATE(F, OUT_FILE, +MISC.BASENAME & "-io." & ADA_BODY_SUFFIX);
-    else
-      CREATE(F, OUT_FILE, "aflex_yy-io." & ADA_BODY_SUFFIX);
-    end if;
-  exception
-    when USE_ERROR | NAME_ERROR =>
-      MISC.AFLEX_FATAL("could not create IO package file");
-  end GET_IO_BODY_FILE;
+   ----------------------
+   -- Get_IO_Body_File --
+   ----------------------
 
-  procedure GET_DFA_SPEC_FILE(F : in out FILE_TYPE) is
-  begin
-    if (LEN(In_File_Name) /= 0) then
-      CREATE(F, OUT_FILE, +MISC.BASENAME & "-dfa." & ADA_SPEC_SUFFIX);
-    else
-      CREATE(F, OUT_FILE, "aflex_yy-dfa." & ADA_SPEC_SUFFIX);
-    end if;
-  exception
-    when USE_ERROR | NAME_ERROR =>
-      MISC.AFLEX_FATAL("could not create DFA package file");
-  end GET_DFA_SPEC_FILE;
+   procedure Get_IO_Body_File (F : in out File_Type) is
+   begin
+      if Length (In_File_Name) /= 0 then
+         Create (F, Out_File, +Misc.Basename & "-io." & Ada_Body_Suffix);
 
-  procedure GET_DFA_BODY_FILE(F : in out FILE_TYPE) is
-  begin
-    if (LEN(In_File_Name) /= 0) then
-      CREATE(F, OUT_FILE, +MISC.BASENAME & "-dfa." & ADA_BODY_SUFFIX);
-    else
-      CREATE(F, OUT_FILE, "aflex_yy-dfa." & ADA_BODY_SUFFIX);
-    end if;
-  exception
-    when USE_ERROR | NAME_ERROR =>
-      MISC.AFLEX_FATAL("could not create DFA package file");
-  end GET_DFA_BODY_FILE;
+      else
+         Create (F, Out_File, "aflex_yy-io." & Ada_Body_Suffix);
+      end if;
+
+   exception
+      when Use_Error | Name_Error =>
+         Misc.Aflex_Fatal ("could not create IO package file");
+   end Get_IO_Body_File;
+
+   -----------------------
+   -- Get_DFA_Spec_File --
+   -----------------------
+
+   procedure Get_DFA_Spec_File (F : in out File_Type) is
+   begin
+      if Length (In_File_Name) /= 0 then
+         Create (F, Out_File, +Misc.Basename & "-dfa." & Ada_Spec_Suffix);
+
+      else
+         Create (F, Out_File, "aflex_yy-dfa." & Ada_Spec_Suffix);
+      end if;
+
+   exception
+      when Use_Error | Name_Error =>
+         Misc.Aflex_Fatal ("could not create DFA package file");
+   end Get_DFA_Spec_File;
+
+   -----------------------
+   -- Get_DFA_Body_File --
+   -----------------------
+
+   procedure Get_DFA_Body_File (F : in out File_Type) is
+   begin
+      if Length (In_File_Name) /= 0 then
+         Create (F, Out_File, +Misc.Basename & "-dfa." & Ada_Body_Suffix);
+
+      else
+         Create (F, Out_File, "aflex_yy-dfa." & Ada_Body_Suffix);
+      end if;
+
+   exception
+      when Use_Error | Name_Error =>
+         Misc.Aflex_Fatal ("could not create DFA package file");
+   end Get_DFA_Body_File;
 
    ---------------------------
    -- Get_Scanner_Spec_File --
@@ -113,7 +120,7 @@ package body EXTERNAL_FILE_MANAGER is
       Out_File_Name : Unbounded_String;
 
    begin
-      if LEN (In_File_Name) /= 0 then
+      if Length (In_File_Name) /= 0 then
          -- give out infile + ada_suffix
 
          Out_File_Name := Misc.Basename & "." & Ada_Spec_Suffix;
@@ -138,7 +145,7 @@ package body EXTERNAL_FILE_MANAGER is
       Out_File_Name : Unbounded_String;
 
    begin
-      if LEN (In_File_Name) /= 0 then
+      if Length (In_File_Name) /= 0 then
          -- give out infile + ada_suffix
 
          Out_File_Name := Misc.Basename & "." & Ada_Body_Suffix;

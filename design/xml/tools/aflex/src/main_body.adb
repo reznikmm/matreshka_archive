@@ -27,8 +27,8 @@ with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
 
 with MISC_DEFS, MISC, ECS, PARSER;
-with MAIN_BODY, TSTRING, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
-use MISC_DEFS, TSTRING;
+with MAIN_BODY, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
+use MISC_DEFS;
 with Parser.Tokens;
 
 package body Main_Body is
