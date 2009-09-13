@@ -350,7 +350,7 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 <SECT2,QUOTE,CCL>{ESCSEQ}	{
 			yylval :=
                           Unicode_Character'Pos
-                           (Misc.MYESC (vstr (yytext (1 .. YYLength))));
+                           (Misc.MYESC (+YYText (1 .. YYLength)));
 
 			return CHAR;
 			}
@@ -358,7 +358,7 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 <FIRSTCCL>{ESCSEQ}	{
 			yylval :=
                           Unicode_Character'Pos
-                           (misc.myesc (vstr (yytext (1 .. YYLength))));
+                           (misc.myesc (+YYText (1 .. YYLength)));
 			ENTER(CCL);
 			return ( CHAR );
 			}
@@ -382,8 +382,7 @@ with Ada.Strings.Unbounded;
 with Ada.Text_IO;
 
 with misc_defs, misc, sym;
-with tstring;
-use misc_defs, tstring;
+use misc_defs;
 with Unicode;
 ##
    use Ada.Integer_Text_IO;

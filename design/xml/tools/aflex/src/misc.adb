@@ -500,10 +500,9 @@ package body MISC is
    -- MYESC --
    -----------
 
-   function MYESC (ARR : in VSTRING) return Unicode.Unicode_Character is
---        use TEXT_IO;
+   function MYESC (ARR : Unbounded_String) return Unicode.Unicode_Character is
    begin
-      case (CHAR (ARR, TSTRING.FIRST + 1)) is
+      case Element (ARR, 2) is
          when 'a' =>
             return Unicode.BEL;
 
@@ -532,10 +531,7 @@ package body MISC is
                Esc_Char : constant Unicode_Character
                  := Unicode_Character'Val
                      (Integer'Value
-                       ("16#"
-                          & Str
-                             (TSTRING.Slice (Arr, TSTRING.First + 2, Len (Arr)))
-                          & "#"));
+                       ("16#" & Slice (Arr, 3, Length (Arr)) & "#"));
 
             begin
                if (ESC_CHAR = Unicode.NUL) then
@@ -555,7 +551,7 @@ package body MISC is
 
             begin
                ESC_CHAR :=
-                 OTOI (To_Unbounded_String (STR (TSTRING.SLICE(ARR, TSTRING.FIRST + 1, TSTRING.LEN(ARR)))));
+                 OTOI (Unbounded_Slice (ARR, 2, Length (ARR)));
 
                if (ESC_CHAR = ASCII.NUL) then
                   MISC.SYNERR("escape sequence for null not allowed");
@@ -567,9 +563,7 @@ package body MISC is
             end;
 
          when others =>
-            return
-              Unicode_Character'Val
-               (Character'Pos (CHAR (ARR, TSTRING.FIRST + 1)));
+            return Unicode_Character'Val (Character'Pos (Element (ARR, 2)));
       end case;
   end MYESC;
 

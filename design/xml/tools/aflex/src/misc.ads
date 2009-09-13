@@ -81,7 +81,7 @@ package Misc is
   procedure MKDATA(VALUE : in INTEGER);
   function MYCTOI(NUM_ARRAY : in Unbounded_String) return INTEGER;
 
-   function MYESC (ARR : in VSTRING) return Unicode.Unicode_Character;
+   function MYESC (ARR : Unbounded_String) return Unicode.Unicode_Character;
    -- myesc - return character corresponding to escape sequence
 
   function OTOI(STR : in Unbounded_String) return CHARACTER;

@@ -3,8 +3,7 @@ with Ada.Strings.Unbounded;
 with Ada.Text_IO;
 
 with misc_defs, misc, sym;
-with tstring;
-use misc_defs, tstring;
+use misc_defs;
 with Unicode;
 with ascan.DFA; use ascan.DFA;
 with ascan.IO; use ascan.IO;
@@ -1134,7 +1133,7 @@ when 78 =>
 
 			yylval :=
                           Unicode_Character'Pos
-                           (Misc.MYESC (vstr (yytext (1 .. YYLength))));
+                           (Misc.MYESC (+YYText (1 .. YYLength)));
 
 			return CHAR;
 			
@@ -1144,7 +1143,7 @@ when 79 =>
 
 			yylval :=
                           Unicode_Character'Pos
-                           (misc.myesc (vstr (yytext (1 .. YYLength))));
+                           (misc.myesc (+YYText (1 .. YYLength)));
 			ENTER(CCL);
 			return ( CHAR );
 			
