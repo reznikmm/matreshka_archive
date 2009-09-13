@@ -1,8 +1,9 @@
-with Text_IO;
+with Ada.Integer_Text_IO;
+with Ada.Text_IO;
 
 with Ascan;
 with NFA, ccl, misc, misc_defs, sym, ecs;
-with tstring, int_io, main_body;
+with tstring, main_body;
 with Unicode;
 
 with Parser.Goto_Table;
@@ -17,32 +18,35 @@ package body Parser is
    package Parser_Tokens renames Parser.Tokens;
    package Parser_Shift_Reduce  renames Parser.Shift_Reduce;
 
+   use Ada.Integer_Text_IO;
+   use Ada.Text_IO;
+
    use Ascan;
    use Unicode;
 
 -- build_eof_action - build the "<<EOF>>" action for the active start
 --                    conditions
 
-use text_io, misc_defs;
+use misc_defs;
 procedure build_eof_action is
 begin
-    text_io.put( temp_action_file, "when " );
+    Put (Temp_Action_File, "when ");
     for i in 1..actvp loop
 	if ( sceof(actvsc(i)) ) then
-	    text_io.put( Standard_Error,
-		"multiple <<EOF>> rules for start condition ");
+	    Put
+             (Standard_Error, "multiple <<EOF>> rules for start condition ");
 	    tstring.put( Standard_Error, scname(actvsc(i)));
 	    Main_Body.Aflex_End (1);
 
 	else
 	    sceof(actvsc(i)) := true;
-	    text_io.put( temp_action_file, "YY_END_OF_BUFFER +" );
+	    Put (Temp_Action_File, "YY_END_OF_BUFFER +");
 	    tstring.put( temp_action_file,  scname(actvsc(i)) );
-	    text_io.put_line( temp_action_file, " + 1 " );
+	    Put_Line (Temp_Action_File, " + 1 ");
 	    if (i /= actvp) then
-	        text_io.put_line( temp_action_file, " |" );
+	        Put_Line (Temp_Action_File, " |");
 	    else
-	        text_io.put_line( temp_action_file, " =>" );
+	        Put_Line (Temp_Action_File, " =>");
 	    end if;
         end if;
     end loop;
@@ -163,12 +167,12 @@ procedure YYParse is
 
       if yy.error_flag = 3 then -- no shift yet, clobber input.
       if yy.debug then
-          text_io.put_line("Ayacc.YYParse: Error Recovery Clobbers " &
+          Ada.Text_Io.Put_Line ("Ayacc.YYParse: Error Recovery Clobbers " &
                    yy_tokens.token'image(yy.input_symbol));
       end if;
         if yy.input_symbol = yy_tokens.end_of_input then  -- don't discard,
         if yy.debug then
-            text_io.put_line("Ayacc.YYParse: Can't discard END_OF_INPUT, quiting...");
+            Ada.Text_IO.Put_Line ("Ayacc.YYParse: Can't discard END_OF_INPUT, quiting...");
         end if;
         raise yy_tokens.syntax_error;
         end if;
@@ -186,19 +190,19 @@ procedure YYParse is
     -- find state on stack where error is a valid shift --
 
     if yy.debug then
-        text_io.put_line("Ayacc.YYParse: Looking for state with error as valid shift");
+        Ada.Text_IO.Put_Line ("Ayacc.YYParse: Looking for state with error as valid shift");
     end if;
 
     loop
         if yy.debug then
-          text_io.put_line("Ayacc.YYParse: Examining State " &
+          Ada.Text_IO.Put_Line ("Ayacc.YYParse: Examining State " &
                yy.parse_state'image(yy.state_stack(yy.tos)));
         end if;
         temp_action := parse_action(yy.state_stack(yy.tos), error);
 
             if temp_action >= yy.first_shift_entry then
                 if yy.tos = yy.stack_size then
-                    text_io.put_line(" Stack size exceeded on state_stack");
+                    Ada.Text_IO.Put_Line (" Stack size exceeded on state_stack");
                     raise yy_Tokens.syntax_error;
                 end if;
                 yy.tos := yy.tos + 1;
@@ -216,14 +220,14 @@ procedure YYParse is
 
         if yy.tos = 0 then
           if yy.debug then
-            text_io.put_line("Ayacc.YYParse: Error recovery popped entire stack, aborting...");
+            Ada.Text_IO.Put_Line ("Ayacc.YYParse: Error recovery popped entire stack, aborting...");
           end if;
           raise yy_tokens.syntax_error;
         end if;
     end loop;
 
     if yy.debug then
-        text_io.put_line("Ayacc.YYParse: Shifted error token in state " &
+        Ada.Text_IO.Put_Line ("Ayacc.YYParse: Shifted error token in state " &
               yy.parse_state'image(yy.state_stack(yy.tos)));
     end if;
 
@@ -232,14 +236,14 @@ procedure YYParse is
    -- print debugging information for a shift operation
    procedure shift_debug(state_id: yy.parse_state; lexeme: yy_tokens.token) is
    begin
-       text_io.put_line("Ayacc.YYParse: Shift "& yy.parse_state'image(state_id)&" on input symbol "&
+       Ada.Text_IO.Put_Line ("Ayacc.YYParse: Shift "& yy.parse_state'image(state_id)&" on input symbol "&
                yy_tokens.token'image(lexeme) );
    end;
 
    -- print debugging information for a reduce operation
    procedure reduce_debug(rule_id: rule; state_id: yy.parse_state) is
    begin
-       text_io.put_line("Ayacc.YYParse: Reduce by rule "&rule'image(rule_id)&" goto state "&
+       Ada.Text_IO.Put_Line ("Ayacc.YYParse: Reduce by rule "&rule'image(rule_id)&" goto state "&
                yy.parse_state'image(state_id));
    end;
 
@@ -287,7 +291,7 @@ begin
 
             -- Enter new state
             if yy.tos = yy.stack_size then
-                text_io.put_line(" Stack size exceeded on state_stack");
+                Ada.Text_IO.Put_Line (" Stack size exceeded on state_stack");
                 raise yy_Tokens.syntax_error;
             end if;
             yy.tos := yy.tos + 1;
@@ -307,7 +311,7 @@ begin
 
         elsif yy.action = yy.accept_code then
             if yy.debug then
-                text_io.put_line("Ayacc.YYParse: Accepting Grammar...");
+                Ada.Text_IO.Put_Line ("Ayacc.YYParse: Accepting Grammar...");
             end if;
             exit;
 
@@ -338,12 +342,12 @@ when  1 =>
 			end loop;
 
 			if ( spprdflt ) then
-			    text_io.put(temp_action_file,
-					"raise AFLEX_SCANNER_JAMMED;");
+			    Put
+                             (Temp_Action_File, "raise AFLEX_SCANNER_JAMMED;");
 			else
-			    text_io.put( temp_action_file, "ECHO" );
+			    Put (Temp_Action_File, "ECHO");
 
-			text_io.put_line( temp_action_file, ";" );
+                            Put_Line (Temp_Action_File, ";");
 			end if;
 			
 
@@ -420,9 +424,9 @@ yy.value_stack(yy.tos) );
 			    bol_needed := true;
 
 			    if ( performance_report ) then
-				text_io.put( Standard_Error,
+				Put (Standard_Error,
 			"'^' operator results in sub-optimal performance");
-			        text_io.new_line(Standard_Error);
+			        New_Line (Standard_Error);
     	    	    	    end if;
 			end if;
 			
@@ -464,9 +468,9 @@ yy.value_stack(yy.tos) );
 			    bol_needed := true;
 
 			    if ( performance_report ) then
-				text_io.put( Standard_Error,
+				Put (Standard_Error,
 			"'^' operator results in sub-optimal performance");
-			        text_io.new_line(Standard_Error);
+			        New_Line (Standard_Error);
 			    end if;
 			end if;
     	    	    	
@@ -509,8 +513,8 @@ when  23 =>
 
 			scnum := sym.sclookup( nmstr );
 			if (scnum = 0 ) then
-		            text_io.put( Standard_Error,
-					 "undeclared start condition ");
+		            Put
+                             (Standard_Error, "undeclared start condition ");
 		            tstring.put( Standard_Error, nmstr );
 			    Main_Body.Aflex_End (1);
 
@@ -525,8 +529,8 @@ when  24 =>
 
 			scnum := sym.sclookup( nmstr );
 			if (scnum = 0 ) then
-		            text_io.put( Standard_Error,
-					"undeclared start condition ");
+		            Put
+                             (Standard_Error, "undeclared start condition ");
 		            tstring.put( Standard_Error,	 nmstr );
 			    Main_Body.Aflex_End (1);
 
@@ -619,12 +623,12 @@ yy.value_stack(yy.tos) );
 			    -- erroneously.
 
 			    	if ( (not varlength) or  headcnt /= 0 ) then
-				     text_io.put( Standard_Error,
-                              "alex: warning - trailing context rule at line");
-                                     int_io.put(Standard_Error, linenum);
-				     text_io.put( Standard_Error,
+				     Put (Standard_Error,
+                              "aflex: warning - trailing context rule at line");
+                                     Put (Standard_Error, Linenum);
+				     Put (Standard_Error,
                            "made variable because of preceding '|' action" );
-                                     int_io.put(Standard_Error, linenum);
+                                     Put (Standard_Error, Linenum);
     	    	    	    	end if;
 
 			    -- mark as variable
@@ -1041,7 +1045,7 @@ yyval := nfa.mkstate( SYM_EPSILON );
             -- Pop RHS states and goto next state
             yy.tos      := yy.tos - rule_length(yy.rule_id) + 1;
             if yy.tos > yy.stack_size then
-                text_io.put_line(" Stack size exceeded on state_stack");
+                Ada.Text_IO.Put_Line (" Stack size exceeded on state_stack");
                 raise yy_Tokens.syntax_error;
             end if;
             yy.state_stack(yy.tos) := goto_state(yy.state_stack(yy.tos-1) ,

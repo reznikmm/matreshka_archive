@@ -61,13 +61,13 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 			}
 
 ^"%"[^%sx]" ".*\n		{
-			text_io.put( Standard_Error, "old-style lex command at line " );
-			int_io.put( Standard_Error, linenum );
-			text_io.put( Standard_Error, "ignored:" );
-			text_io.new_line( Standard_Error );
-			text_io.put( Standard_Error, ASCII.HT );
-			text_io.put( Standard_Error, yytext(1..YYLength) );
-			linenum := linenum + 1;
+			Put (Standard_Error, "old-style lex command at line ");
+			Put (Standard_Error, Linenum);
+			Put (Standard_Error, "ignored:");
+			New_Line (Standard_Error );
+			Put (Standard_Error, ASCII.HT );
+			Put (Standard_Error, YYText (1 .. YYLength));
+			Linenum := Linenum + 1;
 			}
 
 ^{NAME}			{
@@ -334,7 +334,7 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 			linenum := linenum + 1;
 			ACTION_ECHO;
 			if ( bracelevel = 0 ) then
-			    text_io.new_line ( temp_action_file );
+			    New_Line (Temp_Action_File);
 			    ENTER(SECT2);
 	                end if;
 			}
@@ -377,11 +377,16 @@ with Parser.Tokens;
     Call_YYLex : Boolean := False;
     function YYLex return Parser.Tokens.Token;
 ##
-with misc_defs, misc, sym, int_io;
+with Ada.Integer_Text_IO;
+with Ada.Text_IO;
+
+with misc_defs, misc, sym;
 with tstring;
 use misc_defs, tstring;
 with Unicode;
 ##
+   use Ada.Integer_Text_IO;
+   use Ada.Text_IO;
    use Parser.Tokens;
    use Unicode;
 
@@ -397,13 +402,13 @@ function YYLex return Token is
 
 procedure ACTION_ECHO is
 begin
-    text_io.put( temp_action_file, yytext(1..YYLength) );
+    Put (temp_action_file, YYText (1 .. YYLength));
 end ACTION_ECHO;
 
 procedure MARK_END_OF_PROLOG is
 begin
-     text_io.put( temp_action_file, "%%%% end of prolog" );
-     text_io.new_line( temp_action_file );
+     Put (temp_action_file, "%%%% end of prolog");
+     New_Line (temp_action_file);
 end MARK_END_OF_PROLOG;
 
 procedure PUT_BACK_STRING(str : vstring; start : integer) is
@@ -434,10 +439,10 @@ begin
     end if;
 -- this tracing code allows easy tracing of aflex runs
 if (trace) then
-text_io.new_line(Standard_Error);
-text_io.put(Standard_Error, "toktype = :" );
-text_io.put(Standard_Error, Token'image(toktype));
-text_io.put_line(Standard_Error, ":" );
+   New_Line (Standard_Error);
+   Put (Standard_Error, "toktype = :");
+   Put (Standard_Error, Token'Image (toktype));
+   Put_line (Standard_Error, ":");
 end if;
 
     if ( toktype = End_Of_Input ) then
@@ -457,71 +462,73 @@ end if;
 
     if ( trace ) then
 	if ( beglin ) then
-	    int_io.put( Standard_Error, num_rules + 1 );
-	    text_io.put( Standard_Error, ASCII.HT );
-	    beglin := false;
+	    Put (Standard_Error, Num_Rules + 1);
+	    Put (Standard_Error, ASCII.HT);
+	    Beglin := False;
     	end if;
 
 	case toktype is
 	    when '<' | '>'|'^'|'$'|'"'|'['|']'|'{'|'}'|'|'|'('|
     	    	 ')'|'-'|'/'|'?'|'.'|'*'|'+'|',' =>
-		text_io.put( Standard_Error, Token'image(toktype) );
+		Put (Standard_Error, Token'Image (Toktype));
 
 	    when NEWLINE =>
-		text_io.new_line(Standard_Error);
-		if ( sectnum = 2 ) then
+		New_Line (Standard_Error);
+		if sectnum = 2 then
 		    beglin := true;
     	    	end if;
 
 	    when SCDECL =>
-		text_io.put( Standard_Error, "%s" );
+		Put (Standard_Error, "%s");
 
 	    when XSCDECL =>
-   		text_io.put( Standard_Error, "%x" );
+   		Put (Standard_Error, "%x");
 
 	    when WHITESPACE =>
-       		text_io.put( Standard_Error, " " );
+       		Put (Standard_Error, " ");
 
 	    when SECTEND =>
-       		text_io.put_line( Standard_Error, "%%" );
+       		Put_Line (Standard_Error, "%%");
 
 		-- we set beglin to be true so we'll start
 		-- writing out numbers as we echo rules.  aflexscan() has
 		-- already assigned sectnum
 
-		if ( sectnum = 2 ) then
+		if sectnum = 2 then
 		    beglin := true;
     	    	end if;
 
 	    when NAME =>
-		text_io.put( Standard_Error, ''' );
-		text_io.put( Standard_Error, YYText);
-		text_io.put( Standard_Error, ''' );
+		Put (Standard_Error, ''');
+		Put (Standard_Error, YYText);
+		Put (Standard_Error, ''');
 
 	    when CHAR =>
 	    	if ( (yylval < CHARACTER'POS(' ')) or
-		     (yylval = CHARACTER'POS(ASCII.DEL)) ) then
-		    text_io.put( Standard_Error, '\' );
-		    int_io.put( Standard_Error, yylval );
-    		    text_io.put( Standard_Error, '\' );
+		     (yylval = CHARACTER'POS(ASCII.DEL)) )
+                then
+		    Put (Standard_Error, '\');
+		    Put (Standard_Error, YYLVal);
+    		    Put (Standard_Error, '\');
+
 		else
-		    text_io.put( Standard_Error, Token'image(toktype) );
+		    Put (Standard_Error, Token'Image (toktype));
     	    	end if;
 
 	    when NUMBER =>
-    	    	int_io.put( Standard_Error, yylval );
+    	    	Put (Standard_Error, YYLVal);
 
 	    when PREVCCL =>
-		text_io.put( Standard_Error, '[' );
-   	    	int_io.put( Standard_Error, yylval );
-		text_io.put( Standard_Error, ']' );
+		Put (Standard_Error, '[');
+   	    	Put (Standard_Error, YYLVal);
+		Put (Standard_Error, ']');
 
     	    when End_Of_Input =>
-    	    	text_io.put( Standard_Error, "End Marker" );
+    	    	Put (Standard_Error, "End Marker");
 
 	    when others =>
-	    	text_io.put( Standard_Error, "Something weird:" );
-		text_io.put_line( Standard_Error, Token'image(toktype));
+	    	Put (Standard_Error, "Something weird:");
+		Put_Line (Standard_Error, Token'Image (toktype));
     	end case;
     end if;
 

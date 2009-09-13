@@ -21,8 +21,10 @@
 -- DESCRIPTION implements only a simple symbol table using open hashing
 -- NOTES could be faster, but it isn't used much
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/symB.a,v 1.6 90/01/12 15:20:39 self Exp Locker: self $
+with Ada.Integer_Text_IO;
+with Ada.Text_IO;
 
-with MISC, NFA, TEXT_IO, INT_IO;
+with MISC, NFA;
 
 package body SYM is
 
@@ -35,7 +37,7 @@ package body SYM is
                    TABLE        : in out HASH_TABLE;
                    TABLE_SIZE   : in INTEGER;
                    RESULT       : out BOOLEAN) is
-    HASH_VAL             : INTEGER := HASHFUNCT(SYM, TABLE_SIZE);
+    HASH_VAL             : constant INTEGER := HASHFUNCT(SYM, TABLE_SIZE);
     SYM_ENTRY            : HASH_LINK := TABLE(HASH_VAL);
     NEW_ENTRY, SUCCESSOR : HASH_LINK;
   begin
@@ -172,13 +174,17 @@ package body SYM is
   -- actually, this is no longer the case.  The default start-condition
   -- is now called "INITIAL".  But we keep the following for the sake
   -- of future robustness.
+
+      use Ada.Integer_Text_IO;
+      use Ada.Text_IO;
+
     RESULT : BOOLEAN;
   begin
     if (STR /= VSTR("0")) then
       TSTRING.PUT(DEF_FILE, STR);
-      TEXT_IO.PUT(DEF_FILE, " : constant := ");
-      INT_IO.PUT(DEF_FILE, LASTSC, 1);
-      TEXT_IO.PUT_LINE(DEF_FILE, ";");
+      PUT(DEF_FILE, " : constant := ");
+      PUT(DEF_FILE, LASTSC, 1);
+      PUT_LINE(DEF_FILE, ";");
     end if;
 
     LASTSC := LASTSC + 1;

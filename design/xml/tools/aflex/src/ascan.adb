@@ -1,10 +1,15 @@
-with misc_defs, misc, sym, int_io;
+with Ada.Integer_Text_IO;
+with Ada.Text_IO;
+
+with misc_defs, misc, sym;
 with tstring;
 use misc_defs, tstring;
 with Unicode;
 with ascan.DFA; use ascan.DFA;
 with ascan.IO; use ascan.IO;
 package body ascan is
+   use Ada.Integer_Text_IO;
+   use Ada.Text_IO;
    use Parser.Tokens;
    use Unicode;
 
@@ -20,13 +25,13 @@ function YYLex return Token is
 
 procedure ACTION_ECHO is
 begin
-    text_io.put( temp_action_file, yytext(1..YYLength) );
+    Put (temp_action_file, YYText (1 .. YYLength));
 end ACTION_ECHO;
 
 procedure MARK_END_OF_PROLOG is
 begin
-     text_io.put( temp_action_file, "%%%% end of prolog" );
-     text_io.new_line( temp_action_file );
+     Put (temp_action_file, "%%%% end of prolog");
+     New_Line (temp_action_file);
 end MARK_END_OF_PROLOG;
 
 procedure PUT_BACK_STRING(str : vstring; start : integer) is
@@ -425,10 +430,10 @@ yy_chk : constant array(0..950) of short :=
 
 procedure ECHO is
 begin
-   if (Text_IO.is_open(user_output_file)) then
-     Text_IO.Put( user_output_file, yytext );
+   if Ada.Text_IO.Is_Open (User_Output_File) then
+     Ada.Text_IO.Put (User_Output_File, YYText);
    else
-     Text_IO.Put( yytext );
+     Ada.Text_IO.Put (yytext);
    end if;
 end ECHO;
 pragma Inline (ECHO);
@@ -499,7 +504,7 @@ end yy_get_previous_state;
 
 procedure yyrestart( input_file : file_type ) is
 begin
-   open_input(Text_IO.name(input_file));
+   Open_Input (Ada.Text_IO.Name (Input_File));
 end yyrestart;
 pragma Inline (yyrestart);
 
@@ -576,9 +581,9 @@ end if;
             YY_USER_ACTION;
 
         if aflex_debug then  -- output acceptance info. for (-d) debug mode
-            text_io.put( Standard_Error, "--accepting rule #" );
-            text_io.put( Standard_Error, INTEGER'IMAGE(yy_act) );
-            text_io.put_line( Standard_Error, "(""" & yytext & """)");
+            ada.text_io.put( Standard_Error, "--accepting rule #" );
+            ada.text_io.put( Standard_Error, INTEGER'IMAGE(yy_act) );
+            ada.text_io.put_line( Standard_Error, "(""" & yytext & """)");
         end if;
 
 
@@ -631,13 +636,13 @@ when 7 =>
 when 8 => 
 --# line 63 "ascan.l"
 
-			text_io.put( Standard_Error, "old-style lex command at line " );
-			int_io.put( Standard_Error, linenum );
-			text_io.put( Standard_Error, "ignored:" );
-			text_io.new_line( Standard_Error );
-			text_io.put( Standard_Error, ASCII.HT );
-			text_io.put( Standard_Error, yytext(1..YYLength) );
-			linenum := linenum + 1;
+			Put (Standard_Error, "old-style lex command at line ");
+			Put (Standard_Error, Linenum);
+			Put (Standard_Error, "ignored:");
+			New_Line (Standard_Error );
+			Put (Standard_Error, ASCII.HT );
+			Put (Standard_Error, YYText (1 .. YYLength));
+			Linenum := Linenum + 1;
 			
 
 when 9 => 
@@ -1085,7 +1090,7 @@ when 71 =>
 			linenum := linenum + 1;
 			ACTION_ECHO;
 			if ( bracelevel = 0 ) then
-			    text_io.new_line ( temp_action_file );
+			    New_Line (Temp_Action_File);
 			    ENTER(SECT2);
 	                end if;
 			
@@ -1203,9 +1208,9 @@ YY_END_OF_BUFFER + ACTION_STRING + 1 =>
                         when others => null;
                         end case; -- case yy_get_next_buffer()
                 when others =>
-                    text_io.put( "action # " );
-                    text_io.put( INTEGER'IMAGE(yy_act) );
-                    text_io.new_line;
+                    ada.text_io.put( "action # " );
+                    ada.text_io.put( INTEGER'IMAGE(yy_act) );
+                    ada.text_io.new_line;
                     raise AFLEX_INTERNAL_ERROR;
             end case; -- case (yy_act)
         end loop; -- end of loop waiting for end of file
@@ -1225,10 +1230,10 @@ begin
     end if;
 -- this tracing code allows easy tracing of aflex runs
 if (trace) then
-text_io.new_line(Standard_Error);
-text_io.put(Standard_Error, "toktype = :" );
-text_io.put(Standard_Error, Token'image(toktype));
-text_io.put_line(Standard_Error, ":" );
+   New_Line (Standard_Error);
+   Put (Standard_Error, "toktype = :");
+   Put (Standard_Error, Token'Image (toktype));
+   Put_line (Standard_Error, ":");
 end if;
 
     if ( toktype = End_Of_Input ) then
@@ -1248,71 +1253,73 @@ end if;
 
     if ( trace ) then
 	if ( beglin ) then
-	    int_io.put( Standard_Error, num_rules + 1 );
-	    text_io.put( Standard_Error, ASCII.HT );
-	    beglin := false;
+	    Put (Standard_Error, Num_Rules + 1);
+	    Put (Standard_Error, ASCII.HT);
+	    Beglin := False;
     	end if;
 
 	case toktype is
 	    when '<' | '>'|'^'|'$'|'"'|'['|']'|'{'|'}'|'|'|'('|
     	    	 ')'|'-'|'/'|'?'|'.'|'*'|'+'|',' =>
-		text_io.put( Standard_Error, Token'image(toktype) );
+		Put (Standard_Error, Token'Image (Toktype));
 
 	    when NEWLINE =>
-		text_io.new_line(Standard_Error);
-		if ( sectnum = 2 ) then
+		New_Line (Standard_Error);
+		if sectnum = 2 then
 		    beglin := true;
     	    	end if;
 
 	    when SCDECL =>
-		text_io.put( Standard_Error, "%s" );
+		Put (Standard_Error, "%s");
 
 	    when XSCDECL =>
-   		text_io.put( Standard_Error, "%x" );
+   		Put (Standard_Error, "%x");
 
 	    when WHITESPACE =>
-       		text_io.put( Standard_Error, " " );
+       		Put (Standard_Error, " ");
 
 	    when SECTEND =>
-       		text_io.put_line( Standard_Error, "%%" );
+       		Put_Line (Standard_Error, "%%");
 
 		-- we set beglin to be true so we'll start
 		-- writing out numbers as we echo rules.  aflexscan() has
 		-- already assigned sectnum
 
-		if ( sectnum = 2 ) then
+		if sectnum = 2 then
 		    beglin := true;
     	    	end if;
 
 	    when NAME =>
-		text_io.put( Standard_Error, ''' );
-		text_io.put( Standard_Error, YYText);
-		text_io.put( Standard_Error, ''' );
+		Put (Standard_Error, ''');
+		Put (Standard_Error, YYText);
+		Put (Standard_Error, ''');
 
 	    when CHAR =>
 	    	if ( (yylval < CHARACTER'POS(' ')) or
-		     (yylval = CHARACTER'POS(ASCII.DEL)) ) then
-		    text_io.put( Standard_Error, '\' );
-		    int_io.put( Standard_Error, yylval );
-    		    text_io.put( Standard_Error, '\' );
+		     (yylval = CHARACTER'POS(ASCII.DEL)) )
+                then
+		    Put (Standard_Error, '\');
+		    Put (Standard_Error, YYLVal);
+    		    Put (Standard_Error, '\');
+
 		else
-		    text_io.put( Standard_Error, Token'image(toktype) );
+		    Put (Standard_Error, Token'Image (toktype));
     	    	end if;
 
 	    when NUMBER =>
-    	    	int_io.put( Standard_Error, yylval );
+    	    	Put (Standard_Error, YYLVal);
 
 	    when PREVCCL =>
-		text_io.put( Standard_Error, '[' );
-   	    	int_io.put( Standard_Error, yylval );
-		text_io.put( Standard_Error, ']' );
+		Put (Standard_Error, '[');
+   	    	Put (Standard_Error, YYLVal);
+		Put (Standard_Error, ']');
 
     	    when End_Of_Input =>
-    	    	text_io.put( Standard_Error, "End Marker" );
+    	    	Put (Standard_Error, "End Marker");
 
 	    when others =>
-	    	text_io.put( Standard_Error, "Something weird:" );
-		text_io.put_line( Standard_Error, Token'image(toktype));
+	    	Put (Standard_Error, "Something weird:");
+		Put_Line (Standard_Error, Token'Image (toktype));
     	end case;
     end if;
 

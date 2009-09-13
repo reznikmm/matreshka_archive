@@ -45,12 +45,12 @@ goal            :  initlex sect1 sect1end sect2 initforrule
 			end loop;
 
 			if ( spprdflt ) then
-			    text_io.put(temp_action_file,
-					"raise AFLEX_SCANNER_JAMMED;");
+			    Put
+                             (Temp_Action_File, "raise AFLEX_SCANNER_JAMMED;");
 			else
-			    text_io.put( temp_action_file, "ECHO" );
+			    Put (Temp_Action_File, "ECHO");
 
-			text_io.put_line( temp_action_file, ";" );
+                            Put_Line (Temp_Action_File, ";");
 			end if;
 			}
 		;
@@ -131,9 +131,9 @@ aflexrule        :  scon '^' re eol
 			    bol_needed := true;
 
 			    if ( performance_report ) then
-				text_io.put( Standard_Error,
+				Put (Standard_Error,
 			"'^' operator results in sub-optimal performance");
-			        text_io.new_line(Standard_Error);
+			        New_Line (Standard_Error);
     	    	    	    end if;
 			end if;
 			}
@@ -168,9 +168,9 @@ aflexrule        :  scon '^' re eol
 			    bol_needed := true;
 
 			    if ( performance_report ) then
-				text_io.put( Standard_Error,
+				Put (Standard_Error,
 			"'^' operator results in sub-optimal performance");
-			        text_io.new_line(Standard_Error);
+			        New_Line (Standard_Error);
 			    end if;
 			end if;
     	    	    	}
@@ -209,8 +209,8 @@ namelist2       :  namelist2 ',' NAME
                         {
 			scnum := sym.sclookup( nmstr );
 			if (scnum = 0 ) then
-		            text_io.put( Standard_Error,
-					 "undeclared start condition ");
+		            Put
+                             (Standard_Error, "undeclared start condition ");
 		            tstring.put( Standard_Error, nmstr );
 			    Main_Body.Aflex_End (1);
 
@@ -224,8 +224,8 @@ namelist2       :  namelist2 ',' NAME
 			{
 			scnum := sym.sclookup( nmstr );
 			if (scnum = 0 ) then
-		            text_io.put( Standard_Error,
-					"undeclared start condition ");
+		            Put
+                             (Standard_Error, "undeclared start condition ");
 		            tstring.put( Standard_Error,	 nmstr );
 			    Main_Body.Aflex_End (1);
 
@@ -305,12 +305,12 @@ re              :  re '|' series
 			    -- erroneously.
 
 			    	if ( (not varlength) or  headcnt /= 0 ) then
-				     text_io.put( Standard_Error,
-                              "alex: warning - trailing context rule at line");
-                                     int_io.put(Standard_Error, linenum);
-				     text_io.put( Standard_Error,
+				     Put (Standard_Error,
+                              "aflex: warning - trailing context rule at line");
+                                     Put (Standard_Error, Linenum);
+				     Put (Standard_Error,
                            "made variable because of preceding '|' action" );
-                                     int_io.put(Standard_Error, linenum);
+                                     Put (Standard_Error, Linenum);
     	    	    	    	end if;
 
 			    -- mark as variable
@@ -601,14 +601,18 @@ string		:  string CHAR
   procedure YYParse;
   def_rule:integer;
 ##
-with Text_IO;
+with Ada.Integer_Text_IO;
+with Ada.Text_IO;
 
 with Ascan;
 with NFA, ccl, misc, misc_defs, sym, ecs;
-with tstring, int_io, main_body;
+with tstring, main_body;
 with Unicode;
 
 ##
+
+   use Ada.Integer_Text_IO;
+   use Ada.Text_IO;
 
    use Ascan;
    use Unicode;
@@ -616,26 +620,26 @@ with Unicode;
 -- build_eof_action - build the "<<EOF>>" action for the active start
 --                    conditions
 
-use text_io, misc_defs;
+use misc_defs;
 procedure build_eof_action is
 begin
-    text_io.put( temp_action_file, "when " );
+    Put (Temp_Action_File, "when ");
     for i in 1..actvp loop
 	if ( sceof(actvsc(i)) ) then
-	    text_io.put( Standard_Error,
-		"multiple <<EOF>> rules for start condition ");
+	    Put
+             (Standard_Error, "multiple <<EOF>> rules for start condition ");
 	    tstring.put( Standard_Error, scname(actvsc(i)));
 	    Main_Body.Aflex_End (1);
 
 	else
 	    sceof(actvsc(i)) := true;
-	    text_io.put( temp_action_file, "YY_END_OF_BUFFER +" );
+	    Put (Temp_Action_File, "YY_END_OF_BUFFER +");
 	    tstring.put( temp_action_file,  scname(actvsc(i)) );
-	    text_io.put_line( temp_action_file, " + 1 " );
+	    Put_Line (Temp_Action_File, " + 1 ");
 	    if (i /= actvp) then
-	        text_io.put_line( temp_action_file, " |" );
+	        Put_Line (Temp_Action_File, " |");
 	    else
-	        text_io.put_line( temp_action_file, " =>" );
+	        Put_Line (Temp_Action_File, " =>");
 	    end if;
         end if;
     end loop;

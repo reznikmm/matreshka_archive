@@ -21,17 +21,21 @@
 -- DESCRIPTION
 -- NOTES does actual generation (writing) of output aflex scanners
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/genB.a,v 1.25 1992/10/02 23:08:41 self Exp self $
+with Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded.Text_IO;
+with Ada.Text_IO;
 
-with MISC_DEFS, TEXT_IO, MISC, INT_IO, TSTRING;
-with Ascan, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER; use MISC_DEFS, TEXT_IO,
-  TSTRING, EXTERNAL_FILE_MANAGER;
+with MISC_DEFS, MISC, TSTRING;
+with Ascan, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
+use MISC_DEFS, TSTRING, EXTERNAL_FILE_MANAGER;
 with Parser.Tokens; use Parser.Tokens;
 
 package body Gen is
 
+   use Ada.Integer_Text_IO;
    use Ada.Strings.Unbounded;
    use Ada.Strings.Unbounded.Text_IO;
+   use Ada.Text_IO;
 
   INDENT_LEVEL : INTEGER := 0;  -- each level is 4 spaces
 
@@ -59,12 +63,12 @@ package body Gen is
     I : INTEGER := INDENT_LEVEL*4;
   begin
     while (I >= 8) loop
-      TEXT_IO.PUT(ASCII.HT);
+      PUT(ASCII.HT);
       I := I - 8;
     end loop;
 
     while (I > 0) loop
-      TEXT_IO.PUT(' ');
+      PUT(' ');
       I := I - 1;
     end loop;
   end DO_INDENT;
@@ -110,7 +114,7 @@ package body Gen is
 
     INDENT_PUTS("yy_current_state := yy_last_accepting_state;");
     INDENT_PUTS("goto next_action;");
-    TEXT_IO.NEW_LINE;
+    NEW_LINE;
 
     SET_INDENT(0);
   end GEN_BT_ACTION;
@@ -121,9 +125,9 @@ package body Gen is
     I       : INTEGER;
     NUMROWS : INTEGER;
   begin
-    TEXT_IO.PUT("yy_ec : constant array(CHARACTER'FIRST..");
-    TEXT_IO.PUT_LINE("CHARACTER'LAST) of short :=");
-    TEXT_IO.PUT_LINE("    (   0,");
+    PUT("yy_ec : constant array(CHARACTER'FIRST..");
+    PUT_LINE("CHARACTER'LAST) of short :=");
+    PUT_LINE("    (   0,");
 
     for CHAR_COUNT in 1 .. CSIZE loop
       if (CASEINS and ((CHAR_COUNT >= CHARACTER'POS('A')) and (CHAR_COUNT <=
@@ -138,23 +142,23 @@ package body Gen is
     MISC.DATAEND;
 
     if (TRACE) then
-      TEXT_IO.NEW_LINE(STANDARD_ERROR);
-      TEXT_IO.NEW_LINE(STANDARD_ERROR);
-      TEXT_IO.PUT(STANDARD_ERROR, "Equivalence Classes:");
-      TEXT_IO.NEW_LINE(STANDARD_ERROR);
-      TEXT_IO.NEW_LINE(STANDARD_ERROR);
+      NEW_LINE(STANDARD_ERROR);
+      NEW_LINE(STANDARD_ERROR);
+      PUT(STANDARD_ERROR, "Equivalence Classes:");
+      NEW_LINE(STANDARD_ERROR);
+      NEW_LINE(STANDARD_ERROR);
       NUMROWS := (CSIZE + 1)/8;
 
       for J in 1 .. NUMROWS loop
         I := J;
         while (I <= CSIZE) loop
           TSTRING.PUT(STANDARD_ERROR, MISC.READABLE_FORM(CHARACTER'VAL(I)));
-          TEXT_IO.PUT(STANDARD_ERROR, " = ");
-          INT_IO.PUT(STANDARD_ERROR, ECGROUP(I), 1);
-          TEXT_IO.PUT(STANDARD_ERROR, "   ");
+          PUT(STANDARD_ERROR, " = ");
+          PUT(STANDARD_ERROR, ECGROUP(I), 1);
+          PUT(STANDARD_ERROR, "   ");
           I := I + NUMROWS;
         end loop;
-        TEXT_IO.NEW_LINE(STANDARD_ERROR);
+        NEW_LINE(STANDARD_ERROR);
       end loop;
     end if;
   end GENECS;
@@ -169,30 +173,30 @@ package body Gen is
   -- genftbl - generates full transition table
 
   procedure GENFTBL is
-    END_OF_BUFFER_ACTION : INTEGER := NUM_RULES + 1;
+    END_OF_BUFFER_ACTION : constant INTEGER := NUM_RULES + 1;
     -- *everything* is done in terms of arrays starting at 1, so provide
     -- a null entry for the zero element of all C arrays
   begin
-    TEXT_IO.PUT("yy_accept : constant array(0..");
-    INT_IO.PUT(LASTDFA, 1);
-    TEXT_IO.PUT_LINE(") of short :=");
-    TEXT_IO.PUT_LINE("    (   0,");
+    PUT("yy_accept : constant array(0..");
+    PUT(LASTDFA, 1);
+    PUT_LINE(") of short :=");
+    PUT_LINE("    (   0,");
 
     DFAACC(END_OF_BUFFER_STATE).DFAACC_STATE := END_OF_BUFFER_ACTION;
 
     for I in 1 .. LASTDFA loop
       declare
-        ANUM : INTEGER := DFAACC(I).DFAACC_STATE;
+        ANUM : constant INTEGER := DFAACC(I).DFAACC_STATE;
       begin
         MISC.MKDATA(ANUM);
 
         if (TRACE and (ANUM /= 0)) then
-          TEXT_IO.PUT(STANDARD_ERROR, "state # ");
-          INT_IO.PUT(STANDARD_ERROR, I, 1);
-          TEXT_IO.PUT(STANDARD_ERROR, " accepts: [");
-          INT_IO.PUT(STANDARD_ERROR, ANUM, 1);
-          TEXT_IO.PUT(STANDARD_ERROR, "]");
-          TEXT_IO.NEW_LINE(STANDARD_ERROR);
+          PUT(STANDARD_ERROR, "state # ");
+          PUT(STANDARD_ERROR, I, 1);
+          PUT(STANDARD_ERROR, " accepts: [");
+          PUT(STANDARD_ERROR, ANUM, 1);
+          PUT(STANDARD_ERROR, "]");
+          NEW_LINE(STANDARD_ERROR);
         end if;
       end;
     end loop;
@@ -239,9 +243,9 @@ package body Gen is
       DO_INDENT;
 
       -- lastdfa + 2 is the beginning of the templates
-      TEXT_IO.PUT("if ( yy_current_state >= ");
-      INT_IO.PUT(LASTDFA + 2, 1);
-      TEXT_IO.PUT_LINE(" ) then");
+      PUT("if ( yy_current_state >= ");
+      PUT(LASTDFA + 2, 1);
+      PUT_LINE(" ) then");
 
       INDENT_UP;
       INDENT_PUTS("yy_c := yy_meta(yy_c);");
@@ -279,7 +283,7 @@ package body Gen is
         GEN_BACKTRACKING;
       end if;
 
-      TEXT_IO.NEW_LINE;
+      NEW_LINE;
     else
 
       -- compressed
@@ -292,22 +296,22 @@ package body Gen is
       INDENT_PUTS("yy_cp := yy_cp + 1;");
 
       if (INTERACTIVE) then
-        TEXT_IO.PUT("if ( yy_base(yy_current_state) = ");
-        INT_IO.PUT(JAMBASE, 1);
+        PUT("if ( yy_base(yy_current_state) = ");
+        PUT(JAMBASE, 1);
       else
-        TEXT_IO.PUT("if ( yy_current_state = ");
-        INT_IO.PUT(JAMSTATE, 1);
+        PUT("if ( yy_current_state = ");
+        PUT(JAMSTATE, 1);
       end if;
 
-      TEXT_IO.PUT_LINE(" ) then");
-      TEXT_IO.PUT_LINE("    exit;");
-      TEXT_IO.PUT_LINE("end if;");
+      PUT_LINE(" ) then");
+      PUT_LINE("    exit;");
+      PUT_LINE("end if;");
 
       INDENT_DOWN;
 
       DO_INDENT;
 
-      TEXT_IO.PUT_LINE("end loop;");
+      PUT_LINE("end loop;");
 
       if (not INTERACTIVE) then
         INDENT_PUTS("yy_cp := yy_last_accepting_cpos;");
@@ -350,19 +354,12 @@ package body Gen is
   -- gentabs - generate data statements for the transition tables
 
   procedure GENTABS is
-    I, J, K, NACC, TOTAL_STATES : INTEGER;
-    ACCSET, ACC_ARRAY           : INT_PTR;
-    ACCNUM                      : INTEGER;
-    END_OF_BUFFER_ACTION        : INTEGER := NUM_RULES + 1;
+    I, K, TOTAL_STATES   : INTEGER;
+    ACC_ARRAY            : INT_PTR;
+    END_OF_BUFFER_ACTION : constant INTEGER := NUM_RULES + 1;
     -- *everything* is done in terms of arrays starting at 1, so provide
     -- a null entry for the zero element of all C arrays
 
-    C_LONG_DECL                 : STRING(1 .. 44) :=
-      "static const long int %s[%d] =\n    {   0,\n";
-    C_SHORT_DECL                : STRING(1 .. 45) :=
-      "static const short int %s[%d] =\n    {   0,\n";
-    C_CHAR_DECL                 : STRING(1 .. 40) :=
-      "static const char %s[%d] =\n    {   0,\n";
   begin
     ACC_ARRAY := ALLOCATE_INTEGER_ARRAY(CURRENT_MAX_DFAS);
     NUMMT := 0;
@@ -390,20 +387,20 @@ package body Gen is
     -- beginning at 0 and for "jam" state
     K := LASTDFA + 2;
 
-    TEXT_IO.PUT("yy_accept : constant array(0..");
-    INT_IO.PUT(K - 1, 1);
-    TEXT_IO.PUT_LINE(") of short :=");
-    TEXT_IO.PUT_LINE("    (   0,");
+    PUT("yy_accept : constant array(0..");
+    PUT(K - 1, 1);
+    PUT_LINE(") of short :=");
+    PUT_LINE("    (   0,");
     for CNT in 1 .. LASTDFA loop
       MISC.MKDATA(ACC_ARRAY(CNT));
 
       if (TRACE and (ACC_ARRAY(CNT) /= 0)) then
-        TEXT_IO.PUT(STANDARD_ERROR, "state # ");
-        INT_IO.PUT(STANDARD_ERROR, CNT, 1);
-        TEXT_IO.PUT(STANDARD_ERROR, " accepts: [");
-        INT_IO.PUT(STANDARD_ERROR, ACC_ARRAY(CNT), 1);
-        TEXT_IO.PUT(STANDARD_ERROR, ']');
-        TEXT_IO.NEW_LINE(STANDARD_ERROR);
+        PUT(STANDARD_ERROR, "state # ");
+        PUT(STANDARD_ERROR, CNT, 1);
+        PUT(STANDARD_ERROR, " accepts: [");
+        PUT(STANDARD_ERROR, ACC_ARRAY(CNT), 1);
+        PUT(STANDARD_ERROR, ']');
+        NEW_LINE(STANDARD_ERROR);
       end if;
     end loop;
 
@@ -420,21 +417,21 @@ package body Gen is
 
       -- write out meta-equivalence classes (used to index templates with)
       if (TRACE) then
-        TEXT_IO.NEW_LINE(STANDARD_ERROR);
-        TEXT_IO.NEW_LINE(STANDARD_ERROR);
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, "Meta-Equivalence Classes:");
+        NEW_LINE(STANDARD_ERROR);
+        NEW_LINE(STANDARD_ERROR);
+        PUT_LINE(STANDARD_ERROR, "Meta-Equivalence Classes:");
       end if;
 
-      TEXT_IO.PUT("yy_meta : constant array(0..");
-      INT_IO.PUT(NUMECS, 1);
-      TEXT_IO.PUT_LINE(") of short :=");
-      TEXT_IO.PUT_LINE("    (   0,");
+      PUT("yy_meta : constant array(0..");
+      PUT(NUMECS, 1);
+      PUT_LINE(") of short :=");
+      PUT_LINE("    (   0,");
       for CNT in 1 .. NUMECS loop
         if (TRACE) then
-          INT_IO.PUT(STANDARD_ERROR, CNT, 1);
-          TEXT_IO.PUT(STANDARD_ERROR, " = ");
-          INT_IO.PUT(STANDARD_ERROR, abs(TECBCK(CNT)), 1);
-          TEXT_IO.NEW_LINE(STANDARD_ERROR);
+          PUT(STANDARD_ERROR, CNT, 1);
+          PUT(STANDARD_ERROR, " = ");
+          PUT(STANDARD_ERROR, abs(TECBCK(CNT)), 1);
+          NEW_LINE(STANDARD_ERROR);
         end if;
         MISC.MKDATA(abs(TECBCK(CNT)));
       end loop;
@@ -444,18 +441,18 @@ package body Gen is
 
     TOTAL_STATES := LASTDFA + NUMTEMPS;
 
-    TEXT_IO.PUT("yy_base : constant array(0..");
-    INT_IO.PUT(TOTAL_STATES, 1);
+    PUT("yy_base : constant array(0..");
+    PUT(TOTAL_STATES, 1);
     if (TBLEND > MAX_SHORT) then
-      TEXT_IO.PUT_LINE(") of integer :=");
+      PUT_LINE(") of integer :=");
     else
-      TEXT_IO.PUT_LINE(") of short :=");
+      PUT_LINE(") of short :=");
     end if;
-    TEXT_IO.PUT_LINE("    (   0,");
+    PUT_LINE("    (   0,");
 
     for CNT in 1 .. LASTDFA loop
       declare
-        D : INTEGER := DEF(CNT);
+        D : constant INTEGER := DEF(CNT);
       begin
         if (BASE(CNT) = JAMSTATE_CONST) then
           BASE(CNT) := JAMBASE;
@@ -489,28 +486,28 @@ package body Gen is
 
     MISC.DATAEND;
 
-    TEXT_IO.PUT("yy_def : constant array(0..");
-    INT_IO.PUT(TOTAL_STATES, 1);
+    PUT("yy_def : constant array(0..");
+    PUT(TOTAL_STATES, 1);
     if (TBLEND > MAX_SHORT) then
-      TEXT_IO.PUT_LINE(") of integer :=");
+      PUT_LINE(") of integer :=");
     else
-      TEXT_IO.PUT_LINE(") of short :=");
+      PUT_LINE(") of short :=");
     end if;
-    TEXT_IO.PUT_LINE("    (   0,");
+    PUT_LINE("    (   0,");
 
     for CNT in 1 .. TOTAL_STATES loop
       MISC.MKDATA(DEF(CNT));
     end loop;
 
     MISC.DATAEND;
-    TEXT_IO.PUT("yy_nxt : constant array(0..");
-    INT_IO.PUT(TBLEND, 1);
+    PUT("yy_nxt : constant array(0..");
+    PUT(TBLEND, 1);
     if (LASTDFA > MAX_SHORT) then
-      TEXT_IO.PUT_LINE(") of integer :=");
+      PUT_LINE(") of integer :=");
     else
-      TEXT_IO.PUT_LINE(") of short :=");
+      PUT_LINE(") of short :=");
     end if;
-    TEXT_IO.PUT_LINE("    (   0,");
+    PUT_LINE("    (   0,");
 
     for CNT in 1 .. TBLEND loop
       if ((NXT(CNT) = 0) or (CHK(CNT) = 0)) then
@@ -523,14 +520,14 @@ package body Gen is
 
     MISC.DATAEND;
 
-    TEXT_IO.PUT("yy_chk : constant array(0..");
-    INT_IO.PUT(TBLEND, 1);
+    PUT("yy_chk : constant array(0..");
+    PUT(TBLEND, 1);
     if (LASTDFA > MAX_SHORT) then
-      TEXT_IO.PUT_LINE(") of integer :=");
+      PUT_LINE(") of integer :=");
     else
-      TEXT_IO.PUT_LINE(") of short :=");
+      PUT_LINE(") of short :=");
     end if;
-    TEXT_IO.PUT_LINE("    (   0,");
+    PUT_LINE("    (   0,");
 
     for CNT in 1 .. TBLEND loop
       if (CHK(CNT) = 0) then
@@ -552,7 +549,7 @@ package body Gen is
   procedure INDENT_PUTS(STR : in STRING) is
   begin
     DO_INDENT;
-    TEXT_IO.PUT_LINE(STR);
+    PUT_LINE(STR);
   end INDENT_PUTS;
 
   -- do_sect3_out - dumps section 3.
@@ -599,7 +596,6 @@ package body Gen is
 
   procedure MAKE_TABLES is
     DID_EOF_RULE      : BOOLEAN := FALSE;
-    TRANS_OFFSET_TYPE : STRING(1 .. 7);
     TOTAL_TABLE_SIZE  : INTEGER := TBLEND + NUMECS + 1;
     BUF               : VSTRING;
   begin
@@ -616,9 +612,9 @@ package body Gen is
     -- output YYLex code up to part about tables.
     end if;
 
-    TEXT_IO.PUT("YY_END_OF_BUFFER : constant := ");
-    INT_IO.PUT(NUM_RULES + 1, 1);
-    TEXT_IO.PUT_LINE(";");
+    PUT("YY_END_OF_BUFFER : constant := ");
+    PUT(NUM_RULES + 1, 1);
+    PUT_LINE(";");
 
     INDENT_PUTS("subtype yy_state_type is integer;");
     INDENT_PUTS("yy_current_state : yy_state_type;");
@@ -626,7 +622,7 @@ package body Gen is
     -- now output the constants for the various start conditions
     RESET(DEF_FILE, IN_FILE);
 
-    while (not TEXT_IO.END_OF_FILE(DEF_FILE)) loop
+    while (not END_OF_FILE(DEF_FILE)) loop
       TSTRING.GET_LINE(DEF_FILE, BUF);
       TSTRING.PUT_LINE(BUF);
     end loop;
@@ -679,18 +675,18 @@ package body Gen is
       if (not SCEOF(I)) then
         DO_INDENT;
         if (not DID_EOF_RULE) then
-          TEXT_IO.PUT("when ");
+          PUT("when ");
         else
-          TEXT_IO.PUT_LINE("|");
+          PUT_LINE("|");
         end if;
-        TEXT_IO.PUT("YY_END_OF_BUFFER + ");
+        PUT("YY_END_OF_BUFFER + ");
         TSTRING.PUT(SCNAME(I));
-        TEXT_IO.PUT(" + 1 ");
+        PUT(" + 1 ");
         DID_EOF_RULE := TRUE;
       end if;
     end loop;
     if (DID_EOF_RULE) then
-      TEXT_IO.PUT_LINE("=> ");
+      PUT_LINE("=> ");
     end if;
 
     if (DID_EOF_RULE) then

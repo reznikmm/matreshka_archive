@@ -20,13 +20,15 @@
 -- AUTHOR: John Self (UCI)
 -- DESCRIPTION converts non-deterministic finite automatons to finite ones.
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/dfaB.a,v 1.18 90/01/12 15:19:48 self Exp Locker: self $
+with Ada.Integer_Text_IO;
 
-with DFA, INT_IO, MISC, TBLCMP, CCL;
+with DFA, MISC, TBLCMP, CCL;
 with ECS, NFA, TSTRING, GEN, SKELETON_MANAGER;
 with Unicode;
 
 package body DFA is
 
+   use Ada.Integer_Text_IO;
    use TSTRING;
    use Unicode;
 
@@ -48,17 +50,17 @@ package body DFA is
       NUM_BACKTRACKING := NUM_BACKTRACKING + 1;
 
       if (BACKTRACK_REPORT) then
-        TEXT_IO.PUT(BACKTRACK_FILE, "State #");
-        INT_IO.PUT(BACKTRACK_FILE, DS, 1);
-        TEXT_IO.PUT(BACKTRACK_FILE, "is non-accepting -");
-        TEXT_IO.NEW_LINE(BACKTRACK_FILE);
+        PUT(BACKTRACK_FILE, "State #");
+        PUT(BACKTRACK_FILE, DS, 1);
+        PUT(BACKTRACK_FILE, "is non-accepting -");
+        NEW_LINE(BACKTRACK_FILE);
 
         -- identify the state
         DUMP_ASSOCIATED_RULES(BACKTRACK_FILE, DS);
 
         -- now identify it further using the out- and jam-transitions
         DUMP_TRANSITIONS(BACKTRACK_FILE, STATE);
-        TEXT_IO.NEW_LINE(BACKTRACK_FILE);
+        NEW_LINE(BACKTRACK_FILE);
       end if;
     end if;
   end CHECK_FOR_BACKTRACKING;
@@ -84,8 +86,8 @@ package body DFA is
                                    NUM_STATES : in INTEGER;
                                    ACCSET     : in INT_PTR;
                                    NACC       : in INTEGER) is
-    NS, AR              : INTEGER;
-    STATE_VAR, TYPE_VAR : STATE_ENUM;
+    NS, AR   : INTEGER;
+    TYPE_VAR : STATE_ENUM;
 
     use MISC;
   begin
@@ -107,10 +109,10 @@ package body DFA is
           -- an accepting number set is large.
           for J in 1 .. NACC loop
             if (CHECK_YY_TRAILING_HEAD_MASK(ACCSET(J)) /= 0) then
-              TEXT_IO.PUT(STANDARD_ERROR,
+              PUT(STANDARD_ERROR,
                 "aflex: Dangerous trailing context in rule at line ");
-              INT_IO.PUT(STANDARD_ERROR, RULE_LINENUM(AR), 1);
-              TEXT_IO.NEW_LINE(STANDARD_ERROR);
+              PUT(STANDARD_ERROR, RULE_LINENUM(AR), 1);
+              NEW_LINE(STANDARD_ERROR);
               return;
             end if;
           end loop;
@@ -158,18 +160,18 @@ package body DFA is
 
     MISC.BUBBLE(RULE_SET, NUM_ASSOCIATED_RULES);
 
-    TEXT_IO.PUT(F, " associated rules:");
+    PUT(F, " associated rules:");
 
     for I in 1 .. NUM_ASSOCIATED_RULES loop
       if (I mod 8 = 1) then
-        TEXT_IO.NEW_LINE(F);
+        NEW_LINE(F);
       end if;
 
-      TEXT_IO.PUT(F, ASCII.HT);
-      INT_IO.PUT(F, RULE_SET(I), 1);
+      PUT(F, ASCII.HT);
+      PUT(F, RULE_SET(I), 1);
     end loop;
 
-    TEXT_IO.NEW_LINE(F);
+    NEW_LINE(F);
   exception
     when STORAGE_ERROR =>
       Misc.Aflex_Fatal ("dynamic memory failure in dump_associated_rules()");
@@ -198,7 +200,7 @@ package body DFA is
       OUT_CHAR_SET(I) := (STATE(EC) /= 0);
     end loop;
 
-    TEXT_IO.PUT(F, " out-transitions: ");
+    PUT(F, " out-transitions: ");
 
     CCL.LIST_CHARACTER_SET(F, OUT_CHAR_SET);
 
@@ -207,12 +209,12 @@ package body DFA is
       OUT_CHAR_SET(I) := not OUT_CHAR_SET(I);
     end loop;
 
-    TEXT_IO.NEW_LINE(F);
-    TEXT_IO.PUT(F, "jam-transitions: EOF ");
+    NEW_LINE(F);
+    PUT(F, "jam-transitions: EOF ");
 
     CCL.LIST_CHARACTER_SET(F, OUT_CHAR_SET);
 
-    TEXT_IO.NEW_LINE(F);
+    NEW_LINE(F);
   end DUMP_TRANSITIONS;
 
 
@@ -441,11 +443,11 @@ package body DFA is
 
     if (TRACE) then
       NFA.DUMPNFA(SCSET(1));
-      TEXT_IO.NEW_LINE(STANDARD_ERROR);
-      TEXT_IO.NEW_LINE(STANDARD_ERROR);
-      TEXT_IO.PUT(STANDARD_ERROR, "DFA Dump:");
-      TEXT_IO.NEW_LINE(STANDARD_ERROR);
-      TEXT_IO.NEW_LINE(STANDARD_ERROR);
+      NEW_LINE(STANDARD_ERROR);
+      NEW_LINE(STANDARD_ERROR);
+      PUT(STANDARD_ERROR, "DFA Dump:");
+      NEW_LINE(STANDARD_ERROR);
+      NEW_LINE(STANDARD_ERROR);
     end if;
 
     TBLCMP.INITTBL;
@@ -468,13 +470,13 @@ package body DFA is
       end;
 
       NUM_NXT_STATES := 1;
-      TEXT_IO.PUT(FULL_TABLE_TEMP_FILE, "( ");
+      PUT(FULL_TABLE_TEMP_FILE, "( ");
       -- generate 0 entries for state #0
       for CNT in 0 .. NUMECS loop
         MISC.MK2DATA(FULL_TABLE_TEMP_FILE, 0);
       end loop;
 
-      TEXT_IO.PUT(FULL_TABLE_TEMP_FILE, " )");
+      PUT(FULL_TABLE_TEMP_FILE, " )");
       -- force extra blank line next dataflush()
       DATALINE := NUMDATALINES;
     end if;
@@ -534,9 +536,9 @@ package body DFA is
       DSIZE := DFASIZ(DS);
 
       if (TRACE) then
-        TEXT_IO.PUT(STANDARD_ERROR, "state # ");
-        INT_IO.PUT(STANDARD_ERROR, DS, 1);
-        TEXT_IO.PUT_LINE(STANDARD_ERROR, ":");
+        PUT(STANDARD_ERROR, "state # ");
+        PUT(STANDARD_ERROR, DS, 1);
+        PUT_LINE(STANDARD_ERROR, ":");
       end if;
 
       SYMPARTITION(DSET, DSIZE, SYMLIST, DUPLIST);
@@ -564,11 +566,11 @@ package body DFA is
             STATE(SYM) := NEWDS;
 
             if (TRACE) then
-              TEXT_IO.PUT(STANDARD_ERROR, ASCII.HT);
-              INT_IO.PUT(STANDARD_ERROR, SYM, 1);
-              TEXT_IO.PUT(STANDARD_ERROR, ASCII.HT);
-              INT_IO.PUT(STANDARD_ERROR, NEWDS, 1);
-              TEXT_IO.NEW_LINE(STANDARD_ERROR);
+              PUT(STANDARD_ERROR, ASCII.HT);
+              PUT(STANDARD_ERROR, SYM, 1);
+              PUT(STANDARD_ERROR, ASCII.HT);
+              PUT(STANDARD_ERROR, NEWDS, 1);
+              NEW_LINE(STANDARD_ERROR);
             end if;
 
             TARGPTR := TARGPTR + 1;
@@ -582,11 +584,11 @@ package body DFA is
             TARG := STATE(DUPLIST(SYM));
             STATE(SYM) := TARG;
             if (TRACE) then
-              TEXT_IO.PUT(STANDARD_ERROR, ASCII.HT);
-              INT_IO.PUT(STANDARD_ERROR, SYM, 1);
-              TEXT_IO.PUT(STANDARD_ERROR, ASCII.HT);
-              INT_IO.PUT(STANDARD_ERROR, TARG, 1);
-              TEXT_IO.NEW_LINE(STANDARD_ERROR);
+              PUT(STANDARD_ERROR, ASCII.HT);
+              PUT(STANDARD_ERROR, SYM, 1);
+              PUT(STANDARD_ERROR, ASCII.HT);
+              PUT(STANDARD_ERROR, TARG, 1);
+              NEW_LINE(STANDARD_ERROR);
             end if;
 
             -- update frequency count for destination state
@@ -624,9 +626,9 @@ package body DFA is
 
       if (FULLTBL) then
       -- supply array's 0-element
-        TEXT_IO.PUT(FULL_TABLE_TEMP_FILE, ",");
+        PUT(FULL_TABLE_TEMP_FILE, ",");
         MISC.DATAFLUSH(FULL_TABLE_TEMP_FILE);
-        TEXT_IO.PUT(FULL_TABLE_TEMP_FILE, "( ");
+        PUT(FULL_TABLE_TEMP_FILE, "( ");
         if (DS = END_OF_BUFFER_STATE) then
           MISC.MK2DATA(FULL_TABLE_TEMP_FILE,  -END_OF_BUFFER_STATE);
         else
@@ -642,7 +644,7 @@ package body DFA is
           end if;
         end loop;
 
-        TEXT_IO.PUT(FULL_TABLE_TEMP_FILE, " )");
+        PUT(FULL_TABLE_TEMP_FILE, " )");
         -- force extra blank line next dataflush()
         DATALINE := NUMDATALINES;
       else
@@ -669,10 +671,10 @@ package body DFA is
     end loop;
 
     if (FULLTBL) then
-      TEXT_IO.PUT("yy_nxt : constant array(0..");
-      INT_IO.PUT(NUM_NXT_STATES - 1, 1);
-      TEXT_IO.PUT_LINE(" , character'first..character'last) of short :=");
-      TEXT_IO.PUT_LINE("   (");
+      PUT("yy_nxt : constant array(0..");
+      PUT(NUM_NXT_STATES - 1, 1);
+      PUT_LINE(" , character'first..character'last) of short :=");
+      PUT_LINE("   (");
 
       RESET(FULL_TABLE_TEMP_FILE, IN_FILE);
       while (not END_OF_FILE(FULL_TABLE_TEMP_FILE)) loop
