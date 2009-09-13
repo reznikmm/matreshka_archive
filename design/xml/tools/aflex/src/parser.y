@@ -60,7 +60,7 @@ initlex         :
 			-- initialize for processing rules
 
        			-- create default DFA start condition
-			sym.scinstal( +tstring.vstr("INITIAL"), false );
+			sym.scinstal (+"INITIAL", False);
 			}
 		;
 
@@ -607,7 +607,7 @@ with Ada.Text_IO;
 
 with Ascan;
 with NFA, ccl, misc, misc_defs, sym, ecs;
-with tstring, main_body;
+with main_body;
 with Unicode;
 
 ##
@@ -620,10 +620,8 @@ with Unicode;
    use Ascan;
    use Unicode;
 
-   function "+" (Item : tstring.VSTRING) return Unbounded_String is
-   begin
-      return To_Unbounded_String (tstring.STR (Item));
-   end "+";
+   function "+" (Item : String) return Unbounded_String
+     renames To_Unbounded_String;
 
 -- build_eof_action - build the "<<EOF>>" action for the active start
 --                    conditions
@@ -667,5 +665,4 @@ begin
 null;
 end yyerror;
 
-use tstring;
 ##
