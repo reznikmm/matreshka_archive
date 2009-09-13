@@ -381,7 +381,7 @@ with Unicode;
 
 ##
     call_yylex : boolean := false;
-    function get_token return Token;
+    function YYLex return Token;
 ##
 ##
    use Unicode;
@@ -389,7 +389,7 @@ with Unicode;
 beglin : boolean := false;
 i, bracelevel: integer;
 
-function get_token return Token is
+function YYLex return Token is
     toktype : Token;
     didadef, indented_code : boolean;
     cclval : integer;
@@ -528,4 +528,4 @@ end if;
 
     return toktype;
 
-end get_token;
+end YYLex;

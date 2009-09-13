@@ -39,5 +39,5 @@ with Unicode;
 
 package ascan is
     call_yylex : boolean := false;
-    function get_token return Token;
+    function YYLex return Token;
 end ascan;

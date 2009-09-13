@@ -8,7 +8,7 @@ package ascan_IO renames ascan.IO;
 beglin : boolean := false;
 i, bracelevel: integer;
 
-function get_token return Token is
+function YYLex return Token is
     toktype : Token;
     didadef, indented_code : boolean;
     cclval : integer;
@@ -1315,5 +1315,5 @@ end if;
 
     return toktype;
 
-end get_token;
+end YYLex;
 end ascan;

@@ -600,12 +600,15 @@ string		:  string CHAR
   def_rule:integer;
 ##
 with Text_IO;
-with NFA, ccl, misc, misc_defs, sym, ecs, aflex_scanner;
-with tstring, int_io, main_body, external_file_manager;
-use aflex_scanner, external_file_manager;
+
+with Ascan;
+with NFA, ccl, misc, misc_defs, sym, ecs;
+with tstring, int_io, main_body;
 with Unicode;
 
 ##
+
+   use Ascan;
    use Unicode;
 
 -- build_eof_action - build the "<<EOF>>" action for the active start

@@ -1,7 +1,8 @@
 with Text_IO;
-with NFA, ccl, misc, misc_defs, sym, ecs, aflex_scanner;
-with tstring, int_io, main_body, external_file_manager;
-use aflex_scanner, external_file_manager;
+
+with Ascan;
+with NFA, ccl, misc, misc_defs, sym, ecs;
+with tstring, int_io, main_body;
 with Unicode;
 
 with Parser.Goto_Table;
@@ -15,6 +16,8 @@ package body Parser is
    package Parser_Goto renames Parser.Goto_Table;
    package Parser_Tokens renames Parser.Tokens;
    package Parser_Shift_Reduce  renames Parser.Shift_Reduce;
+
+   use Ascan;
    use Unicode;
 
 -- build_eof_action - build the "<<EOF>>" action for the active start

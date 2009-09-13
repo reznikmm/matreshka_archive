@@ -558,7 +558,7 @@ package body GEN is
     GARBAGE : TOKEN;
   begin
     Ascan.CALL_YYLEX := TRUE;
-    GARBAGE := Ascan.GET_TOKEN;
+    GARBAGE := Ascan.YYLex;
   end DO_SECT3_OUT;
 
   -- make_tables - generate transition tables
