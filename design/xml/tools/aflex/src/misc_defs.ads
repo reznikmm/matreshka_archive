@@ -308,7 +308,7 @@ package MISC_DEFS is
   type HASH_ENTRY is
     record
       PREV, NEXT : HASH_LINK;
-      NAME, STR_VAL : VSTRING;
+      NAME, STR_VAL : Unbounded_String;
       INT_VAL : INTEGER;
     end record;
 

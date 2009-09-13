@@ -20,11 +20,17 @@ package body Parser is
    package Parser_Shift_Reduce  renames Parser.Shift_Reduce;
 
    use Ada.Integer_Text_IO;
+   use Ada.Strings.Unbounded;
    use Ada.Strings.Unbounded.Text_IO;
    use Ada.Text_IO;
 
    use Ascan;
    use Unicode;
+
+   function "+" (Item : tstring.VSTRING) return Unbounded_String is
+   begin
+      return To_Unbounded_String (tstring.STR (Item));
+   end "+";
 
 -- build_eof_action - build the "<<EOF>>" action for the active start
 --                    conditions
@@ -361,7 +367,7 @@ when  2 =>
 			-- initialize for processing rules
 
        			-- create default DFA start condition
-			sym.scinstal( tstring.vstr("INITIAL"), false );
+			sym.scinstal( +tstring.vstr("INITIAL"), false );
 			
 
 when  5 =>
@@ -385,11 +391,11 @@ when  8 =>
 
 when  9 =>
 --#line  91
- sym.scinstal( nmstr, xcluflg ); 
+ sym.scinstal( +nmstr, xcluflg ); 
 
 when  10 =>
 --#line  94
- sym.scinstal( nmstr, xcluflg ); 
+ sym.scinstal( +nmstr, xcluflg ); 
 
 when  11 =>
 --#line  97
@@ -515,7 +521,7 @@ when  21 =>
 when  23 =>
 --#line  209
 
-			scnum := sym.sclookup( nmstr );
+			scnum := sym.sclookup( +nmstr );
 			if (scnum = 0 ) then
 		            Put
                              (Standard_Error, "undeclared start condition ");
@@ -531,7 +537,7 @@ when  23 =>
 when  24 =>
 --#line  224
 
-			scnum := sym.sclookup( nmstr );
+			scnum := sym.sclookup( +nmstr );
 			if (scnum = 0 ) then
 		            Put
                              (Standard_Error, "undeclared start condition ");

@@ -281,6 +281,17 @@ package body MISC is
    -- Aflex_Error --
    -----------------
 
+   procedure Aflex_Error (Msg : Unbounded_String) is
+   begin
+      Put (Standard_Error, "aflex: " & Msg);
+      New_Line (Standard_Error);
+      Main_Body.Aflex_End (1);
+   end Aflex_Error;
+
+   -----------------
+   -- Aflex_Error --
+   -----------------
+
    procedure Aflex_Error (Msg : String) is
    begin
       Put (Standard_Error, "aflex: " & Msg);

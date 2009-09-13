@@ -60,7 +60,7 @@ initlex         :
 			-- initialize for processing rules
 
        			-- create default DFA start condition
-			sym.scinstal( tstring.vstr("INITIAL"), false );
+			sym.scinstal( +tstring.vstr("INITIAL"), false );
 			}
 		;
 
@@ -88,10 +88,10 @@ startconddecl   :  SCDECL
 		;
 
 namelist1	:  namelist1 WHITESPACE NAME
-			{ sym.scinstal( nmstr, xcluflg ); }
+			{ sym.scinstal( +nmstr, xcluflg ); }
 
 		|  NAME
-			{ sym.scinstal( nmstr, xcluflg ); }
+			{ sym.scinstal( +nmstr, xcluflg ); }
 
 		|  error
                         { misc.synerr( "bad start condition list" ); }
@@ -207,7 +207,7 @@ scon            :  '<' namelist2 '>'
 
 namelist2       :  namelist2 ',' NAME
                         {
-			scnum := sym.sclookup( nmstr );
+			scnum := sym.sclookup( +nmstr );
 			if (scnum = 0 ) then
 		            Put
                              (Standard_Error, "undeclared start condition ");
@@ -222,7 +222,7 @@ namelist2       :  namelist2 ',' NAME
 
 		|  NAME
 			{
-			scnum := sym.sclookup( nmstr );
+			scnum := sym.sclookup( +nmstr );
 			if (scnum = 0 ) then
 		            Put
                              (Standard_Error, "undeclared start condition ");
@@ -613,11 +613,17 @@ with Unicode;
 ##
 
    use Ada.Integer_Text_IO;
+   use Ada.Strings.Unbounded;
    use Ada.Strings.Unbounded.Text_IO;
    use Ada.Text_IO;
 
    use Ascan;
    use Unicode;
+
+   function "+" (Item : tstring.VSTRING) return Unbounded_String is
+   begin
+      return To_Unbounded_String (tstring.STR (Item));
+   end "+";
 
 -- build_eof_action - build the "<<EOF>>" action for the active start
 --                    conditions

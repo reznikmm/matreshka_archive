@@ -22,20 +22,20 @@
 -- NOTES could be faster, but it isn't used much
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/symB.a,v 1.6 90/01/12 15:20:39 self Exp Locker: self $
 with Ada.Integer_Text_IO;
-with Ada.Strings.Unbounded;
+with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
 
 with MISC, NFA;
 
 package body SYM is
 
-   use Ada.Strings.Unbounded;
+   use Ada.Strings.Unbounded.Text_IO;
 
   -- addsym - add symbol and definitions to symbol table
   --
   -- true is returned if the symbol already exists, and the change not made.
 
-  procedure ADDSYM(SYM, STR_DEF : in VSTRING;
+  procedure ADDSYM(SYM, STR_DEF : in Unbounded_String;
                    INT_DEF      : in INTEGER;
                    TABLE        : in out HASH_TABLE;
                    TABLE_SIZE   : in INTEGER;
@@ -84,26 +84,26 @@ package body SYM is
 
   -- cclinstal - save the text of a character class
 
-  procedure CCLINSTAL(CCLTXT : in VSTRING;
+  procedure CCLINSTAL(CCLTXT : in Unbounded_String;
                       CCLNUM : in INTEGER) is
   -- we don't bother checking the return status because we are not called
   -- unless the symbol is new
     DUMMY : BOOLEAN;
   begin
-    ADDSYM(CCLTXT, NUL, CCLNUM, CCLTAB, CCL_HASH_SIZE, DUMMY);
+    ADDSYM(CCLTXT, Null_Unbounded_String, CCLNUM, CCLTAB, CCL_HASH_SIZE, DUMMY);
   end CCLINSTAL;
 
 
   -- ccllookup - lookup the number associated with character class text
 
-  function CCLLOOKUP(CCLTXT : in VSTRING) return INTEGER is
+  function CCLLOOKUP(CCLTXT : in Unbounded_String) return INTEGER is
   begin
     return FINDSYM(CCLTXT, CCLTAB, CCL_HASH_SIZE).INT_VAL;
   end CCLLOOKUP;
 
   -- findsym - find symbol in symbol table
 
-  function FINDSYM(SYMBOL     : in VSTRING;
+  function FINDSYM(SYMBOL     : in Unbounded_String;
                    TABLE      : in HASH_TABLE;
                    TABLE_SIZE : in INTEGER) return HASH_LINK is
     SYM_ENTRY   : HASH_LINK := TABLE(HASHFUNCT(SYMBOL, TABLE_SIZE));
@@ -116,7 +116,8 @@ package body SYM is
       SYM_ENTRY := SYM_ENTRY.NEXT;
     end loop;
     EMPTY_ENTRY := new HASH_ENTRY;
-    EMPTY_ENTRY.all := (null, null, NUL, NUL, 0);
+      EMPTY_ENTRY.all :=
+        (null, null, Null_Unbounded_String, Null_Unbounded_String, 0);
 
     return EMPTY_ENTRY;
   exception
@@ -128,16 +129,16 @@ package body SYM is
 
   -- hashfunct - compute the hash value for "str" and hash size "hash_size"
 
-  function HASHFUNCT(STR       : in VSTRING;
+  function HASHFUNCT(STR       : in Unbounded_String;
                      HASH_SIZE : in INTEGER) return INTEGER is
     HASHVAL, LOCSTR : INTEGER;
   begin
     HASHVAL := 0;
-    LOCSTR := TSTRING.FIRST;
+    LOCSTR := 1;
 
-    while (LOCSTR <= TSTRING.LEN(STR)) loop
-      HASHVAL := ((HASHVAL*2) + CHARACTER'POS(CHAR(STR, LOCSTR))) mod HASH_SIZE
-        ;
+    while LOCSTR <= Length (STR) loop
+         HASHVAL :=
+           ((HASHVAL*2) + CHARACTER'POS(Element (STR, LOCSTR))) mod HASH_SIZE;
       LOCSTR := LOCSTR + 1;
     end loop;
 
@@ -147,7 +148,7 @@ package body SYM is
 
   --ndinstal - install a name definition
 
-  procedure NDINSTAL(ND, DEF : in VSTRING) is
+  procedure NDINSTAL(ND, DEF : in Unbounded_String) is
     RESULT : BOOLEAN;
   begin
     ADDSYM(ND, DEF, 0, NDTBL, NAME_TABLE_HASH_SIZE, RESULT);
@@ -158,7 +159,7 @@ package body SYM is
 
   -- ndlookup - lookup a name definition
 
-  function NDLOOKUP(ND : in VSTRING) return VSTRING is
+  function NDLOOKUP(ND : in Unbounded_String) return Unbounded_String is
   begin
     return FINDSYM(ND, NDTBL, NAME_TABLE_HASH_SIZE).STR_VAL;
   end NDLOOKUP;
@@ -168,7 +169,7 @@ package body SYM is
   -- NOTE
   --    the start condition is Exclusive if xcluflg is true
 
-  procedure SCINSTAL(STR     : in VSTRING;
+  procedure SCINSTAL(STR     : in Unbounded_String;
                      XCLUFLG : in BOOLEAN) is
   -- bit of a hack.  We know how the default start-condition is
   -- declared, and don't put out a define for it, because it
@@ -183,8 +184,8 @@ package body SYM is
 
     RESULT : BOOLEAN;
   begin
-    if (STR /= VSTR("0")) then
-      TSTRING.PUT(DEF_FILE, STR);
+    if STR /= "0" then
+      PUT(DEF_FILE, STR);
       PUT(DEF_FILE, " : constant := ");
       PUT(DEF_FILE, LASTSC, 1);
       PUT_LINE(DEF_FILE, ";");
@@ -204,9 +205,15 @@ package body SYM is
       REALLOCATE_INTEGER_ARRAY(ACTVSC, CURRENT_MAX_SCS);
     end if;
 
-    SCNAME(LASTSC) := To_Unbounded_String (TSTRING.STR (STR));
+    SCNAME(LASTSC) := STR;
 
-    ADDSYM(VSTR (To_String (SCNAME(LASTSC))), NUL, LASTSC, SCTBL, START_COND_HASH_SIZE, RESULT);
+      ADDSYM
+        (SCNAME(LASTSC),
+         Null_Unbounded_String,
+         LASTSC,
+         SCTBL,
+         START_COND_HASH_SIZE,
+         RESULT);
     if (RESULT) then
       Misc.Aflex_Error ("start condition " & STR & " declared twice");
     end if;
@@ -220,7 +227,7 @@ package body SYM is
 
   -- sclookup - lookup the number associated with a start condition
 
-  function SCLOOKUP(STR : in VSTRING) return INTEGER is
+  function SCLOOKUP(STR : in Unbounded_String) return INTEGER is
   begin
     return FINDSYM(STR, SCTBL, START_COND_HASH_SIZE).INT_VAL;
   end SCLOOKUP;

@@ -59,6 +59,7 @@ package Misc is
    --  aflex_gettime - return current time
 
    procedure Aflex_Error (Msg : in VSTRING);
+   procedure Aflex_Error (Msg : Unbounded_String);
    procedure Aflex_Error (Msg : String);
    --  aflexerror - report an error message and terminate
    --  overloaded function, one for vstring, one for string.

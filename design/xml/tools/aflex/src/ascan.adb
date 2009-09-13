@@ -1,4 +1,5 @@
 with Ada.Integer_Text_IO;
+with Ada.Strings.Unbounded;
 with Ada.Text_IO;
 
 with misc_defs, misc, sym;
@@ -9,9 +10,20 @@ with ascan.DFA; use ascan.DFA;
 with ascan.IO; use ascan.IO;
 package body ascan is
    use Ada.Integer_Text_IO;
+   use Ada.Strings.Unbounded;
    use Ada.Text_IO;
    use Parser.Tokens;
    use Unicode;
+
+   function "+" (Item : VSTRING) return Unbounded_String is
+   begin
+      return To_Unbounded_String (STR (Item));
+   end "+";
+
+   function "+" (Item : Unbounded_String) return VSTRING is
+   begin
+      return VSTR (To_String (Item));
+   end "+";
 
 beglin : boolean := false;
 i, bracelevel: integer;
@@ -693,8 +705,8 @@ when 15 =>
 			    i := i - 1;
 			end loop;
 
-                        sym.ndinstal( nmstr,
-				tstring.slice(nmdef, tstring.first, i) );
+                        sym.ndinstal( +nmstr,
+				+tstring.slice(nmdef, tstring.first, i) );
 			didadef := true;
 			
 
@@ -847,7 +859,7 @@ when 36 =>
 			nmstr := vstr(yytext(1..YYLength));
 
 			-- check to see if we've already encountered this ccl
-                        cclval := sym.ccllookup( nmstr );
+                        cclval := sym.ccllookup( +nmstr );
 			if ( cclval /= 0 ) then
 			    yylval := cclval;
 			    cclreuse := cclreuse + 1;
@@ -855,7 +867,7 @@ when 36 =>
 			else
 			    -- we fudge a bit.  We know that this ccl will
 			    -- soon be numbered as lastccl + 1 by cclinit
-			    sym.cclinstal( nmstr, lastccl + 1 );
+			    sym.cclinstal( +nmstr, lastccl + 1 );
 
 			    -- push back everything but the leading bracket
 			    -- so the ccl can be rescanned
@@ -875,7 +887,7 @@ when 37 =>
 			tmpbuf := slice(vstr(yytext(1..YYLength)),
 								2, YYLength-1);
 
-			nmdefptr := sym.ndlookup( tmpbuf );
+			nmdefptr := +sym.ndlookup( +tmpbuf );
 			if nmdefptr = TString.NUL then
 			    misc.synerr( "undefined {name}" );
 			else

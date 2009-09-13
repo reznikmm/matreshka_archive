@@ -21,33 +21,33 @@
 -- DESCRIPTION implements only a simple symbol table using open hashing
 -- NOTES could be faster, but it isn't used much
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/symS.a,v 1.4 90/01/12 15:20:42 self Exp Locker: self $
+with Ada.Strings.Unbounded;
 
-with TSTRING;
 with MISC_DEFS;
 
 package SYM is
 
-  use TSTRING;
+   use Ada.Strings.Unbounded;
   use MISC_DEFS;
 
-  procedure ADDSYM(SYM, STR_DEF : in VSTRING;
+  procedure ADDSYM(SYM, STR_DEF : in Unbounded_String;
                    INT_DEF      : in INTEGER;
                    TABLE        : in out HASH_TABLE;
                    TABLE_SIZE   : in INTEGER;
                    RESULT       : out BOOLEAN);
   -- result indicates success
-  procedure CCLINSTAL(CCLTXT : in VSTRING;
+  procedure CCLINSTAL(CCLTXT : in Unbounded_String;
                       CCLNUM : in INTEGER);
-  function CCLLOOKUP(CCLTXT : in VSTRING) return INTEGER;
-  function FINDSYM(SYMBOL     : in VSTRING;
+  function CCLLOOKUP(CCLTXT : in Unbounded_String) return INTEGER;
+  function FINDSYM(SYMBOL     : in Unbounded_String;
                    TABLE      : in HASH_TABLE;
                    TABLE_SIZE : in INTEGER) return HASH_LINK;
 
-  function HASHFUNCT(STR       : in VSTRING;
+  function HASHFUNCT(STR       : in Unbounded_String;
                      HASH_SIZE : in INTEGER) return INTEGER;
-  procedure NDINSTAL(ND, DEF : in VSTRING);
-  function NDLOOKUP(ND : in VSTRING) return VSTRING;
-  procedure SCINSTAL(STR     : in VSTRING;
+  procedure NDINSTAL(ND, DEF : in Unbounded_String);
+  function NDLOOKUP(ND : in Unbounded_String) return Unbounded_String;
+  procedure SCINSTAL(STR     : in Unbounded_String;
                      XCLUFLG : in BOOLEAN);
-  function SCLOOKUP(STR : in VSTRING) return INTEGER;
+  function SCLOOKUP(STR : in Unbounded_String) return INTEGER;
 end SYM;
