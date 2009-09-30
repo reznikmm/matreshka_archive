@@ -81,7 +81,7 @@ begin
     number_to_move := yy_c_buf_p - yytext_ptr;
 
     for i in 0..number_to_move - 1 loop
-        yy_ch_buf(dest) := yy_ch_buf(source);
+        yy_ch_buf.data (dest) := yy_ch_buf.data (source);
     dest := dest + 1;
     source := source + 1;
     end loop;
@@ -99,7 +99,7 @@ begin
         end if;
 
     -- read in more data
-    YY_INPUT( yy_ch_buf(number_to_move..yy_ch_buf'last), yy_n_chars, num_to_read );
+    YY_INPUT( yy_ch_buf.data (number_to_move..yy_ch_buf.data'last), yy_n_chars, num_to_read );
     end if;
     if ( yy_n_chars = 0 ) then
     if ( number_to_move = 1 ) then
@@ -114,8 +114,8 @@ begin
     end if;
     
     yy_n_chars := yy_n_chars + number_to_move;
-    yy_ch_buf(yy_n_chars) := YY_END_OF_BUFFER_CHAR;
-    yy_ch_buf(yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;
+    yy_ch_buf.data (yy_n_chars) := YY_END_OF_BUFFER_CHAR;
+    yy_ch_buf.data (yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;
 
     -- yytext begins at the second character in
     -- yy_ch_buf; the first character is the one which
@@ -146,7 +146,7 @@ begin
     while ( source > 0 ) loop
         dest := dest - 1;
         source := source - 1;
-            yy_ch_buf(dest) := yy_ch_buf(source);
+            yy_ch_buf.data (dest) := yy_ch_buf.data (source);
     end loop;
 
     tmp_yy_cp := tmp_yy_cp + dest - source;
@@ -158,12 +158,12 @@ begin
     end if;
     end if;
 
-    if ( tmp_yy_cp > yy_bp and then yy_ch_buf(tmp_yy_cp-1) = ASCII.LF ) then
-    yy_ch_buf(tmp_yy_cp-2) := ASCII.LF;
+    if ( tmp_yy_cp > yy_bp and then yy_ch_buf.data (tmp_yy_cp-1) = ASCII.LF ) then
+    yy_ch_buf.data (tmp_yy_cp-2) := ASCII.LF;
     end if;
 
     tmp_yy_cp := tmp_yy_cp - 1;
-    yy_ch_buf(tmp_yy_cp) := c;
+    yy_ch_buf.data (tmp_yy_cp) := c;
 
 --  Note:  this code is the text of YY_DO_BEFORE_ACTION, only
 --         here we get different yy_cp and yy_bp's
@@ -181,7 +181,7 @@ function input return character is
     yy_cp : integer := yy_c_buf_p;
 begin
 
-    if ( yy_ch_buf(yy_c_buf_p) = YY_END_OF_BUFFER_CHAR ) then
+    if ( yy_ch_buf.data (yy_c_buf_p) = YY_END_OF_BUFFER_CHAR ) then
     -- need more input
     yytext_ptr := yy_c_buf_p;
     yy_c_buf_p := yy_c_buf_p + 1;
@@ -196,10 +196,10 @@ begin
             return ASCII.NUL;
         end if;
 
-        yy_ch_buf(0) := ASCII.LF;
+        yy_ch_buf.data (0) := ASCII.LF;
         yy_n_chars := 1;
-        yy_ch_buf(yy_n_chars) := YY_END_OF_BUFFER_CHAR;
-        yy_ch_buf(yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;
+        yy_ch_buf.data (yy_n_chars) := YY_END_OF_BUFFER_CHAR;
+        yy_ch_buf.data (yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;
         yy_eof_has_been_seen := false;
         yy_c_buf_p := 1;
         yytext_ptr := yy_c_buf_p;
@@ -214,7 +214,7 @@ begin
         end case;
     end if;
 
-    c := yy_ch_buf(yy_c_buf_p);
+    c := yy_ch_buf.data (yy_c_buf_p);
     yy_c_buf_p := yy_c_buf_p + 1;
 
     return c;

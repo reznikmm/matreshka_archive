@@ -213,11 +213,19 @@ package body Gen is
 
   procedure GEN_NEXT_COMPRESSED_STATE is
   begin
-    if (USEECS) then
-      INDENT_PUTS("yy_c := yy_ec(yy_ch_buf(yy_cp));");
+    Indent_Puts ("Index := yy_cp;");
+    Indent_Puts ("Next (yy_ch_buf, Index, Code);");
+
+    if USEECS then
+      INDENT_PUTS("yy_c := yy_ec(Code);");
     else
-      INDENT_PUTS("yy_c := yy_ch_buf(yy_cp);");
+      INDENT_PUTS("yy_c := Code;");
     end if;
+--    if (USEECS) then
+--      INDENT_PUTS("yy_c := yy_ec(Current (yy_ch_buf, yy_cp));");
+--    else
+--      INDENT_PUTS("yy_c := Current (yy_ch_buf, yy_cp);");
+--    end if;
 
     -- save the backtracking info \before/ computing the next state
     -- because we always compute one more state than needed - we
@@ -267,12 +275,12 @@ package body Gen is
     if (FULLTBL) then
 
       INDENT_PUTS(
-        "yy_current_state := yy_nxt(yy_current_state, yy_ch_buf(yy_cp));");
+        "yy_current_state := yy_nxt(yy_current_state, Current (yy_ch_buf, yy_cp)));");
       INDENT_PUTS("while ( yy_current_state > 0 ) loop");
       INDENT_UP;
-      INDENT_PUTS("yy_cp := yy_cp + 1;");
+      INDENT_PUTS("yy_cp := Index;");
       INDENT_PUTS(
-        "yy_current_state := yy_nxt(yy_current_state, yy_ch_buf(yy_cp));");
+        "yy_current_state := yy_nxt(yy_current_state, Current (yy_ch_buf, yy_cp));");
       INDENT_DOWN;
       INDENT_PUTS("end loop;");
       INDENT_PUTS("yy_current_state := -yy_current_state;");
@@ -291,7 +299,7 @@ package body Gen is
 
       GEN_NEXT_STATE;
 
-      INDENT_PUTS("yy_cp := yy_cp + 1;");
+      INDENT_PUTS("yy_cp := Index;");
 
       if (INTERACTIVE) then
         PUT("if ( yy_base(yy_current_state) = ");
@@ -326,7 +334,7 @@ package body Gen is
     INDENT_UP;
     if (FULLTBL) then
       INDENT_PUTS("yy_current_state := yy_nxt(yy_current_state,");
-      INDENT_PUTS("                           yy_ch_buf(yy_cp));");
+      INDENT_PUTS("                           Current (yy_ch_buf, yy_cp));");
       GEN_BACKTRACKING;
     else
       GEN_NEXT_COMPRESSED_STATE;
@@ -340,7 +348,7 @@ package body Gen is
     INDENT_PUTS("yy_current_state := yy_start;");
 
     if (BOL_NEEDED) then
-      INDENT_PUTS("if ( yy_ch_buf(yy_bp-1) = ASCII.LF ) then");
+      INDENT_PUTS("if Previous (yy_ch_buf, yy_bp) = ASCII.LF then");
       INDENT_UP;
       INDENT_PUTS("yy_current_state := yy_current_state + 1;");
       INDENT_DOWN;

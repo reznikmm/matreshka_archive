@@ -484,15 +484,25 @@ pragma Inline (YY_USER_ACTION);
 function yy_get_previous_state return YY_State_Type is
     yy_current_state : YY_State_Type;
     yy_c : short;
+   Index : Integer;
+   Code  : Character;
     yy_bp : integer := yytext_ptr;
 begin
     yy_current_state := yy_start;
-    if ( yy_ch_buf(yy_bp-1) = ASCII.LF ) then
+    if Previous (yy_ch_buf, yy_bp) = ASCII.LF then
 	yy_current_state := yy_current_state + 1;
     end if;
 
-    for yy_cp in yytext_ptr..yy_c_buf_p - 1 loop
-	yy_c := yy_ec(yy_ch_buf(yy_cp));
+   declare
+      yy_cp : integer := yytext_ptr;
+
+   begin
+      while yy_cp < yy_c_buf_p loop
+         Index := yy_cp;
+
+	Index := yy_cp;
+	Next (yy_ch_buf, Index, Code);
+	yy_c := yy_ec(Code);
 	if (yy_accept(yy_current_state) /= 0 ) then
 	    yy_last_accepting_state := yy_current_state;
 	    yy_last_accepting_cpos := yy_cp;
@@ -504,7 +514,9 @@ begin
 	    end if;
 	end loop;
 	yy_current_state := yy_nxt(yy_base(yy_current_state) + yy_c);
-    end loop;
+         yy_cp := Index;
+      end loop;
+   end;
 
     return yy_current_state;
 end yy_get_previous_state;
@@ -514,6 +526,9 @@ begin
    Open_Input (Ada.Text_IO.Name (Input_File));
 end yyrestart;
 pragma Inline (yyrestart);
+
+   Index : Integer;
+   Code  : Character;
 
 begin -- of YYLex
 <<new_file>>
@@ -528,15 +543,15 @@ begin -- of YYLex
         -- we put in the '\n' and start reading from [1] so that an
         -- initial match-at-newline will be true.
 
-        yy_ch_buf(0) := ASCII.LF;
+        yy_ch_buf.data (0) := ASCII.LF;
         yy_n_chars := 1;
 
         -- we always need two end-of-buffer characters.  The first causes
         -- a transition to the end-of-buffer state.  The second causes
         -- a jam in that state.
 
-        yy_ch_buf(yy_n_chars) := YY_END_OF_BUFFER_CHAR;
-        yy_ch_buf(yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;
+        yy_ch_buf.data (yy_n_chars) := YY_END_OF_BUFFER_CHAR;
+        yy_ch_buf.data (yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;
 
         yy_eof_has_been_seen := false;
 
@@ -554,11 +569,13 @@ begin -- of YYLex
         -- current run.
 	yy_bp := yy_cp;
 	yy_current_state := yy_start;
-	if ( yy_ch_buf(yy_bp-1) = ASCII.LF ) then
+	if Previous (yy_ch_buf, yy_bp) = ASCII.LF then
 	    yy_current_state := yy_current_state + 1;
 	end if;
 	loop
-		yy_c := yy_ec(yy_ch_buf(yy_cp));
+		Index := yy_cp;
+		Next (yy_ch_buf, Index, Code);
+		yy_c := yy_ec(Code);
 		if (yy_accept(yy_current_state) /= 0 ) then
 		    yy_last_accepting_state := yy_current_state;
 		    yy_last_accepting_cpos := yy_cp;
@@ -570,7 +587,7 @@ begin -- of YYLex
 		    end if;
 		end loop;
 		yy_current_state := yy_nxt(yy_base(yy_current_state) + yy_c);
-	    yy_cp := yy_cp + 1;
+	    yy_cp := Index;
 if ( yy_current_state = 227 ) then
     exit;
 end if;
@@ -1159,8 +1176,8 @@ YY_END_OF_BUFFER + RECOVER + 1 |
 YY_END_OF_BUFFER + BRACEERROR + 1 |
 YY_END_OF_BUFFER + ACTION_STRING + 1 => 
     return End_Of_Input;
-                when YY_END_OF_BUFFER =>
 
+                when YY_END_OF_BUFFER =>
                     yytext_ptr := yy_bp;
 
                     case yy_get_next_buffer is
@@ -1197,8 +1214,10 @@ YY_END_OF_BUFFER + ACTION_STRING + 1 =>
                             yy_cp := yy_c_buf_p;
                             yy_bp := yytext_ptr;
                             goto next_action;
+
                         when others => null;
                         end case; -- case yy_get_next_buffer()
+
                 when others =>
                     ada.text_io.put( "action # " );
                     ada.text_io.put( INTEGER'IMAGE(yy_act) );

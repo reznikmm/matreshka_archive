@@ -8,7 +8,14 @@ yytext_ptr : integer; -- points to start of yytext in buffer
 YY_READ_BUF_SIZE : constant integer :=  8192;
 YY_BUF_SIZE : constant integer := YY_READ_BUF_SIZE * 2; -- size of input buffer
 type unbounded_character_array is array(integer range <>) of character;
-subtype ch_buf_type is unbounded_character_array(0..YY_BUF_SIZE + 1);
+type ch_buf_type is record
+   Data : unbounded_character_array(0..YY_BUF_SIZE + 1);
+end record;
+function Previous (Data : ch_buf_type; Index : Integer) return Character;
+procedure Next
+  (Data  : ch_buf_type;
+   Index : in out Integer;
+   Code  : out Character);
 yy_ch_buf : ch_buf_type;
 yy_cp, yy_bp : integer;
 
