@@ -12,8 +12,6 @@ subtype ch_buf_type is unbounded_character_array(0..YY_BUF_SIZE + 1);
 yy_ch_buf : ch_buf_type;
 yy_cp, yy_bp : integer;
 
--- yy_hold_char holds the character lost when yytext is formed
-yy_hold_char : character;
 yy_c_buf_p : integer;   -- points to current character in buffer
 
 function YYText return string;

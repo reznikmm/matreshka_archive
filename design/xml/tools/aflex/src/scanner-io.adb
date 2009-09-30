@@ -136,7 +136,6 @@ procedure yyunput( c : character; yy_bp: in out integer ) is
     tmp_yy_cp : integer;
 begin
     tmp_yy_cp := yy_c_buf_p;
-    yy_ch_buf(tmp_yy_cp) := yy_hold_char; -- undo effects of setting up yytext
 
     if ( tmp_yy_cp < 2 ) then
     -- need to shift things up to make room
@@ -169,8 +168,6 @@ begin
 --  Note:  this code is the text of YY_DO_BEFORE_ACTION, only
 --         here we get different yy_cp and yy_bp's
     yytext_ptr := yy_bp;
-    yy_hold_char := yy_ch_buf(tmp_yy_cp);
-    yy_ch_buf(tmp_yy_cp) := ASCII.NUL;
     yy_c_buf_p := tmp_yy_cp;
 end yyunput;
 
@@ -183,7 +180,6 @@ function input return character is
     c : character;
     yy_cp : integer := yy_c_buf_p;
 begin
-    yy_ch_buf(yy_cp) := yy_hold_char;
 
     if ( yy_ch_buf(yy_c_buf_p) = YY_END_OF_BUFFER_CHAR ) then
     -- need more input
@@ -207,7 +203,6 @@ begin
         yy_eof_has_been_seen := false;
         yy_c_buf_p := 1;
         yytext_ptr := yy_c_buf_p;
-        yy_hold_char := yy_ch_buf(yy_c_buf_p);
 
         return ( input );
         when EOB_ACT_RESTART_SCAN =>
@@ -221,7 +216,6 @@ begin
 
     c := yy_ch_buf(yy_c_buf_p);
     yy_c_buf_p := yy_c_buf_p + 1;
-    yy_hold_char := yy_ch_buf(yy_c_buf_p);
 
     return c;
 end input;

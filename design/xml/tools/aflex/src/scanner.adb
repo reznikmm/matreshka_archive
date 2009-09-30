@@ -466,7 +466,6 @@ pragma Inline (YY_STATE_EOF);
 -- return all but the first 'n' matched characters back to the input stream
 procedure yyless(n : Integer) is
 begin
-        yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
         yy_cp := yy_bp + n;
         yy_c_buf_p := yy_cp;
         YY_DO_BEFORE_ACTION; -- set up yytext again
@@ -543,7 +542,6 @@ begin -- of YYLex
 
         yytext_ptr := 1;
         yy_c_buf_p := yytext_ptr;
-        yy_hold_char := yy_ch_buf(yy_c_buf_p);
         yy_init := false;
     end if; -- yy_init
 
@@ -551,9 +549,6 @@ begin -- of YYLex
 
 
         yy_cp := yy_c_buf_p;
-
-        -- support of yytext
-        yy_ch_buf(yy_cp) := yy_hold_char;
 
         -- yy_bp points to the position in yy_ch_buf of the start of the
         -- current run.
@@ -598,8 +593,6 @@ end if;
 <<do_action>>   -- this label is used only to access EOF actions
             case yy_act is
 		when 0 => -- must backtrack
-		-- undo the effects of YY_DO_BEFORE_ACTION
-		yy_ch_buf(yy_cp) := yy_hold_char;
 		yy_cp := yy_last_accepting_cpos;
 		yy_current_state := yy_last_accepting_state;
 		goto next_action;
@@ -725,7 +718,6 @@ when 17 =>
 			
 
 when 18 => 
-yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
 yy_cp := yy_cp - 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
@@ -775,7 +767,6 @@ when 25 =>
  ENTER(QUOTE); return ( '"' ); 
 
 when 26 => 
-yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
  yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
@@ -787,7 +778,6 @@ when 27 =>
  ENTER(BRACEERROR); 
 
 when 28 => 
-yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
  yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
@@ -819,7 +809,6 @@ when 31 =>
 			
 
 when 32 => 
-yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
 yy_cp := yy_cp - 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
@@ -931,7 +920,6 @@ when 42 =>
  ENTER(SECT2); return ( '>' ); 
 
 when 43 => 
-yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
  yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
@@ -973,7 +961,6 @@ when 49 =>
 			
 
 when 50 => 
-yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
  yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
@@ -981,7 +968,6 @@ YY_DO_BEFORE_ACTION; -- set up yytext again
  ENTER(CCL); return ( '^' ); 
 
 when 51 => 
-yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
  yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
@@ -1001,7 +987,6 @@ when 53 =>
 			
 
 when 54 => 
-yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext
  yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
@@ -1175,8 +1160,6 @@ YY_END_OF_BUFFER + BRACEERROR + 1 |
 YY_END_OF_BUFFER + ACTION_STRING + 1 => 
     return End_Of_Input;
                 when YY_END_OF_BUFFER =>
-                    -- undo the effects of YY_DO_BEFORE_ACTION
-                    yy_ch_buf(yy_cp) := yy_hold_char;
 
                     yytext_ptr := yy_bp;
 
@@ -1203,9 +1186,10 @@ YY_END_OF_BUFFER + ACTION_STRING + 1 =>
                                 goto new_file;
                             end if;
                             end;
+
                         when EOB_ACT_RESTART_SCAN =>
                             yy_c_buf_p := yytext_ptr;
-                            yy_hold_char := yy_ch_buf(yy_c_buf_p);
+
                         when EOB_ACT_LAST_MATCH =>
                             yy_c_buf_p := yy_n_chars;
                             yy_current_state := yy_get_previous_state;

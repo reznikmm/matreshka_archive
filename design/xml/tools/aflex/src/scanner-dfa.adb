@@ -1,25 +1,10 @@
 package body scanner.DFA is
-function YYText return string is
-    i : integer;
-    str_loc : integer := 1;
-    buffer : string(1..1024);
-    EMPTY_STRING : constant string := "";
+function YYText return String is
+   Aux : constant String (1 .. yy_cp - yy_bp)
+     := String (yy_ch_buf (yy_bp .. yy_cp - 1));
+
 begin
-    -- find end of buffer
-    i := yytext_ptr;
-    while ( yy_ch_buf(i) /= ASCII.NUL ) loop
-    buffer(str_loc ) := yy_ch_buf(i);
-        i := i + 1;
-    str_loc := str_loc + 1;
-    end loop;
---    return yy_ch_buf(yytext_ptr.. i - 1);
-
-    if (str_loc < 2) then
-        return EMPTY_STRING;
-    else
-      return buffer(1..str_loc-1);
-    end if;
-
+   return Aux;
 end;
 
 -- returns the length of the matched text
@@ -34,8 +19,6 @@ end YYLength;
 procedure YY_DO_BEFORE_ACTION is
 begin
     yytext_ptr := yy_bp;
-    yy_hold_char := yy_ch_buf(yy_cp);
-    yy_ch_buf(yy_cp) := ASCII.NUL;
     yy_c_buf_p := yy_cp;
 end YY_DO_BEFORE_ACTION;
 

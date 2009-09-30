@@ -206,9 +206,6 @@ package body NFA is
       if ((HEADCNT > 0) or (TRAILCNT > 0)) then
 
         -- do trailing context magic to not match the trailing characters
-        PUT_LINE(TEMP_ACTION_FILE,
-          "yy_ch_buf(yy_cp) := yy_hold_char; -- undo effects of setting up yytext"
-          );
 
         if (HEADCNT > 0) then
           PUT(TEMP_ACTION_FILE, " yy_cp := yy_bp + ");

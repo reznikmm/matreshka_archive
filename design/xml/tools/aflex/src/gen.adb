@@ -100,8 +100,6 @@ package body Gen is
     SET_INDENT(4);
 
     INDENT_PUTS("when 0 => -- must backtrack");
-    INDENT_PUTS("-- undo the effects of YY_DO_BEFORE_ACTION");
-    INDENT_PUTS("yy_ch_buf(yy_cp) := yy_hold_char;");
 
     if (FULLTBL) then
       INDENT_PUTS("yy_cp := yy_last_accepting_cpos + 1;");
