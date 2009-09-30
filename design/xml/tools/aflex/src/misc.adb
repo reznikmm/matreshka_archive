@@ -22,6 +22,7 @@
 -- NOTES contains functions used in various places throughout aflex.
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/miscB.a,v 1.22 1991/07/01 21:30:37 self Exp self $
 with Ada.Calendar;
+with Ada.Directories;
 with Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded.Text_IO;
 
@@ -36,6 +37,9 @@ package body MISC is
 
    function "+" (Item : String) return Unbounded_String
      renames To_Unbounded_String;
+
+   function "+" (Item : Unbounded_String) return String
+     renames To_String;
 
   -- action_out - write the actions from the temporary file to lex.yy.c
 
@@ -320,39 +324,13 @@ package body MISC is
       Start_Char_Pos : Integer;
 
    begin
-      if End_Char_Pos = 0 then
+      if Length (In_File_Name) = 0 then
          -- if reading standard input give everything this name
 
          return +"aflex_yy";
       end if;
 
-      -- find out where the end of the basename is
-      while End_Char_Pos >= 1
-        and then Element (In_File_Name, End_Char_Pos) /= '.'
-      loop
-         End_Char_Pos := End_Char_Pos - 1;
-      end loop;
-
-      -- find out where the beginning of the basename is
-      Start_Char_Pos := End_Char_Pos; -- start at the end of the basename
-
-      while Start_Char_Pos > 1
-        and then Element (In_File_Name, Start_Char_Pos) /= '/'
-      loop
-         Start_Char_Pos := Start_Char_Pos - 1;
-      end loop;
-
-      if Element (In_File_Name, Start_Char_Pos) = '/' then
-         Start_Char_Pos := Start_Char_Pos + 1;
-      end if;
-
-      if (End_Char_Pos >= 1) then
-         return
-           Unbounded_Slice (In_File_Name, Start_Char_Pos,  End_Char_Pos - 1);
-
-      else
-         return In_File_Name;
-      end if;
+      return +Ada.Directories.Base_Name (+In_File_Name);
    end Basename;
 
   -- line_directive_out - spit out a "# line" statement
