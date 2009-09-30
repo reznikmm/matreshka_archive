@@ -208,7 +208,7 @@ package body NFA is
         -- do trailing context magic to not match the trailing characters
 
         if (HEADCNT > 0) then
-          PUT(TEMP_ACTION_FILE, " yy_cp := yy_bp + ");
+          PUT(TEMP_ACTION_FILE, "yy_cp := yy_bp + ");
           PUT(TEMP_ACTION_FILE, HEADCNT, 1);
           PUT_LINE(TEMP_ACTION_FILE, ";");
         else

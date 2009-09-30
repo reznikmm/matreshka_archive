@@ -767,7 +767,7 @@ when 25 =>
  ENTER(QUOTE); return ( '"' ); 
 
 when 26 => 
- yy_cp := yy_bp + 1;
+yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
 --# line 149 "scanner.l"
@@ -778,7 +778,7 @@ when 27 =>
  ENTER(BRACEERROR); 
 
 when 28 => 
- yy_cp := yy_bp + 1;
+yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
 --# line 151 "scanner.l"
@@ -920,7 +920,7 @@ when 42 =>
  ENTER(SECT2); return ( '>' ); 
 
 when 43 => 
- yy_cp := yy_bp + 1;
+yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
 --# line 254 "scanner.l"
@@ -961,14 +961,14 @@ when 49 =>
 			
 
 when 50 => 
- yy_cp := yy_bp + 1;
+yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
 --# line 277 "scanner.l"
  ENTER(CCL); return ( '^' ); 
 
 when 51 => 
- yy_cp := yy_bp + 1;
+yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
 --# line 278 "scanner.l"
@@ -987,7 +987,7 @@ when 53 =>
 			
 
 when 54 => 
- yy_cp := yy_bp + 1;
+yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
 --# line 286 "scanner.l"
