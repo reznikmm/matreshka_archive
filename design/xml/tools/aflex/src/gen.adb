@@ -616,8 +616,7 @@ package body Gen is
     PUT(NUM_RULES + 1, 1);
     PUT_LINE(";");
 
-    INDENT_PUTS("subtype yy_state_type is integer;");
-    INDENT_PUTS("yy_current_state : yy_state_type;");
+    INDENT_PUTS("YY_Current_State : YY_State_Type;");
 
     -- now output the constants for the various start conditions
     RESET(DEF_FILE, IN_FILE);

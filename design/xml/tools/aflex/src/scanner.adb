@@ -64,23 +64,22 @@ subtype short is Integer range -32768..32767;
 -- returned upon end-of-file
 YY_END_TOK : constant Integer := 0;
 YY_END_OF_BUFFER : constant := 82;
-subtype yy_state_type is integer;
-yy_current_state : yy_state_type;
-INITIAL : constant := 0;
-SECT2 : constant := 1;
-SECT2PROLOG : constant := 2;
-SECT3 : constant := 3;
-PICKUPDEF : constant := 4;
-SC : constant := 5;
-CARETISBOL : constant := 6;
-NUM : constant := 7;
-QUOTE : constant := 8;
-FIRSTCCL : constant := 9;
-CCL : constant := 10;
-ACTION : constant := 11;
-RECOVER : constant := 12;
-BRACEERROR : constant := 13;
-ACTION_STRING : constant := 14;
+YY_Current_State : YY_State_Type;
+   INITIAL : constant YY_State_Type := 0;
+   SECT2 : constant YY_State_Type := 1;
+   SECT2PROLOG : constant YY_State_Type := 2;
+   SECT3 : constant YY_State_Type := 3;
+   PICKUPDEF : constant YY_State_Type := 4;
+   SC : constant YY_State_Type := 5;
+   CARETISBOL : constant YY_State_Type := 6;
+   NUM : constant YY_State_Type := 7;
+   QUOTE : constant YY_State_Type := 8;
+   FIRSTCCL : constant YY_State_Type := 9;
+   CCL : constant YY_State_Type := 10;
+   ACTION : constant YY_State_Type := 11;
+   RECOVER : constant YY_State_Type := 12;
+   BRACEERROR : constant YY_State_Type := 13;
+   ACTION_STRING : constant YY_State_Type := 14;
 yy_accept : constant array(0..227) of short :=
     (   0,
         0,    0,    0,    0,    0,    0,   80,   80,    0,    0,
@@ -483,8 +482,8 @@ pragma Inline (YY_USER_ACTION);
 
 -- yy_get_previous_state - get the state just before the EOB char was reached
 
-function yy_get_previous_state return yy_state_type is
-    yy_current_state : yy_state_type;
+function yy_get_previous_state return YY_State_Type is
+    yy_current_state : YY_State_Type;
     yy_c : short;
     yy_bp : integer := yytext_ptr;
 begin

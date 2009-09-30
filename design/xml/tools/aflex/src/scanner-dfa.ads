@@ -22,7 +22,7 @@ procedure YY_DO_BEFORE_ACTION;
 --These variables are needed between calls to YYLex.
 yy_init : boolean := true; -- do we need to initialize YYLex?
 yy_start : integer := 0; -- current start state number
-subtype yy_state_type is integer;
+subtype YY_State_Type is integer;
 yy_last_accepting_state : yy_state_type;
 yy_last_accepting_cpos : integer;
 end scanner.DFA;

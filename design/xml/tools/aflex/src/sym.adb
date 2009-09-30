@@ -185,8 +185,9 @@ package body SYM is
     RESULT : BOOLEAN;
   begin
     if STR /= "0" then
+      PUT(DEF_FILE, "   ");
       PUT(DEF_FILE, STR);
-      PUT(DEF_FILE, " : constant := ");
+      PUT(DEF_FILE, " : constant YY_State_Type := ");
       PUT(DEF_FILE, LASTSC, 1);
       PUT_LINE(DEF_FILE, ";");
     end if;
