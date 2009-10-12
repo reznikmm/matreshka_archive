@@ -2,7 +2,7 @@
 project Xml is
 
    for Main use ("demo.adb");
-   for Source_Dirs use (".", ".gens");
+   for Source_Dirs use (".", "gens");
    for Object_Dir use ".objs";
    for Exec_Dir use ".";
 

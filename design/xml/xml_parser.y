@@ -116,6 +116,10 @@
 %token Token_Entity_Ref
 %token Token_Char_Ref
 
+%with Ada.Strings.Unbounded;
+%with Xml
+--  %use Xml
+
 {
 --   type Xml_Version is (Xml_1_0, Xml_1_1);
 --   type Standalone_Mark is (Yes, No, Undefined);
@@ -125,14 +129,18 @@
 --      Standalone : Standalone_Mark;
 --   end record;
 
-   type String_Access is access all String;
+--   type String_Access is access all String;
 
-   type YYSKind is (Empty, Name);
+   type YYSKind is (Empty, Text, Name_Value);
 
    type YYSType (Kind : YYSKind := Empty) is record
       case Kind is
-         when Name =>
-            Name : String_Access;
+         when Text =>
+            Text : Ada.Strings.Unbounded.Unbounded_String;
+
+         when Name_Value =>
+            Name  : Ada.Strings.Unbounded.Unbounded_String;
+            Value : Ada.Strings.Unbounded.Unbounded_String;
 
          when Empty =>
             null;
@@ -148,7 +156,7 @@
 --  [1] document, [22] prolog
 
 document :
-    XMLDecl
+    XMLDecl_optional
     Misc_any
 --    prologue
     element
@@ -165,20 +173,33 @@ Misc_any :
 
 Misc :
     Token_White_Space
-{
-   Text_IO.Put_Line ("White space");
-}
+    {
+      --  XXX There is no reason to report whitespace outside of the element
+      --  content. Thus, processing code is temporary commented out.
+
+--      Reader.Content_Handler.Ignorable_Whitespace ($1.Text, Stop_Processing);
+--      Check_Processing_Stopped;
+      null;
+    }
   | Token_Comment
-{
-   Text_IO.Put_Line ("Comment");
-}
+    {
+      Reader.Lexical_Handler.Comment ($1.Text, Stop_Processing);
+      Check_Processing_Stopped;
+    }
   | Token_Processing_Instruction
-{
-   Text_IO.Put_Line ("PI");
-}
+    {
+      Reader.Content_Handler.Processing_Instruction
+       ($1.Name, $1.Value, Stop_Processing);
+      Check_Processing_Stopped;
+    }
   ;
 
 --  [23] XMLDecl ::= '<?xml' VersionInfo EncodingDecl? SDDecl? S? '?>'
+
+XMLDecl_optional :
+    XMLDecl
+  |
+  ;
 
 XMLDecl :
     Token_XML_Decl_Start
@@ -258,14 +279,14 @@ SDDecl_optional :
 element :
     Token_Start_Tag_Start
 {
-   Text_IO.Put_Line ("Start tag '" & $1.Name.all & ''');
+   Text_IO.Put_Line ("Start tag '" & To_String ($1.Text) & ''');
 
    if Current_Element_Node /= null then
       Element_Node_Stack.Append (Current_Element_Node);
    end if;
 
    Current_Element_Node := new XML_Element_Node;
-   Current_Element_Node.Name := $1.Name;
+   Current_Element_Node.Name := $1.Text;
 }
     Attribute_any
     element_1
@@ -276,17 +297,22 @@ element_1 :
 {
    Text_IO.Put_Line ("Empty element");
 
-   Current_Element_Node := Element_Node_Stack.Last_Element;
-   Element_Node_Stack.Delete_Last;
+   if not Element_Node_Stack.Is_Empty then
+      Current_Element_Node := Element_Node_Stack.Last_Element;
+      Element_Node_Stack.Delete_Last;
+
+   else
+      Current_Element_Node := null;
+   end if;
 }
   | Token_Tag_End
     content_any
     Token_End_Tag_Start
     Token_Tag_End
 {
-   Text_IO.Put_Line ("End element '" & $3.Name.all & ''');
+   Text_IO.Put_Line ("End element '" & To_String ($3.Text) & ''');
 
-   if Current_Element_Node.Name.all /= $3.Name.all then
+   if Current_Element_Node.Name /= $3.Text then
       raise Program_Error;
    end if;
 
@@ -322,7 +348,13 @@ Attribute :
 
 attribute_value_segment_any :
     attribute_value_segment
+{
+   Text_IO.Put_Line ("attribute_value_segment");
+}
   | attribute_value_segment_any attribute_value_segment
+{
+   Text_IO.Put_Line ("attribute_value_segment_any attribute_value_segment");
+}
   |
   ;
 
@@ -340,16 +372,30 @@ content_any :
 
 content_segment :
     Token_White_Space
+    {
+      --  Segment of whitespaces inside element content is a subclass of
+      --  segment of character data.
+
+      Reader.Content_Handler.Ignorable_Whitespace ($1.Text, Stop_Processing);
+      Check_Processing_Stopped;
+    }
+
   | Token_Character_Data
+    {
+      Reader.Content_Handler.Characters ($1.Text, Stop_Processing);
+      Check_Processing_Stopped;
+    }
   | Token_Entity_Ref
   | Token_Char_Ref
   | element
   | Token_CDData
   | Token_Comment
   | Token_Processing_Instruction
-{
-   Text_IO.Put_Line ("PI");
-}
+    {
+      Reader.Content_Handler.Processing_Instruction
+       ($1.Name, $1.Value, Stop_Processing);
+      Check_Processing_Stopped;
+    }
   ;
 
 
@@ -408,41 +454,59 @@ content_segment :
 --white_space : SPACE | TABULATION | CARRIAGE_RETURN | LINE_FEED ;
 
 %%
-
---  User declarations
-
+with Sax.Readers;
 ##
-   procedure Parse (File_Name : String);
-
+   procedure Parse
+    (Reader    : not null access Sax.Readers.Sax_Reader'Class;
+     File_Name : String);
 ##
-with Ada.Containers.Vectors;
+--  with Ada.Containers.Vectors;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Text_IO;
+
+with Xml;         use Xml;
 with Xml_Scanner; use Xml_Scanner;
 with Xml_Scanner.IO;
 
 ##
-   procedure YYError (S : String) is
-   begin
-      Text_IO.Put_Line (S);
-      raise Syntax_Error;
-   end YYError;
+   procedure Parse
+    (Reader    : not null access Sax.Readers.Sax_Reader'Class;
+     File_Name : String)
+   is
 
-   type XML_Element_Node is record
-      Name : String_Access;
-   end record;
+      Stop_Processing : Boolean := False;
 
-   type XML_Element_Node_Access is access all XML_Element_Node;
+      procedure Check_Processing_Stopped is
+      begin
+         if Stop_Processing then
+            raise Program_Error;
+         end if;
+      end Check_Processing_Stopped;
 
-   package XML_Element_Node_Access_Vectors is
-     new Ada.Containers.Vectors (Positive, XML_Element_Node_Access);
+      procedure YYError (S : String) is
+      begin
+         Text_IO.Put_Line (S);
+         raise Syntax_Error;
+      end YYError;
+
+--   type XML_Element_Node is record
+--      Name : String_Access;
+--   end record;
+--
+--   type XML_Element_Node_Access is access all XML_Element_Node;
+--
+--   package XML_Element_Node_Access_Vectors is
+--     new Ada.Containers.Vectors (Positive, XML_Element_Node_Access);
 
    Element_Node_Stack : XML_Element_Node_Access_Vectors.Vector;
    Current_Element_Node : XML_Element_Node_Access;
 
 ##
-   procedure Parse (File_Name : String) is
    begin
       Xml_Scanner.IO.Open_Input (File_Name);
+      Reader.Content_Handler.Start_Document (Stop_Processing);
+      Check_Processing_Stopped;
       YYParse;
+      Reader.Content_Handler.End_Document (Stop_Processing);
+      Check_Processing_Stopped;
    end Parse;
-

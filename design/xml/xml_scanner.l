@@ -1,8 +1,11 @@
 
 --CHAR            [\001-\377]
 --RESTRICTED_CHAR [\001-\010\013\014\016\017\177-\204\206-\237]
-WHITE_SPACE     [\040\011\015\012]
-NAME_START_CHAR [:A-Z_a-z\300-\326\330-\336\370-\377]
+WHITE_SPACE     [\u0020\u0009\u000D\u000A]
+NAME_START_CHAR [:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF]
+--  NAME_START_CHAR [:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]
+--  NAME_START_CHAR [:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u10000-\u10FFFF]
+--      [#x370-#x37D] | [#x37F-#x1FFF] | [#x200C-#x200D] | [#x2070-#x218F] | [#x2C00-#x2FEF] | [#x3001-#xD7FF] | [#xF900-#xFDCF] | [#xFDF0-#xFFFD] | [#x10000-#xEFFFF]
 ----  NAME_CHAR       {NAME_START_CHAR} | [-.0-9\267]
 NAME_CHAR       [\-\.0-9\267:A-Z_a-z\300-\326\330-\336\370-\377]
 
@@ -15,6 +18,7 @@ NO_GREATER_CHAR  [\001-\075\077-\377]
 --NO_QUOTATION_CHAR  [\001-\041\043-\377]
 NO_AMPERSAND_APOSTROPHE_LESS_CHAR [\001-\045\050-\073\075-\377]
 NO_QUOTATION_AMPERSAND_LESS_CHAR [\001-\041\043-\045\047-\073\075-\377]
+NO_AMPERSAND_LESS_CHAR [\u0001-\u0025\u0027-\u003B\u003D-\u00FF]
 
 XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 --  Synthetic set of character. XMLDECL_ATTRIBUTE_CHAR is a union of characters
@@ -47,7 +51,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 }
 
 --"<?[xX][mM][lL]" {
---   Text_IO.Put_Line ("ERROR!!!!");
+--   Ada.Text_IO.Put_Line ("ERROR!!!!");
 --}
 
 "<?"{NAME_START_CHAR}{NAME_CHAR}* {
@@ -55,8 +59,20 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 
    ENTER (PI);
 
---   Text_IO.Put_Line ("PI open          : '" & XML_Scanner.DFA.YYText & ''');
---   return Token_PI_Start;
+   --  Processing instruction is constructed at the scanner level. Here is the
+   --  only initial initialization of the return value, processing
+   --  instruction's data (it any) added during scanning before returns to
+   --  parser.
+
+   declare
+      Aux : constant String := YYText;
+
+   begin
+      YYLVal :=
+       (Name_Value,
+        To_Unbounded_String (Aux (Aux'First + 2 .. Aux'Last)),
+        Null_Unbounded_String);
+   end;
 }
 
 "<"{NAME_START_CHAR}{NAME_CHAR}* {
@@ -68,7 +84,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
       Aux : constant String := YYText;
 
    begin
-      YYLVal := (Name, new String'(Aux (Aux'First + 1 .. Aux'Last)));
+      YYLVal := (Text, To_Unbounded_String (Aux (Aux'First + 1 .. Aux'Last)));
 
       return Token_Start_Tag_Start;
    end;
@@ -83,7 +99,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
       Aux : constant String := YYText;
 
    begin
-      YYLVal := (Name, new String'(Aux (Aux'First + 2 .. Aux'Last)));
+      YYLVal := (Text, To_Unbounded_String (Aux (Aux'First + 2 .. Aux'Last)));
 
       return Token_End_Tag_Start;
    end;
@@ -92,13 +108,31 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 "<!--"({NO_HYPHEN_CHAR}|-{NO_HYPHEN_CHAR})*"-->" {
    --  [15] Comment
 
-   return Token_Comment;
+   declare
+      Aux : constant String := YYText;
+
+   begin
+      YYLVal :=
+       (Text, To_Unbounded_String (Aux (Aux'First + 4 .. Aux'Last - 3)));
+
+      return Token_Comment;
+   end;
 }
 
 {WHITE_SPACE}+ {
    --  [3] S
 
+   YYLVal := (Text, To_Unbounded_String (YYText));
+
    return Token_White_Space;
+}
+
+{NO_AMPERSAND_LESS_CHAR}+ {
+   --  [14] CharData - !!! Incomplete !!!
+
+   YYLVal := (Text, To_Unbounded_String (YYText));
+
+   return Token_Character_Data;
 }
 
 <XML_DECL>version {
@@ -152,15 +186,17 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 }
 
 <PI>{WHITE_SPACE}+ {
+   --  [16] PI
+
+   --  Ignore all whitespaces is followed by processing insturction's name.
+
    ENTER (PI_DATA);
 }
 
 <PI_DATA>({NO_QUESTION_CHAR}*|"?"{NO_GREATER_CHAR}+)* {
    --  [16] PI
 
-   null;
---   return Token_PI_Data;
---   Text_IO.Put_Line ("PI text          : '" & XML_Scanner.DFA.YYText & ''');
+   YYLVal.Value := To_Unbounded_String (YYText);
 }
 
 <PI,PI_DATA>"?>" {
@@ -172,7 +208,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 }
 
 --<PI_DATA>. {
---   Text_IO.Put_Line ("PI: ERROR");
+--   Ada.Text_IO.Put_Line ("PI: ERROR");
 --}
 
 
@@ -223,18 +259,18 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <APOSTROPHE_ATTRIBUTE_VALUE>{NO_AMPERSAND_APOSTROPHE_LESS_CHAR}* {
    --  [10] AttValue
 
-   Text_IO.Put_Line ("Attr value segment");
+   Ada.Text_IO.Put_Line ("Attr value segment");
    return Token_Attribute_Value;
 }
 
 <QUOTATION_ATTRIBUTE_VALUE>{NO_QUOTATION_AMPERSAND_LESS_CHAR}* {
    --  [10] AttValue
 
-   Text_IO.Put_Line ("Attr value segment");
+   Ada.Text_IO.Put_Line ("Attr value segment");
    return Token_Attribute_Value;
 }
 
-<APOSTROPHE_ATTRIBUTE_VALUE,QUOTATION_ATTRIBUTE_VALUE>{NAME_START_CHAR}{NAME_CHAR}* {
+<APOSTROPHE_ATTRIBUTE_VALUE,QUOTATION_ATTRIBUTE_VALUE>"&"{NAME_START_CHAR}{NAME_CHAR}*";" {
    --  [68] EntityRef
 
    return Token_Entity_Ref;
@@ -246,7 +282,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    return Token_Char_Ref;
 }
 
-<APOSTROPHE_ATTRIBUTE_VALUE,QUOTATION_ATTRIBUTE_VALUE>"&#"[0-9a-fA-F]+";" {
+<APOSTROPHE_ATTRIBUTE_VALUE,QUOTATION_ATTRIBUTE_VALUE>"&#x"[0-9a-fA-F]+";" {
    --  [66] CharRef
 
    return Token_Char_Ref;
@@ -269,7 +305,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 }
 
 <END_TAG>. {
-   Text_IO.Put_Line ("ERROR");
+   Ada.Text_IO.Put_Line ("ERROR");
 }
 
 
@@ -479,7 +515,11 @@ with Xml_Parser.Tokens; use Xml_Parser.Tokens;
 ##
    function YYLex return Token;
 ##
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Ada.Text_IO;
 
 ##
+use Ada.Text_IO;
 
 ##
+   PI_Data : Ada.Strings.Unbounded.Unbounded_String;
