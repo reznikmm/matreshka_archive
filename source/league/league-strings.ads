@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -305,7 +305,7 @@ private
    end record;
 
    type Universal_String is new Ada.Finalization.Controlled with record
-      Data    : Matreshka.Internals.Strings.Internal_String_Access;
+      Data    : Matreshka.Internals.Strings.Shared_String_Access;
       List    : aliased Cursor_List;
       Cursors : access Cursor_List;
       --  List of cursors. This member is initialized to reference to List
@@ -324,7 +324,7 @@ private
    package Constructors is
 
       function Create
-       (Data : not null Matreshka.Internals.Strings.Internal_String_Access)
+       (Data : not null Matreshka.Internals.Strings.Shared_String_Access)
           return Universal_String;
       --  Creates instance of Universal_String with specified parameters.
 
@@ -365,7 +365,7 @@ private
    --------------
 
    type Sort_Key is new Ada.Finalization.Controlled with record
-      Data : Matreshka.Internals.Strings.Internal_Sort_Key_Access;
+      Data : Matreshka.Internals.Strings.Shared_Sort_Key_Access;
    end record;
 
    overriding procedure Initialize (Self : in out Sort_Key);

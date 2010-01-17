@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -51,7 +51,7 @@ package body League.Strings.Cursors.Characters is
       end if;
 
       declare
-         D : constant Internal_String_Access := Self.Object.Data;
+         D : constant Shared_String_Access := Self.Object.Data;
 
       begin
          if Self.Current not in D.Value'First .. D.Last then
@@ -88,7 +88,7 @@ package body League.Strings.Cursors.Characters is
       end if;
 
       declare
-         D : constant Internal_String_Access := Self.Object.Data;
+         D : constant Shared_String_Access := Self.Object.Data;
 
       begin
          return Self.Current in D.Value'First .. D.Last;
@@ -124,7 +124,7 @@ package body League.Strings.Cursors.Characters is
       end if;
 
       declare
-         D : constant Internal_String_Access := Self.Object.Data;
+         D : constant Shared_String_Access := Self.Object.Data;
 
       begin
          if Self.Current in D.Value'First .. D.Last then
@@ -166,7 +166,7 @@ package body League.Strings.Cursors.Characters is
       end if;
 
       declare
-         D : constant Internal_String_Access := Self.Object.Data;
+         D : constant Shared_String_Access := Self.Object.Data;
 
       begin
          if Self.Current = 1 then

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -43,9 +43,9 @@ package Matreshka.Internals.Unicode.Casing is
 
    procedure Convert_Case
     (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
-     Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
+     Source      : not null Matreshka.Internals.Strings.Shared_String_Access;
      Kind        : Matreshka.Internals.Unicode.Ucd.Case_Mapping_Kinds;
      Property    : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
-     Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
+     Destination : in out Matreshka.Internals.Strings.Shared_String_Access);
 
 end Matreshka.Internals.Unicode.Casing;

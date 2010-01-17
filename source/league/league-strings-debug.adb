@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -102,7 +102,7 @@ package body League.Strings.Debug is
    -----------------
 
    function Debug_Image (Item : Sort_Key) return String is
-      D      : constant Internal_Sort_Key_Access := Item.Data;
+      D      : constant Shared_Sort_Key_Access := Item.Data;
       Result : Unbounded_String;
 
    begin
@@ -131,7 +131,7 @@ package body League.Strings.Debug is
    -----------------
 
    function Debug_Image (Item : Universal_String) return String is
-      D      : constant Internal_String_Access := Item.Data;
+      D      : constant Shared_String_Access := Item.Data;
       Result : Unbounded_String;
       Index  : Positive := 1;
       Code   : Code_Point;

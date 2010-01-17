@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -95,8 +95,8 @@ package body Matreshka.Internals.Unicode.Collation is
 
    function Construct_Sort_Key
     (Locale : Matreshka.Internals.Locales.Locale_Data_Access;
-     Source : Matreshka.Internals.Strings.Internal_String_Access)
-       return Matreshka.Internals.Strings.Internal_Sort_Key_Access
+     Source : Matreshka.Internals.Strings.Shared_String_Access)
+       return Matreshka.Internals.Strings.Shared_Sort_Key_Access
    is
       Collation_Array : Collation_Element_Bounded_Array_Access
         := new Collation_Element_Bounded_Array (Source.Last);
@@ -272,8 +272,8 @@ package body Matreshka.Internals.Unicode.Collation is
          end;
       end loop;
 
-      return Result : constant Internal_Sort_Key_Access
-        := new Internal_Sort_Key (Collation_Array.Last * 3 + 2)
+      return Result : constant Shared_Sort_Key_Access
+        := new Shared_Sort_Key (Collation_Array.Last * 3 + 2)
       do
          for J in 1 .. Collation_Array.Last loop
             if Collation_Array.Data (J).Primary /= 0 then

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -46,25 +46,25 @@ package body Matreshka.Internals.Unicode.Normalization is
       Decomposition : Decomposition_Kinds;
 
    procedure Generic_Decomposition
-    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
-     Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
+    (Source      : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Shared_String_Access);
 
    generic
       Form          : Normalization_Form;
       Decomposition : Decomposition_Kinds;
 
    procedure Generic_Decomposition_Composition
-    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
-     Destination : in out Matreshka.Internals.Strings.Internal_String_Access);
+    (Source      : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Shared_String_Access);
 
    procedure Reorder_Last_Character
-    (Destination : Internal_String_Access;
+    (Destination : Shared_String_Access;
      First       : Positive;
      Last        : Positive);
    --  Move last character in the string to follow Canonical Ordering.
 
    procedure Compose
-    (Destination          : Internal_String_Access;
+    (Destination          : Shared_String_Access;
      Starter_Index        : Positive;
      Next_Starter_Index   : in out Positive;
      New_Starter_Composed : out Boolean);
@@ -82,7 +82,7 @@ package body Matreshka.Internals.Unicode.Normalization is
    -------------
 
    procedure Compose
-    (Destination          : Internal_String_Access;
+    (Destination          : Shared_String_Access;
      Starter_Index        : Positive;
      Next_Starter_Index   : in out Positive;
      New_Starter_Composed : out Boolean)
@@ -243,8 +243,8 @@ package body Matreshka.Internals.Unicode.Normalization is
    ---------------------------
 
    procedure Generic_Decomposition
-    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
-     Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
+    (Source      : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
       type Starter_State is record
          D_Next : Positive := 1;
@@ -412,8 +412,8 @@ package body Matreshka.Internals.Unicode.Normalization is
    ---------------------------------------
 
    procedure Generic_Decomposition_Composition
-    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
-     Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
+    (Source      : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
 
       type Starter_State is record
@@ -663,8 +663,8 @@ package body Matreshka.Internals.Unicode.Normalization is
    ---------
 
    procedure NFC
-    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
-     Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
+    (Source      : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
       procedure Convert is
         new Generic_Decomposition_Composition (NFC, Canonical);
@@ -678,8 +678,8 @@ package body Matreshka.Internals.Unicode.Normalization is
    ---------
 
    procedure NFD
-    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
-     Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
+    (Source      : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
       procedure Convert is new Generic_Decomposition (NFD, Canonical);
 
@@ -692,8 +692,8 @@ package body Matreshka.Internals.Unicode.Normalization is
    ----------
 
    procedure NFKC
-    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
-     Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
+    (Source      : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
       procedure Convert is
         new Generic_Decomposition_Composition (NFKC, Compatibility);
@@ -707,8 +707,8 @@ package body Matreshka.Internals.Unicode.Normalization is
    ----------
 
    procedure NFKD
-    (Source      : not null Matreshka.Internals.Strings.Internal_String_Access;
-     Destination : in out Matreshka.Internals.Strings.Internal_String_Access)
+    (Source      : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Destination : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
       procedure Convert is new Generic_Decomposition (NFKD, Compatibility);
 
@@ -721,7 +721,7 @@ package body Matreshka.Internals.Unicode.Normalization is
    ----------------------------
 
    procedure Reorder_Last_Character
-    (Destination : Internal_String_Access;
+    (Destination : Shared_String_Access;
      First       : Positive;
      Last        : Positive)
    is

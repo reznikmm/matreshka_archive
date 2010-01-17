@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -111,7 +111,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
       end if;
 
       declare
-         D : constant Internal_String_Access := Self.Object.Data;
+         D : constant Shared_String_Access := Self.Object.Data;
 
       begin
          if Self.Current_Position not in D.Value'First .. D.Last then
@@ -133,7 +133,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
    ---------------
 
    procedure Find_Next (Self : in out Grapheme_Cluster_Cursor'Class) is
-      D : constant not null Internal_String_Access := Self.Object.Data;
+      D : constant not null Shared_String_Access := Self.Object.Data;
 
    begin
       if Self.Current_Position <= D.Last then
@@ -168,7 +168,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
    -------------------
 
    procedure Find_Previous (Self : in out Grapheme_Cluster_Cursor'Class) is
-      D : constant not null Internal_String_Access := Self.Object.Data;
+      D : constant not null Shared_String_Access := Self.Object.Data;
 
    begin
       if Self.Current_Position > D.Value'First then
@@ -231,7 +231,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
       end if;
 
       declare
-         D : constant Internal_String_Access := Self.Object.Data;
+         D : constant Shared_String_Access := Self.Object.Data;
 
       begin
          return Self.Current_Position in D.Value'First .. D.Last;
@@ -274,7 +274,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
       end if;
 
       declare
-         D : constant Internal_String_Access := Self.Object.Data;
+         D : constant Shared_String_Access := Self.Object.Data;
 
       begin
          if Self.Current_Position <= D.Last then
@@ -319,7 +319,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
       end if;
 
       declare
-         D : constant Internal_String_Access := Self.Object.Data;
+         D : constant Shared_String_Access := Self.Object.Data;
 
       begin
          if Self.Current_Position in D.Value'First .. D.Last + 1 then

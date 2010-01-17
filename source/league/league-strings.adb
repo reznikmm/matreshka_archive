@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -47,7 +47,7 @@ package body League.Strings is
 
    procedure To_Utf16_String
     (Source      : Wide_Wide_String;
-     Destination : out Internal_String_Access);
+     Destination : out Shared_String_Access);
 
    procedure Attach (Self : in out Abstract_Cursor'Class);
    --  Attaches cursor to the list of cursors of Universal_String.
@@ -95,8 +95,8 @@ package body League.Strings is
      Right : Universal_String'Class)
        return Universal_String
    is
-      L_D : constant not null Internal_String_Access := Left.Data;
-      R_D : constant not null Internal_String_Access := Right.Data;
+      L_D : constant not null Shared_String_Access := Left.Data;
+      R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
       if L_D.Length = 0 then
@@ -107,7 +107,7 @@ package body League.Strings is
 
       else
          declare
-            D : constant not null Internal_String_Access
+            D : constant not null Shared_String_Access
               := Allocate (L_D.Last + R_D.Last);
 
          begin
@@ -131,7 +131,7 @@ package body League.Strings is
      Right : Wide_Wide_Character)
        return Universal_String
    is
-      L_D : constant not null Internal_String_Access := Left.Data;
+      L_D : constant not null Shared_String_Access := Left.Data;
 
    begin
       if not Is_Legal_Unicode_Code_Point (Wide_Wide_Character'Pos (Right)) then
@@ -139,8 +139,7 @@ package body League.Strings is
       end if;
 
       declare
-         D : constant not null Internal_String_Access
-           := Allocate (L_D.Last + 2);
+         D : constant not null Shared_String_Access := Allocate (L_D.Last + 2);
          P : Positive := L_D.Last + 1;
 
       begin
@@ -162,7 +161,7 @@ package body League.Strings is
      Right : Universal_String'Class)
        return Universal_String
    is
-      R_D : constant not null Internal_String_Access := Right.Data;
+      R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
       if not Is_Legal_Unicode_Code_Point (Wide_Wide_Character'Pos (Left)) then
@@ -170,7 +169,7 @@ package body League.Strings is
       end if;
 
       declare
-         D : constant not null Internal_String_Access
+         D : constant not null Shared_String_Access
            := Allocate (R_D.Last + 2);
          P : Positive := 1;
 
@@ -189,8 +188,8 @@ package body League.Strings is
    ---------
 
    function "<" (Left : Sort_Key; Right : Sort_Key) return Boolean is
-      L_D : constant Internal_Sort_Key_Access := Left.Data;
-      R_D : constant Internal_Sort_Key_Access := Right.Data;
+      L_D : constant Shared_Sort_Key_Access := Left.Data;
+      R_D : constant Shared_Sort_Key_Access := Right.Data;
 
    begin
       return
@@ -203,8 +202,8 @@ package body League.Strings is
    ----------
 
    function "<=" (Left : Sort_Key; Right : Sort_Key) return Boolean is
-      L_D : constant Internal_Sort_Key_Access := Left.Data;
-      R_D : constant Internal_Sort_Key_Access := Right.Data;
+      L_D : constant Shared_Sort_Key_Access := Left.Data;
+      R_D : constant Shared_Sort_Key_Access := Right.Data;
 
    begin
       return
@@ -247,8 +246,8 @@ package body League.Strings is
    overriding function "=" (Left : Sort_Key; Right : Sort_Key)
      return Boolean
    is
-      L_D : constant Internal_Sort_Key_Access := Left.Data;
-      R_D : constant Internal_Sort_Key_Access := Right.Data;
+      L_D : constant Shared_Sort_Key_Access := Left.Data;
+      R_D : constant Shared_Sort_Key_Access := Right.Data;
 
    begin
       return
@@ -261,8 +260,8 @@ package body League.Strings is
    ---------
 
    function ">" (Left : Sort_Key; Right : Sort_Key) return Boolean is
-      L_D : constant Internal_Sort_Key_Access := Left.Data;
-      R_D : constant Internal_Sort_Key_Access := Right.Data;
+      L_D : constant Shared_Sort_Key_Access := Left.Data;
+      R_D : constant Shared_Sort_Key_Access := Right.Data;
 
    begin
       return
@@ -275,8 +274,8 @@ package body League.Strings is
    ----------
 
    function ">=" (Left : Sort_Key; Right : Sort_Key) return Boolean is
-      L_D : constant Internal_Sort_Key_Access := Left.Data;
-      R_D : constant Internal_Sort_Key_Access := Right.Data;
+      L_D : constant Shared_Sort_Key_Access := Left.Data;
+      R_D : constant Shared_Sort_Key_Access := Right.Data;
 
    begin
       return
@@ -372,8 +371,8 @@ package body League.Strings is
      To   : Universal_String'Class)
        return Relationship
    is
-      LD    : constant not null Internal_String_Access := Self.Data;
-      RD    : constant not null Internal_String_Access := To.Data;
+      LD    : constant not null Shared_String_Access := Self.Data;
+      RD    : constant not null Shared_String_Access := To.Data;
       Fixup : constant array (Utf16_Code_Unit range 0 .. 31) of Utf16_Code_Unit
         := (0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0,
@@ -414,7 +413,7 @@ package body League.Strings is
    ---------------
 
    function Collation (Self : Universal_String'Class) return Sort_Key is
-      Data   : Internal_String_Access;
+      Data   : Shared_String_Access;
       Locale : Matreshka.Internals.Locales.Locale_Data_Access;
 
    begin
@@ -442,7 +441,7 @@ package body League.Strings is
       -- Create --
       ------------
 
-      function Create (Data : not null Internal_String_Access)
+      function Create (Data : not null Shared_String_Access)
         return Universal_String
       is
       begin
@@ -526,7 +525,7 @@ package body League.Strings is
      Index : Positive)
        return Wide_Wide_Character
    is
-      D : constant Internal_String_Access := Self.Data;
+      D : constant Shared_String_Access := Self.Data;
 
    begin
       if Index > D.Length then
@@ -780,7 +779,7 @@ package body League.Strings is
      High : Natural;
      By   : Universal_String'Class)
    is
-      D      : constant not null Internal_String_Access := Self.Data;
+      D      : constant not null Shared_String_Access := Self.Data;
       Length : Natural;
       First  : Positive;
       Last   : Natural;
@@ -834,7 +833,7 @@ package body League.Strings is
      High : Natural)
        return Universal_String
    is
-      D      : constant not null Internal_String_Access := Self.Data;
+      D      : constant not null Shared_String_Access := Self.Data;
       Length : Natural;
       First  : Positive;
       Last   : Natural;
@@ -893,7 +892,7 @@ package body League.Strings is
       declare
          Locale : Matreshka.Internals.Locales.Locale_Data_Access
            := Matreshka.Internals.Locales.Get_Locale;
-         Data   : not null Internal_String_Access := Allocate (Self.Data.Last);
+         Data   : not null Shared_String_Access := Allocate (Self.Data.Last);
 
       begin
          Matreshka.Internals.Unicode.Casing.Convert_Case
@@ -923,7 +922,7 @@ package body League.Strings is
       declare
          Locale : Matreshka.Internals.Locales.Locale_Data_Access
            := Matreshka.Internals.Locales.Get_Locale;
-         Data   : not null Internal_String_Access := Allocate (Self.Data.Last);
+         Data   : not null Shared_String_Access := Allocate (Self.Data.Last);
 
       begin
          Matreshka.Internals.Unicode.Casing.Convert_Case
@@ -945,7 +944,7 @@ package body League.Strings is
    function To_NFC (Self : Universal_String'Class)
      return Universal_String
    is
-      Data : Internal_String_Access;
+      Data : Shared_String_Access;
 
    begin
       Matreshka.Internals.Unicode.Normalization.NFC (Self.Data, Data);
@@ -960,7 +959,7 @@ package body League.Strings is
    function To_NFD (Self : Universal_String'Class)
      return Universal_String
    is
-      Data : Internal_String_Access;
+      Data : Shared_String_Access;
 
    begin
       Matreshka.Internals.Unicode.Normalization.NFD (Self.Data, Data);
@@ -975,7 +974,7 @@ package body League.Strings is
    function To_NFKC (Self : Universal_String'Class)
      return Universal_String
    is
-      Data : Internal_String_Access;
+      Data : Shared_String_Access;
 
    begin
       Matreshka.Internals.Unicode.Normalization.NFKC (Self.Data, Data);
@@ -990,7 +989,7 @@ package body League.Strings is
    function To_NFKD (Self : Universal_String'Class)
      return Universal_String
    is
-      Data : Internal_String_Access;
+      Data : Shared_String_Access;
 
    begin
       Matreshka.Internals.Unicode.Normalization.NFKD (Self.Data, Data);
@@ -1017,7 +1016,7 @@ package body League.Strings is
    function To_Universal_String (Item : Wide_Wide_String)
      return Universal_String
    is
-      Data : Internal_String_Access;
+      Data : Shared_String_Access;
 
    begin
       if Item'Length = 0 then
@@ -1053,7 +1052,7 @@ package body League.Strings is
       declare
          Locale : Matreshka.Internals.Locales.Locale_Data_Access
            := Matreshka.Internals.Locales.Get_Locale;
-         Data   : not null Internal_String_Access := Allocate (Self.Data.Last);
+         Data   : not null Shared_String_Access := Allocate (Self.Data.Last);
 
       begin
          Matreshka.Internals.Unicode.Casing.Convert_Case
@@ -1074,7 +1073,7 @@ package body League.Strings is
 
    procedure To_Utf16_String
     (Source      : Wide_Wide_String;
-     Destination : out Internal_String_Access)
+     Destination : out Shared_String_Access)
    is
    begin
       Destination := Allocate (Source'Length);

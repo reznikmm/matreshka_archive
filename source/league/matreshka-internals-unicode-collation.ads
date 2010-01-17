@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -40,8 +40,8 @@ package Matreshka.Internals.Unicode.Collation is
 
    function Construct_Sort_Key
     (Locale : Matreshka.Internals.Locales.Locale_Data_Access;
-     Source : Matreshka.Internals.Strings.Internal_String_Access)
-       return Matreshka.Internals.Strings.Internal_Sort_Key_Access;
+     Source : Matreshka.Internals.Strings.Shared_String_Access)
+       return Matreshka.Internals.Strings.Shared_Sort_Key_Access;
    --  Construct sort key.
 
 end Matreshka.Internals.Unicode.Collation;

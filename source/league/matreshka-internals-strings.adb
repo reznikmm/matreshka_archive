@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -45,10 +45,10 @@ package body Matreshka.Internals.Strings is
 
    procedure Free is
      new Ada.Unchecked_Deallocation
-          (Internal_Sort_Key, Internal_Sort_Key_Access);
+          (Shared_Sort_Key, Shared_Sort_Key_Access);
 
    procedure Free is
-     new Ada.Unchecked_Deallocation (Internal_String, Internal_String_Access);
+     new Ada.Unchecked_Deallocation (Shared_String, Shared_String_Access);
 
    function Test_And_Set is
      new Matreshka.Internals.Atomics.Generic_Test_And_Set
@@ -72,7 +72,7 @@ package body Matreshka.Internals.Strings is
    -- Allocate --
    --------------
 
-   function Allocate (Size : Natural) return not null Internal_String_Access is
+   function Allocate (Size : Natural) return not null Shared_String_Access is
    begin
       if Size = 0 then
          Reference (Shared_Empty'Access);
@@ -80,8 +80,7 @@ package body Matreshka.Internals.Strings is
          return Shared_Empty'Access;
 
       else
-         return
-           new Internal_String ((Size / Min_Mul_Alloc + 1) * Min_Mul_Alloc);
+         return new Shared_String ((Size / Min_Mul_Alloc + 1) * Min_Mul_Alloc);
       end if;
    end Allocate;
 
@@ -90,7 +89,7 @@ package body Matreshka.Internals.Strings is
    ------------
 
    procedure Append
-    (Self      : in out Internal_String_Access;
+    (Self      : in out Shared_String_Access;
      Code      : Code_Point;
      Increment : Natural)
    is
@@ -108,7 +107,7 @@ package body Matreshka.Internals.Strings is
 
       if Self.Last > Self.Size then
          declare
-            Aux : constant not null Internal_String_Access
+            Aux : constant not null Shared_String_Access
               := Allocate
                   (Self.Last + Natural'Max (Self.Size + Increment, Self.Last));
 
@@ -130,10 +129,10 @@ package body Matreshka.Internals.Strings is
    ------------
 
    procedure Append
-    (Self : in out Internal_String_Access;
-     Item : Internal_String_Access)
+    (Self : in out Shared_String_Access;
+     Item : Shared_String_Access)
    is
-      Source : Internal_String_Access := Self;
+      Source : Shared_String_Access := Self;
       Size   : constant Natural := Source.Last + Item.Last;
 
    begin
@@ -180,7 +179,7 @@ package body Matreshka.Internals.Strings is
    -- Compute_Index_Map --
    -----------------------
 
-   procedure Compute_Index_Map (Self : in out Internal_String) is
+   procedure Compute_Index_Map (Self : in out Shared_String) is
       Map     : Index_Map_Access := Self.Index_Map;
       Current : Positive         := 1;
 
@@ -218,7 +217,7 @@ package body Matreshka.Internals.Strings is
    -- Dereference --
    -----------------
 
-   procedure Dereference (Self : in out Internal_Sort_Key_Access) is
+   procedure Dereference (Self : in out Shared_Sort_Key_Access) is
    begin
       if Self /= null then
          if Matreshka.Internals.Atomics.Counters.Decrement
@@ -236,7 +235,7 @@ package body Matreshka.Internals.Strings is
    -- Dereference --
    -----------------
 
-   procedure Dereference (Self : in out Internal_String_Access) is
+   procedure Dereference (Self : in out Shared_String_Access) is
    begin
       if Self /= null then
          if Matreshka.Internals.Atomics.Counters.Decrement
@@ -257,7 +256,7 @@ package body Matreshka.Internals.Strings is
    -- Hash --
    ----------
 
-   function Hash (Self : not null Internal_String_Access)
+   function Hash (Self : not null Shared_String_Access)
      return Internal_Hash_Type
    is
       M     : constant Internal_Hash_Type := 16#5BD1E995#;
@@ -289,7 +288,7 @@ package body Matreshka.Internals.Strings is
    -- Reference --
    ---------------
 
-   procedure Reference (Self : Internal_Sort_Key_Access) is
+   procedure Reference (Self : Shared_Sort_Key_Access) is
    begin
       if Self /= null then
          Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
@@ -300,7 +299,7 @@ package body Matreshka.Internals.Strings is
    -- Reference --
    ---------------
 
-   procedure Reference (Self : Internal_String_Access) is
+   procedure Reference (Self : Shared_String_Access) is
    begin
       Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
    end Reference;
@@ -310,17 +309,17 @@ package body Matreshka.Internals.Strings is
    -------------
 
    procedure Replace
-    (Self   : in out Internal_String_Access;
+    (Self   : in out Shared_String_Access;
      Low    : Positive;
      High   : Natural;
      Length : Natural;
-     By     : not null Internal_String_Access)
+     By     : not null Shared_String_Access)
    is
       pragma Assert (Low <= Self.Last + 1);
       pragma Assert (High < Low or else High <= Self.Last);
       pragma Assert (Length in (High - Low + 2) / 2 .. High - Low + 1);
 
-      Source : Internal_String_Access := Self;
+      Source : Shared_String_Access := Self;
       Size   : constant Natural
         := Source.Last - Natural'Max (High - Low + 1, 0) + By.Last;
 
@@ -374,11 +373,11 @@ package body Matreshka.Internals.Strings is
    -----------
 
    function Slice
-    (Self   : not null Internal_String_Access;
+    (Self   : not null Shared_String_Access;
      Low    : Positive;
      High   : Natural;
      Length : Natural)
-       return not null Internal_String_Access
+       return not null Shared_String_Access
    is
       pragma Assert (High < Low
                        or else (Low <= Self.Last and then High <= Self.Last));
@@ -395,7 +394,7 @@ package body Matreshka.Internals.Strings is
             Size : constant Natural := High - Low + 1;
 
          begin
-            return Result : constant not null Internal_String_Access
+            return Result : constant not null Shared_String_Access
               := Allocate (Size)
             do
                Result.Value (1 .. Size) := Self.Value (Low .. High);

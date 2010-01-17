@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -52,7 +52,7 @@ package Matreshka.Internals.Strings is
 
    type Index_Map_Access is access all Index_Map;
 
-   type Internal_String (Size : Natural) is limited record
+   type Shared_String (Size : Natural) is limited record
       Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
@@ -75,15 +75,15 @@ package Matreshka.Internals.Strings is
       --  Is built on-demand.
    end record;
 
-   type Internal_String_Access is access all Internal_String;
+   type Shared_String_Access is access all Shared_String;
 
-   Shared_Empty : aliased Internal_String := (Size => 0, others => <>);
+   Shared_Empty : aliased Shared_String := (Size => 0, others => <>);
 
    type Sort_Key_Array is
      array (Positive range <>)
        of Matreshka.Internals.Unicode.Ucd.Collation_Weight;
 
-   type Internal_Sort_Key (Size : Natural) is record
+   type Shared_Sort_Key (Size : Natural) is record
       Counter  : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
@@ -94,63 +94,63 @@ package Matreshka.Internals.Strings is
       --  Last element in the data.
    end record;
 
-   type Internal_Sort_Key_Access is access all Internal_Sort_Key;
+   type Shared_Sort_Key_Access is access all Shared_Sort_Key;
 
-   Shared_Empty_Key : aliased Internal_Sort_Key := (Size => 0, others => <>);
+   Shared_Empty_Key : aliased Shared_Sort_Key := (Size => 0, others => <>);
 
 --   function Copy (Source : not null String_Private_Data_Access)
 --     return not null String_Private_Data_Access;
    --  Creates copy of string data.
 
-   function Allocate (Size : Natural) return not null Internal_String_Access;
+   function Allocate (Size : Natural) return not null Shared_String_Access;
    --  Allocates new instance of string with specified size. Actual size of the
    --  allocated string can be greater. Returns reference to Shared_Empty with
    --  incremented counter when Size is zero.
 
-   procedure Reference (Self : Internal_Sort_Key_Access);
+   procedure Reference (Self : Shared_Sort_Key_Access);
    pragma Inline (Reference);
    --  Increment reference counter.
 
-   procedure Reference (Self : Internal_String_Access);
+   procedure Reference (Self : Shared_String_Access);
    pragma Inline (Reference);
    --  Increment reference counter.
 
-   procedure Dereference (Self : in out Internal_Sort_Key_Access);
+   procedure Dereference (Self : in out Shared_Sort_Key_Access);
    --  Decrement reference counter and free resources if it reach zero value.
 
-   procedure Dereference (Self : in out Internal_String_Access);
+   procedure Dereference (Self : in out Shared_String_Access);
    --  Decrement reference counter and free resources if it reach zero value.
 
-   procedure Compute_Index_Map (Self : in out Internal_String);
+   procedure Compute_Index_Map (Self : in out Shared_String);
    --  Compute index map. This operation is thread-safe.
 
-   function Hash (Self : not null Internal_String_Access)
+   function Hash (Self : not null Shared_String_Access)
      return Internal_Hash_Type;
    --  Returns hash value for the string. MurmurHash2, by Austin Appleby is
    --  used.
 
    procedure Append
-    (Self : in out Internal_String_Access;
-     Item : Internal_String_Access);
+    (Self : in out Shared_String_Access;
+     Item : Shared_String_Access);
 
    function Slice
-    (Self   : not null Internal_String_Access;
+    (Self   : not null Shared_String_Access;
      Low    : Positive;
      High   : Natural;
      Length : Natural)
-       return not null Internal_String_Access;
+       return not null Shared_String_Access;
    --  Returns slice from Low to High. Length specify expected length of the
    --  result.
 
    procedure Replace
-    (Self   : in out Internal_String_Access;
+    (Self   : in out Shared_String_Access;
      Low    : Positive;
      High   : Natural;
      Length : Natural;
-     By     : not null Internal_String_Access);
+     By     : not null Shared_String_Access);
 
    procedure Append
-    (Self      : in out Internal_String_Access;
+    (Self      : in out Shared_String_Access;
      Code      : Matreshka.Internals.Unicode.Code_Point;
      Increment : Natural);
    --  Append character to the string, reallocate memory if needed. Increment
