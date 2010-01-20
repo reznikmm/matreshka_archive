@@ -245,9 +245,10 @@ package body Matreshka.Internals.Strings is
       then
          Free (Self.Index_Map);
          Free (Self);
-      end if;
 
-      Self := null;
+      else
+         Self := null;
+      end if;
    end Dereference;
 
    ----------
