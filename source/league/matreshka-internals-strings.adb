@@ -236,20 +236,18 @@ package body Matreshka.Internals.Strings is
    -----------------
 
    procedure Dereference (Self : in out Shared_String_Access) is
+      pragma Assert (Self /= null);
+
    begin
-      if Self /= null then
-         if Matreshka.Internals.Atomics.Counters.Decrement
-             (Self.Counter'Access)
-         then
-            pragma Assert (Self /= Shared_Empty'Access);
-
-            Free (Self.Index_Map);
-            Free (Self);
-
-         else
-            Self := null;
-         end if;
+      if Self /= Shared_Empty'Access
+        and then Matreshka.Internals.Atomics.Counters.Decrement
+                  (Self.Counter'Access)
+      then
+         Free (Self.Index_Map);
+         Free (Self);
       end if;
+
+      Self := null;
    end Dereference;
 
    ----------
@@ -301,7 +299,9 @@ package body Matreshka.Internals.Strings is
 
    procedure Reference (Self : Shared_String_Access) is
    begin
-      Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+      if Self /= Shared_Empty'Access then
+         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+      end if;
    end Reference;
 
    -------------

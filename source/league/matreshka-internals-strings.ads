@@ -120,6 +120,9 @@ package Matreshka.Internals.Strings is
 
    procedure Dereference (Self : in out Shared_String_Access);
    --  Decrement reference counter and free resources if it reach zero value.
+   --  Self is setted to null. Decrement of reference counter and deallocation
+   --  of Shared_Empty object is prevented to allow minor speedup and use it
+   --  to initialize components of Preelaborateable_Initialization types.
 
    procedure Compute_Index_Map (Self : in out Shared_String);
    --  Compute index map. This operation is thread-safe.
