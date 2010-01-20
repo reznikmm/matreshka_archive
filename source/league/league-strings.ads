@@ -62,6 +62,8 @@ package League.Strings is
 
    type Universal_String is tagged private;
 
+   Empty_String : constant Universal_String;
+
    type Sort_Key is private;
 
    type Hash_Type is mod 2 ** 32;
@@ -307,6 +309,7 @@ private
    type Universal_String is new Ada.Finalization.Controlled with record
       Data    : Matreshka.Internals.Strings.Shared_String_Access;
       List    : aliased Cursor_List;
+      --  Storage for holder of the head of the list of cursors
       Cursors : access Cursor_List;
       --  List of cursors. This member is initialized to reference to List
       --  member.
@@ -320,6 +323,16 @@ private
    overriding procedure Adjust (Self : in out Universal_String);
 
    overriding procedure Finalize (Self : in out Universal_String);
+
+   Empty_String_List : aliased Cursor_List := (Head => null);
+   Empty_String      : constant Universal_String
+     := (Ada.Finalization.Controlled with
+           Data    => Matreshka.Internals.Strings.Shared_Empty'Access,
+           List    => (Head => null),
+           Cursors => Empty_String_List'Access);
+   --  To satisfy requerements of language to prevent modification of component
+   --  of constant separate object to store list of associated cursors are
+   --  used.
 
    package Constructors is
 
