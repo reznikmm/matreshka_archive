@@ -666,16 +666,6 @@ package body League.Strings is
    -- Initialize --
    ----------------
 
-   overriding procedure Initialize (Self : in out Sort_Key) is
-   begin
-      Self.Data := Shared_Empty_Key'Access;
-      Reference (Self.Data);
-   end Initialize;
-
-   ----------------
-   -- Initialize --
-   ----------------
-
    overriding procedure Initialize (Self : in out Universal_String) is
    begin
       Self.Data := Shared_Empty'Access;

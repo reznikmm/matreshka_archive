@@ -65,6 +65,7 @@ package League.Strings is
    Empty_String : constant Universal_String;
 
    type Sort_Key is private;
+   pragma Preelaborable_Initialization (Sort_Key);
 
    type Hash_Type is mod 2 ** 32;
 
@@ -378,10 +379,9 @@ private
    --------------
 
    type Sort_Key is new Ada.Finalization.Controlled with record
-      Data : Matreshka.Internals.Strings.Shared_Sort_Key_Access;
+      Data : Matreshka.Internals.Strings.Shared_Sort_Key_Access
+        := Matreshka.Internals.Strings.Shared_Empty_Key'Access;
    end record;
-
-   overriding procedure Initialize (Self : in out Sort_Key);
 
    overriding procedure Adjust (Self : in out Sort_Key);
 

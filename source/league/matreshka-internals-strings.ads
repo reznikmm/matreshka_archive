@@ -79,7 +79,7 @@ package Matreshka.Internals.Strings is
 
    Shared_Empty : aliased Shared_String := (Size => 0, others => <>);
    --  Globally defined empty shared string to be used as default value.
-   --  Reference and Derefernce subprograms known about this object and
+   --  Reference and Dereference subprograms known about this object and
    --  never change its reference counter for speed optimization (atomic
    --  increment/decrement operations have significant perfomance penalty)
    --  and allows to be used in Preelaborateable_Initialization types.
@@ -102,6 +102,25 @@ package Matreshka.Internals.Strings is
    type Shared_Sort_Key_Access is access all Shared_Sort_Key;
 
    Shared_Empty_Key : aliased Shared_Sort_Key := (Size => 0, others => <>);
+   --  Globally defined shared empty sort key to be used as default value.
+   --  Reference and Dereference subprograms knoen about this object and
+   --  never change its reference counter for speed optimization (atomic
+   --  increment/decrement operations have significant performance penalty)
+   --  and allows to be used in Preelaborateable_Initialization types.
+
+   procedure Reference (Self : Shared_Sort_Key_Access);
+   pragma Inline (Reference);
+   --  Increment reference counter. Change of refernce counter of
+   --  Shared_Empty_Key object is prevented to provide speedup and to allow
+   --  to use it to initialize components of Preelaborateable_Initialization
+   --  types.
+
+   procedure Dereference (Self : in out Shared_Sort_Key_Access);
+   --  Decrement reference counter and free resources if it reach zero value.
+   --  Self is setted to null for safety reasons. Decrement of reference
+   --  counter and deallocation of Shared_Empty_Key object is prevented to
+   --  provide minor speedup and to allow to use it to initialize components
+   --  of Preelaborateable_Initialization types.
 
 --   function Copy (Source : not null String_Private_Data_Access)
 --     return not null String_Private_Data_Access;
@@ -112,24 +131,18 @@ package Matreshka.Internals.Strings is
    --  allocated string can be greater. Returns reference to Shared_Empty with
    --  incremented counter when Size is zero.
 
-   procedure Reference (Self : Shared_Sort_Key_Access);
-   pragma Inline (Reference);
-   --  Increment reference counter. Change of reference counter of Shared_Empty
-   --  object is prevented to allow minor speedup and use it to initialize
-   --  components of Preelaborateable_Initialization types.
-
    procedure Reference (Self : Shared_String_Access);
    pragma Inline (Reference);
-   --  Increment reference counter.
-
-   procedure Dereference (Self : in out Shared_Sort_Key_Access);
-   --  Decrement reference counter and free resources if it reach zero value.
+   --  Increment reference counter. Change of reference counter of Shared_Empty
+   --  object is prevented to provide speedup and to allow to use it to
+   --  initialize components of Preelaborateable_Initialization types.
 
    procedure Dereference (Self : in out Shared_String_Access);
    --  Decrement reference counter and free resources if it reach zero value.
    --  Self is setted to null. Decrement of reference counter and deallocation
-   --  of Shared_Empty object is prevented to allow minor speedup and use it
-   --  to initialize components of Preelaborateable_Initialization types.
+   --  of Shared_Empty object is prevented to provide minor speedup and to
+   --  allow use it to initialize components of Preelaborateable_Initialization
+   --  types.
 
    procedure Compute_Index_Map (Self : in out Shared_String);
    --  Compute index map. This operation is thread-safe.

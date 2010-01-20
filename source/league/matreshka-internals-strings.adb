@@ -219,15 +219,14 @@ package body Matreshka.Internals.Strings is
 
    procedure Dereference (Self : in out Shared_Sort_Key_Access) is
    begin
-      if Self /= null then
-         if Matreshka.Internals.Atomics.Counters.Decrement
-             (Self.Counter'Access)
-         then
-            Free (Self);
+      if Self /= Shared_Empty_Key'Access
+        and then Matreshka.Internals.Atomics.Counters.Decrement
+          (Self.Counter'Access)
+      then
+         Free (Self);
 
-         else
-            Self := null;
-         end if;
+      else
+         Self := null;
       end if;
    end Dereference;
 
@@ -289,7 +288,7 @@ package body Matreshka.Internals.Strings is
 
    procedure Reference (Self : Shared_Sort_Key_Access) is
    begin
-      if Self /= null then
+      if Self /= Shared_Empty_Key'Access then
          Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
       end if;
    end Reference;
