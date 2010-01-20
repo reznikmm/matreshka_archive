@@ -78,6 +78,11 @@ package Matreshka.Internals.Strings is
    type Shared_String_Access is access all Shared_String;
 
    Shared_Empty : aliased Shared_String := (Size => 0, others => <>);
+   --  Globally defined empty shared string to be used as default value.
+   --  Reference and Derefernce subprograms known about this object and
+   --  never change its reference counter for speed optimization (atomic
+   --  increment/decrement operations have significant perfomance penalty)
+   --  and allows to be used in Preelaborateable_Initialization types.
 
    type Sort_Key_Array is
      array (Positive range <>)
@@ -109,7 +114,9 @@ package Matreshka.Internals.Strings is
 
    procedure Reference (Self : Shared_Sort_Key_Access);
    pragma Inline (Reference);
-   --  Increment reference counter.
+   --  Increment reference counter. Change of reference counter of Shared_Empty
+   --  object is prevented to allow minor speedup and use it to initialize
+   --  components of Preelaborateable_Initialization types.
 
    procedure Reference (Self : Shared_String_Access);
    pragma Inline (Reference);
