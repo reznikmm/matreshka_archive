@@ -618,7 +618,13 @@ package body League.Strings is
 
    overriding procedure Finalize (Self : in out Sort_Key) is
    begin
-      Dereference (Self.Data);
+      --  Finalize can be called more than once (as specified by language
+      --  standard), thus implementation should provide protection from
+      --  multiple finalization.
+
+      if Self.Data /= null then
+         Dereference (Self.Data);
+      end if;
    end Finalize;
 
    --------------
@@ -626,17 +632,25 @@ package body League.Strings is
    --------------
 
    overriding procedure Finalize (Self : in out Universal_String) is
-      Current : Cursor_Access := Self.Cursors.Head;
+      Current : Cursor_Access;
       Next    : Cursor_Access;
 
    begin
-      while Current /= null loop
-         Next := Current.Next;
-         Detach (Current.all);
-         Current := Next;
-      end loop;
+      --  Finalize can be called more than once (as specified by language
+      --  standard), thus implementation should provide protection from
+      --  multiple finalization.
 
-      Dereference (Self.Data);
+      if Self.Data /= null then
+         Current := Self.Cursors.Head;
+
+         while Current /= null loop
+            Next := Current.Next;
+            Detach (Current.all);
+            Current := Next;
+         end loop;
+
+         Dereference (Self.Data);
+      end if;
    end Finalize;
 
    ----------
