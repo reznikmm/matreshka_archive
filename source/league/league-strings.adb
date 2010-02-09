@@ -1029,7 +1029,6 @@ package body League.Strings is
                   List    => (Head => null),
                   Cursors => null)
          do
-            Reference (Result.Data);
             Result.Cursors := Result.List'Unchecked_Access;
          end return;
       end if;

@@ -75,8 +75,6 @@ package body Matreshka.Internals.Strings is
    function Allocate (Size : Natural) return not null Shared_String_Access is
    begin
       if Size = 0 then
-         Reference (Shared_Empty'Access);
-
          return Shared_Empty'Access;
 
       else
@@ -140,7 +138,6 @@ package body Matreshka.Internals.Strings is
          if Self /= Shared_Empty'Access then
             Dereference (Self);
             Self := Shared_Empty'Access;
-            Reference (Self);
          end if;
 
       elsif Item.Length = 0 then
@@ -328,10 +325,9 @@ package body Matreshka.Internals.Strings is
          if Self /= Shared_Empty'Access then
             Dereference (Self);
             Self := Shared_Empty'Access;
-            Reference (Self);
          end if;
 
-      elsif By.Size = Size then
+      elsif By.Last = Size then
          Dereference (Self);
          Self := By;
          Reference (Self);
@@ -385,8 +381,6 @@ package body Matreshka.Internals.Strings is
 
    begin
       if High < Low then
-         Reference (Shared_Empty'Access);
-
          return Shared_Empty'Access;
 
       else

@@ -260,7 +260,6 @@ package body Matreshka.Internals.Unicode.Normalization is
    begin
       if Source.Last = 0 then
          Destination := Shared_Empty'Access;
-         Reference (Destination);
 
          return;
       end if;
@@ -438,7 +437,6 @@ package body Matreshka.Internals.Unicode.Normalization is
    begin
       if Source.Last = 0 then
          Destination := Shared_Empty'Access;
-         Reference (Destination);
 
          return;
       end if;
