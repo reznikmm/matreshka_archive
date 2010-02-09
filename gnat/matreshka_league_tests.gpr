@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -36,7 +36,8 @@ project Matreshka_League_Tests is
      "case_folding_test.adb",
      "normalization_test.adb",
      "additional_normalization_test.adb",
-     "collation_test.adb");
+     "collation_test.adb",
+     "string_speed.adb");
    for Object_Dir use "../.objs";
    for Source_Dirs use ("../testsuite/league", "../tools");
 
