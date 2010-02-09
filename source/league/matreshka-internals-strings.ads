@@ -70,6 +70,7 @@ package Matreshka.Internals.Strings is
 
       Index_Map : aliased Index_Map_Access := null;
       pragma Atomic (Index_Map);
+      pragma Volatile (Index_Map);
       --  Mapping of the string's characters index to position inside internal
       --  buffer. Used only if string has both BMP and non-BMP characters.
       --  Is built on-demand.
