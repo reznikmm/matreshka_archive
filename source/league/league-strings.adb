@@ -668,8 +668,6 @@ package body League.Strings is
 
    overriding procedure Initialize (Self : in out Universal_String) is
    begin
-      Self.Data := Shared_Empty'Access;
-      Reference (Self.Data);
       Self.List := (Head => null);
       Self.Cursors := Self.List'Unchecked_Access;
    end Initialize;

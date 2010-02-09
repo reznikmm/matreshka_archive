@@ -308,7 +308,8 @@ private
    end record;
 
    type Universal_String is new Ada.Finalization.Controlled with record
-      Data    : Matreshka.Internals.Strings.Shared_String_Access;
+      Data    : Matreshka.Internals.Strings.Shared_String_Access :=
+        Matreshka.Internals.Strings.Shared_Empty'Access;
       List    : aliased Cursor_List;
       --  Storage for holder of the head of the list of cursors
       Cursors : access Cursor_List;
@@ -332,8 +333,8 @@ private
            List    => (Head => null),
            Cursors => Empty_String_List'Access);
    --  To satisfy requerements of language to prevent modification of component
-   --  of constant separate object to store list of associated cursors are
-   --  used.
+   --  of constant the separate object is used to store list of associated
+   --  cursors.
 
    package Constructors is
 
