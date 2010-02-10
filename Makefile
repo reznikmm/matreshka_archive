@@ -4,9 +4,9 @@ UNIDATA = unicode/5.1.0/ucd
 UCADATA = unicode/UCA/5.1.0
 CLDR = unicode/cldr/1.7.1
 
-GPRBUILD_FLAGS = -p -XADDRESS_SIZE=$(ADDRESS_SIZE) -XBUILD=$(BUILD)
+GPRBUILD_FLAGS = -p -XARCHITECTURE=$(ARCHITECTURE) -XBUILD=$(BUILD)
 
-all: check-configuration
+all:
 	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
 
 check: all
@@ -34,21 +34,3 @@ ucd:
 
 clean:
 	rm -rf .objs .libs
-
-check-configuration:
-	@if test -z "$(CONFIGURED)"; then \
-	echo "-------------------------------------------------------"; \
-	echo "Package is not configured, please run 'make configure'."; \
-	echo "-------------------------------------------------------"; \
-	exit 1; \
-	fi
-
-configure:
-	gprbuild -p -Pgnat/configure.gpr
-	@echo "CONFIGURED = Yes" > Makefile.config
-	@echo "ADDRESS_SIZE = `.objs/configure/system_address_size`" >> Makefile.config
-	@echo "BUILD = RELEASE" >> Makefile.config
-	@echo "-----------------------------------------------------------"
-	@echo "Configuration completed, please run 'make' or 'make check'."
-	@echo "-----------------------------------------------------------"
-

@@ -34,8 +34,8 @@
 
 library project Matreshka_League is
 
-   type Address_Sizes is ("32", "64");
-   Address_Size : Address_Sizes := external ("ADDRESS_SIZE");
+   type Architectures is ("portable", "x86", "x86_64");
+   Architecture : Architectures := external ("ARCHITECTURE");
 
    type Build_Type is ("RELEASE", "DEBUG");
    Build : Build_Type := external ("BUILD", "RELEASE");
@@ -90,14 +90,20 @@ library project Matreshka_League is
 
       --  Matreshka.Internals.Atomics.Generic_Test_And_Set
 
-      case Address_Size is
-         when "32" =>
+      case Architecture is
+         when "portable" =>
             for Implementation
                  ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use
                 "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
 
-         when "64" =>
+         when "x86" =>
+            for Implementation
+                 ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
+              use
+                "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
+
+         when "x86_64" =>
             for Implementation
                  ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use
