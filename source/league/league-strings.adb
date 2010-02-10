@@ -32,6 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Locales;
+with Matreshka.Internals.Strings.SIMD;
 with Matreshka.Internals.Unicode.Casing;
 with Matreshka.Internals.Unicode.Collation;
 with Matreshka.Internals.Unicode.Normalization;
@@ -41,6 +42,7 @@ with Matreshka.Internals.Utf16;
 package body League.Strings is
 
    use Matreshka.Internals.Strings;
+   use Matreshka.Internals.Strings.SIMD;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Utf16;

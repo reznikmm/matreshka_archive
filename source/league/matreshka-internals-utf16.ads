@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -50,6 +50,7 @@ package Matreshka.Internals.Utf16 is
              .. Matreshka.Internals.Unicode.Low_Surrogate_Last;
 
    type Utf16_String is array (Positive range <>) of Utf16_Code_Unit;
+   for Utf16_String'Alignment use Standard'Maximum_Alignment;
    pragma Pack (Utf16_String);
    --  Internal representation of UTF-16 encoded string.
 

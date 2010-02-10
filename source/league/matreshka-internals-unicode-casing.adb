@@ -31,11 +31,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings.SIMD;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Unicode.Casing is
 
    use Matreshka.Internals.Strings;
+   use Matreshka.Internals.Strings.SIMD;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Utf16;
