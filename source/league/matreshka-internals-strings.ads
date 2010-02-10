@@ -148,6 +148,9 @@ package Matreshka.Internals.Strings is
    procedure Compute_Index_Map (Self : in out Shared_String);
    --  Compute index map. This operation is thread-safe.
 
+   procedure Fill_Null_Terminator (Self : not null Shared_String_Access);
+   --  Fill null terminator after last used code point.
+
    function Hash (Self : not null Shared_String_Access)
      return Internal_Hash_Type;
    --  Returns hash value for the string. MurmurHash2, by Austin Appleby is

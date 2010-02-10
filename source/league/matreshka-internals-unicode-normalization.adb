@@ -404,6 +404,8 @@ package body Matreshka.Internals.Unicode.Normalization is
             end if;
          end;
       end loop;
+
+      Fill_Null_Terminator (Destination);
    end Generic_Decomposition;
 
    ---------------------------------------
@@ -637,6 +639,8 @@ package body Matreshka.Internals.Unicode.Normalization is
       begin
          Compose (Destination, Starter.D_Index, D_Index, Composed);
       end;
+
+      Fill_Null_Terminator (Destination);
    end Generic_Decomposition_Composition;
 
    --------------

@@ -78,7 +78,10 @@ package body Matreshka.Internals.Strings is
          return Shared_Empty'Access;
 
       else
-         return new Shared_String ((Size / Min_Mul_Alloc + 1) * Min_Mul_Alloc);
+         return
+           new Shared_String
+                 (((Size + 1) / Min_Mul_Alloc + 1) * Min_Mul_Alloc);
+         --  One additional element is allocated for null terminator.
       end if;
    end Allocate;
 
@@ -103,7 +106,7 @@ package body Matreshka.Internals.Strings is
          Self.Last := Self.Last + 2;
       end if;
 
-      if Self.Last > Self.Size then
+      if Self.Last + 1 > Self.Size then
          declare
             Aux : constant not null Shared_String_Access
               := Allocate
@@ -149,7 +152,7 @@ package body Matreshka.Internals.Strings is
          Reference (Self);
 
       else
-         if Size > Self.Size
+         if Size + 1 > Self.Size
            or else not Matreshka.Internals.Atomics.Counters.Is_One
                         (Self.Counter'Access)
          then
@@ -165,6 +168,7 @@ package body Matreshka.Internals.Strings is
          Self.Last := Size;
          Self.Length := Source.Length + Item.Length;
          Free (Self.Index_Map);
+         Fill_Null_Terminator (Self);
 
          if Self /= Source then
             Dereference (Source);
@@ -246,6 +250,15 @@ package body Matreshka.Internals.Strings is
          Self := null;
       end if;
    end Dereference;
+
+   --------------------------
+   -- Fill_Null_Terminator --
+   --------------------------
+
+   procedure Fill_Null_Terminator (Self : not null Shared_String_Access) is
+   begin
+      Self.Value (Self.Last + 1) := 0;
+   end Fill_Null_Terminator;
 
    ----------
    -- Hash --
@@ -333,7 +346,7 @@ package body Matreshka.Internals.Strings is
          Reference (Self);
 
       else
-         if Size > Self.Size
+         if Size + 1 > Self.Size
            or else not Matreshka.Internals.Atomics.Counters.Is_One
                         (Self.Counter'Access)
          then
@@ -357,6 +370,7 @@ package body Matreshka.Internals.Strings is
 
          Self.Last := Size;
          Self.Length := Source.Length - Length + By.Length;
+         Fill_Null_Terminator (Self);
 
          if Self /= Source then
             Dereference (Source);
@@ -394,6 +408,7 @@ package body Matreshka.Internals.Strings is
                Result.Value (1 .. Size) := Self.Value (Low .. High);
                Result.Last              := Size;
                Result.Length            := Length;
+               Fill_Null_Terminator (Result);
             end return;
          end;
       end if;

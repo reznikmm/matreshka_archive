@@ -116,6 +116,7 @@ package body League.Strings is
               R_D.Value (1 .. R_D.Last);
             D.Last := L_D.Last + R_D.Last;
             D.Length := L_D.Length + R_D.Length;
+            Fill_Null_Terminator (D);
 
             return Constructors.Create (D);
          end;
@@ -147,6 +148,7 @@ package body League.Strings is
          Unchecked_Store (D.Value, P, Wide_Wide_Character'Pos (Right));
          D.Last                  := P - 1;
          D.Length                := L_D.Length + 1;
+         Fill_Null_Terminator (D);
 
          return Constructors.Create (D);
       end;
@@ -178,6 +180,7 @@ package body League.Strings is
          D.Value (P .. P + R_D.Last - 1) := R_D.Value (1 .. R_D.Last);
          D.Last                          := P + R_D.Last - 1;
          D.Length                        := R_D.Length + 1;
+         Fill_Null_Terminator (D);
 
          return Constructors.Create (D);
       end;
@@ -769,6 +772,7 @@ package body League.Strings is
       Utf16_String'Read (Stream, Item.Data.Value);
       Item.Data.Last := Last;
       Item.Data.Length := Length;
+      Fill_Null_Terminator (Item.Data);
    end Read;
 
    -------------
@@ -1077,20 +1081,27 @@ package body League.Strings is
      Destination : out Shared_String_Access)
    is
    begin
-      Destination := Allocate (Source'Length);
+      if Source'Length = 0 then
+         Destination := Shared_Empty'Access;
 
-      for J in Source'Range loop
-         if not Is_Legal_Unicode_Code_Point
-             (Wide_Wide_Character'Pos (Source (J)))
-         then
-            raise Constraint_Error with "Illegal Unicode code point";
-         end if;
+      else
+         Destination := Allocate (Source'Length);
 
-         Append
-          (Destination,
-           Wide_Wide_Character'Pos (Source (J)),
-           Source'Last - J);
-      end loop;
+         for J in Source'Range loop
+            if not Is_Legal_Unicode_Code_Point
+                (Wide_Wide_Character'Pos (Source (J)))
+            then
+               raise Constraint_Error with "Illegal Unicode code point";
+            end if;
+
+            Append
+             (Destination,
+              Wide_Wide_Character'Pos (Source (J)),
+              Source'Last - J);
+         end loop;
+
+         Fill_Null_Terminator (Destination);
+      end if;
 
    exception
       when others =>

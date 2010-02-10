@@ -343,6 +343,8 @@ package body Matreshka.Internals.Unicode.Casing is
              (Destination, Source_Code, Source.Last - Source_Current + 1);
          end if;
       end loop;
+
+      Fill_Null_Terminator (Destination);
    end Convert_Case;
 
 end Matreshka.Internals.Unicode.Casing;
