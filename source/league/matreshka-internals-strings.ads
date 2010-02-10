@@ -78,7 +78,10 @@ package Matreshka.Internals.Strings is
 
    type Shared_String_Access is access all Shared_String;
 
-   Shared_Empty : aliased Shared_String := (Size => 0, others => <>);
+   Shared_Empty : aliased Shared_String :=
+     (Size   => Standard'Maximum_Alignment / 2,
+      Value  => (others => 0),
+      others => <>);
    --  Globally defined empty shared string to be used as default value.
    --  Reference and Dereference subprograms known about this object and
    --  never change its reference counter for speed optimization (atomic
