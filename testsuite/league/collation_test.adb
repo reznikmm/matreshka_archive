@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -96,7 +96,7 @@ procedure Collation_Test is
             raise Program_Error;
 
          elsif Self.Last_Key = Current_Key
-           and then Self.Last_String.Binary_Compare (Current_String) = Greater
+           and then Self.Last_String > Current_String
          then
             Ada.Text_IO.Put_Line
              (Debug_Image (Self.Last_String)

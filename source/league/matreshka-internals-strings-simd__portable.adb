@@ -34,8 +34,19 @@
 --  This is portable implementation of the package. It doesn't use any
 --  platform specific features and its efficiency completely rely on
 --  compiler's optimization.
+------------------------------------------------------------------------------
 
 package body Matreshka.Internals.Strings.SIMD is
+
+   use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Utf16;
+
+   Utf16_Fixup : constant
+     array (Utf16_Code_Unit range 0 .. 31) of Utf16_Code_Unit :=
+      (0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 16#2000#, 16#F800#, 16#F800#, 16#F800#, 16#F800#);
 
    --------------------------
    -- Fill_Null_Terminator --
@@ -45,5 +56,120 @@ package body Matreshka.Internals.Strings.SIMD is
    begin
       Self.Value (Self.Last + 1) := 0;
    end Fill_Null_Terminator;
+
+   --------------
+   -- Is_Equal --
+   --------------
+
+   function Is_Equal
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean is
+   begin
+      return
+        Left = Right
+          or else (Left.Last = Right.Last
+                     and then Left.Value (1 .. Left.Last)
+                                = Right.Value (1 .. Right.Last));
+   end Is_Equal;
+
+   ----------------
+   -- Is_Greater --
+   ----------------
+
+   function Is_Greater
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean is
+   begin
+      if Left /= Right then
+         for J in 1 .. Natural'Min (Left.Last, Right.Last) loop
+            if Left.Value (J) /= Right.Value (J) then
+               return
+                 Left.Value (J) + Utf16_Fixup (Left.Value (J) / 16#800#)
+                   > Right.Value (J) + Utf16_Fixup (Right.Value (J) / 16#800#);
+            end if;
+         end loop;
+
+         if Left.Last > Right.Last then
+            return True;
+         end if;
+      end if;
+
+      return False;
+   end Is_Greater;
+
+   -------------------------
+   -- Is_Greater_Or_Equal --
+   -------------------------
+
+   function Is_Greater_Or_Equal
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean is
+   begin
+      if Left /= Right then
+         for J in 1 .. Natural'Min (Left.Last, Right.Last) loop
+            if Left.Value (J) /= Right.Value (J) then
+               return
+                 Left.Value (J) + Utf16_Fixup (Left.Value (J) / 16#800#)
+                   > Right.Value (J) + Utf16_Fixup (Right.Value (J) / 16#800#);
+            end if;
+         end loop;
+
+         if Left.Last < Right.Last then
+            return False;
+         end if;
+      end if;
+
+      return True;
+   end Is_Greater_Or_Equal;
+
+   -------------
+   -- Is_Less --
+   -------------
+
+   function Is_Less
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean is
+   begin
+      if Left /= Right then
+         for J in 1 .. Natural'Min (Left.Last, Right.Last) loop
+            if Left.Value (J) /= Right.Value (J) then
+               return
+                 Left.Value (J) + Utf16_Fixup (Left.Value (J) / 16#800#)
+                   < Right.Value (J) + Utf16_Fixup (Right.Value (J) / 16#800#);
+            end if;
+         end loop;
+
+         if Left.Last < Right.Last then
+            return True;
+         end if;
+      end if;
+
+      return False;
+   end Is_Less;
+
+   ----------------------
+   -- Is_Less_Or_Equal --
+   ----------------------
+
+   function Is_Less_Or_Equal
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean is
+   begin
+      if Left /= Right then
+         for J in 1 .. Natural'Min (Left.Last, Right.Last) loop
+            if Left.Value (J) /= Right.Value (J) then
+               return
+                 Left.Value (J) + Utf16_Fixup (Left.Value (J) / 16#800#)
+                   < Right.Value (J) + Utf16_Fixup (Right.Value (J) / 16#800#);
+            end if;
+         end loop;
+
+         if Left.Last > Right.Last then
+            return False;
+         end if;
+      end if;
+
+      return True;
+   end Is_Less_Or_Equal;
 
 end Matreshka.Internals.Strings.SIMD;

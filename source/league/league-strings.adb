@@ -192,6 +192,21 @@ package body League.Strings is
    -- "<" --
    ---------
 
+   function "<"
+    (Left  : Universal_String;
+     Right : Universal_String) return Boolean
+   is
+      L_D : constant not null Shared_String_Access := Left.Data;
+      R_D : constant not null Shared_String_Access := Right.Data;
+
+   begin
+      return Is_Less (L_D, R_D);
+   end "<";
+
+   ---------
+   -- "<" --
+   ---------
+
    function "<" (Left : Sort_Key; Right : Sort_Key) return Boolean is
       L_D : constant Shared_Sort_Key_Access := Left.Data;
       R_D : constant Shared_Sort_Key_Access := Right.Data;
@@ -201,6 +216,21 @@ package body League.Strings is
         L_D /= R_D
           and then L_D.Data (1 .. L_D.Last) < R_D.Data (1 .. R_D.Last);
    end "<";
+
+   ----------
+   -- "<=" --
+   ----------
+
+   function "<="
+    (Left  : Universal_String;
+     Right : Universal_String) return Boolean
+   is
+      L_D : constant not null Shared_String_Access := Left.Data;
+      R_D : constant not null Shared_String_Access := Right.Data;
+
+   begin
+      return Is_Less_Or_Equal (L_D, R_D);
+   end "<=";
 
    ----------
    -- "<=" --
@@ -225,23 +255,11 @@ package body League.Strings is
      Right : Universal_String)
        return Boolean
    is
-   begin
-      raise Program_Error;
-      return False;
-   end "=";
+      L_D : constant not null Shared_String_Access := Left.Data;
+      R_D : constant not null Shared_String_Access := Right.Data;
 
-   ---------
-   -- "=" --
-   ---------
-
-   function "="
-    (Left  : Universal_String'Class;
-     Right : Universal_String'Class)
-       return Boolean
-   is
    begin
-      raise Program_Error;
-      return False;
+      return Is_Equal (L_D, R_D);
    end "=";
 
    ---------
@@ -264,6 +282,21 @@ package body League.Strings is
    -- ">" --
    ---------
 
+   function ">"
+    (Left  : Universal_String;
+     Right : Universal_String) return Boolean
+   is
+      L_D : constant not null Shared_String_Access := Left.Data;
+      R_D : constant not null Shared_String_Access := Right.Data;
+
+   begin
+      return Is_Greater (L_D, R_D);
+   end ">";
+
+   ---------
+   -- ">" --
+   ---------
+
    function ">" (Left : Sort_Key; Right : Sort_Key) return Boolean is
       L_D : constant Shared_Sort_Key_Access := Left.Data;
       R_D : constant Shared_Sort_Key_Access := Right.Data;
@@ -273,6 +306,21 @@ package body League.Strings is
         L_D /= R_D
           and then L_D.Data (1 .. L_D.Last) > R_D.Data (1 .. R_D.Last);
    end ">";
+
+   ----------
+   -- ">=" --
+   ----------
+
+   function ">="
+    (Left  : Universal_String;
+     Right : Universal_String) return Boolean
+   is
+      L_D : constant not null Shared_String_Access := Left.Data;
+      R_D : constant not null Shared_String_Access := Right.Data;
+
+   begin
+      return Is_Greater_Or_Equal (L_D, R_D);
+   end ">=";
 
    ----------
    -- ">=" --
@@ -366,52 +414,6 @@ package body League.Strings is
          Attach (Self);
       end if;
    end Attach;
-
-   --------------------
-   -- Binary_Compare --
-   --------------------
-
-   function Binary_Compare
-    (Self : Universal_String'Class;
-     To   : Universal_String'Class)
-       return Relationship
-   is
-      LD    : constant not null Shared_String_Access := Self.Data;
-      RD    : constant not null Shared_String_Access := To.Data;
-      Fixup : constant array (Utf16_Code_Unit range 0 .. 31) of Utf16_Code_Unit
-        := (0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 16#2000#, 16#F800#, 16#F800#, 16#F800#, 16#F800#);
-
-   begin
-      if LD = RD then
-         return Equal;
-      end if;
-
-      for J in 1 .. Natural'Min (LD.Last, RD.Last) loop
-         if LD.Value (J) /= RD.Value (J) then
-            if LD.Value (J) + Fixup (LD.Value (J) / 16#800#)
-                 < RD.Value (J) + Fixup (RD.Value (J) / 16#800#)
-            then
-               return Less;
-
-            else
-               return Greater;
-            end if;
-         end if;
-      end loop;
-
-      if LD.Last < RD.Last then
-         return Less;
-
-      elsif LD.Last > RD.Last then
-         return Greater;
-
-      else
-         return Equal;
-      end if;
-   end Binary_Compare;
 
    ---------------
    -- Collation --
@@ -676,23 +678,6 @@ package body League.Strings is
       Self.List := (Head => null);
       Self.Cursors := Self.List'Unchecked_Access;
    end Initialize;
-
-   ---------------------
-   -- Is_Binary_Equal --
-   ---------------------
-
-   function Is_Binary_Equal
-    (Self : Universal_String'Class;
-     To   : Universal_String'Class)
-       return Boolean
-   is
-   begin
-      return
-        Self.Data = To.Data
-          or else (Self.Data.Last = To.Data.Last
-                     and then Self.Data.Value (1 .. Self.Data.Last)
-                                = To.Data.Value (1 .. To.Data.Last));
-   end Is_Binary_Equal;
 
    ---------------------------------
    -- Is_Legal_Unicode_Code_Point --

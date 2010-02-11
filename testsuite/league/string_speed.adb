@@ -52,7 +52,8 @@ procedure String_Speed is
    procedure Results
      (Name            : String;
       Ada_Duration    : Duration;
-      League_Duration : Duration);
+      League_Duration : Duration;
+      Passes          : Positive);
 
    -------------
    -- Results --
@@ -61,16 +62,23 @@ procedure String_Speed is
    procedure Results
      (Name            : String;
       Ada_Duration    : Duration;
-      League_Duration : Duration)
+      League_Duration : Duration;
+      Passes          : Positive)
    is
-      type Speedup is delta 0.01 range 0.0 .. 10.0;
+      type Speedup is delta 0.01 range 0.0 .. 100.0;
 
       P : Speedup := Speedup (Ada_Duration / League_Duration);
 
    begin
       Put_Line (Name & " (" & Trim (Speedup'Image (P), Both) & ")");
-      Put_Line ("  AUS : " & Duration'Image (Ada_Duration));
-      Put_Line ("  LUS : " & Duration'Image (League_Duration));
+      Put_Line
+        ("  AUS : "
+           & Duration'Image (Ada_Duration)
+           & Duration'Image (Ada_Duration / Passes));
+      Put_Line
+        ("  LUS : "
+           & Duration'Image (League_Duration)
+           & Duration'Image (League_Duration / Passes));
    end Results;
 
    -----------------
@@ -115,7 +123,7 @@ procedure String_Speed is
          League_Duration := Clock - Start;
       end;
 
-      Results ("Append string", Ada_Duration, League_Duration);
+      Results ("Append string", Ada_Duration, League_Duration, Passes);
    end Test_Append;
 
    ------------------
@@ -123,7 +131,8 @@ procedure String_Speed is
    ------------------
 
    procedure Test_Compare is
-      Passes          : constant := 10_000_000;
+      Equal_Passes    : constant := 7_500_000;
+      Less_Passes     : constant := 10_500_000;
       Ada_Duration    : Duration;
       League_Duration : Duration;
 
@@ -139,7 +148,7 @@ procedure String_Speed is
       begin
          Start := Clock;
 
-         for J in 1 .. Passes loop
+         for J in 1 .. Equal_Passes loop
             Y := S1 = S2;
          end loop;
 
@@ -152,19 +161,58 @@ procedure String_Speed is
            To_Universal_String ("                               1");
          S2    : Universal_String :=
            To_Universal_String ("                               2");
-         Y     : Relationship;
+         Y     : Boolean;
 
       begin
          Start := Clock;
 
-         for J in 1 .. Passes loop
-            Y := Binary_Compare (S1, S2);
+         for J in 1 .. Equal_Passes loop
+            Y := S1 = S2;
          end loop;
 
          League_Duration := Clock - Start;
       end;
 
-      Results ("Equality comparison:", Ada_Duration, League_Duration);
+      Results
+        ("Compare for equality", Ada_Duration, League_Duration, Equal_Passes);
+
+      declare
+         Start : Time;
+         S1    : Unbounded_Wide_String :=
+           To_Unbounded_Wide_String ("                               1");
+         S2    : Unbounded_Wide_String :=
+           To_Unbounded_Wide_String ("                               2");
+         Y     : Boolean;
+
+      begin
+         Start := Clock;
+
+         for J in 1 .. Less_Passes loop
+            Y := S1 < S2;
+         end loop;
+
+         Ada_Duration := Clock - Start;
+      end;
+
+      declare
+         Start : Time;
+         S1    : Universal_String :=
+           To_Universal_String ("                               1");
+         S2    : Universal_String :=
+           To_Universal_String ("                               2");
+         Y     : Boolean;
+
+      begin
+         Start := Clock;
+
+         for J in 1 .. Less_Passes loop
+            Y := S1 < S2;
+         end loop;
+
+         League_Duration := Clock - Start;
+      end;
+
+      Results ("Compare for less", Ada_Duration, League_Duration, Less_Passes);
    end Test_Compare;
 
    ---------------
@@ -209,7 +257,8 @@ procedure String_Speed is
          League_Duration := Clock - Start;
       end;
 
-      Results ("Copy of non-empty string", Ada_Duration, League_Duration);
+      Results
+        ("Copy of non-empty string", Ada_Duration, League_Duration, Passes);
    end Test_Copy;
 
    -------------------------------
@@ -252,7 +301,7 @@ procedure String_Speed is
          League_Duration := Clock - Start;
       end;
 
-      Results ("Copy of empty string", Ada_Duration, League_Duration);
+      Results ("Copy of empty string", Ada_Duration, League_Duration, Passes);
    end Test_Copy_Of_Empty_String;
 
    -------------------------
@@ -295,7 +344,7 @@ procedure String_Speed is
             declare
                S1 : Universal_String;
                S2 : Universal_String;
-               X  : Relationship := Binary_Compare (S1, S2);
+               X  : Boolean := S1 = S2;
 
             begin
                null;
@@ -306,7 +355,10 @@ procedure String_Speed is
       end;
 
       Results
-        ("Initialization of default object", Ada_Duration, League_Duration);
+        ("Initialization of default object",
+         Ada_Duration,
+         League_Duration,
+         Passes);
    end Test_Initialization;
 
 begin

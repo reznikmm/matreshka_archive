@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -49,7 +49,7 @@ procedure Additional_Normalization_Test is
             & Wide_Wide_Character'Val (16#0061#));
 
 begin
-   if not D.Is_Binary_Equal (E) then
+   if D /= E then
       Ada.Text_IO.Put_Line ("S        => " & Debug_Image (S));
       Ada.Text_IO.Put_Line ("NFD (S)  => " & Debug_Image (D));
       Ada.Text_IO.Put_Line ("Expected => " & Debug_Image (E));

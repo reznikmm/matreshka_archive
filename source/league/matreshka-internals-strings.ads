@@ -56,12 +56,6 @@ package Matreshka.Internals.Strings is
       Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
-      Value     : Matreshka.Internals.Utf16.Utf16_String (1 .. Size);
-      --  String data. Internal data always has well-formed UTF-16 encoded
-      --  sequence of valid Unicode code points. Validity checks proceed only
-      --  for potentially invalid user specified data, and never proceed for
-      --  the internal data.
-
       Last      : Natural := 0;
       --  Last used element in the Value array.
 
@@ -74,6 +68,12 @@ package Matreshka.Internals.Strings is
       --  Mapping of the string's characters index to position inside internal
       --  buffer. Used only if string has both BMP and non-BMP characters.
       --  Is built on-demand.
+
+      Value     : Matreshka.Internals.Utf16.Utf16_String (1 .. Size);
+      --  String data. Internal data always has well-formed UTF-16 encoded
+      --  sequence of valid Unicode code points. Validity checks proceed only
+      --  for potentially invalid user specified data, and never proceed for
+      --  the internal data.
    end record;
 
    type Shared_String_Access is access all Shared_String;

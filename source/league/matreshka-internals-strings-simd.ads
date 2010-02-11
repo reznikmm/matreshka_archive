@@ -41,6 +41,24 @@ package Matreshka.Internals.Strings.SIMD is
 
    pragma Preelaborate;
 
+   function Is_Equal
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean;
+   function Is_Less
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean;
+   function Is_Greater
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean;
+   function Is_Less_Or_Equal
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean;
+   function Is_Greater_Or_Equal
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean;
+   --  Set of compare operations. All operations compare in code point order
+   --  (they are handle UTF-16 surrogate pairs as one code point).
+
    procedure Fill_Null_Terminator (Self : not null Shared_String_Access);
    pragma Inline (Fill_Null_Terminator);
    --  Fill null terminator after last used code point. On platforms where

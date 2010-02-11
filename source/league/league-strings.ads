@@ -226,26 +226,22 @@ package League.Strings is
    -- Equivalence tests and comparison --
    --------------------------------------
 
-   overriding function "=" (Left : Universal_String; Right : Universal_String)
-     return Boolean;
-   function "=" (Left : Universal_String'Class; Right : Universal_String'Class)
-     return Boolean;
-   --  These two operators make ambiguous use of "=" for objects of the
-   --  Universal_String type. Both raise Program_Error exception.
-
-   type Relationship is (Less, Equal, Greater);
-
-   function Is_Binary_Equal
-    (Self : Universal_String'Class;
-     To   : Universal_String'Class)
-       return Boolean;
-   --  Returns True if both strings are binary equivalent.
-
-   function Binary_Compare
-    (Self : Universal_String'Class;
-     To   : Universal_String'Class)
-       return Relationship;
-   --  Compare two string as a sequences of Unicode Code Points.
+   overriding function "="
+    (Left  : Universal_String;
+     Right : Universal_String) return Boolean;
+   function "<"
+    (Left  : Universal_String;
+     Right : Universal_String) return Boolean;
+   function ">"
+    (Left  : Universal_String;
+     Right : Universal_String) return Boolean;
+   function "<="
+    (Left  : Universal_String;
+     Right : Universal_String) return Boolean;
+   function ">="
+    (Left  : Universal_String;
+     Right : Universal_String) return Boolean;
+   --  Compare two strings in binary order of Unicode Code Points.
 
    function Collation (Self : Universal_String'Class) return Sort_Key;
    --  Construct sort key for string comparison.
