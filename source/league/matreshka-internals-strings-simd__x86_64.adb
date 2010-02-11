@@ -106,9 +106,11 @@ package body Matreshka.Internals.Strings.SIMD is
 
       function mm_movemask (Item : v8hi) return Interfaces.Unsigned_32;
       pragma Inline (mm_movemask);
+      pragma Inline_Always (mm_movemask);
 
       function mm_movemask (Item : v4si) return Interfaces.Unsigned_32;
       pragma Inline (mm_movemask);
+      pragma Inline_Always (mm_movemask);
 
    end SSE2;
 

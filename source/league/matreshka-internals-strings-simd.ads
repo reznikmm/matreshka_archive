@@ -44,6 +44,7 @@ package Matreshka.Internals.Strings.SIMD is
    function Is_Equal
      (Left  : not null Shared_String_Access;
       Right : not null Shared_String_Access) return Boolean;
+   pragma Inline_Always (Is_Equal);
    function Is_Less
      (Left  : not null Shared_String_Access;
       Right : not null Shared_String_Access) return Boolean;
