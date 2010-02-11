@@ -26,6 +26,8 @@
 ------------------------------------------------------------------------------
 with Ada.Calendar;
 with Ada.Strings.Fixed;
+with Ada.Strings.Wide_Fixed;
+with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Strings.Wide_Unbounded;
 with Ada.Text_IO;
 with League.Strings;
@@ -35,7 +37,9 @@ procedure String_Speed is
    use Ada.Calendar;
    use Ada.Strings;
    use Ada.Strings.Fixed;
+   use Ada.Strings.Wide_Fixed;
    use Ada.Strings.Wide_Unbounded;
+   use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Text_IO;
    use League.Strings;
 
@@ -131,8 +135,9 @@ procedure String_Speed is
    ------------------
 
    procedure Test_Compare is
-      Equal_Passes    : constant := 7_500_000;
-      Less_Passes     : constant := 10_500_000;
+      Equal_Passes    : constant := 8_000_000;
+      Less_Passes     : constant := 12_000_000;
+      Size            : constant := 30;
       Ada_Duration    : Duration;
       League_Duration : Duration;
 
@@ -140,9 +145,9 @@ procedure String_Speed is
       declare
          Start : Time;
          S1    : Unbounded_Wide_String :=
-           To_Unbounded_Wide_String ("                               1");
+           To_Unbounded_Wide_String (Size * ' ' & '1');
          S2    : Unbounded_Wide_String :=
-           To_Unbounded_Wide_String ("                               2");
+           To_Unbounded_Wide_String (Size * ' ' & '2');
          Y     : Boolean;
 
       begin
@@ -158,9 +163,9 @@ procedure String_Speed is
       declare
          Start : Time;
          S1    : Universal_String :=
-           To_Universal_String ("                               1");
+           To_Universal_String (Size * ' ' & '1');
          S2    : Universal_String :=
-           To_Universal_String ("                               2");
+           To_Universal_String (Size * ' ' & '2');
          Y     : Boolean;
 
       begin
@@ -179,9 +184,9 @@ procedure String_Speed is
       declare
          Start : Time;
          S1    : Unbounded_Wide_String :=
-           To_Unbounded_Wide_String ("                               1");
+           To_Unbounded_Wide_String (Size * ' ' & '1');
          S2    : Unbounded_Wide_String :=
-           To_Unbounded_Wide_String ("                               2");
+           To_Unbounded_Wide_String (Size * ' ' & '2');
          Y     : Boolean;
 
       begin
@@ -197,9 +202,9 @@ procedure String_Speed is
       declare
          Start : Time;
          S1    : Universal_String :=
-           To_Universal_String ("                               1");
+           To_Universal_String (Size * ' ' & '1');
          S2    : Universal_String :=
-           To_Universal_String ("                               2");
+           To_Universal_String (Size * ' ' & '2');
          Y     : Boolean;
 
       begin
