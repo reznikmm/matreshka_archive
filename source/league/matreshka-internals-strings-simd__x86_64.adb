@@ -58,8 +58,6 @@ package body Matreshka.Internals.Strings.SIMD is
       pragma Machine_Attribute (v2di, "vector_type");
       pragma Machine_Attribute (v2di, "may_alias");
 
-      type v8hi_Array is array (Positive range <>) of v8hi;
-
       function mm_and_si128 (Left : v2di; Right : v2di) return v2di;
       pragma Import (Intrinsic, mm_and_si128, "__builtin_ia32_pand128");
 
@@ -121,6 +119,8 @@ package body Matreshka.Internals.Strings.SIMD is
    use Matreshka.Internals.Unicode;
    use SSE2;
 
+   type v8hi_Array is array (Positive range 1 .. Integer'Last) of v8hi;
+
    Fill_Terminator_Mask : constant array (Integer range 0 .. 7) of v8hi :=
      (0 => (others => 0),
       1 => (1 => 16#FFFF#, others => 0),
@@ -136,7 +136,7 @@ package body Matreshka.Internals.Strings.SIMD is
    --------------------------
 
    procedure Fill_Null_Terminator (Self : not null Shared_String_Access) is
-      Value  : v8hi_Array (1 .. Self.Size / 8);
+      Value  : v8hi_Array;
       for Value'Address use Self.Value'Address;
       Index  : constant Natural := Self.Last / 8 + 1;
       Offset : constant Natural := Self.Last mod 8;
@@ -153,9 +153,10 @@ package body Matreshka.Internals.Strings.SIMD is
      (Left  : not null Shared_String_Access;
       Right : not null Shared_String_Access) return Boolean
    is
-      L : v8hi_Array (1 .. (Left.Last + 7) / 8);
+      Last : constant Natural := (Left.Last + 7) / 8;
+      L    : v8hi_Array;
       for L'Address use Left.Value'Address;
-      R : v8hi_Array (1 .. (Right.Last + 7) / 8);
+      R    : v8hi_Array;
       for R'Address use Right.Value'Address;
 
    begin
@@ -164,7 +165,7 @@ package body Matreshka.Internals.Strings.SIMD is
             return False;
          end if;
 
-         for J in 1 .. L'Last loop
+         for J in 1 .. Last loop
             if mm_movemask (mm_cmpeq_epi16 (L (J), R (J)))
                  /= 16#0000_FFFF#
             then
@@ -184,9 +185,11 @@ package body Matreshka.Internals.Strings.SIMD is
      (Left  : not null Shared_String_Access;
       Right : not null Shared_String_Access) return Boolean
    is
-      L  : v8hi_Array (1 .. (Left.Last + 7) / 8);
+      Last  : constant Natural :=
+        Natural'Min ((Left.Last + 7) / 8, (Right.Last + 7) / 8);
+      L     : v8hi_Array;
       for L'Address use Left.Value'Address;
-      R  : v8hi_Array (1 .. (Right.Last + 7) / 8);
+      R     : v8hi_Array;
       for R'Address use Right.Value'Address;
       M     : Unsigned_32;
       LC    : Code_Unit_16;
@@ -198,7 +201,7 @@ package body Matreshka.Internals.Strings.SIMD is
          return False;
       end if;
 
-      for J in 1 .. Natural'Min (L'Last, R'Last) loop
+      for J in 1 .. Last loop
          M  := mm_movemask (mm_cmpeq_epi16 (L (J), R (J)));
 
          if M /= 16#0000_FFFF# then
@@ -223,9 +226,11 @@ package body Matreshka.Internals.Strings.SIMD is
      (Left  : not null Shared_String_Access;
       Right : not null Shared_String_Access) return Boolean
    is
-      L  : v8hi_Array (1 .. (Left.Last + 7) / 8);
+      Last  : constant Natural :=
+        Natural'Min ((Left.Last + 7) / 8, (Right.Last + 7) / 8);
+      L     : v8hi_Array;
       for L'Address use Left.Value'Address;
-      R  : v8hi_Array (1 .. (Right.Last + 7) / 8);
+      R     : v8hi_Array;
       for R'Address use Right.Value'Address;
       M     : Unsigned_32;
       LC    : Code_Unit_16;
@@ -237,7 +242,7 @@ package body Matreshka.Internals.Strings.SIMD is
          return True;
       end if;
 
-      for J in 1 .. Natural'Min (L'Last, R'Last) loop
+      for J in 1 .. Last loop
          M  := mm_movemask (mm_cmpeq_epi16 (L (J), R (J)));
 
          if M /= 16#0000_FFFF# then
@@ -262,9 +267,11 @@ package body Matreshka.Internals.Strings.SIMD is
      (Left  : not null Shared_String_Access;
       Right : not null Shared_String_Access) return Boolean
    is
-      L     : v8hi_Array (1 .. (Left.Last + 7) / 8);
+      Last  : constant Natural :=
+        Natural'Min ((Left.Last + 7) / 8, (Right.Last + 7) / 8);
+      L     : v8hi_Array;
       for L'Address use Left.Value'Address;
-      R     : v8hi_Array (1 .. (Right.Last + 7) / 8);
+      R     : v8hi_Array;
       for R'Address use Right.Value'Address;
       M     : Unsigned_32;
       LC    : Code_Unit_16;
@@ -276,7 +283,7 @@ package body Matreshka.Internals.Strings.SIMD is
          return False;
       end if;
 
-      for J in 1 .. Natural'Min (L'Last, R'Last) loop
+      for J in 1 .. Last loop
          M  := mm_movemask (mm_cmpeq_epi16 (L (J), R (J)));
 
          if M /= 16#0000_FFFF# then
@@ -301,9 +308,11 @@ package body Matreshka.Internals.Strings.SIMD is
      (Left  : not null Shared_String_Access;
       Right : not null Shared_String_Access) return Boolean
    is
-      L  : v8hi_Array (1 .. (Left.Last + 7) / 8);
+      Last  : constant Natural :=
+        Natural'Min ((Left.Last + 7) / 8, (Right.Last + 7) / 8);
+      L     : v8hi_Array;
       for L'Address use Left.Value'Address;
-      R  : v8hi_Array (1 .. (Right.Last + 7) / 8);
+      R     : v8hi_Array;
       for R'Address use Right.Value'Address;
       M     : Unsigned_32;
       LC    : Code_Unit_16;
@@ -315,7 +324,7 @@ package body Matreshka.Internals.Strings.SIMD is
          return True;
       end if;
 
-      for J in 1 .. Natural'Min (L'Last, R'Last) loop
+      for J in 1 .. Last loop
          M  := mm_movemask (mm_cmpeq_epi16 (L (J), R (J)));
 
          if M /= 16#0000_FFFF# then
