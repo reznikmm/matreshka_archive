@@ -67,4 +67,14 @@ package Matreshka.Internals.Strings.SIMD is
    --  and speedup comparison operations becase where are no need to pay
    --  attention to the unused elements in the last used vector.
 
+private
+
+   Utf16_Fixup : constant
+     array (Matreshka.Internals.Utf16.Utf16_Code_Unit range 0 .. 31)
+       of Matreshka.Internals.Utf16.Utf16_Code_Unit :=
+      (0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 16#2000#, 16#F800#, 16#F800#, 16#F800#, 16#F800#);
+
 end Matreshka.Internals.Strings.SIMD;

@@ -41,13 +41,6 @@ package body Matreshka.Internals.Strings.SIMD is
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
 
-   Utf16_Fixup : constant
-     array (Utf16_Code_Unit range 0 .. 31) of Utf16_Code_Unit :=
-      (0, 0, 0, 0, 0, 0, 0, 0,
-       0, 0, 0, 0, 0, 0, 0, 0,
-       0, 0, 0, 0, 0, 0, 0, 0,
-       0, 0, 0, 16#2000#, 16#F800#, 16#F800#, 16#F800#, 16#F800#);
-
    --------------------------
    -- Fill_Null_Terminator --
    --------------------------
