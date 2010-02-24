@@ -31,6 +31,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  Internal representation of string data in the UTF-16 form.
+--
+--  Internal representation and operations on it use several optimization
+--  techniques, so some important assumption must be taken into account to
+--  have expected results:
+--
+--   - alignment of string's value must be compatible with alignment of the
+--     largest supported by platform Unsigned_X type (for portable version of
+--     implementation for any 32-bit or 64-bit platform) or with alignment of
+--     largest supported vector operand for Single Instruction Multiple Data
+--     instructions set when it is used to implement string operations (for
+--     x86_64);
+--
+--   - all unused code points in the last largest element must be filled by
+--     zero code point - to allows to use optimized version of compare
+--     operations.
+------------------------------------------------------------------------------
 with Matreshka.Internals.Atomics.Counters;
 with Matreshka.Internals.Unicode.Ucd;
 with Matreshka.Internals.Utf16;
