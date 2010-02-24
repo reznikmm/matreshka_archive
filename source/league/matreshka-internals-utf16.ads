@@ -54,6 +54,18 @@ package Matreshka.Internals.Utf16 is
    pragma Pack (Utf16_String);
    --  Internal representation of UTF-16 encoded string.
 
+   function Is_Less
+     (Left : Utf16_Code_Unit; Right : Utf16_Code_Unit) return Boolean;
+   pragma Inline (Is_Less);
+   --  Compare two Utf16 code units with fixup for surrogate characters for
+   --  less.
+
+   function Is_Greater
+     (Left : Utf16_Code_Unit; Right : Utf16_Code_Unit) return Boolean;
+   pragma Inline (Is_Greater);
+   --  Compare two Utf16 code units with fixup for surrogate characters for
+   --  greater.
+
    function Unchecked_To_Code_Point
     (Item     : Utf16_String;
      Position : Positive)

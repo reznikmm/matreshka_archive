@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -35,6 +35,39 @@
 package body Matreshka.Internals.Utf16 is
 
    use Matreshka.Internals.Unicode;
+
+   Utf16_Fixup : constant
+     array (Utf16_Code_Unit range 0 .. 31) of Utf16_Code_Unit :=
+      (0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 16#2000#, 16#F800#, 16#F800#, 16#F800#, 16#F800#);
+   --  Fixups for change order of Utf16 code units to compare in Unicode code
+   --  point order.
+
+   ----------------
+   -- Is_Greater --
+   ----------------
+
+   function Is_Greater
+     (Left : Code_Unit_16; Right : Code_Unit_16) return Boolean is
+   begin
+      return
+        Left + Utf16_Fixup (Left / 16#800#)
+          > Right + Utf16_Fixup (Right / 16#800#);
+   end Is_Greater;
+
+   -------------
+   -- Is_Less --
+   -------------
+
+   function Is_Less
+     (Left : Code_Unit_16; Right : Code_Unit_16) return Boolean is
+   begin
+      return
+        Left + Utf16_Fixup (Left / 16#800#)
+          < Right + Utf16_Fixup (Right / 16#800#);
+   end Is_Less;
 
    --------------------
    -- Unchecked_Next --
