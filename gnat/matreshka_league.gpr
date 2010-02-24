@@ -34,7 +34,11 @@
 
 library project Matreshka_League is
 
-   type Architectures is ("portable", "x86", "x86_64");
+   type Architectures is
+     ("portable_32",
+      "portable_64",
+      "x86",
+      "x86_64");
    Architecture : Architectures := external ("ARCHITECTURE");
 
    type Build_Type is ("RELEASE", "DEBUG");
@@ -91,27 +95,27 @@ library project Matreshka_League is
       --  Matreshka.Internals.Atomics.Generic_Test_And_Set
 
       case Architecture is
-         when "portable" =>
-            for Implementation
-                 ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
-              use
-                "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+         when "portable_32" =>
+            for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
+              use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
             for Implementation ("Matreshka.Internals.Strings.SIMD")
-              use "matreshka-internals-strings-simd__portable.adb";
+              use "matreshka-internals-strings-simd__portable_32.adb";
+
+         when "portable_64" =>
+            for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
+              use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+            for Implementation ("Matreshka.Internals.Strings.SIMD")
+              use "matreshka-internals-strings-simd__portable_64.adb";
 
          when "x86" =>
-            for Implementation
-                 ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
-              use
-                "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
+            for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
+              use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
             for Implementation ("Matreshka.Internals.Strings.SIMD")
-              use "matreshka-internals-strings-simd__portable.adb";
+              use "matreshka-internals-strings-simd__portable_32.adb";
 
          when "x86_64" =>
-            for Implementation
-                 ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
-              use
-                "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+            for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
+              use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
             for Implementation ("Matreshka.Internals.Strings.SIMD")
               use "matreshka-internals-strings-simd__x86_64.adb";
       end case;
