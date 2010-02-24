@@ -42,7 +42,8 @@
 --     implementation for any 32-bit or 64-bit platform) or with alignment of
 --     largest supported vector operand for Single Instruction Multiple Data
 --     instructions set when it is used to implement string operations (for
---     x86_64);
+--     x86_64) - to speedup memory access and satisfy typical SIMD
+--     requirements;
 --
 --   - all unused code points in the last largest element must be filled by
 --     zero code point - to allows to use optimized version of compare
