@@ -35,19 +35,33 @@
 --  platform specific features and its efficiency completely rely on
 --  compiler's optimization.
 ------------------------------------------------------------------------------
+with Interfaces;
 
 package body Matreshka.Internals.Strings.SIMD is
 
+   use Interfaces;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
+
+   type Unsigned_32_Unrestricted_Array is array (Positive) of Unsigned_32;
+
+   Terminator_Mask : constant array (Natural range 0 .. 1) of Unsigned_32
+     := (0 => 16#0000_0000#,
+         1 => 16#0000_FFFF#);
+   --  This mask is used to set unused components of the element to zero.
 
    --------------------------
    -- Fill_Null_Terminator --
    --------------------------
 
    procedure Fill_Null_Terminator (Self : not null Shared_String_Access) is
+      SV     : Unsigned_32_Unrestricted_Array;
+      for SV'Address use Self.Value'Address;
+      Index  : constant Natural := Self.Last / 2 + 1;
+      Offset : constant Natural := Self.Last mod 2;
+
    begin
-      Self.Value (Self.Last + 1) := 0;
+      SV (Index) := SV (Index) and Terminator_Mask (Offset);
    end Fill_Null_Terminator;
 
    --------------
@@ -58,11 +72,30 @@ package body Matreshka.Internals.Strings.SIMD is
      (Left  : not null Shared_String_Access;
       Right : not null Shared_String_Access) return Boolean is
    begin
-      return
-        Left = Right
-          or else (Left.Last = Right.Last
-                     and then Left.Value (1 .. Left.Last)
-                                = Right.Value (1 .. Right.Last));
+      if Left = Right then
+         return True;
+      end if;
+
+      if Left.Last /= Right.Last then
+         return False;
+      end if;
+
+      declare
+         LV   : Unsigned_32_Unrestricted_Array;
+         for LV'Address use Left.Value'Address;
+         RV   : Unsigned_32_Unrestricted_Array;
+         for RV'Address use Right.Value'Address;
+         Last : constant Natural := (Left.Last + 1) / 2;
+
+      begin
+         for J in 1 .. Last loop
+            if LV (J) /= RV (J) then
+               return False;
+            end if;
+         end loop;
+      end;
+
+      return True;
    end Is_Equal;
 
    ----------------
@@ -73,21 +106,32 @@ package body Matreshka.Internals.Strings.SIMD is
      (Left  : not null Shared_String_Access;
       Right : not null Shared_String_Access) return Boolean is
    begin
-      if Left /= Right then
-         for J in 1 .. Natural'Min (Left.Last, Right.Last) loop
-            if Left.Value (J) /= Right.Value (J) then
-               return
-                 Left.Value (J) + Utf16_Fixup (Left.Value (J) / 16#800#)
-                   > Right.Value (J) + Utf16_Fixup (Right.Value (J) / 16#800#);
-            end if;
-         end loop;
-
-         if Left.Last > Right.Last then
-            return True;
-         end if;
+      if Left = Right then
+         return False;
       end if;
 
-      return False;
+      declare
+         Min  : constant Natural := Natural'Min (Left.Last, Right.Last);
+         Last : constant Natural := (Min + 1) / 2;
+
+         LV   : Unsigned_32_Unrestricted_Array;
+         for LV'Address use Left.Value'Address;
+         RV   : Unsigned_32_Unrestricted_Array;
+         for RV'Address use Right.Value'Address;
+
+      begin
+         for J in 1 .. Last loop
+            if LV (J) /= RV (J) then
+               for K in (J - 1) * 2 + 1 .. J * 2 loop
+                  if Left.Value (K) /= Right.Value (K) then
+                     return Is_Greater (Left.Value (K), Right.Value (K));
+                  end if;
+               end loop;
+            end if;
+         end loop;
+      end;
+
+      return Left.Last > Right.Last;
    end Is_Greater;
 
    -------------------------
@@ -98,21 +142,32 @@ package body Matreshka.Internals.Strings.SIMD is
      (Left  : not null Shared_String_Access;
       Right : not null Shared_String_Access) return Boolean is
    begin
-      if Left /= Right then
-         for J in 1 .. Natural'Min (Left.Last, Right.Last) loop
-            if Left.Value (J) /= Right.Value (J) then
-               return
-                 Left.Value (J) + Utf16_Fixup (Left.Value (J) / 16#800#)
-                   > Right.Value (J) + Utf16_Fixup (Right.Value (J) / 16#800#);
-            end if;
-         end loop;
-
-         if Left.Last < Right.Last then
-            return False;
-         end if;
+      if Left = Right then
+         return True;
       end if;
 
-      return True;
+      declare
+         Min  : constant Natural := Natural'Min (Left.Last, Right.Last);
+         Last : constant Natural := (Min + 1) / 2;
+
+         LV   : Unsigned_32_Unrestricted_Array;
+         for LV'Address use Left.Value'Address;
+         RV   : Unsigned_32_Unrestricted_Array;
+         for RV'Address use Right.Value'Address;
+
+      begin
+         for J in 1 .. Last loop
+            if LV (J) /= RV (J) then
+               for K in (J - 1) * 2 + 1 .. J * 2 loop
+                  if Left.Value (K) /= Right.Value (K) then
+                     return Is_Greater (Left.Value (K), Right.Value (K));
+                  end if;
+               end loop;
+            end if;
+         end loop;
+      end;
+
+      return Left.Last >= Right.Last;
    end Is_Greater_Or_Equal;
 
    -------------
@@ -123,21 +178,32 @@ package body Matreshka.Internals.Strings.SIMD is
      (Left  : not null Shared_String_Access;
       Right : not null Shared_String_Access) return Boolean is
    begin
-      if Left /= Right then
-         for J in 1 .. Natural'Min (Left.Last, Right.Last) loop
-            if Left.Value (J) /= Right.Value (J) then
-               return
-                 Left.Value (J) + Utf16_Fixup (Left.Value (J) / 16#800#)
-                   < Right.Value (J) + Utf16_Fixup (Right.Value (J) / 16#800#);
-            end if;
-         end loop;
-
-         if Left.Last < Right.Last then
-            return True;
-         end if;
+      if Left = Right then
+         return False;
       end if;
 
-      return False;
+      declare
+         Min  : constant Natural := Natural'Min (Left.Last, Right.Last);
+         Last : constant Natural := (Min + 1) / 2;
+
+         LV   : Unsigned_32_Unrestricted_Array;
+         for LV'Address use Left.Value'Address;
+         RV   : Unsigned_32_Unrestricted_Array;
+         for RV'Address use Right.Value'Address;
+
+      begin
+         for J in 1 .. Last loop
+            if LV (J) /= RV (J) then
+               for K in (J - 1) * 2 + 1 .. J * 2 loop
+                  if Left.Value (K) /= Right.Value (K) then
+                     return Is_Less (Left.Value (K), Right.Value (K));
+                  end if;
+               end loop;
+            end if;
+         end loop;
+      end;
+
+      return Left.Last < Right.Last;
    end Is_Less;
 
    ----------------------
@@ -146,23 +212,35 @@ package body Matreshka.Internals.Strings.SIMD is
 
    function Is_Less_Or_Equal
      (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is
+      Right : not null Shared_String_Access) return Boolean
+   is
    begin
-      if Left /= Right then
-         for J in 1 .. Natural'Min (Left.Last, Right.Last) loop
-            if Left.Value (J) /= Right.Value (J) then
-               return
-                 Left.Value (J) + Utf16_Fixup (Left.Value (J) / 16#800#)
-                   < Right.Value (J) + Utf16_Fixup (Right.Value (J) / 16#800#);
-            end if;
-         end loop;
-
-         if Left.Last > Right.Last then
-            return False;
-         end if;
+      if Left = Right then
+         return True;
       end if;
 
-      return True;
+      declare
+         Min  : constant Natural := Natural'Min (Left.Last, Right.Last);
+         Last : constant Natural := (Min + 1) / 2;
+
+         LV   : Unsigned_32_Unrestricted_Array;
+         for LV'Address use Left.Value'Address;
+         RV   : Unsigned_32_Unrestricted_Array;
+         for RV'Address use Right.Value'Address;
+
+      begin
+         for J in 1 .. Last loop
+            if LV (J) /= RV (J) then
+               for K in (J - 1) * 2 + 1 .. J * 2 loop
+                  if Left.Value (K) /= Right.Value (K) then
+                     return Is_Less (Left.Value (K), Right.Value (K));
+                  end if;
+               end loop;
+            end if;
+         end loop;
+      end;
+
+      return Left.Last <= Right.Last;
    end Is_Less_Or_Equal;
 
 end Matreshka.Internals.Strings.SIMD;
