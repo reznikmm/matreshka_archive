@@ -75,16 +75,12 @@ package body Matreshka.Internals.Strings is
    --------------
 
    function Allocate (Size : Natural) return not null Shared_String_Access is
-   begin
-      if Size = 0 then
-         return Shared_Empty'Access;
+      pragma Assert (Size /= 0);
 
-      else
-         return
-           new Shared_String
-                 (((Size + 1) / Min_Mul_Alloc + 1) * Min_Mul_Alloc);
-         --  One additional element is allocated for null terminator.
-      end if;
+   begin
+      return
+        new Shared_String (((Size + 1) / Min_Mul_Alloc + 1) * Min_Mul_Alloc);
+      --  One additional element is allocated for null terminator.
    end Allocate;
 
    ------------
