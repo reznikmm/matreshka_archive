@@ -53,36 +53,101 @@ procedure String_Speed is
 
    procedure Test_Initialization;
 
-   procedure Results
-     (Name            : String;
+   type Result_Type is record
       Ada_Duration    : Duration;
       League_Duration : Duration;
-      Passes          : Positive);
+      Passes          : Positive;
+   end record;
+
+   type Result_Type_Array is array (Positive range <>) of Result_Type;
+
+   procedure Results
+     (Name   : String;
+      Result : Result_Type);
+
+   procedure Results
+     (Name   : String;
+      Result : Result_Type_Array);
 
    -------------
    -- Results --
    -------------
 
    procedure Results
-     (Name            : String;
-      Ada_Duration    : Duration;
-      League_Duration : Duration;
-      Passes          : Positive)
+     (Name   : String;
+      Result : Result_Type)
    is
       type Speedup is delta 0.01 range 0.0 .. 100.0;
 
-      P : Speedup := Speedup (Ada_Duration / League_Duration);
+      P : Speedup := Speedup (Result.Ada_Duration / Result.League_Duration);
 
    begin
       Put_Line (Name & " (" & Trim (Speedup'Image (P), Both) & ")");
       Put_Line
         ("  AUS : "
-           & Duration'Image (Ada_Duration)
-           & Duration'Image (Ada_Duration / Passes));
+           & Duration'Image (Result.Ada_Duration)
+           & Duration'Image (Result.Ada_Duration / Result.Passes));
       Put_Line
         ("  LUS : "
-           & Duration'Image (League_Duration)
-           & Duration'Image (League_Duration / Passes));
+           & Duration'Image (Result.League_Duration)
+           & Duration'Image (Result.League_Duration / Result.Passes));
+   end Results;
+
+   -------------
+   -- Results --
+   -------------
+
+   procedure Results
+     (Name   : String;
+      Result : Result_Type_Array)
+   is
+      type Speedup is delta 0.01 range 0.0 .. 100.0;
+
+   begin
+      Put (Name & " (");
+
+      for J in Result'Range loop
+         if J /= Result'First then
+            Put ('/');
+         end if;
+
+         Put
+          (Trim
+            (Speedup'Image
+              (Speedup (Result (J).Ada_Duration / Result (J).League_Duration)),
+             Both));
+      end loop;
+
+      Put_Line (")");
+
+      Put ("  AUS :");
+
+      for J in Result'Range loop
+         if J /= Result'First then
+            Put (" /");
+         end if;
+
+         Put
+          (Duration'Image (Result (J).Ada_Duration)
+             & Duration'Image (Result (J).Ada_Duration / Result (J).Passes));
+      end loop;
+
+      New_Line;
+
+      Put ("  LUS :");
+
+      for J in Result'Range loop
+         if J /= Result'First then
+            Put (" /");
+         end if;
+
+         Put
+          (Duration'Image (Result (J).League_Duration)
+             & Duration'Image
+                (Result (J).League_Duration / Result (J).Passes));
+      end loop;
+
+      New_Line;
    end Results;
 
    -----------------
@@ -127,7 +192,8 @@ procedure String_Speed is
          League_Duration := Clock - Start;
       end;
 
-      Results ("Append string", Ada_Duration, League_Duration, Passes);
+      Results
+       ("Append string", Result_Type'(Ada_Duration, League_Duration, Passes));
    end Test_Append;
 
    ------------------
@@ -135,89 +201,89 @@ procedure String_Speed is
    ------------------
 
    procedure Test_Compare is
-      Equal_Passes    : constant := 8_000_000;
+      generic
+         with function Compare
+          (Left  : Unbounded_Wide_String;
+           Right : Unbounded_Wide_String) return Boolean;
+         with function Compare
+          (Left : Universal_String; Right : Universal_String) return Boolean;
+
+      procedure Generic_Test
+       (Size   : Positive;
+        Passes : Positive;
+        Result : out Result_Type);
+
+      ------------------
+      -- Generic_Test --
+      ------------------
+
+      procedure Generic_Test
+       (Size   : Positive;
+        Passes : Positive;
+        Result : out Result_Type)
+      is
+         Start : Time;
+         Y     : Boolean;
+
+      begin
+         declare
+            S1 : Unbounded_Wide_String :=
+              To_Unbounded_Wide_String (Size * ' ' & '1');
+            S2 : Unbounded_Wide_String :=
+              To_Unbounded_Wide_String (Size * ' ' & '2');
+
+         begin
+            Start := Clock;
+
+            for J in 1 .. Passes loop
+               Y := Compare (S1, S2);
+            end loop;
+
+            Result.Ada_Duration := Clock - Start;
+         end;
+
+         declare
+            S1 : Universal_String :=
+              To_Universal_String (Size * ' ' & '1');
+            S2 : Universal_String :=
+              To_Universal_String (Size * ' ' & '2');
+
+         begin
+            Start := Clock;
+
+            for J in 1 .. Passes loop
+               Y := Compare (S1, S2);
+            end loop;
+
+            Result.League_Duration := Clock - Start;
+         end;
+
+         Result.Passes := Passes;
+      end Generic_Test;
+
+      procedure Equal_Test is new Generic_Test ("=", "=");
+      procedure Less_Test is new Generic_Test ("<", "<");
+
+      Equal_Passes    : constant := 10_000_000;
       Less_Passes     : constant := 12_000_000;
-      Size            : constant := 30;
-      Ada_Duration    : Duration;
-      League_Duration : Duration;
+      Size            : constant := 100;
+
+      Result : Result_Type_Array (1 .. 5);
 
    begin
-      declare
-         Start : Time;
-         S1    : Unbounded_Wide_String :=
-           To_Unbounded_Wide_String (Size * ' ' & '1');
-         S2    : Unbounded_Wide_String :=
-           To_Unbounded_Wide_String (Size * ' ' & '2');
-         Y     : Boolean;
+      Equal_Test (1, Equal_Passes, Result (1));
+      Equal_Test (10, Equal_Passes, Result (2));
+      Equal_Test (100, Equal_Passes / 2, Result (3));
+      Equal_Test (1000, Equal_Passes / 10, Result (4));
+      Equal_Test (10000, Equal_Passes / 50, Result (5));
+      Results ("Compare for equality", Result);
 
-      begin
-         Start := Clock;
-
-         for J in 1 .. Equal_Passes loop
-            Y := S1 = S2;
-         end loop;
-
-         Ada_Duration := Clock - Start;
-      end;
-
-      declare
-         Start : Time;
-         S1    : Universal_String :=
-           To_Universal_String (Size * ' ' & '1');
-         S2    : Universal_String :=
-           To_Universal_String (Size * ' ' & '2');
-         Y     : Boolean;
-
-      begin
-         Start := Clock;
-
-         for J in 1 .. Equal_Passes loop
-            Y := S1 = S2;
-         end loop;
-
-         League_Duration := Clock - Start;
-      end;
-
-      Results
-        ("Compare for equality", Ada_Duration, League_Duration, Equal_Passes);
-
-      declare
-         Start : Time;
-         S1    : Unbounded_Wide_String :=
-           To_Unbounded_Wide_String (Size * ' ' & '1');
-         S2    : Unbounded_Wide_String :=
-           To_Unbounded_Wide_String (Size * ' ' & '2');
-         Y     : Boolean;
-
-      begin
-         Start := Clock;
-
-         for J in 1 .. Less_Passes loop
-            Y := S1 < S2;
-         end loop;
-
-         Ada_Duration := Clock - Start;
-      end;
-
-      declare
-         Start : Time;
-         S1    : Universal_String :=
-           To_Universal_String (Size * ' ' & '1');
-         S2    : Universal_String :=
-           To_Universal_String (Size * ' ' & '2');
-         Y     : Boolean;
-
-      begin
-         Start := Clock;
-
-         for J in 1 .. Less_Passes loop
-            Y := S1 < S2;
-         end loop;
-
-         League_Duration := Clock - Start;
-      end;
-
-      Results ("Compare for less", Ada_Duration, League_Duration, Less_Passes);
+      Less_Test (1, Less_Passes, Result (1));
+      Less_Test (10, Less_Passes, Result (2));
+      Less_Test (100, Less_Passes / 2, Result (3));
+      Less_Test (1000, Less_Passes / 10, Result (4));
+      Less_Test (10000, Less_Passes / 50, Result (5));
+      Results ("Compare for less", Result);
    end Test_Compare;
 
    ---------------
@@ -263,7 +329,8 @@ procedure String_Speed is
       end;
 
       Results
-        ("Copy of non-empty string", Ada_Duration, League_Duration, Passes);
+       ("Copy of non-empty string",
+        Result_Type'(Ada_Duration, League_Duration, Passes));
    end Test_Copy;
 
    -------------------------------
@@ -306,7 +373,9 @@ procedure String_Speed is
          League_Duration := Clock - Start;
       end;
 
-      Results ("Copy of empty string", Ada_Duration, League_Duration, Passes);
+      Results
+       ("Copy of empty string",
+        Result_Type'(Ada_Duration, League_Duration, Passes));
    end Test_Copy_Of_Empty_String;
 
    -------------------------
@@ -361,9 +430,7 @@ procedure String_Speed is
 
       Results
         ("Initialization of default object",
-         Ada_Duration,
-         League_Duration,
-         Passes);
+         Result_Type'(Ada_Duration, League_Duration, Passes));
    end Test_Initialization;
 
 begin
