@@ -70,7 +70,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
 
    procedure Unchecked_Next
     (Item     : Utf16_String;
-     Position : in out Positive;
+     Position : in out Utf16_String_Index;
      Property : out Grapheme_Cluster_Break;
      Locale   : not null Matreshka.Internals.Locales.Locale_Data_Access);
    pragma Inline (Unchecked_Next);
@@ -79,7 +79,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
 
    procedure Unchecked_Previous
     (Item     : Utf16_String;
-     Position : in out Positive;
+     Position : in out Utf16_String_Index;
      Property : out Grapheme_Cluster_Break;
      Locale   : not null Matreshka.Internals.Locales.Locale_Data_Access);
    pragma Inline (Unchecked_Previous);
@@ -103,29 +103,23 @@ package body League.Strings.Cursors.Grapheme_Clusters is
    -------------
 
    function Element (Self : Grapheme_Cluster_Cursor'Class)
-     return Universal_String
-   is
+     return Universal_String is
    begin
       if Self.Object = null then
          raise Program_Error with "Invalid iterator";
       end if;
 
-      declare
-         D : constant Shared_String_Access := Self.Object.Data;
+      if Self.Current_Position not in 0 .. Self.Object.Data.Unused - 1 then
+         raise Constraint_Error with "Cursor out of range";
+      end if;
 
-      begin
-         if Self.Current_Position not in D.Value'First .. D.Last then
-            raise Constraint_Error with "Cursor out of range";
-         end if;
-
-         return
-           Constructors.Create
-            (Slice
-              (D,
-               Self.Current_Position,
-               Self.Next_Position - 1,
-               Self.Current_Length));
-      end;
+      return
+        Constructors.Create
+         (Slice
+           (Self.Object.Data,
+            Self.Current_Position,
+            Self.Next_Position - Self.Current_Position,
+            Self.Current_Length));
    end Element;
 
    ---------------
@@ -136,17 +130,17 @@ package body League.Strings.Cursors.Grapheme_Clusters is
       D : constant not null Shared_String_Access := Self.Object.Data;
 
    begin
-      if Self.Current_Position <= D.Last then
+      if Self.Current_Position < D.Unused then
          Unchecked_Next
           (D.Value, Self.Next_Position, Self.Current_State, Self.Locale);
          Self.Current_Length := 1;
 
          declare
-            Aux_Position : Positive               := Self.Next_Position;
+            Aux_Position : Utf16_String_Index     := Self.Next_Position;
             Aux_State    : Grapheme_Cluster_Break := Self.Current_State;
 
          begin
-            while Self.Next_Position <= D.Last loop
+            while Self.Next_Position < D.Unused loop
                Unchecked_Next
                 (D.Value, Aux_Position, Self.Next_State, Self.Locale);
 
@@ -171,14 +165,14 @@ package body League.Strings.Cursors.Grapheme_Clusters is
       D : constant not null Shared_String_Access := Self.Object.Data;
 
    begin
-      if Self.Current_Position > D.Value'First then
+      if Self.Current_Position /= Utf16_String_Index'Last then
          Unchecked_Previous
           (D.Value, Self.Previous_Position, Self.Previous_State, Self.Locale);
          Self.Previous_Length := 1;
 
-         while Self.Previous_Position > D.Value'First loop
+         while Self.Previous_Position /= Utf16_String_Index'Last loop
             declare
-               Aux_Position : Positive := Self.Previous_Position;
+               Aux_Position : Utf16_String_Index := Self.Previous_Position;
                Aux_State    : Grapheme_Cluster_Break;
 
             begin
@@ -194,7 +188,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
          end loop;
 
       else
-         Self.Previous_Position := D.Value'First - 1;
+         Self.Previous_Position := Utf16_String_Index'Last;
          Self.Previous_Length   := 0;
       end if;
    end Find_Previous;
@@ -230,12 +224,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
          raise Program_Error with "Invalid iterator";
       end if;
 
-      declare
-         D : constant Shared_String_Access := Self.Object.Data;
-
-      begin
-         return Self.Current_Position in D.Value'First .. D.Last;
-      end;
+      return Self.Current_Position < Self.Object.Data.Unused;
    end Has_Element;
 
    ----------
@@ -250,7 +239,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
       Self.Attach (Item);
       Self.Set_Locale;
 
-      Self.Next_Position     := Self.Object.Data.Last + 1;
+      Self.Next_Position     := Self.Object.Data.Unused;
       Self.Current_Position  := Self.Next_Position;
       Self.Previous_Position := Self.Current_Position;
 
@@ -273,20 +262,15 @@ package body League.Strings.Cursors.Grapheme_Clusters is
          raise Program_Error with "Invalid iterator";
       end if;
 
-      declare
-         D : constant Shared_String_Access := Self.Object.Data;
+      if Self.Current_Position < Self.Object.Data.Unused then
+         Self.Previous_Position := Self.Current_Position;
+         Self.Previous_Length   := Self.Current_Length;
+         Self.Previous_State    := Self.Current_State;
+         Self.Current_Position  := Self.Next_Position;
+         Self.Current_State     := Self.Next_State;
 
-      begin
-         if Self.Current_Position <= D.Last then
-            Self.Previous_Position := Self.Current_Position;
-            Self.Previous_Length   := Self.Current_Length;
-            Self.Previous_State    := Self.Current_State;
-            Self.Current_Position  := Self.Next_Position;
-            Self.Current_State     := Self.Next_State;
-
-            Find_Next (Self);
-         end if;
-      end;
+         Find_Next (Self);
+      end if;
    end Next;
 
 --   ----------------
@@ -318,20 +302,15 @@ package body League.Strings.Cursors.Grapheme_Clusters is
          raise Program_Error with "Invalid iterator";
       end if;
 
-      declare
-         D : constant Shared_String_Access := Self.Object.Data;
+      if Self.Current_Position <= Self.Object.Data.Unused then
+         Self.Next_Position    := Self.Current_Position;
+         Self.Next_State       := Self.Current_State;
+         Self.Current_Position := Self.Previous_Position;
+         Self.Current_Length   := Self.Previous_Length;
+         Self.Current_State    := Self.Previous_State;
 
-      begin
-         if Self.Current_Position in D.Value'First .. D.Last + 1 then
-            Self.Next_Position    := Self.Current_Position;
-            Self.Next_State       := Self.Current_State;
-            Self.Current_Position := Self.Previous_Position;
-            Self.Current_Length   := Self.Previous_Length;
-            Self.Current_State    := Self.Previous_State;
-
-            Find_Previous (Self);
-         end if;
-      end;
+         Find_Previous (Self);
+      end if;
    end Previous;
 
    --------------------
@@ -340,7 +319,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
 
    procedure Unchecked_Next
     (Item     : Utf16_String;
-     Position : in out Positive;
+     Position : in out Utf16_String_Index;
      Property : out Grapheme_Cluster_Break;
      Locale   : not null Matreshka.Internals.Locales.Locale_Data_Access)
    is
@@ -357,7 +336,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
 
    procedure Unchecked_Previous
     (Item     : Utf16_String;
-     Position : in out Positive;
+     Position : in out Utf16_String_Index;
      Property : out Grapheme_Cluster_Break;
      Locale   : not null Matreshka.Internals.Locales.Locale_Data_Access)
    is

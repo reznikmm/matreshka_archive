@@ -43,13 +43,15 @@ package body Matreshka.Internals.Strings.SIMD is
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
 
-   type Unsigned_64_Unrestricted_Array is array (Positive) of Unsigned_64;
+   type Unsigned_64_Unrestricted_Array is
+     array (Utf16_String_Index) of Unsigned_64;
 
-   Terminator_Mask : constant array (Natural range 0 .. 3) of Unsigned_64
-     := (0 => 16#0000_0000_0000_0000#,
-         1 => 16#0000_0000_0000_FFFF#,
-         2 => 16#0000_0000_FFFF_FFFF#,
-         3 => 16#0000_FFFF_FFFF_FFFF#);
+   Terminator_Mask : constant
+     array (Utf16_String_Index range 0 .. 3) of Unsigned_64
+       := (0 => 16#0000_0000_0000_0000#,
+           1 => 16#0000_0000_0000_FFFF#,
+           2 => 16#0000_0000_FFFF_FFFF#,
+           3 => 16#0000_FFFF_FFFF_FFFF#);
    --  This mask is used to set unused components of the element to zero.
 
    --------------------------
@@ -59,8 +61,8 @@ package body Matreshka.Internals.Strings.SIMD is
    procedure Fill_Null_Terminator (Self : not null Shared_String_Access) is
       SV     : Unsigned_64_Unrestricted_Array;
       for SV'Address use Self.Value'Address;
-      Index  : constant Natural := Self.Last / 4 + 1;
-      Offset : constant Natural := Self.Last mod 4;
+      Index  : constant Utf16_String_Index := Self.Unused / 4;
+      Offset : constant Utf16_String_Index := Self.Unused mod 4;
 
    begin
       SV (Index) := SV (Index) and Terminator_Mask (Offset);
@@ -78,7 +80,7 @@ package body Matreshka.Internals.Strings.SIMD is
          return True;
       end if;
 
-      if Left.Last /= Right.Last then
+      if Left.Unused /= Right.Unused then
          return False;
       end if;
 
@@ -87,10 +89,10 @@ package body Matreshka.Internals.Strings.SIMD is
          for LV'Address use Left.Value'Address;
          RV   : Unsigned_64_Unrestricted_Array;
          for RV'Address use Right.Value'Address;
-         Last : constant Natural := (Left.Last + 3) / 4;
+         Last : constant Utf16_String_Index := Left.Unused / 4;
 
       begin
-         for J in 1 .. Last loop
+         for J in 0 .. Last loop
             if LV (J) /= RV (J) then
                return False;
             end if;
@@ -113,8 +115,8 @@ package body Matreshka.Internals.Strings.SIMD is
       end if;
 
       declare
-         Min  : constant Natural := Natural'Min (Left.Last, Right.Last);
-         Last : constant Natural := (Min + 3) / 4;
+         Last : constant Utf16_String_Index
+           := Utf16_String_Index'Min (Left.Unused, Right.Unused) / 4;
 
          LV   : Unsigned_64_Unrestricted_Array;
          for LV'Address use Left.Value'Address;
@@ -122,9 +124,9 @@ package body Matreshka.Internals.Strings.SIMD is
          for RV'Address use Right.Value'Address;
 
       begin
-         for J in 1 .. Last loop
+         for J in 0 .. Last loop
             if LV (J) /= RV (J) then
-               for K in (J - 1) * 4 + 1 .. J * 4 loop
+               for K in J * 4 .. J * 4 + 3 loop
                   if Left.Value (K) /= Right.Value (K) then
                      return Is_Greater (Left.Value (K), Right.Value (K));
                   end if;
@@ -133,7 +135,7 @@ package body Matreshka.Internals.Strings.SIMD is
          end loop;
       end;
 
-      return Left.Last > Right.Last;
+      return Left.Unused > Right.Unused;
    end Is_Greater;
 
    -------------------------
@@ -149,8 +151,8 @@ package body Matreshka.Internals.Strings.SIMD is
       end if;
 
       declare
-         Min  : constant Natural := Natural'Min (Left.Last, Right.Last);
-         Last : constant Natural := (Min + 3) / 4;
+         Last : constant Utf16_String_Index
+           := Utf16_String_Index'Min (Left.Unused, Right.Unused) / 4;
 
          LV   : Unsigned_64_Unrestricted_Array;
          for LV'Address use Left.Value'Address;
@@ -158,9 +160,9 @@ package body Matreshka.Internals.Strings.SIMD is
          for RV'Address use Right.Value'Address;
 
       begin
-         for J in 1 .. Last loop
+         for J in 0 .. Last loop
             if LV (J) /= RV (J) then
-               for K in (J - 1) * 4 + 1 .. J * 4 loop
+               for K in J * 4 .. J * 4 + 3 loop
                   if Left.Value (K) /= Right.Value (K) then
                      return Is_Greater (Left.Value (K), Right.Value (K));
                   end if;
@@ -169,7 +171,7 @@ package body Matreshka.Internals.Strings.SIMD is
          end loop;
       end;
 
-      return Left.Last >= Right.Last;
+      return Left.Unused >= Right.Unused;
    end Is_Greater_Or_Equal;
 
    -------------
@@ -185,8 +187,8 @@ package body Matreshka.Internals.Strings.SIMD is
       end if;
 
       declare
-         Min  : constant Natural := Natural'Min (Left.Last, Right.Last);
-         Last : constant Natural := (Min + 3) / 4;
+         Last : constant Utf16_String_Index
+           := Utf16_String_Index'Min (Left.Unused, Right.Unused) / 4;
 
          LV   : Unsigned_64_Unrestricted_Array;
          for LV'Address use Left.Value'Address;
@@ -194,9 +196,9 @@ package body Matreshka.Internals.Strings.SIMD is
          for RV'Address use Right.Value'Address;
 
       begin
-         for J in 1 .. Last loop
+         for J in 0 .. Last loop
             if LV (J) /= RV (J) then
-               for K in (J - 1) * 4 + 1 .. J * 4 loop
+               for K in J * 4 .. J * 4 + 3 loop
                   if Left.Value (K) /= Right.Value (K) then
                      return Is_Less (Left.Value (K), Right.Value (K));
                   end if;
@@ -205,7 +207,7 @@ package body Matreshka.Internals.Strings.SIMD is
          end loop;
       end;
 
-      return Left.Last < Right.Last;
+      return Left.Unused < Right.Unused;
    end Is_Less;
 
    ----------------------
@@ -221,8 +223,8 @@ package body Matreshka.Internals.Strings.SIMD is
       end if;
 
       declare
-         Min  : constant Natural := Natural'Min (Left.Last, Right.Last);
-         Last : constant Natural := (Min + 3) / 4;
+         Last : constant Utf16_String_Index
+           := Utf16_String_Index'Min (Left.Unused, Right.Unused) / 4;
 
          LV   : Unsigned_64_Unrestricted_Array;
          for LV'Address use Left.Value'Address;
@@ -230,9 +232,9 @@ package body Matreshka.Internals.Strings.SIMD is
          for RV'Address use Right.Value'Address;
 
       begin
-         for J in 1 .. Last loop
+         for J in 0 .. Last loop
             if LV (J) /= RV (J) then
-               for K in (J - 1) * 4 + 1 .. J * 4 loop
+               for K in J * 4 .. J * 4 + 3 loop
                   if Left.Value (K) /= Right.Value (K) then
                      return Is_Less (Left.Value (K), Right.Value (K));
                   end if;
@@ -241,7 +243,7 @@ package body Matreshka.Internals.Strings.SIMD is
          end loop;
       end;
 
-      return Left.Last <= Right.Last;
+      return Left.Unused <= Right.Unused;
    end Is_Less_Or_Equal;
 
 end Matreshka.Internals.Strings.SIMD;

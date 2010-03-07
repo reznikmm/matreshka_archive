@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -32,6 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 private with Matreshka.Internals.Unicode.Ucd;
+private with Matreshka.Internals.Utf16;
 
 package League.Strings.Cursors.Grapheme_Clusters is
 
@@ -59,15 +60,15 @@ package League.Strings.Cursors.Grapheme_Clusters is
 private
 
    type Grapheme_Cluster_Cursor is new Abstract_Tailored_Cursor with record
-      Previous_Position : Natural := 0;
-      Previous_Length   : Natural := 0;
+      Previous_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
+      Previous_Length   : Natural;
       Previous_State    :
         Matreshka.Internals.Unicode.Ucd.Grapheme_Cluster_Break;
-      Current_Position  : Natural := 0;
-      Current_Length    : Natural := 0;
+      Current_Position  : Matreshka.Internals.Utf16.Utf16_String_Index;
+      Current_Length    : Natural;
       Current_State     :
         Matreshka.Internals.Unicode.Ucd.Grapheme_Cluster_Break;
-      Next_Position     : Natural := 0;
+      Next_Position     : Matreshka.Internals.Utf16.Utf16_String_Index;
       Next_State        :
         Matreshka.Internals.Unicode.Ucd.Grapheme_Cluster_Break;
    end record;

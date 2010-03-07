@@ -74,13 +74,19 @@ package body Matreshka.Internals.Strings is
    -- Allocate --
    --------------
 
-   function Allocate (Size : Natural) return not null Shared_String_Access is
+   function Allocate
+    (Size : Matreshka.Internals.Utf16.Utf16_String_Index)
+       return not null Shared_String_Access
+   is
       pragma Assert (Size /= 0);
 
-   begin
-      return
-        new Shared_String (((Size + 1) / Min_Mul_Alloc + 1) * Min_Mul_Alloc);
+      S : constant Utf16_String_Index
+        := ((Utf16_String_Index (Size + 1)) / Min_Mul_Alloc + 1)
+             * Min_Mul_Alloc;
       --  One additional element is allocated for null terminator.
+
+   begin
+      return new Shared_String (S - 1);
    end Allocate;
 
    ------------
@@ -88,31 +94,27 @@ package body Matreshka.Internals.Strings is
    ------------
 
    procedure Append
-    (Self      : in out Shared_String_Access;
-     Code      : Code_Point;
-     Increment : Natural)
+    (Self : in out Shared_String_Access;
+     Code : Code_Point)
    is
-      Index : Positive := Self.Last + 1;
+      Next_Unused : Utf16_String_Index;
 
    begin
-      Self.Length := Self.Length + 1;
-
       if Code <= 16#FFFF# then
-         Self.Last := Self.Last + 1;
+         Next_Unused := Self.Unused + 1;
 
       else
-         Self.Last := Self.Last + 2;
+         Next_Unused := Self.Unused + 2;
       end if;
 
-      if Self.Last + 1 > Self.Size then
+      if Next_Unused >= Self.Size then
          declare
             Aux : constant not null Shared_String_Access
-              := Allocate
-                  (Self.Last + Natural'Max (Self.Size + Increment, Self.Last));
+              := Allocate (Next_Unused);
 
          begin
             Aux.Value (Self.Value'Range) := Self.Value;
-            Aux.Last := Self.Last;
+            Aux.Unused := Self.Unused;
             Aux.Length := Self.Length;
 
             Dereference (Self);
@@ -120,7 +122,8 @@ package body Matreshka.Internals.Strings is
          end;
       end if;
 
-      Unchecked_Store (Self.Value, Index, Code);
+      Self.Length := Self.Length + 1;
+      Unchecked_Store (Self.Value, Self.Unused, Code);
    end Append;
 
    ------------
@@ -132,7 +135,7 @@ package body Matreshka.Internals.Strings is
      Item : Shared_String_Access)
    is
       Source : Shared_String_Access := Self;
-      Size   : constant Natural := Source.Last + Item.Last;
+      Size   : constant Utf16_String_Index := Source.Unused + Item.Unused;
 
    begin
       if Size = 0 then
@@ -141,29 +144,30 @@ package body Matreshka.Internals.Strings is
             Self := Shared_Empty'Access;
          end if;
 
-      elsif Item.Length = 0 then
+      elsif Item.Unused = 0 then
          null;
 
-      elsif Self.Length = 0 then
+      elsif Self.Unused = 0 then
          Dereference (Self);
          Self := Item;
          Reference (Self);
 
       else
-         if Size + 1 > Self.Size
+         if Size > Self.Size
            or else not Matreshka.Internals.Atomics.Counters.Is_One
                         (Self.Counter'Access)
          then
-            Self := Allocate (Size + Self.Last / Growth_Factor - 1);
+            Self := Allocate (Size + Self.Unused / Growth_Factor - 1);
          end if;
 
          if Self /= Source then
-            Self.Value (1 .. Source.Last) := Source.Value (1 .. Source.Last);
+            Self.Value (0 .. Source.Unused - 1) :=
+              Source.Value (0 .. Source.Unused - 1);
          end if;
 
-         Self.Value (Source.Last + 1 .. Source.Last + Item.Last) :=
-           Item.Value (1 .. Item.Last);
-         Self.Last := Size;
+         Self.Value (Source.Unused .. Size - 1) :=
+           Item.Value (0 .. Item.Unused - 1);
+         Self.Unused := Size;
          Self.Length := Source.Length + Item.Length;
          Free (Self.Index_Map);
          Fill_Null_Terminator (Self);
@@ -179,21 +183,21 @@ package body Matreshka.Internals.Strings is
    -----------------------
 
    procedure Compute_Index_Map (Self : in out Shared_String) is
-      Map     : Index_Map_Access := Self.Index_Map;
-      Current : Positive         := 1;
+      pragma Assert (Self.Length /= 0);
+
+      Map     : Index_Map_Access   := Self.Index_Map;
+      Current : Utf16_String_Index := 0;
 
    begin
       --  Calculate index map if it is unavailable for now.
 
       if Map = null then
-         Map := new Index_Map (Self.Length);
+         Map := new Index_Map (Utf16_String_Index (Self.Length) - 1);
 
          for J in Map.Map'Range loop
             Map.Map (J) := Current;
 
-            if Self.Value (Current)
-                 in High_Surrogate_Utf16_Code_Unit
-            then
+            if Self.Value (Current) in High_Surrogate_Utf16_Code_Unit then
                Current := Current + 2;
 
             else
@@ -260,10 +264,10 @@ package body Matreshka.Internals.Strings is
       H     : Internal_Hash_Type := Internal_Hash_Type (Self.Length);
       K     : Internal_Hash_Type;
       C     : Code_Unit_32;
-      Index : Positive := 1;
+      Index : Utf16_String_Index := 0;
 
    begin
-      while Index <= Self.Last loop
+      while Index < Self.Unused loop
          Unchecked_Next (Self.Value, Index, C);
 
          K := Internal_Hash_Type (C) * M;
@@ -303,104 +307,99 @@ package body Matreshka.Internals.Strings is
       end if;
    end Reference;
 
-   -------------
-   -- Replace --
-   -------------
-
-   procedure Replace
-    (Self   : in out Shared_String_Access;
-     Low    : Positive;
-     High   : Natural;
-     Length : Natural;
-     By     : not null Shared_String_Access)
-   is
-      pragma Assert (Low <= Self.Last + 1);
-      pragma Assert (High < Low or else High <= Self.Last);
-      pragma Assert (Length in (High - Low + 2) / 2 .. High - Low + 1);
-
-      Source : Shared_String_Access := Self;
-      Size   : constant Natural
-        := Source.Last - Natural'Max (High - Low + 1, 0) + By.Last;
-
-   begin
-      if Size = 0 then
-         if Self /= Shared_Empty'Access then
-            Dereference (Self);
-            Self := Shared_Empty'Access;
-         end if;
-
-      elsif By.Last = Size then
-         Dereference (Self);
-         Self := By;
-         Reference (Self);
-
-      else
-         if Size + 1 > Self.Size
-           or else not Matreshka.Internals.Atomics.Counters.Is_One
-                        (Self.Counter'Access)
-         then
-            Self := Allocate (Size);
-         end if;
-
-         if High < Low then
-            Self.Value (Low + By.Last .. Size) :=
-              Source.Value (Low .. Source.Last);
-            Self.Value (Low .. Low + By.Last - 1) := By.Value (1 .. By.Last);
-
-         else
-            Self.Value (Low + By.Last .. Size) :=
-              Source.Value (High + 1 .. Source.Last);
-            Self.Value (Low .. Low + By.Last - 1) := By.Value (1 .. By.Last);
-         end if;
-
-         if Self /= Source then
-            Self.Value (1 .. Low - 1) := Source.Value (1 .. Low - 1);
-         end if;
-
-         Self.Last := Size;
-         Self.Length := Source.Length - Length + By.Length;
-         Fill_Null_Terminator (Self);
-
-         if Self /= Source then
-            Dereference (Source);
-         end if;
-      end if;
-   end Replace;
+--   -------------
+--   -- Replace --
+--   -------------
+--
+--   procedure Replace
+--    (Self   : in out Shared_String_Access;
+--     Low    : Positive;
+--     High   : Natural;
+--     Length : Natural;
+--     By     : not null Shared_String_Access)
+--   is
+--      pragma Assert (Low <= Self.Last + 1);
+--      pragma Assert (High < Low or else High <= Self.Last);
+--      pragma Assert (Length in (High - Low + 2) / 2 .. High - Low + 1);
+--
+--      Source : Shared_String_Access := Self;
+--      Size   : constant Natural
+--        := Source.Last - Natural'Max (High - Low + 1, 0) + By.Last;
+--
+--   begin
+--      if Size = 0 then
+--         if Self /= Shared_Empty'Access then
+--            Dereference (Self);
+--            Self := Shared_Empty'Access;
+--         end if;
+--
+--      elsif By.Last = Size then
+--         Dereference (Self);
+--         Self := By;
+--         Reference (Self);
+--
+--      else
+--         if Size + 1 > Self.Size
+--           or else not Matreshka.Internals.Atomics.Counters.Is_One
+--                        (Self.Counter'Access)
+--         then
+--            Self := Allocate (Size);
+--         end if;
+--
+--         if High < Low then
+--            Self.Value (Low + By.Last .. Size) :=
+--              Source.Value (Low .. Source.Last);
+--            Self.Value (Low .. Low + By.Last - 1) := By.Value (1 .. By.Last);
+--
+--         else
+--            Self.Value (Low + By.Last .. Size) :=
+--              Source.Value (High + 1 .. Source.Last);
+--            Self.Value (Low .. Low + By.Last - 1) := By.Value (1 .. By.Last);
+--         end if;
+--
+--         if Self /= Source then
+--            Self.Value (1 .. Low - 1) := Source.Value (1 .. Low - 1);
+--         end if;
+--
+--         Self.Last := Size;
+--         Self.Length := Source.Length - Length + By.Length;
+--         Fill_Null_Terminator (Self);
+--
+--         if Self /= Source then
+--            Dereference (Source);
+--         end if;
+--      end if;
+--   end Replace;
 
    -----------
    -- Slice --
    -----------
 
    function Slice
-    (Self   : not null Shared_String_Access;
-     Low    : Positive;
-     High   : Natural;
+    (Source : not null Shared_String_Access;
+     First  : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
      Length : Natural)
        return not null Shared_String_Access
    is
-      pragma Assert (High < Low
-                       or else (Low <= Self.Last and then High <= Self.Last));
-      pragma Assert (Length in (High - Low + 2) / 2 .. High - Low + 1);
+      pragma Assert (First < Source.Unused
+                       and then First + Size - 1 < Source.Unused);
+      pragma Assert (Utf16_String_Index (Length) in (Size + 1) / 2 .. Size);
 
    begin
-      if High < Low then
+      if Size = 0 then
          return Shared_Empty'Access;
-
-      else
-         declare
-            Size : constant Natural := High - Low + 1;
-
-         begin
-            return Result : constant not null Shared_String_Access
-              := Allocate (Size)
-            do
-               Result.Value (1 .. Size) := Self.Value (Low .. High);
-               Result.Last              := Size;
-               Result.Length            := Length;
-               Fill_Null_Terminator (Result);
-            end return;
-         end;
       end if;
+
+      return Destination : constant not null Shared_String_Access
+        := Allocate (Size)
+      do
+         Destination.Value (0 .. Size - 1) :=
+           Source.Value (First .. First + Size - 1);
+         Destination.Unused := Size;
+         Destination.Length := Length;
+         Fill_Null_Terminator (Destination);
+      end return;
    end Slice;
 
 end Matreshka.Internals.Strings;

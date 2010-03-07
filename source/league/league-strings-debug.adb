@@ -133,11 +133,11 @@ package body League.Strings.Debug is
    function Debug_Image (Item : Universal_String) return String is
       D      : constant Shared_String_Access := Item.Data;
       Result : Unbounded_String;
-      Index  : Positive := 1;
+      Index  : Utf16_String_Index := 0;
       Code   : Code_Point;
 
    begin
-      while Index <= D.Last loop
+      while Index < D.Unused loop
          if Index /= 1 then
             Append (Result, ' ');
          end if;

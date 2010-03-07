@@ -54,7 +54,7 @@ package body League.Strings.Cursors.Characters is
          D : constant Shared_String_Access := Self.Object.Data;
 
       begin
-         if Self.Current not in D.Value'First .. D.Last then
+         if Self.Current >= D.Unused then
             raise Constraint_Error with "Cursor out of range";
          end if;
 
@@ -87,12 +87,7 @@ package body League.Strings.Cursors.Characters is
          raise Program_Error with "Invalid iterator";
       end if;
 
-      declare
-         D : constant Shared_String_Access := Self.Object.Data;
-
-      begin
-         return Self.Current in D.Value'First .. D.Last;
-      end;
+      return Self.Current < Self.Object.Data.Unused;
    end Has_Element;
 
    ----------
@@ -106,7 +101,7 @@ package body League.Strings.Cursors.Characters is
    begin
       Self.Attach (Item);
 
-      Self.Current := Self.Object.Data.Last + 1;
+      Self.Current := Self.Object.Data.Unused;
 
       if Self.Object.Data.Length /= 0 then
          Unchecked_Previous (Self.Object.Data.Value, Self.Current);
@@ -127,11 +122,11 @@ package body League.Strings.Cursors.Characters is
          D : constant Shared_String_Access := Self.Object.Data;
 
       begin
-         if Self.Current in D.Value'First .. D.Last then
+         if Self.Current < D.Unused then
             Unchecked_Next (D.Value, Self.Current);
 
-         elsif Self.Current = D.Value'First - 1 then
-            Self.Current := Self.Current + 1;
+         elsif Self.Current = Utf16_String_Index'Last then
+            Self.Current := 0;
          end if;
       end;
    end Next;
@@ -147,12 +142,12 @@ package body League.Strings.Cursors.Characters is
      Inserted_Last : Natural)
    is
    begin
-      if Self.Current in Changed_First .. Removed_Last then
+--      if Self.Current in Changed_First .. Removed_Last then
          Self.Object := null;
 
-      elsif Self.Current > Removed_Last then
-         Self.Current := Self.Current + Inserted_Last - Removed_Last;
-      end if;
+--      elsif Self.Current > Removed_Last then
+--         Self.Current := Self.Current + Inserted_Last - Removed_Last;
+--      end if;
    end On_Changed;
 
    --------------
@@ -169,10 +164,10 @@ package body League.Strings.Cursors.Characters is
          D : constant Shared_String_Access := Self.Object.Data;
 
       begin
-         if Self.Current = 1 then
-            Self.Current := 0;
+         if Self.Current = 0 then
+            Self.Current := Utf16_String_Index'Last;
 
-         elsif Self.Current in 2 .. D.Last + 1 then
+         elsif Self.Current in 1 .. D.Unused then
             Unchecked_Previous (D.Value, Self.Current);
          end if;
       end;

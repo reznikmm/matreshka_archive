@@ -45,12 +45,30 @@ package body Matreshka.Internals.Utf16 is
    --  Fixups for change order of Utf16 code units to compare in Unicode code
    --  point order.
 
+   Surrogate_Kind_Mask   : constant := 16#FC00#;
+   Masked_High_Surrogate : constant := 16#D800#;
+   Masked_Low_Surrogate  : constant := 16#DC00#;
+   --  Mask to fast detection of surrogates and masked values for high and low
+   --  surrogates.
+
+   UCS4_Fixup : constant :=
+     High_Surrogate_First * 16#400# + Low_Surrogate_First - 16#1_0000#;
+   --  When code point is encoded as pair of surrogates its value computed as:
+   --
+   --    C := (S (J) - HB) << 10 + S (J + 1) - LB + 0x10000
+   --
+   --  to optimize number of computations this expression is transformed to
+   --
+   --    C := S (J) << 10 + S (J + 1) - (HB << 10 + LB - 0x10000)
+   --
+   --  This constant represents constant part of the expression.
+
    ----------------
    -- Is_Greater --
    ----------------
 
    function Is_Greater
-     (Left : Code_Unit_16; Right : Code_Unit_16) return Boolean is
+    (Left : Code_Unit_16; Right : Code_Unit_16) return Boolean is
    begin
       return
         Left + Utf16_Fixup (Left / 16#800#)
@@ -62,7 +80,7 @@ package body Matreshka.Internals.Utf16 is
    -------------
 
    function Is_Less
-     (Left : Code_Unit_16; Right : Code_Unit_16) return Boolean is
+    (Left : Code_Unit_16; Right : Code_Unit_16) return Boolean is
    begin
       return
         Left + Utf16_Fixup (Left / 16#800#)
@@ -75,19 +93,17 @@ package body Matreshka.Internals.Utf16 is
 
    procedure Unchecked_Next
     (Item     : Utf16_String;
-     Position : in out Positive;
-     Code     : out Matreshka.Internals.Unicode.Code_Point)
-   is
+     Position : in out Utf16_String_Index;
+     Code     : out Matreshka.Internals.Unicode.Code_Point) is
    begin
-      if Item (Position) in High_Surrogate_Utf16_Code_Unit then
+      Code := Code_Point (Item (Position));
+
+      if (Code and Surrogate_Kind_Mask) = Masked_High_Surrogate then
          Code :=
-           Code_Point (Item (Position) - High_Surrogate_First) * 16#400#
-             + Code_Point ((Item (Position + 1) - Low_Surrogate_First))
-             + 16#1_0000#;
+           Code * 16#400# + Code_Point (Item (Position + 1)) - UCS4_Fixup;
          Position := Position + 2;
 
       else
-         Code := Code_Point (Item (Position));
          Position := Position + 1;
       end if;
    end Unchecked_Next;
@@ -98,10 +114,12 @@ package body Matreshka.Internals.Utf16 is
 
    procedure Unchecked_Next
     (Item     : Utf16_String;
-     Position : in out Positive)
+     Position : in out Utf16_String_Index)
    is
+      Code : constant Code_Point := Code_Point (Item (Position));
+
    begin
-      if Item (Position) in High_Surrogate_Utf16_Code_Unit then
+      if (Code and Surrogate_Kind_Mask) = Masked_High_Surrogate then
          Position := Position + 2;
 
       else
@@ -115,20 +133,15 @@ package body Matreshka.Internals.Utf16 is
 
    procedure Unchecked_Previous
     (Item     : Utf16_String;
-     Position : in out Positive;
-     Code     : out Matreshka.Internals.Unicode.Code_Point)
-   is
+     Position : in out Utf16_String_Index;
+     Code     : out Matreshka.Internals.Unicode.Code_Point) is
    begin
-      if Item (Position - 1) in Low_Surrogate_Utf16_Code_Unit then
-         Position := Position - 2;
-         Code :=
-           Code_Point (Item (Position) - High_Surrogate_First) * 16#400#
-             + Code_Point ((Item (Position + 1) - Low_Surrogate_First))
-             + 16#1_0000#;
+      Position := Position - 1;
+      Code := Code_Point (Item (Position));
 
-      else
+      if (Code and Surrogate_Kind_Mask) = Masked_Low_Surrogate then
          Position := Position - 1;
-         Code := Code_Point (Item (Position));
+         Code := Code_Point (Item (Position)) * 16#400# + Code - UCS4_Fixup;
       end if;
    end Unchecked_Previous;
 
@@ -138,10 +151,12 @@ package body Matreshka.Internals.Utf16 is
 
    procedure Unchecked_Previous
     (Item     : Utf16_String;
-     Position : in out Positive)
+     Position : in out Utf16_String_Index)
    is
+      Code : constant Code_Point := Code_Point (Item (Position));
+
    begin
-      if Item (Position - 1) in Low_Surrogate_Utf16_Code_Unit then
+      if (Code and Surrogate_Kind_Mask) = Masked_Low_Surrogate then
          Position := Position - 2;
 
       else
@@ -155,7 +170,7 @@ package body Matreshka.Internals.Utf16 is
 
    procedure Unchecked_Store
     (Item     : in out Utf16_String;
-     Position : in out Positive;
+     Position : in out Utf16_String_Index;
      Code     : Code_Point)
    is
       X : Code_Point;
@@ -182,18 +197,17 @@ package body Matreshka.Internals.Utf16 is
 
    function Unchecked_To_Code_Point
     (Item     : Utf16_String;
-     Position : Positive)
+     Position : Utf16_String_Index)
        return Matreshka.Internals.Unicode.Code_Point
    is
+      Code : constant Code_Point := Code_Point (Item (Position));
+
    begin
-      if Item (Position) in High_Surrogate_Utf16_Code_Unit then
-         return
-           Code_Point (Item (Position) - High_Surrogate_First) * 16#400#
-             + Code_Point ((Item (Position + 1) - Low_Surrogate_First))
-             + 16#1_0000#;
+      if (Code and Surrogate_Kind_Mask) = Masked_High_Surrogate then
+         return Code * 16#400# + Code_Point (Item (Position + 1)) - UCS4_Fixup;
 
       else
-         return Code_Point (Item (Position));
+         return Code;
       end if;
    end Unchecked_To_Code_Point;
 

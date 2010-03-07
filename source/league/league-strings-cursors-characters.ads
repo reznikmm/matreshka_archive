@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -31,6 +31,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Matreshka.Internals.Utf16;
 
 package League.Strings.Cursors.Characters is
 
@@ -58,7 +59,7 @@ package League.Strings.Cursors.Characters is
 private
 
    type Character_Cursor is new Abstract_Cursor with record
-      Current : Natural := 0;
+      Current : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
    end record;
 
    overriding procedure On_Changed

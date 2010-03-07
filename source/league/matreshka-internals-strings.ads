@@ -57,12 +57,17 @@ package Matreshka.Internals.Strings is
 
    pragma Preelaborate;
 
+   use type Matreshka.Internals.Utf16.Utf16_String_Index;
+
    type Internal_Hash_Type is mod 2 ** 32;
 
-   type Positive_Array is array (Positive range <>) of Positive;
+   type Utf16_String_Index_Array is
+     array (Matreshka.Internals.Utf16.Utf16_String_Index range <>)
+       of Matreshka.Internals.Utf16.Utf16_String_Index;
 
-   type Index_Map (Length : Natural) is record
-      Map : Positive_Array (1 .. Length);
+   type Index_Map (Length : Matreshka.Internals.Utf16.Utf16_String_Index) is
+     record
+      Map : Utf16_String_Index_Array (0 .. Length);
    end record;
    --  GNAT: GNAT uses fat pointers for arrays, thus makes impossible to define
    --  atomic compare-and-swap operations for access-to-unconstrained-array
@@ -70,12 +75,13 @@ package Matreshka.Internals.Strings is
 
    type Index_Map_Access is access all Index_Map;
 
-   type Shared_String (Size : Natural) is limited record
+   type Shared_String (Size : Matreshka.Internals.Utf16.Utf16_String_Index)
+     is limited record
       Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
-      Last      : Natural := 0;
-      --  Last used element in the Value array.
+      Unused    : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+      --  First unused element in the Value array.
 
       Length    : Natural := 0;
       --  Precomputed length of the string in Unicode code points.
@@ -87,7 +93,7 @@ package Matreshka.Internals.Strings is
       --  buffer. Used only if string has both BMP and non-BMP characters.
       --  Is built on-demand.
 
-      Value     : Matreshka.Internals.Utf16.Utf16_String (1 .. Size);
+      Value     : Matreshka.Internals.Utf16.Utf16_String (0 .. Size);
       --  String data. Internal data always has well-formed UTF-16 encoded
       --  sequence of valid Unicode code points. Validity checks proceed only
       --  for potentially invalid user specified data, and never proceed for
@@ -97,7 +103,7 @@ package Matreshka.Internals.Strings is
    type Shared_String_Access is access all Shared_String;
 
    Shared_Empty : aliased Shared_String :=
-     (Size   => Standard'Maximum_Alignment / 2,
+     (Size   => Standard'Maximum_Alignment / 2 - 1,
       Value  => (others => 0),
       others => <>);
    --  Globally defined empty shared string to be used as default value.
@@ -148,13 +154,16 @@ package Matreshka.Internals.Strings is
 --     return not null String_Private_Data_Access;
    --  Creates copy of string data.
 
-   function Allocate (Size : Natural) return not null Shared_String_Access;
+   function Allocate
+    (Size : Matreshka.Internals.Utf16.Utf16_String_Index)
+       return not null Shared_String_Access;
    --  Allocates new instance of string with specified size. Actual size of the
    --  allocated string can be greater. Returns reference to Shared_Empty with
    --  incremented counter when Size is zero.
 
    procedure Reference (Self : Shared_String_Access);
    pragma Inline (Reference);
+--   pragma Inline_Always (Reference);
    --  Increment reference counter. Change of reference counter of Shared_Empty
    --  object is prevented to provide speedup and to allow to use it to
    --  initialize components of Preelaborateable_Initialization types.
@@ -176,29 +185,28 @@ package Matreshka.Internals.Strings is
 
    procedure Append
     (Self : in out Shared_String_Access;
-     Item : Shared_String_Access);
-
-   function Slice
-    (Self   : not null Shared_String_Access;
-     Low    : Positive;
-     High   : Natural;
-     Length : Natural)
-       return not null Shared_String_Access;
-   --  Returns slice from Low to High. Length specify expected length of the
-   --  result.
-
-   procedure Replace
-    (Self   : in out Shared_String_Access;
-     Low    : Positive;
-     High   : Natural;
-     Length : Natural;
-     By     : not null Shared_String_Access);
+     Code : Matreshka.Internals.Unicode.Code_Point);
+   --  Appends character to the string, reallocate memory if needed.
 
    procedure Append
-    (Self      : in out Shared_String_Access;
-     Code      : Matreshka.Internals.Unicode.Code_Point;
-     Increment : Natural);
-   --  Append character to the string, reallocate memory if needed. Increment
-   --  is used as minimum size increment value when relocation is applied.
+    (Self : in out Shared_String_Access;
+     Item : Shared_String_Access);
+   --  Appends data from to Item to the string, reallocate string when needed.
+
+   function Slice
+    (Source : not null Shared_String_Access;
+     First  : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length : Natural)
+       return not null Shared_String_Access;
+   --  Returns slice from First to First + Size - 1. Length specify expected
+   --  length of the result.
+
+--   procedure Replace
+--    (Self   : in out Shared_String_Access;
+--     Low    : Positive;
+--     High   : Natural;
+--     Length : Natural;
+--     By     : not null Shared_String_Access);
 
 end Matreshka.Internals.Strings;

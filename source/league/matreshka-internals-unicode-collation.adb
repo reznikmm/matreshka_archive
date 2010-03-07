@@ -99,8 +99,8 @@ package body Matreshka.Internals.Unicode.Collation is
        return Matreshka.Internals.Strings.Shared_Sort_Key_Access
    is
       Collation_Array : Collation_Element_Bounded_Array_Access
-        := new Collation_Element_Bounded_Array (Source.Last);
-      S_Index         : Positive := 1;
+        := new Collation_Element_Bounded_Array (Integer (Source.Unused));
+      S_Index         : Utf16_String_Index := 0;
       Code            : Code_Point;
 
       procedure Expand (Code : Code_Point);
@@ -155,7 +155,7 @@ package body Matreshka.Internals.Unicode.Collation is
       end Expand;
 
    begin
-      while S_Index <= Source.Last loop
+      while S_Index < Source.Unused loop
          Unchecked_Next (Source.Value, S_Index, Code);
 
          declare
@@ -168,14 +168,15 @@ package body Matreshka.Internals.Unicode.Collation is
          begin
             if T.Contractor_First /= 0 then
                declare
-                  Excludes         : array (Positive range 1 .. 3) of Positive;
+                  Excludes         :
+                    array (Positive range 1 .. 3) of Utf16_String_Index;
                   Excludes_First   : Positive;
                   Excludes_Last    : Natural := 0;
                   Last_Class       : Canonical_Combining_Class
                     := Locale.Get_Core (Code).CCC;
                   Current_Class    : Canonical_Combining_Class;
-                  R_Index          : Positive := S_Index;
-                  R_Previous       : Positive;
+                  R_Index          : Utf16_String_Index := S_Index;
+                  R_Previous       : Utf16_String_Index;
                   R_Code           : Code_Point;
                   Contractor_First : Sequence_Count := T.Contractor_First;
                   Contractor_Last  : Sequence_Count := T.Contractor_Last;
@@ -183,7 +184,7 @@ package body Matreshka.Internals.Unicode.Collation is
                   Contracted       : Boolean;
 
                begin
-                  while R_Index <= Source.Last loop
+                  while R_Index < Source.Unused loop
                      R_Previous := R_Index;
                      Unchecked_Next (Source.Value, R_Index, R_Code);
 

@@ -52,6 +52,7 @@ private with Ada.Streams;
 
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
+private with Matreshka.Internals.Utf16;
 
 package League.Strings is
 
@@ -111,11 +112,11 @@ package League.Strings is
      Index : Positive)
        return Wide_Wide_Character;
 
-   function Slice
-    (Self : Universal_String'Class;
-     Low  : Positive;
-     High : Natural)
-       return Universal_String;
+--   function Slice
+--    (Self : Universal_String'Class;
+--     Low  : Positive;
+--     High : Natural)
+--       return Universal_String;
 
    function "&"
     (Left  : Universal_String'Class;
@@ -168,11 +169,11 @@ package League.Strings is
 --     Index : Positive;
 --     By    : Wide_Wide_Characters);
 
-   procedure Replace
-    (Self : in out Universal_String'Class;
-     Low  : Positive;
-     High : Natural;
-     By   : Universal_String'Class);
+--   procedure Replace
+--    (Self : in out Universal_String'Class;
+--     Low  : Positive;
+--     High : Natural;
+--     By   : Universal_String'Class);
 
 --   procedure Replace
 --    (Self : in out Universal_String'Class;
@@ -283,9 +284,9 @@ private
 
    procedure Emit_Changed
     (Self          : Universal_String'Class;
-     Changed_First : Positive;
-     Removed_Last  : Natural;
-     Inserted_Last : Natural);
+     Changed_First : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Removed_Last  : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Inserted_Last : Matreshka.Internals.Utf16.Utf16_String_Index);
    --  Must be called when internal string data is changed. It notify all
    --  cursors about this change. All positions are in code units.
 

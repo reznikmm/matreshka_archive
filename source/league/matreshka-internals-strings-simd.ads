@@ -61,6 +61,7 @@ package Matreshka.Internals.Strings.SIMD is
 
    procedure Fill_Null_Terminator (Self : not null Shared_String_Access);
    pragma Inline (Fill_Null_Terminator);
+   pragma Inline_Always (Fill_Null_Terminator);
    --  Fill null terminator after last used code point. On platforms where
    --  SIMD operations are supported it fills all unused elements in the
    --  vector where null terminator must be filled. This allows to simplify

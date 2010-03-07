@@ -61,14 +61,14 @@ package body Matreshka.Internals.Unicode.Normalization is
 
    procedure Reorder_Last_Character
     (Destination : Shared_String_Access;
-     First       : Positive;
-     Last        : Positive);
+     First       : Utf16_String_Index;
+     Unused      : Utf16_String_Index);
    --  Move last character in the string to follow Canonical Ordering.
 
    procedure Compose
     (Destination          : Shared_String_Access;
-     Starter_Index        : Positive;
-     Next_Starter_Index   : in out Positive;
+     Starter_Index        : Utf16_String_Index;
+     Next_Starter_Index   : in out Utf16_String_Index;
      New_Starter_Composed : out Boolean);
    --  Do composition of one combined character starting from Starter_Index
    --  and up to end of string. Last character in the string must be last
@@ -85,13 +85,13 @@ package body Matreshka.Internals.Unicode.Normalization is
 
    procedure Compose
     (Destination          : Shared_String_Access;
-     Starter_Index        : Positive;
-     Next_Starter_Index   : in out Positive;
+     Starter_Index        : Utf16_String_Index;
+     Next_Starter_Index   : in out Utf16_String_Index;
      New_Starter_Composed : out Boolean)
    is
-      Index           : Positive := Starter_Index;
-      Current         : Positive;
-      Before          : Positive;
+      Index           : Utf16_String_Index := Starter_Index;
+      Current         : Utf16_String_Index;
+      Before          : Utf16_String_Index;
       Starter_Code    : Code_Point;
       Starter_Mapping : Sequence_Count;
       Starter_L       : Boolean;
@@ -123,17 +123,17 @@ package body Matreshka.Internals.Unicode.Normalization is
          --  Copy tail of the string.
 
          Destination.Value
-          (Before .. Destination.Last - (Current - Before)) :=
-             Destination.Value (Current .. Destination.Last);
+          (Before .. Destination.Unused - 1 - (Current - Before)) :=
+             Destination.Value (Current .. Destination.Unused - 1);
 
          --  Correct string's length and last index.
 
          if Current_Code <= 16#FFFF# then
-            Destination.Last := Destination.Last - 1;
+            Destination.Unused := Destination.Unused - 1;
             Next_Starter_Index := Next_Starter_Index - 1;
 
          else
-            Destination.Last := Destination.Last - 2;
+            Destination.Unused := Destination.Unused - 2;
             Next_Starter_Index := Next_Starter_Index - 2;
          end if;
 
@@ -158,7 +158,7 @@ package body Matreshka.Internals.Unicode.Normalization is
       Current := Index;
 
       if Starter_Mapping = 0 then
-         if Current > Destination.Last then
+         if Current = Destination.Unused then
             return;
 
          elsif Starter_L then
@@ -197,7 +197,7 @@ package body Matreshka.Internals.Unicode.Normalization is
          return;
       end if;
 
-      while Current <= Destination.Last loop
+      while Current < Destination.Unused loop
          Before := Current;
          Unchecked_Next (Destination.Value, Current, Current_Code);
          Current_Mapping :=
@@ -249,10 +249,10 @@ package body Matreshka.Internals.Unicode.Normalization is
      Destination : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
       type Starter_State is record
-         D_Next : Positive := 1;
+         D_Next : Utf16_String_Index := 0;
       end record;
 
-      S_Index    : Positive := 1;
+      S_Index    : Utf16_String_Index := 0;
       Code       : Code_Point;
       Length     : Natural  := 0;
       Last_Class : Canonical_Combining_Class := 0;
@@ -260,7 +260,7 @@ package body Matreshka.Internals.Unicode.Normalization is
       Starter    : Starter_State;
 
    begin
-      if Source.Last = 0 then
+      if Source.Unused = 0 then
          Destination := Shared_Empty'Access;
 
          return;
@@ -269,10 +269,10 @@ package body Matreshka.Internals.Unicode.Normalization is
       --  Try to do Normalization Form quick check.
 
       declare
-         S_Previous : Positive;
+         S_Previous : Utf16_String_Index;
 
       begin
-         while S_Index <= Source.Last loop
+         while S_Index < Source.Unused loop
             S_Previous := S_Index;
 
             Unchecked_Next (Source.Value, S_Index, Code);
@@ -306,7 +306,7 @@ package body Matreshka.Internals.Unicode.Normalization is
          end loop;
       end;
 
-      if S_Index > Source.Last then
+      if S_Index = Source.Unused then
          Destination := Source;
          Reference (Destination);
 
@@ -318,11 +318,15 @@ package body Matreshka.Internals.Unicode.Normalization is
 
       Destination := Allocate (Source.Size);
 
-      Destination.Value (1 .. S_Index - 1) := Source.Value (1 .. S_Index - 1);
-      Destination.Last   := S_Index - 1;
+      if S_Index /= 0 then
+         Destination.Value (0 .. S_Index - 1) :=
+           Source.Value (0 .. S_Index - 1);
+      end if;
+
+      Destination.Unused := S_Index;
       Destination.Length := Length;
 
-      while S_Index <= Source.Last loop
+      while S_Index < Source.Unused loop
          Unchecked_Next (Source.Value, S_Index, Code);
 
          declare
@@ -339,21 +343,21 @@ package body Matreshka.Internals.Unicode.Normalization is
             procedure Common_Append (Code : Code_Point) is
             begin
                Class := Get_Core (Code).CCC;
-               Append (Destination, Code, Source.Last - S_Index + 1);
+               Append (Destination, Code);
 
                if Class /= 0 then
                   if Last_Class > Class then
                      --  Canonical Ordering is violated, reorder result.
 
                      Reorder_Last_Character
-                      (Destination, Starter.D_Next, Destination.Last + 1);
+                      (Destination, Starter.D_Next, Destination.Unused);
 
                   else
                      Last_Class := Class;
                   end if;
 
                else
-                  Starter := (D_Next => Destination.Last + 1);
+                  Starter := (D_Next => Destination.Unused);
                   Last_Class := Class;
                end if;
             end Common_Append;
@@ -384,15 +388,15 @@ package body Matreshka.Internals.Unicode.Normalization is
                        := T_Base + C_Index mod T_Count;
 
                   begin
-                     Append (Destination, L, Source.Last - S_Index + 3);
-                     Append (Destination, V, Source.Last - S_Index + 2);
+                     Append (Destination, L);
+                     Append (Destination, V);
 
                      if T /= T_Base then
-                        Append (Destination, T, Source.Last - S_Index + 1);
+                        Append (Destination, T);
                      end if;
                   end;
 
-                  Starter := (D_Next => Destination.Last + 1);
+                  Starter := (D_Next => Destination.Unused);
                   Last_Class := 0;
 
                else
@@ -420,12 +424,13 @@ package body Matreshka.Internals.Unicode.Normalization is
    is
 
       type Starter_State is record
-         D_Index  : Positive := 1;
-         D_Next   : Positive := 1;
-         D_Length : Natural  := 0;
+         D_Index  : Utf16_String_Index := 0;
+         D_Next   : Utf16_String_Index := 0;
+         D_Length : Natural            := 0;
       end record;
 
-      S_Index         : Positive := 1;
+      S_Index         : Utf16_String_Index := 0;
+      S_Previous      : Utf16_String_Index;
       Code            : Code_Point;
       Length          : Natural  := 0;
       Last_Class      : Canonical_Combining_Class := 0;
@@ -435,11 +440,10 @@ package body Matreshka.Internals.Unicode.Normalization is
       C_Starter       : Starter_State;
       Composed        : Boolean := True;
       Fast            : Boolean := False;
-      Starter_S_Index : Positive := 1;
-      S_Previous      : Positive;
+      Starter_S_Index : Utf16_String_Index := 0;
 
    begin
-      if Source.Last = 0 then
+      if Source.Unused = 0 then
          Destination := Shared_Empty'Access;
 
          return;
@@ -447,7 +451,7 @@ package body Matreshka.Internals.Unicode.Normalization is
 
       --  Try to do Normalization Form quick check.
 
-      while S_Index <= Source.Last loop
+      while S_Index < Source.Unused loop
          S_Previous := S_Index;
 
          Unchecked_Next (Source.Value, S_Index, Code);
@@ -487,7 +491,7 @@ package body Matreshka.Internals.Unicode.Normalization is
          Length := Length + 1;
       end loop;
 
-      if S_Index > Source.Last then
+      if S_Index = Source.Unused then
          Destination := Source;
          Reference (Destination);
 
@@ -499,11 +503,15 @@ package body Matreshka.Internals.Unicode.Normalization is
 
       Destination := Allocate (Source.Size);
 
-      Destination.Value (1 .. S_Index - 1) := Source.Value (1 .. S_Index - 1);
-      Destination.Last   := S_Index - 1;
+      if S_Index /= 0 then
+         Destination.Value (0 .. S_Index - 1) :=
+           Source.Value (0 .. S_Index - 1);
+      end if;
+
+      Destination.Unused := S_Index;
       Destination.Length := Length;
 
-      while S_Index <= Source.Last loop
+      while S_Index < Source.Unused loop
          S_Previous := S_Index;
          Unchecked_Next (Source.Value, S_Index, Code);
 
@@ -519,11 +527,11 @@ package body Matreshka.Internals.Unicode.Normalization is
             -------------------
 
             procedure Common_Append (Code : Code_Point) is
-               D_Index : Positive := Destination.Last + 1;
+               D_Index : Utf16_String_Index := Destination.Unused;
 
             begin
                Class := Get_Core (Code).CCC;
-               Append (Destination, Code, Source.Last - S_Index + 1);
+               Append (Destination, Code);
 
                if Class /= 0 then
                   if Composed then
@@ -537,7 +545,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                      --  reordering will break normalization.
 
                      Reorder_Last_Character
-                      (Destination, Starter.D_Next, Destination.Last + 1);
+                      (Destination, Starter.D_Next, Destination.Unused);
 
                   else
                      Last_Class := Class;
@@ -549,13 +557,13 @@ package body Matreshka.Internals.Unicode.Normalization is
                   if Composed then
                      C_Starter :=
                       (D_Index  => D_Index,
-                       D_Next   => Destination.Last + 1,
+                       D_Next   => Destination.Unused,
                        D_Length => Destination.Length - 1);
 
                   else
                      Starter :=
                       (D_Index  => D_Index,
-                       D_Next   => Destination.Last + 1,
+                       D_Next   => Destination.Unused,
                        D_Length => Destination.Length - 1);
                      Last_Class := Class;
                   end if;
@@ -599,7 +607,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                   S_Index := Starter_S_Index;
                   Starter := S_Starter;
                   Fast := False;
-                  Destination.Last := Starter.D_Index - 1;
+                  Destination.Unused := Starter.D_Index;
                   Destination.Length := Starter.D_Length;
                end if;
 
@@ -636,7 +644,7 @@ package body Matreshka.Internals.Unicode.Normalization is
       end loop;
 
       declare
-         D_Index : Positive := Destination.Last + 1;
+         D_Index : Utf16_String_Index := Destination.Unused;
 
       begin
          Compose (Destination, Starter.D_Index, D_Index, Composed);
@@ -726,14 +734,14 @@ package body Matreshka.Internals.Unicode.Normalization is
 
    procedure Reorder_Last_Character
     (Destination : Shared_String_Access;
-     First       : Positive;
-     Last        : Positive)
+     First       : Utf16_String_Index;
+     Unused      : Utf16_String_Index)
    is
       Previous_Class : Canonical_Combining_Class;
       Class          : Canonical_Combining_Class;
-      Previous       : Positive;
-      Aux            : Positive;
-      Current        : Positive;
+      Previous       : Utf16_String_Index;
+      Aux            : Utf16_String_Index;
+      Current        : Utf16_String_Index;
       Code_A         : Code_Point;
       Code_B         : Code_Point;
       Restart        : Boolean;
@@ -751,7 +759,7 @@ package body Matreshka.Internals.Unicode.Normalization is
          Unchecked_Next (Destination.Value, Current, Code_A);
          Previous_Class := Get_Core (Code_A).CCC;
 
-         while Current < Last loop
+         while Current < Unused loop
             Aux := Current;
             Unchecked_Next (Destination.Value, Current, Code_B);
             Class := Get_Core (Code_B).CCC;

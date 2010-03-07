@@ -53,7 +53,7 @@ package body Matreshka.Internals.Unicode.Casing is
      Property    : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
      Destination : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Source_Current : Positive := 1;
+      Source_Current : Utf16_String_Index := 0;
       Source_Code    : Code_Point;
       Converted      : Boolean;
 
@@ -74,11 +74,11 @@ package body Matreshka.Internals.Unicode.Casing is
       ---------------------------------------
 
       function Is_Followed_By_Before_Dot_Context return Boolean is
-         Current : Natural := Source_Current;
+         Current : Utf16_String_Index := Source_Current;
          Code    : Code_Point;
 
       begin
-         while Current <= Source.Last loop
+         while Current < Source.Unused loop
             Unchecked_Next (Source.Value, Current, Code);
 
             declare
@@ -102,11 +102,11 @@ package body Matreshka.Internals.Unicode.Casing is
       ----------------------------------------
 
       function Is_Followed_By_Final_Sigma_Context return Boolean is
-         Current : Natural := Source_Current;
+         Current : Utf16_String_Index := Source_Current;
          Code    : Code_Point;
 
       begin
-         while Current <= Source.Last loop
+         while Current < Source.Unused loop
             Unchecked_Next (Source.Value, Current, Code);
 
             declare
@@ -127,11 +127,11 @@ package body Matreshka.Internals.Unicode.Casing is
       ---------------------------------------
 
       function Is_Followed_By_More_Above_Context return Boolean is
-         Current : Natural := Source_Current;
+         Current : Utf16_String_Index := Source_Current;
          Code    : Code_Point;
 
       begin
-         while Current <= Source.Last loop
+         while Current < Source.Unused loop
             Unchecked_Next (Source.Value, Current, Code);
 
             declare
@@ -155,13 +155,13 @@ package body Matreshka.Internals.Unicode.Casing is
       ------------------------------------
 
       function Is_Preceded_By_After_I_Context return Boolean is
-         Current : Natural := Source_Current;
+         Current : Utf16_String_Index := Source_Current;
          Code    : Code_Point;
 
       begin
          Unchecked_Previous (Source.Value, Current, Code);
 
-         while Current > 1 loop
+         while Current /= 0 loop
             Unchecked_Previous (Source.Value, Current, Code);
 
             declare
@@ -185,13 +185,13 @@ package body Matreshka.Internals.Unicode.Casing is
       ----------------------------------------------
 
       function Is_Preceded_By_After_Soft_Dotted_Context return Boolean is
-         Current : Natural := Source_Current;
+         Current : Utf16_String_Index := Source_Current;
          Code    : Code_Point;
 
       begin
          Unchecked_Previous (Source.Value, Current, Code);
 
-         while Current > 1 loop
+         while Current /= 0 loop
             Unchecked_Previous (Source.Value, Current, Code);
 
             declare
@@ -215,13 +215,13 @@ package body Matreshka.Internals.Unicode.Casing is
       ----------------------------------------
 
       function Is_Preceded_By_Final_Sigma_Context return Boolean is
-         Current : Natural := Source_Current;
+         Current : Utf16_String_Index := Source_Current;
          Code    : Code_Point;
 
       begin
          Unchecked_Previous (Source.Value, Current, Code);
 
-         while Current > 1 loop
+         while Current /= 0 loop
             Unchecked_Previous (Source.Value, Current, Code);
 
             declare
@@ -238,10 +238,10 @@ package body Matreshka.Internals.Unicode.Casing is
       end Is_Preceded_By_Final_Sigma_Context;
 
    begin
-      Destination.Last := 0;
+      Destination.Unused := 0;
       Destination.Length := 0;
 
-      while Source_Current <= Source.Last loop
+      while Source_Current < Source.Unused loop
          Unchecked_Next (Source.Value, Source_Current, Source_Code);
 
          if Locale.Get_Core (Source_Code).B (Property) then
@@ -279,13 +279,7 @@ package body Matreshka.Internals.Unicode.Casing is
                                     loop
                                        Append
                                         (Destination,
-                                          Locale.Casing.Expansion (J),
-                                          Source.Last - Source_Current
-                                            + Integer
-                                               (Context.Ranges (Kind).Last)
-                                            - Integer
-                                               (Context.Ranges (Kind).First)
-                                            + 2);
+                                         Locale.Casing.Expansion (J));
                                     end loop;
 
                                     Converted := True;
@@ -330,19 +324,13 @@ package body Matreshka.Internals.Unicode.Casing is
                   for J in Mapping.Ranges (Kind).First
                              .. Mapping.Ranges (Kind).Last
                   loop
-                     Append
-                      (Destination,
-                       Locale.Casing.Expansion (J),
-                       Source.Last - Source_Current
-                         + Integer (Mapping.Ranges (Kind).Last)
-                         - Integer (Mapping.Ranges (Kind).First) + 2);
+                     Append (Destination, Locale.Casing.Expansion (J));
                   end loop;
                end if;
             end;
 
          else
-            Append
-             (Destination, Source_Code, Source.Last - Source_Current + 1);
+            Append (Destination, Source_Code);
          end if;
       end loop;
 

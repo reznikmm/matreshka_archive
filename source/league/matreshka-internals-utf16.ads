@@ -39,6 +39,10 @@ package Matreshka.Internals.Utf16 is
 
    pragma Pure;
 
+   ---------------------
+   -- Utf16_Code_Unit --
+   ---------------------
+
    subtype Utf16_Code_Unit is Matreshka.Internals.Unicode.Code_Unit_16;
 
    subtype High_Surrogate_Utf16_Code_Unit is Utf16_Code_Unit
@@ -49,26 +53,32 @@ package Matreshka.Internals.Utf16 is
      range Matreshka.Internals.Unicode.Low_Surrogate_First
              .. Matreshka.Internals.Unicode.Low_Surrogate_Last;
 
-   type Utf16_String is array (Positive range <>) of Utf16_Code_Unit;
-   for Utf16_String'Alignment use Standard'Maximum_Alignment;
-   pragma Pack (Utf16_String);
-   --  Internal representation of UTF-16 encoded string.
-
    function Is_Less
-     (Left : Utf16_Code_Unit; Right : Utf16_Code_Unit) return Boolean;
+    (Left : Utf16_Code_Unit; Right : Utf16_Code_Unit) return Boolean;
    pragma Inline (Is_Less);
    --  Compare two Utf16 code units with fixup for surrogate characters for
    --  less.
 
    function Is_Greater
-     (Left : Utf16_Code_Unit; Right : Utf16_Code_Unit) return Boolean;
+    (Left : Utf16_Code_Unit; Right : Utf16_Code_Unit) return Boolean;
    pragma Inline (Is_Greater);
    --  Compare two Utf16 code units with fixup for surrogate characters for
    --  greater.
 
+   ------------------
+   -- Utf16_String --
+   ------------------
+
+   type Utf16_String_Index is mod 2 ** 32;
+
+   type Utf16_String is array (Utf16_String_Index range <>) of Utf16_Code_Unit;
+   for Utf16_String'Alignment use Standard'Maximum_Alignment;
+   pragma Pack (Utf16_String);
+   --  Internal representation of UTF-16 encoded string.
+
    function Unchecked_To_Code_Point
     (Item     : Utf16_String;
-     Position : Positive)
+     Position : Utf16_String_Index)
        return Matreshka.Internals.Unicode.Code_Point;
    pragma Inline (Unchecked_To_Code_Point);
    --  Convert character or surrogate pair at the cpecified position in the
@@ -76,7 +86,7 @@ package Matreshka.Internals.Utf16 is
 
    procedure Unchecked_Next
     (Item     : Utf16_String;
-     Position : in out Positive;
+     Position : in out Utf16_String_Index;
      Code     : out Matreshka.Internals.Unicode.Code_Point);
    pragma Inline (Unchecked_Next);
    --  Convert character or surrogate pair at the specified position in the
@@ -84,13 +94,13 @@ package Matreshka.Internals.Utf16 is
 
    procedure Unchecked_Next
     (Item     : Utf16_String;
-     Position : in out Positive);
+     Position : in out Utf16_String_Index);
    pragma Inline (Unchecked_Next);
    --  Moves position to the next character.
 
    procedure Unchecked_Previous
     (Item     : Utf16_String;
-     Position : in out Positive;
+     Position : in out Utf16_String_Index;
      Code     : out Matreshka.Internals.Unicode.Code_Point);
    pragma Inline (Unchecked_Previous);
    --  Convert character or surrogate pair before the specified position in the
@@ -98,13 +108,13 @@ package Matreshka.Internals.Utf16 is
 
    procedure Unchecked_Previous
     (Item     : Utf16_String;
-     Position : in out Positive);
+     Position : in out Utf16_String_Index);
    pragma Inline (Unchecked_Previous);
    --  Moves position to the previous character.
 
    procedure Unchecked_Store
     (Item     : in out Utf16_String;
-     Position : in out Positive;
+     Position : in out Utf16_String_Index;
      Code     : Matreshka.Internals.Unicode.Code_Point);
    pragma Inline (Unchecked_Store);
    --  Store specified character at the specified position and move position to

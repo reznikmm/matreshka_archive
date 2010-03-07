@@ -110,13 +110,13 @@ package body League.Strings is
       else
          declare
             D : constant not null Shared_String_Access
-              := Allocate (L_D.Last + R_D.Last);
+              := Allocate (L_D.Unused + R_D.Unused);
 
          begin
-            D.Value (1 .. L_D.Last) := L_D.Value (1 .. L_D.Last);
-            D.Value (L_D.Last + 1 .. L_D.Last + R_D.Last) :=
-              R_D.Value (1 .. R_D.Last);
-            D.Last := L_D.Last + R_D.Last;
+            D.Value (0 .. L_D.Unused - 1) := L_D.Value (0 .. L_D.Unused - 1);
+            D.Value (L_D.Unused .. L_D.Unused + R_D.Unused - 1) :=
+              R_D.Value (0 .. R_D.Unused - 1);
+            D.Unused := L_D.Unused + R_D.Unused;
             D.Length := L_D.Length + R_D.Length;
             Fill_Null_Terminator (D);
 
@@ -142,13 +142,14 @@ package body League.Strings is
       end if;
 
       declare
-         D : constant not null Shared_String_Access := Allocate (L_D.Last + 2);
-         P : Positive := L_D.Last + 1;
+         D : constant not null Shared_String_Access
+           := Allocate (L_D.Unused + 1);
+         P : Utf16_String_Index := L_D.Unused;
 
       begin
-         D.Value (1 .. L_D.Last) := L_D.Value (1 .. L_D.Last);
+         D.Value (0 .. L_D.Unused - 1) := L_D.Value (0 .. L_D.Unused - 1);
          Unchecked_Store (D.Value, P, Wide_Wide_Character'Pos (Right));
-         D.Last                  := P - 1;
+         D.Unused                := P;
          D.Length                := L_D.Length + 1;
          Fill_Null_Terminator (D);
 
@@ -174,13 +175,13 @@ package body League.Strings is
 
       declare
          D : constant not null Shared_String_Access
-           := Allocate (R_D.Last + 2);
-         P : Positive := 1;
+           := Allocate (R_D.Unused + 1);
+         P : Utf16_String_Index := 0;
 
       begin
          Unchecked_Store (D.Value, P, Wide_Wide_Character'Pos (Left));
-         D.Value (P .. P + R_D.Last - 1) := R_D.Value (1 .. R_D.Last);
-         D.Last                          := P + R_D.Last - 1;
+         D.Value (P .. P + R_D.Unused - 2) := R_D.Value (0 .. R_D.Unused - 1);
+         D.Unused                        := P + R_D.Unused - 1;
          D.Length                        := R_D.Length + 1;
          Fill_Null_Terminator (D);
 
@@ -378,11 +379,11 @@ package body League.Strings is
     (Self : in out Universal_String'Class;
      Item : Universal_String'Class)
    is
-      F : constant Natural := Self.Data.Last + 1;
+      P : constant Utf16_String_Index := Self.Data.Unused;
 
    begin
       Append (Self.Data, Item.Data);
-      Emit_Changed (Self, F, 0, Self.Data.Last);
+      Emit_Changed (Self, P, Utf16_String_Index'Last, Self.Data.Unused - 1);
    end Append;
 
    ------------
@@ -539,13 +540,15 @@ package body League.Strings is
          raise Constraint_Error with "Index is out of range";
       end if;
 
-      if D.Last = D.Length then
-         return Wide_Wide_Character'Val (D.Value (Index));
+      if D.Unused = Utf16_String_Index (D.Length) then
+         return
+           Wide_Wide_Character'Val (D.Value (Utf16_String_Index (Index - 1)));
 
-      elsif D.Last = D.Length * 2 then
+      elsif D.Unused = Utf16_String_Index (D.Length) * 2 then
          return
            Wide_Wide_Character'Val
-            (Unchecked_To_Code_Point (D.Value, Index * 2 - 1));
+            (Unchecked_To_Code_Point
+              (D.Value, Utf16_String_Index (Index - 1) * 2));
 
       else
          declare
@@ -561,7 +564,8 @@ package body League.Strings is
 
             return
               Wide_Wide_Character'Val
-               (Unchecked_To_Code_Point (D.Value, M.Map (Index)));
+               (Unchecked_To_Code_Point
+                 (D.Value, M.Map (Utf16_String_Index (Index - 1))));
          end;
       end if;
    end Element;
@@ -572,9 +576,9 @@ package body League.Strings is
 
    procedure Emit_Changed
     (Self          : Universal_String'Class;
-     Changed_First : Positive;
-     Removed_Last  : Natural;
-     Inserted_Last : Natural)
+     Changed_First : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Removed_Last  : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Inserted_Last : Matreshka.Internals.Utf16.Utf16_String_Index)
    is
       Current : Cursor_Access := Self.Cursors.Head;
       Next    : Cursor_Access;
@@ -582,7 +586,7 @@ package body League.Strings is
    begin
       while Current /= null loop
          Next := Current.Next;
-         Current.On_Changed (Changed_First, Removed_Last, Inserted_Last);
+--         Current.On_Changed (Changed_First, Removed_Last, Inserted_Last);
          Current := Next;
       end loop;
    end Emit_Changed;
@@ -744,131 +748,131 @@ package body League.Strings is
      Item   : out Universal_String)
    is
       Length : Natural;
-      Last   : Natural;
+      Unused : Utf16_String_Index;
 
    begin
       Natural'Read (Stream, Length);
-      Natural'Read (Stream, Last);
+      Utf16_String_Index'Read (Stream, Unused);
 
       --  XXX Value validation must be done before any other operations.
       --  XXX Object mutation can be used here.
 
       Dereference (Item.Data);
 
-      Item.Data := Allocate (Last);
+      Item.Data := Allocate (Unused);
       Utf16_String'Read (Stream, Item.Data.Value);
-      Item.Data.Last := Last;
+      Item.Data.Unused := Unused;
       Item.Data.Length := Length;
       Fill_Null_Terminator (Item.Data);
    end Read;
 
-   -------------
-   -- Replace --
-   -------------
-
-   procedure Replace
-    (Self : in out Universal_String'Class;
-     Low  : Positive;
-     High : Natural;
-     By   : Universal_String'Class)
-   is
-      D      : constant not null Shared_String_Access := Self.Data;
-      Length : Natural;
-      First  : Positive;
-      Last   : Natural;
-
-   begin
-      if Low > D.Last + 1 or else High > D.Last then
-         raise Constraint_Error with "Index is out of range";
-      end if;
-
-      Length := Natural'Max (High - Low + 1, 0);
-
-      if D.Last = D.Length then
-         First := Low;
-         Last  := High;
-
-      elsif D.Last = D.Length * 2 then
-         First := Low * 2 - 1;
-         Last  := High * 2;
-
-      else
-         declare
-            M : Index_Map_Access := D.Index_Map;
-
-         begin
-            if M = null then
-               Compute_Index_Map (D.all);
-               M := D.Index_Map;
-            end if;
-
-            First := M.Map (Low);
-
-            if High = D.Length then
-               Last := D.Last;
-
-            else
-               Last := M.Map (High + 1) - 1;
-            end if;
-         end;
-      end if;
-
-      Replace (Self.Data, First, Last, Length, By.Data);
-   end Replace;
-
-   -----------
-   -- Slice --
-   -----------
-
-   function Slice
-    (Self : Universal_String'Class;
-     Low  : Positive;
-     High : Natural)
-       return Universal_String
-   is
-      D      : constant not null Shared_String_Access := Self.Data;
-      Length : Natural;
-      First  : Positive;
-      Last   : Natural;
-
-   begin
-      if Low <= High and then (Low > D.Length or else High > D.Length) then
-         raise Constraint_Error with "Index is out of range";
-      end if;
-
-      Length := Natural'Max (High - Low + 1, 0);
-
-      if D.Last = D.Length then
-         First := Low;
-         Last  := High;
-
-      elsif D.Last = D.Length * 2 then
-         First := Low * 2 - 1;
-         Last  := High * 2;
-
-      else
-         declare
-            M : Index_Map_Access := D.Index_Map;
-
-         begin
-            if M = null then
-               Compute_Index_Map (D.all);
-               M := D.Index_Map;
-            end if;
-
-            First := M.Map (Low);
-
-            if High = D.Length then
-               Last := D.Last;
-
-            else
-               Last := M.Map (High + 1) - 1;
-            end if;
-         end;
-      end if;
-
-      return Constructors.Create (Slice (D, First, Last, Length));
-   end Slice;
+--   -------------
+--   -- Replace --
+--   -------------
+--
+--   procedure Replace
+--    (Self : in out Universal_String'Class;
+--     Low  : Positive;
+--     High : Natural;
+--     By   : Universal_String'Class)
+--   is
+--      D      : constant not null Shared_String_Access := Self.Data;
+--      Length : Natural;
+--      First  : Positive;
+--      Last   : Natural;
+--
+--   begin
+--      if Low > D.Last + 1 or else High > D.Last then
+--         raise Constraint_Error with "Index is out of range";
+--      end if;
+--
+--      Length := Natural'Max (High - Low + 1, 0);
+--
+--      if D.Last = D.Length then
+--         First := Low;
+--         Last  := High;
+--
+--      elsif D.Last = D.Length * 2 then
+--         First := Low * 2 - 1;
+--         Last  := High * 2;
+--
+--      else
+--         declare
+--            M : Index_Map_Access := D.Index_Map;
+--
+--         begin
+--            if M = null then
+--               Compute_Index_Map (D.all);
+--               M := D.Index_Map;
+--            end if;
+--
+--            First := M.Map (Low);
+--
+--            if High = D.Length then
+--               Last := D.Last;
+--
+--            else
+--               Last := M.Map (High + 1) - 1;
+--            end if;
+--         end;
+--      end if;
+--
+--      Replace (Self.Data, First, Last, Length, By.Data);
+--   end Replace;
+--
+--   -----------
+--   -- Slice --
+--   -----------
+--
+--   function Slice
+--    (Self : Universal_String'Class;
+--     Low  : Positive;
+--     High : Natural)
+--       return Universal_String
+--   is
+--      D      : constant not null Shared_String_Access := Self.Data;
+--      Length : Natural;
+--      First  : Positive;
+--      Last   : Natural;
+--
+--   begin
+--      if Low <= High and then (Low > D.Length or else High > D.Length) then
+--         raise Constraint_Error with "Index is out of range";
+--      end if;
+--
+--      Length := Natural'Max (High - Low + 1, 0);
+--
+--      if D.Last = D.Length then
+--         First := Low;
+--         Last  := High;
+--
+--      elsif D.Last = D.Length * 2 then
+--         First := Low * 2 - 1;
+--         Last  := High * 2;
+--
+--      else
+--         declare
+--            M : Index_Map_Access := D.Index_Map;
+--
+--         begin
+--            if M = null then
+--               Compute_Index_Map (D.all);
+--               M := D.Index_Map;
+--            end if;
+--
+--            First := M.Map (Low);
+--
+--            if High = D.Length then
+--               Last := D.Last;
+--
+--            else
+--               Last := M.Map (High + 1) - 1;
+--            end if;
+--         end;
+--      end if;
+--
+--      return Constructors.Create (Slice (D, First, Last, Length));
+--   end Slice;
 
    -----------------
    -- To_Casefold --
@@ -885,7 +889,7 @@ package body League.Strings is
       declare
          Locale : Matreshka.Internals.Locales.Locale_Data_Access
            := Matreshka.Internals.Locales.Get_Locale;
-         Data   : not null Shared_String_Access := Allocate (Self.Data.Last);
+         Data   : not null Shared_String_Access := Allocate (Self.Data.Unused);
 
       begin
          Matreshka.Internals.Unicode.Casing.Convert_Case
@@ -915,7 +919,7 @@ package body League.Strings is
       declare
          Locale : Matreshka.Internals.Locales.Locale_Data_Access
            := Matreshka.Internals.Locales.Get_Locale;
-         Data   : not null Shared_String_Access := Allocate (Self.Data.Last);
+         Data   : not null Shared_String_Access := Allocate (Self.Data.Unused);
 
       begin
          Matreshka.Internals.Unicode.Casing.Convert_Case
@@ -1044,7 +1048,7 @@ package body League.Strings is
       declare
          Locale : Matreshka.Internals.Locales.Locale_Data_Access
            := Matreshka.Internals.Locales.Get_Locale;
-         Data   : not null Shared_String_Access := Allocate (Self.Data.Last);
+         Data   : not null Shared_String_Access := Allocate (Self.Data.Unused);
 
       begin
          Matreshka.Internals.Unicode.Casing.Convert_Case
@@ -1081,10 +1085,8 @@ package body League.Strings is
                raise Constraint_Error with "Illegal Unicode code point";
             end if;
 
-            Append
-             (Destination,
-              Wide_Wide_Character'Pos (Source (J)),
-              Source'Last - J);
+            Append (Destination, Wide_Wide_Character'Pos (Source (J)));
+--              Source'Last - J);
          end loop;
 
          Fill_Null_Terminator (Destination);
@@ -1117,7 +1119,7 @@ package body League.Strings is
      return Wide_Wide_String
    is
       Result  : Wide_Wide_String (1 .. Self.Data.Length);
-      Current : Positive := 1;
+      Current : Utf16_String_Index := 0;
       Code    : Code_Point;
 
    begin
@@ -1139,9 +1141,9 @@ package body League.Strings is
    is
    begin
       Integer'Write (Stream, Item.Data.Length);
-      Integer'Write (Stream, Item.Data.Last);
+      Utf16_String_Index'Write (Stream, Item.Data.Unused);
       Matreshka.Internals.Utf16.Utf16_String'Write
-       (Stream, Item.Data.Value (1 .. Item.Data.Last));
+       (Stream, Item.Data.Value (0 .. Item.Data.Unused - 1));
    end Write;
 
 end League.Strings;
