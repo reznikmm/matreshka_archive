@@ -52,41 +52,50 @@ library project Matreshka_League is
    for Library_Name use "league";
    for Library_Dir use "../.libs";
 
-   Release_Ada_Switches := ();
+   Common_Ada_Switches :=
+    ("-g",
+     "-gnat05",
+     "-gnatn",
+     "-gnatN",
+     "-gnato",
+     "-fstack-check");
+   --  Common switches to be used for every unit.
+
+   Optimization_Ada_Switches :=
+    ("-O2");
+   --  Optimization switches. Optimization is not used for several units, thus
+   --  optimization switches are declared by the separate variable.
+
+   Platform_Ada_Switches := ();
+   --  Set of platform specific switches. Needed for example on x86 to upgrade
+   --  default instructions set to i486 which includes atomic operations.
+
    Debug_Ada_Switches := ();
+   --  Switches to be used in debug mode.
+
+   case Architecture is
+      when "x86" =>
+         Platform_Ada_Switches := ("-march=i686");
+
+      when others =>
+         null;
+   end case;
 
    case Build is
       when "RELEASE" =>
-         Release_Ada_Switches := ();
+         null;
 
       when "DEBUG" =>
          Debug_Ada_Switches :=
-          ("-gnata", "-gnatwa", "-gnatyaAbBcdefhiIkmnoOprsStux");
+          ("-gnatwa", "-gnatyaAbBcdefhiIkmnoOprsStux");
    end case;
 
-   package Compiler is
-
-      for Default_Switches ("Ada") use
-       ("-g",
-        "-O2",
-        "-gnat05",
-        "-gnatn")
-          & Release_Ada_Switches & Debug_Ada_Switches;
-
-      for Switches ("matreshka-internals-unicode-ucd-colls.ads") use
-       ("-g",
-        "-gnat05",
-        "-gnatn")
-          & Release_Ada_Switches & Debug_Ada_Switches;
-      for Switches ("matreshka-internals-unicode-ucd-core.ads") use
-       ("-g",
-        "-gnat05",
-        "-gnatn")
-          & Release_Ada_Switches & Debug_Ada_Switches;
-
-   end Compiler;
+   -------------
+   -- Builder --
+   -------------
 
    package Builder is
+
       case Build is
          when "RELEASE" =>
             for Global_Configuration_Pragmas
@@ -96,7 +105,32 @@ library project Matreshka_League is
             for Global_Configuration_Pragmas
               use "matreshka_league__debug.adc";
       end case;
+
    end Builder;
+
+   --------------
+   -- Compiler --
+   --------------
+
+   package Compiler is
+
+      for Default_Switches ("Ada") use
+        Common_Ada_Switches
+          & Optimization_Ada_Switches
+          & Debug_Ada_Switches;
+
+      for Switches ("matreshka-internals-unicode-ucd-colls.ads") use
+        Common_Ada_Switches
+          & Debug_Ada_Switches;
+      for Switches ("matreshka-internals-unicode-ucd-core.ads") use
+        Common_Ada_Switches
+          & Debug_Ada_Switches;
+
+   end Compiler;
+
+   ------------
+   -- Naming --
+   ------------
 
    package Naming is
 
