@@ -124,220 +124,18 @@ package body Matreshka.Internals.Strings.SIMD is
    use Matreshka.Internals.Unicode;
    use SSE2;
 
-   type v8hi_Array is array (Positive range 1 .. Integer'Last) of v8hi;
+   type v8hi_Unrestricted_Array is array (Utf16_String_Index) of v8hi;
 
-   Fill_Terminator_Mask : constant array (Integer range 0 .. 7) of v8hi :=
-     (0 => (others => 0),
-      1 => (1 => 16#FFFF#, others => 0),
-      2 => (1 .. 2 => 16#FFFF#, others => 0),
-      3 => (1 .. 3 => 16#FFFF#, others => 0),
-      4 => (1 .. 4 => 16#FFFF#, others => 0),
-      5 => (1 .. 5 => 16#FFFF#, others => 0),
-      6 => (1 .. 6 => 16#FFFF#, others => 0),
-      7 => (1 .. 7 => 16#FFFF#, others => 0));
-
-   --------------------------
-   -- Fill_Null_Terminator --
-   --------------------------
-
-   procedure Fill_Null_Terminator (Self : not null Shared_String_Access) is
-      Value  : v8hi_Array;
-      for Value'Address use Self.Value'Address;
-      Index  : constant Natural := Self.Last / 8 + 1;
-      Offset : constant Natural := Self.Last mod 8;
-
-   begin
-      Value (Index) := mm_and (Value (Index), Fill_Terminator_Mask (Offset));
-   end Fill_Null_Terminator;
-
-   --------------
-   -- Is_Equal --
-   --------------
-
-   function Is_Equal
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean
-   is
-   begin
-      if Left = Right then
-         return True;
-      end if;
-
-      if Left.Last /= Right.Last then
-         return False;
-      end if;
-
-      declare
-         Last : constant Natural := (Left.Last + 7) / 8;
-         L    : v8hi_Array;
-         for L'Address use Left.Value'Address;
-         R    : v8hi_Array;
-         for R'Address use Right.Value'Address;
-
-      begin
-         for J in 1 .. Last loop
-            if mm_movemask (mm_cmpeq_epi16 (L (J), R (J)))
-                 /= 16#0000_FFFF#
-            then
-               return False;
-            end if;
-         end loop;
-      end;
-
-      return True;
-   end Is_Equal;
-
-   ----------------
-   -- Is_Greater --
-   ----------------
-
-   function Is_Greater
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean
-   is
-   begin
-      if Left = Right then
-         return False;
-      end if;
-
-      declare
-         Last  : constant Natural :=
-           Natural'Min ((Left.Last + 7) / 8, (Right.Last + 7) / 8);
-         L     : v8hi_Array;
-         for L'Address use Left.Value'Address;
-         R     : v8hi_Array;
-         for R'Address use Right.Value'Address;
-         M     : Unsigned_32;
-         Index : Natural;
-
-      begin
-         for J in 1 .. Last loop
-            M  := mm_movemask (mm_cmpeq_epi16 (L (J), R (J)));
-
-            if M /= 16#0000_FFFF# then
-               Index := (J - 1) * 8 + Integer (ffs (not M) / 2) + 1;
-
-               return Is_Greater (Left.Value (Index), Right.Value (Index));
-            end if;
-         end loop;
-      end;
-
-      return Left.Last > Right.Last;
-   end Is_Greater;
-
-   -------------------------
-   -- Is_Greater_Or_Equal --
-   -------------------------
-
-   function Is_Greater_Or_Equal
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean
-   is
-   begin
-      if Left = Right then
-         return True;
-      end if;
-
-      declare
-         Last  : constant Natural :=
-           Natural'Min ((Left.Last + 7) / 8, (Right.Last + 7) / 8);
-         L     : v8hi_Array;
-         for L'Address use Left.Value'Address;
-         R     : v8hi_Array;
-         for R'Address use Right.Value'Address;
-         M     : Unsigned_32;
-         Index : Natural;
-
-      begin
-         for J in 1 .. Last loop
-            M  := mm_movemask (mm_cmpeq_epi16 (L (J), R (J)));
-
-            if M /= 16#0000_FFFF# then
-               Index := (J - 1) * 8 + Integer (ffs (not M) / 2) + 1;
-
-               return Is_Greater (Left.Value (Index), Right.Value (Index));
-            end if;
-         end loop;
-      end;
-
-      return Left.Last >= Right.Last;
-   end Is_Greater_Or_Equal;
-
-   -------------
-   -- Is_Less --
-   -------------
-
-   function Is_Less
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is
-   begin
-      if Left = Right then
-         return False;
-      end if;
-
-      declare
-         Last  : constant Natural :=
-           Natural'Min ((Left.Last + 7) / 8, (Right.Last + 7) / 8);
-
-         L     : v8hi_Array;
-         for L'Address use Left.Value'Address;
-         R     : v8hi_Array;
-         for R'Address use Right.Value'Address;
-         M     : Unsigned_32;
-         Index : Natural;
-
-      begin
-         for J in 1 .. Last loop
-            M  := mm_movemask (mm_cmpeq_epi16 (L (J), R (J)));
-
-            if M /= 16#0000_FFFF# then
-               Index := (J - 1) * 8 + Integer (ffs (not M) / 2) + 1;
-
-               return Is_Less (Left.Value (Index), Right.Value (Index));
-            end if;
-         end loop;
-      end;
-
-      return Left.Last < Right.Last;
-   end Is_Less;
-
-   ----------------------
-   -- Is_Less_Or_Equal --
-   ----------------------
-
-   function Is_Less_Or_Equal
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is
-   begin
-      if Left = Right then
-         return True;
-      end if;
-
-      declare
-         Last  : constant Natural :=
-           Natural'Min ((Left.Last + 7) / 8, (Right.Last + 7) / 8);
-
-         L     : v8hi_Array;
-         for L'Address use Left.Value'Address;
-         R     : v8hi_Array;
-         for R'Address use Right.Value'Address;
-         M     : Unsigned_32;
-         Index : Natural;
-
-      begin
-         for J in 1 .. Last loop
-            M  := mm_movemask (mm_cmpeq_epi16 (L (J), R (J)));
-
-            if M /= 16#0000_FFFF# then
-               Index := (J - 1) * 8 + Integer (ffs (not M) / 2) + 1;
-
-               return Is_Less (Left.Value (Index), Right.Value (Index));
-            end if;
-         end loop;
-      end;
-
-      return Left.Last <= Right.Last;
-   end Is_Less_Or_Equal;
+   Fill_Terminator_Mask : constant
+     array (Utf16_String_Index range 0 .. 7) of v8hi :=
+      (0 => (                    others => 16#0000#),
+       1 => (1      => 16#FFFF#, others => 16#0000#),
+       2 => (1 .. 2 => 16#FFFF#, others => 16#0000#),
+       3 => (1 .. 3 => 16#FFFF#, others => 16#0000#),
+       4 => (1 .. 4 => 16#FFFF#, others => 16#0000#),
+       5 => (1 .. 5 => 16#FFFF#, others => 16#0000#),
+       6 => (1 .. 6 => 16#FFFF#, others => 16#0000#),
+       7 => (1 .. 7 => 16#FFFF#, others => 16#0000#));
 
    ----------
    -- SSE2 --
@@ -380,5 +178,206 @@ package body Matreshka.Internals.Strings.SIMD is
       end mm_movemask;
 
    end SSE2;
+
+   --------------------------
+   -- Fill_Null_Terminator --
+   --------------------------
+
+   procedure Fill_Null_Terminator (Self : not null Shared_String_Access) is
+      Value  : v8hi_Unrestricted_Array;
+      for Value'Address use Self.Value'Address;
+      Index  : constant Utf16_String_Index := Self.Unused / 8;
+      Offset : constant Utf16_String_Index := Self.Unused mod 8;
+
+   begin
+      Value (Index) := mm_and (Value (Index), Fill_Terminator_Mask (Offset));
+   end Fill_Null_Terminator;
+
+   --------------
+   -- Is_Equal --
+   --------------
+
+   function Is_Equal
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean
+   is
+   begin
+      if Left = Right then
+         return True;
+      end if;
+
+      if Left.Unused /= Right.Unused then
+         return False;
+      end if;
+
+      declare
+         Last : constant Utf16_String_Index := Left.Unused / 8;
+         LV   : v8hi_Unrestricted_Array;
+         for LV'Address use Left.Value'Address;
+         RV   : v8hi_Unrestricted_Array;
+         for RV'Address use Right.Value'Address;
+
+      begin
+         for J in 0 .. Last loop
+            if mm_movemask (mm_cmpeq_epi16 (LV (J), RV (J)))
+                 /= 16#0000_FFFF#
+            then
+               return False;
+            end if;
+         end loop;
+      end;
+
+      return True;
+   end Is_Equal;
+
+   ----------------
+   -- Is_Greater --
+   ----------------
+
+   function Is_Greater
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean
+   is
+   begin
+      if Left = Right then
+         return False;
+      end if;
+
+      declare
+         Last  : constant Utf16_String_Index :=
+           Utf16_String_Index'Min (Left.Unused, Right.Unused) / 8;
+         LV    : v8hi_Unrestricted_Array;
+         for LV'Address use Left.Value'Address;
+         RV    : v8hi_Unrestricted_Array;
+         for RV'Address use Right.Value'Address;
+         M     : Unsigned_32;
+         Index : Utf16_String_Index;
+
+      begin
+         for J in 0 .. Last loop
+            M  := mm_movemask (mm_cmpeq_epi16 (LV (J), RV (J)));
+
+            if M /= 16#0000_FFFF# then
+               Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
+
+               return Is_Greater (Left.Value (Index), Right.Value (Index));
+            end if;
+         end loop;
+      end;
+
+      return Left.Unused > Right.Unused;
+   end Is_Greater;
+
+   -------------------------
+   -- Is_Greater_Or_Equal --
+   -------------------------
+
+   function Is_Greater_Or_Equal
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean
+   is
+   begin
+      if Left = Right then
+         return True;
+      end if;
+
+      declare
+         Last  : constant Utf16_String_Index :=
+           Utf16_String_Index'Min (Left.Unused, Right.Unused) / 8;
+         LV    : v8hi_Unrestricted_Array;
+         for LV'Address use Left.Value'Address;
+         RV    : v8hi_Unrestricted_Array;
+         for RV'Address use Right.Value'Address;
+         M     : Unsigned_32;
+         Index : Utf16_String_Index;
+
+      begin
+         for J in 0 .. Last loop
+            M  := mm_movemask (mm_cmpeq_epi16 (LV (J), RV (J)));
+
+            if M /= 16#0000_FFFF# then
+               Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
+
+               return Is_Greater (Left.Value (Index), Right.Value (Index));
+            end if;
+         end loop;
+      end;
+
+      return Left.Unused >= Right.Unused;
+   end Is_Greater_Or_Equal;
+
+   -------------
+   -- Is_Less --
+   -------------
+
+   function Is_Less
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean is
+   begin
+      if Left = Right then
+         return False;
+      end if;
+
+      declare
+         Last  : constant Utf16_String_Index :=
+           Utf16_String_Index'Min (Left.Unused, Right.Unused) / 8;
+         LV    : v8hi_Unrestricted_Array;
+         for LV'Address use Left.Value'Address;
+         RV    : v8hi_Unrestricted_Array;
+         for RV'Address use Right.Value'Address;
+         M     : Unsigned_32;
+         Index : Utf16_String_Index;
+
+      begin
+         for J in 0 .. Last loop
+            M  := mm_movemask (mm_cmpeq_epi16 (LV (J), RV (J)));
+
+            if M /= 16#0000_FFFF# then
+               Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
+
+               return Is_Less (Left.Value (Index), Right.Value (Index));
+            end if;
+         end loop;
+      end;
+
+      return Left.Unused < Right.Unused;
+   end Is_Less;
+
+   ----------------------
+   -- Is_Less_Or_Equal --
+   ----------------------
+
+   function Is_Less_Or_Equal
+     (Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean is
+   begin
+      if Left = Right then
+         return True;
+      end if;
+
+      declare
+         Last  : constant Utf16_String_Index :=
+           Utf16_String_Index'Min (Left.Unused, Right.Unused) / 8;
+         LV    : v8hi_Unrestricted_Array;
+         for LV'Address use Left.Value'Address;
+         RV    : v8hi_Unrestricted_Array;
+         for RV'Address use Right.Value'Address;
+         M     : Unsigned_32;
+         Index : Utf16_String_Index;
+
+      begin
+         for J in 0 .. Last loop
+            M  := mm_movemask (mm_cmpeq_epi16 (LV (J), RV (J)));
+
+            if M /= 16#0000_FFFF# then
+               Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
+
+               return Is_Less (Left.Value (Index), Right.Value (Index));
+            end if;
+         end loop;
+      end;
+
+      return Left.Unused <= Right.Unused;
+   end Is_Less_Or_Equal;
 
 end Matreshka.Internals.Strings.SIMD;
