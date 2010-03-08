@@ -153,13 +153,13 @@ package body Matreshka.Internals.Utf16 is
     (Item     : Utf16_String;
      Position : in out Utf16_String_Index)
    is
-      Code : constant Code_Point := Code_Point (Item (Position));
+      Code : Code_Point;
 
    begin
-      if (Code and Surrogate_Kind_Mask) = Masked_Low_Surrogate then
-         Position := Position - 2;
+      Position := Position - 1;
+      Code := Code_Point (Item (Position));
 
-      else
+      if (Code and Surrogate_Kind_Mask) = Masked_Low_Surrogate then
          Position := Position - 1;
       end if;
    end Unchecked_Previous;
