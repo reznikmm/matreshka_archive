@@ -166,30 +166,32 @@ package body League.Strings.Cursors.Grapheme_Clusters is
 
    begin
       if Self.Current_Position /= Utf16_String_Index'Last then
-         Unchecked_Previous
-          (D.Value, Self.Previous_Position, Self.Previous_State, Self.Locale);
-         Self.Previous_Length := 1;
+         if Self.Current_Position /= 0 then
+            Unchecked_Previous
+             (D.Value, Self.Previous_Position, Self.Previous_State, Self.Locale);
+            Self.Previous_Length := 1;
 
-         while Self.Previous_Position /= Utf16_String_Index'Last loop
-            declare
-               Aux_Position : Utf16_String_Index := Self.Previous_Position;
-               Aux_State    : Grapheme_Cluster_Break;
+            while Self.Previous_Position /= 0 loop
+               declare
+                  Aux_Position : Utf16_String_Index := Self.Previous_Position;
+                  Aux_State    : Grapheme_Cluster_Break;
 
-            begin
-               Unchecked_Previous
-                (D.Value, Aux_Position, Aux_State, Self.Locale);
+               begin
+                  Unchecked_Previous
+                   (D.Value, Aux_Position, Aux_State, Self.Locale);
 
-               exit when Break_Machine (Aux_State, Self.Previous_State);
+                  exit when Break_Machine (Aux_State, Self.Previous_State);
 
-               Self.Previous_Position := Aux_Position;
-               Self.Previous_State    := Aux_State;
-               Self.Previous_Length   := Self.Previous_Length + 1;
-            end;
-         end loop;
+                  Self.Previous_Position := Aux_Position;
+                  Self.Previous_State    := Aux_State;
+                  Self.Previous_Length   := Self.Previous_Length + 1;
+               end;
+            end loop;
 
-      else
-         Self.Previous_Position := Utf16_String_Index'Last;
-         Self.Previous_Length   := 0;
+         else
+            Self.Previous_Position := Utf16_String_Index'Last;
+            Self.Previous_Length   := 0;
+         end if;
       end if;
    end Find_Previous;
 
