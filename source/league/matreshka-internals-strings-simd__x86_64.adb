@@ -38,91 +38,17 @@
 with Ada.Unchecked_Conversion;
 with Interfaces;
 
+with Matreshka.Internals.SIMD.Intel;
+
 package body Matreshka.Internals.Strings.SIMD is
 
+   use Interfaces;
+   use Matreshka.Internals.SIMD.Intel;
+   use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
-
-   package SSE2 is
-
-      type v16qi is array (1 .. 16) of Interfaces.Unsigned_8;
-      pragma Machine_Attribute (v16qi, "vector_type");
-      pragma Machine_Attribute (v16qi, "may_alias");
-
-      type v8hi is array (1 .. 8) of Interfaces.Unsigned_16;
-      pragma Machine_Attribute (v8hi, "vector_type");
-      pragma Machine_Attribute (v8hi, "may_alias");
-
-      type v4si is array (1 .. 4) of Interfaces.Unsigned_32;
-      pragma Machine_Attribute (v4si, "vector_type");
-      pragma Machine_Attribute (v4si, "may_alias");
-
-      type v2di is array (1 .. 2) of Interfaces.Unsigned_64;
-      pragma Machine_Attribute (v2di, "vector_type");
-      pragma Machine_Attribute (v2di, "may_alias");
-
-      function mm_and_si128 (Left : v2di; Right : v2di) return v2di;
-      pragma Import (Intrinsic, mm_and_si128, "__builtin_ia32_pand128");
-
-      function mm_add_epi16 (Left : v8hi; Right : v8hi) return v8hi;
-      pragma Import (Intrinsic, mm_add_epi16, "__builtin_ia32_paddw128");
-
-      function mm_cmpeq_epi16 (Left : v8hi; Right : v8hi) return v8hi;
-      pragma Import (Intrinsic, mm_cmpeq_epi16, "__builtin_ia32_pcmpeqw128");
-
-      function mm_cmpgt_epi16 (Left : v8hi; Right : v8hi) return v8hi;
-      pragma Import (Intrinsic, mm_cmpgt_epi16, "__builtin_ia32_pcmpgtw128");
-
-      function mm_cmpgt_epi32 (Left : v4si; Right : v4si) return v4si;
-      pragma Import (Intrinsic, mm_cmpgt_epi32, "__builtin_ia32_pcmpgtd128");
-
-      function mm_srli_epi16
-        (Item : v8hi;
-         Bits : Interfaces.Unsigned_32) return v8hi;
-      pragma Import (Intrinsic, mm_srli_epi16, "__builtin_ia32_psrlwi128");
-
-      function mm_unpackhi_epi16 (A : v8hi; B : v8hi) return v8hi;
-      pragma Import
-        (Intrinsic, mm_unpackhi_epi16, "__builtin_ia32_punpckhwd128");
-
-      function mm_unpacklo_epi16 (A : v8hi; B : v8hi) return v8hi;
-      pragma Import
-        (Intrinsic, mm_unpacklo_epi16, "__builtin_ia32_punpcklwd128");
-
-      function mm_shuffle_epi32
-        (A : v4si; N : Interfaces.Unsigned_32) return v4si;
-      pragma Import (Intrinsic, mm_shuffle_epi32, "__builtin_ia32_pshufd");
-
-      function mm_movemask_epi8 (Item : v16qi) return Interfaces.Unsigned_32;
-      pragma Import
-        (Intrinsic, mm_movemask_epi8, "__builtin_ia32_pmovmskb128");
-
-      function mm_extract_epi16
-        (A : v8hi; N : Interfaces.Unsigned_32) return Interfaces.Unsigned_32;
-      pragma Import
-        (Intrinsic, mm_extract_epi16, "__builtin_ia32_vec_ext_v8hi");
-
-      --  Convinient operations
-
-      function mm_and (Left : v8hi; Right : v8hi) return v8hi;
-      pragma Inline (mm_and);
-      pragma Inline_Always (mm_and);
-
-      function mm_movemask (Item : v8hi) return Interfaces.Unsigned_32;
-      pragma Inline (mm_movemask);
-      pragma Inline_Always (mm_movemask);
-
-      function mm_movemask (Item : v4si) return Interfaces.Unsigned_32;
-      pragma Inline (mm_movemask);
-      pragma Inline_Always (mm_movemask);
-
-   end SSE2;
 
    function ffs (A : Interfaces.Unsigned_32) return Interfaces.Unsigned_32;
    pragma Import (Intrinsic, ffs, "__builtin_ffs");
-
-   use Interfaces;
-   use Matreshka.Internals.Unicode;
-   use SSE2;
 
    type v8hi_Unrestricted_Array is array (Utf16_String_Index) of v8hi;
 
@@ -135,56 +61,14 @@ package body Matreshka.Internals.Strings.SIMD is
 
    Fill_Terminator_Mask : constant
      array (Utf16_String_Index range 0 .. 7) of v8hi :=
-      (0 => (                    others => 16#0000#),
-       1 => (1      => 16#FFFF#, others => 16#0000#),
-       2 => (1 .. 2 => 16#FFFF#, others => 16#0000#),
-       3 => (1 .. 3 => 16#FFFF#, others => 16#0000#),
-       4 => (1 .. 4 => 16#FFFF#, others => 16#0000#),
-       5 => (1 .. 5 => 16#FFFF#, others => 16#0000#),
-       6 => (1 .. 6 => 16#FFFF#, others => 16#0000#),
-       7 => (1 .. 7 => 16#FFFF#, others => 16#0000#));
-
-   ----------
-   -- SSE2 --
-   ----------
-
-   package body SSE2 is
-
-      ------------
-      -- mm_and --
-      ------------
-
-      function mm_and (Left : v8hi; Right : v8hi) return v8hi is
-         function To_v2di is new Ada.Unchecked_Conversion (v8hi, v2di);
-         function To_v8hi is new Ada.Unchecked_Conversion (v2di, v8hi);
-
-      begin
-         return To_v8hi (mm_and_si128 (To_v2di (Left), To_v2di (Right)));
-      end mm_and;
-
-      -----------------
-      -- mm_movemask --
-      -----------------
-
-      function mm_movemask (Item : v8hi) return Interfaces.Unsigned_32 is
-         function To_v16qi is new Ada.Unchecked_Conversion (v8hi, v16qi);
-
-      begin
-         return mm_movemask_epi8 (To_v16qi (Item));
-      end mm_movemask;
-
-      -----------------
-      -- mm_movemask --
-      -----------------
-
-      function mm_movemask (Item : v4si) return Interfaces.Unsigned_32 is
-         function To_v16qi is new Ada.Unchecked_Conversion (v4si, v16qi);
-
-      begin
-         return mm_movemask_epi8 (To_v16qi (Item));
-      end mm_movemask;
-
-   end SSE2;
+      (0 => (              others => 0),
+       1 => (1      => -1, others => 0),
+       2 => (1 .. 2 => -1, others => 0),
+       3 => (1 .. 3 => -1, others => 0),
+       4 => (1 .. 4 => -1, others => 0),
+       5 => (1 .. 5 => -1, others => 0),
+       6 => (1 .. 6 => -1, others => 0),
+       7 => (1 .. 7 => -1, others => 0));
 
    --------------------------
    -- Fill_Null_Terminator --
@@ -197,7 +81,10 @@ package body Matreshka.Internals.Strings.SIMD is
       Offset : constant Utf16_String_Index := Self.Unused mod 8;
 
    begin
-      Value (Index) := mm_and (Value (Index), Fill_Terminator_Mask (Offset));
+      Value (Index) :=
+        To_v8hi
+         (mm_and_si128
+           (To_v2di (Value (Index)), To_v2di (Fill_Terminator_Mask (Offset))));
    end Fill_Null_Terminator;
 
    --------------
@@ -240,7 +127,7 @@ package body Matreshka.Internals.Strings.SIMD is
 
          begin
             for J in 0 .. Left.Unused / 8 loop
-               if mm_movemask (mm_cmpeq_epi16 (LV (J), RV (J)))
+               if mm_movemask_epi8 (To_v16qi (mm_cmpeq_epi16 (LV (J), RV (J))))
                     /= 16#0000_FFFF#
                then
                   return False;
@@ -298,7 +185,8 @@ package body Matreshka.Internals.Strings.SIMD is
 
          begin
             for J in 0 .. Min / 8 loop
-               M  := mm_movemask (mm_cmpeq_epi16 (LV (J), RV (J)));
+               M :=
+                 mm_movemask_epi8 (To_v16qi (mm_cmpeq_epi16 (LV (J), RV (J))));
 
                if M /= 16#0000_FFFF# then
                   Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
@@ -358,7 +246,8 @@ package body Matreshka.Internals.Strings.SIMD is
 
          begin
             for J in 0 .. Min / 8 loop
-               M  := mm_movemask (mm_cmpeq_epi16 (LV (J), RV (J)));
+               M :=
+                 mm_movemask_epi8 (To_v16qi (mm_cmpeq_epi16 (LV (J), RV (J))));
 
                if M /= 16#0000_FFFF# then
                   Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
@@ -418,7 +307,8 @@ package body Matreshka.Internals.Strings.SIMD is
 
          begin
             for J in 0 .. Min / 8 loop
-               M  := mm_movemask (mm_cmpeq_epi16 (LV (J), RV (J)));
+               M :=
+                 mm_movemask_epi8 (To_v16qi (mm_cmpeq_epi16 (LV (J), RV (J))));
 
                if M /= 16#0000_FFFF# then
                   Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
@@ -478,7 +368,8 @@ package body Matreshka.Internals.Strings.SIMD is
 
          begin
             for J in 0 .. Min / 8 loop
-               M  := mm_movemask (mm_cmpeq_epi16 (LV (J), RV (J)));
+               M :=
+                 mm_movemask_epi8 (To_v16qi (mm_cmpeq_epi16 (LV (J), RV (J))));
 
                if M /= 16#0000_FFFF# then
                   Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);

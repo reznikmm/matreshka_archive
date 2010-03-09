@@ -79,6 +79,12 @@ library project Matreshka_League is
       when "x86" =>
          Platform_Ada_Switches := ("-march=i686");
 
+      when "x86_64" =>
+         for Source_Dirs use
+          ("../source/league",
+           "../source/league/ucd",
+           "../source/league/arch/x86_64");
+
       when others =>
          null;
    end case;
