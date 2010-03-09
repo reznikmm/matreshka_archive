@@ -48,24 +48,40 @@ package Matreshka.Internals.SIMD.Intel is
    --  MMX/SSE 64-bit vectors
 
    type Integer_64_Vector_1 is private;
+   pragma Preelaborable_Initialization (Integer_64_Vector_1);
    type Unsigned_64_Vector_1 is private;
+   pragma Preelaborable_Initialization (Unsigned_64_Vector_1);
    type Integer_32_Vector_2 is private;
+   pragma Preelaborable_Initialization (Integer_32_Vector_2);
    type Unsigned_32_Vector_2 is private;
+   pragma Preelaborable_Initialization (Unsigned_32_Vector_2);
    type Integer_16_Vector_4 is private;
+   pragma Preelaborable_Initialization (Integer_16_Vector_4);
    type Unsigned_16_Vector_4 is private;
+   pragma Preelaborable_Initialization (Unsigned_16_Vector_4);
    type Integer_8_Vector_8 is private;
+   pragma Preelaborable_Initialization (Integer_8_Vector_8);
    type Unsigned_8_Vector_8 is private;
+   pragma Preelaborable_Initialization (Unsigned_8_Vector_8);
 
    --  SSE 128-bit vectors
 
    type Integer_64_Vector_2 is private;
+   pragma Preelaborable_Initialization (Integer_64_Vector_2);
    type Unsigned_64_Vector_2 is private;
+   pragma Preelaborable_Initialization (Unsigned_64_Vector_2);
    type Integer_32_Vector_4 is private;
+   pragma Preelaborable_Initialization (Integer_32_Vector_4);
    type Unsigned_32_Vector_4 is private;
+   pragma Preelaborable_Initialization (Unsigned_32_Vector_4);
    type Integer_16_Vector_8 is private;
+   pragma Preelaborable_Initialization (Integer_16_Vector_8);
    type Unsigned_16_Vector_8 is private;
+   pragma Preelaborable_Initialization (Unsigned_16_Vector_8);
    type Integer_8_Vector_16 is private;
+   pragma Preelaborable_Initialization (Integer_8_Vector_16);
    type Unsigned_8_Vector_16 is private;
+   pragma Preelaborable_Initialization (Unsigned_8_Vector_16);
 
 private
 

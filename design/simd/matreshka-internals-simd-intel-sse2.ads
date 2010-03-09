@@ -31,7 +31,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides access to SSE instruction set.
+--  This package provides access to SSE2 instructions set.
 ------------------------------------------------------------------------------
 with Interfaces;
 
@@ -39,12 +39,75 @@ package Matreshka.Internals.SIMD.Intel.SSE2 is
 
    pragma Preelaborate;
 
-   function To
-     (Q3, Q2, Q1, Q0 : Interfaces.Integer_32) return Integer_32_Vector_4;
+   function To_Integer_16_Vector_8
+    (Q7 : Interfaces.Integer_16;
+     Q6 : Interfaces.Integer_16;
+     Q5 : Interfaces.Integer_16;
+     Q4 : Interfaces.Integer_16;
+     Q3 : Interfaces.Integer_16;
+     Q2 : Interfaces.Integer_16;
+     Q1 : Interfaces.Integer_16;
+     Q0 : Interfaces.Integer_16) return Integer_16_Vector_8;
+
+   function To_Unsigned_16_Vector_8
+    (Q7 : Interfaces.Unsigned_16;
+     Q6 : Interfaces.Unsigned_16;
+     Q5 : Interfaces.Unsigned_16;
+     Q4 : Interfaces.Unsigned_16;
+     Q3 : Interfaces.Unsigned_16;
+     Q2 : Interfaces.Unsigned_16;
+     Q1 : Interfaces.Unsigned_16;
+     Q0 : Interfaces.Unsigned_16) return Unsigned_16_Vector_8;
+
+--   function mm_set_epi16
+--    (Q7 : Interfaces.Integer_16;
+--     Q6 : Interfaces.Integer_16;
+--     Q5 : Interfaces.Integer_16;
+--     Q4 : Interfaces.Integer_16;
+--     Q3 : Interfaces.Integer_16;
+--     Q2 : Interfaces.Integer_16;
+--     Q1 : Interfaces.Integer_16;
+--     Q0 : Interfaces.Integer_16) return Integer_16_Vector_8;
+--
+--   function mm_set_epi16
+--    (Q7 : Interfaces.Unsigned_16;
+--     Q6 : Interfaces.Unsigned_16;
+--     Q5 : Interfaces.Unsigned_16;
+--     Q4 : Interfaces.Unsigned_16;
+--     Q3 : Interfaces.Unsigned_16;
+--     Q2 : Interfaces.Unsigned_16;
+--     Q1 : Interfaces.Unsigned_16;
+--     Q0 : Interfaces.Unsigned_16) return Unsigned_16_Vector_8;
+
+   function mm_and
+    (A : Integer_16_Vector_8;
+     B : Integer_16_Vector_8) return Integer_16_Vector_8;
+
+   function mm_and
+    (A : Unsigned_16_Vector_8;
+     B : Unsigned_16_Vector_8) return Unsigned_16_Vector_8;
+
+   function mm_cmpeq
+    (A : Integer_16_Vector_8;
+     B : Integer_16_Vector_8) return Integer_16_Vector_8;
+
+   function mm_cmpeq
+    (A : Unsigned_16_Vector_8;
+     B : Unsigned_16_Vector_8) return Unsigned_16_Vector_8;
+
+   function mm_movemask
+    (A : Integer_16_Vector_8) return Interfaces.Unsigned_32;
+
+   function mm_movemask
+    (A : Unsigned_16_Vector_8) return Interfaces.Unsigned_32;
 
 private
 
-   pragma Inline_Always (To);
+   pragma Inline_Always (mm_and);
+   pragma Inline_Always (mm_cmpeq);
+   pragma Inline_Always (mm_movemask);
+--   pragma Inline_Always (mm_set_epi16);
+   pragma Inline_Always (To_Unsigned_16_Vector_8);
 
 --    _mm_set_sd
 --    _mm_set1_pd
@@ -128,7 +191,7 @@ private
 --    _mm_set_epi64x
 --    _mm_set_epi64
 --    _mm_set_epi32
---    _mm_set_epi16
+--  + _mm_set_epi16
 --    _mm_set_epi8
 --    _mm_set1_epi64x
 --    _mm_set1_epi64
@@ -227,12 +290,12 @@ private
 --    _mm_srl_epi16
 --    _mm_srl_epi32
 --    _mm_srl_epi64
---    _mm_and_si128
+--  + _mm_and_si128
 --    _mm_andnot_si128
 --    _mm_or_si128
 --    _mm_xor_si128
 --    _mm_cmpeq_epi8
---    _mm_cmpeq_epi16
+--  + _mm_cmpeq_epi16
 --    _mm_cmpeq_epi32
 --    _mm_cmplt_epi8
 --    _mm_cmplt_epi16
@@ -246,7 +309,7 @@ private
 --    _mm_max_epu8
 --    _mm_min_epi16
 --    _mm_min_epu8
---    _mm_movemask_epi8
+--  + _mm_movemask_epi8
 --    _mm_mulhi_epu16
 --    _mm_shufflehi_epi16
 --    _mm_shufflelo_epi16
@@ -270,5 +333,14 @@ private
 --    _mm_castps_si128
 --    _mm_castsi128_ps
 --    _mm_castsi128_pd
+
+   function mm_and_si128 (A : v2di; B : v2di) return v2di;
+   pragma Import (Intrinsic, mm_and_si128, "__builtin_ia32_pand128");
+
+   function mm_movemask_epi8 (Item : v16qi) return Interfaces.Unsigned_32;
+   pragma Import (Intrinsic, mm_movemask_epi8, "__builtin_ia32_pmovmskb128");
+
+   function mm_cmpeq_epi16 (Left : v8hi; Right : v8hi) return v8hi;
+   pragma Import (Intrinsic, mm_cmpeq_epi16, "__builtin_ia32_pcmpeqw128");
 
 end Matreshka.Internals.SIMD.Intel.SSE2;
