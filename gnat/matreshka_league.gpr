@@ -35,8 +35,10 @@
 library project Matreshka_League is
 
    type Architectures is
-     ("portable_32",
-      "portable_64",
+     ("portable_32_be",
+      "portable_32_le",
+      "portable_64_be",
+      "portable_64_le",
       "x86",
       "x86_64");
    Architecture : Architectures := external ("ARCHITECTURE");
@@ -146,21 +148,43 @@ library project Matreshka_League is
       --  Matreshka.Internals.Atomics.Generic_Test_And_Set
 
       case Architecture is
-         when "portable_32" =>
+         when "portable_32_be" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
+            for Specification ("Matreshka.Internals.Strings.Constants")
+              use "matreshka-internals-strings-constants__be.ads";
             for Implementation ("Matreshka.Internals.Strings.SIMD")
               use "matreshka-internals-strings-simd__portable_32.adb";
 
-         when "portable_64" =>
+         when "portable_32_le" =>
+            for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
+              use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
+            for Specification ("Matreshka.Internals.Strings.Constants")
+              use "matreshka-internals-strings-constants__le.ads";
+            for Implementation ("Matreshka.Internals.Strings.SIMD")
+              use "matreshka-internals-strings-simd__portable_32.adb";
+
+         when "portable_64_be" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+            for Specification ("Matreshka.Internals.Strings.Constants")
+              use "matreshka-internals-strings-constants__be.ads";
+            for Implementation ("Matreshka.Internals.Strings.SIMD")
+              use "matreshka-internals-strings-simd__portable_64.adb";
+
+         when "portable_64_le" =>
+            for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
+              use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+            for Specification ("Matreshka.Internals.Strings.Constants")
+              use "matreshka-internals-strings-constants__le.ads";
             for Implementation ("Matreshka.Internals.Strings.SIMD")
               use "matreshka-internals-strings-simd__portable_64.adb";
 
          when "x86" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
+            for Specification ("Matreshka.Internals.Strings.Constants")
+              use "matreshka-internals-strings-constants__le.ads";
             for Implementation ("Matreshka.Internals.Strings.SIMD")
               use "matreshka-internals-strings-simd__portable_32.adb";
 

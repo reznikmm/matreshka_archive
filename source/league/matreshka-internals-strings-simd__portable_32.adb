@@ -37,18 +37,16 @@
 ------------------------------------------------------------------------------
 with Interfaces;
 
+with Matreshka.Internals.Strings.Constants;
+
 package body Matreshka.Internals.Strings.SIMD is
 
    use Interfaces;
+   use Matreshka.Internals.Strings.Constants;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
 
    type Unsigned_32_Unrestricted_Array is array (Positive) of Unsigned_32;
-
-   Terminator_Mask : constant array (Natural range 0 .. 1) of Unsigned_32
-     := (0 => 16#0000_0000#,
-         1 => 16#0000_FFFF#);
-   --  This mask is used to set unused components of the element to zero.
 
    --------------------------
    -- Fill_Null_Terminator --
@@ -61,7 +59,7 @@ package body Matreshka.Internals.Strings.SIMD is
       Offset : constant Natural := Self.Last mod 2;
 
    begin
-      SV (Index) := SV (Index) and Terminator_Mask (Offset);
+      SV (Index) := SV (Index) and Terminator_Mask_32 (Offset);
    end Fill_Null_Terminator;
 
    --------------
