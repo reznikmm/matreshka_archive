@@ -173,7 +173,9 @@ package MISC_DEFS is
   -- size of input alphabet - should be size of ASCII set
   --CSIZE : constant INTEGER := 127;
   -- 98/02/21 Wolfgang Lohmann
-  CSIZE : constant INTEGER := Character'Pos(Character'Last);
+  --CSIZE : constant INTEGER := Character'Pos(Character'Last);
+   CSIZE : constant Integer :=
+     Wide_Wide_Character'Pos (Unicode.Unicode_Character'Last);
 
   INITIAL_MAX_CCLS : constant INTEGER := 100; -- max number of unique character
                                               --  classes
@@ -451,6 +453,12 @@ package MISC_DEFS is
   type C_SIZE_BOOL_ARRAY is array (0 .. CSIZE) of BOOLEAN;
   NEXTECM, ECGROUP, TECFWD, TECBCK : C_SIZE_ARRAY;
 
+   ECGROUP_Pack :
+     array (Unicode.Primary_Stage_Index) of Unicode.Primary_Stage_Index;
+   --  Mapping between primary index of code point and primary index of
+   --  secondary plane of ECGROUP which is used for this primary index.
+   --  Value not equal to index means use of another shared plane to compact
+   --  data.
 
   -- variables for start conditions:
   -- lastsc - last start condition created

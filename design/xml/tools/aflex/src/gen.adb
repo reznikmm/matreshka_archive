@@ -22,6 +22,7 @@
 -- NOTES does actual generation (writing) of output aflex scanners
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/genB.a,v 1.25 1992/10/02 23:08:41 self Exp self $
 with Ada.Integer_Text_IO;
+with Ada.Strings.Fixed;
 with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
 
@@ -29,13 +30,17 @@ with MISC_DEFS, MISC;
 with Scanner, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
 use MISC_DEFS, EXTERNAL_FILE_MANAGER;
 with Parser.Tokens; use Parser.Tokens;
+with Unicode;
 
 package body Gen is
 
    use Ada.Integer_Text_IO;
+   use Ada.Strings;
+   use Ada.Strings.Fixed;
    use Ada.Strings.Unbounded;
    use Ada.Strings.Unbounded.Text_IO;
    use Ada.Text_IO;
+   use Unicode;
 
   INDENT_LEVEL : INTEGER := 0;  -- each level is 4 spaces
 
@@ -119,47 +124,127 @@ package body Gen is
 
   -- generate equivalence-class table
 
-  procedure GENECS is
-    I       : INTEGER;
-    NUMROWS : INTEGER;
-  begin
-    PUT("yy_ec : constant array(CHARACTER'FIRST..");
-    PUT_LINE("CHARACTER'LAST) of short :=");
-    PUT_LINE("    (   0,");
+   procedure GENECS is
+      I       : INTEGER;
+      NUMROWS : INTEGER;
 
-    for CHAR_COUNT in 1 .. CSIZE loop
-      if (CASEINS and ((CHAR_COUNT >= CHARACTER'POS('A')) and (CHAR_COUNT <=
-        CHARACTER'POS('Z')))) then
-        ECGROUP(CHAR_COUNT) := ECGROUP(MISC.CLOWER(CHAR_COUNT));
-      end if;
+   begin
 
-      ECGROUP(CHAR_COUNT) := abs(ECGROUP(CHAR_COUNT));
-      MISC.MKDATA(ECGROUP(CHAR_COUNT));
-    end loop;
+      --  Handle case insensitive mapping, converts values to positive range
 
-    MISC.DATAEND;
+      for J in 1 .. CSIZE loop
+         if CASEINS
+           and then (J >= CHARACTER'POS('A') and J <= CHARACTER'POS('Z'))
+         then
+            ECGROUP (J) := ECGROUP (MISC.CLOWER (J));
+         end if;
 
-    if (TRACE) then
-      NEW_LINE(STANDARD_ERROR);
-      NEW_LINE(STANDARD_ERROR);
-      PUT(STANDARD_ERROR, "Equivalence Classes:");
-      NEW_LINE(STANDARD_ERROR);
-      NEW_LINE(STANDARD_ERROR);
-      NUMROWS := (CSIZE + 1)/8;
-
-      for J in 1 .. NUMROWS loop
-        I := J;
-        while (I <= CSIZE) loop
-          PUT(STANDARD_ERROR, MISC.READABLE_FORM(CHARACTER'VAL(I)));
-          PUT(STANDARD_ERROR, " = ");
-          PUT(STANDARD_ERROR, ECGROUP(I), 1);
-          PUT(STANDARD_ERROR, "   ");
-          I := I + NUMROWS;
-        end loop;
-        NEW_LINE(STANDARD_ERROR);
+         ECGROUP (J) := abs ECGROUP (J);
       end loop;
-    end if;
-  end GENECS;
+
+      --  Compact data using two stage table technique
+
+      for J in ECGROUP_Pack'Range loop
+         for K in 0 .. J loop
+            if ECGROUP (Integer (J) * 256 .. Integer (J) * 256 + 255) =
+              ECGROUP (Integer (K) * 256 .. Integer (K) * 256 + 255)
+            then
+               ECGROUP_Pack (J) := K;
+
+               exit;
+            end if;
+         end loop;
+      end loop;
+
+      Put_Line ("type Secondary_Stage_Index is range 0 .. 16#FF#;");
+      Put_Line ("type Primary_Stage_Index is range 0 .. 16#10FF#;");
+      Put_Line
+        ("type Secondary_Stage_Array is"
+         & " array (Secondary_Stage_Index) of Short;");
+      Put_Line
+        ("type Secondary_Stage_Array_Access is"
+         & " access constant Secondary_Stage_Array;");
+
+      for J in ECGROUP_Pack'Range loop
+         if ECGROUP_Pack (J) = J then
+            Put_Line
+              ("yy_ec_"
+               & Trim (Primary_Stage_Index'Image (J), Both)
+               & " : aliased constant Secondary_Stage_Array :=");
+            Put_Line ("    (");
+
+            for K in Secondary_Stage_Index'Range loop
+               Misc.MKDATA
+                 (Integer (ECGROUP (Integer (J) * 256 + Integer (K))));
+            end loop;
+
+            Misc.DATAEND;
+         end if;
+      end loop;
+
+      Put_Line ("yy_ec_base : constant");
+      Put_Line ("  array (Primary_Stage_Index) of Secondary_Stage_Array_Access :=");
+
+      for J in ECGROUP_Pack'Range loop
+         if J = ECGROUP_Pack'First then
+            Put ("   (");
+
+         elsif J mod 3 = 0 then
+            Put_Line (",");
+            Put ("    ");
+
+         else
+            Put (", ");
+         end if;
+
+         Put
+           ("yy_ec_"
+            & Trim (Primary_Stage_Index'Image (ECGROUP_Pack (J)), Both)
+            & "'Access");
+      end loop;
+
+      Put_Line (");");
+
+      --  Generate function to replace yy_ec constant without modification of
+      --  all code around.
+
+      New_Line;
+      Put_Line ("function yy_ec (Item : Character) return short is");
+      Put_Line ("   Code   : constant Integer := Character'Pos (Item);");
+      Put_Line ("   Group  : constant Primary_Stage_Index :=");
+      Put_Line ("     Primary_Stage_Index (Code / 256);");
+      Put_Line ("   Offset : constant Secondary_Stage_Index :=");
+      Put_Line ("     Secondary_Stage_Index (Code mod 256);");
+      New_Line;
+      Put_Line ("begin");
+      Put_Line ("   return yy_ec_base (Group) (Offset);");
+      Put_Line ("end yy_ec;");
+
+      --  XXX It can be useful to output pack infomation
+
+      if TRACE then
+         NEW_LINE(STANDARD_ERROR);
+         NEW_LINE(STANDARD_ERROR);
+         PUT(STANDARD_ERROR, "Equivalence Classes:");
+         NEW_LINE(STANDARD_ERROR);
+         NEW_LINE(STANDARD_ERROR);
+         NUMROWS := (CSIZE + 1)/8;
+
+         for J in 1 .. NUMROWS loop
+            I := J;
+
+            while (I <= CSIZE) loop
+               PUT(STANDARD_ERROR, MISC.READABLE_FORM(CHARACTER'VAL(I)));
+               PUT(STANDARD_ERROR, " = ");
+               PUT(STANDARD_ERROR, ECGROUP(I), 1);
+               PUT(STANDARD_ERROR, "   ");
+               I := I + NUMROWS;
+            end loop;
+
+            NEW_LINE(STANDARD_ERROR);
+         end loop;
+      end if;
+   end GENECS;
 
   -- generate the code to find the action number
 
