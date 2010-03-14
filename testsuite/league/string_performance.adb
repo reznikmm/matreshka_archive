@@ -32,7 +32,7 @@ with Ada.Strings.Wide_Unbounded;
 with Ada.Text_IO;
 with League.Strings;
 
-procedure String_Speed is
+procedure String_Performance is
 
    use Ada.Calendar;
    use Ada.Strings;
@@ -439,4 +439,4 @@ begin
    Test_Copy;
    Test_Compare;
    Test_Append;
-end String_Speed;
+end String_Performance;
