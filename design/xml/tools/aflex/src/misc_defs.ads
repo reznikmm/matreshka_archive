@@ -453,12 +453,17 @@ package MISC_DEFS is
   type C_SIZE_BOOL_ARRAY is array (0 .. CSIZE) of BOOLEAN;
   NEXTECM, ECGROUP, TECFWD, TECBCK : C_SIZE_ARRAY;
 
-   ECGROUP_Pack :
+   ECGROUP_Plane :
      array (Unicode.Primary_Stage_Index) of Unicode.Primary_Stage_Index;
    --  Mapping between primary index of code point and primary index of
    --  secondary plane of ECGROUP which is used for this primary index.
    --  Value not equal to index means use of another shared plane to compact
    --  data.
+
+   ECGROUP_Use_Count :
+     array (Unicode.Primary_Stage_Index) of Integer;
+   --  Use count for each plane of packed data. It is used to select most used
+   --  plane as others choice of aggregate and make code more clean.
 
   -- variables for start conditions:
   -- lastsc - last start condition created

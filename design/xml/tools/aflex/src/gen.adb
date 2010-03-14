@@ -125,8 +125,9 @@ package body Gen is
   -- generate equivalence-class table
 
    procedure GENECS is
-      I       : INTEGER;
-      NUMROWS : INTEGER;
+      I         : INTEGER;
+      NUMROWS   : INTEGER;
+      Most_Used : Primary_Stage_Index := 0;
 
    begin
 
@@ -144,16 +145,27 @@ package body Gen is
 
       --  Compact data using two stage table technique
 
-      for J in ECGROUP_Pack'Range loop
+      for J in ECGROUP_Use_Count'Range loop
+         ECGROUP_Use_Count (J) := 0;
+      end loop;
+
+      for J in ECGROUP_Plane'Range loop
          for K in 0 .. J loop
             if ECGROUP (Integer (J) * 256 .. Integer (J) * 256 + 255) =
               ECGROUP (Integer (K) * 256 .. Integer (K) * 256 + 255)
             then
-               ECGROUP_Pack (J) := K;
+               ECGROUP_Plane (J) := K;
+               ECGROUP_Use_Count (K) := ECGROUP_Use_Count (K) + 1;
 
                exit;
             end if;
          end loop;
+      end loop;
+
+      for J in ECGROUP_Use_Count'Range loop
+         if ECGROUP_Use_Count (J) > ECGROUP_Use_Count (Most_Used) then
+            Most_Used := J;
+         end if;
       end loop;
 
       Put_Line ("type Secondary_Stage_Index is range 0 .. 16#FF#;");
@@ -165,8 +177,8 @@ package body Gen is
         ("type Secondary_Stage_Array_Access is"
          & " access constant Secondary_Stage_Array;");
 
-      for J in ECGROUP_Pack'Range loop
-         if ECGROUP_Pack (J) = J then
+      for J in ECGROUP_Plane'Range loop
+         if ECGROUP_Plane (J) = J then
             Put_Line
               ("yy_ec_"
                & Trim (Primary_Stage_Index'Image (J), Both)
@@ -185,25 +197,31 @@ package body Gen is
       Put_Line ("yy_ec_base : constant");
       Put_Line ("  array (Primary_Stage_Index) of Secondary_Stage_Array_Access :=");
 
-      for J in ECGROUP_Pack'Range loop
-         if J = ECGROUP_Pack'First then
-            Put ("   (");
+      for J in ECGROUP_Plane'Range loop
+         if ECGROUP_Plane (J) /= Most_Used then
+            if J = ECGROUP_Plane'First then
+               Put ("   (");
 
-         elsif J mod 3 = 0 then
-            Put_Line (",");
-            Put ("    ");
+            elsif J mod 3 = 0 then
+               Put_Line (",");
+               Put ("    ");
 
-         else
-            Put (", ");
+            else
+               Put (", ");
+            end if;
+
+            Put (Integer (J), 6);
+            Put
+              (" => yy_ec_"
+               & Trim (Primary_Stage_Index'Image (ECGROUP_Plane (J)), Both)
+               & "'Access");
          end if;
-
-         Put
-           ("yy_ec_"
-            & Trim (Primary_Stage_Index'Image (ECGROUP_Pack (J)), Both)
-            & "'Access");
       end loop;
 
-      Put_Line (");");
+      Put_Line
+        (", others => yy_ec_"
+         & Trim (Primary_Stage_Index'Image (Most_Used), Both)
+         & "'Access);");
 
       --  Generate function to replace yy_ec constant without modification of
       --  all code around.
