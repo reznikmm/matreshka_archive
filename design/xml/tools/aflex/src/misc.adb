@@ -539,45 +539,87 @@ package body MISC is
     return CHARACTER'VAL(TOTAL);
   end OTOI;
 
+   -------------------
+   -- Readable_Form --
+   -------------------
 
   -- readable_form - return the the human-readable form of a character
   --
   -- The returned string is in static storage.
 
-  function READABLE_FORM(C : in CHARACTER) return Unbounded_String is
-  begin
-    if ((CHARACTER'POS(C) >= 0 and CHARACTER'POS(C) < 32) or (C = ASCII.DEL))
-      then
-      case C is
-        when ASCII.LF =>
-          return +"\n";
+   function Readable_Form (C : Wide_Wide_Character) return Unbounded_String is
+      To_Hex_Digit : constant String := "0123456789ABCDEF";
+      Code         : constant Integer := Wide_Wide_Character'Pos (C);
 
-        -- Newline
-        when ASCII.HT =>
-          return +"\t";
+   begin
+      if Code <= 16#FFFF# then
+         case C is
+            when LF =>
+               --  Newline
 
-        -- Horizontal Tab
-        when ASCII.FF =>
-          return +"\f";
+               return +"\n";
 
-        -- Form Feed
-        when ASCII.CR =>
-          return +"\r";
+            when HT =>
+               --  Horizontal Tab
 
-        -- Carriage Return
-        when ASCII.BS =>
-          return +"\b";
+               return +"\t";
 
-        -- Backspace
-        when others =>
-          return +"\" & INTEGER'IMAGE(CHARACTER'POS(C));
-      end case;
-    elsif (C = ' ') then
-      return +"' '";
-    else
-      return +String'(1 .. 1 => C);
-    end if;
-  end READABLE_FORM;
+            when FF =>
+               --  Form Feed
+
+               return +"\f";
+
+            when CR =>
+               --  Carriage Return
+
+               return +"\r";
+
+            when BS =>
+               --  Backspace
+
+               return +"\b";
+
+            when ' ' =>
+               --  Space
+
+               return +"' '";
+
+            when Wide_Wide_Character'Val (33)
+               .. Wide_Wide_Character'Val (127) =>
+               return
+                 +String'
+                 (1 .. 1 => Character'Val (Wide_Wide_Character'Pos (C)));
+
+            when others =>
+               declare
+                  Image : String (1 .. 6) := "\uXXXX";
+
+               begin
+                  Image (3) := To_Hex_Digit ((Code / 2 ** 12) mod 16 + 1);
+                  Image (4) := To_Hex_Digit ((Code / 2 ** 8) mod 16 + 1);
+                  Image (5) := To_Hex_Digit ((Code / 2 ** 4) mod 16 + 1);
+                  Image (6) := To_Hex_Digit (Code mod 16 + 1);
+
+                  return +Image;
+               end;
+         end case;
+
+      else
+         declare
+            Image : String (1 .. 8) := "\uXXXXXX";
+
+         begin
+            Image (3) := To_Hex_Digit (Code / 2 ** 20 + 1);
+            Image (4) := To_Hex_Digit ((Code / 2 ** 16) mod 2 ** 4 + 1);
+            Image (5) := To_Hex_Digit ((Code / 2 ** 12) mod 2 ** 4 + 1);
+            Image (6) := To_Hex_Digit ((Code / 2 ** 8) mod 2 ** 4 + 1);
+            Image (7) := To_Hex_Digit ((Code / 2 ** 4) mod 2 ** 4 + 1);
+            Image (8) := To_Hex_Digit (Code mod 2 ** 4 + 1);
+
+            return +Image;
+         end;
+      end if;
+   end Readable_Form;
 
   -- transition_struct_out - output a yy_trans_info structure
   --

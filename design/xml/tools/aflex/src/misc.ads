@@ -83,7 +83,7 @@ package Misc is
    -- myesc - return character corresponding to escape sequence
 
   function OTOI(STR : in Unbounded_String) return CHARACTER;
-  function READABLE_FORM(C : in CHARACTER) return Unbounded_String;
+   function Readable_Form (C : Wide_Wide_Character) return Unbounded_String;
   procedure SYNERR(STR : in STRING);
   procedure TRANSITION_STRUCT_OUT(ELEMENT_V, ELEMENT_N : in INTEGER);
   function SET_YY_TRAILING_HEAD_MASK(SRC : in INTEGER) return INTEGER;

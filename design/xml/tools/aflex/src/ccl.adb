@@ -132,7 +132,7 @@ package body CCL is
 
         PUT(F, ' ');
 
-        PUT(F, MISC.READABLE_FORM(CHARACTER'VAL(I)));
+        PUT (F, MISC.Readable_Form (Wide_Wide_Character'Val (I)));
 
         I := I + 1;
         while ((I <= CSIZE) and then (CSET(I))) loop
@@ -143,7 +143,7 @@ package body CCL is
 
           -- this was a run
           PUT(F, "-");
-          PUT(F, MISC.READABLE_FORM(CHARACTER'VAL(I - 1)));
+          PUT (F, MISC.Readable_Form (Wide_Wide_Character'Val (I - 1)));
         end if;
 
         PUT(F, ' ');

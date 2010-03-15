@@ -23,6 +23,8 @@ package Unicode is
      := Wide_Wide_Character'Val (Character'Pos (ASCII.SOH));
    VT  : constant Unicode_Character
      := Wide_Wide_Character'Val (Character'Pos (ASCII.VT));
+   DEL : constant Unicode_Character
+     := Wide_Wide_Character'Val (Character'Pos (ASCII.DEL));
 
    type Secondary_Stage_Index is range 16#00# .. 16#FF#;
    type Primary_Stage_Index is range 16#0000# .. 16#10FF#;

@@ -179,7 +179,7 @@ yy_ec_1 : aliased constant Secondary_Stage_Array :=
 
 yy_ec_base : constant
   array (Primary_Stage_Index) of Secondary_Stage_Array_Access :=
-   (    0 => yy_ec_0'Access, others => yy_ec_1'Access);
+   (     0 => yy_ec_0'Access, others => yy_ec_1'Access);
 
 function yy_ec (Item : Character) return short is
    Code   : constant Integer := Character'Pos (Item);

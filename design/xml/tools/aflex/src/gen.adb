@@ -252,7 +252,9 @@ package body Gen is
             I := J;
 
             while (I <= CSIZE) loop
-               PUT(STANDARD_ERROR, MISC.READABLE_FORM(CHARACTER'VAL(I)));
+               PUT
+                 (STANDARD_ERROR,
+                  MISC.Readable_Form(Wide_Wide_Character'Val (I)));
                PUT(STANDARD_ERROR, " = ");
                PUT(STANDARD_ERROR, ECGROUP(I), 1);
                PUT(STANDARD_ERROR, "   ");
