@@ -37,12 +37,13 @@ WHITE_SPACE			[\u0009-\u000D\u0020\u0085\u200E\u200F\u2028\u2029]
 HEX_DIGIT			[\u0030-\u0039\u0041-\u0046\u0061-\u0066\uFF10-\uFF19]
 --  Have Hex_Digit property
 
-SPECIAL				[\[\\\^\$\.\(\)]
+SPECIAL				[\[\\\^\$\(\)]
 --  SPECIAL				[\[\\\^\$\.\|\?\*\+\(\)]
---  \|  handled as single
---  \?  handled as single
---  \*  handled as single
---  \+  handled as single
+--  \|  handled as single character
+--  \?  handled as single character
+--  \*  handled as single character
+--  \+  handled as single character
+--  \.  handled as single character
 
 NOT_WHITE_SPACE_OR_SPECIAL	[^\u0009-\u000D\u0020\u0085\u200E\u200F\u2028\u2029\[\\\^\$\.\|\?\*\+\(\)]
 
@@ -116,6 +117,11 @@ NOT_WHITE_SPACE_OR_SPECIAL	[^\u0009-\u000D\u0020\u0085\u200E\u200F\u2028\u2029\[
 "\}" {
 
    return Token_Code_Point;
+}
+
+"." {
+
+   return Token_Any_Code_Point;
 }
 
 "\Q" {

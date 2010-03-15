@@ -1,4 +1,6 @@
 
+.          Matches any single character except line break characters \r and \n.
+
 \[         Match [
 \\         Match \
 \^         Match ^
