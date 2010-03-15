@@ -1,0 +1,34 @@
+
+\[         Match [
+\\         Match \
+\^         Match ^
+\$         Match $
+\.         Match .
+\|         Match |
+\?         Match ?
+\*         Match *
+\+         Match +
+\(         Match (
+\)         Match )
+\{         Match {
+\}         Match }
+
+\a         Match bell character (can be used in character class)
+\e         Match escape character (can be used in character class)
+\f         Match form feed character (can be used in character class)
+\n         Match LF (can be used in character class)
+\r         Match CR (can be used in character class)
+\t         Match horizontal tab character (can be used in character class)
+\v         Match vertical tab character (can be used in character class)
+\c[A-Z]    Match an ASCII character Control+A through Control+Z (can be used in character class)
+
+\Q ... \E  Matches the characters between \Q and \E literally, suppressing the meaning of special characters.
+
+|          Causes the regex engine to match either the part on the left side, or the part on the right side. Can be strung together into a series of options.
+
+?          Makes the preceding item optional. Greedy, so the optional item is included in the match if possible.
+??         Makes the preceding item optional. Lazy, so the optional item is excluded in the match if possible.
+*          Repeats the previous item zero or more times. Greedy, so as many items as possible will be matched before trying permutations with less matches of the preceding item, up to the point where the preceding item is not matched at all.
+*?         Repeats the previous item zero or more times. Lazy, so the engine first attempts to skip the previous item, before trying permutations with ever increasing matches of the preceding item.
++          Repeats the previous item once or more. Greedy, so as many items as possible will be matched before trying permutations with less matches of the preceding item, up to the point where the preceding item is matched only once.
++?         Repeats the previous item once or more. Lazy, so the engine first matches the previous item only once, before trying permutations with ever increasing matches of the preceding item.
