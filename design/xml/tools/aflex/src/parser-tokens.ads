@@ -8,13 +8,14 @@ package Parser.Tokens is
         (End_Of_Input, Error, Char, Number,
          Sectend, Scdecl, Xscdecl,
          Whitespace, Name, Prevccl,
-         Eof_Op, Newline, '^',
-         '<', '>', ',',
-         '$', '|', '/',
-         '*', '+', '?',
-         '{', '}', '.',
-         '"', '(', ')',
-         '[', ']', '-' );
+         Eof_Op, Newline, Prop,
+         '^', '<', '>',
+         ',', '$', '|',
+         '/', '*', '+',
+         '?', '{', '}',
+         '.', '"', '(',
+         ')', '[', ']',
+         '-' );
 
     Syntax_Error : exception;
 

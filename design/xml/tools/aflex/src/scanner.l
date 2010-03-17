@@ -211,6 +211,24 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 			end if;
 			}
 
+<SECT2>"\\p{"(Pattern_Syntax|Pattern_White_Space)"}"	{
+			declare
+			   Image : constant String := YYText;
+
+			begin
+			   YYLVal :=
+			     Unicode.Ucd.Boolean_Properties'Pos
+			      (Unicode.Ucd.Boolean_Properties'Value
+			        (Image (Image'First + 3 .. Image'Last - 1))) + 1;
+
+                           if Image (Image'First + 1) = 'P' then
+			      YYLVal := -YYLVal;
+			   end if;
+
+			   return PROP;
+			end;
+			}
+
 <SECT2>"{"{NAME}"}"	{
 			nmstr := +YYText (1 .. YYLength);
 			-- chop leading and trailing brace
@@ -383,7 +401,7 @@ with Ada.Text_IO;
 
 with misc_defs, misc, sym;
 use misc_defs;
-with Unicode;
+with Unicode.Ucd;
 ##
    use Ada.Integer_Text_IO;
    use Ada.Strings.Unbounded;

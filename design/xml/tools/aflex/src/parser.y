@@ -23,7 +23,7 @@
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/parse.y,v 1.15 90/01/17 15:49:56 self Exp Locker: self $
 
 %token CHAR NUMBER SECTEND SCDECL XSCDECL WHITESPACE NAME PREVCCL EOF_OP
-%token NEWLINE
+%token NEWLINE PROP
 
 {
   subtype YYSType is Integer;
@@ -514,6 +514,52 @@ singleton       :  singleton '*'
 
 			$$ := nfa.mkstate( $1 );
 			}
+                |  PROP
+			{
+			rulelen := rulelen + 1;
+
+			declare
+			   P : Unicode.Ucd.Boolean_Properties :=
+			     Unicode.Ucd.Boolean_Properties'Val ((abs $1) - 1);
+			   N : Boolean := $1 < 0;
+
+			begin
+                           if N then
+                              $$ := Boolean_NCCL (P);
+
+                           else
+                              $$ := Boolean_CCL (P);
+                           end if;
+
+                           if $$ = 0 then
+			      cclsorted := true;
+			      lastchar := 0;
+			      $$ := ccl.cclinit;
+
+			      for J in Unicode_Character'Range loop
+                                 if Element (Unicode.Ucd.Core.Property, Unicode_Character'Pos (J)).B (P) then
+			            ccl.ccl_add ($$, J);
+			            lastchar := Unicode_Character'Pos (J);
+			         end if;
+			      end loop;
+
+			      if ( useecs ) then
+			          ecs.mkeccl( ccltbl(cclmap($$)..cclmap($$) + ccllen($$)),
+				      ccllen($$),nextecm, ecgroup, CSIZE );
+			      end if;
+
+			      if N then
+			         ccl.cclnegate( $$ );
+			         Boolean_NCCL (P) := $$;
+
+			      else
+			         Boolean_CCL (P) := $$;
+			      end if;
+			   end if;
+
+			   $$ := nfa.mkstate( -$$ );
+			end;
+			}
 		;
 
 fullccl		:  '[' ccl ']'
@@ -608,7 +654,7 @@ with Ada.Text_IO;
 with Scanner;
 with NFA, ccl, misc, misc_defs, sym, ecs;
 with main_body;
-with Unicode;
+with Unicode.Ucd.Core;
 
 ##
 
@@ -619,9 +665,17 @@ with Unicode;
 
    use Scanner;
    use Unicode;
+   use Unicode.Ucd;
 
    function "+" (Item : String) return Unbounded_String
      renames To_Unbounded_String;
+
+   function Element is
+     new Unicode.Ucd.Generic_Element
+      (Unicode.Ucd.Core_Values,
+       Unicode.Ucd.Core_Second_Stage,
+       Unicode.Ucd.Core_Second_Stage_Access,
+       Unicode.Ucd.Core_First_Stage);
 
 -- build_eof_action - build the "<<EOF>>" action for the active start
 --                    conditions

@@ -5,7 +5,7 @@ with Ada.Text_IO;
 with Scanner;
 with NFA, ccl, misc, misc_defs, sym, ecs;
 with main_body;
-with Unicode;
+with Unicode.Ucd.Core;
 
 with Parser.Goto_Table;
 use  Parser.Goto_Table;
@@ -26,9 +26,17 @@ package body Parser is
 
    use Scanner;
    use Unicode;
+   use Unicode.Ucd;
 
    function "+" (Item : String) return Unbounded_String
      renames To_Unbounded_String;
+
+   function Element is
+     new Unicode.Ucd.Generic_Element
+      (Unicode.Ucd.Core_Values,
+       Unicode.Ucd.Core_Second_Stage,
+       Unicode.Ucd.Core_Second_Stage_Access,
+       Unicode.Ucd.Core_First_Stage);
 
 -- build_eof_action - build the "<<EOF>>" action for the active start
 --                    conditions
@@ -923,13 +931,77 @@ yy.value_stack(yy.tos) );
 			
 
 when  46 =>
---#line  520
+--#line  518
+
+			rulelen := rulelen + 1;
+
+			declare
+			   P : Unicode.Ucd.Boolean_Properties :=
+			     Unicode.Ucd.Boolean_Properties'Val ((abs 
+yy.value_stack(yy.tos)) - 1);
+			   N : Boolean := 
+yy.value_stack(yy.tos) < 0;
+
+			begin
+                           if N then
+                              
+yyval := Boolean_NCCL (P);
+
+                           else
+                              
+yyval := Boolean_CCL (P);
+                           end if;
+
+                           if 
+yyval = 0 then
+			      cclsorted := true;
+			      lastchar := 0;
+			      
+yyval := ccl.cclinit;
+
+			      for J in Unicode_Character'Range loop
+                                 if Element (Unicode.Ucd.Core.Property, Unicode_Character'Pos (J)).B (P) then
+			            ccl.ccl_add (
+yyval, J);
+			            lastchar := Unicode_Character'Pos (J);
+			         end if;
+			      end loop;
+
+			      if ( useecs ) then
+			          ecs.mkeccl( ccltbl(cclmap(
+yyval)..cclmap(
+yyval) + ccllen(
+yyval)),
+				      ccllen(
+yyval),nextecm, ecgroup, CSIZE );
+			      end if;
+
+			      if N then
+			         ccl.cclnegate( 
+yyval );
+			         Boolean_NCCL (P) := 
+yyval;
+
+			      else
+			         Boolean_CCL (P) := 
+yyval;
+			      end if;
+			   end if;
+
+			   
+yyval := nfa.mkstate( -
+yyval );
+			end;
+			
+
+when  47 =>
+--#line  566
  
 yyval := 
 yy.value_stack(yy.tos-1); 
 
-when  47 =>
---#line  523
+when  48 =>
+--#line  569
 
 			-- *Sigh* - to be compatible Unix lex, negated ccls
 			-- match newlines
@@ -940,8 +1012,8 @@ yyval :=
 yy.value_stack(yy.tos-1);
 			
 
-when  48 =>
---#line  532
+when  49 =>
+--#line  578
 
 			if ( 
 yy.value_stack(yy.tos-2) > 
@@ -986,8 +1058,8 @@ yyval :=
 yy.value_stack(yy.tos-3);
 			
 
-when  49 =>
---#line  560
+when  50 =>
+--#line  606
 
 			if ( caseins ) then
 			    if ( (
@@ -1010,8 +1082,8 @@ yyval :=
 yy.value_stack(yy.tos-1);
 			
 
-when  50 =>
---#line  573
+when  51 =>
+--#line  619
 
 			cclsorted := true;
 			lastchar := 0;
@@ -1019,8 +1091,8 @@ when  50 =>
 yyval := ccl.cclinit;
 			
 
-when  51 =>
---#line  581
+when  52 =>
+--#line  627
 
 			if ( caseins ) then
 			    if ( (
@@ -1040,8 +1112,8 @@ yy.value_stack(yy.tos-1), nfa.mkstate(
 yy.value_stack(yy.tos) ) );
 			
 
-when  52 =>
---#line  594
+when  53 =>
+--#line  640
  
 yyval := nfa.mkstate( SYM_EPSILON ); 
 

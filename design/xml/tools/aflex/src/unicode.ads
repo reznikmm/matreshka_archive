@@ -1,6 +1,8 @@
 
 package Unicode is
 
+   pragma Pure;
+
    subtype Unicode_Character is Wide_Wide_Character
      range Wide_Wide_Character'Val (16#00_0000#)
              .. Wide_Wide_Character'Val (16#10_FFFF#);
@@ -28,5 +30,9 @@ package Unicode is
 
    type Secondary_Stage_Index is range 16#00# .. 16#FF#;
    type Primary_Stage_Index is range 16#0000# .. 16#10FF#;
+
+   type Code_Unit_32 is mod 2 ** 32;
+
+   subtype Code_Point is Code_Unit_32 range 0 .. 16#10_FFFF#;
 
 end Unicode;

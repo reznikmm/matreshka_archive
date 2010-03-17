@@ -33,7 +33,7 @@ with Ada.Strings.Unbounded;
 with TEXT_IO;
 use TEXT_IO;
 
-with Unicode;
+with Unicode.Ucd;
 
 package MISC_DEFS is
 
@@ -566,6 +566,12 @@ package MISC_DEFS is
   TMPUSES, TOTNST, PEAKPAIRS, NUMUNIQ, NUMDUP, HSHSAVE : INTEGER;
   NUM_BACKTRACKING : INTEGER;
   BOL_NEEDED : BOOLEAN;
+
+   type Boolean_Property_Array is
+     array (Unicode.Ucd.Boolean_Properties) of Integer;
+
+   Boolean_CCL  : Boolean_Property_Array := (others => 0);
+   Boolean_NCCL : Boolean_Property_Array := (others => 0);
 
   function ALLOCATE_INTEGER_ARRAY (SIZE : in INTEGER) return INT_PTR;
 
