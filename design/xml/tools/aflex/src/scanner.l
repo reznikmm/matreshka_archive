@@ -40,6 +40,7 @@ NOT_NAME	[^a-z_\n]+
 SCNAME		{NAME}
 
 ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
+PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax)\}
 
 %%
 
@@ -186,7 +187,7 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 			-- to stop the parser
 			}
 
-<SECT2>"["([^\\\]\n]|{ESCSEQ})+"]"	{
+<SECT2>"["([^\\\]\n]|{ESCSEQ}|{PROPS})+"]"	{
 
 			nmstr := +YYText (1 .. YYLength);
 
@@ -211,7 +212,7 @@ ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
 			end if;
 			}
 
-<SECT2>"\\p{"(Pattern_Syntax|Pattern_White_Space)"}"	{
+<SECT2,CCL>{PROPS}	{
 			declare
 			   Image : constant String := YYText;
 

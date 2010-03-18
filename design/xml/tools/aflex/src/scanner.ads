@@ -26,7 +26,7 @@
 --       (or flex if you use C.)
 --       generate scanner using the command 'aflex -is ascan.l'
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/ascan.l,v 1.19 1991/12/03 23:08:24 self Exp self $
---# line 44 "scanner.l"
+--# line 45 "scanner.l"
 
 with Parser.Tokens;
 

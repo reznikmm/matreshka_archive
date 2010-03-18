@@ -144,7 +144,7 @@ package Parser.Goto_Table is
 -- State  57
 
 -- State  58
-,(-20, 73)
+,(-20, 74)
 
 -- State  59
 
@@ -153,7 +153,7 @@ package Parser.Goto_Table is
 -- State  61
 
 -- State  62
-,(-13, 74)
+,(-13, 75)
 -- State  63
 
 -- State  64
@@ -196,9 +196,11 @@ package Parser.Goto_Table is
 
 -- State  83
 
+-- State  84
+
 );
 --  The offset vector
-GOTO_OFFSET : array (0.. 83) of Integer :=
+GOTO_OFFSET : array (0.. 84) of Integer :=
 ( 0,
  2, 3, 3, 5, 5, 5, 5, 5, 5, 6,
  6, 6, 7, 8, 15, 15, 15, 15, 20, 25,
@@ -208,25 +210,25 @@ GOTO_OFFSET : array (0.. 83) of Integer :=
  51, 51, 51, 51, 51, 51, 51, 51, 52, 52,
  52, 52, 53, 53, 55, 55, 55, 55, 55, 55,
  55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
- 55, 55, 55);
+ 55, 55, 55, 55);
 
 subtype Rule        is Natural;
 subtype Nonterminal is Integer;
 
-   Rule_Length : array (Rule range  0 ..  53) of Natural := ( 2,
+   Rule_Length : array (Rule range  0 ..  54) of Natural := ( 2,
  5, 0, 5, 0, 2, 1, 1, 1,
  3, 1, 1, 4, 0, 0, 4, 3,
  3, 2, 2, 1, 1, 3, 3, 1,
  1, 1, 0, 3, 2, 1, 2, 2,
  1, 2, 2, 2, 6, 5, 4, 1,
  1, 1, 3, 3, 1, 1, 3, 4,
- 4, 2, 0, 2, 0);
-   Get_LHS_Rule: array (Rule range  0 ..  53) of Nonterminal := (-1,
+ 4, 2, 2, 0, 2, 0);
+   Get_LHS_Rule: array (Rule range  0 ..  54) of Nonterminal := (-1,
 -2,-3,-4,-4,-4,-5,-8,-8,
 -9,-9,-9,-6,-6,-7,-10,-10,
 -10,-10,-10,-10,-10,-11,-14,-14,
 -14,-13,-13,-12,-12,-12,-16,-15,
 -15,-17,-17,-17,-17,-17,-17,-17,
 -17,-17,-17,-17,-17,-17,-18,-18,
--20,-20,-20,-19,-19);
+-20,-20,-20,-20,-19,-19);
 end Parser.Goto_Table;

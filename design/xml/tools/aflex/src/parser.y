@@ -614,6 +614,26 @@ ccl             :  ccl CHAR '-' CHAR
 			lastchar := $2;
 			$$ := $1;
 			}
+                |  ccl PROP
+			{
+			declare
+			   P : Unicode.Ucd.Boolean_Properties :=
+			     Unicode.Ucd.Boolean_Properties'Val ((abs $2) - 1);
+			   N : Boolean := $2 < 0;
+
+			begin
+			   cclsorted := false;
+			   lastchar := 0;
+
+			   for J in Unicode_Character'Range loop
+                              if N xor Element (Unicode.Ucd.Core.Property, Unicode_Character'Pos (J)).B (P) then
+			         ccl.ccl_add ($1, J);
+			      end if;
+			   end loop;
+
+			   $$ := $1;
+			end;
+			}
 
 		|
 			{

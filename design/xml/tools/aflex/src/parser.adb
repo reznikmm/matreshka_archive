@@ -1083,7 +1083,34 @@ yy.value_stack(yy.tos-1);
 			
 
 when  51 =>
---#line  619
+--#line  618
+
+			declare
+			   P : Unicode.Ucd.Boolean_Properties :=
+			     Unicode.Ucd.Boolean_Properties'Val ((abs 
+yy.value_stack(yy.tos)) - 1);
+			   N : Boolean := 
+yy.value_stack(yy.tos) < 0;
+
+			begin
+			   cclsorted := false;
+			   lastchar := 0;
+
+			   for J in Unicode_Character'Range loop
+                              if N xor Element (Unicode.Ucd.Core.Property, Unicode_Character'Pos (J)).B (P) then
+			         ccl.ccl_add (
+yy.value_stack(yy.tos-1), J);
+			      end if;
+			   end loop;
+
+			   
+yyval := 
+yy.value_stack(yy.tos-1);
+			end;
+			
+
+when  52 =>
+--#line  639
 
 			cclsorted := true;
 			lastchar := 0;
@@ -1091,8 +1118,8 @@ when  51 =>
 yyval := ccl.cclinit;
 			
 
-when  52 =>
---#line  627
+when  53 =>
+--#line  647
 
 			if ( caseins ) then
 			    if ( (
@@ -1112,8 +1139,8 @@ yy.value_stack(yy.tos-1), nfa.mkstate(
 yy.value_stack(yy.tos) ) );
 			
 
-when  53 =>
---#line  640
+when  54 =>
+--#line  660
  
 yyval := nfa.mkstate( SYM_EPSILON ); 
 
