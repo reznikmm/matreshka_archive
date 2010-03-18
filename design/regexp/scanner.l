@@ -31,92 +31,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-WHITE_SPACE			[\u0009-\u000D\u0020\u0085\u200E\u200F\u2028\u2029]
---  Have Pattern_White_Space property
-
-HEX_DIGIT			[\u0030-\u0039\u0041-\u0046\u0061-\u0066\uFF10-\uFF19]
---  Have Hex_Digit property
-
-SPECIAL				[\[\\\^\$\(\)]
---  SPECIAL				[\[\\\^\$\.\|\?\*\+\(\)]
---  \|  handled as single character
---  \?  handled as single character
---  \*  handled as single character
---  \+  handled as single character
---  \.  handled as single character
-
-NOT_WHITE_SPACE_OR_SPECIAL	[^\u0009-\u000D\u0020\u0085\u200E\u200F\u2028\u2029\[\\\^\$\.\|\?\*\+\(\)]
-
---  NOT_WHITE_SPACE			[^\u0009-\u000D\u0020\u0085\u200E\u200F\u2028\u2029]
 
 %x LITERAL
 %x CHARACTER_CLASS
 
 %%
 
-"\[" {
+\\[\p{Pattern_Syntax}\p{Pattern_White_Space}] {
+   --  Escaped pattern special code point
 
-   return Token_Code_Point;
-}
+   declare
+      S : constant String := YYText;
 
-"\\" {
+   begin
+      YYLVal := (Code_Point, Wide_Wide_Character'Val (Character'Pos (S (S'First + 1))));
 
-   return Token_Code_Point;
-}
-
-"\^" {
-
-   return Token_Code_Point;
-}
-
-"\$" {
-
-   return Token_Code_Point;
-}
-
-"\." {
-
-   return Token_Code_Point;
-}
-
-"\|" {
-
-   return Token_Code_Point;
-}
-
-"\?" {
-
-   return Token_Code_Point;
-}
-
-"\*" {
-
-   return Token_Code_Point;
-}
-
-"\+" {
-
-   return Token_Code_Point;
-}
-
-"\(" {
-
-   return Token_Code_Point;
-}
-
-"\)" {
-
-   return Token_Code_Point;
-}
-
-"\{" {
-
-   return Token_Code_Point;
-}
-
-"\}" {
-
-   return Token_Code_Point;
+      return Token_Code_Point;
+   end;
 }
 
 "." {
@@ -124,71 +55,93 @@ NOT_WHITE_SPACE_OR_SPECIAL	[^\u0009-\u000D\u0020\u0085\u200E\u200F\u2028\u2029\[
    return Token_Any_Code_Point;
 }
 
-"\Q" {
+"\\Q" {
    Enter (LITERAL);
 }
 
-<LITERAL>"\E" {
+<LITERAL>"\\E" {
    Enter (INITIAL);
 }
 
 <LITERAL>.|\n {  --  aflex . is any but newline
-   return Token_Code_Point;
+   declare
+      S : constant String := YYText;
+      C : constant Character := S (S'First);
+
+   begin
+      YYLVal :=
+       (Code_Point, Wide_Wide_Character'Val (Character'Pos (C)));
+
+      return Token_Code_Point;
+   end;
 }
 
-<INITIAL,CHARACTER_CLASS>"\n" {
-
-   return Token_Code_Point;
-}
-
-<INITIAL,CHARACTER_CLASS>"\r" {
-
-   return Token_Code_Point;
-}
-
-<INITIAL,CHARACTER_CLASS>"\t" {
-
-   return Token_Code_Point;
-}
-
-<INITIAL,CHARACTER_CLASS>"\a" {
+<INITIAL,CHARACTER_CLASS>"\\n" {
+   YYLVal := (Code_Point, LF);
 
    return Token_Code_Point;
 }
 
-<INITIAL,CHARACTER_CLASS>"\e" {
+<INITIAL,CHARACTER_CLASS>"\\r" {
+   YYLVal := (Code_Point, CR);
 
    return Token_Code_Point;
 }
 
-<INITIAL,CHARACTER_CLASS>"\f" {
+<INITIAL,CHARACTER_CLASS>"\\t" {
+   YYLVal := (Code_Point, HT);
 
    return Token_Code_Point;
 }
 
-<INITIAL,CHARACTER_CLASS>"\v" {
+<INITIAL,CHARACTER_CLASS>"\\a" {
+   YYLVal := (Code_Point, BEL);
+
+   Put_Line ("\a");
 
    return Token_Code_Point;
 }
 
-<INITIAL,CHARACTER_CLASS>"\c"[A-Z] {
+<INITIAL,CHARACTER_CLASS>"\\e" {
+   YYLVal := (Code_Point, ESC);
 
    return Token_Code_Point;
 }
 
-<INITIAL,CHARACTER_CLASS>\\u{HEX_DIGIT}{4} {
+<INITIAL,CHARACTER_CLASS>"\\f" {
+   YYLVal := (Code_Point, FF);
+
+   return Token_Code_Point;
+}
+
+<INITIAL,CHARACTER_CLASS>"\\v" {
+   YYLVal := (Code_Point, VT);
+
+   return Token_Code_Point;
+}
+
+<INITIAL,CHARACTER_CLASS>"\\c"[A-Z] {
+--   YYLVal := (Code_Point, VT);
+
+   raise Program_Error;
+   return Token_Code_Point;
+}
+
+<INITIAL,CHARACTER_CLASS>\\u\p{Hex_Digit}{4} {
    --  Short hex notation of the code point
 
+   raise Program_Error;
    return Token_Code_Point;
 }
 
-<INITIAL,CHARACTER_CLASS>\\U{HEX_DIGIT}{8} {
+<INITIAL,CHARACTER_CLASS>\\U\p{Hex_Digit}{8} {
    --  Long hex notation of the code point
 
+   raise Program_Error;
    return Token_Code_Point;
 }
 
-<INITIAL,CHARACTER_CLASS>{WHITE_SPACE}* {
+<INITIAL,CHARACTER_CLASS>\p{Pattern_White_Space}* {
    --  Sequence of whitespaces is ignored in all modes
    null;
 }
@@ -211,7 +164,7 @@ NOT_WHITE_SPACE_OR_SPECIAL	[^\u0009-\u000D\u0020\u0085\u200E\u200F\u2028\u2029\[
 
 "*?" {
 
-   return Token_Zero_Or_Mode_Lazy;
+   return Token_Zero_Or_More_Lazy;
 }
 
 "*" {
@@ -245,21 +198,35 @@ NOT_WHITE_SPACE_OR_SPECIAL	[^\u0009-\u000D\u0020\u0085\u200E\u200F\u2028\u2029\[
    null;
 }
 
-{NOT_WHITE_SPACE_OR_SPECIAL} {
+[^\p{Pattern_Syntax}\p{Pattern_White_Space}] {
    --  Single code point
 
-   return Token_Code_Point;
+   declare
+      S : constant String := YYText;
+      C : constant Character := S (S'First);
+
+   begin
+      YYLVal :=
+       (Code_Point, Wide_Wide_Character'Val (Character'Pos (C)));
+
+      return Token_Code_Point;
+   end;
 }
 
-{SPECIAL} {
+\p{Pattern_Syntax} {
    --  Special outside of sequence
 
    raise Program_Error;
 }
 
 %%
-
-%%
-
-%%
-
+with Parser.Tokens;
+##
+   function YYLex return Parser.Tokens.Token;
+##
+with Ada.Characters.Wide_Wide_Latin_1;
+with Ada.Text_IO;
+##
+   use Ada.Characters.Wide_Wide_Latin_1;
+   use Ada.Text_IO;
+   use Parser.Tokens;
