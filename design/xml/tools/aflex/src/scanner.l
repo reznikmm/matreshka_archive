@@ -40,7 +40,7 @@ NOT_NAME	[^a-z_\n]+
 SCNAME		{NAME}
 
 ESCSEQ		\\([^\n]|[0-9]{1,3}|u[0-9a-f]{4,6})
-PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax)\}
+PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax|Hex_Digit)\}
 
 %%
 
