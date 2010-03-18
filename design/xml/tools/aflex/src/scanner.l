@@ -382,6 +382,26 @@ PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax)\}
 			return ( CHAR );
 			}
 
+<FIRSTCCL>{PROPS}	{
+			declare
+			   Image : constant String := YYText;
+
+			begin
+			   YYLVal :=
+			     Unicode.Ucd.Boolean_Properties'Pos
+			      (Unicode.Ucd.Boolean_Properties'Value
+			        (Image (Image'First + 3 .. Image'Last - 1))) + 1;
+
+                           if Image (Image'First + 1) = 'P' then
+			      YYLVal := -YYLVal;
+			   end if;
+
+			   ENTER(CCL);
+
+			   return PROP;
+			end;
+			}
+
 
 <SECT3>.*(\n?)		{ if ( check_yylex_here ) then
 				return End_Of_Input;
