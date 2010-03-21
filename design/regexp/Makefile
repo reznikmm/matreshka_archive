@@ -1,7 +1,7 @@
 
 all: .gen gen
 	gprbuild -p -Pdemo.gpr
-	.obj/demo expression
+	.obj/demo expression string
 
 gen:
 	(cd .gen && ./aflex -v scanner.l)

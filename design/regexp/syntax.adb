@@ -123,6 +123,7 @@ package body Syntax is
 
    begin
       Dump (AST_Start);
+      New_Line;
    end Dump;
 
 end Syntax;
