@@ -34,6 +34,7 @@
 
 %x LITERAL
 %x CHARACTER_CLASS
+%x MULTIPLICITY
 
 %%
 
@@ -127,6 +128,48 @@
    return Token_Character_Class_Range;
 }
 
+"{" {
+   --  Multiplicity
+
+   Enter (MULTIPLICITY);
+
+   return Token_Multiplicity_Begin;
+}
+
+<MULTIPLICITY>"}" {
+   --  End of multiplicity specifier
+
+   Enter (INITIAL);
+
+   return Token_Multiplicity_End_Greedy;
+}
+
+<MULTIPLICITY>"}?" {
+   --  End of multiplicity specifier
+
+   Enter (INITIAL);
+
+   return Token_Multiplicity_End_Lazy;
+}
+
+<MULTIPLICITY>"," {
+   --  Number separator
+
+   return Token_Multiplicity_Comma;
+}
+
+<MULTIPLICITY>[0-9]+ {
+   --  Number
+
+   return Token_Multiplicity_Number;
+}
+
+<MULTIPLICITY>[^\p{Pattern_White_Space}] {
+   --  Unexpected character in multiplicidy declaration
+
+   raise Program_Error;
+}
+
 <INITIAL,CHARACTER_CLASS>\\[\p{Pattern_Syntax}\p{Pattern_White_Space}] {
    --  Escaped pattern special code point
 
@@ -205,7 +248,7 @@
    return Token_Code_Point;
 }
 
-<INITIAL,CHARACTER_CLASS>\p{Pattern_White_Space}* {
+<INITIAL,CHARACTER_CLASS,MULTIPLICITY>\p{Pattern_White_Space}* {
    --  Sequence of whitespaces is ignored in all modes
 
    null;

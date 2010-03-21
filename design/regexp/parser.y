@@ -12,6 +12,11 @@
 %token Token_Negate_Character_Class
 %token Token_Character_Class_Range
 --  %token Token_Character_Class_Union
+%token Token_Multiplicity_Begin
+%token Token_Multiplicity_End_Greedy
+%token Token_Multiplicity_End_Lazy
+%token Token_Multiplicity_Comma
+%token Token_Multiplicity_Number
 
 {
    type Kinds is (None, Code_Point, AST_Node);
@@ -107,6 +112,30 @@ singleton : singleton Token_Optional_Greedy
   | singleton Token_One_Or_More_Lazy
 {
 --   AST ($1.Node).Mult := (One_Or_More, Lazy);
+   raise Program_Error;
+}
+  | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_Number Token_Multiplicity_End_Greedy
+{
+   raise Program_Error;
+}
+  | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_Number Token_Multiplicity_End_Lazy
+{
+   raise Program_Error;
+}
+  | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_End_Greedy
+{
+   raise Program_Error;
+}
+  | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_End_Lazy
+{
+   raise Program_Error;
+}
+  | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_End_Greedy
+{
+   raise Program_Error;
+}
+  | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_End_Lazy
+{
    raise Program_Error;
 }
   | Token_Code_Point
