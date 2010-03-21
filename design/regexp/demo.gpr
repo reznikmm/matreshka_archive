@@ -1,0 +1,9 @@
+
+project Demo is
+   for Main use ("demo.adb");
+   for Object_Dir use ".obj";
+   for Source_Dirs use (".", ".gen");
+   package Compiler is
+      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8");
+   end Compiler;
+end Demo;
