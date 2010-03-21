@@ -53,7 +53,7 @@
 %token Token_Multiplicity_Number
 
 {
-   type Kinds is (None, Code_Point, AST_Node);
+   type Kinds is (None, Code_Point, Number, AST_Node);
 
    type YYSType (Kind : Kinds := None) is record
       case Kind is
@@ -62,6 +62,9 @@
 
          when Code_Point =>
             Code : Wide_Wide_Character;
+
+         when Number =>
+            Value : Natural;
 
          when AST_Node =>
             Node : Positive;
@@ -75,20 +78,13 @@ re : re Token_Alternation series
 {
    --  Alternation
 
-   AST_Last := AST_Last + 1;
-   AST (AST_Last) := (Alternation, 0, $1.Node, $3.Node);
-
-   AST_Start := AST_Last;
-   $$ := (AST_Node, AST_Last);
-
-   Put_Line ("[re | series]" & Integer'Image ($1.Node) & Integer'Image ($3.Node));
+   $$ := (AST_Node, Process_Alternation ($1.Node, $3.Node));
+   AST_Start := $$.Node;
 }
   | series
 {
-   AST_Start := $1.Node;
    $$ := $1;
-
-   Put_Line ("[series]");
+   AST_Start := $1.Node;
 }
   ;
 
@@ -96,90 +92,90 @@ series : series singleton
 {
    Attach ($1.Node, $2.Node);
    $$ := $1;
-
-   Put_Line ("[series singleton]" & Integer'Image ($1.Node) & Integer'Image ($2.Node));
 }
   | singleton
 {
    $$ := $1;
-   Put_Line ("[singleton]" & Integer'Image ($$.Node));
 }
   ;
 
 singleton : singleton Token_Optional_Greedy
 {
---   AST ($1.Node).Mult := (Optional, Greedy);
-   raise Program_Error;
+   --  Optional, greedy
+
+   $$ := (AST_Node, Process_Multiplicity ($1.Node, 0, 1, True));
 }
   | singleton Token_Optional_Lazy
 {
    --  Optional, lazy
 
-   AST_Last := AST_Last + 1;
-   AST (AST_Last) := (Multiplicity, 0, $1.Node, False, 0, 1);
-
-   $$ := (AST_Node, AST_Last);
-
-   Put_Line ("[singleton Token_Optional_Lazy]" & Integer'Image ($1.Node));
+   $$ := (AST_Node, Process_Multiplicity ($1.Node, 0, 1, False));
 }
   | singleton Token_Zero_Or_More_Greedy
 {
---   AST ($1.Node).Mult := (Zero_Or_More, Greedy);
-   raise Program_Error;
+   --  Zero or more, greedy
+
+   $$ := (AST_Node, Process_Multiplicity ($1.Node, 0, Natural'Last, True));
 }
   | singleton Token_Zero_Or_More_Lazy
 {
---   AST ($1.Node).Mult := (Zero_Or_More, Lazy);
-   raise Program_Error;
+   --  Zero or more, lazy
+
+   $$ := (AST_Node, Process_Multiplicity ($1.Node, 0, Natural'Last, False));
 }
   | singleton Token_One_Or_More_Greedy
 {
    --  One or more, greedy
 
-   AST_Last := AST_Last + 1;
-   AST (AST_Last) := (Multiplicity, 0, $1.Node, True, 1, Natural'Last);
-
-   $$ := (AST_Node, AST_Last);
-
-   Put_Line ("[singleton Token_One_Or_More_Greedy]" & Integer'Image ($1.Node));
+   $$ := (AST_Node, Process_Multiplicity ($1.Node, 1, Natural'Last, True));
 }
   | singleton Token_One_Or_More_Lazy
 {
---   AST ($1.Node).Mult := (One_Or_More, Lazy);
-   raise Program_Error;
+   --  One or more, lazy
+
+   $$ := (AST_Node, Process_Multiplicity ($1.Node, 1, Natural'Last, False));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_Number Token_Multiplicity_End_Greedy
 {
-   raise Program_Error;
+   --  Multiplicity range, greedy
+
+   $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, $5.Value, True));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_Number Token_Multiplicity_End_Lazy
 {
-   raise Program_Error;
+   --  Multiplicity range, lazy
+
+   $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, $5.Value, False));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_End_Greedy
 {
-   raise Program_Error;
+   --  Multiplicity lower .. infinity, greedy
+
+   $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, Integer'Last, True));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_End_Lazy
 {
-   raise Program_Error;
+   --  Multiplicity lower .. infinity, lazy
+
+   $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, Integer'Last, False));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_End_Greedy
 {
-   raise Program_Error;
+   --  Multiplicity, greedy
+
+   $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, $3.Value, True));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_End_Lazy
 {
-   raise Program_Error;
+   --  Multiplicity, lazy
+
+   $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, $3.Value, False));
 }
   | Token_Code_Point
 {
-   AST_Last := AST_Last + 1;
-   AST (AST_Last) := (Code_Point, 0, $1.Code);
+   --  Code point
 
-   $$ := (AST_Node, AST_Last);
-
-   Put_Line ("[Token_Code_Point] " & Wide_Wide_Character'Image ($1.Code) & Integer'Image ($$.Node));
+   $$ := (AST_Node, Process_Code_Point ($1.Code));
 }
   | character_class
 {
@@ -193,8 +189,7 @@ character_class : Token_Character_Class_Begin character_class_content Token_Char
 }
   | Token_Character_Class_Begin Token_Negate_Character_Class character_class_content Token_Character_Class_End
 {
-   AST ($3.Node).Negated := True;
-   $$ := $3;
+   $$ := (AST_Node, Process_Negate_Character_Class ($3.Node));
 }
   ;
 
@@ -202,29 +197,19 @@ character_class_content : character_class_content Token_Code_Point Token_Charact
 {
    --  Add range of code points to character class
 
-   AST_Last := AST_Last + 1;
-   AST (AST_Last) := (Code_Point_Range, 0, $2.Code, $4.Code);
-
-   Add ($1.Node, AST_Last);
-   $$ := $1;
+   $$ := (AST_Node, Process_Character_Class_Range ($1.Node, $2.Code, $4.Code));
 }
   | character_class_content Token_Code_Point
 {
    --  Add code point to character class
 
-   AST_Last := AST_Last + 1;
-   AST (AST_Last) := (Code_Point, 0, $2.Code);
-
-   Add ($1.Node, AST_Last);
-   $$ := $1;
+   $$ := (AST_Node, Process_Character_Class_Code_Point ($1.Node, $2.Code));
 }
   |
 {
    --  Initialize new character class node
 
-   AST_Last := AST_Last + 1;
-   AST (AST_Last) := (Character_Class, 0, False, 0);
-   $$ := (AST_Node, AST_Last);
+   $$ := (AST_Node, Process_New_Character_Class);
 }
   ;
 
@@ -233,10 +218,12 @@ character_class_content : character_class_content Token_Code_Point Token_Charact
    procedure Parse (File_Name : String);
 ##
 with Ada.Text_IO; 
+with Parser_Actions;
 with Scanner.IO;
 with Syntax;
 ##
    use Ada.Text_IO;
+   use Parser_Actions;
    use Scanner;
    use Syntax;
 

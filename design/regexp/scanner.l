@@ -161,6 +161,8 @@
 <MULTIPLICITY>[0-9]+ {
    --  Number
 
+   YYLVal := (Number, Natural'Value (YYText));
+
    return Token_Multiplicity_Number;
 }
 
