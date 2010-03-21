@@ -37,19 +37,6 @@
 
 %%
 
-\\[\p{Pattern_Syntax}\p{Pattern_White_Space}] {
-   --  Escaped pattern special code point
-
-   declare
-      S : constant String := YYText;
-
-   begin
-      YYLVal := (Code_Point, Wide_Wide_Character'Val (Character'Pos (S (S'First + 1))));
-
-      return Token_Code_Point;
-   end;
-}
-
 "." {
 
    return Token_Any_Code_Point;
@@ -138,6 +125,19 @@
    --  Range of characters
 
    return Token_Character_Class_Range;
+}
+
+<INITIAL,CHARACTER_CLASS>\\[\p{Pattern_Syntax}\p{Pattern_White_Space}] {
+   --  Escaped pattern special code point
+
+   declare
+      S : constant String := YYText;
+
+   begin
+      YYLVal := (Code_Point, Wide_Wide_Character'Val (Character'Pos (S (S'First + 1))));
+
+      return Token_Code_Point;
+   end;
 }
 
 <INITIAL,CHARACTER_CLASS>"\\n" {
