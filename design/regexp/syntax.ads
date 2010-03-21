@@ -52,4 +52,6 @@ package Syntax is
 
    procedure Add (Class : Positive; Member : Positive);
 
+   procedure Dump;
+
 end Syntax;
