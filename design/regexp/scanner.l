@@ -76,6 +76,70 @@
    end;
 }
 
+"|" {
+   --  Alternation
+
+   return Token_Alternation;
+}
+
+"??" {
+
+   return Token_Optional_Lazy;
+}
+
+"?" {
+
+   return Token_Optional_Greedy;
+}
+
+"*?" {
+
+   return Token_Zero_Or_More_Lazy;
+}
+
+"*" {
+
+   return Token_Zero_Or_More_Greedy;
+}
+
+"+?" {
+
+   return Token_One_Or_More_Lazy;
+}
+
+"+" {
+
+   return Token_One_Or_More_Greedy;
+}
+
+"[" {
+   --  Enter character class
+
+   Enter (CHARACTER_CLASS);
+
+   return Token_Character_Class_Begin;
+}
+
+<CHARACTER_CLASS>"]" {
+   --  XXX Leave character class
+
+   Enter (INITIAL);
+
+   return Token_Character_Class_End;
+}
+
+<CHARACTER_CLASS>\^ {
+   --  Negate character class
+
+   return Token_Negate_Character_Class;
+}
+
+<CHARACTER_CLASS>- {
+   --  Range of characters
+
+   return Token_Character_Class_Range;
+}
+
 <INITIAL,CHARACTER_CLASS>"\\n" {
    YYLVal := (Code_Point, LF);
 
@@ -143,62 +207,11 @@
 
 <INITIAL,CHARACTER_CLASS>\p{Pattern_White_Space}* {
    --  Sequence of whitespaces is ignored in all modes
+
    null;
 }
 
-"|" {
-   --  Alternation
-
-   return Token_Alternation;
-}
-
-"??" {
-
-   return Token_Optional_Lazy;
-}
-
-"?" {
-
-   return Token_Optional_Greedy;
-}
-
-"*?" {
-
-   return Token_Zero_Or_More_Lazy;
-}
-
-"*" {
-
-   return Token_Zero_Or_More_Greedy;
-}
-
-"+?" {
-
-   return Token_One_Or_More_Lazy;
-}
-
-"+" {
-
-   return Token_One_Or_More_Greedy;
-}
-
-"[" {
-   --  Enter character class
-
-   Enter (CHARACTER_CLASS);
-}
-
-<CHARACTER_CLASS>"]" {
-   --  XXX Leave character class
-
-   Enter (INITIAL);
-}
-
-<CHARACTER_CLASS>.|\n {
-   null;
-}
-
-[^\p{Pattern_Syntax}\p{Pattern_White_Space}] {
+<INITIAL,CHARACTER_CLASS>[^\p{Pattern_Syntax}\p{Pattern_White_Space}] {
    --  Single code point
 
    declare
@@ -213,7 +226,7 @@
    end;
 }
 
-\p{Pattern_Syntax} {
+<INITIAL,CHARACTER_CLASS>\p{Pattern_Syntax} {
    --  Special outside of sequence
 
    raise Program_Error;
