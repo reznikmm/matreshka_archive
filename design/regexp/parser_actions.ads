@@ -11,6 +11,8 @@ package Parser_Actions is
       Upper      : Natural;
       Greedy     : Boolean) return Positive;
 
+   function Process_Any_Code_Point return Positive;
+
    function Process_Code_Point
      (Character : Wide_Wide_Character) return Positive;
 

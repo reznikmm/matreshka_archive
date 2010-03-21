@@ -171,6 +171,12 @@ singleton : singleton Token_Optional_Greedy
 
    $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, $3.Value, False));
 }
+  | Token_Any_Code_Point
+{
+   --  Any code point
+
+   $$ := (AST_Node, Process_Any_Code_Point);
+}
   | Token_Code_Point
 {
    --  Code point

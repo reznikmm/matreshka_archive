@@ -18,6 +18,18 @@ package body Parser_Actions is
       return AST_Last;
    end Process_Alternation;
 
+   ----------------------------
+   -- Process_Any_Code_Point --
+   ----------------------------
+
+   function Process_Any_Code_Point return Positive is
+   begin
+      AST_Last := AST_Last + 1;
+      AST (AST_Last) := (Any_Code_Point, 0);
+
+      return AST_Last;
+   end Process_Any_Code_Point;
+
    ----------------------------------------
    -- Process_Character_Class_Code_Point --
    ----------------------------------------

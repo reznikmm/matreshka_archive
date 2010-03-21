@@ -57,6 +57,9 @@ package body Syntax is
             when None =>
                null;
 
+            when Any_Code_Point =>
+               null;
+
             when Code_Point =>
                Put (' ' & Wide_Wide_Character'Image (AST (N).Code));
 
