@@ -24,6 +24,7 @@
 with Ada.Calendar;
 with Ada.Directories;
 with Ada.Integer_Text_IO;
+with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Strings.Unbounded.Text_IO;
 
 with MISC, Main_Body;
@@ -151,29 +152,42 @@ package body MISC is
     end if;
   end DATAEND;
 
+   ---------------
+   -- DATAFLUSH --
+   ---------------
 
-  -- dataflush - flush generated data statements
+   -- dataflush - flush generated data statements
 
-  procedure DATAFLUSH (File : in File_Type) is
-  begin
-    New_Line (File);
-    DATALINE := DATALINE + 1;
-    if DATALINE >= NUMDATALINES then
+   procedure DATAFLUSH (File : Ada.Wide_Wide_Text_IO.File_Type) is
+      use Ada.Wide_Wide_Text_IO;
 
-      -- put out a blank line so that the table is grouped into
-      -- large blocks that enable the user to find elements easily
+   begin
       New_Line (File);
-      DATALINE := 0;
-    end if;
+      DATALINE := DATALINE + 1;
 
-    -- reset the number of characters written on the current line
-    DATAPOS := 0;
-  end DATAFLUSH;
+      if DATALINE >= NUMDATALINES then
+         -- put out a blank line so that the table is grouped into
+         -- large blocks that enable the user to find elements easily
 
-  procedure DATAFLUSH is
-  begin
-    DATAFLUSH(CURRENT_OUTPUT);
-  end DATAFLUSH;
+         New_Line (File);
+         DATALINE := 0;
+      end if;
+
+      -- reset the number of characters written on the current line
+
+      DATAPOS := 0;
+   end DATAFLUSH;
+
+   ---------------
+   -- DATAFLUSH --
+   ---------------
+
+   procedure DATAFLUSH is
+      use Ada.Wide_Wide_Text_IO;
+
+   begin
+      DATAFLUSH (CURRENT_OUTPUT);
+   end DATAFLUSH;
 
    --------------------
    -- Aflex_Get_Time --
@@ -380,36 +394,40 @@ package body MISC is
 --      return TRUE;
 --    end ALL_LOWER;
 
-  -- mk2data - generate a data statement for a two-dimensional array
-  --
-  --  generates a data statement initializing the current 2-D array to "value"
+   -------------
+   -- MK2DATA --
+   -------------
 
-  procedure MK2DATA(FILE  : in FILE_TYPE;
-                    VALUE : in INTEGER) is
-  begin
+   -- mk2data - generate a data statement for a two-dimensional array
+   --
+   --  generates a data statement initializing the current 2-D array to "value"
 
-    if (DATAPOS >= NUMDATAITEMS) then
-      PUT(FILE, ',');
-      DATAFLUSH(FILE);
-    end if;
+   procedure MK2DATA
+     (File  : Ada.Wide_Wide_Text_IO.File_Type;
+      Value : Integer)
+   is
+      use Ada.Wide_Wide_Text_IO;
+      use Ada.Integer_Wide_Wide_Text_IO;
 
-    if (DATAPOS = 0) then
+   begin
+      if DATAPOS >= NUMDATAITEMS then
+         PUT (FILE, ',');
+         DATAFLUSH (FILE);
+      end if;
 
-      -- indent
-      PUT(FILE, "    ");
-    else
-      PUT(FILE, ',');
-    end if;
+      if DATAPOS = 0 then
+         -- indent
 
-    DATAPOS := DATAPOS + 1;
+         PUT (FILE, "    ");
 
-    PUT(FILE, VALUE, 5);
-  end MK2DATA;
+      else
+         PUT (FILE, ',');
+      end if;
 
-  procedure MK2DATA(VALUE : in INTEGER) is
-  begin
-    MK2DATA(CURRENT_OUTPUT, VALUE);
-  end MK2DATA;
+      DATAPOS := DATAPOS + 1;
+
+      PUT (FILE, VALUE, 5);
+   end MK2DATA;
 
   --
   --  generates a data statement initializing the current array element to

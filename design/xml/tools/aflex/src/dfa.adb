@@ -23,8 +23,7 @@
 
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Integer_Wide_Wide_Text_IO;
-with Ada.Strings.Unbounded.Text_IO;
-with Ada.Text_IO;
+with Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
 
 with DFA, MISC, TBLCMP, CCL;
 with ECS, NFA, GEN, SKELETON_MANAGER;
@@ -33,8 +32,8 @@ with Unicode;
 package body DFA is
 
    use Ada.Integer_Wide_Wide_Text_IO;
-   use Ada.Strings.Unbounded;
-   use Ada.Strings.Unbounded.Text_IO;
+   use Ada.Strings.Wide_Wide_Unbounded;
+   use Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
    use Ada.Wide_Wide_Text_IO;
    use Unicode;
 
@@ -430,19 +429,19 @@ package body DFA is
   --  dfa starts out in state #1.
 
   procedure NTOD is
-
-    ACCSET                                             : INT_PTR;
-    DS, NACC, NEWDS                                    : INTEGER;
-    DUPLIST, TARGFREQ, TARGSTATE, STATE                : C_SIZE_ARRAY;
-    SYMLIST                                            : C_SIZE_BOOL_ARRAY;
-    HASHVAL, NUMSTATES, DSIZE                          : INTEGER;
-    NSET, DSET                                         : INT_PTR;
-    TARGPTR, TOTALTRANS, I, J, COMSTATE, COMFREQ, TARG : INTEGER;
-    NUM_START_STATES, TODO_HEAD, TODO_NEXT             : INTEGER;
-    SNSRESULT                                          : BOOLEAN;
-    FULL_TABLE_TEMP_FILE                               : Ada.Text_IO.FILE_TYPE;
-    BUF                                                : Unbounded_String;
-    NUM_NXT_STATES                                     : INTEGER;
+      ACCSET                                 : INT_PTR;
+      DS, NACC, NEWDS                        : INTEGER;
+      DUPLIST, TARGFREQ, TARGSTATE, STATE    : C_SIZE_ARRAY;
+      SYMLIST                                : C_SIZE_BOOL_ARRAY;
+      HASHVAL, NUMSTATES, DSIZE              : INTEGER;
+      NSET, DSET                             : INT_PTR;
+      TARGPTR, TOTALTRANS, I, J, COMSTATE    : Integer;
+      COMFREQ, TARG                          : INTEGER;
+      NUM_START_STATES, TODO_HEAD, TODO_NEXT : INTEGER;
+      SNSRESULT                              : BOOLEAN;
+      FULL_TABLE_TEMP_FILE                   : File_Type;
+      BUF                                    : Unbounded_Wide_Wide_String;
+      NUM_NXT_STATES                         : INTEGER;
 
     -- this is so find_table_space(...) will know where to start looking in
     -- chk/nxt for unused records for space to put in the state
@@ -489,20 +488,20 @@ package body DFA is
       -- declare it "short" because it's a real long-shot that that
       -- won't be large enough
       begin -- make a temporary file to write yy_nxt array into
-            Ada.Text_IO.CREATE (FULL_TABLE_TEMP_FILE, Ada.Text_IO.OUT_FILE);
+            CREATE (FULL_TABLE_TEMP_FILE, OUT_FILE);
       exception
-        when Ada.Text_IO.USE_ERROR | Ada.Text_IO.NAME_ERROR =>
+        when USE_ERROR | NAME_ERROR =>
           Misc.Aflex_Fatal ("can't create temporary file");
       end;
 
       NUM_NXT_STATES := 1;
-      Ada.Text_IO.PUT (FULL_TABLE_TEMP_FILE, "( ");
+      PUT (FULL_TABLE_TEMP_FILE, "( ");
       -- generate 0 entries for state #0
       for CNT in 0 .. NUMECS loop
         MISC.MK2DATA(FULL_TABLE_TEMP_FILE, 0);
       end loop;
 
-      Ada.Text_IO.PUT (FULL_TABLE_TEMP_FILE, " )");
+      PUT (FULL_TABLE_TEMP_FILE, " )");
       -- force extra blank line next dataflush()
       DATALINE := NUMDATALINES;
     end if;
@@ -652,9 +651,9 @@ package body DFA is
 
       if (FULLTBL) then
       -- supply array's 0-element
-        Ada.Text_IO.PUT (FULL_TABLE_TEMP_FILE, ",");
-        MISC.DATAFLUSH(FULL_TABLE_TEMP_FILE);
-        Ada.Text_IO.PUT (FULL_TABLE_TEMP_FILE, "( ");
+        PUT (FULL_TABLE_TEMP_FILE, ",");
+        MISC.DATAFLUSH (FULL_TABLE_TEMP_FILE);
+        PUT (FULL_TABLE_TEMP_FILE, "( ");
         if (DS = END_OF_BUFFER_STATE) then
           MISC.MK2DATA(FULL_TABLE_TEMP_FILE,  -END_OF_BUFFER_STATE);
         else
@@ -670,7 +669,7 @@ package body DFA is
           end if;
         end loop;
 
-        Ada.Text_IO.PUT (FULL_TABLE_TEMP_FILE, " )");
+        PUT (FULL_TABLE_TEMP_FILE, " )");
         -- force extra blank line next dataflush()
         DATALINE := NUMDATALINES;
       else
@@ -696,18 +695,19 @@ package body DFA is
       end if;
     end loop;
 
-    if (FULLTBL) then
-      Ada.Text_IO.PUT("yy_nxt : constant array(0..");
-      PUT(NUM_NXT_STATES - 1, 1);
-      Ada.Text_IO.PUT_LINE(" , character'first..character'last) of short :=");
-      Ada.Text_IO.PUT_LINE("   (");
+    if FULLTBL then
+      PUT ("yy_nxt : constant array(0..");
+      PUT (NUM_NXT_STATES - 1, 1);
+      PUT_LINE (" , character'first..character'last) of short :=");
+      PUT_LINE ("   (");
 
-      Ada.Text_IO.RESET (FULL_TABLE_TEMP_FILE, Ada.Text_IO.IN_FILE);
-      while not Ada.Text_IO.END_OF_FILE (FULL_TABLE_TEMP_FILE) loop
-        GET_LINE(FULL_TABLE_TEMP_FILE, BUF);
-        PUT_LINE(BUF);
+      RESET (FULL_TABLE_TEMP_FILE, IN_FILE);
+
+      while not END_OF_FILE (FULL_TABLE_TEMP_FILE) loop
+        GET_LINE (FULL_TABLE_TEMP_FILE, BUF);
+        PUT_LINE (BUF);
       end loop;
-      Ada.Text_IO.DELETE (FULL_TABLE_TEMP_FILE);
+      DELETE (FULL_TABLE_TEMP_FILE);
 
       MISC.DATAEND;
     else

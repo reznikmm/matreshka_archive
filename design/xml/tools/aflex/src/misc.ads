@@ -23,6 +23,7 @@
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/miscS.a,v 1.9 90/01/12 15:20:19 self Exp Locker: self $
 with Ada.Strings.Unbounded;
 with Ada.Text_IO;
+with Ada.Wide_Wide_Text_IO;
 
 with MISC_DEFS;
 with Unicode;
@@ -52,8 +53,9 @@ package Misc is
    --    n - number of elements of v to be sorted
 
    procedure DATAEND;
-  procedure DATAFLUSH;
-  procedure DATAFLUSH(FILE : in FILE_TYPE);
+
+   procedure DATAFLUSH (File : Ada.Wide_Wide_Text_IO.File_Type);
+   procedure DATAFLUSH;
 
    function Aflex_Get_Time return Unbounded_String;
    --  aflex_gettime - return current time
@@ -73,9 +75,11 @@ package Misc is
 
   procedure LINE_DIRECTIVE_OUT;
   procedure LINE_DIRECTIVE_OUT(OUTPUT_FILE_NAME : in FILE_TYPE);
-  procedure MK2DATA(VALUE : in INTEGER);
-  procedure MK2DATA(FILE  : in FILE_TYPE;
-                    VALUE : in INTEGER);
+
+   procedure MK2DATA
+     (File  : Ada.Wide_Wide_Text_IO.File_Type;
+      Value : Integer);
+
   procedure MKDATA(VALUE : in INTEGER);
   function MYCTOI(NUM_ARRAY : in Unbounded_String) return INTEGER;
 
