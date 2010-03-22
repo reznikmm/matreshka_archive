@@ -21,23 +21,25 @@
 -- DESCRIPTION outputs skeleton sections when called by gen.
 -- NOTES allows use of internal or external skeleton
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/skeleton_managerB.a,v 1.19 1992/12/29 22:46:15 self Exp self $
-with Ada.Strings.Unbounded.Text_IO;
+with Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
+with Ada.Wide_Wide_Text_IO;
 
-with MISC_DEFS, Text_IO;
+with MISC_DEFS;
 
 package body Skeleton_Manager is
 
-   use Ada.Strings.Unbounded;
-   use Ada.Strings.Unbounded.Text_IO;
+   use Ada.Strings.Wide_Wide_Unbounded;
+   use Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
+   use Ada.Wide_Wide_Text_IO;
 
-   function "+" (Item : String) return Unbounded_String
-     renames To_Unbounded_String;
+   function "+" (Item : Wide_Wide_String) return Unbounded_Wide_Wide_String
+     renames To_Unbounded_Wide_Wide_String;
 
    Use_External_Skeleton : Boolean := False;
    -- are we using an external skelfile?
    Current_Line          : Integer := 1;
 
-   type File_Array is array (Positive range <>) of Unbounded_String;
+   type File_Array is array (Positive range <>) of Unbounded_Wide_Wide_String;
 
    Skel_Template : constant File_Array := (
   -- START OF SKELETON
@@ -297,7 +299,7 @@ package body Skeleton_Manager is
    -- Get_Internal --
    ------------------
 
-   procedure Get_Internal (Buffer : in out Unbounded_String) is
+   procedure Get_Internal (Buffer : in out Unbounded_Wide_Wide_String) is
    begin
       Buffer := Skel_Template (Current_Line);
       Current_Line := Current_Line + 1;
@@ -307,7 +309,7 @@ package body Skeleton_Manager is
    -- Get_External --
    ------------------
 
-   procedure Get_External (Buffer : in out Unbounded_String) is
+   procedure Get_External (Buffer : in out Unbounded_Wide_Wide_String) is
    begin
       Get_Line (Misc_Defs.SkelFile, Buffer);
    end Get_External;
@@ -322,7 +324,7 @@ package body Skeleton_Manager is
     if (USE_EXTERNAL_SKELETON) then
 
       -- we're using an external skelfile
-      return TEXT_IO.END_OF_FILE(MISC_DEFS.SKELFILE);
+      return END_OF_FILE (MISC_DEFS.SKELFILE);
     else
 
       -- internal skeleton
@@ -334,7 +336,7 @@ package body Skeleton_Manager is
    -- Get_File_Line --
    -------------------
 
-   procedure Get_File_Line (Buffer : in out Unbounded_String) is
+   procedure Get_File_Line (Buffer : in out Unbounded_Wide_Wide_String) is
    begin
       if Use_External_Skeleton then
          Get_External (Buffer);
@@ -354,7 +356,7 @@ package body Skeleton_Manager is
       -- Indicates whether or not current line of the template
       -- is the Umass codes.
 -- END OF UMASS CODES.
-      Buf         : Unbounded_String;
+      Buf         : Unbounded_Wide_Wide_String;
 
    begin
       while not End_Of_Skeleton loop

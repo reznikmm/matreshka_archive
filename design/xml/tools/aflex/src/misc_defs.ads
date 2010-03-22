@@ -33,9 +33,6 @@ with Ada.Strings.Unbounded;
 with Ada.Strings.Wide_Wide_Unbounded;
 with Ada.Wide_Wide_Text_IO;
 
-with TEXT_IO;
-use TEXT_IO;
-
 with Unicode.Ucd;
 
 package MISC_DEFS is
@@ -372,7 +369,7 @@ package MISC_DEFS is
 
   DATAPOS, DATALINE, LINENUM : INTEGER;
 
-   SKELFILE, YYIN   : FILE_TYPE;
+   SKELFILE, YYIN   : Ada.Wide_Wide_Text_IO.File_Type;
    TEMP_ACTION_FILE : Ada.Wide_Wide_Text_IO.File_Type;
    DEF_FILE         : Ada.Wide_Wide_Text_IO.File_Type;
    BACKTRACK_FILE   : Ada.Wide_Wide_Text_IO.File_Type;
