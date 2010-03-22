@@ -4,4 +4,4 @@ all:
 
 gens:
 	.objs/aflex -s -i scanner.l
-	../../ayacc/src/.objs/ayacc parser.y
+	../../ayacc/src/.objs/ayacc parser.y off off off

@@ -20,13 +20,12 @@
 -- AUTHOR: John Self (UCI)
 -- DESCRIPTION converts non-deterministic finite automatons to finite ones.
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/dfaS.a,v 1.4 90/01/12 15:19:52 self Exp Locker: self $
-with Ada.Text_IO;
+with Ada.Wide_Wide_Text_IO;
 
 with MISC_DEFS;
 
 package DFA is
 
-   use Ada.Text_IO;
    use MISC_DEFS;
 
   procedure CHECK_FOR_BACKTRACKING(DS    : in INTEGER;
@@ -36,11 +35,13 @@ package DFA is
                                    ACCSET     : in INT_PTR;
                                    NACC       : in INTEGER);
 
-  procedure DUMP_ASSOCIATED_RULES(F  : in FILE_TYPE;
-                                  DS : in INTEGER);
+   procedure Dump_Associated_Rules
+     (File : Ada.Wide_Wide_Text_IO.File_Type;
+      DS   : INTEGER);
 
-  procedure DUMP_TRANSITIONS(F     : in FILE_TYPE;
-                             STATE : in UNBOUNDED_INT_ARRAY);
+   procedure Dump_Transitions
+     (File  : Ada.Wide_Wide_Text_IO.File_Type;
+      State : UNBOUNDED_INT_ARRAY);
 
   procedure EPSCLOSURE(T                  : in out INT_PTR;
                        NS_ADDR            : in out INTEGER;

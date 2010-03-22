@@ -21,7 +21,9 @@
 -- DESCRIPTION routines for character classes like [abc]
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/cclS.a,v 1.3 90/01/12 15:19:43 self Exp Locker: self $
 
-with MISC_DEFS, TEXT_IO; use MISC_DEFS, TEXT_IO;
+with Ada.Wide_Wide_Text_IO;
+
+with MISC_DEFS; use MISC_DEFS;
 with Unicode;
 
 package CCL is
@@ -32,6 +34,9 @@ package CCL is
 
   function CCLINIT return INTEGER;
   procedure CCLNEGATE(CCLP : in INTEGER);
-  procedure LIST_CHARACTER_SET(F    : in FILE_TYPE;
-                               CSET : in C_SIZE_BOOL_ARRAY);
+
+   procedure List_Character_Set
+     (File : Ada.Wide_Wide_Text_IO.File_Type;
+      CSET : C_SIZE_BOOL_ARRAY);
+
 end CCL;

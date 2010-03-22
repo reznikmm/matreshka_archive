@@ -20,13 +20,16 @@
 -- AUTHOR: John Self (UCI)
 -- DESCRIPTION routines for character classes like [abc]
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/cclB.a,v 1.7 1993/04/27 23:17:15 self Exp $
-with Ada.Strings.Unbounded.Text_IO;
+with Ada.Characters.Conversions;
+with Ada.Strings.Unbounded;
 
 with Misc;
 
 package body CCL is
 
-   use Ada.Strings.Unbounded.Text_IO;
+   use Ada.Characters.Conversions;
+   use Ada.Strings.Unbounded;
+   use Ada.Wide_Wide_Text_IO;
    use Unicode;
 
    -- ccladd - add a single character to a ccl
@@ -113,44 +116,63 @@ package body CCL is
     CCLNG(CCLP) := 1;
   end CCLNEGATE;
 
-  -- list_character_set - list the members of a set of characters in CCL form
-  --
-  -- writes to the given file a character-class representation of those
-  -- characters present in the given set.  A character is present if it
-  -- has a non-zero value in the set array.
+   ------------------------
+   -- List_Character_Set --
+   ------------------------
 
-  procedure LIST_CHARACTER_SET(F    : in FILE_TYPE;
-                               CSET : in C_SIZE_BOOL_ARRAY) is
-    I, START_CHAR : INTEGER;
-  begin
-    PUT(F, '[');
+   -- list_character_set - list the members of a set of characters in CCL form
+   --
+   -- writes to the given file a character-class representation of those
+   -- characters present in the given set.  A character is present if it
+   -- has a non-zero value in the set array.
 
-    I := 1;
-    while (I <= CSIZE) loop
-      if (CSET(I)) then
-        START_CHAR := I;
+   procedure List_Character_Set
+     (File : Ada.Wide_Wide_Text_IO.File_Type;
+      CSET : C_SIZE_BOOL_ARRAY)
+   is
+      I, START_CHAR : INTEGER;
 
-        PUT(F, ' ');
+   begin
+      PUT (File, '[');
 
-        PUT (F, MISC.Readable_Form (Wide_Wide_Character'Val (I)));
+      I := 1;
 
-        I := I + 1;
-        while ((I <= CSIZE) and then (CSET(I))) loop
-          I := I + 1;
-        end loop;
+      while I <= CSIZE loop
+         if CSET (I) then
+            START_CHAR := I;
 
-        if (I - 1 > START_CHAR) then
+            PUT (File, ' ');
 
-          -- this was a run
-          PUT(F, "-");
-          PUT (F, MISC.Readable_Form (Wide_Wide_Character'Val (I - 1)));
-        end if;
+            PUT
+              (File,
+               To_Wide_Wide_String
+                 (To_String
+                    (MISC.Readable_Form (Wide_Wide_Character'Val (I)))));
 
-        PUT(F, ' ');
-      end if;
-      I := I + 1;
-    end loop;
+            I := I + 1;
 
-    PUT(F, ']');
-  end LIST_CHARACTER_SET;
+            while I <= CSIZE and then CSET(I) loop
+               I := I + 1;
+            end loop;
+
+            if (I - 1 > START_CHAR) then
+               -- this was a run
+
+               PUT (File, "-");
+               PUT
+                 (File,
+                  To_Wide_Wide_String
+                    (To_String
+                       (MISC.Readable_Form (Wide_Wide_Character'Val (I - 1)))));
+            end if;
+
+            PUT (File, ' ');
+         end if;
+
+         I := I + 1;
+      end loop;
+
+      PUT (File, ']');
+   end List_Character_Set;
+
 end CCL;

@@ -162,13 +162,22 @@ package body External_File_Manager is
          Misc.Aflex_Fatal ("can't create scanner file " & Out_File_Name);
    end Get_Scanner_Body_File;
 
-  procedure GET_BACKTRACK_FILE(F : in out FILE_TYPE) is
-  begin
-    CREATE(F, OUT_FILE, "aflex.backtrack");
-  exception
-    when USE_ERROR | NAME_ERROR =>
-      Misc.Aflex_Fatal ("could not create backtrack file");
-  end GET_BACKTRACK_FILE;
+   ------------------------
+   -- Get_Backtrack_File --
+   ------------------------
+
+   procedure Get_Backtrack_File
+     (File : in out Ada.Wide_Wide_Text_IO.File_Type)
+   is
+      use Ada.Wide_Wide_Text_IO;
+
+   begin
+      CREATE (File, OUT_FILE, "aflex.backtrack");
+
+   exception
+      when Ada.Text_IO.USE_ERROR | Ada.Text_IO.NAME_ERROR =>
+         Misc.Aflex_Fatal ("could not create backtrack file");
+   end GET_Backtrack_File;
 
   procedure INITIALIZE_FILES is
   begin

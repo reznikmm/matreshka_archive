@@ -22,9 +22,11 @@
 -- high level routines from other packages.
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/mainB.a,v 1.26 1992/12/29 22:46:15 self Exp self $
 with Ada.Command_Line;
-with Ada.Integer_Text_IO;
+--  with Ada.Integer_Text_IO;
+with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
+with Ada.Wide_Wide_Text_IO;
 
 with MISC_DEFS, MISC, ECS, PARSER;
 with MAIN_BODY, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
@@ -34,8 +36,10 @@ with Parser.Tokens;
 package body Main_Body is
 
    use Ada.Command_Line;
+   use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Strings.Unbounded;
    use Ada.Text_IO;
+   use Ada.Wide_Wide_Text_IO;
 
    function "+" (Item : Unbounded_String) return String renames To_String;
    function "+" (Item : String) return Unbounded_String
@@ -51,7 +55,7 @@ package body Main_Body is
 
    procedure Aflex_End (Status : Integer) is
 
-      use Ada.Integer_Text_IO;
+--        use Ada.Integer_Text_IO;
       use Ada.Strings.Unbounded.Text_IO;
 
       TBLSIZ : Integer;
@@ -104,161 +108,161 @@ package body Main_Body is
          Put_Line
           (Standard_Error,
            "  started at " & Start_Time & ", finished at " & End_Time);
-         Put (Standard_Error, "  ");
+         Ada.Text_IO.Put (Standard_Error, "  ");
          Put (Standard_Error, LastNFA, 0);
-         Put (Standard_Error, '/');
+         Ada.Text_IO.Put (Standard_Error, '/');
          Put (Standard_Error, Current_MNS, 0);
-         Put_Line (Standard_Error, "  NFA states");
+         Ada.Text_IO.Put_Line (Standard_Error, "  NFA states");
 
-         Put (Standard_Error, "  ");
+         Ada.Text_IO.Put (Standard_Error, "  ");
          Put (Standard_Error, LastDFA, 0);
-         Put (Standard_Error, '/');
+         Ada.Text_IO.Put (Standard_Error, '/');
          Put (Standard_Error, Current_Max_DFAS, 0);
-         Put (Standard_Error, " DFA states (");
+         Ada.Text_IO.Put (Standard_Error, " DFA states (");
          Put (Standard_Error, TotNST, 0);
-         Put (Standard_Error, "  words)");
+         Ada.Text_IO.Put (Standard_Error, "  words)");
 
-         PUT (Standard_Error, "  ");
+         Ada.Text_IO.PUT (Standard_Error, "  ");
          PUT (Standard_Error, Num_Rules - 1, 0);
 
          -- - 1 for def. rule
-         Put_Line (Standard_Error, "  rules");
+         Ada.Text_IO.Put_Line (Standard_Error, "  rules");
 
          if Num_Backtracking = 0 then
-            Put_Line (Standard_Error, "  No backtracking");
+            Ada.Text_IO.Put_Line (Standard_Error, "  No backtracking");
 
          else
             if FullTbl then
-               Put (Standard_Error, "  ");
+               Ada.Text_IO.Put (Standard_Error, "  ");
                Put (Standard_Error, Num_Backtracking, 0);
-               Put_Line
+               Ada.Text_IO.Put_Line
                 (Standard_Error, "  backtracking (non-accepting) states");
 
             else
-               Put_Line
+               Ada.Text_IO.Put_Line
                 (Standard_Error, " compressed tables always backtrack");
             end if;
          end if;
 
          if Bol_Needed then
-            Put_Line (Standard_Error, "  Beginning-of-line patterns used");
+            Ada.Text_IO.Put_Line (Standard_Error, "  Beginning-of-line patterns used");
          end if;
 
-         Put (Standard_Error, "  ");
+         Ada.Text_IO.Put (Standard_Error, "  ");
          Put (Standard_Error, LASTSC, 0);
-         Put (Standard_Error, '/');
+         Ada.Text_IO.Put (Standard_Error, '/');
          Put (Standard_Error, CURRENT_MAX_SCS, 0);
-         Put_Line (Standard_Error, " start conditions");
+         Ada.Text_IO.Put_Line (Standard_Error, " start conditions");
 
-         Put (Standard_Error, "  ");
+         Ada.Text_IO.Put (Standard_Error, "  ");
          Put (Standard_Error, NUMEPS, 0);
-         Put (Standard_Error, " epsilon states, ");
+         Ada.Text_IO.Put (Standard_Error, " epsilon states, ");
          Put (Standard_Error, EPS2, 0);
-         Put_Line (Standard_Error, "  double epsilon states");
+         Ada.Text_IO.Put_Line (Standard_Error, "  double epsilon states");
 
          if LASTCCL = 0 then
-            Put_Line (Standard_Error, "  no character classes");
+            Ada.Text_IO.Put_Line (Standard_Error, "  no character classes");
 
          else
-            Put (Standard_Error, "  ");
+            Ada.Text_IO.Put (Standard_Error, "  ");
             Put (Standard_Error, LASTCCL, 0);
-            Put (Standard_Error, '/');
+            Ada.Text_IO.Put (Standard_Error, '/');
             Put (Standard_Error, CURRENT_MAXCCLS, 0);
-            Put (Standard_Error, " character classes needed ");
+            Ada.Text_IO.Put (Standard_Error, " character classes needed ");
             Put (Standard_Error, CCLMAP(LASTCCL) + CCLLEN(LASTCCL), 0);
-            Put (Standard_Error, '/');
+            Ada.Text_IO.Put (Standard_Error, '/');
             Put (Standard_Error, Current_Max_CCL_Table_Size, 0);
-            Put (Standard_Error, " words of storage, ");
+            Ada.Text_IO.Put (Standard_Error, " words of storage, ");
             Put (Standard_Error, CCLREUSE, 0);
-            Put_Line (Standard_Error, "reused");
+            Ada.Text_IO.Put_Line (Standard_Error, "reused");
          end if;
 
-         Put (Standard_Error, "  ");
+         Ada.Text_IO.Put (Standard_Error, "  ");
          Put (Standard_Error, NUMSNPAIRS, 0);
-         Put_Line (Standard_Error, " state/nextstate pairs created");
+         Ada.Text_IO.Put_Line (Standard_Error, " state/nextstate pairs created");
 
-         Put (Standard_Error, "  ");
+         Ada.Text_IO.Put (Standard_Error, "  ");
          Put (Standard_Error, NUMUNIQ, 0);
-         Put (Standard_Error, '/');
+         Ada.Text_IO.Put (Standard_Error, '/');
          Put (Standard_Error, NUMDUP, 0);
-         Put_Line (Standard_Error, " unique/duplicate transitions");
+         Ada.Text_IO.Put_Line (Standard_Error, " unique/duplicate transitions");
 
          if FULLTBL then
             TBLSIZ := LASTDFA*NUMECS;
-            Put (Standard_Error, "  ");
+            Ada.Text_IO.Put (Standard_Error, "  ");
             Put (Standard_Error, TBLSIZ, 0);
-            Put_Line (Standard_Error, " table entries");
+            Ada.Text_IO.Put_Line (Standard_Error, " table entries");
 
          else
             TBLSIZ := 2*(LASTDFA + NUMTEMPS) + 2*TBLEND;
 
-            Put (Standard_Error, "  ");
+            Ada.Text_IO.Put (Standard_Error, "  ");
             Put (Standard_Error, LASTDFA + NUMTEMPS, 0);
-            Put (Standard_Error, '/');
+            Ada.Text_IO.Put (Standard_Error, '/');
             Put (Standard_Error, CURRENT_MAX_DFAS, 0);
-            Put_Line (Standard_Error, " base-def entries created");
+            Ada.Text_IO.Put_Line (Standard_Error, " base-def entries created");
 
-            Put (Standard_Error, "  ");
+            Ada.Text_IO.Put (Standard_Error, "  ");
             Put (Standard_Error, TBLEND, 0);
-            Put (Standard_Error, '/');
+            Ada.Text_IO.Put (Standard_Error, '/');
             Put (Standard_Error, CURRENT_MAX_XPAIRS, 0);
-            Put (Standard_Error, " (peak ");
+            Ada.Text_IO.Put (Standard_Error, " (peak ");
             Put (Standard_Error, PEAKPAIRS, 0);
-            Put_Line (Standard_Error, ") nxt-chk entries created");
+            Ada.Text_IO.Put_Line (Standard_Error, ") nxt-chk entries created");
 
-            Put (Standard_Error, "  ");
+            Ada.Text_IO.Put (Standard_Error, "  ");
             Put (Standard_Error, NUMTEMPS*NUMMECS, 0);
-            Put (Standard_Error, '/');
+            Ada.Text_IO.Put (Standard_Error, '/');
             Put (Standard_Error, CURRENT_MAX_TEMPLATE_XPAIRS, 0);
-            Put (Standard_Error, " (peak ");
+            Ada.Text_IO.Put (Standard_Error, " (peak ");
             Put (Standard_Error, NUMTEMPS*NUMECS, 0);
-            Put_Line (Standard_Error, ") template nxt-chk entries created");
+            Ada.Text_IO.Put_Line (Standard_Error, ") template nxt-chk entries created");
 
-            Put (Standard_Error, "  ");
+            Ada.Text_IO.Put (Standard_Error, "  ");
             Put (Standard_Error, NUMMT, 0);
-            Put_Line (Standard_Error, " empty table entries");
-            Put (Standard_Error, "  ");
+            Ada.Text_IO.Put_Line (Standard_Error, " empty table entries");
+            Ada.Text_IO.Put (Standard_Error, "  ");
             Put (Standard_Error, NUMPROTS, 0);
-            Put_Line (Standard_Error, " protos created");
-            Put (Standard_Error, "  ");
+            Ada.Text_IO.Put_Line (Standard_Error, " protos created");
+            Ada.Text_IO.Put (Standard_Error, "  ");
             Put (Standard_Error, NUMTEMPS, 0);
-            Put (Standard_Error, " templates created, ");
+            Ada.Text_IO.Put (Standard_Error, " templates created, ");
             Put (Standard_Error, TMPUSES, 0);
-            Put_Line (Standard_Error, "uses");
+            Ada.Text_IO.Put_Line (Standard_Error, "uses");
          end if;
 
          if USEECS then
             TBLSIZ := TBLSIZ + CSIZE;
-            Put_Line (Standard_Error, "  ");
+            Ada.Text_IO.Put_Line (Standard_Error, "  ");
             Put (Standard_Error, NUMECS, 0);
-            Put (Standard_Error, '/');
+            Ada.Text_IO.Put (Standard_Error, '/');
             Put (Standard_Error, CSIZE, 0);
-            Put_Line (Standard_Error, " equivalence classes created");
+            Ada.Text_IO.Put_Line (Standard_Error, " equivalence classes created");
          end if;
 
          if USEMECS then
             TBLSIZ := TBLSIZ + NUMECS;
-            Put (Standard_Error, "  ");
+            Ada.Text_IO.Put (Standard_Error, "  ");
             Put (Standard_Error, NUMMECS, 0);
-            Put (Standard_Error, '/');
+            Ada.Text_IO.Put (Standard_Error, '/');
             Put (Standard_Error, CSIZE, 0);
-            Put_Line (Standard_Error, " meta-equivalence classes created");
+            Ada.Text_IO.Put_Line (Standard_Error, " meta-equivalence classes created");
          end if;
 
-         Put (Standard_Error, "  ");
+         Ada.Text_IO.Put (Standard_Error, "  ");
          Put (Standard_Error, HSHCOL, 0);
-         Put (Standard_Error, " (");
+         Ada.Text_IO.Put (Standard_Error, " (");
          Put (Standard_Error, HSHSAVE, 0);
-         Put_Line (Standard_Error, " saved) hash collisions, ");
+         Ada.Text_IO.Put_Line (Standard_Error, " saved) hash collisions, ");
          Put (Standard_Error, DFAEQL, 0);
-         Put_Line (Standard_Error, " DFAs equal");
+         Ada.Text_IO.Put_Line (Standard_Error, " DFAs equal");
 
-         Put (Standard_Error, "  ");
+         Ada.Text_IO.Put (Standard_Error, "  ");
          Put (Standard_Error, NUM_REALLOCS, 0);
-         Put_Line (Standard_Error, " sets of reallocations needed");
-         Put (Standard_Error, "  ");
+         Ada.Text_IO.Put_Line (Standard_Error, " sets of reallocations needed");
+         Ada.Text_IO.Put (Standard_Error, "  ");
          Put (Standard_Error, TBLSIZ, 0);
-         Put_Line (Standard_Error, " total table entries needed");
+         Ada.Text_IO.Put_Line (Standard_Error, " total table entries needed");
       end if;
 
       if Status /= 0 then
@@ -272,8 +276,8 @@ package body Main_Body is
 
    procedure Aflex_Init is
       USE_STDOUT       : BOOLEAN;
-      OUTPUT_SPEC_FILE : FILE_TYPE;
-      INPUT_FILE       : FILE_TYPE;
+      OUTPUT_SPEC_FILE : Ada.Text_IO.FILE_TYPE;
+      INPUT_FILE       : Ada.Text_IO.FILE_TYPE;
       Arg_Num          : INTEGER;
       FLAG_POS         : INTEGER;
       Arg              : Unbounded_String;
@@ -405,7 +409,7 @@ package body Main_Body is
             SET_INPUT(INPUT_FILE);
 
          exception
-            when NAME_ERROR =>
+            when Ada.Text_IO.NAME_ERROR =>
                Misc.Aflex_Fatal ("can't open " & In_File_Name);
          end;
       end if;
@@ -415,7 +419,7 @@ package body Main_Body is
       end if;
 
       if BACKTRACK_REPORT then
-         EXTERNAL_FILE_MANAGER.GET_BACKTRACK_FILE(BACKTRACK_FILE);
+         EXTERNAL_FILE_MANAGER.GET_BACKTRACK_FILE (BACKTRACK_FILE);
       end if;
 
       LASTCCL := 0;
@@ -434,7 +438,7 @@ package body Main_Body is
          end if;
 
       exception
-         when USE_ERROR | NAME_ERROR =>
+         when Ada.Text_IO.USE_ERROR | Ada.Text_IO.NAME_ERROR =>
             Misc.Aflex_Fatal ("couldn't open skeleton file " & SKELNAME);
       end;
 
@@ -445,7 +449,7 @@ package body Main_Body is
          CREATE(DEF_FILE, OUT_FILE);
 
       exception
-         when USE_ERROR | NAME_ERROR =>
+         when Ada.Text_IO.USE_ERROR | Ada.Text_IO.NAME_ERROR =>
             Misc.Aflex_Fatal ("can't create temporary file");
       end;
 

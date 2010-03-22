@@ -29,6 +29,7 @@
 -- 02/16/98 Wolfgang Lohmann(lohmi@acm.org):
 -- Changed constant CSize from 127 to Pos(Last Char) for porting to gnat
 with Ada.Strings.Unbounded;
+with Ada.Wide_Wide_Text_IO;
 
 with TEXT_IO;
 use TEXT_IO;
@@ -367,8 +368,9 @@ package MISC_DEFS is
 
   DATAPOS, DATALINE, LINENUM : INTEGER;
 
-  SKELFILE, YYIN, TEMP_ACTION_FILE, BACKTRACK_FILE, DEF_FILE : FILE_TYPE;
-  In_File_Name : Unbounded_String;
+  SKELFILE, YYIN, TEMP_ACTION_FILE, DEF_FILE : FILE_TYPE;
+   BACKTRACK_FILE : Ada.Wide_Wide_Text_IO.File_Type;
+   In_File_Name : Unbounded_String;
 
   -- variables for stack of states having only one out-transition:
   -- onestate - state number

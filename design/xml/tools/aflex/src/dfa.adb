@@ -20,8 +20,11 @@
 -- AUTHOR: John Self (UCI)
 -- DESCRIPTION converts non-deterministic finite automatons to finite ones.
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/dfaB.a,v 1.18 90/01/12 15:19:48 self Exp Locker: self $
-with Ada.Integer_Text_IO;
+
+with Ada.Characters.Wide_Wide_Latin_1;
+with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Strings.Unbounded.Text_IO;
+with Ada.Text_IO;
 
 with DFA, MISC, TBLCMP, CCL;
 with ECS, NFA, GEN, SKELETON_MANAGER;
@@ -29,9 +32,11 @@ with Unicode;
 
 package body DFA is
 
-   use Ada.Integer_Text_IO;
+   use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Strings.Unbounded;
    use Ada.Strings.Unbounded.Text_IO;
+   use Ada.Wide_Wide_Text_IO;
+   use Ada.Text_IO;
    use Unicode;
 
   -- check_for_backtracking - check a DFA state for backtracking
@@ -58,7 +63,7 @@ package body DFA is
         NEW_LINE(BACKTRACK_FILE);
 
         -- identify the state
-        DUMP_ASSOCIATED_RULES(BACKTRACK_FILE, DS);
+        DUMP_ASSOCIATED_RULES (BACKTRACK_FILE, DS);
 
         -- now identify it further using the out- and jam-transitions
         DUMP_TRANSITIONS(BACKTRACK_FILE, STATE);
@@ -111,10 +116,10 @@ package body DFA is
           -- an accepting number set is large.
           for J in 1 .. NACC loop
             if (CHECK_YY_TRAILING_HEAD_MASK(ACCSET(J)) /= 0) then
-              PUT(STANDARD_ERROR,
+              Ada.Text_IO.PUT(STANDARD_ERROR,
                 "aflex: Dangerous trailing context in rule at line ");
               PUT(STANDARD_ERROR, RULE_LINENUM(AR), 1);
-              NEW_LINE(STANDARD_ERROR);
+              Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
               return;
             end if;
           end loop;
@@ -123,101 +128,120 @@ package body DFA is
     end loop;
   end CHECK_TRAILING_CONTEXT;
 
+   ---------------------------
+   -- Dump_Associated_Rules --
+   ---------------------------
 
-  -- dump_associated_rules - list the rules associated with a DFA state
-  --
-  -- goes through the set of NFA states associated with the DFA and
-  -- extracts the first MAX_ASSOC_RULES unique rules, sorts them,
-  -- and writes a report to the given file
+   -- dump_associated_rules - list the rules associated with a DFA state
+   --
+   -- goes through the set of NFA states associated with the DFA and
+   -- extracts the first MAX_ASSOC_RULES unique rules, sorts them,
+   -- and writes a report to the given file
 
-  procedure DUMP_ASSOCIATED_RULES(F  : in FILE_TYPE;
-                                  DS : in INTEGER) is
-    J                    : INTEGER;
-    NUM_ASSOCIATED_RULES : INTEGER := 0;
-    RULE_SET             : INT_PTR;
-    SIZE, RULE_NUM       : INTEGER;
-  begin
-    RULE_SET := new UNBOUNDED_INT_ARRAY(0 .. MAX_ASSOC_RULES + 1);
-    SIZE := DFASIZ(DS);
+   procedure Dump_Associated_Rules
+     (File : Ada.Wide_Wide_Text_IO.File_Type;
+      DS   : INTEGER)
+   is
+      J                    : INTEGER;
+      NUM_ASSOCIATED_RULES : INTEGER := 0;
+      RULE_SET             : INT_PTR;
+      SIZE, RULE_NUM       : INTEGER;
 
-    for I in 1 .. SIZE loop
-      RULE_NUM := RULE_LINENUM(ASSOC_RULE(DSS(DS)(I)));
+   begin
+      RULE_SET := new UNBOUNDED_INT_ARRAY (0 .. MAX_ASSOC_RULES + 1);
+      SIZE := DFASIZ (DS);
 
-      J := 1;
-      while (J <= NUM_ASSOCIATED_RULES) loop
-        if (RULE_NUM = RULE_SET(J)) then
-          exit;
-        end if;
-        J := J + 1;
+      for I in 1 .. SIZE loop
+         RULE_NUM := RULE_LINENUM (ASSOC_RULE (DSS (DS)(I)));
+
+         J := 1;
+
+         while J <= NUM_ASSOCIATED_RULES loop
+            if RULE_NUM = RULE_SET(J) then
+               exit;
+            end if;
+
+            J := J + 1;
+         end loop;
+
+         if J > NUM_ASSOCIATED_RULES then
+
+            --  new rule
+
+            if NUM_ASSOCIATED_RULES < MAX_ASSOC_RULES then
+               NUM_ASSOCIATED_RULES := NUM_ASSOCIATED_RULES + 1;
+               RULE_SET (NUM_ASSOCIATED_RULES) := RULE_NUM;
+            end if;
+         end if;
       end loop;
-      if (J > NUM_ASSOCIATED_RULES) then
 
-        --new rule
-        if (NUM_ASSOCIATED_RULES < MAX_ASSOC_RULES) then
-          NUM_ASSOCIATED_RULES := NUM_ASSOCIATED_RULES + 1;
-          RULE_SET(NUM_ASSOCIATED_RULES) := RULE_NUM;
-        end if;
-      end if;
-    end loop;
+      MISC.BUBBLE (RULE_SET, NUM_ASSOCIATED_RULES);
 
-    MISC.BUBBLE(RULE_SET, NUM_ASSOCIATED_RULES);
+      PUT (File, " associated rules:");
 
-    PUT(F, " associated rules:");
+      for I in 1 .. NUM_ASSOCIATED_RULES loop
+         if I mod 8 = 1 then
+            NEW_LINE (File);
+         end if;
 
-    for I in 1 .. NUM_ASSOCIATED_RULES loop
-      if (I mod 8 = 1) then
-        NEW_LINE(F);
-      end if;
+         PUT (File, Ada.Characters.Wide_Wide_Latin_1.HT);
+         PUT (File, RULE_SET (I), 1);
+      end loop;
 
-      PUT(F, ASCII.HT);
-      PUT(F, RULE_SET(I), 1);
-    end loop;
+      NEW_LINE (File);
 
-    NEW_LINE(F);
-  exception
-    when STORAGE_ERROR =>
-      Misc.Aflex_Fatal ("dynamic memory failure in dump_associated_rules()");
-  end DUMP_ASSOCIATED_RULES;
+   exception
+      when STORAGE_ERROR =>
+         Misc.Aflex_Fatal
+           ("dynamic memory failure in dump_associated_rules()");
+   end Dump_Associated_Rules;
 
+   ----------------------
+   -- Dump_Transitions --
+   ----------------------
 
-  -- dump_transitions - list the transitions associated with a DFA state
-  --
-  -- goes through the set of out-transitions and lists them in human-readable
-  -- form (i.e., not as equivalence classes); also lists jam transitions
-  -- (i.e., all those which are not out-transitions, plus EOF).  The dump
-  -- is done to the given file.
+   -- dump_transitions - list the transitions associated with a DFA state
+   --
+   -- goes through the set of out-transitions and lists them in human-readable
+   -- form (i.e., not as equivalence classes); also lists jam transitions
+   -- (i.e., all those which are not out-transitions, plus EOF).  The dump
+   -- is done to the given file.
 
-  procedure DUMP_TRANSITIONS(F     : in FILE_TYPE;
-                             STATE : in UNBOUNDED_INT_ARRAY) is
-    EC           : INTEGER;
-    OUT_CHAR_SET : C_SIZE_BOOL_ARRAY;
-  begin
-    for I in 1 .. CSIZE loop
-      EC := ECGROUP(I);
+   procedure Dump_Transitions
+     (File  : Ada.Wide_Wide_Text_IO.File_Type;
+      State : UNBOUNDED_INT_ARRAY)
+   is
+      EC           : INTEGER;
+      OUT_CHAR_SET : C_SIZE_BOOL_ARRAY;
 
-      if (EC < 0) then
-        EC :=  -EC;
-      end if;
+   begin
+      for I in 1 .. CSIZE loop
+         EC := ECGROUP(I);
 
-      OUT_CHAR_SET(I) := (STATE(EC) /= 0);
-    end loop;
+         if (EC < 0) then
+            EC :=  -EC;
+         end if;
 
-    PUT(F, " out-transitions: ");
+         OUT_CHAR_SET (I) := STATE(EC) /= 0;
+      end loop;
 
-    CCL.LIST_CHARACTER_SET(F, OUT_CHAR_SET);
+      PUT (File, " out-transitions: ");
 
-    -- now invert the members of the set to get the jam transitions
-    for I in 1 .. CSIZE loop
-      OUT_CHAR_SET(I) := not OUT_CHAR_SET(I);
-    end loop;
+      CCL.LIST_CHARACTER_SET (File, OUT_CHAR_SET);
 
-    NEW_LINE(F);
-    PUT(F, "jam-transitions: EOF ");
+      --  now invert the members of the set to get the jam transitions
 
-    CCL.LIST_CHARACTER_SET(F, OUT_CHAR_SET);
+      for I in 1 .. CSIZE loop
+         OUT_CHAR_SET(I) := not OUT_CHAR_SET(I);
+      end loop;
 
-    NEW_LINE(F);
-  end DUMP_TRANSITIONS;
+      NEW_LINE (File);
+      PUT (File, "jam-transitions: EOF ");
+
+      CCL.LIST_CHARACTER_SET (File, OUT_CHAR_SET);
+
+      NEW_LINE (File);
+   end Dump_Transitions;
 
 
   -- epsclosure - construct the epsilon closure of a set of ndfa states
@@ -416,7 +440,7 @@ package body DFA is
     TARGPTR, TOTALTRANS, I, J, COMSTATE, COMFREQ, TARG : INTEGER;
     NUM_START_STATES, TODO_HEAD, TODO_NEXT             : INTEGER;
     SNSRESULT                                          : BOOLEAN;
-    FULL_TABLE_TEMP_FILE                               : FILE_TYPE;
+    FULL_TABLE_TEMP_FILE                               : Ada.Text_IO.FILE_TYPE;
     BUF                                                : Unbounded_String;
     NUM_NXT_STATES                                     : INTEGER;
 
@@ -445,11 +469,11 @@ package body DFA is
 
     if (TRACE) then
       NFA.DUMPNFA(SCSET(1));
-      NEW_LINE(STANDARD_ERROR);
-      NEW_LINE(STANDARD_ERROR);
-      PUT(STANDARD_ERROR, "DFA Dump:");
-      NEW_LINE(STANDARD_ERROR);
-      NEW_LINE(STANDARD_ERROR);
+      Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
+      Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
+      Ada.Text_IO.PUT(STANDARD_ERROR, "DFA Dump:");
+      Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
+      Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
     end if;
 
     TBLCMP.INITTBL;
@@ -467,7 +491,7 @@ package body DFA is
       begin -- make a temporary file to write yy_nxt array into
         CREATE(FULL_TABLE_TEMP_FILE, OUT_FILE);
       exception
-        when USE_ERROR | NAME_ERROR =>
+        when Ada.Text_IO.USE_ERROR | Ada.Text_IO.NAME_ERROR =>
           Misc.Aflex_Fatal ("can't create temporary file");
       end;
 
@@ -538,9 +562,9 @@ package body DFA is
       DSIZE := DFASIZ(DS);
 
       if (TRACE) then
-        PUT(STANDARD_ERROR, "state # ");
+        Ada.Text_IO.PUT(STANDARD_ERROR, "state # ");
         PUT(STANDARD_ERROR, DS, 1);
-        PUT_LINE(STANDARD_ERROR, ":");
+        Ada.Text_IO.PUT_LINE(STANDARD_ERROR, ":");
       end if;
 
       SYMPARTITION(DSET, DSIZE, SYMLIST, DUPLIST);
@@ -572,7 +596,7 @@ package body DFA is
               PUT(STANDARD_ERROR, SYM, 1);
               PUT(STANDARD_ERROR, ASCII.HT);
               PUT(STANDARD_ERROR, NEWDS, 1);
-              NEW_LINE(STANDARD_ERROR);
+              Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
             end if;
 
             TARGPTR := TARGPTR + 1;
@@ -590,7 +614,7 @@ package body DFA is
               PUT(STANDARD_ERROR, SYM, 1);
               PUT(STANDARD_ERROR, ASCII.HT);
               PUT(STANDARD_ERROR, TARG, 1);
-              NEW_LINE(STANDARD_ERROR);
+              Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
             end if;
 
             -- update frequency count for destination state
@@ -673,10 +697,10 @@ package body DFA is
     end loop;
 
     if (FULLTBL) then
-      PUT("yy_nxt : constant array(0..");
+      Ada.Text_IO.PUT("yy_nxt : constant array(0..");
       PUT(NUM_NXT_STATES - 1, 1);
-      PUT_LINE(" , character'first..character'last) of short :=");
-      PUT_LINE("   (");
+      Ada.Text_IO.PUT_LINE(" , character'first..character'last) of short :=");
+      Ada.Text_IO.PUT_LINE("   (");
 
       RESET(FULL_TABLE_TEMP_FILE, IN_FILE);
       while (not END_OF_FILE(FULL_TABLE_TEMP_FILE)) loop
