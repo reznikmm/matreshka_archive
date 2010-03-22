@@ -63,11 +63,14 @@
 --	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 --
 --***************************************************************************
+with Ada.Wide_Wide_Text_IO;
 
-with MAIN_BODY, DFA, GEN, MISC_DEFS, TEXT_IO, MISC;
-with TEMPLATE_MANAGER; use MISC_DEFS, TEXT_IO;
+with MAIN_BODY, DFA, GEN, MISC_DEFS, MISC;
+with TEMPLATE_MANAGER; use MISC_DEFS;
 
 function Aflex return Integer is
+
+   use Ada.Wide_Wide_Text_IO;
 
    Copyright   : constant String :=
      "@(#) Copyright (c) 1990 Regents of the University of California.";
@@ -86,8 +89,9 @@ begin
 
   if (PERFORMANCE_REPORT) then
     if (INTERACTIVE) then
-      TEXT_IO.PUT_LINE(STANDARD_ERROR,
-        "-I (interactive) entails a minor performance penalty");
+         Ada.Wide_Wide_Text_IO.Put_Line
+           (Ada.Wide_Wide_Text_IO.Standard_Error,
+            "-I (interactive) entails a minor performance penalty");
     end if;
 
 
