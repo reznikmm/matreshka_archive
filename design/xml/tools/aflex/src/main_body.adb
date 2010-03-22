@@ -25,7 +25,6 @@ with Ada.Command_Line;
 with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Strings.Unbounded;
 with Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
-with Ada.Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
 with MISC_DEFS, MISC, ECS, PARSER;
@@ -273,7 +272,7 @@ package body Main_Body is
 
    procedure Aflex_Init is
       USE_STDOUT       : BOOLEAN;
-      OUTPUT_SPEC_FILE : Ada.Text_IO.FILE_TYPE;
+      OUTPUT_SPEC_FILE : Ada.Wide_Wide_Text_IO.FILE_TYPE;
       INPUT_FILE       : Ada.Wide_Wide_Text_IO.FILE_TYPE;
       Arg_Num          : INTEGER;
       FLAG_POS         : INTEGER;

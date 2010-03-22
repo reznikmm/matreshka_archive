@@ -24,7 +24,6 @@
 --       This version is for the VADS 5.5 Ada development system.
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/file_managerS.a,v 1.4 90/01/12 15:20:00 self Exp Locker: self $
 
-with Ada.Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
 package External_File_Manager is
@@ -41,7 +40,8 @@ package External_File_Manager is
    procedure Get_DFA_Body_File
      (File : in out Ada.Wide_Wide_Text_IO.File_Type);
 
-   procedure Get_Scanner_Spec_File (F : in out Ada.Text_IO.File_Type);
+   procedure Get_Scanner_Spec_File
+     (File : in out Ada.Wide_Wide_Text_IO.File_Type);
 
    procedure Get_Scanner_Body_File
      (File : in out Ada.Wide_Wide_Text_IO.File_Type);
@@ -49,6 +49,6 @@ package External_File_Manager is
    procedure Get_Backtrack_File
      (File : in out Ada.Wide_Wide_Text_IO.File_Type);
 
-  procedure INITIALIZE_FILES;
+   procedure INITIALIZE_FILES;
 
 end External_File_Manager;
