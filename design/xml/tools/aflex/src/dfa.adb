@@ -36,7 +36,6 @@ package body DFA is
    use Ada.Strings.Unbounded;
    use Ada.Strings.Unbounded.Text_IO;
    use Ada.Wide_Wide_Text_IO;
-   use Ada.Text_IO;
    use Unicode;
 
   -- check_for_backtracking - check a DFA state for backtracking
@@ -116,10 +115,11 @@ package body DFA is
           -- an accepting number set is large.
           for J in 1 .. NACC loop
             if (CHECK_YY_TRAILING_HEAD_MASK(ACCSET(J)) /= 0) then
-              Ada.Text_IO.PUT(STANDARD_ERROR,
-                "aflex: Dangerous trailing context in rule at line ");
-              PUT(STANDARD_ERROR, RULE_LINENUM(AR), 1);
-              Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
+                     PUT
+                       (STANDARD_ERROR,
+                        "aflex: Dangerous trailing context in rule at line ");
+                     PUT (STANDARD_ERROR, RULE_LINENUM(AR), 1);
+                     NEW_LINE (STANDARD_ERROR);
               return;
             end if;
           end loop;
@@ -468,12 +468,12 @@ package body DFA is
     end loop;
 
     if (TRACE) then
-      NFA.DUMPNFA(SCSET(1));
-      Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
-      Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
-      Ada.Text_IO.PUT(STANDARD_ERROR, "DFA Dump:");
-      Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
-      Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
+      NFA.DUMPNFA (SCSET (1));
+      NEW_LINE (STANDARD_ERROR);
+      NEW_LINE (STANDARD_ERROR);
+      PUT (STANDARD_ERROR, "DFA Dump:");
+      NEW_LINE (STANDARD_ERROR);
+      NEW_LINE (STANDARD_ERROR);
     end if;
 
     TBLCMP.INITTBL;
@@ -489,20 +489,20 @@ package body DFA is
       -- declare it "short" because it's a real long-shot that that
       -- won't be large enough
       begin -- make a temporary file to write yy_nxt array into
-        CREATE(FULL_TABLE_TEMP_FILE, OUT_FILE);
+            Ada.Text_IO.CREATE (FULL_TABLE_TEMP_FILE, Ada.Text_IO.OUT_FILE);
       exception
         when Ada.Text_IO.USE_ERROR | Ada.Text_IO.NAME_ERROR =>
           Misc.Aflex_Fatal ("can't create temporary file");
       end;
 
       NUM_NXT_STATES := 1;
-      PUT(FULL_TABLE_TEMP_FILE, "( ");
+      Ada.Text_IO.PUT (FULL_TABLE_TEMP_FILE, "( ");
       -- generate 0 entries for state #0
       for CNT in 0 .. NUMECS loop
         MISC.MK2DATA(FULL_TABLE_TEMP_FILE, 0);
       end loop;
 
-      PUT(FULL_TABLE_TEMP_FILE, " )");
+      Ada.Text_IO.PUT (FULL_TABLE_TEMP_FILE, " )");
       -- force extra blank line next dataflush()
       DATALINE := NUMDATALINES;
     end if;
@@ -561,10 +561,10 @@ package body DFA is
       DSET := DSS(DS);
       DSIZE := DFASIZ(DS);
 
-      if (TRACE) then
-        Ada.Text_IO.PUT(STANDARD_ERROR, "state # ");
-        PUT(STANDARD_ERROR, DS, 1);
-        Ada.Text_IO.PUT_LINE(STANDARD_ERROR, ":");
+      if TRACE then
+        PUT (STANDARD_ERROR, "state # ");
+        PUT (STANDARD_ERROR, DS, 1);
+        PUT_LINE (STANDARD_ERROR, ":");
       end if;
 
       SYMPARTITION(DSET, DSIZE, SYMLIST, DUPLIST);
@@ -592,11 +592,11 @@ package body DFA is
             STATE(SYM) := NEWDS;
 
             if (TRACE) then
-              PUT(STANDARD_ERROR, ASCII.HT);
-              PUT(STANDARD_ERROR, SYM, 1);
-              PUT(STANDARD_ERROR, ASCII.HT);
-              PUT(STANDARD_ERROR, NEWDS, 1);
-              Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
+              PUT (STANDARD_ERROR, Ada.Characters.Wide_Wide_Latin_1.HT);
+              PUT (STANDARD_ERROR, SYM, 1);
+              PUT (STANDARD_ERROR, Ada.Characters.Wide_Wide_Latin_1.HT);
+              PUT (STANDARD_ERROR, NEWDS, 1);
+              NEW_LINE(STANDARD_ERROR);
             end if;
 
             TARGPTR := TARGPTR + 1;
@@ -610,11 +610,11 @@ package body DFA is
             TARG := STATE(DUPLIST(SYM));
             STATE(SYM) := TARG;
             if (TRACE) then
-              PUT(STANDARD_ERROR, ASCII.HT);
-              PUT(STANDARD_ERROR, SYM, 1);
-              PUT(STANDARD_ERROR, ASCII.HT);
-              PUT(STANDARD_ERROR, TARG, 1);
-              Ada.Text_IO.NEW_LINE(STANDARD_ERROR);
+              PUT (STANDARD_ERROR, Ada.Characters.Wide_Wide_Latin_1.HT);
+              PUT (STANDARD_ERROR, SYM, 1);
+              PUT (STANDARD_ERROR, Ada.Characters.Wide_Wide_Latin_1.HT);
+              PUT (STANDARD_ERROR, TARG, 1);
+              NEW_LINE (STANDARD_ERROR);
             end if;
 
             -- update frequency count for destination state
@@ -652,9 +652,9 @@ package body DFA is
 
       if (FULLTBL) then
       -- supply array's 0-element
-        PUT(FULL_TABLE_TEMP_FILE, ",");
+        Ada.Text_IO.PUT (FULL_TABLE_TEMP_FILE, ",");
         MISC.DATAFLUSH(FULL_TABLE_TEMP_FILE);
-        PUT(FULL_TABLE_TEMP_FILE, "( ");
+        Ada.Text_IO.PUT (FULL_TABLE_TEMP_FILE, "( ");
         if (DS = END_OF_BUFFER_STATE) then
           MISC.MK2DATA(FULL_TABLE_TEMP_FILE,  -END_OF_BUFFER_STATE);
         else
@@ -670,7 +670,7 @@ package body DFA is
           end if;
         end loop;
 
-        PUT(FULL_TABLE_TEMP_FILE, " )");
+        Ada.Text_IO.PUT (FULL_TABLE_TEMP_FILE, " )");
         -- force extra blank line next dataflush()
         DATALINE := NUMDATALINES;
       else
@@ -702,12 +702,12 @@ package body DFA is
       Ada.Text_IO.PUT_LINE(" , character'first..character'last) of short :=");
       Ada.Text_IO.PUT_LINE("   (");
 
-      RESET(FULL_TABLE_TEMP_FILE, IN_FILE);
-      while (not END_OF_FILE(FULL_TABLE_TEMP_FILE)) loop
+      Ada.Text_IO.RESET (FULL_TABLE_TEMP_FILE, Ada.Text_IO.IN_FILE);
+      while not Ada.Text_IO.END_OF_FILE (FULL_TABLE_TEMP_FILE) loop
         GET_LINE(FULL_TABLE_TEMP_FILE, BUF);
         PUT_LINE(BUF);
       end loop;
-      DELETE(FULL_TABLE_TEMP_FILE);
+      Ada.Text_IO.DELETE (FULL_TABLE_TEMP_FILE);
 
       MISC.DATAEND;
     else
