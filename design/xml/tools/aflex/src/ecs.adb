@@ -21,8 +21,7 @@
 -- DESCRIPTION finds equivalence classes so DFA will be smaller
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/ecsB.a,v 1.7 90/01/12 15:19:54 self Exp Locker: self $
 
-with MISC_DEFS;
-with MISC; use MISC_DEFS;
+with MISC;
 with Unicode;
 
 package body ECS is
@@ -32,7 +31,6 @@ package body ECS is
 -- ccl2ecl - convert character classes to set of equivalence classes
 
   procedure CCL2ECL is
-    use MISC_DEFS;
     ICH, NEWLEN, CCLP, CCLMEC : INTEGER;
   begin
     for I in 1 .. LASTCCL loop
@@ -102,7 +100,7 @@ package body ECS is
      FWD, BCK : in out UNBOUNDED_INT_ARRAY;
      LLSIZ    : Integer)
    is
-      use MISC_DEFS, MISC;
+      use MISC;
 
     CCLP, OLDEC, NEWEC, CCLM, I, J : INTEGER;
     PROC_ARRAY                     : BOOLEAN_PTR;

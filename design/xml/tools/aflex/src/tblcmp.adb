@@ -22,7 +22,7 @@
 -- NOTES somewhat complicated but works fast and generates efficient scanners
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/tblcmpB.a,v 1.8 90/01/12 15:20:43 self Exp Locker: self $
 
-with DFA, ECS, MISC_DEFS; use MISC_DEFS;
+with DFA, ECS;
 with Unicode;
 
 package body TBLCMP is
