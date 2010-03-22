@@ -21,10 +21,14 @@
 -- DESCRIPTION
 -- NOTES does actual generation (writing) of output aflex scanners
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/genB.a,v 1.25 1992/10/02 23:08:41 self Exp self $
-with Ada.Integer_Text_IO;
-with Ada.Strings.Fixed;
-with Ada.Strings.Unbounded.Text_IO;
-with Ada.Text_IO;
+
+with Ada.Characters.Conversions;
+with Ada.Characters.Wide_Wide_Latin_1;
+with Ada.Integer_Wide_Wide_Text_IO;
+with Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
+with Ada.Strings.Wide_Wide_Fixed;
+with Ada.Wide_Wide_Text_IO;
 
 with MISC_DEFS, MISC;
 with Scanner, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
@@ -34,12 +38,13 @@ with Unicode;
 
 package body Gen is
 
-   use Ada.Integer_Text_IO;
+   use Ada.Characters.Conversions;
+   use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Strings;
-   use Ada.Strings.Fixed;
-   use Ada.Strings.Unbounded;
-   use Ada.Strings.Unbounded.Text_IO;
-   use Ada.Text_IO;
+   use Ada.Strings.Wide_Wide_Fixed;
+   use Ada.Strings.Wide_Wide_Unbounded;
+   use Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
+   use Ada.Wide_Wide_Text_IO;
    use Unicode;
 
   INDENT_LEVEL : INTEGER := 0;  -- each level is 4 spaces
@@ -68,12 +73,12 @@ package body Gen is
     I : INTEGER := INDENT_LEVEL*4;
   begin
     while (I >= 8) loop
-      PUT(ASCII.HT);
+      PUT (Ada.Characters.Wide_Wide_Latin_1.HT);
       I := I - 8;
     end loop;
 
     while (I > 0) loop
-      PUT(' ');
+      PUT (' ');
       I := I - 1;
     end loop;
   end DO_INDENT;
@@ -181,7 +186,7 @@ package body Gen is
          if ECGROUP_Plane (J) = J then
             Put_Line
               ("yy_ec_"
-               & Trim (Primary_Stage_Index'Image (J), Both)
+               & Trim (Primary_Stage_Index'Wide_Wide_Image (J), Both)
                & " : aliased constant Secondary_Stage_Array :=");
             Put_Line ("    (");
 
@@ -213,14 +218,16 @@ package body Gen is
             Put (Integer (J), 6);
             Put
               (" => yy_ec_"
-               & Trim (Primary_Stage_Index'Image (ECGROUP_Plane (J)), Both)
+               & Trim
+                 (Primary_Stage_Index'Wide_Wide_Image
+                    (ECGROUP_Plane (J)), Both)
                & "'Access");
          end if;
       end loop;
 
       Put_Line
         (", others => yy_ec_"
-         & Trim (Primary_Stage_Index'Image (Most_Used), Both)
+         & Trim (Primary_Stage_Index'Wide_Wide_Image (Most_Used), Both)
          & "'Access);");
 
       --  Generate function to replace yy_ec constant without modification of
@@ -254,7 +261,9 @@ package body Gen is
             while (I <= CSIZE) loop
                PUT
                  (STANDARD_ERROR,
-                  MISC.Readable_Form(Wide_Wide_Character'Val (I)));
+                  To_Wide_Wide_String
+                    (Ada.Strings.Unbounded.To_String
+                       (MISC.Readable_Form(Wide_Wide_Character'Val (I)))));
                PUT(STANDARD_ERROR, " = ");
                PUT(STANDARD_ERROR, ECGROUP(I), 1);
                PUT(STANDARD_ERROR, "   ");
@@ -654,14 +663,18 @@ package body Gen is
       Misc.Aflex_Fatal ("dynamic memory failure in gentabs()");
   end GENTABS;
 
-  -- write out a string at the current indentation level, adding a final
-  -- newline
+   -----------------
+   -- INDENT_PUTS --
+   -----------------
 
-  procedure INDENT_PUTS(STR : in STRING) is
-  begin
-    DO_INDENT;
-    PUT_LINE(STR);
-  end INDENT_PUTS;
+   -- write out a string at the current indentation level, adding a final
+   -- newline
+
+   procedure INDENT_PUTS(STR : Wide_Wide_String) is
+   begin
+      DO_INDENT;
+      PUT_LINE (STR);
+   end INDENT_PUTS;
 
   -- do_sect3_out - dumps section 3.
 
@@ -708,7 +721,8 @@ package body Gen is
   procedure MAKE_TABLES is
     DID_EOF_RULE      : BOOLEAN := FALSE;
     TOTAL_TABLE_SIZE  : INTEGER := TBLEND + NUMECS + 1;
-    BUF               : Unbounded_String;
+    BUF               : Unbounded_Wide_Wide_String;
+
   begin
     if (not FULLTBL) then
 
@@ -730,11 +744,11 @@ package body Gen is
     INDENT_PUTS("YY_Current_State : YY_State_Type;");
 
     -- now output the constants for the various start conditions
-    RESET(DEF_FILE, IN_FILE);
+    RESET (DEF_FILE, IN_FILE);
 
-    while (not END_OF_FILE(DEF_FILE)) loop
-      GET_LINE(DEF_FILE, BUF);
-      PUT_LINE(BUF);
+    while not END_OF_FILE(DEF_FILE) loop
+      GET_LINE (DEF_FILE, BUF);
+      PUT_LINE (BUF);
     end loop;
 
     if (FULLTBL) then
@@ -743,7 +757,7 @@ package body Gen is
       GENTABS;
     end if;
 
-    RESET(TEMP_ACTION_FILE, IN_FILE);
+    RESET (TEMP_ACTION_FILE, IN_FILE);
 
     -- generate code for yy_get_previous_state
     SET_INDENT(1);
@@ -784,13 +798,13 @@ package body Gen is
     for I in 1 .. LASTSC loop
       if (not SCEOF(I)) then
         DO_INDENT;
-        if (not DID_EOF_RULE) then
-          PUT("when ");
+        if not DID_EOF_RULE then
+          PUT ("when ");
         else
-          PUT_LINE("|");
+          PUT_LINE ("|");
         end if;
-        PUT("YY_END_OF_BUFFER + ");
-        PUT(SCNAME(I));
+        PUT ("YY_END_OF_BUFFER + ");
+        PUT (SCNAME(I));
         PUT(" + 1 ");
         DID_EOF_RULE := TRUE;
       end if;

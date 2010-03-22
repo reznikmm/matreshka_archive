@@ -28,7 +28,9 @@
 
 -- 02/16/98 Wolfgang Lohmann(lohmi@acm.org):
 -- Changed constant CSize from 127 to Pos(Last Char) for porting to gnat
+
 with Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Unbounded;
 with Ada.Wide_Wide_Text_IO;
 
 with TEXT_IO;
@@ -66,7 +68,9 @@ package MISC_DEFS is
   type INT_STAR is access INTEGER;
   type UNBOUNDED_INT_STAR_ARRAY is array ( INTEGER range <> ) of INT_PTR;
   type INT_STAR_PTR is access UNBOUNDED_INT_STAR_ARRAY;
-  type UNBOUNDED_VSTRING_ARRAY is array (INTEGER range <>) of Unbounded_String;
+   type UNBOUNDED_VSTRING_ARRAY is
+     array (Integer range <>)
+       of Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
   type VSTRING_PTR is access UNBOUNDED_VSTRING_ARRAY;
   type BOOLEAN_ARRAY is array ( INTEGER range <> ) of BOOLEAN;
   type BOOLEAN_PTR is access BOOLEAN_ARRAY;
@@ -368,9 +372,11 @@ package MISC_DEFS is
 
   DATAPOS, DATALINE, LINENUM : INTEGER;
 
-  SKELFILE, YYIN, TEMP_ACTION_FILE, DEF_FILE : FILE_TYPE;
-   BACKTRACK_FILE : Ada.Wide_Wide_Text_IO.File_Type;
-   In_File_Name : Unbounded_String;
+   SKELFILE, YYIN   : FILE_TYPE;
+   TEMP_ACTION_FILE : Ada.Wide_Wide_Text_IO.File_Type;
+   DEF_FILE         : Ada.Wide_Wide_Text_IO.File_Type;
+   BACKTRACK_FILE   : Ada.Wide_Wide_Text_IO.File_Type;
+   In_File_Name     : Unbounded_String;
 
   -- variables for stack of states having only one out-transition:
   -- onestate - state number

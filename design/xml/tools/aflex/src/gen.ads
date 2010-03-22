@@ -33,7 +33,9 @@ package GEN is
   procedure GEN_START_STATE;
   procedure GENECS;
   procedure GENFTBL;
-  procedure INDENT_PUTS(STR : in STRING);
+
+   procedure INDENT_PUTS (STR : Wide_Wide_String);
+
   procedure GENTABS;
   procedure INDENT_DOWN;
   procedure INDENT_UP;

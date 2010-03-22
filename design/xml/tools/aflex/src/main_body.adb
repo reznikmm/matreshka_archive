@@ -22,9 +22,9 @@
 -- high level routines from other packages.
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/mainB.a,v 1.26 1992/12/29 22:46:15 self Exp self $
 with Ada.Command_Line;
---  with Ada.Integer_Text_IO;
 with Ada.Integer_Wide_Wide_Text_IO;
-with Ada.Strings.Unbounded.Text_IO;
+with Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
 with Ada.Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
@@ -38,6 +38,8 @@ package body Main_Body is
    use Ada.Command_Line;
    use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Strings.Unbounded;
+   use Ada.Strings.Wide_Wide_Unbounded;
+   use Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
    use Ada.Text_IO;
    use Ada.Wide_Wide_Text_IO;
 
@@ -45,19 +47,15 @@ package body Main_Body is
    function "+" (Item : String) return Unbounded_String
      renames To_Unbounded_String;
 
-   Aflex_Version   : constant String := "1.4a";
-   Start_Time      : Unbounded_String;
-   End_Time        : Unbounded_String;
+   Aflex_Version : constant String := "1.4a";
+   Start_Time    : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
+   End_Time      : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
 
    ---------------
    -- Aflex_End --
    ---------------
 
    procedure Aflex_End (Status : Integer) is
-
---        use Ada.Integer_Text_IO;
-      use Ada.Strings.Unbounded.Text_IO;
-
       TBLSIZ : Integer;
 
    begin

@@ -22,7 +22,7 @@
 -- NOTES contains functions used in various places throughout aflex.
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/miscS.a,v 1.9 90/01/12 15:20:19 self Exp Locker: self $
 with Ada.Strings.Unbounded;
-with Ada.Text_IO;
+with Ada.Strings.Wide_Wide_Unbounded;
 with Ada.Wide_Wide_Text_IO;
 
 with MISC_DEFS;
@@ -31,8 +31,6 @@ with Unicode;
 package Misc is
 
    use Ada.Strings.Unbounded;
-   use Ada.Text_IO;
-
    use MISC_DEFS;
 
   procedure ACTION_OUT;
@@ -57,7 +55,8 @@ package Misc is
    procedure DATAFLUSH (File : Ada.Wide_Wide_Text_IO.File_Type);
    procedure DATAFLUSH;
 
-   function Aflex_Get_Time return Unbounded_String;
+   function Aflex_Get_Time
+     return Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
    --  aflex_gettime - return current time
 
    procedure Aflex_Error (Msg : Unbounded_String);
@@ -73,8 +72,9 @@ package Misc is
    --  aflexfatal - report a fatal error message and terminate
    --  overloaded function, one for vstring, one for string.
 
-  procedure LINE_DIRECTIVE_OUT;
-  procedure LINE_DIRECTIVE_OUT(OUTPUT_FILE_NAME : in FILE_TYPE);
+   procedure LINE_DIRECTIVE_OUT;
+   procedure LINE_DIRECTIVE_OUT
+     (OUTPUT_FILE_NAME : Ada.Wide_Wide_Text_IO.File_Type);
 
    procedure MK2DATA
      (File  : Ada.Wide_Wide_Text_IO.File_Type;
@@ -99,7 +99,8 @@ package Misc is
   function ISDIGIT(C : in CHARACTER) return BOOLEAN;
   function TOLOWER(C : in INTEGER) return INTEGER;
 
-   function Basename return Unbounded_String;
+   function Basename
+     return Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
    --  Basename - find the basename of a file
 
 end Misc;

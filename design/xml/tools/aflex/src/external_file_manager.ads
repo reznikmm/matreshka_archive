@@ -29,16 +29,26 @@ with Ada.Wide_Wide_Text_IO;
 
 package External_File_Manager is
 
-   use Ada.Text_IO;
+   procedure Get_IO_Spec_File
+     (File : in out Ada.Wide_Wide_Text_IO.File_Type);
 
-   procedure Get_IO_Spec_File (F : in out File_Type);
-   procedure Get_IO_Body_File (F : in out File_Type);
-   procedure Get_DFA_Spec_File (F : in out File_Type);
-   procedure Get_DFA_Body_File (F : in out File_Type);
-   procedure Get_Scanner_Spec_File (F : in out File_Type);
-   procedure Get_Scanner_Body_File (F : in out File_Type);
+   procedure Get_IO_Body_File
+     (File : in out Ada.Wide_Wide_Text_IO.File_Type);
+
+   procedure Get_DFA_Spec_File
+     (File : in out Ada.Wide_Wide_Text_IO.File_Type);
+
+   procedure Get_DFA_Body_File
+     (File : in out Ada.Wide_Wide_Text_IO.File_Type);
+
+   procedure Get_Scanner_Spec_File (F : in out Ada.Text_IO.File_Type);
+
+   procedure Get_Scanner_Body_File
+     (File : in out Ada.Wide_Wide_Text_IO.File_Type);
+
    procedure Get_Backtrack_File
      (File : in out Ada.Wide_Wide_Text_IO.File_Type);
+
   procedure INITIALIZE_FILES;
 
 end External_File_Manager;

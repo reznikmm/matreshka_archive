@@ -27,22 +27,22 @@
 --       copies of the template files in a known place.
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/template_managerB.a,v 1.21 1992/12/29 22:46:15 self Exp self $
 
-with Ada.Strings.Unbounded.Text_IO;
-with Ada.Text_IO;
+with Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
+with Ada.Wide_Wide_Text_IO;
 
 with MISC_DEFS, EXTERNAL_FILE_MANAGER, MISC;
 use MISC_DEFS;
 
 package body Template_Manager is
 
-   use Ada.Strings.Unbounded;
-   use Ada.Strings.Unbounded.Text_IO;
-   use Ada.Text_IO;
+   use Ada.Strings.Wide_Wide_Unbounded;
+   use Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
+   use Ada.Wide_Wide_Text_IO;
 
-   type File_Array is array (Positive range <>) of Unbounded_String;
+   type File_Array is array (Positive range <>) of Unbounded_Wide_Wide_String;
 
-   function "+" (Item : String) return Unbounded_String
-     renames To_Unbounded_String;
+   function "+" (Item : Wide_Wide_String) return Unbounded_Wide_Wide_String
+     renames To_Unbounded_Wide_Wide_String;
 
    DFA_Template : constant File_Array :=
      (
@@ -594,7 +594,7 @@ package body Template_Manager is
       --  Indicates whether or not current line of the template
       --  is the Umass codes.
 -- END OF UMASS CODES.
-      Buf         : Unbounded_String;
+      Buf         : Unbounded_Wide_Wide_String;
 
    begin
       while not (Line_Number > Current_Template'Last) loop

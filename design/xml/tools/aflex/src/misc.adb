@@ -21,19 +21,26 @@
 -- DESCRIPTION
 -- NOTES contains functions used in various places throughout aflex.
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/miscB.a,v 1.22 1991/07/01 21:30:37 self Exp self $
+
 with Ada.Calendar;
+with Ada.Characters.Conversions;
 with Ada.Directories;
-with Ada.Integer_Text_IO;
 with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Strings.Unbounded.Text_IO;
+with Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
+with Ada.Text_IO;
 
 with MISC, Main_Body;
 use MISC;
 
 package body MISC is
 
-   use Ada.Integer_Text_IO;
+   use Ada.Characters.Conversions;
+   use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Strings.Unbounded.Text_IO;
+   use Ada.Strings.Wide_Wide_Unbounded;
+   use Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
+   use Ada.Wide_Wide_Text_IO;
    use Unicode;
 
    function "+" (Item : String) return Unbounded_String
@@ -42,10 +49,13 @@ package body MISC is
    function "+" (Item : Unbounded_String) return String
      renames To_String;
 
+   function "+" (Item : Wide_Wide_String) return Unbounded_Wide_Wide_String
+     renames To_Unbounded_Wide_Wide_String;
+
   -- action_out - write the actions from the temporary file to lex.yy.c
 
    procedure Action_OUT is
-      Buf : Unbounded_String;
+      Buf : Unbounded_Wide_Wide_String;
 
    begin
       while not End_Of_File (Temp_Action_File) loop
@@ -139,18 +149,18 @@ package body MISC is
 
   -- dataend - finish up a block of data declarations
 
-  procedure DATAEND is
-  begin
-    if (DATAPOS > 0) then
-      DATAFLUSH;
+   procedure DATAEND is
+   begin
+      if (DATAPOS > 0) then
+         DATAFLUSH;
 
-      -- add terminator for initialization
-      Put_Line ("    );");
-      New_Line;
+         -- add terminator for initialization
+         Put_Line ("    );");
+         New_Line;
 
-      DATALINE := 0;
-    end if;
-  end DATAEND;
+         DATALINE := 0;
+      end if;
+   end DATAEND;
 
    ---------------
    -- DATAFLUSH --
@@ -159,8 +169,6 @@ package body MISC is
    -- dataflush - flush generated data statements
 
    procedure DATAFLUSH (File : Ada.Wide_Wide_Text_IO.File_Type) is
-      use Ada.Wide_Wide_Text_IO;
-
    begin
       New_Line (File);
       DATALINE := DATALINE + 1;
@@ -183,8 +191,6 @@ package body MISC is
    ---------------
 
    procedure DATAFLUSH is
-      use Ada.Wide_Wide_Text_IO;
-
    begin
       DATAFLUSH (CURRENT_OUTPUT);
    end DATAFLUSH;
@@ -193,7 +199,7 @@ package body MISC is
    -- Aflex_Get_Time --
    --------------------
 
-   function Aflex_Get_Time return Unbounded_String is
+   function Aflex_Get_Time return Unbounded_Wide_Wide_String is
 
       use Ada.Calendar;
 
@@ -204,10 +210,10 @@ package body MISC is
       Current_Month    : Month_Number;
       Current_Day      : Day_Number;
       Current_Seconds  : Day_Duration;
-      Month_String     : Unbounded_String;
-      Hour_String      : Unbounded_String;
-      Minute_String    : Unbounded_String;
-      Second_String    : Unbounded_String;
+      Month_String     : Unbounded_Wide_Wide_String;
+      Hour_String      : Unbounded_Wide_Wide_String;
+      Minute_String    : Unbounded_Wide_Wide_String;
+      Second_String    : Unbounded_Wide_Wide_String;
       Hour             : Integer;
       Minute           : Integer;
       Second           : Integer;
@@ -254,35 +260,35 @@ package body MISC is
         Integer (Current_Seconds - Hour * Seconds_Per_Hour - Minute * 60.0);
 
       if Hour >= 10 then
-         Hour_String := +Integer'Image (Hour) (2 .. 3);
+         Hour_String := +Integer'Wide_Wide_Image (Hour) (2 .. 3);
 
       else
-         Hour_String := +"0" & Integer'Image (Hour) (2);
+         Hour_String := +"0" & Integer'Wide_Wide_Image (Hour) (2);
       end if;
 
       if Minute >= 10 then
-         Minute_String := +Integer'Image (Minute) (2 .. 3);
+         Minute_String := +Integer'Wide_Wide_Image (Minute) (2 .. 3);
 
       else
-         Minute_String := +"0" & Integer'Image (Minute) (2);
+         Minute_String := +"0" & Integer'Wide_Wide_Image (Minute) (2);
       end if;
 
       if Second >= 10 then
-         Second_String := +Integer'Image (Second) (2 .. 3);
+         Second_String := +Integer'Wide_Wide_Image (Second) (2 .. 3);
 
       else
-         Second_String := +"0" & Integer'Image (Second) (2);
+         Second_String := +"0" & Integer'Wide_Wide_Image (Second) (2);
       end if;
 
       return
         Month_String
-          & Integer'Image (Current_Day)
+          & Integer'Wide_Wide_Image (Current_Day)
           & Hour_String
           & ":"
           & Minute_String
           & ":"
           & Second_String
-          & Integer'Image (Current_Year);
+          & Integer'Wide_Wide_Image (Current_Year);
    end Aflex_Get_Time;
 
    -----------------
@@ -290,9 +296,11 @@ package body MISC is
    -----------------
 
    procedure Aflex_Error (Msg : Unbounded_String) is
+      use Ada.Text_IO;
+
    begin
       Put (Standard_Error, "aflex: " & Msg);
-      New_Line (Standard_Error);
+      Ada.Text_IO.New_Line (Standard_Error);
       Main_Body.Aflex_End (1);
    end Aflex_Error;
 
@@ -301,9 +309,11 @@ package body MISC is
    -----------------
 
    procedure Aflex_Error (Msg : String) is
+      use Ada.Text_IO;
+
    begin
       Put (Standard_Error, "aflex: " & Msg);
-      New_Line (Standard_Error);
+      Ada.Text_IO.New_Line (Standard_Error);
       Main_Body.Aflex_End (1);
    end Aflex_Error;
 
@@ -312,9 +322,11 @@ package body MISC is
    -----------------
 
    procedure Aflex_Fatal (Msg : String) is
+      use Ada.Text_IO;
+
    begin
       Put (Standard_Error, "aflex: fatal internal error " & Msg);
-      New_Line (Standard_Error);
+      Ada.Text_IO.New_Line (Standard_Error);
       Main_Body.Aflex_End (1);
    end Aflex_Fatal;
 
@@ -323,9 +335,11 @@ package body MISC is
    -----------------
 
    procedure Aflex_Fatal (Msg : Unbounded_String) is
+      use Ada.Text_IO;
+
    begin
       Put (Standard_Error, "aflex: fatal internal error " & Msg);
-      New_Line (Standard_Error);
+      Ada.Text_IO.New_Line (Standard_Error);
       Main_Body.Aflex_End (1);
    end Aflex_Fatal;
 
@@ -333,10 +347,8 @@ package body MISC is
    -- Basename --
    --------------
 
-   function Basename return Unbounded_String is
-      End_Char_Pos   : Natural := Length (In_File_Name);
-      Start_Char_Pos : Integer;
-
+   function Basename
+     return Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String is
    begin
       if Length (In_File_Name) = 0 then
          -- if reading standard input give everything this name
@@ -344,33 +356,42 @@ package body MISC is
          return +"aflex_yy";
       end if;
 
-      return +Ada.Directories.Base_Name (+In_File_Name);
+      return +To_Wide_Wide_String (Ada.Directories.Base_Name (+In_File_Name));
    end Basename;
 
-  -- line_directive_out - spit out a "# line" statement
+   ------------------------
+   -- LINE_DIRECTIVE_OUT --
+   ------------------------
 
-  procedure LINE_DIRECTIVE_OUT(OUTPUT_FILE_NAME : in FILE_TYPE) is
-  begin
-    if GEN_LINE_DIRS then
-      Put (OUTPUT_FILE_NAME, "--# line ");
-      Put (OUTPUT_FILE_NAME, LINENUM, 1);
-      Put (OUTPUT_FILE_NAME, " """);
-      Put (OUTPUT_FILE_NAME, In_File_Name);
-      Put_Line (OUTPUT_FILE_NAME, """");
-    end if;
-  end LINE_DIRECTIVE_OUT;
+   -- line_directive_out - spit out a "# line" statement
 
+   procedure LINE_DIRECTIVE_OUT
+     (OUTPUT_FILE_NAME : Ada.Wide_Wide_Text_IO.File_Type) is
+   begin
+      if GEN_LINE_DIRS then
+         Put (OUTPUT_FILE_NAME, "--# line ");
+         Put (OUTPUT_FILE_NAME, LINENUM, 1);
+         Put (OUTPUT_FILE_NAME, " """);
+         Put
+           (OUTPUT_FILE_NAME, To_Wide_Wide_String (To_String (In_File_Name)));
+         Put_Line (OUTPUT_FILE_NAME, """");
+      end if;
+   end LINE_DIRECTIVE_OUT;
 
-  procedure LINE_DIRECTIVE_OUT is
-  begin
-    if (GEN_LINE_DIRS) then
-      PUT("--# line ");
-      PUT(LINENUM, 1);
-      PUT(" """);
-      PUT(In_File_Name);
-      PUT_LINE("""");
-    end if;
-  end LINE_DIRECTIVE_OUT;
+   ------------------------
+   -- LINE_DIRECTIVE_OUT --
+   ------------------------
+
+   procedure LINE_DIRECTIVE_OUT is
+   begin
+      if (GEN_LINE_DIRS) then
+         PUT("--# line ");
+         PUT(LINENUM, 1);
+         PUT(" """);
+         PUT(In_File_Name);
+         PUT_LINE("""");
+      end if;
+   end LINE_DIRECTIVE_OUT;
 
   -- all_upper - returns true if a string is all upper-case
 --    function ALL_UPPER(STR : in VSTRING) return BOOLEAN is
@@ -404,11 +425,7 @@ package body MISC is
 
    procedure MK2DATA
      (File  : Ada.Wide_Wide_Text_IO.File_Type;
-      Value : Integer)
-   is
-      use Ada.Wide_Wide_Text_IO;
-      use Ada.Integer_Wide_Wide_Text_IO;
-
+      Value : Integer) is
    begin
       if DATAPOS >= NUMDATAITEMS then
          PUT (FILE, ',');
@@ -726,13 +743,15 @@ package body MISC is
     return C - CHARACTER'POS('A') + CHARACTER'POS('a');
   end TOLOWER;
 
-  procedure SYNERR(STR : in STRING) is
-  begin
-    SYNTAXERROR := TRUE;
-    PUT(STANDARD_ERROR, "Syntax error at line ");
-    PUT(STANDARD_ERROR, LINENUM);
-    PUT(STANDARD_ERROR, STR);
-    NEW_LINE(STANDARD_ERROR);
-  end SYNERR;
+   procedure SYNERR(STR : in STRING) is
+      use Ada.Text_IO;
+
+   begin
+      SYNTAXERROR := TRUE;
+      Ada.Text_IO.PUT (STANDARD_ERROR, "Syntax error at line ");
+      PUT (STANDARD_ERROR, LINENUM);
+      Ada.Text_IO.PUT (STANDARD_ERROR, STR);
+      Ada.Text_IO.NEW_LINE (STANDARD_ERROR);
+   end SYNERR;
 
 end MISC;

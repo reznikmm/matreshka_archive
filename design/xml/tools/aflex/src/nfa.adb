@@ -21,16 +21,20 @@
 -- DESCRIPTION builds the NFA.
 -- NOTES this file mirrors flex as closely as possible.
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/nfaB.a,v 1.6 90/01/12 15:20:27 self Exp Locker: self $
+with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Integer_Text_IO;
+with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Text_IO;
+with Ada.Wide_Wide_Text_IO;
 
 with MISC_DEFS, NFA, MISC, ECS;
 use MISC_DEFS;
 
 package body NFA is
 
-   use Ada.Integer_Text_IO;
-   use Ada.Text_IO;
+   use Ada.Integer_Wide_Wide_Text_IO;
+--     use Ada.Text_IO;
+   use Ada.Wide_Wide_Text_IO;
 
 -- add_accept - add an accepting state to a machine
 --
@@ -92,7 +96,7 @@ package body NFA is
     for NS in 1 .. LASTNFA loop
       PUT(STANDARD_ERROR, "state # ");
       PUT(STANDARD_ERROR, NS, 4);
-      PUT(ASCII.HT);
+      PUT(Ada.Characters.Wide_Wide_Latin_1.HT);
       SYM := TRANSCHAR(NS);
       TSP1 := TRANS1(NS);
       TSP2 := TRANS2(NS);

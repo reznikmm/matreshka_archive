@@ -23,17 +23,27 @@
 --       because of limitations on file names.
 --       This version is for the VADS 5.5 Ada development system.
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/file_managerB.a,v 1.5 90/01/12 15:19:58 self Exp Locker: self $
+
+with Ada.Characters.Conversions;
 with Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Unbounded;
 
 with MISC_DEFS, MISC; use MISC_DEFS, MISC;
 
 package body External_File_Manager is
 
+   use Ada.Characters.Conversions;
    use Ada.Strings.Unbounded;
+   use Ada.Strings.Wide_Wide_Unbounded;
+   use Ada.Wide_Wide_Text_IO;
 
    function "+" (Item : Unbounded_String) return String renames To_String;
+
    function "+" (Item : String) return Unbounded_String
      renames To_Unbounded_String;
+
+   function "+" (Item : Unbounded_Wide_Wide_String) return Wide_Wide_String
+     renames To_Wide_Wide_String;
 
    --  FIX comment about compiler dependent
 
@@ -44,13 +54,17 @@ package body External_File_Manager is
    -- Get_IO_Spec_File --
    ----------------------
 
-   procedure Get_IO_Spec_File (F : in out File_Type) is
+   procedure Get_IO_Spec_File
+     (File : in out Ada.Wide_Wide_Text_IO.File_Type) is
    begin
       if Length (In_File_Name) /= 0 then
-         Create (F, Out_File, +Misc.Basename & "-io." & Ada_Spec_Suffix);
+         Create
+           (File,
+            Out_File,
+            To_String (+Misc.Basename) & "-io." & Ada_Spec_Suffix);
 
       else
-         Create (F, Out_File, "aflex_yy-io." & Ada_Spec_Suffix);
+         Create (File, Out_File, "aflex_yy-io." & Ada_Spec_Suffix);
       end if;
 
    exception
@@ -62,13 +76,16 @@ package body External_File_Manager is
    -- Get_IO_Body_File --
    ----------------------
 
-   procedure Get_IO_Body_File (F : in out File_Type) is
+   procedure Get_IO_Body_File (File : in out Ada.Wide_Wide_Text_IO.File_Type) is
    begin
       if Length (In_File_Name) /= 0 then
-         Create (F, Out_File, +Misc.Basename & "-io." & Ada_Body_Suffix);
+         Create
+           (File,
+            Out_File,
+            To_String (+Misc.Basename) & "-io." & Ada_Body_Suffix);
 
       else
-         Create (F, Out_File, "aflex_yy-io." & Ada_Body_Suffix);
+         Create (File, Out_File, "aflex_yy-io." & Ada_Body_Suffix);
       end if;
 
    exception
@@ -80,13 +97,17 @@ package body External_File_Manager is
    -- Get_DFA_Spec_File --
    -----------------------
 
-   procedure Get_DFA_Spec_File (F : in out File_Type) is
+   procedure Get_DFA_Spec_File
+     (File : in out Ada.Wide_Wide_Text_IO.File_Type) is
    begin
       if Length (In_File_Name) /= 0 then
-         Create (F, Out_File, +Misc.Basename & "-dfa." & Ada_Spec_Suffix);
+         Create
+           (File,
+            Out_File,
+            To_String (+Misc.Basename) & "-dfa." & Ada_Spec_Suffix);
 
       else
-         Create (F, Out_File, "aflex_yy-dfa." & Ada_Spec_Suffix);
+         Create (File, Out_File, "aflex_yy-dfa." & Ada_Spec_Suffix);
       end if;
 
    exception
@@ -98,13 +119,17 @@ package body External_File_Manager is
    -- Get_DFA_Body_File --
    -----------------------
 
-   procedure Get_DFA_Body_File (F : in out File_Type) is
+   procedure Get_DFA_Body_File
+     (File : in out Ada.Wide_Wide_Text_IO.File_Type) is
    begin
       if Length (In_File_Name) /= 0 then
-         Create (F, Out_File, +Misc.Basename & "-dfa." & Ada_Body_Suffix);
+         Create
+           (File,
+            Out_File,
+            To_String (+Misc.Basename) & "-dfa." & Ada_Body_Suffix);
 
       else
-         Create (F, Out_File, "aflex_yy-dfa." & Ada_Body_Suffix);
+         Create (File, Out_File, "aflex_yy-dfa." & Ada_Body_Suffix);
       end if;
 
    exception
@@ -116,14 +141,16 @@ package body External_File_Manager is
    -- Get_Scanner_Spec_File --
    ---------------------------
 
-   procedure Get_Scanner_Spec_File (F : in out File_Type) is
+   procedure Get_Scanner_Spec_File (F : in out Ada.Text_IO.File_Type) is
+      use Ada.Text_IO;
+
       Out_File_Name : Unbounded_String;
 
    begin
       if Length (In_File_Name) /= 0 then
          -- give out infile + ada_suffix
 
-         Out_File_Name := Misc.Basename & "." & Ada_Spec_Suffix;
+         Out_File_Name := +To_String (+Misc.Basename) & "." & Ada_Spec_Suffix;
 
       else
          Out_File_Name := +"aflex_yy." & Ada_Spec_Suffix;
@@ -133,7 +160,7 @@ package body External_File_Manager is
       Set_Output (F);
 
    exception
-      when Name_Error | Use_Error =>
+      when Ada.Text_IO.Name_Error | Ada.Text_IO.Use_Error =>
          Misc.Aflex_Fatal ("can't create scanner file " & Out_File_Name);
    end Get_Scanner_Spec_File;
 
@@ -141,21 +168,23 @@ package body External_File_Manager is
    -- Get_Scanner_Body_File --
    ---------------------------
 
-   procedure Get_Scanner_Body_File (F : in out File_Type) is
+   procedure Get_Scanner_Body_File
+     (File : in out Ada.Wide_Wide_Text_IO.File_Type)
+   is
       Out_File_Name : Unbounded_String;
 
    begin
       if Length (In_File_Name) /= 0 then
          -- give out infile + ada_suffix
 
-         Out_File_Name := Misc.Basename & "." & Ada_Body_Suffix;
+         Out_File_Name := +To_String (+Misc.Basename) & "." & Ada_Body_Suffix;
 
       else
          Out_File_Name := +"aflex_yy." & Ada_Body_Suffix;
       end if;
 
-      Create (F, Out_File, +Out_File_Name);
-      Set_Output (F);
+      Create (File, Out_File, +Out_File_Name);
+      Set_Output (File);
 
    exception
       when Name_Error | Use_Error =>
@@ -167,10 +196,7 @@ package body External_File_Manager is
    ------------------------
 
    procedure Get_Backtrack_File
-     (File : in out Ada.Wide_Wide_Text_IO.File_Type)
-   is
-      use Ada.Wide_Wide_Text_IO;
-
+     (File : in out Ada.Wide_Wide_Text_IO.File_Type) is
    begin
       CREATE (File, OUT_FILE, "aflex.backtrack");
 

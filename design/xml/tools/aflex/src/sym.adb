@@ -21,15 +21,19 @@
 -- DESCRIPTION implements only a simple symbol table using open hashing
 -- NOTES could be faster, but it isn't used much
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/symB.a,v 1.6 90/01/12 15:20:39 self Exp Locker: self $
-with Ada.Integer_Text_IO;
-with Ada.Strings.Unbounded.Text_IO;
-with Ada.Text_IO;
+with Ada.Characters.Conversions;
+with Ada.Integer_Wide_Wide_Text_IO;
+with Ada.Strings.Wide_Wide_Unbounded;
+with Ada.Wide_Wide_Text_IO;
 
 with MISC, NFA;
 
 package body SYM is
 
-   use Ada.Strings.Unbounded.Text_IO;
+   use Ada.Characters.Conversions;
+   use Ada.Integer_Wide_Wide_Text_IO;
+   use Ada.Strings.Wide_Wide_Unbounded;
+   use Ada.Wide_Wide_Text_IO;
 
   -- addsym - add symbol and definitions to symbol table
   --
@@ -179,14 +183,11 @@ package body SYM is
   -- is now called "INITIAL".  But we keep the following for the sake
   -- of future robustness.
 
-      use Ada.Integer_Text_IO;
-      use Ada.Text_IO;
-
     RESULT : BOOLEAN;
   begin
     if STR /= "0" then
       PUT(DEF_FILE, "   ");
-      PUT(DEF_FILE, STR);
+      PUT(DEF_FILE, To_Wide_Wide_String (To_String (STR)));
       PUT(DEF_FILE, " : constant YY_State_Type := ");
       PUT(DEF_FILE, LASTSC, 1);
       PUT_LINE(DEF_FILE, ";");
@@ -206,10 +207,12 @@ package body SYM is
       REALLOCATE_INTEGER_ARRAY(ACTVSC, CURRENT_MAX_SCS);
     end if;
 
-    SCNAME(LASTSC) := STR;
+      SCNAME (LASTSC) :=
+        To_Unbounded_Wide_Wide_String (To_Wide_Wide_String (To_String (STR)));
 
       ADDSYM
-        (SCNAME(LASTSC),
+        (To_Unbounded_String
+           (To_String (To_Wide_Wide_String (SCNAME(LASTSC)))),
          Null_Unbounded_String,
          LASTSC,
          SCTBL,
