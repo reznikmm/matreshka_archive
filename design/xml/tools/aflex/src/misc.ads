@@ -59,7 +59,8 @@ package Misc is
      return Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
    --  aflex_gettime - return current time
 
-   procedure Aflex_Error (Msg : Unbounded_String);
+   procedure Aflex_Error
+     (Msg : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String);
    procedure Aflex_Error (Msg : String);
    --  aflexerror - report an error message and terminate
    --  overloaded function, one for vstring, one for string.
@@ -87,8 +88,11 @@ package Misc is
    -- myesc - return character corresponding to escape sequence
 
   function OTOI(STR : in Unbounded_String) return CHARACTER;
+
    function Readable_Form (C : Wide_Wide_Character) return Unbounded_String;
-  procedure SYNERR(STR : in STRING);
+
+   procedure SYNERR (STR : Wide_Wide_String);
+
   procedure TRANSITION_STRUCT_OUT(ELEMENT_V, ELEMENT_N : in INTEGER);
   function SET_YY_TRAILING_HEAD_MASK(SRC : in INTEGER) return INTEGER;
   function CHECK_YY_TRAILING_HEAD_MASK(SRC : in INTEGER) return INTEGER;

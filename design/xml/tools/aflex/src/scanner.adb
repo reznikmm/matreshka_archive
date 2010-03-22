@@ -1,6 +1,7 @@
 with Ada.Characters.Conversions;
 with Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Unbounded;
 with Ada.Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
@@ -12,12 +13,20 @@ with scanner.IO; use scanner.IO;
 package body scanner is
    use Ada.Integer_Text_IO;
    use Ada.Strings.Unbounded;
+   use Ada.Strings.Wide_Wide_Unbounded;
    use Ada.Text_IO;
    use Parser.Tokens;
    use Unicode;
 
    function "+" (Item : String) return Unbounded_String
      renames To_Unbounded_String;
+
+   function "+" (item : String) return Unbounded_Wide_Wide_String is
+   begin
+      return
+        To_Unbounded_Wide_Wide_String
+          (Ada.Characters.Conversions.To_Wide_Wide_String (Item));
+   end "+";
 
 beglin : boolean := false;
 i, bracelevel: integer;
@@ -26,9 +35,9 @@ function YYLex return Token is
     toktype : Token;
     didadef, indented_code : boolean;
     cclval : integer;
-    nmdefptr : Unbounded_String;
-    nmdef    : Unbounded_String;
-    tmpbuf   : Unbounded_String;
+    nmdefptr : Unbounded_Wide_Wide_String;
+    nmdef    : Unbounded_Wide_Wide_String;
+    tmpbuf   : Unbounded_Wide_Wide_String;
 
 procedure ACTION_ECHO is
 begin
@@ -48,12 +57,14 @@ end MARK_END_OF_PROLOG;
    -- Put_Back_String --
    ---------------------
 
-   procedure Put_Back_String (Str : Unbounded_String; Start : Integer) is
-   begin
-      for J in reverse Start + 1 .. Length (Str) loop
-         unput (Element (Str, J));
-      end loop;
-   end Put_Back_String;
+      procedure Put_Back_String
+        (Str   : Unbounded_Wide_Wide_String;
+         Start : Integer) is
+      begin
+         for J in reverse Start + 1 .. Length (Str) loop
+            unput (Character'Val (Wide_Wide_Character'Pos (Element (Str, J))));
+         end loop;
+      end Put_Back_String;
 
 function check_yylex_here return boolean is
 begin
@@ -407,7 +418,7 @@ when 15 =>
 			i := length (nmdef);
 			while i >= 1 loop
 			    if Element (nmdef, i) /= ' '
-                              and Element (nmdef, i) /= ASCII.HT
+                              and Element (nmdef, i) /= HT
                             then
 				exit;
 			    end if;
@@ -612,7 +623,7 @@ when 38 =>
 							2, YYLength - 1);
 
 			nmdefptr := sym.ndlookup (tmpbuf);
-			if nmdefptr = Null_Unbounded_String then
+			if nmdefptr = Null_Unbounded_Wide_Wide_String then
 			    misc.synerr( "undefined {name}" );
 			else
 			    -- push back name surrounded by ()'s
@@ -642,8 +653,9 @@ when 39 =>
 when 40 =>
 --# line 264 "scanner.l"
  tmpbuf := +YYText (1 .. YYLength);
-			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
-			  return CHAR;
+               yylval := Wide_Wide_Character'Pos (Element (tmpbuf, 1));
+
+               return CHAR;
 
 
 when 41 =>
@@ -682,7 +694,7 @@ when 47 =>
 when 48 =>
 --# line 282 "scanner.l"
  tmpbuf := +YYText (1 .. YYLength);
-			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
+			  yylval := Wide_Wide_CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 
 
@@ -721,7 +733,7 @@ when 54 =>
 --# line 299 "scanner.l"
  ENTER(CCL);
 			  tmpbuf := +YYText (1 .. YYLength);
-			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
+			  yylval := Wide_Wide_CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 
 
@@ -735,7 +747,7 @@ YY_DO_BEFORE_ACTION; -- set up yytext again
 when 56 =>
 --# line 306 "scanner.l"
  tmpbuf := +YYText (1 .. YYLength);
-			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
+			  yylval := Wide_Wide_CHARACTER'POS (Element (tmpbuf, 1));
 			  return CHAR;
 
 

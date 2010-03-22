@@ -311,8 +311,10 @@ package MISC_DEFS is
   type HASH_LINK is access HASH_ENTRY;
   type HASH_ENTRY is
     record
-      PREV, NEXT : HASH_LINK;
-      NAME, STR_VAL : Unbounded_String;
+      PREV    : HASH_LINK;
+      NEXT    : HASH_LINK;
+      NAME    : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
+      STR_VAL : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
       INT_VAL : INTEGER;
     end record;
 
@@ -566,7 +568,7 @@ package MISC_DEFS is
   -- num_backtracking - number of DFA states requiring back-tracking
   -- bol_needed - whether scanner needs beginning-of-line recognition
 
-  NMSTR : Unbounded_String;
+  NMSTR : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
   SECTNUM, NUMMT, HSHCOL, DFAEQL, NUMEPS, EPS2, NUM_REALLOCS : INTEGER;
   TMPUSES, TOTNST, PEAKPAIRS, NUMUNIQ, NUMDUP, HSHSAVE : INTEGER;
   NUM_BACKTRACKING : INTEGER;

@@ -22,6 +22,7 @@
 -- NOTES could be faster, but it isn't used much
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/symS.a,v 1.4 90/01/12 15:20:42 self Exp Locker: self $
 with Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Unbounded;
 
 with MISC_DEFS;
 
@@ -30,24 +31,44 @@ package SYM is
    use Ada.Strings.Unbounded;
   use MISC_DEFS;
 
-  procedure ADDSYM(SYM, STR_DEF : in Unbounded_String;
-                   INT_DEF      : in INTEGER;
-                   TABLE        : in out HASH_TABLE;
-                   TABLE_SIZE   : in INTEGER;
-                   RESULT       : out BOOLEAN);
-  -- result indicates success
-  procedure CCLINSTAL(CCLTXT : in Unbounded_String;
-                      CCLNUM : in INTEGER);
-  function CCLLOOKUP(CCLTXT : in Unbounded_String) return INTEGER;
-  function FINDSYM(SYMBOL     : in Unbounded_String;
-                   TABLE      : in HASH_TABLE;
-                   TABLE_SIZE : in INTEGER) return HASH_LINK;
+   procedure ADDSYM
+     (SYM, STR_DEF : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
+      INT_DEF      : in INTEGER;
+      TABLE        : in out HASH_TABLE;
+      TABLE_SIZE   : in INTEGER;
+      RESULT       : out BOOLEAN);
+   -- result indicates success
 
-  function HASHFUNCT(STR       : in Unbounded_String;
-                     HASH_SIZE : in INTEGER) return INTEGER;
-  procedure NDINSTAL(ND, DEF : in Unbounded_String);
-  function NDLOOKUP(ND : in Unbounded_String) return Unbounded_String;
-  procedure SCINSTAL(STR     : in Unbounded_String;
-                     XCLUFLG : in BOOLEAN);
-  function SCLOOKUP(STR : in Unbounded_String) return INTEGER;
+   procedure CCLINSTAL
+     (CCLTXT : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
+      CCLNUM : INTEGER);
+
+   function CCLLOOKUP
+     (CCLTXT : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String)
+      return INTEGER;
+
+   function FINDSYM
+     (SYMBOL     : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
+      TABLE      : HASH_TABLE;
+      TABLE_SIZE : INTEGER) return HASH_LINK;
+
+   function HASHFUNCT
+     (STR       : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
+      HASH_SIZE : INTEGER) return INTEGER;
+
+   procedure NDINSTAL
+     (ND, DEF : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String);
+
+   function NDLOOKUP
+     (ND : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String)
+      return Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
+
+   procedure SCINSTAL
+     (STR     : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
+      XCLUFLG : Boolean);
+
+   function SCLOOKUP
+     (STR : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String)
+      return Integer;
+
 end SYM;

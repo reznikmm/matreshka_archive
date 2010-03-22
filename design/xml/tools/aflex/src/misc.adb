@@ -295,7 +295,7 @@ package body MISC is
    -- Aflex_Error --
    -----------------
 
-   procedure Aflex_Error (Msg : Unbounded_String) is
+   procedure Aflex_Error (Msg : Unbounded_Wide_Wide_String) is
       use Ada.Text_IO;
 
    begin
@@ -743,15 +743,13 @@ package body MISC is
     return C - CHARACTER'POS('A') + CHARACTER'POS('a');
   end TOLOWER;
 
-   procedure SYNERR(STR : in STRING) is
-      use Ada.Text_IO;
-
+   procedure SYNERR (STR : in Wide_Wide_String) is
    begin
       SYNTAXERROR := TRUE;
-      Ada.Text_IO.PUT (STANDARD_ERROR, "Syntax error at line ");
+      PUT (STANDARD_ERROR, "Syntax error at line ");
       PUT (STANDARD_ERROR, LINENUM);
-      Ada.Text_IO.PUT (STANDARD_ERROR, STR);
-      Ada.Text_IO.NEW_LINE (STANDARD_ERROR);
+      PUT (STANDARD_ERROR, STR);
+      NEW_LINE (STANDARD_ERROR);
    end SYNERR;
 
 end MISC;

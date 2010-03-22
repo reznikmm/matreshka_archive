@@ -22,9 +22,7 @@
 -- NOTES this file mirrors flex as closely as possible.
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/nfaB.a,v 1.6 90/01/12 15:20:27 self Exp Locker: self $
 with Ada.Characters.Wide_Wide_Latin_1;
-with Ada.Integer_Text_IO;
 with Ada.Integer_Wide_Wide_Text_IO;
-with Ada.Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
 with MISC_DEFS, NFA, MISC, ECS;
