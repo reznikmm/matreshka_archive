@@ -401,7 +401,7 @@ package body Main_Body is
 
             --  Tell aflex where to read input from.
             In_File_Name := +Argument (Arg_Num);
-            OPEN (INPUT_FILE, IN_FILE, Argument (Arg_Num));
+            OPEN (INPUT_FILE, IN_FILE, Argument (Arg_Num), "wcem=8");
             SET_INPUT (INPUT_FILE);
 
          exception
@@ -429,7 +429,7 @@ package body Main_Body is
          --  open the skeleton file
 
          if SKELNAME_USED then
-            OPEN(SKELFILE, IN_FILE, +SKELNAME);
+            OPEN(SKELFILE, IN_FILE, +SKELNAME, "wcem=8");
             SKELETON_MANAGER.SET_EXTERNAL_SKELETON;
          end if;
 
@@ -441,8 +441,8 @@ package body Main_Body is
       -- without a third argument create make an anonymous temp file.
 
       begin
-         CREATE(TEMP_ACTION_FILE, OUT_FILE);
-         CREATE(DEF_FILE, OUT_FILE);
+         CREATE(TEMP_ACTION_FILE, OUT_FILE, "", "wcem=8");
+         CREATE(DEF_FILE, OUT_FILE, "", "wcem=8");
 
       exception
          when USE_ERROR | NAME_ERROR =>
