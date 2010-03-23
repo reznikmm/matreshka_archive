@@ -1,0 +1,23 @@
+Build Instruction
+-----------------
+
+1. Build aflex
+
+  cd ../xml/tools/aflex/src
+  gprbuild -p
+
+2. Build ayacc
+
+  cd ../xml/tools/ayacc/src
+  gprbuild -p
+
+3. Build regexp engine demo
+
+  make
+
+Usage Instruction
+-----------------
+
+.obj/demo is a simple demo program. It accepts two command line parameters:
+name of the expression file and name of the data file. Both files must be in
+UTF-8 encoding.
