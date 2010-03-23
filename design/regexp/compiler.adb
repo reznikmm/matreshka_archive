@@ -35,6 +35,18 @@ package body Compiler is
                   Compile (AST (Expression).First),
                   Compile (AST (Expression).Second));
 
+            when Any_Code_Point =>
+               Program (Ins) := (Any_Code_Point, 0);
+
+               if AST (Expression).Next = 0 then
+                  Last := Last + 1;
+                  Program (Last) := (Kind => Match);
+                  Program (Ins).Next := Last;
+
+               else
+                  Program (Ins).Next := Compile (AST (Expression).Next);
+               end if;
+
             when Code_Point =>
                Program (Ins) := (Code_Point, 0, AST (Expression).Code);
 

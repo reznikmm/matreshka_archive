@@ -1,7 +1,8 @@
 
 package Engine is
 
-   type Instruction_Kinds is (None, Jump, Split, Code_Point, Match);
+   type Instruction_Kinds is
+     (None, Jump, Split, Any_Code_Point, Code_Point, Match);
 
    type Instruction (Kind : Instruction_Kinds := None) is record
       case Kind is
@@ -22,6 +23,9 @@ package Engine is
                   null;
 
                when Match =>
+                  null;
+
+               when Any_Code_Point =>
                   null;
 
                when Split =>

@@ -34,6 +34,14 @@ package body Engine is
 
          loop
             case Program (PC).Kind is
+               when Any_Code_Point =>
+                  if SP > String'Last then
+                     exit;
+                  end if;
+
+                  PC := Program (PC).Next;
+                  SP := SP + 1;
+
                when Code_Point =>
                   if SP > String'Last
                     or else String (SP) /= Program (PC).Code
