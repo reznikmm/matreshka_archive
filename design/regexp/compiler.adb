@@ -235,7 +235,19 @@ package body Compiler is
                   Ins_1 := Last;
                   Program (Ins_1) := (Save, 0, AST (Expression).Index, False);
                   Connect_Tails (Tails_1, Ins_1);
-                  Tails.Append (Ins_1);
+
+                  if AST (Expression).Next = 0 then
+                     Tails.Append (Ins_1);
+
+                  else
+                     declare
+                        Ins : Positive;
+
+                     begin
+                        Compile (AST (Expression).Next, Ins, Tails);
+                        Program (Ins_1).Next := Ins;
+                     end;
+                  end if;
                end;
 
             when others =>
