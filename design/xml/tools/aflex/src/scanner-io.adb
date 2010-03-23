@@ -256,7 +256,7 @@ end yy_get_next_buffer;
    procedure Open_Input (FName : String) is
    begin
       YY_Init := True;
-      Open (User_Input_File, In_File, FName);
+      Open (User_Input_File, In_File, FName, "wcem=8");
    end Open_Input;
 
    procedure Create_Output (FName : String := "") is
