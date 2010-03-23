@@ -66,7 +66,7 @@ PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax|Hex_Digit)\}
 			Put (Standard_Error, Linenum);
 			Put (Standard_Error, "ignored:");
 			New_Line (Standard_Error );
-			Put (Standard_Error, ASCII.HT );
+			Put (Standard_Error, Unicode.HT );
 			Put (Standard_Error, YYText (1 .. YYLength));
 			Linenum := Linenum + 1;
 			}
@@ -96,7 +96,7 @@ PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax|Hex_Digit)\}
 			i := length (nmdef);
 			while i >= 1 loop
 			    if Element (nmdef, i) /= ' '
-                              and Element (nmdef, i) /= ASCII.HT
+                              and Element (nmdef, i) /= Unicode.HT
                             then
 				exit;
 			    end if;
@@ -214,12 +214,12 @@ PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax|Hex_Digit)\}
 
 <SECT2,CCL>{PROPS}	{
 			declare
-			   Image : constant String := YYText;
+			   Image : constant Wide_Wide_String := YYText;
 
 			begin
 			   YYLVal :=
 			     Unicode.Ucd.Boolean_Properties'Pos
-			      (Unicode.Ucd.Boolean_Properties'Value
+			      (Unicode.Ucd.Boolean_Properties'Wide_Wide_Value
 			        (Image (Image'First + 3 .. Image'Last - 1))) + 1;
 
                            if Image (Image'First + 1) = 'P' then
@@ -237,7 +237,7 @@ PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax|Hex_Digit)\}
 							2, YYLength - 1);
 
 			nmdefptr := sym.ndlookup (tmpbuf);
-			if nmdefptr = Null_Unbounded_String then
+			if nmdefptr = Null_Unbounded_Wide_Wide_String then
 			    misc.synerr( "undefined {name}" );
 			else
 			    -- push back name surrounded by ()'s
@@ -262,7 +262,7 @@ PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax|Hex_Digit)\}
 			  end case;
 			}
 <SECT2>.		{ tmpbuf := +YYText (1 .. YYLength);
-			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
+			  yylval := Wide_Wide_Character'Pos (Element (tmpbuf, 1));
 			  return CHAR;
 			}
 <SECT2>\n		{ linenum := linenum + 1; return Newline; }
@@ -280,7 +280,7 @@ PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax|Hex_Digit)\}
 
 
 <QUOTE>[^"\n]		{ tmpbuf := +YYText (1 .. YYLength);
-			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
+			  yylval := Wide_Wide_Character'Pos (Element (tmpbuf, 1));
 			  return CHAR;
 			}
 <QUOTE>\"		{ ENTER(SECT2); return ( '"' ); }
@@ -295,16 +295,16 @@ PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax|Hex_Digit)\}
 
 <FIRSTCCL>"^"/[^-\n]	{ ENTER(CCL); return ( '^' ); }
 <FIRSTCCL>"^"/-		{ return ( '^' ); }
-<FIRSTCCL>-		{ ENTER(CCL); yylval := CHARACTER'POS('-'); return ( CHAR ); }
+<FIRSTCCL>-		{ ENTER(CCL); yylval := Wide_Wide_Character'Pos('-'); return ( CHAR ); }
 <FIRSTCCL>.		{ ENTER(CCL);
 			  tmpbuf := +YYText (1 .. YYLength);
-			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
+			  yylval := Wide_Wide_Character'Pos (Element (tmpbuf, 1));
 			  return CHAR;
 			}
 
 <CCL>-/[^\]\n]		{ return ( '-' ); }
 <CCL>[^\]\n]		{ tmpbuf := +YYText (1 .. YYLength);
-			  yylval := CHARACTER'POS (Element (tmpbuf, 1));
+			  yylval := Wide_Wide_Character'Pos (Element (tmpbuf, 1));
 			  return CHAR;
 			}
 <CCL>"]"		{ ENTER(SECT2); return ( ']' ); }
@@ -384,12 +384,12 @@ PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax|Hex_Digit)\}
 
 <FIRSTCCL>{PROPS}	{
 			declare
-			   Image : constant String := YYText;
+			   Image : constant Wide_Wide_String := YYText;
 
 			begin
 			   YYLVal :=
 			     Unicode.Ucd.Boolean_Properties'Pos
-			      (Unicode.Ucd.Boolean_Properties'Value
+			      (Unicode.Ucd.Boolean_Properties'Wide_Wide_Value
 			        (Image (Image'First + 3 .. Image'Last - 1))) + 1;
 
                            if Image (Image'First + 1) = 'P' then
@@ -416,109 +416,113 @@ with Parser.Tokens;
     Call_YYLex : Boolean := False;
     function YYLex return Parser.Tokens.Token;
 ##
-with Ada.Integer_Text_IO;
-with Ada.Strings.Unbounded;
-with Ada.Text_IO;
+with Ada.Characters.Wide_Wide_Latin_1;
+with Ada.Integer_Wide_Wide_Text_IO;
+with Ada.Strings.Wide_Wide_Unbounded;
+with Ada.Wide_Wide_Text_IO;
 
 with misc_defs, misc, sym;
 use misc_defs;
 with Unicode.Ucd;
 ##
-   use Ada.Integer_Text_IO;
-   use Ada.Strings.Unbounded;
-   use Ada.Text_IO;
+   use Ada.Integer_Wide_Wide_Text_IO;
+   use Ada.Strings.Wide_Wide_Unbounded;
+   use Ada.Wide_Wide_Text_IO;
    use Parser.Tokens;
    use Unicode;
 
-   function "+" (Item : String) return Unbounded_String
-     renames To_Unbounded_String;
+   function "+" (Item : Wide_Wide_String) return Unbounded_Wide_Wide_String
+     renames To_Unbounded_Wide_Wide_String;
 
 beglin : boolean := false;
 i, bracelevel: integer;
 
-function YYLex return Token is
-    toktype : Token;
-    didadef, indented_code : boolean;
-    cclval : integer;
-    nmdefptr : Unbounded_String;
-    nmdef    : Unbounded_String;
-    tmpbuf   : Unbounded_String;
+   function YYLex return Token is
+      toktype  : Token;
+      didadef, indented_code : boolean;
+      cclval   : Integer;
+      nmdefptr : Unbounded_Wide_Wide_String;
+      nmdef    : Unbounded_Wide_Wide_String;
+      tmpbuf   : Unbounded_Wide_Wide_String;
 
-procedure ACTION_ECHO is
-begin
-    Put (temp_action_file, YYText (1 .. YYLength));
-end ACTION_ECHO;
+   procedure ACTION_ECHO is
+   begin
+      Put (temp_action_file, YYText (1 .. YYLength));
+   end ACTION_ECHO;
 
-procedure MARK_END_OF_PROLOG is
-begin
-     Put (temp_action_file, "%%%% end of prolog");
-     New_Line (temp_action_file);
-end MARK_END_OF_PROLOG;
+   procedure MARK_END_OF_PROLOG is
+   begin
+      Put (temp_action_file, "%%%% end of prolog");
+      New_Line (temp_action_file);
+   end MARK_END_OF_PROLOG;
 
    ---------------------
    -- Put_Back_String --
    ---------------------
 
-   procedure Put_Back_String (Str : Unbounded_String; Start : Integer) is
+   procedure Put_Back_String
+     (Str : Unbounded_Wide_Wide_String; Start : Integer) is
    begin
       for J in reverse Start + 1 .. Length (Str) loop
          unput (Element (Str, J));
       end loop;
    end Put_Back_String;
 
-function check_yylex_here return boolean is
-begin
-	return ( (yytext'length >= 2) and then
-			((yytext(1) = '#') and (yytext(2) = '#')));
-end check_yylex_here;
+   function check_yylex_here return boolean is
+   begin
+      return yytext'length >= 2
+        and then ((yytext(1) = '#') and (yytext(2) = '#'));
+   end check_yylex_here;
 
 ##
-begin
-    if (call_yylex) then
-    	toktype := YYLex;
-    	call_yylex := false;
-    	return toktype;
-    end if;
+   begin
+      if (call_yylex) then
+         toktype := YYLex;
+         call_yylex := false;
+         return toktype;
+      end if;
 
-    if ( eofseen ) then
-	toktype := End_Of_Input;
-    else
-	toktype := YYLex;
-    end if;
--- this tracing code allows easy tracing of aflex runs
-if (trace) then
-   New_Line (Standard_Error);
-   Put (Standard_Error, "toktype = :");
-   Put (Standard_Error, Token'Image (toktype));
-   Put_line (Standard_Error, ":");
-end if;
+      if eofseen then
+         toktype := End_Of_Input;
 
-    if ( toktype = End_Of_Input ) then
-	eofseen := true;
+      else
+         toktype := YYLex;
+      end if;
 
-	if ( sectnum = 1 ) then
-	    misc.synerr(  "unexpected EOF" );
-	    sectnum := 2;
-	    toktype := SECTEND;
-	else
-	    if ( sectnum = 2 ) then
-	    	sectnum := 3;
-	    	toktype := SECTEND;
-	    end if;
-    	end if;
-    end if;
+      -- this tracing code allows easy tracing of aflex runs
 
-    if ( trace ) then
+      if trace then
+         New_Line (Standard_Error);
+         Put (Standard_Error, "toktype = :");
+         Put (Standard_Error, Token'Wide_Wide_Image (toktype));
+         Put_line (Standard_Error, ":");
+      end if;
+
+      if toktype = End_Of_Input then
+         eofseen := true;
+
+         if sectnum = 1 then
+            misc.synerr(  "unexpected EOF" );
+            sectnum := 2;
+            toktype := SECTEND;
+
+         elsif sectnum = 2 then
+            sectnum := 3;
+            toktype := SECTEND;
+         end if;
+      end if;
+
+      if trace then
 	if ( beglin ) then
 	    Put (Standard_Error, Num_Rules + 1);
-	    Put (Standard_Error, ASCII.HT);
+	    Put (Standard_Error, Unicode.HT);
 	    Beglin := False;
     	end if;
 
 	case toktype is
 	    when '<' | '>'|'^'|'$'|'"'|'['|']'|'{'|'}'|'|'|'('|
     	    	 ')'|'-'|'/'|'?'|'.'|'*'|'+'|',' =>
-		Put (Standard_Error, Token'Image (Toktype));
+		Put (Standard_Error, Token'Wide_Wide_Image (Toktype));
 
 	    when NEWLINE =>
 		New_Line (Standard_Error);
@@ -552,15 +556,15 @@ end if;
 		Put (Standard_Error, ''');
 
 	    when CHAR =>
-	    	if ( (yylval < CHARACTER'POS(' ')) or
-		     (yylval = CHARACTER'POS(ASCII.DEL)) )
+	    	if ( (yylval < Wide_Wide_Character'Pos (' ')) or
+		     (yylval = Wide_Wide_Character'Pos (Unicode.DEL)) )
                 then
 		    Put (Standard_Error, '\');
 		    Put (Standard_Error, YYLVal);
     		    Put (Standard_Error, '\');
 
 		else
-		    Put (Standard_Error, Token'Image (toktype));
+		    Put (Standard_Error, Token'Wide_Wide_Image (toktype));
     	    	end if;
 
 	    when NUMBER =>
@@ -576,10 +580,9 @@ end if;
 
 	    when others =>
 	    	Put (Standard_Error, "Something weird:");
-		Put_Line (Standard_Error, Token'Image (toktype));
+		Put_Line (Standard_Error, Token'Wide_Wide_Image (toktype));
     	end case;
-    end if;
+      end if;
 
-    return toktype;
-
-end YYLex;
+      return toktype;
+   end YYLex;

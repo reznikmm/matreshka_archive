@@ -234,8 +234,8 @@ package body Gen is
       --  all code around.
 
       New_Line;
-      Put_Line ("function yy_ec (Item : Character) return short is");
-      Put_Line ("   Code   : constant Integer := Character'Pos (Item);");
+      Put_Line ("function yy_ec (Item : Wide_Wide_Character) return short is");
+      Put_Line ("   Code   : constant Integer := Wide_Wide_Character'Pos (Item);");
       Put_Line ("   Group  : constant Primary_Stage_Index :=");
       Put_Line ("     Primary_Stage_Index (Code / 256);");
       Put_Line ("   Offset : constant Secondary_Stage_Index :=");
@@ -462,7 +462,7 @@ package body Gen is
     INDENT_PUTS("yy_current_state := yy_start;");
 
     if (BOL_NEEDED) then
-      INDENT_PUTS("if Previous (yy_ch_buf, yy_bp) = ASCII.LF then");
+      INDENT_PUTS("if Previous (yy_ch_buf, yy_bp) = Ada.Characters.Wide_Wide_Latin_1.LF then");
       INDENT_UP;
       INDENT_PUTS("yy_current_state := yy_current_state + 1;");
       INDENT_DOWN;
