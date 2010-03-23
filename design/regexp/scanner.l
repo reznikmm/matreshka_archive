@@ -238,7 +238,7 @@
    YYLVal :=
      (Code_Point,
       Wide_Wide_Character'Val
-        (Integer'Wide_Wide_Value ("16#" & YYText & "#")));
+        (Integer'Wide_Wide_Value ("16#" & YYText (3 .. 6) & "#")));
 
    return Token_Code_Point;
 }
@@ -249,7 +249,7 @@
    YYLVal :=
      (Code_Point,
       Wide_Wide_Character'Val
-        (Integer'Wide_Wide_Value ("16#" & YYText & "#")));
+        (Integer'Wide_Wide_Value ("16#" & YYText (3 .. 10) & "#")));
 
    return Token_Code_Point;
 }
