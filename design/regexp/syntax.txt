@@ -1,29 +1,31 @@
 
-.          Matches any single character except line break characters \r and \n.
+.                                                    Matches any single character except line break characters \r and \n.
 
-\X         Match X, where X is Pattern_White_Space or Pattern_Syntax.
+\X where X is Pattern_White_Space or Pattern_Syntax  Matches a specified Unicode code point. Can be used inside character classes.
 
-\a         Match bell character (can be used in character class)
-\e         Match escape character (can be used in character class)
-\f         Match form feed character (can be used in character class)
-\n         Match LF (can be used in character class)
-\r         Match CR (can be used in character class)
-\t         Match horizontal tab character (can be used in character class)
-\v         Match vertical tab character (can be used in character class)
-\c[A-Z]    Match an ASCII character Control+A through Control+Z (can be used in character class)
+\a                                                   Match bell character (can be used in character class)
+\e                                                   Match escape character (can be used in character class)
+\f                                                   Match form feed character (can be used in character class)
+\n                                                   Match LF (can be used in character class)
+\r                                                   Match CR (can be used in character class)
+\t                                                   Match horizontal tab character (can be used in character class)
+\v                                                   Match vertical tab character (can be used in character class)
+\c[A-Z]                                              Match an ASCII character Control+A through Control+Z (can be used in character class)
+\uFFFF where FFFF are 4 hexadecimal digits           Matches a specific Unicode code point. Can be used inside character classes.
+\UFFFFFFFF where FFFFFFFF are 8 hexadecimal digits   Matches a specific Unicode code point. Can be used inside character classes.
 
-\Q ... \E  Matches the characters between \Q and \E literally, suppressing the meaning of special characters.
+\Q ... \E                                            Matches the characters between \Q and \E literally, suppressing the meaning of special characters.
 
-|          Causes the regex engine to match either the part on the left side, or the part on the right side. Can be strung together into a series of options.
+|                                                    Causes the regex engine to match either the part on the left side, or the part on the right side. Can be strung together into a series of options.
 
-?          Makes the preceding item optional. Greedy, so the optional item is included in the match if possible.
-??         Makes the preceding item optional. Lazy, so the optional item is excluded in the match if possible.
-*          Repeats the previous item zero or more times. Greedy, so as many items as possible will be matched before trying permutations with less matches of the preceding item, up to the point where the preceding item is not matched at all.
-*?         Repeats the previous item zero or more times. Lazy, so the engine first attempts to skip the previous item, before trying permutations with ever increasing matches of the preceding item.
-+          Repeats the previous item once or more. Greedy, so as many items as possible will be matched before trying permutations with less matches of the preceding item, up to the point where the preceding item is matched only once.
-+?         Repeats the previous item once or more. Lazy, so the engine first matches the previous item only once, before trying permutations with ever increasing matches of the preceding item.
-{n} where n is an integer >= 1 	Repeats the previous item exactly n times.
-{n,m} where n >= 0 and m >= n   Repeats the previous item between n and m times. Greedy, so repeating m times is tried before reducing the repetition to n times.
-{n,m}? where n >= 0 and m >= n  Repeats the previous item between n and m times. Lazy, so repeating n times is tried before increasing the repetition to m times.
-{n,} where n >= 0               Repeats the previous item at least n times. Greedy, so as many items as possible will be matched before trying permutations with less matches of the preceding item, up to the point where the preceding item is matched only n times.
-{n,}? where n >= 0              Repeats the previous item n or more times. Lazy, so the engine first matches the previous item n times, before trying permutations with ever increasing matches of the preceding item.
+?                                                    Makes the preceding item optional. Greedy, so the optional item is included in the match if possible.
+??                                                   Makes the preceding item optional. Lazy, so the optional item is excluded in the match if possible.
+*                                                    Repeats the previous item zero or more times. Greedy, so as many items as possible will be matched before trying permutations with less matches of the preceding item, up to the point where the preceding item is not matched at all.
+*?                                                   Repeats the previous item zero or more times. Lazy, so the engine first attempts to skip the previous item, before trying permutations with ever increasing matches of the preceding item.
++                                                    Repeats the previous item once or more. Greedy, so as many items as possible will be matched before trying permutations with less matches of the preceding item, up to the point where the preceding item is matched only once.
++?                                                   Repeats the previous item once or more. Lazy, so the engine first matches the previous item only once, before trying permutations with ever increasing matches of the preceding item.
+{n} where n is an integer >= 1                       Repeats the previous item exactly n times.
+{n,m} where n >= 0 and m >= n                        Repeats the previous item between n and m times. Greedy, so repeating m times is tried before reducing the repetition to n times.
+{n,m}? where n >= 0 and m >= n                       Repeats the previous item between n and m times. Lazy, so repeating n times is tried before increasing the repetition to m times.
+{n,} where n >= 0                                    Repeats the previous item at least n times. Greedy, so as many items as possible will be matched before trying permutations with less matches of the preceding item, up to the point where the preceding item is matched only n times.
+{n,}? where n >= 0                                   Repeats the previous item n or more times. Lazy, so the engine first matches the previous item n times, before trying permutations with ever increasing matches of the preceding item.
