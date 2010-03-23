@@ -23,7 +23,7 @@
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/genS.a,v 1.4 90/01/12 15:20:07 self Exp Locker: self $
 
 package GEN is
-  procedure DO_INDENT;
+  procedure Do_Indent;
   procedure GEN_BACKTRACKING;
   procedure GEN_BT_ACTION;
   procedure GEN_FIND_ACTION;

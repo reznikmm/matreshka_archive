@@ -47,7 +47,7 @@ package body Gen is
    use Ada.Wide_Wide_Text_IO;
    use Unicode;
 
-  INDENT_LEVEL : INTEGER := 0;  -- each level is 4 spaces
+  INDENT_LEVEL : INTEGER := 0;  -- each level is 3 spaces
 
   MAX_SHORT    : constant INTEGER := 32767;
   procedure INDENT_UP is
@@ -66,22 +66,16 @@ package body Gen is
     INDENT_LEVEL := INDENT_VAL;
   end SET_INDENT;
 
+   ---------------
+   -- Do_Indent --
+   ---------------
 
-  -- indent to the current level
+   --  Indent to the current level.
 
-  procedure DO_INDENT is
-    I : INTEGER := INDENT_LEVEL*4;
-  begin
-    while (I >= 8) loop
-      PUT (Ada.Characters.Wide_Wide_Latin_1.HT);
-      I := I - 8;
-    end loop;
-
-    while (I > 0) loop
-      PUT (' ');
-      I := I - 1;
-    end loop;
-  end DO_INDENT;
+   procedure Do_Indent is
+   begin
+      Set_Col (Ada.Wide_Wide_Text_IO.Count (INDENT_LEVEL) * 3 + 1);
+   end Do_Indent;
 
   -- generate the code to keep backtracking information
 
@@ -109,10 +103,11 @@ package body Gen is
 
     SET_INDENT(4);
 
-    INDENT_PUTS("when 0 => -- must backtrack");
+    INDENT_PUTS ("when 0 => -- must backtrack");
+    INDENT_UP;
 
     if (FULLTBL) then
-      INDENT_PUTS("yy_cp := yy_last_accepting_cpos + 1;");
+      INDENT_PUTS ("yy_cp := yy_last_accepting_cpos + 1;");
     else
 
       -- backtracking info for compressed tables is taken \after/
@@ -121,7 +116,9 @@ package body Gen is
     end if;
 
     INDENT_PUTS("yy_current_state := yy_last_accepting_state;");
+    NEW_LINE;
     INDENT_PUTS("goto next_action;");
+    INDENT_DOWN;
     NEW_LINE;
 
     SET_INDENT(0);
@@ -360,7 +357,7 @@ package body Gen is
       -- yy_c's meta-equivalence class without worrying
       -- about erroneously looking up the meta-equivalence
       -- class twice
-      DO_INDENT;
+      Do_Indent;
 
       -- lastdfa + 2 is the beginning of the templates
       PUT("if ( yy_current_state >= ");
@@ -429,7 +426,7 @@ package body Gen is
 
       INDENT_DOWN;
 
-      DO_INDENT;
+      Do_Indent;
 
       PUT_LINE("end loop;");
 
@@ -672,7 +669,7 @@ package body Gen is
 
    procedure INDENT_PUTS(STR : Wide_Wide_String) is
    begin
-      DO_INDENT;
+      Do_Indent;
       PUT_LINE (STR);
    end INDENT_PUTS;
 
@@ -794,30 +791,38 @@ package body Gen is
     MISC.ACTION_OUT;
     MISC.ACTION_OUT;
 
-    -- generate cases for any missing EOF rules
-    for I in 1 .. LASTSC loop
-      if (not SCEOF(I)) then
-        DO_INDENT;
-        if not DID_EOF_RULE then
-          PUT ("when ");
-        else
-          PUT_LINE ("|");
-        end if;
-        PUT ("YY_END_OF_BUFFER + ");
-        PUT (SCNAME(I));
-        PUT(" + 1 ");
-        DID_EOF_RULE := TRUE;
-      end if;
-    end loop;
-    if (DID_EOF_RULE) then
-      PUT_LINE("=> ");
-    end if;
+      --  Generate cases for any missing EOF rules.
 
-    if (DID_EOF_RULE) then
-      INDENT_UP;
-      INDENT_PUTS("return End_Of_Input;");
-      INDENT_DOWN;
-    end if;
+      SET_INDENT (4);
+
+      for I in 1 .. LASTSC loop
+         if not SCEOF (I) then
+            Do_Indent;
+
+            if not DID_EOF_RULE then
+               PUT ("when ");
+
+            else
+               PUT ("  | ");
+            end if;
+
+            PUT ("YY_END_OF_BUFFER + ");
+            PUT (SCNAME (I));
+            PUT (" + 1 ");
+            DID_EOF_RULE := TRUE;
+         end if;
+      end loop;
+
+      if DID_EOF_RULE then
+         Do_Indent;
+         Put_Line ("=>");
+      end if;
+
+      if DID_EOF_RULE then
+         INDENT_UP;
+         INDENT_PUTS("return End_Of_Input;");
+         INDENT_DOWN;
+      end if;
 
     SKELETON_MANAGER.SKEL_OUT;
 

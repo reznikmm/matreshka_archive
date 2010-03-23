@@ -188,7 +188,7 @@ package body NFA is
     -- number because we do it before we start parsing the current rule
     RULE_LINENUM(NUM_RULES) := LINENUM;
 
-    PUT(TEMP_ACTION_FILE, "when ");
+    PUT(TEMP_ACTION_FILE, "            when ");
     PUT(TEMP_ACTION_FILE, NUM_RULES, 1);
     PUT_LINE(TEMP_ACTION_FILE, " => ");
 

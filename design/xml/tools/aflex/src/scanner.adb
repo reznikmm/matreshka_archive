@@ -58,13 +58,15 @@ i, bracelevel: integer;
         and then ((yytext(1) = '#') and (yytext(2) = '#'));
    end check_yylex_here;
 
-function YYLex return Token is
-subtype short is Integer range -32768..32767;
-    yy_act : Integer;
-    yy_c   : short;
+   function YYLex return Token is
 
--- returned upon end-of-file
-YY_END_TOK : constant Integer := 0;
+      subtype short is Integer range -32768..32767;
+
+      yy_act : Integer;
+      yy_c   : short;
+
+      --  returned upon end-of-file
+      YY_END_TOK : constant Integer := 0;
 YY_END_OF_BUFFER : constant := 84;
 YY_Current_State : YY_State_Type;
    INITIAL : constant YY_State_Type := 0;
@@ -654,12 +656,12 @@ pragma Inline (YY_USER_ACTION);
             YY_C             : Short;
             Index            : Integer;
             Code             : Wide_Wide_Character;
-    yy_bp : integer := yytext_ptr;
+   yy_bp : integer := yytext_ptr;
 begin
-    yy_current_state := yy_start;
-    if Previous (yy_ch_buf, yy_bp) = Ada.Characters.Wide_Wide_Latin_1.LF then
-	yy_current_state := yy_current_state + 1;
-    end if;
+   yy_current_state := yy_start;
+   if Previous (yy_ch_buf, yy_bp) = Ada.Characters.Wide_Wide_Latin_1.LF then
+      yy_current_state := yy_current_state + 1;
+   end if;
 
    declare
       yy_cp : integer := yytext_ptr;
@@ -668,20 +670,20 @@ begin
       while yy_cp < yy_c_buf_p loop
          Index := yy_cp;
 
-	Index := yy_cp;
-	Next (yy_ch_buf, Index, Code);
-	yy_c := yy_ec(Code);
-	if (yy_accept(yy_current_state) /= 0 ) then
-	    yy_last_accepting_state := yy_current_state;
-	    yy_last_accepting_cpos := yy_cp;
-	end if;
-	while ( yy_chk(yy_base(yy_current_state) + yy_c) /= yy_current_state ) loop
-	    yy_current_state := yy_def(yy_current_state);
-	    if ( yy_current_state >= 332 ) then
-		yy_c := yy_meta(yy_c);
-	    end if;
-	end loop;
-	yy_current_state := yy_nxt(yy_base(yy_current_state) + yy_c);
+      Index := yy_cp;
+      Next (yy_ch_buf, Index, Code);
+      yy_c := yy_ec(Code);
+      if (yy_accept(yy_current_state) /= 0 ) then
+         yy_last_accepting_state := yy_current_state;
+         yy_last_accepting_cpos := yy_cp;
+      end if;
+      while ( yy_chk(yy_base(yy_current_state) + yy_c) /= yy_current_state ) loop
+         yy_current_state := yy_def(yy_current_state);
+         if ( yy_current_state >= 332 ) then
+            yy_c := yy_meta(yy_c);
+         end if;
+      end loop;
+      yy_current_state := yy_nxt(yy_base(yy_current_state) + yy_c);
          yy_cp := Index;
       end loop;
    end;
@@ -734,36 +736,36 @@ end yy_get_previous_state;
 
         -- yy_bp points to the position in yy_ch_buf of the start of the
         -- current run.
-	yy_bp := yy_cp;
-	yy_current_state := yy_start;
-	if Previous (yy_ch_buf, yy_bp) = Ada.Characters.Wide_Wide_Latin_1.LF then
-	    yy_current_state := yy_current_state + 1;
-	end if;
-	loop
-		Index := yy_cp;
-		Next (yy_ch_buf, Index, Code);
-		yy_c := yy_ec(Code);
-		if (yy_accept(yy_current_state) /= 0 ) then
-		    yy_last_accepting_state := yy_current_state;
-		    yy_last_accepting_cpos := yy_cp;
-		end if;
-		while ( yy_chk(yy_base(yy_current_state) + yy_c) /= yy_current_state ) loop
-		    yy_current_state := yy_def(yy_current_state);
-		    if ( yy_current_state >= 332 ) then
-			yy_c := yy_meta(yy_c);
-		    end if;
-		end loop;
-		yy_current_state := yy_nxt(yy_base(yy_current_state) + yy_c);
-	    yy_cp := Index;
+      yy_bp := yy_cp;
+      yy_current_state := yy_start;
+      if Previous (yy_ch_buf, yy_bp) = Ada.Characters.Wide_Wide_Latin_1.LF then
+         yy_current_state := yy_current_state + 1;
+      end if;
+      loop
+            Index := yy_cp;
+            Next (yy_ch_buf, Index, Code);
+            yy_c := yy_ec(Code);
+            if (yy_accept(yy_current_state) /= 0 ) then
+               yy_last_accepting_state := yy_current_state;
+               yy_last_accepting_cpos := yy_cp;
+            end if;
+            while ( yy_chk(yy_base(yy_current_state) + yy_c) /= yy_current_state ) loop
+               yy_current_state := yy_def(yy_current_state);
+               if ( yy_current_state >= 332 ) then
+                  yy_c := yy_meta(yy_c);
+               end if;
+            end loop;
+            yy_current_state := yy_nxt(yy_base(yy_current_state) + yy_c);
+         yy_cp := Index;
 if ( yy_current_state = 331 ) then
     exit;
 end if;
-	end loop;
-	yy_cp := yy_last_accepting_cpos;
-	yy_current_state := yy_last_accepting_state;
+      end loop;
+      yy_cp := yy_last_accepting_cpos;
+      yy_current_state := yy_last_accepting_state;
 
 <<next_action>>
-	    yy_act := yy_accept(yy_current_state);
+         yy_act := yy_accept(yy_current_state);
             YY_DO_BEFORE_ACTION;
             YY_USER_ACTION;
 
@@ -784,40 +786,41 @@ end if;
 
 <<do_action>>   -- this label is used only to access EOF actions
             case yy_act is
-		when 0 => -- must backtrack
-		yy_cp := yy_last_accepting_cpos;
-		yy_current_state := yy_last_accepting_state;
-		goto next_action;
+            when 0 => -- must backtrack
+               yy_cp := yy_last_accepting_cpos;
+               yy_current_state := yy_last_accepting_state;
+
+               goto next_action;
 
 
 
-when 1 => 
+            when 1 => 
 --# line 47 "scanner.l"
  indented_code := true; 
 
-when 2 => 
+            when 2 => 
 --# line 48 "scanner.l"
  linenum := linenum + 1; ECHO;
 				-- treat as a comment;
 			
 
-when 3 => 
+            when 3 => 
 --# line 51 "scanner.l"
  linenum := linenum + 1; ECHO; 
 
-when 4 => 
+            when 4 => 
 --# line 52 "scanner.l"
  return ( SCDECL ); 
 
-when 5 => 
+            when 5 => 
 --# line 53 "scanner.l"
  return ( XSCDECL ); 
 
-when 6 => 
+            when 6 => 
 --# line 55 "scanner.l"
  return ( WHITESPACE ); 
 
-when 7 => 
+            when 7 => 
 --# line 57 "scanner.l"
 
 			sectnum := 2;
@@ -826,7 +829,7 @@ when 7 =>
 			return ( SECTEND );
 			
 
-when 8 => 
+            when 8 => 
 --# line 64 "scanner.l"
 
 			Put (Standard_Error, "old-style lex command at line ");
@@ -838,7 +841,7 @@ when 8 =>
 			Linenum := Linenum + 1;
 			
 
-when 9 => 
+            when 9 => 
 --# line 74 "scanner.l"
 
 			nmstr := +YYText (1 .. YYLength);
@@ -846,33 +849,33 @@ when 9 =>
 			ENTER(PICKUPDEF);
 			
 
-when 10 => 
+            when 10 => 
 --# line 80 "scanner.l"
  nmstr := +YYText (1 .. YYLength);
 			  return NAME;
 			
 
-when 11 => 
+            when 11 => 
 --# line 83 "scanner.l"
  linenum := linenum + 1;
 			  -- allows blank lines in section 1;
 			
 
-when 12 => 
+            when 12 => 
 --# line 86 "scanner.l"
  linenum := linenum + 1; return Newline; 
 
-when 13 => 
+            when 13 => 
 --# line 87 "scanner.l"
  misc.synerr( "illegal character" );ENTER(RECOVER);
 
-when 14 => 
+            when 14 => 
 --# line 89 "scanner.l"
  null;
 			  -- separates name and definition;
 			
 
-when 15 => 
+            when 15 => 
 --# line 93 "scanner.l"
 
 			nmdef := +YYText (1 .. YYLength);
@@ -891,7 +894,7 @@ when 15 =>
 			didadef := true;
 			
 
-when 16 => 
+            when 16 => 
 --# line 110 "scanner.l"
 
 			if ( not didadef ) then
@@ -901,7 +904,7 @@ when 16 =>
 			linenum := linenum + 1;
 			
 
-when 17 => 
+            when 17 => 
 --# line 118 "scanner.l"
  linenum := linenum + 1;
 			  ENTER(0);
@@ -909,7 +912,7 @@ when 17 =>
 			  return NAME;
 			
 
-when 18 => 
+            when 18 => 
 yy_cp := yy_cp - 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
@@ -921,7 +924,7 @@ YY_DO_BEFORE_ACTION; -- set up yytext again
 			ENTER(SECT2);
 			
 
-when 19 => 
+            when 19 => 
 --# line 131 "scanner.l"
  linenum := linenum + 1; ACTION_ECHO; 
 
@@ -932,62 +935,62 @@ when YY_END_OF_BUFFER +SECT2PROLOG + 1
 			  return End_Of_Input;
 			
 
-when 21 => 
+            when 21 => 
 --# line 137 "scanner.l"
  linenum := linenum + 1;
 			  -- allow blank lines in sect2;
 
 			-- this rule matches indented lines which
 			-- are not comments.
-when 22 => 
+            when 22 => 
 --# line 142 "scanner.l"
 
 			misc.synerr("indented code found outside of action");
 			linenum := linenum + 1;
 			
 
-when 23 => 
+            when 23 => 
 --# line 147 "scanner.l"
  ENTER(SC); return ( '<' ); 
 
-when 24 => 
+            when 24 => 
 --# line 148 "scanner.l"
  return ( '^' ); 
 
-when 25 => 
+            when 25 => 
 --# line 149 "scanner.l"
  ENTER(QUOTE); return ( '"' ); 
 
-when 26 => 
+            when 26 => 
 yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
 --# line 150 "scanner.l"
  ENTER(NUM); return ( '{' ); 
 
-when 27 => 
+            when 27 => 
 --# line 151 "scanner.l"
  ENTER(BRACEERROR); 
 
-when 28 => 
+            when 28 => 
 yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
 --# line 152 "scanner.l"
  return ( '$' ); 
 
-when 29 => 
+            when 29 => 
 --# line 154 "scanner.l"
  continued_action := true;
 			  linenum := linenum + 1;
 			  return Newline;
 			
 
-when 30 => 
+            when 30 => 
 --# line 159 "scanner.l"
  linenum := linenum + 1; ACTION_ECHO; 
 
-when 31 => 
+            when 31 => 
 --# line 161 "scanner.l"
 
 			-- this rule is separate from the one below because
@@ -1000,7 +1003,7 @@ when 31 =>
 			return Newline;
 			
 
-when 32 => 
+            when 32 => 
 yy_cp := yy_cp - 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
@@ -1012,15 +1015,15 @@ YY_DO_BEFORE_ACTION; -- set up yytext again
 			return Newline;
 			
 
-when 33 => 
+            when 33 => 
 --# line 179 "scanner.l"
  linenum := linenum + 1; return Newline; 
 
-when 34 => 
+            when 34 => 
 --# line 181 "scanner.l"
  return ( EOF_OP ); 
 
-when 35 => 
+            when 35 => 
 --# line 183 "scanner.l"
 
 			sectnum := 3;
@@ -1029,7 +1032,7 @@ when 35 =>
 			-- to stop the parser
 			
 
-when 36 => 
+            when 36 => 
 --# line 190 "scanner.l"
 
 
@@ -1056,7 +1059,7 @@ when 36 =>
 			end if;
 			
 
-when 37 => 
+            when 37 => 
 --# line 215 "scanner.l"
 
 			declare
@@ -1076,7 +1079,7 @@ when 37 =>
 			end;
 			
 
-when 38 => 
+            when 38 => 
 --# line 233 "scanner.l"
 
 			nmstr := +YYText (1 .. YYLength);
@@ -1095,7 +1098,7 @@ when 38 =>
 			end if;
 			
 
-when 39 => 
+            when 39 => 
 --# line 250 "scanner.l"
  tmpbuf := +YYText (1 .. YYLength);
 			  case Element (tmpbuf, 1) is
@@ -1112,58 +1115,58 @@ when 39 =>
 			  end case;
 			
 
-when 40 => 
+            when 40 => 
 --# line 264 "scanner.l"
  tmpbuf := +YYText (1 .. YYLength);
 			  yylval := Wide_Wide_Character'Pos (Element (tmpbuf, 1));
 			  return CHAR;
 			
 
-when 41 => 
+            when 41 => 
 --# line 268 "scanner.l"
  linenum := linenum + 1; return Newline; 
 
-when 42 => 
+            when 42 => 
 --# line 271 "scanner.l"
  return ( ',' ); 
 
-when 43 => 
+            when 43 => 
 --# line 272 "scanner.l"
  ENTER(SECT2); return ( '>' ); 
 
-when 44 => 
+            when 44 => 
 yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
 --# line 273 "scanner.l"
  ENTER(CARETISBOL); return ( '>' ); 
 
-when 45 => 
+            when 45 => 
 --# line 274 "scanner.l"
  nmstr := +YYText (1 .. YYLength);
 			  return NAME;
 			
 
-when 46 => 
+            when 46 => 
 --# line 277 "scanner.l"
  misc.synerr( "bad start condition name" ); 
 
-when 47 => 
+            when 47 => 
 --# line 279 "scanner.l"
  ENTER(SECT2); return ( '^' ); 
 
-when 48 => 
+            when 48 => 
 --# line 282 "scanner.l"
  tmpbuf := +YYText (1 .. YYLength);
 			  yylval := Wide_Wide_Character'Pos (Element (tmpbuf, 1));
 			  return CHAR;
 			
 
-when 49 => 
+            when 49 => 
 --# line 286 "scanner.l"
  ENTER(SECT2); return ( '"' ); 
 
-when 50 => 
+            when 50 => 
 --# line 288 "scanner.l"
 
 			misc.synerr( "missing quote" );
@@ -1172,25 +1175,25 @@ when 50 =>
 			return ( '"' );
 			
 
-when 51 => 
+            when 51 => 
 yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
 --# line 296 "scanner.l"
  ENTER(CCL); return ( '^' ); 
 
-when 52 => 
+            when 52 => 
 yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
 --# line 297 "scanner.l"
  return ( '^' ); 
 
-when 53 => 
+            when 53 => 
 --# line 298 "scanner.l"
  ENTER(CCL); yylval := Wide_Wide_Character'Pos('-'); return ( CHAR ); 
 
-when 54 => 
+            when 54 => 
 --# line 299 "scanner.l"
  ENTER(CCL);
 			  tmpbuf := +YYText (1 .. YYLength);
@@ -1198,40 +1201,40 @@ when 54 =>
 			  return CHAR;
 			
 
-when 55 => 
+            when 55 => 
 yy_cp := yy_bp + 1;
 yy_c_buf_p := yy_cp;
 YY_DO_BEFORE_ACTION; -- set up yytext again
 --# line 305 "scanner.l"
  return ( '-' ); 
 
-when 56 => 
+            when 56 => 
 --# line 306 "scanner.l"
  tmpbuf := +YYText (1 .. YYLength);
 			  yylval := Wide_Wide_Character'Pos (Element (tmpbuf, 1));
 			  return CHAR;
 			
 
-when 57 => 
+            when 57 => 
 --# line 310 "scanner.l"
  ENTER(SECT2); return ( ']' ); 
 
-when 58 => 
+            when 58 => 
 --# line 313 "scanner.l"
 
 			yylval := misc.myctoi (+YYText (1 .. YYLength));
 			return ( NUMBER );
 			
 
-when 59 => 
+            when 59 => 
 --# line 318 "scanner.l"
  return ( ',' ); 
 
-when 60 => 
+            when 60 => 
 --# line 319 "scanner.l"
  ENTER(SECT2); return ( '}' ); 
 
-when 61 => 
+            when 61 => 
 --# line 321 "scanner.l"
 
 			misc.synerr( "bad character inside {}'s" );
@@ -1239,7 +1242,7 @@ when 61 =>
 			return ( '}' );
 			
 
-when 62 => 
+            when 62 => 
 --# line 327 "scanner.l"
 
 			misc.synerr( "missing }" );
@@ -1248,48 +1251,48 @@ when 62 =>
 			return ( '}' );
 			
 
-when 63 => 
+            when 63 => 
 --# line 335 "scanner.l"
  misc.synerr( "bad name in {}'s" ); ENTER(SECT2); 
 
-when 64 => 
+            when 64 => 
 --# line 336 "scanner.l"
  misc.synerr( "missing }" );
 			  linenum := linenum + 1;
 			  ENTER(SECT2);
 			
 
-when 65 => 
+            when 65 => 
 --# line 341 "scanner.l"
  bracelevel := bracelevel + 1; 
 
-when 66 => 
+            when 66 => 
 --# line 342 "scanner.l"
  bracelevel := bracelevel - 1; 
 
-when 67 => 
+            when 67 => 
 --# line 343 "scanner.l"
  ACTION_ECHO; 
 
-when 68 => 
+            when 68 => 
 --# line 344 "scanner.l"
  ACTION_ECHO; 
 
-when 69 => 
+            when 69 => 
 --# line 345 "scanner.l"
  linenum := linenum + 1; ACTION_ECHO; 
 
-when 70 => 
+            when 70 => 
 --# line 346 "scanner.l"
  ACTION_ECHO;
 				  -- character constant;
 			
 
-when 71 => 
+            when 71 => 
 --# line 350 "scanner.l"
  ACTION_ECHO; ENTER(ACTION_STRING); 
 
-when 72 => 
+            when 72 => 
 --# line 352 "scanner.l"
 
 			linenum := linenum + 1;
@@ -1300,31 +1303,31 @@ when 72 =>
 	                end if;
 			
 
-when 73 => 
+            when 73 => 
 --# line 360 "scanner.l"
  ACTION_ECHO; 
 
-when 74 => 
+            when 74 => 
 --# line 362 "scanner.l"
  ACTION_ECHO; 
 
-when 75 => 
+            when 75 => 
 --# line 363 "scanner.l"
  ACTION_ECHO; 
 
-when 76 => 
+            when 76 => 
 --# line 364 "scanner.l"
  linenum := linenum + 1; ACTION_ECHO; 
 
-when 77 => 
+            when 77 => 
 --# line 365 "scanner.l"
  ACTION_ECHO; ENTER(ACTION); 
 
-when 78 => 
+            when 78 => 
 --# line 366 "scanner.l"
  ACTION_ECHO; 
 
-when 79 => 
+            when 79 => 
 --# line 369 "scanner.l"
 
 			yylval :=
@@ -1334,7 +1337,7 @@ when 79 =>
 			return CHAR;
 			
 
-when 80 => 
+            when 80 => 
 --# line 377 "scanner.l"
 
 			yylval :=
@@ -1344,7 +1347,7 @@ when 80 =>
 			return ( CHAR );
 			
 
-when 81 => 
+            when 81 => 
 --# line 385 "scanner.l"
 
 			declare
@@ -1366,7 +1369,7 @@ when 81 =>
 			end;
 			
 
-when 82 => 
+            when 82 => 
 --# line 406 "scanner.l"
  if ( check_yylex_here ) then
 				return End_Of_Input;
@@ -1375,75 +1378,77 @@ when 82 =>
 			  end if;
 			
 
-when 83 => 
+            when 83 => 
 --# line 412 "scanner.l"
 raise AFLEX_SCANNER_JAMMED;
-when YY_END_OF_BUFFER + INITIAL + 1 |
-YY_END_OF_BUFFER + SECT2 + 1 |
-YY_END_OF_BUFFER + SECT3 + 1 |
-YY_END_OF_BUFFER + PICKUPDEF + 1 |
-YY_END_OF_BUFFER + SC + 1 |
-YY_END_OF_BUFFER + CARETISBOL + 1 |
-YY_END_OF_BUFFER + NUM + 1 |
-YY_END_OF_BUFFER + QUOTE + 1 |
-YY_END_OF_BUFFER + FIRSTCCL + 1 |
-YY_END_OF_BUFFER + CCL + 1 |
-YY_END_OF_BUFFER + ACTION + 1 |
-YY_END_OF_BUFFER + RECOVER + 1 |
-YY_END_OF_BUFFER + BRACEERROR + 1 |
-YY_END_OF_BUFFER + ACTION_STRING + 1 => 
-    return End_Of_Input;
+            when YY_END_OF_BUFFER + INITIAL + 1 
+              | YY_END_OF_BUFFER + SECT2 + 1 
+              | YY_END_OF_BUFFER + SECT3 + 1 
+              | YY_END_OF_BUFFER + PICKUPDEF + 1 
+              | YY_END_OF_BUFFER + SC + 1 
+              | YY_END_OF_BUFFER + CARETISBOL + 1 
+              | YY_END_OF_BUFFER + NUM + 1 
+              | YY_END_OF_BUFFER + QUOTE + 1 
+              | YY_END_OF_BUFFER + FIRSTCCL + 1 
+              | YY_END_OF_BUFFER + CCL + 1 
+              | YY_END_OF_BUFFER + ACTION + 1 
+              | YY_END_OF_BUFFER + RECOVER + 1 
+              | YY_END_OF_BUFFER + BRACEERROR + 1 
+              | YY_END_OF_BUFFER + ACTION_STRING + 1 
+            =>
+               return End_Of_Input;
 
-                when YY_END_OF_BUFFER =>
-                    yytext_ptr := yy_bp;
+            when YY_END_OF_BUFFER =>
+               yytext_ptr := yy_bp;
 
-                    case yy_get_next_buffer is
-                        when EOB_ACT_END_OF_FILE =>
-                            begin
-                            if ( yywrap ) then
-                                -- note: because we've taken care in
-                                -- yy_get_next_buffer() to have set up yytext,
-                                -- we can now set up yy_c_buf_p so that if some
-                                -- total hoser (like aflex itself) wants
-                                -- to call the scanner after we return the
-                                -- End_Of_Input, it'll still work - another
-                                -- End_Of_Input will get returned.
+               case yy_get_next_buffer is
+                  when EOB_ACT_END_OF_FILE =>
+                     begin
+                        if yywrap then
+                           --  note: because we've taken care in
+                           --  yy_get_next_buffer() to have set up yytext,
+                           --  we can now set up yy_c_buf_p so that if some
+                           --  total hoser (like aflex itself) wants
+                           --  to call the scanner after we return the
+                           --  End_Of_Input, it'll still work - another
+                           --  End_Of_Input will get returned.
 
-                                yy_c_buf_p := yytext_ptr;
+                           yy_c_buf_p := yytext_ptr;
+                           yy_act := YY_STATE_EOF ((yy_start - 1) / 2);
 
-                                yy_act := YY_STATE_EOF((yy_start - 1) / 2);
+                           goto do_action;
 
-                                goto do_action;
-                            else
-                                --  start processing a new file
-                                yy_init := true;
-                                goto new_file;
-                            end if;
-                            end;
+                        else
+                           --  start processing a new file
 
-                        when EOB_ACT_RESTART_SCAN =>
-                            yy_c_buf_p := yytext_ptr;
+                           yy_init := true;
 
-                        when EOB_ACT_LAST_MATCH =>
-                            yy_c_buf_p := yy_n_chars;
-                            yy_current_state := yy_get_previous_state;
+                           goto new_file;
+                        end if;
+                     end;
 
-                            yy_cp := yy_c_buf_p;
-                            yy_bp := yytext_ptr;
-                            goto next_action;
+                  when EOB_ACT_RESTART_SCAN =>
+                     yy_c_buf_p := yytext_ptr;
 
-                        when others => null;
-                        end case; -- case yy_get_next_buffer()
+                  when EOB_ACT_LAST_MATCH =>
+                     yy_c_buf_p := yy_n_chars;
+                     yy_current_state := yy_get_previous_state;
 
-                when others =>
-                    Ada.Wide_Wide_Text_IO.Put ("action # ");
-                    Ada.Wide_Wide_Text_IO.Put (Integer'Wide_Wide_Image (yy_act));
-                    Ada.Wide_Wide_Text_IO.New_Line;
+                     yy_cp := yy_c_buf_p;
+                     yy_bp := yytext_ptr;
 
-                    raise AFLEX_INTERNAL_ERROR;
-            end case; -- case (yy_act)
-        end loop; -- end of loop waiting for end of file
-end YYLex;
+                     goto next_action;
+               end case; -- case yy_get_next_buffer()
+
+            when others =>
+               Ada.Wide_Wide_Text_IO.Put ("action # ");
+               Ada.Wide_Wide_Text_IO.Put (Integer'Wide_Wide_Image (yy_act));
+               Ada.Wide_Wide_Text_IO.New_Line;
+
+               raise AFLEX_INTERNAL_ERROR;
+         end case; -- case (yy_act)
+      end loop; -- end of loop waiting for end of file
+   end YYLex;
 --# line 412 "scanner.l"
    begin
       if (call_yylex) then
