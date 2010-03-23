@@ -1,41 +1,47 @@
-with Unicode;
-
 package body scanner.IO is
+
    use Ada.Wide_Wide_Text_IO;
--- gets input and stuffs it into 'buf'.  number of characters read, or YY_NULL,
--- is returned in 'result'.
 
-procedure YY_INPUT(buf: out unbounded_character_array; result: out integer; max_size: in integer) is
-    c : Wide_Wide_character;
-    i : integer := 1;
-    loc : integer := buf'first;
-begin
+   --  Gets input and stuffs it into 'buf'.  number of characters read, or
+   --  YY_NULL is returned in 'result'.
 
-    if (is_open(user_input_file)) then
-      while ( i <= max_size ) loop
-         if (end_of_line(user_input_file)) then -- Ada ate our newline, put it back on the end.
-             buf(loc) := Unicode.LF;
-             skip_line(user_input_file, 1);
-         else
+   procedure YY_Input
+     (Buf      : out Unbounded_Character_Array;
+      Result   : out Integer;
+      Max_Size : integer)
+   is
+      C   : Wide_Wide_character;
+      I   : Integer := 1;
+      Loc : Integer := Buf'First;
+   begin
+      if Is_Open (User_Input_File) then
+         while I <= Max_Size loop
+            if End_Of_Line (User_Input_File) then
+               --  Ada ate our newline, put it back on the end.
+               Buf (Loc) := Ada.Characters.Wide_Wide_Latin_1.LF;
+               Skip_Line (User_Input_File, 1);
+
+            else
 -- UCI CODES CHANGED:
 --    The following codes are modified. Previous codes is commented out.
 --    The purpose of doing this is to make it possible to set Temp_Line
 --    in Ayacc-extension specific codes. Definitely, we can read the character
 --    into the Temp_Line and then set the buf. But Temp_Line will only
 --    be used in Ayacc-extension specific codes which makes this approach impossible.
-           get(user_input_file, c);
-           buf(loc) := c;
---         get(user_input_file, buf(loc));
-         end if;
+               Get (User_Input_File, C);
+               Buf (Loc) := C;
+--               get(user_input_file, buf(loc));
+            end if;
 
-         loc := loc + 1;
-         i := i + 1;
-      end loop;
-    else
-      while ( i <= max_size ) loop
-         if (end_of_line) then -- Ada ate our newline, put it back on the end.
-             buf(loc) := Unicode.LF;
-             skip_line(1);
+            Loc := Loc + 1;
+            I := I + 1;
+         end loop;
+      else
+         while I <= Max_Size loop
+            if end_of_line then
+               -- Ada ate our newline, put it back on the end.
+               Buf (Loc) := Ada.Characters.Wide_Wide_Latin_1.LF;
+               Skip_Line (1);
 
          else
 --    The following codes are modified. Previous codes is commented out.
@@ -46,14 +52,14 @@ begin
            get(c);
            buf(loc) := c;
 --         get(buf(loc));
-         end if;
+         end if; 
 
          loc := loc + 1;
          i := i + 1;
       end loop;
     end if; -- for input file being standard input
 
-    result := i - 1;
+    result := i - 1; 
     exception
         when END_ERROR => result := i - 1;
     -- when we hit EOF we need to set yy_eof_has_been_seen
@@ -63,7 +69,7 @@ end YY_INPUT;
 -- yy_get_next_buffer - try to read in new buffer
 --
 -- returns a code representing an action
---     EOB_ACT_LAST_MATCH -
+--     EOB_ACT_LAST_MATCH - 
 --     EOB_ACT_RESTART_SCAN - restart the scanner
 --     EOB_ACT_END_OF_FILE - end of file
 
@@ -73,7 +79,7 @@ function yy_get_next_buffer return eob_action_type is
     number_to_move : integer;
     ret_val : eob_action_type;
     num_to_read : integer;
-begin
+begin    
     if ( yy_c_buf_p > yy_n_chars + 1 ) then
         raise NULL_IN_INPUT;
     end if;
@@ -88,7 +94,7 @@ begin
     dest := dest + 1;
     source := source + 1;
     end loop;
-
+        
     if ( yy_eof_has_been_seen ) then
     -- don't do the read, it's not guaranteed to return an EOF,
     -- just force an EOF
@@ -115,7 +121,7 @@ begin
     else
     ret_val := EOB_ACT_RESTART_SCAN;
     end if;
-
+    
     yy_n_chars := yy_n_chars + number_to_move;
     yy_ch_buf.data (yy_n_chars) := YY_END_OF_BUFFER_CHAR;
     yy_ch_buf.data (yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;
@@ -132,138 +138,147 @@ begin
     return ret_val;
 end yy_get_next_buffer;
 
-procedure yyunput( c : wide_wide_character; yy_bp: in out integer ) is
-    number_to_move : integer;
-    dest : integer;
-    source : integer;
-    tmp_yy_cp : integer;
-begin
-    tmp_yy_cp := yy_c_buf_p;
+   procedure YYUnput (C : Wide_Wide_Character; YY_BP: in out Integer) is
+      number_to_move : Integer;
+      dest : integer;
+      source : integer;
+      tmp_yy_cp : integer;
 
-    if ( tmp_yy_cp < 2 ) then
-    -- need to shift things up to make room
-    number_to_move := yy_n_chars + 2; -- +2 for EOB chars
-    dest := YY_BUF_SIZE + 2;
-    source := number_to_move;
+   begin
+      tmp_yy_cp := yy_c_buf_p;
 
-    while ( source > 0 ) loop
-        dest := dest - 1;
-        source := source - 1;
+      if ( tmp_yy_cp < 2 ) then
+         -- need to shift things up to make room
+         number_to_move := yy_n_chars + 2; -- +2 for EOB chars
+         dest := YY_BUF_SIZE + 2;
+         source := number_to_move;
+
+         while ( source > 0 ) loop
+            dest := dest - 1;
+            source := source - 1;
             yy_ch_buf.data (dest) := yy_ch_buf.data (source);
-    end loop;
+         end loop;
 
-    tmp_yy_cp := tmp_yy_cp + dest - source;
-    yy_bp := yy_bp + dest - source;
-    yy_n_chars := YY_BUF_SIZE;
+         tmp_yy_cp := tmp_yy_cp + dest - source;
+         yy_bp := yy_bp + dest - source;
+         yy_n_chars := YY_BUF_SIZE;
 
-    if ( tmp_yy_cp < 2 ) then
-        raise PUSHBACK_OVERFLOW;
-    end if;
-    end if;
+         if ( tmp_yy_cp < 2 ) then
+            raise PUSHBACK_OVERFLOW;
+         end if;
+      end if;
 
-    if ( tmp_yy_cp > yy_bp and then yy_ch_buf.data (tmp_yy_cp-1) = Unicode.LF ) then
-    yy_ch_buf.data (tmp_yy_cp-2) := Unicode.LF;
-    end if;
+      if tmp_yy_cp > yy_bp
+        and then yy_ch_buf.data (tmp_yy_cp-1) = Ada.Characters.Wide_Wide_Latin_1.LF
+      then
+         yy_ch_buf.data (tmp_yy_cp-2) := Ada.Characters.Wide_Wide_Latin_1.LF;
+      end if;
 
-    tmp_yy_cp := tmp_yy_cp - 1;
-    yy_ch_buf.data (tmp_yy_cp) := c;
+      tmp_yy_cp := tmp_yy_cp - 1;
+      yy_ch_buf.data (tmp_yy_cp) := c;
 
---  Note:  this code is the text of YY_DO_BEFORE_ACTION, only
---         here we get different yy_cp and yy_bp's
-    yytext_ptr := yy_bp;
-    yy_c_buf_p := tmp_yy_cp;
-end yyunput;
+      --  Note:  this code is the text of YY_DO_BEFORE_ACTION, only
+      --         here we get different yy_cp and yy_bp's
+      yytext_ptr := yy_bp;
+      yy_c_buf_p := tmp_yy_cp;
+   end yyunput;
 
-procedure unput(c : wide_wide_character) is
-begin
-     yyunput( c, yy_bp );
-end unput;
+   procedure Unput (C : Wide_Wide_Character) is
+   begin
+      YYUnput (C, yy_bp);
+   end Unput;
 
-function input return wide_wide_character is
-    c : wide_wide_character;
-    yy_cp : integer := yy_c_buf_p;
-begin
+   function Input return Wide_Wide_Character is
+      C     : Wide_Wide_Character;
+      YY_CP : Integer := YY_C_Buf_P;
 
-    if ( yy_ch_buf.data (yy_c_buf_p) = YY_END_OF_BUFFER_CHAR ) then
-    -- need more input
-    yytext_ptr := yy_c_buf_p;
-    yy_c_buf_p := yy_c_buf_p + 1;
+   begin
+      if YY_CH_Buf.Data (YY_C_Buf_P) = YY_END_OF_BUFFER_CHAR then
+         --  need more input
 
-    case yy_get_next_buffer is
-        -- this code, unfortunately, is somewhat redundant with
-        -- that above
+         yytext_ptr := yy_c_buf_p;
+         yy_c_buf_p := yy_c_buf_p + 1;
 
-        when EOB_ACT_END_OF_FILE =>
-        if ( yywrap ) then
-            yy_c_buf_p := yytext_ptr;
-            return Unicode.NUL;
-        end if;
+         case yy_get_next_buffer is
+         -- this code, unfortunately, is somewhat redundant with
+         -- that above
 
-        yy_ch_buf.data (0) := Unicode.LF;
-        yy_n_chars := 1;
-        yy_ch_buf.data (yy_n_chars) := YY_END_OF_BUFFER_CHAR;
-        yy_ch_buf.data (yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;
-        yy_eof_has_been_seen := false;
-        yy_c_buf_p := 1;
-        yytext_ptr := yy_c_buf_p;
+            when EOB_ACT_END_OF_FILE =>
+               if yywrap then
+                  yy_c_buf_p := yytext_ptr;
 
-        return ( input );
-        when EOB_ACT_RESTART_SCAN =>
-        yy_c_buf_p := yytext_ptr;
+                  return Ada.Characters.Wide_Wide_Latin_1.NUL;
+               end if;
 
-        when EOB_ACT_LAST_MATCH =>
-        raise UNEXPECTED_LAST_MATCH;
-        when others => null;
-        end case;
-    end if;
+               yy_ch_buf.data (0) := Ada.Characters.Wide_Wide_Latin_1.LF;
+               yy_n_chars := 1;
+               yy_ch_buf.data (yy_n_chars) := YY_END_OF_BUFFER_CHAR;
+               yy_ch_buf.data (yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;
+               yy_eof_has_been_seen := false;
+               yy_c_buf_p := 1;
+               yytext_ptr := yy_c_buf_p;
 
-    c := yy_ch_buf.data (yy_c_buf_p);
-    yy_c_buf_p := yy_c_buf_p + 1;
+               return Input;
 
-    return c;
-end input;
+            when EOB_ACT_RESTART_SCAN =>
+               yy_c_buf_p := yytext_ptr;
 
-procedure output(c : wide_wide_character) is
-begin
-    if (is_open(user_output_file)) then
-      ada.Wide_Wide_text_io.put(user_output_file, c);
-    else
-      Ada.Wide_Wide_text_io.put(c);
-    end if;
-end output;
+            when EOB_ACT_LAST_MATCH =>
+               raise UNEXPECTED_LAST_MATCH;
 
--- default yywrap function - always treat EOF as an EOF
-function yywrap return boolean is
-begin
-    return true;
-end yywrap;
+            when others => null;
+         end case;
+      end if;
 
-procedure Open_Input(fname : in String) is
-begin
-    yy_init := true;
-    open(user_input_file, in_file, fname);
-end Open_Input;
+      c := yy_ch_buf.data (yy_c_buf_p);
+      yy_c_buf_p := yy_c_buf_p + 1;
 
-procedure Create_Output(fname : in String := "") is
-begin
-    if (fname /= "") then
-        create(user_output_file, out_file, fname);
-    end if;
-end Create_Output;
+      return C;
+   end Input;
 
-procedure Close_Input is
-begin
-   if (is_open(user_input_file)) then
-     Ada.Wide_Wide_text_io.close(user_input_file);
-   end if;
-end Close_Input;
+   procedure Output (C : Wide_Wide_Character) is
+   begin
+      if Is_Open (User_Output_File) then
+         Put (User_Output_File, C);
 
-procedure Close_Output is
-begin
-   if (is_open(user_output_file)) then
-     ada.Wide_Wide_text_io.close(user_output_file);
-   end if;
-end Close_Output;
+       else
+         Put (C);
+       end if;
+   end Output;
+
+   --  Default yywrap function - always treat EOF as an EOF
+
+   function YYWrap return Boolean is
+   begin
+      return True;
+   end YYWrap;
+
+   procedure Open_Input (FName : String) is
+   begin
+      YY_Init := True;
+      Open (User_Input_File, In_File, FName);
+   end Open_Input;
+
+   procedure Create_Output (FName : String := "") is
+   begin
+      if fname /= "" then
+         Create (User_Output_File, Out_File, FName);
+      end if;
+   end Create_Output;
+
+   procedure Close_Input is
+   begin
+      if Is_Open (User_Input_File) then
+         Close (User_Input_File);
+      end if;
+   end Close_Input;
+
+   procedure Close_Output is
+   begin
+      if Is_Open (User_Output_File) then
+         Close (User_Output_File);
+      end if;
+   end Close_Output;
 
 
 end scanner.IO;
