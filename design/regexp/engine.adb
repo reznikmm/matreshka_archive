@@ -7,6 +7,7 @@ package body Engine is
    type State is record
       PC : Positive;
       SP : Positive;
+      SS : Slice_Array (0 .. 9);
    end record;
 
    type State_Array is array (Positive range <>) of State;
@@ -60,6 +61,24 @@ package body Engine is
 
             when Match =>
                Put ("match");
+
+            when Save =>
+               Put
+                 ("save $"
+                    & Trim (Integer'Wide_Wide_Image (Program (J).Slot), Both)
+                    & " ");
+
+               if Program (J).Start then
+                  Put ("{begin}");
+
+               else
+                  Put ("{end}");
+               end if;
+
+               Put
+                 (" ["
+                    & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
+                    & "]");
          end case;
 
          New_Line;
@@ -73,21 +92,24 @@ package body Engine is
    procedure Execute
      (Program : Instruction_Array;
       String  : Wide_Wide_String;
-      Matched : out Boolean)
+      Matched : out Boolean;
+      Slices  : out Slice_Array)
    is
       Stack : State_Array (1 .. 10);
       Last  : Natural := 0;
       PC    : Positive := 1;
       SP    : Positive := String'First;
+      SS    : Slice_Array (0 .. 9) := (others => (0, 0));
 
    begin
       Matched := False;
       Last := Last + 1;
-      Stack (Last) := (PC, SP);
+      Stack (Last) := (PC, SP, SS);
 
       while Last /= 0 loop
          PC := Stack (Last).PC;
          SP := Stack (Last).SP;
+         SS := Stack (Last).SS;
          Last := Last - 1;
 
          loop
@@ -112,6 +134,7 @@ package body Engine is
 
                when Match =>
                   Matched := True;
+                  Slices := SS;
 
                   return;
 
@@ -120,7 +143,17 @@ package body Engine is
 
                when Split =>
                   Last := Last + 1;
-                  Stack (Last) := (Program (PC).Another, SP);
+                  Stack (Last) := (Program (PC).Another, SP, SS);
+                  PC := Program (PC).Next;
+
+               when Save =>
+                  if Program (PC).Start then
+                     SS (Program (PC).Slot) := (SP, 0);
+
+                  else
+                     SS (Program (PC).Slot).Last := SP - 1;
+                  end if;
+
                   PC := Program (PC).Next;
 
                when others =>

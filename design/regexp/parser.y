@@ -51,6 +51,8 @@
 %token Token_Multiplicity_End_Lazy
 %token Token_Multiplicity_Comma
 %token Token_Multiplicity_Number
+%token Token_Subexpression_Begin
+%token Token_Subexpression_End
 
 {
    type Kinds is (None, Code_Point, Number, AST_Node);
@@ -170,6 +172,10 @@ singleton : singleton Token_Optional_Greedy
    --  Multiplicity, lazy
 
    $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, $3.Value, False));
+}
+  | Token_Subexpression_Begin re Token_Subexpression_End
+{
+   $$ := (AST_Node, Process_Subexpression ($2.Node));
 }
   | Token_Any_Code_Point
 {

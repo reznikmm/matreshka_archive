@@ -60,6 +60,11 @@ package body Syntax is
             when Any_Code_Point =>
                null;
 
+            when Subexpression =>
+               Indent := Indent + Offset;
+               Dump (AST (N).Subexpression);
+               Indent := Indent - Offset;
+
             when Code_Point =>
                Put (' ' & Wide_Wide_Character'Image (AST (N).Code));
 

@@ -1,7 +1,15 @@
 
 package Syntax is
 
-   type Node_Kinds is (None, Any_Code_Point, Code_Point, Code_Point_Range, Character_Class, Multiplicity, Alternation);
+   type Node_Kinds is
+     (None,
+      Subexpression,
+      Any_Code_Point,
+      Code_Point,
+      Code_Point_Range,
+      Character_Class,
+      Multiplicity,
+      Alternation);
 
    type Node (Kind : Node_Kinds := None) is record
       case Kind is
@@ -15,6 +23,10 @@ package Syntax is
             case Kind is
                when None =>
                   null;
+
+               when Subexpression =>
+                  Subexpression : Natural;
+                  Index         : Natural;
 
                when Any_Code_Point =>
                   null;

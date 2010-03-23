@@ -114,4 +114,16 @@ package body Parser_Actions is
       return AST_Last;
    end Process_New_Character_Class;
 
+   ---------------------------
+   -- Process_Subexpression --
+   ---------------------------
+
+   function Process_Subexpression (Expression : Positive) return Positive is
+   begin
+      AST_Last := AST_Last + 1;
+      AST (AST_Last) := (Subexpression, 0, Expression, 0);
+
+      return AST_Last;
+   end Process_Subexpression;
+
 end Parser_Actions;

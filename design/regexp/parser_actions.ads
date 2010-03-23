@@ -30,4 +30,7 @@ package Parser_Actions is
 
    function Process_New_Character_Class return Positive;
 
+   function Process_Subexpression
+     (Expression : Positive) return Positive;
+
 end Parser_Actions;

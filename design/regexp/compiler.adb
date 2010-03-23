@@ -15,8 +15,9 @@ package body Compiler is
    function Compile return Engine.Instruction_Array is
       use Integer_Vectors;
 
-      Program : Instruction_Array (1 .. AST_Last * 3);
-      Last    : Natural := 0;
+      Program            : Instruction_Array (1 .. AST_Last * 3);
+      Last               : Natural := 0;
+      Last_Subexpression : Natural := 0;
 
       procedure Compile
         (Expression  : Positive;
@@ -212,6 +213,31 @@ package body Compiler is
                   raise Program_Error;
                end if;
 
+            when Subexpression =>
+               Last := Last + 1;
+               Instruction := Last;
+               Tails.Clear;
+
+               declare
+                  Ins_1   : Positive;
+                  Tails_1 : Vector;
+
+               begin
+                  Compile (AST (Expression).Subexpression, Ins_1, Tails_1);
+
+                  if AST (Expression).Index = 0 then
+                     Last_Subexpression := Last_Subexpression + 1;
+                     AST (Expression).Index := Last_Subexpression;
+                  end if;
+
+                  Program (Instruction) := (Save, Ins_1, AST (Expression).Index, True);
+                  Last := Last + 1;
+                  Ins_1 := Last;
+                  Program (Ins_1) := (Save, 0, AST (Expression).Index, False);
+                  Connect_Tails (Tails_1, Ins_1);
+                  Tails.Append (Ins_1);
+               end;
+
             when others =>
                raise Program_Error;
          end case;
@@ -243,19 +269,24 @@ package body Compiler is
       end Connect_Tails;
 
       Ins      : Positive;
-      Tails    : Vector;
+      Ins_1    : Positive;
+      Tails_1  : Vector;
 
    begin
-      Compile (AST_Start, Ins, Tails);
+      Last := Last + 1;
+      Ins := Last;
 
-      if Ins /= 1 then
-         raise Program_Error;
-      end if;
+      Compile (AST_Start, Ins_1, Tails_1);
+
+      Program (Ins) := (Save, Ins_1, 0, True);
+
+      Last := Last + 1;
+      Program (Last) := (Save, Last + 1, 0, False);
+      Connect_Tails (Tails_1, Last);
 
       Last := Last + 1;
       Program (Last) := (Kind => Match);
 
-      Connect_Tails (Tails, Last);
 
       return Program (1 .. Last);
    end Compile;

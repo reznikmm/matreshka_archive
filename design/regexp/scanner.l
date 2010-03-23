@@ -62,6 +62,18 @@
    end;
 }
 
+"(" {
+   --  Start of subexpression
+
+   return Token_Subexpression_Begin;
+}
+
+")" {
+   --  End of subexpression
+
+   return Token_Subexpression_End;
+}
+
 "|" {
    --  Alternation
 
