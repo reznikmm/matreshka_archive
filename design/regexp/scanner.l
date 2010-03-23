@@ -53,12 +53,10 @@
 
 <LITERAL>.|\n {  --  aflex . is any but newline
    declare
-      S : constant String := YYText;
-      C : constant Character := S (S'First);
+      S : constant Wide_Wide_String := YYText;
 
    begin
-      YYLVal :=
-       (Code_Point, Wide_Wide_Character'Val (Character'Pos (C)));
+      YYLVal := (Code_Point, S (S'First));
 
       return Token_Code_Point;
    end;
@@ -161,7 +159,7 @@
 <MULTIPLICITY>[0-9]+ {
    --  Number
 
-   YYLVal := (Number, Natural'Value (YYText));
+   YYLVal := (Number, Natural'Wide_Wide_Value (YYText));
 
    return Token_Multiplicity_Number;
 }
@@ -176,10 +174,10 @@
    --  Escaped pattern special code point
 
    declare
-      S : constant String := YYText;
+      S : constant Wide_Wide_String := YYText;
 
    begin
-      YYLVal := (Code_Point, Wide_Wide_Character'Val (Character'Pos (S (S'First + 1))));
+      YYLVal := (Code_Point, S (S'First + 1));
 
       return Token_Code_Point;
    end;
@@ -260,12 +258,10 @@
    --  Single code point
 
    declare
-      S : constant String := YYText;
-      C : constant Character := S (S'First);
+      S : constant Wide_Wide_String := YYText;
 
    begin
-      YYLVal :=
-       (Code_Point, Wide_Wide_Character'Val (Character'Pos (C)));
+      YYLVal := (Code_Point, S (S'First));
 
       return Token_Code_Point;
    end;
@@ -283,8 +279,8 @@ with Parser.Tokens;
    function YYLex return Parser.Tokens.Token;
 ##
 with Ada.Characters.Wide_Wide_Latin_1;
-with Ada.Text_IO;
+with Ada.Wide_Wide_Text_IO;
 ##
    use Ada.Characters.Wide_Wide_Latin_1;
-   use Ada.Text_IO;
+   use Ada.Wide_Wide_Text_IO;
    use Parser.Tokens;

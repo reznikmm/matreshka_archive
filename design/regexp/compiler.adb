@@ -42,6 +42,9 @@ package body Compiler is
                   Last := Last + 1;
                   Program (Last) := (Kind => Match);
                   Program (Ins).Next := Last;
+
+               else
+                  Program (Ins).Next := Compile (AST (Expression).Next);
                end if;
 
             when others =>

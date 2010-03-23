@@ -223,19 +223,19 @@ character_class_content : character_class_content Token_Code_Point Token_Charact
 ##
    procedure Parse (File_Name : String);
 ##
-with Ada.Text_IO; 
+with Ada.Wide_Wide_Text_IO; 
 with Parser_Actions;
 with Scanner.IO;
 with Syntax;
 ##
-   use Ada.Text_IO;
+   use Ada.Wide_Wide_Text_IO;
    use Parser_Actions;
    use Scanner;
    use Syntax;
 
    procedure Parse (File_Name : String) is
 
-      procedure YYError (S : String) is
+      procedure YYError (S : Wide_Wide_String) is
       begin
          Put_Line (S);
 
