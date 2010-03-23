@@ -21,6 +21,8 @@
 -- DESCRIPTION driver routines for aflex.  Calls drivers for all
 -- high level routines from other packages.
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/mainB.a,v 1.26 1992/12/29 22:46:15 self Exp self $
+
+with Ada.Characters.Conversions;
 with Ada.Command_Line;
 with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Strings.Unbounded;
@@ -34,6 +36,7 @@ with Parser.Tokens;
 
 package body Main_Body is
 
+   use Ada.Characters.Conversions;
    use Ada.Command_Line;
    use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Strings.Unbounded;
@@ -375,7 +378,9 @@ package body Main_Body is
 -- END OF UMASS CODES.
 
                when others =>
-                  Misc.Aflex_Error ("unknown flag " & Element (Arg, FLAG_POS));
+                  Misc.Aflex_Error
+                    ("unknown flag "
+                     & To_Wide_Wide_Character (Element (Arg, FLAG_POS)));
             end case;
             FLAG_POS := FLAG_POS + 1;
          end loop;
@@ -406,7 +411,9 @@ package body Main_Body is
 
          exception
             when NAME_ERROR =>
-               Misc.Aflex_Fatal ("can't open " & In_File_Name);
+               Misc.Aflex_Fatal
+                 ("can't open "
+                  & To_Wide_Wide_String (To_String (In_File_Name)));
          end;
       end if;
 
@@ -435,7 +442,9 @@ package body Main_Body is
 
       exception
          when USE_ERROR | NAME_ERROR =>
-            Misc.Aflex_Fatal ("couldn't open skeleton file " & SKELNAME);
+            Misc.Aflex_Fatal
+              ("couldn't open skeleton file "
+               & To_Wide_Wide_String (To_String (SKELNAME)));
       end;
 
       -- without a third argument create make an anonymous temp file.
@@ -525,7 +534,7 @@ package body Main_Body is
   exception
     when Parser.Tokens.Syntax_Error =>
       Misc.Aflex_Error
-       ("fatal parse error at line " & Integer'Image (LINENUM));
+       ("fatal parse error at line " & Integer'Wide_Wide_Image (LINENUM));
       Main_Body.Aflex_End (1);
   end READIN;
 

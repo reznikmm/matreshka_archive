@@ -161,7 +161,9 @@ package body External_File_Manager is
 
    exception
       when Name_Error | Use_Error =>
-         Misc.Aflex_Fatal ("can't create scanner file " & Out_File_Name);
+         Misc.Aflex_Fatal
+           ("can't create scanner file "
+            & To_Wide_Wide_String (To_String (Out_File_Name)));
    end Get_Scanner_Spec_File;
 
    ---------------------------
@@ -188,7 +190,9 @@ package body External_File_Manager is
 
    exception
       when Name_Error | Use_Error =>
-         Misc.Aflex_Fatal ("can't create scanner file " & Out_File_Name);
+         Misc.Aflex_Fatal
+           ("can't create scanner file "
+            & To_Wide_Wide_String (To_String (Out_File_Name)));
    end Get_Scanner_Body_File;
 
    ------------------------

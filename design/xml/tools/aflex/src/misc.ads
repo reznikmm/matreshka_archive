@@ -61,15 +61,16 @@ package Misc is
 
    procedure Aflex_Error
      (Msg : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String);
-   procedure Aflex_Error (Msg : String);
+   procedure Aflex_Error (Msg : Wide_Wide_String);
    --  aflexerror - report an error message and terminate
    --  overloaded function, one for vstring, one for string.
 
 --    function ALL_UPPER(STR : in VSTRING) return BOOLEAN;
 --    function ALL_LOWER(STR : in VSTRING) return BOOLEAN;
 
-   procedure Aflex_Fatal (Msg : Unbounded_String);
-   procedure Aflex_Fatal (Msg : String);
+   procedure Aflex_Fatal
+     (Msg : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String);
+   procedure Aflex_Fatal (Msg : Wide_Wide_String);
    --  aflexfatal - report a fatal error message and terminate
    --  overloaded function, one for vstring, one for string.
 

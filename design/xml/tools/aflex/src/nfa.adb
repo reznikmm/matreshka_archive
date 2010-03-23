@@ -477,8 +477,9 @@ package body NFA is
     if (LASTNFA >= CURRENT_MNS) then
       CURRENT_MNS := CURRENT_MNS + MNS_INCREMENT;
       if (CURRENT_MNS >= MAXIMUM_MNS) then
-        Misc.Aflex_Error ("input rules are too complicated (>= " & INTEGER'IMAGE(
-          CURRENT_MNS) & " NFA states) )");
+            Misc.Aflex_Error
+              ("input rules are too complicated (>= "
+               & INTEGER'Wide_Wide_Image (CURRENT_MNS) & " NFA states) )");
       end if;
 
       NUM_REALLOCS := NUM_REALLOCS + 1;
@@ -566,7 +567,9 @@ package body NFA is
     end if;
 
     if (NUM_RULES > MAX_RULE) then
-      Misc.Aflex_Error ("too many rules  (> " & INTEGER'IMAGE(MAX_RULE) & ")!");
+         Misc.Aflex_Error
+           ("too many rules  (> "
+            & INTEGER'Wide_Wide_Image (MAX_RULE) & ")!");
     end if;
 
     RULE_LINENUM(NUM_RULES) := LINENUM;

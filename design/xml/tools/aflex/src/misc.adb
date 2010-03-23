@@ -26,9 +26,7 @@ with Ada.Calendar;
 with Ada.Characters.Conversions;
 with Ada.Directories;
 with Ada.Integer_Wide_Wide_Text_IO;
-with Ada.Strings.Unbounded.Text_IO;
 with Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
-with Ada.Text_IO;
 
 with MISC, Main_Body;
 use MISC;
@@ -37,7 +35,6 @@ package body MISC is
 
    use Ada.Characters.Conversions;
    use Ada.Integer_Wide_Wide_Text_IO;
-   use Ada.Strings.Unbounded.Text_IO;
    use Ada.Strings.Wide_Wide_Unbounded;
    use Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
    use Ada.Wide_Wide_Text_IO;
@@ -296,11 +293,9 @@ package body MISC is
    -----------------
 
    procedure Aflex_Error (Msg : Unbounded_Wide_Wide_String) is
-      use Ada.Text_IO;
-
    begin
       Put (Standard_Error, "aflex: " & Msg);
-      Ada.Text_IO.New_Line (Standard_Error);
+      New_Line (Standard_Error);
       Main_Body.Aflex_End (1);
    end Aflex_Error;
 
@@ -308,12 +303,10 @@ package body MISC is
    -- Aflex_Error --
    -----------------
 
-   procedure Aflex_Error (Msg : String) is
-      use Ada.Text_IO;
-
+   procedure Aflex_Error (Msg : Wide_Wide_String) is
    begin
       Put (Standard_Error, "aflex: " & Msg);
-      Ada.Text_IO.New_Line (Standard_Error);
+      New_Line (Standard_Error);
       Main_Body.Aflex_End (1);
    end Aflex_Error;
 
@@ -321,12 +314,10 @@ package body MISC is
    -- Aflex_Fatal --
    -----------------
 
-   procedure Aflex_Fatal (Msg : String) is
-      use Ada.Text_IO;
-
+   procedure Aflex_Fatal (Msg : Wide_Wide_String) is
    begin
       Put (Standard_Error, "aflex: fatal internal error " & Msg);
-      Ada.Text_IO.New_Line (Standard_Error);
+      New_Line (Standard_Error);
       Main_Body.Aflex_End (1);
    end Aflex_Fatal;
 
@@ -334,12 +325,11 @@ package body MISC is
    -- Aflex_Fatal --
    -----------------
 
-   procedure Aflex_Fatal (Msg : Unbounded_String) is
-      use Ada.Text_IO;
-
+   procedure Aflex_Fatal
+     (Msg : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String) is
    begin
       Put (Standard_Error, "aflex: fatal internal error " & Msg);
-      Ada.Text_IO.New_Line (Standard_Error);
+      New_Line (Standard_Error);
       Main_Body.Aflex_End (1);
    end Aflex_Fatal;
 
@@ -388,7 +378,7 @@ package body MISC is
          PUT("--# line ");
          PUT(LINENUM, 1);
          PUT(" """);
-         PUT(In_File_Name);
+         PUT(To_Wide_Wide_String (To_String (In_File_Name)));
          PUT_LINE("""");
       end if;
    end LINE_DIRECTIVE_OUT;

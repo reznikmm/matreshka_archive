@@ -1444,7 +1444,7 @@ YY_END_OF_BUFFER + ACTION_STRING + 1 =>
             end case; -- case (yy_act)
         end loop; -- end of loop waiting for end of file
 end YYLex;
---# line 412 ""
+--# line 412 "scanner.l"
    begin
       if (call_yylex) then
          toktype := YYLex;
