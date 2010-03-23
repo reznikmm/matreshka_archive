@@ -188,14 +188,14 @@ aflexrule        :  scon '^' re eol
 			}
 
                 |  scon EOF_OP
-			{ build_eof_action; }
+			{ Build_EOF_Action; }
 
                 |  EOF_OP
 			{
-			-- this EOF applies only to the INITIAL start cond.
-			actvp := 1;
-			actvsc(actvp) := 1;
-			build_eof_action;
+                  -- this EOF applies only to the INITIAL start cond.
+                  actvp := 1;
+                  actvsc(actvp) := 1;
+                  Build_EOF_Action;
 			}
 
                 |  error
@@ -667,9 +667,9 @@ string		:  string CHAR
   procedure YYParse;
   def_rule:integer;
 ##
-with Ada.Integer_Text_IO;
-with Ada.Strings.Unbounded.Text_IO;
-with Ada.Text_IO;
+with Ada.Integer_Wide_Wide_Text_IO;
+with Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
+with Ada.Wide_Wide_Text_IO;
 
 with Scanner;
 with NFA, ccl, misc, misc_defs, sym, ecs;
@@ -678,17 +678,18 @@ with Unicode.Ucd.Core;
 
 ##
 
-   use Ada.Integer_Text_IO;
-   use Ada.Strings.Unbounded;
-   use Ada.Strings.Unbounded.Text_IO;
-   use Ada.Text_IO;
+   use Ada.Integer_Wide_Wide_Text_IO;
+   use Ada.Strings.Wide_Wide_Unbounded;
+   use Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
+   use Ada.Wide_Wide_Text_IO;
 
    use Scanner;
    use Unicode;
    use Unicode.Ucd;
+   use misc_defs;
 
-   function "+" (Item : String) return Unbounded_String
-     renames To_Unbounded_String;
+   function "+" (Item : Wide_Wide_String) return Unbounded_Wide_Wide_String
+     renames To_Unbounded_Wide_Wide_String;
 
    function Element is
      new Unicode.Ucd.Generic_Element
@@ -697,46 +698,54 @@ with Unicode.Ucd.Core;
        Unicode.Ucd.Core_Second_Stage_Access,
        Unicode.Ucd.Core_First_Stage);
 
--- build_eof_action - build the "<<EOF>>" action for the active start
---                    conditions
+   ----------------------
+   -- Build_EOF_Action --
+   ----------------------
 
-use misc_defs;
-procedure build_eof_action is
-begin
-    Put (Temp_Action_File, "when ");
-    for i in 1..actvp loop
-	if ( sceof(actvsc(i)) ) then
-	    Put
-             (Standard_Error, "multiple <<EOF>> rules for start condition ");
+   -- Build_EOF_Action - build the "<<EOF>>" action for the active start
+   --                    conditions
+
+   procedure Build_EOF_Action is
+   begin
+      Put (Temp_Action_File, "when ");
+
+      for i in 1..actvp loop
+         if sceof (actvsc (i)) then
+            Put
+              (Standard_Error, "multiple <<EOF>> rules for start condition ");
 	    Put (Standard_Error, scname (actvsc (i)));
 	    Main_Body.Aflex_End (1);
 
 	else
-	    sceof(actvsc(i)) := true;
+	    sceof (actvsc (i)) := true;
 	    Put (Temp_Action_File, "YY_END_OF_BUFFER +");
 	    Put (Temp_Action_File, scname (actvsc (i)));
 	    Put_Line (Temp_Action_File, " + 1 ");
 
-	    if (i /= actvp) then
-	        Put_Line (Temp_Action_File, " |");
-	    else
-	        Put_Line (Temp_Action_File, " =>");
+            if (i /= actvp) then
+               Put_Line (Temp_Action_File, " |");
+            else
+               Put_Line (Temp_Action_File, " =>");
 	    end if;
-        end if;
-    end loop;
+         end if;
+      end loop;
 
-    misc.line_directive_out( temp_action_file );
-end build_eof_action;
+     misc.line_directive_out( temp_action_file );
+   end Build_EOF_Action;
 
---  yyerror - eat up an error message from the parser
---
---  synopsis
---     char msg[];
---     yyerror( msg );
+   -------------
+   -- YYError --
+   -------------
 
-procedure yyerror( msg : string ) is
-begin
-null;
-end yyerror;
+   --  yyerror - eat up an error message from the parser
+   --
+   --  synopsis
+   --     char msg[];
+   --     yyerror( msg );
+
+   procedure YYError (msg : string) is
+   begin
+      null;
+   end YYError;
 
 ##
