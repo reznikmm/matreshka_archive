@@ -29,7 +29,7 @@ package Engine is
                   null;
 
                when Split =>
-                  Another : Positive;
+                  Another : Natural;
 
                when Code_Point =>
                   Code : Wide_Wide_Character;

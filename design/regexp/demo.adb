@@ -20,6 +20,7 @@ begin
    begin
       Ada.Wide_Wide_Text_IO.Put_Line ("---------- Code ----------");
       Engine.Dump (P);
+      Ada.Wide_Wide_Text_IO.New_Line;
 
       Ada.Wide_Wide_Text_IO.Open
         (F, Ada.Wide_Wide_Text_IO.In_File, Ada.Command_Line.Argument (2));
