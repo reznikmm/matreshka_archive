@@ -1,4 +1,7 @@
+with Unicode;
+
 package body scanner.IO is
+   use Ada.Wide_Wide_Text_IO;
 -- gets input and stuffs it into 'buf'.  number of characters read, or YY_NULL,
 -- is returned in 'result'.
 
