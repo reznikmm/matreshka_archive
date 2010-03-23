@@ -1,3 +1,6 @@
+with Ada.Integer_Wide_Wide_Text_IO;
+with Ada.Strings.Wide_Wide_Fixed;
+with Ada.Wide_Wide_Text_IO;
 
 package body Engine is
 
@@ -7,6 +10,61 @@ package body Engine is
    end record;
 
    type State_Array is array (Positive range <>) of State;
+
+   ----------
+   -- Dump --
+   ----------
+
+   procedure Dump (Program : Instruction_Array) is
+      use Ada.Integer_Wide_Wide_Text_IO;
+      use Ada.Strings;
+      use Ada.Strings.Wide_Wide_Fixed;
+      use Ada.Wide_Wide_Text_IO;
+
+   begin
+      for J in Program'Range loop
+         Put (J, 4);
+         Put (' ');
+
+         case Program (J).Kind is
+            when None =>
+               Put ("nop");
+
+            when Jump =>
+               Put
+                 ("jump ["
+                    & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
+                    & "]");
+
+            when Split =>
+               Put
+                 ("split ["
+                    & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
+                    & "], ["
+                    & Trim (Integer'Wide_Wide_Image (Program (J).Another), Both)
+                    & "]");
+
+            when Any_Code_Point =>
+               Put
+                 ("any ["
+                    & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
+                    & "]");
+
+            when Code_Point =>
+               Put
+                 ("char "
+                    & Wide_Wide_Character'Wide_Wide_Image (Program (J).Code)
+                    & " ["
+                    & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
+                    & "]");
+
+            when Match =>
+               Put ("match");
+         end case;
+
+         New_Line;
+      end loop;
+   end Dump;
 
    -------------
    -- Execute --

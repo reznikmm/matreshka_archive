@@ -44,4 +44,6 @@ package Engine is
       String  : Wide_Wide_String;
       Matched : out Boolean);
 
+   procedure Dump (Program : Instruction_Array);
+
 end Engine;
