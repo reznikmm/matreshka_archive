@@ -7,21 +7,21 @@ yytext_ptr : integer; -- points to start of yytext in buffer
 -- done) at the end of yy_ch_buf
 YY_READ_BUF_SIZE : constant integer :=  8192;
 YY_BUF_SIZE : constant integer := YY_READ_BUF_SIZE * 2; -- size of input buffer
-type unbounded_character_array is array(integer range <>) of character;
+type unbounded_character_array is array(integer range <>) of wide_wide_character;
 type ch_buf_type is record
    Data : unbounded_character_array(0..YY_BUF_SIZE + 1);
 end record;
-function Previous (Data : ch_buf_type; Index : Integer) return Character;
+function Previous (Data : ch_buf_type; Index : Integer) return Wide_Wide_Character;
 procedure Next
   (Data  : ch_buf_type;
    Index : in out Integer;
-   Code  : out Character);
+   Code  : out Wide_Wide_Character);
 yy_ch_buf : ch_buf_type;
 yy_cp, yy_bp : integer;
 
 yy_c_buf_p : integer;   -- points to current character in buffer
 
-function YYText return string;
+function YYText return Wide_Wide_string;
 function YYLength return integer;
 procedure YY_DO_BEFORE_ACTION;
 --These variables are needed between calls to YYLex.

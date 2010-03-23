@@ -3,7 +3,7 @@ package body scanner.IO is
 -- is returned in 'result'.
 
 procedure YY_INPUT(buf: out unbounded_character_array; result: out integer; max_size: in integer) is
-    c : character;
+    c : Wide_Wide_character;
     i : integer := 1;
     loc : integer := buf'first;
 begin
@@ -11,7 +11,7 @@ begin
     if (is_open(user_input_file)) then
       while ( i <= max_size ) loop
          if (end_of_line(user_input_file)) then -- Ada ate our newline, put it back on the end.
-             buf(loc) := ASCII.LF;
+             buf(loc) := Unicode.LF;
              skip_line(user_input_file, 1);
          else
 -- UCI CODES CHANGED:
@@ -31,7 +31,7 @@ begin
     else
       while ( i <= max_size ) loop
          if (end_of_line) then -- Ada ate our newline, put it back on the end.
-             buf(loc) := ASCII.LF;
+             buf(loc) := Unicode.LF;
              skip_line(1);
 
          else
@@ -43,14 +43,14 @@ begin
            get(c);
            buf(loc) := c;
 --         get(buf(loc));
-         end if; 
+         end if;
 
          loc := loc + 1;
          i := i + 1;
       end loop;
     end if; -- for input file being standard input
 
-    result := i - 1; 
+    result := i - 1;
     exception
         when END_ERROR => result := i - 1;
     -- when we hit EOF we need to set yy_eof_has_been_seen
@@ -60,7 +60,7 @@ end YY_INPUT;
 -- yy_get_next_buffer - try to read in new buffer
 --
 -- returns a code representing an action
---     EOB_ACT_LAST_MATCH - 
+--     EOB_ACT_LAST_MATCH -
 --     EOB_ACT_RESTART_SCAN - restart the scanner
 --     EOB_ACT_END_OF_FILE - end of file
 
@@ -70,7 +70,7 @@ function yy_get_next_buffer return eob_action_type is
     number_to_move : integer;
     ret_val : eob_action_type;
     num_to_read : integer;
-begin    
+begin
     if ( yy_c_buf_p > yy_n_chars + 1 ) then
         raise NULL_IN_INPUT;
     end if;
@@ -85,7 +85,7 @@ begin
     dest := dest + 1;
     source := source + 1;
     end loop;
-        
+
     if ( yy_eof_has_been_seen ) then
     -- don't do the read, it's not guaranteed to return an EOF,
     -- just force an EOF
@@ -112,7 +112,7 @@ begin
     else
     ret_val := EOB_ACT_RESTART_SCAN;
     end if;
-    
+
     yy_n_chars := yy_n_chars + number_to_move;
     yy_ch_buf.data (yy_n_chars) := YY_END_OF_BUFFER_CHAR;
     yy_ch_buf.data (yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;
@@ -129,7 +129,7 @@ begin
     return ret_val;
 end yy_get_next_buffer;
 
-procedure yyunput( c : character; yy_bp: in out integer ) is
+procedure yyunput( c : wide_wide_character; yy_bp: in out integer ) is
     number_to_move : integer;
     dest : integer;
     source : integer;
@@ -158,8 +158,8 @@ begin
     end if;
     end if;
 
-    if ( tmp_yy_cp > yy_bp and then yy_ch_buf.data (tmp_yy_cp-1) = ASCII.LF ) then
-    yy_ch_buf.data (tmp_yy_cp-2) := ASCII.LF;
+    if ( tmp_yy_cp > yy_bp and then yy_ch_buf.data (tmp_yy_cp-1) = Unicode.LF ) then
+    yy_ch_buf.data (tmp_yy_cp-2) := Unicode.LF;
     end if;
 
     tmp_yy_cp := tmp_yy_cp - 1;
@@ -171,13 +171,13 @@ begin
     yy_c_buf_p := tmp_yy_cp;
 end yyunput;
 
-procedure unput(c : character) is
+procedure unput(c : wide_wide_character) is
 begin
      yyunput( c, yy_bp );
 end unput;
 
-function input return character is
-    c : character;
+function input return wide_wide_character is
+    c : wide_wide_character;
     yy_cp : integer := yy_c_buf_p;
 begin
 
@@ -193,10 +193,10 @@ begin
         when EOB_ACT_END_OF_FILE =>
         if ( yywrap ) then
             yy_c_buf_p := yytext_ptr;
-            return ASCII.NUL;
+            return Unicode.NUL;
         end if;
 
-        yy_ch_buf.data (0) := ASCII.LF;
+        yy_ch_buf.data (0) := Unicode.LF;
         yy_n_chars := 1;
         yy_ch_buf.data (yy_n_chars) := YY_END_OF_BUFFER_CHAR;
         yy_ch_buf.data (yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;
@@ -220,12 +220,12 @@ begin
     return c;
 end input;
 
-procedure output(c : character) is
+procedure output(c : wide_wide_character) is
 begin
     if (is_open(user_output_file)) then
-      text_io.put(user_output_file, c);
+      ada.Wide_Wide_text_io.put(user_output_file, c);
     else
-      text_io.put(c);
+      Ada.Wide_Wide_text_io.put(c);
     end if;
 end output;
 
@@ -251,14 +251,14 @@ end Create_Output;
 procedure Close_Input is
 begin
    if (is_open(user_input_file)) then
-     text_io.close(user_input_file);
+     Ada.Wide_Wide_text_io.close(user_input_file);
    end if;
 end Close_Input;
 
 procedure Close_Output is
 begin
    if (is_open(user_output_file)) then
-     text_io.close(user_output_file);
+     ada.Wide_Wide_text_io.close(user_output_file);
    end if;
 end Close_Output;
 

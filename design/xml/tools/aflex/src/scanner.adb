@@ -1,8 +1,5 @@
-with Ada.Characters.Conversions;
-with Ada.Integer_Text_IO;
-with Ada.Strings.Unbounded;
+with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Strings.Wide_Wide_Unbounded;
-with Ada.Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
 with misc_defs, misc, sym;
@@ -10,23 +7,16 @@ use misc_defs;
 with Unicode.Ucd;
 with scanner.DFA; use scanner.DFA;
 with scanner.IO; use scanner.IO;
+
 package body scanner is
-   use Ada.Integer_Text_IO;
-   use Ada.Strings.Unbounded;
+   use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Strings.Wide_Wide_Unbounded;
-   use Ada.Text_IO;
+   use Ada.Wide_Wide_Text_IO;
    use Parser.Tokens;
    use Unicode;
 
-   function "+" (Item : String) return Unbounded_String
-     renames To_Unbounded_String;
-
-   function "+" (item : String) return Unbounded_Wide_Wide_String is
-   begin
-      return
-        To_Unbounded_Wide_Wide_String
-          (Ada.Characters.Conversions.To_Wide_Wide_String (Item));
-   end "+";
+   function "+" (item : Wide_Wide_String) return Unbounded_Wide_Wide_String
+     renames To_Unbounded_Wide_Wide_String;
 
 beglin : boolean := false;
 i, bracelevel: integer;
@@ -43,8 +33,7 @@ procedure ACTION_ECHO is
 begin
          Ada.Wide_Wide_Text_IO.Put
            (temp_action_file,
-            Ada.Characters.Conversions.To_Wide_Wide_String
-              (YYText (1 .. YYLength)));
+            YYText (1 .. YYLength));
 end ACTION_ECHO;
 
 procedure MARK_END_OF_PROLOG is
@@ -62,7 +51,7 @@ end MARK_END_OF_PROLOG;
          Start : Integer) is
       begin
          for J in reverse Start + 1 .. Length (Str) loop
-            unput (Character'Val (Wide_Wide_Character'Pos (Element (Str, J))));
+            unput (Element (Str, J));
          end loop;
       end Put_Back_String;
 
@@ -116,8 +105,8 @@ yy_ec_base : constant
   array (Primary_Stage_Index) of Secondary_Stage_Array_Access :=
    (     0 => yy_ec_0'Access, others => yy_ec_1'Access);
 
-function yy_ec (Item : Character) return short is
-   Code   : constant Integer := Character'Pos (Item);
+function yy_ec (Item : Wide_Wide_Character) return short is
+   Code   : constant Integer := Wide_Wide_Character'Pos (Item);
    Group  : constant Primary_Stage_Index :=
      Primary_Stage_Index (Code / 256);
    Offset : constant Secondary_Stage_Index :=
@@ -151,10 +140,10 @@ yy_chk : constant array(0..1293) of short :=
 
 procedure ECHO is
 begin
-   if Ada.Text_IO.Is_Open (User_Output_File) then
-     Ada.Text_IO.Put (User_Output_File, YYText);
+   if Ada.Wide_Wide_Text_IO.Is_Open (User_Output_File) then
+     Ada.Wide_Wide_Text_IO.Put (User_Output_File, YYText);
    else
-     Ada.Text_IO.Put (yytext);
+     Ada.Wide_Wide_Text_IO.Put (yytext);
    end if;
 end ECHO;
 pragma Inline (ECHO);
@@ -198,11 +187,11 @@ function yy_get_previous_state return YY_State_Type is
     yy_current_state : YY_State_Type;
     yy_c : short;
    Index : Integer;
-   Code  : Character;
+   Code  : Wide_Wide_Character;
     yy_bp : integer := yytext_ptr;
 begin
     yy_current_state := yy_start;
-    if Previous (yy_ch_buf, yy_bp) = ASCII.LF then
+    if Previous (yy_ch_buf, yy_bp) = LF then
 	yy_current_state := yy_current_state + 1;
     end if;
 
@@ -215,7 +204,7 @@ begin
 
 	Index := yy_cp;
 	Next (yy_ch_buf, Index, Code);
-	yy_c := yy_ec(Code);
+	yy_c := yy_ec (Code);
 	if (yy_accept(yy_current_state) /= 0 ) then
 	    yy_last_accepting_state := yy_current_state;
 	    yy_last_accepting_cpos := yy_cp;
@@ -234,14 +223,14 @@ begin
     return yy_current_state;
 end yy_get_previous_state;
 
-procedure yyrestart( input_file : file_type ) is
+procedure yyrestart( input_file : Ada.Wide_Wide_Text_IO.file_type ) is
 begin
-   Open_Input (Ada.Text_IO.Name (Input_File));
+   Open_Input (Ada.Wide_Wide_Text_IO.Name (Input_File));
 end yyrestart;
 pragma Inline (yyrestart);
 
    Index : Integer;
-   Code  : Character;
+   Code  : Wide_Wide_Character;
 
 begin -- of YYLex
 <<new_file>>
@@ -256,7 +245,7 @@ begin -- of YYLex
         -- we put in the '\n' and start reading from [1] so that an
         -- initial match-at-newline will be true.
 
-        yy_ch_buf.data (0) := ASCII.LF;
+        yy_ch_buf.data (0) := LF;
         yy_n_chars := 1;
 
         -- we always need two end-of-buffer characters.  The first causes
@@ -282,7 +271,7 @@ begin -- of YYLex
         -- current run.
 	yy_bp := yy_cp;
 	yy_current_state := yy_start;
-	if Previous (yy_ch_buf, yy_bp) = ASCII.LF then
+	if Previous (yy_ch_buf, yy_bp) = LF then
 	    yy_current_state := yy_current_state + 1;
 	end if;
 	loop
@@ -314,9 +303,9 @@ end if;
             YY_USER_ACTION;
 
         if aflex_debug then  -- output acceptance info. for (-d) debug mode
-            ada.text_io.put( Standard_Error, "--accepting rule #" );
-            ada.text_io.put( Standard_Error, INTEGER'IMAGE(yy_act) );
-            ada.text_io.put_line( Standard_Error, "(""" & yytext & """)");
+            ada.Wide_Wide_text_io.put( Ada.Wide_Wide_Text_IO.Standard_Error, "--accepting rule #" );
+            ada.Wide_Wide_text_io.put( Ada.Wide_Wide_Text_IO.Standard_Error, INTEGER'Wide_Wide_IMAGE(yy_act) );
+            ada.Wide_Wide_text_io.put_line( Ada.Wide_Wide_Text_IO.Standard_Error, "(""" & yytext & """)");
         end if;
 
 
@@ -367,11 +356,11 @@ when 7 =>
 when 8 =>
 --# line 64 "scanner.l"
 
-			Put (Standard_Error, "old-style lex command at line ");
-			Put (Standard_Error, Linenum);
-			Put (Standard_Error, "ignored:");
-			New_Line (Standard_Error );
-			Put (Standard_Error, ASCII.HT );
+               Put (Standard_Error, "old-style lex command at line ");
+               Put (Standard_Error, Linenum);
+               Put (Standard_Error, "ignored:");
+               New_Line (Standard_Error );
+               Put (Standard_Error, HT );
 			Put (Standard_Error, YYText (1 .. YYLength));
 			Linenum := Linenum + 1;
 
@@ -598,12 +587,12 @@ when 37 =>
 --# line 215 "scanner.l"
 
 			declare
-			   Image : constant String := YYText;
+			   Image : constant Wide_Wide_String := YYText;
 
 			begin
 			   YYLVal :=
 			     Unicode.Ucd.Boolean_Properties'Pos
-			      (Unicode.Ucd.Boolean_Properties'Value
+			      (Unicode.Ucd.Boolean_Properties'Wide_Wide_Value
 			        (Image (Image'First + 3 .. Image'Last - 1))) + 1;
 
                            if Image (Image'First + 1) = 'P' then
@@ -887,12 +876,12 @@ when 81 =>
 --# line 385 "scanner.l"
 
 			declare
-			   Image : constant String := YYText;
+			   Image : constant Wide_Wide_String := YYText;
 
 			begin
 			   YYLVal :=
 			     Unicode.Ucd.Boolean_Properties'Pos
-			      (Unicode.Ucd.Boolean_Properties'Value
+			      (Unicode.Ucd.Boolean_Properties'Wide_Wide_Value
 			        (Image (Image'First + 3 .. Image'Last - 1))) + 1;
 
                            if Image (Image'First + 1) = 'P' then
@@ -975,9 +964,9 @@ YY_END_OF_BUFFER + ACTION_STRING + 1 =>
                         end case; -- case yy_get_next_buffer()
 
                 when others =>
-                    ada.text_io.put( "action # " );
-                    ada.text_io.put( INTEGER'IMAGE(yy_act) );
-                    ada.text_io.new_line;
+                    ada.wide_wide_text_io.put( "action # " );
+                    ada.Wide_Wide_text_io.put( INTEGER'Wide_Wide_IMAGE(yy_act) );
+                    ada.Wide_Wide_text_io.new_line;
                     raise AFLEX_INTERNAL_ERROR;
             end case; -- case (yy_act)
         end loop; -- end of loop waiting for end of file
@@ -999,7 +988,7 @@ begin
 if (trace) then
    New_Line (Standard_Error);
    Put (Standard_Error, "toktype = :");
-   Put (Standard_Error, Token'Image (toktype));
+   Put (Standard_Error, Token'Wide_Wide_Image (toktype));
    Put_line (Standard_Error, ":");
 end if;
 
@@ -1021,14 +1010,14 @@ end if;
     if ( trace ) then
 	if ( beglin ) then
 	    Put (Standard_Error, Num_Rules + 1);
-	    Put (Standard_Error, ASCII.HT);
+	    Put (Standard_Error, HT);
 	    Beglin := False;
     	end if;
 
 	case toktype is
 	    when '<' | '>'|'^'|'$'|'"'|'['|']'|'{'|'}'|'|'|'('|
     	    	 ')'|'-'|'/'|'?'|'.'|'*'|'+'|',' =>
-		Put (Standard_Error, Token'Image (Toktype));
+		Put (Standard_Error, Token'Wide_Wide_Image (Toktype));
 
 	    when NEWLINE =>
 		New_Line (Standard_Error);
@@ -1070,7 +1059,7 @@ end if;
     		    Put (Standard_Error, '\');
 
 		else
-		    Put (Standard_Error, Token'Image (toktype));
+		    Put (Standard_Error, Token'Wide_Wide_Image (toktype));
     	    	end if;
 
 	    when NUMBER =>
@@ -1086,7 +1075,7 @@ end if;
 
 	    when others =>
 	    	Put (Standard_Error, "Something weird:");
-		Put_Line (Standard_Error, Token'Image (toktype));
+		Put_Line (Standard_Error, Token'Wide_Wide_Image (toktype));
     	end case;
     end if;
 

@@ -1,7 +1,7 @@
 package body scanner.DFA is
-function YYText return String is
-   Aux : constant String (1 .. yy_cp - yy_bp)
-     := String (yy_ch_buf.data (yy_bp .. yy_cp - 1));
+function YYText return Wide_Wide_String is
+   Aux : constant Wide_Wide_String (1 .. yy_cp - yy_bp)
+     := Wide_Wide_String (yy_ch_buf.data (yy_bp .. yy_cp - 1));
 
 begin
    return Aux;
@@ -22,7 +22,7 @@ begin
     yy_c_buf_p := yy_cp;
 end YY_DO_BEFORE_ACTION;
 
-function Previous (Data : ch_buf_type; Index : Integer) return Character is
+function Previous (Data : ch_buf_type; Index : Integer) return Wide_Wide_Character is
    Aux : constant Integer := Index - 1;
 
 begin
@@ -32,7 +32,7 @@ end Previous;
 procedure Next
   (Data  : ch_buf_type;
    Index : in out Integer;
-   Code  : out Character)
+   Code  : out Wide_Wide_Character)
 is
 begin
    Code := Data.Data (Index);

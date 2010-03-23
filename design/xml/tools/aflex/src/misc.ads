@@ -82,12 +82,18 @@ package Misc is
       Value : Integer);
 
   procedure MKDATA(VALUE : in INTEGER);
-  function MYCTOI(NUM_ARRAY : in Unbounded_String) return INTEGER;
+   function MYCTOI
+     (NUM_ARRAY : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String)
+      return INTEGER;
 
-   function MYESC (ARR : Unbounded_String) return Unicode.Unicode_Character;
+   function MYESC
+     (ARR : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String)
+      return Unicode.Unicode_Character;
    -- myesc - return character corresponding to escape sequence
 
-  function OTOI(STR : in Unbounded_String) return CHARACTER;
+   function OTOI
+     (STR : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String)
+      return Wide_Wide_Character;
 
    function Readable_Form (C : Wide_Wide_Character) return Unbounded_String;
 

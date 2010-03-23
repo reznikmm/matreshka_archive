@@ -470,29 +470,39 @@ package body MISC is
     PUT(VALUE, 5);
   end MKDATA;
 
+   ------------
+   -- MYCTOI --
+   ------------
 
-  -- myctoi - return the integer represented by a string of digits
+   -- myctoi - return the integer represented by a string of digits
 
-  function MYCTOI(NUM_ARRAY : in Unbounded_String) return INTEGER is
-    TOTAL : INTEGER := 0;
-    CNT   : INTEGER := 1;
-  begin
-    while CNT <= Length (NUM_ARRAY) loop
-      TOTAL := TOTAL*10;
+   function MYCTOI
+     (NUM_ARRAY : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String)
+      return INTEGER
+   is
+      TOTAL : INTEGER := 0;
+      CNT   : INTEGER := 1;
+
+   begin
+      while CNT <= Length (NUM_ARRAY) loop
+         TOTAL := TOTAL*10;
          TOTAL :=
            TOTAL
-             + CHARACTER'POS (Element (NUM_ARRAY, CNT)) - CHARACTER'POS('0')
-        ;
-      CNT := CNT + 1;
-    end loop;
-    return TOTAL;
-  end MYCTOI;
+             + Wide_Wide_Character'Pos (Element (NUM_ARRAY, CNT))
+             - CHARACTER'POS('0');
+         CNT := CNT + 1;
+      end loop;
+
+      return TOTAL;
+   end MYCTOI;
 
    -----------
    -- MYESC --
    -----------
 
-   function MYESC (ARR : Unbounded_String) return Unicode.Unicode_Character is
+   function MYESC
+     (ARR : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String)
+      return Unicode.Unicode_Character is
    begin
       case Element (ARR, 2) is
          when 'a' =>
@@ -522,7 +532,7 @@ package body MISC is
             declare
                Esc_Char : constant Unicode_Character
                  := Unicode_Character'Val
-                     (Integer'Value
+                     (Integer'Wide_Wide_Value
                        ("16#" & Slice (Arr, 3, Length (Arr)) & "#"));
 
             begin
@@ -539,40 +549,50 @@ package body MISC is
             -- \<octal>
 
             declare
-               ESC_CHAR : Character;
+               ESC_CHAR : Wide_Wide_Character;
 
             begin
                ESC_CHAR :=
                  OTOI (Unbounded_Slice (ARR, 2, Length (ARR)));
 
-               if (ESC_CHAR = ASCII.NUL) then
+               if (ESC_CHAR = NUL) then
                   MISC.SYNERR("escape sequence for null not allowed");
 
                   return Unicode.SOH;
                end if;
 
-               return Unicode_Character'Val (Character'Pos (ESC_CHAR));
+               return ESC_CHAR;
             end;
 
          when others =>
-            return Unicode_Character'Val (Character'Pos (Element (ARR, 2)));
+            return Element (ARR, 2);
       end case;
   end MYESC;
 
+   ----------
+   -- OTOI --
+   ----------
 
-  -- otoi - convert an octal digit string to an integer value
+   -- otoi - convert an octal digit string to an integer value
 
-  function OTOI(STR : Unbounded_String) return CHARACTER is
-    TOTAL : INTEGER := 0;
-    CNT   : INTEGER := 1;
-  begin
-    while CNT <= Length (STR) loop
-      TOTAL := TOTAL*8;
-      TOTAL := TOTAL + CHARACTER'POS(Element (STR, CNT)) - CHARACTER'POS('0');
-      CNT := CNT + 1;
-    end loop;
-    return CHARACTER'VAL(TOTAL);
-  end OTOI;
+   function OTOI
+     (STR : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String)
+      return Wide_Wide_Character
+   is
+      TOTAL : INTEGER := 0;
+      CNT   : INTEGER := 1;
+
+   begin
+      while CNT <= Length (STR) loop
+         TOTAL := TOTAL*8;
+         TOTAL :=
+           TOTAL + Wide_Wide_Character'Pos (Element (STR, CNT))
+             - CHARACTER'POS('0');
+         CNT := CNT + 1;
+      end loop;
+
+      return Wide_Wide_Character'Val (TOTAL);
+   end OTOI;
 
    -------------------
    -- Readable_Form --
