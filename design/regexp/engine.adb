@@ -95,7 +95,7 @@ package body Engine is
       Matched : out Boolean;
       Slices  : out Slice_Array)
    is
-      Stack : State_Array (1 .. 10);
+      Stack : State_Array (1 .. 100);
       Last  : Natural := 0;
       PC    : Positive := 1;
       SP    : Positive := String'First;
