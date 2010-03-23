@@ -204,8 +204,6 @@
 <INITIAL,CHARACTER_CLASS>"\\a" {
    YYLVal := (Code_Point, BEL);
 
-   Put_Line ("\a");
-
    return Token_Code_Point;
 }
 
@@ -237,14 +235,22 @@
 <INITIAL,CHARACTER_CLASS>\\u\p{Hex_Digit}{4} {
    --  Short hex notation of the code point
 
-   raise Program_Error;
+   YYLVal :=
+     (Code_Point,
+      Wide_Wide_Character'Val
+        (Integer'Wide_Wide_Value ("16#" & YYText & "#")));
+
    return Token_Code_Point;
 }
 
 <INITIAL,CHARACTER_CLASS>\\U\p{Hex_Digit}{8} {
    --  Long hex notation of the code point
 
-   raise Program_Error;
+   YYLVal :=
+     (Code_Point,
+      Wide_Wide_Character'Val
+        (Integer'Wide_Wide_Value ("16#" & YYText & "#")));
+
    return Token_Code_Point;
 }
 
