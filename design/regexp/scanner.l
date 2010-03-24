@@ -62,6 +62,12 @@
    end;
 }
 
+<LITERAL><<EOF>> {
+   --  Unexprected end of literal
+
+   raise Program_Error;
+}
+
 "(" {
    --  Start of subexpression
 
@@ -138,6 +144,12 @@
    return Token_Character_Class_Range;
 }
 
+<CHARACTER_CLASS><<EOF>> {
+   --  Unexpected and of character class
+
+   raise Program_Error;
+}
+
 "{" {
    --  Multiplicity
 
@@ -178,6 +190,12 @@
 
 <MULTIPLICITY>[^\p{Pattern_White_Space}] {
    --  Unexpected character in multiplicidy declaration
+
+   raise Program_Error;
+}
+
+<MULTIPLICITY><<EOF>> {
+   --  Unexpected end of multiplicity specifier
 
    raise Program_Error;
 }
