@@ -18,7 +18,6 @@ package body Compiler is
       Program            : Instruction_Array (1 .. AST_Last * 3);
       Last               : Natural := 0;
       Last_Subexpression : Natural := 0;
-      Sub_Depth          : Natural := 0;
 
       procedure Compile
         (Expression  : Positive;
@@ -215,67 +214,43 @@ package body Compiler is
                end if;
 
             when Subexpression =>
-               if Sub_Depth = 0 then
+               Last := Last + 1;
+               Instruction := Last;
+               Tails.Clear;
+
+               declare
+                  Ins_1   : Positive;
+                  Tails_1 : Vector;
+
+               begin
+                  if AST (Expression).Index = 0 then
+                     Last_Subexpression := Last_Subexpression + 1;
+                     AST (Expression).Index := Last_Subexpression;
+                  end if;
+
+                  Compile (AST (Expression).Subexpression, Ins_1, Tails_1);
+
+                  Program (Instruction) :=
+                    (Save, Ins_1, AST (Expression).Index, True);
                   Last := Last + 1;
-                  Instruction := Last;
-                  Tails.Clear;
-
-                  declare
-                     Ins_1   : Positive;
-                     Tails_1 : Vector;
-
-                  begin
-                     Sub_Depth := 1;
-                     Compile (AST (Expression).Subexpression, Ins_1, Tails_1);
-                     Sub_Depth := 0;
-
-                     if AST (Expression).Index = 0 then
-                        Last_Subexpression := Last_Subexpression + 1;
-                        AST (Expression).Index := Last_Subexpression;
-                     end if;
-
-                     Program (Instruction) :=
-                       (Save, Ins_1, AST (Expression).Index, True);
-                     Last := Last + 1;
-                     Ins_1 := Last;
-                     Program (Ins_1) :=
-                       (Save, 0, AST (Expression).Index, False);
-                     Connect_Tails (Tails_1, Ins_1);
-
-                     if AST (Expression).Next = 0 then
-                        Tails.Append (Ins_1);
-
-                     else
-                        declare
-                           Ins : Positive;
-
-                        begin
-                           Compile (AST (Expression).Next, Ins, Tails);
-                           Program (Ins_1).Next := Ins;
-                        end;
-                     end if;
-                  end;
-
-               else
-                  Sub_Depth := Sub_Depth + 1;
-                  Compile (AST (Expression).Subexpression, Instruction, Tails);
-                  Sub_Depth := Sub_Depth - 1;
+                  Ins_1 := Last;
+                  Program (Ins_1) :=
+                    (Save, 0, AST (Expression).Index, False);
+                  Connect_Tails (Tails_1, Ins_1);
 
                   if AST (Expression).Next = 0 then
-                     null;
+                     Tails.Append (Ins_1);
 
                   else
                      declare
-                        Ins     : Positive;
-                        Tails_1 : Vector;
+                        Ins : Positive;
 
                      begin
-                        Compile (AST (Expression).Next, Ins, Tails_1);
-                        Connect_Tails (Tails, Ins);
-                        Tails := Tails_1;
+                        Compile (AST (Expression).Next, Ins, Tails);
+                        Program (Ins_1).Next := Ins;
                      end;
                   end if;
-               end if;
+               end;
 
             when others =>
                raise Program_Error;
