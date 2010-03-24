@@ -33,7 +33,28 @@ package body Compiler is
       procedure Compile
         (Expression  : Positive;
          Instruction : out Positive;
-         Tails       : out Vector) is
+         Tails       : out Vector)
+      is
+         procedure Compile_Next;
+
+         ------------------
+         -- Compile_Next --
+         ------------------
+
+         procedure Compile_Next is
+         begin
+            if AST (Expression).Next /= 0 then
+               declare
+                  Next_Instruction : Positive;
+                  Previous_Tails   : Vector := Tails;
+
+               begin
+                  Compile (AST (Expression).Next, Next_Instruction, Tails);
+                  Connect_Tails (Previous_Tails, Next_Instruction);
+               end;
+            end if;
+         end Compile_Next;
+
       begin
          case AST (Expression).Kind is
             when Alternation =>
@@ -61,19 +82,8 @@ package body Compiler is
                Tails.Clear;
 
                Program (Instruction) := (Any_Code_Point, 0);
-
-               if AST (Expression).Next = 0 then
-                  Tails.Append (Instruction);
-
-               else
-                  declare
-                     Ins : Positive;
-
-                  begin
-                     Compile (AST (Expression).Next, Ins, Tails);
-                     Program (Instruction).Next := Ins;
-                  end;
-               end if;
+               Tails.Append (Instruction);
+               Compile_Next;
 
             when Code_Point =>
                Last := Last + 1;
@@ -81,19 +91,8 @@ package body Compiler is
                Tails.Clear;
 
                Program (Instruction) := (Code_Point, 0, AST (Expression).Code);
-
-               if AST (Expression).Next = 0 then
-                  Tails.Append (Instruction);
-
-               else
-                  declare
-                     Ins : Positive;
-
-                  begin
-                     Compile (AST (Expression).Next, Ins, Tails);
-                     Program (Instruction).Next := Ins;
-                  end;
-               end if;
+               Tails.Append (Instruction);
+               Compile_Next;
 
             when Multiplicity =>
                if AST (Expression).Lower = 0
@@ -103,14 +102,12 @@ package body Compiler is
 
                   Last := Last + 1;
                   Instruction := Last;
-                  Tails.Clear;
 
                   declare
-                     Ins_1   : Positive;
-                     Tails_1 : Vector;
+                     Ins_1 : Positive;
 
                   begin
-                     Compile (AST (Expression).Item, Ins_1, Tails_1);
+                     Compile (AST (Expression).Item, Ins_1, Tails);
 
                      if AST (Expression).Greedy then
                         Program (Instruction) := (Split, Ins_1, 0);
@@ -119,15 +116,8 @@ package body Compiler is
                         Program (Instruction) := (Split, 0, Ins_1);
                      end if;
 
-                     Tails_1.Append (Instruction);
-
-                     if AST (Expression).Next = 0 then
-                        Tails := Tails_1;
-
-                     else
-                        Compile (AST (Expression).Next, Ins_1, Tails);
-                        Connect_Tails (Tails_1, Ins_1);
-                     end if;
+                     Tails.Append (Instruction);
+                     Compile_Next;
                   end;
 
                elsif AST (Expression).Lower = 0
@@ -137,15 +127,13 @@ package body Compiler is
 
                   Last := Last + 1;
                   Instruction := Last;
-                  Tails.Clear;
 
                   declare
-                     Ins_1   : Positive;
-                     Tails_1 : Vector;
+                     Ins_1 : Positive;
 
                   begin
-                     Compile (AST (Expression).Item, Ins_1, Tails_1);
-                     Connect_Tails (Tails_1, Instruction);
+                     Compile (AST (Expression).Item, Ins_1, Tails);
+                     Connect_Tails (Tails, Instruction);
 
                      if AST (Expression).Greedy then
                         Program (Instruction) := (Split, Ins_1, 0);
@@ -154,19 +142,9 @@ package body Compiler is
                         Program (Instruction) := (Split, 0, Ins_1);
                      end if;
 
-                     if AST (Expression).Next = 0 then
-                        Tails.Append (Instruction);
-
-                     else
-                        Compile (AST (Expression).Next, Ins_1, Tails);
-
-                        if AST (Expression).Greedy then
-                           Program (Instruction).Another := Ins_1;
-
-                        else
-                           Program (Instruction).Next := Ins_1;
-                        end if;
-                     end if;
+                     Tails.Clear;
+                     Tails.Append (Instruction);
+                     Compile_Next;
                   end;
 
                elsif AST (Expression).Lower = 1
@@ -175,7 +153,6 @@ package body Compiler is
                   --  One or more
 
                   declare
-                     Ins_1   : Positive;
                      Ins     : Positive;
 
                   begin
@@ -193,20 +170,9 @@ package body Compiler is
 
                      Connect_Tails (Tails, Ins);
 
-                     if AST (Expression).Next = 0 then
-                        Tails.Clear;
-                        Tails.Append (Ins);
-
-                     else
-                        Compile (AST (Expression).Next, Ins_1, Tails);
-
-                        if AST (Expression).Greedy then
-                           Program (Ins).Another := Ins_1;
-
-                        else
-                           Program (Ins).Next := Ins_1;
-                        end if;
-                     end if;
+                     Tails.Clear;
+                     Tails.Append (Ins);
+                     Compile_Next;
                   end;
 
                else
@@ -216,11 +182,9 @@ package body Compiler is
             when Subexpression =>
                Last := Last + 1;
                Instruction := Last;
-               Tails.Clear;
 
                declare
                   Ins_1   : Positive;
-                  Tails_1 : Vector;
 
                begin
                   if AST (Expression).Index = 0 then
@@ -228,7 +192,7 @@ package body Compiler is
                      AST (Expression).Index := Last_Subexpression;
                   end if;
 
-                  Compile (AST (Expression).Subexpression, Ins_1, Tails_1);
+                  Compile (AST (Expression).Subexpression, Ins_1, Tails);
 
                   Program (Instruction) :=
                     (Save, Ins_1, AST (Expression).Index, True);
@@ -236,20 +200,11 @@ package body Compiler is
                   Ins_1 := Last;
                   Program (Ins_1) :=
                     (Save, 0, AST (Expression).Index, False);
-                  Connect_Tails (Tails_1, Ins_1);
+                  Connect_Tails (Tails, Ins_1);
 
-                  if AST (Expression).Next = 0 then
-                     Tails.Append (Ins_1);
-
-                  else
-                     declare
-                        Ins : Positive;
-
-                     begin
-                        Compile (AST (Expression).Next, Ins, Tails);
-                        Program (Ins_1).Next := Ins;
-                     end;
-                  end if;
+                  Tails.Clear;
+                  Tails.Append (Ins_1);
+                  Compile_Next;
                end;
 
             when others =>
