@@ -98,9 +98,6 @@ package MISC_DEFS is
   type UNBOUNDED_DFAACC_ARRAY is array ( INTEGER range <> ) of DFAACC_TYPE;
   type DFAACC_PTR is access UNBOUNDED_DFAACC_ARRAY;
 
-  function MIN (X, Y : in INTEGER) return INTEGER;
-  function MAX (X, Y : in INTEGER) return INTEGER;
-
   -- special chk[] values marking the slots taking by end-of-buffer and action
   -- numbers
 

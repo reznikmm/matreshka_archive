@@ -171,22 +171,4 @@ package body MISC_DEFS is
     ARR := NEW_ARR;
   end REALLOCATE_BOOLEAN_ARRAY;
 
-  function MAX(X, Y : in INTEGER) return INTEGER is
-  begin
-    if (X > Y) then
-      return X;
-    else
-      return Y;
-    end if;
-  end MAX;
-
-  function MIN(X, Y : in INTEGER) return INTEGER is
-  begin
-    if (X < Y) then
-      return X;
-    else
-      return Y;
-    end if;
-  end MIN;
-
 end MISC_DEFS;

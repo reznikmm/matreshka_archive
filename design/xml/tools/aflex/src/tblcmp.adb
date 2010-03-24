@@ -546,7 +546,7 @@ package body TBLCMP is
 
       -- ensure that the base address we eventually generate is
       -- non-negative
-      BASEADDR := MAX(TBLEND + 1, MINEC);
+      BASEADDR := Integer'Max (TBLEND + 1, MINEC);
     end if;
 
     TBLBASE := BASEADDR - MINEC;
@@ -577,7 +577,7 @@ package body TBLCMP is
       end loop;
     end if;
 
-    TBLEND := MAX(TBLEND, TBLLAST);
+    TBLEND := Integer'Max (TBLEND, TBLLAST);
   end MKENTRY;
 
   -- mk1tbl - create table entries for a state (or state fragment) which

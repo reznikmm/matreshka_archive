@@ -249,8 +249,8 @@ package body NFA is
       else
         MKXTION(FINALST(FIRST), LAST);
         FINALST(FIRST) := FINALST(LAST);
-        LASTST(FIRST) := MAX(LASTST(FIRST), LASTST(LAST));
-        FIRSTST(FIRST) := MIN(FIRSTST(FIRST), FIRSTST(LAST));
+        LASTST(FIRST) := Integer'Max (LASTST(FIRST), LASTST(LAST));
+        FIRSTST(FIRST) := Integer'Min(FIRSTST(FIRST), FIRSTST(LAST));
         return (FIRST);
       end if;
     end if;
