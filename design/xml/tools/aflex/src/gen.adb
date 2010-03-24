@@ -360,9 +360,7 @@ package body Gen is
       Do_Indent;
 
       -- lastdfa + 2 is the beginning of the templates
-      PUT("if ( yy_current_state >= ");
-      PUT(LASTDFA + 2, 1);
-      PUT_LINE(" ) then");
+      Put_Line ("if yy_current_state >= YY_FIRST_TEMPLATE then");
 
       INDENT_UP;
       INDENT_PUTS("yy_c := yy_meta(yy_c);");
@@ -413,16 +411,10 @@ package body Gen is
       INDENT_PUTS("yy_cp := Index;");
 
       if (INTERACTIVE) then
-        PUT("if ( yy_base(yy_current_state) = ");
-        PUT(JAMBASE, 1);
+        Put_Line ("   exit when yy_base (yy_current_state) = YY_JAMBASE;");
       else
-        PUT("if ( yy_current_state = ");
-        PUT(JAMSTATE, 1);
+        Put_Line ("   exit when yy_current_state = YY_JAMSTATE;");
       end if;
-
-      PUT_LINE(" ) then");
-      PUT_LINE("    exit;");
-      PUT_LINE("end if;");
 
       INDENT_DOWN;
 
@@ -431,7 +423,7 @@ package body Gen is
       PUT_LINE("end loop;");
 
       if (not INTERACTIVE) then
-        INDENT_PUTS("yy_cp := yy_last_accepting_cpos;");
+        INDENT_PUTS("yy_cp            := yy_last_accepting_cpos;");
         INDENT_PUTS("yy_current_state := yy_last_accepting_state;");
       end if;
     end if;
@@ -734,9 +726,25 @@ package body Gen is
     -- output YYLex code up to part about tables.
     end if;
 
-    PUT("YY_END_OF_BUFFER : constant := ");
+    PUT("      YY_END_OF_BUFFER : constant := ");
     PUT(NUM_RULES + 1, 1);
     PUT_LINE(";");
+
+    if INTERACTIVE then
+       Put ("      YY_JAMBASE : constant := ");
+       Put (JAMBASE, 1);
+       Put_Line (";");
+
+    else
+       Put ("      YY_JAMSTATE : constant := ");
+       Put (JAMSTATE, 1);
+       Put_Line (";");
+    end if;
+
+    --  lastdfa + 2 is the beginning of the templates
+    Put ("      YY_FIRST_TEMPLATE : constant := ");
+    Put (LASTDFA + 2, 1);
+    Put_Line (";");
 
     INDENT_PUTS("YY_Current_State : YY_State_Type;");
 

@@ -67,7 +67,9 @@ i, bracelevel: integer;
 
       --  returned upon end-of-file
       YY_END_TOK : constant Integer := 0;
-YY_END_OF_BUFFER : constant := 84;
+      YY_END_OF_BUFFER : constant := 84;
+      YY_JAMSTATE : constant := 331;
+      YY_FIRST_TEMPLATE : constant := 332;
 YY_Current_State : YY_State_Type;
    INITIAL : constant YY_State_Type := 0;
    SECT2 : constant YY_State_Type := 1;
@@ -679,7 +681,7 @@ begin
       end if;
       while ( yy_chk(yy_base(yy_current_state) + yy_c) /= yy_current_state ) loop
          yy_current_state := yy_def(yy_current_state);
-         if ( yy_current_state >= 332 ) then
+         if yy_current_state >= YY_FIRST_TEMPLATE then
             yy_c := yy_meta(yy_c);
          end if;
       end loop;
@@ -751,17 +753,15 @@ end yy_get_previous_state;
             end if;
             while ( yy_chk(yy_base(yy_current_state) + yy_c) /= yy_current_state ) loop
                yy_current_state := yy_def(yy_current_state);
-               if ( yy_current_state >= 332 ) then
+               if yy_current_state >= YY_FIRST_TEMPLATE then
                   yy_c := yy_meta(yy_c);
                end if;
             end loop;
             yy_current_state := yy_nxt(yy_base(yy_current_state) + yy_c);
          yy_cp := Index;
-if ( yy_current_state = 331 ) then
-    exit;
-end if;
+   exit when yy_current_state = YY_JAMSTATE;
       end loop;
-      yy_cp := yy_last_accepting_cpos;
+      yy_cp            := yy_last_accepting_cpos;
       yy_current_state := yy_last_accepting_state;
 
 <<next_action>>
