@@ -157,36 +157,64 @@ package body Compiler is
                      raise Program_Error;
                   end if;
 
-               elsif AST (Expression).Lower = 1
-                 and then AST (Expression).Upper = Natural'Last
-               then
-                  --  One or more
-
+               else
                   declare
-                     Ins     : Positive;
+                     Ins_1   : Positive;
+                     Ins_2   : Positive;
+                     Tails_L : Vector;
 
                   begin
-                     Compile (AST (Expression).Item, Instruction, Tails);
+                     Tails.Clear;
 
-                     Last := Last + 1;
-                     Ins := Last;
+                     for J in 1 .. AST (Expression).Lower loop
+                        Compile (AST (Expression).Item, Ins_1, Tails);
+                        Connect_Tails (Tails_L, Ins_1);
+                        Tails_L := Tails;
 
-                     if AST (Expression).Greedy then
-                        Program (Ins) := (Split, Instruction, 0);
+                        if J = 1 then
+                           Instruction := Ins_1;
+                        end if;
+                     end loop;
+
+                     if AST (Expression).Upper = Natural'Last then
+                        Last := Last + 1;
+                        Ins_2 := Last;
+                        Connect_Tails (Tails_L, Ins_2);
+
+                        if AST (Expression).Greedy then
+                           Program (Ins_2) := (Split, Ins_1, 0);
+
+                        else
+                           Program (Ins_2) := (Split, 0, Ins_1);
+                        end if;
+
+                        Tails.Clear;
+                        Tails.Append (Ins_2);
 
                      else
-                        Program (Ins) := (Split, 0, Instruction);
+                        Tails.Clear;
+
+                        for J in AST (Expression).Lower + 1 .. AST (Expression).Upper loop
+                           Last := Last + 1;
+                           Ins_1 := Last;
+                           Connect_Tails (Tails_L, Ins_1);
+                           Tails.Append (Ins_1);
+
+                           Compile (AST (Expression).Item, Ins_2, Tails_L);
+
+                           if AST (Expression).Greedy then
+                              Program (Ins_1) := (Split, Ins_2, 0);
+
+                           else
+                              Program (Ins_1) := (Split, 0, Ins_2);
+                           end if;
+                        end loop;
+
+                        Tails.Append (Tails_L);
                      end if;
 
-                     Connect_Tails (Tails, Ins);
-
-                     Tails.Clear;
-                     Tails.Append (Ins);
                      Compile_Next;
                   end;
-
-               else
-                  raise Program_Error;
                end if;
 
             when Subexpression =>
