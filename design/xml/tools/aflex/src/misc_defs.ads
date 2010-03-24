@@ -56,9 +56,6 @@ package MISC_DEFS is
   PREVIOUS_CONTINUED_ACTION : BOOLEAN; -- whether the previous rule's action wa
                                        -- s '|'
 
-  -- maximum line length we'll have to deal with
-  MAXLINE : constant INTEGER := 1024;
-
   -- These typees are needed for the various allocators.
   type UNBOUNDED_INT_ARRAY is array ( INTEGER range <> ) of INTEGER;
   type INT_PTR is access UNBOUNDED_INT_ARRAY;
@@ -100,10 +97,6 @@ package MISC_DEFS is
 
   type UNBOUNDED_DFAACC_ARRAY is array ( INTEGER range <> ) of DFAACC_TYPE;
   type DFAACC_PTR is access UNBOUNDED_DFAACC_ARRAY;
-
-  -- maximum size of file name
-
-  FILENAMESIZE : constant INTEGER := 1024;
 
   function MIN (X, Y : in INTEGER) return INTEGER;
   function MAX (X, Y : in INTEGER) return INTEGER;
