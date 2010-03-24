@@ -15,7 +15,7 @@ package body Compiler is
    function Compile return Engine.Instruction_Array is
       use Integer_Vectors;
 
-      Program            : Instruction_Array (1 .. AST_Last * 3);
+      Program            : Instruction_Array (1 .. AST_Last * 9);
       Last               : Natural := 0;
       Last_Subexpression : Natural := 0;
 
@@ -95,57 +95,67 @@ package body Compiler is
                Compile_Next;
 
             when Multiplicity =>
-               if AST (Expression).Lower = 0
-                 and then AST (Expression).Upper = 1
-               then
-                  --  Optional element
+               if AST (Expression).Lower = 0 then
+                  if AST (Expression).Upper = Natural'Last then
+                     --  Zero or more
 
-                  Last := Last + 1;
-                  Instruction := Last;
+                     Last := Last + 1;
+                     Instruction := Last;
 
-                  declare
-                     Ins_1 : Positive;
+                     declare
+                        Ins_1 : Positive;
 
-                  begin
-                     Compile (AST (Expression).Item, Ins_1, Tails);
+                     begin
+                        Compile (AST (Expression).Item, Ins_1, Tails);
+                        Connect_Tails (Tails, Instruction);
 
-                     if AST (Expression).Greedy then
-                        Program (Instruction) := (Split, Ins_1, 0);
+                        if AST (Expression).Greedy then
+                           Program (Instruction) := (Split, Ins_1, 0);
 
-                     else
-                        Program (Instruction) := (Split, 0, Ins_1);
-                     end if;
+                        else
+                           Program (Instruction) := (Split, 0, Ins_1);
+                        end if;
 
-                     Tails.Append (Instruction);
-                     Compile_Next;
-                  end;
+                        Tails.Clear;
+                        Tails.Append (Instruction);
+                        Compile_Next;
+                     end;
 
-               elsif AST (Expression).Lower = 0
-                 and then AST (Expression).Upper = Natural'Last
-               then
-                  --  Zero or more
+                  elsif AST (Expression).Upper >= 1 then
+                     --  N optional elements
 
-                  Last := Last + 1;
-                  Instruction := Last;
+                     declare
+                        Ins_1   : Positive;
+                        Ins_2   : Positive;
+                        Tails_L : Vector;
 
-                  declare
-                     Ins_1 : Positive;
+                     begin
+                        Instruction := Last + 1;
+                        Tails.Clear;
 
-                  begin
-                     Compile (AST (Expression).Item, Ins_1, Tails);
-                     Connect_Tails (Tails, Instruction);
+                        for J in AST (Expression).Lower + 1 .. AST (Expression).Upper loop
+                           Last := Last + 1;
+                           Ins_1 := Last;
+                           Connect_Tails (Tails_L, Ins_1);
+                           Tails.Append (Ins_1);
 
-                     if AST (Expression).Greedy then
-                        Program (Instruction) := (Split, Ins_1, 0);
+                           Compile (AST (Expression).Item, Ins_2, Tails_L);
 
-                     else
-                        Program (Instruction) := (Split, 0, Ins_1);
-                     end if;
+                           if AST (Expression).Greedy then
+                              Program (Ins_1) := (Split, Ins_2, 0);
 
-                     Tails.Clear;
-                     Tails.Append (Instruction);
-                     Compile_Next;
-                  end;
+                           else
+                              Program (Ins_1) := (Split, 0, Ins_2);
+                           end if;
+                        end loop;
+
+                        Tails.Append (Tails_L);
+                        Compile_Next;
+                     end;
+
+                  else
+                     raise Program_Error;
+                  end if;
 
                elsif AST (Expression).Lower = 1
                  and then AST (Expression).Upper = Natural'Last
@@ -255,7 +265,6 @@ package body Compiler is
 
       Last := Last + 1;
       Program (Last) := (Kind => Match);
-
 
       return Program (1 .. Last);
    end Compile;
