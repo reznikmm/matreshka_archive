@@ -72,6 +72,22 @@
             Node : Positive;
       end case;
    end record;
+
+   type YY_Errors is
+    (No_Error,
+     Unexpected_End_Of_Literal,
+     Unexpected_End_Of_Character_Class,
+     Unexpected_Character_in_Multiplicity_Specifier,
+     Unexpected_End_Of_Multiplicity_Specifier,
+     Unescaped_Pattern_Syntax_Character,
+     Expression_Syntax_Error);
+
+   type YY_Error_Information is record
+      Error : YY_Errors;
+      Index : Natural;
+   end record;
+
+   YY_Error : YY_Error_Information := (No_Error, 0);
 }
 
 %%
@@ -253,10 +269,15 @@ with Syntax;
       procedure YYError (S : Wide_Wide_String) is
       begin
          Put_Line (S);
+         YYError (Expression_Syntax_Error, 0);
       end YYError;
 
 ##
    begin
       Scanner.Data := League.Strings.Internals.Get_Shared (Expression);
       YYParse;
+
+   exception
+      when Syntax_Error =>
+         raise Syntax_Error with YY_Errors'Image (YY_Error.Error);
    end Parse;

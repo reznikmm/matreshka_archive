@@ -68,6 +68,17 @@ package body Scanner is
      return YY_END_OF_BUFFER + (YY_Start_State - 1) / 2 + 1;
    end YY_EOF_State;
 
+   -------------
+   -- YYError --
+   -------------
+
+   procedure YYError (Error : YY_Errors; Index : Natural) is
+   begin
+      if YY_Error.Error = No_Error then
+         YY_Error := (Error, Index);
+      end if;
+   end YYError;
+
    -----------
    -- YYLex --
    -----------
@@ -282,7 +293,9 @@ package body Scanner is
             when 25 =>
                --  Unexpected character in multiplicidy declaration
             
-               raise Program_Error;
+               YYError (Unexpected_Character_in_Multiplicity_Specifier, 0);
+            
+               return Error;
 
             when 27 =>
                --  Escaped pattern special code point
@@ -377,7 +390,9 @@ package body Scanner is
             when 40 =>
                --  Special outside of sequence
             
-               raise Program_Error;
+               YYError (Unescaped_Pattern_Syntax_Character, 0);
+            
+               return Error;
 
             when 44 =>
                --  End of data
@@ -387,17 +402,23 @@ package body Scanner is
             when 45 =>
                --  Unexprected end of literal
             
-               raise Program_Error;
+               YYError (Unexpected_End_Of_Literal, 0);
+            
+               return Error;
 
             when 46 =>
                --  Unexpected and of character class
             
-               raise Program_Error;
+               YYError (Unexpected_End_Of_Character_Class, 0);
+            
+               return Error;
 
             when 47 =>
                --  Unexpected end of multiplicity specifier
             
-               raise Program_Error;
+               YYError (Unexpected_End_Of_Multiplicity_Specifier, 0);
+            
+               return Error;
 
             when YY_END_OF_BUFFER =>
                YY_Action := YY_EOF_State;

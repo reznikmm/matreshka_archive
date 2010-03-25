@@ -65,7 +65,9 @@
 <LITERAL><<EOF>> {
    --  Unexprected end of literal
 
-   raise Program_Error;
+   YYError (Unexpected_End_Of_Literal, 0);
+
+   return Error;
 }
 
 "(" {
@@ -147,7 +149,9 @@
 <CHARACTER_CLASS><<EOF>> {
    --  Unexpected and of character class
 
-   raise Program_Error;
+   YYError (Unexpected_End_Of_Character_Class, 0);
+
+   return Error;
 }
 
 "{" {
@@ -191,13 +195,17 @@
 <MULTIPLICITY>[^\p{Pattern_White_Space}] {
    --  Unexpected character in multiplicidy declaration
 
-   raise Program_Error;
+   YYError (Unexpected_Character_in_Multiplicity_Specifier, 0);
+
+   return Error;
 }
 
 <MULTIPLICITY><<EOF>> {
    --  Unexpected end of multiplicity specifier
 
-   raise Program_Error;
+   YYError (Unexpected_End_Of_Multiplicity_Specifier, 0);
+
+   return Error;
 }
 
 <INITIAL,CHARACTER_CLASS>\\[\p{Pattern_Syntax}\p{Pattern_White_Space}] {
@@ -306,7 +314,9 @@
 <INITIAL,CHARACTER_CLASS>\p{Pattern_Syntax} {
    --  Special outside of sequence
 
-   raise Program_Error;
+   YYError (Unescaped_Pattern_Syntax_Character, 0);
+
+   return Error;
 }
 
 <<EOF>> {
@@ -328,3 +338,5 @@ with Ada.Wide_Wide_Text_IO;
    use Parser.Tokens;
 
    procedure Enter_Start_Condition (Start : Integer) is null;
+
+   procedure YYError (Error : Parser.Tokens.YY_Errors; Index : Natural) is null;
