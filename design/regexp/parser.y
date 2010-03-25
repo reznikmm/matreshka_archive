@@ -243,11 +243,16 @@ with Syntax;
 
    procedure Parse (Expression : League.Strings.Universal_String) is
 
+      procedure YYError (S : Wide_Wide_String);
+      --  Report error.
+
+      -------------
+      -- YYError --
+      -------------
+
       procedure YYError (S : Wide_Wide_String) is
       begin
          Put_Line (S);
-
-         raise Program_Error;
       end YYError;
 
 ##
