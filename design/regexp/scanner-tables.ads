@@ -19,8 +19,8 @@ private package Scanner.Tables is
    MULTIPLICITY    : constant := 3;
 
    YY_Accept : constant array (0 .. 65) of Integer :=
-    (    0,   38,   38,    0,    0,   38,   38,   38,
-        38,   43,   39,   38,   40,    6,    7,   12,
+    (    0,    0,    0,    0,    0,    0,    0,    0,
+         0,   43,   39,   38,   40,    6,    7,   12,
         14,    1,   10,   15,   40,   20,    8,    4,
          4,   18,   40,   16,   17,   25,   23,   24,
         21,   38,   11,   13,    9,   27,    2,    0,

@@ -284,7 +284,7 @@
    return Token_Code_Point;
 }
 
-<INITIAL,CHARACTER_CLASS,MULTIPLICITY>\p{Pattern_White_Space}* {
+<INITIAL,CHARACTER_CLASS,MULTIPLICITY>\p{Pattern_White_Space}+ {
    --  Sequence of whitespaces is ignored in all modes
 
    null;
