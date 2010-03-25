@@ -34,17 +34,12 @@
 with Matreshka.Internals.Strings;
 with Matreshka.Internals.Utf16;
 
-with Parser.Tokens;
+package Matreshka.Internals.Regexps.Compiler is
 
-package Scanner is
+   pragma Preelaborate;
 
    Data                : Matreshka.Internals.Strings.Shared_String_Access;
    YY_Start_State      : Integer := 1;
    YY_Current_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
 
-   function YYLex return Parser.Tokens.Token;
-
-   procedure YYError (Error : Parser.Tokens.YY_Errors; Index : Natural);
-   --  Report error.
-
-end Scanner;
+end Matreshka.Internals.Regexps.Compiler;

@@ -249,12 +249,12 @@ with League.Strings;
 with Ada.Wide_Wide_Text_IO; 
 with League.Strings.Internals;
 with Parser_Actions;
-with Scanner;
+with Matreshka.Internals.Regexps.Compiler.Scanner;
 with Syntax;
 ##
    use Ada.Wide_Wide_Text_IO;
    use Parser_Actions;
-   use Scanner;
+   use Matreshka.Internals.Regexps.Compiler.Scanner;
    use Syntax;
 
    procedure Parse (Expression : League.Strings.Universal_String) is
@@ -268,13 +268,15 @@ with Syntax;
 
       procedure YYError (S : Wide_Wide_String) is
       begin
-         Put_Line (S);
-         YYError (Expression_Syntax_Error, 0);
+         if YY_Error.Error = No_Error then
+            YY_Error := (Expression_Syntax_Error, 0);
+         end if;
       end YYError;
 
 ##
    begin
-      Scanner.Data := League.Strings.Internals.Get_Shared (Expression);
+      Matreshka.Internals.Regexps.Compiler.Data :=
+        League.Strings.Internals.Get_Shared (Expression);
       YYParse;
 
    exception

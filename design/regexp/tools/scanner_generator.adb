@@ -39,8 +39,16 @@ package body Scanner_Generator is
       Last   : Natural;
 
    begin
-      Open (Input, In_File, "../scanner.adb.in", "wcem=8");
-      Create (Output, Out_File, "../scanner.adb", "wcem=8");
+      Open
+       (Input,
+        In_File,
+        "../matreshka-internals-regexps-compiler-scanner.adb.in",
+        "wcem=8");
+      Create
+       (Output,
+        Out_File,
+        "../matreshka-internals-regexps-compiler-scanner.adb",
+        "wcem=8");
 
       while not End_Of_File (Input) loop
          Get_Line (Input, Buffer, Last);
@@ -157,11 +165,15 @@ package body Scanner_Generator is
       end Generate_Plane;
 
    begin
-      Create (Output, Out_File, "../scanner-tables.ads", "wcem=8");
+      Create
+       (Output,
+        Out_File,
+        "../matreshka-internals-regexps-compiler-scanner-tables.ads",
+        "wcem=8");
 
       Put_Line (Output, "with Matreshka.Internals.Unicode;");
       New_Line (Output);
-      Put_Line (Output, "private package Scanner.Tables is");
+      Put_Line (Output, "private package Matreshka.Internals.Regexps.Compiler.Scanner.Tables is");
 
       New_Line (Output);
       Put_Line (Output, "   subtype YY_Secondary_Index is");
@@ -240,7 +252,7 @@ package body Scanner_Generator is
       Put_Line (Output, "'Access);");
 
       New_Line (Output);
-      Put_Line (Output, "end Scanner.Tables;");
+      Put_Line (Output, "end Matreshka.Internals.Regexps.Compiler.Scanner.Tables;");
 
       Close (Output);
    end Generate_Scanner_Tables;

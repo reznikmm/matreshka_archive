@@ -33,10 +33,10 @@
 ------------------------------------------------------------------------------
 with Ada.Characters.Wide_Wide_Latin_1;
 
-with Scanner.Tables;
+with Matreshka.Internals.Regexps.Compiler.Scanner.Tables;
 with Matreshka.Internals.Unicode;
 
-package body Scanner is
+package body Matreshka.Internals.Regexps.Compiler.Scanner is
 
    use Ada.Characters.Wide_Wide_Latin_1;
    use Parser.Tokens;
@@ -431,4 +431,4 @@ package body Scanner is
       end loop; -- end of loop waiting for end of file
    end YYLex;
 
-end Scanner;
+end Matreshka.Internals.Regexps.Compiler.Scanner;

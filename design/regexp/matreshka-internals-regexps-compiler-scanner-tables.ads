@@ -1,6 +1,6 @@
 with Matreshka.Internals.Unicode;
 
-private package Scanner.Tables is
+private package Matreshka.Internals.Regexps.Compiler.Scanner.Tables is
 
    subtype YY_Secondary_Index is
      Matreshka.Internals.Unicode.Code_Point range 0 .. 16#FF#;
@@ -537,4 +537,4 @@ private package Scanner.Tables is
       16#00FE# => YY_EC_00FE'Access, 16#00FF# => YY_EC_00FF'Access,
       others   => YY_EC_0001'Access);
 
-end Scanner.Tables;
+end Matreshka.Internals.Regexps.Compiler.Scanner.Tables;
