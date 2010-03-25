@@ -44,11 +44,11 @@
 }
 
 "\\Q" {
-   Enter (LITERAL);
+   Enter_Start_Condition (LITERAL);
 }
 
 <LITERAL>"\\E" {
-   Enter (INITIAL);
+   Enter_Start_Condition (INITIAL);
 }
 
 <LITERAL>.|\n {  --  aflex . is any but newline
@@ -56,7 +56,7 @@
       S : constant Wide_Wide_String := YYText;
 
    begin
-      YYLVal := (Code_Point, S (S'First));
+      YYLVal := (Match_Code_Point, S (S'First));
 
       return Token_Code_Point;
    end;
@@ -119,7 +119,7 @@
 "[" {
    --  Enter character class
 
-   Enter (CHARACTER_CLASS);
+   Enter_Start_Condition (CHARACTER_CLASS);
 
    return Token_Character_Class_Begin;
 }
@@ -127,7 +127,7 @@
 <CHARACTER_CLASS>"]" {
    --  XXX Leave character class
 
-   Enter (INITIAL);
+   Enter_Start_Condition (INITIAL);
 
    return Token_Character_Class_End;
 }
@@ -153,7 +153,7 @@
 "{" {
    --  Multiplicity
 
-   Enter (MULTIPLICITY);
+   Enter_Start_Condition (MULTIPLICITY);
 
    return Token_Multiplicity_Begin;
 }
@@ -161,7 +161,7 @@
 <MULTIPLICITY>"}" {
    --  End of multiplicity specifier
 
-   Enter (INITIAL);
+   Enter_Start_Condition (INITIAL);
 
    return Token_Multiplicity_End_Greedy;
 }
@@ -169,7 +169,7 @@
 <MULTIPLICITY>"}?" {
    --  End of multiplicity specifier
 
-   Enter (INITIAL);
+   Enter_Start_Condition (INITIAL);
 
    return Token_Multiplicity_End_Lazy;
 }
@@ -207,56 +207,56 @@
       S : constant Wide_Wide_String := YYText;
 
    begin
-      YYLVal := (Code_Point, S (S'First + 1));
+      YYLVal := (Match_Code_Point, S (S'First + 1));
 
       return Token_Code_Point;
    end;
 }
 
 <INITIAL,CHARACTER_CLASS>"\\n" {
-   YYLVal := (Code_Point, LF);
+   YYLVal := (Match_Code_Point, LF);
 
    return Token_Code_Point;
 }
 
 <INITIAL,CHARACTER_CLASS>"\\r" {
-   YYLVal := (Code_Point, CR);
+   YYLVal := (Match_Code_Point, CR);
 
    return Token_Code_Point;
 }
 
 <INITIAL,CHARACTER_CLASS>"\\t" {
-   YYLVal := (Code_Point, HT);
+   YYLVal := (Match_Code_Point, HT);
 
    return Token_Code_Point;
 }
 
 <INITIAL,CHARACTER_CLASS>"\\a" {
-   YYLVal := (Code_Point, BEL);
+   YYLVal := (Match_Code_Point, BEL);
 
    return Token_Code_Point;
 }
 
 <INITIAL,CHARACTER_CLASS>"\\e" {
-   YYLVal := (Code_Point, ESC);
+   YYLVal := (Match_Code_Point, ESC);
 
    return Token_Code_Point;
 }
 
 <INITIAL,CHARACTER_CLASS>"\\f" {
-   YYLVal := (Code_Point, FF);
+   YYLVal := (Match_Code_Point, FF);
 
    return Token_Code_Point;
 }
 
 <INITIAL,CHARACTER_CLASS>"\\v" {
-   YYLVal := (Code_Point, VT);
+   YYLVal := (Match_Code_Point, VT);
 
    return Token_Code_Point;
 }
 
 <INITIAL,CHARACTER_CLASS>"\\c"[A-Z] {
---   YYLVal := (Code_Point, VT);
+--   YYLVal := (Match_Code_Point, VT);
 
    raise Program_Error;
    return Token_Code_Point;
@@ -266,7 +266,7 @@
    --  Short hex notation of the code point
 
    YYLVal :=
-     (Code_Point,
+     (Match_Code_Point,
       Wide_Wide_Character'Val
         (Integer'Wide_Wide_Value ("16#" & YYText (3 .. 6) & "#")));
 
@@ -277,7 +277,7 @@
    --  Long hex notation of the code point
 
    YYLVal :=
-     (Code_Point,
+     (Match_Code_Point,
       Wide_Wide_Character'Val
         (Integer'Wide_Wide_Value ("16#" & YYText (3 .. 10) & "#")));
 
@@ -297,7 +297,7 @@
       S : constant Wide_Wide_String := YYText;
 
    begin
-      YYLVal := (Code_Point, S (S'First));
+      YYLVal := (Match_Code_Point, S (S'First));
 
       return Token_Code_Point;
    end;
@@ -326,3 +326,5 @@ with Ada.Wide_Wide_Text_IO;
    use Ada.Characters.Wide_Wide_Latin_1;
    use Ada.Wide_Wide_Text_IO;
    use Parser.Tokens;
+
+   procedure Enter_Start_Condition (Start : Integer) is null;

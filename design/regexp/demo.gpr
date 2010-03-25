@@ -1,3 +1,4 @@
+with "../../gnat/matreshka_league.gpr";
 
 project Demo is
    for Main use ("demo.adb");

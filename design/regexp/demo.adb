@@ -2,14 +2,44 @@ with Ada.Command_Line;
 with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
 
+with League.Strings;
+
 with Compiler;
 with Engine;
 with Parser;
 with Syntax;
 
 procedure Demo is
+
+   function Read (File_Name : String) return League.Strings.Universal_String;
+
+   ----------
+   -- Read --
+   ----------
+
+   function Read (File_Name : String) return League.Strings.Universal_String is
+      File   : Ada.Wide_Wide_Text_IO.File_Type;
+      Buffer : Wide_Wide_String (1 .. 1024);
+      Last   : Natural;
+
+   begin
+      Ada.Wide_Wide_Text_IO.Open
+        (File,
+         Ada.Wide_Wide_Text_IO.In_File,
+         File_Name,
+         "wcem=8");
+      Ada.Wide_Wide_Text_IO.Get_Line (File, Buffer, Last);
+      Ada.Wide_Wide_Text_IO.Close (File);
+
+      return League.Strings.To_Universal_String (Buffer (1 .. Last));
+   end Read;
+
+   Expression : League.Strings.Universal_String :=
+     Read (Ada.Command_Line.Argument (1));
+
 begin
-   Parser.Parse (Ada.Command_Line.Argument (1));
+--   Parser.Parse (Ada.Command_Line.Argument (1));
+   Parser.Parse (Expression);
    Ada.Wide_Wide_Text_IO.Put_Line ("---------- AST ----------");
    Syntax.Dump;
 

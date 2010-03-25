@@ -55,14 +55,14 @@
 %token Token_Subexpression_End
 
 {
-   type Kinds is (None, Code_Point, Number, AST_Node);
+   type Kinds is (None, Match_Code_Point, Number, AST_Node);
 
    type YYSType (Kind : Kinds := None) is record
       case Kind is
          when None =>
             null;
 
-         when Code_Point =>
+         when Match_Code_Point =>
             Code : Wide_Wide_Character;
 
          when Number =>
@@ -226,12 +226,14 @@ character_class_content : character_class_content Token_Code_Point Token_Charact
   ;
 
 %%
+with League.Strings;
 ##
-   procedure Parse (File_Name : String);
+   procedure Parse (Expression : League.Strings.Universal_String);
 ##
 with Ada.Wide_Wide_Text_IO; 
+with League.Strings.Internals;
 with Parser_Actions;
-with Scanner.IO;
+with Scanner;
 with Syntax;
 ##
    use Ada.Wide_Wide_Text_IO;
@@ -239,7 +241,7 @@ with Syntax;
    use Scanner;
    use Syntax;
 
-   procedure Parse (File_Name : String) is
+   procedure Parse (Expression : League.Strings.Universal_String) is
 
       procedure YYError (S : Wide_Wide_String) is
       begin
@@ -250,6 +252,6 @@ with Syntax;
 
 ##
    begin
-      Scanner.IO.Open_Input (File_Name);
+      Scanner.Data := League.Strings.Internals.Get_Shared (Expression);
       YYParse;
    end Parse;

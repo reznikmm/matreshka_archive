@@ -1,0 +1,12 @@
+with "asis";
+
+project Tools is
+
+   for Main use ("scanner_transformer.adb");
+   for Object_Dir use "../.obj";
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8");
+   end Compiler;
+
+end Tools;
