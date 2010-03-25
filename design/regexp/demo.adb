@@ -38,7 +38,6 @@ procedure Demo is
      Read (Ada.Command_Line.Argument (1));
 
 begin
---   Parser.Parse (Ada.Command_Line.Argument (1));
    Parser.Parse (Expression);
    Ada.Wide_Wide_Text_IO.Put_Line ("---------- AST ----------");
    Syntax.Dump;
