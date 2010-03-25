@@ -309,6 +309,12 @@
    raise Program_Error;
 }
 
+<<EOF>> {
+   --  End of data
+
+   return End_Of_Input;
+}
+
 %%
 with Parser.Tokens;
 ##
