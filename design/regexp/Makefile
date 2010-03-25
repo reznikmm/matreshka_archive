@@ -1,6 +1,8 @@
 include ../../Makefile.config
 
 GPRBUILD_FLAGS = -p -XARCHITECTURE=$(ARCHITECTURE) -XBUILD=$(BUILD)
+AFLEX = ../../xml/tools/aflex/src/.objs/aflex
+AYACC = ../../xml/tools/ayacc/src/.objs/ayacc
 
 all: gen
 	gprbuild $(GPRBUILD_FLAGS) -Pdemo.gpr
@@ -8,18 +10,13 @@ all: gen
 
 gen: .gen
 	gprbuild -p -Ptools/tools.gpr
-	(cd .gen && ./aflex -v scanner.l)
-#	(cd gens && ./aflex -v -s scanner.l)
-	(cd .gen && ./ayacc parser.y off off)
+	(cd .gen && $(AFLEX) -v ../scanner.l)
+	(cd .gen && $(AYACC) ../parser.y off off)
 	(cd .gen && gcc -c -gnatct -gnat05 -I../../../source/league scanner.adb)
 	(cd .gen && ../.obj/scanner_transformer)
 
 .gen:
 	mkdir .gen
-	(cd .gen && ln -s ../../xml/tools/aflex/src/.objs/aflex)
-	(cd .gen && ln -s ../scanner.l)
-	(cd .gen && ln -s ../../xml/tools/ayacc/src/.objs/ayacc)
-	(cd .gen && ln -s ../parser.y)
 
 clean:
 	rm -rf .obj
