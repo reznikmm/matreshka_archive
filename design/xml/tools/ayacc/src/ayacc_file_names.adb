@@ -1,22 +1,34 @@
 
+with Ada.Characters.Handling;
 with Ada.Directories;
+with Ada.Strings.Unbounded;
 
 with STR_Pack;
 use  STR_Pack;
 
 with String_Pkg;
+
 package body Ayacc_File_Names is
+
+   use Ada.Characters.Handling;
+   use Ada.Strings.Unbounded;
+
+   function "+" (Item : String) return Unbounded_String
+     renames To_Unbounded_String;
+
+   function "+" (Item : Unbounded_String) return String
+     renames To_String;
 
     Max_Name_Length : constant := 50;
 
-    Source_File_Name       : STR(Max_Name_Length);
-    Out_File_Name          : STR(Max_Name_Length);
-    Verbose_File_Name      : STR(Max_Name_Length);
-    Template_File_Name     : STR(Max_Name_Length);
-    Actions_File_Name      : STR(Max_Name_Length);
-    Shift_Reduce_File_Name : STR(Max_Name_Length);
-    Goto_File_Name         : STR(Max_Name_Length);
-    Tokens_File_Name       : STR(Max_Name_Length);
+   Source_File_Name       : Unbounded_String;
+   Out_File_Name          : Unbounded_String;
+   Verbose_File_Name      : Unbounded_String;
+   Template_File_Name     : Unbounded_String;
+   Actions_File_Name      : Unbounded_String;
+   Shift_Reduce_File_Name : Unbounded_String;
+   Goto_File_Name         : Unbounded_String;
+   Tokens_File_Name       : Unbounded_String;
 -- UMASS CODES :
     Error_Report_File_Name : STR(Max_Name_Length);
     Listing_File_Name      : STR(Max_Name_Length);
@@ -100,32 +112,49 @@ package body Ayacc_File_Names is
     return Get_Unit_Name (Filename);
   end C_Lex_Unit_Name;
 
+   ---------------------------
+   -- Goto_Tables_Unit_Name --
+   ---------------------------
 
-  function Goto_Tables_Unit_Name return String is
-    Filename : constant String := Value_of (Upper_Case (Goto_File_Name));
-  begin
-    return Get_Unit_Name (Filename);
-  end Goto_Tables_Unit_Name;
+   function Goto_Tables_Unit_Name return String is
+      Filename : constant String := To_Upper (+Goto_File_Name);
 
+   begin
+      return Get_Unit_Name (Filename);
+   end Goto_Tables_Unit_Name;
 
-  function Shift_Reduce_Tables_Unit_Name return String is
-    Filename : constant String := Value_of (Upper_Case (Shift_Reduce_File_Name));
-  begin
-    return Get_Unit_Name (Filename);
-  end Shift_Reduce_Tables_Unit_Name;
+   -----------------------------------
+   -- Shift_Reduce_Tables_Unit_Name --
+   -----------------------------------
 
+   function Shift_Reduce_Tables_Unit_Name return String is
+      Filename : constant String := To_Upper (+Shift_Reduce_File_Name);
 
-  function Tokens_Unit_Name return String is
-    Filename : constant String := Value_of (Upper_Case (Tokens_File_Name));
-  begin
-    return Get_Unit_Name (Filename);
-  end Tokens_Unit_Name;
+   begin
+      return Get_Unit_Name (Filename);
+   end Shift_Reduce_Tables_Unit_Name;
 
-  function Main_Unit_Name return String is
-    Filename : constant String := Value_of (Upper_Case (Out_File_Name));
-  begin
-    return Get_Unit_Name (Filename);
-  end Main_Unit_Name;
+   ----------------------
+   -- Tokens_Unit_Name --
+   ----------------------
+
+   function Tokens_Unit_Name return String is
+      Filename : constant String := To_Upper (+Tokens_File_Name);
+
+   begin
+      return Get_Unit_Name (Filename);
+   end Tokens_Unit_Name;
+
+   --------------------
+   -- Main_Unit_Name --
+   --------------------
+
+   function Main_Unit_Name return String is
+      Filename : constant String := To_Upper (+Out_File_Name);
+
+   begin
+      return Get_Unit_Name (Filename);
+   end Main_Unit_Name;
 
 -- UMASS CODES :
   function Error_Report_Unit_Name return String is
@@ -137,46 +166,77 @@ package body Ayacc_File_Names is
 
 --RJS ==========================================
 
+   --------------------------
+   -- Get_Source_File_Name --
+   --------------------------
 
-    function  Get_Source_File_Name return String is
-    begin
-	return Value_of(Source_File_Name);
-    end;
+   function  Get_Source_File_Name return String is
+   begin
+      return +Source_File_Name;
+   end;
 
-    function  Get_Out_File_Name return String is
-    begin
-	return Value_of(Out_File_Name);
-    end;
+   -----------------------
+   -- Get_Out_File_Name --
+   -----------------------
 
-    function  Get_Verbose_File_Name return String is
-    begin
-	return Value_of(Verbose_File_Name);
-    end;
+   function  Get_Out_File_Name return String is
+   begin
+      return +Out_File_Name;
+   end;
 
-    function  Get_Template_File_Name return String is
-    begin
-	return Value_of(Template_File_Name);
-    end;
+   ---------------------------
+   -- Get_Verbose_File_Name --
+   ---------------------------
 
-    function  Get_Actions_File_Name return String is
-    begin
-	return Value_of(Actions_File_Name);
-    end;
+   function  Get_Verbose_File_Name return String is
+   begin
+      return +Verbose_File_Name;
+   end;
 
-    function  Get_Shift_Reduce_File_Name return String is
-    begin
-	return Value_of(Shift_Reduce_File_Name);
-    end;
+   ----------------------------
+   -- Get_Template_File_Name --
+   ----------------------------
 
-    function  Get_Goto_File_Name return String is
-    begin
-	return Value_of(Goto_File_Name);
-    end;
+   function  Get_Template_File_Name return String is
+   begin
+      return +Template_File_Name;
+   end;
 
-    function  Get_Tokens_File_Name return String is
-    begin
-	return Value_of(Tokens_File_Name);
-    end;
+   ---------------------------
+   -- Get_Actions_File_Name --
+   ---------------------------
+
+   function  Get_Actions_File_Name return String is
+   begin
+      return +Actions_File_Name;
+   end;
+
+   --------------------------------
+   -- Get_Shift_Reduce_File_Name --
+   --------------------------------
+
+   function  Get_Shift_Reduce_File_Name return String is
+   begin
+      return +Shift_Reduce_File_Name;
+   end;
+
+   ------------------------
+   -- Get_Goto_File_Name --
+   ------------------------
+
+   function  Get_Goto_File_Name return String is
+   begin
+      return +Goto_File_Name;
+   end;
+
+   --------------------------
+   -- Get_Tokens_File_Name --
+   --------------------------
+
+   function  Get_Tokens_File_Name return String is
+   begin
+      return +Tokens_File_Name;
+   end;
 
 -- UMASS CODES :
     function  Get_Error_Report_File_Name return String is
@@ -218,16 +278,16 @@ package body Ayacc_File_Names is
       end if;
 
       Assign (Base_Name, To => Base);
-      Assign (Input_File, To => Source_File_Name);
+      Source_File_Name := +Input_File;
 
-	Assign(Base, To => Out_File_Name);
-	Append(Extension, To => Out_File_Name);
+      Out_File_Name := +Base_Name;
+      Append (Out_File_Name, Extension);
 
-	Assign(Base,       To => Verbose_File_Name);
-        Append(".verbose", To => Verbose_File_Name);
+      Verbose_File_Name := +Base_Name;
+      Append (Verbose_File_Name, ".verbose");
 
-	Assign(Base,        To => Tokens_File_Name);
-        Append("-tokens" & Extension & "ds", To => Tokens_File_Name);
+      Tokens_File_Name := +Base_Name;
+      Append (Tokens_File_Name, "-tokens" & Extension & "ds");
 
 -- UMASS CODES :
 	Assign(Base,        To => Error_Report_File_Name);
@@ -237,16 +297,16 @@ package body Ayacc_File_Names is
         Append(".lis", To => Listing_File_Name);
 -- END OF UMASS CODES.
 
-	Assign("yyparse.template", To => Template_File_Name);
+      Template_File_Name := +"yyparse.template";
 
-	Assign(Base,    To => Actions_File_Name);
-	Append(".accs", To => Actions_File_Name);
+      Actions_File_Name := +Base_Name;
+      Append (Actions_File_Name, ".accs");
 
-	Assign(Base,              To => Shift_Reduce_File_Name);
-	Append("-shift_reduce" & Extension & "ds", To => Shift_Reduce_File_Name);
+      Shift_Reduce_File_Name := +Base_Name;
+      Append (Shift_Reduce_File_Name, "-shift_reduce" & Extension & "ds");
 
-	Assign(Base,      To => Goto_File_Name);
-	Append("-goto_table" & Extension & "ds", To => Goto_File_Name);
+      Goto_File_Name := +Base_Name;
+      Append (Goto_File_Name, "-goto_table" & Extension & "ds");
 
 	Assign(Base,       To => C_Lex_File_Name);
 	Append("-c_lex" & Extension, To => C_Lex_File_Name);
