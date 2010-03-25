@@ -119,10 +119,13 @@ package body Scanner is
             exit when YY_Current_State = YY_Jam_State;
          end loop;
 
+         --  Return back to last accepting state.
+
          YY_Current_Position := YY_Last_Accepting_Position;
          YY_Current_State    := YY_Last_Accepting_State;
 
---<<next_action>>
+         --  Retrieve associated action and execute it.
+
          YY_Action := YY_Accept (YY_Current_State);
 
 <<Do_Action>>  --  This label is used only to access EOF actions
