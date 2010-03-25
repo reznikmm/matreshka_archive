@@ -1,16 +1,11 @@
 
+with Ada.Directories;
 
 with STR_Pack;
 use  STR_Pack;
 
 with String_Pkg;
 package body Ayacc_File_Names is
-
-  SCCS_ID : constant String := "@(#) file_names.ada, Version 1.2";
-
-
-
-  Rcs_ID : constant String := "$Header: /cf/ua/arcadia/alex-ayacc/ayacc/src/RCS/file_names.a,v 1.2 88/11/28 13:38:59 arcadia Exp $";
 
     Max_Name_Length : constant := 50;
 
@@ -28,7 +23,7 @@ package body Ayacc_File_Names is
 -- END OF UMASS CODES.
     C_Lex_File_Name        : STR(Max_Name_Length);
     Include_File_Name      : STR(Max_Name_Length);
- 
+
 
 --RJS ==========================================
 
@@ -81,7 +76,7 @@ package body Ayacc_File_Names is
        Is_Alphabetic (Filename_Without_Extension (End_of_Directory)) then
 
        Check_Remaining_Characters :
-       for i in End_Of_Directory + 1 .. Filename_Without_Extension'LAST 
+       for i in End_Of_Directory + 1 .. Filename_Without_Extension'LAST
        loop
 	 if not Is_AlphaNum_or_Underscore (Filename_Without_Extension(i)) then
 	   return "";
@@ -205,39 +200,41 @@ package body Ayacc_File_Names is
 	return Value_of(Include_File_Name);
     end;
 
+   --------------------
+   -- Set_File_Names --
+   --------------------
 
+   procedure Set_File_Names(Input_File, Extension: in String) is
+      Base_Name : constant String := Ada.Directories.Base_Name (Input_File);
+      Base: STR(Max_Name_Length);
 
-    procedure Set_File_Names(Input_File, Extension: in String) is
-	Base: STR(Max_Name_Length);
-    begin
+   begin
 
-	if Input_File'Length < 3 or else
-	   (Input_File(Input_File'Last) /= 'y' and then
-	    Input_File(Input_File'Last) /= 'Y') or else
-	   Input_File(Input_File'Last - 1) /= '.'
-	then
-	    raise Illegal_File_Name;
-	end if;
+      if Input_File'Length < 3
+        or else (Input_File(Input_File'Last) /= 'y'
+                 and then Input_File(Input_File'Last) /= 'Y')
+        or else Input_File(Input_File'Last - 1) /= '.' then
+         raise Illegal_File_Name;
+      end if;
 
-	Assign(Input_File(Input_File'First..Input_File'Last-2), To => Base);
-
-	Assign(Input_File, To => Source_File_Name);
+      Assign (Base_Name, To => Base);
+      Assign (Input_File, To => Source_File_Name);
 
 	Assign(Base, To => Out_File_Name);
 	Append(Extension, To => Out_File_Name);
 
 	Assign(Base,       To => Verbose_File_Name);
-        Append(".verbose", To => Verbose_File_Name); 
+        Append(".verbose", To => Verbose_File_Name);
 
 	Assign(Base,        To => Tokens_File_Name);
-        Append("-tokens" & Extension & "ds", To => Tokens_File_Name); 
+        Append("-tokens" & Extension & "ds", To => Tokens_File_Name);
 
 -- UMASS CODES :
 	Assign(Base,        To => Error_Report_File_Name);
-        Append("-error_report" & Extension, To => Error_Report_File_Name); 
+        Append("-error_report" & Extension, To => Error_Report_File_Name);
 
 	Assign(Base,        To => Listing_File_Name);
-        Append(".lis", To => Listing_File_Name); 
+        Append(".lis", To => Listing_File_Name);
 -- END OF UMASS CODES.
 
 	Assign("yyparse.template", To => Template_File_Name);

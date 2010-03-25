@@ -1,4 +1,4 @@
--- $Header: /cf/ua/arcadia/alex-ayacc/ayacc/src/RCS/file_names.a,v 1.2 88/11/28 13:38:59 arcadia Exp $ 
+-- $Header: /cf/ua/arcadia/alex-ayacc/ayacc/src/RCS/file_names.a,v 1.2 88/11/28 13:38:59 arcadia Exp $
 
 -- Copyright (c) 1990 Regents of the University of California.
 -- All rights reserved.
@@ -27,7 +27,7 @@
 -- Date         : 11/21/86  12:29:16
 -- SCCS File    : disk21~/rschm/hasee/sccs/ayacc/sccs/sxfile_names.ada
 
--- $Header: /cf/ua/arcadia/alex-ayacc/ayacc/src/RCS/file_names.a,v 1.2 88/11/28 13:38:59 arcadia Exp $ 
+-- $Header: /cf/ua/arcadia/alex-ayacc/ayacc/src/RCS/file_names.a,v 1.2 88/11/28 13:38:59 arcadia Exp $
 -- $Log:	file_names.a,v $
 --Revision 1.2  88/11/28  13:38:59  arcadia
 --Modified Get_Unit_Name function to accept legal Ada identifiers.
@@ -36,26 +36,24 @@
 --Initial revision
 --
 
--- Revision 0,2  88/03/16  
+-- Revision 0,2  88/03/16
 -- Set file names modified to include a file extension parameter.
 
 -- Revision 0.1  86/04/01  15:04:19  ada
---  This version fixes some minor bugs with empty grammars 
---  and $$ expansion. It also uses vads5.1b enhancements 
---  such as pragma inline. 
--- 
--- 
+--  This version fixes some minor bugs with empty grammars
+--  and $$ expansion. It also uses vads5.1b enhancements
+--  such as pragma inline.
+--
+--
 -- Revision 0.0  86/02/19  18:36:22  ada
--- 
+--
 -- These files comprise the initial version of Ayacc
 -- designed and implemented by David Taback and Deepak Tolani.
 -- Ayacc has been compiled and tested under the Verdix Ada compiler
 -- version 4.06 on a vax 11/750 running Unix 4.2BSD.
---  
+--
 
-    -- The collection of all file names used by Ayacc -- 
-
-with Ada.Characters.Handling; use Ada.Characters.Handling;
+    -- The collection of all file names used by Ayacc --
 
 package Ayacc_File_Names is
 
@@ -86,7 +84,7 @@ package Ayacc_File_Names is
   function Shift_Reduce_Tables_Unit_Name return String;
   function Tokens_Unit_Name              return String;
   function Main_Unit_Name                return String;
- 
+
 -- UMASS CODES :
   function Error_Report_Unit_Name        return String;
 -- END OF UMASS CODES.
