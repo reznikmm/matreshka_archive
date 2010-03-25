@@ -31,13 +31,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Parser.Tokens;
 
 package Matreshka.Internals.Regexps.Compiler.Scanner is
 
    function YYLex return Parser.Tokens.Token;
-
-   procedure YYError (Error : Parser.Tokens.YY_Errors; Index : Natural);
-   --  Report error.
 
 end Matreshka.Internals.Regexps.Compiler.Scanner;

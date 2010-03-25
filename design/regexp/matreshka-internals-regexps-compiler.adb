@@ -31,25 +31,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
-with Matreshka.Internals.Utf16;
 
-with Parser.Tokens;
+package body Matreshka.Internals.Regexps.Compiler is
 
-package Matreshka.Internals.Regexps.Compiler is
+   -------------
+   -- YYError --
+   -------------
 
---   pragma Preelaborate;
+   procedure YYError (Error : Parser.Tokens.YY_Errors; Index : Natural) is
+      use Parser.Tokens;
 
-   --  Here is global state of the compiler. At the first stage of
-   --  refactoring all global state variables must be moved to here.
-   --  Later, they will be wrapped by record type to allow to have
-   --  several compiler in the different threads at the same time.
-
-   Data                : Matreshka.Internals.Strings.Shared_String_Access;
-   YY_Start_State      : Integer := 1;
-   YY_Current_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
-
-   procedure YYError (Error : Parser.Tokens.YY_Errors; Index : Natural);
-   --  Report error.
+   begin
+      if YY_Error.Error = No_Error then
+         YY_Error := (Error, Index);
+      end if;
+   end YYError;
 
 end Matreshka.Internals.Regexps.Compiler;
