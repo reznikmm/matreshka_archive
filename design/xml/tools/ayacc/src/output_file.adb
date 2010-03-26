@@ -151,16 +151,14 @@ package body Output_File is
         Copy_Chunk;
 	Put_Line (Outfile, "with " & Main_Unit_Name & ".Goto_Table;");
 	Put_Line (Outfile, "use  " & Main_Unit_Name & ".Goto_Table;");
-	Put_Line (Outfile, "with " & Main_Unit_Name & ".Tokens;");
-	Put_Line (Outfile, "use  " & Main_Unit_Name & ".Tokens;");
+	Put_Line (Outfile, "with " & Main_Unit_Name & "_Tokens;");
+	Put_Line (Outfile, "use  " & Main_Unit_Name & "_Tokens;");
 	Put_Line (Outfile, "with " & Main_Unit_Name & ".Shift_Reduce;");
 	Put_Line (Outfile, "use  " & Main_Unit_Name & ".Shift_Reduce;");
 	New_Line (Outfile);
         Put_Line (Outfile, "package body " & Main_Unit_Name & " is");	
 	Put_line (Outfile, "   package " & Main_Unit_Name & "_Goto renames " &
 	                   Main_Unit_Name & ".Goto_Table;");
-	Put_line (Outfile, "   package " & Main_Unit_Name & "_Tokens renames " &
-	                   Main_Unit_Name & ".Tokens;");
 	Put_line (Outfile, "   package " & Main_Unit_Name & "_Shift_Reduce " &
 	                   " renames " & Main_Unit_Name & 
 	                   ".Shift_Reduce;");

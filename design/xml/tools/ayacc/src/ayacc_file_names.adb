@@ -287,7 +287,7 @@ package body Ayacc_File_Names is
       Append (Verbose_File_Name, ".verbose");
 
       Tokens_File_Name := +Base_Name;
-      Append (Tokens_File_Name, "-tokens" & Extension & "ds");
+      Append (Tokens_File_Name, "_tokens" & Extension & "ds");
 
 -- UMASS CODES :
 	Assign(Base,        To => Error_Report_File_Name);
