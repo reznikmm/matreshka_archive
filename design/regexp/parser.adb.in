@@ -1,0 +1,129 @@
+with Parser.Tables;
+with Parser_Actions;
+with Parser_Tokens;
+with Matreshka.Internals.Regexps.Compiler.Scanner;
+with Syntax;
+
+package body Parser is
+
+   use Matreshka.Internals.Regexps.Compiler.Scanner;
+   use Parser.Tables;
+   use Parser_Actions;
+   use Parser_Tokens;
+   use Syntax;
+
+   -------------
+   -- YYParse --
+   -------------
+
+   procedure YYParse is
+      --  Encryption constants
+
+      YY_Default           : constant := -1;
+      YY_First_Shift_Entry : constant :=  0;
+      YY_Error_Code        : constant := -3000;
+      YY_Accept_Code       : constant := -3001;
+
+      -- The size of the value and state stacks
+
+      YY_Stack_Size : constant Natural := 300;
+
+      package YY is
+         --  Stack data used by the parser
+
+         TOS          : Natural := 0;
+         Value_Stack  : array (0 .. YY_Stack_Size) of YYSType;
+         State_Stack  : array (0 .. YY_Stack_Size) of Integer;
+
+         --  Current input symbol and action the parser is on
+
+         Rule_Id      : Integer;
+         Input_Symbol : Token;
+         Look_Ahead   : Boolean := True;
+      end YY;
+
+      YY_Action : Integer;
+      YY_Index  : Integer;
+
+   begin
+      YY.TOS := 0;
+      --  Initialize by pushing state 0 and getting the first input symbol
+      YY.State_Stack (YY.TOS) := 0;
+      YY.Look_Ahead := True;
+
+      loop
+         YY_Index := Shift_Reduce_Offset (YY.State_Stack (YY.TOS));
+
+         if Shift_Reduce_Matrix (YY_Index).T = YY_Default then
+            YY_Action := Shift_Reduce_Matrix (YY_Index).Act;
+
+         else
+            if YY.Look_Ahead then
+               YY.Input_Symbol := YYLex;
+               YY.Look_Ahead   := False;
+            end if;
+
+            YY_Index := Shift_Reduce_Offset (YY.State_Stack (YY.TOS));
+
+            while Shift_Reduce_Matrix (YY_Index).T
+                    /= Token'Pos (YY.Input_Symbol)
+              and then Shift_Reduce_Matrix (YY_Index).T /= YY_Default
+            loop
+               YY_Index := YY_Index + 1;
+            end loop;
+
+            YY_Action := Shift_Reduce_Matrix (YY_Index).Act;
+         end if;
+
+         if YY_Action >= YY_First_Shift_Entry then  --  SHIFT
+            --  Enter new state
+
+            YY.TOS := YY.TOS + 1;
+            YY.State_Stack (YY.TOS) := YY_Action;
+            YY.Value_Stack (YY.TOS) := YYLVal;
+
+            --  Advance lookahead
+
+            YY.Look_Ahead := True;
+
+         elsif YY_Action = YY_Error_Code then  --  ERROR
+            raise Syntax_Error;
+
+         elsif YY_Action = YY_Accept_Code then
+            --  Grammar is accepted
+
+            exit;
+
+         else
+            --  Reduce Action
+
+            --  Convert action into a rule
+            YY.Rule_Id  := -1 * YY_Action;
+
+            --  Execute User Action
+
+            case YY.Rule_Id is
+%%
+               when others =>
+                  raise Program_Error;
+            end case;
+
+            --  Pop RHS states and goto next state
+
+            YY.TOS := YY.TOS - Rule_Length (YY.Rule_Id) + 1;
+
+            YY_Index := Goto_Offset (YY.State_Stack (YY.TOS - 1));
+
+            while Goto_Matrix (YY_Index).Nonterm
+                    /= Get_LHS_Rule (YY.Rule_Id)
+            loop
+               YY_Index := YY_Index + 1;
+            end loop;
+
+            YY.State_Stack (YY.TOS) := Goto_Matrix (YY_Index).Newstate;
+            YY.Value_Stack (YY.TOS) := YYVal;
+         end if;
+      end loop;
+   end YYParse;
+
+end Parser;

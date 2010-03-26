@@ -2,12 +2,13 @@ with Ada.Command_Line;
 with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
 
-with League.Strings;
+with League.Strings.Internals;
 
 with Compiler;
 with Engine;
 with Parser;
 with Syntax;
+with Matreshka.Internals.Regexps.Compiler;
 
 procedure Demo is
 
@@ -38,7 +39,9 @@ procedure Demo is
      Read (Ada.Command_Line.Argument (1));
 
 begin
-   Parser.Parse (Expression);
+   Matreshka.Internals.Regexps.Compiler.Data :=
+     League.Strings.Internals.Get_Shared (Expression);
+   Parser.YYParse;
    Ada.Wide_Wide_Text_IO.Put_Line ("---------- AST ----------");
    Syntax.Dump;
 
