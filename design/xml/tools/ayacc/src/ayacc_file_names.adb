@@ -3,9 +3,6 @@ with Ada.Characters.Handling;
 with Ada.Directories;
 with Ada.Strings.Unbounded;
 
-with STR_Pack;
-use  STR_Pack;
-
 with String_Pkg;
 
 package body Ayacc_File_Names is
@@ -19,8 +16,6 @@ package body Ayacc_File_Names is
    function "+" (Item : Unbounded_String) return String
      renames To_String;
 
-    Max_Name_Length : constant := 50;
-
    Source_File_Name       : Unbounded_String;
    Out_File_Name          : Unbounded_String;
    Verbose_File_Name      : Unbounded_String;
@@ -30,11 +25,11 @@ package body Ayacc_File_Names is
    Goto_File_Name         : Unbounded_String;
    Tokens_File_Name       : Unbounded_String;
 -- UMASS CODES :
-    Error_Report_File_Name : STR(Max_Name_Length);
-    Listing_File_Name      : STR(Max_Name_Length);
+   Error_Report_File_Name : Unbounded_String;
+   Listing_File_Name      : Unbounded_String;
 -- END OF UMASS CODES.
-    C_Lex_File_Name        : STR(Max_Name_Length);
-    Include_File_Name      : STR(Max_Name_Length);
+   C_Lex_File_Name        : Unbounded_String;
+   Include_File_Name      : Unbounded_String;
 
 
 --RJS ==========================================
@@ -105,12 +100,16 @@ package body Ayacc_File_Names is
 
   end Get_Unit_Name;
 
+   ---------------------
+   -- C_Lex_Unit_Name --
+   ---------------------
 
-  function C_Lex_Unit_Name return String is
-    Filename : constant String := Value_of (Upper_Case (C_Lex_File_Name));
-  begin
-    return Get_Unit_Name (Filename);
-  end C_Lex_Unit_Name;
+   function C_Lex_Unit_Name return String is
+      Filename : constant String := To_Upper (+C_Lex_File_Name);
+
+   begin
+      return Get_Unit_Name (Filename);
+   end C_Lex_Unit_Name;
 
    ---------------------------
    -- Goto_Tables_Unit_Name --
@@ -157,11 +156,18 @@ package body Ayacc_File_Names is
    end Main_Unit_Name;
 
 -- UMASS CODES :
-  function Error_Report_Unit_Name return String is
-    Filename : constant String := Value_of (Upper_Case (Error_Report_File_Name));
-  begin
-    return Get_Unit_Name (Filename);
-  end Error_Report_Unit_Name;
+
+   ----------------------------
+   -- Error_Report_Unit_Name --
+   ----------------------------
+
+   function Error_Report_Unit_Name return String is
+      Filename : constant String := To_Upper (+Error_Report_File_Name);
+
+   begin
+      return Get_Unit_Name (Filename);
+   end Error_Report_Unit_Name;
+
 -- END OF UMASS CODES.
 
 --RJS ==========================================
@@ -233,32 +239,50 @@ package body Ayacc_File_Names is
    -- Get_Tokens_File_Name --
    --------------------------
 
-   function  Get_Tokens_File_Name return String is
+   function Get_Tokens_File_Name return String is
    begin
       return +Tokens_File_Name;
    end;
 
 -- UMASS CODES :
-    function  Get_Error_Report_File_Name return String is
-    begin
-	return Value_of(Error_Report_File_Name);
-    end;
 
-    function  Get_Listing_File_Name return String is
-    begin
-	return Value_of(Listing_File_Name);
-    end;
+   --------------------------------
+   -- Get_Error_Report_File_Name --
+   --------------------------------
+
+   function Get_Error_Report_File_Name return String is
+   begin
+      return +Error_Report_File_Name;
+   end Get_Error_Report_File_Name;
+
+   ---------------------------
+   -- Get_Listing_File_Name --
+   ---------------------------
+
+   function Get_Listing_File_Name return String is
+   begin
+      return +Listing_File_Name;
+   end;
+
 -- END OF UMASS CODES.
 
-    function Get_C_Lex_File_Name return String is
-    begin
-	return Value_of(C_Lex_File_Name);
-    end;
+   -------------------------
+   -- Get_C_Lex_File_Name --
+   -------------------------
 
-    function Get_Include_File_Name return String is
-    begin
-	return Value_of(Include_File_Name);
-    end;
+   function Get_C_Lex_File_Name return String is
+   begin
+      return +C_Lex_File_Name;
+   end;
+
+   ---------------------------
+   -- Get_Include_File_Name --
+   ---------------------------
+
+   function Get_Include_File_Name return String is
+   begin
+      return +Include_File_Name;
+   end;
 
    --------------------
    -- Set_File_Names --
@@ -266,10 +290,8 @@ package body Ayacc_File_Names is
 
    procedure Set_File_Names(Input_File, Extension: in String) is
       Base_Name : constant String := Ada.Directories.Base_Name (Input_File);
-      Base: STR(Max_Name_Length);
 
    begin
-
       if Input_File'Length < 3
         or else (Input_File(Input_File'Last) /= 'y'
                  and then Input_File(Input_File'Last) /= 'Y')
@@ -277,7 +299,6 @@ package body Ayacc_File_Names is
          raise Illegal_File_Name;
       end if;
 
-      Assign (Base_Name, To => Base);
       Source_File_Name := +Input_File;
 
       Out_File_Name := +Base_Name;
@@ -290,11 +311,11 @@ package body Ayacc_File_Names is
       Append (Tokens_File_Name, "_tokens" & Extension & "ds");
 
 -- UMASS CODES :
-	Assign(Base,        To => Error_Report_File_Name);
-        Append("-error_report" & Extension, To => Error_Report_File_Name);
+      Error_Report_File_Name := +Base_Name;
+      Append (Error_Report_File_Name, "-error_report" & Extension);
 
-	Assign(Base,        To => Listing_File_Name);
-        Append(".lis", To => Listing_File_Name);
+      Listing_File_Name := +Base_Name;
+      Append (Listing_File_Name, ".lis");
 -- END OF UMASS CODES.
 
       Template_File_Name := +"yyparse.template";
@@ -308,12 +329,11 @@ package body Ayacc_File_Names is
       Goto_File_Name := +Base_Name;
       Append (Goto_File_Name, "-goto_table" & Extension & "ds");
 
-	Assign(Base,       To => C_Lex_File_Name);
-	Append("-c_lex" & Extension, To => C_Lex_File_Name);
+      C_Lex_File_Name := +Base_Name;
+      Append (C_Lex_File_Name, "-c_lex" & Extension);
 
-	Assign(Base, To => Include_File_Name);
-	Append(".h", To => Include_File_Name);
-
-    end Set_File_Names;
+      Include_File_Name := +Base_Name;
+      Append (Include_File_Name, ".h");
+   end Set_File_Names;
 
 end Ayacc_File_Names;

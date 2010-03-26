@@ -25,41 +25,38 @@
 -- Date         : 11/21/86  12:32:43
 -- SCCS File    : disk21~/rschm/hasee/sccs/ayacc/sccs/sxparser_body.ada
 
--- $Header: parser_body.a,v 0.1 86/04/01 15:10:24 ada Exp $ 
+-- $Header: parser_body.a,v 0.1 86/04/01 15:10:24 ada Exp $
 -- $Log:	parser_body.a,v $
 -- Revision 0.1  86/04/01  15:10:24  ada
---  This version fixes some minor bugs with empty grammars 
---  and $$ expansion. It also uses vads5.1b enhancements 
---  such as pragma inline. 
--- 
--- 
+--  This version fixes some minor bugs with empty grammars
+--  and $$ expansion. It also uses vads5.1b enhancements
+--  such as pragma inline.
+--
+--
 -- Revision 0.0  86/02/19  18:40:31  ada
--- 
+--
 -- These files comprise the initial version of Ayacc
 -- designed and implemented by David Taback and Deepak Tolani.
 -- Ayacc has been compiled and tested under the Verdix Ada compiler
 -- version 4.06 on a vax 11/750 running Unix 4.2BSD.
---  
+--
 
 -- 							--
--- The body of the parser for the specification file    -- 
+-- The body of the parser for the specification file    --
 -- 							--
 
-with Text_IO;          use Text_IO; 
-with Lexical_Analyzer; use Lexical_Analyzer; 
-with STR_Pack;         use STR_Pack; 
-with Symbol_Table;     use Symbol_Table; 
-with Rule_Table;       use Rule_Table; 
-with Actions_File;     use Actions_File; 
+with Text_IO;          use Text_IO;
+with Lexical_Analyzer; use Lexical_Analyzer;
+--  with STR_Pack;         use STR_Pack;
+with Symbol_Table;     use Symbol_Table;
+with Rule_Table;       use Rule_Table;
+with Actions_File;     use Actions_File;
 with Tokens_File;      use Tokens_File;
 
 with String_Pkg;
-package body Parser is 
-
-  SCCS_ID : constant String := "@(#) parser_body.ada, Version 1.2";
+package body Parser is
 
 
-   
      Found_Error   : Boolean := False;
      Start_Defined : Boolean := False;
 
@@ -81,178 +78,178 @@ package body Parser is
 	 raise Syntax_Error;
      end Fatal_Error;
 
-     procedure Augment_Grammar(Users_Start_Symbol : in Grammar_Symbol) is  
+     procedure Augment_Grammar(Users_Start_Symbol : in Grammar_Symbol) is
      -- Inserts S' -> S $end as a rule in the rule table.
-         Start_Sym      : Grammar_Symbol; 
-         Augmented_Rule : Rule;  
-     begin 
-         Start_Defined  := True; 
-         Augmented_Rule := Make_Rule(Start_Symbol); 
-         Append_RHS(Augmented_Rule, Users_Start_Symbol);  
+         Start_Sym      : Grammar_Symbol;
+         Augmented_Rule : Rule;
+     begin
+         Start_Defined  := True;
+         Augmented_Rule := Make_Rule(Start_Symbol);
+         Append_RHS(Augmented_Rule, Users_Start_Symbol);
 	 Append_RHS(Augmented_Rule, End_Symbol);
-     end Augment_Grammar; 
+     end Augment_Grammar;
 
- 
+
    -- 							--
-   -- A recursive descent parser for the rules in the   -- 
-   -- grammar.                                          -- 
- 
+   -- A recursive descent parser for the rules in the   --
+   -- grammar.                                          --
+
    procedure Parse_Rules is
-      T : Ayacc_Token;  
-      Current_Rule : Rule;  
-      LHS          : Grammar_Symbol; 
-  
+      T : Ayacc_Token;
+      Current_Rule : Rule;
+      LHS          : Grammar_Symbol;
+
       --						--
-      -- Gets an action from the file and writes it to  -- 
+      -- Gets an action from the file and writes it to  --
       -- the actions file. 				--
-      -- 						--  
+      -- 						--
 
       --  						--
       --          Parses a sequence of Symbols          --
-      -- 						-- 
-      procedure Symbols is 
-          ID               : Grammar_Symbol; 
-          Got_Action       : Boolean := False; 
-          Precedence_Level : Precedence; 
+      -- 						--
+      procedure Symbols is
+          ID               : Grammar_Symbol;
+          Got_Action       : Boolean := False;
+          Precedence_Level : Precedence;
       begin
-          loop 
+          loop
               T := Get_Token;
-              exit when T = Vertical_Bar or T = Semicolon or T = Prec; 
+              exit when T = Vertical_Bar or T = Semicolon or T = Prec;
 
-              -- Do we have an action in the middle of a rule? 
-              if Got_Action then 
-                  Got_Action := T = Left_Brace; 
+              -- Do we have an action in the middle of a rule?
+              if Got_Action then
+                  Got_Action := T = Left_Brace;
                   Handle_Nested_Rule(Current_Rule);
-              end if; 
+              end if;
 
-              case T is  
-                  -- Update the current rule 
-                  when Character_Literal => 
+              case T is
+                  -- Update the current rule
+                  when Character_Literal =>
                       ID := Insert_Terminal(Get_Lexeme_Text);
-                      Append_RHS(Current_Rule, ID); 
+                      Append_RHS(Current_Rule, ID);
 
                   -- Update the current rule and add to symbol table
-                  when Identifier => 
+                  when Identifier =>
                       ID := Insert_Identifier(Get_Lexeme_Text);
-                      Append_RHS(Current_Rule, ID); 
+                      Append_RHS(Current_Rule, ID);
 
-                  -- Got an action      
-                  when Left_Brace => 
-                      Handle_Action(Integer(Current_Rule), 
+                  -- Got an action
+                  when Left_Brace =>
+                      Handle_Action(Integer(Current_Rule),
                                     Integer(Length_of(Current_Rule)));
-                      Got_Action := True; 
-            
-                  when others => 
-                      Fatal_Error("Unexpected symbol"); 
-              end case;   
-  
-          end loop; 
+                      Got_Action := True;
 
-          if T = Prec then 
+                  when others =>
+                      Fatal_Error("Unexpected symbol");
+              end case;
 
-              if Got_Action then 
+          end loop;
+
+          if T = Prec then
+
+              if Got_Action then
                   Fatal_Error("%prec cannot be preceded by an action");
-                  raise Syntax_Error; 
-              end if; 
+                  raise Syntax_Error;
+              end if;
 
-              T := Get_Token; 
-              if T /= Identifier and T /= Character_Literal then 
-                  Fatal_Error("Expecting a terminal after %prec"); 
-              end if; 
+              T := Get_Token;
+              if T /= Identifier and T /= Character_Literal then
+                  Fatal_Error("Expecting a terminal after %prec");
+              end if;
 
-              ID := Insert_Identifier(Get_Lexeme_Text); 
-              if Is_Nonterminal(ID) then 
-                  Fatal_Error("Expecting a terminal after %prec"); 
-              end if; 
-    
-              Precedence_Level := Get_Precedence(ID); 
-              if Precedence_Level = 0 then 
-                  Fatal_Error("Terminal following %prec has no precedence"); 
-              else 
-                  Set_Rule_Precedence(Current_Rule, Precedence_Level);  
-              end if; 
+              ID := Insert_Identifier(Get_Lexeme_Text);
+              if Is_Nonterminal(ID) then
+                  Fatal_Error("Expecting a terminal after %prec");
+              end if;
 
-              T := Get_Token; 
-              case T is 
-                  when Left_Brace => 
-                      Handle_Action(Integer(Current_Rule), 
+              Precedence_Level := Get_Precedence(ID);
+              if Precedence_Level = 0 then
+                  Fatal_Error("Terminal following %prec has no precedence");
+              else
+                  Set_Rule_Precedence(Current_Rule, Precedence_Level);
+              end if;
+
+              T := Get_Token;
+              case T is
+                  when Left_Brace =>
+                      Handle_Action(Integer(Current_Rule),
                                     Integer(Length_of(Current_Rule)));
-                      T := Get_Token; 
-                  when Semicolon | Vertical_Bar => 
-                      null; 
-                  when others => 
-                      Fatal_Error("Illegal token following %prec"); 
-              end case;  
-          end if; 
+                      T := Get_Token;
+                  when Semicolon | Vertical_Bar =>
+                      null;
+                  when others =>
+                      Fatal_Error("Illegal token following %prec");
+              end case;
+          end if;
 
       end Symbols;
 
       -- 							--
-      -- 		Parse an Ayacc grammar rule 		-- 
+      -- 		Parse an Ayacc grammar rule 		--
       -- 							--
-      procedure Rule is 
+      procedure Rule is
       begin
-          T := Get_Token; 
+          T := Get_Token;
           if T /= Colon then
                Fatal_Error("Expecting a colon after the LHS of the rule");
           else
-               Current_Rule := Make_Rule(LHS); 
+               Current_Rule := Make_Rule(LHS);
                Symbols;
-          end if; 
-          while (T = Vertical_Bar) loop 
-               -- Make a new rule with the current LHS grammar symbol  
-               Current_Rule := Make_Rule(LHS); 
-               Symbols; 
-          end loop; 
+          end if;
+          while (T = Vertical_Bar) loop
+               -- Make a new rule with the current LHS grammar symbol
+               Current_Rule := Make_Rule(LHS);
+               Symbols;
+          end loop;
           if T /= Semicolon then
-               Fatal_Error("Expecting a semicolon"); 
-          end if; 
+               Fatal_Error("Expecting a semicolon");
+          end if;
       end Rule;
 
 
       -- 							--
-      -- 		Parse a sequence of grammar rules       -- 
+      -- 		Parse a sequence of grammar rules       --
       -- 							--
-      procedure Rules is 
+      procedure Rules is
       begin
           T := Get_Token;
-          if T = Identifier then 
-              -- Make the left hand side of the rule 
+          if T = Identifier then
+              -- Make the left hand side of the rule
 	      LHS := Insert_Identifier(Get_Lexeme_Text);
-	      if Is_Terminal(LHS) then 
-		  Fatal_Error("Terminals cannot be on the LHS of a rule"); 
-	      end if;             
-              if not Start_Defined then 
-                 Augment_Grammar(LHS); 
-              end if;  
+	      if Is_Terminal(LHS) then
+		  Fatal_Error("Terminals cannot be on the LHS of a rule");
+	      end if;
+              if not Start_Defined then
+                 Augment_Grammar(LHS);
+              end if;
               Rule;
               Rules;
           elsif T /= Mark then
-              Fatal_Error("Expecting next section"); 
-          end if; 
+              Fatal_Error("Expecting next section");
+          end if;
       end Rules;
-   
-   begin -- parse_rules 
 
-       Actions_File.Initialize; 
-       Rules; 
-       Actions_File.Finish;  
+   begin -- parse_rules
+
+       Actions_File.Initialize;
+       Rules;
+       Actions_File.Finish;
 
        -- Check for empty grammars. If the grammar is empty then
        -- create a rule S -> $end.
        if not Start_Defined then
 	   Append_RHS(Make_Rule(Start_Symbol), End_Symbol);
        end if;
-   
-       exception 
-	   when Illegal_Token => 
+
+       exception
+	   when Illegal_Token =>
 	       Fatal_Error("illegal token");
-   end Parse_Rules; 
+   end Parse_Rules;
 
 
 
    -- 								--
-   -- 		Parse the declarations section of the source    -- 
+   -- 		Parse the declarations section of the source    --
    -- 								--
 
     procedure Parse_Declarations is
@@ -279,7 +276,7 @@ package body Parser is
 
 	    Users_Start_Symbol := Insert_Identifier(Get_Lexeme_Text);
 	    if Is_Nonterminal(Users_Start_Symbol) then
-		Augment_Grammar(Users_Start_Symbol); 
+		Augment_Grammar(Users_Start_Symbol);
 	    else
 		Fatal_Error("Attempt to define terminal as start_symbol");
 	    end if;
@@ -317,12 +314,12 @@ package body Parser is
 		end if;
 	    end loop;
 	    exception
-		when Illegal_Entry => 
+		when Illegal_Entry =>
 		    -- I think only trying to insert the "start symbol"
 		    -- in a token list will cause this exception
 		    Fatal_Error("Illegal symbol as token");
 	end Parse_Token_List;
-       
+
 
 	procedure Parse_Package_Name_List(Context_Clause : in Ayacc_Token) is
           use String_Pkg;
@@ -374,11 +371,11 @@ package body Parser is
           end if;
 
 	end Parse_Package_Name_List;
-       
+
 
     begin
 
-	Next_Token := Get_Token; 
+	Next_Token := Get_Token;
 
 	loop
 	    case Next_Token is
@@ -427,6 +424,6 @@ package body Parser is
 	    Fatal_Error("Bad symbol");
 	when Redefined_Precedence_Error =>
 	    Fatal_Error("Attempt to redefine precedence");
-    end Parse_Declarations; 
+    end Parse_Declarations;
 
-end Parser; 
+end Parser;

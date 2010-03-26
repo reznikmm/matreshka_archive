@@ -1,10 +1,3 @@
-
-
-with Ayacc_File_Names, Text_IO, Source_File, Str_pack;
-use Ayacc_File_Names, Text_IO;
-
-
-package body Error_Report_File is
 --
 -- TITLE:       package body Error_Report_File
 --    Output the code which allows users to see what the error token was.
@@ -25,24 +18,45 @@ package body Error_Report_File is
 --    generate procedure bodies which will be called from yyparse when
 --    there is an error which has been corrected.  Since the errors get
 --    corrected, yyerror does not get called.
---    
-  
+--
+with Ada.Characters.Handling;
+with Ada.Strings.Unbounded;
+
+with Ayacc_File_Names, Text_IO, Source_File;
+use Ayacc_File_Names, Text_IO;
+
+
+package body Error_Report_File is
+
+   use Ada.Characters.Handling;
+   use Ada.Strings.Unbounded;
+
+   function "+" (Item : String) return Unbounded_String
+     renames To_Unbounded_String;
+
+   function "+" (Item : Unbounded_String) return String
+     renames To_String;
+
   max_line_length : constant integer := 370;
 
   The_File : File_Type;                   -- Where the error report goes
 
   Text   : String(1..max_line_length);    -- Current line from source file
   Length : Natural := 1;                  -- and its length
-            
+
 
   -- types of lines found in the continuable error report section
   type user_defined_thing is (with_thing,
-			      use_thing, 
-			      init_thing, 
+			      use_thing,
+			      init_thing,
 			      report_thing,
 			      finish_thing,
 			      line_thing,
 			      eof_thing);
+
+   --------------------
+   -- get_next_thing --
+   --------------------
 
 --
 -- TITLE:
@@ -54,65 +68,84 @@ package body Error_Report_File is
 --    In the case of a %use or %with line, set the global variables Text and
 --    Length to the tail of the line after the %use or %with.
 -- ...................................................
-  procedure get_next_thing(thing : in out user_defined_thing) is
-    use str_pack;
-    with_string : constant string := "%WITH";
-    use_string  : constant string := "%USE";
-    init_string : constant string := "%INITIALIZE_ERROR_REPORT";
-    finish_string: constant string:= "%TERMINATE_ERROR_REPORT";
-    report_string: constant string:= "%REPORT_ERROR";
-    temp : STR(max_line_length);
-  begin
-  	if thing = eof_thing or else Source_File.is_end_of_file then
-	  thing := eof_thing;
-	  return;
-	end if;
-	
-	Source_File.Read_Line(Text, Length);
-	if length >= use_string'length then
-	   assign(text(1..use_string'length), temp);
-	   if value_of(upper_case(temp)) = use_string then
-	        thing := use_thing;
-	        length := length - use_string'length;
-	        text(1..length) := text((use_string'length + 1)..
-		                        length + use_string'length);
-		return;
-	   end if;
-	end if;
-	if length >= with_string'length then
-	   assign(text(1..with_string'length), temp);	   
-	   if Value_of(upper_case(temp)) = with_string then
-	        thing := with_thing;
-	        length := length - with_string'length;
-	        text(1..length) := text((with_string'length + 1)..
-		                        length + with_string'length);
-		return;
-	   end if;
-	 end if;
-	if length >= init_string'length then
-	   assign(text(1..init_string'length), temp);	   	  
-	    if Value_of(str_pack.upper_case(temp)) = init_string then
-	      thing := init_thing;
-	      return;
-	    end if;
-        end if;
-	if length >= finish_string'length then
-	   assign(text(1..finish_string'length), temp);	   	  	  
-	   if value_of(str_pack.upper_case(temp)) = finish_string then
-	      thing := finish_thing;
-	      return;
-	   end if;
-	end if;
-	if length >= report_string'length then
-	   assign(text(1..report_string'length), temp);
-	   if value_of(str_pack.upper_case(temp)) = report_string then
-	     thing := report_thing;
-	     return;
-	   end if;
-	end if;
-	thing := line_thing;
-  end get_next_thing;
-			   
+
+   procedure get_next_thing (thing : in out user_defined_thing) is
+      with_string   : constant string := "%WITH";
+      use_string    : constant string := "%USE";
+      init_string   : constant string := "%INITIALIZE_ERROR_REPORT";
+      finish_string : constant string:= "%TERMINATE_ERROR_REPORT";
+      report_string : constant string:= "%REPORT_ERROR";
+
+      temp : Unbounded_String;
+
+   begin
+      if thing = eof_thing or else Source_File.is_end_of_file then
+         thing := eof_thing;
+
+         return;
+      end if;
+
+      Source_File.Read_Line (Text, Length);
+
+      if length >= use_string'length then
+         temp := +text (1..use_string'length);
+
+         if To_Upper (+temp) = use_string then
+            thing := use_thing;
+            length := length - use_string'length;
+            text(1..length) :=
+              text((use_string'length + 1) .. length + use_string'length);
+
+            return;
+         end if;
+      end if;
+
+      if length >= with_string'length then
+         temp := +text(1..with_string'length);
+
+         if To_Upper (+temp) = with_string then
+            thing := with_thing;
+            length := length - with_string'length;
+            text(1..length) :=
+              text((with_string'length + 1) .. length + with_string'length);
+
+            return;
+         end if;
+      end if;
+
+      if length >= init_string'length then
+         temp := +text(1..init_string'length);
+
+         if To_Upper (+temp) = init_string then
+            thing := init_thing;
+
+            return;
+         end if;
+      end if;
+
+      if length >= finish_string'length then
+         temp := +text(1..finish_string'length);
+
+         if To_Upper (+temp) = finish_string then
+            thing := finish_thing;
+
+            return;
+         end if;
+      end if;
+
+      if length >= report_string'length then
+         temp := +text(1..report_string'length);
+
+         if To_Upper (+temp) = report_string then
+            thing := report_thing;
+
+            return;
+         end if;
+      end if;
+
+      thing := line_thing;
+   end get_next_thing;
+
 
 
 --
@@ -120,7 +153,7 @@ package body Error_Report_File is
 --    Write out a line to the Error Report generated ada file.
 --
 -- OVERVIEW:
---    
+--
 -- ...................................................
     procedure Write_Line(S: in String) is
     begin
@@ -132,10 +165,10 @@ package body Error_Report_File is
 --    Write the body of one of the user-defined procedures
 --
 -- OVERVIEW:
---    If User is True it means the user is defining the procedure body.  So 
+--    If User is True it means the user is defining the procedure body.  So
 --    copy it from the source file.  Otherwise provide a null body.
 -- ...................................................
-    procedure write_thing(user : in boolean; 
+    procedure write_thing(user : in boolean;
       	      	      	  thing : in out user_defined_thing) is
     begin
       if user then
@@ -174,7 +207,7 @@ package body Error_Report_File is
 --    Write the header & then then body
 -- ...................................................
 
-    procedure write_finish(user : in boolean; 
+    procedure write_finish(user : in boolean;
 			   thing : in out user_defined_thing) is
     begin
       Write_Line("procedure Terminate_User_Error_Report is");
@@ -230,7 +263,7 @@ package body Error_Report_File is
 --    This procedure is exported from the package.
 --
 -- SUBPROGRAM BODY:
---    
+--
   procedure Write_File is
     current_thing : user_defined_thing := line_thing;
     wrote_init   : boolean := false;
@@ -238,12 +271,12 @@ package body Error_Report_File is
     wrote_report : boolean := false;
   begin
     Create(The_File, Out_File, Get_Error_Report_File_Name & "ds");
-    Write_Line("package " & Error_Report_Unit_Name & " is"); 
+    Write_Line("package " & Error_Report_Unit_Name & " is");
     Write_Line("");
     Write_Line("    Syntax_Error : Exception;");
     Write_Line("    Syntax_Warning : Exception;");
     Write_Line("    Total_Errors : Natural := 0;   -- number of syntax errors found." );
-    Write_Line("    Total_Warnings : Natural := 0; -- number of syntax warnings found." );						 
+    Write_Line("    Total_Warnings : Natural := 0; -- number of syntax warnings found." );
     Write_Line("        ");
     Write_Line("    procedure Report_Continuable_Error(Line_Number : in Natural;");
     Write_Line("                                       Offset      : in Natural;");
@@ -263,7 +296,7 @@ package body Error_Report_File is
     Write_Line("");
     Write_Line("end " & Error_Report_Unit_Name & ";");
     Close(The_File);
-	
+
     Create(The_File, Out_File, Get_Error_Report_File_Name & "db");
     Write_Line("with Text_IO;");
     -- Get %with's & %use's from source file
@@ -311,7 +344,7 @@ package body Error_Report_File is
     Write_Line("");
     Write_Line("    procedure Initialize_Output is");
     Write_Line("      begin");
-    Write_Line("        Text_io.Create(The_File, Text_io.Out_File, " & 
+    Write_Line("        Text_io.Create(The_File, Text_io.Out_File, " &
       '"' & Get_Listing_File_Name & '"' & ");");
     Write_Line("        initialize_user_error_report;");
     Write_Line("      end Initialize_Output;");
