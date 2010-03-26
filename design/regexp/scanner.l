@@ -326,17 +326,17 @@
 }
 
 %%
-with Parser.Tokens;
+with Parser_Tokens;
 ##
-   function YYLex return Parser.Tokens.Token;
+   function YYLex return Parser_Tokens.Token;
 ##
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Wide_Wide_Text_IO;
 ##
    use Ada.Characters.Wide_Wide_Latin_1;
    use Ada.Wide_Wide_Text_IO;
-   use Parser.Tokens;
+   use Parser_Tokens;
 
    procedure Enter_Start_Condition (Start : Integer) is null;
 
-   procedure YYError (Error : Parser.Tokens.YY_Errors; Index : Natural) is null;
+   procedure YYError (Error : Parser_Tokens.YY_Errors; Index : Natural) is null;

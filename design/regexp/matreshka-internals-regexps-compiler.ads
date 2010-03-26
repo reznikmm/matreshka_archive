@@ -34,7 +34,7 @@
 with Matreshka.Internals.Strings;
 with Matreshka.Internals.Utf16;
 
-with Parser.Tokens;
+with Parser_Tokens;
 
 package Matreshka.Internals.Regexps.Compiler is
 
@@ -49,7 +49,7 @@ package Matreshka.Internals.Regexps.Compiler is
    YY_Start_State      : Integer := 1;
    YY_Current_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
 
-   procedure YYError (Error : Parser.Tokens.YY_Errors; Index : Natural);
+   procedure YYError (Error : Parser_Tokens.YY_Errors; Index : Natural);
    --  Report error.
 
 end Matreshka.Internals.Regexps.Compiler;

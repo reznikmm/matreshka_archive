@@ -38,8 +38,8 @@ package body Matreshka.Internals.Regexps.Compiler is
    -- YYError --
    -------------
 
-   procedure YYError (Error : Parser.Tokens.YY_Errors; Index : Natural) is
-      use Parser.Tokens;
+   procedure YYError (Error : Parser_Tokens.YY_Errors; Index : Natural) is
+      use Parser_Tokens;
 
    begin
       if YY_Error.Error = No_Error then

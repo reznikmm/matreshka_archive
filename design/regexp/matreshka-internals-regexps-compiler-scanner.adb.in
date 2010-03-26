@@ -39,7 +39,7 @@ with Matreshka.Internals.Unicode;
 package body Matreshka.Internals.Regexps.Compiler.Scanner is
 
    use Ada.Characters.Wide_Wide_Latin_1;
-   use Parser.Tokens;
+   use Parser_Tokens;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
    use Scanner.Tables;
@@ -72,7 +72,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
    -- YYLex --
    -----------
 
-   function YYLex return Parser.Tokens.Token is
+   function YYLex return Parser_Tokens.Token is
       YY_Action                  : Integer;
       YY_Back_Position           : Utf16_String_Index;
       YY_Next_Position           : Utf16_String_Index;

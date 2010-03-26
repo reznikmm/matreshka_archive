@@ -34,6 +34,6 @@
 
 package Matreshka.Internals.Regexps.Compiler.Scanner is
 
-   function YYLex return Parser.Tokens.Token;
+   function YYLex return Parser_Tokens.Token;
 
 end Matreshka.Internals.Regexps.Compiler.Scanner;
