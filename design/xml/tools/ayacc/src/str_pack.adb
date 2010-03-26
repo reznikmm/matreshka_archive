@@ -14,7 +14,7 @@ package body STR_Pack is
     begin
 	for I in 1..S.Length loop
 	    if S.Name(I) in 'a'..'z' then
-		Upper_STR.Name(I) := Character'Val(Character'Pos(S.Name(I)) - 
+		Upper_STR.Name(I) := Character'Val(Character'Pos(S.Name(I)) -
 			             Character'Pos('a') + Character'Pos('A'));
 	    end if;
 	end loop;

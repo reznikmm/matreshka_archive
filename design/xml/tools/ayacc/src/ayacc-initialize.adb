@@ -1,4 +1,4 @@
--- $Header: /cf/ua/arcadia/alex-ayacc/ayacc/src/RCS/ayacc_separates.a,v 1.1 88/08/08 12:07:39 arcadia Exp $ 
+-- $Header: /cf/ua/arcadia/alex-ayacc/ayacc/src/RCS/ayacc_separates.a,v 1.1 88/08/08 12:07:39 arcadia Exp $
 -- Copyright (c) 1990 Regents of the University of California.
 -- All rights reserved.
 --
@@ -26,19 +26,19 @@
 -- Date         : 11/21/86  12:28:51
 -- SCCS File    : disk21~/rschm/hasee/sccs/ayacc/sccs/sxayacc_separates.ada
 
--- $Header: /cf/ua/arcadia/alex-ayacc/ayacc/src/RCS/ayacc_separates.a,v 1.1 88/08/08 12:07:39 arcadia Exp $ 
+-- $Header: /cf/ua/arcadia/alex-ayacc/ayacc/src/RCS/ayacc_separates.a,v 1.1 88/08/08 12:07:39 arcadia Exp $
 -- $Log:	ayacc_separates.a,v $
 --Revision 1.1  88/08/08  12:07:39  arcadia
 --Initial revision
 --
 -- Revision 0.0  86/02/19  18:36:14  ada
--- 
+--
 -- These files comprise the initial version of Ayacc
 -- designed and implemented by David Taback and Deepak Tolani.
 -- Ayacc has been compiled and tested under the Verdix Ada compiler
 -- version 4.06 on a vax 11/750 running Unix 4.2BSD.
---  
--- Revision 0.1  88/03/16  
+--
+-- Revision 0.1  88/03/16
 -- Additional argument added to allow user to specify file extension
 -- to be used for generated Ada files.  -- kn
 
@@ -64,15 +64,15 @@ procedure Initialize is
   Invalid_Command_Line : exception;
 
   procedure Get_Arguments (File           : out String_Type;
-                           C_Lex          : out Switch; 
+                           C_Lex          : out Switch;
                            Debug          : out Switch;
                            Summary        : out Switch;
                            Verbose        : out Switch;
--- UMASS CODES : 
+-- UMASS CODES :
 			   Error_Recovery : out Switch;
 -- END OF UMASS CODES.
 			   Extension      : out String_Type) is separate;
-  
+
 begin
 
   Get_Arguments (Input_File,
@@ -87,13 +87,13 @@ begin
 
   New_Line;
   Put_Line ("  Ayacc (File           => """ & Value (Input_File) & """,");
-  Put_Line ("         C_Lex          => " & 
+  Put_Line ("         C_Lex          => " &
                         Value (Mixed (Switch'Image(C_Lex_Flag))) & ',');
-  Put_Line ("         Debug          => " & 
+  Put_Line ("         Debug          => " &
                         Value (Mixed (Switch'Image(Debug_Flag))) & ',');
-  Put_Line ("         Summary        => " & 
+  Put_Line ("         Summary        => " &
                         Value (Mixed (Switch'Image(Summary_Flag))) & ',');
-  Put_Line ("         Verbose        => " & 
+  Put_Line ("         Verbose        => " &
                         Value (Mixed (Switch'Image(Verbose_Flag))) & ",");
 -- UMASS CODES :
   Put_Line ("         Error_Recovery => " &
