@@ -1,4 +1,4 @@
-package Parser.Tokens is
+package Parser_Tokens is
 
 
   subtype YYSType is Integer;
@@ -19,4 +19,4 @@ package Parser.Tokens is
 
     Syntax_Error : exception;
 
-end Parser.Tokens;
+end Parser_Tokens;

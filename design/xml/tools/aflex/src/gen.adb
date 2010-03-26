@@ -23,7 +23,6 @@
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/genB.a,v 1.25 1992/10/02 23:08:41 self Exp self $
 
 with Ada.Characters.Conversions;
-with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Strings.Unbounded;
 with Ada.Strings.Wide_Wide_Unbounded.Wide_Wide_Text_IO;
@@ -33,7 +32,7 @@ with Ada.Wide_Wide_Text_IO;
 with MISC_DEFS, MISC;
 with Scanner, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
 use MISC_DEFS, EXTERNAL_FILE_MANAGER;
-with Parser.Tokens; use Parser.Tokens;
+with Parser_Tokens; use Parser_Tokens;
 with Unicode;
 
 package body Gen is

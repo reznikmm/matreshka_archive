@@ -32,7 +32,7 @@ with Ada.Wide_Wide_Text_IO;
 with MISC_DEFS, MISC, ECS, PARSER;
 with MAIN_BODY, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
 use MISC_DEFS;
-with Parser.Tokens;
+with Parser_Tokens;
 
 package body Main_Body is
 
@@ -532,7 +532,7 @@ package body Main_Body is
     end if;
 
   exception
-    when Parser.Tokens.Syntax_Error =>
+    when Parser_Tokens.Syntax_Error =>
       Misc.Aflex_Error
        ("fatal parse error at line " & Integer'Wide_Wide_Image (LINENUM));
       Main_Body.Aflex_End (1);

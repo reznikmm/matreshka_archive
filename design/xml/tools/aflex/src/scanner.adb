@@ -12,7 +12,7 @@ package body scanner is
    use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Strings.Wide_Wide_Unbounded;
    use Ada.Wide_Wide_Text_IO;
-   use Parser.Tokens;
+   use Parser_Tokens;
    use Unicode;
 
    function "+" (Item : Wide_Wide_String) return Unbounded_Wide_Wide_String

@@ -9,14 +9,13 @@ with Unicode.Ucd.Core;
 
 with Parser.Goto_Table;
 use  Parser.Goto_Table;
-with Parser.Tokens;
-use  Parser.Tokens;
+with Parser_Tokens;
+use  Parser_Tokens;
 with Parser.Shift_Reduce;
 use  Parser.Shift_Reduce;
 
 package body Parser is
    package Parser_Goto renames Parser.Goto_Table;
-   package Parser_Tokens renames Parser.Tokens;
    package Parser_Shift_Reduce  renames Parser.Shift_Reduce;
 
    use Ada.Integer_Wide_Wide_Text_IO;
@@ -97,7 +96,7 @@ procedure YYParse is
     package yy_shift_reduce_tables renames
       Parser.Shift_Reduce;
     package yy_tokens              renames
-      Parser.Tokens;
+      Parser_Tokens;
 
    use yy_tokens, yy_goto_tables, yy_shift_reduce_tables;
 

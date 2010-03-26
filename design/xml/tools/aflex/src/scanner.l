@@ -410,11 +410,11 @@ PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax|Hex_Digit)\}
 			  end if;
 			}
 %%
-with Parser.Tokens;
+with Parser_Tokens;
 
 ##
     Call_YYLex : Boolean := False;
-    function YYLex return Parser.Tokens.Token;
+    function YYLex return Parser_Tokens.Token;
 ##
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Integer_Wide_Wide_Text_IO;
@@ -428,7 +428,7 @@ with Unicode.Ucd;
    use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Strings.Wide_Wide_Unbounded;
    use Ada.Wide_Wide_Text_IO;
-   use Parser.Tokens;
+   use Parser_Tokens;
    use Unicode;
 
    function "+" (Item : Wide_Wide_String) return Unbounded_Wide_Wide_String

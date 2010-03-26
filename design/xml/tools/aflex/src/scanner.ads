@@ -28,9 +28,9 @@
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/ascan.l,v 1.19 1991/12/03 23:08:24 self Exp self $
 --# line 45 "scanner.l"
 
-with Parser.Tokens;
+with Parser_Tokens;
 
 package scanner is
     Call_YYLex : Boolean := False;
-    function YYLex return Parser.Tokens.Token;
+    function YYLex return Parser_Tokens.Token;
 end scanner;
