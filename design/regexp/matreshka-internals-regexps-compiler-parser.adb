@@ -100,182 +100,116 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
             when 1 =>
                --  Alternation
             
-               
-            yyval := (AST_Node, Process_Alternation (
-            yy.value_stack(yy.tos-2).Node, 
-            yy.value_stack(yy.tos).Node));
-               AST_Start := 
-            yyval.Node;
+               yyval := (AST_Node, Process_Alternation (yy.value_stack (yy.tos-2).Node, yy.value_stack (yy.tos).Node));
+               AST_Start := yyval.Node;
 
             when 2 =>
-               
-            yyval := 
-            yy.value_stack(yy.tos);
-               AST_Start := 
-            yy.value_stack(yy.tos).Node;
+               yyval := yy.value_stack (yy.tos);
+               AST_Start := yy.value_stack (yy.tos).Node;
 
             when 3 =>
-               Attach (
-            yy.value_stack(yy.tos-1).Node, 
-            yy.value_stack(yy.tos).Node);
-               
-            yyval := 
-            yy.value_stack(yy.tos-1);
+               Attach (yy.value_stack (yy.tos-1).Node, yy.value_stack (yy.tos).Node);
+               yyval := yy.value_stack (yy.tos-1);
 
             when 4 =>
-               
-            yyval := 
-            yy.value_stack(yy.tos);
+               yyval := yy.value_stack (yy.tos);
 
             when 5 =>
                --  Optional, greedy
             
-               
-            yyval := (AST_Node, Process_Multiplicity (
-            yy.value_stack(yy.tos-1).Node, 0, 1, True));
+               yyval := (AST_Node, Process_Multiplicity (yy.value_stack (yy.tos-1).Node, 0, 1, True));
 
             when 6 =>
                --  Optional, lazy
             
-               
-            yyval := (AST_Node, Process_Multiplicity (
-            yy.value_stack(yy.tos-1).Node, 0, 1, False));
+               yyval := (AST_Node, Process_Multiplicity (yy.value_stack (yy.tos-1).Node, 0, 1, False));
 
             when 7 =>
                --  Zero or more, greedy
             
-               
-            yyval := (AST_Node, Process_Multiplicity (
-            yy.value_stack(yy.tos-1).Node, 0, Natural'Last, True));
+               yyval := (AST_Node, Process_Multiplicity (yy.value_stack (yy.tos-1).Node, 0, Natural'Last, True));
 
             when 8 =>
                --  Zero or more, lazy
             
-               
-            yyval := (AST_Node, Process_Multiplicity (
-            yy.value_stack(yy.tos-1).Node, 0, Natural'Last, False));
+               yyval := (AST_Node, Process_Multiplicity (yy.value_stack (yy.tos-1).Node, 0, Natural'Last, False));
 
             when 9 =>
                --  One or more, greedy
             
-               
-            yyval := (AST_Node, Process_Multiplicity (
-            yy.value_stack(yy.tos-1).Node, 1, Natural'Last, True));
+               yyval := (AST_Node, Process_Multiplicity (yy.value_stack (yy.tos-1).Node, 1, Natural'Last, True));
 
             when 10 =>
                --  One or more, lazy
             
-               
-            yyval := (AST_Node, Process_Multiplicity (
-            yy.value_stack(yy.tos-1).Node, 1, Natural'Last, False));
+               yyval := (AST_Node, Process_Multiplicity (yy.value_stack (yy.tos-1).Node, 1, Natural'Last, False));
 
             when 11 =>
                --  Multiplicity range, greedy
             
-               
-            yyval := (AST_Node, Process_Multiplicity (
-            yy.value_stack(yy.tos-5).Node, 
-            yy.value_stack(yy.tos-3).Value, 
-            yy.value_stack(yy.tos-1).Value, True));
+               yyval := (AST_Node, Process_Multiplicity (yy.value_stack (yy.tos-5).Node, yy.value_stack (yy.tos-3).Value, yy.value_stack (yy.tos-1).Value, True));
 
             when 12 =>
                --  Multiplicity range, lazy
             
-               
-            yyval := (AST_Node, Process_Multiplicity (
-            yy.value_stack(yy.tos-5).Node, 
-            yy.value_stack(yy.tos-3).Value, 
-            yy.value_stack(yy.tos-1).Value, False));
+               yyval := (AST_Node, Process_Multiplicity (yy.value_stack (yy.tos-5).Node, yy.value_stack (yy.tos-3).Value, yy.value_stack (yy.tos-1).Value, False));
 
             when 13 =>
                --  Multiplicity lower .. infinity, greedy
             
-               
-            yyval := (AST_Node, Process_Multiplicity (
-            yy.value_stack(yy.tos-4).Node, 
-            yy.value_stack(yy.tos-2).Value, Integer'Last, True));
+               yyval := (AST_Node, Process_Multiplicity (yy.value_stack (yy.tos-4).Node, yy.value_stack (yy.tos-2).Value, Integer'Last, True));
 
             when 14 =>
                --  Multiplicity lower .. infinity, lazy
             
-               
-            yyval := (AST_Node, Process_Multiplicity (
-            yy.value_stack(yy.tos-4).Node, 
-            yy.value_stack(yy.tos-2).Value, Integer'Last, False));
+               yyval := (AST_Node, Process_Multiplicity (yy.value_stack (yy.tos-4).Node, yy.value_stack (yy.tos-2).Value, Integer'Last, False));
 
             when 15 =>
                --  Multiplicity, greedy
             
-               
-            yyval := (AST_Node, Process_Multiplicity (
-            yy.value_stack(yy.tos-3).Node, 
-            yy.value_stack(yy.tos-1).Value, 
-            yy.value_stack(yy.tos-1).Value, True));
+               yyval := (AST_Node, Process_Multiplicity (yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Value, yy.value_stack (yy.tos-1).Value, True));
 
             when 16 =>
                --  Multiplicity, lazy
             
-               
-            yyval := (AST_Node, Process_Multiplicity (
-            yy.value_stack(yy.tos-3).Node, 
-            yy.value_stack(yy.tos-1).Value, 
-            yy.value_stack(yy.tos-1).Value, False));
+               yyval := (AST_Node, Process_Multiplicity (yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Value, yy.value_stack (yy.tos-1).Value, False));
 
             when 17 =>
-               
-            yyval := (AST_Node, Process_Subexpression (
-            yy.value_stack(yy.tos-1).Node));
+               yyval := (AST_Node, Process_Subexpression (yy.value_stack (yy.tos-1).Node));
 
             when 18 =>
                --  Any code point
             
-               
-            yyval := (AST_Node, Process_Any_Code_Point);
+               yyval := (AST_Node, Process_Any_Code_Point);
 
             when 19 =>
                --  Code point
             
-               
-            yyval := (AST_Node, Process_Code_Point (
-            yy.value_stack(yy.tos).Code));
+               yyval := (AST_Node, Process_Code_Point (yy.value_stack (yy.tos).Code));
 
             when 20 =>
-               
-            yyval := 
-            yy.value_stack(yy.tos);
+               yyval := yy.value_stack (yy.tos);
 
             when 21 =>
-               
-            yyval := 
-            yy.value_stack(yy.tos-1);
+               yyval := yy.value_stack (yy.tos-1);
 
             when 22 =>
-               
-            yyval := (AST_Node, Process_Negate_Character_Class (
-            yy.value_stack(yy.tos-1).Node));
+               yyval := (AST_Node, Process_Negate_Character_Class (yy.value_stack (yy.tos-1).Node));
 
             when 23 =>
                --  Add range of code points to character class
             
-               
-            yyval := (AST_Node, Process_Character_Class_Range (
-            yy.value_stack(yy.tos-3).Node, 
-            yy.value_stack(yy.tos-2).Code, 
-            yy.value_stack(yy.tos).Code));
+               yyval := (AST_Node, Process_Character_Class_Range (yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-2).Code, yy.value_stack (yy.tos).Code));
 
             when 24 =>
                --  Add code point to character class
             
-               
-            yyval := (AST_Node, Process_Character_Class_Code_Point (
-            yy.value_stack(yy.tos-1).Node, 
-            yy.value_stack(yy.tos).Code));
+               yyval := (AST_Node, Process_Character_Class_Code_Point (yy.value_stack (yy.tos-1).Node, yy.value_stack (yy.tos).Code));
 
             when 25 =>
                --  Initialize new character class node
             
-               
-            yyval := (AST_Node, Process_New_Character_Class);
+               yyval := (AST_Node, Process_New_Character_Class);
                when others =>
                   raise Program_Error;
             end case;
