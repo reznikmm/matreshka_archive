@@ -349,8 +349,8 @@ begin
 
                 case yy.rule_id is
 
-when  1 =>
---#line  34
+when 1 =>
+--# line 34 "parser.y"
  -- add default rule
 
 			pat := ccl.cclinit;
@@ -374,8 +374,8 @@ when  1 =>
 			end if;
 			
 
-when  2 =>
---#line  59
+when 2 =>
+--# line 59 "parser.y"
 
 			-- initialize for processing rules
 
@@ -383,12 +383,12 @@ when  2 =>
 			sym.scinstal (+"INITIAL", False);
 			
 
-when  5 =>
---#line  70
+when 5 =>
+--# line 70 "parser.y"
  misc.synerr( "unknown error processing section 1" );
 
-when  7 =>
---#line  77
+when 7 =>
+--# line 77 "parser.y"
 
 			 -- these productions are separate from the s1object
 			 -- rule because the semantics must be done before
@@ -398,24 +398,24 @@ when  7 =>
 			xcluflg := false;
 			
 
-when  8 =>
---#line  87
+when 8 =>
+--# line 87 "parser.y"
  xcluflg := true; 
 
-when  9 =>
---#line  91
+when 9 =>
+--# line 91 "parser.y"
  sym.scinstal (nmstr, xcluflg); 
 
-when  10 =>
---#line  94
+when 10 =>
+--# line 94 "parser.y"
  sym.scinstal (nmstr, xcluflg); 
 
-when  11 =>
---#line  97
+when 11 =>
+--# line 97 "parser.y"
  misc.synerr( "bad start condition list" ); 
 
-when  14 =>
---#line  105
+when 14 =>
+--# line 105 "parser.y"
 
 			-- initialize for a parse of one rule
 			trlcontxt := false;
@@ -429,8 +429,8 @@ when  14 =>
 			nfa.new_rule;
 			
 
-when  15 =>
---#line  120
+when 15 =>
+--# line 120 "parser.y"
 
 			pat := nfa.link_machines( 
 yy.value_stack(yy.tos-1), 
@@ -454,8 +454,8 @@ yy.value_stack(yy.tos) );
 			end if;
 			
 
-when  16 =>
---#line  142
+when 16 =>
+--# line 142 "parser.y"
 
 			pat := nfa.link_machines( 
 yy.value_stack(yy.tos-1), 
@@ -469,8 +469,8 @@ yy.value_stack(yy.tos) );
 			end loop;
 		        
 
-when  17 =>
---#line  153
+when 17 =>
+--# line 153 "parser.y"
 
 			pat := nfa.link_machines( 
 yy.value_stack(yy.tos-1), 
@@ -498,8 +498,8 @@ yy.value_stack(yy.tos) );
 			end if;
     	    	    	
 
-when  18 =>
---#line  178
+when 18 =>
+--# line 178 "parser.y"
 
 			pat := nfa.link_machines( 
 yy.value_stack(yy.tos-1), 
@@ -514,12 +514,12 @@ yy.value_stack(yy.tos) );
 			end loop;
 			
 
-when  19 =>
---#line  191
+when 19 =>
+--# line 191 "parser.y"
  Build_EOF_Action; 
 
-when  20 =>
---#line  194
+when 20 =>
+--# line 194 "parser.y"
 
                   -- this EOF applies only to the INITIAL start cond.
                   actvp := 1;
@@ -527,12 +527,12 @@ when  20 =>
                   Build_EOF_Action;
 			
 
-when  21 =>
---#line  202
+when 21 =>
+--# line 202 "parser.y"
  misc.synerr( "unrecognized rule" ); 
 
-when  23 =>
---#line  209
+when 23 =>
+--# line 209 "parser.y"
 
 			scnum := sym.sclookup (nmstr);
 			if (scnum = 0 ) then
@@ -547,8 +547,8 @@ when  23 =>
 			end if;
 			
 
-when  24 =>
---#line  224
+when 24 =>
+--# line 224 "parser.y"
 
 			scnum := sym.sclookup (nmstr);
 			if (scnum = 0 ) then
@@ -563,12 +563,12 @@ when  24 =>
 			end if;
 			
 
-when  25 =>
---#line  239
+when 25 =>
+--# line 239 "parser.y"
  misc.synerr( "bad start condition list" ); 
 
-when  26 =>
---#line  243
+when 26 =>
+--# line 243 "parser.y"
 
 			if trlcontxt then
 			    misc.synerr( "trailing context used twice" );
@@ -591,8 +591,8 @@ yyval := nfa.link_machines( eps,
     	    	    	end if;
 			
 
-when  27 =>
---#line  264
+when 27 =>
+--# line 264 "parser.y"
 
 		        
 yyval := nfa.mkstate( SYM_EPSILON );
@@ -607,8 +607,8 @@ yyval := nfa.mkstate( SYM_EPSILON );
     	    	    	end if;
 		        
 
-when  28 =>
---#line  279
+when 28 =>
+--# line 279 "parser.y"
 
 			varlength := true;
 
@@ -618,8 +618,8 @@ yy.value_stack(yy.tos-2),
 yy.value_stack(yy.tos) );
 			
 
-when  29 =>
---#line  286
+when 29 =>
+--# line 286 "parser.y"
 
 			if ( transchar(lastst(
 yy.value_stack(yy.tos))) /= SYM_EPSILON ) then
@@ -681,14 +681,14 @@ yy.value_stack(yy.tos-1),
 yy.value_stack(yy.tos) );
 			
 
-when  30 =>
---#line  340
+when 30 =>
+--# line 340 "parser.y"
  
 yyval := 
 yy.value_stack(yy.tos); 
 
-when  31 =>
---#line  345
+when 31 =>
+--# line 345 "parser.y"
 
 			-- this rule is separate from the others for "re" so
 			-- that the reduction will occur before the trailing
@@ -715,8 +715,8 @@ yyval :=
 yy.value_stack(yy.tos-1);
 			
 
-when  32 =>
---#line  371
+when 32 =>
+--# line 371 "parser.y"
 
 			-- this is where concatenation of adjacent patterns
 			-- gets done
@@ -727,14 +727,14 @@ yy.value_stack(yy.tos-1),
 yy.value_stack(yy.tos) );
 			
 
-when  33 =>
---#line  379
+when 33 =>
+--# line 379 "parser.y"
  
 yyval := 
 yy.value_stack(yy.tos); 
 
-when  34 =>
---#line  383
+when 34 =>
+--# line 383 "parser.y"
 
 			varlength := true;
 
@@ -743,8 +743,8 @@ yyval := nfa.mkclos(
 yy.value_stack(yy.tos-1) );
 			
 
-when  35 =>
---#line  390
+when 35 =>
+--# line 390 "parser.y"
 
 			varlength := true;
 
@@ -753,8 +753,8 @@ yyval := nfa.mkposcl(
 yy.value_stack(yy.tos-1) );
 			
 
-when  36 =>
---#line  397
+when 36 =>
+--# line 397 "parser.y"
 
 			varlength := true;
 
@@ -763,8 +763,8 @@ yyval := nfa.mkopt(
 yy.value_stack(yy.tos-1) );
 			
 
-when  37 =>
---#line  404
+when 37 =>
+--# line 404 "parser.y"
 
 			varlength := true;
 
@@ -794,8 +794,8 @@ yy.value_stack(yy.tos-1) );
     	    	    	end if;
 			
 
-when  38 =>
---#line  420
+when 38 =>
+--# line 420 "parser.y"
 
 			varlength := true;
 
@@ -813,8 +813,8 @@ yy.value_stack(yy.tos-2), INFINITY );
 			end if;
 			
 
-when  39 =>
---#line  432
+when 39 =>
+--# line 432 "parser.y"
 
 			-- the singleton could be something like "(foo)",
 			-- in which case we have no idea what its length
@@ -837,8 +837,8 @@ yy.value_stack(yy.tos-1) - 1 ) );
 			end if;
 			
 
-when  40 =>
---#line  448
+when 40 =>
+--# line 448 "parser.y"
 
 			if ( not madeany ) then
 			    -- create the '.' character class
@@ -861,8 +861,8 @@ when  40 =>
 yyval := nfa.mkstate( -anyccl );
 			
 
-when  41 =>
---#line  470
+when 41 =>
+--# line 470 "parser.y"
 
 			if ( not cclsorted ) then
 			    -- sort characters for fast searching.  We use a
@@ -893,8 +893,8 @@ yyval := nfa.mkstate( -
 yy.value_stack(yy.tos) );
 			
 
-when  42 =>
---#line  491
+when 42 =>
+--# line 491 "parser.y"
 
 			rulelen := rulelen + 1;
 
@@ -903,20 +903,20 @@ yyval := nfa.mkstate( -
 yy.value_stack(yy.tos) );
 			
 
-when  43 =>
---#line  498
+when 43 =>
+--# line 498 "parser.y"
  
 yyval := 
 yy.value_stack(yy.tos-1); 
 
-when  44 =>
---#line  501
+when 44 =>
+--# line 501 "parser.y"
  
 yyval := 
 yy.value_stack(yy.tos-1); 
 
-when  45 =>
---#line  504
+when 45 =>
+--# line 504 "parser.y"
 
 			rulelen := rulelen + 1;
 
@@ -938,8 +938,8 @@ yyval := nfa.mkstate(
 yy.value_stack(yy.tos) );
 			
 
-when  46 =>
---#line  518
+when 46 =>
+--# line 518 "parser.y"
 
 			rulelen := rulelen + 1;
 
@@ -1002,14 +1002,14 @@ yyval );
 			end;
 			
 
-when  47 =>
---#line  566
+when 47 =>
+--# line 566 "parser.y"
  
 yyval := 
 yy.value_stack(yy.tos-1); 
 
-when  48 =>
---#line  569
+when 48 =>
+--# line 569 "parser.y"
 
 			-- *Sigh* - to be compatible Unix lex, negated ccls
 			-- match newlines
@@ -1020,8 +1020,8 @@ yyval :=
 yy.value_stack(yy.tos-1);
 			
 
-when  49 =>
---#line  578
+when 49 =>
+--# line 578 "parser.y"
 
 			if ( 
 yy.value_stack(yy.tos-2) > 
@@ -1066,8 +1066,8 @@ yyval :=
 yy.value_stack(yy.tos-3);
 			
 
-when  50 =>
---#line  606
+when 50 =>
+--# line 606 "parser.y"
 
 			if ( caseins ) then
 			    if ( (
@@ -1090,8 +1090,8 @@ yyval :=
 yy.value_stack(yy.tos-1);
 			
 
-when  51 =>
---#line  618
+when 51 =>
+--# line 618 "parser.y"
 
 			declare
 			   P : Unicode.Ucd.Boolean_Properties :=
@@ -1117,8 +1117,8 @@ yy.value_stack(yy.tos-1);
 			end;
 			
 
-when  52 =>
---#line  639
+when 52 =>
+--# line 639 "parser.y"
 
 			cclsorted := true;
 			lastchar := 0;
@@ -1126,8 +1126,8 @@ when  52 =>
 yyval := ccl.cclinit;
 			
 
-when  53 =>
---#line  647
+when 53 =>
+--# line 647 "parser.y"
 
 			if ( caseins ) then
 			    if ( (
@@ -1147,8 +1147,8 @@ yy.value_stack(yy.tos-1), nfa.mkstate(
 yy.value_stack(yy.tos) ) );
 			
 
-when  54 =>
---#line  660
+when 54 =>
+--# line 660 "parser.y"
  
 yyval := nfa.mkstate( SYM_EPSILON ); 
 
