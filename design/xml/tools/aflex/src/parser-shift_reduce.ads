@@ -243,7 +243,7 @@ package Parser.Shift_Reduce is
 ,(-1,-37)
 );
 --  The offset vector
-SHIFT_REDUCE_OFFSET : array (0.. 84) of Integer :=
+SHIFT_REDUCE_OFFSET : constant array (0.. 84) of Integer :=
 ( 0,
  1, 3, 5, 9, 11, 12, 13, 14, 15, 16,
  18, 19, 20, 23, 35, 38, 39, 40, 50, 58,

@@ -200,7 +200,7 @@ package Parser.Goto_Table is
 
 );
 --  The offset vector
-GOTO_OFFSET : array (0.. 84) of Integer :=
+GOTO_OFFSET : constant array (0.. 84) of Integer :=
 ( 0,
  2, 3, 3, 5, 5, 5, 5, 5, 5, 6,
  6, 6, 7, 8, 15, 15, 15, 15, 20, 25,
@@ -215,7 +215,7 @@ GOTO_OFFSET : array (0.. 84) of Integer :=
 subtype Rule        is Natural;
 subtype Nonterminal is Integer;
 
-   Rule_Length : array (Rule range  0 ..  54) of Natural := ( 2,
+   Rule_Length : constant array (Rule range  0 ..  54) of Natural := ( 2,
  5, 0, 5, 0, 2, 1, 1, 1,
  3, 1, 1, 4, 0, 0, 4, 3,
  3, 2, 2, 1, 1, 3, 3, 1,
@@ -223,7 +223,7 @@ subtype Nonterminal is Integer;
  1, 2, 2, 2, 6, 5, 4, 1,
  1, 1, 3, 3, 1, 1, 3, 4,
  4, 2, 2, 0, 2, 0);
-   Get_LHS_Rule: array (Rule range  0 ..  54) of Nonterminal := (-1,
+   Get_LHS_Rule : constant array (Rule range  0 ..  54) of Nonterminal := (-1,
 -2,-3,-4,-4,-4,-5,-8,-8,
 -9,-9,-9,-6,-6,-7,-10,-10,
 -10,-10,-10,-10,-10,-11,-14,-14,
