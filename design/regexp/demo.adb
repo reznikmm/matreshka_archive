@@ -4,10 +4,9 @@ with Ada.Wide_Wide_Text_IO;
 
 with League.Strings.Internals;
 
-with Compiler;
 with Engine;
 with Syntax;
-with Matreshka.Internals.Regexps.Compiler;
+with Matreshka.Internals.Regexps.Compiler.Generator;
 with Matreshka.Internals.Regexps.Compiler.Parser;
 
 procedure Demo is
@@ -46,7 +45,7 @@ begin
    Syntax.Dump;
 
    declare
-      P : Engine.Instruction_Array := Compiler.Compile;
+      P : Engine.Instruction_Array := Matreshka.Internals.Regexps.Compiler.Generator.Generate;
       F : Ada.Wide_Wide_Text_IO.File_Type;
 
    begin
