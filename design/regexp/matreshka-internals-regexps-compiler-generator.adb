@@ -37,7 +37,7 @@ with Syntax;
 
 package body Matreshka.Internals.Regexps.Compiler.Generator is
 
-   use Engine;
+   use Matreshka.Internals.Regexps.Engine;
    use Syntax;
 
    package Integer_Vectors is

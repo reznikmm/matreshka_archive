@@ -4,7 +4,7 @@ with Ada.Wide_Wide_Text_IO;
 
 with League.Strings.Internals;
 
-with Engine;
+with Matreshka.Internals.Regexps.Engine;
 with Syntax;
 with Matreshka.Internals.Regexps.Compiler.Generator;
 with Matreshka.Internals.Regexps.Compiler.Parser;
@@ -45,12 +45,12 @@ begin
    Syntax.Dump;
 
    declare
-      P : Engine.Instruction_Array := Matreshka.Internals.Regexps.Compiler.Generator.Generate;
+      P : Matreshka.Internals.Regexps.Engine.Instruction_Array := Matreshka.Internals.Regexps.Compiler.Generator.Generate;
       F : Ada.Wide_Wide_Text_IO.File_Type;
 
    begin
       Ada.Wide_Wide_Text_IO.Put_Line ("---------- Code ----------");
-      Engine.Dump (P);
+      Matreshka.Internals.Regexps.Engine.Dump (P);
       Ada.Wide_Wide_Text_IO.New_Line;
 
       Ada.Wide_Wide_Text_IO.Open
@@ -62,10 +62,10 @@ begin
       declare
          D : Wide_Wide_String := Ada.Wide_Wide_Text_IO.Get_Line (F);
          M : Boolean;
-         S : Engine.Slice_Array (0 .. 9);
+         S : Matreshka.Internals.Regexps.Engine.Slice_Array (0 .. 9);
 
       begin
-         Engine.Execute (P, D, M, S);
+         Matreshka.Internals.Regexps.Engine.Execute (P, D, M, S);
 
          if M then
             Ada.Wide_Wide_Text_IO.Put_Line
