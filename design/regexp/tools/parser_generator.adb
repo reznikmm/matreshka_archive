@@ -11,6 +11,13 @@ package body Parser_Generator is
    use Ada.Wide_Text_IO;
    use Parser_Extractor;
 
+   Parser_In_File_Name     : constant String :=
+     "../matreshka-internals-regexps-compiler-parser.adb.in";
+   Parser_File_Name        : constant String :=
+     "../matreshka-internals-regexps-compiler-parser.adb";
+   Parser_Tables_File_Name : constant String :=
+     "../matreshka-internals-regexps-compiler-parser-tables.ads";
+
    --------------------------
    -- Generate_Parser_Code --
    --------------------------
@@ -22,16 +29,8 @@ package body Parser_Generator is
       Last   : Natural;
 
    begin
-      Open
-       (Input,
-        In_File,
-        "../parser.adb.in",
-        "wcem=8");
-      Create
-       (Output,
-        Out_File,
-        "../parser.adb",
-        "wcem=8");
+      Open (Input, In_File, Parser_In_File_Name, "wcem=8");
+      Create (Output, Out_File, Parser_File_Name, "wcem=8");
 
       while not End_Of_File (Input) loop
          Get_Line (Input, Buffer, Last);
@@ -156,10 +155,10 @@ package body Parser_Generator is
       end Generate_Array_Of_Pair;
 
    begin
-      Create (Output, Out_File, "../parser-tables.ads", "wcem=8");
+      Create (Output, Out_File, Parser_Tables_File_Name, "wcem=8");
 
       New_Line (Output);
-      Put_Line (Output, "private package Parser.Tables is");
+      Put_Line (Output, "private package Matreshka.Internals.Regexps.Compiler.Parser.Tables is");
 
       New_Line (Output);
       Put_Line (Output, "   type Goto_Entry is record");
@@ -200,7 +199,7 @@ package body Parser_Generator is
       Generate_Array ("YY_Shift_Reduce_Offset", YY_Shift_Reduce_Offset);
 
       New_Line (Output);
-      Put_Line (Output, "end Parser.Tables;");
+      Put_Line (Output, "end Matreshka.Internals.Regexps.Compiler.Parser.Tables;");
 
       Close (Output);
    end Generate_Parser_Tables;

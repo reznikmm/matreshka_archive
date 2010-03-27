@@ -1,5 +1,5 @@
 
-private package Parser.Tables is
+private package Matreshka.Internals.Regexps.Compiler.Parser.Tables is
 
    type Goto_Entry is record
       Nonterm  : Integer;
@@ -75,4 +75,4 @@ private package Parser.Tables is
         69,   70,   71,   73,   76,   80,   81,   82,
         84,   85,   88,   89,   90,   91,   92);
 
-end Parser.Tables;
+end Matreshka.Internals.Regexps.Compiler.Parser.Tables;

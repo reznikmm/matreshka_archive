@@ -6,9 +6,9 @@ with League.Strings.Internals;
 
 with Compiler;
 with Engine;
-with Parser;
 with Syntax;
 with Matreshka.Internals.Regexps.Compiler;
+with Matreshka.Internals.Regexps.Compiler.Parser;
 
 procedure Demo is
 
@@ -41,7 +41,7 @@ procedure Demo is
 begin
    Matreshka.Internals.Regexps.Compiler.Data :=
      League.Strings.Internals.Get_Shared (Expression);
-   Parser.YYParse;
+   Matreshka.Internals.Regexps.Compiler.Parser.YYParse;
    Ada.Wide_Wide_Text_IO.Put_Line ("---------- AST ----------");
    Syntax.Dump;
 

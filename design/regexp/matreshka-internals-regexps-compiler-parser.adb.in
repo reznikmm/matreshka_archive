@@ -1,13 +1,13 @@
-with Parser.Tables;
 with Parser_Actions;
 with Parser_Tokens;
+with Matreshka.Internals.Regexps.Compiler.Parser.Tables;
 with Matreshka.Internals.Regexps.Compiler.Scanner;
 with Syntax;
 
-package body Parser is
+package body Matreshka.Internals.Regexps.Compiler.Parser is
 
+   use Matreshka.Internals.Regexps.Compiler.Parser.Tables;
    use Matreshka.Internals.Regexps.Compiler.Scanner;
-   use Parser.Tables;
    use Parser_Actions;
    use Parser_Tokens;
    use Syntax;
@@ -119,4 +119,4 @@ package body Parser is
       end loop;
    end YYParse;
 
-end Parser;
+end Matreshka.Internals.Regexps.Compiler.Parser;

@@ -32,8 +32,8 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package Parser is
+package Matreshka.Internals.Regexps.Compiler.Parser is
 
    procedure YYParse;
 
-end Parser;
+end Matreshka.Internals.Regexps.Compiler.Parser;

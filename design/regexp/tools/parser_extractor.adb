@@ -117,7 +117,6 @@ package body Parser_Extractor is
                  Integer'Wide_Value (Asis.Expressions.Value_Image (Choice));
 
             when others =>
-               raise Program_Error;
                null;
          end case;
 
