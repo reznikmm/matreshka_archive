@@ -304,8 +304,6 @@ package body Lexical_Analyzer is
 		      end if;
 		    end if;
                 when '$' =>
-                    Actions_File.Writeln;
-
                     Get_Char(Char);
                     if Char = '$' then
                         Actions_File.Write("yyval");
@@ -322,9 +320,9 @@ package body Lexical_Analyzer is
                         end if;
                         Base := Base - Rule_Length;
                         if Base = 0 then
-                            Actions_File.Write("yy.value_stack(yy.tos)");
+                            Actions_File.Write("yy.value_stack (yy.tos)");
                         else
-                            Actions_File.Write("yy.value_stack(yy.tos" &
+                            Actions_File.Write("yy.value_stack (yy.tos" &
                                    Integer'Image(Base) & ")");
                         end if;
                     else
