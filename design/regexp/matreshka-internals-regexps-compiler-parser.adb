@@ -1,14 +1,45 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--         Localization, Internationalization, Globalization for Ada        --
+--                                                                          --
+--                        Runtime Library Component                         --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2010 Vadim Godunko <vgodunko@gmail.com>                      --
+--                                                                          --
+-- Matreshka is free software;  you can  redistribute it  and/or modify  it --
+-- under terms of the  GNU General Public License as published  by the Free --
+-- Software  Foundation;  either version 2,  or (at your option)  any later --
+-- version.  Matreshka  is distributed in the hope that it will be  useful, --
+-- but   WITHOUT  ANY  WARRANTY;  without  even  the  implied  warranty  of --
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General --
+-- Public License for more details.  You should have received a copy of the --
+-- GNU General Public License distributed with Matreshka; see file COPYING. --
+-- If not, write  to  the  Free Software Foundation,  51  Franklin  Street, --
+-- Fifth Floor, Boston, MA 02110-1301, USA.                                 --
+--                                                                          --
+-- As a special exception,  if other files  instantiate  generics from this --
+-- unit, or you link  this unit with other files  to produce an executable, --
+-- this  unit  does not  by itself cause  the resulting  executable  to  be --
+-- covered  by the  GNU  General  Public  License.  This exception does not --
+-- however invalidate  any other reasons why  the executable file  might be --
+-- covered by the  GNU Public License.                                      --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
 with Parser_Tokens;
 with Matreshka.Internals.Regexps.Compiler.Parser.Tables;
 with Matreshka.Internals.Regexps.Compiler.Scanner;
-with Syntax;
 
 package body Matreshka.Internals.Regexps.Compiler.Parser is
 
    use Matreshka.Internals.Regexps.Compiler.Parser.Tables;
    use Matreshka.Internals.Regexps.Compiler.Scanner;
    use Parser_Tokens;
-   use Syntax;
 
    function Process_Alternation
      (Alternative_1 : Positive;
@@ -51,7 +82,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Alternative_2 : Positive) return Positive is
    begin
       AST_Last := AST_Last + 1;
-      AST (AST_Last) := (Alternation, 0, Alternative_1, Alternative_2);
+      AST (AST_Last) := (N_Alternation, 0, Alternative_1, Alternative_2);
 
       return AST_Last;
    end Process_Alternation;
@@ -63,7 +94,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    function Process_Any_Code_Point return Positive is
    begin
       AST_Last := AST_Last + 1;
-      AST (AST_Last) := (Any_Code_Point, 0);
+      AST (AST_Last) := (N_Any_Code_Point, 0);
 
       return AST_Last;
    end Process_Any_Code_Point;
@@ -77,7 +108,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Code  : Wide_Wide_Character) return Positive is
    begin
       AST_Last := AST_Last + 1;
-      AST (AST_Last) := (Code_Point, 0, Code);
+      AST (AST_Last) := (N_Code_Point, 0, Code);
       Add (Class, AST_Last);
 
       return Class;
@@ -93,7 +124,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       High  : Wide_Wide_Character) return Positive is
    begin
       AST_Last := AST_Last + 1;
-      AST (AST_Last) := (Code_Point_Range, 0, Low, High);
+      AST (AST_Last) := (N_Code_Point_Range, 0, Low, High);
       Add (Class, AST_Last);
 
       return Class;
@@ -107,7 +138,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
      (Character : Wide_Wide_Character) return Positive is
    begin
       AST_Last := AST_Last + 1;
-      AST (AST_Last) := (Code_Point, 0, Character);
+      AST (AST_Last) := (N_Code_Point, 0, Character);
 
       return AST_Last;
    end Process_Code_Point;
@@ -123,7 +154,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Greedy     : Boolean) return Positive is
    begin
       AST_Last := AST_Last + 1;
-      AST (AST_Last) := (Multiplicity, 0, Expression, Greedy, Lower, Upper);
+      AST (AST_Last) := (N_Multiplicity, 0, Expression, Greedy, Lower, Upper);
 
       return AST_Last;
    end Process_Multiplicity;
@@ -147,7 +178,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    function Process_New_Character_Class return Positive is
    begin
       AST_Last := AST_Last + 1;
-      AST (AST_Last) := (Character_Class, 0, False, 0);
+      AST (AST_Last) := (N_Character_Class, 0, False, 0);
 
       return AST_Last;
    end Process_New_Character_Class;
@@ -159,7 +190,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    function Process_Subexpression (Expression : Positive) return Positive is
    begin
       AST_Last := AST_Last + 1;
-      AST (AST_Last) := (Subexpression, 0, Expression, 0);
+      AST (AST_Last) := (N_Subexpression, 0, Expression, 0);
 
       return AST_Last;
    end Process_Subexpression;

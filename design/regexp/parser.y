@@ -246,10 +246,10 @@ character_class_content : character_class_content Token_Code_Point Token_Charact
    procedure YYParse;
 ##
 with Ada.Wide_Wide_Text_IO; 
-with Syntax;
+with Matreshka.Internals.Regexps.Compiler;
 ##
    use Ada.Wide_Wide_Text_IO;
-   use Syntax;
+   use Matreshka.Internals.Regexps.Compiler;
 
    function YYLex return Token is separate;
 

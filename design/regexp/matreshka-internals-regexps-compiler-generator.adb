@@ -33,12 +33,9 @@
 ------------------------------------------------------------------------------
 with Ada.Containers.Vectors;
 
-with Syntax;
-
 package body Matreshka.Internals.Regexps.Compiler.Generator is
 
    use Matreshka.Internals.Regexps.Engine;
-   use Syntax;
 
    package Integer_Vectors is
      new Ada.Containers.Vectors (Positive, Integer);
@@ -92,7 +89,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
 
       begin
          case AST (Expression).Kind is
-            when Alternation =>
+            when N_Alternation =>
                Last := Last + 1;
                Instruction := Last;
                Tails.Clear;
@@ -111,7 +108,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                   Tails := Tails_1 & Tails_2;
                end;
 
-            when Any_Code_Point =>
+            when N_Any_Code_Point =>
                Last := Last + 1;
                Instruction := Last;
                Tails.Clear;
@@ -120,7 +117,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                Tails.Append (Instruction);
                Compile_Next;
 
-            when Code_Point =>
+            when N_Code_Point =>
                Last := Last + 1;
                Instruction := Last;
                Tails.Clear;
@@ -129,7 +126,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                Tails.Append (Instruction);
                Compile_Next;
 
-            when Multiplicity =>
+            when N_Multiplicity =>
                if AST (Expression).Lower = 0 then
                   if AST (Expression).Upper = Natural'Last then
                      --  Zero or more
@@ -252,7 +249,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                   end;
                end if;
 
-            when Subexpression =>
+            when N_Subexpression =>
                Last := Last + 1;
                Instruction := Last;
 

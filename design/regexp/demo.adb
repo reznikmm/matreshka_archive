@@ -5,7 +5,6 @@ with Ada.Wide_Wide_Text_IO;
 with League.Strings.Internals;
 
 with Matreshka.Internals.Regexps.Engine;
-with Syntax;
 with Matreshka.Internals.Regexps.Compiler.Generator;
 with Matreshka.Internals.Regexps.Compiler.Parser;
 
@@ -42,7 +41,7 @@ begin
      League.Strings.Internals.Get_Shared (Expression);
    Matreshka.Internals.Regexps.Compiler.Parser.YYParse;
    Ada.Wide_Wide_Text_IO.Put_Line ("---------- AST ----------");
-   Syntax.Dump;
+   Matreshka.Internals.Regexps.Compiler.Dump;
 
    declare
       P : Matreshka.Internals.Regexps.Engine.Instruction_Array := Matreshka.Internals.Regexps.Compiler.Generator.Generate;
