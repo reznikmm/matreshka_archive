@@ -44,6 +44,7 @@ with Ada.Characters.Handling;
 with Ada.Strings.Unbounded;
 with Ada.Text_IO;
 
+with Ayacc_File_Names;
 with Actions_File, Source_File, Tokens_File;
 use  Actions_File, Source_File, Tokens_File;
 
@@ -52,6 +53,7 @@ package body Lexical_Analyzer is
    use Ada.Characters.Handling;
    use Ada.Strings.Unbounded;
    use Ada.Text_IO;
+   use Ayacc_File_Names;
 
    function "+" (Item : String) return Unbounded_String
      renames To_Unbounded_String;
@@ -264,9 +266,10 @@ package body Lexical_Analyzer is
         Base   : Integer;
     begin
 	Actions_File.Writeln;
-        Actions_File.Write("when " & Integer'Image(Rule) & " =>");
+        Actions_File.Write("when" & Integer'Image (Rule) & " =>");
 	Actions_File.Writeln;
-	Actions_File.Write("--#line " & Integer'Image(Current_Line_Number));
+	Actions_File.Write("--# line" & Integer'Image(Current_Line_Number));
+        Actions_File.Write(" """ & Get_Source_File_Name & """");
 	Actions_File.Writeln;
         loop
             Get_Char(Char);
