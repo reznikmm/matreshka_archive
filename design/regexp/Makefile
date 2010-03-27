@@ -4,9 +4,15 @@ GPRBUILD_FLAGS = -p -XARCHITECTURE=$(ARCHITECTURE) -XBUILD=$(BUILD)
 AFLEX = ../../xml/tools/aflex/src/.objs/aflex
 AYACC = ../../xml/tools/ayacc/src/.objs/ayacc
 
-all: gen
+all: matreshka-internals-regexps-compiler-scanner.adb matreshka-internals-regexps-compiler-parser.adb
 	gprbuild $(GPRBUILD_FLAGS) -Pdemo.gpr
 	.obj/demo expression string
+
+matreshka-internals-regexps-compiler-scanner.adb: matreshka-internals-regexps-compiler-scanner.adb.in scanner.l
+	make gen
+
+matreshka-internals-regexps-compiler-parser.adb: matreshka-internals-regexps-compiler-parser.adb.in parser.y
+	make gen
 
 gen: .gen
 	gprbuild -p -Ptools/tools.gpr

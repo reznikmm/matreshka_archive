@@ -2,11 +2,11 @@ with Ada.Command_Line;
 with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
 
+with League.Regexps;
 with League.Strings.Internals;
 
 with Matreshka.Internals.Regexps.Engine;
 with Matreshka.Internals.Regexps.Compiler.Generator;
-with Matreshka.Internals.Regexps.Compiler.Parser;
 
 procedure Demo is
 
@@ -35,11 +35,9 @@ procedure Demo is
 
    Expression : League.Strings.Universal_String :=
      Read (Ada.Command_Line.Argument (1));
+   Pattern    : League.Regexps.Pattern := League.Regexps.Compile (Expression);
 
 begin
-   Matreshka.Internals.Regexps.Compiler.Data :=
-     League.Strings.Internals.Get_Shared (Expression);
-   Matreshka.Internals.Regexps.Compiler.Parser.YYParse;
    Ada.Wide_Wide_Text_IO.Put_Line ("---------- AST ----------");
    Matreshka.Internals.Regexps.Compiler.Dump;
 
