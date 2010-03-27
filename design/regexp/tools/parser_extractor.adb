@@ -11,15 +11,11 @@ with Asis.Iterator;
 with Asis.Statements;
 with Asis.Text;
 
-package body Scanner_Extractor is
+package body Parser_Extractor is
 
-   type State_Information is record
-      States : Boolean := False;
-   end record;
+   type State_Information is null record;
 
-   procedure Process_Constant_Declaration
-    (Element : Asis.Element;
-     State   : in out State_Information);
+   procedure Process_Constant_Declaration (Element : Asis.Element);
 
    procedure Process_Integer_Number_Declaration (Element : Asis.Element);
 
@@ -64,7 +60,7 @@ package body Scanner_Extractor is
          when Asis.A_Declaration =>
             case Asis.Elements.Declaration_Kind (Element) is
                when Asis.A_Constant_Declaration =>
-                  Process_Constant_Declaration (Element, State);
+                  Process_Constant_Declaration (Element);
 
                when Asis.An_Integer_Number_Declaration =>
                   Process_Integer_Number_Declaration (Element);
@@ -120,43 +116,16 @@ package body Scanner_Extractor is
                Number :=
                  Integer'Wide_Value (Asis.Expressions.Value_Image (Choice));
 
-            when Asis.A_Function_Call =>
-               declare
-                  Parameters_1 : constant Asis.Element_List :=
-                    Asis.Expressions.Function_Call_Parameters (Choice);
-                  Parameters_2 : constant Asis.Element_List :=
-                    Asis.Expressions.Function_Call_Parameters
-                     (Asis.Expressions.Actual_Parameter (Parameters_1 (1)));
-                  Parameter_2  : constant Wide_String :=
-                    To_Upper
-                     (Asis.Expressions.Name_Image
-                       (Asis.Expressions.Actual_Parameter (Parameters_2 (2))));
-
-               begin
-                  Number := YY_End_Of_Buffer;
-
-                  for J in 1 .. Natural (State_Constants.Length) loop
-                     if State_Constants.Element (J).Name = Parameter_2 then
-                        Number :=
-                          Number + State_Constants.Element (J).Value + 1;
-                     end if;
-                  end loop;
-               end;
-
             when others =>
+               raise Program_Error;
                null;
          end case;
 
-         --  Skip jam state
-
-         if Number /= YY_End_Of_Buffer - 1 then
-            if Natural (Choices.Length) < Number then
-               Choices.Set_Length (Ada.Containers.Count_Type (Number));
-            end if;
-
-            Choices.Replace_Element
-             (Number, (False, Number, Line, File, Text));
+         if Natural (Choices.Length) < Number then
+            Choices.Set_Length (Ada.Containers.Count_Type (Number));
          end if;
+
+         Choices.Replace_Element (Number, (False, Number, Line, File, Text));
       end Process_Choice;
 
       Expression : constant Asis.Element :=
@@ -165,8 +134,10 @@ package body Scanner_Extractor is
         Asis.Statements.Statement_Paths (Element);
 
    begin
-      if Asis.Elements.Expression_Kind (Expression) = Asis.An_Identifier
-        and then To_Upper (Asis.Expressions.Name_Image (Expression)) = "YY_ACT"
+      if Asis.Elements.Expression_Kind (Expression) = Asis.A_Selected_Component
+        and then To_Upper
+                  (Asis.Expressions.Name_Image
+                    (Asis.Expressions.Selector (Expression))) = "RULE_ID"
       then
          for J in Paths'Range loop
             declare
@@ -237,172 +208,164 @@ package body Scanner_Extractor is
    -- Process_Constant_Declaration --
    ----------------------------------
 
-   procedure Process_Constant_Declaration
-    (Element : Asis.Element;
-     State   : in out State_Information)
-   is
-      Names : Asis.Element_List := Asis.Declarations.Names (Element);
+   procedure Process_Constant_Declaration (Element : Asis.Element) is
+
+      procedure Process_Array_Of_Pair
+       (Expression : Asis.Element;
+        Values     : out Pair_Vectors.Vector);
 
       procedure Process_Array
-       (Declaration : Asis.Element;
-        Expression  : Asis.Element;
+       (Expression  : Asis.Element;
         Values      : out Integer_Vectors.Vector);
 
-      procedure Process_Plane
+      ---------------------------
+      -- Process_Array_Of_Pair --
+      ---------------------------
+
+      procedure Process_Array_Of_Pair
        (Expression : Asis.Element;
-        Values     : out Integer_Vectors.Vector);
+        Values     : out Pair_Vectors.Vector)
+      is
+         Components : constant Asis.Element_List :=
+           Asis.Expressions.Array_Component_Associations (Expression);
+
+      begin
+         for J in Components'Range loop
+            declare
+               Pair_Components : constant Asis.Element_List :=
+                 Asis.Expressions.Record_Component_Associations
+                  (Asis.Expressions.Component_Expression (Components (J)));
+               Component_1     : constant Asis.Element :=
+                 Asis.Expressions.Component_Expression (Pair_Components (1));
+               Component_2     : constant Asis.Element :=
+                 Asis.Expressions.Component_Expression (Pair_Components (2));
+               Value           : Pair;
+
+            begin
+               case Asis.Elements.Expression_Kind (Component_1) is
+                  when Asis.An_Integer_Literal =>
+                     Value.First :=
+                       Integer'Wide_Value
+                        (Asis.Expressions.Value_Image (Component_1));
+
+                  when Asis.A_Function_Call =>
+                     declare
+                        Parameters : constant Asis.Element_List :=
+                          Asis.Expressions.Function_Call_Parameters (Component_1);
+                        Parameter  : constant Asis.Element :=
+                          Asis.Expressions.Actual_Parameter (Parameters (1));
+
+                     begin
+                        Value.First :=
+                          -Integer'Wide_Value
+                            (Asis.Expressions.Value_Image (Parameter));
+                     end;
+
+                  when others =>
+                     null;
+               end case;
+
+               case Asis.Elements.Expression_Kind (Component_2) is
+                  when Asis.An_Integer_Literal =>
+                     Value.Second :=
+                       Integer'Wide_Value
+                        (Asis.Expressions.Value_Image (Component_2));
+
+                  when Asis.A_Function_Call =>
+                     declare
+                        Parameters : constant Asis.Element_List :=
+                          Asis.Expressions.Function_Call_Parameters (Component_2);
+                        Parameter  : constant Asis.Element :=
+                          Asis.Expressions.Actual_Parameter (Parameters (1));
+
+                     begin
+                        Value.Second :=
+                          -Integer'Wide_Value
+                            (Asis.Expressions.Value_Image (Parameter));
+                     end;
+
+                  when others =>
+                     null;
+               end case;
+
+               Values.Append (Value);
+            end;
+         end loop;
+      end Process_Array_Of_Pair;
 
       -------------------
       -- Process_Array --
       -------------------
 
       procedure Process_Array
-       (Declaration : Asis.Element;
-        Expression  : Asis.Element;
+       (Expression  : Asis.Element;
         Values      : out Integer_Vectors.Vector)
       is
-         Bounds     : constant Asis.Element_List :=
-           Asis.Definitions.Discrete_Subtype_Definitions (Declaration);
-         Upper      : constant Natural :=
-           Natural'Wide_Value
-            (Asis.Expressions.Value_Image
-              (Asis.Definitions.Upper_Bound (Bounds (1))));
          Components : constant Asis.Element_List :=
            Asis.Expressions.Array_Component_Associations (Expression);
 
       begin
-         Values.Set_Length (Ada.Containers.Count_Type (Upper + 1));
-
          for J in Components'Range loop
-            Values.Replace_Element
-             (J - 1,
-              Natural'Wide_Value
-               (Asis.Expressions.Value_Image
-                 (Asis.Expressions.Component_Expression (Components (J)))));
+            declare
+               Expression : constant Asis.Element :=
+                 Asis.Expressions.Component_Expression (Components (J));
+
+            begin
+               case Asis.Elements.Expression_Kind (Expression) is
+                  when Asis.An_Integer_Literal =>
+                     Values.Append
+                      (Integer'Wide_Value
+                        (Asis.Expressions.Value_Image (Expression)));
+
+                  when Asis.A_Function_Call =>
+                     declare
+                        Parameters : constant Asis.Element_List :=
+                          Asis.Expressions.Function_Call_Parameters
+                           (Expression);
+                        Parameter  : constant Asis.Element :=
+                          Asis.Expressions.Actual_Parameter (Parameters (1));
+
+                     begin
+                        Values.Append
+                         (-Integer'Wide_Value
+                            (Asis.Expressions.Value_Image (Parameter)));
+                     end;
+
+                  when others =>
+                     null;
+               end case;
+            end;
          end loop;
       end Process_Array;
 
-      -------------------
-      -- Process_Plane --
-      -------------------
-
-      procedure Process_Plane
-       (Expression : Asis.Element;
-        Values     : out Integer_Vectors.Vector)
-      is
-         Components : constant Asis.Element_List :=
-           Asis.Expressions.Array_Component_Associations (Expression);
-
-      begin
-         Values.Set_Length (256);
-
-         for J in Components'Range loop
-            Values.Replace_Element
-             (J - 1,
-              Natural'Wide_Value
-               (Asis.Expressions.Value_Image
-                 (Asis.Expressions.Component_Expression (Components (J)))));
-         end loop;
-      end Process_Plane;
+      Names : constant Asis.Element_List := Asis.Declarations.Names (Element);
 
    begin
       for J in Names'Range loop
          declare
             Image       : constant Wide_String  :=
               To_Upper (Asis.Declarations.Defining_Name_Image (Names (J)));
-            Declaration : constant Asis.Element :=
-              Asis.Declarations.Object_Declaration_View (Element);
             Expression  : constant Asis.Element :=
               Asis.Declarations.Initialization_Expression (Element);
 
          begin
-            if Image = "INITIAL" then
-               State.States := True;
+            if Image = "GOTO_MATRIX" then
+               Process_Array_Of_Pair (Expression, YY_Goto_Matrix);
 
-               State_Constants.Append
-                ((Ada.Strings.Wide_Unbounded.To_Unbounded_Wide_String (Image),
-                  Integer'Wide_Value
-                   (Asis.Expressions.Value_Image (Expression))));
+            elsif Image = "GOTO_OFFSET" then
+               Process_Array (Expression, YY_Goto_Offset);
 
-            elsif Image = "YY_ACCEPT" then
-               State.States := False;
-               Process_Array (Declaration, Expression, YY_Accept);
+            elsif Image = "RULE_LENGTH" then
+               Process_Array (Expression, YY_Rule_Length);
 
-            elsif Image = "YY_META" then
-               Process_Array (Declaration, Expression, YY_Meta);
+            elsif Image = "GET_LHS_RULE" then
+               Process_Array (Expression, YY_Get_LHS_Rule);
 
-            elsif Image = "YY_BASE" then
-               Process_Array (Declaration, Expression, YY_Base);
+            elsif Image = "SHIFT_REDUCE_MATRIX" then
+               Process_Array_Of_Pair (Expression, YY_Shift_Reduce_Matrix);
 
-            elsif Image = "YY_DEF" then
-               Process_Array (Declaration, Expression, YY_Def);
-
-            elsif Image = "YY_NXT" then
-               Process_Array (Declaration, Expression, YY_Nxt);
-
-            elsif Image = "YY_CHK" then
-               Process_Array (Declaration, Expression, YY_Chk);
-
-            elsif Image = "YY_EC_BASE" then
-               declare
-                  Components : constant Asis.Element_List :=
-                    Asis.Expressions.Array_Component_Associations (Expression);
-
-               begin
-                  for J in Components'Range loop
-                     declare
-                        Choices : constant Asis.Element_List :=
-                          Asis.Expressions.Array_Component_Choices
-                           (Components (J));
-                        Image   : constant Wide_String :=
-                          Asis.Expressions.Name_Image
-                           (Asis.Expressions.Prefix
-                             (Asis.Expressions.Component_Expression
-                               (Components (J))));
-                        Ref     : Natural :=
-                          Natural'Wide_Value (Image (7 .. Image'Last));
-
-                     begin
-                        for J in Choices'Range loop
-                           case Asis.Elements.Expression_Kind (Choices (J)) is
-                              when Asis.An_Integer_Literal =>
-                                 YY_EC_Base.Append
-                                  ((Natural'Wide_Value
-                                     (Asis.Expressions.Value_Image
-                                       (Choices (J))),
-                                    Ref));
-
-                              when others =>
-                                 null;
-                           end case;
-
-                           case Asis.Elements.Definition_Kind (Choices (J)) is
-                              when Asis.An_Others_Choice =>
-                                 YY_EC_Base_Others := Ref;
-
-                              when others =>
-                                 null;
-                           end case;
-                        end loop;
-                     end;
-                  end loop;
-               end;
-
-            elsif Image'Length > 6 and then Image (1 .. 6) = "YY_EC_" then
-               declare
-                  Data : Plane_Information;
-
-               begin
-                  Data.Number := Natural'Wide_Value (Image (7 .. Image'Last));
-                  Process_Plane (Expression, Data.Values);
-                  YY_EC_Planes.Append (Data);
-               end;
-
-            elsif State.States then
-               State_Constants.Append
-                ((Ada.Strings.Wide_Unbounded.To_Unbounded_Wide_String (Image),
-                  Integer'Wide_Value
-                   (Asis.Expressions.Value_Image (Expression))));
+            elsif Image = "SHIFT_REDUCE_OFFSET" then
+               Process_Array (Expression, YY_Shift_Reduce_Offset);
             end if;
          end;
       end loop;
@@ -424,20 +387,34 @@ package body Scanner_Extractor is
               Asis.Declarations.Initialization_Expression (Element);
 
          begin
-            if Image = "YY_END_OF_BUFFER" then
-               YY_End_Of_Buffer :=
+            if Image = "DEFAULT" then
+               YY_Default :=
+                 -Integer'Wide_Value
+                   (Asis.Expressions.Value_Image
+                     (Asis.Expressions.Actual_Parameter
+                       (Asis.Expressions.Function_Call_Parameters
+                         (Expression) (1))));
+
+            elsif Image = "FIRST_SHIFT_ENTRY" then
+               YY_First_Shift_Entry :=
                  Integer'Wide_Value
                   (Asis.Expressions.Value_Image (Expression));
 
-            elsif Image = "YY_JAMSTATE" then
-               YY_Jam_State :=
-                 Integer'Wide_Value
-                  (Asis.Expressions.Value_Image (Expression));
+            elsif Image = "ACCEPT_CODE" then
+               YY_Accept_Code :=
+                 -Integer'Wide_Value
+                   (Asis.Expressions.Value_Image
+                     (Asis.Expressions.Actual_Parameter
+                       (Asis.Expressions.Function_Call_Parameters
+                         (Expression) (1))));
 
-            elsif Image = "YY_FIRST_TEMPLATE" then
-               YY_First_Template :=
-                 Integer'Wide_Value
-                  (Asis.Expressions.Value_Image (Expression));
+            elsif Image = "ERROR_CODE" then
+               YY_Error_Code :=
+                 -Integer'Wide_Value
+                   (Asis.Expressions.Value_Image
+                     (Asis.Expressions.Actual_Parameter
+                       (Asis.Expressions.Function_Call_Parameters
+                         (Expression) (1))));
             end if;
          end;
       end loop;
@@ -455,4 +432,4 @@ package body Scanner_Extractor is
              (Ada.Characters.Conversions.To_String (Item)));
    end To_Upper;
 
-end Scanner_Extractor;
+end Parser_Extractor;

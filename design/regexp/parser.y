@@ -242,44 +242,19 @@ character_class_content : character_class_content Token_Code_Point Token_Charact
   ;
 
 %%
-with League.Strings;
 ##
-   procedure Parse (Expression : League.Strings.Universal_String);
+   procedure YYParse;
 ##
 with Ada.Wide_Wide_Text_IO; 
-with League.Strings.Internals;
 with Parser_Actions;
-with Matreshka.Internals.Regexps.Compiler.Scanner;
 with Syntax;
 ##
    use Ada.Wide_Wide_Text_IO;
    use Parser_Actions;
-   use Matreshka.Internals.Regexps.Compiler.Scanner;
    use Syntax;
 
-   procedure Parse (Expression : League.Strings.Universal_String) is
+   function YYLex return Token is separate;
 
-      procedure YYError (S : Wide_Wide_String);
-      --  Report error.
-
-      -------------
-      -- YYError --
-      -------------
-
-      procedure YYError (S : Wide_Wide_String) is
-      begin
-         if YY_Error.Error = No_Error then
-            YY_Error := (Expression_Syntax_Error, 0);
-         end if;
-      end YYError;
+   procedure YYError (S : Wide_Wide_String) is null;
 
 ##
-   begin
-      Matreshka.Internals.Regexps.Compiler.Data :=
-        League.Strings.Internals.Get_Shared (Expression);
-      YYParse;
-
-   exception
-      when Syntax_Error =>
-         raise Syntax_Error with YY_Errors'Image (YY_Error.Error);
-   end Parse;

@@ -17,13 +17,6 @@ package body Parser is
    -------------
 
    procedure YYParse is
-      --  Encryption constants
-
-      YY_Default           : constant := -1;
-      YY_First_Shift_Entry : constant :=  0;
-      YY_Error_Code        : constant := -3000;
-      YY_Accept_Code       : constant := -3001;
-
       -- The size of the value and state stacks
 
       YY_Stack_Size : constant Natural := 300;
@@ -52,10 +45,10 @@ package body Parser is
       YY.Look_Ahead := True;
 
       loop
-         YY_Index := Shift_Reduce_Offset (YY.State_Stack (YY.TOS));
+         YY_Index := YY_Shift_Reduce_Offset (YY.State_Stack (YY.TOS));
 
-         if Shift_Reduce_Matrix (YY_Index).T = YY_Default then
-            YY_Action := Shift_Reduce_Matrix (YY_Index).Act;
+         if YY_Shift_Reduce_Matrix (YY_Index).T = YY_Default then
+            YY_Action := YY_Shift_Reduce_Matrix (YY_Index).Act;
 
          else
             if YY.Look_Ahead then
@@ -63,16 +56,16 @@ package body Parser is
                YY.Look_Ahead   := False;
             end if;
 
-            YY_Index := Shift_Reduce_Offset (YY.State_Stack (YY.TOS));
+            YY_Index := YY_Shift_Reduce_Offset (YY.State_Stack (YY.TOS));
 
-            while Shift_Reduce_Matrix (YY_Index).T
+            while YY_Shift_Reduce_Matrix (YY_Index).T
                     /= Token'Pos (YY.Input_Symbol)
-              and then Shift_Reduce_Matrix (YY_Index).T /= YY_Default
+              and then YY_Shift_Reduce_Matrix (YY_Index).T /= YY_Default
             loop
                YY_Index := YY_Index + 1;
             end loop;
 
-            YY_Action := Shift_Reduce_Matrix (YY_Index).Act;
+            YY_Action := YY_Shift_Reduce_Matrix (YY_Index).Act;
          end if;
 
          if YY_Action >= YY_First_Shift_Entry then  --  SHIFT
@@ -110,17 +103,17 @@ package body Parser is
 
             --  Pop RHS states and goto next state
 
-            YY.TOS := YY.TOS - Rule_Length (YY.Rule_Id) + 1;
+            YY.TOS := YY.TOS - YY_Rule_Length (YY.Rule_Id) + 1;
 
-            YY_Index := Goto_Offset (YY.State_Stack (YY.TOS - 1));
+            YY_Index := YY_Goto_Offset (YY.State_Stack (YY.TOS - 1));
 
-            while Goto_Matrix (YY_Index).Nonterm
-                    /= Get_LHS_Rule (YY.Rule_Id)
+            while YY_Goto_Matrix (YY_Index).Nonterm
+                    /= YY_Get_LHS_Rule (YY.Rule_Id)
             loop
                YY_Index := YY_Index + 1;
             end loop;
 
-            YY.State_Stack (YY.TOS) := Goto_Matrix (YY_Index).Newstate;
+            YY.State_Stack (YY.TOS) := YY_Goto_Matrix (YY_Index).Newstate;
             YY.Value_Stack (YY.TOS) := YYVal;
          end if;
       end loop;

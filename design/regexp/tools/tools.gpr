@@ -2,7 +2,7 @@ with "asis";
 
 project Tools is
 
-   for Main use ("scanner_transformer.adb");
+   for Main use ("scanner_transformer.adb", "parser_transformer.adb");
    for Object_Dir use "../.obj";
 
    package Compiler is

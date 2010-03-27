@@ -13,7 +13,9 @@ gen: .gen
 	(cd .gen && $(AFLEX) -v ../scanner.l)
 	(cd .gen && $(AYACC) ../parser.y off off)
 	(cd .gen && gcc -c -gnatct -gnat05 -I../../../source/league scanner.adb)
+	(cd .gen && gcc -c -gnatct -gnat05 -I. -I.. -I../../../source/league parser.adb)
 	(cd .gen && ../.obj/scanner_transformer)
+	(cd .gen && ../.obj/parser_transformer)
 
 .gen:
 	mkdir .gen
