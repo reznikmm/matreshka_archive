@@ -48,7 +48,7 @@ package body Goto_File is
         Write_Line(""); 
 
         -- Write the rule length array --
-        Write( "   Rule_Length : array (Rule range " & Rule'Image(First_Rule) &
+        Write( "   Rule_Length : constant array (Rule range " & Rule'Image(First_Rule) &
               " .. " & Rule'Image(Last_Rule) & ") of Natural := (");
 
         for R in First_Rule..Last_Rule loop
@@ -63,7 +63,7 @@ package body Goto_File is
         end loop;
 
         -- Write the lefth hand side array 
-        Write("   Get_LHS_Rule: array (Rule range " &
+        Write("   Get_LHS_Rule : constant array (Rule range " &
               Rule'Image(First_Rule) & " .. " &
 	    Rule'Image(Last_Rule) & ") of Nonterminal := (");
 

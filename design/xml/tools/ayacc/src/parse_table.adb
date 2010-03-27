@@ -320,7 +320,7 @@ package body Parse_Table is
     begin
 	Goto_File.Write_Line(");");
 	Goto_File.Write_Line("--  The offset vector");
-	Goto_File.Write("GOTO_OFFSET : array (0..");
+	Goto_File.Write("GOTO_OFFSET : constant array (0..");
 	Goto_File.Write(Parse_State'Image(Goto_Offset.all'Last) & ')');
 	Goto_File.Write_Line(" of Integer :=");
 	Goto_File.Write("(");
@@ -335,7 +335,7 @@ package body Parse_Table is
 
 	Shift_Reduce_File.Write_Line(");");
 	Shift_Reduce_File.Write_Line("--  The offset vector");
-	Shift_Reduce_File.Write("SHIFT_REDUCE_OFFSET : array (0..");
+	Shift_Reduce_File.Write("SHIFT_REDUCE_OFFSET : constant array (0..");
 	Shift_Reduce_File.Write
 	     (Parse_State'Image(Action_Offset.all'Last) & ')');
 
