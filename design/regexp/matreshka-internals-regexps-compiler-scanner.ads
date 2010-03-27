@@ -32,7 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.Regexps.Compiler.Scanner is
+private package Matreshka.Internals.Regexps.Compiler.Scanner is
 
    function YYLex return Parser_Tokens.Token;
 
