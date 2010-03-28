@@ -31,11 +31,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Unicode;
 
 package Matreshka.Internals.Regexps.Engine is
 
    type Instruction_Kinds is
-     (None, Jump, Split, Any_Code_Point, Code_Point, Match, Save);
+     (None, Jump, Split, Any_Code_Point, Code_Point, Code_Range, Match, Save);
 
    type Instruction (Kind : Instruction_Kinds := None) is record
       case Kind is
@@ -65,7 +66,11 @@ package Matreshka.Internals.Regexps.Engine is
                   Another : Natural;
 
                when Code_Point =>
-                  Code : Wide_Wide_Character;
+                  Code : Matreshka.Internals.Unicode.Code_Point;
+
+               when Code_Range =>
+                  Low  : Matreshka.Internals.Unicode.Code_Point;
+                  High : Matreshka.Internals.Unicode.Code_Point;
 
                when Save =>
                   Slot  : Natural;

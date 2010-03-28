@@ -94,7 +94,20 @@ package body Matreshka.Internals.Regexps.Engine is
             when Code_Point =>
                Put
                  ("char "
-                    & Wide_Wide_Character'Wide_Wide_Image (Program (J).Code)
+                    & Wide_Wide_Character'Wide_Wide_Image
+                       (Wide_Wide_Character'Val (Program (J).Code))
+                    & " ["
+                    & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
+                    & "]");
+
+            when Code_Range =>
+               Put
+                 ("range "
+                    & Wide_Wide_Character'Wide_Wide_Image
+                       (Wide_Wide_Character'Val (Program (J).Low))
+                    & " .. "
+                    & Wide_Wide_Character'Wide_Wide_Image
+                       (Wide_Wide_Character'Val (Program (J).High))
                     & " ["
                     & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
                     & "]");
@@ -171,7 +184,17 @@ package body Matreshka.Internals.Regexps.Engine is
                   Unchecked_Next (String.Value, SP, C);
                   SI := SI + 1;
 
-                  exit when C /= Wide_Wide_Character'Pos (Program (PC).Code);
+                  exit when C /= Program (PC).Code;
+
+                  PC := Program (PC).Next;
+
+               when Code_Range =>
+                  exit when SP = String.Unused;
+
+                  Unchecked_Next (String.Value, SP, C);
+                  SI := SI + 1;
+
+                  exit when C not in Program (PC).Low .. Program (PC).High;
 
                   PC := Program (PC).Next;
 

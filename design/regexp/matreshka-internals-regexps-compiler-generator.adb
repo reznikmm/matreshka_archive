@@ -124,9 +124,28 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                Instruction := Last;
                Tails.Clear;
 
-               Program (Instruction) := (Code_Point, 0, Pattern.AST (Expression).Code);
+               Program (Instruction) :=
+                (Code_Point,
+                 0,
+                 Wide_Wide_Character'Pos (Pattern.AST (Expression).Code));
                Tails.Append (Instruction);
                Compile_Next;
+
+            when N_Code_Point_Range =>
+               Last := Last + 1;
+               Instruction := Last;
+               Tails.Clear;
+
+               Program (Instruction) :=
+                (Code_Range,
+                 0,
+                 Wide_Wide_Character'Pos (Pattern.AST (Expression).Low),
+                 Wide_Wide_Character'Pos (Pattern.AST (Expression).High));
+               Tails.Append (Instruction);
+               Compile_Next;
+
+            when N_Character_Class =>
+               Compile (Pattern.AST (Expression).Members, Instruction, Tails);
 
             when N_Multiplicity =>
                if Pattern.AST (Expression).Lower = 0 then
