@@ -101,6 +101,7 @@ package Matreshka.Internals.Strings is
    end record;
 
    type Shared_String_Access is access all Shared_String;
+   pragma Atomic (Shared_String_Access);
 
    Shared_Empty : aliased Shared_String :=
      (Size   => Standard'Maximum_Alignment / 2 - 1,
