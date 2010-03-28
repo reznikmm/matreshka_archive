@@ -284,7 +284,11 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
          elsif YY_Action = YY_Error_Code then  --  ERROR
             Dereference (Pattern);
 
-            raise Constraint_Error with "Syntax error";
+            raise Constraint_Error
+              with "Syntax error: "
+                & YY_Errors'Image (YY_Error.Error)
+                & " at"
+                & Integer'Image (YY_Error.Index);
 
          elsif YY_Action = YY_Accept_Code then
             --  Grammar is accepted

@@ -102,6 +102,7 @@ package Matreshka.Internals.Regexps.Compiler is
    Data                : Matreshka.Internals.Strings.Shared_String_Access;
    YY_Start_State      : Integer := 1;
    YY_Current_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+   YY_Current_Index    : Positive := 1;
    YY_Error            : YY_Error_Information := (No_Error, 0);
    YYLVal              : YYSType; 
    YYVal               : YYSType; 

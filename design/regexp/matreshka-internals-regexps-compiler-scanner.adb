@@ -74,6 +74,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
    function YYLex return Token is
       YY_Action                  : Integer;
       YY_Back_Position           : Utf16_String_Index;
+      YY_Back_Index              : Positive;
       YY_Next_Position           : Utf16_String_Index;
       --  Position of the next character in the source string.
       YY_Current_State           : Integer;
@@ -110,6 +111,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
    begin
       loop  --  Loops until end-of-string is reached
          YY_Back_Position := YY_Current_Position;
+         YY_Back_Index    := YY_Current_Index;
          YY_Current_State := YY_Start_State;
 
          if YY_Back_Position = Data.Unused then
@@ -157,6 +159,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
 
                YY_Current_State := YY_Nxt (YY_Base (YY_Current_State) + YY_C);
                YY_Current_Position := YY_Next_Position;
+               YY_Current_Index := YY_Current_Index + 1;
 
                exit when YY_Current_State = YY_Jam_State;
             end loop;
@@ -292,7 +295,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 25 =>
                --  Unexpected character in multiplicidy declaration
             
-               YYError (Unexpected_Character_in_Multiplicity_Specifier, 0);
+               YYError (Unexpected_Character_in_Multiplicity_Specifier, YY_Back_Index);
             
                return Error;
 
@@ -389,7 +392,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 40 =>
                --  Special outside of sequence
             
-               YYError (Unescaped_Pattern_Syntax_Character, 0);
+               YYError (Unescaped_Pattern_Syntax_Character, YY_Back_Index);
             
                return Error;
 

@@ -195,7 +195,7 @@
 <MULTIPLICITY>[^\p{Pattern_White_Space}] {
    --  Unexpected character in multiplicidy declaration
 
-   YYError (Unexpected_Character_in_Multiplicity_Specifier, 0);
+   YYError (Unexpected_Character_in_Multiplicity_Specifier, YY_Back_Index);
 
    return Error;
 }
@@ -314,7 +314,7 @@
 <INITIAL,CHARACTER_CLASS>\p{Pattern_Syntax} {
    --  Special outside of sequence
 
-   YYError (Unescaped_Pattern_Syntax_Character, 0);
+   YYError (Unescaped_Pattern_Syntax_Character, YY_Back_Index);
 
    return Error;
 }
@@ -341,3 +341,5 @@ with Matreshka.Internals.Regexps.Compiler;
    procedure Enter_Start_Condition (Start : Integer) is null;
 
    procedure YYError (Error : YY_Errors; Index : Natural) is null;
+
+   YY_Back_Index : Natural;
