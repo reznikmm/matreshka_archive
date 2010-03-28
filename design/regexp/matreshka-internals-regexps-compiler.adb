@@ -168,9 +168,7 @@ package body Matreshka.Internals.Regexps.Compiler is
    -- YYError --
    -------------
 
-   procedure YYError (Error : Parser_Tokens.YY_Errors; Index : Natural) is
-      use Parser_Tokens;
-
+   procedure YYError (Error : YY_Errors; Index : Natural) is
    begin
       if YY_Error.Error = No_Error then
          YY_Error := (Error, Index);

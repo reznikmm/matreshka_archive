@@ -332,11 +332,13 @@ with Parser_Tokens;
 ##
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Wide_Wide_Text_IO;
+with Matreshka.Internals.Regexps.Compiler;
 ##
    use Ada.Characters.Wide_Wide_Latin_1;
    use Ada.Wide_Wide_Text_IO;
+   use Matreshka.Internals.Regexps.Compiler;
    use Parser_Tokens;
 
    procedure Enter_Start_Condition (Start : Integer) is null;
 
-   procedure YYError (Error : Parser_Tokens.YY_Errors; Index : Natural) is null;
+   procedure YYError (Error : YY_Errors; Index : Natural) is null;

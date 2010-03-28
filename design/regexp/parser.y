@@ -72,22 +72,6 @@
             Node : Positive;
       end case;
    end record;
-
-   type YY_Errors is
-    (No_Error,
-     Unexpected_End_Of_Literal,
-     Unexpected_End_Of_Character_Class,
-     Unexpected_Character_in_Multiplicity_Specifier,
-     Unexpected_End_Of_Multiplicity_Specifier,
-     Unescaped_Pattern_Syntax_Character,
-     Expression_Syntax_Error);
-
-   type YY_Error_Information is record
-      Error : YY_Errors;
-      Index : Natural;
-   end record;
-
-   YY_Error : YY_Error_Information := (No_Error, 0);
 }
 
 %%
