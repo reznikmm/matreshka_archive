@@ -13,7 +13,7 @@ matreshka-internals-regexps-compiler-scanner.adb: matreshka-internals-regexps-co
 	(cd .gen && gcc -c -gnatct -gnat05 -I.. -I../../../source/league scanner.adb)
 	(cd .gen && ../.obj/scanner_transformer)
 
-matreshka-internals-regexps-compiler-parser.adb: matreshka-internals-regexps-compiler-parser.adb.in parser.y
+matreshka-internals-regexps-compiler-parser.adb: matreshka-internals-regexps-compiler-parser.adb.in matreshka-internals-regexps-compiler.ads.in parser.y
 	make gen
 	(cd .gen && gcc -c -gnatct -gnat05 -I.. -I../../../source/league parser.adb)
 	(cd .gen && ../.obj/parser_transformer)

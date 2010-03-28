@@ -38,15 +38,6 @@ package Matreshka.Internals.Regexps.Compiler is
 
 --   pragma Preelaborate;
 
-   --  Here is global state of the compiler. At the first stage of
-   --  refactoring all global state variables must be moved to here.
-   --  Later, they will be wrapped by record type to allow to have
-   --  several compiler in the different threads at the same time.
-
-   Data                : Matreshka.Internals.Strings.Shared_String_Access;
-   YY_Start_State      : Integer := 1;
-   YY_Current_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
-
    type YY_Errors is
     (No_Error,
      Unexpected_End_Of_Literal,
@@ -60,11 +51,6 @@ package Matreshka.Internals.Regexps.Compiler is
       Error : YY_Errors;
       Index : Natural;
    end record;
-
-   YY_Error : YY_Error_Information := (No_Error, 0);
-
-   procedure YYError (Error : YY_Errors; Index : Natural);
-   --  Report error.
 
    type Kinds is (None, Match_Code_Point, Number, AST_Node);
 
@@ -83,9 +69,6 @@ package Matreshka.Internals.Regexps.Compiler is
             Node : Positive;
       end case;
    end record;
-
-   YYLVal : YYSType; 
-   YYVal  : YYSType; 
 
    type Token is
     (End_Of_Input,
@@ -170,9 +153,23 @@ package Matreshka.Internals.Regexps.Compiler is
       end case;
    end record;
 
-   AST       : array (Positive range 1 .. 100) of Node;
-   AST_Start : Positive;
-   AST_Last  : Natural := 0;
+   --  Here is global state of the compiler. At the first stage of
+   --  refactoring all global state variables must be moved to here.
+   --  Later, they will be wrapped by record type to allow to have
+   --  several compiler in the different threads at the same time.
+
+   Data                : Matreshka.Internals.Strings.Shared_String_Access;
+   YY_Start_State      : Integer := 1;
+   YY_Current_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+   YY_Error            : YY_Error_Information := (No_Error, 0);
+   YYLVal              : YYSType; 
+   YYVal               : YYSType; 
+   AST                 : array (Positive range 1 .. 100) of Node;
+   AST_Start           : Positive;
+   AST_Last            : Natural := 0;
+
+   procedure YYError (Error : YY_Errors; Index : Natural);
+   --  Report error.
 
    procedure Attach (Head : Positive; Node : Positive);
    --  Attach Node to the list of nodes, started by Head.
