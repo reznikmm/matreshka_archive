@@ -50,7 +50,10 @@
 private with Ada.Finalization;
 private with Ada.Streams;
 
-private with Matreshka.Internals.Strings;
+with Matreshka.Internals.Strings;
+--  private with Matreshka.Internals.Strings;
+--  XXX GNAT GPL 2009: compiler unable to setup proper visibility of ordinary
+--  with clause in child package.
 private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
 
