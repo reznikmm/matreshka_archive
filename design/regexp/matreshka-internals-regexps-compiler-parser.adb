@@ -363,58 +363,68 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-5).Node, yy.value_stack (yy.tos-3).Value, yy.value_stack (yy.tos-1).Value, False));
 
             when 13 =>
+               --  Multiplicity zero .. upper, greedy
+            
+               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-4).Node, 0, yy.value_stack (yy.tos-1).Value, True));
+
+            when 14 =>
+               --  Multiplicity zero .. upper, lazy
+            
+               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-4).Node, 0, yy.value_stack (yy.tos-1).Value, False));
+
+            when 15 =>
                --  Multiplicity lower .. infinity, greedy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-4).Node, yy.value_stack (yy.tos-2).Value, Integer'Last, True));
 
-            when 14 =>
+            when 16 =>
                --  Multiplicity lower .. infinity, lazy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-4).Node, yy.value_stack (yy.tos-2).Value, Integer'Last, False));
 
-            when 15 =>
+            when 17 =>
                --  Multiplicity, greedy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Value, yy.value_stack (yy.tos-1).Value, True));
 
-            when 16 =>
+            when 18 =>
                --  Multiplicity, lazy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Value, yy.value_stack (yy.tos-1).Value, False));
 
-            when 17 =>
+            when 19 =>
                yyval := (AST_Node, Process_Subexpression (Pattern, yy.value_stack (yy.tos-1).Node));
 
-            when 18 =>
+            when 20 =>
                --  Any code point
             
                yyval := (AST_Node, Process_Any_Code_Point (Pattern));
 
-            when 19 =>
+            when 21 =>
                --  Code point
             
                yyval := (AST_Node, Process_Code_Point (Pattern, yy.value_stack (yy.tos).Code));
 
-            when 20 =>
+            when 22 =>
                yyval := yy.value_stack (yy.tos);
 
-            when 21 =>
+            when 23 =>
                yyval := yy.value_stack (yy.tos-1);
 
-            when 22 =>
+            when 24 =>
                yyval := (AST_Node, Process_Negate_Character_Class (Pattern, yy.value_stack (yy.tos-1).Node));
 
-            when 23 =>
+            when 25 =>
                --  Add range of code points to character class
             
                yyval := (AST_Node, Process_Character_Class_Range (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-2).Code, yy.value_stack (yy.tos).Code));
 
-            when 24 =>
+            when 26 =>
                --  Add code point to character class
             
                yyval := (AST_Node, Process_Character_Class_Code_Point (Pattern, yy.value_stack (yy.tos-1).Node, yy.value_stack (yy.tos).Code));
 
-            when 25 =>
+            when 27 =>
                --  Initialize new character class node
             
                yyval := (AST_Node, Process_New_Character_Class (Pattern));

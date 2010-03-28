@@ -149,6 +149,18 @@ singleton : singleton Token_Optional_Greedy
 
    $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, $5.Value, False));
 }
+  | singleton Token_Multiplicity_Begin Token_Multiplicity_Comma Token_Multiplicity_Number Token_Multiplicity_End_Greedy
+{
+   --  Multiplicity zero .. upper, greedy
+
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, 0, $4.Value, True));
+}
+  | singleton Token_Multiplicity_Begin Token_Multiplicity_Comma Token_Multiplicity_Number Token_Multiplicity_End_Lazy
+{
+   --  Multiplicity zero .. upper, lazy
+
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, 0, $4.Value, False));
+}
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_End_Greedy
 {
    --  Multiplicity lower .. infinity, greedy
