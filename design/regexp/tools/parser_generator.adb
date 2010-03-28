@@ -1,3 +1,29 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--         Localization, Internationalization, Globalization for Ada        --
+--                                                                          --
+--                              Tools Component                             --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2010 Vadim Godunko <vgodunko@gmail.com>                      --
+--                                                                          --
+-- Matreshka is free software;  you can  redistribute it  and/or modify  it --
+-- under terms of the  GNU General Public License as published  by the Free --
+-- Software  Foundation;  either version 2,  or (at your option)  any later --
+-- version.  Matreshka  is distributed in the hope that it will be  useful, --
+-- but   WITHOUT  ANY  WARRANTY;  without  even  the  implied  warranty  of --
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General --
+-- Public License for more details.  You should have received a copy of the --
+-- GNU General Public License distributed with Matreshka; see file COPYING. --
+-- If not, write  to  the  Free Software Foundation,  51  Franklin  Street, --
+-- Fifth Floor, Boston, MA 02110-1301, USA.                                 --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
 with Ada.Integer_Wide_Text_IO;
 with Ada.Strings.Wide_Unbounded.Wide_Text_IO;
 with Ada.Wide_Text_IO;
@@ -11,12 +37,16 @@ package body Parser_Generator is
    use Ada.Wide_Text_IO;
    use Parser_Extractor;
 
-   Parser_In_File_Name     : constant String :=
+   Parser_In_File_Name        : constant String :=
      "../matreshka-internals-regexps-compiler-parser.adb.in";
-   Parser_File_Name        : constant String :=
+   Parser_File_Name           : constant String :=
      "../matreshka-internals-regexps-compiler-parser.adb";
-   Parser_Tables_File_Name : constant String :=
+   Parser_Tables_File_Name    : constant String :=
      "../matreshka-internals-regexps-compiler-parser-tables.ads";
+   Parser_Tokens_In_File_Name : constant String :=
+     "../matreshka-internals-regexps-compiler.ads.in";
+   Parser_Tokens_File_Name    : constant String :=
+     "../matreshka-internals-regexps-compiler.ads";
 
    --------------------------
    -- Generate_Parser_Code --
@@ -203,5 +233,64 @@ package body Parser_Generator is
 
       Close (Output);
    end Generate_Parser_Tables;
+
+   ----------------------------
+   -- Generate_Parser_Tokens --
+   ----------------------------
+
+   procedure Generate_Parser_Tokens is
+      Input  : File_Type;
+      Output : File_Type;
+      Buffer : Wide_String (1 .. 1024);
+      Last   : Natural;
+
+   begin
+      Open (Input, In_File, Parser_Tokens_In_File_Name, "wcem=8");
+      Create (Output, Out_File, Parser_Tokens_File_Name, "wcem=8");
+
+      while not End_Of_File (Input) loop
+         Get_Line (Input, Buffer, Last);
+
+         if Buffer (1 .. Last) = "%%" then
+            Put_Line (Output, "   type Token is");
+
+            for J in 1 .. Natural (Tokens.Length) loop
+               if J = 1 then
+                  Put (Output, "    (");
+
+               else
+                  Put_Line (Output, ",");
+                  Put (Output, "     ");
+               end if;
+
+               Put (Output, Tokens.Element (J));
+--               declare
+--                  Element : constant Choice_Information := Choices.Element (J);
+--
+--               begin
+--                  if not Element.Is_Empty then
+--                     New_Line (Output);
+--                     Put (Output, "            when ");
+--                     Put (Output, Element.Choice, 0);
+--                     Put_Line (Output, " =>");
+--
+--                     for J in 1 .. Natural (Element.Text.Length) loop
+--                        Put (Output, "            ");
+--                        Put_Line (Output, Element.Text.Element (J));
+--                     end loop;
+--                  end if;
+--               end;
+            end loop;
+
+            Put_Line (Output, ");");
+
+         else
+            Put_Line (Output, Buffer (1 .. Last));
+         end if;
+      end loop;
+
+      Close (Output);
+      Close (Input);
+   end Generate_Parser_Tokens;
 
 end Parser_Generator;

@@ -81,18 +81,18 @@ re : re Token_Alternation series
    --  Alternation
 
    $$ := (AST_Node, Process_Alternation ($1.Node, $3.Node));
-   AST_Start := $$.Node;
+   Matreshka.Internals.Regexps.Compiler.AST_Start := $$.Node;
 }
   | series
 {
    $$ := $1;
-   AST_Start := $1.Node;
+   Matreshka.Internals.Regexps.Compiler.AST_Start := $1.Node;
 }
   ;
 
 series : series singleton
 {
-   Attach ($1.Node, $2.Node);
+   Matreshka.Internals.Regexps.Compiler.Attach ($1.Node, $2.Node);
    $$ := $1;
 }
   | singleton
@@ -233,9 +233,8 @@ with Ada.Wide_Wide_Text_IO;
 with Matreshka.Internals.Regexps.Compiler;
 ##
    use Ada.Wide_Wide_Text_IO;
-   use Matreshka.Internals.Regexps.Compiler;
 
-   function YYLex return Token is separate;
+   function YYLex return Parser_Tokens.Token is separate;
 
    procedure YYError (S : Wide_Wide_String) is null;
 

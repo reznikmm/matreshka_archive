@@ -326,9 +326,9 @@
 }
 
 %%
-with Parser_Tokens;
+with Matreshka.Internals.Regexps.Compiler;
 ##
-   function YYLex return Parser_Tokens.Token;
+   function YYLex return Matreshka.Internals.Regexps.Compiler.Token;
 ##
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Wide_Wide_Text_IO;
@@ -337,7 +337,6 @@ with Matreshka.Internals.Regexps.Compiler;
    use Ada.Characters.Wide_Wide_Latin_1;
    use Ada.Wide_Wide_Text_IO;
    use Matreshka.Internals.Regexps.Compiler;
-   use Parser_Tokens;
 
    procedure Enter_Start_Condition (Start : Integer) is null;
 

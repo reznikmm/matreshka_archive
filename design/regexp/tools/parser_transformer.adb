@@ -35,7 +35,9 @@ begin
 
    Parser_Unit := Asis.Compilation_Units.Library_Unit_Declaration ("Parser_Tokens", Transformer_Context);
    Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
+   Parser_Extractor.Extract (Parser_Body);
 
+   Parser_Generator.Generate_Parser_Tokens;
    Parser_Generator.Generate_Parser_Code;
    Parser_Generator.Generate_Parser_Tables;
 

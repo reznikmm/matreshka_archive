@@ -31,7 +31,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Parser_Tokens;
 with Matreshka.Internals.Regexps.Compiler.Parser.Tables;
 with Matreshka.Internals.Regexps.Compiler.Scanner;
 
@@ -39,7 +38,6 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
    use Matreshka.Internals.Regexps.Compiler.Parser.Tables;
    use Matreshka.Internals.Regexps.Compiler.Scanner;
-   use Parser_Tokens;
 
    function Process_Alternation
      (Alternative_1 : Positive;
@@ -263,7 +261,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
             YY.Look_Ahead := True;
 
          elsif YY_Action = YY_Error_Code then  --  ERROR
-            raise Syntax_Error;
+            raise Constraint_Error with "Syntax error";
 
          elsif YY_Action = YY_Accept_Code then
             --  Grammar is accepted
@@ -284,14 +282,14 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
                --  Alternation
             
                yyval := (AST_Node, Process_Alternation (yy.value_stack (yy.tos-2).Node, yy.value_stack (yy.tos).Node));
-               AST_Start := yyval.Node;
+               Matreshka.Internals.Regexps.Compiler.AST_Start := yyval.Node;
 
             when 2 =>
                yyval := yy.value_stack (yy.tos);
-               AST_Start := yy.value_stack (yy.tos).Node;
+               Matreshka.Internals.Regexps.Compiler.AST_Start := yy.value_stack (yy.tos).Node;
 
             when 3 =>
-               Attach (yy.value_stack (yy.tos-1).Node, yy.value_stack (yy.tos).Node);
+               Matreshka.Internals.Regexps.Compiler.Attach (yy.value_stack (yy.tos-1).Node, yy.value_stack (yy.tos).Node);
                yyval := yy.value_stack (yy.tos-1);
 
             when 4 =>

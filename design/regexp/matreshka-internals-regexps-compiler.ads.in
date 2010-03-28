@@ -87,29 +87,7 @@ package Matreshka.Internals.Regexps.Compiler is
    YYLVal : YYSType; 
    YYVal  : YYSType; 
 
-   type Token is
-    (End_Of_Input,
-     Error,
-     Token_Code_Point,
-     Token_Any_Code_Point,
-     Token_Alternation,
-     Token_Optional_Greedy,
-     Token_Optional_Lazy,
-     Token_Zero_Or_More_Greedy,
-     Token_Zero_Or_More_Lazy,
-     Token_One_Or_More_Greedy,
-     Token_One_Or_More_Lazy,
-     Token_Character_Class_Begin,
-     Token_Character_Class_End,
-     Token_Negate_Character_Class,
-     Token_Character_Class_Range,
-     Token_Multiplicity_Begin,
-     Token_Multiplicity_End_Greedy,
-     Token_Multiplicity_End_Lazy,
-     Token_Multiplicity_Comma,
-     Token_Multiplicity_Number,
-     Token_Subexpression_Begin,
-     Token_Subexpression_End);
+%%
 
    --  Abstract Syntax Tree and Utilities
 
