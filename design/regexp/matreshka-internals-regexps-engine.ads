@@ -89,6 +89,13 @@ package Matreshka.Internals.Regexps.Engine is
       Matched : out Boolean;
       Slices  : out Slice_Array);
 
+   function Execute
+     (Program : Instruction_Array;
+      String  : not null Matreshka.Internals.Strings.Shared_String_Access)
+      return not null Shared_Match_Access;
+--      Matched : out Boolean;
+--      Slices  : out Slice_Array);
+
    procedure Dump (Program : Instruction_Array);
 
 end Matreshka.Internals.Regexps.Engine;

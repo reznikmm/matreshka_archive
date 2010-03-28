@@ -31,9 +31,72 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Atomics.Counters;
+with Matreshka.Internals.Strings;
+with Matreshka.Internals.Utf16;
 
 package Matreshka.Internals.Regexps is
 
-   pragma Pure;
+   pragma Preelaborate;
+
+   type Shared_String_Array is
+     array (Natural range <>)
+       of aliased Matreshka.Internals.Strings.Shared_String_Access;
+   pragma Atomic_Components (Shared_String_Array);
+
+   type Slice is record
+      First_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
+      First_Index    : Positive;
+      Next_Position  : Matreshka.Internals.Utf16.Utf16_String_Index;
+      Next_Index     : Positive;
+   end record;
+   --  Slice represent slice in the source Shared_String. Next points to the
+   --  first character after slice.
+
+   type Slice_Array is array (Natural range <>) of Slice;
+
+   type Shared_Match (Groups : Natural) is limited record
+      Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      --  Atomic reference counter.
+
+      Is_Matched : Boolean := False;
+      --  Flag is object contains match information or not.
+
+      Source     : Matreshka.Internals.Strings.Shared_String_Access;
+      --  Reference to source string.
+
+      Number     : Natural;
+      --  Number of actual subexpression captures.
+
+      Slices     : Slice_Array (0 .. Groups);
+      --  Slices of captured data.
+
+      Captures   : Shared_String_Array (0 .. Groups);
+      pragma Volatile (Captures);
+      --  Actual captured data.
+   end record;
+   --  Shared match is a results of the match of the string to pattern. When
+   --  shared object is constructed, only slices information is filled. Actual
+   --  captures is constructed lazy on request.
+
+   type Shared_Match_Access is access all Shared_Match;
+
+   Empty_Shared_Match : aliased Shared_Match :=
+    (Groups     => 0,
+     Counter    => <>,
+     Is_Matched => False,
+     Source     => null,
+     Number     => 0,
+     Slices     => (others => (0, 1, 0, 1)),
+     Captures   => (others => null));
+
+   procedure Reference (Item : not null Shared_Match_Access);
+
+   procedure Dereference (Item : in out Shared_Match_Access);
+
+   function Capture
+    (Item   : not null Shared_Match_Access;
+     Number : Natural)
+       return not null Matreshka.Internals.Strings.Shared_String_Access;
 
 end Matreshka.Internals.Regexps;
