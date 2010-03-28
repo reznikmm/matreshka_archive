@@ -64,4 +64,4 @@ package body League.Strings.Internals is
       return Item.Data;
    end Get_Shared;
 
-end league.Strings.Internals;
+end League.Strings.Internals;

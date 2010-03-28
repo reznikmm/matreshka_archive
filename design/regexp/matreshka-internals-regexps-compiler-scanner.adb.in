@@ -113,53 +113,64 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
          YY_Back_Position := YY_Current_Position;
          YY_Current_State := YY_Start_State;
 
-         loop
-            YY_Next_Position := YY_Current_Position;
+         if YY_Back_Position = Data.Unused then
+            --  End of string already reached
 
-            if YY_Next_Position = Data.Unused then
-               --  By convention, aflex always assign zero equivalence class
-               --  to the end-of-buffer state.
+            YY_Action := YY_EOF_State;
 
-               YY_C := 0;
-
-            else
-               Unchecked_Next (Data.Value, YY_Next_Position, YY_Current_Code);
-               YY_C :=
-                 YY_EC_Base
-                  (YY_Current_Code / 16#100#) (YY_Current_Code mod 16#100#);
-            end if;
-
-            if YY_Accept (YY_Current_State) /= 0 then
-               --  Accepting state reached, save if to backtrack
-
-               YY_Last_Accepting_State    := YY_Current_State;
-               YY_Last_Accepting_Position := YY_Current_Position;
-            end if;
-
-            while YY_Chk (YY_Base (YY_Current_State) + YY_C)
-                    /= YY_Current_State
+         else
             loop
-               YY_Current_State := YY_Def (YY_Current_State);
+               YY_Next_Position := YY_Current_Position;
 
-               if YY_Current_State >= YY_First_Template then
-                  YY_C := YY_Meta (YY_C);
+               if YY_Next_Position = Data.Unused then
+                  --  By convention, aflex always assign zero equivalence class
+                  --  to the end-of-buffer state.
+
+                  YY_C := 0;
+
+               else
+                  Unchecked_Next
+                   (Data.Value, YY_Next_Position, YY_Current_Code);
+                  YY_C :=
+                    YY_EC_Base
+                     (YY_Current_Code / 16#100#) (YY_Current_Code mod 16#100#);
                end if;
+
+               if YY_Accept (YY_Current_State) /= 0 then
+                  --  Accepting state reached, save if to backtrack
+
+                  YY_Last_Accepting_State    := YY_Current_State;
+                  YY_Last_Accepting_Position := YY_Current_Position;
+
+                  exit when YY_Current_Position = Data.Unused;
+                  --  End of string has been reached.
+               end if;
+
+               while YY_Chk (YY_Base (YY_Current_State) + YY_C)
+                       /= YY_Current_State
+               loop
+                  YY_Current_State := YY_Def (YY_Current_State);
+
+                  if YY_Current_State >= YY_First_Template then
+                     YY_C := YY_Meta (YY_C);
+                  end if;
+               end loop;
+
+               YY_Current_State := YY_Nxt (YY_Base (YY_Current_State) + YY_C);
+               YY_Current_Position := YY_Next_Position;
+
+               exit when YY_Current_State = YY_Jam_State;
             end loop;
 
-            YY_Current_State := YY_Nxt (YY_Base (YY_Current_State) + YY_C);
-            YY_Current_Position := YY_Next_Position;
+            --  Return back to last accepting state.
 
-            exit when YY_Current_State = YY_Jam_State;
-         end loop;
+            YY_Current_Position := YY_Last_Accepting_Position;
+            YY_Current_State    := YY_Last_Accepting_State;
 
-         --  Return back to last accepting state.
+            --  Retrieve associated action and execute it.
 
-         YY_Current_Position := YY_Last_Accepting_Position;
-         YY_Current_State    := YY_Last_Accepting_State;
-
-         --  Retrieve associated action and execute it.
-
-         YY_Action := YY_Accept (YY_Current_State);
+            YY_Action := YY_Accept (YY_Current_State);
+         end if;
 
 <<Do_Action>>  --  This label is used only to access EOF actions
          case YY_Action is
@@ -169,11 +180,6 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                YY_Current_Position := YY_Last_Accepting_Position;
                YY_Current_State    := YY_Last_Accepting_State;
 %%
-
-            when YY_END_OF_BUFFER =>
-               YY_Action := YY_EOF_State;
-
-               goto Do_Action;
 
             when others =>
                raise Program_Error;
