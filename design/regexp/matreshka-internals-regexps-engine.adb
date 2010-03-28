@@ -107,8 +107,14 @@ package body Matreshka.Internals.Regexps.Engine is
                        (Wide_Wide_Character'Val (Program (J).Low))
                     & " .. "
                     & Wide_Wide_Character'Wide_Wide_Image
-                       (Wide_Wide_Character'Val (Program (J).High))
-                    & " ["
+                       (Wide_Wide_Character'Val (Program (J).High)));
+
+               if Program (J).Negate then
+                  Put (" {negate}");
+               end if;
+
+               Put
+                 (" ["
                     & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
                     & "]");
 
@@ -194,7 +200,8 @@ package body Matreshka.Internals.Regexps.Engine is
                   Unchecked_Next (String.Value, SP, C);
                   SI := SI + 1;
 
-                  exit when C not in Program (PC).Low .. Program (PC).High;
+                  exit when Program (PC).Negate
+                    xor (C not in Program (PC).Low .. Program (PC).High);
 
                   PC := Program (PC).Next;
 

@@ -69,8 +69,9 @@ package Matreshka.Internals.Regexps.Engine is
                   Code : Matreshka.Internals.Unicode.Code_Point;
 
                when Code_Range =>
-                  Low  : Matreshka.Internals.Unicode.Code_Point;
-                  High : Matreshka.Internals.Unicode.Code_Point;
+                  Negate : Boolean;
+                  Low    : Matreshka.Internals.Unicode.Code_Point;
+                  High   : Matreshka.Internals.Unicode.Code_Point;
 
                when Save =>
                   Slot  : Natural;

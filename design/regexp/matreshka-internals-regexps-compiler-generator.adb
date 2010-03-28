@@ -139,6 +139,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                Program (Instruction) :=
                 (Code_Range,
                  0,
+                 False,
                  Wide_Wide_Character'Pos (Pattern.AST (Expression).Low),
                  Wide_Wide_Character'Pos (Pattern.AST (Expression).High));
                Tails.Append (Instruction);
@@ -146,6 +147,10 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
 
             when N_Character_Class =>
                Compile (Pattern.AST (Expression).Members, Instruction, Tails);
+
+               if Pattern.AST (Expression).Negated then
+                  Program (Instruction).Negate := True;
+               end if;
 
             when N_Multiplicity =>
                if Pattern.AST (Expression).Lower = 0 then
