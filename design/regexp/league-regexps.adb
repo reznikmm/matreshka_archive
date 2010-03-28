@@ -101,16 +101,19 @@ package body League.Regexps is
 
    function Compile
     (Expression : League.Strings.Universal_String'Class)
-       return Regexp_Pattern is
+       return Regexp_Pattern
+   is
+      P : Shared_Pattern_Access;
+
    begin
       Matreshka.Internals.Regexps.Compiler.Data :=
         League.Strings.Internals.Get_Shared (Expression);
-      Matreshka.Internals.Regexps.Compiler.Parser.YYParse;
+      P := Matreshka.Internals.Regexps.Compiler.Parser.YYParse;
 
       Ada.Wide_Wide_Text_IO.Put_Line ("---------- AST ----------");
-      Matreshka.Internals.Regexps.Compiler.Dump;
+      Matreshka.Internals.Regexps.Compiler.Dump (P.all);
 
-      return Regexp_Pattern'(Ada.Finalization.Controlled with null record);
+      return Regexp_Pattern'(Ada.Finalization.Controlled with Shared => P);
    end Compile;
 
    --------------
@@ -138,7 +141,7 @@ package body League.Regexps is
        return Regexp_Match
    is
       P : Matreshka.Internals.Regexps.Engine.Instruction_Array :=
-        Matreshka.Internals.Regexps.Compiler.Generator.Generate;
+        Matreshka.Internals.Regexps.Compiler.Generator.Generate (Self.Shared);
 
    begin
       Ada.Wide_Wide_Text_IO.Put_Line ("---------- Code ----------");

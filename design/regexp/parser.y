@@ -80,19 +80,19 @@ re : re Token_Alternation series
 {
    --  Alternation
 
-   $$ := (AST_Node, Process_Alternation ($1.Node, $3.Node));
-   Matreshka.Internals.Regexps.Compiler.AST_Start := $$.Node;
+   $$ := (AST_Node, Process_Alternation (Pattern, $1.Node, $3.Node));
+   Pattern.Start := $$.Node;
 }
   | series
 {
    $$ := $1;
-   Matreshka.Internals.Regexps.Compiler.AST_Start := $1.Node;
+   Pattern.Start := $1.Node;
 }
   ;
 
 series : series singleton
 {
-   Matreshka.Internals.Regexps.Compiler.Attach ($1.Node, $2.Node);
+   Matreshka.Internals.Regexps.Compiler.Attach (Pattern.all, $1.Node, $2.Node);
    $$ := $1;
 }
   | singleton
@@ -105,89 +105,89 @@ singleton : singleton Token_Optional_Greedy
 {
    --  Optional, greedy
 
-   $$ := (AST_Node, Process_Multiplicity ($1.Node, 0, 1, True));
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, 0, 1, True));
 }
   | singleton Token_Optional_Lazy
 {
    --  Optional, lazy
 
-   $$ := (AST_Node, Process_Multiplicity ($1.Node, 0, 1, False));
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, 0, 1, False));
 }
   | singleton Token_Zero_Or_More_Greedy
 {
    --  Zero or more, greedy
 
-   $$ := (AST_Node, Process_Multiplicity ($1.Node, 0, Natural'Last, True));
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, 0, Natural'Last, True));
 }
   | singleton Token_Zero_Or_More_Lazy
 {
    --  Zero or more, lazy
 
-   $$ := (AST_Node, Process_Multiplicity ($1.Node, 0, Natural'Last, False));
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, 0, Natural'Last, False));
 }
   | singleton Token_One_Or_More_Greedy
 {
    --  One or more, greedy
 
-   $$ := (AST_Node, Process_Multiplicity ($1.Node, 1, Natural'Last, True));
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, 1, Natural'Last, True));
 }
   | singleton Token_One_Or_More_Lazy
 {
    --  One or more, lazy
 
-   $$ := (AST_Node, Process_Multiplicity ($1.Node, 1, Natural'Last, False));
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, 1, Natural'Last, False));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_Number Token_Multiplicity_End_Greedy
 {
    --  Multiplicity range, greedy
 
-   $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, $5.Value, True));
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, $5.Value, True));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_Number Token_Multiplicity_End_Lazy
 {
    --  Multiplicity range, lazy
 
-   $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, $5.Value, False));
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, $5.Value, False));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_End_Greedy
 {
    --  Multiplicity lower .. infinity, greedy
 
-   $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, Integer'Last, True));
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, Integer'Last, True));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_End_Lazy
 {
    --  Multiplicity lower .. infinity, lazy
 
-   $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, Integer'Last, False));
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, Integer'Last, False));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_End_Greedy
 {
    --  Multiplicity, greedy
 
-   $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, $3.Value, True));
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, $3.Value, True));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_End_Lazy
 {
    --  Multiplicity, lazy
 
-   $$ := (AST_Node, Process_Multiplicity ($1.Node, $3.Value, $3.Value, False));
+   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, $3.Value, False));
 }
   | Token_Subexpression_Begin re Token_Subexpression_End
 {
-   $$ := (AST_Node, Process_Subexpression ($2.Node));
+   $$ := (AST_Node, Process_Subexpression (Pattern, $2.Node));
 }
   | Token_Any_Code_Point
 {
    --  Any code point
 
-   $$ := (AST_Node, Process_Any_Code_Point);
+   $$ := (AST_Node, Process_Any_Code_Point (Pattern));
 }
   | Token_Code_Point
 {
    --  Code point
 
-   $$ := (AST_Node, Process_Code_Point ($1.Code));
+   $$ := (AST_Node, Process_Code_Point (Pattern, $1.Code));
 }
   | character_class
 {
@@ -201,7 +201,7 @@ character_class : Token_Character_Class_Begin character_class_content Token_Char
 }
   | Token_Character_Class_Begin Token_Negate_Character_Class character_class_content Token_Character_Class_End
 {
-   $$ := (AST_Node, Process_Negate_Character_Class ($3.Node));
+   $$ := (AST_Node, Process_Negate_Character_Class (Pattern, $3.Node));
 }
   ;
 
@@ -209,19 +209,19 @@ character_class_content : character_class_content Token_Code_Point Token_Charact
 {
    --  Add range of code points to character class
 
-   $$ := (AST_Node, Process_Character_Class_Range ($1.Node, $2.Code, $4.Code));
+   $$ := (AST_Node, Process_Character_Class_Range (Pattern, $1.Node, $2.Code, $4.Code));
 }
   | character_class_content Token_Code_Point
 {
    --  Add code point to character class
 
-   $$ := (AST_Node, Process_Character_Class_Code_Point ($1.Node, $2.Code));
+   $$ := (AST_Node, Process_Character_Class_Code_Point (Pattern, $1.Node, $2.Code));
 }
   |
 {
    --  Initialize new character class node
 
-   $$ := (AST_Node, Process_New_Character_Class);
+   $$ := (AST_Node, Process_New_Character_Class (Pattern));
 }
   ;
 
@@ -233,41 +233,54 @@ with Ada.Wide_Wide_Text_IO;
 with Matreshka.Internals.Regexps.Compiler;
 ##
    use Ada.Wide_Wide_Text_IO;
+   use Matreshka.Internals.Regexps;
 
    function YYLex return Parser_Tokens.Token is separate;
 
    procedure YYError (S : Wide_Wide_String) is null;
 
    function Process_Alternation
-     (Alternative_1 : Positive;
+     (Pattern       : not null Shared_Pattern_Access;
+      Alternative_1 : Positive;
       Alternative_2 : Positive) return Positive is separate;
 
    function Process_Multiplicity
-     (Expression : Positive;
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive;
       Lower      : Natural;
       Upper      : Natural;
       Greedy     : Boolean) return Positive is separate;
 
-   function Process_Any_Code_Point return Positive is separate;
+   function Process_Any_Code_Point
+     (Pattern : not null Shared_Pattern_Access)
+      return Positive is separate;
 
    function Process_Code_Point
-     (Character : Wide_Wide_Character) return Positive is separate;
+     (Pattern   : not null Shared_Pattern_Access;
+      Character : Wide_Wide_Character) return Positive is separate;
 
    function Process_Negate_Character_Class
-     (Class : Positive) return Positive is separate;
+     (Pattern : not null Shared_Pattern_Access;
+      Class   : Positive) return Positive is separate;
 
    function Process_Character_Class_Range
-     (Class : Positive;
-      Low   : Wide_Wide_Character;
-      High  : Wide_Wide_Character) return Positive is separate;
+     (Pattern : not null Shared_Pattern_Access;
+      Class   : Positive;
+      Low     : Wide_Wide_Character;
+      High    : Wide_Wide_Character) return Positive is separate;
 
    function Process_Character_Class_Code_Point
-     (Class : Positive;
-      Code  : Wide_Wide_Character) return Positive is separate;
+     (Pattern : not null Shared_Pattern_Access;
+      Class   : Positive;
+      Code    : Wide_Wide_Character) return Positive is separate;
 
-   function Process_New_Character_Class return Positive is separate;
+   function Process_New_Character_Class
+     (Pattern : not null Shared_Pattern_Access) return Positive is separate;
 
    function Process_Subexpression
-     (Expression : Positive) return Positive is separate;
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive) return Positive is separate;
+
+   Pattern : Shared_Pattern_Access;
 
 ##

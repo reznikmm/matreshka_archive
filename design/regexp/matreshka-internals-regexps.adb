@@ -113,6 +113,28 @@ package body Matreshka.Internals.Regexps is
       end if;
    end Dereference;
 
+   -----------------
+   -- Dereference --
+   -----------------
+
+   procedure Dereference (Item : in out Shared_Pattern_Access) is
+      pragma Assert (Item /= null);
+
+      procedure Free is
+        new Ada.Unchecked_Deallocation (Shared_Pattern, Shared_Pattern_Access);
+
+   begin
+      if Item /= Empty_Shared_Pattern'Access
+        and then Matreshka.Internals.Atomics.Counters.Decrement
+                  (Item.Counter'Access)
+      then
+         Free (Item);
+
+      else
+         Item := null;
+      end if;
+   end Dereference;
+
    ---------------
    -- Reference --
    ---------------
@@ -120,6 +142,17 @@ package body Matreshka.Internals.Regexps is
    procedure Reference (Item : not null Shared_Match_Access) is
    begin
       if Item /= Empty_Shared_Match'Access then
+         Matreshka.Internals.Atomics.Counters.Increment (Item.Counter'Access);
+      end if;
+   end Reference;
+
+   ---------------
+   -- Reference --
+   ---------------
+
+   procedure Reference (Item : not null Shared_Pattern_Access) is
+   begin
+      if Item /= Empty_Shared_Pattern'Access then
          Matreshka.Internals.Atomics.Counters.Increment (Item.Counter'Access);
       end if;
    end Reference;

@@ -39,6 +39,7 @@ private with Matreshka.Internals.Regexps;
 package League.Regexps is
 
    type Regexp_Pattern is tagged private;
+   pragma Preelaborable_Initialization (Regexp_Pattern);
 
    type Regexp_Match is tagged private;
    pragma Preelaborable_Initialization (Regexp_Match);
@@ -85,7 +86,8 @@ package League.Regexps is
 private
 
    type Regexp_Pattern is new Ada.Finalization.Controlled with record
-      null;
+      Shared : Matreshka.Internals.Regexps.Shared_Pattern_Access
+        := Matreshka.Internals.Regexps.Empty_Shared_Pattern'Access;
    end record;
 
    type Regexp_Match is new Ada.Finalization.Controlled with record

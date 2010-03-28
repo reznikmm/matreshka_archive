@@ -34,6 +34,6 @@
 
 package Matreshka.Internals.Regexps.Compiler.Parser is
 
-   procedure YYParse;
+   function YYParse return not null Shared_Pattern_Access;
 
 end Matreshka.Internals.Regexps.Compiler.Parser;

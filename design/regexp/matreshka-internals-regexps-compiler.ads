@@ -94,65 +94,6 @@ package Matreshka.Internals.Regexps.Compiler is
      Token_Subexpression_Begin,
      Token_Subexpression_End);
 
-   --  Abstract Syntax Tree and Utilities
-
-   type Node_Kinds is
-     (N_None,
-      N_Subexpression,
-      N_Any_Code_Point,
-      N_Code_Point,
-      N_Code_Point_Range,
-      N_Character_Class,
-      N_Multiplicity,
-      N_Alternation);
-
-   type Node (Kind : Node_Kinds := N_None) is record
-      case Kind is
-         when N_None =>
-            null;
-
-         when others =>
-            Next : Natural;
-            --  Next node in the chain
-
-            case Kind is
-               when N_None =>
-                  null;
-
-               when N_Subexpression =>
-                  Subexpression : Natural;
-                  Index         : Natural;
-
-               when N_Any_Code_Point =>
-                  null;
-
-               when N_Code_Point =>
-                  Code : Wide_Wide_Character;
-                  --  Code point to match
-
-               when N_Code_Point_Range =>
-                  Low  : Wide_Wide_Character;
-                  High : Wide_Wide_Character;
-
-               when N_Character_Class =>
-                  Negated : Boolean;
-                  Members : Natural;
-
-               when N_Multiplicity =>
-                  Item   : Natural;
-                  --  Link to expression
-
-                  Greedy : Boolean;
-                  Lower  : Natural;
-                  Upper  : Natural;
-
-               when N_Alternation =>
-                  First  : Natural;
-                  Second : Natural;
-            end case;
-      end case;
-   end record;
-
    --  Here is global state of the compiler. At the first stage of
    --  refactoring all global state variables must be moved to here.
    --  Later, they will be wrapped by record type to allow to have
@@ -164,18 +105,17 @@ package Matreshka.Internals.Regexps.Compiler is
    YY_Error            : YY_Error_Information := (No_Error, 0);
    YYLVal              : YYSType; 
    YYVal               : YYSType; 
-   AST                 : array (Positive range 1 .. 100) of Node;
-   AST_Start           : Positive;
-   AST_Last            : Natural := 0;
 
    procedure YYError (Error : YY_Errors; Index : Natural);
    --  Report error.
 
-   procedure Attach (Head : Positive; Node : Positive);
+   procedure Attach
+    (Pattern : in out Shared_Pattern; Head : Positive; Node : Positive);
    --  Attach Node to the list of nodes, started by Head.
 
-   procedure Add (Class : Positive; Member : Positive);
+   procedure Add
+    (Pattern : in out Shared_Pattern; Class : Positive; Member : Positive);
 
-   procedure Dump;
+   procedure Dump (Pattern : Shared_Pattern);
 
 end Matreshka.Internals.Regexps.Compiler;

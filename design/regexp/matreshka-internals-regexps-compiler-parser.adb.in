@@ -40,61 +40,73 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    use Matreshka.Internals.Regexps.Compiler.Scanner;
 
    function Process_Alternation
-     (Alternative_1 : Positive;
+     (Pattern       : not null Shared_Pattern_Access;
+      Alternative_1 : Positive;
       Alternative_2 : Positive) return Positive;
 
    function Process_Multiplicity
-     (Expression : Positive;
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive;
       Lower      : Natural;
       Upper      : Natural;
       Greedy     : Boolean) return Positive;
 
-   function Process_Any_Code_Point return Positive;
+   function Process_Any_Code_Point
+     (Pattern : not null Shared_Pattern_Access) return Positive;
 
    function Process_Code_Point
-     (Character : Wide_Wide_Character) return Positive;
+     (Pattern   : not null Shared_Pattern_Access;
+      Character : Wide_Wide_Character) return Positive;
 
    function Process_Negate_Character_Class
-     (Class : Positive) return Positive;
+     (Pattern : not null Shared_Pattern_Access;
+      Class   : Positive) return Positive;
 
    function Process_Character_Class_Range
-     (Class : Positive;
-      Low   : Wide_Wide_Character;
-      High  : Wide_Wide_Character) return Positive;
+     (Pattern : not null Shared_Pattern_Access;
+      Class   : Positive;
+      Low     : Wide_Wide_Character;
+      High    : Wide_Wide_Character) return Positive;
 
    function Process_Character_Class_Code_Point
-     (Class : Positive;
-      Code  : Wide_Wide_Character) return Positive;
+     (Pattern : not null Shared_Pattern_Access;
+      Class   : Positive;
+      Code    : Wide_Wide_Character) return Positive;
 
-   function Process_New_Character_Class return Positive;
+   function Process_New_Character_Class
+     (Pattern : not null Shared_Pattern_Access) return Positive;
 
    function Process_Subexpression
-     (Expression : Positive) return Positive;
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive) return Positive;
 
    -------------------------
    -- Process_Alternation --
    -------------------------
 
    function Process_Alternation
-     (Alternative_1 : Positive;
+     (Pattern       : not null Shared_Pattern_Access;
+      Alternative_1 : Positive;
       Alternative_2 : Positive) return Positive is
    begin
-      AST_Last := AST_Last + 1;
-      AST (AST_Last) := (N_Alternation, 0, Alternative_1, Alternative_2);
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Alternation, 0, Alternative_1, Alternative_2);
 
-      return AST_Last;
+      return Pattern.Last;
    end Process_Alternation;
+
 
    ----------------------------
    -- Process_Any_Code_Point --
    ----------------------------
 
-   function Process_Any_Code_Point return Positive is
+   function Process_Any_Code_Point
+     (Pattern : not null Shared_Pattern_Access) return Positive is
    begin
-      AST_Last := AST_Last + 1;
-      AST (AST_Last) := (N_Any_Code_Point, 0);
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Any_Code_Point, 0);
 
-      return AST_Last;
+      return Pattern.Last;
    end Process_Any_Code_Point;
 
    ----------------------------------------
@@ -102,12 +114,13 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    ----------------------------------------
 
    function Process_Character_Class_Code_Point
-     (Class : Positive;
-      Code  : Wide_Wide_Character) return Positive is
+     (Pattern : not null Shared_Pattern_Access;
+      Class   : Positive;
+      Code    : Wide_Wide_Character) return Positive is
    begin
-      AST_Last := AST_Last + 1;
-      AST (AST_Last) := (N_Code_Point, 0, Code);
-      Add (Class, AST_Last);
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Code_Point, 0, Code);
+      Add (Pattern.all, Class, Pattern.Last);
 
       return Class;
    end Process_Character_Class_Code_Point;
@@ -117,13 +130,14 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    -----------------------------------
 
    function Process_Character_Class_Range
-     (Class : Positive;
-      Low   : Wide_Wide_Character;
-      High  : Wide_Wide_Character) return Positive is
+     (Pattern : not null Shared_Pattern_Access;
+      Class   : Positive;
+      Low     : Wide_Wide_Character;
+      High    : Wide_Wide_Character) return Positive is
    begin
-      AST_Last := AST_Last + 1;
-      AST (AST_Last) := (N_Code_Point_Range, 0, Low, High);
-      Add (Class, AST_Last);
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Code_Point_Range, 0, Low, High);
+      Add (Pattern.all, Class, Pattern.Last);
 
       return Class;
    end Process_Character_Class_Range;
@@ -133,12 +147,13 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    ------------------------
 
    function Process_Code_Point
-     (Character : Wide_Wide_Character) return Positive is
+     (Pattern   : not null Shared_Pattern_Access;
+      Character : Wide_Wide_Character) return Positive is
    begin
-      AST_Last := AST_Last + 1;
-      AST (AST_Last) := (N_Code_Point, 0, Character);
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Code_Point, 0, Character);
 
-      return AST_Last;
+      return Pattern.Last;
    end Process_Code_Point;
 
    --------------------------
@@ -146,15 +161,16 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    --------------------------
 
    function Process_Multiplicity
-     (Expression : Positive;
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive;
       Lower      : Natural;
       Upper      : Natural;
       Greedy     : Boolean) return Positive is
    begin
-      AST_Last := AST_Last + 1;
-      AST (AST_Last) := (N_Multiplicity, 0, Expression, Greedy, Lower, Upper);
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Multiplicity, 0, Expression, Greedy, Lower, Upper);
 
-      return AST_Last;
+      return Pattern.Last;
    end Process_Multiplicity;
 
    ------------------------------------
@@ -162,9 +178,10 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    ------------------------------------
 
    function Process_Negate_Character_Class
-     (Class : Positive) return Positive is
+     (Pattern : not null Shared_Pattern_Access;
+      Class   : Positive) return Positive is
    begin
-      AST (Class).Negated := True;
+      Pattern.AST (Class).Negated := True;
 
       return Class;
    end Process_Negate_Character_Class;
@@ -173,31 +190,34 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    -- Process_New_Character_Class --
    ---------------------------------
 
-   function Process_New_Character_Class return Positive is
+   function Process_New_Character_Class
+     (Pattern : not null Shared_Pattern_Access) return Positive is
    begin
-      AST_Last := AST_Last + 1;
-      AST (AST_Last) := (N_Character_Class, 0, False, 0);
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Character_Class, 0, False, 0);
 
-      return AST_Last;
+      return Pattern.Last;
    end Process_New_Character_Class;
 
    ---------------------------
    -- Process_Subexpression --
    ---------------------------
 
-   function Process_Subexpression (Expression : Positive) return Positive is
+   function Process_Subexpression
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive) return Positive is
    begin
-      AST_Last := AST_Last + 1;
-      AST (AST_Last) := (N_Subexpression, 0, Expression, 0);
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Subexpression, 0, Expression, 0);
 
-      return AST_Last;
+      return Pattern.Last;
    end Process_Subexpression;
 
    -------------
    -- YYParse --
    -------------
 
-   procedure YYParse is
+   function YYParse return not null Shared_Pattern_Access is
       -- The size of the value and state stacks
 
       YY_Stack_Size : constant Natural := 300;
@@ -218,6 +238,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
       YY_Action : Integer;
       YY_Index  : Integer;
+      Pattern   : Shared_Pattern_Access := new Shared_Pattern (Data.Length);
 
    begin
       YY.TOS := 0;
@@ -261,12 +282,14 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
             YY.Look_Ahead := True;
 
          elsif YY_Action = YY_Error_Code then  --  ERROR
+            Dereference (Pattern);
+
             raise Constraint_Error with "Syntax error";
 
          elsif YY_Action = YY_Accept_Code then
             --  Grammar is accepted
 
-            exit;
+            return Pattern;
 
          else
             --  Reduce Action
@@ -279,6 +302,8 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
             case YY.Rule_Id is
 %%
                when others =>
+                  Dereference (Pattern);
+
                   raise Program_Error;
             end case;
 

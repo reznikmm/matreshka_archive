@@ -39,6 +39,92 @@ package Matreshka.Internals.Regexps is
 
    pragma Preelaborate;
 
+   -------------
+   -- Pattern --
+   -------------
+
+   --  Abstract Syntax Tree
+
+   type Node_Kinds is
+     (N_None,
+      N_Subexpression,
+      N_Any_Code_Point,
+      N_Code_Point,
+      N_Code_Point_Range,
+      N_Character_Class,
+      N_Multiplicity,
+      N_Alternation);
+
+   type Node (Kind : Node_Kinds := N_None) is record
+      case Kind is
+         when N_None =>
+            null;
+
+         when others =>
+            Next : Natural;
+            --  Next node in the chain
+
+            case Kind is
+               when N_None =>
+                  null;
+
+               when N_Subexpression =>
+                  Subexpression : Natural;
+                  Index         : Natural;
+
+               when N_Any_Code_Point =>
+                  null;
+
+               when N_Code_Point =>
+                  Code : Wide_Wide_Character;
+                  --  Code point to match
+
+               when N_Code_Point_Range =>
+                  Low  : Wide_Wide_Character;
+                  High : Wide_Wide_Character;
+
+               when N_Character_Class =>
+                  Negated : Boolean;
+                  Members : Natural;
+
+               when N_Multiplicity =>
+                  Item   : Natural;
+                  --  Link to expression
+
+                  Greedy : Boolean;
+                  Lower  : Natural;
+                  Upper  : Natural;
+
+               when N_Alternation =>
+                  First  : Natural;
+                  Second : Natural;
+            end case;
+      end case;
+   end record;
+
+   type AST_Array is array (Positive range <>) of Node;
+
+   type Shared_Pattern (Size : Natural) is limited record
+      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      --  Atomic reference counter.
+
+      AST     : AST_Array (1 .. Size);
+      Last    : Natural := 0;
+      Start   : Positive;
+   end record;
+
+   type Shared_Pattern_Access is access all Shared_Pattern;
+
+   Empty_Shared_Pattern : aliased Shared_Pattern (0);
+
+   procedure Reference (Item : not null Shared_Pattern_Access);
+
+   procedure Dereference (Item : in out Shared_Pattern_Access);
+
+   -----------
+   -- Match --
+   -----------
+
    type Shared_String_Array is
      array (Natural range <>)
        of aliased Matreshka.Internals.Strings.Shared_String_Access;
@@ -51,7 +137,7 @@ package Matreshka.Internals.Regexps is
       Next_Index     : Positive;
    end record;
    --  Slice represent slice in the source Shared_String. Next points to the
-   --  first character after slice.
+   --  first character after the slice.
 
    type Slice_Array is array (Natural range <>) of Slice;
 

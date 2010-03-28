@@ -44,10 +44,12 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
    -- Generate --
    --------------
 
-   function Generate return Engine.Instruction_Array is
+   function Generate
+    (Pattern : not null Shared_Pattern_Access) return Engine.Instruction_Array
+   is
       use Integer_Vectors;
 
-      Program            : Instruction_Array (1 .. AST_Last * 9);
+      Program            : Instruction_Array (1 .. Pattern.Last * 9);
       Last               : Natural := 0;
       Last_Subexpression : Natural := 0;
 
@@ -75,20 +77,20 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
 
          procedure Compile_Next is
          begin
-            if AST (Expression).Next /= 0 then
+            if Pattern.AST (Expression).Next /= 0 then
                declare
                   Next_Instruction : Positive;
                   Previous_Tails   : Vector := Tails;
 
                begin
-                  Compile (AST (Expression).Next, Next_Instruction, Tails);
+                  Compile (Pattern.AST (Expression).Next, Next_Instruction, Tails);
                   Connect_Tails (Previous_Tails, Next_Instruction);
                end;
             end if;
          end Compile_Next;
 
       begin
-         case AST (Expression).Kind is
+         case Pattern.AST (Expression).Kind is
             when N_Alternation =>
                Last := Last + 1;
                Instruction := Last;
@@ -101,8 +103,8 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                   Tails_2 : Vector;
 
                begin
-                  Compile (AST (Expression).First, Ins_1, Tails_1);
-                  Compile (AST (Expression).Second, Ins_2, Tails_2);
+                  Compile (Pattern.AST (Expression).First, Ins_1, Tails_1);
+                  Compile (Pattern.AST (Expression).Second, Ins_2, Tails_2);
                   Program (Instruction) := (Split, Ins_1, Ins_2);
 
                   Tails := Tails_1 & Tails_2;
@@ -122,13 +124,13 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                Instruction := Last;
                Tails.Clear;
 
-               Program (Instruction) := (Code_Point, 0, AST (Expression).Code);
+               Program (Instruction) := (Code_Point, 0, Pattern.AST (Expression).Code);
                Tails.Append (Instruction);
                Compile_Next;
 
             when N_Multiplicity =>
-               if AST (Expression).Lower = 0 then
-                  if AST (Expression).Upper = Natural'Last then
+               if Pattern.AST (Expression).Lower = 0 then
+                  if Pattern.AST (Expression).Upper = Natural'Last then
                      --  Zero or more
 
                      Last := Last + 1;
@@ -138,10 +140,10 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                         Ins_1 : Positive;
 
                      begin
-                        Compile (AST (Expression).Item, Ins_1, Tails);
+                        Compile (Pattern.AST (Expression).Item, Ins_1, Tails);
                         Connect_Tails (Tails, Instruction);
 
-                        if AST (Expression).Greedy then
+                        if Pattern.AST (Expression).Greedy then
                            Program (Instruction) := (Split, Ins_1, 0);
 
                         else
@@ -153,7 +155,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                         Compile_Next;
                      end;
 
-                  elsif AST (Expression).Upper >= 1 then
+                  elsif Pattern.AST (Expression).Upper >= 1 then
                      --  N optional elements
 
                      declare
@@ -165,15 +167,15 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                         Instruction := Last + 1;
                         Tails.Clear;
 
-                        for J in AST (Expression).Lower + 1 .. AST (Expression).Upper loop
+                        for J in Pattern.AST (Expression).Lower + 1 .. Pattern.AST (Expression).Upper loop
                            Last := Last + 1;
                            Ins_1 := Last;
                            Connect_Tails (Tails_L, Ins_1);
                            Tails.Append (Ins_1);
 
-                           Compile (AST (Expression).Item, Ins_2, Tails_L);
+                           Compile (Pattern.AST (Expression).Item, Ins_2, Tails_L);
 
-                           if AST (Expression).Greedy then
+                           if Pattern.AST (Expression).Greedy then
                               Program (Ins_1) := (Split, Ins_2, 0);
 
                            else
@@ -198,8 +200,8 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                   begin
                      Tails.Clear;
 
-                     for J in 1 .. AST (Expression).Lower loop
-                        Compile (AST (Expression).Item, Ins_1, Tails);
+                     for J in 1 .. Pattern.AST (Expression).Lower loop
+                        Compile (Pattern.AST (Expression).Item, Ins_1, Tails);
                         Connect_Tails (Tails_L, Ins_1);
                         Tails_L := Tails;
 
@@ -208,12 +210,12 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                         end if;
                      end loop;
 
-                     if AST (Expression).Upper = Natural'Last then
+                     if Pattern.AST (Expression).Upper = Natural'Last then
                         Last := Last + 1;
                         Ins_2 := Last;
                         Connect_Tails (Tails_L, Ins_2);
 
-                        if AST (Expression).Greedy then
+                        if Pattern.AST (Expression).Greedy then
                            Program (Ins_2) := (Split, Ins_1, 0);
 
                         else
@@ -226,15 +228,15 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                      else
                         Tails.Clear;
 
-                        for J in AST (Expression).Lower + 1 .. AST (Expression).Upper loop
+                        for J in Pattern.AST (Expression).Lower + 1 .. Pattern.AST (Expression).Upper loop
                            Last := Last + 1;
                            Ins_1 := Last;
                            Connect_Tails (Tails_L, Ins_1);
                            Tails.Append (Ins_1);
 
-                           Compile (AST (Expression).Item, Ins_2, Tails_L);
+                           Compile (Pattern.AST (Expression).Item, Ins_2, Tails_L);
 
-                           if AST (Expression).Greedy then
+                           if Pattern.AST (Expression).Greedy then
                               Program (Ins_1) := (Split, Ins_2, 0);
 
                            else
@@ -257,19 +259,19 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                   Ins_1   : Positive;
 
                begin
-                  if AST (Expression).Index = 0 then
+                  if Pattern.AST (Expression).Index = 0 then
                      Last_Subexpression := Last_Subexpression + 1;
-                     AST (Expression).Index := Last_Subexpression;
+                     Pattern.AST (Expression).Index := Last_Subexpression;
                   end if;
 
-                  Compile (AST (Expression).Subexpression, Ins_1, Tails);
+                  Compile (Pattern.AST (Expression).Subexpression, Ins_1, Tails);
 
                   Program (Instruction) :=
-                    (Save, Ins_1, AST (Expression).Index, True);
+                    (Save, Ins_1, Pattern.AST (Expression).Index, True);
                   Last := Last + 1;
                   Ins_1 := Last;
                   Program (Ins_1) :=
-                    (Save, 0, AST (Expression).Index, False);
+                    (Save, 0, Pattern.AST (Expression).Index, False);
                   Connect_Tails (Tails, Ins_1);
 
                   Tails.Clear;
@@ -315,7 +317,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
       Last := Last + 1;
       Ins := Last;
 
-      Compile (AST_Start, Ins_1, Tails_1);
+      Compile (Pattern.Start, Ins_1, Tails_1);
 
       Program (Ins) := (Save, Ins_1, 0, True);
 

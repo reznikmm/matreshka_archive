@@ -35,6 +35,7 @@ with Matreshka.Internals.Regexps.Engine;
 
 package Matreshka.Internals.Regexps.Compiler.Generator is
 
-   function Generate return Engine.Instruction_Array;
+   function Generate
+    (Pattern : not null Shared_Pattern_Access) return Engine.Instruction_Array;
 
 end Matreshka.Internals.Regexps.Compiler.Generator;

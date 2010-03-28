@@ -40,13 +40,16 @@ package body Matreshka.Internals.Regexps.Compiler is
    -- Add --
    ---------
 
-   procedure Add (Class : Positive; Member : Positive) is
+   procedure Add
+    (Pattern : in out Shared_Pattern;
+     Class   : Positive;
+     Member  : Positive) is
    begin
-      if AST (Class).Members = 0 then
-         AST (Class).Members := Member;
+      if Pattern.AST (Class).Members = 0 then
+         Pattern.AST (Class).Members := Member;
 
       else
-         Attach (AST (Class).Members, Member);
+         Attach (Pattern, Pattern.AST (Class).Members, Member);
       end if;
    end Add;
 
@@ -54,22 +57,26 @@ package body Matreshka.Internals.Regexps.Compiler is
    -- Attach --
    ------------
 
-   procedure Attach (Head : Positive; Node : Positive) is
+   procedure Attach
+    (Pattern : in out Shared_Pattern;
+     Head    : Positive;
+     Node    : Positive)
+   is
       J : Positive := Head;
 
    begin
-      while AST (J).Next /= 0 loop
-         J := AST (J).Next;
+      while Pattern.AST (J).Next /= 0 loop
+         J := Pattern.AST (J).Next;
       end loop;
 
-      AST (J).Next := Node;
+      Pattern.AST (J).Next := Node;
    end Attach;
 
    ----------
    -- Dump --
    ----------
 
-   procedure Dump is
+   procedure Dump (Pattern : Shared_Pattern) is
 
       use Ada.Strings;
       use Ada.Strings.Fixed;
@@ -84,9 +91,12 @@ package body Matreshka.Internals.Regexps.Compiler is
       begin
          Set_Col (Indent);
 
-         Put (Trim (Integer'Image (N), Both) & ' ' & Node_Kinds'Image (AST (N).Kind));
+         Put
+          (Trim (Integer'Image (N), Both)
+             & ' '
+             & Node_Kinds'Image (Pattern.AST (N).Kind));
 
-         case AST (N).Kind is
+         case Pattern.AST (N).Kind is
             when N_None =>
                null;
 
@@ -95,37 +105,37 @@ package body Matreshka.Internals.Regexps.Compiler is
 
             when N_Subexpression =>
                Indent := Indent + Offset;
-               Dump (AST (N).Subexpression);
+               Dump (Pattern.AST (N).Subexpression);
                Indent := Indent - Offset;
 
             when N_Code_Point =>
-               Put (' ' & Wide_Wide_Character'Image (AST (N).Code));
+               Put (' ' & Wide_Wide_Character'Image (Pattern.AST (N).Code));
 
             when N_Code_Point_Range =>
                Put
-                 (' ' & Wide_Wide_Character'Image (AST (N).Low)
-                    & " .. " & Wide_Wide_Character'Image (AST (N).High));
+                 (' ' & Wide_Wide_Character'Image (Pattern.AST (N).Low)
+                    & " .. " & Wide_Wide_Character'Image (Pattern.AST (N).High));
 
             when N_Character_Class =>
-               if AST (N).Negated then
+               if Pattern.AST (N).Negated then
                   Put (" {negated}");
                end if;
 
                Indent := Indent + Offset;
-               Dump (AST (N).Members);
+               Dump (Pattern.AST (N).Members);
                Indent := Indent - Offset;
 
             when N_Multiplicity =>
-               Put (" [" & Trim (Natural'Image (AST (N).Lower), Both) & "..");
+               Put (" [" & Trim (Natural'Image (Pattern.AST (N).Lower), Both) & "..");
 
-               if AST (N).Upper /= Natural'Last then
-                  Put (Trim (Natural'Image (AST (N).Upper), Both) & ']');
+               if Pattern.AST (N).Upper /= Natural'Last then
+                  Put (Trim (Natural'Image (Pattern.AST (N).Upper), Both) & ']');
 
                else
                   Put ("Infinity]");
                end if;
 
-               if AST (N).Greedy then
+               if Pattern.AST (N).Greedy then
                   Put (" {greedy}");
 
                else
@@ -133,7 +143,7 @@ package body Matreshka.Internals.Regexps.Compiler is
                end if;
 
                Indent := Indent + Offset;
-               Dump (AST (N).Item);
+               Dump (Pattern.AST (N).Item);
                Indent := Indent - Offset;
 
             when N_Alternation =>
@@ -141,7 +151,7 @@ package body Matreshka.Internals.Regexps.Compiler is
                Set_Col (Indent);
                Put ("first");
                Indent := Indent + Offset;
-               Dump (AST (N).First);
+               Dump (Pattern.AST (N).First);
                Indent := Indent - Offset;
                Indent := Indent - Offset;
 
@@ -149,18 +159,18 @@ package body Matreshka.Internals.Regexps.Compiler is
                Set_Col (Indent);
                Put ("second");
                Indent := Indent + Offset;
-               Dump (AST (N).Second);
+               Dump (Pattern.AST (N).Second);
                Indent := Indent - Offset;
                Indent := Indent - Offset;
          end case;
 
-         if AST (N).Next /= 0 then
-            Dump (AST (N).Next);
+         if Pattern.AST (N).Next /= 0 then
+            Dump (Pattern.AST (N).Next);
          end if;
       end Dump;
 
    begin
-      Dump (AST_Start);
+      Dump (Pattern.Start);
       New_Line;
    end Dump;
 
