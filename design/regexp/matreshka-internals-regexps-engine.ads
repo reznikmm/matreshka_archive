@@ -76,25 +76,10 @@ package Matreshka.Internals.Regexps.Engine is
 
    type Instruction_Array is array (Positive range <>) of Instruction;
 
-   type Slice is record
-      First : Natural;
-      Last  : Natural;
-   end record;
-
-   type Slice_Array is array (Natural range <>) of Slice;
-
-   procedure Execute
-     (Program : Instruction_Array;
-      String  : Wide_Wide_String;
-      Matched : out Boolean;
-      Slices  : out Slice_Array);
-
    function Execute
      (Program : Instruction_Array;
       String  : not null Matreshka.Internals.Strings.Shared_String_Access)
       return not null Shared_Match_Access;
---      Matched : out Boolean;
---      Slices  : out Slice_Array);
 
    procedure Dump (Program : Instruction_Array);
 

@@ -45,19 +45,12 @@ package body Matreshka.Internals.Regexps.Engine is
 
    type State is record
       PC : Positive;
-      SP : Positive;
-      SS : Slice_Array (0 .. 9);
-   end record;
-
-   type U_State is record
-      PC : Positive;
       SP : Utf16_String_Index;
       SI : Positive;
       SS : Regexps.Slice_Array (0 .. 9);
    end record;
 
    type State_Array is array (Positive range <>) of State;
-   type U_State_Array is array (Positive range <>) of U_State;
 
    ----------
    -- Dump --
@@ -142,7 +135,7 @@ package body Matreshka.Internals.Regexps.Engine is
       return not null Shared_Match_Access
    is
       Match : not null Shared_Match_Access := new Shared_Match (9);
-      Stack : U_State_Array (1 .. 100);
+      Stack : State_Array (1 .. 100);
       Last  : Natural := 0;
       PC    : Positive := 1;
       SP    : Utf16_String_Index := 0;
@@ -220,84 +213,6 @@ package body Matreshka.Internals.Regexps.Engine is
       end loop;
 
       return Match;
-   end Execute;
-
-   -------------
-   -- Execute --
-   -------------
-
-   procedure Execute
-     (Program : Instruction_Array;
-      String  : Wide_Wide_String;
-      Matched : out Boolean;
-      Slices  : out Slice_Array)
-   is
-      Stack : State_Array (1 .. 100);
-      Last  : Natural := 0;
-      PC    : Positive := 1;
-      SP    : Positive := String'First;
-      SS    : Slice_Array (0 .. 9) := (others => (0, 0));
-
-   begin
-      Matched := False;
-      Last := Last + 1;
-      Stack (Last) := (PC, SP, SS);
-
-      while Last /= 0 loop
-         PC := Stack (Last).PC;
-         SP := Stack (Last).SP;
-         SS := Stack (Last).SS;
-         Last := Last - 1;
-
-         loop
-            case Program (PC).Kind is
-               when Any_Code_Point =>
-                  if SP > String'Last then
-                     exit;
-                  end if;
-
-                  PC := Program (PC).Next;
-                  SP := SP + 1;
-
-               when Code_Point =>
-                  if SP > String'Last
-                    or else String (SP) /= Program (PC).Code
-                  then
-                     exit;
-                  end if;
-
-                  PC := Program (PC).Next;
-                  SP := SP + 1;
-
-               when Match =>
-                  Matched := True;
-                  Slices := SS;
-
-                  return;
-
-               when Jump =>
-                  PC := Program (PC).Next;
-
-               when Split =>
-                  Last := Last + 1;
-                  Stack (Last) := (Program (PC).Another, SP, SS);
-                  PC := Program (PC).Next;
-
-               when Save =>
-                  if Program (PC).Start then
-                     SS (Program (PC).Slot) := (SP, 0);
-
-                  else
-                     SS (Program (PC).Slot).Last := SP - 1;
-                  end if;
-
-                  PC := Program (PC).Next;
-
-               when others =>
-                  raise Program_Error;
-            end case;
-         end loop;
-      end loop;
    end Execute;
 
 end Matreshka.Internals.Regexps.Engine;
