@@ -10,9 +10,11 @@ all: matreshka-internals-regexps-compiler-scanner.adb matreshka-internals-regexp
 
 matreshka-internals-regexps-compiler-scanner.adb: matreshka-internals-regexps-compiler-scanner.adb.in scanner.l
 	make gen
+	(cd .gen && ../.obj/scanner_transformer)
 
 matreshka-internals-regexps-compiler-parser.adb: matreshka-internals-regexps-compiler-parser.adb.in parser.y
 	make gen
+	(cd .gen && ../.obj/parser_transformer)
 
 gen: .gen
 	gprbuild -p -Ptools/tools.gpr
@@ -20,8 +22,6 @@ gen: .gen
 	(cd .gen && $(AYACC) ../parser.y off off)
 	(cd .gen && gcc -c -gnatct -gnat05 -I../../../source/league scanner.adb)
 	(cd .gen && gcc -c -gnatct -gnat05 -I. -I.. -I../../../source/league parser.adb)
-	(cd .gen && ../.obj/scanner_transformer)
-	(cd .gen && ../.obj/parser_transformer)
 
 .gen:
 	mkdir .gen
