@@ -198,7 +198,7 @@ package body League.Regexps is
    -- Last_Index --
    ----------------
 
-   function Last_Index (Self : Regexp_Match'Class) return Positive is
+   function Last_Index (Self : Regexp_Match'Class) return Natural is
    begin
       if not Self.Shared.Is_Matched then
          raise Constraint_Error;

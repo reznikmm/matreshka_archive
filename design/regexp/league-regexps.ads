@@ -77,7 +77,7 @@ package League.Regexps is
     (Self   : Regexp_Match'Class;
      Number : Positive) return Natural;
 
-   function Last_Index (Self : Regexp_Match'Class) return Positive;
+   function Last_Index (Self : Regexp_Match'Class) return Natural;
 
    function Last_Index
     (Self   : Regexp_Match'Class;
