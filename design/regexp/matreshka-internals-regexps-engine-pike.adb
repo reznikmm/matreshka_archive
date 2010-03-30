@@ -131,7 +131,11 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
 
       Add (PC, SS);
 
-      while SP < String.Unused loop
+      while SP <= String.Unused loop
+         --  Handling of 'match' instruction requires to do one cycle after
+         --  last character. Implicit null terminator allows to do last cycle
+         --  like any other cycles, and simplify code.
+
          Aux := Current;
          Current := Next;
          Next := Aux;
