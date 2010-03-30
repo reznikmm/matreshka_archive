@@ -70,6 +70,7 @@ package Matreshka.Internals.Regexps is
 
                when N_Subexpression =>
                   Subexpression : Natural;
+                  Capture       : Boolean;
                   Index         : Natural;
 
                when N_Any_Code_Point =>

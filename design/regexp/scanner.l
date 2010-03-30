@@ -70,10 +70,16 @@
    return Error;
 }
 
-"(" {
+"(?:" {
    --  Start of subexpression
 
    return Token_Subexpression_Begin;
+}
+
+"(" {
+   --  Start of subexpression
+
+   return Token_Subexpression_Capture_Begin;
 }
 
 ")" {

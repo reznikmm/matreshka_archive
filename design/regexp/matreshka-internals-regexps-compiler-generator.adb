@@ -276,32 +276,37 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                end if;
 
             when N_Subexpression =>
-               Last := Last + 1;
-               Instruction := Last;
+               if Pattern.AST (Expression).Capture then
+                  declare
+                     Ins_1   : Positive;
 
-               declare
-                  Ins_1   : Positive;
+                  begin
+                     Last := Last + 1;
+                     Instruction := Last;
 
-               begin
-                  if Pattern.AST (Expression).Index = 0 then
-                     Last_Subexpression := Last_Subexpression + 1;
-                     Pattern.AST (Expression).Index := Last_Subexpression;
-                  end if;
+                     if Pattern.AST (Expression).Index = 0 then
+                        Last_Subexpression := Last_Subexpression + 1;
+                        Pattern.AST (Expression).Index := Last_Subexpression;
+                     end if;
 
-                  Compile (Pattern.AST (Expression).Subexpression, Ins_1, Tails);
+                     Compile (Pattern.AST (Expression).Subexpression, Ins_1, Tails);
 
-                  Program (Instruction) :=
-                    (Save, Ins_1, Pattern.AST (Expression).Index, True);
-                  Last := Last + 1;
-                  Ins_1 := Last;
-                  Program (Ins_1) :=
-                    (Save, 0, Pattern.AST (Expression).Index, False);
-                  Connect_Tails (Tails, Ins_1);
+                     Program (Instruction) :=
+                       (Save, Ins_1, Pattern.AST (Expression).Index, True);
+                     Last := Last + 1;
+                     Ins_1 := Last;
+                     Program (Ins_1) :=
+                       (Save, 0, Pattern.AST (Expression).Index, False);
+                     Connect_Tails (Tails, Ins_1);
 
-                  Tails.Clear;
-                  Tails.Append (Ins_1);
-                  Compile_Next;
-               end;
+                     Tails.Clear;
+                     Tails.Append (Ins_1);
+                     Compile_Next;
+                  end;
+
+               else
+                  Compile (Pattern.AST (Expression).Subexpression, Instruction, Tails);
+               end if;
 
             when others =>
                raise Program_Error;

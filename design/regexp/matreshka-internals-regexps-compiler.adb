@@ -104,6 +104,10 @@ package body Matreshka.Internals.Regexps.Compiler is
                null;
 
             when N_Subexpression =>
+               if Pattern.AST (N).Capture then
+                  Put (" {capture}");
+               end if;
+
                Indent := Indent + Offset;
                Dump (Pattern.AST (N).Subexpression);
                Indent := Indent - Offset;

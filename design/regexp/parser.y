@@ -51,6 +51,7 @@
 %token Token_Multiplicity_End_Lazy
 %token Token_Multiplicity_Comma
 %token Token_Multiplicity_Number
+%token Token_Subexpression_Capture_Begin
 %token Token_Subexpression_Begin
 %token Token_Subexpression_End
 
@@ -185,9 +186,13 @@ singleton : singleton Token_Optional_Greedy
 
    $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, $3.Value, False));
 }
+  | Token_Subexpression_Capture_Begin re Token_Subexpression_End
+{
+   $$ := (AST_Node, Process_Subexpression (Pattern, $2.Node, True));
+}
   | Token_Subexpression_Begin re Token_Subexpression_End
 {
-   $$ := (AST_Node, Process_Subexpression (Pattern, $2.Node));
+   $$ := (AST_Node, Process_Subexpression (Pattern, $2.Node, False));
 }
   | Token_Any_Code_Point
 {
@@ -291,7 +296,8 @@ with Matreshka.Internals.Regexps.Compiler;
 
    function Process_Subexpression
      (Pattern    : not null Shared_Pattern_Access;
-      Expression : Positive) return Positive is separate;
+      Expression : Positive;
+      Capture    : Boolean) return Positive is separate;
 
    Pattern : Shared_Pattern_Access;
 

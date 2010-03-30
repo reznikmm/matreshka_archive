@@ -78,7 +78,8 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
    function Process_Subexpression
      (Pattern    : not null Shared_Pattern_Access;
-      Expression : Positive) return Positive;
+      Expression : Positive;
+      Capture    : Boolean) return Positive;
 
    -------------------------
    -- Process_Alternation --
@@ -205,10 +206,11 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
    function Process_Subexpression
      (Pattern    : not null Shared_Pattern_Access;
-      Expression : Positive) return Positive is
+      Expression : Positive;
+      Capture    : Boolean) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Subexpression, 0, Expression, 0);
+      Pattern.AST (Pattern.Last) := (N_Subexpression, 0, Expression, Capture, 0);
 
       return Pattern.Last;
    end Process_Subexpression;
@@ -393,38 +395,41 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Value, yy.value_stack (yy.tos-1).Value, False));
 
             when 19 =>
-               yyval := (AST_Node, Process_Subexpression (Pattern, yy.value_stack (yy.tos-1).Node));
+               yyval := (AST_Node, Process_Subexpression (Pattern, yy.value_stack (yy.tos-1).Node, True));
 
             when 20 =>
+               yyval := (AST_Node, Process_Subexpression (Pattern, yy.value_stack (yy.tos-1).Node, False));
+
+            when 21 =>
                --  Any code point
             
                yyval := (AST_Node, Process_Any_Code_Point (Pattern));
 
-            when 21 =>
+            when 22 =>
                --  Code point
             
                yyval := (AST_Node, Process_Code_Point (Pattern, yy.value_stack (yy.tos).Code));
 
-            when 22 =>
+            when 23 =>
                yyval := yy.value_stack (yy.tos);
 
-            when 23 =>
+            when 24 =>
                yyval := yy.value_stack (yy.tos-1);
 
-            when 24 =>
+            when 25 =>
                yyval := (AST_Node, Process_Negate_Character_Class (Pattern, yy.value_stack (yy.tos-1).Node));
 
-            when 25 =>
+            when 26 =>
                --  Add range of code points to character class
             
                yyval := (AST_Node, Process_Character_Class_Range (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-2).Code, yy.value_stack (yy.tos).Code));
 
-            when 26 =>
+            when 27 =>
                --  Add code point to character class
             
                yyval := (AST_Node, Process_Character_Class_Code_Point (Pattern, yy.value_stack (yy.tos-1).Node, yy.value_stack (yy.tos).Code));
 
-            when 27 =>
+            when 28 =>
                --  Initialize new character class node
             
                yyval := (AST_Node, Process_New_Character_Class (Pattern));

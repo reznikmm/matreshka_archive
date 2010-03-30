@@ -78,7 +78,8 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
    function Process_Subexpression
      (Pattern    : not null Shared_Pattern_Access;
-      Expression : Positive) return Positive;
+      Expression : Positive;
+      Capture    : Boolean) return Positive;
 
    -------------------------
    -- Process_Alternation --
@@ -205,10 +206,11 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
    function Process_Subexpression
      (Pattern    : not null Shared_Pattern_Access;
-      Expression : Positive) return Positive is
+      Expression : Positive;
+      Capture    : Boolean) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Subexpression, 0, Expression, 0);
+      Pattern.AST (Pattern.Last) := (N_Subexpression, 0, Expression, Capture, 0);
 
       return Pattern.Last;
    end Process_Subexpression;

@@ -29,3 +29,8 @@
 {n,m}? where n >= 0 and m >= n                       Repeats the previous item between n and m times. Lazy, so repeating n times is tried before increasing the repetition to m times.
 {n,} where n >= 0                                    Repeats the previous item at least n times. Greedy, so as many items as possible will be matched before trying permutations with less matches of the preceding item, up to the point where the preceding item is matched only n times.
 {n,}? where n >= 0                                   Repeats the previous item n or more times. Lazy, so the engine first matches the previous item n times, before trying permutations with ever increasing matches of the preceding item.
+{,n} where n >= 0                                    Repeats the previous item between zero and n times. Greedy, so as many items as possible will be matched before trying permutations with less matches of the preceding item, up to the point where the preceding item is matched only n times.
+{,n}? where n >= 0                                   Repeats the previous item between zero and n times. Lazy, so the engine first matches the previous item n times, before trying permutations with ever increasing matches of the preceding item.
+
+(regex)                                              Round brackets group the regex between them. They capture the text matched by the regex inside them that can be reused in a backreference, and they allow you to apply regex operators to the entire grouped regex.
+(?:regex)                                            Non-capturing parentheses group the regex so you can apply regex operators, but do not capture anything and do not create backreferences.

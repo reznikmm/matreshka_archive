@@ -91,6 +91,7 @@ package Matreshka.Internals.Regexps.Compiler is
      Token_Multiplicity_End_Lazy,
      Token_Multiplicity_Comma,
      Token_Multiplicity_Number,
+     Token_Subexpression_Capture_Begin,
      Token_Subexpression_Begin,
      Token_Subexpression_End);
 

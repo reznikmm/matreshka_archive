@@ -208,98 +208,103 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                return Token_Subexpression_Begin;
 
             when 7 =>
+               --  Start of subexpression
+            
+               return Token_Subexpression_Capture_Begin;
+
+            when 8 =>
                --  End of subexpression
             
                return Token_Subexpression_End;
 
-            when 8 =>
+            when 9 =>
                --  Alternation
             
                return Token_Alternation;
 
-            when 9 =>
+            when 10 =>
                return Token_Optional_Lazy;
 
-            when 10 =>
+            when 11 =>
                return Token_Optional_Greedy;
 
-            when 11 =>
+            when 12 =>
                return Token_Zero_Or_More_Lazy;
 
-            when 12 =>
+            when 13 =>
                return Token_Zero_Or_More_Greedy;
 
-            when 13 =>
+            when 14 =>
                return Token_One_Or_More_Lazy;
 
-            when 14 =>
+            when 15 =>
                return Token_One_Or_More_Greedy;
 
-            when 15 =>
+            when 16 =>
                --  Enter character class
             
                Enter_Start_Condition (CHARACTER_CLASS);
             
                return Token_Character_Class_Begin;
 
-            when 16 =>
+            when 17 =>
                --  XXX Leave character class
             
                Enter_Start_Condition (INITIAL);
             
                return Token_Character_Class_End;
 
-            when 17 =>
+            when 18 =>
                --  Negate character class
             
                return Token_Negate_Character_Class;
 
-            when 18 =>
+            when 19 =>
                --  Range of characters
             
                return Token_Character_Class_Range;
 
-            when 20 =>
+            when 21 =>
                --  Multiplicity
             
                Enter_Start_Condition (MULTIPLICITY);
             
                return Token_Multiplicity_Begin;
 
-            when 21 =>
+            when 22 =>
                --  End of multiplicity specifier
             
                Enter_Start_Condition (INITIAL);
             
                return Token_Multiplicity_End_Greedy;
 
-            when 22 =>
+            when 23 =>
                --  End of multiplicity specifier
             
                Enter_Start_Condition (INITIAL);
             
                return Token_Multiplicity_End_Lazy;
 
-            when 23 =>
+            when 24 =>
                --  Number separator
             
                return Token_Multiplicity_Comma;
 
-            when 24 =>
+            when 25 =>
                --  Number
             
                YYLVal := (Number, Natural'Wide_Wide_Value (YYText));
             
                return Token_Multiplicity_Number;
 
-            when 25 =>
+            when 26 =>
                --  Unexpected character in multiplicidy declaration
             
                YYError (Unexpected_Character_in_Multiplicity_Specifier, YY_Back_Index);
             
                return Error;
 
-            when 27 =>
+            when 28 =>
                --  Escaped pattern special code point
             
                declare
@@ -311,48 +316,48 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                   return Token_Code_Point;
                end;
 
-            when 28 =>
+            when 29 =>
                YYLVal := (Match_Code_Point, LF);
             
                return Token_Code_Point;
 
-            when 29 =>
+            when 30 =>
                YYLVal := (Match_Code_Point, CR);
             
                return Token_Code_Point;
 
-            when 30 =>
+            when 31 =>
                YYLVal := (Match_Code_Point, HT);
             
                return Token_Code_Point;
 
-            when 31 =>
+            when 32 =>
                YYLVal := (Match_Code_Point, BEL);
             
                return Token_Code_Point;
 
-            when 32 =>
+            when 33 =>
                YYLVal := (Match_Code_Point, ESC);
             
                return Token_Code_Point;
 
-            when 33 =>
+            when 34 =>
                YYLVal := (Match_Code_Point, FF);
             
                return Token_Code_Point;
 
-            when 34 =>
+            when 35 =>
                YYLVal := (Match_Code_Point, VT);
             
                return Token_Code_Point;
 
-            when 35 =>
+            when 36 =>
             --   YYLVal := (Match_Code_Point, VT);
             
                raise Program_Error;
                return Token_Code_Point;
 
-            when 36 =>
+            when 37 =>
                --  Short hex notation of the code point
             
                YYLVal :=
@@ -362,7 +367,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             
                return Token_Code_Point;
 
-            when 37 =>
+            when 38 =>
                --  Long hex notation of the code point
             
                YYLVal :=
@@ -372,12 +377,12 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             
                return Token_Code_Point;
 
-            when 38 =>
+            when 39 =>
                --  Sequence of whitespaces is ignored in all modes
             
                null;
 
-            when 39 =>
+            when 40 =>
                --  Single code point
             
                declare
@@ -389,33 +394,33 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                   return Token_Code_Point;
                end;
 
-            when 40 =>
+            when 41 =>
                --  Special outside of sequence
             
                YYError (Unescaped_Pattern_Syntax_Character, YY_Back_Index);
             
                return Error;
 
-            when 44 =>
+            when 45 =>
                --  End of data
             
                return End_Of_Input;
 
-            when 45 =>
+            when 46 =>
                --  Unexprected end of literal
             
                YYError (Unexpected_End_Of_Literal, 0);
             
                return Error;
 
-            when 46 =>
+            when 47 =>
                --  Unexpected and of character class
             
                YYError (Unexpected_End_Of_Character_Class, 0);
             
                return Error;
 
-            when 47 =>
+            when 48 =>
                --  Unexpected end of multiplicity specifier
             
                YYError (Unexpected_End_Of_Multiplicity_Specifier, 0);
