@@ -32,7 +32,16 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.Regexps.Engine.Pike is
+package body Matreshka.Internals.Regexps.Engine.Pike is
+
+   use Matreshka.Internals.Strings;
+   use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Utf16;
+
+   type State_Information is record
+      PC : Integer;
+      SS : Regexps.Slice_Array (0 .. 9);
+   end record;
 
    -------------
    -- Execute --
@@ -41,9 +50,137 @@ package Matreshka.Internals.Regexps.Engine.Pike is
    function Execute
      (Program : Instruction_Array;
       String  : not null Matreshka.Internals.Strings.Shared_String_Access)
-      return not null Shared_Match_Access is
+      return not null Shared_Match_Access
+   is
+      type State_Array is array (1 .. Program'Length) of State_Information;
+
+      type Thread_List is record
+         State : State_Array;
+         Last  : Natural;
+      end record;
+
+      type Thread_List_Access is access all Thread_List;
+
+      List_1  : aliased Thread_List;
+      List_2  : aliased Thread_List;
+
+      Current : Thread_List_Access := List_1'Access;
+      Next    : Thread_List_Access := List_2'Access;
+      Aux     : Thread_List_Access;
+      Match   : not null Shared_Match_Access := new Shared_Match (9);
+      SP      : Utf16_String_Index := 0;
+      SI      : Positive := 1;
+      Step    : Positive := 1;
+      Steps   : array (Program'Range) of Integer := (others => 0);
+
+      procedure Add (PC : Integer; SS : Slice_Array);
+
+      ---------
+      -- Add --
+      ---------
+
+      procedure Add (PC : Integer; SS : Slice_Array) is
+         S : Slice_Array := SS;
+
+      begin
+         if Steps (PC) = Step then
+            return;
+         end if;
+
+         Steps (PC) := Step;
+
+         case Program (PC).Kind is
+            when Any_Code_Point | Code_Point | Code_Range | Engine.Match =>
+               Next.Last := Next.Last + 1;
+               Next.State (Next.Last) := (PC, SS);
+
+            when Split =>
+               Add (Program (PC).Next, S);
+               Add (Program (PC).Another, S);
+
+            when Save =>
+               if Program (PC).Start then
+                  S (Program (PC).Slot) := (SP, SI, 0, 1);
+
+               else
+                  if Match.Number < Program (PC).Slot then
+                     Match.Number := Program (PC).Slot;
+                  end if;
+
+                  S (Program (PC).Slot).Next_Position := SP;
+                  S (Program (PC).Slot).Next_Index    := SI;
+               end if;
+
+               Add (Program (PC).Next, S);
+
+            when others =>
+               raise Program_Error;
+         end case;
+      end Add;
+
+      PC      : Positive := 1;
+      SS      : Regexps.Slice_Array (0 .. 9) := (others => (0, 1, 0, 1));
+      Code    : Matreshka.Internals.Unicode.Code_Point;
+
    begin
-      return null;
+      Match.Is_Matched := False;
+      Match.Number := 0;
+
+      Next.Last := 0;
+      Current.Last := 0;
+
+      Add (PC, SS);
+
+      while SP < String.Unused loop
+         Aux := Current;
+         Current := Next;
+         Next := Aux;
+         Next.Last := 0;
+         Step := Step + 1;
+
+         exit when Current.Last = 0;
+
+         Unchecked_Next (String.Value, SP, Code);
+         SI := SI + 1;
+
+         for J in 1 .. Current.Last loop
+            PC := Current.State (J).PC;
+            SS := Current.State (J).SS;
+
+            case Program (PC).Kind is
+               when Any_Code_Point =>
+                  Add (Program (PC).Next, SS);
+
+               when Code_Point =>
+                  if Code = Program (PC).Code then
+                     Add (Program (PC).Next, SS);
+                  end if;
+
+               when Code_Range =>
+                  if Program (PC).Negate
+                    xor (Code in Program (PC).Low .. Program (PC).High)
+                  then
+                     Add (Program (PC).Next, SS);
+                  end if;
+
+               when Engine.Match =>
+                  Match.Is_Matched := True;
+                  Match.Slices := SS;
+
+                  exit;
+
+               when others =>
+                  raise Program_Error;
+            end case;
+         end loop;
+      end loop;
+
+      if Match.Is_Matched then
+         Reference (String);
+         Match.Source := String;
+      end if;
+
+      return Match;
    end Execute;
 
 end Matreshka.Internals.Regexps.Engine.Pike;

@@ -36,7 +36,7 @@ with Ada.Wide_Wide_Text_IO;
 with League.Strings.Internals;
 with Matreshka.Internals.Regexps.Compiler.Generator;
 with Matreshka.Internals.Regexps.Compiler.Parser;
-with Matreshka.Internals.Regexps.Engine.Backtrack;
+with Matreshka.Internals.Regexps.Engine.Pike;
 
 package body League.Regexps is
 
@@ -150,7 +150,7 @@ package body League.Regexps is
       return
         Regexp_Match'
          (Ada.Finalization.Controlled with
-            Shared => Matreshka.Internals.Regexps.Engine.Backtrack.Execute
+            Shared => Matreshka.Internals.Regexps.Engine.Pike.Execute
                        (P,
                         League.Strings.Internals.Get_Shared (String)));
    end Find_Match;
