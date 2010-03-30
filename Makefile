@@ -8,6 +8,7 @@ GPRBUILD_FLAGS = -p -XARCHITECTURE=$(ARCHITECTURE) -XBUILD=$(BUILD)
 
 all:
 	gprbuild -p -Pgnat/tools_aflex.gpr
+	gprbuild -p -Pgnat/tools_ayacc.gpr
 	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
 
 check: all
