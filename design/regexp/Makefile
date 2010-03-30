@@ -1,8 +1,8 @@
 include ../../Makefile.config
 
 GPRBUILD_FLAGS = -p -XARCHITECTURE=$(ARCHITECTURE) -XBUILD=$(BUILD)
-AFLEX = ../../xml/tools/aflex/src/.objs/aflex
-AYACC = ../../xml/tools/ayacc/src/.objs/ayacc
+AFLEX = ../../../tools/aflex/src/aflex
+AYACC = ../../../tools/ayacc/src/ayacc
 
 all: matreshka-internals-regexps-compiler-parser.adb matreshka-internals-regexps-compiler-scanner.adb
 	gprbuild $(GPRBUILD_FLAGS) -Pdemo.gpr
