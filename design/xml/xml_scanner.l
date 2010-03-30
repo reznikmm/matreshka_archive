@@ -510,7 +510,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 --<XML_DECL>"?>" { ENTER (0); }
 
 %%
-with Xml_Parser.Tokens; use Xml_Parser.Tokens;
+with Xml_Parser_Tokens; use Xml_Parser_Tokens;
 
 ##
    function YYLex return Token;

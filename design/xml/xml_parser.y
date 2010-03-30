@@ -208,7 +208,7 @@ XMLDecl :
     SDDecl_optional
     Token_XML_Decl_Or_PI_End
 {
-   Text_IO.Put_Line ("XML Declaration parsed");
+   Ada.Wide_Wide_Text_IO.Put_Line ("XML Declaration parsed");
 --   $$ := $1;
    $$ := $2;
    $$ := $3;
@@ -226,7 +226,7 @@ VersionInfo :
     Token_XML_Decl_Attribute_Value
 {
 --    $$.Version := 
-   Text_IO.Put_Line ("version information");
+   Ada.Wide_Wide_Text_IO.Put_Line ("version information");
 }
   ;
 
@@ -235,11 +235,11 @@ EncodingDecl_optional :
     Token_Equal
     Token_XML_Decl_Attribute_Value
 {
-   Text_IO.Put_Line ("encoding information");
+   Ada.Wide_Wide_Text_IO.Put_Line ("encoding information");
 }
   |
 {
-   Text_IO.Put_Line ("encoding information missing");
+   Ada.Wide_Wide_Text_IO.Put_Line ("encoding information missing");
 }
   ;
 
@@ -248,7 +248,7 @@ SDDecl_optional :
     Token_Equal
     Token_XML_Decl_Attribute_Value
 {
-   Text_IO.Put_Line ("standalone information");
+   Ada.Wide_Wide_Text_IO.Put_Line ("standalone information");
 }
 |
 --{
@@ -279,7 +279,7 @@ SDDecl_optional :
 element :
     Token_Start_Tag_Start
 {
-   Text_IO.Put_Line ("Start tag '" & To_String ($1.Text) & ''');
+   Ada.Wide_Wide_Text_IO.Put_Line ("Start tag '" & To_String ($1.Text) & ''');
 
    if Current_Element_Node /= null then
       Element_Node_Stack.Append (Current_Element_Node);
@@ -295,7 +295,7 @@ element :
 element_1 :
     Token_Empty_Tag_End
 {
-   Text_IO.Put_Line ("Empty element");
+   Ada.Wide_Wide_Text_IO.Put_Line ("Empty element");
 
    if not Element_Node_Stack.Is_Empty then
       Current_Element_Node := Element_Node_Stack.Last_Element;
@@ -310,7 +310,7 @@ element_1 :
     Token_End_Tag_Start
     Token_Tag_End
 {
-   Text_IO.Put_Line ("End element '" & To_String ($3.Text) & ''');
+   Ada.Wide_Wide_Text_IO.Put_Line ("End element '" & To_String ($3.Text) & ''');
 
    if Current_Element_Node.Name /= $3.Text then
       raise Program_Error;
@@ -342,18 +342,18 @@ Attribute :
     attribute_value_segment_any
     Token_Attribute_Value_End
 {
-   Text_IO.Put_Line ("Tag's attributes");
+   Ada.Wide_Wide_Text_IO.Put_Line ("Tag's attributes");
 }
   ;
 
 attribute_value_segment_any :
     attribute_value_segment
 {
-   Text_IO.Put_Line ("attribute_value_segment");
+   Ada.Wide_Wide_Text_IO.Put_Line ("attribute_value_segment");
 }
   | attribute_value_segment_any attribute_value_segment
 {
-   Text_IO.Put_Line ("attribute_value_segment_any attribute_value_segment");
+   Ada.Wide_Wide_Text_IO.Put_Line ("attribute_value_segment_any attribute_value_segment");
 }
   |
   ;
@@ -462,7 +462,7 @@ with Sax.Readers;
 ##
 --  with Ada.Containers.Vectors;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
-with Text_IO;
+with Ada.Wide_Wide_Text_IO;
 
 with Xml;         use Xml;
 with Xml_Scanner; use Xml_Scanner;
@@ -485,8 +485,8 @@ with Xml_Scanner.IO;
 
       procedure YYError (S : String) is
       begin
-         Text_IO.Put_Line (S);
-         raise Syntax_Error;
+--         Ada.Wide_Wide_Text_IO.Put_Line (S);
+         null;
       end YYError;
 
 --   type XML_Element_Node is record
