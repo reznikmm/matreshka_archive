@@ -31,10 +31,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
 with Matreshka.Internals.Utf16;
 
 package body League.Strings.Cursors.Grapheme_Clusters is
 
+   use League.Strings.Internals;
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Ucd;
@@ -114,7 +116,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
       end if;
 
       return
-        Constructors.Create
+        Create
          (Slice
            (Self.Object.Data,
             Self.Current_Position,

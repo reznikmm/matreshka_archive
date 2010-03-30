@@ -31,16 +31,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Strings.SIMD;
 with Matreshka.Internals.Unicode.Casing;
 with Matreshka.Internals.Unicode.Collation;
 with Matreshka.Internals.Unicode.Normalization;
 with Matreshka.Internals.Unicode.Ucd.Core;
-with Matreshka.Internals.Utf16;
 
 package body League.Strings is
 
+   use League.Strings.Internals;
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Strings.SIMD;
    use Matreshka.Internals.Unicode;
@@ -120,7 +121,7 @@ package body League.Strings is
             D.Length := L_D.Length + R_D.Length;
             Fill_Null_Terminator (D);
 
-            return Constructors.Create (D);
+            return Create (D);
          end;
       end if;
    end "&";
@@ -153,7 +154,7 @@ package body League.Strings is
          D.Length                := L_D.Length + 1;
          Fill_Null_Terminator (D);
 
-         return Constructors.Create (D);
+         return Create (D);
       end;
    end "&";
 
@@ -185,7 +186,7 @@ package body League.Strings is
          D.Length                        := R_D.Length + 1;
          Fill_Null_Terminator (D);
 
-         return Constructors.Create (D);
+         return Create (D);
       end;
    end "&";
 
@@ -439,33 +440,6 @@ package body League.Strings is
       end return;
    end Collation;
 
-   ------------------
-   -- Constructors --
-   ------------------
-
-   package body Constructors is
-
-      ------------
-      -- Create --
-      ------------
-
-      function Create (Data : not null Shared_String_Access)
-        return Universal_String
-      is
-      begin
-         return Result : Universal_String
-           := Universal_String'
-               (Ada.Finalization.Controlled with
-                  Data    => Data,
-                  List    => (Head => null),
-                  Cursors => null)
-         do
-            Result.Cursors := Result.List'Unchecked_Access;
-         end return;
-      end Create;
-
-   end Constructors;
-
    ----------
    -- Copy --
    ----------
@@ -475,7 +449,7 @@ package body League.Strings is
 --   is
 --   begin
 --      return Result : not null String_Private_Data_Access
---        := Constructors.Create
+--        := Create
 --            (new Utf16_String'(Source.Value.all),
 --             Source.Last,
 --             Source.Length,
@@ -871,7 +845,7 @@ package body League.Strings is
 --         end;
 --      end if;
 --
---      return Constructors.Create (Slice (D, First, Last, Length));
+--      return Create (Slice (D, First, Last, Length));
 --   end Slice;
 
    -----------------
@@ -900,7 +874,7 @@ package body League.Strings is
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
 
-         return Constructors.Create (Data);
+         return Create (Data);
       end;
    end To_Casefold;
 
@@ -930,7 +904,7 @@ package body League.Strings is
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
 
-         return Constructors.Create (Data);
+         return Create (Data);
       end;
    end To_Lowercase;
 
@@ -946,7 +920,7 @@ package body League.Strings is
    begin
       Matreshka.Internals.Unicode.Normalization.NFC (Self.Data, Data);
 
-      return Constructors.Create (Data);
+      return Create (Data);
    end To_NFC;
 
    ------------
@@ -961,7 +935,7 @@ package body League.Strings is
    begin
       Matreshka.Internals.Unicode.Normalization.NFD (Self.Data, Data);
 
-      return Constructors.Create (Data);
+      return Create (Data);
    end To_NFD;
 
    -------------
@@ -976,7 +950,7 @@ package body League.Strings is
    begin
       Matreshka.Internals.Unicode.Normalization.NFKC (Self.Data, Data);
 
-      return Constructors.Create (Data);
+      return Create (Data);
    end To_NFKC;
 
    -------------
@@ -991,7 +965,7 @@ package body League.Strings is
    begin
       Matreshka.Internals.Unicode.Normalization.NFKD (Self.Data, Data);
 
-      return Constructors.Create (Data);
+      return Create (Data);
    end To_NFKD;
 
    ----------------------------
@@ -1030,7 +1004,7 @@ package body League.Strings is
 
       To_Utf16_String (Item, Data);
 
-      return Constructors.Create (Data);
+      return Create (Data);
    end To_Universal_String;
 
    ------------------
@@ -1059,7 +1033,7 @@ package body League.Strings is
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
 
-         return Constructors.Create (Data);
+         return Create (Data);
       end;
    end To_Uppercase;
 

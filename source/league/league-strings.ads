@@ -336,15 +336,6 @@ private
    --  of constant the separate object is used to store list of associated
    --  cursors.
 
-   package Constructors is
-
-      function Create
-       (Data : not null Matreshka.Internals.Strings.Shared_String_Access)
-          return Universal_String;
-      --  Creates instance of Universal_String with specified parameters.
-
-   end Constructors;
-
    ---------------------
    -- Abstract_Cursor --
    ---------------------

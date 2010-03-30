@@ -31,16 +31,19 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
 
-package League.Strings.Internals is
+package Matreshka.Internals.Regexps.Engine.Pike is
 
-   function Create
-    (Data : not null Matreshka.Internals.Strings.Shared_String_Access)
-       return Universal_String;
-   --  Creates instance of Universal_String with specified parameters.
+   -------------
+   -- Execute --
+   -------------
 
-   function Get_Shared (Item : Universal_String'Class)
-     return not null Matreshka.Internals.Strings.Shared_String_Access;
+   function Execute
+     (Program : Instruction_Array;
+      String  : not null Matreshka.Internals.Strings.Shared_String_Access)
+      return not null Shared_Match_Access is
+   begin
+      return null;
+   end Execute;
 
-end league.Strings.Internals;
+end Matreshka.Internals.Regexps.Engine.Pike;
