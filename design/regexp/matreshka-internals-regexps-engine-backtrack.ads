@@ -31,57 +31,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Unicode;
 
-package Matreshka.Internals.Regexps.Engine is
+package Matreshka.Internals.Regexps.Engine.Backtrack is
 
-   type Instruction_Kinds is
-     (None, Jump, Split, Any_Code_Point, Code_Point, Code_Range, Match, Save);
+   function Execute
+     (Program : Instruction_Array;
+      String  : not null Matreshka.Internals.Strings.Shared_String_Access)
+      return not null Shared_Match_Access;
 
-   type Instruction (Kind : Instruction_Kinds := None) is record
-      case Kind is
-         when None =>
-            null;
-
-         when Match =>
-            null;
-
-         when others =>
-            Next : Natural;
-
-            case Kind is
-               when None =>
-                  null;
-
-               when Jump =>
-                  null;
-
-               when Match =>
-                  null;
-
-               when Any_Code_Point =>
-                  null;
-
-               when Split =>
-                  Another : Natural;
-
-               when Code_Point =>
-                  Code : Matreshka.Internals.Unicode.Code_Point;
-
-               when Code_Range =>
-                  Negate : Boolean;
-                  Low    : Matreshka.Internals.Unicode.Code_Point;
-                  High   : Matreshka.Internals.Unicode.Code_Point;
-
-               when Save =>
-                  Slot  : Natural;
-                  Start : Boolean;
-            end case;
-      end case;
-   end record;
-
-   type Instruction_Array is array (Positive range <>) of Instruction;
-
-   procedure Dump (Program : Instruction_Array);
-
-end Matreshka.Internals.Regexps.Engine;
+end Matreshka.Internals.Regexps.Engine.Backtrack;
