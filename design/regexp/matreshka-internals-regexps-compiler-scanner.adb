@@ -32,6 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Characters.Wide_Wide_Latin_1;
+with Ada.Wide_Wide_Text_IO;
 
 with Matreshka.Internals.Regexps.Compiler.Scanner.Tables;
 with Matreshka.Internals.Unicode;
@@ -208,103 +209,118 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                return Token_Subexpression_Begin;
 
             when 7 =>
+               --  Start of the comment
+            
+               Enter_Start_Condition (COMMENT);
+
+            when 8 =>
+               --  End of comment
+            
+               Enter_Start_Condition (INITIAL);
+
+            when 9 =>
+               --  Comment
+            
+               null;
+
+            when 11 =>
                --  Start of subexpression (capturing)
             
                return Token_Subexpression_Capture_Begin;
 
-            when 8 =>
+            when 12 =>
                --  End of subexpression
             
                return Token_Subexpression_End;
 
-            when 9 =>
+            when 13 =>
                --  Alternation
             
                return Token_Alternation;
 
-            when 10 =>
+            when 14 =>
                return Token_Optional_Lazy;
 
-            when 11 =>
+            when 15 =>
                return Token_Optional_Greedy;
 
-            when 12 =>
+            when 16 =>
                return Token_Zero_Or_More_Lazy;
 
-            when 13 =>
+            when 17 =>
                return Token_Zero_Or_More_Greedy;
 
-            when 14 =>
+            when 18 =>
                return Token_One_Or_More_Lazy;
 
-            when 15 =>
+            when 19 =>
                return Token_One_Or_More_Greedy;
 
-            when 16 =>
+            when 20 =>
                --  Enter character class
             
                Enter_Start_Condition (CHARACTER_CLASS);
             
                return Token_Character_Class_Begin;
 
-            when 17 =>
+            when 21 =>
                --  XXX Leave character class
             
                Enter_Start_Condition (INITIAL);
             
                return Token_Character_Class_End;
 
-            when 18 =>
+            when 22 =>
                --  Negate character class
             
                return Token_Negate_Character_Class;
 
-            when 19 =>
+            when 23 =>
                --  Range of characters
             
                return Token_Character_Class_Range;
 
-            when 21 =>
+            when 25 =>
                --  Multiplicity
             
                Enter_Start_Condition (MULTIPLICITY);
             
                return Token_Multiplicity_Begin;
 
-            when 22 =>
+            when 26 =>
                --  End of multiplicity specifier
             
                Enter_Start_Condition (INITIAL);
             
                return Token_Multiplicity_End_Greedy;
 
-            when 23 =>
+            when 27 =>
                --  End of multiplicity specifier
             
                Enter_Start_Condition (INITIAL);
             
                return Token_Multiplicity_End_Lazy;
 
-            when 24 =>
+            when 28 =>
                --  Number separator
             
                return Token_Multiplicity_Comma;
 
-            when 25 =>
+            when 29 =>
                --  Number
             
                YYLVal := (Number, Natural'Wide_Wide_Value (YYText));
             
                return Token_Multiplicity_Number;
 
-            when 26 =>
+            when 30 =>
                --  Unexpected character in multiplicidy declaration
             
                YYError (Unexpected_Character_in_Multiplicity_Specifier, YY_Back_Index);
             
                return Error;
 
-            when 28 =>
+            when 32 =>
                --  Escaped pattern special code point
             
                declare
@@ -316,48 +332,48 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                   return Token_Code_Point;
                end;
 
-            when 29 =>
+            when 33 =>
                YYLVal := (Match_Code_Point, LF);
             
                return Token_Code_Point;
 
-            when 30 =>
+            when 34 =>
                YYLVal := (Match_Code_Point, CR);
             
                return Token_Code_Point;
 
-            when 31 =>
+            when 35 =>
                YYLVal := (Match_Code_Point, HT);
             
                return Token_Code_Point;
 
-            when 32 =>
+            when 36 =>
                YYLVal := (Match_Code_Point, BEL);
             
                return Token_Code_Point;
 
-            when 33 =>
+            when 37 =>
                YYLVal := (Match_Code_Point, ESC);
             
                return Token_Code_Point;
 
-            when 34 =>
+            when 38 =>
                YYLVal := (Match_Code_Point, FF);
             
                return Token_Code_Point;
 
-            when 35 =>
+            when 39 =>
                YYLVal := (Match_Code_Point, VT);
             
                return Token_Code_Point;
 
-            when 36 =>
+            when 40 =>
             --   YYLVal := (Match_Code_Point, VT);
             
                raise Program_Error;
                return Token_Code_Point;
 
-            when 37 =>
+            when 41 =>
                --  Short hex notation of the code point
             
                YYLVal :=
@@ -367,7 +383,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             
                return Token_Code_Point;
 
-            when 38 =>
+            when 42 =>
                --  Long hex notation of the code point
             
                YYLVal :=
@@ -377,12 +393,12 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             
                return Token_Code_Point;
 
-            when 39 =>
+            when 43 =>
                --  Sequence of whitespaces is ignored in all modes
             
                null;
 
-            when 40 =>
+            when 44 =>
                --  Single code point
             
                declare
@@ -394,41 +410,48 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                   return Token_Code_Point;
                end;
 
-            when 41 =>
+            when 45 =>
                --  Special outside of sequence
             
                YYError (Unescaped_Pattern_Syntax_Character, YY_Back_Index);
             
                return Error;
 
-            when 45 =>
+            when 49 =>
                --  End of data
             
                return End_Of_Input;
 
-            when 46 =>
+            when 50 =>
                --  Unexprected end of literal
             
                YYError (Unexpected_End_Of_Literal, 0);
             
                return Error;
 
-            when 47 =>
+            when 51 =>
                --  Unexpected and of character class
             
                YYError (Unexpected_End_Of_Character_Class, 0);
             
                return Error;
 
-            when 48 =>
+            when 52 =>
                --  Unexpected end of multiplicity specifier
             
                YYError (Unexpected_End_Of_Multiplicity_Specifier, 0);
             
                return Error;
 
+            when 53 =>
+               --  Unexpected end of comment
+            
+               return Error;
+
             when others =>
-               raise Program_Error;
+               raise Program_Error
+                 with "Unhandled action"
+                        & Integer'Image (YY_Action) & " in scanner";
          end case;
       end loop; -- end of loop waiting for end of file
    end YYLex;

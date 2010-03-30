@@ -35,6 +35,7 @@
 %x LITERAL
 %x CHARACTER_CLASS
 %x MULTIPLICITY
+%x COMMENT
 
 %%
 
@@ -74,6 +75,30 @@
    --  Start of subexpression (non-capturing)
 
    return Token_Subexpression_Begin;
+}
+
+"(?#" {
+   --  Start of the comment
+
+   Enter_Start_Condition (COMMENT);
+}
+
+<COMMENT>")" {
+   --  End of comment
+
+   Enter_Start_Condition (INITIAL);
+}
+
+<COMMENT>.|\n {
+   --  Comment
+
+   null;
+}
+
+<COMMENT><<EOF>> {
+   --  Unexpected end of comment
+
+   return Error;
 }
 
 "(" {

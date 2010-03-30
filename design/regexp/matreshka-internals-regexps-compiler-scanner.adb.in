@@ -32,6 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Characters.Wide_Wide_Latin_1;
+with Ada.Wide_Wide_Text_IO;
 
 with Matreshka.Internals.Regexps.Compiler.Scanner.Tables;
 with Matreshka.Internals.Unicode;
@@ -184,7 +185,9 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
 %%
 
             when others =>
-               raise Program_Error;
+               raise Program_Error
+                 with "Unhandled action"
+                        & Integer'Image (YY_Action) & " in scanner";
          end case;
       end loop; -- end of loop waiting for end of file
    end YYLex;
