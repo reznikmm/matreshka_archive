@@ -203,12 +203,12 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                end;
 
             when 6 =>
-               --  Start of subexpression
+               --  Start of subexpression (non-capturing)
             
                return Token_Subexpression_Begin;
 
             when 7 =>
-               --  Start of subexpression
+               --  Start of subexpression (capturing)
             
                return Token_Subexpression_Capture_Begin;
 

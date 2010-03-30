@@ -71,13 +71,13 @@
 }
 
 "(?:" {
-   --  Start of subexpression
+   --  Start of subexpression (non-capturing)
 
    return Token_Subexpression_Begin;
 }
 
 "(" {
-   --  Start of subexpression
+   --  Start of subexpression (capturing)
 
    return Token_Subexpression_Capture_Begin;
 }
