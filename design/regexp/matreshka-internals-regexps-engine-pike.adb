@@ -146,7 +146,9 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
       while SP <= String.Unused loop
          --  Handling of 'match' instruction requires to do one cycle after
          --  last character. Implicit null terminator allows to do last cycle
-         --  like any other cycles, and simplify code.
+         --  like any other cycles, and simplify code. Even if it match
+         --  pattern this match never be taken, because it can be handled
+         --  only on next cycle, which never be happen.
 
          Aux := Current;
          Current := Next;
