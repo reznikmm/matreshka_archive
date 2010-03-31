@@ -32,7 +32,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Strings;
-with Matreshka.Internals.Utf16;
 
 package Matreshka.Internals.Regexps.Compiler is
 
@@ -52,7 +51,12 @@ package Matreshka.Internals.Regexps.Compiler is
       Index : Natural;
    end record;
 
-   type Kinds is (None, Match_Code_Point, Number, AST_Node);
+   type Kinds is
+    (None,
+     Match_Code_Point,
+     Number,
+     Binary_Property,
+     AST_Node);
 
    type YYSType (Kind : Kinds := None) is record
       case Kind is
@@ -64,6 +68,9 @@ package Matreshka.Internals.Regexps.Compiler is
 
          when Number =>
             Value : Natural;
+
+         when Binary_Property =>
+            Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
 
          when AST_Node =>
             Node : Positive;
@@ -93,7 +100,9 @@ package Matreshka.Internals.Regexps.Compiler is
      Token_Multiplicity_Number,
      Token_Subexpression_Capture_Begin,
      Token_Subexpression_Begin,
-     Token_Subexpression_End);
+     Token_Subexpression_End,
+     Token_Binary_Property,
+     Token_Negative_Binary_Property);
 
    --  Here is global state of the compiler. At the first stage of
    --  refactoring all global state variables must be moved to here.

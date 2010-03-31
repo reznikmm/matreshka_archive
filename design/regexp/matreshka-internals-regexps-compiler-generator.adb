@@ -129,6 +129,19 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                Tails.Append (Instruction);
                Compile_Next;
 
+            when N_Match_Property =>
+               Last := Last + 1;
+               Instruction := Last;
+               Tails.Clear;
+
+               Program (Instruction) :=
+                (I_Property,
+                 0,
+                 Pattern.AST (Expression).Property,
+                 Pattern.AST (Expression).Negative);
+               Tails.Append (Instruction);
+               Compile_Next;
+
             when N_Member_Code =>
                Last := Last + 1;
                Instruction := Last;

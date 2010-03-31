@@ -31,6 +31,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Unicode.Ucd.Core;
 
 package body Matreshka.Internals.Regexps.Engine.Pike is
 
@@ -42,6 +43,13 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
       PC : Integer;
       SS : Regexps.Slice_Array (0 .. 9);
    end record;
+
+   function Element is
+     new Unicode.Ucd.Generic_Element
+      (Matreshka.Internals.Unicode.Ucd.Core_Values,
+       Matreshka.Internals.Unicode.Ucd.Core_Second_Stage,
+       Matreshka.Internals.Unicode.Ucd.Core_Second_Stage_Access,
+       Matreshka.Internals.Unicode.Ucd.Core_First_Stage);
 
    -------------
    -- Execute --
@@ -90,7 +98,7 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
          Steps (PC) := Step;
 
          case Program (PC).Kind is
-            when Any_Code_Point | Code_Point | Code_Range | Engine.Match =>
+            when Any_Code_Point | Code_Point | Code_Range | I_Property | Engine.Match =>
                Next.Last := Next.Last + 1;
                Next.State (Next.Last) := (PC, SS);
 
@@ -180,6 +188,15 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                when Code_Range =>
                   if Program (PC).Negate
                     xor (Code in Program (PC).Low .. Program (PC).High)
+                  then
+                     Add (Program (PC).Next, SS);
+                  end if;
+
+               when I_Property =>
+                  if Program (PC).Negative
+                    xor Element
+                         (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
+                           (Program (PC).Property)
                   then
                      Add (Program (PC).Next, SS);
                   end if;

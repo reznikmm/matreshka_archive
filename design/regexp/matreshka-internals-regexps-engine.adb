@@ -118,6 +118,16 @@ package body Matreshka.Internals.Regexps.Engine is
                     & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
                     & "]");
 
+            when I_Property =>
+               Put
+                 ("char is "
+                    & Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Wide_Wide_Image
+                       (Program (J).Property));
+
+               if Program (J).Negative then
+                  Put (" {negative}");
+               end if;
+
             when Match =>
                Put ("match");
 

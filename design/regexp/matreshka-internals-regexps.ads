@@ -33,7 +33,7 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Atomics.Counters;
 with Matreshka.Internals.Strings;
-with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Unicode.Ucd;
 with Matreshka.Internals.Utf16;
 
 package Matreshka.Internals.Regexps is
@@ -51,6 +51,7 @@ package Matreshka.Internals.Regexps is
       N_Subexpression,
       N_Match_Any,
       N_Match_Code,
+      N_Match_Property,
       N_Member_Code,
       N_Member_Range,
       N_Character_Class,
@@ -82,6 +83,10 @@ package Matreshka.Internals.Regexps is
                   Code : Matreshka.Internals.Unicode.Code_Point;
 		  --  Code point to match or code point as member of character
                   --  class.
+
+               when N_Match_Property =>
+                  Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+                  Negative : Boolean;
 
                when N_Member_Range =>
                   Low  : Matreshka.Internals.Unicode.Code_Point;

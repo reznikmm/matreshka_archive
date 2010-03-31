@@ -42,6 +42,7 @@ package Matreshka.Internals.Regexps.Engine is
       Any_Code_Point,
       Code_Point,
       Code_Range,
+      I_Property,
       Match,
       Save);
 
@@ -79,6 +80,10 @@ package Matreshka.Internals.Regexps.Engine is
                   Negate : Boolean;
                   Low    : Matreshka.Internals.Unicode.Code_Point;
                   High   : Matreshka.Internals.Unicode.Code_Point;
+
+               when I_Property =>
+                  Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+                  Negative : Boolean;
 
                when Save =>
                   Slot  : Natural;

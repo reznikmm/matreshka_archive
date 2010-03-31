@@ -305,13 +305,13 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
 }
 
 <INITIAL,CHARACTER_CLASS>"\\n" {
-   YYLVal := (Match_Code_Point, LF);
+   YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.LF);
 
    return Token_Code_Point;
 }
 
 <INITIAL,CHARACTER_CLASS>"\\r" {
-   YYLVal := (Match_Code_Point, CR);
+   YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.CR);
 
    return Token_Code_Point;
 }
@@ -378,307 +378,412 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
 <INITIAL,CHARACTER_CLASS>\\p\{{ASCII_HEX_DIGIT}\} {
    --  ASCII_Hex_Digit
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.ASCII_Hex_Digit);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{ALPHABETIC}\} {
    --  Alphabetic
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Alphabetic);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{BIDI_CONTROL}\} {
    --  Bidi_Control
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Bidi_Control);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{BIDI_MIRRORED}\} {
    --  Bidi_Mirrored
 
+--  XXX Bidi_Mirrored is absent in UCD now
+--   YYLVAL := (Binary_Property, Ucd.Bidi_Mirrored);
+--
+--   return Token_Binary_Property;
    raise Program_Error;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{COMPOSITION_EXCLUSION}\} {
    --  Composition_Exclusion
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Composition_Exclusion);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{FULL_COMPOSITION_EXCLUSION}\} {
    --  Full_Composition_Exclusion
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Full_Composition_Exclusion);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{DASH}\} {
    --  Dash
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Dash);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{DEPRECATED}\} {
    --  Deprecated
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Deprecated);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{DEFAULT_IGNORABLE_CODE_POINT}\} {
    --  Default_Ignorable_Code_Point
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Default_Ignorable_Code_Point);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{DIACRITIC}\} {
    --  Diacritic
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Diacritic);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{EXTENDER}\} {
    --  Extender
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Extender);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{GRAPHEME_BASE}\} {
    --  Grapheme_Base
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Grapheme_Base);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{GRAPHEME_EXTEND}\} {
    --  Grapheme_Extend
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Grapheme_Extend);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{GRAPHEME_LINK}\} {
    --  Grapheme_Link
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Grapheme_Link);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{HEX_DIGIT}\} {
    --  Hex_Digit
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Hex_Digit);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{HYPHEN}\} {
    --  Hyphen
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Hyphen);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{ID_CONTINUE}\} {
    --  ID_Continue
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.ID_Continue);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{IDEOGRAPHIC}\} {
    --  Ideographic
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Ideographic);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{ID_START}\} {
    --  ID_Start
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.ID_Start);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{IDS_BINARY_OPERATOR}\} {
    --  IDS_Binary_Operator
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.IDS_Binary_Operator);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{IDS_TRINARY_OPERATOR}\} {
    --  IDS_Trinary_Operator
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.IDS_Trinary_Operator);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{JOIN_CONTROL}\} {
    --  Join_Control
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Join_Control);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{LOGICAL_ORDER_EXCEPTION}\} {
    --  Logical_Order_Exception
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Logical_Order_Exception);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{LOWERCASE}\} {
    --  Lowercase
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Lowercase);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{MATH}\} {
    --  Math
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Math);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{NONCHARACTER_CODE_POINT}\} {
    --  Noncharacter_Code_Point
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Noncharacter_Code_Point);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{OTHER_ALPHABETIC}\} {
    --  Other_Alphabetic
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Other_Alphabetic);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{OTHER_DEFAULT_IGNORABLE_CODE_POINT}\} {
    --  Other_Default_Ignorable_Code_Point
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Other_Default_Ignorable_Code_Point);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{OTHER_GRAPHEME_EXTEND}\} {
    --  Other_Grapheme_Extend
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Other_Grapheme_Extend);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{OTHER_ID_CONTINUE}\} {
    --  Other_ID_Continue
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Other_ID_Continue);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{OTHER_ID_START}\} {
    --  Other_ID_Start
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Other_ID_Start);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{OTHER_LOWERCASE}\} {
    --  Other_Lowercase
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Other_Lowercase);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{OTHER_MATH}\} {
    --  Other_Math
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Other_Math);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{OTHER_UPPERCASE}\} {
    --  Other_Uppercase
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Other_Uppercase);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{PATTERN_SYNTAX}\} {
    --  Pattern_Syntax
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Pattern_Syntax);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{PATTERN_WHITE_SPACE}\} {
    --  Pattern_White_Space
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Pattern_White_Space);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{QUOTATION_MARK}\} {
    --  Quotation_Mark
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Quotation_Mark);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{RADICAL}\} {
    --  Radical
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Radical);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{SOFT_DOTTED}\} {
    --  Soft_Dotted
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Soft_Dotted);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{STERM}\} {
    --  STerm
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.STerm);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{TERMINAL_PUNCTUATION}\} {
    --  Terminal_Punctuation
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Terminal_Punctuation);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{UNIFIED_IDEOGRAPH}\} {
    --  Unified_Ideograph
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Unified_Ideograph);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{UPPERCASE}\} {
-   --  
+   --  Uppercase
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Uppercase);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{VARIATION_SELECTOR}\} {
    --  Variation_Selector
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Variation_Selector);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{WHITE_SPACE}\} {
    --  White_Space
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.White_Space);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{XID_CONTINUE}\} {
    --  XID_Continue
 
+   YYLVAL := (Binary_Property, Ucd.XID_Continue);
+
+   return Token_Binary_Property;
    raise Program_Error;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{XID_START}\} {
    --  XID_Start
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.XID_Start);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{EXPANDS_ON_NFC}\} {
    --  Expands_On_NFC
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Expands_On_NFC);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{EXPANDS_ON_NFD}\} {
    --  Expands_On_NFD
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Expands_On_NFD);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{EXPANDS_ON_NFKC}\} {
    --  Expands_On_NFKC
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Expands_On_NFKC);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS>\\p\{{EXPANDS_ON_NFKD}\} {
    --  Expands_On_NFKD
 
-   raise Program_Error;
+   YYLVAL := (Binary_Property, Ucd.Expands_On_NFKD);
+
+   return Token_Binary_Property;
 }
 
 <INITIAL,CHARACTER_CLASS,MULTIPLICITY>\p{Pattern_White_Space}+ {
@@ -722,10 +827,12 @@ with Matreshka.Internals.Regexps.Compiler;
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Wide_Wide_Text_IO;
 with Matreshka.Internals.Regexps.Compiler;
+with Matreshka.Internals.Unicode.Ucd;
 ##
    use Ada.Characters.Wide_Wide_Latin_1;
    use Ada.Wide_Wide_Text_IO;
    use Matreshka.Internals.Regexps.Compiler;
+   use Matreshka.Internals.Unicode;
 
    procedure Enter_Start_Condition (Start : Integer) is null;
 

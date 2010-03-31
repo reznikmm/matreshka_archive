@@ -54,9 +54,18 @@
 %token Token_Subexpression_Capture_Begin
 %token Token_Subexpression_Begin
 %token Token_Subexpression_End
+%token Token_Binary_Property
+%token Token_Negative_Binary_Property
+
+%with Matreshka.Internals.Unicode.Ucd;
 
 {
-   type Kinds is (None, Match_Code_Point, Number, AST_Node);
+   type Kinds is
+    (None,
+     Match_Code_Point,
+     Number,
+     Binary_Property,
+     AST_Node);
 
    type YYSType (Kind : Kinds := None) is record
       case Kind is
@@ -68,6 +77,9 @@
 
          when Number =>
             Value : Natural;
+
+         when Binary_Property =>
+            Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
 
          when AST_Node =>
             Node : Positive;
@@ -206,6 +218,18 @@ singleton : singleton Token_Optional_Greedy
 
    $$ := (AST_Node, Process_Code_Point (Pattern, $1.Code));
 }
+  | Token_Binary_Property
+{
+   --  Character with binary property
+
+   $$ := (AST_Node, Process_Binary_Property (Pattern, $1.Property, False));
+}
+  | Token_Negative_Binary_Property
+{
+   --  Character with binary property
+
+   $$ := (AST_Node, Process_Binary_Property (Pattern, $1.Property, False));
+}
   | character_class
 {
    $$ := $1;
@@ -248,6 +272,7 @@ character_class_content : character_class_content Token_Code_Point Token_Charact
 ##
 with Ada.Wide_Wide_Text_IO; 
 with Matreshka.Internals.Regexps.Compiler;
+with Matreshka.Internals.Unicode.Ucd;
 ##
    use Ada.Wide_Wide_Text_IO;
    use Matreshka.Internals.Regexps;
@@ -298,6 +323,11 @@ with Matreshka.Internals.Regexps.Compiler;
      (Pattern    : not null Shared_Pattern_Access;
       Expression : Positive;
       Capture    : Boolean) return Positive is separate;
+
+   function Process_Binary_Property
+     (Pattern  : not null Shared_Pattern_Access;
+      Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+      Negative : Boolean) return Positive is separate;
 
    Pattern : Shared_Pattern_Access;
 

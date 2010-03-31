@@ -35,7 +35,6 @@ with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Wide_Wide_Text_IO;
 
 with Matreshka.Internals.Regexps.Compiler.Scanner.Tables;
-with Matreshka.Internals.Unicode;
 
 package body Matreshka.Internals.Regexps.Compiler.Scanner is
 
@@ -333,12 +332,12 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                end;
 
             when 33 =>
-               YYLVal := (Match_Code_Point, LF);
+               YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.LF);
             
                return Token_Code_Point;
 
             when 34 =>
-               YYLVal := (Match_Code_Point, CR);
+               YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.CR);
             
                return Token_Code_Point;
 
@@ -396,257 +395,362 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 43 =>
                --  ASCII_Hex_Digit
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.ASCII_Hex_Digit);
+            
+               return Token_Binary_Property;
 
             when 44 =>
                --  Alphabetic
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Alphabetic);
+            
+               return Token_Binary_Property;
 
             when 45 =>
                --  Bidi_Control
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Bidi_Control);
+            
+               return Token_Binary_Property;
 
             when 46 =>
                --  Bidi_Mirrored
             
+            --  XXX Bidi_Mirrored is absent in UCD now
+            --   YYLVAL := (Binary_Property, Ucd.Bidi_Mirrored);
+            --
+            --   return Token_Binary_Property;
                raise Program_Error;
 
             when 47 =>
                --  Composition_Exclusion
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Composition_Exclusion);
+            
+               return Token_Binary_Property;
 
             when 48 =>
                --  Full_Composition_Exclusion
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Full_Composition_Exclusion);
+            
+               return Token_Binary_Property;
 
             when 49 =>
                --  Dash
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Dash);
+            
+               return Token_Binary_Property;
 
             when 50 =>
                --  Deprecated
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Deprecated);
+            
+               return Token_Binary_Property;
 
             when 51 =>
                --  Default_Ignorable_Code_Point
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Default_Ignorable_Code_Point);
+            
+               return Token_Binary_Property;
 
             when 52 =>
                --  Diacritic
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Diacritic);
+            
+               return Token_Binary_Property;
 
             when 53 =>
                --  Extender
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Extender);
+            
+               return Token_Binary_Property;
 
             when 54 =>
                --  Grapheme_Base
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Grapheme_Base);
+            
+               return Token_Binary_Property;
 
             when 55 =>
                --  Grapheme_Extend
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Grapheme_Extend);
+            
+               return Token_Binary_Property;
 
             when 56 =>
                --  Grapheme_Link
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Grapheme_Link);
+            
+               return Token_Binary_Property;
 
             when 57 =>
                --  Hex_Digit
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Hex_Digit);
+            
+               return Token_Binary_Property;
 
             when 58 =>
                --  Hyphen
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Hyphen);
+            
+               return Token_Binary_Property;
 
             when 59 =>
                --  ID_Continue
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.ID_Continue);
+            
+               return Token_Binary_Property;
 
             when 60 =>
                --  Ideographic
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Ideographic);
+            
+               return Token_Binary_Property;
 
             when 61 =>
                --  ID_Start
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.ID_Start);
+            
+               return Token_Binary_Property;
 
             when 62 =>
                --  IDS_Binary_Operator
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.IDS_Binary_Operator);
+            
+               return Token_Binary_Property;
 
             when 63 =>
                --  IDS_Trinary_Operator
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.IDS_Trinary_Operator);
+            
+               return Token_Binary_Property;
 
             when 64 =>
                --  Join_Control
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Join_Control);
+            
+               return Token_Binary_Property;
 
             when 65 =>
                --  Logical_Order_Exception
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Logical_Order_Exception);
+            
+               return Token_Binary_Property;
 
             when 66 =>
                --  Lowercase
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Lowercase);
+            
+               return Token_Binary_Property;
 
             when 67 =>
                --  Math
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Math);
+            
+               return Token_Binary_Property;
 
             when 68 =>
                --  Noncharacter_Code_Point
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Noncharacter_Code_Point);
+            
+               return Token_Binary_Property;
 
             when 69 =>
                --  Other_Alphabetic
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Other_Alphabetic);
+            
+               return Token_Binary_Property;
 
             when 70 =>
                --  Other_Default_Ignorable_Code_Point
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Other_Default_Ignorable_Code_Point);
+            
+               return Token_Binary_Property;
 
             when 71 =>
                --  Other_Grapheme_Extend
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Other_Grapheme_Extend);
+            
+               return Token_Binary_Property;
 
             when 72 =>
                --  Other_ID_Continue
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Other_ID_Continue);
+            
+               return Token_Binary_Property;
 
             when 73 =>
                --  Other_ID_Start
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Other_ID_Start);
+            
+               return Token_Binary_Property;
 
             when 74 =>
                --  Other_Lowercase
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Other_Lowercase);
+            
+               return Token_Binary_Property;
 
             when 75 =>
                --  Other_Math
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Other_Math);
+            
+               return Token_Binary_Property;
 
             when 76 =>
                --  Other_Uppercase
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Other_Uppercase);
+            
+               return Token_Binary_Property;
 
             when 77 =>
                --  Pattern_Syntax
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Pattern_Syntax);
+            
+               return Token_Binary_Property;
 
             when 78 =>
                --  Pattern_White_Space
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Pattern_White_Space);
+            
+               return Token_Binary_Property;
 
             when 79 =>
                --  Quotation_Mark
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Quotation_Mark);
+            
+               return Token_Binary_Property;
 
             when 80 =>
                --  Radical
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Radical);
+            
+               return Token_Binary_Property;
 
             when 81 =>
                --  Soft_Dotted
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Soft_Dotted);
+            
+               return Token_Binary_Property;
 
             when 82 =>
                --  STerm
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.STerm);
+            
+               return Token_Binary_Property;
 
             when 83 =>
                --  Terminal_Punctuation
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Terminal_Punctuation);
+            
+               return Token_Binary_Property;
 
             when 84 =>
                --  Unified_Ideograph
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Unified_Ideograph);
+            
+               return Token_Binary_Property;
 
             when 85 =>
-               --  
+               --  Uppercase
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Uppercase);
+            
+               return Token_Binary_Property;
 
             when 86 =>
                --  Variation_Selector
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Variation_Selector);
+            
+               return Token_Binary_Property;
 
             when 87 =>
                --  White_Space
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.White_Space);
+            
+               return Token_Binary_Property;
 
             when 88 =>
                --  XID_Continue
             
+               YYLVAL := (Binary_Property, Ucd.XID_Continue);
+            
+               return Token_Binary_Property;
                raise Program_Error;
 
             when 89 =>
                --  XID_Start
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.XID_Start);
+            
+               return Token_Binary_Property;
 
             when 90 =>
                --  Expands_On_NFC
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Expands_On_NFC);
+            
+               return Token_Binary_Property;
 
             when 91 =>
                --  Expands_On_NFD
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Expands_On_NFD);
+            
+               return Token_Binary_Property;
 
             when 92 =>
                --  Expands_On_NFKC
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Expands_On_NFKC);
+            
+               return Token_Binary_Property;
 
             when 93 =>
                --  Expands_On_NFKD
             
-               raise Program_Error;
+               YYLVAL := (Binary_Property, Ucd.Expands_On_NFKD);
+            
+               return Token_Binary_Property;
 
             when 94 =>
                --  Sequence of whitespaces is ignored in all modes

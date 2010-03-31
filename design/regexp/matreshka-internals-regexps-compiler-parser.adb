@@ -81,6 +81,11 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Expression : Positive;
       Capture    : Boolean) return Positive;
 
+   function Process_Binary_Property
+     (Pattern  : not null Shared_Pattern_Access;
+      Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+      Negative : Boolean) return Positive;
+
    -------------------------
    -- Process_Alternation --
    -------------------------
@@ -95,6 +100,21 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
       return Pattern.Last;
    end Process_Alternation;
+
+   -----------------------------
+   -- Process_Binary_Property --
+   -----------------------------
+
+   function Process_Binary_Property
+     (Pattern  : not null Shared_Pattern_Access;
+      Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+      Negative : Boolean) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Match_Property, 0, Property, Negative);
+
+      return Pattern.Last;
+   end Process_Binary_Property;
 
    ----------------------------------------
    -- Process_Character_Class_Code_Point --
@@ -416,25 +436,35 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
                yyval := (AST_Node, Process_Code_Point (Pattern, yy.value_stack (yy.tos).Code));
 
             when 23 =>
-               yyval := yy.value_stack (yy.tos);
+               --  Character with binary property
+            
+               yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos).Property, False));
 
             when 24 =>
-               yyval := yy.value_stack (yy.tos-1);
+               --  Character with binary property
+            
+               yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos).Property, False));
 
             when 25 =>
-               yyval := (AST_Node, Process_Negate_Character_Class (Pattern, yy.value_stack (yy.tos-1).Node));
+               yyval := yy.value_stack (yy.tos);
 
             when 26 =>
+               yyval := yy.value_stack (yy.tos-1);
+
+            when 27 =>
+               yyval := (AST_Node, Process_Negate_Character_Class (Pattern, yy.value_stack (yy.tos-1).Node));
+
+            when 28 =>
                --  Add range of code points to character class
             
                yyval := (AST_Node, Process_Character_Class_Range (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-2).Code, yy.value_stack (yy.tos).Code));
 
-            when 27 =>
+            when 29 =>
                --  Add code point to character class
             
                yyval := (AST_Node, Process_Character_Class_Code_Point (Pattern, yy.value_stack (yy.tos-1).Node, yy.value_stack (yy.tos).Code));
 
-            when 28 =>
+            when 30 =>
                --  Initialize new character class node
             
                yyval := (AST_Node, Process_New_Character_Class (Pattern));

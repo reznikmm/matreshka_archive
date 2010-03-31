@@ -81,6 +81,11 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Expression : Positive;
       Capture    : Boolean) return Positive;
 
+   function Process_Binary_Property
+     (Pattern  : not null Shared_Pattern_Access;
+      Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+      Negative : Boolean) return Positive;
+
    -------------------------
    -- Process_Alternation --
    -------------------------
@@ -95,6 +100,21 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
       return Pattern.Last;
    end Process_Alternation;
+
+   -----------------------------
+   -- Process_Binary_Property --
+   -----------------------------
+
+   function Process_Binary_Property
+     (Pattern  : not null Shared_Pattern_Access;
+      Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+      Negative : Boolean) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Match_Property, 0, Property, Negative);
+
+      return Pattern.Last;
+   end Process_Binary_Property;
 
    ----------------------------------------
    -- Process_Character_Class_Code_Point --

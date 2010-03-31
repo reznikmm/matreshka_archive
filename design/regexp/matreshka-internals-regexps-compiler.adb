@@ -118,6 +118,16 @@ package body Matreshka.Internals.Regexps.Compiler is
                    & Wide_Wide_Character'Image
                       (Wide_Wide_Character'Val (Pattern.AST (N).Code)));
 
+            when N_Match_Property =>
+               Put
+                (' '
+                   & Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Image
+                      (Pattern.AST (N).Property));
+
+               if Pattern.AST (N).Negative then
+                  Put (" {negative}");
+               end if;
+
             when N_Member_Code =>
                Put
                 (' '
