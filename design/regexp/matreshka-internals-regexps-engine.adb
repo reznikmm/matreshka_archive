@@ -71,9 +71,9 @@ package body Matreshka.Internals.Regexps.Engine is
             when None =>
                Put ("nop");
 
-            when Jump =>
+            when I_Terminate =>
                Put
-                 ("jump ["
+                 ("terminate ["
                     & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
                     & "]");
 

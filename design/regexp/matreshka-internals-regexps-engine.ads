@@ -36,7 +36,14 @@ with Matreshka.Internals.Unicode;
 package Matreshka.Internals.Regexps.Engine is
 
    type Instruction_Kinds is
-     (None, Jump, Split, Any_Code_Point, Code_Point, Code_Range, Match, Save);
+     (None,
+      Split,
+      I_Terminate,
+      Any_Code_Point,
+      Code_Point,
+      Code_Range,
+      Match,
+      Save);
 
    type Instruction (Kind : Instruction_Kinds := None) is record
       case Kind is
@@ -53,7 +60,7 @@ package Matreshka.Internals.Regexps.Engine is
                when None =>
                   null;
 
-               when Jump =>
+               when I_Terminate =>
                   null;
 
                when Match =>

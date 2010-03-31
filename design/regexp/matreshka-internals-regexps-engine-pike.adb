@@ -94,6 +94,17 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                Next.Last := Next.Last + 1;
                Next.State (Next.Last) := (PC, SS);
 
+            when I_Terminate =>
+               for J in 1 .. Current.Last loop
+                  if Current.State (J).PC = Program (PC).Next then
+                     Current.State (J .. Current.Last - 1) :=
+                       Current.State (J + 1 .. Current.Last);
+                     Current.Last := Current.Last - 1;
+
+                     exit;
+                  end if;
+               end loop;
+
             when Split =>
                Add (Program (PC).Next, S);
                Add (Program (PC).Another, S);
@@ -121,6 +132,7 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
       PC      : Positive := 1;
       SS      : Regexps.Slice_Array (0 .. 9) := (others => (0, 1, 0, 1));
       Code    : Matreshka.Internals.Unicode.Code_Point;
+      T       : Integer;
 
    begin
       Match.Is_Matched := False;
@@ -146,10 +158,13 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
 
          Unchecked_Next (String.Value, SP, Code);
          SI := SI + 1;
+         T := 1;
 
-         for J in 1 .. Current.Last loop
-            PC := Current.State (J).PC;
-            SS := Current.State (J).SS;
+         loop
+            exit when T > Current.Last;
+
+            PC := Current.State (T).PC;
+            SS := Current.State (T).SS;
 
             case Program (PC).Kind is
                when Any_Code_Point =>
@@ -176,6 +191,8 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                when others =>
                   raise Program_Error;
             end case;
+
+            T := T + 1;
          end loop;
       end loop;
 

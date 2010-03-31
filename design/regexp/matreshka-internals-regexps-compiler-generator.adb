@@ -129,25 +129,97 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                Tails.Append (Instruction);
                Compile_Next;
 
+            when N_Member_Code =>
+               Last := Last + 1;
+               Instruction := Last;
+
+               if Pattern.AST (Expression).Next = 0 then
+                  Program (Instruction) :=
+                   (Code_Point, 0, Pattern.AST (Expression).Code);
+                  Tails.Clear;
+                  Tails.Append (Instruction);
+
+               else
+                  declare
+                     Ins_1 : Integer;
+                     Ins_2 : Integer;
+
+                  begin
+                     Last := Last + 1;
+                     Ins_1 := Last;
+                     Compile (Pattern.AST (Expression).Next, Ins_2, Tails);
+                     Program (Ins_1) :=
+                      (Code_Point, 0, Pattern.AST (Expression).Code);
+                     Tails.Append (Ins_1);
+                     Program (Instruction) := (Split, Ins_1, Ins_2);
+                  end;
+               end if;
+
             when N_Member_Range =>
                Last := Last + 1;
                Instruction := Last;
-               Tails.Clear;
 
-               Program (Instruction) :=
-                (Code_Range,
-                 0,
-                 False,
-                 Pattern.AST (Expression).Low,
-                 Pattern.AST (Expression).High);
-               Tails.Append (Instruction);
-               Compile_Next;
+               if Pattern.AST (Expression).Next = 0 then
+                  Program (Instruction) :=
+                   (Code_Range,
+                    0,
+                    False,
+                    Pattern.AST (Expression).Low,
+                    Pattern.AST (Expression).High);
+                  Tails.Clear;
+                  Tails.Append (Instruction);
+
+               else
+                  declare
+                     Ins_1 : Integer;
+                     Ins_2 : Integer;
+
+                  begin
+                     Last := Last + 1;
+                     Ins_1 := Last;
+                     Compile (Pattern.AST (Expression).Next, Ins_2, Tails);
+                     Program (Ins_1) :=
+                      (Code_Range,
+                       0,
+                       False,
+                       Pattern.AST (Expression).Low,
+                       Pattern.AST (Expression).High);
+                     Tails.Append (Ins_1);
+                     Program (Instruction) := (Split, Ins_1, Ins_2);
+                  end;
+               end if;
 
             when N_Character_Class =>
-               Compile (Pattern.AST (Expression).Members, Instruction, Tails);
+               if not Pattern.AST (Expression).Negated then
+                  Compile
+                   (Pattern.AST (Expression).Members, Instruction, Tails);
 
-               if Pattern.AST (Expression).Negated then
-                  Program (Instruction).Negate := True;
+               else
+                  declare
+                     Ins_1         : Integer;
+                     Ins_Terminate : Integer;
+                     Ins_Any       : Integer;
+
+                  begin
+                     Last := Last + 1;
+                     Instruction := Last;
+                     Tails.Clear;
+
+                     Compile
+                      (Pattern.AST (Expression).Members, Ins_1, Tails);
+
+                     Last := Last + 1;
+                     Ins_Terminate := Last;
+                     Last := Last + 1;
+                     Ins_Any := Last;
+
+                     Program (Instruction) := (Split, Ins_1, Ins_Any);
+                     Connect_Tails (Tails, Ins_Terminate);
+                     Program (Ins_Terminate) := (I_Terminate, Ins_Any);
+                     Program (Ins_Any) := (Any_Code_Point, 0);
+                     Tails.Clear;
+                     Tails.Append (Ins_Any);
+                  end;
                end if;
 
             when N_Multiplicity =>
