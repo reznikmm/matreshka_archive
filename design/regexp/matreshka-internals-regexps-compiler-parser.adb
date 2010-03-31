@@ -38,6 +38,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
    use Matreshka.Internals.Regexps.Compiler.Parser.Tables;
    use Matreshka.Internals.Regexps.Compiler.Scanner;
+   use Matreshka.Internals.Unicode.Ucd;
 
    function Process_Alternation
      (Pattern       : not null Shared_Pattern_Access;
@@ -83,7 +84,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
    function Process_Binary_Property
      (Pattern  : not null Shared_Pattern_Access;
-      Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+      Keyword  : Property_Specification_Keyword;
       Negative : Boolean) return Positive;
 
    -------------------------
@@ -107,11 +108,69 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
    function Process_Binary_Property
      (Pattern  : not null Shared_Pattern_Access;
-      Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
-      Negative : Boolean) return Positive is
+      Keyword  : Property_Specification_Keyword;
+      Negative : Boolean) return Positive
+   is
+      To_Ucd :
+        array (Property_Specification_Keyword range <>)
+          of Boolean_Properties :=
+           (ASCII_Hex_Digit              => ASCII_Hex_Digit,
+            Alphabetic                   => Alphabetic,
+            Bidi_Control                 => Bidi_Control,
+--            Bidi_Mirrored                => Bidi_Mirrored,
+            Composition_Exclusion        => Composition_Exclusion,
+            Full_Composition_Exclusion   => Full_Composition_Exclusion,
+            Dash                         => Dash,
+            Deprecated                   => Deprecated,
+            Default_Ignorable_Code_Point => Default_Ignorable_Code_Point,
+            Diacritic => Diacritic,
+            Extender => Extender,
+            Grapheme_Base => Grapheme_Base,
+            Grapheme_Extend => Grapheme_Extend,
+            Grapheme_Link => Grapheme_Link,
+            Hex_Digit => Hex_Digit,
+            Hyphen => Hyphen,
+            ID_Continue => ID_Continue,
+            Ideographic => Ideographic,
+            ID_Start => ID_Start,
+            IDS_Binary_Operator => IDS_Binary_Operator,
+            IDS_Trinary_Operator => IDS_Trinary_Operator,
+            Join_Control => Join_Control,
+            Logical_Order_Exception => Logical_Order_Exception,
+            Lowercase => Lowercase,
+            Math => Math,
+            Noncharacter_Code_Point => Noncharacter_Code_Point,
+            Other_Alphabetic => Other_Alphabetic,
+            Other_Default_Ignorable_Code_Point =>
+              Other_Default_Ignorable_Code_Point,
+            Other_Grapheme_Extend => Other_Grapheme_Extend,
+            Other_ID_Continue => Other_ID_Continue,
+            Other_ID_Start => Other_ID_Start,
+            Other_Lowercase => Other_Lowercase,
+            Other_Math => Other_Math,
+            Other_Uppercase => Other_Uppercase,
+            Pattern_Syntax => Pattern_Syntax,
+            Pattern_White_Space => Pattern_White_Space,
+            Quotation_Mark => Quotation_Mark,
+            Radical => Radical,
+            Soft_Dotted => Soft_Dotted,
+            STerm => STerm,
+            Terminal_Punctuation => Terminal_Punctuation,
+            Unified_Ideograph => Unified_Ideograph,
+            Uppercase => Uppercase,
+            Variation_Selector => Variation_Selector,
+            White_Space => White_Space,
+            XID_Continue => XID_Continue,
+            XID_Start => XID_Start,
+            Expands_On_NFC => Expands_On_NFC,
+            Expands_On_NFD => Expands_On_NFD,
+            Expands_On_NFKC => Expands_On_NFKC,
+            Expands_On_NFKD => Expands_On_NFKD);
+
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Match_Property, 0, Property, Negative);
+      Pattern.AST (Pattern.Last) :=
+       (N_Match_Property, 0, To_Ucd (Keyword), Negative);
 
       return Pattern.Last;
    end Process_Binary_Property;
@@ -439,12 +498,12 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
             when 23 =>
                --  Character with binary property
             
-               yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos-1).Property, False));
+               yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos-1).Keyword, False));
 
             when 24 =>
                --  Character with binary property, negative
             
-               yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos-1).Property, True));
+               yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos-1).Keyword, True));
 
             when 25 =>
                yyval := yy.value_stack (yy.tos);

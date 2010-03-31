@@ -57,16 +57,108 @@
 %token Token_Property_Begin_Positive
 %token Token_Property_Begin_Negative
 %token Token_Property_End
-%token Token_Binary_Property
+%token Token_Property_Keyword
 
 %with Matreshka.Internals.Unicode.Ucd;
 
 {
+   type Property_Specification_Keyword is
+    (ASCII_Hex_Digit,                 --  Names of binary properties
+     Alphabetic,
+     Bidi_Control,
+--     Bidi_Mirrored,
+     Composition_Exclusion,
+     Full_Composition_Exclusion,
+     Dash,
+     Deprecated,
+     Default_Ignorable_Code_Point,
+     Diacritic,
+     Extender,
+     Grapheme_Base,
+     Grapheme_Extend,
+     Grapheme_Link,
+     Hex_Digit,
+     Hyphen,
+     ID_Continue,
+     Ideographic,
+     ID_Start,
+     IDS_Binary_Operator,
+     IDS_Trinary_Operator,
+     Join_Control,
+     Logical_Order_Exception,
+     Lowercase,
+     Math,
+     Noncharacter_Code_Point,
+     Other_Alphabetic,
+     Other_Default_Ignorable_Code_Point,
+     Other_Grapheme_Extend,
+     Other_ID_Continue,
+     Other_ID_Start,
+     Other_Lowercase,
+     Other_Math,
+     Other_Uppercase,
+     Pattern_Syntax,
+     Pattern_White_Space,
+     Quotation_Mark,
+     Radical,
+     Soft_Dotted,
+     STerm,
+     Terminal_Punctuation,
+     Unified_Ideograph,
+     Uppercase,
+     Variation_Selector,
+     White_Space,
+     XID_Continue,
+     XID_Start,
+     Expands_On_NFC,
+     Expands_On_NFD,
+     Expands_On_NFKC,
+     Expands_On_NFKD,
+
+     Other,                --  Values of the General Category
+     Control,
+     Format,
+     Unassigned,
+     Private_Use,
+     Surrogate,
+     Letter,
+     Cased_Letter,
+     Lowercase_Letter,
+     Modifier_Letter,
+     Other_Letter,
+     Titlecase_Letter,
+     Uppercase_Letter,
+     Mark,
+     Spacing_Mark,
+     Enclosing_Mark,
+     Nonspacing_Mark,
+     Number,
+     Decimal_Number,
+     Letter_Number,
+     Other_Number,
+     Punctuation,
+     Connector_Punctuation,
+     Dash_Punctuation,
+     Close_Punctuation,
+     Final_Punctuation,
+     Initial_Punctuation,
+     Other_Punctuation,
+     Open_Punctuation,
+     Symbol,
+     Currency_Symbol,
+     Modifier_Symbol,
+     Math_Symbol,
+     Other_Symbol,
+     Separator,
+     Line_Separator,
+     Paragraph_Separator,
+     Space_Separator);
+
    type Kinds is
     (None,
      Match_Code_Point,
      Number,
-     Binary_Property,
+     Property_Keyword,
      AST_Node);
 
    type YYSType (Kind : Kinds := None) is record
@@ -80,8 +172,8 @@
          when Number =>
             Value : Natural;
 
-         when Binary_Property =>
-            Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+         when Property_Keyword =>
+            Keyword : Property_Specification_Keyword;
 
          when AST_Node =>
             Node : Positive;
@@ -220,17 +312,17 @@ singleton : singleton Token_Optional_Greedy
 
    $$ := (AST_Node, Process_Code_Point (Pattern, $1.Code));
 }
-  | Token_Property_Begin_Positive Token_Binary_Property Token_Property_End
+  | Token_Property_Begin_Positive Token_Property_Keyword Token_Property_End
 {
    --  Character with binary property
 
-   $$ := (AST_Node, Process_Binary_Property (Pattern, $2.Property, False));
+   $$ := (AST_Node, Process_Binary_Property (Pattern, $2.Keyword, False));
 }
-  | Token_Property_Begin_Negative Token_Binary_Property Token_Property_End
+  | Token_Property_Begin_Negative Token_Property_Keyword Token_Property_End
 {
    --  Character with binary property, negative
 
-   $$ := (AST_Node, Process_Binary_Property (Pattern, $2.Property, True));
+   $$ := (AST_Node, Process_Binary_Property (Pattern, $2.Keyword, True));
 }
   | character_class
 {
@@ -328,7 +420,7 @@ with Matreshka.Internals.Unicode.Ucd;
 
    function Process_Binary_Property
      (Pattern  : not null Shared_Pattern_Access;
-      Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+      Keyword  : Property_Specification_Keyword;
       Negative : Boolean) return Positive is separate;
 
    Pattern : Shared_Pattern_Access;

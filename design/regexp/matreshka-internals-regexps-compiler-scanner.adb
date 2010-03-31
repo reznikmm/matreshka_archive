@@ -344,32 +344,32 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                return Token_Code_Point;
 
             when 35 =>
-               YYLVal := (Match_Code_Point, HT);
+               YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.HT);
             
                return Token_Code_Point;
 
             when 36 =>
-               YYLVal := (Match_Code_Point, BEL);
+               YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.BEL);
             
                return Token_Code_Point;
 
             when 37 =>
-               YYLVal := (Match_Code_Point, ESC);
+               YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.ESC);
             
                return Token_Code_Point;
 
             when 38 =>
-               YYLVal := (Match_Code_Point, FF);
+               YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.FF);
             
                return Token_Code_Point;
 
             when 39 =>
-               YYLVal := (Match_Code_Point, VT);
+               YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.VT);
             
                return Token_Code_Point;
 
             when 40 =>
-            --   YYLVal := (Match_Code_Point, VT);
+            --   YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.VT);
             
                raise Program_Error;
                return Token_Code_Point;
@@ -449,361 +449,361 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 49 =>
                --  ASCII_Hex_Digit
             
-               YYLVAL := (Binary_Property, Ucd.ASCII_Hex_Digit);
+               YYLVAL := (Property_Keyword, ASCII_Hex_Digit);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 50 =>
                --  Alphabetic
             
-               YYLVAL := (Binary_Property, Ucd.Alphabetic);
+               YYLVAL := (Property_Keyword, Alphabetic);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 51 =>
                --  Bidi_Control
             
-               YYLVAL := (Binary_Property, Ucd.Bidi_Control);
+               YYLVAL := (Property_Keyword, Bidi_Control);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 52 =>
                --  Bidi_Mirrored
             
             --  XXX Bidi_Mirrored is absent in UCD now
-            --   YYLVAL := (Binary_Property, Ucd.Bidi_Mirrored);
+            --   YYLVAL := (Property_Keyword, Bidi_Mirrored);
             --
-            --   return Token_Binary_Property;
+            --   return Token_Property_Keyword;
                raise Program_Error;
 
             when 53 =>
                --  Composition_Exclusion
             
-               YYLVAL := (Binary_Property, Ucd.Composition_Exclusion);
+               YYLVAL := (Property_Keyword, Composition_Exclusion);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 54 =>
                --  Full_Composition_Exclusion
             
-               YYLVAL := (Binary_Property, Ucd.Full_Composition_Exclusion);
+               YYLVAL := (Property_Keyword, Full_Composition_Exclusion);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 55 =>
                --  Dash
             
-               YYLVAL := (Binary_Property, Ucd.Dash);
+               YYLVAL := (Property_Keyword, Dash);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 56 =>
                --  Deprecated
             
-               YYLVAL := (Binary_Property, Ucd.Deprecated);
+               YYLVAL := (Property_Keyword, Deprecated);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 57 =>
                --  Default_Ignorable_Code_Point
             
-               YYLVAL := (Binary_Property, Ucd.Default_Ignorable_Code_Point);
+               YYLVAL := (Property_Keyword, Default_Ignorable_Code_Point);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 58 =>
                --  Diacritic
             
-               YYLVAL := (Binary_Property, Ucd.Diacritic);
+               YYLVAL := (Property_Keyword, Diacritic);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 59 =>
                --  Extender
             
-               YYLVAL := (Binary_Property, Ucd.Extender);
+               YYLVAL := (Property_Keyword, Extender);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 60 =>
                --  Grapheme_Base
             
-               YYLVAL := (Binary_Property, Ucd.Grapheme_Base);
+               YYLVAL := (Property_Keyword, Grapheme_Base);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 61 =>
                --  Grapheme_Extend
             
-               YYLVAL := (Binary_Property, Ucd.Grapheme_Extend);
+               YYLVAL := (Property_Keyword, Grapheme_Extend);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 62 =>
                --  Grapheme_Link
             
-               YYLVAL := (Binary_Property, Ucd.Grapheme_Link);
+               YYLVAL := (Property_Keyword, Grapheme_Link);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 63 =>
                --  Hex_Digit
             
-               YYLVAL := (Binary_Property, Ucd.Hex_Digit);
+               YYLVAL := (Property_Keyword, Hex_Digit);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 64 =>
                --  Hyphen
             
-               YYLVAL := (Binary_Property, Ucd.Hyphen);
+               YYLVAL := (Property_Keyword, Hyphen);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 65 =>
                --  ID_Continue
             
-               YYLVAL := (Binary_Property, Ucd.ID_Continue);
+               YYLVAL := (Property_Keyword, ID_Continue);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 66 =>
                --  Ideographic
             
-               YYLVAL := (Binary_Property, Ucd.Ideographic);
+               YYLVAL := (Property_Keyword, Ideographic);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 67 =>
                --  ID_Start
             
-               YYLVAL := (Binary_Property, Ucd.ID_Start);
+               YYLVAL := (Property_Keyword, ID_Start);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 68 =>
                --  IDS_Binary_Operator
             
-               YYLVAL := (Binary_Property, Ucd.IDS_Binary_Operator);
+               YYLVAL := (Property_Keyword, IDS_Binary_Operator);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 69 =>
                --  IDS_Trinary_Operator
             
-               YYLVAL := (Binary_Property, Ucd.IDS_Trinary_Operator);
+               YYLVAL := (Property_Keyword, IDS_Trinary_Operator);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 70 =>
                --  Join_Control
             
-               YYLVAL := (Binary_Property, Ucd.Join_Control);
+               YYLVAL := (Property_Keyword, Join_Control);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 71 =>
                --  Logical_Order_Exception
             
-               YYLVAL := (Binary_Property, Ucd.Logical_Order_Exception);
+               YYLVAL := (Property_Keyword, Logical_Order_Exception);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 72 =>
                --  Lowercase
             
-               YYLVAL := (Binary_Property, Ucd.Lowercase);
+               YYLVAL := (Property_Keyword, Lowercase);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 73 =>
                --  Math
             
-               YYLVAL := (Binary_Property, Ucd.Math);
+               YYLVAL := (Property_Keyword, Math);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 74 =>
                --  Noncharacter_Code_Point
             
-               YYLVAL := (Binary_Property, Ucd.Noncharacter_Code_Point);
+               YYLVAL := (Property_Keyword, Noncharacter_Code_Point);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 75 =>
                --  Other_Alphabetic
             
-               YYLVAL := (Binary_Property, Ucd.Other_Alphabetic);
+               YYLVAL := (Property_Keyword, Other_Alphabetic);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 76 =>
                --  Other_Default_Ignorable_Code_Point
             
-               YYLVAL := (Binary_Property, Ucd.Other_Default_Ignorable_Code_Point);
+               YYLVAL := (Property_Keyword, Other_Default_Ignorable_Code_Point);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 77 =>
                --  Other_Grapheme_Extend
             
-               YYLVAL := (Binary_Property, Ucd.Other_Grapheme_Extend);
+               YYLVAL := (Property_Keyword, Other_Grapheme_Extend);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 78 =>
                --  Other_ID_Continue
             
-               YYLVAL := (Binary_Property, Ucd.Other_ID_Continue);
+               YYLVAL := (Property_Keyword, Other_ID_Continue);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 79 =>
                --  Other_ID_Start
             
-               YYLVAL := (Binary_Property, Ucd.Other_ID_Start);
+               YYLVAL := (Property_Keyword, Other_ID_Start);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 80 =>
                --  Other_Lowercase
             
-               YYLVAL := (Binary_Property, Ucd.Other_Lowercase);
+               YYLVAL := (Property_Keyword, Other_Lowercase);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 81 =>
                --  Other_Math
             
-               YYLVAL := (Binary_Property, Ucd.Other_Math);
+               YYLVAL := (Property_Keyword, Other_Math);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 82 =>
                --  Other_Uppercase
             
-               YYLVAL := (Binary_Property, Ucd.Other_Uppercase);
+               YYLVAL := (Property_Keyword, Other_Uppercase);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 83 =>
                --  Pattern_Syntax
             
-               YYLVAL := (Binary_Property, Ucd.Pattern_Syntax);
+               YYLVAL := (Property_Keyword, Pattern_Syntax);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 84 =>
                --  Pattern_White_Space
             
-               YYLVAL := (Binary_Property, Ucd.Pattern_White_Space);
+               YYLVAL := (Property_Keyword, Pattern_White_Space);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 85 =>
                --  Quotation_Mark
             
-               YYLVAL := (Binary_Property, Ucd.Quotation_Mark);
+               YYLVAL := (Property_Keyword, Quotation_Mark);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 86 =>
                --  Radical
             
-               YYLVAL := (Binary_Property, Ucd.Radical);
+               YYLVAL := (Property_Keyword, Radical);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 87 =>
                --  Soft_Dotted
             
-               YYLVAL := (Binary_Property, Ucd.Soft_Dotted);
+               YYLVAL := (Property_Keyword, Soft_Dotted);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 88 =>
                --  STerm
             
-               YYLVAL := (Binary_Property, Ucd.STerm);
+               YYLVAL := (Property_Keyword, STerm);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 89 =>
                --  Terminal_Punctuation
             
-               YYLVAL := (Binary_Property, Ucd.Terminal_Punctuation);
+               YYLVAL := (Property_Keyword, Terminal_Punctuation);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 90 =>
                --  Unified_Ideograph
             
-               YYLVAL := (Binary_Property, Ucd.Unified_Ideograph);
+               YYLVAL := (Property_Keyword, Unified_Ideograph);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 91 =>
                --  Uppercase
             
-               YYLVAL := (Binary_Property, Ucd.Uppercase);
+               YYLVAL := (Property_Keyword, Uppercase);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 92 =>
                --  Variation_Selector
             
-               YYLVAL := (Binary_Property, Ucd.Variation_Selector);
+               YYLVAL := (Property_Keyword, Variation_Selector);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 93 =>
                --  White_Space
             
-               YYLVAL := (Binary_Property, Ucd.White_Space);
+               YYLVAL := (Property_Keyword, White_Space);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 94 =>
                --  XID_Continue
             
-               YYLVAL := (Binary_Property, Ucd.XID_Continue);
+               YYLVAL := (Property_Keyword, XID_Continue);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 95 =>
                --  XID_Start
             
-               YYLVAL := (Binary_Property, Ucd.XID_Start);
+               YYLVAL := (Property_Keyword, XID_Start);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 96 =>
                --  Expands_On_NFC
             
-               YYLVAL := (Binary_Property, Ucd.Expands_On_NFC);
+               YYLVAL := (Property_Keyword, Expands_On_NFC);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 97 =>
                --  Expands_On_NFD
             
-               YYLVAL := (Binary_Property, Ucd.Expands_On_NFD);
+               YYLVAL := (Property_Keyword, Expands_On_NFD);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 98 =>
                --  Expands_On_NFKC
             
-               YYLVAL := (Binary_Property, Ucd.Expands_On_NFKC);
+               YYLVAL := (Property_Keyword, Expands_On_NFKC);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 99 =>
                --  Expands_On_NFKD
             
-               YYLVAL := (Binary_Property, Ucd.Expands_On_NFKD);
+               YYLVAL := (Property_Keyword, Expands_On_NFKD);
             
-               return Token_Binary_Property;
+               return Token_Property_Keyword;
 
             when 100 =>
                --  Pattern syntax character in property specification
