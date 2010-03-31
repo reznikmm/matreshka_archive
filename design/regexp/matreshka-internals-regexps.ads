@@ -73,6 +73,7 @@ package Matreshka.Internals.Regexps is
       N_Match_Property,
       N_Member_Code,
       N_Member_Range,
+      N_Member_Property,
       N_Character_Class,
       N_Multiplicity,
       N_Alternation);
@@ -103,7 +104,7 @@ package Matreshka.Internals.Regexps is
 		  --  Code point to match or code point as member of character
                   --  class.
 
-               when N_Match_Property =>
+               when N_Match_Property | N_Member_Property =>
                   Value    : Property_Value;
                   Negative : Boolean;
 

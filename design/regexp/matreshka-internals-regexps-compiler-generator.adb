@@ -202,6 +202,38 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                   end;
                end if;
 
+            when N_Member_Property =>
+               Last := Last + 1;
+               Instruction := Last;
+
+               if Pattern.AST (Expression).Next = 0 then
+                  Program (Instruction) :=
+                   (I_Property,
+                    0,
+                    Pattern.AST (Expression).Value,
+                    Pattern.AST (Expression).Negative);
+                  Tails.Clear;
+                  Tails.Append (Instruction);
+
+               else
+                  declare
+                     Ins_1 : Integer;
+                     Ins_2 : Integer;
+
+                  begin
+                     Last := Last + 1;
+                     Ins_1 := Last;
+                     Compile (Pattern.AST (Expression).Next, Ins_2, Tails);
+                     Program (Ins_1) :=
+                      (I_Property,
+                       0,
+                       Pattern.AST (Expression).Value,
+                       Pattern.AST (Expression).Negative);
+                     Tails.Append (Ins_1);
+                     Program (Instruction) := (Split, Ins_1, Ins_2);
+                  end;
+               end if;
+
             when N_Character_Class =>
                if not Pattern.AST (Expression).Negated then
                   Compile

@@ -112,13 +112,13 @@ package body Matreshka.Internals.Regexps.Compiler is
                Dump (Pattern.AST (N).Subexpression);
                Indent := Indent - Offset;
 
-            when N_Match_Code =>
+            when N_Match_Code | N_Member_Code =>
                Put
                 (' '
                    & Wide_Wide_Character'Image
                       (Wide_Wide_Character'Val (Pattern.AST (N).Code)));
 
-            when N_Match_Property =>
+            when N_Match_Property | N_Member_Property =>
                case Pattern.AST (N).Value.Kind is
                   when None =>
                      null;
@@ -145,12 +145,6 @@ package body Matreshka.Internals.Regexps.Compiler is
                if Pattern.AST (N).Negative then
                   Put (" {negative}");
                end if;
-
-            when N_Member_Code =>
-               Put
-                (' '
-                   & Wide_Wide_Character'Image
-                      (Wide_Wide_Character'Val (Pattern.AST (N).Code)));
 
             when N_Member_Range =>
                Put

@@ -352,6 +352,18 @@ character_class_content : character_class_content Token_Code_Point Token_Charact
 
    $$ := (AST_Node, Process_Character_Class_Code_Point (Pattern, $1.Node, $2.Code));
 }
+  | character_class_content Token_Property_Begin_Positive Token_Property_Keyword Token_Property_End
+{
+   --  Character with binary property
+
+   $$ := (AST_Node, Process_Character_Class_Binary_Property (Pattern, $1.Node, $3.Keyword, False));
+}
+  | character_class_content Token_Property_Begin_Negative Token_Property_Keyword Token_Property_End
+{
+   --  Character with binary property, negative
+
+   $$ := (AST_Node, Process_Character_Class_Binary_Property (Pattern, $1.Node, $3.Keyword, True));
+}
   |
 {
    --  Initialize new character class node
@@ -420,6 +432,12 @@ with Matreshka.Internals.Unicode.Ucd;
 
    function Process_Binary_Property
      (Pattern  : not null Shared_Pattern_Access;
+      Keyword  : Property_Specification_Keyword;
+      Negative : Boolean) return Positive is separate;
+
+   function Process_Character_Class_Binary_Property
+     (Pattern  : not null Shared_Pattern_Access;
+      Class    : Positive;
       Keyword  : Property_Specification_Keyword;
       Negative : Boolean) return Positive is separate;
 

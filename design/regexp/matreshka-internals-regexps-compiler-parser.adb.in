@@ -87,6 +87,141 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Keyword  : Property_Specification_Keyword;
       Negative : Boolean) return Positive;
 
+   function Process_Character_Class_Binary_Property
+     (Pattern  : not null Shared_Pattern_Access;
+      Class    : Positive;
+      Keyword  : Property_Specification_Keyword;
+      Negative : Boolean) return Positive;
+
+   Binary_To_Ucd : constant
+     array (Property_Specification_Keyword range <>) of Boolean_Properties :=
+      (ASCII_Hex_Digit              => ASCII_Hex_Digit,
+       Alphabetic                   => Alphabetic,
+       Bidi_Control                 => Bidi_Control,
+--       Bidi_Mirrored                => Bidi_Mirrored,
+       Composition_Exclusion        => Composition_Exclusion,
+       Full_Composition_Exclusion   => Full_Composition_Exclusion,
+       Dash                         => Dash,
+       Deprecated                   => Deprecated,
+       Default_Ignorable_Code_Point => Default_Ignorable_Code_Point,
+       Diacritic                    => Diacritic,
+       Extender                     => Extender,
+       Grapheme_Base                => Grapheme_Base,
+       Grapheme_Extend              => Grapheme_Extend,
+       Grapheme_Link                => Grapheme_Link,
+       Hex_Digit                    => Hex_Digit,
+       Hyphen                       => Hyphen,
+       ID_Continue                  => ID_Continue,
+       Ideographic                  => Ideographic,
+       ID_Start                     => ID_Start,
+       IDS_Binary_Operator          => IDS_Binary_Operator,
+       IDS_Trinary_Operator         => IDS_Trinary_Operator,
+       Join_Control                 => Join_Control,
+       Logical_Order_Exception      => Logical_Order_Exception,
+       Lowercase                    => Lowercase,
+       Math                         => Math,
+       Noncharacter_Code_Point      => Noncharacter_Code_Point,
+       Other_Alphabetic             => Other_Alphabetic,
+       Other_Default_Ignorable_Code_Point =>
+         Other_Default_Ignorable_Code_Point,
+       Other_Grapheme_Extend        => Other_Grapheme_Extend,
+       Other_ID_Continue            => Other_ID_Continue,
+       Other_ID_Start               => Other_ID_Start,
+       Other_Lowercase              => Other_Lowercase,
+       Other_Math                   => Other_Math,
+       Other_Uppercase              => Other_Uppercase,
+       Pattern_Syntax               => Pattern_Syntax,
+       Pattern_White_Space          => Pattern_White_Space,
+       Quotation_Mark               => Quotation_Mark,
+       Radical                      => Radical,
+       Soft_Dotted                  => Soft_Dotted,
+       STerm                        => STerm,
+       Terminal_Punctuation         => Terminal_Punctuation,
+       Unified_Ideograph            => Unified_Ideograph,
+       Uppercase                    => Uppercase,
+       Variation_Selector           => Variation_Selector,
+       White_Space                  => White_Space,
+       XID_Continue                 => XID_Continue,
+       XID_Start                    => XID_Start,
+       Expands_On_NFC               => Expands_On_NFC,
+       Expands_On_NFD               => Expands_On_NFD,
+       Expands_On_NFKC              => Expands_On_NFKC,
+       Expands_On_NFKD              => Expands_On_NFKD);
+
+   GC_To_Ucd : constant
+     array (Property_Specification_Keyword range <>)
+       of General_Category_Flags :=
+        (Other                 =>
+          (Control | Format | Unassigned | Private_Use | Surrogate => True,
+           others => False),
+         Control               => (Control => True, others => False),
+         Format                => (Format => True, others => False),
+         Unassigned            => (Unassigned => True, others => False),
+         Private_Use           => (Private_Use => True, others => False),
+         Surrogate             => (Surrogate => True, others => False),
+         Letter                =>
+          (Lowercase_Letter
+             | Modifier_Letter
+             | Other_Letter
+             | Titlecase_Letter
+             | Uppercase_Letter => True,
+           others => False),
+         Cased_Letter          =>
+          (Lowercase_Letter | Titlecase_Letter | Uppercase_Letter => True,
+           others => False),
+         Lowercase_Letter      => (Lowercase_Letter => True, others => False),
+         Modifier_Letter       => (Modifier_Letter => True, others => False),
+         Other_Letter          => (Other_Letter => True, others => False),
+         Titlecase_Letter      => (Titlecase_Letter => True, others => False),
+         Uppercase_Letter      => (Uppercase_Letter => True, others => False),
+         Mark                  =>
+          (Spacing_Mark | Enclosing_Mark | Nonspacing_Mark => True,
+           others => False),
+         Spacing_Mark          => (Spacing_Mark => True, others => False),
+         Enclosing_Mark        => (Enclosing_Mark => True, others => False),
+         Nonspacing_Mark       => (Nonspacing_Mark => True, others => False),
+         Number                =>
+          (Decimal_Number | Letter_Number | Other_Number => True,
+           others => False),
+         Decimal_Number        => (Decimal_Number => True, others => False),
+         Letter_Number         => (Letter_Number => True, others => False),
+         Other_Number          => (Other_Number => True, others => False),
+         Punctuation           =>
+          (Connector_Punctuation
+             | Dash_Punctuation
+             | Close_Punctuation
+             | Final_Punctuation
+             | Initial_Punctuation
+             | Other_Punctuation
+             | Open_Punctuation => True,
+           others => False),
+         Connector_Punctuation =>
+          (Connector_Punctuation => True, others => False),
+         Dash_Punctuation      => (Dash_Punctuation => True, others => False),
+         Close_Punctuation     => (Close_Punctuation => True, others => False),
+         Final_Punctuation     => (Final_Punctuation => True, others => False),
+         Initial_Punctuation   =>
+          (Initial_Punctuation => True, others => False),
+         Other_Punctuation     => (Other_Punctuation => True, others => False),
+         Open_Punctuation      => (Open_Punctuation => True, others => False),
+         Symbol                =>
+          (Currency_Symbol
+             | Modifier_Symbol
+             | Math_Symbol
+             | Other_Symbol => True,
+           others => False),
+         Currency_Symbol       => (Currency_Symbol => True, others => False),
+         Modifier_Symbol       => (Modifier_Symbol => True, others => False),
+         Math_Symbol           => (Math_Symbol => True, others => False),
+         Other_Symbol          => (Other_Symbol => True, others => False),
+         Separator             =>
+          (Line_Separator | Paragraph_Separator | Space_Separator => True,
+           others => False),
+         Line_Separator        => (Line_Separator => True, others => False),
+         Paragraph_Separator   =>
+          (Paragraph_Separator => True, others => False),
+         Space_Separator       => (Space_Separator => True, others => False));
+
    -------------------------
    -- Process_Alternation --
    -------------------------
@@ -97,7 +232,8 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Alternative_2 : Positive) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Alternation, 0, Alternative_1, Alternative_2);
+      Pattern.AST (Pattern.Last) :=
+       (N_Alternation, 0, Alternative_1, Alternative_2);
 
       return Pattern.Last;
    end Process_Alternation;
@@ -109,106 +245,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    function Process_Binary_Property
      (Pattern  : not null Shared_Pattern_Access;
       Keyword  : Property_Specification_Keyword;
-      Negative : Boolean) return Positive
-   is
-      Binary_To_Ucd : constant
-        array (Property_Specification_Keyword range <>)
-          of Boolean_Properties :=
-           (ASCII_Hex_Digit              => ASCII_Hex_Digit,
-            Alphabetic                   => Alphabetic,
-            Bidi_Control                 => Bidi_Control,
---            Bidi_Mirrored                => Bidi_Mirrored,
-            Composition_Exclusion        => Composition_Exclusion,
-            Full_Composition_Exclusion   => Full_Composition_Exclusion,
-            Dash                         => Dash,
-            Deprecated                   => Deprecated,
-            Default_Ignorable_Code_Point => Default_Ignorable_Code_Point,
-            Diacritic => Diacritic,
-            Extender => Extender,
-            Grapheme_Base => Grapheme_Base,
-            Grapheme_Extend => Grapheme_Extend,
-            Grapheme_Link => Grapheme_Link,
-            Hex_Digit => Hex_Digit,
-            Hyphen => Hyphen,
-            ID_Continue => ID_Continue,
-            Ideographic => Ideographic,
-            ID_Start => ID_Start,
-            IDS_Binary_Operator => IDS_Binary_Operator,
-            IDS_Trinary_Operator => IDS_Trinary_Operator,
-            Join_Control => Join_Control,
-            Logical_Order_Exception => Logical_Order_Exception,
-            Lowercase => Lowercase,
-            Math => Math,
-            Noncharacter_Code_Point => Noncharacter_Code_Point,
-            Other_Alphabetic => Other_Alphabetic,
-            Other_Default_Ignorable_Code_Point =>
-              Other_Default_Ignorable_Code_Point,
-            Other_Grapheme_Extend => Other_Grapheme_Extend,
-            Other_ID_Continue => Other_ID_Continue,
-            Other_ID_Start => Other_ID_Start,
-            Other_Lowercase => Other_Lowercase,
-            Other_Math => Other_Math,
-            Other_Uppercase => Other_Uppercase,
-            Pattern_Syntax => Pattern_Syntax,
-            Pattern_White_Space => Pattern_White_Space,
-            Quotation_Mark => Quotation_Mark,
-            Radical => Radical,
-            Soft_Dotted => Soft_Dotted,
-            STerm => STerm,
-            Terminal_Punctuation => Terminal_Punctuation,
-            Unified_Ideograph => Unified_Ideograph,
-            Uppercase => Uppercase,
-            Variation_Selector => Variation_Selector,
-            White_Space => White_Space,
-            XID_Continue => XID_Continue,
-            XID_Start => XID_Start,
-            Expands_On_NFC => Expands_On_NFC,
-            Expands_On_NFD => Expands_On_NFD,
-            Expands_On_NFKC => Expands_On_NFKC,
-            Expands_On_NFKD => Expands_On_NFKD);
-
-      GC_To_Ucd : constant
-        array (Property_Specification_Keyword range <>)
-          of General_Category_Flags :=
-           (Other => (Control | Format | Unassigned | Private_Use | Surrogate => True, others => False),
-            Control => (Control => True, others => False),
-            Format => (Format => True, others => False),
-            Unassigned => (Unassigned => True, others => False),
-            Private_Use => (Private_Use => True, others => False),
-            Surrogate => (Surrogate => True, others => False),
-            Letter => (Lowercase_Letter | Modifier_Letter | Other_Letter | Titlecase_Letter | Uppercase_Letter => True, others => False),
-            Cased_Letter => (Lowercase_Letter | Titlecase_Letter | Uppercase_Letter => True, others => False),
-            Lowercase_Letter => (Lowercase_Letter => True, others => False),
-            Modifier_Letter => (Modifier_Letter => True, others => False),
-            Other_Letter => (Other_Letter => True, others => False),
-            Titlecase_Letter => (Titlecase_Letter => True, others => False),
-            Uppercase_Letter => (Uppercase_Letter => True, others => False),
-            Mark => (Spacing_Mark | Enclosing_Mark | Nonspacing_Mark => True, others => False),
-            Spacing_Mark => (Spacing_Mark => True, others => False),
-            Enclosing_Mark => (Enclosing_Mark => True, others => False),
-            Nonspacing_Mark => (Nonspacing_Mark => True, others => False),
-            Number => (Decimal_Number | Letter_Number | Other_Number => True, others => False),
-            Decimal_Number => (Decimal_Number => True, others => False),
-            Letter_Number => (Letter_Number => True, others => False),
-            Other_Number => (Other_Number => True, others => False),
-            Punctuation => (Connector_Punctuation | Dash_Punctuation | Close_Punctuation | Final_Punctuation | Initial_Punctuation | Other_Punctuation | Open_Punctuation => True, others => False),
-            Connector_Punctuation => (Connector_Punctuation => True, others => False),
-            Dash_Punctuation => (Dash_Punctuation => True, others => False),
-            Close_Punctuation => (Close_Punctuation => True, others => False),
-            Final_Punctuation => (Final_Punctuation => True, others => False),
-            Initial_Punctuation => (Initial_Punctuation => True, others => False),
-            Other_Punctuation => (Other_Punctuation => True, others => False),
-            Open_Punctuation => (Open_Punctuation => True, others => False),
-            Symbol => (Currency_Symbol | Modifier_Symbol | Math_Symbol | Other_Symbol => True, others => False),
-            Currency_Symbol => (Currency_Symbol => True, others => False),
-            Modifier_Symbol => (Modifier_Symbol => True, others => False),
-            Math_Symbol => (Math_Symbol => True, others => False),
-            Other_Symbol => (Other_Symbol => True, others => False),
-            Separator => (Line_Separator | Paragraph_Separator | Space_Separator => True, others => False),
-            Line_Separator => (Line_Separator => True, others => False),
-            Paragraph_Separator => (Paragraph_Separator => True, others => False),
-            Space_Separator => (Space_Separator => True, others => False));
-
+      Negative : Boolean) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
 
@@ -218,7 +255,9 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
       elsif Keyword in GC_To_UCD'Range then
          Pattern.AST (Pattern.Last) :=
-          (N_Match_Property, 0, (General_Category, GC_To_Ucd (Keyword)), Negative);
+          (N_Match_Property,
+           0,
+           (General_Category, GC_To_Ucd (Keyword)), Negative);
 
       else
          raise Program_Error;
@@ -226,6 +265,36 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
       return Pattern.Last;
    end Process_Binary_Property;
+
+   ---------------------------------------------
+   -- Process_Character_Class_Binary_Property --
+   ---------------------------------------------
+
+   function Process_Character_Class_Binary_Property
+     (Pattern  : not null Shared_Pattern_Access;
+      Class    : Positive;
+      Keyword  : Property_Specification_Keyword;
+      Negative : Boolean) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+
+      if Keyword in Binary_To_Ucd'Range then
+         Pattern.AST (Pattern.Last) :=
+          (N_Member_Property, 0, (Binary, Binary_To_Ucd (Keyword)), Negative);
+
+      elsif Keyword in GC_To_UCD'Range then
+         Pattern.AST (Pattern.Last) :=
+          (N_Member_Property,
+           0,
+           (General_Category, GC_To_Ucd (Keyword)), Negative);
+
+      else
+         raise Program_Error;
+      end if;
+      Add (Pattern.all, Class, Pattern.Last);
+
+      return Class;
+   end Process_Character_Class_Binary_Property;
 
    ----------------------------------------
    -- Process_Character_Class_Code_Point --
