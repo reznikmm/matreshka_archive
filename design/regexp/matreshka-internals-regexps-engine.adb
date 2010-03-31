@@ -87,13 +87,13 @@ package body Matreshka.Internals.Regexps.Engine is
 
             when Any_Code_Point =>
                Put
-                 ("any ["
+                 ("char is any ["
                     & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
                     & "]");
 
             when Code_Point =>
                Put
-                 ("char "
+                 ("char is "
                     & Wide_Wide_Character'Wide_Wide_Image
                        (Wide_Wide_Character'Val (Program (J).Code))
                     & " ["
@@ -102,7 +102,7 @@ package body Matreshka.Internals.Regexps.Engine is
 
             when Code_Range =>
                Put
-                 ("range "
+                 ("char in "
                     & Wide_Wide_Character'Wide_Wide_Image
                        (Wide_Wide_Character'Val (Program (J).Low))
                     & " .. "
