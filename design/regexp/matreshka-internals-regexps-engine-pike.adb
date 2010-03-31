@@ -193,13 +193,31 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                   end if;
 
                when I_Property =>
-                  if Program (PC).Negative
-                    xor Element
-                         (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
-                           (Program (PC).Property)
-                  then
-                     Add (Program (PC).Next, SS);
-                  end if;
+                  declare
+                     R : Boolean;
+
+                  begin
+                     case Program (PC).Value.Kind is
+                        when None =>
+                           raise Program_Error;
+
+                        when General_Category =>
+                           R :=
+                             Program (PC).Value.GC_Flags
+                              (Element
+                                (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).GC);
+
+                        when Binary =>
+                           R :=
+                             Element
+                              (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
+                                (Program (PC).Value.Property);
+                     end case;
+
+                     if Program (PC).Negative xor R then
+                        Add (Program (PC).Next, SS);
+                     end if;
+                  end;
 
                when Engine.Match =>
                   Match.Is_Matched := True;

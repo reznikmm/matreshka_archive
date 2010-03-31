@@ -46,6 +46,25 @@ package Matreshka.Internals.Regexps is
 
    --  Abstract Syntax Tree
 
+   type General_Category_Flags is
+     array (Matreshka.Internals.Unicode.Ucd.General_Category) of Boolean;
+   pragma Pack (General_Category_Flags);
+
+   type Property_Kinds is (None, General_Category, Binary);
+
+   type Property_Value (Kind : Property_Kinds := None) is record
+      case Kind is
+         when None =>
+            null;
+
+         when General_Category =>
+            GC_Flags : General_Category_Flags;
+
+         when Binary =>
+            Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+      end case;
+   end record;
+
    type Node_Kinds is
      (N_None,
       N_Subexpression,
@@ -85,7 +104,7 @@ package Matreshka.Internals.Regexps is
                   --  class.
 
                when N_Match_Property =>
-                  Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+                  Value    : Property_Value;
                   Negative : Boolean;
 
                when N_Member_Range =>

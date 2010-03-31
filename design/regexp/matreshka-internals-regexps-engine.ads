@@ -82,7 +82,7 @@ package Matreshka.Internals.Regexps.Engine is
                   High   : Matreshka.Internals.Unicode.Code_Point;
 
                when I_Property =>
-                  Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+                  Value    : Property_Value;
                   Negative : Boolean;
 
                when Save =>

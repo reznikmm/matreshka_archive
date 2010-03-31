@@ -137,7 +137,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                Program (Instruction) :=
                 (I_Property,
                  0,
-                 Pattern.AST (Expression).Property,
+                 Pattern.AST (Expression).Value,
                  Pattern.AST (Expression).Negative);
                Tails.Append (Instruction);
                Compile_Next;

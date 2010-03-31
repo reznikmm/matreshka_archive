@@ -111,7 +111,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Keyword  : Property_Specification_Keyword;
       Negative : Boolean) return Positive
    is
-      To_Ucd :
+      Binary_To_Ucd : constant
         array (Property_Specification_Keyword range <>)
           of Boolean_Properties :=
            (ASCII_Hex_Digit              => ASCII_Hex_Digit,
@@ -167,10 +167,62 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
             Expands_On_NFKC => Expands_On_NFKC,
             Expands_On_NFKD => Expands_On_NFKD);
 
+      GC_To_Ucd : constant
+        array (Property_Specification_Keyword range <>)
+          of General_Category_Flags :=
+           (Other => (Control | Format | Unassigned | Private_Use | Surrogate => True, others => False),
+            Control => (Control => True, others => False),
+            Format => (Format => True, others => False),
+            Unassigned => (Unassigned => True, others => False),
+            Private_Use => (Private_Use => True, others => False),
+            Surrogate => (Surrogate => True, others => False),
+            Letter => (Lowercase_Letter | Modifier_Letter | Other_Letter | Titlecase_Letter | Uppercase_Letter => True, others => False),
+            Cased_Letter => (Lowercase_Letter | Titlecase_Letter | Uppercase_Letter => True, others => False),
+            Lowercase_Letter => (Lowercase_Letter => True, others => False),
+            Modifier_Letter => (Modifier_Letter => True, others => False),
+            Other_Letter => (Other_Letter => True, others => False),
+            Titlecase_Letter => (Titlecase_Letter => True, others => False),
+            Uppercase_Letter => (Uppercase_Letter => True, others => False),
+            Mark => (Spacing_Mark | Enclosing_Mark | Nonspacing_Mark => True, others => False),
+            Spacing_Mark => (Spacing_Mark => True, others => False),
+            Enclosing_Mark => (Enclosing_Mark => True, others => False),
+            Nonspacing_Mark => (Nonspacing_Mark => True, others => False),
+            Number => (Decimal_Number | Letter_Number | Other_Number => True, others => False),
+            Decimal_Number => (Decimal_Number => True, others => False),
+            Letter_Number => (Letter_Number => True, others => False),
+            Other_Number => (Other_Number => True, others => False),
+            Punctuation => (Connector_Punctuation | Dash_Punctuation | Close_Punctuation | Final_Punctuation | Initial_Punctuation | Other_Punctuation | Open_Punctuation => True, others => False),
+            Connector_Punctuation => (Connector_Punctuation => True, others => False),
+            Dash_Punctuation => (Dash_Punctuation => True, others => False),
+            Close_Punctuation => (Close_Punctuation => True, others => False),
+            Final_Punctuation => (Final_Punctuation => True, others => False),
+            Initial_Punctuation => (Initial_Punctuation => True, others => False),
+            Other_Punctuation => (Other_Punctuation => True, others => False),
+            Open_Punctuation => (Open_Punctuation => True, others => False),
+            Symbol => (Currency_Symbol | Modifier_Symbol | Math_Symbol | Other_Symbol => True, others => False),
+            Currency_Symbol => (Currency_Symbol => True, others => False),
+            Modifier_Symbol => (Modifier_Symbol => True, others => False),
+            Math_Symbol => (Math_Symbol => True, others => False),
+            Other_Symbol => (Other_Symbol => True, others => False),
+            Separator => (Line_Separator | Paragraph_Separator | Space_Separator => True, others => False),
+            Line_Separator => (Line_Separator => True, others => False),
+            Paragraph_Separator => (Paragraph_Separator => True, others => False),
+            Space_Separator => (Space_Separator => True, others => False));
+
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) :=
-       (N_Match_Property, 0, To_Ucd (Keyword), Negative);
+
+      if Keyword in Binary_To_Ucd'Range then
+         Pattern.AST (Pattern.Last) :=
+          (N_Match_Property, 0, (Binary, Binary_To_Ucd (Keyword)), Negative);
+
+      elsif Keyword in GC_To_UCD'Range then
+         Pattern.AST (Pattern.Last) :=
+          (N_Match_Property, 0, (General_Category, GC_To_Ucd (Keyword)), Negative);
+
+      else
+         raise Program_Error;
+      end if;
 
       return Pattern.Last;
    end Process_Binary_Property;

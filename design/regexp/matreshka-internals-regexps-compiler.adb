@@ -119,10 +119,28 @@ package body Matreshka.Internals.Regexps.Compiler is
                       (Wide_Wide_Character'Val (Pattern.AST (N).Code)));
 
             when N_Match_Property =>
-               Put
-                (' '
-                   & Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Image
-                      (Pattern.AST (N).Property));
+               case Pattern.AST (N).Value.Kind is
+                  when None =>
+                     null;
+
+                  when General_Category =>
+                     Put (" General_Category is");
+
+                     for J in Pattern.AST (N).Value.GC_Flags'Range loop
+                        if Pattern.AST (N).Value.GC_Flags (J) then
+                           Put
+                             (' '
+                                & Matreshka.Internals.Unicode.Ucd.General_Category'Image
+                                   (J));
+                        end if;
+                     end loop;
+
+                  when Binary =>
+                     Put
+                      (' '
+                         & Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Image
+                            (Pattern.AST (N).Value.Property));
+               end case;
 
                if Pattern.AST (N).Negative then
                   Put (" {negative}");

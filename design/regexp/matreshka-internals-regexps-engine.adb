@@ -119,10 +119,28 @@ package body Matreshka.Internals.Regexps.Engine is
                     & "]");
 
             when I_Property =>
-               Put
-                 ("char is "
-                    & Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Wide_Wide_Image
-                       (Program (J).Property));
+               case Program (J).Value.Kind is
+                  when None =>
+                     raise Program_Error;
+
+                  when General_Category =>
+                     Put ("char General_Category is");
+
+                     for K in Program (J).Value.GC_Flags'Range loop
+                        if Program (J).Value.GC_Flags (K) then
+                           Put
+                             (' '
+                                & Matreshka.Internals.Unicode.Ucd.General_Category'Wide_Wide_Image
+                                   (K));
+                        end if;
+                     end loop;
+
+                  when Binary =>
+                     Put
+                       ("char is "
+                          & Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Wide_Wide_Image
+                             (Program (J).Value.Property));
+               end case;
 
                if Program (J).Negative then
                   Put (" {negative}");
