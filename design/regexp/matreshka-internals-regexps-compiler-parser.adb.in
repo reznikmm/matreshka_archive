@@ -51,7 +51,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Upper      : Natural;
       Greedy     : Boolean) return Positive;
 
-   function Process_Any_Code_Point
+   function Process_Match_Any
      (Pattern : not null Shared_Pattern_Access) return Positive;
 
    function Process_Code_Point
@@ -96,20 +96,6 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       return Pattern.Last;
    end Process_Alternation;
 
-
-   ----------------------------
-   -- Process_Any_Code_Point --
-   ----------------------------
-
-   function Process_Any_Code_Point
-     (Pattern : not null Shared_Pattern_Access) return Positive is
-   begin
-      Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Any_Code_Point, 0);
-
-      return Pattern.Last;
-   end Process_Any_Code_Point;
-
    ----------------------------------------
    -- Process_Character_Class_Code_Point --
    ----------------------------------------
@@ -120,7 +106,8 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Code    : Wide_Wide_Character) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Code_Point, 0, Code);
+      Pattern.AST (Pattern.Last) :=
+       (N_Member_Code, 0, Wide_Wide_Character'Pos (Code));
       Add (Pattern.all, Class, Pattern.Last);
 
       return Class;
@@ -137,7 +124,11 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       High    : Wide_Wide_Character) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Code_Point_Range, 0, Low, High);
+      Pattern.AST (Pattern.Last) :=
+       (N_Member_Range,
+        0,
+        Wide_Wide_Character'Pos (Low),
+        Wide_Wide_Character'Pos (High));
       Add (Pattern.all, Class, Pattern.Last);
 
       return Class;
@@ -152,10 +143,24 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Character : Wide_Wide_Character) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Code_Point, 0, Character);
+      Pattern.AST (Pattern.Last) :=
+       (N_Match_Code, 0, Wide_Wide_Character'Pos (Character));
 
       return Pattern.Last;
    end Process_Code_Point;
+
+   -----------------------
+   -- Process_Match_Any --
+   -----------------------
+
+   function Process_Match_Any
+     (Pattern : not null Shared_Pattern_Access) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Match_Any, 0);
+
+      return Pattern.Last;
+   end Process_Match_Any;
 
    --------------------------
    -- Process_Multiplicity --

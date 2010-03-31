@@ -110,7 +110,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                   Tails := Tails_1 & Tails_2;
                end;
 
-            when N_Any_Code_Point =>
+            when N_Match_Any =>
                Last := Last + 1;
                Instruction := Last;
                Tails.Clear;
@@ -119,19 +119,17 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                Tails.Append (Instruction);
                Compile_Next;
 
-            when N_Code_Point =>
+            when N_Match_Code =>
                Last := Last + 1;
                Instruction := Last;
                Tails.Clear;
 
                Program (Instruction) :=
-                (Code_Point,
-                 0,
-                 Wide_Wide_Character'Pos (Pattern.AST (Expression).Code));
+                (Code_Point, 0, Pattern.AST (Expression).Code);
                Tails.Append (Instruction);
                Compile_Next;
 
-            when N_Code_Point_Range =>
+            when N_Member_Range =>
                Last := Last + 1;
                Instruction := Last;
                Tails.Clear;
@@ -140,8 +138,8 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                 (Code_Range,
                  0,
                  False,
-                 Wide_Wide_Character'Pos (Pattern.AST (Expression).Low),
-                 Wide_Wide_Character'Pos (Pattern.AST (Expression).High));
+                 Pattern.AST (Expression).Low,
+                 Pattern.AST (Expression).High);
                Tails.Append (Instruction);
                Compile_Next;
 

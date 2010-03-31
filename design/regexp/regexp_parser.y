@@ -198,7 +198,7 @@ singleton : singleton Token_Optional_Greedy
 {
    --  Any code point
 
-   $$ := (AST_Node, Process_Any_Code_Point (Pattern));
+   $$ := (AST_Node, Process_Match_Any (Pattern));
 }
   | Token_Code_Point
 {
@@ -268,7 +268,7 @@ with Matreshka.Internals.Regexps.Compiler;
       Upper      : Natural;
       Greedy     : Boolean) return Positive is separate;
 
-   function Process_Any_Code_Point
+   function Process_Match_Any
      (Pattern : not null Shared_Pattern_Access)
       return Positive is separate;
 

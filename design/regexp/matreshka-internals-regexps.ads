@@ -33,6 +33,7 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Atomics.Counters;
 with Matreshka.Internals.Strings;
+with Matreshka.Internals.Unicode;
 with Matreshka.Internals.Utf16;
 
 package Matreshka.Internals.Regexps is
@@ -48,9 +49,10 @@ package Matreshka.Internals.Regexps is
    type Node_Kinds is
      (N_None,
       N_Subexpression,
-      N_Any_Code_Point,
-      N_Code_Point,
-      N_Code_Point_Range,
+      N_Match_Any,
+      N_Match_Code,
+      N_Member_Code,
+      N_Member_Range,
       N_Character_Class,
       N_Multiplicity,
       N_Alternation);
@@ -73,16 +75,18 @@ package Matreshka.Internals.Regexps is
                   Capture       : Boolean;
                   Index         : Natural;
 
-               when N_Any_Code_Point =>
+               when N_Match_Any =>
                   null;
 
-               when N_Code_Point =>
-                  Code : Wide_Wide_Character;
-                  --  Code point to match
+               when N_Match_Code | N_Member_Code =>
+                  Code : Matreshka.Internals.Unicode.Code_Point;
+		  --  Code point to match or code point as member of character
+                  --  class.
 
-               when N_Code_Point_Range =>
-                  Low  : Wide_Wide_Character;
-                  High : Wide_Wide_Character;
+               when N_Member_Range =>
+                  Low  : Matreshka.Internals.Unicode.Code_Point;
+                  High : Matreshka.Internals.Unicode.Code_Point;
+                  --  Range of code points as member of character class
 
                when N_Character_Class =>
                   Negated : Boolean;
