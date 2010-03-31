@@ -394,11 +394,266 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                return Token_Code_Point;
 
             when 43 =>
+               --  ASCII_Hex_Digit
+            
+               raise Program_Error;
+
+            when 44 =>
+               --  Alphabetic
+            
+               raise Program_Error;
+
+            when 45 =>
+               --  Bidi_Control
+            
+               raise Program_Error;
+
+            when 46 =>
+               --  Bidi_Mirrored
+            
+               raise Program_Error;
+
+            when 47 =>
+               --  Composition_Exclusion
+            
+               raise Program_Error;
+
+            when 48 =>
+               --  Full_Composition_Exclusion
+            
+               raise Program_Error;
+
+            when 49 =>
+               --  Dash
+            
+               raise Program_Error;
+
+            when 50 =>
+               --  Deprecated
+            
+               raise Program_Error;
+
+            when 51 =>
+               --  Default_Ignorable_Code_Point
+            
+               raise Program_Error;
+
+            when 52 =>
+               --  Diacritic
+            
+               raise Program_Error;
+
+            when 53 =>
+               --  Extender
+            
+               raise Program_Error;
+
+            when 54 =>
+               --  Grapheme_Base
+            
+               raise Program_Error;
+
+            when 55 =>
+               --  Grapheme_Extend
+            
+               raise Program_Error;
+
+            when 56 =>
+               --  Grapheme_Link
+            
+               raise Program_Error;
+
+            when 57 =>
+               --  Hex_Digit
+            
+               raise Program_Error;
+
+            when 58 =>
+               --  Hyphen
+            
+               raise Program_Error;
+
+            when 59 =>
+               --  ID_Continue
+            
+               raise Program_Error;
+
+            when 60 =>
+               --  Ideographic
+            
+               raise Program_Error;
+
+            when 61 =>
+               --  ID_Start
+            
+               raise Program_Error;
+
+            when 62 =>
+               --  IDS_Binary_Operator
+            
+               raise Program_Error;
+
+            when 63 =>
+               --  IDS_Trinary_Operator
+            
+               raise Program_Error;
+
+            when 64 =>
+               --  Join_Control
+            
+               raise Program_Error;
+
+            when 65 =>
+               --  Logical_Order_Exception
+            
+               raise Program_Error;
+
+            when 66 =>
+               --  Lowercase
+            
+               raise Program_Error;
+
+            when 67 =>
+               --  Math
+            
+               raise Program_Error;
+
+            when 68 =>
+               --  Noncharacter_Code_Point
+            
+               raise Program_Error;
+
+            when 69 =>
+               --  Other_Alphabetic
+            
+               raise Program_Error;
+
+            when 70 =>
+               --  Other_Default_Ignorable_Code_Point
+            
+               raise Program_Error;
+
+            when 71 =>
+               --  Other_Grapheme_Extend
+            
+               raise Program_Error;
+
+            when 72 =>
+               --  Other_ID_Continue
+            
+               raise Program_Error;
+
+            when 73 =>
+               --  Other_ID_Start
+            
+               raise Program_Error;
+
+            when 74 =>
+               --  Other_Lowercase
+            
+               raise Program_Error;
+
+            when 75 =>
+               --  Other_Math
+            
+               raise Program_Error;
+
+            when 76 =>
+               --  Other_Uppercase
+            
+               raise Program_Error;
+
+            when 77 =>
+               --  Pattern_Syntax
+            
+               raise Program_Error;
+
+            when 78 =>
+               --  Pattern_White_Space
+            
+               raise Program_Error;
+
+            when 79 =>
+               --  Quotation_Mark
+            
+               raise Program_Error;
+
+            when 80 =>
+               --  Radical
+            
+               raise Program_Error;
+
+            when 81 =>
+               --  Soft_Dotted
+            
+               raise Program_Error;
+
+            when 82 =>
+               --  STerm
+            
+               raise Program_Error;
+
+            when 83 =>
+               --  Terminal_Punctuation
+            
+               raise Program_Error;
+
+            when 84 =>
+               --  Unified_Ideograph
+            
+               raise Program_Error;
+
+            when 85 =>
+               --  
+            
+               raise Program_Error;
+
+            when 86 =>
+               --  Variation_Selector
+            
+               raise Program_Error;
+
+            when 87 =>
+               --  White_Space
+            
+               raise Program_Error;
+
+            when 88 =>
+               --  XID_Continue
+            
+               raise Program_Error;
+
+            when 89 =>
+               --  XID_Start
+            
+               raise Program_Error;
+
+            when 90 =>
+               --  Expands_On_NFC
+            
+               raise Program_Error;
+
+            when 91 =>
+               --  Expands_On_NFD
+            
+               raise Program_Error;
+
+            when 92 =>
+               --  Expands_On_NFKC
+            
+               raise Program_Error;
+
+            when 93 =>
+               --  Expands_On_NFKD
+            
+               raise Program_Error;
+
+            when 94 =>
                --  Sequence of whitespaces is ignored in all modes
             
                null;
 
-            when 44 =>
+            when 95 =>
                --  Single code point
             
                declare
@@ -410,40 +665,40 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                   return Token_Code_Point;
                end;
 
-            when 45 =>
+            when 96 =>
                --  Special outside of sequence
             
                YYError (Unescaped_Pattern_Syntax_Character, YY_Back_Index);
             
                return Error;
 
-            when 49 =>
+            when 100 =>
                --  End of data
             
                return End_Of_Input;
 
-            when 50 =>
+            when 101 =>
                --  Unexprected end of literal
             
                YYError (Unexpected_End_Of_Literal, 0);
             
                return Error;
 
-            when 51 =>
+            when 102 =>
                --  Unexpected and of character class
             
                YYError (Unexpected_End_Of_Character_Class, 0);
             
                return Error;
 
-            when 52 =>
+            when 103 =>
                --  Unexpected end of multiplicity specifier
             
                YYError (Unexpected_End_Of_Multiplicity_Specifier, 0);
             
                return Error;
 
-            when 53 =>
+            when 104 =>
                --  Unexpected end of comment
             
                return Error;

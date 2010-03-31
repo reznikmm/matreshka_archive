@@ -32,6 +32,58 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
+ASCII_HEX_DIGIT			[Aa][Ss][Cc][Ii][Ii](_|\p{Pattern_White_Space}*)[Hh][Ee][Xx](_|\p{Pattern_White_Space}*)[Dd][Ii][Gg][Ii][Tt]|[Aa][Hh][Ee][Xx]
+ALPHABETIC			[Aa][Ll][Pp][Hh][Aa][Bb][Ee][Tt][Ii][Cc]|[Aa][Ll][Pp][Hh][Aa]
+BIDI_CONTROL			[Bb][Ii][Dd][Ii](_|\p{Pattern_White_Space}*)[Cc][Oo][Nn][Tt][Rr][Oo][Ll]|[Bb][Ii][Dd][Ii](_|\p{Pattern_White_Space}*)[Cc]
+BIDI_MIRRORED			[Bb][Ii][Dd][Ii](_|\p{Pattern_White_Space}*)[Mm][Ii][Rr][Rr][Oo][Rr][Ee][Dd]|[Bb][Ii][Dd][Ii](_|\p{Pattern_White_Space}*)[Mm]
+COMPOSITION_EXCLUSION		[Cc][Oo][Mm][Pp][Oo][Ss][Ii][Tt][Ii][Oo][Nn](_|\p{Pattern_White_Space}*)[Ee][Xx][Cc][Ll][Uu][Ss][Ii][Oo][Nn]|[Cc][Ee]
+FULL_COMPOSITION_EXCLUSION	[Ff][Uu][Ll][Ll](_|\p{Pattern_White_Space}*)[Cc][Oo][Mm][Pp][Oo][Ss][Ii][Tt][Ii][Oo][Nn](_|\p{Pattern_White_Space}*)[Ee][Xx][Cc][Ll][Uu][Ss][Ii][Oo][Nn]|[Cc][Oo][Mm][Pp](_|\p{Pattern_White_Space}*)[Ee][Xx]
+DASH				[Dd][Aa][Ss][Hh]
+DEPRECATED			[Dd][Ee][Pp][Rr][Ee][Cc][Aa][Tt][Ee][Dd]|[Dd][Ee][Pp]
+DEFAULT_IGNORABLE_CODE_POINT	[Dd][Ee][Ff][Aa][Uu][Ll][Tt](_|\p{Pattern_White_Space}*)[Ii][Gg][Nn][Oo][Rr][Aa][Bb][Ll][Ee](_|\p{Pattern_White_Space}*)[Cc][Oo][Dd][Ee][(_|\p{Pattern_White_Space}*)[Pp][Oo][Ii][Nn][Tt]|[Dd][Ii]
+DIACRITIC			[Dd][Ii][Aa][Cc][Rr][Ii][Tt][Ii][Cc]|[Dd][Ii][Aa]
+EXTENDER			[Ee][Xx][Tt][Ee][Nn][Dd][Ee][Rr]|[Ee][Xx][Tt]
+GRAPHEME_BASE			[Gg][Rr][Aa][Pp][Hh][Ee][Mm][Ee](_|\p{Pattern_White_Space}*)[Bb][Aa][Ss][Ee]|[Gg][Rr](_|\p{Pattern_White_Space}*)[Bb][Aa][Ss][Ee]
+GRAPHEME_EXTEND			[Gg][Rr][Aa][Pp][Hh][Ee][Mm][Ee](_|\p{Pattern_White_Space}*)[Ee][Xx][Tt][Ee][Nn][Dd]|[Gg][Rr][(_|\p{Pattern_White_Space}*)[Ee][Xx][Tt]
+GRAPHEME_LINK			[Gg][Rr][Aa][Pp][Hh][Ee][Mm][Ee](_|\p{Pattern_White_Space}*)[Ll][Ii][Nn][Kk]|[Gg][Rr](_|\p{Pattern_White_Space}*)[Ll][Ii][Nn][Kk]
+HEX_DIGIT			[Hh][Ee][Xx](_|\p{Pattern_White_Space}*)[Dd][Ii][Gg][Ii][Tt]|[Hh][Ee][Xx]
+HYPHEN				[Hh][Yy][Pp][Hh][Ee][Nn]
+ID_CONTINUE			[Ii][Dd](_|\p{Pattern_White_Space}*)[Cc][Oo][Nn][Tt][Ii][Nn][Uu][Ee]|[Ii][Dd][Cc]
+IDEOGRAPHIC			[Ii][Dd][Ee][Oo][Gg][Rr][Aa][Pp][Hh][Ii][Cc]|[Ii][Dd][Ee][Oo]
+ID_START			[Ii][Dd](_|\p{Pattern_White_Space}*)[Ss][Tt][Aa][Rr][Tt]|[Ii][Dd][Ss]
+IDS_BINARY_OPERATOR		[Ii][Dd][Ss](_|\p{Pattern_White_Space}*)[Bb][Ii][Nn][Aa][Rr][Yy](_|\p{Pattern_White_Space}*)[Oo][Pp][Ee][Rr][Aa][Tt][Oo][Rr]|[Ii][Dd][Ss][Bb]
+IDS_TRINARY_OPERATOR		[Ii][Dd][Ss](_|\p{Pattern_White_Space}*)[Tt][Rr][Ii][Nn][Aa][Rr][Yy](_|\p{Pattern_White_Space}*)[Oo][Pp][Ee][Rr][Aa][Tt][Oo][Rr]|[Ii][Dd][Ss][Tt]
+JOIN_CONTROL			[Jj][Oo][Ii][Nn](_|\p{Pattern_White_Space}*)[Cc][Oo][Nn][Tt][Rr][Oo][Ll]|[Jj][Oo][Ii][Nn](_|\p{Pattern_White_Space}*)[Cc]
+LOGICAL_ORDER_EXCEPTION		[Ll][Oo][Gg][Ii][Cc][Aa][Ll](_|\p{Pattern_White_Space}*)[Oo][Rr][Dd][Ee][Rr](_|\p{Pattern_White_Space}*)[Ee][Xx][Cc][Ee][Pp][Tt][Ii][Oo][Nn]|[Ll][Oo][Ee]
+LOWERCASE			[Ll][Oo][Ww][Ee][Rr][Cc][Aa][Ss][Ee]|[Ll][Oo][Ww][Ee][Rr]
+MATH				[Mm][Aa][Tt][Hh]
+NONCHARACTER_CODE_POINT		[Nn][Oo][Nn][Cc][Hh][Aa][Rr][Aa][Cc][Tt][Ee][Rr](_|\p{Pattern_White_Space}*)[Cc][Oo][Dd][Ee](_|\p{Pattern_White_Space}*)[Pp][Oo][Ii][Nn][Tt]|[Nn][Cc][Hh][Aa][Rr]
+OTHER_ALPHABETIC		[Oo][Tt][Hh][Ee][Rr](_|\p{Pattern_White_Space}*)[Aa][Ll][Pp][Hh][Aa][Bb][Ee][Tt][Ii][Cc]|[Oo][Aa][Ll][Pp][Hh][Aa]
+OTHER_DEFAULT_IGNORABLE_CODE_POINT	[Oo][Tt][Hh][Ee][Rr](_|\p{Pattern_White_Space}*)[Dd][Ee][Ff][Aa][Uu][Ll][Tt](_|\p{Pattern_White_Space}*)[Ii][Gg][Nn][Oo][Rr][Aa][Bb][Ll][Ee](_|\p{Pattern_White_Space}*)[Cc][Oo][Dd][Ee](_|\p{Pattern_White_Space}*)[Pp][Oo][Ii][Nn][Tt]|[Oo][Dd][Ii]
+OTHER_GRAPHEME_EXTEND		[Oo][Tt][Hh][Ee][Rr](_|\p{Pattern_White_Space}*)[Gg][Rr][Aa][Pp][Hh][Ee][Mm][Ee](_|\p{Pattern_White_Space}*)[Ee][Xx][Tt][Ee][Nn][Dd]|[Oo][Gg][Rr](_|\p{Pattern_White_Space}*)[Ee][Xx][Tt]
+OTHER_ID_CONTINUE		[Oo][Tt][Hh][Ee][Rr](_|\p{Pattern_White_Space}*)[Ii][Dd](_|\p{Pattern_White_Space}*)[Cc][Oo][Nn][Tt][Ii][Nn][Uu][Ee]|[Oo][Ii][Dd][Cc]
+OTHER_ID_START			[Oo][Tt][Hh][Ee][Rr](_|\p{Pattern_White_Space}*)[Ii][Dd](_|\p{Pattern_White_Space}*)[Ss][Tt][Aa][Rr][Tt]|[Oo][Ii][Dd][Ss]
+OTHER_LOWERCASE			[Oo][Tt][Hh][Ee][Rr](_|\p{Pattern_White_Space}*)[Ll][Oo][Ww][Ee][Rr][Cc][Aa][Ss][Ee]|[Oo][Ll][Oo][Ww][Ee][Rr]
+OTHER_MATH			[Oo][Tt][Hh][Ee][Rr](_|\p{Pattern_White_Space}*)[Mm][Aa][Tt][Hh]|[Oo][Mm][Aa][Tt][Hh]
+OTHER_UPPERCASE			[Oo][Tt][Hh][Ee][Rr](_|\p{Pattern_White_Space}*)[Uu][Pp][Pp][Ee][Rr][Cc][Aa][Ss][Ee]|[Oo][Uu][Pp][Pp][Ee][Rr]
+PATTERN_SYNTAX			[Pp][Aa][Tt][Tt][Ee][Rr][Nn](_|\p{Pattern_White_Space}*)[Ss][Yy][Nn][Tt][Aa][Xx]|[Pp][Aa][Tt](_|\p{Pattern_White_Space}*)[Ss][Yy][Nn]
+PATTERN_WHITE_SPACE		[Pp][Aa][Tt][Tt][Ee][Rr][Nn](_|\p{Pattern_White_Space}*)[Ww][Hh][Ii][Tt][Ee](_|\p{Pattern_White_Space}*)[Ss][Pp][Aa][Cc][Ee]|[Pp][Aa][Tt](_|\p{Pattern_White_Space}*)[Ww][Ss]
+QUOTATION_MARK			[Qq][Uu][Oo][Tt][Aa][Tt][Ii][Oo][Nn](_|\p{Pattern_White_Space}*)[Mm][Aa][Rr][Kk]|[Qq][Mm][Aa][Rr][Kk]
+RADICAL				[Rr][Aa][Dd][Ii][Cc][Aa][Ll]
+SOFT_DOTTED			[Ss][Oo][Ff][Tt](_|\p{Pattern_White_Space}*)[Dd][Oo][Tt][Tt][Ee][Dd]|[Ss][Dd]
+STERM				[Ss][Tt][Ee][Rr][Mm]
+TERMINAL_PUNCTUATION		[Tt][Ee][Rr][Mm][Ii][Nn][Aa][Ll](_|\p{Pattern_White_Space}*)[Pp][Uu][Nn][Cc][Tt][Uu][Aa][Tt][Ii][Oo][Nn]|[Tt][Ee][Rr][Mm]
+UNIFIED_IDEOGRAPH		[Uu][Nn][Ii][Ff][Ii][Ee][Dd](_|\p{Pattern_White_Space}*)[Ii][Dd][Ee][Oo][Gg][Rr][Aa][Pp][Hh]|[Uu][Ii][Dd][Ee][Oo]
+UPPERCASE			[Uu][Pp][Pp][Ee][Rr][Cc][Aa][Ss][Ee]|[Uu][Pp][Pp][Ee][Rr]
+VARIATION_SELECTOR		[Vv][Aa][Rr][Ii][Aa][Tt][Ii][Oo][Nn](_|\p{Pattern_White_Space}*)[Ss][Ee][Ll][Ee][Cc][Tt][Oo][Rr]|[Vv][Ss]
+WHITE_SPACE			[Ww][Hh][Ii][Tt][Ee](_|\p{Pattern_White_Space}*)[Ss][Pp][Aa][Cc][Ee]|[Ws][Ss][Pp][Aa][Cc][Ee]|[Ss][Pp][Aa][Cc][Ee]
+XID_CONTINUE			[Xx][Ii][Dd](_|\p{Pattern_White_Space}*)[Cc][Oo][Nn][Tt][Ii][Nn][Uu][Ee]|[Xx][Ii][Dd][Cc]
+XID_START			[Xx][Ii][Dd](_|\p{Pattern_White_Space}*)[Ss][Tt][Aa][Rr][Tt]|[Xx][Ii][Dd][Ss]
+EXPANDS_ON_NFC			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][Nn](_|\p{Pattern_White_Space}*)[Nn][Ff][Cc]|[Xx][Oo](_|\p{Pattern_White_Space}*)[Nn][Ff][Cc]
+EXPANDS_ON_NFD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][Nn](_|\p{Pattern_White_Space}*)[Nn][Ff][Dd]|[Xx][Oo](_|\p{Pattern_White_Space}*)[Nn][Ff][Dd]
+EXPANDS_ON_NFKC			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][Nn](_|\p{Pattern_White_Space}*)[Nn][Ff][Kk][Cc]|[Xx][Oo](_|\p{Pattern_White_Space}*)[Nn][Ff][Kk][Cc]
+EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][Nn](_|\p{Pattern_White_Space}*)[Nn][Ff][Kk][Dd]|[Xx][Oo](_|\p{Pattern_White_Space}*)[Nn][Ff][Kk][Dd]
+
 %x LITERAL
 %x CHARACTER_CLASS
 %x MULTIPLICITY
@@ -321,6 +373,312 @@
         (Integer'Wide_Wide_Value ("16#" & YYText (3 .. 10) & "#")));
 
    return Token_Code_Point;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{ASCII_HEX_DIGIT}\} {
+   --  ASCII_Hex_Digit
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{ALPHABETIC}\} {
+   --  Alphabetic
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{BIDI_CONTROL}\} {
+   --  Bidi_Control
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{BIDI_MIRRORED}\} {
+   --  Bidi_Mirrored
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{COMPOSITION_EXCLUSION}\} {
+   --  Composition_Exclusion
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{FULL_COMPOSITION_EXCLUSION}\} {
+   --  Full_Composition_Exclusion
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{DASH}\} {
+   --  Dash
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{DEPRECATED}\} {
+   --  Deprecated
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{DEFAULT_IGNORABLE_CODE_POINT}\} {
+   --  Default_Ignorable_Code_Point
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{DIACRITIC}\} {
+   --  Diacritic
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{EXTENDER}\} {
+   --  Extender
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{GRAPHEME_BASE}\} {
+   --  Grapheme_Base
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{GRAPHEME_EXTEND}\} {
+   --  Grapheme_Extend
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{GRAPHEME_LINK}\} {
+   --  Grapheme_Link
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{HEX_DIGIT}\} {
+   --  Hex_Digit
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{HYPHEN}\} {
+   --  Hyphen
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{ID_CONTINUE}\} {
+   --  ID_Continue
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{IDEOGRAPHIC}\} {
+   --  Ideographic
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{ID_START}\} {
+   --  ID_Start
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{IDS_BINARY_OPERATOR}\} {
+   --  IDS_Binary_Operator
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{IDS_TRINARY_OPERATOR}\} {
+   --  IDS_Trinary_Operator
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{JOIN_CONTROL}\} {
+   --  Join_Control
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{LOGICAL_ORDER_EXCEPTION}\} {
+   --  Logical_Order_Exception
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{LOWERCASE}\} {
+   --  Lowercase
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{MATH}\} {
+   --  Math
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{NONCHARACTER_CODE_POINT}\} {
+   --  Noncharacter_Code_Point
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_ALPHABETIC}\} {
+   --  Other_Alphabetic
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_DEFAULT_IGNORABLE_CODE_POINT}\} {
+   --  Other_Default_Ignorable_Code_Point
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_GRAPHEME_EXTEND}\} {
+   --  Other_Grapheme_Extend
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_ID_CONTINUE}\} {
+   --  Other_ID_Continue
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_ID_START}\} {
+   --  Other_ID_Start
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_LOWERCASE}\} {
+   --  Other_Lowercase
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_MATH}\} {
+   --  Other_Math
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_UPPERCASE}\} {
+   --  Other_Uppercase
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{PATTERN_SYNTAX}\} {
+   --  Pattern_Syntax
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{PATTERN_WHITE_SPACE}\} {
+   --  Pattern_White_Space
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{QUOTATION_MARK}\} {
+   --  Quotation_Mark
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{RADICAL}\} {
+   --  Radical
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{SOFT_DOTTED}\} {
+   --  Soft_Dotted
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{STERM}\} {
+   --  STerm
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{TERMINAL_PUNCTUATION}\} {
+   --  Terminal_Punctuation
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{UNIFIED_IDEOGRAPH}\} {
+   --  Unified_Ideograph
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{UPPERCASE}\} {
+   --  
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{VARIATION_SELECTOR}\} {
+   --  Variation_Selector
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{WHITE_SPACE}\} {
+   --  White_Space
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{XID_CONTINUE}\} {
+   --  XID_Continue
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{XID_START}\} {
+   --  XID_Start
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{EXPANDS_ON_NFC}\} {
+   --  Expands_On_NFC
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{EXPANDS_ON_NFD}\} {
+   --  Expands_On_NFD
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{EXPANDS_ON_NFKC}\} {
+   --  Expands_On_NFKC
+
+   raise Program_Error;
+}
+
+<INITIAL,CHARACTER_CLASS>\\p\{{EXPANDS_ON_NFKD}\} {
+   --  Expands_On_NFKD
+
+   raise Program_Error;
 }
 
 <INITIAL,CHARACTER_CLASS,MULTIPLICITY>\p{Pattern_White_Space}+ {
