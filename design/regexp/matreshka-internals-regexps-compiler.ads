@@ -43,6 +43,8 @@ package Matreshka.Internals.Regexps.Compiler is
      Unexpected_End_Of_Character_Class,
      Unexpected_Character_in_Multiplicity_Specifier,
      Unexpected_End_Of_Multiplicity_Specifier,
+     Unexpected_End_Of_Property_Specification,
+     Unrecognized_Character_In_Property_Specification,
      Unescaped_Pattern_Syntax_Character,
      Expression_Syntax_Error);
 
@@ -101,21 +103,27 @@ package Matreshka.Internals.Regexps.Compiler is
      Token_Subexpression_Capture_Begin,
      Token_Subexpression_Begin,
      Token_Subexpression_End,
-     Token_Binary_Property,
-     Token_Negative_Binary_Property);
+     Token_Property_Begin_Positive,
+     Token_Property_Begin_Negative,
+     Token_Property_End,
+     Token_Binary_Property);
 
    --  Here is global state of the compiler. At the first stage of
    --  refactoring all global state variables must be moved to here.
    --  Later, they will be wrapped by record type to allow to have
    --  several compiler in the different threads at the same time.
 
-   Data                : Matreshka.Internals.Strings.Shared_String_Access;
-   YY_Start_State      : Integer := 1;
-   YY_Current_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
-   YY_Current_Index    : Positive := 1;
-   YY_Error            : YY_Error_Information := (No_Error, 0);
-   YYLVal              : YYSType; 
-   YYVal               : YYSType; 
+   Data                 : Matreshka.Internals.Strings.Shared_String_Access;
+   YY_Start_State       : Integer := 1;
+   YY_Current_Position  : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+   YY_Current_Index     : Positive := 1;
+   YY_Error             : YY_Error_Information := (No_Error, 0);
+   YYLVal               : YYSType; 
+   YYVal                : YYSType; 
+   Character_Class_Mode : Boolean;
+   --  Recognition of the Unicode property specification is done in the
+   --  separate scanner's mode; this variable is used to switch back to
+   --  original mode.
 
    procedure YYError (Error : YY_Errors; Index : Natural);
    --  Report error.

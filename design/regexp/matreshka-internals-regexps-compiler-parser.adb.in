@@ -272,6 +272,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       --  Initialize by pushing state 0 and getting the first input symbol
       YY.State_Stack (YY.TOS) := 0;
       YY.Look_Ahead := True;
+      Character_Class_Mode := False;
 
       loop
          YY_Index := YY_Shift_Reduce_Offset (YY.State_Stack (YY.TOS));

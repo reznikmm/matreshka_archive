@@ -272,6 +272,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       --  Initialize by pushing state 0 and getting the first input symbol
       YY.State_Stack (YY.TOS) := 0;
       YY.Look_Ahead := True;
+      Character_Class_Mode := False;
 
       loop
          YY_Index := YY_Shift_Reduce_Offset (YY.State_Stack (YY.TOS));
@@ -438,12 +439,12 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
             when 23 =>
                --  Character with binary property
             
-               yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos).Property, False));
+               yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos-1).Property, False));
 
             when 24 =>
-               --  Character with binary property
+               --  Character with binary property, negative
             
-               yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos).Property, False));
+               yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos-1).Property, True));
 
             when 25 =>
                yyval := yy.value_stack (yy.tos);

@@ -258,6 +258,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 20 =>
                --  Enter character class
             
+               Character_Class_Mode := True;
                Enter_Start_Condition (CHARACTER_CLASS);
             
                return Token_Character_Class_Begin;
@@ -265,6 +266,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 21 =>
                --  XXX Leave character class
             
+               Character_Class_Mode := False;
                Enter_Start_Condition (INITIAL);
             
                return Token_Character_Class_End;
@@ -393,27 +395,79 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                return Token_Code_Point;
 
             when 43 =>
+               --  Unicode property specification
+            
+               Enter_Start_Condition (PROPERTY_SPECIFICATION);
+            
+               return Token_Property_Begin_Positive;
+
+            when 44 =>
+               --  Unicode property specification
+            
+               Enter_Start_Condition (PROPERTY_SPECIFICATION);
+            
+               return Token_Property_Begin_Positive;
+
+            when 45 =>
+               --  Unicode property specification
+            
+               Enter_Start_Condition (PROPERTY_SPECIFICATION);
+            
+               return Token_Property_Begin_Negative;
+
+            when 46 =>
+               --  Unicode property specification
+            
+               Enter_Start_Condition (PROPERTY_SPECIFICATION);
+            
+               return Token_Property_Begin_Negative;
+
+            when 47 =>
+               --  End of Unicode property specification
+            
+               if Character_Class_Mode then
+                  Enter_Start_Condition (CHARACTER_CLASS);
+            
+               else
+                  Enter_Start_Condition (INITIAL);
+               end if;
+            
+               return Token_Property_End;
+
+            when 48 =>
+               --  End of Unicode property specification
+            
+               if Character_Class_Mode then
+                  Enter_Start_Condition (CHARACTER_CLASS);
+            
+               else
+                  Enter_Start_Condition (INITIAL);
+               end if;
+            
+               return Token_Property_End;
+
+            when 49 =>
                --  ASCII_Hex_Digit
             
                YYLVAL := (Binary_Property, Ucd.ASCII_Hex_Digit);
             
                return Token_Binary_Property;
 
-            when 44 =>
+            when 50 =>
                --  Alphabetic
             
                YYLVAL := (Binary_Property, Ucd.Alphabetic);
             
                return Token_Binary_Property;
 
-            when 45 =>
+            when 51 =>
                --  Bidi_Control
             
                YYLVAL := (Binary_Property, Ucd.Bidi_Control);
             
                return Token_Binary_Property;
 
-            when 46 =>
+            when 52 =>
                --  Bidi_Mirrored
             
             --  XXX Bidi_Mirrored is absent in UCD now
@@ -422,342 +476,348 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             --   return Token_Binary_Property;
                raise Program_Error;
 
-            when 47 =>
+            when 53 =>
                --  Composition_Exclusion
             
                YYLVAL := (Binary_Property, Ucd.Composition_Exclusion);
             
                return Token_Binary_Property;
 
-            when 48 =>
+            when 54 =>
                --  Full_Composition_Exclusion
             
                YYLVAL := (Binary_Property, Ucd.Full_Composition_Exclusion);
             
                return Token_Binary_Property;
 
-            when 49 =>
+            when 55 =>
                --  Dash
             
                YYLVAL := (Binary_Property, Ucd.Dash);
             
                return Token_Binary_Property;
 
-            when 50 =>
+            when 56 =>
                --  Deprecated
             
                YYLVAL := (Binary_Property, Ucd.Deprecated);
             
                return Token_Binary_Property;
 
-            when 51 =>
+            when 57 =>
                --  Default_Ignorable_Code_Point
             
                YYLVAL := (Binary_Property, Ucd.Default_Ignorable_Code_Point);
             
                return Token_Binary_Property;
 
-            when 52 =>
+            when 58 =>
                --  Diacritic
             
                YYLVAL := (Binary_Property, Ucd.Diacritic);
             
                return Token_Binary_Property;
 
-            when 53 =>
+            when 59 =>
                --  Extender
             
                YYLVAL := (Binary_Property, Ucd.Extender);
             
                return Token_Binary_Property;
 
-            when 54 =>
+            when 60 =>
                --  Grapheme_Base
             
                YYLVAL := (Binary_Property, Ucd.Grapheme_Base);
             
                return Token_Binary_Property;
 
-            when 55 =>
+            when 61 =>
                --  Grapheme_Extend
             
                YYLVAL := (Binary_Property, Ucd.Grapheme_Extend);
             
                return Token_Binary_Property;
 
-            when 56 =>
+            when 62 =>
                --  Grapheme_Link
             
                YYLVAL := (Binary_Property, Ucd.Grapheme_Link);
             
                return Token_Binary_Property;
 
-            when 57 =>
+            when 63 =>
                --  Hex_Digit
             
                YYLVAL := (Binary_Property, Ucd.Hex_Digit);
             
                return Token_Binary_Property;
 
-            when 58 =>
+            when 64 =>
                --  Hyphen
             
                YYLVAL := (Binary_Property, Ucd.Hyphen);
             
                return Token_Binary_Property;
 
-            when 59 =>
+            when 65 =>
                --  ID_Continue
             
                YYLVAL := (Binary_Property, Ucd.ID_Continue);
             
                return Token_Binary_Property;
 
-            when 60 =>
+            when 66 =>
                --  Ideographic
             
                YYLVAL := (Binary_Property, Ucd.Ideographic);
             
                return Token_Binary_Property;
 
-            when 61 =>
+            when 67 =>
                --  ID_Start
             
                YYLVAL := (Binary_Property, Ucd.ID_Start);
             
                return Token_Binary_Property;
 
-            when 62 =>
+            when 68 =>
                --  IDS_Binary_Operator
             
                YYLVAL := (Binary_Property, Ucd.IDS_Binary_Operator);
             
                return Token_Binary_Property;
 
-            when 63 =>
+            when 69 =>
                --  IDS_Trinary_Operator
             
                YYLVAL := (Binary_Property, Ucd.IDS_Trinary_Operator);
             
                return Token_Binary_Property;
 
-            when 64 =>
+            when 70 =>
                --  Join_Control
             
                YYLVAL := (Binary_Property, Ucd.Join_Control);
             
                return Token_Binary_Property;
 
-            when 65 =>
+            when 71 =>
                --  Logical_Order_Exception
             
                YYLVAL := (Binary_Property, Ucd.Logical_Order_Exception);
             
                return Token_Binary_Property;
 
-            when 66 =>
+            when 72 =>
                --  Lowercase
             
                YYLVAL := (Binary_Property, Ucd.Lowercase);
             
                return Token_Binary_Property;
 
-            when 67 =>
+            when 73 =>
                --  Math
             
                YYLVAL := (Binary_Property, Ucd.Math);
             
                return Token_Binary_Property;
 
-            when 68 =>
+            when 74 =>
                --  Noncharacter_Code_Point
             
                YYLVAL := (Binary_Property, Ucd.Noncharacter_Code_Point);
             
                return Token_Binary_Property;
 
-            when 69 =>
+            when 75 =>
                --  Other_Alphabetic
             
                YYLVAL := (Binary_Property, Ucd.Other_Alphabetic);
             
                return Token_Binary_Property;
 
-            when 70 =>
+            when 76 =>
                --  Other_Default_Ignorable_Code_Point
             
                YYLVAL := (Binary_Property, Ucd.Other_Default_Ignorable_Code_Point);
             
                return Token_Binary_Property;
 
-            when 71 =>
+            when 77 =>
                --  Other_Grapheme_Extend
             
                YYLVAL := (Binary_Property, Ucd.Other_Grapheme_Extend);
             
                return Token_Binary_Property;
 
-            when 72 =>
+            when 78 =>
                --  Other_ID_Continue
             
                YYLVAL := (Binary_Property, Ucd.Other_ID_Continue);
             
                return Token_Binary_Property;
 
-            when 73 =>
+            when 79 =>
                --  Other_ID_Start
             
                YYLVAL := (Binary_Property, Ucd.Other_ID_Start);
             
                return Token_Binary_Property;
 
-            when 74 =>
+            when 80 =>
                --  Other_Lowercase
             
                YYLVAL := (Binary_Property, Ucd.Other_Lowercase);
             
                return Token_Binary_Property;
 
-            when 75 =>
+            when 81 =>
                --  Other_Math
             
                YYLVAL := (Binary_Property, Ucd.Other_Math);
             
                return Token_Binary_Property;
 
-            when 76 =>
+            when 82 =>
                --  Other_Uppercase
             
                YYLVAL := (Binary_Property, Ucd.Other_Uppercase);
             
                return Token_Binary_Property;
 
-            when 77 =>
+            when 83 =>
                --  Pattern_Syntax
             
                YYLVAL := (Binary_Property, Ucd.Pattern_Syntax);
             
                return Token_Binary_Property;
 
-            when 78 =>
+            when 84 =>
                --  Pattern_White_Space
             
                YYLVAL := (Binary_Property, Ucd.Pattern_White_Space);
             
                return Token_Binary_Property;
 
-            when 79 =>
+            when 85 =>
                --  Quotation_Mark
             
                YYLVAL := (Binary_Property, Ucd.Quotation_Mark);
             
                return Token_Binary_Property;
 
-            when 80 =>
+            when 86 =>
                --  Radical
             
                YYLVAL := (Binary_Property, Ucd.Radical);
             
                return Token_Binary_Property;
 
-            when 81 =>
+            when 87 =>
                --  Soft_Dotted
             
                YYLVAL := (Binary_Property, Ucd.Soft_Dotted);
             
                return Token_Binary_Property;
 
-            when 82 =>
+            when 88 =>
                --  STerm
             
                YYLVAL := (Binary_Property, Ucd.STerm);
             
                return Token_Binary_Property;
 
-            when 83 =>
+            when 89 =>
                --  Terminal_Punctuation
             
                YYLVAL := (Binary_Property, Ucd.Terminal_Punctuation);
             
                return Token_Binary_Property;
 
-            when 84 =>
+            when 90 =>
                --  Unified_Ideograph
             
                YYLVAL := (Binary_Property, Ucd.Unified_Ideograph);
             
                return Token_Binary_Property;
 
-            when 85 =>
+            when 91 =>
                --  Uppercase
             
                YYLVAL := (Binary_Property, Ucd.Uppercase);
             
                return Token_Binary_Property;
 
-            when 86 =>
+            when 92 =>
                --  Variation_Selector
             
                YYLVAL := (Binary_Property, Ucd.Variation_Selector);
             
                return Token_Binary_Property;
 
-            when 87 =>
+            when 93 =>
                --  White_Space
             
                YYLVAL := (Binary_Property, Ucd.White_Space);
             
                return Token_Binary_Property;
 
-            when 88 =>
+            when 94 =>
                --  XID_Continue
             
                YYLVAL := (Binary_Property, Ucd.XID_Continue);
             
                return Token_Binary_Property;
-               raise Program_Error;
 
-            when 89 =>
+            when 95 =>
                --  XID_Start
             
                YYLVAL := (Binary_Property, Ucd.XID_Start);
             
                return Token_Binary_Property;
 
-            when 90 =>
+            when 96 =>
                --  Expands_On_NFC
             
                YYLVAL := (Binary_Property, Ucd.Expands_On_NFC);
             
                return Token_Binary_Property;
 
-            when 91 =>
+            when 97 =>
                --  Expands_On_NFD
             
                YYLVAL := (Binary_Property, Ucd.Expands_On_NFD);
             
                return Token_Binary_Property;
 
-            when 92 =>
+            when 98 =>
                --  Expands_On_NFKC
             
                YYLVAL := (Binary_Property, Ucd.Expands_On_NFKC);
             
                return Token_Binary_Property;
 
-            when 93 =>
+            when 99 =>
                --  Expands_On_NFKD
             
                YYLVAL := (Binary_Property, Ucd.Expands_On_NFKD);
             
                return Token_Binary_Property;
 
-            when 94 =>
+            when 100 =>
+               --  Pattern syntax character in property specification
+            
+               YYError (Unrecognized_Character_In_Property_Specification, 0);
+            
+               return Error;
+
+            when 102 =>
                --  Sequence of whitespaces is ignored in all modes
             
                null;
 
-            when 95 =>
+            when 103 =>
                --  Single code point
             
                declare
@@ -769,41 +829,48 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                   return Token_Code_Point;
                end;
 
-            when 96 =>
+            when 104 =>
                --  Special outside of sequence
             
                YYError (Unescaped_Pattern_Syntax_Character, YY_Back_Index);
             
                return Error;
 
-            when 100 =>
+            when 108 =>
                --  End of data
             
                return End_Of_Input;
 
-            when 101 =>
+            when 109 =>
                --  Unexprected end of literal
             
                YYError (Unexpected_End_Of_Literal, 0);
             
                return Error;
 
-            when 102 =>
+            when 110 =>
                --  Unexpected and of character class
             
                YYError (Unexpected_End_Of_Character_Class, 0);
             
                return Error;
 
-            when 103 =>
+            when 111 =>
                --  Unexpected end of multiplicity specifier
             
                YYError (Unexpected_End_Of_Multiplicity_Specifier, 0);
             
                return Error;
 
-            when 104 =>
+            when 112 =>
                --  Unexpected end of comment
+            
+               return Error;
+
+            when 113 =>
+               --  Unexpected end of string in property specification
+            
+               YYError (Unexpected_End_Of_Property_Specification, 0);
             
                return Error;
 

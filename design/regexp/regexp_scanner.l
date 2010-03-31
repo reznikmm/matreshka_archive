@@ -88,6 +88,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
 %x CHARACTER_CLASS
 %x MULTIPLICITY
 %x COMMENT
+%x PROPERTY_SPECIFICATION
 
 %%
 
@@ -204,6 +205,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
 "[" {
    --  Enter character class
 
+   Character_Class_Mode := True;
    Enter_Start_Condition (CHARACTER_CLASS);
 
    return Token_Character_Class_Begin;
@@ -212,6 +214,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
 <CHARACTER_CLASS>"]" {
    --  XXX Leave character class
 
+   Character_Class_Mode := False;
    Enter_Start_Condition (INITIAL);
 
    return Token_Character_Class_End;
@@ -375,7 +378,65 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Code_Point;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{ASCII_HEX_DIGIT}\} {
+<INITIAL,CHARACTER_CLASS>\\p\{ {
+   --  Unicode property specification
+
+   Enter_Start_Condition (PROPERTY_SPECIFICATION);
+
+   return Token_Property_Begin_Positive;
+}
+
+<INITIAL,CHARACTER_CLASS>"[:" {
+   --  Unicode property specification
+
+   Enter_Start_Condition (PROPERTY_SPECIFICATION);
+
+   return Token_Property_Begin_Positive;
+}
+
+<INITIAL,CHARACTER_CLASS>\\P\{ {
+   --  Unicode property specification
+
+   Enter_Start_Condition (PROPERTY_SPECIFICATION);
+
+   return Token_Property_Begin_Negative;
+}
+
+<INITIAL,CHARACTER_CLASS>"[:^" {
+   --  Unicode property specification
+
+   Enter_Start_Condition (PROPERTY_SPECIFICATION);
+
+   return Token_Property_Begin_Negative;
+}
+
+<PROPERTY_SPECIFICATION>\} {
+   --  End of Unicode property specification
+
+   if Character_Class_Mode then
+      Enter_Start_Condition (CHARACTER_CLASS);
+
+   else
+      Enter_Start_Condition (INITIAL);
+   end if;
+
+   return Token_Property_End;
+}
+
+<PROPERTY_SPECIFICATION>":]" {
+   --  End of Unicode property specification
+
+   if Character_Class_Mode then
+      Enter_Start_Condition (CHARACTER_CLASS);
+
+   else
+      Enter_Start_Condition (INITIAL);
+   end if;
+
+   return Token_Property_End;
+}
+
+<PROPERTY_SPECIFICATION>{ASCII_HEX_DIGIT} {
    --  ASCII_Hex_Digit
 
    YYLVAL := (Binary_Property, Ucd.ASCII_Hex_Digit);
@@ -383,7 +444,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{ALPHABETIC}\} {
+<PROPERTY_SPECIFICATION>{ALPHABETIC} {
    --  Alphabetic
 
    YYLVAL := (Binary_Property, Ucd.Alphabetic);
@@ -391,7 +452,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{BIDI_CONTROL}\} {
+<PROPERTY_SPECIFICATION>{BIDI_CONTROL} {
    --  Bidi_Control
 
    YYLVAL := (Binary_Property, Ucd.Bidi_Control);
@@ -399,7 +460,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{BIDI_MIRRORED}\} {
+<PROPERTY_SPECIFICATION>{BIDI_MIRRORED} {
    --  Bidi_Mirrored
 
 --  XXX Bidi_Mirrored is absent in UCD now
@@ -409,7 +470,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    raise Program_Error;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{COMPOSITION_EXCLUSION}\} {
+<PROPERTY_SPECIFICATION>{COMPOSITION_EXCLUSION} {
    --  Composition_Exclusion
 
    YYLVAL := (Binary_Property, Ucd.Composition_Exclusion);
@@ -417,7 +478,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{FULL_COMPOSITION_EXCLUSION}\} {
+<PROPERTY_SPECIFICATION>{FULL_COMPOSITION_EXCLUSION} {
    --  Full_Composition_Exclusion
 
    YYLVAL := (Binary_Property, Ucd.Full_Composition_Exclusion);
@@ -425,7 +486,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{DASH}\} {
+<PROPERTY_SPECIFICATION>{DASH} {
    --  Dash
 
    YYLVAL := (Binary_Property, Ucd.Dash);
@@ -433,7 +494,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{DEPRECATED}\} {
+<PROPERTY_SPECIFICATION>{DEPRECATED} {
    --  Deprecated
 
    YYLVAL := (Binary_Property, Ucd.Deprecated);
@@ -441,7 +502,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{DEFAULT_IGNORABLE_CODE_POINT}\} {
+<PROPERTY_SPECIFICATION>{DEFAULT_IGNORABLE_CODE_POINT} {
    --  Default_Ignorable_Code_Point
 
    YYLVAL := (Binary_Property, Ucd.Default_Ignorable_Code_Point);
@@ -449,7 +510,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{DIACRITIC}\} {
+<PROPERTY_SPECIFICATION>{DIACRITIC} {
    --  Diacritic
 
    YYLVAL := (Binary_Property, Ucd.Diacritic);
@@ -457,7 +518,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{EXTENDER}\} {
+<PROPERTY_SPECIFICATION>{EXTENDER} {
    --  Extender
 
    YYLVAL := (Binary_Property, Ucd.Extender);
@@ -465,7 +526,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{GRAPHEME_BASE}\} {
+<PROPERTY_SPECIFICATION>{GRAPHEME_BASE} {
    --  Grapheme_Base
 
    YYLVAL := (Binary_Property, Ucd.Grapheme_Base);
@@ -473,7 +534,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{GRAPHEME_EXTEND}\} {
+<PROPERTY_SPECIFICATION>{GRAPHEME_EXTEND} {
    --  Grapheme_Extend
 
    YYLVAL := (Binary_Property, Ucd.Grapheme_Extend);
@@ -481,7 +542,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{GRAPHEME_LINK}\} {
+<PROPERTY_SPECIFICATION>{GRAPHEME_LINK} {
    --  Grapheme_Link
 
    YYLVAL := (Binary_Property, Ucd.Grapheme_Link);
@@ -489,7 +550,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{HEX_DIGIT}\} {
+<PROPERTY_SPECIFICATION>{HEX_DIGIT} {
    --  Hex_Digit
 
    YYLVAL := (Binary_Property, Ucd.Hex_Digit);
@@ -497,7 +558,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{HYPHEN}\} {
+<PROPERTY_SPECIFICATION>{HYPHEN} {
    --  Hyphen
 
    YYLVAL := (Binary_Property, Ucd.Hyphen);
@@ -505,7 +566,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{ID_CONTINUE}\} {
+<PROPERTY_SPECIFICATION>{ID_CONTINUE} {
    --  ID_Continue
 
    YYLVAL := (Binary_Property, Ucd.ID_Continue);
@@ -513,7 +574,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{IDEOGRAPHIC}\} {
+<PROPERTY_SPECIFICATION>{IDEOGRAPHIC} {
    --  Ideographic
 
    YYLVAL := (Binary_Property, Ucd.Ideographic);
@@ -521,7 +582,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{ID_START}\} {
+<PROPERTY_SPECIFICATION>{ID_START} {
    --  ID_Start
 
    YYLVAL := (Binary_Property, Ucd.ID_Start);
@@ -529,7 +590,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{IDS_BINARY_OPERATOR}\} {
+<PROPERTY_SPECIFICATION>{IDS_BINARY_OPERATOR} {
    --  IDS_Binary_Operator
 
    YYLVAL := (Binary_Property, Ucd.IDS_Binary_Operator);
@@ -537,7 +598,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{IDS_TRINARY_OPERATOR}\} {
+<PROPERTY_SPECIFICATION>{IDS_TRINARY_OPERATOR} {
    --  IDS_Trinary_Operator
 
    YYLVAL := (Binary_Property, Ucd.IDS_Trinary_Operator);
@@ -545,7 +606,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{JOIN_CONTROL}\} {
+<PROPERTY_SPECIFICATION>{JOIN_CONTROL} {
    --  Join_Control
 
    YYLVAL := (Binary_Property, Ucd.Join_Control);
@@ -553,7 +614,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{LOGICAL_ORDER_EXCEPTION}\} {
+<PROPERTY_SPECIFICATION>{LOGICAL_ORDER_EXCEPTION} {
    --  Logical_Order_Exception
 
    YYLVAL := (Binary_Property, Ucd.Logical_Order_Exception);
@@ -561,7 +622,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{LOWERCASE}\} {
+<PROPERTY_SPECIFICATION>{LOWERCASE} {
    --  Lowercase
 
    YYLVAL := (Binary_Property, Ucd.Lowercase);
@@ -569,7 +630,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{MATH}\} {
+<PROPERTY_SPECIFICATION>{MATH} {
    --  Math
 
    YYLVAL := (Binary_Property, Ucd.Math);
@@ -577,7 +638,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{NONCHARACTER_CODE_POINT}\} {
+<PROPERTY_SPECIFICATION>{NONCHARACTER_CODE_POINT} {
    --  Noncharacter_Code_Point
 
    YYLVAL := (Binary_Property, Ucd.Noncharacter_Code_Point);
@@ -585,7 +646,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_ALPHABETIC}\} {
+<PROPERTY_SPECIFICATION>{OTHER_ALPHABETIC} {
    --  Other_Alphabetic
 
    YYLVAL := (Binary_Property, Ucd.Other_Alphabetic);
@@ -593,7 +654,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_DEFAULT_IGNORABLE_CODE_POINT}\} {
+<PROPERTY_SPECIFICATION>{OTHER_DEFAULT_IGNORABLE_CODE_POINT} {
    --  Other_Default_Ignorable_Code_Point
 
    YYLVAL := (Binary_Property, Ucd.Other_Default_Ignorable_Code_Point);
@@ -601,7 +662,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_GRAPHEME_EXTEND}\} {
+<PROPERTY_SPECIFICATION>{OTHER_GRAPHEME_EXTEND} {
    --  Other_Grapheme_Extend
 
    YYLVAL := (Binary_Property, Ucd.Other_Grapheme_Extend);
@@ -609,7 +670,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_ID_CONTINUE}\} {
+<PROPERTY_SPECIFICATION>{OTHER_ID_CONTINUE} {
    --  Other_ID_Continue
 
    YYLVAL := (Binary_Property, Ucd.Other_ID_Continue);
@@ -617,7 +678,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_ID_START}\} {
+<PROPERTY_SPECIFICATION>{OTHER_ID_START} {
    --  Other_ID_Start
 
    YYLVAL := (Binary_Property, Ucd.Other_ID_Start);
@@ -625,7 +686,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_LOWERCASE}\} {
+<PROPERTY_SPECIFICATION>{OTHER_LOWERCASE} {
    --  Other_Lowercase
 
    YYLVAL := (Binary_Property, Ucd.Other_Lowercase);
@@ -633,7 +694,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_MATH}\} {
+<PROPERTY_SPECIFICATION>{OTHER_MATH} {
    --  Other_Math
 
    YYLVAL := (Binary_Property, Ucd.Other_Math);
@@ -641,7 +702,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{OTHER_UPPERCASE}\} {
+<PROPERTY_SPECIFICATION>{OTHER_UPPERCASE} {
    --  Other_Uppercase
 
    YYLVAL := (Binary_Property, Ucd.Other_Uppercase);
@@ -649,7 +710,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{PATTERN_SYNTAX}\} {
+<PROPERTY_SPECIFICATION>{PATTERN_SYNTAX} {
    --  Pattern_Syntax
 
    YYLVAL := (Binary_Property, Ucd.Pattern_Syntax);
@@ -657,7 +718,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{PATTERN_WHITE_SPACE}\} {
+<PROPERTY_SPECIFICATION>{PATTERN_WHITE_SPACE} {
    --  Pattern_White_Space
 
    YYLVAL := (Binary_Property, Ucd.Pattern_White_Space);
@@ -665,7 +726,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{QUOTATION_MARK}\} {
+<PROPERTY_SPECIFICATION>{QUOTATION_MARK} {
    --  Quotation_Mark
 
    YYLVAL := (Binary_Property, Ucd.Quotation_Mark);
@@ -673,7 +734,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{RADICAL}\} {
+<PROPERTY_SPECIFICATION>{RADICAL} {
    --  Radical
 
    YYLVAL := (Binary_Property, Ucd.Radical);
@@ -681,7 +742,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{SOFT_DOTTED}\} {
+<PROPERTY_SPECIFICATION>{SOFT_DOTTED} {
    --  Soft_Dotted
 
    YYLVAL := (Binary_Property, Ucd.Soft_Dotted);
@@ -689,7 +750,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{STERM}\} {
+<PROPERTY_SPECIFICATION>{STERM} {
    --  STerm
 
    YYLVAL := (Binary_Property, Ucd.STerm);
@@ -697,7 +758,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{TERMINAL_PUNCTUATION}\} {
+<PROPERTY_SPECIFICATION>{TERMINAL_PUNCTUATION} {
    --  Terminal_Punctuation
 
    YYLVAL := (Binary_Property, Ucd.Terminal_Punctuation);
@@ -705,7 +766,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{UNIFIED_IDEOGRAPH}\} {
+<PROPERTY_SPECIFICATION>{UNIFIED_IDEOGRAPH} {
    --  Unified_Ideograph
 
    YYLVAL := (Binary_Property, Ucd.Unified_Ideograph);
@@ -713,7 +774,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{UPPERCASE}\} {
+<PROPERTY_SPECIFICATION>{UPPERCASE} {
    --  Uppercase
 
    YYLVAL := (Binary_Property, Ucd.Uppercase);
@@ -721,7 +782,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{VARIATION_SELECTOR}\} {
+<PROPERTY_SPECIFICATION>{VARIATION_SELECTOR} {
    --  Variation_Selector
 
    YYLVAL := (Binary_Property, Ucd.Variation_Selector);
@@ -729,7 +790,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{WHITE_SPACE}\} {
+<PROPERTY_SPECIFICATION>{WHITE_SPACE} {
    --  White_Space
 
    YYLVAL := (Binary_Property, Ucd.White_Space);
@@ -737,16 +798,15 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{XID_CONTINUE}\} {
+<PROPERTY_SPECIFICATION>{XID_CONTINUE} {
    --  XID_Continue
 
    YYLVAL := (Binary_Property, Ucd.XID_Continue);
 
    return Token_Binary_Property;
-   raise Program_Error;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{XID_START}\} {
+<PROPERTY_SPECIFICATION>{XID_START} {
    --  XID_Start
 
    YYLVAL := (Binary_Property, Ucd.XID_Start);
@@ -754,7 +814,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{EXPANDS_ON_NFC}\} {
+<PROPERTY_SPECIFICATION>{EXPANDS_ON_NFC} {
    --  Expands_On_NFC
 
    YYLVAL := (Binary_Property, Ucd.Expands_On_NFC);
@@ -762,7 +822,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{EXPANDS_ON_NFD}\} {
+<PROPERTY_SPECIFICATION>{EXPANDS_ON_NFD} {
    --  Expands_On_NFD
 
    YYLVAL := (Binary_Property, Ucd.Expands_On_NFD);
@@ -770,7 +830,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{EXPANDS_ON_NFKC}\} {
+<PROPERTY_SPECIFICATION>{EXPANDS_ON_NFKC} {
    --  Expands_On_NFKC
 
    YYLVAL := (Binary_Property, Ucd.Expands_On_NFKC);
@@ -778,7 +838,7 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS>\\p\{{EXPANDS_ON_NFKD}\} {
+<PROPERTY_SPECIFICATION>{EXPANDS_ON_NFKD} {
    --  Expands_On_NFKD
 
    YYLVAL := (Binary_Property, Ucd.Expands_On_NFKD);
@@ -786,7 +846,23 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    return Token_Binary_Property;
 }
 
-<INITIAL,CHARACTER_CLASS,MULTIPLICITY>\p{Pattern_White_Space}+ {
+<PROPERTY_SPECIFICATION>\p{Pattern_Syntax} {
+   --  Pattern syntax character in property specification
+
+   YYError (Unrecognized_Character_In_Property_Specification, 0);
+
+   return Error;
+}
+
+<PROPERTY_SPECIFICATION><<EOF>> {
+   --  Unexpected end of string in property specification
+
+   YYError (Unexpected_End_Of_Property_Specification, 0);
+
+   return Error;
+}
+
+<INITIAL,CHARACTER_CLASS,MULTIPLICITY,PROPERTY_SPECIFICATION>\p{Pattern_White_Space}+ {
    --  Sequence of whitespaces is ignored in all modes
 
    null;

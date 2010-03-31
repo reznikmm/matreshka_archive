@@ -54,8 +54,10 @@
 %token Token_Subexpression_Capture_Begin
 %token Token_Subexpression_Begin
 %token Token_Subexpression_End
+%token Token_Property_Begin_Positive
+%token Token_Property_Begin_Negative
+%token Token_Property_End
 %token Token_Binary_Property
-%token Token_Negative_Binary_Property
 
 %with Matreshka.Internals.Unicode.Ucd;
 
@@ -218,17 +220,17 @@ singleton : singleton Token_Optional_Greedy
 
    $$ := (AST_Node, Process_Code_Point (Pattern, $1.Code));
 }
-  | Token_Binary_Property
+  | Token_Property_Begin_Positive Token_Binary_Property Token_Property_End
 {
    --  Character with binary property
 
-   $$ := (AST_Node, Process_Binary_Property (Pattern, $1.Property, False));
+   $$ := (AST_Node, Process_Binary_Property (Pattern, $2.Property, False));
 }
-  | Token_Negative_Binary_Property
+  | Token_Property_Begin_Negative Token_Binary_Property Token_Property_End
 {
-   --  Character with binary property
+   --  Character with binary property, negative
 
-   $$ := (AST_Node, Process_Binary_Property (Pattern, $1.Property, False));
+   $$ := (AST_Node, Process_Binary_Property (Pattern, $2.Property, True));
 }
   | character_class
 {
