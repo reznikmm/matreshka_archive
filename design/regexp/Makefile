@@ -13,15 +13,15 @@ matreshka-internals-regexps-compiler-scanner.adb: matreshka-internals-regexps-co
 	(cd .gen && gcc -c -gnatct -gnat05 -I.. -I../../../source/league scanner.adb)
 	(cd .gen && ../.obj/scanner_transformer)
 
-matreshka-internals-regexps-compiler-parser.adb: matreshka-internals-regexps-compiler-parser.adb.in matreshka-internals-regexps-compiler.ads.in parser.y
+matreshka-internals-regexps-compiler-parser.adb: matreshka-internals-regexps-compiler-parser.adb.in matreshka-internals-regexps-compiler.ads.in regexp_parser.y
 	make gen
-	(cd .gen && gcc -c -gnatct -gnat05 -I.. -I../../../source/league parser.adb)
-	(cd .gen && ../.obj/parser_transformer)
+	(cd .gen && gcc -c -gnatct -gnat05 -I.. -I../../../source/league regexp_parser.adb)
+	.obj/parser_transformer
 
 gen: .gen
 	gprbuild -p -Ptools/tools.gpr
 	(cd .gen && $(AFLEX) -v ../scanner.l)
-	(cd .gen && $(AYACC) ../parser.y off off)
+	(cd .gen && $(AYACC) ../regexp_parser.y off off)
 
 .gen:
 	mkdir .gen

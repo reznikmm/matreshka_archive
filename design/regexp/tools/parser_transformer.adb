@@ -18,22 +18,22 @@ procedure Parser_Transformer is
 
 begin
    Asis.Implementation.Initialize ("-asis05");
-   Asis.Ada_Environments.Associate (Transformer_Context, "Transformer_Context", "-C1 parser.adt");
+   Asis.Ada_Environments.Associate (Transformer_Context, "Transformer_Context", "-C1 .gen/regexp_parser.adt");
    Asis.Ada_Environments.Open (Transformer_Context);
 
-   Parser_Unit := Asis.Compilation_Units.Compilation_Unit_Body ("Parser", Transformer_Context);
+   Parser_Unit := Asis.Compilation_Units.Compilation_Unit_Body ("Regexp_Parser", Transformer_Context);
    Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
    Parser_Extractor.Extract (Parser_Body);
 
-   Parser_Unit := Asis.Compilation_Units.Library_Unit_Declaration ("Parser.Goto_Table", Transformer_Context);
+   Parser_Unit := Asis.Compilation_Units.Library_Unit_Declaration ("Regexp_Parser.Goto_Table", Transformer_Context);
    Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
    Parser_Extractor.Extract (Parser_Body);
 
-   Parser_Unit := Asis.Compilation_Units.Library_Unit_Declaration ("Parser.Shift_Reduce", Transformer_Context);
+   Parser_Unit := Asis.Compilation_Units.Library_Unit_Declaration ("Regexp_Parser.Shift_Reduce", Transformer_Context);
    Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
    Parser_Extractor.Extract (Parser_Body);
 
-   Parser_Unit := Asis.Compilation_Units.Library_Unit_Declaration ("Parser_Tokens", Transformer_Context);
+   Parser_Unit := Asis.Compilation_Units.Library_Unit_Declaration ("Regexp_Parser_Tokens", Transformer_Context);
    Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
    Parser_Extractor.Extract (Parser_Body);
 

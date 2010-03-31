@@ -38,15 +38,15 @@ package body Parser_Generator is
    use Parser_Extractor;
 
    Parser_In_File_Name        : constant String :=
-     "../matreshka-internals-regexps-compiler-parser.adb.in";
+     "matreshka-internals-regexps-compiler-parser.adb.in";
    Parser_File_Name           : constant String :=
-     "../matreshka-internals-regexps-compiler-parser.adb";
+     "matreshka-internals-regexps-compiler-parser.adb";
    Parser_Tables_File_Name    : constant String :=
-     "../matreshka-internals-regexps-compiler-parser-tables.ads";
+     "matreshka-internals-regexps-compiler-parser-tables.ads";
    Parser_Tokens_In_File_Name : constant String :=
-     "../matreshka-internals-regexps-compiler.ads.in";
+     "matreshka-internals-regexps-compiler.ads.in";
    Parser_Tokens_File_Name    : constant String :=
-     "../matreshka-internals-regexps-compiler.ads";
+     "matreshka-internals-regexps-compiler.ads";
 
    --------------------------
    -- Generate_Parser_Code --
@@ -264,22 +264,6 @@ package body Parser_Generator is
                end if;
 
                Put (Output, Tokens.Element (J));
---               declare
---                  Element : constant Choice_Information := Choices.Element (J);
---
---               begin
---                  if not Element.Is_Empty then
---                     New_Line (Output);
---                     Put (Output, "            when ");
---                     Put (Output, Element.Choice, 0);
---                     Put_Line (Output, " =>");
---
---                     for J in 1 .. Natural (Element.Text.Length) loop
---                        Put (Output, "            ");
---                        Put_Line (Output, Element.Text.Element (J));
---                     end loop;
---                  end if;
---               end;
             end loop;
 
             Put_Line (Output, ");");

@@ -252,7 +252,7 @@ with Matreshka.Internals.Regexps.Compiler;
    use Ada.Wide_Wide_Text_IO;
    use Matreshka.Internals.Regexps;
 
-   function YYLex return Parser_Tokens.Token is separate;
+   function YYLex return Regexp_Parser_Tokens.Token is separate;
 
    procedure YYError (S : Wide_Wide_String) is null;
 
