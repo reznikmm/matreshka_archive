@@ -32,6 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
+--  Binary properties
 ASCII_HEX_DIGIT			[Aa][Ss][Cc][Ii][Ii](_|\p{Pattern_White_Space}*)[Hh][Ee][Xx](_|\p{Pattern_White_Space}*)[Dd][Ii][Gg][Ii][Tt]|[Aa][Hh][Ee][Xx]
 ALPHABETIC			[Aa][Ll][Pp][Hh][Aa][Bb][Ee][Tt][Ii][Cc]|[Aa][Ll][Pp][Hh][Aa]
 BIDI_CONTROL			[Bb][Ii][Dd][Ii](_|\p{Pattern_White_Space}*)[Cc][Oo][Nn][Tt][Rr][Oo][Ll]|[Bb][Ii][Dd][Ii](_|\p{Pattern_White_Space}*)[Cc]
@@ -83,6 +84,46 @@ EXPANDS_ON_NFC			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][Nn
 EXPANDS_ON_NFD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][Nn](_|\p{Pattern_White_Space}*)[Nn][Ff][Dd]|[Xx][Oo](_|\p{Pattern_White_Space}*)[Nn][Ff][Dd]
 EXPANDS_ON_NFKC			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][Nn](_|\p{Pattern_White_Space}*)[Nn][Ff][Kk][Cc]|[Xx][Oo](_|\p{Pattern_White_Space}*)[Nn][Ff][Kk][Cc]
 EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][Nn](_|\p{Pattern_White_Space}*)[Nn][Ff][Kk][Dd]|[Xx][Oo](_|\p{Pattern_White_Space}*)[Nn][Ff][Kk][Dd]
+
+--  Values of General_Category property
+OTHER			[Oo][Tt][Hh][Ee][Rr]|[Cc]
+CONTROL			[Cc][Oo][Nn][Tt][Rr][Oo][Ll]|[Cc][Cc]|[Cc][Nn][Tt][Rr][Ll]
+FORMAT			[Ff][Oo][Rr][Mm][Aa][Tt]|[Cc][Ff]
+UNASSIGNED		[Uu][Nn][Aa][Ss][Ss][Ii][Gg][Nn][Ee][Dd]|[Cc][Nn]
+PRIVATE_USE		[Pp][Rr][Ii][Vv][Aa][Tt][Ee](_|\p{Pattern_White_Space}*)[Uu][Ss][Ee]|[Cc][Oo]
+SURROGATE		[Ss][Uu][Rr][Rr][Oo][Gg][Aa][Tt][Ee]|[Cc][Ss]
+LETTER			[Ll][Ee][Tt][Tt][Ee][Rr]|[Ll]
+CASED_LETTER		[Cc][Aa][Ss][Ee][Dd](_|\p{Pattern_White_Space}*)[Ll][Ee][Tt][Tt][Ee][Rr]|[Ll][Cc]
+LOWERCASE_LETTER	[Ll][Oo][Ww][Ee][Rr][Cc][Aa][Ss][Ee](_|\p{Pattern_White_Space}*)[Ll][Ee][Tt][Tt][Ee][Rr]|[Ll][Ll]
+MODIFIER_LETTER		[Mm][Oo][Dd][Ii][Ff][Ii][Ee][Rr](_|\p{Pattern_White_Space}*)[Ll][Ee][Tt][Tt][Ee][Rr]|[Ll][Mm]
+OTHER_LETTER		[Oo][Tt][Hh][Ee][Rr](_|\p{Pattern_White_Space}*)[Ll][Ee][Tt][Tt][Ee][Rr]|[Ll][Oo]
+TITLECASE_LETTER	[Tt][Ii][Tt][Ll][Ee][Cc][Aa][Ss][Ee](_|\p{Pattern_White_Space}*)[Ll][Ee][Tt][Tt][Ee][Rr]|[Ll][Tt]
+UPPERCASE_LETTER	[Uu][Pp][Pp][Ee][Rr][Cc][Aa][Ss][Ee](_|\p{Pattern_White_Space}*)[Ll][Ee][Tt][Tt][Ee][Rr]|[Ll][Uu]
+MARK			[Mm][Aa][Rr][Kk]
+SPACING_MARK		[Ss][Pp][Aa][Cc][Ii][Nn][Gg](_|\p{Pattern_White_Space}*)[Mm][Aa][Rr][Kk]|[Mm][Cc]
+ENCLOSING_MARK		[Ee][Nn][Cc][Ll][Oo][Ss][Ii][Nn][Gg](_|\p{Pattern_White_Space}*)[Mm][Aa][Rr][Kk]|[Mm][Ee]
+NONSPACING_MARK		[Nn][Oo][Nn][Ss][Pp][Aa][Cc][Ii][Nn][Gg](_|\p{Pattern_White_Space}*)[Mm][Aa][Rr][Kk]|[Mm][Nn]
+NUMBER			[Nn][Uu][Mm][Bb][Ee][Rr]|[Nn]
+DECIMAL_NUMBER		[Dd][Ee][Cc][Ii][Mm][Aa][Ll](_|\p{Pattern_White_Space}*)[Nn][Uu][Mm][Bb][Ee][Rr]|[nN][Dd]|[Dd][Ii][Gg][Ii][Tt]
+LETTER_NUMBER		[Ll][Ee][Tt][Tt][Ee][Rr](_|\p{Pattern_White_Space}*)[Nn][Uu][Mm][Bb][Ee][Rr]|[Nn][Ll]
+OTHER_NUMBER		[Oo][Tt][Hh][Ee][Rr](_|\p{Pattern_White_Space}*)[Nn][Uu][Mm][Bb][Ee][Rr]|[Nn][Oo]
+PUNCTUATION		[Pp][Uu][Nn][Cc][Tt][Uu][Aa][Tt][Ii][Oo][Nn]|[Pp]|[Pp][Uu][Nn][Cc][Tt]
+CONNECTOR_PUNCTUATION	[Cc][Oo][Nn][Nn][Ee][Cc][Tt][Oo][Rr](_|\p{Pattern_White_Space}*)[Pp][Uu][Nn][Cc][Tt][Uu][Aa][Tt][Ii][Oo][Nn]|[Pp][Cc]
+DASH_PUNCTUATION	[Dd][Aa][Ss][Hh](_|\p{Pattern_White_Space}*)[Pp][Uu][Nn][Cc][Tt][Uu][Aa][Tt][Ii][Oo][Nn]|[Pp][Dd]
+CLOSE_PUNCTUATION	[Cc][Ll][Oo][Ss][Ee](_|\p{Pattern_White_Space}*)[Pp][Uu][Nn][Cc][Tt][Uu][Aa][Tt][Ii][Oo][Nn]|[Pp][Ee]|[Pp][Ee]
+FINAL_PUNCTUATION	[Ff][Ii][Nn][Aa][Ll](_|\p{Pattern_White_Space}*)[Pp][Uu][Nn][Cc][Tt][Uu][Aa][Tt][Ii][Oo][Nn]|[Pp][Ff]
+INITIAL_PUNCTUATION	[Ii][Nn][Ii][Tt][Ii][Aa][Ll](_|\p{Pattern_White_Space}*)[Pp][Uu][Nn][Cc][Tt][Uu][Aa][Tt][Ii][Oo][Nn]|[Pp][Ii]
+OTHER_PUNCTUATION	[Oo][Tt][Hh][Ee][Rr](_|\p{Pattern_White_Space}*)[Pp][Uu][Nn][Cc][Tt][Uu][Aa][Tt][Ii][Oo][Nn]|[Pp][Oo]
+OPEN_PUNCTUATION	[Oo][Pp][Ee][Nn](_|\p{Pattern_White_Space}*)[Pp][Uu][Nn][Cc][Tt][Uu][Aa][Tt][Ii][Oo][Nn]|[Pp][Ss]
+SYMBOL			[Ss][Yy][Mm][Bb][Oo][Ll]|[Ss]
+CURRENCY_SYMBOL		[Cc][Uu][Rr][Rr][Ee][Nn][Cc][Yy](_|\p{Pattern_White_Space}*)[Ss][Yy][Mm][Bb][Oo][Ll]|[Ss][Cc]
+MODIFIER_SYMBOL		[Mm][Oo][Dd][Ii][Ff][Ii][Ee][Rr](_|\p{Pattern_White_Space}*)[Ss][Yy][Mm][Bb][Oo][Ll]|[Ss][Kk]
+MATH_SYMBOL		[Mm][Aa][Tt][Hh](_|\p{Pattern_White_Space}*)[Ss][Yy][Mm][Bb][Oo][Ll]|[Ss][Mm]
+OTHER_SYMBOL		[Oo][Tt][Hh][Ee][Rr](_|\p{Pattern_White_Space}*)[Ss][Yy][Mm][Bb][Oo][Ll]|[Ss][Oo]
+SEPARATOR		[Ss][Ee][Pp][Aa][Rr][Aa][Tt][Oo][Rr]|[Zz]
+LINE_SEPARATOR		[Ll][Ii][Nn][Ee](_|\p{Pattern_White_Space}*)[Ss][Ee][Pp][Aa][Rr][Aa][Tt][Oo][Rr]|[Zz][Ll]
+PARAGRAPH_SEPARATOR	[Pp][Aa][Rr][Aa][Gg][Rr][Aa][Pp][Hh](_|\p{Pattern_White_Space}*)[Ss][Ee][Pp][Aa][Rr][Aa][Tt][Oo][Rr]|[Zz][Pp]
+SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|\p{Pattern_White_Space}*)[Ss][Ee][Pp][Aa][Rr][Aa][Tt][Oo][Rr]|[Zz][Ss]
 
 %x LITERAL
 %x CHARACTER_CLASS
@@ -842,6 +883,310 @@ EXPANDS_ON_NFKD			[Ee][Xx][Pp][Aa][Nn][Dd][Ss](_|\p{Pattern_White_Space}*)[Oo][N
    --  Expands_On_NFKD
 
    YYLVAL := (Property_Keyword, Expands_On_NFKD);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{OTHER} {
+   --  Other
+
+   YYLVAL := (Property_Keyword, Other);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{CONTROL} {
+   --  Control
+
+   YYLVAL := (Property_Keyword, Control);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{FORMAT} {
+   --  Format
+
+   YYLVAL := (Property_Keyword, Format);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{UNASSIGNED} {
+   --  Unassigned
+
+   YYLVAL := (Property_Keyword, Unassigned);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{PRIVATE_USE} {
+   --  Private_Use
+
+   YYLVAL := (Property_Keyword, Private_Use);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{SURROGATE} {
+   --  Surrogate
+
+   YYLVAL := (Property_Keyword, Surrogate);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{LETTER} {
+   --  Letter
+
+   YYLVAL := (Property_Keyword, Letter);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{CASED_LETTER} {
+   --  Cased_Letter
+
+   YYLVAL := (Property_Keyword, Cased_Letter);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{LOWERCASE_LETTER} {
+   --  Lowercase_Letter
+
+   YYLVAL := (Property_Keyword, Lowercase_Letter);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{MODIFIER_LETTER} {
+   --  Modifier_Letter
+
+   YYLVAL := (Property_Keyword, Modifier_Letter);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{OTHER_LETTER} {
+   --  Other_Letter
+
+   YYLVAL := (Property_Keyword, Other_Letter);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{TITLECASE_LETTER} {
+   --  Titlecase_Letter
+
+   YYLVAL := (Property_Keyword, Titlecase_Letter);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{UPPERCASE_LETTER} {
+   --  Uppercase_Letter
+
+   YYLVAL := (Property_Keyword, Uppercase_Letter);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{MARK} {
+   --  Mark
+
+   YYLVAL := (Property_Keyword, Mark);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{SPACING_MARK} {
+   --  Spacing_Mark
+
+   YYLVAL := (Property_Keyword, Spacing_Mark);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{ENCLOSING_MARK} {
+   --  Enclosing_Mark
+
+   YYLVAL := (Property_Keyword, Enclosing_Mark);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{NONSPACING_MARK} {
+   --  Nonspacing_Mark
+
+   YYLVAL := (Property_Keyword, Nonspacing_Mark);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{NUMBER} {
+   --  Number
+
+   YYLVAL := (Property_Keyword, Number);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{DECIMAL_NUMBER} {
+   --  Decimal_Number
+
+   YYLVAL := (Property_Keyword, Decimal_Number);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{LETTER_NUMBER} {
+   --  Letter_Number
+
+   YYLVAL := (Property_Keyword, Letter_Number);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{OTHER_NUMBER} {
+   --  Other_Number
+
+   YYLVAL := (Property_Keyword, Other_Number);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{PUNCTUATION} {
+   --  Punctuation
+
+   YYLVAL := (Property_Keyword, Punctuation);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{CONNECTOR_PUNCTUATION} {
+   --  Connector_Punctuation
+
+   YYLVAL := (Property_Keyword, Connector_Punctuation);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{DASH_PUNCTUATION} {
+   --  Dash_Punctuation
+
+   YYLVAL := (Property_Keyword, Dash_Punctuation);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{CLOSE_PUNCTUATION} {
+   --  Close_Punctuation
+
+   YYLVAL := (Property_Keyword, Close_Punctuation);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{FINAL_PUNCTUATION} {
+   --  Final_Punctuation
+
+   YYLVAL := (Property_Keyword, Final_Punctuation);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{INITIAL_PUNCTUATION} {
+   --  Initial_Punctuation
+
+   YYLVAL := (Property_Keyword, Initial_Punctuation);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{OTHER_PUNCTUATION} {
+   --  Other_Punctuation
+
+   YYLVAL := (Property_Keyword, Other_Punctuation);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{OPEN_PUNCTUATION} {
+   --  Open_Punctuation
+
+   YYLVAL := (Property_Keyword, Open_Punctuation);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{SYMBOL} {
+   --  Symbol
+
+   YYLVAL := (Property_Keyword, Symbol);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{CURRENCY_SYMBOL} {
+   --  Currency_Symbol
+
+   YYLVAL := (Property_Keyword, Currency_Symbol);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{MODIFIER_SYMBOL} {
+   --  Modifier_Symbol
+
+   YYLVAL := (Property_Keyword, Modifier_Symbol);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{MATH_SYMBOL} {
+   --  Math_Symbol
+
+   YYLVAL := (Property_Keyword, Math_Symbol);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{OTHER_SYMBOL} {
+   --  Other_Symbol
+
+   YYLVAL := (Property_Keyword, Other_Symbol);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{SEPARATOR} {
+   --  Separator
+
+   YYLVAL := (Property_Keyword, Separator);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{LINE_SEPARATOR} {
+   --  Line_Separator
+
+   YYLVAL := (Property_Keyword, Line_Separator);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{PARAGRAPH_SEPARATOR} {
+   --  Paragraph_Separator
+
+   YYLVAL := (Property_Keyword, Paragraph_Separator);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{SPACE_SEPARATOR} {
+   --  Space_Separator
+
+   YYLVAL := (Property_Keyword, Space_Separator);
 
    return Token_Property_Keyword;
 }
