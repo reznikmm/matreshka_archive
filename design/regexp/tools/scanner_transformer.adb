@@ -16,10 +16,10 @@ procedure Scanner_Transformer is
 
 begin
    Asis.Implementation.Initialize ("-asis05");
-   Asis.Ada_Environments.Associate (Transformer_Context, "Transformer_Context", "-C1 scanner.adt");
+   Asis.Ada_Environments.Associate (Transformer_Context, "Transformer_Context", "-C1 .gen/regexp_scanner.adt");
    Asis.Ada_Environments.Open (Transformer_Context);
 
-   Scanner_Unit := Asis.Compilation_Units.Compilation_Unit_Body ("Scanner", Transformer_Context);
+   Scanner_Unit := Asis.Compilation_Units.Compilation_Unit_Body ("Regexp_Scanner", Transformer_Context);
    Scanner_Body := Asis.Elements.Unit_Declaration (Scanner_Unit);
 
    Scanner_Extractor.Extract (Scanner_Body);

@@ -8,10 +8,10 @@ all: matreshka-internals-regexps-compiler-parser.adb matreshka-internals-regexps
 	gprbuild $(GPRBUILD_FLAGS) -Pdemo.gpr
 	.obj/demo expression string
 
-matreshka-internals-regexps-compiler-scanner.adb: matreshka-internals-regexps-compiler-scanner.adb.in scanner.l
+matreshka-internals-regexps-compiler-scanner.adb: matreshka-internals-regexps-compiler-scanner.adb.in regexp_scanner.l
 	make gen
-	(cd .gen && gcc -c -gnatct -gnat05 -I.. -I../../../source/league scanner.adb)
-	(cd .gen && ../.obj/scanner_transformer)
+	(cd .gen && gcc -c -gnatct -gnat05 -I.. -I../../../source/league regexp_scanner.adb)
+	.obj/scanner_transformer
 
 matreshka-internals-regexps-compiler-parser.adb: matreshka-internals-regexps-compiler-parser.adb.in matreshka-internals-regexps-compiler.ads.in regexp_parser.y
 	make gen
@@ -20,7 +20,7 @@ matreshka-internals-regexps-compiler-parser.adb: matreshka-internals-regexps-com
 
 gen: .gen
 	gprbuild -p -Ptools/tools.gpr
-	(cd .gen && $(AFLEX) -v ../scanner.l)
+	(cd .gen && $(AFLEX) -v ../regexp_scanner.l)
 	(cd .gen && $(AYACC) ../regexp_parser.y off off)
 
 .gen:
