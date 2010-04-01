@@ -75,7 +75,7 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
       Current : Thread_List_Access := List_1'Access;
       Next    : Thread_List_Access := List_2'Access;
       Aux     : Thread_List_Access;
-      Match   : not null Shared_Match_Access := new Shared_Match (9);
+      Match   : constant not null Shared_Match_Access := new Shared_Match (9);
       SP      : Utf16_String_Index := 0;
       SI      : Positive := 1;
       Step    : Positive := 1;
@@ -98,7 +98,12 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
          Steps (PC) := Step;
 
          case Program (PC).Kind is
-            when Any_Code_Point | Code_Point | Code_Range | I_Property | Engine.Match =>
+            when Any_Code_Point
+              | Code_Point
+              | Code_Range
+              | I_Property
+              | Engine.Match
+            =>
                Next.Last := Next.Last + 1;
                Next.State (Next.Last) := (PC, SS);
 

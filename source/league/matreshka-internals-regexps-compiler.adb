@@ -31,8 +31,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Strings.Fixed;
-
 with Matreshka.Internals.Regexps.Compiler.Parser;
 
 package body Matreshka.Internals.Regexps.Compiler is

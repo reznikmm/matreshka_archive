@@ -101,7 +101,7 @@ package Matreshka.Internals.Regexps is
 
                when N_Match_Code | N_Member_Code =>
                   Code : Matreshka.Internals.Unicode.Code_Point;
-		  --  Code point to match or code point as member of character
+                  --  Code point to match or code point as member of character
                   --  class.
 
                when N_Match_Property | N_Member_Property =>
