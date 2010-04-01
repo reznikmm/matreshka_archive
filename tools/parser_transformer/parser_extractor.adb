@@ -47,8 +47,6 @@ package body Parser_Extractor is
 
    procedure Process_Case_Statement (Element : Asis.Element);
 
-   procedure Process_Ordinary_Type_Declaration (Element : Asis.Element);
-
    procedure Pre_Operation
      (Element : Asis.Element;
       Control : in out Asis.Traverse_Control;
@@ -92,9 +90,6 @@ package body Parser_Extractor is
 
                when Asis.An_Integer_Number_Declaration =>
                   Process_Integer_Number_Declaration (Element);
-
-               when Asis.An_Ordinary_Type_Declaration =>
-                  Process_Ordinary_Type_Declaration (Element);
 
                when others =>
                   null;
@@ -449,40 +444,6 @@ package body Parser_Extractor is
          end;
       end loop;
    end Process_Integer_Number_Declaration;
-
-   ---------------------------------------
-   -- Process_Ordinary_Type_Declaration --
-   ---------------------------------------
-
-   procedure Process_Ordinary_Type_Declaration (Element : Asis.Element) is
-      Image : constant Wide_String :=
-        To_Upper
-         (Asis.Declarations.Defining_Name_Image
-           (Asis.Declarations.Names (Element) (1)));
-
-   begin
-      if Image = "TOKEN" then
-         declare
-            Literals : constant Asis.Element_List :=
-              Asis.Definitions.Enumeration_Literal_Declarations
-               (Asis.Declarations.Type_Declaration_View (Element));
-
-         begin
-            for J in Literals'Range loop
-               declare
-                  Image : constant Wide_String :=
-                    Asis.Declarations.Defining_Name_Image
-                     (Asis.Declarations.Names (Literals (J)) (1));
-
-               begin
-                  Tokens.Append
-                   (Ada.Strings.Wide_Unbounded.To_Unbounded_Wide_String
-                     (Image));
-               end;
-            end loop;
-         end;
-      end if;
-   end Process_Ordinary_Type_Declaration;
 
    --------------
    -- To_Upper --

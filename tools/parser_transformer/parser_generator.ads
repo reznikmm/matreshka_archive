@@ -31,6 +31,4 @@ package Parser_Generator is
 
    procedure Generate_Parser_Tables;
 
-   procedure Generate_Parser_Tokens;
-
 end Parser_Generator;

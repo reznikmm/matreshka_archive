@@ -76,7 +76,6 @@ package Parser_Extractor is
    YY_Accept_Code         : Integer;
    YY_Error_Code          : Integer;
    Choices                : Choice_Vectors.Vector;
-   Tokens                 : Unbounded_Wide_String_Vectors.Vector;
 
    procedure Extract (Element : Asis.Element);
 

@@ -30,6 +30,8 @@ regexp: regexp_tools .gens-regexp
 	cd .gens-regexp && ../tools/ayacc/src/ayacc ../source/league/regexp_parser.y
 	cd .gens-regexp && gcc -c -gnat05 -gnatct -I../source/league regexp_parser_tokens.ads
 	cd source/league/regexp && ../../../tools/token_transformer/token_transformer ../../../.gens-regexp/regexp_parser_tokens.adt ../matreshka-internals-regexps-compiler.ads.in
+	cd .gens-regexp && gcc -c -gnat05 -gnatct -I../source/league -I../source/league/regexp regexp_parser.adb
+	cd source/league/regexp && ../../../tools/parser_transformer/parser_transformer ../../../.gens-regexp/regexp_parser.adt ../matreshka-internals-regexps-compiler-parser.adb.in
 
 .gens-regexp:
 	mkdir .gens-regexp
@@ -38,6 +40,7 @@ regexp_tools:
 	gprbuild -p -Pgnat/tools_aflex.gpr
 	gprbuild -p -Pgnat/tools_ayacc.gpr
 	gprbuild -p -Pgnat/tools_token_transformer.gpr
+	gprbuild -p -Pgnat/tools_parser_transformer.gpr
 
 #all:
 #	gprbuild -p -Pmatreshka
