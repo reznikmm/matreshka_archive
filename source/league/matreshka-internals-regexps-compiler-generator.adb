@@ -49,9 +49,8 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
    is
       use Integer_Vectors;
 
-      Program            : Instruction_Array (1 .. Pattern.Last * 9);
-      Last               : Natural := 0;
-      Last_Subexpression : Natural := 0;
+      Program : Instruction_Array (1 .. Pattern.Last * 9);
+      Last    : Natural := 0;
 
       procedure Compile
         (Expression  : Positive;
@@ -399,11 +398,6 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                   begin
                      Last := Last + 1;
                      Instruction := Last;
-
-                     if Pattern.AST (Expression).Index = 0 then
-                        Last_Subexpression := Last_Subexpression + 1;
-                        Pattern.AST (Expression).Index := Last_Subexpression;
-                     end if;
 
                      Compile (Pattern.AST (Expression).Subexpression, Ins_1, Tails);
 

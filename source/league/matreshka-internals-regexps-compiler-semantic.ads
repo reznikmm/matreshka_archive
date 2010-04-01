@@ -31,80 +31,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Regexps.Compiler.Parser;
-with Matreshka.Internals.Regexps.Compiler.Semantic;
+--  Semantic analyzer of the regular expression in the compiled form. It is
+--  responsible to assign unique index for every capturing subexpression for
+--  now.
 
-package body Matreshka.Internals.Regexps.Compiler is
+private package Matreshka.Internals.Regexps.Compiler.Semantic is
 
-   use Matreshka.Internals.Regexps.Compiler.Parser;
-   use Matreshka.Internals.Regexps.Compiler.Semantic;
+   pragma Preelaborate;
 
-   ---------
-   -- Add --
-   ---------
+   procedure Analyze (Pattern : not null Shared_Pattern_Access);
 
-   procedure Add
-    (Pattern : in out Shared_Pattern;
-     Class   : Positive;
-     Member  : Positive) is
-   begin
-      if Pattern.AST (Class).Members = 0 then
-         Pattern.AST (Class).Members := Member;
-
-      else
-         Attach (Pattern, Pattern.AST (Class).Members, Member);
-      end if;
-   end Add;
-
-   ------------
-   -- Attach --
-   ------------
-
-   procedure Attach
-    (Pattern : in out Shared_Pattern;
-     Head    : Positive;
-     Node    : Positive)
-   is
-      J : Positive := Head;
-
-   begin
-      while Pattern.AST (J).Next /= 0 loop
-         J := Pattern.AST (J).Next;
-      end loop;
-
-      Pattern.AST (J).Next := Node;
-   end Attach;
-
-   -------------
-   -- Compile --
-   -------------
-
-   function Compile
-    (Expression : not null Matreshka.Internals.Strings.Shared_String_Access)
-       return not null Shared_Pattern_Access
-   is
-      State : aliased Compiler_State;
-
-   begin
-      State.Data := Expression;
-
-      return Pattern : constant not null Shared_Pattern_Access
-        := YYParse (State'Access)
-      do
-         Analyze (Pattern);
-      end return;
-   end Compile;
-
-   -------------
-   -- YYError --
-   -------------
-
-   procedure YYError
-    (Self : not null access Compiler_State; Error : YY_Errors; Index : Natural) is
-   begin
-      if Self.YY_Error.Error = No_Error then
-         Self.YY_Error := (Error, Index);
-      end if;
-   end YYError;
-
-end Matreshka.Internals.Regexps.Compiler;
+end Matreshka.Internals.Regexps.Compiler.Semantic;

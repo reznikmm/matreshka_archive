@@ -185,7 +185,7 @@ package Matreshka.Internals.Regexps.Compiler is
       YY_Error             : YY_Error_Information := (No_Error, 0);
       YYLVal               : YYSType;
       YYVal                : YYSType;
-      Character_Class_Mode : Boolean;
+      Character_Class_Mode : Boolean := False;
       --  Recognition of the Unicode property specification is done in the
       --  separate scanner's mode; this variable is used to switch back to
       --  original mode.

@@ -138,9 +138,10 @@ package Matreshka.Internals.Regexps is
       Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
-      AST     : AST_Array (1 .. Size);
-      Last    : Natural := 0;
-      Start   : Positive;
+      AST      : AST_Array (1 .. Size);
+      Last     : Natural := 0;
+      Start    : Positive;
+      Captures : Natural := 0;
    end record;
 
    type Shared_Pattern_Access is access all Shared_Pattern;

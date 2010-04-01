@@ -31,80 +31,56 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Regexps.Compiler.Parser;
-with Matreshka.Internals.Regexps.Compiler.Semantic;
 
-package body Matreshka.Internals.Regexps.Compiler is
+package body Matreshka.Internals.Regexps.Compiler.Semantic is
 
-   use Matreshka.Internals.Regexps.Compiler.Parser;
-   use Matreshka.Internals.Regexps.Compiler.Semantic;
+   procedure Analyze_Node
+    (Pattern : not null Shared_Pattern_Access;
+     Node    : Natural);
 
-   ---------
-   -- Add --
-   ---------
+   -------------
+   -- Analyze --
+   -------------
 
-   procedure Add
-    (Pattern : in out Shared_Pattern;
-     Class   : Positive;
-     Member  : Positive) is
+   procedure Analyze (Pattern : not null Shared_Pattern_Access) is
    begin
-      if Pattern.AST (Class).Members = 0 then
-         Pattern.AST (Class).Members := Member;
+      Analyze_Node (Pattern, Pattern.Start);
+   end Analyze;
 
-      else
-         Attach (Pattern, Pattern.AST (Class).Members, Member);
+   ------------------
+   -- Analyze_Node --
+   ------------------
+
+   procedure Analyze_Node
+    (Pattern : not null Shared_Pattern_Access;
+     Node    : Natural) is
+   begin
+      case Pattern.AST (Node).Kind is
+         when N_Subexpression =>
+            if Pattern.AST (Node).Capture then
+               Pattern.Captures := Pattern.Captures + 1;
+               Pattern.AST (Node).Index := Pattern.Captures;
+            end if;
+
+            Analyze_Node (Pattern, Pattern.AST (Node).Subexpression);
+
+         when N_Character_Class =>
+            Analyze_Node (Pattern, Pattern.AST (Node).Members);
+
+         when N_Multiplicity =>
+            Analyze_Node (Pattern, Pattern.AST (Node).Item);
+
+         when N_Alternation =>
+            Analyze_Node (Pattern, Pattern.AST (Node).First);
+            Analyze_Node (Pattern, Pattern.AST (Node).Second);
+
+         when others =>
+            null;
+      end case;
+
+      if Pattern.AST (Node).Next /= 0 then
+         Analyze_Node (Pattern, Pattern.AST (Node).Next);
       end if;
-   end Add;
+   end Analyze_Node;
 
-   ------------
-   -- Attach --
-   ------------
-
-   procedure Attach
-    (Pattern : in out Shared_Pattern;
-     Head    : Positive;
-     Node    : Positive)
-   is
-      J : Positive := Head;
-
-   begin
-      while Pattern.AST (J).Next /= 0 loop
-         J := Pattern.AST (J).Next;
-      end loop;
-
-      Pattern.AST (J).Next := Node;
-   end Attach;
-
-   -------------
-   -- Compile --
-   -------------
-
-   function Compile
-    (Expression : not null Matreshka.Internals.Strings.Shared_String_Access)
-       return not null Shared_Pattern_Access
-   is
-      State : aliased Compiler_State;
-
-   begin
-      State.Data := Expression;
-
-      return Pattern : constant not null Shared_Pattern_Access
-        := YYParse (State'Access)
-      do
-         Analyze (Pattern);
-      end return;
-   end Compile;
-
-   -------------
-   -- YYError --
-   -------------
-
-   procedure YYError
-    (Self : not null access Compiler_State; Error : YY_Errors; Index : Natural) is
-   begin
-      if Self.YY_Error.Error = No_Error then
-         Self.YY_Error := (Error, Index);
-      end if;
-   end YYError;
-
-end Matreshka.Internals.Regexps.Compiler;
+end Matreshka.Internals.Regexps.Compiler.Semantic;
