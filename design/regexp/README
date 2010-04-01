@@ -1,15 +1,7 @@
 Build Instruction
 -----------------
 
-1. Build aflex
-
-  cd ../xml/tools/aflex/src
-  gprbuild -p
-
-2. Build ayacc
-
-  cd ../xml/tools/ayacc/src
-  gprbuild -p
+1. Edit Makefile.config in root directory to reflect you configuration.
 
 3. Build regexp engine demo
 
