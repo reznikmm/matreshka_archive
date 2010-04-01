@@ -424,7 +424,11 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    -- YYParse --
    -------------
 
-   function YYParse return not null Shared_Pattern_Access is
+   function YYParse
+    (Self : not null access Compiler_State)
+       return not null Shared_Pattern_Access
+   is
+
       -- The size of the value and state stacks
 
       YY_Stack_Size : constant Natural := 300;
@@ -443,16 +447,18 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
          Look_Ahead   : Boolean := True;
       end YY;
 
+      YYVal : YYSType renames Self.YYVal;
+
       YY_Action : Integer;
       YY_Index  : Integer;
-      Pattern   : Shared_Pattern_Access := new Shared_Pattern (Data.Length);
+      Pattern   : Shared_Pattern_Access
+        := new Shared_Pattern (Self.Data.Length);
 
    begin
       YY.TOS := 0;
       --  Initialize by pushing state 0 and getting the first input symbol
       YY.State_Stack (YY.TOS) := 0;
       YY.Look_Ahead := True;
-      Character_Class_Mode := False;
 
       loop
          YY_Index := YY_Shift_Reduce_Offset (YY.State_Stack (YY.TOS));
@@ -462,7 +468,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
          else
             if YY.Look_Ahead then
-               YY.Input_Symbol := YYLex;
+               YY.Input_Symbol := YYLex (Self);
                YY.Look_Ahead   := False;
             end if;
 
@@ -483,7 +489,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
             YY.TOS := YY.TOS + 1;
             YY.State_Stack (YY.TOS) := YY_Action;
-            YY.Value_Stack (YY.TOS) := YYLVal;
+            YY.Value_Stack (YY.TOS) := Self.YYLVal;
 
             --  Advance lookahead
 
@@ -494,9 +500,9 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
             raise Constraint_Error
               with "Syntax error: "
-                & YY_Errors'Image (YY_Error.Error)
+                & YY_Errors'Image (Self.YY_Error.Error)
                 & " at"
-                & Integer'Image (YY_Error.Index);
+                & Integer'Image (Self.YY_Error.Index);
 
          elsif YY_Action = YY_Accept_Code then
             --  Grammar is accepted

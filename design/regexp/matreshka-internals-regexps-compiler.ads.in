@@ -178,19 +178,22 @@ package Matreshka.Internals.Regexps.Compiler is
    --  Later, they will be wrapped by record type to allow to have
    --  several compiler in the different threads at the same time.
 
-   Data                 : Matreshka.Internals.Strings.Shared_String_Access;
-   YY_Start_State       : Integer := 1;
-   YY_Current_Position  : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
-   YY_Current_Index     : Positive := 1;
-   YY_Error             : YY_Error_Information := (No_Error, 0);
-   YYLVal               : YYSType; 
-   YYVal                : YYSType; 
-   Character_Class_Mode : Boolean;
-   --  Recognition of the Unicode property specification is done in the
-   --  separate scanner's mode; this variable is used to switch back to
-   --  original mode.
+   type Compiler_State is record
+      Data                 : Matreshka.Internals.Strings.Shared_String_Access;
+      YY_Start_State       : Integer := 1;
+      YY_Current_Position  : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+      YY_Current_Index     : Positive := 1;
+      YY_Error             : YY_Error_Information := (No_Error, 0);
+      YYLVal               : YYSType; 
+      YYVal                : YYSType; 
+      Character_Class_Mode : Boolean;
+      --  Recognition of the Unicode property specification is done in the
+      --  separate scanner's mode; this variable is used to switch back to
+      --  original mode.
+   end record;
 
-   procedure YYError (Error : YY_Errors; Index : Natural);
+   procedure YYError
+    (Self : in out Compiler_State; Error : YY_Errors; Index : Natural);
    --  Report error.
 
    procedure Attach
@@ -201,5 +204,9 @@ package Matreshka.Internals.Regexps.Compiler is
     (Pattern : in out Shared_Pattern; Class : Positive; Member : Positive);
 
    procedure Dump (Pattern : Shared_Pattern);
+
+   function Compile
+    (Expression : not null Matreshka.Internals.Strings.Shared_String_Access)
+       return not null Shared_Pattern_Access;
 
 end Matreshka.Internals.Regexps.Compiler;

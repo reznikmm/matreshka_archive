@@ -139,11 +139,11 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 }
 
 "\\Q" {
-   Enter_Start_Condition (LITERAL);
+   Enter_Start_Condition (Self, LITERAL);
 }
 
 <LITERAL>"\\E" {
-   Enter_Start_Condition (INITIAL);
+   Enter_Start_Condition (Self, INITIAL);
 }
 
 <LITERAL>.|\n {  --  aflex . is any but newline
@@ -160,7 +160,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <LITERAL><<EOF>> {
    --  Unexprected end of literal
 
-   YYError (Unexpected_End_Of_Literal, 0);
+   YYError (Self, Unexpected_End_Of_Literal, 0);
 
    return Error;
 }
@@ -174,13 +174,13 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 "(?#" {
    --  Start of the comment
 
-   Enter_Start_Condition (COMMENT);
+   Enter_Start_Condition (Self, COMMENT);
 }
 
 <COMMENT>")" {
    --  End of comment
 
-   Enter_Start_Condition (INITIAL);
+   Enter_Start_Condition (Self, INITIAL);
 }
 
 <COMMENT>.|\n {
@@ -246,8 +246,8 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 "[" {
    --  Enter character class
 
-   Character_Class_Mode := True;
-   Enter_Start_Condition (CHARACTER_CLASS);
+   Self.Character_Class_Mode := True;
+   Enter_Start_Condition (Self, CHARACTER_CLASS);
 
    return Token_Character_Class_Begin;
 }
@@ -255,8 +255,8 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <CHARACTER_CLASS>"]" {
    --  XXX Leave character class
 
-   Character_Class_Mode := False;
-   Enter_Start_Condition (INITIAL);
+   Self.Character_Class_Mode := False;
+   Enter_Start_Condition (Self, INITIAL);
 
    return Token_Character_Class_End;
 }
@@ -276,7 +276,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <CHARACTER_CLASS><<EOF>> {
    --  Unexpected and of character class
 
-   YYError (Unexpected_End_Of_Character_Class, 0);
+   YYError (Self, Unexpected_End_Of_Character_Class, 0);
 
    return Error;
 }
@@ -284,7 +284,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 "{" {
    --  Multiplicity
 
-   Enter_Start_Condition (MULTIPLICITY);
+   Enter_Start_Condition (Self, MULTIPLICITY);
 
    return Token_Multiplicity_Begin;
 }
@@ -292,7 +292,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <MULTIPLICITY>"}" {
    --  End of multiplicity specifier
 
-   Enter_Start_Condition (INITIAL);
+   Enter_Start_Condition (Self, INITIAL);
 
    return Token_Multiplicity_End_Greedy;
 }
@@ -300,7 +300,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <MULTIPLICITY>"}?" {
    --  End of multiplicity specifier
 
-   Enter_Start_Condition (INITIAL);
+   Enter_Start_Condition (Self, INITIAL);
 
    return Token_Multiplicity_End_Lazy;
 }
@@ -322,7 +322,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <MULTIPLICITY>[^\p{Pattern_White_Space}] {
    --  Unexpected character in multiplicidy declaration
 
-   YYError (Unexpected_Character_in_Multiplicity_Specifier, YY_Back_Index);
+   YYError (Self, Unexpected_Character_in_Multiplicity_Specifier, YY_Back_Index);
 
    return Error;
 }
@@ -330,7 +330,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <MULTIPLICITY><<EOF>> {
    --  Unexpected end of multiplicity specifier
 
-   YYError (Unexpected_End_Of_Multiplicity_Specifier, 0);
+   YYError (Self, Unexpected_End_Of_Multiplicity_Specifier, 0);
 
    return Error;
 }
@@ -422,7 +422,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <INITIAL,CHARACTER_CLASS>\\p\{ {
    --  Unicode property specification
 
-   Enter_Start_Condition (PROPERTY_SPECIFICATION);
+   Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
 
    return Token_Property_Begin_Positive;
 }
@@ -430,7 +430,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <INITIAL,CHARACTER_CLASS>"[:" {
    --  Unicode property specification
 
-   Enter_Start_Condition (PROPERTY_SPECIFICATION);
+   Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
 
    return Token_Property_Begin_Positive;
 }
@@ -438,7 +438,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <INITIAL,CHARACTER_CLASS>\\P\{ {
    --  Unicode property specification
 
-   Enter_Start_Condition (PROPERTY_SPECIFICATION);
+   Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
 
    return Token_Property_Begin_Negative;
 }
@@ -446,7 +446,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <INITIAL,CHARACTER_CLASS>"[:^" {
    --  Unicode property specification
 
-   Enter_Start_Condition (PROPERTY_SPECIFICATION);
+   Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
 
    return Token_Property_Begin_Negative;
 }
@@ -454,11 +454,11 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <PROPERTY_SPECIFICATION>\} {
    --  End of Unicode property specification
 
-   if Character_Class_Mode then
-      Enter_Start_Condition (CHARACTER_CLASS);
+   if Self.Character_Class_Mode then
+      Enter_Start_Condition (Self, CHARACTER_CLASS);
 
    else
-      Enter_Start_Condition (INITIAL);
+      Enter_Start_Condition (Self, INITIAL);
    end if;
 
    return Token_Property_End;
@@ -467,11 +467,11 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <PROPERTY_SPECIFICATION>":]" {
    --  End of Unicode property specification
 
-   if Character_Class_Mode then
-      Enter_Start_Condition (CHARACTER_CLASS);
+   if Self.Character_Class_Mode then
+      Enter_Start_Condition (Self, CHARACTER_CLASS);
 
    else
-      Enter_Start_Condition (INITIAL);
+      Enter_Start_Condition (Self, INITIAL);
    end if;
 
    return Token_Property_End;
@@ -1194,7 +1194,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <PROPERTY_SPECIFICATION>\p{Pattern_Syntax} {
    --  Pattern syntax character in property specification
 
-   YYError (Unrecognized_Character_In_Property_Specification, 0);
+   YYError (Self, Unrecognized_Character_In_Property_Specification, 0);
 
    return Error;
 }
@@ -1202,7 +1202,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <PROPERTY_SPECIFICATION><<EOF>> {
    --  Unexpected end of string in property specification
 
-   YYError (Unexpected_End_Of_Property_Specification, 0);
+   YYError (Self, Unexpected_End_Of_Property_Specification, 0);
 
    return Error;
 }
@@ -1229,7 +1229,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <INITIAL,CHARACTER_CLASS>\p{Pattern_Syntax} {
    --  Special outside of sequence
 
-   YYError (Unescaped_Pattern_Syntax_Character, YY_Back_Index);
+   YYError (Self, Unescaped_Pattern_Syntax_Character, YY_Back_Index);
 
    return Error;
 }
@@ -1247,13 +1247,20 @@ with Matreshka.Internals.Regexps.Compiler;
 ##
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Wide_Wide_Text_IO;
-with Matreshka.Internals.Regexps.Compiler;
 ##
    use Ada.Wide_Wide_Text_IO;
    use Matreshka.Internals.Regexps.Compiler;
 
-   procedure Enter_Start_Condition (Start : Integer) is null;
+   procedure Enter_Start_Condition
+    (Self  : not null access Matreshka.Internals.Regexps.Compiler.Compiler_State;
+     Start : Integer) is null;
 
-   procedure YYError (Error : YY_Errors; Index : Natural) is null;
+   procedure YYError
+    (Self  : not null access Matreshka.Internals.Regexps.Compiler.Compiler_State;
+     Error : YY_Errors;
+     Index : Natural) is null;
 
    YY_Back_Index : Natural;
+   Self : access Matreshka.Internals.Regexps.Compiler.Compiler_State;
+
+   YYLVal : YYSType renames Self.YYLVal;

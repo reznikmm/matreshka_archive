@@ -43,35 +43,39 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
    use Matreshka.Internals.Utf16;
    use Matreshka.Internals.Regexps.Compiler.Scanner.Tables;
 
-   procedure Enter_Start_Condition (State : Integer);
+   procedure Enter_Start_Condition
+    (Self : not null access Compiler_State; State : Integer);
    --  Enter a start condition.
 
-   function YY_EOF_State return Integer;
+   function YY_EOF_State
+    (Self : not null access Compiler_State) return Integer;
    --  Action number for EOF rule of a current start state
 
    ---------------------------
    -- Enter_Start_Condition --
    ---------------------------
 
-   procedure Enter_Start_Condition (State : Integer) is
+   procedure Enter_Start_Condition
+    (Self : not null access Compiler_State; State : Integer) is
    begin
-      YY_Start_State := 1 + 2 * State;
+      Self.YY_Start_State := 1 + 2 * State;
    end Enter_Start_Condition;
 
    ------------------
    -- YY_EOF_State --
    ------------------
 
-   function YY_EOF_State return Integer is
+   function YY_EOF_State
+    (Self : not null access Compiler_State) return Integer is
    begin
-     return YY_END_OF_BUFFER + (YY_Start_State - 1) / 2 + 1;
+     return YY_END_OF_BUFFER + (Self.YY_Start_State - 1) / 2 + 1;
    end YY_EOF_State;
 
    -----------
    -- YYLex --
    -----------
 
-   function YYLex return Token is
+   function YYLex (Self : not null access Compiler_State) return Token is
       YY_Action                  : Integer;
       YY_Back_Position           : Utf16_String_Index;
       YY_Back_Index              : Positive;
@@ -92,15 +96,15 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
 
       function YYText return Wide_Wide_String is
          Length : constant Natural :=
-           Natural (YY_Current_Position - YY_Back_Position);
+           Natural (Self.YY_Current_Position - YY_Back_Position);
          Result : Wide_Wide_String (1 .. Length);
          Last   : Natural := 0;
          Index  : Utf16_String_Index := YY_Back_Position;
          Code   : Code_Point;
 
       begin
-         while Index < YY_Current_Position loop
-            Unchecked_Next (Data.Value, Index, Code);
+         while Index < Self.YY_Current_Position loop
+            Unchecked_Next (Self.Data.Value, Index, Code);
             Last := Last + 1;
             Result (Last) := Wide_Wide_Character'Val (Code);
          end loop;
@@ -108,22 +112,24 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
          return Result (1 .. Last); 
       end YYText;
 
+      YYLVal : YYSType renames Self.YYLVal;
+
    begin
       loop  --  Loops until end-of-string is reached
-         YY_Back_Position := YY_Current_Position;
-         YY_Back_Index    := YY_Current_Index;
-         YY_Current_State := YY_Start_State;
+         YY_Back_Position := Self.YY_Current_Position;
+         YY_Back_Index    := Self.YY_Current_Index;
+         YY_Current_State := Self.YY_Start_State;
 
-         if YY_Back_Position = Data.Unused then
+         if YY_Back_Position = Self.Data.Unused then
             --  End of string already reached
 
-            YY_Action := YY_EOF_State;
+            YY_Action := YY_EOF_State (Self);
 
          else
             loop
-               YY_Next_Position := YY_Current_Position;
+               YY_Next_Position := Self.YY_Current_Position;
 
-               if YY_Next_Position = Data.Unused then
+               if YY_Next_Position = Self.Data.Unused then
                   --  By convention, aflex always assign zero equivalence class
                   --  to the end-of-buffer state.
 
@@ -131,7 +137,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
 
                else
                   Unchecked_Next
-                   (Data.Value, YY_Next_Position, YY_Current_Code);
+                   (Self.Data.Value, YY_Next_Position, YY_Current_Code);
                   YY_C :=
                     YY_EC_Base
                      (YY_Current_Code / 16#100#) (YY_Current_Code mod 16#100#);
@@ -141,9 +147,9 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                   --  Accepting state reached, save if to backtrack
 
                   YY_Last_Accepting_State    := YY_Current_State;
-                  YY_Last_Accepting_Position := YY_Current_Position;
+                  YY_Last_Accepting_Position := Self.YY_Current_Position;
 
-                  exit when YY_Current_Position = Data.Unused;
+                  exit when Self.YY_Current_Position = Self.Data.Unused;
                   --  End of string has been reached.
                end if;
 
@@ -158,16 +164,16 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                end loop;
 
                YY_Current_State := YY_Nxt (YY_Base (YY_Current_State) + YY_C);
-               YY_Current_Position := YY_Next_Position;
-               YY_Current_Index := YY_Current_Index + 1;
+               Self.YY_Current_Position := YY_Next_Position;
+               Self.YY_Current_Index := Self.YY_Current_Index + 1;
 
                exit when YY_Current_State = YY_Jam_State;
             end loop;
 
             --  Return back to last accepting state.
 
-            YY_Current_Position := YY_Last_Accepting_Position;
-            YY_Current_State    := YY_Last_Accepting_State;
+            Self.YY_Current_Position := YY_Last_Accepting_Position;
+            YY_Current_State         := YY_Last_Accepting_State;
 
             --  Retrieve associated action and execute it.
 
@@ -179,17 +185,17 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 0 =>
                --  Backtrack
 
-               YY_Current_Position := YY_Last_Accepting_Position;
-               YY_Current_State    := YY_Last_Accepting_State;
+               Self.YY_Current_Position := YY_Last_Accepting_Position;
+               YY_Current_State         := YY_Last_Accepting_State;
 
             when 1 =>
                return Token_Any_Code_Point;
 
             when 2 =>
-               Enter_Start_Condition (LITERAL);
+               Enter_Start_Condition (Self, LITERAL);
 
             when 3 =>
-               Enter_Start_Condition (INITIAL);
+               Enter_Start_Condition (Self, INITIAL);
 
             when 4 =>
               --  aflex . is any but newline
@@ -210,12 +216,12 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 7 =>
                --  Start of the comment
             
-               Enter_Start_Condition (COMMENT);
+               Enter_Start_Condition (Self, COMMENT);
 
             when 8 =>
                --  End of comment
             
-               Enter_Start_Condition (INITIAL);
+               Enter_Start_Condition (Self, INITIAL);
 
             when 9 =>
                --  Comment
@@ -258,16 +264,16 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 20 =>
                --  Enter character class
             
-               Character_Class_Mode := True;
-               Enter_Start_Condition (CHARACTER_CLASS);
+               Self.Character_Class_Mode := True;
+               Enter_Start_Condition (Self, CHARACTER_CLASS);
             
                return Token_Character_Class_Begin;
 
             when 21 =>
                --  XXX Leave character class
             
-               Character_Class_Mode := False;
-               Enter_Start_Condition (INITIAL);
+               Self.Character_Class_Mode := False;
+               Enter_Start_Condition (Self, INITIAL);
             
                return Token_Character_Class_End;
 
@@ -284,21 +290,21 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 25 =>
                --  Multiplicity
             
-               Enter_Start_Condition (MULTIPLICITY);
+               Enter_Start_Condition (Self, MULTIPLICITY);
             
                return Token_Multiplicity_Begin;
 
             when 26 =>
                --  End of multiplicity specifier
             
-               Enter_Start_Condition (INITIAL);
+               Enter_Start_Condition (Self, INITIAL);
             
                return Token_Multiplicity_End_Greedy;
 
             when 27 =>
                --  End of multiplicity specifier
             
-               Enter_Start_Condition (INITIAL);
+               Enter_Start_Condition (Self, INITIAL);
             
                return Token_Multiplicity_End_Lazy;
 
@@ -317,7 +323,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 30 =>
                --  Unexpected character in multiplicidy declaration
             
-               YYError (Unexpected_Character_in_Multiplicity_Specifier, YY_Back_Index);
+               YYError (Self, Unexpected_Character_in_Multiplicity_Specifier, YY_Back_Index);
             
                return Error;
 
@@ -397,39 +403,39 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 43 =>
                --  Unicode property specification
             
-               Enter_Start_Condition (PROPERTY_SPECIFICATION);
+               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
             
                return Token_Property_Begin_Positive;
 
             when 44 =>
                --  Unicode property specification
             
-               Enter_Start_Condition (PROPERTY_SPECIFICATION);
+               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
             
                return Token_Property_Begin_Positive;
 
             when 45 =>
                --  Unicode property specification
             
-               Enter_Start_Condition (PROPERTY_SPECIFICATION);
+               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
             
                return Token_Property_Begin_Negative;
 
             when 46 =>
                --  Unicode property specification
             
-               Enter_Start_Condition (PROPERTY_SPECIFICATION);
+               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
             
                return Token_Property_Begin_Negative;
 
             when 47 =>
                --  End of Unicode property specification
             
-               if Character_Class_Mode then
-                  Enter_Start_Condition (CHARACTER_CLASS);
+               if Self.Character_Class_Mode then
+                  Enter_Start_Condition (Self, CHARACTER_CLASS);
             
                else
-                  Enter_Start_Condition (INITIAL);
+                  Enter_Start_Condition (Self, INITIAL);
                end if;
             
                return Token_Property_End;
@@ -437,11 +443,11 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 48 =>
                --  End of Unicode property specification
             
-               if Character_Class_Mode then
-                  Enter_Start_Condition (CHARACTER_CLASS);
+               if Self.Character_Class_Mode then
+                  Enter_Start_Condition (Self, CHARACTER_CLASS);
             
                else
-                  Enter_Start_Condition (INITIAL);
+                  Enter_Start_Condition (Self, INITIAL);
                end if;
             
                return Token_Property_End;
@@ -1074,7 +1080,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 138 =>
                --  Pattern syntax character in property specification
             
-               YYError (Unrecognized_Character_In_Property_Specification, 0);
+               YYError (Self, Unrecognized_Character_In_Property_Specification, 0);
             
                return Error;
 
@@ -1098,7 +1104,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 142 =>
                --  Special outside of sequence
             
-               YYError (Unescaped_Pattern_Syntax_Character, YY_Back_Index);
+               YYError (Self, Unescaped_Pattern_Syntax_Character, YY_Back_Index);
             
                return Error;
 
@@ -1110,21 +1116,21 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 147 =>
                --  Unexprected end of literal
             
-               YYError (Unexpected_End_Of_Literal, 0);
+               YYError (Self, Unexpected_End_Of_Literal, 0);
             
                return Error;
 
             when 148 =>
                --  Unexpected and of character class
             
-               YYError (Unexpected_End_Of_Character_Class, 0);
+               YYError (Self, Unexpected_End_Of_Character_Class, 0);
             
                return Error;
 
             when 149 =>
                --  Unexpected end of multiplicity specifier
             
-               YYError (Unexpected_End_Of_Multiplicity_Specifier, 0);
+               YYError (Self, Unexpected_End_Of_Multiplicity_Specifier, 0);
             
                return Error;
 
@@ -1136,7 +1142,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 151 =>
                --  Unexpected end of string in property specification
             
-               YYError (Unexpected_End_Of_Property_Specification, 0);
+               YYError (Self, Unexpected_End_Of_Property_Specification, 0);
             
                return Error;
 

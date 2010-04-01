@@ -32,8 +32,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.Regexps.Compiler.Parser is
+private package Matreshka.Internals.Regexps.Compiler.Parser is
 
-   function YYParse return not null Shared_Pattern_Access;
+   function YYParse
+    (Self : not null access Compiler_State)
+       return not null Shared_Pattern_Access;
 
 end Matreshka.Internals.Regexps.Compiler.Parser;

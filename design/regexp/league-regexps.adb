@@ -35,7 +35,6 @@ with Ada.Wide_Wide_Text_IO;
 
 with League.Strings.Internals;
 with Matreshka.Internals.Regexps.Compiler.Generator;
-with Matreshka.Internals.Regexps.Compiler.Parser;
 with Matreshka.Internals.Regexps.Engine.Pike;
 
 package body League.Regexps is
@@ -106,9 +105,9 @@ package body League.Regexps is
       P : Shared_Pattern_Access;
 
    begin
-      Matreshka.Internals.Regexps.Compiler.Data :=
-        League.Strings.Internals.Get_Shared (Expression);
-      P := Matreshka.Internals.Regexps.Compiler.Parser.YYParse;
+      P :=
+        Matreshka.Internals.Regexps.Compiler.Compile
+         (League.Strings.Internals.Get_Shared (Expression));
 
       Ada.Wide_Wide_Text_IO.Put_Line ("---------- AST ----------");
       Matreshka.Internals.Regexps.Compiler.Dump (P.all);

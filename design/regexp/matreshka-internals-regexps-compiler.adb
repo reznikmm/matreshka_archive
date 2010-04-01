@@ -34,7 +34,11 @@
 with Ada.Strings.Fixed;
 with Ada.Text_IO;
 
+with Matreshka.Internals.Regexps.Compiler.Parser;
+
 package body Matreshka.Internals.Regexps.Compiler is
+
+   use Matreshka.Internals.Regexps.Compiler.Parser;
 
    ---------
    -- Add --
@@ -71,6 +75,23 @@ package body Matreshka.Internals.Regexps.Compiler is
 
       Pattern.AST (J).Next := Node;
    end Attach;
+
+   -------------
+   -- Compile --
+   -------------
+
+   function Compile
+    (Expression : not null Matreshka.Internals.Strings.Shared_String_Access)
+       return not null Shared_Pattern_Access
+   is
+      State : aliased Compiler_State;
+
+   begin
+      State.Data                 := Expression;
+      State.Character_Class_Mode := False;
+
+      return YYParse (State'Access);
+   end Compile;
 
    ----------
    -- Dump --
@@ -217,10 +238,11 @@ package body Matreshka.Internals.Regexps.Compiler is
    -- YYError --
    -------------
 
-   procedure YYError (Error : YY_Errors; Index : Natural) is
+   procedure YYError
+    (Self : not null access Compiler_State; Error : YY_Errors; Index : Natural) is
    begin
-      if YY_Error.Error = No_Error then
-         YY_Error := (Error, Index);
+      if Self.YY_Error.Error = No_Error then
+         Self.YY_Error := (Error, Index);
       end if;
    end YYError;
 
