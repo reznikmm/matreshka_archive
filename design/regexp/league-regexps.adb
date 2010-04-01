@@ -50,6 +50,15 @@ package body League.Regexps is
       Reference (Self.Shared);
    end Adjust;
 
+   ------------
+   -- Adjust --
+   ------------
+
+   overriding procedure Adjust (Self : in out Regexp_Pattern) is
+   begin
+      Reference (Self.Shared);
+   end Adjust;
+
    -------------
    -- Capture --
    -------------
@@ -120,6 +129,21 @@ package body League.Regexps is
    --------------
 
    overriding procedure Finalize (Self : in out Regexp_Match) is
+   begin
+      --  Finalize can be called more than once (as specified by language
+      --  standard), thus implementation should provide protection from
+      --  multiple finalization.
+
+      if Self.Shared /= null then
+         Dereference (Self.Shared);
+      end if;
+   end Finalize;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize (Self : in out Regexp_Pattern) is
    begin
       --  Finalize can be called more than once (as specified by language
       --  standard), thus implementation should provide protection from

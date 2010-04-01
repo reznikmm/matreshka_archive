@@ -90,6 +90,9 @@ private
         := Matreshka.Internals.Regexps.Empty_Shared_Pattern'Access;
    end record;
 
+   overriding procedure Adjust (Self : in out Regexp_Pattern);
+   overriding procedure Finalize (Self : in out Regexp_Pattern);
+
    type Regexp_Match is new Ada.Finalization.Controlled with record
       Shared : Matreshka.Internals.Regexps.Shared_Match_Access
         := Matreshka.Internals.Regexps.Empty_Shared_Match'Access;
