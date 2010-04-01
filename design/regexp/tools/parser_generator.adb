@@ -189,6 +189,8 @@ package body Parser_Generator is
 
       New_Line (Output);
       Put_Line (Output, "private package Matreshka.Internals.Regexps.Compiler.Parser.Tables is");
+      New_Line (Output);
+      Put_Line (Output, "   pragma Preelaborate;");
 
       New_Line (Output);
       Put_Line (Output, "   type Goto_Entry is record");

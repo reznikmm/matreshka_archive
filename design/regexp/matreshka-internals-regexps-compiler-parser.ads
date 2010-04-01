@@ -34,6 +34,8 @@
 
 private package Matreshka.Internals.Regexps.Compiler.Parser is
 
+   pragma Preelaborate;
+
    function YYParse
     (Self : not null access Compiler_State)
        return not null Shared_Pattern_Access;

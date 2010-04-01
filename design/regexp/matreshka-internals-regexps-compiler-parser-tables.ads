@@ -1,6 +1,8 @@
 
 private package Matreshka.Internals.Regexps.Compiler.Parser.Tables is
 
+   pragma Preelaborate;
+
    type Goto_Entry is record
       Nonterm  : Integer;
       Newstate : Integer;

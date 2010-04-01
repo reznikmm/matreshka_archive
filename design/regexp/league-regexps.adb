@@ -31,8 +31,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Wide_Wide_Text_IO;
-
 with League.Strings.Internals;
 with Matreshka.Internals.Regexps.Compiler.Generator;
 with Matreshka.Internals.Regexps.Engine.Pike;
@@ -109,19 +107,14 @@ package body League.Regexps is
 
    function Compile
     (Expression : League.Strings.Universal_String'Class)
-       return Regexp_Pattern
-   is
-      P : Shared_Pattern_Access;
-
+       return Regexp_Pattern is
    begin
-      P :=
-        Matreshka.Internals.Regexps.Compiler.Compile
-         (League.Strings.Internals.Get_Shared (Expression));
-
-      Ada.Wide_Wide_Text_IO.Put_Line ("---------- AST ----------");
-      Matreshka.Internals.Regexps.Compiler.Dump (P.all);
-
-      return Regexp_Pattern'(Ada.Finalization.Controlled with Shared => P);
+      return
+        Regexp_Pattern'
+         (Ada.Finalization.Controlled with
+            Shared =>
+              Matreshka.Internals.Regexps.Compiler.Compile
+               (League.Strings.Internals.Get_Shared (Expression)));
    end Compile;
 
    --------------
@@ -161,21 +154,16 @@ package body League.Regexps is
    function Find_Match
     (Self   : Regexp_Pattern'Class;
      String : League.Strings.Universal_String'Class)
-       return Regexp_Match
-   is
-      P : Matreshka.Internals.Regexps.Engine.Instruction_Array :=
-        Matreshka.Internals.Regexps.Compiler.Generator.Generate (Self.Shared);
-
+       return Regexp_Match is
    begin
-      Ada.Wide_Wide_Text_IO.Put_Line ("---------- Code ----------");
-      Matreshka.Internals.Regexps.Engine.Dump (P);
-
       return
         Regexp_Match'
          (Ada.Finalization.Controlled with
-            Shared => Matreshka.Internals.Regexps.Engine.Pike.Execute
-                       (P,
-                        League.Strings.Internals.Get_Shared (String)));
+            Shared =>
+              Matreshka.Internals.Regexps.Engine.Pike.Execute
+               (Matreshka.Internals.Regexps.Compiler.Generator.Generate
+                 (Self.Shared),
+                League.Strings.Internals.Get_Shared (String)));
    end Find_Match;
 
    -----------------

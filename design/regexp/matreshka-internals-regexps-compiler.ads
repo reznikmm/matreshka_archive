@@ -31,11 +31,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
 
 package Matreshka.Internals.Regexps.Compiler is
 
---   pragma Preelaborate;
+   pragma Preelaborate;
 
    type YY_Errors is
     (No_Error,
@@ -229,8 +228,6 @@ package Matreshka.Internals.Regexps.Compiler is
 
    procedure Add
     (Pattern : in out Shared_Pattern; Class : Positive; Member : Positive);
-
-   procedure Dump (Pattern : Shared_Pattern);
 
    function Compile
     (Expression : not null Matreshka.Internals.Strings.Shared_String_Access)

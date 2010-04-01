@@ -2,6 +2,8 @@ with Matreshka.Internals.Unicode;
 
 private package Matreshka.Internals.Regexps.Compiler.Scanner.Tables is
 
+   pragma Preelaborate;
+
    subtype YY_Secondary_Index is
      Matreshka.Internals.Unicode.Code_Point range 0 .. 16#FF#;
    subtype YY_Primary_Index is

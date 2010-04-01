@@ -32,7 +32,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Characters.Wide_Wide_Latin_1;
-with Ada.Wide_Wide_Text_IO;
 
 with Matreshka.Internals.Regexps.Compiler.Scanner.Tables;
 

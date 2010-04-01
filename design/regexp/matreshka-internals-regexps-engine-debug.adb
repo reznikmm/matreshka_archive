@@ -35,9 +35,7 @@ with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
 
-with Matreshka.Internals.Unicode;
-
-package body Matreshka.Internals.Regexps.Engine is
+package body Matreshka.Internals.Regexps.Engine.Debug is
 
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Unicode;
@@ -172,4 +170,4 @@ package body Matreshka.Internals.Regexps.Engine is
       end loop;
    end Dump;
 
-end Matreshka.Internals.Regexps.Engine;
+end Matreshka.Internals.Regexps.Engine.Debug;

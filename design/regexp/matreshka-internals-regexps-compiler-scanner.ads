@@ -34,6 +34,8 @@
 
 private package Matreshka.Internals.Regexps.Compiler.Scanner is
 
+   pragma Preelaborate;
+
    function YYLex (Self : not null access Compiler_State) return Token;
 
 end Matreshka.Internals.Regexps.Compiler.Scanner;

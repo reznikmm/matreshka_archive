@@ -38,6 +38,8 @@ private with Matreshka.Internals.Regexps;
 
 package League.Regexps is
 
+   pragma Preelaborate;
+
    type Regexp_Pattern is tagged private;
    pragma Preelaborable_Initialization (Regexp_Pattern);
 

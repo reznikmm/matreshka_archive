@@ -195,6 +195,8 @@ package body Scanner_Generator is
       Put_Line (Output, "with Matreshka.Internals.Unicode;");
       New_Line (Output);
       Put_Line (Output, "private package Matreshka.Internals.Regexps.Compiler.Scanner.Tables is");
+      New_Line (Output);
+      Put_Line (Output, "   pragma Preelaborate;");
 
       New_Line (Output);
       Put_Line (Output, "   subtype YY_Secondary_Index is");

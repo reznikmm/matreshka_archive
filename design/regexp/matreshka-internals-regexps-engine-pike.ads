@@ -34,6 +34,8 @@
 
 package Matreshka.Internals.Regexps.Engine.Pike is
 
+   pragma Preelaborate;
+
    function Execute
      (Program : Instruction_Array;
       String  : not null Matreshka.Internals.Strings.Shared_String_Access)
