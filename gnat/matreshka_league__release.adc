@@ -1,2 +1,2 @@
 pragma Assertion_Policy (Ignore);
-pragma Suppress (All_Checks);
+--  pragma Suppress (All_Checks);
