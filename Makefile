@@ -7,8 +7,6 @@ CLDR = unicode/cldr/1.7.1
 GPRBUILD_FLAGS = -p -XARCHITECTURE=$(ARCHITECTURE) -XBUILD=$(BUILD)
 
 all:
-	gprbuild -p -Pgnat/tools_aflex.gpr
-	gprbuild -p -Pgnat/tools_ayacc.gpr
 	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
 
 check: all
@@ -28,6 +26,19 @@ ucd:
 	.objs/tools/gen_ucd $(UNIDATA) $(UCADATA) source/league/ucd
 #	.objs/tools/gen_segments $(CLDR)
 
+regexp: regexp_tools .gens-regexp
+	cd .gens-regexp && ../tools/ayacc/src/ayacc ../source/league/regexp_parser.y
+	cd .gens-regexp && gcc -c -gnat05 -gnatct -I../source/league regexp_parser_tokens.ads
+	cd source/league/regexp && ../../../tools/token_transformer/token_transformer ../../../.gens-regexp/regexp_parser_tokens.adt ../matreshka-internals-regexps-compiler.ads.in
+
+.gens-regexp:
+	mkdir .gens-regexp
+
+regexp_tools:
+	gprbuild -p -Pgnat/tools_aflex.gpr
+	gprbuild -p -Pgnat/tools_ayacc.gpr
+	gprbuild -p -Pgnat/tools_token_transformer.gpr
+
 #all:
 #	gprbuild -p -Pmatreshka
 #
@@ -36,4 +47,4 @@ ucd:
 #	sqlite3 -batch -init demo/person.sql person.db ''
 
 clean:
-	rm -rf .objs .libs
+	rm -rf .objs .libs .gens-regexp

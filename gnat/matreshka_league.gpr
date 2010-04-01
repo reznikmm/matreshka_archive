@@ -48,6 +48,7 @@ library project Matreshka_League is
 
    for Source_Dirs use
     ("../source/league",
+     "../source/league/regexp",
      "../source/league/ucd");
    for Object_Dir use "../.objs";
    for Library_Kind use "dynamic";
