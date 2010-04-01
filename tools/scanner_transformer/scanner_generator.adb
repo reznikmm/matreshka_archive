@@ -24,6 +24,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Command_Line;
 with Ada.Integer_Wide_Text_IO;
 with Ada.Strings.Wide_Unbounded.Wide_Text_IO;
 with Ada.Wide_Text_IO;
@@ -38,14 +39,16 @@ package body Scanner_Generator is
    use Ada.Wide_Text_IO;
    use Scanner_Extractor;
 
-   Scanner_In_File_Name     : constant String
-     := "matreshka-internals-regexps-compiler-scanner.adb.in";
    Scanner_File_Name        : constant String
      := "matreshka-internals-regexps-compiler-scanner.adb";
    Scanner_Tables_File_Name : constant String
      := "matreshka-internals-regexps-compiler-scanner-tables.ads";
 
    function Hex_4_Image (Item : Natural) return Wide_String;
+
+   -----------------
+   -- Hex_4_Image --
+   -----------------
 
    function Hex_4_Image (Item : Natural) return Wide_String is
       Hex : constant array (Natural range 0 .. 15) of Wide_Character :=
@@ -72,7 +75,7 @@ package body Scanner_Generator is
       Last   : Natural;
 
    begin
-      Open (Input, In_File, Scanner_In_File_Name, "wcem=8");
+      Open (Input, In_File, Ada.Command_Line.Argument (2), "wcem=8");
       Create (Output, Out_File, Scanner_File_Name, "wcem=8");
 
       while not End_Of_File (Input) loop
@@ -191,6 +194,40 @@ package body Scanner_Generator is
 
    begin
       Create (Output, Out_File, Scanner_Tables_File_Name, "wcem=8");
+
+      Put_Line (Output, "------------------------------------------------------------------------------");
+      Put_Line (Output, "--                                                                          --");
+      Put_Line (Output, "--                            Matreshka Project                             --");
+      Put_Line (Output, "--                                                                          --");
+      Put_Line (Output, "--         Localization, Internationalization, Globalization for Ada        --");
+      Put_Line (Output, "--                                                                          --");
+      Put_Line (Output, "--                        Runtime Library Component                         --");
+      Put_Line (Output, "--                                                                          --");
+      Put_Line (Output, "------------------------------------------------------------------------------");
+      Put_Line (Output, "--                                                                          --");
+      Put_Line (Output, "-- Copyright © 2010 Vadim Godunko <vgodunko@gmail.com>                      --");
+      Put_Line (Output, "--                                                                          --");
+      Put_Line (Output, "-- Matreshka is free software;  you can  redistribute it  and/or modify  it --");
+      Put_Line (Output, "-- under terms of the  GNU General Public License as published  by the Free --");
+      Put_Line (Output, "-- Software  Foundation;  either version 2,  or (at your option)  any later --");
+      Put_Line (Output, "-- version.  Matreshka  is distributed in the hope that it will be  useful, --");
+      Put_Line (Output, "-- but   WITHOUT  ANY  WARRANTY;  without  even  the  implied  warranty  of --");
+      Put_Line (Output, "-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General --");
+      Put_Line (Output, "-- Public License for more details.  You should have received a copy of the --");
+      Put_Line (Output, "-- GNU General Public License distributed with Matreshka; see file COPYING. --");
+      Put_Line (Output, "-- If not, write  to  the  Free Software Foundation,  51  Franklin  Street, --");
+      Put_Line (Output, "-- Fifth Floor, Boston, MA 02110-1301, USA.                                 --");
+      Put_Line (Output, "--                                                                          --");
+      Put_Line (Output, "-- As a special exception,  if other files  instantiate  generics from this --");
+      Put_Line (Output, "-- unit, or you link  this unit with other files  to produce an executable, --");
+      Put_Line (Output, "-- this  unit  does not  by itself cause  the resulting  executable  to  be --");
+      Put_Line (Output, "-- covered  by the  GNU  General  Public  License.  This exception does not --");
+      Put_Line (Output, "-- however invalidate  any other reasons why  the executable file  might be --");
+      Put_Line (Output, "-- covered by the  GNU Public License.                                      --");
+      Put_Line (Output, "--                                                                          --");
+      Put_Line (Output, "------------------------------------------------------------------------------");
+      Put_Line (Output, "--  $Revision$ $Date$");
+      Put_Line (Output, "------------------------------------------------------------------------------");
 
       Put_Line (Output, "with Matreshka.Internals.Unicode;");
       New_Line (Output);
