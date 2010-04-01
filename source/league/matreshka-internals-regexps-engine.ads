@@ -96,4 +96,9 @@ package Matreshka.Internals.Regexps.Engine is
 
    type Instruction_Array is array (Positive range <>) of Instruction;
 
+   type Program (Size : Natural) is record
+      Instructions : Instruction_Array (1 .. Size);
+      Captures     : Natural;
+   end record;
+
 end Matreshka.Internals.Regexps.Engine;

@@ -383,7 +383,7 @@ package body Matreshka.Internals.Strings is
        return not null Shared_String_Access
    is
       pragma Assert (First < Source.Unused
-                       and then First + Size - 1 < Source.Unused);
+                       and then First + Size <= Source.Unused);
       pragma Assert (Utf16_String_Index (Length) in (Size + 1) / 2 .. Size);
 
    begin

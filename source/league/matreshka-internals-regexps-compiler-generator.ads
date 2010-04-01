@@ -38,6 +38,6 @@ package Matreshka.Internals.Regexps.Compiler.Generator is
    pragma Preelaborate;
 
    function Generate
-    (Pattern : not null Shared_Pattern_Access) return Engine.Instruction_Array;
+    (Pattern : not null Shared_Pattern_Access) return Engine.Program;
 
 end Matreshka.Internals.Regexps.Compiler.Generator;

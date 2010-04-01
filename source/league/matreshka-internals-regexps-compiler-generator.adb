@@ -45,7 +45,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
    --------------
 
    function Generate
-    (Pattern : not null Shared_Pattern_Access) return Engine.Instruction_Array
+    (Pattern : not null Shared_Pattern_Access) return Engine.Program
    is
       use Integer_Vectors;
 
@@ -467,7 +467,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
       Last := Last + 1;
       Program (Last) := (Kind => Match);
 
-      return Program (1 .. Last);
+      return (Last, Program (1 .. Last), Pattern.Captures);
    end Generate;
 
 end Matreshka.Internals.Regexps.Compiler.Generator;

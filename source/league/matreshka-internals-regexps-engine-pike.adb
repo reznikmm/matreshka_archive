@@ -39,11 +39,6 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
 
-   type State_Information is record
-      PC : Integer;
-      SS : Regexps.Slice_Array (0 .. 9);
-   end record;
-
    function Element is
      new Unicode.Ucd.Generic_Element
       (Matreshka.Internals.Unicode.Ucd.Core_Values,
@@ -56,11 +51,17 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
    -------------
 
    function Execute
-     (Program : Instruction_Array;
+     (Program : Engine.Program;
       String  : not null Matreshka.Internals.Strings.Shared_String_Access)
       return not null Shared_Match_Access
    is
-      type State_Array is array (1 .. Program'Length) of State_Information;
+      type State_Information is record
+         PC : Integer;
+         SS : Regexps.Slice_Array (0 .. Program.Captures);
+      end record;
+
+      type State_Array is
+        array (1 .. Program.Instructions'Length) of State_Information;
 
       type Thread_List is record
          State : State_Array;
@@ -75,11 +76,12 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
       Current : Thread_List_Access := List_1'Access;
       Next    : Thread_List_Access := List_2'Access;
       Aux     : Thread_List_Access;
-      Match   : constant not null Shared_Match_Access := new Shared_Match (9);
+      Match   : constant not null Shared_Match_Access
+        := new Shared_Match (Program.Captures);
       SP      : Utf16_String_Index := 0;
       SI      : Positive := 1;
       Step    : Positive := 1;
-      Steps   : array (Program'Range) of Integer := (others => 0);
+      Steps   : array (Program.Instructions'Range) of Integer := (others => 0);
 
       procedure Add (PC : Integer; SS : Slice_Array);
 
@@ -97,7 +99,7 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
 
          Steps (PC) := Step;
 
-         case Program (PC).Kind is
+         case Program.Instructions (PC).Kind is
             when Any_Code_Point
               | Code_Point
               | Code_Range
@@ -109,7 +111,7 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
 
             when I_Terminate =>
                for J in 1 .. Current.Last loop
-                  if Current.State (J).PC = Program (PC).Next then
+                  if Current.State (J).PC = Program.Instructions (PC).Next then
                      Current.State (J .. Current.Last - 1) :=
                        Current.State (J + 1 .. Current.Last);
                      Current.Last := Current.Last - 1;
@@ -119,23 +121,19 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                end loop;
 
             when Split =>
-               Add (Program (PC).Next, S);
-               Add (Program (PC).Another, S);
+               Add (Program.Instructions (PC).Next, S);
+               Add (Program.Instructions (PC).Another, S);
 
             when Save =>
-               if Program (PC).Start then
-                  S (Program (PC).Slot) := (SP, SI, 0, 1);
+               if Program.Instructions (PC).Start then
+                  S (Program.Instructions (PC).Slot) := (SP, SI, 0, 1);
 
                else
-                  if Match.Number < Program (PC).Slot then
-                     Match.Number := Program (PC).Slot;
-                  end if;
-
-                  S (Program (PC).Slot).Next_Position := SP;
-                  S (Program (PC).Slot).Next_Index    := SI;
+                  S (Program.Instructions (PC).Slot).Next_Position := SP;
+                  S (Program.Instructions (PC).Slot).Next_Index    := SI;
                end if;
 
-               Add (Program (PC).Next, S);
+               Add (Program.Instructions (PC).Next, S);
 
             when others =>
                raise Program_Error;
@@ -143,13 +141,13 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
       end Add;
 
       PC      : Positive := 1;
-      SS      : Regexps.Slice_Array (0 .. 9) := (others => (0, 1, 0, 1));
+      SS      : Regexps.Slice_Array (0 .. Program.Captures) := (others => (0, 1, 0, 1));
       Code    : Matreshka.Internals.Unicode.Code_Point;
       T       : Integer;
 
    begin
       Match.Is_Matched := False;
-      Match.Number := 0;
+      Match.Number := Program.Captures;
 
       Next.Last := 0;
       Current.Last := 0;
@@ -181,20 +179,22 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
             PC := Current.State (T).PC;
             SS := Current.State (T).SS;
 
-            case Program (PC).Kind is
+            case Program.Instructions (PC).Kind is
                when Any_Code_Point =>
-                  Add (Program (PC).Next, SS);
+                  Add (Program.Instructions (PC).Next, SS);
 
                when Code_Point =>
-                  if Code = Program (PC).Code then
-                     Add (Program (PC).Next, SS);
+                  if Code = Program.Instructions (PC).Code then
+                     Add (Program.Instructions (PC).Next, SS);
                   end if;
 
                when Code_Range =>
-                  if Program (PC).Negate
-                    xor (Code in Program (PC).Low .. Program (PC).High)
+                  if Program.Instructions (PC).Negate
+                    xor (Code
+                           in Program.Instructions (PC).Low
+                                .. Program.Instructions (PC).High)
                   then
-                     Add (Program (PC).Next, SS);
+                     Add (Program.Instructions (PC).Next, SS);
                   end if;
 
                when I_Property =>
@@ -202,13 +202,13 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                      R : Boolean;
 
                   begin
-                     case Program (PC).Value.Kind is
+                     case Program.Instructions (PC).Value.Kind is
                         when None =>
                            raise Program_Error;
 
                         when General_Category =>
                            R :=
-                             Program (PC).Value.GC_Flags
+                             Program.Instructions (PC).Value.GC_Flags
                               (Element
                                 (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).GC);
 
@@ -216,11 +216,11 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                            R :=
                              Element
                               (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
-                                (Program (PC).Value.Property);
+                                (Program.Instructions (PC).Value.Property);
                      end case;
 
-                     if Program (PC).Negative xor R then
-                        Add (Program (PC).Next, SS);
+                     if Program.Instructions (PC).Negative xor R then
+                        Add (Program.Instructions (PC).Next, SS);
                      end if;
                   end;
 
