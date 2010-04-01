@@ -80,6 +80,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
             if Pattern.AST (Expression).Next /= 0 then
                declare
                   Next_Instruction : Positive;
+                  Previous_Tails   : constant Vector := Tails;
 
                begin
                   Compile
