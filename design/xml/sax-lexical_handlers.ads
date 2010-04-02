@@ -1,4 +1,4 @@
-with Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Unbounded;
 
 package Sax.Lexical_Handlers is
 
@@ -6,13 +6,13 @@ package Sax.Lexical_Handlers is
 
    not overriding procedure Comment
     (Self : not null access Sax_Lexical_Handler;
-     Text : Ada.Strings.Unbounded.Unbounded_String;
+     Text : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
      Stop : in out Boolean)
        is null;
 
    not overriding function Error_String
     (Self : not null access constant Sax_Lexical_Handler)
-       return Ada.Strings.Unbounded.Unbounded_String
+       return Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String
          is abstract;
 
 --  virtual bool endCDATA () = 0

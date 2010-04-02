@@ -1,4 +1,4 @@
-with Ada.Text_IO;
+with Ada.Wide_Wide_Text_IO;
 
 package body Test_Handlers is
 
@@ -8,13 +8,13 @@ package body Test_Handlers is
 
    overriding procedure Characters
     (Self : not null access Test_Handler;
-     Text : Ada.Strings.Unbounded.Unbounded_String;
+     Text : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
      Stop : in out Boolean)
    is
    begin
-      Ada.Text_IO.Put_Line
+      Ada.Wide_Wide_Text_IO.Put_Line
        ("SaxContentHandler::characters reported: '"
-          & Ada.Strings.Unbounded.To_String (Text)
+          & Ada.Strings.Wide_Wide_Unbounded.To_Wide_Wide_String (Text)
           & ''');
    end Characters;
 
@@ -24,13 +24,13 @@ package body Test_Handlers is
 
    overriding procedure Comment
     (Self : not null access Test_Handler;
-     Text : Ada.Strings.Unbounded.Unbounded_String;
+     Text : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
      Stop : in out Boolean)
    is
    begin
-      Ada.Text_IO.Put_Line
+      Ada.Wide_Wide_Text_IO.Put_Line
        ("SaxLexicalHandler::comment reported: '"
-          & Ada.Strings.Unbounded.To_String (Text)
+          & Ada.Strings.Wide_Wide_Unbounded.To_Wide_Wide_String (Text)
           & ''');
    end Comment;
 
@@ -43,7 +43,7 @@ package body Test_Handlers is
      Stop : in out Boolean)
    is
    begin
-      Ada.Text_IO.Put_Line ("SaxContentHandler::endDocument reported");
+      Ada.Wide_Wide_Text_IO.Put_Line ("SaxContentHandler::endDocument reported");
    end End_Document;
 
    ------------------
@@ -52,10 +52,10 @@ package body Test_Handlers is
 
    overriding function Error_String
     (Self : not null access constant Test_Handler)
-       return Ada.Strings.Unbounded.Unbounded_String
+       return Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String
    is
    begin
-      return Ada.Strings.Unbounded.Null_Unbounded_String;
+      return Ada.Strings.Wide_Wide_Unbounded.Null_Unbounded_Wide_Wide_String;
    end Error_String;
 
    --------------------------
@@ -64,11 +64,11 @@ package body Test_Handlers is
 
    overriding procedure Ignorable_Whitespace
     (Self : not null access Test_Handler;
-     Text : Ada.Strings.Unbounded.Unbounded_String;
+     Text : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
      Stop : in out Boolean)
    is
    begin
-      Ada.Text_IO.Put_Line ("SaxContentHandler::ignorableWhitespace reported");
+      Ada.Wide_Wide_Text_IO.Put_Line ("SaxContentHandler::ignorableWhitespace reported");
    end Ignorable_Whitespace;
 
    ----------------------------
@@ -77,16 +77,16 @@ package body Test_Handlers is
 
    overriding procedure Processing_Instruction
     (Self   : not null access Test_Handler;
-     Target : Ada.Strings.Unbounded.Unbounded_String;
-     Data   : Ada.Strings.Unbounded.Unbounded_String;
+     Target : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
+     Data   : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
      Stop   : in out Boolean)
    is
    begin
-      Ada.Text_IO.Put_Line
+      Ada.Wide_Wide_Text_IO.Put_Line
        ("SaxContentHandler::processingInstruction reported: '"
-          & Ada.Strings.Unbounded.To_String (Target)
+          & Ada.Strings.Wide_Wide_Unbounded.To_Wide_Wide_String (Target)
           & "' '"
-          & Ada.Strings.Unbounded.To_String (Data)
+          & Ada.Strings.Wide_Wide_Unbounded.To_Wide_Wide_String (Data)
           & ''');
    end Processing_Instruction;
 
@@ -99,7 +99,7 @@ package body Test_Handlers is
      Stop : in out Boolean)
    is
    begin
-      Ada.Text_IO.Put_Line ("SaxContentHandler::startDocument reported");
+      Ada.Wide_Wide_Text_IO.Put_Line ("SaxContentHandler::startDocument reported");
    end Start_Document;
 
 end Test_Handlers;

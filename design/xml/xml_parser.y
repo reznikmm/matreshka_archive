@@ -116,7 +116,7 @@
 %token Token_Entity_Ref
 %token Token_Char_Ref
 
-%with Ada.Strings.Unbounded;
+%with Ada.Strings.Wide_Wide_Unbounded;
 %with Xml
 --  %use Xml
 
@@ -136,11 +136,11 @@
    type YYSType (Kind : YYSKind := Empty) is record
       case Kind is
          when Text =>
-            Text : Ada.Strings.Unbounded.Unbounded_String;
+            Text : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
 
          when Name_Value =>
-            Name  : Ada.Strings.Unbounded.Unbounded_String;
-            Value : Ada.Strings.Unbounded.Unbounded_String;
+            Name  : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
+            Value : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
 
          when Empty =>
             null;
@@ -279,7 +279,7 @@ SDDecl_optional :
 element :
     Token_Start_Tag_Start
 {
-   Ada.Wide_Wide_Text_IO.Put_Line ("Start tag '" & To_String ($1.Text) & ''');
+   Ada.Wide_Wide_Text_IO.Put_Line ("Start tag '" & To_Wide_Wide_String ($1.Text) & ''');
 
    if Current_Element_Node /= null then
       Element_Node_Stack.Append (Current_Element_Node);
@@ -310,7 +310,7 @@ element_1 :
     Token_End_Tag_Start
     Token_Tag_End
 {
-   Ada.Wide_Wide_Text_IO.Put_Line ("End element '" & To_String ($3.Text) & ''');
+   Ada.Wide_Wide_Text_IO.Put_Line ("End element '" & To_Wide_Wide_String ($3.Text) & ''');
 
    if Current_Element_Node.Name /= $3.Text then
       raise Program_Error;
@@ -461,7 +461,7 @@ with Sax.Readers;
      File_Name : String);
 ##
 --  with Ada.Containers.Vectors;
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Unbounded; use Ada.Strings.Wide_Wide_Unbounded;
 with Ada.Wide_Wide_Text_IO;
 
 with Xml;         use Xml;

@@ -1,4 +1,4 @@
-with Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Unbounded;
 
 with Sax.Content_Handlers;
 with Sax.Lexical_Handlers;
@@ -11,12 +11,12 @@ package Test_Handlers is
 
    overriding procedure Characters
     (Self : not null access Test_Handler;
-     Text : Ada.Strings.Unbounded.Unbounded_String;
+     Text : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
      Stop : in out Boolean);
 
    overriding procedure Comment
     (Self : not null access Test_Handler;
-     Text : Ada.Strings.Unbounded.Unbounded_String;
+     Text : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
      Stop : in out Boolean);
 
    overriding procedure End_Document
@@ -25,17 +25,17 @@ package Test_Handlers is
 
    overriding function Error_String
     (Self : not null access constant Test_Handler)
-       return Ada.Strings.Unbounded.Unbounded_String;
+       return Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
 
    overriding procedure Ignorable_Whitespace
     (Self : not null access Test_Handler;
-     Text : Ada.Strings.Unbounded.Unbounded_String;
+     Text : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
      Stop : in out Boolean);
 
    overriding procedure Processing_Instruction
     (Self   : not null access Test_Handler;
-     Target : Ada.Strings.Unbounded.Unbounded_String;
-     Data   : Ada.Strings.Unbounded.Unbounded_String;
+     Target : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
+     Data   : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
      Stop   : in out Boolean);
 
    overriding procedure Start_Document

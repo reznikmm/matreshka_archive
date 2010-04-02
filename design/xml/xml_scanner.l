@@ -65,13 +65,13 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    --  parser.
 
    declare
-      Aux : constant String := YYText;
+      Aux : constant Wide_Wide_String := YYText;
 
    begin
       YYLVal :=
        (Name_Value,
-        To_Unbounded_String (Aux (Aux'First + 2 .. Aux'Last)),
-        Null_Unbounded_String);
+        To_Unbounded_Wide_Wide_String (Aux (Aux'First + 2 .. Aux'Last)),
+        Null_Unbounded_Wide_Wide_String);
    end;
 }
 
@@ -81,10 +81,10 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    ENTER (START_TAG);
 
    declare
-      Aux : constant String := YYText;
+      Aux : constant Wide_Wide_String := YYText;
 
    begin
-      YYLVal := (Text, To_Unbounded_String (Aux (Aux'First + 1 .. Aux'Last)));
+      YYLVal := (Text, To_Unbounded_Wide_Wide_String (Aux (Aux'First + 1 .. Aux'Last)));
 
       return Token_Start_Tag_Start;
    end;
@@ -96,10 +96,10 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    ENTER (END_TAG);
 
    declare
-      Aux : constant String := YYText;
+      Aux : constant Wide_Wide_String := YYText;
 
    begin
-      YYLVal := (Text, To_Unbounded_String (Aux (Aux'First + 2 .. Aux'Last)));
+      YYLVal := (Text, To_Unbounded_Wide_Wide_String (Aux (Aux'First + 2 .. Aux'Last)));
 
       return Token_End_Tag_Start;
    end;
@@ -109,11 +109,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    --  [15] Comment
 
    declare
-      Aux : constant String := YYText;
+      Aux : constant Wide_Wide_String := YYText;
 
    begin
       YYLVal :=
-       (Text, To_Unbounded_String (Aux (Aux'First + 4 .. Aux'Last - 3)));
+       (Text, To_Unbounded_Wide_Wide_String (Aux (Aux'First + 4 .. Aux'Last - 3)));
 
       return Token_Comment;
    end;
@@ -122,7 +122,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 {WHITE_SPACE}+ {
    --  [3] S
 
-   YYLVal := (Text, To_Unbounded_String (YYText));
+   YYLVal := (Text, To_Unbounded_Wide_Wide_String (YYText));
 
    return Token_White_Space;
 }
@@ -130,7 +130,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 {NO_AMPERSAND_LESS_CHAR}+ {
    --  [14] CharData - !!! Incomplete !!!
 
-   YYLVal := (Text, To_Unbounded_String (YYText));
+   YYLVal := (Text, To_Unbounded_Wide_Wide_String (YYText));
 
    return Token_Character_Data;
 }
@@ -196,7 +196,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <PI_DATA>({NO_QUESTION_CHAR}*|"?"{NO_GREATER_CHAR}+)* {
    --  [16] PI
 
-   YYLVal.Value := To_Unbounded_String (YYText);
+   YYLVal.Value := To_Unbounded_Wide_Wide_String (YYText);
 }
 
 <PI,PI_DATA>"?>" {
@@ -259,14 +259,14 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <APOSTROPHE_ATTRIBUTE_VALUE>{NO_AMPERSAND_APOSTROPHE_LESS_CHAR}* {
    --  [10] AttValue
 
-   Ada.Text_IO.Put_Line ("Attr value segment");
+   Ada.Wide_Wide_Text_IO.Put_Line ("Attr value segment");
    return Token_Attribute_Value;
 }
 
 <QUOTATION_ATTRIBUTE_VALUE>{NO_QUOTATION_AMPERSAND_LESS_CHAR}* {
    --  [10] AttValue
 
-   Ada.Text_IO.Put_Line ("Attr value segment");
+   Ada.Wide_Wide_Text_IO.Put_Line ("Attr value segment");
    return Token_Attribute_Value;
 }
 
@@ -305,7 +305,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 }
 
 <END_TAG>. {
-   Ada.Text_IO.Put_Line ("ERROR");
+   Ada.Wide_Wide_Text_IO.Put_Line ("ERROR");
 }
 
 
@@ -515,11 +515,12 @@ with Xml_Parser_Tokens; use Xml_Parser_Tokens;
 ##
    function YYLex return Token;
 ##
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
-with Ada.Text_IO;
+with Ada.Characters.Wide_Wide_Latin_1;
+with Ada.Strings.Wide_Wide_Unbounded; use Ada.Strings.Wide_Wide_Unbounded;
+with Ada.Wide_Wide_Text_IO;
 
 ##
-use Ada.Text_IO;
+use Ada.Wide_Wide_Text_IO;
 
 ##
-   PI_Data : Ada.Strings.Unbounded.Unbounded_String;
+   PI_Data : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;

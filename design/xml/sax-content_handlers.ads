@@ -1,4 +1,4 @@
-with Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Unbounded;
 
 package Sax.Content_Handlers is
 
@@ -6,7 +6,7 @@ package Sax.Content_Handlers is
 
    not overriding procedure Characters
     (Self : not null access Sax_Content_Handler;
-     Text : Ada.Strings.Unbounded.Unbounded_String;
+     Text : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
      Stop : in out Boolean)
        is null;
 
@@ -31,19 +31,19 @@ package Sax.Content_Handlers is
 
    not overriding function Error_String
     (Self : not null access constant Sax_Content_Handler)
-       return Ada.Strings.Unbounded.Unbounded_String
+       return Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String
          is abstract;
 
    not overriding procedure Ignorable_Whitespace
     (Self : not null access Sax_Content_Handler;
-     Text : Ada.Strings.Unbounded.Unbounded_String;
+     Text : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
      Stop : in out Boolean)
        is null;
 
    not overriding procedure Processing_Instruction
     (Self   : not null access Sax_Content_Handler;
-     Target : Ada.Strings.Unbounded.Unbounded_String;
-     Data   : Ada.Strings.Unbounded.Unbounded_String;
+     Target : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
+     Data   : Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
      Stop   : in out Boolean)
        is null;
 

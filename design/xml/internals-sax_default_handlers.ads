@@ -1,4 +1,4 @@
-with Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Unbounded;
 
 with Sax.Content_Handlers;
 with Sax.Lexical_Handlers;
@@ -11,7 +11,7 @@ package Internals.Sax_Default_Handlers is
 
    overriding function Error_String
     (Self : not null access constant Sax_Default_Handler)
-       return Ada.Strings.Unbounded.Unbounded_String;
+       return Ada.Strings.Wide_Wide_Unbounded.Unbounded_Wide_Wide_String;
 
    Default_Handler : aliased Sax_Default_Handler;
 
