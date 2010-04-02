@@ -462,17 +462,26 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
          end loop;
       end Connect_Tails;
 
-      Ins      : Positive;
-      Ins_1    : Positive;
-      Tails_1  : Vector;
+      Ins_Split : Positive;
+      Ins_Any   : Positive;
+      Ins_Save  : Positive;
+      Ins_1     : Positive;
+      Tails_1   : Vector;
 
    begin
       Last := Last + 1;
-      Ins := Last;
+      Ins_Split := Last;
+      Last := Last + 1;
+      Ins_Any := Last;
+      Last := Last + 1;
+      Ins_Save := Last;
+
+      Program (Ins_Split) := (Split, Ins_Save, Ins_Any);
+      Program (Ins_Any) := (Any_Code_Point, Ins_Split);
 
       Compile (Pattern.Start, Ins_1, Tails_1);
 
-      Program (Ins) := (Save, Ins_1, 0, True);
+      Program (Ins_Save) := (Save, Ins_1, 0, True);
 
       Last := Last + 1;
       Program (Last) := (Save, Last + 1, 0, False);
