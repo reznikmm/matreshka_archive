@@ -267,6 +267,8 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                   end;
                end if;
 
+               Compile_Next;
+
             when N_Multiplicity =>
                if Pattern.AST (Expression).Lower = 0 then
                   if Pattern.AST (Expression).Upper = Natural'Last then
