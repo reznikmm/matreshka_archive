@@ -54,119 +54,140 @@ package body Matreshka.Internals.Regexps.Engine.Debug is
    -- Dump --
    ----------
 
-   procedure Dump (Program : Instruction_Array) is
+   procedure Dump (Program : Engine.Program) is
       use Ada.Integer_Wide_Wide_Text_IO;
       use Ada.Strings;
       use Ada.Strings.Wide_Wide_Fixed;
       use Ada.Wide_Wide_Text_IO;
 
    begin
-      for J in Program'Range loop
-         Put (J, 4);
-         Put (' ');
+      for J in Program.Instructions'Range loop
+         declare
+            Instruction : Engine.Instruction := Program.Instructions (J);
 
-         case Program (J).Kind is
-            when None =>
-               Put ("nop");
+         begin
+            Put (J, 4);
+            Put (' ');
 
-            when I_Terminate =>
-               Put
-                 ("terminate ["
-                    & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
-                    & "]");
+            case Instruction.Kind is
+               when None =>
+                  Put ("nop");
 
-            when Split =>
-               Put
-                 ("split ["
-                    & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
-                    & "], ["
-                    & Trim (Integer'Wide_Wide_Image (Program (J).Another), Both)
-                    & "]");
+               when I_Terminate =>
+                  Put
+                    ("terminate ["
+                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                       & "]");
 
-            when Any_Code_Point =>
-               Put
-                 ("char is any ["
-                    & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
-                    & "]");
+               when Split =>
+                  Put
+                    ("split ["
+                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                       & "], ["
+                       & Trim (Integer'Wide_Wide_Image (Instruction.Another), Both)
+                       & "]");
 
-            when Code_Point =>
-               Put
-                 ("char is "
-                    & Wide_Wide_Character'Wide_Wide_Image
-                       (Wide_Wide_Character'Val (Program (J).Code))
-                    & " ["
-                    & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
-                    & "]");
+               when Any_Code_Point =>
+                  Put
+                    ("char is any ["
+                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                       & "]");
 
-            when Code_Range =>
-               Put
-                 ("char in "
-                    & Wide_Wide_Character'Wide_Wide_Image
-                       (Wide_Wide_Character'Val (Program (J).Low))
-                    & " .. "
-                    & Wide_Wide_Character'Wide_Wide_Image
-                       (Wide_Wide_Character'Val (Program (J).High)));
+               when Code_Point =>
+                  Put
+                    ("char is "
+                       & Wide_Wide_Character'Wide_Wide_Image
+                          (Wide_Wide_Character'Val (Instruction.Code))
+                       & " ["
+                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                       & "]");
 
-               if Program (J).Negate then
-                  Put (" {negate}");
-               end if;
+               when Code_Range =>
+                  Put
+                    ("char in "
+                       & Wide_Wide_Character'Wide_Wide_Image
+                          (Wide_Wide_Character'Val (Instruction.Low))
+                       & " .. "
+                       & Wide_Wide_Character'Wide_Wide_Image
+                          (Wide_Wide_Character'Val (Instruction.High)));
 
-               Put
-                 (" ["
-                    & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
-                    & "]");
+                  if Instruction.Negate then
+                     Put (" {negate}");
+                  end if;
 
-            when I_Property =>
-               case Program (J).Value.Kind is
-                  when None =>
-                     raise Program_Error;
+                  Put
+                    (" ["
+                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                       & "]");
 
-                  when General_Category =>
-                     Put ("char General_Category is");
+               when I_Property =>
+                  case Instruction.Value.Kind is
+                     when None =>
+                        raise Program_Error;
 
-                     for K in Program (J).Value.GC_Flags'Range loop
-                        if Program (J).Value.GC_Flags (K) then
-                           Put
-                             (' '
-                                & Matreshka.Internals.Unicode.Ucd.General_Category'Wide_Wide_Image
-                                   (K));
-                        end if;
-                     end loop;
+                     when General_Category =>
+                        Put ("char General_Category is");
 
-                  when Binary =>
-                     Put
-                       ("char is "
-                          & Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Wide_Wide_Image
-                             (Program (J).Value.Property));
-               end case;
+                        for K in Instruction.Value.GC_Flags'Range loop
+                           if Instruction.Value.GC_Flags (K) then
+                              Put
+                                (' '
+                                   & Matreshka.Internals.Unicode.Ucd.General_Category'Wide_Wide_Image
+                                      (K));
+                           end if;
+                        end loop;
 
-               if Program (J).Negative then
-                  Put (" {negative}");
-               end if;
+                     when Binary =>
+                        Put
+                          ("char is "
+                             & Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Wide_Wide_Image
+                                (Instruction.Value.Property));
+                  end case;
 
-            when Match =>
-               Put ("match");
+                  if Instruction.Negative then
+                     Put (" {negative}");
+                  end if;
 
-            when Save =>
-               Put
-                 ("save $"
-                    & Trim (Integer'Wide_Wide_Image (Program (J).Slot), Both)
-                    & " ");
+               when Match =>
+                  Put ("match");
 
-               if Program (J).Start then
-                  Put ("{begin}");
+               when Save =>
+                  Put
+                    ("save $"
+                       & Trim (Integer'Wide_Wide_Image (Instruction.Slot), Both)
+                       & " ");
 
-               else
-                  Put ("{end}");
-               end if;
+                  if Instruction.Start then
+                     Put ("{begin}");
 
-               Put
-                 (" ["
-                    & Trim (Integer'Wide_Wide_Image (Program (J).Next), Both)
-                    & "]");
-         end case;
+                  else
+                     Put ("{end}");
+                  end if;
 
-         New_Line;
+                  Put
+                    (" ["
+                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                       & "]");
+
+               when I_Anchor =>
+                  Put ("anchor");
+
+                  if Instruction.Start_Of_Line then
+                     Put (" {start of line}");
+                  end if;
+
+                  if Instruction.End_Of_Line then
+                     Put (" {end of line}");
+                  end if;
+
+                  Put
+                    (" ["
+                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                       & "]");
+            end case;
+
+            New_Line;
+         end;
       end loop;
    end Dump;
 

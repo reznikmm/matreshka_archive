@@ -165,6 +165,15 @@ package body Matreshka.Internals.Regexps.Compiler.Debug is
                Dump (Pattern.AST (N).Second);
                Indent := Indent - Offset;
                Indent := Indent - Offset;
+
+            when N_Anchor =>
+               if Pattern.AST (N).Start_Of_Line then
+                  Put (" {start of line}");
+               end if;
+
+               if Pattern.AST (N).End_Of_Line then
+                  Put (" {end of line}");
+               end if;
          end case;
 
          if Pattern.AST (N).Next /= 0 then

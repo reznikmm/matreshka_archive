@@ -34,6 +34,6 @@
 
 package Matreshka.Internals.Regexps.Engine.Debug is
 
-   procedure Dump (Program : Instruction_Array);
+   procedure Dump (Program : Engine.Program);
 
 end Matreshka.Internals.Regexps.Engine.Debug;

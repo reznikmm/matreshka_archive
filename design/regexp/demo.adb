@@ -4,6 +4,8 @@ with Ada.Wide_Wide_Text_IO;
 
 with League.Regexps;
 with League.Strings;
+with Matreshka.Internals.Regexps.Compiler.Debug;
+with Matreshka.Internals.Regexps.Engine.Debug;
 
 procedure Demo is
 
