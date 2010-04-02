@@ -195,6 +195,18 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Error;
 }
 
+"^" {
+   --  Start of line anchor
+
+   return Token_Start_Of_Line;
+}
+
+"$" {
+   --  End of line anchor
+
+   return Token_End_Of_Line;
+}
+
 "(" {
    --  Start of subexpression (capturing)
 

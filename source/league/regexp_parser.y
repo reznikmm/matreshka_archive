@@ -58,6 +58,8 @@
 %token Token_Property_Begin_Negative
 %token Token_Property_End
 %token Token_Property_Keyword
+%token Token_Start_Of_Line
+%token Token_End_Of_Line
 
 %with Matreshka.Internals.Unicode.Ucd;
 
@@ -183,17 +185,41 @@
 
 %%
 
+expression : Token_Start_Of_Line re Token_End_Of_Line
+{
+   --  Both Start-Of-Line and End-Of-Line anchors
+
+   Process_Expression (Pattern, $2.Node, True, True);
+}
+  | Token_Start_Of_Line re
+{
+   --  Start-Of-Line anchor
+
+   Process_Expression (Pattern, $2.Node, True, False);
+}
+  | re Token_End_Of_Line
+{
+   --  End-Of-Line anchor
+
+   Process_Expression (Pattern, $1.Node, False, True);
+}
+  | re
+{
+   --  No anchors
+
+   Process_Expression (Pattern, $1.Node, False, False);
+}
+  ;
+
 re : re Token_Alternation series
 {
    --  Alternation
 
    $$ := (AST_Node, Process_Alternation (Pattern, $1.Node, $3.Node));
-   Pattern.Start := $$.Node;
 }
   | series
 {
    $$ := $1;
-   Pattern.Start := $1.Node;
 }
   ;
 
@@ -440,6 +466,12 @@ with Matreshka.Internals.Unicode.Ucd;
       Class    : Positive;
       Keyword  : Property_Specification_Keyword;
       Negative : Boolean) return Positive is separate;
+
+   procedure Process_Expression
+     (Pattern       : not null Shared_Pattern_Access;
+      Expression    : Positive;
+      Start_Of_Line : Boolean;
+      End_Of_Line   : Boolean) is separate;
 
    Pattern : Shared_Pattern_Access;
 

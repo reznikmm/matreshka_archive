@@ -228,39 +228,49 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                null;
 
             when 11 =>
+               --  Start of line anchor
+            
+               return Token_Start_Of_Line;
+
+            when 12 =>
+               --  End of line anchor
+            
+               return Token_End_Of_Line;
+
+            when 13 =>
                --  Start of subexpression (capturing)
             
                return Token_Subexpression_Capture_Begin;
 
-            when 12 =>
+            when 14 =>
                --  End of subexpression
             
                return Token_Subexpression_End;
 
-            when 13 =>
+            when 15 =>
                --  Alternation
             
                return Token_Alternation;
 
-            when 14 =>
+            when 16 =>
                return Token_Optional_Lazy;
 
-            when 15 =>
+            when 17 =>
                return Token_Optional_Greedy;
 
-            when 16 =>
+            when 18 =>
                return Token_Zero_Or_More_Lazy;
 
-            when 17 =>
+            when 19 =>
                return Token_Zero_Or_More_Greedy;
 
-            when 18 =>
+            when 20 =>
                return Token_One_Or_More_Lazy;
 
-            when 19 =>
+            when 21 =>
                return Token_One_Or_More_Greedy;
 
-            when 20 =>
+            when 22 =>
                --  Enter character class
             
                Self.Character_Class_Mode := True;
@@ -268,7 +278,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             
                return Token_Character_Class_Begin;
 
-            when 21 =>
+            when 23 =>
                --  XXX Leave character class
             
                Self.Character_Class_Mode := False;
@@ -276,57 +286,57 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             
                return Token_Character_Class_End;
 
-            when 22 =>
+            when 24 =>
                --  Negate character class
             
                return Token_Negate_Character_Class;
 
-            when 23 =>
+            when 25 =>
                --  Range of characters
             
                return Token_Character_Class_Range;
 
-            when 25 =>
+            when 27 =>
                --  Multiplicity
             
                Enter_Start_Condition (Self, MULTIPLICITY);
             
                return Token_Multiplicity_Begin;
 
-            when 26 =>
+            when 28 =>
                --  End of multiplicity specifier
             
                Enter_Start_Condition (Self, INITIAL);
             
                return Token_Multiplicity_End_Greedy;
 
-            when 27 =>
+            when 29 =>
                --  End of multiplicity specifier
             
                Enter_Start_Condition (Self, INITIAL);
             
                return Token_Multiplicity_End_Lazy;
 
-            when 28 =>
+            when 30 =>
                --  Number separator
             
                return Token_Multiplicity_Comma;
 
-            when 29 =>
+            when 31 =>
                --  Number
             
                YYLVal := (Number, Natural'Wide_Wide_Value (YYText));
             
                return Token_Multiplicity_Number;
 
-            when 30 =>
+            when 32 =>
                --  Unexpected character in multiplicidy declaration
             
                YYError (Self, Unexpected_Character_in_Multiplicity_Specifier, YY_Back_Index);
             
                return Error;
 
-            when 32 =>
+            when 34 =>
                --  Escaped pattern special code point
             
                declare
@@ -338,48 +348,48 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                   return Token_Code_Point;
                end;
 
-            when 33 =>
+            when 35 =>
                YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.LF);
             
                return Token_Code_Point;
 
-            when 34 =>
+            when 36 =>
                YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.CR);
             
                return Token_Code_Point;
 
-            when 35 =>
+            when 37 =>
                YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.HT);
             
                return Token_Code_Point;
 
-            when 36 =>
+            when 38 =>
                YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.BEL);
             
                return Token_Code_Point;
 
-            when 37 =>
+            when 39 =>
                YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.ESC);
             
                return Token_Code_Point;
 
-            when 38 =>
+            when 40 =>
                YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.FF);
             
                return Token_Code_Point;
 
-            when 39 =>
+            when 41 =>
                YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.VT);
             
                return Token_Code_Point;
 
-            when 40 =>
+            when 42 =>
             --   YYLVal := (Match_Code_Point, Ada.Characters.Wide_Wide_Latin_1.VT);
             
                raise Program_Error;
                return Token_Code_Point;
 
-            when 41 =>
+            when 43 =>
                --  Short hex notation of the code point
             
                YYLVal :=
@@ -389,7 +399,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             
                return Token_Code_Point;
 
-            when 42 =>
+            when 44 =>
                --  Long hex notation of the code point
             
                YYLVal :=
@@ -399,47 +409,35 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             
                return Token_Code_Point;
 
-            when 43 =>
-               --  Unicode property specification
-            
-               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
-            
-               return Token_Property_Begin_Positive;
-
-            when 44 =>
-               --  Unicode property specification
-            
-               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
-            
-               return Token_Property_Begin_Positive;
-
             when 45 =>
                --  Unicode property specification
             
                Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
             
-               return Token_Property_Begin_Negative;
+               return Token_Property_Begin_Positive;
 
             when 46 =>
                --  Unicode property specification
             
                Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
             
-               return Token_Property_Begin_Negative;
+               return Token_Property_Begin_Positive;
 
             when 47 =>
-               --  End of Unicode property specification
+               --  Unicode property specification
             
-               if Self.Character_Class_Mode then
-                  Enter_Start_Condition (Self, CHARACTER_CLASS);
+               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
             
-               else
-                  Enter_Start_Condition (Self, INITIAL);
-               end if;
-            
-               return Token_Property_End;
+               return Token_Property_Begin_Negative;
 
             when 48 =>
+               --  Unicode property specification
+            
+               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
+            
+               return Token_Property_Begin_Negative;
+
+            when 49 =>
                --  End of Unicode property specification
             
                if Self.Character_Class_Mode then
@@ -451,28 +449,40 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             
                return Token_Property_End;
 
-            when 49 =>
+            when 50 =>
+               --  End of Unicode property specification
+            
+               if Self.Character_Class_Mode then
+                  Enter_Start_Condition (Self, CHARACTER_CLASS);
+            
+               else
+                  Enter_Start_Condition (Self, INITIAL);
+               end if;
+            
+               return Token_Property_End;
+
+            when 51 =>
                --  ASCII_Hex_Digit
             
                YYLVAL := (Property_Keyword, ASCII_Hex_Digit);
             
                return Token_Property_Keyword;
 
-            when 50 =>
+            when 52 =>
                --  Alphabetic
             
                YYLVAL := (Property_Keyword, Alphabetic);
             
                return Token_Property_Keyword;
 
-            when 51 =>
+            when 53 =>
                --  Bidi_Control
             
                YYLVAL := (Property_Keyword, Bidi_Control);
             
                return Token_Property_Keyword;
 
-            when 52 =>
+            when 54 =>
                --  Bidi_Mirrored
             
             --  XXX Bidi_Mirrored is absent in UCD now
@@ -481,614 +491,614 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             --   return Token_Property_Keyword;
                raise Program_Error;
 
-            when 53 =>
+            when 55 =>
                --  Composition_Exclusion
             
                YYLVAL := (Property_Keyword, Composition_Exclusion);
             
                return Token_Property_Keyword;
 
-            when 54 =>
+            when 56 =>
                --  Full_Composition_Exclusion
             
                YYLVAL := (Property_Keyword, Full_Composition_Exclusion);
             
                return Token_Property_Keyword;
 
-            when 55 =>
+            when 57 =>
                --  Dash
             
                YYLVAL := (Property_Keyword, Dash);
             
                return Token_Property_Keyword;
 
-            when 56 =>
+            when 58 =>
                --  Deprecated
             
                YYLVAL := (Property_Keyword, Deprecated);
             
                return Token_Property_Keyword;
 
-            when 57 =>
+            when 59 =>
                --  Default_Ignorable_Code_Point
             
                YYLVAL := (Property_Keyword, Default_Ignorable_Code_Point);
             
                return Token_Property_Keyword;
 
-            when 58 =>
+            when 60 =>
                --  Diacritic
             
                YYLVAL := (Property_Keyword, Diacritic);
             
                return Token_Property_Keyword;
 
-            when 59 =>
+            when 61 =>
                --  Extender
             
                YYLVAL := (Property_Keyword, Extender);
             
                return Token_Property_Keyword;
 
-            when 60 =>
+            when 62 =>
                --  Grapheme_Base
             
                YYLVAL := (Property_Keyword, Grapheme_Base);
             
                return Token_Property_Keyword;
 
-            when 61 =>
+            when 63 =>
                --  Grapheme_Extend
             
                YYLVAL := (Property_Keyword, Grapheme_Extend);
             
                return Token_Property_Keyword;
 
-            when 62 =>
+            when 64 =>
                --  Grapheme_Link
             
                YYLVAL := (Property_Keyword, Grapheme_Link);
             
                return Token_Property_Keyword;
 
-            when 63 =>
+            when 65 =>
                --  Hex_Digit
             
                YYLVAL := (Property_Keyword, Hex_Digit);
             
                return Token_Property_Keyword;
 
-            when 64 =>
+            when 66 =>
                --  Hyphen
             
                YYLVAL := (Property_Keyword, Hyphen);
             
                return Token_Property_Keyword;
 
-            when 65 =>
+            when 67 =>
                --  ID_Continue
             
                YYLVAL := (Property_Keyword, ID_Continue);
             
                return Token_Property_Keyword;
 
-            when 66 =>
+            when 68 =>
                --  Ideographic
             
                YYLVAL := (Property_Keyword, Ideographic);
             
                return Token_Property_Keyword;
 
-            when 67 =>
+            when 69 =>
                --  ID_Start
             
                YYLVAL := (Property_Keyword, ID_Start);
             
                return Token_Property_Keyword;
 
-            when 68 =>
+            when 70 =>
                --  IDS_Binary_Operator
             
                YYLVAL := (Property_Keyword, IDS_Binary_Operator);
             
                return Token_Property_Keyword;
 
-            when 69 =>
+            when 71 =>
                --  IDS_Trinary_Operator
             
                YYLVAL := (Property_Keyword, IDS_Trinary_Operator);
             
                return Token_Property_Keyword;
 
-            when 70 =>
+            when 72 =>
                --  Join_Control
             
                YYLVAL := (Property_Keyword, Join_Control);
             
                return Token_Property_Keyword;
 
-            when 71 =>
+            when 73 =>
                --  Logical_Order_Exception
             
                YYLVAL := (Property_Keyword, Logical_Order_Exception);
             
                return Token_Property_Keyword;
 
-            when 72 =>
+            when 74 =>
                --  Lowercase
             
                YYLVAL := (Property_Keyword, Lowercase);
             
                return Token_Property_Keyword;
 
-            when 73 =>
+            when 75 =>
                --  Math
             
                YYLVAL := (Property_Keyword, Math);
             
                return Token_Property_Keyword;
 
-            when 74 =>
+            when 76 =>
                --  Noncharacter_Code_Point
             
                YYLVAL := (Property_Keyword, Noncharacter_Code_Point);
             
                return Token_Property_Keyword;
 
-            when 75 =>
+            when 77 =>
                --  Other_Alphabetic
             
                YYLVAL := (Property_Keyword, Other_Alphabetic);
             
                return Token_Property_Keyword;
 
-            when 76 =>
+            when 78 =>
                --  Other_Default_Ignorable_Code_Point
             
                YYLVAL := (Property_Keyword, Other_Default_Ignorable_Code_Point);
             
                return Token_Property_Keyword;
 
-            when 77 =>
+            when 79 =>
                --  Other_Grapheme_Extend
             
                YYLVAL := (Property_Keyword, Other_Grapheme_Extend);
             
                return Token_Property_Keyword;
 
-            when 78 =>
+            when 80 =>
                --  Other_ID_Continue
             
                YYLVAL := (Property_Keyword, Other_ID_Continue);
             
                return Token_Property_Keyword;
 
-            when 79 =>
+            when 81 =>
                --  Other_ID_Start
             
                YYLVAL := (Property_Keyword, Other_ID_Start);
             
                return Token_Property_Keyword;
 
-            when 80 =>
+            when 82 =>
                --  Other_Lowercase
             
                YYLVAL := (Property_Keyword, Other_Lowercase);
             
                return Token_Property_Keyword;
 
-            when 81 =>
+            when 83 =>
                --  Other_Math
             
                YYLVAL := (Property_Keyword, Other_Math);
             
                return Token_Property_Keyword;
 
-            when 82 =>
+            when 84 =>
                --  Other_Uppercase
             
                YYLVAL := (Property_Keyword, Other_Uppercase);
             
                return Token_Property_Keyword;
 
-            when 83 =>
+            when 85 =>
                --  Pattern_Syntax
             
                YYLVAL := (Property_Keyword, Pattern_Syntax);
             
                return Token_Property_Keyword;
 
-            when 84 =>
+            when 86 =>
                --  Pattern_White_Space
             
                YYLVAL := (Property_Keyword, Pattern_White_Space);
             
                return Token_Property_Keyword;
 
-            when 85 =>
+            when 87 =>
                --  Quotation_Mark
             
                YYLVAL := (Property_Keyword, Quotation_Mark);
             
                return Token_Property_Keyword;
 
-            when 86 =>
+            when 88 =>
                --  Radical
             
                YYLVAL := (Property_Keyword, Radical);
             
                return Token_Property_Keyword;
 
-            when 87 =>
+            when 89 =>
                --  Soft_Dotted
             
                YYLVAL := (Property_Keyword, Soft_Dotted);
             
                return Token_Property_Keyword;
 
-            when 88 =>
+            when 90 =>
                --  STerm
             
                YYLVAL := (Property_Keyword, STerm);
             
                return Token_Property_Keyword;
 
-            when 89 =>
+            when 91 =>
                --  Terminal_Punctuation
             
                YYLVAL := (Property_Keyword, Terminal_Punctuation);
             
                return Token_Property_Keyword;
 
-            when 90 =>
+            when 92 =>
                --  Unified_Ideograph
             
                YYLVAL := (Property_Keyword, Unified_Ideograph);
             
                return Token_Property_Keyword;
 
-            when 91 =>
+            when 93 =>
                --  Uppercase
             
                YYLVAL := (Property_Keyword, Uppercase);
             
                return Token_Property_Keyword;
 
-            when 92 =>
+            when 94 =>
                --  Variation_Selector
             
                YYLVAL := (Property_Keyword, Variation_Selector);
             
                return Token_Property_Keyword;
 
-            when 93 =>
+            when 95 =>
                --  White_Space
             
                YYLVAL := (Property_Keyword, White_Space);
             
                return Token_Property_Keyword;
 
-            when 94 =>
+            when 96 =>
                --  XID_Continue
             
                YYLVAL := (Property_Keyword, XID_Continue);
             
                return Token_Property_Keyword;
 
-            when 95 =>
+            when 97 =>
                --  XID_Start
             
                YYLVAL := (Property_Keyword, XID_Start);
             
                return Token_Property_Keyword;
 
-            when 96 =>
+            when 98 =>
                --  Expands_On_NFC
             
                YYLVAL := (Property_Keyword, Expands_On_NFC);
             
                return Token_Property_Keyword;
 
-            when 97 =>
+            when 99 =>
                --  Expands_On_NFD
             
                YYLVAL := (Property_Keyword, Expands_On_NFD);
             
                return Token_Property_Keyword;
 
-            when 98 =>
+            when 100 =>
                --  Expands_On_NFKC
             
                YYLVAL := (Property_Keyword, Expands_On_NFKC);
             
                return Token_Property_Keyword;
 
-            when 99 =>
+            when 101 =>
                --  Expands_On_NFKD
             
                YYLVAL := (Property_Keyword, Expands_On_NFKD);
             
                return Token_Property_Keyword;
 
-            when 100 =>
+            when 102 =>
                --  Other
             
                YYLVAL := (Property_Keyword, Other);
             
                return Token_Property_Keyword;
 
-            when 101 =>
+            when 103 =>
                --  Control
             
                YYLVAL := (Property_Keyword, Control);
             
                return Token_Property_Keyword;
 
-            when 102 =>
+            when 104 =>
                --  Format
             
                YYLVAL := (Property_Keyword, Format);
             
                return Token_Property_Keyword;
 
-            when 103 =>
+            when 105 =>
                --  Unassigned
             
                YYLVAL := (Property_Keyword, Unassigned);
             
                return Token_Property_Keyword;
 
-            when 104 =>
+            when 106 =>
                --  Private_Use
             
                YYLVAL := (Property_Keyword, Private_Use);
             
                return Token_Property_Keyword;
 
-            when 105 =>
+            when 107 =>
                --  Surrogate
             
                YYLVAL := (Property_Keyword, Surrogate);
             
                return Token_Property_Keyword;
 
-            when 106 =>
+            when 108 =>
                --  Letter
             
                YYLVAL := (Property_Keyword, Letter);
             
                return Token_Property_Keyword;
 
-            when 107 =>
+            when 109 =>
                --  Cased_Letter
             
                YYLVAL := (Property_Keyword, Cased_Letter);
             
                return Token_Property_Keyword;
 
-            when 108 =>
+            when 110 =>
                --  Lowercase_Letter
             
                YYLVAL := (Property_Keyword, Lowercase_Letter);
             
                return Token_Property_Keyword;
 
-            when 109 =>
+            when 111 =>
                --  Modifier_Letter
             
                YYLVAL := (Property_Keyword, Modifier_Letter);
             
                return Token_Property_Keyword;
 
-            when 110 =>
+            when 112 =>
                --  Other_Letter
             
                YYLVAL := (Property_Keyword, Other_Letter);
             
                return Token_Property_Keyword;
 
-            when 111 =>
+            when 113 =>
                --  Titlecase_Letter
             
                YYLVAL := (Property_Keyword, Titlecase_Letter);
             
                return Token_Property_Keyword;
 
-            when 112 =>
+            when 114 =>
                --  Uppercase_Letter
             
                YYLVAL := (Property_Keyword, Uppercase_Letter);
             
                return Token_Property_Keyword;
 
-            when 113 =>
+            when 115 =>
                --  Mark
             
                YYLVAL := (Property_Keyword, Mark);
             
                return Token_Property_Keyword;
 
-            when 114 =>
+            when 116 =>
                --  Spacing_Mark
             
                YYLVAL := (Property_Keyword, Spacing_Mark);
             
                return Token_Property_Keyword;
 
-            when 115 =>
+            when 117 =>
                --  Enclosing_Mark
             
                YYLVAL := (Property_Keyword, Enclosing_Mark);
             
                return Token_Property_Keyword;
 
-            when 116 =>
+            when 118 =>
                --  Nonspacing_Mark
             
                YYLVAL := (Property_Keyword, Nonspacing_Mark);
             
                return Token_Property_Keyword;
 
-            when 117 =>
+            when 119 =>
                --  Number
             
                YYLVAL := (Property_Keyword, Number);
             
                return Token_Property_Keyword;
 
-            when 118 =>
+            when 120 =>
                --  Decimal_Number
             
                YYLVAL := (Property_Keyword, Decimal_Number);
             
                return Token_Property_Keyword;
 
-            when 119 =>
+            when 121 =>
                --  Letter_Number
             
                YYLVAL := (Property_Keyword, Letter_Number);
             
                return Token_Property_Keyword;
 
-            when 120 =>
+            when 122 =>
                --  Other_Number
             
                YYLVAL := (Property_Keyword, Other_Number);
             
                return Token_Property_Keyword;
 
-            when 121 =>
+            when 123 =>
                --  Punctuation
             
                YYLVAL := (Property_Keyword, Punctuation);
             
                return Token_Property_Keyword;
 
-            when 122 =>
+            when 124 =>
                --  Connector_Punctuation
             
                YYLVAL := (Property_Keyword, Connector_Punctuation);
             
                return Token_Property_Keyword;
 
-            when 123 =>
+            when 125 =>
                --  Dash_Punctuation
             
                YYLVAL := (Property_Keyword, Dash_Punctuation);
             
                return Token_Property_Keyword;
 
-            when 124 =>
+            when 126 =>
                --  Close_Punctuation
             
                YYLVAL := (Property_Keyword, Close_Punctuation);
             
                return Token_Property_Keyword;
 
-            when 125 =>
+            when 127 =>
                --  Final_Punctuation
             
                YYLVAL := (Property_Keyword, Final_Punctuation);
             
                return Token_Property_Keyword;
 
-            when 126 =>
+            when 128 =>
                --  Initial_Punctuation
             
                YYLVAL := (Property_Keyword, Initial_Punctuation);
             
                return Token_Property_Keyword;
 
-            when 127 =>
+            when 129 =>
                --  Other_Punctuation
             
                YYLVAL := (Property_Keyword, Other_Punctuation);
             
                return Token_Property_Keyword;
 
-            when 128 =>
+            when 130 =>
                --  Open_Punctuation
             
                YYLVAL := (Property_Keyword, Open_Punctuation);
             
                return Token_Property_Keyword;
 
-            when 129 =>
+            when 131 =>
                --  Symbol
             
                YYLVAL := (Property_Keyword, Symbol);
             
                return Token_Property_Keyword;
 
-            when 130 =>
+            when 132 =>
                --  Currency_Symbol
             
                YYLVAL := (Property_Keyword, Currency_Symbol);
             
                return Token_Property_Keyword;
 
-            when 131 =>
+            when 133 =>
                --  Modifier_Symbol
             
                YYLVAL := (Property_Keyword, Modifier_Symbol);
             
                return Token_Property_Keyword;
 
-            when 132 =>
+            when 134 =>
                --  Math_Symbol
             
                YYLVAL := (Property_Keyword, Math_Symbol);
             
                return Token_Property_Keyword;
 
-            when 133 =>
+            when 135 =>
                --  Other_Symbol
             
                YYLVAL := (Property_Keyword, Other_Symbol);
             
                return Token_Property_Keyword;
 
-            when 134 =>
+            when 136 =>
                --  Separator
             
                YYLVAL := (Property_Keyword, Separator);
             
                return Token_Property_Keyword;
 
-            when 135 =>
+            when 137 =>
                --  Line_Separator
             
                YYLVAL := (Property_Keyword, Line_Separator);
             
                return Token_Property_Keyword;
 
-            when 136 =>
+            when 138 =>
                --  Paragraph_Separator
             
                YYLVAL := (Property_Keyword, Paragraph_Separator);
             
                return Token_Property_Keyword;
 
-            when 137 =>
+            when 139 =>
                --  Space_Separator
             
                YYLVAL := (Property_Keyword, Space_Separator);
             
                return Token_Property_Keyword;
 
-            when 138 =>
+            when 140 =>
                --  Pattern syntax character in property specification
             
                YYError (Self, Unrecognized_Character_In_Property_Specification, 0);
             
                return Error;
 
-            when 140 =>
+            when 142 =>
                --  Sequence of whitespaces is ignored in all modes
             
                null;
 
-            when 141 =>
+            when 143 =>
                --  Single code point
             
                declare
@@ -1100,45 +1110,45 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                   return Token_Code_Point;
                end;
 
-            when 142 =>
+            when 144 =>
                --  Special outside of sequence
             
                YYError (Self, Unescaped_Pattern_Syntax_Character, YY_Back_Index);
             
                return Error;
 
-            when 146 =>
+            when 148 =>
                --  End of data
             
                return End_Of_Input;
 
-            when 147 =>
+            when 149 =>
                --  Unexprected end of literal
             
                YYError (Self, Unexpected_End_Of_Literal, 0);
             
                return Error;
 
-            when 148 =>
+            when 150 =>
                --  Unexpected and of character class
             
                YYError (Self, Unexpected_End_Of_Character_Class, 0);
             
                return Error;
 
-            when 149 =>
+            when 151 =>
                --  Unexpected end of multiplicity specifier
             
                YYError (Self, Unexpected_End_Of_Multiplicity_Specifier, 0);
             
                return Error;
 
-            when 150 =>
+            when 152 =>
                --  Unexpected end of comment
             
                return Error;
 
-            when 151 =>
+            when 153 =>
                --  Unexpected end of string in property specification
             
                YYError (Self, Unexpected_End_Of_Property_Specification, 0);

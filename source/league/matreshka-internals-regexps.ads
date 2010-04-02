@@ -76,7 +76,8 @@ package Matreshka.Internals.Regexps is
       N_Member_Property,
       N_Character_Class,
       N_Multiplicity,
-      N_Alternation);
+      N_Alternation,
+      N_Anchor);
 
    type Node (Kind : Node_Kinds := N_None) is record
       case Kind is
@@ -128,6 +129,10 @@ package Matreshka.Internals.Regexps is
                when N_Alternation =>
                   First  : Natural;
                   Second : Natural;
+
+               when N_Anchor =>
+                  Start_Of_Line : Boolean;
+                  End_Of_Line   : Boolean;
             end case;
       end case;
    end record;

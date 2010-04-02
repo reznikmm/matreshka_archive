@@ -46,7 +46,8 @@ package Matreshka.Internals.Regexps.Engine is
       Code_Range,
       I_Property,
       Match,
-      Save);
+      Save,
+      I_Anchor);
 
    type Instruction (Kind : Instruction_Kinds := None) is record
       case Kind is
@@ -90,6 +91,10 @@ package Matreshka.Internals.Regexps.Engine is
                when Save =>
                   Slot  : Natural;
                   Start : Boolean;
+
+               when I_Anchor =>
+                  Start_Of_Line : Boolean;
+                  End_Of_Line   : Boolean;
             end case;
       end case;
    end record;

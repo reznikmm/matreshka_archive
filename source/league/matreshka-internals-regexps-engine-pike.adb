@@ -83,13 +83,22 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
       Step    : Positive := 1;
       Steps   : array (Program.Instructions'Range) of Integer := (others => 0);
 
-      procedure Add (PC : Integer; SS : Slice_Array);
+      procedure Add
+       (PC            : Integer;
+        SS            : Slice_Array;
+        Start_Of_Line : Boolean;
+        End_Of_Line   : Boolean);
 
       ---------
       -- Add --
       ---------
 
-      procedure Add (PC : Integer; SS : Slice_Array) is
+      procedure Add
+       (PC            : Integer;
+        SS            : Slice_Array;
+        Start_Of_Line : Boolean;
+        End_Of_Line   : Boolean)
+      is
          S : Slice_Array := SS;
 
       begin
@@ -121,8 +130,8 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                end loop;
 
             when Split =>
-               Add (Program.Instructions (PC).Next, S);
-               Add (Program.Instructions (PC).Another, S);
+               Add (Program.Instructions (PC).Next, S, Start_Of_Line, End_Of_Line);
+               Add (Program.Instructions (PC).Another, S, Start_Of_Line, End_Of_Line);
 
             when Save =>
                if Program.Instructions (PC).Start then
@@ -133,7 +142,16 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                   S (Program.Instructions (PC).Slot).Next_Index    := SI;
                end if;
 
-               Add (Program.Instructions (PC).Next, S);
+               Add (Program.Instructions (PC).Next, S, Start_Of_Line, End_Of_Line);
+
+            when I_Anchor =>
+               if Start_Of_Line and Program.Instructions (PC).Start_Of_Line then
+                  Add (Program.Instructions (PC).Next, S, Start_Of_Line, End_Of_Line);
+               end if;
+
+               if End_Of_Line and Program.Instructions (PC).End_Of_Line then
+                  Add (Program.Instructions (PC).Next, S, Start_Of_Line, End_Of_Line);
+               end if;
 
             when others =>
                raise Program_Error;
@@ -144,6 +162,8 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
       SS      : Regexps.Slice_Array (0 .. Program.Captures) := (others => (0, 1, 0, 1));
       Code    : Matreshka.Internals.Unicode.Code_Point;
       T       : Integer;
+      SOL     : Boolean := True;
+      EOL     : Boolean := False;
 
    begin
       Match.Is_Matched := False;
@@ -152,7 +172,8 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
       Next.Last := 0;
       Current.Last := 0;
 
-      Add (PC, SS);
+      Add (PC, SS, SOL, EOL);
+      SOL := False;
 
       while SP <= String.Unused loop
          --  Handling of 'match' instruction requires to do one cycle after
@@ -173,6 +194,8 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
          SI := SI + 1;
          T := 1;
 
+         EOL := SP = String.Unused;
+
          loop
             exit when T > Current.Last;
 
@@ -181,11 +204,11 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
 
             case Program.Instructions (PC).Kind is
                when Any_Code_Point =>
-                  Add (Program.Instructions (PC).Next, SS);
+                  Add (Program.Instructions (PC).Next, SS, SOL, EOL);
 
                when Code_Point =>
                   if Code = Program.Instructions (PC).Code then
-                     Add (Program.Instructions (PC).Next, SS);
+                     Add (Program.Instructions (PC).Next, SS, SOL, EOL);
                   end if;
 
                when Code_Range =>
@@ -194,7 +217,7 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                            in Program.Instructions (PC).Low
                                 .. Program.Instructions (PC).High)
                   then
-                     Add (Program.Instructions (PC).Next, SS);
+                     Add (Program.Instructions (PC).Next, SS, SOL, EOL);
                   end if;
 
                when I_Property =>
@@ -220,7 +243,7 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                      end case;
 
                      if Program.Instructions (PC).Negative xor R then
-                        Add (Program.Instructions (PC).Next, SS);
+                        Add (Program.Instructions (PC).Next, SS, SOL, EOL);
                      end if;
                   end;
 

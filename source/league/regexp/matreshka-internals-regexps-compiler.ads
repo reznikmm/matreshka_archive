@@ -197,7 +197,9 @@ package Matreshka.Internals.Regexps.Compiler is
      Token_Property_Begin_Positive,
      Token_Property_Begin_Negative,
      Token_Property_End,
-     Token_Property_Keyword);
+     Token_Property_Keyword,
+     Token_Start_Of_Line,
+     Token_End_Of_Line);
 
    --  Here is global state of the compiler. At the first stage of
    --  refactoring all global state variables must be moved to here.

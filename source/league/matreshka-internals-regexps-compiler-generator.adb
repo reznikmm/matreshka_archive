@@ -418,6 +418,18 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                   Compile (Pattern.AST (Expression).Subexpression, Instruction, Tails);
                end if;
 
+            when N_Anchor =>
+               Last := Last + 1;
+               Instruction := Last;
+               Program (Instruction) :=
+                (I_Anchor,
+                 0,
+                 Pattern.AST (Expression).Start_Of_Line,
+                 Pattern.AST (Expression).End_Of_Line);
+               Tails.Clear;
+               Tails.Append (Instruction);
+               Compile_Next;
+
             when others =>
                raise Program_Error;
          end case;
