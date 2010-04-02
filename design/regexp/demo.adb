@@ -22,10 +22,7 @@ procedure Demo is
 
    begin
       Ada.Wide_Wide_Text_IO.Open
-        (File,
-         Ada.Wide_Wide_Text_IO.In_File,
-         File_Name,
-         "wcem=8");
+        (File, Ada.Wide_Wide_Text_IO.In_File, File_Name, "wcem=8");
       Ada.Wide_Wide_Text_IO.Get_Line (File, Buffer, Last);
       Ada.Wide_Wide_Text_IO.Close (File);
 
