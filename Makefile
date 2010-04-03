@@ -20,7 +20,7 @@ check: all
 	.objs/normalization_test $(UNIDATA)
 	.objs/additional_normalization_test
 	.objs/collation_test $(UCADATA)
-	.objs/regexp_ataresearch testsuite/league/ataresearch/basic.dat testsuite/league/ataresearch/basic.sub
+	.objs/regexp_ataresearch testsuite/league/ataresearch/basic.dat testsuite/league/ataresearch/matreshka/basic.dat
 
 ucd:
 	gprbuild -p -Pgnat/tools.gpr
