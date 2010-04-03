@@ -241,11 +241,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Alternative_1 : Positive;
       Alternative_2 : Positive) return Positive is
    begin
-      Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) :=
-       (N_Alternation, 0, Alternative_1, Alternative_2);
-
-      return Pattern.Last;
+      return Create_Alternative (Pattern, Alternative_1, Alternative_2);
    end Process_Alternation;
 
    -----------------------------
@@ -257,23 +253,16 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Keyword  : Property_Specification_Keyword;
       Negative : Boolean) return Positive is
    begin
-      Pattern.Last := Pattern.Last + 1;
-
       if Keyword in Binary_To_Ucd'Range then
-         Pattern.AST (Pattern.Last) :=
-          (N_Match_Property, 0, (Binary, Binary_To_Ucd (Keyword)), Negative);
+         return
+           Create_Match_Property (Pattern, Binary_To_Ucd (Keyword), Negative);
 
       elsif Keyword in GC_To_UCD'Range then
-         Pattern.AST (Pattern.Last) :=
-          (N_Match_Property,
-           0,
-           (General_Category, GC_To_Ucd (Keyword)), Negative);
+         return Create_Match_Property (Pattern, GC_To_Ucd (Keyword), Negative);
 
       else
          raise Program_Error;
       end if;
-
-      return Pattern.Last;
    end Process_Binary_Property;
 
    ---------------------------------------------
@@ -286,22 +275,17 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Keyword  : Property_Specification_Keyword;
       Negative : Boolean) return Positive is
    begin
-      Pattern.Last := Pattern.Last + 1;
-
       if Keyword in Binary_To_Ucd'Range then
-         Pattern.AST (Pattern.Last) :=
-          (N_Member_Property, 0, (Binary, Binary_To_Ucd (Keyword)), Negative);
+         Create_Member_Property
+          (Pattern, Class, Binary_To_Ucd (Keyword), Negative);
 
       elsif Keyword in GC_To_UCD'Range then
-         Pattern.AST (Pattern.Last) :=
-          (N_Member_Property,
-           0,
-           (General_Category, GC_To_Ucd (Keyword)), Negative);
+         Create_Member_Property
+          (Pattern, Class, GC_To_Ucd (Keyword), Negative);
 
       else
          raise Program_Error;
       end if;
-      Add (Pattern.all, Class, Pattern.Last);
 
       return Class;
    end Process_Character_Class_Binary_Property;
@@ -315,10 +299,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Class   : Positive;
       Code    : Wide_Wide_Character) return Positive is
    begin
-      Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) :=
-       (N_Member_Code, 0, Wide_Wide_Character'Pos (Code));
-      Add (Pattern.all, Class, Pattern.Last);
+      Create_Member_Character (Pattern, Class, Wide_Wide_Character'Pos (Code));
 
       return Class;
    end Process_Character_Class_Code_Point;
@@ -333,13 +314,11 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Low     : Wide_Wide_Character;
       High    : Wide_Wide_Character) return Positive is
    begin
-      Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) :=
-       (N_Member_Range,
-        0,
+      Create_Member_Range
+       (Pattern,
+        Class,
         Wide_Wide_Character'Pos (Low),
         Wide_Wide_Character'Pos (High));
-      Add (Pattern.all, Class, Pattern.Last);
 
       return Class;
    end Process_Character_Class_Range;
@@ -352,11 +331,8 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
      (Pattern   : not null Shared_Pattern_Access;
       Character : Wide_Wide_Character) return Positive is
    begin
-      Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) :=
-       (N_Match_Code, 0, Wide_Wide_Character'Pos (Character));
-
-      return Pattern.Last;
+      return
+        Create_Match_Character (Pattern, Wide_Wide_Character'Pos (Character));
    end Process_Code_Point;
 
    -------------------------
@@ -366,10 +342,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    function Process_End_Of_Line
      (Pattern : not null Shared_Pattern_Access) return Positive is
    begin
-      Pattern.Last := Pattern.Last + 1;
-         Pattern.AST (Pattern.Last) := (N_Anchor, 0, False, True);
-
-      return Pattern.Last;
+      return Create_Anchor_End_Of_Line (Pattern);
    end Process_End_Of_Line;
 
    ------------------------
@@ -390,10 +363,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    function Process_Match_Any
      (Pattern : not null Shared_Pattern_Access) return Positive is
    begin
-      Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Match_Any, 0);
-
-      return Pattern.Last;
+      return Create_Match_Any (Pattern);
    end Process_Match_Any;
 
    --------------------------
@@ -407,10 +377,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Upper      : Natural;
       Greedy     : Boolean) return Positive is
    begin
-      Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Multiplicity, 0, Expression, Greedy, Lower, Upper);
-
-      return Pattern.Last;
+      return Create_Repetition (Pattern, Expression, Lower, Upper, Greedy);
    end Process_Multiplicity;
 
    ------------------------------------
@@ -433,10 +400,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    function Process_New_Character_Class
      (Pattern : not null Shared_Pattern_Access) return Positive is
    begin
-      Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Character_Class, 0, False, 0);
-
-      return Pattern.Last;
+      return Create_Character_Class (Pattern);
    end Process_New_Character_Class;
 
    ---------------------------
@@ -446,10 +410,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
    function Process_Start_Of_Line
      (Pattern : not null Shared_Pattern_Access) return Positive is
    begin
-      Pattern.Last := Pattern.Last + 1;
-         Pattern.AST (Pattern.Last) := (N_Anchor, 0, True, False);
-
-      return Pattern.Last;
+      return Create_Anchor_Start_Of_Line (Pattern);
    end Process_Start_Of_Line;
 
    ---------------------------
@@ -461,10 +422,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Expression : Positive;
       Capture    : Boolean) return Positive is
    begin
-      Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Subexpression, 0, Expression, Capture, 0);
-
-      return Pattern.Last;
+      return Create_Subexpression (Pattern, Expression, Capture);
    end Process_Subexpression;
 
    -------------

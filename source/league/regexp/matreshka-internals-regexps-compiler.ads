@@ -228,11 +228,88 @@ package Matreshka.Internals.Regexps.Compiler is
     (Pattern : in out Shared_Pattern; Head : Positive; Node : Positive);
    --  Attach Node to the list of nodes, started by Head.
 
-   procedure Add
-    (Pattern : in out Shared_Pattern; Class : Positive; Member : Positive);
-
    function Compile
     (Expression : not null Matreshka.Internals.Strings.Shared_String_Access)
        return not null Shared_Pattern_Access;
+
+   function Create_Alternative
+    (Pattern     : not null Shared_Pattern_Access;
+     Prefered    : Positive;
+     Alternative : Positive) return Positive;
+   pragma Inline (Create_Alternative);
+
+   function Create_Anchor_End_Of_Line
+    (Pattern : not null Shared_Pattern_Access) return Positive;
+   pragma Inline (Create_Anchor_End_Of_Line);
+
+   function Create_Anchor_Start_Of_Line
+    (Pattern : not null Shared_Pattern_Access) return Positive;
+   pragma Inline (Create_Anchor_Start_Of_Line);
+
+   function Create_Character_Class
+    (Pattern : not null Shared_Pattern_Access) return Positive;
+   pragma Inline (Create_Character_Class);
+
+   function Create_Match_Any
+    (Pattern : not null Shared_Pattern_Access) return Positive;
+   pragma Inline (Create_Match_Any);
+
+   function Create_Match_Character
+    (Pattern   : not null Shared_Pattern_Access;
+     Character : Matreshka.Internals.Unicode.Code_Point) return Positive;
+   pragma Inline (Create_Match_Character);
+
+   function Create_Match_Property
+    (Pattern  : not null Shared_Pattern_Access;
+     Value    : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+     Negative : Boolean) return Positive;
+   pragma Inline (Create_Match_Property);
+
+   function Create_Match_Property
+    (Pattern  : not null Shared_Pattern_Access;
+     Value    : General_Category_Flags;
+     Negative : Boolean) return Positive;
+   pragma Inline (Create_Match_Property);
+
+   procedure Create_Member_Character
+    (Pattern   : not null Shared_Pattern_Access;
+     Class     : Positive;
+     Character : Matreshka.Internals.Unicode.Code_Point);
+   pragma Inline (Create_Member_Character);
+
+   procedure Create_Member_Property
+    (Pattern  : not null Shared_Pattern_Access;
+     Class    : Positive;
+     Value    : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+     Negative : Boolean);
+   pragma Inline (Create_Member_Property);
+
+   procedure  Create_Member_Property
+    (Pattern  : not null Shared_Pattern_Access;
+     Class    : Positive;
+     Value    : General_Category_Flags;
+     Negative : Boolean);
+   pragma Inline (Create_Member_Property);
+
+   procedure Create_Member_Range
+    (Pattern  : not null Shared_Pattern_Access;
+     Class    : Positive;
+     Low      : Matreshka.Internals.Unicode.Code_Point;
+     High     : Matreshka.Internals.Unicode.Code_Point);
+   pragma Inline (Create_Member_Range);
+
+   function Create_Repetition
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive;
+      Lower      : Natural;
+      Upper      : Natural;
+      Greedy     : Boolean) return Positive;
+   pragma Inline (Create_Repetition);
+
+   function Create_Subexpression
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive;
+      Capture    : Boolean) return Positive;
+   pragma Inline (Create_Subexpression);
 
 end Matreshka.Internals.Regexps.Compiler;

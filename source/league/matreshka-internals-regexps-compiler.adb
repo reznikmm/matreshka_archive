@@ -39,6 +39,9 @@ package body Matreshka.Internals.Regexps.Compiler is
    use Matreshka.Internals.Regexps.Compiler.Parser;
    use Matreshka.Internals.Regexps.Compiler.Semantic;
 
+   procedure Add
+    (Pattern : in out Shared_Pattern; Class : Positive; Member : Positive);
+
    ---------
    -- Add --
    ---------
@@ -94,6 +97,218 @@ package body Matreshka.Internals.Regexps.Compiler is
          Analyze (Pattern);
       end return;
    end Compile;
+
+   ------------------------
+   -- Create_Alternative --
+   ------------------------
+
+   function Create_Alternative
+    (Pattern     : not null Shared_Pattern_Access;
+     Prefered    : Positive;
+     Alternative : Positive) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) :=
+       (N_Alternation,
+        0,
+        Prefered,
+        Alternative);
+
+      return Pattern.Last;
+   end Create_Alternative;
+
+   -------------------------------
+   -- Create_Anchor_End_Of_Line --
+   -------------------------------
+
+   function Create_Anchor_End_Of_Line
+    (Pattern : not null Shared_Pattern_Access) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Anchor, 0, False, True);
+
+      return Pattern.Last;
+   end Create_Anchor_End_Of_Line;
+
+   ---------------------------------
+   -- Create_Anchor_Start_Of_Line --
+   ---------------------------------
+
+   function Create_Anchor_Start_Of_Line
+    (Pattern : not null Shared_Pattern_Access) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Anchor, 0, True, False);
+
+      return Pattern.Last;
+   end Create_Anchor_Start_Of_Line;
+
+   ----------------------------
+   -- Create_Character_Class --
+   ----------------------------
+
+   function Create_Character_Class
+    (Pattern : not null Shared_Pattern_Access) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Character_Class, 0, False, 0);
+
+      return Pattern.Last;
+   end Create_Character_Class;
+
+   ----------------------
+   -- Create_Match_Any --
+   ----------------------
+
+   function Create_Match_Any
+    (Pattern : not null Shared_Pattern_Access) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Match_Any, 0);
+
+      return Pattern.Last;
+   end Create_Match_Any;
+
+   ----------------------------
+   -- Create_Match_Character --
+   ----------------------------
+
+   function Create_Match_Character
+    (Pattern   : not null Shared_Pattern_Access;
+     Character : Matreshka.Internals.Unicode.Code_Point) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Match_Code, 0, Character);
+
+      return Pattern.Last;
+   end Create_Match_Character;
+
+   ---------------------------
+   -- Create_Match_Property --
+   ---------------------------
+
+   function Create_Match_Property
+    (Pattern  : not null Shared_Pattern_Access;
+     Value    : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+     Negative : Boolean) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) :=
+       (N_Match_Property, 0, (Binary, Value), Negative);
+
+      return Pattern.Last;
+   end Create_Match_Property;
+
+   ---------------------------
+   -- Create_Match_Property --
+   ---------------------------
+
+   function Create_Match_Property
+    (Pattern  : not null Shared_Pattern_Access;
+     Value    : General_Category_Flags;
+     Negative : Boolean) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) :=
+       (N_Match_Property, 0, (General_Category, Value), Negative);
+
+      return Pattern.Last;
+   end Create_Match_Property;
+
+   -----------------------------
+   -- Create_Member_Character --
+   -----------------------------
+
+   procedure Create_Member_Character
+    (Pattern   : not null Shared_Pattern_Access;
+     Class     : Positive;
+     Character : Matreshka.Internals.Unicode.Code_Point) is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Member_Code, 0, Character);
+      Add (Pattern.all, Class, Pattern.Last);
+   end Create_Member_Character;
+
+   ----------------------------
+   -- Create_Member_Property --
+   ----------------------------
+
+   procedure Create_Member_Property
+    (Pattern  : not null Shared_Pattern_Access;
+     Class    : Positive;
+     Value    : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+     Negative : Boolean) is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) :=
+       (N_Member_Property, 0, (Binary, Value), Negative);
+      Add (Pattern.all, Class, Pattern.Last);
+   end Create_Member_Property;
+
+   ----------------------------
+   -- Create_Member_Property --
+   ----------------------------
+
+   procedure Create_Member_Property
+    (Pattern  : not null Shared_Pattern_Access;
+     Class    : Positive;
+     Value    : General_Category_Flags;
+     Negative : Boolean) is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) :=
+       (N_Member_Property, 0, (General_Category, Value), Negative);
+      Add (Pattern.all, Class, Pattern.Last);
+   end Create_Member_Property;
+
+   -------------------------
+   -- Create_Member_Range --
+   -------------------------
+
+   procedure Create_Member_Range
+    (Pattern  : not null Shared_Pattern_Access;
+     Class    : Positive;
+     Low      : Matreshka.Internals.Unicode.Code_Point;
+     High     : Matreshka.Internals.Unicode.Code_Point) is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) := (N_Member_Range, 0, Low, High);
+      Add (Pattern.all, Class, Pattern.Last);
+   end Create_Member_Range;
+
+   -----------------------
+   -- Create_Repetition --
+   -----------------------
+
+   function Create_Repetition
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive;
+      Lower      : Natural;
+      Upper      : Natural;
+      Greedy     : Boolean) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) :=
+       (N_Multiplicity, 0, Expression, Greedy, Lower, Upper);
+
+      return Pattern.Last;
+   end Create_Repetition;
+
+   --------------------------
+   -- Create_Subexpression --
+   --------------------------
+
+   function Create_Subexpression
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive;
+      Capture    : Boolean) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+      Pattern.AST (Pattern.Last) :=
+       (N_Subexpression, 0, Expression, Capture, 0);
+
+      return Pattern.Last;
+   end Create_Subexpression;
 
    -------------
    -- YYError --
