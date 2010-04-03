@@ -163,7 +163,7 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
       Code    : Matreshka.Internals.Unicode.Code_Point;
       T       : Integer;
       SOL     : Boolean := True;
-      EOL     : Boolean := False;
+      EOL     : Boolean := String.Unused = 0;
 
    begin
       Match.Is_Matched := False;
