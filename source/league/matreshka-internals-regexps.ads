@@ -65,6 +65,14 @@ package Matreshka.Internals.Regexps is
       end case;
    end record;
 
+   type Node_List is record
+      Parent : Natural;
+      Head   : Natural;
+   end record;
+
+   type Node_List_Count is new Natural;
+   subtype Node_List_Index is Node_List_Count range 1 .. Node_List_Count'Last;
+
    type Node_Kinds is
      (N_None,
       N_Subexpression,
@@ -85,6 +93,7 @@ package Matreshka.Internals.Regexps is
             null;
 
          when others =>
+            List : Node_List_Count;
             Next : Natural;
             --  Next node in the chain
 
@@ -93,7 +102,7 @@ package Matreshka.Internals.Regexps is
                   null;
 
                when N_Subexpression =>
-                  Subexpression : Natural;
+                  Subexpression : Node_List_Count;
                   Capture       : Boolean;
                   Index         : Natural;
 
@@ -116,10 +125,10 @@ package Matreshka.Internals.Regexps is
 
                when N_Character_Class =>
                   Negated : Boolean;
-                  Members : Natural;
+                  Members : Node_List_Count;
 
                when N_Multiplicity =>
-                  Item   : Natural;
+                  Item   : Node_List_Count;
                   --  Link to expression
 
                   Greedy : Boolean;
@@ -127,8 +136,8 @@ package Matreshka.Internals.Regexps is
                   Upper  : Natural;
 
                when N_Alternation =>
-                  First  : Natural;
-                  Second : Natural;
+                  Preferred : Node_List_Count;
+                  Fallback  : Node_List_Count;
 
                when N_Anchor =>
                   Start_Of_Line : Boolean;
@@ -138,20 +147,23 @@ package Matreshka.Internals.Regexps is
    end record;
 
    type AST_Array is array (Positive range <>) of Node;
+   type Node_List_Array is array (Node_List_Index range <>) of Node_List;
 
-   type Shared_Pattern (Size : Natural) is limited record
+   type Shared_Pattern (Size : Natural; List_Size : Node_List_Count) is limited record
       Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
-      AST      : AST_Array (1 .. Size);
-      Last     : Natural := 0;
-      Start    : Positive;
-      Captures : Natural := 0;
+      AST       : AST_Array (1 .. Size);
+      List      : Node_List_Array (1 .. List_Size);
+      Last      : Natural := 0;
+      Last_List : Node_List_Count := 0;
+      Start     : Positive;
+      Captures  : Natural := 0;
    end record;
 
    type Shared_Pattern_Access is access all Shared_Pattern;
 
-   Empty_Shared_Pattern : aliased Shared_Pattern (0);
+   Empty_Shared_Pattern : aliased Shared_Pattern (0, 0);
 
    procedure Reference (Item : not null Shared_Pattern_Access);
 

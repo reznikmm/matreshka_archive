@@ -62,17 +62,17 @@ package body Matreshka.Internals.Regexps.Compiler.Semantic is
                Pattern.AST (Node).Index := Pattern.Captures;
             end if;
 
-            Analyze_Node (Pattern, Pattern.AST (Node).Subexpression);
+            Analyze_Node (Pattern, Get_Expression (Pattern, Node));
 
          when N_Character_Class =>
-            Analyze_Node (Pattern, Pattern.AST (Node).Members);
+            Analyze_Node (Pattern, Get_Members (Pattern, Node));
 
          when N_Multiplicity =>
-            Analyze_Node (Pattern, Pattern.AST (Node).Item);
+            Analyze_Node (Pattern, Get_Expression (Pattern, Node));
 
          when N_Alternation =>
-            Analyze_Node (Pattern, Pattern.AST (Node).First);
-            Analyze_Node (Pattern, Pattern.AST (Node).Second);
+            Analyze_Node (Pattern, Get_Preferred (Pattern, Node));
+            Analyze_Node (Pattern, Get_Fallback (Pattern, Node));
 
          when others =>
             null;

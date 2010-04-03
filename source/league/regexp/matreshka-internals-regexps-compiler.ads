@@ -312,4 +312,24 @@ package Matreshka.Internals.Regexps.Compiler is
       Capture    : Boolean) return Positive;
    pragma Inline (Create_Subexpression);
 
+   function Get_Preferred
+     (Pattern : not null Shared_Pattern_Access;
+      Node    : Positive) return Natural;
+   pragma Inline (Get_Preferred);
+
+   function Get_Fallback
+     (Pattern : not null Shared_Pattern_Access;
+      Node    : Positive) return Natural;
+   pragma Inline (Get_Fallback);
+
+   function Get_Members
+     (Pattern : not null Shared_Pattern_Access;
+      Node    : Positive) return Natural;
+   pragma Inline (Get_Members);
+
+   function Get_Expression
+     (Pattern : not null Shared_Pattern_Access;
+      Node    : Positive) return Natural;
+   pragma Inline (Get_Expression);
+
 end Matreshka.Internals.Regexps.Compiler;

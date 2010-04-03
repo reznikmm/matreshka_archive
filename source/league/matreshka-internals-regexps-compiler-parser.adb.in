@@ -457,7 +457,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       YY_Action : Integer;
       YY_Index  : Integer;
       Pattern   : Shared_Pattern_Access
-        := new Shared_Pattern (Self.Data.Length);
+        := new Shared_Pattern (Self.Data.Length, Node_List_Count (Self.Data.Length));
 
    begin
       YY.TOS := 0;

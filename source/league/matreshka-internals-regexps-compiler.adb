@@ -39,8 +39,32 @@ package body Matreshka.Internals.Regexps.Compiler is
    use Matreshka.Internals.Regexps.Compiler.Parser;
    use Matreshka.Internals.Regexps.Compiler.Semantic;
 
+   procedure Append
+    (Pattern : not null Shared_Pattern_Access;
+     List    : Node_List_Index;
+     Node    : Positive);
+
+   function Create_Node_List
+    (Pattern : not null Shared_Pattern_Access;
+     Parent  : Positive) return Node_List_Index;
+
    procedure Add
     (Pattern : in out Shared_Pattern; Class : Positive; Member : Positive);
+
+   procedure Set_Preferred
+    (Pattern : not null Shared_Pattern_Access;
+     Node    : Positive;
+     To      : Positive);
+
+   procedure Set_Fallback
+    (Pattern : not null Shared_Pattern_Access;
+     Node    : Positive;
+     To      : Positive);
+
+   procedure Set_Expression
+    (Pattern : not null Shared_Pattern_Access;
+     Node    : Positive;
+     To      : Positive);
 
    ---------
    -- Add --
@@ -52,12 +76,44 @@ package body Matreshka.Internals.Regexps.Compiler is
      Member  : Positive) is
    begin
       if Pattern.AST (Class).Members = 0 then
-         Pattern.AST (Class).Members := Member;
+         Pattern.Last_List := Pattern.Last_List + 1;
+         Pattern.AST (Class).Members := Pattern.Last_List;
+         Pattern.List (Pattern.Last_List) := (Class, Member);
+         Pattern.AST (Member).List := Pattern.Last_List;
+         Pattern.AST (Member).Next := 0;
 
       else
-         Attach (Pattern, Pattern.AST (Class).Members, Member);
+         Attach (Pattern, Pattern.List (Pattern.AST (Class).Members).Head, Member);
       end if;
    end Add;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Pattern : not null Shared_Pattern_Access;
+     List    : Node_List_Index;
+     Node    : Positive)
+   is
+      pragma Assert (Pattern.AST (Node).List = 0);
+
+      J : Natural := Pattern.List (List).Head;
+
+   begin
+      if J = 0 then
+         Pattern.List (List).Head := Node;
+         Pattern.AST (Node).List := List;
+
+      else
+         while Pattern.AST (J).Next /= 0 loop
+            J := Pattern.AST (J).Next;
+         end loop;
+
+         Pattern.AST (Node).List := List;
+         Pattern.AST (J).Next := Node;
+      end if;
+   end Append;
 
    ------------
    -- Attach --
@@ -71,11 +127,18 @@ package body Matreshka.Internals.Regexps.Compiler is
       J : Positive := Head;
 
    begin
+      if Pattern.AST (Head).List = 0 then
+         Pattern.Last_List := Pattern.Last_List + 1;
+         Pattern.List (Pattern.Last_List) := (0, Head);
+         Pattern.AST (Head).List := Pattern.Last_List;
+      end if;
+
       while Pattern.AST (J).Next /= 0 loop
          J := Pattern.AST (J).Next;
       end loop;
 
       Pattern.AST (J).Next := Node;
+      Pattern.AST (Node).List := Pattern.AST (Head).List;
    end Attach;
 
    -------------
@@ -108,11 +171,9 @@ package body Matreshka.Internals.Regexps.Compiler is
      Alternative : Positive) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) :=
-       (N_Alternation,
-        0,
-        Prefered,
-        Alternative);
+      Pattern.AST (Pattern.Last) := (N_Alternation, 0, 0, 0, 0);
+      Set_Preferred (Pattern, Pattern.Last, Prefered);
+      Set_Fallback (Pattern, Pattern.Last, Alternative);
 
       return Pattern.Last;
    end Create_Alternative;
@@ -125,7 +186,7 @@ package body Matreshka.Internals.Regexps.Compiler is
     (Pattern : not null Shared_Pattern_Access) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Anchor, 0, False, True);
+      Pattern.AST (Pattern.Last) := (N_Anchor, 0, 0, False, True);
 
       return Pattern.Last;
    end Create_Anchor_End_Of_Line;
@@ -138,7 +199,7 @@ package body Matreshka.Internals.Regexps.Compiler is
     (Pattern : not null Shared_Pattern_Access) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Anchor, 0, True, False);
+      Pattern.AST (Pattern.Last) := (N_Anchor, 0, 0, True, False);
 
       return Pattern.Last;
    end Create_Anchor_Start_Of_Line;
@@ -151,7 +212,7 @@ package body Matreshka.Internals.Regexps.Compiler is
     (Pattern : not null Shared_Pattern_Access) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Character_Class, 0, False, 0);
+      Pattern.AST (Pattern.Last) := (N_Character_Class, 0, 0, False, 0);
 
       return Pattern.Last;
    end Create_Character_Class;
@@ -164,7 +225,7 @@ package body Matreshka.Internals.Regexps.Compiler is
     (Pattern : not null Shared_Pattern_Access) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Match_Any, 0);
+      Pattern.AST (Pattern.Last) := (N_Match_Any, 0, 0);
 
       return Pattern.Last;
    end Create_Match_Any;
@@ -178,7 +239,7 @@ package body Matreshka.Internals.Regexps.Compiler is
      Character : Matreshka.Internals.Unicode.Code_Point) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Match_Code, 0, Character);
+      Pattern.AST (Pattern.Last) := (N_Match_Code, 0, 0, Character);
 
       return Pattern.Last;
    end Create_Match_Character;
@@ -194,7 +255,7 @@ package body Matreshka.Internals.Regexps.Compiler is
    begin
       Pattern.Last := Pattern.Last + 1;
       Pattern.AST (Pattern.Last) :=
-       (N_Match_Property, 0, (Binary, Value), Negative);
+       (N_Match_Property, 0, 0, (Binary, Value), Negative);
 
       return Pattern.Last;
    end Create_Match_Property;
@@ -210,7 +271,7 @@ package body Matreshka.Internals.Regexps.Compiler is
    begin
       Pattern.Last := Pattern.Last + 1;
       Pattern.AST (Pattern.Last) :=
-       (N_Match_Property, 0, (General_Category, Value), Negative);
+       (N_Match_Property, 0, 0, (General_Category, Value), Negative);
 
       return Pattern.Last;
    end Create_Match_Property;
@@ -225,7 +286,7 @@ package body Matreshka.Internals.Regexps.Compiler is
      Character : Matreshka.Internals.Unicode.Code_Point) is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Member_Code, 0, Character);
+      Pattern.AST (Pattern.Last) := (N_Member_Code, 0, 0, Character);
       Add (Pattern.all, Class, Pattern.Last);
    end Create_Member_Character;
 
@@ -241,7 +302,7 @@ package body Matreshka.Internals.Regexps.Compiler is
    begin
       Pattern.Last := Pattern.Last + 1;
       Pattern.AST (Pattern.Last) :=
-       (N_Member_Property, 0, (Binary, Value), Negative);
+       (N_Member_Property, 0, 0, (Binary, Value), Negative);
       Add (Pattern.all, Class, Pattern.Last);
    end Create_Member_Property;
 
@@ -257,7 +318,7 @@ package body Matreshka.Internals.Regexps.Compiler is
    begin
       Pattern.Last := Pattern.Last + 1;
       Pattern.AST (Pattern.Last) :=
-       (N_Member_Property, 0, (General_Category, Value), Negative);
+       (N_Member_Property, 0, 0, (General_Category, Value), Negative);
       Add (Pattern.all, Class, Pattern.Last);
    end Create_Member_Property;
 
@@ -272,9 +333,23 @@ package body Matreshka.Internals.Regexps.Compiler is
      High     : Matreshka.Internals.Unicode.Code_Point) is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) := (N_Member_Range, 0, Low, High);
+      Pattern.AST (Pattern.Last) := (N_Member_Range, 0, 0, Low, High);
       Add (Pattern.all, Class, Pattern.Last);
    end Create_Member_Range;
+
+   ----------------------
+   -- Create_Node_List --
+   ----------------------
+
+   function Create_Node_List
+    (Pattern : not null Shared_Pattern_Access;
+     Parent  : Positive) return Node_List_Index is
+   begin
+      Pattern.Last_List := Pattern.Last_List + 1;
+      Pattern.List (Pattern.Last_List) := (Parent, 0);
+
+      return Pattern.Last_List;
+   end Create_Node_List;
 
    -----------------------
    -- Create_Repetition --
@@ -289,7 +364,8 @@ package body Matreshka.Internals.Regexps.Compiler is
    begin
       Pattern.Last := Pattern.Last + 1;
       Pattern.AST (Pattern.Last) :=
-       (N_Multiplicity, 0, Expression, Greedy, Lower, Upper);
+       (N_Multiplicity, 0, 0, 0, Greedy, Lower, Upper);
+      Set_Expression (Pattern, Pattern.Last, Expression);
 
       return Pattern.Last;
    end Create_Repetition;
@@ -304,18 +380,155 @@ package body Matreshka.Internals.Regexps.Compiler is
       Capture    : Boolean) return Positive is
    begin
       Pattern.Last := Pattern.Last + 1;
-      Pattern.AST (Pattern.Last) :=
-       (N_Subexpression, 0, Expression, Capture, 0);
+      Pattern.AST (Pattern.Last) := (N_Subexpression, 0, 0, 0, Capture, 0);
+      Set_Expression (Pattern, Pattern.Last, Expression);
 
       return Pattern.Last;
    end Create_Subexpression;
+
+   --------------------
+   -- Get_Expression --
+   --------------------
+
+   function Get_Expression
+     (Pattern : not null Shared_Pattern_Access;
+      Node    : Positive) return Natural is
+   begin
+      if Pattern.AST (Node).Kind = N_Multiplicity then
+         return Pattern.List (Pattern.AST (Node).Item).Head;
+
+      elsif Pattern.AST (Node).Kind = N_Subexpression then
+         return Pattern.List (Pattern.AST (Node).Subexpression).Head;
+      end if;
+   end Get_Expression;
+
+   ------------------
+   -- Get_Fallback --
+   ------------------
+
+   function Get_Fallback
+     (Pattern : not null Shared_Pattern_Access;
+      Node    : Positive) return Natural is
+   begin
+      return Pattern.List (Pattern.AST (Node).Fallback).Head;
+   end Get_Fallback;
+
+   -----------------
+   -- Get_Members --
+   -----------------
+
+   function Get_Members
+     (Pattern : not null Shared_Pattern_Access;
+      Node    : Positive) return Natural is
+   begin
+      return Pattern.List (Pattern.AST (Node).Members).Head;
+   end Get_Members;
+
+   -------------------
+   -- Get_Preferred --
+   -------------------
+
+   function Get_Preferred
+     (Pattern : not null Shared_Pattern_Access;
+      Node    : Positive) return Natural is
+   begin
+      return Pattern.List (Pattern.AST (Node).Preferred).Head;
+   end Get_Preferred;
+
+   --------------------
+   -- Set_Expression --
+   --------------------
+
+   procedure Set_Expression
+    (Pattern : not null Shared_Pattern_Access;
+     Node    : Positive;
+     To      : Positive) is
+   begin
+      if Pattern.AST (Node).Kind = N_Subexpression then
+         if Pattern.AST (Node).Subexpression = 0 then
+            if Pattern.AST (To).List = 0 then
+               Pattern.AST (Node).Subexpression :=
+                 Create_Node_List (Pattern, Node);
+               Append (Pattern, Pattern.AST (Node).Subexpression, To);
+
+            else
+               Pattern.AST (Node).Subexpression := Pattern.AST (To).List;
+            end if;
+
+         else
+            raise Program_Error;
+         end if;
+
+      elsif Pattern.AST (Node).Kind = N_Multiplicity then
+         if Pattern.AST (Node).Item = 0 then
+            if Pattern.AST (To).List = 0 then
+               Pattern.AST (Node).Item := Create_Node_List (Pattern, Node);
+               Append (Pattern, Pattern.AST (Node).Item, To);
+
+            else
+               Pattern.AST (Node).Item := Pattern.AST (To).List;
+            end if;
+
+         else
+            raise Program_Error;
+         end if;
+      end if;
+   end Set_Expression;
+
+   ------------------
+   -- Set_Fallback --
+   ------------------
+
+   procedure Set_Fallback
+    (Pattern : not null Shared_Pattern_Access;
+     Node    : Positive;
+     To      : Positive) is
+   begin
+      if Pattern.AST (Node).Fallback = 0 then
+         if Pattern.AST (To).List = 0 then
+            Pattern.AST (Node).Fallback := Create_Node_List (Pattern, Node);
+            Append (Pattern, Pattern.AST (Node).Fallback, To);
+
+         else
+            Pattern.AST (Node).Fallback := Pattern.AST (To).List;
+         end if;
+
+      else
+         raise Program_Error;
+      end if;
+   end Set_Fallback;
+
+   -------------------
+   -- Set_Preferred --
+   -------------------
+
+   procedure Set_Preferred
+    (Pattern : not null Shared_Pattern_Access;
+     Node    : Positive;
+     To      : Positive) is
+   begin
+      if Pattern.AST (Node).Preferred = 0 then
+         if Pattern.AST (To).List = 0 then
+            Pattern.AST (Node).Preferred := Create_Node_List (Pattern, Node);
+            Append (Pattern, Pattern.AST (Node).Preferred, To);
+
+         else
+            Pattern.AST (Node).Preferred := Pattern.AST (To).List;
+         end if;
+
+      else
+         raise Program_Error;
+      end if;
+   end Set_Preferred;
 
    -------------
    -- YYError --
    -------------
 
    procedure YYError
-    (Self : not null access Compiler_State; Error : YY_Errors; Index : Natural) is
+    (Self  : not null access Compiler_State;
+     Error : YY_Errors;
+     Index : Natural) is
    begin
       if Self.YY_Error.Error = No_Error then
          Self.YY_Error := (Error, Index);
