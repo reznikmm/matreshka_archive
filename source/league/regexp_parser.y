@@ -185,29 +185,9 @@
 
 %%
 
-expression : Token_Start_Of_Line re Token_End_Of_Line
+pattern : re
 {
-   --  Both Start-Of-Line and End-Of-Line anchors
-
-   Process_Expression (Pattern, $2.Node, True, True);
-}
-  | Token_Start_Of_Line re
-{
-   --  Start-Of-Line anchor
-
-   Process_Expression (Pattern, $2.Node, True, False);
-}
-  | re Token_End_Of_Line
-{
-   --  End-Of-Line anchor
-
-   Process_Expression (Pattern, $1.Node, False, True);
-}
-  | re
-{
-   --  No anchors
-
-   Process_Expression (Pattern, $1.Node, False, False);
+   Process_Expression (Pattern, $1.Node);
 }
   ;
 
@@ -352,7 +332,21 @@ singleton : singleton Token_Optional_Greedy
 }
   | character_class
 {
+   --  Character class
+
    $$ := $1;
+}
+  | Token_Start_Of_Line
+{
+   --  Start of line anchor
+
+   $$ := (AST_Node, Process_Start_Of_Line (Pattern));
+}
+  | Token_End_Of_Line
+{
+   --  End of line anchor
+
+   $$ := (AST_Node, Process_End_Of_Line (Pattern));
 }
   ;
 
@@ -468,10 +462,14 @@ with Matreshka.Internals.Unicode.Ucd;
       Negative : Boolean) return Positive is separate;
 
    procedure Process_Expression
-     (Pattern       : not null Shared_Pattern_Access;
-      Expression    : Positive;
-      Start_Of_Line : Boolean;
-      End_Of_Line   : Boolean) is separate;
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive) is separate;
+
+   function Process_Start_Of_Line
+     (Pattern : not null Shared_Pattern_Access) return Positive is separate;
+
+   function Process_End_Of_Line
+     (Pattern : not null Shared_Pattern_Access) return Positive is separate;
 
    Pattern : Shared_Pattern_Access;
 

@@ -93,11 +93,15 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       Keyword  : Property_Specification_Keyword;
       Negative : Boolean) return Positive;
 
+   function Process_Start_Of_Line
+     (Pattern : not null Shared_Pattern_Access) return Positive;
+
+   function Process_End_Of_Line
+     (Pattern : not null Shared_Pattern_Access) return Positive;
+
    procedure Process_Expression
-     (Pattern       : not null Shared_Pattern_Access;
-      Expression    : Positive;
-      Start_Of_Line : Boolean;
-      End_Of_Line   : Boolean);
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive);
 
    Binary_To_Ucd : constant
      array (Property_Specification_Keyword range <>) of Boolean_Properties :=
@@ -355,31 +359,28 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       return Pattern.Last;
    end Process_Code_Point;
 
+   -------------------------
+   -- Process_End_Of_Line --
+   -------------------------
+
+   function Process_End_Of_Line
+     (Pattern : not null Shared_Pattern_Access) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+         Pattern.AST (Pattern.Last) := (N_Anchor, 0, False, True);
+
+      return Pattern.Last;
+   end Process_End_Of_Line;
+
    ------------------------
    -- Process_Expression --
    ------------------------
 
    procedure Process_Expression
-     (Pattern       : not null Shared_Pattern_Access;
-      Expression    : Positive;
-      Start_Of_Line : Boolean;
-      End_Of_Line   : Boolean) is
+     (Pattern    : not null Shared_Pattern_Access;
+      Expression : Positive) is
    begin
-      if Start_Of_Line then
-         Pattern.Last := Pattern.Last + 1;
-         Pattern.AST (Pattern.Last) := (N_Anchor, 0, True, False);
-         Attach (Pattern.all, Pattern.Last, Expression);
-         Pattern.Start := Pattern.Last;
-
-      else
-         Pattern.Start := Expression;
-      end if;
-
-      if End_Of_Line then
-         Pattern.Last := Pattern.Last + 1;
-         Pattern.AST (Pattern.Last) := (N_Anchor, 0, False, True);
-         Attach (Pattern.all, Expression, Pattern.Last);
-      end if;
+      Pattern.Start := Expression;
    end Process_Expression;
 
    -----------------------
@@ -437,6 +438,19 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
       return Pattern.Last;
    end Process_New_Character_Class;
+
+   ---------------------------
+   -- Process_Start_Of_Line --
+   ---------------------------
+
+   function Process_Start_Of_Line
+     (Pattern : not null Shared_Pattern_Access) return Positive is
+   begin
+      Pattern.Last := Pattern.Last + 1;
+         Pattern.AST (Pattern.Last) := (N_Anchor, 0, True, False);
+
+      return Pattern.Last;
+   end Process_Start_Of_Line;
 
    ---------------------------
    -- Process_Subexpression --
@@ -553,166 +567,161 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
             case YY.Rule_Id is
 
             when 1 =>
-               --  Both Start-Of-Line and End-Of-Line anchors
-            
-               Process_Expression (Pattern, yy.value_stack (yy.tos-1).Node, True, True);
+               Process_Expression (Pattern, yy.value_stack (yy.tos).Node);
 
             when 2 =>
-               --  Start-Of-Line anchor
-            
-               Process_Expression (Pattern, yy.value_stack (yy.tos).Node, True, False);
-
-            when 3 =>
-               --  End-Of-Line anchor
-            
-               Process_Expression (Pattern, yy.value_stack (yy.tos-1).Node, False, True);
-
-            when 4 =>
-               --  No anchors
-            
-               Process_Expression (Pattern, yy.value_stack (yy.tos).Node, False, False);
-
-            when 5 =>
                --  Alternation
             
                yyval := (AST_Node, Process_Alternation (Pattern, yy.value_stack (yy.tos-2).Node, yy.value_stack (yy.tos).Node));
 
-            when 6 =>
+            when 3 =>
                yyval := yy.value_stack (yy.tos);
 
-            when 7 =>
+            when 4 =>
                Matreshka.Internals.Regexps.Compiler.Attach (Pattern.all, yy.value_stack (yy.tos-1).Node, yy.value_stack (yy.tos).Node);
                yyval := yy.value_stack (yy.tos-1);
 
-            when 8 =>
+            when 5 =>
                yyval := yy.value_stack (yy.tos);
 
-            when 9 =>
+            when 6 =>
                --  Optional, greedy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-1).Node, 0, 1, True));
 
-            when 10 =>
+            when 7 =>
                --  Optional, lazy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-1).Node, 0, 1, False));
 
-            when 11 =>
+            when 8 =>
                --  Zero or more, greedy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-1).Node, 0, Natural'Last, True));
 
-            when 12 =>
+            when 9 =>
                --  Zero or more, lazy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-1).Node, 0, Natural'Last, False));
 
-            when 13 =>
+            when 10 =>
                --  One or more, greedy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-1).Node, 1, Natural'Last, True));
 
-            when 14 =>
+            when 11 =>
                --  One or more, lazy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-1).Node, 1, Natural'Last, False));
 
-            when 15 =>
+            when 12 =>
                --  Multiplicity range, greedy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-5).Node, yy.value_stack (yy.tos-3).Value, yy.value_stack (yy.tos-1).Value, True));
 
-            when 16 =>
+            when 13 =>
                --  Multiplicity range, lazy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-5).Node, yy.value_stack (yy.tos-3).Value, yy.value_stack (yy.tos-1).Value, False));
 
-            when 17 =>
+            when 14 =>
                --  Multiplicity zero .. upper, greedy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-4).Node, 0, yy.value_stack (yy.tos-1).Value, True));
 
-            when 18 =>
+            when 15 =>
                --  Multiplicity zero .. upper, lazy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-4).Node, 0, yy.value_stack (yy.tos-1).Value, False));
 
-            when 19 =>
+            when 16 =>
                --  Multiplicity lower .. infinity, greedy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-4).Node, yy.value_stack (yy.tos-2).Value, Integer'Last, True));
 
-            when 20 =>
+            when 17 =>
                --  Multiplicity lower .. infinity, lazy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-4).Node, yy.value_stack (yy.tos-2).Value, Integer'Last, False));
 
-            when 21 =>
+            when 18 =>
                --  Multiplicity, greedy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Value, yy.value_stack (yy.tos-1).Value, True));
 
-            when 22 =>
+            when 19 =>
                --  Multiplicity, lazy
             
                yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Value, yy.value_stack (yy.tos-1).Value, False));
 
-            when 23 =>
+            when 20 =>
                yyval := (AST_Node, Process_Subexpression (Pattern, yy.value_stack (yy.tos-1).Node, True));
 
-            when 24 =>
+            when 21 =>
                yyval := (AST_Node, Process_Subexpression (Pattern, yy.value_stack (yy.tos-1).Node, False));
 
-            when 25 =>
+            when 22 =>
                --  Any code point
             
                yyval := (AST_Node, Process_Match_Any (Pattern));
 
-            when 26 =>
+            when 23 =>
                --  Code point
             
                yyval := (AST_Node, Process_Code_Point (Pattern, yy.value_stack (yy.tos).Code));
 
-            when 27 =>
+            when 24 =>
                --  Character with binary property
             
                yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos-1).Keyword, False));
 
-            when 28 =>
+            when 25 =>
                --  Character with binary property, negative
             
                yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos-1).Keyword, True));
 
-            when 29 =>
+            when 26 =>
+               --  Character class
+            
                yyval := yy.value_stack (yy.tos);
 
-            when 30 =>
+            when 27 =>
+               --  Start of line anchor
+            
+               yyval := (AST_Node, Process_Start_Of_Line (Pattern));
+
+            when 28 =>
+               --  End of line anchor
+            
+               yyval := (AST_Node, Process_End_Of_Line (Pattern));
+
+            when 29 =>
                yyval := yy.value_stack (yy.tos-1);
 
-            when 31 =>
+            when 30 =>
                yyval := (AST_Node, Process_Negate_Character_Class (Pattern, yy.value_stack (yy.tos-1).Node));
 
-            when 32 =>
+            when 31 =>
                --  Add range of code points to character class
             
                yyval := (AST_Node, Process_Character_Class_Range (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-2).Code, yy.value_stack (yy.tos).Code));
 
-            when 33 =>
+            when 32 =>
                --  Add code point to character class
             
                yyval := (AST_Node, Process_Character_Class_Code_Point (Pattern, yy.value_stack (yy.tos-1).Node, yy.value_stack (yy.tos).Code));
 
-            when 34 =>
+            when 33 =>
                --  Character with binary property
             
                yyval := (AST_Node, Process_Character_Class_Binary_Property (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Keyword, False));
 
-            when 35 =>
+            when 34 =>
                --  Character with binary property, negative
             
                yyval := (AST_Node, Process_Character_Class_Binary_Property (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Keyword, True));
 
-            when 36 =>
+            when 35 =>
                --  Initialize new character class node
             
                yyval := (AST_Node, Process_New_Character_Class (Pattern));
