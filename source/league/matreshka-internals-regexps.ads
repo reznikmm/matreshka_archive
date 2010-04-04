@@ -68,6 +68,7 @@ package Matreshka.Internals.Regexps is
    type Node_List is record
       Parent : Natural;
       Head   : Natural;
+      Tail   : Natural;
    end record;
 
    type Node_List_Count is new Natural;
@@ -93,9 +94,10 @@ package Matreshka.Internals.Regexps is
             null;
 
          when others =>
-            List : Node_List_Count;
-            Next : Natural;
-            --  Next node in the chain
+            List     : Node_List_Count;
+            Previous : Natural;
+            Next     : Natural;
+            --  Doubly linked list of nodes.
 
             case Kind is
                when N_None =>
@@ -157,7 +159,7 @@ package Matreshka.Internals.Regexps is
       List      : Node_List_Array (1 .. List_Size);
       Last      : Natural := 0;
       Last_List : Node_List_Count := 0;
-      Start     : Positive;
+      Start     : Node_List_Count := 0;
       Captures  : Natural := 0;
    end record;
 

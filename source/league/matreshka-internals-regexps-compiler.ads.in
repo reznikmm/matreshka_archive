@@ -303,4 +303,24 @@ package Matreshka.Internals.Regexps.Compiler is
       Node    : Positive) return Natural;
    pragma Inline (Get_Expression);
 
+   function Get_Lower_Bound
+     (Pattern : not null Shared_Pattern_Access;
+      Node    : Positive) return Natural;
+   pragma Inline (Get_Lower_Bound);
+
+   function Get_Upper_Bound
+     (Pattern : not null Shared_Pattern_Access;
+      Node    : Positive) return Natural;
+   pragma Inline (Get_Lower_Bound);
+
+   function Get_Previous_Sibling
+     (Pattern : not null Shared_Pattern_Access;
+      Node    : Positive) return Natural;
+   pragma Inline (Get_Previous_Sibling);
+
+   function Get_Next_Sibling
+     (Pattern : not null Shared_Pattern_Access;
+      Node    : Positive) return Natural;
+   pragma Inline (Get_Next_Sibling);
+
 end Matreshka.Internals.Regexps.Compiler;

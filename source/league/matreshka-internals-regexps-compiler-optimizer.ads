@@ -31,56 +31,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  Pattern optimizer. It reconstruct tree to simplify tree and to remove
+--  redundant expressions.
 
-package body Matreshka.Internals.Regexps.Compiler.Semantic is
+private package Matreshka.Internals.Regexps.Compiler.Optimizer is
 
-   procedure Analyze_Node
-    (Pattern : not null Shared_Pattern_Access;
-     Node    : Natural);
+   pragma Preelaborate;
 
-   -------------
-   -- Analyze --
-   -------------
+   procedure Optimize (Pattern : not null Shared_Pattern_Access);
 
-   procedure Analyze (Pattern : not null Shared_Pattern_Access) is
-   begin
-      Analyze_Node (Pattern, Pattern.List (Pattern.Start).Head);
-   end Analyze;
-
-   ------------------
-   -- Analyze_Node --
-   ------------------
-
-   procedure Analyze_Node
-    (Pattern : not null Shared_Pattern_Access;
-     Node    : Natural) is
-   begin
-      case Pattern.AST (Node).Kind is
-         when N_Subexpression =>
-            if Pattern.AST (Node).Capture then
-               Pattern.Captures := Pattern.Captures + 1;
-               Pattern.AST (Node).Index := Pattern.Captures;
-            end if;
-
-            Analyze_Node (Pattern, Get_Expression (Pattern, Node));
-
-         when N_Character_Class =>
-            Analyze_Node (Pattern, Get_Members (Pattern, Node));
-
-         when N_Multiplicity =>
-            Analyze_Node (Pattern, Get_Expression (Pattern, Node));
-
-         when N_Alternation =>
-            Analyze_Node (Pattern, Get_Preferred (Pattern, Node));
-            Analyze_Node (Pattern, Get_Fallback (Pattern, Node));
-
-         when others =>
-            null;
-      end case;
-
-      if Pattern.AST (Node).Next /= 0 then
-         Analyze_Node (Pattern, Pattern.AST (Node).Next);
-      end if;
-   end Analyze_Node;
-
-end Matreshka.Internals.Regexps.Compiler.Semantic;
+end Matreshka.Internals.Regexps.Compiler.Optimizer;

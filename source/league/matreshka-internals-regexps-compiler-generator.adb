@@ -332,9 +332,6 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
                         Tails.Append (Tails_L);
                         Compile_Next;
                      end;
-
-                  else
-                     raise Program_Error;
                   end if;
 
                else
@@ -491,7 +488,7 @@ package body Matreshka.Internals.Regexps.Compiler.Generator is
       Program (Ins_Split) := (Split, Ins_Save, Ins_Any);
       Program (Ins_Any) := (Any_Code_Point, Ins_Split);
 
-      Compile (Pattern.Start, Ins_1, Tails_1);
+      Compile (Pattern.List (Pattern.Start).Head, Ins_1, Tails_1);
 
       Program (Ins_Save) := (Save, Ins_1, 0, True);
 

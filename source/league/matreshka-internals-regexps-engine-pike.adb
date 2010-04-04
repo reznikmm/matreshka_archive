@@ -145,15 +145,24 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                Add (Program.Instructions (PC).Next, S, Start_Of_Line, End_Of_Line);
 
             when I_Anchor =>
-               if Start_Of_Line and Program.Instructions (PC).Start_Of_Line then
-                  Add (Program.Instructions (PC).Next, S, Start_Of_Line, End_Of_Line);
-               end if;
+               declare
+                  Match : Boolean := True;
 
-               if End_Of_Line and Program.Instructions (PC).End_Of_Line then
-                  Add (Program.Instructions (PC).Next, S, Start_Of_Line, End_Of_Line);
-               end if;
+               begin
+                  if Program.Instructions (PC).Start_Of_Line then
+                     Match := Match and Start_Of_Line;
+                  end if;
 
-            when others =>
+                  if Program.Instructions (PC).End_Of_Line then
+                     Match := Match and End_Of_Line;
+                  end if;
+
+                  if Match then
+                     Add (Program.Instructions (PC).Next, S, Start_Of_Line, End_Of_Line);
+                  end if;
+               end;
+
+            when None =>
                raise Program_Error;
          end case;
       end Add;

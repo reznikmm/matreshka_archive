@@ -353,7 +353,15 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
      (Pattern    : not null Shared_Pattern_Access;
       Expression : Positive) is
    begin
-      Pattern.Start := Expression;
+      if Pattern.AST (Expression).List = 0 then
+         Pattern.Last_List := Pattern.Last_List + 1;
+         Pattern.List (Pattern.Last_List) := (0, Expression, Expression);
+         Pattern.Start := Pattern.Last_List;
+         Pattern.AST (Expression).List := Pattern.Last_List;
+
+      else
+         Pattern.Start := Pattern.AST (Expression).List;
+      end if;
    end Process_Expression;
 
    -----------------------
