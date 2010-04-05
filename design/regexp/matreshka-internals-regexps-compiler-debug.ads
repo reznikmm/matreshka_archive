@@ -34,6 +34,6 @@
 
 package Matreshka.Internals.Regexps.Compiler.Debug is
 
-   procedure Dump (Pattern : Shared_Pattern);
+   procedure Dump (Pattern : not null Shared_Pattern_Access);
 
 end Matreshka.Internals.Regexps.Compiler.Debug;

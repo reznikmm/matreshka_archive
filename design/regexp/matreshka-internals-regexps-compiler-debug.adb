@@ -40,7 +40,7 @@ package body Matreshka.Internals.Regexps.Compiler.Debug is
    -- Dump --
    ----------
 
-   procedure Dump (Pattern : Shared_Pattern) is
+   procedure Dump (Pattern : not null Shared_Pattern_Access) is
 
       use Ada.Strings;
       use Ada.Strings.Fixed;
@@ -73,7 +73,7 @@ package body Matreshka.Internals.Regexps.Compiler.Debug is
                end if;
 
                Indent := Indent + Offset;
-               Dump (Pattern.AST (N).Subexpression);
+               Dump (Get_Expression (Pattern, N));
                Indent := Indent - Offset;
 
             when N_Match_Code | N_Member_Code =>
@@ -125,7 +125,7 @@ package body Matreshka.Internals.Regexps.Compiler.Debug is
                end if;
 
                Indent := Indent + Offset;
-               Dump (Pattern.AST (N).Members);
+               Dump (Get_Members (Pattern, N));
                Indent := Indent - Offset;
 
             when N_Multiplicity =>
@@ -146,7 +146,7 @@ package body Matreshka.Internals.Regexps.Compiler.Debug is
                end if;
 
                Indent := Indent + Offset;
-               Dump (Pattern.AST (N).Item);
+               Dump (Get_Expression (Pattern, N));
                Indent := Indent - Offset;
 
             when N_Alternation =>
@@ -154,7 +154,7 @@ package body Matreshka.Internals.Regexps.Compiler.Debug is
                Set_Col (Indent);
                Put ("first");
                Indent := Indent + Offset;
-               Dump (Pattern.AST (N).First);
+               Dump (Get_Preferred (Pattern, N));
                Indent := Indent - Offset;
                Indent := Indent - Offset;
 
@@ -162,7 +162,7 @@ package body Matreshka.Internals.Regexps.Compiler.Debug is
                Set_Col (Indent);
                Put ("second");
                Indent := Indent + Offset;
-               Dump (Pattern.AST (N).Second);
+               Dump (Get_Fallback (Pattern, N));
                Indent := Indent - Offset;
                Indent := Indent - Offset;
 
@@ -182,7 +182,7 @@ package body Matreshka.Internals.Regexps.Compiler.Debug is
       end Dump;
 
    begin
-      Dump (Pattern.Start);
+      Dump (Pattern.List (Pattern.Start).Head);
       New_Line;
    end Dump;
 
