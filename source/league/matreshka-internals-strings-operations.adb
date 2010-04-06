@@ -59,7 +59,7 @@ package body Matreshka.Internals.Strings.Operations is
          Next_Unused := Self.Unused + 2;
       end if;
 
-      if Next_Unused >= Self.Size then
+      if not Can_Be_Reused (Self, Next_Unused) then
          declare
             Aux : constant not null Shared_String_Access
               := Allocate (Next_Unused);
@@ -72,6 +72,9 @@ package body Matreshka.Internals.Strings.Operations is
             Dereference (Self);
             Self := Aux;
          end;
+
+      else
+         Free (Self.Index_Map);
       end if;
 
       Self.Length := Self.Length + 1;
@@ -105,11 +108,8 @@ package body Matreshka.Internals.Strings.Operations is
          Reference (Self);
 
       else
-         if Size > Self.Size
-           or else not Matreshka.Internals.Atomics.Counters.Is_One
-                        (Self.Counter'Access)
-         then
-            Self := Allocate (Size + Self.Unused / Growth_Factor - 1);
+         if not Can_Be_Reused (Self, Size) then
+            Self := Allocate (Size);
          end if;
 
          if Self /= Source then

@@ -40,6 +40,20 @@ package body Matreshka.Internals.Strings is
    use Matreshka.Internals.Utf16;
    use Matreshka.Internals.Unicode;
 
+   Growth_Factor : constant := 32;
+   --  The growth factor controls how much extra space is allocated when
+   --  we have to increase the size of an allocated unbounded string. By
+   --  allocating extra space, we avoid the need to reallocate on every
+   --  append, particularly important when a string is built up by repeated
+   --  append operations of small pieces. This is expressed as a factor so
+   --  32 means add 1/32 of the length of the string as growth space.
+
+   Min_Mul_Alloc : constant := Standard'Maximum_Alignment / 2;
+   --  Allocation will be done by a multiple of Min_Mul_Alloc This causes
+   --  no memory loss as most (all?) malloc implementations are obliged to
+   --  align the returned memory on the maximum alignment as malloc does not
+   --  know the target alignment.
+
    procedure Free is
      new Ada.Unchecked_Deallocation (Index_Map, Index_Map_Access);
 
@@ -65,13 +79,27 @@ package body Matreshka.Internals.Strings is
       pragma Assert (Size /= 0);
 
       S : constant Utf16_String_Index
-        := ((Utf16_String_Index (Size + 1)) / Min_Mul_Alloc + 1)
-             * Min_Mul_Alloc;
+        := ((Utf16_String_Index (Size + Size / Growth_Factor + 1))
+             / Min_Mul_Alloc + 1) * Min_Mul_Alloc;
       --  One additional element is allocated for null terminator.
 
    begin
       return new Shared_String (S - 1);
    end Allocate;
+
+   -------------------
+   -- Can_Be_Reused --
+   -------------------
+
+   function Can_Be_Reused
+    (Self : not null Shared_String_Access;
+     Size : Matreshka.Internals.Utf16.Utf16_String_Index) return Boolean is
+   begin
+      return
+        Self.Size > Size
+          and then Matreshka.Internals.Atomics.Counters.Is_One
+                    (Self.Counter'Access);
+   end Can_Be_Reused;
 
    -----------------------
    -- Compute_Index_Map --

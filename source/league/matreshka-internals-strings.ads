@@ -113,13 +113,6 @@ package Matreshka.Internals.Strings is
    --  increment/decrement operations have significant perfomance penalty)
    --  and allows to be used in Preelaborateable_Initialization types.
 
-   function Allocate
-    (Size : Matreshka.Internals.Utf16.Utf16_String_Index)
-       return not null Shared_String_Access;
-   --  Allocates new instance of string with specified size. Actual size of the
-   --  allocated string can be greater. Returns reference to Shared_Empty with
-   --  incremented counter when Size is zero.
-
    procedure Reference (Self : Shared_String_Access);
    pragma Inline (Reference);
    pragma Inline_Always (Reference);
@@ -133,6 +126,21 @@ package Matreshka.Internals.Strings is
    --  of Shared_Empty object is prevented to provide minor speedup and to
    --  allow use it to initialize components of Preelaborateable_Initialization
    --  types.
+
+   function Allocate
+    (Size : Matreshka.Internals.Utf16.Utf16_String_Index)
+       return not null Shared_String_Access;
+   --  Allocates new instance of string with specified size. Actual size of the
+   --  allocated string can be greater. Returns reference to Shared_Empty with
+   --  incremented counter when Size is zero.
+
+   function Can_Be_Reused
+    (Self : not null Shared_String_Access;
+     Size : Matreshka.Internals.Utf16.Utf16_String_Index) return Boolean;
+   --  Returns True when specified shared string can be reused safely. There
+   --  are two criteria: reference counter must be one (it means this object
+   --  is not used anywhere); and size of the object is sufficient to store
+   --  at least specified amount of code units.
 
    procedure Compute_Index_Map (Self : in out Shared_String);
    --  Compute index map. This operation is thread-safe.
@@ -188,21 +196,5 @@ package Matreshka.Internals.Strings is
    --  counter and deallocation of Shared_Empty_Key object is prevented to
    --  provide minor speedup and to allow to use it to initialize components
    --  of Preelaborateable_Initialization types.
-
-private
-
-   Growth_Factor : constant := 32;
-   --  The growth factor controls how much extra space is allocated when
-   --  we have to increase the size of an allocated unbounded string. By
-   --  allocating extra space, we avoid the need to reallocate on every
-   --  append, particularly important when a string is built up by repeated
-   --  append operations of small pieces. This is expressed as a factor so
-   --  32 means add 1/32 of the length of the string as growth space.
-
-   Min_Mul_Alloc : constant := Standard'Maximum_Alignment / 2;
-   --  Allocation will be done by a multiple of Min_Mul_Alloc This causes
-   --  no memory loss as most (all?) malloc implementations are obliged to
-   --  align the returned memory on the maximum alignment as malloc does not
-   --  know the target alignment.
 
 end Matreshka.Internals.Strings;
