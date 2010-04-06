@@ -192,7 +192,9 @@ package Matreshka.Internals.Regexps.Compiler is
    end record;
 
    procedure YYError
-    (Self : not null access Compiler_State; Error : YY_Errors; Index : Natural);
+    (Self  : not null access Compiler_State;
+     Error : YY_Errors;
+     Index : Natural);
    --  Report error.
 
    procedure Attach
@@ -311,7 +313,7 @@ package Matreshka.Internals.Regexps.Compiler is
    function Get_Upper_Bound
      (Pattern : not null Shared_Pattern_Access;
       Node    : Positive) return Natural;
-   pragma Inline (Get_Lower_Bound);
+   pragma Inline (Get_Upper_Bound);
 
    function Get_Previous_Sibling
      (Pattern : not null Shared_Pattern_Access;

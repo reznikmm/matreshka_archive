@@ -340,7 +340,7 @@ package Matreshka.Internals.Regexps.Compiler is
    function Get_Upper_Bound
      (Pattern : not null Shared_Pattern_Access;
       Node    : Positive) return Natural;
-   pragma Inline (Get_Lower_Bound);
+   pragma Inline (Get_Upper_Bound);
 
    function Get_Previous_Sibling
      (Pattern : not null Shared_Pattern_Access;
