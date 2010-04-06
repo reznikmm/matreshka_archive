@@ -35,7 +35,6 @@
 --  platforms. It utilizes 128-bit instructions from SSE and SSE2 instructions
 --  sets which is known to be available on all x86_64 processors.
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Conversion;
 with Interfaces;
 
 with Matreshka.Internals.SIMD.Intel;
@@ -58,34 +57,6 @@ package body Matreshka.Internals.Strings.SIMD is
    SSE_Criteria : constant := 16;
    --  For strings with small length use of SSE2 instructions set is not
    --  efficient, and ordinary 64-bit optimized algorithm is used.
-
-   Fill_Terminator_Mask : constant
-     array (Utf16_String_Index range 0 .. 7) of v8hi :=
-      (0 => (              others => 0),
-       1 => (1      => -1, others => 0),
-       2 => (1 .. 2 => -1, others => 0),
-       3 => (1 .. 3 => -1, others => 0),
-       4 => (1 .. 4 => -1, others => 0),
-       5 => (1 .. 5 => -1, others => 0),
-       6 => (1 .. 6 => -1, others => 0),
-       7 => (1 .. 7 => -1, others => 0));
-
-   --------------------------
-   -- Fill_Null_Terminator --
-   --------------------------
-
-   procedure Fill_Null_Terminator (Self : not null Shared_String_Access) is
-      Value  : v8hi_Unrestricted_Array;
-      for Value'Address use Self.Value'Address;
-      Index  : constant Utf16_String_Index := Self.Unused / 8;
-      Offset : constant Utf16_String_Index := Self.Unused mod 8;
-
-   begin
-      Value (Index) :=
-        To_v8hi
-         (mm_and_si128
-           (To_v2di (Value (Index)), To_v2di (Fill_Terminator_Mask (Offset))));
-   end Fill_Null_Terminator;
 
    --------------
    -- Is_Equal --

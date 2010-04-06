@@ -31,32 +31,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  On some platforms use of Single Instruction Multiple Data processor's
---  instructions can significantly improve performance. Specification of this
---  package provides general interface for such operations. Several platform
---  specific implementation of this package implements specified operations
---  in platform specific manner.
+with Interfaces;
 
-package Matreshka.Internals.Strings.SIMD is
+with Matreshka.Internals.Strings.Constants;
 
-   pragma Preelaborate;
+separate (Matreshka.Internals.Strings)
+procedure Fill_Null_Terminator (Self : not null Shared_String_Access) is
 
-   function Is_Equal
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean;
-   function Is_Less
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean;
-   function Is_Greater
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean;
-   function Is_Less_Or_Equal
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean;
-   function Is_Greater_Or_Equal
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean;
-   --  Set of compare operations. All operations compare in code point order
-   --  (they are handle UTF-16 surrogate pairs as one code point).
+   use Interfaces;
+   use Matreshka.Internals.Strings.Constants;
 
-end Matreshka.Internals.Strings.SIMD;
+   type Unsigned_64_Unrestricted_Array is
+     array (Utf16_String_Index) of Unsigned_64;
+
+   SV     : Unsigned_64_Unrestricted_Array;
+   for SV'Address use Self.Value'Address;
+   Index  : constant Utf16_String_Index := Self.Unused / 4;
+   Offset : constant Utf16_String_Index := Self.Unused mod 4;
+
+begin
+   SV (Index) := SV (Index) and Terminator_Mask_64 (Offset);
+end Fill_Null_Terminator;
+

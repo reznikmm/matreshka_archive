@@ -49,20 +49,6 @@ package body Matreshka.Internals.Strings.SIMD is
    type Unsigned_64_Unrestricted_Array is
      array (Utf16_String_Index) of Unsigned_64;
 
-   --------------------------
-   -- Fill_Null_Terminator --
-   --------------------------
-
-   procedure Fill_Null_Terminator (Self : not null Shared_String_Access) is
-      SV     : Unsigned_64_Unrestricted_Array;
-      for SV'Address use Self.Value'Address;
-      Index  : constant Utf16_String_Index := Self.Unused / 4;
-      Offset : constant Utf16_String_Index := Self.Unused mod 4;
-
-   begin
-      SV (Index) := SV (Index) and Terminator_Mask_64 (Offset);
-   end Fill_Null_Terminator;
-
    --------------
    -- Is_Equal --
    --------------

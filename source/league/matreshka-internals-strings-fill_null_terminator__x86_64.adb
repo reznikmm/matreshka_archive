@@ -31,32 +31,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  On some platforms use of Single Instruction Multiple Data processor's
---  instructions can significantly improve performance. Specification of this
---  package provides general interface for such operations. Several platform
---  specific implementation of this package implements specified operations
---  in platform specific manner.
+with Interfaces;
 
-package Matreshka.Internals.Strings.SIMD is
+with Matreshka.Internals.SIMD.Intel;
 
-   pragma Preelaborate;
+separate (Matreshka.Internals.Strings)
+procedure Fill_Null_Terminator (Self : not null Shared_String_Access) is
 
-   function Is_Equal
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean;
-   function Is_Less
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean;
-   function Is_Greater
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean;
-   function Is_Less_Or_Equal
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean;
-   function Is_Greater_Or_Equal
-     (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean;
-   --  Set of compare operations. All operations compare in code point order
-   --  (they are handle UTF-16 surrogate pairs as one code point).
+   use Interfaces;
+   use Matreshka.Internals.SIMD.Intel;
 
-end Matreshka.Internals.Strings.SIMD;
+   Fill_Terminator_Mask : constant
+     array (Utf16_String_Index range 0 .. 7) of v8hi :=
+      (0 => (              others => 0),
+       1 => (1      => -1, others => 0),
+       2 => (1 .. 2 => -1, others => 0),
+       3 => (1 .. 3 => -1, others => 0),
+       4 => (1 .. 4 => -1, others => 0),
+       5 => (1 .. 5 => -1, others => 0),
+       6 => (1 .. 6 => -1, others => 0),
+       7 => (1 .. 7 => -1, others => 0));
+
+   type v8hi_Unrestricted_Array is array (Utf16_String_Index) of v8hi;
+
+   Value  : v8hi_Unrestricted_Array;
+   for Value'Address use Self.Value'Address;
+   Index  : constant Utf16_String_Index := Self.Unused / 8;
+   Offset : constant Utf16_String_Index := Self.Unused mod 8;
+
+begin
+   Value (Index) :=
+     To_v8hi
+      (mm_and_si128
+        (To_v2di (Value (Index)), To_v2di (Fill_Terminator_Mask (Offset))));
+end Fill_Null_Terminator;

@@ -253,6 +253,13 @@ package body Matreshka.Internals.Strings is
       end if;
    end Dereference;
 
+   --------------------------
+   -- Fill_Null_Terminator --
+   --------------------------
+
+   procedure Fill_Null_Terminator
+     (Self : not null Shared_String_Access) is separate;
+
    ----------
    -- Hash --
    ----------
