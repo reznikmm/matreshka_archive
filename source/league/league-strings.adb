@@ -793,60 +793,59 @@ package body League.Strings is
 --
 --      Replace (Self.Data, First, Last, Length, By.Data);
 --   end Replace;
---
---   -----------
---   -- Slice --
---   -----------
---
---   function Slice
---    (Self : Universal_String'Class;
---     Low  : Positive;
---     High : Natural)
---       return Universal_String
---   is
---      D      : constant not null Shared_String_Access := Self.Data;
---      Length : Natural;
---      First  : Positive;
---      Last   : Natural;
---
---   begin
---      if Low <= High and then (Low > D.Length or else High > D.Length) then
---         raise Constraint_Error with "Index is out of range";
---      end if;
---
---      Length := Natural'Max (High - Low + 1, 0);
---
---      if D.Last = D.Length then
---         First := Low;
---         Last  := High;
---
---      elsif D.Last = D.Length * 2 then
---         First := Low * 2 - 1;
---         Last  := High * 2;
---
---      else
---         declare
---            M : Index_Map_Access := D.Index_Map;
---
---         begin
---            if M = null then
---               Compute_Index_Map (D.all);
---               M := D.Index_Map;
---            end if;
---
---            First := M.Map (Low);
---
---            if High = D.Length then
---               Last := D.Last;
---
---            else
---               Last := M.Map (High + 1) - 1;
---            end if;
---         end;
---      end if;
---
---      return Create (Slice (D, First, Last, Length));
---   end Slice;
+
+   -----------
+   -- Slice --
+   -----------
+
+   function Slice
+     (Self : Universal_String'Class;
+      Low  : Positive;
+      High : Natural) return Universal_String
+   is
+      D      : constant not null Shared_String_Access := Self.Data;
+      Length : Natural;
+      First  : Utf16_String_Index;
+      Size   : Utf16_String_Index;
+
+   begin
+      if Low <= High and then (Low > D.Length or else High > D.Length) then
+         raise Constraint_Error with "Index is out of range";
+      end if;
+
+      Length := Natural'Max (High - Low + 1, 0);
+
+      if Integer (D.Unused) = D.Length then
+         First := Utf16_String_Index (Low - 1);
+         Size  := Utf16_String_Index (High - Low + 1);
+
+      elsif Integer (D.Unused) = D.Length * 2 then
+         First := Utf16_String_Index ((Low - 1) * 2);
+         Size  := Utf16_String_Index (High - Low + 1) * 2;
+
+      else
+         declare
+            M : Index_Map_Access := D.Index_Map;
+
+         begin
+            if M = null then
+               Compute_Index_Map (D.all);
+               M := D.Index_Map;
+            end if;
+
+            First := M.Map (Utf16_String_Index (Low - 1));
+
+            if High = D.Length then
+               Size := First - D.Unused;
+
+            else
+               Size := First - M.Map (Utf16_String_Index (High));
+            end if;
+         end;
+      end if;
+
+      return Create (Slice (D, First, Size, Length));
+   end Slice;
 
    -----------------
    -- To_Casefold --

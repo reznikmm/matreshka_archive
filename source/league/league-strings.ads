@@ -115,11 +115,11 @@ package League.Strings is
      Index : Positive)
        return Wide_Wide_Character;
 
---   function Slice
---    (Self : Universal_String'Class;
---     Low  : Positive;
---     High : Natural)
---       return Universal_String;
+   function Slice
+    (Self : Universal_String'Class;
+     Low  : Positive;
+     High : Natural)
+       return Universal_String;
 
    function "&"
     (Left  : Universal_String'Class;
