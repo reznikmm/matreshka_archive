@@ -84,6 +84,7 @@ library project Matreshka_League is
          for Source_Dirs use
           ("../source/league",
            "../source/league/ucd",
+           "../source/league/regexp",
            "../source/league/arch/x86_64");
 
       when others =>
