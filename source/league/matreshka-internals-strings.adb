@@ -48,8 +48,9 @@ package body Matreshka.Internals.Strings is
    --  append operations of small pieces. This is expressed as a factor so
    --  32 means add 1/32 of the length of the string as growth space.
 
-   Min_Mul_Alloc : constant := Standard'Maximum_Alignment / 2;
-   --  Allocation will be done by a multiple of Min_Mul_Alloc This causes
+   Min_Mul_Alloc : constant
+     := Standard'Maximum_Alignment * Standard'Storage_Unit / Code_Unit_16'Size;
+   --  Allocation will be done by a multiple of Min_Mul_Alloc. This causes
    --  no memory loss as most (all?) malloc implementations are obliged to
    --  align the returned memory on the maximum alignment as malloc does not
    --  know the target alignment.
@@ -68,6 +69,36 @@ package body Matreshka.Internals.Strings is
      new Matreshka.Internals.Atomics.Generic_Test_And_Set
           (Index_Map, Index_Map_Access);
 
+   function Aligned_Size (Size : Utf16_String_Index) return Utf16_String_Index;
+   pragma Inline (Aligned_Size);
+   --  Returns recommended size of the shared string which is greater or
+   --  equal to specified. Calculation take in sense alignment of the allocated
+   --  memory segments to use memory effectively by Append/Insert/etc
+   --  operations.
+
+   ------------------
+   -- Aligned_Size --
+   ------------------
+
+   function Aligned_Size
+    (Size : Utf16_String_Index) return Utf16_String_Index
+   is
+      Static_Size  : constant Utf16_String_Index
+        := (Shared_Empty'Size - Code_Unit_16'Size * (Shared_Empty.Size + 1))
+             / Code_Unit_16'Size;
+      --  Total size of all static components in Code_Unit_16 units.
+
+      pragma Assert
+       ((Shared_Empty'Size - Code_Unit_16'Size * (Shared_Empty.Size + 1))
+          mod Code_Unit_16'Size = 0);
+      --  Reminder must be zero to compute value correctly.
+
+   begin
+      return
+        (((Static_Size + Size + Size / Growth_Factor)
+             / Min_Mul_Alloc + 1) * Min_Mul_Alloc - Static_Size);
+   end Aligned_Size;
+
    --------------
    -- Allocate --
    --------------
@@ -78,13 +109,8 @@ package body Matreshka.Internals.Strings is
    is
       pragma Assert (Size /= 0);
 
-      S : constant Utf16_String_Index
-        := ((Utf16_String_Index (Size + Size / Growth_Factor + 1))
-             / Min_Mul_Alloc + 1) * Min_Mul_Alloc;
-      --  One additional element is allocated for null terminator.
-
    begin
-      return new Shared_String (S - 1);
+      return new Shared_String (Aligned_Size (Size) - 1);
    end Allocate;
 
    -------------------
