@@ -33,7 +33,7 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 with Matreshka.Internals.Locales;
-with Matreshka.Internals.Strings.SIMD;
+with Matreshka.Internals.Strings.Compare;
 with Matreshka.Internals.Unicode.Casing;
 with Matreshka.Internals.Unicode.Collation;
 with Matreshka.Internals.Unicode.Normalization;
@@ -43,7 +43,7 @@ package body League.Strings is
 
    use League.Strings.Internals;
    use Matreshka.Internals.Strings;
-   use Matreshka.Internals.Strings.SIMD;
+   use Matreshka.Internals.Strings.Compare;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Utf16;

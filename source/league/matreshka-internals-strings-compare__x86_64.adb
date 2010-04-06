@@ -39,7 +39,7 @@ with Interfaces;
 
 with Matreshka.Internals.SIMD.Intel;
 
-package body Matreshka.Internals.Strings.SIMD is
+package body Matreshka.Internals.Strings.Compare is
 
    use Interfaces;
    use Matreshka.Internals.SIMD.Intel;
@@ -354,4 +354,4 @@ package body Matreshka.Internals.Strings.SIMD is
       return Left.Unused <= Right.Unused;
    end Is_Less_Or_Equal;
 
-end Matreshka.Internals.Strings.SIMD;
+end Matreshka.Internals.Strings.Compare;

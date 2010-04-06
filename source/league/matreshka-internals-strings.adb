@@ -34,11 +34,9 @@
 with Ada.Unchecked_Deallocation;
 
 with Matreshka.Internals.Atomics.Generic_Test_And_Set;
-with Matreshka.Internals.Strings.SIMD;
 
 package body Matreshka.Internals.Strings is
 
-   use Matreshka.Internals.Strings.SIMD;
    use Matreshka.Internals.Utf16;
    use Matreshka.Internals.Unicode;
 

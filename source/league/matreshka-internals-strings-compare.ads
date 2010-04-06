@@ -31,13 +31,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  On some platforms use of Single Instruction Multiple Data processor's
---  instructions can significantly improve performance. Specification of this
---  package provides general interface for such operations. Several platform
---  specific implementation of this package implements specified operations
---  in platform specific manner.
+--  This package provides compare operation in binary order of Unicode code
+--  points. There are several implementations of this package for different
+--  architectures to take advantages of wider word operations and Single
+--  Instruction Multiple Data instructions set.
 
-package Matreshka.Internals.Strings.SIMD is
+package Matreshka.Internals.Strings.Compare is
 
    pragma Preelaborate;
 
@@ -59,4 +58,4 @@ package Matreshka.Internals.Strings.SIMD is
    --  Set of compare operations. All operations compare in code point order
    --  (they are handle UTF-16 surrogate pairs as one code point).
 
-end Matreshka.Internals.Strings.SIMD;
+end Matreshka.Internals.Strings.Compare;
