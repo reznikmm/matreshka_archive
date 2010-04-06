@@ -34,6 +34,7 @@
 with Ada.Unchecked_Deallocation;
 
 with Matreshka.Internals.Atomics.Generic_Test_And_Set;
+with Matreshka.Internals.Strings.Operations;
 
 package body Matreshka.Internals.Regexps is
 
@@ -58,7 +59,7 @@ package body Matreshka.Internals.Regexps is
    begin
       if Aux = null then
          Aux :=
-           Strings.Slice
+           Operations.Slice
             (Item.Source,
              Item.Slices (Number).First_Position,
              Item.Slices (Number).Next_Position

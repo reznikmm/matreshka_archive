@@ -32,11 +32,13 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
+with Matreshka.Internals.Strings.Operations;
 
 package body League.Strings.Cursors.Grapheme_Clusters is
 
    use League.Strings.Internals;
    use Matreshka.Internals.Strings;
+   use Matreshka.Internals.Strings.Operations;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Utf16;
