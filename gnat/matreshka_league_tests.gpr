@@ -43,7 +43,7 @@ project Matreshka_League_Tests is
    for Source_Dirs use ("../testsuite/league", "../tools");
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8");
+      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8", "-O2", "-gnatn");
    end Compiler;
 
 end Matreshka_League_Tests;
