@@ -379,4 +379,14 @@ private
 
    overriding procedure Finalize (Self : in out Sort_Key);
 
+   pragma Inline ("=");
+   pragma Inline ("<");
+   pragma Inline (">");
+   pragma Inline ("<=");
+   pragma Inline (">=");
+   pragma Inline (Adjust);
+   pragma Inline (Finalize);
+   pragma Inline (Length);
+   pragma Inline (To_Wide_Wide_Character);
+
 end League.Strings;
