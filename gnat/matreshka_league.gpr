@@ -58,10 +58,7 @@ library project Matreshka_League is
    Common_Ada_Switches :=
     ("-g",
      "-gnat05",
-     "-gnatn",
-     "-gnatN",
-     "-gnato",
-     "-fstack-check");
+     "-gnatn");
    --  Common switches to be used for every unit.
 
    Optimization_Ada_Switches :=
@@ -97,7 +94,7 @@ library project Matreshka_League is
 
       when "DEBUG" =>
          Debug_Ada_Switches :=
-          ("-gnatwa", "-gnatyaAbBcdefhiIkmnoOprsStux");
+          ("-gnatwa", "-gnatyaAbBcdefhiIkmnoOprsStux", "-gnato", "-fstack-check");
    end case;
 
    -------------
