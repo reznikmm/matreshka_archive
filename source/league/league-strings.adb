@@ -390,6 +390,44 @@ package body League.Strings is
    end Append;
 
    ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self : in out Universal_String'Class;
+     Item : Universal_Character'Class)
+   is
+      P : constant Utf16_String_Index := Self.Data.Unused;
+
+   begin
+      if not Is_Legal_Unicode_Code_Point (Item.Code) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      Append (Self.Data, Item.Code);
+      Emit_Changed (Self, P, Utf16_String_Index'Last, Self.Data.Unused - 1);
+   end Append;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self : in out Universal_String'Class;
+     Item : Wide_Wide_Character)
+   is
+      P : constant Utf16_String_Index := Self.Data.Unused;
+
+   begin
+      if not Is_Legal_Unicode_Code_Point (Wide_Wide_Character'Pos (Item)) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      Append (Self.Data, Wide_Wide_Character'Pos (Item));
+      Emit_Changed (Self, P, Utf16_String_Index'Last, Self.Data.Unused - 1);
+   end Append;
+
+   ------------
    -- Attach --
    ------------
 
