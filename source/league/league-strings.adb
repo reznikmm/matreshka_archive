@@ -183,9 +183,14 @@ package body League.Strings is
 
       begin
          Unchecked_Store (D.Value, P, Wide_Wide_Character'Pos (Left));
-         D.Value (P .. P + R_D.Unused - 2) := R_D.Value (0 .. R_D.Unused - 1);
-         D.Unused                        := P + R_D.Unused - 1;
-         D.Length                        := R_D.Length + 1;
+
+         if R_D.Unused /= 0 then
+            D.Value (P .. P + R_D.Unused - 1) :=
+              R_D.Value (0 .. R_D.Unused - 1);
+         end if;
+
+         D.Unused := P + R_D.Unused;
+         D.Length := R_D.Length + 1;
          Fill_Null_Terminator (D);
 
          return Create (D);
