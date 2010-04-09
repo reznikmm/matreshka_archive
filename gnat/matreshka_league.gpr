@@ -123,14 +123,17 @@ library project Matreshka_League is
 
       for Default_Switches ("Ada") use
         Common_Ada_Switches
+          & Platform_Ada_Switches
           & Optimization_Ada_Switches
           & Debug_Ada_Switches;
 
       for Switches ("matreshka-internals-unicode-ucd-colls.ads") use
         Common_Ada_Switches
+          & Platform_Ada_Switches
           & Debug_Ada_Switches;
       for Switches ("matreshka-internals-unicode-ucd-core.ads") use
         Common_Ada_Switches
+          & Platform_Ada_Switches
           & Debug_Ada_Switches;
 
    end Compiler;
