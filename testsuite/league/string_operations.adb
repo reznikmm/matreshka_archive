@@ -47,4 +47,20 @@ begin
          raise Program_Error;
       end if;
    end;
+
+   --  Initial implementation of concatenation of character with empty string
+   --  raises exception and incorrectly compute size of the internal data
+   --  representation.
+
+   declare
+      S : Universal_String;
+      E : Universal_String := To_Universal_String ("A");
+
+   begin
+      S := S & 'A';
+
+      if S /= E then
+         raise Program_Error;
+      end if;
+   end;
 end String_Operations;

@@ -150,10 +150,13 @@ package body League.Strings is
          P : Utf16_String_Index := L_D.Unused;
 
       begin
-         D.Value (0 .. L_D.Unused - 1) := L_D.Value (0 .. L_D.Unused - 1);
+         if L_D.Unused /= 0 then
+            D.Value (0 .. L_D.Unused - 1) := L_D.Value (0 .. L_D.Unused - 1);
+         end if;
+
          Unchecked_Store (D.Value, P, Wide_Wide_Character'Pos (Right));
-         D.Unused                := P;
-         D.Length                := L_D.Length + 1;
+         D.Unused := P;
+         D.Length := L_D.Length + 1;
          Fill_Null_Terminator (D);
 
          return Create (D);
