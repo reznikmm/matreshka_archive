@@ -31,20 +31,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with "matreshka_config";
 
 library project Matreshka_League is
-
-   type Architectures is
-     ("portable_32_be",
-      "portable_32_le",
-      "portable_64_be",
-      "portable_64_le",
-      "x86",
-      "x86_64");
-   Architecture : Architectures := external ("ARCHITECTURE");
-
-   type Build_Type is ("RELEASE", "DEBUG");
-   Build : Build_Type := external ("BUILD", "RELEASE");
 
    for Source_Dirs use
     ("../source/league",
@@ -73,7 +62,7 @@ library project Matreshka_League is
    Debug_Ada_Switches := ();
    --  Switches to be used in debug mode.
 
-   case Architecture is
+   case Matreshka_Config.Architecture is
       when "x86" =>
          Platform_Ada_Switches := ("-march=i686");
 
@@ -88,7 +77,7 @@ library project Matreshka_League is
          null;
    end case;
 
-   case Build is
+   case Matreshka_Config.Build is
       when "RELEASE" =>
          null;
 
@@ -103,7 +92,7 @@ library project Matreshka_League is
 
    package Builder is
 
-      case Build is
+      case Matreshka_Config.Build is
          when "RELEASE" =>
             for Global_Configuration_Pragmas
               use "matreshka_league__release.adc";
@@ -155,7 +144,7 @@ library project Matreshka_League is
 
       --  Matreshka.Internals.Atomics.Generic_Test_And_Set
 
-      case Architecture is
+      case Matreshka_Config.Architecture is
          when "portable_32_be" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";

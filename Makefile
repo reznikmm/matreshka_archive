@@ -1,12 +1,11 @@
-include Makefile.config
 
 UNIDATA = unicode/5.1.0/ucd
 UCADATA = unicode/UCA/5.1.0
 CLDR = unicode/cldr/1.7.1
 
-GPRBUILD_FLAGS = -p -XARCHITECTURE=$(ARCHITECTURE) -XBUILD=$(BUILD)
+GPRBUILD_FLAGS = -p
 
-all:
+all: gnat/matreshka_config.gpr
 	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
 
 check: all
@@ -57,3 +56,11 @@ regexp_tools:
 
 clean:
 	rm -rf .objs .libs .gens-regexp
+
+gnat/matreshka_config.gpr:
+	gprbuild -p -Pgnat/tools_configure.gpr
+	./configure
+
+config:
+	gprbuild -p -Pgnat/tools_configure.gpr
+	./configure
