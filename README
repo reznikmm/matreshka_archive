@@ -1,0 +1,6 @@
+Configuration and build
+-----------------------
+
+Run 'make' in root directory. Matreshka includes automatic configuration
+facility, it is built and executed once to configure package to meet
+architecture and operating system of you computer.
