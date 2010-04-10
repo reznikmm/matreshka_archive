@@ -24,6 +24,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Command_Line;
+with Ada.Directories;
 with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
 
@@ -31,6 +33,8 @@ with GNAT.Regpat;
 
 procedure Configure.Instantiate (Configuration_File_Name : String) is
 
+   use Ada.Command_Line;
+   use Ada.Directories;
    use Ada.Strings.Unbounded;
    use Ada.Strings.Unbounded.Text_IO;
    use Ada.Text_IO;
@@ -45,7 +49,8 @@ procedure Configure.Instantiate (Configuration_File_Name : String) is
    Matches            : Match_Array (0 .. 2);
 
 begin
-   Put_Line ("creating " & Configuration_File_Name);
+   Put_Line
+    (Simple_Name (Command_Name) & ": creating " & Configuration_File_Name);
    Open (Template_File, In_File, Configuration_File_Name & ".in");
    Create (Configuration_File, Out_File, Configuration_File_Name);
 

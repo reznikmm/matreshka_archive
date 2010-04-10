@@ -24,6 +24,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Command_Line;
+with Ada.Directories;
 with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
 
@@ -35,6 +37,8 @@ begin
    Configure.Architecture;
 
    declare
+      use Ada.Command_Line;
+      use Ada.Directories;
       use Ada.Strings.Unbounded.Text_IO;
       use Ada.Text_IO;
       use Maps;
@@ -43,6 +47,8 @@ begin
 
    begin
       while Has_Element (P) loop
+         Put (Simple_Name (Command_Name));
+         Put (": ");
          Put (Key (P));
          Put (" => ");
          Put (Element (P));
