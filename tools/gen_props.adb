@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -218,6 +218,7 @@ procedure Gen_Props (Source_Directory : String) is
    LB_Contingent_Break_Image  : aliased constant String := "Contingent_Break";
    LB_Close_Punctuation_Image : aliased constant String := "Close_Punctuation";
    LB_Combining_Mark_Image    : aliased constant String := "Combining_Mark";
+   LB_Close_Parenthesis_Image : aliased constant String := "Close_Parenthesis";
    LB_Carriage_Return_Image   : aliased constant String := "Carriage_Return";
    LB_Exclamation_Image       : aliased constant String := "Exclamation";
    LB_Glue_Image              : aliased constant String := "Glue";
@@ -256,6 +257,7 @@ procedure Gen_Props (Source_Directory : String) is
          Contingent_Break  => LB_Contingent_Break_Image'Access,
          Close_Punctuation => LB_Close_Punctuation_Image'Access,
          Combining_Mark    => LB_Combining_Mark_Image'Access,
+         Close_Parenthesis => LB_Close_Parenthesis_Image'Access,
          Carriage_Return   => LB_Carriage_Return_Image'Access,
          Exclamation       => LB_Exclamation_Image'Access,
          Glue              => LB_Glue_Image'Access,
@@ -288,6 +290,8 @@ procedure Gen_Props (Source_Directory : String) is
    BP_Alphabetic_Image        : aliased constant String := "Alphabetic";
    BP_Bidi_Control_Image      : aliased constant String := "Bidi_Control";
    BP_Bidi_Mirrored_Image     : aliased constant String := "Bidi_Mirrored";
+   BP_Changes_When_NFKC_Casefolded_Image :
+     aliased constant String := "Changes_When_NFKC_Casefolded";
    BP_Composition_Exclusion_Image :
      aliased constant String := "Composition_Exclusion";
    BP_Full_Composition_Exclusion_Image :
@@ -349,6 +353,16 @@ procedure Gen_Props (Source_Directory : String) is
    BP_Expands_On_NFKD_Image   : aliased constant String := "Expands_On_NFKD";
    BP_Cased_Image             : aliased constant String := "Cased";
    BP_Case_Ignorable_Image    : aliased constant String := "Case_Ignorable";
+   BP_Changes_When_Lowercased_Image :
+     aliased constant String := "Changes_When_Lowercased";
+   BP_Changes_When_Uppercased_Image :
+     aliased constant String := "Changes_When_Uppercased";
+   BP_Changes_When_Titlecased_Image :
+     aliased constant String := "Changes_When_Titlecased";
+   BP_Changes_When_Casefolded_Image :
+     aliased constant String := "Changes_When_Casefolded";
+   BP_Changes_When_Casemapped_Image :
+     aliased constant String := "Changes_When_Casemapped";
    BP_Has_Lowercase_Mapping_Image :
      aliased constant String := "Has_Lowercase_Mapping";
    BP_Has_Uppercase_Mapping_Image :
@@ -363,6 +377,8 @@ procedure Gen_Props (Source_Directory : String) is
            Alphabetic              => BP_Alphabetic_Image'Access,
            Bidi_Control            => BP_Bidi_Control_Image'Access,
 --           Bidi_Mirrored           => BP_Bidi_Mirrored_Image'Access,
+           Changes_When_NFKC_Casefolded =>
+             BP_Changes_When_NFKC_Casefolded_Image'Access,
            Composition_Exclusion   => BP_Composition_Exclusion_Image'Access,
            Expands_On_NFC          => BP_Expands_On_NFC_Image'Access,
            Expands_On_NFD          => BP_Expands_On_NFD_Image'Access,
@@ -416,6 +432,11 @@ procedure Gen_Props (Source_Directory : String) is
 
            Cased                   => BP_Cased_Image'Access,
            Case_Ignorable          => BP_Case_Ignorable_Image'Access,
+           Changes_When_Lowercased => BP_Changes_When_Lowercased_Image'Access,
+           Changes_When_Uppercased => BP_Changes_When_Uppercased_Image'Access,
+           Changes_When_Titlecased => BP_Changes_When_Titlecased_Image'Access,
+           Changes_When_Casefolded => BP_Changes_When_Casefolded_Image'Access,
+           Changes_When_Casemapped => BP_Changes_When_Casemapped_Image'Access,
 
            Has_Lowercase_Mapping   => BP_Has_Lowercase_Mapping_Image'Access,
            Has_Uppercase_Mapping   => BP_Has_Uppercase_Mapping_Image'Access,
@@ -634,7 +655,7 @@ begin
        & "     --");
    Ada.Text_IO.Put_Line
     (File,
-     "-- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                 "
+     "-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>           "
        & "     --");
    Ada.Text_IO.Put_Line
     (File,

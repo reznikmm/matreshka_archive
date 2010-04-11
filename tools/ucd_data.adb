@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -110,9 +110,6 @@ package body Ucd_Data is
    --  Parse NormalizationCorrections.txt file and fill internal data
    --  structures by the parsed values.
 
-   procedure Compute_Casing_Properties;
-   --  Compute Cased and Case_Ignorable properties for all characters.
-
    procedure Compute_Full_Normalization_Data;
    --  Compute full normalization mapping for both normalization forms.
 
@@ -148,27 +145,6 @@ package body Ucd_Data is
    procedure Free is
      new Ada.Unchecked_Deallocation
           (Code_Point_Sequence, Code_Point_Sequence_Access);
-
-   -------------------------------
-   -- Compute_Casing_Properties --
-   -------------------------------
-
-   procedure Compute_Casing_Properties is
-   begin
-      for J in Core'Range loop
-         Core (J).B (Cased) :=
-           Core (J).B (Lowercase)
-             or else Core (J).B (Uppercase)
-             or else Core (J).GC = Titlecase_Letter;
-         Core (J).B (Case_Ignorable) :=
-           Core (J).WB = Mid_Letter
-             or else Core (J).GC = Nonspacing_Mark
-             or else Core (J).GC = Enclosing_Mark
-             or else Core (J).GC = Format
-             or else Core (J).GC = Modifier_Letter
-             or else Core (J).GC = Modifier_Symbol;
-      end loop;
-   end Compute_Casing_Properties;
 
    -------------------------------------
    -- Compute_Full_Normalization_Data --
@@ -356,7 +332,6 @@ package body Ucd_Data is
 
       --  Compute derived properties.
 
-      Compute_Casing_Properties;
       Compute_Full_Normalization_Data;
 
       --  Verify data:
@@ -485,22 +460,25 @@ package body Ucd_Data is
    procedure Load_DerivedNormalizationProps (Unidata_Directory : String) is
 
       type Property is
-       (FC_NFKC,                     --  + mapping
+       (FC_NFKC,                        --  + mapping
         Full_Composition_Exclusion,
-        NFD_QC,                      --  + value
-        NFC_QC,                      --  + value
-        NFKD_QC,                     --  + value
-        NFKC_QC,                     --  + value
+        NFD_QC,                         --  + value
+        NFC_QC,                         --  + value
+        NFKD_QC,                        --  + value
+        NFKC_QC,                        --  + value
         Expands_On_NFD,
         Expands_On_NFC,
         Expands_On_NFKD,
-        Expands_On_NFKC);
+        Expands_On_NFKC,
+        NFKC_CF,                        --  + mapping
+        Changes_When_NFKC_Casefolded);
 
       File  : Ucd_Input.File_Type;
       First : Code_Point;
       Last  : Code_Point;
       Prop  : Property;
       FC_NFKC_Ignored : Boolean := False;
+      NFKC_CF_Ignored : Boolean := False;
 
    begin
       Ada.Text_IO.Put_Line ("   ... " & DerivedNormalizationProps_Name);
@@ -549,6 +527,14 @@ package body Ucd_Data is
                when Expands_On_NFKC =>
                   Core (J).B (Expands_On_NFKD) := True;
 
+               when NFKC_CF =>
+                  if not NFKC_CF_Ignored then
+                     Ada.Text_IO.Put_Line ("         Ignore property: NFKC_CF");
+                     NFKC_CF_Ignored := True;
+                  end if;
+
+               when Changes_When_NFKC_Casefolded =>
+                  Core (J).B (Changes_When_NFKC_Casefolded) := True;
             end case;
          end loop;
 
@@ -1341,6 +1327,7 @@ package body Ucd_Data is
             Contingent_Break  => "CB",
             Close_Punctuation => "CL",
             Combining_Mark    => "CM",
+            Close_Parenthesis => "CP",
             Carriage_Return   => "CR",
             Exclamation       => "EX",
             Glue              => "GL",

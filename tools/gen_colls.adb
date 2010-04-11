@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -374,7 +374,7 @@ begin
        & "     --");
    Ada.Text_IO.Put_Line
     (File,
-     "-- Copyright © 2009 Vadim Godunko <vgodunko@gmail.com>                 "
+     "-- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>           "
        & "     --");
    Ada.Text_IO.Put_Line
     (File,

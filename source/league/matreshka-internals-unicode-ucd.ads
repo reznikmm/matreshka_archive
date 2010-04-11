@@ -164,6 +164,13 @@ package Matreshka.Internals.Unicode.Ucd is
      --  from DerivedCoreProperties.txt file.
 
      Alphabetic,                    --  Derived
+     Cased,                         --  Derived
+     Case_Ignorable,                --  Derived
+     Changes_When_Lowercased,       --  Derived
+     Changes_When_Uppercased,       --  Derived
+     Changes_When_Titlecased,       --  Derived
+     Changes_When_Casefolded,       --  Derived
+     Changes_When_Casemapped,       --  Derived
      Default_Ignorable_Code_Point,  --  Derived
      Grapheme_Base,                 --  Derived
      Grapheme_Extend,               --  Derived
@@ -187,11 +194,9 @@ package Matreshka.Internals.Unicode.Ucd is
      Expands_On_NFD,                --  Derived
      Expands_On_NFKC,               --  Derived
      Expands_On_NFKD,               --  Derived
+     Changes_When_NFKC_Casefolded,  --  Derived
 
      --  Following are used by case conversion subprograms.
-
-     Cased,
-     Case_Ignorable,
 
      Has_Lowercase_Mapping,
      Has_Uppercase_Mapping,
@@ -261,6 +266,7 @@ package Matreshka.Internals.Unicode.Ucd is
      Contingent_Break,
      Close_Punctuation,
      Combining_Mark,
+     Close_Parenthesis,
      Carriage_Return,
      Exclamation,
      Glue,
