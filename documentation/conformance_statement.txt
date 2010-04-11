@@ -5,3 +5,5 @@ Unicode 5.1.0
 UTS #10: Unicode Collation Algorithm Version Unicode 5.1.0
 
 UAX #15: Unicode Normalization Forms Version Unicode 5.1.0
+
+UTS #18: Unicode Regular Expressions Version 13 Unicode 5.1.0
