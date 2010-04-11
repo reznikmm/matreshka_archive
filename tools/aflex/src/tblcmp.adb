@@ -22,6 +22,8 @@
 -- NOTES somewhat complicated but works fast and generates efficient scanners
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/tblcmpB.a,v 1.8 90/01/12 15:20:43 self Exp Locker: self $
 
+with Ada.Unchecked_Deallocation;
+
 with DFA, ECS;
 with Unicode;
 
@@ -65,10 +67,16 @@ package body TBLCMP is
 
   procedure BLDTBL(STATE                                   : in
                      UNBOUNDED_INT_ARRAY;
-                   STATENUM, TOTALTRANS, COMSTATE, COMFREQ : in INTEGER) is
+                   STATENUM, TOTALTRANS, COMSTATE, COMFREQ : in INTEGER)
+   is
+      subtype CARRAY is UNBOUNDED_INT_ARRAY(0 .. CSIZE + 1);
+      type CARRAY_Access is access all CARRAY;
+
+      procedure Free is new Ada.Unchecked_Deallocation (CARRAY, CARRAY_Access);
+
     EXTPTR : INTEGER;
-    subtype CARRAY is UNBOUNDED_INT_ARRAY(0 .. CSIZE + 1);
-    EXTRCT                 : array(0 .. 1) of CARRAY;
+      EXTRCT                 : array(0 .. 1) of CARRAY_Access
+        := (new CARRAY, new CARRAY);
     MINDIFF, MINPROT, I, D : INTEGER;
     CHECKCOM               : BOOLEAN;
     LOCAL_COMSTATE         : INTEGER;
@@ -105,7 +113,7 @@ package body TBLCMP is
         while (I /= NIL) loop
           if (PROTCOMST(I) = LOCAL_COMSTATE) then
             MINPROT := I;
-            TBLDIFF(STATE, MINPROT, EXTRCT(EXTPTR), MINDIFF);
+            TBLDIFF(STATE, MINPROT, EXTRCT (EXTPTR).all, MINDIFF);
             exit;
           end if;
           I := PROTNEXT(I);
@@ -121,7 +129,7 @@ package body TBLCMP is
 
         if (FIRSTPROT /= NIL) then
           MINPROT := FIRSTPROT;
-          TBLDIFF(STATE, MINPROT, EXTRCT(EXTPTR), MINDIFF);
+          TBLDIFF(STATE, MINPROT, EXTRCT (EXTPTR).all, MINDIFF);
         end if;
       end if;
 
@@ -134,7 +142,7 @@ package body TBLCMP is
         -- not a good enough match.  Scan the rest of the protos
         I := MINPROT;
         while (I /= NIL) loop
-          TBLDIFF(STATE, I, EXTRCT(1 - EXTPTR), D);
+          TBLDIFF(STATE, I, EXTRCT (1 - EXTPTR).all, D);
           if (D < MINDIFF) then
             EXTPTR := 1 - EXTPTR;
             MINDIFF := D;
@@ -159,7 +167,12 @@ package body TBLCMP is
       else
 
         -- use the proto
-        MKENTRY(EXTRCT(EXTPTR), NUMECS, STATENUM, PROTTBL(MINPROT), MINDIFF);
+            MKENTRY
+              (EXTRCT (EXTPTR).all,
+               NUMECS,
+               STATENUM,
+               PROTTBL (MINPROT),
+               MINDIFF);
 
         -- if this state was sufficiently different from the proto
         -- we built it from, make it, too, a proto
@@ -175,7 +188,11 @@ package body TBLCMP is
         -- queue), so in that case the following call will do nothing.
         MV2FRONT(MINPROT);
       end if;
-    end if;
+      end if;
+
+      for J in EXTRCT'Range loop
+         Free (EXTRCT (J));
+      end loop;
   end BLDTBL;
 
   -- cmptmps - compress template table entries
@@ -188,7 +205,7 @@ package body TBLCMP is
   --  table entries made for them.
 
   procedure CMPTMPS is
-    TMPSTORAGE        : C_SIZE_ARRAY;
+    TMPSTORAGE        : C_Size_Array_Access := new C_Size_Array;
     TOTALTRANS, TRANS : INTEGER;
   begin
     PEAKPAIRS := NUMTEMPS*NUMECS + TBLEND;
@@ -240,9 +257,15 @@ package body TBLCMP is
       -- to other non-jam table entries (e.g., another template)
 
       -- leave room for the jam-state after the last real state
-      MKENTRY(TMPSTORAGE, NUMMECS, LASTDFA + I + 1, JAMSTATE_CONST, TOTALTRANS)
-        ;
-    end loop;
+         MKENTRY
+           (TMPSTORAGE.all,
+            NUMMECS,
+            LASTDFA + I + 1,
+            JAMSTATE_CONST,
+            TOTALTRANS);
+      end loop;
+
+      Free (TMPSTORAGE);
   end CMPTMPS;
 
   -- expand_nxt_chk - expand the next check arrays
@@ -651,11 +674,16 @@ package body TBLCMP is
   --              to it
 
   procedure MKTEMPLATE(STATE              : in UNBOUNDED_INT_ARRAY;
-                       STATENUM, COMSTATE : in INTEGER) is
+                       STATENUM, COMSTATE : in INTEGER)
+   is
+      subtype TARRAY is Unicode_Character_Array (0 .. CSIZE);
+      type TARRAY_Access is access all TARRAY;
+
+      procedure Free is new Ada.Unchecked_Deallocation (TARRAY, TARRAY_Access);
+
     NUMDIFF, TMPBASE : INTEGER;
-    TMP              : C_SIZE_ARRAY;
-    subtype TARRAY is Unicode_Character_Array (0 .. CSIZE);
-    TRANSSET : TARRAY;
+      TMP      : C_Size_Array_Access := new C_Size_Array;
+      TRANSSET : TARRAY_Access := new TARRAY;
     TSPTR    : INTEGER;
   begin
     NUMTEMPS := NUMTEMPS + 1;
@@ -687,16 +715,19 @@ package body TBLCMP is
     end loop;
 
     if (USEMECS) then
-      ECS.MKECCL(TRANSSET, TSPTR, TECFWD, TECBCK, NUMECS);
+      ECS.MKECCL (TRANSSET.all, TSPTR, TECFWD, TECBCK, NUMECS);
     end if;
 
     MKPROT(TNXT(TMPBASE .. CURRENT_MAX_TEMPLATE_XPAIRS),  -NUMTEMPS, COMSTATE);
 
     -- we rely on the fact that mkprot adds things to the beginning
     -- of the proto queue
-    TBLDIFF(STATE, FIRSTPROT, TMP, NUMDIFF);
-    MKENTRY(TMP, NUMECS, STATENUM,  -NUMTEMPS, NUMDIFF);
-  end MKTEMPLATE;
+      TBLDIFF(STATE, FIRSTPROT, TMP.all, NUMDIFF);
+      MKENTRY(TMP.all, NUMECS, STATENUM,  -NUMTEMPS, NUMDIFF);
+
+      Free (TMP);
+      Free (TRANSSET);
+   end MKTEMPLATE;
 
   -- mv2front - move proto queue element to front of queue
 

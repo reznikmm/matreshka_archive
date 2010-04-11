@@ -31,6 +31,7 @@
 
 with Ada.Strings.Unbounded;
 with Ada.Strings.Wide_Wide_Unbounded;
+with Ada.Unchecked_Deallocation;
 with Ada.Wide_Wide_Text_IO;
 
 with Matreshka.Internals.Unicode.Ucd;
@@ -447,8 +448,11 @@ package MISC_DEFS is
   -- * tecbck - backward link of MEC's
 
   NUMECS, NUMMECS : INTEGER;
-  subtype C_SIZE_ARRAY is UNBOUNDED_INT_ARRAY (0 .. CSIZE);
-  type C_SIZE_BOOL_ARRAY is array (0 .. CSIZE) of BOOLEAN;
+   subtype C_SIZE_ARRAY is UNBOUNDED_INT_ARRAY (0 .. CSIZE);
+   type C_Size_Array_Access is access all C_SIZE_ARRAY;
+   procedure Free is
+     new Ada.Unchecked_Deallocation (C_Size_Array, C_Size_Array_Access);
+   type C_SIZE_BOOL_ARRAY is array (0 .. CSIZE) of BOOLEAN;
   NEXTECM, ECGROUP, TECFWD, TECBCK : C_SIZE_ARRAY;
 
    ECGROUP_Plane :

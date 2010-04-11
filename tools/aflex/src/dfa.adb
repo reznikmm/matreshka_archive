@@ -431,7 +431,10 @@ package body DFA is
   procedure NTOD is
       ACCSET                                 : INT_PTR;
       DS, NACC, NEWDS                        : INTEGER;
-      DUPLIST, TARGFREQ, TARGSTATE, STATE    : C_SIZE_ARRAY;
+      DUPLIST   : C_Size_Array_Access := new C_Size_Array;
+      TARGFREQ  : C_Size_Array_Access := new C_Size_Array;
+      TARGSTATE : C_Size_Array_Access := new C_Size_Array;
+      STATE     : C_Size_Array_Access := new C_Size_Array;
       SYMLIST                                : C_SIZE_BOOL_ARRAY;
       HASHVAL, NUMSTATES, DSIZE              : INTEGER;
       NSET, DSET                             : INT_PTR;
@@ -566,7 +569,7 @@ package body DFA is
         PUT_LINE (STANDARD_ERROR, ":");
       end if;
 
-      SYMPARTITION(DSET, DSIZE, SYMLIST, DUPLIST);
+      SYMPARTITION(DSET, DSIZE, SYMLIST, DUPLIST.all);
 
       for SYM in 1 .. NUMECS loop
         if (SYMLIST(SYM)) then
@@ -646,7 +649,7 @@ package body DFA is
       end if;
 
       if (DS > NUM_START_STATES) then
-        CHECK_FOR_BACKTRACKING(DS, STATE);
+        CHECK_FOR_BACKTRACKING(DS, STATE.all);
       end if;
 
       if (FULLTBL) then
@@ -690,7 +693,7 @@ package body DFA is
             end if;
           end loop;
 
-          TBLCMP.BLDTBL(STATE, DS, TOTALTRANS, COMSTATE, COMFREQ);
+          TBLCMP.BLDTBL(STATE.all, DS, TOTALTRANS, COMSTATE, COMFREQ);
         end if;
       end if;
     end loop;
@@ -722,6 +725,11 @@ package body DFA is
 
       TBLCMP.MKDEFTBL;
     end if;
+
+      Free (DUPLIST);
+      Free (TARGFREQ);
+      Free (TARGSTATE);
+      Free (STATE);
   end NTOD;
 
   -- snstods - converts a set of ndfa states into a dfa state
@@ -902,7 +910,7 @@ package body DFA is
                          SYMLIST   : in out C_SIZE_BOOL_ARRAY;
                          DUPLIST   : in out C_SIZE_ARRAY) is
     TCH, J, NS, LENCCL, CCLP, ICH : INTEGER;
-    DUPFWD                        : C_SIZE_ARRAY;
+      DUPFWD : C_Size_Array_Access := new C_SIZE_ARRAY;
 
   -- partitioning is done by creating equivalence classes for those
   -- characters which have out-transitions from the given state.  Thus
@@ -930,7 +938,7 @@ package body DFA is
 
         if (TCH > 0) then
         -- character transition
-          ECS.MKECHAR(ECGROUP(TCH), DUPFWD, DUPLIST);
+          ECS.MKECHAR(ECGROUP(TCH), DUPFWD.all, DUPLIST);
           SYMLIST(ECGROUP(TCH)) := TRUE;
         else
         -- character class
@@ -941,7 +949,7 @@ package body DFA is
                ECS.MKECCL
                  (CCLTBL (CCLP .. CCLP + LENCCL),
                   LENCCL,
-                  DUPFWD,
+                  DUPFWD.all,
                   DUPLIST,
                   NUMECS);
 
@@ -971,6 +979,8 @@ package body DFA is
           end if;
         end if;
       end if;
-    end loop;
+      end loop;
+
+      Free (DUPFWD);
   end SYMPARTITION;
 end DFA;
