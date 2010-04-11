@@ -33,7 +33,8 @@ with Ada.Strings.Unbounded;
 with Ada.Strings.Wide_Wide_Unbounded;
 with Ada.Wide_Wide_Text_IO;
 
-with Unicode.Ucd;
+with Matreshka.Internals.Unicode.Ucd;
+with Unicode;
 
 package MISC_DEFS is
 
@@ -565,7 +566,7 @@ package MISC_DEFS is
   BOL_NEEDED : BOOLEAN;
 
    type Boolean_Property_Array is
-     array (Unicode.Ucd.Boolean_Properties) of Integer;
+     array (Matreshka.Internals.Unicode.Ucd.Boolean_Properties) of Integer;
 
    Boolean_CCL  : Boolean_Property_Array := (others => 0);
    Boolean_NCCL : Boolean_Property_Array := (others => 0);

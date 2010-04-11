@@ -5,7 +5,8 @@ with Ada.Wide_Wide_Text_IO;
 with Scanner;
 with NFA, ccl, misc, misc_defs, sym, ecs;
 with main_body;
-with Unicode.Ucd.Core;
+with Matreshka.Internals.Unicode.Ucd.Core;
+with Unicode;
 
 with Parser.Goto_Table;
 use  Parser.Goto_Table;
@@ -25,18 +26,18 @@ package body Parser is
 
    use Scanner;
    use Unicode;
-   use Unicode.Ucd;
+   use Matreshka.Internals.Unicode.Ucd;
    use misc_defs;
 
    function "+" (Item : Wide_Wide_String) return Unbounded_Wide_Wide_String
      renames To_Unbounded_Wide_Wide_String;
 
    function Element is
-     new Unicode.Ucd.Generic_Element
-      (Unicode.Ucd.Core_Values,
-       Unicode.Ucd.Core_Second_Stage,
-       Unicode.Ucd.Core_Second_Stage_Access,
-       Unicode.Ucd.Core_First_Stage);
+     new Matreshka.Internals.Unicode.Ucd.Generic_Element
+      (Matreshka.Internals.Unicode.Ucd.Core_Values,
+       Matreshka.Internals.Unicode.Ucd.Core_Second_Stage,
+       Matreshka.Internals.Unicode.Ucd.Core_Second_Stage_Access,
+       Matreshka.Internals.Unicode.Ucd.Core_First_Stage);
 
    ----------------------
    -- Build_EOF_Action --
@@ -856,8 +857,8 @@ when 46 =>
 			rulelen := rulelen + 1;
 
 			declare
-			   P : Unicode.Ucd.Boolean_Properties :=
-			     Unicode.Ucd.Boolean_Properties'Val ((abs yy.value_stack (yy.tos)) - 1);
+			   P : Matreshka.Internals.Unicode.Ucd.Boolean_Properties :=
+			     Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Val ((abs yy.value_stack (yy.tos)) - 1);
 			   N : Boolean := yy.value_stack (yy.tos) < 0;
 
 			begin
@@ -874,7 +875,7 @@ when 46 =>
 			      yyval := ccl.cclinit;
 
 			      for J in Unicode_Character'Range loop
-                                 if Element (Unicode.Ucd.Core.Property, Unicode_Character'Pos (J)).B (P) then
+                                 if Element (Matreshka.Internals.Unicode.Ucd.Core.Property, Unicode_Character'Pos (J)).B (P) then
 			            ccl.ccl_add (yyval, J);
 			            lastchar := Unicode_Character'Pos (J);
 			         end if;
@@ -958,8 +959,8 @@ when 51 =>
 --# line 618 "parser.y"
 
 			declare
-			   P : Unicode.Ucd.Boolean_Properties :=
-			     Unicode.Ucd.Boolean_Properties'Val ((abs yy.value_stack (yy.tos)) - 1);
+			   P : Matreshka.Internals.Unicode.Ucd.Boolean_Properties :=
+			     Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Val ((abs yy.value_stack (yy.tos)) - 1);
 			   N : Boolean := yy.value_stack (yy.tos) < 0;
 
 			begin
@@ -967,7 +968,7 @@ when 51 =>
 			   lastchar := 0;
 
 			   for J in Unicode_Character'Range loop
-                              if N xor Element (Unicode.Ucd.Core.Property, Unicode_Character'Pos (J)).B (P) then
+                              if N xor Element (Matreshka.Internals.Unicode.Ucd.Core.Property, Unicode_Character'Pos (J)).B (P) then
 			         ccl.ccl_add (yy.value_stack (yy.tos-1), J);
 			      end if;
 			   end loop;

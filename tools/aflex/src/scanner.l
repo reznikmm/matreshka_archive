@@ -218,8 +218,8 @@ PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax|Hex_Digit)\}
 
 			begin
 			   YYLVal :=
-			     Unicode.Ucd.Boolean_Properties'Pos
-			      (Unicode.Ucd.Boolean_Properties'Wide_Wide_Value
+			     Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Pos
+			      (Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Wide_Wide_Value
 			        (Image (Image'First + 3 .. Image'Last - 1))) + 1;
 
                            if Image (Image'First + 1) = 'P' then
@@ -388,8 +388,8 @@ PROPS		\\p\{(Pattern_White_Space|Pattern_Syntax|Hex_Digit)\}
 
 			begin
 			   YYLVal :=
-			     Unicode.Ucd.Boolean_Properties'Pos
-			      (Unicode.Ucd.Boolean_Properties'Wide_Wide_Value
+			     Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Pos
+			      (Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Wide_Wide_Value
 			        (Image (Image'First + 3 .. Image'Last - 1))) + 1;
 
                            if Image (Image'First + 1) = 'P' then
@@ -423,7 +423,8 @@ with Ada.Wide_Wide_Text_IO;
 
 with misc_defs, misc, sym;
 use misc_defs;
-with Unicode.Ucd;
+with Matreshka.Internals.Unicode.Ucd;
+with Unicode;
 ##
    use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Strings.Wide_Wide_Unbounded;

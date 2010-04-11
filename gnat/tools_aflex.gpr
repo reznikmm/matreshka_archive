@@ -29,7 +29,8 @@ project Tools_Aflex is
 
    for Main use ("aflex.adb");
    for Object_Dir use "../tools/aflex/src/.objs";
-   for Source_Dirs use ("../tools/aflex/src");
+   for Source_Dirs use
+    ("../tools/aflex/src", "../source/league", "../source/league/ucd");
    for Exec_Dir use "../tools/aflex/src";
 
    package Compiler is

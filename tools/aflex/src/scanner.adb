@@ -5,7 +5,8 @@ with Ada.Wide_Wide_Text_IO;
 
 with misc_defs, misc, sym;
 use misc_defs;
-with Unicode.Ucd;
+with Matreshka.Internals.Unicode.Ucd;
+with Unicode;
 with scanner.DFA; use scanner.DFA;
 with scanner.IO; use scanner.IO;
 package body scanner is
@@ -1067,8 +1068,8 @@ YY_DO_BEFORE_ACTION; -- set up yytext again
 
 			begin
 			   YYLVal :=
-			     Unicode.Ucd.Boolean_Properties'Pos
-			      (Unicode.Ucd.Boolean_Properties'Wide_Wide_Value
+			     Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Pos
+			      (Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Wide_Wide_Value
 			        (Image (Image'First + 3 .. Image'Last - 1))) + 1;
 
                            if Image (Image'First + 1) = 'P' then
@@ -1355,8 +1356,8 @@ YY_DO_BEFORE_ACTION; -- set up yytext again
 
 			begin
 			   YYLVal :=
-			     Unicode.Ucd.Boolean_Properties'Pos
-			      (Unicode.Ucd.Boolean_Properties'Wide_Wide_Value
+			     Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Pos
+			      (Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Wide_Wide_Value
 			        (Image (Image'First + 3 .. Image'Last - 1))) + 1;
 
                            if Image (Image'First + 1) = 'P' then
