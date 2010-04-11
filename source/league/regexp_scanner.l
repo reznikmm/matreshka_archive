@@ -37,6 +37,14 @@ ASCII_HEX_DIGIT			[Aa][Ss][Cc][Ii][Ii](_|-|\p{Pattern_White_Space}*)[Hh][Ee][Xx]
 ALPHABETIC			[Aa][Ll][Pp][Hh][Aa][Bb][Ee][Tt][Ii][Cc]|[Aa][Ll][Pp][Hh][Aa]
 BIDI_CONTROL			[Bb][Ii][Dd][Ii](_|-|\p{Pattern_White_Space}*)[Cc][Oo][Nn][Tt][Rr][Oo][Ll]|[Bb][Ii][Dd][Ii](_|\p{Pattern_White_Space}*)[Cc]
 BIDI_MIRRORED			[Bb][Ii][Dd][Ii](_|-|\p{Pattern_White_Space}*)[Mm][Ii][Rr][Rr][Oo][Rr][Ee][Dd]|[Bb][Ii][Dd][Ii](_|\p{Pattern_White_Space}*)[Mm]
+CASED				[Cc][Aa][Ss][Ee][Dd]
+CASE_IGNORABLE			[Cc][Aa][Ss][Ee](_|-|\p{Pattern_White_Space}*)[Ii][Gg][Nn][Oo][Rr][Aa][Bb][Ll][Ee]|[Cc][Ii]
+CHANGES_WHEN_CASEFOLDED		[Cc][Hh][Aa][Nn][Gg][Ee][Ss](_|-|\p{Pattern_White_Space}*)[Ww][Hh][Ee][Nn](_|-|\p{Pattern_White_Space}*)[Cc][Aa][Ss][Ee][Ff][Oo][Ll][Dd][Ee][Dd]|[Cc][Ww][Cc][Ff]
+CHANGES_WHEN_CASEMAPPED		[Cc][Hh][Aa][Nn][Gg][Ee][Ss](_|-|\p{Pattern_White_Space}*)[Ww][Hh][Ee][Nn](_|-|\p{Pattern_White_Space}*)[Cc][Aa][Ss][Ee][Mm][Aa][Pp][Pp][Ee][Dd]|[Cc][Ww][Cc][Mm]
+CHANGES_WHEN_NFKC_CASEFOLDED	[Cc][Hh][Aa][Nn][Gg][Ee][Ss](_|-|\p{Pattern_White_Space}*)[Ww][Hh][Ee][Nn](_|-|\p{Pattern_White_Space}*)[Nn][Ff][Kk][Cc](_|-|\p{Pattern_White_Space}*)[Cc][Aa][Ss][Ee][Ff][Oo][Ll][Dd][Ee][Dd]|[Cc][Ww][Kk][Cc][Ff]
+CHANGES_WHEN_LOWERCASED		[Cc][Hh][Aa][Nn][Gg][Ee][Ss](_|-|\p{Pattern_White_Space}*)[Ww][Hh][Ee][Nn](_|-|\p{Pattern_White_Space}*)[Ll][Oo][Ww][Ee][Rr][Cc][Aa][Ss][Ee][Dd]|[Cc][Ww][Ll]
+CHANGES_WHEN_TITLECASED		[Cc][Hh][Aa][Nn][Gg][Ee][Ss](_|-|\p{Pattern_White_Space}*)[Ww][Hh][Ee][Nn](_|-|\p{Pattern_White_Space}*)[Tt][Ii][Tt][Ll][Ee][Cc][Aa][Ss][Ee][Dd]|[Cc][Ww][Tt]
+CHANGES_WHEN_UPPERCASED		[Cc][Hh][Aa][Nn][Gg][Ee][Ss](_|-|\p{Pattern_White_Space}*)[Ww][Hh][Ee][Nn](_|-|\p{Pattern_White_Space}*)[Uu][Pp][Pp][Ee][Rr][Cc][Aa][Ss][Ee][Dd]|[Cc][Ww][Uu]
 COMPOSITION_EXCLUSION		[Cc][Oo][Mm][Pp][Oo][Ss][Ii][Tt][Ii][Oo][Nn](_|-|\p{Pattern_White_Space}*)[Ee][Xx][Cc][Ll][Uu][Ss][Ii][Oo][Nn]|[Cc][Ee]
 FULL_COMPOSITION_EXCLUSION	[Ff][Uu][Ll][Ll](_|-|\p{Pattern_White_Space}*)[Cc][Oo][Mm][Pp][Oo][Ss][Ii][Tt][Ii][Oo][Nn](_|\p{Pattern_White_Space}*)[Ee][Xx][Cc][Ll][Uu][Ss][Ii][Oo][Nn]|[Cc][Oo][Mm][Pp](_|\p{Pattern_White_Space}*)[Ee][Xx]
 DASH				[Dd][Aa][Ss][Hh]
@@ -521,6 +529,70 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 --
 --   return Token_Property_Keyword;
    raise Program_Error;
+}
+
+<PROPERTY_SPECIFICATION>{CASED} {
+   --  Cased
+
+   YYLVAL := (Property_Keyword, Cased);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{CASE_IGNORABLE} {
+   --  Case_Ignorable
+
+   YYLVAL := (Property_Keyword, Case_Ignorable);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{CHANGES_WHEN_CASEFOLDED} {
+   --  Changes_When_Casefolded
+
+   YYLVAL := (Property_Keyword, Changes_When_Casefolded);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{CHANGES_WHEN_CASEMAPPED} {
+   --  Changes_When_Casemapped
+
+   YYLVAL := (Property_Keyword, Changes_When_Casemapped);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{CHANGES_WHEN_LOWERCASED} {
+   --  Changes_When_Lowercased
+
+   YYLVAL := (Property_Keyword, Changes_When_Lowercased);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{CHANGES_WHEN_NFKC_CASEFOLDED} {
+   --  Changes_When_NFKC_Casefolded
+
+   YYLVAL := (Property_Keyword, Changes_When_NFKC_Casefolded);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{CHANGES_WHEN_TITLECASED} {
+   --  Changes_When_Titlecased
+
+   YYLVAL := (Property_Keyword, Changes_When_Titlecased);
+
+   return Token_Property_Keyword;
+}
+
+<PROPERTY_SPECIFICATION>{CHANGES_WHEN_UPPERCASED} {
+   --  Changes_When_Uppercased
+
+   YYLVAL := (Property_Keyword, Changes_When_Uppercased);
+
+   return Token_Property_Keyword;
 }
 
 <PROPERTY_SPECIFICATION>{COMPOSITION_EXCLUSION} {

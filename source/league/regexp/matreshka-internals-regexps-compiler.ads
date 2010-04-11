@@ -57,6 +57,14 @@ package Matreshka.Internals.Regexps.Compiler is
      Alphabetic,
      Bidi_Control,
 --     Bidi_Mirrored,
+     Cased,
+     Case_Ignorable,
+     Changes_When_Casefolded,
+     Changes_When_Casemapped,
+     Changes_When_NFKC_Casefolded,
+     Changes_When_Lowercased,
+     Changes_When_Titlecased,
+     Changes_When_Uppercased,
      Composition_Exclusion,
      Full_Composition_Exclusion,
      Dash,
@@ -221,7 +229,9 @@ package Matreshka.Internals.Regexps.Compiler is
    end record;
 
    procedure YYError
-    (Self : not null access Compiler_State; Error : YY_Errors; Index : Natural);
+    (Self  : not null access Compiler_State;
+     Error : YY_Errors;
+     Index : Natural);
    --  Report error.
 
    procedure Attach
