@@ -401,6 +401,9 @@ package body Matreshka.Internals.Regexps.Compiler is
 
       elsif Pattern.AST (Node).Kind = N_Subexpression then
          return Pattern.List (Pattern.AST (Node).Subexpression).Head;
+
+      else
+         raise Program_Error;
       end if;
    end Get_Expression;
 
