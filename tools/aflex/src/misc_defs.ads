@@ -176,8 +176,8 @@ package MISC_DEFS is
   MAX_CCLS_INCREMENT : constant INTEGER := 100;
 
   -- size of table holding members of character classes
-  Initial_Max_CCL_Table_Size : constant INTEGER := 500;
-  MAX_CCL_TBL_SIZE_INCREMENT : constant INTEGER := 250;
+  Initial_Max_CCL_Table_Size : constant INTEGER := 16#1_0000#;
+  MAX_CCL_TBL_SIZE_INCREMENT : constant INTEGER := 16#1_0000#;
   INITIAL_MAX_RULES : constant INTEGER := 100;
   -- default maximum number of rules
   MAX_RULES_INCREMENT : constant INTEGER := 100;
