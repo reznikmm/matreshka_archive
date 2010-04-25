@@ -34,7 +34,8 @@ project Tools_Aflex is
    for Exec_Dir use "../tools/aflex/src";
 
    package Compiler is
-      for Default_Switches ("ada") use ("-g", "-gnat05", "-gnatwa", "-gnatW8");
+      for Default_Switches ("ada") use
+       ("-g", "-O2", "-gnat05", "-gnatwa", "-gnatW8");
    end Compiler;
 
    package Binder is
