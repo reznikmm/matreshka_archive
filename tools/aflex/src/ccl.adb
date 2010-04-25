@@ -22,6 +22,7 @@
 -- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/cclB.a,v 1.7 1993/04/27 23:17:15 self Exp $
 with Ada.Characters.Conversions;
 with Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Maps;
 
 with Misc;
 
@@ -29,6 +30,7 @@ package body CCL is
 
    use Ada.Characters.Conversions;
    use Ada.Strings.Unbounded;
+   use Ada.Strings.Wide_Wide_Maps;
    use Ada.Wide_Wide_Text_IO;
    use Unicode;
 
@@ -45,16 +47,16 @@ package body CCL is
       IND, LEN, NEWPOS : INTEGER;
 
    begin
+      --  Check to see if the character is already in the ccl.
+
+      if Is_In (Ch, CCL_Sets (CCLP)) then
+         return;
+      end if;
+
+      CCL_Sets (CCLP) := CCL_Sets (CCLP) or To_Set (Ch);
+
       LEN := CCLLEN(CCLP);
       IND := CCLMAP(CCLP);
-
-      -- check to see if the character is already in the ccl
-
-      for I in 0 .. LEN - 1 loop
-         if (CCLTBL(IND + I) = CH) then
-            return;
-         end if;
-      end loop;
 
       NEWPOS := IND + LEN;
 
@@ -86,6 +88,7 @@ package body CCL is
       REALLOCATE_INTEGER_ARRAY(CCLMAP, CURRENT_MAXCCLS);
       REALLOCATE_INTEGER_ARRAY(CCLLEN, CURRENT_MAXCCLS);
       REALLOCATE_INTEGER_ARRAY(CCLNG, CURRENT_MAXCCLS);
+         Reallocate_Wide_Wide_Character_Set_Array (CCL_Sets, CURRENT_MAXCCLS);
     end if;
 
     if (LASTCCL = 1) then

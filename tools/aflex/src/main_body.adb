@@ -568,6 +568,7 @@ package body Main_Body is
     CCLMAP := ALLOCATE_INTEGER_ARRAY(CURRENT_MAXCCLS);
     CCLLEN := ALLOCATE_INTEGER_ARRAY(CURRENT_MAXCCLS);
     CCLNG := ALLOCATE_INTEGER_ARRAY(CURRENT_MAXCCLS);
+      CCL_Sets := Allocate_Wide_Wide_Character_Set_Array (CURRENT_MAXCCLS);
 
     Current_Max_CCL_Table_Size := Initial_Max_CCL_Table_Size;
     CCLTBL := Allocate_Unicode_Character_Array (Current_Max_CCL_Table_Size);

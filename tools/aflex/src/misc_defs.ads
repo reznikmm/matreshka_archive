@@ -30,6 +30,7 @@
 -- Changed constant CSize from 127 to Pos(Last Char) for porting to gnat
 
 with Ada.Strings.Unbounded;
+with Ada.Strings.Wide_Wide_Maps;
 with Ada.Strings.Wide_Wide_Unbounded;
 with Ada.Unchecked_Deallocation;
 with Ada.Wide_Wide_Text_IO;
@@ -541,6 +542,12 @@ package MISC_DEFS is
 
   CCLTBL : Unicode_Character_Array_Access;
 
+   type Wide_Wide_Character_Set_Array is
+     array (Positive range <>)
+       of Ada.Strings.Wide_Wide_Maps.Wide_Wide_Character_Set;
+   type Wide_Wide_Character_Set_Array_Access is
+     access all Wide_Wide_Character_Set_Array;
+   CCL_Sets : Wide_Wide_Character_Set_Array_Access;
 
   -- variables for miscellaneous information:
   -- starttime - real-time when we started
@@ -595,8 +602,15 @@ package MISC_DEFS is
 
   function ALLOCATE_BOOLEAN_ARRAY (SIZE : in INTEGER) return BOOLEAN_PTR;
 
+   function Allocate_Wide_Wide_Character_Set_Array
+     (Size : Natural) return Wide_Wide_Character_Set_Array_Access;
+
   procedure REALLOCATE_INTEGER_ARRAY (ARR : in out INT_PTR;
        SIZE : in INTEGER);
+
+   procedure Reallocate_Wide_Wide_Character_Set_Array
+     (Item : in out Wide_Wide_Character_Set_Array_Access;
+      Size : Natural);
 
   procedure REALLOCATE_INT_PTR_ARRAY (ARR : in out INT_STAR_PTR;
        SIZE : in INTEGER);

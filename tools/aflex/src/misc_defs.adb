@@ -108,6 +108,16 @@ package body MISC_DEFS is
     return new UNBOUNDED_DFAACC_ARRAY(0 .. SIZE);
   end ALLOCATE_DFAACC_UNION;
 
+   --------------------------------------------
+   -- Allocate_Wide_Wide_Character_Set_Array --
+   --------------------------------------------
+
+   function Allocate_Wide_Wide_Character_Set_Array
+     (Size : Natural) return Wide_Wide_Character_Set_Array_Access is
+   begin
+      return new Wide_Wide_Character_Set_Array (1 .. Size);
+   end Allocate_Wide_Wide_Character_Set_Array;
+
   procedure REALLOCATE_INT_PTR_ARRAY(ARR  : in out INT_STAR_PTR;
                                      SIZE : in INTEGER) is
     NEW_ARR : INT_STAR_PTR;
@@ -116,6 +126,28 @@ package body MISC_DEFS is
     NEW_ARR(0 .. ARR'LAST) := ARR(0 .. ARR'LAST);
     ARR := NEW_ARR;
   end REALLOCATE_INT_PTR_ARRAY;
+
+   ----------------------------------------------
+   -- Reallocate_Wide_Wide_Character_Set_Array --
+   ----------------------------------------------
+
+   procedure Reallocate_Wide_Wide_Character_Set_Array
+     (Item : in out Wide_Wide_Character_Set_Array_Access;
+      Size : Natural)
+   is
+      procedure Free is
+        new Ada.Unchecked_Deallocation
+          (Wide_Wide_Character_Set_Array,
+           Wide_Wide_Character_Set_Array_Access);
+
+      Aux : Wide_Wide_Character_Set_Array_Access;
+
+   begin
+      Aux := Allocate_Wide_Wide_Character_Set_Array (Size);
+      Aux (Item'Range) := Item.all;
+      Free (Item);
+      Item := Aux;
+   end Reallocate_Wide_Wide_Character_Set_Array;
 
    --------------------------------------
    -- Allocate_Unicode_Character_Array --
