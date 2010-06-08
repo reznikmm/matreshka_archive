@@ -10,6 +10,7 @@ all: gnat/matreshka_config.gpr
 
 check: all
 	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr
+#	valgrind .objs/library_level_test
 	.objs/string_hash_test
 	.objs/string_operations
 #	.objs/string_compare_test

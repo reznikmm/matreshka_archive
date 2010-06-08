@@ -4,11 +4,11 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, 2010 Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010 Vadim Godunko <vgodunko@gmail.com>                      --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -24,28 +24,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_league";
+with League.Strings;
 
-project Matreshka_League_Tests is
+package Library_Level_Objects is
 
-   for Main use
-    ("string_hash_test.adb",
-     "character_cursor_test.adb",
-     "grapheme_cluster_cursor_test.adb",
-     "case_conversion_test.adb",
-     "case_folding_test.adb",
-     "normalization_test.adb",
-     "additional_normalization_test.adb",
-     "collation_test.adb",
-     "string_performance.adb",
-     "string_operations.adb",
-     "library_level_test.adb",
-     "regexp_ataresearch.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use ("../testsuite/league", "../tools");
+   X : League.Strings.Universal_String;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8", "-O2", "-gnatn");
-   end Compiler;
-
-end Matreshka_League_Tests;
+end Library_Level_Objects;
