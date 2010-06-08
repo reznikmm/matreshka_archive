@@ -52,10 +52,10 @@ package Matreshka.SAX.Content_Handlers is
        return Boolean is abstract;
 
    not overriding function End_Element
-    (Self          : not null access SAX_Content_Handler;
-     Namespace_URI : League.Strings.Universal_String;
-     Local_Name    : League.Strings.Universal_String;
-     Q_Name        : League.Strings.Universal_String)
+    (Self           : not null access SAX_Content_Handler;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String)
        return Boolean is abstract;
 
    not overriding function End_Prefix_Mapping
@@ -94,11 +94,11 @@ package Matreshka.SAX.Content_Handlers is
        return Boolean is abstract;
 
    not overriding function Start_Element
-    (Self          : not null access SAX_Content_Handler;
-     Namespace_URI : League.Strings.Universal_String;
-     Local_Name    : League.Strings.Universal_String;
-     Q_Name        : League.Strings.Universal_String;
-     Attributes    : Matreshka.SAX.Attributes.SAX_Attributes)
+    (Self           : not null access SAX_Content_Handler;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : Matreshka.SAX.Attributes.SAX_Attributes)
        return Boolean is abstract;
 
    not overriding function Start_Prefix_Mapping

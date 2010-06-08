@@ -85,10 +85,10 @@ package Matreshka.SAX.Default_Handlers is
        return Boolean;
 
    overriding function End_Element
-    (Self          : not null access SAX_Default_Handler;
-     Namespace_URI : League.Strings.Universal_String;
-     Local_Name    : League.Strings.Universal_String;
-     Q_Name        : League.Strings.Universal_String)
+    (Self           : not null access SAX_Default_Handler;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String)
        return Boolean;
 
    overriding function End_Entity
@@ -171,11 +171,11 @@ package Matreshka.SAX.Default_Handlers is
        return Boolean;
 
    overriding function Start_Element
-    (Self          : not null access SAX_Default_Handler;
-     Namespace_URI : League.Strings.Universal_String;
-     Local_Name    : League.Strings.Universal_String;
-     Q_Name        : League.Strings.Universal_String;
-     Attributes    : Matreshka.SAX.Attributes.SAX_Attributes)
+    (Self           : not null access SAX_Default_Handler;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : Matreshka.SAX.Attributes.SAX_Attributes)
        return Boolean;
 
    overriding function Start_Entity
