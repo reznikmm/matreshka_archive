@@ -31,18 +31,24 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides abstractions for Unicode characters (code points)
---  and strings (sequences of Unicode code points). All operations in this
---  package and its children packages depends from the current or explicitly
---  specified locale.
+--  This package provides abstractions for Unicode characters (code points),
+--  strings (sequences of Unicode code points), and string's slices. All
+--  operations in this package and its children packages depends from the
+--  current or explicitly specified locale.
 --
---  The primary purpose of Unicode_Character type is provide the gateway to
+--  The primary purpose of Universal_Character type is provide the gateway to
 --  Unicode Character Database.
 --
---  The Unicode_String type provides unbounded strings of Unicode characters.
+--  The Universal_String type provides unbounded strings of Unicode characters.
 --  It utilizes implicit sharing technology (also known as copy-on-write), so
 --  copy operations has constant execution time.
 --
+--  The Universal_Slice is intended to be used primary when its period of life
+--  is inside of period of life of referenced string. There are two important
+--  advantages to use it: (1) slice data is not copied, (2) additional memory
+--  is not allocated. Nethertheless, some operations on slices can be less
+--  efficient, because data is not alligned properly as in string case.
+--  
 --  Cursors child package and its children provides different kinds of
 --  iterators - character, grapheme cluster, word, sentence, line breaks.
 --  See these packages for detailed information.
@@ -65,6 +71,8 @@ package League.Strings is
    type Universal_Character is tagged private;
 
    type Universal_String is tagged private;
+
+   type Universal_Slice is tagged private;
 
    Empty_String : constant Universal_String;
 
@@ -335,6 +343,12 @@ private
    --  To satisfy requerements of language to prevent modification of component
    --  of constant the separate object is used to store list of associated
    --  cursors.
+
+   ---------------------
+   -- Universal_Slice --
+   ---------------------
+
+   type Universal_Slice is new Ada.Finalization.Controlled with null record;
 
    ---------------------
    -- Abstract_Cursor --
