@@ -27,9 +27,14 @@
 --  This test expected to be executed under valgrind to detect errors in
 --  handling of library level objects.
 ------------------------------------------------------------------------------
+with League.Strings;
+
 with Library_Level_Objects;
 
 procedure Library_Level_Test is
+   use League.Strings;
+   use Library_Level_Objects;
+
 begin
-   null;
+   SY := To_Universal_String ("TEST");
 end Library_Level_Test;

@@ -28,6 +28,7 @@ with League.Strings;
 
 package Library_Level_Objects is
 
-   X : League.Strings.Universal_String;
+   SX : League.Strings.Universal_String;
+   SY : League.Strings.Universal_String;
 
 end Library_Level_Objects;
