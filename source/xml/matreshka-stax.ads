@@ -31,7 +31,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Root package for XML Streaming API.
+--  Root package for Streaming API for XML.
 
 package Matreshka.StAX is
 
