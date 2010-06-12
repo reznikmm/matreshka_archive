@@ -51,26 +51,47 @@ begin
      "Transformer_Context",
      "-C1 "
        & Ada.Characters.Conversions.To_Wide_String
-          (Ada.Command_Line.Argument (1)));
+          (Ada.Command_Line.Argument (2)));
    Asis.Ada_Environments.Open (Transformer_Context);
 
-   Parser_Unit :=
-     Asis.Compilation_Units.Compilation_Unit_Body
-      ("Regexp_Parser", Transformer_Context);
-   Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
-   Parser_Extractor.Extract (Parser_Body);
+   if Ada.Command_Line.Argument (1) = "regexp" then
+      Parser_Unit :=
+        Asis.Compilation_Units.Compilation_Unit_Body
+         ("Regexp_Parser", Transformer_Context);
+      Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
+      Parser_Extractor.Extract (Parser_Body);
 
-   Parser_Unit :=
-     Asis.Compilation_Units.Library_Unit_Declaration
-      ("Regexp_Parser.Goto_Table", Transformer_Context);
-   Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
-   Parser_Extractor.Extract (Parser_Body);
+      Parser_Unit :=
+        Asis.Compilation_Units.Library_Unit_Declaration
+         ("Regexp_Parser.Goto_Table", Transformer_Context);
+      Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
+      Parser_Extractor.Extract (Parser_Body);
 
-   Parser_Unit :=
-     Asis.Compilation_Units.Library_Unit_Declaration
-      ("Regexp_Parser.Shift_Reduce", Transformer_Context);
-   Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
-   Parser_Extractor.Extract (Parser_Body);
+      Parser_Unit :=
+        Asis.Compilation_Units.Library_Unit_Declaration
+         ("Regexp_Parser.Shift_Reduce", Transformer_Context);
+      Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
+      Parser_Extractor.Extract (Parser_Body);
+
+   elsif Ada.Command_Line.Argument (1) = "xml" then
+      Parser_Unit :=
+        Asis.Compilation_Units.Compilation_Unit_Body
+         ("Xml_Parser", Transformer_Context);
+      Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
+      Parser_Extractor.Extract (Parser_Body);
+
+      Parser_Unit :=
+        Asis.Compilation_Units.Library_Unit_Declaration
+         ("Xml_Parser.Goto_Table", Transformer_Context);
+      Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
+      Parser_Extractor.Extract (Parser_Body);
+
+      Parser_Unit :=
+        Asis.Compilation_Units.Library_Unit_Declaration
+         ("Xml_Parser.Shift_Reduce", Transformer_Context);
+      Parser_Body := Asis.Elements.Unit_Declaration (Parser_Unit);
+      Parser_Extractor.Extract (Parser_Body);
+   end if;
 
    Parser_Generator.Generate_Parser_Code;
    Parser_Generator.Generate_Parser_Tables;

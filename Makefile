@@ -34,7 +34,7 @@ regexp: regexp_tools .gens-regexp
 	cd .gens-regexp && gcc -c -gnat05 -gnatct -I../source/league regexp_parser_tokens.ads
 	cd source/league/regexp && ../../../tools/token_transformer/token_transformer regexp ../../../.gens-regexp/regexp_parser_tokens.adt ../matreshka-internals-regexps-compiler.ads.in
 	cd .gens-regexp && gcc -c -gnat05 -gnatct -I../source/league -I../source/league/regexp regexp_parser.adb
-	cd source/league/regexp && ../../../tools/parser_transformer/parser_transformer ../../../.gens-regexp/regexp_parser.adt ../matreshka-internals-regexps-compiler-parser.adb.in
+	cd source/league/regexp && ../../../tools/parser_transformer/parser_transformer regexp ../../../.gens-regexp/regexp_parser.adt ../matreshka-internals-regexps-compiler-parser.adb.in
 	cd .gens-regexp && ../tools/aflex/src/aflex -v ../source/league/regexp_scanner.l
 	cd .gens-regexp && gcc -c -gnat05 -gnatct -I../source/league -I../source/league/regexp regexp_scanner.adb
 	cd source/league/regexp && ../../../tools/scanner_transformer/scanner_transformer ../../../.gens-regexp/regexp_scanner.adt ../matreshka-internals-regexps-compiler-scanner.adb.in

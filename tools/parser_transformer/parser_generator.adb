@@ -25,6 +25,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Command_Line;
+with Ada.Directories;
 with Ada.Integer_Wide_Text_IO;
 with Ada.Strings.Wide_Unbounded.Wide_Text_IO;
 with Ada.Wide_Text_IO;
@@ -38,10 +39,44 @@ package body Parser_Generator is
    use Ada.Wide_Text_IO;
    use Parser_Extractor;
 
-   Parser_File_Name           : constant String :=
-     "matreshka-internals-regexps-compiler-parser.adb";
-   Parser_Tables_File_Name    : constant String :=
-     "matreshka-internals-regexps-compiler-parser-tables.ads";
+   function Parser_Template_File_Name return String;
+   --  Returns file name of the parser's template.
+
+   function Parser_File_Name return String;
+   --  Returns file name of the parser's implementation file.
+
+   function Parser_Tables_File_Name return String;
+   --  Returns file name of the parser's tables data.
+
+   ----------------------
+   -- Parser_File_Name --
+   ----------------------
+
+   function Parser_File_Name return String is
+      Template : constant String
+        := Ada.Directories.Simple_Name (Parser_Template_File_Name);
+
+   begin
+      return Template (Template'First .. Template'Last - 3);
+   end Parser_File_Name;
+
+   -----------------------------
+   -- Parser_Tables_File_Name --
+   -----------------------------
+
+   function Parser_Tables_File_Name return String is
+   begin
+      return Ada.Directories.Base_Name (Parser_File_Name) & "-tables.ads";
+   end Parser_Tables_File_Name;
+
+   -------------------------------
+   -- Parser_Template_File_Name --
+   -------------------------------
+
+   function Parser_Template_File_Name return String is
+   begin
+      return Ada.Command_Line.Argument (3);
+   end Parser_Template_File_Name;
 
    --------------------------
    -- Generate_Parser_Code --
@@ -54,7 +89,7 @@ package body Parser_Generator is
       Last   : Natural;
 
    begin
-      Open (Input, In_File, Ada.Command_Line.Argument (2), "wcem=8");
+      Open (Input, In_File, Parser_Template_File_Name, "wcem=8");
       Create (Output, Out_File, Parser_File_Name, "wcem=8");
 
       while not End_Of_File (Input) loop
