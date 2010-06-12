@@ -25,6 +25,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Command_Line;
+with Ada.Directories;
 with Ada.Integer_Wide_Text_IO;
 with Ada.Strings.Wide_Unbounded.Wide_Text_IO;
 with Ada.Wide_Text_IO;
@@ -38,8 +39,11 @@ package body Token_Generator is
    use Ada.Wide_Text_IO;
    use Token_Extractor;
 
-   Parser_Tokens_File_Name    : constant String :=
-     "matreshka-internals-regexps-compiler.ads";
+   function Tokens_File_Name return String;
+   --  Returns file name of the output file.
+
+   function Tokens_Template_File_Name return String;
+   --  Returns file name of the input template file.
 
    ----------------------------
    -- Generate_Parser_Tokens --
@@ -52,8 +56,8 @@ package body Token_Generator is
       Last   : Natural;
 
    begin
-      Open (Input, In_File, Ada.Command_Line.Argument (2), "wcem=8");
-      Create (Output, Out_File, Parser_Tokens_File_Name, "wcem=8");
+      Open (Input, In_File, Tokens_Template_File_Name, "wcem=8");
+      Create (Output, Out_File, Tokens_File_Name, "wcem=8");
 
       while not End_Of_File (Input) loop
          Get_Line (Input, Buffer, Last);
@@ -83,5 +87,26 @@ package body Token_Generator is
       Close (Output);
       Close (Input);
    end Generate_Parser_Tokens;
+
+   ----------------------
+   -- Tokens_File_Name --
+   ----------------------
+
+   function Tokens_File_Name return String is
+      Template : constant String
+        := Ada.Directories.Simple_Name (Tokens_Template_File_Name);
+
+   begin
+      return Template (Template'First .. Template'Last - 3);
+   end Tokens_File_Name;
+
+   -------------------------------
+   -- Tokens_Template_File_Name --
+   -------------------------------
+
+   function Tokens_Template_File_Name return String is
+   begin
+      return Ada.Command_Line.Argument (3);
+   end Tokens_Template_File_Name;
 
 end Token_Generator;

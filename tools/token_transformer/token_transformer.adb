@@ -51,12 +51,20 @@ begin
      "Transformer_Context",
      "-C1 "
        & Ada.Characters.Conversions.To_Wide_String
-          (Ada.Command_Line.Argument (1)));
+          (Ada.Command_Line.Argument (2)));
    Asis.Ada_Environments.Open (Transformer_Context);
 
-   Token_Unit :=
-     Asis.Compilation_Units.Library_Unit_Declaration
-      ("Regexp_Parser_Tokens", Transformer_Context);
+   if Ada.Command_Line.Argument (1) = "regexp" then
+      Token_Unit :=
+        Asis.Compilation_Units.Library_Unit_Declaration
+         ("Regexp_Parser_Tokens", Transformer_Context);
+
+   elsif Ada.Command_Line.Argument (1) = "xml" then
+      Token_Unit :=
+        Asis.Compilation_Units.Library_Unit_Declaration
+         ("Xml_Parser_Tokens", Transformer_Context);
+   end if;
+
    Token_Body := Asis.Elements.Unit_Declaration (Token_Unit);
    Token_Extractor.Extract (Token_Body);
 
