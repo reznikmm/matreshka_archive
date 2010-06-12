@@ -1,0 +1,8 @@
+Second attempt to made XML parser using aflex/ayacc.
+
+Most important issues to be resolved:
+
+ - processing DOCTYPE declaration;
+ - processing all kinds of entities (parameter, internal, external parsed,
+   unparsed);
+ - code transformation like was done for regular expression.
