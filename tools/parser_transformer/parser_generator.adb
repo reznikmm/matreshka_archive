@@ -252,7 +252,16 @@ package body Parser_Generator is
       Put_Line (Output, "------------------------------------------------------------------------------");
 
       New_Line (Output);
-      Put_Line (Output, "private package Matreshka.Internals.Regexps.Compiler.Parser.Tables is");
+      Put (Output, "private package Matreshka.Internals.");
+
+      if Ada.Command_Line.Argument (1) = "regexp" then
+         Put (Output, "Regexps.Compiler.Parser");
+
+      elsif Ada.Command_Line.Argument (1) = "xml" then
+         Put (Output, "Xml.Reader.Parser");
+      end if;
+
+      Put_Line (Output, ".Tables is");
       New_Line (Output);
       Put_Line (Output, "   pragma Preelaborate;");
 
@@ -295,7 +304,16 @@ package body Parser_Generator is
       Generate_Array ("YY_Shift_Reduce_Offset", YY_Shift_Reduce_Offset);
 
       New_Line (Output);
-      Put_Line (Output, "end Matreshka.Internals.Regexps.Compiler.Parser.Tables;");
+      Put (Output, "end Matreshka.Internals.");
+
+      if Ada.Command_Line.Argument (1) = "regexp" then
+         Put (Output, "Regexps.Compiler.Parser");
+
+      elsif Ada.Command_Line.Argument (1) = "xml" then
+         Put (Output, "Xml.Reader.Parser");
+      end if;
+
+      Put_Line (Output, ".Tables;");
 
       Close (Output);
    end Generate_Parser_Tables;
