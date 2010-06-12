@@ -49,13 +49,21 @@ begin
      "Transformer_Context",
      "-C1 "
        & Ada.Characters.Conversions.To_Wide_String
-          (Ada.Command_Line.Argument (1)));
+          (Ada.Command_Line.Argument (2)));
    Asis.Ada_Environments.Open (Transformer_Context);
 
-   Scanner_Unit :=
-     Asis.Compilation_Units.Compilation_Unit_Body
-      ("Regexp_Scanner", Transformer_Context);
-   Scanner_Body := Asis.Elements.Unit_Declaration (Scanner_Unit);
+   if Ada.Command_Line.Argument (1) = "regexp" then
+      Scanner_Unit :=
+        Asis.Compilation_Units.Compilation_Unit_Body
+         ("Regexp_Scanner", Transformer_Context);
+      Scanner_Body := Asis.Elements.Unit_Declaration (Scanner_Unit);
+
+   elsif Ada.Command_Line.Argument (1) = "xml" then
+      Scanner_Unit :=
+        Asis.Compilation_Units.Compilation_Unit_Body
+         ("Xml_Scanner", Transformer_Context);
+      Scanner_Body := Asis.Elements.Unit_Declaration (Scanner_Unit);
+   end if;
 
    Scanner_Extractor.Extract (Scanner_Body);
    Scanner_Generator.Generate_Scanner_Code;

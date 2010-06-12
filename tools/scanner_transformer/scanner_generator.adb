@@ -25,6 +25,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Command_Line;
+with Ada.Directories;
 with Ada.Integer_Wide_Text_IO;
 with Ada.Strings.Wide_Unbounded.Wide_Text_IO;
 with Ada.Wide_Text_IO;
@@ -39,12 +40,43 @@ package body Scanner_Generator is
    use Ada.Wide_Text_IO;
    use Scanner_Extractor;
 
-   Scanner_File_Name        : constant String
-     := "matreshka-internals-regexps-compiler-scanner.adb";
-   Scanner_Tables_File_Name : constant String
-     := "matreshka-internals-regexps-compiler-scanner-tables.ads";
+   function Scanner_Template_File_Name return String;
+
+   function Scanner_File_Name return String;
+
+   function Scanner_Tables_File_Name return String;
 
    function Hex_4_Image (Item : Natural) return Wide_String;
+
+   -----------------------
+   -- Scanner_File_Name --
+   -----------------------
+
+   function Scanner_File_Name return String is
+      Template : constant String
+        := Ada.Directories.Simple_Name (Scanner_Template_File_Name);
+
+   begin
+      return Template (Template'First .. Template'Last - 3);
+   end Scanner_File_Name;
+
+   ------------------------------
+   -- Scanner_Tables_File_Name --
+   ------------------------------
+
+   function Scanner_Tables_File_Name return String is
+   begin
+      return Ada.Directories.Base_Name (Scanner_File_Name) & "-tables.ads";
+   end Scanner_Tables_File_Name;
+
+   --------------------------------
+   -- Scanner_Template_File_Name --
+   --------------------------------
+
+   function Scanner_Template_File_Name return String is
+   begin
+      return Ada.Command_Line.Argument (3);
+   end Scanner_Template_File_Name;
 
    -----------------
    -- Hex_4_Image --
@@ -75,7 +107,7 @@ package body Scanner_Generator is
       Last   : Natural;
 
    begin
-      Open (Input, In_File, Ada.Command_Line.Argument (2), "wcem=8");
+      Open (Input, In_File, Scanner_Template_File_Name, "wcem=8");
       Create (Output, Out_File, Scanner_File_Name, "wcem=8");
 
       while not End_Of_File (Input) loop
