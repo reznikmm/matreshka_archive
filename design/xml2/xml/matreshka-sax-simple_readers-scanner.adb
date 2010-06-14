@@ -32,8 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.Xml.Reader.Scanner is
+package body Matreshka.SAX.Simple_Readers.Scanner is
 
-   pragma Preelaborate;
 
-end Matreshka.Internals.Xml.Reader.Scanner;
+end Matreshka.SAX.Simple_Readers.Scanner;

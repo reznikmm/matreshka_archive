@@ -33,7 +33,7 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Unicode;
 
-private package Matreshka.Internals.Xml.Reader.Scanner.Tables is
+private package Matreshka.SAX.Simple_Readers.Scanner.Tables is
 
    pragma Preelaborate;
 
@@ -140,4 +140,4 @@ private package Matreshka.Internals.Xml.Reader.Scanner.Tables is
      array (YY_Primary_Index) of YY_Secondary_Array_Access :=
      (16#0000# => YY_EC_0000'Access, others   => YY_EC_0001'Access);
 
-end Matreshka.Internals.Xml.Reader.Scanner.Tables;
+end Matreshka.SAX.Simple_Readers.Scanner.Tables;

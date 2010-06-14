@@ -263,16 +263,15 @@ package body Scanner_Generator is
 
       Put_Line (Output, "with Matreshka.Internals.Unicode;");
       New_Line (Output);
-      Put (Output, "private package Matreshka.Internals.");
 
       if Ada.Command_Line.Argument (1) = "regexp" then
-         Put (Output, "Regexps.Compiler.Scanner");
+         Put (Output, "private package Matreshka.Internals.Regexps.Compiler");
 
       elsif Ada.Command_Line.Argument (1) = "xml" then
-         Put (Output, "Xml.Reader.Scanner");
+         Put (Output, "private package Matreshka.SAX.Simple_Readers");
       end if;
 
-      Put_Line (Output, ".Tables is");
+      Put_Line (Output, ".Scanner.Tables is");
 
       New_Line (Output);
       Put_Line (Output, "   pragma Preelaborate;");
@@ -354,16 +353,15 @@ package body Scanner_Generator is
       Put_Line (Output, "'Access);");
 
       New_Line (Output);
-      Put (Output, "end Matreshka.Internals.");
 
       if Ada.Command_Line.Argument (1) = "regexp" then
-         Put (Output, "Regexps.Compiler.Scanner");
+         Put (Output, "end Matreshka.Internals.Regexps.Compiler");
 
       elsif Ada.Command_Line.Argument (1) = "xml" then
-         Put (Output, "Xml.Reader.Scanner");
+         Put (Output, "end Matreshka.SAX.Simple_Readers");
       end if;
 
-      Put_Line (Output, ".Tables;");
+      Put_Line (Output, ".Scanner.Tables;");
 
       Close (Output);
    end Generate_Scanner_Tables;

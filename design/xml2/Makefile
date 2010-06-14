@@ -16,7 +16,7 @@ gen:
 	cd xml && $(PARSER_TRANSFORMER) xml ../.gens/xml_parser.adt ../matreshka-sax-simple_readers-parser.adb.in
 	cd .gens && $(AFLEX) -v ../xml_scanner.l
 	cd .gens && gcc -c -gnat05 -gnatct -I.. -I../xml -I../../../source/league xml_scanner.adb
-	cd xml && $(SCANNER_TRANSFORMER) xml ../.gens/xml_scanner.adt ../matreshka-internals-xml-reader-scanner.adb.in
+	cd xml && $(SCANNER_TRANSFORMER) xml ../.gens/xml_scanner.adt ../matreshka-sax-simple_readers-scanner.adb.in
 
 .gens:
 	mkdir .gens
