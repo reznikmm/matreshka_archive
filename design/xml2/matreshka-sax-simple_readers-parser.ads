@@ -32,8 +32,8 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body Matreshka.Internals.Xml.Reader.Parser is
+private package Matreshka.SAX.Simple_Readers.Parser is
 
-%%
+   pragma Preelaborate;
 
-end Matreshka.Internals.Xml.Reader.Parser;
+end Matreshka.SAX.Simple_Readers.Parser;

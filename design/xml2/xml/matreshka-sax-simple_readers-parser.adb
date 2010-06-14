@@ -32,7 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body Matreshka.Internals.Xml.Reader.Parser is
+package body Matreshka.SAX.Simple_Readers.Parser is
 
 
-end Matreshka.Internals.Xml.Reader.Parser;
+end Matreshka.SAX.Simple_Readers.Parser;

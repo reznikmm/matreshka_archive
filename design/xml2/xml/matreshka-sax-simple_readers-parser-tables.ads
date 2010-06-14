@@ -32,7 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-private package Matreshka.Internals.Xml.Reader.Parser.Tables is
+private package Matreshka.SAX.Simple_Readers.Parser.Tables is
 
    pragma Preelaborate;
 
@@ -70,4 +70,4 @@ private package Matreshka.Internals.Xml.Reader.Parser.Tables is
    YY_Shift_Reduce_Offset : constant array (0 .. 3) of Integer :=
     (    0,    2,    3,    5);
 
-end Matreshka.Internals.Xml.Reader.Parser.Tables;
+end Matreshka.SAX.Simple_Readers.Parser.Tables;
