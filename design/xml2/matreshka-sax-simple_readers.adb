@@ -32,6 +32,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.SAX.Readers;
+with Matreshka.SAX.Simple_Readers.Scanner;
 
 package body Matreshka.SAX.Simple_Readers is
 

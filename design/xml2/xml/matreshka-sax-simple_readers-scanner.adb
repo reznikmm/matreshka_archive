@@ -31,8 +31,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.SAX.Simple_Readers.Scanner.Tables;
 
 package body Matreshka.SAX.Simple_Readers.Scanner is
 
+   -----------
+   -- YYLex --
+   -----------
+
+   function YYLex
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      return End_Of_Input;
+   end YYLex;
 
 end Matreshka.SAX.Simple_Readers.Scanner;

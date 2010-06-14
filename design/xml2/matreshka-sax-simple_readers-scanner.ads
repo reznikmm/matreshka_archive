@@ -36,4 +36,8 @@ private package Matreshka.SAX.Simple_Readers.Scanner is
 
    pragma Preelaborate;
 
+   function YYLex
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Returns next token.
+
 end Matreshka.SAX.Simple_Readers.Scanner;
