@@ -43,8 +43,11 @@ package Matreshka.SAX.Simple_Readers is
 
 private
 
+%%
+
    Default_Handler :
      aliased Matreshka.SAX.Default_Handlers.SAX_Default_Handler;
+   --  Default handler for use when user defined handler is not specified.
 
    type SAX_Simple_Reader is
      limited new Matreshka.SAX.Readers.SAX_Reader with

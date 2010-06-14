@@ -31,14 +31,80 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.SAX.Readers;
+private with Matreshka.SAX.Default_Handlers;
 
-package Matreshka.Internals.XML.Reader is
+package Matreshka.SAX.Simple_Readers is
 
    pragma Preelaborate;
+
+   type SAX_Simple_Reader is
+     limited new Matreshka.SAX.Readers.SAX_Reader with private;
+
+private
 
    type Token is
     (End_Of_Input,
      Error,
      Token_Xml_Decl_Open);
 
-end Matreshka.Internals.XML.Reader;
+   Default_Handler :
+     aliased Matreshka.SAX.Default_Handlers.SAX_Default_Handler;
+   --  Default handler for use when user defined handler is not specified.
+
+   type SAX_Simple_Reader is
+     limited new Matreshka.SAX.Readers.SAX_Reader with
+   record
+      Content_Handler : Matreshka.SAX.Readers.SAX_Content_Handler_Access
+        := Default_Handler'Access;
+      Decl_Handler    : Matreshka.SAX.Readers.SAX_Decl_Handler_Access
+        := Default_Handler'Access;
+      DTD_Handler     : Matreshka.SAX.Readers.SAX_DTD_Handler_Access
+        := Default_Handler'Access;
+      Error_Handler   : Matreshka.SAX.Readers.SAX_Error_Handler_Access
+        := Default_Handler'Access;
+      Lexical_Handler : Matreshka.SAX.Readers.SAX_Lexical_Handler_Access
+        := Default_Handler'Access;
+   end record;
+
+   overriding function Content_Handler
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_Content_Handler_Access;
+
+   overriding function Decl_Handler
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_Decl_Handler_Access;
+
+   overriding function DTD_Handler
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_DTD_Handler_Access;
+
+   overriding function Error_Handler
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_Error_Handler_Access;
+
+   overriding function Lexical_Handler
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_Lexical_Handler_Access;
+
+   overriding procedure Set_Content_Handler
+    (Self    : not null access SAX_Simple_Reader;
+     Handler : Matreshka.SAX.Readers.SAX_Content_Handler_Access);
+
+   overriding procedure Set_Decl_Handler
+    (Self    : not null access SAX_Simple_Reader;
+     Handler : Matreshka.SAX.Readers.SAX_Decl_Handler_Access);
+
+   overriding procedure Set_DTD_Handler
+    (Self    : not null access SAX_Simple_Reader;
+     Handler : Matreshka.SAX.Readers.SAX_DTD_Handler_Access);
+
+   overriding procedure Set_Error_Handler
+    (Self    : not null access SAX_Simple_Reader;
+     Handler : Matreshka.SAX.Readers.SAX_Error_Handler_Access);
+
+   overriding procedure Set_Lexical_Handler
+    (Self    : not null access SAX_Simple_Reader;
+     Handler : Matreshka.SAX.Readers.SAX_Lexical_Handler_Access);
+
+end Matreshka.SAX.Simple_Readers;

@@ -2,11 +2,11 @@
 %%
 
 %%
-with Matreshka.Internals.Xml.Reader;
+with Xml_Parser_Tokens;
 ##
-   function YYLex return Matreshka.Internals.Xml.Reader.Token;
+   function YYLex return Xml_Parser_Tokens.Token;
 ##
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Wide_Wide_Text_IO;
 ##
-   use Matreshka.Internals.Xml.Reader;
+   use Xml_Parser_Tokens;
