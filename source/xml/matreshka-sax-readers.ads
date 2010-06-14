@@ -41,6 +41,8 @@ with Matreshka.SAX.Lexical_Handlers;
 
 package Matreshka.SAX.Readers is
 
+   pragma Preelaborate;
+
    type SAX_Content_Handler_Access is
      access all Matreshka.SAX.Content_Handlers.SAX_Content_Handler'Class;
    type SAX_Decl_Handler_Access is
