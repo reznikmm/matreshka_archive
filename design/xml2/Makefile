@@ -5,7 +5,10 @@ TOKEN_TRANSFORMER = ../../../tools/token_transformer/token_transformer
 PARSER_TRANSFORMER = ../../../tools/parser_transformer/parser_transformer
 SCANNER_TRANSFORMER = ../../../tools/scanner_transformer/scanner_transformer
 
-all: .gens
+all: .gens gen
+	gprbuild -p -P demo.gpr
+
+gen:
 	cd .gens && $(AYACC) ../xml_parser.y
 	cd .gens && gcc -c -gnat05 -gnatct xml_parser_tokens.ads
 	cd xml && $(TOKEN_TRANSFORMER) xml ../.gens/xml_parser_tokens.adt ../matreshka-internals-xml-reader.ads.in
@@ -21,4 +24,4 @@ all: .gens
 check:
 
 clean:
-	rm -rf .gens
+	rm -rf .gens .objs
