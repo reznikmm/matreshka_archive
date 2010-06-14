@@ -31,6 +31,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
 with Matreshka.SAX.Readers;
 with Matreshka.SAX.Simple_Readers.Scanner;
 
@@ -117,6 +118,37 @@ package body Matreshka.SAX.Simple_Readers is
          return Self.Lexical_Handler;
       end if;
    end Lexical_Handler;
+
+   -----------
+   -- Parse --
+   -----------
+
+   procedure Parse
+    (Self : not null access SAX_Simple_Reader;
+     Data : League.Strings.Universal_String)
+   is
+      PE : League.Strings.Universal_String
+        := League.Strings.To_Universal_String ("<!ENTITY >");
+      T : Token;
+
+      procedure puts (S : String);
+      pragma Import (C, puts);
+
+   begin
+      Self.Scanner_State.Data := League.Strings.Internals.Get_Shared (Data);
+
+      loop
+         T := Scanner.YYLex (Self);
+         puts (Token'Image (T) & ASCII.NUL);
+
+         if T = Token_PE_Reference then
+            Scanner.Push_Parameter_Entity
+             (Self, League.Strings.Internals.Get_Shared (PE));
+         end if;
+
+         exit when T = End_Of_Input;
+      end loop;
+   end Parse;
 
    -------------------------
    -- Set_Content_Handler --

@@ -40,4 +40,9 @@ private package Matreshka.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Returns next token.
 
+   procedure Push_Parameter_Entity
+    (Self : not null access SAX_Simple_Reader'Class;
+     Data : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Push text of parameter entity into the scanner's stack.
+
 end Matreshka.SAX.Simple_Readers.Scanner;

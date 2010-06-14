@@ -31,7 +31,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Containers.Vectors;
+
+with League.Strings;
 with Matreshka.SAX.Readers;
+private with Matreshka.Internals.Strings;
+private with Matreshka.Internals.Utf16;
 private with Matreshka.SAX.Default_Handlers;
 
 package Matreshka.SAX.Simple_Readers is
@@ -41,12 +46,33 @@ package Matreshka.SAX.Simple_Readers is
    type SAX_Simple_Reader is
      limited new Matreshka.SAX.Readers.SAX_Reader with private;
 
+   procedure Parse
+    (Self : not null access SAX_Simple_Reader;
+     Data : League.Strings.Universal_String);
+
 private
 
    type Token is
     (End_Of_Input,
      Error,
-     Token_Xml_Decl_Open);
+     Token_Xml_Decl_Open,
+     Token_Pi_Close,
+     Token_Pe_Reference,
+     Token_Doctype_Decl_Open,
+     Token_Entity_Decl_Open,
+     Token_Close);
+
+   type Scanner_State_Information is record
+      Data                : Matreshka.Internals.Strings.Shared_String_Access;
+      YY_Current_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+      YY_Current_Index    : Positive := 1;
+      YY_Start_State      : Integer  := 1;
+      Last_Match          : Boolean  := True;
+      --  This mean that last match need to be processed.
+   end record;
+
+   package Scanner_State_Vectors is
+     new Ada.Containers.Vectors (Positive, Scanner_State_Information);
 
    Default_Handler :
      aliased Matreshka.SAX.Default_Handlers.SAX_Default_Handler;
@@ -55,6 +81,8 @@ private
    type SAX_Simple_Reader is
      limited new Matreshka.SAX.Readers.SAX_Reader with
    record
+      --  Handlers
+
       Content_Handler : Matreshka.SAX.Readers.SAX_Content_Handler_Access
         := Default_Handler'Access;
       Decl_Handler    : Matreshka.SAX.Readers.SAX_Decl_Handler_Access
@@ -65,6 +93,13 @@ private
         := Default_Handler'Access;
       Lexical_Handler : Matreshka.SAX.Readers.SAX_Lexical_Handler_Access
         := Default_Handler'Access;
+
+      --  Scanner state
+
+      Scanner_State   : Scanner_State_Information;
+      Scanner_Stack   : Scanner_State_Vectors.Vector;
+
+      --  Parser state
    end record;
 
    overriding function Content_Handler
