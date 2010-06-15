@@ -5,6 +5,12 @@
 %token Token_Entity_Decl_Open
 %token Token_Close
 %token Token_Name
+%token Token_System
+%token Token_Public
+%token Token_System_Literal
+%token Token_Public_Literal
+%token Token_Internal_Subset_Open
+%token Token_Internal_Subset_Close
 
 {
    type YYSType is null record;
@@ -36,10 +42,46 @@ doctypedecl_optional:
   ;
 
 doctypedecl:
-    Token_Doctype_Decl_Open Token_Close
+    Token_Doctype_Decl_Open Token_Name ExternalID_optional internal_subset_optional Token_Close
 {
    --  Temporal declaration to test parser transformation capabilities.
 
+   null;
+}
+  ;
+
+ExternalID_optional:
+    Token_System Token_System_Literal
+{
+   --  ExternalID specified by SYSTEM, rule [75].
+
+   null;
+}
+  | Token_Public Token_Public_Literal Token_System_Literal
+{
+   --  ExternalID specified by PUBLIC, rule [75].
+
+   null;
+}
+  |
+{
+   null;
+}
+  ;
+
+internal_subset_optional:
+    Token_Internal_Subset_Open intSubset Token_Internal_Subset_Close
+{
+   null;
+}
+  |
+{
+   null;
+}
+  ;
+
+intSubset:
+{
    null;
 }
   ;

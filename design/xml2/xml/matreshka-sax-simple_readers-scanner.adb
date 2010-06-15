@@ -235,7 +235,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  terminator in the internal string representation.
 
                YY_Last_Match_Position := YY_Last_Accepting_Position;
---                 Self.Scanner_State.YY_Current_Position - 1;
                YY_Last_Match_Index := Self.Scanner_State.YY_Current_Index;
                YY_Last_Match_State := YY_Last_Accepting_State;
 --
@@ -315,40 +314,77 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Token_Doctype_Decl_Open;
 
             when 5 =>
+               --  Name of root element type, rule [28].
+            
+               Enter_Start_Condition (Self, DOCTYPE_EXTINT);
+            
+               return Token_Name;
+
+            when 6 =>
                --  Close tag of document type declaration, rule [28].
             
                Enter_Start_Condition (Self, INITIAL);
             
                return Token_Close;
 
-            when 6 =>
-               --  Name of root element type, rule [28].
-            
-               return Token_Name;
-
             when 7 =>
-               return Token_PE_Reference;
+               --  Keyword SYSTEM, rule [75].
+            
+               Enter_Start_Condition (Self, DOCTYPE_EXT_SYS);
+            
+               return Token_System;
 
             when 8 =>
-               --  All white spaces from rules [28] are ignored.
+               --  System literal, rule [11], used in rule [75].
             
-               null;
+               Enter_Start_Condition (Self, DOCTYPE_INT);
+            
+               return Token_System_Literal;
 
             when 9 =>
-               --  XXX Unexpected character
+               --  Keyword PUBLIC, rule [75].
             
-               raise Program_Error with "Unexpected character in DOCTYPE_DECL";
+               Enter_Start_Condition (Self, DOCTYPE_EXT_PUB);
+            
+               return Token_Public;
 
             when 10 =>
-               return Token_Entity_Decl_Open;
+               --  Public id literal, rule [12], used in rule [75].
+            
+               Enter_Start_Condition (Self, DOCTYPE_EXT_SYS);
+            
+               return Token_Public_Literal;
 
             when 11 =>
-               --  Temporary rule to setup scanner transformation properly.
+               --  Open of internal subset declaration, rule [28].
+            
+               return Token_Internal_Subset_Open;
+
+            when 12 =>
+               --  All white spaces from rules [28], [75] are ignored.
             
                null;
---            when 1 => 
-----# line 4 "../xml_scanner.l"
---ECHO;
+
+            when 13 =>
+               raise Program_Error with "Unexpected character in XML_DECL";
+
+            when 14 =>
+               raise Program_Error with "Unexpected character in DOCTYPE_DECL";
+
+            when 15 =>
+               raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
+
+            when 16 =>
+               raise Program_Error with "Unexpected character in DOCTYPE_INT";
+
+            when 17 =>
+               raise Program_Error with "Unexpected character in pubid literal";
+
+            when 18 =>
+               raise Program_Error with "Unexpected character in system literal";
+
+            when 19 =>
+               raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 
 --            =>
 --               return End_Of_Input;

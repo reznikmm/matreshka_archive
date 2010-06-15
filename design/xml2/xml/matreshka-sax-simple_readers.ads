@@ -61,7 +61,13 @@ private
      Token_Doctype_Decl_Open,
      Token_Entity_Decl_Open,
      Token_Close,
-     Token_Name);
+     Token_Name,
+     Token_System,
+     Token_Public,
+     Token_System_Literal,
+     Token_Public_Literal,
+     Token_Internal_Subset_Open,
+     Token_Internal_Subset_Close);
 
    type YYSType is null record;
 

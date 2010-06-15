@@ -275,6 +275,28 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                --  Temporal declaration to test parser transformation capabilities.
             
                null;
+
+            when 6 =>
+               --  ExternalID specified by SYSTEM, rule [75].
+            
+               null;
+
+            when 7 =>
+               --  ExternalID specified by PUBLIC, rule [75].
+            
+               null;
+
+            when 8 =>
+               null;
+
+            when 9 =>
+               null;
+
+            when 10 =>
+               null;
+
+            when 11 =>
+               null;
                when others =>
                   raise Program_Error
                     with "Unhandled state"

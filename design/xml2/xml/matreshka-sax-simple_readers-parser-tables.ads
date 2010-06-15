@@ -51,27 +51,37 @@ private package Matreshka.SAX.Simple_Readers.Parser.Tables is
    YY_Accept_Code       : constant := -3001;
    YY_Error_Code        : constant := -3000;
 
-   YY_Goto_Matrix : constant array (-1 .. 2) of Goto_Entry :=
-    ((   -1,    -1), (   -2,     2), (   -4,     5), (   -3,     7));
+   YY_Goto_Matrix : constant array (-1 .. 5) of Goto_Entry :=
+    ((   -1,    -1), (   -2,     2), (   -4,     5), (   -3,     7),
+     (   -5,    11), (   -6,    15), (   -7,    17));
 
-   YY_Goto_Offset : constant array (0 .. 8) of Integer :=
+   YY_Goto_Offset : constant array (0 .. 19) of Integer :=
     (    0,    1,    1,    1,    3,    3,    3,    3,
-         3);
+         3,    4,    4,    4,    5,    5,    5,    6,
+         6,    6,    6,    6);
 
-   YY_Rule_Length : constant array (0 .. 5) of Integer :=
-    (    2,    3,    0,    1,    0,    2);
+   YY_Rule_Length : constant array (0 .. 11) of Integer :=
+    (    2,    3,    0,    1,    0,    5,    2,    3,
+         0,    3,    0,    0);
 
-   YY_Get_LHS_Rule : constant array (0 .. 5) of Integer :=
-    (   -1,   -2,   -2,   -3,   -3,   -4);
+   YY_Get_LHS_Rule : constant array (0 .. 11) of Integer :=
+    (   -1,   -2,   -2,   -3,   -3,   -4,   -5,   -5,
+        -5,   -6,   -6,   -7);
 
-   YY_Shift_Reduce_Matrix : constant array (-1 .. 13) of Shift_Reduce_Entry :=
+   YY_Shift_Reduce_Matrix : constant array (-1 .. 32) of Shift_Reduce_Entry :=
     ((   -1,    -1), (    2,     1), (   -1,    -2), (    3,     3),
      (   -1, -3000), (    0, -3001), (   -1, -3000), (    5,     6),
-     (   -1,    -4), (   -1, -3000), (   -1,    -3), (    7,     8),
-     (   -1, -3000), (   -1,    -1), (   -1,    -5));
+     (   -1,    -4), (   -1, -3000), (   -1,    -3), (    8,     8),
+     (   -1, -3000), (   -1,    -1), (    9,     9), (   10,    10),
+     (   -1,    -8), (   11,    12), (   -1, -3000), (   12,    13),
+     (   -1, -3000), (   13,    14), (   -1,   -10), (   -1,    -6),
+     (   11,    16), (   -1, -3000), (   -1,   -11), (    7,    18),
+     (   -1, -3000), (   -1,    -7), (   14,    19), (   -1, -3000),
+     (   -1,    -5), (   -1,    -9));
 
-   YY_Shift_Reduce_Offset : constant array (0 .. 8) of Integer :=
+   YY_Shift_Reduce_Offset : constant array (0 .. 19) of Integer :=
     (    0,    2,    4,    6,    8,    9,   10,   12,
-        13);
+        13,   16,   18,   20,   22,   23,   25,   26,
+        28,   29,   31,   32);
 
 end Matreshka.SAX.Simple_Readers.Parser.Tables;
