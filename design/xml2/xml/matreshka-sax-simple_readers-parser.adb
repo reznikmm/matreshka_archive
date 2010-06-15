@@ -38,63 +38,53 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    use Matreshka.SAX.Simple_Readers.Parser.Tables;
 
+   function YY_Goto_State (State : Integer; Sym : Integer) return Integer;
+   --  Lookup for next state.
+
+   function YY_Parse_Action (State : Natural; T : Token) return Integer;
+   --  Lookup for parser action.
+
+   -------------------
+   -- YY_Goto_State --
+   -------------------
+
+   function YY_Goto_State (State : Integer; Sym : Integer) return Integer is
+      Index : Integer := YY_Goto_Offset (State);
+
+   begin
+      while YY_Goto_Matrix (Index).Nonterm /= Sym loop
+         Index := Index + 1;
+      end loop;
+
+      return YY_Goto_Matrix (Index).Newstate;
+   end YY_Goto_State;
+
+   ---------------------
+   -- YY_Parse_Action --
+   ---------------------
+
+   function YY_Parse_Action (State : Natural; T : Token) return Integer is
+      Tok_Pos  : constant Integer := Token'Pos (T);
+      Index    : Integer          := YY_Shift_Reduce_Offset (State);
+
+   begin
+      while YY_Shift_Reduce_Matrix (Index).T /= Tok_Pos
+        and then YY_Shift_Reduce_Matrix (Index).T /= YY_Default
+      loop
+         Index := Index + 1;
+      end loop;
+
+      return YY_Shift_Reduce_Matrix (Index).Act;
+   end YY_Parse_Action;
+
    -------------
    -- YYParse --
    -------------
 
    procedure YYParse (Self : not null access SAX_Simple_Reader) is
 --
---   -- Rename User Defined Packages to Internal Names.
---    package yy_goto_tables         renames
---      Xml_Parser.Goto_Table;
---    package yy_shift_reduce_tables renames
---      Xml_Parser.Shift_Reduce;
---    package yy_tokens              renames
---      Xml_Parser_Tokens;
---
---   use yy_tokens, yy_goto_tables, yy_shift_reduce_tables;
---
 --   procedure yyerrok;
 --   procedure yyclearin;
-
-      function YY_Goto_State (State : Integer; Sym : Integer) return Integer;
-      --  Lookup for next state.
-
-      function YY_Parse_Action (State : Natural; T : Token) return Integer;
-      --  Lookup for parser action.
-
-      -------------------
-      -- YY_Goto_State --
-      -------------------
-
-      function YY_Goto_State (State : Integer; Sym : Integer) return Integer is
-         Index : Integer := YY_Goto_Offset (State);
-
-      begin
-         while YY_Goto_Matrix (Index).Nonterm /= Sym loop
-            Index := Index + 1;
-         end loop;
-
-         return YY_Goto_Matrix (Index).Newstate;
-      end YY_Goto_State;
-
-      ---------------------
-      -- YY_Parse_Action --
-      ---------------------
-
-      function YY_Parse_Action (State : Natural; T : Token) return Integer is
-         Tok_Pos  : constant Integer := Token'Pos (T);
-         Index    : Integer          := YY_Shift_Reduce_Offset (State);
-
-      begin
-         while YY_Shift_Reduce_Matrix (Index).T /= Tok_Pos
-           and then YY_Shift_Reduce_Matrix (Index).T /= YY_Default
-         loop
-            Index := Index + 1;
-         end loop;
-
-         return YY_Shift_Reduce_Matrix (Index).Act;
-      end YY_Parse_Action;
 
 ---- error recovery stuff
 --
