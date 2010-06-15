@@ -46,6 +46,19 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    pragma Inline (Enter_Start_Condition);
    --  Enter a start condition.
 
+   procedure Set_Continue_State
+    (Self  : not null access SAX_Simple_Reader'Class;
+     State : Integer);
+   pragma Inline (Set_Continue_State);
+   --  Set scanner's state to be used after completion of recognition of
+   --  current template sequence.
+
+   function Get_Continue_State
+    (Self : not null access SAX_Simple_Reader'Class) return Integer;
+   pragma Inline (Set_Continue_State);
+   --  Get scanner's state to be used after completion of recognition of
+   --  current template sequence.
+
    ---------------------------
    -- Enter_Start_Condition --
    ---------------------------
@@ -56,6 +69,16 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    begin
       Self.Scanner_State.YY_Start_State := 1 + 2 * State;
    end Enter_Start_Condition;
+
+   ------------------------
+   -- Get_Continue_State --
+   ------------------------
+
+   function Get_Continue_State
+    (Self : not null access SAX_Simple_Reader'Class) return Integer is
+   begin
+      return Self.Continue_State;
+   end Get_Continue_State;
 
    ---------------------------
    -- Push_Parameter_Entity --
@@ -70,6 +93,17 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Scanner_State := (Data, others => <>);
       Enter_Start_Condition (Self, DOCTYPE_DECL);
    end Push_Parameter_Entity;
+
+   ------------------------
+   -- Set_Continue_State --
+   ------------------------
+
+   procedure Set_Continue_State
+    (Self  : not null access SAX_Simple_Reader'Class;
+     State : Integer) is
+   begin
+      Self.Continue_State := State;
+   end Set_Continue_State;
 
    -----------
    -- YYLex --

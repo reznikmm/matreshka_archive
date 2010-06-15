@@ -112,6 +112,7 @@ private
 
       YYVal           : YYSType;
       YYLVal          : YYSType;
+      Continue_State  : Integer;
    end record;
 
    overriding function Content_Handler

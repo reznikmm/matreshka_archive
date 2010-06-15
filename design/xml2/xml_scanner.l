@@ -18,8 +18,12 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 %s DOCTYPE_DECL
 %s DOCTYPE_EXTINT
 %s DOCTYPE_INT
-%s DOCTYPE_EXT_SYS
-%s DOCTYPE_EXT_PUB
+--  Factored out processing for ExternalID, rule [75]. When PUBLIC or SYSTEM
+--  word is recognized, scanner must be switched to EXTERNAL_ID_PUB or
+--  EXTERNAL_ID_SYS state and set state to which scanner is returned after
+--  recognition of id.
+%s EXTERNAL_ID_SYS
+%s EXTERNAL_ID_PUB
 
 %%
 
@@ -68,15 +72,16 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 <DOCTYPE_EXTINT>"SYSTEM" {
    --  Keyword SYSTEM, rule [75].
 
-   Enter_Start_Condition (Self, DOCTYPE_EXT_SYS);
+   Set_Continue_State (Self, DOCTYPE_INT);
+   Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
 
    return Token_System;
 }
 
-<DOCTYPE_EXT_SYS>\"[^"]*\"|\'[^']*\' {
+<EXTERNAL_ID_SYS>\"[^"]*\"|\'[^']*\' {
    --  System literal, rule [11], used in rule [75].
 
-   Enter_Start_Condition (Self, DOCTYPE_INT);
+   Enter_Start_Condition (Self, Get_Continue_State (Self));
 
    return Token_System_Literal;
 }
@@ -84,15 +89,16 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 <DOCTYPE_EXTINT>"PUBLIC" {
    --  Keyword PUBLIC, rule [75].
 
-   Enter_Start_Condition (Self, DOCTYPE_EXT_PUB);
+   Set_Continue_State (Self, DOCTYPE_INT);
+   Enter_Start_Condition (Self, EXTERNAL_ID_PUB);
 
    return Token_Public;
 }
 
-<DOCTYPE_EXT_PUB>\"{PUBID_CHAR}*\"|\'{PUBID_CHAR_NO_QUOTATION}*\' {
+<EXTERNAL_ID_PUB>\"{PUBID_CHAR}*\"|\'{PUBID_CHAR_NO_QUOTATION}*\' {
    --  Public id literal, rule [12], used in rule [75].
 
-   Enter_Start_Condition (Self, DOCTYPE_EXT_SYS);
+   Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
 
    return Token_Public_Literal;
 }
@@ -107,7 +113,7 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 --   return Token_PE_Reference;
 --}
 
-<DOCTYPE_DECL,DOCTYPE_EXTINT,DOCTYPE_EXT_SYS,DOCTYPE_EXT_PUB,DOCTYPE_INT>{WHITE_SPACE} {
+<DOCTYPE_DECL,DOCTYPE_EXTINT,EXTERNAL_ID_SYS,EXTERNAL_ID_PUB,DOCTYPE_INT>{WHITE_SPACE} {
    --  All white spaces from rules [28], [75] are ignored.
 
    null;
@@ -129,11 +135,11 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    raise Program_Error with "Unexpected character in DOCTYPE_INT";
 }
 
-<DOCTYPE_EXT_PUB>. {
+<EXTERNAL_ID_PUB>. {
    raise Program_Error with "Unexpected character in pubid literal";
 }
 
-<DOCTYPE_EXT_SYS>. {
+<EXTERNAL_ID_SYS>. {
    raise Program_Error with "Unexpected character in system literal";
 }
 
@@ -157,5 +163,11 @@ with Ada.Wide_Wide_Text_IO;
 
    procedure Enter_Start_Condition
     (Self : access Integer; State : Integer) is separate;
+
+   procedure Set_Continue_State
+    (Self : access Integer; State : Integer) is separate;
+
+   function Get_Continue_State
+    (Self : access Integer) return Integer is separate;
 
    Self : access Integer;

@@ -46,6 +46,19 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    pragma Inline (Enter_Start_Condition);
    --  Enter a start condition.
 
+   procedure Set_Continue_State
+    (Self  : not null access SAX_Simple_Reader'Class;
+     State : Integer);
+   pragma Inline (Set_Continue_State);
+   --  Set scanner's state to be used after completion of recognition of
+   --  current template sequence.
+
+   function Get_Continue_State
+    (Self : not null access SAX_Simple_Reader'Class) return Integer;
+   pragma Inline (Set_Continue_State);
+   --  Get scanner's state to be used after completion of recognition of
+   --  current template sequence.
+
    ---------------------------
    -- Enter_Start_Condition --
    ---------------------------
@@ -56,6 +69,16 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    begin
       Self.Scanner_State.YY_Start_State := 1 + 2 * State;
    end Enter_Start_Condition;
+
+   ------------------------
+   -- Get_Continue_State --
+   ------------------------
+
+   function Get_Continue_State
+    (Self : not null access SAX_Simple_Reader'Class) return Integer is
+   begin
+      return Self.Continue_State;
+   end Get_Continue_State;
 
    ---------------------------
    -- Push_Parameter_Entity --
@@ -71,6 +94,17 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Enter_Start_Condition (Self, DOCTYPE_DECL);
    end Push_Parameter_Entity;
 
+   ------------------------
+   -- Set_Continue_State --
+   ------------------------
+
+   procedure Set_Continue_State
+    (Self  : not null access SAX_Simple_Reader'Class;
+     State : Integer) is
+   begin
+      Self.Continue_State := State;
+   end Set_Continue_State;
+
    -----------
    -- YYLex --
    -----------
@@ -78,19 +112,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    function YYLex
     (Self : not null access SAX_Simple_Reader'Class) return Token
    is
-      procedure Enter_Start_Condition (State : Integer);
-      pragma Inline (Enter_Start_Condition);
-      --  Enter a start condition.
-
-      ---------------------------
-      -- Enter_Start_Condition --
-      ---------------------------
-
-      procedure Enter_Start_Condition (State : Integer) is
-      begin
-         Self.Scanner_State.YY_Start_State := 1 + 2 * State;
-      end Enter_Start_Condition;
-
       YY_Action                  : Integer;
       YY_Base_Position           : Utf16_String_Index;
       YY_Base_Index              : Positive;
@@ -330,28 +351,30 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 7 =>
                --  Keyword SYSTEM, rule [75].
             
-               Enter_Start_Condition (Self, DOCTYPE_EXT_SYS);
+               Set_Continue_State (Self, DOCTYPE_INT);
+               Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
             
                return Token_System;
 
             when 8 =>
                --  System literal, rule [11], used in rule [75].
             
-               Enter_Start_Condition (Self, DOCTYPE_INT);
+               Enter_Start_Condition (Self, Get_Continue_State (Self));
             
                return Token_System_Literal;
 
             when 9 =>
                --  Keyword PUBLIC, rule [75].
             
-               Enter_Start_Condition (Self, DOCTYPE_EXT_PUB);
+               Set_Continue_State (Self, DOCTYPE_INT);
+               Enter_Start_Condition (Self, EXTERNAL_ID_PUB);
             
                return Token_Public;
 
             when 10 =>
                --  Public id literal, rule [12], used in rule [75].
             
-               Enter_Start_Condition (Self, DOCTYPE_EXT_SYS);
+               Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
             
                return Token_Public_Literal;
 

@@ -53,8 +53,8 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Tables is
    DOCTYPE_DECL    : constant := 2;
    DOCTYPE_EXTINT  : constant := 3;
    DOCTYPE_INT     : constant := 4;
-   DOCTYPE_EXT_SYS : constant := 5;
-   DOCTYPE_EXT_PUB : constant := 6;
+   EXTERNAL_ID_SYS : constant := 5;
+   EXTERNAL_ID_PUB : constant := 6;
 
    YY_Accept : constant array (0 .. 82) of Integer :=
     (    0,    0,    0,    0,    0,    0,    0,    0,
