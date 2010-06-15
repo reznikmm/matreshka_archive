@@ -11,14 +11,19 @@ NAME		[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF
 --
 --  [13] PubidChar ::= #x20 | #xD | #xA | [a-zA-Z0-9] | [-'()+,./:=?;!*#@$_%]
 --
-PUBID_CHAR		[-'()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
-PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
+PUBID_CHAR			[-'()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
+PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 
 %s XML_DECL
 %s DOCTYPE_DECL
 %s DOCTYPE_EXTINT
 %s DOCTYPE_INT
 %s DOCTYPE_INTSUBSET
+%s ENTITY_DECL
+%s ENTITY_DEF
+%s ENTITY_NDATA
+%s ENTITY_VALUE_QUOTATION
+%s ENTITY_VALUE_APOSTROPHE
 --  Factored out processing for ExternalID, rule [75]. When PUBLIC or SYSTEM
 --  word is recognized, scanner must be switched to EXTERNAL_ID_PUB or
 --  EXTERNAL_ID_SYS state and set state to which scanner is returned after
@@ -74,6 +79,7 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    --  Keyword SYSTEM, rule [75].
 
    Set_Continue_State (Self, DOCTYPE_INT);
+   Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
 
    return Token_System;
@@ -82,6 +88,12 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 <EXTERNAL_ID_SYS>\"[^"]*\"|\'[^']*\' {
    --  System literal, rule [11], used in rule [75].
 
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error with "no whitespace before system literal";
+      --  XXX This is recoverable error.
+   end if;
+
+   Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, Get_Continue_State (Self));
 
    return Token_System_Literal;
@@ -91,14 +103,21 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    --  Keyword PUBLIC, rule [75].
 
    Set_Continue_State (Self, DOCTYPE_INT);
+   Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, EXTERNAL_ID_PUB);
 
    return Token_Public;
 }
 
-<EXTERNAL_ID_PUB>\"{PUBID_CHAR}*\"|\'{PUBID_CHAR_NO_QUOTATION}*\' {
+<EXTERNAL_ID_PUB>\"{PUBID_CHAR}*\"|\'{PUBID_CHAR_NO_APOSTROPHE}*\' {
    --  Public id literal, rule [12], used in rule [75].
 
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error with "no whitespace before pubid literal";
+      --  XXX This is recoverable error.
+   end if;
+
+   Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
 
    return Token_Public_Literal;
@@ -120,14 +139,161 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    return Token_Internal_Subset_Close;
 }
 
+<DOCTYPE_INTSUBSET>"<!ENTITY" {
+   --  Open of entity declaration, rules [71], [72].
+
+   Enter_Start_Condition (Self, ENTITY_DECL);
+   Reset_Whitespace_Matched (Self);
+
+   return Token_Entity_Decl_Open;
+}
+
+<ENTITY_DECL>{NAME} {
+   --  Name in entity declaration, rules [71], [72].
+
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error
+        with "no whitespace before name in entity declaration";
+      --  XXX This is recoverable error.
+   end if;
+
+   Reset_Whitespace_Matched (Self);
+   Enter_Start_Condition (Self, ENTITY_DEF);
+
+   return Token_Name;
+}
+
+<ENTITY_DECL>"%" {
+   --  Percent mark in parameter entity declaration, rule [72].
+
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error
+        with "no whitespace before percent in parameter entity declaration";
+      --  XXX This is recoverable error.
+   end if;
+
+   Reset_Whitespace_Matched (Self);
+
+   return Token_Percent;
+}
+
+<ENTITY_DEF>">" {
+   --  Close token of entity declaration, rules [71], [72].
+
+   Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
+
+   return Token_Close;
+}
+
+<ENTITY_DEF>\" {
+   --  Entity value, rule [9].
+
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error with "no whitespace before entity value";
+      --  XXX This is recoverable error.
+   end if;
+
+   Reset_Whitespace_Matched (Self);
+   Enter_Start_Condition (Self, ENTITY_VALUE_QUOTATION);
+
+   return Token_Entity_Value_Open;
+}
+
+<ENTITY_DEF>\' {
+   --  Entity value, rule [9].
+
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error with "no whitespace before entity value";
+      --  XXX This is recoverable error.
+   end if;
+
+   Reset_Whitespace_Matched (Self);
+   Enter_Start_Condition (Self, ENTITY_VALUE_APOSTROPHE);
+
+   return Token_Entity_Value_Open;
+}
+
+<ENTITY_DEF>"SYSTEM" {
+   --  Entity value as ExternalID, rule [75], used by rules [73], [74].
+
+   Set_Continue_State (Self, ENTITY_DEF);
+   Reset_Whitespace_Matched (Self);
+   Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
+
+   return Token_System;
+}
+
+<ENTITY_DEF>"PUBLIC" {
+   --  Entity value as ExternalID, rule [75], used by rules [73], [74].
+
+   Set_Continue_State (Self, ENTITY_DEF);
+   Reset_Whitespace_Matched (Self);
+   Enter_Start_Condition (Self, EXTERNAL_ID_PUB);
+
+   return Token_Public;
+}
+
+<ENTITY_DEF>"NDATA" {
+   --  NDATA keyword, rule [76].
+
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error with "no whitespace before NDATA";
+      --  XXX This is recoverable error.
+   end if;
+
+   Enter_Start_Condition (Self, ENTITY_NDATA);
+
+   return Token_NData;
+}
+
+<ENTITY_NDATA>{NAME} {
+   --  Name of NDATA, rule [76].
+
+   Enter_Start_Condition (Self, ENTITY_DEF);
+
+   return Token_Name;
+}
+
+<ENTITY_VALUE_QUOTATION>[^%&"]+ {
+   return Token_String_Segment;
+}
+
+<ENTITY_VALUE_APOSTROPHE>[^%&']+ {
+   return Token_String_Segment;
+}
+
+<ENTITY_VALUE_QUOTATION>\" {
+   --  Close of entity value, rule [9].
+
+   Enter_Start_Condition (Self, ENTITY_DEF);
+
+   return Token_Entity_Value_Close;
+}
+
+<ENTITY_VALUE_APOSTROPHE>\' {
+   --  Close of entity value, rule [9].
+
+   Enter_Start_Condition (Self, ENTITY_DEF);
+
+   return Token_Entity_Value_Close;
+}
+
 --<DOCTYPE_DECL>"%"{NAME}";" {
 --   return Token_PE_Reference;
 --}
 
-<DOCTYPE_DECL,DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET,EXTERNAL_ID_SYS,EXTERNAL_ID_PUB>{WHITE_SPACE} {
-   --  All white spaces from rules [28], [75] are ignored.
+<DOCTYPE_DECL,DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET,ENTITY_NDATA>{WHITE_SPACE} {
+   --  All white spaces from rules [28] are ignored.
+   --  Whitespace before name in rule [76] is ignored.
 
    null;
+}
+
+<EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF>{WHITE_SPACE} {
+   --  White spaces in entity declaration are not optional, rules [71], [72],
+   --  [75].
+
+   Set_Whitespace_Matched (Self);
 }
 
 <XML_DECL>. {
@@ -148,6 +314,18 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 
 <DOCTYPE_INTSUBSET>. {
    raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
+}
+
+<ENTITY_DECL>. {
+   raise Program_Error with "Unexpected character in ENTITY_DECL";
+}
+
+<ENTITY_DEF>. {
+   raise Program_Error with "Unexpected character in ENTITY_DEF";
+}
+
+<ENTITY_NDATA>. {
+   raise Program_Error with "Unexpected character in ENTITY_NDATA";
 }
 
 <EXTERNAL_ID_PUB>. {
@@ -184,5 +362,12 @@ with Ada.Wide_Wide_Text_IO;
 
    function Get_Continue_State
     (Self : access Integer) return Integer is separate;
+
+   procedure Set_Whitespace_Matched (Self : access Integer) is separate;
+
+   function Get_Whitespace_Matched
+    (Self : access Integer) return Boolean is separate;
+
+   procedure Reset_Whitespace_Matched (Self : access Integer) is separate;
 
    Self : access Integer;

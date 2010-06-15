@@ -11,6 +11,11 @@
 %token Token_Public_Literal
 %token Token_Internal_Subset_Open
 %token Token_Internal_Subset_Close
+%token Token_Percent
+%token Token_Entity_Value_Open
+%token Token_Entity_Value_Close
+%token Token_String_Segment
+%token Token_NData
 
 {
    type YYSType is null record;
@@ -51,6 +56,17 @@ doctypedecl:
   ;
 
 ExternalID_optional:
+    ExternalID
+{
+   null;
+}
+  |
+{
+   null;
+}
+  ;
+
+ExternalID:
     Token_System Token_System_Literal
 {
    --  ExternalID specified by SYSTEM, rule [75].
@@ -63,14 +79,25 @@ ExternalID_optional:
 
    null;
 }
+  ;
+
+internal_subset_optional:
+    Token_Internal_Subset_Open intSubset_any Token_Internal_Subset_Close
+{
+   null;
+}
   |
 {
    null;
 }
   ;
 
-internal_subset_optional:
-    Token_Internal_Subset_Open intSubset Token_Internal_Subset_Close
+intSubset_any:
+    intSubset
+{
+   null;
+}
+  | intSubset_any intSubset
 {
    null;
 }
@@ -81,6 +108,74 @@ internal_subset_optional:
   ;
 
 intSubset:
+    EntityDecl
+{
+   null;
+}
+  ;
+
+EntityDecl:
+    Token_Entity_Decl_Open Token_Name
+{
+   puts ("GE" & ASCII.NUL);
+}
+    EntityDef Token_Close
+{
+   null;
+}
+  | Token_Entity_Decl_Open Token_Percent Token_Name
+{
+   puts ("PE" & ASCII.NUL);
+}
+    PEDef Token_Close
+{
+   null;
+}
+  ;
+
+EntityDef:
+    EntityValue
+{
+   null;
+}
+  | ExternalID
+{
+   null;
+}
+  | ExternalID Token_NData Token_Name
+{
+   null;
+}
+  ;
+
+PEDef:
+    EntityValue
+{
+   null;
+}
+  | ExternalID
+{
+   null;
+}
+  ;
+
+EntityValue:
+    Token_Entity_Value_Open EntityValue_Content Token_Entity_Value_Close
+{
+   null;
+}
+  ;
+
+EntityValue_Content:
+     EntityValue_Content Token_String_Segment
+{
+   null;
+}
+  | Token_String_Segment
+{
+   null;
+}
+  |
 {
    null;
 }
@@ -96,6 +191,8 @@ with Ada.Wide_Wide_Text_IO;
    function YYLex return Token is separate;
 
    procedure YYError (Msg : String) is separate;
+
+   procedure puts (Item : String) is separate;
 
    procedure Parse is
 ##

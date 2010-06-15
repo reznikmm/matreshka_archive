@@ -77,27 +77,34 @@ private
    record
       --  Handlers
 
-      Content_Handler : Matreshka.SAX.Readers.SAX_Content_Handler_Access
+      Content_Handler    : Matreshka.SAX.Readers.SAX_Content_Handler_Access
         := Default_Handler'Access;
-      Decl_Handler    : Matreshka.SAX.Readers.SAX_Decl_Handler_Access
+      Decl_Handler       : Matreshka.SAX.Readers.SAX_Decl_Handler_Access
         := Default_Handler'Access;
-      DTD_Handler     : Matreshka.SAX.Readers.SAX_DTD_Handler_Access
+      DTD_Handler        : Matreshka.SAX.Readers.SAX_DTD_Handler_Access
         := Default_Handler'Access;
-      Error_Handler   : Matreshka.SAX.Readers.SAX_Error_Handler_Access
+      Error_Handler      : Matreshka.SAX.Readers.SAX_Error_Handler_Access
         := Default_Handler'Access;
-      Lexical_Handler : Matreshka.SAX.Readers.SAX_Lexical_Handler_Access
+      Lexical_Handler    : Matreshka.SAX.Readers.SAX_Lexical_Handler_Access
         := Default_Handler'Access;
 
       --  Scanner state
 
-      Scanner_State   : Scanner_State_Information;
-      Scanner_Stack   : Scanner_State_Vectors.Vector;
+      Scanner_State      : Scanner_State_Information;
+      Scanner_Stack      : Scanner_State_Vectors.Vector;
 
       --  Parser state
 
-      YYVal           : YYSType;
-      YYLVal          : YYSType;
-      Continue_State  : Integer;
+      YYVal              : YYSType;
+      YYLVal             : YYSType;
+      Continue_State     : Integer;
+
+      --  Analyzer state
+
+      Whitespace_Matched : Boolean;
+      --  Used to check whether whitespace is used to separate tokens. For
+      --  example, '%' must be separated by whitespace from '<!ENTITY' and
+      --  following name.
    end record;
 
    overriding function Content_Handler

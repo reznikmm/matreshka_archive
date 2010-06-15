@@ -59,6 +59,18 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  Get scanner's state to be used after completion of recognition of
    --  current template sequence.
 
+   procedure Reset_Whitespace_Matched
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Resets "whitespace matched" flag.
+
+   procedure Set_Whitespace_Matched
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Sets "whitespace matched" flag.
+
+   function Get_Whitespace_Matched
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
+   --  Returns value of "whitespace matched" flag.
+
    ---------------------------
    -- Enter_Start_Condition --
    ---------------------------
@@ -80,6 +92,16 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       return Self.Continue_State;
    end Get_Continue_State;
 
+   ----------------------------
+   -- Get_Whitespace_Matched --
+   ----------------------------
+
+   function Get_Whitespace_Matched
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean is
+   begin
+      return Self.Whitespace_Matched;
+   end Get_Whitespace_Matched;
+
    ---------------------------
    -- Push_Parameter_Entity --
    ---------------------------
@@ -94,6 +116,16 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Enter_Start_Condition (Self, DOCTYPE_DECL);
    end Push_Parameter_Entity;
 
+   ------------------------------
+   -- Reset_Whitespace_Matched --
+   ------------------------------
+
+   procedure Reset_Whitespace_Matched
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Self.Whitespace_Matched := False;
+   end Reset_Whitespace_Matched;
+
    ------------------------
    -- Set_Continue_State --
    ------------------------
@@ -104,6 +136,16 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    begin
       Self.Continue_State := State;
    end Set_Continue_State;
+
+   ----------------------------
+   -- Set_Whitespace_Matched --
+   ----------------------------
+
+   procedure Set_Whitespace_Matched
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Self.Whitespace_Matched := True;
+   end Set_Whitespace_Matched;
 
    -----------
    -- YYLex --
@@ -352,6 +394,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Keyword SYSTEM, rule [75].
             
                Set_Continue_State (Self, DOCTYPE_INT);
+               Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
             
                return Token_System;
@@ -359,6 +402,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 8 =>
                --  System literal, rule [11], used in rule [75].
             
+               if not Get_Whitespace_Matched (Self) then
+                  raise Program_Error with "no whitespace before system literal";
+                  --  XXX This is recoverable error.
+               end if;
+            
+               Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, Get_Continue_State (Self));
             
                return Token_System_Literal;
@@ -367,6 +416,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Keyword PUBLIC, rule [75].
             
                Set_Continue_State (Self, DOCTYPE_INT);
+               Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, EXTERNAL_ID_PUB);
             
                return Token_Public;
@@ -374,6 +424,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 10 =>
                --  Public id literal, rule [12], used in rule [75].
             
+               if not Get_Whitespace_Matched (Self) then
+                  raise Program_Error with "no whitespace before pubid literal";
+                  --  XXX This is recoverable error.
+               end if;
+            
+               Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
             
                return Token_Public_Literal;
@@ -393,32 +449,173 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Token_Internal_Subset_Close;
 
             when 13 =>
-               --  All white spaces from rules [28], [75] are ignored.
+               --  Open of entity declaration, rules [71], [72].
+            
+               Enter_Start_Condition (Self, ENTITY_DECL);
+               Reset_Whitespace_Matched (Self);
+            
+               return Token_Entity_Decl_Open;
+
+            when 14 =>
+               --  Name in entity declaration, rules [71], [72].
+            
+               if not Get_Whitespace_Matched (Self) then
+                  raise Program_Error
+                    with "no whitespace before name in entity declaration";
+                  --  XXX This is recoverable error.
+               end if;
+            
+               Reset_Whitespace_Matched (Self);
+               Enter_Start_Condition (Self, ENTITY_DEF);
+            
+               return Token_Name;
+
+            when 15 =>
+               --  Percent mark in parameter entity declaration, rule [72].
+            
+               if not Get_Whitespace_Matched (Self) then
+                  raise Program_Error
+                    with "no whitespace before percent in parameter entity declaration";
+                  --  XXX This is recoverable error.
+               end if;
+            
+               Reset_Whitespace_Matched (Self);
+            
+               return Token_Percent;
+
+            when 16 =>
+               --  Close token of entity declaration, rules [71], [72].
+            
+               Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
+            
+               return Token_Close;
+
+            when 17 =>
+               --  Entity value, rule [9].
+            
+               if not Get_Whitespace_Matched (Self) then
+                  raise Program_Error with "no whitespace before entity value";
+                  --  XXX This is recoverable error.
+               end if;
+            
+               Reset_Whitespace_Matched (Self);
+               Enter_Start_Condition (Self, ENTITY_VALUE_QUOTATION);
+            
+               return Token_Entity_Value_Open;
+
+            when 18 =>
+               --  Entity value, rule [9].
+            
+               if not Get_Whitespace_Matched (Self) then
+                  raise Program_Error with "no whitespace before entity value";
+                  --  XXX This is recoverable error.
+               end if;
+            
+               Reset_Whitespace_Matched (Self);
+               Enter_Start_Condition (Self, ENTITY_VALUE_APOSTROPHE);
+            
+               return Token_Entity_Value_Open;
+
+            when 19 =>
+               --  Entity value as ExternalID, rule [75], used by rules [73], [74].
+            
+               Set_Continue_State (Self, ENTITY_DEF);
+               Reset_Whitespace_Matched (Self);
+               Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
+            
+               return Token_System;
+
+            when 20 =>
+               --  Entity value as ExternalID, rule [75], used by rules [73], [74].
+            
+               Set_Continue_State (Self, ENTITY_DEF);
+               Reset_Whitespace_Matched (Self);
+               Enter_Start_Condition (Self, EXTERNAL_ID_PUB);
+            
+               return Token_Public;
+
+            when 21 =>
+               --  NDATA keyword, rule [76].
+            
+               if not Get_Whitespace_Matched (Self) then
+                  raise Program_Error with "no whitespace before NDATA";
+                  --  XXX This is recoverable error.
+               end if;
+            
+               Enter_Start_Condition (Self, ENTITY_NDATA);
+            
+               return Token_NData;
+
+            when 22 =>
+               --  Name of NDATA, rule [76].
+            
+               Enter_Start_Condition (Self, ENTITY_DEF);
+            
+               return Token_Name;
+
+            when 23 =>
+               return Token_String_Segment;
+
+            when 24 =>
+               return Token_String_Segment;
+
+            when 25 =>
+               --  Close of entity value, rule [9].
+            
+               Enter_Start_Condition (Self, ENTITY_DEF);
+            
+               return Token_Entity_Value_Close;
+
+            when 26 =>
+               --  Close of entity value, rule [9].
+            
+               Enter_Start_Condition (Self, ENTITY_DEF);
+            
+               return Token_Entity_Value_Close;
+
+            when 27 =>
+               --  All white spaces from rules [28] are ignored.
+               --  Whitespace before name in rule [76] is ignored.
             
                null;
 
-            when 14 =>
+            when 28 =>
+               --  White spaces in entity declaration are not optional, rules [71], [72],
+               --  [75].
+            
+               Set_Whitespace_Matched (Self);
+
+            when 29 =>
                raise Program_Error with "Unexpected character in XML_DECL";
 
-            when 15 =>
+            when 30 =>
                raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 
-            when 16 =>
+            when 31 =>
                raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
-            when 17 =>
+            when 32 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INT";
 
-            when 18 =>
+            when 33 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
-            when 19 =>
+            when 34 =>
+               raise Program_Error with "Unexpected character in ENTITY_DECL";
+
+            when 35 =>
+               raise Program_Error with "Unexpected character in ENTITY_DEF";
+
+            when 36 =>
+               raise Program_Error with "Unexpected character in ENTITY_NDATA";
+
+            when 37 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 20 =>
+            when 38 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 21 =>
+            when 39 =>
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 
 --            =>

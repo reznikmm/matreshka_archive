@@ -277,25 +277,76 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 6 =>
+               null;
+
+            when 7 =>
+               null;
+
+            when 8 =>
                --  ExternalID specified by SYSTEM, rule [75].
             
                null;
 
-            when 7 =>
+            when 9 =>
                --  ExternalID specified by PUBLIC, rule [75].
             
-               null;
-
-            when 8 =>
-               null;
-
-            when 9 =>
                null;
 
             when 10 =>
                null;
 
             when 11 =>
+               null;
+
+            when 12 =>
+               null;
+
+            when 13 =>
+               null;
+
+            when 14 =>
+               null;
+
+            when 15 =>
+               null;
+
+            when 16 =>
+               puts ("GE" & ASCII.NUL);
+
+            when 17 =>
+               null;
+
+            when 18 =>
+               puts ("PE" & ASCII.NUL);
+
+            when 19 =>
+               null;
+
+            when 20 =>
+               null;
+
+            when 21 =>
+               null;
+
+            when 22 =>
+               null;
+
+            when 23 =>
+               null;
+
+            when 24 =>
+               null;
+
+            when 25 =>
+               null;
+
+            when 26 =>
+               null;
+
+            when 27 =>
+               null;
+
+            when 28 =>
                null;
                when others =>
                   raise Program_Error
