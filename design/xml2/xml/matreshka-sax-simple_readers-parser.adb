@@ -253,7 +253,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
          else  --  REDUCE
             --  Convert action into a rule.
 
-            YY_Rule_Id := -1 * YY_Action;
+            YY_Rule_Id := -YY_Action;
 
             --  Execute User Action.
 
