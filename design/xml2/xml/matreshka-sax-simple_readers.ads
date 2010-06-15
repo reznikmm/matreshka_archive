@@ -60,7 +60,10 @@ private
      Token_Pe_Reference,
      Token_Doctype_Decl_Open,
      Token_Entity_Decl_Open,
-     Token_Close);
+     Token_Close,
+     Token_Name);
+
+   type YYSType is null record;
 
    type Scanner_State_Information is record
       Data                : Matreshka.Internals.Strings.Shared_String_Access;
@@ -100,6 +103,9 @@ private
       Scanner_Stack   : Scanner_State_Vectors.Vector;
 
       --  Parser state
+
+      YYVal           : YYSType;
+      YYLVal          : YYSType;
    end record;
 
    overriding function Content_Handler

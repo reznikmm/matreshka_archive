@@ -32,25 +32,41 @@ NAME		[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF
 }
 
 "<!DOCTYPE" {
+   --  Open tag of document type declaration, rule [28].
+
    Enter_Start_Condition (Self, DOCTYPE_DECL);
 
    return Token_Doctype_Decl_Open;
 }
 
 <DOCTYPE_DECL>">" {
+   --  Close tag of document type declaration, rule [28].
+
    Enter_Start_Condition (Self, INITIAL);
 
    return Token_Close;
+}
+
+<DOCTYPE_DECL>{NAME} {
+   --  Name of root element type, rule [28].
+
+   return Token_Name;
 }
 
 <DOCTYPE_DECL>"%"{NAME}";" {
    return Token_PE_Reference;
 }
 
-<DOCTYPE_DECL>{WHITE_SPACE}+ {
+<DOCTYPE_DECL>{WHITE_SPACE} {
    --  All white spaces from rules [28] are ignored.
 
    null;
+}
+
+<DOCTYPE_DECL>. {
+   --  XXX Unexpected character
+
+   raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 }
 
 <DOCTYPE_DECL>"<!ENTITY" {

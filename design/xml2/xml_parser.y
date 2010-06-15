@@ -4,6 +4,7 @@
 %token Token_Doctype_Decl_Open
 %token Token_Entity_Decl_Open
 %token Token_Close
+%token Token_Name
 
 {
    type YYSType is null record;
@@ -11,9 +12,36 @@
 
 %%
 
+--  XXX Not implemented.
 document:
-    Token_Xml_Decl_Open
+    Token_Xml_Decl_Open Token_PI_Close doctypedecl_optional
+{
+   null;
+}
   |
+{
+   null;
+}
+  ;
+
+doctypedecl_optional:
+    doctypedecl
+{
+   null;
+}
+  |
+{
+   null;
+}
+  ;
+
+doctypedecl:
+    Token_Doctype_Decl_Open Token_Close
+{
+   --  Temporal declaration to test parser transformation capabilities.
+
+   null;
+}
   ;
 
 %%

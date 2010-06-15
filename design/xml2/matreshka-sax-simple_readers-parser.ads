@@ -36,4 +36,7 @@ private package Matreshka.SAX.Simple_Readers.Parser is
 
    pragma Preelaborate;
 
+   procedure YYParse (Self : not null access SAX_Simple_Reader);
+   --  Parse XML document.
+
 end Matreshka.SAX.Simple_Readers.Parser;

@@ -51,23 +51,27 @@ private package Matreshka.SAX.Simple_Readers.Parser.Tables is
    YY_Accept_Code       : constant := -3001;
    YY_Error_Code        : constant := -3000;
 
-   YY_Goto_Matrix : constant array (-1 .. 0) of Goto_Entry :=
-    ((   -1,    -1), (   -2,     2));
+   YY_Goto_Matrix : constant array (-1 .. 2) of Goto_Entry :=
+    ((   -1,    -1), (   -2,     2), (   -4,     5), (   -3,     7));
 
-   YY_Goto_Offset : constant array (0 .. 3) of Integer :=
-    (    0,    1,    1,    1);
+   YY_Goto_Offset : constant array (0 .. 8) of Integer :=
+    (    0,    1,    1,    1,    3,    3,    3,    3,
+         3);
 
-   YY_Rule_Length : constant array (0 .. 2) of Integer :=
-    (    2,    1,    0);
+   YY_Rule_Length : constant array (0 .. 5) of Integer :=
+    (    2,    3,    0,    1,    0,    2);
 
-   YY_Get_LHS_Rule : constant array (0 .. 2) of Integer :=
-    (   -1,   -2,   -2);
+   YY_Get_LHS_Rule : constant array (0 .. 5) of Integer :=
+    (   -1,   -2,   -2,   -3,   -3,   -4);
 
-   YY_Shift_Reduce_Matrix : constant array (-1 .. 5) of Shift_Reduce_Entry :=
-    ((   -1,    -1), (    2,     1), (   -1,    -2), (   -1,    -1),
-     (    0, -3001), (   -1, -3000), (   -1, -3000));
+   YY_Shift_Reduce_Matrix : constant array (-1 .. 13) of Shift_Reduce_Entry :=
+    ((   -1,    -1), (    2,     1), (   -1,    -2), (    3,     3),
+     (   -1, -3000), (    0, -3001), (   -1, -3000), (    5,     6),
+     (   -1,    -4), (   -1, -3000), (   -1,    -3), (    7,     8),
+     (   -1, -3000), (   -1,    -1), (   -1,    -5));
 
-   YY_Shift_Reduce_Offset : constant array (0 .. 3) of Integer :=
-    (    0,    2,    3,    5);
+   YY_Shift_Reduce_Offset : constant array (0 .. 8) of Integer :=
+    (    0,    2,    4,    6,    8,    9,   10,   12,
+        13);
 
 end Matreshka.SAX.Simple_Readers.Parser.Tables;

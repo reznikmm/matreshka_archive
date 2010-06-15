@@ -308,27 +308,41 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                null;
 
             when 4 =>
+               --  Open tag of document type declaration, rule [28].
+            
                Enter_Start_Condition (Self, DOCTYPE_DECL);
             
                return Token_Doctype_Decl_Open;
 
             when 5 =>
+               --  Close tag of document type declaration, rule [28].
+            
                Enter_Start_Condition (Self, INITIAL);
             
                return Token_Close;
 
             when 6 =>
-               return Token_PE_Reference;
+               --  Name of root element type, rule [28].
+            
+               return Token_Name;
 
             when 7 =>
+               return Token_PE_Reference;
+
+            when 8 =>
                --  All white spaces from rules [28] are ignored.
             
                null;
 
-            when 8 =>
+            when 9 =>
+               --  XXX Unexpected character
+            
+               raise Program_Error with "Unexpected character in DOCTYPE_DECL";
+
+            when 10 =>
                return Token_Entity_Decl_Open;
 
-            when 9 =>
+            when 11 =>
                --  Temporary rule to setup scanner transformation properly.
             
                null;

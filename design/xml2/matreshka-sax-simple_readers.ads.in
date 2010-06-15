@@ -54,6 +54,8 @@ private
 
 %%
 
+   type YYSType is null record;
+
    type Scanner_State_Information is record
       Data                : Matreshka.Internals.Strings.Shared_String_Access;
       YY_Current_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
@@ -92,6 +94,9 @@ private
       Scanner_Stack   : Scanner_State_Vectors.Vector;
 
       --  Parser state
+
+      YYVal           : YYSType;
+      YYLVal          : YYSType;
    end record;
 
    overriding function Content_Handler
