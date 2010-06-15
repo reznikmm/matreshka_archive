@@ -18,6 +18,7 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 %s DOCTYPE_DECL
 %s DOCTYPE_EXTINT
 %s DOCTYPE_INT
+%s DOCTYPE_INTSUBSET
 --  Factored out processing for ExternalID, rule [75]. When PUBLIC or SYSTEM
 --  word is recognized, scanner must be switched to EXTERNAL_ID_PUB or
 --  EXTERNAL_ID_SYS state and set state to which scanner is returned after
@@ -106,14 +107,24 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 <DOCTYPE_EXTINT,DOCTYPE_INT>"[" {
    --  Open of internal subset declaration, rule [28].
 
+   Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
+
    return Token_Internal_Subset_Open;
+}
+
+<DOCTYPE_INTSUBSET>"]" {
+   --  Close of internal subset declaration, rule [28].
+
+   Enter_Start_Condition (Self, DOCTYPE_INT);
+
+   return Token_Internal_Subset_Close;
 }
 
 --<DOCTYPE_DECL>"%"{NAME}";" {
 --   return Token_PE_Reference;
 --}
 
-<DOCTYPE_DECL,DOCTYPE_EXTINT,EXTERNAL_ID_SYS,EXTERNAL_ID_PUB,DOCTYPE_INT>{WHITE_SPACE} {
+<DOCTYPE_DECL,DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET,EXTERNAL_ID_SYS,EXTERNAL_ID_PUB>{WHITE_SPACE} {
    --  All white spaces from rules [28], [75] are ignored.
 
    null;
@@ -133,6 +144,10 @@ PUBID_CHAR_NO_QUOTATION	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 
 <DOCTYPE_INT>. {
    raise Program_Error with "Unexpected character in DOCTYPE_INT";
+}
+
+<DOCTYPE_INTSUBSET>. {
+   raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 }
 
 <EXTERNAL_ID_PUB>. {

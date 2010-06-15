@@ -381,32 +381,44 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 11 =>
                --  Open of internal subset declaration, rule [28].
             
+               Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
+            
                return Token_Internal_Subset_Open;
 
             when 12 =>
+               --  Close of internal subset declaration, rule [28].
+            
+               Enter_Start_Condition (Self, DOCTYPE_INT);
+            
+               return Token_Internal_Subset_Close;
+
+            when 13 =>
                --  All white spaces from rules [28], [75] are ignored.
             
                null;
 
-            when 13 =>
+            when 14 =>
                raise Program_Error with "Unexpected character in XML_DECL";
 
-            when 14 =>
+            when 15 =>
                raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 
-            when 15 =>
+            when 16 =>
                raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
-            when 16 =>
+            when 17 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INT";
 
-            when 17 =>
-               raise Program_Error with "Unexpected character in pubid literal";
-
             when 18 =>
-               raise Program_Error with "Unexpected character in system literal";
+               raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
             when 19 =>
+               raise Program_Error with "Unexpected character in pubid literal";
+
+            when 20 =>
+               raise Program_Error with "Unexpected character in system literal";
+
+            when 21 =>
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 
 --            =>
