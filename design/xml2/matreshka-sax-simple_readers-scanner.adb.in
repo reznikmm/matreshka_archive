@@ -78,19 +78,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    function YYLex
     (Self : not null access SAX_Simple_Reader'Class) return Token
    is
-      procedure Enter_Start_Condition (State : Integer);
-      pragma Inline (Enter_Start_Condition);
-      --  Enter a start condition.
-
-      ---------------------------
-      -- Enter_Start_Condition --
-      ---------------------------
-
-      procedure Enter_Start_Condition (State : Integer) is
-      begin
-         Self.Scanner_State.YY_Start_State := 1 + 2 * State;
-      end Enter_Start_Condition;
-
       YY_Action                  : Integer;
       YY_Base_Position           : Utf16_String_Index;
       YY_Base_Index              : Positive;
