@@ -463,16 +463,16 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
          --  Current input symbol and action the parser is on
 
-         Rule_Id      : Integer;
          Input_Symbol : Token;
          Look_Ahead   : Boolean := True;
       end YY;
 
       YYVal : YYSType renames Self.YYVal;
 
-      YY_Action : Integer;
-      YY_Index  : Integer;
-      Pattern   : Shared_Pattern_Access
+      YY_Action  : Integer;
+      YY_Rule_Id : Integer;
+      YY_Index   : Integer;
+      Pattern    : Shared_Pattern_Access
         := new Shared_Pattern (Self.Data.Length, Node_List_Count (Self.Data.Length));
 
    begin
@@ -534,11 +534,11 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
             --  Reduce Action
 
             --  Convert action into a rule
-            YY.Rule_Id  := -1 * YY_Action;
+            YY_Rule_Id  := -1 * YY_Action;
 
             --  Execute User Action
 
-            case YY.Rule_Id is
+            case YY_Rule_Id is
 %%
                when others =>
                   Dereference (Pattern);
@@ -548,12 +548,12 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
 
             --  Pop RHS states and goto next state
 
-            YY.TOS := YY.TOS - YY_Rule_Length (YY.Rule_Id) + 1;
+            YY.TOS := YY.TOS - YY_Rule_Length (YY_Rule_Id) + 1;
 
             YY_Index := YY_Goto_Offset (YY.State_Stack (YY.TOS - 1));
 
             while YY_Goto_Matrix (YY_Index).Nonterm
-                    /= YY_Get_LHS_Rule (YY.Rule_Id)
+                    /= YY_Get_LHS_Rule (YY_Rule_Id)
             loop
                YY_Index := YY_Index + 1;
             end loop;
