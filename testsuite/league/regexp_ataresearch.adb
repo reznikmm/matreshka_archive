@@ -459,14 +459,21 @@ begin
 --         Put_Line ("   '" & Buffer (F4_First .. F4_Last) & ''');
 --         Put_Line ("   '" & Buffer (F5_First .. F5_Last) & ''');
 
-         if Substitutions.Contains (To_Unbounded_Wide_Wide_String (Buffer (F2_First .. F2_Last))) then
-            Do_Test
-             (To_Universal_String
-               (To_Wide_Wide_String
-                 (Substitutions.Element (To_Unbounded_Wide_Wide_String (Buffer (F2_First .. F2_Last))))),
-              Unescape (Buffer (F3_First .. F3_Last)),
-              Buffer (F4_First .. F4_Last),
-              Success);
+         if Substitutions.Contains
+             (To_Unbounded_Wide_Wide_String (Buffer (F2_First .. F2_Last)))
+         then
+            if Substitutions.Element
+                (To_Unbounded_Wide_Wide_String
+                  (Buffer (F2_First .. F2_Last))) /= "SKIP"
+            then
+               Do_Test
+                (To_Universal_String
+                  (To_Wide_Wide_String
+                    (Substitutions.Element (To_Unbounded_Wide_Wide_String (Buffer (F2_First .. F2_Last))))),
+                 Unescape (Buffer (F3_First .. F3_Last)),
+                 Buffer (F4_First .. F4_Last),
+                 Success);
+            end if;
 
          else
             Do_Test
