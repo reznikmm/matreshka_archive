@@ -3,7 +3,16 @@
 --                            Matreshka Project                             --
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
+--                               XML Processor                              --
+--                         Ada Modelling Framework                          --
+--                      Complete Meta Object Facility                       --
+--                         XML Metadata Interchange                         --
+--                      Orthogonal Persistence Manager                      --
+--                       Content Management Framework                       --
 --                                                                          --
+--                        Database Schema Definition                        --
+--                        Runtime Library Component                         --
+--                            Testsuite Component                           --
 --                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
@@ -41,11 +50,3 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
-package Scanner_Generator is
-
-   procedure Generate_Scanner_Code;
-
-   procedure Generate_Scanner_Tables;
-
-end Scanner_Generator;

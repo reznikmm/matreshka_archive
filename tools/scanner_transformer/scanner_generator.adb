@@ -8,18 +8,35 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- All rights reserved.                                                     --
 --                                                                          --
--- Matreshka is free software;  you can  redistribute it  and/or modify  it --
--- under terms of the  GNU General Public License as published  by the Free --
--- Software  Foundation;  either version 2,  or (at your option)  any later --
--- version.  Matreshka  is distributed in the hope that it will be  useful, --
--- but   WITHOUT  ANY  WARRANTY;  without  even  the  implied  warranty  of --
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General --
--- Public License for more details.  You should have received a copy of the --
--- GNU General Public License distributed with Matreshka; see file COPYING. --
--- If not, write  to  the  Free Software Foundation,  51  Franklin  Street, --
--- Fifth Floor, Boston, MA 02110-1301, USA.                                 --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
@@ -31,6 +48,7 @@ with Ada.Strings.Wide_Unbounded.Wide_Text_IO;
 with Ada.Wide_Text_IO;
 
 with Scanner_Extractor;
+with Wide_Put_File_Header;
 
 package body Scanner_Generator is
 
@@ -227,39 +245,20 @@ package body Scanner_Generator is
    begin
       Create (Output, Out_File, Scanner_Tables_File_Name, "wcem=8");
 
-      Put_Line (Output, "------------------------------------------------------------------------------");
-      Put_Line (Output, "--                                                                          --");
-      Put_Line (Output, "--                            Matreshka Project                             --");
-      Put_Line (Output, "--                                                                          --");
-      Put_Line (Output, "--         Localization, Internationalization, Globalization for Ada        --");
-      Put_Line (Output, "--                                                                          --");
-      Put_Line (Output, "--                        Runtime Library Component                         --");
-      Put_Line (Output, "--                                                                          --");
-      Put_Line (Output, "------------------------------------------------------------------------------");
-      Put_Line (Output, "--                                                                          --");
-      Put_Line (Output, "-- Copyright © 2010 Vadim Godunko <vgodunko@gmail.com>                      --");
-      Put_Line (Output, "--                                                                          --");
-      Put_Line (Output, "-- Matreshka is free software;  you can  redistribute it  and/or modify  it --");
-      Put_Line (Output, "-- under terms of the  GNU General Public License as published  by the Free --");
-      Put_Line (Output, "-- Software  Foundation;  either version 2,  or (at your option)  any later --");
-      Put_Line (Output, "-- version.  Matreshka  is distributed in the hope that it will be  useful, --");
-      Put_Line (Output, "-- but   WITHOUT  ANY  WARRANTY;  without  even  the  implied  warranty  of --");
-      Put_Line (Output, "-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General --");
-      Put_Line (Output, "-- Public License for more details.  You should have received a copy of the --");
-      Put_Line (Output, "-- GNU General Public License distributed with Matreshka; see file COPYING. --");
-      Put_Line (Output, "-- If not, write  to  the  Free Software Foundation,  51  Franklin  Street, --");
-      Put_Line (Output, "-- Fifth Floor, Boston, MA 02110-1301, USA.                                 --");
-      Put_Line (Output, "--                                                                          --");
-      Put_Line (Output, "-- As a special exception,  if other files  instantiate  generics from this --");
-      Put_Line (Output, "-- unit, or you link  this unit with other files  to produce an executable, --");
-      Put_Line (Output, "-- this  unit  does not  by itself cause  the resulting  executable  to  be --");
-      Put_Line (Output, "-- covered  by the  GNU  General  Public  License.  This exception does not --");
-      Put_Line (Output, "-- however invalidate  any other reasons why  the executable file  might be --");
-      Put_Line (Output, "-- covered by the  GNU Public License.                                      --");
-      Put_Line (Output, "--                                                                          --");
-      Put_Line (Output, "------------------------------------------------------------------------------");
-      Put_Line (Output, "--  $Revision$ $Date$");
-      Put_Line (Output, "------------------------------------------------------------------------------");
+      if Ada.Command_Line.Argument (1) = "regexp" then
+         Wide_Put_File_Header
+          (Output,
+           "Localization, Internationalization, Globalization for Ada",
+           2010,
+           2010);
+
+      elsif Ada.Command_Line.Argument (1) = "xml" then
+         Wide_Put_File_Header
+          (Output,
+           "XML Processor",
+           2010,
+           2010);
+      end if;
 
       Put_Line (Output, "with Matreshka.Internals.Unicode;");
       New_Line (Output);
