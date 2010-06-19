@@ -509,7 +509,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
                else
                   if Self.Scanner_Stack.Is_Empty then
-                     raise Program_Error with "End of data";
+                     return End_Of_Input;
+--                     raise Program_Error with "End of data";
 
                   else
                      Self.Scanner_State := Self.Scanner_Stack.Last_Element;
