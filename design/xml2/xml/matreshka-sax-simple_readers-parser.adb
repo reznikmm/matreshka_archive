@@ -313,12 +313,16 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             YY.Look_Ahead := True;
 
          elsif YY_Action = YY_Error_Code then  --  ERROR
-            raise Program_Error with "Error is not implemented";
+            puts ("Accepting ERROR" & ASCII.NUL);
+
+            exit;
 
 --            handle_error;
 
          elsif YY_Action = YY_Accept_Code then
             --  Accepting grammar.
+
+            puts ("Accepting" & ASCII.NUL);
 
             exit;
 
