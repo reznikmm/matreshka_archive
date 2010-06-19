@@ -95,6 +95,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
       YY_C                       : Integer;
       YY_Last_Accepting_State    : Integer;
       YY_Last_Accepting_Position : Utf16_String_Index;
+      YY_Last_Accepting_Index    : Positive;
 
       function YYText return Wide_Wide_String;
       --  XXX Dummy function to support transition
@@ -157,6 +158,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
 
                   YY_Last_Accepting_State    := YY_Current_State;
                   YY_Last_Accepting_Position := Self.YY_Current_Position;
+                  YY_Last_Accepting_Index    := Self.YY_Current_Index;
 
                   exit when Self.YY_Current_Position = Self.Data.Unused;
                   --  End of string has been reached.
@@ -182,6 +184,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             --  Return back to last accepting state.
 
             Self.YY_Current_Position := YY_Last_Accepting_Position;
+            Self.YY_Current_Index    := YY_Last_Accepting_Index;
             YY_Current_State         := YY_Last_Accepting_State;
 
             --  Retrieve associated action and execute it.
@@ -195,6 +198,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                --  Backtrack
 
                Self.YY_Current_Position := YY_Last_Accepting_Position;
+               Self.YY_Current_Index    := YY_Last_Accepting_Index;
                YY_Current_State         := YY_Last_Accepting_State;
 
             when 1 =>
