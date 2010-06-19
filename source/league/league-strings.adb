@@ -81,32 +81,6 @@ package body League.Strings is
 
    function "&"
     (Left  : Universal_String'Class;
-     Right : Universal_Character'Class)
-       return Universal_String
-   is
-   begin
-      return Left & Right.To_Wide_Wide_Character;
-   end "&";
-
-   ---------
-   -- "&" --
-   ---------
-
-   function "&"
-    (Left  : Universal_Character'Class;
-     Right : Universal_String'Class)
-       return Universal_String
-   is
-   begin
-      return Left.To_Wide_Wide_Character & Right;
-   end "&";
-
-   ---------
-   -- "&" --
-   ---------
-
-   function "&"
-    (Left  : Universal_String'Class;
      Right : Universal_String'Class)
        return Universal_String
    is
@@ -136,6 +110,32 @@ package body League.Strings is
             return Create (D);
          end;
       end if;
+   end "&";
+
+   ---------
+   -- "&" --
+   ---------
+
+   function "&"
+    (Left  : Universal_String'Class;
+     Right : Universal_Character'Class)
+       return Universal_String
+   is
+   begin
+      return Left & Right.To_Wide_Wide_Character;
+   end "&";
+
+   ---------
+   -- "&" --
+   ---------
+
+   function "&"
+    (Left  : Universal_Character'Class;
+     Right : Universal_String'Class)
+       return Universal_String
+   is
+   begin
+      return Left.To_Wide_Wide_Character & Right;
    end "&";
 
    ---------
@@ -208,6 +208,30 @@ package body League.Strings is
 
          return Create (D);
       end;
+   end "&";
+
+   ---------
+   -- "&" --
+   ---------
+
+   function "&"
+    (Left  : Universal_String'Class;
+     Right : Wide_Wide_String)
+       return Universal_String is
+   begin
+      return Left & To_Universal_String (Right);
+   end "&";
+
+   ---------
+   -- "&" --
+   ---------
+
+   function "&"
+    (Left  : Wide_Wide_String;
+     Right : Universal_String'Class)
+       return Universal_String is
+   begin
+      return To_Universal_String (Left) & Right;
    end "&";
 
    ---------

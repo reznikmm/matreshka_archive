@@ -141,6 +141,11 @@ package League.Strings is
 
    function "&"
     (Left  : Universal_String'Class;
+     Right : Universal_String'Class)
+       return Universal_String;
+
+   function "&"
+    (Left  : Universal_String'Class;
      Right : Universal_Character'Class)
        return Universal_String;
 
@@ -161,6 +166,11 @@ package League.Strings is
 
    function "&"
     (Left  : Universal_String'Class;
+     Right : Wide_Wide_String)
+       return Universal_String;
+
+   function "&"
+    (Left  : Wide_Wide_String;
      Right : Universal_String'Class)
        return Universal_String;
 
