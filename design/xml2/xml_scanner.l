@@ -305,6 +305,27 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    return Token_String_Segment;
 }
 
+<ENTITY_VALUE_QUOTATION,ENTITY_VALUE_APOSTROPHE,ENTITY_VALUE_PARAMETER_ENTITY>"&#"[0-9]+";" {
+   --  Decimal form of character reference rule [66] in entity value rule [9].
+
+   return Process_Character_Reference (Self, Decimal, YY_Text (2, 1));
+}
+
+<ENTITY_VALUE_QUOTATION,ENTITY_VALUE_APOSTROPHE,ENTITY_VALUE_PARAMETER_ENTITY>"&#x"[0-9a-fA-F]+";" {
+   --  Hexadecimal form of character reference rule [66] in entity value rule
+   --  [9].
+
+   return Process_Character_Reference (Self, Hexadecimal, YY_Text (3, 1));
+}
+
+<ENTITY_VALUE_QUOTATION,ENTITY_VALUE_APOSTROPHE,ENTITY_VALUE_PARAMETER_ENTITY>"&"{NAME}";" {
+   --  General entity reference rule [68] in entity value rule [9].
+
+   YYLVal := (String => YY_Text);
+
+   return Token_String_Segment;
+}
+
 <ENTITY_VALUE_QUOTATION,ENTITY_VALUE_APOSTROPHE,ENTITY_VALUE_PARAMETER_ENTITY>"%"{NAME}";" {
    --  Parameter entity reference rule [69] in entity value rule [9].
    --
@@ -334,6 +355,12 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    --  [75].
 
    Set_Whitespace_Matched (Self);
+}
+
+{WHITE_SPACE} {
+   --  XXX Temporary ignore whitespaces.
+
+   null;
 }
 
 <XML_DECL>. {
@@ -419,3 +446,10 @@ with League.Strings;
    procedure Process_Parameter_Entity_Reference_In_Entity_Value
     (Self : access Integer;
      Name : League.Strings.Universal_String) is separate;
+
+   type Character_Reference_Form is (Decimal, Hexadecimal);
+
+   function Process_Character_Reference
+    (Self  : access Integer;
+     Form  : Character_Reference_Form;
+     Image : League.Strings.Universal_String) return Token is separate;

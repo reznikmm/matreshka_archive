@@ -52,6 +52,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    use Matreshka.Internals.Utf16;
    use Matreshka.SAX.Simple_Readers.Scanner.Tables;
 
+   type Character_Reference_Form is (Decimal, Hexadecimal);
+
    procedure Enter_Start_Condition
     (Self  : not null access SAX_Simple_Reader'Class;
      State : Integer);
@@ -83,11 +85,17 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Returns value of "whitespace matched" flag.
 
+   function Process_Character_Reference
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Form  : Character_Reference_Form;
+     Image : League.Strings.Universal_String) return Token;
+   --  Processes character reference.
+
    procedure Process_Parameter_Entity_Reference_In_Entity_Value
     (Self : not null access SAX_Simple_Reader'Class;
      Name : League.Strings.Universal_String);
-   --  Process parameter entity reference in entiry value (rule [69] in context
-   --  of rule [9]).
+   --  Processes parameter entity reference in entiry value (rule [69] in
+   --  context of rule [9]).
 
    ---------------------------
    -- Enter_Start_Condition --
@@ -119,6 +127,38 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    begin
       return Self.Whitespace_Matched;
    end Get_Whitespace_Matched;
+
+   ---------------------------------
+   -- Process_Character_Reference --
+   ---------------------------------
+
+   function Process_Character_Reference
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Form  : Character_Reference_Form;
+     Image : League.Strings.Universal_String) return Token
+   is
+      S : Wide_Wide_String (1 .. 1);
+
+   begin
+      case Form is
+         when Decimal =>
+            S (1) :=
+              Wide_Wide_Character'Val
+               (Integer'Wide_Wide_Value (Image.To_Wide_Wide_String));
+
+         when Hexadecimal =>
+            S (1) :=
+              Wide_Wide_Character'Val
+               (Integer'Wide_Wide_Value
+                 ("16#" & Image.To_Wide_Wide_String & "#"));
+      end case;
+
+      --  XXX Character reference must be resolved into valid XML character.
+
+      Self.YYLVal := (String => League.Strings.To_Universal_String (S));
+
+      return Token_String_Segment;
+   end Process_Character_Reference;
 
    --------------------------------------------------------
    -- Process_Parameter_Entity_Reference_In_Entity_Value --
@@ -684,6 +724,24 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Token_String_Segment;
 
             when 28 =>
+               --  Decimal form of character reference rule [66] in entity value rule [9].
+            
+               return Process_Character_Reference (Self, Decimal, YY_Text (2, 1));
+
+            when 29 =>
+               --  Hexadecimal form of character reference rule [66] in entity value rule
+               --  [9].
+            
+               return Process_Character_Reference (Self, Hexadecimal, YY_Text (3, 1));
+
+            when 30 =>
+               --  General entity reference rule [68] in entity value rule [9].
+            
+               YYLVal := (String => YY_Text);
+            
+               return Token_String_Segment;
+
+            when 31 =>
                --  Parameter entity reference rule [69] in entity value rule [9].
                --
                --  Processing of parameter entity uses separate scanner's state, thus
@@ -695,49 +753,54 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
 
-            when 29 =>
+            when 32 =>
                --  All white spaces from rules [28] are ignored.
                --  Whitespace before name in rule [76] is ignored.
             
                null;
 
-            when 30 =>
+            when 33 =>
                --  White spaces in entity declaration are not optional, rules [71], [72],
                --  [75].
             
                Set_Whitespace_Matched (Self);
 
-            when 31 =>
-               raise Program_Error with "Unexpected character in XML_DECL";
-
-            when 32 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_DECL";
-
-            when 33 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
-
             when 34 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_INT";
+               --  XXX Temporary ignore whitespaces.
+            
+               null;
 
             when 35 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
+               raise Program_Error with "Unexpected character in XML_DECL";
 
             when 36 =>
-               raise Program_Error with "Unexpected character in ENTITY_DECL";
+               raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 
             when 37 =>
-               raise Program_Error with "Unexpected character in ENTITY_DEF";
+               raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
             when 38 =>
-               raise Program_Error with "Unexpected character in ENTITY_NDATA";
+               raise Program_Error with "Unexpected character in DOCTYPE_INT";
 
             when 39 =>
-               raise Program_Error with "Unexpected character in pubid literal";
+               raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
             when 40 =>
-               raise Program_Error with "Unexpected character in system literal";
+               raise Program_Error with "Unexpected character in ENTITY_DECL";
 
             when 41 =>
+               raise Program_Error with "Unexpected character in ENTITY_DEF";
+
+            when 42 =>
+               raise Program_Error with "Unexpected character in ENTITY_NDATA";
+
+            when 43 =>
+               raise Program_Error with "Unexpected character in pubid literal";
+
+            when 44 =>
+               raise Program_Error with "Unexpected character in system literal";
+
+            when 45 =>
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 
 --            =>

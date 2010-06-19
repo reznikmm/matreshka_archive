@@ -52,6 +52,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    use Matreshka.Internals.Utf16;
    use Matreshka.SAX.Simple_Readers.Scanner.Tables;
 
+   type Character_Reference_Form is (Decimal, Hexadecimal);
+
    procedure Enter_Start_Condition
     (Self  : not null access SAX_Simple_Reader'Class;
      State : Integer);
@@ -83,11 +85,17 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Returns value of "whitespace matched" flag.
 
+   function Process_Character_Reference
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Form  : Character_Reference_Form;
+     Image : League.Strings.Universal_String) return Token;
+   --  Processes character reference.
+
    procedure Process_Parameter_Entity_Reference_In_Entity_Value
     (Self : not null access SAX_Simple_Reader'Class;
      Name : League.Strings.Universal_String);
-   --  Process parameter entity reference in entiry value (rule [69] in context
-   --  of rule [9]).
+   --  Processes parameter entity reference in entiry value (rule [69] in
+   --  context of rule [9]).
 
    ---------------------------
    -- Enter_Start_Condition --
@@ -119,6 +127,38 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    begin
       return Self.Whitespace_Matched;
    end Get_Whitespace_Matched;
+
+   ---------------------------------
+   -- Process_Character_Reference --
+   ---------------------------------
+
+   function Process_Character_Reference
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Form  : Character_Reference_Form;
+     Image : League.Strings.Universal_String) return Token
+   is
+      S : Wide_Wide_String (1 .. 1);
+
+   begin
+      case Form is
+         when Decimal =>
+            S (1) :=
+              Wide_Wide_Character'Val
+               (Integer'Wide_Wide_Value (Image.To_Wide_Wide_String));
+
+         when Hexadecimal =>
+            S (1) :=
+              Wide_Wide_Character'Val
+               (Integer'Wide_Wide_Value
+                 ("16#" & Image.To_Wide_Wide_String & "#"));
+      end case;
+
+      --  XXX Character reference must be resolved into valid XML character.
+
+      Self.YYLVal := (String => League.Strings.To_Universal_String (S));
+
+      return Token_String_Segment;
+   end Process_Character_Reference;
 
    --------------------------------------------------------
    -- Process_Parameter_Entity_Reference_In_Entity_Value --
