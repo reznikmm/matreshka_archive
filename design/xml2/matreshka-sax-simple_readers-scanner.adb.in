@@ -203,10 +203,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       YY_Current_State           : Integer;
       YY_Current_Code            : Code_Point;
       YY_Last_Accepting_Position : Utf16_String_Index;
+      YY_Last_Accepting_Index    : Positive;
       YY_Last_Accepting_State    : Integer;
       YY_Next_Position           : Utf16_String_Index;
       YY_Last_Match_Position     : Utf16_String_Index;
-      YY_Last_Match_Index        : Integer;
+      YY_Last_Match_Index        : Positive;
       YY_Last_Match_State        : Integer;
       YYLVal                     : YYSType renames Self.YYLVal;
 
@@ -379,8 +380,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  terminator in the internal string representation.
 
                YY_Last_Match_Position := YY_Last_Accepting_Position;
-               YY_Last_Match_Index := Self.Scanner_State.YY_Current_Index;
-               YY_Last_Match_State := YY_Last_Accepting_State;
+               YY_Last_Match_Index    := YY_Last_Accepting_Index;
+               YY_Last_Match_State    := YY_Last_Accepting_State;
 --
 --               if YY_Last_Match_Position /= YY_Last_Accepting_Position then
 --                  raise Program_Error with "still have data atfer";
@@ -395,6 +396,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                YY_Last_Accepting_State    := YY_Current_State;
                YY_Last_Accepting_Position :=
                  Self.Scanner_State.YY_Current_Position;
+               YY_Last_Accepting_Index    :=
+                 Self.Scanner_State.YY_Current_Index;
             end if;
 
             while YY_Chk (YY_Base (YY_Current_State) + YY_C)
@@ -418,6 +421,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
          --  Return back to last accepting state.
 
          Self.Scanner_State.YY_Current_Position := YY_Last_Accepting_Position;
+         Self.Scanner_State.YY_Current_Index    := YY_Last_Accepting_Index;
          YY_Current_State                       := YY_Last_Accepting_State;
 
    <<Next_Action>>
