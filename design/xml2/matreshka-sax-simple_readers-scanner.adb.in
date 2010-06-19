@@ -472,11 +472,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 --<<do_action>>   -- this label is used only to access EOF actions
          case YY_Action is
             when 0 =>  --  must backtrack
-               raise Program_Error with "Backtrack is not implemented";
---               yy_cp := yy_last_accepting_cpos;
---               yy_current_state := yy_last_accepting_state;
+               Self.Scanner_State.YY_Current_Position :=
+                 YY_Last_Accepting_Position;
+               Self.Scanner_State.YY_Current_Index    :=
+                 YY_Last_Accepting_Index;
+               YY_Current_State                       :=
+                 YY_Last_Accepting_State;
 
---               goto next_action;
+               goto Next_Action;
 
 %%
 --            when YY_END_OF_BUFFER + INITIAL + 1 
