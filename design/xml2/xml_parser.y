@@ -169,7 +169,7 @@ EntityValue_Content:
 {
    --  Additional string segment in entity value.
 
-   $$.String.Append ($2.String);
+   $$.String := $1.String & $2.String;
 }
   | Token_String_Segment
 {
@@ -179,7 +179,7 @@ EntityValue_Content:
 }
   |
 {
-   null;
+   $$.String := League.Strings.To_Universal_String ("");
 }
   ;
 
@@ -191,6 +191,8 @@ EntityValue_Content:
 with Ada.Wide_Wide_Text_IO;
 with League.Strings;
 ##
+   use type League.Strings.Universal_String;
+
    function YYLex return Token is separate;
 
    procedure YYError (Msg : String) is separate;

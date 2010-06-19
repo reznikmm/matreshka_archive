@@ -411,7 +411,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             when 24 =>
                --  Additional string segment in entity value.
             
-               yyval.String.Append (yy.value_stack (yy.tos).String);
+               yyval.String := yy.value_stack (yy.tos-1).String & yy.value_stack (yy.tos).String;
 
             when 25 =>
                --  Single string segment in entity value.
@@ -419,7 +419,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                yyval.String := yy.value_stack (yy.tos).String;
 
             when 26 =>
-               null;
+               yyval.String := League.Strings.To_Universal_String ("");
                when others =>
                   raise Program_Error
                     with "Unhandled state"
