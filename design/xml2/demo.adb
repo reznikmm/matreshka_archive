@@ -28,15 +28,9 @@ procedure Demo is
 
       while not End_Of_File (File) loop
          Get_Line (File, Buffer, Last);
-
---         Result.Append (Buffer (1 .. Last));
          Result.Append
           (League.Strings.To_Universal_String (Buffer (1 .. Last)));
-
-         if not End_Of_File (File) and then End_Of_Line (File) then
-            Skip_Line (File);
-            Result.Append (Ada.Characters.Wide_Wide_Latin_1.LF);
-         end if;
+         Result.Append (Ada.Characters.Wide_Wide_Latin_1.LF);
       end loop;
 
       Close (File);
@@ -45,8 +39,11 @@ procedure Demo is
    end Read;
 
    Reader : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
+   Text   : constant League.Strings.Universal_String
+     := Read (Ada.Command_Line.Argument (1));
 
 begin
    Matreshka.SAX.Simple_Readers.Put_Line := Put_Line'Access;
-   Reader.Parse (Read (Ada.Command_Line.Argument (1)));
+   Put_Line (Text);
+   Reader.Parse (Text);
 end Demo;
