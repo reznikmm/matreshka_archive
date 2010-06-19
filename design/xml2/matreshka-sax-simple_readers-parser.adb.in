@@ -280,8 +280,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             YY.TOS := YY.TOS - YY_Rule_Length (YY_Rule_Id) + 1;
             YY.State_Stack (YY.TOS) :=
               YY_Goto_State
-               (YY_Goto_Offset (YY.State_Stack (YY.TOS - 1)),
-                YY_Get_LHS_Rule (YY_Rule_Id));
+               (YY.State_Stack (YY.TOS - 1), YY_Get_LHS_Rule (YY_Rule_Id));
             YY.Value_Stack (YY.TOS) := Self.YYVal;
          end if;
       end loop;
