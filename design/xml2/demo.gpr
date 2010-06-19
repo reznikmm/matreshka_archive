@@ -7,7 +7,7 @@ project Demo is
    for Source_Dirs use (".", "xml");
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05");
+      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8");
    end Compiler;
 
 end Demo;
