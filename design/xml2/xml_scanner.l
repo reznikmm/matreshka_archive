@@ -24,6 +24,7 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 %s ENTITY_NDATA
 %s ENTITY_VALUE_QUOTATION
 %s ENTITY_VALUE_APOSTROPHE
+%s ENTITY_VALUE_PARAMETER_ENTITY
 --  Factored out processing for ExternalID, rule [75]. When PUBLIC or SYSTEM
 --  word is recognized, scanner must be switched to EXTERNAL_ID_PUB or
 --  EXTERNAL_ID_SYS state and set state to which scanner is returned after
@@ -63,6 +64,8 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    --  Name of root element type, rule [28].
 
    Enter_Start_Condition (Self, DOCTYPE_EXTINT);
+   YYLVal := (String => YY_Text);
+   Put_Line (YYLVal.String);
 
    return Token_Name;
 }
@@ -95,6 +98,8 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, Get_Continue_State (Self));
+   YYLVal := (String => YY_Text (1, 1));
+   Put_Line (YYLVal.String);
 
    return Token_System_Literal;
 }
@@ -119,6 +124,8 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
+   YYLVal := (String => YY_Text (1, 1));
+   Put_Line (YYLVal.String);
 
    return Token_Public_Literal;
 }
@@ -159,6 +166,8 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, ENTITY_DEF);
+   YYLVal := (String => YY_Text);
+   Put_Line (YYLVal.String);
 
    return Token_Name;
 }
@@ -250,15 +259,16 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    --  Name of NDATA, rule [76].
 
    Enter_Start_Condition (Self, ENTITY_DEF);
+   YYLVal := (String => YY_Text);
+   Put_Line (YYLVal.String);
 
    return Token_Name;
 }
 
 <ENTITY_VALUE_QUOTATION>[^%&"]+ {
-   return Token_String_Segment;
-}
+   YYLVal := (String => YY_Text);
+   Put_Line (YYLVal.String);
 
-<ENTITY_VALUE_APOSTROPHE>[^%&']+ {
    return Token_String_Segment;
 }
 
@@ -270,12 +280,41 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    return Token_Entity_Value_Close;
 }
 
+<ENTITY_VALUE_QUOTATION>"%"{NAME}";" {
+   --  Parameter entity reference rule [69] in entity value rule [9].
+
+   Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
+}
+
+<ENTITY_VALUE_APOSTROPHE>[^%&']+ {
+   YYLVal := (String => YY_Text);
+   Put_Line (YYLVal.String);
+
+   return Token_String_Segment;
+}
+
 <ENTITY_VALUE_APOSTROPHE>\' {
    --  Close of entity value, rule [9].
 
    Enter_Start_Condition (Self, ENTITY_DEF);
 
    return Token_Entity_Value_Close;
+}
+
+<ENTITY_VALUE_APOSTROPHE>"%"{NAME}";" {
+   --  Parameter entity reference rule [69] in entity value rule [9].
+
+   Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
+}
+
+<ENTITY_VALUE_PARAMETER_ENTITY>[^%&]+ {
+   --  In parameter entity substitution mode nor quotation nor apostrophe
+   --  characters is recognized.
+
+   YYLVal := (String => YY_Text);
+   Put_Line (YYLVal.String);
+
+   return Token_String_Segment;
 }
 
 --<DOCTYPE_DECL>"%"{NAME}";" {
@@ -351,6 +390,7 @@ with Xml_Parser_Tokens;
 ##
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Wide_Wide_Text_IO;
+with League.Strings;
 ##
    use Xml_Parser_Tokens;
 
@@ -370,4 +410,15 @@ with Ada.Wide_Wide_Text_IO;
 
    procedure Reset_Whitespace_Matched (Self : access Integer) is separate;
 
-   Self : access Integer;
+   function YY_Text
+    (Trim_Left  : Natural := 0;
+     Trim_Right : Natural := 0)
+       return League.Strings.Universal_String is separate;
+
+   Self     : access Integer;
+   YYLVal   : YYSType;
+   Put_Line : access procedure (Item : League.Strings.Universal_String);
+
+   procedure Process_Parameter_Entity_Reference_In_Entity_Value
+    (Self : access Integer;
+     Name : League.Strings.Universal_String) is separate;

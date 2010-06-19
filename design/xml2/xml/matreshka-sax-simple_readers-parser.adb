@@ -54,6 +54,66 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    function YY_Parse_Action (State : Natural; T : Token) return Integer;
    --  Lookup for parser action.
 
+   procedure Process_General_Entity_Declaration
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String);
+   --  Process general entity declaration, rule [71].
+
+   procedure Process_Parameter_Entity_Declaration
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String);
+   --  Process parameter entity declaration, rule [72].
+
+   ----------------------------------------
+   -- Process_General_Entity_Declaration --
+   ----------------------------------------
+
+   procedure Process_General_Entity_Declaration
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String)
+   is
+      use League.Strings;
+      use Universal_String_Maps;
+
+   begin
+      if Self.General_Entities.Contains (Name) then
+         raise Program_Error with "parameter entity already declared";
+         --  XXX It is non-fatal error, first declaration must be used and
+         --  at user option warning may be issued to application.
+      end if;
+
+      Self.General_Entities.Insert (Name, Value);
+      Put_Line (Name);
+      Put_Line (Value);
+      Put_Line ("GE: '" & Name & "' => '" & Value & "'");
+   end Process_General_Entity_Declaration;
+
+   ------------------------------------------
+   -- Process_Parameter_Entity_Declaration --
+   ------------------------------------------
+
+   procedure Process_Parameter_Entity_Declaration
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String)
+   is
+      use League.Strings;
+      use Universal_String_Maps;
+
+   begin
+      if Self.Parameter_Entities.Contains (Name) then
+         raise Program_Error with "parameter entity already declared";
+         --  XXX It is non-fatal error, first declaration must be used and
+         --  at user option warning may be issued to application.
+      end if;
+
+      Self.Parameter_Entities.Insert (Name, Value);
+      Put_Line ("PE: '" & Name & "' => '" & Value & "'");
+   end Process_Parameter_Entity_Declaration;
+
    -------------------
    -- YY_Goto_State --
    -------------------
@@ -208,6 +268,8 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 --          -- indicates  3 - (number of valid shifts after an error occurs)
       end YY;
 
+      YYVal : YYSType renames Self.YYVal;
+
       procedure puts (S : String);
       pragma Import (C, puts);
 
@@ -321,13 +383,13 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 16 =>
-               puts ("GE" & ASCII.NUL);
+               Process_General_Entity_Declaration (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).String);
 
             when 17 =>
-               null;
+               Process_Parameter_Entity_Declaration (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).String);
 
             when 18 =>
-               puts ("PE" & ASCII.NUL);
+               null;
 
             when 19 =>
                null;
@@ -342,21 +404,21 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 23 =>
-               null;
+               --  Entity value including surrounding delimiters.
+            
+               yyval.String := yy.value_stack (yy.tos-1).String;
 
             when 24 =>
-               null;
+               --  Additional string segment in entity value.
+            
+               yyval.String.Append (yy.value_stack (yy.tos).String);
 
             when 25 =>
-               null;
+               --  Single string segment in entity value.
+            
+               yyval.String := yy.value_stack (yy.tos).String;
 
             when 26 =>
-               null;
-
-            when 27 =>
-               null;
-
-            when 28 =>
                null;
                when others =>
                   raise Program_Error
@@ -369,8 +431,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             YY.TOS := YY.TOS - YY_Rule_Length (YY_Rule_Id) + 1;
             YY.State_Stack (YY.TOS) :=
               YY_Goto_State
-               (YY_Goto_Offset (YY.State_Stack (YY.TOS - 1)),
-                YY_Get_LHS_Rule (YY_Rule_Id));
+               (YY.State_Stack (YY.TOS - 1), YY_Get_LHS_Rule (YY_Rule_Id));
             YY.Value_Stack (YY.TOS) := Self.YYVal;
          end if;
       end loop;

@@ -114,6 +114,22 @@ package body Matreshka.SAX.Simple_Readers is
       end if;
    end Error_Handler;
 
+   ----------
+   -- Hash --
+   ----------
+
+   function Hash
+    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type
+   is
+      pragma Assert
+       (Ada.Containers.Hash_Type'Modulus = League.Strings.Hash_Type'Modulus);
+      --  This implementation assume both types are modular and have same
+      --  modulus.
+
+   begin
+      return Ada.Containers.Hash_Type (Item.Hash);
+   end Hash;
+
    ---------------------
    -- Lexical_Handler --
    ---------------------

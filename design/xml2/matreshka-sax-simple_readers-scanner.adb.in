@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
+with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode;
 with Matreshka.SAX.Simple_Readers.Scanner.Tables;
 
@@ -81,6 +83,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Returns value of "whitespace matched" flag.
 
+   procedure Process_Parameter_Entity_Reference_In_Entity_Value
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String);
+   --  Process parameter entity reference in entiry value (rule [69] in context
+   --  of rule [9]).
+
    ---------------------------
    -- Enter_Start_Condition --
    ---------------------------
@@ -99,7 +107,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    function Get_Continue_State
     (Self : not null access SAX_Simple_Reader'Class) return Integer is
    begin
-      return Self.Continue_State;
+      return Self.Scanner_State.Continue_State;
    end Get_Continue_State;
 
    ----------------------------
@@ -112,18 +120,42 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       return Self.Whitespace_Matched;
    end Get_Whitespace_Matched;
 
+   --------------------------------------------------------
+   -- Process_Parameter_Entity_Reference_In_Entity_Value --
+   --------------------------------------------------------
+
+   procedure Process_Parameter_Entity_Reference_In_Entity_Value
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Name  : League.Strings.Universal_String)
+   is
+      use Universal_String_Maps;
+
+      Position : constant Universal_String_Maps.Cursor
+        := Self.Parameter_Entities.Find (Name);
+
+   begin
+      if not Has_Element (Position) then
+         raise Program_Error with "parameter entity is not declared";
+
+      else
+--         Set_Continue_State (Self, State);
+         Push_Parameter_Entity
+          (Self, League.Strings.Internals.Get_Shared (Element (Position)));
+      end if;
+   end Process_Parameter_Entity_Reference_In_Entity_Value;
+
    ---------------------------
    -- Push_Parameter_Entity --
    ---------------------------
 
    procedure Push_Parameter_Entity
-    (Self : not null access SAX_Simple_Reader'Class;
-     Data : not null Matreshka.Internals.Strings.Shared_String_Access) is
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Data  : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Self.Scanner_Stack.Append (Self.Scanner_State);
 
       Self.Scanner_State := (Data, others => <>);
-      Enter_Start_Condition (Self, DOCTYPE_DECL);
+      Enter_Start_Condition (Self, ENTITY_VALUE_PARAMETER_ENTITY);
    end Push_Parameter_Entity;
 
    ------------------------------
@@ -144,7 +176,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self  : not null access SAX_Simple_Reader'Class;
      State : Integer) is
    begin
-      Self.Continue_State := State;
+      Self.Scanner_State.Continue_State := State;
    end Set_Continue_State;
 
    ----------------------------
@@ -176,8 +208,47 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       YY_Last_Match_Position     : Utf16_String_Index;
       YY_Last_Match_Index        : Integer;
       YY_Last_Match_State        : Integer;
+      YYLVal                     : YYSType renames Self.YYLVal;
 
---
+      function YY_Text
+       (Trim_Left  : Natural := 0;
+        Trim_Right : Natural := 0)
+          return League.Strings.Universal_String;
+
+      -------------
+      -- YY_Text --
+      -------------
+
+      function YY_Text
+       (Trim_Left  : Natural := 0;
+        Trim_Right : Natural := 0)
+          return League.Strings.Universal_String
+      is
+         FP : Utf16_String_Index := YY_Base_Position;
+         FI : constant Positive  := YY_Base_Index + Trim_Left;
+         LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
+         LI : constant Positive
+           := Self.Scanner_State.YY_Current_Index - Trim_Right;
+
+      begin
+	 --  XXX Implementation covers all cases but not efficient, most times
+	 --  (or always?) use of iteration is not needed - leading and trailing
+         --  code points belong to BMP.
+
+         for J in 1 .. Trim_Left loop
+            Unchecked_Next (Self.Scanner_State.Data.Value, FP);
+         end loop;
+
+         for J in 1 .. Trim_Right loop
+            Unchecked_Previous (Self.Scanner_State.Data.Value, LP);
+         end loop;
+
+         return
+           League.Strings.Internals.Create
+            (Matreshka.Internals.Strings.Operations.Slice
+              (Self.Scanner_State.Data, FP, LP - FP, LI - FI));
+      end YY_Text;
+
 --         --  copy whatever the last rule matched to the standard output
 --
 --         procedure ECHO is

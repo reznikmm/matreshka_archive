@@ -17,8 +17,12 @@
 %token Token_String_Segment
 %token Token_NData
 
+%with League.Strings
+
 {
-   type YYSType is null record;
+   type YYSType is record
+      String : League.Strings.Universal_String;
+   end record;
 }
 
 %%
@@ -115,21 +119,13 @@ intSubset:
   ;
 
 EntityDecl:
-    Token_Entity_Decl_Open Token_Name
+    Token_Entity_Decl_Open Token_Name EntityDef Token_Close
 {
-   puts ("GE" & ASCII.NUL);
+   Process_General_Entity_Declaration (Self, $2.String, $3.String);
 }
-    EntityDef Token_Close
+  | Token_Entity_Decl_Open Token_Percent Token_Name PEDef Token_Close
 {
-   null;
-}
-  | Token_Entity_Decl_Open Token_Percent Token_Name
-{
-   puts ("PE" & ASCII.NUL);
-}
-    PEDef Token_Close
-{
-   null;
+   Process_Parameter_Entity_Declaration (Self, $3.String, $4.String);
 }
   ;
 
@@ -162,18 +158,24 @@ PEDef:
 EntityValue:
     Token_Entity_Value_Open EntityValue_Content Token_Entity_Value_Close
 {
-   null;
+   --  Entity value including surrounding delimiters.
+
+   $$.String := $2.String;
 }
   ;
 
 EntityValue_Content:
      EntityValue_Content Token_String_Segment
 {
-   null;
+   --  Additional string segment in entity value.
+
+   $$.String.Append ($2.String);
 }
   | Token_String_Segment
 {
-   null;
+   --  Single string segment in entity value.
+
+   $$.String := $1.String;
 }
   |
 {
@@ -187,12 +189,26 @@ EntityValue_Content:
    procedure Parse;
 ##
 with Ada.Wide_Wide_Text_IO;
+with League.Strings;
 ##
    function YYLex return Token is separate;
 
    procedure YYError (Msg : String) is separate;
 
    procedure puts (Item : String) is separate;
+
+   procedure Process_General_Entity_Declaration
+    (Self  : access Integer;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String) is separate;
+
+   procedure Process_Parameter_Entity_Declaration
+    (Self  : access Integer;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String) is separate;
+
+   Self     : access Integer;
+   Put_Line : access procedure (Item : League.Strings.Universal_String);
 
    procedure Parse is
 ##

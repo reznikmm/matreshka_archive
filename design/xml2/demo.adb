@@ -5,6 +5,7 @@ with Ada.Wide_Wide_Text_IO;
 with League.Strings;
 
 with Matreshka.SAX.Simple_Readers;
+with Put_Line;
 
 procedure Demo is
 
@@ -46,5 +47,6 @@ procedure Demo is
    Reader : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
 
 begin
+   Matreshka.SAX.Simple_Readers.Put_Line := Put_Line'Access;
    Reader.Parse (Read (Ada.Command_Line.Argument (1)));
 end Demo;

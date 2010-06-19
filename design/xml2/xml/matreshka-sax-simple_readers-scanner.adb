@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
+with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode;
 with Matreshka.SAX.Simple_Readers.Scanner.Tables;
 
@@ -81,6 +83,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Returns value of "whitespace matched" flag.
 
+   procedure Process_Parameter_Entity_Reference_In_Entity_Value
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String);
+   --  Process parameter entity reference in entiry value (rule [69] in context
+   --  of rule [9]).
+
    ---------------------------
    -- Enter_Start_Condition --
    ---------------------------
@@ -99,7 +107,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    function Get_Continue_State
     (Self : not null access SAX_Simple_Reader'Class) return Integer is
    begin
-      return Self.Continue_State;
+      return Self.Scanner_State.Continue_State;
    end Get_Continue_State;
 
    ----------------------------
@@ -112,18 +120,42 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       return Self.Whitespace_Matched;
    end Get_Whitespace_Matched;
 
+   --------------------------------------------------------
+   -- Process_Parameter_Entity_Reference_In_Entity_Value --
+   --------------------------------------------------------
+
+   procedure Process_Parameter_Entity_Reference_In_Entity_Value
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Name  : League.Strings.Universal_String)
+   is
+      use Universal_String_Maps;
+
+      Position : constant Universal_String_Maps.Cursor
+        := Self.Parameter_Entities.Find (Name);
+
+   begin
+      if not Has_Element (Position) then
+         raise Program_Error with "parameter entity is not declared";
+
+      else
+--         Set_Continue_State (Self, State);
+         Push_Parameter_Entity
+          (Self, League.Strings.Internals.Get_Shared (Element (Position)));
+      end if;
+   end Process_Parameter_Entity_Reference_In_Entity_Value;
+
    ---------------------------
    -- Push_Parameter_Entity --
    ---------------------------
 
    procedure Push_Parameter_Entity
-    (Self : not null access SAX_Simple_Reader'Class;
-     Data : not null Matreshka.Internals.Strings.Shared_String_Access) is
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Data  : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Self.Scanner_Stack.Append (Self.Scanner_State);
 
       Self.Scanner_State := (Data, others => <>);
-      Enter_Start_Condition (Self, DOCTYPE_DECL);
+      Enter_Start_Condition (Self, ENTITY_VALUE_PARAMETER_ENTITY);
    end Push_Parameter_Entity;
 
    ------------------------------
@@ -144,7 +176,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self  : not null access SAX_Simple_Reader'Class;
      State : Integer) is
    begin
-      Self.Continue_State := State;
+      Self.Scanner_State.Continue_State := State;
    end Set_Continue_State;
 
    ----------------------------
@@ -176,8 +208,47 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       YY_Last_Match_Position     : Utf16_String_Index;
       YY_Last_Match_Index        : Integer;
       YY_Last_Match_State        : Integer;
+      YYLVal                     : YYSType renames Self.YYLVal;
 
---
+      function YY_Text
+       (Trim_Left  : Natural := 0;
+        Trim_Right : Natural := 0)
+          return League.Strings.Universal_String;
+
+      -------------
+      -- YY_Text --
+      -------------
+
+      function YY_Text
+       (Trim_Left  : Natural := 0;
+        Trim_Right : Natural := 0)
+          return League.Strings.Universal_String
+      is
+         FP : Utf16_String_Index := YY_Base_Position;
+         FI : constant Positive  := YY_Base_Index + Trim_Left;
+         LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
+         LI : constant Positive
+           := Self.Scanner_State.YY_Current_Index - Trim_Right;
+
+      begin
+	 --  XXX Implementation covers all cases but not efficient, most times
+	 --  (or always?) use of iteration is not needed - leading and trailing
+         --  code points belong to BMP.
+
+         for J in 1 .. Trim_Left loop
+            Unchecked_Next (Self.Scanner_State.Data.Value, FP);
+         end loop;
+
+         for J in 1 .. Trim_Right loop
+            Unchecked_Previous (Self.Scanner_State.Data.Value, LP);
+         end loop;
+
+         return
+           League.Strings.Internals.Create
+            (Matreshka.Internals.Strings.Operations.Slice
+              (Self.Scanner_State.Data, FP, LP - FP, LI - FI));
+      end YY_Text;
+
 --         --  copy whatever the last rule matched to the standard output
 --
 --         procedure ECHO is
@@ -390,6 +461,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Name of root element type, rule [28].
             
                Enter_Start_Condition (Self, DOCTYPE_EXTINT);
+               YYLVal := (String => YY_Text);
+               Put_Line (YYLVal.String);
             
                return Token_Name;
 
@@ -419,6 +492,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, Get_Continue_State (Self));
+               YYLVal := (String => YY_Text (1, 1));
+               Put_Line (YYLVal.String);
             
                return Token_System_Literal;
 
@@ -441,6 +516,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
+               YYLVal := (String => YY_Text (1, 1));
+               Put_Line (YYLVal.String);
             
                return Token_Public_Literal;
 
@@ -477,6 +554,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, ENTITY_DEF);
+               YYLVal := (String => YY_Text);
+               Put_Line (YYLVal.String);
             
                return Token_Name;
 
@@ -560,72 +639,99 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Name of NDATA, rule [76].
             
                Enter_Start_Condition (Self, ENTITY_DEF);
+               YYLVal := (String => YY_Text);
+               Put_Line (YYLVal.String);
             
                return Token_Name;
 
             when 23 =>
+               YYLVal := (String => YY_Text);
+               Put_Line (YYLVal.String);
+            
                return Token_String_Segment;
 
             when 24 =>
-               return Token_String_Segment;
+               --  Close of entity value, rule [9].
+            
+               Enter_Start_Condition (Self, ENTITY_DEF);
+            
+               return Token_Entity_Value_Close;
 
             when 25 =>
-               --  Close of entity value, rule [9].
+               --  Parameter entity reference rule [69] in entity value rule [9].
             
-               Enter_Start_Condition (Self, ENTITY_DEF);
-            
-               return Token_Entity_Value_Close;
+               Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
 
             when 26 =>
+               YYLVal := (String => YY_Text);
+               Put_Line (YYLVal.String);
+            
+               return Token_String_Segment;
+
+            when 27 =>
                --  Close of entity value, rule [9].
             
                Enter_Start_Condition (Self, ENTITY_DEF);
             
                return Token_Entity_Value_Close;
 
-            when 27 =>
+            when 28 =>
+               --  Parameter entity reference rule [69] in entity value rule [9].
+            
+               Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
+
+            when 29 =>
+               --  In parameter entity substitution mode nor quotation nor apostrophe
+               --  characters is recognized.
+            
+               YYLVal := (String => YY_Text);
+               Put_Line (YYLVal.String);
+            
+               return Token_String_Segment;
+
+            when 30 =>
                --  All white spaces from rules [28] are ignored.
                --  Whitespace before name in rule [76] is ignored.
             
                null;
 
-            when 28 =>
+            when 31 =>
                --  White spaces in entity declaration are not optional, rules [71], [72],
                --  [75].
             
                Set_Whitespace_Matched (Self);
 
-            when 29 =>
+            when 32 =>
                raise Program_Error with "Unexpected character in XML_DECL";
 
-            when 30 =>
+            when 33 =>
                raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 
-            when 31 =>
+            when 34 =>
                raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
-            when 32 =>
+            when 35 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INT";
 
-            when 33 =>
+            when 36 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
-            when 34 =>
+            when 37 =>
                raise Program_Error with "Unexpected character in ENTITY_DECL";
 
-            when 35 =>
+            when 38 =>
                raise Program_Error with "Unexpected character in ENTITY_DEF";
 
-            when 36 =>
+            when 39 =>
                raise Program_Error with "Unexpected character in ENTITY_NDATA";
 
-            when 37 =>
+            when 40 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 38 =>
+            when 41 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 39 =>
+            when 42 =>
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 
 --            =>

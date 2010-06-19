@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 private with Ada.Containers.Vectors;
+private with Ada.Containers.Hashed_Maps;
 
 with League.Strings;
 with Matreshka.SAX.Readers;
@@ -60,11 +61,29 @@ package Matreshka.SAX.Simple_Readers is
     (Self : not null access SAX_Simple_Reader;
      Data : League.Strings.Universal_String);
 
+   Put_Line : access procedure (Item : League.Strings.Universal_String);
+
 private
+
+   use type League.Strings.Universal_String;
+   --  It is needed to be able to use equality operator for type in generic
+   --  instantiation.
 
 %%
 
-   type YYSType is null record;
+   type YYSType is record
+      String : League.Strings.Universal_String;
+   end record;
+
+   function Hash
+    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
+
+   package Universal_String_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           League.Strings.Universal_String,
+           Hash,
+           "=");
 
    type Scanner_State_Information is record
       Data                : Matreshka.Internals.Strings.Shared_String_Access;
@@ -73,6 +92,7 @@ private
       YY_Start_State      : Integer  := 1;
       Last_Match          : Boolean  := True;
       --  This mean that last match need to be processed.
+      Continue_State      : Integer;
    end record;
 
    package Scanner_State_Vectors is
@@ -107,7 +127,6 @@ private
 
       YYVal              : YYSType;
       YYLVal             : YYSType;
-      Continue_State     : Integer;
 
       --  Analyzer state
 
@@ -115,6 +134,9 @@ private
       --  Used to check whether whitespace is used to separate tokens. For
       --  example, '%' must be separated by whitespace from '<!ENTITY' and
       --  following name.
+
+      Parameter_Entities : Universal_String_Maps.Map;
+      General_Entities   : Universal_String_Maps.Map;
    end record;
 
    overriding function Content_Handler
