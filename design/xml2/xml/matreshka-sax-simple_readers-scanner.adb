@@ -658,29 +658,19 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Token_Entity_Value_Close;
 
             when 25 =>
-               --  Parameter entity reference rule [69] in entity value rule [9].
-            
-               Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
-
-            when 26 =>
                YYLVal := (String => YY_Text);
                Put_Line (YYLVal.String);
             
                return Token_String_Segment;
 
-            when 27 =>
+            when 26 =>
                --  Close of entity value, rule [9].
             
                Enter_Start_Condition (Self, ENTITY_DEF);
             
                return Token_Entity_Value_Close;
 
-            when 28 =>
-               --  Parameter entity reference rule [69] in entity value rule [9].
-            
-               Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
-
-            when 29 =>
+            when 27 =>
                --  In parameter entity substitution mode nor quotation nor apostrophe
                --  characters is recognized.
             
@@ -689,49 +679,61 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_String_Segment;
 
-            when 30 =>
+            when 28 =>
+               --  Parameter entity reference rule [69] in entity value rule [9].
+               --
+               --  Processing of parameter entity uses separate scanner's state, thus
+               --  after processing current state is restored automatically. This allows
+               --  to reuse code for three modes: parsing of entity value delimited by
+               --  quotation; parsing of entity value delimited by apostrophe; and
+               --  parsing of parameter entity replacement text when it is referenced
+               --  in any of two form of entity value.
+            
+               Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
+
+            when 29 =>
                --  All white spaces from rules [28] are ignored.
                --  Whitespace before name in rule [76] is ignored.
             
                null;
 
-            when 31 =>
+            when 30 =>
                --  White spaces in entity declaration are not optional, rules [71], [72],
                --  [75].
             
                Set_Whitespace_Matched (Self);
 
-            when 32 =>
+            when 31 =>
                raise Program_Error with "Unexpected character in XML_DECL";
 
-            when 33 =>
+            when 32 =>
                raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 
-            when 34 =>
+            when 33 =>
                raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
-            when 35 =>
+            when 34 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INT";
 
-            when 36 =>
+            when 35 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
-            when 37 =>
+            when 36 =>
                raise Program_Error with "Unexpected character in ENTITY_DECL";
 
-            when 38 =>
+            when 37 =>
                raise Program_Error with "Unexpected character in ENTITY_DEF";
 
-            when 39 =>
+            when 38 =>
                raise Program_Error with "Unexpected character in ENTITY_NDATA";
 
-            when 40 =>
+            when 39 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 41 =>
+            when 40 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 42 =>
+            when 41 =>
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 
 --            =>

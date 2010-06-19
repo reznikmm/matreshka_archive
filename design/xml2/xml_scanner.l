@@ -280,12 +280,6 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    return Token_Entity_Value_Close;
 }
 
-<ENTITY_VALUE_QUOTATION>"%"{NAME}";" {
-   --  Parameter entity reference rule [69] in entity value rule [9].
-
-   Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
-}
-
 <ENTITY_VALUE_APOSTROPHE>[^%&']+ {
    YYLVal := (String => YY_Text);
    Put_Line (YYLVal.String);
@@ -301,12 +295,6 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    return Token_Entity_Value_Close;
 }
 
-<ENTITY_VALUE_APOSTROPHE>"%"{NAME}";" {
-   --  Parameter entity reference rule [69] in entity value rule [9].
-
-   Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
-}
-
 <ENTITY_VALUE_PARAMETER_ENTITY>[^%&]+ {
    --  In parameter entity substitution mode nor quotation nor apostrophe
    --  characters is recognized.
@@ -315,6 +303,19 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    Put_Line (YYLVal.String);
 
    return Token_String_Segment;
+}
+
+<ENTITY_VALUE_QUOTATION,ENTITY_VALUE_APOSTROPHE,ENTITY_VALUE_PARAMETER_ENTITY>"%"{NAME}";" {
+   --  Parameter entity reference rule [69] in entity value rule [9].
+   --
+   --  Processing of parameter entity uses separate scanner's state, thus
+   --  after processing current state is restored automatically. This allows
+   --  to reuse code for three modes: parsing of entity value delimited by
+   --  quotation; parsing of entity value delimited by apostrophe; and
+   --  parsing of parameter entity replacement text when it is referenced
+   --  in any of two form of entity value.
+
+   Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
 }
 
 --<DOCTYPE_DECL>"%"{NAME}";" {
@@ -378,10 +379,6 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 .|\n {
    raise Program_Error with "Unexpected character in document";
 }
-
---<DOCTYPE_DECL>"<!ENTITY" {
---   return Token_Entity_Decl_Open;
---}
 
 %%
 with Xml_Parser_Tokens;
