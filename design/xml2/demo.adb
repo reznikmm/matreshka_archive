@@ -3,8 +3,9 @@ with Ada.Command_Line;
 with Ada.Wide_Wide_Text_IO;
 
 with League.Strings;
-
 with Matreshka.SAX.Simple_Readers;
+
+with Demo_Handlers;
 with Put_Line;
 
 procedure Demo is
@@ -38,12 +39,15 @@ procedure Demo is
       return Result;
    end Read;
 
-   Reader : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
-   Text   : constant League.Strings.Universal_String
+   Reader  : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
+   Handler : aliased Demo_Handlers.Demo_Handler;
+   Text    : constant League.Strings.Universal_String
      := Read (Ada.Command_Line.Argument (1));
 
 begin
    Matreshka.SAX.Simple_Readers.Put_Line := Put_Line'Access;
    Put_Line (Text);
+
+   Reader.Set_Decl_Handler (Handler'Unchecked_Access);
    Reader.Parse (Text);
 end Demo;
