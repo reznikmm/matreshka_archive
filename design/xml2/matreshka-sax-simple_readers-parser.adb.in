@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
 with Matreshka.SAX.Simple_Readers.Callbacks;
 with Matreshka.SAX.Simple_Readers.Parser.Tables;
 with Matreshka.SAX.Simple_Readers.Scanner;
@@ -54,6 +55,15 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    function YY_Parse_Action (State : Natural; T : Token) return Integer;
    --  Lookup for parser action.
+
+   procedure Process_Document_Type_Declaration
+    (Self        : not null access SAX_Simple_Reader'Class;
+     Name        : League.Strings.Universal_String;
+     Is_External : Boolean;
+     Public_Id   : League.Strings.Universal_String;
+     System_Id   : League.Strings.Universal_String);
+   --  Process document type declaration rule [28] and prepare to analyze its
+   --  external subset if any.
 
    procedure Process_General_Entity_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
@@ -70,6 +80,27 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Name  : League.Strings.Universal_String;
      Value : League.Strings.Universal_String);
    --  Process parameter entity declaration, rule [72].
+
+   ---------------------------------------
+   -- Process_Document_Type_Declaration --
+   ---------------------------------------
+
+   procedure Process_Document_Type_Declaration
+    (Self        : not null access SAX_Simple_Reader'Class;
+     Name        : League.Strings.Universal_String;
+     Is_External : Boolean;
+     Public_Id   : League.Strings.Universal_String;
+     System_Id   : League.Strings.Universal_String) is
+   begin
+      Self.Root_Name := Name;
+
+      if Is_External then
+         Self.Entity_Resolver.Resolve_Entity
+          (Public_Id, System_Id, Self.External_Subset, Self.Continue);
+         Scanner.Push_External_Entity
+          (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
+      end if;
+   end Process_Document_Type_Declaration;
 
    ----------------------------------------
    -- Process_General_Entity_Declaration --

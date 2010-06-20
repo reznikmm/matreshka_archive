@@ -55,4 +55,9 @@ private package Matreshka.SAX.Simple_Readers.Scanner is
      Data : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Push text of parameter entity into the scanner's stack.
 
+   procedure Push_External_Entity
+    (Self : not null access SAX_Simple_Reader'Class;
+     Data : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Push text of external entity into the scanner's stack.
+
 end Matreshka.SAX.Simple_Readers.Scanner;

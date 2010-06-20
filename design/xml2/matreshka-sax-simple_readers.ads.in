@@ -151,6 +151,12 @@ private
 
       Parameter_Entities : Universal_String_Maps.Map;
       General_Entities   : Universal_String_Maps.Map;
+      Root_Name          : League.Strings.Universal_String;
+      --  Name of the root element.
+      External_Subset    : League.Strings.Universal_String;
+      --  Contents of the external subset if any. This member used only to
+      --  prevent deallocation of shared string before document parsing is
+      --  completed.
       Continue           : Boolean := True;
       --  Continue processing.
       Error_Message      : League.Strings.Universal_String;

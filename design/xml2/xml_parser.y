@@ -55,10 +55,19 @@ doctypedecl_optional:
   ;
 
 doctypedecl:
-    Token_Doctype_Decl_Open Token_Name ExternalID_optional internal_subset_optional Token_Close
+    Token_Doctype_Decl_Open Token_Name ExternalID_optional
 {
    --  Temporal declaration to test parser transformation capabilities.
 
+   Process_Document_Type_Declaration
+    (Self,
+     $2.String,
+     $3.Is_External,
+     $3.Public_Id,
+     $3.System_Id);
+}
+   external_subset_optional internal_subset_optional Token_Close
+{
    null;
 }
   ;
@@ -66,11 +75,17 @@ doctypedecl:
 ExternalID_optional:
     ExternalID
 {
-   null;
+   $$ :=
+    (Is_External => True,
+     Public_Id   => $1.Public_Id,
+     System_Id   => $1.System_Id,
+     others      => <>);
 }
   |
 {
-   null;
+   $$ :=
+    (Is_External => False,
+     others      => <>);
 }
   ;
 
@@ -91,6 +106,13 @@ ExternalID:
     (Public_Id => $2.String,
      System_Id => $3.String,
      others    => <>);
+}
+  ;
+
+external_subset_optional:
+    intSubset_any
+{
+   null;
 }
   ;
 
@@ -226,6 +248,13 @@ with League.Strings;
    procedure YYError (Msg : String) is separate;
 
    procedure puts (Item : String) is separate;
+
+   procedure Process_Document_Type_Declaration
+    (Self        : access Integer;
+     Name        : League.Strings.Universal_String;
+     Is_External : Boolean;
+     Public_Id   : League.Strings.Universal_String;
+     System_Id   : League.Strings.Universal_String) is separate;
 
    procedure Process_General_Entity_Declaration
     (Self        : access Integer;

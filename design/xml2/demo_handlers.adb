@@ -97,6 +97,7 @@ package body Demo_Handlers is
         Read_File
          (Ada.Characters.Conversions.To_String
            (System_Id.To_Wide_Wide_String));
+      Put_Line (Text);
    end Resolve_Entity;
 
    --------------------------
