@@ -14,6 +14,16 @@ NAME		[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF
 PUBID_CHAR			[-'()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 
+--
+--  Special subranges of Char.
+--
+--  [^%&]
+CHAR_NO_PERCENT_AMPERSAND		[\u0001-\u0024\u0027-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  [^%&"]
+CHAR_NO_QUOTATION_PERCENT_AMPERSAND	[\u0001-\u0021\u0023-\u0024\u0027-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  [^%&']
+CHAR_NO_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0024\u0028-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+
 %s XML_DECL
 %s DOCTYPE_DECL
 %s DOCTYPE_EXTINT
@@ -265,7 +275,7 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    return Token_Name;
 }
 
-<ENTITY_VALUE_QUOTATION>[^%&"]+ {
+<ENTITY_VALUE_QUOTATION>{CHAR_NO_QUOTATION_PERCENT_AMPERSAND}+ {
    YYLVal := (String => YY_Text, others => <>);
    Put_Line (YYLVal.String);
 
@@ -280,7 +290,7 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    return Token_Entity_Value_Close;
 }
 
-<ENTITY_VALUE_APOSTROPHE>[^%&']+ {
+<ENTITY_VALUE_APOSTROPHE>{CHAR_NO_PERCENT_AMPERSAND_APOSTROPHE}+ {
    YYLVal := (String => YY_Text, others => <>);
    Put_Line (YYLVal.String);
 
@@ -295,7 +305,7 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    return Token_Entity_Value_Close;
 }
 
-<ENTITY_VALUE_PARAMETER_ENTITY>[^%&]+ {
+<ENTITY_VALUE_PARAMETER_ENTITY>{CHAR_NO_PERCENT_AMPERSAND}+ {
    --  In parameter entity substitution mode nor quotation nor apostrophe
    --  characters is recognized.
 
@@ -404,6 +414,7 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 }
 
 .|\n {
+   Put_Line (YY_Text);
    raise Program_Error with "Unexpected character in document";
 }
 

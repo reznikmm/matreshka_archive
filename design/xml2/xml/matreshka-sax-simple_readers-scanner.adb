@@ -805,6 +805,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                raise Program_Error with "Unexpected character in system literal";
 
             when 45 =>
+               Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 
 --            =>
