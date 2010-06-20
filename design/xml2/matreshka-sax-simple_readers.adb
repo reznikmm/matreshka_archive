@@ -156,6 +156,7 @@ package body Matreshka.SAX.Simple_Readers is
    begin
       Self.Scanner_State.Data := League.Strings.Internals.Get_Shared (Data);
       Parser.YYParse (Self);
+      Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
    end Parse;
 
    -------------------------

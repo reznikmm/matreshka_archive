@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 private with Ada.Containers.Vectors;
 private with Ada.Containers.Hashed_Maps;
+private with Ada.Exceptions;
 
 with League.Strings;
 with Matreshka.SAX.Readers;
@@ -157,6 +158,12 @@ private
 
       Parameter_Entities : Universal_String_Maps.Map;
       General_Entities   : Universal_String_Maps.Map;
+      Continue           : Boolean := True;
+      --  Continue processing.
+      Error_Message      : League.Strings.Universal_String;
+      --  Error message.
+      User_Exception     : Ada.Exceptions.Exception_Occurrence;
+      --  Catched exception from the user defined handler.
    end record;
 
    overriding function Content_Handler

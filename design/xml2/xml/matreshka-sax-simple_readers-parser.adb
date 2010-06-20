@@ -430,6 +430,10 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                            & Integer'Image (YY_Rule_Id) & " in parser";
             end case;
 
+            --  Exit loop on user request or on unrecoverable error.
+
+            exit when not Self.Continue;
+
             --  Pop RHS states and goto next state.
 
             YY.TOS := YY.TOS - YY_Rule_Length (YY_Rule_Id) + 1;
