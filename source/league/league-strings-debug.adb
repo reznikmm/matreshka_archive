@@ -148,7 +148,7 @@ package body League.Strings.Debug is
 
    begin
       while Index < D.Unused loop
-         if Index /= 1 then
+         if Index /= 0 then
             Append (Result, ' ');
          end if;
 
