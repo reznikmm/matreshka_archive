@@ -739,6 +739,15 @@ package body League.Strings is
       Self.Cursors := Self.List'Unchecked_Access;
    end Initialize;
 
+   --------------
+   -- Is_Empty --
+   --------------
+
+   function Is_Empty (Self : Universal_String'Class) return Boolean is
+   begin
+      return Self.Data.Length = 0;
+   end Is_Empty;
+
    ---------------------------------
    -- Is_Legal_Unicode_Code_Point --
    ---------------------------------

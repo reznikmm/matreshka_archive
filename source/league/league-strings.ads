@@ -123,6 +123,8 @@ package League.Strings is
 
    function Length (Self : Universal_String'Class) return Natural;
 
+   function Is_Empty (Self : Universal_String'Class) return Boolean;
+
    function Element
     (Self  : Universal_String'Class;
      Index : Positive)
@@ -420,6 +422,7 @@ private
    pragma Inline (">=");
    pragma Inline (Adjust);
    pragma Inline (Finalize);
+   pragma Inline (Is_Empty);
    pragma Inline (Length);
    pragma Inline (To_Wide_Wide_Character);
 
