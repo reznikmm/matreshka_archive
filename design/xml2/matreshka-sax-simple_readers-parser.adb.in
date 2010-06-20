@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.SAX.Simple_Readers.Callbacks;
 with Matreshka.SAX.Simple_Readers.Parser.Tables;
 with Matreshka.SAX.Simple_Readers.Scanner;
 
@@ -86,9 +87,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       end if;
 
       Self.General_Entities.Insert (Name, Value);
-      Put_Line (Name);
-      Put_Line (Value);
-      Put_Line ("GE: '" & Name & "' => '" & Value & "'");
+      Callbacks.Call_Internal_Entity_Decl (Self, Name, Value);
    end Process_General_Entity_Declaration;
 
    ------------------------------------------
