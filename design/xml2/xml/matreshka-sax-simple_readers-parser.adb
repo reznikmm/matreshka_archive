@@ -401,7 +401,11 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 5 =>
-               --  Temporal declaration to test parser transformation capabilities.
+               --  Document type declaration, rule [28]. Once external identifier are
+               --  recognized external document type declaration subset need to be parsed 
+               --  before processing of internal subset. External subset is inserted
+               --  immediately after external identifier when present. Thus original
+               --  rule [28] is rewritten and extended to reflect this inclusion.
             
                Process_Document_Type_Declaration
                 (Self,
