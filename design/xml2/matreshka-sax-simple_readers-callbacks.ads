@@ -48,6 +48,11 @@ private package Matreshka.SAX.Simple_Readers.Callbacks is
 
    pragma Preelaborate;
 
+   procedure Call_Comment
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Comment : League.Strings.Universal_String);
+   --  Calls handler's SAX_Lexical_Handler.Comment subprogram.
+
    procedure Call_External_Entity_Decl
     (Self      : not null access SAX_Simple_Reader'Class;
      Name      : League.Strings.Universal_String;

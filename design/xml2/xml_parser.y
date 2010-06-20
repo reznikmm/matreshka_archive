@@ -16,6 +16,7 @@
 %token Token_Entity_Value_Close
 %token Token_String_Segment
 %token Token_NData
+%token Token_Comment
 
 %with League.Strings
 
@@ -132,11 +133,11 @@ internal_subset_optional:
   ;
 
 intSubset_any:
-    intSubset
+    intSubset_any intSubset
 {
    null;
 }
-  | intSubset_any intSubset
+  | intSubset
 {
    null;
 }
@@ -150,6 +151,10 @@ intSubset:
     EntityDecl
 {
    null;
+}
+  | Token_Comment
+{
+   Process_Comment (Self, $1.String);
 }
   ;
 
@@ -252,6 +257,10 @@ with League.Strings;
    procedure YYError (Msg : String) is separate;
 
    procedure puts (Item : String) is separate;
+
+   procedure Process_Comment
+    (Self    : access Integer;
+     Comment : League.Strings.Universal_String) is separate;
 
    procedure Process_Document_Type_Declaration
     (Self        : access Integer;

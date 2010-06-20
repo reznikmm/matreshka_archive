@@ -45,6 +45,29 @@ with Ada.Exceptions;
 
 package body Matreshka.SAX.Simple_Readers.Callbacks is
 
+   ------------------
+   -- Call_Comment --
+   ------------------
+
+   procedure Call_Comment
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Comment : League.Strings.Universal_String) is
+   begin
+      Self.Continue :=
+        Self.Lexical_Handler.Comment (Comment);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.Lexical_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_Comment;
+
    -------------------------------
    -- Call_External_Entity_Decl --
    -------------------------------

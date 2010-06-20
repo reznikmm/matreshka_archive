@@ -23,6 +23,54 @@ package body Demo_Handlers is
       return True;
    end Attribute_Decl;
 
+   -------------
+   -- Comment --
+   -------------
+
+   overriding function Comment
+    (Self : not null access Demo_Handler;
+     Text : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      Put_Line (">>> (Comment): '" & Text & "'");
+
+      return True;
+   end Comment;
+
+   ---------------
+   -- End_CDATA --
+   ---------------
+
+   overriding function End_CDATA
+    (Self : not null access Demo_Handler)
+       return Boolean is
+   begin
+      return True;
+   end End_CDATA;
+
+   -------------
+   -- End_DTD --
+   -------------
+
+   overriding function End_DTD
+    (Self : not null access Demo_Handler)
+       return Boolean is
+   begin
+      return True;
+   end End_DTD;
+
+   ----------------
+   -- End_Entity --
+   ----------------
+
+   overriding function End_Entity
+    (Self : not null access Demo_Handler;
+     Name : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return True;
+   end End_Entity;
+
    ------------------
    -- Error_String --
    ------------------
@@ -99,6 +147,43 @@ package body Demo_Handlers is
            (System_Id.To_Wide_Wide_String));
       Put_Line (Text);
    end Resolve_Entity;
+
+   -----------------
+   -- Start_CDATA --
+   -----------------
+
+   overriding function Start_CDATA
+    (Self : not null access Demo_Handler)
+       return Boolean is
+   begin
+      return True;
+   end Start_CDATA;
+
+   ---------------
+   -- Start_DTD --
+   ---------------
+
+   overriding function Start_DTD
+    (Self      : not null access Demo_Handler;
+     Name      : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return True;
+   end Start_DTD;
+
+   ------------------
+   -- Start_Entity --
+   ------------------
+
+   overriding function Start_Entity
+    (Self : not null access Demo_Handler;
+     Name : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return True;
+   end Start_Entity;
 
    --------------------------
    -- Unparsed_Entity_Decl --

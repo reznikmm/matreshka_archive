@@ -56,6 +56,11 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    function YY_Parse_Action (State : Natural; T : Token) return Integer;
    --  Lookup for parser action.
 
+   procedure Process_Comment
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Comment : League.Strings.Universal_String);
+   --  Process comment in the document.
+
    procedure Process_Document_Type_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
      Name        : League.Strings.Universal_String;
@@ -80,6 +85,17 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Name  : League.Strings.Universal_String;
      Value : League.Strings.Universal_String);
    --  Process parameter entity declaration, rule [72].
+
+   ---------------------
+   -- Process_Comment --
+   ---------------------
+
+   procedure Process_Comment
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Comment : League.Strings.Universal_String) is
+   begin
+      Callbacks.Call_Comment (Self, Comment);
+   end Process_Comment;
 
    ---------------------------------------
    -- Process_Document_Type_Declaration --

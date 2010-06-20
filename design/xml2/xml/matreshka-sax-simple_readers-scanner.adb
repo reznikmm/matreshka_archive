@@ -657,6 +657,13 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Token_Internal_Subset_Close;
 
             when 13 =>
+               --  Text of comment, rule [15].
+            
+               YYLVal := (String => YY_Text (4, 3), others => <>);
+            
+               return Token_Comment;
+
+            when 14 =>
                --  Open of entity declaration, rules [71], [72].
             
                Enter_Start_Condition (Self, ENTITY_DECL);
@@ -664,7 +671,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Entity_Decl_Open;
 
-            when 14 =>
+            when 15 =>
                --  Name in entity declaration, rules [71], [72].
             
                if not Get_Whitespace_Matched (Self) then
@@ -680,7 +687,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Name;
 
-            when 15 =>
+            when 16 =>
                --  Percent mark in parameter entity declaration, rule [72].
             
                if not Get_Whitespace_Matched (Self) then
@@ -693,19 +700,19 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Percent;
 
-            when 16 =>
+            when 17 =>
                --  Close token of entity declaration, rules [71], [72].
             
                Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
             
                return Token_Close;
 
-            when 17 =>
+            when 18 =>
                --  Entity value, rule [9].
             
                return Process_Entity_Value_Open_Delimiter (Self, YY_Text);
 
-            when 18 =>
+            when 19 =>
                --  Entity value as ExternalID, rule [75], used by rules [73], [74].
             
                Set_Continue_State (Self, ENTITY_DEF);
@@ -714,7 +721,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_System;
 
-            when 19 =>
+            when 20 =>
                --  Entity value as ExternalID, rule [75], used by rules [73], [74].
             
                Set_Continue_State (Self, ENTITY_DEF);
@@ -723,7 +730,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Public;
 
-            when 20 =>
+            when 21 =>
                --  NDATA keyword, rule [76].
             
                if not Get_Whitespace_Matched (Self) then
@@ -735,7 +742,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_NData;
 
-            when 21 =>
+            when 22 =>
                --  Name of NDATA, rule [76].
             
                Enter_Start_Condition (Self, ENTITY_DEF);
@@ -744,35 +751,35 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Name;
 
-            when 22 =>
+            when 23 =>
                YYLVal := (String => YY_Text, others => <>);
             
                return Token_String_Segment;
 
-            when 23 =>
+            when 24 =>
                --  Close of entity value, rule [9].
             
                return Process_Entity_Value_Close_Delimiter (Self, YY_Text);
 
-            when 24 =>
+            when 25 =>
                --  Decimal form of character reference rule [66] in entity value rule [9].
             
                return Process_Character_Reference (Self, Decimal, YY_Text (2, 1));
 
-            when 25 =>
+            when 26 =>
                --  Hexadecimal form of character reference rule [66] in entity value rule
                --  [9].
             
                return Process_Character_Reference (Self, Hexadecimal, YY_Text (3, 1));
 
-            when 26 =>
+            when 27 =>
                --  General entity reference rule [68] in entity value rule [9].
             
                YYLVal := (String => YY_Text, others => <>);
             
                return Token_String_Segment;
 
-            when 27 =>
+            when 28 =>
                --  Parameter entity reference rule [69] in entity value rule [9].
                --
                --  Processing of parameter entity uses separate scanner's state, thus
@@ -784,54 +791,55 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
 
-            when 28 =>
+            when 29 =>
                --  All white spaces from rules [28] are ignored.
                --  Whitespace before name in rule [76] is ignored.
             
                null;
 
-            when 29 =>
+            when 30 =>
                --  White spaces in entity declaration are not optional, rules [71], [72],
                --  [75].
             
                Set_Whitespace_Matched (Self);
 
-            when 30 =>
+            when 31 =>
                --  XXX Temporary ignore whitespaces.
             
                null;
 
-            when 31 =>
+            when 32 =>
                raise Program_Error with "Unexpected character in XML_DECL";
 
-            when 32 =>
+            when 33 =>
                raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 
-            when 33 =>
+            when 34 =>
                raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
-            when 34 =>
+            when 35 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INT";
 
-            when 35 =>
+            when 36 =>
+               Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
-            when 36 =>
+            when 37 =>
                raise Program_Error with "Unexpected character in ENTITY_DECL";
 
-            when 37 =>
+            when 38 =>
                raise Program_Error with "Unexpected character in ENTITY_DEF";
 
-            when 38 =>
+            when 39 =>
                raise Program_Error with "Unexpected character in ENTITY_NDATA";
 
-            when 39 =>
+            when 40 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 40 =>
+            when 41 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 41 =>
+            when 42 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 

@@ -25,6 +25,8 @@ CHAR_NO_QUOTATION_PERCENT_AMPERSAND	[\u0001-\u0021\u0023-\u0024\u0027-\uD7FF\uE0
 CHAR_NO_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0024\u0028-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 --  [^"%&']
 CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0021\u0023-\u0024\u0027-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  (Char - '-') for comment, rule [15].
+CHAR_NO_HYPHEN				[\u0001-\u002C\u002E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 
 %x XML_DECL
 %x DOCTYPE_DECL
@@ -154,6 +156,14 @@ CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0021\u0023-\u0024\u0027
    Enter_Start_Condition (Self, DOCTYPE_INT);
 
    return Token_Internal_Subset_Close;
+}
+
+<DOCTYPE_INTSUBSET>"<!--"({CHAR_NO_HYPHEN}|-{CHAR_NO_HYPHEN})*"-->" {
+   --  Text of comment, rule [15].
+
+   YYLVal := (String => YY_Text (4, 3), others => <>);
+
+   return Token_Comment;
 }
 
 <DOCTYPE_INTSUBSET>"<!ENTITY" {
@@ -340,6 +350,7 @@ CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0021\u0023-\u0024\u0027
 }
 
 <DOCTYPE_INTSUBSET>. {
+   Put_Line (YY_Text);
    raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 }
 
