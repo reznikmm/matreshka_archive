@@ -49,5 +49,6 @@ begin
    Put_Line (Text);
 
    Reader.Set_Decl_Handler (Handler'Unchecked_Access);
+   Reader.Set_DTD_Handler (Handler'Unchecked_Access);
    Reader.Parse (Text);
 end Demo;
