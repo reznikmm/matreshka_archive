@@ -45,6 +45,8 @@ with League.Strings;
 
 package Matreshka.SAX.Entity_Resolvers is
 
+   pragma Preelaborate;
+
    type SAX_Entity_Resolver is limited interface;
 
    not overriding function Error_String
@@ -57,5 +59,8 @@ package Matreshka.SAX.Entity_Resolvers is
      System_Id : League.Strings.Universal_String;
      Text      : out League.Strings.Universal_String;
      Success   : in out Boolean) is abstract;
+   --  XXX Profile of this operation need to be arranged with others. It can be
+   --  a good idea to have Success parameter in all callbacks and convert them
+   --  from functions to procedures after all.
 
 end Matreshka.SAX.Entity_Resolvers;

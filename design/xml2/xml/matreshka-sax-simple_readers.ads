@@ -150,6 +150,7 @@ private
         := Default_Handler'Access;
       Lexical_Handler    : Matreshka.SAX.Readers.SAX_Lexical_Handler_Access
         := Default_Handler'Access;
+      Entity_Resolver    : Matreshka.SAX.Readers.SAX_Entity_Resolver_Access;
 
       --  Scanner state
 
@@ -190,6 +191,10 @@ private
     (Self : not null access constant SAX_Simple_Reader)
        return Matreshka.SAX.Readers.SAX_DTD_Handler_Access;
 
+   overriding function Entity_Resolver
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_Entity_Resolver_Access;
+
    overriding function Error_Handler
     (Self : not null access constant SAX_Simple_Reader)
        return Matreshka.SAX.Readers.SAX_Error_Handler_Access;
@@ -209,6 +214,10 @@ private
    overriding procedure Set_DTD_Handler
     (Self    : not null access SAX_Simple_Reader;
      Handler : Matreshka.SAX.Readers.SAX_DTD_Handler_Access);
+
+   overriding procedure Set_Entity_Resolver
+    (Self     : not null access SAX_Simple_Reader;
+     Resolver : Matreshka.SAX.Readers.SAX_Entity_Resolver_Access);
 
    overriding procedure Set_Error_Handler
     (Self    : not null access SAX_Simple_Reader;

@@ -98,6 +98,17 @@ package body Matreshka.SAX.Simple_Readers is
       end if;
    end DTD_Handler;
 
+   ---------------------
+   -- Entity_Resolver --
+   ---------------------
+
+   overriding function Entity_Resolver
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_Entity_Resolver_Access is
+   begin
+      return Self.Entity_Resolver;
+   end Entity_Resolver;
+
    -------------------
    -- Error_Handler --
    -------------------
@@ -206,6 +217,17 @@ package body Matreshka.SAX.Simple_Readers is
          Self.DTD_Handler := Handler;
       end if;
    end Set_DTD_Handler;
+
+   -------------------------
+   -- Set_Entity_Resolver --
+   -------------------------
+
+   overriding procedure Set_Entity_Resolver
+    (Self     : not null access SAX_Simple_Reader;
+     Resolver : Matreshka.SAX.Readers.SAX_Entity_Resolver_Access) is
+   begin
+      Self.Entity_Resolver := Resolver;
+   end Set_Entity_Resolver;
 
    -----------------------
    -- Set_Error_Handler --

@@ -46,6 +46,7 @@ with League.Strings;
 with Matreshka.SAX.Content_Handlers;
 with Matreshka.SAX.Decl_Handlers;
 with Matreshka.SAX.DTD_Handlers;
+with Matreshka.SAX.Entity_Resolvers;
 with Matreshka.SAX.Error_Handlers;
 with Matreshka.SAX.Lexical_Handlers;
 
@@ -63,6 +64,8 @@ package Matreshka.SAX.Readers is
      access all Matreshka.SAX.Error_Handlers.SAX_Error_Handler'Class;
    type SAX_Lexical_Handler_Access is
      access all Matreshka.SAX.Lexical_Handlers.SAX_Lexical_Handler'Class;
+   type SAX_Entity_Resolver_Access is
+     access all Matreshka.SAX.Entity_Resolvers.SAX_Entity_Resolver'Class;
 
    type SAX_Reader is limited interface;
 
@@ -77,6 +80,10 @@ package Matreshka.SAX.Readers is
    not overriding function DTD_Handler
     (Self : not null access constant SAX_Reader)
        return SAX_DTD_Handler_Access is abstract;
+
+   not overriding function Entity_Resolver
+    (Self : not null access constant SAX_Reader)
+       return SAX_Entity_Resolver_Access is abstract;
 
    not overriding function Error_Handler
     (Self : not null access constant SAX_Reader)
@@ -97,6 +104,10 @@ package Matreshka.SAX.Readers is
    not overriding procedure Set_DTD_Handler
     (Self    : not null access SAX_Reader;
      Handler : SAX_DTD_Handler_Access) is abstract;
+
+   not overriding procedure Set_Entity_Resolver
+    (Self     : not null access SAX_Reader;
+     Resolver : SAX_Entity_Resolver_Access) is abstract;
 
    not overriding procedure Set_Error_Handler
     (Self    : not null access SAX_Reader;
