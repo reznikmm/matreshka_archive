@@ -1,3 +1,4 @@
+with Put_Line;
 
 package body Demo_Handlers is
 
@@ -50,8 +51,14 @@ package body Demo_Handlers is
     (Self  : not null access Demo_Handler;
      Name  : League.Strings.Universal_String;
      Value : League.Strings.Universal_String)
-       return Boolean is
+       return Boolean
+   is
+      use type League.Strings.Universal_String;
+
    begin
+      Put_Line
+       (">>> (Internal_Entity_Decl): '" & Name & "' => '" & Value & "'");
+
       return True;
    end Internal_Entity_Decl;
 
