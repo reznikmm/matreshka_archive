@@ -19,10 +19,12 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 --
 --  [^%&]
 CHAR_NO_PERCENT_AMPERSAND		[\u0001-\u0024\u0027-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
---  [^%&"]
+--  [^%&"] - Unused
 CHAR_NO_QUOTATION_PERCENT_AMPERSAND	[\u0001-\u0021\u0023-\u0024\u0027-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
---  [^%&']
+--  [^%&'] - Unused
 CHAR_NO_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0024\u0028-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  [^"%&']
+CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0021\u0023-\u0024\u0027-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 
 %s XML_DECL
 %s DOCTYPE_DECL
@@ -32,9 +34,7 @@ CHAR_NO_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0024\u0028-\uD7FF\uE000-\uFFFD\u1
 %s ENTITY_DECL
 %s ENTITY_DEF
 %s ENTITY_NDATA
-%s ENTITY_VALUE_QUOTATION
-%s ENTITY_VALUE_APOSTROPHE
-%s ENTITY_VALUE_PARAMETER_ENTITY
+%s ENTITY_VALUE
 --  Factored out processing for ExternalID, rule [75]. When PUBLIC or SYSTEM
 --  word is recognized, scanner must be switched to EXTERNAL_ID_PUB or
 --  EXTERNAL_ID_SYS state and set state to which scanner is returned after
@@ -204,32 +204,10 @@ CHAR_NO_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0024\u0028-\uD7FF\uE000-\uFFFD\u1
    return Token_Close;
 }
 
-<ENTITY_DEF>\" {
+<ENTITY_DEF>["'] {
    --  Entity value, rule [9].
 
-   if not Get_Whitespace_Matched (Self) then
-      raise Program_Error with "no whitespace before entity value";
-      --  XXX This is recoverable error.
-   end if;
-
-   Reset_Whitespace_Matched (Self);
-   Enter_Start_Condition (Self, ENTITY_VALUE_QUOTATION);
-
-   return Token_Entity_Value_Open;
-}
-
-<ENTITY_DEF>\' {
-   --  Entity value, rule [9].
-
-   if not Get_Whitespace_Matched (Self) then
-      raise Program_Error with "no whitespace before entity value";
-      --  XXX This is recoverable error.
-   end if;
-
-   Reset_Whitespace_Matched (Self);
-   Enter_Start_Condition (Self, ENTITY_VALUE_APOSTROPHE);
-
-   return Token_Entity_Value_Open;
+   return Process_Entity_Value_Open_Delimiter (Self, YY_Text);
 }
 
 <ENTITY_DEF>"SYSTEM" {
@@ -275,60 +253,32 @@ CHAR_NO_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0024\u0028-\uD7FF\uE000-\uFFFD\u1
    return Token_Name;
 }
 
-<ENTITY_VALUE_QUOTATION>{CHAR_NO_QUOTATION_PERCENT_AMPERSAND}+ {
+<ENTITY_VALUE>{CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE}+ {
    YYLVal := (String => YY_Text, others => <>);
-   Put_Line (YYLVal.String);
 
    return Token_String_Segment;
 }
 
-<ENTITY_VALUE_QUOTATION>\" {
+<ENTITY_VALUE>["'] {
    --  Close of entity value, rule [9].
 
-   Enter_Start_Condition (Self, ENTITY_DEF);
-
-   return Token_Entity_Value_Close;
+   return Process_Entity_Value_Close_Delimiter (Self, YY_Text);
 }
 
-<ENTITY_VALUE_APOSTROPHE>{CHAR_NO_PERCENT_AMPERSAND_APOSTROPHE}+ {
-   YYLVal := (String => YY_Text, others => <>);
-   Put_Line (YYLVal.String);
-
-   return Token_String_Segment;
-}
-
-<ENTITY_VALUE_APOSTROPHE>\' {
-   --  Close of entity value, rule [9].
-
-   Enter_Start_Condition (Self, ENTITY_DEF);
-
-   return Token_Entity_Value_Close;
-}
-
-<ENTITY_VALUE_PARAMETER_ENTITY>{CHAR_NO_PERCENT_AMPERSAND}+ {
-   --  In parameter entity substitution mode nor quotation nor apostrophe
-   --  characters is recognized.
-
-   YYLVal := (String => YY_Text, others => <>);
-   Put_Line (YYLVal.String);
-
-   return Token_String_Segment;
-}
-
-<ENTITY_VALUE_QUOTATION,ENTITY_VALUE_APOSTROPHE,ENTITY_VALUE_PARAMETER_ENTITY>"&#"[0-9]+";" {
+<ENTITY_VALUE>"&#"[0-9]+";" {
    --  Decimal form of character reference rule [66] in entity value rule [9].
 
    return Process_Character_Reference (Self, Decimal, YY_Text (2, 1));
 }
 
-<ENTITY_VALUE_QUOTATION,ENTITY_VALUE_APOSTROPHE,ENTITY_VALUE_PARAMETER_ENTITY>"&#x"[0-9a-fA-F]+";" {
+<ENTITY_VALUE>"&#x"[0-9a-fA-F]+";" {
    --  Hexadecimal form of character reference rule [66] in entity value rule
    --  [9].
 
    return Process_Character_Reference (Self, Hexadecimal, YY_Text (3, 1));
 }
 
-<ENTITY_VALUE_QUOTATION,ENTITY_VALUE_APOSTROPHE,ENTITY_VALUE_PARAMETER_ENTITY>"&"{NAME}";" {
+<ENTITY_VALUE>"&"{NAME}";" {
    --  General entity reference rule [68] in entity value rule [9].
 
    YYLVal := (String => YY_Text, others => <>);
@@ -336,7 +286,7 @@ CHAR_NO_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0024\u0028-\uD7FF\uE000-\uFFFD\u1
    return Token_String_Segment;
 }
 
-<ENTITY_VALUE_QUOTATION,ENTITY_VALUE_APOSTROPHE,ENTITY_VALUE_PARAMETER_ENTITY>"%"{NAME}";" {
+<ENTITY_VALUE>"%"{NAME}";" {
    --  Parameter entity reference rule [69] in entity value rule [9].
    --
    --  Processing of parameter entity uses separate scanner's state, thus
@@ -463,4 +413,12 @@ with League.Strings;
    function Process_Character_Reference
     (Self  : access Integer;
      Form  : Character_Reference_Form;
+     Image : League.Strings.Universal_String) return Token is separate;
+
+   function Process_Entity_Value_Open_Delimiter
+    (Self  : access Integer;
+     Image : League.Strings.Universal_String) return Token is separate;
+
+   function Process_Entity_Value_Close_Delimiter
+    (Self  : access Integer;
      Image : League.Strings.Universal_String) return Token is separate;

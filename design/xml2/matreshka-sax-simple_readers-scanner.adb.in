@@ -97,6 +97,18 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  Processes parameter entity reference in entiry value (rule [69] in
    --  context of rule [9]).
 
+   function Process_Entity_Value_Open_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Image : League.Strings.Universal_String) return Token;
+   --  Process entity value open delimiter, rule [9].
+
+   function Process_Entity_Value_Close_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Image : League.Strings.Universal_String) return Token;
+   --  Process entity value close delimiter, rule [9]. It is also handle
+   --  "Include In Literal" (4.4.5) mode for parameter entities, when quotation
+   --  and apostrophe characters are not recognized as delimiters.
+
    ---------------------------
    -- Enter_Start_Condition --
    ---------------------------
@@ -161,6 +173,54 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       return Token_String_Segment;
    end Process_Character_Reference;
 
+   ------------------------------------------
+   -- Process_Entity_Value_Close_Delimiter --
+   ------------------------------------------
+
+   function Process_Entity_Value_Close_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Image : League.Strings.Universal_String) return Token
+   is
+      Delimiter : constant Matreshka.Internals.Unicode.Code_Point
+        := Wide_Wide_Character'Pos (Image.Element (1));
+
+   begin
+      if Self.Scanner_State.In_Literal
+        or else Self.Scanner_State.Delimiter /= Delimiter
+      then
+         Self.YYLVal := (String => Image, others => <>);
+
+         return Token_String_Segment;
+
+      else
+         Enter_Start_Condition (Self, ENTITY_DEF);
+
+         return Token_Entity_Value_Close;
+      end if;
+   end Process_Entity_Value_Close_Delimiter;
+
+   -----------------------------------------
+   -- Process_Entity_Value_Open_Delimiter --
+   -----------------------------------------
+
+   function Process_Entity_Value_Open_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Image : League.Strings.Universal_String) return Token is
+   begin
+      Self.Scanner_State.Delimiter :=
+        Wide_Wide_Character'Pos (Image.Element (1));
+
+      if not Get_Whitespace_Matched (Self) then
+         raise Program_Error with "no whitespace before entity value";
+         --  XXX This is recoverable error.
+      end if;
+
+      Reset_Whitespace_Matched (Self);
+      Enter_Start_Condition (Self, ENTITY_VALUE);
+
+      return Token_Entity_Value_Open;
+   end Process_Entity_Value_Open_Delimiter;
+
    --------------------------------------------------------
    -- Process_Parameter_Entity_Reference_In_Entity_Value --
    --------------------------------------------------------
@@ -179,7 +239,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
          raise Program_Error with "parameter entity is not declared";
 
       else
---         Set_Continue_State (Self, State);
          Push_Parameter_Entity
           (Self, League.Strings.Internals.Get_Shared (Element (Position)));
       end if;
@@ -195,8 +254,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    begin
       Self.Scanner_Stack.Append (Self.Scanner_State);
 
-      Self.Scanner_State := (Data, others => <>);
-      Enter_Start_Condition (Self, ENTITY_VALUE_PARAMETER_ENTITY);
+      Self.Scanner_State := (Data, In_Literal => True, others => <>);
+      Enter_Start_Condition (Self, ENTITY_VALUE);
    end Push_Parameter_Entity;
 
    ------------------------------

@@ -50,6 +50,7 @@ with Matreshka.SAX.Readers;
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Utf16;
 private with Matreshka.SAX.Default_Handlers;
+private with Matreshka.Internals.Unicode;
 
 package Matreshka.SAX.Simple_Readers is
 
@@ -118,6 +119,13 @@ private
       Last_Match          : Boolean  := True;
       --  This mean that last match need to be processed.
       Continue_State      : Integer;
+      Delimiter           : Matreshka.Internals.Unicode.Code_Point;
+      --  Delimiter of the entity value.
+      In_Literal          : Boolean  := False;
+      --  Include in literal mode, apostrophe and quotation characters are
+      --  ignored.
+      --  XXX The same behavior can be achived by resetting Delimiter to
+      --  any symbol.
    end record;
 
    package Scanner_State_Vectors is
