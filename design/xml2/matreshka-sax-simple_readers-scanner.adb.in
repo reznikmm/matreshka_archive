@@ -155,7 +155,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
       --  XXX Character reference must be resolved into valid XML character.
 
-      Self.YYLVal := (String => League.Strings.To_Universal_String (S));
+      Self.YYLVal :=
+       (String => League.Strings.To_Universal_String (S), others => <>);
 
       return Token_String_Segment;
    end Process_Character_Reference;

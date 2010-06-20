@@ -48,10 +48,25 @@ private package Matreshka.SAX.Simple_Readers.Callbacks is
 
    pragma Preelaborate;
 
+   procedure Call_External_Entity_Decl
+    (Self      : not null access SAX_Simple_Reader'Class;
+     Name      : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String);
+   --  Calls handler's SAX_Decl_Handler.External_Entity_Decl subprogram.
+
    procedure Call_Internal_Entity_Decl
     (Self  : not null access SAX_Simple_Reader'Class;
      Name  : League.Strings.Universal_String;
      Value : League.Strings.Universal_String);
    --  Calls handler's SAX_Decl_Handler.Internal_Entity_Decl subprogram.
+
+   procedure Call_Unparsed_Entity_Decl
+    (Self          : not null access SAX_Simple_Reader'Class;
+     Name          : League.Strings.Universal_String;
+     Public_Id     : League.Strings.Universal_String;
+     System_Id     : League.Strings.Universal_String;
+     Notation_Name : League.Strings.Universal_String);
+   --  Calls handler's SAX_DTD_Handler.Unparsed_Entity_Decl subprogram.
 
 end Matreshka.SAX.Simple_Readers.Callbacks;

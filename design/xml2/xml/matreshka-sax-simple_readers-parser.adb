@@ -56,9 +56,13 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    --  Lookup for parser action.
 
    procedure Process_General_Entity_Declaration
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String);
+    (Self        : not null access SAX_Simple_Reader'Class;
+     Name        : League.Strings.Universal_String;
+     Is_External : Boolean;
+     Value       : League.Strings.Universal_String;
+     Public_Id   : League.Strings.Universal_String;
+     System_Id   : League.Strings.Universal_String;
+     Notation    : League.Strings.Universal_String);
    --  Process general entity declaration, rule [71].
 
    procedure Process_Parameter_Entity_Declaration
@@ -72,22 +76,41 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    ----------------------------------------
 
    procedure Process_General_Entity_Declaration
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String)
+    (Self        : not null access SAX_Simple_Reader'Class;
+     Name        : League.Strings.Universal_String;
+     Is_External : Boolean;
+     Value       : League.Strings.Universal_String;
+     Public_Id   : League.Strings.Universal_String;
+     System_Id   : League.Strings.Universal_String;
+     Notation    : League.Strings.Universal_String)
    is
       use League.Strings;
       use Universal_String_Maps;
 
    begin
       if Self.General_Entities.Contains (Name) then
-         raise Program_Error with "parameter entity already declared";
+         raise Program_Error with "general entity already declared";
          --  XXX It is non-fatal error, first declaration must be used and
          --  at user option warning may be issued to application.
       end if;
 
-      Self.General_Entities.Insert (Name, Value);
-      Callbacks.Call_Internal_Entity_Decl (Self, Name, Value);
+      if Is_External then
+         Self.General_Entities.Insert (Name, Value);
+         --  XXX Not implemented, just insert empty string for now.
+
+         if Notation.Is_Empty then
+            Callbacks.Call_External_Entity_Decl
+             (Self, Name, Public_Id, System_Id);
+
+         else
+            Callbacks.Call_Unparsed_Entity_Decl
+             (Self, Name, Public_Id, System_Id, Notation);
+         end if;
+
+      else
+         Self.General_Entities.Insert (Name, Value);
+         Callbacks.Call_Internal_Entity_Decl (Self, Name, Value);
+      end if;
    end Process_General_Entity_Declaration;
 
    ------------------------------------------
@@ -360,12 +383,17 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             when 8 =>
                --  ExternalID specified by SYSTEM, rule [75].
             
-               null;
+               yyval :=
+                (System_Id => yy.value_stack (yy.tos).String,
+                 others    => <>);
 
             when 9 =>
                --  ExternalID specified by PUBLIC, rule [75].
             
-               null;
+               yyval :=
+                (Public_Id => yy.value_stack (yy.tos-1).String,
+                 System_Id => yy.value_stack (yy.tos).String,
+                 others    => <>);
 
             when 10 =>
                null;
@@ -386,19 +414,38 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 16 =>
-               Process_General_Entity_Declaration (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).String);
+               Process_General_Entity_Declaration
+                (Self,
+                 yy.value_stack (yy.tos-2).String,
+                 yy.value_stack (yy.tos-1).Is_External,
+                 yy.value_stack (yy.tos-1).String,
+                 yy.value_stack (yy.tos-1).Public_Id,
+                 yy.value_stack (yy.tos-1).System_Id,
+                 yy.value_stack (yy.tos-1).Notation);
 
             when 17 =>
                Process_Parameter_Entity_Declaration (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).String);
 
             when 18 =>
-               null;
+               yyval :=
+                (Is_External => False,
+                 String      => yy.value_stack (yy.tos).String,
+                 others      => <>);
 
             when 19 =>
-               null;
+               yyval :=
+                (Is_External => True,
+                 Public_Id   => yy.value_stack (yy.tos).Public_Id,
+                 System_Id   => yy.value_stack (yy.tos).System_Id,
+                 others      => <>);
 
             when 20 =>
-               null;
+               yyval :=
+                (Is_External => True,
+                 Public_Id   => yy.value_stack (yy.tos-2).Public_Id,
+                 System_Id   => yy.value_stack (yy.tos-2).System_Id,
+                 Notation    => yy.value_stack (yy.tos).String,
+                 others      => <>);
 
             when 21 =>
                null;

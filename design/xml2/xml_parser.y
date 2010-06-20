@@ -21,7 +21,11 @@
 
 {
    type YYSType is record
-      String : League.Strings.Universal_String;
+      String      : League.Strings.Universal_String;
+      Is_External : Boolean;
+      Public_Id   : League.Strings.Universal_String;
+      System_Id   : League.Strings.Universal_String;
+      Notation    : League.Strings.Universal_String;
    end record;
 }
 
@@ -75,13 +79,18 @@ ExternalID:
 {
    --  ExternalID specified by SYSTEM, rule [75].
 
-   null;
+   $$ :=
+    (System_Id => $2.String,
+     others    => <>);
 }
   | Token_Public Token_Public_Literal Token_System_Literal
 {
    --  ExternalID specified by PUBLIC, rule [75].
 
-   null;
+   $$ :=
+    (Public_Id => $2.String,
+     System_Id => $3.String,
+     others    => <>);
 }
   ;
 
@@ -121,7 +130,14 @@ intSubset:
 EntityDecl:
     Token_Entity_Decl_Open Token_Name EntityDef Token_Close
 {
-   Process_General_Entity_Declaration (Self, $2.String, $3.String);
+   Process_General_Entity_Declaration
+    (Self,
+     $2.String,
+     $3.Is_External,
+     $3.String,
+     $3.Public_Id,
+     $3.System_Id,
+     $3.Notation);
 }
   | Token_Entity_Decl_Open Token_Percent Token_Name PEDef Token_Close
 {
@@ -132,15 +148,27 @@ EntityDecl:
 EntityDef:
     EntityValue
 {
-   null;
+   $$ :=
+    (Is_External => False,
+     String      => $1.String,
+     others      => <>);
 }
   | ExternalID
 {
-   null;
+   $$ :=
+    (Is_External => True,
+     Public_Id   => $1.Public_Id,
+     System_Id   => $1.System_Id,
+     others      => <>);
 }
   | ExternalID Token_NData Token_Name
 {
-   null;
+   $$ :=
+    (Is_External => True,
+     Public_Id   => $1.Public_Id,
+     System_Id   => $1.System_Id,
+     Notation    => $3.String,
+     others      => <>);
 }
   ;
 
@@ -200,9 +228,13 @@ with League.Strings;
    procedure puts (Item : String) is separate;
 
    procedure Process_General_Entity_Declaration
-    (Self  : access Integer;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String) is separate;
+    (Self        : access Integer;
+     Name        : League.Strings.Universal_String;
+     Is_External : Boolean;
+     Value       : League.Strings.Universal_String;
+     Public_Id   : League.Strings.Universal_String;
+     System_Id   : League.Strings.Universal_String;
+     Notation    : League.Strings.Universal_String) is separate;
 
    procedure Process_Parameter_Entity_Declaration
     (Self  : access Integer;

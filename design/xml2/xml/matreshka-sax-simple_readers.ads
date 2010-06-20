@@ -93,7 +93,11 @@ private
      Token_Ndata);
 
    type YYSType is record
-      String : League.Strings.Universal_String;
+      String      : League.Strings.Universal_String;
+      Is_External : Boolean;
+      Public_Id   : League.Strings.Universal_String;
+      System_Id   : League.Strings.Universal_String;
+      Notation    : League.Strings.Universal_String;
    end record;
 
    function Hash

@@ -155,7 +155,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
       --  XXX Character reference must be resolved into valid XML character.
 
-      Self.YYLVal := (String => League.Strings.To_Universal_String (S));
+      Self.YYLVal :=
+       (String => League.Strings.To_Universal_String (S), others => <>);
 
       return Token_String_Segment;
    end Process_Character_Reference;
@@ -508,7 +509,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Name of root element type, rule [28].
             
                Enter_Start_Condition (Self, DOCTYPE_EXTINT);
-               YYLVal := (String => YY_Text);
+               YYLVal := (String => YY_Text, others => <>);
                Put_Line (YYLVal.String);
             
                return Token_Name;
@@ -539,7 +540,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, Get_Continue_State (Self));
-               YYLVal := (String => YY_Text (1, 1));
+               YYLVal := (String => YY_Text (1, 1), others => <>);
                Put_Line (YYLVal.String);
             
                return Token_System_Literal;
@@ -563,7 +564,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
-               YYLVal := (String => YY_Text (1, 1));
+               YYLVal := (String => YY_Text (1, 1), others => <>);
                Put_Line (YYLVal.String);
             
                return Token_Public_Literal;
@@ -601,7 +602,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, ENTITY_DEF);
-               YYLVal := (String => YY_Text);
+               YYLVal := (String => YY_Text, others => <>);
                Put_Line (YYLVal.String);
             
                return Token_Name;
@@ -686,13 +687,13 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Name of NDATA, rule [76].
             
                Enter_Start_Condition (Self, ENTITY_DEF);
-               YYLVal := (String => YY_Text);
+               YYLVal := (String => YY_Text, others => <>);
                Put_Line (YYLVal.String);
             
                return Token_Name;
 
             when 23 =>
-               YYLVal := (String => YY_Text);
+               YYLVal := (String => YY_Text, others => <>);
                Put_Line (YYLVal.String);
             
                return Token_String_Segment;
@@ -705,7 +706,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Token_Entity_Value_Close;
 
             when 25 =>
-               YYLVal := (String => YY_Text);
+               YYLVal := (String => YY_Text, others => <>);
                Put_Line (YYLVal.String);
             
                return Token_String_Segment;
@@ -721,7 +722,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  In parameter entity substitution mode nor quotation nor apostrophe
                --  characters is recognized.
             
-               YYLVal := (String => YY_Text);
+               YYLVal := (String => YY_Text, others => <>);
                Put_Line (YYLVal.String);
             
                return Token_String_Segment;
@@ -740,7 +741,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 30 =>
                --  General entity reference rule [68] in entity value rule [9].
             
-               YYLVal := (String => YY_Text);
+               YYLVal := (String => YY_Text, others => <>);
             
                return Token_String_Segment;
 

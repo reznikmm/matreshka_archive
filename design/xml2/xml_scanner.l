@@ -64,7 +64,7 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    --  Name of root element type, rule [28].
 
    Enter_Start_Condition (Self, DOCTYPE_EXTINT);
-   YYLVal := (String => YY_Text);
+   YYLVal := (String => YY_Text, others => <>);
    Put_Line (YYLVal.String);
 
    return Token_Name;
@@ -98,7 +98,7 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, Get_Continue_State (Self));
-   YYLVal := (String => YY_Text (1, 1));
+   YYLVal := (String => YY_Text (1, 1), others => <>);
    Put_Line (YYLVal.String);
 
    return Token_System_Literal;
@@ -124,7 +124,7 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
-   YYLVal := (String => YY_Text (1, 1));
+   YYLVal := (String => YY_Text (1, 1), others => <>);
    Put_Line (YYLVal.String);
 
    return Token_Public_Literal;
@@ -166,7 +166,7 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, ENTITY_DEF);
-   YYLVal := (String => YY_Text);
+   YYLVal := (String => YY_Text, others => <>);
    Put_Line (YYLVal.String);
 
    return Token_Name;
@@ -259,14 +259,14 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    --  Name of NDATA, rule [76].
 
    Enter_Start_Condition (Self, ENTITY_DEF);
-   YYLVal := (String => YY_Text);
+   YYLVal := (String => YY_Text, others => <>);
    Put_Line (YYLVal.String);
 
    return Token_Name;
 }
 
 <ENTITY_VALUE_QUOTATION>[^%&"]+ {
-   YYLVal := (String => YY_Text);
+   YYLVal := (String => YY_Text, others => <>);
    Put_Line (YYLVal.String);
 
    return Token_String_Segment;
@@ -281,7 +281,7 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 }
 
 <ENTITY_VALUE_APOSTROPHE>[^%&']+ {
-   YYLVal := (String => YY_Text);
+   YYLVal := (String => YY_Text, others => <>);
    Put_Line (YYLVal.String);
 
    return Token_String_Segment;
@@ -299,7 +299,7 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
    --  In parameter entity substitution mode nor quotation nor apostrophe
    --  characters is recognized.
 
-   YYLVal := (String => YY_Text);
+   YYLVal := (String => YY_Text, others => <>);
    Put_Line (YYLVal.String);
 
    return Token_String_Segment;
@@ -321,7 +321,7 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 <ENTITY_VALUE_QUOTATION,ENTITY_VALUE_APOSTROPHE,ENTITY_VALUE_PARAMETER_ENTITY>"&"{NAME}";" {
    --  General entity reference rule [68] in entity value rule [9].
 
-   YYLVal := (String => YY_Text);
+   YYLVal := (String => YY_Text, others => <>);
 
    return Token_String_Segment;
 }
