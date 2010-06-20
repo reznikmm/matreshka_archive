@@ -1,12 +1,14 @@
 with League.Strings;
 with Matreshka.SAX.Decl_Handlers;
 with Matreshka.SAX.DTD_Handlers;
+with Matreshka.SAX.Entity_Resolvers;
 
 package Demo_Handlers is
 
    type Demo_Handler is limited
      new Matreshka.SAX.Decl_Handlers.SAX_Decl_Handler
-       and Matreshka.SAX.DTD_Handlers.SAX_DTD_Handler with null record;
+       and Matreshka.SAX.DTD_Handlers.SAX_DTD_Handler
+       and Matreshka.SAX.Entity_Resolvers.SAX_Entity_Resolver with null record;
 
    overriding function Attribute_Decl
     (Self          : not null access Demo_Handler;
@@ -40,6 +42,13 @@ package Demo_Handlers is
      Public_Id     : League.Strings.Universal_String;
      System_Id     : League.Strings.Universal_String)
        return Boolean;
+
+   overriding procedure Resolve_Entity
+    (Self      : not null access Demo_Handler;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Text      : out League.Strings.Universal_String;
+     Success   : in out Boolean);
 
    overriding function Unparsed_Entity_Decl
     (Self          : not null access Demo_Handler;

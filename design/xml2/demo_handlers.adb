@@ -1,4 +1,7 @@
+with Ada.Characters.Conversions;
+
 with Put_Line;
+with Read_File;
 
 package body Demo_Handlers is
 
@@ -78,6 +81,23 @@ package body Demo_Handlers is
    begin
       return True;
    end Notation_Decl;
+
+   --------------------
+   -- Resolve_Entity --
+   --------------------
+
+   overriding procedure Resolve_Entity
+    (Self      : not null access Demo_Handler;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Text      : out League.Strings.Universal_String;
+     Success   : in out Boolean) is
+   begin
+      Text :=
+        Read_File
+         (Ada.Characters.Conversions.To_String
+           (System_Id.To_Wide_Wide_String));
+   end Resolve_Entity;
 
    --------------------------
    -- Unparsed_Entity_Decl --
