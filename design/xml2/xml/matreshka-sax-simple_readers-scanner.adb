@@ -476,22 +476,28 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 --        -- current run.
          loop
             YY_Next_Position := Self.Scanner_State.YY_Current_Position;
-            Unchecked_Next
-             (Self.Scanner_State.Data.Value,
-              YY_Next_Position,
-              YY_Current_Code);
-            YY_C :=
-              YY_EC_Base
-               (YY_Current_Code / 16#100#) (YY_Current_Code mod 16#100#);
 
-            --  My section BEGIN
+            if YY_Next_Position < Self.Scanner_State.Data.Unused then
+               Unchecked_Next
+                (Self.Scanner_State.Data.Value,
+                 YY_Next_Position,
+                 YY_Current_Code);
+               YY_C :=
+                 YY_EC_Base
+                  (YY_Current_Code / 16#100#) (YY_Current_Code mod 16#100#);
 
-            if YY_Current_Code = 0 then
-               --  XXX Current code is "end of buffer" mark. It is need to be
-               --  reviewed and carefully implented without assumption that
-               --  last character has zero code. But in general it is a case,
-               --  character with zero code is prohibited and used as implicit
-               --  terminator in the internal string representation.
+               if YY_Current_Code = 0 then
+                  --  NUL character (code point 0) can't be used in XML
+                  --  documents.
+
+                  raise Program_Error with "nul character in document";
+               end if;
+            else
+               --  End of buffer reached.
+
+               YY_C := 0;
+               --  Aflex uses character with code point zero to mark end of
+               --  buffer character. This character always has YY_EC zero.
 
                YY_Last_Match_Position := YY_Last_Accepting_Position;
                YY_Last_Match_Index    := YY_Last_Accepting_Index;
@@ -501,8 +507,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 --                  raise Program_Error with "still have data atfer";
 --               end if;
             end if;
-
-            --  My section END
 
             if YY_Accept (YY_Current_State) /= 0 then
                --  Accepting state reached, save for possible backtrack.
