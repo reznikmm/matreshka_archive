@@ -87,7 +87,6 @@ CHAR_NO_AMPERSAND_LESS_GREATER_LEFT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D\u00
 
    Enter_Start_Condition (Self, DOCTYPE_EXTINT);
    YYLVal := (String => YY_Text, others => <>);
-   Put_Line (YYLVal.String);
 
    return Token_Name;
 }
@@ -121,7 +120,6 @@ CHAR_NO_AMPERSAND_LESS_GREATER_LEFT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D\u00
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, Get_Continue_State (Self));
    YYLVal := (String => YY_Text (1, 1), others => <>);
-   Put_Line (YYLVal.String);
 
    return Token_System_Literal;
 }
@@ -147,7 +145,6 @@ CHAR_NO_AMPERSAND_LESS_GREATER_LEFT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D\u00
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
    YYLVal := (String => YY_Text (1, 1), others => <>);
-   Put_Line (YYLVal.String);
 
    return Token_Public_Literal;
 }
@@ -197,7 +194,6 @@ CHAR_NO_AMPERSAND_LESS_GREATER_LEFT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D\u00
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, ENTITY_DEF);
    YYLVal := (String => YY_Text, others => <>);
-   Put_Line (YYLVal.String);
 
    return Token_Name;
 }
@@ -268,7 +264,6 @@ CHAR_NO_AMPERSAND_LESS_GREATER_LEFT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D\u00
 
    Enter_Start_Condition (Self, ENTITY_DEF);
    YYLVal := (String => YY_Text, others => <>);
-   Put_Line (YYLVal.String);
 
    return Token_Name;
 }

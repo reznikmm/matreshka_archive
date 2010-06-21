@@ -713,7 +713,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Enter_Start_Condition (Self, DOCTYPE_EXTINT);
                YYLVal := (String => YY_Text, others => <>);
-               Put_Line (YYLVal.String);
             
                return Token_Name;
 
@@ -744,7 +743,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, Get_Continue_State (Self));
                YYLVal := (String => YY_Text (1, 1), others => <>);
-               Put_Line (YYLVal.String);
             
                return Token_System_Literal;
 
@@ -768,7 +766,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
                YYLVal := (String => YY_Text (1, 1), others => <>);
-               Put_Line (YYLVal.String);
             
                return Token_Public_Literal;
 
@@ -813,7 +810,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, ENTITY_DEF);
                YYLVal := (String => YY_Text, others => <>);
-               Put_Line (YYLVal.String);
             
                return Token_Name;
 
@@ -877,7 +873,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Enter_Start_Condition (Self, ENTITY_DEF);
                YYLVal := (String => YY_Text, others => <>);
-               Put_Line (YYLVal.String);
             
                return Token_Name;
 
