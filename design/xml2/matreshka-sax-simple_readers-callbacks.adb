@@ -45,6 +45,28 @@ with Ada.Exceptions;
 
 package body Matreshka.SAX.Simple_Readers.Callbacks is
 
+   ---------------------
+   -- Call_Characters --
+   ---------------------
+
+   procedure Call_Characters
+    (Self : not null access SAX_Simple_Reader'Class;
+     Text : League.Strings.Universal_String) is
+   begin
+      Self.Continue := Self.Content_Handler.Characters (Text);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.Content_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_Characters;
+
    ------------------
    -- Call_Comment --
    ------------------
@@ -120,6 +142,28 @@ package body Matreshka.SAX.Simple_Readers.Callbacks is
            League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_External_Entity_Decl;
+
+   -------------------------------
+   -- Call_Ignorable_Whitespace --
+   -------------------------------
+
+   procedure Call_Ignorable_Whitespace
+    (Self : not null access SAX_Simple_Reader'Class;
+     Text : League.Strings.Universal_String) is
+   begin
+      Self.Continue := Self.Content_Handler.Ignorable_Whitespace (Text);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.Content_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_Ignorable_Whitespace;
 
    -------------------------------
    -- Call_Internal_Entity_Decl --

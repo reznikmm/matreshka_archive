@@ -131,6 +131,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  "Include In Literal" (4.4.5) mode for parameter entities, when quotation
    --  and apostrophe characters are not recognized as delimiters.
 
+   function Process_Whitespace
+    (Self : not null access SAX_Simple_Reader'Class;
+     Text : League.Strings.Universal_String) return Boolean;
+   --  Process segment of whitespaces. Returns True and sets YYLVal when
+   --  document content analysis started, and return False otherwise.
+
    ---------------------------
    -- Enter_Start_Condition --
    ---------------------------
@@ -329,6 +335,26 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
           (Self, League.Strings.Internals.Get_Shared (Element (Position)));
       end if;
    end Process_Parameter_Entity_Reference_In_Entity_Value;
+
+   ------------------------
+   -- Process_Whitespace --
+   ------------------------
+
+   function Process_Whitespace
+    (Self : not null access SAX_Simple_Reader'Class;
+     Text : League.Strings.Universal_String) return Boolean is
+   begin
+      if Self.Element_Names.Is_Empty then
+         --  Document content not entered.
+
+         return False;
+
+      else
+         Self.YYLVal := (String => Text, Is_Whitespace => True, others => <>);
+
+         return True;
+      end if;
+   end Process_Whitespace;
 
    --------------------------
    -- Push_External_Entity --
@@ -996,42 +1022,51 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                raise Program_Error with "Unexpected character in ATTRIBUTE_VALUE";
 
             when 44 =>
-               --  XXX Temporary ignore whitespaces.
+               --  Segment of whitespaces.
             
-               null;
+               if Process_Whitespace (Self, YY_Text) then
+                  return Token_Char_Data;
+               end if;
 
             when 45 =>
-               raise Program_Error with "Unexpected character in XML_DECL";
+               --  Segment of character data, rule [14].
+            
+               YYLVal := (String => YY_Text, Is_Whitespace => False, others => <>);
+            
+               return Token_Char_Data;
 
             when 46 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_DECL";
+               raise Program_Error with "Unexpected character in XML_DECL";
 
             when 47 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
+               raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 
             when 48 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_INT";
+               raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
             when 49 =>
+               raise Program_Error with "Unexpected character in DOCTYPE_INT";
+
+            when 50 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
-            when 50 =>
+            when 51 =>
                raise Program_Error with "Unexpected character in ENTITY_DECL";
 
-            when 51 =>
+            when 52 =>
                raise Program_Error with "Unexpected character in ENTITY_DEF";
 
-            when 52 =>
+            when 53 =>
                raise Program_Error with "Unexpected character in ENTITY_NDATA";
 
-            when 53 =>
+            when 54 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 54 =>
+            when 55 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 55 =>
+            when 56 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 

@@ -98,16 +98,18 @@ private
      Token_Element_Open,
      Token_Equal,
      Token_End_Open,
-     Token_Empty_Close);
+     Token_Empty_Close,
+     Token_Char_Data);
 
    type YYSType is record
-      String      : League.Strings.Universal_String;
-      Is_External : Boolean;
-      Public_Id   : League.Strings.Universal_String;
-      System_Id   : League.Strings.Universal_String;
-      Notation    : League.Strings.Universal_String;
-      Attribute   : Matreshka.Internals.XML.Attributes.Attribute;
-      Attributes  : Matreshka.SAX.Attributes.SAX_Attributes;
+      String        : League.Strings.Universal_String;
+      Is_External   : Boolean;
+      Is_Whitespace : Boolean;
+      Public_Id     : League.Strings.Universal_String;
+      System_Id     : League.Strings.Universal_String;
+      Notation      : League.Strings.Universal_String;
+      Attribute     : Matreshka.Internals.XML.Attributes.Attribute;
+      Attributes    : Matreshka.SAX.Attributes.SAX_Attributes;
    end record;
 
    function Hash

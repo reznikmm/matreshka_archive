@@ -21,6 +21,7 @@
 %token Token_Equal
 %token Token_End_Open
 %token Token_Empty_Close
+%token Token_Char_Data
 
 %with League.Strings
 %with Matreshka.Internals.XML.Attributes;
@@ -28,13 +29,14 @@
 
 {
    type YYSType is record
-      String      : League.Strings.Universal_String;
-      Is_External : Boolean;
-      Public_Id   : League.Strings.Universal_String;
-      System_Id   : League.Strings.Universal_String;
-      Notation    : League.Strings.Universal_String;
-      Attribute   : Matreshka.Internals.XML.Attributes.Attribute;
-      Attributes  : Matreshka.SAX.Attributes.SAX_Attributes;
+      String        : League.Strings.Universal_String;
+      Is_External   : Boolean;
+      Is_Whitespace : Boolean;
+      Public_Id     : League.Strings.Universal_String;
+      System_Id     : League.Strings.Universal_String;
+      Notation      : League.Strings.Universal_String;
+      Attribute     : Matreshka.Internals.XML.Attributes.Attribute;
+      Attributes    : Matreshka.SAX.Attributes.SAX_Attributes;
    end record;
 }
 
@@ -266,17 +268,28 @@ element :
   ;
 
 content :
-    content element
+    content content_item
 {
    null;
 }
-  | element
+  | content_item
 {
    null;
 }
   |
 {
    null;
+}
+  ;
+
+content_item :
+    element
+{
+   null;
+}
+  | Token_Char_Data
+{
+   Process_Characters (Self, $1.String, $1.Is_Whitespace);
 }
   ;
 
@@ -381,6 +394,11 @@ with Matreshka.SAX.Attributes.Internals;
     (Self       : access Integer;
      Name       : League.Strings.Universal_String;
      Attributes : Matreshka.SAX.Attributes.SAX_Attributes) is separate;
+
+   procedure Process_Characters
+    (Self          : access Integer;
+     Text          : League.Strings.Universal_String;
+     Is_Whitespace : Boolean) is separate;
 
    Self     : access Integer;
    Put_Line : access procedure (Item : League.Strings.Universal_String);

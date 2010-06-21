@@ -32,6 +32,8 @@ package body Demo_Handlers is
      Text : League.Strings.Universal_String)
        return Boolean is
    begin
+      Put_Line (">>> (Characters): '" & Text & "'");
+
       return True;
    end Characters;
 
@@ -162,6 +164,8 @@ package body Demo_Handlers is
      Text : League.Strings.Universal_String)
        return Boolean is
    begin
+      Put_Line (">>> (Ignorable_Whitespace): '" & Text & "'");
+
       return True;
    end Ignorable_Whitespace;
 

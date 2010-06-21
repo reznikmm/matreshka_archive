@@ -29,6 +29,12 @@ CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0021\u0023-\u0024\u0028
 CHAR_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS	[\u0001-\u0021\u0023-\u0025\u0028-\u003B\u003D-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 --  (Char - '-') for comment, rule [15].
 CHAR_NO_HYPHEN				[\u0001-\u002C\u002E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  [^<&] for CharDara, rule [14].
+CHAR_NO_AMPERSAND_LESS			[\u0001-\u0025\u0027-\u003B\u003D-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  [^<&[]
+CHAR_NO_AMPERSAND_LESS_LEFT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D-\u005A\u005C-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  [^<>&[]
+CHAR_NO_AMPERSAND_LESS_GREATER_LEFT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D\u003F-\u005A\u005C-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 
 %x XML_DECL
 %x DOCTYPE_DECL
@@ -433,9 +439,19 @@ CHAR_NO_HYPHEN				[\u0001-\u002C\u002E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 --}
 
 {WHITE_SPACE} {
-   --  XXX Temporary ignore whitespaces.
+   --  Segment of whitespaces.
 
-   null;
+   if Process_Whitespace (Self, YY_Text) then
+      return Token_Char_Data;
+   end if;
+}
+
+({CHAR_NO_AMPERSAND_LESS_LEFT_SQUARE}|"]"{CHAR_NO_AMPERSAND_LESS_LEFT_SQUARE}|"]"{2,}{CHAR_NO_AMPERSAND_LESS_GREATER_LEFT_SQUARE})+ {
+   --  Segment of character data, rule [14].
+
+   YYLVal := (String => YY_Text, Is_Whitespace => False, others => <>);
+
+   return Token_Char_Data;
 }
 
 <XML_DECL>. {
@@ -550,3 +566,7 @@ with League.Strings;
    function Process_Entity_Value_Close_Delimiter
     (Self  : access Integer;
      Image : League.Strings.Universal_String) return Token is separate;
+
+   function Process_Whitespace
+    (Self : access Integer;
+     Text : League.Strings.Universal_String) return Boolean is separate;

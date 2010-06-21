@@ -104,6 +104,29 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Attributes : Matreshka.SAX.Attributes.SAX_Attributes);
    --  Process start tag, rule [44].
 
+   procedure Process_Characters
+    (Self          : not null access SAX_Simple_Reader'Class;
+     Text          : League.Strings.Universal_String;
+     Is_Whitespace : Boolean);
+   --  Process segment of characters.
+
+   ------------------------
+   -- Process_Characters --
+   ------------------------
+
+   procedure Process_Characters
+    (Self          : not null access SAX_Simple_Reader'Class;
+     Text          : League.Strings.Universal_String;
+     Is_Whitespace : Boolean) is
+   begin
+      if Is_Whitespace then
+         Callbacks.Call_Ignorable_Whitespace (Self, Text);
+
+      else
+         Callbacks.Call_Characters (Self, Text);
+      end if;
+   end Process_Characters;
+
    ---------------------
    -- Process_Comment --
    ---------------------

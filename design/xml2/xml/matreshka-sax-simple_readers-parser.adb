@@ -104,6 +104,29 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Attributes : Matreshka.SAX.Attributes.SAX_Attributes);
    --  Process start tag, rule [44].
 
+   procedure Process_Characters
+    (Self          : not null access SAX_Simple_Reader'Class;
+     Text          : League.Strings.Universal_String;
+     Is_Whitespace : Boolean);
+   --  Process segment of characters.
+
+   ------------------------
+   -- Process_Characters --
+   ------------------------
+
+   procedure Process_Characters
+    (Self          : not null access SAX_Simple_Reader'Class;
+     Text          : League.Strings.Universal_String;
+     Is_Whitespace : Boolean) is
+   begin
+      if Is_Whitespace then
+         Callbacks.Call_Ignorable_Whitespace (Self, Text);
+
+      else
+         Callbacks.Call_Characters (Self, Text);
+      end if;
+   end Process_Characters;
+
    ---------------------
    -- Process_Comment --
    ---------------------
@@ -646,6 +669,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 36 =>
+               null;
+
+            when 37 =>
+               Process_Characters (Self, yy.value_stack (yy.tos).String, yy.value_stack (yy.tos).Is_Whitespace);
+
+            when 38 =>
                yyval := yy.value_stack (yy.tos-1);
                Matreshka.SAX.Attributes.Internals.Append
                 (Self           => yyval.Attributes,
@@ -654,7 +683,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Qualified_Name => yy.value_stack (yy.tos).Attribute.Qualified_Name,
                  Value          => yy.value_stack (yy.tos).Attribute.Value);
 
-            when 37 =>
+            when 39 =>
                yyval := (others => <>);
                Matreshka.SAX.Attributes.Internals.Append
                 (Self           => yyval.Attributes,
@@ -663,10 +692,10 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Qualified_Name => yy.value_stack (yy.tos).Attribute.Qualified_Name,
                  Value          => yy.value_stack (yy.tos).Attribute.Value);
 
-            when 38 =>
+            when 40 =>
                yyval := (others => <>);
 
-            when 39 =>
+            when 41 =>
                yyval :=
                 (Attribute =>
                   (Qualified_Name => yy.value_stack (yy.tos-2).String,
@@ -674,7 +703,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                    others         => <>),
                  others    => <>);
 
-            when 40 =>
+            when 42 =>
                null;
                when others =>
                   raise Program_Error

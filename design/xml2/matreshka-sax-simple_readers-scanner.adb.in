@@ -131,6 +131,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  "Include In Literal" (4.4.5) mode for parameter entities, when quotation
    --  and apostrophe characters are not recognized as delimiters.
 
+   function Process_Whitespace
+    (Self : not null access SAX_Simple_Reader'Class;
+     Text : League.Strings.Universal_String) return Boolean;
+   --  Process segment of whitespaces. Returns True and sets YYLVal when
+   --  document content analysis started, and return False otherwise.
+
    ---------------------------
    -- Enter_Start_Condition --
    ---------------------------
@@ -329,6 +335,26 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
           (Self, League.Strings.Internals.Get_Shared (Element (Position)));
       end if;
    end Process_Parameter_Entity_Reference_In_Entity_Value;
+
+   ------------------------
+   -- Process_Whitespace --
+   ------------------------
+
+   function Process_Whitespace
+    (Self : not null access SAX_Simple_Reader'Class;
+     Text : League.Strings.Universal_String) return Boolean is
+   begin
+      if Self.Element_Names.Is_Empty then
+         --  Document content not entered.
+
+         return False;
+
+      else
+         Self.YYLVal := (String => Text, Is_Whitespace => True, others => <>);
+
+         return True;
+      end if;
+   end Process_Whitespace;
 
    --------------------------
    -- Push_External_Entity --
