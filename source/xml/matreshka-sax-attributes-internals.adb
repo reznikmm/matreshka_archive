@@ -41,45 +41,50 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Containers.Vectors;
+--  This package is for internal use only.
+------------------------------------------------------------------------------
 
-with League.Strings;
-private with Matreshka.Internals.XML.Attributes;
+package body Matreshka.SAX.Attributes.Internals is
 
-package Matreshka.SAX.Attributes is
+   ------------
+   -- Append --
+   ------------
 
-   pragma Preelaborate;
+   procedure Append
+    (Self           : in out SAX_Attributes'Class;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Value          : League.Strings.Universal_String)
+   is
+      use Attribute_Vectors;
+      use type League.Strings.Universal_String;
 
-   type SAX_Attributes is tagged private;
+      Position : Attribute_Vectors.Cursor := Self.Attributes.First;
 
-   function Length (Self : SAX_Attributes'Class) return Natural;
+   begin
+      while Has_Element (Position) loop
+         if Element (Position).Qualified_Name = Qualified_Name then
+            raise Constraint_Error;
+         end if;
 
-   function Local_Name
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
+         Next (Position);
+      end loop;
 
-   function Namespace_URI
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
+      Self.Attributes.Append
+       ((Namespace_URI  => Namespace_URI,
+         Local_Name     => Local_Name,
+         Qualified_Name => Qualified_Name,
+         Value          => Value));
+   end Append;
 
-   function Qualified_Name
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
+   -----------
+   -- Clear --
+   -----------
 
-   function Value
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
+   procedure Clear (Self : in out SAX_Attributes'Class) is
+   begin
+      Self.Attributes.Clear;
+   end Clear;
 
-private
-
-   package Attribute_Vectors is
-     new Ada.Containers.Vectors
-          (Positive,
-           Matreshka.Internals.XML.Attributes.Attribute,
-           Matreshka.Internals.XML.Attributes."=");
-
-   type SAX_Attributes is tagged record
-      Attributes : Attribute_Vectors.Vector;
-   end record;
-
-end Matreshka.SAX.Attributes;
+end Matreshka.SAX.Attributes.Internals;

@@ -41,45 +41,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Containers.Vectors;
-
+--  This package provides data type to represent value of the attribute.
 with League.Strings;
-private with Matreshka.Internals.XML.Attributes;
 
-package Matreshka.SAX.Attributes is
+package Matreshka.Internals.XML.Attributes is
 
    pragma Preelaborate;
 
-   type SAX_Attributes is tagged private;
-
-   function Length (Self : SAX_Attributes'Class) return Natural;
-
-   function Local_Name
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
-
-   function Namespace_URI
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
-
-   function Qualified_Name
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
-
-   function Value
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
-
-private
-
-   package Attribute_Vectors is
-     new Ada.Containers.Vectors
-          (Positive,
-           Matreshka.Internals.XML.Attributes.Attribute,
-           Matreshka.Internals.XML.Attributes."=");
-
-   type SAX_Attributes is tagged record
-      Attributes : Attribute_Vectors.Vector;
+   type Attribute is record
+      Namespace_URI  : League.Strings.Universal_String;
+      Local_Name     : League.Strings.Universal_String;
+      Qualified_Name : League.Strings.Universal_String;
+      Value          : League.Strings.Universal_String;
    end record;
 
-end Matreshka.SAX.Attributes;
+end Matreshka.Internals.XML.Attributes;

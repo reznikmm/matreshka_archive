@@ -41,45 +41,60 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Containers.Vectors;
 
-with League.Strings;
-private with Matreshka.Internals.XML.Attributes;
+package body Matreshka.SAX.Attributes is
 
-package Matreshka.SAX.Attributes is
+   ------------
+   -- Length --
+   ------------
 
-   pragma Preelaborate;
+   function Length (Self : SAX_Attributes'Class) return Natural is
+   begin
+      return Natural (Self.Attributes.Length);
+   end Length;
 
-   type SAX_Attributes is tagged private;
-
-   function Length (Self : SAX_Attributes'Class) return Natural;
+   ----------------
+   -- Local_Name --
+   ----------------
 
    function Local_Name
     (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
+     Index : Positive) return League.Strings.Universal_String is
+   begin
+      return Self.Attributes.Element (Index).Local_Name;
+   end Local_Name;
+
+   -------------------
+   -- Namespace_URI --
+   -------------------
 
    function Namespace_URI
     (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
+     Index : Positive) return League.Strings.Universal_String is
+   begin
+      return Self.Attributes.Element (Index).Namespace_URI;
+   end Namespace_URI;
+
+   --------------------
+   -- Qualified_Name --
+   --------------------
 
    function Qualified_Name
     (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
+     Index : Positive) return League.Strings.Universal_String is
+   begin
+      return Self.Attributes.Element (Index).Qualified_Name;
+   end Qualified_Name;
+
+   -----------
+   -- Value --
+   -----------
 
    function Value
     (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
-
-private
-
-   package Attribute_Vectors is
-     new Ada.Containers.Vectors
-          (Positive,
-           Matreshka.Internals.XML.Attributes.Attribute,
-           Matreshka.Internals.XML.Attributes."=");
-
-   type SAX_Attributes is tagged record
-      Attributes : Attribute_Vectors.Vector;
-   end record;
+     Index : Positive) return League.Strings.Universal_String is
+   begin
+      return Self.Attributes.Element (Index).Value;
+   end Value;
 
 end Matreshka.SAX.Attributes;

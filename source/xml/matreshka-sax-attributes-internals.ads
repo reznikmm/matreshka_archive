@@ -41,45 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Containers.Vectors;
+--  This package is for internal use only.
+------------------------------------------------------------------------------
 
-with League.Strings;
-private with Matreshka.Internals.XML.Attributes;
-
-package Matreshka.SAX.Attributes is
+package Matreshka.SAX.Attributes.Internals is
 
    pragma Preelaborate;
 
-   type SAX_Attributes is tagged private;
+   procedure Append
+    (Self           : in out SAX_Attributes'Class;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Value          : League.Strings.Universal_String);
 
-   function Length (Self : SAX_Attributes'Class) return Natural;
+   procedure Clear (Self : in out SAX_Attributes'Class);
 
-   function Local_Name
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
-
-   function Namespace_URI
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
-
-   function Qualified_Name
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
-
-   function Value
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String;
-
-private
-
-   package Attribute_Vectors is
-     new Ada.Containers.Vectors
-          (Positive,
-           Matreshka.Internals.XML.Attributes.Attribute,
-           Matreshka.Internals.XML.Attributes."=");
-
-   type SAX_Attributes is tagged record
-      Attributes : Attribute_Vectors.Vector;
-   end record;
-
-end Matreshka.SAX.Attributes;
+end Matreshka.SAX.Attributes.Internals;
