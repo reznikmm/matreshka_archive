@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
+with Matreshka.SAX.Attributes.Internals;
 with Matreshka.SAX.Simple_Readers.Callbacks;
 with Matreshka.SAX.Simple_Readers.Parser.Tables;
 with Matreshka.SAX.Simple_Readers.Scanner;
@@ -85,6 +86,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Name  : League.Strings.Universal_String;
      Value : League.Strings.Universal_String);
    --  Process parameter entity declaration, rule [72].
+
+   procedure Process_Start_Tag
+    (Self       : not null access SAX_Simple_Reader'Class;
+     Name       : League.Strings.Universal_String;
+     Attributes : Matreshka.SAX.Attributes.SAX_Attributes);
+   --  Process start tag, rule [40].
 
    ---------------------
    -- Process_Comment --
@@ -182,6 +189,34 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       Self.Parameter_Entities.Insert (Name, Value);
       Put_Line ("PE: '" & Name & "' => '" & Value & "'");
    end Process_Parameter_Entity_Declaration;
+
+   -----------------------
+   -- Process_Start_Tag --
+   -----------------------
+
+   procedure Process_Start_Tag
+    (Self       : not null access SAX_Simple_Reader'Class;
+     Name       : League.Strings.Universal_String;
+     Attributes : Matreshka.SAX.Attributes.SAX_Attributes) is
+   begin
+      if Self.Element_Names.Is_Empty then
+         --  Root element.
+
+         if not Self.Root_Name.Is_Empty
+           and then Self.Root_Name /= Name
+         then
+            raise Program_Error with "Root element has wrong name";
+         end if;
+      end if;
+
+      Self.Element_Names.Append (Name);
+      Callbacks.Call_Start_Element
+       (Self           => Self,
+        Namespace_URI  => League.Strings.To_Universal_String (""),
+        Local_Name     => Name,
+        Qualified_Name => Name,
+        Attributes     => Attributes);
+   end Process_Start_Tag;
 
    -------------------
    -- YY_Goto_State --
@@ -541,6 +576,41 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
             when 29 =>
                yyval.String := League.Strings.To_Universal_String ("");
+
+            when 30 =>
+               Process_Start_Tag (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).Attributes);
+
+            when 31 =>
+               yyval := yy.value_stack (yy.tos-1);
+               Matreshka.SAX.Attributes.Internals.Append
+                (Self           => yyval.Attributes,
+                 Namespace_URI  => yy.value_stack (yy.tos).Attribute.Namespace_URI,
+                 Local_Name     => yy.value_stack (yy.tos).Attribute.Local_Name,
+                 Qualified_Name => yy.value_stack (yy.tos).Attribute.Qualified_Name,
+                 Value          => yy.value_stack (yy.tos).Attribute.Value);
+
+            when 32 =>
+               yyval := (others => <>);
+               Matreshka.SAX.Attributes.Internals.Append
+                (Self           => yyval.Attributes,
+                 Namespace_URI  => yy.value_stack (yy.tos).Attribute.Namespace_URI,
+                 Local_Name     => yy.value_stack (yy.tos).Attribute.Local_Name,
+                 Qualified_Name => yy.value_stack (yy.tos).Attribute.Qualified_Name,
+                 Value          => yy.value_stack (yy.tos).Attribute.Value);
+
+            when 33 =>
+               yyval := (others => <>);
+
+            when 34 =>
+               yyval :=
+                (Attribute =>
+                  (Qualified_Name => yy.value_stack (yy.tos-2).String,
+                   Value          => yy.value_stack (yy.tos).String,
+                   others         => <>),
+                 others    => <>);
+
+            when 35 =>
+               null;
                when others =>
                   raise Program_Error
                     with "Unhandled state"

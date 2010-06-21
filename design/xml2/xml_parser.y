@@ -12,13 +12,17 @@
 %token Token_Internal_Subset_Open
 %token Token_Internal_Subset_Close
 %token Token_Percent
-%token Token_Entity_Value_Open
-%token Token_Entity_Value_Close
+%token Token_Value_Open
+%token Token_Value_Close
 %token Token_String_Segment
 %token Token_NData
 %token Token_Comment
+%token Token_Element_Open
+%token Token_Equal
 
 %with League.Strings
+%with Matreshka.Internals.XML.Attributes;
+%with Matreshka.SAX.Attributes;
 
 {
    type YYSType is record
@@ -27,6 +31,8 @@
       Public_Id   : League.Strings.Universal_String;
       System_Id   : League.Strings.Universal_String;
       Notation    : League.Strings.Universal_String;
+      Attribute   : Matreshka.Internals.XML.Attributes.Attribute;
+      Attributes  : Matreshka.SAX.Attributes.SAX_Attributes;
    end record;
 }
 
@@ -34,7 +40,7 @@
 
 --  XXX Not implemented.
 document:
-    Token_Xml_Decl_Open Token_PI_Close doctypedecl_optional
+    Token_Xml_Decl_Open Token_PI_Close doctypedecl_optional element
 {
    null;
 }
@@ -215,7 +221,7 @@ PEDef:
   ;
 
 EntityValue:
-    Token_Entity_Value_Open EntityValue_Content Token_Entity_Value_Close
+    Token_Value_Open AttributeEntityValue_Content Token_Value_Close
 {
    --  Entity value including surrounding delimiters.
 
@@ -223,8 +229,8 @@ EntityValue:
 }
   ;
 
-EntityValue_Content:
-     EntityValue_Content Token_String_Segment
+AttributeEntityValue_Content:
+     AttributeEntityValue_Content Token_String_Segment
 {
    --  Additional string segment in entity value.
 
@@ -242,6 +248,59 @@ EntityValue_Content:
 }
   ;
 
+element :
+    Token_Element_Open Attribute_Any Token_Close
+{
+   Process_Start_Tag (Self, $1.String, $2.Attributes);
+}
+  ;
+
+Attribute_Any :
+    Attribute_Any Attribute
+{
+   $$ := $1;
+   Matreshka.SAX.Attributes.Internals.Append
+    (Self           => $$.Attributes,
+     Namespace_URI  => $2.Attribute.Namespace_URI,
+     Local_Name     => $2.Attribute.Local_Name,
+     Qualified_Name => $2.Attribute.Qualified_Name,
+     Value          => $2.Attribute.Value);
+}
+  | Attribute
+{
+   $$ := (others => <>);
+   Matreshka.SAX.Attributes.Internals.Append
+    (Self           => $$.Attributes,
+     Namespace_URI  => $1.Attribute.Namespace_URI,
+     Local_Name     => $1.Attribute.Local_Name,
+     Qualified_Name => $1.Attribute.Qualified_Name,
+     Value          => $1.Attribute.Value);
+}
+  |
+{
+   $$ := (others => <>);
+}
+  ;
+
+Attribute :
+    Token_Name Token_Equal AttributeValue
+{
+   $$ :=
+    (Attribute =>
+      (Qualified_Name => $1.String,
+       Value          => $3.String,
+       others         => <>),
+     others    => <>);
+}
+  ;
+
+AttributeValue :
+    Token_Value_Open AttributeEntityValue_Content Token_Value_Close
+{
+   null;
+}
+  ;
+
 %%
 
 ##
@@ -249,6 +308,7 @@ EntityValue_Content:
 ##
 with Ada.Wide_Wide_Text_IO;
 with League.Strings;
+with Matreshka.SAX.Attributes.Internals;
 ##
    use type League.Strings.Universal_String;
 
@@ -282,6 +342,11 @@ with League.Strings;
     (Self  : access Integer;
      Name  : League.Strings.Universal_String;
      Value : League.Strings.Universal_String) is separate;
+
+   procedure Process_Start_Tag
+    (Self       : access Integer;
+     Name       : League.Strings.Universal_String;
+     Attributes : Matreshka.SAX.Attributes.SAX_Attributes) is separate;
 
    Self     : access Integer;
    Put_Line : access procedure (Item : League.Strings.Universal_String);

@@ -17,6 +17,7 @@ begin
    Matreshka.SAX.Simple_Readers.Put_Line := Put_Line'Access;
    Put_Line (Text);
 
+   Reader.Set_Content_Handler (Handler'Unchecked_Access);
    Reader.Set_Decl_Handler (Handler'Unchecked_Access);
    Reader.Set_DTD_Handler (Handler'Unchecked_Access);
    Reader.Set_Entity_Resolver (Handler'Unchecked_Access);

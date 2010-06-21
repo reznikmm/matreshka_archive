@@ -23,6 +23,18 @@ package body Demo_Handlers is
       return True;
    end Attribute_Decl;
 
+   ----------------
+   -- Characters --
+   ----------------
+
+   overriding function Characters
+    (Self : not null access Demo_Handler;
+     Text : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return True;
+   end Characters;
+
    -------------
    -- Comment --
    -------------
@@ -48,6 +60,17 @@ package body Demo_Handlers is
       return True;
    end End_CDATA;
 
+   ------------------
+   -- End_Document --
+   ------------------
+
+   overriding function End_Document
+    (Self : not null access Demo_Handler)
+       return Boolean is
+   begin
+      return True;
+   end End_Document;
+
    -------------
    -- End_DTD --
    -------------
@@ -58,6 +81,20 @@ package body Demo_Handlers is
    begin
       return True;
    end End_DTD;
+
+   -----------------
+   -- End_Element --
+   -----------------
+
+   overriding function End_Element
+    (Self           : not null access Demo_Handler;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return True;
+   end End_Element;
 
    ----------------
    -- End_Entity --
@@ -70,6 +107,18 @@ package body Demo_Handlers is
    begin
       return True;
    end End_Entity;
+
+   ------------------------
+   -- End_Prefix_Mapping --
+   ------------------------
+
+   overriding function End_Prefix_Mapping
+    (Self   : not null access Demo_Handler;
+     Prefix : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return True;
+   end End_Prefix_Mapping;
 
    ------------------
    -- Error_String --
@@ -101,6 +150,18 @@ package body Demo_Handlers is
    end External_Entity_Decl;
 
    --------------------------
+   -- Ignorable_Whitespace --
+   --------------------------
+
+   overriding function Ignorable_Whitespace
+    (Self : not null access Demo_Handler;
+     Text : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return True;
+   end Ignorable_Whitespace;
+
+   --------------------------
    -- Internal_Entity_Decl --
    --------------------------
 
@@ -130,6 +191,19 @@ package body Demo_Handlers is
       return True;
    end Notation_Decl;
 
+   ----------------------------
+   -- Processing_Instruction --
+   ----------------------------
+
+   overriding function Processing_Instruction
+    (Self   : not null access Demo_Handler;
+     Target : League.Strings.Universal_String;
+     Data   : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return True;
+   end Processing_Instruction;
+
    --------------------
    -- Resolve_Entity --
    --------------------
@@ -148,6 +222,18 @@ package body Demo_Handlers is
       Put_Line (Text);
    end Resolve_Entity;
 
+   --------------------
+   -- Skipped_Entity --
+   --------------------
+
+   overriding function Skipped_Entity
+    (Self : not null access Demo_Handler;
+     Name : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return True;
+   end Skipped_Entity;
+
    -----------------
    -- Start_CDATA --
    -----------------
@@ -158,6 +244,17 @@ package body Demo_Handlers is
    begin
       return True;
    end Start_CDATA;
+
+   --------------------
+   -- Start_Document --
+   --------------------
+
+   overriding function Start_Document
+    (Self : not null access Demo_Handler)
+       return Boolean is
+   begin
+      return True;
+   end Start_Document;
 
    ---------------
    -- Start_DTD --
@@ -173,6 +270,33 @@ package body Demo_Handlers is
       return True;
    end Start_DTD;
 
+   -------------------
+   -- Start_Element --
+   -------------------
+
+   overriding function Start_Element
+    (Self           : not null access Demo_Handler;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : Matreshka.SAX.Attributes.SAX_Attributes)
+       return Boolean is
+   begin
+      Put_Line
+       (">>> (Start_Element): '"
+          & Namespace_URI & "' '" & Local_Name & "' '" & Qualified_Name & "'");
+
+      for J in 1 .. Attributes.Length loop
+         Put_Line
+          ("                    '" & Attributes.Namespace_URI (J)
+             & "' '" & Attributes.Local_Name (J)
+             & "' '" & Attributes.Qualified_Name (J)
+             & "' '" & Attributes.Value (J) & "'");
+      end loop;
+
+      return True;
+   end Start_Element;
+
    ------------------
    -- Start_Entity --
    ------------------
@@ -184,6 +308,19 @@ package body Demo_Handlers is
    begin
       return True;
    end Start_Entity;
+
+   --------------------------
+   -- Start_Prefix_Mapping --
+   --------------------------
+
+   overriding function Start_Prefix_Mapping
+    (Self   : not null access Demo_Handler;
+     Prefix : League.Strings.Universal_String;
+     URI    : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return True;
+   end Start_Prefix_Mapping;
 
    --------------------------
    -- Unparsed_Entity_Decl --

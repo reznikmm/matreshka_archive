@@ -85,11 +85,33 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Returns value of "whitespace matched" flag.
 
+   procedure Push_General_Entity_In_Attribute_Value
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Data  : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Push replacement text of general entity in attribute value into
+   --  scanner's stack.
+
+   function Process_Attribute_Value_Open_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Image : League.Strings.Universal_String) return Token;
+   --  Process open delimiter of attribute value.
+
+   function Process_Attribute_Value_Close_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Image : League.Strings.Universal_String) return Token;
+   --  Process close delimiter of attribute value.
+
    function Process_Character_Reference
     (Self  : not null access SAX_Simple_Reader'Class;
      Form  : Character_Reference_Form;
      Image : League.Strings.Universal_String) return Token;
    --  Processes character reference.
+
+   procedure Process_General_Entity_Reference_In_Attribute_Value
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String);
+   --  Process gewneral entity reference in attribute value, rule [68] in rule
+   --  [10].
 
    procedure Process_Parameter_Entity_Reference_In_Entity_Value
     (Self : not null access SAX_Simple_Reader'Class;
@@ -139,6 +161,47 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    begin
       return Self.Whitespace_Matched;
    end Get_Whitespace_Matched;
+
+   ---------------------------------------------
+   -- Process_Attribute_Value_Close_Delimiter --
+   ---------------------------------------------
+
+   function Process_Attribute_Value_Close_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Image : League.Strings.Universal_String) return Token
+   is
+      Delimiter : constant Matreshka.Internals.Unicode.Code_Point
+        := Wide_Wide_Character'Pos (Image.Element (1));
+
+   begin
+      if Self.Scanner_State.Delimiter /= Delimiter then
+         Self.YYLVal := (String => Image, others => <>);
+
+         return Token_String_Segment;
+
+      else
+         Reset_Whitespace_Matched (Self);
+         Enter_Start_Condition (Self, ELEMENT_START);
+
+         return Token_Value_Close;
+      end if;
+   end Process_Attribute_Value_Close_Delimiter;
+
+   --------------------------------------------
+   -- Process_Attribute_Value_Open_Delimiter --
+   --------------------------------------------
+
+   function Process_Attribute_Value_Open_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Image : League.Strings.Universal_String) return Token is
+   begin
+      Self.Scanner_State.Delimiter :=
+        Wide_Wide_Character'Pos (Image.Element (1));
+
+      Enter_Start_Condition (Self, ATTRIBUTE_VALUE);
+
+      return Token_Value_Open;
+   end Process_Attribute_Value_Open_Delimiter;
 
    ---------------------------------
    -- Process_Character_Reference --
@@ -195,7 +258,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       else
          Enter_Start_Condition (Self, ENTITY_DEF);
 
-         return Token_Entity_Value_Close;
+         return Token_Value_Close;
       end if;
    end Process_Entity_Value_Close_Delimiter;
 
@@ -218,8 +281,31 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Reset_Whitespace_Matched (Self);
       Enter_Start_Condition (Self, ENTITY_VALUE);
 
-      return Token_Entity_Value_Open;
+      return Token_Value_Open;
    end Process_Entity_Value_Open_Delimiter;
+
+   ---------------------------------------------------------
+   -- Process_General_Entity_Reference_In_Attribute_Value --
+   ---------------------------------------------------------
+
+   procedure Process_General_Entity_Reference_In_Attribute_Value
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String)
+   is
+      use Universal_String_Maps;
+
+      Position : constant Universal_String_Maps.Cursor
+        := Self.General_Entities.Find (Name);
+
+   begin
+      if not Has_Element (Position) then
+         raise Program_Error with "general entity is not declared";
+
+      else
+         Push_General_Entity_In_Attribute_Value
+          (Self, League.Strings.Internals.Get_Shared (Element (Position)));
+      end if;
+   end Process_General_Entity_Reference_In_Attribute_Value;
 
    --------------------------------------------------------
    -- Process_Parameter_Entity_Reference_In_Entity_Value --
@@ -271,6 +357,20 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Scanner_State := (Data, In_Literal => True, others => <>);
       Enter_Start_Condition (Self, ENTITY_VALUE);
    end Push_Parameter_Entity;
+
+   --------------------------------------------
+   -- Push_General_Entity_In_Attribute_Value --
+   --------------------------------------------
+
+   procedure Push_General_Entity_In_Attribute_Value
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Data  : not null Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
+      Self.Scanner_Stack.Append (Self.Scanner_State);
+
+      Self.Scanner_State := (Data, In_Literal => True, others => <>);
+      Enter_Start_Condition (Self, ATTRIBUTE_VALUE);
+   end Push_General_Entity_In_Attribute_Value;
 
    ------------------------------
    -- Reset_Whitespace_Matched --

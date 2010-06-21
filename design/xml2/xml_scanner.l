@@ -24,7 +24,9 @@ CHAR_NO_QUOTATION_PERCENT_AMPERSAND	[\u0001-\u0021\u0023-\u0024\u0027-\uD7FF\uE0
 --  [^%&'] - Unused
 CHAR_NO_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0024\u0028-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 --  [^"%&']
-CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0021\u0023-\u0024\u0027-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[\u0001-\u0021\u0023-\u0024\u0028-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  [^"&'<]
+CHAR_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS	[\u0001-\u0021\u0023-\u0025\u0028-\u003B\u003D-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 --  (Char - '-') for comment, rule [15].
 CHAR_NO_HYPHEN				[\u0001-\u002C\u002E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 
@@ -37,6 +39,8 @@ CHAR_NO_HYPHEN				[\u0001-\u002C\u002E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 %x ENTITY_DEF
 %x ENTITY_NDATA
 %x ENTITY_VALUE
+%x ELEMENT_START
+%x ATTRIBUTE_VALUE
 --  Factored out processing for ExternalID, rule [75]. When PUBLIC or SYSTEM
 --  word is recognized, scanner must be switched to EXTERNAL_ID_PUB or
 --  EXTERNAL_ID_SYS state and set state to which scanner is returned after
@@ -275,15 +279,16 @@ CHAR_NO_HYPHEN				[\u0001-\u002C\u002E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
    return Process_Entity_Value_Close_Delimiter (Self, YY_Text);
 }
 
-<ENTITY_VALUE>"&#"[0-9]+";" {
-   --  Decimal form of character reference rule [66] in entity value rule [9].
+<ENTITY_VALUE,ATTRIBUTE_VALUE>"&#"[0-9]+";" {
+   --  Decimal form of character reference rule [66] in entity value rule [9]
+   --  or attribute value, rule [10].
 
    return Process_Character_Reference (Self, Decimal, YY_Text (2, 1));
 }
 
-<ENTITY_VALUE>"&#x"[0-9a-fA-F]+";" {
+<ENTITY_VALUE,ATTRIBUTE_VALUE>"&#x"[0-9a-fA-F]+";" {
    --  Hexadecimal form of character reference rule [66] in entity value rule
-   --  [9].
+   --  [9] or attribute value, rule [10].
 
    return Process_Character_Reference (Self, Hexadecimal, YY_Text (3, 1));
 }
@@ -309,10 +314,6 @@ CHAR_NO_HYPHEN				[\u0001-\u002C\u002E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
    Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
 }
 
---<DOCTYPE_DECL>"%"{NAME}";" {
---   return Token_PE_Reference;
---}
-
 <DOCTYPE_DECL,DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET,ENTITY_NDATA>{WHITE_SPACE} {
    --  All white spaces from rules [28] are ignored.
    --  Whitespace before name in rule [76] is ignored.
@@ -326,6 +327,93 @@ CHAR_NO_HYPHEN				[\u0001-\u002C\u002E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 
    Set_Whitespace_Matched (Self);
 }
+
+"<"{NAME} {
+   --  Open of start tag, rule [40], or empty element, rule [44].
+
+   YYLVal := (String => YY_Text (1, 0), others => <>);
+   Enter_Start_Condition (Self, ELEMENT_START);
+
+   return Token_Element_Open;
+}
+
+<ELEMENT_START>{NAME} {
+   --  Name of the attribute, rule [41].
+
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error with "Whitespace is missing before attribute name";
+      --  XXX It is recoverable error.
+   end if;
+
+   YYLVal := (String => YY_Text, others => <>);
+
+   return Token_Name;
+}
+
+<ELEMENT_START>"=" {
+   --  Equal sign as attribute's name value delimiter, rule [25] in rule [41].
+
+   return Token_Equal;
+}
+
+<ELEMENT_START>">" {
+   --  Close of tag, rule [40].
+
+   Enter_Start_Condition (Self, INITIAL);
+
+   return Token_Close;
+}
+
+<ELEMENT_START>['"] {
+   --  Open delimiter of attribute value, rule [10].
+
+   return Process_Attribute_Value_Open_Delimiter (Self, YY_Text);
+}
+
+<ELEMENT_START>{WHITE_SPACE} {
+   --  White spaces in start tag, rule [40], are ignored, but white space
+   --  between attribute value and name of the next attribute are must be
+   --  present.
+
+   Set_Whitespace_Matched (Self);
+}
+
+<ATTRIBUTE_VALUE>['"] {
+   --  Close delimiter of attribute value, rule [10].
+
+   return Process_Attribute_Value_Close_Delimiter (Self, YY_Text);
+}
+
+<ATTRIBUTE_VALUE>{CHAR_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS}+ {
+   --  Value of attribute, rule [10].
+
+   YYLVal := (String => YY_Text, others => <>);
+
+   return Token_String_Segment;
+}
+
+<ATTRIBUTE_VALUE>"<" {
+   --  Less-than sign can't be used in the attribute value.
+   --
+   --  3.1 [WFC: No < in Attribute Values]
+
+   raise Program_Error with "'<' can't be used in attribute value";
+}
+
+<ATTRIBUTE_VALUE>"&"{NAME}";" {
+   --  General entity reference rule [68] in attribute value, rule [10].
+
+   Process_General_Entity_Reference_In_Attribute_Value (Self, YY_Text (1, 1));
+}
+
+<ATTRIBUTE_VALUE>. {
+   Put_Line (YY_Text);
+   raise Program_Error with "Unexpected character in ATTRIBUTE_VALUE";
+}
+
+--<DOCTYPE_DECL>"%"{NAME}";" {
+--   return Token_PE_Reference;
+--}
 
 {WHITE_SPACE} {
    --  XXX Temporary ignore whitespaces.
@@ -415,6 +503,10 @@ with League.Strings;
    YYLVal   : YYSType;
    Put_Line : access procedure (Item : League.Strings.Universal_String);
 
+   procedure Process_General_Entity_Reference_In_Attribute_Value
+    (Self : access Integer;
+     Name : League.Strings.Universal_String) is separate;
+
    procedure Process_Parameter_Entity_Reference_In_Entity_Value
     (Self : access Integer;
      Name : League.Strings.Universal_String) is separate;
@@ -424,6 +516,14 @@ with League.Strings;
    function Process_Character_Reference
     (Self  : access Integer;
      Form  : Character_Reference_Form;
+     Image : League.Strings.Universal_String) return Token is separate;
+
+   function Process_Attribute_Value_Open_Delimiter
+    (Self  : access Integer;
+     Image : League.Strings.Universal_String) return Token is separate;
+
+   function Process_Attribute_Value_Close_Delimiter
+    (Self  : access Integer;
      Image : League.Strings.Universal_String) return Token is separate;
 
    function Process_Entity_Value_Open_Delimiter

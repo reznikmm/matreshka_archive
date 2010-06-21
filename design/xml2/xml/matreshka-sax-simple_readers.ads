@@ -48,9 +48,11 @@ private with Ada.Exceptions;
 with League.Strings;
 with Matreshka.SAX.Readers;
 private with Matreshka.Internals.Strings;
-private with Matreshka.Internals.Utf16;
-private with Matreshka.SAX.Default_Handlers;
 private with Matreshka.Internals.Unicode;
+private with Matreshka.Internals.Utf16;
+private with Matreshka.Internals.XML.Attributes;
+private with Matreshka.SAX.Attributes;
+private with Matreshka.SAX.Default_Handlers;
 
 package Matreshka.SAX.Simple_Readers is
 
@@ -88,11 +90,13 @@ private
      Token_Internal_Subset_Open,
      Token_Internal_Subset_Close,
      Token_Percent,
-     Token_Entity_Value_Open,
-     Token_Entity_Value_Close,
+     Token_Value_Open,
+     Token_Value_Close,
      Token_String_Segment,
      Token_Ndata,
-     Token_Comment);
+     Token_Comment,
+     Token_Element_Open,
+     Token_Equal);
 
    type YYSType is record
       String      : League.Strings.Universal_String;
@@ -100,6 +104,8 @@ private
       Public_Id   : League.Strings.Universal_String;
       System_Id   : League.Strings.Universal_String;
       Notation    : League.Strings.Universal_String;
+      Attribute   : Matreshka.Internals.XML.Attributes.Attribute;
+      Attributes  : Matreshka.SAX.Attributes.SAX_Attributes;
    end record;
 
    function Hash
@@ -111,6 +117,9 @@ private
            League.Strings.Universal_String,
            Hash,
            "=");
+
+   package Universal_String_Vectors is
+     new Ada.Containers.Vectors (Positive, League.Strings.Universal_String);
 
    type Scanner_State_Information is record
       Data                : Matreshka.Internals.Strings.Shared_String_Access;
@@ -178,6 +187,8 @@ private
       --  Contents of the external subset if any. This member used only to
       --  prevent deallocation of shared string before document parsing is
       --  completed.
+      Element_Names      : Universal_String_Vectors.Vector;
+      --  Stack of names of elements.
       Continue           : Boolean := True;
       --  Continue processing.
       Error_Message      : League.Strings.Universal_String;

@@ -85,11 +85,33 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Returns value of "whitespace matched" flag.
 
+   procedure Push_General_Entity_In_Attribute_Value
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Data  : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Push replacement text of general entity in attribute value into
+   --  scanner's stack.
+
+   function Process_Attribute_Value_Open_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Image : League.Strings.Universal_String) return Token;
+   --  Process open delimiter of attribute value.
+
+   function Process_Attribute_Value_Close_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Image : League.Strings.Universal_String) return Token;
+   --  Process close delimiter of attribute value.
+
    function Process_Character_Reference
     (Self  : not null access SAX_Simple_Reader'Class;
      Form  : Character_Reference_Form;
      Image : League.Strings.Universal_String) return Token;
    --  Processes character reference.
+
+   procedure Process_General_Entity_Reference_In_Attribute_Value
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String);
+   --  Process gewneral entity reference in attribute value, rule [68] in rule
+   --  [10].
 
    procedure Process_Parameter_Entity_Reference_In_Entity_Value
     (Self : not null access SAX_Simple_Reader'Class;
@@ -139,6 +161,47 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    begin
       return Self.Whitespace_Matched;
    end Get_Whitespace_Matched;
+
+   ---------------------------------------------
+   -- Process_Attribute_Value_Close_Delimiter --
+   ---------------------------------------------
+
+   function Process_Attribute_Value_Close_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Image : League.Strings.Universal_String) return Token
+   is
+      Delimiter : constant Matreshka.Internals.Unicode.Code_Point
+        := Wide_Wide_Character'Pos (Image.Element (1));
+
+   begin
+      if Self.Scanner_State.Delimiter /= Delimiter then
+         Self.YYLVal := (String => Image, others => <>);
+
+         return Token_String_Segment;
+
+      else
+         Reset_Whitespace_Matched (Self);
+         Enter_Start_Condition (Self, ELEMENT_START);
+
+         return Token_Value_Close;
+      end if;
+   end Process_Attribute_Value_Close_Delimiter;
+
+   --------------------------------------------
+   -- Process_Attribute_Value_Open_Delimiter --
+   --------------------------------------------
+
+   function Process_Attribute_Value_Open_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Image : League.Strings.Universal_String) return Token is
+   begin
+      Self.Scanner_State.Delimiter :=
+        Wide_Wide_Character'Pos (Image.Element (1));
+
+      Enter_Start_Condition (Self, ATTRIBUTE_VALUE);
+
+      return Token_Value_Open;
+   end Process_Attribute_Value_Open_Delimiter;
 
    ---------------------------------
    -- Process_Character_Reference --
@@ -195,7 +258,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       else
          Enter_Start_Condition (Self, ENTITY_DEF);
 
-         return Token_Entity_Value_Close;
+         return Token_Value_Close;
       end if;
    end Process_Entity_Value_Close_Delimiter;
 
@@ -218,8 +281,31 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Reset_Whitespace_Matched (Self);
       Enter_Start_Condition (Self, ENTITY_VALUE);
 
-      return Token_Entity_Value_Open;
+      return Token_Value_Open;
    end Process_Entity_Value_Open_Delimiter;
+
+   ---------------------------------------------------------
+   -- Process_General_Entity_Reference_In_Attribute_Value --
+   ---------------------------------------------------------
+
+   procedure Process_General_Entity_Reference_In_Attribute_Value
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String)
+   is
+      use Universal_String_Maps;
+
+      Position : constant Universal_String_Maps.Cursor
+        := Self.General_Entities.Find (Name);
+
+   begin
+      if not Has_Element (Position) then
+         raise Program_Error with "general entity is not declared";
+
+      else
+         Push_General_Entity_In_Attribute_Value
+          (Self, League.Strings.Internals.Get_Shared (Element (Position)));
+      end if;
+   end Process_General_Entity_Reference_In_Attribute_Value;
 
    --------------------------------------------------------
    -- Process_Parameter_Entity_Reference_In_Entity_Value --
@@ -271,6 +357,20 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Scanner_State := (Data, In_Literal => True, others => <>);
       Enter_Start_Condition (Self, ENTITY_VALUE);
    end Push_Parameter_Entity;
+
+   --------------------------------------------
+   -- Push_General_Entity_In_Attribute_Value --
+   --------------------------------------------
+
+   procedure Push_General_Entity_In_Attribute_Value
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Data  : not null Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
+      Self.Scanner_Stack.Append (Self.Scanner_State);
+
+      Self.Scanner_State := (Data, In_Literal => True, others => <>);
+      Enter_Start_Condition (Self, ATTRIBUTE_VALUE);
+   end Push_General_Entity_In_Attribute_Value;
 
    ------------------------------
    -- Reset_Whitespace_Matched --
@@ -766,13 +866,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Process_Entity_Value_Close_Delimiter (Self, YY_Text);
 
             when 25 =>
-               --  Decimal form of character reference rule [66] in entity value rule [9].
+               --  Decimal form of character reference rule [66] in entity value rule [9]
+               --  or attribute value, rule [10].
             
                return Process_Character_Reference (Self, Decimal, YY_Text (2, 1));
 
             when 26 =>
                --  Hexadecimal form of character reference rule [66] in entity value rule
-               --  [9].
+               --  [9] or attribute value, rule [10].
             
                return Process_Character_Reference (Self, Hexadecimal, YY_Text (3, 1));
 
@@ -808,42 +909,114 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                Set_Whitespace_Matched (Self);
 
             when 31 =>
+               --  Open of start tag, rule [40], or empty element, rule [44].
+            
+               YYLVal := (String => YY_Text (1, 0), others => <>);
+               Enter_Start_Condition (Self, ELEMENT_START);
+            
+               return Token_Element_Open;
+
+            when 32 =>
+               --  Name of the attribute, rule [41].
+            
+               if not Get_Whitespace_Matched (Self) then
+                  raise Program_Error with "Whitespace is missing before attribute name";
+                  --  XXX It is recoverable error.
+               end if;
+            
+               YYLVal := (String => YY_Text, others => <>);
+            
+               return Token_Name;
+
+            when 33 =>
+               --  Equal sign as attribute's name value delimiter, rule [25] in rule [41].
+            
+               return Token_Equal;
+
+            when 34 =>
+               --  Close of tag, rule [40].
+            
+               Enter_Start_Condition (Self, INITIAL);
+            
+               return Token_Close;
+
+            when 35 =>
+               --  Open delimiter of attribute value, rule [10].
+            
+               return Process_Attribute_Value_Open_Delimiter (Self, YY_Text);
+
+            when 36 =>
+               --  White spaces in start tag, rule [40], are ignored, but white space
+               --  between attribute value and name of the next attribute are must be
+               --  present.
+            
+               Set_Whitespace_Matched (Self);
+
+            when 37 =>
+               --  Close delimiter of attribute value, rule [10].
+            
+               return Process_Attribute_Value_Close_Delimiter (Self, YY_Text);
+
+            when 38 =>
+               --  Value of attribute, rule [10].
+            
+               YYLVal := (String => YY_Text, others => <>);
+            
+               return Token_String_Segment;
+
+            when 39 =>
+               --  Less-than sign can't be used in the attribute value.
+               --
+               --  3.1 [WFC: No < in Attribute Values]
+            
+               raise Program_Error with "'<' can't be used in attribute value";
+
+            when 40 =>
+               --  General entity reference rule [68] in attribute value, rule [10].
+            
+               Process_General_Entity_Reference_In_Attribute_Value (Self, YY_Text (1, 1));
+
+            when 41 =>
+               Put_Line (YY_Text);
+               raise Program_Error with "Unexpected character in ATTRIBUTE_VALUE";
+
+            when 42 =>
                --  XXX Temporary ignore whitespaces.
             
                null;
 
-            when 32 =>
+            when 43 =>
                raise Program_Error with "Unexpected character in XML_DECL";
 
-            when 33 =>
+            when 44 =>
                raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 
-            when 34 =>
+            when 45 =>
                raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
-            when 35 =>
+            when 46 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INT";
 
-            when 36 =>
+            when 47 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
-            when 37 =>
+            when 48 =>
                raise Program_Error with "Unexpected character in ENTITY_DECL";
 
-            when 38 =>
+            when 49 =>
                raise Program_Error with "Unexpected character in ENTITY_DEF";
 
-            when 39 =>
+            when 50 =>
                raise Program_Error with "Unexpected character in ENTITY_NDATA";
 
-            when 40 =>
+            when 51 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 41 =>
+            when 52 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 42 =>
+            when 53 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 
