@@ -261,7 +261,7 @@ element :
 }
   | Token_Element_Open Attribute_Any Token_Empty_Close
 {
-   null;
+   Process_Empty_Element_Tag (Self, $1.String, $2.Attributes);
 }
   ;
 
@@ -376,6 +376,11 @@ with Matreshka.SAX.Attributes.Internals;
    procedure Process_End_Tag
     (Self : access Integer;
      Name : League.Strings.Universal_String) is separate;
+
+   procedure Process_Empty_Element_Tag
+    (Self       : access Integer;
+     Name       : League.Strings.Universal_String;
+     Attributes : Matreshka.SAX.Attributes.SAX_Attributes) is separate;
 
    Self     : access Integer;
    Put_Line : access procedure (Item : League.Strings.Universal_String);

@@ -98,6 +98,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Name : League.Strings.Universal_String);
    --  Process end tag, rule [42].
 
+   procedure Process_Empty_Element_Tag
+    (Self       : not null access SAX_Simple_Reader'Class;
+     Name       : League.Strings.Universal_String;
+     Attributes : Matreshka.SAX.Attributes.SAX_Attributes);
+   --  Process start tag, rule [44].
+
    ---------------------
    -- Process_Comment --
    ---------------------
@@ -129,6 +135,19 @@ package body Matreshka.SAX.Simple_Readers.Parser is
           (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
       end if;
    end Process_Document_Type_Declaration;
+
+   -------------------------------
+   -- Process_Empty_Element_Tag --
+   -------------------------------
+
+   procedure Process_Empty_Element_Tag
+    (Self       : not null access SAX_Simple_Reader'Class;
+     Name       : League.Strings.Universal_String;
+     Attributes : Matreshka.SAX.Attributes.SAX_Attributes) is
+   begin
+      Process_Start_Tag (Self, Name, Attributes);
+      Process_End_Tag (Self, Name);
+   end Process_Empty_Element_Tag;
 
    ---------------------
    -- Process_End_Tag --
@@ -615,7 +634,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Process_End_Tag (Self, yy.value_stack (yy.tos-1).String);
 
             when 32 =>
-               null;
+               Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).Attributes);
 
             when 33 =>
                null;
