@@ -19,6 +19,8 @@
 %token Token_Comment
 %token Token_Element_Open
 %token Token_Equal
+%token Token_End_Open
+%token Token_Empty_Close
 
 %with League.Strings
 %with Matreshka.Internals.XML.Attributes;
@@ -253,6 +255,29 @@ element :
 {
    Process_Start_Tag (Self, $1.String, $2.Attributes);
 }
+    content Token_End_Open Token_Close
+{
+   Process_End_Tag (Self, $6.String);
+}
+  | Token_Element_Open Attribute_Any Token_Empty_Close
+{
+   null;
+}
+  ;
+
+content :
+    content element
+{
+   null;
+}
+  | element
+{
+   null;
+}
+  |
+{
+   null;
+}
   ;
 
 Attribute_Any :
@@ -347,6 +372,10 @@ with Matreshka.SAX.Attributes.Internals;
     (Self       : access Integer;
      Name       : League.Strings.Universal_String;
      Attributes : Matreshka.SAX.Attributes.SAX_Attributes) is separate;
+
+   procedure Process_End_Tag
+    (Self : access Integer;
+     Name : League.Strings.Universal_String) is separate;
 
    Self     : access Integer;
    Put_Line : access procedure (Item : League.Strings.Universal_String);

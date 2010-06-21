@@ -917,6 +917,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Token_Element_Open;
 
             when 32 =>
+               --  Open of and tag, rule [42].
+            
+               YYLVal := (String => YY_Text (2, 0), others => <>);
+               Enter_Start_Condition (Self, ELEMENT_START);
+            
+               return Token_End_Open;
+
+            when 33 =>
                --  Name of the attribute, rule [41].
             
                if not Get_Whitespace_Matched (Self) then
@@ -928,95 +936,102 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Name;
 
-            when 33 =>
+            when 34 =>
                --  Equal sign as attribute's name value delimiter, rule [25] in rule [41].
             
                return Token_Equal;
 
-            when 34 =>
+            when 35 =>
+               --  Close of empty element tag, rule [44].
+            
+               Enter_Start_Condition (Self, INITIAL);
+            
+               return Token_Empty_Close;
+
+            when 36 =>
                --  Close of tag, rule [40].
             
                Enter_Start_Condition (Self, INITIAL);
             
                return Token_Close;
 
-            when 35 =>
+            when 37 =>
                --  Open delimiter of attribute value, rule [10].
             
                return Process_Attribute_Value_Open_Delimiter (Self, YY_Text);
 
-            when 36 =>
+            when 38 =>
                --  White spaces in start tag, rule [40], are ignored, but white space
                --  between attribute value and name of the next attribute are must be
                --  present.
             
                Set_Whitespace_Matched (Self);
 
-            when 37 =>
+            when 39 =>
                --  Close delimiter of attribute value, rule [10].
             
                return Process_Attribute_Value_Close_Delimiter (Self, YY_Text);
 
-            when 38 =>
+            when 40 =>
                --  Value of attribute, rule [10].
             
                YYLVal := (String => YY_Text, others => <>);
             
                return Token_String_Segment;
 
-            when 39 =>
+            when 41 =>
                --  Less-than sign can't be used in the attribute value.
                --
                --  3.1 [WFC: No < in Attribute Values]
             
                raise Program_Error with "'<' can't be used in attribute value";
 
-            when 40 =>
+            when 42 =>
                --  General entity reference rule [68] in attribute value, rule [10].
             
                Process_General_Entity_Reference_In_Attribute_Value (Self, YY_Text (1, 1));
 
-            when 41 =>
+            when 43 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in ATTRIBUTE_VALUE";
 
-            when 42 =>
+            when 44 =>
                --  XXX Temporary ignore whitespaces.
             
                null;
 
-            when 43 =>
+            when 45 =>
                raise Program_Error with "Unexpected character in XML_DECL";
 
-            when 44 =>
+            when 46 =>
                raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 
-            when 45 =>
+            when 47 =>
                raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
-            when 46 =>
+            when 48 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INT";
 
-            when 47 =>
+            when 49 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
-            when 48 =>
+            when 50 =>
                raise Program_Error with "Unexpected character in ENTITY_DECL";
 
-            when 49 =>
+            when 51 =>
                raise Program_Error with "Unexpected character in ENTITY_DEF";
 
-            when 50 =>
+            when 52 =>
                raise Program_Error with "Unexpected character in ENTITY_NDATA";
 
-            when 51 =>
+            when 53 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 52 =>
+            when 54 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 53 =>
+            when 55 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 

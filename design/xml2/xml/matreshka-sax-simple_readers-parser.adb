@@ -93,6 +93,11 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Attributes : Matreshka.SAX.Attributes.SAX_Attributes);
    --  Process start tag, rule [40].
 
+   procedure Process_End_Tag
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String);
+   --  Process end tag, rule [42].
+
    ---------------------
    -- Process_Comment --
    ---------------------
@@ -124,6 +129,32 @@ package body Matreshka.SAX.Simple_Readers.Parser is
           (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
       end if;
    end Process_Document_Type_Declaration;
+
+   ---------------------
+   -- Process_End_Tag --
+   ---------------------
+
+   procedure Process_End_Tag
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String) is
+   begin
+      if Self.Element_Names.Last_Element /= Name then
+         --  3 [WFC: Element Type Match]
+   
+         Put_Line
+          ("'" & Self.Element_Names.Last_Element & "' /= '" & Name & "'");
+
+         raise Program_Error
+           with "name of end tag doesn't match name of start tag";
+      end if;
+
+      Callbacks.Call_End_Element
+       (Self,
+        League.Strings.To_Universal_String (""),
+        Name,
+        Name);
+      Self.Element_Names.Delete_Last;
+   end Process_End_Tag;
 
    ----------------------------------------
    -- Process_General_Entity_Declaration --
@@ -581,6 +612,21 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Process_Start_Tag (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).Attributes);
 
             when 31 =>
+               Process_End_Tag (Self, yy.value_stack (yy.tos-1).String);
+
+            when 32 =>
+               null;
+
+            when 33 =>
+               null;
+
+            when 34 =>
+               null;
+
+            when 35 =>
+               null;
+
+            when 36 =>
                yyval := yy.value_stack (yy.tos-1);
                Matreshka.SAX.Attributes.Internals.Append
                 (Self           => yyval.Attributes,
@@ -589,7 +635,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Qualified_Name => yy.value_stack (yy.tos).Attribute.Qualified_Name,
                  Value          => yy.value_stack (yy.tos).Attribute.Value);
 
-            when 32 =>
+            when 37 =>
                yyval := (others => <>);
                Matreshka.SAX.Attributes.Internals.Append
                 (Self           => yyval.Attributes,
@@ -598,10 +644,10 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Qualified_Name => yy.value_stack (yy.tos).Attribute.Qualified_Name,
                  Value          => yy.value_stack (yy.tos).Attribute.Value);
 
-            when 33 =>
+            when 38 =>
                yyval := (others => <>);
 
-            when 34 =>
+            when 39 =>
                yyval :=
                 (Attribute =>
                   (Qualified_Name => yy.value_stack (yy.tos-2).String,
@@ -609,7 +655,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                    others         => <>),
                  others    => <>);
 
-            when 35 =>
+            when 40 =>
                null;
                when others =>
                   raise Program_Error

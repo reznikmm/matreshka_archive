@@ -93,6 +93,11 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Attributes : Matreshka.SAX.Attributes.SAX_Attributes);
    --  Process start tag, rule [40].
 
+   procedure Process_End_Tag
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String);
+   --  Process end tag, rule [42].
+
    ---------------------
    -- Process_Comment --
    ---------------------
@@ -124,6 +129,32 @@ package body Matreshka.SAX.Simple_Readers.Parser is
           (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
       end if;
    end Process_Document_Type_Declaration;
+
+   ---------------------
+   -- Process_End_Tag --
+   ---------------------
+
+   procedure Process_End_Tag
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String) is
+   begin
+      if Self.Element_Names.Last_Element /= Name then
+         --  3 [WFC: Element Type Match]
+   
+         Put_Line
+          ("'" & Self.Element_Names.Last_Element & "' /= '" & Name & "'");
+
+         raise Program_Error
+           with "name of end tag doesn't match name of start tag";
+      end if;
+
+      Callbacks.Call_End_Element
+       (Self,
+        League.Strings.To_Universal_String (""),
+        Name,
+        Name);
+      Self.Element_Names.Delete_Last;
+   end Process_End_Tag;
 
    ----------------------------------------
    -- Process_General_Entity_Declaration --

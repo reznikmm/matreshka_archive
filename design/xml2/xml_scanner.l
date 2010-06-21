@@ -337,6 +337,15 @@ CHAR_NO_HYPHEN				[\u0001-\u002C\u002E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
    return Token_Element_Open;
 }
 
+"</"{NAME} {
+   --  Open of and tag, rule [42].
+
+   YYLVal := (String => YY_Text (2, 0), others => <>);
+   Enter_Start_Condition (Self, ELEMENT_START);
+
+   return Token_End_Open;
+}
+
 <ELEMENT_START>{NAME} {
    --  Name of the attribute, rule [41].
 
@@ -354,6 +363,14 @@ CHAR_NO_HYPHEN				[\u0001-\u002C\u002E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
    --  Equal sign as attribute's name value delimiter, rule [25] in rule [41].
 
    return Token_Equal;
+}
+
+<ELEMENT_START>"/>" {
+   --  Close of empty element tag, rule [44].
+
+   Enter_Start_Condition (Self, INITIAL);
+
+   return Token_Empty_Close;
 }
 
 <ELEMENT_START>">" {

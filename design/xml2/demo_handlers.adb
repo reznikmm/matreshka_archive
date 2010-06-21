@@ -93,6 +93,10 @@ package body Demo_Handlers is
      Qualified_Name : League.Strings.Universal_String)
        return Boolean is
    begin
+      Put_Line
+       (">>> (End_Element): '"
+          & Namespace_URI & "' '" & Local_Name & "' '" & Qualified_Name & "'");
+
       return True;
    end End_Element;
 

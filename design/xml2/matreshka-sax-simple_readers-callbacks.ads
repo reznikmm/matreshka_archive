@@ -53,6 +53,13 @@ private package Matreshka.SAX.Simple_Readers.Callbacks is
      Comment : League.Strings.Universal_String);
    --  Calls handler's SAX_Lexical_Handler.Comment subprogram.
 
+   procedure Call_End_Element
+    (Self           : not null access SAX_Simple_Reader'Class;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String);
+   --  Calls handler's SAX_Content_Handler.End_Element subprogram.
+
    procedure Call_External_Entity_Decl
     (Self      : not null access SAX_Simple_Reader'Class;
      Name      : League.Strings.Universal_String;
