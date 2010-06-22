@@ -240,6 +240,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.YYLVal :=
        (String        => League.Strings.To_Universal_String (S),
         Is_Whitespace => False,
+        Is_CData      => False,
         others        => <>);
 
       return Token_String_Segment;
@@ -353,7 +354,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
          return False;
 
       else
-         Self.YYLVal := (String => Text, Is_Whitespace => True, others => <>);
+         Self.YYLVal :=
+          (String        => Text,
+           Is_Whitespace => True,
+           Is_CData      => False,
+           others        => <>);
 
          return True;
       end if;
@@ -1034,37 +1039,48 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Token_String_Segment;
 
             when 46 =>
-               raise Program_Error with "Unexpected character in XML_DECL";
+               --  Segment of CDATA, rules [18], [19], [20], [21].
+            
+               YYLVal :=
+                (String        => YY_Text (9, 3),
+                 Is_Whitespace => False,
+                 Is_CData      => True,
+                 others        => <>);
+            
+               return Token_String_Segment;
 
             when 47 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_DECL";
+               raise Program_Error with "Unexpected character in XML_DECL";
 
             when 48 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
+               raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 
             when 49 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_INT";
+               raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
             when 50 =>
+               raise Program_Error with "Unexpected character in DOCTYPE_INT";
+
+            when 51 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
-            when 51 =>
+            when 52 =>
                raise Program_Error with "Unexpected character in ENTITY_DECL";
 
-            when 52 =>
+            when 53 =>
                raise Program_Error with "Unexpected character in ENTITY_DEF";
 
-            when 53 =>
+            when 54 =>
                raise Program_Error with "Unexpected character in ENTITY_NDATA";
 
-            when 54 =>
+            when 55 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 55 =>
+            when 56 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 56 =>
+            when 57 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 
