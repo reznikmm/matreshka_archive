@@ -544,7 +544,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    return Token_String_Segment;
 }
 
-"<![CDATA["({CHAR_NO_RIGHT_SQUARE}|"]"{CHAR_NO_RIGHT_SQUARE}|"]"{2,}{CHAR_NO_GREATER_RIGHT_SQUARE})*"]]>" {
+"<![CDATA["{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR_NO_GREATER_RIGHT_SQUARE}{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
    --  Segment of CDATA, rules [18], [19], [20], [21].
 
    YYLVal :=
