@@ -35,8 +35,6 @@
       Public_Id     : League.Strings.Universal_String;
       System_Id     : League.Strings.Universal_String;
       Notation      : League.Strings.Universal_String;
-      Attribute     : Matreshka.Internals.XML.Attributes.Attribute;
-      Attributes    : Matreshka.SAX.Attributes.SAX_Attributes;
    end record;
 }
 
@@ -255,7 +253,7 @@ AttributeEntityValue_Content:
 element :
     Token_Element_Open Attribute_Any Token_Close
 {
-   Process_Start_Tag (Self, $1.String, $2.Attributes);
+   Process_Start_Tag (Self, $1.String);
 }
     content Token_End_Open Token_Close
 {
@@ -263,7 +261,7 @@ element :
 }
   | Token_Element_Open Attribute_Any Token_Empty_Close
 {
-   Process_Empty_Element_Tag (Self, $1.String, $2.Attributes);
+   Process_Empty_Element_Tag (Self, $1.String);
 }
   ;
 
@@ -300,39 +298,22 @@ content_item :
 Attribute_Any :
     Attribute_Any Attribute
 {
-   $$ := $1;
-   Matreshka.SAX.Attributes.Internals.Append
-    (Self           => $$.Attributes,
-     Namespace_URI  => $2.Attribute.Namespace_URI,
-     Local_Name     => $2.Attribute.Local_Name,
-     Qualified_Name => $2.Attribute.Qualified_Name,
-     Value          => $2.Attribute.Value);
+   Process_Attribute_In_Set (Self);
 }
   | Attribute
 {
-   $$ := (others => <>);
-   Matreshka.SAX.Attributes.Internals.Append
-    (Self           => $$.Attributes,
-     Namespace_URI  => $1.Attribute.Namespace_URI,
-     Local_Name     => $1.Attribute.Local_Name,
-     Qualified_Name => $1.Attribute.Qualified_Name,
-     Value          => $1.Attribute.Value);
+   Process_Attribute_In_Set (Self);
 }
   |
 {
-   $$ := (others => <>);
+   null;
 }
   ;
 
 Attribute :
     Token_Name Token_Equal AttributeValue
 {
-   $$ :=
-    (Attribute =>
-      (Qualified_Name => $1.String,
-       Value          => $3.String,
-       others         => <>),
-     others    => <>);
+   Process_Attribute (Self, $1.String, $3.String);
 }
   ;
 
@@ -386,23 +367,28 @@ with Matreshka.SAX.Attributes.Internals;
      Value : League.Strings.Universal_String) is separate;
 
    procedure Process_Start_Tag
-    (Self       : access Integer;
-     Name       : League.Strings.Universal_String;
-     Attributes : Matreshka.SAX.Attributes.SAX_Attributes) is separate;
+    (Self : access Integer;
+     Name : League.Strings.Universal_String) is separate;
 
    procedure Process_End_Tag
     (Self : access Integer;
      Name : League.Strings.Universal_String) is separate;
 
    procedure Process_Empty_Element_Tag
-    (Self       : access Integer;
-     Name       : League.Strings.Universal_String;
-     Attributes : Matreshka.SAX.Attributes.SAX_Attributes) is separate;
+    (Self : access Integer;
+     Name : League.Strings.Universal_String) is separate;
 
    procedure Process_Characters
     (Self          : access Integer;
      Text          : League.Strings.Universal_String;
      Is_Whitespace : Boolean) is separate;
+
+   procedure Process_Attribute_In_Set (Self : access Integer) is separate;
+
+   procedure Process_Attribute
+     (Self  : access Integer;
+      Name  : League.Strings.Universal_String;
+      Value : League.Strings.Universal_String) is separate;
 
    Self     : access Integer;
    Put_Line : access procedure (Item : League.Strings.Universal_String);

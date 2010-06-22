@@ -88,9 +88,8 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    --  Process parameter entity declaration, rule [72].
 
    procedure Process_Start_Tag
-    (Self       : not null access SAX_Simple_Reader'Class;
-     Name       : League.Strings.Universal_String;
-     Attributes : Matreshka.SAX.Attributes.SAX_Attributes);
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String);
    --  Process start tag, rule [40].
 
    procedure Process_End_Tag
@@ -99,9 +98,8 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    --  Process end tag, rule [42].
 
    procedure Process_Empty_Element_Tag
-    (Self       : not null access SAX_Simple_Reader'Class;
-     Name       : League.Strings.Universal_String;
-     Attributes : Matreshka.SAX.Attributes.SAX_Attributes);
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String);
    --  Process start tag, rule [44].
 
    procedure Process_Characters
@@ -109,6 +107,47 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Text          : League.Strings.Universal_String;
      Is_Whitespace : Boolean);
    --  Process segment of characters.
+
+   procedure Process_Attribute
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String);
+   --  Process attribute.
+
+   procedure Process_Attribute_In_Set
+    (Self  : not null access SAX_Simple_Reader'Class);
+   --  Process single attribute by adding it into set of attributes.
+
+   -----------------------
+   -- Process_Attribute --
+   -----------------------
+
+   procedure Process_Attribute
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String) is
+   begin
+      Self.Attribute :=
+       (Namespace_URI  => League.Strings.To_Universal_String (""),
+        Local_Name     => Name,
+        Qualified_Name => Name,
+        Value          => Value);
+   end Process_Attribute;
+
+   ------------------------------
+   -- Process_Attribute_In_Set --
+   ------------------------------
+
+   procedure Process_Attribute_In_Set
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Matreshka.SAX.Attributes.Internals.Append
+       (Self           => Self.Attributes,
+        Namespace_URI  => Self.Attribute.Namespace_URI,
+        Local_Name     => Self.Attribute.Local_Name,
+        Qualified_Name => Self.Attribute.Qualified_Name,
+        Value          => Self.Attribute.Value);
+   end Process_Attribute_In_Set;
 
    ------------------------
    -- Process_Characters --
@@ -164,11 +203,10 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    -------------------------------
 
    procedure Process_Empty_Element_Tag
-    (Self       : not null access SAX_Simple_Reader'Class;
-     Name       : League.Strings.Universal_String;
-     Attributes : Matreshka.SAX.Attributes.SAX_Attributes) is
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String) is
    begin
-      Process_Start_Tag (Self, Name, Attributes);
+      Process_Start_Tag (Self, Name);
       Process_End_Tag (Self, Name);
    end Process_Empty_Element_Tag;
 
@@ -268,9 +306,8 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    -----------------------
 
    procedure Process_Start_Tag
-    (Self       : not null access SAX_Simple_Reader'Class;
-     Name       : League.Strings.Universal_String;
-     Attributes : Matreshka.SAX.Attributes.SAX_Attributes) is
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String) is
    begin
       if Self.Element_Names.Is_Empty then
          --  Root element.
@@ -288,7 +325,8 @@ package body Matreshka.SAX.Simple_Readers.Parser is
         Namespace_URI  => League.Strings.To_Universal_String (""),
         Local_Name     => Name,
         Qualified_Name => Name,
-        Attributes     => Attributes);
+        Attributes     => Self.Attributes);
+      Matreshka.SAX.Attributes.Internals.Clear (Self.Attributes);
    end Process_Start_Tag;
 
    -------------------
@@ -651,13 +689,13 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                yyval.String := League.Strings.To_Universal_String ("");
 
             when 30 =>
-               Process_Start_Tag (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).Attributes);
+               Process_Start_Tag (Self, yy.value_stack (yy.tos-2).String);
 
             when 31 =>
                Process_End_Tag (Self, yy.value_stack (yy.tos-1).String);
 
             when 32 =>
-               Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).Attributes);
+               Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).String);
 
             when 33 =>
                null;
@@ -678,33 +716,16 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Process_Comment (Self, yy.value_stack (yy.tos).String);
 
             when 39 =>
-               yyval := yy.value_stack (yy.tos-1);
-               Matreshka.SAX.Attributes.Internals.Append
-                (Self           => yyval.Attributes,
-                 Namespace_URI  => yy.value_stack (yy.tos).Attribute.Namespace_URI,
-                 Local_Name     => yy.value_stack (yy.tos).Attribute.Local_Name,
-                 Qualified_Name => yy.value_stack (yy.tos).Attribute.Qualified_Name,
-                 Value          => yy.value_stack (yy.tos).Attribute.Value);
+               Process_Attribute_In_Set (Self);
 
             when 40 =>
-               yyval := (others => <>);
-               Matreshka.SAX.Attributes.Internals.Append
-                (Self           => yyval.Attributes,
-                 Namespace_URI  => yy.value_stack (yy.tos).Attribute.Namespace_URI,
-                 Local_Name     => yy.value_stack (yy.tos).Attribute.Local_Name,
-                 Qualified_Name => yy.value_stack (yy.tos).Attribute.Qualified_Name,
-                 Value          => yy.value_stack (yy.tos).Attribute.Value);
+               Process_Attribute_In_Set (Self);
 
             when 41 =>
-               yyval := (others => <>);
+               null;
 
             when 42 =>
-               yyval :=
-                (Attribute =>
-                  (Qualified_Name => yy.value_stack (yy.tos-2).String,
-                   Value          => yy.value_stack (yy.tos).String,
-                   others         => <>),
-                 others    => <>);
+               Process_Attribute (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos).String);
 
             when 43 =>
                null;

@@ -134,8 +134,6 @@ private
       Public_Id     : League.Strings.Universal_String;
       System_Id     : League.Strings.Universal_String;
       Notation      : League.Strings.Universal_String;
-      Attribute     : Matreshka.Internals.XML.Attributes.Attribute;
-      Attributes    : Matreshka.SAX.Attributes.SAX_Attributes;
    end record;
 
    function Hash
@@ -225,6 +223,14 @@ private
       --  Error message.
       User_Exception     : Ada.Exceptions.Exception_Occurrence;
       --  Catched exception from the user defined handler.
+
+      --  When components can't be nested thier information is not hold in
+      --  YYSType and placed directly here to avoid copy overhead.
+
+      Attribute          : Matreshka.Internals.XML.Attributes.Attribute;
+      --  Single attribute of the element.
+      Attributes         : Matreshka.SAX.Attributes.SAX_Attributes;
+      --  Set of attributes of the element.
    end record;
 
 --   overriding function Content_Handler
