@@ -626,7 +626,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 14 =>
-               Process_Processing_Instruction (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).String);
+               Process_Processing_Instruction (Self, yy.value_stack (yy.tos-1).String, yy.value_stack (yy.tos).String);
 
             when 15 =>
                null;

@@ -41,8 +41,8 @@ CHAR_NO_RIGHT_SQUARE			[\u0001-\u005C\u005E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 CHAR_NO_GREATER_RIGHT_SQUARE		[\u0001-\u003D\u003F-\u005C\u005E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 --  [^?], for PI, rule [16].
 CHAR_NO_QUESTION			[\u0001-\u003E\u0040-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
---  [^>]
-CHAR_NO_GREATER				[\u0001-\u003D\u003F-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  [^>?]
+CHAR_NO_GREATER_QUESTION		[\u0001-\u003D\u0040-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 
 XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 --  Synthetic set of character. XMLDECL_ATTRIBUTE_CHAR is a union of characters
@@ -135,6 +135,8 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <XML_DECL,PI,PI_DATA>"?>" {
    Enter_Start_Condition (Self, INITIAL);
 
+   YYLVal := (others => <>);
+
    return Token_PI_Close;
 }
 
@@ -146,17 +148,19 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    Set_Whitespace_Matched (Self);
 }
 
-<PI_DATA>({CHAR_NO_QUESTION}|"?"{CHAR_NO_GREATER})+ {
-   --  [16] PI
+<PI_DATA>{CHAR_NO_QUESTION}*"?"+({CHAR_NO_GREATER_QUESTION}{CHAR_NO_QUESTION}*"?"+)*">" {
+   --  Segment of data and close delimiter of the processing instruction, rule
+   --  [16].
 
    if not Get_Whitespace_Matched (Self) then
       raise Program_Error with "no whitespace before processing instruction data";
       --  XXX This is recoverable error.
    end if;
 
-   YYLVal := (String => YY_Text, others => <>);
+   YYLVal := (String => YY_Text (0, 2), others => <>);
+   Enter_Start_Condition (Self, INITIAL);
 
-   return Token_String_Segment;
+   return Token_PI_Close;
 }
 
 "<!DOCTYPE" {

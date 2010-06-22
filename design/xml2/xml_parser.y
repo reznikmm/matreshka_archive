@@ -122,7 +122,7 @@ Misc :
   ;
 
 PI :
-    Token_PI_Open Token_String_Segment Token_PI_Close
+    Token_PI_Open Token_PI_Close
 {
    Process_Processing_Instruction (Self, $1.String, $2.String);
 }

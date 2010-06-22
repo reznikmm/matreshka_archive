@@ -796,6 +796,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 7 =>
                Enter_Start_Condition (Self, INITIAL);
             
+               YYLVal := (others => <>);
+            
                return Token_PI_Close;
 
             when 8 =>
@@ -806,16 +808,18 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                Set_Whitespace_Matched (Self);
 
             when 9 =>
-               --  [16] PI
+               --  Segment of data and close delimiter of the processing instruction, rule
+               --  [16].
             
                if not Get_Whitespace_Matched (Self) then
                   raise Program_Error with "no whitespace before processing instruction data";
                   --  XXX This is recoverable error.
                end if;
             
-               YYLVal := (String => YY_Text, others => <>);
+               YYLVal := (String => YY_Text (0, 2), others => <>);
+               Enter_Start_Condition (Self, INITIAL);
             
-               return Token_String_Segment;
+               return Token_PI_Close;
 
             when 10 =>
                --  Open tag of document type declaration, rule [28].
