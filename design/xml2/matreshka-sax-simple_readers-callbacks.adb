@@ -53,7 +53,7 @@ package body Matreshka.SAX.Simple_Readers.Callbacks is
     (Self : not null access SAX_Simple_Reader'Class;
      Text : League.Strings.Universal_String) is
    begin
-      Self.Continue := Self.Content_Handler.Characters (Text);
+      Self.Content_Handler.Characters (Text, Self.Continue);
 
       if not Self.Continue then
          Self.Error_Message := Self.Content_Handler.Error_String;
@@ -75,8 +75,7 @@ package body Matreshka.SAX.Simple_Readers.Callbacks is
     (Self    : not null access SAX_Simple_Reader'Class;
      Comment : League.Strings.Universal_String) is
    begin
-      Self.Continue :=
-        Self.Lexical_Handler.Comment (Comment);
+      Self.Lexical_Handler.Comment (Comment, Self.Continue);
 
       if not Self.Continue then
          Self.Error_Message := Self.Lexical_Handler.Error_String;
@@ -100,11 +99,11 @@ package body Matreshka.SAX.Simple_Readers.Callbacks is
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String) is
    begin
-      Self.Continue :=
-        Self.Content_Handler.End_Element
-         (Namespace_URI  => Namespace_URI,
-          Local_Name     => Local_Name,
-          Qualified_Name => Qualified_Name);
+      Self.Content_Handler.End_Element
+       (Namespace_URI  => Namespace_URI,
+        Local_Name     => Local_Name,
+        Qualified_Name => Qualified_Name,
+        Success        => Self.Continue);
 
       if not Self.Continue then
          Self.Error_Message := Self.Content_Handler.Error_String;
@@ -128,8 +127,8 @@ package body Matreshka.SAX.Simple_Readers.Callbacks is
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String) is
    begin
-      Self.Continue :=
-        Self.Decl_Handler.External_Entity_Decl (Name, Public_Id, System_Id);
+      Self.Decl_Handler.External_Entity_Decl
+       (Name, Public_Id, System_Id, Self.Continue);
 
       if not Self.Continue then
          Self.Error_Message := Self.Decl_Handler.Error_String;
@@ -151,7 +150,7 @@ package body Matreshka.SAX.Simple_Readers.Callbacks is
     (Self : not null access SAX_Simple_Reader'Class;
      Text : League.Strings.Universal_String) is
    begin
-      Self.Continue := Self.Content_Handler.Ignorable_Whitespace (Text);
+      Self.Content_Handler.Ignorable_Whitespace (Text, Self.Continue);
 
       if not Self.Continue then
          Self.Error_Message := Self.Content_Handler.Error_String;
@@ -174,7 +173,7 @@ package body Matreshka.SAX.Simple_Readers.Callbacks is
      Name  : League.Strings.Universal_String;
      Value : League.Strings.Universal_String) is
    begin
-      Self.Continue := Self.Decl_Handler.Internal_Entity_Decl (Name, Value);
+      Self.Decl_Handler.Internal_Entity_Decl (Name, Value, Self.Continue);
 
       if not Self.Continue then
          Self.Error_Message := Self.Decl_Handler.Error_String;
@@ -199,12 +198,12 @@ package body Matreshka.SAX.Simple_Readers.Callbacks is
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : Matreshka.SAX.Attributes.SAX_Attributes) is
    begin
-      Self.Continue :=
-        Self.Content_Handler.Start_Element
-         (Namespace_URI  => Namespace_URI,
-          Local_Name     => Local_Name,
-          Qualified_Name => Qualified_Name,
-          Attributes     => Attributes);
+      Self.Content_Handler.Start_Element
+       (Namespace_URI  => Namespace_URI,
+        Local_Name     => Local_Name,
+        Qualified_Name => Qualified_Name,
+        Attributes     => Attributes,
+        Success        => Self.Continue);
 
       if not Self.Continue then
          Self.Error_Message := Self.Content_Handler.Error_String;
@@ -229,9 +228,8 @@ package body Matreshka.SAX.Simple_Readers.Callbacks is
      System_Id     : League.Strings.Universal_String;
      Notation_Name : League.Strings.Universal_String) is
    begin
-      Self.Continue :=
-        Self.DTD_Handler.Unparsed_Entity_Decl
-         (Name, Public_Id, System_Id, Notation_Name);
+      Self.DTD_Handler.Unparsed_Entity_Decl
+       (Name, Public_Id, System_Id, Notation_Name, Self.Continue);
 
       if not Self.Continue then
          Self.Error_Message := Self.DTD_Handler.Error_String;
