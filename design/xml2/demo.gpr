@@ -8,7 +8,7 @@ project Demo is
    for Exec_Dir use ".";
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8");
+      for Default_Switches ("Ada") use ("-g", "-O2", "-gnat05", "-gnatn", "-gnatW8");
    end Compiler;
 
 end Demo;
