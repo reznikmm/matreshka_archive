@@ -1,4 +1,5 @@
 %token Token_Xml_Decl_Open
+%token Token_PI_Open
 %token Token_PI_Close
 %token Token_PE_Reference
 %token Token_Doctype_Decl_Open
@@ -113,6 +114,17 @@ Misc :
     Token_Comment
 {
    Process_Comment (Self, $1.String);
+}
+  | PI
+{
+   null;
+}
+  ;
+
+PI :
+    Token_PI_Open Token_String_Segment Token_PI_Close
+{
+   Process_Processing_Instruction (Self, $1.String, $2.String);
 }
   ;
 
@@ -357,6 +369,10 @@ content_item :
 {
    Process_Comment (Self, $1.String);
 }
+  | PI
+{
+   null;
+}
   ;
 
 Attribute_Any :
@@ -453,6 +469,11 @@ with Matreshka.SAX.Attributes.Internals;
      (Self  : access Integer;
       Name  : League.Strings.Universal_String;
       Value : League.Strings.Universal_String) is separate;
+
+   procedure Process_Processing_Instruction
+     (Self   : access Integer;
+      Target : League.Strings.Universal_String;
+      Data   : League.Strings.Universal_String) is separate;
 
    Self     : access Integer;
    Put_Line : access procedure (Item : League.Strings.Universal_String);

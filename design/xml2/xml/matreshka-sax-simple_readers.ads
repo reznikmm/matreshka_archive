@@ -128,6 +128,7 @@ private
     (End_Of_Input,
      Error,
      Token_Xml_Decl_Open,
+     Token_Pi_Open,
      Token_Pi_Close,
      Token_Pe_Reference,
      Token_Doctype_Decl_Open,

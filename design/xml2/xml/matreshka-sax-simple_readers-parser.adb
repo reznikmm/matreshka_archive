@@ -114,6 +114,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Value : League.Strings.Universal_String);
    --  Process attribute.
 
+   procedure Process_Processing_Instruction
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Target : League.Strings.Universal_String;
+     Data   : League.Strings.Universal_String);
+   --  Process processing instruction.
+
    procedure Process_Attribute_In_Set
     (Self  : not null access SAX_Simple_Reader'Class);
    --  Process single attribute by adding it into set of attributes.
@@ -300,6 +306,18 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       Self.Parameter_Entities.Insert (Name, Value);
       Put_Line ("PE: '" & Name & "' => '" & Value & "'");
    end Process_Parameter_Entity_Declaration;
+
+   ------------------------------------
+   -- Process_Processing_Instruction --
+   ------------------------------------
+
+   procedure Process_Processing_Instruction
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Target : League.Strings.Universal_String;
+     Data   : League.Strings.Universal_String) is
+   begin
+      Callbacks.Call_Processing_Instruction (Self, Target, Data);
+   end Process_Processing_Instruction;
 
    -----------------------
    -- Process_Start_Tag --
@@ -608,9 +626,15 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 14 =>
-               null;
+               Process_Processing_Instruction (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).String);
 
             when 15 =>
+               null;
+
+            when 16 =>
+               null;
+
+            when 17 =>
                --  Document type declaration, rule [28]. Once external identifier are
                --  recognized external document type declaration subset need to be parsed 
                --  before processing of internal subset. External subset is inserted
@@ -624,41 +648,35 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  yy.value_stack (yy.tos).Public_Id,
                  yy.value_stack (yy.tos).System_Id);
 
-            when 16 =>
+            when 18 =>
                null;
 
-            when 17 =>
+            when 19 =>
                yyval :=
                 (Is_External => True,
                  Public_Id   => yy.value_stack (yy.tos).Public_Id,
                  System_Id   => yy.value_stack (yy.tos).System_Id,
                  others      => <>);
 
-            when 18 =>
+            when 20 =>
                yyval :=
                 (Is_External => False,
                  others      => <>);
 
-            when 19 =>
+            when 21 =>
                --  ExternalID specified by SYSTEM, rule [75].
             
                yyval :=
                 (System_Id => yy.value_stack (yy.tos).String,
                  others    => <>);
 
-            when 20 =>
+            when 22 =>
                --  ExternalID specified by PUBLIC, rule [75].
             
                yyval :=
                 (Public_Id => yy.value_stack (yy.tos-1).String,
                  System_Id => yy.value_stack (yy.tos).String,
                  others    => <>);
-
-            when 21 =>
-               null;
-
-            when 22 =>
-               null;
 
             when 23 =>
                null;
@@ -676,9 +694,15 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 28 =>
-               Process_Comment (Self, yy.value_stack (yy.tos).String);
+               null;
 
             when 29 =>
+               null;
+
+            when 30 =>
+               Process_Comment (Self, yy.value_stack (yy.tos).String);
+
+            when 31 =>
                Process_General_Entity_Declaration
                 (Self,
                  yy.value_stack (yy.tos-2).String,
@@ -688,23 +712,23 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  yy.value_stack (yy.tos-1).System_Id,
                  yy.value_stack (yy.tos-1).Notation);
 
-            when 30 =>
+            when 32 =>
                Process_Parameter_Entity_Declaration (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).String);
 
-            when 31 =>
+            when 33 =>
                yyval :=
                 (Is_External => False,
                  String      => yy.value_stack (yy.tos).String,
                  others      => <>);
 
-            when 32 =>
+            when 34 =>
                yyval :=
                 (Is_External => True,
                  Public_Id   => yy.value_stack (yy.tos).Public_Id,
                  System_Id   => yy.value_stack (yy.tos).System_Id,
                  others      => <>);
 
-            when 33 =>
+            when 35 =>
                yyval :=
                 (Is_External => True,
                  Public_Id   => yy.value_stack (yy.tos-2).Public_Id,
@@ -712,44 +736,38 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Notation    => yy.value_stack (yy.tos).String,
                  others      => <>);
 
-            when 34 =>
-               null;
-
-            when 35 =>
-               null;
-
             when 36 =>
+               null;
+
+            when 37 =>
+               null;
+
+            when 38 =>
                --  Entity value including surrounding delimiters.
             
                yyval.String := yy.value_stack (yy.tos-1).String;
 
-            when 37 =>
+            when 39 =>
                --  Additional string segment in entity value.
             
                yyval.String := yy.value_stack (yy.tos-1).String & yy.value_stack (yy.tos).String;
 
-            when 38 =>
+            when 40 =>
                --  Single string segment in entity value.
             
                yyval.String := yy.value_stack (yy.tos).String;
 
-            when 39 =>
+            when 41 =>
                yyval.String := League.Strings.To_Universal_String ("");
 
-            when 40 =>
+            when 42 =>
                Process_Start_Tag (Self, yy.value_stack (yy.tos-2).String);
 
-            when 41 =>
+            when 43 =>
                Process_End_Tag (Self, yy.value_stack (yy.tos-1).String);
 
-            when 42 =>
-               Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).String);
-
-            when 43 =>
-               null;
-
             when 44 =>
-               null;
+               Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).String);
 
             when 45 =>
                null;
@@ -758,24 +776,33 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 47 =>
-               Process_Characters (Self, yy.value_stack (yy.tos).String, yy.value_stack (yy.tos).Is_Whitespace);
+               null;
 
             when 48 =>
-               Process_Comment (Self, yy.value_stack (yy.tos).String);
+               null;
 
             when 49 =>
-               Process_Attribute_In_Set (Self);
+               Process_Characters (Self, yy.value_stack (yy.tos).String, yy.value_stack (yy.tos).Is_Whitespace);
 
             when 50 =>
-               Process_Attribute_In_Set (Self);
+               Process_Comment (Self, yy.value_stack (yy.tos).String);
 
             when 51 =>
                null;
 
             when 52 =>
-               Process_Attribute (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos).String);
+               Process_Attribute_In_Set (Self);
 
             when 53 =>
+               Process_Attribute_In_Set (Self);
+
+            when 54 =>
+               null;
+
+            when 55 =>
+               Process_Attribute (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos).String);
+
+            when 56 =>
                null;
                when others =>
                   raise Program_Error

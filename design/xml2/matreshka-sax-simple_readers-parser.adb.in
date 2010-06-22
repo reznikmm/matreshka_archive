@@ -114,6 +114,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Value : League.Strings.Universal_String);
    --  Process attribute.
 
+   procedure Process_Processing_Instruction
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Target : League.Strings.Universal_String;
+     Data   : League.Strings.Universal_String);
+   --  Process processing instruction.
+
    procedure Process_Attribute_In_Set
     (Self  : not null access SAX_Simple_Reader'Class);
    --  Process single attribute by adding it into set of attributes.
@@ -300,6 +306,18 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       Self.Parameter_Entities.Insert (Name, Value);
       Put_Line ("PE: '" & Name & "' => '" & Value & "'");
    end Process_Parameter_Entity_Declaration;
+
+   ------------------------------------
+   -- Process_Processing_Instruction --
+   ------------------------------------
+
+   procedure Process_Processing_Instruction
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Target : League.Strings.Universal_String;
+     Data   : League.Strings.Universal_String) is
+   begin
+      Callbacks.Call_Processing_Instruction (Self, Target, Data);
+   end Process_Processing_Instruction;
 
    -----------------------
    -- Process_Start_Tag --

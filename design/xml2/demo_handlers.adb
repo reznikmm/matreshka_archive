@@ -100,6 +100,20 @@ package body Demo_Handlers is
        (">>> (Internal_Entity_Decl): '" & Name & "' => '" & Value & "'");
    end Internal_Entity_Decl;
 
+   ----------------------------
+   -- Processing_Instruction --
+   ----------------------------
+
+   overriding procedure Processing_Instruction
+    (Self    : in out Demo_Handler;
+     Target  : League.Strings.Universal_String;
+     Data    : League.Strings.Universal_String;
+     Success : in out Boolean) is
+   begin
+      Put_Line
+       (">>> (Processing_Instruction): '" & Target & "' '" & Data & "'");
+   end Processing_Instruction;
+
    --------------------
    -- Resolve_Entity --
    --------------------

@@ -54,6 +54,12 @@ package Demo_Handlers is
      Value   : League.Strings.Universal_String;
      Success : in out Boolean);
 
+   overriding procedure Processing_Instruction
+    (Self    : in out Demo_Handler;
+     Target  : League.Strings.Universal_String;
+     Data    : League.Strings.Universal_String;
+     Success : in out Boolean);
+
    overriding procedure Resolve_Entity
     (Self      : in out Demo_Handler;
      Public_Id : League.Strings.Universal_String;

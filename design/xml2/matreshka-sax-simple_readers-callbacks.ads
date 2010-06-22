@@ -83,6 +83,12 @@ private package Matreshka.SAX.Simple_Readers.Callbacks is
      Value : League.Strings.Universal_String);
    --  Calls handler's SAX_Decl_Handler.Internal_Entity_Decl subprogram.
 
+   procedure Call_Processing_Instruction
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Target : League.Strings.Universal_String;
+     Data   : League.Strings.Universal_String);
+   --  Calls handler's SAX_Content_Handler.Processing_Instruction subprogram.
+
    procedure Call_Start_Element
     (Self           : not null access SAX_Simple_Reader'Class;
      Namespace_URI  : League.Strings.Universal_String;

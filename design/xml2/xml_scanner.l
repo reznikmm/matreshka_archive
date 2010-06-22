@@ -39,12 +39,18 @@ CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D\u0
 CHAR_NO_RIGHT_SQUARE			[\u0001-\u005C\u005E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 --  [^>]]
 CHAR_NO_GREATER_RIGHT_SQUARE		[\u0001-\u003D\u003F-\u005C\u005E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  [^?], for PI, rule [16].
+CHAR_NO_QUESTION			[\u0001-\u003E\u0040-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  [^>]
+CHAR_NO_GREATER				[\u0001-\u003D\u003F-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 
 XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 --  Synthetic set of character. XMLDECL_ATTRIBUTE_CHAR is a union of characters
 --  allowed by [26] VersionNum, [81] EncName, [32] SDDecl.
 
 %x XML_DECL
+%x PI
+%x PI_DATA
 %x DOCTYPE_DECL
 %x DOCTYPE_EXTINT
 %x DOCTYPE_INT
@@ -69,6 +75,17 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    Reset_Whitespace_Matched (Self);
 
    return Token_XML_Decl_Open;
+}
+
+"<?"{NAME} {
+   --  Open of processing instruction, rule [16]. Rule [17] is implemented
+   --  implicitly by ordering of open of XMLDecl and open of PI.
+
+   YYLVal := (String => YY_Text (2, 0), others => <>);
+   Enter_Start_Condition (Self, PI);
+   Reset_Whitespace_Matched (Self);
+
+   return Token_PI_Open;
 }
 
 <XML_DECL>version {
@@ -115,10 +132,31 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    return Token_String_Segment;
 }
 
-<XML_DECL>"?>" {
+<XML_DECL,PI,PI_DATA>"?>" {
    Enter_Start_Condition (Self, INITIAL);
 
    return Token_PI_Close;
+}
+
+<PI>{WHITE_SPACE}+ {
+   --  Ignore all whitespaces is followed by processing insturction's name,
+   --  rule [16].
+
+   Enter_Start_Condition (Self, PI_DATA);
+   Set_Whitespace_Matched (Self);
+}
+
+<PI_DATA>({CHAR_NO_QUESTION}|"?"{CHAR_NO_GREATER})+ {
+   --  [16] PI
+
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error with "no whitespace before processing instruction data";
+      --  XXX This is recoverable error.
+   end if;
+
+   YYLVal := (String => YY_Text, others => <>);
+
+   return Token_String_Segment;
 }
 
 "<!DOCTYPE" {

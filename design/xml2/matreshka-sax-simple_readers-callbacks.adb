@@ -187,6 +187,32 @@ package body Matreshka.SAX.Simple_Readers.Callbacks is
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_Internal_Entity_Decl;
 
+   ---------------------------------
+   -- Call_Processing_Instruction --
+   ---------------------------------
+
+   procedure Call_Processing_Instruction
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Target : League.Strings.Universal_String;
+     Data   : League.Strings.Universal_String) is
+   begin
+      Self.Content_Handler.Processing_Instruction
+       (Target  => Target,
+        Data    => Data,
+        Success => Self.Continue);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.Content_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_Processing_Instruction;
+
    ------------------------
    -- Call_Start_Element --
    ------------------------
