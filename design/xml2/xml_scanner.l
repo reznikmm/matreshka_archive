@@ -40,6 +40,10 @@ CHAR_NO_RIGHT_SQUARE			[\u0001-\u005C\u005E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 --  [^>]]
 CHAR_NO_GREATER_RIGHT_SQUARE		[\u0001-\u003D\u003F-\u005C\u005E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 
+XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
+--  Synthetic set of character. XMLDECL_ATTRIBUTE_CHAR is a union of characters
+--  allowed by [26] VersionNum, [81] EncName, [32] SDDecl.
+
 %x XML_DECL
 %x DOCTYPE_DECL
 %x DOCTYPE_EXTINT
@@ -62,20 +66,59 @@ CHAR_NO_GREATER_RIGHT_SQUARE		[\u0001-\u003D\u003F-\u005C\u005E-\uD7FF\uE000-\uF
 
 "<?xml" {
    Enter_Start_Condition (Self, XML_DECL);
+   Reset_Whitespace_Matched (Self);
 
    return Token_XML_Decl_Open;
+}
+
+<XML_DECL>version {
+   --  [24] VersionInfo
+
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error with "no whitespace before 'version' keyword";
+      --  XXX This is recoverable error.
+   end if;
+
+   return Token_Version;
+}
+
+<XML_DECL>encoding {
+   --  [80] EncodingDecl
+
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error with "no whitespace before 'encoding' keyword";
+      --  XXX This is recoverable error.
+   end if;
+
+   return Token_Encoding;
+}
+
+<XML_DECL>standalone {
+   --  [32] SDDecl
+
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error with "no whitespace before 'standalone' keyword";
+      --  XXX This is recoverable error.
+   end if;
+
+   return Token_Standalone;
+}
+
+<XML_DECL>'{XMLDECL_ATTRIBUTE_CHAR}*'|\"{XMLDECL_ATTRIBUTE_CHAR}*\" {
+   --  Synthetic rule. XMLDECL_ATTRIBUTE_CHAR is a union of characters allowed
+   --  by [26] VersionNum, [81] EncName, [32] SDDecl. Precise check is
+   --  processed while parsing.
+
+   YYLVal := (String => YY_Text (1, 1), others => <>);
+   Reset_Whitespace_Matched (Self);
+
+   return Token_String_Segment;
 }
 
 <XML_DECL>"?>" {
    Enter_Start_Condition (Self, INITIAL);
 
    return Token_PI_Close;
-}
-
-<XML_DECL>{WHITE_SPACE}+ {
-   --  All white spaces from rules [23], [24], [25], [32], [80] are ignored.
-
-   null;
 }
 
 "<!DOCTYPE" {
@@ -326,9 +369,17 @@ CHAR_NO_GREATER_RIGHT_SQUARE		[\u0001-\u003D\u003F-\u005C\u005E-\uD7FF\uE000-\uF
    null;
 }
 
-<EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF>{WHITE_SPACE} {
+<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ELEMENT_START>{WHITE_SPACE} {
    --  White spaces in entity declaration are not optional, rules [71], [72],
    --  [75].
+   --
+   --  White spaces in start tag, rule [40], are ignored, but white space
+   --  between attribute value and name of the next attribute are must be
+   --  present.
+   --
+   --  All white spaces from rules [23], [24], [25], [32], [80] are ignored,
+   --  but white space between attribute value and name of the next attribute
+   --  are must be present.
 
    Set_Whitespace_Matched (Self);
 }
@@ -364,8 +415,9 @@ CHAR_NO_GREATER_RIGHT_SQUARE		[\u0001-\u003D\u003F-\u005C\u005E-\uD7FF\uE000-\uF
    return Token_Name;
 }
 
-<ELEMENT_START>"=" {
-   --  Equal sign as attribute's name value delimiter, rule [25] in rule [41].
+<XML_DECL,ELEMENT_START>"=" {
+   --  Equal sign as attribute's name value delimiter, rule [25] in rules [41],
+   --  [24], [32], [80].
 
    return Token_Equal;
 }
@@ -390,14 +442,6 @@ CHAR_NO_GREATER_RIGHT_SQUARE		[\u0001-\u003D\u003F-\u005C\u005E-\uD7FF\uE000-\uF
    --  Open delimiter of attribute value, rule [10].
 
    return Process_Attribute_Value_Open_Delimiter (Self, YY_Text);
-}
-
-<ELEMENT_START>{WHITE_SPACE} {
-   --  White spaces in start tag, rule [40], are ignored, but white space
-   --  between attribute value and name of the next attribute are must be
-   --  present.
-
-   Set_Whitespace_Matched (Self);
 }
 
 <ATTRIBUTE_VALUE>['"] {

@@ -149,7 +149,10 @@ private
      Token_Element_Open,
      Token_Equal,
      Token_End_Open,
-     Token_Empty_Close);
+     Token_Empty_Close,
+     Token_Version,
+     Token_Encoding,
+     Token_Standalone);
 
    type YYSType is record
       String        : League.Strings.Universal_String;

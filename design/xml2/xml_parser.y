@@ -15,12 +15,19 @@
 %token Token_Value_Open
 %token Token_Value_Close
 %token Token_String_Segment
+--  String segment is segment of character data comes from different places:
+--  attribute value, entity value, XML declaration attribute value, etc.
+--  XXX Public_Id and System_Id are handled separately for now, but can be
+--  rewritten to use this general string data token.
 %token Token_NData
 %token Token_Comment
 %token Token_Element_Open
 %token Token_Equal
 %token Token_End_Open
 %token Token_Empty_Close
+%token Token_Version
+%token Token_Encoding
+%token Token_Standalone
 
 %with League.Strings
 %with Matreshka.Internals.XML.Attributes;
@@ -41,8 +48,43 @@
 %%
 
 --  XXX Not implemented.
-document:
-    Token_Xml_Decl_Open Token_PI_Close doctypedecl_optional element
+document:  XMLDecl_optional doctypedecl_optional element
+{
+   null;
+}
+  ;
+
+XMLDecl_optional :
+    XMLDecl
+{
+   null;
+}
+  |
+{
+   null;
+}
+  ;
+
+XMLDecl :
+    Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment EncodingDecl_optional SDDecl_optional Token_PI_Close
+{
+   null;
+}
+  ;
+
+EncodingDecl_optional :
+    Token_Encoding Token_Equal Token_String_Segment
+{
+   null;
+}
+  |
+{
+   null;
+}
+  ;
+
+SDDecl_optional :
+    Token_Standalone Token_Equal Token_String_Segment
 {
    null;
 }
