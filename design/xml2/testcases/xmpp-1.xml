@@ -1,0 +1,12 @@
+<?xml version='1.0'?>
+<stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='785275890' from='bzzb.ru'
+ version='1.0' xml:lang='en'>
+  <stream:features>
+  <starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>
+  <mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'>
+  <mechanism>DIGEST-MD5</mechanism>
+  <mechanism>PLAIN</mechanism>
+  </mechanisms>
+  <register xmlns='http://jabber.org/features/iq-register'/>
+  </stream:features>
+</stream:stream>
