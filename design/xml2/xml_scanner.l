@@ -17,6 +17,9 @@ PUBID_CHAR_NO_APOSTROPHE	[-()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
 --
 --  Special subranges of Char.
 --
+--  NOTE: Negative sets with smaller number of characters improves aflex
+--  performance and memory requirements extremely.
+--
 --  [^%&]
 CHAR_NO_PERCENT_AMPERSAND		[\u0001-\u0024\u0027-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 --  [^%&"] - Unused
@@ -40,9 +43,11 @@ CHAR_NO_RIGHT_SQUARE			[\u0001-\u005C\u005E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 --  [^>]]
 CHAR_NO_GREATER_RIGHT_SQUARE		[\u0001-\u003D\u003F-\u005C\u005E-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
 --  [^?], for PI, rule [16].
-CHAR_NO_QUESTION			[\u0001-\u003E\u0040-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  CHAR_NO_QUESTION			[\u0001-\u003E\u0040-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+CHAR_NO_QUESTION			[^\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^>?]
-CHAR_NO_GREATER_QUESTION		[\u0001-\u003D\u0040-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+--  CHAR_NO_GREATER_QUESTION		[\u0001-\u003D\u0040-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]
+CHAR_NO_GREATER_QUESTION		[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 
 XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 --  Synthetic set of character. XMLDECL_ATTRIBUTE_CHAR is a union of characters
