@@ -49,30 +49,30 @@ package Matreshka.Sax.Decl_Handlers is
 
    type SAX_Decl_Handler is limited interface;
 
-   not overriding function Attribute_Decl
-    (Self          : not null access SAX_Decl_Handler;
+   not overriding procedure Attribute_Decl
+    (Self          : in out SAX_Decl_Handler;
      E_Name        : League.Strings.Universal_String;
      A_Name        : League.Strings.Universal_String;
      A_Type        : League.Strings.Universal_String;
      Value_Default : League.Strings.Universal_String;
-     Value         : League.Strings.Universal_String)
-       return Boolean is abstract;
+     Value         : League.Strings.Universal_String;
+     Success       : in out Boolean) is null;
 
    not overriding function Error_String
-    (Self : not null access SAX_Decl_Handler)
+    (Self : SAX_Decl_Handler)
        return League.Strings.Universal_String is abstract;
 
-   not overriding function External_Entity_Decl
-    (Self      : not null access SAX_Decl_Handler;
+   not overriding procedure External_Entity_Decl
+    (Self      : in out SAX_Decl_Handler;
      Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String)
-       return Boolean is abstract;
+     System_Id : League.Strings.Universal_String;
+     Success   : in out Boolean) is null;
 
-   not overriding function Internal_Entity_Decl
-    (Self  : not null access SAX_Decl_Handler;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String)
-       return Boolean is abstract;
+   not overriding procedure Internal_Entity_Decl
+    (Self    : in out SAX_Decl_Handler;
+     Name    : League.Strings.Universal_String;
+     Value   : League.Strings.Universal_String;
+     Success : in out Boolean) is null;
 
 end Matreshka.Sax.Decl_Handlers;

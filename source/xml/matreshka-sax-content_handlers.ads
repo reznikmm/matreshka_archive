@@ -52,69 +52,69 @@ package Matreshka.SAX.Content_Handlers is
 
    type SAX_Content_Handler is limited interface;
 
-   not overriding function Characters
-    (Self : not null access SAX_Content_Handler;
-     Text : League.Strings.Universal_String)
-       return Boolean is abstract;
+   not overriding procedure Characters
+    (Self    : in out SAX_Content_Handler;
+     Text    : League.Strings.Universal_String;
+     Success : in out Boolean) is null;
 
-   not overriding function End_Document
-    (Self : not null access SAX_Content_Handler)
-       return Boolean is abstract;
+   not overriding procedure End_Document
+    (Self    : in out SAX_Content_Handler;
+     Success : in out Boolean) is null;
 
-   not overriding function End_Element
-    (Self           : not null access SAX_Content_Handler;
+   not overriding procedure End_Element
+    (Self           : in out SAX_Content_Handler;
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String)
-       return Boolean is abstract;
+     Qualified_Name : League.Strings.Universal_String;
+     Success        : in out Boolean) is null;
 
-   not overriding function End_Prefix_Mapping
-    (Self   : not null access SAX_Content_Handler;
-     Prefix : League.Strings.Universal_String)
-       return Boolean is abstract;
+   not overriding procedure End_Prefix_Mapping
+    (Self    : in out SAX_Content_Handler;
+     Prefix  : League.Strings.Universal_String;
+     Success : in out Boolean) is null;
 
    not overriding function Error_String
-    (Self : not null access SAX_Content_Handler)
+    (Self : SAX_Content_Handler)
        return League.Strings.Universal_String is abstract;
 
-   not overriding function Ignorable_Whitespace
-    (Self : not null access SAX_Content_Handler;
-     Text : League.Strings.Universal_String)
-       return Boolean is abstract;
+   not overriding procedure Ignorable_Whitespace
+    (Self    : in out SAX_Content_Handler;
+     Text    : League.Strings.Universal_String;
+     Success : in out Boolean) is null;
 
-   not overriding function Processing_Instruction
-    (Self   : not null access SAX_Content_Handler;
-     Target : League.Strings.Universal_String;
-     Data   : League.Strings.Universal_String)
-       return Boolean is abstract;
+   not overriding procedure Processing_Instruction
+    (Self    : in out SAX_Content_Handler;
+     Target  : League.Strings.Universal_String;
+     Data    : League.Strings.Universal_String;
+     Success : in out Boolean) is null;
 
    not overriding procedure Set_Document_Locator
-    (Self    : not null access SAX_Content_Handler;
+    (Self    : in out SAX_Content_Handler;
      Locator : not null Matreshka.SAX.Locators.SAX_Locator_Access) is null;
    --  XXX This is can lead to dangling pointers, so it would be nice to
    --  review and change API.
 
-   not overriding function Skipped_Entity
-    (Self : not null access SAX_Content_Handler;
-     Name : League.Strings.Universal_String)
-       return Boolean is abstract;
+   not overriding procedure Skipped_Entity
+    (Self    : in out SAX_Content_Handler;
+     Name    : League.Strings.Universal_String;
+     Success : in out Boolean) is null;
 
-   not overriding function Start_Document
-    (Self : not null access SAX_Content_Handler)
-       return Boolean is abstract;
+   not overriding procedure Start_Document
+    (Self    : in out SAX_Content_Handler;
+     Success : in out Boolean) is null;
 
-   not overriding function Start_Element
-    (Self           : not null access SAX_Content_Handler;
+   not overriding procedure Start_Element
+    (Self           : in out SAX_Content_Handler;
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
-     Attributes     : Matreshka.SAX.Attributes.SAX_Attributes)
-       return Boolean is abstract;
+     Attributes     : Matreshka.SAX.Attributes.SAX_Attributes;
+     Success        : in out Boolean) is null;
 
-   not overriding function Start_Prefix_Mapping
-    (Self   : not null access SAX_Content_Handler;
-     Prefix : League.Strings.Universal_String;
-     URI    : League.Strings.Universal_String)
-       return Boolean is abstract;
+   not overriding procedure Start_Prefix_Mapping
+    (Self    : in out SAX_Content_Handler;
+     Prefix  : League.Strings.Universal_String;
+     URI     : League.Strings.Universal_String;
+     Success : in out Boolean) is null;
 
 end Matreshka.SAX.Content_Handlers;

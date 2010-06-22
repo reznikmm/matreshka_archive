@@ -51,23 +51,23 @@ package Matreshka.SAX.Error_Handlers is
 
    type SAX_Error_Handler is limited interface;
 
-   not overriding function Error
-    (Self       : not null access SAX_Error_Handler;
-     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception)
-       return Boolean is abstract;
+   not overriding procedure Error
+    (Self       : in out SAX_Error_Handler;
+     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean) is null;
 
    not overriding function Error_String
-    (Self : not null access SAX_Error_Handler)
+    (Self : SAX_Error_Handler)
        return League.Strings.Universal_String is abstract;
 
-   not overriding function Fatal_Error
-    (Self       : not null access SAX_Error_Handler;
-     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception)
-       return Boolean is abstract;
+   not overriding procedure Fatal_Error
+    (Self       : in out SAX_Error_Handler;
+     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean) is null;
 
-   not overriding function Warning
-    (Self       : not null access SAX_Error_Handler;
-     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception)
-       return Boolean is abstract;
+   not overriding procedure Warning
+    (Self       : in out SAX_Error_Handler;
+     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean) is null;
 
 end Matreshka.SAX.Error_Handlers;

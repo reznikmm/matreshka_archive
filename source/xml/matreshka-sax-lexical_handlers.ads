@@ -49,42 +49,42 @@ package Matreshka.SAX.Lexical_Handlers is
 
    type SAX_Lexical_Handler is limited interface;
 
-   not overriding function Comment
-    (Self : not null access SAX_Lexical_Handler;
-     Text : League.Strings.Universal_String)
-       return Boolean is abstract;
+   not overriding procedure Comment
+    (Self    : in out SAX_Lexical_Handler;
+     Text    : League.Strings.Universal_String;
+     Success : in out Boolean) is null;
 
-   not overriding function End_CDATA
-    (Self : not null access SAX_Lexical_Handler)
-       return Boolean is abstract;
+   not overriding procedure End_CDATA
+    (Self    : in out SAX_Lexical_Handler;
+     Success : in out Boolean) is null;
 
-   not overriding function End_DTD
-    (Self : not null access SAX_Lexical_Handler)
-       return Boolean is abstract;
+   not overriding procedure End_DTD
+    (Self    : in out SAX_Lexical_Handler;
+     Success : in out Boolean) is null;
 
-   not overriding function End_Entity
-    (Self : not null access SAX_Lexical_Handler;
-     Name : League.Strings.Universal_String)
-       return Boolean is abstract;
+   not overriding procedure End_Entity
+    (Self    : in out SAX_Lexical_Handler;
+     Name    : League.Strings.Universal_String;
+     Success : in out Boolean) is null;
 
    not overriding function Error_String
-    (Self : not null access SAX_Lexical_Handler)
+    (Self : SAX_Lexical_Handler)
        return League.Strings.Universal_String is abstract;
 
-   not overriding function Start_CDATA
-    (Self : not null access SAX_Lexical_Handler)
-       return Boolean is abstract;
+   not overriding procedure Start_CDATA
+    (Self    : in out SAX_Lexical_Handler;
+     Success : in out Boolean) is null;
 
-   not overriding function Start_DTD
-    (Self      : not null access SAX_Lexical_Handler;
+   not overriding procedure Start_DTD
+    (Self      : in out SAX_Lexical_Handler;
      Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String)
-       return Boolean is abstract;
+     System_Id : League.Strings.Universal_String;
+     Success   : in out Boolean) is null;
 
-   not overriding function Start_Entity
-    (Self : not null access SAX_Lexical_Handler;
-     Name : League.Strings.Universal_String)
-       return Boolean is abstract;
+   not overriding procedure Start_Entity
+    (Self    : in out SAX_Lexical_Handler;
+     Name    : League.Strings.Universal_String;
+     Success : in out Boolean) is null;
 
 end Matreshka.SAX.Lexical_Handlers;

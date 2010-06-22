@@ -50,22 +50,22 @@ package Matreshka.SAX.DTD_Handlers is
    type SAX_DTD_Handler is limited interface;
 
    not overriding function Error_String
-    (Self : not null access SAX_DTD_Handler)
+    (Self : SAX_DTD_Handler)
        return League.Strings.Universal_String is abstract;
 
-   not overriding function Notation_Decl
-    (Self          : not null access SAX_DTD_Handler;
-     Name          : League.Strings.Universal_String;
-     Public_Id     : League.Strings.Universal_String;
-     System_Id     : League.Strings.Universal_String)
-       return Boolean is abstract;
+   not overriding procedure Notation_Decl
+    (Self      : in out SAX_DTD_Handler;
+     Name      : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Success   : in out Boolean) is null;
 
-   not overriding function Unparsed_Entity_Decl
-    (Self          : not null access SAX_DTD_Handler;
+   not overriding procedure Unparsed_Entity_Decl
+    (Self          : in out SAX_DTD_Handler;
      Name          : League.Strings.Universal_String;
      Public_Id     : League.Strings.Universal_String;
      System_Id     : League.Strings.Universal_String;
-     Notation_Name : League.Strings.Universal_String)
-       return Boolean is abstract;
+     Notation_Name : League.Strings.Universal_String;
+     Success       : in out Boolean) is null;
 
 end Matreshka.SAX.DTD_Handlers;

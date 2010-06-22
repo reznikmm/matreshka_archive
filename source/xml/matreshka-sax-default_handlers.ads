@@ -43,14 +43,11 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
-with Matreshka.SAX.Attributes;
 with Matreshka.SAX.Content_Handlers;
 with Matreshka.SAX.DTD_Handlers;
 with Matreshka.SAX.Decl_Handlers;
 with Matreshka.SAX.Error_Handlers;
 with Matreshka.SAX.Lexical_Handlers;
-with Matreshka.SAX.Locators;
-with Matreshka.SAX.Parse_Exceptions;
 
 package Matreshka.SAX.Default_Handlers is
 
@@ -63,153 +60,8 @@ package Matreshka.SAX.Default_Handlers is
        and Matreshka.SAX.Error_Handlers.SAX_Error_Handler
        and Matreshka.SAX.Lexical_Handlers.SAX_Lexical_Handler with null record;
 
-   overriding function Attribute_Decl
-    (Self          : not null access SAX_Default_Handler;
-     E_Name        : League.Strings.Universal_String;
-     A_Name        : League.Strings.Universal_String;
-     A_Type        : League.Strings.Universal_String;
-     Value_Default : League.Strings.Universal_String;
-     Value         : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function Characters
-    (Self : not null access SAX_Default_Handler;
-     Text : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function Comment
-    (Self : not null access SAX_Default_Handler;
-     Text : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function End_CDATA
-    (Self : not null access SAX_Default_Handler)
-       return Boolean;
-
-   overriding function End_Document
-    (Self : not null access SAX_Default_Handler)
-       return Boolean;
-
-   overriding function End_DTD
-    (Self : not null access SAX_Default_Handler)
-       return Boolean;
-
-   overriding function End_Element
-    (Self           : not null access SAX_Default_Handler;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function End_Entity
-    (Self : not null access SAX_Default_Handler;
-     Name : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function End_Prefix_Mapping
-    (Self   : not null access SAX_Default_Handler;
-     Prefix : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function Error
-    (Self       : not null access SAX_Default_Handler;
-     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception)
-       return Boolean;
-
    overriding function Error_String
-    (Self : not null access SAX_Default_Handler)
+    (Self : SAX_Default_Handler)
        return League.Strings.Universal_String;
-
-   overriding function External_Entity_Decl
-    (Self      : not null access SAX_Default_Handler;
-     Name      : League.Strings.Universal_String;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function Fatal_Error
-    (Self       : not null access SAX_Default_Handler;
-     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception)
-       return Boolean;
-
-   overriding function Ignorable_Whitespace
-    (Self : not null access SAX_Default_Handler;
-     Text : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function Internal_Entity_Decl
-    (Self  : not null access SAX_Default_Handler;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function Notation_Decl
-    (Self          : not null access SAX_Default_Handler;
-     Name          : League.Strings.Universal_String;
-     Public_Id     : League.Strings.Universal_String;
-     System_Id     : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function Processing_Instruction
-    (Self   : not null access SAX_Default_Handler;
-     Target : League.Strings.Universal_String;
-     Data   : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding procedure Set_Document_Locator
-    (Self    : not null access SAX_Default_Handler;
-     Locator : not null Matreshka.SAX.Locators.SAX_Locator_Access) is null;
-
-   overriding function Skipped_Entity
-    (Self : not null access SAX_Default_Handler;
-     Name : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function Start_CDATA
-    (Self : not null access SAX_Default_Handler)
-       return Boolean;
-
-   overriding function Start_Document
-    (Self : not null access SAX_Default_Handler)
-       return Boolean;
-
-   overriding function Start_DTD
-    (Self      : not null access SAX_Default_Handler;
-     Name      : League.Strings.Universal_String;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function Start_Element
-    (Self           : not null access SAX_Default_Handler;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String;
-     Attributes     : Matreshka.SAX.Attributes.SAX_Attributes)
-       return Boolean;
-
-   overriding function Start_Entity
-    (Self : not null access SAX_Default_Handler;
-     Name : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function Start_Prefix_Mapping
-    (Self   : not null access SAX_Default_Handler;
-     Prefix : League.Strings.Universal_String;
-     URI    : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function Unparsed_Entity_Decl
-    (Self          : not null access SAX_Default_Handler;
-     Name          : League.Strings.Universal_String;
-     Public_Id     : League.Strings.Universal_String;
-     System_Id     : League.Strings.Universal_String;
-     Notation_Name : League.Strings.Universal_String)
-       return Boolean;
-
-   overriding function Warning
-    (Self       : not null access SAX_Default_Handler;
-     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception)
-       return Boolean;
 
 end Matreshka.SAX.Default_Handlers;

@@ -50,11 +50,11 @@ package Matreshka.SAX.Entity_Resolvers is
    type SAX_Entity_Resolver is limited interface;
 
    not overriding function Error_String
-    (Self : not null access SAX_Entity_Resolver)
+    (Self : SAX_Entity_Resolver)
        return League.Strings.Universal_String is abstract;
 
    not overriding procedure Resolve_Entity
-    (Self      : not null access SAX_Entity_Resolver;
+    (Self      : in out SAX_Entity_Resolver;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
      Text      : out League.Strings.Universal_String;
