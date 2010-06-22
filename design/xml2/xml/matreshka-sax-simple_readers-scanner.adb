@@ -91,6 +91,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  Push replacement text of general entity in attribute value into
    --  scanner's stack.
 
+   procedure Push_General_Entity_In_Document_Content
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Data  : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Push replacement text of general entity in document content into
+   --  scanner's stack.
+
    function Process_Attribute_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
      Image : League.Strings.Universal_String) return Token;
@@ -294,6 +300,29 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       return Token_Value_Open;
    end Process_Entity_Value_Open_Delimiter;
 
+   ----------------------------------------------------------
+   -- Process_General_Entity_Reference_In_Document_Content --
+   ----------------------------------------------------------
+
+   procedure Process_General_Entity_Reference_In_Document_Content
+    (Self : not null access SAX_Simple_Reader'Class;
+     Name : League.Strings.Universal_String)
+   is
+      use Universal_String_Maps;
+
+      Position : constant Universal_String_Maps.Cursor
+        := Self.General_Entities.Find (Name);
+
+   begin
+      if not Has_Element (Position) then
+         raise Program_Error with "general entity is not declared";
+
+      else
+         Push_General_Entity_In_Document_Content
+          (Self, League.Strings.Internals.Get_Shared (Element (Position)));
+      end if;
+   end Process_General_Entity_Reference_In_Document_Content;
+
    ---------------------------------------------------------
    -- Process_General_Entity_Reference_In_Attribute_Value --
    ---------------------------------------------------------
@@ -405,6 +434,20 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Scanner_State := (Data, In_Literal => True, others => <>);
       Enter_Start_Condition (Self, ATTRIBUTE_VALUE);
    end Push_General_Entity_In_Attribute_Value;
+
+   ---------------------------------------------
+   -- Push_General_Entity_In_Document_Content --
+   ---------------------------------------------
+
+   procedure Push_General_Entity_In_Document_Content
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Data  : not null Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
+      Self.Scanner_Stack.Append (Self.Scanner_State);
+
+      Self.Scanner_State := (Data, others => <>);
+      Enter_Start_Condition (Self, INITIAL);
+   end Push_General_Entity_In_Document_Content;
 
    ------------------------------
    -- Reset_Whitespace_Matched --
@@ -1050,37 +1093,42 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Token_String_Segment;
 
             when 47 =>
-               raise Program_Error with "Unexpected character in XML_DECL";
+               --  General entity reference rule [68] in document content.
+            
+               Process_General_Entity_Reference_In_Document_Content (Self, YY_Text (1, 1));
 
             when 48 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_DECL";
+               raise Program_Error with "Unexpected character in XML_DECL";
 
             when 49 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
+               raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 
             when 50 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_INT";
+               raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
             when 51 =>
+               raise Program_Error with "Unexpected character in DOCTYPE_INT";
+
+            when 52 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
-            when 52 =>
+            when 53 =>
                raise Program_Error with "Unexpected character in ENTITY_DECL";
 
-            when 53 =>
+            when 54 =>
                raise Program_Error with "Unexpected character in ENTITY_DEF";
 
-            when 54 =>
+            when 55 =>
                raise Program_Error with "Unexpected character in ENTITY_NDATA";
 
-            when 55 =>
+            when 56 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 56 =>
+            when 57 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 57 =>
+            when 58 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 

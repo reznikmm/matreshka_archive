@@ -465,6 +465,12 @@ CHAR_NO_GREATER_RIGHT_SQUARE		[\u0001-\u003D\u003F-\u005C\u005E-\uD7FF\uE000-\uF
    return Token_String_Segment;
 }
 
+"&"{NAME}";" {
+   --  General entity reference rule [68] in document content.
+
+   Process_General_Entity_Reference_In_Document_Content (Self, YY_Text (1, 1));
+}
+
 <XML_DECL>. {
    raise Program_Error with "Unexpected character in XML_DECL";
 }
@@ -548,6 +554,10 @@ with League.Strings;
    Put_Line : access procedure (Item : League.Strings.Universal_String);
 
    procedure Process_General_Entity_Reference_In_Attribute_Value
+    (Self : access Integer;
+     Name : League.Strings.Universal_String) is separate;
+
+   procedure Process_General_Entity_Reference_In_Document_Content
     (Self : access Integer;
      Name : League.Strings.Universal_String) is separate;
 
