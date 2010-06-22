@@ -21,7 +21,6 @@
 %token Token_Equal
 %token Token_End_Open
 %token Token_Empty_Close
-%token Token_Char_Data
 
 %with League.Strings
 %with Matreshka.Internals.XML.Attributes;
@@ -287,7 +286,7 @@ content_item :
 {
    null;
 }
-  | Token_Char_Data
+  | Token_String_Segment
 {
    Process_Characters (Self, $1.String, $1.Is_Whitespace);
 }

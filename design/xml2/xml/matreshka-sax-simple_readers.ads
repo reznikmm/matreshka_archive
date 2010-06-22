@@ -98,8 +98,7 @@ private
      Token_Element_Open,
      Token_Equal,
      Token_End_Open,
-     Token_Empty_Close,
-     Token_Char_Data);
+     Token_Empty_Close);
 
    type YYSType is record
       String        : League.Strings.Universal_String;

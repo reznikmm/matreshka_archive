@@ -235,9 +235,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       end case;
 
       --  XXX Character reference must be resolved into valid XML character.
+      --  XXX Whitespace must be detected.
 
       Self.YYLVal :=
-       (String => League.Strings.To_Universal_String (S), others => <>);
+       (String        => League.Strings.To_Universal_String (S),
+        Is_Whitespace => False,
+        others        => <>);
 
       return Token_String_Segment;
    end Process_Character_Reference;

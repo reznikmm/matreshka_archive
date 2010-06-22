@@ -281,15 +281,15 @@ CHAR_NO_AMPERSAND_LESS_GREATER_LEFT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D\u00
 }
 
 <ENTITY_VALUE,ATTRIBUTE_VALUE>"&#"[0-9]+";" {
-   --  Decimal form of character reference rule [66] in entity value rule [9]
-   --  or attribute value, rule [10].
+   --  Decimal form of character reference rule [66] in entity value rule [9];
+   --  attribute value, rule [10] or content of element, rule [43].
 
    return Process_Character_Reference (Self, Decimal, YY_Text (2, 1));
 }
 
 <ENTITY_VALUE,ATTRIBUTE_VALUE>"&#x"[0-9a-fA-F]+";" {
    --  Hexadecimal form of character reference rule [66] in entity value rule
-   --  [9] or attribute value, rule [10].
+   --  [9]; attribute value, rule [10] or content of element, rule [43].
 
    return Process_Character_Reference (Self, Hexadecimal, YY_Text (3, 1));
 }
@@ -437,7 +437,7 @@ CHAR_NO_AMPERSAND_LESS_GREATER_LEFT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D\u00
    --  Segment of whitespaces.
 
    if Process_Whitespace (Self, YY_Text) then
-      return Token_Char_Data;
+      return Token_String_Segment;
    end if;
 }
 
@@ -446,7 +446,7 @@ CHAR_NO_AMPERSAND_LESS_GREATER_LEFT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D\u00
 
    YYLVal := (String => YY_Text, Is_Whitespace => False, others => <>);
 
-   return Token_Char_Data;
+   return Token_String_Segment;
 }
 
 <XML_DECL>. {

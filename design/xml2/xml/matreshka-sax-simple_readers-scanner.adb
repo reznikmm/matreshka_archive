@@ -235,9 +235,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       end case;
 
       --  XXX Character reference must be resolved into valid XML character.
+      --  XXX Whitespace must be detected.
 
       Self.YYLVal :=
-       (String => League.Strings.To_Universal_String (S), others => <>);
+       (String        => League.Strings.To_Universal_String (S),
+        Is_Whitespace => False,
+        others        => <>);
 
       return Token_String_Segment;
    end Process_Character_Reference;
@@ -887,14 +890,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Process_Entity_Value_Close_Delimiter (Self, YY_Text);
 
             when 25 =>
-               --  Decimal form of character reference rule [66] in entity value rule [9]
-               --  or attribute value, rule [10].
+               --  Decimal form of character reference rule [66] in entity value rule [9];
+               --  attribute value, rule [10] or content of element, rule [43].
             
                return Process_Character_Reference (Self, Decimal, YY_Text (2, 1));
 
             when 26 =>
                --  Hexadecimal form of character reference rule [66] in entity value rule
-               --  [9] or attribute value, rule [10].
+               --  [9]; attribute value, rule [10] or content of element, rule [43].
             
                return Process_Character_Reference (Self, Hexadecimal, YY_Text (3, 1));
 
@@ -1020,7 +1023,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Segment of whitespaces.
             
                if Process_Whitespace (Self, YY_Text) then
-                  return Token_Char_Data;
+                  return Token_String_Segment;
                end if;
 
             when 45 =>
@@ -1028,7 +1031,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                YYLVal := (String => YY_Text, Is_Whitespace => False, others => <>);
             
-               return Token_Char_Data;
+               return Token_String_Segment;
 
             when 46 =>
                raise Program_Error with "Unexpected character in XML_DECL";
