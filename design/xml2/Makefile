@@ -7,7 +7,7 @@ SCANNER_TRANSFORMER = ../../../tools/scanner_transformer/scanner_transformer
 
 all:
 	gprbuild -p -P demo.gpr
-	.objs/demo my.xml
+#	./demo my.xml
 
 gen: .gens
 	cd .gens && $(AYACC) ../xml_parser.y
