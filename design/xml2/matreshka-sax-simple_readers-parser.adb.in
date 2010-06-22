@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 with Matreshka.SAX.Attributes.Internals;
-with Matreshka.SAX.Simple_Readers.Callbacks;
+with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 with Matreshka.SAX.Simple_Readers.Parser.Tables;
 with Matreshka.SAX.Simple_Readers.Scanner;
 
@@ -165,10 +165,10 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Is_Whitespace : Boolean) is
    begin
       if Is_Whitespace then
-         Callbacks.Call_Ignorable_Whitespace (Self, Text);
+         Handler_Callbacks.Call_Ignorable_Whitespace (Self, Text);
 
       else
-         Callbacks.Call_Characters (Self, Text);
+         Handler_Callbacks.Call_Characters (Self, Text);
       end if;
    end Process_Characters;
 
@@ -180,7 +180,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
     (Self    : not null access SAX_Simple_Reader'Class;
      Comment : League.Strings.Universal_String) is
    begin
-      Callbacks.Call_Comment (Self, Comment);
+      Handler_Callbacks.Call_Comment (Self, Comment);
    end Process_Comment;
 
    ---------------------------------------
@@ -234,7 +234,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
            with "name of end tag doesn't match name of start tag";
       end if;
 
-      Callbacks.Call_End_Element
+      Handler_Callbacks.Call_End_Element
        (Self,
         League.Strings.To_Universal_String (""),
         Name,
@@ -270,17 +270,17 @@ package body Matreshka.SAX.Simple_Readers.Parser is
          --  XXX Not implemented, just insert empty string for now.
 
          if Notation.Is_Empty then
-            Callbacks.Call_External_Entity_Decl
+            Handler_Callbacks.Call_External_Entity_Decl
              (Self, Name, Public_Id, System_Id);
 
          else
-            Callbacks.Call_Unparsed_Entity_Decl
+            Handler_Callbacks.Call_Unparsed_Entity_Decl
              (Self, Name, Public_Id, System_Id, Notation);
          end if;
 
       else
          Self.General_Entities.Insert (Name, Value);
-         Callbacks.Call_Internal_Entity_Decl (Self, Name, Value);
+         Handler_Callbacks.Call_Internal_Entity_Decl (Self, Name, Value);
       end if;
    end Process_General_Entity_Declaration;
 
@@ -316,7 +316,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Target : League.Strings.Universal_String;
      Data   : League.Strings.Universal_String) is
    begin
-      Callbacks.Call_Processing_Instruction (Self, Target, Data);
+      Handler_Callbacks.Call_Processing_Instruction (Self, Target, Data);
    end Process_Processing_Instruction;
 
    -----------------------
@@ -338,7 +338,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       end if;
 
       Self.Element_Names.Append (Name);
-      Callbacks.Call_Start_Element
+      Handler_Callbacks.Call_Start_Element
        (Self           => Self,
         Namespace_URI  => League.Strings.To_Universal_String (""),
         Local_Name     => Name,

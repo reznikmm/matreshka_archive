@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Exceptions;
 
-package body Matreshka.SAX.Simple_Readers.Callbacks is
+package body Matreshka.SAX.Simple_Readers.Handler_Callbacks is
 
    ---------------------
    -- Call_Characters --
@@ -269,4 +269,4 @@ package body Matreshka.SAX.Simple_Readers.Callbacks is
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_Unparsed_Entity_Decl;
 
-end Matreshka.SAX.Simple_Readers.Callbacks;
+end Matreshka.SAX.Simple_Readers.Handler_Callbacks;
