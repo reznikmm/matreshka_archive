@@ -16,7 +16,10 @@ begin
       Get_Line (File, Buffer, Last);
       Result.Append
        (League.Strings.To_Universal_String (Buffer (1 .. Last)));
-      Result.Append (Ada.Characters.Wide_Wide_Latin_1.LF);
+
+      if End_Of_Line (File) then
+         Result.Append (Ada.Characters.Wide_Wide_Latin_1.LF);
+      end if;
    end loop;
 
    Close (File);
