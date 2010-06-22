@@ -280,14 +280,14 @@ CHAR_NO_AMPERSAND_LESS_GREATER_LEFT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D\u00
    return Process_Entity_Value_Close_Delimiter (Self, YY_Text);
 }
 
-<ENTITY_VALUE,ATTRIBUTE_VALUE>"&#"[0-9]+";" {
+<INITIAL,ENTITY_VALUE,ATTRIBUTE_VALUE>"&#"[0-9]+";" {
    --  Decimal form of character reference rule [66] in entity value rule [9];
    --  attribute value, rule [10] or content of element, rule [43].
 
    return Process_Character_Reference (Self, Decimal, YY_Text (2, 1));
 }
 
-<ENTITY_VALUE,ATTRIBUTE_VALUE>"&#x"[0-9a-fA-F]+";" {
+<INITIAL,ENTITY_VALUE,ATTRIBUTE_VALUE>"&#x"[0-9a-fA-F]+";" {
    --  Hexadecimal form of character reference rule [66] in entity value rule
    --  [9]; attribute value, rule [10] or content of element, rule [43].
 
