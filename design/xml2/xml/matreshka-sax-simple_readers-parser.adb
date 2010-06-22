@@ -675,16 +675,10 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Process_Characters (Self, yy.value_stack (yy.tos).String, yy.value_stack (yy.tos).Is_Whitespace);
 
             when 38 =>
-               yyval := yy.value_stack (yy.tos-1);
-               Matreshka.SAX.Attributes.Internals.Append
-                (Self           => yyval.Attributes,
-                 Namespace_URI  => yy.value_stack (yy.tos).Attribute.Namespace_URI,
-                 Local_Name     => yy.value_stack (yy.tos).Attribute.Local_Name,
-                 Qualified_Name => yy.value_stack (yy.tos).Attribute.Qualified_Name,
-                 Value          => yy.value_stack (yy.tos).Attribute.Value);
+               Process_Comment (Self, yy.value_stack (yy.tos).String);
 
             when 39 =>
-               yyval := (others => <>);
+               yyval := yy.value_stack (yy.tos-1);
                Matreshka.SAX.Attributes.Internals.Append
                 (Self           => yyval.Attributes,
                  Namespace_URI  => yy.value_stack (yy.tos).Attribute.Namespace_URI,
@@ -694,8 +688,17 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
             when 40 =>
                yyval := (others => <>);
+               Matreshka.SAX.Attributes.Internals.Append
+                (Self           => yyval.Attributes,
+                 Namespace_URI  => yy.value_stack (yy.tos).Attribute.Namespace_URI,
+                 Local_Name     => yy.value_stack (yy.tos).Attribute.Local_Name,
+                 Qualified_Name => yy.value_stack (yy.tos).Attribute.Qualified_Name,
+                 Value          => yy.value_stack (yy.tos).Attribute.Value);
 
             when 41 =>
+               yyval := (others => <>);
+
+            when 42 =>
                yyval :=
                 (Attribute =>
                   (Qualified_Name => yy.value_stack (yy.tos-2).String,
@@ -703,7 +706,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                    others         => <>),
                  others    => <>);
 
-            when 42 =>
+            when 43 =>
                null;
                when others =>
                   raise Program_Error

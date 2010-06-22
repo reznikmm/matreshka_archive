@@ -290,6 +290,10 @@ content_item :
 {
    Process_Characters (Self, $1.String, $1.Is_Whitespace);
 }
+  | Token_Comment
+{
+   Process_Comment (Self, $1.String);
+}
   ;
 
 Attribute_Any :

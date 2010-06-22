@@ -165,7 +165,7 @@ CHAR_NO_AMPERSAND_LESS_GREATER_LEFT_SQUARE	[\u0001-\u0025\u0027-\u003B\u003D\u00
    return Token_Internal_Subset_Close;
 }
 
-<DOCTYPE_INTSUBSET>"<!--"({CHAR_NO_HYPHEN}|-{CHAR_NO_HYPHEN})*"-->" {
+<INITIAL,DOCTYPE_INTSUBSET>"<!--"({CHAR_NO_HYPHEN}|-{CHAR_NO_HYPHEN})*"-->" {
    --  Text of comment, rule [15].
 
    YYLVal := (String => YY_Text (4, 3), others => <>);
