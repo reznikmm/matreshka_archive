@@ -489,6 +489,24 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       pragma Import (C, puts);
 
    begin
+      --  Register predefined entities.
+
+      Self.General_Entities.Insert
+       (League.Strings.To_Universal_String ("lt"),
+        League.Strings.To_Universal_String ("&#60;"));
+      Self.General_Entities.Insert
+       (League.Strings.To_Universal_String ("gt"),
+        League.Strings.To_Universal_String (">"));
+      Self.General_Entities.Insert
+       (League.Strings.To_Universal_String ("amp"),
+        League.Strings.To_Universal_String ("&#38;"));
+      Self.General_Entities.Insert
+       (League.Strings.To_Universal_String ("apos"),
+        League.Strings.To_Universal_String ("'"));
+      Self.General_Entities.Insert
+       (League.Strings.To_Universal_String ("quot"),
+        League.Strings.To_Universal_String (""""));
+
       --  Initialize by pushing state 0 and getting the first input symbol.
 
       YY.TOS := 0;
