@@ -67,6 +67,57 @@ package Matreshka.SAX.Simple_Readers is
 
    Put_Line : access procedure (Item : League.Strings.Universal_String);
 
+   --  XXX GNAT GPL 2009: These subprograms can be declared in the private
+   --  part of the package to make public part clean.
+
+   overriding function Content_Handler
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_Content_Handler_Access;
+
+   overriding function Decl_Handler
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_Decl_Handler_Access;
+
+   overriding function DTD_Handler
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_DTD_Handler_Access;
+
+   overriding function Entity_Resolver
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_Entity_Resolver_Access;
+
+   overriding function Error_Handler
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_Error_Handler_Access;
+
+   overriding function Lexical_Handler
+    (Self : not null access constant SAX_Simple_Reader)
+       return Matreshka.SAX.Readers.SAX_Lexical_Handler_Access;
+
+   overriding procedure Set_Content_Handler
+    (Self    : not null access SAX_Simple_Reader;
+     Handler : Matreshka.SAX.Readers.SAX_Content_Handler_Access);
+
+   overriding procedure Set_Decl_Handler
+    (Self    : not null access SAX_Simple_Reader;
+     Handler : Matreshka.SAX.Readers.SAX_Decl_Handler_Access);
+
+   overriding procedure Set_DTD_Handler
+    (Self    : not null access SAX_Simple_Reader;
+     Handler : Matreshka.SAX.Readers.SAX_DTD_Handler_Access);
+
+   overriding procedure Set_Entity_Resolver
+    (Self     : not null access SAX_Simple_Reader;
+     Resolver : Matreshka.SAX.Readers.SAX_Entity_Resolver_Access);
+
+   overriding procedure Set_Error_Handler
+    (Self    : not null access SAX_Simple_Reader;
+     Handler : Matreshka.SAX.Readers.SAX_Error_Handler_Access);
+
+   overriding procedure Set_Lexical_Handler
+    (Self    : not null access SAX_Simple_Reader;
+     Handler : Matreshka.SAX.Readers.SAX_Lexical_Handler_Access);
+
 private
 
    use type League.Strings.Universal_String;
@@ -201,52 +252,52 @@ private
       --  Catched exception from the user defined handler.
    end record;
 
-   overriding function Content_Handler
-    (Self : not null access constant SAX_Simple_Reader)
-       return Matreshka.SAX.Readers.SAX_Content_Handler_Access;
-
-   overriding function Decl_Handler
-    (Self : not null access constant SAX_Simple_Reader)
-       return Matreshka.SAX.Readers.SAX_Decl_Handler_Access;
-
-   overriding function DTD_Handler
-    (Self : not null access constant SAX_Simple_Reader)
-       return Matreshka.SAX.Readers.SAX_DTD_Handler_Access;
-
-   overriding function Entity_Resolver
-    (Self : not null access constant SAX_Simple_Reader)
-       return Matreshka.SAX.Readers.SAX_Entity_Resolver_Access;
-
-   overriding function Error_Handler
-    (Self : not null access constant SAX_Simple_Reader)
-       return Matreshka.SAX.Readers.SAX_Error_Handler_Access;
-
-   overriding function Lexical_Handler
-    (Self : not null access constant SAX_Simple_Reader)
-       return Matreshka.SAX.Readers.SAX_Lexical_Handler_Access;
-
-   overriding procedure Set_Content_Handler
-    (Self    : not null access SAX_Simple_Reader;
-     Handler : Matreshka.SAX.Readers.SAX_Content_Handler_Access);
-
-   overriding procedure Set_Decl_Handler
-    (Self    : not null access SAX_Simple_Reader;
-     Handler : Matreshka.SAX.Readers.SAX_Decl_Handler_Access);
-
-   overriding procedure Set_DTD_Handler
-    (Self    : not null access SAX_Simple_Reader;
-     Handler : Matreshka.SAX.Readers.SAX_DTD_Handler_Access);
-
-   overriding procedure Set_Entity_Resolver
-    (Self     : not null access SAX_Simple_Reader;
-     Resolver : Matreshka.SAX.Readers.SAX_Entity_Resolver_Access);
-
-   overriding procedure Set_Error_Handler
-    (Self    : not null access SAX_Simple_Reader;
-     Handler : Matreshka.SAX.Readers.SAX_Error_Handler_Access);
-
-   overriding procedure Set_Lexical_Handler
-    (Self    : not null access SAX_Simple_Reader;
-     Handler : Matreshka.SAX.Readers.SAX_Lexical_Handler_Access);
+--   overriding function Content_Handler
+--    (Self : not null access constant SAX_Simple_Reader)
+--       return Matreshka.SAX.Readers.SAX_Content_Handler_Access;
+--
+--   overriding function Decl_Handler
+--    (Self : not null access constant SAX_Simple_Reader)
+--       return Matreshka.SAX.Readers.SAX_Decl_Handler_Access;
+--
+--   overriding function DTD_Handler
+--    (Self : not null access constant SAX_Simple_Reader)
+--       return Matreshka.SAX.Readers.SAX_DTD_Handler_Access;
+--
+--   overriding function Entity_Resolver
+--    (Self : not null access constant SAX_Simple_Reader)
+--       return Matreshka.SAX.Readers.SAX_Entity_Resolver_Access;
+--
+--   overriding function Error_Handler
+--    (Self : not null access constant SAX_Simple_Reader)
+--       return Matreshka.SAX.Readers.SAX_Error_Handler_Access;
+--
+--   overriding function Lexical_Handler
+--    (Self : not null access constant SAX_Simple_Reader)
+--       return Matreshka.SAX.Readers.SAX_Lexical_Handler_Access;
+--
+--   overriding procedure Set_Content_Handler
+--    (Self    : not null access SAX_Simple_Reader;
+--     Handler : Matreshka.SAX.Readers.SAX_Content_Handler_Access);
+--
+--   overriding procedure Set_Decl_Handler
+--    (Self    : not null access SAX_Simple_Reader;
+--     Handler : Matreshka.SAX.Readers.SAX_Decl_Handler_Access);
+--
+--   overriding procedure Set_DTD_Handler
+--    (Self    : not null access SAX_Simple_Reader;
+--     Handler : Matreshka.SAX.Readers.SAX_DTD_Handler_Access);
+--
+--   overriding procedure Set_Entity_Resolver
+--    (Self     : not null access SAX_Simple_Reader;
+--     Resolver : Matreshka.SAX.Readers.SAX_Entity_Resolver_Access);
+--
+--   overriding procedure Set_Error_Handler
+--    (Self    : not null access SAX_Simple_Reader;
+--     Handler : Matreshka.SAX.Readers.SAX_Error_Handler_Access);
+--
+--   overriding procedure Set_Lexical_Handler
+--    (Self    : not null access SAX_Simple_Reader;
+--     Handler : Matreshka.SAX.Readers.SAX_Lexical_Handler_Access);
 
 end Matreshka.SAX.Simple_Readers;
