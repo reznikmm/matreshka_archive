@@ -581,6 +581,18 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 11 =>
+               null;
+
+            when 12 =>
+               Process_Comment (Self, yy.value_stack (yy.tos).String);
+
+            when 13 =>
+               null;
+
+            when 14 =>
+               null;
+
+            when 15 =>
                --  Document type declaration, rule [28]. Once external identifier are
                --  recognized external document type declaration subset need to be parsed 
                --  before processing of internal subset. External subset is inserted
@@ -594,47 +606,35 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  yy.value_stack (yy.tos).Public_Id,
                  yy.value_stack (yy.tos).System_Id);
 
-            when 12 =>
+            when 16 =>
                null;
 
-            when 13 =>
+            when 17 =>
                yyval :=
                 (Is_External => True,
                  Public_Id   => yy.value_stack (yy.tos).Public_Id,
                  System_Id   => yy.value_stack (yy.tos).System_Id,
                  others      => <>);
 
-            when 14 =>
+            when 18 =>
                yyval :=
                 (Is_External => False,
                  others      => <>);
 
-            when 15 =>
+            when 19 =>
                --  ExternalID specified by SYSTEM, rule [75].
             
                yyval :=
                 (System_Id => yy.value_stack (yy.tos).String,
                  others    => <>);
 
-            when 16 =>
+            when 20 =>
                --  ExternalID specified by PUBLIC, rule [75].
             
                yyval :=
                 (Public_Id => yy.value_stack (yy.tos-1).String,
                  System_Id => yy.value_stack (yy.tos).String,
                  others    => <>);
-
-            when 17 =>
-               null;
-
-            when 18 =>
-               null;
-
-            when 19 =>
-               null;
-
-            when 20 =>
-               null;
 
             when 21 =>
                null;
@@ -646,9 +646,21 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 24 =>
-               Process_Comment (Self, yy.value_stack (yy.tos).String);
+               null;
 
             when 25 =>
+               null;
+
+            when 26 =>
+               null;
+
+            when 27 =>
+               null;
+
+            when 28 =>
+               Process_Comment (Self, yy.value_stack (yy.tos).String);
+
+            when 29 =>
                Process_General_Entity_Declaration
                 (Self,
                  yy.value_stack (yy.tos-2).String,
@@ -658,23 +670,23 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  yy.value_stack (yy.tos-1).System_Id,
                  yy.value_stack (yy.tos-1).Notation);
 
-            when 26 =>
+            when 30 =>
                Process_Parameter_Entity_Declaration (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).String);
 
-            when 27 =>
+            when 31 =>
                yyval :=
                 (Is_External => False,
                  String      => yy.value_stack (yy.tos).String,
                  others      => <>);
 
-            when 28 =>
+            when 32 =>
                yyval :=
                 (Is_External => True,
                  Public_Id   => yy.value_stack (yy.tos).Public_Id,
                  System_Id   => yy.value_stack (yy.tos).System_Id,
                  others      => <>);
 
-            when 29 =>
+            when 33 =>
                yyval :=
                 (Is_External => True,
                  Public_Id   => yy.value_stack (yy.tos-2).Public_Id,
@@ -682,70 +694,70 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Notation    => yy.value_stack (yy.tos).String,
                  others      => <>);
 
-            when 30 =>
+            when 34 =>
                null;
 
-            when 31 =>
+            when 35 =>
                null;
 
-            when 32 =>
+            when 36 =>
                --  Entity value including surrounding delimiters.
             
                yyval.String := yy.value_stack (yy.tos-1).String;
 
-            when 33 =>
+            when 37 =>
                --  Additional string segment in entity value.
             
                yyval.String := yy.value_stack (yy.tos-1).String & yy.value_stack (yy.tos).String;
 
-            when 34 =>
+            when 38 =>
                --  Single string segment in entity value.
             
                yyval.String := yy.value_stack (yy.tos).String;
 
-            when 35 =>
+            when 39 =>
                yyval.String := League.Strings.To_Universal_String ("");
 
-            when 36 =>
+            when 40 =>
                Process_Start_Tag (Self, yy.value_stack (yy.tos-2).String);
 
-            when 37 =>
+            when 41 =>
                Process_End_Tag (Self, yy.value_stack (yy.tos-1).String);
 
-            when 38 =>
+            when 42 =>
                Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).String);
 
-            when 39 =>
-               null;
-
-            when 40 =>
-               null;
-
-            when 41 =>
-               null;
-
-            when 42 =>
-               null;
-
             when 43 =>
-               Process_Characters (Self, yy.value_stack (yy.tos).String, yy.value_stack (yy.tos).Is_Whitespace);
+               null;
 
             when 44 =>
-               Process_Comment (Self, yy.value_stack (yy.tos).String);
-
-            when 45 =>
-               Process_Attribute_In_Set (Self);
-
-            when 46 =>
-               Process_Attribute_In_Set (Self);
-
-            when 47 =>
                null;
 
+            when 45 =>
+               null;
+
+            when 46 =>
+               null;
+
+            when 47 =>
+               Process_Characters (Self, yy.value_stack (yy.tos).String, yy.value_stack (yy.tos).Is_Whitespace);
+
             when 48 =>
-               Process_Attribute (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos).String);
+               Process_Comment (Self, yy.value_stack (yy.tos).String);
 
             when 49 =>
+               Process_Attribute_In_Set (Self);
+
+            when 50 =>
+               Process_Attribute_In_Set (Self);
+
+            when 51 =>
+               null;
+
+            when 52 =>
+               Process_Attribute (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos).String);
+
+            when 53 =>
                null;
                when others =>
                   raise Program_Error

@@ -48,7 +48,7 @@
 %%
 
 --  XXX Not implemented.
-document:  XMLDecl_optional doctypedecl_optional element
+document:  XMLDecl_optional Misc_any doctypedecl_optional element Misc_any
 {
    null;
 }
@@ -94,8 +94,30 @@ SDDecl_optional :
 }
   ;
 
+Misc_any :
+    Misc_Any Misc
+{
+   null;
+}
+  | Misc
+{
+   null;
+}
+  |
+{
+   null;
+}
+  ;
+
+Misc :
+    Token_Comment
+{
+   Process_Comment (Self, $1.String);
+}
+  ;
+
 doctypedecl_optional:
-    doctypedecl
+    doctypedecl Misc_any
 {
    null;
 }
