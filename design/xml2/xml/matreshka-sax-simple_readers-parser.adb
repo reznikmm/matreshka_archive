@@ -82,9 +82,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    --  Process general entity declaration, rule [71].
 
    procedure Process_Parameter_Entity_Declaration
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String);
+    (Self        : not null access SAX_Simple_Reader'Class;
+     Name        : League.Strings.Universal_String;
+     Is_External : Boolean;
+     Value       : League.Strings.Universal_String;
+     Public_Id   : League.Strings.Universal_String;
+     System_Id   : League.Strings.Universal_String);
    --  Process parameter entity declaration, rule [72].
 
    procedure Process_Start_Tag
@@ -196,12 +199,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    begin
       Self.Root_Name := Name;
 
-      if Is_External then
-         Self.Entity_Resolver.Resolve_Entity
-          (Public_Id, System_Id, Self.External_Subset, Self.Continue);
-         Scanner.Push_External_Entity
-          (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
-      end if;
+--      if Is_External then
+--         Self.Entity_Resolver.Resolve_Entity
+--          (Public_Id, System_Id, Self.External_Subset, Self.Continue);
+--         Scanner.Push_External_Entity
+--          (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
+--      end if;
    end Process_Document_Type_Declaration;
 
    -------------------------------
@@ -256,7 +259,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Notation    : League.Strings.Universal_String)
    is
       use League.Strings;
-      use Universal_String_Maps;
+      use Entity_Information_Maps;
 
    begin
       if Self.General_Entities.Contains (Name) then
@@ -266,20 +269,47 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       end if;
 
       if Is_External then
-         Self.General_Entities.Insert (Name, Value);
-         --  XXX Not implemented, just insert empty string for now.
-
          if Notation.Is_Empty then
-            Handler_Callbacks.Call_External_Entity_Decl
-             (Self, Name, Public_Id, System_Id);
+            declare
+               V : League.Strings.Universal_String;
+               S : Boolean := True;
+
+            begin
+               Self.Entity_Resolver.Resolve_Entity
+                (Public_Id, System_Id, V, S);
+
+               if not S then
+                  raise Program_Error
+                    with "external parsed entity is not resolved";
+               end if;
+
+               Self.General_Entities.Insert
+                (Name,
+                 (Name   => Name,
+                  Kind   => External_Parsed_General,
+                  Value  => V,
+                  others => <>));
+               Handler_Callbacks.Call_External_Entity_Decl
+                (Self, Name, Public_Id, System_Id);
+            end;
 
          else
+            Self.General_Entities.Insert
+             (Name,
+              (Name   => Name,
+               Kind   => Unparsed,
+               others => <>));
             Handler_Callbacks.Call_Unparsed_Entity_Decl
              (Self, Name, Public_Id, System_Id, Notation);
          end if;
 
       else
-         Self.General_Entities.Insert (Name, Value);
+         Self.General_Entities.Insert
+          (Name,
+           (Name   => Name,
+            Kind   => Internal_General,
+            Value  => Value,
+            others => <>));
          Handler_Callbacks.Call_Internal_Entity_Decl (Self, Name, Value);
       end if;
    end Process_General_Entity_Declaration;
@@ -289,12 +319,15 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    ------------------------------------------
 
    procedure Process_Parameter_Entity_Declaration
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String)
+    (Self        : not null access SAX_Simple_Reader'Class;
+     Name        : League.Strings.Universal_String;
+     Is_External : Boolean;
+     Value       : League.Strings.Universal_String;
+     Public_Id   : League.Strings.Universal_String;
+     System_Id   : League.Strings.Universal_String)
    is
       use League.Strings;
-      use Universal_String_Maps;
+      use Entity_Information_Maps;
 
    begin
       if Self.Parameter_Entities.Contains (Name) then
@@ -303,8 +336,35 @@ package body Matreshka.SAX.Simple_Readers.Parser is
          --  at user option warning may be issued to application.
       end if;
 
-      Self.Parameter_Entities.Insert (Name, Value);
-      Put_Line ("PE: '" & Name & "' => '" & Value & "'");
+      if Is_External then
+         declare
+            V : League.Strings.Universal_String;
+            S : Boolean := True;
+
+         begin
+            Self.Entity_Resolver.Resolve_Entity (Public_Id, System_Id, V, S);
+
+            if not S then
+               raise Program_Error
+                 with "External parameter entity is not resolved";
+            end if;
+
+            Self.Parameter_Entities.Insert
+             (Name,
+              (Name   => Name,
+               Kind   => External_Parameter,
+               Value  => V,
+               others => <>));
+         end;
+
+      else
+         Self.Parameter_Entities.Insert
+          (Name,
+           (Name   => Name,
+            Kind   => Internal_Parameter,
+            Value  => Value,
+            others => <>));
+      end if;
    end Process_Parameter_Entity_Declaration;
 
    ------------------------------------
@@ -511,19 +571,34 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
       Self.General_Entities.Insert
        (League.Strings.To_Universal_String ("lt"),
-        League.Strings.To_Universal_String ("&#60;"));
+        (Name   => League.Strings.To_Universal_String ("lt"),
+         Kind   => Internal_General,
+         Value  => League.Strings.To_Universal_String ("&#60;"),
+         others => <>));
       Self.General_Entities.Insert
        (League.Strings.To_Universal_String ("gt"),
-        League.Strings.To_Universal_String (">"));
+        (Name   => League.Strings.To_Universal_String ("gt"),
+         Kind   => Internal_General,
+         Value  => League.Strings.To_Universal_String (">"),
+         others => <>));
       Self.General_Entities.Insert
        (League.Strings.To_Universal_String ("amp"),
-        League.Strings.To_Universal_String ("&#38;"));
+        (Name   => League.Strings.To_Universal_String ("amp"),
+         Kind   => Internal_General,
+         Value  => League.Strings.To_Universal_String ("&#38;"),
+         others => <>));
       Self.General_Entities.Insert
        (League.Strings.To_Universal_String ("apos"),
-        League.Strings.To_Universal_String ("'"));
+        (Name   => League.Strings.To_Universal_String ("apos"),
+         Kind   => Internal_General,
+         Value  => League.Strings.To_Universal_String ("'"),
+         others => <>));
       Self.General_Entities.Insert
        (League.Strings.To_Universal_String ("quot"),
-        League.Strings.To_Universal_String (""""));
+        (Name   => League.Strings.To_Universal_String ("quot"),
+         Kind   => Internal_General,
+         Value  => League.Strings.To_Universal_String (""""),
+         others => <>));
 
       --  Initialize by pushing state 0 and getting the first input symbol.
 
@@ -713,7 +788,13 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  yy.value_stack (yy.tos-1).Notation);
 
             when 32 =>
-               Process_Parameter_Entity_Declaration (Self, yy.value_stack (yy.tos-2).String, yy.value_stack (yy.tos-1).String);
+               Process_Parameter_Entity_Declaration
+                (Self,
+                 yy.value_stack (yy.tos-2).String,
+                 yy.value_stack (yy.tos-1).Is_External,
+                 yy.value_stack (yy.tos-1).String,
+                 yy.value_stack (yy.tos-2).Public_Id,
+                 yy.value_stack (yy.tos-2).System_Id);
 
             when 33 =>
                yyval :=

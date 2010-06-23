@@ -168,10 +168,31 @@ private
    function Hash
     (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
 
-   package Universal_String_Maps is
+   type Entity_Kinds is
+    (Internal_Parameter,
+     External_Parameter,
+     Internal_General,
+     External_Parsed_General,
+     Unparsed);
+
+   type Entity_Information is record
+      Name           : League.Strings.Universal_String;
+      Kind           : Entity_Kinds;
+      Value          : League.Strings.Universal_String;
+      Start_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+      Start_Index    : Positive := 1;
+   end record;
+
+--   package Universal_String_Maps is
+--     new Ada.Containers.Hashed_Maps
+--          (League.Strings.Universal_String,
+--           League.Strings.Universal_String,
+--           Hash,
+--           "=");
+   package Entity_Information_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           League.Strings.Universal_String,
+           Entity_Information,
            Hash,
            "=");
 
@@ -236,8 +257,8 @@ private
       --  example, '%' must be separated by whitespace from '<!ENTITY' and
       --  following name.
 
-      Parameter_Entities : Universal_String_Maps.Map;
-      General_Entities   : Universal_String_Maps.Map;
+      Parameter_Entities : Entity_Information_Maps.Map;
+      General_Entities   : Entity_Information_Maps.Map;
       Root_Name          : League.Strings.Universal_String;
       --  Name of the root element.
       External_Subset    : League.Strings.Universal_String;

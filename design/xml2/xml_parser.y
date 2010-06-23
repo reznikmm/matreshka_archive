@@ -256,7 +256,13 @@ EntityDecl:
 }
   | Token_Entity_Decl_Open Token_Percent Token_Name PEDef Token_Close
 {
-   Process_Parameter_Entity_Declaration (Self, $3.String, $4.String);
+   Process_Parameter_Entity_Declaration
+    (Self,
+     $3.String,
+     $4.Is_External,
+     $4.String,
+     $3.Public_Id,
+     $3.System_Id);
 }
   ;
 
@@ -442,9 +448,12 @@ with Matreshka.SAX.Attributes.Internals;
      Notation    : League.Strings.Universal_String) is separate;
 
    procedure Process_Parameter_Entity_Declaration
-    (Self  : access Integer;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String) is separate;
+    (Self        : access Integer;
+     Name        : League.Strings.Universal_String;
+     Is_External : Boolean;
+     Value       : League.Strings.Universal_String;
+     Public_Id   : League.Strings.Universal_String;
+     System_Id   : League.Strings.Universal_String) is separate;
 
    procedure Process_Start_Tag
     (Self : access Integer;

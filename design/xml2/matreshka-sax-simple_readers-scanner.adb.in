@@ -308,9 +308,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class;
      Name : League.Strings.Universal_String)
    is
-      use Universal_String_Maps;
+      use Entity_Information_Maps;
 
-      Position : constant Universal_String_Maps.Cursor
+      Position : constant Entity_Information_Maps.Cursor
         := Self.General_Entities.Find (Name);
 
    begin
@@ -319,7 +319,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
       else
          Push_General_Entity_In_Document_Content
-          (Self, League.Strings.Internals.Get_Shared (Element (Position)));
+          (Self,
+           League.Strings.Internals.Get_Shared (Element (Position).Value));
       end if;
    end Process_General_Entity_Reference_In_Document_Content;
 
@@ -331,9 +332,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class;
      Name : League.Strings.Universal_String)
    is
-      use Universal_String_Maps;
+      use Entity_Information_Maps;
 
-      Position : constant Universal_String_Maps.Cursor
+      Position : constant Entity_Information_Maps.Cursor
         := Self.General_Entities.Find (Name);
 
    begin
@@ -342,7 +343,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
       else
          Push_General_Entity_In_Attribute_Value
-          (Self, League.Strings.Internals.Get_Shared (Element (Position)));
+          (Self,
+           League.Strings.Internals.Get_Shared (Element (Position).Value));
       end if;
    end Process_General_Entity_Reference_In_Attribute_Value;
 
@@ -354,9 +356,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self  : not null access SAX_Simple_Reader'Class;
      Name  : League.Strings.Universal_String)
    is
-      use Universal_String_Maps;
+      use Entity_Information_Maps;
 
-      Position : constant Universal_String_Maps.Cursor
+      Position : constant Entity_Information_Maps.Cursor
         := Self.Parameter_Entities.Find (Name);
 
    begin
@@ -365,7 +367,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
       else
          Push_Parameter_Entity
-          (Self, League.Strings.Internals.Get_Shared (Element (Position)));
+          (Self,
+           League.Strings.Internals.Get_Shared (Element (Position).Value));
       end if;
    end Process_Parameter_Entity_Reference_In_Entity_Value;
 
