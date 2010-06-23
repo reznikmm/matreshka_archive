@@ -497,6 +497,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       YY_Last_Accepting_Index    : Positive;
       YY_Last_Accepting_State    : Integer;
       YY_Next_Position           : Utf16_String_Index;
+      YY_Next_Index              : Positive;
       YY_Last_Match_Position     : Utf16_String_Index;
       YY_Last_Match_Index        : Positive;
       YY_Last_Match_State        : Integer;
@@ -653,12 +654,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 --        -- current run.
          loop
             YY_Next_Position := Self.Scanner_State.YY_Current_Position;
+            YY_Next_Index    := Self.Scanner_State.YY_Current_Index;
 
             if YY_Next_Position < Self.Scanner_State.Data.Unused then
                Unchecked_Next
                 (Self.Scanner_State.Data.Value,
                  YY_Next_Position,
                  YY_Current_Code);
+               YY_Next_Index := YY_Next_Index + 1;
                YY_C :=
                  YY_EC_Base
                   (YY_Current_Code / 16#100#) (YY_Current_Code mod 16#100#);
@@ -707,8 +710,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
             YY_Current_State := YY_Nxt (YY_Base (YY_Current_State) + YY_C);
             Self.Scanner_State.YY_Current_Position := YY_Next_Position;
-            Self.Scanner_State.YY_Current_Index :=
-              Self.Scanner_State.YY_Current_Index + 1;
+            Self.Scanner_State.YY_Current_Index    := YY_Next_Index;
 
             exit when YY_Current_State = YY_Jam_State;
          end loop;
