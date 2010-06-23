@@ -154,12 +154,6 @@ private
       Start_Index    : Positive := 1;
    end record;
 
---   package Universal_String_Maps is
---     new Ada.Containers.Hashed_Maps
---          (League.Strings.Universal_String,
---           League.Strings.Universal_String,
---           Hash,
---           "=");
    package Entity_Information_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
