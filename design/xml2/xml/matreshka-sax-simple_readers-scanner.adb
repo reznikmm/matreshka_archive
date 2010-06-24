@@ -143,6 +143,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  Process segment of whitespaces. Returns True and sets YYLVal when
    --  document content analysis started, and return False otherwise.
 
+   function Process_XML_PI
+    (Self : not null access SAX_Simple_Reader'Class)
+       return Token;
+   --  Process start of XML declaration or text declaration.
+
    ---------------------------
    -- Enter_Start_Condition --
    ---------------------------
@@ -395,6 +400,20 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
          return True;
       end if;
    end Process_Whitespace;
+
+   --------------------
+   -- Process_XML_PI --
+   --------------------
+
+   function Process_XML_PI
+    (Self : not null access SAX_Simple_Reader'Class)
+       return Token is
+   begin
+      Enter_Start_Condition (Self, XML_DECL);
+      Reset_Whitespace_Matched (Self);
+
+      return Token_XML_Decl_Open;
+   end Process_XML_PI;
 
    --------------------------
    -- Push_External_Entity --
@@ -743,10 +762,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
 
             when 1 =>
-               Enter_Start_Condition (Self, XML_DECL);
-               Reset_Whitespace_Matched (Self);
+               --  Open of XML declaration or text declaration, rules [23], [77].
             
-               return Token_XML_Decl_Open;
+               return Process_XML_PI (Self);
 
             when 2 =>
                --  Open of processing instruction, rule [16]. Rule [17] is implemented

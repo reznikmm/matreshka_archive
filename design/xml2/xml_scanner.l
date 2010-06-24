@@ -124,10 +124,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 %%
 
 "<?xml" {
-   Enter_Start_Condition (Self, XML_DECL);
-   Reset_Whitespace_Matched (Self);
+   --  Open of XML declaration or text declaration, rules [23], [77].
 
-   return Token_XML_Decl_Open;
+   return Process_XML_PI (Self);
 }
 
 "<?"{NAME} {
@@ -730,3 +729,5 @@ with League.Strings;
    function Process_Whitespace
     (Self : access Integer;
      Text : League.Strings.Universal_String) return Boolean is separate;
+
+   function Process_XML_PI (Self : access Integer) return Token is separate;

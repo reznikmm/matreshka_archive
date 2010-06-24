@@ -73,6 +73,24 @@ XMLDecl :
 }
   ;
 
+TextDecl :
+    Token_Xml_Decl_Open VersionDecl_optional Token_Encoding Token_Equal Token_String_Segment Token_PI_Close
+{
+   null;
+}
+  ;
+
+VersionDecl_optional :
+    Token_Version Token_Equal Token_String_Segment
+{
+   null;
+}
+  |
+{
+   null;
+}
+  ;
+
 EncodingDecl_optional :
     Token_Encoding Token_Equal Token_String_Segment
 {
@@ -377,6 +395,12 @@ content_item :
 }
   | PI
 {
+   null;
+}
+  | TextDecl
+{
+   --  TextDecl come from substitution of external parsed entities.
+
    null;
 }
   ;
