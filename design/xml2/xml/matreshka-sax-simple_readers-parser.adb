@@ -713,12 +713,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Process_Processing_Instruction (Self, yy.value_stack (yy.tos-1).String, yy.value_stack (yy.tos).String);
 
             when 18 =>
-               null;
-
-            when 19 =>
-               null;
-
-            when 20 =>
                --  Document type declaration, rule [28]. Once external identifier are
                --  recognized external document type declaration subset need to be parsed 
                --  before processing of internal subset. External subset is inserted
@@ -731,6 +725,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  yy.value_stack (yy.tos).Is_External,
                  yy.value_stack (yy.tos).Public_Id,
                  yy.value_stack (yy.tos).System_Id);
+
+            when 19 =>
+               null;
+
+            when 20 =>
+               null;
 
             when 21 =>
                null;

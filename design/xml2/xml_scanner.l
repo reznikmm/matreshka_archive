@@ -104,7 +104,6 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 %x XML_DECL
 %x PI
 %x PI_DATA
-%x DOCTYPE_DECL
 %x DOCTYPE_EXTINT
 %x DOCTYPE_INT
 %x DOCTYPE_INTSUBSET
@@ -215,21 +214,14 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    return Token_PI_Close;
 }
 
-"<!DOCTYPE" {
-   --  Open tag of document type declaration, rule [28].
-
-   Enter_Start_Condition (Self, DOCTYPE_DECL);
-
-   return Token_Doctype_Decl_Open;
-}
-
-<DOCTYPE_DECL>{NAME} {
-   --  Name of root element type, rule [28].
+"<!DOCTYPE"{WHITE_SPACE}{NAME} {
+   --  Open tag of document type declaration and name of root element,
+   --  rule [28].
 
    Enter_Start_Condition (Self, DOCTYPE_EXTINT);
-   YYLVal := (String => YY_Text, others => <>);
+   YYLVal := (String => YY_Text (10, 0, True), others => <>);
 
-   return Token_Name;
+   return Token_Doctype_Decl_Open;
 }
 
 <DOCTYPE_EXTINT,DOCTYPE_INT>">" {
@@ -456,7 +448,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
 }
 
-<DOCTYPE_DECL,DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET,ENTITY_NDATA>{WHITE_SPACE} {
+<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET,ENTITY_NDATA>{WHITE_SPACE} {
    --  All white spaces from rules [28] are ignored.
    --  Whitespace before name in rule [76] is ignored.
 
@@ -571,10 +563,6 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    raise Program_Error with "Unexpected character in ATTRIBUTE_VALUE";
 }
 
---<DOCTYPE_DECL>"%"{NAME}";" {
---   return Token_PE_Reference;
---}
-
 {WHITE_SPACE} {
    --  Segment of whitespaces.
 
@@ -611,10 +599,6 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 
 <XML_DECL>. {
    raise Program_Error with "Unexpected character in XML_DECL";
-}
-
-<DOCTYPE_DECL>. {
-   raise Program_Error with "Unexpected character in DOCTYPE_DECL";
 }
 
 <DOCTYPE_EXTINT>. {
@@ -683,8 +667,9 @@ with League.Strings;
    procedure Reset_Whitespace_Matched (Self : access Integer) is separate;
 
    function YY_Text
-    (Trim_Left  : Natural := 0;
-     Trim_Right : Natural := 0)
+    (Trim_Left       : Natural := 0;
+     Trim_Right      : Natural := 0;
+     Trim_Whitespace : Boolean := False)
        return League.Strings.Universal_String is separate;
 
    Self     : access Integer;

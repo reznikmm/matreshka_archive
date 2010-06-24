@@ -526,8 +526,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       YYLVal                     : YYSType renames Self.YYLVal;
 
       function YY_Text
-       (Trim_Left  : Natural := 0;
-        Trim_Right : Natural := 0)
+       (Trim_Left       : Natural := 0;
+        Trim_Right      : Natural := 0;
+        Trim_Whitespace : Boolean := False)
           return League.Strings.Universal_String;
 
       -------------
@@ -535,15 +536,18 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       -------------
 
       function YY_Text
-       (Trim_Left  : Natural := 0;
-        Trim_Right : Natural := 0)
+       (Trim_Left       : Natural := 0;
+        Trim_Right      : Natural := 0;
+        Trim_Whitespace : Boolean := False)
           return League.Strings.Universal_String
       is
          FP : Utf16_String_Index := YY_Base_Position;
-         FI : constant Positive  := YY_Base_Index + Trim_Left;
+         FI : Positive           := YY_Base_Index + Trim_Left;
          LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
          LI : constant Positive
            := Self.Scanner_State.YY_Current_Index - Trim_Right;
+         C  : Code_Point;
+         FA : Utf16_String_Index;
 
       begin
 	 --  XXX Implementation covers all cases but not efficient, most times
@@ -553,6 +557,22 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
          for J in 1 .. Trim_Left loop
             Unchecked_Next (Self.Scanner_State.Data.Value, FP);
          end loop;
+
+         if Trim_Whitespace then
+            loop
+               FA := FP;
+               Unchecked_Next (Self.Scanner_State.Data.Value, FA, C);
+
+               exit when
+                 C /= 16#0020#
+                   and then C /= 16#0009#
+                   and then C /= 16#000D#
+                   and then C /= 16#000A#;
+
+               FP := FA;
+               FI := FI + 1;
+            end loop;
+         end if;
 
          for J in 1 .. Trim_Right loop
             Unchecked_Previous (Self.Scanner_State.Data.Value, LP);
@@ -845,28 +865,22 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Token_PI_Close;
 
             when 10 =>
-               --  Open tag of document type declaration, rule [28].
+               --  Open tag of document type declaration and name of root element,
+               --  rule [28].
             
-               Enter_Start_Condition (Self, DOCTYPE_DECL);
+               Enter_Start_Condition (Self, DOCTYPE_EXTINT);
+               YYLVal := (String => YY_Text (10, 0, True), others => <>);
             
                return Token_Doctype_Decl_Open;
 
             when 11 =>
-               --  Name of root element type, rule [28].
-            
-               Enter_Start_Condition (Self, DOCTYPE_EXTINT);
-               YYLVal := (String => YY_Text, others => <>);
-            
-               return Token_Name;
-
-            when 12 =>
                --  Close tag of document type declaration, rule [28].
             
                Enter_Start_Condition (Self, INITIAL);
             
                return Token_Close;
 
-            when 13 =>
+            when 12 =>
                --  Keyword SYSTEM, rule [75].
             
                Set_Continue_State (Self, DOCTYPE_INT);
@@ -875,7 +889,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_System;
 
-            when 14 =>
+            when 13 =>
                --  System literal, rule [11], used in rule [75].
             
                if not Get_Whitespace_Matched (Self) then
@@ -889,7 +903,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_System_Literal;
 
-            when 15 =>
+            when 14 =>
                --  Keyword PUBLIC, rule [75].
             
                Set_Continue_State (Self, DOCTYPE_INT);
@@ -898,7 +912,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Public;
 
-            when 16 =>
+            when 15 =>
                --  Public id literal, rule [12], used in rule [75].
             
                if not Get_Whitespace_Matched (Self) then
@@ -912,28 +926,28 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Public_Literal;
 
-            when 17 =>
+            when 16 =>
                --  Open of internal subset declaration, rule [28].
             
                Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
             
                return Token_Internal_Subset_Open;
 
-            when 18 =>
+            when 17 =>
                --  Close of internal subset declaration, rule [28].
             
                Enter_Start_Condition (Self, DOCTYPE_INT);
             
                return Token_Internal_Subset_Close;
 
-            when 19 =>
+            when 18 =>
                --  Text of comment, rule [15].
             
                YYLVal := (String => YY_Text (4, 3), others => <>);
             
                return Token_Comment;
 
-            when 20 =>
+            when 19 =>
                --  Open of entity declaration, rules [71], [72].
             
                Enter_Start_Condition (Self, ENTITY_DECL);
@@ -941,7 +955,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Entity_Decl_Open;
 
-            when 21 =>
+            when 20 =>
                --  Name in entity declaration, rules [71], [72].
             
                if not Get_Whitespace_Matched (Self) then
@@ -956,7 +970,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Name;
 
-            when 22 =>
+            when 21 =>
                --  Percent mark in parameter entity declaration, rule [72].
             
                if not Get_Whitespace_Matched (Self) then
@@ -969,19 +983,19 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Percent;
 
-            when 23 =>
+            when 22 =>
                --  Close token of entity declaration, rules [71], [72].
             
                Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
             
                return Token_Close;
 
-            when 24 =>
+            when 23 =>
                --  Entity value, rule [9].
             
                return Process_Entity_Value_Open_Delimiter (Self, YY_Text);
 
-            when 25 =>
+            when 24 =>
                --  Entity value as ExternalID, rule [75], used by rules [73], [74].
             
                Set_Continue_State (Self, ENTITY_DEF);
@@ -990,7 +1004,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_System;
 
-            when 26 =>
+            when 25 =>
                --  Entity value as ExternalID, rule [75], used by rules [73], [74].
             
                Set_Continue_State (Self, ENTITY_DEF);
@@ -999,7 +1013,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Public;
 
-            when 27 =>
+            when 26 =>
                --  NDATA keyword, rule [76].
             
                if not Get_Whitespace_Matched (Self) then
@@ -1011,7 +1025,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_NData;
 
-            when 28 =>
+            when 27 =>
                --  Name of NDATA, rule [76].
             
                Enter_Start_Condition (Self, ENTITY_DEF);
@@ -1019,36 +1033,36 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Name;
 
-            when 29 =>
+            when 28 =>
                YYLVal := (String => YY_Text, others => <>);
             
                return Token_String_Segment;
 
-            when 30 =>
+            when 29 =>
                --  Close of entity value, rule [9].
             
                return Process_Entity_Value_Close_Delimiter (Self, YY_Text);
 
-            when 31 =>
+            when 30 =>
                --  Decimal form of character reference rule [66] in entity value rule [9];
                --  attribute value, rule [10] or content of element, rule [43].
             
                return Process_Character_Reference (Self, Decimal, YY_Text (2, 1));
 
-            when 32 =>
+            when 31 =>
                --  Hexadecimal form of character reference rule [66] in entity value rule
                --  [9]; attribute value, rule [10] or content of element, rule [43].
             
                return Process_Character_Reference (Self, Hexadecimal, YY_Text (3, 1));
 
-            when 33 =>
+            when 32 =>
                --  General entity reference rule [68] in entity value rule [9].
             
                YYLVal := (String => YY_Text, others => <>);
             
                return Token_String_Segment;
 
-            when 34 =>
+            when 33 =>
                --  Parameter entity reference rule [69] in entity value rule [9].
                --
                --  Processing of parameter entity uses separate scanner's state, thus
@@ -1060,13 +1074,13 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
 
-            when 35 =>
+            when 34 =>
                --  All white spaces from rules [28] are ignored.
                --  Whitespace before name in rule [76] is ignored.
             
                null;
 
-            when 36 =>
+            when 35 =>
                --  White spaces in entity declaration are not optional, rules [71], [72],
                --  [75].
                --
@@ -1080,7 +1094,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Set_Whitespace_Matched (Self);
 
-            when 37 =>
+            when 36 =>
                --  Open of start tag, rule [40], or empty element, rule [44].
             
                YYLVal := (String => YY_Text (1, 0), others => <>);
@@ -1088,7 +1102,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Element_Open;
 
-            when 38 =>
+            when 37 =>
                --  Open of and tag, rule [42].
             
                YYLVal := (String => YY_Text (2, 0), others => <>);
@@ -1096,7 +1110,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_End_Open;
 
-            when 39 =>
+            when 38 =>
                --  Name of the attribute, rule [41].
             
                if not Get_Whitespace_Matched (Self) then
@@ -1108,74 +1122,74 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_Name;
 
-            when 40 =>
+            when 39 =>
                --  Equal sign as attribute's name value delimiter, rule [25] in rules [41],
                --  [24], [32], [80].
             
                return Token_Equal;
 
-            when 41 =>
+            when 40 =>
                --  Close of empty element tag, rule [44].
             
                Enter_Start_Condition (Self, INITIAL);
             
                return Token_Empty_Close;
 
-            when 42 =>
+            when 41 =>
                --  Close of tag, rule [40].
             
                Enter_Start_Condition (Self, INITIAL);
             
                return Token_Close;
 
-            when 43 =>
+            when 42 =>
                --  Open delimiter of attribute value, rule [10].
             
                return Process_Attribute_Value_Open_Delimiter (Self, YY_Text);
 
-            when 44 =>
+            when 43 =>
                --  Close delimiter of attribute value, rule [10].
             
                return Process_Attribute_Value_Close_Delimiter (Self, YY_Text);
 
-            when 45 =>
+            when 44 =>
                --  Value of attribute, rule [10].
             
                YYLVal := (String => YY_Text, others => <>);
             
                return Token_String_Segment;
 
-            when 46 =>
+            when 45 =>
                --  Less-than sign can't be used in the attribute value.
                --
                --  3.1 [WFC: No < in Attribute Values]
             
                raise Program_Error with "'<' can't be used in attribute value";
 
-            when 47 =>
+            when 46 =>
                --  General entity reference rule [68] in attribute value, rule [10].
             
                Process_General_Entity_Reference_In_Attribute_Value (Self, YY_Text (1, 1));
 
-            when 48 =>
+            when 47 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in ATTRIBUTE_VALUE";
 
-            when 49 =>
+            when 48 =>
                --  Segment of whitespaces.
             
                if Process_Whitespace (Self, YY_Text) then
                   return Token_String_Segment;
                end if;
 
-            when 50 =>
+            when 49 =>
                --  Segment of character data, rule [14].
             
                YYLVal := (String => YY_Text, Is_Whitespace => False, others => <>);
             
                return Token_String_Segment;
 
-            when 51 =>
+            when 50 =>
                --  Segment of CDATA, rules [18], [19], [20], [21].
             
                YYLVal :=
@@ -1186,43 +1200,40 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_String_Segment;
 
-            when 52 =>
+            when 51 =>
                --  General entity reference rule [68] in document content.
             
                Process_General_Entity_Reference_In_Document_Content (Self, YY_Text (1, 1));
 
-            when 53 =>
+            when 52 =>
                raise Program_Error with "Unexpected character in XML_DECL";
 
-            when 54 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_DECL";
-
-            when 55 =>
+            when 53 =>
                raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
-            when 56 =>
+            when 54 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INT";
 
-            when 57 =>
+            when 55 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
-            when 58 =>
+            when 56 =>
                raise Program_Error with "Unexpected character in ENTITY_DECL";
 
-            when 59 =>
+            when 57 =>
                raise Program_Error with "Unexpected character in ENTITY_DEF";
 
-            when 60 =>
+            when 58 =>
                raise Program_Error with "Unexpected character in ENTITY_NDATA";
 
-            when 61 =>
+            when 59 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 62 =>
+            when 60 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 63 =>
+            when 61 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in document";
 --            when YY_END_OF_BUFFER + INITIAL + 1 

@@ -147,18 +147,7 @@ PI :
   ;
 
 doctypedecl_optional:
-    doctypedecl Misc_any
-{
-   null;
-}
-  |
-{
-   null;
-}
-  ;
-
-doctypedecl:
-    Token_Doctype_Decl_Open Token_Name ExternalID_optional
+    Token_Doctype_Decl_Open ExternalID_optional
 {
    --  Document type declaration, rule [28]. Once external identifier are
    --  recognized external document type declaration subset need to be parsed 
@@ -168,12 +157,20 @@ doctypedecl:
 
    Process_Document_Type_Declaration
     (Self,
-     $2.String,
-     $3.Is_External,
-     $3.Public_Id,
-     $3.System_Id);
+     $1.String,
+     $2.Is_External,
+     $2.Public_Id,
+     $2.System_Id);
 }
-   external_subset_optional internal_subset_optional Token_Close
+    external_subset_optional internal_subset_optional Token_Close
+{
+   null;
+}
+    Misc_any
+{
+   null;
+}
+  |
 {
    null;
 }
