@@ -133,6 +133,7 @@ private
      Token_Pe_Reference,
      Token_Doctype_Decl_Open,
      Token_Entity_Decl_Open,
+     Token_Element_Decl_Open,
      Token_Close,
      Token_Name,
      Token_System,
@@ -153,7 +154,17 @@ private
      Token_Empty_Close,
      Token_Version,
      Token_Encoding,
-     Token_Standalone);
+     Token_Standalone,
+     Token_Empty,
+     Token_Any,
+     Token_Open_Parenthesis,
+     Token_Close_Parenthesis,
+     Token_Vertical_Bar,
+     Token_Comma,
+     Token_Question,
+     Token_Asterisk,
+     Token_Plus,
+     Token_Pcdata);
 
    type YYSType is record
       String        : League.Strings.Universal_String;

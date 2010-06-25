@@ -4,6 +4,7 @@
 %token Token_PE_Reference
 %token Token_Doctype_Decl_Open
 %token Token_Entity_Decl_Open
+%token Token_Element_Decl_Open
 %token Token_Close
 %token Token_Name
 %token Token_System
@@ -29,6 +30,16 @@
 %token Token_Version
 %token Token_Encoding
 %token Token_Standalone
+%token Token_Empty
+%token Token_Any
+%token Token_Open_Parenthesis
+%token Token_Close_Parenthesis
+%token Token_Vertical_Bar
+%token Token_Comma
+%token Token_Question
+%token Token_Asterisk
+%token Token_Plus
+%token Token_PCData
 
 %with League.Strings
 %with Matreshka.Internals.XML.Attributes;
@@ -251,6 +262,10 @@ intSubset:
 {
    null;
 }
+  | elementdecl
+{
+   null;
+}
   | Token_Comment
 {
    Process_Comment (Self, $1.String);
@@ -344,6 +359,180 @@ AttributeEntityValue_Content:
   |
 {
    $$.String := League.Strings.To_Universal_String ("");
+}
+  ;
+
+elementdecl:
+    Token_Element_Decl_Open contentspec Token_Close
+{
+   null;
+}
+  ;
+
+contentspec:
+    Token_Empty
+{
+   null;
+}
+  | Token_Any
+{
+   null;
+}
+  | Mixed
+{
+   null;
+}
+  | children
+{
+   null;
+}
+  ;
+
+children:
+    choice Token_Question
+{
+   null;
+}
+  | choice Token_Asterisk
+{
+   null;
+}
+  | choice Token_Plus
+{
+   null;
+}
+  | choice
+{
+   null;
+}
+  | seq Token_Question
+{
+   null;
+}
+  | seq Token_Asterisk
+{
+   null;
+}
+  | seq Token_Plus
+{
+   null;
+}
+  | seq
+{
+   null;
+}
+  ;
+
+choice:
+    Token_Open_Parenthesis cp choice_content Token_Close_Parenthesis
+{
+   null;
+}
+  ;
+
+seq:
+    Token_Open_Parenthesis seq_content Token_Close_Parenthesis
+{
+   null;
+}
+  ;
+
+choice_content:
+    choice_content Token_Vertical_Bar cp
+{
+   null;
+}
+  | cp
+{
+   null;
+}
+  ;
+
+seq_content:
+    seq_content Token_Comma cp
+{
+   null;
+}
+  | cp
+{
+   null;
+}
+  ;
+
+cp:
+    Token_Name Token_Question
+{
+   null;
+}
+  | Token_Name Token_Asterisk
+{
+   null;
+}
+  | Token_Name Token_Plus
+{
+   null;
+}
+  | Token_Name
+{
+   null;
+}
+  | choice Token_Question
+{
+   null;
+}
+  | choice Token_Asterisk
+{
+   null;
+}
+  | choice Token_Plus
+{
+   null;
+}
+  | choice
+{
+   null;
+}
+  | seq Token_Question
+{
+   null;
+}
+  | seq Token_Asterisk
+{
+   null;
+}
+  | seq Token_Plus
+{
+   null;
+}
+  | seq
+{
+   null;
+}
+  ;
+
+Mixed:
+    Token_Open_Parenthesis Token_PCData Mixed_content Token_Close_Parenthesis Token_Asterisk
+{
+   null;
+}
+  | Token_Open_Parenthesis Token_PCData Token_Close_Parenthesis
+{
+   null;
+}
+  ;
+
+Mixed_content:
+    Mixed_content Token_Name
+{
+   null;
+}
+  | Token_Name
+{
+   null;
+}
+  |
+{
+   null;
 }
   ;
 

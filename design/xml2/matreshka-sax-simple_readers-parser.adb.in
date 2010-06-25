@@ -199,12 +199,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    begin
       Self.Root_Name := Name;
 
---      if Is_External then
---         Self.Entity_Resolver.Resolve_Entity
---          (Public_Id, System_Id, Self.External_Subset, Self.Continue);
---         Scanner.Push_External_Entity
---          (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
---      end if;
+      if Is_External then
+         Self.Entity_Resolver.Resolve_Entity
+          (Public_Id, System_Id, Self.External_Subset, Self.Continue);
+         Scanner.Push_External_Entity
+          (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
+      end if;
    end Process_Document_Type_Declaration;
 
    -------------------------------

@@ -107,6 +107,8 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 %x DOCTYPE_EXTINT
 %x DOCTYPE_INT
 %x DOCTYPE_INTSUBSET
+%x ELEMENT_DECL
+%x ELEMENT_CHILDREN
 %x ENTITY_DECL
 %x ENTITY_DEF
 %x ENTITY_NDATA
@@ -315,6 +317,15 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    return Token_Entity_Decl_Open;
 }
 
+<DOCTYPE_INTSUBSET>"<!ELEMENT"{WHITE_SPACE}{NAME} {
+   --  Open of element declaration and name of the element, rule [45].
+
+   Enter_Start_Condition (Self, ELEMENT_DECL);
+   YYLVal := (String => YY_Text (10, 0, True), others => <>);
+
+   return Token_Element_Decl_Open;
+}
+
 <ENTITY_DECL>{NAME} {
    --  Name in entity declaration, rules [71], [72].
 
@@ -448,7 +459,79 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
 }
 
-<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET,ENTITY_NDATA>{WHITE_SPACE} {
+<ELEMENT_DECL>EMPTY {
+   --  EMPTY keyword, rule [46].
+
+   return Token_Empty;
+}
+
+<ELEMENT_DECL>ANY {
+   --  ANY keyword, rule [46].
+
+   return Token_Any;
+}
+
+<ELEMENT_DECL,ELEMENT_CHILDREN>"(" {
+   --  Open parenthesis, rules [49], [50], [51].
+
+   Enter_Start_Condition (Self, ELEMENT_CHILDREN);
+
+   return Token_Open_Parenthesis;
+}
+
+<ELEMENT_CHILDREN>")" {
+   --  Close parenthesis, rules [49], [50], [51].
+
+   return Token_Close_Parenthesis;
+}
+
+<ELEMENT_CHILDREN>"?" {
+   --  Question mark in rules [47], [48].
+
+   return Token_Question;
+}
+   
+<ELEMENT_CHILDREN>"*" {
+   --  Asterisk in rules [47], [48].
+
+   return Token_Asterisk;
+}
+   
+<ELEMENT_CHILDREN>"+" {
+   --  Plus sign in rules [47], [48].
+
+   return Token_Plus;
+}
+
+<ELEMENT_CHILDREN>"|" {
+   --  Vertual bar in rule [49].
+
+   return Token_Plus;
+}
+
+<ELEMENT_CHILDREN>"," {
+   --  Comma in rule [50].
+
+   return Token_Comma;
+}
+
+<ELEMENT_CHILDREN>{NAME} {
+   --  Name in element's children declaration, rules [48], [51].
+
+   YYLVal := (String => YY_Text, others => <>);
+
+   return Token_Name;
+}
+
+<ELEMENT_DECL,ELEMENT_CHILDREN>">" {
+   --  Close of element declaration, rule [45].
+
+   Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
+
+   return Token_Close;
+}
+
+<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET,ENTITY_NDATA,ELEMENT_DECL,ELEMENT_CHILDREN>{WHITE_SPACE} {
    --  All white spaces from rules [28] are ignored.
    --  Whitespace before name in rule [76] is ignored.
 
