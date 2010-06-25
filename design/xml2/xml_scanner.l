@@ -141,7 +141,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    --  Open of processing instruction, rule [16]. Rule [17] is implemented
    --  implicitly by ordering of open of XMLDecl and open of PI.
 
-   YYLVal := (String => YY_Text (2, 0), others => <>);
+   Resolve_Symbol (Self, 2, 0, False, YYLVal);
    Enter_Start_Condition (Self, PI);
    Reset_Whitespace_Matched (Self);
 
@@ -228,7 +228,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    --  rule [28].
 
    Enter_Start_Condition (Self, DOCTYPE_EXTINT);
-   YYLVal := (String => YY_Text (10, 0, True), others => <>);
+   Resolve_Symbol (Self, 10, 0, True, YYLVal);
 
    return Token_Doctype_Decl_Open;
 }
@@ -328,7 +328,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    --  Open of element declaration and name of the element, rule [45].
 
    Enter_Start_Condition (Self, ELEMENT_DECL);
-   YYLVal := (String => YY_Text (10, 0, True), others => <>);
+   Resolve_Symbol (Self, 10, 0, True, YYLVal);
 
    return Token_Element_Decl_Open;
 }
@@ -337,7 +337,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    --  Open of attribute list declaration, rule [52].
 
    Enter_Start_Condition (Self, ATTLIST_DECL);
-   YYLVal := (String => YY_Text (10, 0, True), others => <>);
+   Resolve_Symbol (Self, 10, 0, True, YYLVal);
 
    return Token_Attlist_Decl_Open;
 }
@@ -353,7 +353,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, ENTITY_DEF);
-   YYLVal := (String => YY_Text, others => <>);
+   Resolve_Symbol (Self, 0, 0, False, YYLVal);
 
    return Token_Name;
 }
@@ -423,7 +423,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    --  Name of NDATA, rule [76].
 
    Enter_Start_Condition (Self, ENTITY_DEF);
-   YYLVal := (String => YY_Text, others => <>);
+   Resolve_Symbol (Self, 0, 0, False, YYLVal);
 
    return Token_Name;
 }
@@ -540,7 +540,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ELEMENT_CHILDREN>{NAME} {
    --  Name in element's children declaration, rules [48], [51].
 
-   YYLVal := (String => YY_Text, others => <>);
+   Resolve_Symbol (Self, 0, 0, False, YYLVal);
 
    return Token_Name;
 }
@@ -557,7 +557,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ATTLIST_DECL>{NAME} {
    --  Name of the attribute, rule [53].
 
-   YYLVal := (String => YY_Text, others => <>);
+   Resolve_Symbol (Self, 0, 0, False, YYLVal);
    Enter_Start_Condition (Self, ATTLIST_TYPE);
 
    return Token_Name;
@@ -660,7 +660,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ATTLIST_TYPE>{NAME} {
    --  Name in the rule [58].
 
-   YYLVal := (String => YY_Text, others => <>);
+   Resolve_Symbol (Self, 0, 0, False, YYLVal);
 
    return Token_Name;
 }
@@ -707,7 +707,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 "<"{NAME} {
    --  Open of start tag, rule [40], or empty element, rule [44].
 
-   YYLVal := (String => YY_Text (1, 0), others => <>);
+   Resolve_Symbol (Self, 1, 0, False, YYLVal);
    Enter_Start_Condition (Self, ELEMENT_START);
 
    return Token_Element_Open;
@@ -716,7 +716,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 "</"{NAME} {
    --  Open of and tag, rule [42].
 
-   YYLVal := (String => YY_Text (2, 0), others => <>);
+   Resolve_Symbol (Self, 2, 0, False, YYLVal);
    Enter_Start_Condition (Self, ELEMENT_START);
 
    return Token_End_Open;
@@ -730,7 +730,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
       --  XXX It is recoverable error.
    end if;
 
-   YYLVal := (String => YY_Text, others => <>);
+   Resolve_Symbol (Self, 0, 0, False, YYLVal);
 
    return Token_Name;
 }
@@ -963,3 +963,10 @@ with League.Strings;
      Text : League.Strings.Universal_String) return Boolean is separate;
 
    function Process_XML_PI (Self : access Integer) return Token is separate;
+
+   procedure Resolve_Symbol
+    (Self            : access Integer;
+     Trim_Left       : Natural := 0;
+     Trim_Right      : Natural := 0;
+     Trim_Whitespace : Boolean := False;
+     YYLVal          : out YYSType) is separate;

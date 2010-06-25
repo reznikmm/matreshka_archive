@@ -149,6 +149,13 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
        return Token;
    --  Process start of XML declaration or text declaration.
 
+   procedure Resolve_Symbol
+    (Self            : not null access SAX_Simple_Reader'Class;
+     Trim_Left       : Natural := 0;
+     Trim_Right      : Natural := 0;
+     Trim_Whitespace : Boolean := False;
+     YYLVal          : out YYSType);
+
    ---------------------------
    -- Enter_Start_Condition --
    ---------------------------
@@ -484,6 +491,71 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Whitespace_Matched := False;
    end Reset_Whitespace_Matched;
 
+   --------------------
+   -- Resolve_Symbol --
+   --------------------
+
+   procedure Resolve_Symbol
+    (Self            : not null access SAX_Simple_Reader'Class;
+     Trim_Left       : Natural := 0;
+     Trim_Right      : Natural := 0;
+     Trim_Whitespace : Boolean := False;
+     YYLVal          : out YYSType)
+   is
+      FP : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
+      FI : Positive           := Self.Scanner_State.YY_Base_Index + Trim_Left;
+      LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
+      LI : constant Positive
+        := Self.Scanner_State.YY_Current_Index - Trim_Right;
+      C  : Code_Point;
+      FA : Utf16_String_Index;
+
+   begin
+	 --  XXX Implementation covers all cases but not efficient, most times
+	 --  (or always?) use of iteration is not needed - leading and trailing
+      --  code points belong to BMP.
+
+      for J in 1 .. Trim_Left loop
+         Unchecked_Next (Self.Scanner_State.Data.Value, FP);
+      end loop;
+
+      if Trim_Whitespace then
+         loop
+            FA := FP;
+            Unchecked_Next (Self.Scanner_State.Data.Value, FA, C);
+
+            exit when
+              C /= 16#0020#
+                and then C /= 16#0009#
+                and then C /= 16#000D#
+                and then C /= 16#000A#;
+
+            FP := FA;
+            FI := FI + 1;
+         end loop;
+      end if;
+
+      for J in 1 .. Trim_Right loop
+         Unchecked_Previous (Self.Scanner_State.Data.Value, LP);
+      end loop;
+
+--      YYLVal :=
+--       (String =>
+--          League.Strings.Internals.Create
+--            (Matreshka.Internals.Strings.Operations.Slice
+--              (Self.Scanner_State.Data, FP, LP - FP, LI - FI)),
+--        others => <>);
+
+      Matreshka.Internals.XML.Symbol_Tables.Insert
+       (Self.Symbols,
+        Self.Scanner_State.Data,
+        FP,
+        FI,
+        LP,
+        LI,
+        YYLVal.Symbol);
+   end Resolve_Symbol;
+
    ------------------------
    -- Set_Continue_State --
    ------------------------
@@ -513,8 +585,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Token
    is
       YY_Action                  : Integer;
-      YY_Base_Position           : Utf16_String_Index;
-      YY_Base_Index              : Positive;
       YY_C                       : Integer;
       YY_Current_State           : Integer;
       YY_Current_Code            : Code_Point;
@@ -544,8 +614,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
         Trim_Whitespace : Boolean := False)
           return League.Strings.Universal_String
       is
-         FP : Utf16_String_Index := YY_Base_Position;
-         FI : Positive           := YY_Base_Index + Trim_Left;
+         FP : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
+         FI : Positive
+           := Self.Scanner_State.YY_Base_Index + Trim_Left;
          LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
          LI : constant Positive
            := Self.Scanner_State.YY_Current_Index - Trim_Right;
@@ -688,8 +759,10 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
       loop  --  Loops until end-of-data is reached.
 --      yy_bp := yy_cp;
-         YY_Base_Position := Self.Scanner_State.YY_Current_Position;
-         YY_Base_Index    := Self.Scanner_State.YY_Current_Index;
+         Self.Scanner_State.YY_Base_Position :=
+           Self.Scanner_State.YY_Current_Position;
+         Self.Scanner_State.YY_Base_Index    :=
+           Self.Scanner_State.YY_Current_Index;
 --      yy_current_state := yy_start;
          YY_Current_State := Self.Scanner_State.YY_Start_State;
 --
@@ -793,7 +866,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Open of processing instruction, rule [16]. Rule [17] is implemented
                --  implicitly by ordering of open of XMLDecl and open of PI.
             
-               YYLVal := (String => YY_Text (2, 0), others => <>);
+               Resolve_Symbol (Self, 2, 0, False, YYLVal);
                Enter_Start_Condition (Self, PI);
                Reset_Whitespace_Matched (Self);
             
@@ -872,7 +945,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  rule [28].
             
                Enter_Start_Condition (Self, DOCTYPE_EXTINT);
-               YYLVal := (String => YY_Text (10, 0, True), others => <>);
+               Resolve_Symbol (Self, 10, 0, True, YYLVal);
             
                return Token_Doctype_Decl_Open;
 
@@ -962,7 +1035,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Open of element declaration and name of the element, rule [45].
             
                Enter_Start_Condition (Self, ELEMENT_DECL);
-               YYLVal := (String => YY_Text (10, 0, True), others => <>);
+               Resolve_Symbol (Self, 10, 0, True, YYLVal);
             
                return Token_Element_Decl_Open;
 
@@ -970,7 +1043,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Open of attribute list declaration, rule [52].
             
                Enter_Start_Condition (Self, ATTLIST_DECL);
-               YYLVal := (String => YY_Text (10, 0, True), others => <>);
+               Resolve_Symbol (Self, 10, 0, True, YYLVal);
             
                return Token_Attlist_Decl_Open;
 
@@ -985,7 +1058,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, ENTITY_DEF);
-               YYLVal := (String => YY_Text, others => <>);
+               Resolve_Symbol (Self, 0, 0, False, YYLVal);
             
                return Token_Name;
 
@@ -1048,7 +1121,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Name of NDATA, rule [76].
             
                Enter_Start_Condition (Self, ENTITY_DEF);
-               YYLVal := (String => YY_Text, others => <>);
+               Resolve_Symbol (Self, 0, 0, False, YYLVal);
             
                return Token_Name;
 
@@ -1148,7 +1221,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 46 =>
                --  Name in element's children declaration, rules [48], [51].
             
-               YYLVal := (String => YY_Text, others => <>);
+               Resolve_Symbol (Self, 0, 0, False, YYLVal);
             
                return Token_Name;
 
@@ -1163,7 +1236,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 48 =>
                --  Name of the attribute, rule [53].
             
-               YYLVal := (String => YY_Text, others => <>);
+               Resolve_Symbol (Self, 0, 0, False, YYLVal);
                Enter_Start_Condition (Self, ATTLIST_TYPE);
             
                return Token_Name;
@@ -1250,7 +1323,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 64 =>
                --  Name in the rule [58].
             
-               YYLVal := (String => YY_Text, others => <>);
+               Resolve_Symbol (Self, 0, 0, False, YYLVal);
             
                return Token_Name;
 
@@ -1292,7 +1365,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 69 =>
                --  Open of start tag, rule [40], or empty element, rule [44].
             
-               YYLVal := (String => YY_Text (1, 0), others => <>);
+               Resolve_Symbol (Self, 1, 0, False, YYLVal);
                Enter_Start_Condition (Self, ELEMENT_START);
             
                return Token_Element_Open;
@@ -1300,7 +1373,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 70 =>
                --  Open of and tag, rule [42].
             
-               YYLVal := (String => YY_Text (2, 0), others => <>);
+               Resolve_Symbol (Self, 2, 0, False, YYLVal);
                Enter_Start_Condition (Self, ELEMENT_START);
             
                return Token_End_Open;
@@ -1313,7 +1386,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                   --  XXX It is recoverable error.
                end if;
             
-               YYLVal := (String => YY_Text, others => <>);
+               Resolve_Symbol (Self, 0, 0, False, YYLVal);
             
                return Token_Name;
 

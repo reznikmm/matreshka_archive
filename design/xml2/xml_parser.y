@@ -56,11 +56,13 @@
 
 %with League.Strings
 %with Matreshka.Internals.XML.Attributes;
+%with Matreshka.Internals.XML.Symbol_Tables;
 %with Matreshka.SAX.Attributes;
 
 {
    type YYSType is record
       String        : League.Strings.Universal_String;
+      Symbol        : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
       Is_External   : Boolean;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
@@ -655,15 +657,15 @@ DefaultDecl:
 element :
     Token_Element_Open Attribute_Any Token_Close
 {
-   Process_Start_Tag (Self, $1.String);
+   Process_Start_Tag (Self, $1.Symbol);
 }
     content Token_End_Open Token_Close
 {
-   Process_End_Tag (Self, $6.String);
+   Process_End_Tag (Self, $6.Symbol);
 }
   | Token_Element_Open Attribute_Any Token_Empty_Close
 {
-   Process_Empty_Element_Tag (Self, $1.String);
+   Process_Empty_Element_Tag (Self, $1.Symbol);
 }
   ;
 
@@ -725,7 +727,7 @@ Attribute_Any :
 Attribute :
     Token_Name Token_Equal AttributeValue
 {
-   Process_Attribute (Self, $1.String, $3.String);
+   Process_Attribute (Self, $1.Symbol, $3.String);
 }
   ;
 
@@ -744,6 +746,7 @@ AttributeValue :
 with Ada.Wide_Wide_Text_IO;
 with League.Strings;
 with Matreshka.SAX.Attributes.Internals;
+with Matreshka.Internals.XML.Symbol_Tables;
 ##
    use type League.Strings.Universal_String;
 
@@ -782,16 +785,19 @@ with Matreshka.SAX.Attributes.Internals;
      System_Id   : League.Strings.Universal_String) is separate;
 
    procedure Process_Start_Tag
-    (Self : access Integer;
-     Name : League.Strings.Universal_String) is separate;
+    (Self   : access Integer;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+       is separate;
 
    procedure Process_End_Tag
-    (Self : access Integer;
-     Name : League.Strings.Universal_String) is separate;
+    (Self   : access Integer;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+       is separate;
 
    procedure Process_Empty_Element_Tag
-    (Self : access Integer;
-     Name : League.Strings.Universal_String) is separate;
+    (Self   : access Integer;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+       is separate;
 
    procedure Process_Characters
     (Self          : access Integer;
@@ -801,9 +807,9 @@ with Matreshka.SAX.Attributes.Internals;
    procedure Process_Attribute_In_Set (Self : access Integer) is separate;
 
    procedure Process_Attribute
-     (Self  : access Integer;
-      Name  : League.Strings.Universal_String;
-      Value : League.Strings.Universal_String) is separate;
+     (Self   : access Integer;
+      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+      Value  : League.Strings.Universal_String) is separate;
 
    procedure Process_Processing_Instruction
      (Self   : access Integer;

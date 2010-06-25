@@ -165,8 +165,10 @@ package body Matreshka.SAX.Simple_Readers is
     (Self : not null access SAX_Simple_Reader;
      Data : League.Strings.Universal_String) is
    begin
+      Matreshka.Internals.XML.Symbol_Tables.Initialize (Self.Symbols);
       Self.Scanner_State.Data := League.Strings.Internals.Get_Shared (Data);
       Parser.YYParse (Self);
+      Matreshka.Internals.XML.Symbol_Tables.Finalize (Self.Symbols);
       Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
    end Parse;
 

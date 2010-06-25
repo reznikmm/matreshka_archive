@@ -91,18 +91,18 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    --  Process parameter entity declaration, rule [72].
 
    procedure Process_Start_Tag
-    (Self : not null access SAX_Simple_Reader'Class;
-     Name : League.Strings.Universal_String);
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
    --  Process start tag, rule [40].
 
    procedure Process_End_Tag
-    (Self : not null access SAX_Simple_Reader'Class;
-     Name : League.Strings.Universal_String);
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
    --  Process end tag, rule [42].
 
    procedure Process_Empty_Element_Tag
-    (Self : not null access SAX_Simple_Reader'Class;
-     Name : League.Strings.Universal_String);
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
    --  Process start tag, rule [44].
 
    procedure Process_Characters
@@ -112,9 +112,9 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    --  Process segment of characters.
 
    procedure Process_Attribute
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String);
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Value  : League.Strings.Universal_String);
    --  Process attribute.
 
    procedure Process_Processing_Instruction
@@ -132,14 +132,16 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    -----------------------
 
    procedure Process_Attribute
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String) is
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Value  : League.Strings.Universal_String) is
    begin
       Self.Attribute :=
        (Namespace_URI  => League.Strings.To_Universal_String (""),
-        Local_Name     => Name,
-        Qualified_Name => Name,
+        Local_Name     =>
+          Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
+        Qualified_Name =>
+          Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
         Value          => Value);
    end Process_Attribute;
 
@@ -212,11 +214,11 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    -------------------------------
 
    procedure Process_Empty_Element_Tag
-    (Self : not null access SAX_Simple_Reader'Class;
-     Name : League.Strings.Universal_String) is
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
    begin
-      Process_Start_Tag (Self, Name);
-      Process_End_Tag (Self, Name);
+      Process_Start_Tag (Self, Symbol);
+      Process_End_Tag (Self, Symbol);
    end Process_Empty_Element_Tag;
 
    ---------------------
@@ -224,14 +226,23 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    ---------------------
 
    procedure Process_End_Tag
-    (Self : not null access SAX_Simple_Reader'Class;
-     Name : League.Strings.Universal_String) is
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+   is
+      use type Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+
    begin
-      if Self.Element_Names.Last_Element /= Name then
+      if Self.Element_Names.Last_Element /= Symbol then
          --  3 [WFC: Element Type Match]
    
          Put_Line
-          ("'" & Self.Element_Names.Last_Element & "' /= '" & Name & "'");
+          ("'"
+             & Matreshka.Internals.XML.Symbol_Tables.Name
+                (Self.Symbols, Self.Element_Names.Last_Element)
+             & "' /= '"
+             & Matreshka.Internals.XML.Symbol_Tables.Name
+                (Self.Symbols, Symbol)
+             & "'");
 
          raise Program_Error
            with "name of end tag doesn't match name of start tag";
@@ -240,8 +251,8 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       Handler_Callbacks.Call_End_Element
        (Self,
         League.Strings.To_Universal_String (""),
-        Name,
-        Name);
+        Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
+        Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol));
       Self.Element_Names.Delete_Last;
    end Process_End_Tag;
 
@@ -384,25 +395,31 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    -----------------------
 
    procedure Process_Start_Tag
-    (Self : not null access SAX_Simple_Reader'Class;
-     Name : League.Strings.Universal_String) is
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
    begin
       if Self.Element_Names.Is_Empty then
          --  Root element.
 
          if not Self.Root_Name.Is_Empty
-           and then Self.Root_Name /= Name
+--           and then Self.Root_Name /= Name
+--  XXX Must be replaced by symbol identifier compare operation.
+            and then Self.Root_Name
+                       /= Matreshka.Internals.XML.Symbol_Tables.Name
+                           (Self.Symbols, Symbol)
          then
             raise Program_Error with "Root element has wrong name";
          end if;
       end if;
 
-      Self.Element_Names.Append (Name);
+      Self.Element_Names.Append (Symbol);
       Handler_Callbacks.Call_Start_Element
        (Self           => Self,
         Namespace_URI  => League.Strings.To_Universal_String (""),
-        Local_Name     => Name,
-        Qualified_Name => Name,
+        Local_Name     =>
+          Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
+        Qualified_Name =>
+          Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
         Attributes     => Self.Attributes);
       Matreshka.SAX.Attributes.Internals.Clear (Self.Attributes);
    end Process_Start_Tag;

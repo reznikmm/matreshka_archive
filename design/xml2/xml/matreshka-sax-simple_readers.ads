@@ -51,6 +51,7 @@ private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
 private with Matreshka.Internals.XML.Attributes;
+private with Matreshka.Internals.XML.Symbol_Tables;
 private with Matreshka.SAX.Attributes;
 private with Matreshka.SAX.Default_Handlers;
 
@@ -181,6 +182,7 @@ private
 
    type YYSType is record
       String        : League.Strings.Universal_String;
+      Symbol        : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
       Is_External   : Boolean;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
@@ -214,11 +216,10 @@ private
            Hash,
            "=");
 
-   package Universal_String_Vectors is
-     new Ada.Containers.Vectors (Positive, League.Strings.Universal_String);
-
    type Scanner_State_Information is record
       Data                : Matreshka.Internals.Strings.Shared_String_Access;
+      YY_Base_Position    : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+      YY_Base_Index       : Positive := 1;
       YY_Current_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
       YY_Current_Index    : Positive := 1;
       YY_Start_State      : Integer  := 1;
@@ -236,6 +237,12 @@ private
 
    package Scanner_State_Vectors is
      new Ada.Containers.Vectors (Positive, Scanner_State_Information);
+
+   package Symbol_Identifier_Vectors is
+     new Ada.Containers.Vectors
+          (Positive,
+           Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier,
+           Matreshka.Internals.XML.Symbol_Tables."=");
 
    Default_Handler :
      aliased Matreshka.SAX.Default_Handlers.SAX_Default_Handler;
@@ -262,6 +269,7 @@ private
 
       Scanner_State      : Scanner_State_Information;
       Scanner_Stack      : Scanner_State_Vectors.Vector;
+      Symbols            : Matreshka.Internals.XML.Symbol_Tables.Symbol_Table;
 
       --  Parser state
 
@@ -284,7 +292,7 @@ private
       --  Contents of the external subset if any. This member used only to
       --  prevent deallocation of shared string before document parsing is
       --  completed.
-      Element_Names      : Universal_String_Vectors.Vector;
+      Element_Names      : Symbol_Identifier_Vectors.Vector;
       --  Stack of names of elements.
       Continue           : Boolean := True;
       --  Continue processing.
