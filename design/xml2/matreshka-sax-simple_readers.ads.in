@@ -221,6 +221,7 @@ private
       --  Used to check whether whitespace is used to separate tokens. For
       --  example, '%' must be separated by whitespace from '<!ENTITY' and
       --  following name.
+      In_DTD             : Boolean;
 
       Parameter_Entities : Entity_Information_Maps.Map;
       General_Entities   : Entity_Information_Maps.Map;

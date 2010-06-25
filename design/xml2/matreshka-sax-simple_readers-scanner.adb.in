@@ -99,7 +99,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    function Process_Attribute_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
-     Image : League.Strings.Universal_String) return Token;
+     Image : League.Strings.Universal_String;
+     State : Integer) return Token;
    --  Process open delimiter of attribute value.
 
    function Process_Attribute_Value_Close_Delimiter
@@ -198,7 +199,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
       else
          Reset_Whitespace_Matched (Self);
-         Enter_Start_Condition (Self, ELEMENT_START);
+         Enter_Start_Condition (Self, Self.Scanner_State.Continue_State);
 
          return Token_Value_Close;
       end if;
@@ -210,10 +211,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    function Process_Attribute_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
-     Image : League.Strings.Universal_String) return Token is
+     Image : League.Strings.Universal_String;
+     State : Integer) return Token is
    begin
       Self.Scanner_State.Delimiter :=
         Wide_Wide_Character'Pos (Image.Element (1));
+      Self.Scanner_State.Continue_State := State;
 
       Enter_Start_Condition (Self, ATTRIBUTE_VALUE);
 

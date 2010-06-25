@@ -63,6 +63,11 @@ WHITE_SPACE	[\u0020\u0009\u000D\u000A]+
 NAME		[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u10000-\uEFFFF][-.:0-9A-Z_a-z\u00B7\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u036F\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u203F-\u2040\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u10000-\uEFFFF]*
 
 --
+--  [7] Nmtoken ::= (NameChar)+
+--
+NMTOKEN		[-.:0-9A-Z_a-z\u00B7\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u036F\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u203F-\u2040\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u10000-\uEFFFF]+
+
+--
 --  [13] PubidChar ::= #x20 | #xD | #xA | [a-zA-Z0-9] | [-'()+,./:=?;!*#@$_%]
 --
 PUBID_CHAR			[-'()+,./:=?;!*#@$_%a-zA-Z0-9\u0020\u000D\u000A]
@@ -109,6 +114,8 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 %x DOCTYPE_INTSUBSET
 %x ELEMENT_DECL
 %x ELEMENT_CHILDREN
+%x ATTLIST_DECL
+%x ATTLIST_TYPE
 %x ENTITY_DECL
 %x ENTITY_DEF
 %x ENTITY_NDATA
@@ -326,6 +333,15 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    return Token_Element_Decl_Open;
 }
 
+<DOCTYPE_INTSUBSET>"<!ATTLIST"{WHITE_SPACE}{NAME} {
+   --  Open of attribute list declaration, rule [52].
+
+   Enter_Start_Condition (Self, ATTLIST_DECL);
+   YYLVal := (String => YY_Text (10, 0, True), others => <>);
+
+   return Token_Attlist_Decl_Open;
+}
+
 <ENTITY_DECL>{NAME} {
    --  Name in entity declaration, rules [71], [72].
 
@@ -504,15 +520,21 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 }
 
 <ELEMENT_CHILDREN>"|" {
-   --  Vertual bar in rule [49].
+   --  Vertical bar in rule [49].
 
-   return Token_Plus;
+   return Token_Vertical_Bar;
 }
 
 <ELEMENT_CHILDREN>"," {
    --  Comma in rule [50].
 
    return Token_Comma;
+}
+
+<ELEMENT_CHILDREN>"#PCDATA" {
+   --  #PCDATA in rule [51].
+
+   return Token_PCData;
 }
 
 <ELEMENT_CHILDREN>{NAME} {
@@ -523,15 +545,144 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    return Token_Name;
 }
 
-<ELEMENT_DECL,ELEMENT_CHILDREN>">" {
+<ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE>">" {
    --  Close of element declaration, rule [45].
+   --  Close of attribute list declaration, rule [52].
 
    Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
 
    return Token_Close;
 }
 
-<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET,ENTITY_NDATA,ELEMENT_DECL,ELEMENT_CHILDREN>{WHITE_SPACE} {
+<ATTLIST_DECL>{NAME} {
+   --  Name of the attribute, rule [53].
+
+   YYLVal := (String => YY_Text, others => <>);
+   Enter_Start_Condition (Self, ATTLIST_TYPE);
+
+   return Token_Name;
+}
+
+<ATTLIST_TYPE>"CDATA" {
+   --  CDATA keyword, rule [55].
+
+   return Token_CData;
+}
+
+<ATTLIST_TYPE>"ID" {
+   --  ID keyword, rule [56].
+
+   return Token_Id;
+}
+
+<ATTLIST_TYPE>"IDREF" {
+   --  IDREF keyword, rule [56].
+
+   return Token_IdRef;
+}
+
+<ATTLIST_TYPE>"IDREFS" {
+   --  IDREFS keyword, rule [56].
+
+   return Token_IdRefs;
+}
+
+<ATTLIST_TYPE>"ENTITY" {
+   --  ENTITY keyword, rule [56].
+
+   return Token_Entity;
+}
+
+<ATTLIST_TYPE>"ENTITIES" {
+   --  ENTITIES keyword, rule [56].
+
+   return Token_Entities;
+}
+
+<ATTLIST_TYPE>"NMTOKEN" {
+   --  NMTOKEN keyword, rule [56].
+
+   return Token_NmToken;
+}
+
+<ATTLIST_TYPE>"NMTOKENS" {
+   --  NMTOKENS keyword, rule [56].
+
+   return Token_NmTokens;
+}
+
+<ATTLIST_TYPE>"NOTATION" {
+   --  NOTATION keyword, rule [58].
+
+   return Token_Notation;
+}
+
+<ATTLIST_TYPE>"#REQUIRED" {
+   --  #REQUIRED keyword, rule [60].
+
+   Enter_Start_Condition (Self, ATTLIST_DECL);
+
+   return Token_Required;
+}
+
+<ATTLIST_TYPE>"#IMPLIED" {
+   --  #IMPLIED keyword, rule [60].
+
+   Enter_Start_Condition (Self, ATTLIST_DECL);
+
+   return Token_Implied;
+}
+
+<ATTLIST_TYPE>"#FIXED" {
+   --  #FIXED keyword, rule [60].
+
+   return Token_Fixed;
+}
+
+<ATTLIST_TYPE>"(" {
+   --  Open parenthesis, rules [58], [59].
+
+   return Token_Open_Parenthesis;
+}
+
+<ATTLIST_TYPE>")" {
+   --  Close parenthesis, rules [58], [59].
+
+   return Token_Close_Parenthesis;
+}
+
+<ATTLIST_TYPE>"|" {
+   --  Vertical bar, rules [58], [59].
+
+   return Token_Vertical_Bar;
+}
+
+<ATTLIST_TYPE>{NAME} {
+   --  Name in the rule [58].
+
+   YYLVal := (String => YY_Text, others => <>);
+
+   return Token_Name;
+}
+
+<ATTLIST_TYPE>{NMTOKEN} {
+   --  Nmtoken in the rule [59].
+
+   YYLVal := (String => YY_Text, others => <>);
+   --  XXX Need to add flag to mark Nmtoken.
+
+   return Token_Name;
+}
+
+<ATTLIST_TYPE>['"] {
+   --  Open delimiter of attribute value, rule [10].
+
+   return
+     Process_Attribute_Value_Open_Delimiter
+      (Self, YY_Text, ATTLIST_DECL);
+}
+
+<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET,ENTITY_NDATA,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE>{WHITE_SPACE} {
    --  All white spaces from rules [28] are ignored.
    --  Whitespace before name in rule [76] is ignored.
 
@@ -610,7 +761,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ELEMENT_START>['"] {
    --  Open delimiter of attribute value, rule [10].
 
-   return Process_Attribute_Value_Open_Delimiter (Self, YY_Text);
+   return
+     Process_Attribute_Value_Open_Delimiter
+      (Self, YY_Text, ELEMENT_START);
 }
 
 <ATTRIBUTE_VALUE>['"] {
@@ -709,6 +862,16 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    raise Program_Error with "Unexpected character in ENTITY_NDATA";
 }
 
+<ATTLIST_TYPE>. {
+   Put_Line (YY_Text);
+   raise Program_Error with "Unexpected character in ATTLIST_TYPE";
+}
+
+<ATTLIST_DECL>. {
+   Put_Line (YY_Text);
+   raise Program_Error with "Unexpected character in ATTLIST_DECL";
+}
+
 <EXTERNAL_ID_PUB>. {
    raise Program_Error with "Unexpected character in pubid literal";
 }
@@ -780,7 +943,8 @@ with League.Strings;
 
    function Process_Attribute_Value_Open_Delimiter
     (Self  : access Integer;
-     Image : League.Strings.Universal_String) return Token is separate;
+     Image : League.Strings.Universal_String;
+     State : Integer) return Token is separate;
 
    function Process_Attribute_Value_Close_Delimiter
     (Self  : access Integer;

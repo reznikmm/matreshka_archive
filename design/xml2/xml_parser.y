@@ -40,6 +40,19 @@
 %token Token_Asterisk
 %token Token_Plus
 %token Token_PCData
+%token Token_Attlist_Decl_Open
+%token Token_CData
+%token Token_Id
+%token Token_IdRef
+%token Token_IdRefs
+%token Token_Entity
+%token Token_Entities
+%token Token_NmToken
+%token Token_NmTokens
+%token Token_Notation
+%token Token_Required
+%token Token_Implied
+%token Token_Fixed
 
 %with League.Strings
 %with Matreshka.Internals.XML.Attributes;
@@ -266,6 +279,10 @@ intSubset:
 {
    null;
 }
+  | AttlistDecl
+{
+   null;
+}
   | Token_Comment
 {
    Process_Comment (Self, $1.String);
@@ -442,7 +459,7 @@ choice_content:
 {
    null;
 }
-  | cp
+  | Token_Vertical_Bar cp
 {
    null;
 }
@@ -522,15 +539,114 @@ Mixed:
   ;
 
 Mixed_content:
-    Mixed_content Token_Name
+    Mixed_content Token_Vertical_Bar Token_Name
 {
    null;
 }
-  | Token_Name
+  | Token_Vertical_Bar Token_Name
 {
    null;
 }
   |
+{
+   null;
+}
+  ;
+
+AttlistDecl :
+    Token_Attlist_Decl_Open AttDef_any Token_Close
+{
+   null;
+}
+  ;
+
+AttDef_any:
+    AttDef_any AttDef
+{
+   null;
+}
+  | AttDef
+{
+   null;
+}
+  |
+{
+   null;
+}
+  ;
+
+AttDef :
+    Token_Name Token_CData DefaultDecl
+{
+   null;
+}
+  | Token_Name Token_Id DefaultDecl
+{
+   null;
+}
+  | Token_Name Token_IdRef DefaultDecl
+{
+   null;
+}
+  | Token_Name Token_IdRefs DefaultDecl
+{
+   null;
+}
+  | Token_Name Token_Entity DefaultDecl
+{
+   null;
+}
+  | Token_Name Token_Entities DefaultDecl
+{
+   null;
+}
+  | Token_Name Token_NmToken DefaultDecl
+{
+   null;
+}
+  | Token_Name Token_NmTokens DefaultDecl
+{
+   null;
+}
+  | Token_Name Token_Notation Token_Open_Parenthesis Token_Name Name_any Token_Close_Parenthesis DefaultDecl
+{
+   null;
+}
+  | Token_Name Token_Open_Parenthesis Token_Name Name_any Token_Close_Parenthesis DefaultDecl
+{
+   null;
+}
+  ;
+
+Name_any:
+    Name_any Token_Vertical_Bar Token_Name
+{
+   null;
+}
+  | Token_Vertical_Bar Token_Name
+{
+   null;
+}
+  |
+{
+   null;
+}
+  ;
+
+DefaultDecl:
+    Token_Required
+{
+   null;
+}
+  | Token_Implied
+{
+   null;
+}
+  | AttributeValue
+{
+   null;
+}
+  | Token_Fixed AttributeValue
 {
    null;
 }

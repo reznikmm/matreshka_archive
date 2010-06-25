@@ -164,7 +164,20 @@ private
      Token_Question,
      Token_Asterisk,
      Token_Plus,
-     Token_Pcdata);
+     Token_Pcdata,
+     Token_Attlist_Decl_Open,
+     Token_Cdata,
+     Token_Id,
+     Token_Idref,
+     Token_Idrefs,
+     Token_Entity,
+     Token_Entities,
+     Token_Nmtoken,
+     Token_Nmtokens,
+     Token_Notation,
+     Token_Required,
+     Token_Implied,
+     Token_Fixed);
 
    type YYSType is record
       String        : League.Strings.Universal_String;
@@ -261,6 +274,7 @@ private
       --  Used to check whether whitespace is used to separate tokens. For
       --  example, '%' must be separated by whitespace from '<!ENTITY' and
       --  following name.
+      In_DTD             : Boolean;
 
       Parameter_Entities : Entity_Information_Maps.Map;
       General_Entities   : Entity_Information_Maps.Map;
