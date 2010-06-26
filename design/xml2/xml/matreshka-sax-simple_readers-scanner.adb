@@ -1432,9 +1432,13 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 78 =>
                --  Less-than sign can't be used in the attribute value.
                --
-               --  3.1 [WFC: No < in Attribute Values]
+               --  [3.1 WFC: No < in Attribute Values]
+               --
+               --  "The replacement text of any entity referred to directly or indirectly
+               --  in an attribute value MUST NOT contain a <."
             
-               raise Program_Error with "'<' can't be used in attribute value";
+               raise Program_Error
+                 with "[3.1 WFC: No < in Attribute Values] '<' can't be used in attribute value";
 
             when 79 =>
                --  General entity reference rule [68] in attribute value, rule [10].

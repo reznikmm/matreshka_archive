@@ -783,9 +783,14 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ATTRIBUTE_VALUE>"<" {
    --  Less-than sign can't be used in the attribute value.
    --
-   --  3.1 [WFC: No < in Attribute Values]
+   --  [3.1 WFC: No < in Attribute Values]
+   --
+   --  "The replacement text of any entity referred to directly or indirectly
+   --  in an attribute value MUST NOT contain a <."
 
-   raise Program_Error with "'<' can't be used in attribute value";
+   raise Program_Error
+     with "[3.1 WFC: No < in Attribute Values] '<' can't be used in attribute value";
+   --  Fatal Error
 }
 
 <ATTRIBUTE_VALUE>"&"{NAME}";" {
