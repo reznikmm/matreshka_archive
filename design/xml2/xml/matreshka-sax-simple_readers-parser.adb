@@ -73,7 +73,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_General_Entity_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
-     Name        : League.Strings.Universal_String;
+     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
      Public_Id   : League.Strings.Universal_String;
@@ -262,7 +262,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_General_Entity_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
-     Name        : League.Strings.Universal_String;
+     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
      Public_Id   : League.Strings.Universal_String;
@@ -271,6 +271,9 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    is
       use League.Strings;
       use Entity_Information_Maps;
+
+      Name : constant League.Strings.Universal_String
+        := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
 
    begin
       if Self.General_Entities.Contains (Name) then
@@ -812,7 +815,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             when 36 =>
                Process_General_Entity_Declaration
                 (Self,
-                 yy.value_stack (yy.tos-2).String,
+                 yy.value_stack (yy.tos-2).Symbol,
                  yy.value_stack (yy.tos-1).Is_External,
                  yy.value_stack (yy.tos-1).String,
                  yy.value_stack (yy.tos-1).Public_Id,

@@ -296,7 +296,7 @@ EntityDecl:
 {
    Process_General_Entity_Declaration
     (Self,
-     $2.String,
+     $2.Symbol,
      $3.Is_External,
      $3.String,
      $3.Public_Id,
@@ -769,7 +769,7 @@ with Matreshka.Internals.XML.Symbol_Tables;
 
    procedure Process_General_Entity_Declaration
     (Self        : access Integer;
-     Name        : League.Strings.Universal_String;
+     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
      Public_Id   : League.Strings.Universal_String;
