@@ -75,7 +75,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
-     Notation    : League.Strings.Universal_String);
+     Notation    : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
    --  Process general entity declaration, rule [71].
 
    procedure Process_Parameter_Entity_Declaration
@@ -275,10 +275,11 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
-     Notation    : League.Strings.Universal_String)
+     Notation    : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
    is
       use League.Strings;
       use Entity_Information_Maps;
+      use Matreshka.Internals.XML.Symbol_Tables;
 
       Name : constant League.Strings.Universal_String
         := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
@@ -291,7 +292,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       end if;
 
       if Is_External then
-         if Notation.Is_Empty then
+         if Notation = No_Symbol then
             declare
                V : League.Strings.Universal_String;
                S : Boolean := True;
@@ -322,7 +323,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Kind   => Unparsed,
                others => <>));
             Handler_Callbacks.Call_Unparsed_Entity_Decl
-             (Self, Name, Self.Public_Id, Self.System_Id, Notation);
+             (Self,
+              Name,
+              Self.Public_Id,
+              Self.System_Id,
+              Matreshka.Internals.XML.Symbol_Tables.Name
+               (Self.Symbols, Notation));
          end if;
 
       else

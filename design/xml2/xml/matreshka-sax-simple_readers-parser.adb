@@ -75,7 +75,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
-     Notation    : League.Strings.Universal_String);
+     Notation    : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
    --  Process general entity declaration, rule [71].
 
    procedure Process_Parameter_Entity_Declaration
@@ -275,10 +275,11 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
-     Notation    : League.Strings.Universal_String)
+     Notation    : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
    is
       use League.Strings;
       use Entity_Information_Maps;
+      use Matreshka.Internals.XML.Symbol_Tables;
 
       Name : constant League.Strings.Universal_String
         := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
@@ -291,7 +292,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       end if;
 
       if Is_External then
-         if Notation.Is_Empty then
+         if Notation = No_Symbol then
             declare
                V : League.Strings.Universal_String;
                S : Boolean := True;
@@ -322,7 +323,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Kind   => Unparsed,
                others => <>));
             Handler_Callbacks.Call_Unparsed_Entity_Decl
-             (Self, Name, Self.Public_Id, Self.System_Id, Notation);
+             (Self,
+              Name,
+              Self.Public_Id,
+              Self.System_Id,
+              Matreshka.Internals.XML.Symbol_Tables.Name
+               (Self.Symbols, Notation));
          end if;
 
       else
@@ -835,59 +841,61 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
             when 36 =>
                Process_General_Entity_Declaration
-                (Self,
-                 yy.value_stack (yy.tos-2).Symbol,
-                 yy.value_stack (yy.tos-1).Is_External,
-                 yy.value_stack (yy.tos-1).String,
-                 yy.value_stack (yy.tos-1).Notation);
+                (Self        => Self,
+                 Symbol      => yy.value_stack (yy.tos-2).Symbol,
+                 Is_External => False,
+                 Value       => yy.value_stack (yy.tos-1).String,
+                 Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
 
             when 37 =>
+               Process_General_Entity_Declaration
+                (Self        => Self,
+                 Symbol      => yy.value_stack (yy.tos-2).Symbol,
+                 Is_External => True,
+                 Value       => League.Strings.Empty_String,
+                 Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
+
+            when 38 =>
+               Process_General_Entity_Declaration
+                (Self        => Self,
+                 Symbol      => yy.value_stack (yy.tos-4).Symbol,
+                 Is_External => True,
+                 Value       => League.Strings.Empty_String,
+                 Notation    => yy.value_stack (yy.tos-1).Symbol);
+
+            when 39 =>
                Process_Parameter_Entity_Declaration
                 (Self,
                  yy.value_stack (yy.tos-2).String,
                  yy.value_stack (yy.tos-1).Is_External,
                  yy.value_stack (yy.tos-1).String);
 
-            when 38 =>
-               yyval :=
-                (Is_External => False,
-                 String      => yy.value_stack (yy.tos).String,
-                 others      => <>);
-
-            when 39 =>
-               yyval :=
-                (Is_External => True,
-                 others      => <>);
-
             when 40 =>
-               yyval :=
-                (Is_External => True,
-                 Notation    => yy.value_stack (yy.tos).String,
-                 others      => <>);
+               null;
 
             when 41 =>
                null;
 
             when 42 =>
-               null;
-
-            when 43 =>
                --  Entity value including surrounding delimiters.
             
                yyval.String := yy.value_stack (yy.tos-1).String;
 
-            when 44 =>
+            when 43 =>
                --  Additional string segment in entity value.
             
                yyval.String := yy.value_stack (yy.tos-1).String & yy.value_stack (yy.tos).String;
 
-            when 45 =>
+            when 44 =>
                --  Single string segment in entity value.
             
                yyval.String := yy.value_stack (yy.tos).String;
 
-            when 46 =>
+            when 45 =>
                yyval.String := League.Strings.Empty_String;
+
+            when 46 =>
+               null;
 
             when 47 =>
                null;
@@ -1058,16 +1066,16 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 103 =>
-               null;
-
-            when 104 =>
                Process_Start_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
 
-            when 105 =>
+            when 104 =>
                Process_End_Tag (Self, yy.value_stack (yy.tos-1).Symbol);
 
-            when 106 =>
+            when 105 =>
                Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
+
+            when 106 =>
+               null;
 
             when 107 =>
                null;
@@ -1079,35 +1087,32 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 110 =>
-               null;
-
-            when 111 =>
                Process_Characters (Self, yy.value_stack (yy.tos).String, yy.value_stack (yy.tos).Is_Whitespace);
 
-            when 112 =>
+            when 111 =>
                Process_Comment (Self, yy.value_stack (yy.tos).String);
 
-            when 113 =>
+            when 112 =>
                null;
 
-            when 114 =>
+            when 113 =>
                --  TextDecl come from substitution of external parsed entities.
             
                null;
+
+            when 114 =>
+               Process_Attribute_In_Set (Self);
 
             when 115 =>
                Process_Attribute_In_Set (Self);
 
             when 116 =>
-               Process_Attribute_In_Set (Self);
-
-            when 117 =>
                null;
 
-            when 118 =>
+            when 117 =>
                Process_Attribute (Self, yy.value_stack (yy.tos-2).Symbol, yy.value_stack (yy.tos).String);
 
-            when 119 =>
+            when 118 =>
                null;
                when others =>
                   raise Program_Error

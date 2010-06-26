@@ -186,7 +186,6 @@ private
       Is_External   : Boolean;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
-      Notation      : League.Strings.Universal_String;
    end record;
 
    function Hash

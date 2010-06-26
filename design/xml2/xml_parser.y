@@ -65,7 +65,6 @@
       Is_External   : Boolean;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
-      Notation      : League.Strings.Universal_String;
    end record;
 }
 
@@ -286,14 +285,32 @@ intSubset:
   ;
 
 EntityDecl:
-    Token_Entity_Decl_Open Token_Name EntityDef Token_Close
+    Token_Entity_Decl_Open Token_Name EntityValue Token_Close
 {
    Process_General_Entity_Declaration
-    (Self,
-     $2.Symbol,
-     $3.Is_External,
-     $3.String,
-     $3.Notation);
+    (Self        => Self,
+     Symbol      => $2.Symbol,
+     Is_External => False,
+     Value       => $3.String,
+     Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
+}
+  | Token_Entity_Decl_Open Token_Name ExternalID Token_Close
+{
+   Process_General_Entity_Declaration
+    (Self        => Self,
+     Symbol      => $2.Symbol,
+     Is_External => True,
+     Value       => League.Strings.Empty_String,
+     Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
+}
+  | Token_Entity_Decl_Open Token_Name ExternalID Token_NData Token_Name Token_Close
+{
+   Process_General_Entity_Declaration
+    (Self        => Self,
+     Symbol      => $2.Symbol,
+     Is_External => True,
+     Value       => League.Strings.Empty_String,
+     Notation    => $5.Symbol);
 }
   | Token_Entity_Decl_Open Token_Percent Token_Name PEDef Token_Close
 {
@@ -302,29 +319,6 @@ EntityDecl:
      $3.String,
      $4.Is_External,
      $4.String);
-}
-  ;
-
-EntityDef:
-    EntityValue
-{
-   $$ :=
-    (Is_External => False,
-     String      => $1.String,
-     others      => <>);
-}
-  | ExternalID
-{
-   $$ :=
-    (Is_External => True,
-     others      => <>);
-}
-  | ExternalID Token_NData Token_Name
-{
-   $$ :=
-    (Is_External => True,
-     Notation    => $3.String,
-     others      => <>);
 }
   ;
 
@@ -756,7 +750,8 @@ with Matreshka.Internals.XML.Symbol_Tables;
      Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
-     Notation    : League.Strings.Universal_String) is separate;
+     Notation    : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+       is separate;
 
    procedure Process_Parameter_Entity_Declaration
     (Self        : access Integer;
