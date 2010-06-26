@@ -199,7 +199,7 @@ private
      String        : Matreshka.Internals.Strings.Shared_String_Access;
      Is_Whitespace : Boolean;
      Is_CData      : Boolean);
-   pragma Inline (Set_String);
+   pragma Inline (Set_String_Internal);
 
    procedure Set_Symbol
     (Item    : in out YYSType;
