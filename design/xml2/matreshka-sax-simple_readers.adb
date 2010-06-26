@@ -290,6 +290,25 @@ package body Matreshka.SAX.Simple_Readers is
       Matreshka.Internals.Strings.Reference (Item.String);
    end Set_String;
 
+   -------------------------
+   -- Set_String_Internal --
+   -------------------------
+
+   procedure Set_String_Internal
+    (Item          : in out YYSType;
+     String        : Matreshka.Internals.Strings.Shared_String_Access;
+     Is_Whitespace : Boolean;
+     Is_CData      : Boolean)
+   is
+      pragma Assert (Item.String = null);
+
+   begin
+      Item.String        := String;
+      Item.Is_Whitespace := Is_Whitespace;
+      Item.Is_CData      := Is_CData;
+      Item.Symbol        := Matreshka.Internals.XML.Symbol_Tables.No_Symbol;
+   end Set_String_Internal;
+
    ----------------
    -- Set_Symbol --
    ----------------

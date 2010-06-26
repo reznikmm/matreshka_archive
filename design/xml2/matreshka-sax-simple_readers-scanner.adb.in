@@ -140,7 +140,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    function Process_Whitespace
     (Self : not null access SAX_Simple_Reader'Class;
-     Text : League.Strings.Universal_String) return Boolean;
+     Text : Matreshka.Internals.Strings.Shared_String_Access)
+       return Boolean;
    --  Process segment of whitespaces. Returns True and sets YYLVal when
    --  document content analysis started, and return False otherwise.
 
@@ -397,15 +398,21 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    function Process_Whitespace
     (Self : not null access SAX_Simple_Reader'Class;
-     Text : League.Strings.Universal_String) return Boolean is
+     Text : Matreshka.Internals.Strings.Shared_String_Access)
+       return Boolean
+   is
+      Aux : Matreshka.Internals.Strings.Shared_String_Access := Text;
+
    begin
       if Self.Element_Names.Is_Empty then
          --  Document content not entered.
 
+         Matreshka.Internals.Strings.Dereference (Aux);
+
          return False;
 
       else
-         Set_String
+         Set_String_Internal
           (Item          => Self.YYLVal,
            String        => Text,
            Is_Whitespace => True,
@@ -618,6 +625,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
         Trim_Whitespace : Boolean := False)
           return League.Strings.Universal_String;
 
+      function YY_Text_Internal
+       (Trim_Left       : Natural := 0;
+        Trim_Right      : Natural := 0;
+        Trim_Whitespace : Boolean := False)
+          return Matreshka.Internals.Strings.Shared_String_Access;
+
       -------------
       -- YY_Text --
       -------------
@@ -671,6 +684,59 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             (Matreshka.Internals.Strings.Operations.Slice
               (Self.Scanner_State.Data, FP, LP - FP, LI - FI));
       end YY_Text;
+
+      ----------------------
+      -- YY_Text_Internal --
+      ----------------------
+
+      function YY_Text_Internal
+       (Trim_Left       : Natural := 0;
+        Trim_Right      : Natural := 0;
+        Trim_Whitespace : Boolean := False)
+          return Matreshka.Internals.Strings.Shared_String_Access
+      is
+         FP : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
+         FI : Positive
+           := Self.Scanner_State.YY_Base_Index + Trim_Left;
+         LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
+         LI : constant Positive
+           := Self.Scanner_State.YY_Current_Index - Trim_Right;
+         C  : Code_Point;
+         FA : Utf16_String_Index;
+
+      begin
+	 --  XXX Implementation covers all cases but not efficient, most times
+	 --  (or always?) use of iteration is not needed - leading and trailing
+         --  code points belong to BMP.
+
+         for J in 1 .. Trim_Left loop
+            Unchecked_Next (Self.Scanner_State.Data.Value, FP);
+         end loop;
+
+         if Trim_Whitespace then
+            loop
+               FA := FP;
+               Unchecked_Next (Self.Scanner_State.Data.Value, FA, C);
+
+               exit when
+                 C /= 16#0020#
+                   and then C /= 16#0009#
+                   and then C /= 16#000D#
+                   and then C /= 16#000A#;
+
+               FP := FA;
+               FI := FI + 1;
+            end loop;
+         end if;
+
+         for J in 1 .. Trim_Right loop
+            Unchecked_Previous (Self.Scanner_State.Data.Value, LP);
+         end loop;
+
+         return
+           Matreshka.Internals.Strings.Operations.Slice
+            (Self.Scanner_State.Data, FP, LP - FP, LI - FI);
+      end YY_Text_Internal;
 
 --         --  copy whatever the last rule matched to the standard output
 --

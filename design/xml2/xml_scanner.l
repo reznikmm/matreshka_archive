@@ -186,9 +186,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    --  by [26] VersionNum, [81] EncName, [32] SDDecl. Precise check is
    --  processed while parsing.
 
-   Set_String
+   Set_String_Internal
     (Item          => YYLVal,
-     String        => YY_Text (1, 1),
+     String        => YY_Text_Internal (1, 1),
      Is_Whitespace => False,
      Is_CData      => False);
    Reset_Whitespace_Matched (Self);
@@ -221,9 +221,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
       --  XXX This is recoverable error.
    end if;
 
-   Set_String
+   Set_String_Internal
     (Item          => YYLVal,
-     String        => YY_Text (0, 2),
+     String        => YY_Text_Internal (0, 2),
      Is_Whitespace => False,
      Is_CData      => False);
    Enter_Start_Condition (Self, INITIAL);
@@ -269,9 +269,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, Get_Continue_State (Self));
-   Set_String
+   Set_String_Internal
     (Item          => YYLVal,
-     String        => YY_Text (1, 1),
+     String        => YY_Text_Internal (1, 1),
      Is_Whitespace => False,
      Is_CData      => False);
 
@@ -298,9 +298,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
-   Set_String
+   Set_String_Internal
     (Item          => YYLVal,
-     String        => YY_Text (1, 1),
+     String        => YY_Text_Internal (1, 1),
      Is_Whitespace => False,
      Is_CData      => False);
 
@@ -326,9 +326,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <INITIAL,DOCTYPE_INTSUBSET>"<!--"({CHAR_NO_HYPHEN}|-{CHAR_NO_HYPHEN})*"-->" {
    --  Text of comment, rule [15].
 
-   Set_String
+   Set_String_Internal
     (Item          => YYLVal,
-     String        => YY_Text (4, 3),
+     String        => YY_Text_Internal (4, 3),
      Is_Whitespace => False,
      Is_CData      => False);
 
@@ -449,9 +449,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 }
 
 <ENTITY_VALUE>{CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE}+ {
-   Set_String
+   Set_String_Internal
     (Item          => YYLVal,
-     String        => YY_Text,
+     String        => YY_Text_Internal,
      Is_Whitespace => False,
      Is_CData      => False);
 
@@ -481,9 +481,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ENTITY_VALUE>"&"{NAME}";" {
    --  General entity reference rule [68] in entity value rule [9].
 
-   Set_String
+   Set_String_Internal
     (Item          => YYLVal,
-     String        => YY_Text,
+     String        => YY_Text_Internal,
      Is_Whitespace => False,
      Is_CData      => False);
 
@@ -696,9 +696,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ATTLIST_TYPE>{NMTOKEN} {
    --  Nmtoken in the rule [59].
 
-   Set_String
+   Set_String_Internal
     (Item          => YYLVal,
-     String        => YY_Text,
+     String        => YY_Text_Internal,
      Is_Whitespace => False,
      Is_CData      => False);
    --  XXX Need to add flag to mark Nmtoken.
@@ -807,9 +807,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ATTRIBUTE_VALUE>{CHAR_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS}+ {
    --  Value of attribute, rule [10].
 
-   Set_String
+   Set_String_Internal
     (Item          => YYLVal,
-     String        => YY_Text,
+     String        => YY_Text_Internal,
      Is_Whitespace => False,
      Is_CData      => False);
 
@@ -843,7 +843,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 {WHITE_SPACE} {
    --  Segment of whitespaces.
 
-   if Process_Whitespace (Self, YY_Text) then
+   if Process_Whitespace (Self, YY_Text_Internal) then
       return Token_String_Segment;
    end if;
 }
@@ -851,9 +851,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 (({CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}|"]"{CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}|"]"{2,}{CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE})+"]"*|"]"+) {
    --  Segment of character data, rule [14].
 
-   Set_String
+   Set_String_Internal
     (Item          => YYLVal,
-     String        => YY_Text,
+     String        => YY_Text_Internal,
      Is_Whitespace => False,
      Is_CData      => False);
 
@@ -863,9 +863,9 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 "<![CDATA["{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR_NO_GREATER_RIGHT_SQUARE}{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
    --  Segment of CDATA, rules [18], [19], [20], [21].
 
-   Set_String
+   Set_String_Internal
     (Item          => YYLVal,
-     String        => YY_Text (9, 3),
+     String        => YY_Text_Internal (9, 3),
      Is_Whitespace => False,
      Is_CData      => True);
 
@@ -938,6 +938,7 @@ with Xml_Parser_Tokens;
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Wide_Wide_Text_IO;
 with League.Strings;
+with Matreshka.Internals.Strings;
 ##
    use Xml_Parser_Tokens;
 
@@ -962,6 +963,12 @@ with League.Strings;
      Trim_Right      : Natural := 0;
      Trim_Whitespace : Boolean := False)
        return League.Strings.Universal_String is separate;
+
+   function YY_Text_Internal
+    (Trim_Left       : Natural := 0;
+     Trim_Right      : Natural := 0;
+     Trim_Whitespace : Boolean := False)
+       return Matreshka.Internals.Strings.Shared_String_Access is separate;
 
    Self     : access Integer;
    YYLVal   : YYSType;
@@ -1005,7 +1012,8 @@ with League.Strings;
 
    function Process_Whitespace
     (Self : access Integer;
-     Text : League.Strings.Universal_String) return Boolean is separate;
+     Text : Matreshka.Internals.Strings.Shared_String_Access)
+       return Boolean is separate;
 
    function Process_XML_PI (Self : access Integer) return Token is separate;
 
@@ -1016,8 +1024,8 @@ with League.Strings;
      Trim_Whitespace : Boolean := False;
      YYLVal          : out YYSType) is separate;
 
-   procedure Set_String
-     (Item          : in out YYSType;
-      String        : League.Strings.Universal_String;
-      Is_Whitespace : Boolean;
-      Is_CData      : Boolean) is separate;
+   procedure Set_String_Internal
+    (Item          : in out YYSType;
+     String        : Matreshka.Internals.Strings.Shared_String_Access;
+     Is_Whitespace : Boolean;
+     Is_CData      : Boolean) is separate;

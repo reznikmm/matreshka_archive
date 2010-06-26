@@ -140,7 +140,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    function Process_Whitespace
     (Self : not null access SAX_Simple_Reader'Class;
-     Text : League.Strings.Universal_String) return Boolean;
+     Text : Matreshka.Internals.Strings.Shared_String_Access)
+       return Boolean;
    --  Process segment of whitespaces. Returns True and sets YYLVal when
    --  document content analysis started, and return False otherwise.
 
@@ -397,15 +398,21 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    function Process_Whitespace
     (Self : not null access SAX_Simple_Reader'Class;
-     Text : League.Strings.Universal_String) return Boolean is
+     Text : Matreshka.Internals.Strings.Shared_String_Access)
+       return Boolean
+   is
+      Aux : Matreshka.Internals.Strings.Shared_String_Access := Text;
+
    begin
       if Self.Element_Names.Is_Empty then
          --  Document content not entered.
 
+         Matreshka.Internals.Strings.Dereference (Aux);
+
          return False;
 
       else
-         Set_String
+         Set_String_Internal
           (Item          => Self.YYLVal,
            String        => Text,
            Is_Whitespace => True,
@@ -618,6 +625,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
         Trim_Whitespace : Boolean := False)
           return League.Strings.Universal_String;
 
+      function YY_Text_Internal
+       (Trim_Left       : Natural := 0;
+        Trim_Right      : Natural := 0;
+        Trim_Whitespace : Boolean := False)
+          return Matreshka.Internals.Strings.Shared_String_Access;
+
       -------------
       -- YY_Text --
       -------------
@@ -671,6 +684,59 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             (Matreshka.Internals.Strings.Operations.Slice
               (Self.Scanner_State.Data, FP, LP - FP, LI - FI));
       end YY_Text;
+
+      ----------------------
+      -- YY_Text_Internal --
+      ----------------------
+
+      function YY_Text_Internal
+       (Trim_Left       : Natural := 0;
+        Trim_Right      : Natural := 0;
+        Trim_Whitespace : Boolean := False)
+          return Matreshka.Internals.Strings.Shared_String_Access
+      is
+         FP : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
+         FI : Positive
+           := Self.Scanner_State.YY_Base_Index + Trim_Left;
+         LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
+         LI : constant Positive
+           := Self.Scanner_State.YY_Current_Index - Trim_Right;
+         C  : Code_Point;
+         FA : Utf16_String_Index;
+
+      begin
+	 --  XXX Implementation covers all cases but not efficient, most times
+	 --  (or always?) use of iteration is not needed - leading and trailing
+         --  code points belong to BMP.
+
+         for J in 1 .. Trim_Left loop
+            Unchecked_Next (Self.Scanner_State.Data.Value, FP);
+         end loop;
+
+         if Trim_Whitespace then
+            loop
+               FA := FP;
+               Unchecked_Next (Self.Scanner_State.Data.Value, FA, C);
+
+               exit when
+                 C /= 16#0020#
+                   and then C /= 16#0009#
+                   and then C /= 16#000D#
+                   and then C /= 16#000A#;
+
+               FP := FA;
+               FI := FI + 1;
+            end loop;
+         end if;
+
+         for J in 1 .. Trim_Right loop
+            Unchecked_Previous (Self.Scanner_State.Data.Value, LP);
+         end loop;
+
+         return
+           Matreshka.Internals.Strings.Operations.Slice
+            (Self.Scanner_State.Data, FP, LP - FP, LI - FI);
+      end YY_Text_Internal;
 
 --         --  copy whatever the last rule matched to the standard output
 --
@@ -983,9 +1049,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  by [26] VersionNum, [81] EncName, [32] SDDecl. Precise check is
                --  processed while parsing.
             
-               Set_String
+               Set_String_Internal
                 (Item          => YYLVal,
-                 String        => YY_Text (1, 1),
+                 String        => YY_Text_Internal (1, 1),
                  Is_Whitespace => False,
                  Is_CData      => False);
                Reset_Whitespace_Matched (Self);
@@ -1015,9 +1081,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                   --  XXX This is recoverable error.
                end if;
             
-               Set_String
+               Set_String_Internal
                 (Item          => YYLVal,
-                 String        => YY_Text (0, 2),
+                 String        => YY_Text_Internal (0, 2),
                  Is_Whitespace => False,
                  Is_CData      => False);
                Enter_Start_Condition (Self, INITIAL);
@@ -1059,9 +1125,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, Get_Continue_State (Self));
-               Set_String
+               Set_String_Internal
                 (Item          => YYLVal,
-                 String        => YY_Text (1, 1),
+                 String        => YY_Text_Internal (1, 1),
                  Is_Whitespace => False,
                  Is_CData      => False);
             
@@ -1086,9 +1152,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
-               Set_String
+               Set_String_Internal
                 (Item          => YYLVal,
-                 String        => YY_Text (1, 1),
+                 String        => YY_Text_Internal (1, 1),
                  Is_Whitespace => False,
                  Is_CData      => False);
             
@@ -1111,9 +1177,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 18 =>
                --  Text of comment, rule [15].
             
-               Set_String
+               Set_String_Internal
                 (Item          => YYLVal,
-                 String        => YY_Text (4, 3),
+                 String        => YY_Text_Internal (4, 3),
                  Is_Whitespace => False,
                  Is_CData      => False);
             
@@ -1222,9 +1288,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Token_Name;
 
             when 30 =>
-               Set_String
+               Set_String_Internal
                 (Item          => YYLVal,
-                 String        => YY_Text,
+                 String        => YY_Text_Internal,
                  Is_Whitespace => False,
                  Is_CData      => False);
             
@@ -1250,9 +1316,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 34 =>
                --  General entity reference rule [68] in entity value rule [9].
             
-               Set_String
+               Set_String_Internal
                 (Item          => YYLVal,
-                 String        => YY_Text,
+                 String        => YY_Text_Internal,
                  Is_Whitespace => False,
                  Is_CData      => False);
             
@@ -1434,9 +1500,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 65 =>
                --  Nmtoken in the rule [59].
             
-               Set_String
+               Set_String_Internal
                 (Item          => YYLVal,
-                 String        => YY_Text,
+                 String        => YY_Text_Internal,
                  Is_Whitespace => False,
                  Is_CData      => False);
                --  XXX Need to add flag to mark Nmtoken.
@@ -1533,9 +1599,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 77 =>
                --  Value of attribute, rule [10].
             
-               Set_String
+               Set_String_Internal
                 (Item          => YYLVal,
-                 String        => YY_Text,
+                 String        => YY_Text_Internal,
                  Is_Whitespace => False,
                  Is_CData      => False);
             
@@ -1564,16 +1630,16 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 81 =>
                --  Segment of whitespaces.
             
-               if Process_Whitespace (Self, YY_Text) then
+               if Process_Whitespace (Self, YY_Text_Internal) then
                   return Token_String_Segment;
                end if;
 
             when 82 =>
                --  Segment of character data, rule [14].
             
-               Set_String
+               Set_String_Internal
                 (Item          => YYLVal,
-                 String        => YY_Text,
+                 String        => YY_Text_Internal,
                  Is_Whitespace => False,
                  Is_CData      => False);
             
@@ -1582,9 +1648,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 83 =>
                --  Segment of CDATA, rules [18], [19], [20], [21].
             
-               Set_String
+               Set_String_Internal
                 (Item          => YYLVal,
-                 String        => YY_Text (9, 3),
+                 String        => YY_Text_Internal (9, 3),
                  Is_Whitespace => False,
                  Is_CData      => True);
             

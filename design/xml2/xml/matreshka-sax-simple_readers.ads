@@ -194,6 +194,13 @@ private
      Is_CData      : Boolean);
    pragma Inline (Set_String);
 
+   procedure Set_String_Internal
+    (Item          : in out YYSType;
+     String        : Matreshka.Internals.Strings.Shared_String_Access;
+     Is_Whitespace : Boolean;
+     Is_CData      : Boolean);
+   pragma Inline (Set_String);
+
    procedure Set_Symbol
     (Item    : in out YYSType;
       Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
