@@ -50,6 +50,7 @@ with Matreshka.SAX.Simple_Readers.Scanner;
 package body Matreshka.SAX.Simple_Readers.Parser is
 
    use Matreshka.SAX.Simple_Readers.Parser.Tables;
+   use type Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
 
    function YY_Goto_State (State : Integer; Sym : Integer) return Integer;
    --  Lookup for next state.
@@ -138,10 +139,8 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    begin
       Self.Attribute :=
        (Namespace_URI  => League.Strings.To_Universal_String (""),
-        Local_Name     =>
-          Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
-        Qualified_Name =>
-          Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
+        Local_Name     => Symbol,
+        Qualified_Name => Symbol,
         Value          => Value);
    end Process_Attribute;
 
@@ -155,8 +154,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       Matreshka.SAX.Attributes.Internals.Append
        (Self           => Self.Attributes,
         Namespace_URI  => Self.Attribute.Namespace_URI,
-        Local_Name     => Self.Attribute.Local_Name,
-        Qualified_Name => Self.Attribute.Qualified_Name,
+        Local_Name     =>
+          Matreshka.Internals.XML.Symbol_Tables.Name
+           (Self.Symbols, Self.Attribute.Local_Name),
+        Qualified_Name =>
+          Matreshka.Internals.XML.Symbol_Tables.Name
+           (Self.Symbols, Self.Attribute.Qualified_Name),
         Value          => Self.Attribute.Value);
    end Process_Attribute_In_Set;
 

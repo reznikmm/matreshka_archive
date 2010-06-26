@@ -248,6 +248,13 @@ private
      aliased Matreshka.SAX.Default_Handlers.SAX_Default_Handler;
    --  Default handler for use when user defined handler is not specified.
 
+   type Attribute_Record is record
+      Namespace_URI  : League.Strings.Universal_String;
+      Local_Name     : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+      Qualified_Name : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+      Value          : League.Strings.Universal_String;
+   end record;
+
    type SAX_Simple_Reader is
      limited new Matreshka.SAX.Readers.SAX_Reader with
    record
@@ -304,7 +311,7 @@ private
       --  When components can't be nested thier information is not hold in
       --  YYSType and placed directly here to avoid copy overhead.
 
-      Attribute          : Matreshka.Internals.XML.Attributes.Attribute;
+      Attribute          : Attribute_Record;
       --  Single attribute of the element.
       Attributes         : Matreshka.SAX.Attributes.SAX_Attributes;
       --  Set of attributes of the element.
