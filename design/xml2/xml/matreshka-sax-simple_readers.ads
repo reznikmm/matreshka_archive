@@ -192,16 +192,20 @@ private
      String        : League.Strings.Universal_String;
      Is_Whitespace : Boolean;
      Is_CData      : Boolean);
+   pragma Inline (Set_String);
 
    procedure Set_Symbol
     (Item    : in out YYSType;
       Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
+   pragma Inline (Set_Symbol);
 
    procedure Move
     (To   : in out YYSType;
      From : in out YYSType);
+   pragma Inline (Move);
 
    procedure Clear (Item : in out YYSType);
+   pragma Inline (Clear);
 
    function Hash
     (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
