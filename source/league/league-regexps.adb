@@ -78,7 +78,7 @@ package body League.Regexps is
          raise Constraint_Error;
       end if;
 
-      return League.Strings.Internals.Create (Capture (Self.Shared, 0));
+      return League.Strings.Internals.Wrap (Capture (Self.Shared, 0));
    end Capture;
 
    -------------
@@ -95,7 +95,7 @@ package body League.Regexps is
          raise Constraint_Error;
       end if;
 
-      return League.Strings.Internals.Create (Capture (Self.Shared, Number));
+      return League.Strings.Internals.Wrap (Capture (Self.Shared, Number));
    end Capture;
 
    -------------------

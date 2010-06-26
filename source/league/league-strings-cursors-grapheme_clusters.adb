@@ -127,7 +127,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
       end if;
 
       return
-        Create
+        Wrap
          (Slice
            (Self.Object.Data,
             Self.Current_Position,

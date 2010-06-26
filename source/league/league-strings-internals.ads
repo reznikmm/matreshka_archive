@@ -47,10 +47,12 @@ package League.Strings.Internals is
 
    pragma Preelaborate;
 
-   function Create
+   function Wrap
     (Data : not null Matreshka.Internals.Strings.Shared_String_Access)
        return Universal_String;
    --  Creates instance of Universal_String with specified parameters.
+   --  Reference counter is untouched, thus once instance will be finalized
+   --  it will be decremented and shared strings freed.
 
    function Get_Shared (Item : Universal_String'Class)
      return not null Matreshka.Internals.Strings.Shared_String_Access;

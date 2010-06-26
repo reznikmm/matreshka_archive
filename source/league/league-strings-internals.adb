@@ -44,11 +44,21 @@
 
 package body League.Strings.Internals is
 
-   ------------
-   -- Create --
-   ------------
+   ----------------
+   -- Get_Shared --
+   ----------------
 
-   function Create
+   function Get_Shared (Item : Universal_String'Class)
+     return not null Matreshka.Internals.Strings.Shared_String_Access is
+   begin
+      return Item.Data;
+   end Get_Shared;
+
+   ----------
+   -- Wrap --
+   ----------
+
+   function Wrap
     (Data : not null Matreshka.Internals.Strings.Shared_String_Access)
        return Universal_String
    is
@@ -62,16 +72,6 @@ package body League.Strings.Internals is
       do
          Result.Cursors := Result.List'Unchecked_Access;
       end return;
-   end Create;
-
-   ----------------
-   -- Get_Shared --
-   ----------------
-
-   function Get_Shared (Item : Universal_String'Class)
-     return not null Matreshka.Internals.Strings.Shared_String_Access is
-   begin
-      return Item.Data;
-   end Get_Shared;
+   end Wrap;
 
 end League.Strings.Internals;

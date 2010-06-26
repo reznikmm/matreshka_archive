@@ -107,7 +107,7 @@ package body League.Strings is
             D.Length := L_D.Length + R_D.Length;
             Fill_Null_Terminator (D);
 
-            return Create (D);
+            return Wrap (D);
          end;
       end if;
    end "&";
@@ -169,7 +169,7 @@ package body League.Strings is
          D.Length := L_D.Length + 1;
          Fill_Null_Terminator (D);
 
-         return Create (D);
+         return Wrap (D);
       end;
    end "&";
 
@@ -206,7 +206,7 @@ package body League.Strings is
          D.Length := R_D.Length + 1;
          Fill_Null_Terminator (D);
 
-         return Create (D);
+         return Wrap (D);
       end;
    end "&";
 
@@ -935,7 +935,7 @@ package body League.Strings is
          end;
       end if;
 
-      return Create (Slice (D, First, Size, Length));
+      return Wrap (Slice (D, First, Size, Length));
    end Slice;
 
    -----------------
@@ -964,7 +964,7 @@ package body League.Strings is
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
 
-         return Create (Data);
+         return Wrap (Data);
       end;
    end To_Casefold;
 
@@ -994,7 +994,7 @@ package body League.Strings is
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
 
-         return Create (Data);
+         return Wrap (Data);
       end;
    end To_Lowercase;
 
@@ -1010,7 +1010,7 @@ package body League.Strings is
    begin
       Matreshka.Internals.Unicode.Normalization.NFC (Self.Data, Data);
 
-      return Create (Data);
+      return Wrap (Data);
    end To_NFC;
 
    ------------
@@ -1025,7 +1025,7 @@ package body League.Strings is
    begin
       Matreshka.Internals.Unicode.Normalization.NFD (Self.Data, Data);
 
-      return Create (Data);
+      return Wrap (Data);
    end To_NFD;
 
    -------------
@@ -1040,7 +1040,7 @@ package body League.Strings is
    begin
       Matreshka.Internals.Unicode.Normalization.NFKC (Self.Data, Data);
 
-      return Create (Data);
+      return Wrap (Data);
    end To_NFKC;
 
    -------------
@@ -1055,7 +1055,7 @@ package body League.Strings is
    begin
       Matreshka.Internals.Unicode.Normalization.NFKD (Self.Data, Data);
 
-      return Create (Data);
+      return Wrap (Data);
    end To_NFKD;
 
    ----------------------------
@@ -1094,7 +1094,7 @@ package body League.Strings is
 
       To_Utf16_String (Item, Data);
 
-      return Create (Data);
+      return Wrap (Data);
    end To_Universal_String;
 
    ------------------
@@ -1123,7 +1123,7 @@ package body League.Strings is
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
 
-         return Create (Data);
+         return Wrap (Data);
       end;
    end To_Uppercase;
 
