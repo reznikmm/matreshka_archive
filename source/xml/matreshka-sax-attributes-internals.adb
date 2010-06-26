@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This package is for internal use only.
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
+with Matreshka.Internals.Strings.Compare;
 
 package body Matreshka.SAX.Attributes.Internals is
 
@@ -64,18 +66,36 @@ package body Matreshka.SAX.Attributes.Internals is
 
    begin
       while Has_Element (Position) loop
-         if Element (Position).Qualified_Name = Qualified_Name then
+         if Matreshka.Internals.Strings.Compare.Is_Equal
+             (Element (Position).Qualified_Name,
+              League.Strings.Internals.Get_Shared (Qualified_Name))
+         then
             raise Constraint_Error;
          end if;
 
          Next (Position);
       end loop;
 
-      Self.Attributes.Append
-       ((Namespace_URI  => Namespace_URI,
-         Local_Name     => Local_Name,
-         Qualified_Name => Qualified_Name,
-         Value          => Value));
+      declare
+         Aux : constant Attribute
+           := (Ada.Finalization.Controlled with
+                 Namespace_URI  =>
+                   League.Strings.Internals.Get_Shared (Namespace_URI),
+                 Local_Name     =>
+                   League.Strings.Internals.Get_Shared (Local_Name),
+                 Qualified_Name =>
+                   League.Strings.Internals.Get_Shared (Qualified_Name),
+                 Value          =>
+                   League.Strings.Internals.Get_Shared (Value));
+
+      begin
+         Matreshka.Internals.Strings.Reference (Aux.Namespace_URI);
+         Matreshka.Internals.Strings.Reference (Aux.Local_Name);
+         Matreshka.Internals.Strings.Reference (Aux.Qualified_Name);
+         Matreshka.Internals.Strings.Reference (Aux.Value);
+
+         Self.Attributes.Append (Aux);
+      end;
    end Append;
 
    -----------

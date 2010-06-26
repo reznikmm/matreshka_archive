@@ -50,9 +50,14 @@ package League.Strings.Internals is
    function Wrap
     (Data : not null Matreshka.Internals.Strings.Shared_String_Access)
        return Universal_String;
-   --  Creates instance of Universal_String with specified parameters.
-   --  Reference counter is untouched, thus once instance will be finalized
-   --  it will be decremented and shared strings freed.
+   --  Creates instance of Universal_String as wrapper for the specified
+   --  shared string. Reference counter is untouched, thus once instance will
+   --  be finalized it will be decremented and shared strings freed.
+
+   function Create (Item : Matreshka.Internals.Strings.Shared_String_Access)
+     return Universal_String;
+   --  Creates instance of Universal_String by reusing specified shared string.
+   --  Reference counter is incremented.
 
    function Get_Shared (Item : Universal_String'Class)
      return not null Matreshka.Internals.Strings.Shared_String_Access;

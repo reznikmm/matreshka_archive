@@ -53,11 +53,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    use Matreshka.SAX.Simple_Readers.Parser.Tables;
    use type Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
 
-   function Create (Item : Matreshka.Internals.Strings.Shared_String_Access)
-     return League.Strings.Universal_String;
-   --  Create instance of Universal_String by reusing specified shared string.
-   --  Reference counter is incremented.
-
    function YY_Goto_State (State : Integer; Sym : Integer) return Integer;
    --  Lookup for next state.
 
@@ -133,18 +128,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String);
    --  Process external id declaration.
-
-   ------------
-   -- Create --
-   ------------
-
-   function Create (Item : Matreshka.Internals.Strings.Shared_String_Access)
-     return League.Strings.Universal_String is
-   begin
-      Matreshka.Internals.Strings.Reference (Item);
-
-      return League.Strings.Internals.Wrap (Item);
-   end Create;
 
    -----------------------
    -- Process_Attribute --

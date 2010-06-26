@@ -53,11 +53,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    use Matreshka.SAX.Simple_Readers.Parser.Tables;
    use type Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
 
-   function Create (Item : Matreshka.Internals.Strings.Shared_String_Access)
-     return League.Strings.Universal_String;
-   --  Create instance of Universal_String by reusing specified shared string.
-   --  Reference counter is incremented.
-
    function YY_Goto_State (State : Integer; Sym : Integer) return Integer;
    --  Lookup for next state.
 
@@ -133,18 +128,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String);
    --  Process external id declaration.
-
-   ------------
-   -- Create --
-   ------------
-
-   function Create (Item : Matreshka.Internals.Strings.Shared_String_Access)
-     return League.Strings.Universal_String is
-   begin
-      Matreshka.Internals.Strings.Reference (Item);
-
-      return League.Strings.Internals.Wrap (Item);
-   end Create;
 
    -----------------------
    -- Process_Attribute --
@@ -773,13 +756,18 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 15 =>
-               Process_Comment (Self, Create (yy.value_stack (yy.tos).String));
+               Process_Comment
+                (Self,
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
             when 16 =>
                null;
 
             when 17 =>
-               Process_Processing_Instruction (Self, Create (yy.value_stack (yy.tos-1).String), Create (yy.value_stack (yy.tos).String));
+               Process_Processing_Instruction
+                (Self,
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String),
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
             when 18 =>
                --  Document type declaration, rule [28]. Once external identifier are
@@ -826,15 +814,15 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Process_External_Id
                 (Self,
                  League.Strings.Empty_String,
-                 Create (yy.value_stack (yy.tos).String));
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
             when 26 =>
                --  ExternalID specified by PUBLIC, rule [75].
             
                Process_External_Id
                 (Self,
-                 Create (yy.value_stack (yy.tos-1).String),
-                 Create (yy.value_stack (yy.tos).String));
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String),
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
             when 27 =>
                null;
@@ -864,14 +852,16 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 36 =>
-               Process_Comment (Self, Create (yy.value_stack (yy.tos).String));
+               Process_Comment
+                (Self,
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
             when 37 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-2).Symbol,
                  Is_External => False,
-                 Value       => Create (yy.value_stack (yy.tos-1).String),
+                 Value       => League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String),
                  Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
 
             when 38 =>
@@ -893,14 +883,14 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             when 40 =>
                Process_Parameter_Entity_Declaration
                 (Self,
-                 Create (yy.value_stack (yy.tos-2).String),
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos-2).String),
                  False,
-                 Create (yy.value_stack (yy.tos-1).String));
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String));
 
             when 41 =>
                Process_Parameter_Entity_Declaration
                 (Self,
-                 Create (yy.value_stack (yy.tos-2).String),
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos-2).String),
                  True,
                  League.Strings.Empty_String);
 
@@ -1120,10 +1110,15 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 110 =>
-               Process_Characters (Self, Create (yy.value_stack (yy.tos).String), yy.value_stack (yy.tos).Is_Whitespace);
+               Process_Characters
+                (Self,
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String),
+                 yy.value_stack (yy.tos).Is_Whitespace);
 
             when 111 =>
-               Process_Comment (Self, Create (yy.value_stack (yy.tos).String));
+               Process_Comment
+                (Self,
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
             when 112 =>
                null;
@@ -1143,7 +1138,10 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 117 =>
-               Process_Attribute (Self, yy.value_stack (yy.tos-2).Symbol, Create (yy.value_stack (yy.tos).String));
+               Process_Attribute
+                (Self,
+                 yy.value_stack (yy.tos-2).Symbol,
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
             when 118 =>
                Move (yyval, yy.value_stack (yy.tos-1));

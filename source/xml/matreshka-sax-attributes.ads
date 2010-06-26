@@ -42,8 +42,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 private with Ada.Containers.Vectors;
+private with Ada.Finalization;
 
 with League.Strings;
+private with Matreshka.Internals.Strings;
 
 package Matreshka.SAX.Attributes is
 
@@ -71,12 +73,21 @@ package Matreshka.SAX.Attributes is
 
 private
 
-   type Attribute is record
-      Namespace_URI  : League.Strings.Universal_String;
-      Local_Name     : League.Strings.Universal_String;
-      Qualified_Name : League.Strings.Universal_String;
-      Value          : League.Strings.Universal_String;
+   type Attribute is new Ada.Finalization.Controlled with record
+      Namespace_URI  : Matreshka.Internals.Strings.Shared_String_Access
+        := Matreshka.Internals.Strings.Shared_Empty'Access;
+      Local_Name     : Matreshka.Internals.Strings.Shared_String_Access
+        := Matreshka.Internals.Strings.Shared_Empty'Access;
+      Qualified_Name : Matreshka.Internals.Strings.Shared_String_Access
+        := Matreshka.Internals.Strings.Shared_Empty'Access;
+      Value          : Matreshka.Internals.Strings.Shared_String_Access
+        := Matreshka.Internals.Strings.Shared_Empty'Access;
    end record;
+
+   overriding procedure Adjust (Self : in out Attribute);
+   pragma Inline (Adjust);
+
+   overriding procedure Finalize (Self : in out Attribute);
 
    package Attribute_Vectors is
      new Ada.Containers.Vectors (Positive, Attribute);

@@ -41,8 +41,46 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
 
 package body Matreshka.SAX.Attributes is
+
+   use type Matreshka.Internals.Strings.Shared_String_Access;
+
+   ------------
+   -- Adjust --
+   ------------
+
+   overriding procedure Adjust (Self : in out Attribute) is
+   begin
+      Matreshka.Internals.Strings.Reference (Self.Namespace_URI);
+      Matreshka.Internals.Strings.Reference (Self.Local_Name);
+      Matreshka.Internals.Strings.Reference (Self.Qualified_Name);
+      Matreshka.Internals.Strings.Reference (Self.Value);
+   end Adjust;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize (Self : in out Attribute) is
+   begin
+      if Self.Namespace_URI /= null then
+         Matreshka.Internals.Strings.Dereference (Self.Namespace_URI);
+      end if;
+
+      if Self.Local_Name /= null then
+         Matreshka.Internals.Strings.Dereference (Self.Local_Name);
+      end if;
+
+      if Self.Qualified_Name /= null then
+         Matreshka.Internals.Strings.Dereference (Self.Qualified_Name);
+      end if;
+
+      if Self.Value /= null then
+         Matreshka.Internals.Strings.Dereference (Self.Value);
+      end if;
+   end Finalize;
 
    ------------
    -- Length --
@@ -61,7 +99,9 @@ package body Matreshka.SAX.Attributes is
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String is
    begin
-      return Self.Attributes.Element (Index).Local_Name;
+      return
+        League.Strings.Internals.Create
+         (Self.Attributes.Element (Index).Local_Name);
    end Local_Name;
 
    -------------------
@@ -72,7 +112,9 @@ package body Matreshka.SAX.Attributes is
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String is
    begin
-      return Self.Attributes.Element (Index).Namespace_URI;
+      return
+        League.Strings.Internals.Create
+         (Self.Attributes.Element (Index).Namespace_URI);
    end Namespace_URI;
 
    --------------------
@@ -83,7 +125,9 @@ package body Matreshka.SAX.Attributes is
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String is
    begin
-      return Self.Attributes.Element (Index).Qualified_Name;
+      return
+        League.Strings.Internals.Create
+         (Self.Attributes.Element (Index).Qualified_Name);
    end Qualified_Name;
 
    -----------
@@ -94,7 +138,9 @@ package body Matreshka.SAX.Attributes is
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String is
    begin
-      return Self.Attributes.Element (Index).Value;
+      return
+        League.Strings.Internals.Create
+         (Self.Attributes.Element (Index).Value);
    end Value;
 
 end Matreshka.SAX.Attributes;

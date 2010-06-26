@@ -44,6 +44,18 @@
 
 package body League.Strings.Internals is
 
+   ------------
+   -- Create --
+   ------------
+
+   function Create (Item : Matreshka.Internals.Strings.Shared_String_Access)
+     return Universal_String is
+   begin
+      Matreshka.Internals.Strings.Reference (Item);
+
+      return League.Strings.Internals.Wrap (Item);
+   end Create;
+
    ----------------
    -- Get_Shared --
    ----------------
