@@ -653,7 +653,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
          end loop;
 
          return
-           League.Strings.Internals.Create
+           League.Strings.Internals.Wrap
             (Matreshka.Internals.Strings.Operations.Slice
               (Self.Scanner_State.Data, FP, LP - FP, LI - FI));
       end YY_Text;

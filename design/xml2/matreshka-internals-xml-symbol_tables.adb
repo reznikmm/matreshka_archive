@@ -175,7 +175,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
    begin
       Matreshka.Internals.Strings.Reference (Self.Table (Identifier).String);
 
-      return League.Strings.Internals.Create (Self.Table (Identifier).String);
+      return League.Strings.Internals.Wrap (Self.Table (Identifier).String);
    end Name;
 
 end Matreshka.Internals.XML.Symbol_Tables;
