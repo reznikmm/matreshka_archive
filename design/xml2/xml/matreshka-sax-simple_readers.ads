@@ -186,8 +186,6 @@ private
       Is_External   : Boolean;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
-      Public_Id     : League.Strings.Universal_String;
-      System_Id     : League.Strings.Universal_String;
       Notation      : League.Strings.Universal_String;
    end record;
 
@@ -295,6 +293,8 @@ private
 
       YYVal              : YYSType;
       YYLVal             : YYSType;
+      Public_Id          : League.Strings.Universal_String;
+      System_Id          : League.Strings.Universal_String;
 
       --  Analyzer state
 

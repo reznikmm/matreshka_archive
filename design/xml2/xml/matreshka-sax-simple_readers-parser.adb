@@ -66,9 +66,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    procedure Process_Document_Type_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
      Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
-     Is_External : Boolean;
-     Public_Id   : League.Strings.Universal_String;
-     System_Id   : League.Strings.Universal_String);
+     Is_External : Boolean);
    --  Process document type declaration rule [28] and prepare to analyze its
    --  external subset if any.
 
@@ -77,8 +75,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
-     Public_Id   : League.Strings.Universal_String;
-     System_Id   : League.Strings.Universal_String;
      Notation    : League.Strings.Universal_String);
    --  Process general entity declaration, rule [71].
 
@@ -86,9 +82,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
     (Self        : not null access SAX_Simple_Reader'Class;
      Name        : League.Strings.Universal_String;
      Is_External : Boolean;
-     Value       : League.Strings.Universal_String;
-     Public_Id   : League.Strings.Universal_String;
-     System_Id   : League.Strings.Universal_String);
+     Value       : League.Strings.Universal_String);
    --  Process parameter entity declaration, rule [72].
 
    procedure Process_Start_Tag
@@ -128,6 +122,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
     (Self  : not null access SAX_Simple_Reader'Class);
    --  Process single attribute by adding it into set of attributes.
 
+   procedure Process_External_Id
+    (Self      : not null access SAX_Simple_Reader'Class;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String);
+   --  Process external id declaration.
+
    -----------------------
    -- Process_Attribute --
    -----------------------
@@ -138,7 +138,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Value  : League.Strings.Universal_String) is
    begin
       Self.Attribute :=
-       (Namespace_URI  => League.Strings.To_Universal_String (""),
+       (Namespace_URI  => League.Strings.Empty_String,
         Local_Name     => Symbol,
         Qualified_Name => Symbol,
         Value          => Value);
@@ -198,15 +198,16 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    procedure Process_Document_Type_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
      Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
-     Is_External : Boolean;
-     Public_Id   : League.Strings.Universal_String;
-     System_Id   : League.Strings.Universal_String) is
+     Is_External : Boolean) is
    begin
       Self.Root_Symbol := Symbol;
 
       if Is_External then
          Self.Entity_Resolver.Resolve_Entity
-          (Public_Id, System_Id, Self.External_Subset, Self.Continue);
+          (Self.Public_Id,
+           Self.System_Id,
+           Self.External_Subset,
+           Self.Continue);
          Scanner.Push_External_Entity
           (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
       end if;
@@ -246,11 +247,24 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
       Handler_Callbacks.Call_End_Element
        (Self,
-        League.Strings.To_Universal_String (""),
+        League.Strings.Empty_String,
         Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
         Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol));
       Self.Element_Names.Delete_Last;
    end Process_End_Tag;
+
+   -------------------------
+   -- Process_External_Id --
+   -------------------------
+
+   procedure Process_External_Id
+    (Self      : not null access SAX_Simple_Reader'Class;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String) is
+   begin
+      Self.Public_Id := Public_Id;
+      Self.System_Id := System_Id;
+   end Process_External_Id;
 
    ----------------------------------------
    -- Process_General_Entity_Declaration --
@@ -261,8 +275,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
-     Public_Id   : League.Strings.Universal_String;
-     System_Id   : League.Strings.Universal_String;
      Notation    : League.Strings.Universal_String)
    is
       use League.Strings;
@@ -286,7 +298,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
             begin
                Self.Entity_Resolver.Resolve_Entity
-                (Public_Id, System_Id, V, S);
+                (Self.Public_Id, Self.System_Id, V, S);
 
                if not S then
                   raise Program_Error
@@ -300,7 +312,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                   Value  => V,
                   others => <>));
                Handler_Callbacks.Call_External_Entity_Decl
-                (Self, Name, Public_Id, System_Id);
+                (Self, Name, Self.Public_Id, Self.System_Id);
             end;
 
          else
@@ -310,7 +322,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Kind   => Unparsed,
                others => <>));
             Handler_Callbacks.Call_Unparsed_Entity_Decl
-             (Self, Name, Public_Id, System_Id, Notation);
+             (Self, Name, Self.Public_Id, Self.System_Id, Notation);
          end if;
 
       else
@@ -332,9 +344,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
     (Self        : not null access SAX_Simple_Reader'Class;
      Name        : League.Strings.Universal_String;
      Is_External : Boolean;
-     Value       : League.Strings.Universal_String;
-     Public_Id   : League.Strings.Universal_String;
-     System_Id   : League.Strings.Universal_String)
+     Value       : League.Strings.Universal_String)
    is
       use League.Strings;
       use Entity_Information_Maps;
@@ -352,7 +362,8 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             S : Boolean := True;
 
          begin
-            Self.Entity_Resolver.Resolve_Entity (Public_Id, System_Id, V, S);
+            Self.Entity_Resolver.Resolve_Entity
+             (Self.Public_Id, Self.System_Id, V, S);
 
             if not S then
                raise Program_Error
@@ -431,7 +442,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       Self.Element_Names.Append (Symbol);
       Handler_Callbacks.Call_Start_Element
        (Self           => Self,
-        Namespace_URI  => League.Strings.To_Universal_String (""),
+        Namespace_URI  => League.Strings.Empty_String,
         Local_Name     =>
           Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
         Qualified_Name =>
@@ -755,9 +766,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Process_Document_Type_Declaration
                 (Self,
                  yy.value_stack (yy.tos-1).Symbol,
-                 yy.value_stack (yy.tos).Is_External,
-                 yy.value_stack (yy.tos).Public_Id,
-                 yy.value_stack (yy.tos).System_Id);
+                 yy.value_stack (yy.tos).Is_External);
 
             when 19 =>
                null;
@@ -771,8 +780,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             when 22 =>
                yyval :=
                 (Is_External => True,
-                 Public_Id   => yy.value_stack (yy.tos).Public_Id,
-                 System_Id   => yy.value_stack (yy.tos).System_Id,
                  others      => <>);
 
             when 23 =>
@@ -783,17 +790,18 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             when 24 =>
                --  ExternalID specified by SYSTEM, rule [75].
             
-               yyval :=
-                (System_Id => yy.value_stack (yy.tos).String,
-                 others    => <>);
+               Process_External_Id
+                (Self,
+                 League.Strings.Empty_String,
+                 yy.value_stack (yy.tos).String);
 
             when 25 =>
                --  ExternalID specified by PUBLIC, rule [75].
             
-               yyval :=
-                (Public_Id => yy.value_stack (yy.tos-1).String,
-                 System_Id => yy.value_stack (yy.tos).String,
-                 others    => <>);
+               Process_External_Id
+                (Self,
+                 yy.value_stack (yy.tos-1).String,
+                 yy.value_stack (yy.tos).String);
 
             when 26 =>
                null;
@@ -831,8 +839,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  yy.value_stack (yy.tos-2).Symbol,
                  yy.value_stack (yy.tos-1).Is_External,
                  yy.value_stack (yy.tos-1).String,
-                 yy.value_stack (yy.tos-1).Public_Id,
-                 yy.value_stack (yy.tos-1).System_Id,
                  yy.value_stack (yy.tos-1).Notation);
 
             when 37 =>
@@ -840,9 +846,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                 (Self,
                  yy.value_stack (yy.tos-2).String,
                  yy.value_stack (yy.tos-1).Is_External,
-                 yy.value_stack (yy.tos-1).String,
-                 yy.value_stack (yy.tos-2).Public_Id,
-                 yy.value_stack (yy.tos-2).System_Id);
+                 yy.value_stack (yy.tos-1).String);
 
             when 38 =>
                yyval :=
@@ -853,15 +857,11 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             when 39 =>
                yyval :=
                 (Is_External => True,
-                 Public_Id   => yy.value_stack (yy.tos).Public_Id,
-                 System_Id   => yy.value_stack (yy.tos).System_Id,
                  others      => <>);
 
             when 40 =>
                yyval :=
                 (Is_External => True,
-                 Public_Id   => yy.value_stack (yy.tos-2).Public_Id,
-                 System_Id   => yy.value_stack (yy.tos-2).System_Id,
                  Notation    => yy.value_stack (yy.tos).String,
                  others      => <>);
 
@@ -887,7 +887,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                yyval.String := yy.value_stack (yy.tos).String;
 
             when 46 =>
-               yyval.String := League.Strings.To_Universal_String ("");
+               yyval.String := League.Strings.Empty_String;
 
             when 47 =>
                null;

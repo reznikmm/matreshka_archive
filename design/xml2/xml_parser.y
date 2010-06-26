@@ -65,8 +65,6 @@
       Is_External   : Boolean;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
-      Public_Id     : League.Strings.Universal_String;
-      System_Id     : League.Strings.Universal_String;
       Notation      : League.Strings.Universal_String;
    end record;
 }
@@ -183,9 +181,7 @@ doctypedecl_optional:
    Process_Document_Type_Declaration
     (Self,
      $1.Symbol,
-     $2.Is_External,
-     $2.Public_Id,
-     $2.System_Id);
+     $2.Is_External);
 }
     external_subset_optional internal_subset_optional Token_Close
 {
@@ -206,8 +202,6 @@ ExternalID_optional:
 {
    $$ :=
     (Is_External => True,
-     Public_Id   => $1.Public_Id,
-     System_Id   => $1.System_Id,
      others      => <>);
 }
   |
@@ -223,18 +217,19 @@ ExternalID:
 {
    --  ExternalID specified by SYSTEM, rule [75].
 
-   $$ :=
-    (System_Id => $2.String,
-     others    => <>);
+   Process_External_Id
+    (Self,
+     League.Strings.Empty_String,
+     $2.String);
 }
   | Token_Public Token_Public_Literal Token_System_Literal
 {
    --  ExternalID specified by PUBLIC, rule [75].
 
-   $$ :=
-    (Public_Id => $2.String,
-     System_Id => $3.String,
-     others    => <>);
+   Process_External_Id
+    (Self,
+     $2.String,
+     $3.String);
 }
   ;
 
@@ -298,8 +293,6 @@ EntityDecl:
      $2.Symbol,
      $3.Is_External,
      $3.String,
-     $3.Public_Id,
-     $3.System_Id,
      $3.Notation);
 }
   | Token_Entity_Decl_Open Token_Percent Token_Name PEDef Token_Close
@@ -308,9 +301,7 @@ EntityDecl:
     (Self,
      $3.String,
      $4.Is_External,
-     $4.String,
-     $3.Public_Id,
-     $3.System_Id);
+     $4.String);
 }
   ;
 
@@ -326,16 +317,12 @@ EntityDef:
 {
    $$ :=
     (Is_External => True,
-     Public_Id   => $1.Public_Id,
-     System_Id   => $1.System_Id,
      others      => <>);
 }
   | ExternalID Token_NData Token_Name
 {
    $$ :=
     (Is_External => True,
-     Public_Id   => $1.Public_Id,
-     System_Id   => $1.System_Id,
      Notation    => $3.String,
      others      => <>);
 }
@@ -376,7 +363,7 @@ AttributeEntityValue_Content:
 }
   |
 {
-   $$.String := League.Strings.To_Universal_String ("");
+   $$.String := League.Strings.Empty_String;
 }
   ;
 
@@ -762,26 +749,20 @@ with Matreshka.Internals.XML.Symbol_Tables;
    procedure Process_Document_Type_Declaration
     (Self        : access Integer;
      Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
-     Is_External : Boolean;
-     Public_Id   : League.Strings.Universal_String;
-     System_Id   : League.Strings.Universal_String) is separate;
+     Is_External : Boolean) is separate;
 
    procedure Process_General_Entity_Declaration
     (Self        : access Integer;
      Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
-     Public_Id   : League.Strings.Universal_String;
-     System_Id   : League.Strings.Universal_String;
      Notation    : League.Strings.Universal_String) is separate;
 
    procedure Process_Parameter_Entity_Declaration
     (Self        : access Integer;
      Name        : League.Strings.Universal_String;
      Is_External : Boolean;
-     Value       : League.Strings.Universal_String;
-     Public_Id   : League.Strings.Universal_String;
-     System_Id   : League.Strings.Universal_String) is separate;
+     Value       : League.Strings.Universal_String) is separate;
 
    procedure Process_Start_Tag
     (Self   : access Integer;
@@ -814,6 +795,11 @@ with Matreshka.Internals.XML.Symbol_Tables;
      (Self   : access Integer;
       Target : League.Strings.Universal_String;
       Data   : League.Strings.Universal_String) is separate;
+
+   procedure Process_External_Id
+     (Self      : access Integer;
+      Public_Id : League.Strings.Universal_String;
+      System_Id : League.Strings.Universal_String) is separate;
 
    Self     : access Integer;
    Put_Line : access procedure (Item : League.Strings.Universal_String);
