@@ -89,6 +89,11 @@ private package Matreshka.SAX.Simple_Readers.Handler_Callbacks is
      Data   : League.Strings.Universal_String);
    --  Calls handler's SAX_Content_Handler.Processing_Instruction subprogram.
 
+   procedure Call_Set_Document_Locator
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Locator : Matreshka.SAX.Locators.SAX_Locator);
+   --  Calls handler's SAX_Content_Handler.Set_Document_Locator subprogram.
+
    procedure Call_Start_Element
     (Self           : not null access SAX_Simple_Reader'Class;
      Namespace_URI  : League.Strings.Universal_String;

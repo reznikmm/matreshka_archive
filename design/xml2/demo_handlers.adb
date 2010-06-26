@@ -7,6 +7,9 @@ package body Demo_Handlers is
 
    use type League.Strings.Universal_String;
 
+   function Image (Item : Matreshka.SAX.Locators.SAX_Locator)
+     return League.Strings.Universal_String;
+
    ----------------
    -- Characters --
    ----------------
@@ -16,7 +19,8 @@ package body Demo_Handlers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      Put_Line (">>> (Characters): '" & Text & "'");
+      Put_Line
+       (">>> (Characters) " & Image (Self.Locator) & ": '" & Text & "'");
    end Characters;
 
    -------------
@@ -28,7 +32,7 @@ package body Demo_Handlers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      Put_Line (">>> (Comment): '" & Text & "'");
+      Put_Line (">>> (Comment) " & Image (Self.Locator) & ": '" & Text & "'");
    end Comment;
 
    -----------------
@@ -43,8 +47,15 @@ package body Demo_Handlers is
      Success        : in out Boolean) is
    begin
       Put_Line
-       (">>> (End_Element): '"
-          & Namespace_URI & "' '" & Local_Name & "' '" & Qualified_Name & "'");
+       (">>> (End_Element) "
+          & Image (Self.Locator)
+          & ": '"
+          & Namespace_URI
+          & "' '"
+          & Local_Name
+          & "' '"
+          & Qualified_Name
+          & "'");
    end End_Element;
 
    ------------------
@@ -70,7 +81,9 @@ package body Demo_Handlers is
      Success   : in out Boolean) is
    begin
       Put_Line
-       (">>> (External_Entity_Decl): '"
+       (">>> (External_Entity_Decl) "
+          & Image (Self.Locator)
+          & ": '"
           & Name & "' => '" & Public_Id & "' '" & System_Id & "'");
    end External_Entity_Decl;
 
@@ -83,8 +96,31 @@ package body Demo_Handlers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      Put_Line (">>> (Ignorable_Whitespace): '" & Text & "'");
+      Put_Line
+       (">>> (Ignorable_Whitespace) "
+          & Image (Self.Locator)
+          & ": '"
+          & Text
+          & "'");
    end Ignorable_Whitespace;
+
+   -----------
+   -- Image --
+   -----------
+
+   function Image (Item : Matreshka.SAX.Locators.SAX_Locator)
+     return League.Strings.Universal_String
+   is
+      L : constant Wide_Wide_String := Natural'Wide_Wide_Image (Item.Line);
+      C : constant Wide_Wide_String := Natural'Wide_Wide_Image (Item.Column);
+
+   begin
+      return
+        League.Strings.To_Universal_String
+         (L (L'First + 1 .. L'Last)
+            & ':'
+            & C (C'First + 1 .. C'Last));
+   end Image;
 
    --------------------------
    -- Internal_Entity_Decl --
@@ -97,7 +133,13 @@ package body Demo_Handlers is
      Success : in out Boolean) is
    begin
       Put_Line
-       (">>> (Internal_Entity_Decl): '" & Name & "' => '" & Value & "'");
+       (">>> (Internal_Entity_Decl) "
+          & Image (Self.Locator)
+          & ": '"
+          & Name
+          & "' => '"
+          & Value
+          & "'");
    end Internal_Entity_Decl;
 
    ----------------------------
@@ -111,7 +153,13 @@ package body Demo_Handlers is
      Success : in out Boolean) is
    begin
       Put_Line
-       (">>> (Processing_Instruction): '" & Target & "' '" & Data & "'");
+       (">>> (Processing_Instruction) "
+          & Image (Self.Locator)
+          & ": '"
+          & Target
+          & "' '"
+          & Data
+          & "'");
    end Processing_Instruction;
 
    --------------------
@@ -132,6 +180,17 @@ package body Demo_Handlers is
 --      Put_Line (Text);
    end Resolve_Entity;
 
+   --------------------------
+   -- Set_Document_Locator --
+   --------------------------
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out Demo_Handler;
+     Locator : Matreshka.SAX.Locators.SAX_Locator) is
+   begin
+      Self.Locator := Locator;
+   end Set_Document_Locator;
+
    -------------------
    -- Start_Element --
    -------------------
@@ -145,8 +204,15 @@ package body Demo_Handlers is
      Success        : in out Boolean) is
    begin
       Put_Line
-       (">>> (Start_Element): '"
-          & Namespace_URI & "' '" & Local_Name & "' '" & Qualified_Name & "'");
+       (">>> (Start_Element) "
+          & Image (Self.Locator)
+          & ": '"
+          & Namespace_URI
+          & "' '"
+          & Local_Name
+          & "' '"
+          & Qualified_Name
+          & "'");
 
       for J in 1 .. Attributes.Length loop
          Put_Line
@@ -170,9 +236,17 @@ package body Demo_Handlers is
      Success       : in out Boolean) is
    begin
       Put_Line
-       (">>> (Unparsed_Entity_Decl): '"
-          & Name & "' => '" & Public_Id & "' '" & System_Id & "' '"
-          & Notation_Name & "'");
+       (">>> (Unparsed_Entity_Decl) "
+          & Image (Self.Locator)
+          & ": '"
+          & Name
+          & "' => '"
+          & Public_Id
+          & "' '"
+          & System_Id
+          & "' '"
+          & Notation_Name
+          & "'");
    end Unparsed_Entity_Decl;
 
 end Demo_Handlers;

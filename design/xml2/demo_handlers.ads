@@ -5,6 +5,7 @@ with Matreshka.SAX.Decl_Handlers;
 with Matreshka.SAX.DTD_Handlers;
 with Matreshka.SAX.Entity_Resolvers;
 with Matreshka.SAX.Lexical_Handlers;
+with Matreshka.SAX.Locators;
 
 package Demo_Handlers is
 
@@ -13,7 +14,12 @@ package Demo_Handlers is
        and Matreshka.SAX.Decl_Handlers.SAX_Decl_Handler
        and Matreshka.SAX.DTD_Handlers.SAX_DTD_Handler
        and Matreshka.SAX.Entity_Resolvers.SAX_Entity_Resolver
-       and Matreshka.SAX.Lexical_Handlers.SAX_Lexical_Handler with null record;
+       and Matreshka.SAX.Lexical_Handlers.SAX_Lexical_Handler with
+   record
+      Locator : Matreshka.SAX.Locators.SAX_Locator;
+   end record;
+   --  GNAT GPL 2010: compiler is unable to compile declaration of this type
+   --  when it is declared as private.
 
    overriding procedure Characters
     (Self    : in out Demo_Handler;
@@ -66,6 +72,10 @@ package Demo_Handlers is
      System_Id : League.Strings.Universal_String;
      Text      : out League.Strings.Universal_String;
      Success   : in out Boolean);
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out Demo_Handler;
+     Locator : Matreshka.SAX.Locators.SAX_Locator);
 
    overriding procedure Start_Element
     (Self           : in out Demo_Handler;

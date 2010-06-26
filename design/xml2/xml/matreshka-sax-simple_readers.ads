@@ -53,6 +53,7 @@ private with Matreshka.Internals.Utf16;
 private with Matreshka.Internals.XML.Symbol_Tables;
 private with Matreshka.SAX.Attributes;
 private with Matreshka.SAX.Default_Handlers;
+private with Matreshka.SAX.Locators;
 
 package Matreshka.SAX.Simple_Readers is
 
@@ -279,7 +280,16 @@ private
 
       Scanner_State      : Scanner_State_Information;
       Scanner_Stack      : Scanner_State_Vectors.Vector;
+      Stack_Is_Empty     : Boolean := True;
+      --  This is cache of Is_Empty status of scanner's stack to speedup
+      --  scanning.
       Symbols            : Matreshka.Internals.XML.Symbol_Tables.Symbol_Table;
+      YY_Base_Line       : Natural := 1;
+      YY_Base_Column     : Natural := 0;
+      YY_Current_Line    : Natural := 1;
+      YY_Current_Column  : Natural := 0;
+      YY_Current_Skip_LF : Boolean := False;
+      Locator            : Matreshka.SAX.Locators.SAX_Locator;
 
       --  Parser state
 

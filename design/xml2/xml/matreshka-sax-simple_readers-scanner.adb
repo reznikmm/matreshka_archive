@@ -434,6 +434,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
      Data : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Self.Scanner_Stack.Append (Self.Scanner_State);
+      Self.Stack_Is_Empty := False;
 
       Self.Scanner_State := (Data, others => <>);
       Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
@@ -448,6 +449,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
      Data  : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Self.Scanner_Stack.Append (Self.Scanner_State);
+      Self.Stack_Is_Empty := False;
 
       Self.Scanner_State := (Data, In_Literal => True, others => <>);
       Enter_Start_Condition (Self, ENTITY_VALUE);
@@ -462,6 +464,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
      Data  : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Self.Scanner_Stack.Append (Self.Scanner_State);
+      Self.Stack_Is_Empty := False;
 
       Self.Scanner_State := (Data, In_Literal => True, others => <>);
       Enter_Start_Condition (Self, ATTRIBUTE_VALUE);
@@ -476,6 +479,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
      Data  : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Self.Scanner_Stack.Append (Self.Scanner_State);
+      Self.Stack_Is_Empty := False;
 
       Self.Scanner_State := (Data, others => <>);
       Enter_Start_Condition (Self, INITIAL);
@@ -591,8 +595,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       YY_Last_Accepting_Position : Utf16_String_Index;
       YY_Last_Accepting_Index    : Positive;
       YY_Last_Accepting_State    : Integer;
+      YY_Last_Accepting_Line     : Natural;
+      YY_Last_Accepting_Column   : Natural;
+      YY_Last_Accepting_Skip_LF  : Boolean;
       YY_Next_Position           : Utf16_String_Index;
       YY_Next_Index              : Positive;
+      YY_Next_Line               : Natural;
+      YY_Next_Column             : Natural;
+      YY_Next_Skip_LF            : Boolean;
       YY_Last_Match_Position     : Utf16_String_Index;
       YY_Last_Match_Index        : Positive;
       YY_Last_Match_State        : Integer;
@@ -759,13 +769,20 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
       loop  --  Loops until end-of-data is reached.
 --      yy_bp := yy_cp;
+--      yy_current_state := yy_start;
          Self.Scanner_State.YY_Base_Position :=
            Self.Scanner_State.YY_Current_Position;
          Self.Scanner_State.YY_Base_Index    :=
            Self.Scanner_State.YY_Current_Index;
---      yy_current_state := yy_start;
          YY_Current_State := Self.Scanner_State.YY_Start_State;
---
+
+         if Self.Stack_Is_Empty then
+            --  Track line/column for document.
+
+            Self.YY_Base_Line   := Self.YY_Current_Line;
+            Self.YY_Base_Column := Self.YY_Current_Column;
+         end if;
+
 --        yy_cp := yy_c_buf_p;
 --
 --        -- yy_bp points to the position in yy_ch_buf of the start of the
@@ -774,12 +791,48 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             YY_Next_Position := Self.Scanner_State.YY_Current_Position;
             YY_Next_Index    := Self.Scanner_State.YY_Current_Index;
 
+            if Self.Stack_Is_Empty then
+               YY_Next_Line     := Self.YY_Current_Line;
+               YY_Next_Column   := Self.YY_Current_Column;
+               YY_Next_Skip_LF  := Self.YY_Current_Skip_LF;
+            end if;
+
             if YY_Next_Position < Self.Scanner_State.Data.Unused then
                Unchecked_Next
                 (Self.Scanner_State.Data.Value,
                  YY_Next_Position,
                  YY_Current_Code);
                YY_Next_Index := YY_Next_Index + 1;
+
+               if Self.Stack_Is_Empty then
+                  --  Track line/column in root document
+
+                  if YY_Current_Code = 16#000D# then
+                     --  Start of new line.
+
+                     YY_Next_Line    := YY_Next_Line + 1;
+                     YY_Next_Column  := 1;
+                     YY_Next_Skip_LF := True;
+
+                  elsif YY_Current_Code = 16#000A# then
+                     if YY_Next_Skip_LF then
+                        --  Ignore CR after LF.
+
+                        YY_Next_Skip_LF := False;
+
+                     else
+                        YY_Next_Line   := YY_Next_Line + 1;
+                        YY_Next_Column := 1;
+                     end if;
+
+                  else
+                     --  Move to next column.
+
+                     YY_Next_Column  := YY_Next_Column + 1;
+                     YY_Next_Skip_LF := False;
+                  end if;
+               end if;
+
                YY_C :=
                  YY_EC_Base
                   (YY_Current_Code / 16#100#) (YY_Current_Code mod 16#100#);
@@ -788,8 +841,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                   --  NUL character (code point 0) can't be used in XML
                   --  documents.
 
-                  raise Program_Error with "nul character in document";
+                  raise Program_Error with "NUL character in document";
                end if;
+
             else
                --  End of buffer reached.
 
@@ -814,6 +868,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                  Self.Scanner_State.YY_Current_Position;
                YY_Last_Accepting_Index    :=
                  Self.Scanner_State.YY_Current_Index;
+
+               if Self.Stack_Is_Empty then
+                  YY_Last_Accepting_Line    := Self.YY_Current_Line;
+                  YY_Last_Accepting_Column  := Self.YY_Current_Column;
+                  YY_Last_Accepting_Skip_LF := Self.YY_Current_Skip_LF;
+               end if;
             end if;
 
             while YY_Chk (YY_Base (YY_Current_State) + YY_C)
@@ -830,6 +890,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             Self.Scanner_State.YY_Current_Position := YY_Next_Position;
             Self.Scanner_State.YY_Current_Index    := YY_Next_Index;
 
+            if Self.Stack_Is_Empty then
+               Self.YY_Current_Line    := YY_Next_Line;
+               Self.YY_Current_Column  := YY_Next_Column;
+               Self.YY_Current_Skip_LF := YY_Next_Skip_LF;
+            end if;
+
             exit when YY_Current_State = YY_Jam_State;
          end loop;
 
@@ -838,6 +904,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
          Self.Scanner_State.YY_Current_Position := YY_Last_Accepting_Position;
          Self.Scanner_State.YY_Current_Index    := YY_Last_Accepting_Index;
          YY_Current_State                       := YY_Last_Accepting_State;
+
+         if Self.Stack_Is_Empty then
+            Self.YY_Current_Line    := YY_Last_Accepting_Line;
+            Self.YY_Current_Column  := YY_Last_Accepting_Column;
+            Self.YY_Current_Skip_LF := YY_Last_Accepting_Skip_LF;
+         end if;
 
    <<Next_Action>>
          YY_Action := YY_Accept (YY_Current_State);
@@ -1544,13 +1616,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 --                     goto next_action;
 
                else
-                  if Self.Scanner_Stack.Is_Empty then
+                  if Self.Stack_Is_Empty then
                      return End_Of_Input;
 --                     raise Program_Error with "End of data";
 
                   else
                      Self.Scanner_State := Self.Scanner_Stack.Last_Element;
                      Self.Scanner_Stack.Delete_Last;
+                     Self.Stack_Is_Empty := Self.Scanner_Stack.Is_Empty;
 
                      goto New_File;
                   end if;
