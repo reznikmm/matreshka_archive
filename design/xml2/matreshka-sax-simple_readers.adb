@@ -268,4 +268,78 @@ package body Matreshka.SAX.Simple_Readers is
       end if;
    end Set_Lexical_Handler;
 
+   use Matreshka.Internals.Strings;
+
+   ----------------
+   -- Set_String --
+   ----------------
+
+   procedure Set_String
+    (Item          : in out YYSType;
+     String        : League.Strings.Universal_String;
+     Is_Whitespace : Boolean;
+     Is_CData      : Boolean)
+   is
+      pragma Assert (Item.String = null);
+
+   begin
+      Item.String        := League.Strings.Internals.Get_Shared (String);
+      Item.Is_Whitespace := Is_Whitespace;
+      Item.Is_CData      := Is_CData;
+      Item.Symbol        := Matreshka.Internals.XML.Symbol_Tables.No_Symbol;
+      Matreshka.Internals.Strings.Reference (Item.String);
+   end Set_String;
+
+   ----------------
+   -- Set_Symbol --
+   ----------------
+
+   procedure Set_Symbol
+    (Item    : in out YYSType;
+      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+   is
+      pragma Assert (Item.String = null);
+
+   begin
+      Item.String        := null;
+      Item.Is_Whitespace := False;
+      Item.Is_CData      := False;
+      Item.Symbol        := Symbol;
+   end Set_Symbol;
+
+   ----------
+   -- Move --
+   ----------
+
+   procedure Move
+    (To   : in out YYSType;
+     From : in out YYSType) is
+   begin
+      To.String        := From.String;
+      To.Is_Whitespace := From.Is_Whitespace;
+      To.Is_CData      := From.Is_CData;
+      To.Symbol        := From.Symbol;
+
+      From.String        := null;
+      From.Is_Whitespace := False;
+      From.Is_CData      := False;
+      From.Symbol        := Matreshka.Internals.XML.Symbol_Tables.No_Symbol;
+   end Move;
+
+   -----------
+   -- Clear --
+   -----------
+
+   procedure Clear (Item : in out YYSType) is
+   begin
+      if Item.String /= null then
+         Matreshka.Internals.Strings.Dereference (Item.String);
+         Item.String        := null;
+      end if;
+
+      Item.Is_Whitespace := False;
+      Item.Is_CData      := False;
+      Item.Symbol        := Matreshka.Internals.XML.Symbol_Tables.No_Symbol;
+   end Clear;
+
 end Matreshka.SAX.Simple_Readers;

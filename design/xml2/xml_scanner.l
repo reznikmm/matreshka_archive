@@ -186,7 +186,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    --  by [26] VersionNum, [81] EncName, [32] SDDecl. Precise check is
    --  processed while parsing.
 
-   YYLVal := (String => YY_Text (1, 1), others => <>);
+   Set_String
+    (Item          => YYLVal,
+     String        => YY_Text (1, 1),
+     Is_Whitespace => False,
+     Is_CData      => False);
    Reset_Whitespace_Matched (Self);
 
    return Token_String_Segment;
@@ -195,7 +199,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <XML_DECL,PI,PI_DATA>"?>" {
    Enter_Start_Condition (Self, INITIAL);
 
-   YYLVal := (others => <>);
+--   YYLVal := (others => <>);
 
    return Token_PI_Close;
 }
@@ -217,7 +221,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
       --  XXX This is recoverable error.
    end if;
 
-   YYLVal := (String => YY_Text (0, 2), others => <>);
+   Set_String
+    (Item          => YYLVal,
+     String        => YY_Text (0, 2),
+     Is_Whitespace => False,
+     Is_CData      => False);
    Enter_Start_Condition (Self, INITIAL);
 
    return Token_PI_Close;
@@ -261,7 +269,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, Get_Continue_State (Self));
-   YYLVal := (String => YY_Text (1, 1), others => <>);
+   Set_String
+    (Item          => YYLVal,
+     String        => YY_Text (1, 1),
+     Is_Whitespace => False,
+     Is_CData      => False);
 
    return Token_System_Literal;
 }
@@ -286,7 +298,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
-   YYLVal := (String => YY_Text (1, 1), others => <>);
+   Set_String
+    (Item          => YYLVal,
+     String        => YY_Text (1, 1),
+     Is_Whitespace => False,
+     Is_CData      => False);
 
    return Token_Public_Literal;
 }
@@ -310,7 +326,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <INITIAL,DOCTYPE_INTSUBSET>"<!--"({CHAR_NO_HYPHEN}|-{CHAR_NO_HYPHEN})*"-->" {
    --  Text of comment, rule [15].
 
-   YYLVal := (String => YY_Text (4, 3), others => <>);
+   Set_String
+    (Item          => YYLVal,
+     String        => YY_Text (4, 3),
+     Is_Whitespace => False,
+     Is_CData      => False);
 
    return Token_Comment;
 }
@@ -429,7 +449,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 }
 
 <ENTITY_VALUE>{CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE}+ {
-   YYLVal := (String => YY_Text, others => <>);
+   Set_String
+    (Item          => YYLVal,
+     String        => YY_Text,
+     Is_Whitespace => False,
+     Is_CData      => False);
 
    return Token_String_Segment;
 }
@@ -457,7 +481,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ENTITY_VALUE>"&"{NAME}";" {
    --  General entity reference rule [68] in entity value rule [9].
 
-   YYLVal := (String => YY_Text, others => <>);
+   Set_String
+    (Item          => YYLVal,
+     String        => YY_Text,
+     Is_Whitespace => False,
+     Is_CData      => False);
 
    return Token_String_Segment;
 }
@@ -668,7 +696,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ATTLIST_TYPE>{NMTOKEN} {
    --  Nmtoken in the rule [59].
 
-   YYLVal := (String => YY_Text, others => <>);
+   Set_String
+    (Item          => YYLVal,
+     String        => YY_Text,
+     Is_Whitespace => False,
+     Is_CData      => False);
    --  XXX Need to add flag to mark Nmtoken.
 
    return Token_Name;
@@ -775,7 +807,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ATTRIBUTE_VALUE>{CHAR_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS}+ {
    --  Value of attribute, rule [10].
 
-   YYLVal := (String => YY_Text, others => <>);
+   Set_String
+    (Item          => YYLVal,
+     String        => YY_Text,
+     Is_Whitespace => False,
+     Is_CData      => False);
 
    return Token_String_Segment;
 }
@@ -815,7 +851,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 (({CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}|"]"{CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}|"]"{2,}{CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE})+"]"*|"]"+) {
    --  Segment of character data, rule [14].
 
-   YYLVal := (String => YY_Text, Is_Whitespace => False, others => <>);
+   Set_String
+    (Item          => YYLVal,
+     String        => YY_Text,
+     Is_Whitespace => False,
+     Is_CData      => False);
 
    return Token_String_Segment;
 }
@@ -823,11 +863,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 "<![CDATA["{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR_NO_GREATER_RIGHT_SQUARE}{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
    --  Segment of CDATA, rules [18], [19], [20], [21].
 
-   YYLVal :=
-    (String        => YY_Text (9, 3),
+   Set_String
+    (Item          => YYLVal,
+     String        => YY_Text (9, 3),
      Is_Whitespace => False,
-     Is_CData      => True,
-     others        => <>);
+     Is_CData      => True);
 
    return Token_String_Segment;
 }
@@ -975,3 +1015,9 @@ with League.Strings;
      Trim_Right      : Natural := 0;
      Trim_Whitespace : Boolean := False;
      YYLVal          : out YYSType) is separate;
+
+   procedure Set_String
+     (Item          : in out YYSType;
+      String        : League.Strings.Universal_String;
+      Is_Whitespace : Boolean;
+      Is_CData      : Boolean) is separate;

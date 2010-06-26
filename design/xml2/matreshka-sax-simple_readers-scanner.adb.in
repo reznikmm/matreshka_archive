@@ -200,7 +200,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    begin
       if Self.Scanner_State.Delimiter /= Delimiter then
-         Self.YYLVal := (String => Image, others => <>);
+         Set_String (Self.YYLVal, Image, False, False);
 
          return Token_String_Segment;
 
@@ -258,11 +258,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       --  XXX Character reference must be resolved into valid XML character.
       --  XXX Whitespace must be detected.
 
-      Self.YYLVal :=
-       (String        => League.Strings.To_Universal_String (S),
+      Set_String
+       (Item          => Self.YYLVal,
+        String        => League.Strings.To_Universal_String (S),
         Is_Whitespace => False,
-        Is_CData      => False,
-        others        => <>);
+        Is_CData      => False);
 
       return Token_String_Segment;
    end Process_Character_Reference;
@@ -282,7 +282,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       if Self.Scanner_State.In_Literal
         or else Self.Scanner_State.Delimiter /= Delimiter
       then
-         Self.YYLVal := (String => Image, others => <>);
+         Set_String
+          (Item          => Self.YYLVal,
+           String        => Image,
+           Is_Whitespace => False,
+           Is_CData      => False);
 
          return Token_String_Segment;
 
@@ -401,11 +405,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
          return False;
 
       else
-         Self.YYLVal :=
-          (String        => Text,
+         Set_String
+          (Item          => Self.YYLVal,
+           String        => Text,
            Is_Whitespace => True,
-           Is_CData      => False,
-           others        => <>);
+           Is_CData      => False);
 
          return True;
       end if;

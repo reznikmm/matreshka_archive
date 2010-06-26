@@ -200,7 +200,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    begin
       if Self.Scanner_State.Delimiter /= Delimiter then
-         Self.YYLVal := (String => Image, others => <>);
+         Set_String (Self.YYLVal, Image, False, False);
 
          return Token_String_Segment;
 
@@ -258,11 +258,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       --  XXX Character reference must be resolved into valid XML character.
       --  XXX Whitespace must be detected.
 
-      Self.YYLVal :=
-       (String        => League.Strings.To_Universal_String (S),
+      Set_String
+       (Item          => Self.YYLVal,
+        String        => League.Strings.To_Universal_String (S),
         Is_Whitespace => False,
-        Is_CData      => False,
-        others        => <>);
+        Is_CData      => False);
 
       return Token_String_Segment;
    end Process_Character_Reference;
@@ -282,7 +282,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       if Self.Scanner_State.In_Literal
         or else Self.Scanner_State.Delimiter /= Delimiter
       then
-         Self.YYLVal := (String => Image, others => <>);
+         Set_String
+          (Item          => Self.YYLVal,
+           String        => Image,
+           Is_Whitespace => False,
+           Is_CData      => False);
 
          return Token_String_Segment;
 
@@ -401,11 +405,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
          return False;
 
       else
-         Self.YYLVal :=
-          (String        => Text,
+         Set_String
+          (Item          => Self.YYLVal,
+           String        => Text,
            Is_Whitespace => True,
-           Is_CData      => False,
-           others        => <>);
+           Is_CData      => False);
 
          return True;
       end if;
@@ -979,7 +983,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  by [26] VersionNum, [81] EncName, [32] SDDecl. Precise check is
                --  processed while parsing.
             
-               YYLVal := (String => YY_Text (1, 1), others => <>);
+               Set_String
+                (Item          => YYLVal,
+                 String        => YY_Text (1, 1),
+                 Is_Whitespace => False,
+                 Is_CData      => False);
                Reset_Whitespace_Matched (Self);
             
                return Token_String_Segment;
@@ -987,7 +995,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 7 =>
                Enter_Start_Condition (Self, INITIAL);
             
-               YYLVal := (others => <>);
+            --   YYLVal := (others => <>);
             
                return Token_PI_Close;
 
@@ -1007,7 +1015,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                   --  XXX This is recoverable error.
                end if;
             
-               YYLVal := (String => YY_Text (0, 2), others => <>);
+               Set_String
+                (Item          => YYLVal,
+                 String        => YY_Text (0, 2),
+                 Is_Whitespace => False,
+                 Is_CData      => False);
                Enter_Start_Condition (Self, INITIAL);
             
                return Token_PI_Close;
@@ -1047,7 +1059,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, Get_Continue_State (Self));
-               YYLVal := (String => YY_Text (1, 1), others => <>);
+               Set_String
+                (Item          => YYLVal,
+                 String        => YY_Text (1, 1),
+                 Is_Whitespace => False,
+                 Is_CData      => False);
             
                return Token_System_Literal;
 
@@ -1070,7 +1086,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
-               YYLVal := (String => YY_Text (1, 1), others => <>);
+               Set_String
+                (Item          => YYLVal,
+                 String        => YY_Text (1, 1),
+                 Is_Whitespace => False,
+                 Is_CData      => False);
             
                return Token_Public_Literal;
 
@@ -1091,7 +1111,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 18 =>
                --  Text of comment, rule [15].
             
-               YYLVal := (String => YY_Text (4, 3), others => <>);
+               Set_String
+                (Item          => YYLVal,
+                 String        => YY_Text (4, 3),
+                 Is_Whitespace => False,
+                 Is_CData      => False);
             
                return Token_Comment;
 
@@ -1198,7 +1222,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                return Token_Name;
 
             when 30 =>
-               YYLVal := (String => YY_Text, others => <>);
+               Set_String
+                (Item          => YYLVal,
+                 String        => YY_Text,
+                 Is_Whitespace => False,
+                 Is_CData      => False);
             
                return Token_String_Segment;
 
@@ -1222,7 +1250,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 34 =>
                --  General entity reference rule [68] in entity value rule [9].
             
-               YYLVal := (String => YY_Text, others => <>);
+               Set_String
+                (Item          => YYLVal,
+                 String        => YY_Text,
+                 Is_Whitespace => False,
+                 Is_CData      => False);
             
                return Token_String_Segment;
 
@@ -1402,7 +1434,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 65 =>
                --  Nmtoken in the rule [59].
             
-               YYLVal := (String => YY_Text, others => <>);
+               Set_String
+                (Item          => YYLVal,
+                 String        => YY_Text,
+                 Is_Whitespace => False,
+                 Is_CData      => False);
                --  XXX Need to add flag to mark Nmtoken.
             
                return Token_Name;
@@ -1497,7 +1533,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 77 =>
                --  Value of attribute, rule [10].
             
-               YYLVal := (String => YY_Text, others => <>);
+               Set_String
+                (Item          => YYLVal,
+                 String        => YY_Text,
+                 Is_Whitespace => False,
+                 Is_CData      => False);
             
                return Token_String_Segment;
 
@@ -1531,18 +1571,22 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 82 =>
                --  Segment of character data, rule [14].
             
-               YYLVal := (String => YY_Text, Is_Whitespace => False, others => <>);
+               Set_String
+                (Item          => YYLVal,
+                 String        => YY_Text,
+                 Is_Whitespace => False,
+                 Is_CData      => False);
             
                return Token_String_Segment;
 
             when 83 =>
                --  Segment of CDATA, rules [18], [19], [20], [21].
             
-               YYLVal :=
-                (String        => YY_Text (9, 3),
+               Set_String
+                (Item          => YYLVal,
+                 String        => YY_Text (9, 3),
                  Is_Whitespace => False,
-                 Is_CData      => True,
-                 others        => <>);
+                 Is_CData      => True);
             
                return Token_String_Segment;
 

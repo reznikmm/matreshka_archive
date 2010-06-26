@@ -54,13 +54,13 @@
 %token Token_Implied
 %token Token_Fixed
 
-%with League.Strings
+%with Matreshka.Internals.Strings
 %with Matreshka.Internals.XML.Symbol_Tables;
 %with Matreshka.SAX.Attributes;
 
 {
    type YYSType is record
-      String        : League.Strings.Universal_String;
+      String        : Matreshka.Internals.Strings.Shared_String_Access;
       Symbol        : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
@@ -152,7 +152,7 @@ Misc_any :
 Misc :
     Token_Comment
 {
-   Process_Comment (Self, $1.String);
+   Process_Comment (Self, Create ($1.String));
 }
   | PI
 {
@@ -163,7 +163,7 @@ Misc :
 PI :
     Token_PI_Open Token_PI_Close
 {
-   Process_Processing_Instruction (Self, $1.String, $2.String);
+   Process_Processing_Instruction (Self, Create ($1.String), Create ($2.String));
 }
   ;
 
@@ -225,7 +225,7 @@ ExternalID:
    Process_External_Id
     (Self,
      League.Strings.Empty_String,
-     $2.String);
+     Create ($2.String));
 }
   | Token_Public Token_Public_Literal Token_System_Literal
 {
@@ -233,8 +233,8 @@ ExternalID:
 
    Process_External_Id
     (Self,
-     $2.String,
-     $3.String);
+     Create ($2.String),
+     Create ($3.String));
 }
   ;
 
@@ -286,7 +286,7 @@ intSubset:
 }
   | Token_Comment
 {
-   Process_Comment (Self, $1.String);
+   Process_Comment (Self, Create ($1.String));
 }
   ;
 
@@ -297,7 +297,7 @@ EntityDecl:
     (Self        => Self,
      Symbol      => $2.Symbol,
      Is_External => False,
-     Value       => $3.String,
+     Value       => Create ($3.String),
      Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
 }
   | Token_Entity_Decl_Open Token_Name ExternalID Token_Close
@@ -322,15 +322,15 @@ EntityDecl:
 {
    Process_Parameter_Entity_Declaration
     (Self,
-     $3.String,
+     Create ($3.String),
      False,
-     $4.String);
+     Create ($4.String));
 }
   | Token_Entity_Decl_Open Token_Percent Token_Name ExternalID Token_Close
 {
    Process_Parameter_Entity_Declaration
     (Self,
-     $3.String,
+     Create ($3.String),
      True,
      League.Strings.Empty_String);
 }
@@ -341,7 +341,7 @@ EntityValue:
 {
    --  Entity value including surrounding delimiters.
 
-   $$.String := $2.String;
+   Move ($$, $2);
 }
   ;
 
@@ -350,17 +350,22 @@ AttributeEntityValue_Content:
 {
    --  Additional string segment in entity value.
 
-   $$.String := $1.String & $2.String;
+   Move ($$, $1);
+   Matreshka.Internals.Strings.Operations.Append ($$.String, $2.String);
 }
   | Token_String_Segment
 {
    --  Single string segment in entity value.
 
-   $$.String := $1.String;
+   Move ($$, $1);
 }
   |
 {
-   $$.String := League.Strings.Empty_String;
+   Set_String
+    (Item          => $$,
+     String        => League.Strings.Empty_String,
+     Is_Whitespace => False,
+     Is_CData      => False);
 }
   ;
 
@@ -674,11 +679,11 @@ content_item :
 }
   | Token_String_Segment
 {
-   Process_Characters (Self, $1.String, $1.Is_Whitespace);
+   Process_Characters (Self, Create ($1.String), $1.Is_Whitespace);
 }
   | Token_Comment
 {
-   Process_Comment (Self, $1.String);
+   Process_Comment (Self, Create ($1.String));
 }
   | PI
 {
@@ -710,14 +715,14 @@ Attribute_Any :
 Attribute :
     Token_Name Token_Equal AttributeValue
 {
-   Process_Attribute (Self, $1.Symbol, $3.String);
+   Process_Attribute (Self, $1.Symbol, Create ($3.String));
 }
   ;
 
 AttributeValue :
     Token_Value_Open AttributeEntityValue_Content Token_Value_Close
 {
-   null;
+   Move ($$, $2);
 }
   ;
 
@@ -729,6 +734,7 @@ AttributeValue :
 with Ada.Wide_Wide_Text_IO;
 with League.Strings;
 with Matreshka.SAX.Attributes.Internals;
+with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.XML.Symbol_Tables;
 ##
    use type League.Strings.Universal_String;
@@ -798,6 +804,17 @@ with Matreshka.Internals.XML.Symbol_Tables;
      (Self      : access Integer;
       Public_Id : League.Strings.Universal_String;
       System_Id : League.Strings.Universal_String) is separate;
+
+   function Create (Item : Matreshka.Internals.Strings.Shared_String_Access)
+     return League.Strings.Universal_String is separate;
+
+   procedure Move (To : in out YYSType; From : in out YYSType) is separate;
+
+   procedure Set_String
+     (Item          : in out YYSType;
+      String        : League.Strings.Universal_String;
+      Is_Whitespace : Boolean;
+      Is_CData      : Boolean) is separate;
 
    Self     : access Integer;
    Put_Line : access procedure (Item : League.Strings.Universal_String);

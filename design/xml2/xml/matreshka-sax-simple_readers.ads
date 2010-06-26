@@ -180,12 +180,28 @@ private
      Token_Implied,
      Token_Fixed);
 
-   type YYSType is record
-      String        : League.Strings.Universal_String;
-      Symbol        : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+   type YYSType is limited record
+      String        : Matreshka.Internals.Strings.Shared_String_Access;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
+      Symbol        : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
    end record;
+
+   procedure Set_String
+    (Item          : in out YYSType;
+     String        : League.Strings.Universal_String;
+     Is_Whitespace : Boolean;
+     Is_CData      : Boolean);
+
+   procedure Set_Symbol
+    (Item    : in out YYSType;
+      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
+
+   procedure Move
+    (To   : in out YYSType;
+     From : in out YYSType);
+
+   procedure Clear (Item : in out YYSType);
 
    function Hash
     (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
