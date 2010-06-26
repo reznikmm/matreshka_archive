@@ -2,7 +2,7 @@ with "../../gnat/matreshka_league.gpr";
 with "../../gnat/matreshka_xml.gpr";
 
 project Demo is
-   for Main use ("demo.adb");
+   for Main use ("demo.adb", "performance.adb");
    for Object_Dir use ".objs";
    for Source_Dirs use (".", "xml");
    for Exec_Dir use ".";
