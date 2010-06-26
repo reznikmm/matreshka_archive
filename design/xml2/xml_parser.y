@@ -62,7 +62,6 @@
    type YYSType is record
       String        : League.Strings.Universal_String;
       Symbol        : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
-      Is_External   : Boolean;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
    end record;
@@ -169,7 +168,7 @@ PI :
   ;
 
 doctypedecl_optional:
-    Token_Doctype_Decl_Open ExternalID_optional
+    Token_Doctype_Decl_Open ExternalID
 {
    --  Document type declaration, rule [28]. Once external identifier are
    --  recognized external document type declaration subset need to be parsed 
@@ -180,7 +179,29 @@ doctypedecl_optional:
    Process_Document_Type_Declaration
     (Self,
      $1.Symbol,
-     $2.Is_External);
+     True);
+}
+    external_subset_optional internal_subset_optional Token_Close
+{
+   null;
+}
+    Misc_any
+{
+   null;
+}
+  |
+    Token_Doctype_Decl_Open
+{
+   --  Document type declaration, rule [28]. Once external identifier are
+   --  recognized external document type declaration subset need to be parsed 
+   --  before processing of internal subset. External subset is inserted
+   --  immediately after external identifier when present. Thus original
+   --  rule [28] is rewritten and extended to reflect this inclusion.
+
+   Process_Document_Type_Declaration
+    (Self,
+     $1.Symbol,
+     False);
 }
     external_subset_optional internal_subset_optional Token_Close
 {
@@ -193,21 +214,6 @@ doctypedecl_optional:
   |
 {
    null;
-}
-  ;
-
-ExternalID_optional:
-    ExternalID
-{
-   $$ :=
-    (Is_External => True,
-     others      => <>);
-}
-  |
-{
-   $$ :=
-    (Is_External => False,
-     others      => <>);
 }
   ;
 
@@ -312,24 +318,21 @@ EntityDecl:
      Value       => League.Strings.Empty_String,
      Notation    => $5.Symbol);
 }
-  | Token_Entity_Decl_Open Token_Percent Token_Name PEDef Token_Close
+  | Token_Entity_Decl_Open Token_Percent Token_Name EntityValue Token_Close
 {
    Process_Parameter_Entity_Declaration
     (Self,
      $3.String,
-     $4.Is_External,
+     False,
      $4.String);
 }
-  ;
-
-PEDef:
-    EntityValue
+  | Token_Entity_Decl_Open Token_Percent Token_Name ExternalID Token_Close
 {
-   null;
-}
-  | ExternalID
-{
-   null;
+   Process_Parameter_Entity_Declaration
+    (Self,
+     $3.String,
+     True,
+     League.Strings.Empty_String);
 }
   ;
 

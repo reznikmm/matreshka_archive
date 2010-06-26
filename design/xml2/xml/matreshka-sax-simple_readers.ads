@@ -183,7 +183,6 @@ private
    type YYSType is record
       String        : League.Strings.Universal_String;
       Symbol        : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
-      Is_External   : Boolean;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
    end record;

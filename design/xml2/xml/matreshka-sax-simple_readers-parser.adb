@@ -772,7 +772,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Process_Document_Type_Declaration
                 (Self,
                  yy.value_stack (yy.tos-1).Symbol,
-                 yy.value_stack (yy.tos).Is_External);
+                 True);
 
             when 19 =>
                null;
@@ -781,19 +781,27 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 21 =>
-               null;
+               --  Document type declaration, rule [28]. Once external identifier are
+               --  recognized external document type declaration subset need to be parsed 
+               --  before processing of internal subset. External subset is inserted
+               --  immediately after external identifier when present. Thus original
+               --  rule [28] is rewritten and extended to reflect this inclusion.
+            
+               Process_Document_Type_Declaration
+                (Self,
+                 yy.value_stack (yy.tos).Symbol,
+                 False);
 
             when 22 =>
-               yyval :=
-                (Is_External => True,
-                 others      => <>);
+               null;
 
             when 23 =>
-               yyval :=
-                (Is_External => False,
-                 others      => <>);
+               null;
 
             when 24 =>
+               null;
+
+            when 25 =>
                --  ExternalID specified by SYSTEM, rule [75].
             
                Process_External_Id
@@ -801,16 +809,13 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  League.Strings.Empty_String,
                  yy.value_stack (yy.tos).String);
 
-            when 25 =>
+            when 26 =>
                --  ExternalID specified by PUBLIC, rule [75].
             
                Process_External_Id
                 (Self,
                  yy.value_stack (yy.tos-1).String,
                  yy.value_stack (yy.tos).String);
-
-            when 26 =>
-               null;
 
             when 27 =>
                null;
@@ -837,9 +842,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 35 =>
-               Process_Comment (Self, yy.value_stack (yy.tos).String);
+               null;
 
             when 36 =>
+               Process_Comment (Self, yy.value_stack (yy.tos).String);
+
+            when 37 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-2).Symbol,
@@ -847,7 +855,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Value       => yy.value_stack (yy.tos-1).String,
                  Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
 
-            when 37 =>
+            when 38 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-2).Symbol,
@@ -855,7 +863,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Empty_String,
                  Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
 
-            when 38 =>
+            when 39 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-4).Symbol,
@@ -863,18 +871,19 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Empty_String,
                  Notation    => yy.value_stack (yy.tos-1).Symbol);
 
-            when 39 =>
+            when 40 =>
                Process_Parameter_Entity_Declaration
                 (Self,
                  yy.value_stack (yy.tos-2).String,
-                 yy.value_stack (yy.tos-1).Is_External,
+                 False,
                  yy.value_stack (yy.tos-1).String);
 
-            when 40 =>
-               null;
-
             when 41 =>
-               null;
+               Process_Parameter_Entity_Declaration
+                (Self,
+                 yy.value_stack (yy.tos-2).String,
+                 True,
+                 League.Strings.Empty_String);
 
             when 42 =>
                --  Entity value including surrounding delimiters.
