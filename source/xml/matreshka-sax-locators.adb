@@ -41,58 +41,58 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  The SAX_Locator type provides the XML handlers with information about the
---  parsing position within a file.
---
---  The reader reports a SAX_Locator to the content handler before is starts
---  to parse the document. This is done with the Set_Document_Locator
---  procedure. The handlers can now use this locator to get the position
---  (line and column numbers) that the reader has reached.
---
---  SAX_Locator uses explicit sharing technique for safety, the handler can
---  save any number of copies of the objects but all of them will provides
---  the same information.
-------------------------------------------------------------------------------
-private with Ada.Finalization;
+with Ada.Unchecked_Deallocation;
 
-private with Matreshka.Internals.Atomics.Counters;
+package body Matreshka.SAX.Locators is
 
-package Matreshka.SAX.Locators is
+   ------------
+   -- Adjust --
+   ------------
 
-   pragma Preelaborate;
+   overriding procedure Adjust (Self : in out SAX_Locator) is
+   begin
+      Matreshka.Internals.Atomics.Counters.Increment
+       (Self.Data.Counter'Access);
+   end Adjust;
 
-   type SAX_Locator is tagged private;
+   ------------
+   -- Column --
+   ------------
 
-   function Column (Self : SAX_Locator'Class) return Natural;
-   --  Returns the column number (starting at 1) or 0 if there is no column
-   --  number available.
+   function Column (Self : SAX_Locator'Class) return Natural is
+   begin
+      return Self.Data.Column;
+   end Column;
 
-   function Line (Self : SAX_Locator'Class) return Natural;
-   --  Returns the line number (starting at 1) or 0 if there is no line
-   --  number available.
+   --------------
+   -- Finalize --
+   --------------
 
-private
+   overriding procedure Finalize (Self : in out SAX_Locator) is
+      procedure Free is
+        new Ada.Unchecked_Deallocation (Shared_Locator, Shared_Locator_Access);
 
-   type Shared_Locator is record
-      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
-      Line    : Natural;
-      pragma Atomic (Line);
-      Column  : Natural;
-      pragma Atomic (Column);
-   end record;
+   begin
+      --  Finalize can be called more than once (as specified by language
+      --  standard), thus implementation should provide protection from
+      --  multiple finalization.
 
-   type Shared_Locator_Access is access all Shared_Locator;
+      if Self.Data /= null then
+         if Matreshka.Internals.Atomics.Counters.Decrement
+             (Self.Data.Counter'Access)
+         then
+            Free (Self.Data);
+         end if;
+      end if;
+   end Finalize;
 
-   type SAX_Locator is new Ada.Finalization.Controlled with record
-      Data : Shared_Locator_Access := new Shared_Locator;
-   end record;
+   ----------
+   -- Line --
+   ----------
 
-   overriding procedure Adjust (Self : in out SAX_Locator);
-
-   overriding procedure Finalize (Self : in out SAX_Locator);
-
-   pragma Inline (Adjust);
-   pragma Inline (Column);
-   pragma Inline (Line);
+   function Line (Self : SAX_Locator'Class) return Natural is
+   begin
+      return Self.Data.Line;
+   end Line;
 
 end Matreshka.SAX.Locators;

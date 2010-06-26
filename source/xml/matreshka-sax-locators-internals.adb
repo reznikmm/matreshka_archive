@@ -41,58 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  The SAX_Locator type provides the XML handlers with information about the
---  parsing position within a file.
---
---  The reader reports a SAX_Locator to the content handler before is starts
---  to parse the document. This is done with the Set_Document_Locator
---  procedure. The handlers can now use this locator to get the position
---  (line and column numbers) that the reader has reached.
---
---  SAX_Locator uses explicit sharing technique for safety, the handler can
---  save any number of copies of the objects but all of them will provides
---  the same information.
-------------------------------------------------------------------------------
-private with Ada.Finalization;
 
-private with Matreshka.Internals.Atomics.Counters;
+package body Matreshka.SAX.Locators.Internals is
 
-package Matreshka.SAX.Locators is
+   ------------------
+   -- Set_Location --
+   ------------------
 
-   pragma Preelaborate;
+   procedure Set_Location
+    (Self   : in out SAX_Locator'Class;
+     Line   : Natural;
+     Column : Natural) is
+   begin
+      Self.Data.Line   := Line;
+      Self.Data.Column := Column;
+   end Set_Location;
 
-   type SAX_Locator is tagged private;
-
-   function Column (Self : SAX_Locator'Class) return Natural;
-   --  Returns the column number (starting at 1) or 0 if there is no column
-   --  number available.
-
-   function Line (Self : SAX_Locator'Class) return Natural;
-   --  Returns the line number (starting at 1) or 0 if there is no line
-   --  number available.
-
-private
-
-   type Shared_Locator is record
-      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
-      Line    : Natural;
-      pragma Atomic (Line);
-      Column  : Natural;
-      pragma Atomic (Column);
-   end record;
-
-   type Shared_Locator_Access is access all Shared_Locator;
-
-   type SAX_Locator is new Ada.Finalization.Controlled with record
-      Data : Shared_Locator_Access := new Shared_Locator;
-   end record;
-
-   overriding procedure Adjust (Self : in out SAX_Locator);
-
-   overriding procedure Finalize (Self : in out SAX_Locator);
-
-   pragma Inline (Adjust);
-   pragma Inline (Column);
-   pragma Inline (Line);
-
-end Matreshka.SAX.Locators;
+end Matreshka.SAX.Locators.Internals;

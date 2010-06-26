@@ -90,9 +90,7 @@ package Matreshka.SAX.Content_Handlers is
 
    not overriding procedure Set_Document_Locator
     (Self    : in out SAX_Content_Handler;
-     Locator : not null Matreshka.SAX.Locators.SAX_Locator_Access) is null;
-   --  XXX This is can lead to dangling pointers, so it would be nice to
-   --  review and change API.
+     Locator : Matreshka.SAX.Locators.SAX_Locator) is null;
 
    not overriding procedure Skipped_Entity
     (Self    : in out SAX_Content_Handler;
