@@ -65,7 +65,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Document_Type_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
-     Name        : League.Strings.Universal_String;
+     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Public_Id   : League.Strings.Universal_String;
      System_Id   : League.Strings.Universal_String);
@@ -197,12 +197,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Document_Type_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
-     Name        : League.Strings.Universal_String;
+     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Public_Id   : League.Strings.Universal_String;
      System_Id   : League.Strings.Universal_String) is
    begin
-      Self.Root_Name := Name;
+      Self.Root_Symbol := Symbol;
 
       if Is_External then
          Self.Entity_Resolver.Resolve_Entity
@@ -395,19 +395,36 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Start_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+   is
+      use Matreshka.Internals.XML.Symbol_Tables;
+
    begin
       if Self.Element_Names.Is_Empty then
          --  Root element.
 
-         if not Self.Root_Name.Is_Empty
---           and then Self.Root_Name /= Name
---  XXX Must be replaced by symbol identifier compare operation.
-            and then Self.Root_Name
-                       /= Matreshka.Internals.XML.Symbol_Tables.Name
-                           (Self.Symbols, Symbol)
-         then
-            raise Program_Error with "Root element has wrong name";
+         if Self.Validation.Enabled then
+            if Self.Root_Symbol = No_Symbol then
+               --  Document doesn't have document type declaration.
+               --
+               --  "[Definition: An XML document is valid if it has an
+               --  associated document type declaration and if the document
+               --  complies with the constraints expressed in it.]"
+
+               raise Program_Error
+                 with "Document doen't have document type declaration";
+               --  Error
+
+            elsif Self.Root_Symbol /= Symbol then
+               --  [2.8 VC: Root Element Type]
+               --
+               --  "The Name in the document type declaration MUST match the
+               --  element type of the root element."
+
+               raise Program_Error
+                 with "[2.8 VC: Root Element Type] Root element has wrong name";
+               --  Error
+            end if;
          end if;
       end if;
 
@@ -737,7 +754,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             
                Process_Document_Type_Declaration
                 (Self,
-                 yy.value_stack (yy.tos-1).String,
+                 yy.value_stack (yy.tos-1).Symbol,
                  yy.value_stack (yy.tos).Is_External,
                  yy.value_stack (yy.tos).Public_Id,
                  yy.value_stack (yy.tos).System_Id);

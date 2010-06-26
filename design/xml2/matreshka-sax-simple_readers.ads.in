@@ -201,6 +201,10 @@ private
       Value          : League.Strings.Universal_String;
    end record;
 
+   type Validation_Options is record
+      Enabled : Boolean := False;
+   end record;
+
    type SAX_Simple_Reader is
      limited new Matreshka.SAX.Readers.SAX_Reader with
    record
@@ -261,6 +265,15 @@ private
       --  Single attribute of the element.
       Attributes         : Matreshka.SAX.Attributes.SAX_Attributes;
       --  Set of attributes of the element.
+
+      --  Validator state
+
+      Validation         : Validation_Options;
+      --  Validation options
+      Root_Symbol        :
+        Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier
+          := Matreshka.Internals.XML.Symbol_Tables.No_Symbol;
+      --  Expected name of the root element.
    end record;
 
 --   overriding function Content_Handler

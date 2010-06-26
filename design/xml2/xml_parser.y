@@ -182,7 +182,7 @@ doctypedecl_optional:
 
    Process_Document_Type_Declaration
     (Self,
-     $1.String,
+     $1.Symbol,
      $2.Is_External,
      $2.Public_Id,
      $2.System_Id);
@@ -761,7 +761,7 @@ with Matreshka.Internals.XML.Symbol_Tables;
 
    procedure Process_Document_Type_Declaration
     (Self        : access Integer;
-     Name        : League.Strings.Universal_String;
+     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Public_Id   : League.Strings.Universal_String;
      System_Id   : League.Strings.Universal_String) is separate;
