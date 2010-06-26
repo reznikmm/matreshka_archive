@@ -232,23 +232,16 @@ package body Matreshka.SAX.Simple_Readers.Parser is
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
    is
-      use type Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
-
    begin
-      if Self.Element_Names.Last_Element /= Symbol then
-         --  3 [WFC: Element Type Match]
+      --  [3 WFC: Element Type Match]
+      --
+      --  The Name in an element's end-tag MUST match the element type in the
+      --  start-tag.
    
-         Put_Line
-          ("'"
-             & Matreshka.Internals.XML.Symbol_Tables.Name
-                (Self.Symbols, Self.Element_Names.Last_Element)
-             & "' /= '"
-             & Matreshka.Internals.XML.Symbol_Tables.Name
-                (Self.Symbols, Symbol)
-             & "'");
-
+      if Self.Element_Names.Last_Element /= Symbol then
          raise Program_Error
-           with "name of end tag doesn't match name of start tag";
+           with "[3 WFC: Element Type Match] name of end tag doesn't match name of start tag";
+         --  Fatal error
       end if;
 
       Handler_Callbacks.Call_End_Element
