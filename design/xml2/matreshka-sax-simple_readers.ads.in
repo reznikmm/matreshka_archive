@@ -243,8 +243,6 @@ private
 
       Parameter_Entities : Entity_Information_Maps.Map;
       General_Entities   : Entity_Information_Maps.Map;
-      Root_Name          : League.Strings.Universal_String;
-      --  Name of the root element.
       External_Subset    : League.Strings.Universal_String;
       --  Contents of the external subset if any. This member used only to
       --  prevent deallocation of shared string before document parsing is
