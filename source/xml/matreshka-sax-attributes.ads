@@ -44,7 +44,6 @@
 private with Ada.Containers.Vectors;
 
 with League.Strings;
-private with Matreshka.Internals.XML.Attributes;
 
 package Matreshka.SAX.Attributes is
 
@@ -72,11 +71,15 @@ package Matreshka.SAX.Attributes is
 
 private
 
+   type Attribute is record
+      Namespace_URI  : League.Strings.Universal_String;
+      Local_Name     : League.Strings.Universal_String;
+      Qualified_Name : League.Strings.Universal_String;
+      Value          : League.Strings.Universal_String;
+   end record;
+
    package Attribute_Vectors is
-     new Ada.Containers.Vectors
-          (Positive,
-           Matreshka.Internals.XML.Attributes.Attribute,
-           Matreshka.Internals.XML.Attributes."=");
+     new Ada.Containers.Vectors (Positive, Attribute);
 
    type SAX_Attributes is tagged record
       Attributes : Attribute_Vectors.Vector;

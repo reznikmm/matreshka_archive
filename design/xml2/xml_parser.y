@@ -55,7 +55,6 @@
 %token Token_Fixed
 
 %with League.Strings
-%with Matreshka.Internals.XML.Attributes;
 %with Matreshka.Internals.XML.Symbol_Tables;
 %with Matreshka.SAX.Attributes;
 

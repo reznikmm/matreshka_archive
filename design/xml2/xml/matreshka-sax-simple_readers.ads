@@ -50,7 +50,6 @@ with Matreshka.SAX.Readers;
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
-private with Matreshka.Internals.XML.Attributes;
 private with Matreshka.Internals.XML.Symbol_Tables;
 private with Matreshka.SAX.Attributes;
 private with Matreshka.SAX.Default_Handlers;
