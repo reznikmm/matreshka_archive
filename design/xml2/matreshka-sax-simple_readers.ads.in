@@ -277,7 +277,6 @@ private
       In_DTD             : Boolean;
 
       Parameter_Entities : Entity_Information_Maps.Map;
-      General_Entities   : Entity_Information_Maps.Map;
       External_Subset    : League.Strings.Universal_String;
       --  Contents of the external subset if any. This member used only to
       --  prevent deallocation of shared string before document parsing is

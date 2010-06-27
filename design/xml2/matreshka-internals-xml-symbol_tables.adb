@@ -64,9 +64,21 @@ package body Matreshka.Internals.XML.Symbol_Tables is
    --------------
 
    procedure Finalize (Self : in out Symbol_Table) is
+      use type Matreshka.Internals.Strings.Shared_String_Access;
+
    begin
       for J in First_Symbol .. Self.Last loop
          Matreshka.Internals.Strings.Dereference (Self.Table (J).String);
+
+         if Self.Table (J).PE_Replacement_Text /= null then
+            Matreshka.Internals.Strings.Dereference
+             (Self.Table (J).PE_Replacement_Text);
+         end if;
+
+         if Self.Table (J).GE_Replacement_Text /= null then
+            Matreshka.Internals.Strings.Dereference
+             (Self.Table (J).GE_Replacement_Text);
+         end if;
       end loop;
 
       Free (Self.Table);
@@ -128,12 +140,18 @@ package body Matreshka.Internals.XML.Symbol_Tables is
       Self.Last := Self.Last + 1;
 
       Self.Table (Self.Last) :=
-       (String =>
+       (String              =>
           Matreshka.Internals.Strings.Operations.Slice
            (String,
             Start_Position,
             End_Position - Start_Position,
-            End_Index - Start_Index));
+            End_Index - Start_Index),
+        Is_Parameter_Entity => False,
+        Is_General_Entity   => False,
+        Is_Unparsed_Entity  => False,
+        Is_External_Entity  => False,
+        PE_Replacement_Text => null,
+        GE_Replacement_Text => null);
       Identifier := Self.Last;
    end Insert;
 

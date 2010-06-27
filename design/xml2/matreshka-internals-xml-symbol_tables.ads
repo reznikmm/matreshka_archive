@@ -104,7 +104,15 @@ private
    No_Symbol : constant Symbol_Identifier := 0;
 
    type Symbol_Record is record
-      String : Matreshka.Internals.Strings.Shared_String_Access;
+      String              : Matreshka.Internals.Strings.Shared_String_Access;
+      --  Name of the symbol.
+
+      Is_Parameter_Entity : Boolean := False;
+      Is_General_Entity   : Boolean := False;
+      Is_Unparsed_Entity  : Boolean := False;
+      Is_External_Entity  : Boolean := False;
+      PE_Replacement_Text : Matreshka.Internals.Strings.Shared_String_Access;
+      GE_Replacement_Text : Matreshka.Internals.Strings.Shared_String_Access;
    end record;
 
    type Symbol_Record_Array is

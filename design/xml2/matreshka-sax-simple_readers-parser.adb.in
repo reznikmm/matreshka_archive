@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
+with Matreshka.Internals.XML.Symbol_Tables.Entities;
 with Matreshka.SAX.Attributes.Internals;
 with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 with Matreshka.SAX.Simple_Readers.Parser.Tables;
@@ -50,8 +51,9 @@ with Matreshka.SAX.Simple_Readers.Scanner;
 
 package body Matreshka.SAX.Simple_Readers.Parser is
 
+   use Matreshka.Internals.XML.Symbol_Tables;
+   use Matreshka.Internals.XML.Symbol_Tables.Entities;
    use Matreshka.SAX.Simple_Readers.Parser.Tables;
-   use type Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
 
    function YY_Goto_State (State : Integer; Sym : Integer) return Integer;
    --  Lookup for next state.
@@ -128,6 +130,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String);
    --  Process external id declaration.
+
+   procedure Register_Predefined_Entity
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String);
+   --  Registers predefined entity.
 
    -----------------------
    -- Process_Attribute --
@@ -278,25 +286,24 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Value       : League.Strings.Universal_String;
      Notation    : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
    is
-      use League.Strings;
-      use Entity_Information_Maps;
-      use Matreshka.Internals.XML.Symbol_Tables;
-
       Name : constant League.Strings.Universal_String
         := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
 
    begin
-      if Self.General_Entities.Contains (Name) then
+      if Is_General_Entity (Self.Symbols, Symbol) then
          raise Program_Error with "general entity already declared";
          --  XXX It is non-fatal error, first declaration must be used and
          --  at user option warning may be issued to application.
       end if;
+
+      Set_Is_General_Entity (Self.Symbols, Symbol, True);
 
       if Is_External then
          if Notation = No_Symbol then
             declare
                V : League.Strings.Universal_String;
                S : Boolean := True;
+               A : Matreshka.Internals.Strings.Shared_String_Access;
 
             begin
                Self.Entity_Resolver.Resolve_Entity
@@ -307,22 +314,15 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                     with "external parsed entity is not resolved";
                end if;
 
-               Self.General_Entities.Insert
-                (Name,
-                 (Name   => Name,
-                  Kind   => External_Parsed_General,
-                  Value  => V,
-                  others => <>));
+               A := League.Strings.Internals.Get_Shared (V);
+               Matreshka.Internals.Strings.Reference (A);
+               Set_General_Entity_Replacement_Text (Self.Symbols, Symbol, A);
                Handler_Callbacks.Call_External_Entity_Decl
                 (Self, Name, Self.Public_Id, Self.System_Id);
             end;
 
          else
-            Self.General_Entities.Insert
-             (Name,
-              (Name   => Name,
-               Kind   => Unparsed,
-               others => <>));
+            Set_Is_Unparsed_Entity (Self.Symbols, Symbol, True);
             Handler_Callbacks.Call_Unparsed_Entity_Decl
              (Self,
               Name,
@@ -333,13 +333,15 @@ package body Matreshka.SAX.Simple_Readers.Parser is
          end if;
 
       else
-         Self.General_Entities.Insert
-          (Name,
-           (Name   => Name,
-            Kind   => Internal_General,
-            Value  => Value,
-            others => <>));
-         Handler_Callbacks.Call_Internal_Entity_Decl (Self, Name, Value);
+         declare
+            A : Matreshka.Internals.Strings.Shared_String_Access;
+
+         begin
+            A := League.Strings.Internals.Get_Shared (Value);
+            Matreshka.Internals.Strings.Reference (A);
+            Set_General_Entity_Replacement_Text (Self.Symbols, Symbol, A);
+            Handler_Callbacks.Call_Internal_Entity_Decl (Self, Name, Value);
+         end;
       end if;
    end Process_General_Entity_Declaration;
 
@@ -353,18 +355,17 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Is_External : Boolean;
      Value       : League.Strings.Universal_String)
    is
-      use League.Strings;
-      use Entity_Information_Maps;
-
       Name : constant League.Strings.Universal_String
         := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
 
    begin
-      if Self.Parameter_Entities.Contains (Name) then
+      if Is_Parameter_Entity (Self.Symbols, Symbol) then
          raise Program_Error with "parameter entity already declared";
          --  XXX It is non-fatal error, first declaration must be used and
          --  at user option warning may be issued to application.
       end if;
+
+      Set_Is_Parameter_Entity (Self.Symbols, Symbol, True);
 
       if Is_External then
          declare
@@ -460,6 +461,36 @@ package body Matreshka.SAX.Simple_Readers.Parser is
         Attributes     => Self.Attributes);
       Matreshka.SAX.Attributes.Internals.Clear (Self.Attributes);
    end Process_Start_Tag;
+
+   --------------------------------
+   -- Register_Predefined_Entity --
+   --------------------------------
+
+   procedure Register_Predefined_Entity
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String)
+   is
+      N : Matreshka.Internals.Strings.Shared_String_Access;
+      V : Matreshka.Internals.Strings.Shared_String_Access;
+      S : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+
+   begin
+      N := League.Strings.Internals.Get_Shared (Name);
+      V := League.Strings.Internals.Get_Shared (Value);
+
+      Matreshka.Internals.XML.Symbol_Tables.Insert
+       (Self.Symbols,
+        N,
+        0,
+        1,
+        N.Unused,
+        N.Length + 1,
+        S);
+      Set_Is_General_Entity (Self.Symbols, S, True);
+      Matreshka.Internals.Strings.Reference (V);
+      Set_General_Entity_Replacement_Text (Self.Symbols, S, V);
+   end Register_Predefined_Entity;
 
    -------------------
    -- YY_Goto_State --
@@ -624,36 +655,26 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    begin
       --  Register predefined entities.
 
-      Self.General_Entities.Insert
-       (League.Strings.To_Universal_String ("lt"),
-        (Name   => League.Strings.To_Universal_String ("lt"),
-         Kind   => Internal_General,
-         Value  => League.Strings.To_Universal_String ("&#60;"),
-         others => <>));
-      Self.General_Entities.Insert
-       (League.Strings.To_Universal_String ("gt"),
-        (Name   => League.Strings.To_Universal_String ("gt"),
-         Kind   => Internal_General,
-         Value  => League.Strings.To_Universal_String (">"),
-         others => <>));
-      Self.General_Entities.Insert
-       (League.Strings.To_Universal_String ("amp"),
-        (Name   => League.Strings.To_Universal_String ("amp"),
-         Kind   => Internal_General,
-         Value  => League.Strings.To_Universal_String ("&#38;"),
-         others => <>));
-      Self.General_Entities.Insert
-       (League.Strings.To_Universal_String ("apos"),
-        (Name   => League.Strings.To_Universal_String ("apos"),
-         Kind   => Internal_General,
-         Value  => League.Strings.To_Universal_String ("'"),
-         others => <>));
-      Self.General_Entities.Insert
-       (League.Strings.To_Universal_String ("quot"),
-        (Name   => League.Strings.To_Universal_String ("quot"),
-         Kind   => Internal_General,
-         Value  => League.Strings.To_Universal_String (""""),
-         others => <>));
+      Register_Predefined_Entity
+       (Self   => Self,
+        Name   => League.Strings.To_Universal_String ("lt"),
+        Value  => League.Strings.To_Universal_String ("&#60;"));
+      Register_Predefined_Entity
+       (Self   => Self,
+        Name   => League.Strings.To_Universal_String ("gt"),
+        Value  => League.Strings.To_Universal_String (">"));
+      Register_Predefined_Entity
+       (Self   => Self,
+        Name   => League.Strings.To_Universal_String ("amp"),
+        Value  => League.Strings.To_Universal_String ("&#38;"));
+      Register_Predefined_Entity
+       (Self   => Self,
+        Name   => League.Strings.To_Universal_String ("apos"),
+        Value  => League.Strings.To_Universal_String ("'"));
+      Register_Predefined_Entity
+       (Self   => Self,
+        Name   => League.Strings.To_Universal_String ("quot"),
+        Value  => League.Strings.To_Universal_String (""""));
 
       --  Initialize by pushing state 0 and getting the first input symbol.
 

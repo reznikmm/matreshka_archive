@@ -44,12 +44,14 @@
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode;
+with Matreshka.Internals.XML.Symbol_Tables.Entities;
 with Matreshka.SAX.Simple_Readers.Scanner.Tables;
 
 package body Matreshka.SAX.Simple_Readers.Scanner is
 
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
+   use Matreshka.Internals.XML.Symbol_Tables.Entities;
    use Matreshka.SAX.Simple_Readers.Scanner.Tables;
 
    type Character_Reference_Form is (Decimal, Hexadecimal);
@@ -92,8 +94,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  scanner's stack.
 
    procedure Push_General_Entity_In_Document_Content
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Data  : not null Matreshka.Internals.Strings.Shared_String_Access);
+    (Self : not null access SAX_Simple_Reader'Class;
+     Data : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Push replacement text of general entity in document content into
    --  scanner's stack.
 
@@ -115,8 +117,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  Processes character reference.
 
    procedure Process_General_Entity_Reference_In_Attribute_Value
-    (Self : not null access SAX_Simple_Reader'Class;
-     Name : League.Strings.Universal_String);
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
    --  Process gewneral entity reference in attribute value, rule [68] in rule
    --  [10].
 
@@ -325,22 +327,16 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    ----------------------------------------------------------
 
    procedure Process_General_Entity_Reference_In_Document_Content
-    (Self : not null access SAX_Simple_Reader'Class;
-     Name : League.Strings.Universal_String)
-   is
-      use Entity_Information_Maps;
-
-      Position : constant Entity_Information_Maps.Cursor
-        := Self.General_Entities.Find (Name);
-
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
    begin
-      if not Has_Element (Position) then
+      if not Is_General_Entity (Self.Symbols, Symbol) then
          raise Program_Error with "general entity is not declared";
 
       else
          Push_General_Entity_In_Document_Content
           (Self,
-           League.Strings.Internals.Get_Shared (Element (Position).Value));
+           General_Entity_Replacement_Text (Self.Symbols, Symbol));
       end if;
    end Process_General_Entity_Reference_In_Document_Content;
 
@@ -349,22 +345,16 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    ---------------------------------------------------------
 
    procedure Process_General_Entity_Reference_In_Attribute_Value
-    (Self : not null access SAX_Simple_Reader'Class;
-     Name : League.Strings.Universal_String)
-   is
-      use Entity_Information_Maps;
-
-      Position : constant Entity_Information_Maps.Cursor
-        := Self.General_Entities.Find (Name);
-
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
    begin
-      if not Has_Element (Position) then
+      if not Is_General_Entity (Self.Symbols, Symbol) then
          raise Program_Error with "general entity is not declared";
 
       else
          Push_General_Entity_In_Attribute_Value
           (Self,
-           League.Strings.Internals.Get_Shared (Element (Position).Value));
+           General_Entity_Replacement_Text (Self.Symbols, Symbol));
       end if;
    end Process_General_Entity_Reference_In_Attribute_Value;
 
@@ -486,8 +476,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    ---------------------------------------------
 
    procedure Push_General_Entity_In_Document_Content
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Data  : not null Matreshka.Internals.Strings.Shared_String_Access) is
+    (Self : not null access SAX_Simple_Reader'Class;
+     Data : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Self.Scanner_Stack.Append (Self.Scanner_State);
       Self.Stack_Is_Empty := False;

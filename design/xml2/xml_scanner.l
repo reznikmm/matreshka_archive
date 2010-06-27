@@ -836,7 +836,8 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ATTRIBUTE_VALUE>"&"{NAME}";" {
    --  General entity reference rule [68] in attribute value, rule [10].
 
-   Process_General_Entity_Reference_In_Attribute_Value (Self, YY_Text (1, 1));
+   Resolve_Symbol (Self, 1, 1, False, YYLVal);
+   Process_General_Entity_Reference_In_Attribute_Value (Self, YYLVal.Symbol);
 }
 
 <ATTRIBUTE_VALUE>. {
@@ -879,7 +880,8 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 "&"{NAME}";" {
    --  General entity reference rule [68] in document content.
 
-   Process_General_Entity_Reference_In_Document_Content (Self, YY_Text (1, 1));
+   Resolve_Symbol (Self, 1, 1, False, YYLVal);
+   Process_General_Entity_Reference_In_Document_Content (Self, YYLVal.Symbol);
 }
 
 <XML_DECL>. {
@@ -942,6 +944,7 @@ with Xml_Parser_Tokens;
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Wide_Wide_Text_IO;
 with League.Strings;
+with Matreshka.Internals.XML.Symbol_Tables;
 with Matreshka.Internals.Strings;
 ##
    use Xml_Parser_Tokens;
@@ -979,12 +982,14 @@ with Matreshka.Internals.Strings;
    Put_Line : access procedure (Item : League.Strings.Universal_String);
 
    procedure Process_General_Entity_Reference_In_Attribute_Value
-    (Self : access Integer;
-     Name : League.Strings.Universal_String) is separate;
+    (Self   : access Integer;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+       is separate;
 
    procedure Process_General_Entity_Reference_In_Document_Content
-    (Self : access Integer;
-     Name : League.Strings.Universal_String) is separate;
+    (Self   : access Integer;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+       is separate;
 
    procedure Process_Parameter_Entity_Reference_In_Entity_Value
     (Self : access Integer;
