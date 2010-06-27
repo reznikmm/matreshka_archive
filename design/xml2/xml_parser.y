@@ -329,7 +329,7 @@ EntityDecl:
 {
    Process_Parameter_Entity_Declaration
     (Self,
-     League.Strings.Internals.Create ($3.String),
+     $3.Symbol,
      False,
      League.Strings.Internals.Create ($4.String));
 }
@@ -337,7 +337,7 @@ EntityDecl:
 {
    Process_Parameter_Entity_Declaration
     (Self,
-     League.Strings.Internals.Create ($3.String),
+     $3.Symbol,
      True,
      League.Strings.Empty_String);
 }
@@ -779,7 +779,7 @@ with Matreshka.Internals.XML.Symbol_Tables;
 
    procedure Process_Parameter_Entity_Declaration
     (Self        : access Integer;
-     Name        : League.Strings.Universal_String;
+     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String) is separate;
 

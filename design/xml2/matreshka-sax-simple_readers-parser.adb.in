@@ -81,7 +81,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Parameter_Entity_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
-     Name        : League.Strings.Universal_String;
+     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String);
    --  Process parameter entity declaration, rule [72].
@@ -349,12 +349,15 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Parameter_Entity_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
-     Name        : League.Strings.Universal_String;
+     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String)
    is
       use League.Strings;
       use Entity_Information_Maps;
+
+      Name : constant League.Strings.Universal_String
+        := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
 
    begin
       if Self.Parameter_Entities.Contains (Name) then
