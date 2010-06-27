@@ -5,6 +5,12 @@ CLDR = unicode/cldr/1.7.1
 
 GPRBUILD_FLAGS = -p
 
+AFLEX = ../tools/aflex/src/aflex
+AYACC = ../tools/ayacc/src/ayacc
+TOKEN_TRANSFORMER = ../../../tools/token_transformer/token_transformer
+PARSER_TRANSFORMER = ../../../tools/parser_transformer/parser_transformer
+SCANNER_TRANSFORMER = ../../../tools/scanner_transformer/scanner_transformer
+
 all: gnat/matreshka_config.gpr
 	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
 	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml.gpr
@@ -29,20 +35,20 @@ ucd:
 	.objs/tools/gen_ucd $(UNIDATA) $(UCADATA) source/league/ucd
 #	.objs/tools/gen_segments $(CLDR)
 
-regexp: regexp_tools .gens-regexp
-	cd .gens-regexp && ../tools/ayacc/src/ayacc ../source/league/regexp_parser.y
+regexp: yy_tools .gens-regexp
+	cd .gens-regexp && $(AYACC) ../source/league/regexp_parser.y
 	cd .gens-regexp && gcc -c -gnat05 -gnatct -I../source/league regexp_parser_tokens.ads
-	cd source/league/regexp && ../../../tools/token_transformer/token_transformer regexp ../../../.gens-regexp/regexp_parser_tokens.adt ../matreshka-internals-regexps-compiler.ads.in
+	cd source/league/regexp && $(TOKEN_TRANSFORMER) regexp ../../../.gens-regexp/regexp_parser_tokens.adt ../matreshka-internals-regexps-compiler.ads.in
 	cd .gens-regexp && gcc -c -gnat05 -gnatct -I../source/league -I../source/league/regexp regexp_parser.adb
-	cd source/league/regexp && ../../../tools/parser_transformer/parser_transformer regexp ../../../.gens-regexp/regexp_parser.adt ../matreshka-internals-regexps-compiler-parser.adb.in
-	cd .gens-regexp && ../tools/aflex/src/aflex -v ../source/league/regexp_scanner.l
+	cd source/league/regexp && $(PARSER_TRANSFORMER) regexp ../../../.gens-regexp/regexp_parser.adt ../matreshka-internals-regexps-compiler-parser.adb.in
+	cd .gens-regexp && $(AFLEX) -v ../source/league/regexp_scanner.l
 	cd .gens-regexp && gcc -c -gnat05 -gnatct -I../source/league -I../source/league/regexp regexp_scanner.adb
-	cd source/league/regexp && ../../../tools/scanner_transformer/scanner_transformer regexp ../../../.gens-regexp/regexp_scanner.adt ../matreshka-internals-regexps-compiler-scanner.adb.in
+	cd source/league/regexp && $(SCANNER_TRANSFORMER) regexp ../../../.gens-regexp/regexp_scanner.adt ../matreshka-internals-regexps-compiler-scanner.adb.in
 
 .gens-regexp:
 	mkdir .gens-regexp
 
-regexp_tools:
+yy_tools:
 	gprbuild -p -Pgnat/tools_aflex.gpr
 	gprbuild -p -Pgnat/tools_ayacc.gpr
 	gprbuild -p -Pgnat/tools_token_transformer.gpr
@@ -57,7 +63,7 @@ regexp_tools:
 #	sqlite3 -batch -init demo/person.sql person.db ''
 
 clean:
-	rm -rf .objs .libs .gens-regexp
+	rm -rf .objs .libs .gens-regexp .gens-xml
 
 gnat/matreshka_config.gpr:
 	gprbuild -p -Pgnat/tools_configure.gpr
@@ -66,3 +72,20 @@ gnat/matreshka_config.gpr:
 config:
 	gprbuild -p -Pgnat/tools_configure.gpr
 	./configure
+
+
+
+
+
+xml:	yy_tools .gens-xml
+	cd .gens-xml && $(AYACC) ../source/xml/xml_parser.y
+	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_parser_tokens.ads
+	cd source/xml/xml && $(TOKEN_TRANSFORMER) xml ../../../.gens-xml/xml_parser_tokens.adt ../matreshka-sax-simple_readers.ads.in
+	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_parser.adb
+	cd source/xml/xml && $(PARSER_TRANSFORMER) xml ../../../.gens-xml/xml_parser.adt ../matreshka-sax-simple_readers-parser.adb.in
+	cd .gens-xml && $(AFLEX) -v ../source/xml/xml_scanner.l
+	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_scanner.adb
+	cd source/xml/xml && $(SCANNER_TRANSFORMER) xml ../../../.gens-xml/xml_scanner.adt ../matreshka-sax-simple_readers-scanner.adb.in
+
+.gens-xml:
+	mkdir .gens-xml
