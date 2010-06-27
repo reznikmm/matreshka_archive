@@ -1061,7 +1061,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 7 =>
                Enter_Start_Condition (Self, INITIAL);
             
-            --   YYLVal := (others => <>);
+               Set_String_Internal
+                (Item          => YYLVal,
+                 String        => Matreshka.Internals.Strings.Shared_Empty'Access,
+                 Is_Whitespace => False,
+                 Is_CData      => False);
             
                return Token_PI_Close;
 

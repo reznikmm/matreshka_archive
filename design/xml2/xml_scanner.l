@@ -199,7 +199,11 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <XML_DECL,PI,PI_DATA>"?>" {
    Enter_Start_Condition (Self, INITIAL);
 
---   YYLVal := (others => <>);
+   Set_String_Internal
+    (Item          => YYLVal,
+     String        => Matreshka.Internals.Strings.Shared_Empty'Access,
+     Is_Whitespace => False,
+     Is_CData      => False);
 
    return Token_PI_Close;
 }
