@@ -167,7 +167,7 @@ PI :
 {
    Process_Processing_Instruction
     (Self,
-     League.Strings.Internals.Create ($1.String),
+     $1.Symbol,
      League.Strings.Internals.Create ($2.String));
 }
   ;
@@ -812,7 +812,7 @@ with Matreshka.Internals.XML.Symbol_Tables;
 
    procedure Process_Processing_Instruction
      (Self   : access Integer;
-      Target : League.Strings.Universal_String;
+      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
       Data   : League.Strings.Universal_String) is separate;
 
    procedure Process_External_Id

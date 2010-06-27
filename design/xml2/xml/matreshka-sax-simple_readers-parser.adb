@@ -115,7 +115,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Processing_Instruction
     (Self   : not null access SAX_Simple_Reader'Class;
-     Target : League.Strings.Universal_String;
+     Target : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Data   : League.Strings.Universal_String);
    --  Process processing instruction.
 
@@ -401,7 +401,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Processing_Instruction
     (Self   : not null access SAX_Simple_Reader'Class;
-     Target : League.Strings.Universal_String;
+     Target : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
      Data   : League.Strings.Universal_String) is
    begin
       Handler_Callbacks.Call_Processing_Instruction (Self, Target, Data);
@@ -766,7 +766,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             when 17 =>
                Process_Processing_Instruction
                 (Self,
-                 League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String),
+                 yy.value_stack (yy.tos-1).Symbol,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
             when 18 =>
