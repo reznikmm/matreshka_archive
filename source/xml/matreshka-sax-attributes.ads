@@ -41,10 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Containers.Vectors;
+--  This package provides the SAX_Attributes type provides XML attributes.
+------------------------------------------------------------------------------
 private with Ada.Finalization;
 
 with League.Strings;
+private with Matreshka.Internals.Atomics.Counters;
 private with Matreshka.Internals.Strings;
 
 package Matreshka.SAX.Attributes is
@@ -73,7 +75,9 @@ package Matreshka.SAX.Attributes is
 
 private
 
-   type Attribute is new Ada.Finalization.Controlled with record
+   --  Representation of one attribute and its value.
+
+   type Attribute is record
       Namespace_URI  : Matreshka.Internals.Strings.Shared_String_Access
         := Matreshka.Internals.Strings.Shared_Empty'Access;
       Local_Name     : Matreshka.Internals.Strings.Shared_String_Access
@@ -84,16 +88,45 @@ private
         := Matreshka.Internals.Strings.Shared_Empty'Access;
    end record;
 
-   overriding procedure Adjust (Self : in out Attribute);
-   pragma Inline (Adjust);
+   --  Set attributes and its values shared between SAX_Attributes instances.
 
-   overriding procedure Finalize (Self : in out Attribute);
+   type Attribute_Array is array (Positive range <>) of Attribute;
 
-   package Attribute_Vectors is
-     new Ada.Containers.Vectors (Positive, Attribute);
-
-   type SAX_Attributes is tagged record
-      Attributes : Attribute_Vectors.Vector;
+   type Shared_Attributes (Last : Natural) is record
+      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Values  : Attribute_Array (1 .. Last);
+      Length  : Natural := 0;
    end record;
+
+   type Shared_Attributes_Access is access all Shared_Attributes;
+
+   procedure Reference (Self : Shared_Attributes_Access);
+   pragma Inline (Reference);
+   --  Increments reference counter.
+
+   procedure Dereference (Self : in out Shared_Attributes_Access);
+   --  Decrements reference counter and release resources when it reach zero.
+
+   function Can_Be_Reused (Self : Shared_Attributes_Access) return Boolean;
+   --  Returns True when the counter is equal to one, thus there are no other
+   --  reference to this shared object and it can be mutated instead of
+   --  allocation of new shared object.
+
+   Shared_Empty : aliased Shared_Attributes (0);
+   --  Globals shared object. It is used to represent empty set of attributes
+   --  to avoid unnecessary memory allocation/deallocation and number of
+   --  atomic increment/decrement operations.
+
+   --------------------
+   -- SAX_Attributes --
+   --------------------
+
+   type SAX_Attributes is new Ada.Finalization.Controlled with record
+      Data : Shared_Attributes_Access := Shared_Empty'Access;
+   end record;
+
+   overriding procedure Adjust (Self : in out SAX_Attributes);
+
+   overriding procedure Finalize (Self : in out SAX_Attributes);
 
 end Matreshka.SAX.Attributes;

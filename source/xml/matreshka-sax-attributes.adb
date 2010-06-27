@@ -41,44 +41,71 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Deallocation;
+
 with League.Strings.Internals;
 
 package body Matreshka.SAX.Attributes is
 
-   use type Matreshka.Internals.Strings.Shared_String_Access;
+   procedure Free is
+     new Ada.Unchecked_Deallocation
+          (Shared_Attributes, Shared_Attributes_Access);
 
    ------------
    -- Adjust --
    ------------
 
-   overriding procedure Adjust (Self : in out Attribute) is
+   overriding procedure Adjust (Self : in out SAX_Attributes) is
    begin
-      Matreshka.Internals.Strings.Reference (Self.Namespace_URI);
-      Matreshka.Internals.Strings.Reference (Self.Local_Name);
-      Matreshka.Internals.Strings.Reference (Self.Qualified_Name);
-      Matreshka.Internals.Strings.Reference (Self.Value);
+      Reference (Self.Data);
    end Adjust;
+
+   -------------------
+   -- Can_Be_Reused --
+   -------------------
+
+   function Can_Be_Reused (Self : Shared_Attributes_Access) return Boolean is
+   begin
+      return Matreshka.Internals.Atomics.Counters.Is_One (Self.Counter'Access);
+   end Can_Be_Reused;
+
+   -----------------
+   -- Dereference --
+   -----------------
+
+   procedure Dereference (Self : in out Shared_Attributes_Access) is
+   begin
+      if Self /= Shared_Empty'Access then
+         if Matreshka.Internals.Atomics.Counters.Decrement
+             (Self.Counter'Access)
+         then
+            for J in 1 .. Self.Length loop
+               Matreshka.Internals.Strings.Dereference
+                (Self.Values (J).Namespace_URI);
+               Matreshka.Internals.Strings.Dereference
+                (Self.Values (J).Local_Name);
+               Matreshka.Internals.Strings.Dereference
+                (Self.Values (J).Qualified_Name);
+               Matreshka.Internals.Strings.Dereference
+                (Self.Values (J).Value);
+            end loop;
+
+            Free (Self);
+
+         else
+            Self := null;
+         end if;
+      end if;
+   end Dereference;
 
    --------------
    -- Finalize --
    --------------
 
-   overriding procedure Finalize (Self : in out Attribute) is
+   overriding procedure Finalize (Self : in out SAX_Attributes) is
    begin
-      if Self.Namespace_URI /= null then
-         Matreshka.Internals.Strings.Dereference (Self.Namespace_URI);
-      end if;
-
-      if Self.Local_Name /= null then
-         Matreshka.Internals.Strings.Dereference (Self.Local_Name);
-      end if;
-
-      if Self.Qualified_Name /= null then
-         Matreshka.Internals.Strings.Dereference (Self.Qualified_Name);
-      end if;
-
-      if Self.Value /= null then
-         Matreshka.Internals.Strings.Dereference (Self.Value);
+      if Self.Data /= null then
+         Dereference (Self.Data);
       end if;
    end Finalize;
 
@@ -88,7 +115,7 @@ package body Matreshka.SAX.Attributes is
 
    function Length (Self : SAX_Attributes'Class) return Natural is
    begin
-      return Natural (Self.Attributes.Length);
+      return Self.Data.Length;
    end Length;
 
    ----------------
@@ -99,9 +126,13 @@ package body Matreshka.SAX.Attributes is
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String is
    begin
+      if Index not in 1 .. Self.Data.Length then
+         raise Constraint_Error;
+      end if;
+
       return
         League.Strings.Internals.Create
-         (Self.Attributes.Element (Index).Local_Name);
+         (Self.Data.Values (Index).Local_Name);
    end Local_Name;
 
    -------------------
@@ -112,10 +143,25 @@ package body Matreshka.SAX.Attributes is
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String is
    begin
+      if Index not in 1 .. Self.Data.Length then
+         raise Constraint_Error;
+      end if;
+
       return
         League.Strings.Internals.Create
-         (Self.Attributes.Element (Index).Namespace_URI);
+         (Self.Data.Values (Index).Namespace_URI);
    end Namespace_URI;
+
+   ---------------
+   -- Reference --
+   ---------------
+
+   procedure Reference (Self : Shared_Attributes_Access) is
+   begin
+      if Self /= Shared_Empty'Access then
+         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+      end if;
+   end Reference;
 
    --------------------
    -- Qualified_Name --
@@ -125,9 +171,13 @@ package body Matreshka.SAX.Attributes is
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String is
    begin
+      if Index not in 1 .. Self.Data.Length then
+         raise Constraint_Error;
+      end if;
+
       return
         League.Strings.Internals.Create
-         (Self.Attributes.Element (Index).Qualified_Name);
+         (Self.Data.Values (Index).Qualified_Name);
    end Qualified_Name;
 
    -----------
@@ -138,9 +188,11 @@ package body Matreshka.SAX.Attributes is
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String is
    begin
-      return
-        League.Strings.Internals.Create
-         (Self.Attributes.Element (Index).Value);
+      if Index not in 1 .. Self.Data.Length then
+         raise Constraint_Error;
+      end if;
+
+      return League.Strings.Internals.Create (Self.Data.Values (Index).Value);
    end Value;
 
 end Matreshka.SAX.Attributes;
