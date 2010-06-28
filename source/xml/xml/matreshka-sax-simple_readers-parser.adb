@@ -131,6 +131,19 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      System_Id : League.Strings.Universal_String);
    --  Process external id declaration.
 
+   ----------------
+   -- Initialize --
+   ----------------
+
+   procedure Initialize (State : in out Parser_State_Information) is
+   begin
+      --  Initialize by pushing state 0 and getting the first input symbol.
+
+      State.TOS := 0;
+      State.State_Stack (State.TOS) := 0;
+      State.Look_Ahead := True;
+   end Initialize;
+
    -----------------------
    -- Process_Attribute --
    -----------------------
@@ -598,12 +611,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       pragma Import (C, puts);
 
    begin
-      --  Initialize by pushing state 0 and getting the first input symbol.
-
-      YY.TOS := 0;
-      YY.State_Stack (YY.TOS) := 0;
-      YY.Look_Ahead := True;
-
       loop
          YY_Index := YY_Shift_Reduce_Offset (YY.State_Stack (YY.TOS));
 

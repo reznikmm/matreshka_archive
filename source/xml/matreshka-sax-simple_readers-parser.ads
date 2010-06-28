@@ -49,4 +49,7 @@ private package Matreshka.SAX.Simple_Readers.Parser is
    procedure YYParse (Self : not null access SAX_Simple_Reader);
    --  Parse XML document.
 
+   procedure Initialize (State : in out Parser_State_Information);
+   --  Initialize parser's state before first use.
+
 end Matreshka.SAX.Simple_Readers.Parser;

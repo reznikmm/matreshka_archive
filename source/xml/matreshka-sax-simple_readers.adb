@@ -158,6 +158,7 @@ package body Matreshka.SAX.Simple_Readers is
    overriding procedure Initialize (Self : in out SAX_Simple_Reader) is
    begin
       Matreshka.Internals.XML.Symbol_Tables.Initialize (Self.Symbols);
+      Matreshka.SAX.Simple_Readers.Parser.Initialize (Self.Parser_State);
    end Initialize;
 
    ---------------------
