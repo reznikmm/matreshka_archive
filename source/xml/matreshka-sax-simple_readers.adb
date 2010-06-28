@@ -126,6 +126,15 @@ package body Matreshka.SAX.Simple_Readers is
       end if;
    end Error_Handler;
 
+   --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize (Self : in out SAX_Simple_Reader) is
+   begin
+      Matreshka.Internals.XML.Symbol_Tables.Finalize (Self.Symbols);
+   end Finalize;
+
    ----------
    -- Hash --
    ----------
@@ -141,6 +150,15 @@ package body Matreshka.SAX.Simple_Readers is
    begin
       return Ada.Containers.Hash_Type (Item.Hash);
    end Hash;
+
+   ----------------
+   -- Initialize --
+   ----------------
+
+   overriding procedure Initialize (Self : in out SAX_Simple_Reader) is
+   begin
+      Matreshka.Internals.XML.Symbol_Tables.Initialize (Self.Symbols);
+   end Initialize;
 
    ---------------------
    -- Lexical_Handler --
@@ -166,14 +184,12 @@ package body Matreshka.SAX.Simple_Readers is
     (Self : not null access SAX_Simple_Reader;
      Data : League.Strings.Universal_String) is
    begin
-      Matreshka.Internals.XML.Symbol_Tables.Initialize (Self.Symbols);
       Matreshka.SAX.Locators.Internals.Set_Location
        (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
       Handler_Callbacks.Call_Set_Document_Locator (Self, Self.Locator);
       Self.Scanner_State.Data := League.Strings.Internals.Get_Shared (Data);
 --      Self.Validation := (others => True);
       Parser.YYParse (Self);
-      Matreshka.Internals.XML.Symbol_Tables.Finalize (Self.Symbols);
       Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
    end Parse;
 

@@ -93,7 +93,7 @@ package Matreshka.Internals.XML.Symbol_Tables is
    --  Returns name of the identifier.
 
    procedure Initialize (Self : in out Symbol_Table);
-   --  Initialize internal structures.
+   --  Initialize internal structures and register predefined general entities.
 
    procedure Finalize (Self : in out Symbol_Table);
    --  Finalize internal structures.

@@ -131,12 +131,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      System_Id : League.Strings.Universal_String);
    --  Process external id declaration.
 
-   procedure Register_Predefined_Entity
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String);
-   --  Registers predefined entity.
-
    -----------------------
    -- Process_Attribute --
    -----------------------
@@ -462,36 +456,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       Matreshka.SAX.Attributes.Internals.Clear (Self.Attributes);
    end Process_Start_Tag;
 
-   --------------------------------
-   -- Register_Predefined_Entity --
-   --------------------------------
-
-   procedure Register_Predefined_Entity
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String)
-   is
-      N : Matreshka.Internals.Strings.Shared_String_Access;
-      V : Matreshka.Internals.Strings.Shared_String_Access;
-      S : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
-
-   begin
-      N := League.Strings.Internals.Get_Shared (Name);
-      V := League.Strings.Internals.Get_Shared (Value);
-
-      Matreshka.Internals.XML.Symbol_Tables.Insert
-       (Self.Symbols,
-        N,
-        0,
-        1,
-        N.Unused,
-        N.Length + 1,
-        S);
-      Set_Is_General_Entity (Self.Symbols, S, True);
-      Matreshka.Internals.Strings.Reference (V);
-      Set_General_Entity_Replacement_Text (Self.Symbols, S, V);
-   end Register_Predefined_Entity;
-
    -------------------
    -- YY_Goto_State --
    -------------------
@@ -653,29 +617,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       pragma Import (C, puts);
 
    begin
-      --  Register predefined entities.
-
-      Register_Predefined_Entity
-       (Self   => Self,
-        Name   => League.Strings.To_Universal_String ("lt"),
-        Value  => League.Strings.To_Universal_String ("&#60;"));
-      Register_Predefined_Entity
-       (Self   => Self,
-        Name   => League.Strings.To_Universal_String ("gt"),
-        Value  => League.Strings.To_Universal_String (">"));
-      Register_Predefined_Entity
-       (Self   => Self,
-        Name   => League.Strings.To_Universal_String ("amp"),
-        Value  => League.Strings.To_Universal_String ("&#38;"));
-      Register_Predefined_Entity
-       (Self   => Self,
-        Name   => League.Strings.To_Universal_String ("apos"),
-        Value  => League.Strings.To_Universal_String ("'"));
-      Register_Predefined_Entity
-       (Self   => Self,
-        Name   => League.Strings.To_Universal_String ("quot"),
-        Value  => League.Strings.To_Universal_String (""""));
-
       --  Initialize by pushing state 0 and getting the first input symbol.
 
       YY.TOS := 0;

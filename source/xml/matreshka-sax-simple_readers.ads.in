@@ -44,6 +44,7 @@
 private with Ada.Containers.Vectors;
 private with Ada.Containers.Hashed_Maps;
 private with Ada.Exceptions;
+private with Ada.Finalization;
 
 with League.Strings;
 with Matreshka.SAX.Readers;
@@ -229,8 +230,8 @@ private
       Enabled : Boolean := False;
    end record;
 
-   type SAX_Simple_Reader is
-     limited new Matreshka.SAX.Readers.SAX_Reader with
+   type SAX_Simple_Reader is new Ada.Finalization.Limited_Controlled
+     and Matreshka.SAX.Readers.SAX_Reader with
    record
       --  Handlers
 
@@ -307,6 +308,12 @@ private
           := Matreshka.Internals.XML.Symbol_Tables.No_Symbol;
       --  Expected name of the root element.
    end record;
+
+   overriding procedure Initialize (Self : in out SAX_Simple_Reader);
+   --  Initialize internal state of the reader.
+
+   overriding procedure Finalize (Self : in out SAX_Simple_Reader);
+   --  Finalize internal state of the reader.
 
 --   overriding function Content_Handler
 --    (Self : not null access constant SAX_Simple_Reader)
