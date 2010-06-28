@@ -240,6 +240,10 @@ private
            Hash,
            "=");
 
+   -------------------
+   -- Scanner state --
+   -------------------
+
    type Scanner_State_Information is record
       Data                : Matreshka.Internals.Strings.Shared_String_Access;
       YY_Base_Position    : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
@@ -267,6 +271,34 @@ private
           (Positive,
            Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier,
            Matreshka.Internals.XML.Symbol_Tables."=");
+
+   ------------------
+   -- Parser state --
+   ------------------
+
+   YY_Stack_Size : constant Natural := 300;
+   --  The size of the value and state stacks.
+
+   type Value_Stack_Array is array (0 .. YY_Stack_Size) of YYSType;
+   type State_Stack_Array is array (0 .. YY_Stack_Size) of Natural;
+
+   type Parser_State_Information is record
+      --  Stack data used by the parser.
+
+      TOS          : Natural := 0;
+      Value_Stack  : Value_Stack_Array;
+      State_Stack  : State_Stack_Array;
+
+      Input_Symbol : Token;
+      --  Current input symbol.
+
+      Look_Ahead   : Boolean := True;
+      --  Obtain next token from the scanner.
+
+--       -- error recovery flag
+--       error_flag : natural := 0;
+--          -- indicates  3 - (number of valid shifts after an error occurs)
+   end record;
 
    Default_Handler :
      aliased Matreshka.SAX.Default_Handlers.SAX_Default_Handler;
@@ -317,6 +349,7 @@ private
 
       --  Parser state
 
+      Parser_State       : Parser_State_Information;
       YYVal              : YYSType;
       YYLVal             : YYSType;
       Public_Id          : League.Strings.Universal_String;

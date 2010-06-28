@@ -591,26 +591,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       YY_Index   : Integer;
       YY_TOS_Old : Natural;
 
-      YY_Stack_Size : constant Natural := 300;
-      --  The size of the value and state stacks.
-
-      package YY is
-         --  Stack data used by the parser.
-
-         TOS          : Natural := 0;
-         Value_Stack  : array (0 .. YY_Stack_Size) of YYSType;
-         State_Stack  : array (0 .. YY_Stack_Size) of Natural;
-
-         Input_Symbol : Token;
-         --  Current input symbol.
-
-         Look_Ahead   : Boolean := True;
-
---       -- error recovery flag
---       error_flag : natural := 0;
---          -- indicates  3 - (number of valid shifts after an error occurs)
-      end YY;
-
+      YY    : Parser_State_Information renames Self.Parser_State;
       YYVal : YYSType renames Self.YYVal;
 
       procedure puts (S : String);
@@ -1133,7 +1114,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             end loop;
 
             Move (YY.Value_Stack (YY.TOS), Self.YYVal);
---            YY.Value_Stack (YY.TOS) := Self.YYVal;
          end if;
       end loop;
    end YYParse;
