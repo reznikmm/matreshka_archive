@@ -13,8 +13,7 @@ procedure Performance is
 
    Reader  : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
    Handler : aliased Demo_Handlers.Demo_Handler;
-   Text    : constant League.Strings.Universal_String
-     := Read_File (Ada.Command_Line.Argument (1));
+   Text    : League.Strings.Universal_String;
    Start   : Ada.Calendar.Time;
 
 begin
@@ -23,6 +22,7 @@ begin
    Reader.Set_Entity_Resolver (Handler'Unchecked_Access);
 
    Start := Ada.Calendar.Clock;
+   Text := Read_File (Ada.Command_Line.Argument (1));
    Reader.Parse (Text);
    Put_Line
     ("Processing time:"
