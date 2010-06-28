@@ -624,7 +624,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
       YY_Action  : Integer;
       YY_Rule_Id : Integer;
-      YY_Index   : integer;
+      YY_Index   : Integer;
       YY_TOS_Old : Natural;
 
       YY_Stack_Size : constant Natural := 300;
