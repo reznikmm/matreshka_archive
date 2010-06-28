@@ -605,7 +605,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       YY_TOS_Old : Natural;
 
       YY    : Parser_State_Information renames Self.Parser_State;
-      YYVal : YYSType renames Self.YYVal;
+      YYVal : YYSType;
 
       procedure puts (S : String);
       pragma Import (C, puts);
@@ -688,7 +688,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Clear (YY.Value_Stack (J));
             end loop;
 
-            Move (YY.Value_Stack (YY.TOS), Self.YYVal);
+            Move (YY.Value_Stack (YY.TOS), YYVal);
          end if;
       end loop;
    end YYParse;

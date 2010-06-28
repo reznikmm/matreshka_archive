@@ -293,12 +293,11 @@ private
       YY_Current_Column  : Natural := 0;
       YY_Current_Skip_LF : Boolean := False;
       Locator            : Matreshka.SAX.Locators.SAX_Locator;
+      YYLVal             : YYSType;
 
       --  Parser state
 
       Parser_State       : Parser_State_Information;
-      YYVal              : YYSType;
-      YYLVal             : YYSType;
       Public_Id          : League.Strings.Universal_String;
       System_Id          : League.Strings.Universal_String;
 
