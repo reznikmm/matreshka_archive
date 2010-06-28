@@ -70,7 +70,7 @@ package body Matreshka.Internals.Utf16 is
    --  to optimize number of computations this expression is transformed to
    --
    --    C := S (J) << 10 + S (J + 1) - (HB << 10 + LB - 0x10000)
-   --
+   --                                   ^^^^^^^^^^^^^^^^^^^^^^^^^
    --  This constant represents constant part of the expression.
 
    High_Surrogate_First_Store : constant
@@ -82,8 +82,10 @@ package body Matreshka.Internals.Utf16 is
    --
    --  to optimize implementation they are rewritten as:
    --
-   --  S (J)     := (HB - 0x10000 >> 10) + C >> 10
    --  S (J + 1) := LB + C & 0x3FF
+   --  S (J)     := (HB - 0x10000 >> 10) + C >> 10
+   --               ^^^^^^^^^^^^^^^^^^^^
+   --  This constant represents constant part of the expression.
 
    ----------------
    -- Is_Greater --
