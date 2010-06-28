@@ -48,6 +48,19 @@ regexp: yy_tools .gens-regexp
 .gens-regexp:
 	mkdir .gens-regexp
 
+xml:	yy_tools .gens-xml
+	cd .gens-xml && $(AYACC) ../source/xml/xml_parser.y
+	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_parser_tokens.ads
+	cd source/xml/xml && $(TOKEN_TRANSFORMER) xml ../../../.gens-xml/xml_parser_tokens.adt ../matreshka-sax-simple_readers.ads.in
+	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_parser.adb
+	cd source/xml/xml && $(PARSER_TRANSFORMER) xml ../../../.gens-xml/xml_parser.adt ../matreshka-sax-simple_readers-parser.adb.in
+	cd .gens-xml && $(AFLEX) -v ../source/xml/xml_scanner.l
+	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_scanner.adb
+	cd source/xml/xml && $(SCANNER_TRANSFORMER) xml ../../../.gens-xml/xml_scanner.adt ../matreshka-sax-simple_readers-scanner.adb.in
+
+.gens-xml:
+	mkdir .gens-xml
+
 yy_tools:
 	gprbuild -p -Pgnat/tools_aflex.gpr
 	gprbuild -p -Pgnat/tools_ayacc.gpr
@@ -72,20 +85,3 @@ gnat/matreshka_config.gpr:
 config:
 	gprbuild -p -Pgnat/tools_configure.gpr
 	./configure
-
-
-
-
-
-xml:	yy_tools .gens-xml
-	cd .gens-xml && $(AYACC) ../source/xml/xml_parser.y
-	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_parser_tokens.ads
-	cd source/xml/xml && $(TOKEN_TRANSFORMER) xml ../../../.gens-xml/xml_parser_tokens.adt ../matreshka-sax-simple_readers.ads.in
-	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_parser.adb
-	cd source/xml/xml && $(PARSER_TRANSFORMER) xml ../../../.gens-xml/xml_parser.adt ../matreshka-sax-simple_readers-parser.adb.in
-	cd .gens-xml && $(AFLEX) -v ../source/xml/xml_scanner.l
-	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_scanner.adb
-	cd source/xml/xml && $(SCANNER_TRANSFORMER) xml ../../../.gens-xml/xml_scanner.adt ../matreshka-sax-simple_readers-scanner.adb.in
-
-.gens-xml:
-	mkdir .gens-xml
