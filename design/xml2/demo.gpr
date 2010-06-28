@@ -4,7 +4,7 @@ with "../../gnat/matreshka_xml.gpr";
 project Demo is
    for Main use ("demo.adb", "performance.adb");
    for Object_Dir use ".objs";
-   for Source_Dirs use (".", "xml");
+   for Source_Dirs use (".");
    for Exec_Dir use ".";
 
    package Compiler is
