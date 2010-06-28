@@ -64,8 +64,9 @@ package Matreshka.SAX.Simple_Readers is
      limited new Matreshka.SAX.Readers.SAX_Reader with private;
 
    procedure Parse
-    (Self : not null access SAX_Simple_Reader;
-     Data : League.Strings.Universal_String);
+    (Self       : not null access SAX_Simple_Reader;
+     Data       : League.Strings.Universal_String;
+     Last_Chunk : Boolean := True);
 
    Put_Line : access procedure (Item : League.Strings.Universal_String);
 
@@ -342,11 +343,13 @@ private
       Symbols            : Matreshka.Internals.XML.Symbol_Tables.Symbol_Table;
       YY_Base_Line       : Natural := 1;
       YY_Base_Column     : Natural := 0;
+      YY_Base_Skip_LF    : Boolean := False;
       YY_Current_Line    : Natural := 1;
       YY_Current_Column  : Natural := 0;
       YY_Current_Skip_LF : Boolean := False;
       Locator            : Matreshka.SAX.Locators.SAX_Locator;
       YYLVal             : YYSType;
+      Last_Chunk         : Boolean;
 
       --  Parser state
 

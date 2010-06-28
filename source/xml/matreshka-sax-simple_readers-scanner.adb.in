@@ -839,8 +839,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
          if Self.Stack_Is_Empty then
             --  Track line/column for document.
 
-            Self.YY_Base_Line   := Self.YY_Current_Line;
-            Self.YY_Base_Column := Self.YY_Current_Column;
+            Self.YY_Base_Line    := Self.YY_Current_Line;
+            Self.YY_Base_Column  := Self.YY_Current_Column;
+            Self.YY_Base_Skip_LF := Self.YY_Current_Skip_LF;
          end if;
 
 --        yy_cp := yy_c_buf_p;
@@ -1016,8 +1017,44 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
                else
                   if Self.Stack_Is_Empty then
+                     if Self.Last_Chunk then
+                        Matreshka.Internals.Strings.Dereference
+                         (Self.Scanner_State.Data);
+
+                     else
+                        --  Remove already scanned data.
+
+                        declare
+                           X : Matreshka.Internals.Strings.Shared_String_Access
+                             := Self.Scanner_State.Data;
+
+                        begin
+                           if Self.Scanner_State.Data.Unused
+                                /= Self.Scanner_State.YY_Base_Position
+                           then
+                              Self.Scanner_State.Data :=
+                                Matreshka.Internals.Strings.Operations.Slice
+                                 (X,
+                                  Self.Scanner_State.YY_Base_Position,
+                                  Self.Scanner_State.Data.Unused
+                                    - Self.Scanner_State.YY_Base_Position,
+                                  Self.Scanner_State.Data.Length
+                                    - Self.Scanner_State.YY_Base_Index + 1);
+
+                           else
+                              Self.Scanner_State.Data := null;
+                           end if;
+
+                           Matreshka.Internals.Strings.Dereference (X);
+                           Self.Scanner_State.YY_Current_Position := 0;
+                           Self.Scanner_State.YY_Current_Index := 1;
+                           Self.YY_Current_Line := Self.YY_Base_Line;
+                           Self.YY_Current_Column := Self.YY_Base_Column;
+                           Self.YY_Current_Skip_LF := Self.YY_Base_Skip_LF;
+                        end;
+                     end if;
+
                      return End_Of_Input;
---                     raise Program_Error with "End of data";
 
                   else
                      Self.Scanner_State := Self.Scanner_Stack.Last_Element;

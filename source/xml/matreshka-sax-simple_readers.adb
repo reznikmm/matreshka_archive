@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
+with Matreshka.Internals.Strings.Operations;
 with Matreshka.SAX.Locators.Internals;
 with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 with Matreshka.SAX.Simple_Readers.Parser;
@@ -50,6 +51,7 @@ with Matreshka.SAX.Simple_Readers.Scanner;
 package body Matreshka.SAX.Simple_Readers is
 
    use Matreshka.SAX.Readers;
+   use Matreshka.Internals.Strings;
 
    ---------------------
    -- Content_Handler --
@@ -159,6 +161,7 @@ package body Matreshka.SAX.Simple_Readers is
    begin
       Matreshka.Internals.XML.Symbol_Tables.Initialize (Self.Symbols);
       Matreshka.SAX.Simple_Readers.Parser.Initialize (Self.Parser_State);
+--      Self.Validation := (others => True);
    end Initialize;
 
    ---------------------
@@ -182,14 +185,26 @@ package body Matreshka.SAX.Simple_Readers is
    -----------
 
    procedure Parse
-    (Self : not null access SAX_Simple_Reader;
-     Data : League.Strings.Universal_String) is
+    (Self       : not null access SAX_Simple_Reader;
+     Data       : League.Strings.Universal_String;
+     Last_Chunk : Boolean := True) is
    begin
       Matreshka.SAX.Locators.Internals.Set_Location
        (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
       Handler_Callbacks.Call_Set_Document_Locator (Self, Self.Locator);
-      Self.Scanner_State.Data := League.Strings.Internals.Get_Shared (Data);
---      Self.Validation := (others => True);
+      Self.Last_Chunk := Last_Chunk;
+      Self.Scanner_State.Last_Match := Last_Chunk;
+
+      if Self.Scanner_State.Data = null then
+         Self.Scanner_State.Data := League.Strings.Internals.Get_Shared (Data);
+         Matreshka.Internals.Strings.Reference (Self.Scanner_State.Data);
+
+      else
+         Matreshka.Internals.Strings.Operations.Append
+          (Self.Scanner_State.Data,
+           League.Strings.Internals.Get_Shared (Data));
+      end if;
+
       Parser.YYParse (Self);
       Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
    end Parse;
@@ -284,8 +299,6 @@ package body Matreshka.SAX.Simple_Readers is
          Self.Lexical_Handler := Handler;
       end if;
    end Set_Lexical_Handler;
-
-   use Matreshka.Internals.Strings;
 
    ----------------
    -- Set_String --

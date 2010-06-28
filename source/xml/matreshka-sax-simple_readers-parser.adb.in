@@ -619,9 +619,16 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
          else
             if YY.Look_Ahead then
-                YY.Look_Ahead   := False;
                 YY.Input_Symbol := Scanner.YYLex (Self);
---                puts (Token'Image (YY.Input_Symbol) & ASCII.NUL);
+                puts (Token'Image (YY.Input_Symbol) & ASCII.NUL);
+
+                if YY.Input_Symbol = End_Of_Input
+                  and then not Self.Last_Chunk
+                then
+                   return;
+                end if;
+
+                YY.Look_Ahead := False;
             end if;
 
             YY_Action :=
