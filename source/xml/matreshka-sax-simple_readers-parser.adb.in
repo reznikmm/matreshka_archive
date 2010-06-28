@@ -603,12 +603,8 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       YY_Rule_Id : Integer;
       YY_Index   : Integer;
       YY_TOS_Old : Natural;
-
-      YY    : Parser_State_Information renames Self.Parser_State;
-      YYVal : YYSType;
-
-      procedure puts (S : String);
-      pragma Import (C, puts);
+      YYVal      : YYSType;
+      YY         : Parser_State_Information renames Self.Parser_State;
 
    begin
       loop
@@ -620,7 +616,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
          else
             if YY.Look_Ahead then
                 YY.Input_Symbol := Scanner.YYLex (Self);
-                puts (Token'Image (YY.Input_Symbol) & ASCII.NUL);
 
                 if YY.Input_Symbol = End_Of_Input
                   and then not Self.Last_Chunk
@@ -651,16 +646,12 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             YY.Look_Ahead := True;
 
          elsif YY_Action = YY_Error_Code then  --  ERROR
-            puts ("Accepting ERROR" & ASCII.NUL);
-
-            exit;
+            raise Program_Error with "Syntax error";
 
 --            handle_error;
 
          elsif YY_Action = YY_Accept_Code then
             --  Accepting grammar.
-
-            puts ("Accepting" & ASCII.NUL);
 
             exit;
 
