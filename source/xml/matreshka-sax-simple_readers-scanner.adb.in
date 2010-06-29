@@ -242,28 +242,45 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
      Form  : Character_Reference_Form;
      Image : League.Strings.Universal_String) return Token
    is
-      S : Wide_Wide_String (1 .. 1);
+      C : Code_Point;
 
    begin
       case Form is
          when Decimal =>
-            S (1) :=
-              Wide_Wide_Character'Val
-               (Integer'Wide_Wide_Value (Image.To_Wide_Wide_String));
+            C := Code_Point'Wide_Wide_Value (Image.To_Wide_Wide_String);
 
          when Hexadecimal =>
-            S (1) :=
-              Wide_Wide_Character'Val
-               (Integer'Wide_Wide_Value
-                 ("16#" & Image.To_Wide_Wide_String & "#"));
+            C :=
+              Code_Point'Wide_Wide_Value
+                ("16#" & Image.To_Wide_Wide_String & "#");
       end case;
 
       --  XXX Character reference must be resolved into valid XML character.
-      --  XXX Whitespace must be detected.
+      --  XXX Whitespace must be detected and reported in token.
 
+      if not Matreshka.Internals.Strings.Can_Be_Reused
+              (Self.Character_Buffer, 2)
+      then
+         --  Preallocated buffer can't be reused for some reason (most
+         --  probably because application made copy of the previous character
+         --  reference), so new buffer need to be preallocated. Requested
+         --  size of the buffer is maximum number of UTF-16 code unit to
+         --  store one Unicode code point.
+
+         Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
+         Self.Character_Buffer := Matreshka.Internals.Strings.Allocate (2);
+      end if;
+
+      Self.Character_Buffer.Unused := 0;
+      Self.Character_Buffer.Length := 1;
+      Matreshka.Internals.Utf16.Unchecked_Store
+       (Self.Character_Buffer.Value,
+        Self.Character_Buffer.Unused,
+        C);
       Set_String
        (Item          => Self.YYLVal,
-        String        => League.Strings.To_Universal_String (S),
+        String        =>
+          League.Strings.Internals.Create (Self.Character_Buffer),
         Is_Whitespace => False,
         Is_CData      => False);
 

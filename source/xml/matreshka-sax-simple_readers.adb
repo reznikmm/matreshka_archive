@@ -134,6 +134,7 @@ package body Matreshka.SAX.Simple_Readers is
 
    overriding procedure Finalize (Self : in out SAX_Simple_Reader) is
    begin
+      Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
       Matreshka.Internals.XML.Symbol_Tables.Finalize (Self.Symbols);
    end Finalize;
 
@@ -161,6 +162,12 @@ package body Matreshka.SAX.Simple_Readers is
    begin
       Matreshka.Internals.XML.Symbol_Tables.Initialize (Self.Symbols);
       Matreshka.SAX.Simple_Readers.Parser.Initialize (Self.Parser_State);
+
+      Self.Character_Buffer := Matreshka.Internals.Strings.Allocate (2);
+      --  Preallocate internal buffer for character reference handling. One
+      --  Unicode character can be represented in UTF-16 encoding by one or
+      --  or two code units, thus preallocate enough space.
+
 --      Self.Validation := (others => True);
    end Initialize;
 

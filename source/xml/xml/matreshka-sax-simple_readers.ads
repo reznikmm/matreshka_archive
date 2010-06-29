@@ -350,6 +350,8 @@ private
       Locator            : Matreshka.SAX.Locators.SAX_Locator;
       YYLVal             : YYSType;
       Last_Chunk         : Boolean;
+      Character_Buffer   : Matreshka.Internals.Strings.Shared_String_Access;
+      --  Preallocated buffer for character reference handling.
 
       --  Parser state
 
