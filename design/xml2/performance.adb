@@ -16,12 +16,12 @@ procedure Performance is
    Text    : League.Strings.Universal_String;
    Start   : Ada.Calendar.Time;
 
-   task type T;
-
-   task body T is
-   begin
-      null;
-   end T;
+--   task type T;
+--
+--   task body T is
+--   begin
+--      null;
+--   end T;
 
 begin
    Matreshka.SAX.Simple_Readers.Put_Line := Put_Line'Access;
