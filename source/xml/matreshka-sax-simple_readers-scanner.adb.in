@@ -612,8 +612,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       FP : Utf16_String_Index
         := Self.Scanner_State.YY_Base_Position
              + Utf16_String_Index (Trim_Left);
-      FI : Positive           := Self.Scanner_State.YY_Base_Index + Trim_Left;
-      LP : Utf16_String_Index
+      FI : Positive
+        := Self.Scanner_State.YY_Base_Index + Trim_Left;
+      LP : constant Utf16_String_Index
         := Self.Scanner_State.YY_Current_Position
              - Utf16_String_Index (Trim_Right);
       LI : constant Positive
@@ -716,28 +717,25 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
         Trim_Whitespace : Boolean := False)
           return League.Strings.Universal_String
       is
-         FP : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
-         FI : Positive
-           := Self.Scanner_State.YY_Base_Index + Trim_Left;
-         LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
+         --  Trailing and leading character as well as whitespace characters
+         --  belongs to BMP and don't require expensive UTF-16 decoding.
+
+         FP : Utf16_String_Index
+          := Self.Scanner_State.YY_Base_Position
+               + Utf16_String_Index (Trim_Left);
+         FI : Positive := Self.Scanner_State.YY_Base_Index + Trim_Left;
+         LP : constant Utf16_String_Index
+          := Self.Scanner_State.YY_Current_Position
+               - Utf16_String_Index (Trim_Right);
          LI : constant Positive
            := Self.Scanner_State.YY_Current_Index - Trim_Right;
          C  : Code_Point;
          FA : Utf16_String_Index;
 
       begin
-	 --  XXX Implementation covers all cases but not efficient, most times
-	 --  (or always?) use of iteration is not needed - leading and trailing
-         --  code points belong to BMP.
-
-         for J in 1 .. Trim_Left loop
-            Unchecked_Next (Self.Scanner_State.Data.Value, FP);
-         end loop;
-
          if Trim_Whitespace then
             loop
-               FA := FP;
-               Unchecked_Next (Self.Scanner_State.Data.Value, FA, C);
+               C := Code_Point (Self.Scanner_State.Data.Value (FP));
 
                exit when
                  C /= 16#0020#
@@ -745,14 +743,10 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                    and then C /= 16#000D#
                    and then C /= 16#000A#;
 
-               FP := FA;
+               FP := FP + 1;
                FI := FI + 1;
             end loop;
          end if;
-
-         for J in 1 .. Trim_Right loop
-            Unchecked_Previous (Self.Scanner_State.Data.Value, LP);
-         end loop;
 
          return
            League.Strings.Internals.Wrap
@@ -770,28 +764,24 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
         Trim_Whitespace : Boolean := False)
           return Matreshka.Internals.Strings.Shared_String_Access
       is
-         FP : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
-         FI : Positive
-           := Self.Scanner_State.YY_Base_Index + Trim_Left;
-         LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
+         --  Trailing and leading character as well as whitespace characters
+         --  belongs to BMP and don't require expensive UTF-16 decoding.
+
+         FP : Utf16_String_Index
+           := Self.Scanner_State.YY_Base_Position
+                + Utf16_String_Index (Trim_Left);
+         FI : Positive := Self.Scanner_State.YY_Base_Index + Trim_Left;
+         LP : constant Utf16_String_Index
+           := Self.Scanner_State.YY_Current_Position
+                - Utf16_String_Index (Trim_Right);
          LI : constant Positive
            := Self.Scanner_State.YY_Current_Index - Trim_Right;
          C  : Code_Point;
-         FA : Utf16_String_Index;
 
       begin
-	 --  XXX Implementation covers all cases but not efficient, most times
-	 --  (or always?) use of iteration is not needed - leading and trailing
-         --  code points belong to BMP.
-
-         for J in 1 .. Trim_Left loop
-            Unchecked_Next (Self.Scanner_State.Data.Value, FP);
-         end loop;
-
          if Trim_Whitespace then
             loop
-               FA := FP;
-               Unchecked_Next (Self.Scanner_State.Data.Value, FA, C);
+               C := Code_Point (Self.Scanner_State.Data.Value (FP));
 
                exit when
                  C /= 16#0020#
@@ -799,14 +789,10 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                    and then C /= 16#000D#
                    and then C /= 16#000A#;
 
-               FP := FA;
+               FP := FP + 1;
                FI := FI + 1;
             end loop;
          end if;
-
-         for J in 1 .. Trim_Right loop
-            Unchecked_Previous (Self.Scanner_State.Data.Value, LP);
-         end loop;
 
          return
            Matreshka.Internals.Strings.Operations.Slice
