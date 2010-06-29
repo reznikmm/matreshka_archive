@@ -44,7 +44,7 @@
 with "../../gnat/matreshka_league.gpr";
 with "../../gnat/matreshka_xml.gpr";
 
-project SAX_Event_Printer is
+project SAX_Events_Printer is
 
    for Main use ("sax_events_printer.adb");
    for Object_Dir use ".objs";
@@ -55,4 +55,4 @@ project SAX_Event_Printer is
       for Default_Switches ("Ada") use ("-g", "-O2", "-gnat05", "-gnatn", "-gnatW8");
    end Compiler;
 
-end SAX_Event_Printer;
+end SAX_Events_Printer;
