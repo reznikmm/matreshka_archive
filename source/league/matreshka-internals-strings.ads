@@ -147,6 +147,8 @@ package Matreshka.Internals.Strings is
    function Can_Be_Reused
     (Self : not null Shared_String_Access;
      Size : Matreshka.Internals.Utf16.Utf16_String_Index) return Boolean;
+   pragma Inline (Can_Be_Reused);
+   pragma Inline_Always (Can_Be_Reused);
    --  Returns True when specified shared string can be reused safely. There
    --  are two criteria: reference counter must be one (it means this object
    --  is not used anywhere); and size of the object is sufficient to store
