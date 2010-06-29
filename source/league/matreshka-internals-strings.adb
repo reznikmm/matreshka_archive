@@ -132,7 +132,8 @@ package body Matreshka.Internals.Strings is
      Size : Matreshka.Internals.Utf16.Utf16_String_Index) return Boolean is
    begin
       return
-        Self.Size > Size
+        Self /= Shared_Empty'Access
+          and then Self.Size > Size
           and then Matreshka.Internals.Atomics.Counters.Is_One
                     (Self.Counter'Access);
    end Can_Be_Reused;
