@@ -4,7 +4,7 @@ with Ada.Command_Line;
 with League.Strings;
 with Matreshka.SAX.Simple_Readers;
 
-with Demo_Handlers;
+with Events_Printers;
 with Put_Line;
 with Read_File;
 
@@ -12,9 +12,16 @@ procedure Performance is
    use type Ada.Calendar.Time;
 
    Reader  : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
-   Handler : aliased Demo_Handlers.Demo_Handler;
+   Handler : aliased Events_Printers.Events_Printer;
    Text    : League.Strings.Universal_String;
    Start   : Ada.Calendar.Time;
+
+   task type T;
+
+   task body T is
+   begin
+      null;
+   end T;
 
 begin
    Matreshka.SAX.Simple_Readers.Put_Line := Put_Line'Access;
