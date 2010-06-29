@@ -112,8 +112,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    function Process_Character_Reference
     (Self  : not null access SAX_Simple_Reader'Class;
-     Form  : Character_Reference_Form;
-     Image : League.Strings.Universal_String) return Token;
+     Form  : Character_Reference_Form) return Token;
    --  Processes character reference.
 
    procedure Process_General_Entity_Reference_In_Attribute_Value
@@ -239,20 +238,67 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    function Process_Character_Reference
     (Self  : not null access SAX_Simple_Reader'Class;
-     Form  : Character_Reference_Form;
-     Image : League.Strings.Universal_String) return Token
+     Form  : Character_Reference_Form) return Token
    is
-      C : Code_Point;
+      Upper_A     : constant := 16#41#;
+      Upper_F     : constant := 16#46#;
+      Lower_A     : constant := 16#61#;
+      Lower_F     : constant := 16#66#;
+      Zero_Fixup  : constant := 16#30#;
+      Upper_Fixup : constant := 16#41# - 16#0A#;
+      Lower_Fixup : constant := 16#61# - 16#0A#;
+
+      D  : Code_Point;
+      C  : Code_Point := 0;
+      FP : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
+      LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
 
    begin
+      --  NOTE: Sequences of leading and trailing character always fixed:
+      --  "&#" for decimal representation and "&#x" for hexadecimal
+      --  representation for the leading sequence of characters and ";" for
+      --  trailing; thus we can just add/subtract required number of code point
+      --  positions instead of doing more expensive iteration with analysis of
+      --  UTF-16 code units.
+      --
+      --  Actual value has limited character set ([0-9] or [0-9a-fA-F]), all
+      --  of characters is on BMP also, thus expensive decoding can be omitted
+      --  also.
+
       case Form is
          when Decimal =>
-            C := Code_Point'Wide_Wide_Value (Image.To_Wide_Wide_String);
+            --  Trim two leading characters and trailing character.
+
+            FP := FP + 2;
+            LP := LP - 1;
+
+            while FP < LP loop
+               D := Code_Point (Self.Scanner_State.Data.Value (FP));
+               FP := FP + 1;
+
+               C := (C * 10) + D - Zero_Fixup;
+            end loop;
 
          when Hexadecimal =>
-            C :=
-              Code_Point'Wide_Wide_Value
-                ("16#" & Image.To_Wide_Wide_String & "#");
+            --  Trim three leading characters and trailing character.
+
+            FP := FP + 3;
+            LP := LP - 1;
+
+            while FP < LP loop
+               D := Code_Point (Self.Scanner_State.Data.Value (FP));
+               FP := FP + 1;
+
+               if D in Upper_A .. Upper_F then
+                  C := (C * 16) + D - Upper_Fixup;
+
+               elsif D in Lower_A .. Lower_F then
+                  C := (C * 16) + D - Lower_Fixup;
+
+               else
+                  C := (C * 16) + D - Zero_Fixup;
+               end if;
+            end loop;
       end case;
 
       --  XXX Character reference must be resolved into valid XML character.
@@ -277,10 +323,10 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
        (Self.Character_Buffer.Value,
         Self.Character_Buffer.Unused,
         C);
-      Set_String
+      Matreshka.Internals.Strings.Reference (Self.Character_Buffer);
+      Set_String_Internal
        (Item          => Self.YYLVal,
-        String        =>
-          League.Strings.Internals.Create (Self.Character_Buffer),
+        String        => Self.Character_Buffer,
         Is_Whitespace => False,
         Is_CData      => False);
 

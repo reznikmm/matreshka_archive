@@ -472,14 +472,14 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    --  Decimal form of character reference rule [66] in entity value rule [9];
    --  attribute value, rule [10] or content of element, rule [43].
 
-   return Process_Character_Reference (Self, Decimal, YY_Text (2, 1));
+   return Process_Character_Reference (Self, Decimal);
 }
 
 <INITIAL,ENTITY_VALUE,ATTRIBUTE_VALUE>"&#x"[0-9a-fA-F]+";" {
    --  Hexadecimal form of character reference rule [66] in entity value rule
    --  [9]; attribute value, rule [10] or content of element, rule [43].
 
-   return Process_Character_Reference (Self, Hexadecimal, YY_Text (3, 1));
+   return Process_Character_Reference (Self, Hexadecimal);
 }
 
 <ENTITY_VALUE>"&"{NAME}";" {
@@ -999,8 +999,7 @@ with Matreshka.Internals.Strings;
 
    function Process_Character_Reference
     (Self  : access Integer;
-     Form  : Character_Reference_Form;
-     Image : League.Strings.Universal_String) return Token is separate;
+     Form  : Character_Reference_Form) return Token is separate;
 
    function Process_Attribute_Value_Open_Delimiter
     (Self  : access Integer;
