@@ -713,9 +713,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ATTLIST_TYPE>['"] {
    --  Open delimiter of attribute value, rule [10].
 
-   return
-     Process_Attribute_Value_Open_Delimiter
-      (Self, YY_Text, ATTLIST_DECL);
+   return Process_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
 }
 
 <DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET,ENTITY_NDATA,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE>{WHITE_SPACE} {
@@ -797,15 +795,13 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 <ELEMENT_START>['"] {
    --  Open delimiter of attribute value, rule [10].
 
-   return
-     Process_Attribute_Value_Open_Delimiter
-      (Self, YY_Text, ELEMENT_START);
+   return Process_Attribute_Value_Open_Delimiter (Self, ELEMENT_START);
 }
 
 <ATTRIBUTE_VALUE>['"] {
    --  Close delimiter of attribute value, rule [10].
 
-   return Process_Attribute_Value_Close_Delimiter (Self, YY_Text);
+   return Process_Attribute_Value_Close_Delimiter (Self);
 }
 
 <ATTRIBUTE_VALUE>{CHAR_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS}+ {
@@ -1003,12 +999,10 @@ with Matreshka.Internals.Strings;
 
    function Process_Attribute_Value_Open_Delimiter
     (Self  : access Integer;
-     Image : League.Strings.Universal_String;
      State : Integer) return Token is separate;
 
    function Process_Attribute_Value_Close_Delimiter
-    (Self  : access Integer;
-     Image : League.Strings.Universal_String) return Token is separate;
+    (Self  : access Integer) return Token is separate;
 
    function Process_Entity_Value_Open_Delimiter
     (Self  : access Integer;

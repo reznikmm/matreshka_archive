@@ -101,13 +101,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    function Process_Attribute_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
-     Image : League.Strings.Universal_String;
      State : Integer) return Token;
    --  Process open delimiter of attribute value.
 
    function Process_Attribute_Value_Close_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Image : League.Strings.Universal_String) return Token;
+    (Self  : not null access SAX_Simple_Reader'Class) return Token;
    --  Process close delimiter of attribute value.
 
    function Process_Character_Reference
@@ -194,15 +192,47 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    ---------------------------------------------
 
    function Process_Attribute_Value_Close_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Image : League.Strings.Universal_String) return Token
+    (Self  : not null access SAX_Simple_Reader'Class) return Token
    is
+      --  NOTE: Attribute value delimiter can be ' or " and both are
+      --  represented as single UTF-16 code unit, thus expensive UTF-16
+      --  decoding can be avoided.
+
       Delimiter : constant Matreshka.Internals.Unicode.Code_Point
-        := Wide_Wide_Character'Pos (Image.Element (1));
+        := Code_Point
+            (Self.Scanner_State.Data.Value
+              (Self.Scanner_State.YY_Base_Position));
 
    begin
       if Self.Scanner_State.Delimiter /= Delimiter then
-         Set_String (Self.YYLVal, Image, False, False);
+         --  XXX Can be refactored and reused between processing of character
+         --  reference and close of attribute value delimiter.
+
+         if not Matreshka.Internals.Strings.Can_Be_Reused
+                 (Self.Character_Buffer, 2)
+         then
+            --  Preallocated buffer can't be reused for some reason (most
+            --  probably because application made copy of the previous
+            --  character reference), so new buffer need to be preallocated.
+            --  Requested size of the buffer is maximum number of UTF-16 code
+            --  unit to store one Unicode code point.
+
+            Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
+            Self.Character_Buffer := Matreshka.Internals.Strings.Allocate (2);
+         end if;
+
+         Self.Character_Buffer.Unused := 0;
+         Self.Character_Buffer.Length := 1;
+         Matreshka.Internals.Utf16.Unchecked_Store
+          (Self.Character_Buffer.Value,
+           Self.Character_Buffer.Unused,
+           Delimiter);
+         Matreshka.Internals.Strings.Reference (Self.Character_Buffer);
+         Set_String_Internal
+          (Item          => Self.YYLVal,
+           String        => Self.Character_Buffer,
+           Is_Whitespace => False,
+           Is_CData      => False);
 
          return Token_String_Segment;
 
@@ -220,13 +250,16 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    function Process_Attribute_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
-     Image : League.Strings.Universal_String;
      State : Integer) return Token is
    begin
-      Self.Scanner_State.Delimiter :=
-        Wide_Wide_Character'Pos (Image.Element (1));
-      Self.Scanner_State.Continue_State := State;
+      --  NOTE: Attribute value delimiter can be ' or " and both are
+      --  represented as single UTF-16 code unit, thus expensive UTF-16
+      --  decoding can be avoided.
 
+      Self.Scanner_State.Delimiter :=
+        Code_Point
+         (Self.Scanner_State.Data.Value (Self.Scanner_State.YY_Base_Position));
+      Self.Scanner_State.Continue_State := State;
       Enter_Start_Condition (Self, ATTRIBUTE_VALUE);
 
       return Token_Value_Open;
@@ -303,6 +336,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
       --  XXX Character reference must be resolved into valid XML character.
       --  XXX Whitespace must be detected and reported in token.
+
+      --  XXX Can be refactored and reused between processing of character
+      --  reference and close of attribute value delimiter.
 
       if not Matreshka.Internals.Strings.Can_Be_Reused
               (Self.Character_Buffer, 2)
