@@ -45,6 +45,29 @@ with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 
 package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
+   ------------------------------------------
+   -- On_Less_Than_Sign_In_Attribute_Value --
+   ------------------------------------------
+
+   function On_Less_Than_Sign_In_Attribute_Value
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      --
+      --  [3.1 WFC: No < in Attribute Values]
+      --
+      --  "The replacement text of any entity referred to directly or
+      --  indirectly in an attribute value MUST NOT contain a <."
+
+      Matreshka.SAX.Simple_Readers.Handler_Callbacks.Call_Fatal_Error
+       (Self,
+        League.Strings.To_Universal_String
+         ("[3.1 WFC: No < in Attribute Values]"
+            & " '<' can't be used in attribute value"));
+      Self.Error_Reported := True;
+
+      return Error;
+   end On_Less_Than_Sign_In_Attribute_Value;
+
    -----------------------------
    -- On_Unexpected_Character --
    -----------------------------

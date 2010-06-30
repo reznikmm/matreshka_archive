@@ -818,15 +818,8 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 
 <ATTRIBUTE_VALUE>"<" {
    --  Less-than sign can't be used in the attribute value.
-   --
-   --  [3.1 WFC: No < in Attribute Values]
-   --
-   --  "The replacement text of any entity referred to directly or indirectly
-   --  in an attribute value MUST NOT contain a <."
 
-   raise Program_Error
-     with "[3.1 WFC: No < in Attribute Values] '<' can't be used in attribute value";
-   --  Fatal Error
+   return Actions.On_Less_Than_Sign_In_Attribute_Value (Self);
 }
 
 <ATTRIBUTE_VALUE>"&"{NAME}";" {
@@ -1036,6 +1029,9 @@ with Matreshka.Internals.Strings;
    package Actions is
 
       function On_Unexpected_Character (Self : access Integer) return Token;
+
+      function On_Less_Than_Sign_In_Attribute_Value
+       (Self : access Integer) return Token;
 
    end Actions;
 

@@ -48,5 +48,10 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
    function On_Unexpected_Character
     (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  General handling of unexpected character.
+
+   function On_Less_Than_Sign_In_Attribute_Value
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handling of less-than sign in attribute value.
 
 end Matreshka.SAX.Simple_Readers.Scanner.Actions;
