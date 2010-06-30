@@ -798,12 +798,6 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    return Process_Attribute_Value_Open_Delimiter (Self, ELEMENT_START);
 }
 
-<ELEMENT_START>. {
-   --  Unexpected character in element start tag.
-
-   return Actions.On_Unexpected_Character_In_Element_Start_Tag (Self);
-}
-
 <ATTRIBUTE_VALUE>['"] {
    --  Close delimiter of attribute value, rule [10].
 
@@ -933,9 +927,10 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    raise Program_Error with "Unexpected character in system literal";
 }
 
-.|\n {
-   Put_Line (YY_Text);
-   raise Program_Error with "Unexpected character in document";
+<INITIAL,ELEMENT_START>.|\n {
+   --  Unexpected character.
+
+   return Actions.On_Unexpected_Character (Self);
 }
 
 %%
@@ -1040,8 +1035,7 @@ with Matreshka.Internals.Strings;
 
    package Actions is
 
-      function On_Unexpected_Character_In_Element_Start_Tag
-       (Self : access Integer) return Token;
+      function On_Unexpected_Character (Self : access Integer) return Token;
 
    end Actions;
 

@@ -45,11 +45,11 @@ with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 
 package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
-   --------------------------------------------------
-   -- On_Unexpected_Character_In_Element_Start_Tag --
-   --------------------------------------------------
+   -----------------------------
+   -- On_Unexpected_Character --
+   -----------------------------
 
-   function On_Unexpected_Character_In_Element_Start_Tag
+   function On_Unexpected_Character
     (Self : not null access SAX_Simple_Reader'Class) return Token is
    begin
       Matreshka.SAX.Simple_Readers.Handler_Callbacks.Call_Fatal_Error
@@ -57,6 +57,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
       Self.Error_Reported := True;
 
       return Error;
-   end On_Unexpected_Character_In_Element_Start_Tag;
+   end On_Unexpected_Character;
 
 end Matreshka.SAX.Simple_Readers.Scanner.Actions;

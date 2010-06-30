@@ -46,7 +46,7 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
    pragma Preelaborate;
 
-   function On_Unexpected_Character_In_Element_Start_Tag
+   function On_Unexpected_Character
     (Self : not null access SAX_Simple_Reader'Class) return Token;
 
 end Matreshka.SAX.Simple_Readers.Scanner.Actions;
