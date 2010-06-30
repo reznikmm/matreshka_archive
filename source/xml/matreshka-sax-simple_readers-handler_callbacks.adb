@@ -44,6 +44,7 @@
 with Ada.Exceptions;
 
 with Matreshka.SAX.Locators.Internals;
+with Matreshka.SAX.Parse_Exceptions.Internals;
 
 package body Matreshka.SAX.Simple_Readers.Handler_Callbacks is
 
@@ -125,6 +126,37 @@ package body Matreshka.SAX.Simple_Readers.Handler_Callbacks is
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_End_Element;
 
+   ----------------
+   -- Call_Error --
+   ----------------
+
+   procedure Call_Error
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Message : League.Strings.Universal_String) is
+   begin
+      Matreshka.SAX.Locators.Internals.Set_Location
+       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Self.Error_Handler.Error
+       (Matreshka.SAX.Parse_Exceptions.Internals.Create
+         (Public_Id => League.Strings.Empty_String,
+          System_Id => League.Strings.Empty_String,
+          Line      => 0,
+          Column    => 0,
+          Message   => Message),
+        Self.Continue);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.Content_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_Error;
+
    -------------------------------
    -- Call_External_Entity_Decl --
    -------------------------------
@@ -151,6 +183,37 @@ package body Matreshka.SAX.Simple_Readers.Handler_Callbacks is
            League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_External_Entity_Decl;
+
+   ----------------------
+   -- Call_Fatal_Error --
+   ----------------------
+
+   procedure Call_Fatal_Error
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Message : League.Strings.Universal_String) is
+   begin
+      Matreshka.SAX.Locators.Internals.Set_Location
+       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Self.Error_Handler.Fatal_Error
+       (Matreshka.SAX.Parse_Exceptions.Internals.Create
+         (Public_Id => League.Strings.Empty_String,
+          System_Id => League.Strings.Empty_String,
+          Line      => 0,
+          Column    => 0,
+          Message   => Message),
+        Self.Continue);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.Content_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_Fatal_Error;
 
    -------------------------------
    -- Call_Ignorable_Whitespace --
@@ -307,5 +370,36 @@ package body Matreshka.SAX.Simple_Readers.Handler_Callbacks is
            League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_Unparsed_Entity_Decl;
+
+   ------------------
+   -- Call_Warning --
+   ------------------
+
+   procedure Call_Warning
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Message : League.Strings.Universal_String) is
+   begin
+      Matreshka.SAX.Locators.Internals.Set_Location
+       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Self.Error_Handler.Warning
+       (Matreshka.SAX.Parse_Exceptions.Internals.Create
+         (Public_Id => League.Strings.Empty_String,
+          System_Id => League.Strings.Empty_String,
+          Line      => 0,
+          Column    => 0,
+          Message   => Message),
+        Self.Continue);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.Content_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_Warning;
 
 end Matreshka.SAX.Simple_Readers.Handler_Callbacks;

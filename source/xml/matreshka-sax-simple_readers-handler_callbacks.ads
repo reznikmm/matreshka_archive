@@ -65,12 +65,22 @@ private package Matreshka.SAX.Simple_Readers.Handler_Callbacks is
      Qualified_Name : League.Strings.Universal_String);
    --  Calls handler's SAX_Content_Handler.End_Element subprogram.
 
+   procedure Call_Error
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Message : League.Strings.Universal_String);
+   --  Calls handler's SAX_Error_Handler.Error subprogram.
+
    procedure Call_External_Entity_Decl
     (Self      : not null access SAX_Simple_Reader'Class;
      Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String);
    --  Calls handler's SAX_Decl_Handler.External_Entity_Decl subprogram.
+
+   procedure Call_Fatal_Error
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Message : League.Strings.Universal_String);
+   --  Calls handler's SAX_Error_Handler.Fatal_Error subprogram.
 
    procedure Call_Ignorable_Whitespace
     (Self : not null access SAX_Simple_Reader'Class;
@@ -109,5 +119,10 @@ private package Matreshka.SAX.Simple_Readers.Handler_Callbacks is
      System_Id     : League.Strings.Universal_String;
      Notation_Name : League.Strings.Universal_String);
    --  Calls handler's SAX_DTD_Handler.Unparsed_Entity_Decl subprogram.
+
+   procedure Call_Warning
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Message : League.Strings.Universal_String);
+   --  Calls handler's SAX_Error_Handler.Warning subprogram.
 
 end Matreshka.SAX.Simple_Readers.Handler_Callbacks;
