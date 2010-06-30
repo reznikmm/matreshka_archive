@@ -41,35 +41,58 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
 
-package Matreshka.SAX.Parse_Exceptions is
+package body Matreshka.SAX.Parse_Exceptions is
 
-   pragma Preelaborate;
+   ------------
+   -- Column --
+   ------------
 
-   type SAX_Parse_Exception is tagged private;
+   function Column (Self : SAX_Parse_Exception'Class) return Natural is
+   begin
+      return Self.Column;
+   end Column;
 
-   function Column (Self : SAX_Parse_Exception'Class) return Natural;
+   ----------
+   -- Line --
+   ----------
 
-   function Line (Self : SAX_Parse_Exception'Class) return Natural;
+   function Line (Self : SAX_Parse_Exception'Class) return Natural is
+   begin
+      return Self.Line;
+   end Line;
+
+   -------------
+   -- Message --
+   -------------
 
    function Message
-    (Self : SAX_Parse_Exception'Class) return League.Strings.Universal_String;
+    (Self : SAX_Parse_Exception'Class) return League.Strings.Universal_String
+   is
+   begin
+      return Self.Message;
+   end Message;
+
+   ---------------
+   -- Public_Id --
+   ---------------
 
    function Public_Id
-    (Self : SAX_Parse_Exception'Class) return League.Strings.Universal_String;
+    (Self : SAX_Parse_Exception'Class) return League.Strings.Universal_String
+   is
+   begin
+      return Self.Public_Id;
+   end Public_Id;
+
+   ---------------
+   -- System_Id --
+   ---------------
 
    function System_Id
-    (Self : SAX_Parse_Exception'Class) return League.Strings.Universal_String;
-
-private
-
-   type SAX_Parse_Exception is tagged record
-      Line      : Natural;
-      Column    : Natural;
-      Message   : League.Strings.Universal_String;
-      Public_Id : League.Strings.Universal_String;
-      System_Id : League.Strings.Universal_String;
-   end record;
+    (Self : SAX_Parse_Exception'Class) return League.Strings.Universal_String
+   is
+   begin
+      return Self.System_Id;
+   end System_Id;
 
 end Matreshka.SAX.Parse_Exceptions;
