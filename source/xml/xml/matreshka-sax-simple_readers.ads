@@ -184,9 +184,9 @@ private
 
    type YYSType is limited record
       String        : Matreshka.Internals.Strings.Shared_String_Access;
+      Symbol        : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
-      Symbol        : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
    end record;
 
    procedure Set_String
@@ -359,6 +359,7 @@ private
       Parser_State       : Parser_State_Information;
       Public_Id          : League.Strings.Universal_String;
       System_Id          : League.Strings.Universal_String;
+      Error_Reported     : Boolean := False;
 
       --  Analyzer state
 

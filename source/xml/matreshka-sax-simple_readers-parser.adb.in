@@ -646,7 +646,11 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             YY.Look_Ahead := True;
 
          elsif YY_Action = YY_Error_Code then  --  ERROR
-            raise Program_Error with "Syntax error";
+            if not Self.Error_Reported then
+               raise Program_Error with "Syntax error";
+            end if;
+
+            exit;
 
 --            handle_error;
 

@@ -798,6 +798,12 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    return Process_Attribute_Value_Open_Delimiter (Self, ELEMENT_START);
 }
 
+<ELEMENT_START>. {
+   --  Unexpected character in element start tag.
+
+   return Actions.On_Unexpected_Character_In_Element_Start_Tag (Self);
+}
+
 <ATTRIBUTE_VALUE>['"] {
    --  Close delimiter of attribute value, rule [10].
 
@@ -1031,3 +1037,12 @@ with Matreshka.Internals.Strings;
      String        : Matreshka.Internals.Strings.Shared_String_Access;
      Is_Whitespace : Boolean;
      Is_CData      : Boolean) is separate;
+
+   package Actions is
+
+      function On_Unexpected_Character_In_Element_Start_Tag
+       (Self : access Integer) return Token;
+
+   end Actions;
+
+   package body Actions is separate;

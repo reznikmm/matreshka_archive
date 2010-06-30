@@ -46,6 +46,7 @@ with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode;
 with Matreshka.Internals.XML.Symbol_Tables.Entities;
 with Matreshka.SAX.Simple_Readers.Scanner.Tables;
+with Matreshka.SAX.Simple_Readers.Scanner.Actions;
 
 package body Matreshka.SAX.Simple_Readers.Scanner is
 
