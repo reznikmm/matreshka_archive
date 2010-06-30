@@ -647,7 +647,9 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
          elsif YY_Action = YY_Error_Code then  --  ERROR
             if not Self.Error_Reported then
-               raise Program_Error with "Syntax error";
+               Matreshka.SAX.Simple_Readers.Handler_Callbacks.Call_Fatal_Error
+                (Self, League.Strings.To_Universal_String ("syntax error"));
+               Self.Continue := False;
             end if;
 
             exit;
