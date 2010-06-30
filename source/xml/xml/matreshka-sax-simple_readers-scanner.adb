@@ -1682,17 +1682,13 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                Process_General_Entity_Reference_In_Attribute_Value (Self, YYLVal.Symbol);
 
             when 80 =>
-               Put_Line (YY_Text);
-               raise Program_Error with "Unexpected character in ATTRIBUTE_VALUE";
-
-            when 81 =>
                --  Segment of whitespaces.
             
                if Process_Whitespace (Self, YY_Text_Internal) then
                   return Token_String_Segment;
                end if;
 
-            when 82 =>
+            when 81 =>
                --  Segment of character data, rule [14].
             
                Set_String_Internal
@@ -1703,7 +1699,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_String_Segment;
 
-            when 83 =>
+            when 82 =>
                --  Segment of CDATA, rules [18], [19], [20], [21].
             
                Set_String_Internal
@@ -1714,49 +1710,49 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                return Token_String_Segment;
 
-            when 84 =>
+            when 83 =>
                --  General entity reference rule [68] in document content.
             
                Resolve_Symbol (Self, 1, 1, False, YYLVal);
                Process_General_Entity_Reference_In_Document_Content (Self, YYLVal.Symbol);
 
-            when 85 =>
+            when 84 =>
                raise Program_Error with "Unexpected character in XML_DECL";
 
-            when 86 =>
+            when 85 =>
                raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
 
-            when 87 =>
+            when 86 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INT";
 
-            when 88 =>
+            when 87 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 
-            when 89 =>
+            when 88 =>
                raise Program_Error with "Unexpected character in ENTITY_DECL";
 
-            when 90 =>
+            when 89 =>
                raise Program_Error with "Unexpected character in ENTITY_DEF";
 
-            when 91 =>
+            when 90 =>
                raise Program_Error with "Unexpected character in ENTITY_NDATA";
 
-            when 92 =>
+            when 91 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in ATTLIST_TYPE";
 
-            when 93 =>
+            when 92 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in ATTLIST_DECL";
 
-            when 94 =>
+            when 93 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 95 =>
+            when 94 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 96 =>
+            when 95 =>
                --  Unexpected character.
             
                return Actions.On_Unexpected_Character (Self);

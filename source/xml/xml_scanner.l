@@ -829,11 +829,6 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    Process_General_Entity_Reference_In_Attribute_Value (Self, YYLVal.Symbol);
 }
 
-<ATTRIBUTE_VALUE>. {
-   Put_Line (YY_Text);
-   raise Program_Error with "Unexpected character in ATTRIBUTE_VALUE";
-}
-
 {WHITE_SPACE} {
    --  Segment of whitespaces.
 
@@ -920,7 +915,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    raise Program_Error with "Unexpected character in system literal";
 }
 
-<INITIAL,ELEMENT_START,PI,PI_DATA>.|\n {
+<INITIAL,ELEMENT_START,PI,PI_DATA,ATTRIBUTE_VALUE>.|\n {
    --  Unexpected character.
 
    return Actions.On_Unexpected_Character (Self);
