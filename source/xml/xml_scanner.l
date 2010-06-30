@@ -927,7 +927,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    raise Program_Error with "Unexpected character in system literal";
 }
 
-<INITIAL,ELEMENT_START>.|\n {
+<INITIAL,ELEMENT_START,PI,PI_DATA>.|\n {
    --  Unexpected character.
 
    return Actions.On_Unexpected_Character (Self);
