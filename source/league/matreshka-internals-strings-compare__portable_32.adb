@@ -114,11 +114,11 @@ package body Matreshka.Internals.Strings.Compare is
       begin
          for J in 0 .. Last loop
             if LV (J) /= RV (J) then
-               return
-                 Is_Greater (Left.Value (J * 2), Right.Value (J * 2))
-                   or else
-                     Is_Greater
-                      (Left.Value (J * 2 + 1), Right.Value (J * 2 + 1));
+               for K in J * 2 .. J * 2 + 1 loop
+                  if Left.Value (K) /= Right.Value (K) then
+                     return Is_Greater (Left.Value (K), Right.Value (K));
+                  end if;
+               end loop;
             end if;
          end loop;
       end;
@@ -150,11 +150,11 @@ package body Matreshka.Internals.Strings.Compare is
       begin
          for J in 0 .. Last loop
             if LV (J) /= RV (J) then
-               return
-                 Is_Greater (Left.Value (J * 2), Right.Value (J * 2))
-                   or else
-                     Is_Greater
-                      (Left.Value (J * 2 + 1), Right.Value (J * 2 + 1));
+               for K in J * 2 .. J * 2 + 1 loop
+                  if Left.Value (K) /= Right.Value (K) then
+                     return Is_Greater (Left.Value (K), Right.Value (K));
+                  end if;
+               end loop;
             end if;
          end loop;
       end;
@@ -186,10 +186,11 @@ package body Matreshka.Internals.Strings.Compare is
       begin
          for J in 0 .. Last loop
             if LV (J) /= RV (J) then
-               return
-                 Is_Less (Left.Value (J * 2), Right.Value (J * 2))
-                   or else
-                     Is_Less (Left.Value (J * 2 + 1), Right.Value (J * 2 + 1));
+               for K in J * 2 .. J * 2 + 1 loop
+                  if Left.Value (K) /= Right.Value (K) then
+                     return Is_Less (Left.Value (K), Right.Value (K));
+                  end if;
+               end loop;
             end if;
          end loop;
       end;
@@ -222,10 +223,11 @@ package body Matreshka.Internals.Strings.Compare is
       begin
          for J in 0 .. Last loop
             if LV (J) /= RV (J) then
-               return
-                 Is_Less (Left.Value (J * 2), Right.Value (J * 2))
-                   or else
-                     Is_Less (Left.Value (J * 2 + 1), Right.Value (J * 2 + 1));
+               for K in J * 2 .. J * 2 + 1 loop
+                  if Left.Value (K) /= Right.Value (K) then
+                     return Is_Less (Left.Value (K), Right.Value (K));
+                  end if;
+               end loop;
             end if;
          end loop;
       end;
