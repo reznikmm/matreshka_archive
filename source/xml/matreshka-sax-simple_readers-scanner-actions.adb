@@ -72,7 +72,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
          Matreshka.SAX.Simple_Readers.Handler_Callbacks.Call_Fatal_Error
           (Self,
            League.Strings.To_Universal_String
-            ("Character data can't be used outside of document content"));
+            ("Text may not appear after the root element"));
          Self.Error_Reported := True;
          Self.Continue := False;
 
