@@ -20,7 +20,7 @@ check: all
 #	valgrind .objs/library_level_test
 	.objs/string_hash_test
 	.objs/string_operations
-#	.objs/string_compare_test
+	.objs/string_compare_test
 	.objs/character_cursor_test
 	.objs/grapheme_cluster_cursor_test $(UNIDATA)
 	.objs/case_conversion_test

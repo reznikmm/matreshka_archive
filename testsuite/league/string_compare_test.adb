@@ -4,11 +4,11 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,29 +41,84 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_league";
+with Ada.Characters.Wide_Wide_Latin_1;
 
-project Matreshka_League_Tests is
+with League.Strings;
 
-   for Main use
-    ("string_hash_test.adb",
-     "character_cursor_test.adb",
-     "grapheme_cluster_cursor_test.adb",
-     "case_conversion_test.adb",
-     "case_folding_test.adb",
-     "normalization_test.adb",
-     "additional_normalization_test.adb",
-     "collation_test.adb",
-     "string_performance.adb",
-     "string_operations.adb",
-     "string_compare_test.adb",
-     "library_level_test.adb",
-     "regexp_ataresearch.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use ("../testsuite/league", "../tools");
+procedure String_Compare_Test is
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8", "-O2", "-gnatn");
-   end Compiler;
+   use Ada.Characters.Wide_Wide_Latin_1;
+   use League.Strings;
 
-end Matreshka_League_Tests;
+   procedure Test_1;
+   procedure Test_2;
+
+   ------------
+   -- Test_1 --
+   ------------
+
+   procedure Test_1 is
+      --  Checks whether string with different length compared correctly.
+
+      S1 : Universal_String := To_Universal_String ("1");
+      S2 : Universal_String := To_Universal_String ("12");
+
+   begin
+      if S1 = S2 then
+         raise Program_Error;
+      end if;
+
+      if S1 > S2 then
+         raise Program_Error;
+      end if;
+
+      if S1 >= S2 then
+         raise Program_Error;
+      end if;
+
+      if not (S1 < S2) then
+         raise Program_Error;
+      end if;
+
+      if not (S1 <= S2) then
+         raise Program_Error;
+      end if;
+   end Test_1;
+
+   ------------
+   -- Test_2 --
+   ------------
+
+   procedure Test_2 is
+      --  This test checks correct handling case when early characters is not
+      --  equal and had reverse relationship than later characters.
+
+      S1 : Universal_String := To_Universal_String ("03");
+      S2 : Universal_String := To_Universal_String ("12");
+
+   begin
+      if S1 = S2 then
+         raise Program_Error;
+      end if;
+
+      if S1 > S2 then
+         raise Program_Error;
+      end if;
+
+      if S1 >= S2 then
+         raise Program_Error;
+      end if;
+
+      if not (S1 < S2) then
+         raise Program_Error;
+      end if;
+
+      if not (S1 <= S2) then
+         raise Program_Error;
+      end if;
+   end Test_2;
+
+begin
+   Test_1;
+   Test_2;
+end String_Compare_Test;
