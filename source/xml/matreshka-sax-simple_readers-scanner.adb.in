@@ -138,13 +138,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  "Include In Literal" (4.4.5) mode for parameter entities, when quotation
    --  and apostrophe characters are not recognized as delimiters.
 
-   function Process_Whitespace
-    (Self : not null access SAX_Simple_Reader'Class;
-     Text : Matreshka.Internals.Strings.Shared_String_Access)
-       return Boolean;
-   --  Process segment of whitespaces. Returns True and sets YYLVal when
-   --  document content analysis started, and return False otherwise.
-
    function Process_XML_PI
     (Self : not null access SAX_Simple_Reader'Class)
        return Token;
@@ -156,6 +149,23 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
      Trim_Right      : Natural := 0;
      Trim_Whitespace : Boolean := False;
      YYLVal          : out YYSType);
+
+   ----------------------
+   -- YY_Move_Backward --
+   ----------------------
+
+   procedure YY_Move_Backward
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Self.Scanner_State.YY_Current_Position :=
+        Self.Scanner_State.YY_Current_Position - 1;
+      Self.Scanner_State.YY_Current_Index :=
+        Self.Scanner_State.YY_Current_Index - 1;
+
+      if Self.Stack_Is_Empty then
+         Self.YY_Current_Column := Self.YY_Current_Column - 1;
+      end if;
+   end YY_Move_Backward;
 
    ---------------------------
    -- Enter_Start_Condition --
@@ -481,36 +491,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
            League.Strings.Internals.Get_Shared (Element (Position).Value));
       end if;
    end Process_Parameter_Entity_Reference_In_Entity_Value;
-
-   ------------------------
-   -- Process_Whitespace --
-   ------------------------
-
-   function Process_Whitespace
-    (Self : not null access SAX_Simple_Reader'Class;
-     Text : Matreshka.Internals.Strings.Shared_String_Access)
-       return Boolean
-   is
-      Aux : Matreshka.Internals.Strings.Shared_String_Access := Text;
-
-   begin
-      if Self.Element_Names.Is_Empty then
-         --  Document content not entered.
-
-         Matreshka.Internals.Strings.Dereference (Aux);
-
-         return False;
-
-      else
-         Set_String_Internal
-          (Item          => Self.YYLVal,
-           String        => Text,
-           Is_Whitespace => True,
-           Is_CData      => False);
-
-         return True;
-      end if;
-   end Process_Whitespace;
 
    --------------------
    -- Process_XML_PI --
@@ -1185,5 +1165,51 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
          end case;
       end loop;  --  end of loop waiting for end of file
    end YYLex;
+
+   -------------
+   -- YY_Text --
+   -------------
+
+   function YY_Text
+    (Self            : not null access SAX_Simple_Reader'Class;
+     Trim_Left       : Natural := 0;
+     Trim_Right      : Natural := 0;
+     Trim_Whitespace : Boolean := False)
+       return Matreshka.Internals.Strings.Shared_String_Access
+   is
+      --  Trailing and leading character as well as whitespace characters
+      --  belongs to BMP and don't require expensive UTF-16 decoding.
+
+      FP : Utf16_String_Index
+        := Self.Scanner_State.YY_Base_Position
+             + Utf16_String_Index (Trim_Left);
+      FI : Positive := Self.Scanner_State.YY_Base_Index + Trim_Left;
+      LP : constant Utf16_String_Index
+        := Self.Scanner_State.YY_Current_Position
+             - Utf16_String_Index (Trim_Right);
+      LI : constant Positive
+        := Self.Scanner_State.YY_Current_Index - Trim_Right;
+      C  : Code_Point;
+
+   begin
+      if Trim_Whitespace then
+         loop
+            C := Code_Point (Self.Scanner_State.Data.Value (FP));
+
+            exit when
+              C /= 16#0020#
+                and then C /= 16#0009#
+                and then C /= 16#000D#
+                and then C /= 16#000A#;
+
+            FP := FP + 1;
+            FI := FI + 1;
+         end loop;
+      end if;
+
+      return
+        Matreshka.Internals.Strings.Operations.Slice
+         (Self.Scanner_State.Data, FP, LP - FP, LI - FI);
+   end YY_Text;
 
 end Matreshka.SAX.Simple_Readers.Scanner;

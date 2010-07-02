@@ -45,6 +45,80 @@ with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 
 package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
+   use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Utf16;
+
+   Less_Than_Sign       : constant := 16#003C#;
+   Greater_Than_Sign    : constant := 16#003E#;
+   Right_Square_Bracket : constant := 16#005D#;
+   Ampersand            : constant := 16#0026#;
+
+   -----------------------
+   -- On_Character_Data --
+   -----------------------
+
+   function On_Character_Data
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      C : constant Code_Point
+        := Code_Point
+            (Self.Scanner_State.Data.Value
+              (Self.Scanner_State.YY_Current_Position - 1));
+
+   begin
+      if Self.Element_Names.Is_Empty then
+         --  Document content not entered.
+
+         Matreshka.SAX.Simple_Readers.Handler_Callbacks.Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("Character data can't be used outside of document content"));
+         Self.Error_Reported := True;
+         Self.Continue := False;
+
+         return Error;
+      end if;
+
+      if C = Less_Than_Sign or C = Ampersand then
+         --  Matched string end with '<' or '&' which is start character of
+         --  tag or reference accordingly.
+
+         YY_Move_Backward (Self);
+
+      elsif C = Greater_Than_Sign
+        and then Self.Scanner_State.YY_Current_Position
+                   - Self.Scanner_State.YY_Base_Position >= 3
+        and then (Code_Point
+                   (Self.Scanner_State.Data.Value
+                     (Self.Scanner_State.YY_Current_Position - 2))
+                        = Right_Square_Bracket
+                    and Code_Point
+                         (Self.Scanner_State.Data.Value
+                           (Self.Scanner_State.YY_Current_Position - 3))
+                              = Right_Square_Bracket)
+      then
+         --  Matched string ends with literal ']]>' which is invalid in
+         --  character data.
+
+         Matreshka.SAX.Simple_Readers.Handler_Callbacks.Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("[[14] CharData] Text may not contain a literal ']]>' sequence"));
+         Self.Error_Reported := True;
+         Self.Continue := False;
+
+         return Error;
+      end if;
+
+      Set_String_Internal
+       (Item          => Self.YYLVal,
+        String        => YY_Text (Self),
+        Is_Whitespace => False,
+        Is_CData      => False);
+
+      return Token_String_Segment;
+   end On_Character_Data;
+
    ------------------------------------------
    -- On_Less_Than_Sign_In_Attribute_Value --
    ------------------------------------------
@@ -81,5 +155,40 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
       return Error;
    end On_Unexpected_Character;
+
+   -------------------------------
+   -- On_Whitespace_In_Document --
+   -------------------------------
+
+   function On_Whitespace_In_Document
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+   is
+      C : constant Code_Point
+        := Code_Point
+            (Self.Scanner_State.Data.Value
+              (Self.Scanner_State.YY_Current_Position - 1));
+
+   begin
+      if C = Less_Than_Sign or C = Ampersand then
+         --  Move back when trailing context is available.
+
+         YY_Move_Backward (Self);
+      end if;
+
+      if Self.Element_Names.Is_Empty then
+         --  Document content not entered.
+
+         return False;
+
+      else
+         Set_String_Internal
+          (Item          => Self.YYLVal,
+           String        => YY_Text (Self),
+           Is_Whitespace => True,
+           Is_CData      => False);
+
+         return True;
+      end if;
+   end On_Whitespace_In_Document;
 
 end Matreshka.SAX.Simple_Readers.Scanner.Actions;

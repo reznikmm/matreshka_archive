@@ -89,11 +89,11 @@ CHAR_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS	[^\u0022\u0026\u0027\u003C\uD800-\uD
 CHAR_NO_HYPHEN					[^\u002D\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^<&] for CharDara, rule [14].
 CHAR_NO_AMPERSAND_LESS				[^\u0026\u003C\uD800-\uDFFF\uFFFE\uFFFF]
---  [^<&[]
+--  [^<&]]
 CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE		[^\u0026\u003C\u005D\uD800-\uDFFF\uFFFE\uFFFF]
---  [^<>&[]
+--  [^<>&]]
 CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE	[^\u0026\u003C\u003E\u005D\uD800-\uDFFF\uFFFE\uFFFF]
---  [^[], for CData, rule [20].
+--  [^]], for CData, rule [20].
 CHAR_NO_RIGHT_SQUARE				[^\u005D\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^>]]
 CHAR_NO_GREATER_RIGHT_SQUARE			[^\u003E\u005D\uD800\uDFFF\uFFFE\uFFFF]
@@ -208,7 +208,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    return Token_PI_Close;
 }
 
-<PI>{WHITE_SPACE}+ {
+<PI>{WHITE_SPACE} {
    --  Ignore all whitespaces is followed by processing insturction's name,
    --  rule [16].
 
@@ -829,24 +829,37 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
    Process_General_Entity_Reference_In_Attribute_Value (Self, YYLVal.Symbol);
 }
 
-{WHITE_SPACE} {
+--  Rule [14]
+--
+--    [^<&]* - ([^<&]* ']]>' [^<&]*)
+--
+--  rewritten as:
+--
+--    [^<&\]]* ((']' [^<&\]]+) | (']'{2,} [^<>&\]]+))* ']'*
+--
+--  with optional trailing context
+--
+--    "]]>" | '&' | '<'
+--
+--  Optional traling context is needed to find longest possible match and to
+--  determine illegal literal ']]>' in character data.
+--
+--  Whitespace rule is separated to prevent from reporting before start of
+--  root element and after close of root context. Inside document content
+--  this rule cover sequence of ignorable whitespaces.
+
+{WHITE_SPACE}("<"|"&")? {
    --  Segment of whitespaces.
 
-   if Process_Whitespace (Self, YY_Text_Internal) then
+   if Actions.On_Whitespace_In_Document (Self) then
       return Token_String_Segment;
    end if;
 }
 
-(({CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}|"]"{CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}|"]"{2,}{CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE})+"]"*|"]"+) {
+({CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}+("]"{CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}+|"]"{2,}{CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE}+)*"]"*("]]>"|"<"|"&")?)|(("]"{CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}+|"]"{2,}{CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE}+)+"]"*("]]>"|"<"|"&")?)|("]"+("]]>"|"<"|"&")?)|("]]>") {
    --  Segment of character data, rule [14].
 
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal,
-     Is_Whitespace => False,
-     Is_CData      => False);
-
-   return Token_String_Segment;
+   return Actions.On_Character_Data (Self);
 }
 
 "<![CDATA["{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR_NO_GREATER_RIGHT_SQUARE}{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
@@ -1027,6 +1040,11 @@ with Matreshka.Internals.Strings;
 
       function On_Less_Than_Sign_In_Attribute_Value
        (Self : access Integer) return Token;
+
+      function On_Character_Data (Self : access Integer) return Token;
+
+      function On_Whitespace_In_Document
+       (Self : access Integer) return Boolean;
 
    end Actions;
 

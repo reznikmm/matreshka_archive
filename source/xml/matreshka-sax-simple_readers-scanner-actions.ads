@@ -46,12 +46,22 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
    pragma Preelaborate;
 
-   function On_Unexpected_Character
+   function On_Character_Data
     (Self : not null access SAX_Simple_Reader'Class) return Token;
-   --  General handling of unexpected character.
+   --  Handles character data in as well as apperance of forbidden ']]>' string
+   --  in the character data.
 
    function On_Less_Than_Sign_In_Attribute_Value
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handling of less-than sign in attribute value.
+
+   function On_Unexpected_Character
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  General handling of unexpected character.
+
+   function On_Whitespace_In_Document
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
+   --  Handles whitespaces outside of markup. Returns True and sets YYLVal when
+   --  document content analysis started, and return False otherwise.
 
 end Matreshka.SAX.Simple_Readers.Scanner.Actions;

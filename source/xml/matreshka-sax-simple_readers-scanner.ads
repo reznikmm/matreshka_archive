@@ -60,4 +60,24 @@ private package Matreshka.SAX.Simple_Readers.Scanner is
      Data : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Push text of external entity into the scanner's stack.
 
+private
+
+   function YY_Text
+    (Self            : not null access SAX_Simple_Reader'Class;
+     Trim_Left       : Natural := 0;
+     Trim_Right      : Natural := 0;
+     Trim_Whitespace : Boolean := False)
+       return Matreshka.Internals.Strings.Shared_String_Access;
+   --  Converts matched data into shared string and returns it. For performance
+   --  reason, this subprogram is not UTF-16 aware and assume that all leading
+   --  and traling characters belong BMP.
+
+   procedure YY_Move_Backward (Self : not null access SAX_Simple_Reader'Class);
+   pragma Inline (YY_Move_Backward);
+   --  Moves current position one step backward. It is intended to be used when
+   --  pattern has trailing context. For performance reason, this subprogram
+   --  is not UTF-16 and end-of-line tracking aware, it assumes that all
+   --  characters in trailing context belongs BMP and not affect end-of-line
+   --  tracking.
+
 end Matreshka.SAX.Simple_Readers.Scanner;
