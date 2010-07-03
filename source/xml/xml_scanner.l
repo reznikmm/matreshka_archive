@@ -77,7 +77,7 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 --  Synthetic set of character. XMLDECL_ATTRIBUTE_CHAR is a union of characters
 --  allowed by [26] VersionNum, [81] EncName, [32] SDDecl.
 
-#if XML_1_0
+#ifdef XML10
 --
 --  Special subranges of Char.
 --
@@ -110,7 +110,6 @@ CHAR_NO_GREATER_RIGHT_SQUARE			[^\u003E\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 CHAR_NO_QUESTION				[^\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^>?]
 CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
-
 #else
 --
 --  Special subranges of Char.
@@ -119,6 +118,8 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\
 --  performance and memory requirements extremely.
 --
 --  [2] Char ::= [#x1-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
+--
+--  Negative form: [^\uD800-\uDFFF\uFFFE\uFFFF]
 --
 --  [^%&]
 CHAR_NO_PERCENT_AMPERSAND			[^\u0025\u0026\uD800-\uDFFF\uFFFE\uFFFF]
