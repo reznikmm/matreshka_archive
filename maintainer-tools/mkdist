@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-VERSION=0.0.4
+VERSION=0.0.5
 
-svn export svn://adaforge.qtada.com/matreshka/trunk matreshka-$VERSION
+svn export svn://adaforge.qtada.com/matreshka/trunk/matreshka matreshka-$VERSION
 (cd matreshka-$VERSION
  rm -rf design maintainer-tools templates source/opm)
 tar cf matreshka-$VERSION.tar matreshka-$VERSION
