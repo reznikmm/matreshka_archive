@@ -65,7 +65,8 @@ package Matreshka.Internals.XML.Scanner is
    type YY_Secondary_Array is array (YY_Secondary_Index) of Integer;
    --  Type of the secondary stage table of the equivalence class mapping.
 
-   type YY_Secondary_Array_Access is access constant YY_Secondary_Array;
+   type YY_Secondary_Array_Access is
+     not null access constant YY_Secondary_Array;
    for YY_Secondary_Array_Access'Storage_Size use 0;
    --  Access type to the secondary stage table of the equivalence class
    --  mapping. It is used as type of the element in the primary stage table
@@ -76,7 +77,7 @@ package Matreshka.Internals.XML.Scanner is
    --  Type of the primary stage table of the equivalence class mapping.
 
    type YY_Equivalence_Class_Mapping_Access is
-     access constant YY_Equivalence_Class_Mapping;
+     not null access constant YY_Equivalence_Class_Mapping;
    for YY_Equivalence_Class_Mapping_Access'Storage_Size use 0;
    --  Access type to the primary stage table of the equivalence class mapping,
    --  or, in other words, equivalence class mapping by itself.
