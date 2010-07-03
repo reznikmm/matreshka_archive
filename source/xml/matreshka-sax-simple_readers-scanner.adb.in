@@ -711,7 +711,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
          LI : constant Positive
            := Self.Scanner_State.YY_Current_Index - Trim_Right;
          C  : Code_Point;
-         FA : Utf16_String_Index;
 
       begin
          if Trim_Whitespace then
