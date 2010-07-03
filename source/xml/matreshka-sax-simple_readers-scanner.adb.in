@@ -45,7 +45,7 @@ with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode;
 with Matreshka.Internals.XML.Symbol_Tables.Entities;
-with Matreshka.SAX.Simple_Readers.Scanner.Tables;
+with Matreshka.Internals.XML.Scanner.XML_1_1_Tables;
 with Matreshka.SAX.Simple_Readers.Scanner.Actions;
 
 package body Matreshka.SAX.Simple_Readers.Scanner is
@@ -53,7 +53,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
    use Matreshka.Internals.XML.Symbol_Tables.Entities;
-   use Matreshka.SAX.Simple_Readers.Scanner.Tables;
+   use Matreshka.Internals.XML.Scanner.XML_1_1_Tables;
 
    type Character_Reference_Form is (Decimal, Hexadecimal);
 

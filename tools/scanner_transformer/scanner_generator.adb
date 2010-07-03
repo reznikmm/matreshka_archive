@@ -89,7 +89,14 @@ package body Scanner_Generator is
 
    function Scanner_Tables_File_Name return String is
    begin
-      return Ada.Directories.Base_Name (Scanner_File_Name) & "-tables.ads";
+      case Mode is
+         when Regexp =>
+            return
+              Ada.Directories.Base_Name (Scanner_File_Name) & "-tables.ads";
+
+         when XML_1_1 =>
+            return "matreshka-internals-xml-scanner-xml_1_1_tables.ads";
+      end case;
    end Scanner_Tables_File_Name;
 
    --------------------------------
@@ -271,25 +278,46 @@ package body Scanner_Generator is
 
       case Mode is
          when Regexp =>
+            Put (Output, "private package ");
             Put
-             (Output, "private package Matreshka.Internals.Regexps.Compiler");
+             (Output, "Matreshka.Internals.Regexps.Compiler.Scanner.Tables");
+
 
          when XML_1_1 =>
-            Put (Output, "private package Matreshka.SAX.Simple_Readers");
+            Put (Output, "package ");
+            Put (Output, "Matreshka.Internals.XML.Scanner.XML_1_1_Tables");
       end case;
 
-      Put_Line (Output, ".Scanner.Tables is");
+      Put_Line (Output, " is");
 
       New_Line (Output);
       Put_Line (Output, "   pragma Preelaborate;");
 
-      New_Line (Output);
-      Put_Line (Output, "   subtype YY_Secondary_Index is");
-      Put_Line (Output, "     Matreshka.Internals.Unicode.Code_Point range 0 .. 16#FF#;");
-      Put_Line (Output, "   subtype YY_Primary_Index is");
-      Put_Line (Output, "     Matreshka.Internals.Unicode.Code_Point range 0 .. 16#10FF#;");
-      Put_Line (Output, "   type YY_Secondary_Array is array (YY_Secondary_Index) of Integer;");
-      Put_Line (Output, "   type YY_Secondary_Array_Access is access constant YY_Secondary_Array;");
+      case Mode is
+         when Regexp =>
+            New_Line (Output);
+            Put_Line (Output, "   subtype YY_Secondary_Index is");
+            Put_Line
+             (Output,
+              "     Matreshka.Internals.Unicode.Code_Point"
+                & " range 0 .. 16#FF#;");
+            Put_Line (Output, "   subtype YY_Primary_Index is");
+            Put_Line
+             (Output,
+              "     Matreshka.Internals.Unicode.Code_Point"
+                & " range 0 .. 16#10FF#;");
+            Put_Line
+             (Output,
+              "   type YY_Secondary_Array is"
+                & " array (YY_Secondary_Index) of Integer;");
+            Put_Line
+             (Output,
+              "   type YY_Secondary_Array_Access is"
+                & " access constant YY_Secondary_Array;");
+
+         when XML_1_1 =>
+            null;
+      end case;
 
       New_Line (Output);
       Put (Output, "   YY_End_Of_Buffer  : constant := ");
@@ -334,10 +362,23 @@ package body Scanner_Generator is
           (YY_EC_Planes.Element (J).Number, YY_EC_Planes.Element (J).Values);
       end loop;
 
-      New_Line (Output);
-      Put_Line (Output, "   YY_EC_Base : constant");
-      Put_Line (Output, "     array (YY_Primary_Index) of YY_Secondary_Array_Access :=");
-      Put (Output, "     (");
+      case Mode is
+         when Regexp =>
+            New_Line (Output);
+            Put_Line (Output, "   YY_EC_Base : constant");
+            Put_Line
+             (Output,
+              "     array (YY_Primary_Index) of YY_Secondary_Array_Access :=");
+            Put (Output, "     (");
+
+         when XML_1_1 =>
+            New_Line (Output);
+            Put_Line (Output, "   YY_EC_Base : aliased constant");
+            Put_Line
+             (Output,
+              "     YY_Equivalence_Class_Mapping :=");
+            Put (Output, "     (");
+      end case;
 
       for J in 1 .. Natural (YY_EC_Base.Length) loop
          Put (Output, "16#");
@@ -360,16 +401,18 @@ package body Scanner_Generator is
       Put_Line (Output, "'Access);");
 
       New_Line (Output);
+      Put (Output, "end ");
 
       case Mode is
          when Regexp =>
-            Put (Output, "end Matreshka.Internals.Regexps.Compiler");
+            Put
+             (Output, "Matreshka.Internals.Regexps.Compiler.Scanner.Tables");
 
          when XML_1_1 =>
-            Put (Output, "end Matreshka.SAX.Simple_Readers");
+            Put (Output, "Matreshka.Internals.XML.Scanner.XML_1_1_Tables");
       end case;
 
-      Put_Line (Output, ".Scanner.Tables;");
+      Put_Line (Output, ";");
 
       Close (Output);
    end Generate_Scanner_Tables;

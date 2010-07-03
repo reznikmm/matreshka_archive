@@ -43,16 +43,9 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Unicode;
 
-private package Matreshka.SAX.Simple_Readers.Scanner.Tables is
+package Matreshka.Internals.XML.Scanner.XML_1_1_Tables is
 
    pragma Preelaborate;
-
-   subtype YY_Secondary_Index is
-     Matreshka.Internals.Unicode.Code_Point range 0 .. 16#FF#;
-   subtype YY_Primary_Index is
-     Matreshka.Internals.Unicode.Code_Point range 0 .. 16#10FF#;
-   type YY_Secondary_Array is array (YY_Secondary_Index) of Integer;
-   type YY_Secondary_Array_Access is access constant YY_Secondary_Array;
 
    YY_End_Of_Buffer  : constant := 97;
    YY_Jam_State      : constant := 390;
@@ -1250,8 +1243,8 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Tables is
         68,   68,   68,   68,   68,   68,   68,   68,
         68,   68,   68,   68,   68,   68,   69,   69);
 
-   YY_EC_Base : constant
-     array (YY_Primary_Index) of YY_Secondary_Array_Access :=
+   YY_EC_Base : aliased constant
+     YY_Equivalence_Class_Mapping :=
      (16#0000# => YY_EC_0000'Access, 16#0003# => YY_EC_0003'Access,
       16#0020# => YY_EC_0020'Access, 16#0021# => YY_EC_0021'Access,
       16#0022# => YY_EC_0022'Access, 16#0023# => YY_EC_0022'Access,
@@ -1535,4 +1528,4 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Tables is
       16#10FD# => YY_EC_0022'Access, 16#10FE# => YY_EC_0022'Access,
       16#10FF# => YY_EC_0022'Access, others   => YY_EC_0001'Access);
 
-end Matreshka.SAX.Simple_Readers.Scanner.Tables;
+end Matreshka.Internals.XML.Scanner.XML_1_1_Tables;
