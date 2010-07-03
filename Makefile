@@ -5,6 +5,7 @@ CLDR = unicode/cldr/1.7.1
 
 GPRBUILD_FLAGS = -p
 
+CPP = cpp -undef -nostdinc -fdirectives-only -P -E
 AFLEX = ../tools/aflex/src/aflex
 AYACC = ../tools/ayacc/src/ayacc
 TOKEN_TRANSFORMER = ../../../tools/token_transformer/token_transformer
@@ -54,7 +55,8 @@ xml:	yy_tools .gens-xml
 	cd source/xml/xml && $(TOKEN_TRANSFORMER) xml ../../../.gens-xml/xml_parser_tokens.adt ../matreshka-sax-simple_readers.ads.in
 	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_parser.adb
 	cd source/xml/xml && $(PARSER_TRANSFORMER) xml ../../../.gens-xml/xml_parser.adt ../matreshka-sax-simple_readers-parser.adb.in
-	cd .gens-xml && $(AFLEX) -v ../source/xml/xml_scanner.l
+	cd .gens-xml && $(CPP) -DXML11 ../source/xml/xml_scanner.l | sed -e 's/#define/--  #define/' > xml_scanner.l
+	cd .gens-xml && $(AFLEX) -v xml_scanner.l
 	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_scanner.adb
 	cd source/xml/xml && $(SCANNER_TRANSFORMER) xml ../../../.gens-xml/xml_scanner.adt ../matreshka-sax-simple_readers-scanner.adb.in
 
