@@ -113,7 +113,7 @@ begin
        & "     --");
    Ada.Wide_Text_IO.Put_Line
     (File,
-     "--                              Tools Component                        "
+     "--                        Runtime Library Component                    "
        & "     --");
    Ada.Wide_Text_IO.Put_Line
     (File,
@@ -131,7 +131,7 @@ begin
    --  Format copyright string.
 
    Ada.Wide_Text_IO.Put (File, Copyright);
-   Ada.Wide_Text_IO.Put (File, (78 - 1 - Copyright'Length) * ' ');
+   Ada.Wide_Text_IO.Put (File, (78 - 2 - Copyright'Length) * ' ');
    Ada.Wide_Text_IO.Put_Line (File, "--");
 
    Ada.Wide_Text_IO.Put_Line
