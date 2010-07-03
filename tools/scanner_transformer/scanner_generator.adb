@@ -58,6 +58,11 @@ package body Scanner_Generator is
    use Ada.Wide_Text_IO;
    use Scanner_Extractor;
 
+   type Modes is (Regexp, XML_1_1);
+
+   function Mode return Modes;
+   --  Returns current generation mode.
+
    function Scanner_Template_File_Name return String;
 
    function Scanner_File_Name return String;
@@ -245,30 +250,33 @@ package body Scanner_Generator is
    begin
       Create (Output, Out_File, Scanner_Tables_File_Name, "wcem=8");
 
-      if Ada.Command_Line.Argument (1) = "regexp" then
-         Wide_Put_File_Header
-          (Output,
-           "Localization, Internationalization, Globalization for Ada",
-           2010,
-           2010);
+      case Mode is
+         when Regexp =>
+            Wide_Put_File_Header
+             (Output,
+              "Localization, Internationalization, Globalization for Ada",
+              2010,
+              2010);
 
-      elsif Ada.Command_Line.Argument (1) = "xml" then
-         Wide_Put_File_Header
-          (Output,
-           "XML Processor",
-           2010,
-           2010);
-      end if;
+         when XML_1_1 =>
+            Wide_Put_File_Header
+             (Output,
+              "XML Processor",
+              2010,
+              2010);
+      end case;
 
       Put_Line (Output, "with Matreshka.Internals.Unicode;");
       New_Line (Output);
 
-      if Ada.Command_Line.Argument (1) = "regexp" then
-         Put (Output, "private package Matreshka.Internals.Regexps.Compiler");
+      case Mode is
+         when Regexp =>
+            Put
+             (Output, "private package Matreshka.Internals.Regexps.Compiler");
 
-      elsif Ada.Command_Line.Argument (1) = "xml" then
-         Put (Output, "private package Matreshka.SAX.Simple_Readers");
-      end if;
+         when XML_1_1 =>
+            Put (Output, "private package Matreshka.SAX.Simple_Readers");
+      end case;
 
       Put_Line (Output, ".Scanner.Tables is");
 
@@ -353,16 +361,33 @@ package body Scanner_Generator is
 
       New_Line (Output);
 
-      if Ada.Command_Line.Argument (1) = "regexp" then
-         Put (Output, "end Matreshka.Internals.Regexps.Compiler");
+      case Mode is
+         when Regexp =>
+            Put (Output, "end Matreshka.Internals.Regexps.Compiler");
 
-      elsif Ada.Command_Line.Argument (1) = "xml" then
-         Put (Output, "end Matreshka.SAX.Simple_Readers");
-      end if;
+         when XML_1_1 =>
+            Put (Output, "end Matreshka.SAX.Simple_Readers");
+      end case;
 
       Put_Line (Output, ".Scanner.Tables;");
 
       Close (Output);
    end Generate_Scanner_Tables;
+
+   ----------
+   -- Mode --
+   ----------
+
+   function Mode return Modes is
+      M : constant String := Ada.Command_Line.Argument (1);
+
+   begin
+      if M = "regexp" then
+         return Regexp;
+
+      elsif M = "xml" then
+         return XML_1_1;
+      end if;
+   end Mode;
 
 end Scanner_Generator;
