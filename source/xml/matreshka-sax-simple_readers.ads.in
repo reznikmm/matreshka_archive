@@ -45,6 +45,7 @@ private with Ada.Containers.Vectors;
 private with Ada.Containers.Hashed_Maps;
 private with Ada.Exceptions;
 private with Ada.Finalization;
+private with Interfaces;
 
 with League.Strings;
 with Matreshka.SAX.Readers;
@@ -198,10 +199,10 @@ private
       YY_Base_Index       : Positive := 1;
       YY_Current_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
       YY_Current_Index    : Positive := 1;
-      YY_Start_State      : Integer  := 1;
+      YY_Start_State      : Interfaces.Unsigned_32 := 1;
       Last_Match          : Boolean  := True;
       --  This mean that last match need to be processed.
-      Continue_State      : Integer;
+      Continue_State      : Interfaces.Unsigned_32;
       Delimiter           : Matreshka.Internals.Unicode.Code_Point;
       --  Delimiter of the entity value.
       In_Literal          : Boolean  := False;

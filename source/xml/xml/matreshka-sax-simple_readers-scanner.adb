@@ -50,6 +50,7 @@ with Matreshka.SAX.Simple_Readers.Scanner.Actions;
 
 package body Matreshka.SAX.Simple_Readers.Scanner is
 
+   use type Interfaces.Unsigned_32;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
    use Matreshka.Internals.XML.Symbol_Tables.Entities;
@@ -59,20 +60,21 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    procedure Enter_Start_Condition
     (Self  : not null access SAX_Simple_Reader'Class;
-     State : Integer);
+     State : Interfaces.Unsigned_32);
    pragma Inline (Enter_Start_Condition);
    --  Enter a start condition.
 
    procedure Set_Continue_State
     (Self  : not null access SAX_Simple_Reader'Class;
-     State : Integer);
+     State : Interfaces.Unsigned_32);
    pragma Inline (Set_Continue_State);
    --  Set scanner's state to be used after completion of recognition of
    --  current template sequence.
 
    function Get_Continue_State
-    (Self : not null access SAX_Simple_Reader'Class) return Integer;
-   pragma Inline (Set_Continue_State);
+    (Self : not null access SAX_Simple_Reader'Class)
+       return Interfaces.Unsigned_32;
+   pragma Inline (Get_Continue_State);
    --  Get scanner's state to be used after completion of recognition of
    --  current template sequence.
 
@@ -102,7 +104,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    function Process_Attribute_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
-     State : Integer) return Token;
+     State : Interfaces.Unsigned_32) return Token;
    --  Process open delimiter of attribute value.
 
    function Process_Attribute_Value_Close_Delimiter
@@ -173,7 +175,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    procedure Enter_Start_Condition
     (Self  : not null access SAX_Simple_Reader'Class;
-     State : Integer) is
+     State : Interfaces.Unsigned_32) is
    begin
       Self.Scanner_State.YY_Start_State := 1 + 2 * State;
    end Enter_Start_Condition;
@@ -183,7 +185,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    ------------------------
 
    function Get_Continue_State
-    (Self : not null access SAX_Simple_Reader'Class) return Integer is
+    (Self : not null access SAX_Simple_Reader'Class)
+       return Interfaces.Unsigned_32 is
    begin
       return Self.Scanner_State.Continue_State;
    end Get_Continue_State;
@@ -261,7 +264,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    function Process_Attribute_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
-     State : Integer) return Token is
+     State : Interfaces.Unsigned_32) return Token is
    begin
       --  NOTE: Attribute value delimiter can be ' or " and both are
       --  represented as single UTF-16 code unit, thus expensive UTF-16
@@ -634,7 +637,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    procedure Set_Continue_State
     (Self  : not null access SAX_Simple_Reader'Class;
-     State : Integer) is
+     State : Interfaces.Unsigned_32) is
    begin
       Self.Scanner_State.Continue_State := State;
    end Set_Continue_State;
@@ -656,13 +659,13 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    function YYLex
     (Self : not null access SAX_Simple_Reader'Class) return Token
    is
-      YY_Action                  : Integer;
-      YY_C                       : Integer;
-      YY_Current_State           : Integer;
+      YY_Action                  : Interfaces.Unsigned_32;
+      YY_C                       : Interfaces.Unsigned_32;
+      YY_Current_State           : Interfaces.Unsigned_32;
       YY_Current_Code            : Code_Point;
       YY_Last_Accepting_Position : Utf16_String_Index;
       YY_Last_Accepting_Index    : Positive;
-      YY_Last_Accepting_State    : Integer;
+      YY_Last_Accepting_State    : Interfaces.Unsigned_32;
       YY_Last_Accepting_Line     : Natural;
       YY_Last_Accepting_Column   : Natural;
       YY_Last_Accepting_Skip_LF  : Boolean;
@@ -673,7 +676,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       YY_Next_Skip_LF            : Boolean;
       YY_Last_Match_Position     : Utf16_String_Index;
       YY_Last_Match_Index        : Positive;
-      YY_Last_Match_State        : Integer;
+      YY_Last_Match_State        : Interfaces.Unsigned_32;
       YYLVal                     : YYSType renames Self.YYLVal;
 
       function YY_Text
@@ -1848,7 +1851,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when others =>
                raise Program_Error
                  with "Unhandled action"
-                        & Integer'Image (YY_Action) & " in scanner";
+                        & Interfaces.Unsigned_32'Image (YY_Action)
+                        & " in scanner";
          end case;
       end loop;  --  end of loop waiting for end of file
    end YYLex;

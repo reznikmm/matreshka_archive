@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Interfaces;
+
 with Matreshka.Internals.Unicode;
 
 package Matreshka.Internals.XML.Scanner is
@@ -62,7 +64,8 @@ package Matreshka.Internals.XML.Scanner is
    --  Type of the index in the primary stage table of the equivalence
    --  class mapping.
 
-   type YY_Secondary_Array is array (YY_Secondary_Index) of Integer;
+   type YY_Secondary_Array is
+     array (YY_Secondary_Index) of Interfaces.Unsigned_32;
    --  Type of the secondary stage table of the equivalence class mapping.
 
    type YY_Secondary_Array_Access is
@@ -82,7 +85,8 @@ package Matreshka.Internals.XML.Scanner is
    --  Access type to the primary stage table of the equivalence class mapping,
    --  or, in other words, equivalence class mapping by itself.
 
-   type YY_Integer_Of_Integer_Array is array (Natural range <>) of Integer;
+   type YY_Integer_Of_Integer_Array is
+     array (Interfaces.Unsigned_32 range <>) of Interfaces.Unsigned_32;
 
    type YY_Integer_Of_Integer_Array_Access is
      not null access constant YY_Integer_Of_Integer_Array;
