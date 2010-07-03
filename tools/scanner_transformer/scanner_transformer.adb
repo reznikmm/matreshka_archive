@@ -75,10 +75,16 @@ begin
          ("Regexp_Scanner", Transformer_Context);
       Scanner_Body := Asis.Elements.Unit_Declaration (Scanner_Unit);
 
-   elsif Ada.Command_Line.Argument (1) = "xml" then
+   elsif Ada.Command_Line.Argument (1) = "xml10" then
       Scanner_Unit :=
         Asis.Compilation_Units.Compilation_Unit_Body
-         ("Xml_Scanner", Transformer_Context);
+         ("Xml_Scanner_10", Transformer_Context);
+      Scanner_Body := Asis.Elements.Unit_Declaration (Scanner_Unit);
+
+   elsif Ada.Command_Line.Argument (1) = "xml11" then
+      Scanner_Unit :=
+        Asis.Compilation_Units.Compilation_Unit_Body
+         ("Xml_Scanner_11", Transformer_Context);
       Scanner_Body := Asis.Elements.Unit_Declaration (Scanner_Unit);
    end if;
 

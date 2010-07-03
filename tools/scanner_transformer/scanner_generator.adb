@@ -58,7 +58,7 @@ package body Scanner_Generator is
    use Ada.Wide_Text_IO;
    use Scanner_Extractor;
 
-   type Modes is (Regexp, XML_1_1);
+   type Modes is (Regexp, XML_1_0, XML_1_1);
 
    function Mode return Modes;
    --  Returns current generation mode.
@@ -93,6 +93,9 @@ package body Scanner_Generator is
          when Regexp =>
             return
               Ada.Directories.Base_Name (Scanner_File_Name) & "-tables.ads";
+
+         when XML_1_0 =>
+            return "matreshka-internals-xml-scanner-xml_1_0_tables.ads";
 
          when XML_1_1 =>
             return "matreshka-internals-xml-scanner-xml_1_1_tables.ads";
@@ -265,7 +268,7 @@ package body Scanner_Generator is
               2010,
               2010);
 
-         when XML_1_1 =>
+         when XML_1_0 | XML_1_1 =>
             Wide_Put_File_Header
              (Output,
               "XML Processor",
@@ -282,6 +285,9 @@ package body Scanner_Generator is
             Put
              (Output, "Matreshka.Internals.Regexps.Compiler.Scanner.Tables");
 
+         when XML_1_0 =>
+            Put (Output, "package ");
+            Put (Output, "Matreshka.Internals.XML.Scanner.XML_1_0_Tables");
 
          when XML_1_1 =>
             Put (Output, "package ");
@@ -315,7 +321,7 @@ package body Scanner_Generator is
               "   type YY_Secondary_Array_Access is"
                 & " access constant YY_Secondary_Array;");
 
-         when XML_1_1 =>
+         when XML_1_0 | XML_1_1 =>
             null;
       end case;
 
@@ -371,7 +377,7 @@ package body Scanner_Generator is
               "     array (YY_Primary_Index) of YY_Secondary_Array_Access :=");
             Put (Output, "     (");
 
-         when XML_1_1 =>
+         when XML_1_0 | XML_1_1 =>
             New_Line (Output);
             Put_Line (Output, "   YY_EC_Base : aliased constant");
             Put_Line
@@ -408,6 +414,9 @@ package body Scanner_Generator is
             Put
              (Output, "Matreshka.Internals.Regexps.Compiler.Scanner.Tables");
 
+         when XML_1_0 =>
+            Put (Output, "Matreshka.Internals.XML.Scanner.XML_1_0_Tables");
+
          when XML_1_1 =>
             Put (Output, "Matreshka.Internals.XML.Scanner.XML_1_1_Tables");
       end case;
@@ -428,9 +437,14 @@ package body Scanner_Generator is
       if M = "regexp" then
          return Regexp;
 
-      elsif M = "xml" then
+      elsif M = "xml10" then
+         return XML_1_0;
+
+      elsif M = "xml11" then
          return XML_1_1;
       end if;
+
+      raise Constraint_Error with "unknown mode";
    end Mode;
 
 end Scanner_Generator;
