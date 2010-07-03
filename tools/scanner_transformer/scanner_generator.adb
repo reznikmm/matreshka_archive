@@ -201,11 +201,20 @@ package body Scanner_Generator is
       begin
          New_Line (Output);
 
-         Put (Output, "   ");
-         Put (Output, Name);
-         Put (Output, " : constant array (0 .. ");
-         Put (Output, Integer (Values.Length) - 1, 0);
-         Put_Line (Output, ") of Integer :=");
+         case Mode is
+            when Regexp =>
+               Put (Output, "   ");
+               Put (Output, Name);
+               Put (Output, " : constant array (0 .. ");
+               Put (Output, Integer (Values.Length) - 1, 0);
+               Put_Line (Output, ") of Integer :=");
+
+            when XML_1_0 | XML_1_1 =>
+               Put (Output, "   ");
+               Put (Output, Name);
+               Put_Line
+                (Output, " : aliased constant YY_Integer_Of_Integer_Array :=");
+         end case;
 
          for J in 0 .. Natural (Values.Length) - 1 loop
             if J = 0 then

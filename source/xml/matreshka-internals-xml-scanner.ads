@@ -81,4 +81,10 @@ package Matreshka.Internals.XML.Scanner is
    --  Access type to the primary stage table of the equivalence class mapping,
    --  or, in other words, equivalence class mapping by itself.
 
+   type YY_Integer_Of_Integer_Array is array (Natural range <>) of Integer;
+
+   type YY_Integer_Of_Integer_Array_Access is
+     not null access constant YY_Integer_Of_Integer_Array;
+   for YY_Integer_Of_Integer_Array_Access'Storage_Size use 0;
+
 end Matreshka.Internals.XML.Scanner;

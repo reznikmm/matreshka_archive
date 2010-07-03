@@ -71,7 +71,7 @@ package Matreshka.Internals.XML.Scanner.XML_1_0_Tables is
    EXTERNAL_ID_SYS   : constant := 17;
    EXTERNAL_ID_PUB   : constant := 18;
 
-   YY_Accept : constant array (0 .. 390) of Integer :=
+   YY_Accept : aliased constant YY_Integer_Of_Integer_Array :=
     (    0,    0,    0,    0,    0,    0,    0,    0,
          0,    0,    0,    0,    0,    0,    0,    0,
          0,    0,    0,    0,    0,    0,    0,    0,
@@ -122,7 +122,7 @@ package Matreshka.Internals.XML.Scanner.XML_1_0_Tables is
          0,   21,   20,   10,    0,    0,   82,   21,
         20,    0,    0,    0,    0,    0,    0);
 
-   YY_Meta : constant array (0 .. 70) of Integer :=
+   YY_Meta : aliased constant YY_Integer_Of_Integer_Array :=
     (    0,    1,    2,    3,    3,    4,    5,    6,
          7,    8,    9,   10,    7,    7,    7,    7,
          7,   11,   11,    4,   12,   13,   14,   15,
@@ -133,7 +133,7 @@ package Matreshka.Internals.XML.Scanner.XML_1_0_Tables is
         18,   18,   18,   18,   18,   18,   18,   18,
         18,   18,   18,   19,   20,   21,   22);
 
-   YY_Base : constant array (0 .. 470) of Integer :=
+   YY_Base : aliased constant YY_Integer_Of_Integer_Array :=
     (    0,    0,    4,   13,   27,    9,   18,   17,
         31,   56,   60,   63,   69,  103,  110,  116,
        119,  160,    0,  230,    0,  300,    0,  370,
@@ -194,7 +194,7 @@ package Matreshka.Internals.XML.Scanner.XML_1_0_Tables is
       1844, 1864, 1884, 1904, 1924, 1944, 1964, 1984,
       2004, 2015, 2035, 2047, 2058, 2078, 2098);
 
-   YY_Def : constant array (0 .. 470) of Integer :=
+   YY_Def : aliased constant YY_Integer_Of_Integer_Array :=
     (    0,  391,  391,  392,  392,  393,  393,  394,
        394,  395,  395,  396,  396,  397,  397,  398,
        398,  390,   17,  390,   19,  390,   21,  390,
@@ -255,7 +255,7 @@ package Matreshka.Internals.XML.Scanner.XML_1_0_Tables is
        390,  390,  390,  390,  390,  390,  390,  390,
        390,  390,  390,  390,  390,  390,  390);
 
-   YY_Nxt : constant array (0 .. 2190) of Integer :=
+   YY_Nxt : aliased constant YY_Integer_Of_Integer_Array :=
     (    0,   40,   41,   41,   41,   40,   41,   41,
         41,  390,   43,   56,   56,   56,   43,   47,
         48,   47,   40,   49,   56,   56,   56,   44,
@@ -531,7 +531,7 @@ package Matreshka.Internals.XML.Scanner.XML_1_0_Tables is
        390,  390,  390,  390,  390,  390,  390,  390,
        390,  390,  390,  390,  390,  390,  390);
 
-   YY_Chk : constant array (0 .. 2190) of Integer :=
+   YY_Chk : aliased constant YY_Integer_Of_Integer_Array :=
     (    0,    1,    1,    1,    1,    2,    2,    2,
          2,    0,    1,    5,    5,    5,    2,    3,
          3,    3,    7,    3,    6,    6,    6,    1,
