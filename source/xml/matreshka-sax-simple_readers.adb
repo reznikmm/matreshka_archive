@@ -135,6 +135,7 @@ package body Matreshka.SAX.Simple_Readers is
    overriding procedure Finalize (Self : in out SAX_Simple_Reader) is
    begin
       Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
+      Matreshka.Internals.Strings.Dereference (Self.Character_Data);
       Matreshka.Internals.XML.Symbol_Tables.Finalize (Self.Symbols);
    end Finalize;
 

@@ -356,6 +356,9 @@ private
       Character_Buffer   : Matreshka.Internals.Strings.Shared_String_Access;
       --  Preallocated buffer for character reference and attribute value
       --  delimiter handling.
+      Character_Data     : Matreshka.Internals.Strings.Shared_String_Access
+        := Matreshka.Internals.Strings.Shared_Empty'Access;
+      --  Preallocated buffer to accumulate character data.
       Version            : XML_Version := XML_1_0;
 
       --  Parser state

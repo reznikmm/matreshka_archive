@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings.Operations;
 with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 with Matreshka.SAX.Simple_Readers.Scanner.Tables;
 
@@ -111,9 +112,19 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
          return Error;
       end if;
 
+      Matreshka.Internals.Strings.Operations.Copy_Slice
+       (Self.Character_Data,
+        Self.Scanner_State.Data,
+        Self.Scanner_State.YY_Base_Position,
+        Self.Scanner_State.YY_Current_Position
+          - Self.Scanner_State.YY_Base_Position,
+        Self.Scanner_State.YY_Current_Index
+          - Self.Scanner_State.YY_Base_Index);
+
+      Matreshka.Internals.Strings.Reference (Self.Character_Data);
       Set_String_Internal
        (Item          => Self.YYLVal,
-        String        => YY_Text (Self),
+        String        => Self.Character_Data,
         Is_Whitespace => False,
         Is_CData      => False);
 
@@ -315,9 +326,19 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
          return False;
 
       else
+         Matreshka.Internals.Strings.Operations.Copy_Slice
+          (Self.Character_Data,
+           Self.Scanner_State.Data,
+           Self.Scanner_State.YY_Base_Position,
+           Self.Scanner_State.YY_Current_Position
+             - Self.Scanner_State.YY_Base_Position,
+           Self.Scanner_State.YY_Current_Index
+             - Self.Scanner_State.YY_Base_Index);
+
+         Matreshka.Internals.Strings.Reference (Self.Character_Data);
          Set_String_Internal
           (Item          => Self.YYLVal,
-           String        => YY_Text (Self),
+           String        => Self.Character_Data,
            Is_Whitespace => True,
            Is_CData      => False);
 
