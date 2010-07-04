@@ -58,7 +58,7 @@ package body Scanner_Generator is
    use Ada.Wide_Text_IO;
    use Scanner_Extractor;
 
-   type Modes is (Regexp, XML_1_0, XML_1_1);
+   type Modes is (Regexp, XML);
 
    function Mode return Modes;
    --  Returns current generation mode.
@@ -89,17 +89,7 @@ package body Scanner_Generator is
 
    function Scanner_Tables_File_Name return String is
    begin
-      case Mode is
-         when Regexp =>
-            return
-              Ada.Directories.Base_Name (Scanner_File_Name) & "-tables.ads";
-
-         when XML_1_0 =>
-            return "matreshka-internals-xml-scanner-xml_1_0_tables.ads";
-
-         when XML_1_1 =>
-            return "matreshka-internals-xml-scanner-xml_1_1_tables.ads";
-      end case;
+      return Ada.Directories.Base_Name (Scanner_File_Name) & "-tables.ads";
    end Scanner_Tables_File_Name;
 
    --------------------------------
@@ -209,11 +199,14 @@ package body Scanner_Generator is
                Put (Output, Integer (Values.Length) - 1, 0);
                Put_Line (Output, ") of Integer :=");
 
-            when XML_1_0 | XML_1_1 =>
+            when XML =>
                Put (Output, "   ");
                Put (Output, Name);
-               Put_Line
-                (Output, " : aliased constant YY_Integer_Of_Integer_Array :=");
+               Put
+                (Output,
+                 " : constant array (Interfaces.Unsigned_32 range 0 .. ");
+               Put (Output, Integer (Values.Length) - 1, 0);
+               Put_Line (Output, ") of Interfaces.Unsigned_32 :=");
          end case;
 
          for J in 0 .. Natural (Values.Length) - 1 loop
@@ -277,7 +270,7 @@ package body Scanner_Generator is
               2010,
               2010);
 
-         when XML_1_0 | XML_1_1 =>
+         when XML =>
             Wide_Put_File_Header
              (Output,
               "XML Processor",
@@ -287,52 +280,48 @@ package body Scanner_Generator is
 
       Put_Line (Output, "with Matreshka.Internals.Unicode;");
       New_Line (Output);
+      Put (Output, "private package Matreshka.");
 
       case Mode is
          when Regexp =>
-            Put (Output, "private package ");
-            Put
-             (Output, "Matreshka.Internals.Regexps.Compiler.Scanner.Tables");
+            Put (Output, "Internals.Regexps.Compiler");
 
-         when XML_1_0 =>
-            Put (Output, "package ");
-            Put (Output, "Matreshka.Internals.XML.Scanner.XML_1_0_Tables");
-
-         when XML_1_1 =>
-            Put (Output, "package ");
-            Put (Output, "Matreshka.Internals.XML.Scanner.XML_1_1_Tables");
+         when XML =>
+            Put (Output, "SAX.Simple_Readers");
       end case;
 
-      Put_Line (Output, " is");
+      Put_Line (Output, ".Scanner.Tables is");
 
       New_Line (Output);
       Put_Line (Output, "   pragma Preelaborate;");
 
+      New_Line (Output);
+      Put_Line (Output, "   subtype YY_Secondary_Index is");
+      Put_Line
+       (Output,
+        "     Matreshka.Internals.Unicode.Code_Point range 0 .. 16#FF#;");
+      Put_Line (Output, "   subtype YY_Primary_Index is");
+      Put_Line
+       (Output,
+        "     Matreshka.Internals.Unicode.Code_Point range 0 .. 16#10FF#;");
+      Put_Line
+       (Output,
+        "   type YY_Secondary_Array is"
+          & " array (YY_Secondary_Index) of ");
+
       case Mode is
          when Regexp =>
-            New_Line (Output);
-            Put_Line (Output, "   subtype YY_Secondary_Index is");
-            Put_Line
-             (Output,
-              "     Matreshka.Internals.Unicode.Code_Point"
-                & " range 0 .. 16#FF#;");
-            Put_Line (Output, "   subtype YY_Primary_Index is");
-            Put_Line
-             (Output,
-              "     Matreshka.Internals.Unicode.Code_Point"
-                & " range 0 .. 16#10FF#;");
-            Put_Line
-             (Output,
-              "   type YY_Secondary_Array is"
-                & " array (YY_Secondary_Index) of Integer;");
-            Put_Line
-             (Output,
-              "   type YY_Secondary_Array_Access is"
-                & " access constant YY_Secondary_Array;");
+            Put (Output, "Integer");
 
-         when XML_1_0 | XML_1_1 =>
-            null;
+         when XML =>
+            Put (Output, "Interfaces.Unsigned_32");
       end case;
+
+      Put_Line (Output, ";");
+      Put_Line
+       (Output,
+        "   type YY_Secondary_Array_Access is"
+          & " not null access constant YY_Secondary_Array;");
 
       New_Line (Output);
       Put (Output, "   YY_End_Of_Buffer  : constant := ");
@@ -377,23 +366,12 @@ package body Scanner_Generator is
           (YY_EC_Planes.Element (J).Number, YY_EC_Planes.Element (J).Values);
       end loop;
 
-      case Mode is
-         when Regexp =>
-            New_Line (Output);
-            Put_Line (Output, "   YY_EC_Base : constant");
-            Put_Line
-             (Output,
-              "     array (YY_Primary_Index) of YY_Secondary_Array_Access :=");
-            Put (Output, "     (");
-
-         when XML_1_0 | XML_1_1 =>
-            New_Line (Output);
-            Put_Line (Output, "   YY_EC_Base : aliased constant");
-            Put_Line
-             (Output,
-              "     YY_Equivalence_Class_Mapping :=");
-            Put (Output, "     (");
-      end case;
+      New_Line (Output);
+      Put_Line (Output, "   YY_EC_Base : constant");
+      Put_Line
+       (Output,
+        "     array (YY_Primary_Index) of YY_Secondary_Array_Access :=");
+      Put (Output, "     (");
 
       for J in 1 .. Natural (YY_EC_Base.Length) loop
          Put (Output, "16#");
@@ -416,21 +394,17 @@ package body Scanner_Generator is
       Put_Line (Output, "'Access);");
 
       New_Line (Output);
-      Put (Output, "end ");
+      Put (Output, "end Matreshka.");
 
       case Mode is
          when Regexp =>
-            Put
-             (Output, "Matreshka.Internals.Regexps.Compiler.Scanner.Tables");
+            Put (Output, "Internals.Regexps.Compiler");
 
-         when XML_1_0 =>
-            Put (Output, "Matreshka.Internals.XML.Scanner.XML_1_0_Tables");
-
-         when XML_1_1 =>
-            Put (Output, "Matreshka.Internals.XML.Scanner.XML_1_1_Tables");
+         when XML =>
+            Put (Output, "SAX.Simple_Readers");
       end case;
 
-      Put_Line (Output, ";");
+      Put_Line (Output, ".Scanner.Tables;");
 
       Close (Output);
    end Generate_Scanner_Tables;
@@ -446,14 +420,11 @@ package body Scanner_Generator is
       if M = "regexp" then
          return Regexp;
 
-      elsif M = "xml10" then
-         return XML_1_0;
-
-      elsif M = "xml11" then
-         return XML_1_1;
+      elsif M = "xml" then
+         return XML;
       end if;
 
-      raise Constraint_Error with "unknown mode";
+      raise Constraint_Error with "invalid value of mode parameter";
    end Mode;
 
 end Scanner_Generator;

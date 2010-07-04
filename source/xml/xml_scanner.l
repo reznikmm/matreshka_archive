@@ -77,40 +77,40 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 --  Synthetic set of character. XMLDECL_ATTRIBUTE_CHAR is a union of characters
 --  allowed by [26] VersionNum, [81] EncName, [32] SDDecl.
 
-#ifdef XML10
---
---  Special subranges of Char.
---
---  NOTE: Negative sets with smaller number of characters improves aflex
---  performance and memory requirements extremely.
---
---  [2] Char ::= #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
---
---  Negative form: [^\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
---
---  [^%&]
-CHAR_NO_PERCENT_AMPERSAND			[^\u0025\u0026\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
---  [^"%&']
-CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[^\u0022\u0025\u0026\u0027\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
---  [^"&'<]
-CHAR_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS	[^\u0022\u0026\u0027\u003C\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
---  (Char - '-') for comment, rule [15].
-CHAR_NO_HYPHEN					[^\u002D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
---  [^<&] for CharDara, rule [14].
-CHAR_NO_AMPERSAND_LESS				[^\u0026\u003C\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
---  [^<&]]
-CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE		[^\u0026\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
---  [^<>&]]
-CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE	[^\u0026\u003C\u003E\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
---  [^]], for CData, rule [20].
-CHAR_NO_RIGHT_SQUARE				[^\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
---  [^>]]
-CHAR_NO_GREATER_RIGHT_SQUARE			[^\u003E\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800\uDFFF\uFFFE\uFFFF]
---  [^?], for PI, rule [16].
-CHAR_NO_QUESTION				[^\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
---  [^>?]
-CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
-#else
+--#ifdef XML10
+----
+----  Special subranges of Char.
+----
+----  NOTE: Negative sets with smaller number of characters improves aflex
+----  performance and memory requirements extremely.
+----
+----  [2] Char ::= #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
+----
+----  Negative form: [^\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+----
+----  [^%&]
+--CHAR_NO_PERCENT_AMPERSAND			[^\u0025\u0026\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+----  [^"%&']
+--CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[^\u0022\u0025\u0026\u0027\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+----  [^"&'<]
+--CHAR_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS	[^\u0022\u0026\u0027\u003C\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+----  (Char - '-') for comment, rule [15].
+--CHAR_NO_HYPHEN					[^\u002D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+----  [^<&] for CharDara, rule [14].
+--CHAR_NO_AMPERSAND_LESS				[^\u0026\u003C\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+----  [^<&]]
+--CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE		[^\u0026\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+----  [^<>&]]
+--CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE	[^\u0026\u003C\u003E\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+----  [^]], for CData, rule [20].
+--CHAR_NO_RIGHT_SQUARE				[^\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+----  [^>]]
+--CHAR_NO_GREATER_RIGHT_SQUARE			[^\u003E\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800\uDFFF\uFFFE\uFFFF]
+----  [^?], for PI, rule [16].
+--CHAR_NO_QUESTION				[^\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+----  [^>?]
+--CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+--#else
 --
 --  Special subranges of Char.
 --
@@ -143,7 +143,7 @@ CHAR_NO_GREATER_RIGHT_SQUARE			[^\u003E\u005D\uD800\uDFFF\uFFFE\uFFFF]
 CHAR_NO_QUESTION				[^\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^>?]
 CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
-#endif
+--#endif
 
 %x XML_DECL
 %x PI
