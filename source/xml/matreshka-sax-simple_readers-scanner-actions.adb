@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
+with Matreshka.SAX.Simple_Readers.Scanner.Tables;
 
 package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
@@ -141,6 +142,20 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
       return Error;
    end On_Less_Than_Sign_In_Attribute_Value;
+
+   ---------------------------
+   -- On_No_XML_Declaration --
+   ---------------------------
+
+   procedure On_No_XML_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      --  Move scanner's position back to the start of the document or external
+      --  parser entity and switch to XML 1.0 mode.
+
+      YY_Move_Backward (Self);
+      Enter_Start_Condition (Self, Tables.DOCUMENT);
+   end On_No_XML_Declaration;
 
    -----------------------------
    -- On_Unexpected_Character --

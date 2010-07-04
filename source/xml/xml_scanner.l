@@ -146,6 +146,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 --#endif
 
 %x XML_DECL
+%x DOCUMENT
 %x PI
 %x PI_DATA
 %x DOCTYPE_EXTINT
@@ -176,7 +177,14 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Process_XML_PI (Self);
 }
 
-"<?"{NAME} {
+.|\n {
+   --  Any character except literal "<?xml" means there is no XML declaration
+   --  in this document/external parsed entity.
+
+   Actions.On_No_XML_Declaration (Self);
+}
+
+<DOCUMENT>"<?"{NAME} {
    --  Open of processing instruction, rule [16]. Rule [17] is implemented
    --  implicitly by ordering of open of XMLDecl and open of PI.
 
@@ -185,6 +193,86 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    Reset_Whitespace_Matched (Self);
 
    return Token_PI_Open;
+}
+
+<DOCUMENT>"<!DOCTYPE"{WHITE_SPACE}{NAME} {
+   --  Open tag of document type declaration and name of root element,
+   --  rule [28].
+
+   Enter_Start_Condition (Self, DOCTYPE_EXTINT);
+   Resolve_Symbol (Self, 10, 0, True, YYLVal);
+
+   return Token_Doctype_Decl_Open;
+}
+
+<DOCUMENT>"<"{NAME} {
+   --  Open of start tag, rule [40], or empty element, rule [44].
+
+   Resolve_Symbol (Self, 1, 0, False, YYLVal);
+   Enter_Start_Condition (Self, ELEMENT_START);
+
+   return Token_Element_Open;
+}
+
+<DOCUMENT>"</"{NAME} {
+   --  Open of and tag, rule [42].
+
+   Resolve_Symbol (Self, 2, 0, False, YYLVal);
+   Enter_Start_Condition (Self, ELEMENT_START);
+
+   return Token_End_Open;
+}
+
+--  Rule [14]
+--
+--    [^<&]* - ([^<&]* ']]>' [^<&]*)
+--
+--  rewritten as:
+--
+--    [^<&\]]* ((']' [^<&\]]+) | (']'{2,} [^<>&\]]+))* ']'*
+--
+--  with optional trailing context
+--
+--    "]]>" | '&' | '<'
+--
+--  Optional traling context is needed to find longest possible match and to
+--  determine illegal literal ']]>' in character data.
+--
+--  Whitespace rule is separated to prevent from reporting before start of
+--  root element and after close of root context. Inside document content
+--  this rule cover sequence of ignorable whitespaces.
+
+<DOCUMENT>{WHITE_SPACE}("<"|"&")? {
+   --  Segment of whitespaces.
+
+   if Actions.On_Whitespace_In_Document (Self) then
+      return Token_String_Segment;
+   end if;
+}
+
+<DOCUMENT>({CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}+("]"{CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}+|"]"{2,}{CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE}+)*"]"*("]]>"|"<"|"&")?)|(("]"{CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}+|"]"{2,}{CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE}+)+"]"*("]]>"|"<"|"&")?)|("]"+("]]>"|"<"|"&")?)|("]]>") {
+   --  Segment of character data, rule [14].
+
+   return Actions.On_Character_Data (Self);
+}
+
+<DOCUMENT>"<![CDATA["{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR_NO_GREATER_RIGHT_SQUARE}{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
+   --  Segment of CDATA, rules [18], [19], [20], [21].
+
+   Set_String_Internal
+    (Item          => YYLVal,
+     String        => YY_Text_Internal (9, 3),
+     Is_Whitespace => False,
+     Is_CData      => True);
+
+   return Token_String_Segment;
+}
+
+<DOCUMENT>"&"{NAME}";" {
+   --  General entity reference rule [68] in document content.
+
+   Resolve_Symbol (Self, 1, 1, False, YYLVal);
+   Process_General_Entity_Reference_In_Document_Content (Self, YYLVal.Symbol);
 }
 
 <XML_DECL>version {
@@ -236,7 +324,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 }
 
 <XML_DECL,PI,PI_DATA>"?>" {
-   Enter_Start_Condition (Self, INITIAL);
+   Enter_Start_Condition (Self, DOCUMENT);
 
    Set_String_Internal
     (Item          => YYLVal,
@@ -269,25 +357,15 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
      String        => YY_Text_Internal (0, 2),
      Is_Whitespace => False,
      Is_CData      => False);
-   Enter_Start_Condition (Self, INITIAL);
+   Enter_Start_Condition (Self, DOCUMENT);
 
    return Token_PI_Close;
-}
-
-"<!DOCTYPE"{WHITE_SPACE}{NAME} {
-   --  Open tag of document type declaration and name of root element,
-   --  rule [28].
-
-   Enter_Start_Condition (Self, DOCTYPE_EXTINT);
-   Resolve_Symbol (Self, 10, 0, True, YYLVal);
-
-   return Token_Doctype_Decl_Open;
 }
 
 <DOCTYPE_EXTINT,DOCTYPE_INT>">" {
    --  Close tag of document type declaration, rule [28].
 
-   Enter_Start_Condition (Self, INITIAL);
+   Enter_Start_Condition (Self, DOCUMENT);
 
    return Token_Close;
 }
@@ -366,7 +444,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_Internal_Subset_Close;
 }
 
-<INITIAL,DOCTYPE_INTSUBSET>"<!--"({CHAR_NO_HYPHEN}|-{CHAR_NO_HYPHEN})*"-->" {
+<DOCUMENT,DOCTYPE_INTSUBSET>"<!--"({CHAR_NO_HYPHEN}|-{CHAR_NO_HYPHEN})*"-->" {
    --  Text of comment, rule [15].
 
    Set_String_Internal
@@ -507,14 +585,14 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Process_Entity_Value_Close_Delimiter (Self, YY_Text);
 }
 
-<INITIAL,ENTITY_VALUE,ATTRIBUTE_VALUE>"&#"[0-9]+";" {
+<DOCUMENT,ENTITY_VALUE,ATTRIBUTE_VALUE>"&#"[0-9]+";" {
    --  Decimal form of character reference rule [66] in entity value rule [9];
    --  attribute value, rule [10] or content of element, rule [43].
 
    return Process_Character_Reference (Self, Decimal);
 }
 
-<INITIAL,ENTITY_VALUE,ATTRIBUTE_VALUE>"&#x"[0-9a-fA-F]+";" {
+<DOCUMENT,ENTITY_VALUE,ATTRIBUTE_VALUE>"&#x"[0-9a-fA-F]+";" {
    --  Hexadecimal form of character reference rule [66] in entity value rule
    --  [9]; attribute value, rule [10] or content of element, rule [43].
 
@@ -777,24 +855,6 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    Set_Whitespace_Matched (Self);
 }
 
-"<"{NAME} {
-   --  Open of start tag, rule [40], or empty element, rule [44].
-
-   Resolve_Symbol (Self, 1, 0, False, YYLVal);
-   Enter_Start_Condition (Self, ELEMENT_START);
-
-   return Token_Element_Open;
-}
-
-"</"{NAME} {
-   --  Open of and tag, rule [42].
-
-   Resolve_Symbol (Self, 2, 0, False, YYLVal);
-   Enter_Start_Condition (Self, ELEMENT_START);
-
-   return Token_End_Open;
-}
-
 <ELEMENT_START>{NAME} {
    --  Name of the attribute, rule [41].
 
@@ -818,7 +878,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ELEMENT_START>"/>" {
    --  Close of empty element tag, rule [44].
 
-   Enter_Start_Condition (Self, INITIAL);
+   Enter_Start_Condition (Self, DOCUMENT);
 
    return Token_Empty_Close;
 }
@@ -826,7 +886,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ELEMENT_START>">" {
    --  Close of tag, rule [40].
 
-   Enter_Start_Condition (Self, INITIAL);
+   Enter_Start_Condition (Self, DOCUMENT);
 
    return Token_Close;
 }
@@ -866,58 +926,6 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 
    Resolve_Symbol (Self, 1, 1, False, YYLVal);
    Process_General_Entity_Reference_In_Attribute_Value (Self, YYLVal.Symbol);
-}
-
---  Rule [14]
---
---    [^<&]* - ([^<&]* ']]>' [^<&]*)
---
---  rewritten as:
---
---    [^<&\]]* ((']' [^<&\]]+) | (']'{2,} [^<>&\]]+))* ']'*
---
---  with optional trailing context
---
---    "]]>" | '&' | '<'
---
---  Optional traling context is needed to find longest possible match and to
---  determine illegal literal ']]>' in character data.
---
---  Whitespace rule is separated to prevent from reporting before start of
---  root element and after close of root context. Inside document content
---  this rule cover sequence of ignorable whitespaces.
-
-{WHITE_SPACE}("<"|"&")? {
-   --  Segment of whitespaces.
-
-   if Actions.On_Whitespace_In_Document (Self) then
-      return Token_String_Segment;
-   end if;
-}
-
-({CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}+("]"{CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}+|"]"{2,}{CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE}+)*"]"*("]]>"|"<"|"&")?)|(("]"{CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}+|"]"{2,}{CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE}+)+"]"*("]]>"|"<"|"&")?)|("]"+("]]>"|"<"|"&")?)|("]]>") {
-   --  Segment of character data, rule [14].
-
-   return Actions.On_Character_Data (Self);
-}
-
-"<![CDATA["{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR_NO_GREATER_RIGHT_SQUARE}{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
-   --  Segment of CDATA, rules [18], [19], [20], [21].
-
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal (9, 3),
-     Is_Whitespace => False,
-     Is_CData      => True);
-
-   return Token_String_Segment;
-}
-
-"&"{NAME}";" {
-   --  General entity reference rule [68] in document content.
-
-   Resolve_Symbol (Self, 1, 1, False, YYLVal);
-   Process_General_Entity_Reference_In_Document_Content (Self, YYLVal.Symbol);
 }
 
 <XML_DECL>. {
@@ -967,7 +975,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    raise Program_Error with "Unexpected character in system literal";
 }
 
-<INITIAL,ELEMENT_START,PI,PI_DATA,ATTRIBUTE_VALUE>.|\n {
+<DOCUMENT,ELEMENT_START,PI,PI_DATA,ATTRIBUTE_VALUE>.|\n {
    --  Unexpected character.
 
    return Actions.On_Unexpected_Character (Self);
@@ -1074,6 +1082,8 @@ with Matreshka.Internals.Strings;
      Is_CData      : Boolean) is separate;
 
    package Actions is
+
+      procedure On_No_XML_Declaration (Self : access Integer);
 
       function On_Unexpected_Character (Self : access Integer) return Token;
 

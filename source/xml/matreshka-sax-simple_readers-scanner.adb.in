@@ -58,12 +58,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    type Character_Reference_Form is (Decimal, Hexadecimal);
 
-   procedure Enter_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
-     State : Interfaces.Unsigned_32);
-   pragma Inline (Enter_Start_Condition);
-   --  Enter a start condition.
-
    procedure Set_Continue_State
     (Self  : not null access SAX_Simple_Reader'Class;
      State : Interfaces.Unsigned_32);

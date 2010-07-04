@@ -80,4 +80,10 @@ private
    --  characters in trailing context belongs BMP and not affect end-of-line
    --  tracking.
 
+   procedure Enter_Start_Condition
+    (Self  : not null access SAX_Simple_Reader'Class;
+     State : Interfaces.Unsigned_32);
+   pragma Inline (Enter_Start_Condition);
+   --  Enter a start condition.
+
 end Matreshka.SAX.Simple_Readers.Scanner;
