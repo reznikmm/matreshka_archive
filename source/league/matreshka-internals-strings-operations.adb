@@ -140,6 +140,45 @@ package body Matreshka.Internals.Strings.Operations is
       end if;
    end Append;
 
+   ----------------
+   -- Copy_Slice --
+   ----------------
+
+   procedure Copy_Slice
+    (Self   : in out Shared_String_Access;
+     Source : not null Shared_String_Access;
+     First  : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length : Natural)
+   is
+      pragma Assert (First < Source.Unused
+                       and then First + Size <= Source.Unused);
+      pragma Assert (Utf16_String_Index (Length) in (Size + 1) / 2 .. Size);
+
+   begin
+      if Size = 0 then
+         if Self /= Shared_Empty'Access then
+            Dereference (Self);
+            Self := Shared_Empty'Access;
+         end if;
+
+      else
+         if not Can_Be_Reused (Self, Size) then
+            Dereference (Self);
+            Self := Allocate (Size);
+
+         else
+            Free (Self.Index_Map);
+         end if;
+
+         Self.Value (0 .. Size - 1) :=
+           Source.Value (First .. First + Size - 1);
+         Self.Unused := Size;
+         Self.Length := Length;
+         Fill_Null_Terminator (Self);
+      end if;
+   end Copy_Slice;
+
 --   -------------
 --   -- Replace --
 --   -------------

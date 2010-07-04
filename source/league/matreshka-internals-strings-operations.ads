@@ -56,6 +56,15 @@ package Matreshka.Internals.Strings.Operations is
      Item : Shared_String_Access);
    --  Appends data from to Item to the string, reallocate string when needed.
 
+   procedure Copy_Slice
+    (Self   : in out Shared_String_Access;
+     Source : not null Shared_String_Access;
+     First  : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length : Natural);
+   --  Copy slice from the Source string into the string, reallocate string
+   --  when needed.
+
    function Slice
     (Source : not null Shared_String_Access;
      First  : Matreshka.Internals.Utf16.Utf16_String_Index;
