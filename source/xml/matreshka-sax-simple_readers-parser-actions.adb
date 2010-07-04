@@ -42,12 +42,30 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.SAX.Simple_Readers.Scanner;
+with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 
 package body Matreshka.SAX.Simple_Readers.Parser.Actions is
 
    Full_Stop  : constant := 16#002E#;
    Digit_Zero : constant := 16#0030#;
    Digit_One  : constant := 16#0031#;
+
+   -----------------------
+   -- On_Character_Data --
+   -----------------------
+
+   procedure On_Character_Data
+    (Self          : not null access SAX_Simple_Reader'Class;
+     Text          : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Is_Whitespace : Boolean) is
+   begin
+      if Is_Whitespace then
+         Handler_Callbacks.Call_Ignorable_Whitespace (Self, Text);
+
+      else
+         Handler_Callbacks.Call_Characters (Self, Text);
+      end if;
+   end On_Character_Data;
 
    --------------------------------
    -- On_XML_Version_Information --

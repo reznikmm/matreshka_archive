@@ -104,12 +104,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
    --  Process start tag, rule [44].
 
-   procedure Process_Characters
-    (Self          : not null access SAX_Simple_Reader'Class;
-     Text          : League.Strings.Universal_String;
-     Is_Whitespace : Boolean);
-   --  Process segment of characters.
-
    procedure Process_Attribute
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
@@ -179,23 +173,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
            (Self.Symbols, Self.Attribute.Qualified_Name),
         Value          => Self.Attribute.Value);
    end Process_Attribute_In_Set;
-
-   ------------------------
-   -- Process_Characters --
-   ------------------------
-
-   procedure Process_Characters
-    (Self          : not null access SAX_Simple_Reader'Class;
-     Text          : League.Strings.Universal_String;
-     Is_Whitespace : Boolean) is
-   begin
-      if Is_Whitespace then
-         Handler_Callbacks.Call_Ignorable_Whitespace (Self, Text);
-
-      else
-         Handler_Callbacks.Call_Characters (Self, Text);
-      end if;
-   end Process_Characters;
 
    ---------------------
    -- Process_Comment --
@@ -1073,9 +1050,9 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 111 =>
-               Process_Characters
+               Actions.On_Character_Data
                 (Self,
-                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String),
+                 yy.value_stack (yy.tos).String,
                  yy.value_stack (yy.tos).Is_Whitespace);
 
             when 112 =>

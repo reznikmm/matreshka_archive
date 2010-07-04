@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Exceptions;
 
+with League.Strings.Internals;
 with Matreshka.SAX.Locators.Internals;
 with Matreshka.SAX.Parse_Exceptions.Internals;
 
@@ -54,11 +55,12 @@ package body Matreshka.SAX.Simple_Readers.Handler_Callbacks is
 
    procedure Call_Characters
     (Self : not null access SAX_Simple_Reader'Class;
-     Text : League.Strings.Universal_String) is
+     Text : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Matreshka.SAX.Locators.Internals.Set_Location
        (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
-      Self.Content_Handler.Characters (Text, Self.Continue);
+      Self.Content_Handler.Characters
+       (League.Strings.Internals.Create (Text), Self.Continue);
 
       if not Self.Continue then
          Self.Error_Message := Self.Content_Handler.Error_String;
@@ -221,11 +223,12 @@ package body Matreshka.SAX.Simple_Readers.Handler_Callbacks is
 
    procedure Call_Ignorable_Whitespace
     (Self : not null access SAX_Simple_Reader'Class;
-     Text : League.Strings.Universal_String) is
+     Text : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Matreshka.SAX.Locators.Internals.Set_Location
        (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
-      Self.Content_Handler.Ignorable_Whitespace (Text, Self.Continue);
+      Self.Content_Handler.Ignorable_Whitespace
+       (League.Strings.Internals.Create (Text), Self.Continue);
 
       if not Self.Continue then
          Self.Error_Message := Self.Content_Handler.Error_String;

@@ -692,9 +692,9 @@ content_item :
 }
   | Token_String_Segment
 {
-   Process_Characters
+   Actions.On_Character_Data
     (Self,
-     League.Strings.Internals.Create ($1.String),
+     $1.String,
      $1.Is_Whitespace);
 }
   | Token_Comment
@@ -804,11 +804,6 @@ with Matreshka.Internals.XML.Symbol_Tables;
      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
        is separate;
 
-   procedure Process_Characters
-    (Self          : access Integer;
-     Text          : League.Strings.Universal_String;
-     Is_Whitespace : Boolean) is separate;
-
    procedure Process_Attribute_In_Set (Self : access Integer) is separate;
 
    procedure Process_Attribute
@@ -842,6 +837,11 @@ with Matreshka.Internals.XML.Symbol_Tables;
       procedure On_XML_Version_Information
        (Self    : access Integer;
         Version : not null Matreshka.Internals.Strings.Shared_String_Access);
+
+      procedure On_Character_Data
+       (Self          : access Integer;
+        Text          : not null Matreshka.Internals.Strings.Shared_String_Access;
+        Is_Whitespace : Boolean);
 
    end Actions;
 

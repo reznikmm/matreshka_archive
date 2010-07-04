@@ -55,7 +55,7 @@ private package Matreshka.SAX.Simple_Readers.Handler_Callbacks is
 
    procedure Call_Characters
     (Self : not null access SAX_Simple_Reader'Class;
-     Text : League.Strings.Universal_String);
+     Text : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Calls handler's SAX_Content_Handler.Characters subprogram.
 
    procedure Call_End_Element
@@ -84,7 +84,7 @@ private package Matreshka.SAX.Simple_Readers.Handler_Callbacks is
 
    procedure Call_Ignorable_Whitespace
     (Self : not null access SAX_Simple_Reader'Class;
-     Text : League.Strings.Universal_String);
+     Text : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Calls handler's SAX_Content_Handler.Ignorable_Whitespace subprogram.
 
    procedure Call_Internal_Entity_Decl

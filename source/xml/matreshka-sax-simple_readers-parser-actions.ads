@@ -46,6 +46,12 @@ private package Matreshka.SAX.Simple_Readers.Parser.Actions is
 
    pragma Preelaborate;
 
+   procedure On_Character_Data
+    (Self          : not null access SAX_Simple_Reader'Class;
+     Text          : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Is_Whitespace : Boolean);
+   --  Process segment of character data.
+
    procedure On_XML_Version_Information
     (Self    : not null access SAX_Simple_Reader'Class;
      Version : not null Matreshka.Internals.Strings.Shared_String_Access);
