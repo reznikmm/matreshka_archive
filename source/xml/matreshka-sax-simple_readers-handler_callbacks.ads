@@ -60,9 +60,12 @@ private package Matreshka.SAX.Simple_Readers.Handler_Callbacks is
 
    procedure Call_End_Element
     (Self           : not null access SAX_Simple_Reader'Class;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String);
+     Namespace_URI  :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Local_Name     :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Qualified_Name :
+       not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Calls handler's SAX_Content_Handler.End_Element subprogram.
 
    procedure Call_Error
@@ -106,9 +109,12 @@ private package Matreshka.SAX.Simple_Readers.Handler_Callbacks is
 
    procedure Call_Start_Element
     (Self           : not null access SAX_Simple_Reader'Class;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String;
+     Namespace_URI  :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Local_Name     :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Qualified_Name :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
      Attributes     : Matreshka.SAX.Attributes.SAX_Attributes);
    --  Calls handler's SAX_Content_Handler.Start_Element subprogram.
 

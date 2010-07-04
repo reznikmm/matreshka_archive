@@ -89,16 +89,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Value       : League.Strings.Universal_String);
    --  Process parameter entity declaration, rule [72].
 
-   procedure Process_Start_Tag
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
-   --  Process start tag, rule [40].
-
-   procedure Process_End_Tag
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
-   --  Process end tag, rule [42].
-
    procedure Process_Empty_Element_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
@@ -215,37 +205,9 @@ package body Matreshka.SAX.Simple_Readers.Parser is
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
    begin
-      Process_Start_Tag (Self, Symbol);
-      Process_End_Tag (Self, Symbol);
+      Actions.On_Start_Tag (Self, Symbol);
+      Actions.On_End_Tag (Self, Symbol);
    end Process_Empty_Element_Tag;
-
-   ---------------------
-   -- Process_End_Tag --
-   ---------------------
-
-   procedure Process_End_Tag
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
-   is
-   begin
-      --  [3 WFC: Element Type Match]
-      --
-      --  The Name in an element's end-tag MUST match the element type in the
-      --  start-tag.
-   
-      if Self.Element_Names.Last_Element /= Symbol then
-         raise Program_Error
-           with "[3 WFC: Element Type Match] name of end tag doesn't match name of start tag";
-         --  Fatal error
-      end if;
-
-      Handler_Callbacks.Call_End_Element
-       (Self,
-        League.Strings.Empty_String,
-        Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
-        Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol));
-      Self.Element_Names.Delete_Last;
-   end Process_End_Tag;
 
    -------------------------
    -- Process_External_Id --
@@ -395,57 +357,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    begin
       Handler_Callbacks.Call_Processing_Instruction (Self, Target, Data);
    end Process_Processing_Instruction;
-
-   -----------------------
-   -- Process_Start_Tag --
-   -----------------------
-
-   procedure Process_Start_Tag
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
-   is
-      use Matreshka.Internals.XML.Symbol_Tables;
-
-   begin
-      if Self.Element_Names.Is_Empty then
-         --  Root element.
-
-         if Self.Validation.Enabled then
-            if Self.Root_Symbol = No_Symbol then
-               --  Document doesn't have document type declaration.
-               --
-               --  "[Definition: An XML document is valid if it has an
-               --  associated document type declaration and if the document
-               --  complies with the constraints expressed in it.]"
-
-               raise Program_Error
-                 with "Document doen't have document type declaration";
-               --  Error
-
-            elsif Self.Root_Symbol /= Symbol then
-               --  [2.8 VC: Root Element Type]
-               --
-               --  "The Name in the document type declaration MUST match the
-               --  element type of the root element."
-
-               raise Program_Error
-                 with "[2.8 VC: Root Element Type] Root element has wrong name";
-               --  Error
-            end if;
-         end if;
-      end if;
-
-      Self.Element_Names.Append (Symbol);
-      Handler_Callbacks.Call_Start_Element
-       (Self           => Self,
-        Namespace_URI  => League.Strings.Empty_String,
-        Local_Name     =>
-          Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
-        Qualified_Name =>
-          Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
-        Attributes     => Self.Attributes);
-      Matreshka.SAX.Attributes.Internals.Clear (Self.Attributes);
-   end Process_Start_Tag;
 
    -------------------
    -- YY_Goto_State --
@@ -1029,10 +940,10 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 104 =>
-               Process_Start_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
+               Actions.On_Start_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
 
             when 105 =>
-               Process_End_Tag (Self, yy.value_stack (yy.tos-1).Symbol);
+               Actions.On_End_Tag (Self, yy.value_stack (yy.tos-1).Symbol);
 
             when 106 =>
                Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).Symbol);

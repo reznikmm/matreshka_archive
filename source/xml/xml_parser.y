@@ -658,11 +658,11 @@ DefaultDecl:
 element :
     Token_Element_Open Attribute_Any Token_Close
 {
-   Process_Start_Tag (Self, $1.Symbol);
+   Actions.On_Start_Tag (Self, $1.Symbol);
 }
     content Token_End_Open Token_Close
 {
-   Process_End_Tag (Self, $6.Symbol);
+   Actions.On_End_Tag (Self, $6.Symbol);
 }
   | Token_Element_Open Attribute_Any Token_Empty_Close
 {
@@ -789,16 +789,6 @@ with Matreshka.Internals.XML.Symbol_Tables;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String) is separate;
 
-   procedure Process_Start_Tag
-    (Self   : access Integer;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
-       is separate;
-
-   procedure Process_End_Tag
-    (Self   : access Integer;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
-       is separate;
-
    procedure Process_Empty_Element_Tag
     (Self   : access Integer;
      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
@@ -842,6 +832,14 @@ with Matreshka.Internals.XML.Symbol_Tables;
        (Self          : access Integer;
         Text          : not null Matreshka.Internals.Strings.Shared_String_Access;
         Is_Whitespace : Boolean);
+
+      procedure On_End_Tag
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
+
+      procedure On_Start_Tag
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
 
    end Actions;
 

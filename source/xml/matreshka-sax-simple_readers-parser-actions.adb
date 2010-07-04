@@ -41,10 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.SAX.Attributes.Internals;
 with Matreshka.SAX.Simple_Readers.Scanner;
 with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 
 package body Matreshka.SAX.Simple_Readers.Parser.Actions is
+
+   use Matreshka.Internals.XML.Symbol_Tables;
 
    Full_Stop  : constant := 16#002E#;
    Digit_Zero : constant := 16#0030#;
@@ -66,6 +69,80 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
          Handler_Callbacks.Call_Characters (Self, Text);
       end if;
    end On_Character_Data;
+
+   ----------------
+   -- On_End_Tag --
+   ----------------
+
+   procedure On_End_Tag
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
+   begin
+      --  [3 WFC: Element Type Match]
+      --
+      --  The Name in an element's end-tag MUST match the element type in the
+      --  start-tag.
+   
+      if Self.Element_Names.Last_Element /= Symbol then
+         raise Program_Error
+           with "[3 WFC: Element Type Match] name of end tag doesn't match name of start tag";
+         --  Fatal error
+      end if;
+
+      Handler_Callbacks.Call_End_Element
+       (Self,
+        Matreshka.Internals.Strings.Shared_Empty'Access,
+        Matreshka.Internals.Strings.Shared_Empty'Access,
+        Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol));
+      Self.Element_Names.Delete_Last;
+   end On_End_Tag;
+
+   ------------------
+   -- On_Start_Tag --
+   ------------------
+
+   procedure On_Start_Tag
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
+   begin
+      if Self.Element_Names.Is_Empty then
+         --  Root element.
+
+         if Self.Validation.Enabled then
+            if Self.Root_Symbol = No_Symbol then
+               --  Document doesn't have document type declaration.
+               --
+               --  "[Definition: An XML document is valid if it has an
+               --  associated document type declaration and if the document
+               --  complies with the constraints expressed in it.]"
+
+               raise Program_Error
+                 with "Document doen't have document type declaration";
+               --  Error
+
+            elsif Self.Root_Symbol /= Symbol then
+               --  [2.8 VC: Root Element Type]
+               --
+               --  "The Name in the document type declaration MUST match the
+               --  element type of the root element."
+
+               raise Program_Error
+                 with "[2.8 VC: Root Element Type] Root element has wrong name";
+               --  Error
+            end if;
+         end if;
+      end if;
+
+      Self.Element_Names.Append (Symbol);
+      Handler_Callbacks.Call_Start_Element
+       (Self           => Self,
+        Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
+        Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
+        Qualified_Name =>
+          Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
+        Attributes     => Self.Attributes);
+      Matreshka.SAX.Attributes.Internals.Clear (Self.Attributes);
+   end On_Start_Tag;
 
    --------------------------------
    -- On_XML_Version_Information --

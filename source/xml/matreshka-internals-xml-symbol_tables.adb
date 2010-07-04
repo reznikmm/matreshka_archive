@@ -208,7 +208,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
      Identifier : Symbol_Identifier)
        return not null Matreshka.Internals.Strings.Shared_String_Access is
    begin
-      return null;
+      return Self.Table (Identifier).String;
    end Name;
 
    ----------
@@ -219,9 +219,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
     (Self       : Symbol_Table;
      Identifier : Symbol_Identifier) return League.Strings.Universal_String is
    begin
-      Matreshka.Internals.Strings.Reference (Self.Table (Identifier).String);
-
-      return League.Strings.Internals.Wrap (Self.Table (Identifier).String);
+      return League.Strings.Internals.Create (Self.Table (Identifier).String);
    end Name;
 
    --------------------------------
