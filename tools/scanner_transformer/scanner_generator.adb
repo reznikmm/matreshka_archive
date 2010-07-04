@@ -304,7 +304,7 @@ package body Scanner_Generator is
       Put_Line
        (Output,
         "     Matreshka.Internals.Unicode.Code_Point range 0 .. 16#10FF#;");
-      Put_Line
+      Put
        (Output,
         "   type YY_Secondary_Array is"
           & " array (YY_Secondary_Index) of ");

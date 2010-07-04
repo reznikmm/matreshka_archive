@@ -51,8 +51,7 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Tables is
      Matreshka.Internals.Unicode.Code_Point range 0 .. 16#FF#;
    subtype YY_Primary_Index is
      Matreshka.Internals.Unicode.Code_Point range 0 .. 16#10FF#;
-   type YY_Secondary_Array is array (YY_Secondary_Index) of 
-Interfaces.Unsigned_32;
+   type YY_Secondary_Array is array (YY_Secondary_Index) of Interfaces.Unsigned_32;
    type YY_Secondary_Array_Access is not null access constant YY_Secondary_Array;
 
    YY_End_Of_Buffer  : constant := 103;
