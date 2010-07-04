@@ -48,16 +48,19 @@ with Matreshka.SAX.Simple_Readers;
 
 with Events_Printers;
 with Read_File;
+with Put_Line;
 
 procedure Sax_Events_Printer is
    Reader  : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
    Handler : aliased Events_Printers.Events_Printer;
 
 begin
+   Matreshka.SAX.Simple_Readers.Put_Line := Put_Line'Access;
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
    Reader.Set_Decl_Handler (Handler'Unchecked_Access);
    Reader.Set_DTD_Handler (Handler'Unchecked_Access);
    Reader.Set_Entity_Resolver (Handler'Unchecked_Access);
+   Reader.Set_Error_Handler (Handler'Unchecked_Access);
    Reader.Set_Lexical_Handler (Handler'Unchecked_Access);
 
    Reader.Parse (Read_File (Ada.Command_Line.Argument (1)));

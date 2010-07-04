@@ -47,8 +47,10 @@ with Matreshka.SAX.Content_Handlers;
 with Matreshka.SAX.Decl_Handlers;
 with Matreshka.SAX.DTD_Handlers;
 with Matreshka.SAX.Entity_Resolvers;
+with Matreshka.SAX.Error_Handlers;
 with Matreshka.SAX.Lexical_Handlers;
 with Matreshka.SAX.Locators;
+with Matreshka.SAX.Parse_Exceptions;
 
 package Events_Printers is
 
@@ -57,6 +59,7 @@ package Events_Printers is
        and Matreshka.SAX.Decl_Handlers.SAX_Decl_Handler
        and Matreshka.SAX.DTD_Handlers.SAX_DTD_Handler
        and Matreshka.SAX.Entity_Resolvers.SAX_Entity_Resolver
+       and Matreshka.SAX.Error_Handlers.SAX_Error_Handler
        and Matreshka.SAX.Lexical_Handlers.SAX_Lexical_Handler with
    record
       Locator : Matreshka.SAX.Locators.SAX_Locator;
@@ -91,6 +94,11 @@ package Events_Printers is
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
      Success   : in out Boolean);
+
+   overriding procedure Fatal_Error
+    (Self       : in out Events_Printer;
+     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean);
 
    overriding procedure Ignorable_Whitespace
     (Self    : in out Events_Printer;

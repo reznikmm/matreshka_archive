@@ -130,6 +130,23 @@ package body Events_Printers is
           & Name & "' => '" & Public_Id & "' '" & System_Id & "'");
    end External_Entity_Decl;
 
+   -----------------
+   -- Fatal_Error --
+   -----------------
+
+   overriding procedure Fatal_Error
+    (Self       : in out Events_Printer;
+     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean) is
+   begin
+      Put_Line
+       (">>> (Fatal_Error) "
+          & Image (Self.Locator)
+          & ": '"
+          & Occurrence.Message
+          & "'");
+   end Fatal_Error;
+
    --------------------------
    -- Ignorable_Whitespace --
    --------------------------
