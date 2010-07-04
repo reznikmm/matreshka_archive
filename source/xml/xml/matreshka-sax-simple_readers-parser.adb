@@ -46,6 +46,7 @@ with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.XML.Symbol_Tables.Entities;
 with Matreshka.SAX.Attributes.Internals;
 with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
+with Matreshka.SAX.Simple_Readers.Parser.Actions;
 with Matreshka.SAX.Simple_Readers.Parser.Tables;
 with Matreshka.SAX.Simple_Readers.Scanner;
 
@@ -680,7 +681,9 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 4 =>
-               null;
+               --  Version information, rule [24] in rule [23].
+            
+               Actions.On_XML_Version_Information (Self, yy.value_stack (yy.tos).String);
 
             when 5 =>
                null;
@@ -713,20 +716,23 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 15 =>
+               null;
+
+            when 16 =>
                Process_Comment
                 (Self,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
-            when 16 =>
+            when 17 =>
                null;
 
-            when 17 =>
+            when 18 =>
                Process_Processing_Instruction
                 (Self,
                  yy.value_stack (yy.tos-1).Symbol,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
-            when 18 =>
+            when 19 =>
                --  Document type declaration, rule [28]. Once external identifier are
                --  recognized external document type declaration subset need to be parsed 
                --  before processing of internal subset. External subset is inserted
@@ -738,13 +744,13 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  yy.value_stack (yy.tos-1).Symbol,
                  True);
 
-            when 19 =>
-               null;
-
             when 20 =>
                null;
 
             when 21 =>
+               null;
+
+            when 22 =>
                --  Document type declaration, rule [28]. Once external identifier are
                --  recognized external document type declaration subset need to be parsed 
                --  before processing of internal subset. External subset is inserted
@@ -756,9 +762,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  yy.value_stack (yy.tos).Symbol,
                  False);
 
-            when 22 =>
-               null;
-
             when 23 =>
                null;
 
@@ -766,6 +769,9 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 25 =>
+               null;
+
+            when 26 =>
                --  ExternalID specified by SYSTEM, rule [75].
             
                Process_External_Id
@@ -773,16 +779,13 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  League.Strings.Empty_String,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
-            when 26 =>
+            when 27 =>
                --  ExternalID specified by PUBLIC, rule [75].
             
                Process_External_Id
                 (Self,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String),
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
-
-            when 27 =>
-               null;
 
             when 28 =>
                null;
@@ -809,11 +812,14 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 36 =>
+               null;
+
+            when 37 =>
                Process_Comment
                 (Self,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
-            when 37 =>
+            when 38 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-2).Symbol,
@@ -821,7 +827,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String),
                  Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
 
-            when 38 =>
+            when 39 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-2).Symbol,
@@ -829,7 +835,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Empty_String,
                  Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
 
-            when 39 =>
+            when 40 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-4).Symbol,
@@ -837,45 +843,42 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Empty_String,
                  Notation    => yy.value_stack (yy.tos-1).Symbol);
 
-            when 40 =>
+            when 41 =>
                Process_Parameter_Entity_Declaration
                 (Self,
                  yy.value_stack (yy.tos-2).Symbol,
                  False,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String));
 
-            when 41 =>
+            when 42 =>
                Process_Parameter_Entity_Declaration
                 (Self,
                  yy.value_stack (yy.tos-2).Symbol,
                  True,
                  League.Strings.Empty_String);
 
-            when 42 =>
+            when 43 =>
                --  Entity value including surrounding delimiters.
             
                Move (yyval, yy.value_stack (yy.tos-1));
 
-            when 43 =>
+            when 44 =>
                --  Additional string segment in entity value.
             
                Move (yyval, yy.value_stack (yy.tos-1));
                Matreshka.Internals.Strings.Operations.Append (yyval.String, yy.value_stack (yy.tos).String);
 
-            when 44 =>
+            when 45 =>
                --  Single string segment in entity value.
             
                Move (yyval, yy.value_stack (yy.tos));
 
-            when 45 =>
+            when 46 =>
                Set_String
                 (Item          => yyval,
                  String        => League.Strings.Empty_String,
                  Is_Whitespace => False,
                  Is_CData      => False);
-
-            when 46 =>
-               null;
 
             when 47 =>
                null;
@@ -1046,16 +1049,16 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 103 =>
-               Process_Start_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
+               null;
 
             when 104 =>
-               Process_End_Tag (Self, yy.value_stack (yy.tos-1).Symbol);
+               Process_Start_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
 
             when 105 =>
-               Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
+               Process_End_Tag (Self, yy.value_stack (yy.tos-1).Symbol);
 
             when 106 =>
-               null;
+               Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
 
             when 107 =>
                null;
@@ -1067,40 +1070,43 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 110 =>
+               null;
+
+            when 111 =>
                Process_Characters
                 (Self,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String),
                  yy.value_stack (yy.tos).Is_Whitespace);
 
-            when 111 =>
+            when 112 =>
                Process_Comment
                 (Self,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
-            when 112 =>
-               null;
-
             when 113 =>
-               --  TextDecl come from substitution of external parsed entities.
-            
                null;
 
             when 114 =>
-               Process_Attribute_In_Set (Self);
+               --  TextDecl come from substitution of external parsed entities.
+            
+               null;
 
             when 115 =>
                Process_Attribute_In_Set (Self);
 
             when 116 =>
-               null;
+               Process_Attribute_In_Set (Self);
 
             when 117 =>
+               null;
+
+            when 118 =>
                Process_Attribute
                 (Self,
                  yy.value_stack (yy.tos-2).Symbol,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
-            when 118 =>
+            when 119 =>
                Move (yyval, yy.value_stack (yy.tos-1));
                when others =>
                   raise Program_Error

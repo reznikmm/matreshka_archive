@@ -325,15 +325,10 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 }
 
 <XML_DECL,PI,PI_DATA_10,PI_DATA_11>"?>" {
-   Enter_Start_Condition (Self, DOCUMENT_10);
+   --  Close of XML declaration (rule [23]), text declaration (rule [77]) or
+   --  processing instruction (rule [16]).
 
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => Matreshka.Internals.Strings.Shared_Empty'Access,
-     Is_Whitespace => False,
-     Is_CData      => False);
-
-   return Token_PI_Close;
+   return Actions.On_Close_Of_Processing_Instruction (Self, True);
 }
 
 <PI>{WHITE_SPACE} {
@@ -347,46 +342,14 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    --  Segment of data and close delimiter of the processing instruction, rule
    --  [16].
 
-   if not Get_Whitespace_Matched (Self) then
-      raise Program_Error with "no whitespace before processing instruction data";
-      --  XXX This is recoverable error.
-   end if;
-
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal (0, 2),
-     Is_Whitespace => False,
-     Is_CData      => False);
-   Enter_Start_Condition (Self, DOCUMENT_10);
-
-   return Token_PI_Close;
+   return Actions.On_Close_Of_Processing_Instruction (Self, False);
 }
 
 <PI_DATA_11>{CHAR11_NO_QUESTION}*"?"+({CHAR11_NO_GREATER_QUESTION}{CHAR11_NO_QUESTION}*"?"+)*">" {
    --  Segment of data and close delimiter of the processing instruction, rule
    --  [16].
 
-   if not Get_Whitespace_Matched (Self) then
-      raise Program_Error with "no whitespace before processing instruction data";
-      --  XXX This is recoverable error.
-   end if;
-
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal (0, 2),
-     Is_Whitespace => False,
-     Is_CData      => False);
-   Enter_Start_Condition (Self, DOCUMENT_11);
-
-   return Token_PI_Close;
-}
-
-<DOCTYPE_EXTINT,DOCTYPE_INT>">" {
-   --  Close tag of document type declaration, rule [28].
-
-   Enter_Start_Condition (Self, DOCUMENT_10);
-
-   return Token_Close;
+   return Actions.On_Close_Of_Processing_Instruction (Self, False);
 }
 
 <DOCTYPE_EXTINT>"SYSTEM" {
@@ -909,17 +872,14 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ELEMENT_START>"/>" {
    --  Close of empty element tag, rule [44].
 
-   Enter_Start_Condition (Self, DOCUMENT_10);
-
-   return Token_Empty_Close;
+   return Actions.On_Close_Of_Empty_Element_Tag (Self);
 }
 
-<ELEMENT_START>">" {
+<ELEMENT_START,DOCTYPE_EXTINT,DOCTYPE_INT>">" {
    --  Close of tag, rule [40].
+   --  Close tag of document type declaration, rule [28].
 
-   Enter_Start_Condition (Self, DOCUMENT_10);
-
-   return Token_Close;
+   return Actions.On_Close_Of_Tag (Self);
 }
 
 <ELEMENT_START>['"] {
@@ -1143,6 +1103,14 @@ with Matreshka.Internals.Strings;
       function On_Open_Of_Internal_Subset (Self : access Integer) return Token;
 
       function On_Close_Of_Declaration (Self : access Integer) return Token;
+
+      function On_Close_Of_Empty_Element_Tag (Self : access Integer) return Token;
+
+      function On_Close_Of_Processing_Instruction
+       (Self     : access Integer;
+        Is_Empty : Boolean) return Token;
+
+      function On_Close_Of_Tag (Self : access Integer) return Token;
 
    end Actions;
 

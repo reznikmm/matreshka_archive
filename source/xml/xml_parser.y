@@ -88,7 +88,13 @@ XMLDecl_optional :
   ;
 
 XMLDecl :
-    Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment EncodingDecl_optional SDDecl_optional Token_PI_Close
+    Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment
+{
+   --  Version information, rule [24] in rule [23].
+
+   Actions.On_XML_Version_Information (Self, $4.String);
+}
+    EncodingDecl_optional SDDecl_optional Token_PI_Close
 {
    null;
 }
@@ -830,6 +836,16 @@ with Matreshka.Internals.XML.Symbol_Tables;
 
    Self     : access Integer;
    Put_Line : access procedure (Item : League.Strings.Universal_String);
+
+   package Actions is
+
+      procedure On_XML_Version_Information
+       (Self    : access Integer;
+        Version : not null Matreshka.Internals.Strings.Shared_String_Access);
+
+   end Actions;
+
+   package body Actions is separate;
 
    procedure Parse is
 ##

@@ -41,55 +41,48 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.SAX.Simple_Readers.Scanner;
 
-private package Matreshka.SAX.Simple_Readers.Scanner is
+package body Matreshka.SAX.Simple_Readers.Parser.Actions is
 
-   pragma Preelaborate;
+   Full_Stop  : constant := 16#002E#;
+   Digit_Zero : constant := 16#0030#;
+   Digit_One  : constant := 16#0031#;
 
-   function YYLex
-    (Self : not null access SAX_Simple_Reader'Class) return Token;
-   --  Returns next token.
+   --------------------------------
+   -- On_XML_Version_Information --
+   --------------------------------
 
-   procedure Set_XML_Version
+   procedure On_XML_Version_Information
     (Self    : not null access SAX_Simple_Reader'Class;
-     Version : XML_Version);
-   --  Switch scanner to continue scanning according to the specified
-   --  version of XML specification.
+     Version : not null Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      use type Matreshka.Internals.Utf16.Utf16_String_Index;
+      use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
 
-   procedure Push_Parameter_Entity
-    (Self : not null access SAX_Simple_Reader'Class;
-     Data : not null Matreshka.Internals.Strings.Shared_String_Access);
-   --  Push text of parameter entity into the scanner's stack.
+      Error : Boolean := True;
 
-   procedure Push_External_Entity
-    (Self : not null access SAX_Simple_Reader'Class;
-     Data : not null Matreshka.Internals.Strings.Shared_String_Access);
-   --  Push text of external entity into the scanner's stack.
+   begin
+      --  XML declaration can contains only BMP characters, so we don't need to
+      --  use expensive UTF-16 decoding here.
 
-private
+      if Version.Unused = 3
+        and then (Version.Value (0) = Digit_One
+                    and then Version.Value (1) = Full_Stop)
+      then
+         if Version.Value (2) = Digit_Zero then
+            Scanner.Set_XML_Version (Self, XML_1_0);
+            Error := False;
 
-   function YY_Text
-    (Self            : not null access SAX_Simple_Reader'Class;
-     Trim_Left       : Natural := 0;
-     Trim_Right      : Natural := 0;
-     Trim_Whitespace : Boolean := False)
-       return Matreshka.Internals.Strings.Shared_String_Access;
-   --  Converts matched data into shared string and returns it. For performance
-   --  reason, this subprogram is not UTF-16 aware and assume that all leading
-   --  and traling characters belong BMP.
+         elsif Version.Value (2) = Digit_One then
+            Scanner.Set_XML_Version (Self, XML_1_1);
+            Error := False;
+         end if;
+      end if;
 
-   procedure YY_Move_Backward (Self : not null access SAX_Simple_Reader'Class);
-   pragma Inline (YY_Move_Backward);
-   --  Moves current position one step backward. It is intended to be used when
-   --  pattern has trailing context. For performance reason, this subprogram
-   --  is not UTF-16 and end-of-line tracking aware, it assumes that all
-   --  characters in trailing context belongs BMP and not affect end-of-line
-   --  tracking.
+      if Error then
+         raise Program_Error;
+      end if;
+   end On_XML_Version_Information;
 
-   procedure Enter_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
-     State : Interfaces.Unsigned_32);
-   pragma Inline (Enter_Start_Condition);
-   --  Enter a start condition.
-
-end Matreshka.SAX.Simple_Readers.Scanner;
+end Matreshka.SAX.Simple_Readers.Parser.Actions;

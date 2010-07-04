@@ -138,6 +138,82 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
       return Token_Close;
    end On_Close_Of_Declaration;
 
+   -----------------------------------
+   -- On_Close_Of_Empty_Element_Tag --
+   -----------------------------------
+
+   function On_Close_Of_Empty_Element_Tag
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      case Self.Version is
+         when XML_1_0 =>
+            Enter_Start_Condition (Self, Tables.DOCUMENT_10);
+
+         when XML_1_1 =>
+            Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+      end case;
+
+      return Token_Empty_Close;
+   end On_Close_Of_Empty_Element_Tag;
+
+   ----------------------------------------
+   -- On_Close_Of_Processing_Instruction --
+   ----------------------------------------
+
+   function On_Close_Of_Processing_Instruction
+    (Self     : not null access SAX_Simple_Reader'Class;
+     Is_Empty : Boolean) return Token is
+   begin
+      if Is_Empty then
+         Set_String_Internal
+          (Item          => Self.YYLVal,
+           String        => Matreshka.Internals.Strings.Shared_Empty'Access,
+           Is_Whitespace => False,
+           Is_CData      => False);
+
+      else
+         if not Self.Whitespace_Matched then
+            raise Program_Error
+              with "no whitespace before processing instruction data";
+            --  XXX This is recoverable error.
+         end if;
+
+         Set_String_Internal
+          (Item          => Self.YYLVal,
+           String        => YY_Text (Self, 0, 2),
+           Is_Whitespace => False,
+           Is_CData      => False);
+      end if;
+
+      case Self.Version is
+         when XML_1_0 =>
+            Enter_Start_Condition (Self, Tables.DOCUMENT_10);
+
+         when XML_1_1 =>
+            Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+      end case;
+
+      return Token_PI_Close;
+   end On_Close_Of_Processing_Instruction;
+
+   ---------------------
+   -- On_Close_Of_Tag --
+   ---------------------
+
+   function On_Close_Of_Tag
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      case Self.Version is
+         when XML_1_0 =>
+            Enter_Start_Condition (Self, Tables.DOCUMENT_10);
+
+         when XML_1_1 =>
+            Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+      end case;
+
+      return Token_Close;
+   end On_Close_Of_Tag;
+
    ------------------------------------------
    -- On_Less_Than_Sign_In_Attribute_Value --
    ------------------------------------------

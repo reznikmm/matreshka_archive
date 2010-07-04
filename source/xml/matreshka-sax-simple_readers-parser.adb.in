@@ -46,6 +46,7 @@ with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.XML.Symbol_Tables.Entities;
 with Matreshka.SAX.Attributes.Internals;
 with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
+with Matreshka.SAX.Simple_Readers.Parser.Actions;
 with Matreshka.SAX.Simple_Readers.Parser.Tables;
 with Matreshka.SAX.Simple_Readers.Scanner;
 

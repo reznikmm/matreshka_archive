@@ -675,6 +675,17 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Whitespace_Matched := True;
    end Set_Whitespace_Matched;
 
+   ---------------------
+   -- Set_XML_Version --
+   ---------------------
+
+   procedure Set_XML_Version
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Version : XML_Version) is
+   begin
+      Self.Version := Version;
+   end Set_XML_Version;
+
    -----------
    -- YYLex --
    -----------
