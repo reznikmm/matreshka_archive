@@ -51,6 +51,10 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Actions is
    --  Handles character data in as well as apperance of forbidden ']]>' string
    --  in the character data.
 
+   function On_Close_Of_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles close of entity declaration.
+
    function On_Less_Than_Sign_In_Attribute_Value
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handling of less-than sign in attribute value.
@@ -60,6 +64,10 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Actions is
    --  Handles start of document and external parsed entities which doesn't
    --  starts from XML declaration.
 
+   function On_Open_Of_Internal_Subset
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open of internal subset of document type declaration.
+
    function On_Unexpected_Character
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  General handling of unexpected character.
@@ -68,5 +76,10 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Handles whitespaces outside of markup. Returns True and sets YYLVal when
    --  document content analysis started, and return False otherwise.
+
+   procedure On_Whitespace_In_Processing_Instruction
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles sequence of whitespaces between processing instruction's target
+   --  and data.
 
 end Matreshka.SAX.Simple_Readers.Scanner.Actions;

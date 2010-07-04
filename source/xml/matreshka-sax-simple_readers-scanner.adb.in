@@ -268,7 +268,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
         Code_Point
          (Self.Scanner_State.Data.Value (Self.Scanner_State.YY_Base_Position));
       Self.Scanner_State.Continue_State := State;
-      Enter_Start_Condition (Self, ATTRIBUTE_VALUE);
+
+      case Self.Version is
+         when XML_1_0 =>
+            Enter_Start_Condition (Self, ATTRIBUTE_VALUE_10);
+
+         when XML_1_1 =>
+            Enter_Start_Condition (Self, ATTRIBUTE_VALUE_11);
+      end case;
 
       return Token_Value_Open;
    end Process_Attribute_Value_Open_Delimiter;
@@ -424,7 +431,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       end if;
 
       Reset_Whitespace_Matched (Self);
-      Enter_Start_Condition (Self, ENTITY_VALUE);
+
+      case Self.Version is
+         when XML_1_0 =>
+            Enter_Start_Condition (Self, ENTITY_VALUE_10);
+
+         when XML_1_1 =>
+            Enter_Start_Condition (Self, ENTITY_VALUE_11);
+      end case;
 
       return Token_Value_Open;
    end Process_Entity_Value_Open_Delimiter;
@@ -515,7 +529,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Stack_Is_Empty := False;
 
       Self.Scanner_State := (Data, others => <>);
-      Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
+      Enter_Start_Condition (Self, DOCTYPE_INTSUBSET_10);
+      --  XXX Version handling must be fixed.
    end Push_External_Entity;
 
    ---------------------------
@@ -530,7 +545,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Stack_Is_Empty := False;
 
       Self.Scanner_State := (Data, In_Literal => True, others => <>);
-      Enter_Start_Condition (Self, ENTITY_VALUE);
+
+      case Self.Version is
+         when XML_1_0 =>
+            Enter_Start_Condition (Self, ENTITY_VALUE_10);
+
+         when XML_1_1 =>
+            Enter_Start_Condition (Self, ENTITY_VALUE_11);
+      end case;
    end Push_Parameter_Entity;
 
    --------------------------------------------
@@ -545,7 +567,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Stack_Is_Empty := False;
 
       Self.Scanner_State := (Data, In_Literal => True, others => <>);
-      Enter_Start_Condition (Self, ATTRIBUTE_VALUE);
+
+      case Self.Version is
+         when XML_1_0 =>
+            Enter_Start_Condition (Self, ATTRIBUTE_VALUE_10);
+
+         when XML_1_1 =>
+            Enter_Start_Condition (Self, ATTRIBUTE_VALUE_11);
+      end case;
    end Push_General_Entity_In_Attribute_Value;
 
    ---------------------------------------------

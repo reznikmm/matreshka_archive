@@ -77,81 +77,62 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 --  Synthetic set of character. XMLDECL_ATTRIBUTE_CHAR is a union of characters
 --  allowed by [26] VersionNum, [81] EncName, [32] SDDecl.
 
---#ifdef XML10
-----
-----  Special subranges of Char.
-----
-----  NOTE: Negative sets with smaller number of characters improves aflex
-----  performance and memory requirements extremely.
-----
-----  [2] Char ::= #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
-----
-----  Negative form: [^\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
-----
-----  [^%&]
---CHAR_NO_PERCENT_AMPERSAND			[^\u0025\u0026\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
-----  [^"%&']
---CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[^\u0022\u0025\u0026\u0027\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
-----  [^"&'<]
---CHAR_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS	[^\u0022\u0026\u0027\u003C\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
-----  (Char - '-') for comment, rule [15].
---CHAR_NO_HYPHEN					[^\u002D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
-----  [^<&] for CharDara, rule [14].
---CHAR_NO_AMPERSAND_LESS				[^\u0026\u003C\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
-----  [^<&]]
---CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE		[^\u0026\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
-----  [^<>&]]
---CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE	[^\u0026\u003C\u003E\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
-----  [^]], for CData, rule [20].
---CHAR_NO_RIGHT_SQUARE				[^\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
-----  [^>]]
---CHAR_NO_GREATER_RIGHT_SQUARE			[^\u003E\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800\uDFFF\uFFFE\uFFFF]
-----  [^?], for PI, rule [16].
---CHAR_NO_QUESTION				[^\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
-----  [^>?]
---CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
---#else
 --
 --  Special subranges of Char.
 --
 --  NOTE: Negative sets with smaller number of characters improves aflex
 --  performance and memory requirements extremely.
 --
+--  XML 1.0:
+--
+--  [2] Char ::= #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
+--
+--  Negative form: [^\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+--
+--  XML 1.1:
+--
 --  [2] Char ::= [#x1-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
 --
 --  Negative form: [^\uD800-\uDFFF\uFFFE\uFFFF]
 --
---  [^%&]
-CHAR_NO_PERCENT_AMPERSAND			[^\u0025\u0026\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^"%&']
-CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[^\u0022\u0025\u0026\u0027\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR10_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[^\u0022\u0025\u0026\u0027\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[^\u0022\u0025\u0026\u0027\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^"&'<]
-CHAR_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS	[^\u0022\u0026\u0027\u003C\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR10_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS		[^\u0022\u0026\u0027\u003C\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS		[^\u0022\u0026\u0027\u003C\uD800-\uDFFF\uFFFE\uFFFF]
 --  (Char - '-') for comment, rule [15].
-CHAR_NO_HYPHEN					[^\u002D\uD800-\uDFFF\uFFFE\uFFFF]
---  [^<&] for CharDara, rule [14].
-CHAR_NO_AMPERSAND_LESS				[^\u0026\u003C\uD800-\uDFFF\uFFFE\uFFFF]
---  [^<&]]
-CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE		[^\u0026\u003C\u005D\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR10_NO_HYPHEN					[^\u002D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_HYPHEN					[^\u002D\uD800-\uDFFF\uFFFE\uFFFF]
+--  [^<&]] for CharDara, rule [14].
+CHAR10_NO_AMPERSAND_LESS_RIGHT_SQUARE			[^\u0026\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_AMPERSAND_LESS_RIGHT_SQUARE			[^\u0026\u003C\u005D\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^<>&]]
-CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE	[^\u0026\u003C\u003E\u005D\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR10_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE		[^\u0026\u003C\u003E\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE		[^\u0026\u003C\u003E\u005D\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^]], for CData, rule [20].
-CHAR_NO_RIGHT_SQUARE				[^\u005D\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR10_NO_RIGHT_SQUARE					[^\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_RIGHT_SQUARE					[^\u005D\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^>]]
-CHAR_NO_GREATER_RIGHT_SQUARE			[^\u003E\u005D\uD800\uDFFF\uFFFE\uFFFF]
+CHAR10_NO_GREATER_RIGHT_SQUARE				[^\u003E\u005D\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_GREATER_RIGHT_SQUARE				[^\u003E\u005D\uD800\uDFFF\uFFFE\uFFFF]
 --  [^?], for PI, rule [16].
-CHAR_NO_QUESTION				[^\u003F\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR10_NO_QUESTION					[^\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_QUESTION					[^\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^>?]
-CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
---#endif
+CHAR10_NO_GREATER_QUESTION				[^\u003E\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 
 %x XML_DECL
-%x DOCUMENT
+%x DOCUMENT_10
+%x DOCUMENT_11
 %x PI
-%x PI_DATA
+%x PI_DATA_10
+%x PI_DATA_11
 %x DOCTYPE_EXTINT
 %x DOCTYPE_INT
-%x DOCTYPE_INTSUBSET
+%x DOCTYPE_INTSUBSET_10
+%x DOCTYPE_INTSUBSET_11
 %x ELEMENT_DECL
 %x ELEMENT_CHILDREN
 %x ATTLIST_DECL
@@ -159,9 +140,11 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 %x ENTITY_DECL
 %x ENTITY_DEF
 %x ENTITY_NDATA
-%x ENTITY_VALUE
+%x ENTITY_VALUE_10
+%x ENTITY_VALUE_11
 %x ELEMENT_START
-%x ATTRIBUTE_VALUE
+%x ATTRIBUTE_VALUE_10
+%x ATTRIBUTE_VALUE_11
 --  Factored out processing for ExternalID, rule [75]. When PUBLIC or SYSTEM
 --  word is recognized, scanner must be switched to EXTERNAL_ID_PUB or
 --  EXTERNAL_ID_SYS state and set state to which scanner is returned after
@@ -184,7 +167,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    Actions.On_No_XML_Declaration (Self);
 }
 
-<DOCUMENT>"<?"{NAME} {
+<DOCUMENT_10,DOCUMENT_11>"<?"{NAME} {
    --  Open of processing instruction, rule [16]. Rule [17] is implemented
    --  implicitly by ordering of open of XMLDecl and open of PI.
 
@@ -195,7 +178,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_PI_Open;
 }
 
-<DOCUMENT>"<!DOCTYPE"{WHITE_SPACE}{NAME} {
+<DOCUMENT_10,DOCUMENT_11>"<!DOCTYPE"{WHITE_SPACE}{NAME} {
    --  Open tag of document type declaration and name of root element,
    --  rule [28].
 
@@ -205,7 +188,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_Doctype_Decl_Open;
 }
 
-<DOCUMENT>"<"{NAME} {
+<DOCUMENT_10,DOCUMENT_11>"<"{NAME} {
    --  Open of start tag, rule [40], or empty element, rule [44].
 
    Resolve_Symbol (Self, 1, 0, False, YYLVal);
@@ -214,7 +197,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_Element_Open;
 }
 
-<DOCUMENT>"</"{NAME} {
+<DOCUMENT_10,DOCUMENT_11>"</"{NAME} {
    --  Open of and tag, rule [42].
 
    Resolve_Symbol (Self, 2, 0, False, YYLVal);
@@ -242,7 +225,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 --  root element and after close of root context. Inside document content
 --  this rule cover sequence of ignorable whitespaces.
 
-<DOCUMENT>{WHITE_SPACE}("<"|"&")? {
+<DOCUMENT_10,DOCUMENT_11>{WHITE_SPACE}("<"|"&")? {
    --  Segment of whitespaces.
 
    if Actions.On_Whitespace_In_Document (Self) then
@@ -250,13 +233,19 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    end if;
 }
 
-<DOCUMENT>({CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}+("]"{CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}+|"]"{2,}{CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE}+)*"]"*("]]>"|"<"|"&")?)|(("]"{CHAR_NO_AMPERSAND_LESS_RIGHT_SQUARE}+|"]"{2,}{CHAR_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE}+)+"]"*("]]>"|"<"|"&")?)|("]"+("]]>"|"<"|"&")?)|("]]>") {
+<DOCUMENT_10>({CHAR10_NO_AMPERSAND_LESS_RIGHT_SQUARE}+("]"{CHAR10_NO_AMPERSAND_LESS_RIGHT_SQUARE}+|"]"{2,}{CHAR10_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE}+)*"]"*("]]>"|"<"|"&")?)|(("]"{CHAR10_NO_AMPERSAND_LESS_RIGHT_SQUARE}+|"]"{2,}{CHAR10_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE}+)+"]"*("]]>"|"<"|"&")?)|("]"+("]]>"|"<"|"&")?)|("]]>") {
    --  Segment of character data, rule [14].
 
    return Actions.On_Character_Data (Self);
 }
 
-<DOCUMENT>"<![CDATA["{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR_NO_GREATER_RIGHT_SQUARE}{CHAR_NO_RIGHT_SQUARE}*"]"({CHAR_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
+<DOCUMENT_11>({CHAR11_NO_AMPERSAND_LESS_RIGHT_SQUARE}+("]"{CHAR11_NO_AMPERSAND_LESS_RIGHT_SQUARE}+|"]"{2,}{CHAR11_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE}+)*"]"*("]]>"|"<"|"&")?)|(("]"{CHAR11_NO_AMPERSAND_LESS_RIGHT_SQUARE}+|"]"{2,}{CHAR11_NO_AMPERSAND_LESS_GREATER_RIGHT_SQUARE}+)+"]"*("]]>"|"<"|"&")?)|("]"+("]]>"|"<"|"&")?)|("]]>") {
+   --  Segment of character data, rule [14].
+
+   return Actions.On_Character_Data (Self);
+}
+
+<DOCUMENT_10>"<![CDATA["{CHAR10_NO_RIGHT_SQUARE}*"]"({CHAR10_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR10_NO_GREATER_RIGHT_SQUARE}{CHAR10_NO_RIGHT_SQUARE}*"]"({CHAR10_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
    --  Segment of CDATA, rules [18], [19], [20], [21].
 
    Set_String_Internal
@@ -268,7 +257,19 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_String_Segment;
 }
 
-<DOCUMENT>"&"{NAME}";" {
+<DOCUMENT_11>"<![CDATA["{CHAR11_NO_RIGHT_SQUARE}*"]"({CHAR11_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR11_NO_GREATER_RIGHT_SQUARE}{CHAR11_NO_RIGHT_SQUARE}*"]"({CHAR11_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
+   --  Segment of CDATA, rules [18], [19], [20], [21].
+
+   Set_String_Internal
+    (Item          => YYLVal,
+     String        => YY_Text_Internal (9, 3),
+     Is_Whitespace => False,
+     Is_CData      => True);
+
+   return Token_String_Segment;
+}
+
+<DOCUMENT_10,DOCUMENT_11>"&"{NAME}";" {
    --  General entity reference rule [68] in document content.
 
    Resolve_Symbol (Self, 1, 1, False, YYLVal);
@@ -323,8 +324,8 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_String_Segment;
 }
 
-<XML_DECL,PI,PI_DATA>"?>" {
-   Enter_Start_Condition (Self, DOCUMENT);
+<XML_DECL,PI,PI_DATA_10,PI_DATA_11>"?>" {
+   Enter_Start_Condition (Self, DOCUMENT_10);
 
    Set_String_Internal
     (Item          => YYLVal,
@@ -339,11 +340,10 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    --  Ignore all whitespaces is followed by processing insturction's name,
    --  rule [16].
 
-   Enter_Start_Condition (Self, PI_DATA);
-   Set_Whitespace_Matched (Self);
+   Actions.On_Whitespace_In_Processing_Instruction (Self);
 }
 
-<PI_DATA>{CHAR_NO_QUESTION}*"?"+({CHAR_NO_GREATER_QUESTION}{CHAR_NO_QUESTION}*"?"+)*">" {
+<PI_DATA_10>{CHAR10_NO_QUESTION}*"?"+({CHAR10_NO_GREATER_QUESTION}{CHAR10_NO_QUESTION}*"?"+)*">" {
    --  Segment of data and close delimiter of the processing instruction, rule
    --  [16].
 
@@ -357,7 +357,26 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
      String        => YY_Text_Internal (0, 2),
      Is_Whitespace => False,
      Is_CData      => False);
-   Enter_Start_Condition (Self, DOCUMENT);
+   Enter_Start_Condition (Self, DOCUMENT_10);
+
+   return Token_PI_Close;
+}
+
+<PI_DATA_11>{CHAR11_NO_QUESTION}*"?"+({CHAR11_NO_GREATER_QUESTION}{CHAR11_NO_QUESTION}*"?"+)*">" {
+   --  Segment of data and close delimiter of the processing instruction, rule
+   --  [16].
+
+   if not Get_Whitespace_Matched (Self) then
+      raise Program_Error with "no whitespace before processing instruction data";
+      --  XXX This is recoverable error.
+   end if;
+
+   Set_String_Internal
+    (Item          => YYLVal,
+     String        => YY_Text_Internal (0, 2),
+     Is_Whitespace => False,
+     Is_CData      => False);
+   Enter_Start_Condition (Self, DOCUMENT_11);
 
    return Token_PI_Close;
 }
@@ -365,7 +384,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <DOCTYPE_EXTINT,DOCTYPE_INT>">" {
    --  Close tag of document type declaration, rule [28].
 
-   Enter_Start_Condition (Self, DOCUMENT);
+   Enter_Start_Condition (Self, DOCUMENT_10);
 
    return Token_Close;
 }
@@ -431,12 +450,10 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <DOCTYPE_EXTINT,DOCTYPE_INT>"[" {
    --  Open of internal subset declaration, rule [28].
 
-   Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
-
-   return Token_Internal_Subset_Open;
+   return Actions.On_Open_Of_Internal_Subset (Self);
 }
 
-<DOCTYPE_INTSUBSET>"]" {
+<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"]" {
    --  Close of internal subset declaration, rule [28].
 
    Enter_Start_Condition (Self, DOCTYPE_INT);
@@ -444,7 +461,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_Internal_Subset_Close;
 }
 
-<DOCUMENT,DOCTYPE_INTSUBSET>"<!--"({CHAR_NO_HYPHEN}|-{CHAR_NO_HYPHEN})*"-->" {
+<DOCUMENT_10,DOCTYPE_INTSUBSET_10>"<!--"({CHAR10_NO_HYPHEN}|-{CHAR10_NO_HYPHEN})*"-->" {
    --  Text of comment, rule [15].
 
    Set_String_Internal
@@ -456,7 +473,19 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_Comment;
 }
 
-<DOCTYPE_INTSUBSET>"<!ENTITY" {
+<DOCUMENT_11,DOCTYPE_INTSUBSET_11>"<!--"({CHAR11_NO_HYPHEN}|-{CHAR11_NO_HYPHEN})*"-->" {
+   --  Text of comment, rule [15].
+
+   Set_String_Internal
+    (Item          => YYLVal,
+     String        => YY_Text_Internal (4, 3),
+     Is_Whitespace => False,
+     Is_CData      => False);
+
+   return Token_Comment;
+}
+
+<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!ENTITY" {
    --  Open of entity declaration, rules [71], [72].
 
    Enter_Start_Condition (Self, ENTITY_DECL);
@@ -465,7 +494,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_Entity_Decl_Open;
 }
 
-<DOCTYPE_INTSUBSET>"<!ELEMENT"{WHITE_SPACE}{NAME} {
+<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!ELEMENT"{WHITE_SPACE}{NAME} {
    --  Open of element declaration and name of the element, rule [45].
 
    Enter_Start_Condition (Self, ELEMENT_DECL);
@@ -474,7 +503,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_Element_Decl_Open;
 }
 
-<DOCTYPE_INTSUBSET>"<!ATTLIST"{WHITE_SPACE}{NAME} {
+<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!ATTLIST"{WHITE_SPACE}{NAME} {
    --  Open of attribute list declaration, rule [52].
 
    Enter_Start_Condition (Self, ATTLIST_DECL);
@@ -511,14 +540,6 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    Reset_Whitespace_Matched (Self);
 
    return Token_Percent;
-}
-
-<ENTITY_DEF>">" {
-   --  Close token of entity declaration, rules [71], [72].
-
-   Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
-
-   return Token_Close;
 }
 
 <ENTITY_DEF>["'] {
@@ -569,7 +590,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_Name;
 }
 
-<ENTITY_VALUE>{CHAR_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE}+ {
+<ENTITY_VALUE_10>{CHAR10_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE}+ {
    Set_String_Internal
     (Item          => YYLVal,
      String        => YY_Text_Internal,
@@ -579,27 +600,37 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_String_Segment;
 }
 
-<ENTITY_VALUE>["'] {
+<ENTITY_VALUE_11>{CHAR11_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE}+ {
+   Set_String_Internal
+    (Item          => YYLVal,
+     String        => YY_Text_Internal,
+     Is_Whitespace => False,
+     Is_CData      => False);
+
+   return Token_String_Segment;
+}
+
+<ENTITY_VALUE_10,ENTITY_VALUE_11>["'] {
    --  Close of entity value, rule [9].
 
    return Process_Entity_Value_Close_Delimiter (Self, YY_Text);
 }
 
-<DOCUMENT,ENTITY_VALUE,ATTRIBUTE_VALUE>"&#"[0-9]+";" {
+<DOCUMENT_10,DOCUMENT_11,ENTITY_VALUE_10,ENTITY_VALUE_11,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>"&#"[0-9]+";" {
    --  Decimal form of character reference rule [66] in entity value rule [9];
    --  attribute value, rule [10] or content of element, rule [43].
 
    return Process_Character_Reference (Self, Decimal);
 }
 
-<DOCUMENT,ENTITY_VALUE,ATTRIBUTE_VALUE>"&#x"[0-9a-fA-F]+";" {
+<DOCUMENT_10,DOCUMENT_11,ENTITY_VALUE_10,ENTITY_VALUE_11,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>"&#x"[0-9a-fA-F]+";" {
    --  Hexadecimal form of character reference rule [66] in entity value rule
    --  [9]; attribute value, rule [10] or content of element, rule [43].
 
    return Process_Character_Reference (Self, Hexadecimal);
 }
 
-<ENTITY_VALUE>"&"{NAME}";" {
+<ENTITY_VALUE_10,ENTITY_VALUE_11>"&"{NAME}";" {
    --  General entity reference rule [68] in entity value rule [9].
 
    Set_String_Internal
@@ -611,7 +642,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_String_Segment;
 }
 
-<ENTITY_VALUE>"%"{NAME}";" {
+<ENTITY_VALUE_10,ENTITY_VALUE_11>"%"{NAME}";" {
    --  Parameter entity reference rule [69] in entity value rule [9].
    --
    --  Processing of parameter entity uses separate scanner's state, thus
@@ -694,14 +725,14 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_Name;
 }
 
-<ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE>">" {
+<ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE,ENTITY_DEF>">" {
+   --  Close token of entity declaration, rules [71], [72].
    --  Close of element declaration, rule [45].
    --  Close of attribute list declaration, rule [52].
 
-   Enter_Start_Condition (Self, DOCTYPE_INTSUBSET);
-
-   return Token_Close;
+   return Actions.On_Close_Of_Declaration (Self);
 }
+
 
 <ATTLIST_DECL>{NAME} {
    --  Name of the attribute, rule [53].
@@ -833,7 +864,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Process_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
 }
 
-<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET,ENTITY_NDATA,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE>{WHITE_SPACE} {
+<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,ENTITY_NDATA,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE>{WHITE_SPACE} {
    --  All white spaces from rules [28] are ignored.
    --  Whitespace before name in rule [76] is ignored.
 
@@ -878,7 +909,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ELEMENT_START>"/>" {
    --  Close of empty element tag, rule [44].
 
-   Enter_Start_Condition (Self, DOCUMENT);
+   Enter_Start_Condition (Self, DOCUMENT_10);
 
    return Token_Empty_Close;
 }
@@ -886,7 +917,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ELEMENT_START>">" {
    --  Close of tag, rule [40].
 
-   Enter_Start_Condition (Self, DOCUMENT);
+   Enter_Start_Condition (Self, DOCUMENT_10);
 
    return Token_Close;
 }
@@ -897,13 +928,13 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Process_Attribute_Value_Open_Delimiter (Self, ELEMENT_START);
 }
 
-<ATTRIBUTE_VALUE>['"] {
+<ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>['"] {
    --  Close delimiter of attribute value, rule [10].
 
    return Process_Attribute_Value_Close_Delimiter (Self);
 }
 
-<ATTRIBUTE_VALUE>{CHAR_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS}+ {
+<ATTRIBUTE_VALUE_10>{CHAR10_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS}+ {
    --  Value of attribute, rule [10].
 
    Set_String_Internal
@@ -915,13 +946,25 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_String_Segment;
 }
 
-<ATTRIBUTE_VALUE>"<" {
+<ATTRIBUTE_VALUE_11>{CHAR11_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS}+ {
+   --  Value of attribute, rule [10].
+
+   Set_String_Internal
+    (Item          => YYLVal,
+     String        => YY_Text_Internal,
+     Is_Whitespace => False,
+     Is_CData      => False);
+
+   return Token_String_Segment;
+}
+
+<ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>"<" {
    --  Less-than sign can't be used in the attribute value.
 
    return Actions.On_Less_Than_Sign_In_Attribute_Value (Self);
 }
 
-<ATTRIBUTE_VALUE>"&"{NAME}";" {
+<ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>"&"{NAME}";" {
    --  General entity reference rule [68] in attribute value, rule [10].
 
    Resolve_Symbol (Self, 1, 1, False, YYLVal);
@@ -940,7 +983,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    raise Program_Error with "Unexpected character in DOCTYPE_INT";
 }
 
-<DOCTYPE_INTSUBSET>. {
+<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>. {
    Put_Line (YY_Text);
    raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 }
@@ -975,7 +1018,7 @@ CHAR_NO_GREATER_QUESTION			[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    raise Program_Error with "Unexpected character in system literal";
 }
 
-<DOCUMENT,ELEMENT_START,PI,PI_DATA,ATTRIBUTE_VALUE>.|\n {
+<DOCUMENT_10,DOCUMENT_11,ELEMENT_START,PI,PI_DATA_10,PI_DATA_11,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>.|\n {
    --  Unexpected character.
 
    return Actions.On_Unexpected_Character (Self);
@@ -1085,6 +1128,8 @@ with Matreshka.Internals.Strings;
 
       procedure On_No_XML_Declaration (Self : access Integer);
 
+      procedure On_Whitespace_In_Processing_Instruction (Self : access Integer);
+
       function On_Unexpected_Character (Self : access Integer) return Token;
 
       function On_Less_Than_Sign_In_Attribute_Value
@@ -1094,6 +1139,10 @@ with Matreshka.Internals.Strings;
 
       function On_Whitespace_In_Document
        (Self : access Integer) return Boolean;
+
+      function On_Open_Of_Internal_Subset (Self : access Integer) return Token;
+
+      function On_Close_Of_Declaration (Self : access Integer) return Token;
 
    end Actions;
 

@@ -120,6 +120,24 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
       return Token_String_Segment;
    end On_Character_Data;
 
+   -----------------------------
+   -- On_Close_Of_Declaration --
+   -----------------------------
+
+   function On_Close_Of_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      case Self.Version is
+         when XML_1_0 =>
+            Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_10);
+
+         when XML_1_1 =>
+            Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
+      end case;
+
+      return Token_Close;
+   end On_Close_Of_Declaration;
+
    ------------------------------------------
    -- On_Less_Than_Sign_In_Attribute_Value --
    ------------------------------------------
@@ -154,8 +172,33 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
       --  parser entity and switch to XML 1.0 mode.
 
       YY_Move_Backward (Self);
-      Enter_Start_Condition (Self, Tables.DOCUMENT);
+
+      case Self.Version is
+         when XML_1_0 =>
+            Enter_Start_Condition (Self, Tables.DOCUMENT_10);
+
+         when XML_1_1 =>
+            Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+      end case;
    end On_No_XML_Declaration;
+
+   --------------------------------
+   -- On_Open_Of_Internal_Subset --
+   --------------------------------
+
+   function On_Open_Of_Internal_Subset
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      case Self.Version is
+         when XML_1_0 =>
+            Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_10);
+
+         when XML_1_1 =>
+            Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
+      end case;
+
+      return Token_Internal_Subset_Open;
+   end On_Open_Of_Internal_Subset;
 
    -----------------------------
    -- On_Unexpected_Character --
@@ -205,5 +248,26 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
          return True;
       end if;
    end On_Whitespace_In_Document;
+
+   ---------------------------------------------
+   -- On_Whitespace_In_Processing_Instruction --
+   ---------------------------------------------
+
+   procedure On_Whitespace_In_Processing_Instruction
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      --  Whitespace between processing instruction's target and data are
+      --  required, so set flag which indicates their presence.
+
+      Self.Whitespace_Matched := True;
+
+      case Self.Version is
+         when XML_1_0 =>
+            Enter_Start_Condition (Self, Tables.PI_DATA_10);
+
+         when XML_1_1 =>
+            Enter_Start_Condition (Self, Tables.PI_DATA_11);
+      end case;
+   end On_Whitespace_In_Processing_Instruction;
 
 end Matreshka.SAX.Simple_Readers.Scanner.Actions;
