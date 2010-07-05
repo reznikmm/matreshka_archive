@@ -276,7 +276,7 @@ package body Matreshka.SAX.Simple_Readers.Handler_Callbacks is
 
    procedure Call_Processing_Instruction
     (Self   : not null access SAX_Simple_Reader'Class;
-     Target : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : League.Strings.Universal_String) is
    begin
       Matreshka.SAX.Locators.Internals.Set_Location

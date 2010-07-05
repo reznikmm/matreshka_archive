@@ -185,7 +185,7 @@ private
 
    type YYSType is limited record
       String        : Matreshka.Internals.Strings.Shared_String_Access;
-      Symbol        : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+      Symbol        : Matreshka.Internals.XML.Symbol_Identifier;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
    end record;
@@ -206,7 +206,7 @@ private
 
    procedure Set_Symbol
     (Item    : in out YYSType;
-      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
+      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    pragma Inline (Set_Symbol);
 
    procedure Move
@@ -273,8 +273,8 @@ private
    package Symbol_Identifier_Vectors is
      new Ada.Containers.Vectors
           (Positive,
-           Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier,
-           Matreshka.Internals.XML.Symbol_Tables."=");
+           Matreshka.Internals.XML.Symbol_Identifier,
+           Matreshka.Internals.XML."=");
 
    ------------------
    -- Parser state --
@@ -310,8 +310,8 @@ private
 
    type Attribute_Record is record
       Namespace_URI  : League.Strings.Universal_String;
-      Local_Name     : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
-      Qualified_Name : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+      Local_Name     : Matreshka.Internals.XML.Symbol_Identifier;
+      Qualified_Name : Matreshka.Internals.XML.Symbol_Identifier;
       Value          : League.Strings.Universal_String;
    end record;
 
@@ -402,9 +402,8 @@ private
 
       Validation         : Validation_Options;
       --  Validation options
-      Root_Symbol        :
-        Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier
-          := Matreshka.Internals.XML.Symbol_Tables.No_Symbol;
+      Root_Symbol        : Matreshka.Internals.XML.Symbol_Identifier
+        := Matreshka.Internals.XML.No_Symbol;
       --  Expected name of the root element.
    end record;
 

@@ -61,7 +61,7 @@
 {
    type YYSType is record
       String        : Matreshka.Internals.Strings.Shared_String_Access;
-      Symbol        : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+      Symbol        : Matreshka.Internals.XML.Symbol_Identifier;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean;
    end record;
@@ -311,7 +311,7 @@ EntityDecl:
      Symbol      => $2.Symbol,
      Is_External => False,
      Value       => League.Strings.Internals.Create ($3.String),
-     Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
+     Notation    => Matreshka.Internals.XML.No_Symbol);
 }
   | Token_Entity_Decl_Open Token_Name ExternalID Token_Close
 {
@@ -320,7 +320,7 @@ EntityDecl:
      Symbol      => $2.Symbol,
      Is_External => True,
      Value       => League.Strings.Empty_String,
-     Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
+     Notation    => Matreshka.Internals.XML.No_Symbol);
 }
   | Token_Entity_Decl_Open Token_Name ExternalID Token_NData Token_Name Token_Close
 {
@@ -772,38 +772,38 @@ with Matreshka.Internals.XML.Symbol_Tables;
 
    procedure Process_Document_Type_Declaration
     (Self        : access Integer;
-     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean) is separate;
 
    procedure Process_General_Entity_Declaration
     (Self        : access Integer;
-     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
-     Notation    : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+     Notation    : Matreshka.Internals.XML.Symbol_Identifier)
        is separate;
 
    procedure Process_Parameter_Entity_Declaration
     (Self        : access Integer;
-     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String) is separate;
 
    procedure Process_Empty_Element_Tag
     (Self   : access Integer;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
        is separate;
 
    procedure Process_Attribute_In_Set (Self : access Integer) is separate;
 
    procedure Process_Attribute
      (Self   : access Integer;
-      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+      Symbol : Matreshka.Internals.XML.Symbol_Identifier;
       Value  : League.Strings.Universal_String) is separate;
 
    procedure Process_Processing_Instruction
      (Self   : access Integer;
-      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+      Symbol : Matreshka.Internals.XML.Symbol_Identifier;
       Data   : League.Strings.Universal_String) is separate;
 
    procedure Process_External_Id
@@ -835,11 +835,11 @@ with Matreshka.Internals.XML.Symbol_Tables;
 
       procedure On_End_Tag
        (Self   : access Integer;
-        Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
 
       procedure On_Start_Tag
        (Self   : access Integer;
-        Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
 
    end Actions;
 

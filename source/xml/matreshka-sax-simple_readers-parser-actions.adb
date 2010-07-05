@@ -47,7 +47,7 @@ with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 
 package body Matreshka.SAX.Simple_Readers.Parser.Actions is
 
-   use Matreshka.Internals.XML.Symbol_Tables;
+   use Matreshka.Internals.XML;
 
    Full_Stop  : constant := 16#002E#;
    Digit_Zero : constant := 16#0030#;
@@ -76,7 +76,7 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
 
    procedure On_End_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       --  [3 WFC: Element Type Match]
       --
@@ -103,7 +103,7 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
 
    procedure On_Start_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       if Self.Element_Names.Is_Empty then
          --  Root element.

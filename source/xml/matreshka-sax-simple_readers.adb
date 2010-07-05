@@ -324,7 +324,7 @@ package body Matreshka.SAX.Simple_Readers is
       Item.String        := League.Strings.Internals.Get_Shared (String);
       Item.Is_Whitespace := Is_Whitespace;
       Item.Is_CData      := Is_CData;
-      Item.Symbol        := Matreshka.Internals.XML.Symbol_Tables.No_Symbol;
+      Item.Symbol        := Matreshka.Internals.XML.No_Symbol;
       Matreshka.Internals.Strings.Reference (Item.String);
    end Set_String;
 
@@ -344,7 +344,7 @@ package body Matreshka.SAX.Simple_Readers is
       Item.String        := String;
       Item.Is_Whitespace := Is_Whitespace;
       Item.Is_CData      := Is_CData;
-      Item.Symbol        := Matreshka.Internals.XML.Symbol_Tables.No_Symbol;
+      Item.Symbol        := Matreshka.Internals.XML.No_Symbol;
    end Set_String_Internal;
 
    ----------------
@@ -352,8 +352,8 @@ package body Matreshka.SAX.Simple_Readers is
    ----------------
 
    procedure Set_Symbol
-    (Item    : in out YYSType;
-      Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+    (Item   : in out YYSType;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
    is
       pragma Assert (Item.String = null);
 
@@ -380,7 +380,7 @@ package body Matreshka.SAX.Simple_Readers is
       From.String        := null;
       From.Is_Whitespace := False;
       From.Is_CData      := False;
-      From.Symbol        := Matreshka.Internals.XML.Symbol_Tables.No_Symbol;
+      From.Symbol        := Matreshka.Internals.XML.No_Symbol;
    end Move;
 
    -----------
@@ -396,7 +396,7 @@ package body Matreshka.SAX.Simple_Readers is
 
       Item.Is_Whitespace := False;
       Item.Is_CData      := False;
-      Item.Symbol        := Matreshka.Internals.XML.Symbol_Tables.No_Symbol;
+      Item.Symbol        := Matreshka.Internals.XML.No_Symbol;
    end Clear;
 
 end Matreshka.SAX.Simple_Readers;

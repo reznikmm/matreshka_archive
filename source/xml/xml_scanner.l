@@ -1031,12 +1031,12 @@ with Matreshka.Internals.Strings;
 
    procedure Process_General_Entity_Reference_In_Attribute_Value
     (Self   : access Integer;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
        is separate;
 
    procedure Process_General_Entity_Reference_In_Document_Content
     (Self   : access Integer;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
        is separate;
 
    procedure Process_Parameter_Entity_Reference_In_Entity_Value

@@ -53,9 +53,6 @@ package Matreshka.Internals.XML.Symbol_Tables is
 
    pragma Preelaborate;
 
-   type Symbol_Identifier is private;
-   No_Symbol : constant Symbol_Identifier;
-
    type Symbol_Table is limited private;
 
    procedure Insert
@@ -99,9 +96,6 @@ package Matreshka.Internals.XML.Symbol_Tables is
    --  Finalize internal structures.
 
 private
-
-   type Symbol_Identifier is mod 2 ** 32;
-   No_Symbol : constant Symbol_Identifier := 0;
 
    type Symbol_Record is record
       String              : Matreshka.Internals.Strings.Shared_String_Access;

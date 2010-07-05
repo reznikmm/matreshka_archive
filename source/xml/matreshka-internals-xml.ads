@@ -46,4 +46,12 @@ package Matreshka.Internals.XML is
 
    pragma Pure;
 
+   type Symbol_Identifier is private;
+   No_Symbol : constant Symbol_Identifier;
+
+private
+
+   type Symbol_Identifier is mod 2 ** 32;
+   No_Symbol : constant Symbol_Identifier := 0;
+
 end Matreshka.Internals.XML;

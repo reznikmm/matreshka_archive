@@ -112,7 +112,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    procedure Process_General_Entity_Reference_In_Attribute_Value
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Process gewneral entity reference in attribute value, rule [68] in rule
    --  [10].
 
@@ -449,7 +449,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    procedure Process_General_Entity_Reference_In_Document_Content
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       if not Is_General_Entity (Self.Symbols, Symbol) then
          raise Program_Error with "general entity is not declared";
@@ -467,7 +467,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    procedure Process_General_Entity_Reference_In_Attribute_Value
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       if not Is_General_Entity (Self.Symbols, Symbol) then
          raise Program_Error with "general entity is not declared";

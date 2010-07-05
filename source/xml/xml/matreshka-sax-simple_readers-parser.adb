@@ -52,6 +52,7 @@ with Matreshka.SAX.Simple_Readers.Scanner;
 
 package body Matreshka.SAX.Simple_Readers.Parser is
 
+   use Matreshka.Internals.XML;
    use Matreshka.Internals.XML.Symbol_Tables;
    use Matreshka.Internals.XML.Symbol_Tables.Entities;
    use Matreshka.SAX.Simple_Readers.Parser.Tables;
@@ -69,40 +70,40 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Document_Type_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
-     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean);
    --  Process document type declaration rule [28] and prepare to analyze its
    --  external subset if any.
 
    procedure Process_General_Entity_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
-     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
-     Notation    : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
+     Notation    : Matreshka.Internals.XML.Symbol_Identifier);
    --  Process general entity declaration, rule [71].
 
    procedure Process_Parameter_Entity_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
-     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String);
    --  Process parameter entity declaration, rule [72].
 
    procedure Process_Empty_Element_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier);
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Process start tag, rule [44].
 
    procedure Process_Attribute
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier;
      Value  : League.Strings.Universal_String);
    --  Process attribute.
 
    procedure Process_Processing_Instruction
     (Self   : not null access SAX_Simple_Reader'Class;
-     Target : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : League.Strings.Universal_String);
    --  Process processing instruction.
 
@@ -135,7 +136,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Attribute
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier;
      Value  : League.Strings.Universal_String) is
    begin
       Self.Attribute :=
@@ -181,7 +182,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Document_Type_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
-     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean) is
    begin
       Self.Root_Symbol := Symbol;
@@ -203,7 +204,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Empty_Element_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier) is
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Actions.On_Start_Tag (Self, Symbol);
       Actions.On_End_Tag (Self, Symbol);
@@ -228,10 +229,10 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_General_Entity_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
-     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
-     Notation    : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier)
+     Notation    : Matreshka.Internals.XML.Symbol_Identifier)
    is
       Name : constant League.Strings.Universal_String
         := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
@@ -298,7 +299,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Parameter_Entity_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
-     Symbol      : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String)
    is
@@ -352,7 +353,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
    procedure Process_Processing_Instruction
     (Self   : not null access SAX_Simple_Reader'Class;
-     Target : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : League.Strings.Universal_String) is
    begin
       Handler_Callbacks.Call_Processing_Instruction (Self, Target, Data);
@@ -713,7 +714,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Symbol      => yy.value_stack (yy.tos-2).Symbol,
                  Is_External => False,
                  Value       => League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String),
-                 Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
+                 Notation    => Matreshka.Internals.XML.No_Symbol);
 
             when 39 =>
                Process_General_Entity_Declaration
@@ -721,7 +722,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Symbol      => yy.value_stack (yy.tos-2).Symbol,
                  Is_External => True,
                  Value       => League.Strings.Empty_String,
-                 Notation    => Matreshka.Internals.XML.Symbol_Tables.No_Symbol);
+                 Notation    => Matreshka.Internals.XML.No_Symbol);
 
             when 40 =>
                Process_General_Entity_Declaration

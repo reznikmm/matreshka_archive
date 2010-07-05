@@ -98,7 +98,7 @@ private package Matreshka.SAX.Simple_Readers.Handler_Callbacks is
 
    procedure Call_Processing_Instruction
     (Self   : not null access SAX_Simple_Reader'Class;
-     Target : Matreshka.Internals.XML.Symbol_Tables.Symbol_Identifier;
+     Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : League.Strings.Universal_String);
    --  Calls handler's SAX_Content_Handler.Processing_Instruction subprogram.
 
