@@ -137,23 +137,8 @@ package body Matreshka.SAX.Simple_Readers is
       Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
       Matreshka.Internals.Strings.Dereference (Self.Character_Data);
       Matreshka.Internals.XML.Symbol_Tables.Finalize (Self.Symbols);
+      Matreshka.Internals.XML.Entity_Tables.Finalize (Self.Entities);
    end Finalize;
-
-   ----------
-   -- Hash --
-   ----------
-
-   function Hash
-    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type
-   is
-      pragma Assert
-       (Ada.Containers.Hash_Type'Modulus = League.Strings.Hash_Type'Modulus);
-      --  This implementation assume both types are modular and have same
-      --  modulus.
-
-   begin
-      return Ada.Containers.Hash_Type (Item.Hash);
-   end Hash;
 
    ----------------
    -- Initialize --
@@ -161,6 +146,7 @@ package body Matreshka.SAX.Simple_Readers is
 
    overriding procedure Initialize (Self : in out SAX_Simple_Reader) is
    begin
+      Matreshka.Internals.XML.Entity_Tables.Initialize (Self.Entities);
       Matreshka.Internals.XML.Symbol_Tables.Initialize (Self.Symbols);
       Matreshka.SAX.Simple_Readers.Parser.Initialize (Self.Parser_State);
 

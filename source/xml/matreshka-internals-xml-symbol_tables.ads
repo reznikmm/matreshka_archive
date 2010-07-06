@@ -82,12 +82,39 @@ package Matreshka.Internals.XML.Symbol_Tables is
     (Self       : Symbol_Table;
      Identifier : Symbol_Identifier)
        return not null Matreshka.Internals.Strings.Shared_String_Access;
+   pragma Inline (Name);
    --  Returns name of the identifier. Reference counter is not incremented.
 
    function Name
     (Self       : Symbol_Table;
      Identifier : Symbol_Identifier) return League.Strings.Universal_String;
    --  Returns name of the identifier.
+
+   function Parameter_Entity
+    (Self       : Symbol_Table;
+     Identifier : Symbol_Identifier) return Entity_Identifier;
+   pragma Inline (Parameter_Entity);
+   --  Returns parameter entity associated with the name.
+
+   procedure Set_Parameter_Entity
+    (Self       : in out Symbol_Table;
+     Identifier : Symbol_Identifier;
+     Entity     : Entity_Identifier);
+   pragma Inline (Set_Parameter_Entity);
+   --  Associates parameter entity with the name.
+
+   function General_Entity
+    (Self       : Symbol_Table;
+     Identifier : Symbol_Identifier) return Entity_Identifier;
+   pragma Inline (General_Entity);
+   --  Returns general entity associated with the name.
+
+   procedure Set_General_Entity
+    (Self       : in out Symbol_Table;
+     Identifier : Symbol_Identifier;
+     Entity     : Entity_Identifier);
+   pragma Inline (Set_General_Entity);
+   --  Associates general entity with the name.
 
    procedure Initialize (Self : in out Symbol_Table);
    --  Initialize internal structures and register predefined general entities.
@@ -101,12 +128,10 @@ private
       String              : Matreshka.Internals.Strings.Shared_String_Access;
       --  Name of the symbol.
 
-      Is_Parameter_Entity : Boolean := False;
-      Is_General_Entity   : Boolean := False;
-      Is_Unparsed_Entity  : Boolean := False;
-      Is_External_Entity  : Boolean := False;
-      PE_Replacement_Text : Matreshka.Internals.Strings.Shared_String_Access;
-      GE_Replacement_Text : Matreshka.Internals.Strings.Shared_String_Access;
+--      Element             : Element_Identifier;
+--      Notation            : Notation_Identifier;
+      Parameter_Entity    : Entity_Identifier;
+      General_Entity      : Entity_Identifier;
    end record;
 
    type Symbol_Record_Array is

@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 private with Ada.Containers.Vectors;
-private with Ada.Containers.Hashed_Maps;
 private with Ada.Exceptions;
 private with Ada.Finalization;
 private with Interfaces;
@@ -52,6 +51,7 @@ with Matreshka.SAX.Readers;
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
+private with Matreshka.Internals.XML.Entity_Tables;
 private with Matreshka.Internals.XML.Symbol_Tables;
 private with Matreshka.SAX.Attributes;
 private with Matreshka.SAX.Default_Handlers;
@@ -123,10 +123,6 @@ package Matreshka.SAX.Simple_Readers is
      Handler : Matreshka.SAX.Readers.SAX_Lexical_Handler_Access);
 
 private
-
-   use type League.Strings.Universal_String;
-   --  It is needed to be able to use equality operator for type in generic
-   --  instantiation.
 
    type Token is
     (End_Of_Input,
@@ -216,31 +212,6 @@ private
 
    procedure Clear (Item : in out YYSType);
    pragma Inline (Clear);
-
-   function Hash
-    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
-
-   type Entity_Kinds is
-    (Internal_Parameter,
-     External_Parameter,
-     Internal_General,
-     External_Parsed_General,
-     Unparsed);
-
-   type Entity_Information is record
-      Name           : League.Strings.Universal_String;
-      Kind           : Entity_Kinds;
-      Value          : League.Strings.Universal_String;
-      Start_Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
-      Start_Index    : Positive := 1;
-   end record;
-
-   package Entity_Information_Maps is
-     new Ada.Containers.Hashed_Maps
-          (League.Strings.Universal_String,
-           Entity_Information,
-           Hash,
-           "=");
 
    -------------------
    -- Scanner state --
@@ -376,7 +347,7 @@ private
       --  following name.
       In_DTD             : Boolean;
 
-      Parameter_Entities : Entity_Information_Maps.Map;
+      Entities           : Matreshka.Internals.XML.Entity_Tables.Entity_Table;
       External_Subset    : League.Strings.Universal_String;
       --  Contents of the external subset if any. This member used only to
       --  prevent deallocation of shared string before document parsing is

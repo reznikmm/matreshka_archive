@@ -41,73 +41,95 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings;
 
-package Matreshka.Internals.XML.Symbol_Tables.Entities is
+package Matreshka.Internals.XML.Entity_Tables is
 
    pragma Preelaborate;
 
-   function Is_Parameter_Entity
-    (Self   : Symbol_Table;
-     Symbol : Symbol_Identifier) return Boolean;
-   pragma Inline (Is_Parameter_Entity);
+   type Entity_Table is limited private;
 
-   procedure Set_Is_Parameter_Entity
-    (Self   : in out Symbol_Table;
-     Symbol : Symbol_Identifier;
-     To     : Boolean);
-   pragma Inline (Set_Is_Parameter_Entity);
+   procedure New_Internal_Parameter_Entity
+    (Self             : in out Entity_Table;
+     Replacement_Text :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Entity           : out Entity_Identifier);
+   --  Allocates space for the entity and returns identifier of the allocated
+   --  entity.
 
-   function Is_General_Entity
-    (Self   : Symbol_Table;
-     Symbol : Symbol_Identifier) return Boolean;
-   pragma Inline (Is_General_Entity);
+   procedure New_External_Parameter_Entity
+    (Self   : in out Entity_Table;
+     Entity : out Entity_Identifier);
+   --  Allocates space for the entity and returns identifier of the allocated
+   --  entity.
 
-   procedure Set_Is_General_Entity
-    (Self   : in out Symbol_Table;
-     Symbol : Symbol_Identifier;
-     To     : Boolean);
-   pragma Inline (Set_Is_General_Entity);
+   procedure New_Internal_General_Entity
+    (Self             : in out Entity_Table;
+     Replacement_Text :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Entity           : out Entity_Identifier);
+   --  Allocates space for the entity and returns identifier of the allocated
+   --  entity.
 
-   function Is_Unparsed_Entity
-    (Self   : Symbol_Table;
-     Symbol : Symbol_Identifier) return Boolean;
-   pragma Inline (Is_Unparsed_Entity);
+   procedure New_External_Parsed_General_Entity
+    (Self   : in out Entity_Table;
+     Entity : out Entity_Identifier);
+   --  Allocates space for the entity and returns identifier of the allocated
+   --  entity.
 
-   procedure Set_Is_Unparsed_Entity
-    (Self   : in out Symbol_Table;
-     Symbol : Symbol_Identifier;
-     To     : Boolean);
-   pragma Inline (Set_Is_Unparsed_Entity);
+   procedure New_External_Unparsed_General_Entity
+    (Self     : in out Entity_Table;
+     Notation : Symbol_Identifier;
+     Entity   : out Entity_Identifier);
+   --  Allocates space for the entity and returns identifier of the allocated
+   --  entity.
 
-   function General_Entity_Replacement_Text
-    (Self   : Symbol_Table;
-     Symbol : Symbol_Identifier)
+   function Is_External_Unparsed_General_Entity
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier) return Boolean;
+   --  Returns True when entity is external unparsed general entity.
+
+   function Replacement_Text
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
        return Matreshka.Internals.Strings.Shared_String_Access;
-   pragma Inline (General_Entity_Replacement_Text);
+   --  Returns entity's replacement text.
 
-   procedure Set_General_Entity_Replacement_Text
-    (Self   : in out Symbol_Table;
-     Symbol : Symbol_Identifier;
-     Text   : Matreshka.Internals.Strings.Shared_String_Access);
-   pragma Inline (Set_General_Entity_Replacement_Text);
+   procedure Set_Replacement_Text
+    (Self             : in out Entity_Table;
+     Entity           : Entity_Identifier;
+     Replacement_Text :
+       not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Sets replacement text for the entity.
 
-   function Parameter_Entity_Replacement_Text
-    (Self   : Symbol_Table;
-     Symbol : Symbol_Identifier)
-       return Matreshka.Internals.Strings.Shared_String_Access;
-   pragma Inline (Parameter_Entity_Replacement_Text);
+   procedure Initialize (Self : in out Entity_Table);
+   --  Initializes entity table.
 
-   procedure Set_Parameter_Entity_Replacement_Text
-    (Self   : in out Symbol_Table;
-     Symbol : Symbol_Identifier;
-     Text   : Matreshka.Internals.Strings.Shared_String_Access);
-   pragma Inline (Set_Parameter_Entity_Replacement_Text);
+   procedure Finalize (Self : in out Entity_Table);
+   --  Finalizes entity table.
 
---   function Has_Replacement_Text (Self : Symbol_Table) return Boolean;
---
---   function Replacement_Text
---    (Self : Symbol_Table)
---       return Matreshka.Internals.Strings.Shared_String_Access;
---
---   procedure Set_Replacement_Text
-end Matreshka.Internals.XML.Symbol_Tables.Entities;
+private
+
+   type Entity_Kinds is
+    (Internal_Parameter_Entity,
+     External_Parameter_Entity,
+     Internal_General_Entity,
+     External_Parsed_General_Entity,
+     External_Unparsed_General_Entity);
+
+   type Entity_Record is record
+      Kind             : Entity_Kinds;
+      Notation         : Symbol_Identifier;
+      Replacement_Text : Matreshka.Internals.Strings.Shared_String_Access;
+   end record;
+
+   type Entity_Array is array (Entity_Identifier range <>) of Entity_Record;
+
+   type Entity_Array_Access is access all Entity_Array;
+
+   type Entity_Table is limited record
+      Data : Entity_Array_Access;
+      Last : Entity_Identifier := 0;
+   end record;
+
+end Matreshka.Internals.XML.Entity_Tables;

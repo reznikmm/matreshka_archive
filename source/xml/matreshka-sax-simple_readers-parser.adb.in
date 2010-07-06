@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
-with Matreshka.Internals.XML.Symbol_Tables.Entities;
 with Matreshka.SAX.Attributes.Internals;
 with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 with Matreshka.SAX.Simple_Readers.Parser.Actions;
@@ -53,8 +52,8 @@ with Matreshka.SAX.Simple_Readers.Scanner;
 package body Matreshka.SAX.Simple_Readers.Parser is
 
    use Matreshka.Internals.XML;
+   use Matreshka.Internals.XML.Entity_Tables;
    use Matreshka.Internals.XML.Symbol_Tables;
-   use Matreshka.Internals.XML.Symbol_Tables.Entities;
    use Matreshka.SAX.Simple_Readers.Parser.Tables;
 
    function YY_Goto_State (State : Integer; Sym : Integer) return Integer;
@@ -234,17 +233,16 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Value       : League.Strings.Universal_String;
      Notation    : Matreshka.Internals.XML.Symbol_Identifier)
    is
-      Name : constant League.Strings.Universal_String
+      Name   : constant League.Strings.Universal_String
         := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
+      Entity : Entity_Identifier;
 
    begin
-      if Is_General_Entity (Self.Symbols, Symbol) then
+      if General_Entity (Self.Symbols, Symbol) /= No_Entity then
          raise Program_Error with "general entity already declared";
          --  XXX It is non-fatal error, first declaration must be used and
          --  at user option warning may be issued to application.
       end if;
-
-      Set_Is_General_Entity (Self.Symbols, Symbol, True);
 
       if Is_External then
          if Notation = No_Symbol then
@@ -263,14 +261,18 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                end if;
 
                A := League.Strings.Internals.Get_Shared (V);
+               New_External_Parsed_General_Entity (Self.Entities, Entity);
                Matreshka.Internals.Strings.Reference (A);
-               Set_General_Entity_Replacement_Text (Self.Symbols, Symbol, A);
+               Set_Replacement_Text (Self.Entities, Entity, A);
+               Set_General_Entity (Self.Symbols, Symbol, Entity);
                Handler_Callbacks.Call_External_Entity_Decl
                 (Self, Name, Self.Public_Id, Self.System_Id);
             end;
 
          else
-            Set_Is_Unparsed_Entity (Self.Symbols, Symbol, True);
+            New_External_Unparsed_General_Entity
+             (Self.Entities, Notation, Entity);
+            Set_General_Entity (Self.Symbols, Symbol, Entity);
             Handler_Callbacks.Call_Unparsed_Entity_Decl
              (Self,
               Name,
@@ -287,7 +289,8 @@ package body Matreshka.SAX.Simple_Readers.Parser is
          begin
             A := League.Strings.Internals.Get_Shared (Value);
             Matreshka.Internals.Strings.Reference (A);
-            Set_General_Entity_Replacement_Text (Self.Symbols, Symbol, A);
+            New_Internal_General_Entity (Self.Entities, A, Entity);
+            Set_General_Entity (Self.Symbols, Symbol, Entity);
             Handler_Callbacks.Call_Internal_Entity_Decl (Self, Name, Value);
          end;
       end if;
@@ -303,22 +306,22 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Is_External : Boolean;
      Value       : League.Strings.Universal_String)
    is
-      Name : constant League.Strings.Universal_String
+      Name   : constant League.Strings.Universal_String
         := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
+      Entity : Entity_Identifier;
 
    begin
-      if Is_Parameter_Entity (Self.Symbols, Symbol) then
+      if Parameter_Entity (Self.Symbols, Symbol) /= No_Entity then
          raise Program_Error with "parameter entity already declared";
          --  XXX It is non-fatal error, first declaration must be used and
          --  at user option warning may be issued to application.
       end if;
 
-      Set_Is_Parameter_Entity (Self.Symbols, Symbol, True);
-
       if Is_External then
          declare
             V : League.Strings.Universal_String;
             S : Boolean := True;
+            A : Matreshka.Internals.Strings.Shared_String_Access;
 
          begin
             Self.Entity_Resolver.Resolve_Entity
@@ -329,21 +332,23 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  with "External parameter entity is not resolved";
             end if;
 
-            Self.Parameter_Entities.Insert
-             (Name,
-              (Name   => Name,
-               Kind   => External_Parameter,
-               Value  => V,
-               others => <>));
+            A := League.Strings.Internals.Get_Shared (Value);
+            Matreshka.Internals.Strings.Reference (A);
+            New_External_Parameter_Entity (Self.Entities, Entity);
+            Set_Replacement_Text (Self.Entities, Entity, A);
+            Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
          end;
 
       else
-         Self.Parameter_Entities.Insert
-          (Name,
-           (Name   => Name,
-            Kind   => Internal_Parameter,
-            Value  => Value,
-            others => <>));
+         declare
+            A : Matreshka.Internals.Strings.Shared_String_Access;
+
+         begin
+            A := League.Strings.Internals.Get_Shared (Value);
+            Matreshka.Internals.Strings.Reference (A);
+            New_Internal_Parameter_Entity (Self.Entities, A, Entity);
+            Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
+         end;
       end if;
    end Process_Parameter_Entity_Declaration;
 

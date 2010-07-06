@@ -615,7 +615,8 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    --  parsing of parameter entity replacement text when it is referenced
    --  in any of two form of entity value.
 
-   Process_Parameter_Entity_Reference_In_Entity_Value (Self, YY_Text (1, 1));
+   Resolve_Symbol (Self, 1, 1, False, YYLVal);
+   Process_Parameter_Entity_Reference_In_Entity_Value (Self, YYLVal.Symbol);
 }
 
 <ELEMENT_DECL>EMPTY {
@@ -1041,7 +1042,7 @@ with Matreshka.Internals.Strings;
 
    procedure Process_Parameter_Entity_Reference_In_Entity_Value
     (Self : access Integer;
-     Name : League.Strings.Universal_String) is separate;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is separate;
 
    type Character_Reference_Form is (Decimal, Hexadecimal);
 

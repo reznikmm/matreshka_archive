@@ -44,7 +44,6 @@
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode;
-with Matreshka.Internals.XML.Symbol_Tables.Entities;
 with Matreshka.SAX.Simple_Readers.Scanner.Actions;
 with Matreshka.SAX.Simple_Readers.Scanner.Tables;
 
@@ -53,7 +52,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    use type Interfaces.Unsigned_32;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
-   use Matreshka.Internals.XML.Symbol_Tables.Entities;
+   use Matreshka.Internals.XML;
+   use Matreshka.Internals.XML.Entity_Tables;
+   use Matreshka.Internals.XML.Symbol_Tables;
    use Matreshka.SAX.Simple_Readers.Scanner.Tables;
 
    type Character_Reference_Form is (Decimal, Hexadecimal);
@@ -117,8 +118,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  [10].
 
    procedure Process_Parameter_Entity_Reference_In_Entity_Value
-    (Self : not null access SAX_Simple_Reader'Class;
-     Name : League.Strings.Universal_String);
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Processes parameter entity reference in entiry value (rule [69] in
    --  context of rule [9]).
 
@@ -449,15 +450,21 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    procedure Process_General_Entity_Reference_In_Document_Content
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
+   is
+      Entity : constant Entity_Identifier
+        := General_Entity (Self.Symbols, Symbol);
+
    begin
-      if not Is_General_Entity (Self.Symbols, Symbol) then
+      if Entity = No_Entity then
          raise Program_Error with "general entity is not declared";
+
+      elsif Is_External_Unparsed_General_Entity (Self.Entities, Entity) then
+         raise Program_Error with "external unparsed general entity";
 
       else
          Push_General_Entity_In_Document_Content
-          (Self,
-           General_Entity_Replacement_Text (Self.Symbols, Symbol));
+          (Self, Replacement_Text (Self.Entities, Entity));
       end if;
    end Process_General_Entity_Reference_In_Document_Content;
 
@@ -467,15 +474,21 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    procedure Process_General_Entity_Reference_In_Attribute_Value
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
+   is
+      Entity : constant Entity_Identifier
+        := General_Entity (Self.Symbols, Symbol);
+
    begin
-      if not Is_General_Entity (Self.Symbols, Symbol) then
+      if Entity = No_Entity then
          raise Program_Error with "general entity is not declared";
+
+      elsif Is_External_Unparsed_General_Entity (Self.Entities, Entity) then
+         raise Program_Error with "external unparsed general entity";
 
       else
          Push_General_Entity_In_Attribute_Value
-          (Self,
-           General_Entity_Replacement_Text (Self.Symbols, Symbol));
+          (Self, Replacement_Text (Self.Entities, Entity));
       end if;
    end Process_General_Entity_Reference_In_Attribute_Value;
 
@@ -484,22 +497,19 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --------------------------------------------------------
 
    procedure Process_Parameter_Entity_Reference_In_Entity_Value
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Name  : League.Strings.Universal_String)
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
    is
-      use Entity_Information_Maps;
-
-      Position : constant Entity_Information_Maps.Cursor
-        := Self.Parameter_Entities.Find (Name);
+      Entity : constant Entity_Identifier
+        := Parameter_Entity (Self.Symbols, Symbol);
 
    begin
-      if not Has_Element (Position) then
+      if Entity = No_Entity then
          raise Program_Error with "parameter entity is not declared";
 
       else
          Push_Parameter_Entity
-          (Self,
-           League.Strings.Internals.Get_Shared (Element (Position).Value));
+          (Self, Replacement_Text (Self.Entities, Entity));
       end if;
    end Process_Parameter_Entity_Reference_In_Entity_Value;
 

@@ -47,11 +47,37 @@ package Matreshka.Internals.XML is
    pragma Pure;
 
    type Symbol_Identifier is private;
-   No_Symbol : constant Symbol_Identifier;
+   No_Symbol   : constant Symbol_Identifier;
+   Symbol_lt   : constant Symbol_Identifier;
+   Symbol_gt   : constant Symbol_Identifier;
+   Symbol_amp  : constant Symbol_Identifier;
+   Symbol_apos : constant Symbol_Identifier;
+   Symbol_quot : constant Symbol_Identifier;
+
+   type Entity_Identifier is private;
+   No_Entity   : constant Entity_Identifier;
+   Entity_lt   : constant Entity_Identifier;
+   Entity_gt   : constant Entity_Identifier;
+   Entity_amp  : constant Entity_Identifier;
+   Entity_apos : constant Entity_Identifier;
+   Entity_quot : constant Entity_Identifier;
 
 private
 
    type Symbol_Identifier is mod 2 ** 32;
-   No_Symbol : constant Symbol_Identifier := 0;
+   No_Symbol   : constant Symbol_Identifier := 0;
+   Symbol_lt   : constant Symbol_Identifier := 1;
+   Symbol_gt   : constant Symbol_Identifier := 2;
+   Symbol_amp  : constant Symbol_Identifier := 3;
+   Symbol_apos : constant Symbol_Identifier := 4;
+   Symbol_quot : constant Symbol_Identifier := 5;
+
+   type Entity_Identifier is mod 2 ** 32;
+   No_Entity   : constant Entity_Identifier := 0;
+   Entity_lt   : constant Entity_Identifier := 1;
+   Entity_gt   : constant Entity_Identifier := 2;
+   Entity_amp  : constant Entity_Identifier := 3;
+   Entity_apos : constant Entity_Identifier := 4;
+   Entity_quot : constant Entity_Identifier := 5;
 
 end Matreshka.Internals.XML;
