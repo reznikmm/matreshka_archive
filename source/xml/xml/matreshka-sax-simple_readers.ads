@@ -286,6 +286,11 @@ private
       Value          : League.Strings.Universal_String;
    end record;
 
+   type Namespaces_Options is record
+      Enabled  : Boolean := True;
+      Prefixes : Boolean := False;
+   end record;
+
    type Validation_Options is record
       Enabled : Boolean := False;
    end record;
@@ -368,6 +373,10 @@ private
       --  Single attribute of the element.
       Attributes         : Matreshka.SAX.Attributes.SAX_Attributes;
       --  Set of attributes of the element.
+
+      --  Namespaces handling state
+
+      Namespaces         : Namespaces_Options;
 
       --  Validator state
 

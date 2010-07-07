@@ -61,6 +61,7 @@ package Matreshka.Internals.XML.Symbol_Tables is
      First      : Matreshka.Internals.Utf16.Utf16_String_Index;
      Size       : Matreshka.Internals.Utf16.Utf16_String_Index;
      Length     : Positive;
+     Namespaces : Boolean;
      Identifier : out Symbol_Identifier);
    --  Lookup symbol table for name and returns its identifier if present,
    --  otherwise add new name and returns allocated identifier.
@@ -123,6 +124,9 @@ private
    type Symbol_Record is record
       String              : Matreshka.Internals.Strings.Shared_String_Access;
       --  Name of the symbol.
+      Namespace_Processed : Boolean;
+      Prefix_Name         : Symbol_Identifier;
+      Local_Name          : Symbol_Identifier;
 
 --      Element             : Element_Identifier;
 --      Notation            : Notation_Identifier;

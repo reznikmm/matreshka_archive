@@ -141,11 +141,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  Process start of XML declaration or text declaration.
 
    procedure Resolve_Symbol
-    (Self            : not null access SAX_Simple_Reader'Class;
-     Trim_Left       : Natural := 0;
-     Trim_Right      : Natural := 0;
-     Trim_Whitespace : Boolean := False;
-     YYLVal          : out YYSType);
+    (Self              : not null access SAX_Simple_Reader'Class;
+     Trim_Left         : Natural;
+     Trim_Right        : Natural;
+     Trim_Whitespace   : Boolean;
+     Is_Qualified_Name : Boolean;
+     YYLVal            : out YYSType);
+   --  Converts name to symbol. If Is_Qualified_Name is True it means the name
+   --  is qualified name according to Namespaces in XML specification.
 
    ----------------------
    -- YY_Move_Backward --
@@ -617,11 +620,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --------------------
 
    procedure Resolve_Symbol
-    (Self            : not null access SAX_Simple_Reader'Class;
-     Trim_Left       : Natural := 0;
-     Trim_Right      : Natural := 0;
-     Trim_Whitespace : Boolean := False;
-     YYLVal          : out YYSType)
+    (Self              : not null access SAX_Simple_Reader'Class;
+     Trim_Left         : Natural;
+     Trim_Right        : Natural;
+     Trim_Whitespace   : Boolean;
+     Is_Qualified_Name : Boolean;
+     YYLVal            : out YYSType)
    is
       --  Trailing and leading character as well as whitespace characters
       --  belongs to BMP and don't require expensive UTF-16 decoding.
@@ -660,7 +664,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
         FP,
         LP - FP,
         LI - FI,
+        Is_Qualified_Name and Self.Namespaces.Enabled,
         YYLVal.Symbol);
+
+      if YYLVal.Symbol = No_Symbol then
+         raise Program_Error with "invalid qualified name";
+      end if;
    end Resolve_Symbol;
 
    ------------------------
@@ -1102,7 +1111,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Open of processing instruction, rule [16]. Rule [17] is implemented
                --  implicitly by ordering of open of XMLDecl and open of PI.
             
-               Resolve_Symbol (Self, 2, 0, False, YYLVal);
+               Resolve_Symbol (Self, 2, 0, False, False, YYLVal);
                Enter_Start_Condition (Self, PI);
                Reset_Whitespace_Matched (Self);
             
@@ -1113,14 +1122,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  rule [28].
             
                Enter_Start_Condition (Self, DOCTYPE_EXTINT);
-               Resolve_Symbol (Self, 10, 0, True, YYLVal);
+               Resolve_Symbol (Self, 10, 0, True, True, YYLVal);
             
                return Token_Doctype_Decl_Open;
 
             when 5 =>
                --  Open of start tag, rule [40], or empty element, rule [44].
             
-               Resolve_Symbol (Self, 1, 0, False, YYLVal);
+               Resolve_Symbol (Self, 1, 0, False, True, YYLVal);
                Enter_Start_Condition (Self, ELEMENT_START);
             
                return Token_Element_Open;
@@ -1128,7 +1137,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 6 =>
                --  Open of and tag, rule [42].
             
-               Resolve_Symbol (Self, 2, 0, False, YYLVal);
+               Resolve_Symbol (Self, 2, 0, False, True, YYLVal);
                Enter_Start_Condition (Self, ELEMENT_START);
             
                return Token_End_Open;
@@ -1175,7 +1184,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 12 =>
                --  General entity reference rule [68] in document content.
             
-               Resolve_Symbol (Self, 1, 1, False, YYLVal);
+               Resolve_Symbol (Self, 1, 1, False, False, YYLVal);
                Process_General_Entity_Reference_In_Document_Content (Self, YYLVal.Symbol);
 
             when 13 =>
@@ -1346,7 +1355,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Open of element declaration and name of the element, rule [45].
             
                Enter_Start_Condition (Self, ELEMENT_DECL);
-               Resolve_Symbol (Self, 10, 0, True, YYLVal);
+               Resolve_Symbol (Self, 10, 0, True, True, YYLVal);
             
                return Token_Element_Decl_Open;
 
@@ -1354,7 +1363,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Open of attribute list declaration, rule [52].
             
                Enter_Start_Condition (Self, ATTLIST_DECL);
-               Resolve_Symbol (Self, 10, 0, True, YYLVal);
+               Resolve_Symbol (Self, 10, 0, True, True, YYLVal);
             
                return Token_Attlist_Decl_Open;
 
@@ -1369,7 +1378,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, ENTITY_DEF);
-               Resolve_Symbol (Self, 0, 0, False, YYLVal);
+               Resolve_Symbol (Self, 0, 0, False, False, YYLVal);
             
                return Token_Name;
 
@@ -1425,7 +1434,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Name of NDATA, rule [76].
             
                Enter_Start_Condition (Self, ENTITY_DEF);
-               Resolve_Symbol (Self, 0, 0, False, YYLVal);
+               Resolve_Symbol (Self, 0, 0, False, False, YYLVal);
             
                return Token_Name;
 
@@ -1485,7 +1494,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  parsing of parameter entity replacement text when it is referenced
                --  in any of two form of entity value.
             
-               Resolve_Symbol (Self, 1, 1, False, YYLVal);
+               Resolve_Symbol (Self, 1, 1, False, False, YYLVal);
                Process_Parameter_Entity_Reference_In_Entity_Value (Self, YYLVal.Symbol);
 
             when 46 =>
@@ -1543,7 +1552,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 56 =>
                --  Name in element's children declaration, rules [48], [51].
             
-               Resolve_Symbol (Self, 0, 0, False, YYLVal);
+               Resolve_Symbol (Self, 0, 0, False, True, YYLVal);
             
                return Token_Name;
 
@@ -1557,7 +1566,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 58 =>
                --  Name of the attribute, rule [53].
             
-               Resolve_Symbol (Self, 0, 0, False, YYLVal);
+               Resolve_Symbol (Self, 0, 0, False, True, YYLVal);
                Enter_Start_Condition (Self, ATTLIST_TYPE);
             
                return Token_Name;
@@ -1644,7 +1653,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 74 =>
                --  Name in the rule [58].
             
-               Resolve_Symbol (Self, 0, 0, False, YYLVal);
+               Resolve_Symbol (Self, 0, 0, False, False, YYLVal);
             
                return Token_Name;
 
@@ -1693,7 +1702,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                   --  XXX It is recoverable error.
                end if;
             
-               Resolve_Symbol (Self, 0, 0, False, YYLVal);
+               Resolve_Symbol (Self, 0, 0, False, True, YYLVal);
             
                return Token_Name;
 
@@ -1754,7 +1763,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 88 =>
                --  General entity reference rule [68] in attribute value, rule [10].
             
-               Resolve_Symbol (Self, 1, 1, False, YYLVal);
+               Resolve_Symbol (Self, 1, 1, False, False, YYLVal);
                Process_General_Entity_Reference_In_Attribute_Value (Self, YYLVal.Symbol);
 
             when 89 =>

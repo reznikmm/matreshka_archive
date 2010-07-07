@@ -171,7 +171,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    --  Open of processing instruction, rule [16]. Rule [17] is implemented
    --  implicitly by ordering of open of XMLDecl and open of PI.
 
-   Resolve_Symbol (Self, 2, 0, False, YYLVal);
+   Resolve_Symbol (Self, 2, 0, False, False, YYLVal);
    Enter_Start_Condition (Self, PI);
    Reset_Whitespace_Matched (Self);
 
@@ -183,7 +183,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    --  rule [28].
 
    Enter_Start_Condition (Self, DOCTYPE_EXTINT);
-   Resolve_Symbol (Self, 10, 0, True, YYLVal);
+   Resolve_Symbol (Self, 10, 0, True, True, YYLVal);
 
    return Token_Doctype_Decl_Open;
 }
@@ -191,7 +191,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <DOCUMENT_10,DOCUMENT_11>"<"{NAME} {
    --  Open of start tag, rule [40], or empty element, rule [44].
 
-   Resolve_Symbol (Self, 1, 0, False, YYLVal);
+   Resolve_Symbol (Self, 1, 0, False, True, YYLVal);
    Enter_Start_Condition (Self, ELEMENT_START);
 
    return Token_Element_Open;
@@ -200,7 +200,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <DOCUMENT_10,DOCUMENT_11>"</"{NAME} {
    --  Open of and tag, rule [42].
 
-   Resolve_Symbol (Self, 2, 0, False, YYLVal);
+   Resolve_Symbol (Self, 2, 0, False, True, YYLVal);
    Enter_Start_Condition (Self, ELEMENT_START);
 
    return Token_End_Open;
@@ -272,7 +272,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <DOCUMENT_10,DOCUMENT_11>"&"{NAME}";" {
    --  General entity reference rule [68] in document content.
 
-   Resolve_Symbol (Self, 1, 1, False, YYLVal);
+   Resolve_Symbol (Self, 1, 1, False, False, YYLVal);
    Process_General_Entity_Reference_In_Document_Content (Self, YYLVal.Symbol);
 }
 
@@ -461,7 +461,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    --  Open of element declaration and name of the element, rule [45].
 
    Enter_Start_Condition (Self, ELEMENT_DECL);
-   Resolve_Symbol (Self, 10, 0, True, YYLVal);
+   Resolve_Symbol (Self, 10, 0, True, True, YYLVal);
 
    return Token_Element_Decl_Open;
 }
@@ -470,7 +470,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    --  Open of attribute list declaration, rule [52].
 
    Enter_Start_Condition (Self, ATTLIST_DECL);
-   Resolve_Symbol (Self, 10, 0, True, YYLVal);
+   Resolve_Symbol (Self, 10, 0, True, True, YYLVal);
 
    return Token_Attlist_Decl_Open;
 }
@@ -486,7 +486,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 
    Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, ENTITY_DEF);
-   Resolve_Symbol (Self, 0, 0, False, YYLVal);
+   Resolve_Symbol (Self, 0, 0, False, False, YYLVal);
 
    return Token_Name;
 }
@@ -548,7 +548,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    --  Name of NDATA, rule [76].
 
    Enter_Start_Condition (Self, ENTITY_DEF);
-   Resolve_Symbol (Self, 0, 0, False, YYLVal);
+   Resolve_Symbol (Self, 0, 0, False, False, YYLVal);
 
    return Token_Name;
 }
@@ -615,7 +615,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    --  parsing of parameter entity replacement text when it is referenced
    --  in any of two form of entity value.
 
-   Resolve_Symbol (Self, 1, 1, False, YYLVal);
+   Resolve_Symbol (Self, 1, 1, False, False, YYLVal);
    Process_Parameter_Entity_Reference_In_Entity_Value (Self, YYLVal.Symbol);
 }
 
@@ -684,7 +684,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ELEMENT_CHILDREN>{NAME} {
    --  Name in element's children declaration, rules [48], [51].
 
-   Resolve_Symbol (Self, 0, 0, False, YYLVal);
+   Resolve_Symbol (Self, 0, 0, False, True, YYLVal);
 
    return Token_Name;
 }
@@ -701,7 +701,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ATTLIST_DECL>{NAME} {
    --  Name of the attribute, rule [53].
 
-   Resolve_Symbol (Self, 0, 0, False, YYLVal);
+   Resolve_Symbol (Self, 0, 0, False, True, YYLVal);
    Enter_Start_Condition (Self, ATTLIST_TYPE);
 
    return Token_Name;
@@ -804,7 +804,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ATTLIST_TYPE>{NAME} {
    --  Name in the rule [58].
 
-   Resolve_Symbol (Self, 0, 0, False, YYLVal);
+   Resolve_Symbol (Self, 0, 0, False, False, YYLVal);
 
    return Token_Name;
 }
@@ -858,7 +858,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
       --  XXX It is recoverable error.
    end if;
 
-   Resolve_Symbol (Self, 0, 0, False, YYLVal);
+   Resolve_Symbol (Self, 0, 0, False, True, YYLVal);
 
    return Token_Name;
 }
@@ -928,7 +928,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>"&"{NAME}";" {
    --  General entity reference rule [68] in attribute value, rule [10].
 
-   Resolve_Symbol (Self, 1, 1, False, YYLVal);
+   Resolve_Symbol (Self, 1, 1, False, False, YYLVal);
    Process_General_Entity_Reference_In_Attribute_Value (Self, YYLVal.Symbol);
 }
 
@@ -1073,11 +1073,12 @@ with Matreshka.Internals.Strings;
    function Process_XML_PI (Self : access Integer) return Token is separate;
 
    procedure Resolve_Symbol
-    (Self            : access Integer;
-     Trim_Left       : Natural := 0;
-     Trim_Right      : Natural := 0;
-     Trim_Whitespace : Boolean := False;
-     YYLVal          : out YYSType) is separate;
+    (Self              : access Integer;
+     Trim_Left         : Natural;
+     Trim_Right        : Natural;
+     Trim_Whitespace   : Boolean;
+     Is_Qualified_Name : Boolean;
+     YYLVal            : out YYSType) is separate;
 
    procedure Set_String_Internal
     (Item          : in out YYSType;

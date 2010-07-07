@@ -53,13 +53,9 @@ with Matreshka.Internals.Unicode;
 
 package body Matreshka.Internals.XML.Symbol_Tables is
 
-   First_Symbol : constant Symbol_Identifier := No_Symbol + 1;
+   Colon : constant := 16#003A#;
 
-   procedure Register_Predefined_Entity
-    (Self   : in out Symbol_Table;
-     Name   : League.Strings.Universal_String;
-     Entity : Entity_Identifier);
-   --  Registers predefined entity.
+   First_Symbol : constant Symbol_Identifier := No_Symbol + 1;
 
    procedure Free is
      new Ada.Unchecked_Deallocation
@@ -96,6 +92,59 @@ package body Matreshka.Internals.XML.Symbol_Tables is
    ----------------
 
    procedure Initialize (Self : in out Symbol_Table) is
+
+      procedure Register_Predefined_Entity
+       (Name   : League.Strings.Universal_String;
+        Entity : Entity_Identifier);
+      --  Registers predefined entity.
+
+      procedure Register_Symbol (Name : League.Strings.Universal_String);
+
+      --------------------------------
+      -- Register_Predefined_Entity --
+      --------------------------------
+
+      procedure Register_Predefined_Entity
+       (Name   : League.Strings.Universal_String;
+        Entity : Entity_Identifier)
+      is
+         N : constant Matreshka.Internals.Strings.Shared_String_Access
+           := League.Strings.Internals.Get_Shared (Name);
+
+      begin
+         Matreshka.Internals.Strings.Reference (N);
+
+         Self.Last := Self.Last + 1;
+         Self.Table (Self.Last) :=
+          (String              => N,
+           Namespace_Processed => True,
+           Prefix_Name         => No_Symbol,
+           Local_Name          => No_Symbol,
+           Parameter_Entity    => No_Entity,
+           General_Entity      => Entity);
+      end Register_Predefined_Entity;
+
+      ---------------------
+      -- Register_Symbol --
+      ---------------------
+
+      procedure Register_Symbol (Name : League.Strings.Universal_String) is
+         N : constant Matreshka.Internals.Strings.Shared_String_Access
+           := League.Strings.Internals.Get_Shared (Name);
+
+      begin
+         Matreshka.Internals.Strings.Reference (N);
+
+         Self.Last := Self.Last + 1;
+         Self.Table (Self.Last) :=
+          (String              => N,
+           Namespace_Processed => True,
+           Prefix_Name         => No_Symbol,
+           Local_Name          => No_Symbol,
+           Parameter_Entity    => No_Entity,
+           General_Entity      => No_Entity);
+      end Register_Symbol;
+
    begin
       Self.Table := new Symbol_Record_Array (First_Symbol .. 256);
       Self.Last  := No_Symbol;
@@ -103,25 +152,25 @@ package body Matreshka.Internals.XML.Symbol_Tables is
       --  Register predefined entities.
 
       Register_Predefined_Entity
-       (Self   => Self,
-        Name   => League.Strings.To_Universal_String ("lt"),
+       (Name   => League.Strings.To_Universal_String ("lt"),
         Entity => Entity_lt);
       Register_Predefined_Entity
-       (Self   => Self,
-        Name   => League.Strings.To_Universal_String ("gt"),
+       (Name   => League.Strings.To_Universal_String ("gt"),
         Entity => Entity_gt);
       Register_Predefined_Entity
-       (Self   => Self,
-        Name   => League.Strings.To_Universal_String ("amp"),
+       (Name   => League.Strings.To_Universal_String ("amp"),
         Entity => Entity_amp);
       Register_Predefined_Entity
-       (Self   => Self,
-        Name   => League.Strings.To_Universal_String ("apos"),
+       (Name   => League.Strings.To_Universal_String ("apos"),
         Entity => Entity_apos);
       Register_Predefined_Entity
-       (Self   => Self,
-        Name   => League.Strings.To_Universal_String ("quot"),
+       (Name   => League.Strings.To_Universal_String ("quot"),
         Entity => Entity_quot);
+
+      --  Register well known names
+
+      Register_Symbol (League.Strings.To_Universal_String ("xml"));
+      Register_Symbol (League.Strings.To_Universal_String ("xmlns"));
    end Initialize;
 
    ------------
@@ -134,13 +183,22 @@ package body Matreshka.Internals.XML.Symbol_Tables is
      First      : Matreshka.Internals.Utf16.Utf16_String_Index;
      Size       : Matreshka.Internals.Utf16.Utf16_String_Index;
      Length     : Positive;
+     Namespaces : Boolean;
      Identifier : out Symbol_Identifier)
    is
       use Matreshka.Internals.Unicode;
       use Matreshka.Internals.Utf16;
 
-      N_Position : Utf16_String_Index;
-      T_Position : Utf16_String_Index;
+      D_Position  : Utf16_String_Index;
+      D_Index     : Natural;
+      C           : Code_Point;
+      C_Position  : Utf16_String_Index;
+      C_Index     : Natural;
+      Found       : Boolean := False;
+      N_Position  : Utf16_String_Index;
+      T_Position  : Utf16_String_Index;
+      Prefix_Name : Symbol_Identifier;
+      Local_Name  : Symbol_Identifier;
 
    begin
       for J in First_Symbol .. Self.Last loop
@@ -159,20 +217,92 @@ package body Matreshka.Internals.XML.Symbol_Tables is
 
             if N_Position = First + Size then
                Identifier := J;
+               Found := True;
 
-               return;
+               exit;
             end if;
          end if;
       end loop;
 
-      Self.Last := Self.Last + 1;
-      Self.Table (Self.Last) :=
-       (String           =>
-          Matreshka.Internals.Strings.Operations.Slice
-           (String, First, Size, Length),
-        Parameter_Entity => No_Entity,
-        General_Entity   => No_Entity);
-      Identifier := Self.Last;
+      if not Found then
+         Self.Last := Self.Last + 1;
+         Identifier := Self.Last;
+         Self.Table (Identifier) :=
+          (String              =>
+             Matreshka.Internals.Strings.Operations.Slice
+              (String, First, Size, Length),
+           Namespace_Processed => False,
+           Prefix_Name         => No_Symbol,
+           Local_Name          => No_Symbol,
+           Parameter_Entity    => No_Entity,
+           General_Entity      => No_Entity);
+      end if;
+
+      if Namespaces
+        and then not Self.Table (Identifier).Namespace_Processed
+      then
+         D_Position := First;
+         D_Index    := 1;
+         Found      := False;
+
+         while D_Position < First + Size loop
+            Unchecked_Next (String.Value, D_Position, C);
+            D_Index := D_Index + 1;
+
+            if C = Colon then
+               if Found then
+                  --  Second colon found in qualified name, document is not
+                  --  wellformed.
+
+                  Identifier := No_Symbol;
+
+                  return;
+
+               else
+                  --  Colon occupy one code unit, use this fact instead of
+                  --  more expensive Unchecked_Previous.
+
+                  C_Position := D_Position - 1;
+                  C_Index    := D_Index - 1;
+               end if;
+            end if;
+         end loop;
+
+         if Found then
+            if C_Position = First or C_Position = First + Size - 1 then
+               --  Colon is first or last character in the qualified name,
+               --  document is not wellformed.
+
+               Identifier := No_Symbol;
+
+               return;
+            end if;
+
+            --  XXX First character after colon must belong to NameStartChar!
+
+            Insert
+             (Self,
+              String,
+              First,
+              C_Position - First,
+              C_Index - 1,
+              False,
+              Prefix_Name);
+            Insert
+             (Self,
+              String,
+              C_Position + 1,
+              First + Size - C_Position - 1,
+              Length - C_Index,
+              False,
+              Local_Name);
+
+            Self.Table (Identifier).Prefix_Name := Prefix_Name;
+            Self.Table (Identifier).Local_Name  := Local_Name;
+         end if;
+
+         Self.Table (Identifier).Namespace_Processed := True;
+      end if;
    end Insert;
 
    ------------
@@ -222,28 +352,6 @@ package body Matreshka.Internals.XML.Symbol_Tables is
    begin
       return Self.Table (Identifier).Parameter_Entity;
    end Parameter_Entity;
-
-   --------------------------------
-   -- Register_Predefined_Entity --
-   --------------------------------
-
-   procedure Register_Predefined_Entity
-    (Self   : in out Symbol_Table;
-     Name   : League.Strings.Universal_String;
-     Entity : Entity_Identifier)
-   is
-      N : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (Name);
-
-   begin
-      Matreshka.Internals.Strings.Reference (N);
-
-      Self.Last := Self.Last + 1;
-      Self.Table (Self.Last) :=
-       (String              => N,
-        Parameter_Entity    => No_Entity,
-        General_Entity      => Entity);
-   end Register_Predefined_Entity;
 
    ------------------------
    -- Set_General_Entity --

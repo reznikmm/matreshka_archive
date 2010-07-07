@@ -141,11 +141,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  Process start of XML declaration or text declaration.
 
    procedure Resolve_Symbol
-    (Self            : not null access SAX_Simple_Reader'Class;
-     Trim_Left       : Natural := 0;
-     Trim_Right      : Natural := 0;
-     Trim_Whitespace : Boolean := False;
-     YYLVal          : out YYSType);
+    (Self              : not null access SAX_Simple_Reader'Class;
+     Trim_Left         : Natural;
+     Trim_Right        : Natural;
+     Trim_Whitespace   : Boolean;
+     Is_Qualified_Name : Boolean;
+     YYLVal            : out YYSType);
+   --  Converts name to symbol. If Is_Qualified_Name is True it means the name
+   --  is qualified name according to Namespaces in XML specification.
 
    ----------------------
    -- YY_Move_Backward --
@@ -617,11 +620,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --------------------
 
    procedure Resolve_Symbol
-    (Self            : not null access SAX_Simple_Reader'Class;
-     Trim_Left       : Natural := 0;
-     Trim_Right      : Natural := 0;
-     Trim_Whitespace : Boolean := False;
-     YYLVal          : out YYSType)
+    (Self              : not null access SAX_Simple_Reader'Class;
+     Trim_Left         : Natural;
+     Trim_Right        : Natural;
+     Trim_Whitespace   : Boolean;
+     Is_Qualified_Name : Boolean;
+     YYLVal            : out YYSType)
    is
       --  Trailing and leading character as well as whitespace characters
       --  belongs to BMP and don't require expensive UTF-16 decoding.
@@ -660,7 +664,12 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
         FP,
         LP - FP,
         LI - FI,
+        Is_Qualified_Name and Self.Namespaces.Enabled,
         YYLVal.Symbol);
+
+      if YYLVal.Symbol = No_Symbol then
+         raise Program_Error with "invalid qualified name";
+      end if;
    end Resolve_Symbol;
 
    ------------------------
