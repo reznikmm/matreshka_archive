@@ -189,7 +189,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
      String     : not null Matreshka.Internals.Strings.Shared_String_Access;
      First      : Matreshka.Internals.Utf16.Utf16_String_Index;
      Size       : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Length     : Positive;
+     Length     : Natural;
      Namespaces : Boolean;
      Identifier : out Symbol_Identifier)
    is
@@ -361,7 +361,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
      String : not null Matreshka.Internals.Strings.Shared_String_Access;
      First  : Matreshka.Internals.Utf16.Utf16_String_Index;
      Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Length : Positive) return Symbol_Identifier is
+     Length : Natural) return Symbol_Identifier is
    begin
       return No_Symbol;
    end Lookup;

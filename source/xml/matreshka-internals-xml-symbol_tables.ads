@@ -60,7 +60,7 @@ package Matreshka.Internals.XML.Symbol_Tables is
      String     : not null Matreshka.Internals.Strings.Shared_String_Access;
      First      : Matreshka.Internals.Utf16.Utf16_String_Index;
      Size       : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Length     : Positive;
+     Length     : Natural;
      Namespaces : Boolean;
      Identifier : out Symbol_Identifier);
    --  Lookup symbol table for name and returns its identifier if present,
@@ -78,7 +78,7 @@ package Matreshka.Internals.XML.Symbol_Tables is
      String : not null Matreshka.Internals.Strings.Shared_String_Access;
      First  : Matreshka.Internals.Utf16.Utf16_String_Index;
      Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Length : Positive) return Symbol_Identifier;
+     Length : Natural) return Symbol_Identifier;
    --  Lookup symbol table for name and returns its identifier. Returns
    --  No_Symbol when there is no name in the table.
 
