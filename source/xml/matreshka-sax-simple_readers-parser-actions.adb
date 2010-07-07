@@ -164,12 +164,25 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
       procedure Convert is
       begin
          for J in 1 .. Length (Self.Attribute_Set) loop
-            Matreshka.SAX.Attributes.Internals.Unchecked_Append
-             (Self.Attributes,
-              Name (Self.Symbols, Namespace_URI (Self.Attribute_Set, J)),
-              Local_Name (Self.Symbols, Qualified_Name (Self.Attribute_Set, J)),
-              Name (Self.Symbols, Qualified_Name (Self.Attribute_Set, J)),
-              Value (Self.Attribute_Set, J));
+            declare
+               Qname : constant Symbol_Identifier
+                 := Qualified_Name (Self.Attribute_Set, J);
+
+            begin
+               if not Self.Namespaces.Enabled
+                 or (Self.Namespaces.Prefixes
+                       or (Qname /= Symbol_xmlns
+                             and Prefix_Name (Self.Symbols, Qname)
+                                   /= Symbol_xmlns))
+               then
+                  Matreshka.SAX.Attributes.Internals.Unchecked_Append
+                   (Self.Attributes,
+                    Name (Self.Symbols, Namespace_URI (Self.Attribute_Set, J)),
+                    Local_Name (Self.Symbols, Qname),
+                    Name (Self.Symbols, Qname),
+                    Value (Self.Attribute_Set, J));
+               end if;
+            end;
          end loop;
       end Convert;
 
