@@ -52,6 +52,7 @@ private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
 private with Matreshka.Internals.XML.Entity_Tables;
+private with Matreshka.Internals.XML.Namespace_Scopes;
 private with Matreshka.Internals.XML.Symbol_Tables;
 private with Matreshka.SAX.Attributes;
 private with Matreshka.SAX.Default_Handlers;
@@ -377,6 +378,8 @@ private
       --  Namespaces handling state
 
       Namespaces         : Namespaces_Options;
+      Namespace_Scope    :
+        Matreshka.Internals.XML.Namespace_Scopes.Namespace_Scope;
 
       --  Validator state
 

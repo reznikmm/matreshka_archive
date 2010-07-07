@@ -41,49 +41,110 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Deallocation;
 
-package Matreshka.Internals.XML is
+package body Matreshka.Internals.XML.Namespace_Scopes is
 
-   pragma Pure;
+   procedure Free is
+     new Ada.Unchecked_Deallocation (Mapping_Array, Mapping_Array_Access);
 
-   type Symbol_Identifier is private;
-   No_Symbol       : constant Symbol_Identifier;
-   Symbol_lt       : constant Symbol_Identifier;
-   Symbol_gt       : constant Symbol_Identifier;
-   Symbol_amp      : constant Symbol_Identifier;
-   Symbol_apos     : constant Symbol_Identifier;
-   Symbol_quot     : constant Symbol_Identifier;
-   Symbol_xml      : constant Symbol_Identifier;
-   Symbol_xmlns    : constant Symbol_Identifier;
-   Symbol_xmlns_NS : constant Symbol_Identifier;
+   procedure Free is
+     new Ada.Unchecked_Deallocation (Scope_Array, Scope_Array_Access);
 
-   type Entity_Identifier is private;
-   No_Entity   : constant Entity_Identifier;
-   Entity_lt   : constant Entity_Identifier;
-   Entity_gt   : constant Entity_Identifier;
-   Entity_amp  : constant Entity_Identifier;
-   Entity_apos : constant Entity_Identifier;
-   Entity_quot : constant Entity_Identifier;
+   ----------
+   -- Bind --
+   ----------
 
-private
+   procedure Bind
+    (Self      : in out Namespace_Scope;
+     Prefix    : Symbol_Identifier;
+     Namespace : Symbol_Identifier) is
+   begin
+      if Self.Scopes (Self.Last).Count /= 0 then
+         Self.Scopes (Self.Last).Count := Self.Scopes (Self.Last).Count - 1;
+         Self.Last := Self.Last + 1;
+         Self.Scopes (Self.Last) :=
+          (0,
+           Self.Scopes (Self.Last - 1).Last + 1,
+           Self.Scopes (Self.Last - 1).Last);
+      end if;
 
-   type Symbol_Identifier is mod 2 ** 32;
-   No_Symbol       : constant Symbol_Identifier := 0;
-   Symbol_lt       : constant Symbol_Identifier := 1;
-   Symbol_gt       : constant Symbol_Identifier := 2;
-   Symbol_amp      : constant Symbol_Identifier := 3;
-   Symbol_apos     : constant Symbol_Identifier := 4;
-   Symbol_quot     : constant Symbol_Identifier := 5;
-   Symbol_xml      : constant Symbol_Identifier := 6;
-   Symbol_xmlns    : constant Symbol_Identifier := 7;
-   Symbol_xmlns_NS : constant Symbol_Identifier := 8;
+      --  Sanity check: be sure that prefix is not mapped twice in the same
+      --  scope.
 
-   type Entity_Identifier is mod 2 ** 32;
-   No_Entity   : constant Entity_Identifier := 0;
-   Entity_lt   : constant Entity_Identifier := 1;
-   Entity_gt   : constant Entity_Identifier := 2;
-   Entity_amp  : constant Entity_Identifier := 3;
-   Entity_apos : constant Entity_Identifier := 4;
-   Entity_quot : constant Entity_Identifier := 5;
+      for J in Self.Scopes (Self.Last).First
+                 .. Self.Scopes (Self.Last).Last
+      loop
+         if Self.Mappings (J).Prefix = Prefix then
+            raise Program_Error;
+         end if;
+      end loop;
 
-end Matreshka.Internals.XML;
+      Self.Scopes (Self.Last).Last := Self.Scopes (Self.Last).Last + 1;
+      Self.Mappings (Self.Scopes (Self.Last).Last) := (Prefix, Namespace);
+   end Bind;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   procedure Finalize (Self : in out Namespace_Scope) is
+   begin
+      Free (Self.Mappings);
+      Free (Self.Scopes);
+   end Finalize;
+
+   ----------------
+   -- Initialize --
+   ----------------
+
+   procedure Initialize (Self : in out Namespace_Scope) is
+   begin
+      Self.Mappings := new Mapping_Array (1 .. 16);
+      Self.Mappings (1) := (Symbol_xmlns, Symbol_xmlns_NS);
+      Self.Scopes := new Scope_Array (1 .. 16);
+      Self.Scopes (1) := (0, 1, 1);
+      Self.Last := 1;
+   end Initialize;
+
+   ---------------
+   -- Pop_Scope --
+   ---------------
+
+   procedure Pop_Scope (Self : in out Namespace_Scope) is
+   begin
+      if Self.Scopes (Self.Last).Count /= 0 then
+         Self.Scopes (Self.Last).Count := Self.Scopes (Self.Last).Count - 1;
+
+      else
+         Self.Last := Self.Last - 1;
+      end if;
+   end Pop_Scope;
+
+   ----------------
+   -- Push_Scope --
+   ----------------
+
+   procedure Push_Scope (Self : in out Namespace_Scope) is
+   begin
+      Self.Scopes (Self.Last).Count := Self.Scopes (Self.Last).Count + 1;
+   end Push_Scope;
+
+   -------------
+   -- Resolve --
+   -------------
+
+   function Resolve
+    (Self   : Namespace_Scope;
+     Prefix : Symbol_Identifier) return Symbol_Identifier is
+   begin
+      for J in reverse 1 .. Self.Scopes (Self.Last).Last loop
+         if Self.Mappings (J).Prefix = Prefix then
+            return Self.Mappings (J).Namespace;
+         end if;
+      end loop;
+
+      return No_Symbol;
+   end Resolve;
+
+end Matreshka.Internals.XML.Namespace_Scopes;

@@ -87,6 +87,20 @@ package Matreshka.Internals.XML.Symbol_Tables is
      Identifier : Symbol_Identifier) return League.Strings.Universal_String;
    --  Returns name of the identifier.
 
+   function Local_Name
+    (Self       : Symbol_Table;
+     Identifier : Symbol_Identifier)
+       return not null Matreshka.Internals.Strings.Shared_String_Access;
+   pragma Inline (Local_Name);
+   --  Returns local name component of the identifier. Reference counter is not
+   --  incremented.
+
+   function Prefix_Name
+    (Self       : Symbol_Table;
+     Identifier : Symbol_Identifier) return Symbol_Identifier;
+   pragma Inline (Prefix_Name);
+   --  Returns prefix name component of the identifier.
+
    function Parameter_Entity
     (Self       : Symbol_Table;
      Identifier : Symbol_Identifier) return Entity_Identifier;

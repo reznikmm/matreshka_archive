@@ -42,48 +42,54 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.XML is
+package Matreshka.Internals.XML.Namespace_Scopes is
 
-   pragma Pure;
+   pragma Preelaborate;
 
-   type Symbol_Identifier is private;
-   No_Symbol       : constant Symbol_Identifier;
-   Symbol_lt       : constant Symbol_Identifier;
-   Symbol_gt       : constant Symbol_Identifier;
-   Symbol_amp      : constant Symbol_Identifier;
-   Symbol_apos     : constant Symbol_Identifier;
-   Symbol_quot     : constant Symbol_Identifier;
-   Symbol_xml      : constant Symbol_Identifier;
-   Symbol_xmlns    : constant Symbol_Identifier;
-   Symbol_xmlns_NS : constant Symbol_Identifier;
+   type Namespace_Scope is limited private;
 
-   type Entity_Identifier is private;
-   No_Entity   : constant Entity_Identifier;
-   Entity_lt   : constant Entity_Identifier;
-   Entity_gt   : constant Entity_Identifier;
-   Entity_amp  : constant Entity_Identifier;
-   Entity_apos : constant Entity_Identifier;
-   Entity_quot : constant Entity_Identifier;
+   procedure Push_Scope (Self : in out Namespace_Scope);
+
+   procedure Pop_Scope (Self : in out Namespace_Scope);
+
+   procedure Bind
+    (Self      : in out Namespace_Scope;
+     Prefix    : Symbol_Identifier;
+     Namespace : Symbol_Identifier);
+
+   function Resolve
+    (Self   : Namespace_Scope;
+     Prefix : Symbol_Identifier) return Symbol_Identifier;
+
+   procedure Initialize (Self : in out Namespace_Scope);
+
+   procedure Finalize (Self : in out Namespace_Scope);
 
 private
 
-   type Symbol_Identifier is mod 2 ** 32;
-   No_Symbol       : constant Symbol_Identifier := 0;
-   Symbol_lt       : constant Symbol_Identifier := 1;
-   Symbol_gt       : constant Symbol_Identifier := 2;
-   Symbol_amp      : constant Symbol_Identifier := 3;
-   Symbol_apos     : constant Symbol_Identifier := 4;
-   Symbol_quot     : constant Symbol_Identifier := 5;
-   Symbol_xml      : constant Symbol_Identifier := 6;
-   Symbol_xmlns    : constant Symbol_Identifier := 7;
-   Symbol_xmlns_NS : constant Symbol_Identifier := 8;
+   type Mapping_Record is record
+      Prefix    : Symbol_Identifier;
+      Namespace : Symbol_Identifier;
+   end record;
 
-   type Entity_Identifier is mod 2 ** 32;
-   No_Entity   : constant Entity_Identifier := 0;
-   Entity_lt   : constant Entity_Identifier := 1;
-   Entity_gt   : constant Entity_Identifier := 2;
-   Entity_amp  : constant Entity_Identifier := 3;
-   Entity_apos : constant Entity_Identifier := 4;
-   Entity_quot : constant Entity_Identifier := 5;
+   type Mapping_Array is array (Positive range <>) of Mapping_Record;
 
-end Matreshka.Internals.XML;
+   type Mapping_Array_Access is access all Mapping_Array;
+
+   type Scope_Record is record
+      Count : Natural;
+      First : Positive;
+      Last  : Natural;
+   end record;
+
+   type Scope_Array is array (Positive range <>) of Scope_Record;
+
+   type Scope_Array_Access is access all Scope_Array;
+
+   type Namespace_Scope is limited record
+      Mappings : Mapping_Array_Access;
+      Scopes   : Scope_Array_Access;
+      Last     : Natural;
+   end record;
+
+end Matreshka.Internals.XML.Namespace_Scopes;

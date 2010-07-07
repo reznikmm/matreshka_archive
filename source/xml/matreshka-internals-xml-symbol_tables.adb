@@ -55,8 +55,6 @@ package body Matreshka.Internals.XML.Symbol_Tables is
 
    Colon : constant := 16#003A#;
 
-   First_Symbol : constant Symbol_Identifier := No_Symbol + 1;
-
    procedure Free is
      new Ada.Unchecked_Deallocation
           (Symbol_Record_Array, Symbol_Record_Array_Access);
@@ -69,7 +67,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
       use type Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      for J in First_Symbol .. Self.Last loop
+      for J in Self.Table'First .. Self.Last loop
          Matreshka.Internals.Strings.Dereference (Self.Table (J).String);
       end loop;
 
@@ -146,7 +144,14 @@ package body Matreshka.Internals.XML.Symbol_Tables is
       end Register_Symbol;
 
    begin
-      Self.Table := new Symbol_Record_Array (First_Symbol .. 256);
+      Self.Table := new Symbol_Record_Array (0 .. 255);
+      Self.Table (No_Symbol) :=
+       (Matreshka.Internals.Strings.Shared_Empty'Access,
+        True,
+        No_Symbol,
+        No_Symbol,
+        No_Entity,
+        No_Entity);
       Self.Last  := No_Symbol;
 
       --  Register predefined entities.
@@ -167,10 +172,12 @@ package body Matreshka.Internals.XML.Symbol_Tables is
        (Name   => League.Strings.To_Universal_String ("quot"),
         Entity => Entity_quot);
 
-      --  Register well known names
+      --  Register well known names and namespaces.
 
       Register_Symbol (League.Strings.To_Universal_String ("xml"));
       Register_Symbol (League.Strings.To_Universal_String ("xmlns"));
+      Register_Symbol
+       (League.Strings.To_Universal_String ("http://www.w3.org/2000/xmlns/"));
    end Initialize;
 
    ------------
@@ -201,7 +208,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
       Local_Name  : Symbol_Identifier;
 
    begin
-      for J in First_Symbol .. Self.Last loop
+      for J in Self.Table'First .. Self.Last loop
          if Self.Table (J).String.Unused = Size then
             N_Position := First;
             T_Position := 0;
@@ -264,6 +271,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
 
                   C_Position := D_Position - 1;
                   C_Index    := D_Index - 1;
+                  Found      := True;
                end if;
             end if;
          end loop;
@@ -304,6 +312,18 @@ package body Matreshka.Internals.XML.Symbol_Tables is
          Self.Table (Identifier).Namespace_Processed := True;
       end if;
    end Insert;
+
+   ----------------
+   -- Local_Name --
+   ----------------
+
+   function Local_Name
+    (Self       : Symbol_Table;
+     Identifier : Symbol_Identifier)
+       return not null Matreshka.Internals.Strings.Shared_String_Access is
+   begin
+      return Self.Table (Self.Table (Identifier).Local_Name).String;
+   end Local_Name;
 
    ------------
    -- Lookup --
@@ -352,6 +372,17 @@ package body Matreshka.Internals.XML.Symbol_Tables is
    begin
       return Self.Table (Identifier).Parameter_Entity;
    end Parameter_Entity;
+
+   -----------------
+   -- Prefix_Name --
+   -----------------
+
+   function Prefix_Name
+    (Self       : Symbol_Table;
+     Identifier : Symbol_Identifier) return Symbol_Identifier is
+   begin
+      return Self.Table (Identifier).Prefix_Name;
+   end Prefix_Name;
 
    ------------------------
    -- Set_General_Entity --

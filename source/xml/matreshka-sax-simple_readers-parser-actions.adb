@@ -48,6 +48,8 @@ with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 package body Matreshka.SAX.Simple_Readers.Parser.Actions is
 
    use Matreshka.Internals.XML;
+   use Matreshka.Internals.XML.Namespace_Scopes;
+   use Matreshka.Internals.XML.Symbol_Tables;
 
    Full_Stop  : constant := 16#002E#;
    Digit_Zero : constant := 16#0030#;
@@ -89,11 +91,27 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
          --  Fatal error
       end if;
 
-      Handler_Callbacks.Call_End_Element
-       (Self,
-        Matreshka.Internals.Strings.Shared_Empty'Access,
-        Matreshka.Internals.Strings.Shared_Empty'Access,
-        Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol));
+      if Self.Namespaces.Enabled then
+         Handler_Callbacks.Call_Start_Element
+          (Self           => Self,
+           Namespace_URI  =>
+             Name
+              (Self.Symbols,
+               Resolve
+                (Self.Namespace_Scope, Prefix_Name (Self.Symbols, Symbol))),
+           Local_Name     => Local_Name (Self.Symbols, Symbol),
+           Qualified_Name => Name (Self.Symbols, Symbol),
+           Attributes     => Self.Attributes);
+         Pop_Scope (Self.Namespace_Scope);
+
+      else
+         Handler_Callbacks.Call_End_Element
+          (Self,
+           Matreshka.Internals.Strings.Shared_Empty'Access,
+           Matreshka.Internals.Strings.Shared_Empty'Access,
+           Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol));
+      end if;
+
       Self.Element_Names.Delete_Last;
    end On_End_Tag;
 
@@ -134,13 +152,30 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
       end if;
 
       Self.Element_Names.Append (Symbol);
-      Handler_Callbacks.Call_Start_Element
-       (Self           => Self,
-        Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
-        Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
-        Qualified_Name =>
-          Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
-        Attributes     => Self.Attributes);
+
+      if Self.Namespaces.Enabled then
+         Push_Scope (Self.Namespace_Scope);
+         Handler_Callbacks.Call_Start_Element
+          (Self           => Self,
+           Namespace_URI  =>
+             Name
+              (Self.Symbols,
+               Resolve
+                (Self.Namespace_Scope, Prefix_Name (Self.Symbols, Symbol))),
+           Local_Name     => Local_Name (Self.Symbols, Symbol),
+           Qualified_Name => Name (Self.Symbols, Symbol),
+           Attributes     => Self.Attributes);
+
+      else
+         Handler_Callbacks.Call_Start_Element
+          (Self           => Self,
+           Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
+           Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
+           Qualified_Name =>
+             Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
+           Attributes     => Self.Attributes);
+      end if;
+
       Matreshka.SAX.Attributes.Internals.Clear (Self.Attributes);
    end On_Start_Tag;
 
