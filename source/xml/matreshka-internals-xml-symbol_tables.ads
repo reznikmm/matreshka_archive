@@ -56,25 +56,21 @@ package Matreshka.Internals.XML.Symbol_Tables is
    type Symbol_Table is limited private;
 
    procedure Insert
-    (Self           : in out Symbol_Table;
-     String         :
-       not null Matreshka.Internals.Strings.Shared_String_Access;
-     Start_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Start_Index    : Positive;
-     End_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
-     End_Index      : Positive;
-     Identifier     : out Symbol_Identifier);
+    (Self       : in out Symbol_Table;
+     String     : not null Matreshka.Internals.Strings.Shared_String_Access;
+     First      : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size       : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length     : Positive;
+     Identifier : out Symbol_Identifier);
    --  Lookup symbol table for name and returns its identifier if present,
    --  otherwise add new name and returns allocated identifier.
 
    function Lookup
-    (Self           : Symbol_Table;
-     String         :
-       not null Matreshka.Internals.Strings.Shared_String_Access;
-     Start_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Start_Index    : Positive;
-     End_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
-     End_Index      : Positive) return Symbol_Identifier;
+    (Self   : Symbol_Table;
+     String : not null Matreshka.Internals.Strings.Shared_String_Access;
+     First  : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length : Positive) return Symbol_Identifier;
    --  Lookup symbol table for name and returns its identifier. Returns
    --  No_Symbol when there is no name in the table.
 

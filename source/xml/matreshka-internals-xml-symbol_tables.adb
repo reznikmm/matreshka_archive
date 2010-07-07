@@ -129,14 +129,12 @@ package body Matreshka.Internals.XML.Symbol_Tables is
    ------------
 
    procedure Insert
-    (Self           : in out Symbol_Table;
-     String         :
-       not null Matreshka.Internals.Strings.Shared_String_Access;
-     Start_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Start_Index    : Positive;
-     End_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
-     End_Index      : Positive;
-     Identifier     : out Symbol_Identifier)
+    (Self       : in out Symbol_Table;
+     String     : not null Matreshka.Internals.Strings.Shared_String_Access;
+     First      : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size       : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length     : Positive;
+     Identifier : out Symbol_Identifier)
    is
       use Matreshka.Internals.Unicode;
       use Matreshka.Internals.Utf16;
@@ -146,11 +144,11 @@ package body Matreshka.Internals.XML.Symbol_Tables is
 
    begin
       for J in First_Symbol .. Self.Last loop
-         if End_Position - Start_Position = Self.Table (J).String.Unused then
-            N_Position := Start_Position;
+         if Self.Table (J).String.Unused = Size then
+            N_Position := First;
             T_Position := 0;
 
-            while N_Position < End_Position loop
+            while N_Position < First + Size loop
                exit when
                  String.Value (N_Position)
                    /= Self.Table (J).String.Value (T_Position);
@@ -159,7 +157,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
                T_Position := T_Position + 1;
             end loop;
 
-            if N_Position = End_Position then
+            if N_Position = First + Size then
                Identifier := J;
 
                return;
@@ -169,14 +167,11 @@ package body Matreshka.Internals.XML.Symbol_Tables is
 
       Self.Last := Self.Last + 1;
       Self.Table (Self.Last) :=
-       (String              =>
+       (String           =>
           Matreshka.Internals.Strings.Operations.Slice
-           (String,
-            Start_Position,
-            End_Position - Start_Position,
-            End_Index - Start_Index),
-        Parameter_Entity    => No_Entity,
-        General_Entity      => No_Entity);
+           (String, First, Size, Length),
+        Parameter_Entity => No_Entity,
+        General_Entity   => No_Entity);
       Identifier := Self.Last;
    end Insert;
 
@@ -185,13 +180,11 @@ package body Matreshka.Internals.XML.Symbol_Tables is
    ------------
 
    function Lookup
-    (Self           : Symbol_Table;
-     String         :
-       not null Matreshka.Internals.Strings.Shared_String_Access;
-     Start_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Start_Index    : Positive;
-     End_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
-     End_Index      : Positive) return Symbol_Identifier is
+    (Self   : Symbol_Table;
+     String : not null Matreshka.Internals.Strings.Shared_String_Access;
+     First  : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length : Positive) return Symbol_Identifier is
    begin
       return No_Symbol;
    end Lookup;

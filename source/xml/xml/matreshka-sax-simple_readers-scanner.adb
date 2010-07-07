@@ -658,9 +658,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
        (Self.Symbols,
         Self.Scanner_State.Data,
         FP,
-        FI,
-        LP,
-        LI,
+        LP - FP,
+        LI - FI,
         YYLVal.Symbol);
    end Resolve_Symbol;
 
