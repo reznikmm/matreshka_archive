@@ -41,9 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Deallocation;
+
 with League.Strings.Internals;
 
 package body Matreshka.Internals.XML.Entity_Tables is
+
+   procedure Free is
+     new Ada.Unchecked_Deallocation (Entity_Array, Entity_Array_Access);
 
    --------------
    -- Finalize --
@@ -51,7 +56,12 @@ package body Matreshka.Internals.XML.Entity_Tables is
 
    procedure Finalize (Self : in out Entity_Table) is
    begin
-      null;
+      for J in Self.Data'First .. Self.Last loop
+         Matreshka.Internals.Strings.Dereference
+          (Self.Data (J).Replacement_Text);
+      end loop;
+
+      Free (Self.Data);
    end Finalize;
 
    ----------------

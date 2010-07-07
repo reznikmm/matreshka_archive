@@ -66,6 +66,13 @@ package Matreshka.Internals.XML.Symbol_Tables is
    --  Lookup symbol table for name and returns its identifier if present,
    --  otherwise add new name and returns allocated identifier.
 
+   procedure Insert
+    (Self       : in out Symbol_Table;
+     String     : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Identifier : out Symbol_Identifier);
+   --  Lookup symbol table for name and returns its identifier if present,
+   --  otherwise add new name and returns allocated identifier.
+
    function Lookup
     (Self   : Symbol_Table;
      String : not null Matreshka.Internals.Strings.Shared_String_Access;
@@ -86,6 +93,12 @@ package Matreshka.Internals.XML.Symbol_Tables is
     (Self       : Symbol_Table;
      Identifier : Symbol_Identifier) return League.Strings.Universal_String;
    --  Returns name of the identifier.
+
+   function Local_Name
+    (Self       : Symbol_Table;
+     Identifier : Symbol_Identifier) return Symbol_Identifier;
+   pragma Inline (Local_Name);
+   --  Returns local name component of the identifier.
 
    function Local_Name
     (Self       : Symbol_Table;

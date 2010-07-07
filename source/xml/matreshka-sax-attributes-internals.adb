@@ -48,28 +48,47 @@ with Matreshka.Internals.Strings.Compare;
 
 package body Matreshka.SAX.Attributes.Internals is
 
-   ------------
-   -- Append --
-   ------------
+   -----------
+   -- Clear --
+   -----------
 
-   procedure Append
-    (Self           : in out SAX_Attributes'Class;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String;
-     Value          : League.Strings.Universal_String) is
+   procedure Clear (Self : in out SAX_Attributes'Class) is
    begin
-      --  Looking for duplicating qualified names.
+      if Can_Be_Reused (Self.Data) then
+         for J in 1 .. Self.Data.Length loop
+            Matreshka.Internals.Strings.Dereference
+             (Self.Data.Values (J).Namespace_URI);
+            Matreshka.Internals.Strings.Dereference
+             (Self.Data.Values (J).Local_Name);
+            Matreshka.Internals.Strings.Dereference
+             (Self.Data.Values (J).Qualified_Name);
+            Matreshka.Internals.Strings.Dereference
+             (Self.Data.Values (J).Value);
+         end loop;
 
-      for J in 1 .. Self.Data.Length loop
-         if Matreshka.Internals.Strings.Compare.Is_Equal
-             (Self.Data.Values (J).Qualified_Name,
-              League.Strings.Internals.Get_Shared (Qualified_Name))
-         then
-            raise Constraint_Error;
-         end if;
-      end loop;
+         Self.Data.Length := 0;
 
+      else
+         Dereference (Self.Data);
+         Self.Data := new Shared_Attributes (8);
+      end if;
+   end Clear;
+
+   ----------------------
+   -- Unchecked_Append --
+   ----------------------
+
+   procedure Unchecked_Append
+    (Self           : in out SAX_Attributes'Class;
+     Namespace_URI  :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Local_Name     :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Qualified_Name :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Value          :
+       not null Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
       --  Reallocate shared object when necessary.
 
       if not Can_Be_Reused (Self.Data)
@@ -106,51 +125,17 @@ package body Matreshka.SAX.Attributes.Internals is
 
       --  Add attribute.
 
+      Matreshka.Internals.Strings.Reference (Namespace_URI);
+      Matreshka.Internals.Strings.Reference (Local_Name);
+      Matreshka.Internals.Strings.Reference (Qualified_Name);
+      Matreshka.Internals.Strings.Reference (Value);
+
       Self.Data.Length := Self.Data.Length + 1;
       Self.Data.Values (Self.Data.Length) :=
-       (Namespace_URI  =>
-          League.Strings.Internals.Get_Shared (Namespace_URI),
-        Local_Name     =>
-          League.Strings.Internals.Get_Shared (Local_Name),
-        Qualified_Name =>
-          League.Strings.Internals.Get_Shared (Qualified_Name),
-        Value          =>
-          League.Strings.Internals.Get_Shared (Value));
-
-      Matreshka.Internals.Strings.Reference
-       (Self.Data.Values (Self.Data.Length).Namespace_URI);
-      Matreshka.Internals.Strings.Reference
-       (Self.Data.Values (Self.Data.Length).Local_Name);
-      Matreshka.Internals.Strings.Reference
-       (Self.Data.Values (Self.Data.Length).Qualified_Name);
-      Matreshka.Internals.Strings.Reference
-       (Self.Data.Values (Self.Data.Length).Value);
-   end Append;
-
-   -----------
-   -- Clear --
-   -----------
-
-   procedure Clear (Self : in out SAX_Attributes'Class) is
-   begin
-      if Can_Be_Reused (Self.Data) then
-         for J in 1 .. Self.Data.Length loop
-            Matreshka.Internals.Strings.Dereference
-             (Self.Data.Values (J).Namespace_URI);
-            Matreshka.Internals.Strings.Dereference
-             (Self.Data.Values (J).Local_Name);
-            Matreshka.Internals.Strings.Dereference
-             (Self.Data.Values (J).Qualified_Name);
-            Matreshka.Internals.Strings.Dereference
-             (Self.Data.Values (J).Value);
-         end loop;
-
-         Self.Data.Length := 0;
-
-      else
-         Dereference (Self.Data);
-         Self.Data := new Shared_Attributes (8);
-      end if;
-   end Clear;
+       (Namespace_URI  => Namespace_URI,
+        Local_Name     => Local_Name,
+        Qualified_Name => Qualified_Name,
+        Value          => Value);
+   end Unchecked_Append;
 
 end Matreshka.SAX.Attributes.Internals;

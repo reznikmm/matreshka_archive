@@ -41,25 +41,67 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package is for internal use only.
-------------------------------------------------------------------------------
 with Matreshka.Internals.Strings;
 
-package Matreshka.SAX.Attributes.Internals is
+package Matreshka.Internals.XML.Attributes is
 
    pragma Preelaborate;
 
-   procedure Unchecked_Append
-    (Self           : in out SAX_Attributes'Class;
-     Namespace_URI  :
-       not null Matreshka.Internals.Strings.Shared_String_Access;
-     Local_Name     :
-       not null Matreshka.Internals.Strings.Shared_String_Access;
-     Qualified_Name :
-       not null Matreshka.Internals.Strings.Shared_String_Access;
+   type Attribute_Set is limited private;
+
+   procedure Insert
+    (Self           : in out Attribute_Set;
+     Qualified_Name : Symbol_Identifier;
      Value          :
-       not null Matreshka.Internals.Strings.Shared_String_Access);
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Inserted       : out Boolean);
 
-   procedure Clear (Self : in out SAX_Attributes'Class);
+   function Length (Self : Attribute_Set) return Natural;
+   pragma Inline (Length);
 
-end Matreshka.SAX.Attributes.Internals;
+   function Qualified_Name
+    (Self  : Attribute_Set;
+     Index : Positive) return Symbol_Identifier;
+   pragma Inline (Qualified_Name);
+
+   function Namespace_URI
+    (Self  : Attribute_Set;
+     Index : Positive) return Symbol_Identifier;
+   pragma Inline (Namespace_URI);
+
+   procedure Set_Namespace_URI
+    (Self          : Attribute_Set;
+     Index         : Positive;
+     Namespace_URI : Symbol_Identifier);
+   pragma Inline (Set_Namespace_URI);
+
+   function Value
+    (Self  : Attribute_Set;
+     Index : Positive)
+       return not null Matreshka.Internals.Strings.Shared_String_Access;
+   pragma Inline (Value);
+
+   procedure Clear (Self : in out Attribute_Set);
+
+   procedure Initialize (Self : in out Attribute_Set);
+
+   procedure Finalize (Self : in out Attribute_Set);
+
+private
+
+   type Attribute_Record is record
+      Namespace_URI  : Symbol_Identifier;
+      Qualified_Name : Symbol_Identifier;
+      Value          : Matreshka.Internals.Strings.Shared_String_Access;
+   end record;
+
+   type Attribute_Array is array (Positive range <>) of Attribute_Record;
+
+   type Attribute_Array_Access is access all Attribute_Array;
+
+   type Attribute_Set is limited record
+      Attributes : Attribute_Array_Access;
+      Last       : Natural;
+   end record;
+
+end Matreshka.Internals.XML.Attributes;

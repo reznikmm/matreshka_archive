@@ -307,11 +307,38 @@ package body Matreshka.Internals.XML.Symbol_Tables is
 
             Self.Table (Identifier).Prefix_Name := Prefix_Name;
             Self.Table (Identifier).Local_Name  := Local_Name;
+
+         else
+            Self.Table (Identifier).Local_Name := Identifier;
          end if;
 
          Self.Table (Identifier).Namespace_Processed := True;
       end if;
    end Insert;
+
+   ------------
+   -- Insert --
+   ------------
+
+   procedure Insert
+    (Self       : in out Symbol_Table;
+     String     : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Identifier : out Symbol_Identifier) is
+   begin
+      Insert
+       (Self, String, 0, String.Unused, String.Length, False, Identifier);
+   end Insert;
+
+   ----------------
+   -- Local_Name --
+   ----------------
+
+   function Local_Name
+    (Self       : Symbol_Table;
+     Identifier : Symbol_Identifier) return Symbol_Identifier is
+   begin
+      return Self.Table (Identifier).Local_Name;
+   end Local_Name;
 
    ----------------
    -- Local_Name --

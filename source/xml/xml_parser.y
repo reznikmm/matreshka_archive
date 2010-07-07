@@ -716,27 +716,23 @@ content_item :
   ;
 
 Attribute_Any :
-    Attribute_Any Attribute
+    Attribute_Any Token_Name Token_Equal AttributeValue
 {
-   Process_Attribute_In_Set (Self);
+   Actions.On_Elements_Attribute
+    (Self,
+     $2.Symbol,
+     $4.String);
 }
-  | Attribute
+  | Token_Name Token_Equal AttributeValue
 {
-   Process_Attribute_In_Set (Self);
+   Actions.On_Elements_Attribute
+    (Self,
+     $1.Symbol,
+     $3.String);
 }
   |
 {
    null;
-}
-  ;
-
-Attribute :
-    Token_Name Token_Equal AttributeValue
-{
-   Process_Attribute
-    (Self,
-     $1.Symbol,
-     League.Strings.Internals.Create ($3.String));
 }
   ;
 
@@ -794,13 +790,6 @@ with Matreshka.Internals.XML.Symbol_Tables;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier)
        is separate;
 
-   procedure Process_Attribute_In_Set (Self : access Integer) is separate;
-
-   procedure Process_Attribute
-     (Self   : access Integer;
-      Symbol : Matreshka.Internals.XML.Symbol_Identifier;
-      Value  : League.Strings.Universal_String) is separate;
-
    procedure Process_Processing_Instruction
      (Self   : access Integer;
       Symbol : Matreshka.Internals.XML.Symbol_Identifier;
@@ -840,6 +829,11 @@ with Matreshka.Internals.XML.Symbol_Tables;
       procedure On_Start_Tag
        (Self   : access Integer;
         Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Elements_Attribute
+        (Self   : access Integer;
+         Symbol : Matreshka.Internals.XML.Symbol_Identifier;
+         Value  : not null Matreshka.Internals.Strings.Shared_String_Access);
 
    end Actions;
 

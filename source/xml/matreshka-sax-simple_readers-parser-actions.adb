@@ -48,6 +48,7 @@ with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
 package body Matreshka.SAX.Simple_Readers.Parser.Actions is
 
    use Matreshka.Internals.XML;
+   use Matreshka.Internals.XML.Attributes;
    use Matreshka.Internals.XML.Namespace_Scopes;
    use Matreshka.Internals.XML.Symbol_Tables;
 
@@ -72,6 +73,37 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
       end if;
    end On_Character_Data;
 
+   ---------------------------
+   -- On_Elements_Attribute --
+   ---------------------------
+
+   procedure On_Elements_Attribute
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier;
+     Value  : not null Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      Inserted : Boolean;
+
+   begin
+      Insert (Self.Attribute_Set, Symbol, Value, Inserted);
+
+      if not Inserted then
+         --  3.1  WFC: Unique Att Spec
+         --
+         --  An attribute name MUST NOT appear more than once in the same
+         --  start-tag or empty-element tag.
+
+         Handler_Callbacks.Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("[3.1 WFC: Unique Att Spec]"
+               & " an attribute name must not appear more than once"
+               & " in the same tag"));
+         Self.Continue := False;
+         --  XXX This is recoverable error.
+      end if;
+   end On_Elements_Attribute;
+
    ----------------
    -- On_End_Tag --
    ----------------
@@ -92,24 +124,24 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
       end if;
 
       if Self.Namespaces.Enabled then
-         Handler_Callbacks.Call_Start_Element
+         Handler_Callbacks.Call_End_Element
           (Self           => Self,
            Namespace_URI  =>
              Name
               (Self.Symbols,
                Resolve
-                (Self.Namespace_Scope, Prefix_Name (Self.Symbols, Symbol))),
+                (Self.Namespace_Scope,
+                 Prefix_Name (Self.Symbols, Symbol))),
            Local_Name     => Local_Name (Self.Symbols, Symbol),
-           Qualified_Name => Name (Self.Symbols, Symbol),
-           Attributes     => Self.Attributes);
+           Qualified_Name => Name (Self.Symbols, Symbol));
          Pop_Scope (Self.Namespace_Scope);
 
       else
          Handler_Callbacks.Call_End_Element
-          (Self,
-           Matreshka.Internals.Strings.Shared_Empty'Access,
-           Matreshka.Internals.Strings.Shared_Empty'Access,
-           Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol));
+          (Self           => Self,
+           Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
+           Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
+           Qualified_Name => Name (Self.Symbols, Symbol));
       end if;
 
       Self.Element_Names.Delete_Last;
@@ -121,7 +153,26 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
 
    procedure On_Start_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
+   is
+      procedure Convert;
+
+      -------------
+      -- Convert --
+      -------------
+
+      procedure Convert is
+      begin
+         for J in 1 .. Length (Self.Attribute_Set) loop
+            Matreshka.SAX.Attributes.Internals.Unchecked_Append
+             (Self.Attributes,
+              Name (Self.Symbols, Namespace_URI (Self.Attribute_Set, J)),
+              Local_Name (Self.Symbols, Qualified_Name (Self.Attribute_Set, J)),
+              Name (Self.Symbols, Qualified_Name (Self.Attribute_Set, J)),
+              Value (Self.Attribute_Set, J));
+         end loop;
+      end Convert;
+
    begin
       if Self.Element_Names.Is_Empty then
          --  Root element.
@@ -155,6 +206,91 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
 
       if Self.Namespaces.Enabled then
          Push_Scope (Self.Namespace_Scope);
+
+         --  Process namespace attributes.
+
+         for J in 1 .. Length (Self.Attribute_Set) loop
+            declare
+               Qname : constant Symbol_Identifier
+                 := Qualified_Name (Self.Attribute_Set, J);
+               Ns    : Symbol_Identifier;
+
+            begin
+               if Qname = Symbol_xmlns then
+                  --  Default namespace.
+
+                  Insert (Self.Symbols, Value (Self.Attribute_Set, J), Ns);
+                  Bind (Self.Namespace_Scope, No_Symbol, Ns);
+
+               else
+                  --  Prefixed namespace.
+
+                  if Prefix_Name (Self.Symbols, Qname) = Symbol_xmlns then
+                     Insert (Self.Symbols, Value (Self.Attribute_Set, J), Ns);
+                     Bind
+                      (Self.Namespace_Scope,
+                       Local_Name (Self.Symbols, Qname),
+                       Ns);
+                  end if;
+               end if;
+            end;
+         end loop;
+
+         --  Resolve attribute's namespaces.
+
+         for J in 1 .. Length (Self.Attribute_Set) loop
+            declare
+               Qname : constant Symbol_Identifier
+                 := Qualified_Name (Self.Attribute_Set, J);
+               Prefix : constant Symbol_Identifier
+                 := Prefix_Name (Self.Symbols, Qname);
+
+            begin
+               if Prefix /= No_Symbol then
+                  Set_Namespace_URI
+                   (Self.Attribute_Set,
+                    J,
+                    Resolve (Self.Namespace_Scope, Prefix));
+               end if;
+            end;
+         end loop;
+
+         --  Namespaces in XML 6.3
+         --
+         --  In XML documents conforming to this specification, no tag may
+         --  contain two attributes which:
+         --
+         --  1. have identical names, or
+         --
+         --  2. have qualified names with the same local part and with prefixes
+         --  which have been bound to namespace names that are identical. 
+         --
+         --  This constraint is equivalent to requiring that no element have
+         --  two attributes with the same expanded name. 
+
+         for J in 1 .. Length (Self.Attribute_Set) loop
+            declare
+               Ns : constant Symbol_Identifier
+                 := Namespace_URI (Self.Attribute_Set, J);
+               Ln : constant Symbol_Identifier
+                 := Local_Name
+                     (Self.Symbols, Qualified_Name (Self.Attribute_Set, J));
+
+            begin
+               for K in J + 1 .. Length (Self.Attribute_Set) loop
+                  if Namespace_URI (Self.Attribute_Set, K) = Ns
+                    and Local_Name
+                     (Self.Symbols, Qualified_Name (Self.Attribute_Set, K))
+                        = Ln
+                  then
+                     raise Program_Error
+                       with "[Namespaces in XML 6.3] attributes have the same expanded name";
+                  end if;
+               end loop;
+            end;
+         end loop;
+
+         Convert;
          Handler_Callbacks.Call_Start_Element
           (Self           => Self,
            Namespace_URI  =>
@@ -167,6 +303,7 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
            Attributes     => Self.Attributes);
 
       else
+         Convert;
          Handler_Callbacks.Call_Start_Element
           (Self           => Self,
            Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
@@ -176,6 +313,7 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
            Attributes     => Self.Attributes);
       end if;
 
+      Clear (Self.Attribute_Set);
       Matreshka.SAX.Attributes.Internals.Clear (Self.Attributes);
    end On_Start_Tag;
 

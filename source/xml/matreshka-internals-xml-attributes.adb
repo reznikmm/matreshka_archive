@@ -41,25 +41,126 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package is for internal use only.
-------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
+with Ada.Unchecked_Deallocation;
 
-package Matreshka.SAX.Attributes.Internals is
+package body Matreshka.Internals.XML.Attributes is
 
-   pragma Preelaborate;
+   procedure Free is
+     new Ada.Unchecked_Deallocation (Attribute_Array, Attribute_Array_Access);
 
-   procedure Unchecked_Append
-    (Self           : in out SAX_Attributes'Class;
-     Namespace_URI  :
-       not null Matreshka.Internals.Strings.Shared_String_Access;
-     Local_Name     :
-       not null Matreshka.Internals.Strings.Shared_String_Access;
-     Qualified_Name :
-       not null Matreshka.Internals.Strings.Shared_String_Access;
+   -----------
+   -- Clear --
+   -----------
+
+   procedure Clear (Self : in out Attribute_Set) is
+   begin
+      for J in Self.Attributes'First .. Self.Last loop
+         Matreshka.Internals.Strings.Dereference (Self.Attributes (J).Value);
+      end loop;
+
+      Self.Last := 0;
+   end Clear;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   procedure Finalize (Self : in out Attribute_Set) is
+   begin
+      Free (Self.Attributes);
+   end Finalize;
+
+   ----------------
+   -- Initialize --
+   ----------------
+
+   procedure Initialize (Self : in out Attribute_Set) is
+   begin
+      Self.Attributes := new Attribute_Array (1 .. 16);
+      Self.Last := 0;
+   end Initialize;
+
+   ------------
+   -- Insert --
+   ------------
+
+   procedure Insert
+    (Self           : in out Attribute_Set;
+     Qualified_Name : Symbol_Identifier;
      Value          :
-       not null Matreshka.Internals.Strings.Shared_String_Access);
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Inserted       : out Boolean) is
+   begin
+      for J in Self.Attributes'First .. Self.Last loop
+         if Self.Attributes (J).Qualified_Name = Qualified_Name then
+            Inserted := False;
 
-   procedure Clear (Self : in out SAX_Attributes'Class);
+            return;
+         end if;
+      end loop;
 
-end Matreshka.SAX.Attributes.Internals;
+      Matreshka.Internals.Strings.Reference (Value);
+      Inserted := True;
+      Self.Last := Self.Last + 1;
+      Self.Attributes (Self.Last) :=
+       (Namespace_URI  => No_Symbol,
+        Qualified_Name => Qualified_Name,
+        Value          => Value);
+   end Insert;
+
+   ------------
+   -- Length --
+   ------------
+
+   function Length (Self : Attribute_Set) return Natural is
+   begin
+      return Self.Last;
+   end Length;
+
+   -------------------
+   -- Namespace_URI --
+   -------------------
+
+   function Namespace_URI
+    (Self  : Attribute_Set;
+     Index : Positive) return Symbol_Identifier is
+   begin
+      return Self.Attributes (Index).Namespace_URI;
+   end Namespace_URI;
+
+   --------------------
+   -- Qualified_Name --
+   --------------------
+
+   function Qualified_Name
+    (Self  : Attribute_Set;
+     Index : Positive) return Symbol_Identifier is
+   begin
+      return Self.Attributes (Index).Qualified_Name;
+   end Qualified_Name;
+
+   -----------------------
+   -- Set_Namespace_URI --
+   -----------------------
+
+   procedure Set_Namespace_URI
+    (Self          : Attribute_Set;
+     Index         : Positive;
+     Namespace_URI : Symbol_Identifier) is
+   begin
+      Self.Attributes (Index).Namespace_URI := Namespace_URI;
+   end Set_Namespace_URI;
+
+   -----------
+   -- Value --
+   -----------
+
+   function Value
+    (Self  : Attribute_Set;
+     Index : Positive)
+       return not null Matreshka.Internals.Strings.Shared_String_Access is
+   begin
+      return Self.Attributes (Index).Value;
+   end Value;
+
+end Matreshka.Internals.XML.Attributes;

@@ -52,6 +52,12 @@ private package Matreshka.SAX.Simple_Readers.Parser.Actions is
      Is_Whitespace : Boolean);
    --  Process segment of character data.
 
+   procedure On_Elements_Attribute
+    (Self    : not null access SAX_Simple_Reader'Class;
+      Symbol : Matreshka.Internals.XML.Symbol_Identifier;
+      Value  : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Handles attribute of the element.
+
    procedure On_End_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);

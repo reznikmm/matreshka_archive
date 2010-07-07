@@ -139,6 +139,7 @@ package body Matreshka.SAX.Simple_Readers is
       Matreshka.Internals.XML.Symbol_Tables.Finalize (Self.Symbols);
       Matreshka.Internals.XML.Entity_Tables.Finalize (Self.Entities);
       Matreshka.Internals.XML.Namespace_Scopes.Finalize (Self.Namespace_Scope);
+      Matreshka.Internals.XML.Attributes.Finalize (Self.Attribute_Set);
    end Finalize;
 
    ----------------
@@ -147,6 +148,7 @@ package body Matreshka.SAX.Simple_Readers is
 
    overriding procedure Initialize (Self : in out SAX_Simple_Reader) is
    begin
+      Matreshka.Internals.XML.Attributes.Initialize (Self.Attribute_Set);
       Matreshka.Internals.XML.Namespace_Scopes.Initialize
        (Self.Namespace_Scope);
       Matreshka.Internals.XML.Entity_Tables.Initialize (Self.Entities);

@@ -94,21 +94,11 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Process start tag, rule [44].
 
-   procedure Process_Attribute
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier;
-     Value  : League.Strings.Universal_String);
-   --  Process attribute.
-
    procedure Process_Processing_Instruction
     (Self   : not null access SAX_Simple_Reader'Class;
      Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : League.Strings.Universal_String);
    --  Process processing instruction.
-
-   procedure Process_Attribute_In_Set
-    (Self  : not null access SAX_Simple_Reader'Class);
-   --  Process single attribute by adding it into set of attributes.
 
    procedure Process_External_Id
     (Self      : not null access SAX_Simple_Reader'Class;
@@ -128,41 +118,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
       State.State_Stack (State.TOS) := 0;
       State.Look_Ahead := True;
    end Initialize;
-
-   -----------------------
-   -- Process_Attribute --
-   -----------------------
-
-   procedure Process_Attribute
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier;
-     Value  : League.Strings.Universal_String) is
-   begin
-      Self.Attribute :=
-       (Namespace_URI  => League.Strings.Empty_String,
-        Local_Name     => Symbol,
-        Qualified_Name => Symbol,
-        Value          => Value);
-   end Process_Attribute;
-
-   ------------------------------
-   -- Process_Attribute_In_Set --
-   ------------------------------
-
-   procedure Process_Attribute_In_Set
-    (Self : not null access SAX_Simple_Reader'Class) is
-   begin
-      Matreshka.SAX.Attributes.Internals.Append
-       (Self           => Self.Attributes,
-        Namespace_URI  => Self.Attribute.Namespace_URI,
-        Local_Name     =>
-          Matreshka.Internals.XML.Symbol_Tables.Name
-           (Self.Symbols, Self.Attribute.Local_Name),
-        Qualified_Name =>
-          Matreshka.Internals.XML.Symbol_Tables.Name
-           (Self.Symbols, Self.Attribute.Qualified_Name),
-        Value          => Self.Attribute.Value);
-   end Process_Attribute_In_Set;
 
    ---------------------
    -- Process_Comment --
@@ -986,21 +941,21 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 115 =>
-               Process_Attribute_In_Set (Self);
+               Actions.On_Elements_Attribute
+                (Self,
+                 yy.value_stack (yy.tos-2).Symbol,
+                 yy.value_stack (yy.tos).String);
 
             when 116 =>
-               Process_Attribute_In_Set (Self);
+               Actions.On_Elements_Attribute
+                (Self,
+                 yy.value_stack (yy.tos-2).Symbol,
+                 yy.value_stack (yy.tos).String);
 
             when 117 =>
                null;
 
             when 118 =>
-               Process_Attribute
-                (Self,
-                 yy.value_stack (yy.tos-2).Symbol,
-                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
-
-            when 119 =>
                Move (yyval, yy.value_stack (yy.tos-1));
                when others =>
                   raise Program_Error

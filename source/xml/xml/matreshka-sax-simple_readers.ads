@@ -51,6 +51,7 @@ with Matreshka.SAX.Readers;
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
+private with Matreshka.Internals.XML.Attributes;
 private with Matreshka.Internals.XML.Entity_Tables;
 private with Matreshka.Internals.XML.Namespace_Scopes;
 private with Matreshka.Internals.XML.Symbol_Tables;
@@ -370,8 +371,7 @@ private
       --  When components can't be nested thier information is not hold in
       --  YYSType and placed directly here to avoid copy overhead.
 
-      Attribute          : Attribute_Record;
-      --  Single attribute of the element.
+      Attribute_Set      : Matreshka.Internals.XML.Attributes.Attribute_Set;
       Attributes         : Matreshka.SAX.Attributes.SAX_Attributes;
       --  Set of attributes of the element.
 
