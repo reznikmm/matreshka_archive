@@ -145,9 +145,12 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
       --  start-tag.
    
       if Self.Element_Names.Last_Element /= Symbol then
-         raise Program_Error
-           with "[3 WFC: Element Type Match] name of end tag doesn't match name of start tag";
-         --  Fatal error
+         Callbacks.Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("[3 WFC: Element Type Match]"
+               & " end tag name must match start tag name"));
+         Self.Continue := False;
       end if;
 
       if Self.Namespaces.Enabled then
