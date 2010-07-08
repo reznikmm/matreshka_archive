@@ -355,9 +355,8 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <DOCTYPE_EXTINT>"SYSTEM" {
    --  Keyword SYSTEM, rule [75].
 
-   Set_Continue_State (Self, DOCTYPE_INT);
    Reset_Whitespace_Matched (Self);
-   Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
+   Push_And_Enter_Start_Condition (Self, DOCTYPE_INT, EXTERNAL_ID_SYS);
 
    return Token_System;
 }
@@ -371,7 +370,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    end if;
 
    Reset_Whitespace_Matched (Self);
-   Enter_Start_Condition (Self, Get_Continue_State (Self));
+   Pop_Start_Condition (Self);
    Set_String_Internal
     (Item          => YYLVal,
      String        => YY_Text_Internal (1, 1),
@@ -384,9 +383,8 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <DOCTYPE_EXTINT>"PUBLIC" {
    --  Keyword PUBLIC, rule [75].
 
-   Set_Continue_State (Self, DOCTYPE_INT);
    Reset_Whitespace_Matched (Self);
-   Enter_Start_Condition (Self, EXTERNAL_ID_PUB);
+   Push_And_Enter_Start_Condition (Self, DOCTYPE_INT, EXTERNAL_ID_PUB);
 
    return Token_Public;
 }
@@ -514,9 +512,8 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ENTITY_DEF>"SYSTEM" {
    --  Entity value as ExternalID, rule [75], used by rules [73], [74].
 
-   Set_Continue_State (Self, ENTITY_DEF);
    Reset_Whitespace_Matched (Self);
-   Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
+   Push_And_Enter_Start_Condition (Self, ENTITY_DEF, EXTERNAL_ID_SYS);
 
    return Token_System;
 }
@@ -524,9 +521,8 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ENTITY_DEF>"PUBLIC" {
    --  Entity value as ExternalID, rule [75], used by rules [73], [74].
 
-   Set_Continue_State (Self, ENTITY_DEF);
    Reset_Whitespace_Matched (Self);
-   Enter_Start_Condition (Self, EXTERNAL_ID_PUB);
+   Push_And_Enter_Start_Condition (Self, ENTITY_DEF, EXTERNAL_ID_PUB);
 
    return Token_Public;
 }
@@ -1001,11 +997,13 @@ with Matreshka.Internals.Strings;
    procedure Enter_Start_Condition
     (Self : access Integer; State : Integer) is separate;
 
-   procedure Set_Continue_State
+   procedure Push_And_Enter_Start_Condition
+    (Self : access Integer; Push : Integer; Set : Integer) is separate;
+
+   procedure Push_Start_Condition
     (Self : access Integer; State : Integer) is separate;
 
-   function Get_Continue_State
-    (Self : access Integer) return Integer is separate;
+   procedure Pop_Start_Condition (Self : access Integer) is separate;
 
    procedure Set_Whitespace_Matched (Self : access Integer) is separate;
 

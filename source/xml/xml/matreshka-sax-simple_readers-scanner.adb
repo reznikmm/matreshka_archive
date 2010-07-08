@@ -59,19 +59,21 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
    type Character_Reference_Form is (Decimal, Hexadecimal);
 
-   procedure Set_Continue_State
+   procedure Push_Start_Condition
     (Self  : not null access SAX_Simple_Reader'Class;
      State : Interfaces.Unsigned_32);
-   pragma Inline (Set_Continue_State);
-   --  Set scanner's state to be used after completion of recognition of
-   --  current template sequence.
+   --  Pushs specified condition into the stack of start conditions.
 
-   function Get_Continue_State
-    (Self : not null access SAX_Simple_Reader'Class)
-       return Interfaces.Unsigned_32;
-   pragma Inline (Get_Continue_State);
-   --  Get scanner's state to be used after completion of recognition of
-   --  current template sequence.
+   procedure Push_And_Enter_Start_Condition
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Push  : Interfaces.Unsigned_32;
+     Enter : Interfaces.Unsigned_32);
+   --  Pushs first specified condition into the stack of start conditions and
+   --  enters second specified condition as current start condition.
+
+   procedure Pop_Start_Condition
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Set scanner's start condition from the stack of start conditions.
 
    procedure Reset_Whitespace_Matched
     (Self : not null access SAX_Simple_Reader'Class);
@@ -180,17 +182,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Scanner_State.YY_Start_State := 1 + 2 * State;
    end Enter_Start_Condition;
 
-   ------------------------
-   -- Get_Continue_State --
-   ------------------------
-
-   function Get_Continue_State
-    (Self : not null access SAX_Simple_Reader'Class)
-       return Interfaces.Unsigned_32 is
-   begin
-      return Self.Scanner_State.Continue_State;
-   end Get_Continue_State;
-
    ----------------------------
    -- Get_Whitespace_Matched --
    ----------------------------
@@ -200,6 +191,18 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    begin
       return Self.Whitespace_Matched;
    end Get_Whitespace_Matched;
+
+   -------------------------
+   -- Pop_Start_Condition --
+   -------------------------
+
+   procedure Pop_Start_Condition
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Enter_Start_Condition
+       (Self, Self.Scanner_State.Start_Condition_Stack.Last_Element);
+      Self.Scanner_State.Start_Condition_Stack.Delete_Last;
+   end Pop_Start_Condition;
 
    ---------------------------------------------
    -- Process_Attribute_Value_Close_Delimiter --
@@ -252,7 +255,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
       else
          Reset_Whitespace_Matched (Self);
-         Enter_Start_Condition (Self, Self.Scanner_State.Continue_State);
+         Pop_Start_Condition (Self);
 
          return Token_Value_Close;
       end if;
@@ -273,7 +276,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Scanner_State.Delimiter :=
         Code_Point
          (Self.Scanner_State.Data.Value (Self.Scanner_State.YY_Base_Position));
-      Self.Scanner_State.Continue_State := State;
+      Push_Start_Condition (Self, State);
 
       case Self.Version is
          when XML_1_0 =>
@@ -708,16 +711,29 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       end if;
    end Resolve_Symbol;
 
-   ------------------------
-   -- Set_Continue_State --
-   ------------------------
+   ------------------------------------
+   -- Push_And_Enter_Start_Condition --
+   ------------------------------------
 
-   procedure Set_Continue_State
+   procedure Push_And_Enter_Start_Condition
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Push  : Interfaces.Unsigned_32;
+     Enter : Interfaces.Unsigned_32) is
+   begin
+      Self.Scanner_State.Start_Condition_Stack.Append (Push);
+      Self.Scanner_State.YY_Start_State := 1 + 2 * Enter;
+   end Push_And_Enter_Start_Condition;
+
+   --------------------------
+   -- Push_Start_Condition --
+   --------------------------
+
+   procedure Push_Start_Condition
     (Self  : not null access SAX_Simple_Reader'Class;
      State : Interfaces.Unsigned_32) is
    begin
-      Self.Scanner_State.Continue_State := State;
-   end Set_Continue_State;
+      Self.Scanner_State.Start_Condition_Stack.Append (State);
+   end Push_Start_Condition;
 
    ----------------------------
    -- Set_Whitespace_Matched --
@@ -1294,9 +1310,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 21 =>
                --  Keyword SYSTEM, rule [75].
             
-               Set_Continue_State (Self, DOCTYPE_INT);
                Reset_Whitespace_Matched (Self);
-               Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
+               Push_And_Enter_Start_Condition (Self, DOCTYPE_INT, EXTERNAL_ID_SYS);
             
                return Token_System;
 
@@ -1309,7 +1324,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                end if;
             
                Reset_Whitespace_Matched (Self);
-               Enter_Start_Condition (Self, Get_Continue_State (Self));
+               Pop_Start_Condition (Self);
                Set_String_Internal
                 (Item          => YYLVal,
                  String        => YY_Text_Internal (1, 1),
@@ -1321,9 +1336,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 23 =>
                --  Keyword PUBLIC, rule [75].
             
-               Set_Continue_State (Self, DOCTYPE_INT);
                Reset_Whitespace_Matched (Self);
-               Enter_Start_Condition (Self, EXTERNAL_ID_PUB);
+               Push_And_Enter_Start_Condition (Self, DOCTYPE_INT, EXTERNAL_ID_PUB);
             
                return Token_Public;
 
@@ -1439,18 +1453,16 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 35 =>
                --  Entity value as ExternalID, rule [75], used by rules [73], [74].
             
-               Set_Continue_State (Self, ENTITY_DEF);
                Reset_Whitespace_Matched (Self);
-               Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
+               Push_And_Enter_Start_Condition (Self, ENTITY_DEF, EXTERNAL_ID_SYS);
             
                return Token_System;
 
             when 36 =>
                --  Entity value as ExternalID, rule [75], used by rules [73], [74].
             
-               Set_Continue_State (Self, ENTITY_DEF);
                Reset_Whitespace_Matched (Self);
-               Enter_Start_Condition (Self, EXTERNAL_ID_PUB);
+               Push_And_Enter_Start_Condition (Self, ENTITY_DEF, EXTERNAL_ID_PUB);
             
                return Token_Public;
 
