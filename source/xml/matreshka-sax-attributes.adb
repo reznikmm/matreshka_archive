@@ -44,8 +44,12 @@
 with Ada.Unchecked_Deallocation;
 
 with League.Strings.Internals;
+with Matreshka.Internals.Strings.Compare;
 
 package body Matreshka.SAX.Attributes is
+
+   use League.Strings.Internals;
+   use Matreshka.Internals.Strings.Compare;
 
    procedure Free is
      new Ada.Unchecked_Deallocation
@@ -109,6 +113,47 @@ package body Matreshka.SAX.Attributes is
       end if;
    end Finalize;
 
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self           : SAX_Attributes'Class;
+     Qualified_Name : League.Strings.Universal_String) return Natural is
+   begin
+      for J in 1 .. Self.Data.Length loop
+         if Is_Equal
+             (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
+         then
+            return J;
+         end if;
+      end loop;
+
+      return 0;
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self          : SAX_Attributes'Class;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String) return Natural is
+   begin
+      for J in 1 .. Self.Data.Length loop
+         if Is_Equal
+             (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
+           and Is_Equal
+                (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
+         then
+            return J;
+         end if;
+      end loop;
+
+      return 0;
+   end Index;
+
    ------------
    -- Length --
    ------------
@@ -130,9 +175,7 @@ package body Matreshka.SAX.Attributes is
          raise Constraint_Error;
       end if;
 
-      return
-        League.Strings.Internals.Create
-         (Self.Data.Values (Index).Local_Name);
+      return Create (Self.Data.Values (Index).Local_Name);
    end Local_Name;
 
    -------------------
@@ -147,9 +190,7 @@ package body Matreshka.SAX.Attributes is
          raise Constraint_Error;
       end if;
 
-      return
-        League.Strings.Internals.Create
-         (Self.Data.Values (Index).Namespace_URI);
+      return Create (Self.Data.Values (Index).Namespace_URI);
    end Namespace_URI;
 
    ---------------
@@ -175,9 +216,7 @@ package body Matreshka.SAX.Attributes is
          raise Constraint_Error;
       end if;
 
-      return
-        League.Strings.Internals.Create
-         (Self.Data.Values (Index).Qualified_Name);
+      return Create (Self.Data.Values (Index).Qualified_Name);
    end Qualified_Name;
 
    -----------
@@ -192,7 +231,7 @@ package body Matreshka.SAX.Attributes is
          raise Constraint_Error;
       end if;
 
-      return League.Strings.Internals.Create (Self.Data.Values (Index).Value);
+      return Create (Self.Data.Values (Index).Value);
    end Value;
 
 end Matreshka.SAX.Attributes;

@@ -55,6 +55,17 @@ package Matreshka.SAX.Attributes is
 
    type SAX_Attributes is tagged private;
 
+   function Index
+    (Self           : SAX_Attributes'Class;
+     Qualified_Name : League.Strings.Universal_String)
+       return Natural;
+
+   function Index
+    (Self          : SAX_Attributes'Class;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String)
+       return Natural;
+
    function Length (Self : SAX_Attributes'Class) return Natural;
 
    function Local_Name
@@ -128,5 +139,7 @@ private
    overriding procedure Adjust (Self : in out SAX_Attributes);
 
    overriding procedure Finalize (Self : in out SAX_Attributes);
+
+   pragma Inline (Length);
 
 end Matreshka.SAX.Attributes;
