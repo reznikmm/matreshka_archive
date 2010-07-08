@@ -191,13 +191,13 @@ doctypedecl_optional:
 }
     internal_subset_optional
 {
-   Actions.On_End_Of_Internal_Subset
-    (Self,
-     $1.Symbol);
+   Actions.On_End_Of_Internal_Subset (Self);
 }
     external_subset_optional Token_Close
 {
-   null;
+   Actions.On_End_Of_Document_Type_Declaration
+    (Self,
+     $1.Symbol);
 }
     Misc_any
 {
@@ -208,7 +208,7 @@ doctypedecl_optional:
 {
    --  Document type declaration, rule [28]. 
 
-   Actions.On_End_Of_Internal_Subset
+   Actions.On_End_Of_Document_Type_Declaration
     (Self,
      $1.Symbol);
 }
@@ -294,6 +294,12 @@ intSubset:
    Process_Comment
     (Self,
      League.Strings.Internals.Create ($1.String));
+}
+  | TextDecl
+{
+   --  Text declaration comes from external subset or external entity.
+
+   null;
 }
   ;
 
@@ -826,9 +832,12 @@ with Matreshka.Internals.XML.Symbol_Tables;
 
       procedure On_External_Subset_Declaration (Self : access Integer);
 
-      procedure On_End_Of_Internal_Subset
+      procedure On_End_Of_Internal_Subset (Self : access Integer);
+
+      procedure On_End_Of_Document_Type_Declaration
        (Self   : access Integer;
         Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
    end Actions;
 
    package body Actions is separate;

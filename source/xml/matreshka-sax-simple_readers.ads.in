@@ -177,6 +177,7 @@ private
       YY_Start_State      : Interfaces.Unsigned_32 := 1;
       Last_Match          : Boolean  := True;
       --  This mean that last match need to be processed.
+      Is_External_Subset  : Boolean  := False;
       Continue_State      : Interfaces.Unsigned_32;
       Delimiter           : Matreshka.Internals.Unicode.Code_Point;
       --  Delimiter of the entity value.

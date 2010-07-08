@@ -531,20 +531,21 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    end Process_XML_PI;
 
    --------------------------
-   -- Push_External_Entity --
+   -- Push_External_Subset --
    --------------------------
 
-   procedure Push_External_Entity
+   procedure Push_External_Subset
     (Self : not null access SAX_Simple_Reader'Class;
      Data : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Self.Scanner_Stack.Append (Self.Scanner_State);
       Self.Stack_Is_Empty := False;
 
-      Self.Scanner_State := (Data, others => <>);
-      Enter_Start_Condition (Self, DOCTYPE_INTSUBSET_10);
-      --  XXX Version handling must be fixed.
-   end Push_External_Entity;
+      Self.Scanner_State := (Data, Is_External_Subset => True, others => <>);
+      Enter_Start_Condition (Self, INITIAL);
+      --  Reset scanner to INITIAL state to be able to process text
+      --  declaration at the beginning of external subset.
+   end Push_External_Subset;
 
    ---------------------------
    -- Push_Parameter_Entity --

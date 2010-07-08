@@ -196,13 +196,30 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
            Is_CData      => False);
       end if;
 
-      case Self.Version is
-         when XML_1_0 =>
-            Enter_Start_Condition (Self, Tables.DOCUMENT_10);
+      if Self.Stack_Is_Empty
+        or not Self.Scanner_State.Is_External_Subset
+      then
+         --  XML document or external parsed general entity.
 
-         when XML_1_1 =>
-            Enter_Start_Condition (Self, Tables.DOCUMENT_11);
-      end case;
+         case Self.Version is
+            when XML_1_0 =>
+               Enter_Start_Condition (Self, Tables.DOCUMENT_10);
+
+            when XML_1_1 =>
+               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+         end case;
+
+      else
+         --  External subset.
+
+         case Self.Version is
+            when XML_1_0 =>
+               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_10);
+
+            when XML_1_1 =>
+               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
+         end case;
+      end if;
 
       return Token_PI_Close;
    end On_Close_Of_Processing_Instruction;
@@ -260,13 +277,30 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
       YY_Move_Backward (Self);
 
-      case Self.Version is
-         when XML_1_0 =>
-            Enter_Start_Condition (Self, Tables.DOCUMENT_10);
+      if Self.Stack_Is_Empty
+        or not Self.Scanner_State.Is_External_Subset
+      then
+         --  XML document or external parsed general entity.
 
-         when XML_1_1 =>
-            Enter_Start_Condition (Self, Tables.DOCUMENT_11);
-      end case;
+         case Self.Version is
+            when XML_1_0 =>
+               Enter_Start_Condition (Self, Tables.DOCUMENT_10);
+
+            when XML_1_1 =>
+               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+         end case;
+
+      else
+         --  External subset.
+
+         case Self.Version is
+            when XML_1_0 =>
+               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_10);
+
+            when XML_1_1 =>
+               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
+         end case;
+      end if;
    end On_No_XML_Declaration;
 
    --------------------------------

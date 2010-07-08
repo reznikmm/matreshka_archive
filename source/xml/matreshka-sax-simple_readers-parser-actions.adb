@@ -105,20 +105,28 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
       end if;
    end On_Elements_Attribute;
 
+   -----------------------------------------
+   -- On_End_Of_Document_Type_Declaration --
+   -----------------------------------------
+
+   procedure On_End_Of_Document_Type_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Self.Root_Symbol := Symbol;
+   end On_End_Of_Document_Type_Declaration;
+
    -------------------------------
    -- On_End_Of_Internal_Subset --
    -------------------------------
 
    procedure On_End_Of_Internal_Subset
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+    (Self : not null access SAX_Simple_Reader'Class) is
    begin
-      Self.Root_Symbol := Symbol;
-
       --  Substitute external subset if any.
 
       if not Self.External_Subset.Is_Empty then
-         Scanner.Push_External_Entity
+         Scanner.Push_External_Subset
           (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
       end if;
    end On_End_Of_Internal_Subset;
