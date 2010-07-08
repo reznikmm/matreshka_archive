@@ -50,6 +50,12 @@ package body Matreshka.Internals.XML.Entity_Tables is
    procedure Free is
      new Ada.Unchecked_Deallocation (Entity_Array, Entity_Array_Access);
 
+   procedure New_Entity
+    (Self   : in out Entity_Table;
+     Entity : out Entity_Identifier);
+   --  Allocates new entity and returns its identifier. Reallocates internal
+   --  memory when needed.
+
    --------------
    -- Finalize --
    --------------
@@ -116,6 +122,28 @@ package body Matreshka.Internals.XML.Entity_Tables is
       return Self.Data (Entity).Kind = External_Unparsed_General_Entity;
    end Is_External_Unparsed_General_Entity;
 
+   ----------------
+   -- New_Entity --
+   ----------------
+
+   procedure New_Entity
+    (Self   : in out Entity_Table;
+     Entity : out Entity_Identifier)
+   is
+      Aux : Entity_Array_Access := Self.Data;
+
+   begin
+      Self.Last := Self.Last + 1;
+      Entity := Self.Last;
+
+      if Self.Last > Self.Data'Last then
+         Self.Data :=
+           new Entity_Array (Self.Data'First .. Self.Data'Last + 16);
+         Self.Data (Aux'Range) := Aux.all;
+         Free (Aux);
+      end if;
+   end New_Entity;
+
    -----------------------------------
    -- New_External_Parameter_Entity --
    -----------------------------------
@@ -124,8 +152,8 @@ package body Matreshka.Internals.XML.Entity_Tables is
     (Self   : in out Entity_Table;
      Entity : out Entity_Identifier) is
    begin
-      Self.Last := Self.Last + 1;
-      Entity := Self.Last;
+      New_Entity (Self, Entity);
+
       Self.Data (Entity) :=
        (Kind             => External_Parameter_Entity,
         Notation         => No_Symbol,
@@ -140,8 +168,8 @@ package body Matreshka.Internals.XML.Entity_Tables is
     (Self   : in out Entity_Table;
      Entity : out Entity_Identifier) is
    begin
-      Self.Last := Self.Last + 1;
-      Entity := Self.Last;
+      New_Entity (Self, Entity);
+
       Self.Data (Entity) :=
        (Kind             => External_Parsed_General_Entity,
         Notation         => No_Symbol,
@@ -157,8 +185,8 @@ package body Matreshka.Internals.XML.Entity_Tables is
      Notation : Symbol_Identifier;
      Entity   : out Entity_Identifier) is
    begin
-      Self.Last := Self.Last + 1;
-      Entity := Self.Last;
+      New_Entity (Self, Entity);
+
       Self.Data (Entity) :=
        (Kind             => External_Unparsed_General_Entity,
         Notation         => Notation,
@@ -175,8 +203,8 @@ package body Matreshka.Internals.XML.Entity_Tables is
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Entity           : out Entity_Identifier) is
    begin
-      Self.Last := Self.Last + 1;
-      Entity := Self.Last;
+      New_Entity (Self, Entity);
+
       Self.Data (Entity) :=
        (Kind             => Internal_General_Entity,
         Notation         => No_Symbol,
@@ -193,8 +221,8 @@ package body Matreshka.Internals.XML.Entity_Tables is
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Entity           : out Entity_Identifier) is
    begin
-      Self.Last := Self.Last + 1;
-      Entity := Self.Last;
+      New_Entity (Self, Entity);
+
       Self.Data (Entity) :=
        (Kind             => Internal_Parameter_Entity,
         Notation         => No_Symbol,
