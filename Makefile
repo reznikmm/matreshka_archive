@@ -18,6 +18,7 @@ all: gnat/matreshka_config.gpr
 
 check: all
 	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr
+	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml_tests.gpr
 #	valgrind .objs/library_level_test
 	.objs/string_hash_test
 	.objs/string_operations
@@ -30,6 +31,7 @@ check: all
 	.objs/additional_normalization_test
 	.objs/collation_test $(UCADATA)
 	.objs/regexp_ataresearch testsuite/league/ataresearch/basic.dat testsuite/league/ataresearch/matreshka/basic.dat
+	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml
 
 ucd:
 	gprbuild -p -Pgnat/tools.gpr
