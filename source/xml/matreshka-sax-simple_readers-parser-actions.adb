@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
 with Matreshka.SAX.Attributes.Internals;
 with Matreshka.SAX.Simple_Readers.Scanner;
 with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
@@ -104,6 +105,24 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
       end if;
    end On_Elements_Attribute;
 
+   -------------------------------
+   -- On_End_Of_Internal_Subset --
+   -------------------------------
+
+   procedure On_End_Of_Internal_Subset
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Self.Root_Symbol := Symbol;
+
+      --  Substitute external subset if any.
+
+      if not Self.External_Subset.Is_Empty then
+         Scanner.Push_External_Entity
+          (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
+      end if;
+   end On_End_Of_Internal_Subset;
+
    ----------------
    -- On_End_Tag --
    ----------------
@@ -146,6 +165,20 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
 
       Self.Element_Names.Delete_Last;
    end On_End_Tag;
+
+   ------------------------------------
+   -- On_External_Subset_Declaration --
+   ------------------------------------
+
+   procedure On_External_Subset_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Self.Entity_Resolver.Resolve_Entity
+       (Self.Public_Id,
+        Self.System_Id,
+        Self.External_Subset,
+        Self.Continue);
+   end On_External_Subset_Declaration;
 
    ------------------
    -- On_Start_Tag --

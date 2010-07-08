@@ -67,13 +67,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Comment : League.Strings.Universal_String);
    --  Process comment in the document.
 
-   procedure Process_Document_Type_Declaration
-    (Self        : not null access SAX_Simple_Reader'Class;
-     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
-     Is_External : Boolean);
-   --  Process document type declaration rule [28] and prepare to analyze its
-   --  external subset if any.
-
    procedure Process_General_Entity_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
      Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
@@ -129,28 +122,6 @@ package body Matreshka.SAX.Simple_Readers.Parser is
    begin
       Handler_Callbacks.Call_Comment (Self, Comment);
    end Process_Comment;
-
-   ---------------------------------------
-   -- Process_Document_Type_Declaration --
-   ---------------------------------------
-
-   procedure Process_Document_Type_Declaration
-    (Self        : not null access SAX_Simple_Reader'Class;
-     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
-     Is_External : Boolean) is
-   begin
-      Self.Root_Symbol := Symbol;
-
-      if Is_External then
-         Self.Entity_Resolver.Resolve_Entity
-          (Self.Public_Id,
-           Self.System_Id,
-           Self.External_Subset,
-           Self.Continue);
-         Scanner.Push_External_Entity
-          (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
-      end if;
-   end Process_Document_Type_Declaration;
 
    -------------------------------
    -- Process_Empty_Element_Tag --
@@ -584,35 +555,29 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             when 19 =>
                --  Document type declaration, rule [28]. Once external identifier are
                --  recognized external document type declaration subset need to be parsed 
-               --  before processing of internal subset. External subset is inserted
-               --  immediately after external identifier when present. Thus original
-               --  rule [28] is rewritten and extended to reflect this inclusion.
+               --  after processing of internal subset. External subset is inserted
+               --  immediately after the internal subset. Thus original rule [28] is
+               --  rewritten and extended to reflect this inclusion.
             
-               Process_Document_Type_Declaration
-                (Self,
-                 yy.value_stack (yy.tos-1).Symbol,
-                 True);
+               Actions.On_External_Subset_Declaration (Self);
 
             when 20 =>
-               null;
+               Actions.On_End_Of_Internal_Subset
+                (Self,
+                 yy.value_stack (yy.tos-3).Symbol);
 
             when 21 =>
                null;
 
             when 22 =>
-               --  Document type declaration, rule [28]. Once external identifier are
-               --  recognized external document type declaration subset need to be parsed 
-               --  before processing of internal subset. External subset is inserted
-               --  immediately after external identifier when present. Thus original
-               --  rule [28] is rewritten and extended to reflect this inclusion.
-            
-               Process_Document_Type_Declaration
-                (Self,
-                 yy.value_stack (yy.tos).Symbol,
-                 False);
+               null;
 
             when 23 =>
-               null;
+               --  Document type declaration, rule [28]. 
+            
+               Actions.On_End_Of_Internal_Subset
+                (Self,
+                 yy.value_stack (yy.tos-2).Symbol);
 
             when 24 =>
                null;

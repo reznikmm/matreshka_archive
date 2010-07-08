@@ -58,10 +58,19 @@ private package Matreshka.SAX.Simple_Readers.Parser.Actions is
       Value  : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Handles attribute of the element.
 
+   procedure On_End_Of_Internal_Subset
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Handles root element declaration and substitute external subset if any.
+
    procedure On_End_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Handles end tag, rule [42].
+
+   procedure On_External_Subset_Declaration
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles reference to external subset in the document type declaration.
 
    procedure On_Start_Tag
     (Self   : not null access SAX_Simple_Reader'Class;

@@ -183,16 +183,19 @@ doctypedecl_optional:
 {
    --  Document type declaration, rule [28]. Once external identifier are
    --  recognized external document type declaration subset need to be parsed 
-   --  before processing of internal subset. External subset is inserted
-   --  immediately after external identifier when present. Thus original
-   --  rule [28] is rewritten and extended to reflect this inclusion.
+   --  after processing of internal subset. External subset is inserted
+   --  immediately after the internal subset. Thus original rule [28] is
+   --  rewritten and extended to reflect this inclusion.
 
-   Process_Document_Type_Declaration
-    (Self,
-     $1.Symbol,
-     True);
+   Actions.On_External_Subset_Declaration (Self);
 }
-    external_subset_optional internal_subset_optional Token_Close
+    internal_subset_optional
+{
+   Actions.On_End_Of_Internal_Subset
+    (Self,
+     $1.Symbol);
+}
+    external_subset_optional Token_Close
 {
    null;
 }
@@ -201,22 +204,13 @@ doctypedecl_optional:
    null;
 }
   |
-    Token_Doctype_Decl_Open
+    Token_Doctype_Decl_Open internal_subset_optional Token_Close
 {
-   --  Document type declaration, rule [28]. Once external identifier are
-   --  recognized external document type declaration subset need to be parsed 
-   --  before processing of internal subset. External subset is inserted
-   --  immediately after external identifier when present. Thus original
-   --  rule [28] is rewritten and extended to reflect this inclusion.
+   --  Document type declaration, rule [28]. 
 
-   Process_Document_Type_Declaration
+   Actions.On_End_Of_Internal_Subset
     (Self,
-     $1.Symbol,
-     False);
-}
-    external_subset_optional internal_subset_optional Token_Close
-{
-   null;
+     $1.Symbol);
 }
     Misc_any
 {
@@ -766,11 +760,6 @@ with Matreshka.Internals.XML.Symbol_Tables;
     (Self    : access Integer;
      Comment : League.Strings.Universal_String) is separate;
 
-   procedure Process_Document_Type_Declaration
-    (Self        : access Integer;
-     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
-     Is_External : Boolean) is separate;
-
    procedure Process_General_Entity_Declaration
     (Self        : access Integer;
      Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
@@ -831,10 +820,15 @@ with Matreshka.Internals.XML.Symbol_Tables;
         Symbol : Matreshka.Internals.XML.Symbol_Identifier);
 
       procedure On_Elements_Attribute
-        (Self   : access Integer;
-         Symbol : Matreshka.Internals.XML.Symbol_Identifier;
-         Value  : not null Matreshka.Internals.Strings.Shared_String_Access);
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier;
+        Value  : not null Matreshka.Internals.Strings.Shared_String_Access);
 
+      procedure On_External_Subset_Declaration (Self : access Integer);
+
+      procedure On_End_Of_Internal_Subset
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    end Actions;
 
    package body Actions is separate;
