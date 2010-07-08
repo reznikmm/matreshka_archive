@@ -86,14 +86,16 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  Returns value of "whitespace matched" flag.
 
    procedure Push_General_Entity_In_Attribute_Value
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Data  : not null Matreshka.Internals.Strings.Shared_String_Access);
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Entity : Matreshka.Internals.XML.Entity_Identifier;
+     Data   : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Push replacement text of general entity in attribute value into
    --  scanner's stack.
 
    procedure Push_General_Entity_In_Document_Content
-    (Self : not null access SAX_Simple_Reader'Class;
-     Data : not null Matreshka.Internals.Strings.Shared_String_Access);
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Entity : Matreshka.Internals.XML.Entity_Identifier;
+     Data   : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Push replacement text of general entity in document content into
    --  scanner's stack.
 
@@ -467,7 +469,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
       else
          Push_General_Entity_In_Document_Content
-          (Self, Replacement_Text (Self.Entities, Entity));
+          (Self, Entity, Replacement_Text (Self.Entities, Entity));
       end if;
    end Process_General_Entity_Reference_In_Document_Content;
 
@@ -491,7 +493,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
       else
          Push_General_Entity_In_Attribute_Value
-          (Self, Replacement_Text (Self.Entities, Entity));
+          (Self, Entity, Replacement_Text (Self.Entities, Entity));
       end if;
    end Process_General_Entity_Reference_In_Attribute_Value;
 
@@ -574,13 +576,30 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --------------------------------------------
 
    procedure Push_General_Entity_In_Attribute_Value
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Data  : not null Matreshka.Internals.Strings.Shared_String_Access) is
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Entity : Matreshka.Internals.XML.Entity_Identifier;
+     Data   : not null Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      S : Scanner_State_Information;
+
    begin
+      if Self.Scanner_State.Entity = Entity then
+         raise Program_Error with "general entity references itself";
+      end if;
+
+      for J in 1 .. Integer (Self.Scanner_Stack.Length) loop
+         S := Self.Scanner_Stack.Element (J);
+
+         if S.Entity = Entity then
+            raise Program_Error with "general entity references itself";
+         end if;
+      end loop;
+
       Self.Scanner_Stack.Append (Self.Scanner_State);
       Self.Stack_Is_Empty := False;
 
-      Self.Scanner_State := (Data, In_Literal => True, others => <>);
+      Self.Scanner_State :=
+       (Data, Entity => Entity, In_Literal => True, others => <>);
 
       case Self.Version is
          when XML_1_0 =>
@@ -596,13 +615,29 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    ---------------------------------------------
 
    procedure Push_General_Entity_In_Document_Content
-    (Self : not null access SAX_Simple_Reader'Class;
-     Data : not null Matreshka.Internals.Strings.Shared_String_Access) is
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Entity : Matreshka.Internals.XML.Entity_Identifier;
+     Data   : not null Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      S : Scanner_State_Information;
+
    begin
+      if Self.Scanner_State.Entity = Entity then
+         raise Program_Error with "general entity references itself";
+      end if;
+
+      for J in 1 .. Integer (Self.Scanner_Stack.Length) loop
+         S := Self.Scanner_Stack.Element (J);
+
+         if S.Entity = Entity then
+            raise Program_Error with "general entity references itself";
+         end if;
+      end loop;
+
       Self.Scanner_Stack.Append (Self.Scanner_State);
       Self.Stack_Is_Empty := False;
 
-      Self.Scanner_State := (Data, others => <>);
+      Self.Scanner_State := (Data, Entity => Entity, others => <>);
       Enter_Start_Condition (Self, INITIAL);
    end Push_General_Entity_In_Document_Content;
 
