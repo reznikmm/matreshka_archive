@@ -9,6 +9,7 @@ with Put_Line;
 with Read_File;
 
 procedure Performance is
+   use type League.Strings.Universal_String;
    use type Ada.Calendar.Time;
 
    Reader      : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
@@ -17,6 +18,7 @@ procedure Performance is
    Load_Start  : Ada.Calendar.Time;
    Parse_Start : Ada.Calendar.Time;
    Stop        : Ada.Calendar.Time;
+
 --   task type T;
 --
 --   task body T is
