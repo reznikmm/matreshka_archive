@@ -98,40 +98,50 @@ package body XMLConf.Testsuite_Handlers is
      Id   : League.Strings.Universal_String;
      Base : League.Strings.Universal_String;
      URI  : League.Strings.Universal_String;
-     Kind : Test_Kinds)
-   is
-      Cwd    : constant String := Ada.Directories.Current_Directory;
-      Dwd    : constant String
-        := Ada.Directories.Containing_Directory
-            (Ada.Characters.Conversions.To_String
-              (League.Strings.To_Wide_Wide_String (Base & URI)));
-      Text   : League.Strings.Universal_String;
-      Reader : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
-
+     Kind : Test_Kinds) is
    begin
-      Ada.Directories.Set_Directory (Dwd);
+      declare
+         Cwd    : constant String := Ada.Directories.Current_Directory;
+         Dwd    : constant String
+           := Ada.Directories.Containing_Directory
+               (Ada.Characters.Conversions.To_String
+                 (League.Strings.To_Wide_Wide_String (Base & URI)));
+         Text   : League.Strings.Universal_String;
+         Reader : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
 
-      select
-         delay 3.0;
+      begin
+         Ada.Directories.Set_Directory (Dwd);
 
-         raise Program_Error with "terminated by timeout";
+         select
+            delay 3.0;
 
-      then abort
-         Text :=
-           Read_File
-            (Ada.Directories.Simple_Name
-              (Ada.Characters.Conversions.To_String
-                (URI.To_Wide_Wide_String)));
-         Reader.Parse (Text);
-      end select;
+            raise Program_Error with "terminated by timeout";
 
-      Ada.Directories.Set_Directory (Cwd);
+         then abort
+            Text :=
+              Read_File
+               (Ada.Directories.Simple_Name
+                 (Ada.Characters.Conversions.To_String
+                   (URI.To_Wide_Wide_String)));
+            Reader.Parse (Text);
+         end select;
+
+         Ada.Directories.Set_Directory (Cwd);
+
+      exception
+         when X : others =>
+            Ada.Directories.Set_Directory (Cwd);
+            Self.Results (Kind).Crash := Self.Results (Kind).Crash + 1;
+            Put_Line (Id & ": crashed");
+            Put_Line
+             (League.Strings.To_Universal_String
+               (Ada.Characters.Conversions.To_Wide_Wide_String
+                 (Ada.Exceptions.Exception_Information (X))));
+      end;
 
    exception
       when X : others =>
-         Ada.Directories.Set_Directory (Cwd);
-         Self.Results (Kind).Crash := Self.Results (Kind).Crash + 1;
-         Put_Line (Id & ": crashed");
+         Put_Line (Id & ": initialization/finalization crashed");
          Put_Line
           (League.Strings.To_Universal_String
             (Ada.Characters.Conversions.To_Wide_Wide_String
