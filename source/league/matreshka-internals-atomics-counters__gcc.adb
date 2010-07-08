@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -98,6 +98,7 @@ package body Matreshka.Internals.Atomics.Counters is
    function Is_One (Self : not null access Counter) return Boolean is
    begin
       Sync_Synchronize;
+
       return Self.Value = 1;
    end Is_One;
 
@@ -108,6 +109,7 @@ package body Matreshka.Internals.Atomics.Counters is
    function Is_Zero (Self : not null access Counter) return Boolean is
    begin
       Sync_Synchronize;
+
       return Self.Value = 0;
    end Is_Zero;
 
