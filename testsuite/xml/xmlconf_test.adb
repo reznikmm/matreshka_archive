@@ -48,16 +48,21 @@ with League.Strings;
 with Matreshka.SAX.Simple_Readers;
 
 with XMLConf.Entity_Resolvers;
+with XMLConf.Testsuite_Handlers;
 with Put_Line;
 with Read_File;
 
 procedure XMLConf_Test is
+
+   use XMLConf;
+
    Cwd      : constant String := Ada.Directories.Current_Directory;
    Data     : constant String := Ada.Command_Line.Argument (1);
    Dwd      : constant String := Ada.Directories.Containing_Directory (Data);
    Tests    : League.Strings.Universal_String;
    Reader   : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
    Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
+   Handler  : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
 
 begin
    Matreshka.SAX.Simple_Readers.Put_Line := Put_Line'Access;
@@ -69,8 +74,17 @@ begin
    Ada.Directories.Set_Directory (Dwd);
    Tests := Read_File (Ada.Directories.Simple_Name (Data));
    Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
+   Reader.Set_Content_Handler (Handler'Unchecked_Access);
    Reader.Parse (Tests);
    Ada.Directories.Set_Directory (Cwd);
+
+   if Handler.Results (Valid).Crash /= 0
+     or Handler.Results (Invalid).Crash /= 0
+     or Handler.Results (Not_Wellformed).Crash /= 0
+     or Handler.Results (Error).Crash /= 0
+   then
+      raise Program_Error;
+   end if;
 
 exception
    when others =>
