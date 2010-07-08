@@ -101,9 +101,10 @@ package body Matreshka.Internals.XML.Namespace_Scopes is
    procedure Initialize (Self : in out Namespace_Scope) is
    begin
       Self.Mappings := new Mapping_Array (1 .. 16);
-      Self.Mappings (1) := (Symbol_xmlns, Symbol_xmlns_NS);
+      Self.Mappings (1) := (Symbol_xml, Symbol_xml_NS);
+      Self.Mappings (2) := (Symbol_xmlns, Symbol_xmlns_NS);
       Self.Scopes := new Scope_Array (1 .. 16);
-      Self.Scopes (1) := (0, 1, 1);
+      Self.Scopes (1) := (0, 1, 2);
       Self.Last := 1;
    end Initialize;
 

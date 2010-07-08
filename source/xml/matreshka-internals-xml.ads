@@ -55,6 +55,7 @@ package Matreshka.Internals.XML is
    Symbol_quot     : constant Symbol_Identifier;
    Symbol_xml      : constant Symbol_Identifier;
    Symbol_xmlns    : constant Symbol_Identifier;
+   Symbol_xml_NS   : constant Symbol_Identifier;
    Symbol_xmlns_NS : constant Symbol_Identifier;
 
    type Entity_Identifier is private;
@@ -76,7 +77,8 @@ private
    Symbol_quot     : constant Symbol_Identifier := 5;
    Symbol_xml      : constant Symbol_Identifier := 6;
    Symbol_xmlns    : constant Symbol_Identifier := 7;
-   Symbol_xmlns_NS : constant Symbol_Identifier := 8;
+   Symbol_xml_NS   : constant Symbol_Identifier := 8;
+   Symbol_xmlns_NS : constant Symbol_Identifier := 9;
 
    type Entity_Identifier is mod 2 ** 32;
    No_Entity   : constant Entity_Identifier := 0;
