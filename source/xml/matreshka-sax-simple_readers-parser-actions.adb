@@ -44,7 +44,7 @@
 with League.Strings.Internals;
 with Matreshka.SAX.Attributes.Internals;
 with Matreshka.SAX.Simple_Readers.Scanner;
-with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
+with Matreshka.SAX.Simple_Readers.Callbacks;
 
 package body Matreshka.SAX.Simple_Readers.Parser.Actions is
 
@@ -67,10 +67,10 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
      Is_Whitespace : Boolean) is
    begin
       if Is_Whitespace then
-         Handler_Callbacks.Call_Ignorable_Whitespace (Self, Text);
+         Callbacks.Call_Ignorable_Whitespace (Self, Text);
 
       else
-         Handler_Callbacks.Call_Characters (Self, Text);
+         Callbacks.Call_Characters (Self, Text);
       end if;
    end On_Character_Data;
 
@@ -94,7 +94,7 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
          --  An attribute name MUST NOT appear more than once in the same
          --  start-tag or empty-element tag.
 
-         Handler_Callbacks.Call_Fatal_Error
+         Callbacks.Call_Fatal_Error
           (Self,
            League.Strings.To_Universal_String
             ("[3.1 WFC: Unique Att Spec]"
@@ -143,7 +143,7 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
       end if;
 
       if Self.Namespaces.Enabled then
-         Handler_Callbacks.Call_End_Element
+         Callbacks.Call_End_Element
           (Self           => Self,
            Namespace_URI  =>
              Name
@@ -156,7 +156,7 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
          Pop_Scope (Self.Namespace_Scope);
 
       else
-         Handler_Callbacks.Call_End_Element
+         Callbacks.Call_End_Element
           (Self           => Self,
            Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
            Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
@@ -337,7 +337,7 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
          end loop;
 
          Convert;
-         Handler_Callbacks.Call_Start_Element
+         Callbacks.Call_Start_Element
           (Self           => Self,
            Namespace_URI  =>
              Name
@@ -350,7 +350,7 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
 
       else
          Convert;
-         Handler_Callbacks.Call_Start_Element
+         Callbacks.Call_Start_Element
           (Self           => Self,
            Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
            Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,

@@ -44,7 +44,7 @@
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.SAX.Attributes.Internals;
-with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
+with Matreshka.SAX.Simple_Readers.Callbacks;
 with Matreshka.SAX.Simple_Readers.Parser.Actions;
 with Matreshka.SAX.Simple_Readers.Parser.Tables;
 with Matreshka.SAX.Simple_Readers.Scanner;
@@ -120,7 +120,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
     (Self    : not null access SAX_Simple_Reader'Class;
      Comment : League.Strings.Universal_String) is
    begin
-      Handler_Callbacks.Call_Comment (Self, Comment);
+      Callbacks.Call_Comment (Self, Comment);
    end Process_Comment;
 
    -------------------------------
@@ -191,7 +191,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                Matreshka.Internals.Strings.Reference (A);
                Set_Replacement_Text (Self.Entities, Entity, A);
                Set_General_Entity (Self.Symbols, Symbol, Entity);
-               Handler_Callbacks.Call_External_Entity_Decl
+               Callbacks.Call_External_Entity_Decl
                 (Self, Name, Self.Public_Id, Self.System_Id);
             end;
 
@@ -199,7 +199,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             New_External_Unparsed_General_Entity
              (Self.Entities, Notation, Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
-            Handler_Callbacks.Call_Unparsed_Entity_Decl
+            Callbacks.Call_Unparsed_Entity_Decl
              (Self,
               Name,
               Self.Public_Id,
@@ -217,7 +217,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             Matreshka.Internals.Strings.Reference (A);
             New_Internal_General_Entity (Self.Entities, A, Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
-            Handler_Callbacks.Call_Internal_Entity_Decl (Self, Name, Value);
+            Callbacks.Call_Internal_Entity_Decl (Self, Name, Value);
          end;
       end if;
    end Process_General_Entity_Declaration;
@@ -287,7 +287,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
      Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : League.Strings.Universal_String) is
    begin
-      Handler_Callbacks.Call_Processing_Instruction (Self, Target, Data);
+      Callbacks.Call_Processing_Instruction (Self, Target, Data);
    end Process_Processing_Instruction;
 
    -------------------
@@ -468,7 +468,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
 
          elsif YY_Action = YY_Error_Code then  --  ERROR
             if not Self.Error_Reported then
-               Matreshka.SAX.Simple_Readers.Handler_Callbacks.Call_Fatal_Error
+               Callbacks.Call_Fatal_Error
                 (Self, League.Strings.To_Universal_String ("syntax error"));
                Self.Continue := False;
             end if;

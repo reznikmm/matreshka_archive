@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Strings.Operations;
-with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
+with Matreshka.SAX.Simple_Readers.Callbacks;
 with Matreshka.SAX.Simple_Readers.Scanner.Tables;
 
 package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
@@ -71,7 +71,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
       if Self.Element_Names.Is_Empty then
          --  Document content not entered.
 
-         Matreshka.SAX.Simple_Readers.Handler_Callbacks.Call_Fatal_Error
+         Callbacks.Call_Fatal_Error
           (Self,
            League.Strings.To_Universal_String
             ("Text may not appear after the root element"));
@@ -102,7 +102,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
          --  Matched string ends with literal ']]>' which is invalid in
          --  character data.
 
-         Matreshka.SAX.Simple_Readers.Handler_Callbacks.Call_Fatal_Error
+         Callbacks.Call_Fatal_Error
           (Self,
            League.Strings.To_Universal_String
             ("[[14] CharData] Text may not contain a literal ']]>' sequence"));
@@ -238,7 +238,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
       --  "The replacement text of any entity referred to directly or
       --  indirectly in an attribute value MUST NOT contain a <."
 
-      Matreshka.SAX.Simple_Readers.Handler_Callbacks.Call_Fatal_Error
+      Callbacks.Call_Fatal_Error
        (Self,
         League.Strings.To_Universal_String
          ("[3.1 WFC: No < in Attribute Values]"
@@ -294,7 +294,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
    function On_Unexpected_Character
     (Self : not null access SAX_Simple_Reader'Class) return Token is
    begin
-      Matreshka.SAX.Simple_Readers.Handler_Callbacks.Call_Fatal_Error
+      Callbacks.Call_Fatal_Error
        (Self, League.Strings.To_Universal_String ("unexpected character"));
       Self.Error_Reported := True;
 

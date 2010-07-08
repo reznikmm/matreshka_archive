@@ -44,7 +44,7 @@
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.SAX.Locators.Internals;
-with Matreshka.SAX.Simple_Readers.Handler_Callbacks;
+with Matreshka.SAX.Simple_Readers.Callbacks;
 with Matreshka.SAX.Simple_Readers.Parser;
 with Matreshka.SAX.Simple_Readers.Scanner;
 
@@ -190,7 +190,7 @@ package body Matreshka.SAX.Simple_Readers is
    begin
       Matreshka.SAX.Locators.Internals.Set_Location
        (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
-      Handler_Callbacks.Call_Set_Document_Locator (Self, Self.Locator);
+      Callbacks.Call_Set_Document_Locator (Self, Self.Locator);
       Self.Last_Chunk := Last_Chunk;
       Self.Scanner_State.Last_Match := Last_Chunk;
 

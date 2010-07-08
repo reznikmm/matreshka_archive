@@ -47,7 +47,7 @@ with League.Strings.Internals;
 with Matreshka.SAX.Locators.Internals;
 with Matreshka.SAX.Parse_Exceptions.Internals;
 
-package body Matreshka.SAX.Simple_Readers.Handler_Callbacks is
+package body Matreshka.SAX.Simple_Readers.Callbacks is
 
    ---------------------
    -- Call_Characters --
@@ -411,4 +411,4 @@ package body Matreshka.SAX.Simple_Readers.Handler_Callbacks is
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_Warning;
 
-end Matreshka.SAX.Simple_Readers.Handler_Callbacks;
+end Matreshka.SAX.Simple_Readers.Callbacks;

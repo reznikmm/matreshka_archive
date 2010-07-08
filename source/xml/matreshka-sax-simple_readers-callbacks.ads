@@ -44,7 +44,7 @@
 --  This package contains code to call handlers and catch exceptions comes
 --  from user defined handlers.
 
-private package Matreshka.SAX.Simple_Readers.Handler_Callbacks is
+private package Matreshka.SAX.Simple_Readers.Callbacks is
 
    pragma Preelaborate;
 
@@ -131,4 +131,4 @@ private package Matreshka.SAX.Simple_Readers.Handler_Callbacks is
      Message : League.Strings.Universal_String);
    --  Calls handler's SAX_Error_Handler.Warning subprogram.
 
-end Matreshka.SAX.Simple_Readers.Handler_Callbacks;
+end Matreshka.SAX.Simple_Readers.Callbacks;
