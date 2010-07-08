@@ -83,6 +83,15 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles open of internal subset of document type declaration.
 
+   function On_Open_Of_Processing_Instruction
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open of processing instruction.
+
+   function On_Open_Of_XML_Processing_Instruction
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open of XML declaration in document or text declaration in
+   --  external entity or external subset.
+
    function On_Unexpected_Character
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  General handling of unexpected character.

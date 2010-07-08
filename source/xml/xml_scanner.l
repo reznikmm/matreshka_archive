@@ -157,7 +157,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 "<?xml" {
    --  Open of XML declaration or text declaration, rules [23], [77].
 
-   return Process_XML_PI (Self);
+   return Actions.On_Open_Of_XML_Processing_Instruction (Self);
 }
 
 .|\n {
@@ -167,15 +167,11 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    Actions.On_No_XML_Declaration (Self);
 }
 
-<DOCUMENT_10,DOCUMENT_11>"<?"{NAME} {
+<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,DOCUMENT_10,DOCUMENT_11>"<?"{NAME} {
    --  Open of processing instruction, rule [16]. Rule [17] is implemented
    --  implicitly by ordering of open of XMLDecl and open of PI.
 
-   Resolve_Symbol (Self, 2, 0, False, False, YYLVal);
-   Enter_Start_Condition (Self, PI);
-   Reset_Whitespace_Matched (Self);
-
-   return Token_PI_Open;
+   return Actions.On_Open_Of_Processing_Instruction (Self);
 }
 
 <DOCUMENT_10,DOCUMENT_11>"<!DOCTYPE"{WHITE_SPACE}{NAME} {
@@ -1104,13 +1100,17 @@ with Matreshka.Internals.Strings;
 
       function On_Close_Of_Declaration (Self : access Integer) return Token;
 
+      function On_Close_Of_Tag (Self : access Integer) return Token;
+
       function On_Close_Of_Empty_Element_Tag (Self : access Integer) return Token;
+
+      function On_Open_Of_XML_Processing_Instruction (Self : access Integer) return Token;
+
+      function On_Open_Of_Processing_Instruction (Self : access Integer) return Token;
 
       function On_Close_Of_Processing_Instruction
        (Self     : access Integer;
         Is_Empty : Boolean) return Token;
-
-      function On_Close_Of_Tag (Self : access Integer) return Token;
 
    end Actions;
 

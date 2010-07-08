@@ -67,6 +67,9 @@ private package Matreshka.SAX.Simple_Readers.Scanner is
    --  Push text of external subset of document type declaration into the
    --  scanner's stack.
 
+   procedure Initialize (Self : in out SAX_Simple_Reader'Class);
+   --  Initializes start condition stack.
+
 private
 
    function YY_Text
@@ -92,5 +95,35 @@ private
      State : Interfaces.Unsigned_32);
    pragma Inline (Enter_Start_Condition);
    --  Enter a start condition.
+
+   procedure Push_And_Enter_Start_Condition
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Push  : Interfaces.Unsigned_32;
+     Enter : Interfaces.Unsigned_32);
+   --  Pushs first specified condition into the stack of start conditions and
+   --  enters second specified condition as current start condition.
+
+   procedure Pop_Start_Condition
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Set scanner's start condition from the stack of start conditions.
+
+   function Start_Condition
+    (Self  : not null access SAX_Simple_Reader'Class)
+       return Interfaces.Unsigned_32;
+   --  Returns current start condition.
+
+   procedure Reset_Whitespace_Matched
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Resets "whitespace matched" flag.
+
+   procedure Resolve_Symbol
+    (Self              : not null access SAX_Simple_Reader'Class;
+     Trim_Left         : Natural;
+     Trim_Right        : Natural;
+     Trim_Whitespace   : Boolean;
+     Is_Qualified_Name : Boolean;
+     YYLVal            : out YYSType);
+   --  Converts name to symbol. If Is_Qualified_Name is True it means the name
+   --  is qualified name according to Namespaces in XML specification.
 
 end Matreshka.SAX.Simple_Readers.Scanner;

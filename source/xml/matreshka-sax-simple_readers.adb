@@ -161,6 +161,8 @@ package body Matreshka.SAX.Simple_Readers is
       --  or two code units, thus preallocate enough space.
 
 --      Self.Validation := (others => True);
+
+      Scanner.Initialize (Self);
    end Initialize;
 
    ---------------------

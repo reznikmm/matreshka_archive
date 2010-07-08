@@ -64,21 +64,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
      State : Interfaces.Unsigned_32);
    --  Pushs specified condition into the stack of start conditions.
 
-   procedure Push_And_Enter_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Push  : Interfaces.Unsigned_32;
-     Enter : Interfaces.Unsigned_32);
-   --  Pushs first specified condition into the stack of start conditions and
-   --  enters second specified condition as current start condition.
-
-   procedure Pop_Start_Condition
-    (Self : not null access SAX_Simple_Reader'Class);
-   --  Set scanner's start condition from the stack of start conditions.
-
-   procedure Reset_Whitespace_Matched
-    (Self : not null access SAX_Simple_Reader'Class);
-   --  Resets "whitespace matched" flag.
-
    procedure Set_Whitespace_Matched
     (Self : not null access SAX_Simple_Reader'Class);
    --  Sets "whitespace matched" flag.
@@ -139,20 +124,14 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    --  "Include In Literal" (4.4.5) mode for parameter entities, when quotation
    --  and apostrophe characters are not recognized as delimiters.
 
-   function Process_XML_PI
-    (Self : not null access SAX_Simple_Reader'Class)
-       return Token;
-   --  Process start of XML declaration or text declaration.
+   ----------------
+   -- Initialize --
+   ----------------
 
-   procedure Resolve_Symbol
-    (Self              : not null access SAX_Simple_Reader'Class;
-     Trim_Left         : Natural;
-     Trim_Right        : Natural;
-     Trim_Whitespace   : Boolean;
-     Is_Qualified_Name : Boolean;
-     YYLVal            : out YYSType);
-   --  Converts name to symbol. If Is_Qualified_Name is True it means the name
-   --  is qualified name according to Namespaces in XML specification.
+   procedure Initialize (Self : in out SAX_Simple_Reader'Class) is
+   begin
+      Self.Scanner_State.Start_Condition_Stack.Append (Tables.DOCUMENT_10);
+   end Initialize;
 
    ----------------------
    -- YY_Move_Backward --
@@ -179,7 +158,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self  : not null access SAX_Simple_Reader'Class;
      State : Interfaces.Unsigned_32) is
    begin
-      Self.Scanner_State.YY_Start_State := 1 + 2 * State;
+      Self.Scanner_State.YY_Start_State := State * 2 + 1;
    end Enter_Start_Condition;
 
    ----------------------------
@@ -521,20 +500,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       end if;
    end Process_Parameter_Entity_Reference_In_Entity_Value;
 
-   --------------------
-   -- Process_XML_PI --
-   --------------------
-
-   function Process_XML_PI
-    (Self : not null access SAX_Simple_Reader'Class)
-       return Token is
-   begin
-      Enter_Start_Condition (Self, XML_DECL);
-      Reset_Whitespace_Matched (Self);
-
-      return Token_XML_Decl_Open;
-   end Process_XML_PI;
-
    --------------------------
    -- Push_External_Subset --
    --------------------------
@@ -547,7 +512,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Stack_Is_Empty := False;
 
       Self.Scanner_State := (Data, Is_External_Subset => True, others => <>);
-      Enter_Start_Condition (Self, INITIAL);
+      Push_And_Enter_Start_Condition (Self, DOCTYPE_INTSUBSET_10, INITIAL);
       --  Reset scanner to INITIAL state to be able to process text
       --  declaration at the beginning of external subset.
    end Push_External_Subset;
@@ -641,7 +606,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       Self.Stack_Is_Empty := False;
 
       Self.Scanner_State := (Data, Entity => Entity, others => <>);
-      Enter_Start_Condition (Self, INITIAL);
+      Push_And_Enter_Start_Condition
+       (Self, Tables.DOCUMENT_10, Tables.INITIAL);
    end Push_General_Entity_In_Document_Content;
 
    ------------------------------
@@ -753,8 +719,48 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self    : not null access SAX_Simple_Reader'Class;
      Version : XML_Version) is
    begin
-      Self.Version := Version;
+      if Self.Version /= Version then
+         Self.Version := Version;
+
+         raise Program_Error;
+--         case Self.Version is
+--            when XML_1_0 =>
+--               case Self.Scanner_State.Continue_State is
+--                  when DOCUMENT_11 =>
+--                     Self.Scanner_State.Continue_State := DOCUMENT_10;
+--
+--                  when DOCTYPE_INTSUBSET_11 =>
+--                     Self.Scanner_State.Continue_State := DOCTYPE_INTSUBSET_10;
+--
+--                  when others =>
+--                     raise Program_Error;
+--               end case;
+--
+--            when XML_1_1 =>
+--               case Self.Scanner_State.Continue_State is
+--                  when DOCUMENT_10 =>
+--                     Self.Scanner_State.Continue_State := DOCUMENT_11;
+--
+--                  when DOCTYPE_INTSUBSET_10 =>
+--                     Self.Scanner_State.Continue_State := DOCTYPE_INTSUBSET_11;
+--
+--                  when others =>
+--                     raise Program_Error;
+--               end case;
+--         end case;
+      end if;
    end Set_XML_Version;
+
+   ---------------------
+   -- Start_Condition --
+   ---------------------
+
+   function Start_Condition
+    (Self  : not null access SAX_Simple_Reader'Class)
+       return Interfaces.Unsigned_32 is
+   begin
+      return (Self.Scanner_State.YY_Start_State - 1) / 2;
+   end Start_Condition;
 
    -----------
    -- YYLex --
@@ -1151,7 +1157,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 1 =>
                --  Open of XML declaration or text declaration, rules [23], [77].
             
-               return Process_XML_PI (Self);
+               return Actions.On_Open_Of_XML_Processing_Instruction (Self);
 
             when 2 =>
                --  Any character except literal "<?xml" means there is no XML declaration
@@ -1163,11 +1169,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Open of processing instruction, rule [16]. Rule [17] is implemented
                --  implicitly by ordering of open of XMLDecl and open of PI.
             
-               Resolve_Symbol (Self, 2, 0, False, False, YYLVal);
-               Enter_Start_Condition (Self, PI);
-               Reset_Whitespace_Matched (Self);
-            
-               return Token_PI_Open;
+               return Actions.On_Open_Of_Processing_Instruction (Self);
 
             when 4 =>
                --  Open tag of document type declaration and name of root element,

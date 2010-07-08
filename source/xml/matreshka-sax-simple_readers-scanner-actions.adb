@@ -196,30 +196,31 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
            Is_CData      => False);
       end if;
 
-      if Self.Stack_Is_Empty
-        or not Self.Scanner_State.Is_External_Subset
-      then
-         --  XML document or external parsed general entity.
-
-         case Self.Version is
-            when XML_1_0 =>
-               Enter_Start_Condition (Self, Tables.DOCUMENT_10);
-
-            when XML_1_1 =>
-               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
-         end case;
-
-      else
-         --  External subset.
-
-         case Self.Version is
-            when XML_1_0 =>
-               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_10);
-
-            when XML_1_1 =>
-               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
-         end case;
-      end if;
+      Pop_Start_Condition (Self);
+--      if Self.Stack_Is_Empty
+--        or not Self.Scanner_State.Is_External_Subset
+--      then
+--         --  XML document or external parsed general entity.
+--
+--         case Self.Version is
+--            when XML_1_0 =>
+--               Enter_Start_Condition (Self, Tables.DOCUMENT_10);
+--
+--            when XML_1_1 =>
+--               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+--         end case;
+--
+--      else
+--         --  External subset.
+--
+--         case Self.Version is
+--            when XML_1_0 =>
+--               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_10);
+--
+--            when XML_1_1 =>
+--               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
+--         end case;
+--      end if;
 
       return Token_PI_Close;
    end On_Close_Of_Processing_Instruction;
@@ -276,31 +277,31 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
       --  parser entity and switch to XML 1.0 mode.
 
       YY_Move_Backward (Self);
-
-      if Self.Stack_Is_Empty
-        or not Self.Scanner_State.Is_External_Subset
-      then
-         --  XML document or external parsed general entity.
-
-         case Self.Version is
-            when XML_1_0 =>
-               Enter_Start_Condition (Self, Tables.DOCUMENT_10);
-
-            when XML_1_1 =>
-               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
-         end case;
-
-      else
-         --  External subset.
-
-         case Self.Version is
-            when XML_1_0 =>
-               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_10);
-
-            when XML_1_1 =>
-               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
-         end case;
-      end if;
+      Pop_Start_Condition (Self);
+--      if Self.Stack_Is_Empty
+--        or not Self.Scanner_State.Is_External_Subset
+--      then
+--         --  XML document or external parsed general entity.
+--
+--         case Self.Version is
+--            when XML_1_0 =>
+--               Enter_Start_Condition (Self, Tables.DOCUMENT_10);
+--
+--            when XML_1_1 =>
+--               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+--         end case;
+--
+--      else
+--         --  External subset.
+--
+--         case Self.Version is
+--            when XML_1_0 =>
+--               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_10);
+--
+--            when XML_1_1 =>
+--               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
+--         end case;
+--      end if;
    end On_No_XML_Declaration;
 
    --------------------------------
@@ -320,6 +321,34 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
       return Token_Internal_Subset_Open;
    end On_Open_Of_Internal_Subset;
+
+   -------------------------------------------
+   -- On_Open_Of_XML_Processing_Instruction --
+   -------------------------------------------
+
+   function On_Open_Of_XML_Processing_Instruction
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      Push_And_Enter_Start_Condition
+       (Self, Start_Condition (Self), Tables.XML_DECL);
+      Reset_Whitespace_Matched (Self);
+
+      return Token_XML_Decl_Open;
+   end On_Open_Of_XML_Processing_Instruction;
+
+   ---------------------------------------
+   -- On_Open_Of_Processing_Instruction --
+   ---------------------------------------
+
+   function On_Open_Of_Processing_Instruction
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      Resolve_Symbol (Self, 2, 0, False, False, Self.YYLVal);
+      Push_And_Enter_Start_Condition (Self, Start_Condition (Self), Tables.PI);
+      Reset_Whitespace_Matched (Self);
+
+      return Token_PI_Open;
+   end On_Open_Of_Processing_Instruction;
 
    -----------------------------
    -- On_Unexpected_Character --

@@ -295,6 +295,10 @@ intSubset:
     (Self,
      League.Strings.Internals.Create ($1.String));
 }
+  | PI
+{
+   null;
+}
   | TextDecl
 {
    --  Text declaration comes from external subset or external entity.
