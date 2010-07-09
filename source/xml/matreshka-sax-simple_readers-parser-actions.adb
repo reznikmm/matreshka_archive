@@ -230,6 +230,9 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
          end loop;
       end Convert;
 
+      Element_Prefix    : Symbol_Identifier;
+      Element_Namespace : Symbol_Identifier := No_Symbol;
+
    begin
       if Self.Element_Names.Is_Empty then
          --  Root element.
@@ -466,21 +469,75 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
             end;
          end loop;
 
+         Element_Prefix := Prefix_Name (Self.Symbols, Symbol);
+
+         if Element_Prefix /= No_Symbol then
+            Element_Namespace :=
+              Resolve (Self.Namespace_Scope, Element_Prefix);
+
+            --  [NSXML1.1 5 NSC: Prefix Declared]
+            --
+            --  "The namespace prefix, unless it is xml or xmlns, must have
+            --  been declared in a namespace declaration attribute in either
+            --  the start-tag of the element where the prefix is used or in an
+            --  ancestor element (i.e. an element in whose content the prefixed
+            --  markup occurs), Furthermore, the attribute value is the
+            --  innermost such declaration must not be an empty string."
+            --
+            --  Check whether element's prefix is declared.
+
+            if Element_Namespace = No_Symbol then
+               Callbacks.Call_Fatal_Error
+                (Self,
+                 League.Strings.To_Universal_String
+                  ("[NSXML1.1 5 NSC: Prefix Declared]"
+                     & " the element's namespace prefix have not been"
+                     & " declared"));
+               Self.Continue := False;
+
+               return;
+            end if;
+         end if;
+           
          --  Resolve attribute's namespaces.
 
          for J in 1 .. Length (Self.Attribute_Set) loop
             declare
-               Qname : constant Symbol_Identifier
+               Qname  : constant Symbol_Identifier
                  := Qualified_Name (Self.Attribute_Set, J);
                Prefix : constant Symbol_Identifier
                  := Prefix_Name (Self.Symbols, Qname);
+               Ns     : Symbol_Identifier;
 
             begin
                if Prefix /= No_Symbol then
-                  Set_Namespace_URI
-                   (Self.Attribute_Set,
-                    J,
-                    Resolve (Self.Namespace_Scope, Prefix));
+                  Ns := Resolve (Self.Namespace_Scope, Prefix);
+
+                  --  [NSXML1.1 5 NSC: Prefix Declared]
+                  --
+                  --  "The namespace prefix, unless it is xml or xmlns, must
+                  --  have been declared in a namespace declaration attribute
+                  --  in either the start-tag of the element where the prefix
+                  --  is used or in an ancestor element (i.e. an element in
+                  --  whose content the prefixed markup occurs), Furthermore,
+                  --  the attribute value is the innermost such declaration
+                  --  must not be an empty string."
+                  --
+                  --  Check whether attribute's prefix is declared.
+
+                  if Ns = No_Symbol then
+                     Callbacks.Call_Fatal_Error
+                      (Self,
+                       League.Strings.To_Universal_String
+                        ("[NSXML1.1 5 NSC: Prefix Declared]"
+                           & " the attribute's namespace prefix have not been"
+                           & " declared"));
+                     Self.Continue := False;
+
+                     return;
+                  end if;
+
+                  Set_Namespace_URI (Self.Attribute_Set, J, Ns);
                end if;
             end;
          end loop;
@@ -523,11 +580,7 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
          Convert;
          Callbacks.Call_Start_Element
           (Self           => Self,
-           Namespace_URI  =>
-             Name
-              (Self.Symbols,
-               Resolve
-                (Self.Namespace_Scope, Prefix_Name (Self.Symbols, Symbol))),
+           Namespace_URI  => Name (Self.Symbols, Element_Namespace),
            Local_Name     => Local_Name (Self.Symbols, Symbol),
            Qualified_Name => Name (Self.Symbols, Symbol),
            Attributes     => Self.Attributes);
