@@ -264,6 +264,28 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
       if Self.Namespaces.Enabled then
          Push_Scope (Self.Namespace_Scope);
 
+         --  [NSXML1.1 3 NSC: Reserved Prefixes and Namespace Names]
+         --
+         --  "The prefix xmlns is used only to declare namespace bindings
+         --  and is by definition bound to the namespace name
+         --  http://www.w3.org/2000/xmlns/. It must not be declared or
+         --  undeclared. Other prefixes must not be bound to this namespace
+         --  name, and it must not be declared as the default namespace.
+         --  Element names must not have the prefix xmlns."
+         --
+         --  Check whether element name doesn't have xmlns prefix.
+
+         if Prefix_Name (Self.Symbols, Symbol) = Symbol_xmlns then
+            Callbacks.Call_Fatal_Error
+             (Self,
+              League.Strings.To_Universal_String
+               ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
+                  & " Names] element name must not have the prefix xmlns"));
+            Self.Continue := False;
+
+            return;
+         end if;
+
          --  Process namespace attributes.
 
          for J in 1 .. Length (Self.Attribute_Set) loop
@@ -271,24 +293,175 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
                Qname : constant Symbol_Identifier
                  := Qualified_Name (Self.Attribute_Set, J);
                Ns    : Symbol_Identifier;
+               Lname : Symbol_Identifier;
 
             begin
                if Qname = Symbol_xmlns then
                   --  Default namespace.
 
                   Insert (Self.Symbols, Value (Self.Attribute_Set, J), Ns);
+
+                  --  [NSXML1.1 3 NSC: Reserved Prefixes and Namespace Names]
+                  --
+                  --  "The prefix xml is by definition bound to the namespace
+                  --  name http://www.w3.org/XML/1998/namespace. It may, but
+                  --  need not, be declared, and must not be undeclared or
+                  --  bound to any other namespace name. Other prefixes must
+                  --  not be bound to this namespace name, and it must not be
+                  --  declared as the default namespace."
+                  --
+                  --  Check whether xml namespace name is not declared as
+                  --  default namespace.
+
+                  if Ns = Symbol_xml_NS then
+                     Callbacks.Call_Fatal_Error
+                      (Self,
+                       League.Strings.To_Universal_String
+                        ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
+                           & " Names] xml namespace name must not be declared"
+                           & " as default namespace"));
+                     Self.Continue := False;
+
+                     return;
+                  end if;
+
+                  --  [NSXML1.1 3 NSC: Reserved Prefixes and Namespace Names]
+                  --
+                  --  "The prefix xmlns is used only to declare namespace
+                  --  bindings and is by definition bound to the namespace
+                  --  name http://www.w3.org/2000/xmlns/. It must not be
+                  --  declared or undeclared. Other prefixes must not be
+                  --  bound to this namespace name, and it must not be
+                  --  declared as the default namespace. Element names must
+                  --  not have the prefix xmlns."
+                  --
+                  --  Check whether xmlns namespace name is not declared as
+                  --  default namespace.
+            
+                  if Ns = Symbol_xmlns_NS then
+                     Callbacks.Call_Fatal_Error
+                      (Self,
+                       League.Strings.To_Universal_String
+                        ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
+                           & " Names] xmlns namespace name must not be"
+                           & " declared as default namespace"));
+                     Self.Continue := False;
+
+                     return;
+                  end if;
+
                   Bind (Self.Namespace_Scope, No_Symbol, Ns);
 
-               else
+               elsif Prefix_Name (Self.Symbols, Qname) = Symbol_xmlns then
                   --  Prefixed namespace.
 
-                  if Prefix_Name (Self.Symbols, Qname) = Symbol_xmlns then
-                     Insert (Self.Symbols, Value (Self.Attribute_Set, J), Ns);
-                     Bind
-                      (Self.Namespace_Scope,
-                       Local_Name (Self.Symbols, Qname),
-                       Ns);
+                  Insert (Self.Symbols, Value (Self.Attribute_Set, J), Ns);
+                  Lname := Local_Name (Self.Symbols, Qname);
+
+                  --  [NSXML1.1 3 NSC: Reserved Prefixes and Namespace Names]
+                  --
+                  --  "The prefix xml is by definition bound to the namespace
+                  --  name http://www.w3.org/XML/1998/namespace. It may, but
+                  --  need not, be declared, and must not be undeclared or
+                  --  bound to any other namespace name. Other prefixes must
+                  --  not be bound to this namespace name, and it must not be
+                  --  declared as the default namespace."
+                  --
+                  --  Check whether xml prefix is not undeclared.
+
+                  if Ns = No_Symbol and Lname = Symbol_xml then
+                     Callbacks.Call_Fatal_Error
+                      (Self,
+                       League.Strings.To_Universal_String
+                        ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
+                           & " Names] xml prefix must not be undeclared"));
+                     Self.Continue := False;
+
+                     return;
                   end if;
+
+                  --  Check whether xml prefix is not bound to any other
+                  --  namespace name.
+
+                  if Ns /= Symbol_xml_NS and Lname = Symbol_xml then
+                     Callbacks.Call_Fatal_Error
+                      (Self,
+                       League.Strings.To_Universal_String
+                        ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
+                           & " Names] xml prefix must not be bound to any"
+                           & " other namespace name"));
+                     Self.Continue := False;
+
+                     return;
+                  end if;
+
+                  --  Check whether other prefixes is not bound to xml
+                  --  namespace name.
+
+                  if Ns = Symbol_xml_NS and Lname /= Symbol_xml then
+                     Callbacks.Call_Fatal_Error
+                      (Self,
+                       League.Strings.To_Universal_String
+                        ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
+                           & " Names] other prefixes must not be bound to xml"
+                           & " namespace name"));
+                     Self.Continue := False;
+
+                     return;
+                  end if;
+
+                  --  [NSXML1.1 3 NSC: Reserved Prefixes and Namespace Names]
+                  --
+                  --  "The prefix xmlns is used only to declare namespace
+                  --  bindings and is by definition bound to the namespace
+                  --  name http://www.w3.org/2000/xmlns/. It must not be
+                  --  declared or undeclared. Other prefixes must not be
+                  --  bound to this namespace name, and it must not be
+                  --  declared as the default namespace. Element names must
+                  --  not have the prefix xmlns."
+                  --
+                  --  Check whether declaring binding for xmlns.
+
+                  if Ns /= No_Symbol and Lname = Symbol_xmlns then
+                     Callbacks.Call_Fatal_Error
+                      (Self,
+                       League.Strings.To_Universal_String
+                        ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
+                           & " Names] the xmlns prefix must not be declared"));
+                     Self.Continue := False;
+
+                     return;
+                  end if;
+
+                  --  Check whether undeclaring binding for xmlns.
+
+                  if Ns = No_Symbol and Lname = Symbol_xmlns then
+                     Callbacks.Call_Fatal_Error
+                      (Self,
+                       League.Strings.To_Universal_String
+                        ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
+                           & " Names] the xmlns prefix must not be"
+                           & " undeclared"));
+                     Self.Continue := False;
+
+                     return;
+                  end if;
+
+                  --  Check whether prefix is bound to xmlns namespace name.
+
+                  if Ns = Symbol_xmlns_NS and Lname /= Symbol_xmlns then
+                     Callbacks.Call_Fatal_Error
+                      (Self,
+                       League.Strings.To_Universal_String
+                        ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
+                           & " Names] prefix must not be bound to xmlns"
+                           & " namespace name"));
+                     Self.Continue := False;
+
+                     return;
+                  end if;
+
+                  Bind (Self.Namespace_Scope, Lname, Ns);
                end if;
             end;
          end loop;
@@ -312,7 +485,7 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
             end;
          end loop;
 
-         --  Namespaces in XML 6.3
+         --  [NSXML1.1 6.3]
          --
          --  In XML documents conforming to this specification, no tag may
          --  contain two attributes which:
