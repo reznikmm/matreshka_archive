@@ -44,6 +44,8 @@
 with League.Strings;
 with Matreshka.SAX.Attributes;
 with Matreshka.SAX.Content_Handlers;
+with Matreshka.SAX.Error_Handlers;
+with Matreshka.SAX.Parse_Exceptions;
 
 package XMLConf.Testsuite_Handlers is
 
@@ -57,6 +59,7 @@ package XMLConf.Testsuite_Handlers is
 
    type Testsuite_Handler is
      limited new Matreshka.SAX.Content_Handlers.SAX_Content_Handler
+     and Matreshka.SAX.Error_Handlers.SAX_Error_Handler
    with record
       Base    : League.Strings.Universal_String;
       --  Base path to tests' data.
@@ -74,5 +77,10 @@ package XMLConf.Testsuite_Handlers is
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : Matreshka.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean);
+
+   overriding procedure Fatal_Error
+    (Self       : in out Testsuite_Handler;
+     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean);
 
 end XMLConf.Testsuite_Handlers;

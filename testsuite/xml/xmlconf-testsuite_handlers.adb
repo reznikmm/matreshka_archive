@@ -159,6 +159,18 @@ package body XMLConf.Testsuite_Handlers is
       return League.Strings.Empty_String;
    end Error_String;
 
+   -----------------
+   -- Fatal_Error --
+   -----------------
+
+   overriding procedure Fatal_Error
+    (Self       : in out Testsuite_Handler;
+     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean) is
+   begin
+      Put_Line ("FATAL ERROR: " & Occurrence.Message);
+   end Fatal_Error;
+
    -------------------
    -- Start_Element --
    -------------------

@@ -75,6 +75,7 @@ begin
    Tests := Read_File (Ada.Directories.Simple_Name (Data));
    Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
+   Reader.Set_Error_Handler (Handler'Unchecked_Access);
    Reader.Parse (Tests);
    Ada.Directories.Set_Directory (Cwd);
 
@@ -83,7 +84,13 @@ begin
      or Handler.Results (Not_Wellformed).Crash /= 0
      or Handler.Results (Error).Crash /= 0
    then
-      raise Program_Error;
+      raise Program_Error
+        with Integer'Image
+              (Handler.Results (Valid).Crash
+                 + Handler.Results (Invalid).Crash
+                 + Handler.Results (Not_Wellformed).Crash
+                 + Handler.Results (Error).Crash)
+          & " crashes";
    end if;
 
 exception
