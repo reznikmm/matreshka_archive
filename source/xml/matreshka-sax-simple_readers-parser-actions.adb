@@ -570,8 +570,14 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
                      (Self.Symbols, Qualified_Name (Self.Attribute_Set, K))
                         = Ln
                   then
-                     raise Program_Error
-                       with "[Namespaces in XML 6.3] attributes have the same expanded name";
+                     Callbacks.Call_Fatal_Error
+                      (Self,
+                       League.Strings.To_Universal_String
+                        ("[NSXML1.1 6.3] attributes must not have the same"
+                           & " expanded name"));
+                     Self.Continue := False;
+
+                     return;
                   end if;
                end loop;
             end;
