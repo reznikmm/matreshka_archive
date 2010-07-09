@@ -322,20 +322,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
       return Token_Internal_Subset_Open;
    end On_Open_Of_Internal_Subset;
 
-   -------------------------------------------
-   -- On_Open_Of_XML_Processing_Instruction --
-   -------------------------------------------
-
-   function On_Open_Of_XML_Processing_Instruction
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
-   begin
-      Push_And_Enter_Start_Condition
-       (Self, Start_Condition (Self), Tables.XML_DECL);
-      Reset_Whitespace_Matched (Self);
-
-      return Token_XML_Decl_Open;
-   end On_Open_Of_XML_Processing_Instruction;
-
    ---------------------------------------
    -- On_Open_Of_Processing_Instruction --
    ---------------------------------------
@@ -349,6 +335,20 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
       return Token_PI_Open;
    end On_Open_Of_Processing_Instruction;
+
+   -------------------------------------------
+   -- On_Open_Of_XML_Processing_Instruction --
+   -------------------------------------------
+
+   function On_Open_Of_XML_Processing_Instruction
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      Push_And_Enter_Start_Condition
+       (Self, Start_Condition (Self), Tables.XML_DECL);
+      Reset_Whitespace_Matched (Self);
+
+      return Token_XML_Decl_Open;
+   end On_Open_Of_XML_Processing_Instruction;
 
    -----------------------------
    -- On_Unexpected_Character --
