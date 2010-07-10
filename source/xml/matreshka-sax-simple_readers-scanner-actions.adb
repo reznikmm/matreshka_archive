@@ -701,7 +701,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
    begin
       Resolve_Symbol
-       (Self, 10, 0, True, True, Qname_Error, Self.YYLVal.Symbol);
+       (Self, 9, 0, True, True, Qname_Error, Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -799,6 +799,29 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
       return Token_Internal_Subset_Open;
    end On_Open_Of_Internal_Subset;
+
+   -------------------------------------
+   -- On_Open_Of_Notation_Declaration --
+   -------------------------------------
+
+   function On_Open_Of_Notation_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      Resolve_Symbol
+       (Self, 10, 0, True, False, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Push_Current_And_Enter_Start_Condition (Self, Tables.NOTATION_DECL);
+
+         return Token_Notation_Decl_Open;
+      end if;
+   end On_Open_Of_Notation_Declaration;
 
    ---------------------------------------
    -- On_Open_Of_Processing_Instruction --

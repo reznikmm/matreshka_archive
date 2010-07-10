@@ -139,6 +139,10 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles open of internal subset of document type declaration.
 
+   function On_Open_Of_Notation_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open of notation declaration.
+
    function On_Open_Of_Processing_Instruction
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles open of processing instruction.

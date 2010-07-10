@@ -648,19 +648,31 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 36 =>
+               null;
+
+            when 37 =>
                Process_Comment
                 (Self,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
-            when 37 =>
+            when 38 =>
                null;
 
-            when 38 =>
+            when 39 =>
                --  Text declaration comes from external subset or external entity.
             
                null;
 
-            when 39 =>
+            when 40 =>
+               null;
+
+            when 41 =>
+               null;
+
+            when 42 =>
+               null;
+
+            when 43 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-2).Symbol,
@@ -668,7 +680,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String),
                  Notation    => Matreshka.Internals.XML.No_Symbol);
 
-            when 40 =>
+            when 44 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-2).Symbol,
@@ -676,7 +688,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Empty_String,
                  Notation    => Matreshka.Internals.XML.No_Symbol);
 
-            when 41 =>
+            when 45 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-4).Symbol,
@@ -684,54 +696,42 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Empty_String,
                  Notation    => yy.value_stack (yy.tos-1).Symbol);
 
-            when 42 =>
+            when 46 =>
                Process_Parameter_Entity_Declaration
                 (Self,
                  yy.value_stack (yy.tos-2).Symbol,
                  False,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String));
 
-            when 43 =>
+            when 47 =>
                Process_Parameter_Entity_Declaration
                 (Self,
                  yy.value_stack (yy.tos-2).Symbol,
                  True,
                  League.Strings.Empty_String);
 
-            when 44 =>
+            when 48 =>
                --  Entity value including surrounding delimiters.
             
                Move (yyval, yy.value_stack (yy.tos-1));
 
-            when 45 =>
+            when 49 =>
                --  Additional string segment in entity value.
             
                Move (yyval, yy.value_stack (yy.tos-1));
                Matreshka.Internals.Strings.Operations.Append (yyval.String, yy.value_stack (yy.tos).String);
 
-            when 46 =>
+            when 50 =>
                --  Single string segment in entity value.
             
                Move (yyval, yy.value_stack (yy.tos));
 
-            when 47 =>
+            when 51 =>
                Set_String
                 (Item          => yyval,
                  String        => League.Strings.Empty_String,
                  Is_Whitespace => False,
                  Is_CData      => False);
-
-            when 48 =>
-               null;
-
-            when 49 =>
-               null;
-
-            when 50 =>
-               null;
-
-            when 51 =>
-               null;
 
             when 52 =>
                null;
@@ -893,61 +893,73 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 105 =>
-               Actions.On_Start_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
+               null;
 
             when 106 =>
-               Actions.On_End_Tag (Self, yy.value_stack (yy.tos-1).Symbol);
+               null;
 
             when 107 =>
-               Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
+               null;
 
             when 108 =>
                null;
 
             when 109 =>
-               null;
+               Actions.On_Start_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
 
             when 110 =>
-               null;
+               Actions.On_End_Tag (Self, yy.value_stack (yy.tos-1).Symbol);
 
             when 111 =>
-               null;
+               Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
 
             when 112 =>
-               Actions.On_Character_Data
-                (Self,
-                 yy.value_stack (yy.tos).String,
-                 yy.value_stack (yy.tos).Is_Whitespace);
+               null;
 
             when 113 =>
-               Process_Comment
-                (Self,
-                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
+               null;
 
             when 114 =>
                null;
 
             when 115 =>
-               --  TextDecl come from substitution of external parsed entities.
-            
                null;
 
             when 116 =>
-               Actions.On_Elements_Attribute
+               Actions.On_Character_Data
                 (Self,
-                 yy.value_stack (yy.tos-2).Symbol,
-                 yy.value_stack (yy.tos).String);
+                 yy.value_stack (yy.tos).String,
+                 yy.value_stack (yy.tos).Is_Whitespace);
 
             when 117 =>
-               Actions.On_Elements_Attribute
+               Process_Comment
                 (Self,
-                 yy.value_stack (yy.tos-2).Symbol,
-                 yy.value_stack (yy.tos).String);
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
             when 118 =>
                null;
 
             when 119 =>
+               --  TextDecl come from substitution of external parsed entities.
+            
+               null;
+
+            when 120 =>
+               Actions.On_Elements_Attribute
+                (Self,
+                 yy.value_stack (yy.tos-2).Symbol,
+                 yy.value_stack (yy.tos).String);
+
+            when 121 =>
+               Actions.On_Elements_Attribute
+                (Self,
+                 yy.value_stack (yy.tos-2).Symbol,
+                 yy.value_stack (yy.tos).String);
+
+            when 122 =>
+               null;
+
+            when 123 =>
                Move (yyval, yy.value_stack (yy.tos-1));
                when others =>
                   raise Program_Error

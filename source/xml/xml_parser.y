@@ -5,6 +5,7 @@
 %token Token_Doctype_Decl_Open
 %token Token_Entity_Decl_Open
 %token Token_Element_Decl_Open
+%token Token_Notation_Decl_Open
 %token Token_Close
 %token Token_Name
 %token Token_System
@@ -304,6 +305,10 @@ intSubset:
 {
    null;
 }
+  | NotationDecl
+{
+   null;
+}
   | Token_Comment
 {
    Process_Comment
@@ -318,6 +323,21 @@ intSubset:
 {
    --  Text declaration comes from external subset or external entity.
 
+   null;
+}
+  ;
+
+NotationDecl:
+    Token_Notation_Decl_Open Token_System Token_System_Literal Token_Close
+{
+   null;
+}
+  | Token_Notation_Decl_Open Token_Public Token_Public_Literal Token_Close
+{
+   null;
+}
+  | Token_Notation_Decl_Open Token_Public Token_Public_Literal Token_System_Literal Token_Close
+{
    null;
 }
   ;

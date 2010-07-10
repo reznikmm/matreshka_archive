@@ -137,6 +137,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 %x ELEMENT_CHILDREN
 %x ATTLIST_DECL
 %x ATTLIST_TYPE
+%x NOTATION_DECL
 %x ENTITY_DECL
 %x ENTITY_DEF
 %x ENTITY_NDATA
@@ -370,6 +371,15 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_System_Literal;
 }
 
+<EXTERNAL_ID_SYS>">" {
+   --  Productions [82], [83] allows absence of system literal in
+   --  notation declaration.
+
+   Pop_Start_Condition (Self);
+
+   return Token_Close;
+}
+
 <DOCTYPE_EXTINT>"PUBLIC" {
    --  Keyword PUBLIC, rule [75].
 
@@ -457,6 +467,20 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Actions.On_Open_Of_Attribute_List_Declaration (Self);
 }
 
+<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!NOTATION"{WHITE_SPACE}{NAME} {
+   --  Open of notation declaration, production [82].
+
+   return Actions.On_Open_Of_Notation_Declaration (Self);
+}
+
+<NOTATION_DECL>">" {
+   --  Close of notation declaration, production [82].
+
+   Pop_Start_Condition (Self);
+
+   return Token_Close;
+}
+
 <ENTITY_DECL>{NAME} {
    --  Name in entity declaration, rules [71], [72].
 
@@ -483,20 +507,21 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Process_Entity_Value_Open_Delimiter (Self, YY_Text);
 }
 
-<ENTITY_DEF>"SYSTEM" {
+<ENTITY_DEF,NOTATION_DECL>"SYSTEM" {
    --  Entity value as ExternalID, rule [75], used by rules [73], [74].
 
    Reset_Whitespace_Matched (Self);
-   Push_And_Enter_Start_Condition (Self, ENTITY_DEF, EXTERNAL_ID_SYS);
+   Push_Current_And_Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
 
    return Token_System;
 }
 
-<ENTITY_DEF>"PUBLIC" {
+<ENTITY_DEF,NOTATION_DECL>"PUBLIC" {
    --  Entity value as ExternalID, rule [75], used by rules [73], [74].
+   --  Notation as ExternalID or Public_ID (productions [75], [82], [83]).
 
    Reset_Whitespace_Matched (Self);
-   Push_And_Enter_Start_Condition (Self, ENTITY_DEF, EXTERNAL_ID_PUB);
+   Push_Current_And_Enter_Start_Condition (Self, EXTERNAL_ID_PUB);
 
    return Token_Public;
 }
@@ -791,7 +816,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    null;
 }
 
-<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,ELEMENT_START>{WHITE_SPACE} {
+<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,NOTATION_DECL,ELEMENT_START>{WHITE_SPACE} {
    --  White spaces in entity declaration are not optional, rules [71], [72],
    --  [75], [76].
    --
@@ -799,9 +824,9 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    --  between attribute value and name of the next attribute are must be
    --  present.
    --
-   --  All white spaces from rules [23], [24], [25], [32], [80] are ignored,
-   --  but white space between attribute value and name of the next attribute
-   --  are must be present.
+   --  All white spaces from rules [23], [24], [25], [32], [80], [82] are
+   --  ignored, but white space between attribute value and name of the
+   --  next attribute are must be present.
 
    Set_Whitespace_Matched (Self);
 }
@@ -929,6 +954,10 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    raise Program_Error with "Unexpected character in system literal";
 }
 
+<NOTATION_DECL>. {
+   raise Program_Error with "Unexpected character in NOTATION_DECL";
+}
+
 <DOCUMENT_10,DOCUMENT_11,ELEMENT_START,PI,PI_DATA_10,PI_DATA_11,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>.|\n {
    --  Unexpected character.
 
@@ -950,6 +979,9 @@ with Matreshka.Internals.Strings;
 
    procedure Enter_Start_Condition
     (Self : access Integer; State : Integer) is separate;
+
+   procedure Push_Current_And_Enter_Start_Condition
+    (Self  : access Integer; Enter : Integer) is separate;
 
    procedure Push_And_Enter_Start_Condition
     (Self : access Integer; Push : Integer; Set : Integer) is separate;
@@ -1071,6 +1103,9 @@ with Matreshka.Internals.Strings;
        (Self : access Integer) return Token;
 
       function On_Open_Of_Attribute_List_Declaration
+       (Self : access Integer) return Token;
+
+      function On_Open_Of_Notation_Declaration
        (Self : access Integer) return Token;
 
       function On_Name_In_Attribute_List_Declaration

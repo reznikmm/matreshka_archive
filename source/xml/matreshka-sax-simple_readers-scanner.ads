@@ -96,6 +96,12 @@ private
    pragma Inline (Enter_Start_Condition);
    --  Enter a start condition.
 
+   procedure Push_Current_And_Enter_Start_Condition
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Enter : Interfaces.Unsigned_32);
+   --  Pushs current start condition into the stack and set new start
+   --  condition.
+
    procedure Push_And_Enter_Start_Condition
     (Self  : not null access SAX_Simple_Reader'Class;
      Push  : Interfaces.Unsigned_32;

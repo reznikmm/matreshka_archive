@@ -136,6 +136,7 @@ private
      Token_Doctype_Decl_Open,
      Token_Entity_Decl_Open,
      Token_Element_Decl_Open,
+     Token_Notation_Decl_Open,
      Token_Close,
      Token_Name,
      Token_System,
