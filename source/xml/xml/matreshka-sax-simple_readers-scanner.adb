@@ -646,6 +646,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       LI : constant Positive
         := Self.Scanner_State.YY_Current_Index - Trim_Right;
       C  : Code_Point;
+      E  : Qualified_Name_Errors;
 
    begin
       if Trim_Whitespace then
@@ -670,6 +671,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
         LP - FP,
         LI - FI,
         Is_Qualified_Name and Self.Namespaces.Enabled,
+        E,
         YYLVal.Symbol);
 
       if YYLVal.Symbol = No_Symbol then

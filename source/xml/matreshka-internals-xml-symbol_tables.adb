@@ -188,13 +188,14 @@ package body Matreshka.Internals.XML.Symbol_Tables is
    ------------
 
    procedure Insert
-    (Self       : in out Symbol_Table;
-     String     : not null Matreshka.Internals.Strings.Shared_String_Access;
-     First      : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Size       : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Length     : Natural;
-     Namespaces : Boolean;
-     Identifier : out Symbol_Identifier)
+    (Self        : in out Symbol_Table;
+     String      : not null Matreshka.Internals.Strings.Shared_String_Access;
+     First       : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size        : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length      : Natural;
+     Namespaces  : Boolean;
+     Qname_Error : out Qualified_Name_Errors;
+     Identifier  : out Symbol_Identifier)
    is
       use Matreshka.Internals.Unicode;
       use Matreshka.Internals.Utf16;
@@ -264,7 +265,8 @@ package body Matreshka.Internals.XML.Symbol_Tables is
                   --  Second colon found in qualified name, document is not
                   --  wellformed.
 
-                  Identifier := No_Symbol;
+                  Identifier  := No_Symbol;
+                  Qname_Error := Multiple_Colons;
 
                   return;
 
@@ -280,11 +282,21 @@ package body Matreshka.Internals.XML.Symbol_Tables is
          end loop;
 
          if Found then
-            if C_Position = First or C_Position = First + Size - 1 then
-               --  Colon is first or last character in the qualified name,
+            if C_Position = First then
+               --  Colon is the first character in the qualified name,
                --  document is not wellformed.
 
-               Identifier := No_Symbol;
+               Identifier  := No_Symbol;
+               Qname_Error := Colon_At_Start;
+
+               return;
+
+            elsif C_Position = First + Size - 1 then
+               --  Colon is the last character in the qualified name,
+               --  document is not wellformed.
+
+               Identifier  := No_Symbol;
+               Qname_Error := Colon_At_End;
 
                return;
             end if;
@@ -298,6 +310,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
               C_Position - First,
               C_Index - 1,
               False,
+              Qname_Error,
               Prefix_Name);
             Insert
              (Self,
@@ -306,6 +319,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
               First + Size - C_Position - 1,
               Length - C_Index,
               False,
+              Qname_Error,
               Local_Name);
 
             Self.Table (Identifier).Prefix_Name := Prefix_Name;
@@ -316,6 +330,9 @@ package body Matreshka.Internals.XML.Symbol_Tables is
          end if;
 
          Self.Table (Identifier).Namespace_Processed := True;
+
+      else
+         Qname_Error := Valid;
       end if;
    end Insert;
 
@@ -326,10 +343,20 @@ package body Matreshka.Internals.XML.Symbol_Tables is
    procedure Insert
     (Self       : in out Symbol_Table;
      String     : not null Matreshka.Internals.Strings.Shared_String_Access;
-     Identifier : out Symbol_Identifier) is
+     Identifier : out Symbol_Identifier)
+   is
+      Error : Qualified_Name_Errors;
+
    begin
       Insert
-       (Self, String, 0, String.Unused, String.Length, False, Identifier);
+       (Self,
+        String,
+        0,
+        String.Unused,
+        String.Length,
+        False,
+        Error,
+        Identifier);
    end Insert;
 
    ----------------

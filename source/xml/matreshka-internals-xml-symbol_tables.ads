@@ -53,16 +53,24 @@ package Matreshka.Internals.XML.Symbol_Tables is
 
    pragma Preelaborate;
 
+   type Qualified_Name_Errors is
+    (Valid,
+     Colon_At_Start,
+     Colon_At_End,
+     Multiple_Colons,
+     First_Character_Is_Not_Name_Start_Char);
+
    type Symbol_Table is limited private;
 
    procedure Insert
-    (Self       : in out Symbol_Table;
-     String     : not null Matreshka.Internals.Strings.Shared_String_Access;
-     First      : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Size       : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Length     : Natural;
-     Namespaces : Boolean;
-     Identifier : out Symbol_Identifier);
+    (Self        : in out Symbol_Table;
+     String      : not null Matreshka.Internals.Strings.Shared_String_Access;
+     First       : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size        : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length      : Natural;
+     Namespaces  : Boolean;
+     Qname_Error : out Qualified_Name_Errors;
+     Identifier  : out Symbol_Identifier);
    --  Lookup symbol table for name and returns its identifier if present,
    --  otherwise add new name and returns allocated identifier.
 
