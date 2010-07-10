@@ -147,7 +147,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
          Self.Last := Self.Last + 1;
          Self.Table (Self.Last) :=
           (String              => N,
-           Namespace_Processed => True,
+           Namespace_Processed => False,
            Prefix_Name         => No_Symbol,
            Local_Name          => No_Symbol,
            Parameter_Entity    => No_Entity,
@@ -168,7 +168,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
          Self.Last := Self.Last + 1;
          Self.Table (Self.Last) :=
           (String              => N,
-           Namespace_Processed => True,
+           Namespace_Processed => False,
            Prefix_Name         => No_Symbol,
            Local_Name          => No_Symbol,
            Parameter_Entity    => No_Entity,
