@@ -59,6 +59,38 @@ package body Matreshka.Internals.XML.Symbol_Tables is
      new Ada.Unchecked_Deallocation
           (Symbol_Record_Array, Symbol_Record_Array_Access);
 
+   function Is_Valid_NS_Name_Start_Character
+    (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean;
+   --  Returns True when code point belongs to NSNameStartChar.
+
+   --------------------------------------
+   -- Is_Valid_NS_Name_Start_Character --
+   --------------------------------------
+
+   function Is_Valid_NS_Name_Start_Character
+    (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean
+   is
+      use type Matreshka.Internals.Unicode.Code_Point;
+
+   begin
+      return
+        Code in 16#0041# .. 16#005A#          --  A-Z
+          or Code = 16#005F#                  --  _
+          or Code in 16#0061# .. 16#007A#     --  a-z
+          or Code in 16#00C0# .. 16#00D6#     --  \u00C0-\u00D6
+          or Code in 16#00D8# .. 16#00F6#     --  \u00D8-\u00F6
+          or Code in 16#00F8# .. 16#02FF#     --  \u00F8-\u02FF
+          or Code in 16#0370# .. 16#037D#     --  \u0370-\u037D
+          or Code in 16#037F# .. 16#1FFF#     --  \u037F-\u1FFF
+          or Code in 16#200C# .. 16#200D#     --  \u200C-\u200D
+          or Code in 16#2070# .. 16#218F#     --  \u2070-\u218F
+          or Code in 16#2C00# .. 16#2FEF#     --  \u2C00-\u2FEF
+          or Code in 16#3001# .. 16#D7FF#     --  \u3001-\uD7FF
+          or Code in 16#F900# .. 16#FDCF#     --  \uF900-\uFDCF
+          or Code in 16#FDF0# .. 16#FFFD#     --  \uFDF0-\uFFFD
+          or Code in 16#10000# .. 16#EFFFF#;  --  \u10000-\uEFFFF
+   end Is_Valid_NS_Name_Start_Character;
+
    --------------
    -- Finalize --
    --------------
@@ -301,7 +333,18 @@ package body Matreshka.Internals.XML.Symbol_Tables is
                return;
             end if;
 
-            --  XXX First character after colon must belong to NameStartChar!
+            --  Check whether the first character after colon belongs to
+            --  NSNameStartChar.
+
+            D_Position := C_Position + 1;
+            Unchecked_Next (String.Value, D_Position, C);
+
+            if not Is_Valid_NS_Name_Start_Character (C) then
+               Identifier  := No_Symbol;
+               Qname_Error := First_Character_Is_Not_NS_Name_Start_Char;
+
+               return;
+            end if;
 
             Insert
              (Self,

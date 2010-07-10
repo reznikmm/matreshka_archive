@@ -58,7 +58,7 @@ package Matreshka.Internals.XML.Symbol_Tables is
      Colon_At_Start,
      Colon_At_End,
      Multiple_Colons,
-     First_Character_Is_Not_Name_Start_Char);
+     First_Character_Is_Not_NS_Name_Start_Char);
 
    type Symbol_Table is limited private;
 
