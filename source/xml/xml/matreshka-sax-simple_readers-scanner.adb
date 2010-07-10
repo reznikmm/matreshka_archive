@@ -72,20 +72,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Returns value of "whitespace matched" flag.
 
-   procedure Push_General_Entity_In_Attribute_Value
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Entity : Matreshka.Internals.XML.Entity_Identifier;
-     Data   : not null Matreshka.Internals.Strings.Shared_String_Access);
-   --  Push replacement text of general entity in attribute value into
-   --  scanner's stack.
-
-   procedure Push_General_Entity_In_Document_Content
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Entity : Matreshka.Internals.XML.Entity_Identifier;
-     Data   : not null Matreshka.Internals.Strings.Shared_String_Access);
-   --  Push replacement text of general entity in document content into
-   --  scanner's stack.
-
    function Process_Attribute_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
      State : Interfaces.Unsigned_32) return Token;
@@ -99,18 +85,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
     (Self  : not null access SAX_Simple_Reader'Class;
      Form  : Character_Reference_Form) return Token;
    --  Processes character reference.
-
-   procedure Process_General_Entity_Reference_In_Attribute_Value
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
-   --  Process gewneral entity reference in attribute value, rule [68] in rule
-   --  [10].
-
-   procedure Process_Parameter_Entity_Reference_In_Entity_Value
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
-   --  Processes parameter entity reference in entiry value (rule [69] in
-   --  context of rule [9]).
 
    function Process_Entity_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
@@ -431,75 +405,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       return Token_Value_Open;
    end Process_Entity_Value_Open_Delimiter;
 
-   ----------------------------------------------------------
-   -- Process_General_Entity_Reference_In_Document_Content --
-   ----------------------------------------------------------
-
-   procedure Process_General_Entity_Reference_In_Document_Content
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
-   is
-      Entity : constant Entity_Identifier
-        := General_Entity (Self.Symbols, Symbol);
-
-   begin
-      if Entity = No_Entity then
-         raise Program_Error with "general entity is not declared";
-
-      elsif Is_External_Unparsed_General_Entity (Self.Entities, Entity) then
-         raise Program_Error with "external unparsed general entity";
-
-      else
-         Push_General_Entity_In_Document_Content
-          (Self, Entity, Replacement_Text (Self.Entities, Entity));
-      end if;
-   end Process_General_Entity_Reference_In_Document_Content;
-
-   ---------------------------------------------------------
-   -- Process_General_Entity_Reference_In_Attribute_Value --
-   ---------------------------------------------------------
-
-   procedure Process_General_Entity_Reference_In_Attribute_Value
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
-   is
-      Entity : constant Entity_Identifier
-        := General_Entity (Self.Symbols, Symbol);
-
-   begin
-      if Entity = No_Entity then
-         raise Program_Error with "general entity is not declared";
-
-      elsif Is_External_Unparsed_General_Entity (Self.Entities, Entity) then
-         raise Program_Error with "external unparsed general entity";
-
-      else
-         Push_General_Entity_In_Attribute_Value
-          (Self, Entity, Replacement_Text (Self.Entities, Entity));
-      end if;
-   end Process_General_Entity_Reference_In_Attribute_Value;
-
-   --------------------------------------------------------
-   -- Process_Parameter_Entity_Reference_In_Entity_Value --
-   --------------------------------------------------------
-
-   procedure Process_Parameter_Entity_Reference_In_Entity_Value
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
-   is
-      Entity : constant Entity_Identifier
-        := Parameter_Entity (Self.Symbols, Symbol);
-
-   begin
-      if Entity = No_Entity then
-         raise Program_Error with "parameter entity is not declared";
-
-      else
-         Push_Parameter_Entity
-          (Self, Replacement_Text (Self.Entities, Entity));
-      end if;
-   end Process_Parameter_Entity_Reference_In_Entity_Value;
-
    --------------------------
    -- Push_External_Subset --
    --------------------------
@@ -619,65 +524,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
    begin
       Self.Whitespace_Matched := False;
    end Reset_Whitespace_Matched;
-
-   --------------------
-   -- Resolve_Symbol --
-   --------------------
-
-   procedure Resolve_Symbol
-    (Self              : not null access SAX_Simple_Reader'Class;
-     Trim_Left         : Natural;
-     Trim_Right        : Natural;
-     Trim_Whitespace   : Boolean;
-     Is_Qualified_Name : Boolean;
-     YYLVal            : out YYSType)
-   is
-      --  Trailing and leading character as well as whitespace characters
-      --  belongs to BMP and don't require expensive UTF-16 decoding.
-
-      FP : Utf16_String_Index
-        := Self.Scanner_State.YY_Base_Position
-             + Utf16_String_Index (Trim_Left);
-      FI : Positive
-        := Self.Scanner_State.YY_Base_Index + Trim_Left;
-      LP : constant Utf16_String_Index
-        := Self.Scanner_State.YY_Current_Position
-             - Utf16_String_Index (Trim_Right);
-      LI : constant Positive
-        := Self.Scanner_State.YY_Current_Index - Trim_Right;
-      C  : Code_Point;
-      E  : Qualified_Name_Errors;
-
-   begin
-      if Trim_Whitespace then
-         loop
-            C := Code_Point (Self.Scanner_State.Data.Value (FP));
-
-            exit when
-              C /= 16#0020#
-                and then C /= 16#0009#
-                and then C /= 16#000D#
-                and then C /= 16#000A#;
-
-            FP := FP + 1;
-            FI := FI + 1;
-         end loop;
-      end if;
-
-      Matreshka.Internals.XML.Symbol_Tables.Insert
-       (Self.Symbols,
-        Self.Scanner_State.Data,
-        FP,
-        LP - FP,
-        LI - FI,
-        Is_Qualified_Name and Self.Namespaces.Enabled,
-        E,
-        YYLVal.Symbol);
-
-      if YYLVal.Symbol = No_Symbol then
-         raise Program_Error with "invalid qualified name";
-      end if;
-   end Resolve_Symbol;
 
    ------------------------------------
    -- Push_And_Enter_Start_Condition --
@@ -1177,26 +1023,17 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  Open tag of document type declaration and name of root element,
                --  rule [28].
             
-               Enter_Start_Condition (Self, DOCTYPE_EXTINT);
-               Resolve_Symbol (Self, 10, 0, True, True, YYLVal);
-            
-               return Token_Doctype_Decl_Open;
+               return Actions.On_Open_Of_Document_Type_Declaration (Self);
 
             when 5 =>
                --  Open of start tag, rule [40], or empty element, rule [44].
             
-               Resolve_Symbol (Self, 1, 0, False, True, YYLVal);
-               Enter_Start_Condition (Self, ELEMENT_START);
-            
-               return Token_Element_Open;
+               return Actions.On_Open_Of_Start_Tag (Self);
 
             when 6 =>
-               --  Open of and tag, rule [42].
+               --  Open of end tag, rule [42].
             
-               Resolve_Symbol (Self, 2, 0, False, True, YYLVal);
-               Enter_Start_Condition (Self, ELEMENT_START);
-            
-               return Token_End_Open;
+               return Actions.On_Open_Of_End_Tag (Self);
 
             when 7 =>
                --  Segment of whitespaces.
@@ -1240,8 +1077,11 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 12 =>
                --  General entity reference rule [68] in document content.
             
-               Resolve_Symbol (Self, 1, 1, False, False, YYLVal);
-               Process_General_Entity_Reference_In_Document_Content (Self, YYLVal.Symbol);
+               if not Actions.On_General_Entity_Reference_In_Document_Content (Self) then
+                  --  Error is detected during handling, return error token to parser.
+            
+                  return Error;
+               end if;
 
             when 13 =>
                --  [24] VersionInfo
@@ -1408,33 +1248,17 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 30 =>
                --  Open of element declaration and name of the element, rule [45].
             
-               Enter_Start_Condition (Self, ELEMENT_DECL);
-               Resolve_Symbol (Self, 10, 0, True, True, YYLVal);
-            
-               return Token_Element_Decl_Open;
+               return Actions.On_Open_Of_Element_Declaration (Self);
 
             when 31 =>
                --  Open of attribute list declaration, rule [52].
             
-               Enter_Start_Condition (Self, ATTLIST_DECL);
-               Resolve_Symbol (Self, 10, 0, True, True, YYLVal);
-            
-               return Token_Attlist_Decl_Open;
+               return Actions.On_Open_Of_Attribute_List_Declaration (Self);
 
             when 32 =>
                --  Name in entity declaration, rules [71], [72].
             
-               if not Get_Whitespace_Matched (Self) then
-                  raise Program_Error
-                    with "no whitespace before name in entity declaration";
-                  --  XXX This is recoverable error.
-               end if;
-            
-               Reset_Whitespace_Matched (Self);
-               Enter_Start_Condition (Self, ENTITY_DEF);
-               Resolve_Symbol (Self, 0, 0, False, False, YYLVal);
-            
-               return Token_Name;
+               return Actions.On_Name_In_Entity_Declaration (Self);
 
             when 33 =>
                --  Percent mark in parameter entity declaration, rule [72].
@@ -1478,6 +1302,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                   --  XXX This is recoverable error.
                end if;
             
+               Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, ENTITY_NDATA);
             
                return Token_NData;
@@ -1485,10 +1310,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 38 =>
                --  Name of NDATA, rule [76].
             
-               Enter_Start_Condition (Self, ENTITY_DEF);
-               Resolve_Symbol (Self, 0, 0, False, False, YYLVal);
-            
-               return Token_Name;
+               return Actions.On_Name_In_Entity_Declaration_Notation (Self);
 
             when 39 =>
                Set_String_Internal
@@ -1528,13 +1350,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 44 =>
                --  General entity reference rule [68] in entity value rule [9].
             
-               Set_String_Internal
-                (Item          => YYLVal,
-                 String        => YY_Text_Internal,
-                 Is_Whitespace => False,
-                 Is_CData      => False);
-            
-               return Token_String_Segment;
+               return Actions.On_General_Entity_Reference_In_Entity_Value (Self);
 
             when 45 =>
                --  Parameter entity reference rule [69] in entity value rule [9].
@@ -1546,8 +1362,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
                --  parsing of parameter entity replacement text when it is referenced
                --  in any of two form of entity value.
             
-               Resolve_Symbol (Self, 1, 1, False, False, YYLVal);
-               Process_Parameter_Entity_Reference_In_Entity_Value (Self, YYLVal.Symbol);
+               if not Actions.On_Parameter_Entity_Reference_In_Entity_Value (Self) then
+                  return Error;
+               end if;
 
             when 46 =>
                --  EMPTY keyword, rule [46].
@@ -1604,9 +1421,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 56 =>
                --  Name in element's children declaration, rules [48], [51].
             
-               Resolve_Symbol (Self, 0, 0, False, True, YYLVal);
-            
-               return Token_Name;
+               return Actions.On_Name_In_Element_Declaration_Children (Self);
 
             when 57 =>
                --  Close token of entity declaration, rules [71], [72].
@@ -1618,10 +1433,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 58 =>
                --  Name of the attribute, rule [53].
             
-               Resolve_Symbol (Self, 0, 0, False, True, YYLVal);
-               Enter_Start_Condition (Self, ATTLIST_TYPE);
-            
-               return Token_Name;
+               return Actions.On_Name_In_Attribute_List_Declaration (Self);
 
             when 59 =>
                --  CDATA keyword, rule [55].
@@ -1705,9 +1517,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 74 =>
                --  Name in the rule [58].
             
-               Resolve_Symbol (Self, 0, 0, False, False, YYLVal);
-            
-               return Token_Name;
+               return Actions.On_Name_In_Attribute_List_Declaration_Notation (Self);
 
             when 75 =>
                --  Nmtoken in the rule [59].
@@ -1734,7 +1544,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
 
             when 78 =>
                --  White spaces in entity declaration are not optional, rules [71], [72],
-               --  [75].
+               --  [75], [76].
                --
                --  White spaces in start tag, rule [40], are ignored, but white space
                --  between attribute value and name of the next attribute are must be
@@ -1749,14 +1559,7 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 79 =>
                --  Name of the attribute, rule [41].
             
-               if not Get_Whitespace_Matched (Self) then
-                  raise Program_Error with "Whitespace is missing before attribute name";
-                  --  XXX It is recoverable error.
-               end if;
-            
-               Resolve_Symbol (Self, 0, 0, False, True, YYLVal);
-            
-               return Token_Name;
+               return Actions.On_Name_In_Element_Start_Tag (Self);
 
             when 80 =>
                --  Equal sign as attribute's name value delimiter, rule [25] in rules [41],
@@ -1815,8 +1618,9 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
             when 88 =>
                --  General entity reference rule [68] in attribute value, rule [10].
             
-               Resolve_Symbol (Self, 1, 1, False, False, YYLVal);
-               Process_General_Entity_Reference_In_Attribute_Value (Self, YYLVal.Symbol);
+               if not Actions.On_General_Entity_Reference_In_Attribute_Value (Self) then
+                  return Error;
+               end if;
 
             when 89 =>
                raise Program_Error with "Unexpected character in XML_DECL";

@@ -70,14 +70,70 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles close of element tag and of document type declaration,
 
+   function On_General_Entity_Reference_In_Attribute_Value
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
+   --  Handles general entity reference in attribute value.
+
+   function On_General_Entity_Reference_In_Document_Content
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
+   --  Handles general entity reference in document content.
+
+   function On_General_Entity_Reference_In_Entity_Value
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles general entity reference in entity value.
+
+   function On_Parameter_Entity_Reference_In_Entity_Value
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
+   --  Handles parameter entity reference in entity value.
+
    function On_Less_Than_Sign_In_Attribute_Value
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handling of less-than sign in attribute value.
+
+   function On_Name_In_Attribute_List_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles name of the attribute in the attribute list declaration.
+
+   function On_Name_In_Attribute_List_Declaration_Notation
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles name of the notation in the attribute list declaration.
+
+   function On_Name_In_Element_Declaration_Children
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles name of the children element in element declaration.
+
+   function On_Name_In_Element_Start_Tag
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles name of the attribute in element start tag or empty element tag.
+
+   function On_Name_In_Entity_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles name of the entity in the entity declaration.
+
+   function On_Name_In_Entity_Declaration_Notation
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles name of the notation in the entity declaration.
 
    procedure On_No_XML_Declaration
     (Self : not null access SAX_Simple_Reader'Class);
    --  Handles start of document and external parsed entities which doesn't
    --  starts from XML declaration.
+
+   function On_Open_Of_Attribute_List_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open of attribute list declaration.
+
+   function On_Open_Of_Document_Type_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open of document type declaration.
+
+   function On_Open_Of_Element_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open of element declaration.
+
+   function On_Open_Of_End_Tag
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open of end tag.
 
    function On_Open_Of_Internal_Subset
     (Self : not null access SAX_Simple_Reader'Class) return Token;
@@ -86,6 +142,10 @@ private package Matreshka.SAX.Simple_Readers.Scanner.Actions is
    function On_Open_Of_Processing_Instruction
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles open of processing instruction.
+
+   function On_Open_Of_Start_Tag
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open of start tag or empty element tag.
 
    function On_Open_Of_XML_Processing_Instruction
     (Self : not null access SAX_Simple_Reader'Class) return Token;

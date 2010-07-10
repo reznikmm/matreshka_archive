@@ -49,11 +49,24 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
+   use Matreshka.Internals.XML;
+   use Matreshka.Internals.XML.Entity_Tables;
+   use Matreshka.Internals.XML.Symbol_Tables;
 
    Less_Than_Sign       : constant := 16#003C#;
    Greater_Than_Sign    : constant := 16#003E#;
    Right_Square_Bracket : constant := 16#005D#;
    Ampersand            : constant := 16#0026#;
+
+   procedure Resolve_Symbol
+    (Self            : not null access SAX_Simple_Reader'Class;
+     Trim_Left       : Natural;
+     Trim_Right      : Natural;
+     Trim_Whitespace : Boolean;
+     Can_Be_Qname    : Boolean;
+     Error           : out Boolean;
+     Symbol          : out Matreshka.Internals.XML.Symbol_Identifier);
+   --  Converts name to symbol.
 
    -----------------------
    -- On_Character_Data --
@@ -243,6 +256,199 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
       return Token_Close;
    end On_Close_Of_Tag;
 
+   ----------------------------------------------------
+   -- On_General_Entity_Reference_In_Attribute_Value --
+   ----------------------------------------------------
+
+   function On_General_Entity_Reference_In_Attribute_Value
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+   is
+      Qualified_Name : Symbol_Identifier;
+      Qname_Error    : Boolean;
+      Entity         : Entity_Identifier;
+
+   begin
+      Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
+
+      if Qname_Error then
+         return False;
+      end if;
+
+      Entity := General_Entity (Self.Symbols, Qualified_Name);
+
+      --  [XML1.1 4.1 WFC: Entity Declared]
+      --
+      --  "In a document without any DTD, a document with only an internal
+      --  DTD subset which contains no parameter entity references, or a
+      --  document with "standalone='yes'", for an entity reference that
+      --  does not occur within the external subset or a parameter entity,
+      --  the Name given in the entity reference MUST  match that in an
+      --  entity declaration that does not occur within the external subset
+      --  or a parameter entity, except that well-formed documents need not
+      --  declare any of the following entities: amp, lt, gt, apos, quot.
+      --  The declaration of a general entity MUST precede any reference
+      --  to it which appears in a default value in an attribute-list
+      --  declaration.
+      --
+      --  Note that non-validating processors are not obligated to to read
+      --  and process entity declarations occurring in parameter entities
+      --  or in the external subset; for such documents, the rule that an
+      --  entity must be declared is a well-formedness constraint only if
+      --  standalone='yes'."
+      --
+      --  Check whether entity is declared.
+      --
+      --  XXX This is probably too strong check, need to be arranged with
+      --  standalone documents and validation.
+
+      if Entity = No_Entity then
+         Callbacks.Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("[XML1.1 4.1 WFC: Entity Declared]"
+               & " general entity must be declared"));
+         Self.Continue := False;
+
+         return False;
+      end if;
+
+      --  [XML1.1 4.1 WFC: Parsed Entity]
+      --
+      --  "An entity reference MUST NOT contain the name of an unparsed
+      --  entity. Unparsed entities may be referred to only in attribute
+      --  values declared to be of type ENTITY or ENTITIES."
+      --
+      --  Check whether referenced entity is not unparsed external general
+      --  entity.
+
+      if Is_External_Unparsed_General_Entity (Self.Entities, Entity) then
+         Callbacks.Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("[XML1.1 4.1 WFC: Entity Declared]"
+               & " an entity reference must not contain the name of an"
+               & " unparsed entity"));
+         Self.Continue := False;
+
+         return False;
+      end if;
+
+      Push_General_Entity_In_Attribute_Value
+       (Self, Entity, Replacement_Text (Self.Entities, Entity));
+
+      return True;
+   end On_General_Entity_Reference_In_Attribute_Value;
+
+   -----------------------------------------------------
+   -- On_General_Entity_Reference_In_Document_Content --
+   -----------------------------------------------------
+
+   function On_General_Entity_Reference_In_Document_Content
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+   is
+      Qualified_Name : Symbol_Identifier;
+      Qname_Error    : Boolean;
+      Entity         : Entity_Identifier;
+
+   begin
+      Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
+
+      if Qname_Error then
+         return False;
+      end if;
+
+      Entity := General_Entity (Self.Symbols, Qualified_Name);
+
+      --  [XML1.1 4.1 WFC: Entity Declared]
+      --
+      --  "In a document without any DTD, a document with only an internal
+      --  DTD subset which contains no parameter entity references, or a
+      --  document with "standalone='yes'", for an entity reference that
+      --  does not occur within the external subset or a parameter entity,
+      --  the Name given in the entity reference MUST  match that in an
+      --  entity declaration that does not occur within the external subset
+      --  or a parameter entity, except that well-formed documents need not
+      --  declare any of the following entities: amp, lt, gt, apos, quot.
+      --  The declaration of a general entity MUST precede any reference
+      --  to it which appears in a default value in an attribute-list
+      --  declaration.
+      --
+      --  Note that non-validating processors are not obligated to to read
+      --  and process entity declarations occurring in parameter entities
+      --  or in the external subset; for such documents, the rule that an
+      --  entity must be declared is a well-formedness constraint only if
+      --  standalone='yes'."
+      --
+      --  Check whether entity is declared.
+      --
+      --  XXX This is probably too strong check, need to be arranged with
+      --  standalone documents and validation.
+
+      if Entity = No_Entity then
+         Callbacks.Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("[XML1.1 4.1 WFC: Entity Declared]"
+               & " general entity must be declared"));
+         Self.Continue := False;
+
+         return False;
+      end if;
+
+      --  [XML1.1 4.1 WFC: Parsed Entity]
+      --
+      --  "An entity reference MUST NOT contain the name of an unparsed
+      --  entity. Unparsed entities may be referred to only in attribute
+      --  values declared to be of type ENTITY or ENTITIES."
+      --
+      --  Check whether referenced entity is not unparsed external general
+      --  entity.
+
+      if Is_External_Unparsed_General_Entity (Self.Entities, Entity) then
+         Callbacks.Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("[XML1.1 4.1 WFC: Entity Declared]"
+               & " an entity reference must not contain the name of an"
+               & " unparsed entity"));
+         Self.Continue := False;
+
+         return False;
+      end if;
+
+      Push_General_Entity_In_Document_Content
+       (Self, Entity, Replacement_Text (Self.Entities, Entity));
+
+      return True;
+   end On_General_Entity_Reference_In_Document_Content;
+
+   -------------------------------------------------
+   -- On_General_Entity_Reference_In_Entity_Value --
+   -------------------------------------------------
+
+   function On_General_Entity_Reference_In_Entity_Value
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qualified_Name : Symbol_Identifier;
+      Qname_Error    : Boolean;
+
+   begin
+      Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Set_String_Internal
+          (Item          => Self.YYLVal,
+           String        => YY_Text (Self),
+           Is_Whitespace => False,
+           Is_CData      => False);
+
+         return Token_String_Segment;
+      end if;
+   end On_General_Entity_Reference_In_Entity_Value;
+
    ------------------------------------------
    -- On_Less_Than_Sign_In_Attribute_Value --
    ------------------------------------------
@@ -250,7 +456,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
    function On_Less_Than_Sign_In_Attribute_Value
     (Self : not null access SAX_Simple_Reader'Class) return Token is
    begin
-      --
       --  [3.1 WFC: No < in Attribute Values]
       --
       --  "The replacement text of any entity referred to directly or
@@ -265,6 +470,187 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
       return Error;
    end On_Less_Than_Sign_In_Attribute_Value;
+
+   -------------------------------------------
+   -- On_Name_In_Attribute_List_Declaration --
+   -------------------------------------------
+
+   function On_Name_In_Attribute_List_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      Resolve_Symbol
+       (Self, 0, 0, False, True, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Enter_Start_Condition (Self, Tables.ATTLIST_TYPE);
+
+         return Token_Name;
+      end if;
+   end On_Name_In_Attribute_List_Declaration;
+
+   ----------------------------------------------------
+   -- On_Name_In_Attribute_List_Declaration_Notation --
+   ----------------------------------------------------
+
+   function On_Name_In_Attribute_List_Declaration_Notation
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      Resolve_Symbol
+       (Self, 0, 0, False, False, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         return Token_Name;
+      end if;
+   end On_Name_In_Attribute_List_Declaration_Notation;
+
+   ---------------------------------------------
+   -- On_Name_In_Element_Declaration_Children --
+   ---------------------------------------------
+
+   function On_Name_In_Element_Declaration_Children
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      Resolve_Symbol
+       (Self, 0, 0, False, True, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         return Token_Name;
+      end if;
+   end On_Name_In_Element_Declaration_Children;
+
+   ----------------------------------
+   -- On_Name_In_Element_Start_Tag --
+   ----------------------------------
+
+   function On_Name_In_Element_Start_Tag
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      if not Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("whitespace is missing before attribute name"));
+         Self.Continue := False;
+         --  XXX It is recoverable error.
+
+         return Error;
+      end if;
+
+      Resolve_Symbol
+       (Self, 0, 0, False, True, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         return Token_Name;
+      end if;
+   end On_Name_In_Element_Start_Tag;
+
+   -----------------------------------
+   -- On_Name_In_Entity_Declaration --
+   -----------------------------------
+
+   function On_Name_In_Entity_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      --  [XML1.1 4.2]
+      --
+      --  [71] GEDecl ::= '<!ENTITY' S Name S EntityDef S? '>'
+      --  [72] PEDecl ::= '<!ENTITY' S '%' S Name S PEDef S? '>'
+      --
+      --  Check whether whitespace is present before the name.
+
+      if not Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("[XML1.1 4.2 productions [71], [72]]"
+               & " whitespace must be present before the name"));
+         Self.Continue := False;
+         --  XXX This is recoverable error.
+
+         return Error;
+      end if;
+
+      Resolve_Symbol
+       (Self, 0, 0, False, False, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Self.Whitespace_Matched := False;
+         Enter_Start_Condition (Self, Tables.ENTITY_DEF);
+
+         return Token_Name;
+      end if;
+   end On_Name_In_Entity_Declaration;
+
+   --------------------------------------------
+   -- On_Name_In_Entity_Declaration_Notation --
+   --------------------------------------------
+
+   function On_Name_In_Entity_Declaration_Notation
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      --  [XML1.1 4.2.2]
+      --
+      --  [76] NDataDecl ::= S 'NDATA' S Name  
+      --
+      --  Check whether whitespace is present before the name.
+
+      if not Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("[XML1.1 4.2 production [76]]"
+               & " whitespace must be present before the name of notation"));
+         Self.Continue := False;
+         --  XXX This is recoverable error.
+
+         return Error;
+      end if;
+
+      Resolve_Symbol
+       (Self, 0, 0, False, False, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Enter_Start_Condition (Self, Tables.ENTITY_DEF);
+
+         return Token_Name;
+      end if;
+   end On_Name_In_Entity_Declaration_Notation;
 
    ---------------------------
    -- On_No_XML_Declaration --
@@ -304,6 +690,98 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 --      end if;
    end On_No_XML_Declaration;
 
+   -------------------------------------------
+   -- On_Open_Of_Attribute_List_Declaration --
+   -------------------------------------------
+
+   function On_Open_Of_Attribute_List_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      Resolve_Symbol
+       (Self, 10, 0, True, True, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Enter_Start_Condition (Self, Tables.ATTLIST_DECL);
+
+         return Token_Attlist_Decl_Open;
+      end if;
+   end On_Open_Of_Attribute_List_Declaration;
+
+   ------------------------------------------
+   -- On_Open_Of_Document_Type_Declaration --
+   ------------------------------------------
+
+   function On_Open_Of_Document_Type_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      Resolve_Symbol
+       (Self, 10, 0, True, True, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Enter_Start_Condition (Self, Tables.DOCTYPE_EXTINT);
+
+         return Token_Doctype_Decl_Open;
+      end if;
+   end On_Open_Of_Document_Type_Declaration;
+
+   ------------------------------------
+   -- On_Open_Of_Element_Declaration --
+   ------------------------------------
+
+   function On_Open_Of_Element_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      Resolve_Symbol
+       (Self, 10, 0, True, True, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Enter_Start_Condition (Self, Tables.ELEMENT_DECL);
+
+         return Token_Element_Decl_Open;
+      end if;
+   end On_Open_Of_Element_Declaration;
+
+   ------------------------
+   -- On_Open_Of_End_Tag --
+   ------------------------
+
+   function On_Open_Of_End_Tag
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      Resolve_Symbol
+       (Self, 2, 0, False, True, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Enter_Start_Condition (Self, Tables.ELEMENT_START);
+
+         return Token_End_Open;
+      end if;
+   end On_Open_Of_End_Tag;
+
    --------------------------------
    -- On_Open_Of_Internal_Subset --
    --------------------------------
@@ -327,14 +805,48 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------
 
    function On_Open_Of_Processing_Instruction
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
-   begin
-      Resolve_Symbol (Self, 2, 0, False, False, Self.YYLVal);
-      Push_And_Enter_Start_Condition (Self, Start_Condition (Self), Tables.PI);
-      Reset_Whitespace_Matched (Self);
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
 
-      return Token_PI_Open;
+   begin
+      Resolve_Symbol
+       (Self, 2, 0, False, False, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Push_And_Enter_Start_Condition
+          (Self, Start_Condition (Self), Tables.PI);
+         Reset_Whitespace_Matched (Self);
+
+         return Token_PI_Open;
+      end if;
    end On_Open_Of_Processing_Instruction;
+
+   --------------------------
+   -- On_Open_Of_Start_Tag --
+   --------------------------
+
+   function On_Open_Of_Start_Tag
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      Resolve_Symbol
+       (Self, 1, 0, False, True, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Enter_Start_Condition (Self, Tables.ELEMENT_START);
+
+         return Token_Element_Open;
+      end if;
+   end On_Open_Of_Start_Tag;
 
    -------------------------------------------
    -- On_Open_Of_XML_Processing_Instruction --
@@ -349,6 +861,43 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
 
       return Token_XML_Decl_Open;
    end On_Open_Of_XML_Processing_Instruction;
+
+   ---------------------------------------------------
+   -- On_Parameter_Entity_Reference_In_Entity_Value --
+   ---------------------------------------------------
+
+   function On_Parameter_Entity_Reference_In_Entity_Value
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+   is
+      Qualified_Name : Symbol_Identifier;
+      Qname_Error    : Boolean;
+      Entity         : Entity_Identifier;
+
+   begin
+      Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
+
+      if Qname_Error then
+         return False;
+
+      else
+         Entity := Parameter_Entity (Self.Symbols, Qualified_Name);
+
+         if Entity = No_Entity then
+            Callbacks.Call_Fatal_Error
+             (Self,
+              League.Strings.To_Universal_String
+               ("parameter entity must be declared"));
+            Self.Continue := False;
+
+            return False;
+         end if;
+
+         Push_Parameter_Entity
+          (Self, Replacement_Text (Self.Entities, Entity));
+
+         return True;
+      end if;
+   end On_Parameter_Entity_Reference_In_Entity_Value;
 
    -----------------------------
    -- On_Unexpected_Character --
@@ -429,5 +978,119 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
             Enter_Start_Condition (Self, Tables.PI_DATA_11);
       end case;
    end On_Whitespace_In_Processing_Instruction;
+
+   --------------------
+   -- Resolve_Symbol --
+   --------------------
+
+   procedure Resolve_Symbol
+    (Self            : not null access SAX_Simple_Reader'Class;
+     Trim_Left       : Natural;
+     Trim_Right      : Natural;
+     Trim_Whitespace : Boolean;
+     Can_Be_Qname    : Boolean;
+     Error           : out Boolean;
+     Symbol          : out Matreshka.Internals.XML.Symbol_Identifier)
+   is
+      --  Trailing and leading character as well as whitespace characters
+      --  belongs to BMP and don't require expensive UTF-16 decoding.
+
+      FP : Utf16_String_Index
+        := Self.Scanner_State.YY_Base_Position
+             + Utf16_String_Index (Trim_Left);
+      FI : Positive
+        := Self.Scanner_State.YY_Base_Index + Trim_Left;
+      LP : constant Utf16_String_Index
+        := Self.Scanner_State.YY_Current_Position
+             - Utf16_String_Index (Trim_Right);
+      LI : constant Positive
+        := Self.Scanner_State.YY_Current_Index - Trim_Right;
+      C  : Code_Point;
+      E  : Matreshka.Internals.XML.Symbol_Tables.Qualified_Name_Errors;
+
+   begin
+      if Trim_Whitespace then
+         loop
+            C := Code_Point (Self.Scanner_State.Data.Value (FP));
+
+            exit when
+              C /= 16#0020#
+                and then C /= 16#0009#
+                and then C /= 16#000D#
+                and then C /= 16#000A#;
+
+            FP := FP + 1;
+            FI := FI + 1;
+         end loop;
+      end if;
+
+      Matreshka.Internals.XML.Symbol_Tables.Insert
+       (Self.Symbols,
+        Self.Scanner_State.Data,
+        FP,
+        LP - FP,
+        LI - FI,
+        Self.Namespaces.Enabled,
+        E,
+        Symbol);
+
+      case E is
+         when Valid =>
+            if not Can_Be_Qname
+              and Local_Name (Self.Symbols, Symbol) /= Symbol
+            then
+               Error := True;
+               Symbol := No_Symbol;
+               Callbacks.Call_Fatal_Error
+                (Self,
+                 League.Strings.To_Universal_String
+                  ("[NSXML1.1] qualified name must not be used here"));
+               Self.Continue := False;
+
+            else
+               Error := False;
+            end if;
+
+         when Colon_At_Start =>
+            Error := True;
+            Symbol := No_Symbol;
+            Callbacks.Call_Fatal_Error
+             (Self,
+              League.Strings.To_Universal_String
+               ("[NSXML1.1]"
+                  & " qualified name must not start with colon character"));
+            Self.Continue := False;
+
+         when Colon_At_End =>
+            Error := True;
+            Symbol := No_Symbol;
+            Callbacks.Call_Fatal_Error
+             (Self,
+              League.Strings.To_Universal_String
+               ("[NSXML1.1]"
+                  & " qualified name must not end with colon character"));
+            Self.Continue := False;
+
+         when Multiple_Colons =>
+            Error := True;
+            Symbol := No_Symbol;
+            Callbacks.Call_Fatal_Error
+             (Self,
+              League.Strings.To_Universal_String
+               ("[NSXML1.1]"
+                  & " qualified name must not contain more than one colon"
+                  & " character"));
+            Self.Continue := False;
+
+         when First_Character_Is_Not_NS_Name_Start_Char =>
+            Error := True;
+            Symbol := No_Symbol;
+            Callbacks.Call_Fatal_Error
+             (Self,
+              League.Strings.To_Universal_String
+               ("[NSXML1.1] first character of local name is invalid"));
+            Self.Continue := False;
+      end case; 
+   end Resolve_Symbol;
 
 end Matreshka.SAX.Simple_Readers.Scanner.Actions;

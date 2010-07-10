@@ -178,28 +178,19 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    --  Open tag of document type declaration and name of root element,
    --  rule [28].
 
-   Enter_Start_Condition (Self, DOCTYPE_EXTINT);
-   Resolve_Symbol (Self, 10, 0, True, True, YYLVal);
-
-   return Token_Doctype_Decl_Open;
+   return Actions.On_Open_Of_Document_Type_Declaration (Self);
 }
 
 <DOCUMENT_10,DOCUMENT_11>"<"{NAME} {
    --  Open of start tag, rule [40], or empty element, rule [44].
 
-   Resolve_Symbol (Self, 1, 0, False, True, YYLVal);
-   Enter_Start_Condition (Self, ELEMENT_START);
-
-   return Token_Element_Open;
+   return Actions.On_Open_Of_Start_Tag (Self);
 }
 
 <DOCUMENT_10,DOCUMENT_11>"</"{NAME} {
-   --  Open of and tag, rule [42].
+   --  Open of end tag, rule [42].
 
-   Resolve_Symbol (Self, 2, 0, False, True, YYLVal);
-   Enter_Start_Condition (Self, ELEMENT_START);
-
-   return Token_End_Open;
+   return Actions.On_Open_Of_End_Tag (Self);
 }
 
 --  Rule [14]
@@ -268,8 +259,11 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <DOCUMENT_10,DOCUMENT_11>"&"{NAME}";" {
    --  General entity reference rule [68] in document content.
 
-   Resolve_Symbol (Self, 1, 1, False, False, YYLVal);
-   Process_General_Entity_Reference_In_Document_Content (Self, YYLVal.Symbol);
+   if not Actions.On_General_Entity_Reference_In_Document_Content (Self) then
+      --  Error is detected during handling, return error token to parser.
+
+      return Error;
+   end if;
 }
 
 <XML_DECL>version {
@@ -454,35 +448,19 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!ELEMENT"{WHITE_SPACE}{NAME} {
    --  Open of element declaration and name of the element, rule [45].
 
-   Enter_Start_Condition (Self, ELEMENT_DECL);
-   Resolve_Symbol (Self, 10, 0, True, True, YYLVal);
-
-   return Token_Element_Decl_Open;
+   return Actions.On_Open_Of_Element_Declaration (Self);
 }
 
 <DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!ATTLIST"{WHITE_SPACE}{NAME} {
    --  Open of attribute list declaration, rule [52].
 
-   Enter_Start_Condition (Self, ATTLIST_DECL);
-   Resolve_Symbol (Self, 10, 0, True, True, YYLVal);
-
-   return Token_Attlist_Decl_Open;
+   return Actions.On_Open_Of_Attribute_List_Declaration (Self);
 }
 
 <ENTITY_DECL>{NAME} {
    --  Name in entity declaration, rules [71], [72].
 
-   if not Get_Whitespace_Matched (Self) then
-      raise Program_Error
-        with "no whitespace before name in entity declaration";
-      --  XXX This is recoverable error.
-   end if;
-
-   Reset_Whitespace_Matched (Self);
-   Enter_Start_Condition (Self, ENTITY_DEF);
-   Resolve_Symbol (Self, 0, 0, False, False, YYLVal);
-
-   return Token_Name;
+   return Actions.On_Name_In_Entity_Declaration (Self);
 }
 
 <ENTITY_DECL>"%" {
@@ -531,6 +509,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
       --  XXX This is recoverable error.
    end if;
 
+   Reset_Whitespace_Matched (Self);
    Enter_Start_Condition (Self, ENTITY_NDATA);
 
    return Token_NData;
@@ -539,10 +518,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ENTITY_NDATA>{NAME} {
    --  Name of NDATA, rule [76].
 
-   Enter_Start_Condition (Self, ENTITY_DEF);
-   Resolve_Symbol (Self, 0, 0, False, False, YYLVal);
-
-   return Token_Name;
+   return Actions.On_Name_In_Entity_Declaration_Notation (Self);
 }
 
 <ENTITY_VALUE_10>{CHAR10_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE}+ {
@@ -588,13 +564,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ENTITY_VALUE_10,ENTITY_VALUE_11>"&"{NAME}";" {
    --  General entity reference rule [68] in entity value rule [9].
 
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal,
-     Is_Whitespace => False,
-     Is_CData      => False);
-
-   return Token_String_Segment;
+   return Actions.On_General_Entity_Reference_In_Entity_Value (Self);
 }
 
 <ENTITY_VALUE_10,ENTITY_VALUE_11>"%"{NAME}";" {
@@ -607,8 +577,9 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    --  parsing of parameter entity replacement text when it is referenced
    --  in any of two form of entity value.
 
-   Resolve_Symbol (Self, 1, 1, False, False, YYLVal);
-   Process_Parameter_Entity_Reference_In_Entity_Value (Self, YYLVal.Symbol);
+   if not Actions.On_Parameter_Entity_Reference_In_Entity_Value (Self) then
+      return Error;
+   end if;
 }
 
 <ELEMENT_DECL>EMPTY {
@@ -676,9 +647,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ELEMENT_CHILDREN>{NAME} {
    --  Name in element's children declaration, rules [48], [51].
 
-   Resolve_Symbol (Self, 0, 0, False, True, YYLVal);
-
-   return Token_Name;
+   return Actions.On_Name_In_Element_Declaration_Children (Self);
 }
 
 <ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE,ENTITY_DEF>">" {
@@ -693,10 +662,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ATTLIST_DECL>{NAME} {
    --  Name of the attribute, rule [53].
 
-   Resolve_Symbol (Self, 0, 0, False, True, YYLVal);
-   Enter_Start_Condition (Self, ATTLIST_TYPE);
-
-   return Token_Name;
+   return Actions.On_Name_In_Attribute_List_Declaration (Self);
 }
 
 <ATTLIST_TYPE>"CDATA" {
@@ -796,9 +762,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ATTLIST_TYPE>{NAME} {
    --  Name in the rule [58].
 
-   Resolve_Symbol (Self, 0, 0, False, False, YYLVal);
-
-   return Token_Name;
+   return Actions.On_Name_In_Attribute_List_Declaration_Notation (Self);
 }
 
 <ATTLIST_TYPE>{NMTOKEN} {
@@ -820,16 +784,16 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Process_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
 }
 
-<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,ENTITY_NDATA,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE>{WHITE_SPACE} {
+<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE>{WHITE_SPACE} {
    --  All white spaces from rules [28] are ignored.
    --  Whitespace before name in rule [76] is ignored.
 
    null;
 }
 
-<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ELEMENT_START>{WHITE_SPACE} {
+<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,ELEMENT_START>{WHITE_SPACE} {
    --  White spaces in entity declaration are not optional, rules [71], [72],
-   --  [75].
+   --  [75], [76].
    --
    --  White spaces in start tag, rule [40], are ignored, but white space
    --  between attribute value and name of the next attribute are must be
@@ -845,14 +809,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ELEMENT_START>{NAME} {
    --  Name of the attribute, rule [41].
 
-   if not Get_Whitespace_Matched (Self) then
-      raise Program_Error with "Whitespace is missing before attribute name";
-      --  XXX It is recoverable error.
-   end if;
-
-   Resolve_Symbol (Self, 0, 0, False, True, YYLVal);
-
-   return Token_Name;
+   return Actions.On_Name_In_Element_Start_Tag (Self);
 }
 
 <XML_DECL,ELEMENT_START>"=" {
@@ -920,8 +877,9 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>"&"{NAME}";" {
    --  General entity reference rule [68] in attribute value, rule [10].
 
-   Resolve_Symbol (Self, 1, 1, False, False, YYLVal);
-   Process_General_Entity_Reference_In_Attribute_Value (Self, YYLVal.Symbol);
+   if not Actions.On_General_Entity_Reference_In_Attribute_Value (Self) then
+      return Error;
+   end if;
 }
 
 <XML_DECL>. {
@@ -1029,15 +987,6 @@ with Matreshka.Internals.Strings;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier)
        is separate;
 
-   procedure Process_General_Entity_Reference_In_Document_Content
-    (Self   : access Integer;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
-       is separate;
-
-   procedure Process_Parameter_Entity_Reference_In_Entity_Value
-    (Self : access Integer;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is separate;
-
    type Character_Reference_Form is (Decimal, Hexadecimal);
 
    function Process_Character_Reference
@@ -1058,21 +1007,6 @@ with Matreshka.Internals.Strings;
    function Process_Entity_Value_Close_Delimiter
     (Self  : access Integer;
      Image : League.Strings.Universal_String) return Token is separate;
-
-   function Process_Whitespace
-    (Self : access Integer;
-     Text : Matreshka.Internals.Strings.Shared_String_Access)
-       return Boolean is separate;
-
-   function Process_XML_PI (Self : access Integer) return Token is separate;
-
-   procedure Resolve_Symbol
-    (Self              : access Integer;
-     Trim_Left         : Natural;
-     Trim_Right        : Natural;
-     Trim_Whitespace   : Boolean;
-     Is_Qualified_Name : Boolean;
-     YYLVal            : out YYSType) is separate;
 
    procedure Set_String_Internal
     (Item          : in out YYSType;
@@ -1100,17 +1034,62 @@ with Matreshka.Internals.Strings;
 
       function On_Close_Of_Declaration (Self : access Integer) return Token;
 
+      function On_Open_Of_End_Tag (Self : access Integer) return Token;
+
+      function On_Open_Of_Start_Tag (Self : access Integer) return Token;
+
       function On_Close_Of_Tag (Self : access Integer) return Token;
 
       function On_Close_Of_Empty_Element_Tag (Self : access Integer) return Token;
 
-      function On_Open_Of_XML_Processing_Instruction (Self : access Integer) return Token;
+      function On_Open_Of_XML_Processing_Instruction
+       (Self : access Integer) return Token;
 
-      function On_Open_Of_Processing_Instruction (Self : access Integer) return Token;
+      function On_Open_Of_Processing_Instruction
+       (Self : access Integer) return Token;
 
       function On_Close_Of_Processing_Instruction
        (Self     : access Integer;
         Is_Empty : Boolean) return Token;
+
+      function On_Open_Of_Document_Type_Declaration
+       (Self : access Integer) return Token;
+
+      function On_General_Entity_Reference_In_Attribute_Value
+       (Self : access Integer) return Boolean;
+
+      function On_General_Entity_Reference_In_Document_Content
+       (Self : access Integer) return Boolean;
+
+      function On_General_Entity_Reference_In_Entity_Value
+       (Self : access Integer) return Token;
+
+      function On_Parameter_Entity_Reference_In_Entity_Value
+       (Self : access Integer) return Boolean;
+
+      function On_Open_Of_Element_Declaration
+       (Self : access Integer) return Token;
+
+      function On_Open_Of_Attribute_List_Declaration
+       (Self : access Integer) return Token;
+
+      function On_Name_In_Attribute_List_Declaration
+       (Self : access Integer) return Token;
+
+      function On_Name_In_Element_Declaration_Children
+       (Self : access Integer) return Token;
+
+      function On_Name_In_Element_Start_Tag
+       (Self : access Integer) return Token;
+
+      function On_Name_In_Entity_Declaration
+       (Self : access Integer) return Token;
+
+      function On_Name_In_Entity_Declaration_Notation
+       (Self : access Integer) return Token;
+
+      function On_Name_In_Attribute_List_Declaration_Notation
+       (Self : access Integer) return Token;
 
    end Actions;
 
