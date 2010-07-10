@@ -373,10 +373,9 @@ package body Matreshka.Internals.XML.Symbol_Tables is
          end if;
 
          Self.Table (Identifier).Namespace_Processed := True;
-
-      else
-         Qname_Error := Valid;
       end if;
+
+      Qname_Error := Valid;
    end Insert;
 
    ------------
