@@ -283,7 +283,7 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
              (Self,
               League.Strings.To_Universal_String
                ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
-                  & " Names] element name must not have the prefix xmlns"));
+                  & " Names] element must not have the prefix xmlns"));
             Self.Continue := False;
 
             return;
@@ -321,8 +321,8 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
                       (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
-                           & " Names] xml namespace name must not be declared"
-                           & " as default namespace"));
+                           & " Names] the xml namespace must not be declared"
+                           & " as the default namespace"));
                      Self.Continue := False;
 
                      return;
@@ -346,8 +346,8 @@ package body Matreshka.SAX.Simple_Readers.Parser.Actions is
                       (Self,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
-                           & " Names] xmlns namespace name must not be"
-                           & " declared as default namespace"));
+                           & " Names] the xmlns namespace must not be declared"
+                           & " as the default namespace"));
                      Self.Continue := False;
 
                      return;
