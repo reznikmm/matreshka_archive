@@ -509,6 +509,28 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 6 =>
+               --  [XML1.0 2.8]
+               --
+               --  "Note: When an XML 1.0 processor encounters a document that
+               --  specifies a 1.x version number other than '1.0', it will process
+               --  it as a 1.0 document. This means that an XML 1.0 processor will
+               --  accept 1.x documents provided they do not use any non-1.0
+               --  features."
+               --
+               --  [XML1.1 4.3.4]
+               --
+               --  "Each entity, including the document entity, can be separately
+               --  declared as XML 1.0 or XML 1.1. The version declaration appearing
+               --  in the document entity determines the version of the document as a
+               --  whole. An XML 1.1 document may invoke XML 1.0 external entities,
+               --  so that otherwise duplicated versions of external entities,
+               --  particularly DTD external subsets, need not be maintained.
+               --  However, in such a case the rules of XML 1.1 are applied to the
+               --  entire document."
+               --
+               --  So, version information is ignored when it is not related to
+               --  document entity.
+            
                null;
 
             when 7 =>
@@ -536,23 +558,20 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 15 =>
-               null;
-
-            when 16 =>
                Process_Comment
                 (Self,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
-            when 17 =>
+            when 16 =>
                null;
 
-            when 18 =>
+            when 17 =>
                Process_Processing_Instruction
                 (Self,
                  yy.value_stack (yy.tos-1).Symbol,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
-            when 19 =>
+            when 18 =>
                --  Document type declaration, rule [28]. Once external identifier are
                --  recognized external document type declaration subset need to be parsed 
                --  after processing of internal subset. External subset is inserted
@@ -561,31 +580,31 @@ package body Matreshka.SAX.Simple_Readers.Parser is
             
                Actions.On_External_Subset_Declaration (Self);
 
-            when 20 =>
+            when 19 =>
                Actions.On_End_Of_Internal_Subset (Self);
 
-            when 21 =>
+            when 20 =>
                Actions.On_End_Of_Document_Type_Declaration
                 (Self,
                  yy.value_stack (yy.tos-6).Symbol);
 
-            when 22 =>
+            when 21 =>
                null;
 
-            when 23 =>
+            when 22 =>
                --  Document type declaration, rule [28]. 
             
                Actions.On_End_Of_Document_Type_Declaration
                 (Self,
                  yy.value_stack (yy.tos-2).Symbol);
 
+            when 23 =>
+               null;
+
             when 24 =>
                null;
 
             when 25 =>
-               null;
-
-            when 26 =>
                --  ExternalID specified by SYSTEM, rule [75].
             
                Process_External_Id
@@ -593,13 +612,16 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  League.Strings.Empty_String,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
-            when 27 =>
+            when 26 =>
                --  ExternalID specified by PUBLIC, rule [75].
             
                Process_External_Id
                 (Self,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String),
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
+
+            when 27 =>
+               null;
 
             when 28 =>
                null;
@@ -626,22 +648,19 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 36 =>
-               null;
-
-            when 37 =>
                Process_Comment
                 (Self,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
-            when 38 =>
+            when 37 =>
                null;
 
-            when 39 =>
+            when 38 =>
                --  Text declaration comes from external subset or external entity.
             
                null;
 
-            when 40 =>
+            when 39 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-2).Symbol,
@@ -649,7 +668,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String),
                  Notation    => Matreshka.Internals.XML.No_Symbol);
 
-            when 41 =>
+            when 40 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-2).Symbol,
@@ -657,7 +676,7 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Empty_String,
                  Notation    => Matreshka.Internals.XML.No_Symbol);
 
-            when 42 =>
+            when 41 =>
                Process_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-4).Symbol,
@@ -665,42 +684,45 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Empty_String,
                  Notation    => yy.value_stack (yy.tos-1).Symbol);
 
-            when 43 =>
+            when 42 =>
                Process_Parameter_Entity_Declaration
                 (Self,
                  yy.value_stack (yy.tos-2).Symbol,
                  False,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String));
 
-            when 44 =>
+            when 43 =>
                Process_Parameter_Entity_Declaration
                 (Self,
                  yy.value_stack (yy.tos-2).Symbol,
                  True,
                  League.Strings.Empty_String);
 
-            when 45 =>
+            when 44 =>
                --  Entity value including surrounding delimiters.
             
                Move (yyval, yy.value_stack (yy.tos-1));
 
-            when 46 =>
+            when 45 =>
                --  Additional string segment in entity value.
             
                Move (yyval, yy.value_stack (yy.tos-1));
                Matreshka.Internals.Strings.Operations.Append (yyval.String, yy.value_stack (yy.tos).String);
 
-            when 47 =>
+            when 46 =>
                --  Single string segment in entity value.
             
                Move (yyval, yy.value_stack (yy.tos));
 
-            when 48 =>
+            when 47 =>
                Set_String
                 (Item          => yyval,
                  String        => League.Strings.Empty_String,
                  Is_Whitespace => False,
                  Is_CData      => False);
+
+            when 48 =>
+               null;
 
             when 49 =>
                null;
@@ -871,16 +893,16 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 105 =>
-               null;
-
-            when 106 =>
                Actions.On_Start_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
 
-            when 107 =>
+            when 106 =>
                Actions.On_End_Tag (Self, yy.value_stack (yy.tos-1).Symbol);
 
-            when 108 =>
+            when 107 =>
                Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
+
+            when 108 =>
+               null;
 
             when 109 =>
                null;
@@ -892,26 +914,29 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                null;
 
             when 112 =>
-               null;
-
-            when 113 =>
                Actions.On_Character_Data
                 (Self,
                  yy.value_stack (yy.tos).String,
                  yy.value_stack (yy.tos).Is_Whitespace);
 
-            when 114 =>
+            when 113 =>
                Process_Comment
                 (Self,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
-            when 115 =>
+            when 114 =>
                null;
 
-            when 116 =>
+            when 115 =>
                --  TextDecl come from substitution of external parsed entities.
             
                null;
+
+            when 116 =>
+               Actions.On_Elements_Attribute
+                (Self,
+                 yy.value_stack (yy.tos-2).Symbol,
+                 yy.value_stack (yy.tos).String);
 
             when 117 =>
                Actions.On_Elements_Attribute
@@ -920,15 +945,9 @@ package body Matreshka.SAX.Simple_Readers.Parser is
                  yy.value_stack (yy.tos).String);
 
             when 118 =>
-               Actions.On_Elements_Attribute
-                (Self,
-                 yy.value_stack (yy.tos-2).Symbol,
-                 yy.value_stack (yy.tos).String);
-
-            when 119 =>
                null;
 
-            when 120 =>
+            when 119 =>
                Move (yyval, yy.value_stack (yy.tos-1));
                when others =>
                   raise Program_Error

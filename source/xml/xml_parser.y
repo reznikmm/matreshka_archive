@@ -101,18 +101,33 @@ XMLDecl :
   ;
 
 TextDecl :
-    Token_Xml_Decl_Open VersionDecl_optional Token_Encoding Token_Equal Token_String_Segment Token_PI_Close
+    Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment Token_Encoding Token_Equal Token_String_Segment Token_PI_Close
 {
-   null;
-}
-  ;
+   --  [XML1.0 2.8]
+   --
+   --  "Note: When an XML 1.0 processor encounters a document that
+   --  specifies a 1.x version number other than '1.0', it will process
+   --  it as a 1.0 document. This means that an XML 1.0 processor will
+   --  accept 1.x documents provided they do not use any non-1.0
+   --  features."
+   --
+   --  [XML1.1 4.3.4]
+   --
+   --  "Each entity, including the document entity, can be separately
+   --  declared as XML 1.0 or XML 1.1. The version declaration appearing
+   --  in the document entity determines the version of the document as a
+   --  whole. An XML 1.1 document may invoke XML 1.0 external entities,
+   --  so that otherwise duplicated versions of external entities,
+   --  particularly DTD external subsets, need not be maintained.
+   --  However, in such a case the rules of XML 1.1 are applied to the
+   --  entire document."
+   --
+   --  So, version information is ignored when it is not related to
+   --  document entity.
 
-VersionDecl_optional :
-    Token_Version Token_Equal Token_String_Segment
-{
    null;
 }
-  |
+  | Token_Xml_Decl_Open Token_Encoding Token_Equal Token_String_Segment Token_PI_Close
 {
    null;
 }

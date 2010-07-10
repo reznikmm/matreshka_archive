@@ -568,34 +568,44 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
      Version : XML_Version) is
    begin
       if Self.Version /= Version then
+         --  [XML1.0 2.8]
+         --
+         --  "Note: When an XML 1.0 processor encounters a document that
+         --  specifies a 1.x version number other than '1.0', it will process
+         --  it as a 1.0 document. This means that an XML 1.0 processor will
+         --  accept 1.x documents provided they do not use any non-1.0
+         --  features."
+         --
+         --  [XML1.1 4.3.4]
+         --
+         --  "Each entity, including the document entity, can be separately
+         --  declared as XML 1.0 or XML 1.1. The version declaration appearing
+         --  in the document entity determines the version of the document as a
+         --  whole. An XML 1.1 document may invoke XML 1.0 external entities,
+         --  so that otherwise duplicated versions of external entities,
+         --  particularly DTD external subsets, need not be maintained.
+         --  However, in such a case the rules of XML 1.1 are applied to the
+         --  entire document."
+         --
+         --  So, XML version of the document can be declared only once, in the
+         --  XML declaration at the start of the document entity. All other
+         --  occurrences of version declaration in external subset and
+         --  external entities are ignored. This allows to simplify code of
+         --  the version change subprogram.
+
          Self.Version := Version;
 
-         raise Program_Error;
---         case Self.Version is
---            when XML_1_0 =>
---               case Self.Scanner_State.Continue_State is
---                  when DOCUMENT_11 =>
---                     Self.Scanner_State.Continue_State := DOCUMENT_10;
---
---                  when DOCTYPE_INTSUBSET_11 =>
---                     Self.Scanner_State.Continue_State := DOCTYPE_INTSUBSET_10;
---
---                  when others =>
---                     raise Program_Error;
---               end case;
---
---            when XML_1_1 =>
---               case Self.Scanner_State.Continue_State is
---                  when DOCUMENT_10 =>
---                     Self.Scanner_State.Continue_State := DOCUMENT_11;
---
---                  when DOCTYPE_INTSUBSET_10 =>
---                     Self.Scanner_State.Continue_State := DOCTYPE_INTSUBSET_11;
---
---                  when others =>
---                     raise Program_Error;
---               end case;
---         end case;
+         Self.Scanner_State.Start_Condition_Stack.Delete_Last;
+
+         case Self.Version is
+            when XML_1_0 =>
+               Self.Scanner_State.Start_Condition_Stack.Append
+                (Tables.DOCUMENT_10);
+
+            when XML_1_1 =>
+               Self.Scanner_State.Start_Condition_Stack.Append
+                (Tables.DOCUMENT_11);
+         end case;
       end if;
    end Set_XML_Version;
 
