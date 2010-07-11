@@ -129,11 +129,4 @@ private
    --  Push replacement text of general entity in attribute value into
    --  scanner's stack.
 
-   procedure Push_General_Entity_In_Document_Content
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Entity : Matreshka.Internals.XML.Entity_Identifier;
-     Data   : not null Matreshka.Internals.Strings.Shared_String_Access);
-   --  Push replacement text of general entity in document content into
-   --  scanner's stack.
-
 end Matreshka.SAX.Simple_Readers.Scanner;

@@ -349,6 +349,8 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
       Entity         : Entity_Identifier;
+      Text           : Matreshka.Internals.Strings.Shared_String_Access;
+      State          : Scanner_State_Information;
 
    begin
       Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
@@ -416,8 +418,64 @@ package body Matreshka.SAX.Simple_Readers.Scanner.Actions is
          return False;
       end if;
 
-      Push_General_Entity_In_Document_Content
-       (Self, Entity, Replacement_Text (Self.Entities, Entity));
+      Text := Replacement_Text (Self.Entities, Entity);
+
+      if Text.Unused = 0 then
+         --  Replacement text is empty string,
+
+         return True;
+      end if;
+
+      --  [XML1.1 4.1 WFC: No Recursion]
+      --
+      --  "A parsed entity MUST NOT contain a recursive reference to itself,
+      --  either directly or indirectly."
+      --
+      --  Check whether there is no replacement text of the same entity in the
+      --  scanner stack.
+
+      if Self.Scanner_State.Entity = Entity then
+         Callbacks.Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String
+            ("[XML1.1 4.1 WFC: No Recursion]"
+               & " parsed entity must not containt a direct recursive"
+               & " reference to itself"));
+         Self.Continue := False;
+
+         return False;
+      end if;
+
+      for J in 1 .. Integer (Self.Scanner_Stack.Length) loop
+         State := Self.Scanner_Stack.Element (J);
+
+         if State.Entity = Entity then
+            Callbacks.Call_Fatal_Error
+             (Self,
+              League.Strings.To_Universal_String
+               ("[XML1.1 4.1 WFC: No Recursion]"
+                  & " parsed entity must not containt a indirect recursive"
+                  & " reference to itself"));
+            Self.Continue := False;
+
+            return False;
+         end if;
+      end loop;
+
+      Self.Scanner_Stack.Append (Self.Scanner_State);
+      Self.Stack_Is_Empty := False;
+
+      Self.Scanner_State := (Text, Entity => Entity, others => <>);
+
+      case Self.Version is
+         when XML_1_0 =>
+            Push_And_Enter_Start_Condition
+             (Self, Tables.DOCUMENT_10, Tables.INITIAL);
+
+         when XML_1_1 =>
+            Push_And_Enter_Start_Condition
+             (Self, Tables.DOCUMENT_11, Tables.INITIAL);
+      end case;
 
       return True;
    end On_General_Entity_Reference_In_Document_Content;

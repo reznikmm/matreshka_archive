@@ -483,38 +483,6 @@ package body Matreshka.SAX.Simple_Readers.Scanner is
       end case;
    end Push_General_Entity_In_Attribute_Value;
 
-   ---------------------------------------------
-   -- Push_General_Entity_In_Document_Content --
-   ---------------------------------------------
-
-   procedure Push_General_Entity_In_Document_Content
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Entity : Matreshka.Internals.XML.Entity_Identifier;
-     Data   : not null Matreshka.Internals.Strings.Shared_String_Access)
-   is
-      S : Scanner_State_Information;
-
-   begin
-      if Self.Scanner_State.Entity = Entity then
-         raise Program_Error with "general entity references itself";
-      end if;
-
-      for J in 1 .. Integer (Self.Scanner_Stack.Length) loop
-         S := Self.Scanner_Stack.Element (J);
-
-         if S.Entity = Entity then
-            raise Program_Error with "general entity references itself";
-         end if;
-      end loop;
-
-      Self.Scanner_Stack.Append (Self.Scanner_State);
-      Self.Stack_Is_Empty := False;
-
-      Self.Scanner_State := (Data, Entity => Entity, others => <>);
-      Push_And_Enter_Start_Condition
-       (Self, Tables.DOCUMENT_10, Tables.INITIAL);
-   end Push_General_Entity_In_Document_Content;
-
    ------------------------------
    -- Reset_Whitespace_Matched --
    ------------------------------
