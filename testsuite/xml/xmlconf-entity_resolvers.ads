@@ -42,12 +42,12 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings;
-with Matreshka.SAX.Entity_Resolvers;
+with XML.SAX.Entity_Resolvers;
 
 package XMLConf.Entity_Resolvers is
 
    type Entity_Resolver is
-     limited new Matreshka.SAX.Entity_Resolvers.SAX_Entity_Resolver
+     limited new XML.SAX.Entity_Resolvers.SAX_Entity_Resolver
        with null record;
 
    overriding function Error_String

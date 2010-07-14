@@ -57,7 +57,6 @@
 
 %with Matreshka.Internals.Strings
 %with Matreshka.Internals.XML.Symbol_Tables;
-%with Matreshka.SAX.Attributes;
 
 {
    type YYSType is record
@@ -789,7 +788,6 @@ AttributeValue :
 ##
 with Ada.Wide_Wide_Text_IO;
 with League.Strings.Internals;
-with Matreshka.SAX.Attributes.Internals;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.XML.Symbol_Tables;
 ##

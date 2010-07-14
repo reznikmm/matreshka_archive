@@ -4,7 +4,7 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                            Testsuite Component                           --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,46 +41,58 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
-with XML.SAX.Attributes;
-with XML.SAX.Content_Handlers;
-with XML.SAX.Error_Handlers;
-with XML.SAX.Parse_Exceptions;
+with Ada.Unchecked_Deallocation;
 
-package XMLConf.Testsuite_Handlers is
+package body XML.SAX.Locators is
 
-   type Result_Record is record
-      Passed : Natural := 0;
-      Failed : Natural := 0;
-      Crash  : Natural := 0;
-   end record;
+   ------------
+   -- Adjust --
+   ------------
 
-   type Result_Array is array (Test_Kinds) of Result_Record;
+   overriding procedure Adjust (Self : in out SAX_Locator) is
+   begin
+      Matreshka.Internals.Atomics.Counters.Increment
+       (Self.Data.Counter'Access);
+   end Adjust;
 
-   type Testsuite_Handler is
-     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
-       and XML.SAX.Error_Handlers.SAX_Error_Handler
-   with record
-      Base    : League.Strings.Universal_String;
-      --  Base path to tests' data.
-      Results : Result_Array;
-   end record;
+   ------------
+   -- Column --
+   ------------
 
-   overriding function Error_String
-    (Self : Testsuite_Handler)
-       return League.Strings.Universal_String;
+   function Column (Self : SAX_Locator'Class) return Natural is
+   begin
+      return Self.Data.Column;
+   end Column;
 
-   overriding procedure Start_Element
-    (Self           : in out Testsuite_Handler;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String;
-     Attributes     : XML.SAX.Attributes.SAX_Attributes;
-     Success        : in out Boolean);
+   --------------
+   -- Finalize --
+   --------------
 
-   overriding procedure Fatal_Error
-    (Self       : in out Testsuite_Handler;
-     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean);
+   overriding procedure Finalize (Self : in out SAX_Locator) is
+      procedure Free is
+        new Ada.Unchecked_Deallocation (Shared_Locator, Shared_Locator_Access);
 
-end XMLConf.Testsuite_Handlers;
+   begin
+      --  Finalize can be called more than once (as specified by language
+      --  standard), thus implementation should provide protection from
+      --  multiple finalization.
+
+      if Self.Data /= null then
+         if Matreshka.Internals.Atomics.Counters.Decrement
+             (Self.Data.Counter'Access)
+         then
+            Free (Self.Data);
+         end if;
+      end if;
+   end Finalize;
+
+   ----------
+   -- Line --
+   ----------
+
+   function Line (Self : SAX_Locator'Class) return Natural is
+   begin
+      return Self.Data.Line;
+   end Line;
+
+end XML.SAX.Locators;

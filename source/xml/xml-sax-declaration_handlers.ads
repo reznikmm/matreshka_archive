@@ -4,7 +4,7 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                            Testsuite Component                           --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -42,45 +42,37 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings;
-with XML.SAX.Attributes;
-with XML.SAX.Content_Handlers;
-with XML.SAX.Error_Handlers;
-with XML.SAX.Parse_Exceptions;
 
-package XMLConf.Testsuite_Handlers is
+package XML.SAX.Declaration_Handlers is
 
-   type Result_Record is record
-      Passed : Natural := 0;
-      Failed : Natural := 0;
-      Crash  : Natural := 0;
-   end record;
+   pragma Preelaborate;
 
-   type Result_Array is array (Test_Kinds) of Result_Record;
+   type SAX_Declaration_Handler is limited interface;
 
-   type Testsuite_Handler is
-     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
-       and XML.SAX.Error_Handlers.SAX_Error_Handler
-   with record
-      Base    : League.Strings.Universal_String;
-      --  Base path to tests' data.
-      Results : Result_Array;
-   end record;
+   not overriding procedure Attribute_Declaration
+    (Self          : in out SAX_Declaration_Handler;
+     E_Name        : League.Strings.Universal_String;
+     A_Name        : League.Strings.Universal_String;
+     A_Type        : League.Strings.Universal_String;
+     Value_Default : League.Strings.Universal_String;
+     Value         : League.Strings.Universal_String;
+     Success       : in out Boolean) is null;
 
-   overriding function Error_String
-    (Self : Testsuite_Handler)
-       return League.Strings.Universal_String;
+   not overriding function Error_String
+    (Self : SAX_Declaration_Handler)
+       return League.Strings.Universal_String is abstract;
 
-   overriding procedure Start_Element
-    (Self           : in out Testsuite_Handler;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String;
-     Attributes     : XML.SAX.Attributes.SAX_Attributes;
-     Success        : in out Boolean);
+   not overriding procedure External_Entity_Declaration
+    (Self      : in out SAX_Declaration_Handler;
+     Name      : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Success   : in out Boolean) is null;
 
-   overriding procedure Fatal_Error
-    (Self       : in out Testsuite_Handler;
-     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean);
+   not overriding procedure Internal_Entity_Declaration
+    (Self    : in out SAX_Declaration_Handler;
+     Name    : League.Strings.Universal_String;
+     Value   : League.Strings.Universal_String;
+     Success : in out Boolean) is null;
 
-end XMLConf.Testsuite_Handlers;
+end XML.SAX.Declaration_Handlers;

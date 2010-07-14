@@ -4,7 +4,7 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                             Examples Component                           --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -42,106 +42,26 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings;
-with XML.SAX.Attributes;
+
 with XML.SAX.Content_Handlers;
-with XML.SAX.Declaration_Handlers;
 with XML.SAX.DTD_Handlers;
-with XML.SAX.Entity_Resolvers;
+with XML.SAX.Declaration_Handlers;
 with XML.SAX.Error_Handlers;
 with XML.SAX.Lexical_Handlers;
-with XML.SAX.Locators;
-with XML.SAX.Parse_Exceptions;
 
-package Events_Printers is
+package XML.SAX.Default_Handlers is
 
-   type Events_Printer is limited
-     new XML.SAX.Content_Handlers.SAX_Content_Handler
-       and XML.SAX.Declaration_Handlers.SAX_Declaration_Handler
+   pragma Preelaborate;
+
+   type SAX_Default_Handler is
+     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.DTD_Handlers.SAX_DTD_Handler
-       and XML.SAX.Entity_Resolvers.SAX_Entity_Resolver
+       and XML.SAX.Declaration_Handlers.SAX_Declaration_Handler
        and XML.SAX.Error_Handlers.SAX_Error_Handler
-       and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with
-   record
-      Locator : XML.SAX.Locators.SAX_Locator;
-   end record;
-   --  GNAT GPL 2010: compiler is unable to compile declaration of this type
-   --  when it is declared as private.
-
-   overriding procedure Characters
-    (Self    : in out Events_Printer;
-     Text    : League.Strings.Universal_String;
-     Success : in out Boolean);
-
-   overriding procedure Comment
-    (Self    : in out Events_Printer;
-     Text    : League.Strings.Universal_String;
-     Success : in out Boolean);
-
-   overriding procedure End_Element
-    (Self           : in out Events_Printer;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String;
-     Success        : in out Boolean);
+       and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with null record;
 
    overriding function Error_String
-    (Self : Events_Printer)
+    (Self : SAX_Default_Handler)
        return League.Strings.Universal_String;
 
-   overriding procedure External_Entity_Declaration
-    (Self      : in out Events_Printer;
-     Name      : League.Strings.Universal_String;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Success   : in out Boolean);
-
-   overriding procedure Fatal_Error
-    (Self       : in out Events_Printer;
-     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean);
-
-   overriding procedure Ignorable_Whitespace
-    (Self    : in out Events_Printer;
-     Text    : League.Strings.Universal_String;
-     Success : in out Boolean);
-
-   overriding procedure Internal_Entity_Declaration
-    (Self    : in out Events_Printer;
-     Name    : League.Strings.Universal_String;
-     Value   : League.Strings.Universal_String;
-     Success : in out Boolean);
-
-   overriding procedure Processing_Instruction
-    (Self    : in out Events_Printer;
-     Target  : League.Strings.Universal_String;
-     Data    : League.Strings.Universal_String;
-     Success : in out Boolean);
-
-   overriding procedure Resolve_Entity
-    (Self      : in out Events_Printer;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Text      : out League.Strings.Universal_String;
-     Success   : in out Boolean);
-
-   overriding procedure Set_Document_Locator
-    (Self    : in out Events_Printer;
-     Locator : XML.SAX.Locators.SAX_Locator);
-
-   overriding procedure Start_Element
-    (Self           : in out Events_Printer;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String;
-     Attributes     : XML.SAX.Attributes.SAX_Attributes;
-     Success        : in out Boolean);
-
-   overriding procedure Unparsed_Entity_Declaration
-    (Self          : in out Events_Printer;
-     Name          : League.Strings.Universal_String;
-     Public_Id     : League.Strings.Universal_String;
-     System_Id     : League.Strings.Universal_String;
-     Notation_Name : League.Strings.Universal_String;
-     Success       : in out Boolean);
-
-end Events_Printers;
+end XML.SAX.Default_Handlers;

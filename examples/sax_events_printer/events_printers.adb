@@ -50,7 +50,7 @@ package body Events_Printers is
 
    use type League.Strings.Universal_String;
 
-   function Image (Item : Matreshka.SAX.Locators.SAX_Locator)
+   function Image (Item : XML.SAX.Locators.SAX_Locator)
      return League.Strings.Universal_String;
 
    ----------------
@@ -112,11 +112,11 @@ package body Events_Printers is
       return X : League.Strings.Universal_String;
    end Error_String;
 
-   --------------------------
-   -- External_Entity_Decl --
-   --------------------------
+   ---------------------------------
+   -- External_Entity_Declaration --
+   ---------------------------------
 
-   overriding procedure External_Entity_Decl
+   overriding procedure External_Entity_Declaration
     (Self      : in out Events_Printer;
      Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
@@ -124,11 +124,11 @@ package body Events_Printers is
      Success   : in out Boolean) is
    begin
       Put_Line
-       (">>> (External_Entity_Decl) "
+       (">>> (External_Entity_Declaration) "
           & Image (Self.Locator)
           & ": '"
           & Name & "' => '" & Public_Id & "' '" & System_Id & "'");
-   end External_Entity_Decl;
+   end External_Entity_Declaration;
 
    -----------------
    -- Fatal_Error --
@@ -136,7 +136,7 @@ package body Events_Printers is
 
    overriding procedure Fatal_Error
     (Self       : in out Events_Printer;
-     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
      Success    : in out Boolean) is
    begin
       Put_Line
@@ -168,7 +168,7 @@ package body Events_Printers is
    -- Image --
    -----------
 
-   function Image (Item : Matreshka.SAX.Locators.SAX_Locator)
+   function Image (Item : XML.SAX.Locators.SAX_Locator)
      return League.Strings.Universal_String
    is
       L : constant Wide_Wide_String := Natural'Wide_Wide_Image (Item.Line);
@@ -182,25 +182,25 @@ package body Events_Printers is
             & C (C'First + 1 .. C'Last));
    end Image;
 
-   --------------------------
-   -- Internal_Entity_Decl --
-   --------------------------
+   ---------------------------------
+   -- Internal_Entity_Declaration --
+   ---------------------------------
 
-   overriding procedure Internal_Entity_Decl
+   overriding procedure Internal_Entity_Declaration
     (Self    : in out Events_Printer;
      Name    : League.Strings.Universal_String;
      Value   : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
       Put_Line
-       (">>> (Internal_Entity_Decl) "
+       (">>> (Internal_Entity_Declaration) "
           & Image (Self.Locator)
           & ": '"
           & Name
           & "' => '"
           & Value
           & "'");
-   end Internal_Entity_Decl;
+   end Internal_Entity_Declaration;
 
    ----------------------------
    -- Processing_Instruction --
@@ -246,7 +246,7 @@ package body Events_Printers is
 
    overriding procedure Set_Document_Locator
     (Self    : in out Events_Printer;
-     Locator : Matreshka.SAX.Locators.SAX_Locator) is
+     Locator : XML.SAX.Locators.SAX_Locator) is
    begin
       Self.Locator := Locator;
    end Set_Document_Locator;
@@ -260,7 +260,7 @@ package body Events_Printers is
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
-     Attributes     : Matreshka.SAX.Attributes.SAX_Attributes;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean) is
    begin
       Put_Line
@@ -283,11 +283,11 @@ package body Events_Printers is
       end loop;
    end Start_Element;
 
-   --------------------------
-   -- Unparsed_Entity_Decl --
-   --------------------------
+   ---------------------------------
+   -- Unparsed_Entity_Declaration --
+   ---------------------------------
 
-   overriding procedure Unparsed_Entity_Decl
+   overriding procedure Unparsed_Entity_Declaration
     (Self          : in out Events_Printer;
      Name          : League.Strings.Universal_String;
      Public_Id     : League.Strings.Universal_String;
@@ -296,7 +296,7 @@ package body Events_Printers is
      Success       : in out Boolean) is
    begin
       Put_Line
-       (">>> (Unparsed_Entity_Decl) "
+       (">>> (Unparsed_Entity_Declaration) "
           & Image (Self.Locator)
           & ": '"
           & Name
@@ -307,6 +307,6 @@ package body Events_Printers is
           & "' '"
           & Notation_Name
           & "'");
-   end Unparsed_Entity_Decl;
+   end Unparsed_Entity_Declaration;
 
 end Events_Printers;

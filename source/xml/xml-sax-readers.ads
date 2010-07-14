@@ -4,7 +4,7 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                            Testsuite Component                           --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -42,45 +42,79 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings;
-with XML.SAX.Attributes;
+
 with XML.SAX.Content_Handlers;
+with XML.SAX.Declaration_Handlers;
+with XML.SAX.DTD_Handlers;
+with XML.SAX.Entity_Resolvers;
 with XML.SAX.Error_Handlers;
-with XML.SAX.Parse_Exceptions;
+with XML.SAX.Lexical_Handlers;
 
-package XMLConf.Testsuite_Handlers is
+package XML.SAX.Readers is
 
-   type Result_Record is record
-      Passed : Natural := 0;
-      Failed : Natural := 0;
-      Crash  : Natural := 0;
-   end record;
+   pragma Preelaborate;
 
-   type Result_Array is array (Test_Kinds) of Result_Record;
+   type SAX_Content_Handler_Access is
+     access all XML.SAX.Content_Handlers.SAX_Content_Handler'Class;
+   type SAX_Declaration_Handler_Access is
+     access all XML.SAX.Declaration_Handlers.SAX_Declaration_Handler'Class;
+   type SAX_DTD_Handler_Access is
+     access all XML.SAX.DTD_Handlers.SAX_DTD_Handler'Class;
+   type SAX_Error_Handler_Access is
+     access all XML.SAX.Error_Handlers.SAX_Error_Handler'Class;
+   type SAX_Lexical_Handler_Access is
+     access all XML.SAX.Lexical_Handlers.SAX_Lexical_Handler'Class;
+   type SAX_Entity_Resolver_Access is
+     access all XML.SAX.Entity_Resolvers.SAX_Entity_Resolver'Class;
 
-   type Testsuite_Handler is
-     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
-       and XML.SAX.Error_Handlers.SAX_Error_Handler
-   with record
-      Base    : League.Strings.Universal_String;
-      --  Base path to tests' data.
-      Results : Result_Array;
-   end record;
+   type SAX_Reader is limited interface;
 
-   overriding function Error_String
-    (Self : Testsuite_Handler)
-       return League.Strings.Universal_String;
+   not overriding function Content_Handler
+    (Self : not null access constant SAX_Reader)
+       return SAX_Content_Handler_Access is abstract;
 
-   overriding procedure Start_Element
-    (Self           : in out Testsuite_Handler;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String;
-     Attributes     : XML.SAX.Attributes.SAX_Attributes;
-     Success        : in out Boolean);
+   not overriding function Declaration_Handler
+    (Self : not null access constant SAX_Reader)
+       return SAX_Declaration_Handler_Access is abstract;
 
-   overriding procedure Fatal_Error
-    (Self       : in out Testsuite_Handler;
-     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean);
+   not overriding function DTD_Handler
+    (Self : not null access constant SAX_Reader)
+       return SAX_DTD_Handler_Access is abstract;
 
-end XMLConf.Testsuite_Handlers;
+   not overriding function Entity_Resolver
+    (Self : not null access constant SAX_Reader)
+       return SAX_Entity_Resolver_Access is abstract;
+
+   not overriding function Error_Handler
+    (Self : not null access constant SAX_Reader)
+       return SAX_Error_Handler_Access is abstract;
+
+   not overriding function Lexical_Handler
+    (Self : not null access constant SAX_Reader)
+       return SAX_Lexical_Handler_Access is abstract;
+
+   not overriding procedure Set_Content_Handler
+    (Self    : not null access SAX_Reader;
+     Handler : SAX_Content_Handler_Access) is abstract;
+
+   not overriding procedure Set_Declaration_Handler
+    (Self    : not null access SAX_Reader;
+     Handler : SAX_Declaration_Handler_Access) is abstract;
+
+   not overriding procedure Set_DTD_Handler
+    (Self    : not null access SAX_Reader;
+     Handler : SAX_DTD_Handler_Access) is abstract;
+
+   not overriding procedure Set_Entity_Resolver
+    (Self     : not null access SAX_Reader;
+     Resolver : SAX_Entity_Resolver_Access) is abstract;
+
+   not overriding procedure Set_Error_Handler
+    (Self    : not null access SAX_Reader;
+     Handler : SAX_Error_Handler_Access) is abstract;
+
+   not overriding procedure Set_Lexical_Handler
+    (Self    : not null access SAX_Reader;
+     Handler : SAX_Lexical_Handler_Access) is abstract;
+
+end XML.SAX.Readers;

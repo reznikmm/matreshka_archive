@@ -47,7 +47,7 @@ with Ada.Exceptions;
 
 with Put_Line;
 with Read_File;
-with Matreshka.SAX.Simple_Readers;
+with XML.SAX.Simple_Readers;
 
 package body XMLConf.Testsuite_Handlers is
 
@@ -107,7 +107,7 @@ package body XMLConf.Testsuite_Handlers is
                (Ada.Characters.Conversions.To_String
                  (League.Strings.To_Wide_Wide_String (Base & URI)));
          Text   : League.Strings.Universal_String;
-         Reader : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
+         Reader : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
 
       begin
          Ada.Directories.Set_Directory (Dwd);
@@ -165,7 +165,7 @@ package body XMLConf.Testsuite_Handlers is
 
    overriding procedure Fatal_Error
     (Self       : in out Testsuite_Handler;
-     Occurrence : Matreshka.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
      Success    : in out Boolean) is
    begin
       Put_Line ("FATAL ERROR: " & Occurrence.Message);
@@ -180,7 +180,7 @@ package body XMLConf.Testsuite_Handlers is
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
-     Attributes     : Matreshka.SAX.Attributes.SAX_Attributes;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean)
    is
       Index     : Natural;

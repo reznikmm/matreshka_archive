@@ -4,7 +4,7 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                            Testsuite Component                           --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,46 +41,50 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
-with XML.SAX.Attributes;
-with XML.SAX.Content_Handlers;
-with XML.SAX.Error_Handlers;
-with XML.SAX.Parse_Exceptions;
 
-package XMLConf.Testsuite_Handlers is
+private package XML.SAX.Simple_Readers.Parser.Actions is
 
-   type Result_Record is record
-      Passed : Natural := 0;
-      Failed : Natural := 0;
-      Crash  : Natural := 0;
-   end record;
+   pragma Preelaborate;
 
-   type Result_Array is array (Test_Kinds) of Result_Record;
+   procedure On_Character_Data
+    (Self          : not null access SAX_Simple_Reader'Class;
+     Text          : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Is_Whitespace : Boolean);
+   --  Process segment of character data.
 
-   type Testsuite_Handler is
-     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
-       and XML.SAX.Error_Handlers.SAX_Error_Handler
-   with record
-      Base    : League.Strings.Universal_String;
-      --  Base path to tests' data.
-      Results : Result_Array;
-   end record;
+   procedure On_Elements_Attribute
+    (Self    : not null access SAX_Simple_Reader'Class;
+      Symbol : Matreshka.Internals.XML.Symbol_Identifier;
+      Value  : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Handles attribute of the element.
 
-   overriding function Error_String
-    (Self : Testsuite_Handler)
-       return League.Strings.Universal_String;
+   procedure On_End_Of_Document_Type_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Handles end of document type declaration.
 
-   overriding procedure Start_Element
-    (Self           : in out Testsuite_Handler;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String;
-     Attributes     : XML.SAX.Attributes.SAX_Attributes;
-     Success        : in out Boolean);
+   procedure On_End_Of_Internal_Subset
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Substitutes external subset if any.
 
-   overriding procedure Fatal_Error
-    (Self       : in out Testsuite_Handler;
-     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean);
+   procedure On_End_Tag
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Handles end tag, rule [42].
 
-end XMLConf.Testsuite_Handlers;
+   procedure On_External_Subset_Declaration
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles reference to external subset in the document type declaration.
+
+   procedure On_Start_Tag
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Handles start tag of element.
+
+   procedure On_XML_Version_Information
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Version : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Handles XML version information by switching scanner to the
+   --  corresponding processing mode.
+
+end XML.SAX.Simple_Readers.Parser.Actions;

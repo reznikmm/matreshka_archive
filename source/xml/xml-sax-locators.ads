@@ -4,7 +4,7 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                            Testsuite Component                           --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,46 +41,58 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
-with XML.SAX.Attributes;
-with XML.SAX.Content_Handlers;
-with XML.SAX.Error_Handlers;
-with XML.SAX.Parse_Exceptions;
+--  The SAX_Locator type provides the XML handlers with information about the
+--  parsing position within a file.
+--
+--  The reader reports a SAX_Locator to the content handler before is starts
+--  to parse the document. This is done with the Set_Document_Locator
+--  procedure. The handlers can now use this locator to get the position
+--  (line and column numbers) that the reader has reached.
+--
+--  SAX_Locator uses explicit sharing technique for safety, the handler can
+--  save any number of copies of the objects but all of them will provides
+--  the same information.
+------------------------------------------------------------------------------
+private with Ada.Finalization;
 
-package XMLConf.Testsuite_Handlers is
+private with Matreshka.Internals.Atomics.Counters;
 
-   type Result_Record is record
-      Passed : Natural := 0;
-      Failed : Natural := 0;
-      Crash  : Natural := 0;
+package XML.SAX.Locators is
+
+   pragma Preelaborate;
+
+   type SAX_Locator is tagged private;
+
+   function Column (Self : SAX_Locator'Class) return Natural;
+   --  Returns the column number (starting at 1) or 0 if there is no column
+   --  number available.
+
+   function Line (Self : SAX_Locator'Class) return Natural;
+   --  Returns the line number (starting at 1) or 0 if there is no line
+   --  number available.
+
+private
+
+   type Shared_Locator is record
+      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Line    : Natural;
+      pragma Atomic (Line);
+      Column  : Natural;
+      pragma Atomic (Column);
    end record;
 
-   type Result_Array is array (Test_Kinds) of Result_Record;
+   type Shared_Locator_Access is access all Shared_Locator;
 
-   type Testsuite_Handler is
-     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
-       and XML.SAX.Error_Handlers.SAX_Error_Handler
-   with record
-      Base    : League.Strings.Universal_String;
-      --  Base path to tests' data.
-      Results : Result_Array;
+   type SAX_Locator is new Ada.Finalization.Controlled with record
+      Data : Shared_Locator_Access := new Shared_Locator;
    end record;
 
-   overriding function Error_String
-    (Self : Testsuite_Handler)
-       return League.Strings.Universal_String;
+   overriding procedure Adjust (Self : in out SAX_Locator);
 
-   overriding procedure Start_Element
-    (Self           : in out Testsuite_Handler;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String;
-     Attributes     : XML.SAX.Attributes.SAX_Attributes;
-     Success        : in out Boolean);
+   overriding procedure Finalize (Self : in out SAX_Locator);
 
-   overriding procedure Fatal_Error
-    (Self       : in out Testsuite_Handler;
-     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
-     Success    : in out Boolean);
+   pragma Inline (Adjust);
+   pragma Inline (Column);
+   pragma Inline (Line);
 
-end XMLConf.Testsuite_Handlers;
+end XML.SAX.Locators;

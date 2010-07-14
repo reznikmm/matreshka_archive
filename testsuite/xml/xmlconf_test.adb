@@ -45,7 +45,7 @@ with Ada.Command_Line;
 with Ada.Directories;
 
 with League.Strings;
-with Matreshka.SAX.Simple_Readers;
+with XML.SAX.Simple_Readers;
 
 with XMLConf.Entity_Resolvers;
 with XMLConf.Testsuite_Handlers;
@@ -60,12 +60,12 @@ procedure XMLConf_Test is
    Data     : constant String := Ada.Command_Line.Argument (1);
    Dwd      : constant String := Ada.Directories.Containing_Directory (Data);
    Tests    : League.Strings.Universal_String;
-   Reader   : aliased Matreshka.SAX.Simple_Readers.SAX_Simple_Reader;
+   Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
    Handler  : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
 
 begin
-   Matreshka.SAX.Simple_Readers.Put_Line := Put_Line'Access;
+   XML.SAX.Simple_Readers.Put_Line := Put_Line'Access;
 
    --  Because of limitations of current implementation in tracking relative
    --  paths for entities the current working directory is changed to the

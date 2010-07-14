@@ -280,14 +280,14 @@ package body Scanner_Generator is
 
       Put_Line (Output, "with Matreshka.Internals.Unicode;");
       New_Line (Output);
-      Put (Output, "private package Matreshka.");
+      Put (Output, "private package ");
 
       case Mode is
          when Regexp =>
-            Put (Output, "Internals.Regexps.Compiler");
+            Put (Output, "Matreshka.Internals.Regexps.Compiler");
 
          when XML =>
-            Put (Output, "SAX.Simple_Readers");
+            Put (Output, "XML.SAX.Simple_Readers");
       end case;
 
       Put_Line (Output, ".Scanner.Tables is");
@@ -394,14 +394,14 @@ package body Scanner_Generator is
       Put_Line (Output, "'Access);");
 
       New_Line (Output);
-      Put (Output, "end Matreshka.");
+      Put (Output, "end ");
 
       case Mode is
          when Regexp =>
-            Put (Output, "Internals.Regexps.Compiler");
+            Put (Output, "Matreshka.Internals.Regexps.Compiler");
 
          when XML =>
-            Put (Output, "SAX.Simple_Readers");
+            Put (Output, "XML.SAX.Simple_Readers");
       end case;
 
       Put_Line (Output, ".Scanner.Tables;");

@@ -256,7 +256,7 @@ package body Parser_Generator is
          Put (Output, "private package Matreshka.Internals.Regexps.Compiler");
 
       elsif Ada.Command_Line.Argument (1) = "xml" then
-         Put (Output, "private package Matreshka.SAX.Simple_Readers");
+         Put (Output, "private package XML.SAX.Simple_Readers");
       end if;
 
       Put_Line (Output, ".Parser.Tables is");
@@ -307,7 +307,7 @@ package body Parser_Generator is
          Put (Output, "end Matreshka.Internals.Regexps.Compiler");
 
       elsif Ada.Command_Line.Argument (1) = "xml" then
-         Put (Output, "end Matreshka.SAX.Simple_Readers");
+         Put (Output, "end XML.SAX.Simple_Readers");
       end if;
 
       Put_Line (Output, ".Parser.Tables;");
