@@ -53,6 +53,9 @@ package Matreshka.Internals.Text_Codecs.UTF8 is
 
    overriding function Is_Error (Self : UTF8_Decoder_State) return Boolean;
 
+   overriding function Is_Mailformed
+    (Self : UTF8_Decoder_State) return Boolean;
+
    overriding function Create_State
     (Self : UTF8_Decoder;
      Mode : Decoder_Mode) return Abstract_Decoder_State'Class;

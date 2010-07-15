@@ -109,15 +109,6 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
    Accept_State : constant UTF8_DFA_State := 0;
    Reject_State : constant UTF8_DFA_State := 1;
 
-   --------------
-   -- Is_Error --
-   --------------
-
-   overriding function Is_Error (Self : UTF8_Decoder_State) return Boolean is
-   begin
-      return Self.State = Reject_State;
-   end Is_Error;
-
    ------------------
    -- Create_State --
    ------------------
@@ -250,8 +241,28 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
          end;
       end loop;
 
-      UTF8_State.State := Current_State;
-      UTF8_State.Code  := Current_Code;
+      UTF8_State.State   := Current_State;
+      UTF8_State.Code    := Current_Code;
+      UTF8_State.Skip_LF := Current_Skip_LF;
    end Decode_Append;
+
+   --------------
+   -- Is_Error --
+   --------------
+
+   overriding function Is_Error (Self : UTF8_Decoder_State) return Boolean is
+   begin
+      return Self.State = Reject_State;
+   end Is_Error;
+
+   -------------------
+   -- Is_Mailformed --
+   -------------------
+
+   overriding function Is_Mailformed
+    (Self : UTF8_Decoder_State) return Boolean is
+   begin
+      return Self.State /= Accept_State;
+   end Is_Mailformed;
 
 end Matreshka.Internals.Text_Codecs.UTF8;

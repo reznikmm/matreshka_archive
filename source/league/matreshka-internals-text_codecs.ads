@@ -70,8 +70,15 @@ package Matreshka.Internals.Text_Codecs is
     (Self : Abstract_Decoder_State) return Boolean is abstract;
    --  Returns True when error is occured during decoding.
 
+   not overriding function Is_Mailformed
+    (Self : Abstract_Decoder_State) return Boolean is abstract;
+   --  Returns True when error is occured during decoding or decoding is
+   --  incomplete.
+
    type Abstract_Decoder is abstract tagged limited null record;
    --  Abstract root tagged type for decoders.
+
+   type Decoder_Access is access all Abstract_Decoder'Class;
 
    not overriding function Create_State
     (Self : Abstract_Decoder;
