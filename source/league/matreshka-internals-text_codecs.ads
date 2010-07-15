@@ -39,69 +39,67 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
--- UTF-8 decoding algoriphm is based on work:                               --
-------------------------------------------------------------------------------
---                                                                          --
--- Copyright (c) 2008-2009 Bjoern Hoehrmann <bjoern@hoehrmann.de>           --
---                                                                          --
--- Permission is hereby granted, free of charge, to any person obtaining    --
--- a copy of this software and associated documentation files (the          --
--- "Software"), to deal in the Software without restriction, including      --
--- without limitation the rights to use, copy, modify, merge, publish,      --
--- distribute, sublicense, and/or sell copies of the Software, and to       --
--- permit persons to whom the Software is furnished to do so, subject to    --
--- the following conditions:                                                --
---                                                                          --
--- The above copyright notice and this permission notice shall be included  --
--- in all copies or substantial portions of the Software.                   --
---                                                                          --
--- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS  --
--- OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF               --
--- MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.   --
--- IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY     --
--- CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,     --
--- TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE        --
--- SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                   --
---                                                                          --
-------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Streams.Stream_IO;
-with Interfaces;
+--  Abstract API for text decoders/encoders.
+--
+--  Decoder's states and decoders implementation are separate objects.
+------------------------------------------------------------------------------
+with Ada.Streams;
 
-with League.Strings.Internals;
-with Matreshka.Internals.Strings.Operations;
-with Matreshka.Internals.Text_Codecs.Utf8;
-with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Strings;
 
-function Read_File (Name : String) return League.Strings.Universal_String is
-   use Interfaces;
-   use type Matreshka.Internals.Unicode.Code_Point;
+package Matreshka.Internals.Text_Codecs is
 
-   Buffer : Ada.Streams.Stream_Element_Array (1 .. 1024);
-   Last   : Ada.Streams.Stream_Element_Offset;
-   File   : Ada.Streams.Stream_IO.File_Type;
-   Data   : Matreshka.Internals.Strings.Shared_String_Access
-     := Matreshka.Internals.Strings.Shared_Empty'Access;
-   Codec  : Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
-   State  : Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class
-     := Codec.Create_State (Matreshka.Internals.Text_Codecs.Raw);
+   pragma Preelaborate;
 
-begin
-   Ada.Streams.Stream_IO.Open (File, Ada.Streams.Stream_IO.In_File, Name);
+   ----------------------
+   -- Abstract_Decoder --
+   ----------------------
 
-   while not Ada.Streams.Stream_IO.End_Of_File (File) loop
-      Ada.Streams.Stream_IO.Read (File, Buffer, Last);
-      Codec.Decode_Append (Buffer (Buffer'First .. Last), State, Data);
-   end loop;
+   type Decoder_Mode is (Raw, XML_1_0, XML_1_1);
+   --  Mode of text postprocessing after decoding.
+   --
+   --  Decoder is responsible for XML1.0/XML1.1 end-of-line handling when
+   --  its state created with corresponding mode.
 
-   Ada.Streams.Stream_IO.Close (File);
+   type Abstract_Decoder_State is abstract tagged null record;
+   --  Abstract root tagged type for decoder's states.
 
-   if State.Is_Error then
-      Matreshka.Internals.Strings.Dereference (Data);
+   not overriding function Is_Error
+    (Self : Abstract_Decoder_State) return Boolean is abstract;
+   --  Returns True when error is occured during decoding.
 
-      raise Constraint_Error with "mailformed UTF-8 file";
-   end if;
+   type Abstract_Decoder is abstract tagged limited null record;
+   --  Abstract root tagged type for decoders.
 
-   return League.Strings.Internals.Wrap (Data);
-end Read_File;
+   not overriding function Create_State
+    (Self : Abstract_Decoder;
+     Mode : Decoder_Mode) return Abstract_Decoder_State'Class is abstract;
+   --  Creates new decoder's state.
+
+   not overriding procedure Decode
+    (Self   : Abstract_Decoder;
+     Data   : Ada.Streams.Stream_Element_Array;
+     State  : in out Abstract_Decoder_State'Class;
+     String : out Matreshka.Internals.Strings.Shared_String_Access)
+       is abstract;
+   --  Decodes data and save results in new allocated string.
+
+   not overriding procedure Decode_Append
+    (Self   : Abstract_Decoder;
+     Data   : Ada.Streams.Stream_Element_Array;
+     State  : in out Abstract_Decoder_State'Class;
+     String : in out Matreshka.Internals.Strings.Shared_String_Access)
+       is abstract;
+   --  Decodes data and appends them to specified string. String can be
+   --  reallocated when necessary.
+
+   ----------------------
+   -- Abstract_Encoder --
+   ----------------------
+
+   type Abstract_Encoder is abstract tagged limited null record;
+   --  Abstract root tagged type for encoders.
+
+end Matreshka.Internals.Text_Codecs;

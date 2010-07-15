@@ -39,69 +39,46 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
--- UTF-8 decoding algoriphm is based on work:                               --
-------------------------------------------------------------------------------
---                                                                          --
--- Copyright (c) 2008-2009 Bjoern Hoehrmann <bjoern@hoehrmann.de>           --
---                                                                          --
--- Permission is hereby granted, free of charge, to any person obtaining    --
--- a copy of this software and associated documentation files (the          --
--- "Software"), to deal in the Software without restriction, including      --
--- without limitation the rights to use, copy, modify, merge, publish,      --
--- distribute, sublicense, and/or sell copies of the Software, and to       --
--- permit persons to whom the Software is furnished to do so, subject to    --
--- the following conditions:                                                --
---                                                                          --
--- The above copyright notice and this permission notice shall be included  --
--- in all copies or substantial portions of the Software.                   --
---                                                                          --
--- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS  --
--- OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF               --
--- MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.   --
--- IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY     --
--- CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,     --
--- TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE        --
--- SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                   --
---                                                                          --
-------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Streams.Stream_IO;
-with Interfaces;
+private with Matreshka.Internals.Unicode;
 
-with League.Strings.Internals;
-with Matreshka.Internals.Strings.Operations;
-with Matreshka.Internals.Text_Codecs.Utf8;
-with Matreshka.Internals.Unicode;
+package Matreshka.Internals.Text_Codecs.UTF8 is
 
-function Read_File (Name : String) return League.Strings.Universal_String is
-   use Interfaces;
-   use type Matreshka.Internals.Unicode.Code_Point;
+   pragma Preelaborate;
 
-   Buffer : Ada.Streams.Stream_Element_Array (1 .. 1024);
-   Last   : Ada.Streams.Stream_Element_Offset;
-   File   : Ada.Streams.Stream_IO.File_Type;
-   Data   : Matreshka.Internals.Strings.Shared_String_Access
-     := Matreshka.Internals.Strings.Shared_Empty'Access;
-   Codec  : Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
-   State  : Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class
-     := Codec.Create_State (Matreshka.Internals.Text_Codecs.Raw);
+   type UTF8_Decoder is new Abstract_Decoder with null record;
 
-begin
-   Ada.Streams.Stream_IO.Open (File, Ada.Streams.Stream_IO.In_File, Name);
+   type UTF8_Decoder_State is new Abstract_Decoder_State with private;
 
-   while not Ada.Streams.Stream_IO.End_Of_File (File) loop
-      Ada.Streams.Stream_IO.Read (File, Buffer, Last);
-      Codec.Decode_Append (Buffer (Buffer'First .. Last), State, Data);
-   end loop;
+   overriding function Is_Error (Self : UTF8_Decoder_State) return Boolean;
 
-   Ada.Streams.Stream_IO.Close (File);
+   overriding function Create_State
+    (Self : UTF8_Decoder;
+     Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
 
-   if State.Is_Error then
-      Matreshka.Internals.Strings.Dereference (Data);
+   overriding procedure Decode
+    (Self   : UTF8_Decoder;
+     Data   : Ada.Streams.Stream_Element_Array;
+     State  : in out Abstract_Decoder_State'Class;
+     String : out Matreshka.Internals.Strings.Shared_String_Access);
 
-      raise Constraint_Error with "mailformed UTF-8 file";
-   end if;
+   overriding procedure Decode_Append
+    (Self   : UTF8_Decoder;
+     Data   : Ada.Streams.Stream_Element_Array;
+     State  : in out Abstract_Decoder_State'Class;
+     String : in out Matreshka.Internals.Strings.Shared_String_Access);
 
-   return League.Strings.Internals.Wrap (Data);
-end Read_File;
+private
+
+   type UTF8_Meta_Class is mod 2 ** 8;
+   type UTF8_DFA_State is mod 2 ** 8;
+
+   type UTF8_Decoder_State is new Abstract_Decoder_State with record
+      Mode    : Decoder_Mode;
+      Skip_LF : Boolean;
+      State   : UTF8_DFA_State;
+      Code    : Matreshka.Internals.Unicode.Code_Unit_32;
+   end record;
+
+end Matreshka.Internals.Text_Codecs.UTF8;
