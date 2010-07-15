@@ -210,6 +210,23 @@ package body Matreshka.Internals.Utf16 is
       end if;
    end Unchecked_Store;
 
+   --------------------------------------------
+   -- Unchecked_Surrogate_Pair_To_Code_Point --
+   --------------------------------------------
+
+   function Unchecked_Surrogate_Pair_To_Code_Point
+    (High : Utf16_Code_Unit;
+     Low  : Utf16_Code_Unit) return Matreshka.Internals.Unicode.Code_Point
+   is
+      pragma Assert (High in High_Surrogate_First .. High_Surrogate_Last);
+      pragma Assert (Low in Low_Surrogate_First .. Low_Surrogate_Last);
+
+      pragma Suppress (Range_Check);
+
+   begin
+      return Code_Unit_32 (High) * 16#400# + Code_Unit_32 (Low) - UCS4_Fixup;
+   end Unchecked_Surrogate_Pair_To_Code_Point;
+
    -----------------------------
    -- Unchecked_To_Code_Point --
    -----------------------------

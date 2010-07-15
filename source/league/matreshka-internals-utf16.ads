@@ -130,4 +130,10 @@ package Matreshka.Internals.Utf16 is
    --  Store specified character at the specified position and move position to
    --  the next character.
 
+   function Unchecked_Surrogate_Pair_To_Code_Point
+    (High : Utf16_Code_Unit;
+     Low  : Utf16_Code_Unit) return Matreshka.Internals.Unicode.Code_Point;
+   pragma Inline (Unchecked_Surrogate_Pair_To_Code_Point);
+   --  Converts surrogate pair into the code point.
+
 end Matreshka.Internals.Utf16;
