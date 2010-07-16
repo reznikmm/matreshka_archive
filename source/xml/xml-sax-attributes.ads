@@ -59,30 +59,50 @@ package XML.SAX.Attributes is
     (Self           : SAX_Attributes'Class;
      Qualified_Name : League.Strings.Universal_String)
        return Natural;
+   --  Looks up the index of an attribute by the qualified name. Returns the
+   --  index of the attribute of zero if it wasn't found.
 
    function Index
     (Self          : SAX_Attributes'Class;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
        return Natural;
+   --  Looks up the index of an attribute by a namespace name. Namespace_URI
+   --  specifies the namespace URI, or an empty string if the name has no
+   --  namespace URI. Local_Name specifies the attribute's local name.
+   --  Returns the index of the attribute, or zero if it wasn't found.
 
    function Length (Self : SAX_Attributes'Class) return Natural;
+   --  Returns the number of attributes in the list.
 
    function Local_Name
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String;
+   --  Returns an attribute's local name for the attribute at the specified
+   --  position. If no namespace processing is done, the local name is an empty
+   --  string. The index must be valid position, otherwise Constraint_Error is
+   --  raised.
 
    function Namespace_URI
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String;
+   --  Returns an attribute's namespace URI for the attribute at the specified
+   --  position. If no namespace processing is done or if the attribute has no
+   --  namespace, the namespace URI is an empty string. The index must be valid
+   --  position, otherwise Constraint_Error is raised.
 
    function Qualified_Name
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String;
+   --  Returns an attribute's qualified name for the attribute at the specified
+   --  position. The index must be valid position, otherwise Constraint_Error
+   --  is raised.
 
    function Value
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String;
+   --  Returns an attribute's value for the attribute at the specified position
+   --  The index must be valid position, otherwise Constraint_Error is raised.
 
 private
 
