@@ -72,6 +72,56 @@ package XML.SAX.Attributes is
    --  namespace URI. Local_Name specifies the attribute's local name.
    --  Returns the index of the attribute, or zero if it wasn't found.
 
+   function Is_Declared
+    (Self  : SAX_Attributes'Class;
+     Index : Positive) return Boolean;
+   --  Returns True if the attribute at the specified position was declared in
+   --  the DTD, False otherwise. The index must be valid position, otherwise
+   --  Constraint_Error is raised.
+
+   function Is_Declared
+    (Self           : SAX_Attributes'Class;
+     Qualified_Name : League.Strings.Universal_String)
+       return Boolean;
+   --  Looks up whether an attribute was declared in the DTD for the qualified
+   --  name and returns True.
+
+   function Is_Declared
+    (Self          : SAX_Attributes'Class;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String)
+       return Boolean;
+   --  Looks up whether an attribute was declared in the DTD by namespace name.
+   --  Namespace_URI specifies the namespace URI, or an empty string if the
+   --  name has no namespace URI, Local_Name specifies the attribute's local
+   --  name.
+
+   function Is_Specified
+    (Self  : SAX_Attributes'Class;
+     Index : Positive) return Boolean;
+   --  Returns True if the attribute's value at the specified position was
+   --  found in the XML text, False if the value was provided by the DTD
+   --  defaulting. The index must be valid position, otherwise Constraint_Error
+   --  is raised.
+
+   function Is_Specified
+    (Self           : SAX_Attributes'Class;
+     Qualified_Name : League.Strings.Universal_String)
+       return Boolean;
+   --  Looks up whether an attribute's value was found in the XML text for the
+   --  qualified name, False if the value was provided by the DTD defaulting.
+
+   function Is_Specified
+    (Self          : SAX_Attributes'Class;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String)
+       return Boolean;
+   --  Looks up whether an attribute's value was found in the XML text for the
+   --  namespace name, False if the value was provided by the DTD defaulting.
+   --  Namespace_URI specifies the namespace URI, or an empty string if the
+   --  name has no namespace URI, Local_Name specifies the attribute's local
+   --  name.
+
    function Length (Self : SAX_Attributes'Class) return Natural;
    --  Returns the number of attributes in the list.
 
@@ -101,8 +151,37 @@ package XML.SAX.Attributes is
    function Value
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String;
-   --  Returns an attribute's value for the attribute at the specified position
-   --  The index must be valid position, otherwise Constraint_Error is raised.
+   --  Returns an attribute's value for the attribute at the specified
+   --  position. The index must be valid position, otherwise Constraint_Error
+   --  is raised.
+   --
+   --  If the attribute value is a list of tokens (IDREFS, ENTITIES, or
+   --  NMTOKENS), the tokens will be concatenated into a single string with
+   --  each token separated by a single space.
+
+   function Value
+    (Self           : SAX_Attributes;
+     Qualified_Name : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Looks up an attribute's value for the qualified name, or an empty
+   --  string if no attribute exists for the name given.
+   --
+   --  If the attribute value is a list of tokens (IDREFS, ENTITIES, or
+   --  NMTOKENS), the tokens will be concatenated into a single string with
+   --  each token separated by a single space.
+
+   function Value
+    (Self          : SAX_Attributes;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Looks up an attribute's value by namespace name. Namespace_URI specifies
+   --  the namespace URI, or an empty string if the name has no namespace URI,
+   --  Local_Name specifies the attribute's local name.
+   --
+   --  If the attribute value is a list of tokens (IDREFS, ENTITIES, or
+   --  NMTOKENS), the tokens will be concatenated into a single string with
+   --  each token separated by a single space.
 
 private
 

@@ -48,6 +48,7 @@ with Matreshka.Internals.Strings.Compare;
 
 package body XML.SAX.Attributes is
 
+   use League.Strings;
    use League.Strings.Internals;
    use Matreshka.Internals.Strings.Compare;
 
@@ -154,6 +155,110 @@ package body XML.SAX.Attributes is
       return 0;
    end Index;
 
+   -----------------
+   -- Is_Declared --
+   -----------------
+
+   function Is_Declared
+    (Self  : SAX_Attributes'Class;
+     Index : Positive) return Boolean is
+   begin
+      if Index not in 1 .. Self.Data.Length then
+         raise Constraint_Error;
+      end if;
+
+      return False;
+      --  XXX Not supported.
+   end Is_Declared;
+
+   -----------------
+   -- Is_Declared --
+   -----------------
+
+   function Is_Declared
+    (Self           : SAX_Attributes'Class;
+     Qualified_Name : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return False;
+      --  XXX Not supported.
+   end Is_Declared;
+
+   -----------------
+   -- Is_Declared --
+   -----------------
+
+   function Is_Declared
+    (Self          : SAX_Attributes'Class;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      return False;
+      --  XXX Not supported.
+   end Is_Declared;
+
+   ------------------
+   -- Is_Specified --
+   ------------------
+
+   function Is_Specified
+    (Self  : SAX_Attributes'Class;
+     Index : Positive) return Boolean is
+   begin
+      if Index not in 1 .. Self.Data.Length then
+         raise Constraint_Error;
+      end if;
+
+      return True;
+      --  XXX Not supported.
+   end Is_Specified;
+
+   ------------------
+   -- Is_Specified --
+   ------------------
+
+   function Is_Specified
+    (Self           : SAX_Attributes'Class;
+     Qualified_Name : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      for J in 1 .. Self.Data.Length loop
+         if Is_Equal
+             (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
+         then
+            return True;
+            --  XXX Not supported.
+         end if;
+      end loop;
+
+      return False;
+   end Is_Specified;
+
+   ------------------
+   -- Is_Specified --
+   ------------------
+
+   function Is_Specified
+    (Self          : SAX_Attributes'Class;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String)
+       return Boolean is
+   begin
+      for J in 1 .. Self.Data.Length loop
+         if Is_Equal
+             (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
+           and Is_Equal
+                (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
+         then
+            return True;
+            --  XXX Not supported.
+         end if;
+      end loop;
+
+      return False;
+   end Is_Specified;
+
    ------------
    -- Length --
    ------------
@@ -232,6 +337,49 @@ package body XML.SAX.Attributes is
       end if;
 
       return Create (Self.Data.Values (Index).Value);
+   end Value;
+
+   -----------
+   -- Value --
+   -----------
+
+   function Value
+    (Self           : SAX_Attributes;
+     Qualified_Name : League.Strings.Universal_String)
+       return League.Strings.Universal_String is
+   begin
+      for J in 1 .. Self.Data.Length loop
+         if Is_Equal
+             (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
+         then
+            return Create (Self.Data.Values (J).Value);
+         end if;
+      end loop;
+
+      return Empty_String;
+   end Value;
+
+   -----------
+   -- Value --
+   -----------
+
+   function Value
+    (Self          : SAX_Attributes;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String)
+       return League.Strings.Universal_String is
+   begin
+      for J in 1 .. Self.Data.Length loop
+         if Is_Equal
+             (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
+           and Is_Equal
+                (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
+         then
+            return Create (Self.Data.Values (J).Value);
+         end if;
+      end loop;
+
+      return Empty_String;
    end Value;
 
 end XML.SAX.Attributes;
