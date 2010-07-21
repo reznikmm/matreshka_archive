@@ -109,13 +109,4 @@ package body League.Values.Strings is
       Set_Type (Self, Type_Of_Value);
    end Set_Type;
 
-   -------------------
-   -- Type_Of_Value --
-   -------------------
-
-   function Type_Of_Value return Value_Type is
-   begin
-      return Value_Type (String_Container'Tag);
-   end Type_Of_Value;
-
 end League.Values.Strings;

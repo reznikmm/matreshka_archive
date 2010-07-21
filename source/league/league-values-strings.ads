@@ -60,7 +60,7 @@ package League.Values.Strings is
 
    procedure Set_Type (Self : in out Value);
 
-   function Type_Of_Value return Value_Type;
+   Type_Of_Value : constant Value_Type;
 
 private
 
@@ -72,5 +72,7 @@ private
 --     return not null Container_Access;
 --  XXX GNAT 20090503 bug
      return Container_Access;
+
+   Type_Of_Value : constant Value_Type := Value_Type (String_Container'Tag);
 
 end League.Values.Strings;
