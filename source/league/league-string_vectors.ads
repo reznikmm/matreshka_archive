@@ -45,6 +45,8 @@ with League.Strings;
 
 package League.String_Vectors is
 
+   pragma Preelaborate;
+
    type Universal_String_Vector is tagged private;
 
    function Length (Self : Universal_String_Vector) return Natural;
