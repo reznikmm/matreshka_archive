@@ -172,28 +172,11 @@ package body XML.SAX.Simple_Readers.Parser is
 
       if Is_External then
          if Notation = No_Symbol then
-            declare
-               V : League.Strings.Universal_String;
-               S : Boolean := True;
-               A : Matreshka.Internals.Strings.Shared_String_Access;
-
-            begin
-               Self.Entity_Resolver.Resolve_Entity
-                (Self.Public_Id, Self.System_Id, V, S);
-
-               if not S then
-                  raise Program_Error
-                    with "external parsed entity is not resolved";
-               end if;
-
-               A := League.Strings.Internals.Get_Shared (V);
-               New_External_Parsed_General_Entity (Self.Entities, Entity);
-               Matreshka.Internals.Strings.Reference (A);
-               Set_Replacement_Text (Self.Entities, Entity, A);
-               Set_General_Entity (Self.Symbols, Symbol, Entity);
-               Callbacks.Call_External_Entity_Declaration
-                (Self, Name, Self.Public_Id, Self.System_Id);
-            end;
+            New_External_Parsed_General_Entity
+             (Self.Entities, Self.Public_Id, Self.System_Id, Entity);
+            Set_General_Entity (Self.Symbols, Symbol, Entity);
+            Callbacks.Call_External_Entity_Declaration
+             (Self, Name, Self.Public_Id, Self.System_Id);
 
          else
             New_External_Unparsed_General_Entity
@@ -244,26 +227,9 @@ package body XML.SAX.Simple_Readers.Parser is
       end if;
 
       if Is_External then
-         declare
-            V : League.Strings.Universal_String;
-            S : Boolean := True;
-            A : Matreshka.Internals.Strings.Shared_String_Access;
-
-         begin
-            Self.Entity_Resolver.Resolve_Entity
-             (Self.Public_Id, Self.System_Id, V, S);
-
-            if not S then
-               raise Program_Error
-                 with "External parameter entity is not resolved";
-            end if;
-
-            A := League.Strings.Internals.Get_Shared (Value);
-            Matreshka.Internals.Strings.Reference (A);
-            New_External_Parameter_Entity (Self.Entities, Entity);
-            Set_Replacement_Text (Self.Entities, Entity, A);
-            Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
-         end;
+         New_External_Parameter_Entity
+          (Self.Entities, Self.Public_Id, Self.System_Id, Entity);
+         Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
 
       else
          declare

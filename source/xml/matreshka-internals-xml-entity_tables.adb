@@ -122,6 +122,17 @@ package body Matreshka.Internals.XML.Entity_Tables is
       return Self.Data (Entity).Kind = External_Unparsed_General_Entity;
    end Is_External_Unparsed_General_Entity;
 
+   -----------------
+   -- Is_Resolved --
+   -----------------
+
+   function Is_Resolved
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier) return Boolean is
+   begin
+      return Self.Data (Entity).Is_Resolved;
+   end Is_Resolved;
+
    ----------------
    -- New_Entity --
    ----------------
@@ -149,14 +160,28 @@ package body Matreshka.Internals.XML.Entity_Tables is
    -----------------------------------
 
    procedure New_External_Parameter_Entity
-    (Self   : in out Entity_Table;
-     Entity : out Entity_Identifier) is
+    (Self      : in out Entity_Table;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Entity    : out Entity_Identifier)
+   is
+      P : constant Matreshka.Internals.Strings.Shared_String_Access
+        := League.Strings.Internals.Get_Shared (Public_Id);
+      S : constant Matreshka.Internals.Strings.Shared_String_Access
+        := League.Strings.Internals.Get_Shared (System_Id);
+
    begin
       New_Entity (Self, Entity);
+
+      Matreshka.Internals.Strings.Reference (P);
+      Matreshka.Internals.Strings.Reference (S);
 
       Self.Data (Entity) :=
        (Kind             => External_Parameter_Entity,
         Notation         => No_Symbol,
+        Public_Id        => P,
+        System_Id        => S,
+        Is_Resolved      => False,
         Replacement_Text => Matreshka.Internals.Strings.Shared_Empty'Access);
    end New_External_Parameter_Entity;
 
@@ -165,14 +190,28 @@ package body Matreshka.Internals.XML.Entity_Tables is
    ----------------------------------------
 
    procedure New_External_Parsed_General_Entity
-    (Self   : in out Entity_Table;
-     Entity : out Entity_Identifier) is
+    (Self      : in out Entity_Table;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Entity    : out Entity_Identifier)
+   is
+      P : constant Matreshka.Internals.Strings.Shared_String_Access
+        := League.Strings.Internals.Get_Shared (Public_Id);
+      S : constant Matreshka.Internals.Strings.Shared_String_Access
+        := League.Strings.Internals.Get_Shared (System_Id);
+
    begin
       New_Entity (Self, Entity);
+
+      Matreshka.Internals.Strings.Reference (P);
+      Matreshka.Internals.Strings.Reference (S);
 
       Self.Data (Entity) :=
        (Kind             => External_Parsed_General_Entity,
         Notation         => No_Symbol,
+        Public_Id        => P,
+        System_Id        => S,
+        Is_Resolved      => False,
         Replacement_Text => Matreshka.Internals.Strings.Shared_Empty'Access);
    end New_External_Parsed_General_Entity;
 
@@ -190,6 +229,9 @@ package body Matreshka.Internals.XML.Entity_Tables is
       Self.Data (Entity) :=
        (Kind             => External_Unparsed_General_Entity,
         Notation         => Notation,
+        Public_Id        => Matreshka.Internals.Strings.Shared_Empty'Access,
+        System_Id        => Matreshka.Internals.Strings.Shared_Empty'Access,
+        Is_Resolved      => False,
         Replacement_Text => Matreshka.Internals.Strings.Shared_Empty'Access);
    end New_External_Unparsed_General_Entity;
 
@@ -208,6 +250,9 @@ package body Matreshka.Internals.XML.Entity_Tables is
       Self.Data (Entity) :=
        (Kind             => Internal_General_Entity,
         Notation         => No_Symbol,
+        Public_Id        => Matreshka.Internals.Strings.Shared_Empty'Access,
+        System_Id        => Matreshka.Internals.Strings.Shared_Empty'Access,
+        Is_Resolved      => True,
         Replacement_Text => Replacement_Text);
    end New_Internal_General_Entity;
 
@@ -226,8 +271,23 @@ package body Matreshka.Internals.XML.Entity_Tables is
       Self.Data (Entity) :=
        (Kind             => Internal_Parameter_Entity,
         Notation         => No_Symbol,
+        Public_Id        => Matreshka.Internals.Strings.Shared_Empty'Access,
+        System_Id        => Matreshka.Internals.Strings.Shared_Empty'Access,
+        Is_Resolved      => True,
         Replacement_Text => Replacement_Text);
    end New_Internal_Parameter_Entity;
+
+   ---------------
+   -- Public_Id --
+   ---------------
+
+   function Public_Id
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
+       return not null Matreshka.Internals.Strings.Shared_String_Access is
+   begin
+      return Self.Data (Entity).Public_Id;
+   end Public_Id;
 
    ----------------------
    -- Replacement_Text --
@@ -241,6 +301,18 @@ package body Matreshka.Internals.XML.Entity_Tables is
       return Self.Data (Entity).Replacement_Text;
    end Replacement_Text;
 
+   ---------------------
+   -- Set_Is_Resolved --
+   ---------------------
+
+   procedure Set_Is_Resolved
+    (Self   : in out Entity_Table;
+     Entity : Entity_Identifier;
+     To     : Boolean) is
+   begin
+      Self.Data (Entity).Is_Resolved := To;
+   end Set_Is_Resolved;
+
    --------------------------
    -- Set_Replacement_Text --
    --------------------------
@@ -253,5 +325,17 @@ package body Matreshka.Internals.XML.Entity_Tables is
    begin
       Self.Data (Entity).Replacement_Text := Replacement_Text;
    end Set_Replacement_Text;
+
+   ---------------
+   -- System_Id --
+   ---------------
+
+   function System_Id
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
+       return not null Matreshka.Internals.Strings.Shared_String_Access is
+   begin
+      return Self.Data (Entity).System_Id;
+   end System_Id;
 
 end Matreshka.Internals.XML.Entity_Tables;

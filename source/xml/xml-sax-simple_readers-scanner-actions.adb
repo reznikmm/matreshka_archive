@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
 with XML.SAX.Simple_Readers.Callbacks;
 with XML.SAX.Simple_Readers.Scanner.Tables;
@@ -333,6 +334,36 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          return False;
       end if;
 
+      if not Is_Resolved (Self.Entities, Entity) then
+         declare
+            V : League.Strings.Universal_String;
+            A : Matreshka.Internals.Strings.Shared_String_Access;
+
+         begin
+            Callbacks.Call_Resolve_Entity
+             (Self,
+              League.Strings.Internals.Create
+               (Public_Id (Self.Entities, Entity)),
+              League.Strings.Internals.Create
+               (System_Id (Self.Entities, Entity)),
+              V);
+
+            if not Self.Continue then
+               Callbacks.Call_Fatal_Error
+                (Self,
+                 League.Strings.To_Universal_String
+                  ("external parsed general entity is not resolved"));
+
+               return False;
+            end if;
+
+            A := League.Strings.Internals.Get_Shared (V);
+            Matreshka.Internals.Strings.Reference (A);
+            Set_Replacement_Text (Self.Entities, Entity, A);
+            Set_Is_Resolved (Self.Entities, Entity, True);
+         end;
+      end if;
+
       Push_General_Entity_In_Attribute_Value
        (Self, Entity, Replacement_Text (Self.Entities, Entity));
 
@@ -416,6 +447,38 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Self.Continue := False;
 
          return False;
+      end if;
+
+      --  Resolve entity when necessary.
+
+      if not Is_Resolved (Self.Entities, Entity) then
+         declare
+            V : League.Strings.Universal_String;
+            A : Matreshka.Internals.Strings.Shared_String_Access;
+
+         begin
+            Callbacks.Call_Resolve_Entity
+             (Self,
+              League.Strings.Internals.Create
+               (Public_Id (Self.Entities, Entity)),
+              League.Strings.Internals.Create
+               (System_Id (Self.Entities, Entity)),
+              V);
+
+            if not Self.Continue then
+               Callbacks.Call_Fatal_Error
+                (Self,
+                 League.Strings.To_Universal_String
+                  ("external parsed general entity is not resolved"));
+
+               return False;
+            end if;
+
+            A := League.Strings.Internals.Get_Shared (V);
+            Matreshka.Internals.Strings.Reference (A);
+            Set_Replacement_Text (Self.Entities, Entity, A);
+            Set_Is_Resolved (Self.Entities, Entity, True);
+         end;
       end if;
 
       Text := Replacement_Text (Self.Entities, Entity);
@@ -971,6 +1034,38 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             Self.Continue := False;
 
             return False;
+         end if;
+
+         --  Resolve entity when necessary.
+
+         if not Is_Resolved (Self.Entities, Entity) then
+            declare
+               V : League.Strings.Universal_String;
+               A : Matreshka.Internals.Strings.Shared_String_Access;
+
+            begin
+               Callbacks.Call_Resolve_Entity
+                (Self,
+                 League.Strings.Internals.Create
+                  (Public_Id (Self.Entities, Entity)),
+                 League.Strings.Internals.Create
+                  (System_Id (Self.Entities, Entity)),
+                 V);
+
+               if not Self.Continue then
+                  Callbacks.Call_Fatal_Error
+                   (Self,
+                    League.Strings.To_Universal_String
+                     ("external parameter entity is not resolved"));
+
+                  return False;
+               end if;
+
+               A := League.Strings.Internals.Get_Shared (V);
+               Matreshka.Internals.Strings.Reference (A);
+               Set_Replacement_Text (Self.Entities, Entity, A);
+               Set_Is_Resolved (Self.Entities, Entity, True);
+            end;
          end if;
 
          Push_Parameter_Entity

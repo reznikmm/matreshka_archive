@@ -102,6 +102,13 @@ private package XML.SAX.Simple_Readers.Callbacks is
      Data   : League.Strings.Universal_String);
    --  Calls handler's SAX_Content_Handler.Processing_Instruction subprogram.
 
+   procedure Call_Resolve_Entity
+    (Self      : not null access SAX_Simple_Reader'Class;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Text      : out League.Strings.Universal_String);
+   --  Calls entity resolver's SAX_Entity_Resolver.Resolve_Entity subprogram.
+
    procedure Call_Set_Document_Locator
     (Self    : not null access SAX_Simple_Reader'Class;
      Locator : XML.SAX.Locators.SAX_Locator);

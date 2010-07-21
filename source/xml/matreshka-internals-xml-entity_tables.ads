@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings;
 with Matreshka.Internals.Strings;
 
 package Matreshka.Internals.XML.Entity_Tables is
@@ -58,8 +59,10 @@ package Matreshka.Internals.XML.Entity_Tables is
    --  entity.
 
    procedure New_External_Parameter_Entity
-    (Self   : in out Entity_Table;
-     Entity : out Entity_Identifier);
+    (Self      : in out Entity_Table;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Entity    : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
 
@@ -72,8 +75,10 @@ package Matreshka.Internals.XML.Entity_Tables is
    --  entity.
 
    procedure New_External_Parsed_General_Entity
-    (Self   : in out Entity_Table;
-     Entity : out Entity_Identifier);
+    (Self      : in out Entity_Table;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Entity    : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
 
@@ -88,6 +93,27 @@ package Matreshka.Internals.XML.Entity_Tables is
     (Self   : Entity_Table;
      Entity : Entity_Identifier) return Boolean;
    --  Returns True when entity is external unparsed general entity.
+
+   function Public_Id
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
+       return not null Matreshka.Internals.Strings.Shared_String_Access;
+
+   function System_Id
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
+       return not null Matreshka.Internals.Strings.Shared_String_Access;
+
+   function Is_Resolved
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier) return Boolean;
+   --  Returns True when entity is marked as resolved.
+
+   procedure Set_Is_Resolved
+    (Self   : in out Entity_Table;
+     Entity : Entity_Identifier;
+     To     : Boolean);
+   --  Mark entity as resolved.
 
    function Replacement_Text
     (Self   : Entity_Table;
@@ -120,6 +146,9 @@ private
    type Entity_Record is record
       Kind             : Entity_Kinds;
       Notation         : Symbol_Identifier;
+      Public_Id        : Matreshka.Internals.Strings.Shared_String_Access;
+      System_Id        : Matreshka.Internals.Strings.Shared_String_Access;
+      Is_Resolved      : Boolean;
       Replacement_Text : Matreshka.Internals.Strings.Shared_String_Access;
    end record;
 
