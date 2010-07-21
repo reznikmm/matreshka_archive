@@ -244,7 +244,7 @@ ExternalID:
 
    Process_External_Id
     (Self,
-     League.Strings.Empty_String,
+     League.Strings.Empty_Universal_String,
      League.Strings.Internals.Create ($2.String));
 }
   | Token_Public Token_Public_Literal Token_System_Literal
@@ -357,7 +357,7 @@ EntityDecl:
     (Self        => Self,
      Symbol      => $2.Symbol,
      Is_External => True,
-     Value       => League.Strings.Empty_String,
+     Value       => League.Strings.Empty_Universal_String,
      Notation    => Matreshka.Internals.XML.No_Symbol);
 }
   | Token_Entity_Decl_Open Token_Name ExternalID Token_NData Token_Name Token_Close
@@ -366,7 +366,7 @@ EntityDecl:
     (Self        => Self,
      Symbol      => $2.Symbol,
      Is_External => True,
-     Value       => League.Strings.Empty_String,
+     Value       => League.Strings.Empty_Universal_String,
      Notation    => $5.Symbol);
 }
   | Token_Entity_Decl_Open Token_Percent Token_Name EntityValue Token_Close
@@ -383,7 +383,7 @@ EntityDecl:
     (Self,
      $3.Symbol,
      True,
-     League.Strings.Empty_String);
+     League.Strings.Empty_Universal_String);
 }
   ;
 
@@ -414,7 +414,7 @@ AttributeEntityValue_Content:
 {
    Set_String
     (Item          => $$,
-     String        => League.Strings.Empty_String,
+     String        => League.Strings.Empty_Universal_String,
      Is_Whitespace => False,
      Is_CData      => False);
 }

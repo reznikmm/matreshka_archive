@@ -356,7 +356,7 @@ package body XML.SAX.Attributes is
          end if;
       end loop;
 
-      return Empty_String;
+      return Empty_Universal_String;
    end Value;
 
    -----------
@@ -379,7 +379,7 @@ package body XML.SAX.Attributes is
          end if;
       end loop;
 
-      return Empty_String;
+      return Empty_Universal_String;
    end Value;
 
 end XML.SAX.Attributes;

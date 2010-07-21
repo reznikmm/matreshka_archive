@@ -61,7 +61,7 @@ package body League.Settings is
    function Application_Name
     (Self : Settings) return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_String;
+      return League.Strings.Empty_Universal_String;
    end Application_Name;
 
    -----------------
@@ -140,7 +140,7 @@ package body League.Settings is
    function File_Name
     (Self : Settings) return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_String;
+      return League.Strings.Empty_Universal_String;
    end File_Name;
 
    ------------
@@ -158,7 +158,7 @@ package body League.Settings is
 
    function Group (Self : Settings) return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_String;
+      return League.Strings.Empty_Universal_String;
    end Group;
 
    ------------------
@@ -177,7 +177,7 @@ package body League.Settings is
    function Organization_Name
     (Self : Settings) return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_String;
+      return League.Strings.Empty_Universal_String;
    end Organization_Name;
 
    ------------

@@ -55,7 +55,7 @@ package body XMLConf.Entity_Resolvers is
     (Self : Entity_Resolver)
        return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_String;
+      return League.Strings.Empty_Universal_String;
    end Error_String;
 
    --------------------

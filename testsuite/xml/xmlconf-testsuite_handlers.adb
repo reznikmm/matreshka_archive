@@ -156,7 +156,7 @@ package body XMLConf.Testsuite_Handlers is
     (Self : Testsuite_Handler)
        return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_String;
+      return League.Strings.Empty_Universal_String;
    end Error_String;
 
    -----------------

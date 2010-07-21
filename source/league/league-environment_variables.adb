@@ -106,7 +106,7 @@ package body League.Environment_Variables is
     (Self          : Environment_Variable_Set'Class;
      Name          : League.Strings.Universal_String;
      Default_Value : League.Strings.Universal_String
-       := League.Strings.Empty_String)
+       := League.Strings.Empty_Universal_String)
        return League.Strings.Universal_String is
    begin
       return Default_Value;

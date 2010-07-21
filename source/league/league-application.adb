@@ -50,7 +50,7 @@ package body League.Application is
 
    function Application_Name return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_String;
+      return League.Strings.Empty_Universal_String;
    end Application_Name;
 
    -------------------------
@@ -59,7 +59,7 @@ package body League.Application is
 
    function Application_Version return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_String;
+      return League.Strings.Empty_Universal_String;
    end Application_Version;
 
    ---------------
@@ -87,7 +87,7 @@ package body League.Application is
 
    function Organization_Domain return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_String;
+      return League.Strings.Empty_Universal_String;
    end Organization_Domain;
 
    -----------------------
@@ -96,7 +96,7 @@ package body League.Application is
 
    function Organization_Name return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_String;
+      return League.Strings.Empty_Universal_String;
    end Organization_Name;
 
    --------------------------

@@ -51,7 +51,7 @@ package body League.String_Vectors is
    function Element
     (Self : Universal_String_Vector) return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_String;
+      return League.Strings.Empty_Universal_String;
    end Element;
 
    ------------

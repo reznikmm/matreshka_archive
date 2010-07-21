@@ -609,7 +609,7 @@ package body XML.SAX.Simple_Readers.Parser is
             
                Process_External_Id
                 (Self,
-                 League.Strings.Empty_String,
+                 League.Strings.Empty_Universal_String,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
 
             when 26 =>
@@ -685,7 +685,7 @@ package body XML.SAX.Simple_Readers.Parser is
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-2).Symbol,
                  Is_External => True,
-                 Value       => League.Strings.Empty_String,
+                 Value       => League.Strings.Empty_Universal_String,
                  Notation    => Matreshka.Internals.XML.No_Symbol);
 
             when 45 =>
@@ -693,7 +693,7 @@ package body XML.SAX.Simple_Readers.Parser is
                 (Self        => Self,
                  Symbol      => yy.value_stack (yy.tos-4).Symbol,
                  Is_External => True,
-                 Value       => League.Strings.Empty_String,
+                 Value       => League.Strings.Empty_Universal_String,
                  Notation    => yy.value_stack (yy.tos-1).Symbol);
 
             when 46 =>
@@ -708,7 +708,7 @@ package body XML.SAX.Simple_Readers.Parser is
                 (Self,
                  yy.value_stack (yy.tos-2).Symbol,
                  True,
-                 League.Strings.Empty_String);
+                 League.Strings.Empty_Universal_String);
 
             when 48 =>
                --  Entity value including surrounding delimiters.
@@ -729,7 +729,7 @@ package body XML.SAX.Simple_Readers.Parser is
             when 51 =>
                Set_String
                 (Item          => yyval,
-                 String        => League.Strings.Empty_String,
+                 String        => League.Strings.Empty_Universal_String,
                  Is_Whitespace => False,
                  Is_CData      => False);
 

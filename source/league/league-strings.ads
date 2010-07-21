@@ -84,7 +84,7 @@ package League.Strings is
 
    type Universal_Slice is tagged private;
 
-   Empty_String : constant Universal_String;
+   Empty_Universal_String : constant Universal_String;
 
    type Sort_Key is private;
    pragma Preelaborable_Initialization (Sort_Key);
@@ -356,12 +356,12 @@ private
 
    overriding procedure Finalize (Self : in out Universal_String);
 
-   Empty_String_List : aliased Cursor_List := (Head => null);
-   Empty_String      : constant Universal_String
+   Empty_String_Cursors   : aliased Cursor_List := (Head => null);
+   Empty_Universal_String : constant Universal_String
      := (Ada.Finalization.Controlled with
            Data    => Matreshka.Internals.Strings.Shared_Empty'Access,
            List    => (Head => null),
-           Cursors => Empty_String_List'Access);
+           Cursors => Empty_String_Cursors'Access);
    --  To satisfy requerements of language to prevent modification of component
    --  of constant the separate object is used to store list of associated
    --  cursors.
