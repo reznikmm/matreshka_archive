@@ -63,11 +63,11 @@ package League.Values is
    --  Sets type of the value. Free previous value and set current value to
    --  null.
 
-   function Is_Null (Self : Value) return Boolean;
-   --  Returns True if object contains null value.
+   function Is_Empty (Self : Value) return Boolean;
+   --  Returns True if object contains no value.
 
-   procedure Set_Null (Self : in out Value);
-   --  Reset Value to be null value.
+   procedure Clear (Self : in out Value);
+   --  Reset Value to contain no value.
 
 private
 

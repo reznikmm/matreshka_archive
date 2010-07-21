@@ -134,6 +134,15 @@ package body League.Values is
       end if;
    end Check_Is_Untyped_Or_Is_Type;
 
+   -----------
+   -- Clear --
+   -----------
+
+   procedure Clear (Self : in out Value) is
+   begin
+      Dereference (Self.Data);
+   end Clear;
+
    -----------------
    -- Dereference --
    -----------------
@@ -195,14 +204,14 @@ package body League.Values is
       return False;
    end Is_Derived_Type;
 
-   -------------
-   -- Is_Null --
-   -------------
+   --------------
+   -- Is_Empty --
+   --------------
 
-   function Is_Null (Self : Value) return Boolean is
+   function Is_Empty (Self : Value) return Boolean is
    begin
       return Self.Data = null;
-   end Is_Null;
+   end Is_Empty;
 
    -------------
    -- Is_Type --
@@ -246,15 +255,6 @@ package body League.Values is
          Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
       end if;
    end Reference;
-
-   --------------
-   -- Set_Null --
-   --------------
-
-   procedure Set_Null (Self : in out Value) is
-   begin
-      Dereference (Self.Data);
-   end Set_Null;
 
    --------------
    -- Set_Type --
