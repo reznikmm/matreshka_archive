@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                      Orthogonal Persistence Manager                      --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,136 +41,70 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Host_Types;
 
-package body Matreshka.Values.Integers.Generic_Integers is
+package League.Values.Integers is
 
-   --------------
-   -- Allocate --
-   --------------
+   pragma Preelaborate;
 
-   overriding function Allocate (Self : not null access Integer_Container)
---     return not null Container_Access;
---  XXX GNAT 20090503 bug
-     return Container_Access
-   is
-   begin
-      return new Integer_Container;
-   end Allocate;
+   function Is_Abstract_Integer (Self : Value) return Boolean;
+   --  Returns True if contained value has integer type.
 
-   -----------------
-   -- Constructor --
-   -----------------
-
-   overriding function Constructor
-    (Value : not null access Matreshka.Internals.Host_Types.Longest_Integer)
-       return Integer_Container
-   is
-   begin
-      return
-        Integer_Container'(Abstract_Container with Value => Num (Value.all));
-   end Constructor;
-
-   -----------
-   -- First --
-   -----------
-
-   overriding function First (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return Matreshka.Internals.Host_Types.Longest_Integer (Num'First);
-   end First;
-
-   ---------
-   -- Get --
-   ---------
-
-   overriding function Get (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer
-   is
-   begin
-      return Matreshka.Internals.Host_Types.Longest_Integer (Self.Value);
-   end Get;
-
-   ---------
-   -- Get --
-   ---------
-
-   function Get (Self : Value) return Num is
-   begin
-      Check_Is_Type (Self, Integer_Container'Tag);
-      Check_Is_Not_Null (Self);
-
-      return Integer_Container'Class (Self.Data.all).Value;
-   end Get;
-
-   ----------------
-   -- Is_Integer --
-   ----------------
-
-   function Is_Integer (Self : Value) return Boolean is
-   begin
-      return Self.Is_Type (Integer_Container'Tag);
-   end Is_Integer;
-
-   ----------
-   -- Last --
-   ----------
-
-   overriding function Last (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return Matreshka.Internals.Host_Types.Longest_Integer (Num'Last);
-   end Last;
-
-   ---------
-   -- Set --
-   ---------
-
-   overriding procedure Set
-    (Self : not null access Integer_Container;
-     To   : Matreshka.Internals.Host_Types.Longest_Integer)
-   is
-   begin
-      Self.Value := Num (To);
-   end Set;
-
-   ---------
-   -- Set --
-   ---------
+   function Get (Self : Value)
+     return Matreshka.Internals.Host_Types.Longest_Integer;
+   --  Returns internal value as a longest supported integer.
 
    procedure Set
     (Self : in out Value;
-     To   : Num)
-   is
-   begin
-      Set
-       (Self,
-        Value_Type (Integer_Container'Tag),
-        Matreshka.Internals.Host_Types.Longest_Integer (To));
-   end Set;
+     To   : Matreshka.Internals.Host_Types.Longest_Integer);
+   --  Set value from a longest supported integer. Raises Contraint_Error if
+   --  value is outside of the range of valid values for actual integer type.
 
-   --------------
-   -- Set_Type --
-   --------------
+   function First (Self : Value)
+     return Matreshka.Internals.Host_Types.Longest_Integer;
+   --  Returns minimal value of the range of valid values.
 
-   procedure Set_Type (Self : in out Value) is
-   begin
-      Set_Type (Self, Type_Of_Value);
-   end Set_Type;
+   function Last (Self : Value)
+     return Matreshka.Internals.Host_Types.Longest_Integer;
+   --  Returns maximum value of the range of valid values.
 
-   -------------------
-   -- Type_Of_Value --
-   -------------------
+   procedure Set
+    (Self      : in out Value;
+     Type_Hint : Value_Type;
+     To        : Matreshka.Internals.Host_Types.Longest_Integer);
+   --  Set value from a longest supported integer. Type_Hint represents
+   --  expected type of the value. Raises Contraint_Error if value is outside
+   --  of the range of valid values for actual integer type, or value has
+   --  wrong type.
 
-   function Type_Of_Value return Value_Type is
-   begin
-      return Value_Type (Integer_Container'Tag);
-   end Type_Of_Value;
+private
 
-end Matreshka.Values.Integers.Generic_Integers;
+   type Abstract_Integer_Container is
+     abstract new Abstract_Container with null record;
+
+   not overriding function Constructor
+    (Value : not null access Matreshka.Internals.Host_Types.Longest_Integer)
+       return Abstract_Integer_Container
+         is abstract;
+
+   not overriding function Get
+    (Self : not null access Abstract_Integer_Container)
+       return Matreshka.Internals.Host_Types.Longest_Integer
+         is abstract;
+
+   not overriding procedure Set
+    (Self : not null access Abstract_Integer_Container;
+     To   : Matreshka.Internals.Host_Types.Longest_Integer)
+       is abstract;
+
+   not overriding function First
+    (Self : not null access Abstract_Integer_Container)
+       return Matreshka.Internals.Host_Types.Longest_Integer
+         is abstract;
+
+   not overriding function Last
+    (Self : not null access Abstract_Integer_Container)
+       return Matreshka.Internals.Host_Types.Longest_Integer
+         is abstract;
+
+end League.Values.Integers;

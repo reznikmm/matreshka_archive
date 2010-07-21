@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                      Orthogonal Persistence Manager                      --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,81 +41,36 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings;
 
-package body Matreshka.Values.Strings is
+package League.Values.Strings is
 
-   --------------
-   -- Allocate --
-   --------------
+   pragma Preelaborate;
 
-   overriding function Allocate (Self : not null access String_Container)
---     return not null Container_Access
---  XXX GNAT 20090503 bug
-     return Container_Access
-   is
-   begin
-      return new String_Container;
-   end Allocate;
+   function Is_String (Self : Value) return Boolean;
+   --  Returns True if contained value is string.
 
-   ---------
-   -- Get --
-   ---------
-
-   function Get (Self : Value) return Matreshka.Strings.Universal_String is
-   begin
-      Check_Is_Type (Self, String_Container'Tag);
-
-      return String_Container'Class (Self.Data.all).Value;
-   end Get;
-
-   ---------------
-   -- Is_String --
-   ---------------
-
-   function Is_String (Self : Value) return Boolean is
-   begin
-      return Self.Is_Derived_Type (String_Container'Tag);
-   end Is_String;
-
-   ---------
-   -- Set --
-   ---------
+   function Get (Self : Value) return League.Strings.Universal_String;
+   --  Returns contained value.
 
    procedure Set
     (Self : in out Value;
-     To   : Matreshka.Strings.Universal_String)
-   is
-   begin
-      Check_Is_Untyped_Or_Is_Type (Self, String_Container'Tag);
+     To   : League.Strings.Universal_String);
+   --  Set contained value to specified value.
 
-      if Self.Data = null then
-         Self.Data :=
-           new String_Container'(Abstract_Container with Value => To);
+   procedure Set_Type (Self : in out Value);
 
-      else
-         Mutate (Self.Data);
-         String_Container (Self.Data.all).Value := To;
-      end if;
+   function Type_Of_Value return Value_Type;
 
-      Self.Tag := String_Container'Tag;
-   end Set;
+private
 
-   --------------
-   -- Set_Type --
-   --------------
+   type String_Container is new Abstract_Container with record
+      Value : League.Strings.Universal_String;
+   end record;
 
-   procedure Set_Type (Self : in out Value) is
-   begin
-      Set_Type (Self, Type_Of_Value);
-   end Set_Type;
+   overriding function Allocate (Self : not null access String_Container)
+--     return not null Container_Access;
+--  XXX GNAT 20090503 bug
+     return Container_Access;
 
-   -------------------
-   -- Type_Of_Value --
-   -------------------
-
-   function Type_Of_Value return Value_Type is
-   begin
-      return Value_Type (String_Container'Tag);
-   end Type_Of_Value;
-
-end Matreshka.Values.Strings;
+end League.Values.Strings;

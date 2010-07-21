@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                      Orthogonal Persistence Manager                      --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,12 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Interfaces;
+with League.Values.Integers.Generic_Integers;
 
-package Matreshka.Internals.Host_Types is
-
-   pragma Pure;
-
-   subtype Longest_Integer is Interfaces.Integer_64;
-
-end Matreshka.Internals.Host_Types;
+package League.Values.Integer_Values is
+  new League.Values.Integers.Generic_Integers (Integer);
+pragma Preelaborate (League.Values.Integer_Values);

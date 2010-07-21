@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                      Orthogonal Persistence Manager                      --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,56 +41,96 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Finalization;
+private with Ada.Tags;
 
-generic
-   type Num is range <>;
+private with Matreshka.Internals.Atomics.Counters;
 
-package Matreshka.Values.Integers.Generic_Integers is
+package League.Values is
 
    pragma Preelaborate;
 
-   function Is_Integer (Self : Value) return Boolean;
-   --  Returns True if contained value has integer type.
+   type Value is private;
 
-   function Get (Self : Value) return Num;
-   --  Returns internal value.
+   type Value_Type (<>) is private;
 
-   procedure Set
+   function Get_Type (Self : Value) return Value_Type;
+   --  Returns current type of the value.
+
+   procedure Set_Type
     (Self : in out Value;
-     To   : Num);
-   --  Set value. Associate the type with value if Value is empty, otherwise
-   --  check integer type and raise Constraint_Error if value has wrong type.
+     To   : Value_Type);
+   --  Sets type of the value. Free previous value and set current value to
+   --  null.
 
-   procedure Set_Type (Self : in out Value);
+   function Is_Null (Self : Value) return Boolean;
+   --  Returns True if object contains null value.
 
-   function Type_Of_Value return Value_Type;
+   procedure Set_Null (Self : in out Value);
+   --  Reset Value to be null value.
 
 private
 
-   type Integer_Container is new Abstract_Integer_Container with record
-      Value : Num;
+   type Abstract_Container is abstract tagged limited record
+      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
    end record;
 
-   overriding function Allocate (Self : not null access Integer_Container)
---     return not null Container_Access;
+   type Container_Access is access all Abstract_Container'Class;
+
+   not overriding procedure Finalize
+    (Self : not null access Abstract_Container) is null;
+
+   not overriding function Allocate (Self : not null access Abstract_Container)
+--     return not null Container_Access
 --  XXX GNAT 20090503 bug
-     return Container_Access;
+     return Container_Access
+       is abstract;
+   --  Allocates a new container. Initial value of reference counter must be
+   --  initialized to one (it is done automatically).
 
-   overriding function Constructor
-    (Value : not null access Matreshka.Internals.Host_Types.Longest_Integer)
-       return Integer_Container;
+   procedure Reference (Self : in out Container_Access);
 
-   overriding function Get (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer;
+   procedure Mutate (Self : in out Container_Access);
 
-   overriding procedure Set
-    (Self : not null access Integer_Container;
-     To   : Matreshka.Internals.Host_Types.Longest_Integer);
+   procedure Dereference (Self : in out Container_Access);
 
-   overriding function First (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer;
+   type Value_Type is new Ada.Tags.Tag;
 
-   overriding function Last (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer;
+   type Value is new Ada.Finalization.Controlled with record
+      Tag  : Ada.Tags.Tag     := Ada.Tags.No_Tag;
+      Data : Container_Access := null;
+   end record;
 
-end Matreshka.Values.Integers.Generic_Integers;
+   overriding procedure Adjust (Self : in out Value);
+
+   overriding procedure Finalize (Self : in out Value);
+
+   procedure Check_Is_Not_Null (Self : Value'Class);
+   --  Raises Constraint_Error if object contains null value.
+
+   procedure Check_Is_Derived_Type
+    (Self      : Value'Class;
+     Known_Tag : Ada.Tags.Tag);
+   --  Raises Constraint_Error if object is untyped or its type not derived
+   --  from specified known type.
+
+   procedure Check_Is_Type
+    (Self      : Value'Class;
+     Known_Tag : Ada.Tags.Tag);
+   --  Raises Constraint_Error if object's type not a specified known type.
+
+   procedure Check_Is_Untyped_Or_Is_Type
+    (Self      : Value'Class;
+     Known_Tag : Ada.Tags.Tag);
+   --  Raises Constraint_Error if object not untyped and doesn't have known
+   --  type.
+
+   function Is_Derived_Type (Self : Value'Class; Known_Tag : Ada.Tags.Tag)
+     return Boolean;
+   --  Returns True if actual type is derived from known type.
+
+   function Is_Type (Self : Value'Class; Known_Tag : Ada.Tags.Tag)
+     return Boolean;
+   --  Returns True if actual type is specified known type.
+
+end League.Values;

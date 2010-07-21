@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                      Orthogonal Persistence Manager                      --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,104 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Tags.Generic_Dispatching_Constructor;
+--  This is GNAT specific version of the package. It can or can't be
+--  compatible with other Ada compilers.
+------------------------------------------------------------------------------
+with Interfaces;
 
-package body Matreshka.Values.Integers is
+package Matreshka.Internals.Host_Types is
 
-   function Create is
-     new Ada.Tags.Generic_Dispatching_Constructor
-          (Abstract_Integer_Container,
-           Matreshka.Internals.Host_Types.Longest_Integer,
-           Constructor);
+   pragma Pure;
 
-   -----------
-   -- First --
-   -----------
+   subtype Longest_Integer is Interfaces.Integer_64;
 
-   function First (Self : Value)
-     return Matreshka.Internals.Host_Types.Longest_Integer
-   is
-   begin
-      Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
-
-      return Abstract_Integer_Container'Class (Self.Data.all).First;
-   end First;
-
-   ---------
-   -- Get --
-   ---------
-
-   function Get (Self : Value)
-     return Matreshka.Internals.Host_Types.Longest_Integer
-   is
-   begin
-      Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
-      Check_Is_Not_Null (Self);
-
-      return Abstract_Integer_Container'Class (Self.Data.all).Get;
-   end Get;
-
-   -------------------------
-   -- Is_Abstract_Integer --
-   -------------------------
-
-   function Is_Abstract_Integer (Self : Value) return Boolean is
-   begin
-      return Self.Is_Derived_Type (Abstract_Integer_Container'Tag);
-   end Is_Abstract_Integer;
-
-   ----------
-   -- Last --
-   ----------
-
-   function Last (Self : Value)
-     return Matreshka.Internals.Host_Types.Longest_Integer
-   is
-   begin
-      Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
-
-      return Abstract_Integer_Container'Class (Self.Data.all).Last;
-   end Last;
-
-   ---------
-   -- Set --
-   ---------
-
-   procedure Set
-    (Self : in out Value;
-     To   : Matreshka.Internals.Host_Types.Longest_Integer)
-   is
-   begin
-      Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
-
-      Set (Self, Value_Type (Self.Tag), To);
-   end Set;
-
-   ---------
-   -- Set --
-   ---------
-
-   procedure Set
-    (Self      : in out Value;
-     Type_Hint : Value_Type;
-     To        : Matreshka.Internals.Host_Types.Longest_Integer)
-   is
-      Aux : aliased Matreshka.Internals.Host_Types.Longest_Integer := To;
-
-   begin
-      Check_Is_Untyped_Or_Is_Type (Self, Ada.Tags.Tag (Type_Hint));
-
-      if Self.Data = null then
-         Self.Data :=
-           new Abstract_Integer_Container'Class'
-                (Create (Ada.Tags.Tag (Type_Hint), Aux'Access));
-
-      else
-         Mutate (Self.Data);
-         Abstract_Integer_Container'Class (Self.Data.all).Set (To);
-      end if;
-
-      Self.Tag := Ada.Tags.Tag (Type_Hint);
-   end Set;
-
-end Matreshka.Values.Integers;
+end Matreshka.Internals.Host_Types;

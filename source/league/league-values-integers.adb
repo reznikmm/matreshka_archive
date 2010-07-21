@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                      Orthogonal Persistence Manager                      --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,36 +41,104 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Strings;
+with Ada.Tags.Generic_Dispatching_Constructor;
 
-package Matreshka.Values.Strings is
+package body League.Values.Integers is
 
-   pragma Preelaborate;
+   function Create is
+     new Ada.Tags.Generic_Dispatching_Constructor
+          (Abstract_Integer_Container,
+           Matreshka.Internals.Host_Types.Longest_Integer,
+           Constructor);
 
-   function Is_String (Self : Value) return Boolean;
-   --  Returns True if contained value is string.
+   -----------
+   -- First --
+   -----------
 
-   function Get (Self : Value) return Matreshka.Strings.Universal_String;
-   --  Returns contained value.
+   function First (Self : Value)
+     return Matreshka.Internals.Host_Types.Longest_Integer
+   is
+   begin
+      Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
+
+      return Abstract_Integer_Container'Class (Self.Data.all).First;
+   end First;
+
+   ---------
+   -- Get --
+   ---------
+
+   function Get (Self : Value)
+     return Matreshka.Internals.Host_Types.Longest_Integer
+   is
+   begin
+      Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
+      Check_Is_Not_Null (Self);
+
+      return Abstract_Integer_Container'Class (Self.Data.all).Get;
+   end Get;
+
+   -------------------------
+   -- Is_Abstract_Integer --
+   -------------------------
+
+   function Is_Abstract_Integer (Self : Value) return Boolean is
+   begin
+      return Self.Is_Derived_Type (Abstract_Integer_Container'Tag);
+   end Is_Abstract_Integer;
+
+   ----------
+   -- Last --
+   ----------
+
+   function Last (Self : Value)
+     return Matreshka.Internals.Host_Types.Longest_Integer
+   is
+   begin
+      Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
+
+      return Abstract_Integer_Container'Class (Self.Data.all).Last;
+   end Last;
+
+   ---------
+   -- Set --
+   ---------
 
    procedure Set
     (Self : in out Value;
-     To   : Matreshka.Strings.Universal_String);
-   --  Set contained value to specified value.
+     To   : Matreshka.Internals.Host_Types.Longest_Integer)
+   is
+   begin
+      Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
 
-   procedure Set_Type (Self : in out Value);
+      Set (Self, Value_Type (Self.Tag), To);
+   end Set;
 
-   function Type_Of_Value return Value_Type;
+   ---------
+   -- Set --
+   ---------
 
-private
+   procedure Set
+    (Self      : in out Value;
+     Type_Hint : Value_Type;
+     To        : Matreshka.Internals.Host_Types.Longest_Integer)
+   is
+      Aux : aliased Matreshka.Internals.Host_Types.Longest_Integer := To;
 
-   type String_Container is new Abstract_Container with record
-      Value : Matreshka.Strings.Universal_String;
-   end record;
+   begin
+      Check_Is_Untyped_Or_Is_Type (Self, Ada.Tags.Tag (Type_Hint));
 
-   overriding function Allocate (Self : not null access String_Container)
---     return not null Container_Access;
---  XXX GNAT 20090503 bug
-     return Container_Access;
+      if Self.Data = null then
+         Self.Data :=
+           new Abstract_Integer_Container'Class'
+                (Create (Ada.Tags.Tag (Type_Hint), Aux'Access));
 
-end Matreshka.Values.Strings;
+      else
+         Mutate (Self.Data);
+         Abstract_Integer_Container'Class (Self.Data.all).Set (To);
+      end if;
+
+      Self.Tag := Ada.Tags.Tag (Type_Hint);
+   end Set;
+
+end League.Values.Integers;

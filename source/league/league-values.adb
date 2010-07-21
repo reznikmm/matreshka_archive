@@ -2,13 +2,13 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                      Orthogonal Persistence Manager                      --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-package body Matreshka.Values is
+package body League.Values is
 
    procedure Free is
      new Ada.Unchecked_Deallocation
@@ -269,4 +269,4 @@ package body Matreshka.Values is
       Self.Tag := Ada.Tags.Tag (To);
    end Set_Type;
 
-end Matreshka.Values;
+end League.Values;
