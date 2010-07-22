@@ -48,6 +48,7 @@ with XML.SAX.Declaration_Handlers;
 with XML.SAX.DTD_Handlers;
 with XML.SAX.Entity_Resolvers;
 with XML.SAX.Error_Handlers;
+with XML.SAX.Input_Sources;
 with XML.SAX.Lexical_Handlers;
 with XML.SAX.Locators;
 with XML.SAX.Parse_Exceptions;
@@ -116,6 +117,13 @@ package Events_Printers is
      Target  : League.Strings.Universal_String;
      Data    : League.Strings.Universal_String;
      Success : in out Boolean);
+
+   overriding procedure Resolve_Entity
+    (Self      : in out Events_Printer;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
+     Success   : in out Boolean);
 
    overriding procedure Resolve_Entity
     (Self      : in out Events_Printer;

@@ -177,11 +177,8 @@ private
      new Ada.Containers.Vectors
           (Positive, Interfaces.Unsigned_32, Interfaces."=");
 
-   type SAX_Input_Source_Access is
-     access all XML.SAX.Input_Sources.SAX_Input_Source'Class;
-
    type Scanner_State_Information is record
-      Source                : SAX_Input_Source_Access;
+      Source                : XML.SAX.Input_Sources.SAX_Input_Source_Access;
       Data                  : Matreshka.Internals.Strings.Shared_String_Access;
       YY_Base_Position      : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
       YY_Base_Index         : Positive := 1;
@@ -190,6 +187,8 @@ private
       YY_Start_State        : Interfaces.Unsigned_32 := 1;
       Last_Match            : Boolean  := True;
       --  This mean that last match need to be processed.
+      End_Of_Source         : Boolean  := True;
+      --  This mean end of source reached.
       Is_External_Subset    : Boolean  := False;
       Entity                : Matreshka.Internals.XML.Entity_Identifier
         := Matreshka.Internals.XML.No_Entity;

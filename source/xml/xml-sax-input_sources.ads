@@ -52,6 +52,8 @@ package XML.SAX.Input_Sources is
 
    type SAX_Input_Source is tagged limited private;
 
+   type SAX_Input_Source_Access is access all SAX_Input_Source'Class;
+
    not overriding procedure Set_String
     (Self   : in out SAX_Input_Source;
      String : League.Strings.Universal_String);

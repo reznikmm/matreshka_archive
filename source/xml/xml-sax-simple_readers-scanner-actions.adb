@@ -443,7 +443,9 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
       Entity         : Entity_Identifier;
+      Source         : XML.SAX.Input_Sources.SAX_Input_Source_Access;
       Text           : Matreshka.Internals.Strings.Shared_String_Access;
+      Last_Match     : Boolean;
       State          : Scanner_State_Information;
 
    begin
@@ -512,46 +514,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          return False;
       end if;
 
-      --  Resolve entity when necessary.
-
-      if not Is_Resolved (Self.Entities, Entity) then
-         declare
-            V : League.Strings.Universal_String;
-            A : Matreshka.Internals.Strings.Shared_String_Access;
-
-         begin
-            Callbacks.Call_Resolve_Entity
-             (Self,
-              League.Strings.Internals.Create
-               (Public_Id (Self.Entities, Entity)),
-              League.Strings.Internals.Create
-               (System_Id (Self.Entities, Entity)),
-              V);
-
-            if not Self.Continue then
-               Callbacks.Call_Fatal_Error
-                (Self,
-                 League.Strings.To_Universal_String
-                  ("external parsed general entity is not resolved"));
-
-               return False;
-            end if;
-
-            A := League.Strings.Internals.Get_Shared (V);
-            Matreshka.Internals.Strings.Reference (A);
-            Set_Replacement_Text (Self.Entities, Entity, A);
-            Set_Is_Resolved (Self.Entities, Entity, True);
-         end;
-      end if;
-
-      Text := Replacement_Text (Self.Entities, Entity);
-
-      if Text.Unused = 0 then
-         --  Replacement text is empty string,
-
-         return True;
-      end if;
-
       --  [XML1.1 4.1 WFC: No Recursion]
       --
       --  "A parsed entity MUST NOT contain a recursive reference to itself,
@@ -588,14 +550,52 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          end if;
       end loop;
 
+      --  Resolve entity when necessary.
+
+      if not Is_Resolved (Self.Entities, Entity) then
+         Callbacks.Call_Resolve_Entity
+          (Self,
+           League.Strings.Internals.Create
+            (Public_Id (Self.Entities, Entity)),
+           League.Strings.Internals.Create
+            (System_Id (Self.Entities, Entity)),
+           Source);
+         Text       := Matreshka.Internals.Strings.Shared_Empty'Access;
+         Last_Match := False;
+
+         if not Self.Continue then
+            Callbacks.Call_Fatal_Error
+             (Self,
+              League.Strings.To_Universal_String
+               ("external parsed general entity is not resolved"));
+
+            return False;
+         end if;
+
+         Set_Is_Resolved (Self.Entities, Entity, True);
+
+      else
+         Source     := null;
+         Text       := Replacement_Text (Self.Entities, Entity);
+         Last_Match := True;
+
+         if Text.Unused = 0 then
+            --  Replacement text is empty string,
+
+            return True;
+         end if;
+      end if;
+
       Self.Scanner_Stack.Append (Self.Scanner_State);
       Self.Stack_Is_Empty := False;
 
       Self.Scanner_State :=
-       (Source => null,
-        Data   => Text,
-        Entity => Entity,
-        others => <>);
+       (Source        => Source,
+        Data          => Text,
+        Last_Match    => Last_Match,
+        End_Of_Source => Last_Match,
+        Entity        => Entity,
+        others        => <>);
 
       case Self.Version is
          when XML_1_0 =>

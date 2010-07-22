@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings;
+with XML.SAX.Input_Sources;
 with XML.SAX.Entity_Resolvers;
 
 package XMLConf.Entity_Resolvers is
@@ -53,6 +54,13 @@ package XMLConf.Entity_Resolvers is
    overriding function Error_String
     (Self : Entity_Resolver)
        return League.Strings.Universal_String;
+
+   overriding procedure Resolve_Entity
+    (Self      : in out Entity_Resolver;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
+     Success   : in out Boolean);
 
    overriding procedure Resolve_Entity
     (Self      : in out Entity_Resolver;

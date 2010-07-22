@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Deallocation;
+
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode;
@@ -561,6 +563,13 @@ package body XML.SAX.Simple_Readers.Scanner is
    function YYLex
     (Self : not null access SAX_Simple_Reader'Class) return Token
    is
+      use type XML.SAX.Input_Sources.SAX_Input_Source_Access;
+
+      procedure Free is
+        new Ada.Unchecked_Deallocation
+             (XML.SAX.Input_Sources.SAX_Input_Source'Class,
+              XML.SAX.Input_Sources.SAX_Input_Source_Access);
+
       YY_Action                  : Interfaces.Unsigned_32;
       YY_C                       : Interfaces.Unsigned_32;
       YY_Current_State           : Interfaces.Unsigned_32;
@@ -1018,11 +1027,38 @@ package body XML.SAX.Simple_Readers.Scanner is
                      return End_Of_Input;
 
                   else
-                     Self.Scanner_State := Self.Scanner_Stack.Last_Element;
-                     Self.Scanner_Stack.Delete_Last;
-                     Self.Stack_Is_Empty := Self.Scanner_Stack.Is_Empty;
+                     if Self.Scanner_State.End_Of_Source then
+                        if Self.Scanner_State.Source /= null then
+                           --  Replacement text of the entity is loaded from
+                           --  input source and need to be stored in the
+                           --  entities table. Input source can be deallocated.
 
-                     goto New_File;
+                           Set_Replacement_Text
+                            (Self.Entities,
+                             Self.Scanner_State.Entity,
+                             Self.Scanner_State.Data);
+
+                           Free (Self.Scanner_State.Source);
+                        end if;
+
+                        Self.Scanner_State := Self.Scanner_Stack.Last_Element;
+                        Self.Scanner_Stack.Delete_Last;
+                        Self.Stack_Is_Empty := Self.Scanner_Stack.Is_Empty;
+
+                        goto New_File;
+
+                     else
+                        --  Obtain next portion from the input source.
+
+                        Self.Scanner_State.Source.Next
+                         (Self.Scanner_State.Data,
+                          Self.Scanner_State.End_Of_Source);
+
+                        Self.Scanner_State.Last_Match :=
+                          Self.Scanner_State.End_Of_Source;
+
+                        goto New_File;
+                     end if;
                   end if;
                end if;
 --            when YY_END_OF_BUFFER =>
