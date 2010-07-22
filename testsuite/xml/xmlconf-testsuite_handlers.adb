@@ -47,6 +47,7 @@ with Ada.Exceptions;
 
 with Put_Line;
 with Read_File;
+with XML.SAX.Input_Sources;
 with XML.SAX.Simple_Readers;
 
 package body XMLConf.Testsuite_Handlers is
@@ -106,7 +107,7 @@ package body XMLConf.Testsuite_Handlers is
            := Ada.Directories.Containing_Directory
                (Ada.Characters.Conversions.To_String
                  (League.Strings.To_Wide_Wide_String (Base & URI)));
-         Text   : League.Strings.Universal_String;
+         Source : aliased XML.SAX.Input_Sources.SAX_Input_Source;
          Reader : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
 
       begin
@@ -118,12 +119,12 @@ package body XMLConf.Testsuite_Handlers is
             raise Program_Error with "terminated by timeout";
 
          then abort
-            Text :=
-              Read_File
+            Source.Set_String
+             (Read_File
                (Ada.Directories.Simple_Name
                  (Ada.Characters.Conversions.To_String
-                   (URI.To_Wide_Wide_String)));
-            Reader.Parse (Text);
+                   (URI.To_Wide_Wide_String))));
+            Reader.Parse (Source'Access);
          end select;
 
          Ada.Directories.Set_Directory (Cwd);
