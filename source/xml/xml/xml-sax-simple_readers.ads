@@ -55,6 +55,7 @@ private with Matreshka.Internals.XML.Entity_Tables;
 private with Matreshka.Internals.XML.Namespace_Scopes;
 private with Matreshka.Internals.XML.Symbol_Tables;
 private with XML.SAX.Attributes;
+with XML.SAX.Input_Sources;
 private with XML.SAX.Default_Handlers;
 private with XML.SAX.Locators;
 with XML.SAX.Readers;
@@ -70,6 +71,10 @@ package XML.SAX.Simple_Readers is
     (Self       : not null access SAX_Simple_Reader;
      Data       : League.Strings.Universal_String;
      Last_Chunk : Boolean := True);
+
+   procedure Parse
+    (Self   : not null access SAX_Simple_Reader;
+     Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class);
 
    Put_Line : access procedure (Item : League.Strings.Universal_String);
 
@@ -226,7 +231,11 @@ private
      new Ada.Containers.Vectors
           (Positive, Interfaces.Unsigned_32, Interfaces."=");
 
+   type SAX_Input_Source_Access is
+     access all XML.SAX.Input_Sources.SAX_Input_Source'Class;
+
    type Scanner_State_Information is record
+      Source                : SAX_Input_Source_Access;
       Data                  : Matreshka.Internals.Strings.Shared_String_Access;
       YY_Base_Position      : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
       YY_Base_Index         : Positive := 1;

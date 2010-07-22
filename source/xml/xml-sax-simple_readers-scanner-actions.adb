@@ -528,7 +528,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Self.Scanner_Stack.Append (Self.Scanner_State);
       Self.Stack_Is_Empty := False;
 
-      Self.Scanner_State := (Text, Entity => Entity, others => <>);
+      Self.Scanner_State :=
+       (Source => null,
+        Data   => Text,
+        Entity => Entity,
+        others => <>);
 
       case Self.Version is
          when XML_1_0 =>

@@ -416,7 +416,11 @@ package body XML.SAX.Simple_Readers.Scanner is
       Self.Scanner_Stack.Append (Self.Scanner_State);
       Self.Stack_Is_Empty := False;
 
-      Self.Scanner_State := (Data, Is_External_Subset => True, others => <>);
+      Self.Scanner_State :=
+       (Source             => null,
+        Data               => Data,
+        Is_External_Subset => True,
+        others             => <>);
       Push_And_Enter_Start_Condition (Self, DOCTYPE_INTSUBSET_10, INITIAL);
       --  Reset scanner to INITIAL state to be able to process text
       --  declaration at the beginning of external subset.
@@ -433,7 +437,11 @@ package body XML.SAX.Simple_Readers.Scanner is
       Self.Scanner_Stack.Append (Self.Scanner_State);
       Self.Stack_Is_Empty := False;
 
-      Self.Scanner_State := (Data, In_Literal => True, others => <>);
+      Self.Scanner_State :=
+       (Source     => null,
+        Data       => Data,
+        In_Literal => True,
+        others     => <>);
 
       case Self.Version is
          when XML_1_0 =>
@@ -472,7 +480,11 @@ package body XML.SAX.Simple_Readers.Scanner is
       Self.Stack_Is_Empty := False;
 
       Self.Scanner_State :=
-       (Data, Entity => Entity, In_Literal => True, others => <>);
+       (Source     => null,
+        Data       => Data,
+        Entity     => Entity,
+        In_Literal => True,
+        others     => <>);
 
       case Self.Version is
          when XML_1_0 =>
@@ -1703,6 +1715,8 @@ package body XML.SAX.Simple_Readers.Scanner is
 
                else
                   if Self.Stack_Is_Empty then
+                     --  Document entity.
+
                      if Self.Last_Chunk then
                         Matreshka.Internals.Strings.Dereference
                          (Self.Scanner_State.Data);
@@ -1715,9 +1729,9 @@ package body XML.SAX.Simple_Readers.Scanner is
                              := Self.Scanner_State.Data;
 
                         begin
-                           if Self.Scanner_State.Data.Unused
-                                /= Self.Scanner_State.YY_Base_Position
-                           then
+--                           if Self.Scanner_State.Data.Unused
+--                                /= Self.Scanner_State.YY_Base_Position
+--                           then
                               Self.Scanner_State.Data :=
                                 Matreshka.Internals.Strings.Operations.Slice
                                  (X,
@@ -1727,9 +1741,10 @@ package body XML.SAX.Simple_Readers.Scanner is
                                   Self.Scanner_State.Data.Length
                                     - Self.Scanner_State.YY_Base_Index + 1);
 
-                           else
-                              Self.Scanner_State.Data := null;
-                           end if;
+--                           else
+--                              Self.Scanner_State.Data :=
+--                                Matreshka.Internals.Strings.Shared_Empty'Access;
+--                           end if;
 
                            Matreshka.Internals.Strings.Dereference (X);
                            Self.Scanner_State.YY_Current_Position := 0;
@@ -1738,6 +1753,15 @@ package body XML.SAX.Simple_Readers.Scanner is
                            Self.YY_Current_Column := Self.YY_Base_Column;
                            Self.YY_Current_Skip_LF := Self.YY_Base_Skip_LF;
                         end;
+
+                        --  Obtain next portion from the input source.
+
+                        if Self.Scanner_State.Source /= null then
+                           Self.Scanner_State.Source.Next
+                            (Self.Scanner_State.Data, Self.Last_Chunk);
+
+                           goto New_File;
+                        end if;
                      end if;
 
                      return End_Of_Input;

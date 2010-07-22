@@ -1,0 +1,109 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--                               XML Processor                              --
+--                                                                          --
+--                            Testsuite Component                           --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
+with League.Strings.Internals;
+with Matreshka.Internals.Strings.Operations;
+
+package body XML.SAX.Input_Sources is
+
+--   not overriding function Encoding
+--    (Self : SAX_Input_Source) return League.Strings.Universal_String;
+--
+--   not overriding function Public_Id
+--    (Self : SAX_Input_Source) return League.Strings.Universal_String;
+--
+--   not overriding function System_Id
+--    (Self : SAX_Input_Source) return League.Strings.Universal_String;
+
+   ----------
+   -- Next --
+   ----------
+
+   not overriding procedure Next
+    (Self        : in out SAX_Input_Source;
+     Buffer      : in out
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     End_Of_Data : out Boolean) is
+   begin
+      Matreshka.Internals.Strings.Operations.Append
+       (Buffer,
+        League.Strings.Internals.Get_Shared (Self.String));
+      Self.String.Clear;
+      End_Of_Data := True;
+   end Next;
+
+--   not overriding procedure Set_Encoding
+--    (Self     : in out SAX_Input_Source;
+--     Encoding : League.Strings.Universal_String);
+--
+--   not overriding procedure Set_Public_Id
+--    (Self : in out SAX_Input_Source;
+--     Id   : League.Strings.Universal_String);
+--
+--   ----------------
+--   -- Set_Stream --
+--   ----------------
+--
+--   procedure Set_Stream
+--    (Self   : in out SAX_Input_Source;
+--     Stream : not null access Ada.Streams.Root_Stream_Type'Class) is
+--   begin
+--      Self.Stream := Stream.all'Unchecked_Access;
+--   end Set_Stream;
+
+   ----------------
+   -- Set_String --
+   ----------------
+
+   not overriding procedure Set_String
+    (Self   : in out SAX_Input_Source;
+     String : League.Strings.Universal_String) is
+   begin
+      Self.String := String;
+   end Set_String;
+
+--   not overriding procedure Set_System_Id
+--    (Self : in out SAX_Input_Source;
+--     Id   : League.Strings.Universal_String);
+
+end XML.SAX.Input_Sources;

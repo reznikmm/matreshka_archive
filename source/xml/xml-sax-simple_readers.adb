@@ -210,6 +210,37 @@ package body XML.SAX.Simple_Readers is
       Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
    end Parse;
 
+   -----------
+   -- Parse --
+   -----------
+
+   procedure Parse
+    (Self   : not null access SAX_Simple_Reader;
+     Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class) is
+   begin
+      XML.SAX.Locators.Internals.Set_Location
+       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Callbacks.Call_Set_Document_Locator (Self, Self.Locator);
+      Self.Last_Chunk := False;
+--      Self.Scanner_State.Last_Match := Last_Chunk;
+      Self.Scanner_State.Source := Source.all'Unchecked_Access;
+      Self.Scanner_State.Data :=
+        Matreshka.Internals.Strings.Shared_Empty'Access;
+
+--      if Self.Scanner_State.Data = null then
+--         Self.Scanner_State.Data := League.Strings.Internals.Get_Shared (Data);
+--         Matreshka.Internals.Strings.Reference (Self.Scanner_State.Data);
+--
+--      else
+--         Matreshka.Internals.Strings.Operations.Append
+--          (Self.Scanner_State.Data,
+--           League.Strings.Internals.Get_Shared (Data));
+--      end if;
+
+      Parser.YYParse (Self);
+      Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
+   end Parse;
+
    -------------------------
    -- Set_Content_Handler --
    -------------------------
