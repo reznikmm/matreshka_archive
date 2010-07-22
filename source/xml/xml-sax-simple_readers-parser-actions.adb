@@ -126,8 +126,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       --  Substitute external subset if any.
 
       if not Self.External_Subset.Is_Empty then
-         Scanner.Push_External_Subset
-          (Self, League.Strings.Internals.Get_Shared (Self.External_Subset));
+         Scanner.Push_External_Subset (Self, Self.External_Source);
       end if;
    end On_End_Of_Internal_Subset;
 
@@ -187,7 +186,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       Self.Entity_Resolver.Resolve_Entity
        (Self.Public_Id,
         Self.System_Id,
-        Self.External_Subset,
+        Self.External_Source,
         Self.Continue);
    end On_External_Subset_Declaration;
 

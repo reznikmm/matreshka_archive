@@ -109,13 +109,6 @@ private package XML.SAX.Simple_Readers.Callbacks is
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access);
    --  Calls entity resolver's SAX_Entity_Resolver.Resolve_Entity subprogram.
 
-   procedure Call_Resolve_Entity
-    (Self      : not null access SAX_Simple_Reader'Class;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Text      : out League.Strings.Universal_String);
-   --  Calls entity resolver's SAX_Entity_Resolver.Resolve_Entity subprogram.
-
    procedure Call_Set_Document_Locator
     (Self    : not null access SAX_Simple_Reader'Class;
      Locator : XML.SAX.Locators.SAX_Locator);

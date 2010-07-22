@@ -370,6 +370,7 @@ private
       In_DTD              : Boolean;
 
       Entities            : Matreshka.Internals.XML.Entity_Tables.Entity_Table;
+      External_Source     : XML.SAX.Input_Sources.SAX_Input_Source_Access;
       External_Subset     : League.Strings.Universal_String;
       --  Contents of the external subset if any. This member used only to
       --  prevent deallocation of shared string before document parsing is

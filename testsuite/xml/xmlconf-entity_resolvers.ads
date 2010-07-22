@@ -62,11 +62,4 @@ package XMLConf.Entity_Resolvers is
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
      Success   : in out Boolean);
 
-   overriding procedure Resolve_Entity
-    (Self      : in out Entity_Resolver;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Text      : out League.Strings.Universal_String;
-     Success   : in out Boolean);
-
 end XMLConf.Entity_Resolvers;

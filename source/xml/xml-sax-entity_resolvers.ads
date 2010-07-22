@@ -59,16 +59,6 @@ package XML.SAX.Entity_Resolvers is
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
-     Success   : in out Boolean) is abstract;
-
-   not overriding procedure Resolve_Entity
-    (Self      : in out SAX_Entity_Resolver;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Text      : out League.Strings.Universal_String;
      Success   : in out Boolean) is null;
-   --  XXX Profile of this operation need to be arranged with others. It can be
-   --  a good idea to have Success parameter in all callbacks and convert them
-   --  from functions to procedures after all.
 
 end XML.SAX.Entity_Resolvers;

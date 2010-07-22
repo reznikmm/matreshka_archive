@@ -412,15 +412,16 @@ package body XML.SAX.Simple_Readers.Scanner is
    --------------------------
 
    procedure Push_External_Subset
-    (Self : not null access SAX_Simple_Reader'Class;
-     Data : not null Matreshka.Internals.Strings.Shared_String_Access) is
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Source : not null XML.SAX.Input_Sources.SAX_Input_Source_Access) is
    begin
       Self.Scanner_Stack.Append (Self.Scanner_State);
       Self.Stack_Is_Empty := False;
 
       Self.Scanner_State :=
-       (Source             => null,
-        Data               => Data,
+       (Source             => Source,
+        Data               => Matreshka.Internals.Strings.Shared_Empty'Access,
+        Last_Match         => False,
         Is_External_Subset => True,
         others             => <>);
 

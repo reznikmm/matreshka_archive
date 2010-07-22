@@ -57,8 +57,8 @@ private package XML.SAX.Simple_Readers.Scanner is
    --  version of XML specification.
 
    procedure Push_External_Subset
-    (Self : not null access SAX_Simple_Reader'Class;
-     Data : not null Matreshka.Internals.Strings.Shared_String_Access);
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Source : not null XML.SAX.Input_Sources.SAX_Input_Source_Access);
    --  Push text of external subset of document type declaration into the
    --  scanner's stack.
 

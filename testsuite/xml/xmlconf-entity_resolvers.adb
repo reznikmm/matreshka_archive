@@ -76,21 +76,4 @@ package body XMLConf.Entity_Resolvers is
            (System_Id.To_Wide_Wide_String)));
    end Resolve_Entity;
 
-   --------------------
-   -- Resolve_Entity --
-   --------------------
-
-   overriding procedure Resolve_Entity
-    (Self      : in out Entity_Resolver;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Text      : out League.Strings.Universal_String;
-     Success   : in out Boolean) is
-   begin
-      Text :=
-        Read_File
-         (Ada.Characters.Conversions.To_String
-           (System_Id.To_Wide_Wide_String));
-   end Resolve_Entity;
-
 end XMLConf.Entity_Resolvers;

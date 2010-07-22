@@ -125,13 +125,6 @@ package Events_Printers is
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
      Success   : in out Boolean);
 
-   overriding procedure Resolve_Entity
-    (Self      : in out Events_Printer;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Text      : out League.Strings.Universal_String;
-     Success   : in out Boolean);
-
    overriding procedure Set_Document_Locator
     (Self    : in out Events_Printer;
      Locator : XML.SAX.Locators.SAX_Locator);
