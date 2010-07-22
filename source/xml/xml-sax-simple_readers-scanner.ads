@@ -117,11 +117,4 @@ private
     (Self : not null access SAX_Simple_Reader'Class);
    --  Resets "whitespace matched" flag.
 
-   procedure Push_General_Entity_In_Attribute_Value
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Entity : Matreshka.Internals.XML.Entity_Identifier;
-     Data   : not null Matreshka.Internals.Strings.Shared_String_Access);
-   --  Push replacement text of general entity in attribute value into
-   --  scanner's stack.
-
 end XML.SAX.Simple_Readers.Scanner;
