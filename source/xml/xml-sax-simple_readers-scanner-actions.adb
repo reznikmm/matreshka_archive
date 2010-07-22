@@ -1020,6 +1020,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
       Entity         : Entity_Identifier;
+      Text           : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
@@ -1072,8 +1073,30 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             end;
          end if;
 
-         Push_Parameter_Entity
-          (Self, Replacement_Text (Self.Entities, Entity));
+         Text := Replacement_Text (Self.Entities, Entity);
+
+         if Text.Unused = 0 then
+            --  Replacement text is the empty string, nothing to do.
+
+            return True;
+         end if;
+
+         Self.Scanner_Stack.Append (Self.Scanner_State);
+         Self.Stack_Is_Empty := False;
+
+         Self.Scanner_State :=
+          (Source     => null,
+           Data       => Text,
+           In_Literal => True,
+           others     => <>);
+
+         case Self.Version is
+            when XML_1_0 =>
+               Enter_Start_Condition (Self, Tables.ENTITY_VALUE_10);
+
+            when XML_1_1 =>
+               Enter_Start_Condition (Self, Tables.ENTITY_VALUE_11);
+         end case;
 
          return True;
       end if;

@@ -56,11 +56,6 @@ private package XML.SAX.Simple_Readers.Scanner is
    --  Switch scanner to continue scanning according to the specified
    --  version of XML specification.
 
-   procedure Push_Parameter_Entity
-    (Self : not null access SAX_Simple_Reader'Class;
-     Data : not null Matreshka.Internals.Strings.Shared_String_Access);
-   --  Push text of parameter entity into the scanner's stack.
-
    procedure Push_External_Subset
     (Self : not null access SAX_Simple_Reader'Class;
      Data : not null Matreshka.Internals.Strings.Shared_String_Access);
