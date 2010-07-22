@@ -421,9 +421,20 @@ package body XML.SAX.Simple_Readers.Scanner is
         Data               => Data,
         Is_External_Subset => True,
         others             => <>);
-      Push_And_Enter_Start_Condition (Self, DOCTYPE_INTSUBSET_10, INITIAL);
-      --  Reset scanner to INITIAL state to be able to process text
-      --  declaration at the beginning of external subset.
+
+      case Self.Version is
+         when XML_1_0 =>
+            Push_And_Enter_Start_Condition
+             (Self, DOCTYPE_INTSUBSET_10, INITIAL);
+            --  Reset scanner to INITIAL state to be able to process text
+            --  declaration at the beginning of external subset.
+
+         when XML_1_1 =>
+            Push_And_Enter_Start_Condition
+             (Self, DOCTYPE_INTSUBSET_11, INITIAL);
+            --  Reset scanner to INITIAL state to be able to process text
+            --  declaration at the beginning of external subset.
+      end case;
    end Push_External_Subset;
 
    ------------------------------
