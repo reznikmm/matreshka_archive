@@ -1729,23 +1729,14 @@ package body XML.SAX.Simple_Readers.Scanner is
                              := Self.Scanner_State.Data;
 
                         begin
---                           if Self.Scanner_State.Data.Unused
---                                /= Self.Scanner_State.YY_Base_Position
---                           then
-                              Self.Scanner_State.Data :=
-                                Matreshka.Internals.Strings.Operations.Slice
-                                 (X,
-                                  Self.Scanner_State.YY_Base_Position,
-                                  Self.Scanner_State.Data.Unused
-                                    - Self.Scanner_State.YY_Base_Position,
-                                  Self.Scanner_State.Data.Length
-                                    - Self.Scanner_State.YY_Base_Index + 1);
-
---                           else
---                              Self.Scanner_State.Data :=
---                                Matreshka.Internals.Strings.Shared_Empty'Access;
---                           end if;
-
+                           Self.Scanner_State.Data :=
+                             Matreshka.Internals.Strings.Operations.Slice
+                              (X,
+                               Self.Scanner_State.YY_Base_Position,
+                               Self.Scanner_State.Data.Unused
+                                 - Self.Scanner_State.YY_Base_Position,
+                               Self.Scanner_State.Data.Length
+                                 - Self.Scanner_State.YY_Base_Index + 1);
                            Matreshka.Internals.Strings.Dereference (X);
                            Self.Scanner_State.YY_Current_Position := 0;
                            Self.Scanner_State.YY_Current_Index := 1;
