@@ -125,6 +125,8 @@ package League.Strings is
 
    function Is_Empty (Self : Universal_String'Class) return Boolean;
 
+   procedure Clear (Self : in out Universal_String'Class);
+
    function Element
     (Self  : Universal_String'Class;
      Index : Positive)
@@ -421,6 +423,7 @@ private
    pragma Inline ("<=");
    pragma Inline (">=");
    pragma Inline (Adjust);
+   pragma Inline (Clear);
    pragma Inline (Finalize);
    pragma Inline (Is_Empty);
    pragma Inline (Length);

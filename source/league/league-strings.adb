@@ -499,6 +499,16 @@ package body League.Strings is
       end if;
    end Attach;
 
+   -----------
+   -- Clear --
+   -----------
+
+   procedure Clear (Self : in out Universal_String'Class) is
+   begin
+      Matreshka.Internals.Strings.Dereference (Self.Data);
+      Self.Data := Matreshka.Internals.Strings.Shared_Empty'Access;
+   end Clear;
+
    ---------------
    -- Collation --
    ---------------
