@@ -55,8 +55,8 @@ private with Matreshka.Internals.XML.Entity_Tables;
 private with Matreshka.Internals.XML.Namespace_Scopes;
 private with Matreshka.Internals.XML.Symbol_Tables;
 private with XML.SAX.Attributes;
-with XML.SAX.Input_Sources;
 private with XML.SAX.Default_Handlers;
+with XML.SAX.Input_Sources;
 private with XML.SAX.Locators;
 with XML.SAX.Readers;
 
