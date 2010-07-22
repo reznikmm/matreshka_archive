@@ -222,7 +222,7 @@ package body XML.SAX.Simple_Readers is
        (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
       Callbacks.Call_Set_Document_Locator (Self, Self.Locator);
       Self.Last_Chunk := False;
---      Self.Scanner_State.Last_Match := Last_Chunk;
+      Self.Scanner_State.Last_Match := False;
       Self.Scanner_State.Source := Source.all'Unchecked_Access;
       Self.Scanner_State.Data :=
         Matreshka.Internals.Strings.Shared_Empty'Access;

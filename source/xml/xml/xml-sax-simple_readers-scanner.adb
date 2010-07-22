@@ -1749,7 +1749,9 @@ package body XML.SAX.Simple_Readers.Scanner is
 
                         if Self.Scanner_State.Source /= null then
                            Self.Scanner_State.Source.Next
-                            (Self.Scanner_State.Data, Self.Last_Chunk);
+                            (Self.Scanner_State.Data,
+                             Self.Scanner_State.Last_Match);
+                           Self.Last_Chunk := Self.Scanner_State.Last_Match;
 
                            goto New_File;
                         end if;
