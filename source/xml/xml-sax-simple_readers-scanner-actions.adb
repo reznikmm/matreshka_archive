@@ -1150,6 +1150,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Self.Scanner_State :=
           (Source     => null,
            Data       => Text,
+           Entity     => Entity,
            In_Literal => True,
            others     => <>);
 
