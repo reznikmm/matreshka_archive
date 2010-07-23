@@ -41,61 +41,66 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-with Ada.Directories;
+private with Ada.Finalization;
+with Ada.Streams;
 
-with League.Strings;
-with XML.SAX.Input_Sources.Streams.Files;
-with XML.SAX.Simple_Readers;
+private with Matreshka.Internals.Text_Codecs;
 
-with XMLConf.Entity_Resolvers;
-with XMLConf.Testsuite_Handlers;
-with Put_Line;
+package XML.SAX.Input_Sources.Streams is
 
-procedure XMLConf_Test is
+   pragma Preelaborate;
 
-   use XMLConf;
+   type Stream_Access is access all Ada.Streams.Root_Stream_Type'Class;
 
-   Cwd      : constant String := Ada.Directories.Current_Directory;
-   Data     : constant String := Ada.Command_Line.Argument (1);
-   Dwd      : constant String := Ada.Directories.Containing_Directory (Data);
-   Source   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-   Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-   Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
-   Handler  : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
+   type Stream_Input_Source is limited new SAX_Input_Source with private;
 
-begin
-   XML.SAX.Simple_Readers.Put_Line := Put_Line'Access;
+   not overriding procedure Set_Stream
+    (Self   : in out Stream_Input_Source;
+     Stream : not null Stream_Access);
 
-   --  Because of limitations of current implementation in tracking relative
-   --  paths for entities the current working directory is changed to the
-   --  containing directory of the testsuite description file.
+--   not overriding function Encoding
+--    (Self : SAX_Input_Source) return League.Strings.Universal_String;
+--
+--   not overriding function Public_Id
+--    (Self : SAX_Input_Source) return League.Strings.Universal_String;
+--   --  Returns public identifier for the input source, or an empty string if
+--   --  non was supplied.
+--
+--   not overriding function System_Id
+--    (Self : SAX_Input_Source) return League.Strings.Universal_String;
+--   --  Returns system identifier for the input source, or an empty string if
+--   --  non was supplied.
+--
+--   not overriding procedure Set_Encoding
+--    (Self     : in out SAX_Input_Source;
+--     Encoding : League.Strings.Universal_String);
+--
+--   not overriding procedure Set_Public_Id
+--    (Self : in out SAX_Input_Source;
+--     Id   : League.Strings.Universal_String);
+--
+--   not overriding procedure Set_System_Id
+--    (Self : in out SAX_Input_Source;
+--     Id   : League.Strings.Universal_String);
 
-   Ada.Directories.Set_Directory (Dwd);
-   Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
-   Reader.Set_Content_Handler (Handler'Unchecked_Access);
-   Reader.Set_Error_Handler (Handler'Unchecked_Access);
-   Source.Open (Ada.Directories.Simple_Name (Data));
-   Reader.Parse (Source'Access);
-   Ada.Directories.Set_Directory (Cwd);
+   overriding procedure Next
+    (Self        : in out Stream_Input_Source;
+     Buffer      : in out
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     End_Of_Data : out Boolean);
 
-   if Handler.Results (Valid).Crash /= 0
-     or Handler.Results (Invalid).Crash /= 0
-     or Handler.Results (Not_Wellformed).Crash /= 0
-     or Handler.Results (Error).Crash /= 0
-   then
-      raise Program_Error
-        with Integer'Image
-              (Handler.Results (Valid).Crash
-                 + Handler.Results (Invalid).Crash
-                 + Handler.Results (Not_Wellformed).Crash
-                 + Handler.Results (Error).Crash)
-          & " crashes";
-   end if;
+private
 
-exception
-   when others =>
-      Ada.Directories.Set_Directory (Cwd);
+   type Stream_Input_Source is
+     new Ada.Finalization.Limited_Controlled
+       and SAX_Input_Source with
+   record
+      Buffer  : Ada.Streams.Stream_Element_Array (1 .. 1024);
+      Decoder : Matreshka.Internals.Text_Codecs.Decoder_Access;
+      State   : Matreshka.Internals.Text_Codecs.Decoder_State_Access;
+      Stream  : Stream_Access;
+   end record;
 
-      raise;
-end XMLConf_Test;
+   overriding procedure Finalize (Self : in out Stream_Input_Source);
+
+end XML.SAX.Input_Sources.Streams;

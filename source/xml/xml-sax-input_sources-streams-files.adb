@@ -4,7 +4,7 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                            Testsuite Component                           --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,61 +41,34 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-with Ada.Directories;
 
-with League.Strings;
-with XML.SAX.Input_Sources.Streams.Files;
-with XML.SAX.Simple_Readers;
+package body XML.SAX.Input_Sources.Streams.Files is
 
-with XMLConf.Entity_Resolvers;
-with XMLConf.Testsuite_Handlers;
-with Put_Line;
+   use Ada.Streams.Stream_IO;
 
-procedure XMLConf_Test is
+   --------------
+   -- Finalize --
+   --------------
 
-   use XMLConf;
+   overriding procedure Finalize (Self : in out File_Input_Source) is
+   begin
+      if Is_Open (Self.File) then
+         Close (Self.File);
+      end if;
 
-   Cwd      : constant String := Ada.Directories.Current_Directory;
-   Data     : constant String := Ada.Command_Line.Argument (1);
-   Dwd      : constant String := Ada.Directories.Containing_Directory (Data);
-   Source   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-   Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-   Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
-   Handler  : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
+      Stream_Input_Source (Self).Finalize;
+   end Finalize;
 
-begin
-   XML.SAX.Simple_Readers.Put_Line := Put_Line'Access;
+   ----------
+   -- Open --
+   ----------
 
-   --  Because of limitations of current implementation in tracking relative
-   --  paths for entities the current working directory is changed to the
-   --  containing directory of the testsuite description file.
+   not overriding procedure Open
+    (Self : in out File_Input_Source;
+     Name : String) is
+   begin
+      Open (Self.File, Ada.Streams.Stream_IO.In_File, Name);
+      Self.Set_Stream (Stream_Access (Stream (Self.File)));
+   end Open;
 
-   Ada.Directories.Set_Directory (Dwd);
-   Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
-   Reader.Set_Content_Handler (Handler'Unchecked_Access);
-   Reader.Set_Error_Handler (Handler'Unchecked_Access);
-   Source.Open (Ada.Directories.Simple_Name (Data));
-   Reader.Parse (Source'Access);
-   Ada.Directories.Set_Directory (Cwd);
-
-   if Handler.Results (Valid).Crash /= 0
-     or Handler.Results (Invalid).Crash /= 0
-     or Handler.Results (Not_Wellformed).Crash /= 0
-     or Handler.Results (Error).Crash /= 0
-   then
-      raise Program_Error
-        with Integer'Image
-              (Handler.Results (Valid).Crash
-                 + Handler.Results (Invalid).Crash
-                 + Handler.Results (Not_Wellformed).Crash
-                 + Handler.Results (Error).Crash)
-          & " crashes";
-   end if;
-
-exception
-   when others =>
-      Ada.Directories.Set_Directory (Cwd);
-
-      raise;
-end XMLConf_Test;
+end XML.SAX.Input_Sources.Streams.Files;

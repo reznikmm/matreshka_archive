@@ -41,61 +41,108 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-with Ada.Directories;
+with Ada.Unchecked_Deallocation;
 
-with League.Strings;
-with XML.SAX.Input_Sources.Streams.Files;
-with XML.SAX.Simple_Readers;
+with Matreshka.Internals.Text_Codecs.UTF8;
 
-with XMLConf.Entity_Resolvers;
-with XMLConf.Testsuite_Handlers;
-with Put_Line;
+package body XML.SAX.Input_Sources.Streams is
 
-procedure XMLConf_Test is
+--   not overriding function Encoding
+--    (Self : SAX_Input_Source) return League.Strings.Universal_String;
 
-   use XMLConf;
+   --------------
+   -- Finalize --
+   --------------
 
-   Cwd      : constant String := Ada.Directories.Current_Directory;
-   Data     : constant String := Ada.Command_Line.Argument (1);
-   Dwd      : constant String := Ada.Directories.Containing_Directory (Data);
-   Source   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-   Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-   Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
-   Handler  : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
+   overriding procedure Finalize (Self : in out Stream_Input_Source) is
 
-begin
-   XML.SAX.Simple_Readers.Put_Line := Put_Line'Access;
+      procedure Free is
+        new Ada.Unchecked_Deallocation
+             (Matreshka.Internals.Text_Codecs.Abstract_Decoder'Class,
+              Matreshka.Internals.Text_Codecs.Decoder_Access);
 
-   --  Because of limitations of current implementation in tracking relative
-   --  paths for entities the current working directory is changed to the
-   --  containing directory of the testsuite description file.
+      procedure Free is
+        new Ada.Unchecked_Deallocation
+             (Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class,
+              Matreshka.Internals.Text_Codecs.Decoder_State_Access);
 
-   Ada.Directories.Set_Directory (Dwd);
-   Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
-   Reader.Set_Content_Handler (Handler'Unchecked_Access);
-   Reader.Set_Error_Handler (Handler'Unchecked_Access);
-   Source.Open (Ada.Directories.Simple_Name (Data));
-   Reader.Parse (Source'Access);
-   Ada.Directories.Set_Directory (Cwd);
+   begin
+      Free (Self.Decoder);
+      Free (Self.State);
+   end Finalize;
 
-   if Handler.Results (Valid).Crash /= 0
-     or Handler.Results (Invalid).Crash /= 0
-     or Handler.Results (Not_Wellformed).Crash /= 0
-     or Handler.Results (Error).Crash /= 0
-   then
-      raise Program_Error
-        with Integer'Image
-              (Handler.Results (Valid).Crash
-                 + Handler.Results (Invalid).Crash
-                 + Handler.Results (Not_Wellformed).Crash
-                 + Handler.Results (Error).Crash)
-          & " crashes";
-   end if;
+--   not overriding function Public_Id
+--    (Self : SAX_Input_Source) return League.Strings.Universal_String;
+--
+--   not overriding function System_Id
+--    (Self : SAX_Input_Source) return League.Strings.Universal_String;
 
-exception
-   when others =>
-      Ada.Directories.Set_Directory (Cwd);
+   ----------
+   -- Next --
+   ----------
 
-      raise;
-end XMLConf_Test;
+   overriding procedure Next
+    (Self        : in out Stream_Input_Source;
+     Buffer      : in out
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     End_Of_Data : out Boolean)
+   is
+      use type Ada.Streams.Stream_Element_Offset;
+
+      Last : Ada.Streams.Stream_Element_Offset;
+
+   begin
+      Self.Stream.Read (Self.Buffer, Last);
+
+      if Last >= Self.Buffer'First then
+         Self.Decoder.Decode_Append
+          (Self.Buffer (Self.Buffer'First .. Last),
+           Self.State.all,
+           Buffer);
+         End_Of_Data := False;
+
+      else
+         End_Of_Data := True;
+      end if;
+   end Next;
+
+--   not overriding procedure Set_Encoding
+--    (Self     : in out SAX_Input_Source;
+--     Encoding : League.Strings.Universal_String);
+--
+--   not overriding procedure Set_Public_Id
+--    (Self : in out SAX_Input_Source;
+--     Id   : League.Strings.Universal_String);
+--
+--   ----------------
+--   -- Set_Stream --
+--   ----------------
+--
+--   procedure Set_Stream
+--    (Self   : in out SAX_Input_Source;
+--     Stream : not null access Ada.Streams.Root_Stream_Type'Class) is
+--   begin
+--      Self.Stream := Stream.all'Unchecked_Access;
+--   end Set_Stream;
+
+   ----------------
+   -- Set_Stream --
+   ----------------
+
+   not overriding procedure Set_Stream
+    (Self   : in out Stream_Input_Source;
+     Stream : not null Stream_Access) is
+   begin
+      Self.Stream := Stream;
+      Self.Decoder := new Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
+      Self.State :=
+        new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
+             (Self.Decoder.Create_State
+               (Matreshka.Internals.Text_Codecs.XML_1_0));
+   end Set_Stream;
+
+--   not overriding procedure Set_System_Id
+--    (Self : in out SAX_Input_Source;
+--     Id   : League.Strings.Universal_String);
+
+end XML.SAX.Input_Sources.Streams;
