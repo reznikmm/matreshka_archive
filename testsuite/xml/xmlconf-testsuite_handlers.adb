@@ -47,7 +47,7 @@ with Ada.Exceptions;
 
 with Put_Line;
 with Read_File;
-with XML.SAX.Input_Sources;
+with XML.SAX.Input_Sources.Strings;
 with XML.SAX.Simple_Readers;
 
 package body XMLConf.Testsuite_Handlers is
@@ -107,7 +107,7 @@ package body XMLConf.Testsuite_Handlers is
            := Ada.Directories.Containing_Directory
                (Ada.Characters.Conversions.To_String
                  (League.Strings.To_Wide_Wide_String (Base & URI)));
-         Source : aliased XML.SAX.Input_Sources.SAX_Input_Source;
+         Source : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
          Reader : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
 
       begin

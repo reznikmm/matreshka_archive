@@ -41,69 +41,29 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
-with Matreshka.Internals.Strings.Operations;
+with League.Strings;
+with Matreshka.Internals.Strings;
 
-package body XML.SAX.Input_Sources is
+package XML.SAX.Input_Sources.Strings is
 
---   not overriding function Encoding
---    (Self : SAX_Input_Source) return League.Strings.Universal_String;
---
---   not overriding function Public_Id
---    (Self : SAX_Input_Source) return League.Strings.Universal_String;
---
---   not overriding function System_Id
---    (Self : SAX_Input_Source) return League.Strings.Universal_String;
+   pragma Preelaborate;
 
-   ----------
-   -- Next --
-   ----------
-
-   not overriding procedure Next
-    (Self        : in out SAX_Input_Source;
-     Buffer      : in out
-       not null Matreshka.Internals.Strings.Shared_String_Access;
-     End_Of_Data : out Boolean) is
-   begin
-      Matreshka.Internals.Strings.Operations.Append
-       (Buffer,
-        League.Strings.Internals.Get_Shared (Self.String));
-      Self.String.Clear;
-      End_Of_Data := True;
-   end Next;
-
---   not overriding procedure Set_Encoding
---    (Self     : in out SAX_Input_Source;
---     Encoding : League.Strings.Universal_String);
---
---   not overriding procedure Set_Public_Id
---    (Self : in out SAX_Input_Source;
---     Id   : League.Strings.Universal_String);
---
---   ----------------
---   -- Set_Stream --
---   ----------------
---
---   procedure Set_Stream
---    (Self   : in out SAX_Input_Source;
---     Stream : not null access Ada.Streams.Root_Stream_Type'Class) is
---   begin
---      Self.Stream := Stream.all'Unchecked_Access;
---   end Set_Stream;
-
-   ----------------
-   -- Set_String --
-   ----------------
+   type String_Input_Source is limited new SAX_Input_Source with private;
 
    not overriding procedure Set_String
-    (Self   : in out SAX_Input_Source;
-     String : League.Strings.Universal_String) is
-   begin
-      Self.String := String;
-   end Set_String;
+    (Self   : in out String_Input_Source;
+     String : League.Strings.Universal_String);
 
---   not overriding procedure Set_System_Id
---    (Self : in out SAX_Input_Source;
---     Id   : League.Strings.Universal_String);
+   overriding procedure Next
+    (Self        : in out String_Input_Source;
+     Buffer      : in out
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     End_Of_Data : out Boolean);
 
-end XML.SAX.Input_Sources;
+private
+
+   type String_Input_Source is limited new SAX_Input_Source with record
+      String : League.Strings.Universal_String;
+   end record;
+
+end XML.SAX.Input_Sources.Strings;

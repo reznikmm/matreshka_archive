@@ -66,6 +66,8 @@ package Matreshka.Internals.Text_Codecs is
    type Abstract_Decoder_State is abstract tagged null record;
    --  Abstract root tagged type for decoder's states.
 
+   type Decoder_State_Access is access all Abstract_Decoder_State'Class;
+
    not overriding function Is_Error
     (Self : Abstract_Decoder_State) return Boolean is abstract;
    --  Returns True when error is occured during decoding.

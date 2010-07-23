@@ -44,7 +44,7 @@
 with Ada.Command_Line;
 
 with League.Strings;
-with XML.SAX.Input_Sources;
+with XML.SAX.Input_Sources.Strings;
 with XML.SAX.Simple_Readers;
 
 with Events_Printers;
@@ -52,7 +52,7 @@ with Read_File;
 with Put_Line;
 
 procedure Sax_Events_Printer is
-   Source  : aliased XML.SAX.Input_Sources.SAX_Input_Source;
+   Source  : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
    Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Handler : aliased Events_Printers.Events_Printer;
 

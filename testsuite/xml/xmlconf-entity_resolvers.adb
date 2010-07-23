@@ -44,6 +44,7 @@
 with Ada.Characters.Conversions;
 
 with Read_File;
+with XML.SAX.Input_Sources.Strings;
 
 package body XMLConf.Entity_Resolvers is
 
@@ -67,10 +68,13 @@ package body XMLConf.Entity_Resolvers is
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
-     Success   : in out Boolean) is
+     Success   : in out Boolean)
+   is
+      use XML.SAX.Input_Sources.Strings;
+
    begin
-      Source := new XML.SAX.Input_Sources.SAX_Input_Source;
-      Source.Set_String
+      Source := new String_Input_Source;
+      String_Input_Source'Class (Source.all).Set_String
        (Read_File
          (Ada.Characters.Conversions.To_String
            (System_Id.To_Wide_Wide_String)));

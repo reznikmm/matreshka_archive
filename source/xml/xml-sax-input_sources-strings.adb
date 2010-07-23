@@ -41,62 +41,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-with Ada.Directories;
+with League.Strings.Internals;
+with Matreshka.Internals.Strings.Operations;
 
-with League.Strings;
-with XML.SAX.Input_Sources.Strings;
-with XML.SAX.Simple_Readers;
+package body XML.SAX.Input_Sources.Strings is
 
-with XMLConf.Entity_Resolvers;
-with XMLConf.Testsuite_Handlers;
-with Put_Line;
-with Read_File;
+   ----------
+   -- Next --
+   ----------
 
-procedure XMLConf_Test is
+   overriding procedure Next
+    (Self        : in out String_Input_Source;
+     Buffer      : in out
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     End_Of_Data : out Boolean) is
+   begin
+      Matreshka.Internals.Strings.Operations.Append
+       (Buffer,
+        League.Strings.Internals.Get_Shared (Self.String));
+      Self.String.Clear;
+      End_Of_Data := True;
+   end Next;
 
-   use XMLConf;
+   ----------------
+   -- Set_String --
+   ----------------
 
-   Cwd      : constant String := Ada.Directories.Current_Directory;
-   Data     : constant String := Ada.Command_Line.Argument (1);
-   Dwd      : constant String := Ada.Directories.Containing_Directory (Data);
-   Source   : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
-   Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-   Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
-   Handler  : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
+   not overriding procedure Set_String
+    (Self   : in out String_Input_Source;
+     String : League.Strings.Universal_String) is
+   begin
+      Self.String := String;
+   end Set_String;
 
-begin
-   XML.SAX.Simple_Readers.Put_Line := Put_Line'Access;
-
-   --  Because of limitations of current implementation in tracking relative
-   --  paths for entities the current working directory is changed to the
-   --  containing directory of the testsuite description file.
-
-   Ada.Directories.Set_Directory (Dwd);
-   Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
-   Reader.Set_Content_Handler (Handler'Unchecked_Access);
-   Reader.Set_Error_Handler (Handler'Unchecked_Access);
-   Source.Set_String (Read_File (Ada.Directories.Simple_Name (Data)));
-   Reader.Parse (Source'Access);
-   Ada.Directories.Set_Directory (Cwd);
-
-   if Handler.Results (Valid).Crash /= 0
-     or Handler.Results (Invalid).Crash /= 0
-     or Handler.Results (Not_Wellformed).Crash /= 0
-     or Handler.Results (Error).Crash /= 0
-   then
-      raise Program_Error
-        with Integer'Image
-              (Handler.Results (Valid).Crash
-                 + Handler.Results (Invalid).Crash
-                 + Handler.Results (Not_Wellformed).Crash
-                 + Handler.Results (Error).Crash)
-          & " crashes";
-   end if;
-
-exception
-   when others =>
-      Ada.Directories.Set_Directory (Cwd);
-
-      raise;
-end XMLConf_Test;
+end XML.SAX.Input_Sources.Strings;

@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  with Ada.Streams;
-
 with League.Strings;
 with Matreshka.Internals.Strings;
 
@@ -50,14 +48,14 @@ package XML.SAX.Input_Sources is
 
    pragma Preelaborate;
 
-   type SAX_Input_Source is tagged limited private;
+   type SAX_Input_Source is limited interface;
 
    type SAX_Input_Source_Access is access all SAX_Input_Source'Class;
 
-   not overriding procedure Set_String
-    (Self   : in out SAX_Input_Source;
-     String : League.Strings.Universal_String);
-
+--   not overriding procedure Set_String
+--    (Self   : in out SAX_Input_Source;
+--     String : League.Strings.Universal_String) is abstract;
+--
 --   procedure Set_Stream
 --    (Self   : in out SAX_Input_Source;
 --     Stream : not null access Ada.Streams.Root_Stream_Type'Class);
@@ -91,15 +89,6 @@ package XML.SAX.Input_Sources is
     (Self        : in out SAX_Input_Source;
      Buffer      : in out
        not null Matreshka.Internals.Strings.Shared_String_Access;
-     End_Of_Data : out Boolean);
-
-private
-
---   type Stream_Access is access all Ada.Streams.Root_Stream_Type'Class;
-
-   type SAX_Input_Source is tagged limited record
---      Stream : Stream_Access;
-      String : League.Strings.Universal_String;
-   end record;
+     End_Of_Data : out Boolean) is abstract;
 
 end XML.SAX.Input_Sources;

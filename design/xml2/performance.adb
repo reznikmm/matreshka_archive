@@ -2,7 +2,7 @@ with Ada.Calendar;
 with Ada.Command_Line;
 
 with League.Strings;
-with XML.SAX.Input_Sources;
+with XML.SAX.Input_Sources.Strings;
 with XML.SAX.Simple_Readers;
 
 with Events_Printers;
@@ -13,7 +13,7 @@ procedure Performance is
    use type League.Strings.Universal_String;
    use type Ada.Calendar.Time;
 
-   Source      : aliased XML.SAX.Input_Sources.SAX_Input_Source;
+   Source      : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
    Reader      : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Handler     : aliased Events_Printers.Events_Printer;
    Load_Start  : Ada.Calendar.Time;
