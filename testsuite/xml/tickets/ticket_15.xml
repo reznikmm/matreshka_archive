@@ -1,0 +1,5 @@
+<!DOCTYPE test>
+<!-- XML file input source passed complete buffer but not the readed slice to
+     the decoder, thus results of the reading is unpredictable because of
+     data after root element or mailformed data. -->
+<test/>
