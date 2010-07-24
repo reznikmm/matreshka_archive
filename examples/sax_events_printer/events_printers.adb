@@ -44,8 +44,7 @@
 with Ada.Characters.Conversions;
 
 with Put_Line;
-with Read_File;
-with XML.SAX.Input_Sources.Strings;
+with XML.SAX.Input_Sources.Streams.Files;
 
 package body Events_Printers is
 
@@ -234,14 +233,13 @@ package body Events_Printers is
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
      Success   : in out Boolean)
    is
-      use XML.SAX.Input_Sources.Strings;
+      use XML.SAX.Input_Sources.Streams.Files;
 
    begin
-      Source := new String_Input_Source;
-      String_Input_Source'Class (Source.all).Set_String
-       (Read_File
-         (Ada.Characters.Conversions.To_String
-           (System_Id.To_Wide_Wide_String)));
+      Source := new File_Input_Source;
+      File_Input_Source'Class (Source.all).Open
+       (Ada.Characters.Conversions.To_String
+         (System_Id.To_Wide_Wide_String));
    end Resolve_Entity;
 
    --------------------------
