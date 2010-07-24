@@ -1681,15 +1681,21 @@ package body XML.SAX.Simple_Readers.Scanner is
                              := Self.Scanner_State.Data;
 
                         begin
-                           Self.Scanner_State.Data :=
-                             Matreshka.Internals.Strings.Operations.Slice
-                              (X,
-                               Self.Scanner_State.YY_Base_Position,
-                               Self.Scanner_State.Data.Unused
-                                 - Self.Scanner_State.YY_Base_Position,
-                               Self.Scanner_State.Data.Length
-                                 - Self.Scanner_State.YY_Base_Index + 1);
-                           Matreshka.Internals.Strings.Dereference (X);
+                           if Self.Scanner_State.YY_Base_Position /= 0 then
+                              --  Construct slice only when we actually need
+                              --  to move data.
+
+                              Self.Scanner_State.Data :=
+                                Matreshka.Internals.Strings.Operations.Slice
+                                 (X,
+                                  Self.Scanner_State.YY_Base_Position,
+                                  Self.Scanner_State.Data.Unused
+                                    - Self.Scanner_State.YY_Base_Position,
+                                  Self.Scanner_State.Data.Length
+                                    - Self.Scanner_State.YY_Base_Index + 1);
+                              Matreshka.Internals.Strings.Dereference (X);
+                           end if;
+
                            Self.Scanner_State.YY_Current_Position := 0;
                            Self.Scanner_State.YY_Current_Index := 1;
                            Self.YY_Current_Line := Self.YY_Base_Line;
