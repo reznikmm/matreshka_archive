@@ -91,6 +91,8 @@ package body XMLConf.Testsuite_Handlers is
      := League.Strings.To_Universal_String ("NAMESPACE");
    No_Name             : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("no");
+   Yes_Name            : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("yes");
 
    procedure Execute_Test
     (Self       : in out Testsuite_Handler;
@@ -338,6 +340,9 @@ package body XMLConf.Testsuite_Handlers is
          if Index /= 0 then
             if Attributes.Value (Index) = No_Name then
                Namespaces := False;
+
+            elsif Attributes.Value (Index) = Yes_Name then
+               Namespaces := True;
 
             else
                raise Program_Error;
