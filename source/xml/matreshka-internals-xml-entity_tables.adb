@@ -70,6 +70,18 @@ package body Matreshka.Internals.XML.Entity_Tables is
       Free (Self.Data);
    end Finalize;
 
+   --------------------
+   -- First_Position --
+   --------------------
+
+   function First_Position
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
+       return Matreshka.Internals.Utf16.Utf16_String_Index is
+   begin
+      return Self.Data (Entity).First_Position;
+   end First_Position;
+
    ----------------
    -- Initialize --
    ----------------
@@ -182,7 +194,8 @@ package body Matreshka.Internals.XML.Entity_Tables is
         Public_Id        => P,
         System_Id        => S,
         Is_Resolved      => False,
-        Replacement_Text => Matreshka.Internals.Strings.Shared_Empty'Access);
+        Replacement_Text => Matreshka.Internals.Strings.Shared_Empty'Access,
+        First_Position   => 0);
    end New_External_Parameter_Entity;
 
    ----------------------------------------
@@ -212,7 +225,8 @@ package body Matreshka.Internals.XML.Entity_Tables is
         Public_Id        => P,
         System_Id        => S,
         Is_Resolved      => False,
-        Replacement_Text => Matreshka.Internals.Strings.Shared_Empty'Access);
+        Replacement_Text => Matreshka.Internals.Strings.Shared_Empty'Access,
+        First_Position   => 0);
    end New_External_Parsed_General_Entity;
 
    ------------------------------------------
@@ -232,7 +246,8 @@ package body Matreshka.Internals.XML.Entity_Tables is
         Public_Id        => Matreshka.Internals.Strings.Shared_Empty'Access,
         System_Id        => Matreshka.Internals.Strings.Shared_Empty'Access,
         Is_Resolved      => False,
-        Replacement_Text => Matreshka.Internals.Strings.Shared_Empty'Access);
+        Replacement_Text => Matreshka.Internals.Strings.Shared_Empty'Access,
+        First_Position   => 0);
    end New_External_Unparsed_General_Entity;
 
    ---------------------------------
@@ -253,7 +268,8 @@ package body Matreshka.Internals.XML.Entity_Tables is
         Public_Id        => Matreshka.Internals.Strings.Shared_Empty'Access,
         System_Id        => Matreshka.Internals.Strings.Shared_Empty'Access,
         Is_Resolved      => True,
-        Replacement_Text => Replacement_Text);
+        Replacement_Text => Replacement_Text,
+        First_Position   => 0);
    end New_Internal_General_Entity;
 
    -----------------------------------
@@ -274,7 +290,8 @@ package body Matreshka.Internals.XML.Entity_Tables is
         Public_Id        => Matreshka.Internals.Strings.Shared_Empty'Access,
         System_Id        => Matreshka.Internals.Strings.Shared_Empty'Access,
         Is_Resolved      => True,
-        Replacement_Text => Replacement_Text);
+        Replacement_Text => Replacement_Text,
+        First_Position   => 0);
    end New_Internal_Parameter_Entity;
 
    ---------------
@@ -300,6 +317,18 @@ package body Matreshka.Internals.XML.Entity_Tables is
    begin
       return Self.Data (Entity).Replacement_Text;
    end Replacement_Text;
+
+   ------------------------
+   -- Set_First_Position --
+   ------------------------
+
+   procedure Set_First_Position
+    (Self     : in out Entity_Table;
+     Entity   : Entity_Identifier;
+     Position : Matreshka.Internals.Utf16.Utf16_String_Index) is
+   begin
+      Self.Data (Entity).First_Position := Position;
+   end Set_First_Position;
 
    ---------------------
    -- Set_Is_Resolved --

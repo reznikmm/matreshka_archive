@@ -158,7 +158,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 "<?xml" {
    --  Open of XML declaration or text declaration, rules [23], [77].
 
-   return Actions.On_Open_Of_XML_Processing_Instruction (Self);
+   return Actions.On_Open_Of_XML_Or_Text_Declaration (Self);
 }
 
 .|\n {
@@ -315,9 +315,15 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_String_Segment;
 }
 
-<XML_DECL,PI,PI_DATA_10,PI_DATA_11>"?>" {
-   --  Close of XML declaration (rule [23]), text declaration (rule [77]) or
-   --  processing instruction (rule [16]).
+<XML_DECL>"?>" {
+   --  Close of XML declaration (production [23]) or text declaration
+   --  (production [77]).
+
+   return Actions.On_Close_Of_XML_Or_Text_Declaration (Self);
+}
+
+<PI,PI_DATA_10,PI_DATA_11>"?>" {
+   --  Close of processing instruction (rule [16]).
 
    return Actions.On_Close_Of_Processing_Instruction (Self, True);
 }
@@ -1074,7 +1080,7 @@ with Matreshka.Internals.Strings;
 
       function On_Close_Of_Empty_Element_Tag (Self : access Integer) return Token;
 
-      function On_Open_Of_XML_Processing_Instruction
+      function On_Open_Of_XML_Or_Text_Declaration
        (Self : access Integer) return Token;
 
       function On_Open_Of_Processing_Instruction
@@ -1083,6 +1089,9 @@ with Matreshka.Internals.Strings;
       function On_Close_Of_Processing_Instruction
        (Self     : access Integer;
         Is_Empty : Boolean) return Token;
+
+      function On_Close_Of_XML_Or_Text_Declaration
+       (Self : access Integer) return Token;
 
       function On_Open_Of_Document_Type_Declaration
        (Self : access Integer) return Token;

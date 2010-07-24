@@ -181,6 +181,35 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       return Token_Empty_Close;
    end On_Close_Of_Empty_Element_Tag;
 
+   -----------------------------------------
+   -- On_Close_Of_XML_Or_Text_Declaration --
+   -----------------------------------------
+
+   function On_Close_Of_XML_Or_Text_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      Set_String_Internal
+       (Item          => Self.YYLVal,
+        String        => Matreshka.Internals.Strings.Shared_Empty'Access,
+        Is_Whitespace => False,
+        Is_CData      => False);
+
+      if Self.Scanner_State.Entity /= No_Entity then
+         --  End of text declaration of the external entity is reached,
+         --  save current position to start from it next time entity is
+         --  referenced.
+
+         Set_First_Position
+          (Self.Entities,
+           Self.Scanner_State.Entity,
+           Self.Scanner_State.YY_Current_Position);
+      end if;
+
+      Pop_Start_Condition (Self);
+
+      return Token_PI_Close;
+   end On_Close_Of_XML_Or_Text_Declaration;
+
    ----------------------------------------
    -- On_Close_Of_Processing_Instruction --
    ----------------------------------------
@@ -597,15 +626,31 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
         Entity        => Entity,
         others        => <>);
 
-      case Self.Version is
-         when XML_1_0 =>
-            Push_And_Enter_Start_Condition
-             (Self, Tables.DOCUMENT_10, Tables.INITIAL);
+      if Last_Match then
+         Self.Scanner_State.YY_Current_Position :=
+           First_Position (Self.Entities, Entity);
+         Self.Scanner_State.YY_Current_Index :=
+           Integer (First_Position (Self.Entities, Entity)) + 1;
 
-         when XML_1_1 =>
-            Push_And_Enter_Start_Condition
-             (Self, Tables.DOCUMENT_11, Tables.INITIAL);
-      end case;
+         case Self.Version is
+            when XML_1_0 =>
+               Enter_Start_Condition (Self, Tables.DOCUMENT_10);
+
+            when XML_1_1 =>
+               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+         end case;
+
+      else
+         case Self.Version is
+            when XML_1_0 =>
+               Push_And_Enter_Start_Condition
+                (Self, Tables.DOCUMENT_10, Tables.INITIAL);
+
+            when XML_1_1 =>
+               Push_And_Enter_Start_Condition
+                (Self, Tables.DOCUMENT_11, Tables.INITIAL);
+         end case;
+      end if;
 
       return True;
    end On_General_Entity_Reference_In_Document_Content;
@@ -1059,11 +1104,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
    end On_Open_Of_Start_Tag;
 
-   -------------------------------------------
-   -- On_Open_Of_XML_Processing_Instruction --
-   -------------------------------------------
+   ----------------------------------------
+   -- On_Open_Of_XML_Or_Text_Declaration --
+   ----------------------------------------
 
-   function On_Open_Of_XML_Processing_Instruction
+   function On_Open_Of_XML_Or_Text_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token is
    begin
       Push_And_Enter_Start_Condition
@@ -1071,7 +1116,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Reset_Whitespace_Matched (Self);
 
       return Token_XML_Decl_Open;
-   end On_Open_Of_XML_Processing_Instruction;
+   end On_Open_Of_XML_Or_Text_Declaration;
 
    ---------------------------------------------------
    -- On_Parameter_Entity_Reference_In_Entity_Value --
@@ -1357,7 +1402,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
               League.Strings.To_Universal_String
                ("[NSXML1.1] first character of local name is invalid"));
             Self.Continue := False;
-      end case; 
+      end case;
    end Resolve_Symbol;
 
 end XML.SAX.Simple_Readers.Scanner.Actions;

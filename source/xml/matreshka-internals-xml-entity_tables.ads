@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 with Matreshka.Internals.Strings;
+with Matreshka.Internals.Utf16;
 
 package Matreshka.Internals.XML.Entity_Tables is
 
@@ -128,6 +129,20 @@ package Matreshka.Internals.XML.Entity_Tables is
        not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Sets replacement text for the entity.
 
+   function First_Position
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
+       return Matreshka.Internals.Utf16.Utf16_String_Index;
+   --  Returns position of the first significant character after the text
+   --  declaration if any; otherwise returns zero.
+
+   procedure Set_First_Position
+    (Self     : in out Entity_Table;
+     Entity   : Entity_Identifier;
+     Position : Matreshka.Internals.Utf16.Utf16_String_Index);
+   --  Sets position of the first significant character after the text
+   --  declaration if any.
+
    procedure Initialize (Self : in out Entity_Table);
    --  Initializes entity table.
 
@@ -150,6 +165,7 @@ private
       System_Id        : Matreshka.Internals.Strings.Shared_String_Access;
       Is_Resolved      : Boolean;
       Replacement_Text : Matreshka.Internals.Strings.Shared_String_Access;
+      First_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
    end record;
 
    type Entity_Array is array (Entity_Identifier range <>) of Entity_Record;

@@ -62,13 +62,16 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    function On_Close_Of_Processing_Instruction
     (Self     : not null access SAX_Simple_Reader'Class;
      Is_Empty : Boolean) return Token;
-   --  Handles close of processing instruction, XML declaration and text
-   --  declaration. When Is_Empty is True it means that processing instruction
-   --  doesn't have data.
+   --  Handles close of processing instructio. When Is_Empty is True it means
+   --  that processing instruction doesn't have data.
 
    function On_Close_Of_Tag
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles close of element tag and of document type declaration,
+
+   function On_Close_Of_XML_Or_Text_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles close of XML declaration and text declaration.
 
    function On_General_Entity_Reference_In_Attribute_Value
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
@@ -151,7 +154,7 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles open of start tag or empty element tag.
 
-   function On_Open_Of_XML_Processing_Instruction
+   function On_Open_Of_XML_Or_Text_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles open of XML declaration in document or text declaration in
    --  external entity or external subset.
