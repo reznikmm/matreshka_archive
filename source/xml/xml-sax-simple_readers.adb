@@ -423,4 +423,15 @@ package body XML.SAX.Simple_Readers is
       Item.Symbol        := Matreshka.Internals.XML.No_Symbol;
    end Clear;
 
+   ---------------------------
+   -- Set_Enable_Namespaces --
+   ---------------------------
+
+   procedure Set_Enable_Namespaces
+    (Self    : not null access SAX_Simple_Reader;
+     Enabled : Boolean) is
+   begin
+      Self.Namespaces.Enabled := Enabled;
+   end Set_Enable_Namespaces;
+
 end XML.SAX.Simple_Readers;

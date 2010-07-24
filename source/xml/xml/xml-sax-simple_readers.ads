@@ -76,6 +76,11 @@ package XML.SAX.Simple_Readers is
     (Self   : not null access SAX_Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class);
 
+   procedure Set_Enable_Namespaces
+    (Self    : not null access SAX_Simple_Reader;
+     Enabled : Boolean);
+   --  Enables/disables namespace processing.
+
    Put_Line : access procedure (Item : League.Strings.Universal_String);
 
    --  XXX GNAT GPL 2009: These subprograms can be declared in the private
