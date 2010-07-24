@@ -80,4 +80,22 @@ begin
          raise Program_Error;
       end if;
    end;
+
+   --  Initial implementation of slice replace operation uses incorrect length
+   --  to allocate new shared string.
+
+   declare
+      S : Universal_String := To_Universal_String ("A0Z");
+      R : Universal_String
+        := To_Universal_String ("abcdefghigklmnopqrstuvwxyz");
+      E : Universal_String
+        := To_Universal_String ("Aabcdefghigklmnopqrstuvwxyz");
+
+   begin
+      S.Replace (2, 2, R);
+
+      if S /= E then
+         raise Program_Error;
+      end if;
+   end;
 end String_Operations;
