@@ -74,12 +74,12 @@ package Matreshka.Internals.Strings.Operations is
    --  Returns slice from First to First + Size - 1. Length specify expected
    --  length of the result.
 
---   procedure Replace
---    (Self   : in out Shared_String_Access;
---     Low    : Positive;
---     High   : Natural;
---     Length : Natural;
---     By     : not null Shared_String_Access);
+   procedure Replace
+    (String : in out Shared_String_Access;
+     First  : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length : Natural;
+     By     : not null Shared_String_Access);
 
 --   function Copy (Source : not null String_Private_Data_Access)
 --     return not null String_Private_Data_Access;

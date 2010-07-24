@@ -204,17 +204,17 @@ package League.Strings is
 --     Index : Positive;
 --     By    : Wide_Wide_Characters);
 
---   procedure Replace
---    (Self : in out Universal_String'Class;
---     Low  : Positive;
---     High : Natural;
---     By   : Universal_String'Class);
+   procedure Replace
+    (Self : in out Universal_String'Class;
+     Low  : Positive;
+     High : Natural;
+     By   : Universal_String'Class);
 
---   procedure Replace
---    (Self : in out Universal_String'Class;
---     Low  : Positive;
---     High : Natural;
---     By   : Wide_Wide_String);
+   procedure Replace
+    (Self : in out Universal_String'Class;
+     Low  : Positive;
+     High : Natural;
+     By   : Wide_Wide_String);
 
    -----------------
    -- Conversions --

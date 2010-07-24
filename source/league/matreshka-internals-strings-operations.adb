@@ -152,8 +152,8 @@ package body Matreshka.Internals.Strings.Operations is
      Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
      Length : Natural)
    is
-      pragma Assert (First < Source.Unused
-                       and then First + Size <= Source.Unused);
+      pragma Assert (First < Source.Unused);
+      pragma Assert (First + Size <= Source.Unused);
       pragma Assert (Utf16_String_Index (Length) in (Size + 1) / 2 .. Size);
 
    begin
@@ -180,69 +180,60 @@ package body Matreshka.Internals.Strings.Operations is
       end if;
    end Copy_Slice;
 
---   -------------
---   -- Replace --
---   -------------
---
---   procedure Replace
---    (Self   : in out Shared_String_Access;
---     Low    : Positive;
---     High   : Natural;
---     Length : Natural;
---     By     : not null Shared_String_Access)
---   is
---      pragma Assert (Low <= Self.Last + 1);
---      pragma Assert (High < Low or else High <= Self.Last);
---      pragma Assert (Length in (High - Low + 2) / 2 .. High - Low + 1);
---
---      Source : Shared_String_Access := Self;
---      Size   : constant Natural
---        := Source.Last - Natural'Max (High - Low + 1, 0) + By.Last;
---
---   begin
---      if Size = 0 then
---         if Self /= Shared_Empty'Access then
---            Dereference (Self);
---            Self := Shared_Empty'Access;
---         end if;
---
---      elsif By.Last = Size then
---         Dereference (Self);
---         Self := By;
---         Reference (Self);
---
---      else
---         if Size + 1 > Self.Size
---           or else not Matreshka.Internals.Atomics.Counters.Is_One
---                        (Self.Counter'Access)
---         then
---            Self := Allocate (Size);
---         end if;
---
---         if High < Low then
---            Self.Value (Low + By.Last .. Size) :=
---              Source.Value (Low .. Source.Last);
---            Self.Value (Low .. Low + By.Last - 1) := By.Value (1 .. By.Last);
---
---         else
---            Self.Value (Low + By.Last .. Size) :=
---              Source.Value (High + 1 .. Source.Last);
---            Self.Value (Low .. Low + By.Last - 1) := By.Value (1 .. By.Last);
---         end if;
---
---         if Self /= Source then
---            Self.Value (1 .. Low - 1) := Source.Value (1 .. Low - 1);
---         end if;
---
---         Self.Last := Size;
---         Self.Length := Source.Length - Length + By.Length;
---         Fill_Null_Terminator (Self);
---
---         if Self /= Source then
---            Dereference (Source);
---         end if;
---      end if;
---   end Replace;
+   -------------
+   -- Replace --
+   -------------
+
+   procedure Replace
+    (String : in out Shared_String_Access;
+     First  : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length : Natural;
+     By     : not null Shared_String_Access)
+   is
+      pragma Assert (First < String.Unused);
+      pragma Assert (First + Size <= String.Unused);
+      pragma Assert (Utf16_String_Index (Length) in (Size + 1) / 2 .. Size);
+
+      Source      : Shared_String_Access := String;
+      Destination : Shared_String_Access renames String;
+      New_Length  : constant Natural := Source.Length - Length + By.Length;
+      New_Size    : constant Matreshka.Internals.Utf16.Utf16_String_Index
+        := Source.Unused - Size + By.Unused;
+
+   begin
+      if New_Size = 0 then
+         if Destination /= Shared_Empty'Access then
+            Dereference (Destination);
+            Destination := Shared_Empty'Access;
+         end if;
+
+      elsif By.Unused = New_Size then
+         Dereference (Source);
+         Destination := By;
+         Reference (Destination);
+
+      else
+         if not Can_Be_Reused (Source, New_Size) then
+            Destination := Allocate (Size);
+         end if;
+
+         Destination.Value (First + By.Unused .. New_Size - 1) :=
+           Source.Value (First + Size .. Source.Unused - 1);
+         Destination.Value (First .. First + By.Unused - 1) :=
+           By.Value (0 .. By.Unused - 1);
+
+         Destination.Unused := New_Size;
+         Destination.Length := New_Length;
+         Fill_Null_Terminator (Destination);
+
+         if Source /= Destination then
+            Destination.Value (0 .. First - 1) :=
+              Source.Value (0 .. First - 1);
+            Dereference (Source);
+         end if;
+      end if;
+   end Replace;
 
    -----------
    -- Slice --
