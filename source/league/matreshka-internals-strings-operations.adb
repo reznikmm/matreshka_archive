@@ -228,8 +228,11 @@ package body Matreshka.Internals.Strings.Operations is
          Fill_Null_Terminator (Destination);
 
          if Source /= Destination then
-            Destination.Value (0 .. First - 1) :=
-              Source.Value (0 .. First - 1);
+            if First /= 0 then
+               Destination.Value (0 .. First - 1) :=
+                 Source.Value (0 .. First - 1);
+            end if;
+
             Dereference (Source);
          end if;
       end if;
