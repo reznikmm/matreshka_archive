@@ -89,6 +89,7 @@ package body Matreshka.Internals.Strings.Operations is
 
       Self.Length := Self.Length + 1;
       Unchecked_Store (Self.Value, Self.Unused, Code);
+      Fill_Null_Terminator (Self);
    end Append;
 
    ------------
