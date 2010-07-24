@@ -49,6 +49,8 @@ with Put_Line;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 
+with XMLConf.Entity_Resolvers;
+
 package body XMLConf.Testsuite_Handlers is
 
    use type League.Strings.Universal_String;
@@ -101,14 +103,15 @@ package body XMLConf.Testsuite_Handlers is
      Kind : Test_Kinds) is
    begin
       declare
-         Cwd    : constant String := Ada.Directories.Current_Directory;
-         Dwd    : constant String
+         Cwd      : constant String := Ada.Directories.Current_Directory;
+         Dwd      : constant String
            := Ada.Directories.Containing_Directory
                (Ada.Characters.Conversions.To_String
                  (League.Strings.To_Wide_Wide_String (Base & URI)));
-         Source : aliased
+         Source   : aliased
            XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-         Reader : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+         Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
+         Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
 
       begin
          Ada.Directories.Set_Directory (Dwd);
@@ -119,6 +122,7 @@ package body XMLConf.Testsuite_Handlers is
             raise Program_Error with "terminated by timeout";
 
          then abort
+            Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
             Source.Open
              (Ada.Directories.Simple_Name
                (Ada.Characters.Conversions.To_String
