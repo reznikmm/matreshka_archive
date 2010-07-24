@@ -1,0 +1,6 @@
+<!DOCTYPE test [
+  <!ENTITY test SYSTEM "16.ent">
+]>
+<!-- Replacement text of test.ent is "formatted" in special way to split
+     name in the start tag of the 'sub' element. -->
+<test>&test;</test>
