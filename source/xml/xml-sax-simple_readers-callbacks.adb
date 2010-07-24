@@ -49,6 +49,9 @@ with XML.SAX.Parse_Exceptions.Internals;
 
 package body XML.SAX.Simple_Readers.Callbacks is
 
+   procedure Setup_Locator (Self : not null access SAX_Simple_Reader'Class);
+   --  Sets up locator.
+
    ---------------------
    -- Call_Characters --
    ---------------------
@@ -57,8 +60,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
     (Self : not null access SAX_Simple_Reader'Class;
      Text : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Setup_Locator (Self);
       Self.Content_Handler.Characters
        (League.Strings.Internals.Create (Text), Self.Continue);
 
@@ -82,8 +84,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
     (Self    : not null access SAX_Simple_Reader'Class;
      Comment : League.Strings.Universal_String) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Setup_Locator (Self);
       Self.Lexical_Handler.Comment (Comment, Self.Continue);
 
       if not Self.Continue then
@@ -111,8 +112,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
      Qualified_Name :
        not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Setup_Locator (Self);
       Self.Content_Handler.End_Element
        (Namespace_URI  => League.Strings.Internals.Create (Namespace_URI),
         Local_Name     => League.Strings.Internals.Create (Local_Name),
@@ -139,8 +139,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
     (Self    : not null access SAX_Simple_Reader'Class;
      Message : League.Strings.Universal_String) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Setup_Locator (Self);
       Self.Error_Handler.Error
        (XML.SAX.Parse_Exceptions.Internals.Create
          (Public_Id => League.Strings.Empty_Universal_String,
@@ -172,8 +171,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Setup_Locator (Self);
       Self.Declaration_Handler.External_Entity_Declaration
        (Name, Public_Id, System_Id, Self.Continue);
 
@@ -197,8 +195,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
     (Self    : not null access SAX_Simple_Reader'Class;
      Message : League.Strings.Universal_String) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Setup_Locator (Self);
       Self.Error_Handler.Fatal_Error
        (XML.SAX.Parse_Exceptions.Internals.Create
          (Public_Id => League.Strings.Empty_Universal_String,
@@ -228,8 +225,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
     (Self : not null access SAX_Simple_Reader'Class;
      Text : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Setup_Locator (Self);
       Self.Content_Handler.Ignorable_Whitespace
        (League.Strings.Internals.Create (Text), Self.Continue);
 
@@ -254,8 +250,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
      Name  : League.Strings.Universal_String;
      Value : League.Strings.Universal_String) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Setup_Locator (Self);
       Self.Declaration_Handler.Internal_Entity_Declaration
        (Name, Value, Self.Continue);
 
@@ -280,8 +275,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
      Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : League.Strings.Universal_String) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Setup_Locator (Self);
       Self.Content_Handler.Processing_Instruction
        (Target  =>
           Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Target),
@@ -361,8 +355,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Attributes     : XML.SAX.Attributes.SAX_Attributes) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Setup_Locator (Self);
       Self.Content_Handler.Start_Element
        (Namespace_URI  => League.Strings.Internals.Create (Namespace_URI),
         Local_Name     => League.Strings.Internals.Create (Local_Name),
@@ -393,8 +386,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
      System_Id     : League.Strings.Universal_String;
      Notation_Name : League.Strings.Universal_String) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Setup_Locator (Self);
       Self.DTD_Handler.Unparsed_Entity_Declaration
        (Name, Public_Id, System_Id, Notation_Name, Self.Continue);
 
@@ -418,8 +410,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
     (Self    : not null access SAX_Simple_Reader'Class;
      Message : League.Strings.Universal_String) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
+      Setup_Locator (Self);
       Self.Error_Handler.Warning
        (XML.SAX.Parse_Exceptions.Internals.Create
          (Public_Id => League.Strings.Empty_Universal_String,
@@ -440,5 +431,17 @@ package body XML.SAX.Simple_Readers.Callbacks is
            League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_Warning;
+
+   -------------------
+   -- Setup_Locator --
+   -------------------
+
+   procedure Setup_Locator (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      XML.SAX.Locators.Internals.Set_Location
+       (Self.Locator,
+        Self.Scanner_State.YY_Base_Line,
+        Self.Scanner_State.YY_Base_Column);
+   end Setup_Locator;
 
 end XML.SAX.Simple_Readers.Callbacks;

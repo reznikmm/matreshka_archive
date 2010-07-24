@@ -241,8 +241,14 @@ private
       Data                  : Matreshka.Internals.Strings.Shared_String_Access;
       YY_Base_Position      : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
       YY_Base_Index         : Positive := 1;
+      YY_Base_Line          : Natural := 1;
+      YY_Base_Column        : Natural := 1;
+      YY_Base_Skip_LF       : Boolean := False;
       YY_Current_Position   : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
       YY_Current_Index      : Positive := 1;
+      YY_Current_Line       : Natural := 1;
+      YY_Current_Column     : Natural := 1;
+      YY_Current_Skip_LF    : Boolean := False;
       YY_Start_State        : Interfaces.Unsigned_32 := 1;
       Last_Match            : Boolean  := True;
       --  This mean that last match need to be processed.
@@ -342,12 +348,6 @@ private
       --  This is cache of Is_Empty status of scanner's stack to speedup
       --  scanning.
       Symbols             : Matreshka.Internals.XML.Symbol_Tables.Symbol_Table;
-      YY_Base_Line        : Natural := 1;
-      YY_Base_Column      : Natural := 0;
-      YY_Base_Skip_LF     : Boolean := False;
-      YY_Current_Line     : Natural := 1;
-      YY_Current_Column   : Natural := 0;
-      YY_Current_Skip_LF  : Boolean := False;
       Locator             : XML.SAX.Locators.SAX_Locator;
       YYLVal              : YYSType;
       Last_Chunk          : Boolean;

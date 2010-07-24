@@ -118,12 +118,10 @@ package body XML.SAX.Simple_Readers.Scanner is
    begin
       Self.Scanner_State.YY_Current_Position :=
         Self.Scanner_State.YY_Current_Position - 1;
-      Self.Scanner_State.YY_Current_Index :=
+      Self.Scanner_State.YY_Current_Index    :=
         Self.Scanner_State.YY_Current_Index - 1;
-
-      if Self.Stack_Is_Empty then
-         Self.YY_Current_Column := Self.YY_Current_Column - 1;
-      end if;
+      Self.Scanner_State.YY_Current_Column   :=
+        Self.Scanner_State.YY_Current_Column - 1;
    end YY_Move_Backward;
 
    ---------------------------
@@ -800,15 +798,13 @@ package body XML.SAX.Simple_Readers.Scanner is
            Self.Scanner_State.YY_Current_Position;
          Self.Scanner_State.YY_Base_Index    :=
            Self.Scanner_State.YY_Current_Index;
+         Self.Scanner_State.YY_Base_Line     :=
+           Self.Scanner_State.YY_Current_Line;
+         Self.Scanner_State.YY_Base_Column   :=
+           Self.Scanner_State.YY_Current_Column;
+         Self.Scanner_State.YY_Base_Skip_LF  :=
+           Self.Scanner_State.YY_Current_Skip_LF;
          YY_Current_State := Self.Scanner_State.YY_Start_State;
-
-         if Self.Stack_Is_Empty then
-            --  Track line/column for document.
-
-            Self.YY_Base_Line    := Self.YY_Current_Line;
-            Self.YY_Base_Column  := Self.YY_Current_Column;
-            Self.YY_Base_Skip_LF := Self.YY_Current_Skip_LF;
-         end if;
 
 --        yy_cp := yy_c_buf_p;
 --
@@ -817,12 +813,9 @@ package body XML.SAX.Simple_Readers.Scanner is
          loop
             YY_Next_Position := Self.Scanner_State.YY_Current_Position;
             YY_Next_Index    := Self.Scanner_State.YY_Current_Index;
-
-            if Self.Stack_Is_Empty then
-               YY_Next_Line     := Self.YY_Current_Line;
-               YY_Next_Column   := Self.YY_Current_Column;
-               YY_Next_Skip_LF  := Self.YY_Current_Skip_LF;
-            end if;
+            YY_Next_Line     := Self.Scanner_State.YY_Current_Line;
+            YY_Next_Column   := Self.Scanner_State.YY_Current_Column;
+            YY_Next_Skip_LF  := Self.Scanner_State.YY_Current_Skip_LF;
 
             if YY_Next_Position < Self.Scanner_State.Data.Unused then
                Unchecked_Next
@@ -831,33 +824,31 @@ package body XML.SAX.Simple_Readers.Scanner is
                  YY_Current_Code);
                YY_Next_Index := YY_Next_Index + 1;
 
-               if Self.Stack_Is_Empty then
-                  --  Track line/column in root document
+               --  Track line/column in entity
 
-                  if YY_Current_Code = 16#000D# then
-                     --  Start of new line.
+               if YY_Current_Code = 16#000D# then
+                  --  Start of new line.
 
-                     YY_Next_Line    := YY_Next_Line + 1;
-                     YY_Next_Column  := 1;
-                     YY_Next_Skip_LF := True;
+                  YY_Next_Line    := YY_Next_Line + 1;
+                  YY_Next_Column  := 1;
+                  YY_Next_Skip_LF := True;
 
-                  elsif YY_Current_Code = 16#000A# then
-                     if YY_Next_Skip_LF then
-                        --  Ignore CR after LF.
+               elsif YY_Current_Code = 16#000A# then
+                  if YY_Next_Skip_LF then
+                     --  Ignore CR after LF.
 
-                        YY_Next_Skip_LF := False;
-
-                     else
-                        YY_Next_Line   := YY_Next_Line + 1;
-                        YY_Next_Column := 1;
-                     end if;
+                     YY_Next_Skip_LF := False;
 
                   else
-                     --  Move to next column.
-
-                     YY_Next_Column  := YY_Next_Column + 1;
-                     YY_Next_Skip_LF := False;
+                     YY_Next_Line   := YY_Next_Line + 1;
+                     YY_Next_Column := 1;
                   end if;
+
+               else
+                  --  Move to next column.
+
+                  YY_Next_Column  := YY_Next_Column + 1;
+                  YY_Next_Skip_LF := False;
                end if;
 
                YY_C :=
@@ -890,17 +881,17 @@ package body XML.SAX.Simple_Readers.Scanner is
             if YY_Accept (YY_Current_State) /= 0 then
                --  Accepting state reached, save for possible backtrack.
 
-               YY_Last_Accepting_State    := YY_Current_State;
                YY_Last_Accepting_Position :=
                  Self.Scanner_State.YY_Current_Position;
                YY_Last_Accepting_Index    :=
                  Self.Scanner_State.YY_Current_Index;
-
-               if Self.Stack_Is_Empty then
-                  YY_Last_Accepting_Line    := Self.YY_Current_Line;
-                  YY_Last_Accepting_Column  := Self.YY_Current_Column;
-                  YY_Last_Accepting_Skip_LF := Self.YY_Current_Skip_LF;
-               end if;
+               YY_Last_Accepting_Line     :=
+                 Self.Scanner_State.YY_Current_Line;
+               YY_Last_Accepting_Column   :=
+                 Self.Scanner_State.YY_Current_Column;
+               YY_Last_Accepting_Skip_LF  :=
+                 Self.Scanner_State.YY_Current_Skip_LF;
+               YY_Last_Accepting_State    := YY_Current_State;
             end if;
 
             while YY_Chk (YY_Base (YY_Current_State) + YY_C)
@@ -913,15 +904,12 @@ package body XML.SAX.Simple_Readers.Scanner is
                end if;
             end loop;
 
-            YY_Current_State := YY_Nxt (YY_Base (YY_Current_State) + YY_C);
             Self.Scanner_State.YY_Current_Position := YY_Next_Position;
             Self.Scanner_State.YY_Current_Index    := YY_Next_Index;
-
-            if Self.Stack_Is_Empty then
-               Self.YY_Current_Line    := YY_Next_Line;
-               Self.YY_Current_Column  := YY_Next_Column;
-               Self.YY_Current_Skip_LF := YY_Next_Skip_LF;
-            end if;
+            Self.Scanner_State.YY_Current_Line     := YY_Next_Line;
+            Self.Scanner_State.YY_Current_Column   := YY_Next_Column;
+            Self.Scanner_State.YY_Current_Skip_LF  := YY_Next_Skip_LF;
+            YY_Current_State := YY_Nxt (YY_Base (YY_Current_State) + YY_C);
 
             exit when YY_Current_State = YY_Jam_State;
          end loop;
@@ -930,13 +918,10 @@ package body XML.SAX.Simple_Readers.Scanner is
 
          Self.Scanner_State.YY_Current_Position := YY_Last_Accepting_Position;
          Self.Scanner_State.YY_Current_Index    := YY_Last_Accepting_Index;
+         Self.Scanner_State.YY_Current_Line     := YY_Last_Accepting_Line;
+         Self.Scanner_State.YY_Current_Column   := YY_Last_Accepting_Column;
+         Self.Scanner_State.YY_Current_Skip_LF  := YY_Last_Accepting_Skip_LF;
          YY_Current_State                       := YY_Last_Accepting_State;
-
-         if Self.Stack_Is_Empty then
-            Self.YY_Current_Line    := YY_Last_Accepting_Line;
-            Self.YY_Current_Column  := YY_Last_Accepting_Column;
-            Self.YY_Current_Skip_LF := YY_Last_Accepting_Skip_LF;
-         end if;
 
    <<Next_Action>>
          YY_Action := YY_Accept (YY_Current_State);
@@ -1013,10 +998,13 @@ package body XML.SAX.Simple_Readers.Scanner is
                            end if;
 
                            Self.Scanner_State.YY_Current_Position := 0;
-                           Self.Scanner_State.YY_Current_Index := 1;
-                           Self.YY_Current_Line := Self.YY_Base_Line;
-                           Self.YY_Current_Column := Self.YY_Base_Column;
-                           Self.YY_Current_Skip_LF := Self.YY_Base_Skip_LF;
+                           Self.Scanner_State.YY_Current_Index    := 1;
+                           Self.Scanner_State.YY_Current_Line     :=
+                             Self.Scanner_State.YY_Base_Line;
+                           Self.Scanner_State.YY_Current_Column   :=
+                             Self.Scanner_State.YY_Base_Column;
+                           Self.Scanner_State.YY_Current_Skip_LF  :=
+                             Self.Scanner_State.YY_Base_Skip_LF;
                         end;
 
                         --  Obtain next portion from the input source.
@@ -1057,8 +1045,14 @@ package body XML.SAX.Simple_Readers.Scanner is
 
                         Self.Scanner_State.YY_Current_Position :=
                           Self.Scanner_State.YY_Base_Position;
-                        Self.Scanner_State.YY_Current_Index :=
+                        Self.Scanner_State.YY_Current_Index    :=
                           Self.Scanner_State.YY_Base_Index;
+                        Self.Scanner_State.YY_Current_Line     :=
+                          Self.Scanner_State.YY_Base_Line;
+                        Self.Scanner_State.YY_Current_Column   :=
+                          Self.Scanner_State.YY_Base_Column;
+                        Self.Scanner_State.YY_Current_Skip_LF  :=
+                          Self.Scanner_State.YY_Base_Skip_LF;
 
                         --  Obtain next portion from the input source.
 

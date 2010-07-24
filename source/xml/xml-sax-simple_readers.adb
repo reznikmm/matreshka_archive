@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
-with XML.SAX.Locators.Internals;
 with XML.SAX.Simple_Readers.Callbacks;
 with XML.SAX.Simple_Readers.Parser;
 with XML.SAX.Simple_Readers.Scanner;
@@ -190,8 +189,6 @@ package body XML.SAX.Simple_Readers is
      Data       : League.Strings.Universal_String;
      Last_Chunk : Boolean := True) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
       Callbacks.Call_Set_Document_Locator (Self, Self.Locator);
       Self.Last_Chunk := Last_Chunk;
       Self.Scanner_State.Last_Match := Last_Chunk;
@@ -218,8 +215,6 @@ package body XML.SAX.Simple_Readers is
     (Self   : not null access SAX_Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator, Self.YY_Base_Line, Self.YY_Base_Column);
       Callbacks.Call_Set_Document_Locator (Self, Self.Locator);
       Self.Last_Chunk := False;
       Self.Scanner_State.Last_Match := False;
