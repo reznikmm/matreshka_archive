@@ -1730,9 +1730,14 @@ package body XML.SAX.Simple_Readers.Scanner is
                         Self.Scanner_Stack.Delete_Last;
                         Self.Stack_Is_Empty := Self.Scanner_Stack.Is_Empty;
 
-                        goto New_File;
-
                      else
+                        --  Back current position to base position.
+
+                        Self.Scanner_State.YY_Current_Position :=
+                          Self.Scanner_State.YY_Base_Position;
+                        Self.Scanner_State.YY_Current_Index :=
+                          Self.Scanner_State.YY_Base_Index;
+
                         --  Obtain next portion from the input source.
 
                         Self.Scanner_State.Source.Next
@@ -1741,8 +1746,6 @@ package body XML.SAX.Simple_Readers.Scanner is
 
                         Self.Scanner_State.Last_Match :=
                           Self.Scanner_State.End_Of_Source;
-
-                        goto New_File;
                      end if;
                   end if;
                end if;
