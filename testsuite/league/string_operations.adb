@@ -89,7 +89,7 @@ begin
       R : Universal_String
         := To_Universal_String ("abcdefghigklmnopqrstuvwxyz");
       E : Universal_String
-        := To_Universal_String ("Aabcdefghigklmnopqrstuvwxyz");
+        := To_Universal_String ("AabcdefghigklmnopqrstuvwxyzZ");
 
    begin
       S.Replace (2, 2, R);
