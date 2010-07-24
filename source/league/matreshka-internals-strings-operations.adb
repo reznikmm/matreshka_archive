@@ -215,7 +215,7 @@ package body Matreshka.Internals.Strings.Operations is
 
       else
          if not Can_Be_Reused (Source, New_Size) then
-            Destination := Allocate (Size);
+            Destination := Allocate (New_Size);
          end if;
 
          Destination.Value (First + By.Unused .. New_Size - 1) :=
