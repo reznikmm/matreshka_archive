@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with Ada.Characters.Conversions;
 
-with Read_File;
 with XML.SAX.Input_Sources.Streams.Files;
 
 package body XMLConf.Entity_Resolvers is
