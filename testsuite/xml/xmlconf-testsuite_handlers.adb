@@ -46,8 +46,10 @@ with Ada.Directories;
 with Ada.Exceptions;
 
 with Put_Line;
+with Read_File;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
+with XMLConf.Canonical_Writers;
 
 with XMLConf.Entity_Resolvers;
 
@@ -83,25 +85,40 @@ package body XMLConf.Testsuite_Handlers is
      := League.Strings.To_Universal_String ("EDITION");
    Fifth_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("5");
+   Output_Name         : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("OUTPUT");
+   Namespace_Name      : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("NAMESPACE");
+   No_Name             : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("no");
 
    procedure Execute_Test
-    (Self : in out Testsuite_Handler;
-     Id   : League.Strings.Universal_String;
-     Base : League.Strings.Universal_String;
-     URI  : League.Strings.Universal_String;
-     Kind : Test_Kinds);
+    (Self       : in out Testsuite_Handler;
+     Id         : League.Strings.Universal_String;
+     Base       : League.Strings.Universal_String;
+     URI        : League.Strings.Universal_String;
+     Kind       : Test_Kinds;
+     Namespaces : Boolean;
+     Output     : League.Strings.Universal_String);
 
    ------------------
    -- Execute_Test --
    ------------------
 
    procedure Execute_Test
-    (Self : in out Testsuite_Handler;
-     Id   : League.Strings.Universal_String;
-     Base : League.Strings.Universal_String;
-     URI  : League.Strings.Universal_String;
-     Kind : Test_Kinds) is
+    (Self       : in out Testsuite_Handler;
+     Id         : League.Strings.Universal_String;
+     Base       : League.Strings.Universal_String;
+     URI        : League.Strings.Universal_String;
+     Kind       : Test_Kinds;
+     Namespaces : Boolean;
+     Output     : League.Strings.Universal_String)
+   is
+      Failed : Boolean := False;
+
    begin
+      --  Crash test.
+
       declare
          Cwd      : constant String := Ada.Directories.Current_Directory;
          Dwd      : constant String
@@ -123,6 +140,8 @@ package body XMLConf.Testsuite_Handlers is
 
          then abort
             Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
+            Reader.Set_Enable_Namespaces (Namespaces);
+
             Source.Open
              (Ada.Directories.Simple_Name
                (Ada.Characters.Conversions.To_String
@@ -141,7 +160,72 @@ package body XMLConf.Testsuite_Handlers is
              (League.Strings.To_Universal_String
                (Ada.Characters.Conversions.To_Wide_Wide_String
                  (Ada.Exceptions.Exception_Information (X))));
+            Failed := True;
       end;
+
+      --  Canonical output test.
+
+      if not Failed and not Output.Is_Empty then
+         declare
+            Cwd      : constant String := Ada.Directories.Current_Directory;
+            Dwd      : constant String
+              := Ada.Directories.Containing_Directory
+                  (Ada.Characters.Conversions.To_String
+                    (League.Strings.To_Wide_Wide_String (Base & URI)));
+            Source   : aliased
+              XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+            Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+            Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
+            Writer   : aliased XMLConf.Canonical_Writers.Canonical_Writer;
+            Expected : League.Strings.Universal_String;
+
+         begin
+            Put_Line (Id);
+            Expected :=
+              Read_File
+               (Ada.Characters.Conversions.To_String
+                 (Base.To_Wide_Wide_String & Output.To_Wide_Wide_String));
+
+            Ada.Directories.Set_Directory (Dwd);
+
+            select
+               delay 3.0;
+
+               raise Program_Error with "terminated by timeout";
+
+            then abort
+               Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
+               Reader.Set_Content_Handler (Writer'Unchecked_Access);
+               Reader.Set_Enable_Namespaces (Namespaces);
+
+               Source.Open
+                (Ada.Directories.Simple_Name
+                  (Ada.Characters.Conversions.To_String
+                    (URI.To_Wide_Wide_String)));
+               Reader.Parse (Source'Access);
+
+               if Expected /= Writer.Text then
+                  Put_Line (League.Strings.To_Universal_String ("Namespaces : " & Boolean'Wide_Wide_Image (Namespaces)));
+                  Put_Line ("Expected output: '" & Expected & "'");
+                  Put_Line ("Actual output  : '" & Writer.Text & "'");
+
+                  raise Program_Error with "invalid output";
+               end if;
+            end select;
+
+            Ada.Directories.Set_Directory (Cwd);
+
+         exception
+            when X : others =>
+               Ada.Directories.Set_Directory (Cwd);
+               Self.Results (Kind).Crash := Self.Results (Kind).Crash + 1;
+               Put_Line (Id & ": crashed (output test)");
+               Put_Line
+                (League.Strings.To_Universal_String
+                  (Ada.Characters.Conversions.To_Wide_Wide_String
+                    (Ada.Exceptions.Exception_Information (X))));
+         end;
+      end if;
 
    exception
       when X : others =>
@@ -187,12 +271,14 @@ package body XMLConf.Testsuite_Handlers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean)
    is
-      Index     : Natural;
-      Id        : League.Strings.Universal_String;
-      URI       : League.Strings.Universal_String;
-      Test_Type : League.Strings.Universal_String;
-      Test_Kind : Test_Kinds;
-      Skip      : Boolean := False;
+      Index      : Natural;
+      Id         : League.Strings.Universal_String;
+      URI        : League.Strings.Universal_String;
+      Test_Type  : League.Strings.Universal_String;
+      Output     : League.Strings.Universal_String;
+      Test_Kind  : Test_Kinds;
+      Namespaces : Boolean := True;
+      Skip       : Boolean := False;
 
    begin
       if Qualified_Name = Test_Tag then
@@ -241,8 +327,26 @@ package body XMLConf.Testsuite_Handlers is
             end if;
          end if;
 
+         Index := Attributes.Index (Output_Name);
+
+         if Index /= 0 then
+            Output := Attributes.Value (Index);
+         end if;
+
+         Index := Attributes.Index (Namespace_Name);
+
+         if Index /= 0 then
+            if Attributes.Value (Index) = No_Name then
+               Namespaces := False;
+
+            else
+               raise Program_Error;
+            end if;
+         end if;
+
          if not Skip then
-            Execute_Test (Self, Id, Self.Base, URI, Test_Kind);
+            Execute_Test
+             (Self, Id, Self.Base, URI, Test_Kind, Namespaces, Output);
          end if;
 
       elsif Qualified_Name = Testcases_Tag then
