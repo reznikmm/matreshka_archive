@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
-with Matreshka.Internals.Strings;
 
 package XML.SAX.Input_Sources.Strings is
 
