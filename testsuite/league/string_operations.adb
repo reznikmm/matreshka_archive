@@ -98,4 +98,23 @@ begin
          raise Program_Error;
       end if;
    end;
+
+   --  Initial implementation of slice replace operation unable to insert
+   --  string into the first position.
+
+   declare
+      S : Universal_String := To_Universal_String ("Z");
+      R : Universal_String
+        := To_Universal_String ("abcdefghigklmnopqrstuvwxyz");
+      E : Universal_String
+        := To_Universal_String ("abcdefghigklmnopqrstuvwxyzZ");
+
+   begin
+      S.Replace (1, 0, R);
+
+      if S /= E then
+         raise Program_Error;
+      end if;
+   end;
+
 end String_Operations;
