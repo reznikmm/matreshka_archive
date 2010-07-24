@@ -256,23 +256,35 @@ package body Matreshka.Internals.Strings.Operations is
        return not null Shared_String_Access
    is
       pragma Assert (First < Source.Unused
-                       and then First + Size <= Source.Unused);
+                       or (Source.Unused = 0 and First = 0));
+      --  For convenience, it is allowied to get empty slice from empty string.
+      pragma Assert (First + Size <= Source.Unused);
       pragma Assert (Utf16_String_Index (Length) in (Size + 1) / 2 .. Size);
 
    begin
       if Size = 0 then
-         return Shared_Empty'Access;
-      end if;
+         --  Requested slice is empty.
 
-      return Destination : constant not null Shared_String_Access
-        := Allocate (Size)
-      do
-         Destination.Value (0 .. Size - 1) :=
-           Source.Value (First .. First + Size - 1);
-         Destination.Unused := Size;
-         Destination.Length := Length;
-         Fill_Null_Terminator (Destination);
-      end return;
+         return Shared_Empty'Access;
+
+      elsif Size = Source.Unused then
+         --  Requested slice is whole string.
+
+         Reference (Source);
+
+         return Source;
+
+      else
+         return Destination : constant not null Shared_String_Access
+           := Allocate (Size)
+         do
+            Destination.Value (0 .. Size - 1) :=
+              Source.Value (First .. First + Size - 1);
+            Destination.Unused := Size;
+            Destination.Length := Length;
+            Fill_Null_Terminator (Destination);
+         end return;
+      end if;
    end Slice;
 
 end Matreshka.Internals.Strings.Operations;
