@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
 with XML.SAX.Attributes.Internals;
 with XML.SAX.Simple_Readers.Scanner;
 with XML.SAX.Simple_Readers.Callbacks;
