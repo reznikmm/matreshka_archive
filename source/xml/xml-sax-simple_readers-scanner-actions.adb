@@ -181,35 +181,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       return Token_Empty_Close;
    end On_Close_Of_Empty_Element_Tag;
 
-   -----------------------------------------
-   -- On_Close_Of_XML_Or_Text_Declaration --
-   -----------------------------------------
-
-   function On_Close_Of_XML_Or_Text_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
-   begin
-      Set_String_Internal
-       (Item          => Self.YYLVal,
-        String        => Matreshka.Internals.Strings.Shared_Empty'Access,
-        Is_Whitespace => False,
-        Is_CData      => False);
-
-      if Self.Scanner_State.Entity /= No_Entity then
-         --  End of text declaration of the external entity is reached,
-         --  save current position to start from it next time entity is
-         --  referenced.
-
-         Set_First_Position
-          (Self.Entities,
-           Self.Scanner_State.Entity,
-           Self.Scanner_State.YY_Current_Position);
-      end if;
-
-      Pop_Start_Condition (Self);
-
-      return Token_PI_Close;
-   end On_Close_Of_XML_Or_Text_Declaration;
-
    ----------------------------------------
    -- On_Close_Of_Processing_Instruction --
    ----------------------------------------
@@ -265,7 +236,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 --         end case;
 --      end if;
 
-      return Token_PI_Close;
+      return Token_Pi_Close;
    end On_Close_Of_Processing_Instruction;
 
    ---------------------
@@ -285,6 +256,35 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       return Token_Close;
    end On_Close_Of_Tag;
+
+   -----------------------------------------
+   -- On_Close_Of_XML_Or_Text_Declaration --
+   -----------------------------------------
+
+   function On_Close_Of_XML_Or_Text_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      Set_String_Internal
+       (Item          => Self.YYLVal,
+        String        => Matreshka.Internals.Strings.Shared_Empty'Access,
+        Is_Whitespace => False,
+        Is_CData      => False);
+
+      if Self.Scanner_State.Entity /= No_Entity then
+         --  End of text declaration of the external entity is reached,
+         --  save current position to start from it next time entity is
+         --  referenced.
+
+         Set_First_Position
+          (Self.Entities,
+           Self.Scanner_State.Entity,
+           Self.Scanner_State.YY_Current_Position);
+      end if;
+
+      Pop_Start_Condition (Self);
+
+      return Token_Pi_Close;
+   end On_Close_Of_XML_Or_Text_Declaration;
 
    ----------------------------------------------------
    -- On_General_Entity_Reference_In_Attribute_Value --
@@ -856,7 +856,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    begin
       --  [XML1.1 4.2.2]
       --
-      --  [76] NDataDecl ::= S 'NDATA' S Name  
+      --  [76] NDataDecl ::= S 'NDATA' S Name
       --
       --  Check whether whitespace is present before the name.
 
@@ -1077,7 +1077,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
           (Self, Start_Condition (Self), Tables.PI);
          Reset_Whitespace_Matched (Self);
 
-         return Token_PI_Open;
+         return Token_Pi_Open;
       end if;
    end On_Open_Of_Processing_Instruction;
 
@@ -1115,7 +1115,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
        (Self, Start_Condition (Self), Tables.XML_DECL);
       Reset_Whitespace_Matched (Self);
 
-      return Token_XML_Decl_Open;
+      return Token_Xml_Decl_Open;
    end On_Open_Of_XML_Or_Text_Declaration;
 
    ---------------------------------------------------
