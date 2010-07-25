@@ -60,28 +60,24 @@ package XML.SAX.Input_Sources.Streams is
 
 --   not overriding function Encoding
 --    (Self : SAX_Input_Source) return League.Strings.Universal_String;
---
---   not overriding function Public_Id
---    (Self : SAX_Input_Source) return League.Strings.Universal_String;
---   --  Returns public identifier for the input source, or an empty string if
---   --  non was supplied.
---
---   not overriding function System_Id
---    (Self : SAX_Input_Source) return League.Strings.Universal_String;
---   --  Returns system identifier for the input source, or an empty string if
---   --  non was supplied.
---
+
+   overriding function Public_Id
+    (Self : Stream_Input_Source) return League.Strings.Universal_String;
+
+   overriding function System_Id
+    (Self : Stream_Input_Source) return League.Strings.Universal_String;
+
 --   not overriding procedure Set_Encoding
 --    (Self     : in out SAX_Input_Source;
 --     Encoding : League.Strings.Universal_String);
---
---   not overriding procedure Set_Public_Id
---    (Self : in out SAX_Input_Source;
---     Id   : League.Strings.Universal_String);
---
---   not overriding procedure Set_System_Id
---    (Self : in out SAX_Input_Source;
---     Id   : League.Strings.Universal_String);
+
+   not overriding procedure Set_Public_Id
+    (Self : in out Stream_Input_Source;
+     Id   : League.Strings.Universal_String);
+
+   not overriding procedure Set_System_Id
+    (Self : in out Stream_Input_Source;
+     Id   : League.Strings.Universal_String);
 
    overriding procedure Next
     (Self        : in out Stream_Input_Source;
@@ -95,10 +91,12 @@ private
      new Ada.Finalization.Limited_Controlled
        and SAX_Input_Source with
    record
-      Buffer  : Ada.Streams.Stream_Element_Array (1 .. 1024);
-      Decoder : Matreshka.Internals.Text_Codecs.Decoder_Access;
-      State   : Matreshka.Internals.Text_Codecs.Decoder_State_Access;
-      Stream  : Stream_Access;
+      Buffer    : Ada.Streams.Stream_Element_Array (1 .. 1024);
+      Decoder   : Matreshka.Internals.Text_Codecs.Decoder_Access;
+      State     : Matreshka.Internals.Text_Codecs.Decoder_State_Access;
+      Stream    : Stream_Access;
+      Public_Id : League.Strings.Universal_String;
+      System_Id : League.Strings.Universal_String;
    end record;
 
    overriding procedure Finalize (Self : in out Stream_Input_Source);

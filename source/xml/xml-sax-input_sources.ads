@@ -62,28 +62,30 @@ package XML.SAX.Input_Sources is
 
 --   not overriding function Encoding
 --    (Self : SAX_Input_Source) return League.Strings.Universal_String;
---
---   not overriding function Public_Id
---    (Self : SAX_Input_Source) return League.Strings.Universal_String;
---   --  Returns public identifier for the input source, or an empty string if
---   --  non was supplied.
---
---   not overriding function System_Id
---    (Self : SAX_Input_Source) return League.Strings.Universal_String;
---   --  Returns system identifier for the input source, or an empty string if
---   --  non was supplied.
---
+
+   not overriding function Public_Id
+    (Self : SAX_Input_Source) return League.Strings.Universal_String
+       is abstract;
+   --  Returns public identifier for the input source, or an empty string if
+   --  non was supplied.
+
+   not overriding function System_Id
+    (Self : SAX_Input_Source) return League.Strings.Universal_String
+       is abstract;
+   --  Returns system identifier for the input source, or an empty string if
+   --  non was supplied.
+
 --   not overriding procedure Set_Encoding
 --    (Self     : in out SAX_Input_Source;
 --     Encoding : League.Strings.Universal_String);
---
+
 --   not overriding procedure Set_Public_Id
 --    (Self : in out SAX_Input_Source;
---     Id   : League.Strings.Universal_String);
+--     Id   : League.Strings.Universal_String) is abstract;
 --
 --   not overriding procedure Set_System_Id
 --    (Self : in out SAX_Input_Source;
---     Id   : League.Strings.Universal_String);
+--     Id   : League.Strings.Universal_String) is abstract;
 
    not overriding procedure Next
     (Self        : in out SAX_Input_Source;

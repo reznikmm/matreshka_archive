@@ -123,6 +123,17 @@ package body Matreshka.Internals.XML.Entity_Tables is
        (League.Strings.To_Universal_String (""""));
    end Initialize;
 
+   ------------------------
+   -- Is_Document_Entity --
+   ------------------------
+
+   function Is_Document_Entity
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier) return Boolean is
+   begin
+      return Self.Data (Entity).Kind = Document_Entity;
+   end Is_Document_Entity;
+
    -----------------------------------------
    -- Is_External_Unparsed_General_Entity --
    -----------------------------------------
@@ -145,6 +156,37 @@ package body Matreshka.Internals.XML.Entity_Tables is
       return Self.Data (Entity).Is_Resolved;
    end Is_Resolved;
 
+   -------------------------
+   -- New_Document_Entity --
+   -------------------------
+
+   procedure New_Document_Entity
+    (Self      : in out Entity_Table;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Entity    : out Entity_Identifier)
+   is
+      P : constant Matreshka.Internals.Strings.Shared_String_Access
+        := League.Strings.Internals.Get_Shared (Public_Id);
+      S : constant Matreshka.Internals.Strings.Shared_String_Access
+        := League.Strings.Internals.Get_Shared (System_Id);
+
+   begin
+      New_Entity (Self, Entity);
+
+      Matreshka.Internals.Strings.Reference (P);
+      Matreshka.Internals.Strings.Reference (S);
+
+      Self.Data (Entity) :=
+       (Kind             => Document_Entity,
+        Notation         => No_Symbol,
+        Public_Id        => P,
+        System_Id        => S,
+        Is_Resolved      => False,
+        Replacement_Text => Matreshka.Internals.Strings.Shared_Empty'Access,
+        First_Position   => 0);
+   end New_Document_Entity;
+   
    ----------------
    -- New_Entity --
    ----------------

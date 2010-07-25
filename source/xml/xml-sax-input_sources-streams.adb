@@ -71,12 +71,6 @@ package body XML.SAX.Input_Sources.Streams is
       Free (Self.State);
    end Finalize;
 
---   not overriding function Public_Id
---    (Self : SAX_Input_Source) return League.Strings.Universal_String;
---
---   not overriding function System_Id
---    (Self : SAX_Input_Source) return League.Strings.Universal_String;
-
    ----------
    -- Next --
    ----------
@@ -106,24 +100,30 @@ package body XML.SAX.Input_Sources.Streams is
       end if;
    end Next;
 
+   ---------------
+   -- Public_Id --
+   ---------------
+
+   overriding function Public_Id
+    (Self : Stream_Input_Source) return League.Strings.Universal_String is
+   begin
+      return Self.Public_Id;
+   end Public_Id;
+
 --   not overriding procedure Set_Encoding
 --    (Self     : in out SAX_Input_Source;
 --     Encoding : League.Strings.Universal_String);
---
---   not overriding procedure Set_Public_Id
---    (Self : in out SAX_Input_Source;
---     Id   : League.Strings.Universal_String);
---
---   ----------------
---   -- Set_Stream --
---   ----------------
---
---   procedure Set_Stream
---    (Self   : in out SAX_Input_Source;
---     Stream : not null access Ada.Streams.Root_Stream_Type'Class) is
---   begin
---      Self.Stream := Stream.all'Unchecked_Access;
---   end Set_Stream;
+
+   -------------------
+   -- Set_Public_Id --
+   -------------------
+
+   not overriding procedure Set_Public_Id
+    (Self : in out Stream_Input_Source;
+     Id   : League.Strings.Universal_String) is
+   begin
+      Self.Public_Id := Id;
+   end Set_Public_Id;
 
    ----------------
    -- Set_Stream --
@@ -141,8 +141,25 @@ package body XML.SAX.Input_Sources.Streams is
                (Matreshka.Internals.Text_Codecs.XML_1_0));
    end Set_Stream;
 
---   not overriding procedure Set_System_Id
---    (Self : in out SAX_Input_Source;
---     Id   : League.Strings.Universal_String);
+   -------------------
+   -- Set_System_Id --
+   -------------------
+
+   not overriding procedure Set_System_Id
+    (Self : in out Stream_Input_Source;
+     Id   : League.Strings.Universal_String) is
+   begin
+      Self.System_Id := Id;
+   end Set_System_Id;
+
+   ---------------
+   -- System_Id --
+   ---------------
+
+   overriding function System_Id
+    (Self : Stream_Input_Source) return League.Strings.Universal_String is
+   begin
+      return Self.System_Id;
+   end System_Id;
 
 end XML.SAX.Input_Sources.Streams;

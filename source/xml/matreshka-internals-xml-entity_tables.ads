@@ -90,6 +90,19 @@ package Matreshka.Internals.XML.Entity_Tables is
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
 
+   procedure New_Document_Entity
+    (Self      : in out Entity_Table;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Entity    : out Entity_Identifier);
+   --  Allocates space for the entity and returns identifier of the allocated
+   --  entity.
+
+   function Is_Document_Entity
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier) return Boolean;
+   --  Returns True when entity is document entity.
+
    function Is_External_Unparsed_General_Entity
     (Self   : Entity_Table;
      Entity : Entity_Identifier) return Boolean;
@@ -152,7 +165,9 @@ package Matreshka.Internals.XML.Entity_Tables is
 private
 
    type Entity_Kinds is
-    (Internal_Parameter_Entity,
+    (Document_Entity,
+     External_Subset_Entity,
+     Internal_Parameter_Entity,
      External_Parameter_Entity,
      Internal_General_Entity,
      External_Parsed_General_Entity,
@@ -176,5 +191,8 @@ private
       Data : Entity_Array_Access;
       Last : Entity_Identifier := 0;
    end record;
+
+   pragma Inline (Is_Document_Entity);
+   pragma Inline (Is_External_Unparsed_General_Entity);
 
 end Matreshka.Internals.XML.Entity_Tables;

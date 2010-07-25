@@ -63,6 +63,27 @@ package body XML.SAX.Input_Sources.Strings is
       End_Of_Data := True;
    end Next;
 
+   ---------------
+   -- Public_Id --
+   ---------------
+
+   overriding function Public_Id
+    (Self : String_Input_Source) return League.Strings.Universal_String is
+   begin
+      return Self.Public_Id;
+   end Public_Id;
+
+   -------------------
+   -- Set_Public_Id --
+   -------------------
+
+   not overriding procedure Set_Public_Id
+    (Self : in out String_Input_Source;
+     Id   : League.Strings.Universal_String) is
+   begin
+      Self.Public_Id := Id;
+   end Set_Public_Id;
+
    ----------------
    -- Set_String --
    ----------------
@@ -73,5 +94,26 @@ package body XML.SAX.Input_Sources.Strings is
    begin
       Self.String := String;
    end Set_String;
+
+   -------------------
+   -- Set_System_Id --
+   -------------------
+
+   not overriding procedure Set_System_Id
+    (Self : in out String_Input_Source;
+     Id   : League.Strings.Universal_String) is
+   begin
+      Self.System_Id := Id;
+   end Set_System_Id;
+
+   ---------------
+   -- System_Id --
+   ---------------
+
+   overriding function System_Id
+    (Self : String_Input_Source) return League.Strings.Universal_String is
+   begin
+      return Self.System_Id;
+   end System_Id;
 
 end XML.SAX.Input_Sources.Strings;

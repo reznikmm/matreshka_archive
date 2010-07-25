@@ -248,10 +248,22 @@ package body XML.SAX.Simple_Readers is
 
    procedure Parse
     (Self   : not null access SAX_Simple_Reader;
-     Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class) is
+     Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class)
+   is
+      use Matreshka.Internals.XML;
+      use Matreshka.Internals.XML.Entity_Tables;
+
+      Entity : Entity_Identifier;
+
    begin
       Callbacks.Call_Set_Document_Locator (Self.all, Self.Locator);
       Self.Last_Chunk := False;
+      New_Document_Entity
+       (Self.Entities,
+        Source.Public_Id,
+        Source.System_Id,
+        Entity);
+      Self.Scanner_State.Entity := Entity;
       Self.Scanner_State.Last_Match := False;
       Self.Scanner_State.Source := Source.all'Unchecked_Access;
       Self.Scanner_State.Data :=

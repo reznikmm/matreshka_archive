@@ -52,16 +52,32 @@ package XML.SAX.Input_Sources.Strings is
     (Self   : in out String_Input_Source;
      String : League.Strings.Universal_String);
 
+   overriding function Public_Id
+    (Self : String_Input_Source) return League.Strings.Universal_String;
+
    overriding procedure Next
     (Self        : in out String_Input_Source;
      Buffer      : in out
        not null Matreshka.Internals.Strings.Shared_String_Access;
      End_Of_Data : out Boolean);
 
+   not overriding procedure Set_Public_Id
+    (Self : in out String_Input_Source;
+     Id   : League.Strings.Universal_String);
+
+   not overriding procedure Set_System_Id
+    (Self : in out String_Input_Source;
+     Id   : League.Strings.Universal_String);
+
+   overriding function System_Id
+    (Self : String_Input_Source) return League.Strings.Universal_String;
+
 private
 
    type String_Input_Source is limited new SAX_Input_Source with record
-      String : League.Strings.Universal_String;
+      String    : League.Strings.Universal_String;
+      Public_Id : League.Strings.Universal_String;
+      System_Id : League.Strings.Universal_String;
    end record;
 
 end XML.SAX.Input_Sources.Strings;

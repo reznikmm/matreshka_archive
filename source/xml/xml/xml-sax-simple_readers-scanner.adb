@@ -1656,7 +1656,9 @@ package body XML.SAX.Simple_Readers.Scanner is
 --                     goto next_action;
 
                else
-                  if Self.Stack_Is_Empty then
+                  if Is_Document_Entity
+                      (Self.Entities, Self.Scanner_State.Entity)
+                  then
                      --  Document entity.
 
                      if Self.Last_Chunk then

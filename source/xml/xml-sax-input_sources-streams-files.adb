@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Characters.Conversions;
 
 package body XML.SAX.Input_Sources.Streams.Files is
 
@@ -68,6 +69,9 @@ package body XML.SAX.Input_Sources.Streams.Files is
      Name : String) is
    begin
       Open (Self.File, Ada.Streams.Stream_IO.In_File, Name);
+      Self.Set_System_Id
+       (League.Strings.To_Universal_String
+         (Ada.Characters.Conversions.To_Wide_Wide_String (Name)));
       Self.Set_Stream (Stream_Access (Stream (Self.File)));
    end Open;
 
