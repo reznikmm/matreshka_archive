@@ -52,6 +52,22 @@ package body XML.SAX.Simple_Readers is
    use Matreshka.Internals.Strings;
    use XML.SAX.Readers;
 
+   -----------
+   -- Clear --
+   -----------
+
+   procedure Clear (Item : in out YYSType) is
+   begin
+      if Item.String /= null then
+         Matreshka.Internals.Strings.Dereference (Item.String);
+         Item.String        := null;
+      end if;
+
+      Item.Is_Whitespace := False;
+      Item.Is_CData      := False;
+      Item.Symbol        := Matreshka.Internals.XML.No_Symbol;
+   end Clear;
+
    ---------------------
    -- Content_Handler --
    ---------------------
@@ -180,6 +196,25 @@ package body XML.SAX.Simple_Readers is
       end if;
    end Lexical_Handler;
 
+   ----------
+   -- Move --
+   ----------
+
+   procedure Move
+    (To   : in out YYSType;
+     From : in out YYSType) is
+   begin
+      To.String        := From.String;
+      To.Is_Whitespace := From.Is_Whitespace;
+      To.Is_CData      := From.Is_CData;
+      To.Symbol        := From.Symbol;
+
+      From.String        := null;
+      From.Is_Whitespace := False;
+      From.Is_CData      := False;
+      From.Symbol        := Matreshka.Internals.XML.No_Symbol;
+   end Move;
+
    -----------
    -- Parse --
    -----------
@@ -284,6 +319,17 @@ package body XML.SAX.Simple_Readers is
       end if;
    end Set_DTD_Handler;
 
+   ---------------------------
+   -- Set_Enable_Namespaces --
+   ---------------------------
+
+   procedure Set_Enable_Namespaces
+    (Self    : not null access SAX_Simple_Reader;
+     Enabled : Boolean) is
+   begin
+      Self.Namespaces.Enabled := Enabled;
+   end Set_Enable_Namespaces;
+
    -------------------------
    -- Set_Entity_Resolver --
    -------------------------
@@ -382,51 +428,5 @@ package body XML.SAX.Simple_Readers is
       Item.Is_CData      := False;
       Item.Symbol        := Symbol;
    end Set_Symbol;
-
-   ----------
-   -- Move --
-   ----------
-
-   procedure Move
-    (To   : in out YYSType;
-     From : in out YYSType) is
-   begin
-      To.String        := From.String;
-      To.Is_Whitespace := From.Is_Whitespace;
-      To.Is_CData      := From.Is_CData;
-      To.Symbol        := From.Symbol;
-
-      From.String        := null;
-      From.Is_Whitespace := False;
-      From.Is_CData      := False;
-      From.Symbol        := Matreshka.Internals.XML.No_Symbol;
-   end Move;
-
-   -----------
-   -- Clear --
-   -----------
-
-   procedure Clear (Item : in out YYSType) is
-   begin
-      if Item.String /= null then
-         Matreshka.Internals.Strings.Dereference (Item.String);
-         Item.String        := null;
-      end if;
-
-      Item.Is_Whitespace := False;
-      Item.Is_CData      := False;
-      Item.Symbol        := Matreshka.Internals.XML.No_Symbol;
-   end Clear;
-
-   ---------------------------
-   -- Set_Enable_Namespaces --
-   ---------------------------
-
-   procedure Set_Enable_Namespaces
-    (Self    : not null access SAX_Simple_Reader;
-     Enabled : Boolean) is
-   begin
-      Self.Namespaces.Enabled := Enabled;
-   end Set_Enable_Namespaces;
 
 end XML.SAX.Simple_Readers;
