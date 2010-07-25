@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
-with XML.SAX.Attributes.Internals;
 with XML.SAX.Simple_Readers.Callbacks;
 with XML.SAX.Simple_Readers.Parser.Actions;
 with XML.SAX.Simple_Readers.Parser.Tables;
