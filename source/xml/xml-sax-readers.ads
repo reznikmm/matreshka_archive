@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
-
 with XML.SAX.Content_Handlers;
 with XML.SAX.Declaration_Handlers;
 with XML.SAX.DTD_Handlers;
