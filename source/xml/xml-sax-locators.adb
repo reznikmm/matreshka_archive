@@ -65,6 +65,19 @@ package body XML.SAX.Locators is
    end Column;
 
    --------------
+   -- Encoding --
+   --------------
+
+   function Encoding
+    (Self : SAX_Locator'Class) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return League.Strings.Empty_Universal_String;
+   end Encoding;
+
+   --------------
    -- Finalize --
    --------------
 
@@ -94,5 +107,44 @@ package body XML.SAX.Locators is
    begin
       return Self.Data.Line;
    end Line;
+
+   ---------------
+   -- Public_Id --
+   ---------------
+
+   function Public_Id
+    (Self : SAX_Locator'Class) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return League.Strings.Empty_Universal_String;
+   end Public_Id;
+
+   ---------------
+   -- System_Id --
+   ---------------
+
+   function System_Id
+    (Self : SAX_Locator'Class) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return League.Strings.Empty_Universal_String;
+   end System_Id;
+
+   -------------
+   -- Version --
+   -------------
+
+   function Version
+    (Self : SAX_Locator'Class) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return League.Strings.Empty_Universal_String;
+   end Version;
 
 end XML.SAX.Locators;

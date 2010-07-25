@@ -55,6 +55,7 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
+with League.Strings;
 private with Matreshka.Internals.Atomics.Counters;
 
 package XML.SAX.Locators is
@@ -67,9 +68,25 @@ package XML.SAX.Locators is
    --  Returns the column number (starting at 1) or 0 if there is no column
    --  number available.
 
+   function Encoding
+    (Self : SAX_Locator'Class) return League.Strings.Universal_String;
+   --  Returns the name of the character encoding for the entity.
+
    function Line (Self : SAX_Locator'Class) return Natural;
    --  Returns the line number (starting at 1) or 0 if there is no line
    --  number available.
+
+   function Public_Id
+    (Self : SAX_Locator'Class) return League.Strings.Universal_String;
+   --  Returns the public identifier for the current document event.
+
+   function System_Id
+    (Self : SAX_Locator'Class) return League.Strings.Universal_String;
+   --  Returns the system identifier for the current document event.
+
+   function Version
+    (Self : SAX_Locator'Class) return League.Strings.Universal_String;
+   --  Returns the version of XML used for the entity.
 
 private
 
