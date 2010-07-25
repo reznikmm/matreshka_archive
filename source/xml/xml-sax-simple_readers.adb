@@ -256,17 +256,6 @@ package body XML.SAX.Simple_Readers is
       Self.Scanner_State.Source := Source.all'Unchecked_Access;
       Self.Scanner_State.Data :=
         Matreshka.Internals.Strings.Shared_Empty'Access;
-
---      if Self.Scanner_State.Data = null then
---         Self.Scanner_State.Data := League.Strings.Internals.Get_Shared (Data);
---         Matreshka.Internals.Strings.Reference (Self.Scanner_State.Data);
---
---      else
---         Matreshka.Internals.Strings.Operations.Append
---          (Self.Scanner_State.Data,
---           League.Strings.Internals.Get_Shared (Data));
---      end if;
-
       Parser.YYParse (Self);
       Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
    end Parse;
