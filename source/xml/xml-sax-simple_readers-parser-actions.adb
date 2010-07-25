@@ -141,7 +141,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       --
       --  The Name in an element's end-tag MUST match the element type in the
       --  start-tag.
-   
+
       if Self.Element_Names.Last_Element /= Symbol then
          Callbacks.Call_Fatal_Error
           (Self,
@@ -254,7 +254,8 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                --  element type of the root element."
 
                raise Program_Error
-                 with "[2.8 VC: Root Element Type] Root element has wrong name";
+                 with "[2.8 VC: Root Element Type]"
+                        & " Root element has wrong name";
                --  Error
             end if;
          end if;
@@ -338,7 +339,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                   --
                   --  Check whether xmlns namespace name is not declared as
                   --  default namespace.
-            
+
                   if Ns = Symbol_xmlns_NS then
                      Callbacks.Call_Fatal_Error
                       (Self,
@@ -496,7 +497,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                return;
             end if;
          end if;
-           
+
          --  Resolve attribute's namespaces.
 
          for J in 1 .. Length (Self.Attribute_Set) loop
@@ -548,10 +549,10 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          --  1. have identical names, or
          --
          --  2. have qualified names with the same local part and with prefixes
-         --  which have been bound to namespace names that are identical. 
+         --  which have been bound to namespace names that are identical.
          --
          --  This constraint is equivalent to requiring that no element have
-         --  two attributes with the same expanded name. 
+         --  two attributes with the same expanded name.
 
          for J in 1 .. Length (Self.Attribute_Set) loop
             declare
