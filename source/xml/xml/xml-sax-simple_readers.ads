@@ -237,30 +237,30 @@ private
           (Positive, Interfaces.Unsigned_32, Interfaces."=");
 
    type Scanner_State_Information is record
-      Source                : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Data                  : Matreshka.Internals.Strings.Shared_String_Access;
-      YY_Base_Position      : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
-      YY_Base_Index         : Positive := 1;
-      YY_Base_Line          : Natural := 1;
-      YY_Base_Column        : Natural := 1;
-      YY_Base_Skip_LF       : Boolean := False;
-      YY_Current_Position   : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
-      YY_Current_Index      : Positive := 1;
-      YY_Current_Line       : Natural := 1;
-      YY_Current_Column     : Natural := 1;
-      YY_Current_Skip_LF    : Boolean := False;
-      YY_Start_State        : Interfaces.Unsigned_32 := 1;
-      Last_Match            : Boolean  := True;
+      Source               : XML.SAX.Input_Sources.SAX_Input_Source_Access;
+      Data                 : Matreshka.Internals.Strings.Shared_String_Access;
+      YY_Base_Position     : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+      YY_Base_Index        : Positive := 1;
+      YY_Base_Line         : Natural := 1;
+      YY_Base_Column       : Natural := 1;
+      YY_Base_Skip_LF      : Boolean := False;
+      YY_Current_Position  : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+      YY_Current_Index     : Positive := 1;
+      YY_Current_Line      : Natural := 1;
+      YY_Current_Column    : Natural := 1;
+      YY_Current_Skip_LF   : Boolean := False;
+      YY_Start_State       : Interfaces.Unsigned_32 := 1;
+      Last_Match           : Boolean  := True;
       --  This mean that last match need to be processed.
-      End_Of_Source         : Boolean  := True;
+      End_Of_Source        : Boolean  := True;
       --  This mean end of source reached.
-      Is_External_Subset    : Boolean  := False;
-      Entity                : Matreshka.Internals.XML.Entity_Identifier
+      Is_External_Subset   : Boolean  := False;
+      Entity               : Matreshka.Internals.XML.Entity_Identifier
         := Matreshka.Internals.XML.No_Entity;
       Start_Condition_Stack : Unsigned_32_Vectors.Vector;
-      Delimiter             : Matreshka.Internals.Unicode.Code_Point;
+      Delimiter            : Matreshka.Internals.Unicode.Code_Point;
       --  Delimiter of the entity value.
-      In_Literal            : Boolean  := False;
+      In_Literal           : Boolean  := False;
       --  Include in literal mode, apostrophe and quotation characters are
       --  ignored.
       --  XXX The same behavior can be achived by resetting Delimiter to
