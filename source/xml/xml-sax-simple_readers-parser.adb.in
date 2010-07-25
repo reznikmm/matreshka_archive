@@ -119,7 +119,7 @@ package body XML.SAX.Simple_Readers.Parser is
     (Self    : not null access SAX_Simple_Reader'Class;
      Comment : League.Strings.Universal_String) is
    begin
-      Callbacks.Call_Comment (Self, Comment);
+      Callbacks.Call_Comment (Self.all, Comment);
    end Process_Comment;
 
    -------------------------------
@@ -175,14 +175,14 @@ package body XML.SAX.Simple_Readers.Parser is
              (Self.Entities, Self.Public_Id, Self.System_Id, Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
             Callbacks.Call_External_Entity_Declaration
-             (Self, Name, Self.Public_Id, Self.System_Id);
+             (Self.all, Name, Self.Public_Id, Self.System_Id);
 
          else
             New_External_Unparsed_General_Entity
              (Self.Entities, Notation, Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
             Callbacks.Call_Unparsed_Entity_Declaration
-             (Self,
+             (Self.all,
               Name,
               Self.Public_Id,
               Self.System_Id,
@@ -199,7 +199,7 @@ package body XML.SAX.Simple_Readers.Parser is
             Matreshka.Internals.Strings.Reference (A);
             New_Internal_General_Entity (Self.Entities, A, Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
-            Callbacks.Call_Internal_Entity_Declaration (Self, Name, Value);
+            Callbacks.Call_Internal_Entity_Declaration (Self.all, Name, Value);
          end;
       end if;
    end Process_General_Entity_Declaration;
@@ -252,7 +252,7 @@ package body XML.SAX.Simple_Readers.Parser is
      Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : League.Strings.Universal_String) is
    begin
-      Callbacks.Call_Processing_Instruction (Self, Target, Data);
+      Callbacks.Call_Processing_Instruction (Self.all, Target, Data);
    end Process_Processing_Instruction;
 
    -------------------
@@ -434,7 +434,8 @@ package body XML.SAX.Simple_Readers.Parser is
          elsif YY_Action = YY_Error_Code then  --  ERROR
             if not Self.Error_Reported then
                Callbacks.Call_Fatal_Error
-                (Self, League.Strings.To_Universal_String ("syntax error"));
+                (Self.all,
+                 League.Strings.To_Universal_String ("syntax error"));
                Self.Continue := False;
             end if;
 

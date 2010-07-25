@@ -66,10 +66,10 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
      Is_Whitespace : Boolean) is
    begin
       if Is_Whitespace then
-         Callbacks.Call_Ignorable_Whitespace (Self, Text);
+         Callbacks.Call_Ignorable_Whitespace (Self.all, Text);
 
       else
-         Callbacks.Call_Characters (Self, Text);
+         Callbacks.Call_Characters (Self.all, Text);
       end if;
    end On_Character_Data;
 
@@ -94,7 +94,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          --  start-tag or empty-element tag.
 
          Callbacks.Call_Fatal_Error
-          (Self,
+          (Self.all,
            League.Strings.To_Universal_String
             ("[3.1 WFC: Unique Att Spec]"
                & " an attribute name must not appear more than once"
@@ -144,7 +144,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       if Self.Element_Names.Last_Element /= Symbol then
          Callbacks.Call_Fatal_Error
-          (Self,
+          (Self.all,
            League.Strings.To_Universal_String
             ("[3 WFC: Element Type Match]"
                & " end tag name must match start tag name"));
@@ -153,7 +153,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       if Self.Namespaces.Enabled then
          Callbacks.Call_End_Element
-          (Self           => Self,
+          (Self           => Self.all,
            Namespace_URI  =>
              Name
               (Self.Symbols,
@@ -166,7 +166,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       else
          Callbacks.Call_End_Element
-          (Self           => Self,
+          (Self           => Self.all,
            Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
            Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
            Qualified_Name => Name (Self.Symbols, Symbol));
@@ -279,7 +279,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
          if Prefix_Name (Self.Symbols, Symbol) = Symbol_xmlns then
             Callbacks.Call_Fatal_Error
-             (Self,
+             (Self.all,
               League.Strings.To_Universal_String
                ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                   & " Names] element must not have the prefix xmlns"));
@@ -317,7 +317,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = Symbol_xml_NS then
                      Callbacks.Call_Fatal_Error
-                      (Self,
+                      (Self.all,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] the xml namespace must not be declared"
@@ -342,7 +342,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = Symbol_xmlns_NS then
                      Callbacks.Call_Fatal_Error
-                      (Self,
+                      (Self.all,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] the xmlns namespace must not be declared"
@@ -373,7 +373,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = No_Symbol and Lname = Symbol_xml then
                      Callbacks.Call_Fatal_Error
-                      (Self,
+                      (Self.all,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] xml prefix must not be undeclared"));
@@ -387,7 +387,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns /= Symbol_xml_NS and Lname = Symbol_xml then
                      Callbacks.Call_Fatal_Error
-                      (Self,
+                      (Self.all,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] xml prefix must not be bound to any"
@@ -402,7 +402,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = Symbol_xml_NS and Lname /= Symbol_xml then
                      Callbacks.Call_Fatal_Error
-                      (Self,
+                      (Self.all,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] other prefixes must not be bound to xml"
@@ -426,7 +426,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns /= No_Symbol and Lname = Symbol_xmlns then
                      Callbacks.Call_Fatal_Error
-                      (Self,
+                      (Self.all,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] the xmlns prefix must not be declared"));
@@ -439,7 +439,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = No_Symbol and Lname = Symbol_xmlns then
                      Callbacks.Call_Fatal_Error
-                      (Self,
+                      (Self.all,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] the xmlns prefix must not be"
@@ -453,7 +453,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = Symbol_xmlns_NS and Lname /= Symbol_xmlns then
                      Callbacks.Call_Fatal_Error
-                      (Self,
+                      (Self.all,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] prefix must not be bound to xmlns"
@@ -487,7 +487,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
             if Element_Namespace = No_Symbol then
                Callbacks.Call_Fatal_Error
-                (Self,
+                (Self.all,
                  League.Strings.To_Universal_String
                   ("[NSXML1.1 5 NSC: Prefix Declared]"
                      & " the element's namespace prefix have not been"
@@ -526,7 +526,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   if Ns = No_Symbol then
                      Callbacks.Call_Fatal_Error
-                      (Self,
+                      (Self.all,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 5 NSC: Prefix Declared]"
                            & " the attribute's namespace prefix have not been"
@@ -570,7 +570,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                         = Ln
                   then
                      Callbacks.Call_Fatal_Error
-                      (Self,
+                      (Self.all,
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 6.3] attributes must not have the same"
                            & " expanded name"));
@@ -584,7 +584,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
          Convert;
          Callbacks.Call_Start_Element
-          (Self           => Self,
+          (Self           => Self.all,
            Namespace_URI  => Name (Self.Symbols, Element_Namespace),
            Local_Name     => Local_Name (Self.Symbols, Symbol),
            Qualified_Name => Name (Self.Symbols, Symbol),
@@ -593,7 +593,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       else
          Convert;
          Callbacks.Call_Start_Element
-          (Self           => Self,
+          (Self           => Self.all,
            Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
            Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
            Qualified_Name =>

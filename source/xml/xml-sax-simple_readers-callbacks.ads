@@ -49,17 +49,17 @@ private package XML.SAX.Simple_Readers.Callbacks is
    pragma Preelaborate;
 
    procedure Call_Comment
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Comment : League.Strings.Universal_String);
    --  Calls handler's SAX_Lexical_Handler.Comment subprogram.
 
    procedure Call_Characters
-    (Self : not null access SAX_Simple_Reader'Class;
+    (Self : in out SAX_Simple_Reader'Class;
      Text : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Calls handler's SAX_Content_Handler.Characters subprogram.
 
    procedure Call_End_Element
-    (Self           : not null access SAX_Simple_Reader'Class;
+    (Self           : in out SAX_Simple_Reader'Class;
      Namespace_URI  :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Local_Name     :
@@ -69,53 +69,53 @@ private package XML.SAX.Simple_Readers.Callbacks is
    --  Calls handler's SAX_Content_Handler.End_Element subprogram.
 
    procedure Call_Error
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Message : League.Strings.Universal_String);
    --  Calls handler's SAX_Error_Handler.Error subprogram.
 
    procedure Call_External_Entity_Declaration
-    (Self      : not null access SAX_Simple_Reader'Class;
+    (Self      : in out SAX_Simple_Reader'Class;
      Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String);
    --  Calls handler's SAX_Decl_Handler.External_Entity_Declaration subprogram.
 
    procedure Call_Fatal_Error
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Message : League.Strings.Universal_String);
    --  Calls handler's SAX_Error_Handler.Fatal_Error subprogram.
 
    procedure Call_Ignorable_Whitespace
-    (Self : not null access SAX_Simple_Reader'Class;
+    (Self : in out SAX_Simple_Reader'Class;
      Text : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Calls handler's SAX_Content_Handler.Ignorable_Whitespace subprogram.
 
    procedure Call_Internal_Entity_Declaration
-    (Self  : not null access SAX_Simple_Reader'Class;
+    (Self  : in out SAX_Simple_Reader'Class;
      Name  : League.Strings.Universal_String;
      Value : League.Strings.Universal_String);
    --  Calls handler's SAX_Decl_Handler.Internal_Entity_Declaration subprogram.
 
    procedure Call_Processing_Instruction
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : League.Strings.Universal_String);
    --  Calls handler's SAX_Content_Handler.Processing_Instruction subprogram.
 
    procedure Call_Resolve_Entity
-    (Self      : not null access SAX_Simple_Reader'Class;
+    (Self      : in out SAX_Simple_Reader'Class;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access);
    --  Calls entity resolver's SAX_Entity_Resolver.Resolve_Entity subprogram.
 
    procedure Call_Set_Document_Locator
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Locator : XML.SAX.Locators.SAX_Locator);
    --  Calls handler's SAX_Content_Handler.Set_Document_Locator subprogram.
 
    procedure Call_Start_Element
-    (Self           : not null access SAX_Simple_Reader'Class;
+    (Self           : in out SAX_Simple_Reader'Class;
      Namespace_URI  :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Local_Name     :
@@ -126,7 +126,7 @@ private package XML.SAX.Simple_Readers.Callbacks is
    --  Calls handler's SAX_Content_Handler.Start_Element subprogram.
 
    procedure Call_Unparsed_Entity_Declaration
-    (Self          : not null access SAX_Simple_Reader'Class;
+    (Self          : in out SAX_Simple_Reader'Class;
      Name          : League.Strings.Universal_String;
      Public_Id     : League.Strings.Universal_String;
      System_Id     : League.Strings.Universal_String;
@@ -134,7 +134,7 @@ private package XML.SAX.Simple_Readers.Callbacks is
    --  Calls handler's SAX_DTD_Handler.Unparsed_Entity_Declaration subprogram.
 
    procedure Call_Warning
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Message : League.Strings.Universal_String);
    --  Calls handler's SAX_Error_Handler.Warning subprogram.
 

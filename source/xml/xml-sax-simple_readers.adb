@@ -224,7 +224,7 @@ package body XML.SAX.Simple_Readers is
      Data       : League.Strings.Universal_String;
      Last_Chunk : Boolean := True) is
    begin
-      Callbacks.Call_Set_Document_Locator (Self, Self.Locator);
+      Callbacks.Call_Set_Document_Locator (Self.all, Self.Locator);
       Self.Last_Chunk := Last_Chunk;
       Self.Scanner_State.Last_Match := Last_Chunk;
 
@@ -250,7 +250,7 @@ package body XML.SAX.Simple_Readers is
     (Self   : not null access SAX_Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class) is
    begin
-      Callbacks.Call_Set_Document_Locator (Self, Self.Locator);
+      Callbacks.Call_Set_Document_Locator (Self.all, Self.Locator);
       Self.Last_Chunk := False;
       Self.Scanner_State.Last_Match := False;
       Self.Scanner_State.Source := Source.all'Unchecked_Access;

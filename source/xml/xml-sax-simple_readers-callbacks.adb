@@ -49,7 +49,7 @@ with XML.SAX.Parse_Exceptions.Internals;
 
 package body XML.SAX.Simple_Readers.Callbacks is
 
-   procedure Setup_Locator (Self : not null access SAX_Simple_Reader'Class);
+   procedure Setup_Locator (Self : in out SAX_Simple_Reader'Class);
    --  Sets up locator.
 
    ---------------------
@@ -57,7 +57,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ---------------------
 
    procedure Call_Characters
-    (Self : not null access SAX_Simple_Reader'Class;
+    (Self : in out SAX_Simple_Reader'Class;
      Text : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Setup_Locator (Self);
@@ -81,7 +81,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ------------------
 
    procedure Call_Comment
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Comment : League.Strings.Universal_String) is
    begin
       Setup_Locator (Self);
@@ -104,7 +104,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ----------------------
 
    procedure Call_End_Element
-    (Self           : not null access SAX_Simple_Reader'Class;
+    (Self           : in out SAX_Simple_Reader'Class;
      Namespace_URI  :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Local_Name     :
@@ -136,7 +136,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ----------------
 
    procedure Call_Error
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Message : League.Strings.Universal_String) is
    begin
       Setup_Locator (Self);
@@ -166,7 +166,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    --------------------------------------
 
    procedure Call_External_Entity_Declaration
-    (Self      : not null access SAX_Simple_Reader'Class;
+    (Self      : in out SAX_Simple_Reader'Class;
      Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String) is
@@ -192,7 +192,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ----------------------
 
    procedure Call_Fatal_Error
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Message : League.Strings.Universal_String) is
    begin
       Setup_Locator (Self);
@@ -222,7 +222,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -------------------------------
 
    procedure Call_Ignorable_Whitespace
-    (Self : not null access SAX_Simple_Reader'Class;
+    (Self : in out SAX_Simple_Reader'Class;
      Text : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Setup_Locator (Self);
@@ -246,7 +246,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    --------------------------------------
 
    procedure Call_Internal_Entity_Declaration
-    (Self  : not null access SAX_Simple_Reader'Class;
+    (Self  : in out SAX_Simple_Reader'Class;
      Name  : League.Strings.Universal_String;
      Value : League.Strings.Universal_String) is
    begin
@@ -271,7 +271,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ---------------------------------
 
    procedure Call_Processing_Instruction
-    (Self   : not null access SAX_Simple_Reader'Class;
+    (Self   : in out SAX_Simple_Reader'Class;
      Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : League.Strings.Universal_String) is
    begin
@@ -299,7 +299,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -------------------------
 
    procedure Call_Resolve_Entity
-    (Self      : not null access SAX_Simple_Reader'Class;
+    (Self      : in out SAX_Simple_Reader'Class;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access) is
@@ -328,7 +328,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -------------------------------
 
    procedure Call_Set_Document_Locator
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Locator : XML.SAX.Locators.SAX_Locator) is
    begin
       Self.Content_Handler.Set_Document_Locator (Locator);
@@ -346,7 +346,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ------------------------
 
    procedure Call_Start_Element
-    (Self           : not null access SAX_Simple_Reader'Class;
+    (Self           : in out SAX_Simple_Reader'Class;
      Namespace_URI  :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Local_Name     :
@@ -380,7 +380,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    --------------------------------------
 
    procedure Call_Unparsed_Entity_Declaration
-    (Self          : not null access SAX_Simple_Reader'Class;
+    (Self          : in out SAX_Simple_Reader'Class;
      Name          : League.Strings.Universal_String;
      Public_Id     : League.Strings.Universal_String;
      System_Id     : League.Strings.Universal_String;
@@ -407,7 +407,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ------------------
 
    procedure Call_Warning
-    (Self    : not null access SAX_Simple_Reader'Class;
+    (Self    : in out SAX_Simple_Reader'Class;
      Message : League.Strings.Universal_String) is
    begin
       Setup_Locator (Self);
@@ -436,7 +436,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -- Setup_Locator --
    -------------------
 
-   procedure Setup_Locator (Self : not null access SAX_Simple_Reader'Class) is
+   procedure Setup_Locator (Self : in out SAX_Simple_Reader'Class) is
    begin
       XML.SAX.Locators.Internals.Set_Location
        (Self.Locator,
