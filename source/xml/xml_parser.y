@@ -69,12 +69,23 @@
 
 %%
 
-document :
+document_entity :
     XMLDecl_optional
 {
    Actions.On_Start_Of_Document (Self);
 }
+    document
+{
+   null;
+}
+  ;
+
+document :
     Misc_any doctypedecl_optional element Misc_any
+{
+   null;
+}
+  | error
 {
    null;
 }
