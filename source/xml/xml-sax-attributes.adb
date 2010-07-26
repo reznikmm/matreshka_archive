@@ -198,6 +198,15 @@ package body XML.SAX.Attributes is
       --  XXX Not supported.
    end Is_Declared;
 
+   --------------
+   -- Is_Empty --
+   --------------
+
+   function Is_Empty (Self : SAX_Attributes'Class) return Boolean is
+   begin
+      return Self.Data.Length = 0;
+   end Is_Empty;
+
    ------------------
    -- Is_Specified --
    ------------------

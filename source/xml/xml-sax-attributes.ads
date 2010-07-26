@@ -104,6 +104,9 @@ package XML.SAX.Attributes is
    --  defaulting. The index must be valid position, otherwise Constraint_Error
    --  is raised.
 
+   function Is_Empty (Self : SAX_Attributes'Class) return Boolean;
+   --  Returns True when there are no attributes available.
+
    function Is_Specified
     (Self           : SAX_Attributes'Class;
      Qualified_Name : League.Strings.Universal_String)
@@ -239,6 +242,7 @@ private
 
    overriding procedure Finalize (Self : in out SAX_Attributes);
 
+   pragma Inline (Is_Empty);
    pragma Inline (Length);
 
 end XML.SAX.Attributes;
