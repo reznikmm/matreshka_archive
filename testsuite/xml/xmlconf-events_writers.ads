@@ -41,47 +41,134 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Finalization;
+
 with League.Strings;
 with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
+with XML.SAX.Entity_Resolvers;
 with XML.SAX.Error_Handlers;
+with XML.SAX.Input_Sources;
+with XML.SAX.Locators;
 with XML.SAX.Parse_Exceptions;
 
-package XMLConf.Testsuite_Handlers is
+package XMLConf.Events_Writers is
 
-   type Result_Record is record
-      Passed : Natural := 0;
-      Failed : Natural := 0;
-      Crash  : Natural := 0;
-      Output : Natural := 0;
-   end record;
-
-   type Result_Array is array (Test_Kinds) of Result_Record;
-
-   type Testsuite_Handler is
+   type Events_Writer is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
-       and XML.SAX.Error_Handlers.SAX_Error_Handler
-   with record
-      Base    : League.Strings.Universal_String;
-      --  Base path to tests' data.
-      Results : Result_Array;
-   end record;
+       and XML.SAX.Entity_Resolvers.SAX_Entity_Resolver
+       and XML.SAX.Error_Handlers.SAX_Error_Handler with private;
+
+   not overriding procedure Done (Self : in out Events_Writer);
+
+   not overriding function Has_Fatal_Errors
+    (Self : Events_Writer) return Boolean;
+
+   not overriding function Has_Errors (Self : Events_Writer) return Boolean;
+
+   overriding procedure Characters
+    (Self    : in out Events_Writer;
+     Text    : League.Strings.Universal_String;
+     Success : in out Boolean);
+
+   overriding procedure End_Document
+    (Self    : in out Events_Writer;
+     Success : in out Boolean);
+
+   overriding procedure End_Element
+    (Self           : in out Events_Writer;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Success        : in out Boolean);
+
+   overriding procedure End_Prefix_Mapping
+    (Self    : in out Events_Writer;
+     Prefix  : League.Strings.Universal_String;
+     Success : in out Boolean);
+
+   overriding procedure Error
+    (Self       : in out Events_Writer;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean);
 
    overriding function Error_String
-    (Self : Testsuite_Handler)
+    (Self : Events_Writer)
        return League.Strings.Universal_String;
 
+   overriding procedure Fatal_Error
+    (Self       : in out Events_Writer;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean);
+
+   overriding procedure Ignorable_Whitespace
+    (Self    : in out Events_Writer;
+     Text    : League.Strings.Universal_String;
+     Success : in out Boolean);
+
+   overriding procedure Processing_Instruction
+    (Self    : in out Events_Writer;
+     Target  : League.Strings.Universal_String;
+     Data    : League.Strings.Universal_String;
+     Success : in out Boolean);
+
+   overriding procedure Resolve_Entity
+    (Self      : in out Events_Writer;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
+     Success   : in out Boolean);
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out Events_Writer;
+     Locator : XML.SAX.Locators.SAX_Locator);
+
+   overriding procedure Skipped_Entity
+    (Self    : in out Events_Writer;
+     Name    : League.Strings.Universal_String;
+     Success : in out Boolean);
+
+   overriding procedure Start_Document
+    (Self    : in out Events_Writer;
+     Success : in out Boolean);
+
    overriding procedure Start_Element
-    (Self           : in out Testsuite_Handler;
+    (Self           : in out Events_Writer;
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean);
 
-   overriding procedure Fatal_Error
-    (Self       : in out Testsuite_Handler;
+   overriding procedure Start_Prefix_Mapping
+    (Self    : in out Events_Writer;
+     Prefix  : League.Strings.Universal_String;
+     URI     : League.Strings.Universal_String;
+     Success : in out Boolean);
+
+   overriding procedure Warning
+    (Self       : in out Events_Writer;
      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
      Success    : in out Boolean);
 
-end XMLConf.Testsuite_Handlers;
+private
+
+   type Events_Writer is
+     new Ada.Finalization.Limited_Controlled
+       and XML.SAX.Content_Handlers.SAX_Content_Handler
+       and XML.SAX.Entity_Resolvers.SAX_Entity_Resolver
+       and XML.SAX.Error_Handlers.SAX_Error_Handler with
+   record
+      Fatal_Errors : Boolean := False;
+      Errors       : Boolean := False;
+      Result       : League.Strings.Universal_String;
+   end record;
+
+   not overriding procedure Add_Line
+    (Self : in out Events_Writer;
+     Item : League.Strings.Universal_String);
+   --  Adds line to result.
+
+   overriding procedure Initialize (Self : in out Events_Writer);
+
+end XMLConf.Events_Writers;

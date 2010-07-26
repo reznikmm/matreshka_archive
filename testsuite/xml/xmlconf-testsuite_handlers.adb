@@ -50,8 +50,8 @@ with Read_File;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 with XMLConf.Canonical_Writers;
-
 with XMLConf.Entity_Resolvers;
+with XMLConf.Events_Writers;
 
 package body XMLConf.Testsuite_Handlers is
 
@@ -129,8 +129,8 @@ package body XMLConf.Testsuite_Handlers is
                  (League.Strings.To_Wide_Wide_String (Base & URI)));
          Source   : aliased
            XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-         Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
          Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+         Writer   : aliased XMLConf.Events_Writers.Events_Writer;
 
       begin
          Ada.Directories.Set_Directory (Dwd);
@@ -141,7 +141,9 @@ package body XMLConf.Testsuite_Handlers is
             raise Program_Error with "terminated by timeout";
 
          then abort
-            Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
+            Reader.Set_Content_Handler (Writer'Unchecked_Access);
+            Reader.Set_Error_Handler (Writer'Unchecked_Access);
+            Reader.Set_Entity_Resolver (Writer'Unchecked_Access);
             Reader.Set_Enable_Namespaces (Namespaces);
 
             Source.Open
@@ -149,6 +151,27 @@ package body XMLConf.Testsuite_Handlers is
                (Ada.Characters.Conversions.To_String
                  (URI.To_Wide_Wide_String)));
             Reader.Parse (Source'Access);
+            Writer.Done;
+
+            case Kind is
+               when Valid =>
+                  if Writer.Has_Fatal_Errors or Writer.Has_Errors then
+                     Failed := True;
+                  end if;
+
+               when Invalid =>
+                  if not Writer.Has_Fatal_Errors and not Writer.Has_Errors then
+                     Failed := True;
+                  end if;
+
+               when Not_Wellformed =>
+                  if not Writer.Has_Fatal_Errors then
+                     Failed := True;
+                  end if;
+
+               when Error =>
+                  null;
+            end case;
          end select;
 
          Ada.Directories.Set_Directory (Cwd);
@@ -182,7 +205,6 @@ package body XMLConf.Testsuite_Handlers is
             Expected : League.Strings.Universal_String;
 
          begin
-            Put_Line (Id);
             Expected :=
               Read_File
                (Ada.Characters.Conversions.To_String
@@ -207,11 +229,12 @@ package body XMLConf.Testsuite_Handlers is
                Reader.Parse (Source'Access);
 
                if Expected /= Writer.Text then
-                  Put_Line (League.Strings.To_Universal_String ("Namespaces : " & Boolean'Wide_Wide_Image (Namespaces)));
+                  Put_Line (Id & ": output");
                   Put_Line ("Expected output: '" & Expected & "'");
                   Put_Line ("Actual output  : '" & Writer.Text & "'");
 
-                  raise Program_Error with "invalid output";
+                  Self.Results (Kind).Output := Self.Results (Kind).Output + 1;
+                  Failed := True;
                end if;
             end select;
 
@@ -226,7 +249,15 @@ package body XMLConf.Testsuite_Handlers is
                 (League.Strings.To_Universal_String
                   (Ada.Characters.Conversions.To_Wide_Wide_String
                     (Ada.Exceptions.Exception_Information (X))));
+               Failed := True;
          end;
+      end if;
+
+      if Failed then
+         Self.Results (Kind).Failed := Self.Results (Kind).Failed + 1;
+
+      else
+         Self.Results (Kind).Passed := Self.Results (Kind).Passed + 1;
       end if;
 
    exception

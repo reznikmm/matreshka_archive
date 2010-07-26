@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with Ada.Command_Line;
 with Ada.Directories;
+with Ada.Integer_Text_IO;
+with Ada.Text_IO;
 
 with League.Strings;
 with XML.SAX.Input_Sources.Streams.Files;
@@ -55,6 +57,10 @@ with Put_Line;
 procedure XMLConf_Test is
 
    use XMLConf;
+   use Ada.Integer_Text_IO;
+   use Ada.Text_IO;
+
+   type Percent is delta 0.01 range 0.00 .. 100.00;
 
    Cwd      : constant String := Ada.Directories.Current_Directory;
    Data     : constant String := Ada.Command_Line.Argument (1);
@@ -63,6 +69,8 @@ procedure XMLConf_Test is
    Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
    Handler  : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
+   Passed   : Natural;
+   Failed   : Natural;
 
 begin
    XML.SAX.Simple_Readers.Put_Line := Put_Line'Access;
@@ -79,18 +87,87 @@ begin
    Reader.Parse (Source'Access);
    Ada.Directories.Set_Directory (Cwd);
 
+   Put_Line (" Group  Passed Failed  Crash Output");
+   Put_Line ("------- ------ ------ ------ ------");
+   Put ("valid  ");
+   Put (Handler.Results (Valid).Passed, 7);
+   Put (Handler.Results (Valid).Failed, 7);
+   Put (Handler.Results (Valid).Crash, 7);
+   Put (Handler.Results (Valid).Output, 7);
+   New_Line;
+
+   Put ("invalid");
+   Put (Handler.Results (Invalid).Passed, 7);
+   Put (Handler.Results (Invalid).Failed, 7);
+   Put (Handler.Results (Invalid).Crash, 7);
+   Put (Handler.Results (Invalid).Output, 7);
+   New_Line;
+
+   Put ("not-wf ");
+   Put (Handler.Results (Not_Wellformed).Passed, 7);
+   Put (Handler.Results (Not_Wellformed).Failed, 7);
+   Put (Handler.Results (Not_Wellformed).Crash, 7);
+   Put (Handler.Results (Not_Wellformed).Output, 7);
+   New_Line;
+
+   Put ("error  ");
+   Put (Handler.Results (Error).Passed, 7);
+   Put (Handler.Results (Error).Failed, 7);
+   Put (Handler.Results (Error).Crash, 7);
+   Put (Handler.Results (Error).Output, 7);
+   New_Line;
+
+   Put_Line ("        ------ ------ ------ ------");
+   Put ("       ");
+   Put
+    (Handler.Results (Valid).Passed
+       + Handler.Results (Invalid).Passed
+       + Handler.Results (Not_Wellformed).Passed
+       + Handler.Results (Error).Passed,
+     7);
+   Put
+    (Handler.Results (Valid).Failed
+       + Handler.Results (Invalid).Failed
+       + Handler.Results (Not_Wellformed).Failed
+       + Handler.Results (Error).Failed,
+     7);
+   Put
+    (Handler.Results (Valid).Crash
+       + Handler.Results (Invalid).Crash
+       + Handler.Results (Not_Wellformed).Crash
+       + Handler.Results (Error).Crash,
+     7);
+   Put
+    (Handler.Results (Valid).Output
+       + Handler.Results (Invalid).Output
+       + Handler.Results (Not_Wellformed).Output
+       + Handler.Results (Error).Output,
+     7);
+   New_Line;
+
+   Passed :=
+     Handler.Results (Valid).Passed
+       + Handler.Results (Invalid).Passed
+       + Handler.Results (Not_Wellformed).Passed
+       + Handler.Results (Error).Passed;
+   Failed :=
+     Handler.Results (Valid).Failed
+       + Handler.Results (Invalid).Failed
+       + Handler.Results (Not_Wellformed).Failed
+       + Handler.Results (Error).Failed;
+   New_Line;
+   Put_Line
+    ("Status:"
+       & Percent'Image
+          (Percent (Float (Passed) / Float (Passed + Failed) * 100.0))
+       & "% passed");
+
    if Handler.Results (Valid).Crash /= 0
      or Handler.Results (Invalid).Crash /= 0
      or Handler.Results (Not_Wellformed).Crash /= 0
      or Handler.Results (Error).Crash /= 0
    then
-      raise Program_Error
-        with Integer'Image
-              (Handler.Results (Valid).Crash
-                 + Handler.Results (Invalid).Crash
-                 + Handler.Results (Not_Wellformed).Crash
-                 + Handler.Results (Error).Crash)
-          & " crashes";
+      raise Program_Error;
    end if;
 
 exception
