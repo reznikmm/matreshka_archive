@@ -66,6 +66,9 @@ package XMLConf.Events_Writers is
 
    not overriding function Has_Errors (Self : Events_Writer) return Boolean;
 
+   not overriding function Text
+    (Self : Events_Writer) return League.Strings.Universal_String;
+
    overriding procedure Characters
     (Self    : in out Events_Writer;
      Text    : League.Strings.Universal_String;

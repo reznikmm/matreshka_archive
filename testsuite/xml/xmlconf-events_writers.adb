@@ -50,6 +50,10 @@ package body XMLConf.Events_Writers is
 
    use League.Strings;
 
+   function Escape_Character
+    (Item : Wide_Wide_Character) return League.Strings.Universal_String;
+   --  Escapes control and special characters.
+
    --------------
    -- Add_Line --
    --------------
@@ -72,8 +76,9 @@ package body XMLConf.Events_Writers is
    begin
       for J in 1 .. Text.Length loop
          Self.Add_Line
-          (To_Universal_String
-            ("  <characters>" & Text.Element (J) & "</characters>"));
+          ("  <characters>"
+             & Escape_Character (Text.Element (J))
+             & "</characters>");
       end loop;
    end Characters;
 
@@ -180,6 +185,31 @@ package body XMLConf.Events_Writers is
       return Empty_Universal_String;
    end Error_String;
 
+   ----------------------
+   -- Escape_Character --
+   ----------------------
+
+   function Escape_Character
+    (Item : Wide_Wide_Character) return League.Strings.Universal_String
+   is
+      use Ada.Characters.Wide_Wide_Latin_1;
+
+   begin
+      case Item is
+         when HT =>
+            return To_Universal_String ("&#x9;");
+
+         when LF =>
+            return To_Universal_String ("&#xA;");
+
+         when CR =>
+            return To_Universal_String ("&#xB;");
+
+         when others =>
+            return To_Universal_String (Wide_Wide_String'(1 => Item));
+      end case;
+   end Escape_Character;
+
    ----------------
    -- Has_Errors --
    ----------------
@@ -223,10 +253,9 @@ package body XMLConf.Events_Writers is
    begin
       for J in 1 .. Text.Length loop
          Self.Add_Line
-          (To_Universal_String
-            ("  <ignorableWhitespace>"
-               & Text.Element (J)
-               & "</ignorableWhitespace>"));
+          ("  <ignorableWhitespace>"
+             & Escape_Character (Text.Element (J))
+             & "</ignorableWhitespace>");
       end loop;
    end Ignorable_Whitespace;
 
@@ -406,6 +435,16 @@ package body XMLConf.Events_Writers is
       Self.Add_Line ("    <data>" & URI & "</data>");
       Self.Add_Line (To_Universal_String ("  </startPrefixMapping>"));
    end Start_Prefix_Mapping;
+
+   ----------
+   -- Text --
+   ----------
+
+   not overriding function Text
+    (Self : Events_Writer) return League.Strings.Universal_String is
+   begin
+      return Self.Result;
+   end Text;
 
    -------------
    -- Warning --

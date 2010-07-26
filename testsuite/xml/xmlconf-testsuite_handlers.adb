@@ -119,7 +119,7 @@ package body XMLConf.Testsuite_Handlers is
       Failed : Boolean := False;
 
    begin
-      --  Crash test.
+      --  SAX test.
 
       declare
          Cwd      : constant String := Ada.Directories.Current_Directory;
@@ -131,8 +131,14 @@ package body XMLConf.Testsuite_Handlers is
            XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
          Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
          Writer   : aliased XMLConf.Events_Writers.Events_Writer;
+         Expected : League.Strings.Universal_String;
 
       begin
+         Expected :=
+           Read_File
+            ("../xmlconf-expected-sax/"
+               & Ada.Characters.Conversions.To_String
+                  (League.Strings.To_Wide_Wide_String (Base & URI)));
          Ada.Directories.Set_Directory (Dwd);
 
          select
@@ -173,6 +179,15 @@ package body XMLConf.Testsuite_Handlers is
                   null;
             end case;
          end select;
+
+         if not Failed and Writer.Text /= Expected then
+            Put_Line (Id & ": SAX");
+            Put_Line ("Expected: '" & Expected & "'");
+            Put_Line ("Actual  : '" & Writer.Text & "'");
+
+            Self.Results (Kind).SAX := Self.Results (Kind).SAX + 1;
+            Failed := True;
+         end if;
 
          Ada.Directories.Set_Directory (Cwd);
 

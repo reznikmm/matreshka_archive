@@ -54,6 +54,7 @@ package XMLConf.Testsuite_Handlers is
       Failed : Natural := 0;
       Crash  : Natural := 0;
       Output : Natural := 0;
+      SAX    : Natural := 0;
    end record;
 
    type Result_Array is array (Test_Kinds) of Result_Record;
