@@ -114,6 +114,9 @@ private package XML.SAX.Simple_Readers.Callbacks is
      Locator : XML.SAX.Locators.SAX_Locator);
    --  Calls handler's SAX_Content_Handler.Set_Document_Locator subprogram.
 
+   procedure Call_Start_Document (Self : in out SAX_Simple_Reader'Class);
+   --  Calls handler's SAX_Content_Handler.Start_Document subprogram.
+
    procedure Call_Start_Element
     (Self           : in out SAX_Simple_Reader'Class;
      Namespace_URI  :

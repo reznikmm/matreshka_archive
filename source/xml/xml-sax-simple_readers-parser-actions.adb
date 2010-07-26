@@ -189,6 +189,16 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
         Self.Continue);
    end On_External_Subset_Declaration;
 
+   --------------------------
+   -- On_Start_Of_Document --
+   --------------------------
+
+   procedure On_Start_Of_Document
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Callbacks.Call_Start_Document (Self.all);
+   end On_Start_Of_Document;
+
    ------------------
    -- On_Start_Tag --
    ------------------

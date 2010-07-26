@@ -76,6 +76,10 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
     (Self : not null access SAX_Simple_Reader'Class);
    --  Handles reference to external subset in the document type declaration.
 
+   procedure On_Start_Of_Document
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles start of document.
+
    procedure On_Start_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);

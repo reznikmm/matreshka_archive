@@ -69,8 +69,12 @@
 
 %%
 
---  XXX Not implemented.
-document:  XMLDecl_optional Misc_any doctypedecl_optional element Misc_any
+document :
+    XMLDecl_optional
+{
+   Actions.On_Start_Of_Document (Self);
+}
+    Misc_any doctypedecl_optional element Misc_any
 {
    null;
 }
@@ -874,6 +878,8 @@ with Matreshka.Internals.XML.Symbol_Tables;
       procedure On_End_Of_Document_Type_Declaration
        (Self   : access Integer;
         Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Start_Of_Document (Self : access Integer);
 
    end Actions;
 
