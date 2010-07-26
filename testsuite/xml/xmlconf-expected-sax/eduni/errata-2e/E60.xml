@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <resolveEntity>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/eduni/errata-2e/E60.ent</systemID>
+    </resolveEntity>
+    <startElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+        <attributes/>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

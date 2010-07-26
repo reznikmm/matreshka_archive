@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <notation>
+        <name>not1</name>
+        <systemID>a%a&amp;b&amp;#0&lt;!ELEMENT&lt;!--&lt;?&lt;/&gt;?&gt;/\\''</systemID>
+    </notation>
+    <notation>
+        <name>not2</name>
+        <systemID>a\n\tb"""</systemID>
+    </notation>
+    <notation>
+        <name>not3</name>
+        <systemID/>
+    </notation>
+    <notation>
+        <name>not4</name>
+        <systemID/>
+    </notation>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes/>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

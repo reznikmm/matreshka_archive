@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>LegalName</localName>
+        <qualifiedName>LegalName</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>\t</char>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

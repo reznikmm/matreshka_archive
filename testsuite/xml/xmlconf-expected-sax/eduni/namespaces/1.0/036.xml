@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startPrefixMapping>
+        <prefix>a</prefix>
+        <data>http://example.org/~wilbur</data>
+    </startPrefixMapping>
+    <startPrefixMapping>
+        <prefix>b</prefix>
+        <data>http://example.org/~wilbur</data>
+    </startPrefixMapping>
+    <startElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>\n</char>
+    <char>\n</char>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

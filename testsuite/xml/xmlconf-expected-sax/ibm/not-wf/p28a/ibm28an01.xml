@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <processingInstruction>
+        <target>sound</target>
+        <data>"This\sis\sa\sPI"\s</data>
+    </processingInstruction>
+    <resolveEntity>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/not-wf/p28a/ibm28an01.dtd</systemID>
+    </resolveEntity>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startPrefixMapping>
+        <prefix>a</prefix>
+        <data>http://example.org/namespace</data>
+    </startPrefixMapping>
+    <startElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI>http://example.org/namespace</namespaceURI>
+                <localName>attr</localName>
+                <qualifiedName>a:attr</qualifiedName>
+                <value>1</value>
+                <type>CDATA</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+    </endElement>
+    <endPrefixMapping>
+        <prefix>a</prefix>
+    </endPrefixMapping>
+    <endDocument/>
+</ConformanceResults>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startPrefixMapping>
+        <prefix/>
+        <data>http://over.the.rainbow.com/somewhere</data>
+    </startPrefixMapping>
+    <startElement>
+        <namespaceURI>http://over.the.rainbow.com/somewhere</namespaceURI>
+        <localName>palimpest</localName>
+        <qualifiedName>palimpest</qualifiedName>
+        <attributes/>
+    </startElement>
+    <endElement>
+        <namespaceURI>http://over.the.rainbow.com/somewhere</namespaceURI>
+        <localName>palimpest</localName>
+        <qualifiedName>palimpest</qualifiedName>
+    </endElement>
+    <endPrefixMapping>
+        <prefix/>
+    </endPrefixMapping>
+    <endDocument/>
+</ConformanceResults>

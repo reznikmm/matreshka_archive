@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+        <attributes/>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+    </endElement>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

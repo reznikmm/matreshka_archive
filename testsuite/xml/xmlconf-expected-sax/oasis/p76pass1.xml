@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <notation>
+        <name>unknot</name>
+        <publicID>Unknown</publicID>
+    </notation>
+    <unparsedEntity>
+        <name>ge</name>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/oasis/nop.ent</systemID>
+        <notation>unknot</notation>
+    </unparsedEntity>
+    <unparsedEntity>
+        <name>ge2</name>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/oasis/nop.ent</systemID>
+        <notation>unknot</notation>
+    </unparsedEntity>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes/>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

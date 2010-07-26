@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+        <attributes/>
+    </startElement>
+    <resolveEntity>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/not-wf/P78/ibm78n01.ent</systemID>
+    </resolveEntity>
+    <char>\n</char>
+    <char>\n</char>
+    <char>A</char>
+    <char>N</char>
+    <char>Y</char>
+    <char>\s</char>
+    <char>C</char>
+    <char>O</char>
+    <char>N</char>
+    <char>T</char>
+    <char>E</char>
+    <char>N</char>
+    <char>T</char>
+    <char>\n</char>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

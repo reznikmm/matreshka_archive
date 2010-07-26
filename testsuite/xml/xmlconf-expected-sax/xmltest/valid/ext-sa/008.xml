@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>X</char>
+    <resolveEntity>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/xmltest/valid/ext-sa/008.ent</systemID>
+    </resolveEntity>
+    <char>Y</char>
+    <char>Z</char>
+    <endElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

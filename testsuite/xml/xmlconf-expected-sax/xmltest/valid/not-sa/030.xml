@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <resolveEntity>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/xmltest/valid/not-sa/030.ent</systemID>
+    </resolveEntity>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes/>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

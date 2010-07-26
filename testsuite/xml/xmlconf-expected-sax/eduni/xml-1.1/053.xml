@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>a</char>
+    <char>b</char>
+    <char>c</char>
+    <char>\u85</char>
+    <char>d</char>
+    <char>e</char>
+    <char>f</char>
+    <endElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

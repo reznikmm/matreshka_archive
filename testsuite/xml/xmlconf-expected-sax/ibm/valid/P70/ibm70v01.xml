@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <resolveEntity>
+        <publicID>-//w3c//any</publicID>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/valid/P70/ibm70v01.ent</systemID>
+    </resolveEntity>
+    <notation>
+        <name>JPGformat</name>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/valid/P70/JPGFormat</systemID>
+    </notation>
+    <unparsedEntity>
+        <name>ge2</name>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/valid/P70/image.jpg</systemID>
+        <notation>JPGformat</notation>
+    </unparsedEntity>
+    <startElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>att2</localName>
+                <qualifiedName>att2</qualifiedName>
+                <value>any</value>
+                <type>CDATA</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

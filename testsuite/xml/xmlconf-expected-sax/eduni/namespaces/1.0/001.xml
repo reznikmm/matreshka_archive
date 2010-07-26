@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startPrefixMapping>
+        <prefix/>
+        <data>http://example.org/namespace</data>
+    </startPrefixMapping>
+    <startElement>
+        <namespaceURI>http://example.org/namespace</namespaceURI>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+        <attributes/>
+    </startElement>
+    <endElement>
+        <namespaceURI>http://example.org/namespace</namespaceURI>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+    </endElement>
+    <endPrefixMapping>
+        <prefix/>
+    </endPrefixMapping>
+    <endDocument/>
+</ConformanceResults>

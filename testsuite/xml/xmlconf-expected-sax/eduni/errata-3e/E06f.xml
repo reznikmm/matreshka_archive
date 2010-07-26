@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>a</localName>
+                <qualifiedName>a</qualifiedName>
+                <value>34</value>
+                <type>NMTOKENS</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

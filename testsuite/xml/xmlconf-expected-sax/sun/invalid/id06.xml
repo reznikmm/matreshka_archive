@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>idref</localName>
+                <qualifiedName>idref</qualifiedName>
+                <value>36d</value>
+                <type>IDREF</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <char>\n</char>
+    <endElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

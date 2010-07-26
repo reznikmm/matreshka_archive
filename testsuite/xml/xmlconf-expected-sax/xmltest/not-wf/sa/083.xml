@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <unparsedEntity>
+        <name>e</name>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/xmltest/not-wf/sa/nul</systemID>
+        <notation>n</notation>
+    </unparsedEntity>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes/>
+    </startElement>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>\n</char>
+    <char>A</char>
+    <char>\t</char>
+    <char>A</char>
+    <char>O</char>
+    <char>O</char>
+    <char>\t</char>
+    <char>\n</char>
+    <char>\uDBFC</char>
+    <char>\uDEEC</char>
+    <char>\n</char>
+    <char>\n</char>
+    <endElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

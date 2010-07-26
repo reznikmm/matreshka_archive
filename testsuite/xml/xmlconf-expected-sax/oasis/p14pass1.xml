@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>a</char>
+    <char>%</char>
+    <char>b</char>
+    <char>%</char>
+    <char>&lt;</char>
+    <char>/</char>
+    <char>d</char>
+    <char>o</char>
+    <char>c</char>
+    <char>&gt;</char>
+    <char>&lt;</char>
+    <char>/</char>
+    <char>d</char>
+    <char>o</char>
+    <char>c</char>
+    <char>&gt;</char>
+    <char>]</char>
+    <char>]</char>
+    <char>&lt;</char>
+    <char>&amp;</char>
+    <endElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

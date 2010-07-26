@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>student</localName>
+        <qualifiedName>student</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>first</localName>
+                <qualifiedName>first</qualifiedName>
+                <value>Snow</value>
+                <type>CDATA</type>
+            </attribute>
+            <attribute>
+                <namespaceURI/>
+                <localName>last</localName>
+                <qualifiedName>last</qualifiedName>
+                <value>Man</value>
+                <type>CDATA</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <char>T</char>
+    <char>h</char>
+    <char>i</char>
+    <char>s</char>
+    <char>\s</char>
+    <char>i</char>
+    <char>s</char>
+    <char>\s</char>
+    <char>a</char>
+    <char>\s</char>
+    <char>t</char>
+    <char>e</char>
+    <char>s</char>
+    <char>t</char>
+    <endElement>
+        <namespaceURI/>
+        <localName>student</localName>
+        <qualifiedName>student</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

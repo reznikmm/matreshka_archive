@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <resolveEntity>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/sun/valid/sa.dtd</systemID>
+    </resolveEntity>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

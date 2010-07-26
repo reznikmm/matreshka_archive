@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>animal</localName>
+        <qualifiedName>animal</qualifiedName>
+        <attributes/>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>animal</localName>
+        <qualifiedName>animal</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

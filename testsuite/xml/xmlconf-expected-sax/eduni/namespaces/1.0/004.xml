@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startPrefixMapping>
+        <prefix/>
+        <data>namespaces/zaphod</data>
+    </startPrefixMapping>
+    <startElement>
+        <namespaceURI>namespaces/zaphod</namespaceURI>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+        <attributes/>
+    </startElement>
+    <endElement>
+        <namespaceURI>namespaces/zaphod</namespaceURI>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+    </endElement>
+    <endPrefixMapping>
+        <prefix/>
+    </endPrefixMapping>
+    <endDocument/>
+</ConformanceResults>

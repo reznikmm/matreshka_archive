@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes/>
+    </startElement>
+    <resolveEntity>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/xml-1.1/not-wf/P77/ibm77n06.ent</systemID>
+    </resolveEntity>
+    <char>\n</char>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

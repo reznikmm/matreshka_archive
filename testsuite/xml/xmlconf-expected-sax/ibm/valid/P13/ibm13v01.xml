@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <resolveEntity>
+        <publicID>#x20\s#xD\s#xA\sabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\s-'()+,./:=?;!*#@$_%</publicID>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/valid/P13/student.dtd</systemID>
+    </resolveEntity>
+    <startElement>
+        <namespaceURI/>
+        <localName>student</localName>
+        <qualifiedName>student</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>M</char>
+    <char>y</char>
+    <char>\s</char>
+    <char>N</char>
+    <char>a</char>
+    <char>m</char>
+    <char>e</char>
+    <char>\s</char>
+    <char>i</char>
+    <char>s</char>
+    <char>\s</char>
+    <char>S</char>
+    <char>n</char>
+    <char>o</char>
+    <char>w</char>
+    <char>M</char>
+    <char>a</char>
+    <char>n</char>
+    <char>.</char>
+    <char>\s</char>
+    <endElement>
+        <namespaceURI/>
+        <localName>student</localName>
+        <qualifiedName>student</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <processingInstruction>
+        <target>pi</target>
+        <data>stuff</data>
+    </processingInstruction>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

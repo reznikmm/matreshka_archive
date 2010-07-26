@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <notation>
+        <name>not</name>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/eduni/errata-3e/not</systemID>
+    </notation>
+    <unparsedEntity>
+        <name>ent</name>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/eduni/errata-3e/foo</systemID>
+        <notation>not</notation>
+    </unparsedEntity>
+    <startElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>a</localName>
+                <qualifiedName>a</qualifiedName>
+                <value>ent</value>
+                <type>ENTITY</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

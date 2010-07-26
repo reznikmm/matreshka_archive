@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>student</localName>
+        <qualifiedName>student</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>M</char>
+    <char>y</char>
+    <char>\s</char>
+    <char>N</char>
+    <char>a</char>
+    <char>m</char>
+    <char>e</char>
+    <char>\s</char>
+    <char>i</char>
+    <char>s</char>
+    <char>\s</char>
+    <char>.</char>
+    <char>\s</char>
+    <endElement>
+        <namespaceURI/>
+        <localName>student</localName>
+        <qualifiedName>student</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <processingInstruction>
+        <target>Pi</target>
+        <data/>
+    </processingInstruction>
+    <processingInstruction>
+        <target>Pi</target>
+        <data/>
+    </processingInstruction>
+    <processingInstruction>
+        <target>Pi</target>
+        <data/>
+    </processingInstruction>
+    <processingInstruction>
+        <target>Pi</target>
+        <data/>
+    </processingInstruction>
+    <processingInstruction>
+        <target>Pi</target>
+        <data/>
+    </processingInstruction>
+    <notation>
+        <name>not</name>
+        <publicID>some\snotation</publicID>
+    </notation>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes/>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

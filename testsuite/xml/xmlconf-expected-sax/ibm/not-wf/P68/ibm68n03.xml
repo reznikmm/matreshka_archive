@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>e</char>
+    <char>x</char>
+    <char>t</char>
+    <char>r</char>
+    <char>a</char>
+    <char>\s</char>
+    <char>s</char>
+    <char>p</char>
+    <char>a</char>
+    <char>c</char>
+    <char>e</char>
+    <char>\s</char>
+    <char>a</char>
+    <char>f</char>
+    <char>t</char>
+    <char>e</char>
+    <char>r</char>
+    <char>\s</char>
+    <char>a</char>
+    <char>m</char>
+    <char>p</char>
+    <char>s</char>
+    <char>a</char>
+    <char>n</char>
+    <char>d</char>
+    <char>\s</char>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

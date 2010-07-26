@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>student</localName>
+        <qualifiedName>student</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>first</localName>
+                <qualifiedName>first</qualifiedName>
+                <value>Snow</value>
+                <type>CDATA</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>student</localName>
+        <qualifiedName>student</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

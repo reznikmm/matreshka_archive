@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <resolveEntity>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/xml-1.1/valid/P77/ibm77v25.dtd</systemID>
+    </resolveEntity>
+    <startElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>T</char>
+    <char>e</char>
+    <char>s</char>
+    <char>t</char>
+    <endElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

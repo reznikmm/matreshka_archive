@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>\n</char>
+    <startElement>
+        <namespaceURI/>
+        <localName>a</localName>
+        <qualifiedName>a</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>x</char>
+    <char>y</char>
+    <char>z</char>
+    <char>]</char>
+    <endElement>
+        <namespaceURI/>
+        <localName>a</localName>
+        <qualifiedName>a</qualifiedName>
+    </endElement>
+    <char>\n</char>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

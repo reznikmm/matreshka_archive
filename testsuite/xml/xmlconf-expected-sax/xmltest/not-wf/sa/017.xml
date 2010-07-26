@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>&lt;</char>
+    <char>/</char>
+    <char>d</char>
+    <char>o</char>
+    <char>c</char>
+    <char>&gt;</char>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

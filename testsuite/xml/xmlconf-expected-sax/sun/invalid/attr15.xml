@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <notation>
+        <name>brittannica</name>
+        <systemID>http://www.eb.com/</systemID>
+    </notation>
+    <notation>
+        <name>worldbook</name>
+        <systemID>http://www.worldbook.com</systemID>
+    </notation>
+    <startElement>
+        <namespaceURI/>
+        <localName>reference</localName>
+        <qualifiedName>reference</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>source</localName>
+                <qualifiedName>source</qualifiedName>
+                <value>brittannica</value>
+                <type>NOTATION</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>reference</localName>
+        <qualifiedName>reference</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

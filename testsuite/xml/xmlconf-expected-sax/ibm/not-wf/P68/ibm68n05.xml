@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>u</char>
+    <char>n</char>
+    <char>d</char>
+    <char>e</char>
+    <char>f</char>
+    <char>i</char>
+    <char>n</char>
+    <char>e</char>
+    <char>d</char>
+    <char>\s</char>
+    <char>e</char>
+    <char>n</char>
+    <char>t</char>
+    <char>i</char>
+    <char>t</char>
+    <char>i</char>
+    <char>y</char>
+    <char>\s</char>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

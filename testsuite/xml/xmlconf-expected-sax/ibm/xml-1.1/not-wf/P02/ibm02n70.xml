@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <processingInstruction>
+        <target>Bad</target>
+        <data>PI\s0xFFFE\s&amp;#xFFFE;\s</data>
+    </processingInstruction>
+    <startElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+        <attributes/>
+    </startElement>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>a</localName>
+                <qualifiedName>a</qualifiedName>
+                <value>g0034</value>
+                <type>IDREF</type>
+            </attribute>
+            <attribute>
+                <namespaceURI/>
+                <localName>id</localName>
+                <qualifiedName>id</qualifiedName>
+                <value>g0034</value>
+                <type>ID</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>foo</localName>
+        <qualifiedName>foo</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

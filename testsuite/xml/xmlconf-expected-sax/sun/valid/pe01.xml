@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <resolveEntity>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/sun/valid/pe01.dtd</systemID>
+    </resolveEntity>
+    <startElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>evil</localName>
+                <qualifiedName>evil</qualifiedName>
+                <value>doctor</value>
+                <type>NMTOKEN</type>
+            </attribute>
+            <attribute>
+                <namespaceURI/>
+                <localName>something</localName>
+                <qualifiedName>something</qualifiedName>
+                <value>%not-pe;</value>
+                <type>CDATA</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

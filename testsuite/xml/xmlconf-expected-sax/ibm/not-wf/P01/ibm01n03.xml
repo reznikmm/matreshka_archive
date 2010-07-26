@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>W</char>
+    <char>r</char>
+    <char>o</char>
+    <char>n</char>
+    <char>g</char>
+    <char>\s</char>
+    <char>c</char>
+    <char>o</char>
+    <char>m</char>
+    <char>b</char>
+    <char>i</char>
+    <char>n</char>
+    <char>a</char>
+    <char>t</char>
+    <char>i</char>
+    <char>o</char>
+    <char>n</char>
+    <char>!</char>
+    <endElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+    </endElement>
+    <processingInstruction>
+        <target>PI</target>
+        <data>after\sdocument\selement</data>
+    </processingInstruction>
+    <fatalError/>
+    <endDocument/>
+</ConformanceResults>

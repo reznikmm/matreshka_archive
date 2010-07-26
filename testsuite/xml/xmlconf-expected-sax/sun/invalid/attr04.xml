@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <notation>
+        <name>fruit</name>
+        <publicID>-//International\sGrocery\sConsortium//Edible//Healthy//EN</publicID>
+    </notation>
+    <startElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>type</localName>
+                <qualifiedName>type</qualifiedName>
+                <value>fruit</value>
+                <type>NOTATION</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>root</localName>
+        <qualifiedName>root</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

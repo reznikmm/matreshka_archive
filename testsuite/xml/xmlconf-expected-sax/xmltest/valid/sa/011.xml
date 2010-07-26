@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>a1</localName>
+                <qualifiedName>a1</qualifiedName>
+                <value>v1</value>
+                <type>CDATA</type>
+            </attribute>
+            <attribute>
+                <namespaceURI/>
+                <localName>a2</localName>
+                <qualifiedName>a2</qualifiedName>
+                <value>v2</value>
+                <type>CDATA</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

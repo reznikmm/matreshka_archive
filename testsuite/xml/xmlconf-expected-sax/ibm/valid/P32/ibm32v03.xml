@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <resolveEntity>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/valid/P32/ibm32v03.dtd</systemID>
+    </resolveEntity>
+    <startElement>
+        <namespaceURI/>
+        <localName>animal</localName>
+        <qualifiedName>animal</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>class</localName>
+                <qualifiedName>class</qualifiedName>
+                <value>)</value>
+                <type>CDATA</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>animal</localName>
+        <qualifiedName>animal</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

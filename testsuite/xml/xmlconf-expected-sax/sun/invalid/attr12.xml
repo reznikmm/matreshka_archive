@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <notation>
+        <name>encyclopaedia</name>
+        <publicID>-//fooCorp\sInc//NOTATION\ssomething//EN</publicID>
+    </notation>
+    <unparsedEntity>
+        <name>brittannica</name>
+        <systemID>http://www.eb.com/</systemID>
+        <notation>encyclopaedia</notation>
+    </unparsedEntity>
+    <startElement>
+        <namespaceURI/>
+        <localName>references</localName>
+        <qualifiedName>references</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>value</localName>
+                <qualifiedName>value</qualifiedName>
+                <value>brittannica</value>
+                <type>ENTITIES</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>references</localName>
+        <qualifiedName>references</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

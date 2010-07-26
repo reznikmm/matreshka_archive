@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <resolveEntity>
+        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/valid/P32/ibm32v02.dtd</systemID>
+    </resolveEntity>
+    <startElement>
+        <namespaceURI/>
+        <localName>animal</localName>
+        <qualifiedName>animal</qualifiedName>
+        <attributes/>
+    </startElement>
+    <char>T</char>
+    <char>h</char>
+    <char>i</char>
+    <char>s</char>
+    <char>\s</char>
+    <char>i</char>
+    <char>s</char>
+    <char>\s</char>
+    <char>a</char>
+    <char>\s</char>
+    <char>y</char>
+    <char>e</char>
+    <char>l</char>
+    <char>l</char>
+    <char>o</char>
+    <char>w</char>
+    <char>\s</char>
+    <char>t</char>
+    <char>i</char>
+    <char>g</char>
+    <char>e</char>
+    <char>r</char>
+    <endElement>
+        <namespaceURI/>
+        <localName>animal</localName>
+        <qualifiedName>animal</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>

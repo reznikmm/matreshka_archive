@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConformanceResults>
+    <startDocument/>
+    <startElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+        <attributes>
+            <attribute>
+                <namespaceURI/>
+                <localName>att</localName>
+                <qualifiedName>att</qualifiedName>
+                <value>val</value>
+                <type>CDATA</type>
+            </attribute>
+            <attribute>
+                <namespaceURI/>
+                <localName>att2</localName>
+                <qualifiedName>att2</qualifiedName>
+                <value>val2</value>
+                <type>CDATA</type>
+            </attribute>
+            <attribute>
+                <namespaceURI/>
+                <localName>att3</localName>
+                <qualifiedName>att3</qualifiedName>
+                <value>val3</value>
+                <type>CDATA</type>
+            </attribute>
+        </attributes>
+    </startElement>
+    <endElement>
+        <namespaceURI/>
+        <localName>doc</localName>
+        <qualifiedName>doc</qualifiedName>
+    </endElement>
+    <endDocument/>
+</ConformanceResults>
