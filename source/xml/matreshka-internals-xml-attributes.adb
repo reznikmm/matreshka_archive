@@ -102,6 +102,18 @@ package body Matreshka.Internals.XML.Attributes is
       Matreshka.Internals.Strings.Reference (Value);
       Inserted := True;
       Self.Last := Self.Last + 1;
+
+      if Self.Last > Self.Attributes'Last then
+         declare
+            Old : Attribute_Array_Access := Self.Attributes;
+
+         begin
+            Self.Attributes := new Attribute_Array (1 .. Old'Last + 16);
+            Self.Attributes (Old'Range) := Old.all;
+            Free (Old);
+         end;
+      end if;
+
       Self.Attributes (Self.Last) :=
        (Namespace_URI  => No_Symbol,
         Qualified_Name => Qualified_Name,
