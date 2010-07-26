@@ -58,6 +58,10 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
       Value  : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Handles attribute of the element.
 
+   procedure On_End_Of_Document
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles end of document.
+
    procedure On_End_Of_Document_Type_Declaration
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);

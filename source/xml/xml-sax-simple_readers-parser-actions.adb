@@ -104,6 +104,16 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       end if;
    end On_Elements_Attribute;
 
+   ------------------------
+   -- On_End_Of_Document --
+   ------------------------
+
+   procedure On_End_Of_Document
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Callbacks.Call_End_Document (Self.all);
+   end On_End_Of_Document;
+
    -----------------------------------------
    -- On_End_Of_Document_Type_Declaration --
    -----------------------------------------

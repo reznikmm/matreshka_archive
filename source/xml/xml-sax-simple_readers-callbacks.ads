@@ -58,6 +58,9 @@ private package XML.SAX.Simple_Readers.Callbacks is
      Text : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Calls handler's SAX_Content_Handler.Characters subprogram.
 
+   procedure Call_End_Document (Self : in out SAX_Simple_Reader'Class);
+   --  Calls handler's SAX_Content_Handler.End_Document subprogram.
+
    procedure Call_End_Element
     (Self           : in out SAX_Simple_Reader'Class;
      Namespace_URI  :

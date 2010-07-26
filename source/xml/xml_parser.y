@@ -76,7 +76,7 @@ document_entity :
 }
     document
 {
-   null;
+   Actions.On_End_Of_Document (Self);
 }
   ;
 
@@ -891,6 +891,8 @@ with Matreshka.Internals.XML.Symbol_Tables;
         Symbol : Matreshka.Internals.XML.Symbol_Identifier);
 
       procedure On_Start_Of_Document (Self : access Integer);
+
+      procedure On_End_Of_Document (Self : access Integer);
 
    end Actions;
 
