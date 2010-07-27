@@ -123,7 +123,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             Callbacks.Call_Fatal_Error
              (Self.all,
               League.Strings.To_Universal_String
-               ("[[14] CharData] Text may not contain a literal ']]>' sequence"));
+               ("[[14] CharData]"
+                  & " Text may not contain a literal ']]>' sequence"));
             Self.Error_Reported := True;
 
             return Error;
@@ -1210,6 +1211,34 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          return True;
       end if;
    end On_Parameter_Entity_Reference_In_Entity_Value;
+
+   -----------------------
+   -- On_System_Literal --
+   -----------------------
+
+   function On_System_Literal
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      if not Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[[75] ExternalID]"
+               & " whitespace is required before system literal"));
+
+         return Error;
+      end if;
+
+      Self.Whitespace_Matched := False;
+      Pop_Start_Condition (Self);
+      Set_String_Internal
+       (Item          => Self.YYLVal,
+        String        => YY_Text (Self, 1, 1),
+        Is_Whitespace => False,
+        Is_CData      => False);
+
+      return Token_System_Literal;
+   end On_System_Literal;
 
    -----------------------------
    -- On_Unexpected_Character --

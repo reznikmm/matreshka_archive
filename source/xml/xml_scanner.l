@@ -361,20 +361,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <EXTERNAL_ID_SYS>\"[^"]*\"|\'[^']*\' {
    --  System literal, rule [11], used in rule [75].
 
-   if not Get_Whitespace_Matched (Self) then
-      raise Program_Error with "no whitespace before system literal";
-      --  XXX This is recoverable error.
-   end if;
-
-   Reset_Whitespace_Matched (Self);
-   Pop_Start_Condition (Self);
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal (1, 1),
-     Is_Whitespace => False,
-     Is_CData      => False);
-
-   return Token_System_Literal;
+   return Actions.On_System_Literal (Self);
 }
 
 <EXTERNAL_ID_SYS>">" {
@@ -1116,6 +1103,8 @@ with Matreshka.Internals.Strings;
 
       function On_Name_In_Attribute_List_Declaration_Notation
        (Self : access Integer) return Token;
+
+      function On_System_Literal (Self : access Integer) return Token;
 
    end Actions;
 

@@ -159,6 +159,10 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    --  Handles open of XML declaration in document or text declaration in
    --  external entity or external subset.
 
+   function On_System_Literal
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles system literal.
+
    function On_Unexpected_Character
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  General handling of unexpected character.

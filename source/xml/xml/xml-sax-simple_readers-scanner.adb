@@ -1106,20 +1106,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 23 =>
                --  System literal, rule [11], used in rule [75].
             
-               if not Get_Whitespace_Matched (Self) then
-                  raise Program_Error with "no whitespace before system literal";
-                  --  XXX This is recoverable error.
-               end if;
-            
-               Reset_Whitespace_Matched (Self);
-               Pop_Start_Condition (Self);
-               Set_String_Internal
-                (Item          => YYLVal,
-                 String        => YY_Text_Internal (1, 1),
-                 Is_Whitespace => False,
-                 Is_CData      => False);
-            
-               return Token_System_Literal;
+               return Actions.On_System_Literal (Self);
 
             when 24 =>
                --  Productions [82], [83] allows absence of system literal in
