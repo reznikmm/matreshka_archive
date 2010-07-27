@@ -99,8 +99,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             ("[3.1 WFC: Unique Att Spec]"
                & " an attribute name must not appear more than once"
                & " in the same tag"));
-         Self.Continue := False;
-         --  XXX This is recoverable error.
       end if;
    end On_Elements_Attribute;
 
@@ -158,7 +156,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
            League.Strings.To_Universal_String
             ("[3 WFC: Element Type Match]"
                & " end tag name must match start tag name"));
-         Self.Continue := False;
       end if;
 
       if Self.Namespaces.Enabled then
@@ -197,6 +194,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
         Self.System_Id,
         Self.External_Source,
         Self.Continue);
+      --  XXX Callbacks package must be used for this call.
    end On_External_Subset_Declaration;
 
    --------------------------
@@ -303,7 +301,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
               League.Strings.To_Universal_String
                ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                   & " Names] element must not have the prefix xmlns"));
-            Self.Continue := False;
 
             return;
          end if;
@@ -342,7 +339,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] the xml namespace must not be declared"
                            & " as the default namespace"));
-                     Self.Continue := False;
 
                      return;
                   end if;
@@ -367,7 +363,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] the xmlns namespace must not be declared"
                            & " as the default namespace"));
-                     Self.Continue := False;
 
                      return;
                   end if;
@@ -397,7 +392,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] xml prefix must not be undeclared"));
-                     Self.Continue := False;
 
                      return;
                   end if;
@@ -412,7 +406,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] xml prefix must not be bound to any"
                            & " other namespace name"));
-                     Self.Continue := False;
 
                      return;
                   end if;
@@ -427,7 +420,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] other prefixes must not be bound to xml"
                            & " namespace name"));
-                     Self.Continue := False;
 
                      return;
                   end if;
@@ -450,7 +442,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] the xmlns prefix must not be declared"));
-                     Self.Continue := False;
 
                      return;
                   end if;
@@ -464,7 +455,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] the xmlns prefix must not be"
                            & " undeclared"));
-                     Self.Continue := False;
 
                      return;
                   end if;
@@ -478,7 +468,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                         ("[NSXML1.1 3 NSC: Reserved Prefixes and Namespace"
                            & " Names] prefix must not be bound to xmlns"
                            & " namespace name"));
-                     Self.Continue := False;
 
                      return;
                   end if;
@@ -512,7 +501,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                   ("[NSXML1.1 5 NSC: Prefix Declared]"
                      & " the element's namespace prefix have not been"
                      & " declared"));
-               Self.Continue := False;
 
                return;
             end if;
@@ -551,7 +539,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                         ("[NSXML1.1 5 NSC: Prefix Declared]"
                            & " the attribute's namespace prefix have not been"
                            & " declared"));
-                     Self.Continue := False;
 
                      return;
                   end if;
@@ -594,7 +581,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                        League.Strings.To_Universal_String
                         ("[NSXML1.1 6.3] attributes must not have the same"
                            & " expanded name"));
-                     Self.Continue := False;
 
                      return;
                   end if;

@@ -245,7 +245,8 @@ private
       Look_Ahead   : Boolean := True;
       --  Obtain next token from the scanner.
 
---       -- error recovery flag
+      Error        : Boolean := False;
+      --  Error recovery flag.
 --       error_flag : natural := 0;
 --          -- indicates  3 - (number of valid shifts after an error occurs)
    end record;

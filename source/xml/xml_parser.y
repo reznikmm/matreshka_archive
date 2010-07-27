@@ -87,7 +87,7 @@ document :
 }
   | error
 {
-   null;
+   On_Fatal_Error;
 }
   ;
 
@@ -897,6 +897,8 @@ with Matreshka.Internals.XML.Symbol_Tables;
    end Actions;
 
    package body Actions is separate;
+
+   procedure On_Fatal_Error is separate;
 
    procedure Parse is
 ##

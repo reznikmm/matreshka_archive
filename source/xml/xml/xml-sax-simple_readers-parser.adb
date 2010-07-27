@@ -293,84 +293,70 @@ package body XML.SAX.Simple_Readers.Parser is
    -------------
 
    procedure YYParse (Self : not null access SAX_Simple_Reader) is
---
+
+      YY         : Parser_State_Information renames Self.Parser_State;
+
 --   procedure yyerrok;
 --   procedure yyclearin;
 
 ---- error recovery stuff
---
---    procedure handle_error is
---      temp_action : integer;
---    begin
---
+
+      procedure Handle_Error;
+      --  Handles error state.
+
+      procedure On_Fatal_Error;
+      --  Handles fatal error.
+
+      ------------------
+      -- Handle_Error --
+      ------------------
+
+      procedure Handle_Error is
+         YY_Action : Integer;
+      begin
+         if YY.Error then
+            raise Program_Error with "error recovery clobber";
+         end if;
 --      if yy.error_flag = 3 then -- no shift yet, clobber input.
---      if yy.debug then
---          Ada.Wide_Wide_Text_Io.Put_Line ("Ayacc.YYParse: Error Recovery Clobbers " &
---                   yy_tokens.token'Wide_Wide_Image (yy.input_symbol));
+--         if yy.input_symbol = yy_tokens.end_of_input then  -- don't discard,
+--            raise yy_tokens.syntax_error;
+--         end if;
+--
+--         yy.look_ahead := true;   -- get next token
+--
+--         return;                  -- and try again...
 --      end if;
---        if yy.input_symbol = yy_tokens.end_of_input then  -- don't discard,
---        if yy.debug then
---            Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Can't discard END_OF_INPUT, quiting...");
---        end if;
---        raise yy_tokens.syntax_error;
---        end if;
 --
---            yy.look_ahead := true;   -- get next token
---        return;                  -- and try again...
---    end if;
+--      if yy.error_flag = 0 then -- brand new error
+--         yyerror("Syntax Error");
+--      end if;
 --
---    if yy.error_flag = 0 then -- brand new error
---        yyerror("Syntax Error");
---    end if;
---
---    yy.error_flag := 3;
---
---    -- find state on stack where error is a valid shift --
---
---    if yy.debug then
---        Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Looking for state with error as valid shift");
---    end if;
---
---    loop
---        if yy.debug then
---          Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Examining State " &
---               yy.parse_state'Wide_Wide_Image (yy.state_stack(yy.tos)));
---        end if;
---        temp_action := parse_action(yy.state_stack(yy.tos), error);
---
---            if temp_action >= yy.first_shift_entry then
---                if yy.tos = yy.stack_size then
---                    Ada.Wide_Wide_Text_IO.Put_Line (" Stack size exceeded on state_stack");
---                    raise yy_Tokens.syntax_error;
---                end if;
---                yy.tos := yy.tos + 1;
---                yy.state_stack(yy.tos) := temp_action;
---                exit;
---            end if;
---
---        Decrement_Stack_Pointer :
---        begin
---          yy.tos := yy.tos - 1;
---        exception
---          when Constraint_Error =>
---            yy.tos := 0;
---        end Decrement_Stack_Pointer;
---
---        if yy.tos = 0 then
---          if yy.debug then
---            Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Error recovery popped entire stack, aborting...");
---          end if;
---          raise yy_tokens.syntax_error;
---        end if;
---    end loop;
---
---    if yy.debug then
---        Ada.Wide_Wide_Text_IO.Put_Line ("Ayacc.YYParse: Shifted error token in state " &
---              yy.parse_state'Wide_Wide_Image (yy.state_stack(yy.tos)));
---    end if;
---
---    end handle_error;
---
+--      yy.error_flag := 3;
+         YY.Error := True;
+         Self.Continue := True;
+
+         --  Find state on stack where error is a valid shift.
+
+         loop
+            YY_Action := YY_Parse_Action (YY.State_Stack (YY.TOS), Error);
+
+            if YY_Action >= YY_First_Shift_Entry then
+               YY.TOS := YY.TOS + 1;
+               YY.State_Stack (YY.TOS) := YY_Action;
+
+               exit;
+            end if;
+
+            if YY.TOS > 0 then
+               YY.TOS := YY.TOS - 1;
+            end if;
+
+            if YY.TOS = 0 then
+               raise Program_Error with "Syntax error";
+            end if;
+         end loop;
+      end Handle_Error;
+
 --   -- make the parser believe that 3 valid shifts have occured.
 --   -- used for error recovery.
 --   procedure yyerrok is
@@ -385,12 +371,22 @@ package body XML.SAX.Simple_Readers.Parser is
 --       yy.look_ahead := true;
 --   end yyclearin;
 
+      --------------------
+      -- On_Fatal_Error --
+      --------------------
+
+      procedure On_Fatal_Error is
+      begin
+         YY.Input_Symbol := End_Of_Input;
+         YY.Look_Ahead := False;
+         YY.Error := False;
+      end On_Fatal_Error;
+
       YY_Action  : Integer;
       YY_Rule_Id : Integer;
       YY_Index   : Integer;
       YY_TOS_Old : Natural;
       YYVal      : YYSType;
-      YY         : Parser_State_Information renames Self.Parser_State;
 
    begin
       loop
@@ -423,10 +419,11 @@ package body XML.SAX.Simple_Readers.Parser is
             YY.State_Stack (YY.TOS) := YY_Action;
             Move (YY.Value_Stack (YY.TOS), Self.YYLVal);
 
+            YY.Error := False;
 --        if yy.error_flag > 0 then  -- indicate a valid shift
 --            yy.error_flag := yy.error_flag - 1;
 --        end if;
---
+
             --  Advance lookahead.
 
             YY.Look_Ahead := True;
@@ -439,9 +436,7 @@ package body XML.SAX.Simple_Readers.Parser is
                Self.Continue := False;
             end if;
 
-            exit;
-
---            handle_error;
+            Handle_Error;
 
          elsif YY_Action = YY_Accept_Code then
             --  Accepting grammar.
@@ -461,13 +456,13 @@ package body XML.SAX.Simple_Readers.Parser is
                Actions.On_Start_Of_Document (Self);
 
             when 2 =>
-               null;
+               Actions.On_End_Of_Document (Self);
 
             when 3 =>
                null;
 
             when 4 =>
-               null;
+               On_Fatal_Error;
 
             when 5 =>
                null;
@@ -942,10 +937,6 @@ package body XML.SAX.Simple_Readers.Parser is
                            & Integer'Image (YY_Rule_Id) & " in parser";
             end case;
 
-            --  Exit loop on user request or on unrecoverable error.
-
-            exit when not Self.Continue;
-
             --  Pop RHS states and goto next state.
 
             YY_TOS_Old := YY.TOS;
@@ -959,6 +950,14 @@ package body XML.SAX.Simple_Readers.Parser is
             end loop;
 
             Move (YY.Value_Stack (YY.TOS), YYVal);
+
+            --  Exit loop on user request or on unrecoverable error.
+
+            if not Self.Continue then
+               YY.Input_Symbol := Error;
+               YY.Look_Ahead := False;
+               Self.Continue := True;
+            end if;
          end if;
       end loop;
    end YYParse;

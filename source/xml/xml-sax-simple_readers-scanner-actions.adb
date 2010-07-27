@@ -90,7 +90,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
            League.Strings.To_Universal_String
             ("Text may not appear after the root element"));
          Self.Error_Reported := True;
-         Self.Continue := False;
 
          return Error;
       end if;
@@ -121,7 +120,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
            League.Strings.To_Universal_String
             ("[[14] CharData] Text may not contain a literal ']]>' sequence"));
          Self.Error_Reported := True;
-         Self.Continue := False;
 
          return Error;
       end if;
@@ -341,7 +339,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
            League.Strings.To_Universal_String
             ("[XML1.1 4.1 WFC: Entity Declared]"
                & " general entity must be declared"));
-         Self.Continue := False;
 
          return False;
       end if;
@@ -362,7 +359,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             ("[XML1.1 4.1 WFC: Entity Declared]"
                & " an entity reference must not contain the name of an"
                & " unparsed entity"));
-         Self.Continue := False;
 
          return False;
       end if;
@@ -382,7 +378,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             ("[XML1.1 4.1 WFC: No Recursion]"
                & " parsed entity must not containt a direct recursive"
                & " reference to itself"));
-         Self.Continue := False;
 
          return False;
       end if;
@@ -397,7 +392,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                ("[XML1.1 4.1 WFC: No Recursion]"
                   & " parsed entity must not containt a indirect recursive"
                   & " reference to itself"));
-            Self.Continue := False;
 
             return False;
          end if;
@@ -517,7 +511,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
            League.Strings.To_Universal_String
             ("[XML1.1 4.1 WFC: Entity Declared]"
                & " general entity must be declared"));
-         Self.Continue := False;
 
          return False;
       end if;
@@ -538,7 +531,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             ("[XML1.1 4.1 WFC: Entity Declared]"
                & " an entity reference must not contain the name of an"
                & " unparsed entity"));
-         Self.Continue := False;
 
          return False;
       end if;
@@ -558,7 +550,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             ("[XML1.1 4.1 WFC: No Recursion]"
                & " parsed entity must not containt a direct recursive"
                & " reference to itself"));
-         Self.Continue := False;
 
          return False;
       end if;
@@ -573,7 +564,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                ("[XML1.1 4.1 WFC: No Recursion]"
                   & " parsed entity must not containt a indirect recursive"
                   & " reference to itself"));
-            Self.Continue := False;
 
             return False;
          end if;
@@ -784,7 +774,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
           (Self.all,
            League.Strings.To_Universal_String
             ("whitespace is missing before attribute name"));
-         Self.Continue := False;
          --  XXX It is recoverable error.
 
          return Error;
@@ -824,7 +813,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
            League.Strings.To_Universal_String
             ("[XML1.1 4.2 productions [71], [72]]"
                & " whitespace must be present before the name"));
-         Self.Continue := False;
          --  XXX This is recoverable error.
 
          return Error;
@@ -866,7 +854,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
            League.Strings.To_Universal_String
             ("[XML1.1 4.2 production [76]]"
                & " whitespace must be present before the name of notation"));
-         Self.Continue := False;
          --  XXX This is recoverable error.
 
          return Error;
@@ -1146,7 +1133,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
              (Self.all,
               League.Strings.To_Universal_String
                ("parameter entity must be declared"));
-            Self.Continue := False;
 
             return False;
          end if;
@@ -1357,7 +1343,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                 (Self.all,
                  League.Strings.To_Universal_String
                   ("[NSXML1.1] qualified name must not be used here"));
-               Self.Continue := False;
 
             else
                Error := False;
@@ -1371,7 +1356,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
               League.Strings.To_Universal_String
                ("[NSXML1.1]"
                   & " qualified name must not start with colon character"));
-            Self.Continue := False;
 
          when Colon_At_End =>
             Error := True;
@@ -1381,7 +1365,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
               League.Strings.To_Universal_String
                ("[NSXML1.1]"
                   & " qualified name must not end with colon character"));
-            Self.Continue := False;
 
          when Multiple_Colons =>
             Error := True;
@@ -1392,7 +1375,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                ("[NSXML1.1]"
                   & " qualified name must not contain more than one colon"
                   & " character"));
-            Self.Continue := False;
 
          when First_Character_Is_Not_NS_Name_Start_Char =>
             Error := True;
@@ -1401,7 +1383,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
              (Self.all,
               League.Strings.To_Universal_String
                ("[NSXML1.1] first character of local name is invalid"));
-            Self.Continue := False;
       end case;
    end Resolve_Symbol;
 
