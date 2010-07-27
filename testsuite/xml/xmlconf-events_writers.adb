@@ -208,6 +208,15 @@ package body XMLConf.Events_Writers is
          when ' ' =>
             return To_Universal_String ("&#x20;");
 
+         when '&' =>
+            return To_Universal_String ("&amp;");
+
+         when '<' =>
+            return To_Universal_String ("&lt;");
+
+         when '>' =>
+            return To_Universal_String ("&gt;");
+
          when others =>
             return To_Universal_String (Wide_Wide_String'(1 => Item));
       end case;
