@@ -239,6 +239,8 @@ package body XML.SAX.Simple_Readers.Callbacks is
          Self.Continue      := False;
       end if;
 
+      Self.Error_Reported := True;
+
    exception
       when E : others =>
          Self.Continue      := False;
