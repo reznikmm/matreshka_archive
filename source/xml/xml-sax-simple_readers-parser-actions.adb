@@ -153,30 +153,33 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
            League.Strings.To_Universal_String
             ("[3 WFC: Element Type Match]"
                & " end tag name must match start tag name"));
-      end if;
-
-      if Self.Namespaces.Enabled then
-         Callbacks.Call_End_Element
-          (Self           => Self.all,
-           Namespace_URI  =>
-             Name
-              (Self.Symbols,
-               Resolve
-                (Self.Namespace_Scope,
-                 Prefix_Name (Self.Symbols, Symbol))),
-           Local_Name     => Local_Name (Self.Symbols, Symbol),
-           Qualified_Name => Name (Self.Symbols, Symbol));
-         Pop_Scope (Self.Namespace_Scope);
 
       else
-         Callbacks.Call_End_Element
-          (Self           => Self.all,
-           Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
-           Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
-           Qualified_Name => Name (Self.Symbols, Symbol));
-      end if;
+         if Self.Namespaces.Enabled then
+            Callbacks.Call_End_Element
+             (Self           => Self.all,
+              Namespace_URI  =>
+                Name
+                 (Self.Symbols,
+                  Resolve
+                   (Self.Namespace_Scope,
+                    Prefix_Name (Self.Symbols, Symbol))),
+              Local_Name     => Local_Name (Self.Symbols, Symbol),
+              Qualified_Name => Name (Self.Symbols, Symbol));
+            Pop_Scope (Self.Namespace_Scope);
 
-      Self.Element_Names.Delete_Last;
+         else
+            Callbacks.Call_End_Element
+             (Self           => Self.all,
+              Namespace_URI  =>
+                Matreshka.Internals.Strings.Shared_Empty'Access,
+              Local_Name     =>
+                Matreshka.Internals.Strings.Shared_Empty'Access,
+              Qualified_Name => Name (Self.Symbols, Symbol));
+         end if;
+
+         Self.Element_Names.Delete_Last;
+      end if;
    end On_End_Tag;
 
    ------------------------------------
