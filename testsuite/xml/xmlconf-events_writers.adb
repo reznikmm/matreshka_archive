@@ -404,10 +404,54 @@ package body XMLConf.Events_Writers is
          Self.Add_Line (To_Universal_String ("    <attributes/>"));
 
       else
-         Self.Add_Line (To_Universal_String ("      <attributes>"));
+         Self.Add_Line (To_Universal_String ("    <attributes>"));
 
          for J in 1 .. Attributes.Length loop
-            null;
+            Self.Add_Line (To_Universal_String ("      <attribute>"));
+
+            if Attributes.Namespace_URI (J).Is_Empty then
+               Self.Add_Line (To_Universal_String ("        <namespaceURI/>"));
+
+            else
+               Self.Add_Line
+                ("        <namespaceURI>"
+                   & Attributes.Namespace_URI (J)
+                   & "</namespaceURI>");
+            end if;
+
+            if Attributes.Local_Name (J).Is_Empty then
+               Self.Add_Line (To_Universal_String ("        <localName/>"));
+
+            else
+               Self.Add_Line
+                ("        <localName>"
+                   & Attributes.Local_Name (J)
+                   & "</localName>");
+            end if;
+
+            if Attributes.Qualified_Name (J).Is_Empty then
+               Self.Add_Line
+                (To_Universal_String ("        <qualifiedName/>"));
+
+            else
+               Self.Add_Line
+                ("        <qualifiedName>"
+                   & Attributes.Qualified_Name (J)
+                   & "</qualifiedName>");
+            end if;
+
+            if Attributes.Value (J).Is_Empty then
+               Self.Add_Line
+                (To_Universal_String ("        <value/>"));
+
+            else
+               Self.Add_Line
+                ("        <value>" & Attributes.Value (J) & "</value>");
+            end if;
+
+            Self.Add_Line (To_Universal_String ("        <type>CDATA</type>"));
+
+            Self.Add_Line (To_Universal_String ("      </attribute>"));
          end loop;
 
          Self.Add_Line (To_Universal_String ("    </attributes>"));
