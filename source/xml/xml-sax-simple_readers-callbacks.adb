@@ -99,6 +99,27 @@ package body XML.SAX.Simple_Readers.Callbacks is
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_Comment;
 
+   -----------------------
+   -- Call_End_Document --
+   -----------------------
+
+   procedure Call_End_Document (Self : in out SAX_Simple_Reader'Class) is
+   begin
+      Setup_Locator (Self);
+      Self.Content_Handler.End_Document (Self.Continue);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.Content_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_End_Document;
+
    ----------------------
    -- Call_End_Element --
    ----------------------
@@ -340,27 +361,6 @@ package body XML.SAX.Simple_Readers.Callbacks is
            League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_Set_Document_Locator;
-
-   -----------------------
-   -- Call_End_Document --
-   -----------------------
-
-   procedure Call_End_Document (Self : in out SAX_Simple_Reader'Class) is
-   begin
-      Setup_Locator (Self);
-      Self.Content_Handler.End_Document (Self.Continue);
-
-      if not Self.Continue then
-         Self.Error_Message := Self.Content_Handler.Error_String;
-      end if;
-
-   exception
-      when E : others =>
-         Self.Continue      := False;
-         Self.Error_Message :=
-           League.Strings.To_Universal_String ("exception come from handler");
-         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
-   end Call_End_Document;
 
    -------------------------
    -- Call_Start_Document --
