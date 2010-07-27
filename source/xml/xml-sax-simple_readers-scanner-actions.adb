@@ -403,7 +403,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       --  values declared to be of type ENTITY or ENTITIES."
       --
       --  Check whether referenced entity is not unparsed external general
-      --  entity.
+      --  entity. XXX Attribute's value type must be checked also.
 
       if Is_External_Unparsed_General_Entity (Self.Entities, Entity) then
          Callbacks.Call_Fatal_Error
@@ -412,6 +412,25 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             ("[XML1.1 4.1 WFC: Entity Declared]"
                & " an entity reference must not contain the name of an"
                & " unparsed entity"));
+
+         return False;
+      end if;
+
+      --  [XML1.1 3.1 WFC: No External Entity References]
+      --
+      --  "Attribute values MUST NOT contain direct or indirect entity
+      --  references to external entities."
+      --
+      --  Check whether referenced entity is not parsed external general
+      --  entity.
+
+      if Is_External_Parsed_General_Entity (Self.Entities, Entity) then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML1.1 3.1 WFC: No External Entity References]"
+               & " attribute value must not contain entity reference to"
+               & " external entity"));
 
          return False;
       end if;

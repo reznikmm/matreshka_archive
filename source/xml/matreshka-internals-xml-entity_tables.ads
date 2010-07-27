@@ -103,6 +103,11 @@ package Matreshka.Internals.XML.Entity_Tables is
      Entity : Entity_Identifier) return Boolean;
    --  Returns True when entity is document entity.
 
+   function Is_External_Parsed_General_Entity
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier) return Boolean;
+   --  Returns True when entity is external parsed general entity.
+
    function Is_External_Unparsed_General_Entity
     (Self   : Entity_Table;
      Entity : Entity_Identifier) return Boolean;
