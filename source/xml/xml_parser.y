@@ -85,6 +85,10 @@ document :
 {
    null;
 }
+  | Misc_any doctypedecl_optional element Misc_any error
+{
+   On_Fatal_Error;
+}
   | error
 {
    On_Fatal_Error;
