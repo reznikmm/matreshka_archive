@@ -87,13 +87,14 @@ begin
    Reader.Parse (Source'Access);
    Ada.Directories.Set_Directory (Cwd);
 
-   Put_Line (" Group  Passed Failed  Crash Output");
-   Put_Line ("------- ------ ------ ------ ------");
+   Put_Line (" Group  Passed Failed  Crash Output   SAX");
+   Put_Line ("------- ------ ------ ------ ------ ------");
    Put ("valid  ");
    Put (Handler.Results (Valid).Passed, 7);
    Put (Handler.Results (Valid).Failed, 7);
    Put (Handler.Results (Valid).Crash, 7);
    Put (Handler.Results (Valid).Output, 7);
+   Put (Handler.Results (Valid).SAX, 7);
    New_Line;
 
    Put ("invalid");
@@ -101,6 +102,7 @@ begin
    Put (Handler.Results (Invalid).Failed, 7);
    Put (Handler.Results (Invalid).Crash, 7);
    Put (Handler.Results (Invalid).Output, 7);
+   Put (Handler.Results (Invalid).SAX, 7);
    New_Line;
 
    Put ("not-wf ");
@@ -108,6 +110,7 @@ begin
    Put (Handler.Results (Not_Wellformed).Failed, 7);
    Put (Handler.Results (Not_Wellformed).Crash, 7);
    Put (Handler.Results (Not_Wellformed).Output, 7);
+   Put (Handler.Results (Not_Wellformed).SAX, 7);
    New_Line;
 
    Put ("error  ");
@@ -115,9 +118,10 @@ begin
    Put (Handler.Results (Error).Failed, 7);
    Put (Handler.Results (Error).Crash, 7);
    Put (Handler.Results (Error).Output, 7);
+   Put (Handler.Results (Error).SAX, 7);
    New_Line;
 
-   Put_Line ("        ------ ------ ------ ------");
+   Put_Line ("        ------ ------ ------ ------ ------");
    Put ("       ");
    Put
     (Handler.Results (Valid).Passed
@@ -142,6 +146,12 @@ begin
        + Handler.Results (Invalid).Output
        + Handler.Results (Not_Wellformed).Output
        + Handler.Results (Error).Output,
+     7);
+   Put
+    (Handler.Results (Valid).SAX
+       + Handler.Results (Invalid).SAX
+       + Handler.Results (Not_Wellformed).SAX
+       + Handler.Results (Error).SAX,
      7);
    New_Line;
 
