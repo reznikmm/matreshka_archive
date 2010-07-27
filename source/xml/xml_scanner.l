@@ -917,34 +917,16 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    raise Program_Error with "Unexpected character in XML_DECL";
 }
 
-<DOCTYPE_EXTINT>. {
-   raise Program_Error with "Unexpected character in DOCTYPE_EXTINT";
-}
-
 <DOCTYPE_INT>. {
    raise Program_Error with "Unexpected character in DOCTYPE_INT";
-}
-
-<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>. {
-   Put_Line (YY_Text);
-   raise Program_Error with "Unexpected character in DOCTYPE_INTSUBSET";
 }
 
 <ENTITY_DECL>. {
    raise Program_Error with "Unexpected character in ENTITY_DECL";
 }
 
-<ENTITY_DEF>. {
-   raise Program_Error with "Unexpected character in ENTITY_DEF";
-}
-
 <ENTITY_NDATA>. {
    raise Program_Error with "Unexpected character in ENTITY_NDATA";
-}
-
-<ATTLIST_TYPE>. {
-   Put_Line (YY_Text);
-   raise Program_Error with "Unexpected character in ATTLIST_TYPE";
 }
 
 <ATTLIST_DECL>. {
@@ -964,7 +946,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    raise Program_Error with "Unexpected character in NOTATION_DECL";
 }
 
-<DOCUMENT_10,DOCUMENT_11,ELEMENT_START,PI,PI_DATA_10,PI_DATA_11,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>.|\n {
+<ATTLIST_TYPE,DOCUMENT_10,DOCUMENT_11,DOCTYPE_INTSUBSET_10,DOCTYPE_EXTINT,DOCTYPE_INTSUBSET_11,ENTITY_DEF,ELEMENT_START,PI,PI_DATA_10,PI_DATA_11,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>.|\n {
    --  Unexpected character.
 
    return Actions.On_Unexpected_Character (Self);
