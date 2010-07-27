@@ -65,12 +65,9 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
      Text          : not null Matreshka.Internals.Strings.Shared_String_Access;
      Is_Whitespace : Boolean) is
    begin
-      if Is_Whitespace then
-         Callbacks.Call_Ignorable_Whitespace (Self.all, Text);
-
-      else
-         Callbacks.Call_Characters (Self.all, Text);
-      end if;
+      Callbacks.Call_Characters (Self.all, Text);
+      --  XXX In valid documents ignorableWhitespace must be called in
+      --  appropriate cases.
    end On_Character_Data;
 
    ---------------------------
