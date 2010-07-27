@@ -70,11 +70,10 @@
 %%
 
 document_entity :
-    XMLDecl_optional
 {
    Actions.On_Start_Of_Document (Self);
 }
-    document
+    XMLDecl_optional document
 {
    Actions.On_End_Of_Document (Self);
 }
