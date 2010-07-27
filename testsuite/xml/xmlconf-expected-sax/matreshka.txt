@@ -1,0 +1,15 @@
+xmltest/not-wf/sa/017.xml
+
+Reader doesn't report CDATA section till end of CDATA found. This can be
+improved by adding special CDATA start condition in the scanner. It also can
+allow to report data to application by chunks.
+
+xmltest/not-wf/sa/026.xml
+
+Reader reports additional ']' character in the character data because it is not
+part of the CDATA section terminator and valid character in character data.
+
+xmltest/not-wf/sa/029.xml
+
+Reader reports additional ']' character in the character data because it is not
+part of the CDATA section terminator and valid character in character data.

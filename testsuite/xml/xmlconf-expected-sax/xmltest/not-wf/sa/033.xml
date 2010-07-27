@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>a</char>
-    <char>b</char>
-    <char>c</char>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>a</characters>
+  <characters>b</characters>
+  <characters>c</characters>
+  <fatalError/>
+  <endDocument/>
+</SAXEvents>
