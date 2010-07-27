@@ -88,11 +88,6 @@ package body XML.SAX.Simple_Readers.Scanner is
      Form  : Character_Reference_Form) return Token;
    --  Processes character reference.
 
-   function Process_Entity_Value_Open_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Image : League.Strings.Universal_String) return Token;
-   --  Process entity value open delimiter, rule [9].
-
    function Process_Entity_Value_Close_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
      Image : League.Strings.Universal_String) return Token;
@@ -375,35 +370,6 @@ package body XML.SAX.Simple_Readers.Scanner is
          return Token_Value_Close;
       end if;
    end Process_Entity_Value_Close_Delimiter;
-
-   -----------------------------------------
-   -- Process_Entity_Value_Open_Delimiter --
-   -----------------------------------------
-
-   function Process_Entity_Value_Open_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Image : League.Strings.Universal_String) return Token is
-   begin
-      Self.Scanner_State.Delimiter :=
-        Wide_Wide_Character'Pos (Image.Element (1));
-
-      if not Get_Whitespace_Matched (Self) then
-         raise Program_Error with "no whitespace before entity value";
-         --  XXX This is recoverable error.
-      end if;
-
-      Reset_Whitespace_Matched (Self);
-
-      case Self.Version is
-         when XML_1_0 =>
-            Enter_Start_Condition (Self, ENTITY_VALUE_10);
-
-         when XML_1_1 =>
-            Enter_Start_Condition (Self, ENTITY_VALUE_11);
-      end case;
-
-      return Token_Value_Open;
-   end Process_Entity_Value_Open_Delimiter;
 
    --------------------------
    -- Push_External_Subset --
@@ -1227,7 +1193,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 38 =>
                --  Entity value, rule [9].
             
-               return Process_Entity_Value_Open_Delimiter (Self, YY_Text);
+               return Actions.On_Entity_Value_Open_Delimiter (Self);
 
             when 39 =>
                --  Entity value as ExternalID, rule [75], used by rules [73], [74].

@@ -73,6 +73,10 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles close of XML declaration and text declaration.
 
+   function On_Entity_Value_Open_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open delimiter of entity value.
+
    function On_General_Entity_Reference_In_Attribute_Value
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Handles general entity reference in attribute value.

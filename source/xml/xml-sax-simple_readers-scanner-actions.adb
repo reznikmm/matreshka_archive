@@ -299,6 +299,44 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       return Token_Pi_Close;
    end On_Close_Of_XML_Or_Text_Declaration;
 
+   ------------------------------------
+   -- On_Entity_Value_Open_Delimiter --
+   ------------------------------------
+
+   function On_Entity_Value_Open_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Position : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
+
+   begin
+      Unchecked_Next
+       (Self.Scanner_State.Data.Value,
+        Position,
+        Self.Scanner_State.Delimiter);
+
+      if not Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[[71] GEDecl, [72] PEDecl]"
+               & " no whitespace before entity value"));
+
+         return Error;
+      end if;
+
+      Self.Whitespace_Matched := False;
+
+      case Self.Version is
+         when XML_1_0 =>
+            Enter_Start_Condition (Self, Tables.ENTITY_VALUE_10);
+
+         when XML_1_1 =>
+            Enter_Start_Condition (Self, Tables.ENTITY_VALUE_11);
+      end case;
+
+      return Token_Value_Open;
+   end On_Entity_Value_Open_Delimiter;
+
    ----------------------------------------------------
    -- On_General_Entity_Reference_In_Attribute_Value --
    ----------------------------------------------------

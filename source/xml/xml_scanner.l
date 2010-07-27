@@ -497,7 +497,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ENTITY_DEF>["'] {
    --  Entity value, rule [9].
 
-   return Process_Entity_Value_Open_Delimiter (Self, YY_Text);
+   return Actions.On_Entity_Value_Open_Delimiter (Self);
 }
 
 <ENTITY_DEF,NOTATION_DECL>"SYSTEM" {
@@ -1007,10 +1007,6 @@ with Matreshka.Internals.Strings;
    function Process_Attribute_Value_Close_Delimiter
     (Self  : access Integer) return Token is separate;
 
-   function Process_Entity_Value_Open_Delimiter
-    (Self  : access Integer;
-     Image : League.Strings.Universal_String) return Token is separate;
-
    function Process_Entity_Value_Close_Delimiter
     (Self  : access Integer;
      Image : League.Strings.Universal_String) return Token is separate;
@@ -1105,6 +1101,9 @@ with Matreshka.Internals.Strings;
        (Self : access Integer) return Token;
 
       function On_System_Literal (Self : access Integer) return Token;
+
+      function On_Entity_Value_Open_Delimiter
+       (Self : access Integer) return Token;
 
    end Actions;
 
