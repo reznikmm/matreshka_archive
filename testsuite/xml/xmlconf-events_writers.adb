@@ -205,6 +205,9 @@ package body XMLConf.Events_Writers is
          when CR =>
             return To_Universal_String ("&#xB;");
 
+         when ' ' =>
+            return To_Universal_String ("&#x20;");
+
          when others =>
             return To_Universal_String (Wide_Wide_String'(1 => Item));
       end case;
