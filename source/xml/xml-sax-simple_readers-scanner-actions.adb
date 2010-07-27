@@ -115,13 +115,27 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          --  Matched string ends with literal ']]>' which is invalid in
          --  character data.
 
-         Callbacks.Call_Fatal_Error
-          (Self.all,
-           League.Strings.To_Universal_String
-            ("[[14] CharData] Text may not contain a literal ']]>' sequence"));
-         Self.Error_Reported := True;
+         if Self.Scanner_State.YY_Current_Position
+              - Self.Scanner_State.YY_Base_Position = 3
+         then
+            --  Exactly ']]>' found.
 
-         return Error;
+            Callbacks.Call_Fatal_Error
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("[[14] CharData] Text may not contain a literal ']]>' sequence"));
+            Self.Error_Reported := True;
+
+            return Error;
+
+         else
+            --  String ends with ']]>', move backward to report character data
+            --  in this cycle and report error in next cycle.
+
+            YY_Move_Backward (Self);
+            YY_Move_Backward (Self);
+            YY_Move_Backward (Self);
+         end if;
       end if;
 
       Matreshka.Internals.Strings.Operations.Copy_Slice
