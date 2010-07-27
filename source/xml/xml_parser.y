@@ -109,6 +109,15 @@ unexpected_at_end :
    Actions.On_Unexpected_Token_After_Root_Element (Self);
    Handle_Error;
 }
+  | Token_Element_Open
+{
+   --  Unexpected token after the root element. This rule is required to
+   --  handle End_Document callback properly, because ayacc is unable to
+   --  recognize syntax error till end of parser stack is reached.
+
+   Actions.On_Unexpected_Token_After_Root_Element (Self);
+   Handle_Error;
+}
   ;
 
 XMLDecl_optional :
