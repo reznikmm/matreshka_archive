@@ -89,9 +89,25 @@ document :
 {
    On_Fatal_Error;
 }
+  | Misc_any doctypedecl_optional element Misc_any unexpected_at_end
+{
+   On_Fatal_Error;
+}
   | error
 {
    On_Fatal_Error;
+}
+  ;
+
+unexpected_at_end :
+    Token_String_Segment
+{
+   --  Unexpected token after the root element. This rule is required to
+   --  handle End_Document callback properly, because ayacc is unable to
+   --  recognize syntax error till end of parser stack is reached.
+
+   Actions.On_Unexpected_Token_After_Root_Element (Self);
+   Handle_Error;
 }
   ;
 
@@ -898,9 +914,13 @@ with Matreshka.Internals.XML.Symbol_Tables;
 
       procedure On_End_Of_Document (Self : access Integer);
 
+      procedure On_Unexpected_Token_After_Root_Element (Self : access Integer);
+
    end Actions;
 
    package body Actions is separate;
+
+   procedure Handle_Error is separate;
 
    procedure On_Fatal_Error is separate;
 

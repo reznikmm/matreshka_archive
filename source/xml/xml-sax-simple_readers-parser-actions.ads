@@ -89,6 +89,10 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Handles start tag of element.
 
+   procedure On_Unexpected_Token_After_Root_Element
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles unexpected token after the root element.
+
    procedure On_XML_Version_Information
     (Self    : not null access SAX_Simple_Reader'Class;
      Version : not null Matreshka.Internals.Strings.Shared_String_Access);
