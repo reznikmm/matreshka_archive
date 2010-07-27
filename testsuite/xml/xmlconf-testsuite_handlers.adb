@@ -159,35 +159,39 @@ package body XMLConf.Testsuite_Handlers is
             Reader.Parse (Source'Access);
             Writer.Done;
 
-            case Kind is
-               when Valid =>
-                  if Writer.Has_Fatal_Errors or Writer.Has_Errors then
-                     Failed := True;
-                  end if;
+            if Writer.Text /= Expected then
+               Put_Line (Id & ": SAX");
+               Put_Line ("Expected: '" & Expected & "'");
+               Put_Line ("Actual  : '" & Writer.Text & "'");
 
-               when Invalid =>
-                  if not Writer.Has_Fatal_Errors and not Writer.Has_Errors then
-                     Failed := True;
-                  end if;
+               Self.Results (Kind).SAX := Self.Results (Kind).SAX + 1;
+               Failed := True;
 
-               when Not_Wellformed =>
-                  if not Writer.Has_Fatal_Errors then
-                     Failed := True;
-                  end if;
+            else
+               case Kind is
+                  when Valid =>
+                     if Writer.Has_Fatal_Errors or Writer.Has_Errors then
+                        Put_Line (Id & ": has errors");
+                        Failed := True;
+                     end if;
 
-               when Error =>
-                  null;
-            end case;
+                  when Invalid =>
+                     if not Writer.Has_Fatal_Errors and not Writer.Has_Errors then
+                        Put_Line (Id & ": doesn't have errors");
+                        Failed := True;
+                     end if;
+
+                  when Not_Wellformed =>
+                     if not Writer.Has_Fatal_Errors then
+                        Put_Line (Id & ": doesn't have errors");
+                        Failed := True;
+                     end if;
+
+                  when Error =>
+                     null;
+               end case;
+            end if;
          end select;
-
-         if not Failed and Writer.Text /= Expected then
-            Put_Line (Id & ": SAX");
-            Put_Line ("Expected: '" & Expected & "'");
-            Put_Line ("Actual  : '" & Writer.Text & "'");
-
-            Self.Results (Kind).SAX := Self.Results (Kind).SAX + 1;
-            Failed := True;
-         end if;
 
          Ada.Directories.Set_Directory (Cwd);
 
