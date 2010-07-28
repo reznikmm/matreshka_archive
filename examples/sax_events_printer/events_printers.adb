@@ -101,6 +101,23 @@ package body Events_Printers is
           & "'");
    end End_Element;
 
+   -----------
+   -- Error --
+   -----------
+
+   overriding procedure Error
+    (Self       : in out Events_Printer;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean) is
+   begin
+      Put_Line
+       (">>> (Error) "
+          & Image (Self.Locator)
+          & ": '"
+          & Occurrence.Message
+          & "'");
+   end Error;
+
    ------------------
    -- Error_String --
    ------------------
@@ -310,5 +327,22 @@ package body Events_Printers is
           & Notation_Name
           & "'");
    end Unparsed_Entity_Declaration;
+
+   -------------
+   -- Warning --
+   -------------
+
+   overriding procedure Warning
+    (Self       : in out Events_Printer;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean) is
+   begin
+      Put_Line
+       (">>> (Warning) "
+          & Image (Self.Locator)
+          & ": '"
+          & Occurrence.Message
+          & "'");
+   end Warning;
 
 end Events_Printers;

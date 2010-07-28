@@ -85,6 +85,11 @@ package Events_Printers is
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean);
 
+   overriding procedure Error
+    (Self       : in out Events_Printer;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean);
+
    overriding function Error_String
     (Self : Events_Printer)
        return League.Strings.Universal_String;
@@ -144,5 +149,10 @@ package Events_Printers is
      System_Id     : League.Strings.Universal_String;
      Notation_Name : League.Strings.Universal_String;
      Success       : in out Boolean);
+
+   overriding procedure Warning
+    (Self       : in out Events_Printer;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean);
 
 end Events_Printers;
