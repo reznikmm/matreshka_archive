@@ -93,7 +93,7 @@ library project Matreshka_League is
 
       when "DEBUG" =>
          Debug_Ada_Switches :=
-          ("-gnatwa", "-gnatyaAbBcdefhiIkmnoOprsStux", "-gnato", "-fstack-check");
+          ("-gnatwa", "-gnatyaAbcdefhiIkmnoOprsStux", "-gnato", "-fstack-check");
    end case;
 
    -------------
