@@ -50,7 +50,9 @@ with League.Strings;
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
+private with Matreshka.Internals.XML.Attribute_Tables;
 private with Matreshka.Internals.XML.Attributes;
+private with Matreshka.Internals.XML.Element_Tables;
 private with Matreshka.Internals.XML.Entity_Tables;
 private with Matreshka.Internals.XML.Namespace_Scopes;
 private with Matreshka.Internals.XML.Symbol_Tables;
@@ -376,6 +378,9 @@ private
       In_DTD              : Boolean;
 
       Entities            : Matreshka.Internals.XML.Entity_Tables.Entity_Table;
+      Elements            : Matreshka.Internals.XML.Element_Tables.Element_Table;
+      Attributes          :
+        Matreshka.Internals.XML.Attribute_Tables.Attribute_Table;
       External_Source     : XML.SAX.Input_Sources.SAX_Input_Source_Access;
       External_Subset     : League.Strings.Universal_String;
       --  Contents of the external subset if any. This member used only to
@@ -389,12 +394,21 @@ private
       --  Error message.
       User_Exception      : Ada.Exceptions.Exception_Occurrence;
       --  Catched exception from the user defined handler.
+      Current_Element     : Matreshka.Internals.XML.Element_Identifier;
+      --  Currently analyzed element, used to handle attribute list
+      --  declaration and element declaration.
+      Current_Attribute   : Matreshka.Internals.XML.Attribute_Identifier;
+      --  Currently analyzed attribute, used to handle default declaration
+      --  of the attribute definition.
+      Attribute_Redefined : Boolean;
+      --  Mark redefinition of the currently processing attribute. Once
+      --  attribute is defined it can't be redefined.
 
       --  When components can't be nested thier information is not hold in
       --  YYSType and placed directly here to avoid copy overhead.
 
       Attribute_Set       : Matreshka.Internals.XML.Attributes.Attribute_Set;
-      Attributes          : XML.SAX.Attributes.SAX_Attributes;
+      SAX_Attributes      : XML.SAX.Attributes.SAX_Attributes;
       --  Set of attributes of the element.
 
       --  Namespaces handling state

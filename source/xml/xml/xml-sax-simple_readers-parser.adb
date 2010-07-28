@@ -734,7 +734,9 @@ package body XML.SAX.Simple_Readers.Parser is
                  Is_CData      => False);
 
             when 60 =>
-               null;
+               Actions.On_Start_Of_Element_Declaration
+                (Self,
+                 yy.value_stack (yy.tos).Symbol);
 
             when 61 =>
                null;
@@ -845,7 +847,9 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 97 =>
-               null;
+               Actions.On_Start_Of_Attribute_List_Declaration
+                (Self,
+                 yy.value_stack (yy.tos).Symbol);
 
             when 98 =>
                null;
@@ -860,58 +864,74 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 102 =>
-               null;
+               Actions.On_CDATA_Attribute_Declaration
+                (Self   => Self,
+                 Symbol => yy.value_stack (yy.tos-1).Symbol);
 
             when 103 =>
                null;
 
             when 104 =>
-               null;
+               Actions.On_Id_Attribute_Declaration
+                (Self   => Self,
+                 Symbol => yy.value_stack (yy.tos-1).Symbol);
 
             when 105 =>
                null;
 
             when 106 =>
-               null;
+               Actions.On_IdRef_Attribute_Declaration
+                (Self   => Self,
+                 Symbol => yy.value_stack (yy.tos-1).Symbol);
 
             when 107 =>
                null;
 
             when 108 =>
-               null;
+               Actions.On_IdRefs_Attribute_Declaration
+                (Self   => Self,
+                 Symbol => yy.value_stack (yy.tos-1).Symbol);
 
             when 109 =>
                null;
 
             when 110 =>
-               null;
+               Actions.On_Entity_Attribute_Declaration
+                (Self   => Self,
+                 Symbol => yy.value_stack (yy.tos-1).Symbol);
 
             when 111 =>
                null;
 
             when 112 =>
-               null;
+               Actions.On_Entities_Attribute_Declaration
+                (Self   => Self,
+                 Symbol => yy.value_stack (yy.tos-1).Symbol);
 
             when 113 =>
                null;
 
             when 114 =>
-               null;
+               Actions.On_NmToken_Attribute_Declaration
+                (Self   => Self,
+                 Symbol => yy.value_stack (yy.tos-1).Symbol);
 
             when 115 =>
                null;
 
             when 116 =>
-               null;
+               Actions.On_NmTokens_Attribute_Declaration
+                (Self   => Self,
+                 Symbol => yy.value_stack (yy.tos-1).Symbol);
 
             when 117 =>
-               Actions.On_Start_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
+               null;
 
             when 118 =>
-               Actions.On_End_Tag (Self, yy.value_stack (yy.tos-1).Symbol);
+               null;
 
             when 119 =>
-               Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
+               null;
 
             when 120 =>
                null;
@@ -923,43 +943,73 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 123 =>
-               null;
+               Actions.On_Required_Attribute_Default_Declaration (Self);
 
             when 124 =>
-               Actions.On_Character_Data
-                (Self,
-                 yy.value_stack (yy.tos).String,
-                 yy.value_stack (yy.tos).Is_Whitespace);
+               Actions.On_Implied_Attribute_Default_Declaration (Self);
 
             when 125 =>
-               Process_Comment
-                (Self,
-                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
+               Actions.On_Fixed_Attribute_Default_Declaration (Self, yy.value_stack (yy.tos).String);
 
             when 126 =>
-               null;
+               Actions.On_Attribute_Default_Declaration (Self, yy.value_stack (yy.tos).String);
 
             when 127 =>
-               --  TextDecl come from substitution of external parsed entities.
-            
-               null;
+               Actions.On_Start_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
 
             when 128 =>
-               Actions.On_Elements_Attribute
-                (Self,
-                 yy.value_stack (yy.tos-2).Symbol,
-                 yy.value_stack (yy.tos).String);
+               Actions.On_End_Tag (Self, yy.value_stack (yy.tos-1).Symbol);
 
             when 129 =>
-               Actions.On_Elements_Attribute
-                (Self,
-                 yy.value_stack (yy.tos-2).Symbol,
-                 yy.value_stack (yy.tos).String);
+               Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
 
             when 130 =>
                null;
 
             when 131 =>
+               null;
+
+            when 132 =>
+               null;
+
+            when 133 =>
+               null;
+
+            when 134 =>
+               Actions.On_Character_Data
+                (Self,
+                 yy.value_stack (yy.tos).String,
+                 yy.value_stack (yy.tos).Is_Whitespace);
+
+            when 135 =>
+               Process_Comment
+                (Self,
+                 League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
+
+            when 136 =>
+               null;
+
+            when 137 =>
+               --  TextDecl come from substitution of external parsed entities.
+            
+               null;
+
+            when 138 =>
+               Actions.On_Elements_Attribute
+                (Self,
+                 yy.value_stack (yy.tos-2).Symbol,
+                 yy.value_stack (yy.tos).String);
+
+            when 139 =>
+               Actions.On_Elements_Attribute
+                (Self,
+                 yy.value_stack (yy.tos-2).Symbol,
+                 yy.value_stack (yy.tos).String);
+
+            when 140 =>
+               null;
+
+            when 141 =>
                Move (yyval, yy.value_stack (yy.tos-1));
                when others =>
                   raise Program_Error

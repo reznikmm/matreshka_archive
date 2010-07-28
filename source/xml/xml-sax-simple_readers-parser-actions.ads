@@ -46,6 +46,16 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
 
    pragma Preelaborate;
 
+   procedure On_Attribute_Default_Declaration
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Default : Matreshka.Internals.Strings.Shared_String_Access);
+   --  Handles declaration of default value of the attribute.
+
+   procedure On_CDATA_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Process attribute declaration of CDATA type.
+
    procedure On_Character_Data
     (Self          : not null access SAX_Simple_Reader'Class;
      Text          : not null Matreshka.Internals.Strings.Shared_String_Access;
@@ -53,9 +63,9 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
    --  Process segment of character data.
 
    procedure On_Elements_Attribute
-    (Self    : not null access SAX_Simple_Reader'Class;
-      Symbol : Matreshka.Internals.XML.Symbol_Identifier;
-      Value  : not null Matreshka.Internals.Strings.Shared_String_Access);
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier;
+     Value  : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Handles attribute of the element.
 
    procedure On_End_Of_Document
@@ -76,13 +86,71 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Handles end tag, rule [42].
 
+   procedure On_Entity_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Process attribute declaration of CDATA type.
+
+   procedure On_Entities_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Process attribute declaration of CDATA type.
+
    procedure On_External_Subset_Declaration
     (Self : not null access SAX_Simple_Reader'Class);
    --  Handles reference to external subset in the document type declaration.
 
+   procedure On_Fixed_Attribute_Default_Declaration
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Default : Matreshka.Internals.Strings.Shared_String_Access);
+   --  Handles declaration of fixed value of the attribute.
+
+   procedure On_Id_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Process attribute declaration of CDATA type.
+
+   procedure On_IdRef_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Process attribute declaration of CDATA type.
+
+   procedure On_IdRefs_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Process attribute declaration of CDATA type.
+
+   procedure On_Implied_Attribute_Default_Declaration
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles declaration of implied value of the attribute.
+
+   procedure On_NmToken_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Process attribute declaration of CDATA type.
+
+   procedure On_NmTokens_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Process attribute declaration of CDATA type.
+
+   procedure On_Required_Attribute_Default_Declaration
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles declaration of required value of the attribute.
+
+   procedure On_Start_Of_Attribute_List_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Handles start of attribute list declaration.
+
    procedure On_Start_Of_Document
     (Self : not null access SAX_Simple_Reader'Class);
    --  Handles start of document.
+
+   procedure On_Start_Of_Element_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Handles start of element declaration.
 
    procedure On_Start_Tag
     (Self   : not null access SAX_Simple_Reader'Class;

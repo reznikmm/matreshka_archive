@@ -49,12 +49,120 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
    use Matreshka.Internals.XML;
    use Matreshka.Internals.XML.Attributes;
+   use Matreshka.Internals.XML.Attribute_Tables;
+   use Matreshka.Internals.XML.Element_Tables;
    use Matreshka.Internals.XML.Namespace_Scopes;
    use Matreshka.Internals.XML.Symbol_Tables;
 
    Full_Stop  : constant := 16#002E#;
    Digit_Zero : constant := 16#0030#;
    Digit_One  : constant := 16#0031#;
+
+   procedure Analyze_Attribute_Declaration
+    (Self        : not null access SAX_Simple_Reader'Class;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
+     Constructor : not null access procedure
+                    (Self      : in out Attribute_Table;
+                     Name      : Symbol_Identifier;
+                     Attribute : out Attribute_Identifier));
+   --  Checks whether attribute is not declared, allocates new attribute using
+   --  specified constructor, attach it to the list of element's attributes.
+
+   -----------------------------------
+   -- Analyze_Attribute_Declaration --
+   -----------------------------------
+
+   procedure Analyze_Attribute_Declaration
+    (Self        : not null access SAX_Simple_Reader'Class;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
+     Constructor : not null access procedure
+                    (Self      : in out Attribute_Table;
+                     Name      : Symbol_Identifier;
+                     Attribute : out Attribute_Identifier))
+   is
+      Last    : Attribute_Identifier;
+      Current : Attribute_Identifier;
+
+   begin
+      Self.Attribute_Redefined := False;
+      Self.Current_Attribute :=
+        Element_Tables.Attributes (Self.Elements, Self.Current_Element);
+
+      if Self.Current_Attribute = No_Attribute then
+         Constructor (Self.Attributes, Symbol, Self.Current_Attribute);
+         Set_Attributes
+          (Self.Elements, Self.Current_Element, Self.Current_Attribute);
+
+      else
+         Last    := Self.Current_Attribute;
+         Current := Self.Current_Attribute;
+
+         while Current /= No_Attribute loop
+            --  [XML 3.3] Attribute List Declarations
+            --
+            --  "When more than one AttlistDecl is provided for a given element
+            --  type, the contents of all those provided are merged. When more
+            --  than one definition is provided for the same attribute of a
+            --  given element type, the first declaration is binding and later
+            --  declarations are ignored. For interoperability, writers of DTDs
+            --  may choose to provide at most one attribute-list declaration
+            --  for a given element type, at most one attribute definition for
+            --  a given attribute name in an attribute-list declaration, and at
+            --  least one attribute definition in each attribute-list
+            --  declaration. For interoperability, an XML processor MAY at user
+            --  option issue a warning when more than one attribute-list
+            --  declaration is provided for a given element type, or more than
+            --  one attribute definition is provided for a given attribute, but
+            --  this is not an error."
+            --
+            --  Check whether attribute is declared already, report warning and
+            --  stop future processing.
+
+            if Name (Self.Attributes, Current) = Symbol then
+               Callbacks.Call_Warning
+                (Self.all,
+                 League.Strings.To_Universal_String
+                  ("[XML 3.3]"
+                     & " more than one attribute definition is provided for"
+                     & " the attribute"));
+
+               Self.Attribute_Redefined := True;
+
+               return;
+            end if;
+
+            Last := Current;
+            Current := Next (Self.Attributes, Current);
+         end loop;
+
+         Constructor (Self.Attributes, Symbol, Self.Current_Attribute);
+         Append (Self.Attributes, Last, Self.Current_Attribute);
+      end if;
+   end Analyze_Attribute_Declaration;
+
+   --------------------------------------
+   -- On_Attribute_Default_Declaration --
+   --------------------------------------
+
+   procedure On_Attribute_Default_Declaration
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Default : Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
+      if not Self.Attribute_Redefined then
+         Set_Default (Self.Attributes, Self.Current_Attribute, Default);
+      end if;
+   end On_Attribute_Default_Declaration;
+
+   ------------------------------------
+   -- On_CDATA_Attribute_Declaration --
+   ------------------------------------
+
+   procedure On_CDATA_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Analyze_Attribute_Declaration (Self, Symbol, New_CDATA_Attribute'Access);
+   end On_CDATA_Attribute_Declaration;
 
    -----------------------
    -- On_Character_Data --
@@ -182,6 +290,30 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       end if;
    end On_End_Tag;
 
+   ---------------------------------------
+   -- On_Entities_Attribute_Declaration --
+   ---------------------------------------
+
+   procedure On_Entities_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Analyze_Attribute_Declaration
+       (Self, Symbol, New_Entities_Attribute'Access);
+   end On_Entities_Attribute_Declaration;
+
+   -------------------------------------
+   -- On_Entity_Attribute_Declaration --
+   -------------------------------------
+
+   procedure On_Entity_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Analyze_Attribute_Declaration
+       (Self, Symbol, New_Entity_Attribute'Access);
+   end On_Entity_Attribute_Declaration;
+
    ------------------------------------
    -- On_External_Subset_Declaration --
    ------------------------------------
@@ -197,6 +329,199 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       --  XXX Callbacks package must be used for this call.
    end On_External_Subset_Declaration;
 
+   --------------------------------------------
+   -- On_Fixed_Attribute_Default_Declaration --
+   --------------------------------------------
+
+   procedure On_Fixed_Attribute_Default_Declaration
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Default : Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
+      if not Self.Attribute_Redefined then
+         Set_Is_Fixed (Self.Attributes, Self.Current_Attribute, True);
+         Set_Default (Self.Attributes, Self.Current_Attribute, Default);
+      end if;
+   end On_Fixed_Attribute_Default_Declaration;
+
+   ---------------------------------
+   -- On_Id_Attribute_Declaration --
+   ---------------------------------
+
+   procedure On_Id_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Analyze_Attribute_Declaration (Self, Symbol, New_Id_Attribute'Access);
+
+      if not Self.Attribute_Redefined then
+         --  [XML 3.3.1 VC: One ID per Element Type]
+         --
+         --  "An element type MUST NOT have more than one ID attribute
+         --  specified."
+         --
+         --  Checking whether no other attributes with type ID for element.
+
+         if Self.Validation.Enabled then
+            declare
+               Current : Attribute_Identifier
+                 := Element_Tables.Attributes
+                     (Self.Elements, Self.Current_Element);
+
+            begin
+               while Current /= No_Attribute loop
+                  if Current /= Self.Current_Attribute
+                    and Is_ID (Self.Attributes, Current)
+                  then
+                     Callbacks.Call_Error
+                      (Self.all,
+                       League.Strings.To_Universal_String
+                        ("[XML 3.3.1 VC: One ID per Element Type]"
+                           & " element type must not have more than one ID"
+                           & " attribute specified"));
+
+                     exit;
+                  end if;
+
+                  Current := Next (Self.Attributes, Current);
+               end loop;
+            end;
+         end if;
+      end if;
+   end On_Id_Attribute_Declaration;
+
+   ------------------------------------
+   -- On_IdRef_Attribute_Declaration --
+   ------------------------------------
+
+   procedure On_IdRef_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Analyze_Attribute_Declaration (Self, Symbol, New_IdRef_Attribute'Access);
+   end On_IdRef_Attribute_Declaration;
+
+   -------------------------------------
+   -- On_IdRefs_Attribute_Declaration --
+   -------------------------------------
+
+   procedure On_IdRefs_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Analyze_Attribute_Declaration
+       (Self, Symbol, New_IdRefs_Attribute'Access);
+   end On_IdRefs_Attribute_Declaration;
+
+   ----------------------------------------------
+   -- On_Implied_Attribute_Default_Declaration --
+   ----------------------------------------------
+
+   procedure On_Implied_Attribute_Default_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      if not Self.Attribute_Redefined then
+         Set_Is_Implied (Self.Attributes, Self.Current_Attribute, True);
+      end if;
+   end On_Implied_Attribute_Default_Declaration;
+
+   --------------------------------------
+   -- On_NmToken_Attribute_Declaration --
+   --------------------------------------
+
+   procedure On_NmToken_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Analyze_Attribute_Declaration
+       (Self, Symbol, New_NmToken_Attribute'Access);
+   end On_NmToken_Attribute_Declaration;
+
+   ---------------------------------------
+   -- On_NmTokens_Attribute_Declaration --
+   ---------------------------------------
+
+   procedure On_NmTokens_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Analyze_Attribute_Declaration
+       (Self, Symbol, New_NmTokens_Attribute'Access);
+   end On_NmTokens_Attribute_Declaration;
+
+   -----------------------------------------------
+   -- On_Required_Attribute_Default_Declaration --
+   -----------------------------------------------
+
+   procedure On_Required_Attribute_Default_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      if not Self.Attribute_Redefined then
+         Set_Is_Required (Self.Attributes, Self.Current_Attribute, True);
+      end if;
+   end On_Required_Attribute_Default_Declaration;
+
+   --------------------------------------------
+   -- On_Start_Of_Attribute_List_Declaration --
+   --------------------------------------------
+
+   procedure On_Start_Of_Attribute_List_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Symbol_Identifier) is
+   begin
+      Self.Current_Element := Element (Self.Symbols, Symbol);
+
+      --  [XML 3.3] Attribute List Declaration
+      --
+      --  "The Name in the AttlistDecl rule is the type of an element. At user
+      --  option, an XML processor MAY issue a warning if attributes are
+      --  declared for an element type not itself declared, but this is not an
+      --  error. The Name in the AttDef rule is the name of the attribute."
+      --
+      --  Check whether element is declared.
+
+      if Self.Current_Element = No_Element then
+         Callbacks.Call_Warning
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML 3.3]"
+               & " attribute list declaration for element type not itself"
+               & " declared"));
+
+         New_Element (Self.Elements, Self.Current_Element);
+         Set_Element (Self.Symbols, Symbol, Self.Current_Element);
+      end if;
+
+      --  [XML 3.3] Attribute List Declarations
+      --
+      --  "When more than one AttlistDecl is provided for a given element type,
+      --  the contents of all those provided are merged. When more than one
+      --  definition is provided for the same attribute of a given element
+      --  type, the first declaration is binding and later declarations are
+      --  ignored. For interoperability, writers of DTDs may choose to provide
+      --  at most one attribute-list declaration for a given element type, at
+      --  most one attribute definition for a given attribute name in an
+      --  attribute-list declaration, and at least one attribute definition in
+      --  each attribute-list declaration. For interoperability, an XML
+      --  processor MAY at user option issue a warning when more than one
+      --  attribute-list declaration is provided for a given element type, or
+      --  more than one attribute definition is provided for a given attribute,
+      --  but this is not an error."
+      --
+      --  Check whether attribute list declaration is already provided for
+      --  element type.
+
+      if Is_Attributes_Declared (Self.Elements, Self.Current_Element) then
+         Callbacks.Call_Warning
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML 3.3]"
+               & " more than one attribute list declaration is provided for"
+               & " the element type"));
+      end if;
+
+      Set_Is_Attributes_Declared (Self.Elements, Self.Current_Element, True);
+   end On_Start_Of_Attribute_List_Declaration;
+
    --------------------------
    -- On_Start_Of_Document --
    --------------------------
@@ -206,6 +531,42 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    begin
       Callbacks.Call_Start_Document (Self.all);
    end On_Start_Of_Document;
+
+   -------------------------------------
+   -- On_Start_Of_Element_Declaration --
+   -------------------------------------
+
+   procedure On_Start_Of_Element_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Self.Current_Element := Element (Self.Symbols, Symbol);
+
+      if Self.Current_Element /= No_Element then
+         --  [XML1.1 3.2 VC: Unique Element Type Declaration]
+         --
+         --  "An element type MUST NOT be declared more than once."
+         --
+         --  Check whether validation is enabled and element type is already
+         --  declared.
+
+         if Self.Validation.Enabled
+           and Is_Declared (Self.Elements, Self.Current_Element)
+         then
+            Callbacks.Call_Error
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("[XML1.1 3.2 VC: Unique Element Type Declaration]"
+                  & " element type must not be declared more than once"));
+         end if;
+
+      else
+         New_Element (Self.Elements, Self.Current_Element);
+         Set_Element (Self.Symbols, Symbol, Self.Current_Element);
+      end if;
+
+      Set_Is_Declared (Self.Elements, Self.Current_Element, True);
+   end On_Start_Of_Element_Declaration;
 
    ------------------
    -- On_Start_Tag --
@@ -236,7 +597,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                                    /= Symbol_xmlns))
                then
                   XML.SAX.Attributes.Internals.Unchecked_Append
-                   (Self.Attributes,
+                   (Self.SAX_Attributes,
                     Name (Self.Symbols, Namespace_URI (Self.Attribute_Set, J)),
                     Local_Name (Self.Symbols, Qname),
                     Name (Self.Symbols, Qname),
@@ -280,6 +641,31 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       end if;
 
       Self.Element_Names.Append (Symbol);
+
+      Self.Current_Element := Element (Self.Symbols, Symbol);
+
+      if Self.Current_Element /= No_Element then
+         declare
+            Current  : Attribute_Identifier
+              := Element_Tables.Attributes
+                  (Self.Elements, Self.Current_Element);
+            Found    : Boolean;
+            Inserted : Boolean;
+
+         begin
+            while Current /= No_Attribute loop
+               if Has_Default (Self.Attributes, Current) then
+                  Insert
+                   (Self.Attribute_Set,
+                    Name (Self.Attributes, Current),
+                    Default (Self.Attributes, Current),
+                    Inserted);
+               end if;
+
+               Current := Next (Self.Attributes, Current);
+            end loop;
+         end;
+      end if;
 
       if Self.Namespaces.Enabled then
          Push_Scope (Self.Namespace_Scope);
@@ -594,7 +980,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
            Namespace_URI  => Name (Self.Symbols, Element_Namespace),
            Local_Name     => Local_Name (Self.Symbols, Symbol),
            Qualified_Name => Name (Self.Symbols, Symbol),
-           Attributes     => Self.Attributes);
+           Attributes     => Self.SAX_Attributes);
 
       else
          Convert;
@@ -604,11 +990,11 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
            Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
            Qualified_Name =>
              Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
-           Attributes     => Self.Attributes);
+           Attributes     => Self.SAX_Attributes);
       end if;
 
       Clear (Self.Attribute_Set);
-      XML.SAX.Attributes.Internals.Clear (Self.Attributes);
+      XML.SAX.Attributes.Internals.Clear (Self.SAX_Attributes);
    end On_Start_Tag;
 
    --------------------------------------------

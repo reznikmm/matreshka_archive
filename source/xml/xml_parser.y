@@ -473,7 +473,13 @@ AttributeEntityValue_Content:
   ;
 
 elementdecl:
-    Token_Element_Decl_Open contentspec Token_Close
+    Token_Element_Decl_Open
+{
+   Actions.On_Start_Of_Element_Declaration
+    (Self,
+     $1.Symbol);
+}
+    contentspec Token_Close
 {
    null;
 }
@@ -647,7 +653,13 @@ Mixed_content:
   ;
 
 AttlistDecl :
-    Token_Attlist_Decl_Open AttDef_any Token_Close
+    Token_Attlist_Decl_Open
+{
+   Actions.On_Start_Of_Attribute_List_Declaration
+    (Self,
+     $1.Symbol);
+}
+    AttDef_any Token_Close
 {
    null;
 }
@@ -669,35 +681,83 @@ AttDef_any:
   ;
 
 AttDef :
-    Token_Name Token_CData DefaultDecl
+    Token_Name Token_CData
+{
+   Actions.On_CDATA_Attribute_Declaration
+    (Self   => Self,
+     Symbol => $1.Symbol);
+}
+    DefaultDecl
 {
    null;
 }
-  | Token_Name Token_Id DefaultDecl
+  | Token_Name Token_Id
+{
+   Actions.On_Id_Attribute_Declaration
+    (Self   => Self,
+     Symbol => $1.Symbol);
+}
+    DefaultDecl
 {
    null;
 }
-  | Token_Name Token_IdRef DefaultDecl
+  | Token_Name Token_IdRef
+{
+   Actions.On_IdRef_Attribute_Declaration
+    (Self   => Self,
+     Symbol => $1.Symbol);
+}
+    DefaultDecl
 {
    null;
 }
-  | Token_Name Token_IdRefs DefaultDecl
+  | Token_Name Token_IdRefs
+{
+   Actions.On_IdRefs_Attribute_Declaration
+    (Self   => Self,
+     Symbol => $1.Symbol);
+}
+    DefaultDecl
 {
    null;
 }
-  | Token_Name Token_Entity DefaultDecl
+  | Token_Name Token_Entity
+{
+   Actions.On_Entity_Attribute_Declaration
+    (Self   => Self,
+     Symbol => $1.Symbol);
+}
+    DefaultDecl
 {
    null;
 }
-  | Token_Name Token_Entities DefaultDecl
+  | Token_Name Token_Entities
+{
+   Actions.On_Entities_Attribute_Declaration
+    (Self   => Self,
+     Symbol => $1.Symbol);
+}
+    DefaultDecl
 {
    null;
 }
-  | Token_Name Token_NmToken DefaultDecl
+  | Token_Name Token_NmToken
+{
+   Actions.On_NmToken_Attribute_Declaration
+    (Self   => Self,
+     Symbol => $1.Symbol);
+}
+    DefaultDecl
 {
    null;
 }
-  | Token_Name Token_NmTokens DefaultDecl
+  | Token_Name Token_NmTokens
+{
+   Actions.On_NmTokens_Attribute_Declaration
+    (Self   => Self,
+     Symbol => $1.Symbol);
+}
+    DefaultDecl
 {
    null;
 }
@@ -729,19 +789,19 @@ Name_any:
 DefaultDecl:
     Token_Required
 {
-   null;
+   Actions.On_Required_Attribute_Default_Declaration (Self);
 }
   | Token_Implied
 {
-   null;
-}
-  | AttributeValue
-{
-   null;
+   Actions.On_Implied_Attribute_Default_Declaration (Self);
 }
   | Token_Fixed AttributeValue
 {
-   null;
+   Actions.On_Fixed_Attribute_Default_Declaration (Self, $2.String);
+}
+  | AttributeValue
+{
+   Actions.On_Attribute_Default_Declaration (Self, $1.String);
 }
   ;
 
@@ -932,6 +992,60 @@ with Matreshka.Internals.XML.Symbol_Tables;
       procedure On_End_Of_Document (Self : access Integer);
 
       procedure On_Unexpected_Token_After_Root_Element (Self : access Integer);
+
+      procedure On_Start_Of_Attribute_List_Declaration
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Start_Of_Element_Declaration
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_CDATA_Attribute_Declaration
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Id_Attribute_Declaration
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_IdRef_Attribute_Declaration
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_IdRefs_Attribute_Declaration
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Entity_Attribute_Declaration
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Entities_Attribute_Declaration
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_NmToken_Attribute_Declaration
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_NmTokens_Attribute_Declaration
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Required_Attribute_Default_Declaration
+       (Self : access Integer);
+
+      procedure On_Implied_Attribute_Default_Declaration
+       (Self : access Integer);
+
+      procedure On_Fixed_Attribute_Default_Declaration
+       (Self    : access Integer;
+        Default : Matreshka.Internals.Strings.Shared_String_Access);
+
+      procedure On_Attribute_Default_Declaration
+       (Self    : access Integer;
+        Default : Matreshka.Internals.Strings.Shared_String_Access);
 
    end Actions;
 

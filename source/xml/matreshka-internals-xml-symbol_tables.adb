@@ -63,33 +63,16 @@ package body Matreshka.Internals.XML.Symbol_Tables is
     (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean;
    --  Returns True when code point belongs to NSNameStartChar.
 
-   --------------------------------------
-   -- Is_Valid_NS_Name_Start_Character --
-   --------------------------------------
+   -------------
+   -- Element --
+   -------------
 
-   function Is_Valid_NS_Name_Start_Character
-    (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean
-   is
-      use type Matreshka.Internals.Unicode.Code_Point;
-
+   function Element
+    (Self       : Symbol_Table;
+     Identifier : Symbol_Identifier) return Element_Identifier is
    begin
-      return
-        Code in 16#0041# .. 16#005A#          --  A-Z
-          or Code = 16#005F#                  --  _
-          or Code in 16#0061# .. 16#007A#     --  a-z
-          or Code in 16#00C0# .. 16#00D6#     --  \u00C0-\u00D6
-          or Code in 16#00D8# .. 16#00F6#     --  \u00D8-\u00F6
-          or Code in 16#00F8# .. 16#02FF#     --  \u00F8-\u02FF
-          or Code in 16#0370# .. 16#037D#     --  \u0370-\u037D
-          or Code in 16#037F# .. 16#1FFF#     --  \u037F-\u1FFF
-          or Code in 16#200C# .. 16#200D#     --  \u200C-\u200D
-          or Code in 16#2070# .. 16#218F#     --  \u2070-\u218F
-          or Code in 16#2C00# .. 16#2FEF#     --  \u2C00-\u2FEF
-          or Code in 16#3001# .. 16#D7FF#     --  \u3001-\uD7FF
-          or Code in 16#F900# .. 16#FDCF#     --  \uF900-\uFDCF
-          or Code in 16#FDF0# .. 16#FFFD#     --  \uFDF0-\uFFFD
-          or Code in 16#10000# .. 16#EFFFF#;  --  \u10000-\uEFFFF
-   end Is_Valid_NS_Name_Start_Character;
+      return Self.Table (Identifier).Element;
+   end Element;
 
    --------------
    -- Finalize --
@@ -150,6 +133,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
            Namespace_Processed => False,
            Prefix_Name         => No_Symbol,
            Local_Name          => No_Symbol,
+           Element             => No_Element,
            Parameter_Entity    => No_Entity,
            General_Entity      => Entity);
       end Register_Predefined_Entity;
@@ -171,6 +155,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
            Namespace_Processed => False,
            Prefix_Name         => No_Symbol,
            Local_Name          => No_Symbol,
+           Element             => No_Element,
            Parameter_Entity    => No_Entity,
            General_Entity      => No_Entity);
       end Register_Symbol;
@@ -178,12 +163,13 @@ package body Matreshka.Internals.XML.Symbol_Tables is
    begin
       Self.Table := new Symbol_Record_Array (0 .. 255);
       Self.Table (No_Symbol) :=
-       (Matreshka.Internals.Strings.Shared_Empty'Access,
-        True,
-        No_Symbol,
-        No_Symbol,
-        No_Entity,
-        No_Entity);
+       (String              => Matreshka.Internals.Strings.Shared_Empty'Access,
+        Namespace_Processed => True,
+        Prefix_Name         => No_Symbol,
+        Local_Name          => No_Symbol,
+        Element             => No_Element,
+        Parameter_Entity    => No_Entity,
+        General_Entity      => No_Entity);
       Self.Last  := No_Symbol;
 
       --  Register predefined entities.
@@ -203,6 +189,18 @@ package body Matreshka.Internals.XML.Symbol_Tables is
       Register_Predefined_Entity
        (Name   => League.Strings.To_Universal_String ("quot"),
         Entity => Entity_quot);
+
+      --  Register attribute type's names.
+
+      Register_Symbol (League.Strings.To_Universal_String ("CDATA"));
+      Register_Symbol (League.Strings.To_Universal_String ("ID"));
+      Register_Symbol (League.Strings.To_Universal_String ("IDREF"));
+      Register_Symbol (League.Strings.To_Universal_String ("IDREFS"));
+      Register_Symbol (League.Strings.To_Universal_String ("NMTOKEN"));
+      Register_Symbol (League.Strings.To_Universal_String ("NMTOKENS"));
+      Register_Symbol (League.Strings.To_Universal_String ("ENTITY"));
+      Register_Symbol (League.Strings.To_Universal_String ("ENTITIES"));
+      Register_Symbol (League.Strings.To_Universal_String ("NOTATION"));
 
       --  Register well known names and namespaces.
 
@@ -277,6 +275,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
            Namespace_Processed => False,
            Prefix_Name         => No_Symbol,
            Local_Name          => No_Symbol,
+           Element             => No_Element,
            Parameter_Entity    => No_Entity,
            General_Entity      => No_Entity);
       end if;
@@ -401,6 +400,34 @@ package body Matreshka.Internals.XML.Symbol_Tables is
         Identifier);
    end Insert;
 
+   --------------------------------------
+   -- Is_Valid_NS_Name_Start_Character --
+   --------------------------------------
+
+   function Is_Valid_NS_Name_Start_Character
+    (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean
+   is
+      use type Matreshka.Internals.Unicode.Code_Point;
+
+   begin
+      return
+        Code in 16#0041# .. 16#005A#          --  A-Z
+          or Code = 16#005F#                  --  _
+          or Code in 16#0061# .. 16#007A#     --  a-z
+          or Code in 16#00C0# .. 16#00D6#     --  \u00C0-\u00D6
+          or Code in 16#00D8# .. 16#00F6#     --  \u00D8-\u00F6
+          or Code in 16#00F8# .. 16#02FF#     --  \u00F8-\u02FF
+          or Code in 16#0370# .. 16#037D#     --  \u0370-\u037D
+          or Code in 16#037F# .. 16#1FFF#     --  \u037F-\u1FFF
+          or Code in 16#200C# .. 16#200D#     --  \u200C-\u200D
+          or Code in 16#2070# .. 16#218F#     --  \u2070-\u218F
+          or Code in 16#2C00# .. 16#2FEF#     --  \u2C00-\u2FEF
+          or Code in 16#3001# .. 16#D7FF#     --  \u3001-\uD7FF
+          or Code in 16#F900# .. 16#FDCF#     --  \uF900-\uFDCF
+          or Code in 16#FDF0# .. 16#FFFD#     --  \uFDF0-\uFFFD
+          or Code in 16#10000# .. 16#EFFFF#;  --  \u10000-\uEFFFF
+   end Is_Valid_NS_Name_Start_Character;
+
    ----------------
    -- Local_Name --
    ----------------
@@ -482,6 +509,18 @@ package body Matreshka.Internals.XML.Symbol_Tables is
    begin
       return Self.Table (Identifier).Prefix_Name;
    end Prefix_Name;
+
+   -----------------
+   -- Set_Element --
+   -----------------
+
+   procedure Set_Element
+    (Self       : in out Symbol_Table;
+     Identifier : Symbol_Identifier;
+     Element    : Element_Identifier) is
+   begin
+      Self.Table (Identifier).Element := Element;
+   end Set_Element;
 
    ------------------------
    -- Set_General_Entity --

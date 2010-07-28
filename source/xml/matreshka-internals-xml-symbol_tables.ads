@@ -94,7 +94,6 @@ package Matreshka.Internals.XML.Symbol_Tables is
     (Self       : Symbol_Table;
      Identifier : Symbol_Identifier)
        return not null Matreshka.Internals.Strings.Shared_String_Access;
-   pragma Inline (Name);
    --  Returns name of the identifier. Reference counter is not incremented.
 
    function Name
@@ -105,48 +104,52 @@ package Matreshka.Internals.XML.Symbol_Tables is
    function Local_Name
     (Self       : Symbol_Table;
      Identifier : Symbol_Identifier) return Symbol_Identifier;
-   pragma Inline (Local_Name);
    --  Returns local name component of the identifier.
 
    function Local_Name
     (Self       : Symbol_Table;
      Identifier : Symbol_Identifier)
        return not null Matreshka.Internals.Strings.Shared_String_Access;
-   pragma Inline (Local_Name);
    --  Returns local name component of the identifier. Reference counter is not
    --  incremented.
 
    function Prefix_Name
     (Self       : Symbol_Table;
      Identifier : Symbol_Identifier) return Symbol_Identifier;
-   pragma Inline (Prefix_Name);
    --  Returns prefix name component of the identifier.
 
    function Parameter_Entity
     (Self       : Symbol_Table;
      Identifier : Symbol_Identifier) return Entity_Identifier;
-   pragma Inline (Parameter_Entity);
    --  Returns parameter entity associated with the name.
 
    procedure Set_Parameter_Entity
     (Self       : in out Symbol_Table;
      Identifier : Symbol_Identifier;
      Entity     : Entity_Identifier);
-   pragma Inline (Set_Parameter_Entity);
    --  Associates parameter entity with the name.
 
    function General_Entity
     (Self       : Symbol_Table;
      Identifier : Symbol_Identifier) return Entity_Identifier;
-   pragma Inline (General_Entity);
    --  Returns general entity associated with the name.
 
    procedure Set_General_Entity
     (Self       : in out Symbol_Table;
      Identifier : Symbol_Identifier;
      Entity     : Entity_Identifier);
-   pragma Inline (Set_General_Entity);
    --  Associates general entity with the name.
+
+   function Element
+    (Self       : Symbol_Table;
+     Identifier : Symbol_Identifier) return Element_Identifier;
+   --  Returns element declaration associated with the name.
+
+   procedure Set_Element
+    (Self       : in out Symbol_Table;
+     Identifier : Symbol_Identifier;
+     Element    : Element_Identifier);
+   --  Associates element declaration with the name.
 
    procedure Initialize (Self : in out Symbol_Table);
    --  Initialize internal structures and register predefined general entities.
@@ -163,7 +166,7 @@ private
       Prefix_Name         : Symbol_Identifier;
       Local_Name          : Symbol_Identifier;
 
---      Element             : Element_Identifier;
+      Element             : Element_Identifier;
 --      Notation            : Notation_Identifier;
       Parameter_Entity    : Entity_Identifier;
       General_Entity      : Entity_Identifier;
@@ -177,5 +180,15 @@ private
       Table : Symbol_Record_Array_Access;
       Last  : Symbol_Identifier;
    end record;
+
+   pragma Inline (Element);
+   pragma Inline (General_Entity);
+   pragma Inline (Local_Name);
+   pragma Inline (Name);
+   pragma Inline (Parameter_Entity);
+   pragma Inline (Prefix_Name);
+   pragma Inline (Set_Element);
+   pragma Inline (Set_General_Entity);
+   pragma Inline (Set_Parameter_Entity);
 
 end Matreshka.Internals.XML.Symbol_Tables;

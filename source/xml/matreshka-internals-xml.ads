@@ -46,17 +46,13 @@ package Matreshka.Internals.XML is
 
    pragma Pure;
 
-   type Symbol_Identifier is private;
-   No_Symbol       : constant Symbol_Identifier;
-   Symbol_lt       : constant Symbol_Identifier;
-   Symbol_gt       : constant Symbol_Identifier;
-   Symbol_amp      : constant Symbol_Identifier;
-   Symbol_apos     : constant Symbol_Identifier;
-   Symbol_quot     : constant Symbol_Identifier;
-   Symbol_xml      : constant Symbol_Identifier;
-   Symbol_xmlns    : constant Symbol_Identifier;
-   Symbol_xml_NS   : constant Symbol_Identifier;
-   Symbol_xmlns_NS : constant Symbol_Identifier;
+   type Attribute_Identifier is private;
+   No_Attribute : constant Attribute_Identifier;
+   --  Internal identifier of attribute type declaration.
+
+   type Element_Identifier is private;
+   No_Element : constant Element_Identifier;
+   --  Internal identifier of element declaration.
 
    type Entity_Identifier is private;
    No_Entity   : constant Entity_Identifier;
@@ -65,20 +61,43 @@ package Matreshka.Internals.XML is
    Entity_amp  : constant Entity_Identifier;
    Entity_apos : constant Entity_Identifier;
    Entity_quot : constant Entity_Identifier;
+   --  Internal identifier of entity.
+
+   type Notation_Identifier is private;
+   No_Notation : constant Notation_Identifier;
+   --  Internal identifier of notation.
+
+   type Symbol_Identifier is private;
+   No_Symbol       : constant Symbol_Identifier;
+   Symbol_lt       : constant Symbol_Identifier;
+   Symbol_gt       : constant Symbol_Identifier;
+   Symbol_amp      : constant Symbol_Identifier;
+   Symbol_apos     : constant Symbol_Identifier;
+   Symbol_quot     : constant Symbol_Identifier;
+   Symbol_CDATA    : constant Symbol_Identifier;
+   Symbol_ID       : constant Symbol_Identifier;
+   Symbol_IDREF    : constant Symbol_Identifier;
+   Symbol_IDREFS   : constant Symbol_Identifier;
+   Symbol_NMTOKEN  : constant Symbol_Identifier;
+   Symbol_NMTOKENS : constant Symbol_Identifier;
+   Symbol_ENTITY   : constant Symbol_Identifier;
+   Symbol_ENTITIES : constant Symbol_Identifier;
+   Symbol_NOTATION : constant Symbol_Identifier;
+   Symbol_xml      : constant Symbol_Identifier;
+   Symbol_xmlns    : constant Symbol_Identifier;
+   Symbol_xml_NS   : constant Symbol_Identifier;
+   Symbol_xmlns_NS : constant Symbol_Identifier;
+   --  Internal identifier of symbol. Symbols are used to associate different
+   --  kinds of items with name, and to minimize amount of used memory to store
+   --  names.
 
 private
 
-   type Symbol_Identifier is mod 2 ** 32;
-   No_Symbol       : constant Symbol_Identifier := 0;
-   Symbol_lt       : constant Symbol_Identifier := 1;
-   Symbol_gt       : constant Symbol_Identifier := 2;
-   Symbol_amp      : constant Symbol_Identifier := 3;
-   Symbol_apos     : constant Symbol_Identifier := 4;
-   Symbol_quot     : constant Symbol_Identifier := 5;
-   Symbol_xml      : constant Symbol_Identifier := 6;
-   Symbol_xmlns    : constant Symbol_Identifier := 7;
-   Symbol_xml_NS   : constant Symbol_Identifier := 8;
-   Symbol_xmlns_NS : constant Symbol_Identifier := 9;
+   type Attribute_Identifier is mod 2 ** 32;
+   No_Attribute : constant Attribute_Identifier := 0;
+
+   type Element_Identifier is mod 2 ** 32;
+   No_Element : constant Element_Identifier := 0;
 
    type Entity_Identifier is mod 2 ** 32;
    No_Entity   : constant Entity_Identifier := 0;
@@ -87,5 +106,29 @@ private
    Entity_amp  : constant Entity_Identifier := 3;
    Entity_apos : constant Entity_Identifier := 4;
    Entity_quot : constant Entity_Identifier := 5;
+
+   type Notation_Identifier is mod 2 ** 32;
+   No_Notation : constant Notation_Identifier := 0;
+
+   type Symbol_Identifier is mod 2 ** 32;
+   No_Symbol       : constant Symbol_Identifier := 0;
+   Symbol_lt       : constant Symbol_Identifier := 1;
+   Symbol_gt       : constant Symbol_Identifier := 2;
+   Symbol_amp      : constant Symbol_Identifier := 3;
+   Symbol_apos     : constant Symbol_Identifier := 4;
+   Symbol_quot     : constant Symbol_Identifier := 5;
+   Symbol_CDATA    : constant Symbol_Identifier := 6;
+   Symbol_ID       : constant Symbol_Identifier := 7;
+   Symbol_IDREF    : constant Symbol_Identifier := 8;
+   Symbol_IDREFS   : constant Symbol_Identifier := 9;
+   Symbol_NMTOKEN  : constant Symbol_Identifier := 10;
+   Symbol_NMTOKENS : constant Symbol_Identifier := 11;
+   Symbol_ENTITY   : constant Symbol_Identifier := 12;
+   Symbol_ENTITIES : constant Symbol_Identifier := 13;
+   Symbol_NOTATION : constant Symbol_Identifier := 14;
+   Symbol_xml      : constant Symbol_Identifier := 15;
+   Symbol_xmlns    : constant Symbol_Identifier := 16;
+   Symbol_xml_NS   : constant Symbol_Identifier := 17;
+   Symbol_xmlns_NS : constant Symbol_Identifier := 18;
 
 end Matreshka.Internals.XML;
