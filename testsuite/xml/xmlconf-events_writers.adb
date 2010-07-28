@@ -48,11 +48,17 @@ with XML.SAX.Input_Sources.Streams.Files;
 
 package body XMLConf.Events_Writers is
 
+   use Ada.Characters.Wide_Wide_Latin_1;
    use League.Strings;
 
    function Escape_Character
     (Item : Wide_Wide_Character) return League.Strings.Universal_String;
    --  Escapes control and special characters.
+
+   function Escape_String
+    (Item : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Escapes control and special character.
 
    --------------
    -- Add_Line --
@@ -190,10 +196,7 @@ package body XMLConf.Events_Writers is
    ----------------------
 
    function Escape_Character
-    (Item : Wide_Wide_Character) return League.Strings.Universal_String
-   is
-      use Ada.Characters.Wide_Wide_Latin_1;
-
+    (Item : Wide_Wide_Character) return League.Strings.Universal_String is
    begin
       case Item is
          when HT =>
@@ -203,7 +206,7 @@ package body XMLConf.Events_Writers is
             return To_Universal_String ("&#xA;");
 
          when CR =>
-            return To_Universal_String ("&#xB;");
+            return To_Universal_String ("&#xD;");
 
          when ' ' =>
             return To_Universal_String ("&#x20;");
@@ -221,6 +224,54 @@ package body XMLConf.Events_Writers is
             return To_Universal_String (Wide_Wide_String'(1 => Item));
       end case;
    end Escape_Character;
+
+   -------------------
+   -- Escape_String --
+   -------------------
+
+   function Escape_String
+    (Item : League.Strings.Universal_String)
+       return League.Strings.Universal_String
+   is
+      Result : League.Strings.Universal_String := Item;
+
+   begin
+      for J in reverse 1 .. Item.Length loop
+         case Result.Element (J) is
+            when HT =>
+               Result.Replace (J, J, "&#x9;");
+
+            when LF =>
+               Result.Replace (J, J, "&#xA;");
+
+            when CR =>
+               Result.Replace (J, J, "&#xD;");
+
+            when ' ' =>
+               Result.Replace (J, J, "&#x20;");
+
+            when '&' =>
+               Result.Replace (J, J, "&amp;");
+
+            when '<' =>
+               Result.Replace (J, J, "&lt;");
+
+            when '>' =>
+               Result.Replace (J, J, "&gt;");
+
+            when ''' =>
+               Result.Replace (J, J, "&apos;");
+
+            when '"' =>
+               Result.Replace (J, J, "&quot;");
+
+            when others =>
+               null;
+         end case;
+      end loop;
+
+      return Result;
+   end Escape_String;
 
    ----------------
    -- Has_Errors --
@@ -299,7 +350,7 @@ package body XMLConf.Events_Writers is
          Self.Add_Line (To_Universal_String ("    <data/>"));
 
       else
-         Self.Add_Line ("    <data>" & Data & "</data>");
+         Self.Add_Line ("    <data>" & Escape_String (Data) & "</data>");
       end if;
 
       Self.Add_Line (To_Universal_String ("  </processingInstruction>"));
@@ -455,7 +506,9 @@ package body XMLConf.Events_Writers is
 
             else
                Self.Add_Line
-                ("        <value>" & Attributes.Value (J) & "</value>");
+                ("        <value>"
+                   & Escape_String (Attributes.Value (J))
+                   & "</value>");
             end if;
 
             Self.Add_Line (To_Universal_String ("        <type>CDATA</type>"));
