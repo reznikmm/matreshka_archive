@@ -93,6 +93,17 @@ package body Matreshka.Internals.XML.Attribute_Tables is
    end Has_Default;
 
    --------------
+   -- Is_CDATA --
+   --------------
+
+   function Is_CDATA
+    (Self      : Attribute_Table;
+     Attribute : Attribute_Identifier) return Boolean is
+   begin
+      return Self.Table (Attribute).The_Type = CDATA;
+   end Is_CDATA;
+
+   --------------
    -- Is_Fixed --
    --------------
 

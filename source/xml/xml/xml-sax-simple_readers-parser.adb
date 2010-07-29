@@ -81,11 +81,6 @@ package body XML.SAX.Simple_Readers.Parser is
      Value       : League.Strings.Universal_String);
    --  Process parameter entity declaration, rule [72].
 
-   procedure Process_Empty_Element_Tag
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
-   --  Process start tag, rule [44].
-
    procedure Process_Processing_Instruction
     (Self   : not null access SAX_Simple_Reader'Class;
      Target : Matreshka.Internals.XML.Symbol_Identifier;
@@ -121,18 +116,6 @@ package body XML.SAX.Simple_Readers.Parser is
    begin
       Callbacks.Call_Comment (Self.all, Comment);
    end Process_Comment;
-
-   -------------------------------
-   -- Process_Empty_Element_Tag --
-   -------------------------------
-
-   procedure Process_Empty_Element_Tag
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
-   begin
-      Actions.On_Start_Tag (Self, Symbol);
-      Actions.On_End_Tag (Self, Symbol);
-   end Process_Empty_Element_Tag;
 
    -------------------------
    -- Process_External_Id --
@@ -955,19 +938,19 @@ package body XML.SAX.Simple_Readers.Parser is
                Actions.On_Attribute_Default_Declaration (Self, yy.value_stack (yy.tos).String);
 
             when 127 =>
-               Actions.On_Start_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
+               Actions.On_Open_Of_Tag (Self, yy.value_stack (yy.tos).Symbol);
 
             when 128 =>
-               Actions.On_End_Tag (Self, yy.value_stack (yy.tos-1).Symbol);
+               null;
 
             when 129 =>
-               Process_Empty_Element_Tag (Self, yy.value_stack (yy.tos-2).Symbol);
+               Actions.On_Start_Tag (Self);
 
             when 130 =>
-               null;
+               Actions.On_End_Tag (Self, yy.value_stack (yy.tos-1).Symbol);
 
             when 131 =>
-               null;
+               Actions.On_Empty_Element_Tag (Self);
 
             when 132 =>
                null;
@@ -976,43 +959,49 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 134 =>
+               null;
+
+            when 135 =>
+               null;
+
+            when 136 =>
                Actions.On_Character_Data
                 (Self,
                  yy.value_stack (yy.tos).String,
                  yy.value_stack (yy.tos).Is_Whitespace);
 
-            when 135 =>
+            when 137 =>
                Process_Comment
                 (Self,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos).String));
-
-            when 136 =>
-               null;
-
-            when 137 =>
-               --  TextDecl come from substitution of external parsed entities.
-            
-               null;
 
             when 138 =>
                null;
 
             when 139 =>
-               Actions.On_Elements_Attribute
-                (Self,
-                 yy.value_stack (yy.tos-3).Symbol,
-                 yy.value_stack (yy.tos).String);
-
-            when 140 =>
+               --  TextDecl come from substitution of external parsed entities.
+            
                null;
 
+            when 140 =>
+               Actions.On_Element_Attribute_Name (Self, yy.value_stack (yy.tos).Symbol);
+
             when 141 =>
-               Actions.On_Elements_Attribute
+               Actions.On_Element_Attribute
                 (Self,
                  yy.value_stack (yy.tos-3).Symbol,
                  yy.value_stack (yy.tos).String);
 
             when 142 =>
+               Actions.On_Element_Attribute_Name (Self, yy.value_stack (yy.tos).Symbol);
+
+            when 143 =>
+               Actions.On_Element_Attribute
+                (Self,
+                 yy.value_stack (yy.tos-3).Symbol,
+                 yy.value_stack (yy.tos).String);
+
+            when 144 =>
                null;
                when others =>
                   raise Program_Error

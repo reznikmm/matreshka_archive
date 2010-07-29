@@ -806,17 +806,28 @@ DefaultDecl:
   ;
 
 element :
-    Token_Element_Open Attribute_Any Token_Close
+    Token_Element_Open
 {
-   Actions.On_Start_Tag (Self, $1.Symbol);
+   Actions.On_Open_Of_Tag (Self, $1.Symbol);
+}
+    element_common
+{
+   null;
+}
+  ;
+
+element_common :
+    Attribute_Any Token_Close
+{
+   Actions.On_Start_Tag (Self);
 }
     content Token_End_Open Token_Close
 {
-   Actions.On_End_Tag (Self, $6.Symbol);
+   Actions.On_End_Tag (Self, $5.Symbol);
 }
-  | Token_Element_Open Attribute_Any Token_Empty_Close
+  | Attribute_Any Token_Empty_Close
 {
-   Process_Empty_Element_Tag (Self, $1.Symbol);
+   Actions.On_Empty_Element_Tag (Self);
 }
   ;
 
@@ -868,22 +879,22 @@ content_item :
 Attribute_Any :
     Attribute_Any Token_Name
 {
-   null;
+   Actions.On_Element_Attribute_Name (Self, $2.Symbol);
 }
     Token_Equal Token_String_Segment
 {
-   Actions.On_Elements_Attribute
+   Actions.On_Element_Attribute
     (Self,
      $2.Symbol,
      $5.String);
 }
   | Token_Name
 {
-   null;
+   Actions.On_Element_Attribute_Name (Self, $1.Symbol);
 }
     Token_Equal Token_String_Segment
 {
-   Actions.On_Elements_Attribute
+   Actions.On_Element_Attribute
     (Self,
      $1.Symbol,
      $4.String);
@@ -930,11 +941,6 @@ with Matreshka.Internals.XML.Symbol_Tables;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String) is separate;
 
-   procedure Process_Empty_Element_Tag
-    (Self   : access Integer;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
-       is separate;
-
    procedure Process_Processing_Instruction
      (Self   : access Integer;
       Symbol : Matreshka.Internals.XML.Symbol_Identifier;
@@ -967,18 +973,26 @@ with Matreshka.Internals.XML.Symbol_Tables;
         Text          : not null Matreshka.Internals.Strings.Shared_String_Access;
         Is_Whitespace : Boolean);
 
+      procedure On_Open_Of_Tag
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Empty_Element_Tag (Self : access Integer);
+
       procedure On_End_Tag
        (Self   : access Integer;
         Symbol : Matreshka.Internals.XML.Symbol_Identifier);
 
-      procedure On_Start_Tag
-       (Self   : access Integer;
-        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+      procedure On_Start_Tag (Self : access Integer);
 
-      procedure On_Elements_Attribute
+      procedure On_Element_Attribute
        (Self   : access Integer;
         Symbol : Matreshka.Internals.XML.Symbol_Identifier;
         Value  : not null Matreshka.Internals.Strings.Shared_String_Access);
+
+      procedure On_Element_Attribute_Name
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
 
       procedure On_External_Subset_Declaration (Self : access Integer);
 

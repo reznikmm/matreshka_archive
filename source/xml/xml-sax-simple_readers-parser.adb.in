@@ -81,11 +81,6 @@ package body XML.SAX.Simple_Readers.Parser is
      Value       : League.Strings.Universal_String);
    --  Process parameter entity declaration, rule [72].
 
-   procedure Process_Empty_Element_Tag
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
-   --  Process start tag, rule [44].
-
    procedure Process_Processing_Instruction
     (Self   : not null access SAX_Simple_Reader'Class;
      Target : Matreshka.Internals.XML.Symbol_Identifier;
@@ -121,18 +116,6 @@ package body XML.SAX.Simple_Readers.Parser is
    begin
       Callbacks.Call_Comment (Self.all, Comment);
    end Process_Comment;
-
-   -------------------------------
-   -- Process_Empty_Element_Tag --
-   -------------------------------
-
-   procedure Process_Empty_Element_Tag
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
-   begin
-      Actions.On_Start_Tag (Self, Symbol);
-      Actions.On_End_Tag (Self, Symbol);
-   end Process_Empty_Element_Tag;
 
    -------------------------
    -- Process_External_Id --

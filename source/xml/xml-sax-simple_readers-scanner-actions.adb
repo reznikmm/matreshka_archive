@@ -222,6 +222,16 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          return False;
 
       else
+         if Self.Normalize_Value and then Self.Space_Before then
+            --  One space character is at the end of the prepared string, it
+            --  must be removed from the result.
+
+            Self.Character_Data.Length := Self.Character_Data.Length - 1;
+            Self.Character_Data.Unused := Self.Character_Data.Unused - 1;
+            Matreshka.Internals.Strings.Fill_Null_Terminator
+             (Self.Character_Data);
+         end if;
+
          Matreshka.Internals.Strings.Reference (Self.Character_Data);
          Set_String_Internal
           (Item          => Self.YYLVal,
@@ -419,8 +429,24 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          return False;
       end if;
 
-      Matreshka.Internals.Strings.Operations.Append
-       (Self.Character_Data, Code);
+      if Self.Normalize_Value then
+         if Code = 16#20# then
+            if not Self.Space_Before then
+               Matreshka.Internals.Strings.Operations.Append
+                (Self.Character_Data, Code);
+               Self.Space_Before := True;
+            end if;
+
+         else
+            Matreshka.Internals.Strings.Operations.Append
+             (Self.Character_Data, Code);
+            Self.Space_Before := False;
+         end if;
+
+      else
+         Matreshka.Internals.Strings.Operations.Append
+          (Self.Character_Data, Code);
+      end if;
 
       return True;
    end On_Character_Reference_In_Attribute_Value;

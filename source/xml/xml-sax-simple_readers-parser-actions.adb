@@ -178,12 +178,12 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       --  appropriate cases.
    end On_Character_Data;
 
-   ---------------------------
-   -- On_Elements_Attribute --
-   ---------------------------
+   --------------------------
+   -- On_Element_Attribute --
+   --------------------------
 
-   procedure On_Elements_Attribute
-    (Self    : not null access SAX_Simple_Reader'Class;
+   procedure On_Element_Attribute
+    (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier;
      Value  : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -205,7 +205,49 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                & " an attribute name must not appear more than once"
                & " in the same tag"));
       end if;
-   end On_Elements_Attribute;
+   end On_Element_Attribute;
+
+   -------------------------------
+   -- On_Element_Attribute_Name --
+   -------------------------------
+
+   procedure On_Element_Attribute_Name
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Self.Normalize_Value := False;
+      Self.Space_Before    := False;
+
+      if Self.Current_Element /= No_Element then
+         Self.Current_Attribute :=
+           Element_Tables.Attributes (Self.Elements, Self.Current_Element);
+
+         while Self.Current_Attribute /= No_Attribute loop
+            if Name (Self.Attributes, Self.Current_Attribute) = Symbol then
+               if not Is_CDATA (Self.Attributes, Self.Current_Attribute) then
+                  Self.Normalize_Value := True;
+                  Self.Space_Before    := True;
+               end if;
+
+               exit;
+            end if;
+
+            Self.Current_Attribute :=
+              Next (Self.Attributes, Self.Current_Attribute);
+         end loop;
+      end if;
+   end On_Element_Attribute_Name;
+
+   --------------------------
+   -- On_Empty_Element_Tag --
+   --------------------------
+
+   procedure On_Empty_Element_Tag
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      On_Start_Tag (Self);
+      On_End_Tag (Self, Self.Current_Element_Name);
+   end On_Empty_Element_Tag;
 
    ------------------------
    -- On_End_Of_Document --
@@ -448,6 +490,18 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
        (Self, Symbol, New_NmTokens_Attribute'Access);
    end On_NmTokens_Attribute_Declaration;
 
+   --------------------
+   -- On_Open_Of_Tag --
+   --------------------
+
+   procedure On_Open_Of_Tag
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Self.Current_Element_Name := Symbol;
+      Self.Current_Element := Element (Self.Symbols, Symbol);
+   end On_Open_Of_Tag;
+
    -----------------------------------------------
    -- On_Required_Attribute_Default_Declaration --
    -----------------------------------------------
@@ -572,10 +626,8 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -- On_Start_Tag --
    ------------------
 
-   procedure On_Start_Tag
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
-   is
+   procedure On_Start_Tag (Self : not null access SAX_Simple_Reader'Class) is
+
       procedure Convert;
 
       -------------
@@ -626,7 +678,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                  with "Document doen't have document type declaration";
                --  Error
 
-            elsif Self.Root_Symbol /= Symbol then
+            elsif Self.Root_Symbol /= Self.Current_Element_Name then
                --  [2.8 VC: Root Element Type]
                --
                --  "The Name in the document type declaration MUST match the
@@ -640,16 +692,16 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          end if;
       end if;
 
-      Self.Element_Names.Append (Symbol);
+      Self.Element_Names.Append (Self.Current_Element_Name);
 
-      Self.Current_Element := Element (Self.Symbols, Symbol);
+      Self.Current_Element :=
+        Element (Self.Symbols, Self.Current_Element_Name);
 
       if Self.Current_Element /= No_Element then
          declare
             Current  : Attribute_Identifier
               := Element_Tables.Attributes
                   (Self.Elements, Self.Current_Element);
-            Found    : Boolean;
             Inserted : Boolean;
 
          begin
@@ -681,7 +733,9 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          --
          --  Check whether element name doesn't have xmlns prefix.
 
-         if Prefix_Name (Self.Symbols, Symbol) = Symbol_xmlns then
+         if Prefix_Name (Self.Symbols, Self.Current_Element_Name)
+              = Symbol_xmlns
+         then
             Callbacks.Call_Fatal_Error
              (Self.all,
               League.Strings.To_Universal_String
@@ -863,7 +917,8 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             end;
          end loop;
 
-         Element_Prefix := Prefix_Name (Self.Symbols, Symbol);
+         Element_Prefix :=
+           Prefix_Name (Self.Symbols, Self.Current_Element_Name);
 
          if Element_Prefix /= No_Symbol then
             Element_Namespace :=
@@ -978,8 +1033,9 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          Callbacks.Call_Start_Element
           (Self           => Self.all,
            Namespace_URI  => Name (Self.Symbols, Element_Namespace),
-           Local_Name     => Local_Name (Self.Symbols, Symbol),
-           Qualified_Name => Name (Self.Symbols, Symbol),
+           Local_Name     =>
+             Local_Name (Self.Symbols, Self.Current_Element_Name),
+           Qualified_Name => Name (Self.Symbols, Self.Current_Element_Name),
            Attributes     => Self.SAX_Attributes);
 
       else
@@ -989,7 +1045,8 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
            Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
            Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
            Qualified_Name =>
-             Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol),
+             Matreshka.Internals.XML.Symbol_Tables.Name
+              (Self.Symbols, Self.Current_Element_Name),
            Attributes     => Self.SAX_Attributes);
       end if;
 

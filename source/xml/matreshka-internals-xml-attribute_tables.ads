@@ -102,6 +102,11 @@ package Matreshka.Internals.XML.Attribute_Tables is
      Attribute : Attribute_Identifier) return Boolean;
    --  Returns True when attribute has ID type.
 
+   function Is_CDATA
+    (Self      : Attribute_Table;
+     Attribute : Attribute_Identifier) return Boolean;
+   --  Returns True when attribute has CDATA type.
+
    procedure Append
     (Self      : in out Attribute_Table;
      Attribute : Attribute_Identifier;
@@ -192,7 +197,9 @@ private
    pragma Inline (Name);
    pragma Inline (Next);
    pragma Inline (Default);
+   pragma Inline (Is_CDATA);
    pragma Inline (Is_Fixed);
+   pragma Inline (Is_ID);
    pragma Inline (Is_Implied);
    pragma Inline (Is_Required);
    pragma Inline (Set_Default);

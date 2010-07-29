@@ -331,104 +331,108 @@ private
    record
       --  Handlers
 
-      Content_Handler     : XML.SAX.Readers.SAX_Content_Handler_Access
+      Content_Handler      : XML.SAX.Readers.SAX_Content_Handler_Access
         := Default_Handler'Access;
-      Declaration_Handler : XML.SAX.Readers.SAX_Declaration_Handler_Access
+      Declaration_Handler  : XML.SAX.Readers.SAX_Declaration_Handler_Access
         := Default_Handler'Access;
-      DTD_Handler         : XML.SAX.Readers.SAX_DTD_Handler_Access
+      DTD_Handler          : XML.SAX.Readers.SAX_DTD_Handler_Access
         := Default_Handler'Access;
-      Error_Handler       : XML.SAX.Readers.SAX_Error_Handler_Access
+      Error_Handler        : XML.SAX.Readers.SAX_Error_Handler_Access
         := Default_Handler'Access;
-      Lexical_Handler     : XML.SAX.Readers.SAX_Lexical_Handler_Access
+      Lexical_Handler      : XML.SAX.Readers.SAX_Lexical_Handler_Access
         := Default_Handler'Access;
-      Entity_Resolver     : XML.SAX.Readers.SAX_Entity_Resolver_Access;
+      Entity_Resolver      : XML.SAX.Readers.SAX_Entity_Resolver_Access;
 
       --  Scanner state
 
-      Scanner_State       : Scanner_State_Information;
-      Scanner_Stack       : Scanner_State_Vectors.Vector;
-      Stack_Is_Empty      : Boolean := True;
+      Scanner_State        : Scanner_State_Information;
+      Scanner_Stack        : Scanner_State_Vectors.Vector;
+      Stack_Is_Empty       : Boolean := True;
       --  This is cache of Is_Empty status of scanner's stack to speedup
       --  scanning.
-      Symbols             : Matreshka.Internals.XML.Symbol_Tables.Symbol_Table;
-      Locator             : XML.SAX.Locators.SAX_Locator;
-      YYLVal              : YYSType;
-      Last_Chunk          : Boolean;
-      Character_Buffer    : Matreshka.Internals.Strings.Shared_String_Access;
+      Symbols              : Matreshka.Internals.XML.Symbol_Tables.Symbol_Table;
+      Locator              : XML.SAX.Locators.SAX_Locator;
+      YYLVal               : YYSType;
+      Last_Chunk           : Boolean;
+      Character_Buffer     : Matreshka.Internals.Strings.Shared_String_Access;
       --  Preallocated buffer for character reference and attribute value
       --  delimiter handling.
-      Character_Data      : Matreshka.Internals.Strings.Shared_String_Access
+      Character_Data       : Matreshka.Internals.Strings.Shared_String_Access
         := Matreshka.Internals.Strings.Shared_Empty'Access;
       --  Preallocated buffer for character data to avoid unnecessary
       --  allocations, and to accumulate attribute's value.
-      Normalize_Value     : Boolean;
+      Normalize_Value      : Boolean;
       --  When True attribute value normalization is applied to the
       --  attribute's character data.
-      Space_Before        : Boolean;
+      Space_Before         : Boolean;
       --  When normalize attribute value of non-CDATA type, it indicates that
       --  previous processed character was space.
-      Version             : XML_Version := XML_1_0;
+      Version              : XML_Version := XML_1_0;
 
       --  Parser state
 
-      Parser_State        : Parser_State_Information;
-      Public_Id           : League.Strings.Universal_String;
-      System_Id           : League.Strings.Universal_String;
-      Error_Reported      : Boolean := False;
+      Parser_State         : Parser_State_Information;
+      Public_Id            : League.Strings.Universal_String;
+      System_Id            : League.Strings.Universal_String;
+      Error_Reported       : Boolean := False;
 
       --  Analyzer state
 
-      Whitespace_Matched  : Boolean;
+      Whitespace_Matched   : Boolean;
       --  Used to check whether whitespace is used to separate tokens. For
       --  example, '%' must be separated by whitespace from '<!ENTITY' and
       --  following name.
-      In_DTD              : Boolean;
+      In_DTD               : Boolean;
 
-      Entities            : Matreshka.Internals.XML.Entity_Tables.Entity_Table;
-      Elements            : Matreshka.Internals.XML.Element_Tables.Element_Table;
-      Attributes          :
+      Entities             :
+        Matreshka.Internals.XML.Entity_Tables.Entity_Table;
+      Elements             :
+        Matreshka.Internals.XML.Element_Tables.Element_Table;
+      Attributes           :
         Matreshka.Internals.XML.Attribute_Tables.Attribute_Table;
-      External_Source     : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      External_Subset     : League.Strings.Universal_String;
+      External_Source      : XML.SAX.Input_Sources.SAX_Input_Source_Access;
+      External_Subset      : League.Strings.Universal_String;
       --  Contents of the external subset if any. This member used only to
       --  prevent deallocation of shared string before document parsing is
       --  completed.
-      Element_Names       : Symbol_Identifier_Vectors.Vector;
+      Element_Names        : Symbol_Identifier_Vectors.Vector;
       --  Stack of names of elements.
-      Continue            : Boolean := True;
+      Continue             : Boolean := True;
       --  Continue processing.
-      Error_Message       : League.Strings.Universal_String;
+      Error_Message        : League.Strings.Universal_String;
       --  Error message.
-      User_Exception      : Ada.Exceptions.Exception_Occurrence;
+      User_Exception       : Ada.Exceptions.Exception_Occurrence;
       --  Catched exception from the user defined handler.
-      Current_Element     : Matreshka.Internals.XML.Element_Identifier;
+      Current_Element_Name : Matreshka.Internals.XML.Symbol_Identifier;
+      --  Name of the currently processed element.
+      Current_Element      : Matreshka.Internals.XML.Element_Identifier;
       --  Currently analyzed element, used to handle attribute list
       --  declaration and element declaration.
-      Current_Attribute   : Matreshka.Internals.XML.Attribute_Identifier;
+      Current_Attribute    : Matreshka.Internals.XML.Attribute_Identifier;
       --  Currently analyzed attribute, used to handle default declaration
       --  of the attribute definition.
-      Attribute_Redefined : Boolean;
+      Attribute_Redefined  : Boolean;
       --  Mark redefinition of the currently processing attribute. Once
       --  attribute is defined it can't be redefined.
 
       --  When components can't be nested thier information is not hold in
       --  YYSType and placed directly here to avoid copy overhead.
 
-      Attribute_Set       : Matreshka.Internals.XML.Attributes.Attribute_Set;
-      SAX_Attributes      : XML.SAX.Attributes.SAX_Attributes;
+      Attribute_Set        : Matreshka.Internals.XML.Attributes.Attribute_Set;
+      SAX_Attributes       : XML.SAX.Attributes.SAX_Attributes;
       --  Set of attributes of the element.
 
       --  Namespaces handling state
 
-      Namespaces          : Namespaces_Options;
-      Namespace_Scope     :
+      Namespaces           : Namespaces_Options;
+      Namespace_Scope      :
         Matreshka.Internals.XML.Namespace_Scopes.Namespace_Scope;
 
       --  Validator state
 
-      Validation          : Validation_Options;
+      Validation           : Validation_Options;
       --  Validation options
-      Root_Symbol         : Matreshka.Internals.XML.Symbol_Identifier
+      Root_Symbol          : Matreshka.Internals.XML.Symbol_Identifier
         := Matreshka.Internals.XML.No_Symbol;
       --  Expected name of the root element.
    end record;

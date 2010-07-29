@@ -62,11 +62,17 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
      Is_Whitespace : Boolean);
    --  Process segment of character data.
 
-   procedure On_Elements_Attribute
+   procedure On_Element_Attribute
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier;
      Value  : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Handles attribute of the element.
+
+   procedure On_Element_Attribute_Name
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Handles name of the attribute in the element. Now it olny switch scanner
+   --  into appopriate attribute value normalization mode.
 
    procedure On_End_Of_Document
     (Self : not null access SAX_Simple_Reader'Class);
@@ -85,6 +91,10 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Handles end tag, rule [42].
+
+   procedure On_Empty_Element_Tag
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Process start tag, rule [44].
 
    procedure On_Entity_Attribute_Declaration
     (Self   : not null access SAX_Simple_Reader'Class;
@@ -134,6 +144,13 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Process attribute declaration of CDATA type.
 
+   procedure On_Open_Of_Tag
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Handles open of element's tag. The only purpose now is to resolve
+   --  element and set identifier of the declaration of currently
+   --  processed element.
+
    procedure On_Required_Attribute_Default_Declaration
     (Self : not null access SAX_Simple_Reader'Class);
    --  Handles declaration of required value of the attribute.
@@ -152,9 +169,7 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Handles start of element declaration.
 
-   procedure On_Start_Tag
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   procedure On_Start_Tag (Self : not null access SAX_Simple_Reader'Class);
    --  Handles start tag of element.
 
    procedure On_Unexpected_Token_After_Root_Element
