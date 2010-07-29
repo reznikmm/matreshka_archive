@@ -59,11 +59,6 @@ package body XML.SAX.Simple_Readers.Scanner is
    use Matreshka.Internals.XML.Symbol_Tables;
    use XML.SAX.Simple_Readers.Scanner.Tables;
 
-   procedure Push_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
-     State : Interfaces.Unsigned_32);
-   --  Pushs specified condition into the stack of start conditions.
-
    procedure Set_Whitespace_Matched
     (Self : not null access SAX_Simple_Reader'Class);
    --  Sets "whitespace matched" flag.
@@ -233,17 +228,6 @@ package body XML.SAX.Simple_Readers.Scanner is
       Self.Scanner_State.Start_Condition_Stack.Append (Push);
       Self.Scanner_State.YY_Start_State := 1 + 2 * Enter;
    end Push_And_Enter_Start_Condition;
-
-   --------------------------
-   -- Push_Start_Condition --
-   --------------------------
-
-   procedure Push_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
-     State : Interfaces.Unsigned_32) is
-   begin
-      Self.Scanner_State.Start_Condition_Stack.Append (State);
-   end Push_Start_Condition;
 
    ----------------------------
    -- Set_Whitespace_Matched --
