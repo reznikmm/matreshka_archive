@@ -89,6 +89,7 @@ package body Matreshka.Internals.XML.Attributes is
      Qualified_Name : Symbol_Identifier;
      Value          :
        not null Matreshka.Internals.Strings.Shared_String_Access;
+     Type_Name      : Symbol_Identifier;
      Inserted       : out Boolean) is
    begin
       for J in Self.Attributes'First .. Self.Last loop
@@ -117,7 +118,8 @@ package body Matreshka.Internals.XML.Attributes is
       Self.Attributes (Self.Last) :=
        (Namespace_URI  => No_Symbol,
         Qualified_Name => Qualified_Name,
-        Value          => Value);
+        Value          => Value,
+        Type_Name      => Type_Name);
    end Insert;
 
    ------------
@@ -162,6 +164,17 @@ package body Matreshka.Internals.XML.Attributes is
    begin
       Self.Attributes (Index).Namespace_URI := Namespace_URI;
    end Set_Namespace_URI;
+
+   ---------------
+   -- Type_Name --
+   ---------------
+
+   function Type_Name
+    (Self  : Attribute_Set;
+     Index : Positive) return Symbol_Identifier is
+   begin
+      return Self.Attributes (Index).Type_Name;
+   end Type_Name;
 
    -----------
    -- Value --

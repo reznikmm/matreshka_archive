@@ -58,6 +58,8 @@ package XML.SAX.Attributes.Internals is
      Qualified_Name :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Value          :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Value_Type     :
        not null Matreshka.Internals.Strings.Shared_String_Access);
 
    procedure Clear (Self : in out SAX_Attributes'Class);

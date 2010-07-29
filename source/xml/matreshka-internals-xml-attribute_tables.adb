@@ -348,4 +348,39 @@ package body Matreshka.Internals.XML.Attribute_Tables is
       Self.Table (Attribute).Is_Required := Value;
    end Set_Is_Required;
 
+   -------------------------
+   -- Symbol_Of_Type_Name --
+   -------------------------
+
+   function Symbol_Of_Type_Name
+    (Self      : Attribute_Table;
+     Attribute : Attribute_Identifier) return Symbol_Identifier is
+   begin
+      case Self.Table (Attribute).The_Type is
+         when CDATA =>
+            return Symbol_CDATA;
+
+         when ENTITIES =>
+            return Symbol_ENTITIES;
+
+         when ENTITY =>
+            return Symbol_ENTITY;
+
+         when ID =>
+            return Symbol_ID;
+
+         when IDREF =>
+            return Symbol_IDREF;
+
+         when IDREFS =>
+            return Symbol_IDREFS;
+
+         when NMTOKEN =>
+            return Symbol_NMTOKEN;
+
+         when NMTOKENS =>
+            return Symbol_NMTOKENS;
+      end case;
+   end Symbol_Of_Type_Name;
+
 end Matreshka.Internals.XML.Attribute_Tables;

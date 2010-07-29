@@ -168,6 +168,11 @@ package Matreshka.Internals.XML.Attribute_Tables is
    --  attribute has default value when it is not declared as REQUIRED or
    --  IMPLIED.
 
+   function Symbol_Of_Type_Name
+    (Self      : Attribute_Table;
+     Attribute : Attribute_Identifier) return Symbol_Identifier;
+   --  Returns symbol of type name of the attribute.
+
 private
 
    type Attribute_Types is

@@ -391,4 +391,62 @@ package body XML.SAX.Attributes is
       return Empty_Universal_String;
    end Value;
 
+   ----------------
+   -- Value_Type --
+   ----------------
+
+   function Value_Type
+    (Self  : SAX_Attributes;
+     Index : Positive) return League.Strings.Universal_String is
+   begin
+      if Index not in 1 .. Self.Data.Length then
+         raise Constraint_Error;
+      end if;
+
+      return Create (Self.Data.Values (Index).Value_Type);
+   end Value_Type;
+
+   ----------------
+   -- Value_Type --
+   ----------------
+
+   function Value_Type
+    (Self           : SAX_Attributes;
+     Qualified_Name : League.Strings.Universal_String)
+       return League.Strings.Universal_String is
+   begin
+      for J in 1 .. Self.Data.Length loop
+         if Is_Equal
+             (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
+         then
+            return Create (Self.Data.Values (J).Value_Type);
+         end if;
+      end loop;
+
+      return Empty_Universal_String;
+   end Value_Type;
+
+   ----------------
+   -- Value_Type --
+   ----------------
+
+   function Value_Type
+    (Self          : SAX_Attributes;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String)
+       return League.Strings.Universal_String is
+   begin
+      for J in 1 .. Self.Data.Length loop
+         if Is_Equal
+             (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
+           and Is_Equal
+                (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
+         then
+            return Create (Self.Data.Values (J).Value_Type);
+         end if;
+      end loop;
+
+      return Empty_Universal_String;
+   end Value_Type;
+
 end XML.SAX.Attributes;

@@ -85,6 +85,8 @@ package body XML.SAX.Attributes.Internals is
      Qualified_Name :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Value          :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Value_Type     :
        not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       --  Reallocate shared object when necessary.
@@ -114,6 +116,8 @@ package body XML.SAX.Attributes.Internals is
                 (Aux.Values (J).Qualified_Name);
                Matreshka.Internals.Strings.Reference
                 (Aux.Values (J).Value);
+               Matreshka.Internals.Strings.Reference
+                (Aux.Values (J).Value_Type);
             end loop;
 
             Dereference (Self.Data);
@@ -127,13 +131,15 @@ package body XML.SAX.Attributes.Internals is
       Matreshka.Internals.Strings.Reference (Local_Name);
       Matreshka.Internals.Strings.Reference (Qualified_Name);
       Matreshka.Internals.Strings.Reference (Value);
+      Matreshka.Internals.Strings.Reference (Value_Type);
 
       Self.Data.Length := Self.Data.Length + 1;
       Self.Data.Values (Self.Data.Length) :=
        (Namespace_URI  => Namespace_URI,
         Local_Name     => Local_Name,
         Qualified_Name => Qualified_Name,
-        Value          => Value);
+        Value          => Value,
+        Value_Type     => Value_Type);
    end Unchecked_Append;
 
 end XML.SAX.Attributes.Internals;

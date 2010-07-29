@@ -54,32 +54,32 @@ package Matreshka.Internals.XML.Attributes is
      Qualified_Name : Symbol_Identifier;
      Value          :
        not null Matreshka.Internals.Strings.Shared_String_Access;
+     Type_Name      : Symbol_Identifier;
      Inserted       : out Boolean);
 
    function Length (Self : Attribute_Set) return Natural;
-   pragma Inline (Length);
 
    function Qualified_Name
     (Self  : Attribute_Set;
      Index : Positive) return Symbol_Identifier;
-   pragma Inline (Qualified_Name);
 
    function Namespace_URI
     (Self  : Attribute_Set;
      Index : Positive) return Symbol_Identifier;
-   pragma Inline (Namespace_URI);
 
    procedure Set_Namespace_URI
     (Self          : Attribute_Set;
      Index         : Positive;
      Namespace_URI : Symbol_Identifier);
-   pragma Inline (Set_Namespace_URI);
+
+   function Type_Name
+    (Self  : Attribute_Set;
+     Index : Positive) return Symbol_Identifier;
 
    function Value
     (Self  : Attribute_Set;
      Index : Positive)
        return not null Matreshka.Internals.Strings.Shared_String_Access;
-   pragma Inline (Value);
 
    procedure Clear (Self : in out Attribute_Set);
 
@@ -93,6 +93,7 @@ private
       Namespace_URI  : Symbol_Identifier;
       Qualified_Name : Symbol_Identifier;
       Value          : Matreshka.Internals.Strings.Shared_String_Access;
+      Type_Name      : Symbol_Identifier;
    end record;
 
    type Attribute_Array is array (Positive range <>) of Attribute_Record;
@@ -103,5 +104,12 @@ private
       Attributes : Attribute_Array_Access;
       Last       : Natural;
    end record;
+
+   pragma Inline (Length);
+   pragma Inline (Namespace_URI);
+   pragma Inline (Qualified_Name);
+   pragma Inline (Set_Namespace_URI);
+   pragma Inline (Type_Name);
+   pragma Inline (Value);
 
 end Matreshka.Internals.XML.Attributes;

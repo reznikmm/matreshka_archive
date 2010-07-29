@@ -190,7 +190,17 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       Inserted : Boolean;
 
    begin
-      Insert (Self.Attribute_Set, Symbol, Value, Inserted);
+      if Self.Current_Attribute = No_Attribute then
+         Insert (Self.Attribute_Set, Symbol, Value, Symbol_CDATA, Inserted);
+
+      else
+         Insert
+          (Self.Attribute_Set,
+           Symbol,
+           Value,
+           Symbol_Of_Type_Name (Self.Attributes, Self.Current_Attribute),
+           Inserted);
+      end if;
 
       if not Inserted then
          --  3.1  WFC: Unique Att Spec
@@ -215,8 +225,9 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
-      Self.Normalize_Value := False;
-      Self.Space_Before    := False;
+      Self.Normalize_Value   := False;
+      Self.Space_Before      := False;
+      Self.Current_Attribute := No_Attribute;
 
       if Self.Current_Element /= No_Element then
          Self.Current_Attribute :=
@@ -653,7 +664,8 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                     Name (Self.Symbols, Namespace_URI (Self.Attribute_Set, J)),
                     Local_Name (Self.Symbols, Qname),
                     Name (Self.Symbols, Qname),
-                    Value (Self.Attribute_Set, J));
+                    Value (Self.Attribute_Set, J),
+                    Name (Self.Symbols, Type_Name (Self.Attribute_Set, J)));
                end if;
             end;
          end loop;
@@ -711,6 +723,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                    (Self.Attribute_Set,
                     Name (Self.Attributes, Current),
                     Default (Self.Attributes, Current),
+                    Symbol_Of_Type_Name (Self.Attributes, Current),
                     Inserted);
                end if;
 

@@ -186,6 +186,21 @@ package XML.SAX.Attributes is
    --  NMTOKENS), the tokens will be concatenated into a single string with
    --  each token separated by a single space.
 
+   function Value_Type
+    (Self  : SAX_Attributes;
+     Index : Positive) return League.Strings.Universal_String;
+
+   function Value_Type
+    (Self           : SAX_Attributes;
+     Qualified_Name : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+
+   function Value_Type
+    (Self          : SAX_Attributes;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+
 private
 
    --  Representation of one attribute and its value.
@@ -198,6 +213,8 @@ private
       Qualified_Name : Matreshka.Internals.Strings.Shared_String_Access
         := Matreshka.Internals.Strings.Shared_Empty'Access;
       Value          : Matreshka.Internals.Strings.Shared_String_Access
+        := Matreshka.Internals.Strings.Shared_Empty'Access;
+      Value_Type     : Matreshka.Internals.Strings.Shared_String_Access
         := Matreshka.Internals.Strings.Shared_Empty'Access;
    end record;
 
