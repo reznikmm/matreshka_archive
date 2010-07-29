@@ -204,18 +204,6 @@ package body Matreshka.Internals.XML.Attribute_Tables is
       New_Attribute (Self, Name, CDATA, Attribute);
    end New_CDATA_Attribute;
 
-   --------------------------
-   -- New_Entity_Attribute --
-   --------------------------
-
-   procedure New_Entity_Attribute
-    (Self      : in out Attribute_Table;
-     Name      : Symbol_Identifier;
-     Attribute : out Attribute_Identifier) is
-   begin
-      New_Attribute (Self, Name, ENTITY, Attribute);
-   end New_Entity_Attribute;
-
    ----------------------------
    -- New_Entities_Attribute --
    ----------------------------
@@ -227,6 +215,18 @@ package body Matreshka.Internals.XML.Attribute_Tables is
    begin
       New_Attribute (Self, Name, ENTITIES, Attribute);
    end New_Entities_Attribute;
+
+   --------------------------
+   -- New_Entity_Attribute --
+   --------------------------
+
+   procedure New_Entity_Attribute
+    (Self      : in out Attribute_Table;
+     Name      : Symbol_Identifier;
+     Attribute : out Attribute_Identifier) is
+   begin
+      New_Attribute (Self, Name, ENTITY, Attribute);
+   end New_Entity_Attribute;
 
    ----------------------
    -- New_Id_Attribute --
