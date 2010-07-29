@@ -239,6 +239,24 @@ package body Matreshka.Internals.Strings.Operations is
    end Replace;
 
    -----------
+   -- Reset --
+   -----------
+
+   procedure Reset (Self : in out not null Shared_String_Access) is
+   begin
+      if Can_Be_Reused (Self, Self.Size) then
+         Free (Self.Index_Map);
+         Self.Unused := 0;
+         Self.Length := 0;
+         Fill_Null_Terminator (Self);
+
+      else
+         Dereference (Self);
+         Self := Shared_Empty'Access;
+      end if;
+   end Reset;
+
+   -----------
    -- Slice --
    -----------
 

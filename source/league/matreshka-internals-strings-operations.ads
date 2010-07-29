@@ -81,6 +81,10 @@ package Matreshka.Internals.Strings.Operations is
      Length : Natural;
      By     : not null Shared_String_Access);
 
+   procedure Reset (Self : in out not null Shared_String_Access);
+   --  Resets specified shared string to have empty length or sets it to
+   --  shared empty string when shared string is used.
+
 --   function Copy (Source : not null String_Private_Data_Access)
 --     return not null String_Private_Data_Access;
    --  Creates copy of string data.
