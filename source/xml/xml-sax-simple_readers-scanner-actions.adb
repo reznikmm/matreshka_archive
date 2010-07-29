@@ -808,6 +808,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
         End_Of_Source => Last_Match,
         Entity        => Entity,
         In_Literal    => True,
+        Delimiter     => 0,
         others        => <>);
 
       case Self.Version is

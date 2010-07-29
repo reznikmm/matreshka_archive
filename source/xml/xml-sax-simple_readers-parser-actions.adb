@@ -87,8 +87,10 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
    begin
       Self.Attribute_Redefined := False;
-      Self.Current_Attribute :=
+      Self.Current_Attribute   :=
         Element_Tables.Attributes (Self.Elements, Self.Current_Element);
+      Self.Normalize_Value     := False;
+      Self.Space_Before        := False;
 
       if Self.Current_Attribute = No_Attribute then
          Constructor (Self.Attributes, Symbol, Self.Current_Attribute);
@@ -139,6 +141,13 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
          Constructor (Self.Attributes, Symbol, Self.Current_Attribute);
          Append (Self.Attributes, Last, Self.Current_Attribute);
+      end if;
+
+      --  Set attribute value normalization mode.
+
+      if not Is_CDATA (Self.Attributes, Self.Current_Attribute) then
+         Self.Normalize_Value := True;
+         Self.Space_Before    := True;
       end if;
    end Analyze_Attribute_Declaration;
 
