@@ -565,18 +565,40 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Process_Entity_Value_Close_Delimiter (Self, YY_Text);
 }
 
-<DOCUMENT_10,DOCUMENT_11,ENTITY_VALUE_10,ENTITY_VALUE_11,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>"&#"[0-9]+";" {
+<DOCUMENT_10,DOCUMENT_11,ENTITY_VALUE_10,ENTITY_VALUE_11>"&#"[0-9]+";" {
    --  Decimal form of character reference rule [66] in entity value rule [9];
-   --  attribute value, rule [10] or content of element, rule [43].
+   --  or content of element, rule [43].
 
-   return Process_Character_Reference (Self, Decimal);
+   return Actions.On_Character_Reference (Self, False);
 }
 
-<DOCUMENT_10,DOCUMENT_11,ENTITY_VALUE_10,ENTITY_VALUE_11,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>"&#x"[0-9a-fA-F]+";" {
-   --  Hexadecimal form of character reference rule [66] in entity value rule
-   --  [9]; attribute value, rule [10] or content of element, rule [43].
+<ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>"&#"[0-9]+";" {
+   --  Decimal form of character reference rule [66] in attribute value,
+   --  rule [10].
 
-   return Process_Character_Reference (Self, Hexadecimal);
+   if not Actions.On_Character_Reference_In_Attribute_Value
+           (Self, False)
+   then
+      return Error;
+   end if;
+}
+
+<DOCUMENT_10,DOCUMENT_11,ENTITY_VALUE_10,ENTITY_VALUE_11>"&#x"[0-9a-fA-F]+";" {
+   --  Hexadecimal form of character reference rule [66] in entity value rule
+   --  [9] or content of element, rule [43].
+
+   return Actions.On_Character_Reference (Self, True);
+}
+
+<ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>"&#x"[0-9a-fA-F]+";" {
+   --  Hexadecimal form of character reference rule [66] in attribute value,
+   --  rule [10].
+
+   if not Actions.On_Character_Reference_In_Attribute_Value
+           (Self, True)
+   then
+      return Error;
+   end if;
 }
 
 <ENTITY_VALUE_10,ENTITY_VALUE_11>"&"{NAME}";" {
@@ -799,7 +821,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ATTLIST_TYPE>['"] {
    --  Open delimiter of attribute value, rule [10].
 
-   return Process_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
+   Actions.On_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
 }
 
 <DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE>{WHITE_SPACE} {
@@ -853,37 +875,27 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 <ELEMENT_START>['"] {
    --  Open delimiter of attribute value, rule [10].
 
-   return Process_Attribute_Value_Open_Delimiter (Self, ELEMENT_START);
+   Actions.On_Attribute_Value_Open_Delimiter (Self, ELEMENT_START);
 }
 
 <ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>['"] {
    --  Close delimiter of attribute value, rule [10].
 
-   return Process_Attribute_Value_Close_Delimiter (Self);
+   if Actions.On_Attribute_Value_Close_Delimiter (Self) then
+      return Token_String_Segment;
+   end if;
 }
 
 <ATTRIBUTE_VALUE_10>{CHAR10_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS}+ {
    --  Value of attribute, rule [10].
 
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal,
-     Is_Whitespace => False,
-     Is_CData      => False);
-
-   return Token_String_Segment;
+   Actions.On_Attribute_Value_Character_Data (Self);
 }
 
 <ATTRIBUTE_VALUE_11>{CHAR11_NO_QUOTATION_AMPERSAND_APOSTROPHE_LESS}+ {
    --  Value of attribute, rule [10].
 
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal,
-     Is_Whitespace => False,
-     Is_CData      => False);
-
-   return Token_String_Segment;
+   Actions.On_Attribute_Value_Character_Data (Self);
 }
 
 <ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>"<" {
@@ -994,19 +1006,6 @@ with Matreshka.Internals.Strings;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier)
        is separate;
 
-   type Character_Reference_Form is (Decimal, Hexadecimal);
-
-   function Process_Character_Reference
-    (Self  : access Integer;
-     Form  : Character_Reference_Form) return Token is separate;
-
-   function Process_Attribute_Value_Open_Delimiter
-    (Self  : access Integer;
-     State : Integer) return Token is separate;
-
-   function Process_Attribute_Value_Close_Delimiter
-    (Self  : access Integer) return Token is separate;
-
    function Process_Entity_Value_Close_Delimiter
     (Self  : access Integer;
      Image : League.Strings.Universal_String) return Token is separate;
@@ -1104,6 +1103,23 @@ with Matreshka.Internals.Strings;
 
       function On_Entity_Value_Open_Delimiter
        (Self : access Integer) return Token;
+
+      function On_Character_Reference
+       (Self : access Integer;
+        Hax  : Boolean) return Token;
+
+      function On_Character_Reference_In_Attribute_Value
+       (Self : access Integer;
+        Hex  : Boolean) return Boolean;
+
+      procedure On_Attribute_Value_Character_Data (Self : access Integer);
+
+      procedure On_Attribute_Value_Open_Delimiter
+       (Self  : access Integer;
+        State : Integer);
+
+      function On_Attribute_Value_Close_Delimiter
+       (Self  : access Integer) return Boolean;
 
    end Actions;
 

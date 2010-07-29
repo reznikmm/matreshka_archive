@@ -69,6 +69,180 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
      Symbol          : out Matreshka.Internals.XML.Symbol_Identifier);
    --  Converts name to symbol.
 
+   procedure Character_Reference_To_Code_Point
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Hex   : Boolean;
+     Code  : out Code_Point;
+     Valid : out Boolean);
+   --  Converts scanned character reference to code point. Reports errors to
+   --  application is any and sets Valid to False. Otherwise sets Code to
+   --  referenced code point and sets Valid to True.
+
+   ---------------------------------------
+   -- Character_Reference_To_Code_Point --
+   ---------------------------------------
+
+   procedure Character_Reference_To_Code_Point
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Hex   : Boolean;
+     Code  : out Code_Point;
+     Valid : out Boolean)
+   is
+      Upper_A     : constant := 16#41#;
+      Upper_F     : constant := 16#46#;
+      Lower_A     : constant := 16#61#;
+      Lower_F     : constant := 16#66#;
+      Zero_Fixup  : constant := 16#30#;
+      Upper_Fixup : constant := 16#41# - 16#0A#;
+      Lower_Fixup : constant := 16#61# - 16#0A#;
+
+      D  : Code_Point;
+      FP : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
+      LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
+
+   begin
+      --  NOTE: Sequences of leading and trailing character always fixed:
+      --  "&#" for decimal representation and "&#x" for hexadecimal
+      --  representation for the leading sequence of characters and ";" for
+      --  trailing; thus we can just add/subtract required number of code point
+      --  positions instead of doing more expensive iteration with analysis of
+      --  UTF-16 code units.
+      --
+      --  Actual value has limited character set ([0-9] or [0-9a-fA-F]), all
+      --  of characters is on BMP also, thus expensive decoding can be omitted
+      --  also.
+
+      if Hex then
+         --  Trim three leading characters and trailing character.
+
+         FP   := FP + 3;
+         LP   := LP - 1;
+         Code := 0;
+
+         while FP < LP loop
+            D := Code_Point (Self.Scanner_State.Data.Value (FP));
+            FP := FP + 1;
+
+            if D in Upper_A .. Upper_F then
+               Code := (Code * 16) + D - Upper_Fixup;
+
+            elsif D in Lower_A .. Lower_F then
+               Code := (Code * 16) + D - Lower_Fixup;
+
+            else
+               Code := (Code * 16) + D - Zero_Fixup;
+            end if;
+         end loop;
+
+      else
+         --  Trim two leading characters and trailing character.
+
+         FP   := FP + 2;
+         LP   := LP - 1;
+         Code := 0;
+
+         while FP < LP loop
+            D := Code_Point (Self.Scanner_State.Data.Value (FP));
+            FP := FP + 1;
+
+            Code := (Code * 10) + D - Zero_Fixup;
+         end loop;
+      end if;
+
+      --  XXX Character reference must be resolved into valid XML character.
+
+      Valid := True;
+   end Character_Reference_To_Code_Point;
+
+   ---------------------------------------
+   -- On_Attribute_Value_Character_Data --
+   ---------------------------------------
+
+   procedure On_Attribute_Value_Character_Data
+    (Self : not null access SAX_Simple_Reader'Class)
+   is
+      Aux : Matreshka.Internals.Strings.Shared_String_Access
+        := Matreshka.Internals.Strings.Operations.Slice
+            (Self.Scanner_State.Data,
+             Self.Scanner_State.YY_Base_Position,
+             Self.Scanner_State.YY_Current_Position
+               - Self.Scanner_State.YY_Base_Position,
+             Self.Scanner_State.YY_Current_Index
+               - Self.Scanner_State.YY_Base_Index);
+
+   begin
+      --  XXX Can be optimized by adding special operation Append_Slice.
+
+      Matreshka.Internals.Strings.Operations.Append
+       (Self.Character_Data, Aux);
+      Matreshka.Internals.Strings.Dereference (Aux);
+   end On_Attribute_Value_Character_Data;
+
+   ----------------------------------------
+   -- On_Attribute_Value_Close_Delimiter --
+   ----------------------------------------
+
+   function On_Attribute_Value_Close_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class) return Boolean
+   is
+      --  NOTE: Attribute value delimiter can be ' or " and both are
+      --  represented as single UTF-16 code unit, thus expensive UTF-16
+      --  decoding can be avoided.
+
+      Delimiter : constant Matreshka.Internals.Unicode.Code_Point
+        := Code_Point
+            (Self.Scanner_State.Data.Value
+              (Self.Scanner_State.YY_Base_Position));
+
+   begin
+      if Self.Scanner_State.Delimiter /= Delimiter then
+         Matreshka.Internals.Strings.Operations.Append
+          (Self.Character_Data, Delimiter);
+
+         return False;
+
+      else
+         Matreshka.Internals.Strings.Reference (Self.Character_Data);
+         Set_String_Internal
+          (Item          => Self.YYLVal,
+           String        => Self.Character_Data,
+           Is_Whitespace => False,
+           Is_CData      => False);
+         Reset_Whitespace_Matched (Self);
+         Pop_Start_Condition (Self);
+
+         return True;
+      end if;
+   end On_Attribute_Value_Close_Delimiter;
+
+   ---------------------------------------
+   -- On_Attribute_Value_Open_Delimiter --
+   ---------------------------------------
+
+   procedure On_Attribute_Value_Open_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     State : Interfaces.Unsigned_32) is
+   begin
+      --  NOTE: Attribute value delimiter can be ' or " and both are
+      --  represented as single UTF-16 code unit, thus expensive UTF-16
+      --  decoding can be avoided.
+
+      Self.Scanner_State.Delimiter :=
+        Code_Point
+         (Self.Scanner_State.Data.Value (Self.Scanner_State.YY_Base_Position));
+      Matreshka.Internals.Strings.Operations.Reset (Self.Character_Data);
+
+      case Self.Version is
+         when XML_1_0 =>
+            Push_And_Enter_Start_Condition
+             (Self, State, Tables.ATTRIBUTE_VALUE_10);
+
+         when XML_1_1 =>
+            Push_And_Enter_Start_Condition
+             (Self, State, Tables.ATTRIBUTE_VALUE_11);
+      end case;
+   end On_Attribute_Value_Open_Delimiter;
+
    -----------------------
    -- On_Character_Data --
    -----------------------
@@ -157,6 +331,79 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       return Token_String_Segment;
    end On_Character_Data;
+
+   ----------------------------
+   -- On_Character_Reference --
+   ----------------------------
+
+   function On_Character_Reference
+    (Self : not null access SAX_Simple_Reader'Class;
+     Hex  : Boolean) return Token
+   is
+      Code  : Code_Point;
+      Valid : Boolean;
+
+   begin
+      Character_Reference_To_Code_Point (Self, Hex, Code, Valid);
+
+      if not Valid then
+         return Error;
+      end if;
+
+      --  XXX Whitespace must be detected and reported in token.
+
+      if not Matreshka.Internals.Strings.Can_Be_Reused
+              (Self.Character_Buffer, 2)
+      then
+         --  Preallocated buffer can't be reused for some reason (most
+         --  probably because application made copy of the previous character
+         --  reference), so new buffer need to be preallocated. Requested
+         --  size of the buffer is maximum number of UTF-16 code unit to
+         --  store one Unicode code point.
+
+         Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
+         Self.Character_Buffer := Matreshka.Internals.Strings.Allocate (2);
+      end if;
+
+      Self.Character_Buffer.Unused := 0;
+      Self.Character_Buffer.Length := 1;
+      Matreshka.Internals.Utf16.Unchecked_Store
+       (Self.Character_Buffer.Value,
+        Self.Character_Buffer.Unused,
+        Code);
+      Matreshka.Internals.Strings.Reference (Self.Character_Buffer);
+      Set_String_Internal
+       (Item          => Self.YYLVal,
+        String        => Self.Character_Buffer,
+        Is_Whitespace => False,
+        Is_CData      => False);
+
+      return Token_String_Segment;
+   end On_Character_Reference;
+
+   -----------------------------------------------
+   -- On_Character_Reference_In_Attribute_Value --
+   -----------------------------------------------
+
+   function On_Character_Reference_In_Attribute_Value
+    (Self : not null access SAX_Simple_Reader'Class;
+     Hex  : Boolean) return Boolean
+   is
+      Code  : Code_Point;
+      Valid : Boolean;
+
+   begin
+      Character_Reference_To_Code_Point (Self, Hex, Code, Valid);
+
+      if not Valid then
+         return False;
+      end if;
+
+      Matreshka.Internals.Strings.Operations.Append
+       (Self.Character_Data, Code);
+
+      return True;
+   end On_Character_Reference_In_Attribute_Value;
 
    -----------------------------
    -- On_Close_Of_Declaration --

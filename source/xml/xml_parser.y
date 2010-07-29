@@ -795,11 +795,11 @@ DefaultDecl:
 {
    Actions.On_Implied_Attribute_Default_Declaration (Self);
 }
-  | Token_Fixed AttributeValue
+  | Token_Fixed Token_String_Segment
 {
    Actions.On_Fixed_Attribute_Default_Declaration (Self, $2.String);
 }
-  | AttributeValue
+  | Token_String_Segment
 {
    Actions.On_Attribute_Default_Declaration (Self, $1.String);
 }
@@ -866,30 +866,31 @@ content_item :
   ;
 
 Attribute_Any :
-    Attribute_Any Token_Name Token_Equal AttributeValue
+    Attribute_Any Token_Name
+{
+   null;
+}
+    Token_Equal Token_String_Segment
 {
    Actions.On_Elements_Attribute
     (Self,
      $2.Symbol,
-     $4.String);
+     $5.String);
 }
-  | Token_Name Token_Equal AttributeValue
+  | Token_Name
+{
+   null;
+}
+    Token_Equal Token_String_Segment
 {
    Actions.On_Elements_Attribute
     (Self,
      $1.Symbol,
-     $3.String);
+     $4.String);
 }
   |
 {
    null;
-}
-  ;
-
-AttributeValue :
-    Token_Value_Open AttributeEntityValue_Content Token_Value_Close
-{
-   Move ($$, $2);
 }
   ;
 

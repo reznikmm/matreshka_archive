@@ -46,10 +46,36 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
 
    pragma Preelaborate;
 
+   procedure On_Attribute_Value_Character_Data
+    (Self  : not null access SAX_Simple_Reader'Class);
+   --  Handles character data in the attribute value.
+
+   function On_Attribute_Value_Close_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class) return Boolean;
+   --  Process close delimiter of attribute value. Returns True when
+   --  attribute's value is closed.
+
+   procedure On_Attribute_Value_Open_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     State : Interfaces.Unsigned_32);
+   --  Process open delimiter of attribute value.
+
    function On_Character_Data
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles character data in as well as apperance of forbidden ']]>' string
    --  in the character data.
+
+   function On_Character_Reference
+    (Self : not null access SAX_Simple_Reader'Class;
+     Hex  : Boolean) return Token;
+   --  Processes character reference, except character reference in attribute
+   --  value.
+
+   function On_Character_Reference_In_Attribute_Value
+    (Self : not null access SAX_Simple_Reader'Class;
+     Hex  : Boolean) return Boolean;
+   --  Processes character reference in attribute value. Returns False when
+   --  error was detected and reported to application.
 
    function On_Close_Of_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token;

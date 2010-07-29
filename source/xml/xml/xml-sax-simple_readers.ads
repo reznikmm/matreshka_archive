@@ -359,7 +359,11 @@ private
       --  delimiter handling.
       Character_Data      : Matreshka.Internals.Strings.Shared_String_Access
         := Matreshka.Internals.Strings.Shared_Empty'Access;
-      --  Preallocated buffer to accumulate character data.
+      --  Preallocated buffer for character data to avoid unnecessary
+      --  allocations, and to accumulate attribute's value.
+      Normalize_Value     : Boolean;
+      --  When True attribute value normalization is applied to the
+      --  attribute's character data.
       Version             : XML_Version := XML_1_0;
 
       --  Parser state

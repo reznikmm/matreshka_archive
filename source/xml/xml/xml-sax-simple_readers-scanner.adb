@@ -59,8 +59,6 @@ package body XML.SAX.Simple_Readers.Scanner is
    use Matreshka.Internals.XML.Symbol_Tables;
    use XML.SAX.Simple_Readers.Scanner.Tables;
 
-   type Character_Reference_Form is (Decimal, Hexadecimal);
-
    procedure Push_Start_Condition
     (Self  : not null access SAX_Simple_Reader'Class;
      State : Interfaces.Unsigned_32);
@@ -73,20 +71,6 @@ package body XML.SAX.Simple_Readers.Scanner is
    function Get_Whitespace_Matched
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Returns value of "whitespace matched" flag.
-
-   function Process_Attribute_Value_Open_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class;
-     State : Interfaces.Unsigned_32) return Token;
-   --  Process open delimiter of attribute value.
-
-   function Process_Attribute_Value_Close_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class) return Token;
-   --  Process close delimiter of attribute value.
-
-   function Process_Character_Reference
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Form  : Character_Reference_Form) return Token;
-   --  Processes character reference.
 
    function Process_Entity_Value_Close_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
@@ -151,195 +135,6 @@ package body XML.SAX.Simple_Readers.Scanner is
        (Self, Self.Scanner_State.Start_Condition_Stack.Last_Element);
       Self.Scanner_State.Start_Condition_Stack.Delete_Last;
    end Pop_Start_Condition;
-
-   ---------------------------------------------
-   -- Process_Attribute_Value_Close_Delimiter --
-   ---------------------------------------------
-
-   function Process_Attribute_Value_Close_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class) return Token
-   is
-      --  NOTE: Attribute value delimiter can be ' or " and both are
-      --  represented as single UTF-16 code unit, thus expensive UTF-16
-      --  decoding can be avoided.
-
-      Delimiter : constant Matreshka.Internals.Unicode.Code_Point
-        := Code_Point
-            (Self.Scanner_State.Data.Value
-              (Self.Scanner_State.YY_Base_Position));
-
-   begin
-      if Self.Scanner_State.Delimiter /= Delimiter then
-         --  XXX Can be refactored and reused between processing of character
-         --  reference and close of attribute value delimiter.
-
-         if not Matreshka.Internals.Strings.Can_Be_Reused
-                 (Self.Character_Buffer, 2)
-         then
-            --  Preallocated buffer can't be reused for some reason (most
-            --  probably because application made copy of the previous
-            --  character reference), so new buffer need to be preallocated.
-            --  Requested size of the buffer is maximum number of UTF-16 code
-            --  unit to store one Unicode code point.
-
-            Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
-            Self.Character_Buffer := Matreshka.Internals.Strings.Allocate (2);
-         end if;
-
-         Self.Character_Buffer.Unused := 0;
-         Self.Character_Buffer.Length := 1;
-         Matreshka.Internals.Utf16.Unchecked_Store
-          (Self.Character_Buffer.Value,
-           Self.Character_Buffer.Unused,
-           Delimiter);
-         Matreshka.Internals.Strings.Reference (Self.Character_Buffer);
-         Set_String_Internal
-          (Item          => Self.YYLVal,
-           String        => Self.Character_Buffer,
-           Is_Whitespace => False,
-           Is_CData      => False);
-
-         return Token_String_Segment;
-
-      else
-         Reset_Whitespace_Matched (Self);
-         Pop_Start_Condition (Self);
-
-         return Token_Value_Close;
-      end if;
-   end Process_Attribute_Value_Close_Delimiter;
-
-   --------------------------------------------
-   -- Process_Attribute_Value_Open_Delimiter --
-   --------------------------------------------
-
-   function Process_Attribute_Value_Open_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class;
-     State : Interfaces.Unsigned_32) return Token is
-   begin
-      --  NOTE: Attribute value delimiter can be ' or " and both are
-      --  represented as single UTF-16 code unit, thus expensive UTF-16
-      --  decoding can be avoided.
-
-      Self.Scanner_State.Delimiter :=
-        Code_Point
-         (Self.Scanner_State.Data.Value (Self.Scanner_State.YY_Base_Position));
-      Push_Start_Condition (Self, State);
-
-      case Self.Version is
-         when XML_1_0 =>
-            Enter_Start_Condition (Self, ATTRIBUTE_VALUE_10);
-
-         when XML_1_1 =>
-            Enter_Start_Condition (Self, ATTRIBUTE_VALUE_11);
-      end case;
-
-      return Token_Value_Open;
-   end Process_Attribute_Value_Open_Delimiter;
-
-   ---------------------------------
-   -- Process_Character_Reference --
-   ---------------------------------
-
-   function Process_Character_Reference
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Form  : Character_Reference_Form) return Token
-   is
-      Upper_A     : constant := 16#41#;
-      Upper_F     : constant := 16#46#;
-      Lower_A     : constant := 16#61#;
-      Lower_F     : constant := 16#66#;
-      Zero_Fixup  : constant := 16#30#;
-      Upper_Fixup : constant := 16#41# - 16#0A#;
-      Lower_Fixup : constant := 16#61# - 16#0A#;
-
-      D  : Code_Point;
-      C  : Code_Point := 0;
-      FP : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
-      LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
-
-   begin
-      --  NOTE: Sequences of leading and trailing character always fixed:
-      --  "&#" for decimal representation and "&#x" for hexadecimal
-      --  representation for the leading sequence of characters and ";" for
-      --  trailing; thus we can just add/subtract required number of code point
-      --  positions instead of doing more expensive iteration with analysis of
-      --  UTF-16 code units.
-      --
-      --  Actual value has limited character set ([0-9] or [0-9a-fA-F]), all
-      --  of characters is on BMP also, thus expensive decoding can be omitted
-      --  also.
-
-      case Form is
-         when Decimal =>
-            --  Trim two leading characters and trailing character.
-
-            FP := FP + 2;
-            LP := LP - 1;
-
-            while FP < LP loop
-               D := Code_Point (Self.Scanner_State.Data.Value (FP));
-               FP := FP + 1;
-
-               C := (C * 10) + D - Zero_Fixup;
-            end loop;
-
-         when Hexadecimal =>
-            --  Trim three leading characters and trailing character.
-
-            FP := FP + 3;
-            LP := LP - 1;
-
-            while FP < LP loop
-               D := Code_Point (Self.Scanner_State.Data.Value (FP));
-               FP := FP + 1;
-
-               if D in Upper_A .. Upper_F then
-                  C := (C * 16) + D - Upper_Fixup;
-
-               elsif D in Lower_A .. Lower_F then
-                  C := (C * 16) + D - Lower_Fixup;
-
-               else
-                  C := (C * 16) + D - Zero_Fixup;
-               end if;
-            end loop;
-      end case;
-
-      --  XXX Character reference must be resolved into valid XML character.
-      --  XXX Whitespace must be detected and reported in token.
-
-      --  XXX Can be refactored and reused between processing of character
-      --  reference and close of attribute value delimiter.
-
-      if not Matreshka.Internals.Strings.Can_Be_Reused
-              (Self.Character_Buffer, 2)
-      then
-         --  Preallocated buffer can't be reused for some reason (most
-         --  probably because application made copy of the previous character
-         --  reference), so new buffer need to be preallocated. Requested
-         --  size of the buffer is maximum number of UTF-16 code unit to
-         --  store one Unicode code point.
-
-         Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
-         Self.Character_Buffer := Matreshka.Internals.Strings.Allocate (2);
-      end if;
-
-      Self.Character_Buffer.Unused := 0;
-      Self.Character_Buffer.Length := 1;
-      Matreshka.Internals.Utf16.Unchecked_Store
-       (Self.Character_Buffer.Value,
-        Self.Character_Buffer.Unused,
-        C);
-      Matreshka.Internals.Strings.Reference (Self.Character_Buffer);
-      Set_String_Internal
-       (Item          => Self.YYLVal,
-        String        => Self.Character_Buffer,
-        Is_Whitespace => False,
-        Is_CData      => False);
-
-      return Token_String_Segment;
-   end Process_Character_Reference;
 
    ------------------------------------------
    -- Process_Entity_Value_Close_Delimiter --
@@ -1255,22 +1050,42 @@ package body XML.SAX.Simple_Readers.Scanner is
 
             when 46 =>
                --  Decimal form of character reference rule [66] in entity value rule [9];
-               --  attribute value, rule [10] or content of element, rule [43].
+               --  or content of element, rule [43].
             
-               return Process_Character_Reference (Self, Decimal);
+               return Actions.On_Character_Reference (Self, False);
 
             when 47 =>
-               --  Hexadecimal form of character reference rule [66] in entity value rule
-               --  [9]; attribute value, rule [10] or content of element, rule [43].
+               --  Decimal form of character reference rule [66] in attribute value,
+               --  rule [10].
             
-               return Process_Character_Reference (Self, Hexadecimal);
+               if not Actions.On_Character_Reference_In_Attribute_Value
+                       (Self, False)
+               then
+                  return Error;
+               end if;
 
             when 48 =>
+               --  Hexadecimal form of character reference rule [66] in entity value rule
+               --  [9] or content of element, rule [43].
+            
+               return Actions.On_Character_Reference (Self, True);
+
+            when 49 =>
+               --  Hexadecimal form of character reference rule [66] in attribute value,
+               --  rule [10].
+            
+               if not Actions.On_Character_Reference_In_Attribute_Value
+                       (Self, True)
+               then
+                  return Error;
+               end if;
+
+            when 50 =>
                --  General entity reference rule [68] in entity value rule [9].
             
                return Actions.On_General_Entity_Reference_In_Entity_Value (Self);
 
-            when 49 =>
+            when 51 =>
                --  Parameter entity reference rule [69] in entity value rule [9].
                --
                --  Processing of parameter entity uses separate scanner's state, thus
@@ -1284,160 +1099,160 @@ package body XML.SAX.Simple_Readers.Scanner is
                   return Error;
                end if;
 
-            when 50 =>
+            when 52 =>
                --  EMPTY keyword, rule [46].
             
                return Token_Empty;
 
-            when 51 =>
+            when 53 =>
                --  ANY keyword, rule [46].
             
                return Token_Any;
 
-            when 52 =>
+            when 54 =>
                --  Open parenthesis, rules [49], [50], [51].
             
                Enter_Start_Condition (Self, ELEMENT_CHILDREN);
             
                return Token_Open_Parenthesis;
 
-            when 53 =>
+            when 55 =>
                --  Close parenthesis, rules [49], [50], [51].
             
                return Token_Close_Parenthesis;
 
-            when 54 =>
+            when 56 =>
                --  Question mark in rules [47], [48].
             
                return Token_Question;
 
-            when 55 =>
+            when 57 =>
                --  Asterisk in rules [47], [48].
             
                return Token_Asterisk;
 
-            when 56 =>
+            when 58 =>
                --  Plus sign in rules [47], [48].
             
                return Token_Plus;
 
-            when 57 =>
+            when 59 =>
                --  Vertical bar in rule [49].
             
                return Token_Vertical_Bar;
 
-            when 58 =>
+            when 60 =>
                --  Comma in rule [50].
             
                return Token_Comma;
 
-            when 59 =>
+            when 61 =>
                --  #PCDATA in rule [51].
             
                return Token_PCData;
 
-            when 60 =>
+            when 62 =>
                --  Name in element's children declaration, rules [48], [51].
             
                return Actions.On_Name_In_Element_Declaration_Children (Self);
 
-            when 61 =>
+            when 63 =>
                --  Close token of entity declaration, rules [71], [72].
                --  Close of element declaration, rule [45].
                --  Close of attribute list declaration, rule [52].
             
                return Actions.On_Close_Of_Declaration (Self);
 
-            when 62 =>
+            when 64 =>
                --  Name of the attribute, rule [53].
             
                return Actions.On_Name_In_Attribute_List_Declaration (Self);
 
-            when 63 =>
+            when 65 =>
                --  CDATA keyword, rule [55].
             
                return Token_CData;
 
-            when 64 =>
+            when 66 =>
                --  ID keyword, rule [56].
             
                return Token_Id;
 
-            when 65 =>
+            when 67 =>
                --  IDREF keyword, rule [56].
             
                return Token_IdRef;
 
-            when 66 =>
+            when 68 =>
                --  IDREFS keyword, rule [56].
             
                return Token_IdRefs;
 
-            when 67 =>
+            when 69 =>
                --  ENTITY keyword, rule [56].
             
                return Token_Entity;
 
-            when 68 =>
+            when 70 =>
                --  ENTITIES keyword, rule [56].
             
                return Token_Entities;
 
-            when 69 =>
+            when 71 =>
                --  NMTOKEN keyword, rule [56].
             
                return Token_NmToken;
 
-            when 70 =>
+            when 72 =>
                --  NMTOKENS keyword, rule [56].
             
                return Token_NmTokens;
 
-            when 71 =>
+            when 73 =>
                --  NOTATION keyword, rule [58].
             
                return Token_Notation;
 
-            when 72 =>
+            when 74 =>
                --  #REQUIRED keyword, rule [60].
             
                Enter_Start_Condition (Self, ATTLIST_DECL);
             
                return Token_Required;
 
-            when 73 =>
+            when 75 =>
                --  #IMPLIED keyword, rule [60].
             
                Enter_Start_Condition (Self, ATTLIST_DECL);
             
                return Token_Implied;
 
-            when 74 =>
+            when 76 =>
                --  #FIXED keyword, rule [60].
             
                return Token_Fixed;
 
-            when 75 =>
+            when 77 =>
                --  Open parenthesis, rules [58], [59].
             
                return Token_Open_Parenthesis;
 
-            when 76 =>
+            when 78 =>
                --  Close parenthesis, rules [58], [59].
             
                return Token_Close_Parenthesis;
 
-            when 77 =>
+            when 79 =>
                --  Vertical bar, rules [58], [59].
             
                return Token_Vertical_Bar;
 
-            when 78 =>
+            when 80 =>
                --  Name in the rule [58].
             
                return Actions.On_Name_In_Attribute_List_Declaration_Notation (Self);
 
-            when 79 =>
+            when 81 =>
                --  Nmtoken in the rule [59].
             
                Set_String_Internal
@@ -1449,18 +1264,18 @@ package body XML.SAX.Simple_Readers.Scanner is
             
                return Token_Name;
 
-            when 80 =>
+            when 82 =>
                --  Open delimiter of attribute value, rule [10].
             
-               return Process_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
+               Actions.On_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
 
-            when 81 =>
+            when 83 =>
                --  All white spaces from rules [28] are ignored.
                --  Whitespace before name in rule [76] is ignored.
             
                null;
 
-            when 82 =>
+            when 84 =>
                --  White spaces in entity declaration are not optional, rules [71], [72],
                --  [75], [76].
                --
@@ -1474,98 +1289,88 @@ package body XML.SAX.Simple_Readers.Scanner is
             
                Set_Whitespace_Matched (Self);
 
-            when 83 =>
+            when 85 =>
                --  Name of the attribute, rule [41].
             
                return Actions.On_Name_In_Element_Start_Tag (Self);
 
-            when 84 =>
+            when 86 =>
                --  Equal sign as attribute's name value delimiter, rule [25] in rules [41],
                --  [24], [32], [80].
             
                return Token_Equal;
 
-            when 85 =>
+            when 87 =>
                --  Close of empty element tag, rule [44].
             
                return Actions.On_Close_Of_Empty_Element_Tag (Self);
 
-            when 86 =>
+            when 88 =>
                --  Close of tag, rule [40].
                --  Close tag of document type declaration, rule [28].
             
                return Actions.On_Close_Of_Tag (Self);
 
-            when 87 =>
+            when 89 =>
                --  Open delimiter of attribute value, rule [10].
             
-               return Process_Attribute_Value_Open_Delimiter (Self, ELEMENT_START);
-
-            when 88 =>
-               --  Close delimiter of attribute value, rule [10].
-            
-               return Process_Attribute_Value_Close_Delimiter (Self);
-
-            when 89 =>
-               --  Value of attribute, rule [10].
-            
-               Set_String_Internal
-                (Item          => YYLVal,
-                 String        => YY_Text_Internal,
-                 Is_Whitespace => False,
-                 Is_CData      => False);
-            
-               return Token_String_Segment;
+               Actions.On_Attribute_Value_Open_Delimiter (Self, ELEMENT_START);
 
             when 90 =>
-               --  Value of attribute, rule [10].
+               --  Close delimiter of attribute value, rule [10].
             
-               Set_String_Internal
-                (Item          => YYLVal,
-                 String        => YY_Text_Internal,
-                 Is_Whitespace => False,
-                 Is_CData      => False);
-            
-               return Token_String_Segment;
+               if Actions.On_Attribute_Value_Close_Delimiter (Self) then
+                  return Token_String_Segment;
+               end if;
 
             when 91 =>
+               --  Value of attribute, rule [10].
+            
+               Actions.On_Attribute_Value_Character_Data (Self);
+
+            when 92 =>
+               --  Value of attribute, rule [10].
+            
+               Actions.On_Attribute_Value_Character_Data (Self);
+
+            when 93 =>
                --  Less-than sign can't be used in the attribute value.
             
                return Actions.On_Less_Than_Sign_In_Attribute_Value (Self);
 
-            when 92 =>
+            when 94 =>
                --  General entity reference rule [68] in attribute value, rule [10].
             
                if not Actions.On_General_Entity_Reference_In_Attribute_Value (Self) then
                   return Error;
                end if;
 
-            when 93 =>
+            when 95 =>
                raise Program_Error with "Unexpected character in XML_DECL";
 
-            when 94 =>
+            when 96 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INT";
 
-            when 95 =>
+            when 97 =>
                raise Program_Error with "Unexpected character in ENTITY_DECL";
 
-            when 96 =>
+            when 98 =>
                raise Program_Error with "Unexpected character in ENTITY_NDATA";
 
-            when 97 =>
+            when 99 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in ATTLIST_DECL";
 
-            when 98 =>
+            when 100 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 99 =>
+            when 101 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 100 =>
+            when 102 =>
                raise Program_Error with "Unexpected character in NOTATION_DECL";
 
-            when 101 =>
+            when 103 =>
                --  Unexpected character.
             
                return Actions.On_Unexpected_Character (Self);

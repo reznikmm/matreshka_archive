@@ -995,22 +995,25 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 138 =>
-               Actions.On_Elements_Attribute
-                (Self,
-                 yy.value_stack (yy.tos-2).Symbol,
-                 yy.value_stack (yy.tos).String);
+               null;
 
             when 139 =>
                Actions.On_Elements_Attribute
                 (Self,
-                 yy.value_stack (yy.tos-2).Symbol,
+                 yy.value_stack (yy.tos-3).Symbol,
                  yy.value_stack (yy.tos).String);
 
             when 140 =>
                null;
 
             when 141 =>
-               Move (yyval, yy.value_stack (yy.tos-1));
+               Actions.On_Elements_Attribute
+                (Self,
+                 yy.value_stack (yy.tos-3).Symbol,
+                 yy.value_stack (yy.tos).String);
+
+            when 142 =>
+               null;
                when others =>
                   raise Program_Error
                     with "Unhandled state"

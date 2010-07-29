@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 --  This package is for internal use only.
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
-with Matreshka.Internals.Strings.Compare;
 
 package body XML.SAX.Attributes.Internals is
 
@@ -99,7 +97,7 @@ package body XML.SAX.Attributes.Internals is
          --  object and copy data.
       then
          declare
-            Aux : Shared_Attributes_Access
+            Aux : constant Shared_Attributes_Access
               := new Shared_Attributes ((Self.Data.Length + 8) / 8 * 8);
 
          begin
