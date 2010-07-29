@@ -310,6 +310,9 @@ private
       Normalize_Value     : Boolean;
       --  When True attribute value normalization is applied to the
       --  attribute's character data.
+      Space_Before        : Boolean;
+      --  When normalize attribute value of non-CDATA type, it indicates that
+      --  previous processed character was space.
       Version             : XML_Version := XML_1_0;
 
       --  Parser state

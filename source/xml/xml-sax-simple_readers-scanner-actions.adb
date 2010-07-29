@@ -161,21 +161,41 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    procedure On_Attribute_Value_Character_Data
     (Self : not null access SAX_Simple_Reader'Class)
    is
-      Aux : Matreshka.Internals.Strings.Shared_String_Access
-        := Matreshka.Internals.Strings.Operations.Slice
-            (Self.Scanner_State.Data,
-             Self.Scanner_State.YY_Base_Position,
-             Self.Scanner_State.YY_Current_Position
-               - Self.Scanner_State.YY_Base_Position,
-             Self.Scanner_State.YY_Current_Index
-               - Self.Scanner_State.YY_Base_Index);
+      Next : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
+      Code : Code_Point;
 
    begin
       --  XXX Can be optimized by adding special operation Append_Slice.
 
-      Matreshka.Internals.Strings.Operations.Append
-       (Self.Character_Data, Aux);
-      Matreshka.Internals.Strings.Dereference (Aux);
+      while Next /= Self.Scanner_State.YY_Current_Position loop
+         Unchecked_Next (Self.Scanner_State.Data.Value, Next, Code);
+
+         --  It can be reasonable to implement this step of normalization on
+         --  SIMD.
+
+         if Code = 16#09# or Code = 16#0A# or Code = 16#0D# then
+            Code := 16#20#;
+         end if;
+
+         if Self.Normalize_Value then
+            if Code = 16#20# then
+               if not Self.Space_Before then
+                  Matreshka.Internals.Strings.Operations.Append
+                   (Self.Character_Data, Code);
+                  Self.Space_Before := True;
+               end if;
+
+            else
+               Matreshka.Internals.Strings.Operations.Append
+                (Self.Character_Data, Code);
+               Self.Space_Before := False;
+            end if;
+
+         else
+            Matreshka.Internals.Strings.Operations.Append
+             (Self.Character_Data, Code);
+         end if;
+      end loop;
    end On_Attribute_Value_Character_Data;
 
    ----------------------------------------
