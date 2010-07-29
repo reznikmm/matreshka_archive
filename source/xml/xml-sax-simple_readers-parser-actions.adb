@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
 with XML.SAX.Attributes.Internals;
 with XML.SAX.Simple_Readers.Scanner;
 with XML.SAX.Simple_Readers.Callbacks;
@@ -51,6 +52,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    use Matreshka.Internals.XML.Attributes;
    use Matreshka.Internals.XML.Attribute_Tables;
    use Matreshka.Internals.XML.Element_Tables;
+   use Matreshka.Internals.XML.Entity_Tables;
    use Matreshka.Internals.XML.Namespace_Scopes;
    use Matreshka.Internals.XML.Symbol_Tables;
 
@@ -395,6 +397,77 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          Set_Default (Self.Attributes, Self.Current_Attribute, Default);
       end if;
    end On_Fixed_Attribute_Default_Declaration;
+
+   -----------------------------------
+   -- On_General_Entity_Declaration --
+   -----------------------------------
+
+   procedure On_General_Entity_Declaration
+    (Self        : not null access SAX_Simple_Reader'Class;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
+     Is_External : Boolean;
+     Value       : League.Strings.Universal_String;
+     Notation    : Matreshka.Internals.XML.Symbol_Identifier)
+   is
+      Name   : constant League.Strings.Universal_String
+        := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
+      Entity : Entity_Identifier;
+
+   begin
+      --  [XML 4.2 Entities Declaration]
+      --
+      --  "The Name identifies the entity in an entity reference or, in the
+      --  case of an unparsed entity, in the value of an ENTITY or ENTITIES
+      --  attribute. If the same entity is declared more than once, the first
+      --  declaration encountered is binding; at user option, an XML processor
+      --  MAY issue a warning if entities are declared multiple times."
+      --
+      --  Check whether entity is alrwady declared.
+
+      if General_Entity (Self.Symbols, Symbol) /= No_Entity then
+         Callbacks.Call_Warning
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML 4.2 Entities Declaration]"
+               & " general entity is already declared"));
+
+         return;
+      end if;
+
+      if Is_External then
+         if Notation = No_Symbol then
+            New_External_Parsed_General_Entity
+             (Self.Entities, Self.Public_Id, Self.System_Id, Entity);
+            Set_General_Entity (Self.Symbols, Symbol, Entity);
+            Callbacks.Call_External_Entity_Declaration
+             (Self.all, Name, Self.Public_Id, Self.System_Id);
+
+         else
+            New_External_Unparsed_General_Entity
+             (Self.Entities, Notation, Entity);
+            Set_General_Entity (Self.Symbols, Symbol, Entity);
+            Callbacks.Call_Unparsed_Entity_Declaration
+             (Self.all,
+              Name,
+              Self.Public_Id,
+              Self.System_Id,
+              Matreshka.Internals.XML.Symbol_Tables.Name
+               (Self.Symbols, Notation));
+         end if;
+
+      else
+         declare
+            A : Matreshka.Internals.Strings.Shared_String_Access;
+
+         begin
+            A := League.Strings.Internals.Get_Shared (Value);
+            Matreshka.Internals.Strings.Reference (A);
+            New_Internal_General_Entity (Self.Entities, A, Entity);
+            Set_General_Entity (Self.Symbols, Symbol, Entity);
+            Callbacks.Call_Internal_Entity_Declaration (Self.all, Name, Value);
+         end;
+      end if;
+   end On_General_Entity_Declaration;
 
    ---------------------------------
    -- On_Id_Attribute_Declaration --

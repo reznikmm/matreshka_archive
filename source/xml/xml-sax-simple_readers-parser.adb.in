@@ -66,14 +66,6 @@ package body XML.SAX.Simple_Readers.Parser is
      Comment : League.Strings.Universal_String);
    --  Process comment in the document.
 
-   procedure Process_General_Entity_Declaration
-    (Self        : not null access SAX_Simple_Reader'Class;
-     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
-     Is_External : Boolean;
-     Value       : League.Strings.Universal_String;
-     Notation    : Matreshka.Internals.XML.Symbol_Identifier);
-   --  Process general entity declaration, rule [71].
-
    procedure Process_Parameter_Entity_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
      Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
@@ -129,63 +121,6 @@ package body XML.SAX.Simple_Readers.Parser is
       Self.Public_Id := Public_Id;
       Self.System_Id := System_Id;
    end Process_External_Id;
-
-   ----------------------------------------
-   -- Process_General_Entity_Declaration --
-   ----------------------------------------
-
-   procedure Process_General_Entity_Declaration
-    (Self        : not null access SAX_Simple_Reader'Class;
-     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
-     Is_External : Boolean;
-     Value       : League.Strings.Universal_String;
-     Notation    : Matreshka.Internals.XML.Symbol_Identifier)
-   is
-      Name   : constant League.Strings.Universal_String
-        := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
-      Entity : Entity_Identifier;
-
-   begin
-      if General_Entity (Self.Symbols, Symbol) /= No_Entity then
-         raise Program_Error with "general entity already declared";
-         --  XXX It is non-fatal error, first declaration must be used and
-         --  at user option warning may be issued to application.
-      end if;
-
-      if Is_External then
-         if Notation = No_Symbol then
-            New_External_Parsed_General_Entity
-             (Self.Entities, Self.Public_Id, Self.System_Id, Entity);
-            Set_General_Entity (Self.Symbols, Symbol, Entity);
-            Callbacks.Call_External_Entity_Declaration
-             (Self.all, Name, Self.Public_Id, Self.System_Id);
-
-         else
-            New_External_Unparsed_General_Entity
-             (Self.Entities, Notation, Entity);
-            Set_General_Entity (Self.Symbols, Symbol, Entity);
-            Callbacks.Call_Unparsed_Entity_Declaration
-             (Self.all,
-              Name,
-              Self.Public_Id,
-              Self.System_Id,
-              Matreshka.Internals.XML.Symbol_Tables.Name
-               (Self.Symbols, Notation));
-         end if;
-
-      else
-         declare
-            A : Matreshka.Internals.Strings.Shared_String_Access;
-
-         begin
-            A := League.Strings.Internals.Get_Shared (Value);
-            Matreshka.Internals.Strings.Reference (A);
-            New_Internal_General_Entity (Self.Entities, A, Entity);
-            Set_General_Entity (Self.Symbols, Symbol, Entity);
-            Callbacks.Call_Internal_Entity_Declaration (Self.all, Name, Value);
-         end;
-      end if;
-   end Process_General_Entity_Declaration;
 
    ------------------------------------------
    -- Process_Parameter_Entity_Declaration --

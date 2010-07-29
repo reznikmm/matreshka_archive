@@ -115,6 +115,14 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
      Default : Matreshka.Internals.Strings.Shared_String_Access);
    --  Handles declaration of fixed value of the attribute.
 
+   procedure On_General_Entity_Declaration
+    (Self        : not null access SAX_Simple_Reader'Class;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
+     Is_External : Boolean;
+     Value       : League.Strings.Universal_String;
+     Notation    : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Process general entity declaration, rule [71].
+
    procedure On_Id_Attribute_Declaration
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);

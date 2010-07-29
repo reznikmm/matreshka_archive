@@ -396,7 +396,7 @@ NotationDecl:
 EntityDecl:
     Token_Entity_Decl_Open Token_Name EntityValue Token_Close
 {
-   Process_General_Entity_Declaration
+   Actions.On_General_Entity_Declaration
     (Self        => Self,
      Symbol      => $2.Symbol,
      Is_External => False,
@@ -405,7 +405,7 @@ EntityDecl:
 }
   | Token_Entity_Decl_Open Token_Name ExternalID Token_Close
 {
-   Process_General_Entity_Declaration
+   Actions.On_General_Entity_Declaration
     (Self        => Self,
      Symbol      => $2.Symbol,
      Is_External => True,
@@ -414,7 +414,7 @@ EntityDecl:
 }
   | Token_Entity_Decl_Open Token_Name ExternalID Token_NData Token_Name Token_Close
 {
-   Process_General_Entity_Declaration
+   Actions.On_General_Entity_Declaration
     (Self        => Self,
      Symbol      => $2.Symbol,
      Is_External => True,
@@ -927,14 +927,6 @@ with Matreshka.Internals.XML.Symbol_Tables;
     (Self    : access Integer;
      Comment : League.Strings.Universal_String) is separate;
 
-   procedure Process_General_Entity_Declaration
-    (Self        : access Integer;
-     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
-     Is_External : Boolean;
-     Value       : League.Strings.Universal_String;
-     Notation    : Matreshka.Internals.XML.Symbol_Identifier)
-       is separate;
-
    procedure Process_Parameter_Entity_Declaration
     (Self        : access Integer;
      Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
@@ -1061,6 +1053,13 @@ with Matreshka.Internals.XML.Symbol_Tables;
       procedure On_Attribute_Default_Declaration
        (Self    : access Integer;
         Default : Matreshka.Internals.Strings.Shared_String_Access);
+
+      procedure On_General_Entity_Declaration
+       (Self        : access Integer;
+        Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
+        Is_External : Boolean;
+        Value       : League.Strings.Universal_String;
+        Notation    : Matreshka.Internals.XML.Symbol_Identifier);
 
    end Actions;
 
