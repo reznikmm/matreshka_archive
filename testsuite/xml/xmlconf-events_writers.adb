@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Characters.Conversions;
 with Ada.Characters.Wide_Wide_Latin_1;
+with Ada.Containers.Ordered_Maps;
 
 with XML.SAX.Input_Sources.Streams.Files;
 
@@ -50,6 +51,10 @@ package body XMLConf.Events_Writers is
 
    use Ada.Characters.Wide_Wide_Latin_1;
    use League.Strings;
+
+   package Universal_String_Integer_Maps is
+     new Ada.Containers.Ordered_Maps
+          (League.Strings.Universal_String, Positive);
 
    function Escape_Character
     (Item : Wide_Wide_Character) return League.Strings.Universal_String;
@@ -196,20 +201,41 @@ package body XMLConf.Events_Writers is
    ----------------------
 
    function Escape_Character
-    (Item : Wide_Wide_Character) return League.Strings.Universal_String is
+    (Item : Wide_Wide_Character) return League.Strings.Universal_String
+   is
+      function Image (Item : Wide_Wide_Character)
+        return League.Strings.Universal_String;
+
+      -----------
+      -- Image --
+      -----------
+
+      function Image (Item : Wide_Wide_Character)
+        return League.Strings.Universal_String
+      is
+         To_Hex : constant array (0 .. 15) of Wide_Wide_Character
+           := "0123456789ABCDEF";
+
+         Result : Wide_Wide_String (1 .. 6);
+         First  : Integer := Result'Last + 1;
+         Aux    : Integer := Wide_Wide_Character'Pos (Item);
+
+      begin
+         while Aux /= 0 loop
+            First := First - 1;
+            Result (First) := To_Hex (Aux mod 16);
+            Aux := Aux / 16;
+         end loop;
+
+         return
+           League.Strings.To_Universal_String
+            ("&#x" & Result (First .. Result'Last) & ";");
+      end Image;
+
    begin
       case Item is
-         when HT =>
-            return To_Universal_String ("&#x9;");
-
-         when LF =>
-            return To_Universal_String ("&#xA;");
-
-         when CR =>
-            return To_Universal_String ("&#xD;");
-
-         when ' ' =>
-            return To_Universal_String ("&#x20;");
+         when HT | LF | CR | ' ' =>
+            return Image (Item);
 
          when '&' =>
             return To_Universal_String ("&amp;");
@@ -432,7 +458,14 @@ package body XMLConf.Events_Writers is
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
-     Success        : in out Boolean) is
+     Success        : in out Boolean)
+   is
+      use Universal_String_Integer_Maps;
+
+      Map      : Universal_String_Integer_Maps.Map;
+      Position : Universal_String_Integer_Maps.Cursor;
+      Index    : Positive;
+
    begin
       Self.Add_Line (To_Universal_String ("  <startElement>"));
 
@@ -467,53 +500,64 @@ package body XMLConf.Events_Writers is
          Self.Add_Line (To_Universal_String ("    <attributes>"));
 
          for J in 1 .. Attributes.Length loop
+            Map.Insert (Attributes.Qualified_Name (J), J);
+         end loop;
+
+         Position := Map.First;
+
+         while Has_Element (Position) loop
+            Index := Element (Position);
+
             Self.Add_Line (To_Universal_String ("      <attribute>"));
 
-            if Attributes.Namespace_URI (J).Is_Empty then
+            if Attributes.Namespace_URI (Index).Is_Empty then
                Self.Add_Line (To_Universal_String ("        <namespaceURI/>"));
 
             else
                Self.Add_Line
                 ("        <namespaceURI>"
-                   & Attributes.Namespace_URI (J)
+                   & Attributes.Namespace_URI (Index)
                    & "</namespaceURI>");
             end if;
 
-            if Attributes.Local_Name (J).Is_Empty then
+            if Attributes.Local_Name (Index).Is_Empty then
                Self.Add_Line (To_Universal_String ("        <localName/>"));
 
             else
                Self.Add_Line
                 ("        <localName>"
-                   & Attributes.Local_Name (J)
+                   & Attributes.Local_Name (Index)
                    & "</localName>");
             end if;
 
-            if Attributes.Qualified_Name (J).Is_Empty then
+            if Attributes.Qualified_Name (Index).Is_Empty then
                Self.Add_Line
                 (To_Universal_String ("        <qualifiedName/>"));
 
             else
                Self.Add_Line
                 ("        <qualifiedName>"
-                   & Attributes.Qualified_Name (J)
+                   & Attributes.Qualified_Name (Index)
                    & "</qualifiedName>");
             end if;
 
-            if Attributes.Value (J).Is_Empty then
+            if Attributes.Value (Index).Is_Empty then
                Self.Add_Line
                 (To_Universal_String ("        <value/>"));
 
             else
                Self.Add_Line
                 ("        <value>"
-                   & Escape_String (Attributes.Value (J))
+                   & Escape_String (Attributes.Value (Index))
                    & "</value>");
             end if;
 
-            Self.Add_Line (To_Universal_String ("        <type>CDATA</type>"));
+            Self.Add_Line
+             ("        <type>" & Attributes.Value_Type (Index) & "</type>");
 
             Self.Add_Line (To_Universal_String ("      </attribute>"));
+
+            Next (Position);
          end loop;
 
          Self.Add_Line (To_Universal_String ("    </attributes>"));
