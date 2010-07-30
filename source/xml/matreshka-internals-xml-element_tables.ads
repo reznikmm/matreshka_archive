@@ -86,12 +86,22 @@ package Matreshka.Internals.XML.Element_Tables is
      Attribute : Attribute_Identifier);
    --  Sets first attribute in the list of declared attributes.
 
+   function Is_Mixed_Content
+    (Self    : Element_Table;
+     Element : Element_Identifier) return Boolean;
+
+   procedure Set_Is_Mixed_Content
+    (Self    : in out Element_Table;
+     Element : Element_Identifier;
+     Value   : Boolean);
+
 private
 
    type Element_Record is record
       Attributes             : Attribute_Identifier;
       Is_Declared            : Boolean;
       Is_Attributes_Declared : Boolean;
+      Is_Mixed_Content       : Boolean;
    end record;
 
    type Element_Array is array (Element_Identifier range <>) of Element_Record;

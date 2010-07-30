@@ -750,10 +750,10 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 92 =>
-               null;
+               Actions.On_Mixed_Content_Declaration (Self);
 
             when 93 =>
-               null;
+               Actions.On_Mixed_Content_Declaration (Self);
 
             when 94 =>
                null;

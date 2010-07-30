@@ -629,11 +629,11 @@ cp:
 Mixed:
     Token_Open_Parenthesis Token_PCData Mixed_content Token_Close_Parenthesis Token_Asterisk
 {
-   null;
+   Actions.On_Mixed_Content_Declaration (Self);
 }
   | Token_Open_Parenthesis Token_PCData Token_Close_Parenthesis
 {
-   null;
+   Actions.On_Mixed_Content_Declaration (Self);
 }
   ;
 
@@ -1060,6 +1060,8 @@ with Matreshka.Internals.XML.Symbol_Tables;
         Is_External : Boolean;
         Value       : League.Strings.Universal_String;
         Notation    : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Mixed_Content_Declaration (Self : access Integer);
 
    end Actions;
 

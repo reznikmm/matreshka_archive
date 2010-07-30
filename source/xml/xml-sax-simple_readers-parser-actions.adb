@@ -182,11 +182,26 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    procedure On_Character_Data
     (Self          : not null access SAX_Simple_Reader'Class;
      Text          : not null Matreshka.Internals.Strings.Shared_String_Access;
-     Is_Whitespace : Boolean) is
+     Is_Whitespace : Boolean)
+   is
+      Element : Element_Identifier
+        := Symbol_Tables.Element
+            (Self.Symbols, Self.Element_Names.Last_Element);
+
    begin
-      Callbacks.Call_Characters (Self.all, Text);
-      --  XXX In valid documents ignorableWhitespace must be called in
-      --  appropriate cases.
+      if (Element /= No_Element and Is_Whitespace)
+        and then (Is_Declared (Self.Elements, Element)
+                    and not Is_Mixed_Content (Self.Elements, Element))
+      then
+         --  When character data contains only whitespaces and element is
+         --  not declared as mixed content reports ignorable whitespaces to
+         --  application.
+
+         Callbacks.Call_Ignorable_Whitespace (Self.all, Text);
+
+      else
+         Callbacks.Call_Characters (Self.all, Text);
+      end if;
    end On_Character_Data;
 
    --------------------------
@@ -558,6 +573,16 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          Set_Is_Implied (Self.Attributes, Self.Current_Attribute, True);
       end if;
    end On_Implied_Attribute_Default_Declaration;
+
+   ----------------------------------
+   -- On_Mixed_Content_Declaration --
+   ----------------------------------
+
+   procedure On_Mixed_Content_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Set_Is_Mixed_Content (Self.Elements, Self.Current_Element, True);
+   end On_Mixed_Content_Declaration;
 
    --------------------------------------
    -- On_NmToken_Attribute_Declaration --

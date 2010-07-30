@@ -81,6 +81,17 @@ package body Matreshka.Internals.XML.Element_Tables is
       return Self.Table (Element).Is_Declared;
    end Is_Declared;
 
+   ----------------------
+   -- Is_Mixed_Content --
+   ----------------------
+
+   function Is_Mixed_Content
+    (Self    : Element_Table;
+     Element : Element_Identifier) return Boolean is
+   begin
+      return Self.Table (Element).Is_Mixed_Content;
+   end Is_Mixed_Content;
+
    -----------------
    -- New_Element --
    -----------------
@@ -106,7 +117,8 @@ package body Matreshka.Internals.XML.Element_Tables is
       Self.Table (Element) :=
        (Attributes             => No_Attribute,
         Is_Declared            => False,
-        Is_Attributes_Declared => False);
+        Is_Attributes_Declared => False,
+        Is_Mixed_Content       => False);
    end New_Element;
 
    --------------------
@@ -144,5 +156,17 @@ package body Matreshka.Internals.XML.Element_Tables is
    begin
       Self.Table (Element).Is_Declared := Declared;
    end Set_Is_Declared;
+
+   --------------------------
+   -- Set_Is_Mixed_Content --
+   --------------------------
+
+   procedure Set_Is_Mixed_Content
+    (Self    : in out Element_Table;
+     Element : Element_Identifier;
+     Value   : Boolean) is
+   begin
+      Self.Table (Element).Is_Mixed_Content := Value;
+   end Set_Is_Mixed_Content;
 
 end Matreshka.Internals.XML.Element_Tables;
