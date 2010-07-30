@@ -208,6 +208,8 @@ library project Matreshka_League is
          when "x86_64" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+            for Specification ("Matreshka.Internals.Strings.Constants")
+              use "matreshka-internals-strings-constants__x86_64.ads";
             for Implementation ("Matreshka.Internals.Strings.Compare")
               use "matreshka-internals-strings-compare__x86_64.adb";
             for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
