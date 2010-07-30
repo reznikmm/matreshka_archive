@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <processingInstruction>
-        <target>NAME_20-</target>
-        <data>_09-\t_0D-\n_0A-\n\n\sThis\sis\sa\sPI\starget\s</data>
-    </processingInstruction>
-    <startElement>
-        <namespaceURI/>
-        <localName>book</localName>
-        <qualifiedName>book</qualifiedName>
-        <attributes/>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>book</localName>
-        <qualifiedName>book</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <processingInstruction>
+    <target>NAME_20-</target>
+    <data>_09-&#x9;_0D-&#xA;_0A-&#xA;&#xA;&#x20;This&#x20;is&#x20;a&#x20;PI&#x20;target&#x20;</data>
+  </processingInstruction>
+  <startElement>
+    <namespaceURI/>
+    <localName>book</localName>
+    <qualifiedName>book</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>book</localName>
+    <qualifiedName>book</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

@@ -7,7 +7,7 @@
     <qualifiedName>doc</qualifiedName>
     <attributes/>
   </startElement>
-  <ignorable>\n</ignorable>
+  <ignorableWhitespace>&#xA;</ignorableWhitespace>
   <startElement>
     <namespaceURI/>
     <localName>e</localName>
@@ -41,7 +41,7 @@
     <localName>e</localName>
     <qualifiedName>e</qualifiedName>
   </endElement>
-  <ignorable>\n</ignorable>
+  <ignorableWhitespace>&#xA;</ignorableWhitespace>
   <startElement>
     <namespaceURI/>
     <localName>e</localName>
@@ -68,7 +68,7 @@
     <localName>e</localName>
     <qualifiedName>e</qualifiedName>
   </endElement>
-  <ignorable>\n</ignorable>
+  <ignorableWhitespace>&#xA;</ignorableWhitespace>
   <startElement>
     <namespaceURI/>
     <localName>e</localName>
@@ -102,7 +102,7 @@
     <localName>e</localName>
     <qualifiedName>e</qualifiedName>
   </endElement>
-  <ignorable>\n</ignorable>
+  <ignorableWhitespace>&#xA;</ignorableWhitespace>
   <endElement>
     <namespaceURI/>
     <localName>doc</localName>
