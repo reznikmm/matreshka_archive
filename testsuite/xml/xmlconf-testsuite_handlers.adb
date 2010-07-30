@@ -142,7 +142,7 @@ package body XMLConf.Testsuite_Handlers is
          Ada.Directories.Set_Directory (Dwd);
 
          select
-            delay 3.0;
+            delay 10.0;
 
             raise Program_Error with "terminated by timeout";
 
