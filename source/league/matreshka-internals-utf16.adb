@@ -118,16 +118,29 @@ package body Matreshka.Internals.Utf16 is
    procedure Unchecked_Next
     (Item     : Utf16_String;
      Position : in out Utf16_String_Index;
-     Code     : out Matreshka.Internals.Unicode.Code_Point) is
+     Code     : out Matreshka.Internals.Unicode.Code_Point)
+   is
+      pragma Assert
+       ((Position <= Item'Last
+           and then Item (Position)
+                      not in High_Surrogate_First .. High_Surrogate_Last)
+         or (Position + 1 <= Item'Last
+               and then Item (Position)
+                          in High_Surrogate_First .. High_Surrogate_Last
+               and then Item (Position + 1)
+                          in Low_Surrogate_First .. Low_Surrogate_Last));
+      pragma Suppress (Index_Check);
+      pragma Suppress (Range_Check);
+      --  Assertion checks both range and validity of source data; this check
+      --  is stronger then run time checks.
+
    begin
       Code := Code_Point (Item (Position));
+      Position := Position + 1;
 
       if (Code and Surrogate_Kind_Mask) = Masked_High_Surrogate then
          Code :=
-           Code * 16#400# + Code_Point (Item (Position + 1)) - UCS4_Fixup;
-         Position := Position + 2;
-
-      else
+           Code * 16#400# + Code_Point (Item (Position)) - UCS4_Fixup;
          Position := Position + 1;
       end if;
    end Unchecked_Next;
@@ -140,13 +153,25 @@ package body Matreshka.Internals.Utf16 is
     (Item     : Utf16_String;
      Position : in out Utf16_String_Index)
    is
+      pragma Assert
+       ((Position <= Item'Last
+           and then Item (Position)
+                      not in High_Surrogate_First .. High_Surrogate_Last)
+         or (Position + 1 <= Item'Last
+               and then Item (Position)
+                          in High_Surrogate_First .. High_Surrogate_Last
+               and then Item (Position + 1)
+                          in Low_Surrogate_First .. Low_Surrogate_Last));
+      pragma Suppress (Index_Check);
+      --  Assertion checks both range and validity of source data; this check
+      --  is stronger then run time checks.
+
       Code : constant Code_Point := Code_Point (Item (Position));
 
    begin
-      if (Code and Surrogate_Kind_Mask) = Masked_High_Surrogate then
-         Position := Position + 2;
+      Position := Position + 1;
 
-      else
+      if (Code and Surrogate_Kind_Mask) = Masked_High_Surrogate then
          Position := Position + 1;
       end if;
    end Unchecked_Next;
@@ -158,7 +183,22 @@ package body Matreshka.Internals.Utf16 is
    procedure Unchecked_Previous
     (Item     : Utf16_String;
      Position : in out Utf16_String_Index;
-     Code     : out Matreshka.Internals.Unicode.Code_Point) is
+     Code     : out Matreshka.Internals.Unicode.Code_Point)
+   is
+      pragma Assert
+       ((Position in 1 .. Item'Last + 1
+           and then Item (Position - 1)
+                      not in Low_Surrogate_First .. Low_Surrogate_Last)
+          or (Position in 2 .. Item'Last + 1
+                and then Item (Position - 1)
+                           in Low_Surrogate_First .. Low_Surrogate_Last
+                and then Item (Position - 2)
+                           in High_Surrogate_First .. High_Surrogate_Last));
+      pragma Suppress (Index_Check);
+      pragma Suppress (Range_Check);
+      --  Assertion checks both range and validity of source data; this check
+      --  is stronger then run time checks.
+
    begin
       Position := Position - 1;
       Code := Code_Point (Item (Position));
@@ -177,6 +217,19 @@ package body Matreshka.Internals.Utf16 is
     (Item     : Utf16_String;
      Position : in out Utf16_String_Index)
    is
+      pragma Assert
+       ((Position in 1 .. Item'Last + 1
+           and then Item (Position - 1)
+                      not in Low_Surrogate_First .. Low_Surrogate_Last)
+          or (Position in 2 .. Item'Last + 1
+                and then Item (Position - 1)
+                           in Low_Surrogate_First .. Low_Surrogate_Last
+                and then Item (Position - 2)
+                           in High_Surrogate_First .. High_Surrogate_Last));
+      pragma Suppress (Index_Check);
+      --  Assertion checks both range and validity of source data; this check
+      --  is stronger then run time checks.
+
       Code : Code_Point;
 
    begin
@@ -195,7 +248,16 @@ package body Matreshka.Internals.Utf16 is
    procedure Unchecked_Store
     (Item     : in out Utf16_String;
      Position : in out Utf16_String_Index;
-     Code     : Code_Point) is
+     Code     : Code_Point)
+   is
+      pragma Assert
+       ((Code <= 16#FFFF# and Position <= Item'Last)
+          or (Code > 16#FFFF# and Position + 1 <= Item'Last));
+      pragma Suppress (Index_Check);
+      pragma Suppress (Range_Check);
+      --  Assertion checks both range and validity of source data; this check
+      --  is stronger then run time checks.
+
    begin
       if Code <= 16#FFFF# then
          Item (Position) := Utf16_Code_Unit (Code);
@@ -236,6 +298,20 @@ package body Matreshka.Internals.Utf16 is
      Position : Utf16_String_Index)
        return Matreshka.Internals.Unicode.Code_Point
    is
+      pragma Assert
+       ((Position <= Item'Last
+           and then Item (Position)
+                      not in High_Surrogate_First .. High_Surrogate_Last)
+         or (Position + 1 <= Item'Last
+               and then Item (Position)
+                          in High_Surrogate_First .. High_Surrogate_Last
+               and then Item (Position + 1)
+                          in Low_Surrogate_First .. Low_Surrogate_Last));
+      pragma Suppress (Index_Check);
+      pragma Suppress (Range_Check);
+      --  Assertion checks both range and validity of source data; this check
+      --  is stronger then run time checks.
+
       Code : constant Code_Point := Code_Point (Item (Position));
 
    begin

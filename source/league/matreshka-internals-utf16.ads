@@ -43,6 +43,12 @@
 ------------------------------------------------------------------------------
 --  This package containts type declarations for UTF-16 encoded strings and
 --  useful subprograms.
+--
+--  For all subprogram those names starts from Unchecked_ all run time checks
+--  are disabled; but to compensate this, assertions to check ranges and
+--  validity of source data are added. So, developers can enable assertion
+--  checks to simplify debugging of their code.
+------------------------------------------------------------------------------
 with Matreshka.Internals.Unicode;
 
 package Matreshka.Internals.Utf16 is
