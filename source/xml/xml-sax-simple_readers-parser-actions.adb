@@ -312,12 +312,30 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------
 
    procedure On_End_Of_Internal_Subset
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self : not null access SAX_Simple_Reader'Class)
+   is
+      use type Matreshka.Internals.Utf16.Utf16_String_Index;
+
+      Source     : XML.SAX.Input_Sources.SAX_Input_Source_Access;
+      Text       : Matreshka.Internals.Strings.Shared_String_Access;
+      Last_Match : Boolean;
+      Success    : Boolean;
+      pragma Unreferenced (Success);
+      --  Return value of the Push_Entity subprogram is not used here, because
+      --  it sets parses state to error and stops parsing.
+
    begin
       --  Substitute external subset if any.
 
-      if not Self.External_Subset.Is_Empty then
-         Scanner.Push_External_Subset (Self, Self.External_Source);
+      if Self.External_Subset_Entity /= No_Entity then
+         Success :=
+           Scanner.Push_Entity
+            (Self                => Self,
+             Entity              => Self.External_Subset_Entity,
+             In_Document_Type    => True,
+             In_Entity_Value     => False,
+             In_Attribute_Value  => False,
+             In_Document_Content => False);
       end if;
    end On_End_Of_Internal_Subset;
 
@@ -400,12 +418,11 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    procedure On_External_Subset_Declaration
     (Self : not null access SAX_Simple_Reader'Class) is
    begin
-      Self.Entity_Resolver.Resolve_Entity
-       (Self.Public_Id,
+      New_External_Subset_Entity
+       (Self.Entities,
+        Self.Public_Id,
         Self.System_Id,
-        Self.External_Source,
-        Self.Continue);
-      --  XXX Callbacks package must be used for this call.
+        Self.External_Subset_Entity);
    end On_External_Subset_Declaration;
 
    --------------------------------------------

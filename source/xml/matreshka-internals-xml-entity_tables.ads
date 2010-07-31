@@ -98,6 +98,14 @@ package Matreshka.Internals.XML.Entity_Tables is
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
 
+   procedure New_External_Subset_Entity
+    (Self      : in out Entity_Table;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Entity    : out Entity_Identifier);
+   --  Allocates space for the entity and returns identifier of the allocated
+   --  entity.
+
    function Is_Document_Entity
     (Self   : Entity_Table;
      Entity : Entity_Identifier) return Boolean;

@@ -762,64 +762,14 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          end if;
       end loop;
 
-      --  Resolve entity when necessary.
-
-      if not Is_Resolved (Self.Entities, Entity) then
-         Callbacks.Call_Resolve_Entity
-          (Self.all,
-           League.Strings.Internals.Create
-            (Public_Id (Self.Entities, Entity)),
-           League.Strings.Internals.Create
-            (System_Id (Self.Entities, Entity)),
-           Source);
-         Text       := Matreshka.Internals.Strings.Shared_Empty'Access;
-         Last_Match := False;
-
-         if not Self.Continue then
-            Callbacks.Call_Fatal_Error
-             (Self.all,
-              League.Strings.To_Universal_String
-               ("external parsed general entity is not resolved"));
-
-            return False;
-         end if;
-
-         Set_Is_Resolved (Self.Entities, Entity, True);
-
-      else
-         Source     := null;
-         Text       := Replacement_Text (Self.Entities, Entity);
-         Last_Match := True;
-
-         if Text.Unused = 0 then
-            --  Replacement text is empty string,
-
-            return True;
-         end if;
-      end if;
-
-      Self.Scanner_Stack.Append (Self.Scanner_State);
-      Self.Stack_Is_Empty := False;
-
-      Self.Scanner_State :=
-       (Source        => Source,
-        Data          => Text,
-        Last_Match    => Last_Match,
-        End_Of_Source => Last_Match,
-        Entity        => Entity,
-        In_Literal    => True,
-        Delimiter     => 0,
-        others        => <>);
-
-      case Self.Version is
-         when XML_1_0 =>
-            Enter_Start_Condition (Self, Tables.ATTRIBUTE_VALUE_10);
-
-         when XML_1_1 =>
-            Enter_Start_Condition (Self, Tables.ATTRIBUTE_VALUE_11);
-      end case;
-
-      return True;
+      return
+        Push_Entity
+         (Self                => Self,
+          Entity              => Entity,
+          In_Document_Type    => False,
+          In_Entity_Value     => False,
+          In_Attribute_Value  => True,
+          In_Document_Content => False);
    end On_General_Entity_Reference_In_Attribute_Value;
 
    -----------------------------------------------------
@@ -935,80 +885,14 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          end if;
       end loop;
 
-      --  Resolve entity when necessary.
-
-      if not Is_Resolved (Self.Entities, Entity) then
-         Callbacks.Call_Resolve_Entity
-          (Self.all,
-           League.Strings.Internals.Create
-            (Public_Id (Self.Entities, Entity)),
-           League.Strings.Internals.Create
-            (System_Id (Self.Entities, Entity)),
-           Source);
-         Text       := Matreshka.Internals.Strings.Shared_Empty'Access;
-         Last_Match := False;
-
-         if not Self.Continue then
-            Callbacks.Call_Fatal_Error
-             (Self.all,
-              League.Strings.To_Universal_String
-               ("external parsed general entity is not resolved"));
-
-            return False;
-         end if;
-
-         Set_Is_Resolved (Self.Entities, Entity, True);
-
-      else
-         Source     := null;
-         Text       := Replacement_Text (Self.Entities, Entity);
-         Last_Match := True;
-
-         if Text.Unused = 0 then
-            --  Replacement text is empty string,
-
-            return True;
-         end if;
-      end if;
-
-      Self.Scanner_Stack.Append (Self.Scanner_State);
-      Self.Stack_Is_Empty := False;
-
-      Self.Scanner_State :=
-       (Source        => Source,
-        Data          => Text,
-        Last_Match    => Last_Match,
-        End_Of_Source => Last_Match,
-        Entity        => Entity,
-        others        => <>);
-
-      if Last_Match then
-         Self.Scanner_State.YY_Current_Position :=
-           First_Position (Self.Entities, Entity);
-         Self.Scanner_State.YY_Current_Index :=
-           Integer (First_Position (Self.Entities, Entity)) + 1;
-
-         case Self.Version is
-            when XML_1_0 =>
-               Enter_Start_Condition (Self, Tables.DOCUMENT_10);
-
-            when XML_1_1 =>
-               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
-         end case;
-
-      else
-         case Self.Version is
-            when XML_1_0 =>
-               Push_And_Enter_Start_Condition
-                (Self, Tables.DOCUMENT_10, Tables.INITIAL);
-
-            when XML_1_1 =>
-               Push_And_Enter_Start_Condition
-                (Self, Tables.DOCUMENT_11, Tables.INITIAL);
-         end case;
-      end if;
-
-      return True;
+      return
+        Push_Entity
+         (Self                => Self,
+          Entity              => Entity,
+          In_Document_Type    => False,
+          In_Entity_Value     => False,
+          In_Attribute_Value  => False,
+          In_Document_Content => True);
    end On_General_Entity_Reference_In_Document_Content;
 
    -------------------------------------------------
@@ -1503,63 +1387,14 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             return False;
          end if;
 
-         --  Resolve entity when necessary.
-
-         if not Is_Resolved (Self.Entities, Entity) then
-            Callbacks.Call_Resolve_Entity
-             (Self.all,
-              League.Strings.Internals.Create
-               (Public_Id (Self.Entities, Entity)),
-              League.Strings.Internals.Create
-               (System_Id (Self.Entities, Entity)),
-              Source);
-            Text       := Matreshka.Internals.Strings.Shared_Empty'Access;
-            Last_Match := False;
-
-            if not Self.Continue then
-               Callbacks.Call_Fatal_Error
-                (Self.all,
-                 League.Strings.To_Universal_String
-                  ("external parameter entity is not resolved"));
-
-               return False;
-            end if;
-
-            Set_Is_Resolved (Self.Entities, Entity, True);
-
-         else
-            Source     := null;
-            Text       := Replacement_Text (Self.Entities, Entity);
-            Last_Match := True;
-
-            if Text.Unused = 0 then
-               --  Replacement text is empty string,
-
-               return True;
-            end if;
-         end if;
-
-         Self.Scanner_Stack.Append (Self.Scanner_State);
-         Self.Stack_Is_Empty := False;
-
-         Self.Scanner_State :=
-          (Source        => Source,
-           Data          => Text,
-           Last_Match    => Last_Match,
-           End_Of_Source => Last_Match,
-           Entity        => Entity,
-           In_Literal    => True,
-           others        => <>);
-
-         case Self.Version is
-            when XML_1_0 =>
-               Enter_Start_Condition (Self, Tables.ENTITY_VALUE_10);
-
-            when XML_1_1 =>
-               Enter_Start_Condition (Self, Tables.ENTITY_VALUE_11);
-         end case;
-
-         return True;
+         return
+           Push_Entity
+            (Self                => Self,
+             Entity              => Entity,
+             In_Document_Type    => False,
+             In_Entity_Value     => True,
+             In_Attribute_Value  => False,
+             In_Document_Content => False);
       end if;
    end On_Parameter_Entity_Reference_In_Entity_Value;
 

@@ -56,14 +56,18 @@ private package XML.SAX.Simple_Readers.Scanner is
    --  Switch scanner to continue scanning according to the specified
    --  version of XML specification.
 
-   procedure Push_External_Subset
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Source : not null XML.SAX.Input_Sources.SAX_Input_Source_Access);
-   --  Push text of external subset of document type declaration into the
-   --  scanner's stack.
-
    procedure Initialize (Self : in out SAX_Simple_Reader'Class);
    --  Initializes start condition stack.
+
+   function Push_Entity
+    (Self                : not null access SAX_Simple_Reader'Class;
+     Entity              : Matreshka.Internals.XML.Entity_Identifier;
+     In_Document_Type    : Boolean;
+     In_Entity_Value     : Boolean;
+     In_Attribute_Value  : Boolean;
+     In_Document_Content : Boolean) return Boolean;
+   --  Pushs replacement text of the entity into the scanner stack. Resolve
+   --  entity when necessary.
 
 private
 

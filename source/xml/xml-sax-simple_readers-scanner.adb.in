@@ -46,6 +46,7 @@ with Ada.Unchecked_Deallocation;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode;
+with XML.SAX.Simple_Readers.Callbacks;
 with XML.SAX.Simple_Readers.Scanner.Actions;
 with XML.SAX.Simple_Readers.Scanner.Tables;
 
@@ -161,38 +162,190 @@ package body XML.SAX.Simple_Readers.Scanner is
       end if;
    end Process_Entity_Value_Close_Delimiter;
 
-   --------------------------
-   -- Push_External_Subset --
-   --------------------------
+   -----------------
+   -- Push_Entity --
+   -----------------
 
-   procedure Push_External_Subset
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Source : not null XML.SAX.Input_Sources.SAX_Input_Source_Access) is
+   function Push_Entity
+    (Self                : not null access SAX_Simple_Reader'Class;
+     Entity              : Matreshka.Internals.XML.Entity_Identifier;
+     In_Document_Type    : Boolean;
+     In_Entity_Value     : Boolean;
+     In_Attribute_Value  : Boolean;
+     In_Document_Content : Boolean) return Boolean
+   is
+      In_Literal : constant Boolean := In_Entity_Value or In_Attribute_Value;
+      Source     : XML.SAX.Input_Sources.SAX_Input_Source_Access;
+      Text       : Matreshka.Internals.Strings.Shared_String_Access;
+      Last_Match : Boolean;
+
    begin
+      --  Resolve entity when necessary.
+
+      if not Is_Resolved (Self.Entities, Entity) then
+         Callbacks.Call_Resolve_Entity
+          (Self.all,
+           League.Strings.Internals.Create
+            (Public_Id (Self.Entities, Entity)),
+           League.Strings.Internals.Create
+            (System_Id (Self.Entities, Entity)),
+           Source);
+         Text       := Matreshka.Internals.Strings.Shared_Empty'Access;
+         Last_Match := False;
+
+         if not Self.Continue then
+            if In_Attribute_Value then
+               Callbacks.Call_Fatal_Error
+                (Self.all,
+                 League.Strings.To_Universal_String
+                  ("external parsed general entity is not resolved"));
+               --  Should never be happen, references to external parsed
+               --  entities in attribute value are forbidden.
+
+            elsif In_Document_Type then
+               Callbacks.Call_Fatal_Error
+                (Self.all,
+                 League.Strings.To_Universal_String
+                  ("external subset entity is not resolved"));
+
+            elsif In_Entity_Value then
+               Callbacks.Call_Fatal_Error
+                (Self.all,
+                 League.Strings.To_Universal_String
+                  ("external parameter entity is not resolved"));
+
+            elsif In_Document_Content then
+               Callbacks.Call_Fatal_Error
+                (Self.all,
+                 League.Strings.To_Universal_String
+                  ("external parsed general entity is not resolved"));
+            end if;
+
+            return False;
+         end if;
+
+         Set_Is_Resolved (Self.Entities, Entity, True);
+
+      else
+         Source     := null;
+         Text       := Replacement_Text (Self.Entities, Entity);
+         Last_Match := True;
+
+         if Text.Unused = 0 then
+            --  Replacement text is empty string,
+
+            return True;
+         end if;
+      end if;
+
       Self.Scanner_Stack.Append (Self.Scanner_State);
       Self.Stack_Is_Empty := False;
 
       Self.Scanner_State :=
-       (Source             => Source,
-        Data               => Matreshka.Internals.Strings.Shared_Empty'Access,
-        Last_Match         => False,
-        Is_External_Subset => True,
-        others             => <>);
+       (Source        => Source,
+        Data          => Text,
+        Last_Match    => Last_Match,
+        End_Of_Source => Last_Match,
+        Entity        => Entity,
+        In_Literal    => True,
+        Delimiter     => 0,
+        others        => <>);
 
-      case Self.Version is
-         when XML_1_0 =>
-            Push_And_Enter_Start_Condition
-             (Self, DOCTYPE_INTSUBSET_10, INITIAL);
-            --  Reset scanner to INITIAL state to be able to process text
-            --  declaration at the beginning of external subset.
+      if Last_Match then
+         Self.Scanner_State.YY_Current_Position :=
+           First_Position (Self.Entities, Entity);
+         Self.Scanner_State.YY_Current_Index :=
+           Integer (First_Position (Self.Entities, Entity)) + 1;
 
-         when XML_1_1 =>
-            Push_And_Enter_Start_Condition
-             (Self, DOCTYPE_INTSUBSET_11, INITIAL);
-            --  Reset scanner to INITIAL state to be able to process text
-            --  declaration at the beginning of external subset.
-      end case;
-   end Push_External_Subset;
+         if In_Document_Type then
+            case Self.Version is
+               when XML_1_0 =>
+                  Enter_Start_Condition (Self, DOCTYPE_INTSUBSET_10);
+
+               when XML_1_1 =>
+                  Enter_Start_Condition (Self, DOCTYPE_INTSUBSET_11);
+            end case;
+
+         elsif In_Entity_Value then
+            case Self.Version is
+               when XML_1_0 =>
+                  Enter_Start_Condition (Self, ENTITY_VALUE_10);
+
+               when XML_1_1 =>
+                  Enter_Start_Condition (Self, ENTITY_VALUE_11);
+            end case;
+
+         elsif In_Attribute_Value then
+            case Self.Version is
+               when XML_1_0 =>
+                  Enter_Start_Condition (Self, ATTRIBUTE_VALUE_10);
+
+               when XML_1_1 =>
+                  Enter_Start_Condition (Self, ATTRIBUTE_VALUE_11);
+            end case;
+
+         elsif In_Document_Content then
+            case Self.Version is
+               when XML_1_0 =>
+                  Enter_Start_Condition (Self, DOCUMENT_10);
+
+               when XML_1_1 =>
+                  Enter_Start_Condition (Self, DOCUMENT_11);
+            end case;
+         end if;
+
+      else
+         --  Reset scanner to INITIAL state to be able to process text
+         --  declaration at the beginning of the external entity.
+
+         if In_Document_Type then
+            case Self.Version is
+               when XML_1_0 =>
+                  Push_And_Enter_Start_Condition
+                   (Self, DOCTYPE_INTSUBSET_10, Tables.INITIAL);
+
+               when XML_1_1 =>
+                  Push_And_Enter_Start_Condition
+                   (Self, DOCTYPE_INTSUBSET_11, Tables.INITIAL);
+            end case;
+
+         elsif In_Entity_Value then
+            case Self.Version is
+               when XML_1_0 =>
+                  Push_And_Enter_Start_Condition
+                   (Self, ENTITY_VALUE_10, INITIAL);
+
+               when XML_1_1 =>
+                  Push_And_Enter_Start_Condition
+                   (Self, ENTITY_VALUE_11, INITIAL);
+            end case;
+
+         elsif In_Attribute_Value then
+            case Self.Version is
+               when XML_1_0 =>
+                  Push_And_Enter_Start_Condition
+                   (Self, ATTRIBUTE_VALUE_10, INITIAL);
+
+               when XML_1_1 =>
+                  Push_And_Enter_Start_Condition
+                   (Self, ATTRIBUTE_VALUE_11, INITIAL);
+            end case;
+
+         elsif In_Document_Content then
+            case Self.Version is
+               when XML_1_0 =>
+                  Push_And_Enter_Start_Condition
+                   (Self, Tables.DOCUMENT_10, INITIAL);
+
+               when XML_1_1 =>
+                  Push_And_Enter_Start_Condition
+                   (Self, Tables.DOCUMENT_11, INITIAL);
+            end case;
+         end if;
+      end if;
+
+      return True;
+   end Push_Entity;
 
    ------------------------------
    -- Reset_Whitespace_Matched --

@@ -282,6 +282,37 @@ package body Matreshka.Internals.XML.Entity_Tables is
         First_Position   => 0);
    end New_External_Parsed_General_Entity;
 
+   --------------------------------
+   -- New_External_Subset_Entity --
+   --------------------------------
+
+   procedure New_External_Subset_Entity
+    (Self      : in out Entity_Table;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Entity    : out Entity_Identifier)
+   is
+      P : constant Matreshka.Internals.Strings.Shared_String_Access
+        := League.Strings.Internals.Get_Shared (Public_Id);
+      S : constant Matreshka.Internals.Strings.Shared_String_Access
+        := League.Strings.Internals.Get_Shared (System_Id);
+
+   begin
+      New_Entity (Self, Entity);
+
+      Matreshka.Internals.Strings.Reference (P);
+      Matreshka.Internals.Strings.Reference (S);
+
+      Self.Data (Entity) :=
+       (Kind             => External_Subset_Entity,
+        Notation         => No_Symbol,
+        Public_Id        => P,
+        System_Id        => S,
+        Is_Resolved      => False,
+        Replacement_Text => Matreshka.Internals.Strings.Shared_Empty'Access,
+        First_Position   => 0);
+   end New_External_Subset_Entity;
+
    ------------------------------------------
    -- New_External_Unparsed_General_Entity --
    ------------------------------------------
