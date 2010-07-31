@@ -59,6 +59,12 @@ package body Matreshka.Internals.Strings.Operations is
     (Self : in out Shared_String_Access;
      Code : Matreshka.Internals.Unicode.Code_Point)
    is
+      pragma Assert (Self /= null);
+      pragma Suppress (Access_Check);
+      --  GNAT 20100715 doesn't allow to declared Self with null exclusion, but
+      --  by convention it is always not-null, thus access checks is not
+      --  needed at all.
+
       Next_Unused : Utf16_String_Index;
 
    begin
@@ -74,16 +80,15 @@ package body Matreshka.Internals.Strings.Operations is
 
       if not Can_Be_Reused (Self, Next_Unused) then
          declare
-            Aux : constant not null Shared_String_Access
-              := Allocate (Next_Unused);
+            Old : not null Shared_String_Access := Self;
 
          begin
-            Aux.Value (Self.Value'Range) := Self.Value;
-            Aux.Unused := Self.Unused;
-            Aux.Length := Self.Length;
+            Self := Allocate (Next_Unused);
+            Self.Value (Old.Value'Range) := Old.Value;
+            Self.Unused := Old.Unused;
+            Self.Length := Old.Length;
 
-            Dereference (Self);
-            Self := Aux;
+            Dereference (Old);
          end;
 
       else
