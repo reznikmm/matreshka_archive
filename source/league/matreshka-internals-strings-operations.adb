@@ -108,7 +108,13 @@ package body Matreshka.Internals.Strings.Operations is
     (Self : in out Shared_String_Access;
      Item : Shared_String_Access)
    is
-      Source : Shared_String_Access := Self;
+      pragma Assert (Self /= null);
+      pragma Suppress (Access_Check);
+      --  GNAT 20100715 doesn't allow to declared Self with null exclusion, but
+      --  by convention it is always not-null, thus access checks is not
+      --  needed at all.
+
+      Source : not null Shared_String_Access := Self;
       Size   : constant Utf16_String_Index := Source.Unused + Item.Unused;
 
    begin
@@ -131,11 +137,6 @@ package body Matreshka.Internals.Strings.Operations is
             Self := Allocate (Size);
          end if;
 
-         if Self /= Source then
-            Self.Value (0 .. Source.Unused - 1) :=
-              Source.Value (0 .. Source.Unused - 1);
-         end if;
-
          Self.Value (Source.Unused .. Size - 1) :=
            Item.Value (0 .. Item.Unused - 1);
          Self.Unused := Size;
@@ -144,6 +145,8 @@ package body Matreshka.Internals.Strings.Operations is
          Fill_Null_Terminator (Self);
 
          if Self /= Source then
+            Self.Value (0 .. Source.Unused - 1) :=
+              Source.Value (0 .. Source.Unused - 1);
             Dereference (Source);
          end if;
       end if;
