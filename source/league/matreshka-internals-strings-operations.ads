@@ -51,6 +51,12 @@ package Matreshka.Internals.Strings.Operations is
      Code : Matreshka.Internals.Unicode.Code_Point);
    --  Appends character to the string, reallocate memory if needed.
 
+   procedure Unterminated_Append
+    (Self : in out Shared_String_Access;
+     Code : Matreshka.Internals.Unicode.Code_Point);
+   --  Appends character to the string, reallocate memory if needed. Null
+   --  terminator is not filled.
+
    procedure Append
     (Self : in out Shared_String_Access;
      Item : Shared_String_Access);

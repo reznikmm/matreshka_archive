@@ -307,4 +307,52 @@ package body Matreshka.Internals.Strings.Operations is
       end if;
    end Slice;
 
+   -------------------------
+   -- Unterminated_Append --
+   -------------------------
+
+   procedure Unterminated_Append
+    (Self : in out Shared_String_Access;
+     Code : Matreshka.Internals.Unicode.Code_Point)
+   is
+      pragma Assert (Self /= null);
+      pragma Suppress (Access_Check);
+      --  GNAT 20100715 doesn't allow to declared Self with null exclusion, but
+      --  by convention it is always not-null, thus access checks is not
+      --  needed at all.
+
+      Next_Unused : Utf16_String_Index;
+
+   begin
+      --  Assigning of the "default" value to the variable and use of simple
+      --  operation in if statement helps to compiler to use conditional move
+      --  instruction instead of branch instruction.
+
+      Next_Unused := Self.Unused + 1;
+
+      if Code > 16#FFFF# then
+         Next_Unused := Self.Unused + 2;
+      end if;
+
+      if not Can_Be_Reused (Self, Next_Unused) then
+         declare
+            Old : not null Shared_String_Access := Self;
+
+         begin
+            Self := Allocate (Next_Unused);
+            Self.Value (Old.Value'Range) := Old.Value;
+            Self.Unused := Old.Unused;
+            Self.Length := Old.Length;
+
+            Dereference (Old);
+         end;
+
+      else
+         Free (Self.Index_Map);
+      end if;
+
+      Self.Length := Self.Length + 1;
+      Unchecked_Store (Self.Value, Self.Unused, Code);
+   end Unterminated_Append;
+
 end Matreshka.Internals.Strings.Operations;
