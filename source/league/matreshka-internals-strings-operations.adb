@@ -62,10 +62,13 @@ package body Matreshka.Internals.Strings.Operations is
       Next_Unused : Utf16_String_Index;
 
    begin
-      if Code <= 16#FFFF# then
-         Next_Unused := Self.Unused + 1;
+      --  Assigning of the "default" value to the variable and use of simple
+      --  operation in if statement helps to compiler to use conditional move
+      --  instruction instead of branch instruction.
 
-      else
+      Next_Unused := Self.Unused + 1;
+
+      if Code > 16#FFFF# then
          Next_Unused := Self.Unused + 2;
       end if;
 
