@@ -181,16 +181,18 @@ package body Matreshka.Internals.Strings is
    -----------------
 
    procedure Dereference (Self : in out Shared_Sort_Key_Access) is
+      pragma Assert (Self /= null);
+      pragma Suppress (Access_Check);
+
    begin
       if Self /= Shared_Empty_Key'Access
         and then Matreshka.Internals.Atomics.Counters.Decrement
           (Self.Counter'Access)
       then
          Free (Self);
-
-      else
-         Self := null;
       end if;
+
+      Self := null;
    end Dereference;
 
    -----------------
@@ -199,6 +201,7 @@ package body Matreshka.Internals.Strings is
 
    procedure Dereference (Self : in out Shared_String_Access) is
       pragma Assert (Self /= null);
+      pragma Suppress (Access_Check);
 
    begin
       if Self /= Shared_Empty'Access
@@ -207,10 +210,9 @@ package body Matreshka.Internals.Strings is
       then
          Free (Self.Index_Map);
          Free (Self);
-
-      else
-         Self := null;
       end if;
+
+      Self := null;
    end Dereference;
 
    --------------------------
