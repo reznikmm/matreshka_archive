@@ -227,7 +227,8 @@ Misc :
    {
       Process_Comment
        (Self,
-        League.Strings.Internals.Create ($1.String));
+        League.Strings.Internals.Create
+         ($1.String));
    }
 | PI
    {
@@ -241,7 +242,8 @@ PI :
       Process_Processing_Instruction
        (Self,
         $1.Symbol,
-        League.Strings.Internals.Create ($2.String));
+        League.Strings.Internals.Create
+         ($2.String));
    }
 ;
 
@@ -296,7 +298,8 @@ ExternalID:
       Process_External_Id
        (Self,
         League.Strings.Empty_Universal_String,
-        League.Strings.Internals.Create ($2.String));
+        League.Strings.Internals.Create
+         ($2.String));
    }
 | Token_Public Token_Public_Literal Token_System_Literal
    {
@@ -304,8 +307,10 @@ ExternalID:
 
       Process_External_Id
        (Self,
-        League.Strings.Internals.Create ($2.String),
-        League.Strings.Internals.Create ($3.String));
+        League.Strings.Internals.Create
+         ($2.String),
+        League.Strings.Internals.Create
+         ($3.String));
    }
 ;
 
@@ -363,7 +368,8 @@ intSubset:
    {
       Process_Comment
        (Self,
-        League.Strings.Internals.Create ($1.String));
+        League.Strings.Internals.Create
+         ($1.String));
    }
 | PI
    {
@@ -399,7 +405,9 @@ EntityDecl:
        (Self        => Self,
         Symbol      => $2.Symbol,
         Is_External => False,
-        Value       => League.Strings.Internals.Create ($3.String),
+        Value       =>
+         League.Strings.Internals.Create
+          ($3.String),
         Notation    => Matreshka.Internals.XML.No_Symbol);
    }
 | Token_Entity_Decl_Open Token_Name ExternalID Token_Close
@@ -426,7 +434,8 @@ EntityDecl:
        (Self,
         $3.Symbol,
         False,
-        League.Strings.Internals.Create ($4.String));
+        League.Strings.Internals.Create
+         ($4.String));
    }
 | Token_Entity_Decl_Open Token_Percent Token_Name ExternalID Token_Close
    {
@@ -452,14 +461,20 @@ AttributeEntityValue_Content:
    {
       --  Additional string segment in entity value.
 
-      Move ($$, $1);
-      Matreshka.Internals.Strings.Operations.Append ($$.String, $2.String);
+      Move
+       ($$,
+        $1);
+      Matreshka.Internals.Strings.Operations.Append
+       ($$.String,
+        $2.String);
    }
 | Token_String_Segment
    {
       --  Single string segment in entity value.
 
-      Move ($$, $1);
+      Move
+       ($$,
+        $1);
    }
 |
    {
@@ -796,18 +811,24 @@ DefaultDecl:
    }
 | Token_Fixed Token_String_Segment
    {
-      Actions.On_Fixed_Attribute_Default_Declaration (Self, $2.String);
+      Actions.On_Fixed_Attribute_Default_Declaration
+       (Self,
+        $2.String);
    }
 | Token_String_Segment
    {
-      Actions.On_Attribute_Default_Declaration (Self, $1.String);
+      Actions.On_Attribute_Default_Declaration
+       (Self,
+        $1.String);
    }
 ;
 
 element :
   Token_Element_Open
    {
-      Actions.On_Open_Of_Tag (Self, $1.Symbol);
+      Actions.On_Open_Of_Tag
+       (Self,
+        $1.Symbol);
    }
   element_common
    {
@@ -822,7 +843,9 @@ element_common :
    }
   content Token_End_Open Token_Close
    {
-      Actions.On_End_Tag (Self, $5.Symbol);
+      Actions.On_End_Tag
+       (Self,
+        $5.Symbol);
    }
 | Attribute_Any Token_Empty_Close
    {
@@ -861,7 +884,8 @@ content_item :
    {
       Process_Comment
        (Self,
-        League.Strings.Internals.Create ($1.String));
+        League.Strings.Internals.Create
+         ($1.String));
    }
 | PI
    {
@@ -889,7 +913,9 @@ Attribute_Any :
    }
 | Token_Name
    {
-      Actions.On_Element_Attribute_Name (Self, $1.Symbol);
+      Actions.On_Element_Attribute_Name
+       (Self,
+        $1.Symbol);
    }
   Token_Equal Token_String_Segment
    {
