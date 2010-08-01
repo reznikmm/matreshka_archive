@@ -159,6 +159,13 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
    --  element and set identifier of the declaration of currently
    --  processed element.
 
+   procedure On_Parameter_Entity_Declaration
+    (Self        : not null access SAX_Simple_Reader'Class;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
+     Is_External : Boolean;
+     Value       : League.Strings.Universal_String);
+   --  Process parameter entity declaration, rule [72].
+
    procedure On_Required_Attribute_Default_Declaration
     (Self : not null access SAX_Simple_Reader'Class);
    --  Handles declaration of required value of the attribute.

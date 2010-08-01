@@ -426,7 +426,7 @@ EntityDecl:
    }
 | Token_Entity_Decl_Open Token_Percent Token_Name EntityValue Token_Close
    {
-      Process_Parameter_Entity_Declaration
+      Actions.On_Parameter_Entity_Declaration
        (Self,
         $3.Symbol,
         False,
@@ -435,7 +435,7 @@ EntityDecl:
    }
 | Token_Entity_Decl_Open Token_Percent Token_Name ExternalID Token_Close
    {
-      Process_Parameter_Entity_Declaration
+      Actions.On_Parameter_Entity_Declaration
        (Self,
         $3.Symbol,
         True,
@@ -948,12 +948,6 @@ with Matreshka.Internals.XML.Symbol_Tables;
     (Self    : access Integer;
      Comment : League.Strings.Universal_String) is separate;
 
-   procedure Process_Parameter_Entity_Declaration
-    (Self        : access Integer;
-     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
-     Is_External : Boolean;
-     Value       : League.Strings.Universal_String) is separate;
-
    procedure Process_Processing_Instruction
      (Self   : access Integer;
       Symbol : Matreshka.Internals.XML.Symbol_Identifier;
@@ -1081,6 +1075,12 @@ with Matreshka.Internals.XML.Symbol_Tables;
         Notation    : Matreshka.Internals.XML.Symbol_Identifier);
 
       procedure On_Mixed_Content_Declaration (Self : access Integer);
+
+      procedure On_Parameter_Entity_Declaration
+       (Self        : access Integer;
+        Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
+        Is_External : Boolean;
+        Value       : League.Strings.Universal_String);
 
    end Actions;
 

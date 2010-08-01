@@ -66,13 +66,6 @@ package body XML.SAX.Simple_Readers.Parser is
      Comment : League.Strings.Universal_String);
    --  Process comment in the document.
 
-   procedure Process_Parameter_Entity_Declaration
-    (Self        : not null access SAX_Simple_Reader'Class;
-     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
-     Is_External : Boolean;
-     Value       : League.Strings.Universal_String);
-   --  Process parameter entity declaration, rule [72].
-
    procedure Process_Processing_Instruction
     (Self   : not null access SAX_Simple_Reader'Class;
      Target : Matreshka.Internals.XML.Symbol_Identifier;
@@ -121,45 +114,6 @@ package body XML.SAX.Simple_Readers.Parser is
       Self.Public_Id := Public_Id;
       Self.System_Id := System_Id;
    end Process_External_Id;
-
-   ------------------------------------------
-   -- Process_Parameter_Entity_Declaration --
-   ------------------------------------------
-
-   procedure Process_Parameter_Entity_Declaration
-    (Self        : not null access SAX_Simple_Reader'Class;
-     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
-     Is_External : Boolean;
-     Value       : League.Strings.Universal_String)
-   is
-      Name   : constant League.Strings.Universal_String
-        := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
-      Entity : Entity_Identifier;
-
-   begin
-      if Parameter_Entity (Self.Symbols, Symbol) /= No_Entity then
-         raise Program_Error with "parameter entity already declared";
-         --  XXX It is non-fatal error, first declaration must be used and
-         --  at user option warning may be issued to application.
-      end if;
-
-      if Is_External then
-         New_External_Parameter_Entity
-          (Self.Entities, Self.Public_Id, Self.System_Id, Entity);
-         Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
-
-      else
-         declare
-            A : Matreshka.Internals.Strings.Shared_String_Access;
-
-         begin
-            A := League.Strings.Internals.Get_Shared (Value);
-            Matreshka.Internals.Strings.Reference (A);
-            New_Internal_Parameter_Entity (Self.Entities, A, Entity);
-            Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
-         end;
-      end if;
-   end Process_Parameter_Entity_Declaration;
 
    ------------------------------------
    -- Process_Processing_Instruction --
@@ -620,7 +574,7 @@ package body XML.SAX.Simple_Readers.Parser is
                  Notation    => YY.Value_Stack (YY.TOS -  1).Symbol);
 
             when 53 =>
-               Process_Parameter_Entity_Declaration
+               Actions.On_Parameter_Entity_Declaration
                 (Self,
                  YY.Value_Stack (YY.TOS -  2).Symbol,
                  False,
@@ -628,7 +582,7 @@ package body XML.SAX.Simple_Readers.Parser is
                   (YY.Value_Stack (YY.TOS -  1).String));
 
             when 54 =>
-               Process_Parameter_Entity_Declaration
+               Actions.On_Parameter_Entity_Declaration
                 (Self,
                  YY.Value_Stack (YY.TOS -  2).Symbol,
                  True,

@@ -449,7 +449,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       --  declaration encountered is binding; at user option, an XML processor
       --  MAY issue a warning if entities are declared multiple times."
       --
-      --  Check whether entity is alrwady declared.
+      --  Check whether entity is always declared.
 
       if General_Entity (Self.Symbols, Symbol) /= No_Entity then
          Callbacks.Call_Warning
@@ -622,6 +622,59 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       Self.Current_Element_Name := Symbol;
       Self.Current_Element := Element (Self.Symbols, Symbol);
    end On_Open_Of_Tag;
+
+   -------------------------------------
+   -- On_Parameter_Entity_Declaration --
+   -------------------------------------
+
+   procedure On_Parameter_Entity_Declaration
+    (Self        : not null access SAX_Simple_Reader'Class;
+     Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
+     Is_External : Boolean;
+     Value       : League.Strings.Universal_String)
+   is
+      Name   : constant League.Strings.Universal_String
+        := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
+      Entity : Entity_Identifier;
+
+   begin
+      --  [XML 4.2 Entities Declaration]
+      --
+      --  "The Name identifies the entity in an entity reference or, in the
+      --  case of an unparsed entity, in the value of an ENTITY or ENTITIES
+      --  attribute. If the same entity is declared more than once, the first
+      --  declaration encountered is binding; at user option, an XML processor
+      --  MAY issue a warning if entities are declared multiple times."
+      --
+      --  Check whether entity is always declared.
+
+      if Parameter_Entity (Self.Symbols, Symbol) /= No_Entity then
+         Callbacks.Call_Warning
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML 4.2 Entities Declaration]"
+               & " parameter entity is already declared"));
+
+         return;
+      end if;
+
+      if Is_External then
+         New_External_Parameter_Entity
+          (Self.Entities, Self.Public_Id, Self.System_Id, Entity);
+         Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
+
+      else
+         declare
+            A : Matreshka.Internals.Strings.Shared_String_Access;
+
+         begin
+            A := League.Strings.Internals.Get_Shared (Value);
+            Matreshka.Internals.Strings.Reference (A);
+            New_Internal_Parameter_Entity (Self.Entities, A, Entity);
+            Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
+         end;
+      end if;
+   end On_Parameter_Entity_Declaration;
 
    -----------------------------------------------
    -- On_Required_Attribute_Default_Declaration --
