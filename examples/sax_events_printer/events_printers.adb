@@ -101,6 +101,23 @@ package body Events_Printers is
           & "'");
    end End_Element;
 
+   ------------------------
+   -- End_Prefix_Mapping --
+   ------------------------
+
+   overriding procedure End_Prefix_Mapping
+    (Self    : in out Events_Printer;
+     Prefix  : League.Strings.Universal_String;
+     Success : in out Boolean) is
+   begin
+      Put_Line
+       (">>> (End_Prefix_Mapping) " 
+          & Image (Self.Locator)
+          & ": '"
+          & Prefix
+          & "'");
+   end End_Prefix_Mapping;
+
    -----------
    -- Error --
    -----------
@@ -301,6 +318,26 @@ package body Events_Printers is
              & "' '" & Attributes.Value (J) & "'");
       end loop;
    end Start_Element;
+
+   --------------------------
+   -- Start_Prefix_Mapping --
+   --------------------------
+
+   overriding procedure Start_Prefix_Mapping
+    (Self          : in out Events_Printer;
+     Prefix        : League.Strings.Universal_String;
+     Namespace_URI : League.Strings.Universal_String;
+     Success       : in out Boolean) is
+   begin
+      Put_Line
+       (">>> (Start_Prefix_Mapping) " 
+          & Image (Self.Locator)
+          & ": '"
+          & Prefix
+          & "' => '"
+          & Namespace_URI
+          & "'");
+   end Start_Prefix_Mapping;
 
    ---------------------------------
    -- Unparsed_Entity_Declaration --

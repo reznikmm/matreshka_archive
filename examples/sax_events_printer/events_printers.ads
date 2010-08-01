@@ -85,6 +85,11 @@ package Events_Printers is
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean);
 
+   overriding procedure End_Prefix_Mapping
+    (Self    : in out Events_Printer;
+     Prefix  : League.Strings.Universal_String;
+     Success : in out Boolean);
+
    overriding procedure Error
     (Self       : in out Events_Printer;
      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
@@ -141,6 +146,12 @@ package Events_Printers is
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean);
+
+   overriding procedure Start_Prefix_Mapping
+    (Self          : in out Events_Printer;
+     Prefix        : League.Strings.Universal_String;
+     Namespace_URI : League.Strings.Universal_String;
+     Success       : in out Boolean);
 
    overriding procedure Unparsed_Entity_Declaration
     (Self          : in out Events_Printer;
