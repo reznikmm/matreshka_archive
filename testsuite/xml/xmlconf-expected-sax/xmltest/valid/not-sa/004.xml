@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/xmltest/valid/not-sa/004-1.ent</systemID>
-    </resolveEntity>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/xmltest/valid/not-sa/004-2.ent</systemID>
-    </resolveEntity>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/xmltest/valid/not-sa/004-2.ent</systemID>
-    </resolveEntity>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <resolveEntity>
+    <systemID>004-1.ent</systemID>
+  </resolveEntity>
+  <resolveEntity>
+    <systemID>004-2.ent</systemID>
+  </resolveEntity>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>a1</localName>
-                <qualifiedName>a1</qualifiedName>
-                <value>value</value>
-                <type>CDATA</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+        <localName>a1</localName>
+        <qualifiedName>a1</qualifiedName>
+        <value>value</value>
+        <type>CDATA</type>
+      </attribute>
+    </attributes>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>
