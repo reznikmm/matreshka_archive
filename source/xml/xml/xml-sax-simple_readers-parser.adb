@@ -501,30 +501,27 @@ package body XML.SAX.Simple_Readers.Parser is
                Actions.On_External_Subset_Declaration (Self);
 
             when 27 =>
-               Actions.On_End_Of_Internal_Subset (Self);
-
-            when 28 =>
                Actions.On_End_Of_Document_Type_Declaration
                 (Self,
-                 YY.Value_Stack (YY.TOS -  6).Symbol);
+                 YY.Value_Stack (YY.TOS -  5).Symbol);
 
-            when 29 =>
+            when 28 =>
                null;
 
-            when 30 =>
+            when 29 =>
                --  Document type declaration, rule [28]. 
 
                Actions.On_End_Of_Document_Type_Declaration
                 (Self,
                  YY.Value_Stack (YY.TOS -  2).Symbol);
 
+            when 30 =>
+               null;
+
             when 31 =>
                null;
 
             when 32 =>
-               null;
-
-            when 33 =>
                --  ExternalID specified by SYSTEM, rule [75].
 
                Process_External_Id
@@ -533,7 +530,7 @@ package body XML.SAX.Simple_Readers.Parser is
                  League.Strings.Internals.Create
                   (YY.Value_Stack (YY.TOS).String));
 
-            when 34 =>
+            when 33 =>
                --  ExternalID specified by PUBLIC, rule [75].
 
                Process_External_Id
@@ -542,6 +539,9 @@ package body XML.SAX.Simple_Readers.Parser is
                   (YY.Value_Stack (YY.TOS -  1).String),
                  League.Strings.Internals.Create
                   (YY.Value_Stack (YY.TOS).String));
+
+            when 34 =>
+               null;
 
             when 35 =>
                null;
@@ -571,20 +571,20 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 44 =>
-               null;
-
-            when 45 =>
                Process_Comment
                 (Self,
                  League.Strings.Internals.Create
                   (YY.Value_Stack (YY.TOS).String));
 
+            when 45 =>
+               null;
+
             when 46 =>
+               --  Text declaration comes from external subset or external entity.
+
                null;
 
             when 47 =>
-               --  Text declaration comes from external subset or external entity.
-
                null;
 
             when 48 =>
@@ -594,9 +594,6 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 50 =>
-               null;
-
-            when 51 =>
                Actions.On_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => YY.Value_Stack (YY.TOS -  2).Symbol,
@@ -606,7 +603,7 @@ package body XML.SAX.Simple_Readers.Parser is
                    (YY.Value_Stack (YY.TOS -  1).String),
                  Notation    => Matreshka.Internals.XML.No_Symbol);
 
-            when 52 =>
+            when 51 =>
                Actions.On_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => YY.Value_Stack (YY.TOS -  2).Symbol,
@@ -614,7 +611,7 @@ package body XML.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Empty_Universal_String,
                  Notation    => Matreshka.Internals.XML.No_Symbol);
 
-            when 53 =>
+            when 52 =>
                Actions.On_General_Entity_Declaration
                 (Self        => Self,
                  Symbol      => YY.Value_Stack (YY.TOS -  4).Symbol,
@@ -622,7 +619,7 @@ package body XML.SAX.Simple_Readers.Parser is
                  Value       => League.Strings.Empty_Universal_String,
                  Notation    => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 54 =>
+            when 53 =>
                Process_Parameter_Entity_Declaration
                 (Self,
                  YY.Value_Stack (YY.TOS -  2).Symbol,
@@ -630,19 +627,19 @@ package body XML.SAX.Simple_Readers.Parser is
                  League.Strings.Internals.Create
                   (YY.Value_Stack (YY.TOS -  1).String));
 
-            when 55 =>
+            when 54 =>
                Process_Parameter_Entity_Declaration
                 (Self,
                  YY.Value_Stack (YY.TOS -  2).Symbol,
                  True,
                  League.Strings.Empty_Universal_String);
 
-            when 56 =>
+            when 55 =>
                --  Entity value including surrounding delimiters.
 
                Move (YYVal, YY.Value_Stack (YY.TOS -  1));
 
-            when 57 =>
+            when 56 =>
                --  Additional string segment in entity value.
 
                Move
@@ -652,24 +649,27 @@ package body XML.SAX.Simple_Readers.Parser is
                 (YYVal.String,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 58 =>
+            when 57 =>
                --  Single string segment in entity value.
 
                Move
                 (YYVal,
                  YY.Value_Stack (YY.TOS));
 
-            when 59 =>
+            when 58 =>
                Set_String
                 (Item          => YYVal,
                  String        => League.Strings.Empty_Universal_String,
                  Is_Whitespace => False,
                  Is_CData      => False);
 
-            when 60 =>
+            when 59 =>
                Actions.On_Start_Of_Element_Declaration
                 (Self,
                  YY.Value_Stack (YY.TOS).Symbol);
+
+            when 60 =>
+               null;
 
             when 61 =>
                null;
@@ -762,13 +762,13 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 91 =>
-               null;
+               Actions.On_Mixed_Content_Declaration (Self);
 
             when 92 =>
                Actions.On_Mixed_Content_Declaration (Self);
 
             when 93 =>
-               Actions.On_Mixed_Content_Declaration (Self);
+               null;
 
             when 94 =>
                null;
@@ -777,12 +777,12 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 96 =>
-               null;
-
-            when 97 =>
                Actions.On_Start_Of_Attribute_List_Declaration
                 (Self,
                  YY.Value_Stack (YY.TOS).Symbol);
+
+            when 97 =>
+               null;
 
             when 98 =>
                null;
@@ -794,68 +794,68 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 101 =>
-               null;
-
-            when 102 =>
                Actions.On_CDATA_Attribute_Declaration
                 (Self   => Self,
                  Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 103 =>
+            when 102 =>
                null;
 
-            when 104 =>
+            when 103 =>
                Actions.On_Id_Attribute_Declaration
                 (Self   => Self,
                  Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 105 =>
+            when 104 =>
                null;
 
-            when 106 =>
+            when 105 =>
                Actions.On_IdRef_Attribute_Declaration
                 (Self   => Self,
                  Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 107 =>
+            when 106 =>
                null;
 
-            when 108 =>
+            when 107 =>
                Actions.On_IdRefs_Attribute_Declaration
                 (Self   => Self,
                  Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 109 =>
+            when 108 =>
                null;
 
-            when 110 =>
+            when 109 =>
                Actions.On_Entity_Attribute_Declaration
                 (Self   => Self,
                  Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 111 =>
+            when 110 =>
                null;
 
-            when 112 =>
+            when 111 =>
                Actions.On_Entities_Attribute_Declaration
                 (Self   => Self,
                  Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 113 =>
+            when 112 =>
                null;
 
-            when 114 =>
+            when 113 =>
                Actions.On_NmToken_Attribute_Declaration
                 (Self   => Self,
                  Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 115 =>
+            when 114 =>
                null;
 
-            when 116 =>
+            when 115 =>
                Actions.On_NmTokens_Attribute_Declaration
                 (Self   => Self,
                  Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
+
+            when 116 =>
+               null;
 
             when 117 =>
                null;
@@ -873,42 +873,42 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 122 =>
-               null;
-
-            when 123 =>
                Actions.On_Required_Attribute_Default_Declaration (Self);
 
-            when 124 =>
+            when 123 =>
                Actions.On_Implied_Attribute_Default_Declaration (Self);
 
-            when 125 =>
+            when 124 =>
                Actions.On_Fixed_Attribute_Default_Declaration
                 (Self,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 126 =>
+            when 125 =>
                Actions.On_Attribute_Default_Declaration
                 (Self,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 127 =>
+            when 126 =>
                Actions.On_Open_Of_Tag
                 (Self,
                  YY.Value_Stack (YY.TOS).Symbol);
 
-            when 128 =>
+            when 127 =>
                null;
 
-            when 129 =>
+            when 128 =>
                Actions.On_Start_Tag (Self);
 
-            when 130 =>
+            when 129 =>
                Actions.On_End_Tag
                 (Self,
                  YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 131 =>
+            when 130 =>
                Actions.On_Empty_Element_Tag (Self);
+
+            when 131 =>
+               null;
 
             when 132 =>
                null;
@@ -920,49 +920,46 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 135 =>
-               null;
-
-            when 136 =>
                Actions.On_Character_Data
                 (Self,
                  YY.Value_Stack (YY.TOS).String,
                  YY.Value_Stack (YY.TOS).Is_Whitespace);
 
-            when 137 =>
+            when 136 =>
                Process_Comment
                 (Self,
                  League.Strings.Internals.Create
                   (YY.Value_Stack (YY.TOS).String));
 
-            when 138 =>
+            when 137 =>
                null;
 
-            when 139 =>
+            when 138 =>
                --  TextDecl come from substitution of external parsed entities.
 
                null;
 
-            when 140 =>
+            when 139 =>
                Actions.On_Element_Attribute_Name (Self, YY.Value_Stack (YY.TOS).Symbol);
 
-            when 141 =>
+            when 140 =>
                Actions.On_Element_Attribute
                 (Self,
                  YY.Value_Stack (YY.TOS -  3).Symbol,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 142 =>
+            when 141 =>
                Actions.On_Element_Attribute_Name
                 (Self,
                  YY.Value_Stack (YY.TOS).Symbol);
 
-            when 143 =>
+            when 142 =>
                Actions.On_Element_Attribute
                 (Self,
                  YY.Value_Stack (YY.TOS -  3).Symbol,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 144 =>
+            when 143 =>
                null;
                when others =>
                   raise Program_Error

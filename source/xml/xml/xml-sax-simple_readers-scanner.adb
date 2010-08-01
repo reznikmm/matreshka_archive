@@ -1375,27 +1375,29 @@ package body XML.SAX.Simple_Readers.Scanner is
                return Actions.On_Close_Of_Empty_Element_Tag (Self);
 
             when 88 =>
+               --  Close tag of document type declaration, rule [28].
+            
+               if Actions.On_Close_Of_Document_Type_Declaration (Self) then
+                  return Token_Close;
+               end if;
+
+            when 89 =>
                --  Close of tag, rule [40].
                --  Close tag of document type declaration, rule [28].
             
                return Actions.On_Close_Of_Tag (Self);
 
-            when 89 =>
+            when 90 =>
                --  Open delimiter of attribute value, rule [10].
             
                Actions.On_Attribute_Value_Open_Delimiter (Self, ELEMENT_START);
 
-            when 90 =>
+            when 91 =>
                --  Close delimiter of attribute value, rule [10].
             
                if Actions.On_Attribute_Value_Close_Delimiter (Self) then
                   return Token_String_Segment;
                end if;
-
-            when 91 =>
-               --  Value of attribute, rule [10].
-            
-               Actions.On_Attribute_Value_Character_Data (Self);
 
             when 92 =>
                --  Value of attribute, rule [10].
@@ -1403,43 +1405,48 @@ package body XML.SAX.Simple_Readers.Scanner is
                Actions.On_Attribute_Value_Character_Data (Self);
 
             when 93 =>
+               --  Value of attribute, rule [10].
+            
+               Actions.On_Attribute_Value_Character_Data (Self);
+
+            when 94 =>
                --  Less-than sign can't be used in the attribute value.
             
                return Actions.On_Less_Than_Sign_In_Attribute_Value (Self);
 
-            when 94 =>
+            when 95 =>
                --  General entity reference rule [68] in attribute value, rule [10].
             
                if not Actions.On_General_Entity_Reference_In_Attribute_Value (Self) then
                   return Error;
                end if;
 
-            when 95 =>
+            when 96 =>
                raise Program_Error with "Unexpected character in XML_DECL";
 
-            when 96 =>
+            when 97 =>
                raise Program_Error with "Unexpected character in DOCTYPE_INT";
 
-            when 97 =>
+            when 98 =>
                raise Program_Error with "Unexpected character in ENTITY_DECL";
 
-            when 98 =>
+            when 99 =>
                raise Program_Error with "Unexpected character in ENTITY_NDATA";
 
-            when 99 =>
+            when 100 =>
                Put_Line (YY_Text);
                raise Program_Error with "Unexpected character in ATTLIST_DECL";
 
-            when 100 =>
+            when 101 =>
                raise Program_Error with "Unexpected character in pubid literal";
 
-            when 101 =>
+            when 102 =>
                raise Program_Error with "Unexpected character in system literal";
 
-            when 102 =>
+            when 103 =>
                raise Program_Error with "Unexpected character in NOTATION_DECL";
 
-            when 103 =>
+            when 104 =>
                --  Unexpected character.
             
                return Actions.On_Unexpected_Character (Self);

@@ -341,6 +341,7 @@ private
       External_Subset_Entity : Matreshka.Internals.XML.Entity_Identifier
         := Matreshka.Internals.XML.No_Entity;
       --  Entity of the external subset if any.
+      External_Subset_Done   : Boolean := False;
       Element_Names          : Symbol_Identifier_Vectors.Vector;
       --  Stack of names of elements.
       Continue               : Boolean := True;

@@ -307,33 +307,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       Self.Root_Symbol := Symbol;
    end On_End_Of_Document_Type_Declaration;
 
-   -------------------------------
-   -- On_End_Of_Internal_Subset --
-   -------------------------------
-
-   procedure On_End_Of_Internal_Subset
-    (Self : not null access SAX_Simple_Reader'Class)
-   is
-      use type Matreshka.Internals.Utf16.Utf16_String_Index;
-
-      Success    : Boolean;
-      pragma Unreferenced (Success);
-      --  Return value of the Push_Entity subprogram is not used here, because
-      --  it sets parses state to error and stops parsing.
-
-   begin
-      --  Substitute external subset if any.
-
-      if Self.External_Subset_Entity /= No_Entity then
-         Success :=
-           Scanner.Push_Entity
-            (Self             => Self,
-             Entity           => Self.External_Subset_Entity,
-             In_Document_Type => True,
-             In_Literal       => False);
-      end if;
-   end On_End_Of_Internal_Subset;
-
    ----------------
    -- On_End_Tag --
    ----------------

@@ -81,6 +81,13 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles close of entity declaration.
 
+   function On_Close_Of_Document_Type_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
+   --  Handles close of document type declaration. Returns True when
+   --  close token must be returned to parser, otherwise scanning must be
+   --  continued because it pushes external subset entity into the scanner's
+   --  stack.
+
    function On_Close_Of_Empty_Element_Tag
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles close of empty element tag.

@@ -83,10 +83,6 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Handles end of document type declaration.
 
-   procedure On_End_Of_Internal_Subset
-    (Self : not null access SAX_Simple_Reader'Class);
-   --  Substitutes external subset if any.
-
    procedure On_End_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);

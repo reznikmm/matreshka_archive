@@ -865,7 +865,15 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Actions.On_Close_Of_Empty_Element_Tag (Self);
 }
 
-<ELEMENT_START,DOCTYPE_EXTINT,DOCTYPE_INT>">" {
+<DOCTYPE_EXTINT,DOCTYPE_INT>">" {
+   --  Close tag of document type declaration, rule [28].
+
+   if Actions.On_Close_Of_Document_Type_Declaration (Self) then
+      return Token_Close;
+   end if;
+}
+
+<ELEMENT_START>">" {
    --  Close of tag, rule [40].
    --  Close tag of document type declaration, rule [28].
 
@@ -1119,6 +1127,9 @@ with Matreshka.Internals.Strings;
         State : Integer);
 
       function On_Attribute_Value_Close_Delimiter
+       (Self  : access Integer) return Boolean;
+
+      function On_Close_Of_Document_Type_Declaration
        (Self  : access Integer) return Boolean;
 
    end Actions;

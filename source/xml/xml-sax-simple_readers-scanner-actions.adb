@@ -468,6 +468,50 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       return Token_Close;
    end On_Close_Of_Declaration;
 
+   -------------------------------------------
+   -- On_Close_Of_Document_Type_Declaration --
+   -------------------------------------------
+
+   function On_Close_Of_Document_Type_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+   is
+      Success : Boolean;
+
+   begin
+      if Self.External_Subset_Entity /= No_Entity
+        and not Self.External_Subset_Done
+      then
+         --  External subset is declared and not processed, push it into the
+         --  scanner stack to process before report of close of document type
+         --  declaration.
+
+         Self.External_Subset_Done := True;
+         YY_Move_Backward (Self);
+
+         Success :=
+           Scanner.Push_Entity
+            (Self             => Self,
+             Entity           => Self.External_Subset_Entity,
+             In_Document_Type => True,
+             In_Literal       => False);
+
+         --  XXX Error processing is not implemented.
+
+         return False;
+
+      else
+         case Self.Version is
+            when XML_1_0 =>
+               Enter_Start_Condition (Self, Tables.DOCUMENT_10);
+
+            when XML_1_1 =>
+               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+         end case;
+
+         return True;
+      end if;
+   end On_Close_Of_Document_Type_Declaration;
+
    -----------------------------------
    -- On_Close_Of_Empty_Element_Tag --
    -----------------------------------

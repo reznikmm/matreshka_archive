@@ -258,11 +258,7 @@ doctypedecl_optional:
 
       Actions.On_External_Subset_Declaration (Self);
    }
-  internal_subset_optional
-   {
-      Actions.On_End_Of_Internal_Subset (Self);
-   }
-  external_subset_optional Token_Close
+  internal_subset_optional external_subset_optional Token_Close
    {
       Actions.On_End_Of_Document_Type_Declaration
        (Self,
@@ -1012,8 +1008,6 @@ with Matreshka.Internals.XML.Symbol_Tables;
         Symbol : Matreshka.Internals.XML.Symbol_Identifier);
 
       procedure On_External_Subset_Declaration (Self : access Integer);
-
-      procedure On_End_Of_Internal_Subset (Self : access Integer);
 
       procedure On_End_Of_Document_Type_Declaration
        (Self   : access Integer;
