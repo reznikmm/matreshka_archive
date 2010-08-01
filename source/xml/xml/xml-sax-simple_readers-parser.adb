@@ -392,7 +392,7 @@ package body XML.SAX.Simple_Readers.Parser is
                --  Unexpected token after the root element. This rule is required to
                --  handle End_Document callback properly, because ayacc is unable to
                --  recognize syntax error till end of parser stack is reached.
-            
+
                Actions.On_Unexpected_Token_After_Root_Element (Self);
                Handle_Error;
 
@@ -400,7 +400,7 @@ package body XML.SAX.Simple_Readers.Parser is
                --  Unexpected token after the root element. This rule is required to
                --  handle End_Document callback properly, because ayacc is unable to
                --  recognize syntax error till end of parser stack is reached.
-            
+
                Actions.On_Unexpected_Token_After_Root_Element (Self);
                Handle_Error;
 
@@ -408,7 +408,7 @@ package body XML.SAX.Simple_Readers.Parser is
                --  Unexpected token after the root element. This rule is required to
                --  handle End_Document callback properly, because ayacc is unable to
                --  recognize syntax error till end of parser stack is reached.
-            
+
                Actions.On_Unexpected_Token_After_Root_Element (Self);
                Handle_Error;
 
@@ -420,7 +420,7 @@ package body XML.SAX.Simple_Readers.Parser is
 
             when 12 =>
                --  Version information, rule [24] in rule [23].
-            
+
                Actions.On_XML_Version_Information (Self, yy.value_stack (yy.tos).String);
 
             when 13 =>
@@ -448,7 +448,7 @@ package body XML.SAX.Simple_Readers.Parser is
                --
                --  So, version information is ignored when it is not related to
                --  document entity.
-            
+
                null;
 
             when 15 =>
@@ -495,7 +495,7 @@ package body XML.SAX.Simple_Readers.Parser is
                --  after processing of internal subset. External subset is inserted
                --  immediately after the internal subset. Thus original rule [28] is
                --  rewritten and extended to reflect this inclusion.
-            
+
                Actions.On_External_Subset_Declaration (Self);
 
             when 27 =>
@@ -511,7 +511,7 @@ package body XML.SAX.Simple_Readers.Parser is
 
             when 30 =>
                --  Document type declaration, rule [28]. 
-            
+
                Actions.On_End_Of_Document_Type_Declaration
                 (Self,
                  yy.value_stack (yy.tos-2).Symbol);
@@ -524,7 +524,7 @@ package body XML.SAX.Simple_Readers.Parser is
 
             when 33 =>
                --  ExternalID specified by SYSTEM, rule [75].
-            
+
                Process_External_Id
                 (Self,
                  League.Strings.Empty_Universal_String,
@@ -532,7 +532,7 @@ package body XML.SAX.Simple_Readers.Parser is
 
             when 34 =>
                --  ExternalID specified by PUBLIC, rule [75].
-            
+
                Process_External_Id
                 (Self,
                  League.Strings.Internals.Create (yy.value_stack (yy.tos-1).String),
@@ -578,7 +578,7 @@ package body XML.SAX.Simple_Readers.Parser is
 
             when 47 =>
                --  Text declaration comes from external subset or external entity.
-            
+
                null;
 
             when 48 =>
@@ -630,18 +630,18 @@ package body XML.SAX.Simple_Readers.Parser is
 
             when 56 =>
                --  Entity value including surrounding delimiters.
-            
+
                Move (yyval, yy.value_stack (yy.tos-1));
 
             when 57 =>
                --  Additional string segment in entity value.
-            
+
                Move (yyval, yy.value_stack (yy.tos-1));
                Matreshka.Internals.Strings.Operations.Append (yyval.String, yy.value_stack (yy.tos).String);
 
             when 58 =>
                --  Single string segment in entity value.
-            
+
                Move (yyval, yy.value_stack (yy.tos));
 
             when 59 =>
@@ -915,7 +915,7 @@ package body XML.SAX.Simple_Readers.Parser is
 
             when 139 =>
                --  TextDecl come from substitution of external parsed entities.
-            
+
                null;
 
             when 140 =>

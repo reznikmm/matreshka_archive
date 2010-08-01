@@ -53,6 +53,7 @@ with Parser_Extractor;
 package body Parser_Generator is
 
    use Ada.Integer_Wide_Text_IO;
+   use Ada.Strings.Wide_Unbounded;
    use Ada.Strings.Wide_Unbounded.Wide_Text_IO;
    use Ada.Wide_Text_IO;
    use Parser_Extractor;
@@ -126,8 +127,13 @@ package body Parser_Generator is
                      Put_Line (Output, " =>");
 
                      for J in 1 .. Natural (Element.Text.Length) loop
-                        Put (Output, "            ");
-                        Put_Line (Output, Element.Text.Element (J));
+                        if Length (Element.Text.Element (J)) /= 0 then
+                           Put (Output, "         ");
+                           Put_Line (Output, Element.Text.Element (J));
+
+                        else
+                           New_Line (Output);
+                        end if;
                      end loop;
                   end if;
                end;
