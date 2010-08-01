@@ -1394,6 +1394,47 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       return Token_Xml_Decl_Open;
    end On_Open_Of_XML_Or_Text_Declaration;
 
+   -----------------------------------------------------------
+   -- On_Parameter_Entity_Reference_In_Document_Declaration --
+   -----------------------------------------------------------
+
+   function On_Parameter_Entity_Reference_In_Document_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+   is
+      Qualified_Name : Symbol_Identifier;
+      Qname_Error    : Boolean;
+      Entity         : Entity_Identifier;
+      Source         : XML.SAX.Input_Sources.SAX_Input_Source_Access;
+      Text           : Matreshka.Internals.Strings.Shared_String_Access;
+      Last_Match     : Boolean;
+
+   begin
+      Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
+
+      if Qname_Error then
+         return False;
+
+      else
+         Entity := Parameter_Entity (Self.Symbols, Qualified_Name);
+
+         if Entity = No_Entity then
+            Callbacks.Call_Fatal_Error
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("parameter entity must be declared"));
+
+            return False;
+         end if;
+
+         return
+           Push_Entity
+            (Self             => Self,
+             Entity           => Entity,
+             In_Document_Type => False,
+             In_Literal       => True);
+      end if;
+   end On_Parameter_Entity_Reference_In_Document_Declaration;
+
    ---------------------------------------------------
    -- On_Parameter_Entity_Reference_In_Entity_Value --
    ---------------------------------------------------
@@ -1434,6 +1475,67 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
              In_Literal       => True);
       end if;
    end On_Parameter_Entity_Reference_In_Entity_Value;
+
+   ---------------------------------------------------------
+   -- On_Parameter_Entity_Reference_In_Markup_Declaration --
+   ---------------------------------------------------------
+
+   function On_Parameter_Entity_Reference_In_Markup_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+   is
+      Qualified_Name : Symbol_Identifier;
+      Qname_Error    : Boolean;
+      Entity         : Entity_Identifier;
+      Source         : XML.SAX.Input_Sources.SAX_Input_Source_Access;
+      Text           : Matreshka.Internals.Strings.Shared_String_Access;
+      Last_Match     : Boolean;
+
+   begin
+      Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
+
+      if Qname_Error then
+         return False;
+
+      else
+         --  [XML 2.8] WFC: PEs in Internal Subset
+         --
+         --  "In the internal DTD subset, parameter-entity references MUST NOT
+         --  occur within markup declarations; they may occur where markup
+         --  declarations can occur. (This does not apply to references that
+         --  occur in external parameter entities or to the external subset.)"
+         --
+         --  Check whether external subset is processed.
+
+         if not Self.External_Subset_Done then
+            Callbacks.Call_Fatal_Error
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("[XML 2.8 WFC: PEs in Internal Subset]"
+                  & " parameter-entity reference in internal subset must not"
+                  & " occur within markup declaration"));
+
+            return False;
+         end if;
+
+         Entity := Parameter_Entity (Self.Symbols, Qualified_Name);
+
+         if Entity = No_Entity then
+            Callbacks.Call_Fatal_Error
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("parameter entity must be declared"));
+
+            return False;
+         end if;
+
+         return
+           Push_Entity
+            (Self             => Self,
+             Entity           => Entity,
+             In_Document_Type => False,
+             In_Literal       => True);
+      end if;
+   end On_Parameter_Entity_Reference_In_Markup_Declaration;
 
    -----------------------
    -- On_System_Literal --

@@ -439,6 +439,14 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_Comment;
 }
 
+<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"%"{NAME}";" {
+   --  Parameter entity reference rule [69] in document type declaration.
+
+   if not Actions.On_Parameter_Entity_Reference_In_Document_Declaration (Self) then
+      return Error;
+   end if;
+}
+
 <DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!ENTITY" {
    --  Open of entity declaration, rules [71], [72].
 
@@ -824,6 +832,14 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    Actions.On_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
 }
 
+<ATTLIST_DECL,ATTLIST_TYPE>"%"{NAME}";" {
+   --  Parameter entity reference rule [69] in attribute declaration.
+
+   if not Actions.On_Parameter_Entity_Reference_In_Markup_Declaration (Self) then
+      return Error;
+   end if;
+}
+
 <DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE>{WHITE_SPACE} {
    --  All white spaces from rules [28] are ignored.
    --  Whitespace before name in rule [76] is ignored.
@@ -1078,6 +1094,12 @@ with Matreshka.Internals.Strings;
        (Self : access Integer) return Token;
 
       function On_Parameter_Entity_Reference_In_Entity_Value
+       (Self : access Integer) return Boolean;
+
+      function On_Parameter_Entity_Reference_In_Markup_Declaration
+       (Self : access Integer) return Boolean;
+
+      function On_Parameter_Entity_Reference_In_Document_Declaration
        (Self : access Integer) return Boolean;
 
       function On_Open_Of_Element_Declaration

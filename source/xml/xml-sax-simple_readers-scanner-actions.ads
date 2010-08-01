@@ -126,6 +126,16 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Handles parameter entity reference in entity value.
 
+   function On_Parameter_Entity_Reference_In_Markup_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
+   --  Handles parameter entity reference inside markup declaration in the
+   --  document type declaration.
+
+   function On_Parameter_Entity_Reference_In_Document_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
+   --  Handles parameter entity reference outside of markup declaration in the
+   --  document type declaration.
+
    function On_Less_Than_Sign_In_Attribute_Value
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handling of less-than sign in attribute value.
