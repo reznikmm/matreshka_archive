@@ -316,9 +316,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    is
       use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
-      Source     : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Text       : Matreshka.Internals.Strings.Shared_String_Access;
-      Last_Match : Boolean;
       Success    : Boolean;
       pragma Unreferenced (Success);
       --  Return value of the Push_Entity subprogram is not used here, because
@@ -345,7 +342,25 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
    procedure On_End_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier)
+   is
+
+      procedure Notify_Unmap
+       (Prefix : Matreshka.Internals.XML.Symbol_Identifier);
+      --  Calls handler to notify about unmapping of prefix.
+
+      ------------------
+      -- Notify_Unmap --
+      ------------------
+
+      procedure Notify_Unmap
+       (Prefix : Matreshka.Internals.XML.Symbol_Identifier) is
+      begin
+         Callbacks.Call_End_Prefix_Mapping
+          (Self.all,
+           Name (Self.Symbols, Prefix));
+      end Notify_Unmap;
+
    begin
       --  [3 WFC: Element Type Match]
       --
@@ -371,7 +386,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                     Prefix_Name (Self.Symbols, Symbol))),
               Local_Name     => Local_Name (Self.Symbols, Symbol),
               Qualified_Name => Name (Self.Symbols, Symbol));
-            Pop_Scope (Self.Namespace_Scope);
+            Pop_Scope (Self.Namespace_Scope, Notify_Unmap'Access);
 
          else
             Callbacks.Call_End_Element
@@ -946,6 +961,11 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                   Bind (Self.Namespace_Scope, No_Symbol, Ns);
 
+                  Callbacks.Call_Start_Prefix_Mapping
+                   (Self.all,
+                    Matreshka.Internals.Strings.Shared_Empty'Access,
+                    Name (Self.Symbols, Ns));
+
                elsif Prefix_Name (Self.Symbols, Qname) = Symbol_xmlns then
                   --  Prefixed namespace.
 
@@ -1050,17 +1070,21 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                   end if;
 
                   Bind (Self.Namespace_Scope, Lname, Ns);
+
+                  Callbacks.Call_Start_Prefix_Mapping
+                   (Self.all,
+                    Name (Self.Symbols, Lname),
+                    Name (Self.Symbols, Ns));
                end if;
             end;
          end loop;
 
          Element_Prefix :=
            Prefix_Name (Self.Symbols, Self.Current_Element_Name);
+         Element_Namespace :=
+           Resolve (Self.Namespace_Scope, Element_Prefix);
 
          if Element_Prefix /= No_Symbol then
-            Element_Namespace :=
-              Resolve (Self.Namespace_Scope, Element_Prefix);
-
             --  [NSXML1.1 5 NSC: Prefix Declared]
             --
             --  "The namespace prefix, unless it is xml or xmlns, must have

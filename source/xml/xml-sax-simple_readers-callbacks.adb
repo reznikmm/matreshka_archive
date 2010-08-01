@@ -428,6 +428,60 @@ package body XML.SAX.Simple_Readers.Callbacks is
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_Start_Element;
 
+   -----------------------------
+   -- Call_End_Prefix_Mapping --
+   -----------------------------
+
+   procedure Call_End_Prefix_Mapping
+    (Self   : in out SAX_Simple_Reader'Class;
+     Prefix : not null Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
+      Setup_Locator (Self);
+      Self.Content_Handler.End_Prefix_Mapping
+       (Prefix  => League.Strings.Internals.Create (Prefix),
+        Success => Self.Continue);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.Content_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_End_Prefix_Mapping;
+
+   -------------------------------
+   -- Call_Start_Prefix_Mapping --
+   -------------------------------
+
+   procedure Call_Start_Prefix_Mapping
+    (Self          : in out SAX_Simple_Reader'Class;
+     Prefix         :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Namespace_URI  :
+       not null Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
+      Setup_Locator (Self);
+      Self.Content_Handler.Start_Prefix_Mapping
+       (Prefix        => League.Strings.Internals.Create (Prefix),
+        Namespace_URI => League.Strings.Internals.Create (Namespace_URI),
+        Success       => Self.Continue);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.Content_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_Start_Prefix_Mapping;
+
    --------------------------------------
    -- Call_Unparsed_Entity_Declaration --
    --------------------------------------

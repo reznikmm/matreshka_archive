@@ -50,7 +50,9 @@ package Matreshka.Internals.XML.Namespace_Scopes is
 
    procedure Push_Scope (Self : in out Namespace_Scope);
 
-   procedure Pop_Scope (Self : in out Namespace_Scope);
+   procedure Pop_Scope
+    (Self     : in out Namespace_Scope;
+     On_Unmap : not null access procedure (Prefix : Symbol_Identifier));
 
    procedure Bind
     (Self      : in out Namespace_Scope;

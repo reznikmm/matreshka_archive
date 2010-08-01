@@ -112,12 +112,20 @@ package body Matreshka.Internals.XML.Namespace_Scopes is
    -- Pop_Scope --
    ---------------
 
-   procedure Pop_Scope (Self : in out Namespace_Scope) is
+   procedure Pop_Scope
+    (Self     : in out Namespace_Scope;
+     On_Unmap : not null access procedure (Prefix : Symbol_Identifier)) is
    begin
       if Self.Scopes (Self.Last).Count /= 0 then
          Self.Scopes (Self.Last).Count := Self.Scopes (Self.Last).Count - 1;
 
       else
+         for J
+           in Self.Scopes (Self.Last).First .. Self.Scopes (Self.Last).Last
+         loop
+            On_Unmap (Self.Mappings (J).Prefix);
+         end loop;
+
          Self.Last := Self.Last - 1;
       end if;
    end Pop_Scope;

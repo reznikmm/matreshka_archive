@@ -110,9 +110,9 @@ package XML.SAX.Content_Handlers is
      Success        : in out Boolean) is null;
 
    not overriding procedure Start_Prefix_Mapping
-    (Self    : in out SAX_Content_Handler;
-     Prefix  : League.Strings.Universal_String;
-     URI     : League.Strings.Universal_String;
-     Success : in out Boolean) is null;
+    (Self          : in out SAX_Content_Handler;
+     Prefix        : League.Strings.Universal_String;
+     Namespace_URI : League.Strings.Universal_String;
+     Success       : in out Boolean) is null;
 
 end XML.SAX.Content_Handlers;

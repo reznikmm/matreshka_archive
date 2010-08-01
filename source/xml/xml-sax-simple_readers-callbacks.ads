@@ -71,6 +71,11 @@ private package XML.SAX.Simple_Readers.Callbacks is
        not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Calls handler's SAX_Content_Handler.End_Element subprogram.
 
+   procedure Call_End_Prefix_Mapping
+    (Self   : in out SAX_Simple_Reader'Class;
+     Prefix : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Calls handler's SAX_Content_Handler.End_Prefix_Mapping subprogram.
+
    procedure Call_Error
     (Self    : in out SAX_Simple_Reader'Class;
      Message : League.Strings.Universal_String);
@@ -130,6 +135,14 @@ private package XML.SAX.Simple_Readers.Callbacks is
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Attributes     : XML.SAX.Attributes.SAX_Attributes);
    --  Calls handler's SAX_Content_Handler.Start_Element subprogram.
+
+   procedure Call_Start_Prefix_Mapping
+    (Self           : in out SAX_Simple_Reader'Class;
+     Prefix         :
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Namespace_URI  :
+       not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Calls handler's SAX_Content_Handler.Start_Prefix_Mapping subprogram.
 
    procedure Call_Unparsed_Entity_Declaration
     (Self          : in out SAX_Simple_Reader'Class;
