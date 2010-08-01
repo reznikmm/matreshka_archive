@@ -161,7 +161,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
       end Register_Symbol;
 
    begin
-      Self.Table := new Symbol_Record_Array (0 .. 255);
+      Self.Table := new Symbol_Record_Array (0 .. 31);
       Self.Table (No_Symbol) :=
        (String              => Matreshka.Internals.Strings.Shared_Empty'Access,
         Namespace_Processed => True,
@@ -268,6 +268,18 @@ package body Matreshka.Internals.XML.Symbol_Tables is
       if not Found then
          Self.Last := Self.Last + 1;
          Identifier := Self.Last;
+
+         if Self.Last > Self.Table'Last then
+            declare
+               Old : Symbol_Record_Array_Access := Self.Table;
+
+            begin
+               Self.Table := new Symbol_Record_Array (0 .. Old'Last + 32);
+               Self.Table (Old'Range) := Old.all;
+               Free (Old);
+            end;
+         end if;
+
          Self.Table (Identifier) :=
           (String              =>
              Matreshka.Internals.Strings.Operations.Slice
