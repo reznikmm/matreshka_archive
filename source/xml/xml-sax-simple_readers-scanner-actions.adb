@@ -180,19 +180,19 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          if Self.Normalize_Value then
             if Code = 16#20# then
                if not Self.Space_Before then
-                  Matreshka.Internals.Strings.Operations.Append
+                  Matreshka.Internals.Strings.Operations.Unterminated_Append
                    (Self.Character_Data, Code);
                   Self.Space_Before := True;
                end if;
 
             else
-               Matreshka.Internals.Strings.Operations.Append
+               Matreshka.Internals.Strings.Operations.Unterminated_Append
                 (Self.Character_Data, Code);
                Self.Space_Before := False;
             end if;
 
          else
-            Matreshka.Internals.Strings.Operations.Append
+            Matreshka.Internals.Strings.Operations.Unterminated_Append
              (Self.Character_Data, Code);
          end if;
       end loop;
@@ -216,7 +216,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
    begin
       if Self.Scanner_State.Delimiter /= Delimiter then
-         Matreshka.Internals.Strings.Operations.Append
+         Matreshka.Internals.Strings.Operations.Unterminated_Append
           (Self.Character_Data, Delimiter);
 
          return False;
@@ -228,10 +228,10 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
             Self.Character_Data.Length := Self.Character_Data.Length - 1;
             Self.Character_Data.Unused := Self.Character_Data.Unused - 1;
-            Matreshka.Internals.Strings.Fill_Null_Terminator
-             (Self.Character_Data);
          end if;
 
+         Matreshka.Internals.Strings.Fill_Null_Terminator
+          (Self.Character_Data);
          Matreshka.Internals.Strings.Reference (Self.Character_Data);
          Set_String_Internal
           (Item          => Self.YYLVal,
@@ -432,19 +432,19 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       if Self.Normalize_Value then
          if Code = 16#20# then
             if not Self.Space_Before then
-               Matreshka.Internals.Strings.Operations.Append
+               Matreshka.Internals.Strings.Operations.Unterminated_Append
                 (Self.Character_Data, Code);
                Self.Space_Before := True;
             end if;
 
          else
-            Matreshka.Internals.Strings.Operations.Append
+            Matreshka.Internals.Strings.Operations.Unterminated_Append
              (Self.Character_Data, Code);
             Self.Space_Before := False;
          end if;
 
       else
-         Matreshka.Internals.Strings.Operations.Append
+         Matreshka.Internals.Strings.Operations.Unterminated_Append
           (Self.Character_Data, Code);
       end if;
 
