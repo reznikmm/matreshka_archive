@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
 with XML.SAX.Simple_Readers.Callbacks;
 with XML.SAX.Simple_Readers.Scanner.Tables;
@@ -764,12 +763,10 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       return
         Push_Entity
-         (Self                => Self,
-          Entity              => Entity,
-          In_Document_Type    => False,
-          In_Entity_Value     => False,
-          In_Attribute_Value  => True,
-          In_Document_Content => False);
+         (Self             => Self,
+          Entity           => Entity,
+          In_Document_Type => False,
+          In_Literal       => True);
    end On_General_Entity_Reference_In_Attribute_Value;
 
    -----------------------------------------------------
@@ -887,12 +884,10 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       return
         Push_Entity
-         (Self                => Self,
-          Entity              => Entity,
-          In_Document_Type    => False,
-          In_Entity_Value     => False,
-          In_Attribute_Value  => False,
-          In_Document_Content => True);
+         (Self             => Self,
+          Entity           => Entity,
+          In_Document_Type => False,
+          In_Literal       => False);
    end On_General_Entity_Reference_In_Document_Content;
 
    -------------------------------------------------
@@ -1389,12 +1384,10 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
          return
            Push_Entity
-            (Self                => Self,
-             Entity              => Entity,
-             In_Document_Type    => False,
-             In_Entity_Value     => True,
-             In_Attribute_Value  => False,
-             In_Document_Content => False);
+            (Self             => Self,
+             Entity           => Entity,
+             In_Document_Type => False,
+             In_Literal       => True);
       end if;
    end On_Parameter_Entity_Reference_In_Entity_Value;
 

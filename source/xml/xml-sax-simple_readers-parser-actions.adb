@@ -184,7 +184,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
      Text          : not null Matreshka.Internals.Strings.Shared_String_Access;
      Is_Whitespace : Boolean)
    is
-      Element : Element_Identifier
+      Element : constant Element_Identifier
         := Symbol_Tables.Element
             (Self.Symbols, Self.Element_Names.Last_Element);
 
@@ -327,12 +327,10 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       if Self.External_Subset_Entity /= No_Entity then
          Success :=
            Scanner.Push_Entity
-            (Self                => Self,
-             Entity              => Self.External_Subset_Entity,
-             In_Document_Type    => True,
-             In_Entity_Value     => False,
-             In_Attribute_Value  => False,
-             In_Document_Content => False);
+            (Self             => Self,
+             Entity           => Self.External_Subset_Entity,
+             In_Document_Type => True,
+             In_Literal       => False);
       end if;
    end On_End_Of_Internal_Subset;
 

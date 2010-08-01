@@ -167,17 +167,15 @@ package body XML.SAX.Simple_Readers.Scanner is
    -----------------
 
    function Push_Entity
-    (Self                : not null access SAX_Simple_Reader'Class;
-     Entity              : Matreshka.Internals.XML.Entity_Identifier;
-     In_Document_Type    : Boolean;
-     In_Entity_Value     : Boolean;
-     In_Attribute_Value  : Boolean;
-     In_Document_Content : Boolean) return Boolean
+    (Self             : not null access SAX_Simple_Reader'Class;
+     Entity           : Matreshka.Internals.XML.Entity_Identifier;
+     In_Document_Type : Boolean;
+     In_Literal       : Boolean) return Boolean
    is
-      In_Literal : constant Boolean := In_Entity_Value or In_Attribute_Value;
       Source     : XML.SAX.Input_Sources.SAX_Input_Source_Access;
       Text       : Matreshka.Internals.Strings.Shared_String_Access;
       Last_Match : Boolean;
+      Condition  : constant Interfaces.Unsigned_32 := Start_Condition (Self);
 
    begin
       --  Resolve entity when necessary.
@@ -194,32 +192,10 @@ package body XML.SAX.Simple_Readers.Scanner is
          Last_Match := False;
 
          if not Self.Continue then
-            if In_Attribute_Value then
-               Callbacks.Call_Fatal_Error
-                (Self.all,
-                 League.Strings.To_Universal_String
-                  ("external parsed general entity is not resolved"));
-               --  Should never be happen, references to external parsed
-               --  entities in attribute value are forbidden.
-
-            elsif In_Document_Type then
-               Callbacks.Call_Fatal_Error
-                (Self.all,
-                 League.Strings.To_Universal_String
-                  ("external subset entity is not resolved"));
-
-            elsif In_Entity_Value then
-               Callbacks.Call_Fatal_Error
-                (Self.all,
-                 League.Strings.To_Universal_String
-                  ("external parameter entity is not resolved"));
-
-            elsif In_Document_Content then
-               Callbacks.Call_Fatal_Error
-                (Self.all,
-                 League.Strings.To_Universal_String
-                  ("external parsed general entity is not resolved"));
-            end if;
+            Callbacks.Call_Fatal_Error
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("external entity is not resolved"));
 
             return False;
          end if;
@@ -247,7 +223,7 @@ package body XML.SAX.Simple_Readers.Scanner is
         Last_Match    => Last_Match,
         End_Of_Source => Last_Match,
         Entity        => Entity,
-        In_Literal    => True,
+        In_Literal    => In_Literal,
         Delimiter     => 0,
         others        => <>);
 
@@ -258,6 +234,11 @@ package body XML.SAX.Simple_Readers.Scanner is
            Integer (First_Position (Self.Entities, Entity)) + 1;
 
          if In_Document_Type then
+            --  External subset processed after processing of internal subset
+            --  is completed and scanner returns to DOCTYPE_INT start
+            --  condition; but it must be switched back to
+            --  DOCTYPE_INTSUBSET_10 or DOCTYPE_INTSUBSET_11 start condition.
+
             case Self.Version is
                when XML_1_0 =>
                   Enter_Start_Condition (Self, DOCTYPE_INTSUBSET_10);
@@ -266,32 +247,8 @@ package body XML.SAX.Simple_Readers.Scanner is
                   Enter_Start_Condition (Self, DOCTYPE_INTSUBSET_11);
             end case;
 
-         elsif In_Entity_Value then
-            case Self.Version is
-               when XML_1_0 =>
-                  Enter_Start_Condition (Self, ENTITY_VALUE_10);
-
-               when XML_1_1 =>
-                  Enter_Start_Condition (Self, ENTITY_VALUE_11);
-            end case;
-
-         elsif In_Attribute_Value then
-            case Self.Version is
-               when XML_1_0 =>
-                  Enter_Start_Condition (Self, ATTRIBUTE_VALUE_10);
-
-               when XML_1_1 =>
-                  Enter_Start_Condition (Self, ATTRIBUTE_VALUE_11);
-            end case;
-
-         elsif In_Document_Content then
-            case Self.Version is
-               when XML_1_0 =>
-                  Enter_Start_Condition (Self, DOCUMENT_10);
-
-               when XML_1_1 =>
-                  Enter_Start_Condition (Self, DOCUMENT_11);
-            end case;
+         else
+            Enter_Start_Condition (Self, Condition);
          end if;
 
       else
@@ -299,48 +256,23 @@ package body XML.SAX.Simple_Readers.Scanner is
          --  declaration at the beginning of the external entity.
 
          if In_Document_Type then
+            --  External subset processed after processing of internal subset
+            --  is completed and scanner returns to DOCTYPE_INT start
+            --  condition; but it must be switched back to
+            --  DOCTYPE_INTSUBSET_10 or DOCTYPE_INTSUBSET_11 start condition.
+
             case Self.Version is
                when XML_1_0 =>
                   Push_And_Enter_Start_Condition
-                   (Self, DOCTYPE_INTSUBSET_10, Tables.INITIAL);
+                   (Self, DOCTYPE_INTSUBSET_10, INITIAL);
 
                when XML_1_1 =>
                   Push_And_Enter_Start_Condition
-                   (Self, DOCTYPE_INTSUBSET_11, Tables.INITIAL);
+                   (Self, DOCTYPE_INTSUBSET_11, INITIAL);
             end case;
 
-         elsif In_Entity_Value then
-            case Self.Version is
-               when XML_1_0 =>
-                  Push_And_Enter_Start_Condition
-                   (Self, ENTITY_VALUE_10, INITIAL);
-
-               when XML_1_1 =>
-                  Push_And_Enter_Start_Condition
-                   (Self, ENTITY_VALUE_11, INITIAL);
-            end case;
-
-         elsif In_Attribute_Value then
-            case Self.Version is
-               when XML_1_0 =>
-                  Push_And_Enter_Start_Condition
-                   (Self, ATTRIBUTE_VALUE_10, INITIAL);
-
-               when XML_1_1 =>
-                  Push_And_Enter_Start_Condition
-                   (Self, ATTRIBUTE_VALUE_11, INITIAL);
-            end case;
-
-         elsif In_Document_Content then
-            case Self.Version is
-               when XML_1_0 =>
-                  Push_And_Enter_Start_Condition
-                   (Self, Tables.DOCUMENT_10, INITIAL);
-
-               when XML_1_1 =>
-                  Push_And_Enter_Start_Condition
-                   (Self, Tables.DOCUMENT_11, INITIAL);
-            end case;
+         else
+            Push_And_Enter_Start_Condition (Self, Condition, INITIAL);
          end if;
       end if;
 
@@ -660,7 +592,7 @@ package body XML.SAX.Simple_Readers.Scanner is
 --         Code  : Wide_Wide_Character;
 --
    begin
-<<new_file>>
+<<New_File>>
 --         --  This is where we enter upon encountering an end-of-file and
 --         --  yywrap() indicating that we should continue processing
 --

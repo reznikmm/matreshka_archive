@@ -60,12 +60,10 @@ private package XML.SAX.Simple_Readers.Scanner is
    --  Initializes start condition stack.
 
    function Push_Entity
-    (Self                : not null access SAX_Simple_Reader'Class;
-     Entity              : Matreshka.Internals.XML.Entity_Identifier;
-     In_Document_Type    : Boolean;
-     In_Entity_Value     : Boolean;
-     In_Attribute_Value  : Boolean;
-     In_Document_Content : Boolean) return Boolean;
+    (Self             : not null access SAX_Simple_Reader'Class;
+     Entity           : Matreshka.Internals.XML.Entity_Identifier;
+     In_Document_Type : Boolean;
+     In_Literal       : Boolean) return Boolean;
    --  Pushs replacement text of the entity into the scanner stack. Resolve
    --  entity when necessary.
 
