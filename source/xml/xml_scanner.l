@@ -370,6 +370,10 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 
    Pop_Start_Condition (Self);
 
+   if Start_Condition (Self) = NOTATION_DECL then
+      Pop_Start_Condition (Self);
+   end if;
+
    return Token_Close;
 }
 
@@ -1002,6 +1006,8 @@ with Matreshka.Internals.Strings;
     (Self : access Integer; State : Integer) is separate;
 
    procedure Pop_Start_Condition (Self : access Integer) is separate;
+
+   function Start_Condition (Self : access Integer) return Integer is separate;
 
    procedure Set_Whitespace_Matched (Self : access Integer) is separate;
 

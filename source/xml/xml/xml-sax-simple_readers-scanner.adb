@@ -944,6 +944,10 @@ package body XML.SAX.Simple_Readers.Scanner is
             
                Pop_Start_Condition (Self);
             
+               if Start_Condition (Self) = NOTATION_DECL then
+                  Pop_Start_Condition (Self);
+               end if;
+            
                return Token_Close;
 
             when 25 =>
