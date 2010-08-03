@@ -138,6 +138,10 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
     (Self : not null access SAX_Simple_Reader'Class);
    --  Handles declaration of implied value of the attribute.
 
+   procedure On_Any_Declaration
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles declaration of any of the element.
+
    procedure On_Mixed_Content_Declaration
     (Self : not null access SAX_Simple_Reader'Class);
    --  Handles declaration of mixed content of the element.

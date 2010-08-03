@@ -502,7 +502,7 @@ contentspec:
    }
 | Token_Any
    {
-      null;
+      Actions.On_Any_Declaration (Self);
    }
 | Mixed
    {
@@ -1073,6 +1073,8 @@ with Matreshka.Internals.XML.Symbol_Tables;
         Is_External : Boolean;
         Value       : League.Strings.Universal_String;
         Notation    : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Any_Declaration (Self : access Integer);
 
       procedure On_Mixed_Content_Declaration (Self : access Integer);
 

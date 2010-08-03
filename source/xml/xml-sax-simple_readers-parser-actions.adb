@@ -151,6 +151,16 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       end if;
    end Analyze_Attribute_Declaration;
 
+   ------------------------
+   -- On_Any_Declaration --
+   ------------------------
+
+   procedure On_Any_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Set_Is_Any (Self.Elements, Self.Current_Element, True);
+   end On_Any_Declaration;
+
    --------------------------------------
    -- On_Attribute_Default_Declaration --
    --------------------------------------
@@ -189,13 +199,15 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             (Self.Symbols, Self.Element_Names.Last_Element);
 
    begin
-      if (Element /= No_Element and Is_Whitespace)
-        and then (Is_Declared (Self.Elements, Element)
-                    and not Is_Mixed_Content (Self.Elements, Element))
+      if Is_Whitespace
+        and (Element /= No_Element
+               and then Is_Declared (Self.Elements, Element)
+               and then not (Is_Mixed_Content (Self.Elements, Element)
+                               or Is_Any (Self.Elements, Element)))
       then
          --  When character data contains only whitespaces and element is
-         --  not declared as mixed content reports ignorable whitespaces to
-         --  application.
+         --  not declared as mixed content or any content, reports ignorable
+         --  whitespaces to application.
 
          Callbacks.Call_Ignorable_Whitespace (Self.all, Text);
 
@@ -633,8 +645,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
      Is_External : Boolean;
      Value       : League.Strings.Universal_String)
    is
-      Name   : constant League.Strings.Universal_String
-        := Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Symbol);
       Entity : Entity_Identifier;
 
    begin

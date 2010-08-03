@@ -59,6 +59,17 @@ package body Matreshka.Internals.XML.Element_Tables is
       return Self.Table (Element).Attributes;
    end Attributes;
 
+   ------------
+   -- Is_Any --
+   ------------
+
+   function Is_Any
+    (Self    : Element_Table;
+     Element : Element_Identifier) return Boolean is
+   begin
+      return Self.Table (Element).Is_Any;
+   end Is_Any;
+
    ----------------------------
    -- Is_Attributes_Declared --
    ----------------------------
@@ -118,6 +129,7 @@ package body Matreshka.Internals.XML.Element_Tables is
        (Attributes             => No_Attribute,
         Is_Declared            => False,
         Is_Attributes_Declared => False,
+        Is_Any                 => False,
         Is_Mixed_Content       => False);
    end New_Element;
 
@@ -132,6 +144,18 @@ package body Matreshka.Internals.XML.Element_Tables is
    begin
       Self.Table (Element).Attributes := Attribute;
    end Set_Attributes;
+
+   ----------------
+   -- Set_Is_Any --
+   ----------------
+
+   procedure Set_Is_Any
+    (Self    : in out Element_Table;
+     Element : Element_Identifier;
+     Value   : Boolean) is
+   begin
+      Self.Table (Element).Is_Any := Value;
+   end Set_Is_Any;
 
    --------------------------------
    -- Set_Is_Attributes_Declared --
