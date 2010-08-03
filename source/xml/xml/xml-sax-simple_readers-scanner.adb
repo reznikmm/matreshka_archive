@@ -1347,6 +1347,7 @@ package body XML.SAX.Simple_Readers.Scanner is
 
             when 84 =>
                --  Parameter entity reference rule [69] in attribute declaration.
+               --  Parameter entity reference in element's children declaration, [51].
             
                if not Actions.On_Parameter_Entity_Reference_In_Markup_Declaration (Self) then
                   return Error;

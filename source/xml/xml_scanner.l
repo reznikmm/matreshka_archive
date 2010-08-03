@@ -832,8 +832,9 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    Actions.On_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
 }
 
-<ATTLIST_DECL,ATTLIST_TYPE>"%"{NAME}";" {
+<ATTLIST_DECL,ATTLIST_TYPE,ELEMENT_CHILDREN>"%"{NAME}";" {
    --  Parameter entity reference rule [69] in attribute declaration.
+   --  Parameter entity reference in element's children declaration, [51].
 
    if not Actions.On_Parameter_Entity_Reference_In_Markup_Declaration (Self) then
       return Error;
@@ -969,7 +970,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    raise Program_Error with "Unexpected character in NOTATION_DECL";
 }
 
-<ATTLIST_TYPE,DOCUMENT_10,DOCUMENT_11,DOCTYPE_INTSUBSET_10,DOCTYPE_EXTINT,DOCTYPE_INTSUBSET_11,ENTITY_DEF,ELEMENT_START,PI,PI_DATA_10,PI_DATA_11,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11>.|\n {
+<ATTLIST_TYPE,DOCUMENT_10,DOCUMENT_11,DOCTYPE_INTSUBSET_10,DOCTYPE_EXTINT,DOCTYPE_INTSUBSET_11,ENTITY_DEF,ELEMENT_START,PI,PI_DATA_10,PI_DATA_11,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11,ELEMENT_CHILDREN>.|\n {
    --  Unexpected character.
 
    return Actions.On_Unexpected_Character (Self);
