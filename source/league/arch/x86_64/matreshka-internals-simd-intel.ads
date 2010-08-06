@@ -63,22 +63,45 @@ package Matreshka.Internals.SIMD.Intel is
    pragma Machine_Attribute (v8hi, "vector_type");
    pragma Machine_Attribute (v8hi, "may_alias");
 
+   type v4si is array (1 .. 4) of Interfaces.Integer_32;
+   pragma Machine_Attribute (v4si, "vector_type");
+   pragma Machine_Attribute (v4si, "may_alias");
+
    type v2di is array (1 .. 2) of Interfaces.Integer_64;
    pragma Machine_Attribute (v2di, "vector_type");
    pragma Machine_Attribute (v2di, "may_alias");
 
    function To_v16qi is new Ada.Unchecked_Conversion (v8hi, v16qi);
+   function To_v8hi is new Ada.Unchecked_Conversion (v4si, v8hi);
    function To_v8hi is new Ada.Unchecked_Conversion (v2di, v8hi);
+   function To_v4si is new Ada.Unchecked_Conversion (v8hi, v4si);
+   function To_v2di is new Ada.Unchecked_Conversion (v4si, v2di);
    function To_v2di is new Ada.Unchecked_Conversion (v8hi, v2di);
 
    function mm_and_si128 (A : v2di; B : v2di) return v2di;
    pragma Import (Intrinsic, mm_and_si128, "__builtin_ia32_pand128");
+
+   function mm_andnot_si128 (A : v2di; B : v2di) return v2di;
+   pragma Import (Intrinsic, mm_andnot_si128, "__builtin_ia32_pandn128");
 
    function mm_movemask_epi8 (Item : v16qi) return Interfaces.Unsigned_32;
    pragma Import (Intrinsic, mm_movemask_epi8, "__builtin_ia32_pmovmskb128");
 
    function mm_cmpeq_epi16 (Left : v8hi; Right : v8hi) return v8hi;
    pragma Import (Intrinsic, mm_cmpeq_epi16, "__builtin_ia32_pcmpeqw128");
+
+   function mm_insert_epi16
+    (A : v8hi;
+     V : Interfaces.Integer_16;
+     N : Interfaces.Unsigned_32) return v8hi;
+   pragma Import (Intrinsic, mm_insert_epi16, "__builtin_ia32_vec_set_v8hi");
+
+   function mm_shufflelo_epi16
+    (A : v8hi; M : Interfaces.Integer_32) return v8hi;
+   pragma Import (Intrinsic, mm_shufflelo_epi16, "__builtin_ia32_pshuflw");
+
+   function mm_shuffle_epi32 (A : v4si; M : Interfaces.Integer_32) return v4si;
+   pragma Import (Intrinsic, mm_shuffle_epi32, "__builtin_ia32_pshufd");
 
 --   --  MMX/SSE 64-bit vectors
 --
