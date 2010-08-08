@@ -299,6 +299,23 @@ package body Matreshka.Internals.XML.Attribute_Tables is
       return Self.Table (Attribute).Next;
    end Next;
 
+   -----------
+   -- Reset --
+   -----------
+
+   procedure Reset (Self : in out Attribute_Table) is
+   begin
+      --  Clear existing data.
+
+      for J in Self.Table'First .. Self.Last loop
+         Matreshka.Internals.Strings.Dereference (Self.Table (J).Default);
+      end loop;
+
+      --  Resets to initial state.
+
+      Self.Last := No_Attribute;
+   end Reset;
+
    -----------------
    -- Set_Default --
    -----------------

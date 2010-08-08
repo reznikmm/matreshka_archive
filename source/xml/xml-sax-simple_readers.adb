@@ -256,18 +256,32 @@ package body XML.SAX.Simple_Readers is
       Entity : Entity_Identifier;
 
    begin
+      --  Reset reader's state to initial.
+
+      Matreshka.Internals.XML.Attribute_Tables.Reset (Self.Attributes);
+      Matreshka.Internals.XML.Element_Tables.Reset (Self.Elements);
+      Matreshka.Internals.XML.Entity_Tables.Reset (Self.Entities);
+      Matreshka.Internals.XML.Namespace_Scopes.Reset (Self.Namespace_Scope);
+      Matreshka.Internals.XML.Symbol_Tables.Reset (Self.Symbols);
+
       Callbacks.Call_Set_Document_Locator (Self.all, Self.Locator);
+      Self.Version := XML_1_0;
       Self.Last_Chunk := False;
       New_Document_Entity
        (Self.Entities,
         Source.Public_Id,
         Source.System_Id,
         Entity);
-      Self.Scanner_State.Entity := Entity;
-      Self.Scanner_State.Last_Match := False;
-      Self.Scanner_State.Source := Source.all'Unchecked_Access;
-      Self.Scanner_State.Data :=
-        Matreshka.Internals.Strings.Shared_Empty'Access;
+      Self.Scanner_State :=
+       (Entity     => Entity,
+        Last_Match => False,
+        Source     => Source.all'Unchecked_Access,
+        Data       => Matreshka.Internals.Strings.Shared_Empty'Access,
+        others     => <>);
+      Self.Parser_State.TOS        := 0;
+      Self.Parser_State.Look_Ahead := True;
+      Self.Parser_State.Error      := False;
+      Scanner.Initialize (Self.all);
       Parser.YYParse (Self);
       Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
    end Parse;

@@ -133,6 +133,15 @@ package body Matreshka.Internals.XML.Element_Tables is
         Is_Mixed_Content       => False);
    end New_Element;
 
+   -----------
+   -- Reset --
+   -----------
+
+   procedure Reset (Self : in out Element_Table) is
+   begin
+      Self.Last := No_Element;
+   end Reset;
+
    --------------------
    -- Set_Attributes --
    --------------------

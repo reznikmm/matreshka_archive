@@ -139,6 +139,16 @@ package body Matreshka.Internals.XML.Namespace_Scopes is
       Self.Scopes (Self.Last).Count := Self.Scopes (Self.Last).Count + 1;
    end Push_Scope;
 
+   -----------
+   -- Reset --
+   -----------
+
+   procedure Reset (Self : in out Namespace_Scope) is
+   begin
+      Finalize (Self);
+      Initialize (Self);
+   end Reset;
+
    -------------
    -- Resolve --
    -------------

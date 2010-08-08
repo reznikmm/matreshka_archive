@@ -67,6 +67,9 @@ package Matreshka.Internals.XML.Namespace_Scopes is
 
    procedure Finalize (Self : in out Namespace_Scope);
 
+   procedure Reset (Self : in out Namespace_Scope);
+   --  Resets internal structures to initial state.
+
 private
 
    type Mapping_Record is record

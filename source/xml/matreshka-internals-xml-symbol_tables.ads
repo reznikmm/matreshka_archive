@@ -157,6 +157,9 @@ package Matreshka.Internals.XML.Symbol_Tables is
    procedure Finalize (Self : in out Symbol_Table);
    --  Finalize internal structures.
 
+   procedure Reset (Self : in out Symbol_Table);
+   --  Resets internal structures to initial state.
+
 private
 
    type Symbol_Record is record

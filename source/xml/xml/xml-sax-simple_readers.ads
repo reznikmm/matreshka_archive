@@ -282,7 +282,7 @@ private
    -- Parser state --
    ------------------
 
-   YY_Stack_Size : constant Natural := 300;
+   YY_Stack_Size : constant := 300;
    --  The size of the value and state stacks.
 
    type Value_Stack_Array is array (0 .. YY_Stack_Size) of YYSType;

@@ -402,6 +402,16 @@ package body Matreshka.Internals.XML.Entity_Tables is
       return Self.Data (Entity).Replacement_Text;
    end Replacement_Text;
 
+   -----------
+   -- Reset --
+   -----------
+
+   procedure Reset (Self : in out Entity_Table) is
+   begin
+      Finalize (Self);
+      Initialize (Self);
+   end Reset;
+
    ------------------------
    -- Set_First_Position --
    ------------------------

@@ -522,6 +522,16 @@ package body Matreshka.Internals.XML.Symbol_Tables is
       return Self.Table (Identifier).Prefix_Name;
    end Prefix_Name;
 
+   -----------
+   -- Reset --
+   -----------
+
+   procedure Reset (Self : in out Symbol_Table) is
+   begin
+      Finalize (Self);
+      Initialize (Self);
+   end Reset;
+
    -----------------
    -- Set_Element --
    -----------------

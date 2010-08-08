@@ -104,6 +104,9 @@ package Matreshka.Internals.XML.Element_Tables is
      Element : Element_Identifier;
      Value   : Boolean);
 
+   procedure Reset (Self : in out Element_Table);
+   --  Resets internal structures to initial state.
+
 private
 
    type Element_Record is record

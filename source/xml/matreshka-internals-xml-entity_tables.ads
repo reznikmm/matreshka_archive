@@ -175,6 +175,9 @@ package Matreshka.Internals.XML.Entity_Tables is
    procedure Finalize (Self : in out Entity_Table);
    --  Finalizes entity table.
 
+   procedure Reset (Self : in out Entity_Table);
+   --  Resets internal structures to initial state.
+
 private
 
    type Entity_Kinds is

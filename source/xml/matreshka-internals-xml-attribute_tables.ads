@@ -173,6 +173,9 @@ package Matreshka.Internals.XML.Attribute_Tables is
      Attribute : Attribute_Identifier) return Symbol_Identifier;
    --  Returns symbol of type name of the attribute.
 
+   procedure Reset (Self : in out Attribute_Table);
+   --  Resets internal structures to initial state.
+
 private
 
    type Attribute_Types is
