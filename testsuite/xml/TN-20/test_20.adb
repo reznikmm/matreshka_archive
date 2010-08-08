@@ -4,11 +4,11 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,21 +41,57 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_xml";
+--  Initial implementation of SAX reader was unable to be reused several times
+--  to read different documents.
+------------------------------------------------------------------------------
+with Ada.Command_Line;
 
-project Matreshka_XML_Tests is
+with League.Strings;
+with Put_Line;
+with Read_File;
+with SAX_Events_Writers;
+with XML.SAX.Input_Sources.Strings;
+with XML.SAX.Simple_Readers;
 
-   for Main use
-    ("xmlconf_test.adb",
-     "test_20.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/xml",
-     "../examples/sax_events_printer",
-     "../testsuite/xml/TN-20");
+procedure Test_20 is
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8", "-O2", "-gnatn");
-   end Compiler;
+   use type League.Strings.Universal_String;
 
-end Matreshka_XML_Tests;
+   Source : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
+   Reader : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Writer : aliased SAX_Events_Writers.SAX_Events_Writer;
+
+   Root   : constant String := Ada.Command_Line.Argument (1);
+   XML1   : constant League.Strings.Universal_String
+     := Read_File (Root & "20-1.xml");
+   XML2   : constant League.Strings.Universal_String
+     := Read_File (Root & "20-2.xml");
+   Expected : constant League.Strings.Universal_String
+     := Read_File (Root & "20-expected.xml");
+
+begin
+   Reader.Set_Content_Handler (Writer'Unchecked_Access);
+   Reader.Set_Entity_Resolver (Writer'Unchecked_Access);
+   Reader.Set_Error_Handler (Writer'Unchecked_Access);
+
+   --  Parse first XML document.
+
+   Source.Set_String (XML1);
+   Reader.Parse (Source'Access);
+
+   --  Parse second XML document.
+
+   Source.Set_String (XML2);
+   Reader.Parse (Source'Access);
+
+   --  Check sequence of SAX events.
+
+   Writer.Done;
+
+   if Writer.Text /= Expected then
+      Put_Line ("Expected: '" & Expected & ''');
+      Put_Line ("Actual  : '" & Writer.Text & ''');
+
+      raise Program_Error;
+   end if;
+end Test_20;

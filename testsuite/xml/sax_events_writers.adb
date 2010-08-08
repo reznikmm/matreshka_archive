@@ -47,7 +47,7 @@ with Ada.Containers.Ordered_Maps;
 
 with XML.SAX.Input_Sources.Streams.Files;
 
-package body XMLConf.Events_Writers is
+package body SAX_Events_Writers is
 
    use Ada.Characters.Wide_Wide_Latin_1;
    use League.Strings;
@@ -70,7 +70,7 @@ package body XMLConf.Events_Writers is
    --------------
 
    not overriding procedure Add_Line
-    (Self : in out Events_Writer;
+    (Self : in out SAX_Events_Writer;
      Item : League.Strings.Universal_String) is
    begin
       Self.Result.Append (Item & Ada.Characters.Wide_Wide_Latin_1.LF);
@@ -81,7 +81,7 @@ package body XMLConf.Events_Writers is
    ----------------
 
    overriding procedure Characters
-    (Self    : in out Events_Writer;
+    (Self    : in out SAX_Events_Writer;
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
@@ -97,7 +97,7 @@ package body XMLConf.Events_Writers is
    -- Done --
    ----------
 
-   procedure Done (Self : in out Events_Writer) is
+   procedure Done (Self : in out SAX_Events_Writer) is
    begin
       Self.Add_Line (To_Universal_String ("</SAXEvents>"));
    end Done;
@@ -107,7 +107,7 @@ package body XMLConf.Events_Writers is
    ------------------
 
    overriding procedure End_Document
-    (Self    : in out Events_Writer;
+    (Self    : in out SAX_Events_Writer;
      Success : in out Boolean) is
    begin
       Self.Add_Line (To_Universal_String ("  <endDocument/>"));
@@ -118,7 +118,7 @@ package body XMLConf.Events_Writers is
    -----------------
 
    overriding procedure End_Element
-    (Self           : in out Events_Writer;
+    (Self           : in out SAX_Events_Writer;
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
@@ -157,7 +157,7 @@ package body XMLConf.Events_Writers is
    ------------------------
 
    overriding procedure End_Prefix_Mapping
-    (Self    : in out Events_Writer;
+    (Self    : in out SAX_Events_Writer;
      Prefix  : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
@@ -178,7 +178,7 @@ package body XMLConf.Events_Writers is
    -----------
 
    overriding procedure Error
-    (Self       : in out Events_Writer;
+    (Self       : in out SAX_Events_Writer;
      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
      Success    : in out Boolean) is
    begin
@@ -190,7 +190,7 @@ package body XMLConf.Events_Writers is
    ------------------
 
    overriding function Error_String
-    (Self : Events_Writer)
+    (Self : SAX_Events_Writer)
        return League.Strings.Universal_String is
    begin
       return Empty_Universal_String;
@@ -303,7 +303,7 @@ package body XMLConf.Events_Writers is
    -- Has_Errors --
    ----------------
 
-   not overriding function Has_Errors (Self : Events_Writer) return Boolean is
+   not overriding function Has_Errors (Self : SAX_Events_Writer) return Boolean is
    begin
       return Self.Errors;
    end Has_Errors;
@@ -313,7 +313,7 @@ package body XMLConf.Events_Writers is
    -----------------
 
    overriding procedure Fatal_Error
-    (Self       : in out Events_Writer;
+    (Self       : in out SAX_Events_Writer;
      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
      Success    : in out Boolean) is
    begin
@@ -326,7 +326,7 @@ package body XMLConf.Events_Writers is
    ----------------------
 
    not overriding function Has_Fatal_Errors
-    (Self : Events_Writer) return Boolean is
+    (Self : SAX_Events_Writer) return Boolean is
    begin
       return Self.Fatal_Errors;
    end Has_Fatal_Errors;
@@ -336,7 +336,7 @@ package body XMLConf.Events_Writers is
    --------------------------
 
    overriding procedure Ignorable_Whitespace
-    (Self    : in out Events_Writer;
+    (Self    : in out SAX_Events_Writer;
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
@@ -352,7 +352,7 @@ package body XMLConf.Events_Writers is
    -- Initialize --
    ----------------
 
-   overriding procedure Initialize (Self : in out Events_Writer) is
+   overriding procedure Initialize (Self : in out SAX_Events_Writer) is
    begin
       Self.Add_Line
        (To_Universal_String ("<?xml version=""1.0"" encoding=""UTF-8""?>"));
@@ -364,7 +364,7 @@ package body XMLConf.Events_Writers is
    ----------------------------
 
    overriding procedure Processing_Instruction
-    (Self    : in out Events_Writer;
+    (Self    : in out SAX_Events_Writer;
      Target  : League.Strings.Universal_String;
      Data    : League.Strings.Universal_String;
      Success : in out Boolean) is
@@ -387,7 +387,7 @@ package body XMLConf.Events_Writers is
    --------------------
 
    overriding procedure Resolve_Entity
-    (Self      : in out Events_Writer;
+    (Self      : in out SAX_Events_Writer;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
@@ -419,7 +419,7 @@ package body XMLConf.Events_Writers is
    --------------------------
 
    overriding procedure Set_Document_Locator
-    (Self    : in out Events_Writer;
+    (Self    : in out SAX_Events_Writer;
      Locator : XML.SAX.Locators.SAX_Locator) is
    begin
       null;
@@ -430,7 +430,7 @@ package body XMLConf.Events_Writers is
    --------------------
 
    overriding procedure Skipped_Entity
-    (Self    : in out Events_Writer;
+    (Self    : in out SAX_Events_Writer;
      Name    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
@@ -442,7 +442,7 @@ package body XMLConf.Events_Writers is
    --------------------
 
    overriding procedure Start_Document
-    (Self    : in out Events_Writer;
+    (Self    : in out SAX_Events_Writer;
      Success : in out Boolean) is
    begin
       Self.Add_Line (To_Universal_String ("  <startDocument/>"));
@@ -453,7 +453,7 @@ package body XMLConf.Events_Writers is
    -------------------
 
    overriding procedure Start_Element
-    (Self           : in out Events_Writer;
+    (Self           : in out SAX_Events_Writer;
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
@@ -571,7 +571,7 @@ package body XMLConf.Events_Writers is
    --------------------------
 
    overriding procedure Start_Prefix_Mapping
-    (Self    : in out Events_Writer;
+    (Self    : in out SAX_Events_Writer;
      Prefix  : League.Strings.Universal_String;
      URI     : League.Strings.Universal_String;
      Success : in out Boolean) is
@@ -594,7 +594,7 @@ package body XMLConf.Events_Writers is
    ----------
 
    not overriding function Text
-    (Self : Events_Writer) return League.Strings.Universal_String is
+    (Self : SAX_Events_Writer) return League.Strings.Universal_String is
    begin
       return Self.Result;
    end Text;
@@ -604,11 +604,11 @@ package body XMLConf.Events_Writers is
    -------------
 
    overriding procedure Warning
-    (Self       : in out Events_Writer;
+    (Self       : in out SAX_Events_Writer;
      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
      Success    : in out Boolean) is
    begin
       Self.Add_Line (To_Universal_String ("  <warning/>"));
    end Warning;
 
-end XMLConf.Events_Writers;
+end SAX_Events_Writers;

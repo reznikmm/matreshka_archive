@@ -51,7 +51,7 @@ with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 with XMLConf.Canonical_Writers;
 with XMLConf.Entity_Resolvers;
-with XMLConf.Events_Writers;
+with SAX_Events_Writers;
 
 package body XMLConf.Testsuite_Handlers is
 
@@ -130,7 +130,7 @@ package body XMLConf.Testsuite_Handlers is
          Source   : aliased
            XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
          Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-         Writer   : aliased XMLConf.Events_Writers.Events_Writer;
+         Writer   : aliased SAX_Events_Writers.SAX_Events_Writer;
          Expected : League.Strings.Universal_String;
 
       begin
