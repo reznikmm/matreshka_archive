@@ -151,6 +151,8 @@ package body XML.SAX.Simple_Readers is
    begin
       Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
       Matreshka.Internals.Strings.Dereference (Self.Character_Data);
+      Matreshka.Internals.XML.Attribute_Tables.Finalize (Self.Attributes);
+      Matreshka.Internals.XML.Element_Tables.Finalize (Self.Elements);
       Matreshka.Internals.XML.Symbol_Tables.Finalize (Self.Symbols);
       Matreshka.Internals.XML.Entity_Tables.Finalize (Self.Entities);
       Matreshka.Internals.XML.Namespace_Scopes.Finalize (Self.Namespace_Scope);

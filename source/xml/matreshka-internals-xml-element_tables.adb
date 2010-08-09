@@ -59,6 +59,15 @@ package body Matreshka.Internals.XML.Element_Tables is
       return Self.Table (Element).Attributes;
    end Attributes;
 
+   --------------
+   -- Finalize --
+   --------------
+
+   procedure Finalize (Self : in out Element_Table) is
+   begin
+      Free (Self.Table);
+   end Finalize;
+
    ------------
    -- Is_Any --
    ------------

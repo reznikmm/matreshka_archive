@@ -55,6 +55,9 @@ package body Matreshka.Internals.XML.Attribute_Tables is
      Attribute : out Attribute_Identifier);
    --  Allocates new attribute with specified type.
 
+   procedure Clear (Self : in out Attribute_Table);
+   --  Clear existing data.
+
    ------------
    -- Append --
    ------------
@@ -67,6 +70,17 @@ package body Matreshka.Internals.XML.Attribute_Tables is
       Self.Table (Attribute).Next := Next;
    end Append;
 
+   -----------
+   -- Clear --
+   -----------
+
+   procedure Clear (Self : in out Attribute_Table) is
+   begin
+      for J in Self.Table'First .. Self.Last loop
+         Matreshka.Internals.Strings.Dereference (Self.Table (J).Default);
+      end loop;
+   end Clear;
+
    -------------
    -- Default --
    -------------
@@ -78,6 +92,16 @@ package body Matreshka.Internals.XML.Attribute_Tables is
    begin
       return Self.Table (Attribute).Default;
    end Default;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   procedure Finalize (Self : in out Attribute_Table) is
+   begin
+      Clear (Self);
+      Free (Self.Table);
+   end Finalize;
 
    -----------------
    -- Has_Default --
@@ -305,11 +329,7 @@ package body Matreshka.Internals.XML.Attribute_Tables is
 
    procedure Reset (Self : in out Attribute_Table) is
    begin
-      --  Clear existing data.
-
-      for J in Self.Table'First .. Self.Last loop
-         Matreshka.Internals.Strings.Dereference (Self.Table (J).Default);
-      end loop;
+      Clear (Self);
 
       --  Resets to initial state.
 

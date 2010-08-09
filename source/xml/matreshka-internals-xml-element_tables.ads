@@ -107,6 +107,9 @@ package Matreshka.Internals.XML.Element_Tables is
    procedure Reset (Self : in out Element_Table);
    --  Resets internal structures to initial state.
 
+   procedure Finalize (Self : in out Element_Table);
+   --  Releases all ocupied resources.
+
 private
 
    type Element_Record is record

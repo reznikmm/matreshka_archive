@@ -176,6 +176,9 @@ package Matreshka.Internals.XML.Attribute_Tables is
    procedure Reset (Self : in out Attribute_Table);
    --  Resets internal structures to initial state.
 
+   procedure Finalize (Self : in out Attribute_Table);
+   --  Releases all ocupied resources.
+
 private
 
    type Attribute_Types is
