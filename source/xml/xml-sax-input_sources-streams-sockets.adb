@@ -59,11 +59,6 @@ package body XML.SAX.Input_Sources.Streams.Sockets is
      Socket : GNAT.Sockets.Socket_Type) is
    begin
       Self.Socket := Socket;
-      Self.Decoder := new Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
-      Self.State :=
-        new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
-             (Self.Decoder.Create_State
-               (Matreshka.Internals.Text_Codecs.XML_1_0));
    end Set_Socket;
 
    ----------
@@ -90,11 +85,12 @@ package body XML.SAX.Input_Sources.Streams.Sockets is
          GNAT.Sockets.Receive_Socket (Self.Socket, Buffer, Last);
 
          Ada.Text_IO.Put_Line ("Read : Data_Size Read :" & Last'Img);
-         End_Of_Data := False;
       else
+         Ada.Text_IO.Put_Line ("Read : Blocking Next");
          Last := Buffer'First - 1;
-         End_Of_Data := True;
       end if;
+
+       End_Of_Data := False;
    end Read;
 
 end XML.SAX.Input_Sources.Streams.Sockets;
