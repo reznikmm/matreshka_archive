@@ -8,7 +8,6 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Alexander Basov <coopht@gmail.com>                     --
 -- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
@@ -40,14 +39,11 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision: 805 $ $Date: 2010-07-25 13:01:11 +0400 (Вск, 25 Июл 2010) $
+--  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Finalization;
 with Ada.Streams;
 
 with GNAT.Sockets;
-
-private with Matreshka.Internals.Text_Codecs;
 
 package XML.SAX.Input_Sources.Streams.Sockets is
 
@@ -67,8 +63,7 @@ package XML.SAX.Input_Sources.Streams.Sockets is
 
 private
 
-   type Socket_Input_Source is new Stream_Input_Source with
-   record
+   type Socket_Input_Source is new Stream_Input_Source with record
       Socket : GNAT.Sockets.Socket_Type;
    end record;
 

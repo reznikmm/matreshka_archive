@@ -8,7 +8,6 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Alexander Basov <coopht@gmail.com>                     --
 -- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
@@ -40,26 +39,11 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision: 805 $ $Date: 2010-07-25 13:01:11 +0400 (Вск, 25 Июл 2010) $
+--  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Deallocation;
 with Ada.Text_IO;
-with GNAT.Sockets;
-
-with Matreshka.Internals.Text_Codecs.UTF8;
 
 package body XML.SAX.Input_Sources.Streams.Sockets is
-
-   ----------------
-   -- Set_Stream --
-   ----------------
-
-   not overriding procedure Set_Socket
-    (Self   : in out Socket_Input_Source;
-     Socket : GNAT.Sockets.Socket_Type) is
-   begin
-      Self.Socket := Socket;
-   end Set_Socket;
 
    ----------
    -- Read --
@@ -69,10 +53,8 @@ package body XML.SAX.Input_Sources.Streams.Sockets is
     (Self        : in out Socket_Input_Source;
      Buffer      : out Ada.Streams.Stream_Element_Array;
      Last        : out Ada.Streams.Stream_Element_Offset;
-     End_Of_Data : out Boolean) is
-
-      use type Ada.Streams.Stream_Element_Offset;
-
+     End_Of_Data : out Boolean)
+   is
       --  for debug
       X : GNAT.Sockets.Request_Type (GNAT.Sockets.N_Bytes_To_Read);
 
@@ -85,12 +67,24 @@ package body XML.SAX.Input_Sources.Streams.Sockets is
          GNAT.Sockets.Receive_Socket (Self.Socket, Buffer, Last);
 
          Ada.Text_IO.Put_Line ("Read : Data_Size Read :" & Last'Img);
+
       else
          Ada.Text_IO.Put_Line ("Read : Blocking Next");
          Last := Buffer'First - 1;
       end if;
 
-       End_Of_Data := False;
+      End_Of_Data := False;
    end Read;
+
+   ----------------
+   -- Set_Socket --
+   ----------------
+
+   not overriding procedure Set_Socket
+    (Self   : in out Socket_Input_Source;
+     Socket : GNAT.Sockets.Socket_Type) is
+   begin
+      Self.Socket := Socket;
+   end Set_Socket;
 
 end XML.SAX.Input_Sources.Streams.Sockets;
