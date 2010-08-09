@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>เจมส์</localName>
-        <qualifiedName>เจมส์</qualifiedName>
-        <attributes/>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>เจมส์</localName>
-        <qualifiedName>เจมส์</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>เจมส์</localName>
+    <qualifiedName>เจมส์</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>เจมส์</localName>
+    <qualifiedName>เจมส์</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>
