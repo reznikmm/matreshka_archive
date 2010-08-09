@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
+with Matreshka.Internals.Text_Codecs.UTF16LE;
 with Matreshka.Internals.Text_Codecs.UTF8;
 
 package body XML.SAX.Input_Sources.Streams is
@@ -89,7 +90,11 @@ package body XML.SAX.Input_Sources.Streams is
       use type Ada.Streams.Stream_Element;
       use type Matreshka.Internals.Text_Codecs.Decoder_Access;
 
-      First : constant Ada.Streams.Stream_Element_Offset := Self.Last + 1;
+      type Encodings is
+       (UCS4LE, UCS4BE, UCS42143, UCS43412, UTF16LE, UTF16BE, EBCDIC, UTF8);
+
+      First    : Ada.Streams.Stream_Element_Offset := Self.Last + 1;
+      Encoding : Encodings;
 
    begin
       --  Reallocate buffer when necessary.
@@ -116,6 +121,8 @@ package body XML.SAX.Input_Sources.Streams is
 
       if Self.Decoder = null then
          if Self.Last >= 3 then
+            First := 0;
+
             --  Try to recognize Byte Order Mark.
 
             if Self.Buffer (0) = 16#00#
@@ -125,7 +132,8 @@ package body XML.SAX.Input_Sources.Streams is
             then
                --  UCS-4, big-endian machine (1234 order)
 
-               raise Program_Error;
+               Encoding := UCS4BE;
+               First    := 4;
 
             elsif Self.Buffer (0) = 16#FF#
               and Self.Buffer (1) = 16#FE#
@@ -134,7 +142,8 @@ package body XML.SAX.Input_Sources.Streams is
             then
                --  UCS-4, little-endian machine (4321 order)
 
-               raise Program_Error;
+               Encoding := UCS4LE;
+               First    := 4;
 
             elsif Self.Buffer (0) = 16#00#
               and Self.Buffer (1) = 16#00#
@@ -143,7 +152,8 @@ package body XML.SAX.Input_Sources.Streams is
             then
                --  UCS-4, unusual octet order (2143)
 
-               raise Program_Error;
+               Encoding := UCS42143;
+               First    := 4;
 
             elsif Self.Buffer (0) = 16#FE#
               and Self.Buffer (1) = 16#FF#
@@ -152,25 +162,28 @@ package body XML.SAX.Input_Sources.Streams is
             then
                --  UCS-4, unusual octet order (3412)
 
-               raise Program_Error;
+               Encoding := UCS43412;
+               First    := 4;
 
             elsif Self.Buffer (0) = 16#FE#
               and Self.Buffer (1) = 16#FF#
-              and Self.Buffer (2) /= 16#00#
-              and Self.Buffer (3) /= 16#00#
+              and (Self.Buffer (2) /= 16#00#
+                     or Self.Buffer (3) /= 16#00#)
             then
                --  UTF-16, big-endian
 
-               raise Program_Error;
+               Encoding := UTF16BE;
+               First    := 2;
 
             elsif Self.Buffer (0) = 16#FF#
               and Self.Buffer (1) = 16#FE#
-              and Self.Buffer (2) /= 16#00#
-              and Self.Buffer (3) /= 16#00#
+              and (Self.Buffer (2) /= 16#00#
+                     or Self.Buffer (3) /= 16#00#)
             then
                --  UTF-16, little-endian
 
-               raise Program_Error;
+               Encoding := UTF16LE;
+               First    := 2;
 
             elsif Self.Buffer (0) = 16#EF#
               and Self.Buffer (1) = 16#BB#
@@ -178,7 +191,8 @@ package body XML.SAX.Input_Sources.Streams is
             then
                --  UTF-8
 
-               null;
+               Encoding := UTF8;
+               First    := 3;
 
             --  Byte Order Mark is not recognized, try to detect encoding
             --  without Byte Order Mark.
@@ -191,7 +205,7 @@ package body XML.SAX.Input_Sources.Streams is
                --  UCS-4 or other encoding with a 32-bit code unit and ASCII
                --  characters encoded as ASCII values, big-endian (1234).
 
-               raise Program_Error;
+               Encoding := UCS4BE;
 
             elsif Self.Buffer (0) = 16#3C#
               and Self.Buffer (1) = 16#00#
@@ -201,7 +215,7 @@ package body XML.SAX.Input_Sources.Streams is
                --  UCS-4 or other encoding with a 32-bit code unit and ASCII
                --  characters encoded as ASCII values, little-endian (4321).
 
-               raise Program_Error;
+               Encoding := UCS4LE;
 
             elsif Self.Buffer (0) = 16#00#
               and Self.Buffer (1) = 16#00#
@@ -212,7 +226,7 @@ package body XML.SAX.Input_Sources.Streams is
                --  characters encoded as ASCII values, unusual byte order
                --  (2143).
 
-               raise Program_Error;
+               Encoding := UCS42143;
 
             elsif Self.Buffer (0) = 16#00#
               and Self.Buffer (1) = 16#3C#
@@ -223,7 +237,7 @@ package body XML.SAX.Input_Sources.Streams is
                --  characters encoded as ASCII values, unusual byte order
                --  (3412).
 
-               raise Program_Error;
+               Encoding := UCS43412;
 
             elsif Self.Buffer (0) = 16#00#
               and Self.Buffer (1) = 16#3C#
@@ -234,7 +248,7 @@ package body XML.SAX.Input_Sources.Streams is
                --  with a 16-bit code unit in big-endian order and ASCII
                --  characters encoded as ASCII values.
 
-               raise Program_Error;
+               Encoding := UTF16BE;
 
             elsif Self.Buffer (0) = 16#3C#
               and Self.Buffer (1) = 16#00#
@@ -245,7 +259,7 @@ package body XML.SAX.Input_Sources.Streams is
                --  with a 16-bit code unit in little-endian order and ASCII
                --  characters encoded as ASCII values.
 
-               raise Program_Error;
+               Encoding := UTF16LE;
 
             elsif Self.Buffer (0) = 16#3C#
               and Self.Buffer (1) = 16#3F#
@@ -257,7 +271,7 @@ package body XML.SAX.Input_Sources.Streams is
                --  which ensures that the characters of ASCII have their normal
                --  positions, width, and values.
 
-               null;
+               Encoding := UTF8;
 
             elsif Self.Buffer (0) = 16#4C#
               and Self.Buffer (1) = 16#6F#
@@ -266,7 +280,7 @@ package body XML.SAX.Input_Sources.Streams is
             then
                --  EBCDIC (in some flavor).
 
-               raise Program_Error;
+               Encoding := EBCDIC;
 
             else
                --  UTF-8 without an encoding declaration, or else the data
@@ -274,11 +288,41 @@ package body XML.SAX.Input_Sources.Streams is
                --  declaration), corrupt, fragmentary, or enclosed in a wrapper
                --  of some kind.
 
-               null;
+               Encoding := UTF8;
             end if;
 
-            Self.Decoder :=
-              new Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
+            --  Create appropriate decoder.
+
+            case Encoding is
+               when UCS4LE =>
+                  raise Program_Error;
+
+               when UCS4BE =>
+                  raise Program_Error;
+
+               when UCS42143 =>
+                  raise Program_Error;
+
+               when UCS43412 =>
+                  raise Program_Error;
+
+               when UTF16LE =>
+                  Self.Decoder :=
+                    new Matreshka.Internals.Text_Codecs.UTF16LE.UTF16LE_Decoder;
+
+               when UTF16BE =>
+                  raise Program_Error;
+
+               when EBCDIC =>
+                  raise Program_Error;
+
+               when UTF8 =>
+                  Self.Decoder :=
+                    new Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
+            end case;
+
+            --  Create decoder's state object.
+
             Self.State :=
               new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
                    (Self.Decoder.Create_State
@@ -287,9 +331,7 @@ package body XML.SAX.Input_Sources.Streams is
             --  Decode all readed data (not last chunk only).
 
             Self.Decoder.Decode_Append
-             (Self.Buffer (Self.Buffer'First .. Self.Last),
-              Self.State.all,
-              Buffer);
+             (Self.Buffer (First .. Self.Last), Self.State.all, Buffer);
          end if;
 
       --  Decode received portion of data.
