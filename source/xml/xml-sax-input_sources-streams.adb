@@ -86,6 +86,7 @@ package body XML.SAX.Input_Sources.Streams is
        not null Matreshka.Internals.Strings.Shared_String_Access;
      End_Of_Data : out Boolean)
    is
+      use type Ada.Streams.Stream_Element;
       use type Matreshka.Internals.Text_Codecs.Decoder_Access;
 
       First : constant Ada.Streams.Stream_Element_Offset := Self.Last + 1;
@@ -115,6 +116,167 @@ package body XML.SAX.Input_Sources.Streams is
 
       if Self.Decoder = null then
          if Self.Last >= 3 then
+            --  Try to recognize Byte Order Mark.
+
+            if Self.Buffer (0) = 16#00#
+              and Self.Buffer (1) = 16#00#
+              and Self.Buffer (2) = 16#FE#
+              and Self.Buffer (3) = 16#FF#
+            then
+               --  UCS-4, big-endian machine (1234 order)
+
+               raise Program_Error;
+
+            elsif Self.Buffer (0) = 16#FF#
+              and Self.Buffer (1) = 16#FE#
+              and Self.Buffer (2) = 16#00#
+              and Self.Buffer (3) = 16#00#
+            then
+               --  UCS-4, little-endian machine (4321 order)
+
+               raise Program_Error;
+
+            elsif Self.Buffer (0) = 16#00#
+              and Self.Buffer (1) = 16#00#
+              and Self.Buffer (2) = 16#FF#
+              and Self.Buffer (3) = 16#FE#
+            then
+               --  UCS-4, unusual octet order (2143)
+
+               raise Program_Error;
+
+            elsif Self.Buffer (0) = 16#FE#
+              and Self.Buffer (1) = 16#FF#
+              and Self.Buffer (2) = 16#00#
+              and Self.Buffer (3) = 16#00#
+            then
+               --  UCS-4, unusual octet order (3412)
+
+               raise Program_Error;
+
+            elsif Self.Buffer (0) = 16#FE#
+              and Self.Buffer (1) = 16#FF#
+              and Self.Buffer (2) /= 16#00#
+              and Self.Buffer (3) /= 16#00#
+            then
+               --  UTF-16, big-endian
+
+               raise Program_Error;
+
+            elsif Self.Buffer (0) = 16#FF#
+              and Self.Buffer (1) = 16#FE#
+              and Self.Buffer (2) /= 16#00#
+              and Self.Buffer (3) /= 16#00#
+            then
+               --  UTF-16, little-endian
+
+               raise Program_Error;
+
+            elsif Self.Buffer (0) = 16#EF#
+              and Self.Buffer (1) = 16#BB#
+              and Self.Buffer (2) = 16#BF#
+            then
+               --  UTF-8
+
+               null;
+
+            --  Byte Order Mark is not recognized, try to detect encoding
+            --  without Byte Order Mark.
+
+            elsif Self.Buffer (0) = 16#00#
+              and Self.Buffer (1) = 16#00#
+              and Self.Buffer (2) = 16#00#
+              and Self.Buffer (3) = 16#3C#
+            then
+               --  UCS-4 or other encoding with a 32-bit code unit and ASCII
+               --  characters encoded as ASCII values, big-endian (1234).
+
+               raise Program_Error;
+
+            elsif Self.Buffer (0) = 16#3C#
+              and Self.Buffer (1) = 16#00#
+              and Self.Buffer (2) = 16#00#
+              and Self.Buffer (3) = 16#00#
+            then
+               --  UCS-4 or other encoding with a 32-bit code unit and ASCII
+               --  characters encoded as ASCII values, little-endian (4321).
+
+               raise Program_Error;
+
+            elsif Self.Buffer (0) = 16#00#
+              and Self.Buffer (1) = 16#00#
+              and Self.Buffer (2) = 16#3C#
+              and Self.Buffer (3) = 16#00#
+            then
+               --  UCS-4 or other encoding with a 32-bit code unit and ASCII
+               --  characters encoded as ASCII values, unusual byte order
+               --  (2143).
+
+               raise Program_Error;
+
+            elsif Self.Buffer (0) = 16#00#
+              and Self.Buffer (1) = 16#3C#
+              and Self.Buffer (2) = 16#00#
+              and Self.Buffer (3) = 16#00#
+            then
+               --  UCS-4 or other encoding with a 32-bit code unit and ASCII
+               --  characters encoded as ASCII values, unusual byte order
+               --  (3412).
+
+               raise Program_Error;
+
+            elsif Self.Buffer (0) = 16#00#
+              and Self.Buffer (1) = 16#3C#
+              and Self.Buffer (2) = 16#00#
+              and Self.Buffer (3) = 16#3F#
+            then
+               --  UTF-16BE or big-endian ISO-10646-UCS-2 or other encoding
+               --  with a 16-bit code unit in big-endian order and ASCII
+               --  characters encoded as ASCII values.
+
+               raise Program_Error;
+
+            elsif Self.Buffer (0) = 16#3C#
+              and Self.Buffer (1) = 16#00#
+              and Self.Buffer (2) = 16#3F#
+              and Self.Buffer (3) = 16#00#
+            then
+               --  UTF-16LE or little-endian ISO-10646-UCS-2 or other encoding
+               --  with a 16-bit code unit in little-endian order and ASCII
+               --  characters encoded as ASCII values.
+
+               raise Program_Error;
+
+            elsif Self.Buffer (0) = 16#3C#
+              and Self.Buffer (1) = 16#3F#
+              and Self.Buffer (2) = 16#78#
+              and Self.Buffer (3) = 16#6D#
+            then
+               --  UTF-8, ISO 646, ASCII, some part of ISO 8859, Shift-JIS,
+               --  EUC, or any other 7-bit, 8-bit, or mixed-width encoding
+               --  which ensures that the characters of ASCII have their normal
+               --  positions, width, and values.
+
+               null;
+
+            elsif Self.Buffer (0) = 16#4C#
+              and Self.Buffer (1) = 16#6F#
+              and Self.Buffer (2) = 16#A7#
+              and Self.Buffer (3) = 16#94#
+            then
+               --  EBCDIC (in some flavor).
+
+               raise Program_Error;
+
+            else
+               --  UTF-8 without an encoding declaration, or else the data
+               --  stream is mislabeled (lacking a required encoding
+               --  declaration), corrupt, fragmentary, or enclosed in a wrapper
+               --  of some kind.
+
+               null;
+            end if;
+
             Self.Decoder :=
               new Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
             Self.State :=
