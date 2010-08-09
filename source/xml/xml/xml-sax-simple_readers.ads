@@ -83,10 +83,13 @@ package XML.SAX.Simple_Readers is
    not overriding procedure Set_Input_Source
     (Self   : not null access SAX_Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class);
-   --  Sets input source to read data from it in incremental mode.
+   --  Sets input source to read data from it in incremental mode. It must be
+   --  called once to set input source, and procedure Parse without input
+   --  source parameter must be used to process chunks of data.
 
    not overriding procedure Parse (Self : not null access SAX_Simple_Reader);
-   --  Reads next chunk of data from the input source and parse it.
+   --  Reads next chunk of data from the input source and parse it. Input
+   --  source must be setted by call to procedure Set_Input_Source.
 
    not overriding procedure Set_Enable_Namespaces
     (Self    : not null access SAX_Simple_Reader;
