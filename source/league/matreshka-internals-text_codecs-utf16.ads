@@ -41,11 +41,47 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package provides implementation of text codecs for both UTF-16BE and
+--  UTF-16LE encodings.
+------------------------------------------------------------------------------
 private with Matreshka.Internals.Unicode;
 
-package Matreshka.Internals.Text_Codecs.UTF16LE is
+package Matreshka.Internals.Text_Codecs.UTF16 is
 
    pragma Preelaborate;
+
+   --------------
+   -- UTF-16BE --
+   --------------
+
+   type UTF16BE_Decoder is new Abstract_Decoder with null record;
+
+   type UTF16BE_Decoder_State is new Abstract_Decoder_State with private;
+
+   overriding function Is_Error (Self : UTF16BE_Decoder_State) return Boolean;
+
+   overriding function Is_Mailformed
+    (Self : UTF16BE_Decoder_State) return Boolean;
+
+   overriding function Create_State
+    (Self : UTF16BE_Decoder;
+     Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
+
+   overriding procedure Decode
+    (Self   : UTF16BE_Decoder;
+     Data   : Ada.Streams.Stream_Element_Array;
+     State  : in out Abstract_Decoder_State'Class;
+     String : out Matreshka.Internals.Strings.Shared_String_Access);
+
+   overriding procedure Decode_Append
+    (Self   : UTF16BE_Decoder;
+     Data   : Ada.Streams.Stream_Element_Array;
+     State  : in out Abstract_Decoder_State'Class;
+     String : in out Matreshka.Internals.Strings.Shared_String_Access);
+
+   --------------
+   -- UTF-16LE --
+   --------------
 
    type UTF16LE_Decoder is new Abstract_Decoder with null record;
 
@@ -77,6 +113,14 @@ private
    type UTF16_Meta_Class is mod 2 ** 8;
    type UTF16_DFA_State is mod 2 ** 8;
 
+   type UTF16BE_Decoder_State is new Abstract_Decoder_State with record
+      Mode    : Decoder_Mode;
+      Skip_LF : Boolean;
+      State   : UTF16_DFA_State;
+      Code    : Matreshka.Internals.Unicode.Code_Unit_32;
+      Low     : Matreshka.Internals.Unicode.Code_Unit_16;
+   end record;
+
    type UTF16LE_Decoder_State is new Abstract_Decoder_State with record
       Mode    : Decoder_Mode;
       Skip_LF : Boolean;
@@ -85,4 +129,4 @@ private
       Low     : Matreshka.Internals.Unicode.Code_Unit_16;
    end record;
 
-end Matreshka.Internals.Text_Codecs.UTF16LE;
+end Matreshka.Internals.Text_Codecs.UTF16;

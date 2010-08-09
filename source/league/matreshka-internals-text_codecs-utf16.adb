@@ -44,17 +44,28 @@
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Utf16;
 
-package body Matreshka.Internals.Text_Codecs.UTF16LE is
+package body Matreshka.Internals.Text_Codecs.UTF16 is
 
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
-   use type Matreshka.Internals.Unicode.Code_Unit_32;
 
-   Accept_State                : constant := 0;
-   Reject_State                : constant := 1;
-   Second_Byte_State           : constant := 2;
-   Surrogate_First_Byte_State  : constant := 3;
-   Surrogate_Second_Byte_State : constant := 4;
+   --  Common states for both BE and LE variants.
+
+   Accept_State                   : constant := 0;
+   Reject_State                   : constant := 1;
+
+   --  States of BE variant.
+
+   BE_Second_Byte_Ordinary_State  : constant := 2;
+   BE_Second_Byte_Surrogate_State : constant := 3;
+   BE_Surrogate_First_Byte_State  : constant := 4;
+   BE_Surrogate_Second_Byte_State : constant := 5;
+
+   --  States of LE variant.
+
+   LE_Second_Byte_State           : constant := 2;
+   LE_Surrogate_First_Byte_State  : constant := 3;
+   LE_Surrogate_Second_Byte_State : constant := 4;
 
    Meta_Class : constant
      array (Ada.Streams.Stream_Element) of UTF16_Meta_Class
@@ -76,7 +87,16 @@ package body Matreshka.Internals.Text_Codecs.UTF16LE is
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   --  0xE0
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);  --  0xF0
 
-   Transition : constant
+   BE_Transition : constant
+     array (UTF16_DFA_State range 0 .. 23) of UTF16_DFA_State
+       := (2, 3, 1, 1,   --  Accept
+           1, 1, 1, 1,   --  Reject
+           0, 0, 0, 1,   --  Second_Ordinary,
+           4, 4, 4, 1,   --  Second_Surrogate,
+           1, 1, 5, 1,   --  Surrogate_First
+           0, 0, 0, 1);  --  Surrogate_Second
+
+   LE_Transition : constant
      array (UTF16_DFA_State range 0 .. 19) of UTF16_DFA_State
        := (2, 2, 2, 1,   --  Accept
            1, 1, 1, 1,   --  Reject
@@ -89,8 +109,33 @@ package body Matreshka.Internals.Text_Codecs.UTF16LE is
    ------------------
 
    overriding function Create_State
+    (Self : UTF16BE_Decoder;
+     Mode : Decoder_Mode) return Abstract_Decoder_State'Class
+   is
+      pragma Unreferenced (Self);
+      --  Used for dispatching of call only.
+
+   begin
+      return
+        UTF16BE_Decoder_State'
+         (Mode    => Mode,
+          Skip_LF => False,
+          State   => Accept_State,
+          Code    => 0,
+          Low     => 0);
+   end Create_State;
+
+   ------------------
+   -- Create_State --
+   ------------------
+
+   overriding function Create_State
     (Self : UTF16LE_Decoder;
-     Mode : Decoder_Mode) return Abstract_Decoder_State'Class is
+     Mode : Decoder_Mode) return Abstract_Decoder_State'Class
+   is
+      pragma Unreferenced (Self);
+      --  Used for dispatching of call only.
+
    begin
       return
         UTF16LE_Decoder_State'
@@ -100,6 +145,25 @@ package body Matreshka.Internals.Text_Codecs.UTF16LE is
           Code    => 0,
           Low     => 0);
    end Create_State;
+
+   ------------
+   -- Decode --
+   ------------
+
+   overriding procedure Decode
+    (Self   : UTF16BE_Decoder;
+     Data   : Ada.Streams.Stream_Element_Array;
+     State  : in out Abstract_Decoder_State'Class;
+     String : out Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
+      String := Matreshka.Internals.Strings.Allocate (Data'Length);
+      Decode_Append (Self, Data, State, String);
+
+      if String.Unused = 0 then
+         Matreshka.Internals.Strings.Dereference (String);
+         String := Matreshka.Internals.Strings.Shared_Empty'Access;
+      end if;
+   end Decode;
 
    ------------
    -- Decode --
@@ -119,6 +183,124 @@ package body Matreshka.Internals.Text_Codecs.UTF16LE is
          String := Matreshka.Internals.Strings.Shared_Empty'Access;
       end if;
    end Decode;
+
+   -------------------
+   -- Decode_Append --
+   -------------------
+
+   overriding procedure Decode_Append
+    (Self   : UTF16BE_Decoder;
+     Data   : Ada.Streams.Stream_Element_Array;
+     State  : in out Abstract_Decoder_State'Class;
+     String : in out Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      UTF16_State     : UTF16BE_Decoder_State
+        renames UTF16BE_Decoder_State (State);
+
+      Current_State   : UTF16_DFA_State := UTF16_State.State;
+      Current_Code    : Matreshka.Internals.Unicode.Code_Unit_32
+        := UTF16_State.Code;
+      Current_Low     : Matreshka.Internals.Unicode.Code_Unit_16
+        := UTF16_State.Low;
+      Current_Mode    : constant Decoder_Mode := UTF16_State.Mode;
+      Current_Skip_LF : Boolean := UTF16_State.Skip_LF;
+
+   begin
+      for J in Data'Range loop
+         declare
+            M : constant UTF16_Meta_Class := Meta_Class (Data (J));
+
+         begin
+            case Current_State is
+               when Accept_State =>
+                  Current_Code := Code_Unit_32 (Data (J));
+
+               when BE_Second_Byte_Ordinary_State
+                 | BE_Second_Byte_Surrogate_State
+               =>
+                  Current_Code :=
+                    (Current_Code * 16#100#) or Code_Unit_32 (Data (J));
+
+               when BE_Surrogate_First_Byte_State =>
+                  Current_Low := Code_Unit_16 (Data (J));
+
+               when BE_Surrogate_Second_Byte_State =>
+                  Current_Code :=
+                    Unchecked_Surrogate_Pair_To_Code_Point
+                     (Code_Unit_16 (Current_Code),
+                      (Current_Low * 16#100#) or Code_Unit_16 (Data (J)));
+
+               when others =>
+                  null;
+            end case;
+
+            Current_State :=
+              BE_Transition (Current_State * 4 + UTF16_DFA_State (M));
+
+            if Current_State = Accept_State then
+               case Current_Mode is
+                  when Raw =>
+                     Matreshka.Internals.Strings.Operations.Append
+                      (String, Current_Code);
+
+                  when XML_1_0 =>
+                     if Current_Code = 16#000D# then
+                        Current_Skip_LF := True;
+
+                        Matreshka.Internals.Strings.Operations.Append
+                         (String, 16#000A#);
+
+                     elsif Current_Code = 16#000A# then
+                        if not Current_Skip_LF then
+                           Matreshka.Internals.Strings.Operations.Append
+                            (String, 16#000A#);
+                        end if;
+
+                        Current_Skip_LF := False;
+
+                     else
+                        Current_Skip_LF := False;
+                        Matreshka.Internals.Strings.Operations.Append
+                         (String, Current_Code);
+                     end if;
+
+                  when XML_1_1 =>
+                     if Current_Code = 16#000D# then
+                        Current_Skip_LF := True;
+
+                        Matreshka.Internals.Strings.Operations.Append
+                         (String, 16#000A#);
+
+                     elsif Current_Code = 16#000A#
+                       or Current_Code = 16#0085#
+                     then
+                        if not Current_Skip_LF then
+                           Matreshka.Internals.Strings.Operations.Append
+                            (String, 16#000A#);
+                        end if;
+
+                        Current_Skip_LF := False;
+
+                     elsif Current_Code = 16#2028# then
+                        Current_Skip_LF := False;
+                        Matreshka.Internals.Strings.Operations.Append
+                         (String, 16#000A#);
+
+                     else
+                        Current_Skip_LF := False;
+                        Matreshka.Internals.Strings.Operations.Append
+                         (String, Current_Code);
+                     end if;
+               end case;
+            end if;
+         end;
+      end loop;
+
+      UTF16_State.State   := Current_State;
+      UTF16_State.Code    := Current_Code;
+      UTF16_State.Low     := Current_Low;
+      UTF16_State.Skip_LF := Current_Skip_LF;
+   end Decode_Append;
 
    -------------------
    -- Decode_Append --
@@ -151,14 +333,14 @@ package body Matreshka.Internals.Text_Codecs.UTF16LE is
                when Accept_State =>
                   Current_Code := Code_Unit_32 (Data (J));
 
-               when Second_Byte_State =>
+               when LE_Second_Byte_State =>
                   Current_Code :=
                     (Code_Unit_32 (Data (J)) * 16#100#) or Current_Code;
 
-               when Surrogate_First_Byte_State =>
+               when LE_Surrogate_First_Byte_State =>
                   Current_Low := Code_Unit_16 (Data (J));
 
-               when Surrogate_Second_Byte_State =>
+               when LE_Surrogate_Second_Byte_State =>
                   Current_Code :=
                     Unchecked_Surrogate_Pair_To_Code_Point
                      (Code_Unit_16 (Current_Code),
@@ -169,7 +351,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16LE is
             end case;
 
             Current_State :=
-              Transition (Current_State * 4 + UTF16_DFA_State (M));
+              LE_Transition (Current_State * 4 + UTF16_DFA_State (M));
 
             if Current_State = Accept_State then
                case Current_Mode is
@@ -241,10 +423,30 @@ package body Matreshka.Internals.Text_Codecs.UTF16LE is
    --------------
 
    overriding function Is_Error
+    (Self : UTF16BE_Decoder_State) return Boolean is
+   begin
+      return Self.State = Reject_State;
+   end Is_Error;
+
+   --------------
+   -- Is_Error --
+   --------------
+
+   overriding function Is_Error
     (Self : UTF16LE_Decoder_State) return Boolean is
    begin
       return Self.State = Reject_State;
    end Is_Error;
+
+   -------------------
+   -- Is_Mailformed --
+   -------------------
+
+   overriding function Is_Mailformed
+    (Self : UTF16BE_Decoder_State) return Boolean is
+   begin
+      return Self.State /= Accept_State;
+   end Is_Mailformed;
 
    -------------------
    -- Is_Mailformed --
@@ -256,4 +458,4 @@ package body Matreshka.Internals.Text_Codecs.UTF16LE is
       return Self.State /= Accept_State;
    end Is_Mailformed;
 
-end Matreshka.Internals.Text_Codecs.UTF16LE;
+end Matreshka.Internals.Text_Codecs.UTF16;

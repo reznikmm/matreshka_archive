@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.Text_Codecs.UTF16LE;
+with Matreshka.Internals.Text_Codecs.UTF16;
 with Matreshka.Internals.Text_Codecs.UTF8;
 
 package body XML.SAX.Input_Sources.Streams is
@@ -308,10 +308,11 @@ package body XML.SAX.Input_Sources.Streams is
 
                when UTF16LE =>
                   Self.Decoder :=
-                    new Matreshka.Internals.Text_Codecs.UTF16LE.UTF16LE_Decoder;
+                    new Matreshka.Internals.Text_Codecs.UTF16.UTF16LE_Decoder;
 
                when UTF16BE =>
-                  raise Program_Error;
+                  Self.Decoder :=
+                    new Matreshka.Internals.Text_Codecs.UTF16.UTF16BE_Decoder;
 
                when EBCDIC =>
                   raise Program_Error;
