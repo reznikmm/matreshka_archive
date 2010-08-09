@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Text_IO;
 
 package body XML.SAX.Input_Sources.Streams.Sockets is
 
@@ -55,21 +54,16 @@ package body XML.SAX.Input_Sources.Streams.Sockets is
      Last        : out Ada.Streams.Stream_Element_Offset;
      End_Of_Data : out Boolean)
    is
-      --  for debug
       X : GNAT.Sockets.Request_Type (GNAT.Sockets.N_Bytes_To_Read);
 
    begin
       --  Getting how much data available in Socket
       GNAT.Sockets.Control_Socket (Self.Socket, X);
-      Ada.Text_IO.Put_Line ("Read : Data_Size for reading :" & X.Size'Img);
 
       if X.Size > 0 then
          GNAT.Sockets.Receive_Socket (Self.Socket, Buffer, Last);
 
-         Ada.Text_IO.Put_Line ("Read : Data_Size Read :" & Last'Img);
-
       else
-         Ada.Text_IO.Put_Line ("Read : Blocking Next");
          Last := Buffer'First - 1;
       end if;
 
