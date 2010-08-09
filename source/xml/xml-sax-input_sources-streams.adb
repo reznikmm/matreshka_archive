@@ -66,7 +66,12 @@ package body XML.SAX.Input_Sources.Streams is
              (Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class,
               Matreshka.Internals.Text_Codecs.Decoder_State_Access);
 
+      procedure Free is
+        new Ada.Unchecked_Deallocation
+             (Ada.Streams.Stream_Element_Array, Stream_Element_Array_Access);
+
    begin
+      Free (Self.Buffer);
       Free (Self.Decoder);
       Free (Self.State);
    end Finalize;
@@ -81,22 +86,16 @@ package body XML.SAX.Input_Sources.Streams is
        not null Matreshka.Internals.Strings.Shared_String_Access;
      End_Of_Data : out Boolean)
    is
-      use type Ada.Streams.Stream_Element_Offset;
-
-      Last : Ada.Streams.Stream_Element_Offset;
+      First : Ada.Streams.Stream_Element_Offset := Self.Last + 1;
 
    begin
-      Self.Stream.Read (Self.Buffer, Last);
+      Self.Read
+       (Self.Buffer (First .. Self.Buffer'Last), Self.Last, End_Of_Data);
 
-      if Last >= Self.Buffer'First then
+      if Self.Last >= First then
          Self.Decoder.Decode_Append
-          (Self.Buffer (Self.Buffer'First .. Last),
-           Self.State.all,
-           Buffer);
-         End_Of_Data := False;
-
-      else
-         End_Of_Data := True;
+          (Self.Buffer (First .. Self.Last), Self.State.all, Buffer);
+         Self.Last := -1;
       end if;
    end Next;
 
@@ -113,6 +112,20 @@ package body XML.SAX.Input_Sources.Streams is
 --   not overriding procedure Set_Encoding
 --    (Self     : in out SAX_Input_Source;
 --     Encoding : League.Strings.Universal_String);
+
+   ----------
+   -- Read --
+   ----------
+
+   not overriding procedure Read
+    (Self        : in out Stream_Input_Source;
+     Buffer      : out Ada.Streams.Stream_Element_Array;
+     Last        : out Ada.Streams.Stream_Element_Offset;
+     End_Of_Data : out Boolean) is
+   begin
+      Self.Stream.Read (Buffer, Last);
+      End_Of_Data := Last < Buffer'First;
+   end Read;
 
    -------------------
    -- Set_Public_Id --

@@ -85,13 +85,33 @@ package XML.SAX.Input_Sources.Streams is
        not null Matreshka.Internals.Strings.Shared_String_Access;
      End_Of_Data : out Boolean);
 
+   not overriding procedure Read
+    (Self        : in out Stream_Input_Source;
+     Buffer      : out Ada.Streams.Stream_Element_Array;
+     Last        : out Ada.Streams.Stream_Element_Offset;
+     End_Of_Data : out Boolean);
+   --  Reads next portion of data from the source into the specified buffer.
+   --  Sets End_Of_Data to True when end of source is reached, otherwise sets
+   --  it to False.
+   --
+   --  This operation is intended to be overridden by derived sources to read
+   --  data from source into the internal buffer, and to prevent copy of
+   --  encoding detection and text decoding code in every implementation of
+   --  input source.
+
 private
+
+   use type Ada.Streams.Stream_Element_Offset;
+
+   type Stream_Element_Array_Access is access Ada.Streams.Stream_Element_Array;
 
    type Stream_Input_Source is
      new Ada.Finalization.Limited_Controlled
        and SAX_Input_Source with
    record
-      Buffer    : Ada.Streams.Stream_Element_Array (1 .. 1024);
+      Buffer    : Stream_Element_Array_Access
+        := new Ada.Streams.Stream_Element_Array (0 .. 1023);
+      Last      : Ada.Streams.Stream_Element_Offset := -1;
       Decoder   : Matreshka.Internals.Text_Codecs.Decoder_Access;
       State     : Matreshka.Internals.Text_Codecs.Decoder_State_Access;
       Stream    : Stream_Access;
