@@ -197,7 +197,7 @@ package body Matreshka.Internals.XML.Entity_Tables is
         Replacement_Text => Matreshka.Internals.Strings.Shared_Empty'Access,
         First_Position   => 0);
    end New_Document_Entity;
-   
+
    ----------------
    -- New_Entity --
    ----------------
