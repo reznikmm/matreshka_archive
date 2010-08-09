@@ -41,6 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package provides implementation of simple SAX reader. It can be used
+--  for both stream and incremental processing of data. It includes partial
+--  support for validation and support of namespaces.
+------------------------------------------------------------------------------
 private with Ada.Containers.Vectors;
 private with Ada.Exceptions;
 private with Ada.Finalization;
@@ -69,16 +73,22 @@ package XML.SAX.Simple_Readers is
    type SAX_Simple_Reader is
      limited new XML.SAX.Readers.SAX_Reader with private;
 
-   procedure Parse
-    (Self       : not null access SAX_Simple_Reader;
-     Data       : League.Strings.Universal_String;
-     Last_Chunk : Boolean := True);
-
-   procedure Parse
+   not overriding procedure Parse
     (Self   : not null access SAX_Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class);
+   --  Reads data from the specified input source till end of data is reached
+   --  and parse it. Reader can be used to read data several times, each time
+   --  it process separate XML document.
 
-   procedure Set_Enable_Namespaces
+   not overriding procedure Set_Input_Source
+    (Self   : not null access SAX_Simple_Reader;
+     Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class);
+   --  Sets input source to read data from it in incremental mode.
+
+   not overriding procedure Parse (Self : not null access SAX_Simple_Reader);
+   --  Reads next chunk of data from the input source and parse it.
+
+   not overriding procedure Set_Enable_Namespaces
     (Self    : not null access SAX_Simple_Reader;
      Enabled : Boolean);
    --  Enables/disables namespace processing.

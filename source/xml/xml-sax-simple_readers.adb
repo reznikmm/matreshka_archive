@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
-with Matreshka.Internals.Strings.Operations;
 with XML.SAX.Simple_Readers.Callbacks;
 with XML.SAX.Simple_Readers.Parser;
 with XML.SAX.Simple_Readers.Scanner;
@@ -51,6 +50,11 @@ package body XML.SAX.Simple_Readers is
 
    use Matreshka.Internals.Strings;
    use XML.SAX.Readers;
+
+   procedure Reset
+    (Self   : not null access SAX_Simple_Reader;
+     Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class);
+   --  Resets reader to start to read data from the specified input source.
 
    -----------
    -- Clear --
@@ -177,8 +181,6 @@ package body XML.SAX.Simple_Readers is
       --  Unicode character can be represented in UTF-16 encoding by one or
       --  or two code units, thus preallocate enough space.
 
---      Self.Validation := (others => True);
-
       Scanner.Initialize (Self);
    end Initialize;
 
@@ -222,24 +224,10 @@ package body XML.SAX.Simple_Readers is
    -----------
 
    procedure Parse
-    (Self       : not null access SAX_Simple_Reader;
-     Data       : League.Strings.Universal_String;
-     Last_Chunk : Boolean := True) is
+    (Self   : not null access SAX_Simple_Reader;
+     Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class) is
    begin
-      Callbacks.Call_Set_Document_Locator (Self.all, Self.Locator);
-      Self.Last_Chunk := Last_Chunk;
-      Self.Scanner_State.Last_Match := Last_Chunk;
-
-      if Self.Scanner_State.Data = null then
-         Self.Scanner_State.Data := League.Strings.Internals.Get_Shared (Data);
-         Matreshka.Internals.Strings.Reference (Self.Scanner_State.Data);
-
-      else
-         Matreshka.Internals.Strings.Operations.Append
-          (Self.Scanner_State.Data,
-           League.Strings.Internals.Get_Shared (Data));
-      end if;
-
+      Reset (Self, Source);
       Parser.YYParse (Self);
       Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
    end Parse;
@@ -248,7 +236,17 @@ package body XML.SAX.Simple_Readers is
    -- Parse --
    -----------
 
-   procedure Parse
+   not overriding procedure Parse (Self : not null access SAX_Simple_Reader) is
+   begin
+      Parser.YYParse (Self);
+      Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
+   end Parse;
+
+   -----------
+   -- Reset --
+   -----------
+
+   procedure Reset
     (Self   : not null access SAX_Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class)
    is
@@ -285,9 +283,7 @@ package body XML.SAX.Simple_Readers is
       Self.Parser_State.Look_Ahead := True;
       Self.Parser_State.Error      := False;
       Scanner.Initialize (Self.all);
-      Parser.YYParse (Self);
-      Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
-   end Parse;
+   end Reset;
 
    -------------------------
    -- Set_Content_Handler --
@@ -374,6 +370,15 @@ package body XML.SAX.Simple_Readers is
          Self.Error_Handler := Handler;
       end if;
    end Set_Error_Handler;
+
+   ----------------------
+   -- Set_Input_Source --
+   ----------------------
+
+   not overriding procedure Set_Input_Source
+    (Self   : not null access SAX_Simple_Reader;
+     Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class)
+       renames Reset;
 
    -------------------------
    -- Set_Lexical_Handler --
