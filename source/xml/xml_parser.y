@@ -641,8 +641,12 @@ Mixed:
    {
       Actions.On_Mixed_Content_Declaration (Self);
    }
-| Token_Open_Parenthesis Token_PCData Token_Close_Parenthesis
+| Token_Open_Parenthesis Token_PCData Mixed_content Token_Close_Parenthesis
    {
+      --  XXX Mixed_content is invalid here, but added to allow ayacc generates
+      --  useful parser. Without it generated parser doesn't recognize
+      --  Token_Asterisk when Mixed_content is empty.
+
       Actions.On_Mixed_Content_Declaration (Self);
    }
 ;
