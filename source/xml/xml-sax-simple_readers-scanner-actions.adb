@@ -683,9 +683,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
       Entity         : Entity_Identifier;
-      Source         : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Text           : Matreshka.Internals.Strings.Shared_String_Access;
-      Last_Match     : Boolean;
       State          : Scanner_State_Information;
 
    begin
@@ -823,9 +820,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
       Entity         : Entity_Identifier;
-      Source         : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Text           : Matreshka.Internals.Strings.Shared_String_Access;
-      Last_Match     : Boolean;
       State          : Scanner_State_Information;
 
    begin
@@ -1404,9 +1398,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
       Entity         : Entity_Identifier;
-      Source         : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Text           : Matreshka.Internals.Strings.Shared_String_Access;
-      Last_Match     : Boolean;
 
    begin
       Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
@@ -1445,9 +1436,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
       Entity         : Entity_Identifier;
-      Source         : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Text           : Matreshka.Internals.Strings.Shared_String_Access;
-      Last_Match     : Boolean;
 
    begin
       Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
@@ -1486,9 +1474,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
       Entity         : Entity_Identifier;
-      Source         : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Text           : Matreshka.Internals.Strings.Shared_String_Access;
-      Last_Match     : Boolean;
 
    begin
       Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
