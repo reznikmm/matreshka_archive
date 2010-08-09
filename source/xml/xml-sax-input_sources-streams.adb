@@ -93,7 +93,7 @@ package body XML.SAX.Input_Sources.Streams is
       type Encodings is
        (UCS4LE, UCS4BE, UCS42143, UCS43412, UTF16LE, UTF16BE, EBCDIC, UTF8);
 
-      First    : Ada.Streams.Stream_Element_Offset := Self.First;
+      First    : Ada.Streams.Stream_Element_Offset := Self.Last + 1;
       Encoding : Encodings;
 
    begin
@@ -335,6 +335,7 @@ package body XML.SAX.Input_Sources.Streams is
 
             Self.Decoder.Decode_Append
              (Self.Buffer (First .. Self.Last), Self.State.all, Buffer);
+            Self.First := First;
          end if;
 
       --  Decode received portion of data.

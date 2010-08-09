@@ -456,6 +456,7 @@ package body XML.SAX.Simple_Readers.Scanner is
       YY_Last_Match_Index        : Positive;
       YY_Last_Match_State        : Interfaces.Unsigned_32;
       YYLVal                     : YYSType renames Self.YYLVal;
+      YY_Last                    : Utf16_String_Index;
 
       function YY_Text
        (Trim_Left       : Natural := 0;
@@ -1578,12 +1579,19 @@ package body XML.SAX.Simple_Readers.Scanner is
                         --  Obtain next portion from the input source.
 
                         if Self.Scanner_State.Source /= null then
+                           YY_Last := Self.Scanner_State.Data.Unused;
+
                            Self.Scanner_State.Source.Next
                             (Self.Scanner_State.Data,
                              Self.Scanner_State.Last_Match);
                            Self.Last_Chunk := Self.Scanner_State.Last_Match;
 
-                           goto New_File;
+                           if YY_Last /= Self.Scanner_State.Data.Unused then
+                              --  New data is arrived, process it, otherwise
+                              --  reports End_Of_Input to parser.
+
+                              goto New_File;
+                           end if;
                         end if;
                      end if;
 
