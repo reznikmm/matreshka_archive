@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-        <attributes/>
-    </startElement>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/xmltest/valid/ext-sa/014.ent</systemID>
-    </resolveEntity>
-    <char>﻿</char>
-    <char>d</char>
-    <char>a</char>
-    <char>t</char>
-    <char>a</char>
-    <endElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <resolveEntity>
+    <systemID>014.ent</systemID>
+  </resolveEntity>
+  <characters>﻿</characters>
+  <characters>d</characters>
+  <characters>a</characters>
+  <characters>t</characters>
+  <characters>a</characters>
+  <endElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>
