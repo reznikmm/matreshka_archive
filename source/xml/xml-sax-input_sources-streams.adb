@@ -89,7 +89,7 @@ package body XML.SAX.Input_Sources.Streams is
       First : Ada.Streams.Stream_Element_Offset := Self.Last + 1;
 
    begin
-      Self.Read
+      Stream_Input_Source'Class (Self).Read
        (Self.Buffer (First .. Self.Buffer'Last), Self.Last, End_Of_Data);
 
       if Self.Last >= First then
