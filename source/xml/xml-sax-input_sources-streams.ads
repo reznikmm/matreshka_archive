@@ -67,9 +67,9 @@ package XML.SAX.Input_Sources.Streams is
    overriding function System_Id
     (Self : Stream_Input_Source) return League.Strings.Universal_String;
 
---   not overriding procedure Set_Encoding
---    (Self     : in out SAX_Input_Source;
---     Encoding : League.Strings.Universal_String);
+   not overriding procedure Set_Encoding
+    (Self     : in out Stream_Input_Source;
+     Encoding : League.Strings.Universal_String);
 
    not overriding procedure Set_Public_Id
     (Self : in out Stream_Input_Source;
@@ -79,11 +79,22 @@ package XML.SAX.Input_Sources.Streams is
     (Self : in out Stream_Input_Source;
      Id   : League.Strings.Universal_String);
 
+   overriding procedure Set_Version
+    (Self    : in out Stream_Input_Source;
+     Version : League.Strings.Universal_String);
+
    overriding procedure Next
     (Self        : in out Stream_Input_Source;
      Buffer      : in out
        not null Matreshka.Internals.Strings.Shared_String_Access;
      End_Of_Data : out Boolean);
+
+   overriding procedure Reset
+    (Self     : in out Stream_Input_Source;
+     Version  : League.Strings.Universal_String;
+     Encoding : League.Strings.Universal_String;
+     Rescan   : out Boolean;
+     Success  : out Boolean);
 
    not overriding procedure Read
     (Self        : in out Stream_Input_Source;
@@ -110,23 +121,27 @@ private
      new Ada.Finalization.Limited_Controlled
        and SAX_Input_Source with
    record
-      Buffer     : Stream_Element_Array_Access
+      Buffer       : Stream_Element_Array_Access
         := new Ada.Streams.Stream_Element_Array (0 .. 1023);
-      Last       : Ada.Streams.Stream_Element_Offset := -1;
-      Accumulate : Boolean := True;
+      First        : Ada.Streams.Stream_Element_Offset := 0;
+      Last         : Ada.Streams.Stream_Element_Offset := -1;
+      Accumulate   : Boolean := True;
       --  Accumulate source data in the buffer. Accumulation is used till
       --  XMLDecl or TextDecl or absence of one of is processed by parser.
       --  Accumulation allows to simplify changing of encoding from detected
       --  automatically to specified in the entity.
-      Decoder    : Matreshka.Internals.Text_Codecs.Decoder_Access;
-      State      : Matreshka.Internals.Text_Codecs.Decoder_State_Access;
+      Decoder      : Matreshka.Internals.Text_Codecs.Decoder_Access;
+      State        : Matreshka.Internals.Text_Codecs.Decoder_State_Access;
       --  Decoder and its state members are filled once first four bytes of
       --  the source data are readed and automatic encoding detection is done.
       --  They can be changed later, when parser requests change of the
       --  encoding to specified in the entity.
-      Stream     : Stream_Access;
-      Public_Id  : League.Strings.Universal_String;
-      System_Id  : League.Strings.Universal_String;
+      Stream       : Stream_Access;
+      Public_Id    : League.Strings.Universal_String;
+      System_Id    : League.Strings.Universal_String;
+      Encoding     : League.Strings.Universal_String;
+      Version_Mode : Matreshka.Internals.Text_Codecs.Decoder_Mode
+        := Matreshka.Internals.Text_Codecs.XML_1_0;
    end record;
 
    overriding procedure Finalize (Self : in out Stream_Input_Source);

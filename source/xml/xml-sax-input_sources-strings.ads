@@ -61,6 +61,13 @@ package XML.SAX.Input_Sources.Strings is
        not null Matreshka.Internals.Strings.Shared_String_Access;
      End_Of_Data : out Boolean);
 
+   overriding procedure Reset
+    (Self     : in out String_Input_Source;
+     Version  : League.Strings.Universal_String;
+     Encoding : League.Strings.Universal_String;
+     Rescan   : out Boolean;
+     Success  : out Boolean);
+
    not overriding procedure Set_Public_Id
     (Self : in out String_Input_Source;
      Id   : League.Strings.Universal_String);
@@ -68,6 +75,10 @@ package XML.SAX.Input_Sources.Strings is
    not overriding procedure Set_System_Id
     (Self : in out String_Input_Source;
      Id   : League.Strings.Universal_String);
+
+   overriding procedure Set_Version
+    (Self    : in out String_Input_Source;
+     Version : League.Strings.Universal_String);
 
    overriding function System_Id
     (Self : String_Input_Source) return League.Strings.Universal_String;
@@ -78,6 +89,7 @@ private
       String    : League.Strings.Universal_String;
       Public_Id : League.Strings.Universal_String;
       System_Id : League.Strings.Universal_String;
+      Version   : League.Strings.Universal_String;
    end record;
 
 end XML.SAX.Input_Sources.Strings;

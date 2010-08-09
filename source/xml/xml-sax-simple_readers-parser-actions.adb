@@ -1262,11 +1262,11 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          ("enexpected item ather root element"));
    end On_Unexpected_Token_After_Root_Element;
 
-   --------------------------------
-   -- On_XML_Version_Information --
-   --------------------------------
+   ------------------------
+   -- On_XML_Declaration --
+   ------------------------
 
-   procedure On_XML_Version_Information
+   procedure On_XML_Declaration
     (Self    : not null access SAX_Simple_Reader'Class;
      Version : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -1284,11 +1284,11 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                     and then Version.Value (1) = Full_Stop)
       then
          if Version.Value (2) = Digit_Zero then
-            Scanner.Set_XML_Version (Self, XML_1_0);
+            Self.Version := XML_1_0;
             Error := False;
 
          elsif Version.Value (2) = Digit_One then
-            Scanner.Set_XML_Version (Self, XML_1_1);
+            Self.Version := XML_1_1;
             Error := False;
          end if;
       end if;
@@ -1296,6 +1296,9 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       if Error then
          raise Program_Error;
       end if;
-   end On_XML_Version_Information;
+
+      Scanner.Set_Document_Version_And_Encoding
+       (Self, Self.Version, Self.Encoding);
+   end On_XML_Declaration;
 
 end XML.SAX.Simple_Readers.Parser.Actions;

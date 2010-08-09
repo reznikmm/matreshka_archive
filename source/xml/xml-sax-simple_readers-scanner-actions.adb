@@ -560,30 +560,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
 
       Pop_Start_Condition (Self);
---      if Self.Stack_Is_Empty
---        or not Self.Scanner_State.Is_External_Subset
---      then
---         --  XML document or external parsed general entity.
---
---         case Self.Version is
---            when XML_1_0 =>
---               Enter_Start_Condition (Self, Tables.DOCUMENT_10);
---
---            when XML_1_1 =>
---               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
---         end case;
---
---      else
---         --  External subset.
---
---         case Self.Version is
---            when XML_1_0 =>
---               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_10);
---
---            when XML_1_1 =>
---               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
---         end case;
---      end if;
 
       return Token_Pi_Close;
    end On_Close_Of_Processing_Instruction;
@@ -1162,35 +1138,14 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    procedure On_No_XML_Declaration
     (Self : not null access SAX_Simple_Reader'Class) is
    begin
+      Self.Encoding := League.Strings.Empty_Universal_String;
+
       --  Move scanner's position back to the start of the document or external
-      --  parser entity and switch to XML 1.0 mode.
+      --  parsed entity.
 
       YY_Move_Backward (Self);
       Pop_Start_Condition (Self);
---      if Self.Stack_Is_Empty
---        or not Self.Scanner_State.Is_External_Subset
---      then
---         --  XML document or external parsed general entity.
---
---         case Self.Version is
---            when XML_1_0 =>
---               Enter_Start_Condition (Self, Tables.DOCUMENT_10);
---
---            when XML_1_1 =>
---               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
---         end case;
---
---      else
---         --  External subset.
---
---         case Self.Version is
---            when XML_1_0 =>
---               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_10);
---
---            when XML_1_1 =>
---               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
---         end case;
---      end if;
+      Set_Document_Version_And_Encoding (Self, Self.Version, Self.Encoding);
    end On_No_XML_Declaration;
 
    -------------------------------------------
@@ -1381,9 +1336,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    function On_Open_Of_XML_Or_Text_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token is
    begin
+      Self.Encoding := League.Strings.Empty_Universal_String;
+      Self.Whitespace_Matched := False;
+
       Push_And_Enter_Start_Condition
        (Self, Start_Condition (Self), Tables.XML_DECL);
-      Reset_Whitespace_Matched (Self);
 
       return Token_Xml_Decl_Open;
    end On_Open_Of_XML_Or_Text_Declaration;

@@ -201,6 +201,15 @@ package body XML.SAX.Simple_Readers.Scanner is
          end if;
 
          Set_Is_Resolved (Self.Entities, Entity, True);
+         Self.Encoding := League.Strings.Empty_Universal_String;
+
+         case Self.Version is
+            when XML_1_0 =>
+               Source.Set_Version (League.Strings.To_Universal_String ("1.0"));
+
+            when XML_1_1 =>
+               Source.Set_Version (League.Strings.To_Universal_String ("1.1"));
+         end case;
 
       else
          Source     := null;
@@ -314,23 +323,18 @@ package body XML.SAX.Simple_Readers.Scanner is
       Self.Scanner_State.YY_Start_State := 1 + 2 * Enter;
    end Push_And_Enter_Start_Condition;
 
-   ----------------------------
-   -- Set_Whitespace_Matched --
-   ----------------------------
+   ---------------------------------------
+   -- Set_Document_Version_And_Encoding --
+   ---------------------------------------
 
-   procedure Set_Whitespace_Matched
-    (Self : not null access SAX_Simple_Reader'Class) is
-   begin
-      Self.Whitespace_Matched := True;
-   end Set_Whitespace_Matched;
+   procedure Set_Document_Version_And_Encoding
+    (Self     : not null access SAX_Simple_Reader'Class;
+     Version  : XML_Version;
+     Encoding : League.Strings.Universal_String)
+   is
+      Restart : Boolean;
+      Success : Boolean;
 
-   ---------------------
-   -- Set_XML_Version --
-   ---------------------
-
-   procedure Set_XML_Version
-    (Self    : not null access SAX_Simple_Reader'Class;
-     Version : XML_Version) is
    begin
       if Self.Version /= Version then
          --  [XML1.0 2.8]
@@ -360,19 +364,53 @@ package body XML.SAX.Simple_Readers.Scanner is
 
          Self.Version := Version;
 
-         Self.Scanner_State.Start_Condition_Stack.Delete_Last;
-
          case Self.Version is
             when XML_1_0 =>
-               Self.Scanner_State.Start_Condition_Stack.Append
-                (Tables.DOCUMENT_10);
+               Enter_Start_Condition (Self, Tables.DOCUMENT_10);
 
             when XML_1_1 =>
-               Self.Scanner_State.Start_Condition_Stack.Append
-                (Tables.DOCUMENT_11);
+               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
          end case;
       end if;
-   end Set_XML_Version;
+
+      case Self.Version is
+         when XML_1_0 =>
+            Self.Scanner_State.Source.Reset
+             (League.Strings.To_Universal_String ("1.0"),
+              Encoding,
+              Restart,
+              Success);
+
+         when XML_1_1 =>
+            Self.Scanner_State.Source.Reset
+             (League.Strings.To_Universal_String ("1.1"),
+              Encoding,
+              Restart,
+              Success);
+      end case;
+
+      if not Success then
+         raise Program_Error;
+      end if;
+
+      if Restart then
+         Matreshka.Internals.Strings.Operations.Reset (Self.Scanner_State.Data);
+         Self.Scanner_State.Source.Next
+          (Self.Scanner_State.Data,
+           Self.Scanner_State.Last_Match);
+         Self.Last_Chunk := Self.Scanner_State.Last_Match;
+      end if;
+   end Set_Document_Version_And_Encoding;
+
+   ----------------------------
+   -- Set_Whitespace_Matched --
+   ----------------------------
+
+   procedure Set_Whitespace_Matched
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Self.Whitespace_Matched := True;
+   end Set_Whitespace_Matched;
 
    ---------------------
    -- Start_Condition --

@@ -195,10 +195,10 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
     (Self : not null access SAX_Simple_Reader'Class);
    --  Handles unexpected token after the root element.
 
-   procedure On_XML_Version_Information
+   procedure On_XML_Declaration
     (Self    : not null access SAX_Simple_Reader'Class;
      Version : not null Matreshka.Internals.Strings.Shared_String_Access);
-   --  Handles XML version information by switching scanner to the
-   --  corresponding processing mode.
+   --  Handles XML version information and entity's encoding by switching
+   --  scanner to the corresponding processing mode.
 
 end XML.SAX.Simple_Readers.Parser.Actions;

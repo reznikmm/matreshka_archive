@@ -129,24 +129,11 @@ unexpected_at_end :
 ;
 
 XMLDecl_optional :
-  XMLDecl
+  Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment EncodingDecl_optional SDDecl_optional Token_PI_Close
    {
-      null;
+      Actions.On_XML_Declaration (Self, $4.String);
    }
 |
-   {
-      null;
-   }
-;
-
-XMLDecl :
-  Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment
-   {
-      --  Version information, rule [24] in rule [23].
-
-      Actions.On_XML_Version_Information (Self, $4.String);
-   }
-  EncodingDecl_optional SDDecl_optional Token_PI_Close
    {
       null;
    }
@@ -975,7 +962,7 @@ with Matreshka.Internals.XML.Symbol_Tables;
 
    package Actions is
 
-      procedure On_XML_Version_Information
+      procedure On_XML_Declaration
        (Self    : access Integer;
         Version : not null Matreshka.Internals.Strings.Shared_String_Access);
 

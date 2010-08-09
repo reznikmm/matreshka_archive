@@ -93,7 +93,7 @@ package body XML.SAX.Input_Sources.Streams is
       type Encodings is
        (UCS4LE, UCS4BE, UCS42143, UCS43412, UTF16LE, UTF16BE, EBCDIC, UTF8);
 
-      First    : Ada.Streams.Stream_Element_Offset := Self.Last + 1;
+      First    : Ada.Streams.Stream_Element_Offset := Self.First;
       Encoding : Encodings;
 
    begin
@@ -307,10 +307,12 @@ package body XML.SAX.Input_Sources.Streams is
                   raise Program_Error;
 
                when UTF16LE =>
+                  Self.Encoding := League.Strings.To_Universal_String ("UTF-16");
                   Self.Decoder :=
                     new Matreshka.Internals.Text_Codecs.UTF16.UTF16LE_Decoder;
 
                when UTF16BE =>
+                  Self.Encoding := League.Strings.To_Universal_String ("UTF-16");
                   Self.Decoder :=
                     new Matreshka.Internals.Text_Codecs.UTF16.UTF16BE_Decoder;
 
@@ -318,6 +320,7 @@ package body XML.SAX.Input_Sources.Streams is
                   raise Program_Error;
 
                when UTF8 =>
+                  Self.Encoding := League.Strings.To_Universal_String ("UTF-8");
                   Self.Decoder :=
                     new Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
             end case;
@@ -326,8 +329,7 @@ package body XML.SAX.Input_Sources.Streams is
 
             Self.State :=
               new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
-                   (Self.Decoder.Create_State
-                     (Matreshka.Internals.Text_Codecs.XML_1_0));
+                   (Self.Decoder.Create_State (Self.Version_Mode));
 
             --  Decode all readed data (not last chunk only).
 
@@ -343,6 +345,9 @@ package body XML.SAX.Input_Sources.Streams is
 
          if not Self.Accumulate then
             Self.Last := -1;
+
+         else
+            Self.First := Self.Last + 1;
          end if;
       end if;
    end Next;
@@ -382,6 +387,83 @@ package body XML.SAX.Input_Sources.Streams is
       end if;
    end Read;
 
+   -----------
+   -- Reset --
+   -----------
+
+   overriding procedure Reset
+    (Self     : in out Stream_Input_Source;
+     Version  : League.Strings.Universal_String;
+     Encoding : League.Strings.Universal_String;
+     Rescan   : out Boolean;
+     Success  : out Boolean)
+   is
+      use type Matreshka.Internals.Text_Codecs.Decoder_Mode;
+      use type League.Strings.Universal_String;
+
+      Old_Version_Mode : constant Matreshka.Internals.Text_Codecs.Decoder_Mode
+        := Self.Version_Mode;
+      Old_Encoding     : constant League.Strings.Universal_String
+        := Self.Encoding;
+
+   begin
+      Self.Accumulate := False;
+
+      if not Version.Is_Empty then
+         Self.Set_Version (Version);
+      end if;
+
+      if not Encoding.Is_Empty then
+         Self.Set_Encoding (Encoding);
+      end if;
+
+      Rescan :=
+        Self.Version_Mode /= Old_Version_Mode
+          or Self.Encoding /= Old_Encoding;
+
+      if Rescan then
+         Self.First := 0;
+
+         raise Program_Error with "Version or encoding was changed";
+--                  Self.Encoding := League.Strings.To_Universal_String ("UTF-16");
+--                  Self.Decoder :=
+--                    new Matreshka.Internals.Text_Codecs.UTF16.UTF16LE_Decoder;
+--
+--               when UTF16BE =>
+--                  Self.Encoding := League.Strings.To_Universal_String ("UTF-16");
+--                  Self.Decoder :=
+--                    new Matreshka.Internals.Text_Codecs.UTF16.UTF16BE_Decoder;
+--
+--               when EBCDIC =>
+--                  raise Program_Error;
+--
+--               when UTF8 =>
+--                  Self.Encoding := League.Strings.To_Universal_String ("UTF-8");
+--                  Self.Decoder :=
+--                    new Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
+--            end case;
+--
+--            --  Create decoder's state object.
+--
+--            Self.State :=
+--              new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
+--                   (Self.Decoder.Create_State (Self.Version_Mode));
+      end if;
+
+      Success := True;
+   end Reset;
+
+   ------------------
+   -- Set_Encoding --
+   ------------------
+
+   not overriding procedure Set_Encoding
+    (Self     : in out Stream_Input_Source;
+     Encoding : League.Strings.Universal_String) is
+   begin
+      Self.Encoding := Encoding;
+   end Set_Encoding;
+
    -------------------
    -- Set_Public_Id --
    -------------------
@@ -414,6 +496,28 @@ package body XML.SAX.Input_Sources.Streams is
    begin
       Self.System_Id := Id;
    end Set_System_Id;
+
+   -----------------
+   -- Set_Version --
+   -----------------
+
+   overriding procedure Set_Version
+    (Self    : in out Stream_Input_Source;
+     Version : League.Strings.Universal_String)
+   is
+      use League.Strings;
+
+   begin
+      if Version = To_Universal_String ("1.0") then
+         Self.Version_Mode := Matreshka.Internals.Text_Codecs.XML_1_0;
+
+      elsif Version = To_Universal_String ("1.1") then
+         Self.Version_Mode := Matreshka.Internals.Text_Codecs.XML_1_1;
+
+      else
+         raise Constraint_Error with "unsupported XML version";
+      end if;
+   end Set_Version;
 
    ---------------
    -- System_Id --

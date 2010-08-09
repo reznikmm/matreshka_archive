@@ -316,6 +316,8 @@ private
       --  When normalize attribute value of non-CDATA type, it indicates that
       --  previous processed character was space.
       Version                : XML_Version := XML_1_0;
+      Encoding               : League.Strings.Universal_String;
+      --  Encoding of the last entity.
 
       --  Parser state
 

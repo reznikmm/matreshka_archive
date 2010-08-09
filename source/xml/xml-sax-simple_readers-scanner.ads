@@ -50,9 +50,10 @@ private package XML.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Returns next token.
 
-   procedure Set_XML_Version
-    (Self    : not null access SAX_Simple_Reader'Class;
-     Version : XML_Version);
+   procedure Set_Document_Version_And_Encoding
+    (Self     : not null access SAX_Simple_Reader'Class;
+     Version  : XML_Version;
+     Encoding : League.Strings.Universal_String);
    --  Switch scanner to continue scanning according to the specified
    --  version of XML specification.
 

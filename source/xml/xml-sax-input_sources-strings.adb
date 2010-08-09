@@ -73,6 +73,21 @@ package body XML.SAX.Input_Sources.Strings is
       return Self.Public_Id;
    end Public_Id;
 
+   -----------
+   -- Reset --
+   -----------
+
+   overriding procedure Reset
+    (Self     : in out String_Input_Source;
+     Version  : League.Strings.Universal_String;
+     Encoding : League.Strings.Universal_String;
+     Rescan   : out Boolean;
+     Success  : out Boolean) is
+   begin
+      Rescan := False;
+      Success := True;
+   end Reset;
+
    -------------------
    -- Set_Public_Id --
    -------------------
@@ -105,6 +120,17 @@ package body XML.SAX.Input_Sources.Strings is
    begin
       Self.System_Id := Id;
    end Set_System_Id;
+
+   -----------------
+   -- Set_Version --
+   -----------------
+
+   overriding procedure Set_Version
+    (Self    : in out String_Input_Source;
+     Version : League.Strings.Universal_String) is
+   begin
+      Self.Version := Version;
+   end Set_Version;
 
    ---------------
    -- System_Id --

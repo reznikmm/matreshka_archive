@@ -87,10 +87,25 @@ package XML.SAX.Input_Sources is
 --    (Self : in out SAX_Input_Source;
 --     Id   : League.Strings.Universal_String) is abstract;
 
+   not overriding procedure Set_Version
+    (Self    : in out SAX_Input_Source;
+     Version : League.Strings.Universal_String) is abstract;
+   --  Sets XML version for the entity.
+
    not overriding procedure Next
     (Self        : in out SAX_Input_Source;
      Buffer      : in out
        not null Matreshka.Internals.Strings.Shared_String_Access;
      End_Of_Data : out Boolean) is abstract;
+
+   not overriding procedure Reset
+    (Self     : in out SAX_Input_Source;
+     Version  : League.Strings.Universal_String;
+     Encoding : League.Strings.Universal_String;
+     Rescan   : out Boolean;
+     Success  : out Boolean) is abstract;
+   --  Resets used version and encoding to specified. Sets Rescan to True when
+   --  encoding is changed and scanning must be restarted from the beginning of
+   --  the entity. Sets Success to False when error is detected.
 
 end XML.SAX.Input_Sources;
