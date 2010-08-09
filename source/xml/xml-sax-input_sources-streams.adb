@@ -47,6 +47,10 @@ with Matreshka.Internals.Text_Codecs.UTF8;
 
 package body XML.SAX.Input_Sources.Streams is
 
+   procedure Free is
+     new Ada.Unchecked_Deallocation
+          (Ada.Streams.Stream_Element_Array, Stream_Element_Array_Access);
+
 --   not overriding function Encoding
 --    (Self : SAX_Input_Source) return League.Strings.Universal_String;
 
@@ -66,10 +70,6 @@ package body XML.SAX.Input_Sources.Streams is
              (Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class,
               Matreshka.Internals.Text_Codecs.Decoder_State_Access);
 
-      procedure Free is
-        new Ada.Unchecked_Deallocation
-             (Ada.Streams.Stream_Element_Array, Stream_Element_Array_Access);
-
    begin
       Free (Self.Buffer);
       Free (Self.Decoder);
@@ -86,16 +86,59 @@ package body XML.SAX.Input_Sources.Streams is
        not null Matreshka.Internals.Strings.Shared_String_Access;
      End_Of_Data : out Boolean)
    is
-      First : Ada.Streams.Stream_Element_Offset := Self.Last + 1;
+      use type Matreshka.Internals.Text_Codecs.Decoder_Access;
+
+      First : constant Ada.Streams.Stream_Element_Offset := Self.Last + 1;
 
    begin
+      --  Reallocate buffer when necessary.
+
+      if First > Self.Buffer'Last then
+         declare
+            Old : Stream_Element_Array_Access := Self.Buffer;
+
+         begin
+            Self.Buffer :=
+              new Ada.Streams.Stream_Element_Array
+                   (Old'First .. Old'Last + 1024);
+            Self.Buffer (Old'Range) := Old.all;
+            Free (Old);
+         end;
+      end if;
+
+      --  Read next portion of data from the source.
+
       Stream_Input_Source'Class (Self).Read
        (Self.Buffer (First .. Self.Buffer'Last), Self.Last, End_Of_Data);
 
-      if Self.Last >= First then
+      --  Detect encoding automatically when four first bytes are readed.
+
+      if Self.Decoder = null then
+         if Self.Last >= 3 then
+            Self.Decoder :=
+              new Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
+            Self.State :=
+              new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
+                   (Self.Decoder.Create_State
+                     (Matreshka.Internals.Text_Codecs.XML_1_0));
+
+            --  Decode all readed data (not last chunk only).
+
+            Self.Decoder.Decode_Append
+             (Self.Buffer (Self.Buffer'First .. Self.Last),
+              Self.State.all,
+              Buffer);
+         end if;
+
+      --  Decode received portion of data.
+
+      elsif Self.Last >= First then
          Self.Decoder.Decode_Append
           (Self.Buffer (First .. Self.Last), Self.State.all, Buffer);
-         Self.Last := -1;
+
+         if not Self.Accumulate then
+            Self.Last := -1;
+         end if;
       end if;
    end Next;
 
@@ -124,7 +167,14 @@ package body XML.SAX.Input_Sources.Streams is
      End_Of_Data : out Boolean) is
    begin
       Self.Stream.Read (Buffer, Last);
-      End_Of_Data := Last < Buffer'First;
+
+      if Last < Buffer'First then
+         Last := Buffer'First - 1;
+         End_Of_Data := True;
+
+      else
+         End_Of_Data := False;
+      end if;
    end Read;
 
    -------------------
@@ -147,11 +197,6 @@ package body XML.SAX.Input_Sources.Streams is
      Stream : not null Stream_Access) is
    begin
       Self.Stream := Stream;
-      Self.Decoder := new Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
-      Self.State :=
-        new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
-             (Self.Decoder.Create_State
-               (Matreshka.Internals.Text_Codecs.XML_1_0));
    end Set_Stream;
 
    -------------------

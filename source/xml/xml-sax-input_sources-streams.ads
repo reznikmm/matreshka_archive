@@ -92,7 +92,8 @@ package XML.SAX.Input_Sources.Streams is
      End_Of_Data : out Boolean);
    --  Reads next portion of data from the source into the specified buffer.
    --  Sets End_Of_Data to True when end of source is reached, otherwise sets
-   --  it to False.
+   --  it to False. When there are no data readed Last must be set to exactly
+   --  Buffer'First - 1.
    --
    --  This operation is intended to be overridden by derived sources to read
    --  data from source into the internal buffer, and to prevent copy of
@@ -109,14 +110,23 @@ private
      new Ada.Finalization.Limited_Controlled
        and SAX_Input_Source with
    record
-      Buffer    : Stream_Element_Array_Access
+      Buffer     : Stream_Element_Array_Access
         := new Ada.Streams.Stream_Element_Array (0 .. 1023);
-      Last      : Ada.Streams.Stream_Element_Offset := -1;
-      Decoder   : Matreshka.Internals.Text_Codecs.Decoder_Access;
-      State     : Matreshka.Internals.Text_Codecs.Decoder_State_Access;
-      Stream    : Stream_Access;
-      Public_Id : League.Strings.Universal_String;
-      System_Id : League.Strings.Universal_String;
+      Last       : Ada.Streams.Stream_Element_Offset := -1;
+      Accumulate : Boolean := True;
+      --  Accumulate source data in the buffer. Accumulation is used till
+      --  XMLDecl or TextDecl or absence of one of is processed by parser.
+      --  Accumulation allows to simplify changing of encoding from detected
+      --  automatically to specified in the entity.
+      Decoder    : Matreshka.Internals.Text_Codecs.Decoder_Access;
+      State      : Matreshka.Internals.Text_Codecs.Decoder_State_Access;
+      --  Decoder and its state members are filled once first four bytes of
+      --  the source data are readed and automatic encoding detection is done.
+      --  They can be changed later, when parser requests change of the
+      --  encoding to specified in the entity.
+      Stream     : Stream_Access;
+      Public_Id  : League.Strings.Universal_String;
+      System_Id  : League.Strings.Universal_String;
    end record;
 
    overriding procedure Finalize (Self : in out Stream_Input_Source);
