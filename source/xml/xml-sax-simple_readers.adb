@@ -52,8 +52,9 @@ package body XML.SAX.Simple_Readers is
    use XML.SAX.Readers;
 
    procedure Reset
-    (Self   : not null access SAX_Simple_Reader;
-     Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class);
+    (Self        : not null access SAX_Simple_Reader;
+     Source      : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class;
+     Incremental : Boolean);
    --  Resets reader to start to read data from the specified input source.
 
    -----------
@@ -227,7 +228,7 @@ package body XML.SAX.Simple_Readers is
     (Self   : not null access SAX_Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class) is
    begin
-      Reset (Self, Source);
+      Reset (Self, Source, False);
       Parser.YYParse (Self);
       Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
    end Parse;
@@ -247,8 +248,9 @@ package body XML.SAX.Simple_Readers is
    -----------
 
    procedure Reset
-    (Self   : not null access SAX_Simple_Reader;
-     Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class)
+    (Self        : not null access SAX_Simple_Reader;
+     Source      : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class;
+     Incremental : Boolean)
    is
       use Matreshka.Internals.XML;
       use Matreshka.Internals.XML.Entity_Tables;
@@ -274,11 +276,11 @@ package body XML.SAX.Simple_Readers is
         Source.System_Id,
         Entity);
       Self.Scanner_State :=
-       (Entity     => Entity,
-        Last_Match => False,
-        Source     => Source.all'Unchecked_Access,
-        Data       => Matreshka.Internals.Strings.Shared_Empty'Access,
-        others     => <>);
+       (Entity      => Entity,
+        Source      => Source.all'Unchecked_Access,
+        Data        => Matreshka.Internals.Strings.Shared_Empty'Access,
+        Incremental => Incremental,
+        others      => <>);
       Self.Parser_State.TOS        := 0;
       Self.Parser_State.Look_Ahead := True;
       Self.Parser_State.Error      := False;
@@ -377,8 +379,10 @@ package body XML.SAX.Simple_Readers is
 
    not overriding procedure Set_Input_Source
     (Self   : not null access SAX_Simple_Reader;
-     Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class)
-       renames Reset;
+     Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class) is
+   begin
+      Reset (Self, Source, True);
+   end Set_Input_Source;
 
    -------------------------
    -- Set_Lexical_Handler --

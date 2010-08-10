@@ -224,13 +224,10 @@ package body XML.SAX.Simple_Readers.Scanner is
       end if;
 
       Self.Scanner_Stack.Append (Self.Scanner_State);
-      Self.Stack_Is_Empty := False;
 
       Self.Scanner_State :=
        (Source        => Source,
         Data          => Text,
-        Last_Match    => Last_Match,
-        End_Of_Source => Last_Match,
         Entity        => Entity,
         In_Literal    => In_Literal,
         Delimiter     => 0,
@@ -332,8 +329,9 @@ package body XML.SAX.Simple_Readers.Scanner is
      Version  : XML_Version;
      Encoding : League.Strings.Universal_String)
    is
-      Restart : Boolean;
-      Success : Boolean;
+      Restart       : Boolean;
+      Success       : Boolean;
+      End_Of_Source : Boolean;
 
    begin
       if Self.Version /= Version then
@@ -394,11 +392,10 @@ package body XML.SAX.Simple_Readers.Scanner is
       end if;
 
       if Restart then
-         Matreshka.Internals.Strings.Operations.Reset (Self.Scanner_State.Data);
+         Matreshka.Internals.Strings.Operations.Reset
+          (Self.Scanner_State.Data);
          Self.Scanner_State.Source.Next
-          (Self.Scanner_State.Data,
-           Self.Scanner_State.Last_Match);
-         Self.Last_Chunk := Self.Scanner_State.Last_Match;
+          (Self.Scanner_State.Data, End_Of_Source);
       end if;
    end Set_Document_Version_And_Encoding;
 
@@ -457,6 +454,7 @@ package body XML.SAX.Simple_Readers.Scanner is
       YY_Last_Match_State        : Interfaces.Unsigned_32;
       YYLVal                     : YYSType renames Self.YYLVal;
       YY_Last                    : Utf16_String_Index;
+      End_Of_Source              : Boolean;
 
       function YY_Text
        (Trim_Left       : Natural := 0;
@@ -815,134 +813,133 @@ package body XML.SAX.Simple_Readers.Scanner is
 --               return End_Of_Input;
 --
             when YY_End_Of_Buffer =>
-               if Self.Scanner_State.Last_Match then
-                  Self.Scanner_State.YY_Current_Position :=
-                    YY_Last_Match_Position;
-                  Self.Scanner_State.YY_Current_Index := YY_Last_Match_Index;
-                  YY_Current_State := YY_Last_Match_State;
-                  Self.Scanner_State.Last_Match := False;
+               if Self.Scanner_State.Source /= null then
+                  --  Input source is used to retrieve data.
 
-                  --  XXX Need to be double checked for the scenario when
-                  --  last accepted state is not at the last buffer's
-                  --  position.
+                  --  Obtain next portion from the input source.
 
-                  goto Next_Action;
---                     yy_c_buf_p := yy_n_chars;
---                     yy_current_state := yy_get_previous_state;
---
---                     yy_cp := yy_c_buf_p;
---                     yy_bp := yytext_ptr;
---
---                     goto next_action;
+                  YY_Last := Self.Scanner_State.Data.Unused;
 
-               else
-                  if Is_Document_Entity
-                      (Self.Entities, Self.Scanner_State.Entity)
-                  then
-                     --  Document entity.
+                  Self.Scanner_State.Source.Next
+                   (Self.Scanner_State.Data, End_Of_Source);
 
-                     if Self.Last_Chunk then
-                        Matreshka.Internals.Strings.Dereference
-                         (Self.Scanner_State.Data);
+                  if YY_Last = Self.Scanner_State.Data.Unused then
+                     --  There is no new data retrieved, handle end of source
+                     --  state.
 
-                     else
-                        --  Remove already scanned data.
+                     if End_Of_Source then
+                        --  Replacement text of the entity is loaded from input
+                        --  source and need to be stored in the entities table,
+                        --  except replacement text of the document entity.
+                        --  Input source can be deallocated.
 
-                        declare
-                           X : Matreshka.Internals.Strings.Shared_String_Access
-                             := Self.Scanner_State.Data;
-
-                        begin
-                           if Self.Scanner_State.YY_Base_Position /= 0 then
-                              --  Construct slice only when we actually need
-                              --  to move data.
-
-                              Self.Scanner_State.Data :=
-                                Matreshka.Internals.Strings.Operations.Slice
-                                 (X,
-                                  Self.Scanner_State.YY_Base_Position,
-                                  Self.Scanner_State.Data.Unused
-                                    - Self.Scanner_State.YY_Base_Position,
-                                  Self.Scanner_State.Data.Length
-                                    - Self.Scanner_State.YY_Base_Index + 1);
-                              Matreshka.Internals.Strings.Dereference (X);
-                           end if;
-
-                           Self.Scanner_State.YY_Current_Position := 0;
-                           Self.Scanner_State.YY_Current_Index    := 1;
-                           Self.Scanner_State.YY_Current_Line     :=
-                             Self.Scanner_State.YY_Base_Line;
-                           Self.Scanner_State.YY_Current_Column   :=
-                             Self.Scanner_State.YY_Base_Column;
-                           Self.Scanner_State.YY_Current_Skip_LF  :=
-                             Self.Scanner_State.YY_Base_Skip_LF;
-                        end;
-
-                        --  Obtain next portion from the input source.
-
-                        if Self.Scanner_State.Source /= null then
-                           YY_Last := Self.Scanner_State.Data.Unused;
-
-                           Self.Scanner_State.Source.Next
-                            (Self.Scanner_State.Data,
-                             Self.Scanner_State.Last_Match);
-                           Self.Last_Chunk := Self.Scanner_State.Last_Match;
-
-                           if YY_Last /= Self.Scanner_State.Data.Unused then
-                              --  New data is arrived, process it, otherwise
-                              --  reports End_Of_Input to parser.
-
-                              goto New_File;
-                           end if;
-                        end if;
-                     end if;
-
-                     return End_Of_Input;
-
-                  else
-                     if Self.Scanner_State.End_Of_Source then
-                        if Self.Scanner_State.Source /= null then
-                           --  Replacement text of the entity is loaded from
-                           --  input source and need to be stored in the
-                           --  entities table. Input source can be deallocated.
-
+                        if not Is_Document_Entity
+                                (Self.Entities, Self.Scanner_State.Entity)
+                        then
                            Set_Replacement_Text
                             (Self.Entities,
                              Self.Scanner_State.Entity,
                              Self.Scanner_State.Data);
 
                            Free (Self.Scanner_State.Source);
+
+                        else
+                           Self.Scanner_State.Source := null;
                         end if;
 
-                        Self.Scanner_State := Self.Scanner_Stack.Last_Element;
-                        Self.Scanner_Stack.Delete_Last;
-                        Self.Stack_Is_Empty := Self.Scanner_Stack.Is_Empty;
+                     elsif Self.Scanner_State.Incremental then
+                        return End_Of_Chunk;
 
                      else
-                        --  Back current position to base position.
+                        raise Program_Error;
+                     end if;
+                  end if;
 
-                        Self.Scanner_State.YY_Current_Position :=
-                          Self.Scanner_State.YY_Base_Position;
-                        Self.Scanner_State.YY_Current_Index    :=
-                          Self.Scanner_State.YY_Base_Index;
-                        Self.Scanner_State.YY_Current_Line     :=
-                          Self.Scanner_State.YY_Base_Line;
-                        Self.Scanner_State.YY_Current_Column   :=
-                          Self.Scanner_State.YY_Base_Column;
-                        Self.Scanner_State.YY_Current_Skip_LF  :=
-                          Self.Scanner_State.YY_Base_Skip_LF;
+                  --  Back current position to base position to restart
+                  --  scanning, remove scanned data for document entity.
 
-                        --  Obtain next portion from the input source.
+                  if Is_Document_Entity
+                      (Self.Entities, Self.Scanner_State.Entity)
+                  then
+                     --  For document entity remove already scanned data.
 
-                        Self.Scanner_State.Source.Next
-                         (Self.Scanner_State.Data,
-                          Self.Scanner_State.End_Of_Source);
+                     if Self.Scanner_State.YY_Base_Position /= 0 then
+                        --  Construct slice only when we actually need
+                        --  to move data.
 
-                        Self.Scanner_State.Last_Match :=
-                          Self.Scanner_State.End_Of_Source;
+                        declare
+                           X : Matreshka.Internals.Strings.Shared_String_Access
+                             := Self.Scanner_State.Data;
+
+                        begin
+                           Self.Scanner_State.Data :=
+                             Matreshka.Internals.Strings.Operations.Slice
+                              (X,
+                               Self.Scanner_State.YY_Base_Position,
+                               Self.Scanner_State.Data.Unused
+                                 - Self.Scanner_State.YY_Base_Position,
+                               Self.Scanner_State.Data.Length
+                                 - Self.Scanner_State.YY_Base_Index + 1);
+                           Matreshka.Internals.Strings.Dereference (X);
+                        end;
+                     end if;
+
+                     Self.Scanner_State.YY_Current_Position := 0;
+                     Self.Scanner_State.YY_Current_Index    := 1;
+
+                  else
+                     --  Back current position to base position.
+
+                     Self.Scanner_State.YY_Current_Position :=
+                       Self.Scanner_State.YY_Base_Position;
+                     Self.Scanner_State.YY_Current_Index    :=
+                       Self.Scanner_State.YY_Base_Index;
+                  end if;
+
+                  Self.Scanner_State.YY_Current_Line    :=
+                    Self.Scanner_State.YY_Base_Line;
+                  Self.Scanner_State.YY_Current_Column  :=
+                    Self.Scanner_State.YY_Base_Column;
+                  Self.Scanner_State.YY_Current_Skip_LF :=
+                    Self.Scanner_State.YY_Base_Skip_LF;
+
+               else
+                  --  Input source is not used, complete replacement text of
+                  --  the entity is in the scanner's buffer. This covers two
+                  --  cases: (1) entity is internal or predefined entity, and
+                  --  (2) text of the entity is loaded completely.
+
+                  if Self.Scanner_State.Data.Unused
+                       /= Self.Scanner_State.YY_Base_Position
+                  then
+                     --  Continue processing till end of buffer will be
+                     --  reached.
+
+                     Self.Scanner_State.YY_Current_Position :=
+                       YY_Last_Match_Position;
+                     Self.Scanner_State.YY_Current_Index    :=
+                       YY_Last_Match_Index;
+                     YY_Current_State                       :=
+                       YY_Last_Match_State;
+
+                     goto Next_Action;
+
+                  else
+                     --  Replacement text of the entity is completely scanned,
+                     --  pop scanner's entity stack. When scanner's stack is
+                     --  empty returns End_Of_Input token.
+
+                     if not Self.Scanner_Stack.Is_Empty then
+                        Self.Scanner_State :=
+                          Self.Scanner_Stack.Last_Element;
+                        Self.Scanner_Stack.Delete_Last;
+
+                     else
+                        return End_Of_Input;
                      end if;
                   end if;
                end if;
+
 --            when YY_END_OF_BUFFER =>
 --               yytext_ptr := yy_bp;
 --

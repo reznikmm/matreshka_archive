@@ -271,9 +271,7 @@ package body XML.SAX.Simple_Readers.Parser is
             if YY.Look_Ahead then
                 YY.Input_Symbol := Scanner.YYLex (Self);
 
-                if YY.Input_Symbol = End_Of_Input
-                  and then not Self.Last_Chunk
-                then
+                if YY.Input_Symbol = End_Of_Chunk then
                    return;
                 end if;
 

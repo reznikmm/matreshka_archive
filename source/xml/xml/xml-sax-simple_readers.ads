@@ -154,6 +154,7 @@ private
    type Token is
     (End_Of_Input,
      Error,
+     End_Of_Chunk,
      Token_Xml_Decl_Open,
      Token_Pi_Open,
      Token_Pi_Close,
@@ -265,11 +266,8 @@ private
       YY_Current_Column    : Natural := 1;
       YY_Current_Skip_LF   : Boolean := False;
       YY_Start_State       : Interfaces.Unsigned_32 := 1;
-      Last_Match           : Boolean  := True;
-      --  This mean that last match need to be processed.
-      End_Of_Source        : Boolean  := True;
-      --  This mean end of source reached.
-      Is_External_Subset   : Boolean  := False;
+      Incremental          : Boolean := False;
+      Is_External_Subset   : Boolean := False;
       Entity               : Matreshka.Internals.XML.Entity_Identifier
         := Matreshka.Internals.XML.No_Entity;
       Start_Condition_Stack : Unsigned_32_Vectors.Vector;
@@ -360,9 +358,6 @@ private
 
       Scanner_State          : Scanner_State_Information;
       Scanner_Stack          : Scanner_State_Vectors.Vector;
-      Stack_Is_Empty         : Boolean := True;
-      --  This is cache of Is_Empty status of scanner's stack to speedup
-      --  scanning.
       Symbols                :
         Matreshka.Internals.XML.Symbol_Tables.Symbol_Table;
       Locator                : XML.SAX.Locators.SAX_Locator;

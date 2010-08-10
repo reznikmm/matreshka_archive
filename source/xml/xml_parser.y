@@ -1,3 +1,4 @@
+%token End_Of_Chunk
 %token Token_Xml_Decl_Open
 %token Token_PI_Open
 %token Token_PI_Close
