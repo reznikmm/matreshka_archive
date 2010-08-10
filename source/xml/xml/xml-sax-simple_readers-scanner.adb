@@ -1523,7 +1523,12 @@ package body XML.SAX.Simple_Readers.Scanner is
 
                   if YY_Last = Self.Scanner_State.Data.Unused then
                      --  There is no new data retrieved, handle end of source
-                     --  state.
+                     --  state. It is possible to not reach end of source and
+                     --  retrieve no new data at the same time, for example
+                     --  when source data is mailformed and decoder unable to
+                     --  convert data. The same situtation is possible when
+                     --  some kind of filter is inserted between input source
+                     --  and actual stream (SSL/TLS encription, for example).
 
                      if End_Of_Source then
                         --  Replacement text of the entity is loaded from input
@@ -1540,6 +1545,10 @@ package body XML.SAX.Simple_Readers.Scanner is
                              Self.Scanner_State.Data);
 
                            Free (Self.Scanner_State.Source);
+                           --  XXX Input source should not be deallocated, it
+                           --  can be needed later to reread entity when XML
+                           --  version (document entity only) or encoding is
+                           --  changed.
 
                         else
                            Self.Scanner_State.Source := null;
@@ -1547,9 +1556,6 @@ package body XML.SAX.Simple_Readers.Scanner is
 
                      elsif Self.Scanner_State.Incremental then
                         return End_Of_Chunk;
-
-                     else
-                        raise Program_Error;
                      end if;
                   end if;
 
