@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <notation>
-        <name>n</name>
-        <systemID>http://www.w3.org/</systemID>
-    </notation>
-    <unparsedEntity>
-        <name>e</name>
-        <systemID>http://www.w3.org/</systemID>
-        <notation>n</notation>
-    </unparsedEntity>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <notation>
+    <name>n</name>
+    <systemID>http://www.w3.org/</systemID>
+  </notation>
+  <unparsedEntity>
+    <name>e</name>
+    <systemID>http://www.w3.org/</systemID>
+    <notation>n</notation>
+  </unparsedEntity>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>a</localName>
-                <qualifiedName>a</qualifiedName>
-                <value>e</value>
-                <type>ENTITY</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+        <localName>a</localName>
+        <qualifiedName>a</qualifiedName>
+        <value>e</value>
+        <type>ENTITY</type>
+      </attribute>
+    </attributes>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

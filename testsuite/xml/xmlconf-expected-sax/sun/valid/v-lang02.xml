@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI>http://www.w3.org/XML/1998/namespace</namespaceURI>
-                <localName>lang</localName>
-                <qualifiedName>xml:lang</qualifiedName>
-                <value>en-IN</value>
-                <type>CDATA</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes>
+      <attribute>
+        <namespaceURI>http://www.w3.org/XML/1998/namespace</namespaceURI>
+        <localName>lang</localName>
+        <qualifiedName>xml:lang</qualifiedName>
+        <value>en-IN</value>
+        <type>CDATA</type>
+      </attribute>
+    </attributes>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>
