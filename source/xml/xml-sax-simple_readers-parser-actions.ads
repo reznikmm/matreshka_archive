@@ -156,6 +156,13 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Process attribute declaration of CDATA type.
 
+   procedure On_Notation_Declaration
+    (Self      : not null access SAX_Simple_Reader'Class;
+     Name      : Matreshka.Internals.XML.Symbol_Identifier;
+     Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
+     System_Id : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Handles declaration of notation.
+
    procedure On_Open_Of_Tag
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);

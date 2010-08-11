@@ -134,6 +134,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
            Prefix_Name         => No_Symbol,
            Local_Name          => No_Symbol,
            Element             => No_Element,
+           Notation            => No_Notation,
            Parameter_Entity    => No_Entity,
            General_Entity      => Entity);
       end Register_Predefined_Entity;
@@ -156,6 +157,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
            Prefix_Name         => No_Symbol,
            Local_Name          => No_Symbol,
            Element             => No_Element,
+           Notation            => No_Notation,
            Parameter_Entity    => No_Entity,
            General_Entity      => No_Entity);
       end Register_Symbol;
@@ -168,6 +170,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
         Prefix_Name         => No_Symbol,
         Local_Name          => No_Symbol,
         Element             => No_Element,
+        Notation            => No_Notation,
         Parameter_Entity    => No_Entity,
         General_Entity      => No_Entity);
       Self.Last  := No_Symbol;
@@ -288,6 +291,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
            Prefix_Name         => No_Symbol,
            Local_Name          => No_Symbol,
            Element             => No_Element,
+           Notation            => No_Notation,
            Parameter_Entity    => No_Entity,
            General_Entity      => No_Entity);
       end if;
@@ -500,6 +504,17 @@ package body Matreshka.Internals.XML.Symbol_Tables is
       return League.Strings.Internals.Create (Self.Table (Identifier).String);
    end Name;
 
+   --------------
+   -- Notation --
+   --------------
+
+   function Notation
+    (Self       : Symbol_Table;
+     Identifier : Symbol_Identifier) return Notation_Identifier is
+   begin
+      return Self.Table (Identifier).Notation;
+   end Notation;
+
    ----------------------
    -- Parameter_Entity --
    ----------------------
@@ -555,6 +570,18 @@ package body Matreshka.Internals.XML.Symbol_Tables is
    begin
       Self.Table (Identifier).General_Entity := Entity;
    end Set_General_Entity;
+
+   ------------------
+   -- Set_Notation --
+   ------------------
+
+   procedure Set_Notation
+    (Self       : in out Symbol_Table;
+     Identifier : Symbol_Identifier;
+     Notation   : Notation_Identifier) is
+   begin
+      Self.Table (Identifier).Notation := Notation;
+   end Set_Notation;
 
    --------------------------
    -- Set_Parameter_Entity --

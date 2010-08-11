@@ -529,13 +529,25 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 45 =>
-               null;
+               Actions.On_Notation_Declaration
+                (Self,
+                 YY.Value_Stack (YY.TOS -  3).Symbol,
+                 Matreshka.Internals.Strings.Shared_Empty'Access,
+                 YY.Value_Stack (YY.TOS -  1).String);
 
             when 46 =>
-               null;
+               Actions.On_Notation_Declaration
+                (Self,
+                 YY.Value_Stack (YY.TOS -  3).Symbol,
+                 YY.Value_Stack (YY.TOS -  1).String,
+                 Matreshka.Internals.Strings.Shared_Empty'Access);
 
             when 47 =>
-               null;
+               Actions.On_Notation_Declaration
+                (Self,
+                 YY.Value_Stack (YY.TOS -  4).Symbol,
+                 YY.Value_Stack (YY.TOS -  2).String,
+                 YY.Value_Stack (YY.TOS -  1).String);
 
             when 48 =>
                Actions.On_General_Entity_Declaration

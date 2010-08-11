@@ -59,6 +59,7 @@ private with Matreshka.Internals.XML.Attributes;
 private with Matreshka.Internals.XML.Element_Tables;
 private with Matreshka.Internals.XML.Entity_Tables;
 private with Matreshka.Internals.XML.Namespace_Scopes;
+private with Matreshka.Internals.XML.Notation_Tables;
 private with Matreshka.Internals.XML.Symbol_Tables;
 private with XML.SAX.Attributes;
 private with XML.SAX.Default_Handlers;
@@ -347,6 +348,8 @@ private
         Matreshka.Internals.XML.Element_Tables.Element_Table;
       Attributes             :
         Matreshka.Internals.XML.Attribute_Tables.Attribute_Table;
+      Notations              :
+        Matreshka.Internals.XML.Notation_Tables.Notation_Table;
       External_Subset_Entity : Matreshka.Internals.XML.Entity_Identifier
         := Matreshka.Internals.XML.No_Entity;
       --  Entity of the external subset if any.

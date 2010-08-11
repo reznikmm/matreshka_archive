@@ -54,6 +54,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    use Matreshka.Internals.XML.Element_Tables;
    use Matreshka.Internals.XML.Entity_Tables;
    use Matreshka.Internals.XML.Namespace_Scopes;
+   use Matreshka.Internals.XML.Notation_Tables;
    use Matreshka.Internals.XML.Symbol_Tables;
 
    Full_Stop  : constant := 16#002E#;
@@ -622,6 +623,43 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       Analyze_Attribute_Declaration
        (Self, Symbol, New_NmTokens_Attribute'Access);
    end On_NmTokens_Attribute_Declaration;
+
+   -----------------------------
+   -- On_Notation_Declaration --
+   -----------------------------
+
+   procedure On_Notation_Declaration
+    (Self      : not null access SAX_Simple_Reader'Class;
+     Name      : Matreshka.Internals.XML.Symbol_Identifier;
+     Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
+     System_Id : not null Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      Notation : Notation_Identifier;
+
+   begin
+      if Symbol_Tables.Notation (Self.Symbols, Name) /= No_Notation then
+         --  [XML VC: Unique Notation Name]
+         --
+         --  "A given name must not be declared in more than one notation
+         --  declaration."
+         --
+         --  Reports error when validation is enabled.
+
+         if Self.Validation.Enabled then
+            Callbacks.Call_Error
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("[XML VC: Unique Notation Name]"
+                  & " another notation is declared with this name"));
+         end if;
+
+      else
+         New_Notation (Self.Notations, Name, Public_Id, System_Id, Notation);
+         Set_Notation (Self.Symbols, Name, Notation);
+         Callbacks.Call_Notation_Declaration
+          (Self.all, Name, Public_Id, System_Id);
+      end if;
+   end On_Notation_Declaration;
 
    --------------------
    -- On_Open_Of_Tag --

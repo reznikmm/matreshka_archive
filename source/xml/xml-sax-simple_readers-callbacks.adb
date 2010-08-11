@@ -323,6 +323,36 @@ package body XML.SAX.Simple_Readers.Callbacks is
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_Internal_Entity_Declaration;
 
+   -------------------------------
+   -- Call_Notation_Declaration --
+   -------------------------------
+
+   procedure Call_Notation_Declaration
+    (Self      : in out SAX_Simple_Reader'Class;
+     Name      : Matreshka.Internals.XML.Symbol_Identifier;
+     Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
+     System_Id : not null Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
+      Setup_Locator (Self);
+      Self.DTD_Handler.Notation_Declaration
+       (Name      =>
+          Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Name),
+        Public_Id => League.Strings.Internals.Create (Public_Id),
+        System_Id => League.Strings.Internals.Create (System_Id),
+        Success   => Self.Continue);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.DTD_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_Notation_Declaration;
+
    ---------------------------------
    -- Call_Processing_Instruction --
    ---------------------------------

@@ -104,6 +104,13 @@ private package XML.SAX.Simple_Readers.Callbacks is
      Value : League.Strings.Universal_String);
    --  Calls handler's SAX_Decl_Handler.Internal_Entity_Declaration subprogram.
 
+   procedure Call_Notation_Declaration
+    (Self      : in out SAX_Simple_Reader'Class;
+     Name      : Matreshka.Internals.XML.Symbol_Identifier;
+     Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
+     System_Id : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Calls handler's SAX_DTD_Handler.Notation_Declaration subprogram.
+
    procedure Call_Processing_Instruction
     (Self   : in out SAX_Simple_Reader'Class;
      Target : Matreshka.Internals.XML.Symbol_Identifier;

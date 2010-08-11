@@ -151,6 +151,17 @@ package Matreshka.Internals.XML.Symbol_Tables is
      Element    : Element_Identifier);
    --  Associates element declaration with the name.
 
+   function Notation
+    (Self       : Symbol_Table;
+     Identifier : Symbol_Identifier) return Notation_Identifier;
+   --  Returns notation declaration associated with the name.
+
+   procedure Set_Notation
+    (Self       : in out Symbol_Table;
+     Identifier : Symbol_Identifier;
+     Notation   : Notation_Identifier);
+   --  Associates notation declaration with the name.
+
    procedure Initialize (Self : in out Symbol_Table);
    --  Initialize internal structures and register predefined general entities.
 
@@ -170,7 +181,7 @@ private
       Local_Name          : Symbol_Identifier;
 
       Element             : Element_Identifier;
---      Notation            : Notation_Identifier;
+      Notation            : Notation_Identifier;
       Parameter_Entity    : Entity_Identifier;
       General_Entity      : Entity_Identifier;
    end record;
@@ -188,10 +199,12 @@ private
    pragma Inline (General_Entity);
    pragma Inline (Local_Name);
    pragma Inline (Name);
+   pragma Inline (Notation);
    pragma Inline (Parameter_Entity);
    pragma Inline (Prefix_Name);
    pragma Inline (Set_Element);
    pragma Inline (Set_General_Entity);
+   pragma Inline (Set_Notation);
    pragma Inline (Set_Parameter_Entity);
 
 end Matreshka.Internals.XML.Symbol_Tables;

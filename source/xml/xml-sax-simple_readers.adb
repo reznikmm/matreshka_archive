@@ -53,7 +53,8 @@ package body XML.SAX.Simple_Readers is
 
    procedure Reset
     (Self        : not null access SAX_Simple_Reader;
-     Source      : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class;
+     Source      :
+       not null access XML.SAX.Input_Sources.SAX_Input_Source'Class;
      Incremental : Boolean);
    --  Resets reader to start to read data from the specified input source.
 
@@ -161,6 +162,7 @@ package body XML.SAX.Simple_Readers is
       Matreshka.Internals.XML.Symbol_Tables.Finalize (Self.Symbols);
       Matreshka.Internals.XML.Entity_Tables.Finalize (Self.Entities);
       Matreshka.Internals.XML.Namespace_Scopes.Finalize (Self.Namespace_Scope);
+      Matreshka.Internals.XML.Notation_Tables.Finalize (Self.Notations);
       Matreshka.Internals.XML.Attributes.Finalize (Self.Attribute_Set);
    end Finalize;
 
@@ -249,7 +251,8 @@ package body XML.SAX.Simple_Readers is
 
    procedure Reset
     (Self        : not null access SAX_Simple_Reader;
-     Source      : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class;
+     Source      :
+       not null access XML.SAX.Input_Sources.SAX_Input_Source'Class;
      Incremental : Boolean)
    is
       use Matreshka.Internals.XML;
@@ -265,6 +268,7 @@ package body XML.SAX.Simple_Readers is
       Matreshka.Internals.XML.Entity_Tables.Reset (Self.Entities);
       Matreshka.Internals.XML.Namespace_Scopes.Reset (Self.Namespace_Scope);
       Matreshka.Internals.XML.Symbol_Tables.Reset (Self.Symbols);
+      Matreshka.Internals.XML.Notation_Tables.Reset (Self.Notations);
 
       Callbacks.Call_Set_Document_Locator (Self.all, Self.Locator);
       Self.Version := XML_1_0;

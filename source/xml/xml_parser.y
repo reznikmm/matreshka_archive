@@ -370,15 +370,27 @@ intSubset:
 NotationDecl:
   Token_Notation_Decl_Open Token_System Token_System_Literal Token_Close
    {
-      null;
+      Actions.On_Notation_Declaration
+       (Self,
+        $1.Symbol,
+        Matreshka.Internals.Strings.Shared_Empty'Access,
+        $3.String);
    }
 | Token_Notation_Decl_Open Token_Public Token_Public_Literal Token_Close
    {
-      null;
+      Actions.On_Notation_Declaration
+       (Self,
+        $1.Symbol,
+        $3.String,
+        Matreshka.Internals.Strings.Shared_Empty'Access);
    }
 | Token_Notation_Decl_Open Token_Public Token_Public_Literal Token_System_Literal Token_Close
    {
-      null;
+      Actions.On_Notation_Declaration
+       (Self,
+        $1.Symbol,
+        $3.String,
+        $4.String);
    }
 ;
 
@@ -1075,6 +1087,12 @@ with Matreshka.Internals.XML.Symbol_Tables;
         Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
         Is_External : Boolean;
         Value       : League.Strings.Universal_String);
+
+      procedure On_Notation_Declaration
+       (Self      : access Integer;
+        Name      : Matreshka.Internals.XML.Symbol_Identifier;
+        Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
+        System_Id : not null Matreshka.Internals.Strings.Shared_String_Access);
 
    end Actions;
 
