@@ -296,7 +296,13 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
     (Self : not null access SAX_Simple_Reader'Class) is
    begin
       On_Start_Tag (Self);
-      On_End_Tag (Self, Self.Current_Element_Name);
+
+      if Self.Continue then
+         --  When error detected or caller's requests processing termination
+         --  end of tag should not be processed.
+
+         On_End_Tag (Self, Self.Current_Element_Name);
+      end if;
    end On_Empty_Element_Tag;
 
    ------------------------
