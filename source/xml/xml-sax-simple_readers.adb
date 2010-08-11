@@ -272,7 +272,6 @@ package body XML.SAX.Simple_Readers is
 
       Callbacks.Call_Set_Document_Locator (Self.all, Self.Locator);
       Self.Version := XML_1_0;
-      Self.Last_Chunk := False;
       Self.Encoding := League.Strings.Empty_Universal_String;
       New_Document_Entity
        (Self.Entities,
