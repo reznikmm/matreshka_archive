@@ -135,13 +135,6 @@ library project Matreshka_League is
           & Platform_Ada_Switches
           & Debug_Ada_Switches;
 
-      for Switches ("matreshka-internals-text_codecs-utf8.adb") use
-        Common_Ada_Switches
-          & Platform_Ada_Switches
-          & Debug_Ada_Switches;
-      --  GNAT GPL 2010: XML socket input source unable to do decoding of data
-      --  in incremental mode when optimization for this package is enabled.
-
    end Compiler;
 
    ------------
