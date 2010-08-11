@@ -1138,14 +1138,12 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    procedure On_No_XML_Declaration
     (Self : not null access SAX_Simple_Reader'Class) is
    begin
-      Self.Encoding := League.Strings.Empty_Universal_String;
-
       --  Move scanner's position back to the start of the document or external
-      --  parsed entity.
+      --  parsed entity. Entity's XML version and encoding are set up
+      --  automatically.
 
       YY_Move_Backward (Self);
       Pop_Start_Condition (Self);
-      Set_Document_Version_And_Encoding (Self, Self.Version, Self.Encoding);
    end On_No_XML_Declaration;
 
    -------------------------------------------
