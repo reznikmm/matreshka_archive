@@ -142,12 +142,13 @@ package body XMLConf.Testsuite_Handlers is
          Ada.Directories.Set_Directory (Dwd);
 
          select
-            delay 10.0;
+            delay 60.0;
 
             raise Program_Error with "terminated by timeout";
 
          then abort
             Reader.Set_Content_Handler (Writer'Unchecked_Access);
+            Reader.Set_DTD_Handler (Writer'Unchecked_Access);
             Reader.Set_Error_Handler (Writer'Unchecked_Access);
             Reader.Set_Entity_Resolver (Writer'Unchecked_Access);
             Reader.Set_Enable_Namespaces (Namespaces);

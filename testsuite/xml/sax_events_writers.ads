@@ -46,6 +46,7 @@ private with Ada.Finalization;
 with League.Strings;
 with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
+with XML.SAX.DTD_Handlers;
 with XML.SAX.Entity_Resolvers;
 with XML.SAX.Error_Handlers;
 with XML.SAX.Input_Sources;
@@ -56,6 +57,7 @@ package SAX_Events_Writers is
 
    type SAX_Events_Writer is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
+       and XML.SAX.DTD_Handlers.SAX_DTD_Handler
        and XML.SAX.Entity_Resolvers.SAX_Entity_Resolver
        and XML.SAX.Error_Handlers.SAX_Error_Handler with private;
 
@@ -110,6 +112,13 @@ package SAX_Events_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean);
 
+   overriding procedure Notation_Declaration
+    (Self      : in out SAX_Events_Writer;
+     Name      : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Success   : in out Boolean);
+
    overriding procedure Processing_Instruction
     (Self    : in out SAX_Events_Writer;
      Target  : League.Strings.Universal_String;
@@ -150,6 +159,14 @@ package SAX_Events_Writers is
      URI     : League.Strings.Universal_String;
      Success : in out Boolean);
 
+   overriding procedure Unparsed_Entity_Declaration
+    (Self          : in out SAX_Events_Writer;
+     Name          : League.Strings.Universal_String;
+     Public_Id     : League.Strings.Universal_String;
+     System_Id     : League.Strings.Universal_String;
+     Notation_Name : League.Strings.Universal_String;
+     Success       : in out Boolean);
+
    overriding procedure Warning
     (Self       : in out SAX_Events_Writer;
      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
@@ -160,6 +177,7 @@ private
    type SAX_Events_Writer is
      new Ada.Finalization.Limited_Controlled
        and XML.SAX.Content_Handlers.SAX_Content_Handler
+       and XML.SAX.DTD_Handlers.SAX_DTD_Handler
        and XML.SAX.Entity_Resolvers.SAX_Entity_Resolver
        and XML.SAX.Error_Handlers.SAX_Error_Handler with
    record

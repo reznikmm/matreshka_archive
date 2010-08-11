@@ -359,6 +359,31 @@ package body SAX_Events_Writers is
       Self.Add_Line (To_Universal_String ("<SAXEvents>"));
    end Initialize;
 
+   --------------------------
+   -- Notation_Declaration --
+   --------------------------
+
+   overriding procedure Notation_Declaration
+    (Self      : in out SAX_Events_Writer;
+     Name      : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Success   : in out Boolean) is
+   begin
+      Self.Add_Line (To_Universal_String ("  <notation>"));
+      Self.Add_Line ("    <name>" & Name & "</name>");
+
+      if not Public_Id.Is_Empty then
+         Self.Add_Line ("    <publicID>" & Public_Id & "</publicID>");
+      end if;
+
+      if not System_Id.Is_Empty then
+         Self.Add_Line ("    <systemID>" & System_Id & "</systemID>");
+      end if;
+
+      Self.Add_Line (To_Universal_String ("  </notation>"));
+   end Notation_Declaration;
+
    ----------------------------
    -- Processing_Instruction --
    ----------------------------
@@ -598,6 +623,33 @@ package body SAX_Events_Writers is
    begin
       return Self.Result;
    end Text;
+
+   ---------------------------------
+   -- Unparsed_Entity_Declaration --
+   ---------------------------------
+
+   overriding procedure Unparsed_Entity_Declaration
+    (Self          : in out SAX_Events_Writer;
+     Name          : League.Strings.Universal_String;
+     Public_Id     : League.Strings.Universal_String;
+     System_Id     : League.Strings.Universal_String;
+     Notation_Name : League.Strings.Universal_String;
+     Success       : in out Boolean) is
+   begin
+      Self.Add_Line (To_Universal_String ("  <unparsedEntity>"));
+      Self.Add_Line ("    <name>" & Name & "</name>");
+
+      if not Public_Id.Is_Empty then
+         Self.Add_Line ("    <publicID>" & Public_Id & "</publicID>");
+      end if;
+
+      if not System_Id.Is_Empty then
+         Self.Add_Line ("    <systemID>" & System_Id & "</systemID>");
+      end if;
+
+      Self.Add_Line ("    <notation>" & Name & "</notation>");
+      Self.Add_Line (To_Universal_String ("  </unparsedEntity>"));
+   end Unparsed_Entity_Declaration;
 
    -------------
    -- Warning --
