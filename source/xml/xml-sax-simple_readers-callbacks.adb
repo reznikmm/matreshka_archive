@@ -120,6 +120,27 @@ package body XML.SAX.Simple_Readers.Callbacks is
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_End_Document;
 
+   ------------------
+   -- Call_End_DTD --
+   ------------------
+
+   procedure Call_End_DTD (Self : in out SAX_Simple_Reader'Class) is
+   begin
+      Setup_Locator (Self);
+      Self.Lexical_Handler.End_DTD (Self.Continue);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.Lexical_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_End_DTD;
+
    ----------------------
    -- Call_End_Element --
    ----------------------
@@ -448,6 +469,36 @@ package body XML.SAX.Simple_Readers.Callbacks is
            League.Strings.To_Universal_String ("exception come from handler");
          Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
    end Call_Start_Document;
+
+   --------------------
+   -- Call_Start_DTD --
+   --------------------
+
+   procedure Call_Start_DTD
+    (Self      : in out SAX_Simple_Reader'Class;
+     Name      : Matreshka.Internals.XML.Symbol_Identifier;
+     Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
+     System_Id : not null Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
+      Setup_Locator (Self);
+      Self.Lexical_Handler.Start_DTD
+       (Name      =>
+          Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Name),
+        Public_Id => League.Strings.Internals.Create (Public_Id),
+        System_Id => League.Strings.Internals.Create (System_Id),
+        Success   => Self.Continue);
+
+      if not Self.Continue then
+         Self.Error_Message := Self.Lexical_Handler.Error_String;
+      end if;
+
+   exception
+      when E : others =>
+         Self.Continue      := False;
+         Self.Error_Message :=
+           League.Strings.To_Universal_String ("exception come from handler");
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+   end Call_Start_DTD;
 
    ------------------------
    -- Call_Start_Element --

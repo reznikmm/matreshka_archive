@@ -79,8 +79,7 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
    --  Handles end of document.
 
    procedure On_End_Of_Document_Type_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+    (Self : not null access SAX_Simple_Reader'Class);
    --  Handles end of document type declaration.
 
    procedure On_End_Tag
@@ -101,10 +100,6 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Process attribute declaration of CDATA type.
-
-   procedure On_External_Subset_Declaration
-    (Self : not null access SAX_Simple_Reader'Class);
-   --  Handles reference to external subset in the document type declaration.
 
    procedure On_Fixed_Attribute_Default_Declaration
     (Self    : not null access SAX_Simple_Reader'Class;
@@ -189,6 +184,12 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
    procedure On_Start_Of_Document
     (Self : not null access SAX_Simple_Reader'Class);
    --  Handles start of document.
+
+   procedure On_Start_Of_Document_Type_Declaration
+    (Self     : not null access SAX_Simple_Reader'Class;
+     Name     : Matreshka.Internals.XML.Symbol_Identifier;
+     External : Boolean);
+   --  Handles start of document type declaration.
 
    procedure On_Start_Of_Element_Declaration
     (Self   : not null access SAX_Simple_Reader'Class;

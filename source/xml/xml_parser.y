@@ -244,25 +244,31 @@ doctypedecl_optional:
       --  immediately after the internal subset. Thus original rule [28] is
       --  rewritten and extended to reflect this inclusion.
 
-      Actions.On_External_Subset_Declaration (Self);
+      Actions.On_Start_Of_Document_Type_Declaration
+       (Self,
+        $1.Symbol,
+        True);
    }
   internal_subset_optional external_subset_optional Token_Close
    {
-      Actions.On_End_Of_Document_Type_Declaration
-       (Self,
-        $1.Symbol);
+      Actions.On_End_Of_Document_Type_Declaration (Self);
    }
   Misc_any
    {
       null;
    }
-| Token_Doctype_Decl_Open internal_subset_optional Token_Close
+| Token_Doctype_Decl_Open
+   {
+      Actions.On_Start_Of_Document_Type_Declaration
+       (Self,
+        $1.Symbol,
+        False);
+   }
+  internal_subset_optional Token_Close
    {
       --  Document type declaration, rule [28]. 
 
-      Actions.On_End_Of_Document_Type_Declaration
-       (Self,
-        $1.Symbol);
+      Actions.On_End_Of_Document_Type_Declaration (Self);
    }
   Misc_any
    {
@@ -1005,11 +1011,12 @@ with Matreshka.Internals.XML.Symbol_Tables;
        (Self   : access Integer;
         Symbol : Matreshka.Internals.XML.Symbol_Identifier);
 
-      procedure On_External_Subset_Declaration (Self : access Integer);
+      procedure On_Start_Of_Document_Type_Declaration
+       (Self     : access Integer;
+        Symbol   : Matreshka.Internals.XML.Symbol_Identifier;
+        External : Boolean);
 
-      procedure On_End_Of_Document_Type_Declaration
-       (Self   : access Integer;
-        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+      procedure On_End_Of_Document_Type_Declaration (Self : access Integer);
 
       procedure On_Start_Of_Document (Self : access Integer);
 

@@ -61,6 +61,9 @@ private package XML.SAX.Simple_Readers.Callbacks is
    procedure Call_End_Document (Self : in out SAX_Simple_Reader'Class);
    --  Calls handler's SAX_Content_Handler.End_Document subprogram.
 
+   procedure Call_End_DTD (Self : in out SAX_Simple_Reader'Class);
+   --  Calls handler's SAX_Lexical_Handler.End_DTD subprogram.
+
    procedure Call_End_Element
     (Self           : in out SAX_Simple_Reader'Class;
      Namespace_URI  :
@@ -131,6 +134,13 @@ private package XML.SAX.Simple_Readers.Callbacks is
 
    procedure Call_Start_Document (Self : in out SAX_Simple_Reader'Class);
    --  Calls handler's SAX_Content_Handler.Start_Document subprogram.
+
+   procedure Call_Start_DTD
+    (Self      : in out SAX_Simple_Reader'Class;
+     Name      : Matreshka.Internals.XML.Symbol_Identifier;
+     Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
+     System_Id : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Calls handler's SAX_Lexical_Handler.Start_DTD subprogram.
 
    procedure Call_Start_Element
     (Self           : in out SAX_Simple_Reader'Class;

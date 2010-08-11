@@ -314,10 +314,9 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------------------------
 
    procedure On_End_Of_Document_Type_Declaration
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+    (Self : not null access SAX_Simple_Reader'Class) is
    begin
-      Self.Root_Symbol := Symbol;
+      Callbacks.Call_End_DTD (Self.all);
    end On_End_Of_Document_Type_Declaration;
 
    ----------------
@@ -409,20 +408,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       Analyze_Attribute_Declaration
        (Self, Symbol, New_Entity_Attribute'Access);
    end On_Entity_Attribute_Declaration;
-
-   ------------------------------------
-   -- On_External_Subset_Declaration --
-   ------------------------------------
-
-   procedure On_External_Subset_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) is
-   begin
-      New_External_Subset_Entity
-       (Self.Entities,
-        Self.Public_Id,
-        Self.System_Id,
-        Self.External_Subset_Entity);
-   end On_External_Subset_Declaration;
 
    --------------------------------------------
    -- On_Fixed_Attribute_Default_Declaration --
@@ -807,6 +792,38 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    begin
       Callbacks.Call_Start_Document (Self.all);
    end On_Start_Of_Document;
+
+   -------------------------------------------
+   -- On_Start_Of_Document_Type_Declaration --
+   -------------------------------------------
+
+   procedure On_Start_Of_Document_Type_Declaration
+    (Self     : not null access SAX_Simple_Reader'Class;
+     Name     : Matreshka.Internals.XML.Symbol_Identifier;
+     External : Boolean) is
+   begin
+      Self.Root_Symbol := Name;
+
+      if External then
+         New_External_Subset_Entity
+          (Self.Entities,
+           Self.Public_Id,
+           Self.System_Id,
+           Self.External_Subset_Entity);
+         Callbacks.Call_Start_DTD
+          (Self.all,
+           Name,
+           League.Strings.Internals.Get_Shared (Self.Public_Id),
+           League.Strings.Internals.Get_Shared (Self.System_Id));
+
+      else
+         Callbacks.Call_Start_DTD
+          (Self.all,
+           Name,
+           Matreshka.Internals.Strings.Shared_Empty'Access,
+           Matreshka.Internals.Strings.Shared_Empty'Access);
+      end if;
+   end On_Start_Of_Document_Type_Declaration;
 
    -------------------------------------
    -- On_Start_Of_Element_Declaration --
