@@ -41,10 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Containers.Ordered_Maps;
+with Ada.Characters.Wide_Wide_Latin_1;
+with Ada.Containers.Ordered_Maps;
 
 package body XMLConf.Canonical_Writers is
 
+   use Ada.Characters.Wide_Wide_Latin_1;
    use type League.Strings.Universal_String;
 
    package Universal_String_Integer_Maps is
@@ -70,6 +72,20 @@ package body XMLConf.Canonical_Writers is
    begin
       Self.Result.Append (Escape_Character_Data (Text));
    end Characters;
+
+   -------------
+   -- End_DTD --
+   -------------
+
+   overriding procedure End_DTD
+    (Self    : in out Canonical_Writer;
+     Success : in out Boolean) is
+   begin
+      if Self.Is_DTD_Open then
+         Self.Result.Append
+          (League.Strings.To_Universal_String ("]>" & LF));
+      end if;
+   end End_DTD;
 
    -----------------
    -- End_Element --
@@ -148,6 +164,43 @@ package body XMLConf.Canonical_Writers is
       Self.Result.Append (Escape_Character_Data (Text));
    end Ignorable_Whitespace;
 
+   --------------------------
+   -- Notation_Declaration --
+   --------------------------
+
+   overriding procedure Notation_Declaration
+    (Self      : in out Canonical_Writer;
+     Name      : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Success   : in out Boolean) is
+   begin
+      if not Self.Is_DTD_Open then
+         Self.Result.Append ("<!DOCTYPE " & Self.Name & " [" & LF);
+         Self.Is_DTD_Open := True;
+      end if;
+
+      if Public_Id.Is_Empty then
+         Self.Result.Append
+          ("<!NOTATION " & Name & " SYSTEM '" & System_Id & "'>" & LF);
+
+      elsif System_Id.Is_Empty then
+         Self.Result.Append
+          ("<!NOTATION " & Name & " PUBLIC '" & Public_Id & "'>" & LF);
+
+      else
+         Self.Result.Append
+          ("<!NOTATION "
+             & Name
+             & " PUBLIC '"
+             & Public_Id
+             & "' '"
+             & System_Id
+             & "'>"
+             & LF);
+      end if;
+   end Notation_Declaration;
+
    ----------------------------
    -- Processing_Instruction --
    ----------------------------
@@ -160,6 +213,20 @@ package body XMLConf.Canonical_Writers is
    begin
       Self.Result.Append ("<?" & Target & " " & Data & "?>");
    end Processing_Instruction;
+
+   ---------------
+   -- Start_DTD --
+   ---------------
+
+   overriding procedure Start_DTD
+    (Self      : in out Canonical_Writer;
+     Name      : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Success   : in out Boolean) is
+   begin
+      Self.Name := Name;
+   end Start_DTD;
 
    -------------------
    -- Start_Element --

@@ -240,6 +240,8 @@ package body XMLConf.Testsuite_Handlers is
             then abort
                Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
                Reader.Set_Content_Handler (Writer'Unchecked_Access);
+               Reader.Set_DTD_Handler (Writer'Unchecked_Access);
+               Reader.Set_Lexical_Handler (Writer'Unchecked_Access);
                Reader.Set_Enable_Namespaces (Namespaces);
 
                Source.Open

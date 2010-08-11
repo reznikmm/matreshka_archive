@@ -47,11 +47,15 @@
 with League.Strings;
 with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
+with XML.SAX.DTD_Handlers;
+with XML.SAX.Lexical_Handlers;
 
 package XMLConf.Canonical_Writers is
 
    type Canonical_Writer is
-     limited new XML.SAX.Content_Handlers.SAX_Content_Handler with private;
+     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
+       and XML.SAX.DTD_Handlers.SAX_DTD_Handler
+       and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with private;
 
    function Text
     (Self : Canonical_Writer) return League.Strings.Universal_String;
@@ -60,6 +64,10 @@ package XMLConf.Canonical_Writers is
    overriding procedure Characters
     (Self    : in out Canonical_Writer;
      Text    : League.Strings.Universal_String;
+     Success : in out Boolean);
+
+   overriding procedure End_DTD
+    (Self    : in out Canonical_Writer;
      Success : in out Boolean);
 
    overriding procedure End_Element
@@ -77,11 +85,25 @@ package XMLConf.Canonical_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean);
 
+   overriding procedure Notation_Declaration
+    (Self      : in out Canonical_Writer;
+     Name      : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Success   : in out Boolean);
+
    overriding procedure Processing_Instruction
     (Self    : in out Canonical_Writer;
      Target  : League.Strings.Universal_String;
      Data    : League.Strings.Universal_String;
      Success : in out Boolean);
+
+   overriding procedure Start_DTD
+    (Self      : in out Canonical_Writer;
+     Name      : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
+     Success   : in out Boolean);
 
    overriding procedure Start_Element
     (Self           : in out Canonical_Writer;
@@ -94,9 +116,13 @@ package XMLConf.Canonical_Writers is
 private
 
    type Canonical_Writer is
-     limited new XML.SAX.Content_Handlers.SAX_Content_Handler with
+     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
+       and XML.SAX.DTD_Handlers.SAX_DTD_Handler
+       and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with
    record
-      Result : League.Strings.Universal_String;
+      Result      : League.Strings.Universal_String;
+      Name        : League.Strings.Universal_String;
+      Is_DTD_Open : Boolean := False;
    end record;
 
 end XMLConf.Canonical_Writers;
