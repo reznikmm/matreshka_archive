@@ -647,7 +647,7 @@ package body SAX_Events_Writers is
          Self.Add_Line ("    <systemID>" & System_Id & "</systemID>");
       end if;
 
-      Self.Add_Line ("    <notation>" & Name & "</notation>");
+      Self.Add_Line ("    <notation>" & Notation_Name & "</notation>");
       Self.Add_Line (To_Universal_String ("  </unparsedEntity>"));
    end Unparsed_Entity_Declaration;
 
