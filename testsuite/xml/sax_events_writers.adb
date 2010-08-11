@@ -374,7 +374,8 @@ package body SAX_Events_Writers is
       Self.Add_Line ("    <name>" & Name & "</name>");
 
       if not Public_Id.Is_Empty then
-         Self.Add_Line ("    <publicID>" & Public_Id & "</publicID>");
+         Self.Add_Line
+          ("    <publicID>" & Escape_String (Public_Id) & "</publicID>");
       end if;
 
       if not System_Id.Is_Empty then
@@ -424,7 +425,8 @@ package body SAX_Events_Writers is
       Self.Add_Line (To_Universal_String ("  <resolveEntity>"));
 
       if not Public_Id.Is_Empty then
-         Self.Add_Line ("    <publicID>" & Public_Id & "</publicID>");
+         Self.Add_Line
+          ("    <publicID>" & Escape_String (Public_Id) & "</publicID>");
       end if;
 
       if not System_Id.Is_Empty then
@@ -640,7 +642,8 @@ package body SAX_Events_Writers is
       Self.Add_Line ("    <name>" & Name & "</name>");
 
       if not Public_Id.Is_Empty then
-         Self.Add_Line ("    <publicID>" & Public_Id & "</publicID>");
+         Self.Add_Line
+          ("    <publicID>" & Escape_String (Public_Id) & "</publicID>");
       end if;
 
       if not System_Id.Is_Empty then
