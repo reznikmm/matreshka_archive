@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>student</localName>
+    <qualifiedName>student</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>student</localName>
-        <qualifiedName>student</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>first</localName>
-                <qualifiedName>first</qualifiedName>
-                <value>Eric</value>
-                <type>CDATA</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <char>\s</char>
-    <char>\n</char>
-    <char>\s</char>
-    <char>\t</char>
-    <char>\s</char>
-    <char>\r</char>
-    <char>\s</char>
-    <endElement>
-        <namespaceURI/>
-        <localName>student</localName>
-        <qualifiedName>student</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+        <localName>first</localName>
+        <qualifiedName>first</qualifiedName>
+        <value>Eric</value>
+        <type>CDATA</type>
+      </attribute>
+    </attributes>
+  </startElement>
+  <characters>&#x20;</characters>
+  <characters>&#xA;</characters>
+  <characters>&#x20;</characters>
+  <characters>&#x9;</characters>
+  <characters>&#x20;</characters>
+  <characters>&#xD;</characters>
+  <characters>&#x20;</characters>
+  <endElement>
+    <namespaceURI/>
+    <localName>student</localName>
+    <qualifiedName>student</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

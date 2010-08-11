@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>attr</localName>
-                <qualifiedName>attr</qualifiedName>
-                <value>xyzA</value>
-                <type>CDATA</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <char>\n</char>
-    <char>x</char>
-    <char>y</char>
-    <char>z</char>
-    <char>\s</char>
-    <char>B</char>
-    <char>\n</char>
-    <endElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+        <localName>attr</localName>
+        <qualifiedName>attr</qualifiedName>
+        <value>xyzA</value>
+        <type>CDATA</type>
+      </attribute>
+    </attributes>
+  </startElement>
+  <characters>&#xA;</characters>
+  <characters>x</characters>
+  <characters>y</characters>
+  <characters>z</characters>
+  <characters>&#x20;</characters>
+  <characters>B</characters>
+  <characters>&#xA;</characters>
+  <endElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>student</localName>
-        <qualifiedName>student</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>M</char>
-    <char>y</char>
-    <char>\s</char>
-    <char>N</char>
-    <char>a</char>
-    <char>m</char>
-    <char>e</char>
-    <char>\s</char>
-    <char>i</char>
-    <char>s</char>
-    <char>\s</char>
-    <char>.</char>
-    <char>\s</char>
-    <endElement>
-        <namespaceURI/>
-        <localName>student</localName>
-        <qualifiedName>student</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>student</localName>
+    <qualifiedName>student</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>M</characters>
+  <characters>y</characters>
+  <characters>&#x20;</characters>
+  <characters>N</characters>
+  <characters>a</characters>
+  <characters>m</characters>
+  <characters>e</characters>
+  <characters>&#x20;</characters>
+  <characters>i</characters>
+  <characters>s</characters>
+  <characters>&#x20;</characters>
+  <characters>.</characters>
+  <characters>&#x20;</characters>
+  <endElement>
+    <namespaceURI/>
+    <localName>student</localName>
+    <qualifiedName>student</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

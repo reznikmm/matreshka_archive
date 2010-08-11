@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>AttrType</localName>
+    <qualifiedName>AttrType</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>&#xA;</characters>
+  <startElement>
+    <namespaceURI/>
+    <localName>a</localName>
+    <qualifiedName>a</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>AttrType</localName>
-        <qualifiedName>AttrType</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>\n</char>
-    <startElement>
-        <namespaceURI/>
-        <localName>a</localName>
-        <qualifiedName>a</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>att</localName>
-                <qualifiedName>att</qualifiedName>
-                <value>hello\sworld</value>
-                <type>CDATA</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <char>\n</char>
-    <endElement>
-        <namespaceURI/>
-        <localName>a</localName>
-        <qualifiedName>a</qualifiedName>
-    </endElement>
-    <char>\n</char>
-    <endElement>
-        <namespaceURI/>
-        <localName>AttrType</localName>
-        <qualifiedName>AttrType</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+        <localName>att</localName>
+        <qualifiedName>att</qualifiedName>
+        <value>hello&#x20;world</value>
+        <type>CDATA</type>
+      </attribute>
+    </attributes>
+  </startElement>
+  <characters>&#xA;</characters>
+  <endElement>
+    <namespaceURI/>
+    <localName>a</localName>
+    <qualifiedName>a</qualifiedName>
+  </endElement>
+  <characters>&#xA;</characters>
+  <endElement>
+    <namespaceURI/>
+    <localName>AttrType</localName>
+    <qualifiedName>AttrType</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

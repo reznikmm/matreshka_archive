@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>student</localName>
+    <qualifiedName>student</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>student</localName>
-        <qualifiedName>student</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>first</localName>
-                <qualifiedName>first</qualifiedName>
-                <value>Snow</value>
-                <type>CDATA</type>
-            </attribute>
-            <attribute>
-                <namespaceURI/>
-                <localName>last</localName>
-                <qualifiedName>last</qualifiedName>
-                <value>Man</value>
-                <type>CDATA</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <char>T</char>
-    <char>h</char>
-    <char>i</char>
-    <char>s</char>
-    <char>\s</char>
-    <char>i</char>
-    <char>s</char>
-    <char>\s</char>
-    <char>a</char>
-    <char>\s</char>
-    <char>t</char>
-    <char>e</char>
-    <char>s</char>
-    <char>t</char>
-    <endElement>
+        <localName>first</localName>
+        <qualifiedName>first</qualifiedName>
+        <value>Snow</value>
+        <type>CDATA</type>
+      </attribute>
+      <attribute>
         <namespaceURI/>
-        <localName>student</localName>
-        <qualifiedName>student</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+        <localName>last</localName>
+        <qualifiedName>last</qualifiedName>
+        <value>Man</value>
+        <type>CDATA</type>
+      </attribute>
+    </attributes>
+  </startElement>
+  <characters>T</characters>
+  <characters>h</characters>
+  <characters>i</characters>
+  <characters>s</characters>
+  <characters>&#x20;</characters>
+  <characters>i</characters>
+  <characters>s</characters>
+  <characters>&#x20;</characters>
+  <characters>a</characters>
+  <characters>&#x20;</characters>
+  <characters>t</characters>
+  <characters>e</characters>
+  <characters>s</characters>
+  <characters>t</characters>
+  <endElement>
+    <namespaceURI/>
+    <localName>student</localName>
+    <qualifiedName>student</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

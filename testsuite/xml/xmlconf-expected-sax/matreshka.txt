@@ -13,3 +13,13 @@ xmltest/not-wf/sa/029.xml
 
 Reader reports additional ']' character in the character data because it is not
 part of the CDATA section terminator and valid character in character data.
+
+ibm/valid/P12/ibm12v01.xml
+
+Public identifier in the document is empty string, it can't be distinguished in
+Matreshka API.
+
+ibm/valid/P12/ibm12v02.xml
+
+Public identifier in the document is empty string, it can't be distinguished in
+Matreshka API.
