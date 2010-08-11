@@ -44,6 +44,8 @@
 --  This package provides XML writer to transform SAX events into XML text
 --  in canonical form.
 ------------------------------------------------------------------------------
+private with Ada.Containers.Ordered_Maps;
+
 with League.Strings;
 with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
@@ -115,14 +117,26 @@ package XMLConf.Canonical_Writers is
 
 private
 
+   type Notation_Information is record
+      Name      : League.Strings.Universal_String;
+      Public_Id : League.Strings.Universal_String;
+      System_Id : League.Strings.Universal_String;
+   end record;
+
+   package Notation_Maps is
+     new Ada.Containers.Ordered_Maps
+          (League.Strings.Universal_String,
+           Notation_Information,
+           League.Strings."<");
+
    type Canonical_Writer is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.DTD_Handlers.SAX_DTD_Handler
        and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with
    record
-      Result      : League.Strings.Universal_String;
-      Name        : League.Strings.Universal_String;
-      Is_DTD_Open : Boolean := False;
+      Result    : League.Strings.Universal_String;
+      Name      : League.Strings.Universal_String;
+      Notations : Notation_Maps.Map;
    end record;
 
 end XMLConf.Canonical_Writers;

@@ -79,9 +79,58 @@ package body XMLConf.Canonical_Writers is
 
    overriding procedure End_DTD
     (Self    : in out Canonical_Writer;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+
+      procedure Output_Notation (Position : Notation_Maps.Cursor);
+      --  Outputs notation declaration.
+
+      ---------------------
+      -- Output_Notation --
+      ---------------------
+
+      procedure Output_Notation (Position : Notation_Maps.Cursor) is
+         Notation : constant Notation_Information
+           := Notation_Maps.Element (Position);
+
+      begin
+         if Notation.Public_Id.Is_Empty then
+            Self.Result.Append
+             ("<!NOTATION "
+                & Notation.Name
+                & " SYSTEM '"
+                & Notation.System_Id
+                & "'>"
+                & LF);
+
+         elsif Notation.System_Id.Is_Empty then
+            Self.Result.Append
+             ("<!NOTATION "
+                & Notation.Name
+                & " PUBLIC '"
+                & Notation.Public_Id
+                & "'>"
+                & LF);
+
+         else
+            Self.Result.Append
+             ("<!NOTATION "
+                & Notation.Name
+                & " PUBLIC '"
+                & Notation.Public_Id
+                & "' '"
+                & Notation.System_Id
+                & "'>"
+                & LF);
+         end if;
+      end Output_Notation;
+
    begin
-      if Self.Is_DTD_Open then
+      if not Self.Notations.Is_Empty then
+         Self.Result.Append ("<!DOCTYPE " & Self.Name & " [" & LF);
+
+         Self.Notations.Iterate (Output_Notation'Access);
+
          Self.Result.Append
           (League.Strings.To_Universal_String ("]>" & LF));
       end if;
@@ -175,30 +224,7 @@ package body XMLConf.Canonical_Writers is
      System_Id : League.Strings.Universal_String;
      Success   : in out Boolean) is
    begin
-      if not Self.Is_DTD_Open then
-         Self.Result.Append ("<!DOCTYPE " & Self.Name & " [" & LF);
-         Self.Is_DTD_Open := True;
-      end if;
-
-      if Public_Id.Is_Empty then
-         Self.Result.Append
-          ("<!NOTATION " & Name & " SYSTEM '" & System_Id & "'>" & LF);
-
-      elsif System_Id.Is_Empty then
-         Self.Result.Append
-          ("<!NOTATION " & Name & " PUBLIC '" & Public_Id & "'>" & LF);
-
-      else
-         Self.Result.Append
-          ("<!NOTATION "
-             & Name
-             & " PUBLIC '"
-             & Public_Id
-             & "' '"
-             & System_Id
-             & "'>"
-             & LF);
-      end if;
+      Self.Notations.Insert (Name, (Name, Public_Id, System_Id));
    end Notation_Declaration;
 
    ----------------------------
