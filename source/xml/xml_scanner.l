@@ -836,7 +836,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    Actions.On_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
 }
 
-<ATTLIST_DECL,ATTLIST_TYPE,ELEMENT_CHILDREN>"%"{NAME}";" {
+<ATTLIST_DECL,ATTLIST_TYPE,ELEMENT_DECL,ELEMENT_CHILDREN>"%"{NAME}";" {
    --  Parameter entity reference rule [69] in attribute declaration.
    --  Parameter entity reference in element's children declaration, [51].
 
