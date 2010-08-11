@@ -781,11 +781,23 @@ AttDef :
    {
       null;
    }
-| Token_Name Token_Notation Token_Open_Parenthesis Token_Name Name_any Token_Close_Parenthesis DefaultDecl
+| Token_Name Token_Notation
+   {
+      Actions.On_Notation_Attribute_Declaration
+       (Self   => Self,
+        Symbol => $1.Symbol);
+   }
+  Token_Open_Parenthesis Token_Name Name_any Token_Close_Parenthesis DefaultDecl
    {
       null;
    }
-| Token_Name Token_Open_Parenthesis Token_Name Name_any Token_Close_Parenthesis DefaultDecl
+| Token_Name
+   {
+      Actions.On_Enumeration_Attribute_Declaration
+       (Self   => Self,
+        Symbol => $1.Symbol);
+   }
+  Token_Open_Parenthesis Token_Name Name_any Token_Close_Parenthesis DefaultDecl
    {
       null;
    }
@@ -1061,6 +1073,14 @@ with Matreshka.Internals.XML.Symbol_Tables;
         Symbol : Matreshka.Internals.XML.Symbol_Identifier);
 
       procedure On_NmTokens_Attribute_Declaration
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Notation_Attribute_Declaration
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Enumeration_Attribute_Declaration
        (Self   : access Integer;
         Symbol : Matreshka.Internals.XML.Symbol_Identifier);
 

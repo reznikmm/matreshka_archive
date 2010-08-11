@@ -101,6 +101,11 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Process attribute declaration of CDATA type.
 
+   procedure On_Enumeration_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Process attribute declaration of enumeration type.
+
    procedure On_Fixed_Attribute_Default_Declaration
     (Self    : not null access SAX_Simple_Reader'Class;
      Default : Matreshka.Internals.Strings.Shared_String_Access);
@@ -150,6 +155,11 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Process attribute declaration of CDATA type.
+
+   procedure On_Notation_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier);
+   --  Process attribute declaration of NOTATION type.
 
    procedure On_Notation_Declaration
     (Self      : not null access SAX_Simple_Reader'Class;

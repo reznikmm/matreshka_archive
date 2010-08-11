@@ -409,6 +409,18 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
        (Self, Symbol, New_Entity_Attribute'Access);
    end On_Entity_Attribute_Declaration;
 
+   ------------------------------------------
+   -- On_Enumeration_Attribute_Declaration --
+   ------------------------------------------
+
+   procedure On_Enumeration_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Analyze_Attribute_Declaration
+       (Self, Symbol, New_Enumeration_Attribute'Access);
+   end On_Enumeration_Attribute_Declaration;
+
    --------------------------------------------
    -- On_Fixed_Attribute_Default_Declaration --
    --------------------------------------------
@@ -608,6 +620,18 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       Analyze_Attribute_Declaration
        (Self, Symbol, New_NmTokens_Attribute'Access);
    end On_NmTokens_Attribute_Declaration;
+
+   ---------------------------------------
+   -- On_Notation_Attribute_Declaration --
+   ---------------------------------------
+
+   procedure On_Notation_Attribute_Declaration
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
+   begin
+      Analyze_Attribute_Declaration
+       (Self, Symbol, New_Notation_Attribute'Access);
+   end On_Notation_Attribute_Declaration;
 
    -----------------------------
    -- On_Notation_Declaration --

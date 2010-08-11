@@ -97,6 +97,18 @@ package Matreshka.Internals.XML.Attribute_Tables is
      Attribute : out Attribute_Identifier);
    --  Allocates new attribute of NMTOKENS type.
 
+   procedure New_Notation_Attribute
+    (Self      : in out Attribute_Table;
+     Name      : Symbol_Identifier;
+     Attribute : out Attribute_Identifier);
+   --  Allocates new attribute of NOTATION type.
+
+   procedure New_Enumeration_Attribute
+    (Self      : in out Attribute_Table;
+     Name      : Symbol_Identifier;
+     Attribute : out Attribute_Identifier);
+   --  Allocates new attribute of enumeration type.
+
    function Is_ID
     (Self      : Attribute_Table;
      Attribute : Attribute_Identifier) return Boolean;
@@ -182,7 +194,16 @@ package Matreshka.Internals.XML.Attribute_Tables is
 private
 
    type Attribute_Types is
-    (CDATA, ENTITY, ENTITIES, ID, IDREF, IDREFS, NMTOKEN, NMTOKENS);
+    (CDATA,
+     ENTITY,
+     ENTITIES,
+     ID,
+     IDREF,
+     IDREFS,
+     NMTOKEN,
+     NMTOKENS,
+     NOTATION,
+     ENUMERATION);
 
    type Attribute_Record is record
       Name        : Symbol_Identifier;

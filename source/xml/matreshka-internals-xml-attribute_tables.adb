@@ -252,6 +252,18 @@ package body Matreshka.Internals.XML.Attribute_Tables is
       New_Attribute (Self, Name, ENTITY, Attribute);
    end New_Entity_Attribute;
 
+   -------------------------------
+   -- New_Enumeration_Attribute --
+   -------------------------------
+
+   procedure New_Enumeration_Attribute
+    (Self      : in out Attribute_Table;
+     Name      : Symbol_Identifier;
+     Attribute : out Attribute_Identifier) is
+   begin
+      New_Attribute (Self, Name, ENUMERATION, Attribute);
+   end New_Enumeration_Attribute;
+
    ----------------------
    -- New_Id_Attribute --
    ----------------------
@@ -311,6 +323,18 @@ package body Matreshka.Internals.XML.Attribute_Tables is
    begin
       New_Attribute (Self, Name, NMTOKENS, Attribute);
    end New_NmTokens_Attribute;
+
+   ----------------------------
+   -- New_Notation_Attribute --
+   ----------------------------
+
+   procedure New_Notation_Attribute
+    (Self      : in out Attribute_Table;
+     Name      : Symbol_Identifier;
+     Attribute : out Attribute_Identifier) is
+   begin
+      New_Attribute (Self, Name, NOTATION, Attribute);
+   end New_Notation_Attribute;
 
    ----------
    -- Next --
@@ -417,6 +441,12 @@ package body Matreshka.Internals.XML.Attribute_Tables is
 
          when NMTOKENS =>
             return Symbol_NMTOKENS;
+
+         when NOTATION =>
+            return Symbol_NMTOKEN;
+
+         when ENUMERATION =>
+            return Symbol_NMTOKEN;
       end case;
    end Symbol_Of_Type_Name;
 

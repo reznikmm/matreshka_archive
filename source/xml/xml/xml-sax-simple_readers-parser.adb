@@ -823,13 +823,17 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 116 =>
-               null;
+               Actions.On_Notation_Attribute_Declaration
+                (Self   => Self,
+                 Symbol => YY.Value_Stack (YY.TOS -  1).Symbol);
 
             when 117 =>
                null;
 
             when 118 =>
-               null;
+               Actions.On_Enumeration_Attribute_Declaration
+                (Self   => Self,
+                 Symbol => YY.Value_Stack (YY.TOS).Symbol);
 
             when 119 =>
                null;
@@ -838,45 +842,45 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 121 =>
-               Actions.On_Required_Attribute_Default_Declaration (Self);
+               null;
 
             when 122 =>
-               Actions.On_Implied_Attribute_Default_Declaration (Self);
+               null;
 
             when 123 =>
+               Actions.On_Required_Attribute_Default_Declaration (Self);
+
+            when 124 =>
+               Actions.On_Implied_Attribute_Default_Declaration (Self);
+
+            when 125 =>
                Actions.On_Fixed_Attribute_Default_Declaration
                 (Self,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 124 =>
+            when 126 =>
                Actions.On_Attribute_Default_Declaration
                 (Self,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 125 =>
+            when 127 =>
                Actions.On_Open_Of_Tag
                 (Self,
                  YY.Value_Stack (YY.TOS).Symbol);
 
-            when 126 =>
+            when 128 =>
                null;
 
-            when 127 =>
+            when 129 =>
                Actions.On_Start_Tag (Self);
 
-            when 128 =>
+            when 130 =>
                Actions.On_End_Tag
                 (Self,
                  YY.Value_Stack (YY.TOS -  1).Symbol);
 
-            when 129 =>
-               Actions.On_Empty_Element_Tag (Self);
-
-            when 130 =>
-               null;
-
             when 131 =>
-               null;
+               Actions.On_Empty_Element_Tag (Self);
 
             when 132 =>
                null;
@@ -885,38 +889,33 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 134 =>
+               null;
+
+            when 135 =>
+               null;
+
+            when 136 =>
                Actions.On_Character_Data
                 (Self,
                  YY.Value_Stack (YY.TOS).String,
                  YY.Value_Stack (YY.TOS).Is_Whitespace);
 
-            when 135 =>
+            when 137 =>
                Process_Comment
                 (Self,
                  League.Strings.Internals.Create
                   (YY.Value_Stack (YY.TOS).String));
 
-            when 136 =>
+            when 138 =>
                null;
 
-            when 137 =>
+            when 139 =>
                --  TextDecl come from substitution of external parsed entities.
 
                null;
 
-            when 138 =>
-               Actions.On_Element_Attribute_Name (Self, YY.Value_Stack (YY.TOS).Symbol);
-
-            when 139 =>
-               Actions.On_Element_Attribute
-                (Self,
-                 YY.Value_Stack (YY.TOS -  3).Symbol,
-                 YY.Value_Stack (YY.TOS).String);
-
             when 140 =>
-               Actions.On_Element_Attribute_Name
-                (Self,
-                 YY.Value_Stack (YY.TOS).Symbol);
+               Actions.On_Element_Attribute_Name (Self, YY.Value_Stack (YY.TOS).Symbol);
 
             when 141 =>
                Actions.On_Element_Attribute
@@ -925,6 +924,17 @@ package body XML.SAX.Simple_Readers.Parser is
                  YY.Value_Stack (YY.TOS).String);
 
             when 142 =>
+               Actions.On_Element_Attribute_Name
+                (Self,
+                 YY.Value_Stack (YY.TOS).Symbol);
+
+            when 143 =>
+               Actions.On_Element_Attribute
+                (Self,
+                 YY.Value_Stack (YY.TOS -  3).Symbol,
+                 YY.Value_Stack (YY.TOS).String);
+
+            when 144 =>
                null;
                when others =>
                   raise Program_Error
