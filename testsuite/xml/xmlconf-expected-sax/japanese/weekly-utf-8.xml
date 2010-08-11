@@ -132,7 +132,7 @@
     <localName>名</localName>
     <qualifiedName>名</qualifiedName>
   </endElement>
-  <ignorableWhitespace>&#xA;&#xA;</ignorableWhitespace>
+  <ignorableWhitespace>&#xA;</ignorableWhitespace>
   <ignorableWhitespace>&#x20;</ignorableWhitespace>
   <ignorableWhitespace>&#x20;</ignorableWhitespace>
   <endElement>
@@ -1303,7 +1303,7 @@
     <localName>業務報告リスト</localName>
     <qualifiedName>業務報告リスト</qualifiedName>
   </endElement>
-  <ignorableWhitespace>\n</ignorableWhitespace>
+  <ignorableWhitespace>&#xA;</ignorableWhitespace>
   <endElement>
     <namespaceURI/>
     <localName>週報</localName>
