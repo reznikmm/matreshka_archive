@@ -859,6 +859,40 @@ package body XML.SAX.Simple_Readers.Scanner is
                         end if;
 
                      elsif Self.Scanner_State.Incremental then
+                        --  In incremental mode, when element tag is processed
+                        --  and buffer ends on '>' or '/>' processing of last
+                        --  matched pattern is forced to prevent waiting till
+                        --  next portion of data is readed. This allows to
+                        --  applications to process start/end/empty tags
+                        --  immidiately, which is implicitly expected by
+                        --  users.
+
+                        if Start_Condition (Self) = Element_Start then
+                           if ((Self.Scanner_State.YY_Current_Position
+                                  - Self.Scanner_State.YY_Base_Position) = 1
+                                 and then Self.Scanner_State.Data.Value
+                                  (Self.Scanner_State.YY_Base_Position)
+                                     = 16#3E#)
+                             or ((Self.Scanner_State.YY_Current_Position
+                                    - Self.Scanner_State.YY_Base_Position) = 2
+                                 and then Self.Scanner_State.Data.Value
+                                  (Self.Scanner_State.YY_Base_Position)
+                                     = 16#2F#
+                                 and then Self.Scanner_State.Data.Value
+                                  (Self.Scanner_State.YY_Base_Position + 1)
+                                     = 16#3E#)
+                           then
+                              Self.Scanner_State.YY_Current_Position :=
+                                YY_Last_Match_Position;
+                              Self.Scanner_State.YY_Current_Index    :=
+                                YY_Last_Match_Index;
+                              YY_Current_State                       :=
+                                YY_Last_Match_State;
+
+                              goto Next_Action;
+                           end if;
+                        end if;
+
                         --  Back current position to base position.
 
                         Self.Scanner_State.YY_Current_Position :=
