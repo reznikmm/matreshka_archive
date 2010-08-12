@@ -60,7 +60,9 @@ begin
    Reader.Parse;
    Reader.Parse;
 
-   if Handler.X /= 3 then
-      raise Program_Error with "Incremental Test Failed";
+   if Handler.X /= 9 then
+      raise Program_Error
+        with "Incremental Test Failed"
+        & "expected 9, received : " & Handler.X'Img;
    end if;
 end Test_26;

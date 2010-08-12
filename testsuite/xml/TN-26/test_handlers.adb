@@ -57,7 +57,6 @@ package body Test_Handlers is
    is
    begin
       Put_Line ("*** Text = " & Text);
-      Self.X := Self.X + 1;
    end Characters;
 
    -----------------
@@ -72,9 +71,7 @@ package body Test_Handlers is
      Success        : in out Boolean)
    is
    begin
-      -- Put_Line ("<<< Local_Name = " & Local_Name);
-      Self.X := Self.X + 1;
-      null;
+      Put_Line ("<<< Local_Name = " & Local_Name);
    end End_Element;
 
    ------------------
@@ -101,7 +98,6 @@ package body Test_Handlers is
      Success        : in out Boolean)
    is
    begin
-      Put_Line (">>> Local_Name = " & Local_Name);
       Self.X := Self.X + 1;
    end Start_Element;
 
