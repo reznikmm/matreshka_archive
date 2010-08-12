@@ -87,8 +87,8 @@ package body XML.SAX.Input_Sources.Streams.Test_Sockets is
    begin
       Ada.Text_IO.Put_Line ("Read : Pass = " & Pass'Img);
       case Pass is
-         --  Reading for the first time;
 
+         --  Reading for the first time;
          when 0 =>
             declare
                Tmp : Ada.Streams.Stream_Element_Array
@@ -136,6 +136,7 @@ package body XML.SAX.Input_Sources.Streams.Test_Sockets is
             Last := Buffer'Last - 1;
             End_Of_Data := True;
       end case;
+
       Pass := Pass + 1;
    end Read;
 
