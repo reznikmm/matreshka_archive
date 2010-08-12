@@ -72,9 +72,8 @@ package body Test_Handlers is
      Success        : in out Boolean)
    is
    begin
-      -- Put_Line ("<<< Local_Name = " & Local_Name);
+      Put_Line ("<<< Local_Name = " & Local_Name);
       Self.X := Self.X + 1;
-      null;
    end End_Element;
 
    ------------------
