@@ -114,7 +114,7 @@ package body XML.SAX.Input_Sources.Streams.Test_Sockets is
    begin
       Ada.Text_IO.Put_Line ("Read");
       Self.Pass := Self.Pass + 1;
-      End_Of_Data := True;
+      End_Of_Data := False;
 
       if Self.Pass in Test_Data'Range then
          Last := Buffer'First + Test_Data (Self.Pass)'Length - 1;
