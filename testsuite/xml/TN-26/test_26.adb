@@ -47,8 +47,8 @@ with Test_Handlers;
 
 procedure Test_26 is
 
-   Source  :  aliased XML.SAX.Input_Sources.Streams.
-                        Test_Sockets.Test_Socket_Input_Source;
+   Source  : aliased
+     XML.SAX.Input_Sources.Streams.Test_Sockets.Test_Socket_Input_Source;
    Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Handler : aliased Test_Handlers.Test_Handler;
 
@@ -56,7 +56,9 @@ begin
     XML.SAX.Simple_Readers.Put_Line := Test_Handlers.Put_Line'Access;
 
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
-   Reader.Parse (Source'Access);
+   Reader.Set_Input_Source (Source'Access);
+   Reader.Parse;
+   Reader.Parse;
 
    if Handler.X /= 3 then
       raise Program_Error with "Incremental Test Failed";
