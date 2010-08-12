@@ -106,7 +106,7 @@ package body XML.SAX.Input_Sources.Streams.Test_Sockets is
                   I := I + 1;
                end loop;
 
-               Last := 14;
+               Last := I - 1;
 
                Ada.Text_IO.Put_Line ("Last = " & Last'Img);
 
