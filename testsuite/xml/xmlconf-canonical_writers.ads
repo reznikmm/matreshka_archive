@@ -76,6 +76,14 @@ package XMLConf.Canonical_Writers is
       Notations : Notation_Maps.Map;
    end record;
 
+--  GNAT GPL 2010: type cann't be declared private becuase of bug in the
+--  compiler.
+--
+--   type Canonical_Writer is
+--     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
+--       and XML.SAX.DTD_Handlers.SAX_DTD_Handler
+--       and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with private;
+
    function Text
     (Self : Canonical_Writer) return League.Strings.Universal_String;
    --  Returns text of XML document in canonical form.
@@ -131,5 +139,29 @@ package XMLConf.Canonical_Writers is
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean);
+
+--private
+--
+--   type Notation_Information is record
+--      Name      : League.Strings.Universal_String;
+--      Public_Id : League.Strings.Universal_String;
+--      System_Id : League.Strings.Universal_String;
+--   end record;
+--
+--   package Notation_Maps is
+--     new Ada.Containers.Ordered_Maps
+--          (League.Strings.Universal_String,
+--           Notation_Information,
+--           League.Strings."<");
+--
+--   type Canonical_Writer is
+--     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
+--       and XML.SAX.DTD_Handlers.SAX_DTD_Handler
+--       and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with
+--   record
+--      Result    : League.Strings.Universal_String;
+--      Name      : League.Strings.Universal_String;
+--      Notations : Notation_Maps.Map;
+--   end record;
 
 end XMLConf.Canonical_Writers;
