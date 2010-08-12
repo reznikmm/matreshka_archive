@@ -41,28 +41,41 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Command_Line;
+
+with League.Strings;
 with XML.SAX.Input_Sources.Streams.Test_Sockets;
 with XML.SAX.Simple_Readers;
-with Test_Handlers;
+
+with Put_Line;
+with Read_File;
+with SAX_Events_Writers;
 
 procedure Test_26 is
 
-   Source  : aliased
+   use type League.Strings.Universal_String;
+
+   Expected : constant League.Strings.Universal_String
+     := Read_File (Ada.Command_Line.Argument (1));
+
+   Source   : aliased
      XML.SAX.Input_Sources.Streams.Test_Sockets.Test_Socket_Input_Source;
-   Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-   Handler : aliased Test_Handlers.Test_Handler;
+   Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Writer   : aliased SAX_Events_Writers.SAX_Events_Writer;
 
 begin
-    XML.SAX.Simple_Readers.Put_Line := Test_Handlers.Put_Line'Access;
-
-   Reader.Set_Content_Handler (Handler'Unchecked_Access);
+   Reader.Set_Content_Handler (Writer'Unchecked_Access);
    Reader.Set_Input_Source (Source'Access);
    Reader.Parse;
    Reader.Parse;
+   Writer.Done;
 
-   if Handler.X /= 9 then
-      raise Program_Error
-        with "Incremental Test Failed"
-        & "expected 9, received : " & Handler.X'Img;
+   if Expected /= Writer.Text then
+      Put_Line (League.Strings.To_Universal_String ("Expected:"));
+      Put_Line (Expected);
+      Put_Line (League.Strings.To_Universal_String ("Actual:"));
+      Put_Line (Writer.Text);
+
+      raise Program_Error;
    end if;
 end Test_26;

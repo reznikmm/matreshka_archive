@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Text_IO;
 with Ada.Unchecked_Conversion;
 
 package body XML.SAX.Input_Sources.Streams.Test_Sockets is
@@ -112,7 +111,6 @@ package body XML.SAX.Input_Sources.Streams.Test_Sockets is
      Last        : out Ada.Streams.Stream_Element_Offset;
      End_Of_Data : out Boolean) is
    begin
-      Ada.Text_IO.Put_Line ("Read");
       Self.Pass := Self.Pass + 1;
       End_Of_Data := False;
 
