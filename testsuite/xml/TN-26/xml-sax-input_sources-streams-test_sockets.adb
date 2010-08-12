@@ -46,32 +46,51 @@ with Ada.Unchecked_Conversion;
 
 package body XML.SAX.Input_Sources.Streams.Test_Sockets is
 
-   Pass : Integer := 0;
+   function To_Stream_Element_Array
+    (Value : String) return Ada.Streams.Stream_Element_Array;
 
-   -------------------------------
-   --  To_Stream_Element_Array  --
-   -------------------------------
+   -----------------------------
+   -- To_Stream_Element_Array --
+   -----------------------------
 
-   function To_Stream_Element_Array (Value : String)
-      return Ada.Streams.Stream_Element_Array;
-
-   -------------------------------
-   --  To_Stream_Element_Array  --
-   -------------------------------
-
-   function To_Stream_Element_Array (Value : String)
-     return Ada.Streams.Stream_Element_Array
+   function To_Stream_Element_Array
+    (Value : String) return Ada.Streams.Stream_Element_Array
    is
       subtype Source is String (Value'Range);
       subtype Result is Ada.Streams.Stream_Element_Array
         (Ada.Streams.Stream_Element_Offset (Value'First)
            .. Ada.Streams.Stream_Element_Offset (Value'Last));
 
-      function To_Array is
-         new Ada.Unchecked_Conversion (Source, Result);
+      function To_Array is new Ada.Unchecked_Conversion (Source, Result);
+
    begin
       return To_Array (Value);
    end To_Stream_Element_Array;
+
+   S1 : constant Ada.Streams.Stream_Element_Array
+     := To_Stream_Element_Array
+         ("<?xml version='1.0'?>"
+            & "<stream:stream"
+            & " xmlns='jabber:client'"
+            & " xmlns:stream='http://etherx.jabber.org/streams'"
+            & " id='2626941369'"
+            & " from='jabber.ru'"
+            & " version='1.0'"
+            & " xml:lang='ru'>");
+
+   S2 : constant Ada.Streams.Stream_Element_Array
+     := To_Stream_Element_Array
+         ("<stream:features>"
+            & "<starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
+            & "<compression xmlns='http://jabber.org/features/compress'>"
+            & "<method>zlib</method>"
+            & "</compression>"
+            & "<mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'>"
+            & "<mechanism>PLAIN</mechanism>"
+            & "<mechanism>DIGEST-MD5</mechanism>"
+            & "</mechanisms>"
+            & "<register xmlns='http://jabber.org/features/iq-register'/>"
+            & "</stream:features>");
 
    ----------
    -- Read --
@@ -81,63 +100,74 @@ package body XML.SAX.Input_Sources.Streams.Test_Sockets is
     (Self        : in out Test_Socket_Input_Source;
      Buffer      : out Ada.Streams.Stream_Element_Array;
      Last        : out Ada.Streams.Stream_Element_Offset;
-     End_Of_Data : out Boolean)
-   is
-
+     End_Of_Data : out Boolean) is
    begin
-      Ada.Text_IO.Put_Line ("Read : Pass = " & Pass'Img);
-      case Pass is
-
-         --  Reading for the first time;
+      case Self.Pass is
          when 0 =>
-            declare
-               Tmp : Ada.Streams.Stream_Element_Array
-                 := To_Stream_Element_Array (String ' ("<A x='0'>123</A>"));
+            --  Reading for the first time;
 
-               I   : Ada.Streams.Stream_Element_Offset := Buffer'First;
-
-            begin
-               for J in Tmp'Range loop
-
-                  Buffer (I) := Tmp (J);
-                  I := I + 1;
-               end loop;
-
-               Last := I - 1;
+            Last := Buffer'First + S1'Length - 1;
+            Buffer (Buffer'First .. Last) := S1;
+--            declare
+--               S   : String := "<A x='0'>123</A>";
+--               Tmp : Ada.Streams.Stream_Element_Array
+--                 := To_Stream_Element_Array (S);
+--
+--               I   : Ada.Streams.Stream_Element_Offset := Buffer'First;
+--
+--            begin
+--               for J in Tmp'Range loop
+--                  Buffer (I) := Tmp (J);
+--                  Ada.Text_IO.Put_Line
+--                    (" Buffer [" & I'Img & "] = " & Character'Val (Buffer (I))
+--                       & " Tmp [" & J'Img & "] = " & Character'Val (Tmp (J)));
+--                  I := I + 1;
+--               end loop;
+--
+--               Last := 14;
+--
+--               Ada.Text_IO.Put_Line ("Last = " & Last'Img);
 
                End_Of_Data := False;
-            end;
+--            end;
 
-         --  Reading for the second time
          when 1 =>
-               Last := Buffer'First - 1;
-               End_Of_Data := False;
+            --  Reading for the second time
 
-         --  Reading for the second time
+            Last := Buffer'First - 1;
+            End_Of_Data := False;
+
          when 2 =>
-            declare
-               Tmp : Ada.Streams.Stream_Element_Array
-                 := To_Stream_Element_Array (String '("<B x='11'> 987 </B>"));
+            --  Reading for the second time
 
-               I   : Ada.Streams.Stream_Element_Offset := Buffer'First;
-
-            begin
-               for J in Tmp'Range loop
-                  Buffer (I) := Tmp (J);
-                  I := I + 1;
-               end loop;
-
-               Last := I - 1;
+            Last := Buffer'First + S2'Length - 1;
+            Buffer (Buffer'First .. Last) := S2;
+--            declare
+--               Tmp : Ada.Streams.Stream_Element_Array
+--                 := To_Stream_Element_Array ("<B x='11'> 987 </B>");
+--
+--               I   : Ada.Streams.Stream_Element_Offset;
+--
+--            begin
+--               I := Buffer'First;
+--
+--               for J in Tmp'Range loop
+--                  Buffer (I) := Tmp (J);
+--                  I := I + 1;
+--               end loop;
+--
+--               Last := I - 1;
 
                End_Of_Data := False;
-            end;
+--            end;
 
          when others =>
             Last := Buffer'Last - 1;
             End_Of_Data := True;
       end case;
 
-      Pass := Pass + 1;
+      Ada.Text_IO.Put_Line ("Read");
+      Self.Pass := Self.Pass + 1;
    end Read;
 
 end XML.SAX.Input_Sources.Streams.Test_Sockets;

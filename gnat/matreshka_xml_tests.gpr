@@ -47,12 +47,14 @@ project Matreshka_XML_Tests is
 
    for Main use
     ("xmlconf_test.adb",
-     "test_20.adb");
+     "test_20.adb",
+     "test_26.adb");
    for Object_Dir use "../.objs";
    for Source_Dirs use
     ("../testsuite/xml",
      "../examples/sax_events_printer",
-     "../testsuite/xml/TN-20");
+     "../testsuite/xml/TN-20",
+     "../testsuite/xml/TN-26");
 
    package Compiler is
       for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8", "-O2", "-gnatn");

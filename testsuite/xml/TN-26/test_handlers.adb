@@ -41,20 +41,77 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Streams;
 
-package XML.SAX.Input_Sources.Streams.Test_Sockets is
+package body Test_Handlers is
 
-   type Test_Socket_Input_Source is limited new Stream_Input_Source
-     with null record;
+   use League.Strings;
 
-   ----------
-   -- Read --
-   ----------
-   overriding procedure Read
-    (Self        : in out Test_Socket_Input_Source;
-     Buffer      : out Ada.Streams.Stream_Element_Array;
-     Last        : out Ada.Streams.Stream_Element_Offset;
-     End_Of_Data : out Boolean);
+   ----------------
+   -- Characters --
+   ----------------
 
-end XML.SAX.Input_Sources.Streams.Test_Sockets;
+   overriding procedure Characters
+    (Self    : in out Test_Handler;
+     Text    : League.Strings.Universal_String;
+     Success : in out Boolean)
+   is
+   begin
+      Put_Line ("*** Text = " & Text);
+      Self.X := Self.X + 1;
+   end Characters;
+
+   -----------------
+   -- End_Element --
+   -----------------
+
+   overriding procedure End_Element
+    (Self           : in out Test_Handler;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Success        : in out Boolean)
+   is
+   begin
+      -- Put_Line ("<<< Local_Name = " & Local_Name);
+      Self.X := Self.X + 1;
+      null;
+   end End_Element;
+
+   ------------------
+   -- Error_String --
+   ------------------
+
+   overriding function Error_String (Self : Test_Handler)
+      return League.Strings.Universal_String
+   is
+   begin
+      return X : League.Strings.Universal_String;
+   end Error_String;
+
+   -------------------
+   -- Start_Element --
+   -------------------
+
+   overriding procedure Start_Element
+    (Self           : in out Test_Handler;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes;
+     Success        : in out Boolean)
+   is
+   begin
+      Put_Line (">>> Local_Name = " & Local_Name);
+      Self.X := Self.X + 1;
+   end Start_Element;
+
+   --------------
+   -- Put_Lin  --
+   --------------
+
+   procedure Put_Line (Item : League.Strings.Universal_String) is
+   begin
+      Ada.Wide_Wide_Text_IO.Put_Line (Item.To_Wide_Wide_String);
+   end Put_Line;
+
+end Test_Handlers;

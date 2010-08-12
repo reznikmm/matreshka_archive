@@ -41,24 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with XML.SAX.Input_Sources.Streams.Test_Sockets;
-with XML.SAX.Simple_Readers;
-with Test_Handlers;
 
-procedure Test is
+package XML.SAX.Input_Sources.Streams.Test_Sockets is
 
-   Source  :  aliased XML.SAX.Input_Sources.Streams.
-                        Test_Sockets.Test_Socket_Input_Source;
-   Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-   Handler : aliased Test_Handlers.Test_Handler;
+   type Test_Socket_Input_Source is new Stream_Input_Source with private;
 
-begin
-    XML.SAX.Simple_Readers.Put_Line := Test_Handlers.Put_Line'Access;
+   overriding procedure Read
+    (Self        : in out Test_Socket_Input_Source;
+     Buffer      : out Ada.Streams.Stream_Element_Array;
+     Last        : out Ada.Streams.Stream_Element_Offset;
+     End_Of_Data : out Boolean);
 
-   Reader.Set_Content_Handler (Handler'Unchecked_Access);
-   Reader.Parse (Source'Access);
+private
 
-   if Handler.X /= 3 then
-      raise Program_Error with "Incremental Test Failed";
-   end if;
-end Test;
+   type Test_Socket_Input_Source is new Stream_Input_Source with record
+      Pass : Natural := 0;
+   end record;
+
+end XML.SAX.Input_Sources.Streams.Test_Sockets;
