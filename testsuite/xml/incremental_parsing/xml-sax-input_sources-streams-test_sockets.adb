@@ -85,14 +85,14 @@ package body XML.SAX.Input_Sources.Streams.Test_Sockets is
    is
 
    begin
+      Ada.Text_IO.Put_Line ("Read : Pass = " & Pass'Img);
       case Pass is
          --  Reading for the first time;
 
          when 0 =>
             declare
-               S   : String := "<A x='0'>123</A>";
                Tmp : Ada.Streams.Stream_Element_Array
-                 := To_Stream_Element_Array (S);
+                 := To_Stream_Element_Array (String ' ("<A x='0'>123</A>"));
 
                I   : Ada.Streams.Stream_Element_Offset := Buffer'First;
 
@@ -100,35 +100,28 @@ package body XML.SAX.Input_Sources.Streams.Test_Sockets is
                for J in Tmp'Range loop
 
                   Buffer (I) := Tmp (J);
-                  Ada.Text_IO.Put_Line
-                    (" Buffer [" & I'Img & "] = " & Character'Val (Buffer (I))
-                       & " Tmp [" & J'Img & "] = " & Character'Val (Tmp (J)));
                   I := I + 1;
                end loop;
 
                Last := I - 1;
 
-               Ada.Text_IO.Put_Line ("Last = " & Last'Img);
-
                End_Of_Data := False;
             end;
 
          --  Reading for the second time
-         when 2 =>
-               Last := Buffer'Last - 1;
+         when 1 =>
+               Last := Buffer'First - 1;
                End_Of_Data := False;
 
          --  Reading for the second time
-         when 3 =>
+         when 2 =>
             declare
                Tmp : Ada.Streams.Stream_Element_Array
-                 := To_Stream_Element_Array ("<B x='11'> 987 </B>");
+                 := To_Stream_Element_Array (String '("<B x='11'> 987 </B>"));
 
-               I   : Ada.Streams.Stream_Element_Offset;
+               I   : Ada.Streams.Stream_Element_Offset := Buffer'First;
 
             begin
-               I := Buffer'First;
-
                for J in Tmp'Range loop
                   Buffer (I) := Tmp (J);
                   I := I + 1;
