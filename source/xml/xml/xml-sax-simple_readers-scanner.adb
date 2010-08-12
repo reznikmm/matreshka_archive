@@ -334,6 +334,8 @@ package body XML.SAX.Simple_Readers.Scanner is
       End_Of_Source : Boolean;
 
    begin
+      Pop_Start_Condition (Self);
+
       if Self.Version /= Version then
          --  [XML1.0 2.8]
          --
