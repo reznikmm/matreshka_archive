@@ -859,6 +859,19 @@ package body XML.SAX.Simple_Readers.Scanner is
                         end if;
 
                      elsif Self.Scanner_State.Incremental then
+                        --  Back current position to base position.
+
+                        Self.Scanner_State.YY_Current_Position :=
+                          Self.Scanner_State.YY_Base_Position;
+                        Self.Scanner_State.YY_Current_Index    :=
+                          Self.Scanner_State.YY_Base_Index;
+                        Self.Scanner_State.YY_Current_Line     :=
+                          Self.Scanner_State.YY_Base_Line;
+                        Self.Scanner_State.YY_Current_Column   :=
+                          Self.Scanner_State.YY_Base_Column;
+                        Self.Scanner_State.YY_Current_Skip_LF  :=
+                          Self.Scanner_State.YY_Base_Skip_LF;
+
                         return End_Of_Chunk;
                      end if;
                   end if;
