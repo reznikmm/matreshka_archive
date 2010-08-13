@@ -726,7 +726,6 @@ package body XML.SAX.Simple_Readers.Scanner is
                   raise Program_Error;
                end if;
 
-
             when 1 =>
                --  Open of XML declaration or text declaration, rules [23], [77].
             

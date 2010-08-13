@@ -725,7 +725,6 @@ package body XML.SAX.Simple_Readers.Scanner is
                else
                   raise Program_Error;
                end if;
-
 %%
 --            when YY_END_OF_BUFFER + INITIAL + 1 
 --            =>

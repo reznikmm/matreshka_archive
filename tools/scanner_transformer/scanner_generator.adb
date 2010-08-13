@@ -278,6 +278,14 @@ package body Scanner_Generator is
               2010);
       end case;
 
+      Put_Line (Output, "pragma Style_Checks (""-t"");");
+      Put_Line
+       (Output,
+        "--  GNAT: Disable check for token separation rules, because format o"
+          & "f the");
+      Put_Line
+       (Output,
+        "--  tables is not compatible with them.");
       Put_Line (Output, "with Matreshka.Internals.Unicode;");
       New_Line (Output);
       Put (Output, "private package ");

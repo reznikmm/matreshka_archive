@@ -256,6 +256,14 @@ package body Parser_Generator is
            2010);
       end if;
 
+      Put_Line (Output, "pragma Style_Checks (""-t"");");
+      Put_Line
+       (Output,
+        "--  GNAT: Disable check for token separation rules, because format o"
+          & "f the");
+      Put_Line
+       (Output,
+        "--  tables is not compatible with them.");
       New_Line (Output);
 
       if Ada.Command_Line.Argument (1) = "regexp" then
