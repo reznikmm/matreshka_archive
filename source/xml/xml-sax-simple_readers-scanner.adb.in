@@ -437,6 +437,15 @@ package body XML.SAX.Simple_Readers.Scanner is
              (XML.SAX.Input_Sources.SAX_Input_Source'Class,
               XML.SAX.Input_Sources.SAX_Input_Source_Access);
 
+      type YY_End_Of_Buffer_Actions is
+       (YY_Continue_Scan,  --  Continue scanning from the current position.
+                           --  It is used to continue processing after pop up
+                           --  of entity from the scanner's stack.
+        YY_Restart_Scan,   --  Restart scanning from the base position.
+        YY_Last_Match,     --  Accept last matched action.
+        YY_End_Of_Chunk,   --  End of chunk of data is reached.
+        YY_End_Of_Input);  --  End of input is reached.
+
       YY_Action                  : Interfaces.Unsigned_32;
       YY_C                       : Interfaces.Unsigned_32;
       YY_Current_State           : Interfaces.Unsigned_32;
@@ -458,6 +467,9 @@ package body XML.SAX.Simple_Readers.Scanner is
       YYLVal                     : YYSType renames Self.YYLVal;
       YY_Last                    : Utf16_String_Index;
       End_Of_Source              : Boolean;
+      YY_End_Of_Buffer_Action    : YY_End_Of_Buffer_Actions;
+      YY_Position_Offset         : Utf16_String_Index;
+      YY_Index_Offset            : Natural;
 
       function YY_Text
        (Trim_Left       : Natural := 0;
@@ -819,12 +831,59 @@ package body XML.SAX.Simple_Readers.Scanner is
                if Self.Scanner_State.Source /= null then
                   --  Input source is used to retrieve data.
 
-                  --  Obtain next portion from the input source.
+                  if Is_Document_Entity
+                      (Self.Entities, Self.Scanner_State.Entity)
+                    and Self.Scanner_State.YY_Base_Position /= 0
+                  then
+                     --  For document entity, remove already scanned data.
+
+                     --  Construct slice only when we actually need
+                     --  to move data.
+
+                     declare
+                        X : Matreshka.Internals.Strings.Shared_String_Access
+                          := Self.Scanner_State.Data;
+
+                     begin
+                        Self.Scanner_State.Data :=
+                          Matreshka.Internals.Strings.Operations.Slice
+                           (X,
+                            Self.Scanner_State.YY_Base_Position,
+                            Self.Scanner_State.Data.Unused
+                              - Self.Scanner_State.YY_Base_Position,
+                            Self.Scanner_State.Data.Length
+                              - Self.Scanner_State.YY_Base_Index + 1);
+                        Matreshka.Internals.Strings.Dereference (X);
+                     end;
+
+                     YY_Position_Offset := Self.Scanner_State.YY_Base_Position;
+                     YY_Index_Offset    :=
+                       Self.Scanner_State.YY_Base_Index - 1;
+
+                     Self.Scanner_State.YY_Base_Position :=
+                       Self.Scanner_State.YY_Base_Position
+                         - YY_Position_Offset;
+                     Self.Scanner_State.YY_Base_Index :=
+                       Self.Scanner_State.YY_Base_Index - YY_Index_Offset;
+                     Self.Scanner_State.YY_Current_Position :=
+                       Self.Scanner_State.YY_Current_Position
+                         - YY_Position_Offset;
+                     Self.Scanner_State.YY_Current_Index :=
+                       Self.Scanner_State.YY_Current_Index - YY_Index_Offset;
+                     YY_Last_Match_Position :=
+                       YY_Last_Match_Position - YY_Position_Offset;
+                     YY_Last_Match_Index :=
+                       YY_Last_Match_Index - YY_Index_Offset;
+                  end if;
+
+                  --  Obtain next portion of data from the input source.
 
                   YY_Last := Self.Scanner_State.Data.Unused;
 
                   Self.Scanner_State.Source.Next
                    (Self.Scanner_State.Data, End_Of_Source);
+
+                  YY_End_Of_Buffer_Action := YY_Restart_Scan;
 
                   if YY_Last = Self.Scanner_State.Data.Unused then
                      --  There is no new data retrieved, handle end of source
@@ -857,9 +916,13 @@ package body XML.SAX.Simple_Readers.Scanner is
 
                         else
                            Self.Scanner_State.Source := null;
+                           --  Input source of document entity is managed by
+                           --  application.
                         end if;
 
                      elsif Self.Scanner_State.Incremental then
+                        YY_End_Of_Buffer_Action := YY_End_Of_Chunk;
+
                         --  In incremental mode, when element tag is processed
                         --  and buffer ends on '>' or '/>' processing of last
                         --  matched pattern is forced to prevent waiting till
@@ -883,81 +946,11 @@ package body XML.SAX.Simple_Readers.Scanner is
                                   (Self.Scanner_State.YY_Base_Position + 1)
                                      = Greater_Than_Sign)
                            then
-                              Self.Scanner_State.YY_Current_Position :=
-                                YY_Last_Match_Position;
-                              Self.Scanner_State.YY_Current_Index    :=
-                                YY_Last_Match_Index;
-                              YY_Current_State                       :=
-                                YY_Last_Match_State;
-
-                              goto Next_Action;
+                              YY_End_Of_Buffer_Action := YY_Last_Match;
                            end if;
                         end if;
-
-                        --  Back current position to base position.
-
-                        Self.Scanner_State.YY_Current_Position :=
-                          Self.Scanner_State.YY_Base_Position;
-                        Self.Scanner_State.YY_Current_Index    :=
-                          Self.Scanner_State.YY_Base_Index;
-                        Self.Scanner_State.YY_Current_Line     :=
-                          Self.Scanner_State.YY_Base_Line;
-                        Self.Scanner_State.YY_Current_Column   :=
-                          Self.Scanner_State.YY_Base_Column;
-                        Self.Scanner_State.YY_Current_Skip_LF  :=
-                          Self.Scanner_State.YY_Base_Skip_LF;
-
-                        return End_Of_Chunk;
                      end if;
                   end if;
-
-                  --  Back current position to base position to restart
-                  --  scanning, remove scanned data for document entity.
-
-                  if Is_Document_Entity
-                      (Self.Entities, Self.Scanner_State.Entity)
-                  then
-                     --  For document entity remove already scanned data.
-
-                     if Self.Scanner_State.YY_Base_Position /= 0 then
-                        --  Construct slice only when we actually need
-                        --  to move data.
-
-                        declare
-                           X : Matreshka.Internals.Strings.Shared_String_Access
-                             := Self.Scanner_State.Data;
-
-                        begin
-                           Self.Scanner_State.Data :=
-                             Matreshka.Internals.Strings.Operations.Slice
-                              (X,
-                               Self.Scanner_State.YY_Base_Position,
-                               Self.Scanner_State.Data.Unused
-                                 - Self.Scanner_State.YY_Base_Position,
-                               Self.Scanner_State.Data.Length
-                                 - Self.Scanner_State.YY_Base_Index + 1);
-                           Matreshka.Internals.Strings.Dereference (X);
-                        end;
-                     end if;
-
-                     Self.Scanner_State.YY_Current_Position := 0;
-                     Self.Scanner_State.YY_Current_Index    := 1;
-
-                  else
-                     --  Back current position to base position.
-
-                     Self.Scanner_State.YY_Current_Position :=
-                       Self.Scanner_State.YY_Base_Position;
-                     Self.Scanner_State.YY_Current_Index    :=
-                       Self.Scanner_State.YY_Base_Index;
-                  end if;
-
-                  Self.Scanner_State.YY_Current_Line    :=
-                    Self.Scanner_State.YY_Base_Line;
-                  Self.Scanner_State.YY_Current_Column  :=
-                    Self.Scanner_State.YY_Base_Column;
-                  Self.Scanner_State.YY_Current_Skip_LF :=
-                    Self.Scanner_State.YY_Base_Skip_LF;
 
                else
                   --  Input source is not used, complete replacement text of
@@ -971,14 +964,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                      --  Continue processing till end of buffer will be
                      --  reached.
 
-                     Self.Scanner_State.YY_Current_Position :=
-                       YY_Last_Match_Position;
-                     Self.Scanner_State.YY_Current_Index    :=
-                       YY_Last_Match_Index;
-                     YY_Current_State                       :=
-                       YY_Last_Match_State;
-
-                     goto Next_Action;
+                     YY_End_Of_Buffer_Action := YY_Last_Match;
 
                   else
                      --  Replacement text of the entity is completely scanned,
@@ -990,11 +976,54 @@ package body XML.SAX.Simple_Readers.Scanner is
                           Self.Scanner_Stack.Last_Element;
                         Self.Scanner_Stack.Delete_Last;
 
+                        YY_End_Of_Buffer_Action := YY_Continue_Scan;
                      else
-                        return End_Of_Input;
+                        YY_End_Of_Buffer_Action := YY_End_Of_Input;
                      end if;
                   end if;
                end if;
+
+               case YY_End_Of_Buffer_Action is
+                  when YY_Continue_Scan =>
+                     null;
+
+                  when YY_Restart_Scan | YY_End_Of_Chunk =>
+                     --  Back current position to base position.
+
+                     Self.Scanner_State.YY_Current_Position :=
+                       Self.Scanner_State.YY_Base_Position;
+                     Self.Scanner_State.YY_Current_Index    :=
+                       Self.Scanner_State.YY_Base_Index;
+                     Self.Scanner_State.YY_Current_Line    :=
+                       Self.Scanner_State.YY_Base_Line;
+                     Self.Scanner_State.YY_Current_Column  :=
+                       Self.Scanner_State.YY_Base_Column;
+                     Self.Scanner_State.YY_Current_Skip_LF :=
+                       Self.Scanner_State.YY_Base_Skip_LF;
+
+                     if YY_End_Of_Buffer_Action = YY_End_Of_Chunk then
+                        return End_Of_Chunk;
+                     end if;
+
+                  when YY_Last_Match =>
+                     --  Replace current position to last matched position and
+                     --  process matched action.
+
+                     --  XXX: Other cases handle line/column numbers and
+                     --  "skip LF" flag also, should they be handled here?
+
+                     Self.Scanner_State.YY_Current_Position :=
+                       YY_Last_Match_Position;
+                     Self.Scanner_State.YY_Current_Index    :=
+                       YY_Last_Match_Index;
+                     YY_Current_State                       :=
+                       YY_Last_Match_State;
+
+                     goto Next_Action;
+
+                  when YY_End_Of_Input =>
+                     return End_Of_Input;
+               end case;
 
 --            when YY_END_OF_BUFFER =>
 --               yytext_ptr := yy_bp;
