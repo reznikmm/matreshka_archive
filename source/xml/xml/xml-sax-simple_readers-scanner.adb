@@ -574,108 +574,8 @@ package body XML.SAX.Simple_Readers.Scanner is
             (Self.Scanner_State.Data, FP, LP - FP, LI - FI);
       end YY_Text_Internal;
 
---         --  copy whatever the last rule matched to the standard output
---
---         procedure ECHO is
---         begin
---            if Ada.Wide_Wide_Text_IO.Is_Open (User_Output_File) then
---               Ada.Wide_Wide_Text_IO.Put (User_Output_File, YYText);
---
---            else
---               Ada.Wide_Wide_Text_IO.Put (YYText);
---            end if;
---         end ECHO;
---
---         --  action number for EOF rule of a given start state
---function YY_STATE_EOF(state : Integer) return Integer is
---begin
---     return YY_END_OF_BUFFER + state + 1;
---end YY_STATE_EOF;
---pragma Inline (YY_STATE_EOF);
---
----- return all but the first 'n' matched characters back to the input stream
---procedure yyless(n : Integer) is
---begin
---        yy_cp := yy_bp + n;
---        yy_c_buf_p := yy_cp;
---        YY_DO_BEFORE_ACTION; -- set up yytext again
---end yyless;
---pragma Inline (yyless);
---
---         --  yy_get_previous_state - get the state just before the EOB char
---         --  was reached
---
---         function YY_Get_Previous_State return YY_State_Type is
---            YY_Current_State : YY_State_Type;
---            YY_C             : Short;
---            Index            : Integer;
---            Code             : Wide_Wide_Character;
---begin
---   yy_current_state := yy_start;
---
---   declare
---      yy_cp : integer := yytext_ptr;
---
---   begin
---      while yy_cp < yy_c_buf_p loop
---         Index := yy_cp;
---
---         Next (yy_ch_buf, Index, Code);
---         yy_c := yy_ec(Code);
---         if (yy_accept(yy_current_state) /= 0 ) then
---            yy_last_accepting_state := yy_current_state;
---            yy_last_accepting_cpos := yy_cp;
---         end if;
---         while ( yy_chk(yy_base(yy_current_state) + yy_c) /= yy_current_state ) loop
---            yy_current_state := yy_def(yy_current_state);
---            if yy_current_state >= YY_FIRST_TEMPLATE then
---               yy_c := yy_meta(yy_c);
---            end if;
---         end loop;
---         yy_current_state := yy_nxt(yy_base(yy_current_state) + yy_c);
---            yy_cp := Index;
---      end loop;
---   end;
---
---   return yy_current_state;
---end yy_get_previous_state;
---
---         Index : Integer;
---         Code  : Wide_Wide_Character;
---
    begin
-<<New_File>>
---         --  This is where we enter upon encountering an end-of-file and
---         --  yywrap() indicating that we should continue processing
---
---    if ( yy_init ) then
---        if ( yy_start = 0 ) then
---            yy_start := 1;      -- first start state
---        end if;
---
---        -- we put in the '\n' and start reading from [1] so that an
---        -- initial match-at-newline will be true.
---
---        yy_ch_buf.data (0) := Ada.Characters.Wide_Wide_Latin_1.LF;
---        yy_n_chars := 1;
---
---        -- we always need two end-of-buffer characters.  The first causes
---        -- a transition to the end-of-buffer state.  The second causes
---        -- a jam in that state.
---
---        yy_ch_buf.data (yy_n_chars) := YY_END_OF_BUFFER_CHAR;
---        yy_ch_buf.data (yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;
---
---        yy_eof_has_been_seen := false;
---
---        yytext_ptr := 1;
---        yy_c_buf_p := yytext_ptr;
---        yy_init := false;
---    end if; -- yy_init
-
       loop  --  Loops until end-of-data is reached.
---      yy_bp := yy_cp;
---      yy_current_state := yy_start;
          Self.Scanner_State.YY_Base_Position :=
            Self.Scanner_State.YY_Current_Position;
          Self.Scanner_State.YY_Base_Index    :=
@@ -688,10 +588,6 @@ package body XML.SAX.Simple_Readers.Scanner is
            Self.Scanner_State.YY_Current_Skip_LF;
          YY_Current_State := Self.Scanner_State.YY_Start_State;
 
---        yy_cp := yy_c_buf_p;
---
---        -- yy_bp points to the position in yy_ch_buf of the start of the
---        -- current run.
          loop
             YY_Next_Position := Self.Scanner_State.YY_Current_Position;
             YY_Next_Index    := Self.Scanner_State.YY_Current_Index;
@@ -754,10 +650,6 @@ package body XML.SAX.Simple_Readers.Scanner is
                YY_Last_Match_Position := YY_Last_Accepting_Position;
                YY_Last_Match_Index    := YY_Last_Accepting_Index;
                YY_Last_Match_State    := YY_Last_Accepting_State;
---
---               if YY_Last_Match_Position /= YY_Last_Accepting_Position then
---                  raise Program_Error with "still have data atfer";
---               end if;
             end if;
 
             if YY_Accept (YY_Current_State) /= 0 then
@@ -807,10 +699,7 @@ package body XML.SAX.Simple_Readers.Scanner is
 
    <<Next_Action>>
          YY_Action := YY_Accept (YY_Current_State);
---            YY_DO_BEFORE_ACTION;
---            YY_USER_ACTION;
---
---<<do_action>>   -- this label is used only to access EOF actions
+
          case YY_Action is
             when 0 =>  --  must backtrack
                Self.Scanner_State.YY_Current_Position :=
@@ -1722,48 +1611,6 @@ package body XML.SAX.Simple_Readers.Scanner is
                   when YY_End_Of_Input =>
                      return End_Of_Input;
                end case;
-
---            when YY_END_OF_BUFFER =>
---               yytext_ptr := yy_bp;
---
---               case yy_get_next_buffer is
---                  when EOB_ACT_END_OF_FILE =>
---                     begin
---                        if yywrap then
---                           --  note: because we've taken care in
---                           --  yy_get_next_buffer() to have set up yytext,
---                           --  we can now set up yy_c_buf_p so that if some
---                           --  total hoser (like aflex itself) wants
---                           --  to call the scanner after we return the
---                           --  End_Of_Input, it'll still work - another
---                           --  End_Of_Input will get returned.
---
---                           yy_c_buf_p := yytext_ptr;
---                           yy_act := YY_STATE_EOF ((yy_start - 1) / 2);
---
---                           goto do_action;
---
---                        else
---                           --  start processing a new file
---
---                           yy_init := true;
---
---                           goto new_file;
---                        end if;
---                     end;
---
---                  when EOB_ACT_RESTART_SCAN =>
---                     yy_c_buf_p := yytext_ptr;
---
---                  when EOB_ACT_LAST_MATCH =>
---                     yy_c_buf_p := yy_n_chars;
---                     yy_current_state := yy_get_previous_state;
---
---                     yy_cp := yy_c_buf_p;
---                     yy_bp := yytext_ptr;
---
---                     goto next_action;
---               end case; -- case yy_get_next_buffer()
 
             when others =>
                raise Program_Error
