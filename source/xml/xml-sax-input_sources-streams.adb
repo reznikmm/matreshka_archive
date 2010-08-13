@@ -307,12 +307,14 @@ package body XML.SAX.Input_Sources.Streams is
                   raise Program_Error;
 
                when UTF16LE =>
-                  Self.Encoding := League.Strings.To_Universal_String ("UTF-16");
+                  Self.Encoding :=
+                    League.Strings.To_Universal_String ("UTF-16");
                   Self.Decoder :=
                     new Matreshka.Internals.Text_Codecs.UTF16.UTF16LE_Decoder;
 
                when UTF16BE =>
-                  Self.Encoding := League.Strings.To_Universal_String ("UTF-16");
+                  Self.Encoding :=
+                    League.Strings.To_Universal_String ("UTF-16");
                   Self.Decoder :=
                     new Matreshka.Internals.Text_Codecs.UTF16.UTF16BE_Decoder;
 
@@ -320,7 +322,8 @@ package body XML.SAX.Input_Sources.Streams is
                   raise Program_Error;
 
                when UTF8 =>
-                  Self.Encoding := League.Strings.To_Universal_String ("UTF-8");
+                  Self.Encoding :=
+                    League.Strings.To_Universal_String ("UTF-8");
                   Self.Decoder :=
                     new Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
             end case;
