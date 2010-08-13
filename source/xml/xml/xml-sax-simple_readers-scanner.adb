@@ -438,13 +438,13 @@ package body XML.SAX.Simple_Readers.Scanner is
               XML.SAX.Input_Sources.SAX_Input_Source_Access);
 
       type YY_End_Of_Buffer_Actions is
-       (YY_Continue_Scan,  --  Continue scanning from the current position.
-                           --  It is used to continue processing after pop up
-                           --  of entity from the scanner's stack.
-        YY_Restart_Scan,   --  Restart scanning from the base position.
-        YY_Last_Match,     --  Accept last matched action.
-        YY_End_Of_Chunk,   --  End of chunk of data is reached.
-        YY_End_Of_Input);  --  End of input is reached.
+       (YY_Continue_Scan,      --  Continue scanning from the current position.
+                               --  It is used to continue processing after pop
+                               --  up of entity from the scanner's stack.
+        YY_Restart_Scan,       --  Restart scanning from the base position.
+        YY_Accept_Last_Match,  --  Accept last matched action.
+        YY_End_Of_Chunk,       --  End of chunk of data is reached.
+        YY_End_Of_Input);      --  End of input is reached.
 
       YY_Action                  : Interfaces.Unsigned_32;
       YY_C                       : Interfaces.Unsigned_32;
@@ -456,6 +456,7 @@ package body XML.SAX.Simple_Readers.Scanner is
       YY_Last_Accepting_Line     : Natural;
       YY_Last_Accepting_Column   : Natural;
       YY_Last_Accepting_Skip_LF  : Boolean;
+      YY_Last_Accepting          : Boolean;
       YY_Next_Position           : Utf16_String_Index;
       YY_Next_Index              : Positive;
       YY_Next_Line               : Natural;
@@ -464,6 +465,7 @@ package body XML.SAX.Simple_Readers.Scanner is
       YY_Last_Match_Position     : Utf16_String_Index;
       YY_Last_Match_Index        : Positive;
       YY_Last_Match_State        : Interfaces.Unsigned_32;
+      YY_Last_Match              : Boolean;
       YYLVal                     : YYSType renames Self.YYLVal;
       YY_Last                    : Utf16_String_Index;
       End_Of_Source              : Boolean;
@@ -587,6 +589,8 @@ package body XML.SAX.Simple_Readers.Scanner is
          Self.Scanner_State.YY_Base_Skip_LF  :=
            Self.Scanner_State.YY_Current_Skip_LF;
          YY_Current_State := Self.Scanner_State.YY_Start_State;
+         YY_Last_Match := False;
+         YY_Last_Accepting := False;
 
          loop
             YY_Next_Position := Self.Scanner_State.YY_Current_Position;
@@ -647,9 +651,13 @@ package body XML.SAX.Simple_Readers.Scanner is
                --  Aflex uses character with code point zero to mark end of
                --  buffer character. This character always has YY_EC zero.
 
-               YY_Last_Match_Position := YY_Last_Accepting_Position;
-               YY_Last_Match_Index    := YY_Last_Accepting_Index;
-               YY_Last_Match_State    := YY_Last_Accepting_State;
+               YY_Last_Match := YY_Last_Accepting;
+
+               if YY_Last_Accepting then
+                  YY_Last_Match_Position := YY_Last_Accepting_Position;
+                  YY_Last_Match_Index    := YY_Last_Accepting_Index;
+                  YY_Last_Match_State    := YY_Last_Accepting_State;
+               end if;
             end if;
 
             if YY_Accept (YY_Current_State) /= 0 then
@@ -666,6 +674,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                YY_Last_Accepting_Skip_LF  :=
                  Self.Scanner_State.YY_Current_Skip_LF;
                YY_Last_Accepting_State    := YY_Current_State;
+               YY_Last_Accepting          := True;
             end if;
 
             while YY_Chk (YY_Base (YY_Current_State) + YY_C)
@@ -702,14 +711,20 @@ package body XML.SAX.Simple_Readers.Scanner is
 
          case YY_Action is
             when 0 =>  --  must backtrack
-               Self.Scanner_State.YY_Current_Position :=
-                 YY_Last_Accepting_Position;
-               Self.Scanner_State.YY_Current_Index    :=
-                 YY_Last_Accepting_Index;
-               YY_Current_State                       :=
-                 YY_Last_Accepting_State;
+               if YY_Last_Accepting then
+                  Self.Scanner_State.YY_Current_Position :=
+                    YY_Last_Accepting_Position;
+                  Self.Scanner_State.YY_Current_Index    :=
+                    YY_Last_Accepting_Index;
+                  YY_Current_State                       :=
+                    YY_Last_Accepting_State;
+                  YY_Last_Accepting                      := False;
 
-               goto Next_Action;
+                  goto Next_Action;
+
+               else
+                  raise Program_Error;
+               end if;
 
 
             when 1 =>
@@ -1457,10 +1472,13 @@ package body XML.SAX.Simple_Readers.Scanner is
                          - YY_Position_Offset;
                      Self.Scanner_State.YY_Current_Index :=
                        Self.Scanner_State.YY_Current_Index - YY_Index_Offset;
-                     YY_Last_Match_Position :=
-                       YY_Last_Match_Position - YY_Position_Offset;
-                     YY_Last_Match_Index :=
-                       YY_Last_Match_Index - YY_Index_Offset;
+
+                     if YY_Last_Match then
+                        YY_Last_Match_Position :=
+                          YY_Last_Match_Position - YY_Position_Offset;
+                        YY_Last_Match_Index :=
+                          YY_Last_Match_Index - YY_Index_Offset;
+                     end if;
                   end if;
 
                   --  Obtain next portion of data from the input source.
@@ -1533,7 +1551,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                                   (Self.Scanner_State.YY_Base_Position + 1)
                                      = Greater_Than_Sign)
                            then
-                              YY_End_Of_Buffer_Action := YY_Last_Match;
+                              YY_End_Of_Buffer_Action := YY_Accept_Last_Match;
                            end if;
                         end if;
                      end if;
@@ -1551,7 +1569,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                      --  Continue processing till end of buffer will be
                      --  reached.
 
-                     YY_End_Of_Buffer_Action := YY_Last_Match;
+                     YY_End_Of_Buffer_Action := YY_Accept_Last_Match;
 
                   else
                      --  Replacement text of the entity is completely scanned,
@@ -1592,19 +1610,25 @@ package body XML.SAX.Simple_Readers.Scanner is
                         return End_Of_Chunk;
                      end if;
 
-                  when YY_Last_Match =>
+                  when YY_Accept_Last_Match =>
                      --  Replace current position to last matched position and
                      --  process matched action.
 
                      --  XXX: Other cases handle line/column numbers and
                      --  "skip LF" flag also, should they be handled here?
 
-                     Self.Scanner_State.YY_Current_Position :=
-                       YY_Last_Match_Position;
-                     Self.Scanner_State.YY_Current_Index    :=
-                       YY_Last_Match_Index;
-                     YY_Current_State                       :=
-                       YY_Last_Match_State;
+                     if YY_Last_Match then
+                        Self.Scanner_State.YY_Current_Position :=
+                          YY_Last_Match_Position;
+                        Self.Scanner_State.YY_Current_Index    :=
+                          YY_Last_Match_Index;
+                        YY_Current_State                       :=
+                          YY_Last_Match_State;
+                        YY_Last_Match                          := False;
+
+                     else
+                        raise Program_Error;
+                     end if;
 
                      goto Next_Action;
 
