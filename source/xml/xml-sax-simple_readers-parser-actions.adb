@@ -42,12 +42,14 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
+with Matreshka.Internals.Unicode.Characters.Latin;
 with XML.SAX.Attributes.Internals;
 with XML.SAX.Simple_Readers.Scanner;
 with XML.SAX.Simple_Readers.Callbacks;
 
 package body XML.SAX.Simple_Readers.Parser.Actions is
 
+   use Matreshka.Internals.Unicode.Characters.Latin;
    use Matreshka.Internals.XML;
    use Matreshka.Internals.XML.Attributes;
    use Matreshka.Internals.XML.Attribute_Tables;
@@ -56,10 +58,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    use Matreshka.Internals.XML.Namespace_Scopes;
    use Matreshka.Internals.XML.Notation_Tables;
    use Matreshka.Internals.XML.Symbol_Tables;
-
-   Full_Stop  : constant := 16#002E#;
-   Digit_Zero : constant := 16#0030#;
-   Digit_One  : constant := 16#0031#;
 
    procedure Analyze_Attribute_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;

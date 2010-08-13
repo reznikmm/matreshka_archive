@@ -45,7 +45,7 @@ with Ada.Unchecked_Deallocation;
 
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
-with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Unicode.Characters.Latin;
 with XML.SAX.Simple_Readers.Callbacks;
 with XML.SAX.Simple_Readers.Scanner.Actions;
 with XML.SAX.Simple_Readers.Scanner.Tables;
@@ -54,6 +54,7 @@ package body XML.SAX.Simple_Readers.Scanner is
 
    use type Interfaces.Unsigned_32;
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Characters.Latin;
    use Matreshka.Internals.Utf16;
    use Matreshka.Internals.XML;
    use Matreshka.Internals.XML.Entity_Tables;
@@ -500,10 +501,10 @@ package body XML.SAX.Simple_Readers.Scanner is
                C := Code_Point (Self.Scanner_State.Data.Value (FP));
 
                exit when
-                 C /= 16#0020#
-                   and then C /= 16#0009#
-                   and then C /= 16#000D#
-                   and then C /= 16#000A#;
+                 C /= Space
+                   and then C /= Character_Tabulation
+                   and then C /= Carriage_Return
+                   and then C /= Line_Feed;
 
                FP := FP + 1;
                FI := FI + 1;
@@ -546,10 +547,10 @@ package body XML.SAX.Simple_Readers.Scanner is
                C := Code_Point (Self.Scanner_State.Data.Value (FP));
 
                exit when
-                 C /= 16#0020#
-                   and then C /= 16#0009#
-                   and then C /= 16#000D#
-                   and then C /= 16#000A#;
+                 C /= Space
+                   and then C /= Character_Tabulation
+                   and then C /= Carriage_Return
+                   and then C /= Line_Feed;
 
                FP := FP + 1;
                FI := FI + 1;
@@ -695,14 +696,14 @@ package body XML.SAX.Simple_Readers.Scanner is
 
                --  Track line/column in entity
 
-               if YY_Current_Code = 16#000D# then
+               if YY_Current_Code = Carriage_Return then
                   --  Start of new line.
 
                   YY_Next_Line    := YY_Next_Line + 1;
                   YY_Next_Column  := 1;
                   YY_Next_Skip_LF := True;
 
-               elsif YY_Current_Code = 16#000A# then
+               elsif YY_Current_Code = Line_Feed then
                   if YY_Next_Skip_LF then
                      --  Ignore CR after LF.
 
@@ -1570,15 +1571,15 @@ package body XML.SAX.Simple_Readers.Scanner is
                                   - Self.Scanner_State.YY_Base_Position) = 1
                                  and then Self.Scanner_State.Data.Value
                                   (Self.Scanner_State.YY_Base_Position)
-                                     = 16#3E#)
+                                     = Greater_Than_Sign)
                              or ((Self.Scanner_State.YY_Current_Position
                                     - Self.Scanner_State.YY_Base_Position) = 2
                                  and then Self.Scanner_State.Data.Value
                                   (Self.Scanner_State.YY_Base_Position)
-                                     = 16#2F#
+                                     = Solidus
                                  and then Self.Scanner_State.Data.Value
                                   (Self.Scanner_State.YY_Base_Position + 1)
-                                     = 16#3E#)
+                                     = Greater_Than_Sign)
                            then
                               Self.Scanner_State.YY_Current_Position :=
                                 YY_Last_Match_Position;
@@ -1775,10 +1776,10 @@ package body XML.SAX.Simple_Readers.Scanner is
             C := Code_Point (Self.Scanner_State.Data.Value (FP));
 
             exit when
-              C /= 16#0020#
-                and then C /= 16#0009#
-                and then C /= 16#000D#
-                and then C /= 16#000A#;
+              C /= Space
+                and then C /= Character_Tabulation
+                and then C /= Carriage_Return
+                and then C /= Line_Feed;
 
             FP := FP + 1;
             FI := FI + 1;

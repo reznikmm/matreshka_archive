@@ -42,11 +42,15 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Strings.Operations;
+with Matreshka.Internals.Unicode.Characters.General_Punctuation;
+with Matreshka.Internals.Unicode.Characters.Latin;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Text_Codecs.UTF16 is
 
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Characters.General_Punctuation;
+   use Matreshka.Internals.Unicode.Characters.Latin;
    use Matreshka.Internals.Utf16;
 
    --  Common states for both BE and LE variants.
@@ -244,16 +248,16 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
                       (String, Current_Code);
 
                   when XML_1_0 =>
-                     if Current_Code = 16#000D# then
+                     if Current_Code = Carriage_Return then
                         Current_Skip_LF := True;
 
                         Matreshka.Internals.Strings.Operations.Append
-                         (String, 16#000A#);
+                         (String, Line_Feed);
 
-                     elsif Current_Code = 16#000A# then
+                     elsif Current_Code = Line_Feed then
                         if not Current_Skip_LF then
                            Matreshka.Internals.Strings.Operations.Append
-                            (String, 16#000A#);
+                            (String, Line_Feed);
                         end if;
 
                         Current_Skip_LF := False;
@@ -265,26 +269,26 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
                      end if;
 
                   when XML_1_1 =>
-                     if Current_Code = 16#000D# then
+                     if Current_Code = Carriage_Return then
                         Current_Skip_LF := True;
 
                         Matreshka.Internals.Strings.Operations.Append
-                         (String, 16#000A#);
+                         (String, Line_Feed);
 
-                     elsif Current_Code = 16#000A#
-                       or Current_Code = 16#0085#
+                     elsif Current_Code = Line_Feed
+                       or Current_Code = Next_Line
                      then
                         if not Current_Skip_LF then
                            Matreshka.Internals.Strings.Operations.Append
-                            (String, 16#000A#);
+                            (String, Line_Feed);
                         end if;
 
                         Current_Skip_LF := False;
 
-                     elsif Current_Code = 16#2028# then
+                     elsif Current_Code = Line_Separator then
                         Current_Skip_LF := False;
                         Matreshka.Internals.Strings.Operations.Append
-                         (String, 16#000A#);
+                         (String, Line_Feed);
 
                      else
                         Current_Skip_LF := False;
@@ -360,16 +364,16 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
                       (String, Current_Code);
 
                   when XML_1_0 =>
-                     if Current_Code = 16#000D# then
+                     if Current_Code = Carriage_Return then
                         Current_Skip_LF := True;
 
                         Matreshka.Internals.Strings.Operations.Append
-                         (String, 16#000A#);
+                         (String, Line_Feed);
 
-                     elsif Current_Code = 16#000A# then
+                     elsif Current_Code = Line_Feed then
                         if not Current_Skip_LF then
                            Matreshka.Internals.Strings.Operations.Append
-                            (String, 16#000A#);
+                            (String, Line_Feed);
                         end if;
 
                         Current_Skip_LF := False;
@@ -381,26 +385,26 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
                      end if;
 
                   when XML_1_1 =>
-                     if Current_Code = 16#000D# then
+                     if Current_Code = Carriage_Return then
                         Current_Skip_LF := True;
 
                         Matreshka.Internals.Strings.Operations.Append
-                         (String, 16#000A#);
+                         (String, Line_Feed);
 
-                     elsif Current_Code = 16#000A#
-                       or Current_Code = 16#0085#
+                     elsif Current_Code = Line_Feed
+                       or Current_Code = Next_Line
                      then
                         if not Current_Skip_LF then
                            Matreshka.Internals.Strings.Operations.Append
-                            (String, 16#000A#);
+                            (String, Line_Feed);
                         end if;
 
                         Current_Skip_LF := False;
 
-                     elsif Current_Code = 16#2028# then
+                     elsif Current_Code = Line_Separator then
                         Current_Skip_LF := False;
                         Matreshka.Internals.Strings.Operations.Append
-                         (String, 16#000A#);
+                         (String, Line_Feed);
 
                      else
                         Current_Skip_LF := False;

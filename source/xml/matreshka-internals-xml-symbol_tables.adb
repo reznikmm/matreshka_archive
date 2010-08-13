@@ -49,11 +49,11 @@ with Ada.Unchecked_Deallocation;
 
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
-with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Unicode.Characters.Latin;
 
 package body Matreshka.Internals.XML.Symbol_Tables is
 
-   Colon : constant := 16#003A#;
+   use Matreshka.Internals.Unicode.Characters.Latin;
 
    procedure Free is
      new Ada.Unchecked_Deallocation

@@ -42,21 +42,18 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Strings.Operations;
+with Matreshka.Internals.Unicode.Characters.Latin;
 with XML.SAX.Simple_Readers.Callbacks;
 with XML.SAX.Simple_Readers.Scanner.Tables;
 
 package body XML.SAX.Simple_Readers.Scanner.Actions is
 
    use Matreshka.Internals.Unicode;
+   use Matreshka.Internals.Unicode.Characters.Latin;
    use Matreshka.Internals.Utf16;
    use Matreshka.Internals.XML;
    use Matreshka.Internals.XML.Entity_Tables;
    use Matreshka.Internals.XML.Symbol_Tables;
-
-   Less_Than_Sign       : constant := 16#003C#;
-   Greater_Than_Sign    : constant := 16#003E#;
-   Right_Square_Bracket : constant := 16#005D#;
-   Ampersand            : constant := 16#0026#;
 
    procedure Resolve_Symbol
     (Self            : not null access SAX_Simple_Reader'Class;
@@ -87,13 +84,9 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
      Code  : out Code_Point;
      Valid : out Boolean)
    is
-      Upper_A     : constant := 16#41#;
-      Upper_F     : constant := 16#46#;
-      Lower_A     : constant := 16#61#;
-      Lower_F     : constant := 16#66#;
-      Zero_Fixup  : constant := 16#30#;
-      Upper_Fixup : constant := 16#41# - 16#0A#;
-      Lower_Fixup : constant := 16#61# - 16#0A#;
+      Zero_Fixup  : constant := Digit_Zero;
+      Upper_Fixup : constant := Latin_Capital_Letter_A - 16#0A#;
+      Lower_Fixup : constant := Latin_Small_Letter_A - 16#0A#;
 
       D  : Code_Point;
       FP : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
@@ -122,10 +115,10 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             D := Code_Point (Self.Scanner_State.Data.Value (FP));
             FP := FP + 1;
 
-            if D in Upper_A .. Upper_F then
+            if D in Latin_Capital_Letter_A .. Latin_Capital_Letter_F then
                Code := (Code * 16) + D - Upper_Fixup;
 
-            elsif D in Lower_A .. Lower_F then
+            elsif D in Latin_Small_Letter_A .. Latin_Small_Letter_F then
                Code := (Code * 16) + D - Lower_Fixup;
 
             else
@@ -172,12 +165,15 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          --  It can be reasonable to implement this step of normalization on
          --  SIMD.
 
-         if Code = 16#09# or Code = 16#0A# or Code = 16#0D# then
-            Code := 16#20#;
+         if Code = Character_Tabulation
+           or Code = Line_Feed
+           or Code = Carriage_Return
+         then
+            Code := Space;
          end if;
 
          if Self.Normalize_Value then
-            if Code = 16#20# then
+            if Code = Space then
                if not Self.Space_Before then
                   Matreshka.Internals.Strings.Operations.Unterminated_Append
                    (Self.Character_Data, Code);
@@ -429,7 +425,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
 
       if Self.Normalize_Value then
-         if Code = 16#20# then
+         if Code = Space then
             if not Self.Space_Before then
                Matreshka.Internals.Strings.Operations.Unterminated_Append
                 (Self.Character_Data, Code);
@@ -1620,10 +1616,10 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             C := Code_Point (Self.Scanner_State.Data.Value (FP));
 
             exit when
-              C /= 16#0020#
-                and then C /= 16#0009#
-                and then C /= 16#000D#
-                and then C /= 16#000A#;
+              C /= Space
+                and then C /= Character_Tabulation
+                and then C /= Carriage_Return
+                and then C /= Line_Feed;
 
             FP := FP + 1;
             FI := FI + 1;
