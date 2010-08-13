@@ -207,11 +207,11 @@ package body Scanner_Generator is
             when XML =>
                Put (Output, "   ");
                Put (Output, Name);
-               Put
-                (Output,
-                 " : constant array (Interfaces.Unsigned_32 range 0 .. ");
+               Put_Line (Output, " : constant");
+               Put (Output, "     array (Interfaces.Unsigned_32 range 0 .. ");
                Put (Output, Integer (Values.Length) - 1, 0);
-               Put_Line (Output, ") of Interfaces.Unsigned_32 :=");
+               Put_Line (Output, ")");
+               Put_Line (Output, "       of Interfaces.Unsigned_32 :=");
          end case;
 
          for J in 0 .. Natural (Values.Length) - 1 loop
@@ -317,10 +317,8 @@ package body Scanner_Generator is
       Put_Line
        (Output,
         "     Matreshka.Internals.Unicode.Code_Point range 0 .. 16#10FF#;");
-      Put
-       (Output,
-        "   type YY_Secondary_Array is"
-          & " array (YY_Secondary_Index) of ");
+      Put_Line (Output, "   type YY_Secondary_Array is");
+      Put (Output, "     array (YY_Secondary_Index) of ");
 
       case Mode is
          when Regexp =>
@@ -331,10 +329,8 @@ package body Scanner_Generator is
       end case;
 
       Put_Line (Output, ";");
-      Put_Line
-       (Output,
-        "   type YY_Secondary_Array_Access is"
-          & " not null access constant YY_Secondary_Array;");
+      Put_Line (Output, "   type YY_Secondary_Array_Access is");
+      Put_Line (Output, "     not null access constant YY_Secondary_Array;");
 
       New_Line (Output);
       Put (Output, "   YY_End_Of_Buffer  : constant := ");

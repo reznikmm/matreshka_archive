@@ -551,164 +551,164 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
             case YY_Rule_Id is
 
             when 1 =>
-               Process_Expression (Pattern, yy.value_stack (yy.tos).Node);
+            Process_Expression (Pattern, YY.Value_Stack (YY.TOS).Node);
 
             when 2 =>
-               --  Alternation
-            
-               yyval := (AST_Node, Process_Alternation (Pattern, yy.value_stack (yy.tos-2).Node, yy.value_stack (yy.tos).Node));
+            --  Alternation
+
+            YYVal := (AST_Node, Process_Alternation (Pattern, YY.Value_Stack (YY.TOS -  2).Node, YY.Value_Stack (YY.TOS).Node));
 
             when 3 =>
-               yyval := yy.value_stack (yy.tos);
+            YYVal := YY.Value_Stack (YY.TOS);
 
             when 4 =>
-               Matreshka.Internals.Regexps.Compiler.Attach (Pattern.all, yy.value_stack (yy.tos-1).Node, yy.value_stack (yy.tos).Node);
-               yyval := yy.value_stack (yy.tos-1);
+            Matreshka.Internals.Regexps.Compiler.Attach (Pattern.all, YY.Value_Stack (YY.TOS -  1).Node, YY.Value_Stack (YY.TOS).Node);
+            YYVal := YY.Value_Stack (YY.TOS -  1);
 
             when 5 =>
-               yyval := yy.value_stack (yy.tos);
+            YYVal := YY.Value_Stack (YY.TOS);
 
             when 6 =>
-               --  Optional, greedy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-1).Node, 0, 1, True));
+            --  Optional, greedy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  1).Node, 0, 1, True));
 
             when 7 =>
-               --  Optional, lazy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-1).Node, 0, 1, False));
+            --  Optional, lazy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  1).Node, 0, 1, False));
 
             when 8 =>
-               --  Zero or more, greedy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-1).Node, 0, Natural'Last, True));
+            --  Zero or more, greedy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  1).Node, 0, Natural'Last, True));
 
             when 9 =>
-               --  Zero or more, lazy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-1).Node, 0, Natural'Last, False));
+            --  Zero or more, lazy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  1).Node, 0, Natural'Last, False));
 
             when 10 =>
-               --  One or more, greedy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-1).Node, 1, Natural'Last, True));
+            --  One or more, greedy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  1).Node, 1, Natural'Last, True));
 
             when 11 =>
-               --  One or more, lazy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-1).Node, 1, Natural'Last, False));
+            --  One or more, lazy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  1).Node, 1, Natural'Last, False));
 
             when 12 =>
-               --  Multiplicity range, greedy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-5).Node, yy.value_stack (yy.tos-3).Value, yy.value_stack (yy.tos-1).Value, True));
+            --  Multiplicity range, greedy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  5).Node, YY.Value_Stack (YY.TOS -  3).Value, YY.Value_Stack (YY.TOS -  1).Value, True));
 
             when 13 =>
-               --  Multiplicity range, lazy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-5).Node, yy.value_stack (yy.tos-3).Value, yy.value_stack (yy.tos-1).Value, False));
+            --  Multiplicity range, lazy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  5).Node, YY.Value_Stack (YY.TOS -  3).Value, YY.Value_Stack (YY.TOS -  1).Value, False));
 
             when 14 =>
-               --  Multiplicity zero .. upper, greedy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-4).Node, 0, yy.value_stack (yy.tos-1).Value, True));
+            --  Multiplicity zero .. upper, greedy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  4).Node, 0, YY.Value_Stack (YY.TOS -  1).Value, True));
 
             when 15 =>
-               --  Multiplicity zero .. upper, lazy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-4).Node, 0, yy.value_stack (yy.tos-1).Value, False));
+            --  Multiplicity zero .. upper, lazy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  4).Node, 0, YY.Value_Stack (YY.TOS -  1).Value, False));
 
             when 16 =>
-               --  Multiplicity lower .. infinity, greedy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-4).Node, yy.value_stack (yy.tos-2).Value, Integer'Last, True));
+            --  Multiplicity lower .. infinity, greedy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  4).Node, YY.Value_Stack (YY.TOS -  2).Value, Integer'Last, True));
 
             when 17 =>
-               --  Multiplicity lower .. infinity, lazy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-4).Node, yy.value_stack (yy.tos-2).Value, Integer'Last, False));
+            --  Multiplicity lower .. infinity, lazy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  4).Node, YY.Value_Stack (YY.TOS -  2).Value, Integer'Last, False));
 
             when 18 =>
-               --  Multiplicity, greedy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Value, yy.value_stack (yy.tos-1).Value, True));
+            --  Multiplicity, greedy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  3).Node, YY.Value_Stack (YY.TOS -  1).Value, YY.Value_Stack (YY.TOS -  1).Value, True));
 
             when 19 =>
-               --  Multiplicity, lazy
-            
-               yyval := (AST_Node, Process_Multiplicity (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Value, yy.value_stack (yy.tos-1).Value, False));
+            --  Multiplicity, lazy
+
+            YYVal := (AST_Node, Process_Multiplicity (Pattern, YY.Value_Stack (YY.TOS -  3).Node, YY.Value_Stack (YY.TOS -  1).Value, YY.Value_Stack (YY.TOS -  1).Value, False));
 
             when 20 =>
-               yyval := (AST_Node, Process_Subexpression (Pattern, yy.value_stack (yy.tos-1).Node, True));
+            YYVal := (AST_Node, Process_Subexpression (Pattern, YY.Value_Stack (YY.TOS -  1).Node, True));
 
             when 21 =>
-               yyval := (AST_Node, Process_Subexpression (Pattern, yy.value_stack (yy.tos-1).Node, False));
+            YYVal := (AST_Node, Process_Subexpression (Pattern, YY.Value_Stack (YY.TOS -  1).Node, False));
 
             when 22 =>
-               --  Any code point
-            
-               yyval := (AST_Node, Process_Match_Any (Pattern));
+            --  Any code point
+
+            YYVal := (AST_Node, Process_Match_Any (Pattern));
 
             when 23 =>
-               --  Code point
-            
-               yyval := (AST_Node, Process_Code_Point (Pattern, yy.value_stack (yy.tos).Code));
+            --  Code point
+
+            YYVal := (AST_Node, Process_Code_Point (Pattern, YY.Value_Stack (YY.TOS).Code));
 
             when 24 =>
-               --  Character with binary property
-            
-               yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos-1).Keyword, False));
+            --  Character with binary property
+
+            YYVal := (AST_Node, Process_Binary_Property (Pattern, YY.Value_Stack (YY.TOS -  1).Keyword, False));
 
             when 25 =>
-               --  Character with binary property, negative
-            
-               yyval := (AST_Node, Process_Binary_Property (Pattern, yy.value_stack (yy.tos-1).Keyword, True));
+            --  Character with binary property, negative
+
+            YYVal := (AST_Node, Process_Binary_Property (Pattern, YY.Value_Stack (YY.TOS -  1).Keyword, True));
 
             when 26 =>
-               --  Character class
-            
-               yyval := yy.value_stack (yy.tos);
+            --  Character class
+
+            YYVal := YY.Value_Stack (YY.TOS);
 
             when 27 =>
-               --  Start of line anchor
-            
-               yyval := (AST_Node, Process_Start_Of_Line (Pattern));
+            --  Start of line anchor
+
+            YYVal := (AST_Node, Process_Start_Of_Line (Pattern));
 
             when 28 =>
-               --  End of line anchor
-            
-               yyval := (AST_Node, Process_End_Of_Line (Pattern));
+            --  End of line anchor
+
+            YYVal := (AST_Node, Process_End_Of_Line (Pattern));
 
             when 29 =>
-               yyval := yy.value_stack (yy.tos-1);
+            YYVal := YY.Value_Stack (YY.TOS -  1);
 
             when 30 =>
-               yyval := (AST_Node, Process_Negate_Character_Class (Pattern, yy.value_stack (yy.tos-1).Node));
+            YYVal := (AST_Node, Process_Negate_Character_Class (Pattern, YY.Value_Stack (YY.TOS -  1).Node));
 
             when 31 =>
-               --  Add range of code points to character class
-            
-               yyval := (AST_Node, Process_Character_Class_Range (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-2).Code, yy.value_stack (yy.tos).Code));
+            --  Add range of code points to character class
+
+            YYVal := (AST_Node, Process_Character_Class_Range (Pattern, YY.Value_Stack (YY.TOS -  3).Node, YY.Value_Stack (YY.TOS -  2).Code, YY.Value_Stack (YY.TOS).Code));
 
             when 32 =>
-               --  Add code point to character class
-            
-               yyval := (AST_Node, Process_Character_Class_Code_Point (Pattern, yy.value_stack (yy.tos-1).Node, yy.value_stack (yy.tos).Code));
+            --  Add code point to character class
+
+            YYVal := (AST_Node, Process_Character_Class_Code_Point (Pattern, YY.Value_Stack (YY.TOS -  1).Node, YY.Value_Stack (YY.TOS).Code));
 
             when 33 =>
-               --  Character with binary property
-            
-               yyval := (AST_Node, Process_Character_Class_Binary_Property (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Keyword, False));
+            --  Character with binary property
+
+            YYVal := (AST_Node, Process_Character_Class_Binary_Property (Pattern, YY.Value_Stack (YY.TOS -  3).Node, YY.Value_Stack (YY.TOS -  1).Keyword, False));
 
             when 34 =>
-               --  Character with binary property, negative
-            
-               yyval := (AST_Node, Process_Character_Class_Binary_Property (Pattern, yy.value_stack (yy.tos-3).Node, yy.value_stack (yy.tos-1).Keyword, True));
+            --  Character with binary property, negative
+
+            YYVal := (AST_Node, Process_Character_Class_Binary_Property (Pattern, YY.Value_Stack (YY.TOS -  3).Node, YY.Value_Stack (YY.TOS -  1).Keyword, True));
 
             when 35 =>
-               --  Initialize new character class node
-            
-               yyval := (AST_Node, Process_New_Character_Class (Pattern));
+            --  Initialize new character class node
+
+            YYVal := (AST_Node, Process_New_Character_Class (Pattern));
                when others =>
                   Dereference (Pattern);
 

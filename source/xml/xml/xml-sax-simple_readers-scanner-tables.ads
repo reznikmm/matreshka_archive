@@ -54,8 +54,10 @@ private package XML.SAX.Simple_Readers.Scanner.Tables is
      Matreshka.Internals.Unicode.Code_Point range 0 .. 16#FF#;
    subtype YY_Primary_Index is
      Matreshka.Internals.Unicode.Code_Point range 0 .. 16#10FF#;
-   type YY_Secondary_Array is array (YY_Secondary_Index) of Interfaces.Unsigned_32;
-   type YY_Secondary_Array_Access is not null access constant YY_Secondary_Array;
+   type YY_Secondary_Array is
+     array (YY_Secondary_Index) of Interfaces.Unsigned_32;
+   type YY_Secondary_Array_Access is
+     not null access constant YY_Secondary_Array;
 
    YY_End_Of_Buffer  : constant := 108;
    YY_Jam_State      : constant := 497;
@@ -88,7 +90,9 @@ private package XML.SAX.Simple_Readers.Scanner.Tables is
    EXTERNAL_ID_SYS      : constant := 24;
    EXTERNAL_ID_PUB      : constant := 25;
 
-   YY_Accept : constant array (Interfaces.Unsigned_32 range 0 .. 497) of Interfaces.Unsigned_32 :=
+   YY_Accept : constant
+     array (Interfaces.Unsigned_32 range 0 .. 497)
+       of Interfaces.Unsigned_32 :=
     (    0,    0,    0,    0,    0,    0,    0,    0,
          0,    0,    0,    0,    0,    0,    0,    0,
          0,    0,    0,    0,    0,    0,    0,    0,
@@ -153,7 +157,9 @@ private package XML.SAX.Simple_Readers.Scanner.Tables is
          0,    0,   35,    0,    0,    0,    0,    0,
          0,    0);
 
-   YY_Meta : constant array (Interfaces.Unsigned_32 range 0 .. 71) of Interfaces.Unsigned_32 :=
+   YY_Meta : constant
+     array (Interfaces.Unsigned_32 range 0 .. 71)
+       of Interfaces.Unsigned_32 :=
     (    0,    1,    2,    3,    3,    4,    5,    6,
          7,    8,    9,   10,    7,    7,    7,    7,
          7,   11,   11,    4,   12,   13,   14,   15,
@@ -164,7 +170,9 @@ private package XML.SAX.Simple_Readers.Scanner.Tables is
         18,   18,   18,   18,   18,   18,   18,   18,
         18,   18,   18,   19,   20,   21,   22,   23);
 
-   YY_Base : constant array (Interfaces.Unsigned_32 range 0 .. 629) of Interfaces.Unsigned_32 :=
+   YY_Base : constant
+     array (Interfaces.Unsigned_32 range 0 .. 629)
+       of Interfaces.Unsigned_32 :=
     (    0, 1966, 1965,    0,    6,   12,   17,   34,
         43,   46,   71,   28,   30,    7,   15,   77,
         87,  104,  107,  119,  134,  137,  145,  161,
@@ -245,7 +253,9 @@ private package XML.SAX.Simple_Readers.Scanner.Tables is
       3011, 3031, 3051, 3062, 3082, 3105, 3118, 3129,
       3149, 3169, 3190, 3201, 3221, 3242);
 
-   YY_Def : constant array (Interfaces.Unsigned_32 range 0 .. 629) of Interfaces.Unsigned_32 :=
+   YY_Def : constant
+     array (Interfaces.Unsigned_32 range 0 .. 629)
+       of Interfaces.Unsigned_32 :=
     (    0,  498,  498,  499,  499,  500,  500,  501,
        501,  502,  502,  503,  503,  504,  504,  502,
        502,  505,  505,  502,  502,  502,  502,  506,
@@ -326,7 +336,9 @@ private package XML.SAX.Simple_Readers.Scanner.Tables is
        497,  497,  497,  497,  497,  497,  497,  497,
        497,  497,  497,  497,  497,  497);
 
-   YY_Nxt : constant array (Interfaces.Unsigned_32 range 0 .. 3335) of Interfaces.Unsigned_32 :=
+   YY_Nxt : constant
+     array (Interfaces.Unsigned_32 range 0 .. 3335)
+       of Interfaces.Unsigned_32 :=
     (    0,  497,   57,   58,   57,  497,   59,  216,
         57,   58,   57,   60,   59,   66,   67,   67,
         67,   60,   66,   67,   67,   67,   69,  261,
@@ -745,7 +757,9 @@ private package XML.SAX.Simple_Readers.Scanner.Tables is
        497,  497,  497,  497,  497,  497,  497,  497,
        497,  497,  497,  497,  497,  497,  497,  497);
 
-   YY_Chk : constant array (Interfaces.Unsigned_32 range 0 .. 3335) of Interfaces.Unsigned_32 :=
+   YY_Chk : constant
+     array (Interfaces.Unsigned_32 range 0 .. 3335)
+       of Interfaces.Unsigned_32 :=
     (    0,    0,    3,    3,    3,    0,    3,   93,
          4,    4,    4,    3,    4,    5,    5,    5,
          5,    4,    6,    6,    6,    6,    5,  261,

@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+pragma Style_Checks ("-t");
+--  GNAT: Disable check for token separation rules, because format of the
+--  tables is not compatible with them.
 
 private package Matreshka.Internals.Regexps.Compiler.Parser.Tables is
 

@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+pragma Style_Checks ("-t");
+--  GNAT: Disable check for token separation rules, because format of the
+--  tables is not compatible with them.
 with Matreshka.Internals.Unicode;
 
 private package Matreshka.Internals.Regexps.Compiler.Scanner.Tables is
@@ -51,8 +54,10 @@ private package Matreshka.Internals.Regexps.Compiler.Scanner.Tables is
      Matreshka.Internals.Unicode.Code_Point range 0 .. 16#FF#;
    subtype YY_Primary_Index is
      Matreshka.Internals.Unicode.Code_Point range 0 .. 16#10FF#;
-   type YY_Secondary_Array is array (YY_Secondary_Index) of Integer;
-   type YY_Secondary_Array_Access is not null access constant YY_Secondary_Array;
+   type YY_Secondary_Array is
+     array (YY_Secondary_Index) of Integer;
+   type YY_Secondary_Array_Access is
+     not null access constant YY_Secondary_Array;
 
    YY_End_Of_Buffer  : constant := 155;
    YY_Jam_State      : constant := 1265;
