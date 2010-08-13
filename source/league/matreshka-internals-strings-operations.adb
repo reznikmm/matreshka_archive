@@ -278,9 +278,9 @@ package body Matreshka.Internals.Strings.Operations is
      Length : Natural)
        return not null Shared_String_Access
    is
-      pragma Assert (First < Source.Unused
-                       or (Source.Unused = 0 and First = 0));
-      --  For convenience, it is allowied to get empty slice from empty string.
+      pragma Assert (Size = 0 or First < Source.Unused);
+      --  For convenience, it is allowied to get empty slice from any string;
+      --  otherwise First must be valid position of character.
       pragma Assert (First + Size <= Source.Unused);
       pragma Assert (Utf16_String_Index (Length) in (Size + 1) / 2 .. Size);
 
