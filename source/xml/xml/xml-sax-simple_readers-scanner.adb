@@ -728,199 +728,199 @@ package body XML.SAX.Simple_Readers.Scanner is
 
             when 1 =>
                --  Open of XML declaration or text declaration, rules [23], [77].
-            
+
                return Actions.On_Open_Of_XML_Or_Text_Declaration (Self);
 
             when 2 =>
                --  Any character except literal "<?xml" means there is no XML declaration
                --  in this document/external parsed entity.
-            
+
                Actions.On_No_XML_Declaration (Self);
 
             when 3 =>
                --  Open of processing instruction, rule [16]. Rule [17] is implemented
                --  implicitly by ordering of open of XMLDecl and open of PI.
-            
+
                return Actions.On_Open_Of_Processing_Instruction (Self);
 
             when 4 =>
                --  Open tag of document type declaration and name of root element,
                --  rule [28].
-            
+
                return Actions.On_Open_Of_Document_Type_Declaration (Self);
 
             when 5 =>
                --  Open of start tag, rule [40], or empty element, rule [44].
-            
+
                return Actions.On_Open_Of_Start_Tag (Self);
 
             when 6 =>
                --  Open of end tag, rule [42].
-            
+
                return Actions.On_Open_Of_End_Tag (Self);
 
             when 7 =>
                --  Segment of whitespaces.
-            
+
                if Actions.On_Whitespace_In_Document (Self) then
                   return Token_String_Segment;
                end if;
 
             when 8 =>
                --  Segment of character data, rule [14].
-            
+
                return Actions.On_Character_Data (Self);
 
             when 9 =>
                --  Segment of character data, rule [14].
-            
+
                return Actions.On_Character_Data (Self);
 
             when 10 =>
                --  Segment of CDATA, rules [18], [19], [20], [21].
-            
+
                Set_String_Internal
                 (Item          => YYLVal,
                  String        => YY_Text_Internal (9, 3),
                  Is_Whitespace => False,
                  Is_CData      => True);
-            
+
                return Token_String_Segment;
 
             when 11 =>
                --  Segment of CDATA, rules [18], [19], [20], [21].
-            
+
                Set_String_Internal
                 (Item          => YYLVal,
                  String        => YY_Text_Internal (9, 3),
                  Is_Whitespace => False,
                  Is_CData      => True);
-            
+
                return Token_String_Segment;
 
             when 12 =>
                --  General entity reference rule [68] in document content.
-            
+
                if not Actions.On_General_Entity_Reference_In_Document_Content (Self) then
                   --  Error is detected during handling, return error token to parser.
-            
+
                   return Error;
                end if;
 
             when 13 =>
                --  [24] VersionInfo
-            
+
                if not Get_Whitespace_Matched (Self) then
                   raise Program_Error with "no whitespace before 'version' keyword";
                   --  XXX This is recoverable error.
                end if;
-            
+
                return Token_Version;
 
             when 14 =>
                --  [80] EncodingDecl
-            
+
                if not Get_Whitespace_Matched (Self) then
                   raise Program_Error with "no whitespace before 'encoding' keyword";
                   --  XXX This is recoverable error.
                end if;
-            
+
                return Token_Encoding;
 
             when 15 =>
                --  [32] SDDecl
-            
+
                if not Get_Whitespace_Matched (Self) then
                   raise Program_Error with "no whitespace before 'standalone' keyword";
                   --  XXX This is recoverable error.
                end if;
-            
+
                return Token_Standalone;
 
             when 16 =>
                --  Synthetic rule. XMLDECL_ATTRIBUTE_CHAR is a union of characters allowed
                --  by [26] VersionNum, [81] EncName, [32] SDDecl. Precise check is
                --  processed while parsing.
-            
+
                Set_String_Internal
                 (Item          => YYLVal,
                  String        => YY_Text_Internal (1, 1),
                  Is_Whitespace => False,
                  Is_CData      => False);
                Reset_Whitespace_Matched (Self);
-            
+
                return Token_String_Segment;
 
             when 17 =>
                --  Close of XML declaration (production [23]) or text declaration
                --  (production [77]).
-            
+
                return Actions.On_Close_Of_XML_Or_Text_Declaration (Self);
 
             when 18 =>
                --  Close of processing instruction (rule [16]).
-            
+
                return Actions.On_Close_Of_Processing_Instruction (Self, True);
 
             when 19 =>
                --  Ignore all whitespaces is followed by processing insturction's name,
                --  rule [16].
-            
+
                Actions.On_Whitespace_In_Processing_Instruction (Self);
 
             when 20 =>
                --  Segment of data and close delimiter of the processing instruction, rule
                --  [16].
-            
+
                return Actions.On_Close_Of_Processing_Instruction (Self, False);
 
             when 21 =>
                --  Segment of data and close delimiter of the processing instruction, rule
                --  [16].
-            
+
                return Actions.On_Close_Of_Processing_Instruction (Self, False);
 
             when 22 =>
                --  Keyword SYSTEM, rule [75].
-            
+
                Reset_Whitespace_Matched (Self);
                Push_And_Enter_Start_Condition (Self, DOCTYPE_INT, EXTERNAL_ID_SYS);
-            
+
                return Token_System;
 
             when 23 =>
                --  System literal, rule [11], used in rule [75].
-            
+
                return Actions.On_System_Literal (Self);
 
             when 24 =>
                --  Productions [82], [83] allows absence of system literal in
                --  notation declaration.
-            
+
                Pop_Start_Condition (Self);
-            
+
                if Start_Condition (Self) = NOTATION_DECL then
                   Pop_Start_Condition (Self);
                end if;
-            
+
                return Token_Close;
 
             when 25 =>
                --  Keyword PUBLIC, rule [75].
-            
+
                Reset_Whitespace_Matched (Self);
                Push_And_Enter_Start_Condition (Self, DOCTYPE_INT, EXTERNAL_ID_PUB);
-            
+
                return Token_Public;
 
             when 26 =>
                --  Public id literal, rule [12], used in rule [75].
-            
+
                if not Get_Whitespace_Matched (Self) then
                   raise Program_Error with "no whitespace before pubid literal";
                   --  XXX This is recoverable error.
                end if;
-            
+
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
                Set_String_Internal
@@ -928,136 +928,136 @@ package body XML.SAX.Simple_Readers.Scanner is
                  String        => YY_Text_Internal (1, 1),
                  Is_Whitespace => False,
                  Is_CData      => False);
-            
+
                return Token_Public_Literal;
 
             when 27 =>
                --  Open of internal subset declaration, rule [28].
-            
+
                return Actions.On_Open_Of_Internal_Subset (Self);
 
             when 28 =>
                --  Close of internal subset declaration, rule [28].
-            
+
                Enter_Start_Condition (Self, DOCTYPE_INT);
-            
+
                return Token_Internal_Subset_Close;
 
             when 29 =>
                --  Text of comment, rule [15].
-            
+
                Set_String_Internal
                 (Item          => YYLVal,
                  String        => YY_Text_Internal (4, 3),
                  Is_Whitespace => False,
                  Is_CData      => False);
-            
+
                return Token_Comment;
 
             when 30 =>
                --  Text of comment, rule [15].
-            
+
                Set_String_Internal
                 (Item          => YYLVal,
                  String        => YY_Text_Internal (4, 3),
                  Is_Whitespace => False,
                  Is_CData      => False);
-            
+
                return Token_Comment;
 
             when 31 =>
                --  Parameter entity reference rule [69] in document type declaration.
-            
+
                if not Actions.On_Parameter_Entity_Reference_In_Document_Declaration (Self) then
                   return Error;
                end if;
 
             when 32 =>
                --  Open of entity declaration, rules [71], [72].
-            
+
                Enter_Start_Condition (Self, ENTITY_DECL);
                Reset_Whitespace_Matched (Self);
-            
+
                return Token_Entity_Decl_Open;
 
             when 33 =>
                --  Open of element declaration and name of the element, rule [45].
-            
+
                return Actions.On_Open_Of_Element_Declaration (Self);
 
             when 34 =>
                --  Open of attribute list declaration, rule [52].
-            
+
                return Actions.On_Open_Of_Attribute_List_Declaration (Self);
 
             when 35 =>
                --  Open of notation declaration, production [82].
-            
+
                return Actions.On_Open_Of_Notation_Declaration (Self);
 
             when 36 =>
                --  Close of notation declaration, production [82].
-            
+
                Pop_Start_Condition (Self);
-            
+
                return Token_Close;
 
             when 37 =>
                --  Name in entity declaration, rules [71], [72].
-            
+
                return Actions.On_Name_In_Entity_Declaration (Self);
 
             when 38 =>
                --  Percent mark in parameter entity declaration, rule [72].
-            
+
                if not Get_Whitespace_Matched (Self) then
                   raise Program_Error
                     with "no whitespace before percent in parameter entity declaration";
                   --  XXX This is recoverable error.
                end if;
-            
+
                Reset_Whitespace_Matched (Self);
-            
+
                return Token_Percent;
 
             when 39 =>
                --  Entity value, rule [9].
-            
+
                return Actions.On_Entity_Value_Open_Delimiter (Self);
 
             when 40 =>
                --  Entity value as ExternalID, rule [75], used by rules [73], [74].
-            
+
                Reset_Whitespace_Matched (Self);
                Push_Current_And_Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
-            
+
                return Token_System;
 
             when 41 =>
                --  Entity value as ExternalID, rule [75], used by rules [73], [74].
                --  Notation as ExternalID or Public_ID (productions [75], [82], [83]).
-            
+
                Reset_Whitespace_Matched (Self);
                Push_Current_And_Enter_Start_Condition (Self, EXTERNAL_ID_PUB);
-            
+
                return Token_Public;
 
             when 42 =>
                --  NDATA keyword, rule [76].
-            
+
                if not Get_Whitespace_Matched (Self) then
                   raise Program_Error with "no whitespace before NDATA";
                   --  XXX This is recoverable error.
                end if;
-            
+
                Reset_Whitespace_Matched (Self);
                Enter_Start_Condition (Self, ENTITY_NDATA);
-            
+
                return Token_NData;
 
             when 43 =>
                --  Name of NDATA, rule [76].
-            
+
                return Actions.On_Name_In_Entity_Declaration_Notation (Self);
 
             when 44 =>
@@ -1066,7 +1066,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                  String        => YY_Text_Internal,
                  Is_Whitespace => False,
                  Is_CData      => False);
-            
+
                return Token_String_Segment;
 
             when 45 =>
@@ -1075,24 +1075,24 @@ package body XML.SAX.Simple_Readers.Scanner is
                  String        => YY_Text_Internal,
                  Is_Whitespace => False,
                  Is_CData      => False);
-            
+
                return Token_String_Segment;
 
             when 46 =>
                --  Close of entity value, rule [9].
-            
+
                return Process_Entity_Value_Close_Delimiter (Self, YY_Text);
 
             when 47 =>
                --  Decimal form of character reference rule [66] in entity value rule [9];
                --  or content of element, rule [43].
-            
+
                return Actions.On_Character_Reference (Self, False);
 
             when 48 =>
                --  Decimal form of character reference rule [66] in attribute value,
                --  rule [10].
-            
+
                if not Actions.On_Character_Reference_In_Attribute_Value
                        (Self, False)
                then
@@ -1102,13 +1102,13 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 49 =>
                --  Hexadecimal form of character reference rule [66] in entity value rule
                --  [9] or content of element, rule [43].
-            
+
                return Actions.On_Character_Reference (Self, True);
 
             when 50 =>
                --  Hexadecimal form of character reference rule [66] in attribute value,
                --  rule [10].
-            
+
                if not Actions.On_Character_Reference_In_Attribute_Value
                        (Self, True)
                then
@@ -1117,7 +1117,7 @@ package body XML.SAX.Simple_Readers.Scanner is
 
             when 51 =>
                --  General entity reference rule [68] in entity value rule [9].
-            
+
                return Actions.On_General_Entity_Reference_In_Entity_Value (Self);
 
             when 52 =>
@@ -1129,185 +1129,185 @@ package body XML.SAX.Simple_Readers.Scanner is
                --  quotation; parsing of entity value delimited by apostrophe; and
                --  parsing of parameter entity replacement text when it is referenced
                --  in any of two form of entity value.
-            
+
                if not Actions.On_Parameter_Entity_Reference_In_Entity_Value (Self) then
                   return Error;
                end if;
 
             when 53 =>
                --  EMPTY keyword, rule [46].
-            
+
                return Token_Empty;
 
             when 54 =>
                --  ANY keyword, rule [46].
-            
+
                return Token_Any;
 
             when 55 =>
                --  Open parenthesis, rules [49], [50], [51].
-            
+
                Enter_Start_Condition (Self, ELEMENT_CHILDREN);
-            
+
                return Token_Open_Parenthesis;
 
             when 56 =>
                --  Close parenthesis, rules [49], [50], [51].
-            
+
                return Token_Close_Parenthesis;
 
             when 57 =>
                --  Question mark in rules [47], [48].
-            
+
                return Token_Question;
 
             when 58 =>
                --  Asterisk in rules [47], [48].
-            
+
                return Token_Asterisk;
 
             when 59 =>
                --  Plus sign in rules [47], [48].
-            
+
                return Token_Plus;
 
             when 60 =>
                --  Vertical bar in rule [49].
-            
+
                return Token_Vertical_Bar;
 
             when 61 =>
                --  Comma in rule [50].
-            
+
                return Token_Comma;
 
             when 62 =>
                --  #PCDATA in rule [51].
-            
+
                return Token_PCData;
 
             when 63 =>
                --  Name in element's children declaration, rules [48], [51].
-            
+
                return Actions.On_Name_In_Element_Declaration_Children (Self);
 
             when 64 =>
                --  Close token of entity declaration, rules [71], [72].
                --  Close of element declaration, rule [45].
                --  Close of attribute list declaration, rule [52].
-            
+
                return Actions.On_Close_Of_Declaration (Self);
 
             when 65 =>
                --  Name of the attribute, rule [53].
-            
+
                return Actions.On_Name_In_Attribute_List_Declaration (Self);
 
             when 66 =>
                --  CDATA keyword, rule [55].
-            
+
                return Token_CData;
 
             when 67 =>
                --  ID keyword, rule [56].
-            
+
                return Token_Id;
 
             when 68 =>
                --  IDREF keyword, rule [56].
-            
+
                return Token_IdRef;
 
             when 69 =>
                --  IDREFS keyword, rule [56].
-            
+
                return Token_IdRefs;
 
             when 70 =>
                --  ENTITY keyword, rule [56].
-            
+
                return Token_Entity;
 
             when 71 =>
                --  ENTITIES keyword, rule [56].
-            
+
                return Token_Entities;
 
             when 72 =>
                --  NMTOKEN keyword, rule [56].
-            
+
                return Token_NmToken;
 
             when 73 =>
                --  NMTOKENS keyword, rule [56].
-            
+
                return Token_NmTokens;
 
             when 74 =>
                --  NOTATION keyword, rule [58].
-            
+
                return Token_Notation;
 
             when 75 =>
                --  #REQUIRED keyword, rule [60].
-            
+
                Enter_Start_Condition (Self, ATTLIST_DECL);
-            
+
                return Token_Required;
 
             when 76 =>
                --  #IMPLIED keyword, rule [60].
-            
+
                Enter_Start_Condition (Self, ATTLIST_DECL);
-            
+
                return Token_Implied;
 
             when 77 =>
                --  #FIXED keyword, rule [60].
-            
+
                return Token_Fixed;
 
             when 78 =>
                --  Open parenthesis, rules [58], [59].
-            
+
                return Token_Open_Parenthesis;
 
             when 79 =>
                --  Close parenthesis, rules [58], [59].
-            
+
                return Token_Close_Parenthesis;
 
             when 80 =>
                --  Vertical bar, rules [58], [59].
-            
+
                return Token_Vertical_Bar;
 
             when 81 =>
                --  Name in the rule [58].
-            
+
                return Actions.On_Name_In_Attribute_List_Declaration_Notation (Self);
 
             when 82 =>
                --  Nmtoken in the rule [59].
-            
+
                Set_String_Internal
                 (Item          => YYLVal,
                  String        => YY_Text_Internal,
                  Is_Whitespace => False,
                  Is_CData      => False);
                --  XXX Need to add flag to mark Nmtoken.
-            
+
                return Token_Name;
 
             when 83 =>
                --  Open delimiter of attribute value, rule [10].
-            
+
                Actions.On_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
 
             when 84 =>
                --  Parameter entity reference rule [69] in attribute declaration.
                --  Parameter entity reference in element's children declaration, [51].
-            
+
                if not Actions.On_Parameter_Entity_Reference_In_Markup_Declaration (Self) then
                   return Error;
                end if;
@@ -1315,7 +1315,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 85 =>
                --  All white spaces from rules [28] are ignored.
                --  Whitespace before name in rule [76] is ignored.
-            
+
                null;
 
             when 86 =>
@@ -1329,28 +1329,28 @@ package body XML.SAX.Simple_Readers.Scanner is
                --  All white spaces from rules [23], [24], [25], [32], [80], [82] are
                --  ignored, but white space between attribute value and name of the
                --  next attribute are must be present.
-            
+
                Set_Whitespace_Matched (Self);
 
             when 87 =>
                --  Name of the attribute, rule [41].
-            
+
                return Actions.On_Name_In_Element_Start_Tag (Self);
 
             when 88 =>
                --  Equal sign as attribute's name value delimiter, rule [25] in rules [41],
                --  [24], [32], [80].
-            
+
                return Token_Equal;
 
             when 89 =>
                --  Close of empty element tag, rule [44].
-            
+
                return Actions.On_Close_Of_Empty_Element_Tag (Self);
 
             when 90 =>
                --  Close tag of document type declaration, rule [28].
-            
+
                if Actions.On_Close_Of_Document_Type_Declaration (Self) then
                   return Token_Close;
                end if;
@@ -1358,39 +1358,39 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 91 =>
                --  Close of tag, rule [40].
                --  Close tag of document type declaration, rule [28].
-            
+
                return Actions.On_Close_Of_Tag (Self);
 
             when 92 =>
                --  Open delimiter of attribute value, rule [10].
-            
+
                Actions.On_Attribute_Value_Open_Delimiter (Self, ELEMENT_START);
 
             when 93 =>
                --  Close delimiter of attribute value, rule [10].
-            
+
                if Actions.On_Attribute_Value_Close_Delimiter (Self) then
                   return Token_String_Segment;
                end if;
 
             when 94 =>
                --  Value of attribute, rule [10].
-            
+
                Actions.On_Attribute_Value_Character_Data (Self);
 
             when 95 =>
                --  Value of attribute, rule [10].
-            
+
                Actions.On_Attribute_Value_Character_Data (Self);
 
             when 96 =>
                --  Less-than sign can't be used in the attribute value.
-            
+
                return Actions.On_Less_Than_Sign_In_Attribute_Value (Self);
 
             when 97 =>
                --  General entity reference rule [68] in attribute value, rule [10].
-            
+
                if not Actions.On_General_Entity_Reference_In_Attribute_Value (Self) then
                   return Error;
                end if;
@@ -1422,7 +1422,7 @@ package body XML.SAX.Simple_Readers.Scanner is
 
             when 106 =>
                --  Unexpected character.
-            
+
                return Actions.On_Unexpected_Character (Self);
 --            when YY_END_OF_BUFFER + INITIAL + 1 
 --            =>
