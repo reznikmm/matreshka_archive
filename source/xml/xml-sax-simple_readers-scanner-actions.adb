@@ -607,6 +607,43 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       return Token_Pi_Close;
    end On_Close_Of_XML_Or_Text_Declaration;
 
+   ---------------------------------------------------
+   -- On_Element_Name_In_Attribute_List_Declaration --
+   ---------------------------------------------------
+
+   function On_Element_Name_In_Attribute_List_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      --  [XML [52]] AttlistDecl ::= '<!ATTLIST' S Name AttDef* S? '>'
+      --
+      --  Checks whitespace before the element name is present.
+
+      if not Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML [52] AttlistDecl]"
+               & " no whitespace before element's name"));
+
+         return Error;
+      end if;
+
+      Resolve_Symbol
+       (Self, 0, 0, False, True, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Enter_Start_Condition (Self, Tables.ATTLIST_DECL);
+
+         return Token_Name;
+      end if;
+   end On_Element_Name_In_Attribute_List_Declaration;
+
    ------------------------------------
    -- On_Entity_Value_Open_Delimiter --
    ------------------------------------
@@ -1147,22 +1184,12 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------------
 
    function On_Open_Of_Attribute_List_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token
-   is
-      Qname_Error : Boolean;
-
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
    begin
-      Resolve_Symbol
-       (Self, 9, 0, True, True, Qname_Error, Self.YYLVal.Symbol);
+      Enter_Start_Condition (Self, Tables.ATTLIST_NAME);
+      Self.Whitespace_Matched := False;
 
-      if Qname_Error then
-         return Error;
-
-      else
-         Enter_Start_Condition (Self, Tables.ATTLIST_DECL);
-
-         return Token_Attlist_Decl_Open;
-      end if;
+      return Token_Attlist_Decl_Open;
    end On_Open_Of_Attribute_List_Declaration;
 
    ------------------------------------------

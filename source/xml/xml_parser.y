@@ -673,11 +673,11 @@ Mixed_content:
 ;
 
 AttlistDecl :
-  Token_Attlist_Decl_Open
+  Token_Attlist_Decl_Open Token_Name
    {
       Actions.On_Start_Of_Attribute_List_Declaration
        (Self,
-        $1.Symbol);
+        $2.Symbol);
    }
   AttDef_any Token_Close
    {

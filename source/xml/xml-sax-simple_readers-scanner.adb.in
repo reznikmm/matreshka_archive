@@ -472,6 +472,7 @@ package body XML.SAX.Simple_Readers.Scanner is
       YY_End_Of_Buffer_Action    : YY_End_Of_Buffer_Actions;
       YY_Position_Offset         : Utf16_String_Index;
       YY_Index_Offset            : Natural;
+      YY_Start_Condition         : Interfaces.Unsigned_32;
 
       function YY_Text
        (Trim_Left       : Natural := 0;
@@ -878,11 +879,30 @@ package body XML.SAX.Simple_Readers.Scanner is
                      --  empty returns End_Of_Input token.
 
                      if not Self.Scanner_Stack.Is_Empty then
-                        Self.Scanner_State :=
-                          Self.Scanner_Stack.Last_Element;
-                        Self.Scanner_Stack.Delete_Last;
+                        if Is_Parameter_Entity
+                            (Self.Entities, Self.Scanner_State.Entity)
+                        then
+                           --  For parameter entities start condition need to
+                           --  be propagated to previous state, otherwise
+                           --  scanner can start from the wrong condition.
+                           --  For non-parameter entities it is not needed,
+                           --  because their processing doesn't use stack of
+                           --  start conditions.
+
+                           YY_Start_Condition := Start_Condition (Self);
+                           Self.Scanner_State :=
+                             Self.Scanner_Stack.Last_Element;
+                           Self.Scanner_Stack.Delete_Last;
+                           Enter_Start_Condition (Self, YY_Start_Condition);
+
+                        else
+                           Self.Scanner_State :=
+                             Self.Scanner_Stack.Last_Element;
+                           Self.Scanner_Stack.Delete_Last;
+                        end if;
 
                         YY_End_Of_Buffer_Action := YY_Continue_Scan;
+
                      else
                         YY_End_Of_Buffer_Action := YY_End_Of_Input;
                      end if;

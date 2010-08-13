@@ -106,6 +106,10 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles close of XML declaration and text declaration.
 
+   function On_Element_Name_In_Attribute_List_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles element's name in attribute list declaration.
+
    function On_Entity_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles open delimiter of entity value.

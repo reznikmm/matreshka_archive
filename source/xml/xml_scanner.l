@@ -136,6 +136,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 %x ELEMENT_DECL
 %x ELEMENT_CHILDREN
 %x ATTLIST_DECL
+%x ATTLIST_NAME
 %x ATTLIST_TYPE
 %x NOTATION_DECL
 %x ENTITY_DECL
@@ -466,10 +467,16 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Actions.On_Open_Of_Element_Declaration (Self);
 }
 
-<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!ATTLIST"{WHITE_SPACE}{NAME} {
+<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!ATTLIST" {
    --  Open of attribute list declaration, rule [52].
 
    return Actions.On_Open_Of_Attribute_List_Declaration (Self);
+}
+
+<ATTLIST_NAME>{NAME} {
+   --  Element's name in attribute list declaration, rule [52].
+
+   return Actions.On_Element_Name_In_Attribute_List_Declaration (Self);
 }
 
 <DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!NOTATION"{WHITE_SPACE}{NAME} {
@@ -836,7 +843,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    Actions.On_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
 }
 
-<ATTLIST_DECL,ATTLIST_TYPE,ELEMENT_DECL,ELEMENT_CHILDREN>"%"{NAME}";" {
+<ATTLIST_DECL,ATTLIST_NAME,ATTLIST_TYPE,ELEMENT_DECL,ELEMENT_CHILDREN>"%"{NAME}";" {
    --  Parameter entity reference rule [69] in attribute declaration.
    --  Parameter entity reference in element's children declaration, [51].
 
@@ -852,7 +859,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    null;
 }
 
-<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,NOTATION_DECL,ELEMENT_START>{WHITE_SPACE} {
+<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,NOTATION_DECL,ELEMENT_START,ATTLIST_NAME>{WHITE_SPACE} {
    --  White spaces in entity declaration are not optional, rules [71], [72],
    --  [75], [76].
    --
@@ -1113,6 +1120,9 @@ with Matreshka.Internals.Strings;
        (Self : access Integer) return Token;
 
       function On_Open_Of_Attribute_List_Declaration
+       (Self : access Integer) return Token;
+
+      function On_Element_Name_In_Attribute_List_Declaration
        (Self : access Integer) return Token;
 
       function On_Open_Of_Notation_Declaration
