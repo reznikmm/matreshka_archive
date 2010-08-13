@@ -47,12 +47,24 @@ with Put_Line;
 
 procedure Hello is
 
-   function "+"
-    (Item : Wide_Wide_String) return League.Strings.Universal_String
-       renames League.Strings.To_Universal_String;
+   function "-"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String;
+
+   ---------
+   -- "-" --
+   ---------
+
+   function "-"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String is
+   begin
+      return
+        League.Translator.Translate
+         (League.Strings.To_Universal_String ("HELLO"),
+          League.Strings.To_Universal_String (Item));
+   end "-";
 
 begin
    League.Translator.Initialize ("hello.xlf");
-   Put_Line (League.Translator.Translate (+"HELLO", +"Hello, world!"));
+   Put_Line (-"Hello, world!");
    League.Translator.Finalize;
 end Hello;
