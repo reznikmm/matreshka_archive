@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:trolltech="urn:trolltech:names:ts:document:1.0">
+  <file original="hello.adb" datatype="plaintext" source-language="en" target-language="ru"><body>
+    <group restype="x-trolltech-linguist-context" resname="HELLO">
+      <trans-unit id="_msg1">
+        <source xml:space="preserve">Hello, world!</source>
+        <target xml:space="preserve" state="needs-review-translation">Здравствуй, мир!</target>
+        <context-group purpose="location"><context context-type="linenumber">13</context></context-group>
+      </trans-unit>
+    </group>
+  </body></file>
+</xliff>

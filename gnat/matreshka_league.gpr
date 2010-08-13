@@ -48,7 +48,9 @@ library project Matreshka_League is
    for Source_Dirs use
     ("../source/league",
      "../source/league/regexp",
-     "../source/league/ucd");
+     "../source/league/ucd",
+     "../source/xml",
+     "../source/xml/xml");
    for Object_Dir use "../.objs";
    for Library_Kind use "dynamic";
    for Library_Name use "league";
@@ -81,7 +83,9 @@ library project Matreshka_League is
           ("../source/league",
            "../source/league/ucd",
            "../source/league/regexp",
-           "../source/league/arch/x86_64");
+           "../source/league/arch/x86_64",
+           "../source/xml",
+           "../source/xml/xml");
 
       when others =>
          null;

@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               XML Processor                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,83 +41,53 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---with "matreshka_config";
-with "matreshka_league";
+private with Ada.Finalization;
 
-abstract project Matreshka_Xml is
---library project Matreshka_Xml is
---
---   for Source_Dirs use ("../source/xml", "../source/xml/xml");
---   for Object_Dir use "../.objs";
---   for Library_Kind use "dynamic";
---   for Library_Name use "matreshka-xml";
---   for Library_Dir use "../.libs";
---
---   Common_Ada_Switches :=
---    ("-g",
---     "-gnat05",
---     "-gnatn");
---   --  Common switches to be used for every unit.
---
---   Optimization_Ada_Switches :=
---    ("-O2");
---   --  Optimization switches. Optimization is not used for several units, thus
---   --  optimization switches are declared by the separate variable.
---
---   Platform_Ada_Switches := ();
---   --  Set of platform specific switches. Needed for example on x86 to upgrade
---   --  default instructions set to i486 which includes atomic operations.
---
---   Debug_Ada_Switches := ();
---   --  Switches to be used in debug mode.
---
---   case Matreshka_Config.Architecture is
---      when "x86" =>
---         Platform_Ada_Switches := ("-march=i686");
---
---      when others =>
---         null;
---   end case;
---
---   case Matreshka_Config.Build is
---      when "RELEASE" =>
---         null;
---
---      when "DEBUG" =>
---         Debug_Ada_Switches :=
---          ("-gnatwa", "-gnatyaAbcdefhiIkmnoOprsStux", "-gnato", "-fstack-check");
---   end case;
---
---   -------------
---   -- Builder --
---   -------------
---
---   package Builder is
---
---      case Matreshka_Config.Build is
---         when "RELEASE" =>
---            for Global_Configuration_Pragmas
---              use "matreshka_league__release.adc";
---
---         when "DEBUG" =>
---            for Global_Configuration_Pragmas
---              use "matreshka_league__debug.adc";
---      end case;
---
---   end Builder;
---
---   --------------
---   -- Compiler --
---   --------------
---
---   package Compiler is
---
---      for Default_Switches ("Ada") use
---        Common_Ada_Switches
---          & Platform_Ada_Switches
---          & Optimization_Ada_Switches
---          & Debug_Ada_Switches;
---
---   end Compiler;
+with XML.SAX.Attributes;
+with XML.SAX.Content_Handlers;
 
-end Matreshka_Xml;
+package Matreshka.Internals.Translator.XLIFF_Readers is
+
+   type XLIFF_Reader is
+     limited new XML.SAX.Content_Handlers.SAX_Content_Handler with private;
+
+private
+
+   --  GNAT GPL 2010: This type need not to be derived from Limited_Controlled
+   --  but this is done to workaround compiler's bug.
+
+   type XLIFF_Reader is
+     new Ada.Finalization.Limited_Controlled
+       and XML.SAX.Content_Handlers.SAX_Content_Handler with
+   record
+      Context   : Context_Access;
+      Source    : League.Strings.Universal_String;
+      In_Source : Boolean := False;
+      Target    : League.Strings.Universal_String;
+      In_Target : Boolean := False;
+   end record;
+
+   overriding procedure Characters
+    (Self    : in out XLIFF_Reader;
+     Text    : League.Strings.Universal_String;
+     Success : in out Boolean);
+
+   overriding procedure End_Element
+    (Self           : in out XLIFF_Reader;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Success        : in out Boolean);
+
+   overriding function Error_String
+    (Self : XLIFF_Reader) return League.Strings.Universal_String;
+
+   overriding procedure Start_Element
+    (Self           : in out XLIFF_Reader;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes;
+     Success        : in out Boolean);
+
+end Matreshka.Internals.Translator.XLIFF_Readers;

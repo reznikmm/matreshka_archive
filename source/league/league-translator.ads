@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               XML Processor                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,83 +41,30 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---with "matreshka_config";
-with "matreshka_league";
+with League.Strings;
 
-abstract project Matreshka_Xml is
---library project Matreshka_Xml is
---
---   for Source_Dirs use ("../source/xml", "../source/xml/xml");
---   for Object_Dir use "../.objs";
---   for Library_Kind use "dynamic";
---   for Library_Name use "matreshka-xml";
---   for Library_Dir use "../.libs";
---
---   Common_Ada_Switches :=
---    ("-g",
---     "-gnat05",
---     "-gnatn");
---   --  Common switches to be used for every unit.
---
---   Optimization_Ada_Switches :=
---    ("-O2");
---   --  Optimization switches. Optimization is not used for several units, thus
---   --  optimization switches are declared by the separate variable.
---
---   Platform_Ada_Switches := ();
---   --  Set of platform specific switches. Needed for example on x86 to upgrade
---   --  default instructions set to i486 which includes atomic operations.
---
---   Debug_Ada_Switches := ();
---   --  Switches to be used in debug mode.
---
---   case Matreshka_Config.Architecture is
---      when "x86" =>
---         Platform_Ada_Switches := ("-march=i686");
---
---      when others =>
---         null;
---   end case;
---
---   case Matreshka_Config.Build is
---      when "RELEASE" =>
---         null;
---
---      when "DEBUG" =>
---         Debug_Ada_Switches :=
---          ("-gnatwa", "-gnatyaAbcdefhiIkmnoOprsStux", "-gnato", "-fstack-check");
---   end case;
---
---   -------------
---   -- Builder --
---   -------------
---
---   package Builder is
---
---      case Matreshka_Config.Build is
---         when "RELEASE" =>
---            for Global_Configuration_Pragmas
---              use "matreshka_league__release.adc";
---
---         when "DEBUG" =>
---            for Global_Configuration_Pragmas
---              use "matreshka_league__debug.adc";
---      end case;
---
---   end Builder;
---
---   --------------
---   -- Compiler --
---   --------------
---
---   package Compiler is
---
---      for Default_Switches ("Ada") use
---        Common_Ada_Switches
---          & Platform_Ada_Switches
---          & Optimization_Ada_Switches
---          & Debug_Ada_Switches;
---
---   end Compiler;
+package League.Translator is
 
-end Matreshka_Xml;
+   function Translate
+    (Package_Name   : League.Strings.Universal_String;
+     Source_Text    : League.Strings.Universal_String;
+     Disambiguation : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
+       return League.Strings.Universal_String;
+   --  Translates message.
+
+--   function Translate
+--    (Package_Name   : League.Strings.Universal_String;
+--     Source_Text    : League.Strings.Universal_String;
+--     Disambiguation : League.Strings.Universal_String;
+--     Number         : Integer)
+--       return League.Strings.Universal_String;
+--   --  Translates message make in sence plural form.
+
+   procedure Initialize (File : String);
+   --  Loads translations from the specified file.
+
+   procedure Finalize;
+   --  Release resources.
+
+end League.Translator;
