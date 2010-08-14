@@ -43,9 +43,6 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.Text_Codecs.UTF16;
-with Matreshka.Internals.Text_Codecs.UTF8;
-
 package body XML.SAX.Input_Sources.Streams is
 
    procedure Free is
@@ -63,17 +60,11 @@ package body XML.SAX.Input_Sources.Streams is
 
       procedure Free is
         new Ada.Unchecked_Deallocation
-             (Matreshka.Internals.Text_Codecs.Abstract_Decoder'Class,
-              Matreshka.Internals.Text_Codecs.Decoder_Access);
-
-      procedure Free is
-        new Ada.Unchecked_Deallocation
              (Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class,
               Matreshka.Internals.Text_Codecs.Decoder_State_Access);
 
    begin
       Free (Self.Buffer);
-      Free (Self.Decoder);
       Free (Self.State);
    end Finalize;
 
@@ -310,13 +301,15 @@ package body XML.SAX.Input_Sources.Streams is
                   Self.Encoding :=
                     League.Strings.To_Universal_String ("UTF-16");
                   Self.Decoder :=
-                    new Matreshka.Internals.Text_Codecs.UTF16.UTF16LE_Decoder;
+                    Matreshka.Internals.Text_Codecs.Decoder
+                     (Matreshka.Internals.Text_Codecs.MIB_UTF16LE);
 
                when UTF16BE =>
                   Self.Encoding :=
                     League.Strings.To_Universal_String ("UTF-16");
                   Self.Decoder :=
-                    new Matreshka.Internals.Text_Codecs.UTF16.UTF16BE_Decoder;
+                    Matreshka.Internals.Text_Codecs.Decoder
+                     (Matreshka.Internals.Text_Codecs.MIB_UTF16BE);
 
                when EBCDIC =>
                   raise Program_Error;
@@ -325,7 +318,8 @@ package body XML.SAX.Input_Sources.Streams is
                   Self.Encoding :=
                     League.Strings.To_Universal_String ("UTF-8");
                   Self.Decoder :=
-                    new Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
+                    Matreshka.Internals.Text_Codecs.Decoder
+                     (Matreshka.Internals.Text_Codecs.MIB_UTF8);
             end case;
 
             --  Create decoder's state object.

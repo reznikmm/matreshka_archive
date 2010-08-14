@@ -42,15 +42,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
-with Matreshka.Internals.Text_Codecs.UTF8;
 
 package body League.Text_Codecs is
 
    use Matreshka.Internals.Text_Codecs;
-
-   UTF8_Decoder : aliased Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
-   UTF8_Encoding : League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("UTF-8");
 
    -----------
    -- Codec --
@@ -59,15 +54,14 @@ package body League.Text_Codecs is
    function Codec
     (Encoding_Name : League.Strings.Universal_String) return Text_Codec
    is
-      use League.Strings;
+      Set : constant Character_Set := To_Character_Set (Encoding_Name);
 
    begin
-      if Encoding_Name = UTF8_Encoding then
-         return (Decoder => UTF8_Decoder'Access);
-
-      else
+      if Set = 0 then
          raise Constraint_Error with "Unknown encoding";
       end if;
+
+      return (Decoder => Decoder (Set));
    end Codec;
 
    ------------
