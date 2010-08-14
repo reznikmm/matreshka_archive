@@ -57,6 +57,14 @@ package Matreshka.Internals.Text_Codecs is
    type Character_Set is range 0 .. 2999;
    --  IANA MIB code of the character set.
 
+   MIB_UTF8    : constant Character_Set := 106;
+   MIB_UTF16   : constant Character_Set := 1012;
+   MIB_UTF16BE : constant Character_Set := 1013;
+   MIB_UTF16LE : constant Character_Set := 1014;
+   MIB_UTF32   : constant Character_Set := 1017;
+   MIB_UTF32BE : constant Character_Set := 1018;
+   MIB_UTF32LE : constant Character_Set := 1019;
+
    function To_Character_Set
     (Item : League.Strings.Universal_String) return Character_Set;
    --  Converts name of character encoding into internal representation.
@@ -89,6 +97,7 @@ package Matreshka.Internals.Text_Codecs is
    --  Abstract root tagged type for decoders.
 
    type Decoder_Access is access all Abstract_Decoder'Class;
+   for Decoder_Access'Storage_Size use 0;
 
    not overriding function Create_State
     (Self : Abstract_Decoder;
@@ -118,5 +127,9 @@ package Matreshka.Internals.Text_Codecs is
 
    type Abstract_Encoder is abstract tagged limited null record;
    --  Abstract root tagged type for encoders.
+
+   function Decoder (Set : Character_Set) return Decoder_Access;
+   --  Returns decoder for the specified character set. Decoder is global
+   --  object and must not be deallocated.
 
 end Matreshka.Internals.Text_Codecs;

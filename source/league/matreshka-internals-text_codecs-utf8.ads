@@ -72,6 +72,8 @@ package Matreshka.Internals.Text_Codecs.UTF8 is
      State  : in out Abstract_Decoder_State'Class;
      String : in out Matreshka.Internals.Strings.Shared_String_Access);
 
+   Decoder : aliased UTF8_Decoder;
+
 private
 
    type UTF8_Meta_Class is mod 2 ** 8;

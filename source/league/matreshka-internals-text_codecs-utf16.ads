@@ -108,6 +108,9 @@ package Matreshka.Internals.Text_Codecs.UTF16 is
      State  : in out Abstract_Decoder_State'Class;
      String : in out Matreshka.Internals.Strings.Shared_String_Access);
 
+   BE_Decoder : aliased UTF16BE_Decoder;
+   LE_Decoder : aliased UTF16LE_Decoder;
+
 private
 
    type UTF16_Meta_Class is mod 2 ** 8;
