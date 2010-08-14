@@ -44,6 +44,7 @@
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Compare;
 with Matreshka.Internals.Text_Codecs.IANA_Registry;
+with Matreshka.Internals.Text_Codecs.ISO88591;
 with Matreshka.Internals.Text_Codecs.UTF16;
 with Matreshka.Internals.Text_Codecs.UTF8;
 
@@ -53,11 +54,14 @@ package body Matreshka.Internals.Text_Codecs is
    use Matreshka.Internals.Strings.Compare;
    use Matreshka.Internals.Text_Codecs.IANA_Registry;
 
+   MIB_ISO88591 : constant Character_Set := 4;
+
    Decoders : array (Character_Set) of Decoder_Access
-     := (MIB_UTF8    => UTF8.Decoder'Access,
-         MIB_UTF16BE => UTF16.BE_Decoder'Access,
-         MIB_UTF16LE => UTF16.LE_Decoder'Access,
-         others      => null);
+     := (MIB_ISO88591 => ISO88591.Decoder'Access,
+         MIB_UTF8     => UTF8.Decoder'Access,
+         MIB_UTF16BE  => UTF16.BE_Decoder'Access,
+         MIB_UTF16LE  => UTF16.LE_Decoder'Access,
+         others       => null);
 
    -------------
    -- Decoder --
