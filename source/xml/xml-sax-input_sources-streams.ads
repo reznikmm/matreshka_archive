@@ -126,6 +126,7 @@ private
       First        : Ada.Streams.Stream_Element_Offset := 0;
       Last         : Ada.Streams.Stream_Element_Offset := -1;
       Accumulate   : Boolean := True;
+      Restart      : Boolean := False;
       --  Accumulate source data in the buffer. Accumulation is used till
       --  XMLDecl or TextDecl or absence of one of is processed by parser.
       --  Accumulation allows to simplify changing of encoding from detected

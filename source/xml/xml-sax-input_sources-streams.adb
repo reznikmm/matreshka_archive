@@ -87,6 +87,14 @@ package body XML.SAX.Input_Sources.Streams is
       Encoding : Encodings;
 
    begin
+      --  Restart decoding when requested.
+
+      if Self.Restart then
+         Self.Restart := False;
+         Self.Decoder.Decode_Append
+          (Self.Buffer (Self.First .. Self.Last), Self.State.all, Buffer);
+      end if;
+
       --  Reallocate buffer when necessary.
 
       if First > Self.Buffer'Last then
@@ -439,6 +447,8 @@ package body XML.SAX.Input_Sources.Streams is
               new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
                    (Self.Decoder.Create_State (Self.Version_Mode));
          end if;
+
+         Self.Restart := True;
       end if;
    end Reset;
 
