@@ -46,7 +46,7 @@
 ------------------------------------------------------------------------------
 private with Matreshka.Internals.Unicode;
 
-package Matreshka.Internals.Text_Codecs.UTF16 is
+private package Matreshka.Internals.Text_Codecs.UTF16 is
 
    pragma Preelaborate;
 
