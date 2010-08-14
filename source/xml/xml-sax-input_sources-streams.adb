@@ -49,6 +49,11 @@ package body XML.SAX.Input_Sources.Streams is
      new Ada.Unchecked_Deallocation
           (Ada.Streams.Stream_Element_Array, Stream_Element_Array_Access);
 
+   procedure Free is
+     new Ada.Unchecked_Deallocation
+          (Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class,
+           Matreshka.Internals.Text_Codecs.Decoder_State_Access);
+
 --   not overriding function Encoding
 --    (Self : SAX_Input_Source) return League.Strings.Universal_String;
 
@@ -57,12 +62,6 @@ package body XML.SAX.Input_Sources.Streams is
    --------------
 
    overriding procedure Finalize (Self : in out Stream_Input_Source) is
-
-      procedure Free is
-        new Ada.Unchecked_Deallocation
-             (Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class,
-              Matreshka.Internals.Text_Codecs.Decoder_State_Access);
-
    begin
       Free (Self.Buffer);
       Free (Self.State);
@@ -396,6 +395,7 @@ package body XML.SAX.Input_Sources.Streams is
      Rescan   : out Boolean;
      Success  : out Boolean)
    is
+      use type Matreshka.Internals.Text_Codecs.Decoder_Access;
       use type Matreshka.Internals.Text_Codecs.Decoder_Mode;
       use type League.Strings.Universal_String;
 
@@ -418,37 +418,28 @@ package body XML.SAX.Input_Sources.Streams is
       Rescan :=
         Self.Version_Mode /= Old_Version_Mode
           or Self.Encoding /= Old_Encoding;
+      Success := True;
 
       if Rescan then
-         Self.First := 0;
+         --  Release decoder state object.
 
-         raise Program_Error with "Version or encoding was changed";
---                  Self.Encoding := League.Strings.To_Universal_String ("UTF-16");
---                  Self.Decoder :=
---                    new Matreshka.Internals.Text_Codecs.UTF16.UTF16LE_Decoder;
---
---               when UTF16BE =>
---                  Self.Encoding := League.Strings.To_Universal_String ("UTF-16");
---                  Self.Decoder :=
---                    new Matreshka.Internals.Text_Codecs.UTF16.UTF16BE_Decoder;
---
---               when EBCDIC =>
---                  raise Program_Error;
---
---               when UTF8 =>
---                  Self.Encoding := League.Strings.To_Universal_String ("UTF-8");
---                  Self.Decoder :=
---                    new Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
---            end case;
---
---            --  Create decoder's state object.
---
---            Self.State :=
---              new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
---                   (Self.Decoder.Create_State (Self.Version_Mode));
+         Free (Self.State);
+
+         --  Resolve new decoder and create its state.
+
+         Self.Decoder :=
+           Matreshka.Internals.Text_Codecs.Decoder
+            (Matreshka.Internals.Text_Codecs.To_Character_Set (Self.Encoding));
+
+         if Self.Decoder = null then
+            Success := False;
+
+         else
+            Self.State :=
+              new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
+                   (Self.Decoder.Create_State (Self.Version_Mode));
+         end if;
       end if;
-
-      Success := True;
    end Reset;
 
    ------------------
