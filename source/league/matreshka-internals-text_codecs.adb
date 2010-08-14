@@ -41,82 +41,96 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Abstract API for text decoders/encoders.
---
---  Decoder's states and decoders implementation are separate objects.
-------------------------------------------------------------------------------
-with Ada.Streams;
+with League.Strings.Internals;
+with Matreshka.Internals.Strings.Compare;
+with Matreshka.Internals.Text_Codecs.IANA_Registry;
 
-with League.Strings;
-with Matreshka.Internals.Strings;
+package body Matreshka.Internals.Text_Codecs is
 
-package Matreshka.Internals.Text_Codecs is
+   use League.Strings.Internals;
+   use Matreshka.Internals.Strings.Compare;
+   use Matreshka.Internals.Text_Codecs.IANA_Registry;
 
-   pragma Preelaborate;
-
-   type Character_Set is range 0 .. 2999;
-   --  IANA MIB code of the character set.
+   ----------------------
+   -- To_Character_Set --
+   ----------------------
 
    function To_Character_Set
-    (Item : League.Strings.Universal_String) return Character_Set;
-   --  Converts name of character encoding into internal representation.
+    (Item : League.Strings.Universal_String) return Character_Set
+   is
+      --  Set of characters in the character set name is restricted by RFC2978
+      --  IANA Charset Registration Procedures, section 2.3. Naming
+      --  Requirements
+      --
+      --    "mime-charset = 1*mime-charset-chars
+      --     mime-charset-chars = ALPHA / DIGIT /
+      --                "!" / "#" / "$" / "%" / "&" /
+      --                "'" / "+" / "-" / "^" / "_" /
+      --                "`" / "{" / "}" / "~"
+      --     ALPHA        = "A".."Z"    ; Case insensitive ASCII Letter
+      --     DIGIT        = "0".."9"    ; Numeric digit"
 
-   ----------------------
-   -- Abstract_Decoder --
-   ----------------------
+      --  To determine matching of character set names transformation algoriphm
+      --  from Unicode Technical Standard #22 Unicode Character Mapping Markup
+      --  Language (CharMapML), section 1.4 Charset Alias Matching is used:
+      --
+      --  "Names and aliases of charsets are often spelled with small
+      --  variations. To recognize accidental but unambiguous misspellings and
+      --  avoid adding each possible variation to a list of recognized names,
+      --  it is customary to match names case-insensitively and to ignore some
+      --  punctuation. For best results, names should be compared after
+      --  applying the following transformations:
+      --
+      --    1. Delete all characters except a-z, A-Z, and 0-9.
+      --
+      --    2. Map uppercase A-Z to the corresponding lowercase a-z.
+      --
+      --    3. From left to right, delete each 0 that is not preceded by a
+      --    digit."
 
-   type Decoder_Mode is (Raw, XML_1_0, XML_1_1);
-   --  Mode of text postprocessing after decoding.
-   --
-   --  Decoder is responsible for XML1.0/XML1.1 end-of-line handling when
-   --  its state created with corresponding mode.
+      Source : constant League.Strings.Universal_String := Item.To_Uppercase;
+      --  Simple case mapping can be used here.
+      Name   : League.Strings.Universal_String;
+      Digit  : Boolean := False;
+      C      : Wide_Wide_Character;
 
-   type Abstract_Decoder_State is abstract tagged null record;
-   --  Abstract root tagged type for decoder's states.
+   begin
+      --  Transform character set name.
 
-   type Decoder_State_Access is access all Abstract_Decoder_State'Class;
+      for J in 1 .. Source.Length loop
+         C := Source.Element (J);
 
-   not overriding function Is_Error
-    (Self : Abstract_Decoder_State) return Boolean is abstract;
-   --  Returns True when error is occured during decoding.
+         case C is
+            when 'A' .. 'Z' =>
+               Name.Append (C);
+               Digit := False;
 
-   not overriding function Is_Mailformed
-    (Self : Abstract_Decoder_State) return Boolean is abstract;
-   --  Returns True when error is occured during decoding or decoding is
-   --  incomplete.
+            when '0' .. '9' =>
+               if C /= '0' or Digit then
+                  Name.Append (C);
+                  Digit := True;
+               end if;
 
-   type Abstract_Decoder is abstract tagged limited null record;
-   --  Abstract root tagged type for decoders.
+            when '!' | '#' | '$' | '%' | '&' | ''' | '+' | '-' | '^' | '_'
+              | '`' | '{' | '}' | '~'
+            =>
+               null;
 
-   type Decoder_Access is access all Abstract_Decoder'Class;
+            when others =>
+               raise Constraint_Error
+                 with "Invalid character in character set name";
+         end case;
+      end loop;
 
-   not overriding function Create_State
-    (Self : Abstract_Decoder;
-     Mode : Decoder_Mode) return Abstract_Decoder_State'Class is abstract;
-   --  Creates new decoder's state.
+      --  Lookup MIB.
 
-   not overriding procedure Decode
-    (Self   : Abstract_Decoder;
-     Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
-     String : out Matreshka.Internals.Strings.Shared_String_Access)
-       is abstract;
-   --  Decodes data and save results in new allocated string.
+      for J in To_MIB'Range loop
+         if Is_Equal (Get_Shared (Name), To_MIB (J).Name) then
+            return To_MIB (J).MIB;
+         end if;
+      end loop;
 
-   not overriding procedure Decode_Append
-    (Self   : Abstract_Decoder;
-     Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
-     String : in out Matreshka.Internals.Strings.Shared_String_Access)
-       is abstract;
-   --  Decodes data and appends them to specified string. String can be
-   --  reallocated when necessary.
-
-   ----------------------
-   -- Abstract_Encoder --
-   ----------------------
-
-   type Abstract_Encoder is abstract tagged limited null record;
-   --  Abstract root tagged type for encoders.
+      return 0;
+   end To_Character_Set;
 
 end Matreshka.Internals.Text_Codecs;
