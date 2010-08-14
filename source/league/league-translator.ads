@@ -46,9 +46,9 @@ with League.Strings;
 package League.Translator is
 
    function Translate
-    (Package_Name   : League.Strings.Universal_String;
-     Source_Text    : League.Strings.Universal_String;
-     Disambiguation : League.Strings.Universal_String
+    (Compilation_Unit : League.Strings.Universal_String;
+     Source_Text      : League.Strings.Universal_String;
+     Disambiguation   : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String)
        return League.Strings.Universal_String;
    --  Translates message.

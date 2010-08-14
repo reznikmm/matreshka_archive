@@ -77,15 +77,15 @@ package body League.Translator is
    ---------------
 
    function Translate
-    (Package_Name   : League.Strings.Universal_String;
-     Source_Text    : League.Strings.Universal_String;
-     Disambiguation : League.Strings.Universal_String
+    (Compilation_Unit : League.Strings.Universal_String;
+     Source_Text      : League.Strings.Universal_String;
+     Disambiguation   : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String)
        return League.Strings.Universal_String is
    begin
       return
         Matreshka.Internals.Translator.Translate
-         (Package_Name, Source_Text, Disambiguation);
+         (Compilation_Unit, Source_Text, Disambiguation);
    end Translate;
 
 end League.Translator;
