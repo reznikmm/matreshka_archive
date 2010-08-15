@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes/>
-    </startElement>
-    <ignorable>\t</ignorable>
-    <ignorable>\n</ignorable>
-    <ignorable>\r</ignorable>
-    <ignorable>\n</ignorable>
-    <ignorable>\t</ignorable>
-    <startElement>
-        <namespaceURI/>
-        <localName>child</localName>
-        <qualifiedName>child</qualifiedName>
-        <attributes/>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>child</localName>
-        <qualifiedName>child</qualifiedName>
-    </endElement>
-    <ignorable>\n</ignorable>
-    <endElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes/>
+  </startElement>
+  <ignorableWhitespace>&#x9;</ignorableWhitespace>
+  <ignorableWhitespace>&#xA;</ignorableWhitespace>
+  <ignorableWhitespace>&#xD;</ignorableWhitespace>
+  <ignorableWhitespace>&#xA;</ignorableWhitespace>
+  <ignorableWhitespace>&#x9;</ignorableWhitespace>
+  <startElement>
+    <namespaceURI/>
+    <localName>child</localName>
+    <qualifiedName>child</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>child</localName>
+    <qualifiedName>child</qualifiedName>
+  </endElement>
+  <ignorableWhitespace>&#xA;</ignorableWhitespace>
+  <endElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

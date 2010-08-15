@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <notation>
-        <name>a</name>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/oasis/a</systemID>
-    </notation>
-    <notation>
-        <name>b</name>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/oasis/b</systemID>
-    </notation>
-    <startElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-        <attributes/>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <notation>
+    <name>a</name>
+    <systemID>a</systemID>
+  </notation>
+  <notation>
+    <name>b</name>
+    <systemID>b</systemID>
+  </notation>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>
