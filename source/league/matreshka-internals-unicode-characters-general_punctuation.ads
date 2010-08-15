@@ -46,6 +46,6 @@ package Matreshka.Internals.Unicode.Characters.General_Punctuation is
 
    pragma Pure;
 
-   Line_Separator : constant := 16#0228#;
+   Line_Separator : constant := 16#2028#;
 
 end Matreshka.Internals.Unicode.Characters.General_Punctuation;
