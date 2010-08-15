@@ -234,7 +234,7 @@ package body SAX_Events_Writers is
 
    begin
       case Item is
-         when HT | LF | CR | ' ' =>
+         when NUL .. ' ' | Reserved_129 .. APC =>
             return Image (Item);
 
          when '&' =>
