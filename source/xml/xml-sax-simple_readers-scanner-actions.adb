@@ -1357,7 +1357,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    function On_Open_Of_XML_Or_Text_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token is
    begin
-      Self.Encoding := League.Strings.Empty_Universal_String;
       Self.Whitespace_Matched := False;
 
       Push_And_Enter_Start_Condition

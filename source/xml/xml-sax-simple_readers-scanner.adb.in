@@ -202,7 +202,6 @@ package body XML.SAX.Simple_Readers.Scanner is
          end if;
 
          Set_Is_Resolved (Self.Entities, Entity, True);
-         Self.Encoding := League.Strings.Empty_Universal_String;
 
          case Self.Version is
             when XML_1_0 =>

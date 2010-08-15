@@ -130,9 +130,13 @@ unexpected_at_end :
 ;
 
 XMLDecl_optional :
-  Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment EncodingDecl_optional SDDecl_optional Token_PI_Close
+  Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment Token_Encoding Token_Equal Token_String_Segment SDDecl_optional Token_PI_Close
    {
-      Actions.On_XML_Declaration (Self, $4.String);
+      Actions.On_XML_Declaration (Self, $4.String, $7.String);
+   }
+| Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment SDDecl_optional Token_PI_Close
+   {
+      Actions.On_XML_Declaration (Self, $4.String, Matreshka.Internals.Strings.Shared_Empty'Access);
    }
 |
    {
@@ -168,17 +172,6 @@ TextDecl :
       null;
    }
 | Token_Xml_Decl_Open Token_Encoding Token_Equal Token_String_Segment Token_PI_Close
-   {
-      null;
-   }
-;
-
-EncodingDecl_optional :
-  Token_Encoding Token_Equal Token_String_Segment
-   {
-      null;
-   }
-|
    {
       null;
    }
@@ -994,8 +987,9 @@ with Matreshka.Internals.XML.Symbol_Tables;
    package Actions is
 
       procedure On_XML_Declaration
-       (Self    : access Integer;
-        Version : not null Matreshka.Internals.Strings.Shared_String_Access);
+       (Self     : access Integer;
+        Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
+        Encoding : not null Matreshka.Internals.Strings.Shared_String_Access);
 
       procedure On_Character_Data
        (Self          : access Integer;

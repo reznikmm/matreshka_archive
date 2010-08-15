@@ -1350,8 +1350,9 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------
 
    procedure On_XML_Declaration
-    (Self    : not null access SAX_Simple_Reader'Class;
-     Version : not null Matreshka.Internals.Strings.Shared_String_Access)
+    (Self     : not null access SAX_Simple_Reader'Class;
+     Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Encoding : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
       use type Matreshka.Internals.Utf16.Utf16_String_Index;
       use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
@@ -1381,7 +1382,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       end if;
 
       Scanner.Set_Document_Version_And_Encoding
-       (Self, Self.Version, Self.Encoding);
+       (Self, Self.Version, League.Strings.Internals.Create (Encoding));
    end On_XML_Declaration;
 
 end XML.SAX.Simple_Readers.Parser.Actions;
