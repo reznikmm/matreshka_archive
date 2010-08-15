@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>\u8C</char>
-    <endElement>
-        <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>&#x8C;</characters>
+  <endElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>
