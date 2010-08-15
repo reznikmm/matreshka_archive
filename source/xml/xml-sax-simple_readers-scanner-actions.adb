@@ -1662,58 +1662,60 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
         E,
         Symbol);
 
-      case E is
-         when Valid =>
-            if not Can_Be_Qname
-              and Local_Name (Self.Symbols, Symbol) /= Symbol
-            then
+      if Self.Namespaces.Enabled then
+         case E is
+            when Valid =>
+               if not Can_Be_Qname
+                 and Local_Name (Self.Symbols, Symbol) /= Symbol
+               then
+                  Error := True;
+                  Symbol := No_Symbol;
+                  Callbacks.Call_Fatal_Error
+                   (Self.all,
+                    League.Strings.To_Universal_String
+                     ("[NSXML1.1] qualified name must not be used here"));
+
+               else
+                  Error := False;
+               end if;
+
+            when Colon_At_Start =>
                Error := True;
                Symbol := No_Symbol;
                Callbacks.Call_Fatal_Error
                 (Self.all,
                  League.Strings.To_Universal_String
-                  ("[NSXML1.1] qualified name must not be used here"));
+                  ("[NSXML1.1]"
+                     & " qualified name must not start with colon character"));
 
-            else
-               Error := False;
-            end if;
+            when Colon_At_End =>
+               Error := True;
+               Symbol := No_Symbol;
+               Callbacks.Call_Fatal_Error
+                (Self.all,
+                 League.Strings.To_Universal_String
+                  ("[NSXML1.1]"
+                     & " qualified name must not end with colon character"));
 
-         when Colon_At_Start =>
-            Error := True;
-            Symbol := No_Symbol;
-            Callbacks.Call_Fatal_Error
-             (Self.all,
-              League.Strings.To_Universal_String
-               ("[NSXML1.1]"
-                  & " qualified name must not start with colon character"));
+            when Multiple_Colons =>
+               Error := True;
+               Symbol := No_Symbol;
+               Callbacks.Call_Fatal_Error
+                (Self.all,
+                 League.Strings.To_Universal_String
+                  ("[NSXML1.1]"
+                     & " qualified name must not contain more than one colon"
+                     & " character"));
 
-         when Colon_At_End =>
-            Error := True;
-            Symbol := No_Symbol;
-            Callbacks.Call_Fatal_Error
-             (Self.all,
-              League.Strings.To_Universal_String
-               ("[NSXML1.1]"
-                  & " qualified name must not end with colon character"));
-
-         when Multiple_Colons =>
-            Error := True;
-            Symbol := No_Symbol;
-            Callbacks.Call_Fatal_Error
-             (Self.all,
-              League.Strings.To_Universal_String
-               ("[NSXML1.1]"
-                  & " qualified name must not contain more than one colon"
-                  & " character"));
-
-         when First_Character_Is_Not_NS_Name_Start_Char =>
-            Error := True;
-            Symbol := No_Symbol;
-            Callbacks.Call_Fatal_Error
-             (Self.all,
-              League.Strings.To_Universal_String
-               ("[NSXML1.1] first character of local name is invalid"));
-      end case;
+            when First_Character_Is_Not_NS_Name_Start_Char =>
+               Error := True;
+               Symbol := No_Symbol;
+               Callbacks.Call_Fatal_Error
+                (Self.all,
+                 League.Strings.To_Universal_String
+                  ("[NSXML1.1] first character of local name is invalid"));
+         end case;
+      end if;
    end Resolve_Symbol;
 
 end XML.SAX.Simple_Readers.Scanner.Actions;
