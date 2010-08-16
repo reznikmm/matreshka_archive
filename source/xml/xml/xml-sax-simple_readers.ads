@@ -378,6 +378,11 @@ private
       --  When normalize attribute value of non-CDATA type, it indicates that
       --  previous processed character was space.
       Version                : XML_Version := XML_1_0;
+      --  XML version of document entity.
+      Conditional_Depth      : Natural := 0;
+      --  Depth of conditional sections.
+      Ignore_Depth           : Natural := 0;
+      --  Depth of ignore conditional sections.
 
       --  Parser state
 

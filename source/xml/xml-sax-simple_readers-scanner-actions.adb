@@ -446,6 +446,39 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       return True;
    end On_Character_Reference_In_Attribute_Value;
 
+   -------------------------------------
+   -- On_Close_Of_Conditional_Section --
+   -------------------------------------
+
+   procedure On_Close_Of_Conditional_Section
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Self.Conditional_Depth := Self.Conditional_Depth - 1;
+
+      if Self.Ignore_Depth /= 0 then
+         Self.Ignore_Depth := Self.Ignore_Depth - 1;
+      end if;
+
+      if Self.Ignore_Depth /= 0 then
+         case Self.Version is
+            when XML_1_0 =>
+               Enter_Start_Condition (Self, Tables.CONDITIONAL_IGNORE_10);
+
+            when XML_1_1 =>
+               Enter_Start_Condition (Self, Tables.CONDITIONAL_IGNORE_11);
+         end case;
+
+      else
+         case Self.Version is
+            when XML_1_0 =>
+               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_10);
+
+            when XML_1_1 =>
+               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
+         end case;
+      end if;
+   end On_Close_Of_Conditional_Section;
+
    -----------------------------
    -- On_Close_Of_Declaration --
    -----------------------------
@@ -606,6 +639,35 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       return Token_Pi_Close;
    end On_Close_Of_XML_Or_Text_Declaration;
+
+   --------------------------------------
+   -- On_Conditional_Section_Directive --
+   --------------------------------------
+
+   procedure On_Conditional_Section_Directive
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Include : Boolean) is
+   begin
+      --  XXX Syntax check must be added!
+
+      Self.Conditional_Depth := Self.Conditional_Depth + 1;
+
+      if Self.Ignore_Depth /= 0 or not Include then
+         Self.Ignore_Depth := Self.Ignore_Depth + 1;
+      end if;
+   end On_Conditional_Section_Directive;
+
+   ----------------------------------------------
+   -- On_Content_Of_Ignore_Conditional_Section --
+   ----------------------------------------------
+
+   procedure On_Content_Of_Ignore_Conditional_Section
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      YY_Move_Backward (Self);
+      YY_Move_Backward (Self);
+      YY_Move_Backward (Self);
+   end On_Content_Of_Ignore_Conditional_Section;
 
    ---------------------------------------------------
    -- On_Element_Name_In_Attribute_List_Declaration --
@@ -1191,6 +1253,51 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       return Token_Attlist_Decl_Open;
    end On_Open_Of_Attribute_List_Declaration;
+
+   ------------------------------------
+   -- On_Open_Of_Conditional_Section --
+   ------------------------------------
+
+   procedure On_Open_Of_Conditional_Section
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      if Self.Ignore_Depth = 0 then
+         Enter_Start_Condition (Self, Tables.CONDITIONAL_DIRECTIVE);
+
+      else
+         Self.Conditional_Depth := Self.Conditional_Depth + 1;
+         Self.Ignore_Depth := Self.Ignore_Depth + 1;
+      end if;
+   end On_Open_Of_Conditional_Section;
+
+   --------------------------------------------
+   -- On_Open_Of_Conditional_Section_Content --
+   --------------------------------------------
+
+   procedure On_Open_Of_Conditional_Section_Content
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      --  XXX Syntax rules must be checked!
+
+      if Self.Ignore_Depth /= 0 then
+         case Self.Version is
+            when XML_1_0 =>
+               Enter_Start_Condition (Self, Tables.CONDITIONAL_IGNORE_10);
+
+            when XML_1_1 =>
+               Enter_Start_Condition (Self, Tables.CONDITIONAL_IGNORE_11);
+         end case;
+
+      else
+         case Self.Version is
+            when XML_1_0 =>
+               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_10);
+
+            when XML_1_1 =>
+               Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
+         end case;
+      end if;
+   end On_Open_Of_Conditional_Section_Content;
 
    ------------------------------------------
    -- On_Open_Of_Document_Type_Declaration --

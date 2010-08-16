@@ -95,6 +95,8 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 --
 --  Negative form: [^\uD800-\uDFFF\uFFFE\uFFFF]
 --
+CHAR10							[^\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11							[^\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^"%&']
 CHAR10_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[^\u0022\u0025\u0026\u0027\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
 CHAR11_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[^\u0022\u0025\u0026\u0027\uD800-\uDFFF\uFFFE\uFFFF]
@@ -122,6 +124,15 @@ CHAR11_NO_QUESTION					[^\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^>?]
 CHAR10_NO_GREATER_QUESTION				[^\u003E\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
 CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
+--  [^<]
+CHAR10_NO_LESS						[^\u0001-\u0008\u000B\u000C\u000E-\u001F\u003C\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_LESS						[^\u003C\uD800-\uDFFF\uFFFE\uFFFF]
+--  [^!]
+CHAR10_NO_EXCLAMATION					[^\u0001-\u0008\u000B\u000C\u000E-\u001F\u0021\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_EXCLAMATION					[^\u0021\uD800-\uDFFF\uFFFE\uFFFF]
+--  [^[]
+CHAR10_NO_LEFT_SQUARE					[^\u0001-\u0008\u000B\u000C\u000E-\u001F\u005B\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_LEFT_SQUARE					[^\u005B\uD800-\uDFFF\uFFFE\uFFFF]
 
 %x XML_DECL
 %x DOCUMENT_10
@@ -144,6 +155,9 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 %x ENTITY_NDATA
 %x ENTITY_VALUE_10
 %x ENTITY_VALUE_11
+%x CONDITIONAL_DIRECTIVE
+%x CONDITIONAL_IGNORE_10
+%x CONDITIONAL_IGNORE_11
 %x ELEMENT_START
 %x ATTRIBUTE_VALUE_10
 %x ATTRIBUTE_VALUE_11
@@ -473,16 +487,22 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Actions.On_Open_Of_Attribute_List_Declaration (Self);
 }
 
-<ATTLIST_NAME>{NAME} {
-   --  Element's name in attribute list declaration, rule [52].
-
-   return Actions.On_Element_Name_In_Attribute_List_Declaration (Self);
-}
-
 <DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!NOTATION"{WHITE_SPACE}{NAME} {
    --  Open of notation declaration, production [82].
 
    return Actions.On_Open_Of_Notation_Declaration (Self);
+}
+
+<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,CONDITIONAL_IGNORE_10,CONDITIONAL_IGNORE_11>"<![" {
+   --  Start of conditional section.
+
+   Actions.On_Open_Of_Conditional_Section (Self);
+}
+
+<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,CONDITIONAL_IGNORE_10,CONDITIONAL_IGNORE_11>"]]>" {
+   --  Close of conditional section.
+
+   Actions.On_Close_Of_Conditional_Section (Self);
 }
 
 <NOTATION_DECL>">" {
@@ -717,6 +737,11 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    return Actions.On_Close_Of_Declaration (Self);
 }
 
+<ATTLIST_NAME>{NAME} {
+   --  Element's name in attribute list declaration, rule [52].
+
+   return Actions.On_Element_Name_In_Attribute_List_Declaration (Self);
+}
 
 <ATTLIST_DECL>{NAME} {
    --  Name of the attribute, rule [53].
@@ -843,7 +868,7 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    Actions.On_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
 }
 
-<ATTLIST_DECL,ATTLIST_NAME,ATTLIST_TYPE,ELEMENT_DECL,ELEMENT_CHILDREN>"%"{NAME}";" {
+<ATTLIST_DECL,ATTLIST_NAME,ATTLIST_TYPE,ELEMENT_DECL,ELEMENT_CHILDREN,CONDITIONAL_DIRECTIVE>"%"{NAME}";" {
    --  Parameter entity reference rule [69] in attribute declaration.
    --  Parameter entity reference in element's children declaration, [51].
 
@@ -852,11 +877,45 @@ CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
    end if;
 }
 
-<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE>{WHITE_SPACE} {
+<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE,CONDITIONAL_DIRECTIVE>{WHITE_SPACE} {
    --  All white spaces from rules [28] are ignored.
    --  Whitespace before name in rule [76] is ignored.
 
    null;
+}
+
+<CONDITIONAL_DIRECTIVE>"IGNORE" {
+   --  IGNORE directive of the conditional section.
+
+   Actions.On_Conditional_Section_Directive (Self, False);
+}
+
+<CONDITIONAL_DIRECTIVE>"INCLUDE" {
+   --  INCLUDE directive of the conditional section.
+
+   Actions.On_Conditional_Section_Directive (Self, True);
+}
+
+<CONDITIONAL_DIRECTIVE>"[" {
+   --  Start of content of conditional section.
+
+   Actions.On_Open_Of_Conditional_Section_Content (Self);
+}
+
+<CONDITIONAL_IGNORE_10>({CHAR10_NO_LESS}*("<"{CHAR10_NO_EXCLAMATION}|"<!"{CHAR10_NO_LEFT_SQUARE})*"<![")|({CHAR10_NO_RIGHT_SQUARE}*"]"({CHAR10_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR10_NO_GREATER_RIGHT_SQUARE}{CHAR10_NO_RIGHT_SQUARE}*"]"({CHAR10_NO_RIGHT_SQUARE}+"]")*"]"+)*">") {
+   --  Content of ignore conditional section. It ends with "]]>" or "<!["
+   --  which must be moved back to the buffer to be recognized at the next
+   --  cycle.
+
+   Actions.On_Content_Of_Ignore_Conditional_Section (Self);
+}
+
+<CONDITIONAL_IGNORE_11>({CHAR11_NO_LESS}*("<"{CHAR11_NO_EXCLAMATION}|"<!"{CHAR11_NO_LEFT_SQUARE})*"<![")|({CHAR11_NO_RIGHT_SQUARE}*"]"({CHAR11_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR11_NO_GREATER_RIGHT_SQUARE}{CHAR11_NO_RIGHT_SQUARE}*"]"({CHAR11_NO_RIGHT_SQUARE}+"]")*"]"+)*">") {
+   --  Content of ignore conditional section. It ends with "]]>" or "<!["
+   --  which must be moved back to the buffer to be recognized at the next
+   --  cycle.
+
+   Actions.On_Content_Of_Ignore_Conditional_Section (Self);
 }
 
 <XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,NOTATION_DECL,ELEMENT_START,ATTLIST_NAME>{WHITE_SPACE} {
@@ -1170,6 +1229,18 @@ with Matreshka.Internals.Strings;
 
       function On_Close_Of_Document_Type_Declaration
        (Self  : access Integer) return Boolean;
+
+      procedure On_Open_Of_Conditional_Section (Self : access Integer);
+
+      procedure On_Conditional_Section_Directive
+       (Self    : access Integer;
+        Include : Boolean);
+
+      procedure On_Open_Of_Conditional_Section_Content (Self : access Integer);
+
+      procedure On_Close_Of_Conditional_Section (Self : access Integer);
+
+      procedure On_Content_Of_Ignore_Conditional_Section (Self : access Integer);
 
    end Actions;
 

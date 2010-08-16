@@ -77,6 +77,10 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    --  Processes character reference in attribute value. Returns False when
    --  error was detected and reported to application.
 
+   procedure On_Close_Of_Conditional_Section
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles close of conditional section.
+
    function On_Close_Of_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles close of entity declaration.
@@ -105,6 +109,15 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    function On_Close_Of_XML_Or_Text_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles close of XML declaration and text declaration.
+
+   procedure On_Conditional_Section_Directive
+    (Self    : not null access SAX_Simple_Reader'Class;
+     Include : Boolean);
+   --  Handles directive of conditional section.
+
+   procedure On_Content_Of_Ignore_Conditional_Section
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles content of ignore conditional section.
 
    function On_Element_Name_In_Attribute_List_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token;
@@ -176,6 +189,14 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    function On_Open_Of_Attribute_List_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles open of attribute list declaration.
+
+   procedure On_Open_Of_Conditional_Section
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles open of conditional section.
+
+   procedure On_Open_Of_Conditional_Section_Content
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles open of content of conditional section.
 
    function On_Open_Of_Document_Type_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token;
