@@ -50,9 +50,10 @@ package XML.SAX.Locators.Internals is
    pragma Preelaborate;
 
    procedure Set_Location
-    (Self   : in out SAX_Locator'Class;
-     Line   : Natural;
-     Column : Natural);
+    (Self    : in out SAX_Locator'Class;
+     Line    : Natural;
+     Column  : Natural;
+     Version : Natural);
    --  Sets location.
 
 private

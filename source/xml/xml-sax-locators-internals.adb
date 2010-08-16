@@ -49,12 +49,14 @@ package body XML.SAX.Locators.Internals is
    ------------------
 
    procedure Set_Location
-    (Self   : in out SAX_Locator'Class;
-     Line   : Natural;
-     Column : Natural) is
+    (Self    : in out SAX_Locator'Class;
+     Line    : Natural;
+     Column  : Natural;
+     Version : Natural) is
    begin
-      Self.Data.Line   := Line;
-      Self.Data.Column := Column;
+      Self.Data.Line    := Line;
+      Self.Data.Column  := Column;
+      Self.Data.Version := Version;
    end Set_Location;
 
 end XML.SAX.Locators.Internals;

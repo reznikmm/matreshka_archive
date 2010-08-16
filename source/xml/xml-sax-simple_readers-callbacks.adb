@@ -626,10 +626,21 @@ package body XML.SAX.Simple_Readers.Callbacks is
 
    procedure Setup_Locator (Self : in out SAX_Simple_Reader'Class) is
    begin
-      XML.SAX.Locators.Internals.Set_Location
-       (Self.Locator,
-        Self.Scanner_State.YY_Base_Line,
-        Self.Scanner_State.YY_Base_Column);
+      case Self.Version is
+         when XML_1_0 =>
+            XML.SAX.Locators.Internals.Set_Location
+             (Self.Locator,
+              Self.Scanner_State.YY_Base_Line,
+              Self.Scanner_State.YY_Base_Column,
+              0);
+
+         when XML_1_1 =>
+            XML.SAX.Locators.Internals.Set_Location
+             (Self.Locator,
+              Self.Scanner_State.YY_Base_Line,
+              Self.Scanner_State.YY_Base_Column,
+              1);
+      end case;
    end Setup_Locator;
 
 end XML.SAX.Simple_Readers.Callbacks;

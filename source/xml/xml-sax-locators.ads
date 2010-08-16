@@ -96,6 +96,7 @@ private
       pragma Atomic (Line);
       Column  : Natural;
       pragma Atomic (Column);
+      Version : Natural := 0;
    end record;
 
    type Shared_Locator_Access is access all Shared_Locator;

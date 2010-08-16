@@ -144,7 +144,15 @@ package body XML.SAX.Locators is
       pragma Unreferenced (Self);
 
    begin
-      return League.Strings.Empty_Universal_String;
+      if Self.Data.Version = 0 then
+         return League.Strings.To_Universal_String ("1.0");
+
+      elsif Self.Data.Version = 1 then
+         return League.Strings.To_Universal_String ("1.1");
+
+      else
+         raise Program_Error;
+      end if;
    end Version;
 
 end XML.SAX.Locators;
