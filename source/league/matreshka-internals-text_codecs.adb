@@ -173,24 +173,25 @@ package body Matreshka.Internals.Text_Codecs is
    begin
       case State.Mode is
          when Raw =>
-            Matreshka.Internals.Strings.Operations.Append (Buffer, Code);
+            Matreshka.Internals.Strings.Operations.Unterminated_Append
+             (Buffer, Code);
 
          when XML_1_0 =>
             if Code = Carriage_Return then
-               Matreshka.Internals.Strings.Operations.Append
+               Matreshka.Internals.Strings.Operations.Unterminated_Append
                 (Buffer, Line_Feed);
                State.Skip_LF := True;
 
             elsif Code = Line_Feed then
                if not State.Skip_LF then
-                  Matreshka.Internals.Strings.Operations.Append
+                  Matreshka.Internals.Strings.Operations.Unterminated_Append
                    (Buffer, Line_Feed);
                end if;
 
                State.Skip_LF := False;
 
             else
-               Matreshka.Internals.Strings.Operations.Append
+               Matreshka.Internals.Strings.Operations.Unterminated_Append
                 (Buffer, Code);
                State.Skip_LF := False;
             end if;
@@ -199,24 +200,25 @@ package body Matreshka.Internals.Text_Codecs is
             if Code = Carriage_Return then
                State.Skip_LF := True;
 
-               Matreshka.Internals.Strings.Operations.Append
+               Matreshka.Internals.Strings.Operations.Unterminated_Append
                 (Buffer, Line_Feed);
 
             elsif Code = Line_Feed or Code = Next_Line then
                if not State.Skip_LF then
-                  Matreshka.Internals.Strings.Operations.Append
+                  Matreshka.Internals.Strings.Operations.Unterminated_Append
                    (Buffer, Line_Feed);
                end if;
 
                State.Skip_LF := False;
 
             elsif Code = Line_Separator then
-               Matreshka.Internals.Strings.Operations.Append
+               Matreshka.Internals.Strings.Operations.Unterminated_Append
                 (Buffer, Line_Feed);
                State.Skip_LF := False;
 
             else
-               Matreshka.Internals.Strings.Operations.Append (Buffer, Code);
+               Matreshka.Internals.Strings.Operations.Unterminated_Append
+                (Buffer, Code);
                State.Skip_LF := False;
             end if;
       end case;

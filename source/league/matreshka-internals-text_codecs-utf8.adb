@@ -187,6 +187,7 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
 
       UTF8_State.State := Current_State;
       UTF8_State.Code  := Current_Code;
+      Matreshka.Internals.Strings.Fill_Null_Terminator (String);
    end Decode_Append;
 
    --------------

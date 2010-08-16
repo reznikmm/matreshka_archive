@@ -103,6 +103,8 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
            State,
            Matreshka.Internals.Unicode.Code_Point (Data (J)));
       end loop;
+
+      Matreshka.Internals.Strings.Fill_Null_Terminator (String);
    end Decode_Append;
 
    --------------

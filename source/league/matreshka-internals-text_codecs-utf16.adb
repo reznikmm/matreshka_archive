@@ -243,6 +243,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
       UTF16_State.State := Current_State;
       UTF16_State.Code  := Current_Code;
       UTF16_State.Low   := Current_Low;
+      Matreshka.Internals.Strings.Fill_Null_Terminator (String);
    end Decode_Append;
 
    -------------------
@@ -303,6 +304,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
       UTF16_State.State := Current_State;
       UTF16_State.Code  := Current_Code;
       UTF16_State.Low   := Current_Low;
+      Matreshka.Internals.Strings.Fill_Null_Terminator (String);
    end Decode_Append;
 
    --------------
