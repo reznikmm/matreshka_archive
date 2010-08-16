@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
+  <warning/>
   <resolveEntity>
     <systemID>sa.dtd</systemID>
   </resolveEntity>
+  <warning/>
+  <warning/>
+  <warning/>
+  <warning/>
+  <warning/>
   <notation>
     <name>nonce</name>
     <systemID>file:/dev/null</systemID>
   </notation>
   <notation>
     <name>foo</name>
-    <publicID>-//public\sid//foo</publicID>
+    <publicID>-//public&#x20;id//foo</publicID>
     <systemID>file:/dev/null</systemID>
   </notation>
   <notation>
@@ -19,7 +25,7 @@
   </notation>
   <unparsedEntity>
     <name>unparsed-1</name>
-    <publicID>-//some public//ID</publicID>
+    <publicID>-//some&#x20;public//ID</publicID>
     <systemID>file:/dev/console</systemID>
     <notation>nonce</notation>
   </unparsedEntity>
@@ -37,14 +43,14 @@
         <namespaceURI/>
         <localName>cdata</localName>
         <qualifiedName>cdata</qualifiedName>
-        <value>nothing\shappens\sto\sthis\sone!</value>
+        <value>nothing&#x20;happens&#x20;to&#x20;this&#x20;one!</value>
         <type>CDATA</type>
       </attribute>
       <attribute>
         <namespaceURI/>
         <localName>entities</localName>
         <qualifiedName>entities</qualifiedName>
-        <value>unparsed-1\sunparsed-2</value>
+        <value>unparsed-1&#x20;unparsed-2</value>
         <type>ENTITIES</type>
       </attribute>
       <attribute>
@@ -72,7 +78,7 @@
         <namespaceURI/>
         <localName>idrefs</localName>
         <qualifiedName>idrefs</qualifiedName>
-        <value>internal42\sinternal42\sinternal42</value>
+        <value>internal42&#x20;internal42&#x20;internal42</value>
         <type>IDREFS</type>
       </attribute>
       <attribute>
@@ -86,7 +92,7 @@
         <namespaceURI/>
         <localName>nmtokens</localName>
         <qualifiedName>nmtokens</qualifiedName>
-        <value>this\salso\sgets\snormalized</value>
+        <value>this&#x20;also&#x20;gets&#x20;normalized</value>
         <type>NMTOKENS</type>
       </attribute>
       <attribute>
@@ -112,7 +118,7 @@
   </endElement>
   <processingInstruction>
     <target>pi</target>
-    <data>equals\sthree</data>
+    <data>equals&#x20;three</data>
   </processingInstruction>
   <endDocument/>
 </SAXEvents>

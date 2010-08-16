@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>position</localName>
-                <qualifiedName>position</qualifiedName>
-                <value>first</value>
-                <type>NMTOKEN</type>
-            </attribute>
-            <attribute>
-                <namespaceURI/>
-                <localName>status</localName>
-                <qualifiedName>status</qualifiedName>
-                <value>initial-draft</value>
-                <type>NMTOKEN</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <endElement>
+        <localName>position</localName>
+        <qualifiedName>position</qualifiedName>
+        <value>first</value>
+        <type>NMTOKEN</type>
+      </attribute>
+      <attribute>
         <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+        <localName>status</localName>
+        <qualifiedName>status</qualifiedName>
+        <value>initial-draft</value>
+        <type>NMTOKEN</type>
+      </attribute>
+    </attributes>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>

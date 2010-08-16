@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <notation>
-        <name>not1</name>
-        <publicID>a\sb\scdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</publicID>
-    </notation>
-    <notation>
-        <name>not2</name>
-        <publicID>0123456789-()+,./:=?;!*#@$_%</publicID>
-    </notation>
-    <notation>
-        <name>not3</name>
-        <publicID>0123456789-()+,.'/:=?;!*#@$_%</publicID>
-    </notation>
-    <startElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-        <attributes/>
-    </startElement>
-    <endElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-    </endElement>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <notation>
+    <name>not1</name>
+    <publicID>a&#x20;b&#x20;cdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</publicID>
+  </notation>
+  <notation>
+    <name>not2</name>
+    <publicID>0123456789-()+,./:=?;!*#@$_%</publicID>
+  </notation>
+  <notation>
+    <name>not3</name>
+    <publicID>0123456789-()+,.&apos;/:=?;!*#@$_%</publicID>
+  </notation>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <endElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+  </endElement>
+  <endDocument/>
+</SAXEvents>
