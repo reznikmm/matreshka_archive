@@ -49,6 +49,7 @@ with Ada.Streams;
 
 with League.Strings;
 with Matreshka.Internals.Strings;
+private with Matreshka.Internals.Unicode;
 
 package Matreshka.Internals.Text_Codecs is
 
@@ -79,7 +80,7 @@ package Matreshka.Internals.Text_Codecs is
    --  Decoder is responsible for XML1.0/XML1.1 end-of-line handling when
    --  its state created with corresponding mode.
 
-   type Abstract_Decoder_State is abstract tagged null record;
+   type Abstract_Decoder_State is abstract tagged private;
    --  Abstract root tagged type for decoder's states.
 
    type Decoder_State_Access is access all Abstract_Decoder_State'Class;
@@ -131,5 +132,19 @@ package Matreshka.Internals.Text_Codecs is
    function Decoder (Set : Character_Set) return Decoder_Access;
    --  Returns decoder for the specified character set. Decoder is global
    --  object and must not be deallocated.
+
+private
+
+   type Abstract_Decoder_State is abstract tagged record
+      Mode    : Decoder_Mode;
+      Skip_LF : Boolean;
+   end record;
+
+   procedure Unterminated_Append
+    (Buffer : in out Matreshka.Internals.Strings.Shared_String_Access;
+     State  : in out Abstract_Decoder_State'Class;
+     Code   : Matreshka.Internals.Unicode.Code_Point);
+   --  Internal implementation of unterminated append, which stores Code into
+   --  the buffer and handle line termination conventions.
 
 end Matreshka.Internals.Text_Codecs;

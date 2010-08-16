@@ -43,16 +43,21 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Compare;
+with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Text_Codecs.IANA_Registry;
 with Matreshka.Internals.Text_Codecs.ISO88591;
 with Matreshka.Internals.Text_Codecs.UTF16;
 with Matreshka.Internals.Text_Codecs.UTF8;
+with Matreshka.Internals.Unicode.Characters.General_Punctuation;
+with Matreshka.Internals.Unicode.Characters.Latin;
 
 package body Matreshka.Internals.Text_Codecs is
 
    use League.Strings.Internals;
    use Matreshka.Internals.Strings.Compare;
    use Matreshka.Internals.Text_Codecs.IANA_Registry;
+   use Matreshka.Internals.Unicode.Characters.General_Punctuation;
+   use Matreshka.Internals.Unicode.Characters.Latin;
 
    MIB_ISO88591 : constant Character_Set := 4;
 
@@ -153,5 +158,68 @@ package body Matreshka.Internals.Text_Codecs is
 
       return 0;
    end To_Character_Set;
+
+   -------------------------
+   -- Unterminated_Append --
+   -------------------------
+
+   procedure Unterminated_Append
+    (Buffer : in out Matreshka.Internals.Strings.Shared_String_Access;
+     State  : in out Abstract_Decoder_State'Class;
+     Code   : Matreshka.Internals.Unicode.Code_Point)
+   is
+      use type Matreshka.Internals.Unicode.Code_Unit_32;
+
+   begin
+      case State.Mode is
+         when Raw =>
+            Matreshka.Internals.Strings.Operations.Append (Buffer, Code);
+
+         when XML_1_0 =>
+            if Code = Carriage_Return then
+               Matreshka.Internals.Strings.Operations.Append
+                (Buffer, Line_Feed);
+               State.Skip_LF := True;
+
+            elsif Code = Line_Feed then
+               if not State.Skip_LF then
+                  Matreshka.Internals.Strings.Operations.Append
+                   (Buffer, Line_Feed);
+               end if;
+
+               State.Skip_LF := False;
+
+            else
+               Matreshka.Internals.Strings.Operations.Append
+                (Buffer, Code);
+               State.Skip_LF := False;
+            end if;
+
+         when XML_1_1 =>
+            if Code = Carriage_Return then
+               State.Skip_LF := True;
+
+               Matreshka.Internals.Strings.Operations.Append
+                (Buffer, Line_Feed);
+
+            elsif Code = Line_Feed or Code = Next_Line then
+               if not State.Skip_LF then
+                  Matreshka.Internals.Strings.Operations.Append
+                   (Buffer, Line_Feed);
+               end if;
+
+               State.Skip_LF := False;
+
+            elsif Code = Line_Separator then
+               Matreshka.Internals.Strings.Operations.Append
+                (Buffer, Line_Feed);
+               State.Skip_LF := False;
+
+            else
+               Matreshka.Internals.Strings.Operations.Append (Buffer, Code);
+               State.Skip_LF := False;
+            end if;
+      end case;
+   end Unterminated_Append;
 
 end Matreshka.Internals.Text_Codecs;

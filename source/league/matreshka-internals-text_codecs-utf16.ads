@@ -117,16 +117,12 @@ private
    type UTF16_DFA_State is mod 2 ** 8;
 
    type UTF16BE_Decoder_State is new Abstract_Decoder_State with record
-      Mode    : Decoder_Mode;
-      Skip_LF : Boolean;
       State   : UTF16_DFA_State;
       Code    : Matreshka.Internals.Unicode.Code_Unit_32;
       Low     : Matreshka.Internals.Unicode.Code_Unit_16;
    end record;
 
    type UTF16LE_Decoder_State is new Abstract_Decoder_State with record
-      Mode    : Decoder_Mode;
-      Skip_LF : Boolean;
       State   : UTF16_DFA_State;
       Code    : Matreshka.Internals.Unicode.Code_Unit_32;
       Low     : Matreshka.Internals.Unicode.Code_Unit_16;

@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 --  Decoder of ISO-8859-1.
 ------------------------------------------------------------------------------
-private with Matreshka.Internals.Unicode;
 
 private package Matreshka.Internals.Text_Codecs.ISO88591 is
 
@@ -78,9 +77,6 @@ private package Matreshka.Internals.Text_Codecs.ISO88591 is
 
 private
 
-   type ISO88591_Decoder_State is new Abstract_Decoder_State with record
-      Mode    : Decoder_Mode;
-      Skip_LF : Boolean;
-   end record;
+   type ISO88591_Decoder_State is new Abstract_Decoder_State with null record;
 
 end Matreshka.Internals.Text_Codecs.ISO88591;

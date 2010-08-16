@@ -80,8 +80,6 @@ private
    type UTF8_DFA_State is mod 2 ** 8;
 
    type UTF8_Decoder_State is new Abstract_Decoder_State with record
-      Mode    : Decoder_Mode;
-      Skip_LF : Boolean;
       State   : UTF8_DFA_State;
       Code    : Matreshka.Internals.Unicode.Code_Unit_32;
    end record;

@@ -41,16 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings.Operations;
-with Matreshka.Internals.Unicode.Characters.General_Punctuation;
-with Matreshka.Internals.Unicode.Characters.Latin;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Text_Codecs.UTF16 is
 
    use Matreshka.Internals.Unicode;
-   use Matreshka.Internals.Unicode.Characters.General_Punctuation;
-   use Matreshka.Internals.Unicode.Characters.Latin;
    use Matreshka.Internals.Utf16;
 
    --  Common states for both BE and LE variants.
@@ -198,16 +193,14 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
      State  : in out Abstract_Decoder_State'Class;
      String : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
-      UTF16_State     : UTF16BE_Decoder_State
+      UTF16_State   : UTF16BE_Decoder_State
         renames UTF16BE_Decoder_State (State);
 
-      Current_State   : UTF16_DFA_State := UTF16_State.State;
-      Current_Code    : Matreshka.Internals.Unicode.Code_Unit_32
+      Current_State : UTF16_DFA_State := UTF16_State.State;
+      Current_Code  : Matreshka.Internals.Unicode.Code_Unit_32
         := UTF16_State.Code;
-      Current_Low     : Matreshka.Internals.Unicode.Code_Unit_16
+      Current_Low   : Matreshka.Internals.Unicode.Code_Unit_16
         := UTF16_State.Low;
-      Current_Mode    : constant Decoder_Mode := UTF16_State.Mode;
-      Current_Skip_LF : Boolean := UTF16_State.Skip_LF;
 
    begin
       for J in Data'Range loop
@@ -242,68 +235,14 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
               BE_Transition (Current_State * 4 + UTF16_DFA_State (M));
 
             if Current_State = Accept_State then
-               case Current_Mode is
-                  when Raw =>
-                     Matreshka.Internals.Strings.Operations.Append
-                      (String, Current_Code);
-
-                  when XML_1_0 =>
-                     if Current_Code = Carriage_Return then
-                        Current_Skip_LF := True;
-
-                        Matreshka.Internals.Strings.Operations.Append
-                         (String, Line_Feed);
-
-                     elsif Current_Code = Line_Feed then
-                        if not Current_Skip_LF then
-                           Matreshka.Internals.Strings.Operations.Append
-                            (String, Line_Feed);
-                        end if;
-
-                        Current_Skip_LF := False;
-
-                     else
-                        Current_Skip_LF := False;
-                        Matreshka.Internals.Strings.Operations.Append
-                         (String, Current_Code);
-                     end if;
-
-                  when XML_1_1 =>
-                     if Current_Code = Carriage_Return then
-                        Current_Skip_LF := True;
-
-                        Matreshka.Internals.Strings.Operations.Append
-                         (String, Line_Feed);
-
-                     elsif Current_Code = Line_Feed
-                       or Current_Code = Next_Line
-                     then
-                        if not Current_Skip_LF then
-                           Matreshka.Internals.Strings.Operations.Append
-                            (String, Line_Feed);
-                        end if;
-
-                        Current_Skip_LF := False;
-
-                     elsif Current_Code = Line_Separator then
-                        Current_Skip_LF := False;
-                        Matreshka.Internals.Strings.Operations.Append
-                         (String, Line_Feed);
-
-                     else
-                        Current_Skip_LF := False;
-                        Matreshka.Internals.Strings.Operations.Append
-                         (String, Current_Code);
-                     end if;
-               end case;
+               Unterminated_Append (String, State, Current_Code);
             end if;
          end;
       end loop;
 
-      UTF16_State.State   := Current_State;
-      UTF16_State.Code    := Current_Code;
-      UTF16_State.Low     := Current_Low;
-      UTF16_State.Skip_LF := Current_Skip_LF;
+      UTF16_State.State := Current_State;
+      UTF16_State.Code  := Current_Code;
+      UTF16_State.Low   := Current_Low;
    end Decode_Append;
 
    -------------------
@@ -316,16 +255,14 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
      State  : in out Abstract_Decoder_State'Class;
      String : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
-      UTF16_State     : UTF16LE_Decoder_State
+      UTF16_State   : UTF16LE_Decoder_State
         renames UTF16LE_Decoder_State (State);
 
-      Current_State   : UTF16_DFA_State := UTF16_State.State;
-      Current_Code    : Matreshka.Internals.Unicode.Code_Unit_32
+      Current_State : UTF16_DFA_State := UTF16_State.State;
+      Current_Code  : Matreshka.Internals.Unicode.Code_Unit_32
         := UTF16_State.Code;
-      Current_Low     : Matreshka.Internals.Unicode.Code_Unit_16
+      Current_Low   : Matreshka.Internals.Unicode.Code_Unit_16
         := UTF16_State.Low;
-      Current_Mode    : constant Decoder_Mode := UTF16_State.Mode;
-      Current_Skip_LF : Boolean := UTF16_State.Skip_LF;
 
    begin
       for J in Data'Range loop
@@ -358,68 +295,14 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
               LE_Transition (Current_State * 4 + UTF16_DFA_State (M));
 
             if Current_State = Accept_State then
-               case Current_Mode is
-                  when Raw =>
-                     Matreshka.Internals.Strings.Operations.Append
-                      (String, Current_Code);
-
-                  when XML_1_0 =>
-                     if Current_Code = Carriage_Return then
-                        Current_Skip_LF := True;
-
-                        Matreshka.Internals.Strings.Operations.Append
-                         (String, Line_Feed);
-
-                     elsif Current_Code = Line_Feed then
-                        if not Current_Skip_LF then
-                           Matreshka.Internals.Strings.Operations.Append
-                            (String, Line_Feed);
-                        end if;
-
-                        Current_Skip_LF := False;
-
-                     else
-                        Current_Skip_LF := False;
-                        Matreshka.Internals.Strings.Operations.Append
-                         (String, Current_Code);
-                     end if;
-
-                  when XML_1_1 =>
-                     if Current_Code = Carriage_Return then
-                        Current_Skip_LF := True;
-
-                        Matreshka.Internals.Strings.Operations.Append
-                         (String, Line_Feed);
-
-                     elsif Current_Code = Line_Feed
-                       or Current_Code = Next_Line
-                     then
-                        if not Current_Skip_LF then
-                           Matreshka.Internals.Strings.Operations.Append
-                            (String, Line_Feed);
-                        end if;
-
-                        Current_Skip_LF := False;
-
-                     elsif Current_Code = Line_Separator then
-                        Current_Skip_LF := False;
-                        Matreshka.Internals.Strings.Operations.Append
-                         (String, Line_Feed);
-
-                     else
-                        Current_Skip_LF := False;
-                        Matreshka.Internals.Strings.Operations.Append
-                         (String, Current_Code);
-                     end if;
-               end case;
+               Unterminated_Append (String, State, Current_Code);
             end if;
          end;
       end loop;
 
-      UTF16_State.State   := Current_State;
-      UTF16_State.Code    := Current_Code;
-      UTF16_State.Low     := Current_Low;
-      UTF16_State.Skip_LF := Current_Skip_LF;
+      UTF16_State.State := Current_State;
+      UTF16_State.Code  := Current_Code;
+      UTF16_State.Low   := Current_Low;
    end Decode_Append;
 
    --------------

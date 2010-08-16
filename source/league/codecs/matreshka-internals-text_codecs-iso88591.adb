@@ -41,15 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings.Operations;
-with Matreshka.Internals.Unicode.Characters.General_Punctuation;
-with Matreshka.Internals.Unicode.Characters.Latin;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Text_Codecs.ISO88591 is
 
-   use Matreshka.Internals.Unicode.Characters.General_Punctuation;
-   use Matreshka.Internals.Unicode.Characters.Latin;
    use type Matreshka.Internals.Unicode.Code_Unit_32;
    use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
@@ -59,7 +54,10 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
 
    overriding function Create_State
     (Self : ISO88591_Decoder;
-     Mode : Decoder_Mode) return Abstract_Decoder_State'Class is
+     Mode : Decoder_Mode) return Abstract_Decoder_State'Class
+   is
+      pragma Unreferenced (Self);
+
    begin
       return
         ISO88591_Decoder_State'
@@ -96,81 +94,26 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
      State  : in out Abstract_Decoder_State'Class;
      String : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
-      ISO88591_State : ISO88591_Decoder_State
-        renames ISO88591_Decoder_State (State);
-
-      Current_Code    : Matreshka.Internals.Unicode.Code_Unit_32;
-      Current_Mode    : constant Decoder_Mode := ISO88591_State.Mode;
-      Current_Skip_LF : Boolean := ISO88591_State.Skip_LF;
+      pragma Unreferenced (Self);
 
    begin
       for J in Data'Range loop
-         Current_Code := Matreshka.Internals.Unicode.Code_Point (Data (J));
-
-         case Current_Mode is
-            when Raw =>
-               Matreshka.Internals.Strings.Operations.Append
-                (String, Current_Code);
-
-            when XML_1_0 =>
-               if Current_Code = Carriage_Return then
-                  Current_Skip_LF := True;
-
-                  Matreshka.Internals.Strings.Operations.Append
-                   (String, Line_Feed);
-
-               elsif Current_Code = Line_Feed then
-                  if not Current_Skip_LF then
-                     Matreshka.Internals.Strings.Operations.Append
-                      (String, Line_Feed);
-                  end if;
-
-                  Current_Skip_LF := False;
-
-               else
-                  Current_Skip_LF := False;
-                  Matreshka.Internals.Strings.Operations.Append
-                   (String, Current_Code);
-               end if;
-
-            when XML_1_1 =>
-               if Current_Code = Carriage_Return then
-                  Current_Skip_LF := True;
-
-                  Matreshka.Internals.Strings.Operations.Append
-                   (String, Line_Feed);
-
-               elsif Current_Code = Line_Feed
-                 or Current_Code = Next_Line
-               then
-                  if not Current_Skip_LF then
-                     Matreshka.Internals.Strings.Operations.Append
-                      (String, Line_Feed);
-                  end if;
-
-                  Current_Skip_LF := False;
-
-               elsif Current_Code = Line_Separator then
-                  Current_Skip_LF := False;
-                  Matreshka.Internals.Strings.Operations.Append
-                   (String, Line_Feed);
-
-               else
-                  Current_Skip_LF := False;
-                  Matreshka.Internals.Strings.Operations.Append
-                   (String, Current_Code);
-               end if;
-         end case;
+         Unterminated_Append
+          (String,
+           State,
+           Matreshka.Internals.Unicode.Code_Point (Data (J)));
       end loop;
-
-      ISO88591_State.Skip_LF := Current_Skip_LF;
    end Decode_Append;
 
    --------------
    -- Is_Error --
    --------------
 
-   overriding function Is_Error (Self : ISO88591_Decoder_State) return Boolean is
+   overriding function Is_Error
+    (Self : ISO88591_Decoder_State) return Boolean
+   is
+      pragma Unreferenced (Self);
+
    begin
       return False;
    end Is_Error;
@@ -180,7 +123,10 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
    -------------------
 
    overriding function Is_Mailformed
-    (Self : ISO88591_Decoder_State) return Boolean is
+    (Self : ISO88591_Decoder_State) return Boolean
+   is
+      pragma Unreferenced (Self);
+
    begin
       return False;
    end Is_Mailformed;
