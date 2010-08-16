@@ -71,7 +71,7 @@ with Interfaces;
 
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
-with Matreshka.Internals.Text_Codecs.Utf8;
+with Matreshka.Internals.Text_Codecs;
 with Matreshka.Internals.Unicode;
 
 function Read_File (Name : String) return League.Strings.Universal_String is
@@ -83,7 +83,9 @@ function Read_File (Name : String) return League.Strings.Universal_String is
    File   : Ada.Streams.Stream_IO.File_Type;
    Data   : Matreshka.Internals.Strings.Shared_String_Access
      := Matreshka.Internals.Strings.Shared_Empty'Access;
-   Codec  : Matreshka.Internals.Text_Codecs.UTF8.UTF8_Decoder;
+   Codec  : Matreshka.Internals.Text_Codecs.Decoder_Access
+     := Matreshka.Internals.Text_Codecs.Decoder
+         (Matreshka.Internals.Text_Codecs.MIB_UTF8);
    State  : Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class
      := Codec.Create_State (Matreshka.Internals.Text_Codecs.Raw);
 
