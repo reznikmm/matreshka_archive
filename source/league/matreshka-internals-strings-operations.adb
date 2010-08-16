@@ -310,6 +310,55 @@ package body Matreshka.Internals.Strings.Operations is
       end if;
    end Slice;
 
+   -----------
+   -- Slice --
+   -----------
+
+   procedure Slice
+    (Item   : in out Shared_String_Access;
+     First  : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length : Natural)
+   is
+      pragma Assert (Size = 0 or First < Item.Unused);
+      --  For convenience, it is allowied to get empty slice from any string;
+      --  otherwise First must be valid position of character.
+      pragma Assert (First + Size <= Item.Unused);
+      pragma Assert (Utf16_String_Index (Length) in (Size + 1) / 2 .. Size);
+
+      Source      : Shared_String_Access := Item;
+      Destination : Shared_String_Access renames Item;
+
+   begin
+      if Size = 0 then
+         --  Requested slice is empty.
+
+         Destination := Shared_Empty'Access;
+         Dereference (Source);
+
+      elsif Size = Source.Unused then
+         --  Requested slice is whole string.
+
+         null;
+
+      else
+         if not Can_Be_Reused (Source, Size) then
+            Destination := Allocate (Size);
+         end if;
+
+         Free (Destination.Index_Map);
+         Destination.Value (0 .. Size - 1) :=
+           Source.Value (First .. First + Size - 1);
+         Destination.Unused := Size;
+         Destination.Length := Length;
+         Fill_Null_Terminator (Destination);
+
+         if Source /= Destination then
+            Dereference (Source);
+         end if;
+      end if;
+   end Slice;
+
    -------------------------
    -- Unterminated_Append --
    -------------------------

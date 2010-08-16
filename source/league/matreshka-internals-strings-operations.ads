@@ -80,6 +80,14 @@ package Matreshka.Internals.Strings.Operations is
    --  Returns slice from First to First + Size - 1. Length specify expected
    --  length of the result.
 
+   procedure Slice
+    (Item   : in out Shared_String_Access;
+     First  : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Length : Natural);
+   --  Sets Item to its slice from First to First + Size - 1. Length specify
+   --  expected length of the result.
+
    procedure Replace
     (String : in out Shared_String_Access;
      First  : Matreshka.Internals.Utf16.Utf16_String_Index;
