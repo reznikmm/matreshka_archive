@@ -1481,25 +1481,16 @@ package body XML.SAX.Simple_Readers.Scanner is
                     and Self.Scanner_State.YY_Base_Position /= 0
                   then
                      --  For document entity, remove already scanned data.
+                     --  Construct slice only when we actually need to move
+                     --  data.
 
-                     --  Construct slice only when we actually need
-                     --  to move data.
-
-                     declare
-                        X : Matreshka.Internals.Strings.Shared_String_Access
-                          := Self.Scanner_State.Data;
-
-                     begin
-                        Self.Scanner_State.Data :=
-                          Matreshka.Internals.Strings.Operations.Slice
-                           (X,
-                            Self.Scanner_State.YY_Base_Position,
-                            Self.Scanner_State.Data.Unused
-                              - Self.Scanner_State.YY_Base_Position,
-                            Self.Scanner_State.Data.Length
-                              - Self.Scanner_State.YY_Base_Index + 1);
-                        Matreshka.Internals.Strings.Dereference (X);
-                     end;
+                     Matreshka.Internals.Strings.Operations.Slice
+                      (Self.Scanner_State.Data,
+                       Self.Scanner_State.YY_Base_Position,
+                       Self.Scanner_State.Data.Unused
+                         - Self.Scanner_State.YY_Base_Position,
+                       Self.Scanner_State.Data.Length
+                         - Self.Scanner_State.YY_Base_Index + 1);
 
                      YY_Position_Offset := Self.Scanner_State.YY_Base_Position;
                      YY_Index_Offset    :=
