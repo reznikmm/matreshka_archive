@@ -51,6 +51,7 @@ with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
 with XML.SAX.DTD_Handlers;
 with XML.SAX.Lexical_Handlers;
+with XML.SAX.Locators;
 
 package XMLConf.Canonical_Writers is
 
@@ -66,6 +67,8 @@ package XMLConf.Canonical_Writers is
            Notation_Information,
            League.Strings."<");
 
+   type XML_Version is (Unspecified, XML_1_0, XML_1_1);
+
    type Canonical_Writer is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.DTD_Handlers.SAX_DTD_Handler
@@ -74,6 +77,8 @@ package XMLConf.Canonical_Writers is
       Result    : League.Strings.Universal_String;
       Name      : League.Strings.Universal_String;
       Notations : Notation_Maps.Map;
+      Locator   : XML.SAX.Locators.SAX_Locator;
+      Version   : XML_Version := Unspecified;
    end record;
 
 --  GNAT GPL 2010: type cann't be declared private becuase of bug in the
@@ -124,6 +129,10 @@ package XMLConf.Canonical_Writers is
      Target  : League.Strings.Universal_String;
      Data    : League.Strings.Universal_String;
      Success : in out Boolean);
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out Canonical_Writer;
+     Locator : XML.SAX.Locators.SAX_Locator);
 
    overriding procedure Start_DTD
     (Self      : in out Canonical_Writer;

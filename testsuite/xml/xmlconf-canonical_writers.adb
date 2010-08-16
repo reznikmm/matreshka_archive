@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Containers.Ordered_Maps;
+with Ada.Strings.Wide_Wide_Fixed;
 
 package body XMLConf.Canonical_Writers is
 
@@ -54,12 +55,16 @@ package body XMLConf.Canonical_Writers is
           (League.Strings.Universal_String, Positive);
 
    function Escape_Character_Data
-    (Item : League.Strings.Universal_String)
+    (Item    : League.Strings.Universal_String;
+     Version : XML_Version)
        return League.Strings.Universal_String;
    --  Escape character data according to canonical form representation.
    --  '&', '<', '>' and '"' characters are replaced by general entity
    --  reference; TAB, CR and LF characters are replaced by character
    --  reference in hexadecimal format.
+
+   procedure Set_Version (Self : in out Canonical_Writer);
+   --  Sets version.
 
    ----------------
    -- Characters --
@@ -70,7 +75,7 @@ package body XMLConf.Canonical_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      Self.Result.Append (Escape_Character_Data (Text));
+      Self.Result.Append (Escape_Character_Data (Text, Self.Version));
    end Characters;
 
    -------------
@@ -165,7 +170,8 @@ package body XMLConf.Canonical_Writers is
    ---------------------------
 
    function Escape_Character_Data
-    (Item : League.Strings.Universal_String)
+    (Item    : League.Strings.Universal_String;
+     Version : XML_Version)
        return League.Strings.Universal_String
    is
       Result : League.Strings.Universal_String := Item;
@@ -187,14 +193,39 @@ package body XMLConf.Canonical_Writers is
          elsif C = '"' then
             Result.Replace (J, J, "&quot;");
 
-         elsif C = Wide_Wide_Character'Val (9) then
-            Result.Replace (J, J, "&#9;");
+         else
+            case Version is
+               when Unspecified =>
+                  raise Program_Error;
 
-         elsif C = Wide_Wide_Character'Val (10) then
-            Result.Replace (J, J, "&#10;");
+               when XML_1_0 =>
+                  if C = Wide_Wide_Character'Val (9) then
+                     Result.Replace (J, J, "&#9;");
 
-         elsif C = Wide_Wide_Character'Val (13) then
-            Result.Replace (J, J, "&#13;");
+                  elsif C = Wide_Wide_Character'Val (10) then
+                     Result.Replace (J, J, "&#10;");
+
+                  elsif C = Wide_Wide_Character'Val (13) then
+                     Result.Replace (J, J, "&#13;");
+                  end if;
+
+               when XML_1_1 =>
+                  if C in Wide_Wide_Character'Val (16#01#)
+                            .. Wide_Wide_Character'Val (16#1F#)
+                    or C in Wide_Wide_Character'Val (16#7F#)
+                              .. Wide_Wide_Character'Val (16#9F#)
+                  then
+                     Result.Replace
+                      (J,
+                       J,
+                       "&#"
+                         & Ada.Strings.Wide_Wide_Fixed.Trim
+                            (Integer'Wide_Wide_Image
+                              (Wide_Wide_Character'Pos (C)),
+                             Ada.Strings.Both)
+                         & ";");
+                  end if;
+            end case;
          end if;
       end loop;
 
@@ -210,7 +241,8 @@ package body XMLConf.Canonical_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      Self.Result.Append (Escape_Character_Data (Text));
+      Set_Version (Self);
+      Self.Result.Append (Escape_Character_Data (Text, Self.Version));
    end Ignorable_Whitespace;
 
    --------------------------
@@ -237,8 +269,43 @@ package body XMLConf.Canonical_Writers is
      Data    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
+      Set_Version (Self);
       Self.Result.Append ("<?" & Target & " " & Data & "?>");
    end Processing_Instruction;
+
+   --------------------------
+   -- Set_Document_Locator --
+   --------------------------
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out Canonical_Writer;
+     Locator : XML.SAX.Locators.SAX_Locator) is
+   begin
+      Self.Locator := Locator;
+   end Set_Document_Locator;
+
+   -----------------
+   -- Set_Version --
+   -----------------
+
+   procedure Set_Version (Self : in out Canonical_Writer) is
+      use League.Strings;
+
+   begin
+      if Self.Version = Unspecified then
+         if Self.Locator.Version = To_Universal_String ("1.0") then
+            Self.Version := XML_1_0;
+
+         elsif Self.Locator.Version = To_Universal_String ("1.1") then
+--            Self.Result.Prepend ("<?xml version=""1.1""?>");
+            Self.Result := "<?xml version=""1.1""?>" & Self.Result;
+            Self.Version := XML_1_1;
+
+         else
+            raise Program_Error;
+         end if;
+      end if;
+   end Set_Version;
 
    ---------------
    -- Start_DTD --
@@ -251,6 +318,7 @@ package body XMLConf.Canonical_Writers is
      System_Id : League.Strings.Universal_String;
      Success   : in out Boolean) is
    begin
+      Set_Version (Self);
       Self.Name := Name;
    end Start_DTD;
 
@@ -273,6 +341,7 @@ package body XMLConf.Canonical_Writers is
       Index    : Positive;
 
    begin
+      Set_Version (Self);
       Self.Result.Append ("<" & Qualified_Name);
 
       for J in 1 .. Attributes.Length loop
@@ -287,7 +356,7 @@ package body XMLConf.Canonical_Writers is
           (" "
              & Attributes.Qualified_Name (Index)
              & "="""
-             & Escape_Character_Data (Attributes.Value (Index))
+             & Escape_Character_Data (Attributes.Value (Index), Self.Version)
              & '"');
          Next (Position);
       end loop;
