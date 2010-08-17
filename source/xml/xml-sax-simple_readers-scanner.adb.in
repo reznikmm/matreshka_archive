@@ -219,10 +219,45 @@ package body XML.SAX.Simple_Readers.Scanner is
          if Text.Unused = 0 then
             --  Replacement text is empty string,
 
+            --  [XML 4.4.8] Included as PE
+            --
+            --  "Just as with external parsed entities, parameter entities need
+            --  only be included if validating. When a parameter-entity
+            --  reference is recognized in the DTD and included, its
+            --  replacement text MUST be enlarged by the attachment of one
+            --  leading and one following space (#x20) character; the intent is
+            --  to constrain the replacement text of parameter entities to
+            --  contain an integral number of grammatical tokens in the DTD.
+            --  This behavior MUST NOT apply to parameter entity references
+            --  within entity values; these are described in 4.4.5 Included in
+            --  Literal."
+            --
+            --  Set Whitespace_Matched flag, it is used only while processing
+            --  of DTD, so the place where parameter entity declarations are
+            --  allowed.
+
+            Self.Whitespace_Matched := True;
+
             return True;
          end if;
       end if;
 
+      --  [XML 4.4.8] Included as PE
+      --
+      --  "Just as with external parsed entities, parameter entities need only
+      --  be included if validating. When a parameter-entity reference is
+      --  recognized in the DTD and included, its replacement text MUST be
+      --  enlarged by the attachment of one leading and one following space
+      --  (#x20) character; the intent is to constrain the replacement text of
+      --  parameter entities to contain an integral number of grammatical
+      --  tokens in the DTD. This behavior MUST NOT apply to parameter entity
+      --  references within entity values; these are described in 4.4.5
+      --  Included in Literal."
+      --
+      --  Set Whitespace_Matched flag, it is used only while processing of DTD,
+      --  so the place where parameter entity declarations are allowed.
+
+      Self.Whitespace_Matched := True;
       Self.Scanner_Stack.Append (Self.Scanner_State);
 
       Self.Scanner_State :=
@@ -884,6 +919,28 @@ package body XML.SAX.Simple_Readers.Scanner is
                              Self.Scanner_Stack.Last_Element;
                            Self.Scanner_Stack.Delete_Last;
                            Enter_Start_Condition (Self, YY_Start_Condition);
+
+                           --  [XML 4.4.8] Included as PE
+                           --
+                           --  "Just as with external parsed entities,
+                           --  parameter entities need only be included if
+                           --  validating. When a parameter-entity reference is
+                           --  recognized in the DTD and included, its
+                           --  replacement text MUST be enlarged by the
+                           --  attachment of one leading and one following
+                           --  space (#x20) character; the intent is to
+                           --  constrain the replacement text of parameter
+                           --  entities to contain an integral number of
+                           --  grammatical tokens in the DTD. This behavior
+                           --  MUST NOT apply to parameter entity references
+                           --  within entity values; these are described in
+                           --  4.4.5 Included in Literal."
+                           --
+                           --  Set Whitespace_Matched flag, it is used only
+                           --  while processing of DTD, so the place where
+                           --  parameter entity declarations are allowed.
+
+                           Self.Whitespace_Matched := True;
 
                         else
                            Self.Scanner_State :=
