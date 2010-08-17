@@ -87,6 +87,8 @@ package body XMLConf.Testsuite_Handlers is
      := League.Strings.To_Universal_String ("5");
    Output_Name         : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("OUTPUT");
+   Output3_Name        : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("OUTPUT3");
    Namespace_Name      : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("NAMESPACE");
    No_Name             : constant League.Strings.Universal_String
@@ -383,6 +385,12 @@ package body XMLConf.Testsuite_Handlers is
          end if;
 
          Index := Attributes.Index (Output_Name);
+
+         if Index /= 0 then
+            Output := Attributes.Value (Index);
+         end if;
+
+         Index := Attributes.Index (Output3_Name);
 
          if Index /= 0 then
             Output := Attributes.Value (Index);
