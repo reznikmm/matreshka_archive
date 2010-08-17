@@ -69,10 +69,33 @@ procedure XMLConf_Test is
    Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
    Handler  : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
+   Enabled  : Test_Flags := (others => True);
    Passed   : Natural;
    Failed   : Natural;
 
 begin
+   if Ada.Command_Line.Argument_Count > 1 then
+      Enabled := (others => False);
+
+      for J in 2 .. Ada.Command_Line.Argument_Count loop
+         if Ada.Command_Line.Argument (J) = "--valid" then
+            Enabled (Valid) := True;
+
+         elsif Ada.Command_Line.Argument (J) = "--invalid" then
+            Enabled (Valid) := True;
+
+         elsif Ada.Command_Line.Argument (J) = "--not-wellformed" then
+            Enabled (Not_Wellformed) := True;
+
+         elsif Ada.Command_Line.Argument (J) = "--error" then
+            Enabled (Error) := True;
+
+         else
+            raise Program_Error;
+         end if;
+      end loop;
+   end if;
+
    XML.SAX.Simple_Readers.Put_Line := Put_Line'Access;
 
    --  Because of limitations of current implementation in tracking relative
@@ -84,42 +107,67 @@ begin
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
    Reader.Set_Error_Handler (Handler'Unchecked_Access);
    Source.Open (Ada.Directories.Simple_Name (Data));
+   Handler.Enabled := Enabled;
    Reader.Parse (Source'Access);
    Ada.Directories.Set_Directory (Cwd);
 
+   Passed :=
+     Handler.Results (Valid).Passed
+       + Handler.Results (Invalid).Passed
+       + Handler.Results (Not_Wellformed).Passed
+       + Handler.Results (Error).Passed;
+   Failed :=
+     Handler.Results (Valid).Failed
+       + Handler.Results (Invalid).Failed
+       + Handler.Results (Not_Wellformed).Failed
+       + Handler.Results (Error).Failed;
+
+   if Failed = 0 then
+      return;
+   end if;
+
    Put_Line (" Group  Passed Failed  Crash Output   SAX");
    Put_Line ("------- ------ ------ ------ ------ ------");
-   Put ("valid  ");
-   Put (Handler.Results (Valid).Passed, 7);
-   Put (Handler.Results (Valid).Failed, 7);
-   Put (Handler.Results (Valid).Crash, 7);
-   Put (Handler.Results (Valid).Output, 7);
-   Put (Handler.Results (Valid).SAX, 7);
-   New_Line;
 
-   Put ("invalid");
-   Put (Handler.Results (Invalid).Passed, 7);
-   Put (Handler.Results (Invalid).Failed, 7);
-   Put (Handler.Results (Invalid).Crash, 7);
-   Put (Handler.Results (Invalid).Output, 7);
-   Put (Handler.Results (Invalid).SAX, 7);
-   New_Line;
+   if Enabled (Valid) then
+      Put ("valid  ");
+      Put (Handler.Results (Valid).Passed, 7);
+      Put (Handler.Results (Valid).Failed, 7);
+      Put (Handler.Results (Valid).Crash, 7);
+      Put (Handler.Results (Valid).Output, 7);
+      Put (Handler.Results (Valid).SAX, 7);
+      New_Line;
+   end if;
 
-   Put ("not-wf ");
-   Put (Handler.Results (Not_Wellformed).Passed, 7);
-   Put (Handler.Results (Not_Wellformed).Failed, 7);
-   Put (Handler.Results (Not_Wellformed).Crash, 7);
-   Put (Handler.Results (Not_Wellformed).Output, 7);
-   Put (Handler.Results (Not_Wellformed).SAX, 7);
-   New_Line;
+   if Enabled (Invalid) then
+      Put ("invalid");
+      Put (Handler.Results (Invalid).Passed, 7);
+      Put (Handler.Results (Invalid).Failed, 7);
+      Put (Handler.Results (Invalid).Crash, 7);
+      Put (Handler.Results (Invalid).Output, 7);
+      Put (Handler.Results (Invalid).SAX, 7);
+      New_Line;
+   end if;
 
-   Put ("error  ");
-   Put (Handler.Results (Error).Passed, 7);
-   Put (Handler.Results (Error).Failed, 7);
-   Put (Handler.Results (Error).Crash, 7);
-   Put (Handler.Results (Error).Output, 7);
-   Put (Handler.Results (Error).SAX, 7);
-   New_Line;
+   if Enabled (Not_Wellformed) then
+      Put ("not-wf ");
+      Put (Handler.Results (Not_Wellformed).Passed, 7);
+      Put (Handler.Results (Not_Wellformed).Failed, 7);
+      Put (Handler.Results (Not_Wellformed).Crash, 7);
+      Put (Handler.Results (Not_Wellformed).Output, 7);
+      Put (Handler.Results (Not_Wellformed).SAX, 7);
+      New_Line;
+   end if;
+
+   if Enabled (Error) then
+      Put ("error  ");
+      Put (Handler.Results (Error).Passed, 7);
+      Put (Handler.Results (Error).Failed, 7);
+      Put (Handler.Results (Error).Crash, 7);
+      Put (Handler.Results (Error).Output, 7);
+      Put (Handler.Results (Error).SAX, 7);
+      New_Line;
+   end if;
 
    Put_Line ("        ------ ------ ------ ------ ------");
    Put ("       ");
@@ -155,16 +203,6 @@ begin
      7);
    New_Line;
 
-   Passed :=
-     Handler.Results (Valid).Passed
-       + Handler.Results (Invalid).Passed
-       + Handler.Results (Not_Wellformed).Passed
-       + Handler.Results (Error).Passed;
-   Failed :=
-     Handler.Results (Valid).Failed
-       + Handler.Results (Invalid).Failed
-       + Handler.Results (Not_Wellformed).Failed
-       + Handler.Results (Error).Failed;
    New_Line;
    Put_Line
     ("Status:"

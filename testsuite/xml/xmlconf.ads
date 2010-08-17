@@ -48,4 +48,6 @@ package XMLConf is
 
    type Test_Kinds is (Valid, Invalid, Not_Wellformed, Error);
 
+   type Test_Flags is array (Test_Kinds) of Boolean;
+
 end XMLConf;

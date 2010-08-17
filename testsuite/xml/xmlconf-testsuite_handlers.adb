@@ -402,7 +402,7 @@ package body XMLConf.Testsuite_Handlers is
             end if;
          end if;
 
-         if not Skip then
+         if not Skip and Self.Enabled (Test_Kind) then
             Execute_Test
              (Self, Id, Self.Base, URI, Test_Kind, Namespaces, Output);
          end if;

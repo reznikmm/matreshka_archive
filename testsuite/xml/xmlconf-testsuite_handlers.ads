@@ -63,6 +63,7 @@ package XMLConf.Testsuite_Handlers is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Error_Handlers.SAX_Error_Handler
    with record
+      Enabled : Test_Flags;
       Base    : League.Strings.Universal_String;
       --  Base path to tests' data.
       Results : Result_Array;
