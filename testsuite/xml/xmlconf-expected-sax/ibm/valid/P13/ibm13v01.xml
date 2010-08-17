@@ -3,7 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <publicID>#x20&#x20;#xD&#x20;#xA&#x20;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#x20;-&apos;()+,./:=?;!*#@$_%</publicID>
-    <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/valid/P13/student.dtd</systemID>
+    <systemID>student.dtd</systemID>
   </resolveEntity>
   <startElement>
     <namespaceURI/>
