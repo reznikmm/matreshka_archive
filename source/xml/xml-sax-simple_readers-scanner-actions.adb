@@ -61,9 +61,16 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
      Trim_Right      : Natural;
      Trim_Whitespace : Boolean;
      Can_Be_Qname    : Boolean;
+     Not_Qname       : Boolean;
      Error           : out Boolean;
      Symbol          : out Matreshka.Internals.XML.Symbol_Identifier);
-   --  Converts name to symbol.
+   --  Converts name to symbol. Trim_Left, Trim_Right, Trim_Whitespace can be
+   --  used to trim several characters from head of tail of matched substring,
+   --  and to trim leading whitespaces. Not_Qname specify that resolved name
+   --  is not a qualified name at all (it is enumeration element of attribute
+   --  of non-NOTATION type). Can_Be_Qname specify that resolved name is
+   --  qualified name when namespace processing is enabled. Subprogram sets
+   --  Error when error is detected and Symbol when symbol is resolved.
 
    procedure Character_Reference_To_Code_Point
     (Self  : not null access SAX_Simple_Reader'Class;
@@ -145,6 +152,29 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       Valid := True;
    end Character_Reference_To_Code_Point;
+
+   -----------------------------------------------------
+   -- On_Attribute_Name_In_Attribute_List_Declaration --
+   -----------------------------------------------------
+
+   function On_Attribute_Name_In_Attribute_List_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      Resolve_Symbol
+       (Self, 0, 0, False, True, False, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Enter_Start_Condition (Self, Tables.ATTLIST_TYPE);
+
+         return Token_Name;
+      end if;
+   end On_Attribute_Name_In_Attribute_List_Declaration;
 
    ---------------------------------------
    -- On_Attribute_Value_Character_Data --
@@ -694,7 +724,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
 
       Resolve_Symbol
-       (Self, 0, 0, False, True, Qname_Error, Self.YYLVal.Symbol);
+       (Self, 0, 0, False, True, False, Qname_Error, Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -757,7 +787,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       State          : Scanner_State_Information;
 
    begin
-      Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
+      Resolve_Symbol
+       (Self, 1, 1, False, False, False, Qname_Error, Qualified_Name);
 
       if Qname_Error then
          return False;
@@ -894,7 +925,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       State          : Scanner_State_Information;
 
    begin
-      Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
+      Resolve_Symbol
+       (Self, 1, 1, False, False, False, Qname_Error, Qualified_Name);
 
       if Qname_Error then
          return False;
@@ -1010,7 +1042,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qname_Error    : Boolean;
 
    begin
-      Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
+      Resolve_Symbol
+       (Self, 1, 1, False, False, False, Qname_Error, Qualified_Name);
 
       if Qname_Error then
          return Error;
@@ -1048,29 +1081,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       return Error;
    end On_Less_Than_Sign_In_Attribute_Value;
 
-   -------------------------------------------
-   -- On_Name_In_Attribute_List_Declaration --
-   -------------------------------------------
-
-   function On_Name_In_Attribute_List_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token
-   is
-      Qname_Error : Boolean;
-
-   begin
-      Resolve_Symbol
-       (Self, 0, 0, False, True, Qname_Error, Self.YYLVal.Symbol);
-
-      if Qname_Error then
-         return Error;
-
-      else
-         Enter_Start_Condition (Self, Tables.ATTLIST_TYPE);
-
-         return Token_Name;
-      end if;
-   end On_Name_In_Attribute_List_Declaration;
-
    ----------------------------------------------------
    -- On_Name_In_Attribute_List_Declaration_Notation --
    ----------------------------------------------------
@@ -1081,8 +1091,27 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qname_Error : Boolean;
 
    begin
+      --  [XMLNS 7]
+      --
+      --  "It follows that in a namespace-well-formed document:
+      --
+      --    - All element and attribute names contain either zero or one colon;
+      --
+      --    - No entity names, processing instruction targets, or notation
+      --      names contain any colons."
+      --
+      --  This code is used to handle names in both NOTATION and enumeration
+      --  attribute declarations, thus it must distinguish colon handling.
+
       Resolve_Symbol
-       (Self, 0, 0, False, False, Qname_Error, Self.YYLVal.Symbol);
+       (Self,
+        0,
+        0,
+        False,
+        True,
+        not Self.Notation_Attribute,
+        Qname_Error,
+        Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -1103,7 +1132,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
    begin
       Resolve_Symbol
-       (Self, 0, 0, False, True, Qname_Error, Self.YYLVal.Symbol);
+       (Self, 0, 0, False, True, False, Qname_Error, Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -1134,7 +1163,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
 
       Resolve_Symbol
-       (Self, 0, 0, False, True, Qname_Error, Self.YYLVal.Symbol);
+       (Self, 0, 0, False, True, False, Qname_Error, Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -1173,7 +1202,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
 
       Resolve_Symbol
-       (Self, 0, 0, False, False, Qname_Error, Self.YYLVal.Symbol);
+       (Self, 0, 0, False, False, False, Qname_Error, Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -1214,7 +1243,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
 
       Resolve_Symbol
-       (Self, 0, 0, False, False, Qname_Error, Self.YYLVal.Symbol);
+       (Self, 0, 0, False, False, False, Qname_Error, Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -1310,7 +1339,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
    begin
       Resolve_Symbol
-       (Self, 10, 0, True, True, Qname_Error, Self.YYLVal.Symbol);
+       (Self, 10, 0, True, True, False, Qname_Error, Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -1333,7 +1362,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
    begin
       Resolve_Symbol
-       (Self, 10, 0, True, True, Qname_Error, Self.YYLVal.Symbol);
+       (Self, 10, 0, True, True, False, Qname_Error, Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -1356,7 +1385,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
    begin
       Resolve_Symbol
-       (Self, 2, 0, False, True, Qname_Error, Self.YYLVal.Symbol);
+       (Self, 2, 0, False, True, False, Qname_Error, Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -1397,7 +1426,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
    begin
       Resolve_Symbol
-       (Self, 10, 0, True, False, Qname_Error, Self.YYLVal.Symbol);
+       (Self, 10, 0, True, False, False, Qname_Error, Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -1420,7 +1449,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
    begin
       Resolve_Symbol
-       (Self, 2, 0, False, False, Qname_Error, Self.YYLVal.Symbol);
+       (Self, 2, 0, False, False, False, Qname_Error, Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -1445,7 +1474,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
    begin
       Resolve_Symbol
-       (Self, 1, 0, False, True, Qname_Error, Self.YYLVal.Symbol);
+       (Self, 1, 0, False, True, False, Qname_Error, Self.YYLVal.Symbol);
 
       if Qname_Error then
          return Error;
@@ -1484,7 +1513,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Entity         : Entity_Identifier;
 
    begin
-      Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
+      Resolve_Symbol
+       (Self, 1, 1, False, False, False, Qname_Error, Qualified_Name);
 
       if Qname_Error then
          return False;
@@ -1522,7 +1552,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Entity         : Entity_Identifier;
 
    begin
-      Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
+      Resolve_Symbol
+       (Self, 1, 1, False, False, False, Qname_Error, Qualified_Name);
 
       if Qname_Error then
          return False;
@@ -1560,7 +1591,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Entity         : Entity_Identifier;
 
    begin
-      Resolve_Symbol (Self, 1, 1, False, False, Qname_Error, Qualified_Name);
+      Resolve_Symbol
+       (Self, 1, 1, False, False, False, Qname_Error, Qualified_Name);
 
       if Qname_Error then
          return False;
@@ -1816,6 +1848,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
      Trim_Right      : Natural;
      Trim_Whitespace : Boolean;
      Can_Be_Qname    : Boolean;
+     Not_Qname       : Boolean;
      Error           : out Boolean;
      Symbol          : out Matreshka.Internals.XML.Symbol_Identifier)
    is
@@ -1861,7 +1894,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
         E,
         Symbol);
 
-      if Self.Namespaces.Enabled then
+      if Self.Namespaces.Enabled and not Not_Qname then
          case E is
             when Valid =>
                if not Can_Be_Qname

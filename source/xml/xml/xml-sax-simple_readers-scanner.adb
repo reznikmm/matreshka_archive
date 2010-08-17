@@ -1238,7 +1238,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 68 =>
                --  Name of the attribute, rule [53].
 
-               return Actions.On_Name_In_Attribute_List_Declaration (Self);
+               return Actions.On_Attribute_Name_In_Attribute_List_Declaration (Self);
 
             when 69 =>
                --  CDATA keyword, rule [55].

@@ -383,6 +383,8 @@ private
       --  Depth of conditional sections.
       Ignore_Depth           : Natural := 0;
       --  Depth of ignore conditional sections.
+      Notation_Attribute     : Boolean;
+      --  Sets when processing attribute declaration of type of NOTATION.
 
       --  Parser state
 

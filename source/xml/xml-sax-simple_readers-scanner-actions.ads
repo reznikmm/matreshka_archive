@@ -46,6 +46,10 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
 
    pragma Preelaborate;
 
+   function On_Attribute_Name_In_Attribute_List_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles name of the attribute in the attribute list declaration.
+
    procedure On_Attribute_Value_Character_Data
     (Self  : not null access SAX_Simple_Reader'Class);
    --  Handles character data in the attribute value.
@@ -156,10 +160,6 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    function On_Less_Than_Sign_In_Attribute_Value
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handling of less-than sign in attribute value.
-
-   function On_Name_In_Attribute_List_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token;
-   --  Handles name of the attribute in the attribute list declaration.
 
    function On_Name_In_Attribute_List_Declaration_Notation
     (Self : not null access SAX_Simple_Reader'Class) return Token;

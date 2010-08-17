@@ -733,7 +733,7 @@ CHAR11_NO_LEFT_SQUARE					[^\u005B\uD800-\uDFFF\uFFFE\uFFFF]
 <ATTLIST_DECL>{NAME} {
    --  Name of the attribute, rule [53].
 
-   return Actions.On_Name_In_Attribute_List_Declaration (Self);
+   return Actions.On_Attribute_Name_In_Attribute_List_Declaration (Self);
 }
 
 <ATTLIST_TYPE>"CDATA" {
@@ -1174,7 +1174,7 @@ with Matreshka.Internals.Strings;
       function On_Open_Of_Notation_Declaration
        (Self : access Integer) return Token;
 
-      function On_Name_In_Attribute_List_Declaration
+      function On_Attribute_Name_In_Attribute_List_Declaration
        (Self : access Integer) return Token;
 
       function On_Name_In_Element_Declaration_Children
