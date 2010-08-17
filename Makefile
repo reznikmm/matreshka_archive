@@ -33,7 +33,7 @@ check: all
 	.objs/regexp_ataresearch testsuite/league/ataresearch/basic.dat testsuite/league/ataresearch/matreshka/basic.dat
 	.objs/test_20 testsuite/xml/TN-20/
 	.objs/test_26 testsuite/xml/TN-26/26-expected.xml
-	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml
+	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --valid
 
 ucd:
 	gprbuild -p -Pgnat/tools.gpr
