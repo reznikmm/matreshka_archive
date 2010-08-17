@@ -443,9 +443,14 @@ package body Matreshka.Internals.XML.Attribute_Tables is
             return Symbol_NMTOKENS;
 
          when NOTATION =>
-            return Symbol_NMTOKEN;
+            return Symbol_NOTATION;
 
          when ENUMERATION =>
+            --  [SAX2] Attribiutes::getType
+            --
+            --  "For an enumerated attribute that is not a notation, the parser
+            --  will report the type as "NMTOKEN"."
+
             return Symbol_NMTOKEN;
       end case;
    end Symbol_Of_Type_Name;
