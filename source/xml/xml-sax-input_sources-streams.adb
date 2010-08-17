@@ -81,10 +81,18 @@ package body XML.SAX.Input_Sources.Streams is
       use type Matreshka.Internals.Text_Codecs.Decoder_Access;
 
       type Encodings is
-       (UCS4LE, UCS4BE, UCS42143, UCS43412, UTF16LE, UTF16BE, EBCDIC, UTF8);
+       (Unknown,
+        UCS4LE,
+        UCS4BE,
+        UCS42143,
+        UCS43412,
+        UTF16LE,
+        UTF16BE,
+        EBCDIC,
+        UTF8);
 
       First    : Ada.Streams.Stream_Element_Offset := Self.Last + 1;
-      Encoding : Encodings;
+      Encoding : Encodings := Unknown;
 
    begin
       --  Restart decoding when requested.
@@ -289,9 +297,21 @@ package body XML.SAX.Input_Sources.Streams is
                Encoding := UTF8;
             end if;
 
+         elsif End_Of_Data then
+            --  This is just a guess, entity is too small to detect encoding
+            --  more precisely.
+
+            First := 0;
+            Encoding := UTF8;
+         end if;
+
+         if Encoding /= Unknown then
             --  Create appropriate decoder.
 
             case Encoding is
+               when Unknown =>
+                  raise Program_Error;
+
                when UCS4LE =>
                   raise Program_Error;
 
