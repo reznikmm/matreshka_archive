@@ -951,20 +951,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 26 =>
                --  Public id literal, rule [12], used in rule [75].
 
-               if not Get_Whitespace_Matched (Self) then
-                  raise Program_Error with "no whitespace before pubid literal";
-                  --  XXX This is recoverable error.
-               end if;
-
-               Reset_Whitespace_Matched (Self);
-               Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
-               Set_String_Internal
-                (Item          => YYLVal,
-                 String        => YY_Text_Internal (1, 1),
-                 Is_Whitespace => False,
-                 Is_CData      => False);
-
-               return Token_Public_Literal;
+               return Actions.On_Public_Literal (Self);
 
             when 27 =>
                --  Open of internal subset declaration, rule [28].

@@ -404,20 +404,7 @@ CHAR11_NO_LEFT_SQUARE					[^\u005B\uD800-\uDFFF\uFFFE\uFFFF]
 <EXTERNAL_ID_PUB>\"{PUBID_CHAR}*\"|\'{PUBID_CHAR_NO_APOSTROPHE}*\' {
    --  Public id literal, rule [12], used in rule [75].
 
-   if not Get_Whitespace_Matched (Self) then
-      raise Program_Error with "no whitespace before pubid literal";
-      --  XXX This is recoverable error.
-   end if;
-
-   Reset_Whitespace_Matched (Self);
-   Enter_Start_Condition (Self, EXTERNAL_ID_SYS);
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal (1, 1),
-     Is_Whitespace => False,
-     Is_CData      => False);
-
-   return Token_Public_Literal;
+   return Actions.On_Public_Literal (Self);
 }
 
 <DOCTYPE_EXTINT,DOCTYPE_INT>"[" {
@@ -1204,6 +1191,8 @@ with Matreshka.Internals.Strings;
 
       function On_Name_In_Attribute_List_Declaration_Notation
        (Self : access Integer) return Token;
+
+      function On_Public_Literal (Self : access Integer) return Token;
 
       function On_System_Literal (Self : access Integer) return Token;
 

@@ -1607,6 +1607,98 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    end On_Parameter_Entity_Reference_In_Markup_Declaration;
 
    -----------------------
+   -- On_Public_Literal --
+   -----------------------
+
+   function On_Public_Literal
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Next         : Utf16_String_Index
+        := Self.Scanner_State.YY_Base_Position + 1;
+      --  Skip literal open delimiter.
+      Code         : Code_Point;
+      Space_Before : Boolean := True;
+
+   begin
+      if not Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[[75] ExternalID, [83] PublicID]"
+               & " whitespace is required before pubid literal"));
+
+         return Error;
+      end if;
+
+      Self.Whitespace_Matched := False;
+      Enter_Start_Condition (Self, Tables.EXTERNAL_ID_SYS);
+
+      --  [XML 4.2.2] External Entities
+      --
+      --  "[Definition: In addition to a system identifier, an external
+      --  identifier may include a public identifier.] An XML processor
+      --  attempting to retrieve the entity's content may use any combination
+      --  of the public and system identifiers as well as additional
+      --  information outside the scope of this specification to try to
+      --  generate an alternative URI reference. If the processor is unable to
+      --  do so, it MUST use the URI reference specified in the system literal.
+      --  Before a match is attempted, all strings of white space in the public
+      --  identifier MUST be normalized to single space characters (#x20), and
+      --  leading and trailing white space MUST be removed."
+      --
+      --  Normalize public identifier.
+
+      Matreshka.Internals.Strings.Operations.Reset (Self.Character_Data);
+
+      while Next /= Self.Scanner_State.YY_Current_Position - 1 loop
+         --  Exclude literal close delimiter.
+
+         Unchecked_Next (Self.Scanner_State.Data.Value, Next, Code);
+
+         --  It can be reasonable to implement this step of normalization on
+         --  SIMD.
+
+         if Code = Character_Tabulation
+           or Code = Line_Feed
+           or Code = Carriage_Return
+         then
+            Code := Space;
+         end if;
+
+         if Code = Space then
+            if not Space_Before then
+               Matreshka.Internals.Strings.Operations.Unterminated_Append
+                (Self.Character_Data, Code);
+               Space_Before := True;
+            end if;
+
+         else
+            Matreshka.Internals.Strings.Operations.Unterminated_Append
+             (Self.Character_Data, Code);
+            Space_Before := False;
+         end if;
+      end loop;
+
+      if Space_Before and Self.Character_Data.Unused /= 0 then
+         --  Remove traling space.
+
+         Self.Character_Data.Length := Self.Character_Data.Length - 1;
+         Self.Character_Data.Unused := Self.Character_Data.Unused - 1;
+      end if;
+
+      Matreshka.Internals.Strings.Fill_Null_Terminator
+       (Self.Character_Data);
+      Matreshka.Internals.Strings.Reference (Self.Character_Data);
+      Set_String_Internal
+       (Item          => Self.YYLVal,
+        String        => Self.Character_Data,
+        Is_Whitespace => False,
+        Is_CData      => False);
+
+      return Token_Public_Literal;
+   end On_Public_Literal;
+
+   -----------------------
    -- On_System_Literal --
    -----------------------
 
