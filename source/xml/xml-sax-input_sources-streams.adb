@@ -416,6 +416,22 @@ package body XML.SAX.Input_Sources.Streams is
    -- Reset --
    -----------
 
+   not overriding procedure Reset (Self : in out Stream_Input_Source) is
+   begin
+      Self.First        := 0;
+      Self.Last         := -1;
+      Self.Accumulate   := True;
+      Self.Restart      := False;
+      Self.Decoder      := null;
+      Self.Stream       := null;
+      Self.Version_Mode := Matreshka.Internals.Text_Codecs.XML_1_0;
+      Free (Self.State);
+   end Reset;
+
+   -----------
+   -- Reset --
+   -----------
+
    overriding procedure Reset
     (Self     : in out Stream_Input_Source;
      Version  : League.Strings.Universal_String;

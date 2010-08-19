@@ -145,6 +145,11 @@ private
         := Matreshka.Internals.Text_Codecs.XML_1_0;
    end record;
 
+   not overriding procedure Reset (Self : in out Stream_Input_Source);
+   --  Resets internal state to initial. It can be used by derived types to
+   --  reset state to start to receive new stream using the same input
+   --  source object.
+
    overriding procedure Finalize (Self : in out Stream_Input_Source);
 
 end XML.SAX.Input_Sources.Streams;

@@ -78,6 +78,7 @@ package body XML.SAX.Input_Sources.Streams.Sockets is
     (Self   : in out Socket_Input_Source;
      Socket : GNAT.Sockets.Socket_Type) is
    begin
+      Stream_Input_Source (Self).Reset;
       Self.Socket := Socket;
    end Set_Socket;
 
