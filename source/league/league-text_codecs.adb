@@ -77,7 +77,7 @@ package body League.Text_Codecs is
       Result : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Self.Decoder.Decode (Data, State, Result);
+      State.Decode (Data, Result);
 
       if State.Is_Mailformed then
          Matreshka.Internals.Strings.Dereference (Result);

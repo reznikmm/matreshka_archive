@@ -94,7 +94,7 @@ begin
 
    while not Ada.Streams.Stream_IO.End_Of_File (File) loop
       Ada.Streams.Stream_IO.Read (File, Buffer, Last);
-      Codec.Decode_Append (Buffer (Buffer'First .. Last), State, Data);
+      State.Decode_Append (Buffer (Buffer'First .. Last), Data);
    end loop;
 
    Ada.Streams.Stream_IO.Close (File);

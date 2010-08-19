@@ -70,13 +70,12 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
    ------------
 
    overriding procedure Decode
-    (Self   : ISO88591_Decoder;
+    (Self   : in out ISO88591_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : out Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       String := Matreshka.Internals.Strings.Allocate (Data'Length);
-      Decode_Append (Self, Data, State, String);
+      Self.Decode_Append (Data, String);
 
       if String.Unused = 0 then
          Matreshka.Internals.Strings.Dereference (String);
@@ -89,9 +88,8 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
    -------------------
 
    overriding procedure Decode_Append
-    (Self   : ISO88591_Decoder;
+    (Self   : in out ISO88591_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
       pragma Unreferenced (Self);
@@ -100,7 +98,7 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
       for J in Data'Range loop
          Unterminated_Append
           (String,
-           State,
+           Self,
            Matreshka.Internals.Unicode.Code_Point (Data (J)));
       end loop;
 

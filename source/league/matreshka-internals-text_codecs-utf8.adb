@@ -129,13 +129,12 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
    ------------
 
    overriding procedure Decode
-    (Self   : UTF8_Decoder;
+    (Self   : in out UTF8_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : out Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       String := Matreshka.Internals.Strings.Allocate (Data'Length);
-      Decode_Append (Self, Data, State, String);
+      Self.Decode_Append (Data, String);
 
       if String.Unused = 0 then
          Matreshka.Internals.Strings.Dereference (String);
@@ -148,16 +147,12 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
    -------------------
 
    overriding procedure Decode_Append
-    (Self   : UTF8_Decoder;
+    (Self   : in out UTF8_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
-      UTF8_State : UTF8_Decoder_State renames UTF8_Decoder_State (State);
-
-      Current_State : UTF8_DFA_State := UTF8_State.State;
-      Current_Code  : Matreshka.Internals.Unicode.Code_Unit_32
-        := UTF8_State.Code;
+      Current_State : UTF8_DFA_State                           := Self.State;
+      Current_Code  : Matreshka.Internals.Unicode.Code_Unit_32 := Self.Code;
 
    begin
       for J in Data'Range loop
@@ -180,13 +175,13 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
               Transition (Current_State * 16 + UTF8_DFA_State (M));
 
             if Current_State = Accept_State then
-               Unterminated_Append (String, State, Current_Code);
+               Unterminated_Append (String, Self, Current_Code);
             end if;
          end;
       end loop;
 
-      UTF8_State.State := Current_State;
-      UTF8_State.Code  := Current_Code;
+      Self.State := Current_State;
+      Self.Code  := Current_Code;
       Matreshka.Internals.Strings.Fill_Null_Terminator (String);
    end Decode_Append;
 

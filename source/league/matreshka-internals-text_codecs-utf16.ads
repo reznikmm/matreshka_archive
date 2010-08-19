@@ -68,15 +68,13 @@ private package Matreshka.Internals.Text_Codecs.UTF16 is
      Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
 
    overriding procedure Decode
-    (Self   : UTF16BE_Decoder;
+    (Self   : in out UTF16BE_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : out Matreshka.Internals.Strings.Shared_String_Access);
 
    overriding procedure Decode_Append
-    (Self   : UTF16BE_Decoder;
+    (Self   : in out UTF16BE_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : in out Matreshka.Internals.Strings.Shared_String_Access);
 
    --------------
@@ -97,15 +95,13 @@ private package Matreshka.Internals.Text_Codecs.UTF16 is
      Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
 
    overriding procedure Decode
-    (Self   : UTF16LE_Decoder;
+    (Self   : in out UTF16LE_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : out Matreshka.Internals.Strings.Shared_String_Access);
 
    overriding procedure Decode_Append
-    (Self   : UTF16LE_Decoder;
+    (Self   : in out UTF16LE_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : in out Matreshka.Internals.Strings.Shared_String_Access);
 
    BE_Decoder : aliased UTF16BE_Decoder;

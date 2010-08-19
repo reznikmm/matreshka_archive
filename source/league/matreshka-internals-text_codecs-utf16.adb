@@ -150,13 +150,12 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    ------------
 
    overriding procedure Decode
-    (Self   : UTF16BE_Decoder;
+    (Self   : in out UTF16BE_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : out Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       String := Matreshka.Internals.Strings.Allocate (Data'Length);
-      Decode_Append (Self, Data, State, String);
+      Self.Decode_Append (Data, String);
 
       if String.Unused = 0 then
          Matreshka.Internals.Strings.Dereference (String);
@@ -169,13 +168,12 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    ------------
 
    overriding procedure Decode
-    (Self   : UTF16LE_Decoder;
+    (Self   : in out UTF16LE_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : out Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       String := Matreshka.Internals.Strings.Allocate (Data'Length);
-      Decode_Append (Self, Data, State, String);
+      Self.Decode_Append (Data, String);
 
       if String.Unused = 0 then
          Matreshka.Internals.Strings.Dereference (String);
@@ -188,19 +186,13 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    -------------------
 
    overriding procedure Decode_Append
-    (Self   : UTF16BE_Decoder;
+    (Self   : in out UTF16BE_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
-      UTF16_State   : UTF16BE_Decoder_State
-        renames UTF16BE_Decoder_State (State);
-
-      Current_State : UTF16_DFA_State := UTF16_State.State;
-      Current_Code  : Matreshka.Internals.Unicode.Code_Unit_32
-        := UTF16_State.Code;
-      Current_Low   : Matreshka.Internals.Unicode.Code_Unit_16
-        := UTF16_State.Low;
+      Current_State : UTF16_DFA_State                          := Self.State;
+      Current_Code  : Matreshka.Internals.Unicode.Code_Unit_32 := Self.Code;
+      Current_Low   : Matreshka.Internals.Unicode.Code_Unit_16 := Self.Low;
 
    begin
       for J in Data'Range loop
@@ -235,14 +227,14 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
               BE_Transition (Current_State * 4 + UTF16_DFA_State (M));
 
             if Current_State = Accept_State then
-               Unterminated_Append (String, State, Current_Code);
+               Unterminated_Append (String, Self, Current_Code);
             end if;
          end;
       end loop;
 
-      UTF16_State.State := Current_State;
-      UTF16_State.Code  := Current_Code;
-      UTF16_State.Low   := Current_Low;
+      Self.State := Current_State;
+      Self.Code  := Current_Code;
+      Self.Low   := Current_Low;
       Matreshka.Internals.Strings.Fill_Null_Terminator (String);
    end Decode_Append;
 
@@ -251,19 +243,13 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    -------------------
 
    overriding procedure Decode_Append
-    (Self   : UTF16LE_Decoder;
+    (Self   : in out UTF16LE_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
-      UTF16_State   : UTF16LE_Decoder_State
-        renames UTF16LE_Decoder_State (State);
-
-      Current_State : UTF16_DFA_State := UTF16_State.State;
-      Current_Code  : Matreshka.Internals.Unicode.Code_Unit_32
-        := UTF16_State.Code;
-      Current_Low   : Matreshka.Internals.Unicode.Code_Unit_16
-        := UTF16_State.Low;
+      Current_State : UTF16_DFA_State                          := Self.State;
+      Current_Code  : Matreshka.Internals.Unicode.Code_Unit_32 := Self.Code;
+      Current_Low   : Matreshka.Internals.Unicode.Code_Unit_16 := Self.Low;
 
    begin
       for J in Data'Range loop
@@ -296,14 +282,14 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
               LE_Transition (Current_State * 4 + UTF16_DFA_State (M));
 
             if Current_State = Accept_State then
-               Unterminated_Append (String, State, Current_Code);
+               Unterminated_Append (String, Self, Current_Code);
             end if;
          end;
       end loop;
 
-      UTF16_State.State := Current_State;
-      UTF16_State.Code  := Current_Code;
-      UTF16_State.Low   := Current_Low;
+      Self.State := Current_State;
+      Self.Code  := Current_Code;
+      Self.Low   := Current_Low;
       Matreshka.Internals.Strings.Fill_Null_Terminator (String);
    end Decode_Append;
 

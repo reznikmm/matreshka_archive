@@ -106,17 +106,15 @@ package Matreshka.Internals.Text_Codecs is
    --  Creates new decoder's state.
 
    not overriding procedure Decode
-    (Self   : Abstract_Decoder;
+    (Self   : in out Abstract_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : out Matreshka.Internals.Strings.Shared_String_Access)
        is abstract;
    --  Decodes data and save results in new allocated string.
 
    not overriding procedure Decode_Append
-    (Self   : Abstract_Decoder;
+    (Self   : in out Abstract_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     State  : in out Abstract_Decoder_State'Class;
      String : in out Matreshka.Internals.Strings.Shared_String_Access)
        is abstract;
    --  Decodes data and appends them to specified string. String can be

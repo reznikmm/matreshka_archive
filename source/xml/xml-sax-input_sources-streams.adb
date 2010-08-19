@@ -64,7 +64,7 @@ package body XML.SAX.Input_Sources.Streams is
    overriding procedure Finalize (Self : in out Stream_Input_Source) is
    begin
       Free (Self.Buffer);
-      Free (Self.State);
+      Free (Self.Decoder);
    end Finalize;
 
    ----------
@@ -78,7 +78,7 @@ package body XML.SAX.Input_Sources.Streams is
      End_Of_Data : out Boolean)
    is
       use type Ada.Streams.Stream_Element;
-      use type Matreshka.Internals.Text_Codecs.Decoder_Access;
+      use type Matreshka.Internals.Text_Codecs.Decoder_State_Access;
 
       type Encodings is
        (Unknown,
@@ -93,6 +93,7 @@ package body XML.SAX.Input_Sources.Streams is
 
       First    : Ada.Streams.Stream_Element_Offset := Self.Last + 1;
       Encoding : Encodings := Unknown;
+      Factory  : Matreshka.Internals.Text_Codecs.Decoder_Access;
 
    begin
       --  Restart decoding when requested.
@@ -100,7 +101,7 @@ package body XML.SAX.Input_Sources.Streams is
       if Self.Restart then
          Self.Restart := False;
          Self.Decoder.Decode_Append
-          (Self.Buffer (Self.First .. Self.Last), Self.State.all, Buffer);
+          (Self.Buffer (Self.First .. Self.Last), Buffer);
       end if;
 
       --  Reallocate buffer when necessary.
@@ -327,14 +328,14 @@ package body XML.SAX.Input_Sources.Streams is
                when UTF16LE =>
                   Self.Encoding :=
                     League.Strings.To_Universal_String ("UTF-16");
-                  Self.Decoder :=
+                  Factory :=
                     Matreshka.Internals.Text_Codecs.Decoder
                      (Matreshka.Internals.Text_Codecs.MIB_UTF16LE);
 
                when UTF16BE =>
                   Self.Encoding :=
                     League.Strings.To_Universal_String ("UTF-16");
-                  Self.Decoder :=
+                  Factory :=
                     Matreshka.Internals.Text_Codecs.Decoder
                      (Matreshka.Internals.Text_Codecs.MIB_UTF16BE);
 
@@ -344,21 +345,21 @@ package body XML.SAX.Input_Sources.Streams is
                when UTF8 =>
                   Self.Encoding :=
                     League.Strings.To_Universal_String ("UTF-8");
-                  Self.Decoder :=
+                  Factory :=
                     Matreshka.Internals.Text_Codecs.Decoder
                      (Matreshka.Internals.Text_Codecs.MIB_UTF8);
             end case;
 
             --  Create decoder's state object.
 
-            Self.State :=
+            Self.Decoder :=
               new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
-                   (Self.Decoder.Create_State (Self.Version_Mode));
+                   (Factory.Create_State (Self.Version_Mode));
 
             --  Decode all readed data (not last chunk only).
 
             Self.Decoder.Decode_Append
-             (Self.Buffer (First .. Self.Last), Self.State.all, Buffer);
+             (Self.Buffer (First .. Self.Last), Buffer);
             Self.First := First;
          end if;
 
@@ -366,7 +367,7 @@ package body XML.SAX.Input_Sources.Streams is
 
       elsif Self.Last >= First then
          Self.Decoder.Decode_Append
-          (Self.Buffer (First .. Self.Last), Self.State.all, Buffer);
+          (Self.Buffer (First .. Self.Last), Buffer);
 
          if not Self.Accumulate then
             Self.Last := -1;
@@ -447,6 +448,7 @@ package body XML.SAX.Input_Sources.Streams is
         := Self.Version_Mode;
       Old_Encoding     : constant League.Strings.Universal_String
         := Self.Encoding;
+      Factory          : Matreshka.Internals.Text_Codecs.Decoder_Access;
 
    begin
       Self.Accumulate := False;
@@ -465,23 +467,23 @@ package body XML.SAX.Input_Sources.Streams is
       Success := True;
 
       if Rescan then
-         --  Release decoder state object.
+         --  Release decoder object.
 
-         Free (Self.State);
+         Free (Self.Decoder);
 
          --  Resolve new decoder and create its state.
 
-         Self.Decoder :=
+         Factory :=
            Matreshka.Internals.Text_Codecs.Decoder
             (Matreshka.Internals.Text_Codecs.To_Character_Set (Self.Encoding));
 
-         if Self.Decoder = null then
+         if Factory = null then
             Success := False;
 
          else
-            Self.State :=
+            Self.Decoder :=
               new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
-                   (Self.Decoder.Create_State (Self.Version_Mode));
+                   (Factory.Create_State (Self.Version_Mode));
          end if;
 
          Self.Restart := True;
