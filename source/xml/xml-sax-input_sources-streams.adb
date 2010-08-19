@@ -426,7 +426,7 @@ package body XML.SAX.Input_Sources.Streams is
       Self.Decoder      := null;
       Self.Stream       := null;
       Self.Version_Mode := Matreshka.Internals.Text_Codecs.XML_1_0;
-      Free (Self.State);
+      Free (Self.Decoder);
    end Reset;
 
    -----------
