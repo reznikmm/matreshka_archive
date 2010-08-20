@@ -124,15 +124,9 @@ CHAR11_NO_QUESTION					[^\u003F\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^>?]
 CHAR10_NO_GREATER_QUESTION				[^\u003E\u003F\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
 CHAR11_NO_GREATER_QUESTION				[^\u003E\u003F\uD800-\uDFFF\uFFFE\uFFFF]
---  [^<]
-CHAR10_NO_LESS						[^\u0001-\u0008\u000B\u000C\u000E-\u001F\u003C\uD800-\uDFFF\uFFFE\uFFFF]
-CHAR11_NO_LESS						[^\u003C\uD800-\uDFFF\uFFFE\uFFFF]
---  [^!]
-CHAR10_NO_EXCLAMATION					[^\u0001-\u0008\u000B\u000C\u000E-\u001F\u0021\uD800-\uDFFF\uFFFE\uFFFF]
-CHAR11_NO_EXCLAMATION					[^\u0021\uD800-\uDFFF\uFFFE\uFFFF]
---  [^[]
-CHAR10_NO_LEFT_SQUARE					[^\u0001-\u0008\u000B\u000C\u000E-\u001F\u005B\uD800-\uDFFF\uFFFE\uFFFF]
-CHAR11_NO_LEFT_SQUARE					[^\u005B\uD800-\uDFFF\uFFFE\uFFFF]
+--  [^<]]
+CHAR10_NO_LESS_RIGHT_SQUARE				[^\u0001-\u0008\u000B\u000C\u000E-\u001F\u003C\u005D\uD800-\uDFFF\uFFFE\uFFFF]
+CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\uD800-\uDFFF\uFFFE\uFFFF]
 
 %x XML_DECL
 %x DOCUMENT_10
@@ -896,20 +890,16 @@ CHAR11_NO_LEFT_SQUARE					[^\u005B\uD800-\uDFFF\uFFFE\uFFFF]
    Actions.On_Open_Of_Conditional_Section_Content (Self);
 }
 
-<CONDITIONAL_IGNORE_10>({CHAR10_NO_LESS}*("<"{CHAR10_NO_EXCLAMATION}|"<!"{CHAR10_NO_LEFT_SQUARE})*"<![")|({CHAR10_NO_RIGHT_SQUARE}*"]"({CHAR10_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR10_NO_GREATER_RIGHT_SQUARE}{CHAR10_NO_RIGHT_SQUARE}*"]"({CHAR10_NO_RIGHT_SQUARE}+"]")*"]"+)*">") {
-   --  Content of ignore conditional section. It ends with "]]>" or "<!["
-   --  which must be moved back to the buffer to be recognized at the next
-   --  cycle.
+<CONDITIONAL_IGNORE_10>{CHAR10_NO_LESS_RIGHT_SQUARE}+|"<"|"<!"|"]" {
+   --  Content of ignore conditional section. It ends with "]]>" or "<![".
 
-   Actions.On_Content_Of_Ignore_Conditional_Section (Self);
+   null;
 }
 
-<CONDITIONAL_IGNORE_11>({CHAR11_NO_LESS}*("<"{CHAR11_NO_EXCLAMATION}|"<!"{CHAR11_NO_LEFT_SQUARE})*"<![")|({CHAR11_NO_RIGHT_SQUARE}*"]"({CHAR11_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR11_NO_GREATER_RIGHT_SQUARE}{CHAR11_NO_RIGHT_SQUARE}*"]"({CHAR11_NO_RIGHT_SQUARE}+"]")*"]"+)*">") {
-   --  Content of ignore conditional section. It ends with "]]>" or "<!["
-   --  which must be moved back to the buffer to be recognized at the next
-   --  cycle.
+<CONDITIONAL_IGNORE_11>{CHAR10_NO_LESS_RIGHT_SQUARE}+|"<"|"<!"|"]" {
+   --  Content of ignore conditional section. It ends with "]]>" or "<![".
 
-   Actions.On_Content_Of_Ignore_Conditional_Section (Self);
+   null;
 }
 
 <XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,NOTATION_DECL,ELEMENT_START,ATTLIST_NAME,ELEMENT_NAME>{WHITE_SPACE} {

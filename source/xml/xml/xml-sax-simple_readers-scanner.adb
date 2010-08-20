@@ -1339,18 +1339,14 @@ package body XML.SAX.Simple_Readers.Scanner is
                Actions.On_Open_Of_Conditional_Section_Content (Self);
 
             when 93 =>
-               --  Content of ignore conditional section. It ends with "]]>" or "<!["
-               --  which must be moved back to the buffer to be recognized at the next
-               --  cycle.
+               --  Content of ignore conditional section. It ends with "]]>" or "<![".
 
-               Actions.On_Content_Of_Ignore_Conditional_Section (Self);
+               null;
 
             when 94 =>
-               --  Content of ignore conditional section. It ends with "]]>" or "<!["
-               --  which must be moved back to the buffer to be recognized at the next
-               --  cycle.
+               --  Content of ignore conditional section. It ends with "]]>" or "<![".
 
-               Actions.On_Content_Of_Ignore_Conditional_Section (Self);
+               null;
 
             when 95 =>
                --  White spaces in entity declaration are not optional, rules [71], [72],
