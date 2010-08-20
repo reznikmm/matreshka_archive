@@ -780,7 +780,7 @@ AttDef :
        (Self   => Self,
         Symbol => $1.Symbol);
    }
-  Token_Open_Parenthesis Token_Name Name_any Token_Close_Parenthesis DefaultDecl
+  Token_Open_Parenthesis Name_many Token_Close_Parenthesis DefaultDecl
    {
       null;
    }
@@ -790,22 +790,90 @@ AttDef :
        (Self   => Self,
         Symbol => $1.Symbol);
    }
-  Token_Open_Parenthesis Token_Name Name_any Token_Close_Parenthesis DefaultDecl
+  Token_Open_Parenthesis Name_many Token_Close_Parenthesis DefaultDecl
    {
       null;
    }
 ;
 
-Name_any:
-  Name_any Token_Vertical_Bar Token_Name
+Name_many:
+  Name_many Token_Vertical_Bar Token_Name
    {
       null;
    }
-| Token_Vertical_Bar Token_Name
+| Name_many Token_Vertical_Bar Token_CData
    {
       null;
    }
-|
+| Name_many Token_Vertical_Bar Token_Id
+   {
+      null;
+   }
+| Name_many Token_Vertical_Bar Token_IdRef
+   {
+      null;
+   }
+| Name_many Token_Vertical_Bar Token_IdRefs
+   {
+      null;
+   }
+| Name_many Token_Vertical_Bar Token_Entity
+   {
+      null;
+   }
+| Name_many Token_Vertical_Bar Token_Entities
+   {
+      null;
+   }
+| Name_many Token_Vertical_Bar Token_NmToken
+   {
+      null;
+   }
+| Name_many Token_Vertical_Bar Token_NmTokens
+   {
+      null;
+   }
+| Name_many Token_Vertical_Bar Token_Notation
+   {
+      null;
+   }
+| Token_Name
+   {
+      null;
+   }
+| Token_CData
+   {
+      null;
+   }
+| Token_Id
+   {
+      null;
+   }
+| Token_IdRef
+   {
+      null;
+   }
+| Token_IdRefs
+   {
+      null;
+   }
+| Token_Entity
+   {
+      null;
+   }
+| Token_Entities
+   {
+      null;
+   }
+| Token_NmToken
+   {
+      null;
+   }
+| Token_NmTokens
+   {
+      null;
+   }
+| Token_Notation
    {
       null;
    }

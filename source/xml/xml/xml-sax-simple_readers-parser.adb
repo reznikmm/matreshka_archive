@@ -845,39 +845,31 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 122 =>
-               Actions.On_Required_Attribute_Default_Declaration (Self);
+               null;
 
             when 123 =>
-               Actions.On_Implied_Attribute_Default_Declaration (Self);
+               null;
 
             when 124 =>
-               Actions.On_Fixed_Attribute_Default_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS).String);
+               null;
 
             when 125 =>
-               Actions.On_Attribute_Default_Declaration
-                (Self,
-                 YY.Value_Stack (YY.TOS).String);
+               null;
 
             when 126 =>
-               Actions.On_Open_Of_Tag
-                (Self,
-                 YY.Value_Stack (YY.TOS).Symbol);
+               null;
 
             when 127 =>
                null;
 
             when 128 =>
-               Actions.On_Start_Tag (Self);
+               null;
 
             when 129 =>
-               Actions.On_End_Tag
-                (Self,
-                 YY.Value_Stack (YY.TOS -  1).Symbol);
+               null;
 
             when 130 =>
-               Actions.On_Empty_Element_Tag (Self);
+               null;
 
             when 131 =>
                null;
@@ -892,46 +884,105 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 135 =>
-               Actions.On_Character_Data
-                (Self,
-                 YY.Value_Stack (YY.TOS).String,
-                 YY.Value_Stack (YY.TOS).Is_Whitespace);
+               null;
 
             when 136 =>
-               Process_Comment
-                (Self,
-                 League.Strings.Internals.Create
-                  (YY.Value_Stack (YY.TOS).String));
+               null;
 
             when 137 =>
                null;
 
             when 138 =>
+               null;
+
+            when 139 =>
+               Actions.On_Required_Attribute_Default_Declaration (Self);
+
+            when 140 =>
+               Actions.On_Implied_Attribute_Default_Declaration (Self);
+
+            when 141 =>
+               Actions.On_Fixed_Attribute_Default_Declaration
+                (Self,
+                 YY.Value_Stack (YY.TOS).String);
+
+            when 142 =>
+               Actions.On_Attribute_Default_Declaration
+                (Self,
+                 YY.Value_Stack (YY.TOS).String);
+
+            when 143 =>
+               Actions.On_Open_Of_Tag
+                (Self,
+                 YY.Value_Stack (YY.TOS).Symbol);
+
+            when 144 =>
+               null;
+
+            when 145 =>
+               Actions.On_Start_Tag (Self);
+
+            when 146 =>
+               Actions.On_End_Tag
+                (Self,
+                 YY.Value_Stack (YY.TOS -  1).Symbol);
+
+            when 147 =>
+               Actions.On_Empty_Element_Tag (Self);
+
+            when 148 =>
+               null;
+
+            when 149 =>
+               null;
+
+            when 150 =>
+               null;
+
+            when 151 =>
+               null;
+
+            when 152 =>
+               Actions.On_Character_Data
+                (Self,
+                 YY.Value_Stack (YY.TOS).String,
+                 YY.Value_Stack (YY.TOS).Is_Whitespace);
+
+            when 153 =>
+               Process_Comment
+                (Self,
+                 League.Strings.Internals.Create
+                  (YY.Value_Stack (YY.TOS).String));
+
+            when 154 =>
+               null;
+
+            when 155 =>
                --  TextDecl come from substitution of external parsed entities.
 
                null;
 
-            when 139 =>
+            when 156 =>
                Actions.On_Element_Attribute_Name (Self, YY.Value_Stack (YY.TOS).Symbol);
 
-            when 140 =>
+            when 157 =>
                Actions.On_Element_Attribute
                 (Self,
                  YY.Value_Stack (YY.TOS -  3).Symbol,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 141 =>
+            when 158 =>
                Actions.On_Element_Attribute_Name
                 (Self,
                  YY.Value_Stack (YY.TOS).Symbol);
 
-            when 142 =>
+            when 159 =>
                Actions.On_Element_Attribute
                 (Self,
                  YY.Value_Stack (YY.TOS -  3).Symbol,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 143 =>
+            when 160 =>
                null;
                when others =>
                   raise Program_Error
