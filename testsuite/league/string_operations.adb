@@ -117,4 +117,39 @@ begin
       end if;
    end;
 
+   --  Initial implementation of replace operation computed indices incorrectly
+   --  when string has mixed one/two code unit character.
+
+   declare
+      S : Universal_String :=
+        To_Universal_String
+         ("_20- _D7FF-퟿_6c0f-氏_E000-"
+            & Wide_Wide_Character'Val (16#E000#)
+            & "_FFFD-�_effe-"
+            & Wide_Wide_Character'Val (16#EFFE#)
+            & "_010000-𐀀_10FFFF-"
+            & Wide_Wide_Character'Val (16#10FFFD#)
+            & "_08ffff-"
+            & Wide_Wide_Character'Val (16#8FFFD#)
+            & " This is a PI target ");
+      R : Universal_String := To_Universal_String ("&#x20;");
+      E : Universal_String
+        := To_Universal_String
+         ("_20- _D7FF-퟿_6c0f-氏_E000-"
+            & Wide_Wide_Character'Val (16#E000#)
+            & "_FFFD-�_effe-"
+            & Wide_Wide_Character'Val (16#EFFE#)
+            & "_010000-𐀀_10FFFF-"
+            & Wide_Wide_Character'Val (16#10FFFD#)
+            & "_08ffff-"
+            & Wide_Wide_Character'Val (16#8FFFD#)
+            & " This is a PI target&#x20;");
+
+   begin
+      S.Replace (S.Length, S.Length, R);
+
+      if S /= E then
+         raise Program_Error;
+      end if;
+   end;
 end String_Operations;
