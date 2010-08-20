@@ -1049,8 +1049,7 @@ with Matreshka.Internals.XML.Symbol_Tables;
       Is_Whitespace : Boolean;
       Is_CData      : Boolean) is separate;
 
-   Self     : access Integer;
-   Put_Line : access procedure (Item : League.Strings.Universal_String);
+   Self : access Integer;
 
    package Actions is
 

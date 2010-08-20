@@ -589,7 +589,7 @@ CHAR11_NO_LEFT_SQUARE					[^\u005B\uD800-\uDFFF\uFFFE\uFFFF]
 <ENTITY_VALUE_10,ENTITY_VALUE_11>["'] {
    --  Close of entity value, rule [9].
 
-   return Process_Entity_Value_Close_Delimiter (Self, YY_Text);
+   return Actions.On_Entity_Value_Close_Delimiter (Self);
 }
 
 <DOCUMENT_10,DOCUMENT_11,ENTITY_VALUE_10,ENTITY_VALUE_11>"&#"[0-9]+";" {
@@ -1097,10 +1097,6 @@ with Matreshka.Internals.Strings;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier)
        is separate;
 
-   function Process_Entity_Value_Close_Delimiter
-    (Self  : access Integer;
-     Image : League.Strings.Universal_String) return Token is separate;
-
    procedure Set_String_Internal
     (Item          : in out YYSType;
      String        : Matreshka.Internals.Strings.Shared_String_Access;
@@ -1205,6 +1201,9 @@ with Matreshka.Internals.Strings;
       function On_Public_Literal (Self : access Integer) return Token;
 
       function On_System_Literal (Self : access Integer) return Token;
+
+      function On_Entity_Value_Close_Delimiter
+       (Self : access Integer) return Token;
 
       function On_Entity_Value_Open_Delimiter
        (Self : access Integer) return Token;

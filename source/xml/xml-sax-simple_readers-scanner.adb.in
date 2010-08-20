@@ -69,13 +69,6 @@ package body XML.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Returns value of "whitespace matched" flag.
 
-   function Process_Entity_Value_Close_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Image : League.Strings.Universal_String) return Token;
-   --  Process entity value close delimiter, rule [9]. It is also handle
-   --  "Include In Literal" (4.4.5) mode for parameter entities, when quotation
-   --  and apostrophe characters are not recognized as delimiters.
-
    ----------------
    -- Initialize --
    ----------------
@@ -132,36 +125,6 @@ package body XML.SAX.Simple_Readers.Scanner is
        (Self, Self.Scanner_State.Start_Condition_Stack.Last_Element);
       Self.Scanner_State.Start_Condition_Stack.Delete_Last;
    end Pop_Start_Condition;
-
-   ------------------------------------------
-   -- Process_Entity_Value_Close_Delimiter --
-   ------------------------------------------
-
-   function Process_Entity_Value_Close_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Image : League.Strings.Universal_String) return Token
-   is
-      Delimiter : constant Matreshka.Internals.Unicode.Code_Point
-        := Wide_Wide_Character'Pos (Image.Element (1));
-
-   begin
-      if Self.Scanner_State.In_Literal
-        or else Self.Scanner_State.Delimiter /= Delimiter
-      then
-         Set_String
-          (Item          => Self.YYLVal,
-           String        => Image,
-           Is_Whitespace => False,
-           Is_CData      => False);
-
-         return Token_String_Segment;
-
-      else
-         Enter_Start_Condition (Self, ENTITY_DEF);
-
-         return Token_Value_Close;
-      end if;
-   end Process_Entity_Value_Close_Delimiter;
 
    -----------------
    -- Push_Entity --

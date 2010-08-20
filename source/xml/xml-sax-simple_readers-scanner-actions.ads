@@ -127,6 +127,12 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles element's name in attribute list declaration.
 
+   function On_Entity_Value_Close_Delimiter
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Process entity value close delimiter, rule [9]. It is also handle
+   --  "Include In Literal" (4.4.5) mode for parameter entities, when quotation
+   --  and apostrophe characters are not recognized as delimiters.
+
    function On_Entity_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles open delimiter of entity value.

@@ -736,20 +736,55 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
    end On_Element_Name_In_Attribute_List_Declaration;
 
+   -------------------------------------
+   -- On_Entity_Value_Close_Delimiter --
+   -------------------------------------
+
+   function On_Entity_Value_Close_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class) return Token
+   is
+      --  NOTE: Entity value delimiter can be ' or " and both are
+      --  represented as single UTF-16 code unit, thus expensive UTF-16
+      --  decoding can be avoided.
+
+      Delimiter : constant Matreshka.Internals.Unicode.Code_Point
+        := Code_Point
+            (Self.Scanner_State.Data.Value
+              (Self.Scanner_State.YY_Base_Position));
+
+   begin
+      if Self.Scanner_State.In_Literal
+        or else Self.Scanner_State.Delimiter /= Delimiter
+      then
+         Set_String_Internal
+          (Item          => Self.YYLVal,
+           String        => YY_Text (Self),
+           Is_Whitespace => False,
+           Is_CData      => False);
+
+         return Token_String_Segment;
+
+      else
+         Enter_Start_Condition (Self, Tables.ENTITY_DEF);
+
+         return Token_Value_Close;
+      end if;
+   end On_Entity_Value_Close_Delimiter;
+
    ------------------------------------
    -- On_Entity_Value_Open_Delimiter --
    ------------------------------------
 
    function On_Entity_Value_Open_Delimiter
-    (Self  : not null access SAX_Simple_Reader'Class) return Token
-   is
-      Position : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
-
+    (Self  : not null access SAX_Simple_Reader'Class) return Token is
    begin
-      Unchecked_Next
-       (Self.Scanner_State.Data.Value,
-        Position,
-        Self.Scanner_State.Delimiter);
+      --  NOTE: Entity value delimiter can be ' or " and both are
+      --  represented as single UTF-16 code unit, thus expensive UTF-16
+      --  decoding can be avoided.
+
+      Self.Scanner_State.Delimiter :=
+        Code_Point
+         (Self.Scanner_State.Data.Value (Self.Scanner_State.YY_Base_Position));
 
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
@@ -1548,7 +1583,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             (Self             => Self,
              Entity           => Entity,
              In_Document_Type => False,
-             In_Literal       => True);
+             In_Literal       => False);
       end if;
    end On_Parameter_Entity_Reference_In_Document_Declaration;
 
