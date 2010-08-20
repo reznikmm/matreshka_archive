@@ -1121,6 +1121,29 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
    end On_Name_In_Attribute_List_Declaration_Notation;
 
+   ------------------------------------
+   -- On_Name_In_Element_Declaration --
+   ------------------------------------
+
+   function On_Name_In_Element_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      Qname_Error : Boolean;
+
+   begin
+      Resolve_Symbol
+       (Self, 0, 0, False, True, False, Qname_Error, Self.YYLVal.Symbol);
+
+      if Qname_Error then
+         return Error;
+
+      else
+         Enter_Start_Condition (Self, Tables.ELEMENT_DECL);
+
+         return Token_Name;
+      end if;
+   end On_Name_In_Element_Declaration;
+
    ---------------------------------------------
    -- On_Name_In_Element_Declaration_Children --
    ---------------------------------------------
@@ -1356,22 +1379,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------
 
    function On_Open_Of_Element_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Token
-   is
-      Qname_Error : Boolean;
-
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
    begin
-      Resolve_Symbol
-       (Self, 10, 0, True, True, False, Qname_Error, Self.YYLVal.Symbol);
+      Enter_Start_Condition (Self, Tables.ELEMENT_NAME);
 
-      if Qname_Error then
-         return Error;
-
-      else
-         Enter_Start_Condition (Self, Tables.ELEMENT_DECL);
-
-         return Token_Element_Decl_Open;
-      end if;
+      return Token_Element_Decl_Open;
    end On_Open_Of_Element_Declaration;
 
    ------------------------

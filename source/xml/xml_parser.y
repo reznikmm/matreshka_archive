@@ -482,11 +482,11 @@ AttributeEntityValue_Content:
 ;
 
 elementdecl:
-  Token_Element_Decl_Open
+  Token_Element_Decl_Open Token_Name
    {
       Actions.On_Start_Of_Element_Declaration
        (Self,
-        $1.Symbol);
+        $2.Symbol);
    }
   contentspec Token_Close
    {

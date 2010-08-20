@@ -144,6 +144,7 @@ CHAR11_NO_LEFT_SQUARE					[^\u005B\uD800-\uDFFF\uFFFE\uFFFF]
 %x DOCTYPE_INT
 %x DOCTYPE_INTSUBSET_10
 %x DOCTYPE_INTSUBSET_11
+%x ELEMENT_NAME
 %x ELEMENT_DECL
 %x ELEMENT_CHILDREN
 %x ATTLIST_DECL
@@ -462,7 +463,7 @@ CHAR11_NO_LEFT_SQUARE					[^\u005B\uD800-\uDFFF\uFFFE\uFFFF]
    return Token_Entity_Decl_Open;
 }
 
-<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!ELEMENT"{WHITE_SPACE}{NAME} {
+<DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!ELEMENT" {
    --  Open of element declaration and name of the element, rule [45].
 
    return Actions.On_Open_Of_Element_Declaration (Self);
@@ -646,6 +647,12 @@ CHAR11_NO_LEFT_SQUARE					[^\u005B\uD800-\uDFFF\uFFFE\uFFFF]
    if not Actions.On_Parameter_Entity_Reference_In_Entity_Value (Self) then
       return Error;
    end if;
+}
+
+<ELEMENT_NAME>{NAME} {
+   --  Name of the element in element declaration.
+
+   return Actions.On_Name_In_Element_Declaration (Self);
 }
 
 <ELEMENT_DECL>EMPTY {
@@ -855,7 +862,7 @@ CHAR11_NO_LEFT_SQUARE					[^\u005B\uD800-\uDFFF\uFFFE\uFFFF]
    Actions.On_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
 }
 
-<ATTLIST_DECL,ATTLIST_NAME,ATTLIST_TYPE,ELEMENT_DECL,ELEMENT_CHILDREN,CONDITIONAL_DIRECTIVE>"%"{NAME}";" {
+<ATTLIST_DECL,ATTLIST_NAME,ATTLIST_TYPE,ELEMENT_NAME,ELEMENT_DECL,ELEMENT_CHILDREN,CONDITIONAL_DIRECTIVE>"%"{NAME}";" {
    --  Parameter entity reference rule [69] in attribute declaration.
    --  Parameter entity reference in element's children declaration, [51].
 
@@ -905,7 +912,7 @@ CHAR11_NO_LEFT_SQUARE					[^\u005B\uD800-\uDFFF\uFFFE\uFFFF]
    Actions.On_Content_Of_Ignore_Conditional_Section (Self);
 }
 
-<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,NOTATION_DECL,ELEMENT_START,ATTLIST_NAME>{WHITE_SPACE} {
+<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,NOTATION_DECL,ELEMENT_START,ATTLIST_NAME,ELEMENT_NAME>{WHITE_SPACE} {
    --  White spaces in entity declaration are not optional, rules [71], [72],
    --  [75], [76].
    --
@@ -1175,6 +1182,9 @@ with Matreshka.Internals.Strings;
        (Self : access Integer) return Token;
 
       function On_Attribute_Name_In_Attribute_List_Declaration
+       (Self : access Integer) return Token;
+
+      function On_Name_In_Element_Declaration
        (Self : access Integer) return Token;
 
       function On_Name_In_Element_Declaration_Children

@@ -165,6 +165,10 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles name of the notation in the attribute list declaration.
 
+   function On_Name_In_Element_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles name of the element declaration.
+
    function On_Name_In_Element_Declaration_Children
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles name of the children element in element declaration.
