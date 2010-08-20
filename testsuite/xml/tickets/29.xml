@@ -1,0 +1,16 @@
+<!DOCTYPE test [
+  <!ELEMENT subtest EMPTY>
+  <!ATTLIST subtest token (CDATA | ID | IDREF | IDREFS | ENTITY | ENTITIES | NMTOKEN | NMTOKENS | NOTATION) #IMPLIED>
+  <!ELEMENT test (subtest)*>
+]>
+<test>
+  <subtest token="CDATA"/>
+  <subtest token="ID"/>
+  <subtest token="IDREF"/>
+  <subtest token="IDREFS"/>
+  <subtest token="ENTITY"/>
+  <subtest token="ENTITIES"/>
+  <subtest token="NMTOKEN"/>
+  <subtest token="NMTOKENS"/>
+  <subtest token="NOTATION"/>
+</test>
