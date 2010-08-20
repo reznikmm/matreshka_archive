@@ -124,8 +124,18 @@ package Matreshka.Internals.Text_Codecs is
    -- Abstract_Encoder --
    ----------------------
 
+   type Stream_Element_Array_Access is
+     access all Ada.Streams.Stream_Element_Array;
+
    type Abstract_Encoder is abstract tagged limited null record;
    --  Abstract root tagged type for encoders.
+
+   type Abstract_Encoder_State is abstract tagged limited null record;
+
+   not overriding procedure Encode
+    (Self   : in out Abstract_Encoder_State;
+     String : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Buffer : out Stream_Element_Array_Access) is abstract;
 
    function Decoder (Set : Character_Set) return Decoder_Access;
    --  Returns decoder for the specified character set. Decoder is global

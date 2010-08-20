@@ -884,10 +884,10 @@ package body League.Strings is
             First := M.Map (Utf16_String_Index (Low - 1));
 
             if High = D.Length then
-               Size := First - D.Unused;
+               Size := D.Unused - First;
 
             else
-               Size := First - M.Map (Utf16_String_Index (High));
+               Size := M.Map (Utf16_String_Index (High - 1)) - First + 1;
             end if;
          end;
       end if;
@@ -950,10 +950,10 @@ package body League.Strings is
             First := M.Map (Utf16_String_Index (Low - 1));
 
             if High = D.Length then
-               Size := First - D.Unused;
+               Size := D.Unused - First;
 
             else
-               Size := First - M.Map (Utf16_String_Index (High));
+               Size := M.Map (Utf16_String_Index (High - 1)) - First + 1;
             end if;
          end;
       end if;
