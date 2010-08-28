@@ -93,6 +93,8 @@ package body XML.SAX.Attributes is
                 (Self.Values (J).Qualified_Name);
                Matreshka.Internals.Strings.Dereference
                 (Self.Values (J).Value);
+               Matreshka.Internals.Strings.Dereference
+                (Self.Values (J).Value_Type);
             end loop;
 
             Free (Self);
