@@ -65,7 +65,11 @@ package body Matreshka.Internals.Strings.Compare is
 
    function Is_Equal
      (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is
+      Right : not null Shared_String_Access) return Boolean
+   is
+      pragma Suppress (Access_Check);
+      pragma Suppress (Alignment_Check);
+
    begin
       if Left = Right then
          return True;
@@ -99,7 +103,12 @@ package body Matreshka.Internals.Strings.Compare is
 
    function Is_Greater
      (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is
+      Right : not null Shared_String_Access) return Boolean
+   is
+      pragma Suppress (Access_Check);
+      pragma Suppress (Alignment_Check);
+      pragma Suppress (Index_Check);
+
    begin
       if Left = Right then
          return False;
@@ -135,7 +144,12 @@ package body Matreshka.Internals.Strings.Compare is
 
    function Is_Greater_Or_Equal
      (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is
+      Right : not null Shared_String_Access) return Boolean
+   is
+      pragma Suppress (Access_Check);
+      pragma Suppress (Alignment_Check);
+      pragma Suppress (Index_Check);
+
    begin
       if Left = Right then
          return True;
@@ -171,7 +185,12 @@ package body Matreshka.Internals.Strings.Compare is
 
    function Is_Less
      (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is
+      Right : not null Shared_String_Access) return Boolean
+   is
+      pragma Suppress (Access_Check);
+      pragma Suppress (Alignment_Check);
+      pragma Suppress (Index_Check);
+
    begin
       if Left = Right then
          return False;
@@ -207,7 +226,12 @@ package body Matreshka.Internals.Strings.Compare is
 
    function Is_Less_Or_Equal
      (Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is
+      Right : not null Shared_String_Access) return Boolean
+   is
+      pragma Suppress (Access_Check);
+      pragma Suppress (Alignment_Check);
+      pragma Suppress (Index_Check);
+
    begin
       if Left = Right then
          return True;
