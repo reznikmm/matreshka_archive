@@ -105,11 +105,10 @@ package Matreshka.Internals.Text_Codecs is
      Mode : Decoder_Mode) return Abstract_Decoder_State'Class is abstract;
    --  Creates new decoder's state.
 
-   not overriding procedure Decode
-    (Self   : in out Abstract_Decoder_State;
+   procedure Decode
+    (Self   : in out Abstract_Decoder_State'Class;
      Data   : Ada.Streams.Stream_Element_Array;
-     String : out Matreshka.Internals.Strings.Shared_String_Access)
-       is abstract;
+     String : out Matreshka.Internals.Strings.Shared_String_Access);
    --  Decodes data and save results in new allocated string.
 
    not overriding procedure Decode_Append
@@ -144,15 +143,31 @@ package Matreshka.Internals.Text_Codecs is
 private
 
    type Abstract_Decoder_State is abstract tagged record
-      Mode    : Decoder_Mode;
-      Skip_LF : Boolean;
+      Skip_LF          : Boolean;
+      Unchecked_Append : not null access procedure
+       (Self   : in out Abstract_Decoder_State'Class;
+        Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
+        Code   : Matreshka.Internals.Unicode.Code_Point);
    end record;
 
-   procedure Unterminated_Append
-    (Buffer : in out Matreshka.Internals.Strings.Shared_String_Access;
-     State  : in out Abstract_Decoder_State'Class;
+   procedure Unchecked_Append_Raw
+    (Self   : in out Abstract_Decoder_State'Class;
+     Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
      Code   : Matreshka.Internals.Unicode.Code_Point);
-   --  Internal implementation of unterminated append, which stores Code into
-   --  the buffer and handle line termination conventions.
+   --  Appends code to the string.
+
+   procedure Unchecked_Append_XML10
+    (Self   : in out Abstract_Decoder_State'Class;
+     Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Code   : Matreshka.Internals.Unicode.Code_Point);
+   --  Appends code to the string filtering out and replacing end of line
+   --  characters according to XML 1.0 specification.
+
+   procedure Unchecked_Append_XML11
+    (Self   : in out Abstract_Decoder_State'Class;
+     Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Code   : Matreshka.Internals.Unicode.Code_Point);
+   --  Appends code to the string filtering out and replacing end of line
+   --  characters according to XML 1.1 specification.
 
 end Matreshka.Internals.Text_Codecs;

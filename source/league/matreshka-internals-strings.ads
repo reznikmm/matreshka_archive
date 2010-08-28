@@ -154,6 +154,13 @@ package Matreshka.Internals.Strings is
    --  is not used anywhere); and size of the object is sufficient to store
    --  at least specified amount of code units.
 
+   procedure Mutate
+    (Self : in out Shared_String_Access;
+     Size : Matreshka.Internals.Utf16.Utf16_String_Index);
+   --  Checks whether specified string can be reused to store data of specified
+   --  size and prepare it to be changed; otherwise allocates new string and
+   --  copy data.
+
    procedure Compute_Index_Map (Self : in out Shared_String);
    --  Compute index map. This operation is thread-safe.
 

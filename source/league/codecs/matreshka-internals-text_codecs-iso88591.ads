@@ -61,11 +61,6 @@ private package Matreshka.Internals.Text_Codecs.ISO88591 is
     (Self : ISO88591_Decoder;
      Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
 
-   overriding procedure Decode
-    (Self   : in out ISO88591_Decoder_State;
-     Data   : Ada.Streams.Stream_Element_Array;
-     String : out Matreshka.Internals.Strings.Shared_String_Access);
-
    overriding procedure Decode_Append
     (Self   : in out ISO88591_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;

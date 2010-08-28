@@ -50,6 +50,7 @@ with Matreshka.Internals.Text_Codecs.UTF16;
 with Matreshka.Internals.Text_Codecs.UTF8;
 with Matreshka.Internals.Unicode.Characters.General_Punctuation;
 with Matreshka.Internals.Unicode.Characters.Latin;
+with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Text_Codecs is
 
@@ -58,6 +59,7 @@ package body Matreshka.Internals.Text_Codecs is
    use Matreshka.Internals.Text_Codecs.IANA_Registry;
    use Matreshka.Internals.Unicode.Characters.General_Punctuation;
    use Matreshka.Internals.Unicode.Characters.Latin;
+   use type Matreshka.Internals.Unicode.Code_Unit_32;
 
    MIB_ISO88591 : constant Character_Set := 4;
 
@@ -67,6 +69,27 @@ package body Matreshka.Internals.Text_Codecs is
          MIB_UTF16BE  => UTF16.BE_Decoder'Access,
          MIB_UTF16LE  => UTF16.LE_Decoder'Access,
          others       => null);
+
+   ------------
+   -- Decode --
+   ------------
+
+   procedure Decode
+    (Self   : in out Abstract_Decoder_State'Class;
+     Data   : Ada.Streams.Stream_Element_Array;
+     String : out Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      use type Matreshka.Internals.Utf16.Utf16_String_Index;
+
+   begin
+      String := Matreshka.Internals.Strings.Allocate (Data'Length);
+      Self.Decode_Append (Data, String);
+
+      if String.Unused = 0 then
+         Matreshka.Internals.Strings.Dereference (String);
+         String := Matreshka.Internals.Strings.Shared_Empty'Access;
+      end if;
+   end Decode;
 
    -------------
    -- Decoder --
@@ -159,69 +182,91 @@ package body Matreshka.Internals.Text_Codecs is
       return 0;
    end To_Character_Set;
 
-   -------------------------
-   -- Unterminated_Append --
-   -------------------------
+   --------------------------
+   -- Unchecked_Append_Raw --
+   --------------------------
 
-   procedure Unterminated_Append
-    (Buffer : in out Matreshka.Internals.Strings.Shared_String_Access;
-     State  : in out Abstract_Decoder_State'Class;
+   procedure Unchecked_Append_Raw
+    (Self   : in out Abstract_Decoder_State'Class;
+     Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Code   : Matreshka.Internals.Unicode.Code_Point) is
+   begin
+      Matreshka.Internals.Utf16.Unchecked_Store
+       (Buffer.Value, Buffer.Unused, Code);
+      Buffer.Length := Buffer.Length + 1;
+   end Unchecked_Append_Raw;
+
+   ----------------------------
+   -- Unchecked_Append_XML10 --
+   ----------------------------
+
+   procedure Unchecked_Append_XML10
+    (Self   : in out Abstract_Decoder_State'Class;
+     Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
      Code   : Matreshka.Internals.Unicode.Code_Point)
    is
-      use type Matreshka.Internals.Unicode.Code_Unit_32;
+      pragma Suppress (Access_Check);
 
    begin
-      case State.Mode is
-         when Raw =>
-            Matreshka.Internals.Strings.Operations.Unterminated_Append
-             (Buffer, Code);
+      if Code = Carriage_Return then
+         Matreshka.Internals.Utf16.Unchecked_Store
+          (Buffer.Value, Buffer.Unused, Line_Feed);
+         Buffer.Length := Buffer.Length + 1;
+         Self.Skip_LF := True;
 
-         when XML_1_0 =>
-            if Code = Carriage_Return then
-               Matreshka.Internals.Strings.Operations.Unterminated_Append
-                (Buffer, Line_Feed);
-               State.Skip_LF := True;
+      elsif Code = Line_Feed then
+         if not Self.Skip_LF then
+            Matreshka.Internals.Utf16.Unchecked_Store
+             (Buffer.Value, Buffer.Unused, Line_Feed);
+            Buffer.Length := Buffer.Length + 1;
+         end if;
 
-            elsif Code = Line_Feed then
-               if not State.Skip_LF then
-                  Matreshka.Internals.Strings.Operations.Unterminated_Append
-                   (Buffer, Line_Feed);
-               end if;
+         Self.Skip_LF := False;
 
-               State.Skip_LF := False;
+      else
+         Matreshka.Internals.Utf16.Unchecked_Store
+          (Buffer.Value, Buffer.Unused, Code);
+         Buffer.Length := Buffer.Length + 1;
+         Self.Skip_LF := False;
+      end if;
+   end Unchecked_Append_XML10;
 
-            else
-               Matreshka.Internals.Strings.Operations.Unterminated_Append
-                (Buffer, Code);
-               State.Skip_LF := False;
-            end if;
+   ----------------------------
+   -- Unchecked_Append_XML11 --
+   ----------------------------
 
-         when XML_1_1 =>
-            if Code = Carriage_Return then
-               State.Skip_LF := True;
+   procedure Unchecked_Append_XML11
+    (Self   : in out Abstract_Decoder_State'Class;
+     Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Code   : Matreshka.Internals.Unicode.Code_Point) is
+   begin
+      if Code = Carriage_Return then
+         Matreshka.Internals.Utf16.Unchecked_Store
+          (Buffer.Value, Buffer.Unused, Line_Feed);
+         Buffer.Length := Buffer.Length + 1;
+         Self.Skip_LF := True;
 
-               Matreshka.Internals.Strings.Operations.Unterminated_Append
-                (Buffer, Line_Feed);
+      elsif Code = Line_Feed or Code = Next_Line then
+         if not Self.Skip_LF then
+            Matreshka.Internals.Utf16.Unchecked_Store
+             (Buffer.Value, Buffer.Unused, Line_Feed);
+            Buffer.Length := Buffer.Length + 1;
+         end if;
 
-            elsif Code = Line_Feed or Code = Next_Line then
-               if not State.Skip_LF then
-                  Matreshka.Internals.Strings.Operations.Unterminated_Append
-                   (Buffer, Line_Feed);
-               end if;
+         Self.Skip_LF := False;
 
-               State.Skip_LF := False;
+      elsif Code = Line_Separator then
+         Matreshka.Internals.Utf16.Unchecked_Store
+          (Buffer.Value, Buffer.Unused, Line_Feed);
+         Buffer.Length := Buffer.Length + 1;
+         Self.Skip_LF := False;
 
-            elsif Code = Line_Separator then
-               Matreshka.Internals.Strings.Operations.Unterminated_Append
-                (Buffer, Line_Feed);
-               State.Skip_LF := False;
-
-            else
-               Matreshka.Internals.Strings.Operations.Unterminated_Append
-                (Buffer, Code);
-               State.Skip_LF := False;
-            end if;
-      end case;
-   end Unterminated_Append;
+      else
+         Matreshka.Internals.Utf16.Unchecked_Store
+          (Buffer.Value, Buffer.Unused, Code);
+         Buffer.Length := Buffer.Length + 1;
+         Self.Skip_LF := False;
+      end if;
+   end Unchecked_Append_XML11;
 
 end Matreshka.Internals.Text_Codecs;

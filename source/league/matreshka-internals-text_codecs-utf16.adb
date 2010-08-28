@@ -115,13 +115,34 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
       --  Used for dispatching of call only.
 
    begin
-      return
-        UTF16BE_Decoder_State'
-         (Mode    => Mode,
-          Skip_LF => False,
-          State   => Accept_State,
-          Code    => 0,
-          Low     => 0);
+      case Mode is
+         when Raw =>
+            return
+              UTF16BE_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_Raw'Access,
+                State            => Accept_State,
+                Code             => 0,
+                Low              => 0);
+
+         when XML_1_0 =>
+            return
+              UTF16BE_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML10'Access,
+                State            => Accept_State,
+                Code             => 0,
+                Low              => 0);
+
+         when XML_1_1 =>
+            return
+              UTF16BE_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML11'Access,
+                State            => Accept_State,
+                Code             => 0,
+                Low              => 0);
+      end case;
    end Create_State;
 
    ------------------
@@ -136,50 +157,35 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
       --  Used for dispatching of call only.
 
    begin
-      return
-        UTF16LE_Decoder_State'
-         (Mode    => Mode,
-          Skip_LF => False,
-          State   => Accept_State,
-          Code    => 0,
-          Low     => 0);
+      case Mode is
+         when Raw =>
+            return
+              UTF16LE_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_Raw'Access,
+                State            => Accept_State,
+                Code             => 0,
+                Low              => 0);
+
+         when XML_1_0 =>
+            return
+              UTF16LE_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML10'Access,
+                State            => Accept_State,
+                Code             => 0,
+                Low              => 0);
+
+         when XML_1_1 =>
+            return
+              UTF16LE_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML11'Access,
+                State            => Accept_State,
+                Code             => 0,
+                Low              => 0);
+      end case;
    end Create_State;
-
-   ------------
-   -- Decode --
-   ------------
-
-   overriding procedure Decode
-    (Self   : in out UTF16BE_Decoder_State;
-     Data   : Ada.Streams.Stream_Element_Array;
-     String : out Matreshka.Internals.Strings.Shared_String_Access) is
-   begin
-      String := Matreshka.Internals.Strings.Allocate (Data'Length);
-      Self.Decode_Append (Data, String);
-
-      if String.Unused = 0 then
-         Matreshka.Internals.Strings.Dereference (String);
-         String := Matreshka.Internals.Strings.Shared_Empty'Access;
-      end if;
-   end Decode;
-
-   ------------
-   -- Decode --
-   ------------
-
-   overriding procedure Decode
-    (Self   : in out UTF16LE_Decoder_State;
-     Data   : Ada.Streams.Stream_Element_Array;
-     String : out Matreshka.Internals.Strings.Shared_String_Access) is
-   begin
-      String := Matreshka.Internals.Strings.Allocate (Data'Length);
-      Self.Decode_Append (Data, String);
-
-      if String.Unused = 0 then
-         Matreshka.Internals.Strings.Dereference (String);
-         String := Matreshka.Internals.Strings.Shared_Empty'Access;
-      end if;
-   end Decode;
 
    -------------------
    -- Decode_Append --
@@ -195,6 +201,8 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
       Current_Low   : Matreshka.Internals.Unicode.Code_Unit_16 := Self.Low;
 
    begin
+      Matreshka.Internals.Strings.Mutate (String, String.Unused + Data'Length);
+
       for J in Data'Range loop
          declare
             M : constant UTF16_Meta_Class := Meta_Class (Data (J));
@@ -227,7 +235,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
               BE_Transition (Current_State * 4 + UTF16_DFA_State (M));
 
             if Current_State = Accept_State then
-               Unterminated_Append (String, Self, Current_Code);
+               Self.Unchecked_Append (Self, String, Current_Code);
             end if;
          end;
       end loop;
@@ -252,6 +260,8 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
       Current_Low   : Matreshka.Internals.Unicode.Code_Unit_16 := Self.Low;
 
    begin
+      Matreshka.Internals.Strings.Mutate (String, String.Unused + Data'Length);
+
       for J in Data'Range loop
          declare
             M : constant UTF16_Meta_Class := Meta_Class (Data (J));
@@ -282,7 +292,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
               LE_Transition (Current_State * 4 + UTF16_DFA_State (M));
 
             if Current_State = Accept_State then
-               Unterminated_Append (String, Self, Current_Code);
+               Self.Unchecked_Append (Self, String, Current_Code);
             end if;
          end;
       end loop;

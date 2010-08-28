@@ -59,29 +59,26 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
       pragma Unreferenced (Self);
 
    begin
-      return
-        ISO88591_Decoder_State'
-         (Mode    => Mode,
-          Skip_LF => False);
+      case Mode is
+         when Raw =>
+            return
+              ISO88591_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_Raw'Access);
+
+         when XML_1_0 =>
+            return
+              ISO88591_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML10'Access);
+
+         when XML_1_1 =>
+            return
+              ISO88591_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML11'Access);
+      end case;
    end Create_State;
-
-   ------------
-   -- Decode --
-   ------------
-
-   overriding procedure Decode
-    (Self   : in out ISO88591_Decoder_State;
-     Data   : Ada.Streams.Stream_Element_Array;
-     String : out Matreshka.Internals.Strings.Shared_String_Access) is
-   begin
-      String := Matreshka.Internals.Strings.Allocate (Data'Length);
-      Self.Decode_Append (Data, String);
-
-      if String.Unused = 0 then
-         Matreshka.Internals.Strings.Dereference (String);
-         String := Matreshka.Internals.Strings.Shared_Empty'Access;
-      end if;
-   end Decode;
 
    -------------------
    -- Decode_Append --
@@ -90,15 +87,14 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
    overriding procedure Decode_Append
     (Self   : in out ISO88591_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
-     String : in out Matreshka.Internals.Strings.Shared_String_Access)
-   is
-      pragma Unreferenced (Self);
-
+     String : in out Matreshka.Internals.Strings.Shared_String_Access) is
    begin
+      Matreshka.Internals.Strings.Mutate (String, String.Unused + Data'Length);
+
       for J in Data'Range loop
-         Unterminated_Append
-          (String,
-           Self,
+         Self.Unchecked_Append
+          (Self,
+           String,
            Matreshka.Internals.Unicode.Code_Point (Data (J)));
       end loop;
 

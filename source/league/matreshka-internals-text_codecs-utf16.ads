@@ -67,11 +67,6 @@ private package Matreshka.Internals.Text_Codecs.UTF16 is
     (Self : UTF16BE_Decoder;
      Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
 
-   overriding procedure Decode
-    (Self   : in out UTF16BE_Decoder_State;
-     Data   : Ada.Streams.Stream_Element_Array;
-     String : out Matreshka.Internals.Strings.Shared_String_Access);
-
    overriding procedure Decode_Append
     (Self   : in out UTF16BE_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
@@ -94,11 +89,6 @@ private package Matreshka.Internals.Text_Codecs.UTF16 is
     (Self : UTF16LE_Decoder;
      Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
 
-   overriding procedure Decode
-    (Self   : in out UTF16LE_Decoder_State;
-     Data   : Ada.Streams.Stream_Element_Array;
-     String : out Matreshka.Internals.Strings.Shared_String_Access);
-
    overriding procedure Decode_Append
     (Self   : in out UTF16LE_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
@@ -113,15 +103,15 @@ private
    type UTF16_DFA_State is mod 2 ** 8;
 
    type UTF16BE_Decoder_State is new Abstract_Decoder_State with record
-      State   : UTF16_DFA_State;
-      Code    : Matreshka.Internals.Unicode.Code_Unit_32;
-      Low     : Matreshka.Internals.Unicode.Code_Unit_16;
+      State : UTF16_DFA_State;
+      Code  : Matreshka.Internals.Unicode.Code_Unit_32;
+      Low   : Matreshka.Internals.Unicode.Code_Unit_16;
    end record;
 
    type UTF16LE_Decoder_State is new Abstract_Decoder_State with record
-      State   : UTF16_DFA_State;
-      Code    : Matreshka.Internals.Unicode.Code_Unit_32;
-      Low     : Matreshka.Internals.Unicode.Code_Unit_16;
+      State : UTF16_DFA_State;
+      Code  : Matreshka.Internals.Unicode.Code_Unit_32;
+      Low   : Matreshka.Internals.Unicode.Code_Unit_16;
    end record;
 
 end Matreshka.Internals.Text_Codecs.UTF16;

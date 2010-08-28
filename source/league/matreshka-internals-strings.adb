@@ -254,6 +254,46 @@ package body Matreshka.Internals.Strings is
       return H;
    end Hash;
 
+   ------------
+   -- Mutate --
+   ------------
+
+   procedure Mutate
+    (Self : in out Shared_String_Access;
+     Size : Matreshka.Internals.Utf16.Utf16_String_Index)
+   is
+      pragma Assert (Self /= null);
+      --  GNAT GPL 2010: null exclusion cann't be used for Self because of
+      --  compiler's bug.
+
+      pragma Assert (Size /= 0);
+      --  Limitation of current implementation.
+
+   begin
+      if not Can_Be_Reused (Self, Size) then
+         --  Shared string cann't be reused for some reason, new string is
+         --  allocated and existing data is copied.
+
+         declare
+            Old : Shared_String_Access := Self;
+
+         begin
+            Self := Allocate (Size);
+            Self.Value (0 .. Old.Unused) := Old.Value (0 .. Old.Unused);
+            Self.Unused := Old.Unused;
+            Self.Length := Old.Length;
+            Fill_Null_Terminator (Self);
+            Dereference (Old);
+         end;
+
+      else
+         --  Shared string can be reused, but index map must be deallocated to
+         --  prepare shared string for modification.
+
+         Free (Self.Index_Map);
+      end if;
+   end Mutate;
+
    ---------------
    -- Reference --
    ---------------

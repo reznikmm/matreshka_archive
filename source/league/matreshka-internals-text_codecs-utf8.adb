@@ -116,31 +116,32 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
     (Self : UTF8_Decoder;
      Mode : Decoder_Mode) return Abstract_Decoder_State'Class is
    begin
-      return
-        UTF8_Decoder_State'
-         (Mode    => Mode,
-          Skip_LF => False,
-          State   => Accept_State,
-          Code    => 0);
+      case Mode is
+         when Raw =>
+            return
+              UTF8_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_Raw'Access,
+                State            => Accept_State,
+                Code             => 0);
+
+         when XML_1_0 =>
+            return
+              UTF8_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML10'Access,
+                State            => Accept_State,
+                Code             => 0);
+
+         when XML_1_1 =>
+            return
+              UTF8_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML11'Access,
+                State            => Accept_State,
+                Code             => 0);
+      end case;
    end Create_State;
-
-   ------------
-   -- Decode --
-   ------------
-
-   overriding procedure Decode
-    (Self   : in out UTF8_Decoder_State;
-     Data   : Ada.Streams.Stream_Element_Array;
-     String : out Matreshka.Internals.Strings.Shared_String_Access) is
-   begin
-      String := Matreshka.Internals.Strings.Allocate (Data'Length);
-      Self.Decode_Append (Data, String);
-
-      if String.Unused = 0 then
-         Matreshka.Internals.Strings.Dereference (String);
-         String := Matreshka.Internals.Strings.Shared_Empty'Access;
-      end if;
-   end Decode;
 
    -------------------
    -- Decode_Append --
@@ -155,6 +156,8 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
       Current_Code  : Matreshka.Internals.Unicode.Code_Unit_32 := Self.Code;
 
    begin
+      Matreshka.Internals.Strings.Mutate (String, String.Unused + Data'Length);
+
       for J in Data'Range loop
          declare
             M : constant UTF8_Meta_Class := Meta_Class (Data (J));
@@ -175,7 +178,7 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
               Transition (Current_State * 16 + UTF8_DFA_State (M));
 
             if Current_State = Accept_State then
-               Unterminated_Append (String, Self, Current_Code);
+               Self.Unchecked_Append (Self, String, Current_Code);
             end if;
          end;
       end loop;

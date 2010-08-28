@@ -60,11 +60,6 @@ private package Matreshka.Internals.Text_Codecs.UTF8 is
     (Self : UTF8_Decoder;
      Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
 
-   overriding procedure Decode
-    (Self   : in out UTF8_Decoder_State;
-     Data   : Ada.Streams.Stream_Element_Array;
-     String : out Matreshka.Internals.Strings.Shared_String_Access);
-
    overriding procedure Decode_Append
     (Self   : in out UTF8_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
@@ -78,8 +73,8 @@ private
    type UTF8_DFA_State is mod 2 ** 8;
 
    type UTF8_Decoder_State is new Abstract_Decoder_State with record
-      State   : UTF8_DFA_State;
-      Code    : Matreshka.Internals.Unicode.Code_Unit_32;
+      State : UTF8_DFA_State;
+      Code  : Matreshka.Internals.Unicode.Code_Unit_32;
    end record;
 
 end Matreshka.Internals.Text_Codecs.UTF8;
