@@ -65,6 +65,8 @@ package body Matreshka.Internals.XML.Entity_Tables is
       for J in Self.Data'First .. Self.Last loop
          Matreshka.Internals.Strings.Dereference
           (Self.Data (J).Replacement_Text);
+         Matreshka.Internals.Strings.Dereference (Self.Data (J).Public_Id);
+         Matreshka.Internals.Strings.Dereference (Self.Data (J).System_Id);
       end loop;
 
       Free (Self.Data);
