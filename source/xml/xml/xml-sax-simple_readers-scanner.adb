@@ -1608,6 +1608,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                            --  start conditions.
 
                            YY_Start_Condition := Start_Condition (Self);
+                           Free (Self.Scanner_State.Source);
                            Self.Scanner_State :=
                              Self.Scanner_Stack.Last_Element;
                            Self.Scanner_Stack.Delete_Last;
@@ -1636,6 +1637,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                            Self.Whitespace_Matched := True;
 
                         else
+                           Free (Self.Scanner_State.Source);
                            Self.Scanner_State :=
                              Self.Scanner_Stack.Last_Element;
                            Self.Scanner_Stack.Delete_Last;

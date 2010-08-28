@@ -155,6 +155,15 @@ package body XML.SAX.Simple_Readers is
 
    overriding procedure Finalize (Self : in out SAX_Simple_Reader) is
    begin
+      if Self.Scanner_Stack.Is_Empty then
+         --  Release shared string when scanner's stack is empty, because it is
+         --  buffer for document entity.
+         --
+         --  XXX Correct cleanup of scanner stack must be added here.
+
+         Matreshka.Internals.Strings.Dereference (Self.Scanner_State.Data);
+      end if;
+
       Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
       Matreshka.Internals.Strings.Dereference (Self.Character_Data);
       Matreshka.Internals.XML.Attribute_Tables.Finalize (Self.Attributes);
