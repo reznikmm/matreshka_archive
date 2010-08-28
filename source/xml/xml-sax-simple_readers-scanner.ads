@@ -60,6 +60,9 @@ private package XML.SAX.Simple_Readers.Scanner is
    procedure Initialize (Self : in out SAX_Simple_Reader'Class);
    --  Initializes start condition stack.
 
+   procedure Finalize (Self : in out SAX_Simple_Reader'Class);
+   --  Release scanner stack.
+
    function Push_Entity
     (Self             : not null access SAX_Simple_Reader'Class;
      Entity           : Matreshka.Internals.XML.Entity_Identifier;

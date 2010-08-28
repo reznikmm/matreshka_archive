@@ -69,6 +69,29 @@ package body XML.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Returns value of "whitespace matched" flag.
 
+   procedure Free is
+     new Ada.Unchecked_Deallocation
+          (XML.SAX.Input_Sources.SAX_Input_Source'Class,
+           XML.SAX.Input_Sources.SAX_Input_Source_Access);
+
+   --------------
+   -- Finalize --
+   --------------
+
+   procedure Finalize (Self : in out SAX_Simple_Reader'Class) is
+   begin
+      while not Self.Scanner_Stack.Is_Empty loop
+         Free (Self.Scanner_State.Source);
+         Self.Scanner_State := Self.Scanner_Stack.Last_Element;
+         Self.Scanner_Stack.Delete_Last;
+      end loop;
+
+      --  Release shared string when scanner's stack is empty, because it is
+      --  buffer for document entity.
+
+      Matreshka.Internals.Strings.Dereference (Self.Scanner_State.Data);
+   end Finalize;
+
    ----------------
    -- Initialize --
    ----------------
@@ -428,11 +451,6 @@ package body XML.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class) return Token
    is
       use type XML.SAX.Input_Sources.SAX_Input_Source_Access;
-
-      procedure Free is
-        new Ada.Unchecked_Deallocation
-             (XML.SAX.Input_Sources.SAX_Input_Source'Class,
-              XML.SAX.Input_Sources.SAX_Input_Source_Access);
 
       type YY_End_Of_Buffer_Actions is
        (YY_Continue_Scan,      --  Continue scanning from the current position.
