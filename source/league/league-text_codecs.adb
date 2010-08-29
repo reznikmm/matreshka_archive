@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
+with Matreshka.Internals.Strings;
 
 package body League.Text_Codecs is
 
