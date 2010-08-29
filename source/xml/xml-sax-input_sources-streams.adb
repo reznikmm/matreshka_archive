@@ -356,10 +356,15 @@ package body XML.SAX.Input_Sources.Streams is
               new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
                    (Factory.Create_State (Self.Version_Mode));
 
-            --  Decode all readed data (not last chunk only).
+            --  Decode all readed data (not last chunk only) except possible
+            --  leading byte order mark, but protect from decoding empty
+            --  sequence of bytes.
 
-            Self.Decoder.Decode_Append
-             (Self.Buffer (First .. Self.Last), Buffer);
+            if First <= Self.Last then
+               Self.Decoder.Decode_Append
+                (Self.Buffer (First .. Self.Last), Buffer);
+            end if;
+
             Self.First := First;
          end if;
 
