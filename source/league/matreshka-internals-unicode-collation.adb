@@ -140,7 +140,7 @@ package body Matreshka.Internals.Unicode.Collation is
             --  code points like unpaired surrogates in the string, thus only
             --  noncharacter code points must be ignored.
 
-            --  pragma Assert (Is_Legal_Unicode_Code_Point (Code);
+            --  pragma Assert (not Is_Surrogate (Code));
 
             declare
                Base : Collation_Weight := 16#FBC0#;
