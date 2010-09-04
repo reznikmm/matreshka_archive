@@ -52,16 +52,16 @@
   <characters>6</characters>
   <characters>:</characters>
   <characters>&#xA;</characters>
-  <characters>\t</characters>
-  <characters>\t</characters>
-  <characters>\t</characters>
+  <characters>&#x9;</characters>
+  <characters>&#x9;</characters>
+  <characters>&#x9;</characters>
   <characters>&#xA;</characters>
   <characters>&#xA;</characters>
   <characters>&#xA;</characters>
   <characters>&#xA;</characters>
   <characters>&#xA;</characters>
   <characters>&#xA;</characters>
-  <characters>\r</characters>
+  <characters>&#xD;</characters>
   <characters>&#xA;</characters>
   <characters>«</characters>
   <characters>&#x20;</characters>
@@ -91,11 +91,9 @@
   <characters>&#x20;</characters>
   <characters>�</characters>
   <characters>&#xA;</characters>
-  <characters>\uD800</characters>
-  <characters>\uDC00</characters>
+  <characters>𐀀</characters>
   <characters>&#x20;</characters>
-  <characters>\uDBFF</characters>
-  <characters>\uDFFF</characters>
+  <characters>􏿿</characters>
   <characters>&#xA;</characters>
   <endElement>
     <namespaceURI/>
