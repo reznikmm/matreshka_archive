@@ -43,9 +43,11 @@
 ------------------------------------------------------------------------------
 --  This subprogram incorporates test for known problems of Universal_String
 --  manipulation subprograms.
+with League.String_Vectors;
 with League.Strings;
 
 procedure String_Operations is
+   use League.String_Vectors;
    use League.Strings;
 
 begin
@@ -149,6 +151,31 @@ begin
       S.Replace (S.Length, S.Length, R);
 
       if S /= E then
+         raise Program_Error;
+      end if;
+   end;
+
+   --  Initial implementation of Split operation doesn't create last element
+   --  when it is empty.
+
+   declare
+      S : Universal_String := To_Universal_String ("a,,c,");
+      V : Universal_String_Vector := Split (S, ',');
+
+   begin
+      if V.Element (1) /= To_Universal_String ("a") then
+         raise Program_Error;
+      end if;
+
+      if V.Element (2) /= Empty_Universal_String then
+         raise Program_Error;
+      end if;
+
+      if V.Element (3) /= To_Universal_String ("c") then
+         raise Program_Error;
+      end if;
+
+      if V.Element (4) /= Empty_Universal_String then
          raise Program_Error;
       end if;
    end;
