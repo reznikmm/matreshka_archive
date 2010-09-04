@@ -41,54 +41,65 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Vector of Universal_String.
-------------------------------------------------------------------------------
-private with Ada.Finalization;
+with Matreshka.Internals.Atomics.Counters;
+with Matreshka.Internals.Strings;
 
-with League.Strings;
-private with Matreshka.Internals.String_Vectors;
-
-package League.String_Vectors is
+package Matreshka.Internals.String_Vectors is
 
    pragma Preelaborate;
 
-   type Universal_String_Vector is tagged private;
-   pragma Preelaborable_Initialization (Universal_String_Vector);
+   type Shared_String_Array is
+     array (Positive range <>)
+       of Matreshka.Internals.Strings.Shared_String_Access;
 
-   Empty_Universal_String_Vector : constant Universal_String_Vector;
+   type Shared_String_Vector (Size : Natural) is limited record
+      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      --  Atomic reference counter.
 
-   function Length (Self : Universal_String_Vector) return Natural;
+      Length  : Natural := 0;
+      --  Length of the actual data.
 
-   function Element
-    (Self  : Universal_String_Vector;
-     Index : Positive) return League.Strings.Universal_String;
-
-   --  Ada2012: Split must be operations of Universal_String, but they raises
-   --  circular dependencies in Ada2005, which resolved in Ada2012, so it will
-   --  be moved to League.Strings once we switch to use Ada2012 compiler.
-
-   function Split
-    (Self      : League.Strings.Universal_String;
-     Separator : League.Strings.Universal_Character)
-       return Universal_String_Vector;
-
-   function Split
-    (Self      : League.Strings.Universal_String;
-     Separator : Wide_Wide_Character) return Universal_String_Vector;
-
-private
-
-   type Universal_String_Vector is new Ada.Finalization.Controlled with record
-      Data : Matreshka.Internals.String_Vectors.Shared_String_Vector_Access
-       := Matreshka.Internals.String_Vectors.Empty_Shared_String_Vector'Access;
+      Value   : Shared_String_Array (1 .. Size);
    end record;
 
-   overriding procedure Adjust (Self : in out Universal_String_Vector);
-   pragma Inline (Adjust);
+   type Shared_String_Vector_Access is access all Shared_String_Vector;
 
-   overriding procedure Finalize (Self : in out Universal_String_Vector);
+   Empty_Shared_String_Vector : aliased Shared_String_Vector (0);
 
-   Empty_Universal_String_Vector : constant Universal_String_Vector
-     := (Ada.Finalization.Controlled with others => <>);
+   procedure Reference (Item : Shared_String_Vector_Access);
+   pragma Inline (Reference);
+   pragma Inline_Always (Reference);
+   --  Increment reference counter. Change of reference counter of
+   --  Empty_Shared_String_Vector object is prevented to provide speedup
+   --  and to allow to use it to initialize components of
+   --  Preelaborateable_Initialization types.
 
-end League.String_Vectors;
+   procedure Dereference (Item : in out Shared_String_Vector_Access);
+   --  Decrement reference counter and free resources if it reach zero value.
+   --  Self is setted to null. Decrement of reference counter and deallocation
+   --  of Empty_Shared_String_Vector object is prevented to provide minor
+   --  speedup and to allow use it to initialize components of
+   --  Preelaborateable_Initialization types.
+
+   function Allocate
+    (Size : Natural) return not null Shared_String_Vector_Access;
+   --  Allocates new instance of string with specified size. Actual size of the
+   --  allocated string can be greater. Returns reference to
+   --  Empty_Shared_String_Vector when Size is zero.
+
+   procedure Detach
+    (Item : in out Shared_String_Vector_Access;
+     Size : Natural);
+   --  Detach specified shared string vector. If reference counter equal to
+   --  one, shared string vector is not an empty shared string vector object
+   --  and its current size is sufficient to store specified number of strings
+   --  then to nothing. Otherwise, allocates new shared string vector and
+   --  copy existing data.
+
+   procedure Append
+    (Item   : in out Shared_String_Vector_Access;
+     String : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Append string to the vector, reallocate vector then necessary. String's
+   --  reference counter is not incremented.
+
+end Matreshka.Internals.String_Vectors;
