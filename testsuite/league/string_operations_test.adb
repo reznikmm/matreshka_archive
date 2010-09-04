@@ -46,7 +46,7 @@
 with League.String_Vectors;
 with League.Strings;
 
-procedure String_Operations is
+procedure String_Operations_Test is
    use League.String_Vectors;
    use League.Strings;
 
@@ -179,4 +179,4 @@ begin
          raise Program_Error;
       end if;
    end;
-end String_Operations;
+end String_Operations_Test;

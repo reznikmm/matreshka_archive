@@ -56,7 +56,7 @@ project Matreshka_League_Tests is
      "collation_test.adb",
      "string_performance.adb",
      "fill_null_terminator_performance.adb",
-     "string_operations.adb",
+     "string_operations_test.adb",
      "string_compare_test.adb",
      "library_level_test.adb",
      "regexp_ataresearch.adb");
