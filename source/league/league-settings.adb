@@ -49,7 +49,10 @@ package body League.Settings is
    --------------
 
    function All_Keys
-    (Self : Settings) return League.String_Vectors.Universal_String_Vector is
+    (Self : Settings) return League.String_Vectors.Universal_String_Vector
+   is
+      pragma Unreferenced (Self);
+
    begin
       return X : League.String_Vectors.Universal_String_Vector;
    end All_Keys;
@@ -59,7 +62,10 @@ package body League.Settings is
    ----------------------
 
    function Application_Name
-    (Self : Settings) return League.Strings.Universal_String is
+    (Self : Settings) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return League.Strings.Empty_Universal_String;
    end Application_Name;
@@ -80,7 +86,10 @@ package body League.Settings is
    ------------------
 
    function Child_Groups
-    (Self : Settings) return League.String_Vectors.Universal_String_Vector is
+    (Self : Settings) return League.String_Vectors.Universal_String_Vector
+   is
+      pragma Unreferenced (Self);
+
    begin
       return X : League.String_Vectors.Universal_String_Vector;
    end Child_Groups;
@@ -90,7 +99,10 @@ package body League.Settings is
    ----------------
 
    function Child_Keys
-    (Self : Settings) return League.String_Vectors.Universal_String_Vector is
+    (Self : Settings) return League.String_Vectors.Universal_String_Vector
+   is
+      pragma Unreferenced (Self);
+
    begin
       return X : League.String_Vectors.Universal_String_Vector;
    end Child_Keys;
@@ -110,7 +122,11 @@ package body League.Settings is
 
    function Contains
     (Self : Settings;
-     Key  : League.Strings.Universal_String) return Boolean is
+     Key  : League.Strings.Universal_String) return Boolean
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Key);
+
    begin
       return False;
    end Contains;
@@ -129,6 +145,8 @@ package body League.Settings is
    -----------------------
 
    function Fallbacks_Enabled (Self : Settings) return Boolean is
+      pragma Unreferenced (Self);
+
    begin
       return False;
    end Fallbacks_Enabled;
@@ -138,7 +156,10 @@ package body League.Settings is
    ---------------
 
    function File_Name
-    (Self : Settings) return League.Strings.Universal_String is
+    (Self : Settings) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return League.Strings.Empty_Universal_String;
    end File_Name;
@@ -148,6 +169,8 @@ package body League.Settings is
    ------------
 
    function Format (Self : Settings) return Formats is
+      pragma Unreferenced (Self);
+
    begin
       return Native;
    end Format;
@@ -157,6 +180,8 @@ package body League.Settings is
    -----------
 
    function Group (Self : Settings) return League.Strings.Universal_String is
+      pragma Unreferenced (Self);
+
    begin
       return League.Strings.Empty_Universal_String;
    end Group;
@@ -166,6 +191,8 @@ package body League.Settings is
    ------------------
 
    function Is_Writeable (Self : Settings) return Boolean is
+      pragma Unreferenced (Self);
+
    begin
       return False;
    end Is_Writeable;
@@ -175,7 +202,10 @@ package body League.Settings is
    -----------------------
 
    function Organization_Name
-    (Self : Settings) return League.Strings.Universal_String is
+    (Self : Settings) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return League.Strings.Empty_Universal_String;
    end Organization_Name;
@@ -196,6 +226,8 @@ package body League.Settings is
    -----------
 
    function Scope (Self : Settings) return Scopes is
+      pragma Unreferenced (Self);
+
    begin
       return System;
    end Scope;
@@ -228,6 +260,8 @@ package body League.Settings is
    ------------
 
    function Status (Self : Settings) return Statuses is
+      pragma Unreferenced (Self);
+
    begin
       return No_Error;
    end Status;
@@ -247,7 +281,11 @@ package body League.Settings is
 
    function Value
     (Self : Settings;
-     Key  : League.Strings.Universal_String) return League.Values.Value is
+     Key  : League.Strings.Universal_String) return League.Values.Value
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Key);
+
    begin
       return X : League.Values.Value;
    end Value;
