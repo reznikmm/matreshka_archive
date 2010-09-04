@@ -43,12 +43,14 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
+with Matreshka.Internals.Unicode.Properties;
 with Matreshka.Internals.Unicode.Ucd;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Unicode.Collation is
 
    use Matreshka.Internals.Strings;
+   use Matreshka.Internals.Unicode.Properties;
    use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Utf16;
 
@@ -135,8 +137,8 @@ package body Matreshka.Internals.Unicode.Collation is
 
          else
             --  Internal representation of string assumes there are no illegal
-            --  code points like noncharacters or unpaired surrogates in the
-            --  string, thus just skip generation of corresponding weights.
+            --  code points like unpaired surrogates in the string, thus only
+            --  noncharacter code points must be ignored.
 
             --  pragma Assert (Is_Legal_Unicode_Code_Point (Code);
 
@@ -156,6 +158,13 @@ package body Matreshka.Internals.Unicode.Collation is
                            in CJK_Ideograph_B_First .. CJK_Ideograph_B_Last
                then
                   Base := 16#FB80#;
+
+               elsif Is_Noncharacter_Code_Point (Code) then
+                  --  All noncharacter code points are invalid for collation
+                  --  and represented as [.0000.0000.0000] collation element,
+                  --  thus they are ignored.
+
+                  return;
                end if;
 
                Append (Collation_Array, (Base + Aaaa, 16#0020#, 16#0002#));
