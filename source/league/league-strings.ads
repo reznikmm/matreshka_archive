@@ -104,6 +104,10 @@ package League.Strings is
    --  Returns True when code point of the specified character is inside valid
    --  code point range and it is not a surrogate code point.
 
+   function Is_Noncharacter_Code_Point
+    (Self : Universal_Character'Class) return Boolean;
+   --  Code points permanently reserved for internal use.
+
    ----------------------
    -- Universal_String --
    ----------------------

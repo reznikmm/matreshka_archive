@@ -48,7 +48,8 @@ with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode.Casing;
 with Matreshka.Internals.Unicode.Collation;
 with Matreshka.Internals.Unicode.Normalization;
-with Matreshka.Internals.Unicode.Ucd.Core;
+with Matreshka.Internals.Unicode.Properties;
+with Matreshka.Internals.Unicode.Ucd;
 
 package body League.Strings is
 
@@ -57,7 +58,7 @@ package body League.Strings is
    use Matreshka.Internals.Strings.Compare;
    use Matreshka.Internals.Strings.Operations;
    use Matreshka.Internals.Unicode;
-   use Matreshka.Internals.Unicode.Ucd;
+   use Matreshka.Internals.Unicode.Properties;
    use Matreshka.Internals.Utf16;
 
    procedure To_Utf16_String
@@ -753,6 +754,18 @@ package body League.Strings is
    begin
       return Self.Data.Length = 0;
    end Is_Empty;
+
+   --------------------------------
+   -- Is_Noncharacter_Code_Point --
+   --------------------------------
+
+   function Is_Noncharacter_Code_Point
+    (Self : Universal_Character'Class) return Boolean is
+   begin
+      return
+        Self.Code in Code_Point
+          and then Is_Noncharacter_Code_Point (Self.Code);
+   end Is_Noncharacter_Code_Point;
 
    --------------
    -- Is_Valid --
