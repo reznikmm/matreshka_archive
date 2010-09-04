@@ -56,6 +56,17 @@ package body League.Strings.Internals is
       return League.Strings.Internals.Wrap (Item);
    end Create;
 
+   --------------
+   -- Get_Code --
+   --------------
+
+   function Get_Code
+    (Item : Universal_Character'Class)
+       return Matreshka.Internals.Unicode.Code_Unit_32 is
+   begin
+      return Item.Code;
+   end Get_Code;
+
    ----------------
    -- Get_Shared --
    ----------------

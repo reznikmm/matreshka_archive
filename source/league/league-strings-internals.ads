@@ -42,10 +42,16 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Strings;
+with Matreshka.Internals.Unicode;
 
 package League.Strings.Internals is
 
    pragma Preelaborate;
+
+   function Get_Code
+    (Item : Universal_Character'Class)
+       return Matreshka.Internals.Unicode.Code_Unit_32;
+   --  Returns internal code from Universal_Character.
 
    function Wrap
     (Data : not null Matreshka.Internals.Strings.Shared_String_Access)
