@@ -71,10 +71,6 @@ package body League.Strings is
    --  Detaches cursor from the list of cursors of Universal_String. Also
    --  reset associated object to null.
 
-   function Is_Legal_Unicode_Code_Point (Code : Code_Unit_32) return Boolean;
-   --  Returns True if specified code point is in code point range and not
-   --  a non-character or unpaired surrogates.
-
    ---------
    -- "&" --
    ---------
@@ -150,7 +146,7 @@ package body League.Strings is
       L_D : constant not null Shared_String_Access := Left.Data;
 
    begin
-      if not Is_Legal_Unicode_Code_Point (Wide_Wide_Character'Pos (Right)) then
+      if not Is_Valid (Wide_Wide_Character'Pos (Right)) then
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
@@ -185,7 +181,7 @@ package body League.Strings is
       R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
-      if not Is_Legal_Unicode_Code_Point (Wide_Wide_Character'Pos (Left)) then
+      if not Is_Valid (Wide_Wide_Character'Pos (Left)) then
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
@@ -442,7 +438,7 @@ package body League.Strings is
       P : constant Utf16_String_Index := Self.Data.Unused;
 
    begin
-      if not Is_Legal_Unicode_Code_Point (Item.Code) then
+      if not Is_Valid (Item.Code) then
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
@@ -461,7 +457,7 @@ package body League.Strings is
       P : constant Utf16_String_Index := Self.Data.Unused;
 
    begin
-      if not Is_Legal_Unicode_Code_Point (Wide_Wide_Character'Pos (Item)) then
+      if not Is_Valid (Wide_Wide_Character'Pos (Item)) then
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
@@ -758,36 +754,14 @@ package body League.Strings is
       return Self.Data.Length = 0;
    end Is_Empty;
 
-   ---------------------------------
-   -- Is_Legal_Unicode_Code_Point --
-   ---------------------------------
+   --------------
+   -- Is_Valid --
+   --------------
 
-   function Is_Legal_Unicode_Code_Point (Code : Code_Unit_32) return Boolean is
+   function Is_Valid (Self : Universal_Character'Class) return Boolean is
    begin
-      return
-        Code in Code_Point
-          and then Core.Property
-                    (First_Stage_Index (Code / Second_Stage_Index'Modulus))
-                    (Second_Stage_Index
-                      (Code mod Second_Stage_Index'Modulus)).GC /= Surrogate
-          and then not Core.Property
-                        (First_Stage_Index (Code / Second_Stage_Index'Modulus))
-                        (Second_Stage_Index
-                          (Code mod Second_Stage_Index'Modulus)).B
-                            (Noncharacter_Code_Point);
-   end Is_Legal_Unicode_Code_Point;
-
-   ---------------------------------
-   -- Is_Legal_Unicode_Code_Point --
-   ---------------------------------
-
-   function Is_Legal_Unicode_Code_Point
-    (Self : Universal_Character'Class)
-       return Boolean
-   is
-   begin
-      return Is_Legal_Unicode_Code_Point (Self.Code);
-   end Is_Legal_Unicode_Code_Point;
+      return Is_Valid (Self.Code);
+   end Is_Valid;
 
    ------------
    -- Length --
@@ -1166,7 +1140,7 @@ package body League.Strings is
          Destination := Allocate (Source'Length);
 
          for J in Source'Range loop
-            if not Is_Legal_Unicode_Code_Point
+            if not Is_Valid
                 (Wide_Wide_Character'Pos (Source (J)))
             then
                raise Constraint_Error with "Illegal Unicode code point";
