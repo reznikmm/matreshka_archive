@@ -111,7 +111,7 @@ package body Matreshka.Internals.Regexps.Compiler is
    is
       pragma Assert (Pattern.AST (Node).List = 0);
 
-      J : Natural := Pattern.List (List).Tail;
+      J : constant Natural := Pattern.List (List).Tail;
 
    begin
       if J = 0 then

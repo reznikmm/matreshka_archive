@@ -81,15 +81,6 @@ package Matreshka.Internals.XML.Symbol_Tables is
    --  Lookup symbol table for name and returns its identifier if present,
    --  otherwise add new name and returns allocated identifier.
 
-   function Lookup
-    (Self   : Symbol_Table;
-     String : not null Matreshka.Internals.Strings.Shared_String_Access;
-     First  : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Length : Natural) return Symbol_Identifier;
-   --  Lookup symbol table for name and returns its identifier. Returns
-   --  No_Symbol when there is no name in the table.
-
    function Name
     (Self       : Symbol_Table;
      Identifier : Symbol_Identifier)

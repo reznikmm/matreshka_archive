@@ -48,9 +48,13 @@ package body League.Environment_Variables is
    -- "=" --
    ---------
 
-   function "="
+   overriding function "="
     (Left  : Environment_Variable_Set;
-     Right : Environment_Variable_Set) return Boolean is
+     Right : Environment_Variable_Set) return Boolean
+   is
+      pragma Unreferenced (Left);
+      pragma Unreferenced (Right);
+
    begin
       return False;
    end "=";
@@ -70,7 +74,11 @@ package body League.Environment_Variables is
 
    function Contains
     (Self : Environment_Variable_Set'Class;
-     Name : League.Strings.Universal_String) return Boolean is
+     Name : League.Strings.Universal_String) return Boolean
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Name);
+
    begin
       return False;
    end Contains;
@@ -107,7 +115,11 @@ package body League.Environment_Variables is
      Name          : League.Strings.Universal_String;
      Default_Value : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String)
-       return League.Strings.Universal_String is
+         return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Name);
+
    begin
       return Default_Value;
    end Value;

@@ -458,7 +458,6 @@ private
    end record;
 
    overriding procedure Adjust (Self : in out Universal_String_Vector);
-   pragma Inline (Adjust);
 
    overriding procedure Finalize (Self : in out Universal_String_Vector);
 

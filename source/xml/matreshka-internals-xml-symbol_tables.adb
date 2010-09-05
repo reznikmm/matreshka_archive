@@ -467,20 +467,6 @@ package body Matreshka.Internals.XML.Symbol_Tables is
       return Self.Table (Self.Table (Identifier).Local_Name).String;
    end Local_Name;
 
-   ------------
-   -- Lookup --
-   ------------
-
-   function Lookup
-    (Self   : Symbol_Table;
-     String : not null Matreshka.Internals.Strings.Shared_String_Access;
-     First  : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Length : Natural) return Symbol_Identifier is
-   begin
-      return No_Symbol;
-   end Lookup;
-
    ----------
    -- Name --
    ----------

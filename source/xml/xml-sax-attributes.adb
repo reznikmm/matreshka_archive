@@ -165,7 +165,7 @@ package body XML.SAX.Attributes is
     (Self  : SAX_Attributes'Class;
      Index : Positive) return Boolean is
    begin
-      if Index not in 1 .. Self.Data.Length then
+      if Index > Self.Data.Length then
          raise Constraint_Error;
       end if;
 
@@ -180,7 +180,11 @@ package body XML.SAX.Attributes is
    function Is_Declared
     (Self           : SAX_Attributes'Class;
      Qualified_Name : League.Strings.Universal_String)
-       return Boolean is
+       return Boolean
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Qualified_Name);
+
    begin
       return False;
       --  XXX Not supported.
@@ -194,7 +198,12 @@ package body XML.SAX.Attributes is
     (Self          : SAX_Attributes'Class;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
-       return Boolean is
+       return Boolean
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Namespace_URI);
+      pragma Unreferenced (Local_Name);
+
    begin
       return False;
       --  XXX Not supported.
@@ -217,7 +226,7 @@ package body XML.SAX.Attributes is
     (Self  : SAX_Attributes'Class;
      Index : Positive) return Boolean is
    begin
-      if Index not in 1 .. Self.Data.Length then
+      if Index > Self.Data.Length then
          raise Constraint_Error;
       end if;
 
@@ -287,7 +296,7 @@ package body XML.SAX.Attributes is
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String is
    begin
-      if Index not in 1 .. Self.Data.Length then
+      if Index > Self.Data.Length then
          raise Constraint_Error;
       end if;
 
@@ -302,12 +311,27 @@ package body XML.SAX.Attributes is
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String is
    begin
-      if Index not in 1 .. Self.Data.Length then
+      if Index > Self.Data.Length then
          raise Constraint_Error;
       end if;
 
       return Create (Self.Data.Values (Index).Namespace_URI);
    end Namespace_URI;
+
+   --------------------
+   -- Qualified_Name --
+   --------------------
+
+   function Qualified_Name
+    (Self  : SAX_Attributes;
+     Index : Positive) return League.Strings.Universal_String is
+   begin
+      if Index > Self.Data.Length then
+         raise Constraint_Error;
+      end if;
+
+      return Create (Self.Data.Values (Index).Qualified_Name);
+   end Qualified_Name;
 
    ---------------
    -- Reference --
@@ -320,21 +344,6 @@ package body XML.SAX.Attributes is
       end if;
    end Reference;
 
-   --------------------
-   -- Qualified_Name --
-   --------------------
-
-   function Qualified_Name
-    (Self  : SAX_Attributes;
-     Index : Positive) return League.Strings.Universal_String is
-   begin
-      if Index not in 1 .. Self.Data.Length then
-         raise Constraint_Error;
-      end if;
-
-      return Create (Self.Data.Values (Index).Qualified_Name);
-   end Qualified_Name;
-
    -----------
    -- Value --
    -----------
@@ -343,7 +352,7 @@ package body XML.SAX.Attributes is
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String is
    begin
-      if Index not in 1 .. Self.Data.Length then
+      if Index > Self.Data.Length then
          raise Constraint_Error;
       end if;
 
@@ -401,7 +410,7 @@ package body XML.SAX.Attributes is
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String is
    begin
-      if Index not in 1 .. Self.Data.Length then
+      if Index > Self.Data.Length then
          raise Constraint_Error;
       end if;
 

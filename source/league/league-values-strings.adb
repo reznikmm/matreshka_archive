@@ -53,6 +53,8 @@ package body League.Values.Strings is
 --  XXX GNAT 20090503 bug
      return Container_Access
    is
+      pragma Unreferenced (Self);
+
    begin
       return new String_Container;
    end Allocate;

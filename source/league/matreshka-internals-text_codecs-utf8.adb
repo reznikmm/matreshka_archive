@@ -114,7 +114,10 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
 
    overriding function Create_State
     (Self : UTF8_Decoder;
-     Mode : Decoder_Mode) return Abstract_Decoder_State'Class is
+     Mode : Decoder_Mode) return Abstract_Decoder_State'Class
+   is
+      pragma Unreferenced (Self);
+
    begin
       case Mode is
          when Raw =>

@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Compare;
-with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Text_Codecs.IANA_Registry;
 with Matreshka.Internals.Text_Codecs.ISO88591;
 with Matreshka.Internals.Text_Codecs.UTF16;
@@ -63,7 +62,7 @@ package body Matreshka.Internals.Text_Codecs is
 
    MIB_ISO88591 : constant Character_Set := 4;
 
-   Decoders : array (Character_Set) of Decoder_Access
+   Decoders : constant array (Character_Set) of Decoder_Access
      := (MIB_ISO88591 => ISO88591.Decoder'Access,
          MIB_UTF8     => UTF8.Decoder'Access,
          MIB_UTF16BE  => UTF16.BE_Decoder'Access,
@@ -189,7 +188,10 @@ package body Matreshka.Internals.Text_Codecs is
    procedure Unchecked_Append_Raw
     (Self   : in out Abstract_Decoder_State'Class;
      Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
-     Code   : Matreshka.Internals.Unicode.Code_Point) is
+     Code   : Matreshka.Internals.Unicode.Code_Point)
+   is
+      pragma Unreferenced (Self);
+
    begin
       Matreshka.Internals.Utf16.Unchecked_Store
        (Buffer.Value, Buffer.Unused, Code);

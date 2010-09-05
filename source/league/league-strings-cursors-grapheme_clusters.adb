@@ -122,7 +122,7 @@ package body League.Strings.Cursors.Grapheme_Clusters is
          raise Program_Error with "Invalid iterator";
       end if;
 
-      if Self.Current_Position not in 0 .. Self.Object.Data.Unused - 1 then
+      if Self.Current_Position >= Self.Object.Data.Unused then
          raise Constraint_Error with "Cursor out of range";
       end if;
 
@@ -181,7 +181,10 @@ package body League.Strings.Cursors.Grapheme_Clusters is
       if Self.Current_Position /= Utf16_String_Index'Last then
          if Self.Current_Position /= 0 then
             Unchecked_Previous
-             (D.Value, Self.Previous_Position, Self.Previous_State, Self.Locale);
+             (D.Value,
+              Self.Previous_Position,
+              Self.Previous_State,
+              Self.Locale);
             Self.Previous_Length := 1;
 
             while Self.Previous_Position /= 0 loop

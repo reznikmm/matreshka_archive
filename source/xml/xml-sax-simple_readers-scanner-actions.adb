@@ -535,6 +535,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Boolean
    is
       Success : Boolean;
+      pragma Unreferenced (Success);
 
    begin
       if Self.External_Subset_Entity /= No_Entity

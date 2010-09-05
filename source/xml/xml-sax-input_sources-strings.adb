@@ -82,7 +82,12 @@ package body XML.SAX.Input_Sources.Strings is
      Version  : League.Strings.Universal_String;
      Encoding : League.Strings.Universal_String;
      Rescan   : out Boolean;
-     Success  : out Boolean) is
+     Success  : out Boolean)
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Version);
+      pragma Unreferenced (Encoding);
+
    begin
       Rescan := False;
       Success := True;

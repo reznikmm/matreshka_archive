@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Utf16;
 
 package body League.Strings.Cursors.Characters is
 
@@ -151,6 +150,10 @@ package body League.Strings.Cursors.Characters is
      Removed_Last  : Natural;
      Inserted_Last : Natural)
    is
+      pragma Unreferenced (Changed_First);
+      pragma Unreferenced (Removed_Last);
+      pragma Unreferenced (Inserted_Last);
+
    begin
 --      if Self.Current in Changed_First .. Removed_Last then
          Self.Object := null;

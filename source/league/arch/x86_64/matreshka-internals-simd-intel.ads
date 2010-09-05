@@ -141,7 +141,7 @@ package Matreshka.Internals.SIMD.Intel is
 --   type Unsigned_8_Vector_16 is private;
 --   pragma Preelaborable_Initialization (Unsigned_8_Vector_16);
 --
---private
+--  private
 --
 --   --  Internal data types for implementing the intrinsics.
 --

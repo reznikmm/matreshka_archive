@@ -50,9 +50,12 @@ package body XML.SAX.Default_Handlers is
 
    overriding function Error_String
     (Self : SAX_Default_Handler)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
-      return X : League.Strings.Universal_String;
+      return League.Strings.Empty_Universal_String;
    end Error_String;
 
 end XML.SAX.Default_Handlers;

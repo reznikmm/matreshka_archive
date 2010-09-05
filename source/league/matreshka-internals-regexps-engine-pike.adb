@@ -140,8 +140,16 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                end loop;
 
             when Split =>
-               Add (Program.Instructions (PC).Next, S, Start_Of_Line, End_Of_Line);
-               Add (Program.Instructions (PC).Another, S, Start_Of_Line, End_Of_Line);
+               Add
+                 (Program.Instructions (PC).Next,
+                  S,
+                  Start_Of_Line,
+                  End_Of_Line);
+               Add
+                 (Program.Instructions (PC).Another,
+                  S,
+                  Start_Of_Line,
+                  End_Of_Line);
 
             when Save =>
                if Program.Instructions (PC).Start then
@@ -152,7 +160,11 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                   S (Program.Instructions (PC).Slot).Next_Index    := SI;
                end if;
 
-               Add (Program.Instructions (PC).Next, S, Start_Of_Line, End_Of_Line);
+               Add
+                 (Program.Instructions (PC).Next,
+                  S,
+                  Start_Of_Line,
+                  End_Of_Line);
 
             when I_Anchor =>
                declare
@@ -160,7 +172,7 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
 
                begin
                   if Program.Instructions (PC).Start_Of_Line then
-                     Match := Match and Start_Of_Line;
+                     Match := Start_Of_Line;
                   end if;
 
                   if Program.Instructions (PC).End_Of_Line then
@@ -168,7 +180,11 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                   end if;
 
                   if Match then
-                     Add (Program.Instructions (PC).Next, S, Start_Of_Line, End_Of_Line);
+                     Add
+                       (Program.Instructions (PC).Next,
+                        S,
+                        Start_Of_Line,
+                        End_Of_Line);
                   end if;
                end;
 
@@ -178,7 +194,8 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
       end Add;
 
       PC      : Positive := 1;
-      SS      : Regexps.Slice_Array (0 .. Program.Captures) := (others => (0, 1, 0, 1));
+      SS      : Regexps.Slice_Array (0 .. Program.Captures)
+        := (others => (0, 1, 0, 1));
       Code    : Matreshka.Internals.Unicode.Code_Point;
       T       : Integer;
       SOL     : Boolean := True;
@@ -252,12 +269,14 @@ package body Matreshka.Internals.Regexps.Engine.Pike is
                            R :=
                              Program.Instructions (PC).Value.GC_Flags
                               (Element
-                                (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).GC);
+                                (Matreshka.Internals.Unicode.Ucd.Core.Property,
+                                 Code).GC);
 
                         when Binary =>
                            R :=
                              Element
-                              (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
+                              (Matreshka.Internals.Unicode.Ucd.Core.Property,
+                               Code).B
                                 (Program.Instructions (PC).Value.Property);
                      end case;
 

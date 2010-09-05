@@ -41,9 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Conversion;
-with Interfaces;
-
 with Matreshka.Internals.SIMD.Intel;
 with Matreshka.Internals.Strings.Constants;
 
@@ -57,7 +54,6 @@ procedure Fill_Null_Terminator (Self : not null Shared_String_Access) is
    --  Suppress alignment check of Value below which is generated because of
    --  bug in the GNAT GPL 2010 compiler.
 
-   use Interfaces;
    use Matreshka.Internals.SIMD.Intel;
    use Matreshka.Internals.Strings.Constants;
 

@@ -64,6 +64,8 @@ package body Matreshka.Internals.Translator is
      Disambiguation : League.Strings.Universal_String)
        return League.Strings.Universal_String
    is
+      pragma Unreferenced (Disambiguation);
+
       use Context_Maps;
       use Universal_String_Maps;
 

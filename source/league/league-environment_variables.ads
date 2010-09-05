@@ -69,7 +69,7 @@ package League.Environment_Variables is
        := League.Strings.Empty_Universal_String)
        return League.Strings.Universal_String;
 
-   function "="
+   overriding function "="
     (Left  : Environment_Variable_Set;
      Right : Environment_Variable_Set) return Boolean;
 

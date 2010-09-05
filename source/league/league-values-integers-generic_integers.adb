@@ -53,6 +53,8 @@ package body League.Values.Integers.Generic_Integers is
 --  XXX GNAT 20090503 bug
      return Container_Access
    is
+      pragma Unreferenced (Self);
+
    begin
       return new Integer_Container;
    end Allocate;
@@ -63,8 +65,7 @@ package body League.Values.Integers.Generic_Integers is
 
    overriding function Constructor
     (Value : not null access Matreshka.Internals.Host_Types.Longest_Integer)
-       return Integer_Container
-   is
+       return Integer_Container is
    begin
       return
         Integer_Container'(Abstract_Container with Value => Num (Value.all));
@@ -88,8 +89,7 @@ package body League.Values.Integers.Generic_Integers is
    ---------
 
    overriding function Get (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer
-   is
+     return Matreshka.Internals.Host_Types.Longest_Integer is
    begin
       return Matreshka.Internals.Host_Types.Longest_Integer (Self.Value);
    end Get;
@@ -134,8 +134,7 @@ package body League.Values.Integers.Generic_Integers is
 
    overriding procedure Set
     (Self : not null access Integer_Container;
-     To   : Matreshka.Internals.Host_Types.Longest_Integer)
-   is
+     To   : Matreshka.Internals.Host_Types.Longest_Integer) is
    begin
       Self.Value := Num (To);
    end Set;
@@ -146,8 +145,7 @@ package body League.Values.Integers.Generic_Integers is
 
    procedure Set
     (Self : in out Value;
-     To   : Num)
-   is
+     To   : Num) is
    begin
       Set
        (Self,

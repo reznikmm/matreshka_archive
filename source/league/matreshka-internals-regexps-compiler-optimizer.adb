@@ -204,18 +204,20 @@ package body Matreshka.Internals.Regexps.Compiler.Optimizer is
     (Pattern : not null Shared_Pattern_Access;
      Node    : Natural)
    is
-      List     : Node_List_Index := Pattern.AST (Node).List;
-      Previous : Natural := Get_Previous_Sibling (Pattern, Node);
-      Next     : Natural := Get_Next_Sibling (Pattern, Node);
-      Parent   : Natural := Pattern.List (List).Parent;
+      List     : constant Node_List_Index := Pattern.AST (Node).List;
+      Previous : constant Natural := Get_Previous_Sibling (Pattern, Node);
+      Next     : constant Natural := Get_Next_Sibling (Pattern, Node);
+      Parent   : constant Natural := Pattern.List (List).Parent;
 
    begin
       if Previous = 0 and then Next = 0 then
          case Pattern.AST (Parent).Kind is
             when N_Alternation =>
                declare
-                  Previous : Natural := Get_Previous_Sibling (Pattern, Parent);
-                  Next     : Natural := Get_Next_Sibling (Pattern, Parent);
+                  Previous : constant Natural
+                    := Get_Previous_Sibling (Pattern, Parent);
+                  Next     : constant Natural
+                    := Get_Next_Sibling (Pattern, Parent);
 
                begin
                   if Previous = 0 and then Next = 0 then

@@ -72,7 +72,10 @@ package body Matreshka.Internals.Translator.XLIFF_Readers is
    overriding procedure Characters
     (Self    : in out XLIFF_Reader;
      Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       if Self.In_Source then
          Self.Source.Append (Text);
@@ -91,7 +94,11 @@ package body Matreshka.Internals.Translator.XLIFF_Readers is
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
-     Success        : in out Boolean) is
+     Success        : in out Boolean)
+   is
+      pragma Unreferenced (Qualified_Name);
+      pragma Unreferenced (Success);
+
    begin
       if Namespace_URI = XLIFF_1_2_NS
         and Local_Name = Source_Name
@@ -111,7 +118,10 @@ package body Matreshka.Internals.Translator.XLIFF_Readers is
    ------------------
 
    overriding function Error_String
-    (Self : XLIFF_Reader) return League.Strings.Universal_String is
+    (Self : XLIFF_Reader) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return League.Strings.Empty_Universal_String;
    end Error_String;
@@ -128,6 +138,9 @@ package body Matreshka.Internals.Translator.XLIFF_Readers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean)
    is
+      pragma Unreferenced (Qualified_Name);
+      pragma Unreferenced (Success);
+
       use Context_Maps;
 
    begin

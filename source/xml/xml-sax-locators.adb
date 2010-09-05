@@ -139,10 +139,7 @@ package body XML.SAX.Locators is
    -------------
 
    function Version
-    (Self : SAX_Locator'Class) return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Self);
-
+    (Self : SAX_Locator'Class) return League.Strings.Universal_String is
    begin
       if Self.Data.Version = 0 then
          return League.Strings.To_Universal_String ("1.0");

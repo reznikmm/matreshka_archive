@@ -161,7 +161,8 @@ package Matreshka.Internals.Regexps is
    type AST_Array is array (Positive range <>) of Node;
    type Node_List_Array is array (Node_List_Index range <>) of Node_List;
 
-   type Shared_Pattern (Size : Natural; List_Size : Node_List_Count) is limited record
+   type Shared_Pattern (Size : Natural; List_Size : Node_List_Count) is limited
+   record
       Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
