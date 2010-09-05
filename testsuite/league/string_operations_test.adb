@@ -160,7 +160,7 @@ begin
 
    declare
       S : Universal_String := To_Universal_String ("a,,c,");
-      V : Universal_String_Vector := Split (S, ',');
+      V : Universal_String_Vector := S.Split (',');
 
    begin
       if V.Element (1) /= To_Universal_String ("a") then
