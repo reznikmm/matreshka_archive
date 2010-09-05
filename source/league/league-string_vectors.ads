@@ -42,53 +42,11 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --  Vector of Universal_String.
+--
+--  Content of this package is part of League.Strings package to resolve
+--  circular dependencies. In Ada2012 extended semantic of limited with
+--  clause will allow to separate string vector package from string package.
 ------------------------------------------------------------------------------
-private with Ada.Finalization;
-
 with League.Strings;
-private with Matreshka.Internals.String_Vectors;
 
-package League.String_Vectors is
-
-   pragma Preelaborate;
-
-   type Universal_String_Vector is tagged private;
-   pragma Preelaborable_Initialization (Universal_String_Vector);
-
-   Empty_Universal_String_Vector : constant Universal_String_Vector;
-
-   function Length (Self : Universal_String_Vector) return Natural;
-
-   function Element
-    (Self  : Universal_String_Vector;
-     Index : Positive) return League.Strings.Universal_String;
-
-   --  Ada2012: Split must be operations of Universal_String, but they raises
-   --  circular dependencies in Ada2005, which resolved in Ada2012, so it will
-   --  be moved to League.Strings once we switch to use Ada2012 compiler.
-
-   function Split
-    (Self      : League.Strings.Universal_String;
-     Separator : League.Strings.Universal_Character)
-       return Universal_String_Vector;
-
-   function Split
-    (Self      : League.Strings.Universal_String;
-     Separator : Wide_Wide_Character) return Universal_String_Vector;
-
-private
-
-   type Universal_String_Vector is new Ada.Finalization.Controlled with record
-      Data : Matreshka.Internals.String_Vectors.Shared_String_Vector_Access
-       := Matreshka.Internals.String_Vectors.Empty_Shared_String_Vector'Access;
-   end record;
-
-   overriding procedure Adjust (Self : in out Universal_String_Vector);
-   pragma Inline (Adjust);
-
-   overriding procedure Finalize (Self : in out Universal_String_Vector);
-
-   Empty_Universal_String_Vector : constant Universal_String_Vector
-     := (Ada.Finalization.Controlled with others => <>);
-
-end League.String_Vectors;
+package League.String_Vectors renames League.Strings;

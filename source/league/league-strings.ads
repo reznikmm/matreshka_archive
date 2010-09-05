@@ -42,23 +42,25 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --  This package provides abstractions for Unicode characters (code points),
---  strings (sequences of Unicode code points), and string's slices. All
---  operations in this package and its children packages depends from the
---  current or explicitly specified locale.
+--  strings (sequences of Unicode code points), string's slices, and vectors
+--  of strings. Many operations in this package and its children packages
+--  depends from the current or explicitly specified locale.
 --
---  The primary purpose of Universal_Character type is provide the gateway to
+--  Primary purpose of Universal_Character type is provide the gateway to
 --  Unicode Character Database.
 --
---  The Universal_String type provides unbounded strings of Unicode characters.
+--  Universal_String type provides unbounded strings of Unicode characters.
 --  It utilizes implicit sharing technology (also known as copy-on-write), so
 --  copy operations has constant execution time.
 --
---  The Universal_Slice is intended to be used primary when its period of life
+--  Universal_Slice is intended to be used primary when its period of life
 --  is inside of period of life of referenced string. There are two important
 --  advantages to use it: (1) slice data is not copied, (2) additional memory
 --  is not allocated. Nethertheless, some operations on slices can be less
 --  efficient, because data is not alligned properly as in string case.
---  
+--
+--  Universal_String_Vector is unbounded form of vector of Universal_String.
+--
 --  Cursors child package and its children provides different kinds of
 --  iterators - character, grapheme cluster, word, sentence, line breaks.
 --  See these packages for detailed information.
@@ -66,6 +68,7 @@
 private with Ada.Finalization;
 private with Ada.Streams;
 
+private with Matreshka.Internals.String_Vectors;
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
@@ -76,17 +79,22 @@ package League.Strings is
 --   pragma Remote_Types;
 
    type Universal_Character is tagged private;
+   pragma Preelaborable_Initialization (Universal_Character);
 
    type Universal_String is tagged private;
 
    type Universal_Slice is tagged private;
 
-   Empty_Universal_String : constant Universal_String;
+   type Universal_String_Vector is tagged private;
+   pragma Preelaborable_Initialization (Universal_String_Vector);
 
    type Sort_Key is private;
    pragma Preelaborable_Initialization (Sort_Key);
 
    type Hash_Type is mod 2 ** 32;
+
+   Empty_Universal_String        : constant Universal_String;
+   Empty_Universal_String_Vector : constant Universal_String_Vector;
 
    -------------------------
    -- Universal_Character --
@@ -215,6 +223,20 @@ package League.Strings is
      High : Natural;
      By   : Wide_Wide_String);
 
+   function Split
+    (Self      : Universal_String'Class;
+     Separator : Universal_Character'Class) return Universal_String_Vector;
+   --  Splits the string into substrings wherever Separator occurs, and returns
+   --  the list of those strings. If Separator does not match anywhere in the
+   --  string, returns a single-element list containing this string.
+
+   function Split
+    (Self      : Universal_String'Class;
+     Separator : Wide_Wide_Character) return Universal_String_Vector;
+   --  Splits the string into substrings wherever Separator occurs, and returns
+   --  the list of those strings. If Separator does not match anywhere in the
+   --  string, returns a single-element list containing this string.
+
    -----------------
    -- Conversions --
    -----------------
@@ -290,6 +312,16 @@ package League.Strings is
    function "<=" (Left : Sort_Key; Right : Sort_Key) return Boolean;
    function ">" (Left : Sort_Key; Right : Sort_Key) return Boolean;
    function ">=" (Left : Sort_Key; Right : Sort_Key) return Boolean;
+
+   -----------------------------
+   -- Universal_String_Vector --
+   -----------------------------
+
+   function Length (Self : Universal_String_Vector'Class) return Natural;
+
+   function Element
+    (Self  : Universal_String_Vector'Class;
+     Index : Positive) return League.Strings.Universal_String;
 
 private
 
@@ -415,6 +447,23 @@ private
    overriding procedure Adjust (Self : in out Sort_Key);
 
    overriding procedure Finalize (Self : in out Sort_Key);
+
+   -----------------------------
+   -- Universal_String_Vector --
+   -----------------------------
+
+   type Universal_String_Vector is new Ada.Finalization.Controlled with record
+      Data : Matreshka.Internals.String_Vectors.Shared_String_Vector_Access
+       := Matreshka.Internals.String_Vectors.Empty_Shared_String_Vector'Access;
+   end record;
+
+   overriding procedure Adjust (Self : in out Universal_String_Vector);
+   pragma Inline (Adjust);
+
+   overriding procedure Finalize (Self : in out Universal_String_Vector);
+
+   Empty_Universal_String_Vector : constant Universal_String_Vector
+     := (Ada.Finalization.Controlled with others => <>);
 
    pragma Inline ("=");
    pragma Inline ("<");

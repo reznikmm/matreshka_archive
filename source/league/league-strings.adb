@@ -54,6 +54,7 @@ with Matreshka.Internals.Unicode.Ucd;
 package body League.Strings is
 
    use League.Strings.Internals;
+   use Matreshka.Internals.String_Vectors;
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Strings.Compare;
    use Matreshka.Internals.Strings.Operations;
@@ -414,6 +415,15 @@ package body League.Strings is
    end Adjust;
 
    ------------
+   -- Adjust --
+   ------------
+
+   overriding procedure Adjust (Self : in out Universal_String_Vector) is
+   begin
+      Matreshka.Internals.String_Vectors.Reference (Self.Data);
+   end Adjust;
+
+   ------------
    -- Append --
    ------------
 
@@ -633,6 +643,21 @@ package body League.Strings is
       end if;
    end Element;
 
+   -------------
+   -- Element --
+   -------------
+
+   function Element
+    (Self  : Universal_String_Vector'Class;
+     Index : Positive) return League.Strings.Universal_String is
+   begin
+      if Index > Self.Data.Length then
+         raise Constraint_Error with "Index is out of range";
+      end if;
+
+      return Create (Self.Data.Value (Index));
+   end Element;
+
    ------------------
    -- Emit_Changed --
    ------------------
@@ -727,6 +752,21 @@ package body League.Strings is
       end if;
    end Finalize;
 
+   --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize (Self : in out Universal_String_Vector) is
+   begin
+      --  Finalize can be called more than once (as specified by language
+      --  standard), thus implementation should provide protection from
+      --  multiple finalization.
+
+      if Self.Data /= null then
+         Dereference (Self.Data);
+      end if;
+   end Finalize;
+
    ----------
    -- Hash --
    ----------
@@ -781,6 +821,15 @@ package body League.Strings is
    ------------
 
    function Length (Self : Universal_String'Class) return Natural is
+   begin
+      return Self.Data.Length;
+   end Length;
+
+   ------------
+   -- Length --
+   ------------
+
+   function Length (Self : Universal_String_Vector'Class) return Natural is
    begin
       return Self.Data.Length;
    end Length;
@@ -947,6 +996,79 @@ package body League.Strings is
 
       return Wrap (Slice (D, First, Size, Length));
    end Slice;
+
+   -----------
+   -- Split --
+   -----------
+
+   function Split
+    (Self      : Universal_String'Class;
+     Separator : Wide_Wide_Character) return Universal_String_Vector is
+   begin
+      return Split (Self, To_Universal_Character (Separator));
+   end Split;
+
+   -----------
+   -- Split --
+   -----------
+
+   function Split
+    (Self      : Universal_String'Class;
+     Separator : Universal_Character'Class) return Universal_String_Vector
+   is
+      D : constant not null Shared_String_Access := Self.Data;
+      C : constant Code_Unit_32                  := Separator.Code;
+
+      First_Position   : Utf16_String_Index := 0;
+      First_Index      : Positive := 1;
+      Current_Position : Utf16_String_Index := 0;
+      Current_Index    : Positive := 1;
+      Last_Position    : Utf16_String_Index;
+      Last_Index       : Natural;
+      Code             : Code_Point;
+      S                : Shared_String_Access;
+      R                : not null Shared_String_Vector_Access := Allocate (1);
+
+   begin
+      if not Is_Valid (C) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      if D.Length = 0 then
+         return Empty_Universal_String_Vector;
+      end if;
+
+      while Current_Position < D.Unused loop
+         Last_Position := Current_Position;
+         Last_Index    := Current_Index;
+         Unchecked_Next (D.Value, Current_Position, Code);
+         Current_Index := Current_Index + 1;
+
+         if Code = C then
+            S :=
+              Slice
+               (D,
+                First_Position,
+                Last_Position - First_Position,
+                Last_Index - First_Index);
+            Append (R, S);
+            First_Position := Current_Position;
+            First_Index    := Current_Index;
+         end if;
+      end loop;
+
+      if First_Position <= D.Unused then
+         S :=
+           Slice
+            (D,
+             First_Position,
+             D.Unused - First_Position,
+             D.Length - First_Index + 1);
+         Append (R, S);
+      end if;
+
+      return (Ada.Finalization.Controlled with Data => R);
+   end Split;
 
    -----------------
    -- To_Casefold --
