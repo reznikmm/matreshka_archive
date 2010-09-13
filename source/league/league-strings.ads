@@ -69,8 +69,10 @@ private with Ada.Finalization;
 private with Ada.Streams;
 
 private with Matreshka.Internals.String_Vectors;
-private with Matreshka.Internals.Strings;
-private with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Strings;
+with Matreshka.Internals.Unicode;
+--  GNAT GPL 2009/GNAT FSF 4.4: compiler unable to setup proper visibility of
+--  ordinary with clause in child package.
 private with Matreshka.Internals.Utf16;
 
 package League.Strings is

@@ -47,7 +47,9 @@ private with Ada.Finalization;
 
 with League.Strings;
 private with Matreshka.Internals.Atomics.Counters;
-private with Matreshka.Internals.Strings;
+with Matreshka.Internals.Strings;
+--  GNAT GPL 2009/GNAT FSF 4.4: compiler unable to setup proper visibility of
+--  ordinary with clause in child package.
 
 package XML.SAX.Attributes is
 
