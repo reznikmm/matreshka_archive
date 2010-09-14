@@ -81,7 +81,7 @@ package Matreshka.Internals.Text_Codecs is
    --  its state created with corresponding mode.
 
    type Abstract_Decoder is abstract tagged private;
-   --  Abstract root tagged type for decoder's states.
+   --  Abstract root tagged type for decoders.
 
    type Decoder_Access is access all Abstract_Decoder'Class;
 
@@ -122,16 +122,22 @@ package Matreshka.Internals.Text_Codecs is
    type Abstract_Encoder is abstract tagged limited null record;
    --  Abstract root tagged type for encoders.
 
-   type Abstract_Encoder_State is abstract tagged limited null record;
-
    not overriding procedure Encode
-    (Self   : in out Abstract_Encoder_State;
+    (Self   : in out Abstract_Encoder;
      String : not null Matreshka.Internals.Strings.Shared_String_Access;
      Buffer : out Stream_Element_Array_Access) is abstract;
 
+   type Encoder_Factory is access function return Abstract_Encoder'Class;
+
+   ----------------------
+   -- Factory registry --
+   ----------------------
+
    function Decoder (Set : Character_Set) return Decoder_Factory;
-   --  Returns decoder for the specified character set. Decoder is global
-   --  object and must not be deallocated.
+   --  Returns decoder factory for the specified character set.
+
+   function Encoder (Set : Character_Set) return Encoder_Factory;
+   --  Returns encoder factory for the specified character set.
 
 private
 

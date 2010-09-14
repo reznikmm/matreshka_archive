@@ -69,6 +69,9 @@ package body Matreshka.Internals.Text_Codecs is
          MIB_UTF16LE  => UTF16.LE_Decoder'Access,
          others       => null);
 
+   Encoders : constant array (Character_Set) of Encoder_Factory
+     := (others => null);
+
    ------------
    -- Decode --
    ------------
@@ -98,6 +101,15 @@ package body Matreshka.Internals.Text_Codecs is
    begin
       return Decoders (Set);
    end Decoder;
+
+   -------------
+   -- Encoder --
+   -------------
+
+   function Encoder (Set : Character_Set) return Encoder_Factory is
+   begin
+      return Encoders (Set);
+   end Encoder;
 
    ----------------------
    -- To_Character_Set --
