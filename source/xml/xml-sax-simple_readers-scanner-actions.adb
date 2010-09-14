@@ -1946,6 +1946,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
         E,
         Symbol);
 
+      Error := False;
+
       if Self.Namespaces.Enabled and not Not_Qname then
          case E is
             when Valid =>
@@ -1958,9 +1960,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                    (Self.all,
                     League.Strings.To_Universal_String
                      ("[NSXML1.1] qualified name must not be used here"));
-
-               else
-                  Error := False;
                end if;
 
             when Colon_At_Start =>
