@@ -89,4 +89,16 @@ package body League.Text_Codecs is
       return League.Strings.Internals.Wrap (Result);
    end Decode;
 
+   ------------
+   -- Encode --
+   ------------
+
+   function Encode
+    (Self : Text_Codec;
+     Data : League.Strings.Universal_String)
+       return League.Stream_Element_Vectors.Stream_Element_Vector is
+   begin
+      return League.Stream_Element_Vectors.Empty_Stream_Element_Vector;
+   end Encode;
+
 end League.Text_Codecs;

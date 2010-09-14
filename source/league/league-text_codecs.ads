@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Streams;
 
+with League.Stream_Element_Vectors;
 with League.Strings;
 private with Matreshka.Internals.Text_Codecs;
 
@@ -55,6 +56,12 @@ package League.Text_Codecs is
      Data : Ada.Streams.Stream_Element_Array)
        return League.Strings.Universal_String;
    --  Decodes data. Raises Constraint_Error when data is mailformed.
+
+   function Encode
+    (Self : Text_Codec;
+     Data : League.Strings.Universal_String)
+       return League.Stream_Element_Vectors.Stream_Element_Vector;
+   --  Encodes data. Raises Constraint_Error when data can't encoded.
 
    function Codec
     (Encoding_Name : League.Strings.Universal_String) return Text_Codec;
