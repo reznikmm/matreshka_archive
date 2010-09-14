@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Finalization;
+
 with League.String_Vectors;
 with League.Strings;
 with League.Values;
@@ -117,6 +119,8 @@ package League.Settings is
 
 private
 
-   type Settings is tagged limited null record;
+   type Settings is new Ada.Finalization.Limited_Controlled with record
+      null;
+   end record;
 
 end League.Settings;
