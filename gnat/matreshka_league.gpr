@@ -60,12 +60,12 @@ library project Matreshka_League is
 
    Common_Ada_Switches :=
     ("-g",
-     "-gnat05",
-     "-gnatn");
+     "-gnat05");
    --  Common switches to be used for every unit.
 
    Optimization_Ada_Switches :=
-    ("-O2");
+    ("-O2",
+     "-gnatn");
    --  Optimization switches. Optimization is not used for several units, thus
    --  optimization switches are declared by the separate variable.
 
