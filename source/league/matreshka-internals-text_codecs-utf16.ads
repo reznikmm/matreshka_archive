@@ -54,18 +54,12 @@ private package Matreshka.Internals.Text_Codecs.UTF16 is
    -- UTF-16BE --
    --------------
 
-   type UTF16BE_Decoder is new Abstract_Decoder with null record;
-
    type UTF16BE_Decoder_State is new Abstract_Decoder_State with private;
 
    overriding function Is_Error (Self : UTF16BE_Decoder_State) return Boolean;
 
    overriding function Is_Mailformed
     (Self : UTF16BE_Decoder_State) return Boolean;
-
-   overriding function Create_State
-    (Self : UTF16BE_Decoder;
-     Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
 
    overriding procedure Decode_Append
     (Self   : in out UTF16BE_Decoder_State;
@@ -76,8 +70,6 @@ private package Matreshka.Internals.Text_Codecs.UTF16 is
    -- UTF-16LE --
    --------------
 
-   type UTF16LE_Decoder is new Abstract_Decoder with null record;
-
    type UTF16LE_Decoder_State is new Abstract_Decoder_State with private;
 
    overriding function Is_Error (Self : UTF16LE_Decoder_State) return Boolean;
@@ -85,17 +77,16 @@ private package Matreshka.Internals.Text_Codecs.UTF16 is
    overriding function Is_Mailformed
     (Self : UTF16LE_Decoder_State) return Boolean;
 
-   overriding function Create_State
-    (Self : UTF16LE_Decoder;
-     Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
-
    overriding procedure Decode_Append
     (Self   : in out UTF16LE_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
      String : in out Matreshka.Internals.Strings.Shared_String_Access);
 
-   BE_Decoder : aliased UTF16BE_Decoder;
-   LE_Decoder : aliased UTF16LE_Decoder;
+   function BE_Decoder
+    (Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
+
+   function LE_Decoder
+    (Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
 
 private
 

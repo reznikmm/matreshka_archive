@@ -108,44 +108,6 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
    Accept_State : constant UTF8_DFA_State := 0;
    Reject_State : constant UTF8_DFA_State := 1;
 
-   ------------------
-   -- Create_State --
-   ------------------
-
-   overriding function Create_State
-    (Self : UTF8_Decoder;
-     Mode : Decoder_Mode) return Abstract_Decoder_State'Class
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      case Mode is
-         when Raw =>
-            return
-              UTF8_Decoder_State'
-               (Skip_LF          => False,
-                Unchecked_Append => Unchecked_Append_Raw'Access,
-                State            => Accept_State,
-                Code             => 0);
-
-         when XML_1_0 =>
-            return
-              UTF8_Decoder_State'
-               (Skip_LF          => False,
-                Unchecked_Append => Unchecked_Append_XML10'Access,
-                State            => Accept_State,
-                Code             => 0);
-
-         when XML_1_1 =>
-            return
-              UTF8_Decoder_State'
-               (Skip_LF          => False,
-                Unchecked_Append => Unchecked_Append_XML11'Access,
-                State            => Accept_State,
-                Code             => 0);
-      end case;
-   end Create_State;
-
    -------------------
    -- Decode_Append --
    -------------------
@@ -190,6 +152,40 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
       Self.Code  := Current_Code;
       Matreshka.Internals.Strings.Fill_Null_Terminator (String);
    end Decode_Append;
+
+   -------------
+   -- Decoder --
+   -------------
+
+   function Decoder
+    (Mode : Decoder_Mode) return Abstract_Decoder_State'Class is
+   begin
+      case Mode is
+         when Raw =>
+            return
+              UTF8_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_Raw'Access,
+                State            => Accept_State,
+                Code             => 0);
+
+         when XML_1_0 =>
+            return
+              UTF8_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML10'Access,
+                State            => Accept_State,
+                Code             => 0);
+
+         when XML_1_1 =>
+            return
+              UTF8_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML11'Access,
+                State            => Accept_State,
+                Code             => 0);
+      end case;
+   end Decoder;
 
    --------------
    -- Is_Error --

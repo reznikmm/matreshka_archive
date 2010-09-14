@@ -48,38 +48,6 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
    use type Matreshka.Internals.Unicode.Code_Unit_32;
    use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
-   ------------------
-   -- Create_State --
-   ------------------
-
-   overriding function Create_State
-    (Self : ISO88591_Decoder;
-     Mode : Decoder_Mode) return Abstract_Decoder_State'Class
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      case Mode is
-         when Raw =>
-            return
-              ISO88591_Decoder_State'
-               (Skip_LF          => False,
-                Unchecked_Append => Unchecked_Append_Raw'Access);
-
-         when XML_1_0 =>
-            return
-              ISO88591_Decoder_State'
-               (Skip_LF          => False,
-                Unchecked_Append => Unchecked_Append_XML10'Access);
-
-         when XML_1_1 =>
-            return
-              ISO88591_Decoder_State'
-               (Skip_LF          => False,
-                Unchecked_Append => Unchecked_Append_XML11'Access);
-      end case;
-   end Create_State;
-
    -------------------
    -- Decode_Append --
    -------------------
@@ -100,6 +68,34 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
 
       Matreshka.Internals.Strings.Fill_Null_Terminator (String);
    end Decode_Append;
+
+   -------------
+   -- Decoder --
+   -------------
+
+   function Decoder
+    (Mode : Decoder_Mode) return Abstract_Decoder_State'Class is
+   begin
+      case Mode is
+         when Raw =>
+            return
+              ISO88591_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_Raw'Access);
+
+         when XML_1_0 =>
+            return
+              ISO88591_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML10'Access);
+
+         when XML_1_1 =>
+            return
+              ISO88591_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML11'Access);
+      end case;
+   end Decoder;
 
    --------------
    -- Is_Error --

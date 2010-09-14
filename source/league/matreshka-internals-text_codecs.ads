@@ -94,17 +94,6 @@ package Matreshka.Internals.Text_Codecs is
    --  Returns True when error is occured during decoding or decoding is
    --  incomplete.
 
-   type Abstract_Decoder is abstract tagged limited null record;
-   --  Abstract root tagged type for decoders.
-
-   type Decoder_Access is access all Abstract_Decoder'Class;
-   for Decoder_Access'Storage_Size use 0;
-
-   not overriding function Create_State
-    (Self : Abstract_Decoder;
-     Mode : Decoder_Mode) return Abstract_Decoder_State'Class is abstract;
-   --  Creates new decoder's state.
-
    procedure Decode
     (Self   : in out Abstract_Decoder_State'Class;
      Data   : Ada.Streams.Stream_Element_Array;
@@ -118,6 +107,10 @@ package Matreshka.Internals.Text_Codecs is
        is abstract;
    --  Decodes data and appends them to specified string. String can be
    --  reallocated when necessary.
+
+   type Decoder_Factory is
+     access function (Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
+   --  Decoder factory
 
    ----------------------
    -- Abstract_Encoder --
@@ -136,7 +129,7 @@ package Matreshka.Internals.Text_Codecs is
      String : not null Matreshka.Internals.Strings.Shared_String_Access;
      Buffer : out Stream_Element_Array_Access) is abstract;
 
-   function Decoder (Set : Character_Set) return Decoder_Access;
+   function Decoder (Set : Character_Set) return Decoder_Factory;
    --  Returns decoder for the specified character set. Decoder is global
    --  object and must not be deallocated.
 

@@ -62,7 +62,7 @@ package body Matreshka.Internals.Text_Codecs is
 
    MIB_ISO88591 : constant Character_Set := 4;
 
-   Decoders : constant array (Character_Set) of Decoder_Access
+   Decoders : constant array (Character_Set) of Decoder_Factory
      := (MIB_ISO88591 => ISO88591.Decoder'Access,
          MIB_UTF8     => UTF8.Decoder'Access,
          MIB_UTF16BE  => UTF16.BE_Decoder'Access,
@@ -94,7 +94,7 @@ package body Matreshka.Internals.Text_Codecs is
    -- Decoder --
    -------------
 
-   function Decoder (Set : Character_Set) return Decoder_Access is
+   function Decoder (Set : Character_Set) return Decoder_Factory is
    begin
       return Decoders (Set);
    end Decoder;

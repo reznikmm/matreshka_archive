@@ -103,17 +103,12 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
            4, 4, 4, 1,   --  Surrogate_First
            1, 1, 0, 1);  --  Surrogate_Second
 
-   ------------------
-   -- Create_State --
-   ------------------
+   ----------------
+   -- BE_Decoder --
+   ----------------
 
-   overriding function Create_State
-    (Self : UTF16BE_Decoder;
-     Mode : Decoder_Mode) return Abstract_Decoder_State'Class
-   is
-      pragma Unreferenced (Self);
-      --  Used for dispatching of call only.
-
+   function BE_Decoder
+    (Mode : Decoder_Mode) return Abstract_Decoder_State'Class is
    begin
       case Mode is
          when Raw =>
@@ -143,49 +138,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
                 Code             => 0,
                 Low              => 0);
       end case;
-   end Create_State;
-
-   ------------------
-   -- Create_State --
-   ------------------
-
-   overriding function Create_State
-    (Self : UTF16LE_Decoder;
-     Mode : Decoder_Mode) return Abstract_Decoder_State'Class
-   is
-      pragma Unreferenced (Self);
-      --  Used for dispatching of call only.
-
-   begin
-      case Mode is
-         when Raw =>
-            return
-              UTF16LE_Decoder_State'
-               (Skip_LF          => False,
-                Unchecked_Append => Unchecked_Append_Raw'Access,
-                State            => Accept_State,
-                Code             => 0,
-                Low              => 0);
-
-         when XML_1_0 =>
-            return
-              UTF16LE_Decoder_State'
-               (Skip_LF          => False,
-                Unchecked_Append => Unchecked_Append_XML10'Access,
-                State            => Accept_State,
-                Code             => 0,
-                Low              => 0);
-
-         when XML_1_1 =>
-            return
-              UTF16LE_Decoder_State'
-               (Skip_LF          => False,
-                Unchecked_Append => Unchecked_Append_XML11'Access,
-                State            => Accept_State,
-                Code             => 0,
-                Low              => 0);
-      end case;
-   end Create_State;
+   end BE_Decoder;
 
    -------------------
    -- Decode_Append --
@@ -342,5 +295,42 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    begin
       return Self.State /= Accept_State;
    end Is_Mailformed;
+
+   ----------------
+   -- LE_Decoder --
+   ----------------
+
+   function LE_Decoder
+    (Mode : Decoder_Mode) return Abstract_Decoder_State'Class is
+   begin
+      case Mode is
+         when Raw =>
+            return
+              UTF16LE_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_Raw'Access,
+                State            => Accept_State,
+                Code             => 0,
+                Low              => 0);
+
+         when XML_1_0 =>
+            return
+              UTF16LE_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML10'Access,
+                State            => Accept_State,
+                Code             => 0,
+                Low              => 0);
+
+         when XML_1_1 =>
+            return
+              UTF16LE_Decoder_State'
+               (Skip_LF          => False,
+                Unchecked_Append => Unchecked_Append_XML11'Access,
+                State            => Accept_State,
+                Code             => 0,
+                Low              => 0);
+      end case;
+   end LE_Decoder;
 
 end Matreshka.Internals.Text_Codecs.UTF16;

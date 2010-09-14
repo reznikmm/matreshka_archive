@@ -334,6 +334,7 @@ package body XMLConf.Canonical_Writers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean)
    is
+      use League.Strings;
       use Universal_String_Integer_Maps;
 
       Map      : Universal_String_Integer_Maps.Map;

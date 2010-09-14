@@ -93,7 +93,7 @@ package body XML.SAX.Input_Sources.Streams is
 
       First    : Ada.Streams.Stream_Element_Offset := Self.Last + 1;
       Encoding : Encodings := Unknown;
-      Factory  : Matreshka.Internals.Text_Codecs.Decoder_Access;
+      Factory  : Matreshka.Internals.Text_Codecs.Decoder_Factory;
 
    begin
       --  Restart decoding when requested.
@@ -354,7 +354,7 @@ package body XML.SAX.Input_Sources.Streams is
 
             Self.Decoder :=
               new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
-                   (Factory.Create_State (Self.Version_Mode));
+                   (Factory (Self.Version_Mode));
 
             --  Decode all readed data (not last chunk only) except possible
             --  leading byte order mark, but protect from decoding empty
@@ -445,7 +445,7 @@ package body XML.SAX.Input_Sources.Streams is
      Rescan   : out Boolean;
      Success  : out Boolean)
    is
-      use type Matreshka.Internals.Text_Codecs.Decoder_Access;
+      use type Matreshka.Internals.Text_Codecs.Decoder_Factory;
       use type Matreshka.Internals.Text_Codecs.Decoder_Mode;
       use type League.Strings.Universal_String;
 
@@ -453,7 +453,7 @@ package body XML.SAX.Input_Sources.Streams is
         := Self.Version_Mode;
       Old_Encoding     : constant League.Strings.Universal_String
         := Self.Encoding;
-      Factory          : Matreshka.Internals.Text_Codecs.Decoder_Access;
+      Factory          : Matreshka.Internals.Text_Codecs.Decoder_Factory;
 
    begin
       Self.Accumulate := False;
@@ -488,7 +488,7 @@ package body XML.SAX.Input_Sources.Streams is
          else
             Self.Decoder :=
               new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
-                   (Factory.Create_State (Self.Version_Mode));
+                   (Factory (Self.Version_Mode));
          end if;
 
          Self.Restart := True;

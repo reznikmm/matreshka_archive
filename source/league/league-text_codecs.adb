@@ -74,7 +74,7 @@ package body League.Text_Codecs is
      Data : Ada.Streams.Stream_Element_Array)
        return League.Strings.Universal_String
    is
-      State  : Abstract_Decoder_State'Class := Self.Decoder.Create_State (Raw);
+      State  : Abstract_Decoder_State'Class := Self.Decoder (Raw);
       Result : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin

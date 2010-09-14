@@ -70,7 +70,7 @@ package League.Text_Codecs is
 private
 
    type Text_Codec is tagged record
-      Decoder : Matreshka.Internals.Text_Codecs.Decoder_Access;
+      Decoder : Matreshka.Internals.Text_Codecs.Decoder_Factory;
    end record;
 
 end League.Text_Codecs;

@@ -47,8 +47,6 @@ private package Matreshka.Internals.Text_Codecs.UTF8 is
 
    pragma Preelaborate;
 
-   type UTF8_Decoder is new Abstract_Decoder with null record;
-
    type UTF8_Decoder_State is new Abstract_Decoder_State with private;
 
    overriding function Is_Error (Self : UTF8_Decoder_State) return Boolean;
@@ -56,16 +54,12 @@ private package Matreshka.Internals.Text_Codecs.UTF8 is
    overriding function Is_Mailformed
     (Self : UTF8_Decoder_State) return Boolean;
 
-   overriding function Create_State
-    (Self : UTF8_Decoder;
-     Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
-
    overriding procedure Decode_Append
     (Self   : in out UTF8_Decoder_State;
      Data   : Ada.Streams.Stream_Element_Array;
      String : in out Matreshka.Internals.Strings.Shared_String_Access);
 
-   Decoder : aliased UTF8_Decoder;
+   function Decoder (Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
 
 private
 
