@@ -107,8 +107,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    -- BE_Decoder --
    ----------------
 
-   function BE_Decoder
-    (Mode : Decoder_Mode) return Abstract_Decoder_State'Class is
+   function BE_Decoder (Mode : Decoder_Mode) return Abstract_Decoder'Class is
    begin
       case Mode is
          when Raw =>
@@ -300,8 +299,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    -- LE_Decoder --
    ----------------
 
-   function LE_Decoder
-    (Mode : Decoder_Mode) return Abstract_Decoder_State'Class is
+   function LE_Decoder (Mode : Decoder_Mode) return Abstract_Decoder'Class is
    begin
       case Mode is
          when Raw =>

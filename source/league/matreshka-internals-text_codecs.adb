@@ -74,7 +74,7 @@ package body Matreshka.Internals.Text_Codecs is
    ------------
 
    procedure Decode
-    (Self   : in out Abstract_Decoder_State'Class;
+    (Self   : in out Abstract_Decoder'Class;
      Data   : Ada.Streams.Stream_Element_Array;
      String : out Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -186,7 +186,7 @@ package body Matreshka.Internals.Text_Codecs is
    --------------------------
 
    procedure Unchecked_Append_Raw
-    (Self   : in out Abstract_Decoder_State'Class;
+    (Self   : in out Abstract_Decoder'Class;
      Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
      Code   : Matreshka.Internals.Unicode.Code_Point)
    is
@@ -203,7 +203,7 @@ package body Matreshka.Internals.Text_Codecs is
    ----------------------------
 
    procedure Unchecked_Append_XML10
-    (Self   : in out Abstract_Decoder_State'Class;
+    (Self   : in out Abstract_Decoder'Class;
      Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
      Code   : Matreshka.Internals.Unicode.Code_Point)
    is
@@ -238,7 +238,7 @@ package body Matreshka.Internals.Text_Codecs is
    ----------------------------
 
    procedure Unchecked_Append_XML11
-    (Self   : in out Abstract_Decoder_State'Class;
+    (Self   : in out Abstract_Decoder'Class;
      Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
      Code   : Matreshka.Internals.Unicode.Code_Point) is
    begin

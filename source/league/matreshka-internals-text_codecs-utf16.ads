@@ -54,7 +54,7 @@ private package Matreshka.Internals.Text_Codecs.UTF16 is
    -- UTF-16BE --
    --------------
 
-   type UTF16BE_Decoder_State is new Abstract_Decoder_State with private;
+   type UTF16BE_Decoder_State is new Abstract_Decoder with private;
 
    overriding function Is_Error (Self : UTF16BE_Decoder_State) return Boolean;
 
@@ -70,7 +70,7 @@ private package Matreshka.Internals.Text_Codecs.UTF16 is
    -- UTF-16LE --
    --------------
 
-   type UTF16LE_Decoder_State is new Abstract_Decoder_State with private;
+   type UTF16LE_Decoder_State is new Abstract_Decoder with private;
 
    overriding function Is_Error (Self : UTF16LE_Decoder_State) return Boolean;
 
@@ -82,24 +82,22 @@ private package Matreshka.Internals.Text_Codecs.UTF16 is
      Data   : Ada.Streams.Stream_Element_Array;
      String : in out Matreshka.Internals.Strings.Shared_String_Access);
 
-   function BE_Decoder
-    (Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
+   function BE_Decoder (Mode : Decoder_Mode) return Abstract_Decoder'Class;
 
-   function LE_Decoder
-    (Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
+   function LE_Decoder (Mode : Decoder_Mode) return Abstract_Decoder'Class;
 
 private
 
    type UTF16_Meta_Class is mod 2 ** 8;
    type UTF16_DFA_State is mod 2 ** 8;
 
-   type UTF16BE_Decoder_State is new Abstract_Decoder_State with record
+   type UTF16BE_Decoder_State is new Abstract_Decoder with record
       State : UTF16_DFA_State;
       Code  : Matreshka.Internals.Unicode.Code_Unit_32;
       Low   : Matreshka.Internals.Unicode.Code_Unit_16;
    end record;
 
-   type UTF16LE_Decoder_State is new Abstract_Decoder_State with record
+   type UTF16LE_Decoder_State is new Abstract_Decoder with record
       State : UTF16_DFA_State;
       Code  : Matreshka.Internals.Unicode.Code_Unit_32;
       Low   : Matreshka.Internals.Unicode.Code_Unit_16;

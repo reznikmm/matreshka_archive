@@ -73,8 +73,7 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
    -- Decoder --
    -------------
 
-   function Decoder
-    (Mode : Decoder_Mode) return Abstract_Decoder_State'Class is
+   function Decoder (Mode : Decoder_Mode) return Abstract_Decoder'Class is
    begin
       case Mode is
          when Raw =>

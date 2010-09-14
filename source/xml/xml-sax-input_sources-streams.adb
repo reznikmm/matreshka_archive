@@ -51,8 +51,8 @@ package body XML.SAX.Input_Sources.Streams is
 
    procedure Free is
      new Ada.Unchecked_Deallocation
-          (Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class,
-           Matreshka.Internals.Text_Codecs.Decoder_State_Access);
+          (Matreshka.Internals.Text_Codecs.Abstract_Decoder'Class,
+           Matreshka.Internals.Text_Codecs.Decoder_Access);
 
 --   not overriding function Encoding
 --    (Self : SAX_Input_Source) return League.Strings.Universal_String;
@@ -78,7 +78,7 @@ package body XML.SAX.Input_Sources.Streams is
      End_Of_Data : out Boolean)
    is
       use type Ada.Streams.Stream_Element;
-      use type Matreshka.Internals.Text_Codecs.Decoder_State_Access;
+      use type Matreshka.Internals.Text_Codecs.Decoder_Access;
 
       type Encodings is
        (Unknown,
@@ -353,7 +353,7 @@ package body XML.SAX.Input_Sources.Streams is
             --  Create decoder's state object.
 
             Self.Decoder :=
-              new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
+              new Matreshka.Internals.Text_Codecs.Abstract_Decoder'Class'
                    (Factory (Self.Version_Mode));
 
             --  Decode all readed data (not last chunk only) except possible
@@ -487,7 +487,7 @@ package body XML.SAX.Input_Sources.Streams is
 
          else
             Self.Decoder :=
-              new Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class'
+              new Matreshka.Internals.Text_Codecs.Abstract_Decoder'Class'
                    (Factory (Self.Version_Mode));
          end if;
 

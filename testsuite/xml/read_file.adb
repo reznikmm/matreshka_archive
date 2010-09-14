@@ -78,28 +78,28 @@ function Read_File (Name : String) return League.Strings.Universal_String is
    use Interfaces;
    use type Matreshka.Internals.Unicode.Code_Point;
 
-   Buffer : Ada.Streams.Stream_Element_Array (1 .. 1024);
-   Last   : Ada.Streams.Stream_Element_Offset;
-   File   : Ada.Streams.Stream_IO.File_Type;
-   Data   : Matreshka.Internals.Strings.Shared_String_Access
+   Buffer  : Ada.Streams.Stream_Element_Array (1 .. 1024);
+   Last    : Ada.Streams.Stream_Element_Offset;
+   File    : Ada.Streams.Stream_IO.File_Type;
+   Data    : Matreshka.Internals.Strings.Shared_String_Access
      := Matreshka.Internals.Strings.Shared_Empty'Access;
-   Codec  : Matreshka.Internals.Text_Codecs.Decoder_Factory
+   Factory : Matreshka.Internals.Text_Codecs.Decoder_Factory
      := Matreshka.Internals.Text_Codecs.Decoder
          (Matreshka.Internals.Text_Codecs.MIB_UTF8);
-   State  : Matreshka.Internals.Text_Codecs.Abstract_Decoder_State'Class
-     := Codec (Matreshka.Internals.Text_Codecs.Raw);
+   Decoder : Matreshka.Internals.Text_Codecs.Abstract_Decoder'Class
+     := Factory (Matreshka.Internals.Text_Codecs.Raw);
 
 begin
    Ada.Streams.Stream_IO.Open (File, Ada.Streams.Stream_IO.In_File, Name);
 
    while not Ada.Streams.Stream_IO.End_Of_File (File) loop
       Ada.Streams.Stream_IO.Read (File, Buffer, Last);
-      State.Decode_Append (Buffer (Buffer'First .. Last), Data);
+      Decoder.Decode_Append (Buffer (Buffer'First .. Last), Data);
    end loop;
 
    Ada.Streams.Stream_IO.Close (File);
 
-   if State.Is_Error then
+   if Decoder.Is_Error then
       Matreshka.Internals.Strings.Dereference (Data);
 
       raise Constraint_Error with "mailformed UTF-8 file";

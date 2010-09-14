@@ -80,28 +80,28 @@ package Matreshka.Internals.Text_Codecs is
    --  Decoder is responsible for XML1.0/XML1.1 end-of-line handling when
    --  its state created with corresponding mode.
 
-   type Abstract_Decoder_State is abstract tagged private;
+   type Abstract_Decoder is abstract tagged private;
    --  Abstract root tagged type for decoder's states.
 
-   type Decoder_State_Access is access all Abstract_Decoder_State'Class;
+   type Decoder_Access is access all Abstract_Decoder'Class;
 
    not overriding function Is_Error
-    (Self : Abstract_Decoder_State) return Boolean is abstract;
+    (Self : Abstract_Decoder) return Boolean is abstract;
    --  Returns True when error is occured during decoding.
 
    not overriding function Is_Mailformed
-    (Self : Abstract_Decoder_State) return Boolean is abstract;
+    (Self : Abstract_Decoder) return Boolean is abstract;
    --  Returns True when error is occured during decoding or decoding is
    --  incomplete.
 
    procedure Decode
-    (Self   : in out Abstract_Decoder_State'Class;
+    (Self   : in out Abstract_Decoder'Class;
      Data   : Ada.Streams.Stream_Element_Array;
      String : out Matreshka.Internals.Strings.Shared_String_Access);
    --  Decodes data and save results in new allocated string.
 
    not overriding procedure Decode_Append
-    (Self   : in out Abstract_Decoder_State;
+    (Self   : in out Abstract_Decoder;
      Data   : Ada.Streams.Stream_Element_Array;
      String : in out Matreshka.Internals.Strings.Shared_String_Access)
        is abstract;
@@ -109,7 +109,7 @@ package Matreshka.Internals.Text_Codecs is
    --  reallocated when necessary.
 
    type Decoder_Factory is
-     access function (Mode : Decoder_Mode) return Abstract_Decoder_State'Class;
+     access function (Mode : Decoder_Mode) return Abstract_Decoder'Class;
    --  Decoder factory
 
    ----------------------
@@ -135,29 +135,29 @@ package Matreshka.Internals.Text_Codecs is
 
 private
 
-   type Abstract_Decoder_State is abstract tagged record
+   type Abstract_Decoder is abstract tagged record
       Skip_LF          : Boolean;
       Unchecked_Append : not null access procedure
-       (Self   : in out Abstract_Decoder_State'Class;
+       (Self   : in out Abstract_Decoder'Class;
         Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
         Code   : Matreshka.Internals.Unicode.Code_Point);
    end record;
 
    procedure Unchecked_Append_Raw
-    (Self   : in out Abstract_Decoder_State'Class;
+    (Self   : in out Abstract_Decoder'Class;
      Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
      Code   : Matreshka.Internals.Unicode.Code_Point);
    --  Appends code to the string.
 
    procedure Unchecked_Append_XML10
-    (Self   : in out Abstract_Decoder_State'Class;
+    (Self   : in out Abstract_Decoder'Class;
      Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
      Code   : Matreshka.Internals.Unicode.Code_Point);
    --  Appends code to the string filtering out and replacing end of line
    --  characters according to XML 1.0 specification.
 
    procedure Unchecked_Append_XML11
-    (Self   : in out Abstract_Decoder_State'Class;
+    (Self   : in out Abstract_Decoder'Class;
      Buffer : not null Matreshka.Internals.Strings.Shared_String_Access;
      Code   : Matreshka.Internals.Unicode.Code_Point);
    --  Appends code to the string filtering out and replacing end of line

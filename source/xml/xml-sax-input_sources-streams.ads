@@ -131,7 +131,7 @@ private
       --  XMLDecl or TextDecl or absence of one of is processed by parser.
       --  Accumulation allows to simplify changing of encoding from detected
       --  automatically to specified in the entity.
-      Decoder      : Matreshka.Internals.Text_Codecs.Decoder_State_Access;
+      Decoder      : Matreshka.Internals.Text_Codecs.Decoder_Access;
       --  Decoder member are filled once first four bytes of the source data
       --  are readed and automatic encoding detection is done. They can be
       --  changed later, when parser requests change of the encoding to
