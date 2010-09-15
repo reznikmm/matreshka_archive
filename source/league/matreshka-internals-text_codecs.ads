@@ -48,6 +48,7 @@
 with Ada.Streams;
 
 with League.Strings;
+with Matreshka.Internals.Stream_Element_Vectors;
 with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
 
@@ -116,8 +117,7 @@ package Matreshka.Internals.Text_Codecs is
    -- Abstract_Encoder --
    ----------------------
 
-   type Stream_Element_Array_Access is
-     access all Ada.Streams.Stream_Element_Array;
+   package MISEV renames Matreshka.Internals.Stream_Element_Vectors;
 
    type Abstract_Encoder is abstract tagged limited null record;
    --  Abstract root tagged type for encoders.
@@ -125,9 +125,13 @@ package Matreshka.Internals.Text_Codecs is
    not overriding procedure Encode
     (Self   : in out Abstract_Encoder;
      String : not null Matreshka.Internals.Strings.Shared_String_Access;
-     Buffer : out Stream_Element_Array_Access) is abstract;
+     Buffer : out MISEV.Shared_Stream_Element_Vector_Access) is abstract;
 
-   type Encoder_Factory is access function return Abstract_Encoder'Class;
+   type Encoder_Factory is
+     access function (Dummy : Boolean) return Abstract_Encoder'Class;
+   --  GNAT GPL 2010: Dummy parameter is required to workaround compiler's
+   --  bug; compiler doesn't recognize dereference of access to parameter
+   --  less function as function call in limited object initialization.
 
    ----------------------
    -- Factory registry --

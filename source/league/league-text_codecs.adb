@@ -41,11 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Stream_Element_Vectors.Internals;
 with League.Strings.Internals;
+with Matreshka.Internals.Stream_Element_Vectors;
 with Matreshka.Internals.Strings;
 
 package body League.Text_Codecs is
 
+   use Matreshka.Internals.Stream_Element_Vectors;
    use Matreshka.Internals.Text_Codecs;
 
    -----------
@@ -62,7 +65,9 @@ package body League.Text_Codecs is
          raise Constraint_Error with "Unknown encoding";
       end if;
 
-      return (Decoder => Decoder (Set));
+      return
+       (Decoder => Decoder (Set),
+        Encoder => Encoder (Set));
    end Codec;
 
    ------------
@@ -96,9 +101,18 @@ package body League.Text_Codecs is
    function Encode
     (Self : Text_Codec;
      Data : League.Strings.Universal_String)
-       return League.Stream_Element_Vectors.Stream_Element_Vector is
+       return League.Stream_Element_Vectors.Stream_Element_Vector
+   is
+      Encoder : Abstract_Encoder'Class := Self.Encoder (False);
+      Result  : Shared_Stream_Element_Vector_Access;
+
    begin
-      return League.Stream_Element_Vectors.Empty_Stream_Element_Vector;
+      --  XXX Implementation assumes that there are no errors can be detected
+      --  during encoding, which is wrong assumption.
+
+      Encoder.Encode (League.Strings.Internals.Get_Shared (Data), Result);
+
+      return League.Stream_Element_Vectors.Internals.Wrap (Result);
    end Encode;
 
 end League.Text_Codecs;

@@ -41,37 +41,19 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Streams;
 
-with League.Stream_Element_Vectors;
-with League.Strings;
-private with Matreshka.Internals.Text_Codecs;
+package body League.Stream_Element_Vectors.Internals is
 
-package League.Text_Codecs is
+   ----------
+   -- Wrap --
+   ----------
 
-   type Text_Codec (<>) is tagged private;
+   function Wrap
+    (Item : not null MISEV.Shared_Stream_Element_Vector_Access)
+       return Stream_Element_Vector is
+   begin
+      return
+        Stream_Element_Vector'(Ada.Finalization.Controlled with Data => Item);
+   end Wrap;
 
-   function Decode
-    (Self : Text_Codec;
-     Data : Ada.Streams.Stream_Element_Array)
-       return League.Strings.Universal_String;
-   --  Decodes data. Raises Constraint_Error when data is mailformed.
-
-   function Encode
-    (Self : Text_Codec;
-     Data : League.Strings.Universal_String)
-       return League.Stream_Element_Vectors.Stream_Element_Vector;
-   --  Encodes data. Raises Constraint_Error when data can't encoded.
-
-   function Codec
-    (Encoding_Name : League.Strings.Universal_String) return Text_Codec;
-   --  Returns codec for the specified encoding name.
-
-private
-
-   type Text_Codec is tagged record
-      Decoder : Matreshka.Internals.Text_Codecs.Decoder_Factory;
-      Encoder : Matreshka.Internals.Text_Codecs.Encoder_Factory;
-   end record;
-
-end League.Text_Codecs;
+end League.Stream_Element_Vectors.Internals;
