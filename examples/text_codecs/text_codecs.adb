@@ -43,7 +43,9 @@
 ------------------------------------------------------------------------------
 --  Read raw data from the file specified by the first argument in command
 --  line and decode it from the encoding specified by the second argument
---  in the command line. Print decoded data to screen.
+--  in the command line. Creates file specified by the third argument in
+--  command line and write data in the encoding specified by the forth
+--  argument.
 with Ada.Command_Line;
 with Ada.Characters.Conversions;
 with Ada.Streams.Stream_IO;
@@ -53,9 +55,10 @@ with League.Strings;
 with League.Text_Codecs;
 
 procedure Text_Codecs is
-   File : Ada.Streams.Stream_IO.File_Type;
-   Data : Ada.Streams.Stream_Element_Array (0 .. 16383);
-   Last : Ada.Streams.Stream_Element_Offset;
+   File   : Ada.Streams.Stream_IO.File_Type;
+   Data   : Ada.Streams.Stream_Element_Array (0 .. 16383);
+   Last   : Ada.Streams.Stream_Element_Offset;
+   String : League.Strings.Universal_String;
 
 begin
    Ada.Streams.Stream_IO.Open
@@ -63,21 +66,44 @@ begin
    Ada.Streams.Stream_IO.Read (File, Data, Last);
    Ada.Streams.Stream_IO.Close (File);
 
+   --  Decode text.
+
    declare
       Decoder : League.Text_Codecs.Text_Codec
         := League.Text_Codecs.Codec
             (League.Strings.To_Universal_String
               (Ada.Characters.Conversions.To_Wide_Wide_String
                 (Ada.Command_Line.Argument (2))));
-      Str     : League.Strings.Universal_String;
 
    begin
-      Str := Decoder.Decode (Data (Data'First .. Last));
-      Ada.Wide_Wide_Text_IO.Put_Line (Str.To_Wide_Wide_String);
+      String := Decoder.Decode (Data (Data'First .. Last));
 
    exception
       when Constraint_Error =>
          Ada.Wide_Wide_Text_IO.Put_Line ("Decoding error");
+
+         raise;
+   end;
+
+   --  Encode text.
+
+   declare
+      Encoder : League.Text_Codecs.Text_Codec
+        := League.Text_Codecs.Codec
+            (League.Strings.To_Universal_String
+              (Ada.Characters.Conversions.To_Wide_Wide_String
+                (Ada.Command_Line.Argument (4))));
+
+   begin
+      Ada.Streams.Stream_IO.Create
+       (File, Ada.Streams.Stream_IO.Out_File, Ada.Command_Line.Argument (3));
+      Ada.Streams.Stream_IO.Write
+       (File, Encoder.Encode (String).To_Stream_Element_Array);
+      Ada.Streams.Stream_IO.Close (File);
+
+   exception
+      when Constraint_Error =>
+         Ada.Wide_Wide_Text_IO.Put_Line ("Encoding error");
 
          raise;
    end;
