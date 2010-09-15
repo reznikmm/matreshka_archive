@@ -70,7 +70,8 @@ package body Matreshka.Internals.Text_Codecs is
          others       => null);
 
    Encoders : constant array (Character_Set) of Encoder_Factory
-     := (others => null);
+     := (MIB_UTF8 => UTF8.Encoder'Access,
+         others   => null);
 
    ------------
    -- Decode --

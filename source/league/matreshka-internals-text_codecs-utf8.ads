@@ -47,6 +47,10 @@ private package Matreshka.Internals.Text_Codecs.UTF8 is
 
    pragma Preelaborate;
 
+   ------------------
+   -- UTF8_Decoder --
+   ------------------
+
    type UTF8_Decoder is new Abstract_Decoder with private;
 
    overriding function Is_Error (Self : UTF8_Decoder) return Boolean;
@@ -61,6 +65,19 @@ private package Matreshka.Internals.Text_Codecs.UTF8 is
 
    function Decoder (Mode : Decoder_Mode) return Abstract_Decoder'Class;
 
+   ------------------
+   -- UTF8_Encoder --
+   ------------------
+
+   type UTF8_Encoder is new Abstract_Encoder with private;
+
+   overriding procedure Encode
+    (Self   : in out UTF8_Encoder;
+     String : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Buffer : out MISEV.Shared_Stream_Element_Vector_Access);
+
+   function Encoder (Dummy : Boolean) return Abstract_Encoder'Class;
+
 private
 
    type UTF8_Meta_Class is mod 2 ** 8;
@@ -70,5 +87,7 @@ private
       State : UTF8_DFA_State;
       Code  : Matreshka.Internals.Unicode.Code_Unit_32;
    end record;
+
+   type UTF8_Encoder is new Abstract_Encoder with null record;
 
 end Matreshka.Internals.Text_Codecs.UTF8;

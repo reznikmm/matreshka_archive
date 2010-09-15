@@ -186,6 +186,97 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
       end case;
    end Decoder;
 
+   ------------
+   -- Encode --
+   ------------
+
+   overriding procedure Encode
+    (Self   : in out UTF8_Encoder;
+     String : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Buffer : out MISEV.Shared_Stream_Element_Vector_Access)
+   is
+      use Matreshka.Internals.Stream_Element_Vectors;
+      use type Ada.Streams.Stream_Element_Offset;
+
+      Code     : Matreshka.Internals.Unicode.Code_Point;
+      Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+
+   begin
+      if String.Unused = 0 then
+         Buffer := Empty_Shared_Stream_Element_Vector'Access;
+
+      else
+         Buffer :=
+           Allocate (Ada.Streams.Stream_Element_Offset (String.Unused * 3));
+
+         while Position < String.Unused loop
+            Matreshka.Internals.Utf16.Unchecked_Next
+             (String.Value, Position, Code);
+
+            if Code <= 16#00_007F# then
+               --  One byte sequence: 0xxxxxxx
+
+               Buffer.Last := Buffer.Last + 1;
+               Buffer.Value (Buffer.Last) := Ada.Streams.Stream_Element (Code);
+
+            elsif Code <= 16#00_07FF# then
+               --  Two bytes sequence: 110xxxxx 10xxxxxx
+
+               Buffer.Last := Buffer.Last + 1;
+               Buffer.Value (Buffer.Last) :=
+                 Ada.Streams.Stream_Element (2#11000000# or (Code / 16#40#));
+               Buffer.Last := Buffer.Last + 1;
+               Buffer.Value (Buffer.Last) :=
+                 Ada.Streams.Stream_Element
+                  (2#10000000# or (Code and 2#00111111#));
+
+            elsif Code <= 16#00_FFFF# then
+               --  Three bytes sequence: 1110xxxx 10xxxxxx 10xxxxxx
+
+               Buffer.Last := Buffer.Last + 1;
+               Buffer.Value (Buffer.Last) :=
+                 Ada.Streams.Stream_Element (2#11000000# or (Code / 16#1000#));
+               Buffer.Last := Buffer.Last + 1;
+               Buffer.Value (Buffer.Last) :=
+                 Ada.Streams.Stream_Element
+                  (2#10000000# or ((Code / 16#40#) and 2#00111111#));
+               Buffer.Last := Buffer.Last + 1;
+               Buffer.Value (Buffer.Last) :=
+                 Ada.Streams.Stream_Element
+                  (2#10000000# or (Code and 2#00111111#));
+
+            else
+               --  Four bytes sequence: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+
+               Buffer.Last := Buffer.Last + 1;
+               Buffer.Value (Buffer.Last) :=
+                 Ada.Streams.Stream_Element (2#11000000# or (Code / 16#40000#));
+               Buffer.Last := Buffer.Last + 1;
+               Buffer.Value (Buffer.Last) :=
+                 Ada.Streams.Stream_Element
+                  (2#11000000# or ((Code / 16#1000#) and 2#00111111#));
+               Buffer.Last := Buffer.Last + 1;
+               Buffer.Value (Buffer.Last) :=
+                 Ada.Streams.Stream_Element
+                  (2#10000000# or ((Code / 16#40#) and 2#00111111#));
+               Buffer.Last := Buffer.Last + 1;
+               Buffer.Value (Buffer.Last) :=
+                 Ada.Streams.Stream_Element
+                  (2#10000000# or (Code and 2#00111111#));
+            end if;
+         end loop;
+      end if;
+   end Encode;
+
+   -------------
+   -- Encoder --
+   -------------
+
+   function Encoder (Dummy : Boolean) return Abstract_Encoder'Class is
+   begin
+      return UTF8_Encoder'(null record);
+   end Encoder;
+
    --------------
    -- Is_Error --
    --------------
