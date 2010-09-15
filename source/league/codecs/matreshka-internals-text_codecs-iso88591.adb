@@ -53,7 +53,7 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
    -------------------
 
    overriding procedure Decode_Append
-    (Self   : in out ISO88591_Decoder_State;
+    (Self   : in out ISO88591_Decoder;
      Data   : Ada.Streams.Stream_Element_Array;
      String : in out Matreshka.Internals.Strings.Shared_String_Access) is
    begin
@@ -78,19 +78,19 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
       case Mode is
          when Raw =>
             return
-              ISO88591_Decoder_State'
+              ISO88591_Decoder'
                (Skip_LF          => False,
                 Unchecked_Append => Unchecked_Append_Raw'Access);
 
          when XML_1_0 =>
             return
-              ISO88591_Decoder_State'
+              ISO88591_Decoder'
                (Skip_LF          => False,
                 Unchecked_Append => Unchecked_Append_XML10'Access);
 
          when XML_1_1 =>
             return
-              ISO88591_Decoder_State'
+              ISO88591_Decoder'
                (Skip_LF          => False,
                 Unchecked_Append => Unchecked_Append_XML11'Access);
       end case;
@@ -100,9 +100,7 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
    -- Is_Error --
    --------------
 
-   overriding function Is_Error
-    (Self : ISO88591_Decoder_State) return Boolean
-   is
+   overriding function Is_Error (Self : ISO88591_Decoder) return Boolean is
       pragma Unreferenced (Self);
 
    begin
@@ -114,7 +112,7 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
    -------------------
 
    overriding function Is_Mailformed
-    (Self : ISO88591_Decoder_State) return Boolean
+    (Self : ISO88591_Decoder) return Boolean
    is
       pragma Unreferenced (Self);
 

@@ -112,7 +112,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
       case Mode is
          when Raw =>
             return
-              UTF16BE_Decoder_State'
+              UTF16BE_Decoder'
                (Skip_LF          => False,
                 Unchecked_Append => Unchecked_Append_Raw'Access,
                 State            => Accept_State,
@@ -121,7 +121,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
 
          when XML_1_0 =>
             return
-              UTF16BE_Decoder_State'
+              UTF16BE_Decoder'
                (Skip_LF          => False,
                 Unchecked_Append => Unchecked_Append_XML10'Access,
                 State            => Accept_State,
@@ -130,7 +130,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
 
          when XML_1_1 =>
             return
-              UTF16BE_Decoder_State'
+              UTF16BE_Decoder'
                (Skip_LF          => False,
                 Unchecked_Append => Unchecked_Append_XML11'Access,
                 State            => Accept_State,
@@ -144,7 +144,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    -------------------
 
    overriding procedure Decode_Append
-    (Self   : in out UTF16BE_Decoder_State;
+    (Self   : in out UTF16BE_Decoder;
      Data   : Ada.Streams.Stream_Element_Array;
      String : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -203,7 +203,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    -------------------
 
    overriding procedure Decode_Append
-    (Self   : in out UTF16LE_Decoder_State;
+    (Self   : in out UTF16LE_Decoder;
      Data   : Ada.Streams.Stream_Element_Array;
      String : in out Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -259,8 +259,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    -- Is_Error --
    --------------
 
-   overriding function Is_Error
-    (Self : UTF16BE_Decoder_State) return Boolean is
+   overriding function Is_Error (Self : UTF16BE_Decoder) return Boolean is
    begin
       return Self.State = Reject_State;
    end Is_Error;
@@ -269,8 +268,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    -- Is_Error --
    --------------
 
-   overriding function Is_Error
-    (Self : UTF16LE_Decoder_State) return Boolean is
+   overriding function Is_Error (Self : UTF16LE_Decoder) return Boolean is
    begin
       return Self.State = Reject_State;
    end Is_Error;
@@ -279,8 +277,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    -- Is_Mailformed --
    -------------------
 
-   overriding function Is_Mailformed
-    (Self : UTF16BE_Decoder_State) return Boolean is
+   overriding function Is_Mailformed (Self : UTF16BE_Decoder) return Boolean is
    begin
       return Self.State /= Accept_State;
    end Is_Mailformed;
@@ -289,8 +286,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
    -- Is_Mailformed --
    -------------------
 
-   overriding function Is_Mailformed
-    (Self : UTF16LE_Decoder_State) return Boolean is
+   overriding function Is_Mailformed (Self : UTF16LE_Decoder) return Boolean is
    begin
       return Self.State /= Accept_State;
    end Is_Mailformed;
@@ -304,7 +300,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
       case Mode is
          when Raw =>
             return
-              UTF16LE_Decoder_State'
+              UTF16LE_Decoder'
                (Skip_LF          => False,
                 Unchecked_Append => Unchecked_Append_Raw'Access,
                 State            => Accept_State,
@@ -313,7 +309,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
 
          when XML_1_0 =>
             return
-              UTF16LE_Decoder_State'
+              UTF16LE_Decoder'
                (Skip_LF          => False,
                 Unchecked_Append => Unchecked_Append_XML10'Access,
                 State            => Accept_State,
@@ -322,7 +318,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
 
          when XML_1_1 =>
             return
-              UTF16LE_Decoder_State'
+              UTF16LE_Decoder'
                (Skip_LF          => False,
                 Unchecked_Append => Unchecked_Append_XML11'Access,
                 State            => Accept_State,

@@ -48,15 +48,14 @@ private package Matreshka.Internals.Text_Codecs.ISO88591 is
 
    pragma Preelaborate;
 
-   type ISO88591_Decoder_State is new Abstract_Decoder with private;
+   type ISO88591_Decoder is new Abstract_Decoder with private;
 
-   overriding function Is_Error (Self : ISO88591_Decoder_State) return Boolean;
+   overriding function Is_Error (Self : ISO88591_Decoder) return Boolean;
 
-   overriding function Is_Mailformed
-    (Self : ISO88591_Decoder_State) return Boolean;
+   overriding function Is_Mailformed (Self : ISO88591_Decoder) return Boolean;
 
    overriding procedure Decode_Append
-    (Self   : in out ISO88591_Decoder_State;
+    (Self   : in out ISO88591_Decoder;
      Data   : Ada.Streams.Stream_Element_Array;
      String : in out Matreshka.Internals.Strings.Shared_String_Access);
 
@@ -64,6 +63,6 @@ private package Matreshka.Internals.Text_Codecs.ISO88591 is
 
 private
 
-   type ISO88591_Decoder_State is new Abstract_Decoder with null record;
+   type ISO88591_Decoder is new Abstract_Decoder with null record;
 
 end Matreshka.Internals.Text_Codecs.ISO88591;
