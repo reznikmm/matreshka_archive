@@ -31,9 +31,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Integer_Wide_Wide_Text_IO;
-with Ada.Strings.Wide_Wide_Fixed;
-with Ada.Wide_Wide_Text_IO;
+with Ada.Characters.Latin_1;
+with Ada.Strings.Fixed;
+with Ada.Strings.Unbounded;
 
 package body Matreshka.Internals.Regexps.Engine.Debug is
 
@@ -54,70 +54,83 @@ package body Matreshka.Internals.Regexps.Engine.Debug is
    -- Dump --
    ----------
 
-   procedure Dump (Program : Engine.Program) is
-      use Ada.Integer_Wide_Wide_Text_IO;
+   function Dump (Program : Engine.Program) return String is
+
+      use Ada.Characters.Latin_1;
       use Ada.Strings;
-      use Ada.Strings.Wide_Wide_Fixed;
-      use Ada.Wide_Wide_Text_IO;
+      use Ada.Strings.Fixed;
+      use Ada.Strings.Unbounded;
+
+      Result : Unbounded_String;
 
    begin
       for J in Program.Instructions'Range loop
          declare
-            Instruction : Engine.Instruction := Program.Instructions (J);
+            Address_Image  : constant String := Trim (Integer'Image (J), Both);
+            Address_Buffer : String (1 .. 4) := (others => ' ');
+            Instruction    : Engine.Instruction := Program.Instructions (J);
 
          begin
-            Put (J, 4);
-            Put (' ');
+            Address_Buffer (4 - Address_Image'Length + 1 .. 4) :=
+              Address_Image;
+            Append (Result, Address_Buffer);
+            Append (Result, ' ');
 
             case Instruction.Kind is
                when None =>
-                  Put ("nop");
+                  Append (Result, "nop");
 
                when I_Terminate =>
-                  Put
-                    ("terminate ["
-                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                  Append
+                    (Result,
+                     "terminate ["
+                       & Trim (Integer'Image (Instruction.Next), Both)
                        & "]");
 
                when Split =>
-                  Put
-                    ("split ["
-                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                  Append
+                    (Result,
+                     "split ["
+                       & Trim (Integer'Image (Instruction.Next), Both)
                        & "], ["
-                       & Trim (Integer'Wide_Wide_Image (Instruction.Another), Both)
+                       & Trim (Integer'Image (Instruction.Another), Both)
                        & "]");
 
                when Any_Code_Point =>
-                  Put
-                    ("char is any ["
-                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                  Append
+                    (Result,
+                     "char is any ["
+                       & Trim (Integer'Image (Instruction.Next), Both)
                        & "]");
 
                when Code_Point =>
-                  Put
-                    ("char is "
-                       & Wide_Wide_Character'Wide_Wide_Image
+                  Append
+                    (Result,
+                     "char is "
+                       & Wide_Wide_Character'Image
                           (Wide_Wide_Character'Val (Instruction.Code))
                        & " ["
-                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                       & Trim (Integer'Image (Instruction.Next), Both)
                        & "]");
 
                when Code_Range =>
-                  Put
-                    ("char in "
-                       & Wide_Wide_Character'Wide_Wide_Image
+                  Append
+                    (Result,
+                     "char in "
+                       & Wide_Wide_Character'Image
                           (Wide_Wide_Character'Val (Instruction.Low))
                        & " .. "
-                       & Wide_Wide_Character'Wide_Wide_Image
+                       & Wide_Wide_Character'Image
                           (Wide_Wide_Character'Val (Instruction.High)));
 
                   if Instruction.Negate then
-                     Put (" {negate}");
+                     Append (Result, " {negate}");
                   end if;
 
-                  Put
-                    (" ["
-                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                  Append
+                    (Result,
+                     " ["
+                       & Trim (Integer'Image (Instruction.Next), Both)
                        & "]");
 
                when I_Property =>
@@ -126,69 +139,78 @@ package body Matreshka.Internals.Regexps.Engine.Debug is
                         raise Program_Error;
 
                      when General_Category =>
-                        Put ("char General_Category is");
+                        Append (Result, "char General_Category is");
 
                         for K in Instruction.Value.GC_Flags'Range loop
                            if Instruction.Value.GC_Flags (K) then
-                              Put
-                                (' '
-                                   & Matreshka.Internals.Unicode.Ucd.General_Category'Wide_Wide_Image
-                                      (K));
+                              Append
+                                (Result,
+                                 ' '
+                                   & Matreshka.Internals.Unicode.Ucd.
+                                       General_Category'Image
+                                        (K));
                            end if;
                         end loop;
 
                      when Binary =>
-                        Put
-                          ("char is "
-                             & Matreshka.Internals.Unicode.Ucd.Boolean_Properties'Wide_Wide_Image
-                                (Instruction.Value.Property));
+                        Append
+                          (Result,
+                           "char is "
+                             & Matreshka.Internals.Unicode.Ucd.
+                                 Boolean_Properties'Image
+                                  (Instruction.Value.Property));
                   end case;
 
                   if Instruction.Negative then
-                     Put (" {negative}");
+                     Append (Result, " {negative}");
                   end if;
 
                when Match =>
-                  Put ("match");
+                  Append (Result, "match");
 
                when Save =>
-                  Put
-                    ("save $"
-                       & Trim (Integer'Wide_Wide_Image (Instruction.Slot), Both)
+                  Append
+                    (Result,
+                     "save $"
+                       & Trim (Integer'Image (Instruction.Slot), Both)
                        & " ");
 
                   if Instruction.Start then
-                     Put ("{begin}");
+                     Append (Result, "{begin}");
 
                   else
-                     Put ("{end}");
+                     Append (Result, "{end}");
                   end if;
 
-                  Put
-                    (" ["
-                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                  Append
+                    (Result,
+                     " ["
+                       & Trim (Integer'Image (Instruction.Next), Both)
                        & "]");
 
                when I_Anchor =>
-                  Put ("anchor");
+                  Append (Result, "anchor");
 
                   if Instruction.Start_Of_Line then
-                     Put (" {start of line}");
+                     Append (Result, " {start of line}");
                   end if;
 
                   if Instruction.End_Of_Line then
-                     Put (" {end of line}");
+                     Append (Result, " {end of line}");
                   end if;
 
-                  Put
-                    (" ["
-                       & Trim (Integer'Wide_Wide_Image (Instruction.Next), Both)
+                  Append
+                    (Result,
+                     " ["
+                       & Trim (Integer'Image (Instruction.Next), Both)
                        & "]");
             end case;
 
-            New_Line;
+            Append (Result, LF);
          end;
       end loop;
+
+      return To_String (Result);
    end Dump;
 
 end Matreshka.Internals.Regexps.Engine.Debug;

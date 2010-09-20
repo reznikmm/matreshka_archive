@@ -32,8 +32,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.Regexps.Compiler.Debug is
+package Matreshka.Internals.Regexps.Engine.Debug is
 
-   procedure Dump (Pattern : not null Shared_Pattern_Access);
+   pragma Preelaborate;
 
-end Matreshka.Internals.Regexps.Compiler.Debug;
+   function Dump (Program : Engine.Program) return String;
+
+end Matreshka.Internals.Regexps.Engine.Debug;
