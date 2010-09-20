@@ -1,9 +1,7 @@
 Build Instruction
 -----------------
 
-1. Edit Makefile.config in root directory to reflect you configuration.
-
-3. Build regexp engine demo
+1. Build regexp engine demo
 
   make
 

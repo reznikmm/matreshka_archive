@@ -1,6 +1,4 @@
-include ../../Makefile.config
-
-GPRBUILD_FLAGS = -p -XARCHITECTURE=$(ARCHITECTURE) -XBUILD=$(BUILD)
+GPRBUILD_FLAGS = -p
 
 all:
 	gprbuild $(GPRBUILD_FLAGS) -Pdemo.gpr
