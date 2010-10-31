@@ -2,8 +2,8 @@ with Ada.Calendar;
 with Ada.Command_Line;
 
 with League.Strings;
-with XML.SAX.Input_Sources.Strings;
---with XML.SAX.Input_Sources.Streams.Files;
+--with XML.SAX.Input_Sources.Strings;
+with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 
 with Events_Printers;
@@ -14,8 +14,8 @@ procedure Performance is
    use type League.Strings.Universal_String;
    use type Ada.Calendar.Time;
 
---   Source      : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-   Source      : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
+   Source      : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+--   Source      : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
    Reader      : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Handler     : aliased Events_Printers.Events_Printer;
    Load_Start  : Ada.Calendar.Time;
@@ -35,8 +35,8 @@ begin
    Reader.Set_Entity_Resolver (Handler'Unchecked_Access);
 
    Load_Start := Ada.Calendar.Clock;
---   Source.Open (Ada.Command_Line.Argument (1));
-   Source.Set_String (Read_File (Ada.Command_Line.Argument (1)));
+   Source.Open (Ada.Command_Line.Argument (1));
+--   Source.Set_String (Read_File (Ada.Command_Line.Argument (1)));
    Parse_Start := Ada.Calendar.Clock;
    Reader.Parse (Source'Access);
    Stop := Ada.Calendar.Clock;
