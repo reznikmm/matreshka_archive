@@ -360,7 +360,7 @@ begin
 
    Ada.Text_IO.New_Line;
    Ada.Text_IO.Put_Line ("   Meta_Class :");
-   Ada.Text_IO.Put_Line ("     constant array (Ada.Streams.Stream_Element_Array)");
+   Ada.Text_IO.Put_Line ("     constant array (Ada.Streams.Stream_Element)");
    Ada.Text_IO.Put_Line ("       of SHIFTJIS_Meta_Class");
    Ada.Text_IO.Put ("         := (");
 
@@ -405,8 +405,8 @@ begin
    --  Generate single byte conversion table
 
    Ada.Text_IO.New_Line;
-   Ada.Text_IO.Put_Line ("   Encode_Single :");
-   Ada.Text_IO.Put_Line ("     constant array (Ada.Streams.Stream_Element_Array)");
+   Ada.Text_IO.Put_Line ("   Decode_Single :");
+   Ada.Text_IO.Put_Line ("     constant array (Ada.Streams.Stream_Element)");
    Ada.Text_IO.Put_Line ("       of Matreshka.Internals.Unicode.Code_Point");
    Ada.Text_IO.Put ("         := (");
 
@@ -436,7 +436,7 @@ begin
    --  Generate secondary tables for double byte conversion
 
    Ada.Text_IO.New_Line;
-   Ada.Text_IO.Put_Line ("   Encode_Double_Invalid : aliased constant SHIFTJIS_Code_Point_Array");
+   Ada.Text_IO.Put_Line ("   Decode_Double_Invalid : aliased constant SHIFTJIS_Code_Point_Array");
    Ada.Text_IO.Put_Line ("     := (16#0000#, 16#0000#, 16#0000#, 16#0000#,");
    Ada.Text_IO.Put_Line ("         16#0000#, 16#0000#, 16#0000#, 16#0000#,");
    Ada.Text_IO.Put_Line ("         16#0000#, 16#0000#, 16#0000#, 16#0000#,");
@@ -506,7 +506,7 @@ begin
       if Double_Map (J) /= null then
          Ada.Text_IO.New_Line;
          Ada.Text_IO.Put_Line
-          ("   Encode_Double_"
+          ("   Decode_Double_"
              & Image (J)
              & " : aliased constant SHIFTJIS_Code_Point_Array");
          Ada.Text_IO.Put ("     := (");
@@ -544,17 +544,17 @@ begin
    --  Generate double byte encoding table
 
    Ada.Text_IO.New_Line;
-   Ada.Text_IO.Put_Line ("   Encode_Double :");
+   Ada.Text_IO.Put_Line ("   Decode_Double :");
    Ada.Text_IO.Put_Line ("     constant array (Ada.Streams.Stream_Element)");
    Ada.Text_IO.Put_Line ("       of not null SHIFTJIS_Code_Point_Array_Access");
    Ada.Text_IO.Put ("         := (");
 
    for J in Double_Map'Range loop
       if Double_Map (J) /= null then
-          Ada.Text_IO.Put ("Encode_Double_" & Image (J) & "'Access");
+          Ada.Text_IO.Put ("Decode_Double_" & Image (J) & "'Access");
 
       else
-          Ada.Text_IO.Put ("Encode_Double_Invalid'Access");
+          Ada.Text_IO.Put ("Decode_Double_Invalid'Access");
       end if;
 
       if J = 255 then
