@@ -46,6 +46,7 @@ with Ada.Unchecked_Deallocation;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode.Characters.Latin;
+with Matreshka.Internals.URI_Utilities;
 with XML.SAX.Simple_Readers.Callbacks;
 with XML.SAX.Simple_Readers.Scanner.Actions;
 with XML.SAX.Simple_Readers.Scanner.Tables;
@@ -172,8 +173,11 @@ package body XML.SAX.Simple_Readers.Scanner is
           (Self.all,
            League.Strings.Internals.Create
             (Public_Id (Self.Entities, Entity)),
-           League.Strings.Internals.Create
-            (System_Id (Self.Entities, Entity)),
+           Matreshka.Internals.URI_Utilities.Construct_System_Id
+            (League.Strings.Internals.Create
+              (Base (Self.Entities, Entity)),
+             League.Strings.Internals.Create
+              (System_Id (Self.Entities, Entity))),
            Source);
          Text       := Matreshka.Internals.Strings.Shared_Empty'Access;
          Last_Match := False;
@@ -252,6 +256,11 @@ package body XML.SAX.Simple_Readers.Scanner is
         Entity        => Entity,
         In_Literal    => In_Literal,
         Delimiter     => 0,
+        Base          =>
+          Matreshka.Internals.URI_Utilities.Construct_Base
+           (Self.Scanner_State.Base,
+            League.Strings.Internals.Create
+             (System_Id (Self.Entities, Entity))),
         others        => <>);
 
       if Last_Match then

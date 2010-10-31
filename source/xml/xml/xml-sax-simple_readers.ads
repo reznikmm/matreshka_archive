@@ -279,6 +279,7 @@ private
       --  ignored.
       --  XXX The same behavior can be achived by resetting Delimiter to
       --  any symbol.
+      Base                 : League.Strings.Universal_String;
    end record;
 
    package Scanner_State_Vectors is

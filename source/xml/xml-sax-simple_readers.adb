@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
+with Matreshka.Internals.URI_Utilities;
 with XML.SAX.Simple_Readers.Callbacks;
 with XML.SAX.Simple_Readers.Parser;
 with XML.SAX.Simple_Readers.Scanner;
@@ -277,12 +278,16 @@ package body XML.SAX.Simple_Readers is
        (Self.Entities,
         Source.Public_Id,
         Source.System_Id,
+        Source.System_Id,
         Entity);
       Self.Scanner_State :=
        (Entity      => Entity,
         Source      => Source.all'Unchecked_Access,
         Data        => Matreshka.Internals.Strings.Shared_Empty'Access,
         Incremental => Incremental,
+        Base        =>
+          Matreshka.Internals.URI_Utilities.Directory_Name
+           (Source.System_Id),
         others      => <>);
       Self.Parser_State.TOS        := 0;
       Self.Parser_State.Look_Ahead := True;

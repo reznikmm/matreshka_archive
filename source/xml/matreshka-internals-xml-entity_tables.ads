@@ -63,6 +63,7 @@ package Matreshka.Internals.XML.Entity_Tables is
     (Self      : in out Entity_Table;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
+     Base      : League.Strings.Universal_String;
      Entity    : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
@@ -79,6 +80,7 @@ package Matreshka.Internals.XML.Entity_Tables is
     (Self      : in out Entity_Table;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
+     Base      : League.Strings.Universal_String;
      Entity    : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
@@ -94,6 +96,7 @@ package Matreshka.Internals.XML.Entity_Tables is
     (Self      : in out Entity_Table;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
+     Base      : League.Strings.Universal_String;
      Entity    : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
@@ -102,6 +105,7 @@ package Matreshka.Internals.XML.Entity_Tables is
     (Self      : in out Entity_Table;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
+     Base      : League.Strings.Universal_String;
      Entity    : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
@@ -132,6 +136,11 @@ package Matreshka.Internals.XML.Entity_Tables is
        return not null Matreshka.Internals.Strings.Shared_String_Access;
 
    function System_Id
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
+       return not null Matreshka.Internals.Strings.Shared_String_Access;
+
+   function Base
     (Self   : Entity_Table;
      Entity : Entity_Identifier)
        return not null Matreshka.Internals.Strings.Shared_String_Access;
@@ -199,6 +208,7 @@ private
       Notation         : Symbol_Identifier;
       Public_Id        : Matreshka.Internals.Strings.Shared_String_Access;
       System_Id        : Matreshka.Internals.Strings.Shared_String_Access;
+      Base             : Matreshka.Internals.Strings.Shared_String_Access;
       Is_Resolved      : Boolean;
       Replacement_Text : Matreshka.Internals.Strings.Shared_String_Access;
       First_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;

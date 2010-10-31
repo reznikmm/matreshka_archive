@@ -479,7 +479,11 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       if Is_External then
          if Notation = No_Symbol then
             New_External_Parsed_General_Entity
-             (Self.Entities, Self.Public_Id, Self.System_Id, Entity);
+             (Self.Entities,
+              Self.Public_Id,
+              Self.System_Id,
+              Self.Scanner_State.Base,
+              Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
             Callbacks.Call_External_Entity_Declaration
              (Self.all, Name, Self.Public_Id, Self.System_Id);
@@ -723,7 +727,11 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       if Is_External then
          New_External_Parameter_Entity
-          (Self.Entities, Self.Public_Id, Self.System_Id, Entity);
+          (Self.Entities,
+           Self.Public_Id,
+           Self.System_Id,
+           Self.Scanner_State.Base,
+           Entity);
          Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
 
       else
@@ -839,6 +847,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
           (Self.Entities,
            Self.Public_Id,
            Self.System_Id,
+           Self.Scanner_State.Base,
            Self.External_Subset_Entity);
          Callbacks.Call_Start_DTD
           (Self.all,
