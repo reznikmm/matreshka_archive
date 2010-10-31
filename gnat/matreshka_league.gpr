@@ -48,6 +48,7 @@ library project Matreshka_League is
    for Source_Dirs use
     ("../source/league",
      "../source/league/codecs",
+     "../source/league/codecs/tables",
      "../source/league/iana",
      "../source/league/regexp",
      "../source/league/ucd",
@@ -84,6 +85,7 @@ library project Matreshka_League is
          for Source_Dirs use
           ("../source/league",
            "../source/league/codecs",
+           "../source/league/codecs/tables",
            "../source/league/iana",
            "../source/league/ucd",
            "../source/league/regexp",
