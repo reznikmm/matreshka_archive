@@ -235,7 +235,7 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
 
                Buffer.Last := Buffer.Last + 1;
                Buffer.Value (Buffer.Last) :=
-                 Ada.Streams.Stream_Element (2#11000000# or (Code / 16#1000#));
+                 Ada.Streams.Stream_Element (2#11100000# or (Code / 16#1000#));
                Buffer.Last := Buffer.Last + 1;
                Buffer.Value (Buffer.Last) :=
                  Ada.Streams.Stream_Element
@@ -250,7 +250,7 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
 
                Buffer.Last := Buffer.Last + 1;
                Buffer.Value (Buffer.Last) :=
-                 Ada.Streams.Stream_Element (2#11000000# or (Code / 16#40000#));
+                 Ada.Streams.Stream_Element (2#11110000# or (Code / 16#40000#));
                Buffer.Last := Buffer.Last + 1;
                Buffer.Value (Buffer.Last) :=
                  Ada.Streams.Stream_Element

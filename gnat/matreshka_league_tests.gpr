@@ -59,9 +59,13 @@ project Matreshka_League_Tests is
      "string_operations_test.adb",
      "string_compare_test.adb",
      "library_level_test.adb",
-     "regexp_ataresearch.adb");
+     "regexp_ataresearch.adb",
+     "test_35.adb");
    for Object_Dir use "../.objs";
-   for Source_Dirs use ("../testsuite/league", "../tools");
+   for Source_Dirs use
+    ("../testsuite/league",
+     "../testsuite/league/TN-35",
+     "../tools");
 
    package Compiler is
       for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8", "-O2", "-gnatn");

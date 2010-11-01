@@ -4,7 +4,7 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                        Runtime Library Component                         --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,78 +41,38 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This test checks encoding of characters in UTF-8.
+------------------------------------------------------------------------------
+with Ada.Streams;
 
-package body League.Stream_Element_Vectors is
+with League.Stream_Element_Vectors;
+with League.Strings;
+with League.Text_Codecs;
 
-   use type Ada.Streams.Stream_Element_Array;
-   use type Ada.Streams.Stream_Element_Offset;
-   use Matreshka.Internals.Stream_Element_Vectors;
+procedure Test_35 is
+   use type League.Stream_Element_Vectors.Stream_Element_Vector;
 
-   ---------
-   -- "=" --
-   ---------
+   S : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+          (Wide_Wide_String'
+            (Wide_Wide_Character'Val (16#0040#),
+             Wide_Wide_Character'Val (16#0410#),
+             Wide_Wide_Character'Val (16#5831#),
+             Wide_Wide_Character'Val (16#E01EF#)));
+   E : constant Ada.Streams.Stream_Element_Array
+     := (16#40#,
+         16#D0#, 16#90#,
+         16#E5#, 16#A0#, 16#B1#,
+         16#F3#, 16#E0#, 16#87#, 16#AF#);
 
-   not overriding function "="
-    (Left  : Stream_Element_Vector;
-     Right : Ada.Streams.Stream_Element_Array) return Boolean is
-   begin
-      if Left.Data.Last = Right'Length then
-         return
-           Left.Data.Value (Left.Data.Value'First .. Left.Data.Last) = Right;
+   C : League.Text_Codecs.Text_Codec
+     := League.Text_Codecs.Codec
+         (League.Strings.To_Universal_String ("UTF-8"));
+   D : constant League.Stream_Element_Vectors.Stream_Element_Vector
+     := C.Encode (S);
 
-      else
-         return False;
-      end if;
-   end "=";
-
-   ------------
-   -- Adjust --
-   ------------
-
-   overriding procedure Adjust (Self : in out Stream_Element_Vector) is
-   begin
-      Reference (Self.Data);
-   end Adjust;
-
-   --------------
-   -- Finalize --
-   --------------
-
-   overriding procedure Finalize (Self : in out Stream_Element_Vector) is
-   begin
-      --  Finalize can be called more than once (as specified by language
-      --  standard), thus implementation should provide protection from
-      --  multiple finalization.
-
-      if Self.Data /= null then
-         Dereference (Self.Data);
-      end if;
-   end Finalize;
-
-   -----------------------------
-   -- To_Stream_Element_Array --
-   -----------------------------
-
-   function To_Stream_Element_Array
-    (Item : Stream_Element_Vector) return Ada.Streams.Stream_Element_Array is
-   begin
-      return Item.Data.Value (Item.Data.Value'First .. Item.Data.Last);
-   end To_Stream_Element_Array;
-
-   ------------------------------
-   -- To_Stream_Element_Vector --
-   ------------------------------
-
-   function To_Stream_Element_Vector
-    (Item : Ada.Streams.Stream_Element_Array) return Stream_Element_Vector
-   is
-      Data : Shared_Stream_Element_Vector_Access := Allocate (Item'Length);
-
-   begin
-      Data.Last := Item'Length;
-      Data.Value (Data.Value'First .. Data.Last) := Item;
-
-      return (Ada.Finalization.Controlled with Data => Data);
-   end To_Stream_Element_Vector;
-
-end League.Stream_Element_Vectors;
+begin
+   if D /= E then
+      raise Program_Error;
+   end if;
+end Test_35;

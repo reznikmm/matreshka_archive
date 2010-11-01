@@ -31,6 +31,7 @@ check: all
 	.objs/additional_normalization_test
 	.objs/collation_test $(UCADATA)
 	.objs/regexp_ataresearch testsuite/league/ataresearch/basic.dat testsuite/league/ataresearch/matreshka/basic.dat
+	.objs/test_35
 	.objs/test_20 testsuite/xml/TN-20/
 	.objs/test_26 testsuite/xml/TN-26/26-expected.xml
 	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --valid
