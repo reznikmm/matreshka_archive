@@ -36,6 +36,9 @@ private
       Source      : Sources.Source_Access;
       Text        : Matreshka.Internals.Strings.Shared_String_Access;
       Position    : Matreshka.Internals.Utf16.Utf16_String_Index;
+      Line        : Natural;
+      Column      : Natural;
+      Skip_LF     : Boolean;
    end record;
 
    package Entiry_Reference_Vectors is

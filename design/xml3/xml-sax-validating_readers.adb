@@ -96,7 +96,49 @@ package body XML.SAX.Validating_Readers is
 
    begin
       if Self.Current_Entity_Reference.Source /= null then
-         Self.Current_Entity_Reference.Source.Next (Code, Status);
+         loop
+            Self.Current_Entity_Reference.Source.Next (Code, Status);
+
+            exit when Status /= Sources.Successful;
+
+            if Code = Carriage_Return then
+               Self.Current_Entity_Reference.Skip_LF := True;
+               Self.Current_Entity_Reference.Line :=
+                 Self.Current_Entity_Reference.Line + 1;
+               Self.Current_Entity_Reference.Column := 1;
+               Code := Line_Feed;
+
+               return;
+
+            elsif Code = Line_Feed or Code = Next_Line then
+               if not Self.Current_Entity_Reference.Skip_LF then
+                  Self.Current_Entity_Reference.Line :=
+                    Self.Current_Entity_Reference.Line + 1;
+                  Self.Current_Entity_Reference.Column := 1;
+                  Code := Line_Feed;
+
+                  return;
+               end if;
+
+               Self.Current_Entity_Reference.Skip_LF := False;
+
+            elsif Code = Line_Separator then
+               Self.Current_Entity_Reference.Skip_LF := False;
+               Self.Current_Entity_Reference.Line :=
+                 Self.Current_Entity_Reference.Line + 1;
+               Self.Current_Entity_Reference.Column := 1;
+               Code         := Line_Feed;
+
+               return;
+
+            else
+               Self.Current_Entity_Reference.Column :=
+                 Self.Current_Entity_Reference.Column + 1;
+               Self.Current_Entity_Reference.Skip_LF := False;
+
+               return;
+            end if;
+         end loop;
 
          case Status is
             when Sources.Successful =>
@@ -157,6 +199,18 @@ package body XML.SAX.Validating_Readers is
               Code);
             Status := Sources.Successful;
 
+            --  Update location
+
+            if Code = Line_Feed then
+               Self.Current_Entity_Reference.Line :=
+                 Self.Current_Entity_Reference.Line + 1;
+               Self.Current_Entity_Reference.Column := 1;
+
+            else
+               Self.Current_Entity_Reference.Column :=
+                 Self.Current_Entity_Reference.Column + 1;
+            end if;
+
          else
             --  Pop entity reference stack.
 
@@ -186,7 +240,10 @@ package body XML.SAX.Validating_Readers is
         Is_Document => True,
         Source      => Source,
         Text        => null,
-        Position    => 0);
+        Position    => 0,
+        Line        => 1,
+        Column      => 0,
+        Skip_LF     => False);
 
       loop
          Self.Next (Code, Status);

@@ -91,34 +91,9 @@ package body Sources is
 
             if Self.State = Accept_State then
                Status := Successful;
+               Code   := Self.Code;
 
-               if Self.Code = Carriage_Return then
-                  Self.Skip_LF := True;
-                  Code         := Line_Feed;
-
-                  return;
-
-               elsif Code = Line_Feed or Code = Next_Line then
-                  if not Self.Skip_LF then
-                     Code := Line_Feed;
-
-                     return;
-                  end if;
-
-                  Self.Skip_LF := False;
-
-               elsif Code = Line_Separator then
-                  Self.Skip_LF := False;
-                  Code         := Line_Feed;
-
-                  return;
-
-               else
-                  Self.Skip_LF := False;
-                  Code         := Self.Code;
-
-                  return;
-               end if;
+               return;
             end if;
          end;
       end loop;
@@ -136,7 +111,6 @@ package body Sources is
       Self.Position := Self.Buffer'First;
       Self.State    := Accept_State;
       Self.Code     := 0;
-      Self.Skip_LF  := False;
    end Open;
 
 end Sources;

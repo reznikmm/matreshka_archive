@@ -37,7 +37,6 @@ private
 
       State    : UTF8_DFA_State;
       Code     : Matreshka.Internals.Unicode.Code_Unit_32;
-      Skip_LF  : Boolean;
    end record;
 
 end Sources;
