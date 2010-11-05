@@ -1,6 +1,15 @@
+with Ada.Unchecked_Deallocation;
+
+with Matreshka.Internals.Strings.Operations;
+with Matreshka.Internals.Unicode.Characters.General_Punctuation;
+with Matreshka.Internals.Unicode.Characters.Latin;
 with XML.SAX.Readers;
 
 package body XML.SAX.Validating_Readers is
+
+   use type Sources.Read_Status;
+   use Matreshka.Internals.Unicode.Characters.General_Punctuation;
+   use Matreshka.Internals.Unicode.Characters.Latin;
 
    ---------------------
    -- Content_Handler --
@@ -67,6 +76,144 @@ package body XML.SAX.Validating_Readers is
    begin
       return Self.Lexical_Handler;
    end Lexical_Handler;
+
+   ----------
+   -- Next --
+   ----------
+
+   procedure Next
+    (Self   : in out SAX_Validating_Reader'Class;
+     Code   : out Matreshka.Internals.Unicode.Code_Point;
+     Status : out Sources.Read_Status)
+   is
+      use type Sources.Source_Access;
+      use type Matreshka.Internals.Unicode.Code_Point;
+      use type Matreshka.Internals.Utf16.Utf16_String_Index;
+
+      procedure Free is
+        new Ada.Unchecked_Deallocation
+             (Sources.Source'Class, Sources.Source_Access);
+
+   begin
+      if Self.Current_Entity_Reference.Source /= null then
+         Self.Current_Entity_Reference.Source.Next (Code, Status);
+
+         case Status is
+            when Sources.Successful =>
+               if not Self.Current_Entity_Reference.Is_Document then
+--                  Matreshka.Internals.Utf16.Unchecked_Store
+--                   (Self.Current_Entity_Reference.Text.Value,
+--                    Self.Current_Entity_Reference.Text.Unused,
+--                    Code);
+--                  Self.Current_Entity_Reference.Text.Length :=
+--                    Self.Current_Entity_Reference.Text.Length + 1;
+                  Matreshka.Internals.Strings.Operations.Unterminated_Append
+                   (Self.Current_Entity_Reference.Text, Code);
+                  --  It is slow operation, would be nice to use the fact that
+                  --  filled shared string is not used anywhere, so several
+                  --  checks can be avoided. Look to Detached_* API of string
+                  --  (if it is implemented).
+               end if;
+
+            when Sources.Mailformed =>
+               null;
+
+            when Sources.End_Of_Data =>
+               null;
+
+            when Sources.End_Of_Input =>
+               --  End of current entity, update entities table and pop entity
+               --  reference stack.
+
+               if not Self.Current_Entity_Reference.Is_Document then
+                  --  Save entity's replacement text and position/index of
+                  --  first character after text declaration for future use.
+
+                  --  XXX Not implemented.
+
+                  null;
+
+                  --  Deallocate input source.
+
+                  Free (Self.Current_Entity_Reference.Source);
+
+                  --  Pop entity reference stack.
+
+                  Self.Current_Entity_Reference :=
+                    Self.Entity_Reference_Stack.Last_Element;
+                  Self.Entity_Reference_Stack.Delete_Last;
+
+                  Self.Next (Code, Status);
+               end if;
+         end case;
+
+      else
+         if Self.Current_Entity_Reference.Position
+              < Self.Current_Entity_Reference.Text.Unused
+         then
+            Matreshka.Internals.Utf16.Unchecked_Next
+             (Self.Current_Entity_Reference.Text.Value,
+              Self.Current_Entity_Reference.Position,
+              Code);
+            Status := Sources.Successful;
+
+         else
+            --  Pop entity reference stack.
+
+            Self.Current_Entity_Reference :=
+              Self.Entity_Reference_Stack.Last_Element;
+            Self.Entity_Reference_Stack.Delete_Last;
+
+            Self.Next (Code, Status);
+         end if;
+      end if;
+   end Next;
+
+   -----------
+   -- Parse --
+   -----------
+
+   procedure Parse
+    (Self   : in out SAX_Validating_Reader'Class;
+     Source : not null Sources.Source_Access)
+   is
+      Code   : Matreshka.Internals.Unicode.Code_Point;
+      Status : Sources.Read_Status;
+
+   begin
+      Self.Current_Entity_Reference :=
+       (Entity      => 0,
+        Is_Document => True,
+        Source      => Source,
+        Text        => null,
+        Position    => 0);
+
+      loop
+         Self.Next (Code, Status);
+
+         exit when Status = Sources.End_Of_Input;
+      end loop;
+   end Parse;
+
+   -----------------------
+   -- Parse_Incremental --
+   -----------------------
+
+   procedure Parse_Incremental
+    (Self   : in out SAX_Validating_Reader'Class;
+     Source : not null Sources.Source_Access) is
+   begin
+      null;
+   end Parse_Incremental;
+
+   ----------------
+   -- Parse_Next --
+   ----------------
+
+   procedure Parse_Next (Self : in out SAX_Validating_Reader'Class) is
+   begin
+      null;
+   end Parse_Next;
 
    -------------------------
    -- Set_Content_Handler --

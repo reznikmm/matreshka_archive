@@ -2,10 +2,16 @@ with "../../gnat/matreshka_xml.gpr";
 
 project XML3 is
 
+   for Main use ("main.adb");
    for Object_Dir use ".obj";
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05");
+      for Default_Switches ("Ada") use ("-g", "-gnat05", "-O2");
+--      for Default_Switches ("Ada") use ("-g", "-gnat05", "-O2", "-gnatn");
    end Compiler;
+
+   package Builder is
+      for Global_Configuration_Pragmas use "gnat.adc";
+   end Builder;
 
 end XML3;
