@@ -11,6 +11,30 @@ package body XML.SAX.Validating_Readers is
    use Matreshka.Internals.Unicode.Characters.General_Punctuation;
    use Matreshka.Internals.Unicode.Characters.Latin;
 
+   procedure Next (Self : in out SAX_Validating_Reader'Class);
+   --  Reads next character from input source. When Status is Successful it
+   --  means that character is read from source. End_Of_Data means that there
+   --  is no character available to read now, but can be available later.
+   --  End_Of_Input signals that the end of document is reached.
+
+   function Is_End_Of_Document
+    (Self : SAX_Validating_Reader'Class) return Boolean;
+   --  Returns True when current status of input source is End_Of_Input, or,
+   --  in incremental mode, is End_Of_Data.
+
+   procedure Unexpected_End_Of_Document
+    (Self       : in out SAX_Validating_Reader'Class;
+     Subprogram : Parse_Subprogram);
+   --  Reports unexpected end of document. In incremental mode when end of data
+   --  is reached it saves current state to restore parsing from it.
+
+   package Parser is
+
+      procedure Parse_Document (Self : in out SAX_Validating_Reader'Class);
+      --  Parses [1] 'document' production.
+
+   end Parser;
+
    ---------------------
    -- Content_Handler --
    ---------------------
@@ -66,6 +90,16 @@ package body XML.SAX.Validating_Readers is
       return Self.Error_Handler;
    end Error_Handler;
 
+   ------------------------
+   -- Is_End_Of_Document --
+   ------------------------
+
+   function Is_End_Of_Document
+    (Self : SAX_Validating_Reader'Class) return Boolean is
+   begin
+      return Self.Source_Status /= Sources.Successful;
+   end Is_End_Of_Document;
+
    ---------------------
    -- Lexical_Handler --
    ---------------------
@@ -81,11 +115,7 @@ package body XML.SAX.Validating_Readers is
    -- Next --
    ----------
 
-   procedure Next
-    (Self   : in out SAX_Validating_Reader'Class;
-     Code   : out Matreshka.Internals.Unicode.Code_Point;
-     Status : out Sources.Read_Status)
-   is
+   procedure Next (Self : in out SAX_Validating_Reader'Class) is
       use type Sources.Source_Access;
       use type Matreshka.Internals.Unicode.Code_Point;
       use type Matreshka.Internals.Utf16.Utf16_String_Index;
@@ -97,37 +127,38 @@ package body XML.SAX.Validating_Readers is
    begin
       if Self.Current_Entity_Reference.Source /= null then
          loop
-            Self.Current_Entity_Reference.Source.Next (Code, Status);
+            Self.Current_Entity_Reference.Source.Next
+             (Self.Code, Self.Source_Status);
 
-            exit when Status /= Sources.Successful;
+            exit when Self.Source_Status /= Sources.Successful;
 
-            if Code = Carriage_Return then
+            if Self.Code = Carriage_Return then
                Self.Current_Entity_Reference.Skip_LF := True;
                Self.Current_Entity_Reference.Line :=
                  Self.Current_Entity_Reference.Line + 1;
                Self.Current_Entity_Reference.Column := 1;
-               Code := Line_Feed;
+               Self.Code := Line_Feed;
 
                return;
 
-            elsif Code = Line_Feed or Code = Next_Line then
+            elsif Self.Code = Line_Feed or Self.Code = Next_Line then
                if not Self.Current_Entity_Reference.Skip_LF then
                   Self.Current_Entity_Reference.Line :=
                     Self.Current_Entity_Reference.Line + 1;
                   Self.Current_Entity_Reference.Column := 1;
-                  Code := Line_Feed;
+                  Self.Code := Line_Feed;
 
                   return;
                end if;
 
                Self.Current_Entity_Reference.Skip_LF := False;
 
-            elsif Code = Line_Separator then
+            elsif Self.Code = Line_Separator then
                Self.Current_Entity_Reference.Skip_LF := False;
                Self.Current_Entity_Reference.Line :=
                  Self.Current_Entity_Reference.Line + 1;
                Self.Current_Entity_Reference.Column := 1;
-               Code         := Line_Feed;
+               Self.Code := Line_Feed;
 
                return;
 
@@ -140,7 +171,7 @@ package body XML.SAX.Validating_Readers is
             end if;
          end loop;
 
-         case Status is
+         case Self.Source_Status is
             when Sources.Successful =>
                if not Self.Current_Entity_Reference.Is_Document then
 --                  Matreshka.Internals.Utf16.Unchecked_Store
@@ -150,7 +181,7 @@ package body XML.SAX.Validating_Readers is
 --                  Self.Current_Entity_Reference.Text.Length :=
 --                    Self.Current_Entity_Reference.Text.Length + 1;
                   Matreshka.Internals.Strings.Operations.Unterminated_Append
-                   (Self.Current_Entity_Reference.Text, Code);
+                   (Self.Current_Entity_Reference.Text, Self.Code);
                   --  It is slow operation, would be nice to use the fact that
                   --  filled shared string is not used anywhere, so several
                   --  checks can be avoided. Look to Detached_* API of string
@@ -185,7 +216,7 @@ package body XML.SAX.Validating_Readers is
                     Self.Entity_Reference_Stack.Last_Element;
                   Self.Entity_Reference_Stack.Delete_Last;
 
-                  Self.Next (Code, Status);
+                  Self.Next;
                end if;
          end case;
 
@@ -196,12 +227,12 @@ package body XML.SAX.Validating_Readers is
             Matreshka.Internals.Utf16.Unchecked_Next
              (Self.Current_Entity_Reference.Text.Value,
               Self.Current_Entity_Reference.Position,
-              Code);
-            Status := Sources.Successful;
+              Self.Code);
+            Self.Source_Status := Sources.Successful;
 
             --  Update location
 
-            if Code = Line_Feed then
+            if Self.Code = Line_Feed then
                Self.Current_Entity_Reference.Line :=
                  Self.Current_Entity_Reference.Line + 1;
                Self.Current_Entity_Reference.Column := 1;
@@ -218,7 +249,7 @@ package body XML.SAX.Validating_Readers is
               Self.Entity_Reference_Stack.Last_Element;
             Self.Entity_Reference_Stack.Delete_Last;
 
-            Self.Next (Code, Status);
+            Self.Next;
          end if;
       end if;
    end Next;
@@ -229,11 +260,7 @@ package body XML.SAX.Validating_Readers is
 
    procedure Parse
     (Self   : in out SAX_Validating_Reader'Class;
-     Source : not null Sources.Source_Access)
-   is
-      Code   : Matreshka.Internals.Unicode.Code_Point;
-      Status : Sources.Read_Status;
-
+     Source : not null Sources.Source_Access) is
    begin
       Self.Current_Entity_Reference :=
        (Entity      => 0,
@@ -244,12 +271,10 @@ package body XML.SAX.Validating_Readers is
         Line        => 1,
         Column      => 0,
         Skip_LF     => False);
+      Self.Parser_Status := Continue;
 
-      loop
-         Self.Next (Code, Status);
-
-         exit when Status = Sources.End_Of_Input;
-      end loop;
+      Self.Next;
+      Parser.Parse_Document (Self);
    end Parse;
 
    -----------------------
@@ -271,6 +296,84 @@ package body XML.SAX.Validating_Readers is
    begin
       null;
    end Parse_Next;
+
+   ------------
+   -- Parser --
+   ------------
+
+   package body Parser is
+
+      --  All parsing subprograms has the same structure, it allows to do
+      --  incremental parsing.
+      --
+      --  procedure Parse_... (Self : in out SAX_Validating_Reader'Class) is
+      --
+      --     type States is (State_Init, ...);
+      --     --  States
+      --
+      --     type Inputs is (Input_..., ...);
+      --     --  Inputs
+      --
+      --     Transition : constant array (States, Inputs) of States
+      --       := ...;
+      --     --  State transition table.
+      --
+      --     State : States;
+      --     Input : Inputs;
+      --
+      --  begin
+      --     if Self.Parse_State_Stack.Is_Empty then
+      --        --  Initialize
+      --        ...
+      --     else
+      --        --  Restore state, call parse function recursively
+      --        ...
+      --     end if;
+      --
+      --     loop
+      --        case State is
+      --           --  Do actions
+      --        end case;
+      --
+      --        if Self.Is_End_Of_Document then
+      --           Self.Unexpected_End_Of_Document (Parse_...'Access, State);
+      --           return;
+      --        end if;
+      --
+      --        State := Transition (State, Input);
+      --
+      --        case State is
+      --           --  Do actions. Last statement in each handler must be
+      --           --  exit/return statement or call of Self.Next procedure.
+      --        end case;
+      --     end loop;
+      --  end Parse_...;
+
+      --------------------
+      -- Parse_Document --
+      --------------------
+
+      procedure Parse_Document (Self : in out SAX_Validating_Reader'Class) is
+      begin
+         if Self.Parse_State_Stack.Is_Empty then
+            null;
+
+         else
+            raise Program_Error;
+         end if;
+
+         loop
+            if Self.Is_End_Of_Document then
+               Self.Unexpected_End_Of_Document (Parse_Document'Access);
+
+               return;
+            end if;
+
+            Self.Next;
+         end loop;
+      end Parse_Document;
+
+   end Parser;
 
    -------------------------
    -- Set_Content_Handler --
@@ -337,5 +440,16 @@ package body XML.SAX.Validating_Readers is
    begin
       Self.Lexical_Handler := Handler;
    end Set_Lexical_Handler;
+
+   --------------------------------
+   -- Unexpected_End_Of_Document --
+   --------------------------------
+
+   procedure Unexpected_End_Of_Document
+    (Self       : in out SAX_Validating_Reader'Class;
+     Subprogram : Parse_Subprogram) is
+   begin
+      Self.Parser_Status := Error;
+   end Unexpected_End_Of_Document;
 
 end XML.SAX.Validating_Readers;

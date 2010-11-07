@@ -28,6 +28,10 @@ package XML.SAX.Validating_Readers is
 
 private
 
+   ----------------------------
+   -- Entity reference stack --
+   ----------------------------
+
    type Entity_Identifier is new Natural;
 
    type Entity_Reference is record
@@ -42,7 +46,30 @@ private
    end record;
 
    package Entiry_Reference_Vectors is
-     new Ada.Containers.Vectors (Natural, Entity_Reference);
+     new Ada.Containers.Vectors (Positive, Entity_Reference);
+
+   -----------------------
+   -- Parse state stack --
+   -----------------------
+
+   type Parser_Statuses is (Continue, End_Of_Data, Error);
+
+   type Parser_States is mod 2 ** 8;
+
+   type Parse_Subprogram is
+     access procedure (Self : in out SAX_Validating_Reader'Class);
+
+   type Parse_State is record
+      Subprogram : Parse_Subprogram;
+      State      : Parser_States;
+   end record;
+
+   package Parse_State_Vectors is
+     new Ada.Containers.Vectors (Positive, Parse_State);
+
+   ------------
+   -- Reader --
+   ------------
 
    type SAX_Validating_Reader is
      limited new XML.SAX.Readers.SAX_Reader with
@@ -60,16 +87,17 @@ private
 
       Current_Entity_Reference : Entity_Reference;
       Entity_Reference_Stack   : Entiry_Reference_Vectors.Vector;
-   end record;
 
-   procedure Next
-    (Self   : in out SAX_Validating_Reader'Class;
-     Code   : out Matreshka.Internals.Unicode.Code_Point;
-     Status : out Sources.Read_Status);
-   --  Reads next character from input source. When Status is Successful it
-   --  means that character is read from source. End_Of_Data means that there
-   --  is no character available to read now, but can be available later.
-   --  End_Of_Input signals that the end of source is reached.
+      --  Current code point and input source status
+
+      Code                     : Matreshka.Internals.Unicode.Code_Point;
+      Source_Status            : Sources.Read_Status;
+      Parser_Status            : Parser_Statuses;
+
+      --  Parse state stack, used in incremental mode only.
+
+      Parse_State_Stack        : Parse_State_Vectors.Vector;
+   end record;
 
    --  Overrided subprograms
 
