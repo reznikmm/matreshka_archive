@@ -1,3 +1,4 @@
+with Ada.Text_IO;
 with Ada.Unchecked_Deallocation;
 
 with Matreshka.Internals.Strings.Operations;
@@ -32,10 +33,25 @@ package body XML.SAX.Validating_Readers is
    procedure Report_Parse_Error (Self : in out SAX_Validating_Reader'Class);
    --  Reports parse error;
 
+   procedure Parse_Failed
+    (Self       : in out SAX_Validating_Reader'Class;
+     Subprogram : Parse_Subprogram);
+   --  Reports parse error in document. In incremental mode when end of data is
+   --  reached it saves current state to restore parsing from it.
+
    package Parser is
 
       procedure Parse_Document (Self : in out SAX_Validating_Reader'Class);
       --  Parses [1] 'document' production.
+
+      procedure Parse_Processing_Instruction
+       (Self : in out SAX_Validating_Reader'Class);
+      --  Parses [16] 'PI' production.
+      --
+      --  Implementation assumes that the beginning '<' of the PI is already
+      --  read and the current character is '?' of '<?'. When parse is
+      --  completed successfully current character is the first character
+      --  after the PI.
 
       procedure Parse_Prolog (Self : in out SAX_Validating_Reader'Class);
       --  Parses XMLDecl and Misc* subexpressions in [22] 'prolog' production.
@@ -283,6 +299,17 @@ package body XML.SAX.Validating_Readers is
       Parser.Parse_Document (Self);
    end Parse;
 
+   ------------------
+   -- Parse_Failed --
+   ------------------
+
+   procedure Parse_Failed
+    (Self       : in out SAX_Validating_Reader'Class;
+     Subprogram : Parse_Subprogram) is
+   begin
+      null;
+   end Parse_Failed;
+
    -----------------------
    -- Parse_Incremental --
    -----------------------
@@ -314,7 +341,11 @@ package body XML.SAX.Validating_Readers is
       --
       --  procedure Parse_... (Self : in out SAX_Validating_Reader'Class) is
       --
-      --     type States is (State_Init, ...);
+      --     type States is
+      --      (State_Init,
+      --       ...
+      --       State_Done,
+      --       State_Invalid);
       --     --  States
       --
       --     type Inputs is (Input_..., ...);
@@ -380,6 +411,84 @@ package body XML.SAX.Validating_Readers is
 --         end loop;
       end Parse_Document;
 
+      ----------------------------------
+      -- Parse_Processing_Instruction --
+      ----------------------------------
+
+      procedure Parse_Processing_Instruction
+       (Self : in out SAX_Validating_Reader'Class)
+      is
+
+         type States is
+          (State_Initial,
+           State_Question_Mark,
+           State_Done,
+           State_Invalid);
+
+         type Inputs is (Input_Question_Mark, Input_Unknown);
+
+         Transition : constant array (States, Inputs) of States
+           := (State_Initial =>
+                (Input_Question_Mark => State_Question_Mark,
+                 Input_Unknown       => State_Invalid),
+               State_Question_Mark =>
+                (Input_Question_Mark => State_Invalid,
+                 Input_Unknown       => State_Invalid),
+               State_Done => (others => State_Invalid),
+               State_Invalid => (others => State_Invalid));
+
+         State : States;
+         Input : Inputs;
+
+      begin
+         if Self.Parse_State_Stack.Is_Empty then
+            State := State_Initial;
+
+         else
+            raise Program_Error;
+         end if;
+
+         loop
+            --  Checks end of document
+
+            if Self.Is_End_Of_Document then
+               Self.Unexpected_End_Of_Document
+                (Parse_Processing_Instruction'Access);
+
+               return;
+            end if;
+
+            --  Classify current character
+
+            if Self.Code = Question_Mark then
+               Input := Input_Question_Mark;
+
+            else
+               Input := Input_Unknown;
+            end if;
+
+            State := Transition (State, Input);
+
+            case State is
+               when State_Initial =>
+                  raise Program_Error;
+
+               when State_Question_Mark =>
+                  Self.Next;
+
+               when State_Done =>
+                  Self.Next;
+
+                  return;
+
+               when State_Invalid =>
+                  Self.Report_Parse_Error;
+
+                  return;
+            end case;
+         end loop;
+      end Parse_Processing_Instruction;
+
       ------------------
       -- Parse_Prolog --
       ------------------
@@ -426,7 +535,7 @@ package body XML.SAX.Validating_Readers is
             --  Checks end of document
 
             if Self.Is_End_Of_Document then
-               Self.Unexpected_End_Of_Document (Parse_Document'Access);
+               Self.Unexpected_End_Of_Document (Parse_Prolog'Access);
 
                return;
             end if;
@@ -453,7 +562,13 @@ package body XML.SAX.Validating_Readers is
                   Self.Next;
 
                when State_Processing_Instruction =>
-                  raise Program_Error;
+                  Parse_Processing_Instruction (Self);
+
+                  if Self.Parser_Status /= Continue then
+                     Self.Parse_Failed (Parse_Prolog'Access);
+
+                     return;
+                  end if;
 
                when State_Done =>
                   return;
@@ -474,6 +589,7 @@ package body XML.SAX.Validating_Readers is
 
    procedure Report_Parse_Error (Self : in out SAX_Validating_Reader'Class) is
    begin
+      Ada.Text_IO.Put_Line ("Report_Parse_Error");
       Self.Parser_Status := Error;
    end Report_Parse_Error;
 
