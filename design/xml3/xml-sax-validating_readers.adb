@@ -7,6 +7,7 @@ with XML.SAX.Readers;
 
 package body XML.SAX.Validating_Readers is
 
+   use type Matreshka.Internals.Unicode.Code_Point;
    use type Sources.Read_Status;
    use Matreshka.Internals.Unicode.Characters.General_Punctuation;
    use Matreshka.Internals.Unicode.Characters.Latin;
@@ -28,10 +29,16 @@ package body XML.SAX.Validating_Readers is
    --  Reports unexpected end of document. In incremental mode when end of data
    --  is reached it saves current state to restore parsing from it.
 
+   procedure Report_Parse_Error (Self : in out SAX_Validating_Reader'Class);
+   --  Reports parse error;
+
    package Parser is
 
       procedure Parse_Document (Self : in out SAX_Validating_Reader'Class);
       --  Parses [1] 'document' production.
+
+      procedure Parse_Prolog (Self : in out SAX_Validating_Reader'Class);
+      --  Parses XMLDecl and Misc* subexpressions in [22] 'prolog' production.
 
    end Parser;
 
@@ -117,7 +124,6 @@ package body XML.SAX.Validating_Readers is
 
    procedure Next (Self : in out SAX_Validating_Reader'Class) is
       use type Sources.Source_Access;
-      use type Matreshka.Internals.Unicode.Code_Point;
       use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
       procedure Free is
@@ -362,18 +368,114 @@ package body XML.SAX.Validating_Readers is
             raise Program_Error;
          end if;
 
+         Parse_Prolog (Self);
+--         loop
+--            if Self.Is_End_Of_Document then
+--               Self.Unexpected_End_Of_Document (Parse_Document'Access);
+--
+--               return;
+--            end if;
+--
+--            Self.Next;
+--         end loop;
+      end Parse_Document;
+
+      ------------------
+      -- Parse_Prolog --
+      ------------------
+
+      procedure Parse_Prolog (Self : in out SAX_Validating_Reader'Class) is
+
+         type States is
+          (State_Initial,
+           State_Less_Than_Sign,
+           State_Processing_Instruction,
+           State_Done,
+           State_Invalid);
+
+         type Inputs is
+          (Input_Less_Than_Sign,
+           Input_Question_Mark,
+           Input_Unknown);
+
+         Transition : constant array (States, Inputs) of States
+           := (State_Initial =>
+                (Input_Less_Than_Sign => State_Less_Than_Sign,
+                 Input_Question_Mark  => State_Invalid,
+                 Input_Unknown        => State_Invalid),
+               State_Less_Than_Sign =>
+                (Input_Less_Than_Sign => State_Invalid,
+                 Input_Question_Mark  => State_Processing_Instruction,
+                 Input_Unknown        => State_Invalid),
+               State_Processing_Instruction => (others => State_Invalid),
+               State_Done => (others => State_Invalid),
+               State_Invalid => (others => State_Invalid));
+
+         State : States;
+         Input : Inputs;
+
+      begin
+         if Self.Parse_State_Stack.Is_Empty then
+            State := State_Initial;
+
+         else
+            raise Program_Error;
+         end if;
+
          loop
+            --  Checks end of document
+
             if Self.Is_End_Of_Document then
                Self.Unexpected_End_Of_Document (Parse_Document'Access);
 
                return;
             end if;
 
-            Self.Next;
+            --  Classify current character
+
+            if Self.Code = Less_Than_Sign then
+               Input := Input_Less_Than_Sign;
+
+            elsif Self.Code = Question_Mark then
+               Input := Input_Question_Mark;
+
+            else
+               Input := Input_Unknown;
+            end if;
+
+            State := Transition (State, Input);
+
+            case State is
+               when State_Initial =>
+                  raise Program_Error;
+
+               when State_Less_Than_Sign =>
+                  Self.Next;
+
+               when State_Processing_Instruction =>
+                  raise Program_Error;
+
+               when State_Done =>
+                  return;
+
+               when State_Invalid =>
+                  Self.Report_Parse_Error;
+
+                  return;
+            end case;
          end loop;
-      end Parse_Document;
+      end Parse_Prolog;
 
    end Parser;
+
+   ------------------------
+   -- Report_Parse_Error --
+   ------------------------
+
+   procedure Report_Parse_Error (Self : in out SAX_Validating_Reader'Class) is
+   begin
+      Self.Parser_Status := Error;
+   end Report_Parse_Error;
 
    -------------------------
    -- Set_Content_Handler --
