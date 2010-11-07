@@ -58,6 +58,70 @@ package body XML.SAX.Validating_Readers is
 
    end Parser;
 
+   package Character_Classification is
+
+      function Is_Name_Start_Character
+       (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean;
+      --  Returns True when specified code is NameStartChar.
+
+   end Character_Classification;
+
+   ------------------------------
+   -- Character_Classification --
+   ------------------------------
+
+   package body Character_Classification is
+
+      type Character_Classes is
+       (Invalid_Character,
+        Name_Start_Character,
+        Name_Character,
+        Other_Character);
+
+      type Name_Character_Classes is (Not_A_Name, Name_Start_Char, Name_Char);
+
+      type Name_Character_Classes_Array is
+        array (Matreshka.Internals.Unicode.Code_Point range 16#00# .. 16#FF#)
+          of Name_Character_Classes;
+
+      Name_Class_0000 : aliased constant Name_Character_Classes_Array
+        := (Colon
+              | Latin_Capital_Letter_A .. Latin_Capital_Letter_Z
+              | Low_Line
+              | Latin_Small_Letter_A .. Latin_Small_Letter_Z
+              | 16#C0# .. 16#D6#
+              | 16#D8# .. 16#F6#
+              | 16#F8# .. 16#FF#
+                => Name_Start_Char,
+            Hyphen_Minus
+              | Full_Stop
+              | Digit_Zero .. Digit_Nine
+              | 16#B7#
+                => Name_Char,
+            others => Not_A_Name);
+      --  ":" | [A-Z] | "_" | [a-z] | [#xC0-#xD6] | [#xD8-#xF6] | [#xF8-#x2FF]
+
+      Name_Class_0001 : aliased constant Name_Character_Classes_Array
+        := (others => Name_Start_Char);
+      --  [#xF8-#x2FF]
+
+--    | [#x370-#x37D] | [#x37F-#x1FFF] | [#x200C-#x200D] | [#x2070-#x218F] | [#x2C00-#x2FEF] | [#x3001-#xD7FF] | [#xF900-#xFDCF] | [#xFDF0-#xFFFD] | [#x10000-#xEFFFF]
+
+--  "-" | "." | [0-9] | #xB7 | [#x0300-#x036F] | [#x203F-#x2040]
+
+      -----------------------------
+      -- Is_Name_Start_Character --
+      -----------------------------
+
+      function Is_Name_Start_Character
+       (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean is
+      begin
+         return Name_Class_0000 (Code) = Name_Start_Char;
+--      return 	":" | [A-Z] | "_" | [a-z] | [#xC0-#xD6] | [#xD8-#xF6] | [#xF8-#x2FF] | [#x370-#x37D] | [#x37F-#x1FFF] | [#x200C-#x200D] | [#x2070-#x218F] | [#x2C00-#x2FEF] | [#x3001-#xD7FF] | [#xF900-#xFDCF] | [#xFDF0-#xFFFD] | [#x10000-#xEFFFF]
+      end Is_Name_Start_Character;
+
+   end Character_Classification;
+
    ---------------------
    -- Content_Handler --
    ---------------------
@@ -418,22 +482,30 @@ package body XML.SAX.Validating_Readers is
       procedure Parse_Processing_Instruction
        (Self : in out SAX_Validating_Reader'Class)
       is
+         use Character_Classification;
 
          type States is
           (State_Initial,
            State_Question_Mark,
+           State_Name,
            State_Done,
            State_Invalid);
 
-         type Inputs is (Input_Question_Mark, Input_Unknown);
+         type Inputs is
+          (Input_Question_Mark,
+           input_Name_Start_Character,
+           Input_Unknown);
 
          Transition : constant array (States, Inputs) of States
            := (State_Initial =>
-                (Input_Question_Mark => State_Question_Mark,
-                 Input_Unknown       => State_Invalid),
+                (Input_Question_Mark        => State_Question_Mark,
+                 Input_Name_Start_Character => State_Invalid,
+                 Input_Unknown              => State_Invalid),
                State_Question_Mark =>
-                (Input_Question_Mark => State_Invalid,
-                 Input_Unknown       => State_Invalid),
+                (Input_Question_Mark        => State_Invalid,
+                 Input_Name_Start_Character => State_Name,
+                 Input_Unknown              => State_Invalid),
+               State_Name => (others => State_Invalid),
                State_Done => (others => State_Invalid),
                State_Invalid => (others => State_Invalid));
 
@@ -463,6 +535,9 @@ package body XML.SAX.Validating_Readers is
             if Self.Code = Question_Mark then
                Input := Input_Question_Mark;
 
+            elsif Is_Name_Start_Character (Self.Code) then
+               Input := Input_Name_Start_Character;
+
             else
                Input := Input_Unknown;
             end if;
@@ -475,6 +550,9 @@ package body XML.SAX.Validating_Readers is
 
                when State_Question_Mark =>
                   Self.Next;
+
+               when State_Name =>
+                  raise Program_Error;
 
                when State_Done =>
                   Self.Next;
