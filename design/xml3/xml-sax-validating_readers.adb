@@ -698,6 +698,9 @@ package body XML.SAX.Validating_Readers is
            Input_Greater_Than_Sign,
            Input_Unknown);
 
+         --  GNAT constructs transition table every time when subprogram is
+         --  called, so it is resonable to move its declaration outside.
+
          Transition : constant array (States, Inputs) of States
            := (State_Initial =>
                 (Input_Question_Mark        => State_Initial_Question_Mark,
