@@ -79,6 +79,14 @@ package body XML.SAX.Validating_Readers is
       --  current character is the first character immediately after last
       --  character of the name.
 
+      procedure Parse_Attribute_Value
+       (Self : in out SAX_Validating_Reader'Class);
+      --  Parses [10] 'AttValue' production.
+      --
+      --  Current character must be the attribute value delimiter character
+      --  (" or '). After parsing current character points to next character
+      --  closing delimiter.
+
       procedure Parse_Processing_Instruction
        (Self : in out SAX_Validating_Reader'Class);
       --  Parses [16] 'PI' production.
@@ -564,9 +572,150 @@ Ada.Wide_Wide_Text_IO.Put_Line
       ---------------------
 
       procedure Parse_Attribute (Self : in out SAX_Validating_Reader'Class) is
+
+         type States is
+          (State_Initial,
+           State_Name,
+           State_Whitespace_Before,
+           State_Equals_Sign,
+           State_Whitespace_After,
+           State_Value,
+           State_Invalid);
+
+         type Inputs is
+          (Input_Name_Start_Character,
+           Input_Whitespace,
+           Input_Equals_Sign,
+           Input_Value_Open_Delimiter,
+           Input_Unknown);
+
+         Transition : constant array (States, Inputs) of States
+           := (State_Initial =>
+                (Input_Name_Start_Character => State_Name,
+                 Input_Whitespace           => State_Invalid,
+                 Input_Equals_Sign          => State_Invalid,
+                 Input_Value_Open_Delimiter => State_Invalid,
+                 Input_Unknown              => State_Invalid),
+               State_Name =>
+                (Input_Name_Start_Character => State_Invalid,
+                 Input_Whitespace           => State_Whitespace_Before,
+                 Input_Equals_Sign          => State_Equals_Sign,
+                 Input_Value_Open_Delimiter => State_Invalid,
+                 Input_Unknown              => State_Invalid),
+               State_Whitespace_Before =>
+                (Input_Name_Start_Character => State_Invalid,
+                 Input_Whitespace           => State_Whitespace_Before,
+                 Input_Equals_Sign          => State_Equals_Sign,
+                 Input_Value_Open_Delimiter => State_Invalid,
+                 Input_Unknown              => State_Invalid),
+               State_Equals_Sign =>
+                (Input_Name_Start_Character => State_Invalid,
+                 Input_Whitespace           => State_Whitespace_After,
+                 Input_Equals_Sign          => State_Invalid,
+                 Input_Value_Open_Delimiter => State_Value,
+                 Input_Unknown              => State_Invalid),
+               State_Whitespace_After =>
+                (Input_Name_Start_Character => State_Invalid,
+                 Input_Whitespace           => State_Whitespace_After,
+                 Input_Equals_Sign          => State_Invalid,
+                 Input_Value_Open_Delimiter => State_Value,
+                 Input_Unknown              => State_Invalid),
+               State_Value => (others => State_Invalid),
+               State_Invalid => (others => State_Invalid));
+
+         State : States;
+         Input : Inputs;
+
+      begin
+         if Self.Parse_State_Stack.Is_Empty then
+            State := State_Initial;
+
+         else
+            raise Program_Error;
+         end if;
+
+         loop
+            --  Check for end of data/document
+
+            if Self.Is_End_Of_Document then
+               Self.Unexpected_End_Of_Document (Parse_Attribute'Access);
+
+               return;
+            end if;
+
+            --  Classify current character
+
+            if Self.Code = Equals_Sign then
+               Input := Input_Equals_Sign;
+
+            elsif Self.Code = Quotation_Mark then
+               Input := Input_Value_Open_Delimiter;
+
+            elsif Self.Code = Apostrophe then
+               Input := Input_Value_Open_Delimiter;
+
+            elsif Is_Whitespace (Self.Code) then
+               Input := Input_Whitespace;
+
+            elsif Is_Name_Start_Character (Self.Code) then
+               Input := Input_Name_Start_Character;
+
+            else
+               Input := Input_Unknown;
+            end if;
+
+            State := Transition (State, Input);
+
+            case State is
+               when State_Initial =>
+                  raise Program_Error;
+
+               when State_Name =>
+                  Parse_Name (Self);
+
+                  if Self.Parser_Status /= Continue then
+                     Self.Parse_Failed (Parse_Attribute'Access);
+
+                     return;
+                  end if;
+
+               when State_Whitespace_Before =>
+                  Self.Next;
+
+               when State_Equals_Sign =>
+                  Self.Next;
+
+               when State_Whitespace_After =>
+                  Self.Next;
+
+               when State_Value =>
+                  Parse_Attribute_Value (Self);
+
+                  if Self.Parser_Status /= Continue then
+                     Self.Parse_Failed (Parse_Attribute'Access);
+
+                     return;
+                  end if;
+
+                  return;
+
+               when State_Invalid =>
+                  Self.Report_Parse_Error;
+
+                  return;
+            end case;
+         end loop;
+      end Parse_Attribute;
+
+      ---------------------------
+      -- Parse_Attribute_Value --
+      ---------------------------
+
+      procedure Parse_Attribute_Value
+       (Self : in out SAX_Validating_Reader'Class) is
       begin
          raise Program_Error;
-      end Parse_Attribute;
+      end Parse_Attribute_Value;
 
       --------------------
       -- Parse_Document --
