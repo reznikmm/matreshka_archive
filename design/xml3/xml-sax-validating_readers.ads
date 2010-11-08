@@ -1,4 +1,5 @@
 private with Ada.Containers.Vectors;
+private with Ada.Finalization;
 
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
@@ -72,7 +73,8 @@ private
    ------------
 
    type SAX_Validating_Reader is
-     limited new XML.SAX.Readers.SAX_Reader with
+     limited new Ada.Finalization.Limited_Controlled
+       and XML.SAX.Readers.SAX_Reader with
    record
       --  Event handlers
 
@@ -97,9 +99,19 @@ private
       --  Parse state stack, used in incremental mode only.
 
       Parse_State_Stack        : Parse_State_Vectors.Vector;
+
+      --  Buffers to accumulate text data
+
+      Name_Buffer              :
+        Matreshka.Internals.Strings.Shared_String_Access
+          := Matreshka.Internals.Strings.Shared_Empty'Access;
    end record;
 
    --  Overrided subprograms
+
+   overriding procedure Initialize (Self : in out SAX_Validating_Reader);
+
+   overriding procedure Finalize (Self : in out SAX_Validating_Reader);
 
    overriding function Content_Handler
     (Self : not null access constant SAX_Validating_Reader)

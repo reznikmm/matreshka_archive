@@ -1,6 +1,7 @@
-with Ada.Text_IO;
+with Ada.Wide_Wide_Text_IO;
 with Ada.Unchecked_Deallocation;
 
+with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode.Characters.General_Punctuation;
 with Matreshka.Internals.Unicode.Characters.Latin;
@@ -39,10 +40,36 @@ package body XML.SAX.Validating_Readers is
    --  Reports parse error in document. In incremental mode when end of data is
    --  reached it saves current state to restore parsing from it.
 
+   package Character_Classification is
+
+      type Character_Classes is
+       (Invalid_Character,
+        Name_Start_Character,
+        Name_Continue_Character,
+        Other_Character);
+
+      function Is_Name_Start_Character
+       (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean;
+      --  Returns True when specified code is NameStartChar.
+
+      function Character_Class
+       (Code : Matreshka.Internals.Unicode.Code_Point)
+          return Character_Classes;
+      --  Returns character class of the specified code.
+
+   end Character_Classification;
+
    package Parser is
 
       procedure Parse_Document (Self : in out SAX_Validating_Reader'Class);
       --  Parses [1] 'document' production.
+
+      procedure Parse_Name (Self : in out SAX_Validating_Reader'Class);
+      --  Parses [5] 'Name' production, and fills parsed name into Name_Buffer.
+      --
+      --  Current character is the first character of the name. After parsing
+      --  current character is the first character immediately after last
+      --  character of the name.
 
       procedure Parse_Processing_Instruction
        (Self : in out SAX_Validating_Reader'Class);
@@ -58,33 +85,17 @@ package body XML.SAX.Validating_Readers is
 
    end Parser;
 
-   package Character_Classification is
-
-      function Is_Name_Start_Character
-       (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean;
-      --  Returns True when specified code is NameStartChar.
-
-   end Character_Classification;
-
    ------------------------------
    -- Character_Classification --
    ------------------------------
 
    package body Character_Classification is
 
-      type Character_Classes is
-       (Invalid_Character,
-        Name_Start_Character,
-        Name_Character,
-        Other_Character);
-
-      type Name_Character_Classes is (Not_A_Name, Name_Start_Char, Name_Char);
-
-      type Name_Character_Classes_Array is
+      type Character_Class_Secondary_Array is
         array (Matreshka.Internals.Unicode.Code_Point range 16#00# .. 16#FF#)
-          of Name_Character_Classes;
+          of Character_Classes;
 
-      Name_Class_0000 : aliased constant Name_Character_Classes_Array
+      Character_Class_0000 : aliased constant Character_Class_Secondary_Array
         := (Colon
               | Latin_Capital_Letter_A .. Latin_Capital_Letter_Z
               | Low_Line
@@ -92,22 +103,50 @@ package body XML.SAX.Validating_Readers is
               | 16#C0# .. 16#D6#
               | 16#D8# .. 16#F6#
               | 16#F8# .. 16#FF#
-                => Name_Start_Char,
+                => Name_Start_Character,
             Hyphen_Minus
               | Full_Stop
               | Digit_Zero .. Digit_Nine
               | 16#B7#
-                => Name_Char,
-            others => Not_A_Name);
-      --  ":" | [A-Z] | "_" | [a-z] | [#xC0-#xD6] | [#xD8-#xF6] | [#xF8-#x2FF]
+                => Name_Continue_Character,
+            others => Invalid_Character);
+      --  NameStartChar ::= ":" | [A-Z] | "_" | [a-z] | [#xC0-#xD6]
+      --                      | [#xD8-#xF6] | [#xF8-#x2FF]
+      --
+      --  NameChar ::= "-" | "." | [0-9] | #xB7
 
-      Name_Class_0001 : aliased constant Name_Character_Classes_Array
-        := (others => Name_Start_Char);
-      --  [#xF8-#x2FF]
+      Character_Class_0001 : aliased constant Character_Class_Secondary_Array
+        := (others => Name_Start_Character);
+      --  NameStartChar ::= [#xF8-#x2FF]
+      --
+      --  This is "shared" set for groups 0002, 0004 .. 001F.
 
---    | [#x370-#x37D] | [#x37F-#x1FFF] | [#x200C-#x200D] | [#x2070-#x218F] | [#x2C00-#x2FEF] | [#x3001-#xD7FF] | [#xF900-#xFDCF] | [#xFDF0-#xFFFD] | [#x10000-#xEFFFF]
+      Character_Class_0003 : aliased constant Character_Class_Secondary_Array
+        := (16#70# .. 16#7D# | 16#7F# .. 16#FF# => Name_Start_Character,
+            16#00# .. 16#6F# => Name_Continue_Character,
+            others => Other_Character);
+      --  NameStartChar ::= [#x370-#x37D] | [#x37F-#x1FFF]
+      --  NameChar ::= [#x0300-#x036F]
 
---  "-" | "." | [0-9] | #xB7 | [#x0300-#x036F] | [#x203F-#x2040]
+      Character_Class_0020 : aliased constant Character_Class_Secondary_Array
+        := (16#0C# .. 16#0D# | 16#70# .. 16#FF# => Name_Start_Character,
+            16#3F# .. 16#40# => Name_Continue_Character,
+            others => Other_Character);
+      --  NameStartChar ::= [#x200C-#x200D] | [#x2070-#x218F]
+      --  NameChar ::= [#x203F-#x2040]
+
+--  [#x2070-#x218F] | [#x2C00-#x2FEF] | [#x3001-#xD7FF] | [#xF900-#xFDCF] | [#xFDF0-#xFFFD] | [#x10000-#xEFFFF]
+
+      ---------------------
+      -- Character_Class --
+      ---------------------
+
+      function Character_Class
+       (Code : Matreshka.Internals.Unicode.Code_Point)
+          return Character_Classes is
+      begin
+         return Character_Class_0000 (Code);
+      end Character_Class;
 
       -----------------------------
       -- Is_Name_Start_Character --
@@ -116,8 +155,7 @@ package body XML.SAX.Validating_Readers is
       function Is_Name_Start_Character
        (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean is
       begin
-         return Name_Class_0000 (Code) = Name_Start_Char;
---      return 	":" | [A-Z] | "_" | [a-z] | [#xC0-#xD6] | [#xD8-#xF6] | [#xF8-#x2FF] | [#x370-#x37D] | [#x37F-#x1FFF] | [#x200C-#x200D] | [#x2070-#x218F] | [#x2C00-#x2FEF] | [#x3001-#xD7FF] | [#xF900-#xFDCF] | [#xFDF0-#xFFFD] | [#x10000-#xEFFFF]
+         return Character_Class_0000 (Code) = Name_Start_Character;
       end Is_Name_Start_Character;
 
    end Character_Classification;
@@ -176,6 +214,24 @@ package body XML.SAX.Validating_Readers is
    begin
       return Self.Error_Handler;
    end Error_Handler;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize (Self : in out SAX_Validating_Reader) is
+   begin
+      Matreshka.Internals.Strings.Dereference (Self.Name_Buffer);
+   end Finalize;
+
+   ----------------
+   -- Initialize --
+   ----------------
+
+   overriding procedure Initialize (Self : in out SAX_Validating_Reader) is
+   begin
+      null;
+   end Initialize;
 
    ------------------------
    -- Is_End_Of_Document --
@@ -450,6 +506,8 @@ package body XML.SAX.Validating_Readers is
       --     end loop;
       --  end Parse_...;
 
+      use Character_Classification;
+
       --------------------
       -- Parse_Document --
       --------------------
@@ -475,6 +533,105 @@ package body XML.SAX.Validating_Readers is
 --         end loop;
       end Parse_Document;
 
+      ----------------
+      -- Parse_Name --
+      ----------------
+
+      procedure Parse_Name (Self : in out SAX_Validating_Reader'Class) is
+
+         type States is
+          (State_Initial,
+           State_First,
+           State_Continue,
+           State_Done,
+           State_Invalid);
+
+         type Inputs is
+          (Input_Name_Start,
+           Input_Name_Continue,
+           Input_Unknown);
+
+         Transition : constant array (States, Inputs) of States
+           := (State_Initial =>
+                (Input_Name_Start    => State_First,
+                 Input_Name_Continue => State_Invalid,
+                 Input_Unknown       => State_Invalid),
+               State_First =>
+                (Input_Name_Start    => State_Continue,
+                 Input_Name_Continue => State_Continue,
+                 Input_Unknown       => State_Done),
+               State_Continue =>
+                (Input_Name_Start    => State_Continue,
+                 Input_Name_Continue => State_Continue,
+                 Input_Unknown       => State_Done),
+               State_Done => (others => State_Invalid),
+	       State_Invalid => (others => State_Invalid));
+
+         State : States;
+         Input : Inputs;
+
+      begin
+         if Self.Parse_State_Stack.Is_Empty then
+            State := State_Initial;
+
+         else
+            raise Program_Error;
+         end if;
+
+         loop
+            --  Check for end of data/document
+
+            if Self.Is_End_Of_Document then
+               Self.Unexpected_End_Of_Document (Parse_Name'Access);
+
+               return;
+            end if;
+
+            --  Classify current character
+
+            case Character_Class (Self.Code) is
+               when Name_Start_Character =>
+                  Input := Input_Name_Start;
+
+               when Name_Continue_Character =>
+                  Input := Input_Name_Continue;
+
+               when Invalid_Character | Other_Character =>
+                  Input := Input_Unknown;
+            end case;
+
+            State := Transition (State, Input);
+
+            case State is
+               when State_Initial =>
+                  raise Program_Error;
+
+               when State_First =>
+                  Matreshka.Internals.Strings.Operations.Reset
+                   (Self.Name_Buffer);
+                  Matreshka.Internals.Strings.Operations.Unterminated_Append
+                   (Self.Name_Buffer, Self.Code);
+                  Self.Next;
+
+               when State_Continue =>
+                  Matreshka.Internals.Strings.Operations.Unterminated_Append
+                   (Self.Name_Buffer, Self.Code);
+                  Self.Next;
+
+               when State_Done =>
+                  Matreshka.Internals.Strings.Fill_Null_Terminator
+                   (Self.Name_Buffer);
+
+                  return;
+
+               when State_Invalid =>
+                  Self.Report_Parse_Error;
+
+                  return;
+            end case;
+         end loop;
+      end Parse_Name;
+
       ----------------------------------
       -- Parse_Processing_Instruction --
       ----------------------------------
@@ -482,7 +639,6 @@ package body XML.SAX.Validating_Readers is
       procedure Parse_Processing_Instruction
        (Self : in out SAX_Validating_Reader'Class)
       is
-         use Character_Classification;
 
          type States is
           (State_Initial,
@@ -552,7 +708,13 @@ package body XML.SAX.Validating_Readers is
                   Self.Next;
 
                when State_Name =>
-                  raise Program_Error;
+                  Parse_Name (Self);
+
+                  if Self.Parser_Status /= Continue then
+                     Self.Parse_Failed (Parse_Processing_Instruction'Access);
+
+                     return;
+                  end if;
 
                when State_Done =>
                   Self.Next;
@@ -667,7 +829,7 @@ package body XML.SAX.Validating_Readers is
 
    procedure Report_Parse_Error (Self : in out SAX_Validating_Reader'Class) is
    begin
-      Ada.Text_IO.Put_Line ("Report_Parse_Error");
+      Ada.Wide_Wide_Text_IO.Put_Line ("Report_Parse_Error");
       Self.Parser_Status := Error;
    end Report_Parse_Error;
 
