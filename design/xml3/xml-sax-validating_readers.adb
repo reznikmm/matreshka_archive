@@ -727,6 +727,7 @@ Ada.Wide_Wide_Text_IO.Put_Line
           (Input_Quotation_Mark,
            Input_Apostrophe,
            Input_Ampersand,
+           Input_Less_Than_Sign,
            Input_Character,
            Input_Unknown);
 
@@ -735,30 +736,35 @@ Ada.Wide_Wide_Text_IO.Put_Line
                 (Input_Quotation_Mark => State_Quotation_Mark_Open,
                  Input_Apostrophe     => State_Apostrophe_Open,
                  Input_Ampersand      => State_Invalid,
+                 Input_Less_Than_Sign => State_Invalid,
                  Input_Character      => State_Invalid,
                  Input_Unknown        => State_Invalid),
                State_Quotation_Mark_Open =>
                 (Input_Quotation_Mark => State_Done,
                  Input_Apostrophe     => State_Quotation_Mark_Character,
                  Input_Ampersand      => State_Invalid,
+                 Input_Less_Than_Sign => State_Invalid,
                  Input_Character      => State_Quotation_Mark_Character,
                  Input_Unknown        => State_Invalid),
                State_Apostrophe_Open =>
                 (Input_Quotation_Mark => State_Apostrophe_Character,
                  Input_Apostrophe     => State_Done,
                  Input_Ampersand      => State_Invalid,
+                 Input_Less_Than_Sign => State_Invalid,
                  Input_Character      => State_Apostrophe_Character,
                  Input_Unknown        => State_Invalid),
                State_Quotation_Mark_Character =>
                 (Input_Quotation_Mark => State_Done,
                  Input_Apostrophe     => State_Quotation_Mark_Character,
                  Input_Ampersand      => State_Invalid,
+                 Input_Less_Than_Sign => State_Invalid,
                  Input_Character      => State_Quotation_Mark_Character,
                  Input_Unknown        => State_Invalid),
                State_Apostrophe_Character =>
                 (Input_Quotation_Mark => State_Apostrophe_Character,
                  Input_Apostrophe     => State_Done,
                  Input_Ampersand      => State_Invalid,
+                 Input_Less_Than_Sign => State_Invalid,
                  Input_Character      => State_Apostrophe_Character,
                  Input_Unknown        => State_Invalid),
                State_Done => (others => State_Invalid),
@@ -794,6 +800,9 @@ Ada.Wide_Wide_Text_IO.Put_Line
 
             elsif Self.Code = Ampersand then
                Input := Input_Ampersand;
+
+            elsif Self.Code = Less_Than_Sign then
+               Input := Input_Less_Than_Sign;
 
             elsif Is_Character (Self.Code) then
                Input := Input_Character;
