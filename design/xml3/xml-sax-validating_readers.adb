@@ -712,9 +712,135 @@ Ada.Wide_Wide_Text_IO.Put_Line
       ---------------------------
 
       procedure Parse_Attribute_Value
-       (Self : in out SAX_Validating_Reader'Class) is
+       (Self : in out SAX_Validating_Reader'Class)
+      is
+         type States is
+          (State_Initial,
+           State_Quotation_Mark_Open,
+           State_Quotation_Mark_Character,
+           State_Apostrophe_Open,
+           State_Apostrophe_Character,
+           State_Done,
+           State_Invalid);
+
+         type Inputs is
+          (Input_Quotation_Mark,
+           Input_Apostrophe,
+           Input_Ampersand,
+           Input_Character,
+           Input_Unknown);
+
+         Transition : constant array (States, Inputs) of States
+           := (State_Initial =>
+                (Input_Quotation_Mark => State_Quotation_Mark_Open,
+                 Input_Apostrophe     => State_Apostrophe_Open,
+                 Input_Ampersand      => State_Invalid,
+                 Input_Character      => State_Invalid,
+                 Input_Unknown        => State_Invalid),
+               State_Quotation_Mark_Open =>
+                (Input_Quotation_Mark => State_Done,
+                 Input_Apostrophe     => State_Quotation_Mark_Character,
+                 Input_Ampersand      => State_Invalid,
+                 Input_Character      => State_Quotation_Mark_Character,
+                 Input_Unknown        => State_Invalid),
+               State_Apostrophe_Open =>
+                (Input_Quotation_Mark => State_Apostrophe_Character,
+                 Input_Apostrophe     => State_Done,
+                 Input_Ampersand      => State_Invalid,
+                 Input_Character      => State_Apostrophe_Character,
+                 Input_Unknown        => State_Invalid),
+               State_Quotation_Mark_Character =>
+                (Input_Quotation_Mark => State_Done,
+                 Input_Apostrophe     => State_Quotation_Mark_Character,
+                 Input_Ampersand      => State_Invalid,
+                 Input_Character      => State_Quotation_Mark_Character,
+                 Input_Unknown        => State_Invalid),
+               State_Apostrophe_Character =>
+                (Input_Quotation_Mark => State_Apostrophe_Character,
+                 Input_Apostrophe     => State_Done,
+                 Input_Ampersand      => State_Invalid,
+                 Input_Character      => State_Apostrophe_Character,
+                 Input_Unknown        => State_Invalid),
+               State_Done => (others => State_Invalid),
+               State_Invalid => (others => State_Invalid));
+
+         State : States;
+         Input : Inputs;
+
       begin
-         raise Program_Error;
+         if Self.Parse_State_Stack.Is_Empty then
+            State := State_Initial;
+
+         else
+            raise Program_Error;
+         end if;
+
+         loop
+            --  Check for end of data/document
+
+            if Self.Is_End_Of_Document then
+               Self.Unexpected_End_Of_Document (Parse_Attribute_Value'Access);
+
+               return;
+            end if;
+
+            --  Classify current character
+
+            if Self.Code = Quotation_Mark then
+               Input := Input_Quotation_Mark;
+
+            elsif Self.Code = Apostrophe then
+               Input := Input_Apostrophe;
+
+            elsif Self.Code = Ampersand then
+               Input := Input_Ampersand;
+
+            elsif Is_Character (Self.Code) then
+               Input := Input_Character;
+
+            else
+               Input := Input_Unknown;
+            end if;
+
+            State := Transition (State, Input);
+
+            case State is
+               when State_Initial =>
+                  raise Program_Error;
+
+               when State_Quotation_Mark_Open =>
+                  Matreshka.Internals.Strings.Operations.Reset
+                   (Self.Character_Buffer);
+                  Self.Next;
+
+               when State_Apostrophe_Open =>
+                  Matreshka.Internals.Strings.Operations.Reset
+                   (Self.Character_Buffer);
+                  Self.Next;
+
+               when State_Quotation_Mark_Character =>
+                  Matreshka.Internals.Strings.Operations.Unterminated_Append
+                   (Self.Character_Buffer, Self.Code);
+                  Self.Next;
+
+               when State_Apostrophe_Character =>
+                  Matreshka.Internals.Strings.Operations.Unterminated_Append
+                   (Self.Character_Buffer, Self.Code);
+                  Self.Next;
+
+               when State_Done =>
+                  Matreshka.Internals.Strings.Fill_Null_Terminator
+                   (Self.Character_Buffer);
+                  Self.Next;
+
+                  return;
+
+               when State_Invalid =>
+                  Self.Report_Parse_Error;
+
+                  return;
+            end case;
+         end loop;
       end Parse_Attribute_Value;
 
       --------------------
