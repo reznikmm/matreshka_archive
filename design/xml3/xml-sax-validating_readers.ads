@@ -102,6 +102,9 @@ private
 
       --  Buffers to accumulate text data
 
+      Character_Buffer         :
+        Matreshka.Internals.Strings.Shared_String_Access
+          := Matreshka.Internals.Strings.Shared_Empty'Access;
       Name_Buffer              :
         Matreshka.Internals.Strings.Shared_String_Access
           := Matreshka.Internals.Strings.Shared_Empty'Access;

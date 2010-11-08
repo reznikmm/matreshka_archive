@@ -57,6 +57,14 @@ package body XML.SAX.Validating_Readers is
           return Character_Classes;
       --  Returns character class of the specified code.
 
+      function Is_Whitespace
+       (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean;
+      --  Returns True when specified code is whitespace.
+
+      function Is_Character
+       (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean;
+      --  Returns True when specified code is valid XML character.
+
    end Character_Classification;
 
    package Parser is
@@ -109,7 +117,8 @@ package body XML.SAX.Validating_Readers is
               | Digit_Zero .. Digit_Nine
               | 16#B7#
                 => Name_Continue_Character,
-            others => Invalid_Character);
+            16#00# => Invalid_Character,
+            others => Other_Character);
       --  NameStartChar ::= ":" | [A-Z] | "_" | [a-z] | [#xC0-#xD6]
       --                      | [#xD8-#xF6] | [#xF8-#x2FF]
       --
@@ -148,6 +157,19 @@ package body XML.SAX.Validating_Readers is
          return Character_Class_0000 (Code);
       end Character_Class;
 
+      ------------------
+      -- Is_Character --
+      ------------------
+
+      function Is_Character
+       (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean is
+      begin
+         return
+           Code in 16#0001# .. 16#D7FF#
+             or else Code in 16#E000# .. 16#FFFD#
+             or else Code in 16#1_0000# .. 16#10_FFFF#;
+      end Is_Character;
+
       -----------------------------
       -- Is_Name_Start_Character --
       -----------------------------
@@ -157,6 +179,20 @@ package body XML.SAX.Validating_Readers is
       begin
          return Character_Class_0000 (Code) = Name_Start_Character;
       end Is_Name_Start_Character;
+
+      -------------------
+      -- Is_Whitespace --
+      -------------------
+
+      function Is_Whitespace
+       (Code : Matreshka.Internals.Unicode.Code_Point) return Boolean is
+      begin
+         return
+           Code = Space                      --  0x20
+             or Code = Character_Tabulation  --  0x09
+             or Code = Carriage_Return       --  0x0D
+             or Code = Line_Feed;            --  0x0A
+      end Is_Whitespace;
 
    end Character_Classification;
 
@@ -221,6 +257,7 @@ package body XML.SAX.Validating_Readers is
 
    overriding procedure Finalize (Self : in out SAX_Validating_Reader) is
    begin
+      Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
       Matreshka.Internals.Strings.Dereference (Self.Name_Buffer);
    end Finalize;
 
@@ -330,6 +367,8 @@ package body XML.SAX.Validating_Readers is
                   --  checks can be avoided. Look to Detached_* API of string
                   --  (if it is implemented).
                end if;
+--Ada.Wide_Wide_Text_IO.Put_Line
+-- (Wide_Wide_Character'Wide_Wide_Image (Wide_Wide_Character'Val (Self.Code)));
 
             when Sources.Mailformed =>
                null;
@@ -643,26 +682,65 @@ package body XML.SAX.Validating_Readers is
 
          type States is
           (State_Initial,
-           State_Question_Mark,
+           State_Initial_Question_Mark,
            State_Name,
+           State_Whitespace,
+           State_Data,
+           State_Question_Mark,
            State_Done,
            State_Invalid);
 
          type Inputs is
           (Input_Question_Mark,
-           input_Name_Start_Character,
+           Input_Name_Start_Character,
+           Input_Whitespace,
+           Input_Character,
+           Input_Greater_Than_Sign,
            Input_Unknown);
 
          Transition : constant array (States, Inputs) of States
            := (State_Initial =>
-                (Input_Question_Mark        => State_Question_Mark,
+                (Input_Question_Mark        => State_Initial_Question_Mark,
                  Input_Name_Start_Character => State_Invalid,
+                 Input_Whitespace           => State_Invalid,
+                 Input_Character            => State_Invalid,
+                 Input_Greater_Than_Sign    => State_Invalid,
                  Input_Unknown              => State_Invalid),
-               State_Question_Mark =>
+               State_Initial_Question_Mark =>
                 (Input_Question_Mark        => State_Invalid,
                  Input_Name_Start_Character => State_Name,
+                 Input_Whitespace           => State_Invalid,
+                 Input_Character            => State_Invalid,
+                 Input_Greater_Than_Sign    => State_Invalid,
                  Input_Unknown              => State_Invalid),
-               State_Name => (others => State_Invalid),
+               State_Name =>
+                (Input_Question_Mark        => State_Question_Mark,
+                 Input_Name_Start_Character => State_Invalid,
+                 Input_Whitespace           => State_Whitespace,
+                 Input_Character            => State_Invalid,
+                 Input_Greater_Than_Sign    => State_Invalid,
+                 Input_Unknown              => State_Invalid),
+               State_Whitespace =>
+                (Input_Question_Mark        => State_Question_Mark,
+                 Input_Name_Start_Character => State_Data,
+                 Input_Whitespace           => State_Whitespace,
+                 Input_Character            => State_Data,
+                 Input_Greater_Than_Sign    => State_Data,
+                 Input_Unknown              => State_Invalid),
+               State_Data =>
+                (Input_Question_Mark        => State_Question_Mark,
+                 Input_Name_Start_Character => State_Data,
+                 Input_Whitespace           => State_Data,
+                 Input_Character            => State_Data,
+                 Input_Greater_Than_Sign    => State_Data,
+                 Input_Unknown              => State_Invalid),
+               State_Question_Mark =>
+                (Input_Question_Mark        => State_Question_Mark,
+                 Input_Name_Start_Character => State_Data,
+                 Input_Whitespace           => State_Data,
+                 Input_Character            => State_Data,
+                 Input_Greater_Than_Sign    => State_Done,
+                 Input_Unknown              => State_Invalid),
                State_Done => (others => State_Invalid),
                State_Invalid => (others => State_Invalid));
 
@@ -672,12 +750,45 @@ package body XML.SAX.Validating_Readers is
       begin
          if Self.Parse_State_Stack.Is_Empty then
             State := State_Initial;
+            Matreshka.Internals.Strings.Operations.Reset
+             (Self.Character_Buffer);
 
          else
             raise Program_Error;
          end if;
 
          loop
+            case State is
+               when State_Initial =>
+                  null;
+
+               when State_Initial_Question_Mark =>
+                  null;
+
+               when State_Name =>
+                  null;
+
+               when State_Whitespace =>
+                  null;
+
+               when State_Data =>
+                  null;
+
+               when State_Question_Mark =>
+                  if Self.Source_Status = Sources.Successful
+                    and Self.Code /= Greater_Than_Sign
+                  then
+                     Matreshka.Internals.Strings.Operations.Unterminated_Append
+                      (Self.Character_Buffer, Question_Mark);
+                  end if;
+
+               when State_Done =>
+                  null;
+
+               when State_Invalid =>
+                  null;
+            end case;
+
             --  Checks end of document
 
             if Self.Is_End_Of_Document then
@@ -692,11 +803,26 @@ package body XML.SAX.Validating_Readers is
             if Self.Code = Question_Mark then
                Input := Input_Question_Mark;
 
-            elsif Is_Name_Start_Character (Self.Code) then
-               Input := Input_Name_Start_Character;
+            elsif Self.Code = Greater_Than_Sign then
+               Input := Input_Greater_Than_Sign;
+
+            elsif Is_Whitespace (Self.Code) then
+               Input := Input_Whitespace;
 
             else
-               Input := Input_Unknown;
+               case Character_Class (Self.Code) is
+                  when Name_Start_Character =>
+                     Input := Input_Name_Start_Character;
+
+                  when Name_Continue_Character =>
+                     Input := Input_Character;
+
+                  when Other_Character =>
+                     Input := Input_Character;
+
+                  when Invalid_Character =>
+                     Input := Input_Unknown;
+               end case;
             end if;
 
             State := Transition (State, Input);
@@ -705,7 +831,7 @@ package body XML.SAX.Validating_Readers is
                when State_Initial =>
                   raise Program_Error;
 
-               when State_Question_Mark =>
+               when State_Initial_Question_Mark =>
                   Self.Next;
 
                when State_Name =>
@@ -717,7 +843,20 @@ package body XML.SAX.Validating_Readers is
                      return;
                   end if;
 
+               when State_Whitespace =>
+                  Self.Next;
+
+               when State_Data =>
+                  Matreshka.Internals.Strings.Operations.Unterminated_Append
+                   (Self.Character_Buffer, Self.Code);
+                  Self.Next;
+
+               when State_Question_Mark =>
+                  Self.Next;
+
                when State_Done =>
+                  Matreshka.Internals.Strings.Fill_Null_Terminator
+                   (Self.Character_Buffer);
                   Self.Next;
 
                   return;
