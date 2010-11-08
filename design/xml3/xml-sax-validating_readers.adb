@@ -90,6 +90,17 @@ package body XML.SAX.Validating_Readers is
 
       procedure Parse_Prolog (Self : in out SAX_Validating_Reader'Class);
       --  Parses XMLDecl and Misc* subexpressions in [22] 'prolog' production.
+      --
+      --  When parsing is successful current character is first character after
+      --  '<' character.
+
+      procedure Parse_Element (Self : in out SAX_Validating_Reader'Class);
+      --  Parses [39] 'element' production.
+      --
+      --  Current character must be next character after '<'.
+
+      procedure Parse_Attribute (Self : in out SAX_Validating_Reader'Class);
+      --  Parses [41] 'attribute' production.
 
    end Parser;
 
@@ -367,8 +378,8 @@ package body XML.SAX.Validating_Readers is
                   --  checks can be avoided. Look to Detached_* API of string
                   --  (if it is implemented).
                end if;
---Ada.Wide_Wide_Text_IO.Put_Line
--- (Wide_Wide_Character'Wide_Wide_Image (Wide_Wide_Character'Val (Self.Code)));
+Ada.Wide_Wide_Text_IO.Put_Line
+ (Wide_Wide_Character'Wide_Wide_Image (Wide_Wide_Character'Val (Self.Code)));
 
             when Sources.Mailformed =>
                null;
@@ -548,6 +559,15 @@ package body XML.SAX.Validating_Readers is
 
       use Character_Classification;
 
+      ---------------------
+      -- Parse_Attribute --
+      ---------------------
+
+      procedure Parse_Attribute (Self : in out SAX_Validating_Reader'Class) is
+      begin
+         raise Program_Error;
+      end Parse_Attribute;
+
       --------------------
       -- Parse_Document --
       --------------------
@@ -562,6 +582,7 @@ package body XML.SAX.Validating_Readers is
          end if;
 
          Parse_Prolog (Self);
+         Parse_Element (Self);
 --         loop
 --            if Self.Is_End_Of_Document then
 --               Self.Unexpected_End_Of_Document (Parse_Document'Access);
@@ -572,6 +593,115 @@ package body XML.SAX.Validating_Readers is
 --            Self.Next;
 --         end loop;
       end Parse_Document;
+
+      -------------------
+      -- Parse_Element --
+      -------------------
+
+      procedure Parse_Element (Self : in out SAX_Validating_Reader'Class) is
+
+         type States is
+          (State_Initial,
+           State_Name,
+           State_Whitespace,
+           State_Attribute,
+           State_Done,
+           State_Invalid);
+
+         type Inputs is
+          (Input_Name_Start_Character,
+           Input_Whitespace,
+           Input_Unknown);
+
+         Transition : constant array (States, Inputs) of States
+           := (State_Initial =>
+                (Input_Name_Start_Character => State_Name,
+                 Input_Whitespace           => State_Invalid,
+                 Input_Unknown              => State_Invalid),
+               State_Name =>
+                (Input_Name_Start_Character => State_Invalid,
+                 Input_Whitespace           => State_Whitespace,
+                 Input_Unknown              => State_Invalid),
+               State_Whitespace =>
+                (Input_Name_Start_Character => State_Attribute,
+                 Input_Whitespace           => State_Whitespace,
+                 Input_Unknown              => State_Invalid),
+               State_Attribute =>
+                (Input_Name_Start_Character => State_Invalid,
+                 Input_Whitespace           => State_Whitespace,
+                 Input_Unknown              => State_Invalid),
+               State_Done => (others => State_Invalid),
+               State_Invalid => (others => State_Invalid));
+
+         State : States;
+         Input : Inputs;
+
+      begin
+         if Self.Parse_State_Stack.Is_Empty then
+            State := State_Initial;
+
+         else
+            raise Program_Error;
+         end if;
+
+         loop
+            --  Check for end of data/document
+
+            if Self.Is_End_Of_Document then
+               Self.Unexpected_End_Of_Document (Parse_Element'Access);
+
+               return;
+            end if;
+
+            --  Classify current character
+
+            if Is_Whitespace (Self.Code) then
+               Input := Input_Whitespace;
+
+            elsif Is_Name_Start_Character (Self.Code) then
+               Input := Input_Name_Start_Character;
+
+            else
+               Input := Input_Unknown;
+            end if;
+
+            State := Transition (State, Input);
+
+            case State is
+               when State_Initial =>
+                  raise Program_Error;
+
+               when State_Name =>
+                  Parse_Name (Self);
+
+                  if Self.Parser_Status /= Continue then
+                     Self.Parse_Failed (Parse_Element'Access);
+
+                     return;
+                  end if;
+
+               when State_Whitespace =>
+                  Self.Next;
+
+               when State_Attribute =>
+                  Parse_Attribute (Self);
+
+                  if Self.Parser_Status /= Continue then
+                     Self.Parse_Failed (Parse_Element'Access);
+
+                     return;
+                  end if;
+
+               when State_Done =>
+                  return;
+
+               when State_Invalid =>
+                  Self.Report_Parse_Error;
+
+                  return;
+            end case;
+         end loop;
+      end Parse_Element;
 
       ----------------
       -- Parse_Name --
@@ -882,24 +1012,37 @@ package body XML.SAX.Validating_Readers is
           (State_Initial,
            State_Less_Than_Sign,
            State_Processing_Instruction,
+           State_Whitespace,
            State_Done,
            State_Invalid);
 
          type Inputs is
           (Input_Less_Than_Sign,
            Input_Question_Mark,
+           Input_Whitespace,
            Input_Unknown);
 
          Transition : constant array (States, Inputs) of States
            := (State_Initial =>
                 (Input_Less_Than_Sign => State_Less_Than_Sign,
                  Input_Question_Mark  => State_Invalid,
+                 Input_Whitespace     => State_Whitespace,
                  Input_Unknown        => State_Invalid),
                State_Less_Than_Sign =>
                 (Input_Less_Than_Sign => State_Invalid,
                  Input_Question_Mark  => State_Processing_Instruction,
+                 Input_Whitespace     => State_Invalid,
+                 Input_Unknown        => State_Done),
+               State_Processing_Instruction =>
+                (Input_Less_Than_Sign => State_Less_Than_Sign,
+                 Input_Question_Mark  => State_Invalid,
+                 Input_Whitespace     => State_Whitespace,
                  Input_Unknown        => State_Invalid),
-               State_Processing_Instruction => (others => State_Invalid),
+               State_Whitespace =>
+                (Input_Less_Than_Sign => State_Less_Than_Sign,
+                 Input_Question_Mark  => State_Invalid,
+                 Input_Whitespace     => State_Whitespace,
+                 Input_Unknown        => State_Invalid),
                State_Done => (others => State_Invalid),
                State_Invalid => (others => State_Invalid));
 
@@ -931,6 +1074,9 @@ package body XML.SAX.Validating_Readers is
             elsif Self.Code = Question_Mark then
                Input := Input_Question_Mark;
 
+            elsif Is_Whitespace (Self.Code) then
+               Input := Input_Whitespace;
+
             else
                Input := Input_Unknown;
             end if;
@@ -952,6 +1098,9 @@ package body XML.SAX.Validating_Readers is
 
                      return;
                   end if;
+
+               when State_Whitespace =>
+                  Self.Next;
 
                when State_Done =>
                   return;
