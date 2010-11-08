@@ -87,6 +87,10 @@ package body XML.SAX.Validating_Readers is
       --  (" or '). After parsing current character points to next character
       --  closing delimiter.
 
+      procedure Parse_Character_Data
+       (Self : in out SAX_Validating_Reader'Class);
+      --  Parses [14] 'CharData' production.
+
       procedure Parse_Processing_Instruction
        (Self : in out SAX_Validating_Reader'Class);
       --  Parses [16] 'PI' production.
@@ -109,6 +113,12 @@ package body XML.SAX.Validating_Readers is
 
       procedure Parse_Attribute (Self : in out SAX_Validating_Reader'Class);
       --  Parses [41] 'attribute' production.
+
+      procedure Parse_Content (Self : in out SAX_Validating_Reader'Class);
+      --  Parses [43] 'content' production.
+      --
+      --  When end tag is found < is already parsed and current character
+      --  points to /.
 
    end Parser;
 
@@ -852,6 +862,254 @@ Ada.Wide_Wide_Text_IO.Put_Line
          end loop;
       end Parse_Attribute_Value;
 
+      --------------------------
+      -- Parse_Character_Data --
+      --------------------------
+
+      procedure Parse_Character_Data
+       (Self : in out SAX_Validating_Reader'Class)
+      is
+
+         type States is
+          (State_Initial,
+           State_Character_Data,
+           State_Right_Square_Bracket_1,
+           State_Right_Square_Bracket_2,
+           State_Done,
+           State_Invalid);
+
+         type Inputs is
+          (Input_Less_Than_Sign,
+           Input_Ampersand,
+           Input_Right_Square_Bracket,
+           Input_Greater_Than_Sign,
+           Input_Character,
+           Input_Unknown);
+
+         Transition : constant array (States, Inputs) of States
+           := (State_Initial =>
+                (Input_Less_Than_Sign       => State_Invalid,
+                 Input_Ampersand            => State_Invalid,
+                 Input_Right_Square_Bracket => State_Right_Square_Bracket_1,
+                 Input_Greater_Than_Sign    => State_Character_Data,
+                 Input_Character            => State_Character_Data,
+                 Input_Unknown              => State_Invalid),
+               State_Character_Data =>
+                (Input_Less_Than_Sign       => State_Done,
+                 Input_Ampersand            => State_Done,
+                 Input_Right_Square_Bracket => State_Right_Square_Bracket_1,
+                 Input_Greater_Than_Sign    => State_Character_Data,
+                 Input_Character            => State_Character_Data,
+                 Input_Unknown              => State_Invalid),
+               State_Right_Square_Bracket_1 =>
+                (Input_Less_Than_Sign       => State_Done,
+                 Input_Ampersand            => State_Done,
+                 Input_Right_Square_Bracket => State_Right_Square_Bracket_2,
+                 Input_Greater_Than_Sign    => State_Character_Data,
+                 Input_Character            => State_Character_Data,
+                 Input_Unknown              => State_Invalid),
+               State_Right_Square_Bracket_2 =>
+                (Input_Less_Than_Sign       => State_Done,
+                 Input_Ampersand            => State_Done,
+                 Input_Right_Square_Bracket => State_Right_Square_Bracket_2,
+                 Input_Greater_Than_Sign    => State_Invalid,
+                 Input_Character            => State_Character_Data,
+                 Input_Unknown              => State_Invalid),
+               State_Done => (others => State_Invalid),
+               State_Invalid => (others => State_Invalid));
+
+         State : States;
+         Input : Inputs;
+
+      begin
+         if Self.Parse_State_Stack.Is_Empty then
+            State := State_Initial;
+
+         else
+            raise Program_Error;
+         end if;
+
+         loop
+            --  Check for end of data/document
+
+            if Self.Is_End_Of_Document then
+               Self.Unexpected_End_Of_Document (Parse_Character_Data'Access);
+
+               return;
+            end if;
+
+            --  Classify current character
+
+            if Self.Code = Ampersand then
+               Input := Input_Ampersand;
+
+            elsif Self.Code = Less_Than_Sign then
+               Input := Input_Less_Than_Sign;
+
+            elsif Self.Code = Right_Square_Bracket then
+               Input := Input_Right_Square_Bracket;
+
+            elsif Self.Code = Greater_Than_Sign then
+               Input := Input_Greater_Than_Sign;
+
+            elsif Is_Character (Self.Code) then
+               Input := Input_Character;
+
+            else
+               Input := Input_Unknown;
+            end if;
+
+            State := Transition (State, Input);
+
+            case State is
+               when State_Initial =>
+                  raise Program_Error;
+
+               when State_Character_Data =>
+                  Self.Next;
+
+               when State_Right_Square_Bracket_1 =>
+                  Self.Next;
+
+               when State_Right_Square_Bracket_2 =>
+                  Self.Next;
+
+               when State_Done =>
+                  return;
+
+               when State_Invalid =>
+                  Self.Report_Parse_Error;
+
+                  return;
+            end case;
+         end loop;
+      end Parse_Character_Data;
+
+      -------------------
+      -- Parse_Content --
+      -------------------
+
+      procedure Parse_Content (Self : in out SAX_Validating_Reader'Class) is
+
+         type States is
+          (State_Initial,
+           State_Character_Data,
+           State_Less_Than_Sign,
+           State_Element,
+           State_Done,
+           State_Invalid);
+
+         type Inputs is
+          (Input_Less_Than_Sign,
+           Input_Ampersand,
+           Input_Name_Start_Character,
+           Input_Solidus,
+           Input_Unknown);
+
+         Transition : constant array (States, Inputs) of States
+           := (State_Initial =>
+                (Input_Less_Than_Sign       => State_Less_Than_Sign,
+                 Input_Ampersand            => State_Invalid,  --  Wrong
+                 Input_Name_Start_Character => State_Character_Data,
+                 Input_Solidus              => State_Character_Data,
+                 Input_Unknown              => State_Character_Data),
+               State_Character_Data =>
+                (Input_Less_Than_Sign       => State_Less_Than_Sign,
+                 Input_Ampersand            => State_Invalid,  --  Wrong
+                 Input_Name_Start_Character => State_Invalid,
+                 Input_Solidus              => State_Invalid,
+                 Input_Unknown              => State_Invalid),
+               State_Less_Than_Sign =>
+                (Input_Less_Than_Sign       => State_Invalid,
+                 Input_Ampersand            => State_Invalid,
+                 Input_Name_Start_Character => State_Element,
+                 Input_Solidus              => State_Done,
+                 Input_Unknown              => State_Invalid),
+               State_Element =>
+                (Input_Less_Than_Sign       => State_Less_Than_Sign,
+                 Input_Ampersand            => State_Invalid,  --  Wrong
+                 Input_Name_Start_Character => State_Character_Data,
+                 Input_Solidus              => State_Character_Data,
+                 Input_Unknown              => State_Character_Data),
+               State_Done => (others => State_Invalid),
+               State_Invalid => (others => State_Invalid));
+
+         State : States;
+         Input : Inputs;
+
+      begin
+         if Self.Parse_State_Stack.Is_Empty then
+            State := State_Initial;
+
+         else
+            raise Program_Error;
+         end if;
+
+         loop
+            --  Check for end of data/document
+
+            if Self.Is_End_Of_Document then
+               Self.Unexpected_End_Of_Document (Parse_Content'Access);
+
+               return;
+            end if;
+
+            --  Classify current character
+
+            if Self.Code = Ampersand then
+               Input := Input_Ampersand;
+
+            elsif Self.Code = Less_Than_Sign then
+               Input := Input_Less_Than_Sign;
+
+            elsif Self.Code = Solidus then
+               Input := Input_Solidus;
+
+            elsif Is_Name_Start_Character (Self.Code) then
+               Input := Input_Name_Start_Character;
+
+            else
+               Input := Input_Unknown;
+            end if;
+
+            State := Transition (State, Input);
+
+            case State is
+               when State_Initial =>
+                  raise Program_Error;
+
+               when State_Character_Data =>
+                  Parse_Character_Data (Self);
+
+                  if Self.Parser_Status /= Continue then
+                     Self.Parse_Failed (Parse_Content'Access);
+
+                     return;
+                  end if;
+
+               when State_Less_Than_Sign =>
+                  Self.Next;
+
+               when State_Element =>
+                  Parse_Element (Self);
+
+                  if Self.Parser_Status /= Continue then
+                     Self.Parse_Failed (Parse_Content'Access);
+
+                     return;
+                  end if;
+
+               when State_Done =>
+                  return;
+
+               when State_Invalid =>
+                  Self.Report_Parse_Error;
+
+                  return;
+            end case;
+         end loop;
+      end Parse_Content;
+
       --------------------
       -- Parse_Document --
       --------------------
@@ -889,30 +1147,82 @@ Ada.Wide_Wide_Text_IO.Put_Line
            State_Name,
            State_Whitespace,
            State_Attribute,
+           State_Start_Tag_Close,
+           State_Content,
+           State_Empty_Tag_Solidus,
+           State_End_Tag_Open,
+           State_End_Tag_Name,
+           State_End_Tag_Whitespace,
            State_Done,
            State_Invalid);
 
          type Inputs is
           (Input_Name_Start_Character,
            Input_Whitespace,
+           Input_Greater_Than_Sign,
+           Input_Solidus,
            Input_Unknown);
 
          Transition : constant array (States, Inputs) of States
            := (State_Initial =>
                 (Input_Name_Start_Character => State_Name,
                  Input_Whitespace           => State_Invalid,
+                 Input_Greater_Than_Sign    => State_Invalid,
+                 Input_Solidus              => State_Invalid,
                  Input_Unknown              => State_Invalid),
                State_Name =>
                 (Input_Name_Start_Character => State_Invalid,
                  Input_Whitespace           => State_Whitespace,
+                 Input_Greater_Than_Sign    => State_Start_Tag_Close,
+                 Input_Solidus              => State_Empty_Tag_Solidus,
                  Input_Unknown              => State_Invalid),
                State_Whitespace =>
                 (Input_Name_Start_Character => State_Attribute,
                  Input_Whitespace           => State_Whitespace,
+                 Input_Greater_Than_Sign    => State_Start_Tag_Close,
+                 Input_Solidus              => State_Empty_Tag_Solidus,
                  Input_Unknown              => State_Invalid),
                State_Attribute =>
                 (Input_Name_Start_Character => State_Invalid,
                  Input_Whitespace           => State_Whitespace,
+                 Input_Greater_Than_Sign    => State_Start_Tag_Close,
+                 Input_Solidus              => State_Empty_Tag_Solidus,
+                 Input_Unknown              => State_Invalid),
+               State_Start_Tag_Close =>
+                (Input_Name_Start_Character => State_Content,
+                 Input_Whitespace           => State_Content,
+                 Input_Greater_Than_Sign    => State_Content,
+                 Input_Solidus              => State_Content,
+                 Input_Unknown              => State_Content),
+               State_Content =>
+                (Input_Name_Start_Character => State_Invalid,
+                 Input_Whitespace           => State_Invalid,
+                 Input_Greater_Than_Sign    => State_Invalid,
+                 Input_Solidus              => State_End_Tag_Open,
+                 Input_Unknown              => State_Invalid),
+               State_Empty_Tag_Solidus =>
+                (Input_Name_Start_Character => State_Invalid,
+                 Input_Whitespace           => State_Invalid,
+                 Input_Greater_Than_Sign    => State_Done,
+                 Input_Solidus              => State_Invalid,
+                 Input_Unknown              => State_Invalid),
+               State_End_Tag_Open =>
+                (Input_Name_Start_Character => State_End_Tag_Name,
+                 Input_Whitespace           => State_Invalid,
+                 Input_Greater_Than_Sign    => State_Invalid,
+                 Input_Solidus              => State_Invalid,
+                 Input_Unknown              => State_Invalid),
+               State_End_Tag_Name =>
+                (Input_Name_Start_Character => State_Invalid,
+                 Input_Whitespace           => State_End_Tag_Whitespace,
+                 Input_Greater_Than_Sign    => State_Done,
+                 Input_Solidus              => State_Invalid,
+                 Input_Unknown              => State_Invalid),
+               State_End_Tag_Whitespace =>
+                (Input_Name_Start_Character => State_Invalid,
+                 Input_Whitespace           => State_End_Tag_Whitespace,
+                 Input_Greater_Than_Sign    => State_Done,
+                 Input_Solidus              => State_Invalid,
                  Input_Unknown              => State_Invalid),
                State_Done => (others => State_Invalid),
                State_Invalid => (others => State_Invalid));
@@ -941,6 +1251,12 @@ Ada.Wide_Wide_Text_IO.Put_Line
 
             if Is_Whitespace (Self.Code) then
                Input := Input_Whitespace;
+
+            elsif Self.Code = Greater_Than_Sign then
+               Input := Input_Greater_Than_Sign;
+
+            elsif Self.Code = Solidus then
+               Input := Input_Solidus;
 
             elsif Is_Name_Start_Character (Self.Code) then
                Input := Input_Name_Start_Character;
@@ -976,7 +1292,39 @@ Ada.Wide_Wide_Text_IO.Put_Line
                      return;
                   end if;
 
+               when State_Start_Tag_Close =>
+                  Self.Next;
+
+               when State_Content =>
+                  Parse_Content (Self);
+
+                  if Self.Parser_Status /= Continue then
+                     Self.Parse_Failed (Parse_Element'Access);
+
+                     return;
+                  end if;
+
+               when State_Empty_Tag_Solidus =>
+                  Self.Next;
+
+               when State_End_Tag_Open =>
+                  Self.Next;
+
+               when State_End_Tag_Name =>
+                  Parse_Name (Self);
+
+                  if Self.Parser_Status /= Continue then
+                     Self.Parse_Failed (Parse_Element'Access);
+
+                     return;
+                  end if;
+
+               when State_End_Tag_Whitespace =>
+                  Self.Next;
+
                when State_Done =>
+                  Self.Next;
+
                   return;
 
                when State_Invalid =>
