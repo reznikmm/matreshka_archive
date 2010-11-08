@@ -268,11 +268,12 @@ package body XML.SAX.Validating_Readers is
 
    begin
       if Self.Current_Entity_Reference.Source /= null then
-         loop
+         Normalize_Line_Break : loop
             Self.Current_Entity_Reference.Source.Next
              (Self.Code, Self.Source_Status);
 
-            exit when Self.Source_Status /= Sources.Successful;
+            exit Normalize_Line_Break
+              when Self.Source_Status /= Sources.Successful;
 
             if Self.Code = Carriage_Return then
                Self.Current_Entity_Reference.Skip_LF := True;
@@ -281,7 +282,7 @@ package body XML.SAX.Validating_Readers is
                Self.Current_Entity_Reference.Column := 1;
                Self.Code := Line_Feed;
 
-               return;
+               exit Normalize_Line_Break;
 
             elsif Self.Code = Line_Feed or Self.Code = Next_Line then
                if not Self.Current_Entity_Reference.Skip_LF then
@@ -290,7 +291,7 @@ package body XML.SAX.Validating_Readers is
                   Self.Current_Entity_Reference.Column := 1;
                   Self.Code := Line_Feed;
 
-                  return;
+                  exit Normalize_Line_Break;
                end if;
 
                Self.Current_Entity_Reference.Skip_LF := False;
@@ -302,16 +303,16 @@ package body XML.SAX.Validating_Readers is
                Self.Current_Entity_Reference.Column := 1;
                Self.Code := Line_Feed;
 
-               return;
+               exit Normalize_Line_Break;
 
             else
                Self.Current_Entity_Reference.Column :=
                  Self.Current_Entity_Reference.Column + 1;
                Self.Current_Entity_Reference.Skip_LF := False;
 
-               return;
+               exit Normalize_Line_Break;
             end if;
-         end loop;
+         end loop Normalize_Line_Break;
 
          case Self.Source_Status is
             when Sources.Successful =>
