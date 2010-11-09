@@ -120,6 +120,9 @@ package body XML.SAX.Validating_Readers is
       --  When end tag is found < is already parsed and current character
       --  points to /.
 
+      procedure Parse_Reference (Self : in out SAX_Validating_Reader'Class);
+      --  Parses [67] 'Reference' production.
+
    end Parser;
 
    ------------------------------
@@ -396,8 +399,8 @@ package body XML.SAX.Validating_Readers is
                   --  checks can be avoided. Look to Detached_* API of string
                   --  (if it is implemented).
                end if;
-Ada.Wide_Wide_Text_IO.Put_Line
- (Wide_Wide_Character'Wide_Wide_Image (Wide_Wide_Character'Val (Self.Code)));
+--Ada.Wide_Wide_Text_IO.Put_Line
+-- (Wide_Wide_Character'Wide_Wide_Image (Wide_Wide_Character'Val (Self.Code)));
 
             when Sources.Mailformed =>
                null;
@@ -1006,6 +1009,7 @@ Ada.Wide_Wide_Text_IO.Put_Line
            State_Character_Data,
            State_Less_Than_Sign,
            State_Element,
+           State_Reference,
            State_Done,
            State_Invalid);
 
@@ -1019,13 +1023,13 @@ Ada.Wide_Wide_Text_IO.Put_Line
          Transition : constant array (States, Inputs) of States
            := (State_Initial =>
                 (Input_Less_Than_Sign       => State_Less_Than_Sign,
-                 Input_Ampersand            => State_Invalid,  --  Wrong
+                 Input_Ampersand            => State_Reference,
                  Input_Name_Start_Character => State_Character_Data,
                  Input_Solidus              => State_Character_Data,
                  Input_Unknown              => State_Character_Data),
                State_Character_Data =>
                 (Input_Less_Than_Sign       => State_Less_Than_Sign,
-                 Input_Ampersand            => State_Invalid,  --  Wrong
+                 Input_Ampersand            => State_Reference,
                  Input_Name_Start_Character => State_Invalid,
                  Input_Solidus              => State_Invalid,
                  Input_Unknown              => State_Invalid),
@@ -1037,7 +1041,13 @@ Ada.Wide_Wide_Text_IO.Put_Line
                  Input_Unknown              => State_Invalid),
                State_Element =>
                 (Input_Less_Than_Sign       => State_Less_Than_Sign,
-                 Input_Ampersand            => State_Invalid,  --  Wrong
+                 Input_Ampersand            => State_Reference,
+                 Input_Name_Start_Character => State_Character_Data,
+                 Input_Solidus              => State_Character_Data,
+                 Input_Unknown              => State_Character_Data),
+               State_Reference =>
+                (Input_Less_Than_Sign       => State_Less_Than_Sign,
+                 Input_Ampersand            => State_Reference,
                  Input_Name_Start_Character => State_Character_Data,
                  Input_Solidus              => State_Character_Data,
                  Input_Unknown              => State_Character_Data),
@@ -1102,6 +1112,15 @@ Ada.Wide_Wide_Text_IO.Put_Line
 
                when State_Element =>
                   Parse_Element (Self);
+
+                  if Self.Parser_Status /= Continue then
+                     Self.Parse_Failed (Parse_Content'Access);
+
+                     return;
+                  end if;
+
+               when State_Reference =>
+                  Parse_Reference (Self);
 
                   if Self.Parser_Status /= Continue then
                      Self.Parse_Failed (Parse_Content'Access);
@@ -1754,6 +1773,200 @@ Ada.Wide_Wide_Text_IO.Put_Line
             end case;
          end loop;
       end Parse_Prolog;
+
+      ---------------------
+      -- Parse_Reference --
+      ---------------------
+
+      procedure Parse_Reference (Self : in out SAX_Validating_Reader'Class) is
+
+         type States is
+          (State_Initial,
+           State_Ampersand,
+           State_Name,
+           State_Entity_Reference_Done,
+           State_Number_Sign,
+           State_Decimal_Character_Reference,
+           State_Hex_Character_Reference,
+           State_Character_Reference_Done,
+           State_Invalid);
+
+         type Inputs is
+          (Input_Ampersand,
+           Input_Name_Start_Character,
+           Input_Number_Sign,
+           Input_Latin_Small_Letter_X,
+           Input_Decimal_Digit,
+           Input_Capital_Hex_Digit,
+           Input_Small_Hex_Digit,
+           Input_Semicolon,
+           Input_Unknown);
+
+         Transition : constant array (States, Inputs) of States
+           := (State_Initial =>
+                (Input_Ampersand            => State_Ampersand,
+                 Input_Name_Start_Character => State_Invalid,
+                 Input_Number_Sign          => State_Invalid,
+                 Input_Latin_Small_Letter_X => State_Invalid,
+                 Input_Decimal_Digit        => State_Invalid,
+                 Input_Capital_Hex_Digit    => State_Invalid,
+                 Input_Small_Hex_Digit      => State_Invalid,
+                 Input_Semicolon            => State_Invalid,
+                 Input_Unknown              => State_Invalid),
+               State_Ampersand =>
+                (Input_Ampersand            => State_Invalid,
+                 Input_Name_Start_Character => State_Name,
+                 Input_Number_Sign          => State_Number_Sign,
+                 Input_Latin_Small_Letter_X => State_Invalid,
+                 Input_Decimal_Digit        => State_Invalid,
+                 Input_Capital_Hex_Digit    => State_Name,
+                 Input_Small_Hex_Digit      => State_Name,
+                 Input_Semicolon            => State_Invalid,
+                 Input_Unknown              => State_Invalid),
+               State_Name =>
+                (Input_Ampersand            => State_Invalid,
+                 Input_Name_Start_Character => State_Invalid,
+                 Input_Number_Sign          => State_Invalid,
+                 Input_Latin_Small_Letter_X => State_Invalid,
+                 Input_Decimal_Digit        => State_Invalid,
+                 Input_Capital_Hex_Digit    => State_Invalid,
+                 Input_Small_Hex_Digit      => State_Invalid,
+                 Input_Semicolon            => State_Entity_Reference_Done,
+                 Input_Unknown              => State_Invalid),
+               State_Number_Sign =>
+                (Input_Ampersand            => State_Invalid,
+                 Input_Name_Start_Character => State_Invalid,
+                 Input_Number_Sign          => State_Invalid,
+                 Input_Latin_Small_Letter_X => State_Hex_Character_Reference,
+                 Input_Decimal_Digit        =>
+                   State_Decimal_Character_Reference,
+                 Input_Capital_Hex_Digit    => State_Invalid,
+                 Input_Small_Hex_Digit      => State_Invalid,
+                 Input_Semicolon            => State_Invalid,
+                 Input_Unknown              => State_Invalid),
+               State_Decimal_Character_Reference =>
+                (Input_Ampersand            => State_Invalid,
+                 Input_Name_Start_Character => State_Invalid,
+                 Input_Number_Sign          => State_Invalid,
+                 Input_Latin_Small_Letter_X => State_Invalid,
+                 Input_Decimal_Digit        =>
+                   State_Decimal_Character_Reference,
+                 Input_Capital_Hex_Digit    => State_Invalid,
+                 Input_Small_Hex_Digit      => State_Invalid,
+                 Input_Semicolon            => State_Character_Reference_Done,
+                 Input_Unknown              => State_Invalid),
+               State_Hex_Character_Reference =>
+                (Input_Ampersand            => State_Invalid,
+                 Input_Name_Start_Character => State_Invalid,
+                 Input_Number_Sign          => State_Invalid,
+                 Input_Latin_Small_Letter_X => State_Invalid,
+                 Input_Decimal_Digit        => State_Hex_Character_Reference,
+                 Input_Capital_Hex_Digit    => State_Hex_Character_Reference,
+                 Input_Small_Hex_Digit      => State_Hex_Character_Reference,
+                 Input_Semicolon            => State_Character_Reference_Done,
+                 Input_Unknown              => State_Invalid),
+               State_Entity_Reference_Done => (others => State_Invalid),
+               State_Character_Reference_Done => (others => State_Invalid),
+               State_Invalid => (others => State_Invalid));
+
+         State : States;
+         Input : Inputs;
+
+      begin
+         if Self.Parse_State_Stack.Is_Empty then
+            State := State_Initial;
+
+         else
+            raise Program_Error;
+         end if;
+
+         loop
+            --  Checks end of document
+
+            if Self.Is_End_Of_Document then
+               Self.Unexpected_End_Of_Document (Parse_Reference'Access);
+
+               return;
+            end if;
+
+            --  Classify current character
+
+            if Self.Code = Ampersand then
+               Input := Input_Ampersand;
+
+            elsif Self.Code = Semicolon then
+               Input := Input_Semicolon;
+
+            elsif Self.Code = Number_Sign then
+               Input := Input_Number_Sign;
+
+            elsif Self.Code = Latin_Small_Letter_X then
+               Input := Input_Latin_Small_Letter_X;
+
+            elsif Self.Code in Digit_Zero .. Digit_Nine then
+               Input := Input_Decimal_Digit;
+
+            elsif Self.Code
+                    in Latin_Capital_Letter_A .. Latin_Capital_Letter_F
+            then
+               Input := Input_Capital_Hex_Digit;
+
+            elsif Self.Code
+                    in Latin_Small_Letter_A .. Latin_Small_Letter_F
+            then
+               Input := Input_Small_Hex_Digit;
+
+            elsif Is_Name_Start_Character (Self.Code) then
+               Input := Input_Name_Start_Character;
+
+            else
+               Input := Input_Unknown;
+            end if;
+
+            State := Transition (State, Input);
+
+            case State is
+               when State_Initial =>
+                  raise Program_Error;
+
+               when State_Ampersand =>
+                  Self.Next;
+
+               when State_Name =>
+                  Parse_Name (Self);
+
+                  if Self.Parser_Status /= Continue then
+                     Self.Parse_Failed (Parse_Reference'Access);
+
+                     return;
+                  end if;
+
+               when State_Entity_Reference_Done =>
+                  Self.Next;
+
+                  return;
+
+               when State_Number_Sign =>
+                  Self.Next;
+
+               when State_Decimal_Character_Reference =>
+                  Self.Next;
+
+               when State_Hex_Character_Reference =>
+                  Self.Next;
+
+               when State_Character_Reference_Done =>
+                  Self.Next;
+
+                  return;
+
+               when State_Invalid =>
+                  Self.Report_Parse_Error;
+
+                  return;
+            end case;
+         end loop;
+      end Parse_Reference;
 
    end Parser;
 
