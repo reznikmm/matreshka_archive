@@ -923,6 +923,8 @@ Ada.Wide_Wide_Text_IO.Put_Line
 
       begin
          if Self.Parse_State_Stack.Is_Empty then
+            Matreshka.Internals.Strings.Operations.Reset
+             (Self.Character_Buffer);
             State := State_Initial;
 
          else
@@ -966,15 +968,23 @@ Ada.Wide_Wide_Text_IO.Put_Line
                   raise Program_Error;
 
                when State_Character_Data =>
+                  Matreshka.Internals.Strings.Operations.Unterminated_Append
+                   (Self.Character_Buffer, Self.Code);
                   Self.Next;
 
                when State_Right_Square_Bracket_1 =>
+                  Matreshka.Internals.Strings.Operations.Unterminated_Append
+                   (Self.Character_Buffer, Self.Code);
                   Self.Next;
 
                when State_Right_Square_Bracket_2 =>
+                  Matreshka.Internals.Strings.Operations.Unterminated_Append
+                   (Self.Character_Buffer, Self.Code);
                   Self.Next;
 
                when State_Done =>
+                  Matreshka.Internals.Strings.Fill_Null_Terminator
+                   (Self.Character_Buffer);
                   return;
 
                when State_Invalid =>
