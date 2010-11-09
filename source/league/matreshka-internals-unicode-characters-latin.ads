@@ -50,21 +50,48 @@ package Matreshka.Internals.Unicode.Characters.Latin is
 
    Character_Tabulation   : constant := 16#0009#;
    Line_Feed              : constant := 16#000A#;
+
    Carriage_Return        : constant := 16#000D#;
+
    Space                  : constant := 16#0020#;
+   Exclamation_Mark       : constant := 16#0021#;
+   Quotation_Mark         : constant := 16#0022#;
+   Number_Sign            : constant := 16#0023#;
+
    Ampersand              : constant := 16#0026#;
+   Apostrophe             : constant := 16#0027#;
+
+   Hyphen_Minus           : constant := 16#002D#;
    Full_Stop              : constant := 16#002E#;
    Solidus                : constant := 16#002F#;
    Digit_Zero             : constant := 16#0030#;
    Digit_One              : constant := 16#0031#;
+
+   Digit_Nine             : constant := 16#0039#;
    Colon                  : constant := 16#003A#;
+   Semicolon              : constant := 16#003B#;
    Less_Than_Sign         : constant := 16#003C#;
+   Equals_Sign            : constant := 16#003D#;
    Greater_Than_Sign      : constant := 16#003E#;
+   Question_Mark          : constant := 16#003F#;
+
    Latin_Capital_Letter_A : constant := 16#0041#;
+
    Latin_Capital_Letter_F : constant := 16#0046#;
+
+   Latin_Capital_Letter_Z : constant := 16#005A#;
+
    Right_Square_Bracket   : constant := 16#005D#;
+
+   Low_Line               : constant := 16#005F#;
+
    Latin_Small_Letter_A   : constant := 16#0061#;
+
    Latin_Small_Letter_F   : constant := 16#0066#;
+
+   Latin_Small_Letter_X   : constant := 16#0078#;
+
+   Latin_Small_Letter_Z   : constant := 16#007A#;
 
    --  C1 Controls and Latin-1 Supplement
 
