@@ -1385,6 +1385,13 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          elsif Version.Value (2) = Digit_One then
             Self.Version := XML_1_1;
             Error := False;
+
+         else
+            --  Starting from 5-th edition of XML 1.0, any 1.x versions are
+            --  legal. They are processed as XML 1.0 documents.
+
+            Self.Version := XML_1_0;
+            Error := False;
          end if;
       end if;
 
