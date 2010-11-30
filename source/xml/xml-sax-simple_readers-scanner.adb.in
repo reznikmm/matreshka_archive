@@ -905,6 +905,17 @@ package body XML.SAX.Simple_Readers.Scanner is
                            --  start conditions.
 
                            YY_Start_Condition := Start_Condition (Self);
+
+                           --  When entity's replacement text is empty and
+                           --  there are no text declaration, then scanner is
+                           --  in the initial state and actual state must be
+                           --  retrieved from the state stack.
+
+                           if YY_Start_Condition = Initial then
+                              Pop_Start_Condition (Self);
+                              YY_Start_Condition := Start_Condition (Self);
+                           end if;
+
                            Free (Self.Scanner_State.Source);
                            Self.Scanner_State :=
                              Self.Scanner_Stack.Last_Element;
