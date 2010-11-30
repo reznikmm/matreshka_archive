@@ -991,40 +991,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\uD800-\uDFFF\uFFFE\uFFFF]
    end if;
 }
 
-<XML_DECL>. {
-   raise Program_Error with "Unexpected character in XML_DECL";
-}
-
-<DOCTYPE_INT>. {
-   raise Program_Error with "Unexpected character in DOCTYPE_INT";
-}
-
-<ENTITY_DECL>. {
-   raise Program_Error with "Unexpected character in ENTITY_DECL";
-}
-
-<ENTITY_NDATA>. {
-   raise Program_Error with "Unexpected character in ENTITY_NDATA";
-}
-
-<ATTLIST_DECL>. {
-   Put_Line (YY_Text);
-   raise Program_Error with "Unexpected character in ATTLIST_DECL";
-}
-
-<EXTERNAL_ID_PUB>. {
-   raise Program_Error with "Unexpected character in pubid literal";
-}
-
-<EXTERNAL_ID_SYS>. {
-   raise Program_Error with "Unexpected character in system literal";
-}
-
-<NOTATION_DECL>. {
-   raise Program_Error with "Unexpected character in NOTATION_DECL";
-}
-
-<ATTLIST_TYPE,DOCUMENT_10,DOCUMENT_11,DOCTYPE_INTSUBSET_10,DOCTYPE_EXTINT,DOCTYPE_INTSUBSET_11,ENTITY_DEF,ELEMENT_START,PI,PI_DATA_10,PI_DATA_11,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11,ELEMENT_CHILDREN>.|\n {
+<ATTLIST_TYPE,DOCUMENT_10,DOCUMENT_11,DOCTYPE_INTSUBSET_10,DOCTYPE_EXTINT,DOCTYPE_INTSUBSET_11,ENTITY_DEF,ELEMENT_START,PI,PI_DATA_10,PI_DATA_11,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11,ELEMENT_CHILDREN,EXTERNAL_ID_PUB,XML_DECL,ENTITY_DECL,DOCTYPE_INT,EXTERNAL_ID_SYS,NOTATION_DECL,ATTLIST_DECL,ENTITY_NDATA>.|\n {
    --  Unexpected character.
 
    return Actions.On_Unexpected_Character (Self);

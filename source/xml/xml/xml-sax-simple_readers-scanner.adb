@@ -1453,31 +1453,6 @@ package body XML.SAX.Simple_Readers.Scanner is
                end if;
 
             when 107 =>
-               raise Program_Error with "Unexpected character in XML_DECL";
-
-            when 108 =>
-               raise Program_Error with "Unexpected character in DOCTYPE_INT";
-
-            when 109 =>
-               raise Program_Error with "Unexpected character in ENTITY_DECL";
-
-            when 110 =>
-               raise Program_Error with "Unexpected character in ENTITY_NDATA";
-
-            when 111 =>
-               Put_Line (YY_Text);
-               raise Program_Error with "Unexpected character in ATTLIST_DECL";
-
-            when 112 =>
-               raise Program_Error with "Unexpected character in pubid literal";
-
-            when 113 =>
-               raise Program_Error with "Unexpected character in system literal";
-
-            when 114 =>
-               raise Program_Error with "Unexpected character in NOTATION_DECL";
-
-            when 115 =>
                --  Unexpected character.
 
                return Actions.On_Unexpected_Character (Self);
