@@ -8,6 +8,6 @@
     <attributes/>
   </startElement>
   <characters>&#xA;</characters>
-  <fatalError/>
+  <fatalError>unexpected&#x20;character&#x20;(start&#x20;condition&#x20;26)</fatalError>
   <endDocument/>
 </SAXEvents>
