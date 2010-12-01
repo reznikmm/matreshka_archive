@@ -79,6 +79,7 @@ package body Matreshka.Internals.XML.Entity_Tables is
           (Self.Data (J).Replacement_Text);
          Matreshka.Internals.Strings.Dereference (Self.Data (J).Public_Id);
          Matreshka.Internals.Strings.Dereference (Self.Data (J).System_Id);
+         Matreshka.Internals.Strings.Dereference (Self.Data (J).Base);
       end loop;
 
       Free (Self.Data);
