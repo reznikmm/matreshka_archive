@@ -318,7 +318,10 @@ package body SAX_Events_Writers is
      Success    : in out Boolean) is
    begin
       Self.Fatal_Errors := True;
-      Self.Add_Line (To_Universal_String ("  <fatalError/>"));
+      Self.Add_Line
+       ("  <fatalError>"
+          & Escape_String (Occurrence.Message)
+          & "</fatalError>");
    end Fatal_Error;
 
    ----------------------
