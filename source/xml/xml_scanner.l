@@ -543,15 +543,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\uD800-\uDFFF\uFFFE\uFFFF]
 <ENTITY_DEF>"NDATA" {
    --  NDATA keyword, rule [76].
 
-   if not Get_Whitespace_Matched (Self) then
-      raise Program_Error with "no whitespace before NDATA";
-      --  XXX This is recoverable error.
-   end if;
-
-   Reset_Whitespace_Matched (Self);
-   Enter_Start_Condition (Self, ENTITY_NDATA);
-
-   return Token_NData;
+   return Actions.On_NDATA (Self);
 }
 
 <ENTITY_NDATA>{NAME} {
@@ -1196,6 +1188,8 @@ with Matreshka.Internals.Strings;
       procedure On_Close_Of_Conditional_Section (Self : access Integer);
 
       procedure On_Content_Of_Ignore_Conditional_Section (Self : access Integer);
+
+      function On_NDATA (Self : access Integer) return Token;
 
    end Actions;
 

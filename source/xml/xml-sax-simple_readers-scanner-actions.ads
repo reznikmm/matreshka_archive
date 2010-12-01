@@ -191,6 +191,10 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles name of the notation in the entity declaration.
 
+   function On_NDATA
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles NDATA keyword in entity declaration.
+
    procedure On_No_XML_Declaration
     (Self : not null access SAX_Simple_Reader'Class);
    --  Handles start of document and external parsed entities which doesn't

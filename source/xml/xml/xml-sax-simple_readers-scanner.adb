@@ -1067,15 +1067,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 44 =>
                --  NDATA keyword, rule [76].
 
-               if not Get_Whitespace_Matched (Self) then
-                  raise Program_Error with "no whitespace before NDATA";
-                  --  XXX This is recoverable error.
-               end if;
-
-               Reset_Whitespace_Matched (Self);
-               Enter_Start_Condition (Self, ENTITY_NDATA);
-
-               return Token_NData;
+               return Actions.On_NDATA (Self);
 
             when 45 =>
                --  Name of NDATA, rule [76].

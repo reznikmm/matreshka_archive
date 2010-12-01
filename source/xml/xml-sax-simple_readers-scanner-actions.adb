@@ -153,6 +153,32 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Valid := True;
    end Character_Reference_To_Code_Point;
 
+   --------------
+   -- On_NDATA --
+   --------------
+
+   function On_NDATA
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      if not Self.Whitespace_Matched then
+         --  XXX This is recoverable error.
+
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("whitespace required before NDATA"));
+         Self.Error_Reported := True;
+
+         return Error;
+
+      else
+         Self.Whitespace_Matched := False;
+         Enter_Start_Condition (Self, Tables.ENTITY_NDATA);
+
+         return Token_NData;
+      end if;
+   end On_NDATA;
+
    -----------------------------------------------------
    -- On_Attribute_Name_In_Attribute_List_Declaration --
    -----------------------------------------------------
