@@ -70,13 +70,24 @@
 
 %%
 
-document_entity :
+document_entity_content:
    {
       Actions.On_Start_Of_Document (Self);
    }
-  XMLDecl_optional document
+  document_entity
    {
-      Actions.On_End_Of_Document (Self);
+      null;
+   }
+  ;
+
+document_entity :
+  XMLDecl document
+   {
+      null;
+   }
+| document
+   {
+      null;
    }
   ;
 
@@ -85,51 +96,9 @@ document :
    {
       null;
    }
-| Misc_any doctypedecl_optional element Misc_any error
-   {
-      On_Fatal_Error;
-   }
-| Misc_any doctypedecl_optional element Misc_any unexpected_at_end
-   {
-      On_Fatal_Error;
-   }
-| error
-   {
-      On_Fatal_Error;
-   }
 ;
 
-unexpected_at_end :
-  Token_String_Segment
-   {
-      --  Unexpected token after the root element. This rule is required to
-      --  handle End_Document callback properly, because ayacc is unable to
-      --  recognize syntax error till end of parser stack is reached.
-
-      Actions.On_Unexpected_Token_After_Root_Element (Self);
-      Handle_Error;
-   }
-| Token_End_Open
-   {
-      --  Unexpected token after the root element. This rule is required to
-      --  handle End_Document callback properly, because ayacc is unable to
-      --  recognize syntax error till end of parser stack is reached.
-
-      Actions.On_Unexpected_Token_After_Root_Element (Self);
-      Handle_Error;
-   }
-| Token_Element_Open
-   {
-      --  Unexpected token after the root element. This rule is required to
-      --  handle End_Document callback properly, because ayacc is unable to
-      --  recognize syntax error till end of parser stack is reached.
-
-      Actions.On_Unexpected_Token_After_Root_Element (Self);
-      Handle_Error;
-   }
-;
-
-XMLDecl_optional :
+XMLDecl :
   Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment Token_Encoding Token_Equal Token_String_Segment SDDecl_optional Token_PI_Close
    {
       Actions.On_XML_Declaration (Self, $4.String, $7.String);
@@ -137,10 +106,6 @@ XMLDecl_optional :
 | Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment SDDecl_optional Token_PI_Close
    {
       Actions.On_XML_Declaration (Self, $4.String, Matreshka.Internals.Strings.Shared_Empty'Access);
-   }
-|
-   {
-      null;
    }
 ;
 

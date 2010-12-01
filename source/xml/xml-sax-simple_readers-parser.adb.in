@@ -185,7 +185,13 @@ package body XML.SAX.Simple_Readers.Parser is
 
       procedure Handle_Error is
          YY_Action : Integer;
+
       begin
+         --  XXX Code of this subprogram as well as relevant code in shift
+         --  operation handling must be reviewed, because actually there
+         --  are no error recovery features used for now. Primary purpose
+         --  of this subprogram is to pop all elements from parser stack.
+
          if YY.Error then
             raise Program_Error with "error recovery clobber";
          end if;
@@ -216,7 +222,9 @@ package body XML.SAX.Simple_Readers.Parser is
                YY.TOS := YY.TOS + 1;
                YY.State_Stack (YY.TOS) := YY_Action;
 
-               exit;
+               raise Program_Error with "unsupported";
+
+--               exit;
             end if;
 
             if YY.TOS > 0 then
@@ -224,7 +232,9 @@ package body XML.SAX.Simple_Readers.Parser is
             end if;
 
             if YY.TOS = 0 then
-               raise Program_Error with "Syntax error";
+               Actions.On_End_Of_Document (Self);
+
+               return;
             end if;
          end loop;
       end Handle_Error;
@@ -308,8 +318,12 @@ package body XML.SAX.Simple_Readers.Parser is
 
             Handle_Error;
 
+            exit;
+
          elsif YY_Action = YY_Accept_Code then
             --  Accepting grammar.
+
+            Actions.On_End_Of_Document (Self);
 
             exit;
 
