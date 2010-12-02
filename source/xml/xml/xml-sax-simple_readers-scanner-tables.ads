@@ -1432,7 +1432,7 @@ private package XML.SAX.Simple_Readers.Scanner.Tables is
        546,  546,  546,  546,  546,  546,  546,  546);
 
    YY_EC_0000 : aliased constant YY_Secondary_Array :=
-    (    0,    1,    1,    1,    1,    1,    1,    1,
+    (   72,    1,    1,    1,    1,    1,    1,    1,
          1,    2,    3,    1,    1,    4,    1,    1,
          1,    1,    1,    1,    1,    1,    1,    1,
          1,    1,    1,    1,    1,    1,    1,    1,

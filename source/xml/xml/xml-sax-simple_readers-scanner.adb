@@ -676,13 +676,6 @@ package body XML.SAX.Simple_Readers.Scanner is
                  YY_EC_Base
                   (YY_Current_Code / 16#100#) (YY_Current_Code mod 16#100#);
 
-               if YY_Current_Code = 0 then
-                  --  NUL character (code point 0) can't be used in XML
-                  --  documents.
-
-                  raise Program_Error with "NUL character in document";
-               end if;
-
             else
                --  End of buffer reached.
 
