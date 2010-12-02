@@ -432,10 +432,12 @@ package body XML.SAX.Simple_Readers.Scanner is
       end case;
 
       if not Success then
-         raise Program_Error;
-      end if;
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("invalid or unsupported encoding"));
 
-      if Restart then
+      elsif Restart then
          Matreshka.Internals.Strings.Operations.Reset
           (Self.Scanner_State.Data);
          Self.Scanner_State.Source.Next

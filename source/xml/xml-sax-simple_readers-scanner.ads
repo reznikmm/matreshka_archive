@@ -55,7 +55,7 @@ private package XML.SAX.Simple_Readers.Scanner is
      Version  : XML_Version;
      Encoding : League.Strings.Universal_String);
    --  Switch scanner to continue scanning according to the specified
-   --  version of XML specification.
+   --  version of XML specification. On error reports fatal error.
 
    procedure Initialize (Self : in out SAX_Simple_Reader'Class);
    --  Initializes start condition stack.
