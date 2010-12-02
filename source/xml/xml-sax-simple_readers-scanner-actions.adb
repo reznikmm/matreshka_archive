@@ -1905,10 +1905,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    begin
       Callbacks.Call_Fatal_Error
        (Self.all,
-        League.Strings.To_Universal_String
-         ("unexpected character (start condition"
-            & Interfaces.Unsigned_32'Wide_Wide_Image (Start_Condition (Self))
-            & ")"));
+        League.Strings.To_Universal_String ("unexpected character"));
       Self.Error_Reported := True;
 
       return Error;
