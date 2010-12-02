@@ -1407,19 +1407,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       end if;
    end On_Text_Declaration;
 
-   --------------------------------------------
-   -- On_Unexpected_Token_After_Root_Element --
-   --------------------------------------------
-
-   procedure On_Unexpected_Token_After_Root_Element
-    (Self : not null access SAX_Simple_Reader'Class) is
-   begin
-      Callbacks.Call_Fatal_Error
-       (Self.all,
-        League.Strings.To_Universal_String
-         ("enexpected item ather root element"));
-   end On_Unexpected_Token_After_Root_Element;
-
    ------------------------
    -- On_XML_Declaration --
    ------------------------
