@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>\n</char>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>&#xA;</characters>
+  <fatalError>[NSXML1.1]&#x20;qualified&#x20;name&#x20;must&#x20;not&#x20;contain&#x20;more&#x20;than&#x20;one&#x20;colon&#x20;character</fatalError>
+  <endDocument/>
+</SAXEvents>

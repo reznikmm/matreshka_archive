@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <fatalError>[NSXML1.1]&#x20;qualified&#x20;name&#x20;must&#x20;not&#x20;end&#x20;with&#x20;colon&#x20;character</fatalError>
+  <endDocument/>
+</SAXEvents>

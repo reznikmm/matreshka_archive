@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startPrefixMapping>
-        <prefix>a</prefix>
-        <data>http://example.org/namespace</data>
-    </startPrefixMapping>
-    <startElement>
-        <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>\n</char>
-    <char>\s</char>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startPrefixMapping>
+    <prefix>a</prefix>
+    <data>http://example.org/namespace</data>
+  </startPrefixMapping>
+  <startElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>&#xA;</characters>
+  <characters>&#x20;</characters>
+  <startPrefixMapping>
+    <prefix>a</prefix>
+    <data></data>
+  </startPrefixMapping>
+  <fatalError>[NSXML1.1&#x20;5&#x20;NSC:&#x20;Prefix&#x20;Declared]&#x20;the&#x20;element&apos;s&#x20;namespace&#x20;prefix&#x20;have&#x20;not&#x20;been&#x20;declared</fatalError>
+  <endDocument/>
+</SAXEvents>

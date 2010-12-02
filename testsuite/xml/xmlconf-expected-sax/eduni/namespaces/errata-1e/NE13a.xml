@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
-  <fatalError/>
+  <fatalError>[NSXML1.1&#x20;3&#x20;NSC:&#x20;Reserved&#x20;Prefixes&#x20;and&#x20;Namespace&#x20;Names]&#x20;the&#x20;xml&#x20;namespace&#x20;must&#x20;not&#x20;be&#x20;declared&#x20;as&#x20;the&#x20;default&#x20;namespace</fatalError>
   <endDocument/>
 </SAXEvents>
