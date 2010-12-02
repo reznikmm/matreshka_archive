@@ -148,9 +148,49 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          end loop;
       end if;
 
-      --  XXX Character reference must be resolved into valid XML character.
+      --  [XML1.0/1.1 4.1 WFC: Legal Character]
+      --
+      --  "Characters referred to using character references MUST match the
+      --  production for Char."
+      --
+      --  Check whether character reference is resolved into valid character.
 
-      Valid := True;
+      case Self.Version is
+         when XML_1_0 =>
+            --  [XML1.0 2.2 Characters]
+            --
+            --  [2] Char ::=
+            --        #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD]
+            --          | [#x10000-#x10FFFF]
+
+            Valid :=
+              Code = 16#0009#
+                or Code = 16#000A#
+                or Code = 16#000D#
+                or Code in 16#0020# .. 16#D7FF#
+                or Code in 16#E000# .. 16#FFFD#
+                or Code in 16#1_0000# .. 16#10_FFFF#;
+
+         when XML_1_1 =>
+            --  [XML1.1 2.2 Characters]
+            --
+            --  [2] Char ::=
+            --        [#x1-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
+
+            Valid :=
+              Code in 16#0001# .. 16#D7FF#
+                or Code in 16#E000# .. 16#FFFD#
+                or Code in 16#1_0000# .. 16#10_FFFF#;
+      end case;
+
+      if not Valid then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML 4.1 WFC: Legal Character] character reference refers to"
+               & " invalid character"));
+         Self.Error_Reported := True;
+      end if;
    end Character_Reference_To_Code_Point;
 
    --------------
