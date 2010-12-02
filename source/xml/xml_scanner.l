@@ -895,7 +895,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    null;
 }
 
-<CONDITIONAL_IGNORE_11>{CHAR10_NO_LESS_RIGHT_SQUARE}+|"<"|"<!"|"]" {
+<CONDITIONAL_IGNORE_11>{CHAR11_NO_LESS_RIGHT_SQUARE}+|"<"|"<!"|"]" {
    --  Content of ignore conditional section. It ends with "]]>" or "<![".
 
    null;
