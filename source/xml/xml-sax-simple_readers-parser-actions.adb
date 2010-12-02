@@ -1197,6 +1197,30 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                      return;
                   end if;
 
+                  --  [NSXML1.1 6.1 Namespace Scoping]
+                  --
+                  --  "The attribute value in a namespace declaration for a
+                  --  prefix MAY be empty. This has the effect, within the
+                  --  scope of the declaration, of removing any association of
+                  --  the prefix with a namespace name. Further declarations
+                  --  MAY re-declare the prefix again."
+                  --
+                  --  This is relevant for XML 1.1 only, Namespaces for XML 1.0
+                  --  doesn't introduce such capability.
+                  --
+                  --  Check whether namespace URI is empty and current XML
+                  --  version is 1.0.
+
+                  if Self.Version = XML_1_0 and Ns = No_Symbol then
+                     Callbacks.Call_Fatal_Error
+                      (Self.all,
+                       League.Strings.To_Universal_String
+                        ("[NSXML1.0] illegal use of 1.1-style prefix"
+                           & " unbinding in 1.0 document"));
+
+                     return;
+                  end if;
+
                   Bind (Self.Namespace_Scope, Lname, Ns);
 
                   Callbacks.Call_Start_Prefix_Mapping
