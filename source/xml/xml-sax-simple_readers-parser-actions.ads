@@ -220,4 +220,11 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
    --  Handles XML version information and entity's encoding by switching
    --  scanner to the corresponding processing mode.
 
+   procedure On_Text_Declaration
+    (Self     : not null access SAX_Simple_Reader'Class;
+     Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Encoding : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Handles XML version information and entity's encoding in external
+   --  entity.
+
 end XML.SAX.Simple_Readers.Parser.Actions;

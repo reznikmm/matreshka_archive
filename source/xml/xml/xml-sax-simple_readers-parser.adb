@@ -376,14 +376,11 @@ package body XML.SAX.Simple_Readers.Parser is
                --  particularly DTD external subsets, need not be maintained.
                --  However, in such a case the rules of XML 1.1 are applied to the
                --  entire document."
-               --
-               --  So, version information is ignored when it is not related to
-               --  document entity.
 
-               null;
+               Actions.On_Text_Declaration (Self, YY.Value_Stack (YY.TOS -  4).String, YY.Value_Stack (YY.TOS -  1).String);
 
             when 9 =>
-               null;
+               Actions.On_Text_Declaration (Self, Matreshka.Internals.Strings.Shared_Empty'Access, YY.Value_Stack (YY.TOS -  1).String);
 
             when 10 =>
                null;

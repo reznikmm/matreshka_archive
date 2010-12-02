@@ -69,6 +69,11 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --  Checks whether attribute is not declared, allocates new attribute using
    --  specified constructor, attach it to the list of element's attributes.
 
+   function To_XML_Version
+    (Version : not null Matreshka.Internals.Strings.Shared_String_Access)
+       return XML_Version;
+   --  Converts string representation of XML version into enumeration.
+
    -----------------------------------
    -- Analyze_Attribute_Declaration --
    -----------------------------------
@@ -1367,6 +1372,41 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       XML.SAX.Attributes.Internals.Clear (Self.SAX_Attributes);
    end On_Start_Tag;
 
+   -------------------------
+   -- On_Text_Declaration --
+   -------------------------
+
+   procedure On_Text_Declaration
+    (Self     : not null access SAX_Simple_Reader'Class;
+     Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Encoding : not null Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      Entity_Version : XML_Version := To_XML_Version (Version);
+
+   begin
+      --  [XML1.1 4.3.4]
+      --
+      --  "Each entity, including the document entity, can be separately
+      --  declared as XML 1.0 or XML 1.1. The version declaration appearing
+      --  in the document entity determines the version of the document as a
+      --  whole. An XML 1.1 document may invoke XML 1.0 external entities,
+      --  so that otherwise duplicated versions of external entities,
+      --  particularly DTD external subsets, need not be maintained.
+      --  However, in such a case the rules of XML 1.1 are applied to the
+      --  entire document."
+
+      if Self.Version < Entity_Version then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("external general entity has later version number"));
+
+      else
+         Scanner.Set_Document_Version_And_Encoding
+          (Self, Self.Version, League.Strings.Internals.Create (Encoding));
+      end if;
+   end On_Text_Declaration;
+
    --------------------------------------------
    -- On_Unexpected_Token_After_Root_Element --
    --------------------------------------------
@@ -1389,42 +1429,71 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
      Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
      Encoding : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
-      use type Matreshka.Internals.Utf16.Utf16_String_Index;
-      use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
-
-      Error : Boolean := True;
+      Document_Version : constant XML_Version := To_XML_Version (Version);
 
    begin
-      --  XML declaration can contains only BMP characters, so we don't need to
-      --  use expensive UTF-16 decoding here.
+      --  [XML1.0 2.8]
+      --
+      --  "Note: When an XML 1.0 processor encounters a document that
+      --  specifies a 1.x version number other than '1.0', it will process
+      --  it as a 1.0 document. This means that an XML 1.0 processor will
+      --  accept 1.x documents provided they do not use any non-1.0
+      --  features."
 
-      if Version.Unused = 3
-        and then (Version.Value (0) = Digit_One
-                    and then Version.Value (1) = Full_Stop)
-      then
-         if Version.Value (2) = Digit_Zero then
-            Self.Version := XML_1_0;
-            Error := False;
+      if Document_Version = XML_1_X then
+         Self.Version := XML_1_0;
 
-         elsif Version.Value (2) = Digit_One then
-            Self.Version := XML_1_1;
-            Error := False;
-
-         else
-            --  Starting from 5-th edition of XML 1.0, any 1.x versions are
-            --  legal. They are processed as XML 1.0 documents.
-
-            Self.Version := XML_1_0;
-            Error := False;
-         end if;
-      end if;
-
-      if Error then
-         raise Program_Error;
+      else
+         Self.Version := Document_Version;
       end if;
 
       Scanner.Set_Document_Version_And_Encoding
        (Self, Self.Version, League.Strings.Internals.Create (Encoding));
    end On_XML_Declaration;
+
+   --------------------
+   -- To_XML_Version --
+   --------------------
+
+   function To_XML_Version
+    (Version : not null Matreshka.Internals.Strings.Shared_String_Access)
+       return XML_Version
+   is
+      use type Matreshka.Internals.Unicode.Code_Unit_16;
+      use type Matreshka.Internals.Utf16.Utf16_String_Index;
+
+   begin
+      --  XML declaration can contains only BMP characters, so we don't need to
+      --  use expensive UTF-16 decoding here.
+
+      --  XXX XML 1.0 specify version number as
+      --
+      --  [26] VersionNum ::= '1.' [0-9]+
+      --
+      --  current code handle only three characters string
+
+      if Version.Unused = 0 then
+         return XML_1_0;
+
+      elsif Version.Unused = 3
+        and then (Version.Value (0) = Digit_One
+                    and then Version.Value (1) = Full_Stop)
+      then
+         if Version.Value (2) = Digit_Zero then
+            return XML_1_0;
+
+         elsif Version.Value (2) = Digit_One then
+            return XML_1_1;
+
+         elsif Version.Value (2) in Digit_Two .. Digit_Nine then
+            --  Starting from 5-th edition of XML 1.0, any 1.x versions are
+            --  legal. They are processed as XML 1.0 documents.
+
+            return XML_1_X;
+         end if;
+      end if;
+
+      raise Program_Error;
+   end To_XML_Version;
 
 end XML.SAX.Simple_Readers.Parser.Actions;

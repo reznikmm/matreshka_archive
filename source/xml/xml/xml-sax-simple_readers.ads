@@ -247,7 +247,9 @@ private
    -- Scanner state --
    -------------------
 
-   type XML_Version is (XML_1_0, XML_1_1);
+   type XML_Version is (XML_1_0, XML_1_1, XML_1_X);
+
+   subtype Supported_XML_Version is XML_Version range XML_1_0 .. XML_1_1;
 
    package Unsigned_32_Vectors is
      new Ada.Containers.Vectors
@@ -378,7 +380,7 @@ private
       Space_Before           : Boolean;
       --  When normalize attribute value of non-CDATA type, it indicates that
       --  previous processed character was space.
-      Version                : XML_Version := XML_1_0;
+      Version                : Supported_XML_Version := XML_1_0;
       --  XML version of document entity.
       Conditional_Depth      : Natural := 0;
       --  Depth of conditional sections.

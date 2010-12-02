@@ -130,15 +130,12 @@ TextDecl :
       --  particularly DTD external subsets, need not be maintained.
       --  However, in such a case the rules of XML 1.1 are applied to the
       --  entire document."
-      --
-      --  So, version information is ignored when it is not related to
-      --  document entity.
 
-      null;
+      Actions.On_Text_Declaration (Self, $4.String, $7.String);
    }
 | Token_Xml_Decl_Open Token_Encoding Token_Equal Token_String_Segment Token_PI_Close
    {
-      null;
+      Actions.On_Text_Declaration (Self, Matreshka.Internals.Strings.Shared_Empty'Access, $4.String);
    }
 ;
 
@@ -1019,6 +1016,11 @@ with Matreshka.Internals.XML.Symbol_Tables;
    package Actions is
 
       procedure On_XML_Declaration
+       (Self     : access Integer;
+        Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
+        Encoding : not null Matreshka.Internals.Strings.Shared_String_Access);
+
+      procedure On_Text_Declaration
        (Self     : access Integer;
         Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
         Encoding : not null Matreshka.Internals.Strings.Shared_String_Access);
