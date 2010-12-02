@@ -48,6 +48,7 @@ with Ada.Strings.Wide_Unbounded.Wide_Text_IO;
 with Ada.Wide_Text_IO;
 
 with Scanner_Extractor;
+with Scanner_Utilities;
 with Wide_Put_File_Header;
 
 package body Scanner_Generator is
@@ -57,11 +58,7 @@ package body Scanner_Generator is
    use Ada.Strings.Wide_Unbounded.Wide_Text_IO;
    use Ada.Wide_Text_IO;
    use Scanner_Extractor;
-
-   type Modes is (Regexp, XML);
-
-   function Mode return Modes;
-   --  Returns current generation mode.
+   use Scanner_Utilities;
 
    function Scanner_Template_File_Name return String;
 
@@ -417,23 +414,5 @@ package body Scanner_Generator is
 
       Close (Output);
    end Generate_Scanner_Tables;
-
-   ----------
-   -- Mode --
-   ----------
-
-   function Mode return Modes is
-      M : constant String := Ada.Command_Line.Argument (1);
-
-   begin
-      if M = "regexp" then
-         return Regexp;
-
-      elsif M = "xml" then
-         return XML;
-      end if;
-
-      raise Constraint_Error with "invalid value of mode parameter";
-   end Mode;
 
 end Scanner_Generator;
