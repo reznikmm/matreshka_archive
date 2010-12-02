@@ -650,7 +650,19 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             Enter_Start_Condition (Self, Tables.DOCUMENT_10);
 
          when XML_1_1 =>
-            Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+            if Is_Internal_General_Entity
+                (Self.Entities, Self.Scanner_State.Entity)
+            then
+               --  Character references are resolved when replacement text of
+               --  internal general entity is constructed. In XML 1.1 character
+               --  references can refer to restricted characters which is not
+               --  valid in text, but valid in replacement text.
+
+               Enter_Start_Condition (Self, Tables.DOCUMENT_U11);
+
+            else
+               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+            end if;
       end case;
 
       return Token_Empty_Close;
@@ -702,7 +714,19 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             Enter_Start_Condition (Self, Tables.DOCUMENT_10);
 
          when XML_1_1 =>
-            Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+            if Is_Internal_General_Entity
+                (Self.Entities, Self.Scanner_State.Entity)
+            then
+               --  Character references are resolved when replacement text of
+               --  internal general entity is constructed. In XML 1.1 character
+               --  references can refer to restricted characters which is not
+               --  valid in text, but valid in replacement text.
+
+               Enter_Start_Condition (Self, Tables.DOCUMENT_U11);
+
+            else
+               Enter_Start_Condition (Self, Tables.DOCUMENT_11);
+            end if;
       end case;
 
       return Token_Close;

@@ -120,6 +120,11 @@ package Matreshka.Internals.XML.Entity_Tables is
      Entity : Entity_Identifier) return Boolean;
    --  Returns True when entity is parameter entity (internal or external).
 
+   function Is_Internal_General_Entity
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier) return Boolean;
+   --  Returns True when entity is internal general entity.
+
    function Is_External_Parsed_General_Entity
     (Self   : Entity_Table;
      Entity : Entity_Identifier) return Boolean;
@@ -225,5 +230,6 @@ private
 
    pragma Inline (Is_Document_Entity);
    pragma Inline (Is_External_Unparsed_General_Entity);
+   pragma Inline (Is_Internal_General_Entity);
 
 end Matreshka.Internals.XML.Entity_Tables;

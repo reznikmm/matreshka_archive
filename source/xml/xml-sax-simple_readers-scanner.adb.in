@@ -284,7 +284,19 @@ package body XML.SAX.Simple_Readers.Scanner is
             end case;
 
          else
-            Enter_Start_Condition (Self, Condition);
+            if Condition = DOCUMENT_11
+              and Is_Internal_General_Entity (Self.Entities, Entity)
+            then
+               --  Character references are resolved when replacement text of
+               --  internal general entity is constructed. In XML 1.1 character
+               --  references can refer to restricted characters which is not
+               --  valid in text, but valid in replacement text.
+
+               Enter_Start_Condition (Self, DOCUMENT_U11);
+
+            else
+               Enter_Start_Condition (Self, Condition);
+            end if;
          end if;
 
       else

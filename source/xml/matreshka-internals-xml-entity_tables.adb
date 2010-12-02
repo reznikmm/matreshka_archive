@@ -171,6 +171,17 @@ package body Matreshka.Internals.XML.Entity_Tables is
       return Self.Data (Entity).Kind = External_Unparsed_General_Entity;
    end Is_External_Unparsed_General_Entity;
 
+   --------------------------------
+   -- Is_Internal_General_Entity --
+   --------------------------------
+
+   function Is_Internal_General_Entity
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier) return Boolean is
+   begin
+      return Self.Data (Entity).Kind = Internal_General_Entity;
+   end Is_Internal_General_Entity;
+
    -------------------------
    -- Is_Parameter_Entity --
    -------------------------
