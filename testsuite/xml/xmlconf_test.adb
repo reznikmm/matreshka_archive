@@ -82,7 +82,7 @@ begin
             Enabled (Valid) := True;
 
          elsif Ada.Command_Line.Argument (J) = "--invalid" then
-            Enabled (Valid) := True;
+            Enabled (Invalid) := True;
 
          elsif Ada.Command_Line.Argument (J) = "--not-wellformed" then
             Enabled (Not_Wellformed) := True;
