@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
-  <fatalError>unexpected&#x20;character&#x20;(start&#x20;condition&#x20;7)</fatalError>
+  <fatalError>unexpected&#x20;character</fatalError>
   <endDocument/>
 </SAXEvents>

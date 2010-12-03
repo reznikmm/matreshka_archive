@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>foo</localName>
-        <qualifiedName>foo</qualifiedName>
-        <attributes/>
-    </startElement>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/eduni/xml-1.1/004.ent</systemID>
-    </resolveEntity>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>foo</localName>
+    <qualifiedName>foo</qualifiedName>
+    <attributes/>
+  </startElement>
+  <resolveEntity>
+    <systemID>004.ent</systemID>
+  </resolveEntity>
+  <fatalError>external&#x20;general&#x20;entity&#x20;has&#x20;later&#x20;version&#x20;number</fatalError>
+  <endDocument/>
+</SAXEvents>

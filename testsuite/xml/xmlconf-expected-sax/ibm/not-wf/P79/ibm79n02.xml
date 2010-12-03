@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/not-wf/P79/ibm79n02.ent</systemID>
-    </resolveEntity>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <resolveEntity>
+    <systemID>ibm79n02.ent</systemID>
+  </resolveEntity>
+  <fatalError>text&#x20;declaration&#x20;must&#x20;not&#x20;occur&#x20;other&#x20;than&#x20;at&#x20;the&#x20;beginning&#x20;of&#x20;external&#x20;entity</fatalError>
+  <endDocument/>
+</SAXEvents>

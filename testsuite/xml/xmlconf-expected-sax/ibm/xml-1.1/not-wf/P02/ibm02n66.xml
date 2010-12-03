@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes/>
-    </startElement>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/xml-1.1/not-wf/P02/ibm02n66.ent</systemID>
-    </resolveEntity>
-    <char>\n</char>
-    <char>!</char>
-    <char>[</char>
-    <char>C</char>
-    <char>D</char>
-    <char>A</char>
-    <char>T</char>
-    <char>A</char>
-    <char>[</char>
-    <char>\s</char>
-    <char>0</char>
-    <char>x</char>
-    <char>0</char>
-    <char>x</char>
-    <char>1</char>
-    <char>:</char>
-    <char>\s</char>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes/>
+  </startElement>
+  <resolveEntity>
+    <systemID>ibm02n66.ent</systemID>
+  </resolveEntity>
+  <characters>&#xA;</characters>
+  <characters>!</characters>
+  <characters>[</characters>
+  <characters>C</characters>
+  <characters>D</characters>
+  <characters>A</characters>
+  <characters>T</characters>
+  <characters>A</characters>
+  <characters>[</characters>
+  <characters>&#x20;</characters>
+  <characters>0</characters>
+  <characters>x</characters>
+  <characters>0</characters>
+  <characters>x</characters>
+  <characters>1</characters>
+  <characters>:</characters>
+  <characters>&#x20;</characters>
+  <fatalError>unexpected&#x20;character</fatalError>
+  <endDocument/>
+</SAXEvents>

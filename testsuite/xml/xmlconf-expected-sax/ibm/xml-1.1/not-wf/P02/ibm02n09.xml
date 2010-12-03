@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <processingInstruction>
-        <target>Bad</target>
-        <data>PI\s0x0\s\s\s\s</data>
-    </processingInstruction>
-    <startElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>\s</char>
-    <char>\s</char>
-    <char>0</char>
-    <char>x</char>
-    <char>0</char>
-    <char>\s</char>
-    <char>\s</char>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <processingInstruction>
+    <target>Bad</target>
+    <data>PI&#x20;0x0&#x20;&#x20;&#x20;&#x20;</data>
+  </processingInstruction>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>&#x20;</characters>
+  <characters>&#x20;</characters>
+  <characters>0</characters>
+  <characters>x</characters>
+  <characters>0</characters>
+  <characters>&#x20;</characters>
+  <characters>&#x20;</characters>
+  <fatalError>unexpected&#x20;character</fatalError>
+  <endDocument/>
+</SAXEvents>

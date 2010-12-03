@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <processingInstruction>
-        <target>Bad</target>
-        <data>PI\s0xFFFF\s&amp;#xFFFF;\s</data>
-    </processingInstruction>
-    <startElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes/>
-    </startElement>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <processingInstruction>
+    <target>Bad</target>
+    <data>PI&#x20;0xFFFF&#x20;&amp;#xFFFF;&#x20;</data>
+  </processingInstruction>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes/>
+  </startElement>
+  <fatalError>[XML&#x20;4.1&#x20;WFC:&#x20;Legal&#x20;Character]&#x20;character&#x20;reference&#x20;refers&#x20;to&#x20;invalid&#x20;character</fatalError>
+  <endDocument/>
+</SAXEvents>
