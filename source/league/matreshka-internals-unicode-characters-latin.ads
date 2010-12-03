@@ -66,6 +66,7 @@ package Matreshka.Internals.Unicode.Characters.Latin is
    Solidus                : constant := 16#002F#;
    Digit_Zero             : constant := 16#0030#;
    Digit_One              : constant := 16#0031#;
+   Digit_Two              : constant := 16#0032#;
 
    Digit_Nine             : constant := 16#0039#;
    Colon                  : constant := 16#003A#;
