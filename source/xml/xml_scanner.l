@@ -316,12 +316,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <XML_DECL>encoding {
    --  [80] EncodingDecl
 
-   if not Get_Whitespace_Matched (Self) then
-      raise Program_Error with "no whitespace before 'encoding' keyword";
-      --  XXX This is recoverable error.
-   end if;
-
-   return Token_Encoding;
+   return Actions.On_Encoding_Keyword (Self);
 }
 
 <XML_DECL>standalone {
@@ -1217,6 +1212,8 @@ with Matreshka.Internals.Strings;
       function On_NDATA (Self : access Integer) return Token;
 
       function On_Version_Keyword (Self : access Integer) return Token;
+
+      function On_Encoding_Keyword (Self : access Integer) return Token;
 
    end Actions;
 

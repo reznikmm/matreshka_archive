@@ -849,6 +849,28 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
    end On_Element_Name_In_Attribute_List_Declaration;
 
+   -------------------------
+   -- On_Encoding_Keyword --
+   -------------------------
+
+   function On_Encoding_Keyword
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      if not Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("no whitespace before 'encoding'"));
+         Self.Error_Reported := True;
+         --  XXX This is recoverable error.
+
+         return Error;
+
+      else
+         return Token_Encoding;
+      end if;
+   end On_Encoding_Keyword;
+
    -------------------------------------
    -- On_Entity_Value_Close_Delimiter --
    -------------------------------------

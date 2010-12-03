@@ -863,12 +863,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 16 =>
                --  [80] EncodingDecl
 
-               if not Get_Whitespace_Matched (Self) then
-                  raise Program_Error with "no whitespace before 'encoding' keyword";
-                  --  XXX This is recoverable error.
-               end if;
-
-               return Token_Encoding;
+               return Actions.On_Encoding_Keyword (Self);
 
             when 17 =>
                --  [32] SDDecl
