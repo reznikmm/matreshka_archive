@@ -277,6 +277,10 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
 
    function On_Standalone_Keyword
     (Self : not null access SAX_Simple_Reader'Class) return Token;
-   --  Handles 'standalone' keyword in XML declaration or text declaration.
+   --  Handles 'standalone' keyword in XML declaration.
+
+   function On_Percent_Sign
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles percent sign in parameter entity declaration.
 
 end XML.SAX.Simple_Readers.Scanner.Actions;

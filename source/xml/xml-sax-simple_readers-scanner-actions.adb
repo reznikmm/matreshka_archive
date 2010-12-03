@@ -1934,6 +1934,30 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
    end On_Standalone_Keyword;
 
+   ---------------------
+   -- On_Percent_Sign --
+   ---------------------
+
+   function On_Percent_Sign
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      if not Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("no whitespace before percent"));
+         Self.Error_Reported := True;
+         --  XXX This is recoverable error.
+
+         return Error;
+
+      else
+         Self.Whitespace_Matched := False;
+
+         return Token_Percent;
+      end if;
+   end On_Percent_Sign;
+
    -----------------------
    -- On_System_Literal --
    -----------------------

@@ -1040,15 +1040,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 42 =>
                --  Percent mark in parameter entity declaration, rule [72].
 
-               if not Get_Whitespace_Matched (Self) then
-                  raise Program_Error
-                    with "no whitespace before percent in parameter entity declaration";
-                  --  XXX This is recoverable error.
-               end if;
-
-               Reset_Whitespace_Matched (Self);
-
-               return Token_Percent;
+               return Actions.On_Percent_Sign (Self);
 
             when 43 =>
                --  Entity value, rule [9].
