@@ -753,6 +753,75 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       end if;
    end On_Parameter_Entity_Declaration;
 
+   -------------------------------
+   -- On_Processing_Instruction --
+   -------------------------------
+
+   procedure On_Processing_Instruction
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Target : Matreshka.Internals.XML.Symbol_Identifier;
+     Data   : not null Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      use type Matreshka.Internals.Unicode.Code_Unit_16;
+      use type Matreshka.Internals.Utf16.Utf16_String_Index;
+
+      Target_Name :
+        constant not null Matreshka.Internals.Strings.Shared_String_Access
+          := Name (Self.Symbols, Target);
+
+   begin
+      --  [XML1.1 4.3.3 Character Encoding in Entities]
+      --
+      --  "It is a fatal error for a TextDecl to occur other than at the
+      --  beginning of an external entity."
+
+      if Target = Symbol_xml then
+         if Is_Document_Entity (Self.Entities, Self.Scanner_State.Entity) then
+            Callbacks.Call_Fatal_Error
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("XML declaration must not occur other than at the beginning"
+                  & " of document entity"));
+
+            return;
+
+         else
+            Callbacks.Call_Fatal_Error
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("text declaration must not occur other than at the beginning"
+                  & " of external entity"));
+
+            return;
+         end if;
+      end if;
+
+      --  [XML1.1 2.6 Processing Instructions]
+      --
+      --  "... The target names "XML", "xml", and so on are reserved for
+      --  standardization in this or future versions of this specification.
+      --  ..."
+
+      if Target_Name.Unused = 3
+        and (Target_Name.Value (0) = Latin_Capital_Letter_X
+               or Target_Name.Value (0) = Latin_Small_Letter_X)
+        and (Target_Name.Value (1) = Latin_Capital_Letter_M
+               or Target_Name.Value (1) = Latin_Small_Letter_M)
+        and (Target_Name.Value (2) = Latin_Capital_Letter_L
+               or Target_Name.Value (2) = Latin_Small_Letter_L)
+      then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("name is reserved for future standardization"));
+
+         return;
+      end if;
+
+      Callbacks.Call_Processing_Instruction
+       (Self.all, Target, Data);
+   end On_Processing_Instruction;
+
    -----------------------------------------------
    -- On_Required_Attribute_Default_Declaration --
    -----------------------------------------------

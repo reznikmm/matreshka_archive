@@ -223,4 +223,10 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
    --  Handles XML version information and entity's encoding in external
    --  entity.
 
+   procedure On_Processing_Instruction
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Target : Matreshka.Internals.XML.Symbol_Identifier;
+     Data   : not null Matreshka.Internals.Strings.Shared_String_Access);
+   --  Process processing instruction.
+
 end XML.SAX.Simple_Readers.Parser.Actions;

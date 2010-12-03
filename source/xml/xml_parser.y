@@ -182,11 +182,10 @@ Misc :
 PI :
   Token_PI_Open Token_PI_Close
    {
-      Process_Processing_Instruction
+      Actions.On_Processing_Instruction
        (Self,
         $1.Symbol,
-        League.Strings.Internals.Create
-         ($2.String));
+        $2.String);
    }
 ;
 
@@ -993,11 +992,6 @@ with Matreshka.Internals.XML.Symbol_Tables;
     (Self    : access Integer;
      Comment : League.Strings.Universal_String) is separate;
 
-   procedure Process_Processing_Instruction
-     (Self   : access Integer;
-      Symbol : Matreshka.Internals.XML.Symbol_Identifier;
-      Data   : League.Strings.Universal_String) is separate;
-
    procedure Process_External_Id
      (Self      : access Integer;
       Public_Id : League.Strings.Universal_String;
@@ -1148,6 +1142,11 @@ with Matreshka.Internals.XML.Symbol_Tables;
         Name      : Matreshka.Internals.XML.Symbol_Identifier;
         Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
         System_Id : not null Matreshka.Internals.Strings.Shared_String_Access);
+
+      procedure On_Processing_Instruction
+       (Self   : access Integer;
+        Symbol : Matreshka.Internals.XML.Symbol_Identifier;
+        Data   : not null Matreshka.Internals.Strings.Shared_String_Access);
 
    end Actions;
 

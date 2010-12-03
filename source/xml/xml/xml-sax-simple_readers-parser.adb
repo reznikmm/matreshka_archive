@@ -66,12 +66,6 @@ package body XML.SAX.Simple_Readers.Parser is
      Comment : League.Strings.Universal_String);
    --  Process comment in the document.
 
-   procedure Process_Processing_Instruction
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Target : Matreshka.Internals.XML.Symbol_Identifier;
-     Data   : League.Strings.Universal_String);
-   --  Process processing instruction.
-
    procedure Process_External_Id
     (Self      : not null access SAX_Simple_Reader'Class;
      Public_Id : League.Strings.Universal_String;
@@ -114,18 +108,6 @@ package body XML.SAX.Simple_Readers.Parser is
       Self.Public_Id := Public_Id;
       Self.System_Id := System_Id;
    end Process_External_Id;
-
-   ------------------------------------
-   -- Process_Processing_Instruction --
-   ------------------------------------
-
-   procedure Process_Processing_Instruction
-    (Self   : not null access SAX_Simple_Reader'Class;
-     Target : Matreshka.Internals.XML.Symbol_Identifier;
-     Data   : League.Strings.Universal_String) is
-   begin
-      Callbacks.Call_Processing_Instruction (Self.all, Target, Data);
-   end Process_Processing_Instruction;
 
    -------------------
    -- YY_Goto_State --
@@ -407,11 +389,10 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 17 =>
-               Process_Processing_Instruction
+               Actions.On_Processing_Instruction
                 (Self,
                  YY.Value_Stack (YY.TOS -  1).Symbol,
-                 League.Strings.Internals.Create
-                  (YY.Value_Stack (YY.TOS).String));
+                 YY.Value_Stack (YY.TOS).String);
 
             when 18 =>
                --  Document type declaration, rule [28]. Once external identifier are

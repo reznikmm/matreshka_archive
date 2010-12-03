@@ -381,13 +381,13 @@ package body XML.SAX.Simple_Readers.Callbacks is
    procedure Call_Processing_Instruction
     (Self   : in out SAX_Simple_Reader'Class;
      Target : Matreshka.Internals.XML.Symbol_Identifier;
-     Data   : League.Strings.Universal_String) is
+     Data   : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Setup_Locator (Self);
       Self.Content_Handler.Processing_Instruction
        (Target  =>
           Matreshka.Internals.XML.Symbol_Tables.Name (Self.Symbols, Target),
-        Data    => Data,
+        Data    => League.Strings.Internals.Create (Data),
         Success => Self.Continue);
 
       if not Self.Continue then
