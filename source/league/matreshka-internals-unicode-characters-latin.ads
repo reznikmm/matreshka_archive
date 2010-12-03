@@ -80,6 +80,11 @@ package Matreshka.Internals.Unicode.Characters.Latin is
 
    Latin_Capital_Letter_F : constant := 16#0046#;
 
+   Latin_Capital_Letter_L : constant := 16#004C#;
+   Latin_Capital_Letter_M : constant := 16#004D#;
+
+   Latin_Capital_Letter_X : constant := 16#0058#;
+
    Latin_Capital_Letter_Z : constant := 16#005A#;
 
    Right_Square_Bracket   : constant := 16#005D#;
@@ -89,6 +94,9 @@ package Matreshka.Internals.Unicode.Characters.Latin is
    Latin_Small_Letter_A   : constant := 16#0061#;
 
    Latin_Small_Letter_F   : constant := 16#0066#;
+
+   Latin_Small_Letter_L   : constant := 16#006C#;
+   Latin_Small_Letter_M   : constant := 16#006D#;
 
    Latin_Small_Letter_X   : constant := 16#0078#;
 
