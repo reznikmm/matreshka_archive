@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
+with Matreshka.Internals.Text_Codecs;
 with Matreshka.Internals.Unicode.Characters.Latin;
 with XML.SAX.Attributes.Internals;
 with XML.SAX.Simple_Readers.Scanner;
@@ -1381,6 +1382,12 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
      Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
      Encoding : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
+      use type Matreshka.Internals.Text_Codecs.Character_Set;
+      use type Matreshka.Internals.Utf16.Utf16_String_Index;
+
+      Encoding_Name  : constant League.Strings.Universal_String
+        := Matreshka.Internals.Text_Codecs.Transform_Character_Set_Name
+            (League.Strings.Internals.Create (Encoding));
       Entity_Version : XML_Version := To_XML_Version (Version);
 
    begin
@@ -1401,10 +1408,37 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
            League.Strings.To_Universal_String
             ("external general entity has later version number"));
 
-      else
-         Scanner.Set_Document_Version_And_Encoding
-          (Self, Self.Version, League.Strings.Internals.Create (Encoding));
+         return;
       end if;
+
+      --  Check that encoding name is valid when present.
+
+      if Encoding.Unused /= 0 and Encoding_Name.Is_Empty then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String ("invalid name of encoding"));
+
+         return;
+      end if;
+
+      --  Check that encoding is known.
+      --
+      --  Note: short circuite form must be used here, because To_Character_Set
+      --  raises exception when encoding has empty or invalid name.
+
+      if not Encoding_Name.Is_Empty
+        and then Matreshka.Internals.Text_Codecs.To_Character_Set
+             (Encoding_Name) = 0
+      then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String ("unknown encoding"));
+
+         return;
+      end if;
+
+      Scanner.Set_Document_Version_And_Encoding
+       (Self, Self.Version, League.Strings.Internals.Create (Encoding));
    end On_Text_Declaration;
 
    ------------------------
@@ -1416,6 +1450,13 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
      Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
      Encoding : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
+      use type Matreshka.Internals.Text_Codecs.Character_Set;
+      use type Matreshka.Internals.Utf16.Utf16_String_Index;
+
+      Encoding_Name  : constant League.Strings.Universal_String
+        := Matreshka.Internals.Text_Codecs.Transform_Character_Set_Name
+            (League.Strings.Internals.Create (Encoding));
+
       Document_Version : constant XML_Version := To_XML_Version (Version);
 
    begin
@@ -1432,6 +1473,32 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       else
          Self.Version := Document_Version;
+      end if;
+
+      --  Check that encoding name is valid when present.
+
+      if Encoding.Unused /= 0 and Encoding_Name.Is_Empty then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String ("invalid name of encoding"));
+
+         return;
+      end if;
+
+      --  Check that encoding is known.
+      --
+      --  Note: short circuite form must be used here, because To_Character_Set
+      --  raises exception when encoding has empty or invalid name.
+
+      if not Encoding_Name.Is_Empty
+        and then Matreshka.Internals.Text_Codecs.To_Character_Set
+             (Encoding_Name) = 0
+      then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String ("unknown encoding"));
+
+         return;
       end if;
 
       Scanner.Set_Document_Version_And_Encoding
