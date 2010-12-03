@@ -322,12 +322,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <XML_DECL>standalone {
    --  [32] SDDecl
 
-   if not Get_Whitespace_Matched (Self) then
-      raise Program_Error with "no whitespace before 'standalone' keyword";
-      --  XXX This is recoverable error.
-   end if;
-
-   return Token_Standalone;
+   return Actions.On_Standalone_Keyword (Self);
 }
 
 <XML_DECL>'{XMLDECL_ATTRIBUTE_CHAR}*'|\"{XMLDECL_ATTRIBUTE_CHAR}*\" {
@@ -1214,6 +1209,8 @@ with Matreshka.Internals.Strings;
       function On_Version_Keyword (Self : access Integer) return Token;
 
       function On_Encoding_Keyword (Self : access Integer) return Token;
+
+      function On_Standalone_Keyword (Self : access Integer) return Token;
 
    end Actions;
 

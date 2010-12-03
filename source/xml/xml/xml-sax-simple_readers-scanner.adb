@@ -868,12 +868,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 17 =>
                --  [32] SDDecl
 
-               if not Get_Whitespace_Matched (Self) then
-                  raise Program_Error with "no whitespace before 'standalone' keyword";
-                  --  XXX This is recoverable error.
-               end if;
-
-               return Token_Standalone;
+               return Actions.On_Standalone_Keyword (Self);
 
             when 18 =>
                --  Synthetic rule. XMLDECL_ATTRIBUTE_CHAR is a union of characters allowed

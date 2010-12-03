@@ -275,4 +275,8 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles 'encoding' keyword in XML declaration or text declaration.
 
+   function On_Standalone_Keyword
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles 'standalone' keyword in XML declaration or text declaration.
+
 end XML.SAX.Simple_Readers.Scanner.Actions;
