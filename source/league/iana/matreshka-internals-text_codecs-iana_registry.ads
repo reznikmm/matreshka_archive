@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+
 with Matreshka.Internals.Strings;
 
 private package Matreshka.Internals.Text_Codecs.IANA_Registry is
@@ -57,5119 +58,5119 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0041#, 16#004E#, 16#0053#, 16#0049#, 16#0058#,
+           (16#0061#, 16#006E#, 16#0073#, 16#0069#, 16#0078#,
             16#0033#, 16#0034#, 16#0031#, 16#0039#, 16#0036#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  ANSIX341968
+   --  ansix341968
 
    N2 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0036#, others => 16#0000#),
          others => <>);
-   --  ISOIR6
+   --  isoir6
 
    N3 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0041#, 16#004E#, 16#0053#, 16#0049#, 16#0058#,
+           (16#0061#, 16#006E#, 16#0073#, 16#0069#, 16#0078#,
             16#0033#, 16#0034#, 16#0031#, 16#0039#, 16#0038#,
             16#0036#, others => 16#0000#),
          others => <>);
-   --  ANSIX341986
+   --  ansix341986
 
    N4 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0049#, 16#0052#, 16#0056#, 16#0031#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0069#, 16#0072#, 16#0076#, 16#0031#,
             16#0039#, 16#0039#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISO646IRV1991
+   --  iso646irv1991
 
    N5 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0041#, 16#0053#, 16#0043#, 16#0049#, 16#0049#,
+           (16#0061#, 16#0073#, 16#0063#, 16#0069#, 16#0069#,
             others => 16#0000#),
          others => <>);
-   --  ASCII
+   --  ascii
 
    N6 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0055#, 16#0053#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0075#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  ISO646US
+   --  iso646us
 
    N7 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0055#, 16#0053#, 16#0041#, 16#0053#, 16#0043#,
-            16#0049#, 16#0049#, others => 16#0000#),
+           (16#0075#, 16#0073#, 16#0061#, 16#0073#, 16#0063#,
+            16#0069#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  USASCII
+   --  usascii
 
    N8 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0055#, 16#0053#, others => 16#0000#),
+           (16#0075#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  US
+   --  us
 
    N9 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0033#, 16#0036#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0033#, 16#0036#,
             16#0037#, others => 16#0000#),
          others => <>);
-   --  IBM367
+   --  ibm367
 
    N10 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0033#, 16#0036#, 16#0037#,
+           (16#0063#, 16#0070#, 16#0033#, 16#0036#, 16#0037#,
             others => 16#0000#),
          others => <>);
-   --  CP367
+   --  cp367
 
    N11 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0043#, 16#0053#, 16#0041#, 16#0053#, 16#0043#,
-            16#0049#, 16#0049#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0061#, 16#0073#, 16#0063#,
+            16#0069#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  CSASCII
+   --  csascii
 
    N12 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0031#, 16#0031#, 16#0039#,
             16#0038#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISO885911987
+   --  iso885911987
 
    N13 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0030#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  ISOIR100
+   --  isoir100
 
    N14 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISO88591
+   --  iso88591
 
    N15 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  LATIN1
+   --  latin1
 
    N16 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#004C#, 16#0031#, others => 16#0000#),
+           (16#006C#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  L1
+   --  l1
 
    N17 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0031#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0031#,
             16#0039#, others => 16#0000#),
          others => <>);
-   --  IBM819
+   --  ibm819
 
    N18 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0031#, 16#0039#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0031#, 16#0039#,
             others => 16#0000#),
          others => <>);
-   --  CP819
+   --  cp819
 
    N19 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  CSISOLATIN1
+   --  csisolatin1
 
    N20 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0032#, 16#0031#, 16#0039#,
             16#0038#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISO885921987
+   --  iso885921987
 
    N21 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0030#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOIR101
+   --  isoir101
 
    N22 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISO88592
+   --  iso88592
 
    N23 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0032#, others => 16#0000#),
          others => <>);
-   --  LATIN2
+   --  latin2
 
    N24 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#004C#, 16#0032#, others => 16#0000#),
+           (16#006C#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  L2
+   --  l2
 
    N25 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0032#, others => 16#0000#),
          others => <>);
-   --  CSISOLATIN2
+   --  csisolatin2
 
    N26 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0033#, 16#0031#, 16#0039#,
             16#0038#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISO885931988
+   --  iso885931988
 
    N27 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0030#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ISOIR109
+   --  isoir109
 
    N28 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  ISO88593
+   --  iso88593
 
    N29 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0033#, others => 16#0000#),
          others => <>);
-   --  LATIN3
+   --  latin3
 
    N30 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#004C#, 16#0033#, others => 16#0000#),
+           (16#006C#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  L3
+   --  l3
 
    N31 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0033#, others => 16#0000#),
          others => <>);
-   --  CSISOLATIN3
+   --  csisolatin3
 
    N32 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0034#, 16#0031#, 16#0039#,
             16#0038#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISO885941988
+   --  iso885941988
 
    N33 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0031#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  ISOIR110
+   --  isoir110
 
    N34 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  ISO88594
+   --  iso88594
 
    N35 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  LATIN4
+   --  latin4
 
    N36 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#004C#, 16#0034#, others => 16#0000#),
+           (16#006C#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  L4
+   --  l4
 
    N37 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  CSISOLATIN4
+   --  csisolatin4
 
    N38 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0035#, 16#0031#, 16#0039#,
             16#0038#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISO885951988
+   --  iso885951988
 
    N39 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0034#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  ISOIR144
+   --  isoir144
 
    N40 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  ISO88595
+   --  iso88595
 
    N41 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0059#, 16#0052#, 16#0049#, 16#004C#,
-            16#004C#, 16#0049#, 16#0043#, others => 16#0000#),
+           (16#0063#, 16#0079#, 16#0072#, 16#0069#, 16#006C#,
+            16#006C#, 16#0069#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  CYRILLIC
+   --  cyrillic
 
    N42 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 18,
          Length => 18,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
-            16#0043#, 16#0059#, 16#0052#, 16#0049#, 16#004C#,
-            16#004C#, 16#0049#, 16#0043#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
+            16#0063#, 16#0079#, 16#0072#, 16#0069#, 16#006C#,
+            16#006C#, 16#0069#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  CSISOLATINCYRILLIC
+   --  csisolatincyrillic
 
    N43 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0036#, 16#0031#, 16#0039#,
             16#0038#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISO885961987
+   --  iso885961987
 
    N44 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0032#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISOIR127
+   --  isoir127
 
    N45 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  ISO88596
+   --  iso88596
 
    N46 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0045#, 16#0043#, 16#004D#, 16#0041#, 16#0031#,
+           (16#0065#, 16#0063#, 16#006D#, 16#0061#, 16#0031#,
             16#0031#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  ECMA114
+   --  ecma114
 
    N47 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0041#, 16#0053#, 16#004D#, 16#004F#, 16#0037#,
+           (16#0061#, 16#0073#, 16#006D#, 16#006F#, 16#0037#,
             16#0030#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ASMO708
+   --  asmo708
 
    N48 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0041#, 16#0052#, 16#0041#, 16#0042#, 16#0049#,
-            16#0043#, others => 16#0000#),
+           (16#0061#, 16#0072#, 16#0061#, 16#0062#, 16#0069#,
+            16#0063#, others => 16#0000#),
          others => <>);
-   --  ARABIC
+   --  arabic
 
    N49 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
-            16#0041#, 16#0052#, 16#0041#, 16#0042#, 16#0049#,
-            16#0043#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
+            16#0061#, 16#0072#, 16#0061#, 16#0062#, 16#0069#,
+            16#0063#, others => 16#0000#),
          others => <>);
-   --  CSISOLATINARABIC
+   --  csisolatinarabic
 
    N50 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0037#, 16#0031#, 16#0039#,
             16#0038#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISO885971987
+   --  iso885971987
 
    N51 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0032#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  ISOIR126
+   --  isoir126
 
    N52 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISO88597
+   --  iso88597
 
    N53 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0045#, 16#004C#, 16#004F#, 16#0054#, 16#0039#,
+           (16#0065#, 16#006C#, 16#006F#, 16#0074#, 16#0039#,
             16#0032#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ELOT928
+   --  elot928
 
    N54 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0045#, 16#0043#, 16#004D#, 16#0041#, 16#0031#,
+           (16#0065#, 16#0063#, 16#006D#, 16#0061#, 16#0031#,
             16#0031#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ECMA118
+   --  ecma118
 
    N55 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0047#, 16#0052#, 16#0045#, 16#0045#, 16#004B#,
+           (16#0067#, 16#0072#, 16#0065#, 16#0065#, 16#006B#,
             others => 16#0000#),
          others => <>);
-   --  GREEK
+   --  greek
 
    N56 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0047#, 16#0052#, 16#0045#, 16#0045#, 16#004B#,
+           (16#0067#, 16#0072#, 16#0065#, 16#0065#, 16#006B#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  GREEK8
+   --  greek8
 
    N57 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
-            16#0047#, 16#0052#, 16#0045#, 16#0045#, 16#004B#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
+            16#0067#, 16#0072#, 16#0065#, 16#0065#, 16#006B#,
             others => 16#0000#),
          others => <>);
-   --  CSISOLATINGREEK
+   --  csisolatingreek
 
    N58 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0038#, 16#0031#, 16#0039#,
             16#0038#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISO885981988
+   --  iso885981988
 
    N59 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0033#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISOIR138
+   --  isoir138
 
    N60 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISO88598
+   --  iso88598
 
    N61 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0048#, 16#0045#, 16#0042#, 16#0052#, 16#0045#,
-            16#0057#, others => 16#0000#),
+           (16#0068#, 16#0065#, 16#0062#, 16#0072#, 16#0065#,
+            16#0077#, others => 16#0000#),
          others => <>);
-   --  HEBREW
+   --  hebrew
 
    N62 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
-            16#0048#, 16#0045#, 16#0042#, 16#0052#, 16#0045#,
-            16#0057#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
+            16#0068#, 16#0065#, 16#0062#, 16#0072#, 16#0065#,
+            16#0077#, others => 16#0000#),
          others => <>);
-   --  CSISOLATINHEBREW
+   --  csisolatinhebrew
 
    N63 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0039#, 16#0031#, 16#0039#,
             16#0038#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ISO885991989
+   --  iso885991989
 
    N64 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0034#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISOIR148
+   --  isoir148
 
    N65 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ISO88599
+   --  iso88599
 
    N66 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  LATIN5
+   --  latin5
 
    N67 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#004C#, 16#0035#, others => 16#0000#),
+           (16#006C#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  L5
+   --  l5
 
    N68 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  CSISOLATIN5
+   --  csisolatin5
 
    N69 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0031#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  ISO885910
+   --  iso885910
 
    N70 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0035#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISOIR157
+   --  isoir157
 
    N71 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#004C#, 16#0036#, others => 16#0000#),
+           (16#006C#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  L6
+   --  l6
 
    N72 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0031#, 16#0030#, 16#0031#,
             16#0039#, 16#0039#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISO8859101992
+   --  iso8859101992
 
    N73 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0036#, others => 16#0000#),
          others => <>);
-   --  CSISOLATIN6
+   --  csisolatin6
 
    N74 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0036#, others => 16#0000#),
          others => <>);
-   --  LATIN6
+   --  latin6
 
    N75 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0039#,
-            16#0033#, 16#0037#, 16#0032#, 16#0041#, 16#0044#,
-            16#0044#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0039#,
+            16#0033#, 16#0037#, 16#0032#, 16#0061#, 16#0064#,
+            16#0064#, others => 16#0000#),
          others => <>);
-   --  ISO69372ADD
+   --  iso69372add
 
    N76 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0034#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISOIR142
+   --  isoir142
 
    N77 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0054#, 16#0045#, 16#0058#, 16#0054#, 16#0043#,
-            16#004F#, 16#004D#, 16#004D#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0074#, 16#0065#, 16#0078#, 16#0074#, 16#0063#,
+            16#006F#, 16#006D#, 16#006D#, others => 16#0000#),
          others => <>);
-   --  CSISOTEXTCOMM
+   --  csisotextcomm
 
    N78 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0058#, 16#0032#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0078#, 16#0032#,
             16#0030#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  JISX201
+   --  jisx201
 
    N79 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0058#, 16#0032#, 16#0030#, 16#0031#, others => 16#0000#),
+           (16#0078#, 16#0032#, 16#0030#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  X201
+   --  x201
 
    N80 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#0043#, 16#0053#, 16#0048#, 16#0041#, 16#004C#,
-            16#0046#, 16#0057#, 16#0049#, 16#0044#, 16#0054#,
-            16#0048#, 16#004B#, 16#0041#, 16#0054#, 16#0041#,
-            16#004B#, 16#0041#, 16#004E#, 16#0041#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0068#, 16#0061#, 16#006C#,
+            16#0066#, 16#0077#, 16#0069#, 16#0064#, 16#0074#,
+            16#0068#, 16#006B#, 16#0061#, 16#0074#, 16#0061#,
+            16#006B#, 16#0061#, 16#006E#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  CSHALFWIDTHKATAKANA
+   --  cshalfwidthkatakana
 
    N81 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0045#, 16#004E#,
-            16#0043#, 16#004F#, 16#0044#, 16#0049#, 16#004E#,
-            16#0047#, others => 16#0000#),
+           (16#006A#, 16#0069#, 16#0073#, 16#0065#, 16#006E#,
+            16#0063#, 16#006F#, 16#0064#, 16#0069#, 16#006E#,
+            16#0067#, others => 16#0000#),
          others => <>);
-   --  JISENCODING
+   --  jisencoding
 
    N82 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#004A#, 16#0049#, 16#0053#,
-            16#0045#, 16#004E#, 16#0043#, 16#004F#, 16#0044#,
-            16#0049#, 16#004E#, 16#0047#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#006A#, 16#0069#, 16#0073#,
+            16#0065#, 16#006E#, 16#0063#, 16#006F#, 16#0064#,
+            16#0069#, 16#006E#, 16#0067#, others => 16#0000#),
          others => <>);
-   --  CSJISENCODING
+   --  csjisencoding
 
    N83 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0053#, 16#0048#, 16#0049#, 16#0046#, 16#0054#,
-            16#004A#, 16#0049#, 16#0053#, others => 16#0000#),
+           (16#0073#, 16#0068#, 16#0069#, 16#0066#, 16#0074#,
+            16#006A#, 16#0069#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  SHIFTJIS
+   --  shiftjis
 
    N84 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#004D#, 16#0053#, 16#004B#, 16#0041#, 16#004E#,
-            16#004A#, 16#0049#, others => 16#0000#),
+           (16#006D#, 16#0073#, 16#006B#, 16#0061#, 16#006E#,
+            16#006A#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  MSKANJI
+   --  mskanji
 
    N85 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#0053#, 16#0048#, 16#0049#,
-            16#0046#, 16#0054#, 16#004A#, 16#0049#, 16#0053#,
+           (16#0063#, 16#0073#, 16#0073#, 16#0068#, 16#0069#,
+            16#0066#, 16#0074#, 16#006A#, 16#0069#, 16#0073#,
             others => 16#0000#),
          others => <>);
-   --  CSSHIFTJIS
+   --  csshiftjis
 
    N86 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 39,
          Length => 39,
          Value  =>
-           (16#0045#, 16#0058#, 16#0054#, 16#0045#, 16#004E#,
-            16#0044#, 16#0045#, 16#0044#, 16#0055#, 16#004E#,
-            16#0049#, 16#0058#, 16#0043#, 16#004F#, 16#0044#,
-            16#0045#, 16#0050#, 16#0041#, 16#0043#, 16#004B#,
-            16#0045#, 16#0044#, 16#0046#, 16#004F#, 16#0052#,
-            16#004D#, 16#0041#, 16#0054#, 16#0046#, 16#004F#,
-            16#0052#, 16#004A#, 16#0041#, 16#0050#, 16#0041#,
-            16#004E#, 16#0045#, 16#0053#, 16#0045#, others => 16#0000#),
+           (16#0065#, 16#0078#, 16#0074#, 16#0065#, 16#006E#,
+            16#0064#, 16#0065#, 16#0064#, 16#0075#, 16#006E#,
+            16#0069#, 16#0078#, 16#0063#, 16#006F#, 16#0064#,
+            16#0065#, 16#0070#, 16#0061#, 16#0063#, 16#006B#,
+            16#0065#, 16#0064#, 16#0066#, 16#006F#, 16#0072#,
+            16#006D#, 16#0061#, 16#0074#, 16#0066#, 16#006F#,
+            16#0072#, 16#006A#, 16#0061#, 16#0070#, 16#0061#,
+            16#006E#, 16#0065#, 16#0073#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  EXTENDEDUNIXCODEPACKEDFORMATFORJAPANESE
+   --  extendedunixcodepackedformatforjapanese
 
    N87 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0055#, 16#0043#,
-            16#0050#, 16#004B#, 16#0044#, 16#0046#, 16#004D#,
-            16#0054#, 16#004A#, 16#0041#, 16#0050#, 16#0041#,
-            16#004E#, 16#0045#, 16#0053#, 16#0045#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0065#, 16#0075#, 16#0063#,
+            16#0070#, 16#006B#, 16#0064#, 16#0066#, 16#006D#,
+            16#0074#, 16#006A#, 16#0061#, 16#0070#, 16#0061#,
+            16#006E#, 16#0065#, 16#0073#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  CSEUCPKDFMTJAPANESE
+   --  cseucpkdfmtjapanese
 
    N88 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0045#, 16#0055#, 16#0043#, 16#004A#, 16#0050#,
+           (16#0065#, 16#0075#, 16#0063#, 16#006A#, 16#0070#,
             others => 16#0000#),
          others => <>);
-   --  EUCJP
+   --  eucjp
 
    N89 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 37,
          Length => 37,
          Value  =>
-           (16#0045#, 16#0058#, 16#0054#, 16#0045#, 16#004E#,
-            16#0044#, 16#0045#, 16#0044#, 16#0055#, 16#004E#,
-            16#0049#, 16#0058#, 16#0043#, 16#004F#, 16#0044#,
-            16#0045#, 16#0046#, 16#0049#, 16#0058#, 16#0045#,
-            16#0044#, 16#0057#, 16#0049#, 16#0044#, 16#0054#,
-            16#0048#, 16#0046#, 16#004F#, 16#0052#, 16#004A#,
-            16#0041#, 16#0050#, 16#0041#, 16#004E#, 16#0045#,
-            16#0053#, 16#0045#, others => 16#0000#),
+           (16#0065#, 16#0078#, 16#0074#, 16#0065#, 16#006E#,
+            16#0064#, 16#0065#, 16#0064#, 16#0075#, 16#006E#,
+            16#0069#, 16#0078#, 16#0063#, 16#006F#, 16#0064#,
+            16#0065#, 16#0066#, 16#0069#, 16#0078#, 16#0065#,
+            16#0064#, 16#0077#, 16#0069#, 16#0064#, 16#0074#,
+            16#0068#, 16#0066#, 16#006F#, 16#0072#, 16#006A#,
+            16#0061#, 16#0070#, 16#0061#, 16#006E#, 16#0065#,
+            16#0073#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  EXTENDEDUNIXCODEFIXEDWIDTHFORJAPANESE
+   --  extendedunixcodefixedwidthforjapanese
 
    N90 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0055#, 16#0043#,
-            16#0046#, 16#0049#, 16#0058#, 16#0057#, 16#0049#,
-            16#0044#, 16#004A#, 16#0041#, 16#0050#, 16#0041#,
-            16#004E#, 16#0045#, 16#0053#, 16#0045#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0065#, 16#0075#, 16#0063#,
+            16#0066#, 16#0069#, 16#0078#, 16#0077#, 16#0069#,
+            16#0064#, 16#006A#, 16#0061#, 16#0070#, 16#0061#,
+            16#006E#, 16#0065#, 16#0073#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  CSEUCFIXWIDJAPANESE
+   --  cseucfixwidjapanese
 
    N91 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0042#, 16#0053#, 16#0034#, 16#0037#, 16#0033#,
+           (16#0062#, 16#0073#, 16#0034#, 16#0037#, 16#0033#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  BS4730
+   --  bs4730
 
    N92 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  ISOIR4
+   --  isoir4
 
    N93 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0047#, 16#0042#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0067#, 16#0062#, others => 16#0000#),
          others => <>);
-   --  ISO646GB
+   --  iso646gb
 
    N94 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0047#, 16#0042#, others => 16#0000#),
+           (16#0067#, 16#0062#, others => 16#0000#),
          others => <>);
-   --  GB
+   --  gb
 
    N95 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0055#, 16#004B#, others => 16#0000#),
+           (16#0075#, 16#006B#, others => 16#0000#),
          others => <>);
-   --  UK
+   --  uk
 
    N96 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0034#, 16#0055#, 16#004E#, 16#0049#, 16#0054#,
-            16#0045#, 16#0044#, 16#004B#, 16#0049#, 16#004E#,
-            16#0047#, 16#0044#, 16#004F#, 16#004D#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0034#, 16#0075#, 16#006E#, 16#0069#, 16#0074#,
+            16#0065#, 16#0064#, 16#006B#, 16#0069#, 16#006E#,
+            16#0067#, 16#0064#, 16#006F#, 16#006D#, others => 16#0000#),
          others => <>);
-   --  CSISO4UNITEDKINGDOM
+   --  csiso4unitedkingdom
 
    N97 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0053#, 16#0045#, 16#004E#, 16#0038#, 16#0035#,
-            16#0030#, 16#0032#, 16#0030#, 16#0030#, 16#0043#,
+           (16#0073#, 16#0065#, 16#006E#, 16#0038#, 16#0035#,
+            16#0030#, 16#0032#, 16#0030#, 16#0030#, 16#0063#,
             others => 16#0000#),
          others => <>);
-   --  SEN850200C
+   --  sen850200c
 
    N98 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOIR11
+   --  isoir11
 
    N99 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0053#, 16#0045#, 16#0032#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0073#, 16#0065#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISO646SE2
+   --  iso646se2
 
    N100 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#0053#, 16#0045#, 16#0032#, others => 16#0000#),
+           (16#0073#, 16#0065#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  SE2
+   --  se2
 
    N101 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 22,
          Length => 22,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0031#, 16#0053#, 16#0057#, 16#0045#,
-            16#0044#, 16#0049#, 16#0053#, 16#0048#, 16#0046#,
-            16#004F#, 16#0052#, 16#004E#, 16#0041#, 16#004D#,
-            16#0045#, 16#0053#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0031#, 16#0073#, 16#0077#, 16#0065#,
+            16#0064#, 16#0069#, 16#0073#, 16#0068#, 16#0066#,
+            16#006F#, 16#0072#, 16#006E#, 16#0061#, 16#006D#,
+            16#0065#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  CSISO11SWEDISHFORNAMES
+   --  csiso11swedishfornames
 
    N102 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0049#, 16#0054#, others => 16#0000#),
+           (16#0069#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  IT
+   --  it
 
    N103 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  ISOIR15
+   --  isoir15
 
    N104 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0049#, 16#0054#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0069#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  ISO646IT
+   --  iso646it
 
    N105 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0035#, 16#0049#, 16#0054#, 16#0041#,
-            16#004C#, 16#0049#, 16#0041#, 16#004E#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0035#, 16#0069#, 16#0074#, 16#0061#,
+            16#006C#, 16#0069#, 16#0061#, 16#006E#, others => 16#0000#),
          others => <>);
-   --  CSISO15ITALIAN
+   --  csiso15italian
 
    N106 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0045#, 16#0053#, others => 16#0000#),
+           (16#0065#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  ES
+   --  es
 
    N107 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISOIR17
+   --  isoir17
 
    N108 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0045#, 16#0053#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0065#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  ISO646ES
+   --  iso646es
 
    N109 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0037#, 16#0053#, 16#0050#, 16#0041#,
-            16#004E#, 16#0049#, 16#0053#, 16#0048#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0037#, 16#0073#, 16#0070#, 16#0061#,
+            16#006E#, 16#0069#, 16#0073#, 16#0068#, others => 16#0000#),
          others => <>);
-   --  CSISO17SPANISH
+   --  csiso17spanish
 
    N110 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0044#, 16#0049#, 16#004E#, 16#0036#, 16#0036#,
+           (16#0064#, 16#0069#, 16#006E#, 16#0036#, 16#0036#,
             16#0030#, 16#0030#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  DIN66003
+   --  din66003
 
    N111 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0032#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOIR21
+   --  isoir21
 
    N112 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0044#, 16#0045#, others => 16#0000#),
+           (16#0064#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  DE
+   --  de
 
    N113 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0044#, 16#0045#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0064#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  ISO646DE
+   --  iso646de
 
    N114 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0032#, 16#0031#, 16#0047#, 16#0045#, 16#0052#,
-            16#004D#, 16#0041#, 16#004E#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0032#, 16#0031#, 16#0067#, 16#0065#, 16#0072#,
+            16#006D#, 16#0061#, 16#006E#, others => 16#0000#),
          others => <>);
-   --  CSISO21GERMAN
+   --  csiso21german
 
    N115 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#004E#, 16#0053#, 16#0034#, 16#0035#, 16#0035#,
+           (16#006E#, 16#0073#, 16#0034#, 16#0035#, 16#0035#,
             16#0031#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  NS45511
+   --  ns45511
 
    N116 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0036#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  ISOIR60
+   --  isoir60
 
    N117 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#004E#, 16#004F#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#006E#, 16#006F#, others => 16#0000#),
          others => <>);
-   --  ISO646NO
+   --  iso646no
 
    N118 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#004E#, 16#004F#, others => 16#0000#),
+           (16#006E#, 16#006F#, others => 16#0000#),
          others => <>);
-   --  NO
+   --  no
 
    N119 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 22,
          Length => 22,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0036#, 16#0030#, 16#0044#, 16#0041#, 16#004E#,
-            16#0049#, 16#0053#, 16#0048#, 16#004E#, 16#004F#,
-            16#0052#, 16#0057#, 16#0045#, 16#0047#, 16#0049#,
-            16#0041#, 16#004E#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0036#, 16#0030#, 16#0064#, 16#0061#, 16#006E#,
+            16#0069#, 16#0073#, 16#0068#, 16#006E#, 16#006F#,
+            16#0072#, 16#0077#, 16#0065#, 16#0067#, 16#0069#,
+            16#0061#, 16#006E#, others => 16#0000#),
          others => <>);
-   --  CSISO60DANISHNORWEGIAN
+   --  csiso60danishnorwegian
 
    N120 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0036#, 16#0030#, 16#004E#, 16#004F#, 16#0052#,
-            16#0057#, 16#0045#, 16#0047#, 16#0049#, 16#0041#,
-            16#004E#, 16#0031#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0036#, 16#0030#, 16#006E#, 16#006F#, 16#0072#,
+            16#0077#, 16#0065#, 16#0067#, 16#0069#, 16#0061#,
+            16#006E#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSISO60NORWEGIAN1
+   --  csiso60norwegian1
 
    N121 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#004E#, 16#0046#, 16#005A#, 16#0036#, 16#0032#,
+           (16#006E#, 16#0066#, 16#007A#, 16#0036#, 16#0032#,
             16#0030#, 16#0031#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  NFZ62010
+   --  nfz62010
 
    N122 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0036#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ISOIR69
+   --  isoir69
 
    N123 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0046#, 16#0052#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0066#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  ISO646FR
+   --  iso646fr
 
    N124 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0046#, 16#0052#, others => 16#0000#),
+           (16#0066#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  FR
+   --  fr
 
    N125 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0036#, 16#0039#, 16#0046#, 16#0052#, 16#0045#,
-            16#004E#, 16#0043#, 16#0048#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0036#, 16#0039#, 16#0066#, 16#0072#, 16#0065#,
+            16#006E#, 16#0063#, 16#0068#, others => 16#0000#),
          others => <>);
-   --  CSISO69FRENCH
+   --  csiso69french
 
    N126 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0031#, 16#0030#,
-            16#0036#, 16#0034#, 16#0036#, 16#0055#, 16#0054#,
-            16#0046#, 16#0031#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0031#, 16#0030#,
+            16#0036#, 16#0034#, 16#0036#, 16#0075#, 16#0074#,
+            16#0066#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISO10646UTF1
+   --  iso10646utf1
 
    N127 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
             16#0031#, 16#0030#, 16#0036#, 16#0034#, 16#0036#,
-            16#0055#, 16#0054#, 16#0046#, 16#0031#, others => 16#0000#),
+            16#0075#, 16#0074#, 16#0066#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSISO10646UTF1
+   --  csiso10646utf1
 
    N128 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0042#, 16#0041#, 16#0053#, 16#0049#,
-            16#0043#, 16#0031#, 16#0039#, 16#0038#, 16#0033#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0062#, 16#0061#, 16#0073#, 16#0069#,
+            16#0063#, 16#0031#, 16#0039#, 16#0038#, 16#0033#,
             others => 16#0000#),
          others => <>);
-   --  ISO646BASIC1983
+   --  iso646basic1983
 
    N129 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#0052#, 16#0045#, 16#0046#, others => 16#0000#),
+           (16#0072#, 16#0065#, 16#0066#, others => 16#0000#),
          others => <>);
-   --  REF
+   --  ref
 
    N130 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0036#, 16#0034#, 16#0036#, 16#0042#, 16#0041#,
-            16#0053#, 16#0049#, 16#0043#, 16#0031#, 16#0039#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0036#, 16#0034#, 16#0036#, 16#0062#, 16#0061#,
+            16#0073#, 16#0069#, 16#0063#, 16#0031#, 16#0039#,
             16#0038#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  CSISO646BASIC1983
+   --  csiso646basic1983
 
    N131 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#004E#, 16#0056#, 16#0041#, 16#0052#,
-            16#0049#, 16#0041#, 16#004E#, 16#0054#, others => 16#0000#),
+           (16#0069#, 16#006E#, 16#0076#, 16#0061#, 16#0072#,
+            16#0069#, 16#0061#, 16#006E#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  INVARIANT
+   --  invariant
 
    N132 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#004E#, 16#0056#,
-            16#0041#, 16#0052#, 16#0049#, 16#0041#, 16#004E#,
-            16#0054#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#006E#, 16#0076#,
+            16#0061#, 16#0072#, 16#0069#, 16#0061#, 16#006E#,
+            16#0074#, others => 16#0000#),
          others => <>);
-   --  CSINVARIANT
+   --  csinvariant
 
    N133 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0049#, 16#0052#, 16#0056#, 16#0031#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0069#, 16#0072#, 16#0076#, 16#0031#,
             16#0039#, 16#0038#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  ISO646IRV1983
+   --  iso646irv1983
 
    N134 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0032#, others => 16#0000#),
          others => <>);
-   --  ISOIR2
+   --  isoir2
 
    N135 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#0049#, 16#0052#, 16#0056#, others => 16#0000#),
+           (16#0069#, 16#0072#, 16#0076#, others => 16#0000#),
          others => <>);
-   --  IRV
+   --  irv
 
    N136 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 20,
          Length => 20,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0032#, 16#0049#, 16#004E#, 16#0054#, 16#004C#,
-            16#0052#, 16#0045#, 16#0046#, 16#0056#, 16#0045#,
-            16#0052#, 16#0053#, 16#0049#, 16#004F#, 16#004E#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0032#, 16#0069#, 16#006E#, 16#0074#, 16#006C#,
+            16#0072#, 16#0065#, 16#0066#, 16#0076#, 16#0065#,
+            16#0072#, 16#0073#, 16#0069#, 16#006F#, 16#006E#,
             others => 16#0000#),
          others => <>);
-   --  CSISO2INTLREFVERSION
+   --  csiso2intlrefversion
 
    N137 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#004E#, 16#0041#, 16#0054#, 16#0053#, 16#0053#,
-            16#0045#, 16#0046#, 16#0049#, others => 16#0000#),
+           (16#006E#, 16#0061#, 16#0074#, 16#0073#, 16#0073#,
+            16#0065#, 16#0066#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  NATSSEFI
+   --  natssefi
 
    N138 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0038#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOIR81
+   --  isoir81
 
    N139 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#004E#, 16#0041#, 16#0054#,
-            16#0053#, 16#0053#, 16#0045#, 16#0046#, 16#0049#,
+           (16#0063#, 16#0073#, 16#006E#, 16#0061#, 16#0074#,
+            16#0073#, 16#0073#, 16#0065#, 16#0066#, 16#0069#,
             others => 16#0000#),
          others => <>);
-   --  CSNATSSEFI
+   --  csnatssefi
 
    N140 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#004E#, 16#0041#, 16#0054#, 16#0053#, 16#0053#,
-            16#0045#, 16#0046#, 16#0049#, 16#0041#, 16#0044#,
-            16#0044#, others => 16#0000#),
+           (16#006E#, 16#0061#, 16#0074#, 16#0073#, 16#0073#,
+            16#0065#, 16#0066#, 16#0069#, 16#0061#, 16#0064#,
+            16#0064#, others => 16#0000#),
          others => <>);
-   --  NATSSEFIADD
+   --  natssefiadd
 
    N141 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0038#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISOIR82
+   --  isoir82
 
    N142 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#004E#, 16#0041#, 16#0054#,
-            16#0053#, 16#0053#, 16#0045#, 16#0046#, 16#0049#,
-            16#0041#, 16#0044#, 16#0044#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#006E#, 16#0061#, 16#0074#,
+            16#0073#, 16#0073#, 16#0065#, 16#0066#, 16#0069#,
+            16#0061#, 16#0064#, 16#0064#, others => 16#0000#),
          others => <>);
-   --  CSNATSSEFIADD
+   --  csnatssefiadd
 
    N143 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#004E#, 16#0041#, 16#0054#, 16#0053#, 16#0044#,
-            16#0041#, 16#004E#, 16#004F#, others => 16#0000#),
+           (16#006E#, 16#0061#, 16#0074#, 16#0073#, 16#0064#,
+            16#0061#, 16#006E#, 16#006F#, others => 16#0000#),
          others => <>);
-   --  NATSDANO
+   --  natsdano
 
    N144 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0039#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOIR91
+   --  isoir91
 
    N145 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#004E#, 16#0041#, 16#0054#,
-            16#0053#, 16#0044#, 16#0041#, 16#004E#, 16#004F#,
+           (16#0063#, 16#0073#, 16#006E#, 16#0061#, 16#0074#,
+            16#0073#, 16#0064#, 16#0061#, 16#006E#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  CSNATSDANO
+   --  csnatsdano
 
    N146 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#004E#, 16#0041#, 16#0054#, 16#0053#, 16#0044#,
-            16#0041#, 16#004E#, 16#004F#, 16#0041#, 16#0044#,
-            16#0044#, others => 16#0000#),
+           (16#006E#, 16#0061#, 16#0074#, 16#0073#, 16#0064#,
+            16#0061#, 16#006E#, 16#006F#, 16#0061#, 16#0064#,
+            16#0064#, others => 16#0000#),
          others => <>);
-   --  NATSDANOADD
+   --  natsdanoadd
 
    N147 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0039#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISOIR92
+   --  isoir92
 
    N148 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#004E#, 16#0041#, 16#0054#,
-            16#0053#, 16#0044#, 16#0041#, 16#004E#, 16#004F#,
-            16#0041#, 16#0044#, 16#0044#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#006E#, 16#0061#, 16#0074#,
+            16#0073#, 16#0064#, 16#0061#, 16#006E#, 16#006F#,
+            16#0061#, 16#0064#, 16#0064#, others => 16#0000#),
          others => <>);
-   --  CSNATSDANOADD
+   --  csnatsdanoadd
 
    N149 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0053#, 16#0045#, 16#004E#, 16#0038#, 16#0035#,
-            16#0030#, 16#0032#, 16#0030#, 16#0030#, 16#0042#,
+           (16#0073#, 16#0065#, 16#006E#, 16#0038#, 16#0035#,
+            16#0030#, 16#0032#, 16#0030#, 16#0030#, 16#0062#,
             others => 16#0000#),
          others => <>);
-   --  SEN850200B
+   --  sen850200b
 
    N150 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  ISOIR10
+   --  isoir10
 
    N151 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0046#, 16#0049#, others => 16#0000#),
+           (16#0066#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  FI
+   --  fi
 
    N152 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0046#, 16#0049#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0066#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  ISO646FI
+   --  iso646fi
 
    N153 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0053#, 16#0045#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0073#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  ISO646SE
+   --  iso646se
 
    N154 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0053#, 16#0045#, others => 16#0000#),
+           (16#0073#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  SE
+   --  se
 
    N155 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0030#, 16#0053#, 16#0057#, 16#0045#,
-            16#0044#, 16#0049#, 16#0053#, 16#0048#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0030#, 16#0073#, 16#0077#, 16#0065#,
+            16#0064#, 16#0069#, 16#0073#, 16#0068#, others => 16#0000#),
          others => <>);
-   --  CSISO10SWEDISH
+   --  csiso10swedish
 
    N156 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#004B#, 16#0053#, 16#0043#, 16#0035#, 16#0036#,
+           (16#006B#, 16#0073#, 16#0063#, 16#0035#, 16#0036#,
             16#0030#, 16#0031#, 16#0031#, 16#0039#, 16#0038#,
             16#0037#, others => 16#0000#),
          others => <>);
-   --  KSC56011987
+   --  ksc56011987
 
    N157 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0034#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ISOIR149
+   --  isoir149
 
    N158 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#004B#, 16#0053#, 16#0043#, 16#0035#, 16#0036#,
+           (16#006B#, 16#0073#, 16#0063#, 16#0035#, 16#0036#,
             16#0030#, 16#0031#, 16#0031#, 16#0039#, 16#0038#,
             16#0039#, others => 16#0000#),
          others => <>);
-   --  KSC56011989
+   --  ksc56011989
 
    N159 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#004B#, 16#0053#, 16#0043#, 16#0035#, 16#0036#,
+           (16#006B#, 16#0073#, 16#0063#, 16#0035#, 16#0036#,
             16#0030#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  KSC5601
+   --  ksc5601
 
    N160 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004B#, 16#004F#, 16#0052#, 16#0045#, 16#0041#,
-            16#004E#, others => 16#0000#),
+           (16#006B#, 16#006F#, 16#0072#, 16#0065#, 16#0061#,
+            16#006E#, others => 16#0000#),
          others => <>);
-   --  KOREAN
+   --  korean
 
    N161 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#004B#, 16#0053#, 16#0043#,
+           (16#0063#, 16#0073#, 16#006B#, 16#0073#, 16#0063#,
             16#0035#, 16#0036#, 16#0030#, 16#0031#, 16#0031#,
             16#0039#, 16#0038#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  CSKSC56011987
+   --  csksc56011987
 
    N162 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0032#, 16#0030#,
-            16#0032#, 16#0032#, 16#004B#, 16#0052#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0032#, 16#0030#,
+            16#0032#, 16#0032#, 16#006B#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  ISO2022KR
+   --  iso2022kr
 
    N163 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0032#, 16#0030#, 16#0032#, 16#0032#, 16#004B#,
-            16#0052#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0032#, 16#0030#, 16#0032#, 16#0032#, 16#006B#,
+            16#0072#, others => 16#0000#),
          others => <>);
-   --  CSISO2022KR
+   --  csiso2022kr
 
    N164 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0045#, 16#0055#, 16#0043#, 16#004B#, 16#0052#,
+           (16#0065#, 16#0075#, 16#0063#, 16#006B#, 16#0072#,
             others => 16#0000#),
          others => <>);
-   --  EUCKR
+   --  euckr
 
    N165 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0055#, 16#0043#,
-            16#004B#, 16#0052#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0065#, 16#0075#, 16#0063#,
+            16#006B#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  CSEUCKR
+   --  cseuckr
 
    N166 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0032#, 16#0030#,
-            16#0032#, 16#0032#, 16#004A#, 16#0050#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0032#, 16#0030#,
+            16#0032#, 16#0032#, 16#006A#, 16#0070#, others => 16#0000#),
          others => <>);
-   --  ISO2022JP
+   --  iso2022jp
 
    N167 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0032#, 16#0030#, 16#0032#, 16#0032#, 16#004A#,
-            16#0050#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0032#, 16#0030#, 16#0032#, 16#0032#, 16#006A#,
+            16#0070#, others => 16#0000#),
          others => <>);
-   --  CSISO2022JP
+   --  csiso2022jp
 
    N168 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0032#, 16#0030#,
-            16#0032#, 16#0032#, 16#004A#, 16#0050#, 16#0032#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0032#, 16#0030#,
+            16#0032#, 16#0032#, 16#006A#, 16#0070#, 16#0032#,
             others => 16#0000#),
          others => <>);
-   --  ISO2022JP2
+   --  iso2022jp2
 
    N169 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0032#, 16#0030#, 16#0032#, 16#0032#, 16#004A#,
-            16#0050#, 16#0032#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0032#, 16#0030#, 16#0032#, 16#0032#, 16#006A#,
+            16#0070#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  CSISO2022JP2
+   --  csiso2022jp2
 
    N170 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0043#, 16#0036#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0063#, 16#0036#,
             16#0032#, 16#0032#, 16#0030#, 16#0031#, 16#0039#,
-            16#0036#, 16#0039#, 16#004A#, 16#0050#, others => 16#0000#),
+            16#0036#, 16#0039#, 16#006A#, 16#0070#, others => 16#0000#),
          others => <>);
-   --  JISC62201969JP
+   --  jisc62201969jp
 
    N171 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0043#, 16#0036#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0063#, 16#0036#,
             16#0032#, 16#0032#, 16#0030#, 16#0031#, 16#0039#,
             16#0036#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  JISC62201969
+   --  jisc62201969
 
    N172 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  ISOIR13
+   --  isoir13
 
    N173 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#004B#, 16#0041#, 16#0054#, 16#0041#, 16#004B#,
-            16#0041#, 16#004E#, 16#0041#, others => 16#0000#),
+           (16#006B#, 16#0061#, 16#0074#, 16#0061#, 16#006B#,
+            16#0061#, 16#006E#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  KATAKANA
+   --  katakana
 
    N174 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0058#, 16#0032#, 16#0030#, 16#0031#, 16#0037#,
+           (16#0078#, 16#0032#, 16#0030#, 16#0031#, 16#0037#,
             others => 16#0000#),
          others => <>);
-   --  X2017
+   --  x2017
 
    N175 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0033#, 16#004A#, 16#0049#, 16#0053#,
-            16#0043#, 16#0036#, 16#0032#, 16#0032#, 16#0030#,
-            16#004A#, 16#0050#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0033#, 16#006A#, 16#0069#, 16#0073#,
+            16#0063#, 16#0036#, 16#0032#, 16#0032#, 16#0030#,
+            16#006A#, 16#0070#, others => 16#0000#),
          others => <>);
-   --  CSISO13JISC6220JP
+   --  csiso13jisc6220jp
 
    N176 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0043#, 16#0036#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0063#, 16#0036#,
             16#0032#, 16#0032#, 16#0030#, 16#0031#, 16#0039#,
-            16#0036#, 16#0039#, 16#0052#, 16#004F#, others => 16#0000#),
+            16#0036#, 16#0039#, 16#0072#, 16#006F#, others => 16#0000#),
          others => <>);
-   --  JISC62201969RO
+   --  jisc62201969ro
 
    N177 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  ISOIR14
+   --  isoir14
 
    N178 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#004A#, 16#0050#, others => 16#0000#),
+           (16#006A#, 16#0070#, others => 16#0000#),
          others => <>);
-   --  JP
+   --  jp
 
    N179 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#004A#, 16#0050#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#006A#, 16#0070#, others => 16#0000#),
          others => <>);
-   --  ISO646JP
+   --  iso646jp
 
    N180 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0034#, 16#004A#, 16#0049#, 16#0053#,
-            16#0043#, 16#0036#, 16#0032#, 16#0032#, 16#0030#,
-            16#0052#, 16#004F#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0034#, 16#006A#, 16#0069#, 16#0073#,
+            16#0063#, 16#0036#, 16#0032#, 16#0032#, 16#0030#,
+            16#0072#, 16#006F#, others => 16#0000#),
          others => <>);
-   --  CSISO14JISC6220RO
+   --  csiso14jisc6220ro
 
    N181 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0050#, 16#0054#, others => 16#0000#),
+           (16#0070#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  PT
+   --  pt
 
    N182 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  ISOIR16
+   --  isoir16
 
    N183 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0050#, 16#0054#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0070#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  ISO646PT
+   --  iso646pt
 
    N184 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0036#, 16#0050#, 16#004F#, 16#0052#,
-            16#0054#, 16#0055#, 16#0047#, 16#0055#, 16#0045#,
-            16#0053#, 16#0045#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0036#, 16#0070#, 16#006F#, 16#0072#,
+            16#0074#, 16#0075#, 16#0067#, 16#0075#, 16#0065#,
+            16#0073#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  CSISO16PORTUGUESE
+   --  csiso16portuguese
 
    N185 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0047#, 16#0052#, 16#0045#, 16#0045#, 16#004B#,
-            16#0037#, 16#004F#, 16#004C#, 16#0044#, others => 16#0000#),
+           (16#0067#, 16#0072#, 16#0065#, 16#0065#, 16#006B#,
+            16#0037#, 16#006F#, 16#006C#, 16#0064#, others => 16#0000#),
          others => <>);
-   --  GREEK7OLD
+   --  greek7old
 
    N186 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISOIR18
+   --  isoir18
 
    N187 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0038#, 16#0047#, 16#0052#, 16#0045#,
-            16#0045#, 16#004B#, 16#0037#, 16#004F#, 16#004C#,
-            16#0044#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0038#, 16#0067#, 16#0072#, 16#0065#,
+            16#0065#, 16#006B#, 16#0037#, 16#006F#, 16#006C#,
+            16#0064#, others => 16#0000#),
          others => <>);
-   --  CSISO18GREEK7OLD
+   --  csiso18greek7old
 
    N188 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
-            16#0047#, 16#0052#, 16#0045#, 16#0045#, 16#004B#,
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
+            16#0067#, 16#0072#, 16#0065#, 16#0065#, 16#006B#,
             others => 16#0000#),
          others => <>);
-   --  LATINGREEK
+   --  latingreek
 
    N189 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ISOIR19
+   --  isoir19
 
    N190 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0039#, 16#004C#, 16#0041#, 16#0054#,
-            16#0049#, 16#004E#, 16#0047#, 16#0052#, 16#0045#,
-            16#0045#, 16#004B#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0039#, 16#006C#, 16#0061#, 16#0074#,
+            16#0069#, 16#006E#, 16#0067#, 16#0072#, 16#0065#,
+            16#0065#, 16#006B#, others => 16#0000#),
          others => <>);
-   --  CSISO19LATINGREEK
+   --  csiso19latingreek
 
    N191 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#004E#, 16#0046#, 16#005A#, 16#0036#, 16#0032#,
+           (16#006E#, 16#0066#, 16#007A#, 16#0036#, 16#0032#,
             16#0030#, 16#0031#, 16#0030#, 16#0031#, 16#0039#,
             16#0037#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  NFZ620101973
+   --  nfz620101973
 
    N192 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0032#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  ISOIR25
+   --  isoir25
 
    N193 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0046#, 16#0052#, 16#0031#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0066#, 16#0072#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISO646FR1
+   --  iso646fr1
 
    N194 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0032#, 16#0035#, 16#0046#, 16#0052#, 16#0045#,
-            16#004E#, 16#0043#, 16#0048#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0032#, 16#0035#, 16#0066#, 16#0072#, 16#0065#,
+            16#006E#, 16#0063#, 16#0068#, others => 16#0000#),
          others => <>);
-   --  CSISO25FRENCH
+   --  csiso25french
 
    N195 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
-            16#0047#, 16#0052#, 16#0045#, 16#0045#, 16#004B#,
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
+            16#0067#, 16#0072#, 16#0065#, 16#0065#, 16#006B#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  LATINGREEK1
+   --  latingreek1
 
    N196 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0032#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISOIR27
+   --  isoir27
 
    N197 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 18,
          Length => 18,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0032#, 16#0037#, 16#004C#, 16#0041#, 16#0054#,
-            16#0049#, 16#004E#, 16#0047#, 16#0052#, 16#0045#,
-            16#0045#, 16#004B#, 16#0031#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0032#, 16#0037#, 16#006C#, 16#0061#, 16#0074#,
+            16#0069#, 16#006E#, 16#0067#, 16#0072#, 16#0065#,
+            16#0065#, 16#006B#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSISO27LATINGREEK1
+   --  csiso27latingreek1
 
    N198 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0035#, 16#0034#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0035#, 16#0034#,
             16#0032#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISO5427
+   --  iso5427
 
    N199 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0033#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISOIR37
+   --  isoir37
 
    N200 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0035#, 16#0034#, 16#0032#, 16#0037#, 16#0043#,
-            16#0059#, 16#0052#, 16#0049#, 16#004C#, 16#004C#,
-            16#0049#, 16#0043#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0035#, 16#0034#, 16#0032#, 16#0037#, 16#0063#,
+            16#0079#, 16#0072#, 16#0069#, 16#006C#, 16#006C#,
+            16#0069#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  CSISO5427CYRILLIC
+   --  csiso5427cyrillic
 
    N201 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0043#, 16#0036#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0063#, 16#0036#,
             16#0032#, 16#0032#, 16#0036#, 16#0031#, 16#0039#,
             16#0037#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  JISC62261978
+   --  jisc62261978
 
    N202 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0034#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISOIR42
+   --  isoir42
 
    N203 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0034#, 16#0032#, 16#004A#, 16#0049#, 16#0053#,
-            16#0043#, 16#0036#, 16#0032#, 16#0032#, 16#0036#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0034#, 16#0032#, 16#006A#, 16#0069#, 16#0073#,
+            16#0063#, 16#0036#, 16#0032#, 16#0032#, 16#0036#,
             16#0031#, 16#0039#, 16#0037#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CSISO42JISC62261978
+   --  csiso42jisc62261978
 
    N204 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0042#, 16#0053#, 16#0056#, 16#0049#, 16#0045#,
-            16#0057#, 16#0044#, 16#0041#, 16#0054#, 16#0041#,
+           (16#0062#, 16#0073#, 16#0076#, 16#0069#, 16#0065#,
+            16#0077#, 16#0064#, 16#0061#, 16#0074#, 16#0061#,
             others => 16#0000#),
          others => <>);
-   --  BSVIEWDATA
+   --  bsviewdata
 
    N205 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0034#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISOIR47
+   --  isoir47
 
    N206 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0034#, 16#0037#, 16#0042#, 16#0053#, 16#0056#,
-            16#0049#, 16#0045#, 16#0057#, 16#0044#, 16#0041#,
-            16#0054#, 16#0041#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0034#, 16#0037#, 16#0062#, 16#0073#, 16#0076#,
+            16#0069#, 16#0065#, 16#0077#, 16#0064#, 16#0061#,
+            16#0074#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  CSISO47BSVIEWDATA
+   --  csiso47bsviewdata
 
    N207 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0049#, 16#004E#, 16#0049#, 16#0053#, others => 16#0000#),
+           (16#0069#, 16#006E#, 16#0069#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  INIS
+   --  inis
 
    N208 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0034#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ISOIR49
+   --  isoir49
 
    N209 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0034#, 16#0039#, 16#0049#, 16#004E#, 16#0049#,
-            16#0053#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0034#, 16#0039#, 16#0069#, 16#006E#, 16#0069#,
+            16#0073#, others => 16#0000#),
          others => <>);
-   --  CSISO49INIS
+   --  csiso49inis
 
    N210 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0049#, 16#004E#, 16#0049#, 16#0053#, 16#0038#,
+           (16#0069#, 16#006E#, 16#0069#, 16#0073#, 16#0038#,
             others => 16#0000#),
          others => <>);
-   --  INIS8
+   --  inis8
 
    N211 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0035#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  ISOIR50
+   --  isoir50
 
    N212 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0035#, 16#0030#, 16#0049#, 16#004E#, 16#0049#,
-            16#0053#, 16#0038#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0035#, 16#0030#, 16#0069#, 16#006E#, 16#0069#,
+            16#0073#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CSISO50INIS8
+   --  csiso50inis8
 
    N213 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#004E#, 16#0049#, 16#0053#, 16#0043#,
-            16#0059#, 16#0052#, 16#0049#, 16#004C#, 16#004C#,
-            16#0049#, 16#0043#, others => 16#0000#),
+           (16#0069#, 16#006E#, 16#0069#, 16#0073#, 16#0063#,
+            16#0079#, 16#0072#, 16#0069#, 16#006C#, 16#006C#,
+            16#0069#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  INISCYRILLIC
+   --  iniscyrillic
 
    N214 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0035#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOIR51
+   --  isoir51
 
    N215 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0035#, 16#0031#, 16#0049#, 16#004E#, 16#0049#,
-            16#0053#, 16#0043#, 16#0059#, 16#0052#, 16#0049#,
-            16#004C#, 16#004C#, 16#0049#, 16#0043#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0035#, 16#0031#, 16#0069#, 16#006E#, 16#0069#,
+            16#0073#, 16#0063#, 16#0079#, 16#0072#, 16#0069#,
+            16#006C#, 16#006C#, 16#0069#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  CSISO51INISCYRILLIC
+   --  csiso51iniscyrillic
 
    N216 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0035#, 16#0034#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0035#, 16#0034#,
             16#0032#, 16#0037#, 16#0031#, 16#0039#, 16#0038#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  ISO54271981
+   --  iso54271981
 
    N217 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0035#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  ISOIR54
+   --  isoir54
 
    N218 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0035#, 16#0034#,
-            16#0032#, 16#0037#, 16#0043#, 16#0059#, 16#0052#,
-            16#0049#, 16#004C#, 16#004C#, 16#0049#, 16#0043#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0035#, 16#0034#,
+            16#0032#, 16#0037#, 16#0063#, 16#0079#, 16#0072#,
+            16#0069#, 16#006C#, 16#006C#, 16#0069#, 16#0063#,
             16#0031#, 16#0039#, 16#0038#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISO5427CYRILLIC1981
+   --  iso5427cyrillic1981
 
    N219 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0035#, 16#0034#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0035#, 16#0034#,
             16#0032#, 16#0038#, 16#0031#, 16#0039#, 16#0038#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  ISO54281980
+   --  iso54281980
 
    N220 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0035#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  ISOIR55
+   --  isoir55
 
    N221 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0035#, 16#0034#, 16#0032#, 16#0038#, 16#0047#,
-            16#0052#, 16#0045#, 16#0045#, 16#004B#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0035#, 16#0034#, 16#0032#, 16#0038#, 16#0067#,
+            16#0072#, 16#0065#, 16#0065#, 16#006B#, others => 16#0000#),
          others => <>);
-   --  CSISO5428GREEK
+   --  csiso5428greek
 
    N222 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0047#, 16#0042#, 16#0031#, 16#0039#, 16#0038#,
+           (16#0067#, 16#0062#, 16#0031#, 16#0039#, 16#0038#,
             16#0038#, 16#0038#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  GB198880
+   --  gb198880
 
    N223 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0035#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISOIR57
+   --  isoir57
 
    N224 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0043#, 16#004E#, others => 16#0000#),
+           (16#0063#, 16#006E#, others => 16#0000#),
          others => <>);
-   --  CN
+   --  cn
 
    N225 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0043#, 16#004E#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0063#, 16#006E#, others => 16#0000#),
          others => <>);
-   --  ISO646CN
+   --  iso646cn
 
    N226 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0035#, 16#0037#, 16#0047#, 16#0042#, 16#0031#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0035#, 16#0037#, 16#0067#, 16#0062#, 16#0031#,
             16#0039#, 16#0038#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CSISO57GB1988
+   --  csiso57gb1988
 
    N227 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0047#, 16#0042#, 16#0032#, 16#0033#, 16#0031#,
+           (16#0067#, 16#0062#, 16#0032#, 16#0033#, 16#0031#,
             16#0032#, 16#0038#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  GB231280
+   --  gb231280
 
    N228 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0035#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISOIR58
+   --  isoir58
 
    N229 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0043#, 16#0048#, 16#0049#, 16#004E#, 16#0045#,
-            16#0053#, 16#0045#, others => 16#0000#),
+           (16#0063#, 16#0068#, 16#0069#, 16#006E#, 16#0065#,
+            16#0073#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  CHINESE
+   --  chinese
 
    N230 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0035#, 16#0038#, 16#0047#, 16#0042#, 16#0032#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0035#, 16#0038#, 16#0067#, 16#0062#, 16#0032#,
             16#0033#, 16#0031#, 16#0032#, 16#0038#, 16#0030#,
             others => 16#0000#),
          others => <>);
-   --  CSISO58GB231280
+   --  csiso58gb231280
 
    N231 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#004E#, 16#0053#, 16#0034#, 16#0035#, 16#0035#,
+           (16#006E#, 16#0073#, 16#0034#, 16#0035#, 16#0035#,
             16#0031#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  NS45512
+   --  ns45512
 
    N232 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#004E#, 16#004F#, 16#0032#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#006E#, 16#006F#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISO646NO2
+   --  iso646no2
 
    N233 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0036#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOIR61
+   --  isoir61
 
    N234 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#004E#, 16#004F#, 16#0032#, others => 16#0000#),
+           (16#006E#, 16#006F#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  NO2
+   --  no2
 
    N235 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0036#, 16#0031#, 16#004E#, 16#004F#, 16#0052#,
-            16#0057#, 16#0045#, 16#0047#, 16#0049#, 16#0041#,
-            16#004E#, 16#0032#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0036#, 16#0031#, 16#006E#, 16#006F#, 16#0072#,
+            16#0077#, 16#0065#, 16#0067#, 16#0069#, 16#0061#,
+            16#006E#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  CSISO61NORWEGIAN2
+   --  csiso61norwegian2
 
    N236 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0056#, 16#0049#, 16#0044#, 16#0045#, 16#004F#,
-            16#0054#, 16#0045#, 16#0058#, 16#0053#, 16#0055#,
-            16#0050#, 16#0050#, 16#004C#, others => 16#0000#),
+           (16#0076#, 16#0069#, 16#0064#, 16#0065#, 16#006F#,
+            16#0074#, 16#0065#, 16#0078#, 16#0073#, 16#0075#,
+            16#0070#, 16#0070#, 16#006C#, others => 16#0000#),
          others => <>);
-   --  VIDEOTEXSUPPL
+   --  videotexsuppl
 
    N237 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0037#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  ISOIR70
+   --  isoir70
 
    N238 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 20,
          Length => 20,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0037#, 16#0030#, 16#0056#, 16#0049#, 16#0044#,
-            16#0045#, 16#004F#, 16#0054#, 16#0045#, 16#0058#,
-            16#0053#, 16#0055#, 16#0050#, 16#0050#, 16#0031#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0037#, 16#0030#, 16#0076#, 16#0069#, 16#0064#,
+            16#0065#, 16#006F#, 16#0074#, 16#0065#, 16#0078#,
+            16#0073#, 16#0075#, 16#0070#, 16#0070#, 16#0031#,
             others => 16#0000#),
          others => <>);
-   --  CSISO70VIDEOTEXSUPP1
+   --  csiso70videotexsupp1
 
    N239 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#0050#, 16#0054#, 16#0032#, others => 16#0000#),
+           (16#0070#, 16#0074#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  PT2
+   --  pt2
 
    N240 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0038#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  ISOIR84
+   --  isoir84
 
    N241 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0050#, 16#0054#, 16#0032#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0070#, 16#0074#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISO646PT2
+   --  iso646pt2
 
    N242 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 18,
          Length => 18,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0038#, 16#0034#, 16#0050#, 16#004F#, 16#0052#,
-            16#0054#, 16#0055#, 16#0047#, 16#0055#, 16#0045#,
-            16#0053#, 16#0045#, 16#0032#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0038#, 16#0034#, 16#0070#, 16#006F#, 16#0072#,
+            16#0074#, 16#0075#, 16#0067#, 16#0075#, 16#0065#,
+            16#0073#, 16#0065#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  CSISO84PORTUGUESE2
+   --  csiso84portuguese2
 
    N243 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#0045#, 16#0053#, 16#0032#, others => 16#0000#),
+           (16#0065#, 16#0073#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ES2
+   --  es2
 
    N244 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0038#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  ISOIR85
+   --  isoir85
 
    N245 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0045#, 16#0053#, 16#0032#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0065#, 16#0073#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISO646ES2
+   --  iso646es2
 
    N246 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0038#, 16#0035#, 16#0053#, 16#0050#, 16#0041#,
-            16#004E#, 16#0049#, 16#0053#, 16#0048#, 16#0032#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0038#, 16#0035#, 16#0073#, 16#0070#, 16#0061#,
+            16#006E#, 16#0069#, 16#0073#, 16#0068#, 16#0032#,
             others => 16#0000#),
          others => <>);
-   --  CSISO85SPANISH2
+   --  csiso85spanish2
 
    N247 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#004D#, 16#0053#, 16#005A#, 16#0037#, 16#0037#,
+           (16#006D#, 16#0073#, 16#007A#, 16#0037#, 16#0037#,
             16#0039#, 16#0035#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  MSZ77953
+   --  msz77953
 
    N248 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0038#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  ISOIR86
+   --  isoir86
 
    N249 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0048#, 16#0055#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0068#, 16#0075#, others => 16#0000#),
          others => <>);
-   --  ISO646HU
+   --  iso646hu
 
    N250 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0048#, 16#0055#, others => 16#0000#),
+           (16#0068#, 16#0075#, others => 16#0000#),
          others => <>);
-   --  HU
+   --  hu
 
    N251 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0038#, 16#0036#, 16#0048#, 16#0055#, 16#004E#,
-            16#0047#, 16#0041#, 16#0052#, 16#0049#, 16#0041#,
-            16#004E#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0038#, 16#0036#, 16#0068#, 16#0075#, 16#006E#,
+            16#0067#, 16#0061#, 16#0072#, 16#0069#, 16#0061#,
+            16#006E#, others => 16#0000#),
          others => <>);
-   --  CSISO86HUNGARIAN
+   --  csiso86hungarian
 
    N252 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0043#, 16#0036#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0063#, 16#0036#,
             16#0032#, 16#0032#, 16#0036#, 16#0031#, 16#0039#,
             16#0038#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  JISC62261983
+   --  jisc62261983
 
    N253 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0038#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISOIR87
+   --  isoir87
 
    N254 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0058#, 16#0032#, 16#0030#, 16#0038#, others => 16#0000#),
+           (16#0078#, 16#0032#, 16#0030#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  X208
+   --  x208
 
    N255 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0058#, 16#0032#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0078#, 16#0032#,
             16#0030#, 16#0038#, 16#0031#, 16#0039#, 16#0038#,
             16#0033#, others => 16#0000#),
          others => <>);
-   --  JISX2081983
+   --  jisx2081983
 
    N256 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0038#, 16#0037#, 16#004A#, 16#0049#, 16#0053#,
-            16#0058#, 16#0032#, 16#0030#, 16#0038#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0038#, 16#0037#, 16#006A#, 16#0069#, 16#0073#,
+            16#0078#, 16#0032#, 16#0030#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CSISO87JISX208
+   --  csiso87jisx208
 
    N257 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0047#, 16#0052#, 16#0045#, 16#0045#, 16#004B#,
+           (16#0067#, 16#0072#, 16#0065#, 16#0065#, 16#006B#,
             16#0037#, others => 16#0000#),
          others => <>);
-   --  GREEK7
+   --  greek7
 
    N258 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0038#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISOIR88
+   --  isoir88
 
    N259 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0038#, 16#0038#, 16#0047#, 16#0052#, 16#0045#,
-            16#0045#, 16#004B#, 16#0037#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0038#, 16#0038#, 16#0067#, 16#0072#, 16#0065#,
+            16#0065#, 16#006B#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  CSISO88GREEK7
+   --  csiso88greek7
 
    N260 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0041#, 16#0053#, 16#004D#, 16#004F#, 16#0034#,
+           (16#0061#, 16#0073#, 16#006D#, 16#006F#, 16#0034#,
             16#0034#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ASMO449
+   --  asmo449
 
    N261 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0039#, 16#0030#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0039#, 16#0030#,
             16#0033#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  ISO9036
+   --  iso9036
 
    N262 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0041#, 16#0052#, 16#0041#, 16#0042#, 16#0049#,
-            16#0043#, 16#0037#, others => 16#0000#),
+           (16#0061#, 16#0072#, 16#0061#, 16#0062#, 16#0069#,
+            16#0063#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ARABIC7
+   --  arabic7
 
    N263 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0038#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ISOIR89
+   --  isoir89
 
    N264 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0038#, 16#0039#, 16#0041#, 16#0053#, 16#004D#,
-            16#004F#, 16#0034#, 16#0034#, 16#0039#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0038#, 16#0039#, 16#0061#, 16#0073#, 16#006D#,
+            16#006F#, 16#0034#, 16#0034#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  CSISO89ASMO449
+   --  csiso89asmo449
 
    N265 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0039#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  ISOIR90
+   --  isoir90
 
    N266 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
             16#0039#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  CSISO90
+   --  csiso90
 
    N267 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0043#, 16#0036#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0063#, 16#0036#,
             16#0032#, 16#0032#, 16#0039#, 16#0031#, 16#0039#,
-            16#0038#, 16#0034#, 16#0041#, others => 16#0000#),
+            16#0038#, 16#0034#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  JISC62291984A
+   --  jisc62291984a
 
    N268 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004A#, 16#0050#, 16#004F#, 16#0043#, 16#0052#,
-            16#0041#, others => 16#0000#),
+           (16#006A#, 16#0070#, 16#006F#, 16#0063#, 16#0072#,
+            16#0061#, others => 16#0000#),
          others => <>);
-   --  JPOCRA
+   --  jpocra
 
    N269 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 20,
          Length => 20,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0039#, 16#0031#, 16#004A#, 16#0049#, 16#0053#,
-            16#0043#, 16#0036#, 16#0032#, 16#0032#, 16#0039#,
-            16#0031#, 16#0039#, 16#0038#, 16#0034#, 16#0041#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0039#, 16#0031#, 16#006A#, 16#0069#, 16#0073#,
+            16#0063#, 16#0036#, 16#0032#, 16#0032#, 16#0039#,
+            16#0031#, 16#0039#, 16#0038#, 16#0034#, 16#0061#,
             others => 16#0000#),
          others => <>);
-   --  CSISO91JISC62291984A
+   --  csiso91jisc62291984a
 
    N270 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0043#, 16#0036#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0063#, 16#0036#,
             16#0032#, 16#0032#, 16#0039#, 16#0031#, 16#0039#,
-            16#0038#, 16#0034#, 16#0042#, others => 16#0000#),
+            16#0038#, 16#0034#, 16#0062#, others => 16#0000#),
          others => <>);
-   --  JISC62291984B
+   --  jisc62291984b
 
    N271 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#004A#, 16#0050#, 16#004F#, 16#0043#,
-            16#0052#, 16#0042#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#006A#, 16#0070#, 16#006F#, 16#0063#,
+            16#0072#, 16#0062#, others => 16#0000#),
          others => <>);
-   --  ISO646JPOCRB
+   --  iso646jpocrb
 
    N272 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004A#, 16#0050#, 16#004F#, 16#0043#, 16#0052#,
-            16#0042#, others => 16#0000#),
+           (16#006A#, 16#0070#, 16#006F#, 16#0063#, 16#0072#,
+            16#0062#, others => 16#0000#),
          others => <>);
-   --  JPOCRB
+   --  jpocrb
 
    N273 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 20,
          Length => 20,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0039#, 16#0032#, 16#004A#, 16#0049#, 16#0053#,
-            16#0043#, 16#0036#, 16#0032#, 16#0039#, 16#0039#,
-            16#0031#, 16#0039#, 16#0038#, 16#0034#, 16#0042#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0039#, 16#0032#, 16#006A#, 16#0069#, 16#0073#,
+            16#0063#, 16#0036#, 16#0032#, 16#0039#, 16#0039#,
+            16#0031#, 16#0039#, 16#0038#, 16#0034#, 16#0062#,
             others => 16#0000#),
          others => <>);
-   --  CSISO92JISC62991984B
+   --  csiso92jisc62991984b
 
    N274 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0043#, 16#0036#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0063#, 16#0036#,
             16#0032#, 16#0032#, 16#0039#, 16#0031#, 16#0039#,
-            16#0038#, 16#0034#, 16#0042#, 16#0041#, 16#0044#,
-            16#0044#, others => 16#0000#),
+            16#0038#, 16#0034#, 16#0062#, 16#0061#, 16#0064#,
+            16#0064#, others => 16#0000#),
          others => <>);
-   --  JISC62291984BADD
+   --  jisc62291984badd
 
    N275 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0039#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  ISOIR93
+   --  isoir93
 
    N276 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#004A#, 16#0050#, 16#004F#, 16#0043#, 16#0052#,
-            16#0042#, 16#0041#, 16#0044#, 16#0044#, others => 16#0000#),
+           (16#006A#, 16#0070#, 16#006F#, 16#0063#, 16#0072#,
+            16#0062#, 16#0061#, 16#0064#, 16#0064#, others => 16#0000#),
          others => <>);
-   --  JPOCRBADD
+   --  jpocrbadd
 
    N277 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 22,
          Length => 22,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0039#, 16#0033#, 16#004A#, 16#0049#, 16#0053#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0039#, 16#0033#, 16#006A#, 16#0069#, 16#0073#,
             16#0036#, 16#0032#, 16#0032#, 16#0039#, 16#0031#,
-            16#0039#, 16#0038#, 16#0034#, 16#0042#, 16#0041#,
-            16#0044#, 16#0044#, others => 16#0000#),
+            16#0039#, 16#0038#, 16#0034#, 16#0062#, 16#0061#,
+            16#0064#, 16#0064#, others => 16#0000#),
          others => <>);
-   --  CSISO93JIS62291984BADD
+   --  csiso93jis62291984badd
 
    N278 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0043#, 16#0036#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0063#, 16#0036#,
             16#0032#, 16#0032#, 16#0039#, 16#0031#, 16#0039#,
-            16#0038#, 16#0034#, 16#0048#, 16#0041#, 16#004E#,
-            16#0044#, others => 16#0000#),
+            16#0038#, 16#0034#, 16#0068#, 16#0061#, 16#006E#,
+            16#0064#, others => 16#0000#),
          others => <>);
-   --  JISC62291984HAND
+   --  jisc62291984hand
 
    N279 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0039#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  ISOIR94
+   --  isoir94
 
    N280 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#004A#, 16#0050#, 16#004F#, 16#0043#, 16#0052#,
-            16#0048#, 16#0041#, 16#004E#, 16#0044#, others => 16#0000#),
+           (16#006A#, 16#0070#, 16#006F#, 16#0063#, 16#0072#,
+            16#0068#, 16#0061#, 16#006E#, 16#0064#, others => 16#0000#),
          others => <>);
-   --  JPOCRHAND
+   --  jpocrhand
 
    N281 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 22,
          Length => 22,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0039#, 16#0034#, 16#004A#, 16#0049#, 16#0053#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0039#, 16#0034#, 16#006A#, 16#0069#, 16#0073#,
             16#0036#, 16#0032#, 16#0032#, 16#0039#, 16#0031#,
-            16#0039#, 16#0038#, 16#0034#, 16#0048#, 16#0041#,
-            16#004E#, 16#0044#, others => 16#0000#),
+            16#0039#, 16#0038#, 16#0034#, 16#0068#, 16#0061#,
+            16#006E#, 16#0064#, others => 16#0000#),
          others => <>);
-   --  CSISO94JIS62291984HAND
+   --  csiso94jis62291984hand
 
    N282 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0043#, 16#0036#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0063#, 16#0036#,
             16#0032#, 16#0032#, 16#0039#, 16#0031#, 16#0039#,
-            16#0038#, 16#0034#, 16#0048#, 16#0041#, 16#004E#,
-            16#0044#, 16#0041#, 16#0044#, 16#0044#, others => 16#0000#),
+            16#0038#, 16#0034#, 16#0068#, 16#0061#, 16#006E#,
+            16#0064#, 16#0061#, 16#0064#, 16#0064#, others => 16#0000#),
          others => <>);
-   --  JISC62291984HANDADD
+   --  jisc62291984handadd
 
    N283 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0039#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  ISOIR95
+   --  isoir95
 
    N284 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#004A#, 16#0050#, 16#004F#, 16#0043#, 16#0052#,
-            16#0048#, 16#0041#, 16#004E#, 16#0044#, 16#0041#,
-            16#0044#, 16#0044#, others => 16#0000#),
+           (16#006A#, 16#0070#, 16#006F#, 16#0063#, 16#0072#,
+            16#0068#, 16#0061#, 16#006E#, 16#0064#, 16#0061#,
+            16#0064#, 16#0064#, others => 16#0000#),
          others => <>);
-   --  JPOCRHANDADD
+   --  jpocrhandadd
 
    N285 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 25,
          Length => 25,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0039#, 16#0035#, 16#004A#, 16#0049#, 16#0053#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0039#, 16#0035#, 16#006A#, 16#0069#, 16#0073#,
             16#0036#, 16#0032#, 16#0032#, 16#0039#, 16#0031#,
-            16#0039#, 16#0038#, 16#0034#, 16#0048#, 16#0041#,
-            16#004E#, 16#0044#, 16#0041#, 16#0044#, 16#0044#,
+            16#0039#, 16#0038#, 16#0034#, 16#0068#, 16#0061#,
+            16#006E#, 16#0064#, 16#0061#, 16#0064#, 16#0064#,
             others => 16#0000#),
          others => <>);
-   --  CSISO95JIS62291984HANDADD
+   --  csiso95jis62291984handadd
 
    N286 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0043#, 16#0036#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0063#, 16#0036#,
             16#0032#, 16#0032#, 16#0039#, 16#0031#, 16#0039#,
-            16#0038#, 16#0034#, 16#004B#, 16#0041#, 16#004E#,
-            16#0041#, others => 16#0000#),
+            16#0038#, 16#0034#, 16#006B#, 16#0061#, 16#006E#,
+            16#0061#, others => 16#0000#),
          others => <>);
-   --  JISC62291984KANA
+   --  jisc62291984kana
 
    N287 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0039#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  ISOIR96
+   --  isoir96
 
    N288 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 23,
          Length => 23,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0039#, 16#0036#, 16#004A#, 16#0049#, 16#0053#,
-            16#0043#, 16#0036#, 16#0032#, 16#0032#, 16#0039#,
-            16#0031#, 16#0039#, 16#0038#, 16#0034#, 16#004B#,
-            16#0041#, 16#004E#, 16#0041#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0039#, 16#0036#, 16#006A#, 16#0069#, 16#0073#,
+            16#0063#, 16#0036#, 16#0032#, 16#0032#, 16#0039#,
+            16#0031#, 16#0039#, 16#0038#, 16#0034#, 16#006B#,
+            16#0061#, 16#006E#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  CSISO96JISC62291984KANA
+   --  csiso96jisc62291984kana
 
    N289 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0032#, 16#0030#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0032#, 16#0030#,
             16#0033#, 16#0033#, 16#0031#, 16#0039#, 16#0038#,
             16#0033#, others => 16#0000#),
          others => <>);
-   --  ISO20331983
+   --  iso20331983
 
    N290 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0039#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISOIR98
+   --  isoir98
 
    N291 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0045#, 16#0031#, 16#0033#, 16#0042#, others => 16#0000#),
+           (16#0065#, 16#0031#, 16#0033#, 16#0062#, others => 16#0000#),
          others => <>);
-   --  E13B
+   --  e13b
 
    N292 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
             16#0032#, 16#0030#, 16#0033#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  CSISO2033
+   --  csiso2033
 
    N293 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0041#, 16#004E#, 16#0053#, 16#0049#, 16#0058#,
+           (16#0061#, 16#006E#, 16#0073#, 16#0069#, 16#0078#,
             16#0033#, 16#0031#, 16#0031#, 16#0030#, 16#0031#,
             16#0039#, 16#0038#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  ANSIX31101983
+   --  ansix31101983
 
    N294 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0039#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ISOIR99
+   --  isoir99
 
    N295 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0041#, 16#0054#, 16#0035#,
+           (16#0063#, 16#0073#, 16#0061#, 16#0074#, 16#0035#,
             16#0030#, 16#0030#, 16#0031#, 16#0039#, 16#0038#,
             16#0033#, others => 16#0000#),
          others => <>);
-   --  CSAT5001983
+   --  csat5001983
 
    N296 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004E#, 16#0041#, 16#0050#, 16#004C#, 16#0050#,
-            16#0053#, others => 16#0000#),
+           (16#006E#, 16#0061#, 16#0070#, 16#006C#, 16#0070#,
+            16#0073#, others => 16#0000#),
          others => <>);
-   --  NAPLPS
+   --  naplps
 
    N297 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0039#, 16#0039#, 16#004E#, 16#0041#, 16#0050#,
-            16#004C#, 16#0050#, 16#0053#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0039#, 16#0039#, 16#006E#, 16#0061#, 16#0070#,
+            16#006C#, 16#0070#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  CSISO99NAPLPS
+   --  csiso99naplps
 
    N298 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0054#, 16#0036#, 16#0031#, 16#0037#, 16#0042#,
-            16#0049#, 16#0054#, others => 16#0000#),
+           (16#0074#, 16#0036#, 16#0031#, 16#0037#, 16#0062#,
+            16#0069#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  T617BIT
+   --  t617bit
 
    N299 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0030#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISOIR102
+   --  isoir102
 
    N300 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0030#, 16#0032#, 16#0054#, 16#0036#,
-            16#0031#, 16#0037#, 16#0042#, 16#0049#, 16#0054#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0030#, 16#0032#, 16#0074#, 16#0036#,
+            16#0031#, 16#0037#, 16#0062#, 16#0069#, 16#0074#,
             others => 16#0000#),
          others => <>);
-   --  CSISO102T617BIT
+   --  csiso102t617bit
 
    N301 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0054#, 16#0036#, 16#0031#, 16#0038#, 16#0042#,
-            16#0049#, 16#0054#, others => 16#0000#),
+           (16#0074#, 16#0036#, 16#0031#, 16#0038#, 16#0062#,
+            16#0069#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  T618BIT
+   --  t618bit
 
    N302 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#0054#, 16#0036#, 16#0031#, others => 16#0000#),
+           (16#0074#, 16#0036#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  T61
+   --  t61
 
    N303 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0030#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  ISOIR103
+   --  isoir103
 
    N304 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0030#, 16#0033#, 16#0054#, 16#0036#,
-            16#0031#, 16#0038#, 16#0042#, 16#0049#, 16#0054#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0030#, 16#0033#, 16#0074#, 16#0036#,
+            16#0031#, 16#0038#, 16#0062#, 16#0069#, 16#0074#,
             others => 16#0000#),
          others => <>);
-   --  CSISO103T618BIT
+   --  csiso103t618bit
 
    N305 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0045#, 16#0043#, 16#004D#, 16#0041#, 16#0043#,
-            16#0059#, 16#0052#, 16#0049#, 16#004C#, 16#004C#,
-            16#0049#, 16#0043#, others => 16#0000#),
+           (16#0065#, 16#0063#, 16#006D#, 16#0061#, 16#0063#,
+            16#0079#, 16#0072#, 16#0069#, 16#006C#, 16#006C#,
+            16#0069#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  ECMACYRILLIC
+   --  ecmacyrillic
 
    N306 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0031#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOIR111
+   --  isoir111
 
    N307 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#004B#, 16#004F#, 16#0049#, 16#0038#, 16#0045#,
+           (16#006B#, 16#006F#, 16#0069#, 16#0038#, 16#0065#,
             others => 16#0000#),
          others => <>);
-   --  KOI8E
+   --  koi8e
 
    N308 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 20,
          Length => 20,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0031#, 16#0031#, 16#0045#, 16#0043#,
-            16#004D#, 16#0041#, 16#0043#, 16#0059#, 16#0052#,
-            16#0049#, 16#004C#, 16#004C#, 16#0049#, 16#0043#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0031#, 16#0031#, 16#0065#, 16#0063#,
+            16#006D#, 16#0061#, 16#0063#, 16#0079#, 16#0072#,
+            16#0069#, 16#006C#, 16#006C#, 16#0069#, 16#0063#,
             others => 16#0000#),
          others => <>);
-   --  CSISO111ECMACYRILLIC
+   --  csiso111ecmacyrillic
 
    N309 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0041#, 16#005A#, 16#0032#,
+           (16#0063#, 16#0073#, 16#0061#, 16#007A#, 16#0032#,
             16#0034#, 16#0033#, 16#0034#, 16#0031#, 16#0039#,
             16#0038#, 16#0035#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSAZ243419851
+   --  csaz243419851
 
    N310 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0032#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOIR121
+   --  isoir121
 
    N311 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0043#, 16#0041#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0063#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  ISO646CA
+   --  iso646ca
 
    N312 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0053#, 16#0041#, 16#0037#, 16#0031#,
+           (16#0063#, 16#0073#, 16#0061#, 16#0037#, 16#0031#,
             others => 16#0000#),
          others => <>);
-   --  CSA71
+   --  csa71
 
    N313 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0043#, 16#0041#, others => 16#0000#),
+           (16#0063#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  CA
+   --  ca
 
    N314 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0032#, 16#0031#, 16#0043#, 16#0041#,
-            16#004E#, 16#0041#, 16#0044#, 16#0049#, 16#0041#,
-            16#004E#, 16#0031#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0032#, 16#0031#, 16#0063#, 16#0061#,
+            16#006E#, 16#0061#, 16#0064#, 16#0069#, 16#0061#,
+            16#006E#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSISO121CANADIAN1
+   --  csiso121canadian1
 
    N315 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0041#, 16#005A#, 16#0032#,
+           (16#0063#, 16#0073#, 16#0061#, 16#007A#, 16#0032#,
             16#0034#, 16#0033#, 16#0034#, 16#0031#, 16#0039#,
             16#0038#, 16#0035#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  CSAZ243419852
+   --  csaz243419852
 
    N316 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0032#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISOIR122
+   --  isoir122
 
    N317 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0043#, 16#0041#, 16#0032#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0063#, 16#0061#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISO646CA2
+   --  iso646ca2
 
    N318 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0053#, 16#0041#, 16#0037#, 16#0032#,
+           (16#0063#, 16#0073#, 16#0061#, 16#0037#, 16#0032#,
             others => 16#0000#),
          others => <>);
-   --  CSA72
+   --  csa72
 
    N319 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0032#, 16#0032#, 16#0043#, 16#0041#,
-            16#004E#, 16#0041#, 16#0044#, 16#0049#, 16#0041#,
-            16#004E#, 16#0032#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0032#, 16#0032#, 16#0063#, 16#0061#,
+            16#006E#, 16#0061#, 16#0064#, 16#0069#, 16#0061#,
+            16#006E#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  CSISO122CANADIAN2
+   --  csiso122canadian2
 
    N320 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0043#, 16#0053#, 16#0041#, 16#005A#, 16#0032#,
+           (16#0063#, 16#0073#, 16#0061#, 16#007A#, 16#0032#,
             16#0034#, 16#0033#, 16#0034#, 16#0031#, 16#0039#,
-            16#0038#, 16#0035#, 16#0047#, 16#0052#, others => 16#0000#),
+            16#0038#, 16#0035#, 16#0067#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  CSAZ24341985GR
+   --  csaz24341985gr
 
    N321 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0032#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  ISOIR123
+   --  isoir123
 
    N322 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 22,
          Length => 22,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0032#, 16#0033#, 16#0043#, 16#0053#,
-            16#0041#, 16#005A#, 16#0032#, 16#0034#, 16#0033#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0032#, 16#0033#, 16#0063#, 16#0073#,
+            16#0061#, 16#007A#, 16#0032#, 16#0034#, 16#0033#,
             16#0034#, 16#0031#, 16#0039#, 16#0038#, 16#0035#,
-            16#0047#, 16#0052#, others => 16#0000#),
+            16#0067#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  CSISO123CSAZ24341985GR
+   --  csiso123csaz24341985gr
 
    N323 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
-            16#0035#, 16#0039#, 16#0036#, 16#0045#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
+            16#0035#, 16#0039#, 16#0036#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  ISO88596E
+   --  iso88596e
 
    N324 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
             16#0038#, 16#0038#, 16#0035#, 16#0039#, 16#0036#,
-            16#0045#, others => 16#0000#),
+            16#0065#, others => 16#0000#),
          others => <>);
-   --  CSISO88596E
+   --  csiso88596e
 
    N325 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
-            16#0035#, 16#0039#, 16#0036#, 16#0049#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
+            16#0035#, 16#0039#, 16#0036#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  ISO88596I
+   --  iso88596i
 
    N326 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
             16#0038#, 16#0038#, 16#0035#, 16#0039#, 16#0036#,
-            16#0049#, others => 16#0000#),
+            16#0069#, others => 16#0000#),
          others => <>);
-   --  CSISO88596I
+   --  csiso88596i
 
    N327 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0054#, 16#0031#, 16#0030#, 16#0031#, 16#0047#,
+           (16#0074#, 16#0031#, 16#0030#, 16#0031#, 16#0067#,
             16#0032#, others => 16#0000#),
          others => <>);
-   --  T101G2
+   --  t101g2
 
    N328 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0032#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISOIR128
+   --  isoir128
 
    N329 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0032#, 16#0038#, 16#0054#, 16#0031#,
-            16#0030#, 16#0031#, 16#0047#, 16#0032#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0032#, 16#0038#, 16#0074#, 16#0031#,
+            16#0030#, 16#0031#, 16#0067#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  CSISO128T101G2
+   --  csiso128t101g2
 
    N330 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
-            16#0035#, 16#0039#, 16#0038#, 16#0045#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
+            16#0035#, 16#0039#, 16#0038#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  ISO88598E
+   --  iso88598e
 
    N331 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
             16#0038#, 16#0038#, 16#0035#, 16#0039#, 16#0038#,
-            16#0045#, others => 16#0000#),
+            16#0065#, others => 16#0000#),
          others => <>);
-   --  CSISO88598E
+   --  csiso88598e
 
    N332 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
-            16#0035#, 16#0039#, 16#0038#, 16#0049#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
+            16#0035#, 16#0039#, 16#0038#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  ISO88598I
+   --  iso88598i
 
    N333 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
             16#0038#, 16#0038#, 16#0035#, 16#0039#, 16#0038#,
-            16#0049#, others => 16#0000#),
+            16#0069#, others => 16#0000#),
          others => <>);
-   --  CSISO88598I
+   --  csiso88598i
 
    N334 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0053#, 16#004E#, 16#0033#, 16#0036#,
+           (16#0063#, 16#0073#, 16#006E#, 16#0033#, 16#0036#,
             16#0039#, 16#0031#, 16#0030#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  CSN369103
+   --  csn369103
 
    N335 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0033#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ISOIR139
+   --  isoir139
 
    N336 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0033#, 16#0039#, 16#0043#, 16#0053#,
-            16#004E#, 16#0033#, 16#0036#, 16#0039#, 16#0031#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0033#, 16#0039#, 16#0063#, 16#0073#,
+            16#006E#, 16#0033#, 16#0036#, 16#0039#, 16#0031#,
             16#0030#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  CSISO139CSN369103
+   --  csiso139csn369103
 
    N337 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#004A#, 16#0055#, 16#0053#, 16#0049#, 16#0042#,
+           (16#006A#, 16#0075#, 16#0073#, 16#0069#, 16#0062#,
             16#0031#, 16#0030#, 16#0030#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  JUSIB1002
+   --  jusib1002
 
    N338 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0034#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOIR141
+   --  isoir141
 
    N339 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0059#, 16#0055#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0079#, 16#0075#, others => 16#0000#),
          others => <>);
-   --  ISO646YU
+   --  iso646yu
 
    N340 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#004A#, 16#0053#, others => 16#0000#),
+           (16#006A#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  JS
+   --  js
 
    N341 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0059#, 16#0055#, others => 16#0000#),
+           (16#0079#, 16#0075#, others => 16#0000#),
          others => <>);
-   --  YU
+   --  yu
 
    N342 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0034#, 16#0031#, 16#004A#, 16#0055#,
-            16#0053#, 16#0049#, 16#0042#, 16#0031#, 16#0030#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0034#, 16#0031#, 16#006A#, 16#0075#,
+            16#0073#, 16#0069#, 16#0062#, 16#0031#, 16#0030#,
             16#0030#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  CSISO141JUSIB1002
+   --  csiso141jusib1002
 
    N343 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0045#, 16#0043#, 16#0050#, 16#0032#,
+           (16#0069#, 16#0065#, 16#0063#, 16#0070#, 16#0032#,
             16#0037#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  IECP271
+   --  iecp271
 
    N344 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0034#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  ISOIR143
+   --  isoir143
 
    N345 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0034#, 16#0033#, 16#0049#, 16#0045#,
-            16#0043#, 16#0050#, 16#0032#, 16#0037#, 16#0031#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0034#, 16#0033#, 16#0069#, 16#0065#,
+            16#0063#, 16#0070#, 16#0032#, 16#0037#, 16#0031#,
             others => 16#0000#),
          others => <>);
-   --  CSISO143IECP271
+   --  csiso143iecp271
 
    N346 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#004A#, 16#0055#, 16#0053#, 16#0049#, 16#0042#,
-            16#0031#, 16#0030#, 16#0030#, 16#0033#, 16#0053#,
-            16#0045#, 16#0052#, 16#0042#, others => 16#0000#),
+           (16#006A#, 16#0075#, 16#0073#, 16#0069#, 16#0062#,
+            16#0031#, 16#0030#, 16#0030#, 16#0033#, 16#0073#,
+            16#0065#, 16#0072#, 16#0062#, others => 16#0000#),
          others => <>);
-   --  JUSIB1003SERB
+   --  jusib1003serb
 
    N347 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0034#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  ISOIR146
+   --  isoir146
 
    N348 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0053#, 16#0045#, 16#0052#, 16#0042#, 16#0049#,
-            16#0041#, 16#004E#, others => 16#0000#),
+           (16#0073#, 16#0065#, 16#0072#, 16#0062#, 16#0069#,
+            16#0061#, 16#006E#, others => 16#0000#),
          others => <>);
-   --  SERBIAN
+   --  serbian
 
    N349 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0034#, 16#0036#, 16#0053#, 16#0045#,
-            16#0052#, 16#0042#, 16#0049#, 16#0041#, 16#004E#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0034#, 16#0036#, 16#0073#, 16#0065#,
+            16#0072#, 16#0062#, 16#0069#, 16#0061#, 16#006E#,
             others => 16#0000#),
          others => <>);
-   --  CSISO146SERBIAN
+   --  csiso146serbian
 
    N350 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#004A#, 16#0055#, 16#0053#, 16#0049#, 16#0042#,
-            16#0031#, 16#0030#, 16#0030#, 16#0033#, 16#004D#,
-            16#0041#, 16#0043#, others => 16#0000#),
+           (16#006A#, 16#0075#, 16#0073#, 16#0069#, 16#0062#,
+            16#0031#, 16#0030#, 16#0030#, 16#0033#, 16#006D#,
+            16#0061#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  JUSIB1003MAC
+   --  jusib1003mac
 
    N351 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#004D#, 16#0041#, 16#0043#, 16#0045#, 16#0044#,
-            16#004F#, 16#004E#, 16#0049#, 16#0041#, 16#004E#,
+           (16#006D#, 16#0061#, 16#0063#, 16#0065#, 16#0064#,
+            16#006F#, 16#006E#, 16#0069#, 16#0061#, 16#006E#,
             others => 16#0000#),
          others => <>);
-   --  MACEDONIAN
+   --  macedonian
 
    N352 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0034#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  ISOIR147
+   --  isoir147
 
    N353 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 18,
          Length => 18,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0034#, 16#0037#, 16#004D#, 16#0041#,
-            16#0043#, 16#0045#, 16#0044#, 16#004F#, 16#004E#,
-            16#0049#, 16#0041#, 16#004E#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0034#, 16#0037#, 16#006D#, 16#0061#,
+            16#0063#, 16#0065#, 16#0064#, 16#006F#, 16#006E#,
+            16#0069#, 16#0061#, 16#006E#, others => 16#0000#),
          others => <>);
-   --  CSISO147MACEDONIAN
+   --  csiso147macedonian
 
    N354 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0047#, 16#0052#, 16#0045#, 16#0045#, 16#004B#,
-            16#0043#, 16#0043#, 16#0049#, 16#0054#, 16#0054#,
+           (16#0067#, 16#0072#, 16#0065#, 16#0065#, 16#006B#,
+            16#0063#, 16#0063#, 16#0069#, 16#0074#, 16#0074#,
             others => 16#0000#),
          others => <>);
-   --  GREEKCCITT
+   --  greekccitt
 
    N355 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0035#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  ISOIR150
+   --  isoir150
 
    N356 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
             16#0031#, 16#0035#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  CSISO150
+   --  csiso150
 
    N357 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 18,
          Length => 18,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0035#, 16#0030#, 16#0047#, 16#0052#,
-            16#0045#, 16#0045#, 16#004B#, 16#0043#, 16#0043#,
-            16#0049#, 16#0054#, 16#0054#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0035#, 16#0030#, 16#0067#, 16#0072#,
+            16#0065#, 16#0065#, 16#006B#, 16#0063#, 16#0063#,
+            16#0069#, 16#0074#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  CSISO150GREEKCCITT
+   --  csiso150greekccitt
 
    N358 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#004E#, 16#0043#, 16#004E#, 16#0043#, 16#0031#,
+           (16#006E#, 16#0063#, 16#006E#, 16#0063#, 16#0031#,
             16#0030#, 16#0038#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  NCNC1081
+   --  ncnc1081
 
    N359 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0043#, 16#0055#, 16#0042#, 16#0041#, others => 16#0000#),
+           (16#0063#, 16#0075#, 16#0062#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  CUBA
+   --  cuba
 
    N360 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0035#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOIR151
+   --  isoir151
 
    N361 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0043#, 16#0055#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0063#, 16#0075#, others => 16#0000#),
          others => <>);
-   --  ISO646CU
+   --  iso646cu
 
    N362 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0035#, 16#0031#, 16#0043#, 16#0055#,
-            16#0042#, 16#0041#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0035#, 16#0031#, 16#0063#, 16#0075#,
+            16#0062#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  CSISO151CUBA
+   --  csiso151cuba
 
    N363 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0039#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0039#,
             16#0033#, 16#0037#, 16#0032#, 16#0032#, 16#0035#,
             others => 16#0000#),
          others => <>);
-   --  ISO6937225
+   --  iso6937225
 
    N364 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0035#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISOIR152
+   --  isoir152
 
    N365 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0036#, 16#0039#, 16#0033#, 16#0037#, 16#0041#,
-            16#0044#, 16#0044#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0036#, 16#0039#, 16#0033#, 16#0037#, 16#0061#,
+            16#0064#, 16#0064#, others => 16#0000#),
          others => <>);
-   --  CSISO6937ADD
+   --  csiso6937add
 
    N366 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0047#, 16#004F#, 16#0053#, 16#0054#, 16#0031#,
+           (16#0067#, 16#006F#, 16#0073#, 16#0074#, 16#0031#,
             16#0039#, 16#0037#, 16#0036#, 16#0038#, 16#0037#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  GOST1976874
+   --  gost1976874
 
    N367 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0053#, 16#0054#, 16#0053#, 16#0045#, 16#0056#,
+           (16#0073#, 16#0074#, 16#0073#, 16#0065#, 16#0076#,
             16#0033#, 16#0035#, 16#0038#, 16#0038#, 16#0038#,
             others => 16#0000#),
          others => <>);
-   --  STSEV35888
+   --  stsev35888
 
    N368 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0035#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  ISOIR153
+   --  isoir153
 
    N369 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0035#, 16#0033#, 16#0047#, 16#004F#,
-            16#0053#, 16#0054#, 16#0031#, 16#0039#, 16#0037#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0035#, 16#0033#, 16#0067#, 16#006F#,
+            16#0073#, 16#0074#, 16#0031#, 16#0039#, 16#0037#,
             16#0036#, 16#0038#, 16#0037#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  CSISO153GOST1976874
+   --  csiso153gost1976874
 
    N370 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
-            16#0035#, 16#0039#, 16#0053#, 16#0055#, 16#0050#,
-            16#0050#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
+            16#0035#, 16#0039#, 16#0073#, 16#0075#, 16#0070#,
+            16#0070#, others => 16#0000#),
          others => <>);
-   --  ISO8859SUPP
+   --  iso8859supp
 
    N371 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0035#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  ISOIR154
+   --  isoir154
 
    N372 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0031#, 16#0032#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  LATIN125
+   --  latin125
 
    N373 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0038#, 16#0038#, 16#0035#, 16#0039#, 16#0053#,
-            16#0055#, 16#0050#, 16#0050#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0038#, 16#0038#, 16#0035#, 16#0039#, 16#0073#,
+            16#0075#, 16#0070#, 16#0070#, others => 16#0000#),
          others => <>);
-   --  CSISO8859SUPP
+   --  csiso8859supp
 
    N374 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0031#, 16#0030#,
-            16#0033#, 16#0036#, 16#0037#, 16#0042#, 16#004F#,
-            16#0058#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0031#, 16#0030#,
+            16#0033#, 16#0036#, 16#0037#, 16#0062#, 16#006F#,
+            16#0078#, others => 16#0000#),
          others => <>);
-   --  ISO10367BOX
+   --  iso10367box
 
    N375 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0035#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  ISOIR155
+   --  isoir155
 
    N376 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
             16#0031#, 16#0030#, 16#0033#, 16#0036#, 16#0037#,
-            16#0042#, 16#004F#, 16#0058#, others => 16#0000#),
+            16#0062#, 16#006F#, 16#0078#, others => 16#0000#),
          others => <>);
-   --  CSISO10367BOX
+   --  csiso10367box
 
    N377 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
-            16#004C#, 16#0041#, 16#0050#, others => 16#0000#),
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
+            16#006C#, 16#0061#, 16#0070#, others => 16#0000#),
          others => <>);
-   --  LATINLAP
+   --  latinlap
 
    N378 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#004C#, 16#0041#, 16#0050#, others => 16#0000#),
+           (16#006C#, 16#0061#, 16#0070#, others => 16#0000#),
          others => <>);
-   --  LAP
+   --  lap
 
    N379 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0035#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISOIR158
+   --  isoir158
 
    N380 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0035#, 16#0038#, 16#004C#, 16#0041#,
-            16#0050#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0035#, 16#0038#, 16#006C#, 16#0061#,
+            16#0070#, others => 16#0000#),
          others => <>);
-   --  CSISO158LAP
+   --  csiso158lap
 
    N381 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#004A#, 16#0049#, 16#0053#, 16#0058#, 16#0032#,
+           (16#006A#, 16#0069#, 16#0073#, 16#0078#, 16#0032#,
             16#0031#, 16#0032#, 16#0031#, 16#0039#, 16#0039#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  JISX2121990
+   --  jisx2121990
 
    N382 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0058#, 16#0032#, 16#0031#, 16#0032#, others => 16#0000#),
+           (16#0078#, 16#0032#, 16#0031#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  X212
+   --  x212
 
    N383 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0035#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ISOIR159
+   --  isoir159
 
    N384 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0031#, 16#0035#, 16#0039#, 16#004A#, 16#0049#,
-            16#0053#, 16#0058#, 16#0032#, 16#0031#, 16#0032#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0031#, 16#0035#, 16#0039#, 16#006A#, 16#0069#,
+            16#0073#, 16#0078#, 16#0032#, 16#0031#, 16#0032#,
             16#0031#, 16#0039#, 16#0039#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  CSISO159JISX2121990
+   --  csiso159jisx2121990
 
    N385 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0044#, 16#0053#, 16#0032#, 16#0030#, 16#0038#,
+           (16#0064#, 16#0073#, 16#0032#, 16#0030#, 16#0038#,
             16#0039#, others => 16#0000#),
          others => <>);
-   --  DS2089
+   --  ds2089
 
    N386 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#0044#, 16#004B#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#0064#, 16#006B#, others => 16#0000#),
          others => <>);
-   --  ISO646DK
+   --  iso646dk
 
    N387 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0044#, 16#004B#, others => 16#0000#),
+           (16#0064#, 16#006B#, others => 16#0000#),
          others => <>);
-   --  DK
+   --  dk
 
    N388 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
-            16#0036#, 16#0034#, 16#0036#, 16#0044#, 16#0041#,
-            16#004E#, 16#0049#, 16#0053#, 16#0048#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
+            16#0036#, 16#0034#, 16#0036#, 16#0064#, 16#0061#,
+            16#006E#, 16#0069#, 16#0073#, 16#0068#, others => 16#0000#),
          others => <>);
-   --  CSISO646DANISH
+   --  csiso646danish
 
    N389 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0055#, 16#0053#, 16#0044#, 16#004B#, others => 16#0000#),
+           (16#0075#, 16#0073#, 16#0064#, 16#006B#, others => 16#0000#),
          others => <>);
-   --  USDK
+   --  usdk
 
    N390 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#0053#, 16#0044#,
-            16#004B#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0075#, 16#0073#, 16#0064#,
+            16#006B#, others => 16#0000#),
          others => <>);
-   --  CSUSDK
+   --  csusdk
 
    N391 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0044#, 16#004B#, 16#0055#, 16#0053#, others => 16#0000#),
+           (16#0064#, 16#006B#, 16#0075#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  DKUS
+   --  dkus
 
    N392 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0053#, 16#0044#, 16#004B#, 16#0055#,
-            16#0053#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0064#, 16#006B#, 16#0075#,
+            16#0073#, others => 16#0000#),
          others => <>);
-   --  CSDKUS
+   --  csdkus
 
    N393 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#004B#, 16#0053#, 16#0043#, 16#0035#, 16#0036#,
+           (16#006B#, 16#0073#, 16#0063#, 16#0035#, 16#0036#,
             16#0033#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  KSC5636
+   --  ksc5636
 
    N394 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0036#, 16#0034#,
-            16#0036#, 16#004B#, 16#0052#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0036#, 16#0034#,
+            16#0036#, 16#006B#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  ISO646KR
+   --  iso646kr
 
    N395 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0053#, 16#004B#, 16#0053#, 16#0043#,
+           (16#0063#, 16#0073#, 16#006B#, 16#0073#, 16#0063#,
             16#0035#, 16#0036#, 16#0033#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  CSKSC5636
+   --  csksc5636
 
    N396 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0055#, 16#004E#, 16#0049#, 16#0043#, 16#004F#,
-            16#0044#, 16#0045#, 16#0031#, 16#0031#, 16#0055#,
-            16#0054#, 16#0046#, 16#0037#, others => 16#0000#),
+           (16#0075#, 16#006E#, 16#0069#, 16#0063#, 16#006F#,
+            16#0064#, 16#0065#, 16#0031#, 16#0031#, 16#0075#,
+            16#0074#, 16#0066#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  UNICODE11UTF7
+   --  unicode11utf7
 
    N397 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#004E#, 16#0049#,
-            16#0043#, 16#004F#, 16#0044#, 16#0045#, 16#0031#,
-            16#0031#, 16#0055#, 16#0054#, 16#0046#, 16#0037#,
+           (16#0063#, 16#0073#, 16#0075#, 16#006E#, 16#0069#,
+            16#0063#, 16#006F#, 16#0064#, 16#0065#, 16#0031#,
+            16#0031#, 16#0075#, 16#0074#, 16#0066#, 16#0037#,
             others => 16#0000#),
          others => <>);
-   --  CSUNICODE11UTF7
+   --  csunicode11utf7
 
    N398 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0032#, 16#0030#,
-            16#0032#, 16#0032#, 16#0043#, 16#004E#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0032#, 16#0030#,
+            16#0032#, 16#0032#, 16#0063#, 16#006E#, others => 16#0000#),
          others => <>);
-   --  ISO2022CN
+   --  iso2022cn
 
    N399 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0032#, 16#0030#,
-            16#0032#, 16#0032#, 16#0043#, 16#004E#, 16#0045#,
-            16#0058#, 16#0054#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0032#, 16#0030#,
+            16#0032#, 16#0032#, 16#0063#, 16#006E#, 16#0065#,
+            16#0078#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  ISO2022CNEXT
+   --  iso2022cnext
 
    N400 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0055#, 16#0054#, 16#0046#, 16#0038#, others => 16#0000#),
+           (16#0075#, 16#0074#, 16#0066#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  UTF8
+   --  utf8
 
    N401 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0031#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  ISO885913
+   --  iso885913
 
    N402 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0031#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  ISO885914
+   --  iso885914
 
    N403 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0031#, 16#0039#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  ISOIR199
+   --  isoir199
 
    N404 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0031#, 16#0034#, 16#0031#,
             16#0039#, 16#0039#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISO8859141998
+   --  iso8859141998
 
    N405 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  LATIN8
+   --  latin8
 
    N406 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0043#, 16#0045#,
-            16#004C#, 16#0054#, 16#0049#, 16#0043#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0063#, 16#0065#,
+            16#006C#, 16#0074#, 16#0069#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  ISOCELTIC
+   --  isoceltic
 
    N407 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#004C#, 16#0038#, others => 16#0000#),
+           (16#006C#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  L8
+   --  l8
 
    N408 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0031#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  ISO885915
+   --  iso885915
 
    N409 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0039#, others => 16#0000#),
          others => <>);
-   --  LATIN9
+   --  latin9
 
    N410 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0031#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  ISO885916
+   --  iso885916
 
    N411 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0049#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0069#, 16#0072#,
             16#0032#, 16#0032#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  ISOIR226
+   --  isoir226
 
    N412 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
             16#0035#, 16#0039#, 16#0031#, 16#0036#, 16#0032#,
             16#0030#, 16#0030#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISO8859162001
+   --  iso8859162001
 
    N413 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0031#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  LATIN10
+   --  latin10
 
    N414 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#004C#, 16#0031#, 16#0030#, others => 16#0000#),
+           (16#006C#, 16#0031#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  L10
+   --  l10
 
    N415 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#0047#, 16#0042#, 16#004B#, others => 16#0000#),
+           (16#0067#, 16#0062#, 16#006B#, others => 16#0000#),
          others => <>);
-   --  GBK
+   --  gbk
 
    N416 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0039#, 16#0033#, 16#0036#,
+           (16#0063#, 16#0070#, 16#0039#, 16#0033#, 16#0036#,
             others => 16#0000#),
          others => <>);
-   --  CP936
+   --  cp936
 
    N417 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#004D#, 16#0053#, 16#0039#, 16#0033#, 16#0036#,
+           (16#006D#, 16#0073#, 16#0039#, 16#0033#, 16#0036#,
             others => 16#0000#),
          others => <>);
-   --  MS936
+   --  ms936
 
    N418 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0057#, 16#0049#, 16#004E#, 16#0044#, 16#004F#,
-            16#0057#, 16#0053#, 16#0039#, 16#0033#, 16#0036#,
+           (16#0077#, 16#0069#, 16#006E#, 16#0064#, 16#006F#,
+            16#0077#, 16#0073#, 16#0039#, 16#0033#, 16#0036#,
             others => 16#0000#),
          others => <>);
-   --  WINDOWS936
+   --  windows936
 
    N419 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0047#, 16#0042#, 16#0031#, 16#0038#, 16#0030#,
+           (16#0067#, 16#0062#, 16#0031#, 16#0038#, 16#0030#,
             16#0033#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  GB18030
+   --  gb18030
 
    N420 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#004F#, 16#0053#, 16#0044#, 16#0045#, 16#0042#,
-            16#0043#, 16#0044#, 16#0049#, 16#0043#, 16#0044#,
-            16#0046#, 16#0034#, 16#0031#, 16#0035#, others => 16#0000#),
+           (16#006F#, 16#0073#, 16#0064#, 16#0065#, 16#0062#,
+            16#0063#, 16#0064#, 16#0069#, 16#0063#, 16#0064#,
+            16#0066#, 16#0034#, 16#0031#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  OSDEBCDICDF415
+   --  osdebcdicdf415
 
    N421 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#004F#, 16#0053#, 16#0044#, 16#0045#, 16#0042#,
-            16#0043#, 16#0044#, 16#0049#, 16#0043#, 16#0044#,
-            16#0046#, 16#0033#, 16#0049#, 16#0052#, 16#0056#,
+           (16#006F#, 16#0073#, 16#0064#, 16#0065#, 16#0062#,
+            16#0063#, 16#0064#, 16#0069#, 16#0063#, 16#0064#,
+            16#0066#, 16#0033#, 16#0069#, 16#0072#, 16#0076#,
             others => 16#0000#),
          others => <>);
-   --  OSDEBCDICDF3IRV
+   --  osdebcdicdf3irv
 
    N422 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#004F#, 16#0053#, 16#0044#, 16#0045#, 16#0042#,
-            16#0043#, 16#0044#, 16#0049#, 16#0043#, 16#0044#,
-            16#0046#, 16#0034#, 16#0031#, others => 16#0000#),
+           (16#006F#, 16#0073#, 16#0064#, 16#0065#, 16#0062#,
+            16#0063#, 16#0064#, 16#0069#, 16#0063#, 16#0064#,
+            16#0066#, 16#0034#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  OSDEBCDICDF41
+   --  osdebcdicdf41
 
    N423 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0031#, 16#0031#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0031#, 16#0031#,
             16#0035#, 16#0034#, 16#0038#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISO115481
+   --  iso115481
 
    N424 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0054#, 16#0052#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0074#, 16#0072#,
             16#0031#, 16#0031#, 16#0035#, 16#0034#, 16#0038#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOTR115481
+   --  isotr115481
 
    N425 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0053#, 16#004F#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0073#, 16#006F#,
             16#0031#, 16#0031#, 16#0035#, 16#0034#, 16#0038#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  CSISO115481
+   --  csiso115481
 
    N426 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#004B#, 16#005A#, 16#0031#, 16#0030#, 16#0034#,
+           (16#006B#, 16#007A#, 16#0031#, 16#0030#, 16#0034#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  KZ1048
+   --  kz1048
 
    N427 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0053#, 16#0054#, 16#0052#, 16#004B#, 16#0031#,
+           (16#0073#, 16#0074#, 16#0072#, 16#006B#, 16#0031#,
             16#0030#, 16#0034#, 16#0038#, 16#0032#, 16#0030#,
             16#0030#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  STRK10482002
+   --  strk10482002
 
    N428 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0052#, 16#004B#, 16#0031#, 16#0030#, 16#0034#,
+           (16#0072#, 16#006B#, 16#0031#, 16#0030#, 16#0034#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  RK1048
+   --  rk1048
 
    N429 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#004B#, 16#005A#, 16#0031#,
+           (16#0063#, 16#0073#, 16#006B#, 16#007A#, 16#0031#,
             16#0030#, 16#0034#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CSKZ1048
+   --  cskz1048
 
    N430 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0031#, 16#0030#,
-            16#0036#, 16#0034#, 16#0036#, 16#0055#, 16#0043#,
-            16#0053#, 16#0032#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0031#, 16#0030#,
+            16#0036#, 16#0034#, 16#0036#, 16#0075#, 16#0063#,
+            16#0073#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  ISO10646UCS2
+   --  iso10646ucs2
 
    N431 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#004E#, 16#0049#,
-            16#0043#, 16#004F#, 16#0044#, 16#0045#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0075#, 16#006E#, 16#0069#,
+            16#0063#, 16#006F#, 16#0064#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  CSUNICODE
+   --  csunicode
 
    N432 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0031#, 16#0030#,
-            16#0036#, 16#0034#, 16#0036#, 16#0055#, 16#0043#,
-            16#0053#, 16#0034#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0031#, 16#0030#,
+            16#0036#, 16#0034#, 16#0036#, 16#0075#, 16#0063#,
+            16#0073#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  ISO10646UCS4
+   --  iso10646ucs4
 
    N433 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#0043#, 16#0053#,
+           (16#0063#, 16#0073#, 16#0075#, 16#0063#, 16#0073#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  CSUCS4
+   --  csucs4
 
    N434 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0031#, 16#0030#,
-            16#0036#, 16#0034#, 16#0036#, 16#0055#, 16#0043#,
-            16#0053#, 16#0042#, 16#0041#, 16#0053#, 16#0049#,
-            16#0043#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0031#, 16#0030#,
+            16#0036#, 16#0034#, 16#0036#, 16#0075#, 16#0063#,
+            16#0073#, 16#0062#, 16#0061#, 16#0073#, 16#0069#,
+            16#0063#, others => 16#0000#),
          others => <>);
-   --  ISO10646UCSBASIC
+   --  iso10646ucsbasic
 
    N435 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#004E#, 16#0049#,
-            16#0043#, 16#004F#, 16#0044#, 16#0045#, 16#0041#,
-            16#0053#, 16#0043#, 16#0049#, 16#0049#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0075#, 16#006E#, 16#0069#,
+            16#0063#, 16#006F#, 16#0064#, 16#0065#, 16#0061#,
+            16#0073#, 16#0063#, 16#0069#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  CSUNICODEASCII
+   --  csunicodeascii
 
    N436 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 21,
          Length => 21,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0031#, 16#0030#,
-            16#0036#, 16#0034#, 16#0036#, 16#0055#, 16#004E#,
-            16#0049#, 16#0043#, 16#004F#, 16#0044#, 16#0045#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0031#, 16#0030#,
+            16#0036#, 16#0034#, 16#0036#, 16#0075#, 16#006E#,
+            16#0069#, 16#0063#, 16#006F#, 16#0064#, 16#0065#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  ISO10646UNICODELATIN1
+   --  iso10646unicodelatin1
 
    N437 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#004E#, 16#0049#,
-            16#0043#, 16#004F#, 16#0044#, 16#0045#, 16#004C#,
-            16#0041#, 16#0054#, 16#0049#, 16#004E#, 16#0031#,
+           (16#0063#, 16#0073#, 16#0075#, 16#006E#, 16#0069#,
+            16#0063#, 16#006F#, 16#0064#, 16#0065#, 16#006C#,
+            16#0061#, 16#0074#, 16#0069#, 16#006E#, 16#0031#,
             others => 16#0000#),
          others => <>);
-   --  CSUNICODELATIN1
+   --  csunicodelatin1
 
    N438 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0031#, 16#0030#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0031#, 16#0030#,
             16#0036#, 16#0034#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  ISO10646
+   --  iso10646
 
    N439 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0055#, 16#004E#,
-            16#0049#, 16#0043#, 16#004F#, 16#0044#, 16#0045#,
-            16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0032#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0075#, 16#006E#,
+            16#0069#, 16#0063#, 16#006F#, 16#0064#, 16#0065#,
+            16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0032#,
             16#0036#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISOUNICODEIBM1261
+   --  isounicodeibm1261
 
    N440 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#004E#, 16#0049#,
-            16#0043#, 16#004F#, 16#0044#, 16#0045#, 16#0049#,
-            16#0042#, 16#004D#, 16#0031#, 16#0032#, 16#0036#,
+           (16#0063#, 16#0073#, 16#0075#, 16#006E#, 16#0069#,
+            16#0063#, 16#006F#, 16#0064#, 16#0065#, 16#0069#,
+            16#0062#, 16#006D#, 16#0031#, 16#0032#, 16#0036#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  CSUNICODEIBM1261
+   --  csunicodeibm1261
 
    N441 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0055#, 16#004E#,
-            16#0049#, 16#0043#, 16#004F#, 16#0044#, 16#0045#,
-            16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0032#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0075#, 16#006E#,
+            16#0069#, 16#0063#, 16#006F#, 16#0064#, 16#0065#,
+            16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0032#,
             16#0036#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  ISOUNICODEIBM1268
+   --  isounicodeibm1268
 
    N442 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#004E#, 16#0049#,
-            16#0043#, 16#004F#, 16#0044#, 16#0045#, 16#0049#,
-            16#0042#, 16#004D#, 16#0031#, 16#0032#, 16#0036#,
+           (16#0063#, 16#0073#, 16#0075#, 16#006E#, 16#0069#,
+            16#0063#, 16#006F#, 16#0064#, 16#0065#, 16#0069#,
+            16#0062#, 16#006D#, 16#0031#, 16#0032#, 16#0036#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  CSUNICODEIBM1268
+   --  csunicodeibm1268
 
    N443 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0055#, 16#004E#,
-            16#0049#, 16#0043#, 16#004F#, 16#0044#, 16#0045#,
-            16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0032#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0075#, 16#006E#,
+            16#0069#, 16#0063#, 16#006F#, 16#0064#, 16#0065#,
+            16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0032#,
             16#0037#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  ISOUNICODEIBM1276
+   --  isounicodeibm1276
 
    N444 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#004E#, 16#0049#,
-            16#0043#, 16#004F#, 16#0044#, 16#0045#, 16#0049#,
-            16#0042#, 16#004D#, 16#0031#, 16#0032#, 16#0037#,
+           (16#0063#, 16#0073#, 16#0075#, 16#006E#, 16#0069#,
+            16#0063#, 16#006F#, 16#0064#, 16#0065#, 16#0069#,
+            16#0062#, 16#006D#, 16#0031#, 16#0032#, 16#0037#,
             16#0036#, others => 16#0000#),
          others => <>);
-   --  CSUNICODEIBM1276
+   --  csunicodeibm1276
 
    N445 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0055#, 16#004E#,
-            16#0049#, 16#0043#, 16#004F#, 16#0044#, 16#0045#,
-            16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0032#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0075#, 16#006E#,
+            16#0069#, 16#0063#, 16#006F#, 16#0064#, 16#0065#,
+            16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0032#,
             16#0036#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  ISOUNICODEIBM1264
+   --  isounicodeibm1264
 
    N446 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#004E#, 16#0049#,
-            16#0043#, 16#004F#, 16#0044#, 16#0045#, 16#0049#,
-            16#0042#, 16#004D#, 16#0031#, 16#0032#, 16#0036#,
+           (16#0063#, 16#0073#, 16#0075#, 16#006E#, 16#0069#,
+            16#0063#, 16#006F#, 16#0064#, 16#0065#, 16#0069#,
+            16#0062#, 16#006D#, 16#0031#, 16#0032#, 16#0036#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  CSUNICODEIBM1264
+   --  csunicodeibm1264
 
    N447 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0055#, 16#004E#,
-            16#0049#, 16#0043#, 16#004F#, 16#0044#, 16#0045#,
-            16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0032#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0075#, 16#006E#,
+            16#0069#, 16#0063#, 16#006F#, 16#0064#, 16#0065#,
+            16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0032#,
             16#0036#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  ISOUNICODEIBM1265
+   --  isounicodeibm1265
 
    N448 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#004E#, 16#0049#,
-            16#0043#, 16#004F#, 16#0044#, 16#0045#, 16#0049#,
-            16#0042#, 16#004D#, 16#0031#, 16#0032#, 16#0036#,
+           (16#0063#, 16#0073#, 16#0075#, 16#006E#, 16#0069#,
+            16#0063#, 16#006F#, 16#0064#, 16#0065#, 16#0069#,
+            16#0062#, 16#006D#, 16#0031#, 16#0032#, 16#0036#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  CSUNICODEIBM1265
+   --  csunicodeibm1265
 
    N449 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0055#, 16#004E#, 16#0049#, 16#0043#, 16#004F#,
-            16#0044#, 16#0045#, 16#0031#, 16#0031#, others => 16#0000#),
+           (16#0075#, 16#006E#, 16#0069#, 16#0063#, 16#006F#,
+            16#0064#, 16#0065#, 16#0031#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  UNICODE11
+   --  unicode11
 
    N450 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#004E#, 16#0049#,
-            16#0043#, 16#004F#, 16#0044#, 16#0045#, 16#0031#,
+           (16#0063#, 16#0073#, 16#0075#, 16#006E#, 16#0069#,
+            16#0063#, 16#006F#, 16#0064#, 16#0065#, 16#0031#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  CSUNICODE11
+   --  csunicode11
 
    N451 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0053#, 16#0043#, 16#0053#, 16#0055#, others => 16#0000#),
+           (16#0073#, 16#0063#, 16#0073#, 16#0075#, others => 16#0000#),
          others => <>);
-   --  SCSU
+   --  scsu
 
    N452 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0055#, 16#0054#, 16#0046#, 16#0037#, others => 16#0000#),
+           (16#0075#, 16#0074#, 16#0066#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  UTF7
+   --  utf7
 
    N453 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0055#, 16#0054#, 16#0046#, 16#0031#, 16#0036#,
-            16#0042#, 16#0045#, others => 16#0000#),
+           (16#0075#, 16#0074#, 16#0066#, 16#0031#, 16#0036#,
+            16#0062#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  UTF16BE
+   --  utf16be
 
    N454 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0055#, 16#0054#, 16#0046#, 16#0031#, 16#0036#,
-            16#004C#, 16#0045#, others => 16#0000#),
+           (16#0075#, 16#0074#, 16#0066#, 16#0031#, 16#0036#,
+            16#006C#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  UTF16LE
+   --  utf16le
 
    N455 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0055#, 16#0054#, 16#0046#, 16#0031#, 16#0036#,
+           (16#0075#, 16#0074#, 16#0066#, 16#0031#, 16#0036#,
             others => 16#0000#),
          others => <>);
-   --  UTF16
+   --  utf16
 
    N456 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0045#, 16#0053#, 16#0055#, 16#0038#,
+           (16#0063#, 16#0065#, 16#0073#, 16#0075#, 16#0038#,
             others => 16#0000#),
          others => <>);
-   --  CESU8
+   --  cesu8
 
    N457 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0043#, 16#0053#, 16#0043#, 16#0045#, 16#0053#,
-            16#0055#, 16#0038#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0063#, 16#0065#, 16#0073#,
+            16#0075#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CSCESU8
+   --  cscesu8
 
    N458 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0055#, 16#0054#, 16#0046#, 16#0033#, 16#0032#,
+           (16#0075#, 16#0074#, 16#0066#, 16#0033#, 16#0032#,
             others => 16#0000#),
          others => <>);
-   --  UTF32
+   --  utf32
 
    N459 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0055#, 16#0054#, 16#0046#, 16#0033#, 16#0032#,
-            16#0042#, 16#0045#, others => 16#0000#),
+           (16#0075#, 16#0074#, 16#0066#, 16#0033#, 16#0032#,
+            16#0062#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  UTF32BE
+   --  utf32be
 
    N460 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0055#, 16#0054#, 16#0046#, 16#0033#, 16#0032#,
-            16#004C#, 16#0045#, others => 16#0000#),
+           (16#0075#, 16#0074#, 16#0066#, 16#0033#, 16#0032#,
+            16#006C#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  UTF32LE
+   --  utf32le
 
    N461 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0042#, 16#004F#, 16#0043#, 16#0055#, 16#0031#,
+           (16#0062#, 16#006F#, 16#0063#, 16#0075#, 16#0031#,
             others => 16#0000#),
          others => <>);
-   --  BOCU1
+   --  bocu1
 
    N462 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0043#, 16#0053#, 16#0042#, 16#004F#, 16#0043#,
-            16#0055#, 16#0031#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0062#, 16#006F#, 16#0063#,
+            16#0075#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSBOCU1
+   --  csbocu1
 
    N463 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 23,
          Length => 23,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
-            16#0035#, 16#0039#, 16#0031#, 16#0057#, 16#0049#,
-            16#004E#, 16#0044#, 16#004F#, 16#0057#, 16#0053#,
-            16#0033#, 16#0030#, 16#004C#, 16#0041#, 16#0054#,
-            16#0049#, 16#004E#, 16#0031#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
+            16#0035#, 16#0039#, 16#0031#, 16#0077#, 16#0069#,
+            16#006E#, 16#0064#, 16#006F#, 16#0077#, 16#0073#,
+            16#0033#, 16#0030#, 16#006C#, 16#0061#, 16#0074#,
+            16#0069#, 16#006E#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISO88591WINDOWS30LATIN1
+   --  iso88591windows30latin1
 
    N464 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0057#, 16#0049#, 16#004E#,
-            16#0044#, 16#004F#, 16#0057#, 16#0053#, 16#0033#,
-            16#0030#, 16#004C#, 16#0041#, 16#0054#, 16#0049#,
-            16#004E#, 16#0031#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0077#, 16#0069#, 16#006E#,
+            16#0064#, 16#006F#, 16#0077#, 16#0073#, 16#0033#,
+            16#0030#, 16#006C#, 16#0061#, 16#0074#, 16#0069#,
+            16#006E#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSWINDOWS30LATIN1
+   --  cswindows30latin1
 
    N465 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 23,
          Length => 23,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
-            16#0035#, 16#0039#, 16#0031#, 16#0057#, 16#0049#,
-            16#004E#, 16#0044#, 16#004F#, 16#0057#, 16#0053#,
-            16#0033#, 16#0031#, 16#004C#, 16#0041#, 16#0054#,
-            16#0049#, 16#004E#, 16#0031#, others => 16#0000#),
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
+            16#0035#, 16#0039#, 16#0031#, 16#0077#, 16#0069#,
+            16#006E#, 16#0064#, 16#006F#, 16#0077#, 16#0073#,
+            16#0033#, 16#0031#, 16#006C#, 16#0061#, 16#0074#,
+            16#0069#, 16#006E#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  ISO88591WINDOWS31LATIN1
+   --  iso88591windows31latin1
 
    N466 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0057#, 16#0049#, 16#004E#,
-            16#0044#, 16#004F#, 16#0057#, 16#0053#, 16#0033#,
-            16#0031#, 16#004C#, 16#0041#, 16#0054#, 16#0049#,
-            16#004E#, 16#0031#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0077#, 16#0069#, 16#006E#,
+            16#0064#, 16#006F#, 16#0077#, 16#0073#, 16#0033#,
+            16#0031#, 16#006C#, 16#0061#, 16#0074#, 16#0069#,
+            16#006E#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSWINDOWS31LATIN1
+   --  cswindows31latin1
 
    N467 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 21,
          Length => 21,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
-            16#0035#, 16#0039#, 16#0032#, 16#0057#, 16#0049#,
-            16#004E#, 16#0044#, 16#004F#, 16#0057#, 16#0053#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
+            16#0035#, 16#0039#, 16#0032#, 16#0077#, 16#0069#,
+            16#006E#, 16#0064#, 16#006F#, 16#0077#, 16#0073#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0032#, others => 16#0000#),
          others => <>);
-   --  ISO88592WINDOWSLATIN2
+   --  iso88592windowslatin2
 
    N468 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0057#, 16#0049#, 16#004E#,
-            16#0044#, 16#004F#, 16#0057#, 16#0053#, 16#0033#,
-            16#0031#, 16#004C#, 16#0041#, 16#0054#, 16#0049#,
-            16#004E#, 16#0032#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0077#, 16#0069#, 16#006E#,
+            16#0064#, 16#006F#, 16#0077#, 16#0073#, 16#0033#,
+            16#0031#, 16#006C#, 16#0061#, 16#0074#, 16#0069#,
+            16#006E#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  CSWINDOWS31LATIN2
+   --  cswindows31latin2
 
    N469 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 21,
          Length => 21,
          Value  =>
-           (16#0049#, 16#0053#, 16#004F#, 16#0038#, 16#0038#,
-            16#0035#, 16#0039#, 16#0039#, 16#0057#, 16#0049#,
-            16#004E#, 16#0044#, 16#004F#, 16#0057#, 16#0053#,
-            16#004C#, 16#0041#, 16#0054#, 16#0049#, 16#004E#,
+           (16#0069#, 16#0073#, 16#006F#, 16#0038#, 16#0038#,
+            16#0035#, 16#0039#, 16#0039#, 16#0077#, 16#0069#,
+            16#006E#, 16#0064#, 16#006F#, 16#0077#, 16#0073#,
+            16#006C#, 16#0061#, 16#0074#, 16#0069#, 16#006E#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  ISO88599WINDOWSLATIN5
+   --  iso88599windowslatin5
 
    N470 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 17,
          Length => 17,
          Value  =>
-           (16#0043#, 16#0053#, 16#0057#, 16#0049#, 16#004E#,
-            16#0044#, 16#004F#, 16#0057#, 16#0053#, 16#0033#,
-            16#0031#, 16#004C#, 16#0041#, 16#0054#, 16#0049#,
-            16#004E#, 16#0035#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0077#, 16#0069#, 16#006E#,
+            16#0064#, 16#006F#, 16#0077#, 16#0073#, 16#0033#,
+            16#0031#, 16#006C#, 16#0061#, 16#0074#, 16#0069#,
+            16#006E#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  CSWINDOWS31LATIN5
+   --  cswindows31latin5
 
    N471 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0048#, 16#0050#, 16#0052#, 16#004F#, 16#004D#,
-            16#0041#, 16#004E#, 16#0038#, others => 16#0000#),
+           (16#0068#, 16#0070#, 16#0072#, 16#006F#, 16#006D#,
+            16#0061#, 16#006E#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  HPROMAN8
+   --  hproman8
 
    N472 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0052#, 16#004F#, 16#004D#, 16#0041#, 16#004E#,
+           (16#0072#, 16#006F#, 16#006D#, 16#0061#, 16#006E#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  ROMAN8
+   --  roman8
 
    N473 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 2,
          Length => 2,
          Value  =>
-           (16#0052#, 16#0038#, others => 16#0000#),
+           (16#0072#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  R8
+   --  r8
 
    N474 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#0048#, 16#0050#, 16#0052#,
-            16#004F#, 16#004D#, 16#0041#, 16#004E#, 16#0038#,
+           (16#0063#, 16#0073#, 16#0068#, 16#0070#, 16#0072#,
+            16#006F#, 16#006D#, 16#0061#, 16#006E#, 16#0038#,
             others => 16#0000#),
          others => <>);
-   --  CSHPROMAN8
+   --  cshproman8
 
    N475 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 21,
          Length => 21,
          Value  =>
-           (16#0041#, 16#0044#, 16#004F#, 16#0042#, 16#0045#,
-            16#0053#, 16#0054#, 16#0041#, 16#004E#, 16#0044#,
-            16#0041#, 16#0052#, 16#0044#, 16#0045#, 16#004E#,
-            16#0043#, 16#004F#, 16#0044#, 16#0049#, 16#004E#,
-            16#0047#, others => 16#0000#),
+           (16#0061#, 16#0064#, 16#006F#, 16#0062#, 16#0065#,
+            16#0073#, 16#0074#, 16#0061#, 16#006E#, 16#0064#,
+            16#0061#, 16#0072#, 16#0064#, 16#0065#, 16#006E#,
+            16#0063#, 16#006F#, 16#0064#, 16#0069#, 16#006E#,
+            16#0067#, others => 16#0000#),
          others => <>);
-   --  ADOBESTANDARDENCODING
+   --  adobestandardencoding
 
    N476 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 23,
          Length => 23,
          Value  =>
-           (16#0043#, 16#0053#, 16#0041#, 16#0044#, 16#004F#,
-            16#0042#, 16#0045#, 16#0053#, 16#0054#, 16#0041#,
-            16#004E#, 16#0044#, 16#0041#, 16#0052#, 16#0044#,
-            16#0045#, 16#004E#, 16#0043#, 16#004F#, 16#0044#,
-            16#0049#, 16#004E#, 16#0047#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0061#, 16#0064#, 16#006F#,
+            16#0062#, 16#0065#, 16#0073#, 16#0074#, 16#0061#,
+            16#006E#, 16#0064#, 16#0061#, 16#0072#, 16#0064#,
+            16#0065#, 16#006E#, 16#0063#, 16#006F#, 16#0064#,
+            16#0069#, 16#006E#, 16#0067#, others => 16#0000#),
          others => <>);
-   --  CSADOBESTANDARDENCODING
+   --  csadobestandardencoding
 
    N477 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0056#, 16#0045#, 16#004E#, 16#0054#, 16#0055#,
-            16#0052#, 16#0041#, 16#0055#, 16#0053#, others => 16#0000#),
+           (16#0076#, 16#0065#, 16#006E#, 16#0074#, 16#0075#,
+            16#0072#, 16#0061#, 16#0075#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  VENTURAUS
+   --  venturaus
 
    N478 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0056#, 16#0045#, 16#004E#,
-            16#0054#, 16#0055#, 16#0052#, 16#0041#, 16#0055#,
-            16#0053#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0076#, 16#0065#, 16#006E#,
+            16#0074#, 16#0075#, 16#0072#, 16#0061#, 16#0075#,
+            16#0073#, others => 16#0000#),
          others => <>);
-   --  CSVENTURAUS
+   --  csventuraus
 
    N479 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 20,
          Length => 20,
          Value  =>
-           (16#0056#, 16#0045#, 16#004E#, 16#0054#, 16#0055#,
-            16#0052#, 16#0041#, 16#0049#, 16#004E#, 16#0054#,
-            16#0045#, 16#0052#, 16#004E#, 16#0041#, 16#0054#,
-            16#0049#, 16#004F#, 16#004E#, 16#0041#, 16#004C#,
+           (16#0076#, 16#0065#, 16#006E#, 16#0074#, 16#0075#,
+            16#0072#, 16#0061#, 16#0069#, 16#006E#, 16#0074#,
+            16#0065#, 16#0072#, 16#006E#, 16#0061#, 16#0074#,
+            16#0069#, 16#006F#, 16#006E#, 16#0061#, 16#006C#,
             others => 16#0000#),
          others => <>);
-   --  VENTURAINTERNATIONAL
+   --  venturainternational
 
    N480 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 22,
          Length => 22,
          Value  =>
-           (16#0043#, 16#0053#, 16#0056#, 16#0045#, 16#004E#,
-            16#0054#, 16#0055#, 16#0052#, 16#0041#, 16#0049#,
-            16#004E#, 16#0054#, 16#0045#, 16#0052#, 16#004E#,
-            16#0041#, 16#0054#, 16#0049#, 16#004F#, 16#004E#,
-            16#0041#, 16#004C#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0076#, 16#0065#, 16#006E#,
+            16#0074#, 16#0075#, 16#0072#, 16#0061#, 16#0069#,
+            16#006E#, 16#0074#, 16#0065#, 16#0072#, 16#006E#,
+            16#0061#, 16#0074#, 16#0069#, 16#006F#, 16#006E#,
+            16#0061#, 16#006C#, others => 16#0000#),
          others => <>);
-   --  CSVENTURAINTERNATIONAL
+   --  csventurainternational
 
    N481 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0044#, 16#0045#, 16#0043#, 16#004D#, 16#0043#,
-            16#0053#, others => 16#0000#),
+           (16#0064#, 16#0065#, 16#0063#, 16#006D#, 16#0063#,
+            16#0073#, others => 16#0000#),
          others => <>);
-   --  DECMCS
+   --  decmcs
 
    N482 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#0044#, 16#0045#, 16#0043#, others => 16#0000#),
+           (16#0064#, 16#0065#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  DEC
+   --  dec
 
    N483 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0044#, 16#0045#, 16#0043#,
-            16#004D#, 16#0043#, 16#0053#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0064#, 16#0065#, 16#0063#,
+            16#006D#, 16#0063#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  CSDECMCS
+   --  csdecmcs
 
    N484 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0035#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0035#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  IBM850
+   --  ibm850
 
    N485 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0035#, 16#0030#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0035#, 16#0030#,
             others => 16#0000#),
          others => <>);
-   --  CP850
+   --  cp850
 
    N486 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -5185,57 +5186,57 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#0043#, 16#0053#, 16#0050#, 16#0043#, 16#0038#,
-            16#0035#, 16#0030#, 16#004D#, 16#0055#, 16#004C#,
-            16#0054#, 16#0049#, 16#004C#, 16#0049#, 16#004E#,
-            16#0047#, 16#0055#, 16#0041#, 16#004C#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0070#, 16#0063#, 16#0038#,
+            16#0035#, 16#0030#, 16#006D#, 16#0075#, 16#006C#,
+            16#0074#, 16#0069#, 16#006C#, 16#0069#, 16#006E#,
+            16#0067#, 16#0075#, 16#0061#, 16#006C#, others => 16#0000#),
          others => <>);
-   --  CSPC850MULTILINGUAL
+   --  cspc850multilingual
 
    N488 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 18,
          Length => 18,
          Value  =>
-           (16#0050#, 16#0043#, 16#0038#, 16#0044#, 16#0041#,
-            16#004E#, 16#0049#, 16#0053#, 16#0048#, 16#004E#,
-            16#004F#, 16#0052#, 16#0057#, 16#0045#, 16#0047#,
-            16#0049#, 16#0041#, 16#004E#, others => 16#0000#),
+           (16#0070#, 16#0063#, 16#0038#, 16#0064#, 16#0061#,
+            16#006E#, 16#0069#, 16#0073#, 16#0068#, 16#006E#,
+            16#006F#, 16#0072#, 16#0077#, 16#0065#, 16#0067#,
+            16#0069#, 16#0061#, 16#006E#, others => 16#0000#),
          others => <>);
-   --  PC8DANISHNORWEGIAN
+   --  pc8danishnorwegian
 
    N489 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 20,
          Length => 20,
          Value  =>
-           (16#0043#, 16#0053#, 16#0050#, 16#0043#, 16#0038#,
-            16#0044#, 16#0041#, 16#004E#, 16#0049#, 16#0053#,
-            16#0048#, 16#004E#, 16#004F#, 16#0052#, 16#0057#,
-            16#0045#, 16#0047#, 16#0049#, 16#0041#, 16#004E#,
+           (16#0063#, 16#0073#, 16#0070#, 16#0063#, 16#0038#,
+            16#0064#, 16#0061#, 16#006E#, 16#0069#, 16#0073#,
+            16#0068#, 16#006E#, 16#006F#, 16#0072#, 16#0077#,
+            16#0065#, 16#0067#, 16#0069#, 16#0061#, 16#006E#,
             others => 16#0000#),
          others => <>);
-   --  CSPC8DANISHNORWEGIAN
+   --  cspc8danishnorwegian
 
    N490 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0036#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0036#,
             16#0032#, others => 16#0000#),
          others => <>);
-   --  IBM862
+   --  ibm862
 
    N491 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0036#, 16#0032#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0036#, 16#0032#,
             others => 16#0000#),
          others => <>);
-   --  CP862
+   --  cp862
 
    N492 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -5251,1023 +5252,1023 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 18,
          Length => 18,
          Value  =>
-           (16#0043#, 16#0053#, 16#0050#, 16#0043#, 16#0038#,
-            16#0036#, 16#0032#, 16#004C#, 16#0041#, 16#0054#,
-            16#0049#, 16#004E#, 16#0048#, 16#0045#, 16#0042#,
-            16#0052#, 16#0045#, 16#0057#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0070#, 16#0063#, 16#0038#,
+            16#0036#, 16#0032#, 16#006C#, 16#0061#, 16#0074#,
+            16#0069#, 16#006E#, 16#0068#, 16#0065#, 16#0062#,
+            16#0072#, 16#0065#, 16#0077#, others => 16#0000#),
          others => <>);
-   --  CSPC862LATINHEBREW
+   --  cspc862latinhebrew
 
    N494 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0050#, 16#0043#, 16#0038#, 16#0054#, 16#0055#,
-            16#0052#, 16#004B#, 16#0049#, 16#0053#, 16#0048#,
+           (16#0070#, 16#0063#, 16#0038#, 16#0074#, 16#0075#,
+            16#0072#, 16#006B#, 16#0069#, 16#0073#, 16#0068#,
             others => 16#0000#),
          others => <>);
-   --  PC8TURKISH
+   --  pc8turkish
 
    N495 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0043#, 16#0053#, 16#0050#, 16#0043#, 16#0038#,
-            16#0054#, 16#0055#, 16#0052#, 16#004B#, 16#0049#,
-            16#0053#, 16#0048#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0070#, 16#0063#, 16#0038#,
+            16#0074#, 16#0075#, 16#0072#, 16#006B#, 16#0069#,
+            16#0073#, 16#0068#, others => 16#0000#),
          others => <>);
-   --  CSPC8TURKISH
+   --  cspc8turkish
 
    N496 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0053#, 16#0059#,
-            16#004D#, 16#0042#, 16#004F#, 16#004C#, 16#0053#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0073#, 16#0079#,
+            16#006D#, 16#0062#, 16#006F#, 16#006C#, 16#0073#,
             others => 16#0000#),
          others => <>);
-   --  IBMSYMBOLS
+   --  ibmsymbols
 
    N497 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
-            16#0053#, 16#0059#, 16#004D#, 16#0042#, 16#004F#,
-            16#004C#, 16#0053#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
+            16#0073#, 16#0079#, 16#006D#, 16#0062#, 16#006F#,
+            16#006C#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  CSIBMSYMBOLS
+   --  csibmsymbols
 
    N498 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0054#, 16#0048#,
-            16#0041#, 16#0049#, others => 16#0000#),
+           (16#0069#, 16#0062#, 16#006D#, 16#0074#, 16#0068#,
+            16#0061#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  IBMTHAI
+   --  ibmthai
 
    N499 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
-            16#0054#, 16#0048#, 16#0041#, 16#0049#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
+            16#0074#, 16#0068#, 16#0061#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  CSIBMTHAI
+   --  csibmthai
 
    N500 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0048#, 16#0050#, 16#004C#, 16#0045#, 16#0047#,
-            16#0041#, 16#004C#, others => 16#0000#),
+           (16#0068#, 16#0070#, 16#006C#, 16#0065#, 16#0067#,
+            16#0061#, 16#006C#, others => 16#0000#),
          others => <>);
-   --  HPLEGAL
+   --  hplegal
 
    N501 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0053#, 16#0048#, 16#0050#, 16#004C#,
-            16#0045#, 16#0047#, 16#0041#, 16#004C#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0068#, 16#0070#, 16#006C#,
+            16#0065#, 16#0067#, 16#0061#, 16#006C#, others => 16#0000#),
          others => <>);
-   --  CSHPLEGAL
+   --  cshplegal
 
    N502 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0048#, 16#0050#, 16#0050#, 16#0049#, 16#0046#,
-            16#004F#, 16#004E#, 16#0054#, others => 16#0000#),
+           (16#0068#, 16#0070#, 16#0070#, 16#0069#, 16#0066#,
+            16#006F#, 16#006E#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  HPPIFONT
+   --  hppifont
 
    N503 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#0048#, 16#0050#, 16#0050#,
-            16#0049#, 16#0046#, 16#004F#, 16#004E#, 16#0054#,
+           (16#0063#, 16#0073#, 16#0068#, 16#0070#, 16#0070#,
+            16#0069#, 16#0066#, 16#006F#, 16#006E#, 16#0074#,
             others => 16#0000#),
          others => <>);
-   --  CSHPPIFONT
+   --  cshppifont
 
    N504 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0048#, 16#0050#, 16#004D#, 16#0041#, 16#0054#,
-            16#0048#, 16#0038#, others => 16#0000#),
+           (16#0068#, 16#0070#, 16#006D#, 16#0061#, 16#0074#,
+            16#0068#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  HPMATH8
+   --  hpmath8
 
    N505 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0053#, 16#0048#, 16#0050#, 16#004D#,
-            16#0041#, 16#0054#, 16#0048#, 16#0038#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0068#, 16#0070#, 16#006D#,
+            16#0061#, 16#0074#, 16#0068#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CSHPMATH8
+   --  cshpmath8
 
    N506 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#0041#, 16#0044#, 16#004F#, 16#0042#, 16#0045#,
-            16#0053#, 16#0059#, 16#004D#, 16#0042#, 16#004F#,
-            16#004C#, 16#0045#, 16#004E#, 16#0043#, 16#004F#,
-            16#0044#, 16#0049#, 16#004E#, 16#0047#, others => 16#0000#),
+           (16#0061#, 16#0064#, 16#006F#, 16#0062#, 16#0065#,
+            16#0073#, 16#0079#, 16#006D#, 16#0062#, 16#006F#,
+            16#006C#, 16#0065#, 16#006E#, 16#0063#, 16#006F#,
+            16#0064#, 16#0069#, 16#006E#, 16#0067#, others => 16#0000#),
          others => <>);
-   --  ADOBESYMBOLENCODING
+   --  adobesymbolencoding
 
    N507 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#0048#, 16#0050#, 16#0050#,
-            16#0053#, 16#004D#, 16#0041#, 16#0054#, 16#0048#,
+           (16#0063#, 16#0073#, 16#0068#, 16#0070#, 16#0070#,
+            16#0073#, 16#006D#, 16#0061#, 16#0074#, 16#0068#,
             others => 16#0000#),
          others => <>);
-   --  CSHPPSMATH
+   --  cshppsmath
 
    N508 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0048#, 16#0050#, 16#0044#, 16#0045#, 16#0053#,
-            16#004B#, 16#0054#, 16#004F#, 16#0050#, others => 16#0000#),
+           (16#0068#, 16#0070#, 16#0064#, 16#0065#, 16#0073#,
+            16#006B#, 16#0074#, 16#006F#, 16#0070#, others => 16#0000#),
          others => <>);
-   --  HPDESKTOP
+   --  hpdesktop
 
    N509 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0048#, 16#0050#, 16#0044#,
-            16#0045#, 16#0053#, 16#004B#, 16#0054#, 16#004F#,
-            16#0050#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0068#, 16#0070#, 16#0064#,
+            16#0065#, 16#0073#, 16#006B#, 16#0074#, 16#006F#,
+            16#0070#, others => 16#0000#),
          others => <>);
-   --  CSHPDESKTOP
+   --  cshpdesktop
 
    N510 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0056#, 16#0045#, 16#004E#, 16#0054#, 16#0055#,
-            16#0052#, 16#0041#, 16#004D#, 16#0041#, 16#0054#,
-            16#0048#, others => 16#0000#),
+           (16#0076#, 16#0065#, 16#006E#, 16#0074#, 16#0075#,
+            16#0072#, 16#0061#, 16#006D#, 16#0061#, 16#0074#,
+            16#0068#, others => 16#0000#),
          others => <>);
-   --  VENTURAMATH
+   --  venturamath
 
    N511 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0056#, 16#0045#, 16#004E#,
-            16#0054#, 16#0055#, 16#0052#, 16#0041#, 16#004D#,
-            16#0041#, 16#0054#, 16#0048#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0076#, 16#0065#, 16#006E#,
+            16#0074#, 16#0075#, 16#0072#, 16#0061#, 16#006D#,
+            16#0061#, 16#0074#, 16#0068#, others => 16#0000#),
          others => <>);
-   --  CSVENTURAMATH
+   --  csventuramath
 
    N512 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 19,
          Length => 19,
          Value  =>
-           (16#004D#, 16#0049#, 16#0043#, 16#0052#, 16#004F#,
-            16#0053#, 16#004F#, 16#0046#, 16#0054#, 16#0050#,
-            16#0055#, 16#0042#, 16#004C#, 16#0049#, 16#0053#,
-            16#0048#, 16#0049#, 16#004E#, 16#0047#, others => 16#0000#),
+           (16#006D#, 16#0069#, 16#0063#, 16#0072#, 16#006F#,
+            16#0073#, 16#006F#, 16#0066#, 16#0074#, 16#0070#,
+            16#0075#, 16#0062#, 16#006C#, 16#0069#, 16#0073#,
+            16#0068#, 16#0069#, 16#006E#, 16#0067#, others => 16#0000#),
          others => <>);
-   --  MICROSOFTPUBLISHING
+   --  microsoftpublishing
 
    N513 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 21,
          Length => 21,
          Value  =>
-           (16#0043#, 16#0053#, 16#004D#, 16#0049#, 16#0043#,
-            16#0052#, 16#004F#, 16#0053#, 16#004F#, 16#0046#,
-            16#0054#, 16#0050#, 16#0055#, 16#0042#, 16#004C#,
-            16#0049#, 16#0053#, 16#0048#, 16#0049#, 16#004E#,
-            16#0047#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#006D#, 16#0069#, 16#0063#,
+            16#0072#, 16#006F#, 16#0073#, 16#006F#, 16#0066#,
+            16#0074#, 16#0070#, 16#0075#, 16#0062#, 16#006C#,
+            16#0069#, 16#0073#, 16#0068#, 16#0069#, 16#006E#,
+            16#0067#, others => 16#0000#),
          others => <>);
-   --  CSMICROSOFTPUBLISHING
+   --  csmicrosoftpublishing
 
    N514 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0057#, 16#0049#, 16#004E#, 16#0044#, 16#004F#,
-            16#0057#, 16#0053#, 16#0033#, 16#0031#, 16#004A#,
+           (16#0077#, 16#0069#, 16#006E#, 16#0064#, 16#006F#,
+            16#0077#, 16#0073#, 16#0033#, 16#0031#, 16#006A#,
             others => 16#0000#),
          others => <>);
-   --  WINDOWS31J
+   --  windows31j
 
    N515 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0043#, 16#0053#, 16#0057#, 16#0049#, 16#004E#,
-            16#0044#, 16#004F#, 16#0057#, 16#0053#, 16#0033#,
-            16#0031#, 16#004A#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0077#, 16#0069#, 16#006E#,
+            16#0064#, 16#006F#, 16#0077#, 16#0073#, 16#0033#,
+            16#0031#, 16#006A#, others => 16#0000#),
          others => <>);
-   --  CSWINDOWS31J
+   --  cswindows31j
 
    N516 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0047#, 16#0042#, 16#0032#, 16#0033#, 16#0031#,
+           (16#0067#, 16#0062#, 16#0032#, 16#0033#, 16#0031#,
             16#0032#, others => 16#0000#),
          others => <>);
-   --  GB2312
+   --  gb2312
 
    N517 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0047#, 16#0042#, 16#0032#,
+           (16#0063#, 16#0073#, 16#0067#, 16#0062#, 16#0032#,
             16#0033#, 16#0031#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  CSGB2312
+   --  csgb2312
 
    N518 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0042#, 16#0049#, 16#0047#, 16#0035#, others => 16#0000#),
+           (16#0062#, 16#0069#, 16#0067#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  BIG5
+   --  big5
 
    N519 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0053#, 16#0042#, 16#0049#, 16#0047#,
+           (16#0063#, 16#0073#, 16#0062#, 16#0069#, 16#0067#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  CSBIG5
+   --  csbig5
 
    N520 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#004D#, 16#0041#, 16#0043#, 16#0049#, 16#004E#,
-            16#0054#, 16#004F#, 16#0053#, 16#0048#, others => 16#0000#),
+           (16#006D#, 16#0061#, 16#0063#, 16#0069#, 16#006E#,
+            16#0074#, 16#006F#, 16#0073#, 16#0068#, others => 16#0000#),
          others => <>);
-   --  MACINTOSH
+   --  macintosh
 
    N521 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#004D#, 16#0041#, 16#0043#, others => 16#0000#),
+           (16#006D#, 16#0061#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  MAC
+   --  mac
 
    N522 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#004D#, 16#0041#, 16#0043#,
-            16#0049#, 16#004E#, 16#0054#, 16#004F#, 16#0053#,
-            16#0048#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#006D#, 16#0061#, 16#0063#,
+            16#0069#, 16#006E#, 16#0074#, 16#006F#, 16#0073#,
+            16#0068#, others => 16#0000#),
          others => <>);
-   --  CSMACINTOSH
+   --  csmacintosh
 
    N523 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0033#, 16#0037#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0033#, 16#0037#,
             others => 16#0000#),
          others => <>);
-   --  IBM37
+   --  ibm37
 
    N524 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0043#, 16#0050#, 16#0033#, 16#0037#, others => 16#0000#),
+           (16#0063#, 16#0070#, 16#0033#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  CP37
+   --  cp37
 
    N525 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0055#, 16#0053#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0075#, 16#0073#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPUS
+   --  ebcdiccpus
 
    N526 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0043#, 16#0041#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0063#, 16#0061#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPCA
+   --  ebcdiccpca
 
    N527 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0057#, 16#0054#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0077#, 16#0074#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPWT
+   --  ebcdiccpwt
 
    N528 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#004E#, 16#004C#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#006E#, 16#006C#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPNL
+   --  ebcdiccpnl
 
    N529 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0033#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  CSIBM37
+   --  csibm37
 
    N530 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0033#, 16#0038#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0033#, 16#0038#,
             others => 16#0000#),
          others => <>);
-   --  IBM38
+   --  ibm38
 
    N531 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0049#, 16#004E#, 16#0054#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0069#, 16#006E#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  EBCDICINT
+   --  ebcdicint
 
    N532 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0043#, 16#0050#, 16#0033#, 16#0038#, others => 16#0000#),
+           (16#0063#, 16#0070#, 16#0033#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CP38
+   --  cp38
 
    N533 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0033#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CSIBM38
+   --  csibm38
 
    N534 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0032#, 16#0037#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0032#, 16#0037#,
             16#0033#, others => 16#0000#),
          others => <>);
-   --  IBM273
+   --  ibm273
 
    N535 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0032#, 16#0037#, 16#0033#,
+           (16#0063#, 16#0070#, 16#0032#, 16#0037#, 16#0033#,
             others => 16#0000#),
          others => <>);
-   --  CP273
+   --  cp273
 
    N536 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0032#, 16#0037#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  CSIBM273
+   --  csibm273
 
    N537 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0032#, 16#0037#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0032#, 16#0037#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  IBM274
+   --  ibm274
 
    N538 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0042#, 16#0045#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0062#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  EBCDICBE
+   --  ebcdicbe
 
    N539 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0032#, 16#0037#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0032#, 16#0037#, 16#0034#,
             others => 16#0000#),
          others => <>);
-   --  CP274
+   --  cp274
 
    N540 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0032#, 16#0037#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  CSIBM274
+   --  csibm274
 
    N541 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0032#, 16#0037#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0032#, 16#0037#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  IBM275
+   --  ibm275
 
    N542 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0042#, 16#0052#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0062#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  EBCDICBR
+   --  ebcdicbr
 
    N543 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0032#, 16#0037#, 16#0035#,
+           (16#0063#, 16#0070#, 16#0032#, 16#0037#, 16#0035#,
             others => 16#0000#),
          others => <>);
-   --  CP275
+   --  cp275
 
    N544 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0032#, 16#0037#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  CSIBM275
+   --  csibm275
 
    N545 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0032#, 16#0037#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0032#, 16#0037#,
             16#0037#, others => 16#0000#),
          others => <>);
-   --  IBM277
+   --  ibm277
 
    N546 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0044#, 16#004B#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0064#, 16#006B#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPDK
+   --  ebcdiccpdk
 
    N547 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#004E#, 16#004F#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#006E#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPNO
+   --  ebcdiccpno
 
    N548 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0032#, 16#0037#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  CSIBM277
+   --  csibm277
 
    N549 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0032#, 16#0037#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0032#, 16#0037#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  IBM278
+   --  ibm278
 
    N550 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0032#, 16#0037#, 16#0038#,
+           (16#0063#, 16#0070#, 16#0032#, 16#0037#, 16#0038#,
             others => 16#0000#),
          others => <>);
-   --  CP278
+   --  cp278
 
    N551 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0046#, 16#0049#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0066#, 16#0069#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPFI
+   --  ebcdiccpfi
 
    N552 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0053#, 16#0045#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0073#, 16#0065#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPSE
+   --  ebcdiccpse
 
    N553 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0032#, 16#0037#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CSIBM278
+   --  csibm278
 
    N554 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0032#, 16#0038#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0032#, 16#0038#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  IBM280
+   --  ibm280
 
    N555 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0032#, 16#0038#, 16#0030#,
+           (16#0063#, 16#0070#, 16#0032#, 16#0038#, 16#0030#,
             others => 16#0000#),
          others => <>);
-   --  CP280
+   --  cp280
 
    N556 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0049#, 16#0054#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0069#, 16#0074#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPIT
+   --  ebcdiccpit
 
    N557 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0032#, 16#0038#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  CSIBM280
+   --  csibm280
 
    N558 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0032#, 16#0038#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0032#, 16#0038#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  IBM281
+   --  ibm281
 
    N559 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#004A#, 16#0050#, 16#0045#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#006A#, 16#0070#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  EBCDICJPE
+   --  ebcdicjpe
 
    N560 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0032#, 16#0038#, 16#0031#,
+           (16#0063#, 16#0070#, 16#0032#, 16#0038#, 16#0031#,
             others => 16#0000#),
          others => <>);
-   --  CP281
+   --  cp281
 
    N561 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0032#, 16#0038#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSIBM281
+   --  csibm281
 
    N562 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0032#, 16#0038#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0032#, 16#0038#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  IBM284
+   --  ibm284
 
    N563 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0032#, 16#0038#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0032#, 16#0038#, 16#0034#,
             others => 16#0000#),
          others => <>);
-   --  CP284
+   --  cp284
 
    N564 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0045#, 16#0053#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0065#, 16#0073#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPES
+   --  ebcdiccpes
 
    N565 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0032#, 16#0038#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  CSIBM284
+   --  csibm284
 
    N566 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0032#, 16#0038#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0032#, 16#0038#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  IBM285
+   --  ibm285
 
    N567 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0032#, 16#0038#, 16#0035#,
+           (16#0063#, 16#0070#, 16#0032#, 16#0038#, 16#0035#,
             others => 16#0000#),
          others => <>);
-   --  CP285
+   --  cp285
 
    N568 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0047#, 16#0042#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0067#, 16#0062#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPGB
+   --  ebcdiccpgb
 
    N569 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0032#, 16#0038#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  CSIBM285
+   --  csibm285
 
    N570 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0032#, 16#0039#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0032#, 16#0039#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  IBM290
+   --  ibm290
 
    N571 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0032#, 16#0039#, 16#0030#,
+           (16#0063#, 16#0070#, 16#0032#, 16#0039#, 16#0030#,
             others => 16#0000#),
          others => <>);
-   --  CP290
+   --  cp290
 
    N572 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#004A#, 16#0050#, 16#004B#, 16#0041#,
-            16#004E#, 16#0041#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#006A#, 16#0070#, 16#006B#, 16#0061#,
+            16#006E#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  EBCDICJPKANA
+   --  ebcdicjpkana
 
    N573 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0032#, 16#0039#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  CSIBM290
+   --  csibm290
 
    N574 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0032#, 16#0039#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0032#, 16#0039#,
             16#0037#, others => 16#0000#),
          others => <>);
-   --  IBM297
+   --  ibm297
 
    N575 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0032#, 16#0039#, 16#0037#,
+           (16#0063#, 16#0070#, 16#0032#, 16#0039#, 16#0037#,
             others => 16#0000#),
          others => <>);
-   --  CP297
+   --  cp297
 
    N576 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0046#, 16#0052#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0066#, 16#0072#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPFR
+   --  ebcdiccpfr
 
    N577 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0032#, 16#0039#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  CSIBM297
+   --  csibm297
 
    N578 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0034#, 16#0032#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0034#, 16#0032#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  IBM420
+   --  ibm420
 
    N579 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0034#, 16#0032#, 16#0030#,
+           (16#0063#, 16#0070#, 16#0034#, 16#0032#, 16#0030#,
             others => 16#0000#),
          others => <>);
-   --  CP420
+   --  cp420
 
    N580 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0041#, 16#0052#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0061#, 16#0072#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  EBCDICCPAR1
+   --  ebcdiccpar1
 
    N581 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0034#, 16#0032#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  CSIBM420
+   --  csibm420
 
    N582 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0034#, 16#0032#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0034#, 16#0032#,
             16#0033#, others => 16#0000#),
          others => <>);
-   --  IBM423
+   --  ibm423
 
    N583 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0034#, 16#0032#, 16#0033#,
+           (16#0063#, 16#0070#, 16#0034#, 16#0032#, 16#0033#,
             others => 16#0000#),
          others => <>);
-   --  CP423
+   --  cp423
 
    N584 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0047#, 16#0052#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0067#, 16#0072#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPGR
+   --  ebcdiccpgr
 
    N585 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0034#, 16#0032#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  CSIBM423
+   --  csibm423
 
    N586 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0034#, 16#0032#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0034#, 16#0032#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  IBM424
+   --  ibm424
 
    N587 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0034#, 16#0032#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0034#, 16#0032#, 16#0034#,
             others => 16#0000#),
          others => <>);
-   --  CP424
+   --  cp424
 
    N588 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0048#, 16#0045#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0068#, 16#0065#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPHE
+   --  ebcdiccphe
 
    N589 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0034#, 16#0032#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  CSIBM424
+   --  csibm424
 
    N590 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0034#, 16#0033#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0034#, 16#0033#,
             16#0037#, others => 16#0000#),
          others => <>);
-   --  IBM437
+   --  ibm437
 
    N591 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0034#, 16#0033#, 16#0037#,
+           (16#0063#, 16#0070#, 16#0034#, 16#0033#, 16#0037#,
             others => 16#0000#),
          others => <>);
-   --  CP437
+   --  cp437
 
    N592 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -6283,84 +6284,84 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#0043#, 16#0053#, 16#0050#, 16#0043#, 16#0038#,
-            16#0043#, 16#004F#, 16#0044#, 16#0045#, 16#0050#,
-            16#0041#, 16#0047#, 16#0045#, 16#0034#, 16#0033#,
+           (16#0063#, 16#0073#, 16#0070#, 16#0063#, 16#0038#,
+            16#0063#, 16#006F#, 16#0064#, 16#0065#, 16#0070#,
+            16#0061#, 16#0067#, 16#0065#, 16#0034#, 16#0033#,
             16#0037#, others => 16#0000#),
          others => <>);
-   --  CSPC8CODEPAGE437
+   --  cspc8codepage437
 
    N594 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0035#, 16#0030#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0035#, 16#0030#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  IBM500
+   --  ibm500
 
    N595 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0035#, 16#0030#, 16#0030#,
+           (16#0063#, 16#0070#, 16#0035#, 16#0030#, 16#0030#,
             others => 16#0000#),
          others => <>);
-   --  CP500
+   --  cp500
 
    N596 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0042#, 16#0045#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0062#, 16#0065#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPBE
+   --  ebcdiccpbe
 
    N597 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0043#, 16#0048#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0063#, 16#0068#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPCH
+   --  ebcdiccpch
 
    N598 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0035#, 16#0030#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  CSIBM500
+   --  csibm500
 
    N599 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0035#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0035#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  IBM851
+   --  ibm851
 
    N600 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0035#, 16#0031#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0035#, 16#0031#,
             others => 16#0000#),
          others => <>);
-   --  CP851
+   --  cp851
 
    N601 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -6376,30 +6377,30 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0035#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSIBM851
+   --  csibm851
 
    N603 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0035#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0035#,
             16#0032#, others => 16#0000#),
          others => <>);
-   --  IBM852
+   --  ibm852
 
    N604 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0035#, 16#0032#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0035#, 16#0032#,
             others => 16#0000#),
          others => <>);
-   --  CP852
+   --  cp852
 
    N605 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -6415,30 +6416,30 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0050#, 16#0043#, 16#0050#,
+           (16#0063#, 16#0073#, 16#0070#, 16#0063#, 16#0070#,
             16#0038#, 16#0035#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  CSPCP852
+   --  cspcp852
 
    N607 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0035#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0035#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  IBM855
+   --  ibm855
 
    N608 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0035#, 16#0035#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0035#, 16#0035#,
             others => 16#0000#),
          others => <>);
-   --  CP855
+   --  cp855
 
    N609 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -6454,30 +6455,30 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0035#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  CSIBM855
+   --  csibm855
 
    N611 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0035#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0035#,
             16#0037#, others => 16#0000#),
          others => <>);
-   --  IBM857
+   --  ibm857
 
    N612 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0035#, 16#0037#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0035#, 16#0037#,
             others => 16#0000#),
          others => <>);
-   --  CP857
+   --  cp857
 
    N613 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -6493,30 +6494,30 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0035#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  CSIBM857
+   --  csibm857
 
    N615 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0036#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0036#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  IBM860
+   --  ibm860
 
    N616 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0036#, 16#0030#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0036#, 16#0030#,
             others => 16#0000#),
          others => <>);
-   --  CP860
+   --  cp860
 
    N617 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -6532,30 +6533,30 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0036#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  CSIBM860
+   --  csibm860
 
    N619 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0036#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0036#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  IBM861
+   --  ibm861
 
    N620 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0036#, 16#0031#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0036#, 16#0031#,
             others => 16#0000#),
          others => <>);
-   --  CP861
+   --  cp861
 
    N621 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -6571,39 +6572,39 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0043#, 16#0050#, 16#0049#, 16#0053#, others => 16#0000#),
+           (16#0063#, 16#0070#, 16#0069#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  CPIS
+   --  cpis
 
    N623 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0036#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSIBM861
+   --  csibm861
 
    N624 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0036#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0036#,
             16#0033#, others => 16#0000#),
          others => <>);
-   --  IBM863
+   --  ibm863
 
    N625 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0036#, 16#0033#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0036#, 16#0033#,
             others => 16#0000#),
          others => <>);
-   --  CP863
+   --  cp863
 
    N626 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -6619,60 +6620,60 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0036#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  CSIBM863
+   --  csibm863
 
    N628 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0036#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0036#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  IBM864
+   --  ibm864
 
    N629 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0036#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0036#, 16#0034#,
             others => 16#0000#),
          others => <>);
-   --  CP864
+   --  cp864
 
    N630 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0036#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  CSIBM864
+   --  csibm864
 
    N631 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0036#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0036#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  IBM865
+   --  ibm865
 
    N632 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0036#, 16#0035#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0036#, 16#0035#,
             others => 16#0000#),
          others => <>);
-   --  CP865
+   --  cp865
 
    N633 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -6688,69 +6689,69 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0036#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  CSIBM865
+   --  csibm865
 
    N635 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0036#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0036#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  IBM868
+   --  ibm868
 
    N636 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0036#, 16#0038#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0036#, 16#0038#,
             others => 16#0000#),
          others => <>);
-   --  CP868
+   --  cp868
 
    N637 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0043#, 16#0050#, 16#0041#, 16#0052#, others => 16#0000#),
+           (16#0063#, 16#0070#, 16#0061#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  CPAR
+   --  cpar
 
    N638 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0036#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CSIBM868
+   --  csibm868
 
    N639 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0036#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0036#,
             16#0039#, others => 16#0000#),
          others => <>);
-   --  IBM869
+   --  ibm869
 
    N640 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0036#, 16#0039#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0036#, 16#0039#,
             others => 16#0000#),
          others => <>);
-   --  CP869
+   --  cp869
 
    N641 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -6766,233 +6767,233 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0043#, 16#0050#, 16#0047#, 16#0052#, others => 16#0000#),
+           (16#0063#, 16#0070#, 16#0067#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  CPGR
+   --  cpgr
 
    N643 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0036#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  CSIBM869
+   --  csibm869
 
    N644 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0037#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0037#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  IBM870
+   --  ibm870
 
    N645 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0037#, 16#0030#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0037#, 16#0030#,
             others => 16#0000#),
          others => <>);
-   --  CP870
+   --  cp870
 
    N646 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0052#, 16#004F#,
-            16#0045#, 16#0043#, 16#0045#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0072#, 16#006F#,
+            16#0065#, 16#0063#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  EBCDICCPROECE
+   --  ebcdiccproece
 
    N647 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0059#, 16#0055#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0079#, 16#0075#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPYU
+   --  ebcdiccpyu
 
    N648 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0037#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  CSIBM870
+   --  csibm870
 
    N649 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0037#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0037#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  IBM871
+   --  ibm871
 
    N650 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0037#, 16#0031#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0037#, 16#0031#,
             others => 16#0000#),
          others => <>);
-   --  CP871
+   --  cp871
 
    N651 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0049#, 16#0053#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0069#, 16#0073#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPIS
+   --  ebcdiccpis
 
    N652 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0037#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSIBM871
+   --  csibm871
 
    N653 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0038#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0038#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  IBM880
+   --  ibm880
 
    N654 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0038#, 16#0030#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0038#, 16#0030#,
             others => 16#0000#),
          others => <>);
-   --  CP880
+   --  cp880
 
    N655 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0059#, 16#0052#, 16#0049#,
-            16#004C#, 16#004C#, 16#0049#, 16#0043#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0079#, 16#0072#, 16#0069#,
+            16#006C#, 16#006C#, 16#0069#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  EBCDICCYRILLIC
+   --  ebcdiccyrillic
 
    N656 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0038#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  CSIBM880
+   --  csibm880
 
    N657 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0039#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0039#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  IBM891
+   --  ibm891
 
    N658 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0039#, 16#0031#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0039#, 16#0031#,
             others => 16#0000#),
          others => <>);
-   --  CP891
+   --  cp891
 
    N659 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0039#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CSIBM891
+   --  csibm891
 
    N660 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0039#, 16#0030#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0039#, 16#0030#,
             16#0033#, others => 16#0000#),
          others => <>);
-   --  IBM903
+   --  ibm903
 
    N661 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0039#, 16#0030#, 16#0033#,
+           (16#0063#, 16#0070#, 16#0039#, 16#0030#, 16#0033#,
             others => 16#0000#),
          others => <>);
-   --  CP903
+   --  cp903
 
    N662 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0039#, 16#0030#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  CSIBM903
+   --  csibm903
 
    N663 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0039#, 16#0030#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0039#, 16#0030#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  IBM904
+   --  ibm904
 
    N664 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0039#, 16#0030#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0039#, 16#0030#, 16#0034#,
             others => 16#0000#),
          others => <>);
-   --  CP904
+   --  cp904
 
    N665 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -7008,596 +7009,596 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#0042#,
-            16#004D#, 16#0039#, 16#0030#, 16#0034#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#0062#,
+            16#006D#, 16#0039#, 16#0030#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  CSIBBM904
+   --  csibbm904
 
    N667 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0039#, 16#0030#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0039#, 16#0030#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  IBM905
+   --  ibm905
 
    N668 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0039#, 16#0030#, 16#0035#,
+           (16#0063#, 16#0070#, 16#0039#, 16#0030#, 16#0035#,
             others => 16#0000#),
          others => <>);
-   --  CP905
+   --  cp905
 
    N669 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0054#, 16#0052#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0074#, 16#0072#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCPTR
+   --  ebcdiccptr
 
    N670 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0039#, 16#0030#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  CSIBM905
+   --  csibm905
 
    N671 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0039#, 16#0031#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0039#, 16#0031#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  IBM918
+   --  ibm918
 
    N672 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0039#, 16#0031#, 16#0038#,
+           (16#0063#, 16#0070#, 16#0039#, 16#0031#, 16#0038#,
             others => 16#0000#),
          others => <>);
-   --  CP918
+   --  cp918
 
    N673 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0050#, 16#0041#, 16#0052#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0070#, 16#0061#, 16#0072#,
             16#0032#, others => 16#0000#),
          others => <>);
-   --  EBCDICCPAR2
+   --  ebcdiccpar2
 
    N674 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0039#, 16#0031#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CSIBM918
+   --  csibm918
 
    N675 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0030#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0030#,
             16#0032#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  IBM1026
+   --  ibm1026
 
    N676 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0050#, 16#0031#, 16#0030#, 16#0032#,
+           (16#0063#, 16#0070#, 16#0031#, 16#0030#, 16#0032#,
             16#0036#, others => 16#0000#),
          others => <>);
-   --  CP1026
+   --  cp1026
 
    N677 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0031#, 16#0030#, 16#0032#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  CSIBM1026
+   --  csibm1026
 
    N678 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0041#, 16#0054#, 16#0044#, 16#0045#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0061#, 16#0074#, 16#0064#, 16#0065#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICATDE
+   --  ebcdicatde
 
    N679 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
-            16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0041#, 16#0054#, 16#0044#, 16#0045#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
+            16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0061#, 16#0074#, 16#0064#, 16#0065#,
             others => 16#0000#),
          others => <>);
-   --  CSIBMEBCDICATDE
+   --  csibmebcdicatde
 
    N680 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0041#, 16#0054#, 16#0044#, 16#0045#,
-            16#0041#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0061#, 16#0074#, 16#0064#, 16#0065#,
+            16#0061#, others => 16#0000#),
          others => <>);
-   --  EBCDICATDEA
+   --  ebcdicatdea
 
    N681 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0041#, 16#0054#,
-            16#0044#, 16#0045#, 16#0041#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0061#, 16#0074#,
+            16#0064#, 16#0065#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  CSEBCDICATDEA
+   --  csebcdicatdea
 
    N682 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0043#, 16#0041#, 16#0046#, 16#0052#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0063#, 16#0061#, 16#0066#, 16#0072#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICCAFR
+   --  ebcdiccafr
 
    N683 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0043#, 16#0041#,
-            16#0046#, 16#0052#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0063#, 16#0061#,
+            16#0066#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  CSEBCDICCAFR
+   --  csebcdiccafr
 
    N684 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0044#, 16#004B#, 16#004E#, 16#004F#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0064#, 16#006B#, 16#006E#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICDKNO
+   --  ebcdicdkno
 
    N685 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0044#, 16#004B#,
-            16#004E#, 16#004F#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0064#, 16#006B#,
+            16#006E#, 16#006F#, others => 16#0000#),
          others => <>);
-   --  CSEBCDICDKNO
+   --  csebcdicdkno
 
    N686 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0044#, 16#004B#, 16#004E#, 16#004F#,
-            16#0041#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0064#, 16#006B#, 16#006E#, 16#006F#,
+            16#0061#, others => 16#0000#),
          others => <>);
-   --  EBCDICDKNOA
+   --  ebcdicdknoa
 
    N687 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0044#, 16#004B#,
-            16#004E#, 16#004F#, 16#0041#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0064#, 16#006B#,
+            16#006E#, 16#006F#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  CSEBCDICDKNOA
+   --  csebcdicdknoa
 
    N688 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0046#, 16#0049#, 16#0053#, 16#0045#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0066#, 16#0069#, 16#0073#, 16#0065#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICFISE
+   --  ebcdicfise
 
    N689 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0046#, 16#0049#,
-            16#0053#, 16#0045#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0066#, 16#0069#,
+            16#0073#, 16#0065#, others => 16#0000#),
          others => <>);
-   --  CSEBCDICFISE
+   --  csebcdicfise
 
    N690 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0046#, 16#0049#, 16#0053#, 16#0045#,
-            16#0041#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0066#, 16#0069#, 16#0073#, 16#0065#,
+            16#0061#, others => 16#0000#),
          others => <>);
-   --  EBCDICFISEA
+   --  ebcdicfisea
 
    N691 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0046#, 16#0049#,
-            16#0053#, 16#0045#, 16#0041#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0066#, 16#0069#,
+            16#0073#, 16#0065#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  CSEBCDICFISEA
+   --  csebcdicfisea
 
    N692 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0046#, 16#0052#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0066#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  EBCDICFR
+   --  ebcdicfr
 
    N693 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0046#, 16#0052#,
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0066#, 16#0072#,
             others => 16#0000#),
          others => <>);
-   --  CSEBCDICFR
+   --  csebcdicfr
 
    N694 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0049#, 16#0054#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0069#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  EBCDICIT
+   --  ebcdicit
 
    N695 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0049#, 16#0054#,
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0069#, 16#0074#,
             others => 16#0000#),
          others => <>);
-   --  CSEBCDICIT
+   --  csebcdicit
 
    N696 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0050#, 16#0054#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0070#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  EBCDICPT
+   --  ebcdicpt
 
    N697 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0050#, 16#0054#,
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0070#, 16#0074#,
             others => 16#0000#),
          others => <>);
-   --  CSEBCDICPT
+   --  csebcdicpt
 
    N698 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0045#, 16#0053#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0065#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  EBCDICES
+   --  ebcdices
 
    N699 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0045#, 16#0053#,
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0065#, 16#0073#,
             others => 16#0000#),
          others => <>);
-   --  CSEBCDICES
+   --  csebcdices
 
    N700 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0045#, 16#0053#, 16#0041#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0065#, 16#0073#, 16#0061#, others => 16#0000#),
          others => <>);
-   --  EBCDICESA
+   --  ebcdicesa
 
    N701 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0045#, 16#0053#,
-            16#0041#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0065#, 16#0073#,
+            16#0061#, others => 16#0000#),
          others => <>);
-   --  CSEBCDICESA
+   --  csebcdicesa
 
    N702 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0045#, 16#0053#, 16#0053#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0065#, 16#0073#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  EBCDICESS
+   --  ebcdicess
 
    N703 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0045#, 16#0053#,
-            16#0053#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0065#, 16#0073#,
+            16#0073#, others => 16#0000#),
          others => <>);
-   --  CSEBCDICESS
+   --  csebcdicess
 
    N704 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0055#, 16#004B#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0075#, 16#006B#, others => 16#0000#),
          others => <>);
-   --  EBCDICUK
+   --  ebcdicuk
 
    N705 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0055#, 16#004B#,
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0075#, 16#006B#,
             others => 16#0000#),
          others => <>);
-   --  CSEBCDICUK
+   --  csebcdicuk
 
    N706 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0055#, 16#0053#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0075#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  EBCDICUS
+   --  ebcdicus
 
    N707 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#0045#, 16#0042#, 16#0043#,
-            16#0044#, 16#0049#, 16#0043#, 16#0055#, 16#0053#,
+           (16#0063#, 16#0073#, 16#0065#, 16#0062#, 16#0063#,
+            16#0064#, 16#0069#, 16#0063#, 16#0075#, 16#0073#,
             others => 16#0000#),
          others => <>);
-   --  CSEBCDICUS
+   --  csebcdicus
 
    N708 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0055#, 16#004E#, 16#004B#, 16#004E#, 16#004F#,
-            16#0057#, 16#004E#, 16#0038#, 16#0042#, 16#0049#,
-            16#0054#, others => 16#0000#),
+           (16#0075#, 16#006E#, 16#006B#, 16#006E#, 16#006F#,
+            16#0077#, 16#006E#, 16#0038#, 16#0062#, 16#0069#,
+            16#0074#, others => 16#0000#),
          others => <>);
-   --  UNKNOWN8BIT
+   --  unknown8bit
 
    N709 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0055#, 16#004E#, 16#004B#,
-            16#004E#, 16#004F#, 16#0057#, 16#004E#, 16#0038#,
-            16#0042#, 16#0049#, 16#0054#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0075#, 16#006E#, 16#006B#,
+            16#006E#, 16#006F#, 16#0077#, 16#006E#, 16#0038#,
+            16#0062#, 16#0069#, 16#0074#, others => 16#0000#),
          others => <>);
-   --  CSUNKNOWN8BIT
+   --  csunknown8bit
 
    N710 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#004D#, 16#004E#, 16#0045#, 16#004D#, 16#004F#,
-            16#004E#, 16#0049#, 16#0043#, others => 16#0000#),
+           (16#006D#, 16#006E#, 16#0065#, 16#006D#, 16#006F#,
+            16#006E#, 16#0069#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  MNEMONIC
+   --  mnemonic
 
    N711 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 10,
          Length => 10,
          Value  =>
-           (16#0043#, 16#0053#, 16#004D#, 16#004E#, 16#0045#,
-            16#004D#, 16#004F#, 16#004E#, 16#0049#, 16#0043#,
+           (16#0063#, 16#0073#, 16#006D#, 16#006E#, 16#0065#,
+            16#006D#, 16#006F#, 16#006E#, 16#0069#, 16#0063#,
             others => 16#0000#),
          others => <>);
-   --  CSMNEMONIC
+   --  csmnemonic
 
    N712 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#004D#, 16#004E#, 16#0045#, 16#004D#, others => 16#0000#),
+           (16#006D#, 16#006E#, 16#0065#, 16#006D#, others => 16#0000#),
          others => <>);
-   --  MNEM
+   --  mnem
 
    N713 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0053#, 16#004D#, 16#004E#, 16#0045#,
-            16#004D#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#006D#, 16#006E#, 16#0065#,
+            16#006D#, others => 16#0000#),
          others => <>);
-   --  CSMNEM
+   --  csmnem
 
    N714 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0056#, 16#0049#, 16#0053#, 16#0043#, 16#0049#,
-            16#0049#, others => 16#0000#),
+           (16#0076#, 16#0069#, 16#0073#, 16#0063#, 16#0069#,
+            16#0069#, others => 16#0000#),
          others => <>);
-   --  VISCII
+   --  viscii
 
    N715 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0056#, 16#0049#, 16#0053#,
-            16#0043#, 16#0049#, 16#0049#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0076#, 16#0069#, 16#0073#,
+            16#0063#, 16#0069#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  CSVISCII
+   --  csviscii
 
    N716 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 4,
          Length => 4,
          Value  =>
-           (16#0056#, 16#0049#, 16#0051#, 16#0052#, others => 16#0000#),
+           (16#0076#, 16#0069#, 16#0071#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  VIQR
+   --  viqr
 
    N717 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0053#, 16#0056#, 16#0049#, 16#0051#,
-            16#0052#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0076#, 16#0069#, 16#0071#,
+            16#0072#, others => 16#0000#),
          others => <>);
-   --  CSVIQR
+   --  csviqr
 
    N718 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#004B#, 16#004F#, 16#0049#, 16#0038#, 16#0052#,
+           (16#006B#, 16#006F#, 16#0069#, 16#0038#, 16#0072#,
             others => 16#0000#),
          others => <>);
-   --  KOI8R
+   --  koi8r
 
    N719 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0043#, 16#0053#, 16#004B#, 16#004F#, 16#0049#,
-            16#0038#, 16#0052#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#006B#, 16#006F#, 16#0069#,
+            16#0038#, 16#0072#, others => 16#0000#),
          others => <>);
-   --  CSKOI8R
+   --  cskoi8r
 
    N720 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0048#, 16#005A#, 16#0047#, 16#0042#, 16#0032#,
+           (16#0068#, 16#007A#, 16#0067#, 16#0062#, 16#0032#,
             16#0033#, 16#0031#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  HZGB2312
+   --  hzgb2312
 
    N721 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0036#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0036#,
             16#0036#, others => 16#0000#),
          others => <>);
-   --  IBM866
+   --  ibm866
 
    N722 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0036#, 16#0036#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0036#, 16#0036#,
             others => 16#0000#),
          others => <>);
-   --  CP866
+   --  cp866
 
    N723 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
@@ -7613,831 +7614,831 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0053#, 16#0049#, 16#0042#, 16#004D#,
+           (16#0063#, 16#0073#, 16#0069#, 16#0062#, 16#006D#,
             16#0038#, 16#0036#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  CSIBM866
+   --  csibm866
 
    N725 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0037#, 16#0037#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0037#, 16#0037#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  IBM775
+   --  ibm775
 
    N726 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0037#, 16#0037#, 16#0035#,
+           (16#0063#, 16#0070#, 16#0037#, 16#0037#, 16#0035#,
             others => 16#0000#),
          others => <>);
-   --  CP775
+   --  cp775
 
    N727 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0053#, 16#0050#, 16#0043#, 16#0037#,
-            16#0037#, 16#0035#, 16#0042#, 16#0041#, 16#004C#,
-            16#0054#, 16#0049#, 16#0043#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0070#, 16#0063#, 16#0037#,
+            16#0037#, 16#0035#, 16#0062#, 16#0061#, 16#006C#,
+            16#0074#, 16#0069#, 16#0063#, others => 16#0000#),
          others => <>);
-   --  CSPC775BALTIC
+   --  cspc775baltic
 
    N728 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#004B#, 16#004F#, 16#0049#, 16#0038#, 16#0055#,
+           (16#006B#, 16#006F#, 16#0069#, 16#0038#, 16#0075#,
             others => 16#0000#),
          others => <>);
-   --  KOI8U
+   --  koi8u
 
    N729 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0038#, 16#0035#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0038#, 16#0035#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  IBM858
+   --  ibm858
 
    N730 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0043#, 16#0053#, 16#0049#, 16#0044#,
+           (16#0063#, 16#0063#, 16#0073#, 16#0069#, 16#0064#,
             16#0038#, 16#0035#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CCSID858
+   --  ccsid858
 
    N731 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0038#, 16#0035#, 16#0038#,
+           (16#0063#, 16#0070#, 16#0038#, 16#0035#, 16#0038#,
             others => 16#0000#),
          others => <>);
-   --  CP858
+   --  cp858
 
    N732 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 21,
          Length => 21,
          Value  =>
-           (16#0050#, 16#0043#, 16#004D#, 16#0055#, 16#004C#,
-            16#0054#, 16#0049#, 16#004C#, 16#0049#, 16#004E#,
-            16#0047#, 16#0055#, 16#0041#, 16#004C#, 16#0038#,
-            16#0035#, 16#0030#, 16#0045#, 16#0055#, 16#0052#,
-            16#004F#, others => 16#0000#),
+           (16#0070#, 16#0063#, 16#006D#, 16#0075#, 16#006C#,
+            16#0074#, 16#0069#, 16#006C#, 16#0069#, 16#006E#,
+            16#0067#, 16#0075#, 16#0061#, 16#006C#, 16#0038#,
+            16#0035#, 16#0030#, 16#0065#, 16#0075#, 16#0072#,
+            16#006F#, others => 16#0000#),
          others => <>);
-   --  PCMULTILINGUAL850EURO
+   --  pcmultilingual850euro
 
    N733 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0039#, 16#0032#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0039#, 16#0032#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  IBM924
+   --  ibm924
 
    N734 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 8,
          Length => 8,
          Value  =>
-           (16#0043#, 16#0043#, 16#0053#, 16#0049#, 16#0044#,
+           (16#0063#, 16#0063#, 16#0073#, 16#0069#, 16#0064#,
             16#0039#, 16#0032#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  CCSID924
+   --  ccsid924
 
    N735 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0039#, 16#0032#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0039#, 16#0032#, 16#0034#,
             others => 16#0000#),
          others => <>);
-   --  CP924
+   --  cp924
 
    N736 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 16,
          Length => 16,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#004C#, 16#0041#, 16#0054#, 16#0049#,
-            16#004E#, 16#0039#, 16#0045#, 16#0055#, 16#0052#,
-            16#004F#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#006C#, 16#0061#, 16#0074#, 16#0069#,
+            16#006E#, 16#0039#, 16#0065#, 16#0075#, 16#0072#,
+            16#006F#, others => 16#0000#),
          others => <>);
-   --  EBCDICLATIN9EURO
+   --  ebcdiclatin9euro
 
    N737 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0031#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0031#,
             16#0034#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  IBM1140
+   --  ibm1140
 
    N738 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0043#, 16#0053#, 16#0049#, 16#0044#,
+           (16#0063#, 16#0063#, 16#0073#, 16#0069#, 16#0064#,
             16#0031#, 16#0031#, 16#0034#, 16#0030#, others => 16#0000#),
          others => <>);
-   --  CCSID1140
+   --  ccsid1140
 
    N739 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0050#, 16#0031#, 16#0031#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0031#, 16#0031#, 16#0034#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  CP1140
+   --  cp1140
 
    N740 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 14,
          Length => 14,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0055#, 16#0053#, 16#0033#, 16#0037#,
-            16#0045#, 16#0055#, 16#0052#, 16#004F#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0075#, 16#0073#, 16#0033#, 16#0037#,
+            16#0065#, 16#0075#, 16#0072#, 16#006F#, others => 16#0000#),
          others => <>);
-   --  EBCDICUS37EURO
+   --  ebcdicus37euro
 
    N741 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0031#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0031#,
             16#0034#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  IBM1141
+   --  ibm1141
 
    N742 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0043#, 16#0053#, 16#0049#, 16#0044#,
+           (16#0063#, 16#0063#, 16#0073#, 16#0069#, 16#0064#,
             16#0031#, 16#0031#, 16#0034#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  CCSID1141
+   --  ccsid1141
 
    N743 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0050#, 16#0031#, 16#0031#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0031#, 16#0031#, 16#0034#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  CP1141
+   --  cp1141
 
    N744 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0044#, 16#0045#, 16#0032#, 16#0037#,
-            16#0033#, 16#0045#, 16#0055#, 16#0052#, 16#004F#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0064#, 16#0065#, 16#0032#, 16#0037#,
+            16#0033#, 16#0065#, 16#0075#, 16#0072#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICDE273EURO
+   --  ebcdicde273euro
 
    N745 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0031#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0031#,
             16#0034#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  IBM1142
+   --  ibm1142
 
    N746 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0043#, 16#0053#, 16#0049#, 16#0044#,
+           (16#0063#, 16#0063#, 16#0073#, 16#0069#, 16#0064#,
             16#0031#, 16#0031#, 16#0034#, 16#0032#, others => 16#0000#),
          others => <>);
-   --  CCSID1142
+   --  ccsid1142
 
    N747 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0050#, 16#0031#, 16#0031#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0031#, 16#0031#, 16#0034#,
             16#0032#, others => 16#0000#),
          others => <>);
-   --  CP1142
+   --  cp1142
 
    N748 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0044#, 16#004B#, 16#0032#, 16#0037#,
-            16#0037#, 16#0045#, 16#0055#, 16#0052#, 16#004F#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0064#, 16#006B#, 16#0032#, 16#0037#,
+            16#0037#, 16#0065#, 16#0075#, 16#0072#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICDK277EURO
+   --  ebcdicdk277euro
 
    N749 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#004E#, 16#004F#, 16#0032#, 16#0037#,
-            16#0037#, 16#0045#, 16#0055#, 16#0052#, 16#004F#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#006E#, 16#006F#, 16#0032#, 16#0037#,
+            16#0037#, 16#0065#, 16#0075#, 16#0072#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICNO277EURO
+   --  ebcdicno277euro
 
    N750 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0031#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0031#,
             16#0034#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  IBM1143
+   --  ibm1143
 
    N751 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0043#, 16#0053#, 16#0049#, 16#0044#,
+           (16#0063#, 16#0063#, 16#0073#, 16#0069#, 16#0064#,
             16#0031#, 16#0031#, 16#0034#, 16#0033#, others => 16#0000#),
          others => <>);
-   --  CCSID1143
+   --  ccsid1143
 
    N752 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0050#, 16#0031#, 16#0031#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0031#, 16#0031#, 16#0034#,
             16#0033#, others => 16#0000#),
          others => <>);
-   --  CP1143
+   --  cp1143
 
    N753 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0046#, 16#0049#, 16#0032#, 16#0037#,
-            16#0038#, 16#0045#, 16#0055#, 16#0052#, 16#004F#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0066#, 16#0069#, 16#0032#, 16#0037#,
+            16#0038#, 16#0065#, 16#0075#, 16#0072#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICFI278EURO
+   --  ebcdicfi278euro
 
    N754 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0053#, 16#0045#, 16#0032#, 16#0037#,
-            16#0038#, 16#0045#, 16#0055#, 16#0052#, 16#004F#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0073#, 16#0065#, 16#0032#, 16#0037#,
+            16#0038#, 16#0065#, 16#0075#, 16#0072#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICSE278EURO
+   --  ebcdicse278euro
 
    N755 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0031#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0031#,
             16#0034#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  IBM1144
+   --  ibm1144
 
    N756 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0043#, 16#0053#, 16#0049#, 16#0044#,
+           (16#0063#, 16#0063#, 16#0073#, 16#0069#, 16#0064#,
             16#0031#, 16#0031#, 16#0034#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  CCSID1144
+   --  ccsid1144
 
    N757 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0050#, 16#0031#, 16#0031#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0031#, 16#0031#, 16#0034#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  CP1144
+   --  cp1144
 
    N758 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0049#, 16#0054#, 16#0032#, 16#0038#,
-            16#0030#, 16#0045#, 16#0055#, 16#0052#, 16#004F#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0069#, 16#0074#, 16#0032#, 16#0038#,
+            16#0030#, 16#0065#, 16#0075#, 16#0072#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICIT280EURO
+   --  ebcdicit280euro
 
    N759 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0031#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0031#,
             16#0034#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  IBM1145
+   --  ibm1145
 
    N760 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0043#, 16#0053#, 16#0049#, 16#0044#,
+           (16#0063#, 16#0063#, 16#0073#, 16#0069#, 16#0064#,
             16#0031#, 16#0031#, 16#0034#, 16#0035#, others => 16#0000#),
          others => <>);
-   --  CCSID1145
+   --  ccsid1145
 
    N761 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0050#, 16#0031#, 16#0031#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0031#, 16#0031#, 16#0034#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  CP1145
+   --  cp1145
 
    N762 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0045#, 16#0053#, 16#0032#, 16#0038#,
-            16#0034#, 16#0045#, 16#0055#, 16#0052#, 16#004F#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0065#, 16#0073#, 16#0032#, 16#0038#,
+            16#0034#, 16#0065#, 16#0075#, 16#0072#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICES284EURO
+   --  ebcdices284euro
 
    N763 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0031#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0031#,
             16#0034#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  IBM1146
+   --  ibm1146
 
    N764 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0043#, 16#0053#, 16#0049#, 16#0044#,
+           (16#0063#, 16#0063#, 16#0073#, 16#0069#, 16#0064#,
             16#0031#, 16#0031#, 16#0034#, 16#0036#, others => 16#0000#),
          others => <>);
-   --  CCSID1146
+   --  ccsid1146
 
    N765 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0050#, 16#0031#, 16#0031#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0031#, 16#0031#, 16#0034#,
             16#0036#, others => 16#0000#),
          others => <>);
-   --  CP1146
+   --  cp1146
 
    N766 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0047#, 16#0042#, 16#0032#, 16#0038#,
-            16#0035#, 16#0045#, 16#0055#, 16#0052#, 16#004F#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0067#, 16#0062#, 16#0032#, 16#0038#,
+            16#0035#, 16#0065#, 16#0075#, 16#0072#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICGB285EURO
+   --  ebcdicgb285euro
 
    N767 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0031#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0031#,
             16#0034#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  IBM1147
+   --  ibm1147
 
    N768 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0043#, 16#0053#, 16#0049#, 16#0044#,
+           (16#0063#, 16#0063#, 16#0073#, 16#0069#, 16#0064#,
             16#0031#, 16#0031#, 16#0034#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  CCSID1147
+   --  ccsid1147
 
    N769 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0050#, 16#0031#, 16#0031#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0031#, 16#0031#, 16#0034#,
             16#0037#, others => 16#0000#),
          others => <>);
-   --  CP1147
+   --  cp1147
 
    N770 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0046#, 16#0052#, 16#0032#, 16#0039#,
-            16#0037#, 16#0045#, 16#0055#, 16#0052#, 16#004F#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0066#, 16#0072#, 16#0032#, 16#0039#,
+            16#0037#, 16#0065#, 16#0075#, 16#0072#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICFR297EURO
+   --  ebcdicfr297euro
 
    N771 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0031#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0031#,
             16#0034#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  IBM1148
+   --  ibm1148
 
    N772 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0043#, 16#0053#, 16#0049#, 16#0044#,
+           (16#0063#, 16#0063#, 16#0073#, 16#0069#, 16#0064#,
             16#0031#, 16#0031#, 16#0034#, 16#0038#, others => 16#0000#),
          others => <>);
-   --  CCSID1148
+   --  ccsid1148
 
    N773 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0050#, 16#0031#, 16#0031#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0031#, 16#0031#, 16#0034#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  CP1148
+   --  cp1148
 
    N774 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 26,
          Length => 26,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0049#, 16#004E#, 16#0054#, 16#0045#,
-            16#0052#, 16#004E#, 16#0041#, 16#0054#, 16#0049#,
-            16#004F#, 16#004E#, 16#0041#, 16#004C#, 16#0035#,
-            16#0030#, 16#0030#, 16#0045#, 16#0055#, 16#0052#,
-            16#004F#, others => 16#0000#),
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0069#, 16#006E#, 16#0074#, 16#0065#,
+            16#0072#, 16#006E#, 16#0061#, 16#0074#, 16#0069#,
+            16#006F#, 16#006E#, 16#0061#, 16#006C#, 16#0035#,
+            16#0030#, 16#0030#, 16#0065#, 16#0075#, 16#0072#,
+            16#006F#, others => 16#0000#),
          others => <>);
-   --  EBCDICINTERNATIONAL500EURO
+   --  ebcdicinternational500euro
 
    N775 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0031#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0031#,
             16#0034#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  IBM1149
+   --  ibm1149
 
    N776 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0043#, 16#0053#, 16#0049#, 16#0044#,
+           (16#0063#, 16#0063#, 16#0073#, 16#0069#, 16#0064#,
             16#0031#, 16#0031#, 16#0034#, 16#0039#, others => 16#0000#),
          others => <>);
-   --  CCSID1149
+   --  ccsid1149
 
    N777 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0043#, 16#0050#, 16#0031#, 16#0031#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0031#, 16#0031#, 16#0034#,
             16#0039#, others => 16#0000#),
          others => <>);
-   --  CP1149
+   --  cp1149
 
    N778 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 15,
          Length => 15,
          Value  =>
-           (16#0045#, 16#0042#, 16#0043#, 16#0044#, 16#0049#,
-            16#0043#, 16#0049#, 16#0053#, 16#0038#, 16#0037#,
-            16#0031#, 16#0045#, 16#0055#, 16#0052#, 16#004F#,
+           (16#0065#, 16#0062#, 16#0063#, 16#0064#, 16#0069#,
+            16#0063#, 16#0069#, 16#0073#, 16#0038#, 16#0037#,
+            16#0031#, 16#0065#, 16#0075#, 16#0072#, 16#006F#,
             others => 16#0000#),
          others => <>);
-   --  EBCDICIS871EURO
+   --  ebcdicis871euro
 
    N779 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0042#, 16#0049#, 16#0047#, 16#0035#, 16#0048#,
-            16#004B#, 16#0053#, 16#0043#, 16#0053#, others => 16#0000#),
+           (16#0062#, 16#0069#, 16#0067#, 16#0035#, 16#0068#,
+            16#006B#, 16#0073#, 16#0063#, 16#0073#, others => 16#0000#),
          others => <>);
-   --  BIG5HKSCS
+   --  big5hkscs
 
    N780 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0049#, 16#0042#, 16#004D#, 16#0031#, 16#0030#,
+           (16#0069#, 16#0062#, 16#006D#, 16#0031#, 16#0030#,
             16#0034#, 16#0037#, others => 16#0000#),
          others => <>);
-   --  IBM1047
+   --  ibm1047
 
    N781 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0050#, 16#0054#, 16#0043#, 16#0050#, 16#0031#,
+           (16#0070#, 16#0074#, 16#0063#, 16#0070#, 16#0031#,
             16#0035#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  PTCP154
+   --  ptcp154
 
    N782 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0043#, 16#0053#, 16#0050#, 16#0054#, 16#0043#,
-            16#0050#, 16#0031#, 16#0035#, 16#0034#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0070#, 16#0074#, 16#0063#,
+            16#0070#, 16#0031#, 16#0035#, 16#0034#, others => 16#0000#),
          others => <>);
-   --  CSPTCP154
+   --  csptcp154
 
    N783 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0050#, 16#0054#, 16#0031#, 16#0035#, 16#0034#,
+           (16#0070#, 16#0074#, 16#0031#, 16#0035#, 16#0034#,
             others => 16#0000#),
          others => <>);
-   --  PT154
+   --  pt154
 
    N784 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0050#, 16#0031#, 16#0035#, 16#0034#,
+           (16#0063#, 16#0070#, 16#0031#, 16#0035#, 16#0034#,
             others => 16#0000#),
          others => <>);
-   --  CP154
+   --  cp154
 
    N785 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 13,
          Length => 13,
          Value  =>
-           (16#0043#, 16#0059#, 16#0052#, 16#0049#, 16#004C#,
-            16#004C#, 16#0049#, 16#0043#, 16#0041#, 16#0053#,
-            16#0049#, 16#0041#, 16#004E#, others => 16#0000#),
+           (16#0063#, 16#0079#, 16#0072#, 16#0069#, 16#006C#,
+            16#006C#, 16#0069#, 16#0063#, 16#0061#, 16#0073#,
+            16#0069#, 16#0061#, 16#006E#, others => 16#0000#),
          others => <>);
-   --  CYRILLICASIAN
+   --  cyrillicasian
 
    N786 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 9,
          Length => 9,
          Value  =>
-           (16#0041#, 16#004D#, 16#0049#, 16#0047#, 16#0041#,
+           (16#0061#, 16#006D#, 16#0069#, 16#0067#, 16#0061#,
             16#0031#, 16#0032#, 16#0035#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  AMIGA1251
+   --  amiga1251
 
    N787 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0041#, 16#004D#, 16#0049#, 16#0031#, 16#0032#,
+           (16#0061#, 16#006D#, 16#0069#, 16#0031#, 16#0032#,
             16#0035#, 16#0031#, others => 16#0000#),
          others => <>);
-   --  AMI1251
+   --  ami1251
 
    N788 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 12,
          Length => 12,
          Value  =>
-           (16#004B#, 16#004F#, 16#0049#, 16#0037#, 16#0053#,
-            16#0057#, 16#0049#, 16#0054#, 16#0043#, 16#0048#,
-            16#0045#, 16#0044#, others => 16#0000#),
+           (16#006B#, 16#006F#, 16#0069#, 16#0037#, 16#0073#,
+            16#0077#, 16#0069#, 16#0074#, 16#0063#, 16#0068#,
+            16#0065#, 16#0064#, others => 16#0000#),
          others => <>);
-   --  KOI7SWITCHED
+   --  koi7switched
 
    N789 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 3,
          Length => 3,
          Value  =>
-           (16#0042#, 16#0052#, 16#0046#, others => 16#0000#),
+           (16#0062#, 16#0072#, 16#0066#, others => 16#0000#),
          others => <>);
-   --  BRF
+   --  brf
 
    N790 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0043#, 16#0053#, 16#0042#, 16#0052#, 16#0046#,
+           (16#0063#, 16#0073#, 16#0062#, 16#0072#, 16#0066#,
             others => 16#0000#),
          others => <>);
-   --  CSBRF
+   --  csbrf
 
    N791 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 5,
          Length => 5,
          Value  =>
-           (16#0054#, 16#0053#, 16#0043#, 16#0049#, 16#0049#,
+           (16#0074#, 16#0073#, 16#0063#, 16#0069#, 16#0069#,
             others => 16#0000#),
          others => <>);
-   --  TSCII
+   --  tscii
 
    N792 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 7,
          Length => 7,
          Value  =>
-           (16#0043#, 16#0053#, 16#0054#, 16#0053#, 16#0043#,
-            16#0049#, 16#0049#, others => 16#0000#),
+           (16#0063#, 16#0073#, 16#0074#, 16#0073#, 16#0063#,
+            16#0069#, 16#0069#, others => 16#0000#),
          others => <>);
-   --  CSTSCII
+   --  cstscii
 
    N793 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0057#, 16#0049#, 16#004E#, 16#0044#, 16#004F#,
-            16#0057#, 16#0053#, 16#0031#, 16#0032#, 16#0035#,
+           (16#0077#, 16#0069#, 16#006E#, 16#0064#, 16#006F#,
+            16#0077#, 16#0073#, 16#0031#, 16#0032#, 16#0035#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  WINDOWS1250
+   --  windows1250
 
    N794 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0057#, 16#0049#, 16#004E#, 16#0044#, 16#004F#,
-            16#0057#, 16#0053#, 16#0031#, 16#0032#, 16#0035#,
+           (16#0077#, 16#0069#, 16#006E#, 16#0064#, 16#006F#,
+            16#0077#, 16#0073#, 16#0031#, 16#0032#, 16#0035#,
             16#0031#, others => 16#0000#),
          others => <>);
-   --  WINDOWS1251
+   --  windows1251
 
    N795 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0057#, 16#0049#, 16#004E#, 16#0044#, 16#004F#,
-            16#0057#, 16#0053#, 16#0031#, 16#0032#, 16#0035#,
+           (16#0077#, 16#0069#, 16#006E#, 16#0064#, 16#006F#,
+            16#0077#, 16#0073#, 16#0031#, 16#0032#, 16#0035#,
             16#0032#, others => 16#0000#),
          others => <>);
-   --  WINDOWS1252
+   --  windows1252
 
    N796 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0057#, 16#0049#, 16#004E#, 16#0044#, 16#004F#,
-            16#0057#, 16#0053#, 16#0031#, 16#0032#, 16#0035#,
+           (16#0077#, 16#0069#, 16#006E#, 16#0064#, 16#006F#,
+            16#0077#, 16#0073#, 16#0031#, 16#0032#, 16#0035#,
             16#0033#, others => 16#0000#),
          others => <>);
-   --  WINDOWS1253
+   --  windows1253
 
    N797 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0057#, 16#0049#, 16#004E#, 16#0044#, 16#004F#,
-            16#0057#, 16#0053#, 16#0031#, 16#0032#, 16#0035#,
+           (16#0077#, 16#0069#, 16#006E#, 16#0064#, 16#006F#,
+            16#0077#, 16#0073#, 16#0031#, 16#0032#, 16#0035#,
             16#0034#, others => 16#0000#),
          others => <>);
-   --  WINDOWS1254
+   --  windows1254
 
    N798 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0057#, 16#0049#, 16#004E#, 16#0044#, 16#004F#,
-            16#0057#, 16#0053#, 16#0031#, 16#0032#, 16#0035#,
+           (16#0077#, 16#0069#, 16#006E#, 16#0064#, 16#006F#,
+            16#0077#, 16#0073#, 16#0031#, 16#0032#, 16#0035#,
             16#0035#, others => 16#0000#),
          others => <>);
-   --  WINDOWS1255
+   --  windows1255
 
    N799 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0057#, 16#0049#, 16#004E#, 16#0044#, 16#004F#,
-            16#0057#, 16#0053#, 16#0031#, 16#0032#, 16#0035#,
+           (16#0077#, 16#0069#, 16#006E#, 16#0064#, 16#006F#,
+            16#0077#, 16#0073#, 16#0031#, 16#0032#, 16#0035#,
             16#0036#, others => 16#0000#),
          others => <>);
-   --  WINDOWS1256
+   --  windows1256
 
    N800 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0057#, 16#0049#, 16#004E#, 16#0044#, 16#004F#,
-            16#0057#, 16#0053#, 16#0031#, 16#0032#, 16#0035#,
+           (16#0077#, 16#0069#, 16#006E#, 16#0064#, 16#006F#,
+            16#0077#, 16#0073#, 16#0031#, 16#0032#, 16#0035#,
             16#0037#, others => 16#0000#),
          others => <>);
-   --  WINDOWS1257
+   --  windows1257
 
    N801 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 11,
          Length => 11,
          Value  =>
-           (16#0057#, 16#0049#, 16#004E#, 16#0044#, 16#004F#,
-            16#0057#, 16#0053#, 16#0031#, 16#0032#, 16#0035#,
+           (16#0077#, 16#0069#, 16#006E#, 16#0064#, 16#006F#,
+            16#0077#, 16#0073#, 16#0031#, 16#0032#, 16#0035#,
             16#0038#, others => 16#0000#),
          others => <>);
-   --  WINDOWS1258
+   --  windows1258
 
    N802 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 48,
          Unused => 6,
          Length => 6,
          Value  =>
-           (16#0054#, 16#0049#, 16#0053#, 16#0036#, 16#0032#,
+           (16#0074#, 16#0069#, 16#0073#, 16#0036#, 16#0032#,
             16#0030#, others => 16#0000#),
          others => <>);
-   --  TIS620
+   --  tis620
 
    To_MIB : constant array (Positive range <>) of IANA_Record
      := ((N1'Access, 3),

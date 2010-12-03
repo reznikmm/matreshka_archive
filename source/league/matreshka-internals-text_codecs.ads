@@ -71,6 +71,13 @@ package Matreshka.Internals.Text_Codecs is
     (Item : League.Strings.Universal_String) return Character_Set;
    --  Converts name of character encoding into internal representation.
 
+   function Transform_Character_Set_Name
+    (Name : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Transforms name of character set to normalized form. Returns empty
+   --  string when name starts or ends from/by separator character or contains
+   --  not valid characters.
+
    ----------------------
    -- Abstract_Decoder --
    ----------------------

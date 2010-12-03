@@ -91,11 +91,11 @@ procedure Gen_IANA is
    begin
       for J in 1 .. Length (Item) loop
          case Element (Item, J) is
-            when 'a' .. 'z' =>
-               Append (Aux, To_Upper (Element (Item, J)));
+            when 'A' .. 'Z' =>
+               Append (Aux, To_Lower (Element (Item, J)));
                Digit := False;
 
-            when 'A' .. 'Z' =>
+            when 'a' .. 'z' =>
                Append (Aux, Element (Item, J));
                Digit := False;
 

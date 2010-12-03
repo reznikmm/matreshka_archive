@@ -122,6 +122,33 @@ package body Matreshka.Internals.Text_Codecs is
    function To_Character_Set
     (Item : League.Strings.Universal_String) return Character_Set
    is
+      Name : constant League.Strings.Universal_String
+        := Transform_Character_Set_Name (Item);
+
+   begin
+      if Name.Is_Empty then
+         raise Constraint_Error with "Invalid name of character set";
+      end if;
+
+      --  Lookup MIB.
+
+      for J in To_MIB'Range loop
+         if Is_Equal (Get_Shared (Name), To_MIB (J).Name) then
+            return To_MIB (J).MIB;
+         end if;
+      end loop;
+
+      return 0;
+   end To_Character_Set;
+
+   ----------------------------------
+   -- Transform_Character_Set_Name --
+   ----------------------------------
+
+   function Transform_Character_Set_Name
+    (Name : League.Strings.Universal_String)
+       return League.Strings.Universal_String
+   is
       --  Set of characters in the character set name is restricted by RFC2978
       --  IANA Charset Registration Procedures, section 2.3. Naming
       --  Requirements
@@ -152,50 +179,40 @@ package body Matreshka.Internals.Text_Codecs is
       --    3. From left to right, delete each 0 that is not preceded by a
       --    digit."
 
-      Source : constant League.Strings.Universal_String := Item.To_Uppercase;
-      --  Simple case mapping can be used here.
-      Name   : League.Strings.Universal_String;
-      Digit  : Boolean := False;
+      Source : constant League.Strings.Universal_String := Name.To_Lowercase;
+      Aux    : League.Strings.Universal_String;
       C      : Wide_Wide_Character;
+      Digit  : Boolean := False;
 
    begin
-      --  Transform character set name.
-
       for J in 1 .. Source.Length loop
          C := Source.Element (J);
 
          case C is
-            when 'A' .. 'Z' =>
-               Name.Append (C);
+            when 'a' .. 'z' =>
+               Aux.Append (C);
                Digit := False;
 
             when '0' .. '9' =>
                if C /= '0' or Digit then
-                  Name.Append (C);
+                  Aux.Append (C);
                   Digit := True;
                end if;
 
             when '!' | '#' | '$' | '%' | '&' | ''' | '+' | '-' | '^' | '_'
               | '`' | '{' | '}' | '~'
             =>
-               null;
+               if J = 1 or J = Source.Length then
+                  return League.Strings.Empty_Universal_String;
+               end if;
 
             when others =>
-               raise Constraint_Error
-                 with "Invalid character in character set name";
+               return League.Strings.Empty_Universal_String;
          end case;
       end loop;
 
-      --  Lookup MIB.
-
-      for J in To_MIB'Range loop
-         if Is_Equal (Get_Shared (Name), To_MIB (J).Name) then
-            return To_MIB (J).MIB;
-         end if;
-      end loop;
-
-      return 0;
-   end To_Character_Set;
+      return Aux;
+   end Transform_Character_Set_Name;
 
    --------------------------
    -- Unchecked_Append_Raw --
