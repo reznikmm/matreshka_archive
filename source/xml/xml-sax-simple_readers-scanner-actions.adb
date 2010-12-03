@@ -1933,6 +1933,28 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       return Error;
    end On_Unexpected_Character;
 
+   ------------------------
+   -- On_Version_Keyword --
+   ------------------------
+
+   function On_Version_Keyword
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      if not Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("no whitespace before 'version'"));
+         Self.Error_Reported := True;
+         --  XXX This is recoverable error.
+
+         return Error;
+
+      else
+         return Token_Version;
+      end if;
+   end On_Version_Keyword;
+
    -------------------------------
    -- On_Whitespace_In_Document --
    -------------------------------

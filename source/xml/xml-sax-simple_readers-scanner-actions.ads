@@ -267,4 +267,8 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    --  Handles sequence of whitespaces between processing instruction's target
    --  and data.
 
+   function On_Version_Keyword
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles 'version' keyword in XML declaration or text declaration.
+
 end XML.SAX.Simple_Readers.Scanner.Actions;

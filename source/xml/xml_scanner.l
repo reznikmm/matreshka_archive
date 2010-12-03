@@ -310,12 +310,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <XML_DECL>version {
    --  [24] VersionInfo
 
-   if not Get_Whitespace_Matched (Self) then
-      raise Program_Error with "no whitespace before 'version' keyword";
-      --  XXX This is recoverable error.
-   end if;
-
-   return Token_Version;
+   return Actions.On_Version_Keyword (Self);
 }
 
 <XML_DECL>encoding {
@@ -1220,6 +1215,8 @@ with Matreshka.Internals.Strings;
       procedure On_Content_Of_Ignore_Conditional_Section (Self : access Integer);
 
       function On_NDATA (Self : access Integer) return Token;
+
+      function On_Version_Keyword (Self : access Integer) return Token;
 
    end Actions;
 

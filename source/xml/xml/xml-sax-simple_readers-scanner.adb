@@ -858,12 +858,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 15 =>
                --  [24] VersionInfo
 
-               if not Get_Whitespace_Matched (Self) then
-                  raise Program_Error with "no whitespace before 'version' keyword";
-                  --  XXX This is recoverable error.
-               end if;
-
-               return Token_Version;
+               return Actions.On_Version_Keyword (Self);
 
             when 16 =>
                --  [80] EncodingDecl
