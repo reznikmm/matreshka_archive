@@ -95,9 +95,10 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Upper_Fixup : constant := Latin_Capital_Letter_A - 16#0A#;
       Lower_Fixup : constant := Latin_Small_Letter_A - 16#0A#;
 
-      D  : Code_Point;
-      FP : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
-      LP : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
+      FP  : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
+      LP  : Utf16_String_Index := Self.Scanner_State.YY_Current_Position;
+      Aux : Code_Unit_32       := 0;
+      D   : Code_Point;
 
    begin
       --  NOTE: Sequences of leading and trailing character always fixed:
@@ -114,37 +115,55 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       if Hex then
          --  Trim three leading characters and trailing character.
 
-         FP   := FP + 3;
-         LP   := LP - 1;
-         Code := 0;
+         FP := FP + 3;
+         LP := LP - 1;
 
          while FP < LP loop
             D := Code_Point (Self.Scanner_State.Data.Value (FP));
             FP := FP + 1;
 
             if D in Latin_Capital_Letter_A .. Latin_Capital_Letter_F then
-               Code := (Code * 16) + D - Upper_Fixup;
+               Aux := (Aux * 16) + D - Upper_Fixup;
 
             elsif D in Latin_Small_Letter_A .. Latin_Small_Letter_F then
-               Code := (Code * 16) + D - Lower_Fixup;
+               Aux := (Aux * 16) + D - Lower_Fixup;
 
             else
-               Code := (Code * 16) + D - Zero_Fixup;
+               Aux := (Aux * 16) + D - Zero_Fixup;
+            end if;
+
+            --  Check whether collected code is inside range of Unicode code
+            --  points. Then it is outside reset to maximum value and exit
+            --  the loop. Error will be reported later in this subprogram.
+
+            if Aux not in Code_Point then
+               Aux := Code_Unit_32'Last;
+
+               exit;
             end if;
          end loop;
 
       else
          --  Trim two leading characters and trailing character.
 
-         FP   := FP + 2;
-         LP   := LP - 1;
-         Code := 0;
+         FP := FP + 2;
+         LP := LP - 1;
 
          while FP < LP loop
             D := Code_Point (Self.Scanner_State.Data.Value (FP));
             FP := FP + 1;
 
-            Code := (Code * 10) + D - Zero_Fixup;
+            Aux := (Aux * 10) + D - Zero_Fixup;
+
+            --  Check whether collected code is inside range of Unicode code
+            --  points. Then it is outside reset to maximum value and exit
+            --  the loop. Error will be reported later in this subprogram.
+
+            if Aux not in Code_Point then
+               Aux := Code_Unit_32'Last;
+
+               exit;
+            end if;
          end loop;
       end if;
 
@@ -164,12 +183,12 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             --          | [#x10000-#x10FFFF]
 
             Valid :=
-              Code = 16#0009#
-                or Code = 16#000A#
-                or Code = 16#000D#
-                or Code in 16#0020# .. 16#D7FF#
-                or Code in 16#E000# .. 16#FFFD#
-                or Code in 16#1_0000# .. 16#10_FFFF#;
+              Aux = 16#0009#
+                or Aux = 16#000A#
+                or Aux = 16#000D#
+                or Aux in 16#0020# .. 16#D7FF#
+                or Aux in 16#E000# .. 16#FFFD#
+                or Aux in 16#1_0000# .. 16#10_FFFF#;
 
          when XML_1_1 =>
             --  [XML1.1 2.2 Characters]
@@ -178,9 +197,9 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             --        [#x1-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
 
             Valid :=
-              Code in 16#0001# .. 16#D7FF#
-                or Code in 16#E000# .. 16#FFFD#
-                or Code in 16#1_0000# .. 16#10_FFFF#;
+              Aux in 16#0001# .. 16#D7FF#
+                or Aux in 16#E000# .. 16#FFFD#
+                or Aux in 16#1_0000# .. 16#10_FFFF#;
       end case;
 
       if not Valid then
@@ -190,6 +209,9 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             ("[XML 4.1 WFC: Legal Character] character reference refers to"
                & " invalid character"));
          Self.Error_Reported := True;
+
+      else
+         Code := Aux;
       end if;
    end Character_Reference_To_Code_Point;
 
