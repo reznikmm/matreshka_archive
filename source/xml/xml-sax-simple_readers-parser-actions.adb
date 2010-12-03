@@ -45,6 +45,7 @@ with League.Strings.Internals;
 with Matreshka.Internals.Text_Codecs;
 with Matreshka.Internals.Unicode.Characters.Latin;
 with XML.SAX.Attributes.Internals;
+with XML.SAX.Simple_Readers.Analyzer;
 with XML.SAX.Simple_Readers.Scanner;
 with XML.SAX.Simple_Readers.Callbacks;
 
@@ -326,6 +327,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    procedure On_End_Of_Document_Type_Declaration
     (Self : not null access SAX_Simple_Reader'Class) is
    begin
+      Analyzer.Analyze_Document_Type_Declaration (Self);
       Callbacks.Call_End_DTD (Self.all);
    end On_End_Of_Document_Type_Declaration;
 
