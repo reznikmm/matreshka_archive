@@ -63,6 +63,9 @@ package League.Stream_Element_Vectors is
    function To_Stream_Element_Array
     (Item : Stream_Element_Vector) return Ada.Streams.Stream_Element_Array;
 
+   function Length
+    (Self : Stream_Element_Vector) return Ada.Streams.Stream_Element_Offset;
+
    not overriding function "="
     (Left  : Stream_Element_Vector;
      Right : Ada.Streams.Stream_Element_Array) return Boolean;

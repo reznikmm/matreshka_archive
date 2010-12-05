@@ -89,6 +89,16 @@ package body League.Stream_Element_Vectors is
       end if;
    end Finalize;
 
+   ------------
+   -- Length --
+   ------------
+
+   function Length
+    (Self : Stream_Element_Vector) return Ada.Streams.Stream_Element_Offset is
+   begin
+      return Self.Data.Last;
+   end Length;
+
    -----------------------------
    -- To_Stream_Element_Array --
    -----------------------------
