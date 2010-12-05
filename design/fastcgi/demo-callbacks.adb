@@ -13,6 +13,7 @@ package body Demo.Callbacks is
    begin
       Reply.Set_Content_Type
        (League.Strings.To_Universal_String ("text/plain"));
+      String'Write (Reply.Stream, "Hello, world!");
       Status := 0;
    end Handler;
 
