@@ -74,6 +74,16 @@ package body League.Stream_Element_Vectors is
       Reference (Self.Data);
    end Adjust;
 
+   -----------
+   -- Clear --
+   -----------
+
+   procedure Clear (Self : in out Stream_Element_Vector) is
+   begin
+      Dereference (Self.Data);
+      Self.Data := MISEV.Empty_Shared_Stream_Element_Vector'Access;
+   end Clear;
+
    --------------
    -- Finalize --
    --------------

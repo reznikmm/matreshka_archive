@@ -66,6 +66,8 @@ package League.Stream_Element_Vectors is
    function Length
     (Self : Stream_Element_Vector) return Ada.Streams.Stream_Element_Offset;
 
+   procedure Clear (Self : in out Stream_Element_Vector);
+
    not overriding function "="
     (Left  : Stream_Element_Vector;
      Right : Ada.Streams.Stream_Element_Array) return Boolean;
