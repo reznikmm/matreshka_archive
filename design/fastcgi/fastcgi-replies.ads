@@ -49,7 +49,7 @@ private with Matreshka.FastCGI;
 
 package FastCGI.Replies is
 
-   pragma Preelaborate;
+--   pragma Preelaborate;
 
    type Reply is tagged limited private;
 

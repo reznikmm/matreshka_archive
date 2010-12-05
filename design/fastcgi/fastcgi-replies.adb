@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Text_Codecs;
 
 package body FastCGI.Replies is
 
@@ -85,9 +86,16 @@ package body FastCGI.Replies is
 
    procedure Set_Content_Type
     (Self  : in out Reply;
-     Value : League.Strings.Universal_String) is
+     Value : League.Strings.Universal_String)
+   is
+      Codec : League.Text_Codecs.Text_Codec
+        := League.Text_Codecs.Codec
+            (League.Strings.To_Universal_String ("utf-8"));
+
    begin
-      null;
+      Self.Set_Raw_Header
+       (Codec.Encode (League.Strings.To_Universal_String ("Content-type")),
+        Codec.Encode (Value));
    end Set_Content_Type;
 
    --------------------
@@ -99,7 +107,7 @@ package body FastCGI.Replies is
      Name  : League.Stream_Element_Vectors.Stream_Element_Vector;
      Value : League.Stream_Element_Vectors.Stream_Element_Vector) is
    begin
-      null;
+      Self.Descriptor.Reply_Headers.Include (Name, Value);
    end Set_Raw_Header;
 
    ------------
