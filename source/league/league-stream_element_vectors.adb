@@ -99,6 +99,15 @@ package body League.Stream_Element_Vectors is
       end if;
    end Finalize;
 
+   --------------
+   -- Is_Empty --
+   --------------
+
+   function Is_Empty (Self : Stream_Element_Vector) return Boolean is
+   begin
+      return Self.Data.Last = 0;
+   end Is_Empty;
+
    ------------
    -- Length --
    ------------
