@@ -1,0 +1,16 @@
+1. Download Matreshka from svn
+
+   svn co svn://adaforge.qtada.com/matreshka/trunk/matreshka/
+
+2. Goto design/fastcgi directory.
+
+3. Type
+
+   make
+
+4. demo.fcgi executable is FastCGI application, copy it to somethere
+   there you Web server can provide access to it. Don't forget make 
+   matreshka/.libs/libleague.so and GNAT Run Time libraries available
+   to loader.
+
+5. Open URL in web-browser.
