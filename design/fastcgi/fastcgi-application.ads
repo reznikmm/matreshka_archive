@@ -55,7 +55,7 @@ package FastCGI.Application is
    procedure Initialize;
    --  Initializes module.
 
-   procedure Execute (Callback : FastCGI.Application.Callback);
+   procedure Execute (Handler : FastCGI.Application.Callback);
    --  Executes main loop.
 
    procedure Finalize;

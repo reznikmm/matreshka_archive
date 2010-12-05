@@ -41,35 +41,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.FastCGI.Server;
+with Ada.Containers.Hashed_Maps;
 
-package body FastCGI.Application is
+with League.Stream_Element_Vectors;
 
-   -------------
-   -- Execute --
-   -------------
+package Matreshka.FastCGI is
 
-   procedure Execute (Handler : FastCGI.Application.Callback) is
-   begin
-      Matreshka.FastCGI.Server.Execute (Handler);
-   end Execute;
+   pragma Preelaborate;
 
-   --------------
-   -- Finalize --
-   --------------
+   type FCGI_Request_Identifier is mod 2 ** 16;
 
-   procedure Finalize is
-   begin
-      null;
-   end Finalize;
+   function Hash
+    (Item : League.Stream_Element_Vectors.Stream_Element_Vector)
+       return Ada.Containers.Hash_Type;
 
-   ----------------
-   -- Initialize --
-   ----------------
+   package Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Stream_Element_Vectors.Stream_Element_Vector,
+           League.Stream_Element_Vectors.Stream_Element_Vector,
+           Hash,
+           League.Stream_Element_Vectors."=",
+           League.Stream_Element_Vectors."=");
 
-   procedure Initialize is
-   begin
-      null;
-   end Initialize;
+   type Descriptor is record
+      Request_Id      : FCGI_Request_Identifier;
+      Request_Headers : Maps.Map;
+      Stdin           : League.Stream_Element_Vectors.Stream_Element_Vector;
+      Reply_Headers   : Maps.Map;
+      Stdout          : League.Stream_Element_Vectors.Stream_Element_Vector;
+      Stderr          : League.Stream_Element_Vectors.Stream_Element_Vector;
+   end record;
 
-end FastCGI.Application;
+   type Descriptor_Access is access all Descriptor;
+
+end Matreshka.FastCGI;

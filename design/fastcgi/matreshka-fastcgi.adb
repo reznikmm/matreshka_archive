@@ -41,35 +41,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.FastCGI.Server;
+with Ada.Strings.Hash;
 
-package body FastCGI.Application is
+package body Matreshka.FastCGI is
 
-   -------------
-   -- Execute --
-   -------------
+   ----------
+   -- Hash --
+   ----------
 
-   procedure Execute (Handler : FastCGI.Application.Callback) is
+   function Hash
+    (Item : League.Stream_Element_Vectors.Stream_Element_Vector)
+       return Ada.Containers.Hash_Type
+   is
+      Value : constant Ada.Streams.Stream_Element_Array
+        := Item.To_Stream_Element_Array;
+      Aux   : String (1 .. Value'Length);
+      for Aux'Address use Value'Address;
+
    begin
-      Matreshka.FastCGI.Server.Execute (Handler);
-   end Execute;
+      return Ada.Strings.Hash (Aux);
+   end Hash;
 
-   --------------
-   -- Finalize --
-   --------------
-
-   procedure Finalize is
-   begin
-      null;
-   end Finalize;
-
-   ----------------
-   -- Initialize --
-   ----------------
-
-   procedure Initialize is
-   begin
-      null;
-   end Initialize;
-
-end FastCGI.Application;
+end Matreshka.FastCGI;

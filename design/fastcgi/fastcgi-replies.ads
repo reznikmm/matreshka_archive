@@ -45,6 +45,7 @@ with Ada.Streams;
 
 with League.Stream_Element_Vectors;
 with League.Strings;
+private with Matreshka.FastCGI;
 
 package FastCGI.Replies is
 
@@ -83,6 +84,8 @@ package FastCGI.Replies is
 
 private
 
-   type Reply is tagged limited null record;
+   type Reply is tagged limited record
+      Descriptor : Matreshka.FastCGI.Descriptor_Access;
+   end record;
 
 end FastCGI.Replies;

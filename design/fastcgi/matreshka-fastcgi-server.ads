@@ -41,35 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.FastCGI.Server;
+with FastCGI.Application;
 
-package body FastCGI.Application is
+package Matreshka.FastCGI.Server is
 
-   -------------
-   -- Execute --
-   -------------
+   Dsc : aliased Descriptor;
 
-   procedure Execute (Handler : FastCGI.Application.Callback) is
-   begin
-      Matreshka.FastCGI.Server.Execute (Handler);
-   end Execute;
+   procedure Execute (Handler : Standard.FastCGI.Application.Callback);
 
-   --------------
-   -- Finalize --
-   --------------
-
-   procedure Finalize is
-   begin
-      null;
-   end Finalize;
-
-   ----------------
-   -- Initialize --
-   ----------------
-
-   procedure Initialize is
-   begin
-      null;
-   end Initialize;
-
-end FastCGI.Application;
+end Matreshka.FastCGI.Server;

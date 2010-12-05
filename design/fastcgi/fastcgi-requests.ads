@@ -45,6 +45,8 @@ with Ada.Streams;
 
 with League.Stream_Element_Vectors;
 
+private with Matreshka.FastCGI;
+
 package FastCGI.Requests is
 
    pragma Preelaborate;
@@ -61,11 +63,6 @@ package FastCGI.Requests is
      Name : League.Stream_Element_Vectors.Stream_Element_Vector)
        return League.Stream_Element_Vectors.Stream_Element_Vector;
 
---   function Set_Raw_Header
---    (Self  : Request;
---     Name  : League.Stream_Element_Vectors.Stream_Element_Vector;
---     Value : League.Stream_Element_Vectors.Stream_Element_Vector);
-
    function Stream
     (Self : Request)
        return not null access Ada.Streams.Root_Stream_Type'Class;
@@ -73,6 +70,8 @@ package FastCGI.Requests is
 
 private
 
-   type Request is tagged limited null record;
+   type Request is tagged limited record
+      Descriptor : Matreshka.FastCGI.Descriptor_Access;
+   end record;
 
 end FastCGI.Requests;
