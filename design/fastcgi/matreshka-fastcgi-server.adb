@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Text_IO;
 with Ada.Unchecked_Conversion;
 
 with GNAT.Sockets;
@@ -58,8 +57,6 @@ package body Matreshka.FastCGI.Server is
 
    function To_Socket_Type is
      new Ada.Unchecked_Conversion (Integer, GNAT.Sockets.Socket_Type);
-
-   File : Ada.Text_IO.File_Type;
 
    FCGI_Listen_Socket : constant GNAT.Sockets.Socket_Type
      := To_Socket_Type (0);
@@ -175,8 +172,6 @@ package body Matreshka.FastCGI.Server is
       Address : GNAT.Sockets.Sock_Addr_Type;
 
    begin
-      Ada.Text_IO.Create (File, Ada.Text_IO.Out_File, "/tmp/demo-debug.log");
-
       Dsc.Request_Id := 0;
 
       loop
@@ -186,11 +181,7 @@ package body Matreshka.FastCGI.Server is
          --  variable.
 
          Process_Connection (Socket, Handler);
-
-         Ada.Text_IO.Flush (File);
       end loop;
-
---      Ada.Text_IO.Close (File);
    end Execute;
 
    ---------------------
@@ -226,7 +217,7 @@ package body Matreshka.FastCGI.Server is
             Value : constant Stream_Element_Vector := Maps.Element (Position);
 
          begin
-            Content_Length := Content_Length + Name.Length + Value.Length + 2;
+            Content_Length := Content_Length + Name.Length + Value.Length + 4;
          end Compute_Length;
 
          -----------------
@@ -325,24 +316,26 @@ package body Matreshka.FastCGI.Server is
          Last    : Stream_Element_Offset;
 
       begin
-         if Length = 8 then
-            Length := 0;
-         end if;
+         if Buffer'Length /= 0 then
+            if Length = 8 then
+               Length := 0;
+            end if;
 
-         Send_Header
-          (Socket, Package_Type, Dsc.Request_Id, Buffer'Length, Length);
+            Send_Header
+             (Socket, Package_Type, Dsc.Request_Id, Buffer'Length, Length);
 
-         GNAT.Sockets.Send_Socket (Socket, Buffer, Last);
+            GNAT.Sockets.Send_Socket (Socket, Buffer, Last);
 
-         if Buffer'Last /= Last then
-            raise Program_Error;
-         end if;
-
-         if Length /= 0 then
-            GNAT.Sockets.Send_Socket (Socket, Padding, Last);
-
-            if Padding'Last /= Last then
+            if Buffer'Last /= Last then
                raise Program_Error;
+            end if;
+
+            if Length /= 0 then
+               GNAT.Sockets.Send_Socket (Socket, Padding, Last);
+
+               if Padding'Last /= Last then
+                  raise Program_Error;
+               end if;
             end if;
          end if;
 
@@ -372,7 +365,9 @@ package body Matreshka.FastCGI.Server is
 
       --  Send stderr if any.
 
-      Send_Output_Stream (FCGI_Stderr, Dsc.Stderr);
+      if not Dsc.Stderr.Is_Empty then
+         Send_Output_Stream (FCGI_Stderr, Dsc.Stderr);
+      end if;
 
       --  Send end request packet.
 
