@@ -80,6 +80,18 @@ package body FastCGI.Replies is
       return League.Stream_Element_Vectors.Empty_Stream_Element_Vector;
    end Raw_Header;
 
+   ----------
+   -- Read --
+   ----------
+
+   overriding procedure Read
+    (Self : in out Output_Stream;
+     Item : out Ada.Streams.Stream_Element_Array;
+     Last : out Ada.Streams.Stream_Element_Offset) is
+   begin
+      null;
+   end Read;
+
    ----------------------
    -- Set_Content_Type --
    ----------------------
@@ -118,7 +130,25 @@ package body FastCGI.Replies is
     (Self : Reply)
        return not null access Ada.Streams.Root_Stream_Type'Class is
    begin
-      return null;
+      return Self.Out_Stream;
    end Stream;
+
+   -----------
+   -- Write --
+   -----------
+
+   overriding procedure Write
+    (Self : in out Output_Stream;
+     Item : Ada.Streams.Stream_Element_Array)
+   is
+      use type Ada.Streams.Stream_Element_Array;
+
+      Aux : constant Ada.Streams.Stream_Element_Array
+        := Self.Descriptor.Stdout.To_Stream_Element_Array;
+
+   begin
+      Self.Descriptor.Stdout :=
+        League.Stream_Element_Vectors.To_Stream_Element_Vector (Aux & Item);
+   end Write;
 
 end FastCGI.Replies;

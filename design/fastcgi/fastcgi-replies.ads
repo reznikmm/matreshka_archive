@@ -84,8 +84,24 @@ package FastCGI.Replies is
 
 private
 
+   type Output_Stream is new Ada.Streams.Root_Stream_Type with record
+      Descriptor : Matreshka.FastCGI.Descriptor_Access;
+   end record;
+
+   type Output_Stream_Access is access all Output_Stream;
+
+   overriding procedure Read
+    (Self : in out Output_Stream;
+     Item : out Ada.Streams.Stream_Element_Array;
+     Last : out Ada.Streams.Stream_Element_Offset);
+
+   overriding procedure Write
+    (Self : in out Output_Stream;
+     Item : Ada.Streams.Stream_Element_Array);
+
    type Reply is tagged limited record
       Descriptor : Matreshka.FastCGI.Descriptor_Access;
+      Out_Stream : Output_Stream_Access;
    end record;
 
 end FastCGI.Replies;

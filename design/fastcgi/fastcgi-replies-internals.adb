@@ -52,7 +52,11 @@ package body FastCGI.Replies.Internals is
     (Descriptor : Matreshka.FastCGI.Descriptor_Access)
        return Reply is
    begin
-      return (Descriptor => Descriptor);
+      return
+       (Descriptor => Descriptor,
+        Out_Stream =>
+          new Output_Stream'
+               (Ada.Streams.Root_Stream_Type with Descriptor => Descriptor));
    end Create;
 
 end FastCGI.Replies.Internals;
