@@ -44,6 +44,11 @@
 
 package body XML.SAX.Pretty_Writers is
 
+   use type League.Strings.Universal_String;
+
+   function Replace (Text : League.Strings.Universal_String)
+      return League.Strings.Universal_String;
+
    ----------------
    -- Characters --
    ----------------
@@ -53,7 +58,7 @@ package body XML.SAX.Pretty_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      null;
+      Self.Text.Append (Replace (Text));
    end Characters;
 
    -------------
@@ -65,7 +70,9 @@ package body XML.SAX.Pretty_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      null;
+      Self.Text.Append (League.Strings.To_Universal_String ("<!-- "));
+      Self.Text.Append (Text);
+      Self.Text.Append (League.Strings.To_Universal_String (" -->"));
    end Comment;
 
    ---------------
@@ -112,7 +119,9 @@ package body XML.SAX.Pretty_Writers is
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean) is
    begin
-      null;
+      Self.Text.Append (League.Strings.To_Universal_String ("</"));
+      Self.Text.Append (Qualified_Name);
+      Self.Text.Append (League.Strings.To_Universal_String (">"));
    end End_Element;
 
    ----------------
@@ -177,6 +186,41 @@ package body XML.SAX.Pretty_Writers is
       null;
    end Processing_Instruction;
 
+   -------------
+   -- Replace --
+   -------------
+
+   function Replace (Text : League.Strings.Universal_String)
+      return League.Strings.Universal_String is
+   begin
+      return Result : League.Strings.Universal_String do
+        for J in 1 .. Text.Length loop
+
+           case Text.Element (J) is
+
+              when '=' =>
+                 Result := Result & "&amp;";
+
+              when ''' =>
+                 Result := Result & "&apos;";
+
+              when '"' =>
+                 Result := Result & "&quot;";
+
+              when '>' =>
+                 Result := Result & "&gt;";
+
+              when '<' =>
+                 Result := Result & "&lt;";
+
+              when others =>
+                 Result.Append (Text.Element (J).To_Wide_Wide_Character);
+           end case;
+
+        end loop;
+      end return;
+   end Replace;
+
    --------------------
    -- Skipped_Entity --
    --------------------
@@ -237,7 +281,20 @@ package body XML.SAX.Pretty_Writers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean) is
    begin
-      null;
+      Self.Text.Append (League.Strings.To_Universal_String ("<"));
+      Self.Text.Append (Qualified_Name);
+
+      if Attributes.Length > 0 then
+         for J in 1 .. Attributes.Length loop
+            Self.Text.Append (League.Strings.To_Universal_String (" "));
+            Self.Text.Append (Attributes.Local_Name (J));
+            Self.Text.Append (League.Strings.To_Universal_String ("="""));
+            Self.Text.Append (Attributes.Value (J));
+            Self.Text.Append (League.Strings.To_Universal_String (""""));
+         end loop;
+      end if;
+
+      Self.Text.Append (League.Strings.To_Universal_String (">"));
    end Start_Element;
 
    ------------------

@@ -52,6 +52,8 @@ package XML.SAX.Pretty_Writers is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with private;
 
+   type SAX_Pretty_Writer_Access is access all SAX_Pretty_Writer'Class;
+
    not overriding function Text
     (Self : SAX_Pretty_Writer) return League.Strings.Universal_String;
 
