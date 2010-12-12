@@ -4,11 +4,11 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -39,27 +39,45 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision$ $Date$
+--  $Revision: 877 $ $Date: 2010-08-05 10:56:50 +0400 (Чтв, 05 Авг 2010) $
 ------------------------------------------------------------------------------
-with "matreshka_xml";
+with Ada.Wide_Wide_Text_IO;
 
-project Matreshka_XML_Tests is
+with League.Strings;
 
-   for Main use
-    ("xmlconf_test.adb",
-     "test_20.adb",
-     "test_26.adb",
-     "simple_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/xml",
-     "../examples/sax_events_printer",
-     "../testsuite/xml/TN-20",
-     "../testsuite/xml/TN-26",
-     "../testsuite/xml/pretty_writer/simple_test");
+with XML.SAX.Attributes;
+with XML.SAX.Pretty_Writers;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8", "-O2", "-gnatn");
-   end Compiler;
+use League.Strings;
 
-end Matreshka_XML_Tests;
+procedure Simple_Test is
+   Writer     : XML.SAX.Pretty_Writers.SAX_Pretty_Writer_Access
+     := new XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
+   OK         : Boolean := False;
+   Attrs      : XML.SAX.Attributes.SAX_Attributes;
+   NS_URI     : Universal_String := To_Universal_String ("");
+   Local_Name : Universal_String := To_Universal_String ("");
+   Qualified_Name : Universal_String := To_Universal_String ("A");
+
+begin
+   --  Setting attributes
+
+   --  Creating document
+   Writer.Start_Document (OK);
+   Writer.Start_Element (NS_URI,
+                         Local_Name,
+                         Qualified_Name,
+                         Attrs,
+                         OK);
+
+   Writer.Characters (To_Universal_String ("""test"""), OK);
+   Writer.End_Element (NS_URI,
+                       Local_Name,
+                       Qualified_Name,
+                       OK);
+
+   Writer.End_Document (OK);
+
+   Ada.Wide_Wide_Text_IO.Put_Line ("Result : "
+                                     & Writer.Text.To_Wide_Wide_String);
+end Simple_Test;
