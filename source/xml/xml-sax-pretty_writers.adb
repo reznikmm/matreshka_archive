@@ -46,8 +46,9 @@ package body XML.SAX.Pretty_Writers is
 
    use type League.Strings.Universal_String;
 
-   function Replace (Text : League.Strings.Universal_String)
-      return League.Strings.Universal_String;
+   function Replace
+    (Text : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
 
    ----------------
    -- Characters --
@@ -190,34 +191,32 @@ package body XML.SAX.Pretty_Writers is
    -- Replace --
    -------------
 
-   function Replace (Text : League.Strings.Universal_String)
-      return League.Strings.Universal_String is
+   function Replace
+    (Text : League.Strings.Universal_String)
+       return League.Strings.Universal_String is
    begin
       return Result : League.Strings.Universal_String do
-        for J in 1 .. Text.Length loop
+         for J in 1 .. Text.Length loop
+            case Text.Element (J) is
+               when '&' =>
+                  Result := Result & "&amp;";
 
-           case Text.Element (J) is
+               when ''' =>
+                  Result := Result & "&apos;";
 
-              when '&' =>
-                 Result := Result & "&amp;";
+               when '"' =>
+                  Result := Result & "&quot;";
 
-              when ''' =>
-                 Result := Result & "&apos;";
+               when '>' =>
+                  Result := Result & "&gt;";
 
-              when '"' =>
-                 Result := Result & "&quot;";
+               when '<' =>
+                  Result := Result & "&lt;";
 
-              when '>' =>
-                 Result := Result & "&gt;";
-
-              when '<' =>
-                 Result := Result & "&lt;";
-
-              when others =>
-                 Result.Append (Text.Element (J).To_Wide_Wide_Character);
-           end case;
-
-        end loop;
+               when others =>
+                  Result.Append (Text.Element (J).To_Wide_Wide_Character);
+            end case;
+         end loop;
       end return;
    end Replace;
 
