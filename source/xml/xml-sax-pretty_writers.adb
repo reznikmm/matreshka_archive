@@ -46,9 +46,10 @@ package body XML.SAX.Pretty_Writers is
 
    use type League.Strings.Universal_String;
 
-   function Replace
+   function Escape
     (Text : League.Strings.Universal_String)
        return League.Strings.Universal_String;
+   --  Replaces special characters by their entity references.
 
    ----------------
    -- Characters --
@@ -59,7 +60,7 @@ package body XML.SAX.Pretty_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      Self.Text.Append (Replace (Text));
+      Self.Text.Append (Escape (Text));
    end Characters;
 
    -------------
@@ -162,36 +163,11 @@ package body XML.SAX.Pretty_Writers is
       return League.Strings.Empty_Universal_String;
    end Error_String;
 
-   --------------------------
-   -- Ignorable_Whitespace --
-   --------------------------
+   ------------
+   -- Escape --
+   ------------
 
-   overriding procedure Ignorable_Whitespace
-    (Self    : in out SAX_Pretty_Writer;
-     Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
-   begin
-      null;
-   end Ignorable_Whitespace;
-
-   ----------------------------
-   -- Processing_Instruction --
-   ----------------------------
-
-   overriding procedure Processing_Instruction
-    (Self    : in out SAX_Pretty_Writer;
-     Target  : League.Strings.Universal_String;
-     Data    : League.Strings.Universal_String;
-     Success : in out Boolean) is
-   begin
-      null;
-   end Processing_Instruction;
-
-   -------------
-   -- Replace --
-   -------------
-
-   function Replace
+   function Escape
     (Text : League.Strings.Universal_String)
        return League.Strings.Universal_String is
    begin
@@ -218,7 +194,32 @@ package body XML.SAX.Pretty_Writers is
             end case;
          end loop;
       end return;
-   end Replace;
+   end Escape;
+
+   --------------------------
+   -- Ignorable_Whitespace --
+   --------------------------
+
+   overriding procedure Ignorable_Whitespace
+    (Self    : in out SAX_Pretty_Writer;
+     Text    : League.Strings.Universal_String;
+     Success : in out Boolean) is
+   begin
+      null;
+   end Ignorable_Whitespace;
+
+   ----------------------------
+   -- Processing_Instruction --
+   ----------------------------
+
+   overriding procedure Processing_Instruction
+    (Self    : in out SAX_Pretty_Writer;
+     Target  : League.Strings.Universal_String;
+     Data    : League.Strings.Universal_String;
+     Success : in out Boolean) is
+   begin
+      null;
+   end Processing_Instruction;
 
    --------------------
    -- Skipped_Entity --
