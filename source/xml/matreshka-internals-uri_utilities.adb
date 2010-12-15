@@ -44,6 +44,8 @@
 
 package body Matreshka.Internals.URI_Utilities is
 
+   use type League.Strings.Universal_String;
+
    --------------------
    -- Construct_Base --
    --------------------
@@ -53,8 +55,6 @@ package body Matreshka.Internals.URI_Utilities is
      System_Id : League.Strings.Universal_String)
        return League.Strings.Universal_String
    is
-      use type League.Strings.Universal_String;
-
       Dir : constant League.Strings.Universal_String
         := Directory_Name (System_Id);
 
