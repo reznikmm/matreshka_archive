@@ -283,15 +283,13 @@ package body XML.SAX.Pretty_Writers is
       Self.Text.Append (League.Strings.To_Universal_String ("<"));
       Self.Text.Append (Qualified_Name);
 
-      if Attributes.Length > 0 then
-         for J in 1 .. Attributes.Length loop
-            Self.Text.Append (League.Strings.To_Universal_String (" "));
-            Self.Text.Append (Attributes.Local_Name (J));
-            Self.Text.Append (League.Strings.To_Universal_String ("="""));
-            Self.Text.Append (Attributes.Value (J));
-            Self.Text.Append (League.Strings.To_Universal_String (""""));
-         end loop;
-      end if;
+      for J in 1 .. Attributes.Length loop
+         Self.Text.Append (League.Strings.To_Universal_String (" "));
+         Self.Text.Append (Attributes.Local_Name (J));
+         Self.Text.Append (League.Strings.To_Universal_String ("="""));
+         Self.Text.Append (Attributes.Value (J));
+         Self.Text.Append (League.Strings.To_Universal_String (""""));
+      end loop;
 
       Self.Text.Append (League.Strings.To_Universal_String (">"));
    end Start_Element;
