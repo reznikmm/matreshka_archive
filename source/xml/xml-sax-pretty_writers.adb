@@ -198,7 +198,7 @@ package body XML.SAX.Pretty_Writers is
 
            case Text.Element (J) is
 
-              when '=' =>
+              when '&' =>
                  Result := Result & "&amp;";
 
               when ''' =>
