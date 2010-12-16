@@ -192,7 +192,7 @@ package body Generator.Attributes is
       Classes.Iterate (Analyze_Class'Access);
 
       Put_Line ("with Cmof.Internals.Metamodel;");
-      Put_Line ("with Cmof.Internals.Tables;");
+      Put_Line ("with Cmof.Internals.Types;");
       New_Line;
       Put_Line ("private package CMOF.Internals.Attribute_Mappings is");
 
@@ -457,7 +457,7 @@ package body Generator.Attributes is
                Put ("        ");
             end if;
 
-            Put_Line ("Tables.E_" & To_Ada_Identifier (Class.Name) & " =>");
+            Put_Line ("Types.E_" & To_Ada_Identifier (Class.Name) & " =>");
             Put ("          (");
             Class.All_Properties.Iterate (Process_Property'Access);
             Put_Line (",");
@@ -470,7 +470,7 @@ package body Generator.Attributes is
    begin
       New_Line;
       Put_Line ("   Collection_Offset : constant");
-      Put_Line ("     array (CMOF.Internals.Tables.Class_Element_Kinds,");
+      Put_Line ("     array (CMOF.Internals.Types.Class_Element_Kinds,");
       Put_Line
        ("            "
           & "CMOF.Internals.Metamodel.CMOF_Collection_Of_Element_Property)");
@@ -617,7 +617,7 @@ package body Generator.Attributes is
                Put ("        ");
             end if;
 
-            Put_Line ("Tables.E_" & To_Ada_Identifier (Class.Name) & " =>");
+            Put_Line ("Types.E_" & To_Ada_Identifier (Class.Name) & " =>");
             Put ("          (");
             Class.All_Properties.Iterate (Process_Property'Access);
             Put_Line (",");
@@ -631,7 +631,7 @@ package body Generator.Attributes is
       New_Line;
       Put_Line ("   Member_Offset : constant");
       Put_Line
-        ("     array (CMOF.Internals.Tables.Class_Element_Kinds,");
+        ("     array (CMOF.Internals.Types.Class_Element_Kinds,");
       Put_Line
         ("            Metamodel.CMOF_Non_Collection_Of_Element_Property) of Natural :=");
       Put ("       (");

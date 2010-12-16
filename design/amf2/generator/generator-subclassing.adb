@@ -374,10 +374,12 @@ package body Generator.Subclassing is
 
    begin
       Put_Line ("with Cmof.Internals.Tables;");
+      Put_Line ("with Cmof.Internals.Types;");
       New_Line;
       Put_Line ("package body Cmof.Internals.Subclassing is");
       New_Line;
       Put_Line ("   use Cmof.Internals.Tables;");
+      Put_Line ("   use Cmof.Internals.Types;");
 
       Generate_Element_Classes_Declaration;
       Generate_Is_Subclass_Declaration;

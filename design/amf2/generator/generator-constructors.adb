@@ -72,11 +72,13 @@ package body Generator.Constructors is
    begin
       Put_Line ("with Cmof.Internals.Metamodel;");
       Put_Line ("with Cmof.Internals.Tables;");
+      Put_Line ("with Cmof.Internals.Types;");
       New_Line;
       Put_Line ("package body Cmof.Internals.Constructors is");
       New_Line;
       Put_Line ("   use Cmof.Internals.Metamodel;");
       Put_Line ("   use Cmof.Internals.Tables;");
+      Put_Line ("   use Cmof.Internals.Types;");
 
       Classes.Iterate (Generate_Constructor_Implementation'Access);
 

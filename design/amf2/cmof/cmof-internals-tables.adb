@@ -1,6 +1,8 @@
 
 package body Cmof.Internals.Tables is
 
+   use CMOF.Internals.Types;
+
    -----------------------------------------------
    -- Allocate_Collection_Of_Cmof_Element_Slots --
    -----------------------------------------------
