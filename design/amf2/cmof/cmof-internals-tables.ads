@@ -138,8 +138,11 @@ private package Cmof.Internals.Tables is
 
    procedure Initialize_Metaproperty (Metaproperty : Cmof_Property);
 
-   procedure Initialize_Collections_Of_Cmof_Element
+   procedure Allocate_Collection_Of_Cmof_Element_Slots
     (Element : Cmof_Element;
      Count   : Natural);
+   --  Allocates specified number of collections of CMOF::Element to manage
+   --  slots for object's properties. It also initialize collection for
+   --  'default' slot.
 
 end Cmof.Internals.Tables;

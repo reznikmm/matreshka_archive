@@ -1,6 +1,22 @@
 
 package body Cmof.Internals.Tables is
 
+   -----------------------------------------------
+   -- Allocate_Collection_Of_Cmof_Element_Slots --
+   -----------------------------------------------
+
+   procedure Allocate_Collection_Of_Cmof_Element_Slots
+    (Element : Cmof_Element;
+     Count   : Natural)
+   is
+      First : constant Collection_Of_CMOF_Element
+        := Collections.Last + 1;
+
+   begin
+      Collections.Set_Last (First + Collection_Of_CMOF_Element (Count));
+      Elements.Table (Element).Member (0) := To_Internal (First);
+   end Allocate_Collection_Of_Cmof_Element_Slots;
+
    ---------
    -- "+" --
    ---------
@@ -35,22 +51,6 @@ package body Cmof.Internals.Tables is
                    and then Elements.Table (Self).Kind /= E_None);
    end Is_Valid;
 
-   --------------------------------------------
-   -- Initialize_Collections_Of_Cmof_Element --
-   --------------------------------------------
-
-   procedure Initialize_Collections_Of_Cmof_Element
-    (Element : Cmof_Element;
-     Count   : Natural)
-   is
-      First : constant Collection_Of_CMOF_Element
-        := Collections.Last + 1;
-
-   begin
-      Collections.Set_Last (First + Collection_Of_CMOF_Element (Count));
-      Elements.Table (Element).Member (0) := To_Internal (First);
-   end Initialize_Collections_Of_Cmof_Element;
-
    --------------------------------
    -- Initialize_Metaassociation --
    --------------------------------
@@ -75,7 +75,7 @@ package body Cmof.Internals.Tables is
         (Kind   => E_Class,
          Member => (0      => 0,
                     others => 0));
-      Initialize_Collections_Of_Cmof_Element (Metaclass, Collections);
+      Allocate_Collection_Of_Cmof_Element_Slots (Metaclass, Collections);
    end Initialize_Metaclass;
 
    -----------------------------

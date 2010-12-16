@@ -59,7 +59,8 @@ package body Generator.Constructors is
 --                & ")),");
             Put_Line ("                   others => 0));");
             Put_Line
-             ("      Initialize_Collections_Of_Cmof_Element (Elements.Last, "
+             ("      Allocate_Collection_Of_Cmof_Element_Slots"
+                & " (Elements.Last, "
                 & Trim (Natural'Image (Class.Collection_Slots), Both)
                 & ");");
             New_Line;
