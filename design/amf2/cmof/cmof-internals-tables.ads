@@ -107,7 +107,7 @@ private package Cmof.Internals.Tables is
 
    package Collections is
      new GNAT.Table
-       (Collection_Record, Collection_Of_CMOF_Element, 1, 300, 100);
+       (Collection_Record, Collection_Of_CMOF_Element, 1, 2500, 100);
 
    package Collection_Elements is
      new GNAT.Table
