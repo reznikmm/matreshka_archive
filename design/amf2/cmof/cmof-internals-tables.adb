@@ -55,13 +55,15 @@ package body Cmof.Internals.Tables is
    -- Initialize_Metaassociation --
    --------------------------------
 
-   procedure Initialize_Metaassociation (Metaassociation : Cmof_Association) is
+   procedure Initialize_Metaassociation
+    (Metaassociation : Cmof_Association;
+     Collections     : Natural) is
    begin
-      Collections.Increment_Last;
       Elements.Table (Metaassociation) :=
         (Kind   => E_Association,
-         Member => (0      => Interfaces.Integer_32 (Collections.Last),
+         Member => (0      => 0,
                     others => 0));
+      Allocate_Collection_Of_Cmof_Element_Slots (Metaassociation, Collections);
    end Initialize_Metaassociation;
 
    --------------------------
@@ -82,13 +84,15 @@ package body Cmof.Internals.Tables is
    -- Initialize_Metaproperty --
    -----------------------------
 
-   procedure Initialize_Metaproperty (Metaproperty : Cmof_Property) is
+   procedure Initialize_Metaproperty
+    (Metaproperty : Cmof_Property;
+     Collections  : Natural) is
    begin
-      Collections.Increment_Last;
       Elements.Table (Metaproperty) :=
         (Kind   => E_Property,
-         Member => (0      => Interfaces.Integer_32 (Collections.Last),
+         Member => (0      => 0,
                     others => 0));
+      Allocate_Collection_Of_Cmof_Element_Slots (Metaproperty, Collections);
    end Initialize_Metaproperty;
 
 end Cmof.Internals.Tables;

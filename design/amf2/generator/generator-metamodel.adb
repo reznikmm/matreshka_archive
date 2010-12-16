@@ -11,7 +11,10 @@ package body Generator.Metamodel is
    use Ada.Text_IO;
    use Generator.Utilities;
 
-   Last_Cmof_Element : Natural := 0;
+   Last_Cmof_Element               : Natural := 0;
+   Collection_Slots_In_Association : Natural := 0;
+   Collection_Slots_In_Class       : Natural := 0;
+   Collection_Slots_In_Property    : Natural := 0;
 
    ---------------------------------------
    -- Generate_Metamodel_Implementation --
@@ -44,6 +47,8 @@ package body Generator.Metamodel is
          Put_Line
           ("   Initialize_Metaassociation ("
              & Constant_Name_In_Metamodel (Association_Sets.Element (Position))
+             & ", "
+             & Trim (Natural'Image (Collection_Slots_In_Association), Both)
              & ");");
       end Generate_Association_Initialization;
 
@@ -67,6 +72,8 @@ package body Generator.Metamodel is
             Put_Line
              ("   Initialize_Metaproperty ("
                 & Constant_Name_In_Metamodel (Property_Sets.Element (Position))
+                & ", "
+                & Trim (Natural'Image (Collection_Slots_In_Property), Both)
                 & ");");
          end Generate_Property_Initialization;
 
@@ -87,7 +94,7 @@ package body Generator.Metamodel is
           ("   Initialize_Metaclass ("
              & Constant_Name_In_Metamodel (Class)
              & ", "
-             & Trim (Natural'Image (Class.Collection_Slots), Both)
+             & Trim (Natural'Image (Collection_Slots_In_Class), Both)
              & ");");
       end Generate_Class_Initialization;
 
@@ -111,6 +118,8 @@ package body Generator.Metamodel is
             Put_Line
              ("   Initialize_Metaproperty ("
                 & Constant_Name_In_Metamodel (Property_Sets.Element (Position))
+                & ", "
+                & Trim (Natural'Image (Collection_Slots_In_Property), Both)
                 & ");");
          end Generate_Property_Initialization;
 
@@ -271,6 +280,16 @@ package body Generator.Metamodel is
          end Add_Property;
 
       begin
+         if C_Element.Name = "Association" then
+            Collection_Slots_In_Association := C_Element.Collection_Slots;
+
+         elsif C_Element.Name = "Class" then
+            Collection_Slots_In_Class := C_Element.Collection_Slots;
+
+         elsif C_Element.Name = "Property" then
+            Collection_Slots_In_Property := C_Element.Collection_Slots;
+         end if;
+
          if Max_Class_Length < C_Ada_Name'Length then
             Max_Class_Length := C_Ada_Name'Length;
          end if;

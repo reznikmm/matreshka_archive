@@ -132,11 +132,16 @@ private package Cmof.Internals.Tables is
 --    (Item : Collection_Of_CMOF_Element) return Interfaces.Integer_32;
 
    procedure Initialize_Metaclass
-    (Metaclass : Cmof_Class; Collections : Natural);
+    (Metaclass   : Cmof_Class;
+     Collections : Natural);
 
-   procedure Initialize_Metaassociation (Metaassociation : Cmof_Association);
+   procedure Initialize_Metaassociation
+    (Metaassociation : Cmof_Association;
+     Collections     : Natural);
 
-   procedure Initialize_Metaproperty (Metaproperty : Cmof_Property);
+   procedure Initialize_Metaproperty
+    (Metaproperty : Cmof_Property;
+     Collections  : Natural);
 
    procedure Allocate_Collection_Of_Cmof_Element_Slots
     (Element : Cmof_Element;
