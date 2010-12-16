@@ -129,10 +129,12 @@ package body Generator.Metamodel is
       end Generate_Class_Property_Initialization;
 
    begin
+      Put_Line ("with Cmof.Internals.Metamodel;");
       Put_Line ("with Cmof.Internals.Tables;");
       New_Line;
-      Put_Line ("package body Cmof.Internals.Metamodel is");
+      Put_Line ("package body Cmof.Internals.Setup is");
       New_Line;
+      Put_Line ("   use Cmof.Internals.Metamodel;");
       Put_Line ("   use Cmof.Internals.Tables;");
       New_Line;
       Put_Line
@@ -155,7 +157,7 @@ package body Generator.Metamodel is
       Classes.Iterate (Generate_Class_Property_Initialization'Access);
       Associations.Iterate
        (Generate_Association_Property_Initialization'Access);
-      Put_Line ("end Cmof.Internals.Metamodel;");
+      Put_Line ("end Cmof.Internals.Setup;");
    end Generate_Metamodel_Implementation;
 
    --------------------------------------
@@ -356,7 +358,7 @@ package body Generator.Metamodel is
       Put_Line ("package Cmof.Internals.Metamodel is");
 
       New_Line;
-      Put_Line ("   pragma Elaborate_Body;");
+      Put_Line ("   pragma Pure;");
       New_Line;
       Put_Line ("   -------------");
       Put_Line ("   -- Classes --");

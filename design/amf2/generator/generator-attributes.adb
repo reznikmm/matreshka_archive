@@ -195,6 +195,8 @@ package body Generator.Attributes is
       Put_Line ("with Cmof.Internals.Types;");
       New_Line;
       Put_Line ("private package CMOF.Internals.Attribute_Mappings is");
+--      New_Line;
+--      Put_Line ("   pragma Pure;");
 
       Generate_Collection_Of_Element_Resolve_Data;
       Generate_Member_Resolve_Data;

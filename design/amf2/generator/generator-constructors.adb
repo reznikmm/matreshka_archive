@@ -71,6 +71,7 @@ package body Generator.Constructors is
 
    begin
       Put_Line ("with Cmof.Internals.Metamodel;");
+      Put_Line ("with Cmof.Internals.Setup;");
       Put_Line ("with Cmof.Internals.Tables;");
       Put_Line ("with Cmof.Internals.Types;");
       New_Line;
