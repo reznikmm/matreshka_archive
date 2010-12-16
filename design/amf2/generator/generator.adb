@@ -138,20 +138,6 @@ package body Generator is
    end Is_Multivalued;
 
    -----------------------
-   -- Meta_Element_Name --
-   -----------------------
-
-   function Meta_Element_Name
-     (Property : not null Property_Access) return String is
-   begin
-      return
-        "MP_Cmof_"
-          & To_Ada_Identifier (Property.Owned_Class.Name)
-          & '_'
-          & To_Ada_Identifier (Property.Name);
-   end Meta_Element_Name;
-
-   -----------------------
    -- To_Ada_Identifier --
    -----------------------
 

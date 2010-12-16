@@ -171,9 +171,4 @@ package Generator is
    --  Returns True when Property type is subclass of CMOF::Element, and it is
    --  multivalued.
 
-   function Meta_Element_Name
-     (Property : not null Property_Access) return String;
-   --  Returns Ada identifier of the corresponding metaelement in the metamodel
-   --  package.
-
 end Generator;

@@ -1,11 +1,14 @@
 with Ada.Strings.Fixed;
 with Ada.Text_IO;
 
+with Generator.Utilities;
+
 package body Generator.Attributes is
 
    use Ada.Strings.Fixed;
    use Ada.Strings.Unbounded;
    use Ada.Text_IO;
+   use Generator.Utilities;
 
    package Property_Vectors is
      new Ada.Containers.Vectors (Positive, Property_Access);
@@ -225,7 +228,7 @@ package body Generator.Attributes is
                Put_Line ("              (Elements.Table (Self).Kind,");
                Put_Line
                  ("               "
-                    & Meta_Element_Name (First_Property)
+                    & Constant_Name_In_Metamodel (First_Property)
                     & ");");
 
             else
@@ -266,7 +269,7 @@ package body Generator.Attributes is
                      Put_Line ("                 (Elements.Table (Self).Kind,");
                      Put_Line
                        ("                  "
-                          & Meta_Element_Name (Property)
+                          & Constant_Name_In_Metamodel (Property)
                           & ");");
                      Property_Vectors.Next (Position);
                   end loop;
@@ -394,7 +397,7 @@ package body Generator.Attributes is
             if Is_Collection_Of_Element (Property) then
                Max_Length :=
                  Ada.Text_IO.Count'Max
-                   (Max_Length, Meta_Element_Name (Property)'Length);
+                   (Max_Length, Constant_Name_In_Metamodel (Property)'Length);
             end if;
          end Compute_Length;
 
@@ -416,7 +419,7 @@ package body Generator.Attributes is
                   Put ("           ");
                end if;
 
-               Put (Meta_Element_Name (Property));
+               Put (Constant_Name_In_Metamodel (Property));
                Set_Col (13 + Max_Length);
                Put
                  ("=>"
@@ -552,7 +555,7 @@ package body Generator.Attributes is
             if not Is_Collection_Of_Element (Property) then
                Max_Length :=
                  Ada.Text_IO.Count'Max
-                   (Max_Length, Meta_Element_Name (Property)'Length);
+                   (Max_Length, Constant_Name_In_Metamodel (Property)'Length);
             end if;
          end Compute_Length;
 
@@ -574,7 +577,7 @@ package body Generator.Attributes is
                   Put ("           ");
                end if;
 
-               Put (Meta_Element_Name (Property));
+               Put (Constant_Name_In_Metamodel (Property));
                Set_Col (13 + Max_Length);
                Put
                  ("=>"
