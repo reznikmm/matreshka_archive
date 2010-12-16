@@ -126,6 +126,8 @@ package Generator is
       Is_Read_Only          : Boolean;
       Is_Derived            : Boolean;
       Is_Derived_Union      : Boolean;
+      Is_Ordered            : Boolean;
+      Is_Unique             : Boolean;
 
       --  Synthetic attributes, they are filled by analyzer.
 

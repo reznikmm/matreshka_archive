@@ -338,9 +338,9 @@ procedure Generator.Driver is
       end if;
    end Process_Element;
 
-   ----------------------------
+   -------------------------
    -- Process_Enumeration --
-   ----------------------------
+   -------------------------
 
    procedure Process_Enumeration (N : Dom.Core.Node) is
       use Dom.Core.Elements;
@@ -407,22 +407,26 @@ procedure Generator.Driver is
    procedure Process_Property (N : Dom.Core.Node) is
       use Dom.Core.Elements;
 
-      Id               : constant String :=
-        Get_Attribute_NS (N, Xmi_Namespace, "id");
-      Name             : constant String := Get_Attribute (N, "name");
-      Type_Id          : Unbounded_String :=
-        To_Unbounded_String (Get_Attribute (N, "type"));
-      Lower            : constant Natural := Get_Attribute (N, "lower", 1);
-      Upper_Value      : constant String  := Get_Attribute (N, "upper");
-      Upper            : Natural;
-      Is_Read_Only     : constant Boolean :=
-        Get_Attribute (N, "isReadOnly", False);
-      Is_Derived       : constant Boolean :=
-        Get_Attribute (N, "isDerived", False);
-      Is_Derived_Union : constant Boolean :=
-        Get_Attribute (N, "isDerivedUnion", False);
-      Redefined_Property : constant String :=
-        Get_Attribute (N, "redefinedProperty");
+      Id                 : constant String
+        := Get_Attribute_NS (N, Xmi_Namespace, "id");
+      Name               : constant String := Get_Attribute (N, "name");
+      Type_Id            : Unbounded_String
+        := To_Unbounded_String (Get_Attribute (N, "type"));
+      Lower              : constant Natural := Get_Attribute (N, "lower", 1);
+      Upper_Value        : constant String  := Get_Attribute (N, "upper");
+      Upper              : Natural;
+      Is_Read_Only       : constant Boolean
+        := Get_Attribute (N, "isReadOnly", False);
+      Is_Derived         : constant Boolean
+        := Get_Attribute (N, "isDerived", False);
+      Is_Derived_Union   : constant Boolean
+        := Get_Attribute (N, "isDerivedUnion", False);
+      Redefined_Property : constant String
+        := Get_Attribute (N, "redefinedProperty");
+      Is_Ordered         : constant Boolean
+        := Get_Attribute (N, "isOrdered", False);
+      Is_Unique          : constant Boolean
+        := Get_Attribute (N, "isUnique", True);
 
 --  subsettedProperty
 --  association
@@ -463,6 +467,8 @@ procedure Generator.Driver is
                Is_Read_Only          => Is_Read_Only,
                Is_Derived            => Is_Derived,
                Is_Derived_Union      => Is_Derived_Union,
+               Is_Ordered            => Is_Ordered,
+               Is_Unique             => Is_Unique,
                Owned_Class           => Current_Class,
                Owned_Association     => Current_Association,
                Redefined_Property_Id =>

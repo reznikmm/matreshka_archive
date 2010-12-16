@@ -13,7 +13,6 @@ package body Generator.Metamodel is
 
    Last_Cmof_Element               : Natural := 0;
    Collection_Slots_In_Association : Natural := 0;
-   Collection_Slots_In_Class       : Natural := 0;
    Collection_Slots_In_Property    : Natural := 0;
 
    ---------------------------------------
@@ -91,10 +90,8 @@ package body Generator.Metamodel is
 
       begin
          Put_Line
-          ("   Initialize_Metaclass ("
+          ("   Initialize_Class ("
              & Constant_Name_In_Metamodel (Class)
-             & ", "
-             & Trim (Natural'Image (Collection_Slots_In_Class), Both)
              & ");");
       end Generate_Class_Initialization;
 
@@ -129,11 +126,15 @@ package body Generator.Metamodel is
       end Generate_Class_Property_Initialization;
 
    begin
+      Put_Line ("with Cmof.Internals.Attributes;");
+      Put_Line ("with Cmof.Internals.Constructors;");
       Put_Line ("with Cmof.Internals.Metamodel;");
       Put_Line ("with Cmof.Internals.Tables;");
       New_Line;
       Put_Line ("package body Cmof.Internals.Setup is");
       New_Line;
+      Put_Line ("   use Cmof.Internals.Attributes;");
+      Put_Line ("   use Cmof.Internals.Constructors;");
       Put_Line ("   use Cmof.Internals.Metamodel;");
       Put_Line ("   use Cmof.Internals.Tables;");
       New_Line;
@@ -284,9 +285,6 @@ package body Generator.Metamodel is
       begin
          if C_Element.Name = "Association" then
             Collection_Slots_In_Association := C_Element.Collection_Slots;
-
-         elsif C_Element.Name = "Class" then
-            Collection_Slots_In_Class := C_Element.Collection_Slots;
 
          elsif C_Element.Name = "Property" then
             Collection_Slots_In_Property := C_Element.Collection_Slots;

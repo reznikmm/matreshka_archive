@@ -61,10 +61,14 @@ private package Cmof.Internals.Tables is
    type Collection_Kinds is (C_None, C_Set, C_Ordered_Set, C_Bag, C_Sequence);
 
    type Collection_Record (Kind : Collection_Kinds := C_None) is record
-      Read_Only : Boolean;
+--      Owner : CMOF_Element;
+      --  Owner of the collection.
+
+--      Read_Only : Boolean;
       Head      : Collection_Element_Identifier;
       Tail      : Collection_Element_Identifier;
-      Size      : Natural;
+      --  First and Last elements in the collection.
+--      Size      : Natural;
    end record;
 
 --   type Collection_Element_Kinds is (CE_None, 
@@ -107,10 +111,6 @@ private package Cmof.Internals.Tables is
           (Collection_Of_CMOF_Element, Interfaces.Integer_32);
 --    (Item : Collection_Of_CMOF_Element) return Interfaces.Integer_32;
 
-   procedure Initialize_Metaclass
-    (Metaclass   : Cmof_Class;
-     Collections : Natural);
-
    procedure Initialize_Metaassociation
     (Metaassociation : Cmof_Association;
      Collections     : Natural);
@@ -118,6 +118,14 @@ private package Cmof.Internals.Tables is
    procedure Initialize_Metaproperty
     (Metaproperty : Cmof_Property;
      Collections  : Natural);
+
+   procedure Initialize_Ordered_Set_Collection
+    (Collection : Collection_Of_CMOF_Element);
+   --  Initialize specified collection as ordered set.
+
+   procedure Initialize_Set_Collection
+    (Collection : Collection_Of_CMOF_Element);
+   --  Initialize specified collection as set.
 
    procedure Allocate_Collection_Of_Cmof_Element_Slots
     (Element : Cmof_Element;

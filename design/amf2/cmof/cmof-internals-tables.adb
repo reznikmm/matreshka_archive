@@ -53,6 +53,21 @@ package body Cmof.Internals.Tables is
                    and then Elements.Table (Self).Kind /= E_None);
    end Is_Valid;
 
+   ---------------------------------------
+   -- Initialize_Ordered_Set_Collection --
+   ---------------------------------------
+
+   procedure Initialize_Ordered_Set_Collection
+--    (Class      : CMOF_Class;
+--     Property   : CMOF_Property;
+    (Collection : Collection_Of_CMOF_Element) is
+   begin
+      Collections.Table (Collection) :=
+       (Kind => C_Ordered_Set,
+        Head => 0,
+        Tail => 0);
+   end Initialize_Ordered_Set_Collection;
+
    --------------------------------
    -- Initialize_Metaassociation --
    --------------------------------
@@ -68,20 +83,6 @@ package body Cmof.Internals.Tables is
       Allocate_Collection_Of_Cmof_Element_Slots (Metaassociation, Collections);
    end Initialize_Metaassociation;
 
-   --------------------------
-   -- Initialize_Metaclass --
-   --------------------------
-
-   procedure Initialize_Metaclass
-    (Metaclass : Cmof_Class; Collections : Natural) is
-   begin
-      Elements.Table (Metaclass) :=
-        (Kind   => E_Class,
-         Member => (0      => 0,
-                    others => 0));
-      Allocate_Collection_Of_Cmof_Element_Slots (Metaclass, Collections);
-   end Initialize_Metaclass;
-
    -----------------------------
    -- Initialize_Metaproperty --
    -----------------------------
@@ -96,5 +97,20 @@ package body Cmof.Internals.Tables is
                     others => 0));
       Allocate_Collection_Of_Cmof_Element_Slots (Metaproperty, Collections);
    end Initialize_Metaproperty;
+
+   -------------------------------
+   -- Initialize_Set_Collection --
+   -------------------------------
+
+   procedure Initialize_Set_Collection
+--    (Class      : CMOF_Class;
+--     Property   : CMOF_Property;
+    (Collection : Collection_Of_CMOF_Element) is
+   begin
+      Collections.Table (Collection) :=
+       (Kind => C_Set,
+        Head => 0,
+        Tail => 0);
+   end Initialize_Set_Collection;
 
 end Cmof.Internals.Tables;
