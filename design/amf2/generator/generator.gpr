@@ -1,0 +1,16 @@
+with "xmlada";
+
+project Gen is
+
+   for Main use ("generator-driver.adb");
+   for Object_Dir use ".objs";
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-g", "-gnat05");
+   end Compiler;
+
+   package Builder is
+      for Executable ("generator-driver.adb") use "gen";
+   end Builder;
+
+end Gen;
