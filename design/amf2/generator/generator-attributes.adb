@@ -183,6 +183,26 @@ package body Generator.Attributes is
 --      end if;
    end Analyze_Class;
 
+   -----------------------------------------------
+   -- Generate_Attribute_Mappings_Specification --
+   -----------------------------------------------
+
+   procedure Generate_Attribute_Mappings_Specification is
+   begin
+      Classes.Iterate (Analyze_Class'Access);
+
+      Put_Line ("with Cmof.Internals.Metamodel;");
+      Put_Line ("with Cmof.Internals.Tables;");
+      New_Line;
+      Put_Line ("private package CMOF.Internals.Attribute_Mappings is");
+
+      Generate_Collection_Of_Element_Resolve_Data;
+      Generate_Member_Resolve_Data;
+
+      New_Line;
+      Put_Line ("end CMOF.Internals.Attribute_Mappings;");
+   end Generate_Attribute_Mappings_Specification;
+
    ----------------------------------------
    -- Generate_Attributes_Implementation --
    ----------------------------------------
@@ -301,18 +321,17 @@ package body Generator.Attributes is
       end Generate_Attribute_Specification;
 
    begin
+      Put_Line ("with Cmof.Internals.Attribute_Mappings;");
       Put_Line ("with Cmof.Internals.Metamodel;");
       Put_Line ("with Cmof.Internals.Subclassing;");
       Put_Line ("with Cmof.Internals.Tables;");
       New_Line;
       Put_Line ("package body Cmof.Internals.Attributes is");
       New_Line;
+      Put_Line ("   use Cmof.Internals.Attribute_Mappings;");
       Put_Line ("   use Cmof.Internals.Metamodel;");
       Put_Line ("   use Cmof.Internals.Subclassing;");
       Put_Line ("   use Cmof.Internals.Tables;");
-
-      Generate_Collection_Of_Element_Resolve_Data;
-      Generate_Member_Resolve_Data;
 
       All_Attributes.Iterate (Generate_Attribute_Specification'Access);
       New_Line;
@@ -351,8 +370,6 @@ package body Generator.Attributes is
       end Generate_Attribute_Specification;
 
    begin
-      Classes.Iterate (Analyze_Class'Access);
-
       New_Line;
       Put_Line ("package Cmof.Internals.Attributes is");
 
@@ -419,8 +436,8 @@ package body Generator.Attributes is
                   Put ("           ");
                end if;
 
-               Put (Constant_Name_In_Metamodel (Property));
-               Set_Col (13 + Max_Length);
+               Put ("Metamodel." & Constant_Name_In_Metamodel (Property));
+               Set_Col (23 + Max_Length);
                Put
                  ("=>"
                     & Positive'Image
@@ -440,12 +457,12 @@ package body Generator.Attributes is
                Put ("        ");
             end if;
 
-            Put_Line ("E_" & To_Ada_Identifier (Class.Name) & " =>");
+            Put_Line ("Tables.E_" & To_Ada_Identifier (Class.Name) & " =>");
             Put ("          (");
             Class.All_Properties.Iterate (Process_Property'Access);
             Put_Line (",");
             Put ("           others");
-            Set_Col (13 + Max_Length);
+            Set_Col (23 + Max_Length);
             Put ("=> 0)");
          end if;
       end Process_Class;
@@ -453,8 +470,10 @@ package body Generator.Attributes is
    begin
       New_Line;
       Put_Line ("   Collection_Offset : constant");
-      Put_Line ("     array (Class_Element_Kinds,");
-      Put_Line ("            Cmof_Collection_Of_Element_Property)");
+      Put_Line ("     array (CMOF.Internals.Tables.Class_Element_Kinds,");
+      Put_Line
+       ("            "
+          & "CMOF.Internals.Metamodel.CMOF_Collection_Of_Element_Property)");
       Put_Line ("       of Interfaces.Integer_8 :=");
       Put ("       (");
 
@@ -577,8 +596,8 @@ package body Generator.Attributes is
                   Put ("           ");
                end if;
 
-               Put (Constant_Name_In_Metamodel (Property));
-               Set_Col (13 + Max_Length);
+               Put ("Metamodel." & Constant_Name_In_Metamodel (Property));
+               Set_Col (23 + Max_Length);
                Put
                  ("=>"
                     & Positive'Image
@@ -598,12 +617,12 @@ package body Generator.Attributes is
                Put ("        ");
             end if;
 
-            Put_Line ("E_" & To_Ada_Identifier (Class.Name) & " =>");
+            Put_Line ("Tables.E_" & To_Ada_Identifier (Class.Name) & " =>");
             Put ("          (");
             Class.All_Properties.Iterate (Process_Property'Access);
             Put_Line (",");
             Put ("           others");
-            Set_Col (13 + Max_Length);
+            Set_Col (23 + Max_Length);
             Put ("=> 0)");
          end if;
       end Process_Class;
@@ -612,9 +631,9 @@ package body Generator.Attributes is
       New_Line;
       Put_Line ("   Member_Offset : constant");
       Put_Line
-        ("     array (Class_Element_Kinds,");
+        ("     array (CMOF.Internals.Tables.Class_Element_Kinds,");
       Put_Line
-        ("            Cmof_Non_Collection_Of_Element_Property) of Natural :=");
+        ("            Metamodel.CMOF_Non_Collection_Of_Element_Property) of Natural :=");
       Put ("       (");
 
       Classes.Iterate (Process_Class'Access);

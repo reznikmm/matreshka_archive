@@ -3,6 +3,8 @@
 
 package Generator.Attributes is
 
+   procedure Generate_Attribute_Mappings_Specification;
+
    procedure Generate_Attributes_Specification;
 
    procedure Generate_Attributes_Implementation;

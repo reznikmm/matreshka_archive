@@ -589,6 +589,7 @@ begin
    Generate_Metamodel_Implementation;
    Generate_Subclassing_Specification;
    Generate_Subclassing_Implementation;
+   Generate_Attribute_Mappings_Specification;
    Generate_Attributes_Specification;
    Generate_Attributes_Implementation;
    Generate_Constructors_Specification;
