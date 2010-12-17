@@ -68,10 +68,13 @@ package body Generator.Constructors is
       procedure Generate_Initializer_Implementation
        (Position : Class_Sets.Cursor)
       is
-         Class             : constant Class_Access
+         Class                     : constant Class_Access
            := Class_Sets.Element (Position);
-         Initializer_Name  : constant String
+         Initializer_Name          : constant String
            := "Initialize_" & To_Ada_Identifier (Class.Name);
+         Is_Collection_Initialized :
+           array (Positive range 1 .. Class.Collection_Slots)
+             of Boolean := (others => False);
 
          procedure Generate_Property_Initialization
           (Position : Property_Full_Sets.Cursor);
@@ -84,39 +87,56 @@ package body Generator.Constructors is
          procedure Generate_Property_Initialization
           (Position : Property_Full_Sets.Cursor)
          is
-            Property : constant Property_Access
+            Property       : constant Property_Access
               := Property_Full_Sets.Element (Position);
+            Property_Index : constant Positive
+              := Class.Expansion.Element (Property).Index;
 
          begin
-            if Get_Type (Property).all in Class_Record'Class then
-               if Is_Multivalued (Property) then
+            if Is_Collection_Of_Element (Property) then
+               --  Note: redefined property can restrict type of elements, so
+               --  in case of redefinition the owned property must be
+               --  initialized, but for now first property in the set is
+               --  initialized.
+
+               if not Is_Collection_Initialized (Property_Index) then
+                  Is_Collection_Initialized (Property_Index) := True;
+
                   if Property.Is_Ordered and Property.Is_Unique then
                      Put_Line
-                      ("      Initialize_Ordered_Set_Collection ("
-                         & "Internal_Get_"
-                         & To_Ada_Identifier (Property.Name)
-                         & " (Self));");
+                      ("      Initialize_Ordered_Set_Collection  --  "
+                         & To_String (Property.Name));
+                     Put_Line
+                      ("       (Elements.Table (Self).Member (0) +"
+                         & Integer'Image (Property_Index)
+                         & ");");
 
                   elsif Property.Is_Ordered and not Property.Is_Unique then
                      Put_Line
-                      ("      Initialize_Sequence_Collection ("
-                         & "Internal_Get_"
-                         & To_Ada_Identifier (Property.Name)
-                         & " (Self));");
+                      ("      Initialize_Sequence_Collection     --  "
+                         & To_String (Property.Name));
+                     Put_Line
+                      ("       (Elements.Table (Self).Member (0) +"
+                         & Integer'Image (Property_Index)
+                         & ");");
 
                   elsif Property.Is_Unique then
                      Put_Line
-                      ("      Initialize_Set_Collection ("
-                         & "Internal_Get_"
-                         & To_Ada_Identifier (Property.Name)
-                         & " (Self));");
+                      ("      Initialize_Set_Collection          --  "
+                         & To_String (Property.Name));
+                     Put_Line
+                      ("       (Elements.Table (Self).Member (0) +"
+                         & Integer'Image (Property_Index)
+                         & ");");
 
                   else
                      Put_Line
-                      ("      Initialize_Bag_Collection ("
-                         & "Internal_Get_"
-                         & To_Ada_Identifier (Property.Name)
-                         & " (Self));");
+                      ("      Initialize_Bag_Collection          --  "
+                         & To_String (Property.Name));
+                     Put_Line
+                      ("       (Elements.Table (Self).Member (0) +"
+                         & Integer'Image (Property_Index)
+                         & ");");
                   end if;
                end if;
 
