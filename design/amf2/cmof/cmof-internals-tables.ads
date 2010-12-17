@@ -39,8 +39,7 @@ private package Cmof.Internals.Tables is
             null;
 
          when others =>
---            Elements_Collection : Collection_Of_CMOF_Element;
-            Member              : Member_Array;
+            Member : Member_Array;
             --  First element (with index 0) contains index of first collection
             --  of class instance. To save space all class's collections have
             --  sequential numbers, thus we need to store only first one. This
