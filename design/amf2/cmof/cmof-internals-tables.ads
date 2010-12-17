@@ -111,14 +111,6 @@ private package Cmof.Internals.Tables is
    --  Returns True when specified element is null or present in the elements
    --  table.
 
-   procedure Initialize_Metaassociation
-    (Metaassociation : Cmof_Association;
-     Collections     : Natural);
-
-   procedure Initialize_Metaproperty
-    (Metaproperty : Cmof_Property;
-     Collections  : Natural);
-
    procedure Initialize_Ordered_Set_Collection
     (Collection : Collection_Of_CMOF_Element);
    --  Initialize specified collection as ordered set.

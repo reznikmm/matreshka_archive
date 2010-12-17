@@ -54,36 +54,6 @@ package body Cmof.Internals.Tables is
         Tail => 0);
    end Initialize_Ordered_Set_Collection;
 
-   --------------------------------
-   -- Initialize_Metaassociation --
-   --------------------------------
-
-   procedure Initialize_Metaassociation
-    (Metaassociation : Cmof_Association;
-     Collections     : Natural) is
-   begin
-      Elements.Table (Metaassociation) :=
-        (Kind   => E_Association,
-         Member => (0      => (Kind => M_None),
-                    others => (Kind => M_None)));
-      Allocate_Collection_Of_Cmof_Element_Slots (Metaassociation, Collections);
-   end Initialize_Metaassociation;
-
-   -----------------------------
-   -- Initialize_Metaproperty --
-   -----------------------------
-
-   procedure Initialize_Metaproperty
-    (Metaproperty : Cmof_Property;
-     Collections  : Natural) is
-   begin
-      Elements.Table (Metaproperty) :=
-        (Kind   => E_Property,
-         Member => (0      => (Kind => M_None),
-                    others => (Kind => M_None)));
-      Allocate_Collection_Of_Cmof_Element_Slots (Metaproperty, Collections);
-   end Initialize_Metaproperty;
-
    -------------------------------
    -- Initialize_Set_Collection --
    -------------------------------
