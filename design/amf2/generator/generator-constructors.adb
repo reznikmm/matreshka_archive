@@ -107,7 +107,7 @@ package body Generator.Constructors is
                       ("      Initialize_Ordered_Set_Collection  --  "
                          & To_String (Property.Name));
                      Put_Line
-                      ("       (Elements.Table (Self).Member (0) +"
+                      ("       (Elements.Table (Self).Member (0).Collection +"
                          & Integer'Image (Property_Index)
                          & ");");
 
@@ -116,7 +116,7 @@ package body Generator.Constructors is
                       ("      Initialize_Sequence_Collection     --  "
                          & To_String (Property.Name));
                      Put_Line
-                      ("       (Elements.Table (Self).Member (0) +"
+                      ("       (Elements.Table (Self).Member (0).Collection +"
                          & Integer'Image (Property_Index)
                          & ");");
 
@@ -125,7 +125,7 @@ package body Generator.Constructors is
                       ("      Initialize_Set_Collection          --  "
                          & To_String (Property.Name));
                      Put_Line
-                      ("       (Elements.Table (Self).Member (0) +"
+                      ("       (Elements.Table (Self).Member (0).Collection +"
                          & Integer'Image (Property_Index)
                          & ");");
 
@@ -134,7 +134,7 @@ package body Generator.Constructors is
                       ("      Initialize_Bag_Collection          --  "
                          & To_String (Property.Name));
                      Put_Line
-                      ("       (Elements.Table (Self).Member (0) +"
+                      ("       (Elements.Table (Self).Member (0).Collection +"
                          & Integer'Image (Property_Index)
                          & ");");
                   end if;
@@ -163,8 +163,8 @@ package body Generator.Constructors is
             Put_Line
              ("       (Kind   => E_" & To_Ada_Identifier (Class.Name) & ",");
             Put_Line
-             ("        Member => (0      => 0,");
-            Put_Line ("                   others => 0));");
+             ("        Member => (0      => (Kind => M_None),");
+            Put_Line ("                   others => (Kind => M_None)));");
             Put_Line
              ("      Allocate_Collection_Of_Cmof_Element_Slots"
                 & " (Self, "

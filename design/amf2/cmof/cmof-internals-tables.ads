@@ -1,12 +1,22 @@
-with Ada.Unchecked_Conversion;
-
 with GNAT.Table;
 
 with CMOF.Internals.Types;
 
 private package Cmof.Internals.Tables is
 
-   type Member_Array is array (Natural range 0 .. 21) of Interfaces.Integer_32;
+   type Member_Kinds is (M_None, M_Collection_Of_Element);
+
+   type Member_Record (Kind : Member_Kinds := M_None) is record
+      case Kind is
+         when M_None =>
+            null;
+
+         when M_Collection_Of_Element =>
+            Collection : Collection_Of_CMOF_Element;
+      end case;
+   end record;
+
+   type Member_Array is array (Natural range 0 .. 21) of Member_Record;
    --  XXX Size of this array must be generated.
 
    type Element_Record (Kind : Types.Element_Kinds := Types.E_None) is record
@@ -100,16 +110,6 @@ private package Cmof.Internals.Tables is
    function Is_Valid (Self : Cmof_Element) return Boolean;
    --  Returns True when specified element is null or present in the elements
    --  table.
-
-   function "+"
-     (Left  : Interfaces.Integer_32;
-      Right : Interfaces.Integer_8) return Collection_Of_Cmof_Element;
-   pragma Inline ("+");
-
-   function To_Internal is
-     new Ada.Unchecked_Conversion
-          (Collection_Of_CMOF_Element, Interfaces.Integer_32);
---    (Item : Collection_Of_CMOF_Element) return Interfaces.Integer_32;
 
    procedure Initialize_Metaassociation
     (Metaassociation : Cmof_Association;

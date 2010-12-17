@@ -16,22 +16,8 @@ package body Cmof.Internals.Tables is
 
    begin
       Collections.Set_Last (First + Collection_Of_CMOF_Element (Count));
-      Elements.Table (Element).Member (0) := To_Internal (First);
+      Elements.Table (Element).Member (0) := (M_Collection_Of_Element, First);
    end Allocate_Collection_Of_Cmof_Element_Slots;
-
-   ---------
-   -- "+" --
-   ---------
-
-   function "+"
-     (Left  : Interfaces.Integer_32;
-      Right : Interfaces.Integer_8) return Collection_Of_Cmof_Element
-   is
-      use type Interfaces.Integer_32;
-
-   begin
-      return Collection_Of_Cmof_Element (Left + Interfaces.Integer_32 (Right));
-   end "+";
 
    -------------
    -- Is_Null --
@@ -78,8 +64,8 @@ package body Cmof.Internals.Tables is
    begin
       Elements.Table (Metaassociation) :=
         (Kind   => E_Association,
-         Member => (0      => 0,
-                    others => 0));
+         Member => (0      => (Kind => M_None),
+                    others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Metaassociation, Collections);
    end Initialize_Metaassociation;
 
@@ -93,8 +79,8 @@ package body Cmof.Internals.Tables is
    begin
       Elements.Table (Metaproperty) :=
         (Kind   => E_Property,
-         Member => (0      => 0,
-                    others => 0));
+         Member => (0      => (Kind => M_None),
+                    others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Metaproperty, Collections);
    end Initialize_Metaproperty;
 

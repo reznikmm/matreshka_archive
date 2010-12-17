@@ -195,8 +195,8 @@ package body Generator.Attributes is
       Put_Line ("with Cmof.Internals.Types;");
       New_Line;
       Put_Line ("private package CMOF.Internals.Attribute_Mappings is");
---      New_Line;
---      Put_Line ("   pragma Pure;");
+      New_Line;
+      Put_Line ("   pragma Pure;");
 
       Generate_Collection_Of_Element_Resolve_Data;
       Generate_Member_Resolve_Data;
@@ -245,13 +245,14 @@ package body Generator.Attributes is
          if Is_Collection_Of_Element (First_Property) then
             if Integer (Element.Properties.Length) = 1 then
                Put_Line ("      return");
-               Put_Line ("        Elements.Table (Self).Member (0)");
-               Put_Line ("          + Collection_Offset");
-               Put_Line ("              (Elements.Table (Self).Kind,");
+               Put_Line ("        Elements.Table (Self).Member (0).Collection");
+               Put_Line ("          + Collection_Of_CMOF_Element");
+               Put_Line ("             (Collection_Offset");
+               Put_Line ("               (Elements.Table (Self).Kind,");
                Put_Line
-                 ("               "
+                 ("                "
                     & Constant_Name_In_Metamodel (First_Property)
-                    & ");");
+                    & "));");
 
             else
                declare
@@ -286,13 +287,15 @@ package body Generator.Attributes is
                           & To_Ada_Identifier (Property.Owned_Class.Name)
                           & " (Self) then");
                      Put_Line ("         return");
-                     Put_Line ("           Elements.Table (Self).Member (0)");
-                     Put_Line ("             + Collection_Offset");
-                     Put_Line ("                 (Elements.Table (Self).Kind,");
                      Put_Line
-                       ("                  "
+                      ("           Elements.Table (Self).Member (0).Collection");
+                     Put_Line ("             + Collection_Of_CMOF_Element");
+                     Put_Line ("                (Collection_Offset");
+                     Put_Line ("                  (Elements.Table (Self).Kind,");
+                     Put_Line
+                       ("                      "
                           & Constant_Name_In_Metamodel (Property)
-                          & ");");
+                          & "));");
                      Property_Vectors.Next (Position);
                   end loop;
 
