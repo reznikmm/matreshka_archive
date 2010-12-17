@@ -211,18 +211,154 @@ package body Generator.Attributes is
 
    procedure Generate_Attributes_Implementation is
 
-      procedure Generate_Attribute_Specification
-        (Position : Attribute_Sets.Cursor);
+      procedure Generate_Getter (Position : Attribute_Sets.Cursor);
       --  Generates specification for attribute's getter and setter functions.
       --  Generation of setter function can be skipped when necessary.
 
-      --------------------------------------
-      -- Generate_Attribute_Specification --
-      --------------------------------------
+      ---------------------
+      -- Generate_Getter --
+      ---------------------
 
-      procedure Generate_Attribute_Specification
-        (Position : Attribute_Sets.Cursor)
-      is
+      procedure Generate_Getter (Position : Attribute_Sets.Cursor) is
+
+         procedure Generate_Return_Statement
+          (Property : Property_Access;
+           Indent   : Ada.Text_IO.Positive_Count);
+
+         procedure Generate_Assignment_Statement
+          (Property : Property_Access;
+           Indent   : Ada.Text_IO.Positive_Count);
+
+         -----------------------------------
+         -- Generate_Assignment_Statement --
+         -----------------------------------
+
+         procedure Generate_Assignment_Statement
+          (Property : Property_Access;
+           Indent   : Ada.Text_IO.Positive_Count) is
+         begin
+            if Has_Boolean_Type (Property) then
+               Set_Col (Indent);
+               Put_Line ("Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line (" (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("   (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("    "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").Boolean_Value := To;");
+
+            elsif Has_Integer_Type (Property) then
+               Set_Col (Indent);
+               Put_Line ("Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line (" (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("   (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("    "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").Integer_Value := To;");
+
+            elsif Has_Unlimited_Natural_Type (Property) then
+               Set_Col (Indent);
+               Put_Line ("Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line (" (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("   (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("    "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").Natural_Value := To;");
+
+            else
+               Set_Col (Indent);
+               Put_Line ("null;");
+            end if;
+         end Generate_Assignment_Statement;
+
+         -------------------------------
+         -- Generate_Return_Statement --
+         -------------------------------
+
+         procedure Generate_Return_Statement
+          (Property : Property_Access;
+           Indent   : Ada.Text_IO.Positive_Count) is
+         begin
+            Set_Col (Indent);
+            Put_Line ("return");
+
+            if Is_Collection_Of_Element (Property) then
+               Set_Col (Indent);
+               Put_Line ("  Elements.Table (Self).Member (0).Collection");
+               Set_Col (Indent);
+               Put_Line ("    + Collection_Of_CMOF_Element");
+               Set_Col (Indent);
+               Put_Line ("       (Collection_Offset");
+               Set_Col (Indent);
+               Put_Line ("         (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                 ("          "
+                    & Constant_Name_In_Metamodel (Property)
+                    & "));");
+
+            elsif Has_Boolean_Type (Property) then
+               Set_Col (Indent);
+               Put_Line ("  Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line ("   (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("     (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("      "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").Boolean_Value;");
+
+            elsif Has_Integer_Type (Property) then
+               Set_Col (Indent);
+               Put_Line ("  Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line ("   (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("     (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("      "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").Integer_Value;");
+
+            elsif Has_Unlimited_Natural_Type (Property) then
+               Set_Col (Indent);
+               Put_Line ("  Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line ("   (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("     (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("      "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").Natural_Value;");
+
+            else
+               Set_Col (Indent);
+               Put_Line ("  0;");
+            end if;
+         end Generate_Return_Statement;
+
          Element        : constant Attribute_Access :=
            Attribute_Sets.Element (Position);
          First_Property : constant Property_Access :=
@@ -242,17 +378,61 @@ package body Generator.Attributes is
          Put_Line ("   is");
          Put_Line ("   begin");
 
-         if Is_Collection_Of_Element (First_Property) then
+         if Integer (Element.Properties.Length) = 1 then
+            Generate_Return_Statement (First_Property, 7);
+
+         else
+            declare
+               Position : Property_Vectors.Cursor :=
+                 Element.Properties.First;
+               Property : Property_Access;
+               First    : Boolean := True;
+
+            begin
+               --  Order of comparison can be important, most derived type
+               --  must be processed first. Nethertheless, in context of
+               --  CMOF ordering is not important.
+               --
+               --  When operation redefines another co-named operation,
+               --  they share the same collection/member and code for only
+               --  one most general class need to be present here, other
+               --  redefinitions can be suppressed.
+
+               while Property_Vectors.Has_Element (Position) loop
+                  if First then
+                     Put ("      if ");
+                     First := False;
+
+                  else
+                     New_Line;
+                     Put ("      elsif ");
+                  end if;
+
+                  Property := Property_Vectors.Element (Position);
+                  Put_Line
+                    ("Is_"
+                       & To_Ada_Identifier (Property.Owned_Class.Name)
+                       & " (Self) then");
+                  Generate_Return_Statement (Property, 10);
+                  Property_Vectors.Next (Position);
+               end loop;
+
+               Put_Line ("      end if;");
+            end;
+         end if;
+
+         Put_Line ("   end " & Getter_Name & ";");
+
+         if Element.Generate_Setter then
+            New_Line;
+            Put_Line ("   ---" & (Setter_Name'Length * '-') & "---");
+            Put_Line ("   -- " & Setter_Name & " --");
+            Put_Line ("   ---" & (Setter_Name'Length * '-') & "---");
+            Generate_Setter_Specification (Element.Properties.First_Element);
+            Put_Line (" is");
+            Put_Line ("   begin");
             if Integer (Element.Properties.Length) = 1 then
-               Put_Line ("      return");
-               Put_Line ("        Elements.Table (Self).Member (0).Collection");
-               Put_Line ("          + Collection_Of_CMOF_Element");
-               Put_Line ("             (Collection_Offset");
-               Put_Line ("               (Elements.Table (Self).Kind,");
-               Put_Line
-                 ("                "
-                    & Constant_Name_In_Metamodel (First_Property)
-                    & "));");
+               Generate_Assignment_Statement (First_Property, 7);
 
             else
                declare
@@ -286,16 +466,7 @@ package body Generator.Attributes is
                        ("Is_"
                           & To_Ada_Identifier (Property.Owned_Class.Name)
                           & " (Self) then");
-                     Put_Line ("         return");
-                     Put_Line
-                      ("           Elements.Table (Self).Member (0).Collection");
-                     Put_Line ("             + Collection_Of_CMOF_Element");
-                     Put_Line ("                (Collection_Offset");
-                     Put_Line ("                  (Elements.Table (Self).Kind,");
-                     Put_Line
-                       ("                      "
-                          & Constant_Name_In_Metamodel (Property)
-                          & "));");
+                     Generate_Assignment_Statement (First_Property, 10);
                      Property_Vectors.Next (Position);
                   end loop;
 
@@ -303,27 +474,9 @@ package body Generator.Attributes is
                end;
             end if;
 
-         elsif First_Property.Type_Id = "Core-PrimitiveTypes-Boolean" then
-            Put_Line ("      return False;");
-
-         else
-            Put_Line ("      return 0;");
-         end if;
-
-         Put_Line ("   end " & Getter_Name & ";");
-
-         if Element.Generate_Setter then
-            New_Line;
-            Put_Line ("   ---" & (Setter_Name'Length * '-') & "---");
-            Put_Line ("   -- " & Setter_Name & " --");
-            Put_Line ("   ---" & (Setter_Name'Length * '-') & "---");
-            Generate_Setter_Specification (Element.Properties.First_Element);
-            Put_Line (" is");
-            Put_Line ("   begin");
-            Put_Line ("      null;");
             Put_Line ("   end " & Setter_Name & ";");
          end if;
-      end Generate_Attribute_Specification;
+      end Generate_Getter;
 
    begin
       Put_Line ("with Cmof.Internals.Attribute_Mappings;");
@@ -338,7 +491,8 @@ package body Generator.Attributes is
       Put_Line ("   use Cmof.Internals.Subclassing;");
       Put_Line ("   use Cmof.Internals.Tables;");
 
-      All_Attributes.Iterate (Generate_Attribute_Specification'Access);
+      All_Attributes.Iterate (Generate_Getter'Access);
+
       New_Line;
       Put_Line ("end Cmof.Internals.Attributes;");
    end Generate_Attributes_Implementation;
@@ -507,7 +661,7 @@ package body Generator.Attributes is
             Put ("     (Self : Cmof_Element) return Cmof_String");
          end if;
 
-      elsif Property.Type_Id = "Core-PrimitiveTypes-Boolean" then
+      elsif Has_Boolean_Type (Property) then
          if Is_Multivalued (Property) then
             raise Program_Error;
 
@@ -515,7 +669,7 @@ package body Generator.Attributes is
             Put ("     (Self : Cmof_Element) return Cmof_Boolean");
          end if;
 
-      elsif Property.Type_Id = "Core-PrimitiveTypes-Integer" then
+      elsif Has_Integer_Type (Property) then
          if Is_Multivalued (Property) then
             raise Program_Error;
 
@@ -523,7 +677,7 @@ package body Generator.Attributes is
             Put ("     (Self : Cmof_Element) return Cmof_Integer");
          end if;
 
-      elsif Property.Type_Id = "Core-PrimitiveTypes-UnlimitedNatural" then
+      elsif Has_Unlimited_Natural_Type (Property) then
          if Is_Multivalued (Property) then
             raise Program_Error;
 
@@ -655,22 +809,22 @@ package body Generator.Attributes is
       New_Line;
       Put_Line
        ("   procedure Internal_Set_" & To_Ada_Identifier (Property.Name));
-      Put_Line ("     (Self : Cmof_Element;");
+      Put_Line ("     (Self : CMOF_Element;");
 
       if Property.Type_Id = "Core-PrimitiveTypes-String" then
-         Put ("      To   : Cmof_String)");
+         Put ("      To   : CMOF_String)");
 
-      elsif Property.Type_Id = "Core-PrimitiveTypes-Boolean" then
-         Put ("      To   : Cmof_Boolean)");
+      elsif Has_Boolean_Type (Property) then
+         Put ("      To   : CMOF_Boolean)");
 
-      elsif Property.Type_Id = "Core-PrimitiveTypes-Integer" then
-         Put ("      To   : Cmof_Integer)");
+      elsif Has_Integer_Type (Property) then
+         Put ("      To   : CMOF_Integer)");
 
-      elsif Property.Type_Id = "Core-PrimitiveTypes-UnlimitedNatural" then
-         Put ("      To   : Cmof_Unlimited_Natural)");
+      elsif Has_Unlimited_Natural_Type (Property) then
+         Put ("      To   : CMOF_Unlimited_Natural)");
 
       else
-         Put ("      To   : Cmof_Element)");
+         Put ("      To   : CMOF_Element)");
       end if;
    end Generate_Setter_Specification;
 

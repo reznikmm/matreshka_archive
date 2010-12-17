@@ -15,6 +15,7 @@ with Generator.Attributes;
 with Generator.Constructors;
 with Generator.Metamodel;
 with Generator.Subclassing;
+with Generator.Utilities;
 
 procedure Generator.Driver is
 
@@ -28,6 +29,7 @@ procedure Generator.Driver is
    use Generator.Constructors;
    use Generator.Metamodel;
    use Generator.Subclassing;
+   use Generator.Utilities;
 
    Cmof_Namespace : constant String :=
      "http://schema.omg.org/spec/MOF/2.0/cmof.xml";
@@ -427,6 +429,7 @@ procedure Generator.Driver is
         := Get_Attribute (N, "isOrdered", False);
       Is_Unique          : constant Boolean
         := Get_Attribute (N, "isUnique", True);
+      Default_Value      : constant String  := Get_Attribute (N, "default");
 
 --  subsettedProperty
 --  association
@@ -473,7 +476,32 @@ procedure Generator.Driver is
                Owned_Association     => Current_Association,
                Redefined_Property_Id =>
                  To_Unbounded_String (Redefined_Property),
-               Redefined_Property    => null);
+               Redefined_Property    => null,
+               Has_Default           => False,
+               Default_Boolean       => False,
+               Default_Integer       => 0);
+
+      if Default_Value /= "" then
+         if Has_Boolean_Type (New_Property) then
+            New_Property.Has_Default := True;
+            New_Property.Default_Boolean := Boolean'Value (Default_Value);
+
+         elsif Has_Integer_Type (New_Property) then
+            New_Property.Has_Default := True;
+            New_Property.Default_Integer := Integer'Value (Default_Value);
+
+         elsif Has_Unlimited_Natural_Type (New_Property) then
+            New_Property.Has_Default := True;
+
+            if Default_Value = "*" then
+               New_Property.Default_Integer := Integer'Last;
+
+            else
+               New_Property.Default_Integer := Integer'Value (Default_Value);
+            end if;
+         end if;
+      end if;
+       
       Elements.Insert (New_Property.Id, Element_Access (New_Property));
 
       if Current_Class /= null then

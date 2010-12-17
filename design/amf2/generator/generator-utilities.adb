@@ -105,4 +105,34 @@ package body Generator.Utilities is
       return "MP_Cmof_" & To_String (Ada_Name);
    end Constant_Name_In_Metamodel;
 
+   ----------------------
+   -- Has_Boolean_Type --
+   ----------------------
+
+   function Has_Boolean_Type
+    (Property : not null Property_Access) return Boolean is
+   begin
+      return Property.Type_Id = "Core-PrimitiveTypes-Boolean";
+   end Has_Boolean_Type;
+
+   ----------------------
+   -- Has_Integer_Type --
+   ----------------------
+
+   function Has_Integer_Type
+    (Property : not null Property_Access) return Boolean is
+   begin
+      return Property.Type_Id = "Core-PrimitiveTypes-Integer";
+   end Has_Integer_Type;
+
+   --------------------------------
+   -- Has_Unlimited_Natural_Type --
+   --------------------------------
+
+   function Has_Unlimited_Natural_Type
+    (Property : not null Property_Access) return Boolean is
+   begin
+      return Property.Type_Id = "Core-PrimitiveTypes-UnlimitedNatural";
+   end Has_Unlimited_Natural_Type;
+
 end Generator.Utilities;

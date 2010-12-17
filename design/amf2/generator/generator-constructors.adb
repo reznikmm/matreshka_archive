@@ -76,15 +76,19 @@ package body Generator.Constructors is
            array (Positive range 1 .. Class.Collection_Slots)
              of Boolean := (others => False);
 
-         procedure Generate_Property_Initialization
+         procedure Generate_Member_Initialization
           (Position : Property_Full_Sets.Cursor);
          --  Generates code to initialize class's property.
 
-         --------------------------------------
-         -- Generate_Property_Initialization --
-         --------------------------------------
+         procedure Generate_Collection_Property_Initialization
+          (Position : Property_Full_Sets.Cursor);
+         --  Generates code to initialize class's property.
 
-         procedure Generate_Property_Initialization
+         -------------------------------------------------
+         -- Generate_Collection_Property_Initialization --
+         -------------------------------------------------
+
+         procedure Generate_Collection_Property_Initialization
           (Position : Property_Full_Sets.Cursor)
          is
             Property       : constant Property_Access
@@ -143,7 +147,71 @@ package body Generator.Constructors is
             else
                null;
             end if;
-         end Generate_Property_Initialization;
+         end Generate_Collection_Property_Initialization;
+
+         ------------------------------------
+         -- Generate_Member_Initialization --
+         ------------------------------------
+
+         procedure Generate_Member_Initialization
+          (Position : Property_Full_Sets.Cursor)
+         is
+            Property       : constant Property_Access
+              := Property_Full_Sets.Element (Position);
+            Property_Index : constant Positive
+              := Class.Expansion.Element (Property).Index;
+
+         begin
+            if not Is_Collection_Of_Element (Property) then
+               if not Is_Multivalued (Property) then
+                  if Has_Boolean_Type (Property) then
+                     Put
+                      ("                  " & Integer'Image (Property_Index));
+                     Set_Col (27);
+                     Put ("=> (M_Boolean, ");
+
+                     if Property.Default_Boolean then
+                        Put ("True");
+
+                     else
+                        Put ("False");
+                     end if;
+
+                     Put ("),");
+                     Set_Col (60);
+                     Put_Line ("--  " & To_String (Property.Name));
+
+                  elsif Has_Integer_Type (Property) then
+                     Put
+                      ("                  " & Integer'Image (Property_Index));
+                     Set_Col (27);
+                     Put
+                      ("=> (M_Integer,"
+                         & Integer'Image (Property.Default_Integer)
+                         & "),");
+                     Set_Col (60);
+                     Put_Line ("--  " & To_String (Property.Name));
+
+                  elsif Has_Unlimited_Natural_Type (Property) then
+                     Put
+                      ("                  " & Integer'Image (Property_Index));
+                     Set_Col (27);
+                     Put ("=> (M_Unlimited_Natural,");
+
+                     if Property.Default_Integer = Integer'Last then
+                        Put (" CMOF_Unlimited_Natural'Last");
+
+                     else
+                        Put (Integer'Image (Property.Default_Integer));
+                     end if;
+
+                     Put ("),");
+                     Set_Col (60);
+                     Put_Line ("--  " & To_String (Property.Name));
+                  end if;
+               end if;
+            end if;
+         end Generate_Member_Initialization;
 
       begin
          if not Class.Is_Abstract then
@@ -164,6 +232,8 @@ package body Generator.Constructors is
              ("       (Kind   => E_" & To_Ada_Identifier (Class.Name) & ",");
             Put_Line
              ("        Member => (0      => (Kind => M_None),");
+            Class.All_Properties.Iterate
+             (Generate_Member_Initialization'Access);
             Put_Line ("                   others => (Kind => M_None)));");
             Put_Line
              ("      Allocate_Collection_Of_Cmof_Element_Slots"
@@ -171,7 +241,7 @@ package body Generator.Constructors is
                 & Trim (Natural'Image (Class.Collection_Slots), Both)
                 & ");");
             Class.All_Properties.Iterate
-             (Generate_Property_Initialization'Access);
+             (Generate_Collection_Property_Initialization'Access);
             Put_Line ("   end " & Initializer_Name & ";");
          end if;
       end Generate_Initializer_Implementation;

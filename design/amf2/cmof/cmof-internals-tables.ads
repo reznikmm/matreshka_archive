@@ -4,7 +4,12 @@ with CMOF.Internals.Types;
 
 private package Cmof.Internals.Tables is
 
-   type Member_Kinds is (M_None, M_Collection_Of_Element);
+   type Member_Kinds is
+    (M_None,
+     M_Collection_Of_Element,
+     M_Boolean,
+     M_Integer,
+     M_Unlimited_Natural);
 
    type Member_Record (Kind : Member_Kinds := M_None) is record
       case Kind is
@@ -13,6 +18,15 @@ private package Cmof.Internals.Tables is
 
          when M_Collection_Of_Element =>
             Collection : Collection_Of_CMOF_Element;
+
+         when M_Boolean =>
+            Boolean_Value : CMOF_Boolean;
+
+         when M_Integer =>
+            Integer_Value : CMOF_Integer;
+
+         when M_Unlimited_Natural =>
+            Natural_Value : CMOF_Unlimited_Natural;
       end case;
    end record;
 
