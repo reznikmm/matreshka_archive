@@ -1,4 +1,5 @@
 with Cmof.Internals.Constructors;
+with Cmof.Internals.Setup;
 
 procedure Cmof.Main is
    use Cmof;
