@@ -306,6 +306,7 @@ package body Generator.Metamodel is
       New_Line;
       Put_Line ("with Cmof.Internals.Attributes;");
       Put_Line ("with Cmof.Internals.Constructors;");
+      Put_Line ("with Cmof.Internals.Links;");
       Put_Line ("with Cmof.Internals.Metamodel;");
       Put_Line ("with Cmof.Internals.Tables;");
       New_Line;
@@ -313,6 +314,7 @@ package body Generator.Metamodel is
       New_Line;
       Put_Line ("   use Cmof.Internals.Attributes;");
       Put_Line ("   use Cmof.Internals.Constructors;");
+      Put_Line ("   use Cmof.Internals.Links;");
       Put_Line ("   use Cmof.Internals.Metamodel;");
       Put_Line ("   use Cmof.Internals.Tables;");
       New_Line;
