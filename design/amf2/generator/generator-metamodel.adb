@@ -132,6 +132,13 @@ package body Generator.Metamodel is
          Put_Line ("     MP_Cmof_Association_Member_End,");
          Put_Line ("     " & Constant_Name_In_Metamodel (First_End) & ",");
          Put_Line ("     MP_Cmof_Property_Association);");
+
+         Put_Line ("   Internal_Create_Link");
+         Put_Line ("    (MA_Cmof_Member_End_Association,");
+         Put_Line ("     " & Constant_Name_In_Metamodel (Association) & ",");
+         Put_Line ("     MP_Cmof_Association_Member_End,");
+         Put_Line ("     " & Constant_Name_In_Metamodel (Second_End) & ",");
+         Put_Line ("     MP_Cmof_Property_Association);");
       end Generate_Association_Property_Links;
 
       --------------------------------
