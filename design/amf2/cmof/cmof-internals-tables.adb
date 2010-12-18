@@ -167,10 +167,17 @@ package body CMOF.Internals.Tables is
               Second_Element);
          end if;
 
-         Elements.Table (Second_Element).Member
-          (Member_Offset
-            (Elements.Table (Second_Element).Kind,
-             Second_Property)).Element := First_Element;
+         if Second_Property not in Cmof_Non_Collection_Of_Element_Property then
+            Append
+             (Elements.Table (Second_Element).Member (0).Collection,
+              First_Element);
+
+         else
+            Elements.Table (Second_Element).Member
+             (Member_Offset
+               (Elements.Table (Second_Element).Kind,
+                Second_Property)).Element := First_Element;
+         end if;
       end Create_Multiple_Single;
 
       ----------------------------
@@ -184,10 +191,18 @@ package body CMOF.Internals.Tables is
            Association,
            First_Element,
            Second_Element);
-         Elements.Table (First_Element).Member
-          (Member_Offset
-            (Elements.Table (First_Element).Kind,
-             Second_Property)).Element := Second_Element;
+
+         if First_Property not in Cmof_Non_Collection_Of_Element_Property then
+            Append
+             (Elements.Table (First_Element).Member (0).Collection,
+              Second_Element);
+
+         else
+            Elements.Table (First_Element).Member
+             (Member_Offset
+               (Elements.Table (First_Element).Kind,
+                Second_Property)).Element := Second_Element;
+         end if;
 
          if Second_Property not in Cmof_Collection_Of_Element_Property then
             Append
@@ -216,14 +231,30 @@ package body CMOF.Internals.Tables is
            Association,
            First_Element,
            Second_Element);
-         Elements.Table (First_Element).Member
-          (Member_Offset
-            (Elements.Table (First_Element).Kind,
-             Second_Property)).Element := Second_Element;
-         Elements.Table (Second_Element).Member
-          (Member_Offset
-            (Elements.Table (Second_Element).Kind,
-             Second_Property)).Element := First_Element;
+
+         if First_Property not in Cmof_Non_Collection_Of_Element_Property then
+            Append
+             (Elements.Table (First_Element).Member (0).Collection,
+              Second_Element);
+
+         else
+            Elements.Table (First_Element).Member
+             (Member_Offset
+               (Elements.Table (First_Element).Kind,
+                Second_Property)).Element := Second_Element;
+         end if;
+
+         if Second_Property not in Cmof_Non_Collection_Of_Element_Property then
+            Append
+             (Elements.Table (Second_Element).Member (0).Collection,
+              First_Element);
+
+         else
+            Elements.Table (Second_Element).Member
+             (Member_Offset
+               (Elements.Table (Second_Element).Kind,
+                Second_Property)).Element := First_Element;
+         end if;
       end Create_Single_Single;
 
    begin
