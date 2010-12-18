@@ -1,6 +1,7 @@
 
 all:
-	gprbuild -p -Pcmof.gpr
+	make -C ../..
+	gprbuild -p -Pcmof/cmof.gpr
 
 gen:
 	mkdir -p cmof/.gens
@@ -10,5 +11,6 @@ gen:
 	rm cmof/.gens/sources.ada
 
 clean:
-	gprclean -q
-	rm -rf cmof-internals-subclassing.ad[sb] cmof-internals-metamodel.ads cmof/.gens demo generator/.objs
+#	gprclean -q -Pcmof/cmof.gpr
+#	gprclean -q -Pgenerator/generator.gpr
+	rm -rf cmof-internals-subclassing.ad[sb] cmof-internals-metamodel.ads cmof/.gens cmof/.objs demo generator/.objs
