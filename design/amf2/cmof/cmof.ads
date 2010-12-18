@@ -17,6 +17,7 @@ package Cmof is
    subtype Set_Of_CMOF_Element is Collection_Of_CMOF_Element;
    subtype Set_Of_CMOF_Feature is Collection_Of_CMOF_Element;
    subtype Set_Of_CMOF_Named_Element is Collection_Of_CMOF_Element;
+   subtype Set_Of_CMOF_Packageable_Element is Collection_Of_CMOF_Element;
    subtype Set_Of_CMOF_Property is Collection_Of_CMOF_Element;
    subtype Ordered_Set_Of_CMOF_Element is Collection_Of_CMOF_Element;
    subtype Ordered_Set_Of_CMOF_Property is Collection_Of_CMOF_Element;
