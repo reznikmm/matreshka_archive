@@ -1,8 +1,11 @@
 with CMOF.Internals.Attribute_Mappings;
+with CMOF.Internals.Collections;
+with CMOF.Internals.Metamodel;
 with CMOF.Multiplicity_Elements;
 
-package body Cmof.Internals.Tables is
+package body CMOF.Internals.Tables is
 
+   use CMOF.Internals.Metamodel;
    use CMOF.Internals.Types;
 
    -----------------------------------------------
@@ -83,13 +86,8 @@ package body Cmof.Internals.Tables is
      Second_Property : CMOF_Property)
    is
       use CMOF.Internals.Attribute_Mappings;
+      use CMOF.Internals.Collections;
       use CMOF.Multiplicity_Elements;
-
-      procedure Append
-       (Collection : Collection_Of_CMOF_Element;
-        Element    : CMOF_Element);
-      --  Appends element to collection.
-      --  XXX Must be moved to more appropriate place.
 
       procedure Create_Single_Single;
 
@@ -98,46 +96,6 @@ package body Cmof.Internals.Tables is
       procedure Create_Multiple_Single;
 
       procedure Create_Multiple_Multiple;
-
-      ------------
-      -- Append --
-      ------------
-
-      procedure Append
-       (Collection : Collection_Of_CMOF_Element;
-        Element    : CMOF_Element)
-      is
-         Head        : Collection_Element_Identifier
-           := Collections.Table (Collection).Head;
-         Tail        : Collection_Element_Identifier
-           := Collections.Table (Collection).Tail;
-         Previous    : Collection_Element_Identifier
-           := Collections.Table (Collection).Tail;
-         Next        : Collection_Element_Identifier := 0;
-         New_Element : Collection_Element_Identifier;
-
-      begin
-         Collection_Elements.Increment_Last;
-         New_Element := Collection_Elements.Last;
-
-         if Head = 0 then
-            --  List is empty.
-
-            Head := New_Element;
-            Tail := New_Element;
-
-            Collections.Table (Collection).Head := Head;
-            Collections.Table (Collection).Tail := Tail;
-
-         else
-            Tail := New_Element;
-
-            Collections.Table (Collection).Tail := Tail;
-            Collection_Elements.Table (Previous).Next := New_Element;
-         end if;
-
-         Collection_Elements.Table (New_Element) := (Element, Previous, Next);
-      end Append;
 
       ------------------------------
       -- Create_Multiple_Multiple --
@@ -150,20 +108,36 @@ package body Cmof.Internals.Tables is
            Association,
            First_Element,
            Second_Element);
-         Append
-          (Elements.Table (First_Element).Member (0).Collection
-             + Collection_Of_CMOF_Element
-                (Collection_Offset
-                  (Elements.Table (First_Element).Kind,
-                   First_Property)),
-           Second_Element);
-         Append
-          (Elements.Table (Second_Element).Member (0).Collection
-             + Collection_Of_CMOF_Element
-                (Collection_Offset
-                  (Elements.Table (Second_Element).Kind,
-                   First_Property)),
-           First_Element);
+
+         if First_Property not in Cmof_Collection_Of_Element_Property then
+            Append
+             (Elements.Table (First_Element).Member (0).Collection,
+              Second_Element);
+
+         else
+            Append
+             (Elements.Table (First_Element).Member (0).Collection
+                + Collection_Of_CMOF_Element
+                   (Collection_Offset
+                     (Elements.Table (First_Element).Kind,
+                      First_Property)),
+              Second_Element);
+         end if;
+
+         if Second_Property not in Cmof_Collection_Of_Element_Property then
+            Append
+             (Elements.Table (Second_Element).Member (0).Collection,
+              First_Element);
+
+         else
+            Append
+             (Elements.Table (Second_Element).Member (0).Collection
+                + Collection_Of_CMOF_Element
+                   (Collection_Offset
+                     (Elements.Table (Second_Element).Kind,
+                      Second_Property)),
+              First_Element);
+         end if;
       end Create_Multiple_Multiple;
 
       ----------------------------
@@ -177,13 +151,21 @@ package body Cmof.Internals.Tables is
            Association,
            First_Element,
            Second_Element);
-         Append
-          (Elements.Table (First_Element).Member (0).Collection
-             + Collection_Of_CMOF_Element
-                (Collection_Offset
-                  (Elements.Table (First_Element).Kind,
-                   First_Property)),
-           Second_Element);
+
+         if First_Property not in Cmof_Collection_Of_Element_Property then
+            Append
+             (Elements.Table (First_Element).Member (0).Collection,
+              Second_Element);
+
+         else
+            Append
+             (Elements.Table (First_Element).Member (0).Collection
+                + Collection_Of_CMOF_Element
+                   (Collection_Offset
+                     (Elements.Table (First_Element).Kind,
+                      First_Property)),
+              Second_Element);
+         end if;
 
          Elements.Table (Second_Element).Member
           (Member_Offset
@@ -206,13 +188,21 @@ package body Cmof.Internals.Tables is
           (Member_Offset
             (Elements.Table (First_Element).Kind,
              Second_Property)).Element := Second_Element;
-         Append
-          (Elements.Table (Second_Element).Member (0).Collection
-             + Collection_Of_CMOF_Element
-                (Collection_Offset
-                  (Elements.Table (Second_Element).Kind,
-                   First_Property)),
-           First_Element);
+
+         if Second_Property not in Cmof_Collection_Of_Element_Property then
+            Append
+             (Elements.Table (Second_Element).Member (0).Collection,
+              First_Element);
+
+         else
+            Append
+             (Elements.Table (Second_Element).Member (0).Collection
+                + Collection_Of_CMOF_Element
+                   (Collection_Offset
+                     (Elements.Table (Second_Element).Kind,
+                      Second_Property)),
+              First_Element);
+         end if;
       end Create_Single_Multiple;
 
       --------------------------
@@ -257,4 +247,4 @@ package body Cmof.Internals.Tables is
       end if;
    end Internal_Create_Link;
 
-end Cmof.Internals.Tables;
+end CMOF.Internals.Tables;

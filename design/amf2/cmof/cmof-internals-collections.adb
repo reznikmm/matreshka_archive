@@ -4,6 +4,46 @@ package body CMOF.Internals.Collections is
 
    use CMOF.Internals.Tables;
 
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Collection : Collection_Of_CMOF_Element;
+     Element    : CMOF_Element)
+   is
+      Head        : Collection_Element_Identifier
+        := Tables.Collections.Table (Collection).Head;
+      Tail        : Collection_Element_Identifier
+        := Tables.Collections.Table (Collection).Tail;
+      Previous    : Collection_Element_Identifier
+        := Tables.Collections.Table (Collection).Tail;
+      Next        : Collection_Element_Identifier := 0;
+      New_Element : Collection_Element_Identifier;
+
+   begin
+      Collection_Elements.Increment_Last;
+      New_Element := Collection_Elements.Last;
+
+      if Head = 0 then
+         --  List is empty.
+
+         Head := New_Element;
+         Tail := New_Element;
+
+         Tables.Collections.Table (Collection).Head := Head;
+         Tables.Collections.Table (Collection).Tail := Tail;
+
+      else
+         Tail := New_Element;
+
+         Tables.Collections.Table (Collection).Tail := Tail;
+         Collection_Elements.Table (Previous).Next := New_Element;
+      end if;
+
+      Collection_Elements.Table (New_Element) := (Element, Previous, Next);
+   end Append;
+
    -------------
    -- Element --
    -------------

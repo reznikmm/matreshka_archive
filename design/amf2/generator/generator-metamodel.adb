@@ -46,6 +46,9 @@ package body Generator.Metamodel is
        (Position : Association_Sets.Cursor);
       --  Generates link establishment for association <-> property association.
 
+      procedure Generate_Class_Class_Links (Position : Class_Sets.Cursor);
+      --  Generates link establishment for class <-> class association.
+
       -----------------------------------------
       -- Generate_Association_Initialization --
       -----------------------------------------
@@ -127,6 +130,39 @@ package body Generator.Metamodel is
          Put_Line ("     " & Constant_Name_In_Metamodel (First_End) & ",");
          Put_Line ("     MP_Cmof_Property_Association);");
       end Generate_Association_Property_Links;
+
+      --------------------------------
+      -- Generate_Class_Class_Links --
+      --------------------------------
+
+      procedure Generate_Class_Class_Links (Position : Class_Sets.Cursor) is
+         Class : constant Class_Access := Class_Sets.Element (Position);
+
+         procedure Generate_Link (Position : Unbounded_String_Sets.Cursor);
+
+         -------------------
+         -- Generate_Link --
+         -------------------
+
+         procedure Generate_Link (Position : Unbounded_String_Sets.Cursor) is
+            Super_Class : constant Class_Access
+              := Class_Access
+                  (To_Element (Unbounded_String_Sets.Element (Position)));
+
+         begin
+            --  Generates link between class and superclass.
+
+            Put_Line ("   Internal_Create_Link");
+            Put_Line ("    (MA_Cmof_Super_Class_Class,");
+            Put_Line ("     " & Constant_Name_In_Metamodel (Class) & ",");
+            Put_Line ("     MP_Cmof_Class_Super_Class,");
+            Put_Line ("     " & Constant_Name_In_Metamodel (Super_Class) & ",");
+            Put_Line ("     MP_Cmof_Super_Class_Class);");
+         end Generate_Link;
+
+      begin
+         Class.Super_Classes.Iterate (Generate_Link'Access);
+      end Generate_Class_Class_Links;
 
       -----------------------------------
       -- Generate_Class_Initialization --
@@ -287,6 +323,10 @@ package body Generator.Metamodel is
       Put_Line ("   --  Link establishment for association <-> property");
       New_Line;
       Associations.Iterate (Generate_Association_Property_Links'Access);
+      New_Line;
+      Put_Line ("   --  Link establishment for class <-> class");
+      New_Line;
+      Classes.Iterate (Generate_Class_Class_Links'Access);
       Put_Line ("end Cmof.Internals.Setup;");
    end Generate_Metamodel_Implementation;
 

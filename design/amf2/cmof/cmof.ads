@@ -11,6 +11,7 @@ package Cmof is
 
    type Collection_Of_CMOF_Element is private;
 
+   subtype Set_Of_CMOF_Class is Collection_Of_CMOF_Element;
    subtype Set_Of_CMOF_Classifier is Collection_Of_CMOF_Element;
    subtype Set_Of_CMOF_Comment is Collection_Of_CMOF_Element;
    subtype Set_Of_CMOF_Element is Collection_Of_CMOF_Element;
