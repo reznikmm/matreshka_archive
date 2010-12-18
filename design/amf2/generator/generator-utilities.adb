@@ -135,4 +135,14 @@ package body Generator.Utilities is
       return Property.Type_Id = "Core-PrimitiveTypes-UnlimitedNatural";
    end Has_Unlimited_Natural_Type;
 
+   ---------------------
+   -- Has_String_Type --
+   ---------------------
+
+   function Has_String_Type
+    (Property : not null Property_Access) return Boolean is
+   begin
+      return Property.Type_Id = "Core-PrimitiveTypes-String";
+   end Has_String_Type;
+
 end Generator.Utilities;

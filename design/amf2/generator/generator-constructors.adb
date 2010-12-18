@@ -209,6 +209,15 @@ package body Generator.Constructors is
                      Set_Col (60);
                      Put_Line ("--  " & To_String (Property.Name));
 
+                  elsif Has_String_Type (Property) then
+                     Put
+                      ("                  " & Integer'Image (Property_Index));
+                     Set_Col (27);
+                     Put
+                      ("=> (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),");
+                     Set_Col (60);
+                     Put_Line ("--  " & To_String (Property.Name));
+
                   elsif Get_Type (Property).all in Class_Record'Class then
                      Put
                       ("                  " & Integer'Image (Property_Index));
@@ -256,6 +265,8 @@ package body Generator.Constructors is
       end Generate_Initializer_Implementation;
 
    begin
+      Put_Line ("with Matreshka.Internals.Strings;");
+      New_Line;
       Put_Line ("with Cmof.Internals.Attributes;");
       Put_Line ("with Cmof.Internals.Metamodel;");
       Put_Line ("with Cmof.Internals.Tables;");

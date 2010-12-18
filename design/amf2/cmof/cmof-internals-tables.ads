@@ -1,8 +1,9 @@
 with GNAT.Table;
 
 with CMOF.Internals.Types;
+with Matreshka.Internals.Strings;
 
-private package Cmof.Internals.Tables is
+private package CMOF.Internals.Tables is
 
    type Member_Kinds is
     (M_None,
@@ -10,7 +11,8 @@ private package Cmof.Internals.Tables is
      M_Collection_Of_Element,
      M_Boolean,
      M_Integer,
-     M_Unlimited_Natural);
+     M_Unlimited_Natural,
+     M_String);
 
    type Member_Record (Kind : Member_Kinds := M_None) is record
       case Kind is
@@ -31,6 +33,9 @@ private package Cmof.Internals.Tables is
 
          when M_Unlimited_Natural =>
             Natural_Value : CMOF_Unlimited_Natural;
+
+         when M_String =>
+            String_Value : Matreshka.Internals.Strings.Shared_String_Access;
       end case;
    end record;
 
@@ -176,4 +181,4 @@ private package Cmof.Internals.Tables is
    --  attribute and intended to be used to construct initial CMOF
    --  metametamodel only.
 
-end Cmof.Internals.Tables;
+end CMOF.Internals.Tables;

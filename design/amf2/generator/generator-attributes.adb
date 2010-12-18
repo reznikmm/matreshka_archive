@@ -279,6 +279,48 @@ package body Generator.Attributes is
                    & ")"
                    & ").Natural_Value := To;");
 
+            elsif Has_String_Type (Property) then
+               Set_Col (Indent);
+               Put_Line ("Matreshka.Internals.Strings.Dereference");
+               Set_Col (Indent);
+               Put_Line (" (Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line ("   (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("     (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("      "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").String_Value);");
+               Set_Col (Indent);
+               Put_Line ("Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line (" (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("   (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("      "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").String_Value := League.Strings.Internals.Get_Shared (To);");
+               Set_Col (Indent);
+               Put_Line ("Matreshka.Internals.Strings.Reference");
+               Set_Col (Indent);
+               Put_Line (" (Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line ("   (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("     (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("      "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").String_Value);");
+
             elsif Get_Type (Property).all in Class_Record'Class then
                Set_Col (Indent);
                Put_Line ("Elements.Table (Self).Member");
@@ -366,6 +408,32 @@ package body Generator.Attributes is
                    & Constant_Name_In_Metamodel (Property)
                    & ")"
                    & ").Natural_Value;");
+
+            elsif Has_String_Type (Property) then
+               if Is_Multivalued (Property) and Property.Name /= "body" then
+                  --  OpaqueExpression::body is multivalued but conflicts with
+                  --  Comment::body which is not multivalued. Getters for these
+                  --  subprograms must be different subprogram, but current
+                  --  limitations doesn't allow to implement this.
+
+                  Put_Line ("0;");
+
+               else
+                  Set_Col (Indent);
+                  Put_Line ("  League.Strings.Internals.Create");
+                  Set_Col (Indent);
+                  Put_Line ("   (Elements.Table (Self).Member");
+                  Set_Col (Indent);
+                  Put_Line ("     (Member_Offset");
+                  Set_Col (Indent);
+                  Put_Line ("       (Elements.Table (Self).Kind,");
+                  Set_Col (Indent);
+                  Put_Line
+                   ("        "
+                      & Constant_Name_In_Metamodel (Property)
+                      & ")"
+                      & ").String_Value);");
+               end if;
 
             elsif Get_Type (Property).all in Class_Record'Class then
                Set_Col (Indent);
@@ -507,6 +575,9 @@ package body Generator.Attributes is
       end Generate_Getter;
 
    begin
+      Put_Line ("with League.Strings.Internals;");
+      Put_Line ("with Matreshka.Internals.Strings;");
+      New_Line;
       Put_Line ("with Cmof.Internals.Attribute_Mappings;");
       Put_Line ("with Cmof.Internals.Metamodel;");
       Put_Line ("with Cmof.Internals.Subclassing;");
@@ -557,12 +628,13 @@ package body Generator.Attributes is
       end Generate_Attribute_Specification;
 
    begin
+      Put_Line ("with League.Strings;");
       New_Line;
-      Put_Line ("package Cmof.Internals.Attributes is");
+      Put_Line ("package CMOF.Internals.Attributes is");
 
       All_Attributes.Iterate (Generate_Attribute_Specification'Access);
       New_Line;
-      Put_Line ("end Cmof.Internals.Attributes;");
+      Put_Line ("end CMOF.Internals.Attributes;");
    end Generate_Attributes_Specification;
 
    -------------------------------------------------
@@ -679,17 +751,7 @@ package body Generator.Attributes is
       Put_Line
        ("   function Internal_Get_" & To_Ada_Identifier (Property.Name));
 
-      if Property.Type_Id = "Core-PrimitiveTypes-String" then
-         if Is_Multivalued (Property) then
-            Put
-              ("     (Self : Cmof_Element)"
-                 & " return Collection_Of_Cmof_String");
-
-         else
-            Put ("     (Self : Cmof_Element) return Cmof_String");
-         end if;
-
-      elsif Has_Boolean_Type (Property) then
+      if Has_Boolean_Type (Property) then
          if Is_Multivalued (Property) then
             raise Program_Error;
 
@@ -711,6 +773,16 @@ package body Generator.Attributes is
 
          else
             Put ("     (Self : Cmof_Element) return Cmof_Unlimited_Natural");
+         end if;
+
+      elsif Has_String_Type (Property) then
+         if Is_Multivalued (Property) then
+            Put
+              ("     (Self : CMOF_Element)"
+                 & " return Collection_Of_CMOF_String");
+
+         else
+            Put ("     (Self : CMOF_Element) return League.Strings.Universal_String");
          end if;
 
       else
@@ -839,10 +911,7 @@ package body Generator.Attributes is
        ("   procedure Internal_Set_" & To_Ada_Identifier (Property.Name));
       Put_Line ("     (Self : CMOF_Element;");
 
-      if Property.Type_Id = "Core-PrimitiveTypes-String" then
-         Put ("      To   : CMOF_String)");
-
-      elsif Has_Boolean_Type (Property) then
+      if Has_Boolean_Type (Property) then
          Put ("      To   : CMOF_Boolean)");
 
       elsif Has_Integer_Type (Property) then
@@ -850,6 +919,9 @@ package body Generator.Attributes is
 
       elsif Has_Unlimited_Natural_Type (Property) then
          Put ("      To   : CMOF_Unlimited_Natural)");
+
+      elsif Has_String_Type (Property) then
+         Put ("      To   : League.Strings.Universal_String)");
 
       else
          Put ("      To   : CMOF_Element)");

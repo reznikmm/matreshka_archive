@@ -8,8 +8,6 @@ package Cmof is
    type Cmof_Unlimited_Natural is
      new Interfaces.Integer_32 range 0 .. Interfaces.Integer_32'Last;
    type Cmof_Boolean is new Boolean;
---   type Cmof_String is new Ada.Strings.Wide_Unbounded.Unbounded_Wide_String;
-   type Cmof_String is new Interfaces.Integer_32;
 
    type Collection_Of_CMOF_Element is private;
 

@@ -22,4 +22,7 @@ package Generator.Utilities is
    function Has_Unlimited_Natural_Type
     (Property : not null Property_Access) return Boolean;
 
+   function Has_String_Type
+    (Property : not null Property_Access) return Boolean;
+
 end Generator.Utilities;

@@ -51,12 +51,25 @@ package body Generator.Metamodel is
       -----------------------------------------
 
       procedure Generate_Association_Initialization
-       (Position : Association_Sets.Cursor) is
+       (Position : Association_Sets.Cursor)
+      is
+         Association : constant Association_Access
+           := Association_Sets.Element (Position);
+
       begin
          Put_Line
           ("   Initialize_Association ("
-             & Constant_Name_In_Metamodel (Association_Sets.Element (Position))
+             & Constant_Name_In_Metamodel (Association)
              & ");");
+         Put_Line ("   Internal_Set_Name");
+         Put_Line
+          ("    ("
+             & Constant_Name_In_Metamodel (Association)
+             & ",");
+         Put_Line
+          ("     League.Strings.To_Universal_String ("""
+             & To_String (Association.Name)
+             & """));");
       end Generate_Association_Initialization;
 
       --------------------------------------------------
@@ -127,6 +140,15 @@ package body Generator.Metamodel is
           ("   Initialize_Class ("
              & Constant_Name_In_Metamodel (Class)
              & ");");
+         Put_Line ("   Internal_Set_Name");
+         Put_Line
+          ("    ("
+             & Constant_Name_In_Metamodel (Class)
+             & ",");
+         Put_Line
+          ("     League.Strings.To_Universal_String ("""
+             & To_String (Class.Name)
+             & """));");
       end Generate_Class_Initialization;
 
       --------------------------------------------
@@ -192,6 +214,15 @@ package body Generator.Metamodel is
           ("   Initialize_Property ("
              & Constant_Name_In_Metamodel (Property)
              & ");");
+         Put_Line ("   Internal_Set_Name");
+         Put_Line
+          ("    ("
+             & Constant_Name_In_Metamodel (Property)
+             & ",");
+         Put_Line
+          ("     League.Strings.To_Universal_String ("""
+             & To_String (Property.Name)
+             & """));");
          Put_Line
           ("   Internal_Set_Lower ("
              & Constant_Name_In_Metamodel (Property)
@@ -214,6 +245,8 @@ package body Generator.Metamodel is
       end Generate_Property_Initialization;
 
    begin
+      Put_Line ("with League.Strings;");
+      New_Line;
       Put_Line ("with Cmof.Internals.Attributes;");
       Put_Line ("with Cmof.Internals.Constructors;");
       Put_Line ("with Cmof.Internals.Metamodel;");
