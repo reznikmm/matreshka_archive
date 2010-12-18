@@ -6,9 +6,9 @@ package CMOF.Internals.Collections is
    function Element
     (Self : Collection_Of_CMOF_Element; Index : Positive) return CMOF_Element;
 
-   procedure Append
+   procedure Internal_Append
     (Collection : Collection_Of_CMOF_Element;
      Element    : CMOF_Element);
-   --  Appends element to collection.
+   --  Appends element to collection. This subprogram doesn't construct link.
 
 end CMOF.Internals.Collections;

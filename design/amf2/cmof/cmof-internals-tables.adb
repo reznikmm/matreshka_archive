@@ -110,12 +110,12 @@ package body CMOF.Internals.Tables is
            Second_Element);
 
          if First_Property not in Cmof_Collection_Of_Element_Property then
-            Append
+            Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
               Second_Element);
 
          else
-            Append
+            Internal_Append
              (Elements.Table (First_Element).Member (0).Collection
                 + Collection_Of_CMOF_Element
                    (Collection_Offset
@@ -125,12 +125,12 @@ package body CMOF.Internals.Tables is
          end if;
 
          if Second_Property not in Cmof_Collection_Of_Element_Property then
-            Append
+            Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
               First_Element);
 
          else
-            Append
+            Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection
                 + Collection_Of_CMOF_Element
                    (Collection_Offset
@@ -153,12 +153,12 @@ package body CMOF.Internals.Tables is
            Second_Element);
 
          if First_Property not in Cmof_Collection_Of_Element_Property then
-            Append
+            Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
               Second_Element);
 
          else
-            Append
+            Internal_Append
              (Elements.Table (First_Element).Member (0).Collection
                 + Collection_Of_CMOF_Element
                    (Collection_Offset
@@ -168,7 +168,7 @@ package body CMOF.Internals.Tables is
          end if;
 
          if Second_Property not in Cmof_Non_Collection_Of_Element_Property then
-            Append
+            Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
               First_Element);
 
@@ -193,7 +193,7 @@ package body CMOF.Internals.Tables is
            Second_Element);
 
          if First_Property not in Cmof_Non_Collection_Of_Element_Property then
-            Append
+            Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
               Second_Element);
 
@@ -205,12 +205,12 @@ package body CMOF.Internals.Tables is
          end if;
 
          if Second_Property not in Cmof_Collection_Of_Element_Property then
-            Append
+            Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
               First_Element);
 
          else
-            Append
+            Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection
                 + Collection_Of_CMOF_Element
                    (Collection_Offset
@@ -233,7 +233,7 @@ package body CMOF.Internals.Tables is
            Second_Element);
 
          if First_Property not in Cmof_Non_Collection_Of_Element_Property then
-            Append
+            Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
               Second_Element);
 
@@ -245,7 +245,7 @@ package body CMOF.Internals.Tables is
          end if;
 
          if Second_Property not in Cmof_Non_Collection_Of_Element_Property then
-            Append
+            Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
               First_Element);
 

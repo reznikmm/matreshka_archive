@@ -4,11 +4,37 @@ package body CMOF.Internals.Collections is
 
    use CMOF.Internals.Tables;
 
-   ------------
-   -- Append --
-   ------------
+   -------------
+   -- Element --
+   -------------
 
-   procedure Append
+   function Element
+    (Self  : Collection_Of_CMOF_Element;
+     Index : Positive) return CMOF_Element
+   is
+      Current : Collection_Element_Identifier
+        := Tables.Collections.Table (Self).Head;
+
+   begin
+      for J in 2 .. Index loop
+         exit when Current = 0;
+
+         Current := Collection_Elements.Table (Current).Next;
+      end loop;
+
+      if Current = 0 then
+         raise Constraint_Error;
+
+      else
+         return Collection_Elements.Table (Current).Element;
+      end if;
+   end Element;
+
+   ---------------------
+   -- Internal_Append --
+   ---------------------
+
+   procedure Internal_Append
     (Collection : Collection_Of_CMOF_Element;
      Element    : CMOF_Element)
    is
@@ -42,33 +68,7 @@ package body CMOF.Internals.Collections is
       end if;
 
       Collection_Elements.Table (New_Element) := (Element, Previous, Next);
-   end Append;
-
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Self  : Collection_Of_CMOF_Element;
-     Index : Positive) return CMOF_Element
-   is
-      Current : Collection_Element_Identifier
-        := Tables.Collections.Table (Self).Head;
-
-   begin
-      for J in 2 .. Index loop
-         exit when Current = 0;
-
-         Current := Collection_Elements.Table (Current).Next;
-      end loop;
-
-      if Current = 0 then
-         raise Constraint_Error;
-
-      else
-         return Collection_Elements.Table (Current).Element;
-      end if;
-   end Element;
+   end Internal_Append;
 
    ------------
    -- Length --
