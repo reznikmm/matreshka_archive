@@ -19,6 +19,9 @@ package body Analyzer is
    procedure Resolve_Redefined_Property (Position : Class_Sets.Cursor);
    --  Resolve Redefined_Property attribute for all class's properties.
 
+   procedure Resolve_Association (Position : Association_Sets.Cursor);
+   --  Resolve Property::association attribute for both ends of association.
+
    Current_Class : Class_Access;
    --  Currently processed class.
 
@@ -39,6 +42,10 @@ package body Analyzer is
       --  Compute properties' indices.
 
       Classes.Iterate (Compute_Indices'Access);
+
+      --  Resolves Property::association attribute.
+
+      Associations.Iterate (Resolve_Association'Access);
    end Analyze;
 
    ----------------------------
@@ -184,6 +191,23 @@ package body Analyzer is
          Class.Collection_Slots := Last_Collection;
       end if;
    end Compute_Indices;
+
+   -------------------------
+   -- Resolve_Association --
+   -------------------------
+
+   procedure Resolve_Association (Position : Association_Sets.Cursor) is
+      Association : constant Association_Access
+        := Association_Sets.Element (Position);
+      First_End   : constant Property_Access
+        := Property_Access (To_Element (Association.First_End));
+      Second_End  : constant Property_Access
+        := Property_Access (To_Element (Association.Second_End));
+
+   begin
+      First_End.Association := Association;
+      Second_End.Association := Association;
+   end Resolve_Association;
 
    --------------------------------
    -- Resolve_Redefined_Property --

@@ -34,6 +34,18 @@ package body Generator.Metamodel is
        (Position : Association_Sets.Cursor);
       --  Generates initialization of properties of metaassocation.
 
+      procedure Generate_Property_Initialization
+       (Position : Property_Sets.Cursor);
+      --  Generates initialization of the specified property.
+
+      procedure Generate_Class_Property_Links
+       (Position : Class_Sets.Cursor);
+      --  Generates link establishment for class <-> property association.
+
+      procedure Generate_Association_Property_Links
+       (Position : Association_Sets.Cursor);
+      --  Generates link establishment for association <-> property association.
+
       -----------------------------------------
       -- Generate_Association_Initialization --
       -----------------------------------------
@@ -52,28 +64,56 @@ package body Generator.Metamodel is
       --------------------------------------------------
 
       procedure Generate_Association_Property_Initialization
-       (Position : Association_Sets.Cursor)
-      is
-         procedure Generate_Property_Initialization
-          (Position : Property_Sets.Cursor);
-
-         --------------------------------------
-         -- Generate_Property_Initialization --
-         --------------------------------------
-
-         procedure Generate_Property_Initialization
-          (Position : Property_Sets.Cursor) is
-         begin
-            Put_Line
-             ("   Initialize_Property ("
-                & Constant_Name_In_Metamodel (Property_Sets.Element (Position))
-                & ");");
-         end Generate_Property_Initialization;
-
+       (Position : Association_Sets.Cursor) is
       begin
          Association_Sets.Element (Position).Owned_End.Iterate
           (Generate_Property_Initialization'Access);
       end Generate_Association_Property_Initialization;
+
+      -----------------------------------------
+      -- Generate_Association_Property_Links --
+      -----------------------------------------
+
+      procedure Generate_Association_Property_Links
+       (Position : Association_Sets.Cursor)
+      is
+         Association : constant Association_Access
+           := Association_Sets.Element (Position);
+         First_End   : constant Property_Access
+           := Property_Access (To_Element (Association.First_End));
+         Second_End  : constant Property_Access
+           := Property_Access (To_Element (Association.Second_End));
+
+      begin
+         --  Generates ownership link.
+
+         if First_End.Owned_Association /= null then
+            Put_Line ("   Internal_Create_Link");
+            Put_Line ("    (MA_Cmof_Owned_End_Owning_Association,");
+            Put_Line ("     " & Constant_Name_In_Metamodel (Association) & ",");
+            Put_Line ("     MP_Cmof_Association_Owned_End,");
+            Put_Line ("     " & Constant_Name_In_Metamodel (First_End) & ",");
+            Put_Line ("     MP_Cmof_Property_Owning_Association);");
+         end if;
+
+         if Second_End.Owned_Association /= null then
+            Put_Line ("   Internal_Create_Link");
+            Put_Line ("    (MA_Cmof_Owned_End_Owning_Association,");
+            Put_Line ("     " & Constant_Name_In_Metamodel (Association) & ",");
+            Put_Line ("     MP_Cmof_Association_Owned_End,");
+            Put_Line ("     " & Constant_Name_In_Metamodel (Second_End) & ",");
+            Put_Line ("     MP_Cmof_Property_Owning_Association);");
+         end if;
+
+         --  Generates memberEnd link.
+
+         Put_Line ("   Internal_Create_Link");
+         Put_Line ("    (MA_Cmof_Member_End_Association,");
+         Put_Line ("     " & Constant_Name_In_Metamodel (Association) & ",");
+         Put_Line ("     MP_Cmof_Association_Member_End,");
+         Put_Line ("     " & Constant_Name_In_Metamodel (First_End) & ",");
+         Put_Line ("     MP_Cmof_Property_Association);");
+      end Generate_Association_Property_Links;
 
       -----------------------------------
       -- Generate_Class_Initialization --
@@ -94,28 +134,84 @@ package body Generator.Metamodel is
       --------------------------------------------
 
       procedure Generate_Class_Property_Initialization
-       (Position : Class_Sets.Cursor)
-      is
-         procedure Generate_Property_Initialization
-          (Position : Property_Sets.Cursor);
-
-         --------------------------------------
-         -- Generate_Property_Initialization --
-         --------------------------------------
-
-         procedure Generate_Property_Initialization
-          (Position : Property_Sets.Cursor) is
-         begin
-            Put_Line
-             ("   Initialize_Property ("
-                & Constant_Name_In_Metamodel (Property_Sets.Element (Position))
-                & ");");
-         end Generate_Property_Initialization;
-
+       (Position : Class_Sets.Cursor) is
       begin
          Class_Sets.Element (Position).Properties.Iterate
           (Generate_Property_Initialization'Access);
       end Generate_Class_Property_Initialization;
+
+      -----------------------------------
+      -- Generate_Class_Property_Links --
+      -----------------------------------
+
+      procedure Generate_Class_Property_Links
+       (Position : Class_Sets.Cursor)
+      is
+         Class : constant Class_Access := Class_Sets.Element (Position);
+
+         procedure Generate_Class_Property_Link
+          (Position : Property_Sets.Cursor);
+
+         ----------------------------------
+         -- Generate_Class_Property_Link --
+         ----------------------------------
+
+         procedure Generate_Class_Property_Link
+          (Position : Property_Sets.Cursor)
+         is
+            Property : constant Property_Access
+              := Property_Sets.Element (Position);
+
+         begin
+            --  Generates link between class and property.
+
+            Put_Line ("   Internal_Create_Link");
+            Put_Line ("    (MA_Cmof_Owned_Attribute_Class,");
+            Put_Line ("     " & Constant_Name_In_Metamodel (Class) & ",");
+            Put_Line ("     MP_Cmof_Class_Owned_Attribute,");
+            Put_Line ("     " & Constant_Name_In_Metamodel (Property) & ",");
+            Put_Line ("     MP_Cmof_Property_Class);");
+         end Generate_Class_Property_Link;
+
+      begin
+         Class.Properties.Iterate (Generate_Class_Property_Link'Access);
+      end Generate_Class_Property_Links;
+
+      --------------------------------------
+      -- Generate_Property_Initialization --
+      --------------------------------------
+
+      procedure Generate_Property_Initialization
+       (Position : Property_Sets.Cursor)
+      is
+         Property : constant Property_Access
+           := Property_Sets.Element (Position);
+
+      begin
+         Put_Line
+          ("   Initialize_Property ("
+             & Constant_Name_In_Metamodel (Property)
+             & ");");
+         Put_Line
+          ("   Internal_Set_Lower ("
+             & Constant_Name_In_Metamodel (Property)
+             & ","
+             & Integer'Image (Property.Lower)
+             & ");");
+         Put
+          ("   Internal_Set_Upper ("
+             & Constant_Name_In_Metamodel (Property)
+             & ",");
+
+         if Property.Upper = Integer'Last then
+            Put (" CMOF_Unlimited_Natural'Last");
+
+         else
+            Put (Integer'Image (Property.Upper));
+         end if;
+
+         Put_Line (");");
+      end Generate_Property_Initialization;
 
    begin
       Put_Line ("with Cmof.Internals.Attributes;");
@@ -150,6 +246,14 @@ package body Generator.Metamodel is
       Classes.Iterate (Generate_Class_Property_Initialization'Access);
       Associations.Iterate
        (Generate_Association_Property_Initialization'Access);
+      New_Line;
+      Put_Line ("   --  Link establishment for class <-> property");
+      New_Line;
+      Classes.Iterate (Generate_Class_Property_Links'Access);
+      New_Line;
+      Put_Line ("   --  Link establishment for association <-> property");
+      New_Line;
+      Associations.Iterate (Generate_Association_Property_Links'Access);
       Put_Line ("end Cmof.Internals.Setup;");
    end Generate_Metamodel_Implementation;
 

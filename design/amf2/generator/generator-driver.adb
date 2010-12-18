@@ -474,6 +474,7 @@ procedure Generator.Driver is
                Is_Unique             => Is_Unique,
                Owned_Class           => Current_Class,
                Owned_Association     => Current_Association,
+               Association           => Current_Association,
                Redefined_Property_Id =>
                  To_Unbounded_String (Redefined_Property),
                Redefined_Property    => null,

@@ -208,6 +208,15 @@ package body Generator.Constructors is
                      Put ("),");
                      Set_Col (60);
                      Put_Line ("--  " & To_String (Property.Name));
+
+                  elsif Get_Type (Property).all in Class_Record'Class then
+                     Put
+                      ("                  " & Integer'Image (Property_Index));
+                     Set_Col (27);
+                     Put
+                      ("=> (M_Element, 0),");
+                     Set_Col (60);
+                     Put_Line ("--  " & To_String (Property.Name));
                   end if;
                end if;
             end if;

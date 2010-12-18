@@ -119,6 +119,7 @@ package Generator is
    type Property_Record is new Element_Record with record
       Owned_Class           : Class_Access;
       Owned_Association     : Association_Access;
+      Association           : Association_Access;
       Type_Id               : Ada.Strings.Unbounded.Unbounded_String;
       Redefined_Property_Id : Ada.Strings.Unbounded.Unbounded_String;
       Lower                 : Natural;

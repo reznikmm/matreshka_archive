@@ -279,6 +279,20 @@ package body Generator.Attributes is
                    & ")"
                    & ").Natural_Value := To;");
 
+            elsif Get_Type (Property).all in Class_Record'Class then
+               Set_Col (Indent);
+               Put_Line ("Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line (" (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("   (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("    "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").Element := To;");
+
             else
                Set_Col (Indent);
                Put_Line ("null;");
@@ -352,6 +366,20 @@ package body Generator.Attributes is
                    & Constant_Name_In_Metamodel (Property)
                    & ")"
                    & ").Natural_Value;");
+
+            elsif Get_Type (Property).all in Class_Record'Class then
+               Set_Col (Indent);
+               Put_Line ("  Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line ("   (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("     (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("      "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").Element;");
 
             else
                Set_Col (Indent);
