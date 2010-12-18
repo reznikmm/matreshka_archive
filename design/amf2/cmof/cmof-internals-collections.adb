@@ -10,9 +10,24 @@ package body CMOF.Internals.Collections is
 
    function Element
     (Self  : Collection_Of_CMOF_Element;
-     Index : Positive) return CMOF_Element is
+     Index : Positive) return CMOF_Element
+   is
+      Current : Collection_Element_Identifier
+        := Tables.Collections.Table (Self).Head;
+
    begin
-      return 0;
+      for J in 2 .. Index loop
+         exit when Current = 0;
+
+         Current := Collection_Elements.Table (Current).Next;
+      end loop;
+
+      if Current = 0 then
+         raise Constraint_Error;
+
+      else
+         return Collection_Elements.Table (Current).Element;
+      end if;
    end Element;
 
    ------------
