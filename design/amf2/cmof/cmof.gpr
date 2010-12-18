@@ -3,7 +3,7 @@ with "../../../gnat/matreshka_league.gpr";
 project Cmof is
 
    for Object_Dir use ".objs";
-   for Source_Dirs use (".", ".gens", "..");
+   for Source_Dirs use (".", "generated", "..");
    for Exec_Dir use "..";
    for Main use ("cmof-main.adb");
 
