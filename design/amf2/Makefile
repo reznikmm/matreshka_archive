@@ -2,6 +2,8 @@
 all:
 	make -C ../..
 	gprbuild -p -Pcmof/cmof.gpr
+	gprbuild -p -Pxmi/xmi.gpr
+	./xmi-reader data/cmof.xml
 
 gen:
 	mkdir -p cmof/.gens
@@ -13,4 +15,4 @@ gen:
 clean:
 #	gprclean -q -Pcmof/cmof.gpr
 #	gprclean -q -Pgenerator/generator.gpr
-	rm -rf cmof-internals-subclassing.ad[sb] cmof-internals-metamodel.ads cmof/.gens cmof/.objs demo generator/.objs
+	rm -rf cmof-internals-subclassing.ad[sb] cmof-internals-metamodel.ads cmof/.gens cmof/.objs demo generator/.objs xmi/.objs

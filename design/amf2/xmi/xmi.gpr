@@ -1,0 +1,14 @@
+with "../../../gnat/matreshka_xml.gpr";
+with "../cmof/cmof.gpr";
+
+project XMI is
+
+   for Object_Dir use ".objs";
+   for Exec_Dir use "..";
+   for Main use ("xmi-reader.adb");
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-g", "-gnat12");
+   end Compiler;
+
+end XMI;
