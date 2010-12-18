@@ -3,27 +3,27 @@
 <!-- MOF capabilities (one of important is MOF::Tag) should be added later. -->
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
   <cmof:Package xmi:id="_0" name="CMOF" uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
-    <ownedMember xmi:type="cmof:PrimitiveType" xmi:id="Core-PrimitiveTypes-Integer" name="Integer">
+    <packagedElement xmi:type="cmof:PrimitiveType" xmi:id="Core-PrimitiveTypes-Integer" name="Integer">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-PrimitiveTypes-Integer-_ownedComment.0" annotatedElement="Core-PrimitiveTypes-Integer">
         <body>An integer is a primitive type representing integer values.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:PrimitiveType" xmi:id="Core-PrimitiveTypes-Boolean" name="Boolean">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:PrimitiveType" xmi:id="Core-PrimitiveTypes-Boolean" name="Boolean">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-PrimitiveTypes-Boolean-_ownedComment.0" annotatedElement="Core-PrimitiveTypes-Boolean">
         <body>A Boolean type is used for logical expression, consisting of the predefined values true and false.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:PrimitiveType" xmi:id="Core-PrimitiveTypes-String" name="String">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:PrimitiveType" xmi:id="Core-PrimitiveTypes-String" name="String">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-PrimitiveTypes-String-_ownedComment.0" annotatedElement="Core-PrimitiveTypes-String">
         <body>A string is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:PrimitiveType" xmi:id="Core-PrimitiveTypes-UnlimitedNatural" name="UnlimitedNatural">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:PrimitiveType" xmi:id="Core-PrimitiveTypes-UnlimitedNatural" name="UnlimitedNatural">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-PrimitiveTypes-UnlimitedNatural-_ownedComment.0" annotatedElement="Core-PrimitiveTypes-UnlimitedNatural">
         <body>An unlimited natural is a primitive type representing unlimited natural values.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Classifier" name="Classifier" isAbstract="true" superClass="Core-Constructs-Namespace Core-Constructs-Type">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Classifier" name="Classifier" isAbstract="true" superClass="Core-Constructs-Namespace Core-Constructs-Type">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Classifier-_ownedComment.0" annotatedElement="Core-Constructs-Classifier">
         <body>A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.</body>
       </ownedComment>
@@ -207,8 +207,8 @@
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Classifier-maySpecializeType-_ownedParameter.0" type="Core-PrimitiveTypes-Boolean" direction="return"/>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Classifier-maySpecializeType-c" name="c" type="Core-Constructs-Classifier"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-DirectedRelationship" name="DirectedRelationship" isAbstract="true" superClass="Core-Constructs-Relationship">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-DirectedRelationship" name="DirectedRelationship" isAbstract="true" superClass="Core-Constructs-Relationship">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-DirectedRelationship-_ownedComment.0" annotatedElement="Core-Constructs-DirectedRelationship">
         <body>A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.</body>
       </ownedComment>
@@ -222,8 +222,8 @@
           <body>Specifies the targets of the DirectedRelationship.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Element" name="Element" isAbstract="true">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Element" name="Element" isAbstract="true">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Element-_ownedComment.0" annotatedElement="Core-Constructs-Element">
         <body>An element is a constituent of a model. As such, it has the capability of owning other elements.</body>
       </ownedComment>
@@ -284,8 +284,8 @@
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Element-mustBeOwned-_ownedParameter.0" type="Core-PrimitiveTypes-Boolean" direction="return"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Feature" name="Feature" isAbstract="true" superClass="Core-Constructs-RedefinableElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Feature" name="Feature" isAbstract="true" superClass="Core-Constructs-RedefinableElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Feature-_ownedComment.0" annotatedElement="Core-Constructs-Feature">
         <body>A feature declares a behavioral or structural characteristic of instances of classifiers.</body>
       </ownedComment>
@@ -294,8 +294,8 @@
           <body>The Classifiers that have this Feature as a feature.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-MultiplicityElement" name="MultiplicityElement" isAbstract="true" superClass="Core-Constructs-Element">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-MultiplicityElement" name="MultiplicityElement" isAbstract="true" superClass="Core-Constructs-Element">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-MultiplicityElement-_ownedComment.0" annotatedElement="Core-Constructs-MultiplicityElement">
         <body>A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.</body>
       </ownedComment>
@@ -417,8 +417,8 @@
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-MultiplicityElement-upperBound-_ownedParameter.0" type="Core-PrimitiveTypes-UnlimitedNatural" direction="return"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Namespace" name="Namespace" isAbstract="true" superClass="Core-Constructs-NamedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Namespace" name="Namespace" isAbstract="true" superClass="Core-Constructs-NamedElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Namespace-_ownedComment.0" annotatedElement="Core-Constructs-Namespace">
         <body>A namespace is an element in a model that contains a set of named elements that can be identified by name.</body>
       </ownedComment>
@@ -520,13 +520,13 @@
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Namespace-membersAreDistinguishable-_ownedParameter.0" type="Core-PrimitiveTypes-Boolean" direction="return"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-PackageableElement" name="PackageableElement" isAbstract="true" superClass="Core-Constructs-NamedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-PackageableElement" name="PackageableElement" isAbstract="true" superClass="Core-Constructs-NamedElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-PackageableElement-_ownedComment.0" annotatedElement="Core-Constructs-PackageableElement">
         <body>A packageable element indicates a named element that may be owned directly by a package.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-RedefinableElement" name="RedefinableElement" isAbstract="true" superClass="Core-Constructs-NamedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-RedefinableElement" name="RedefinableElement" isAbstract="true" superClass="Core-Constructs-NamedElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-RedefinableElement-_ownedComment.0" annotatedElement="Core-Constructs-RedefinableElement">
         <body>A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier.</body>
       </ownedComment>
@@ -604,8 +604,8 @@
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-RedefinableElement-isRedefinitionContextValid-_ownedParameter.0" type="Core-PrimitiveTypes-Boolean" direction="return"/>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-RedefinableElement-isRedefinitionContextValid-redefined" name="redefined" type="Core-Constructs-RedefinableElement"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Relationship" name="Relationship" isAbstract="true" superClass="Core-Constructs-Element">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Relationship" name="Relationship" isAbstract="true" superClass="Core-Constructs-Element">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Relationship-_ownedComment.0" annotatedElement="Core-Constructs-Relationship">
         <body>Relationship is an abstract concept that specifies some kind of relationship between elements.</body>
       </ownedComment>
@@ -614,13 +614,13 @@
           <body>Specifies the elements related by the Relationship.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-StructuralFeature" name="StructuralFeature" isAbstract="true" superClass="Core-Constructs-Feature Core-Constructs-TypedElement Core-Constructs-MultiplicityElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-StructuralFeature" name="StructuralFeature" isAbstract="true" superClass="Core-Constructs-Feature Core-Constructs-TypedElement Core-Constructs-MultiplicityElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-StructuralFeature-_ownedComment.0" annotatedElement="Core-Constructs-StructuralFeature">
         <body>A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-TypedElement" name="TypedElement" isAbstract="true" superClass="Core-Constructs-NamedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-TypedElement" name="TypedElement" isAbstract="true" superClass="Core-Constructs-NamedElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-TypedElement-_ownedComment.0" annotatedElement="Core-Constructs-TypedElement">
         <body>A typed element is a kind of named element that represents an element with a type.</body>
       </ownedComment>
@@ -629,8 +629,8 @@
           <body>This information is derived from the return result for this Operation.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-ValueSpecification" name="ValueSpecification" isAbstract="true" superClass="Core-Constructs-TypedElement Core-Constructs-PackageableElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-ValueSpecification" name="ValueSpecification" isAbstract="true" superClass="Core-Constructs-TypedElement Core-Constructs-PackageableElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-ValueSpecification-_ownedComment.0" annotatedElement="Core-Constructs-ValueSpecification">
         <body>A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.</body>
       </ownedComment>
@@ -706,8 +706,8 @@
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-ValueSpecification-isNull-_ownedParameter.0" type="Core-PrimitiveTypes-Boolean" direction="return"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Association" name="Association" superClass="Core-Constructs-Classifier Core-Constructs-Relationship">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Association" name="Association" superClass="Core-Constructs-Classifier Core-Constructs-Relationship">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Association-_ownedComment.0" annotatedElement="Core-Constructs-Association">
         <body>An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.</body>
       </ownedComment>
@@ -784,8 +784,8 @@
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Association-endType.1-_ownedParameter.0" type="Core-Constructs-Type" isOrdered="true" upper="*" lower="0" direction="return"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Class" name="Class" superClass="Core-Constructs-Classifier">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Class" name="Class" superClass="Core-Constructs-Classifier">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Class-_ownedComment.0" annotatedElement="Core-Constructs-Class">
         <body>A class describes a set of objects that share the same specifications of features, constraints, and semantics.</body>
       </ownedComment>
@@ -822,8 +822,8 @@
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Class-inherit-_ownedParameter.0" type="Core-Constructs-NamedElement" upper="*" lower="0" direction="return"/>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Class-inherit-inhs" name="inhs" type="Core-Constructs-NamedElement" upper="*" lower="0"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Property" name="Property" superClass="Core-Constructs-StructuralFeature">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Property" name="Property" superClass="Core-Constructs-StructuralFeature">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Property-_ownedComment.0" annotatedElement="Core-Constructs-Property">
         <body>A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.</body>
       </ownedComment>
@@ -1018,8 +1018,8 @@
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Property-isAttribute-_ownedParameter.0" type="Core-PrimitiveTypes-Boolean" direction="return"/>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Property-isAttribute-p" name="p" type="Core-Constructs-Property"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-DataType" name="DataType" superClass="Core-Constructs-Classifier">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-DataType" name="DataType" superClass="Core-Constructs-Classifier">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-DataType-_ownedComment.0" annotatedElement="Core-Constructs-DataType">
         <body>A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.</body>
       </ownedComment>
@@ -1046,8 +1046,8 @@
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-DataType-inherit-_ownedParameter.0" type="Core-Constructs-NamedElement" upper="*" lower="0" direction="return"/>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-DataType-inherit-inhs" name="inhs" type="Core-Constructs-NamedElement" upper="*" lower="0"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Enumeration" name="Enumeration" superClass="Core-Constructs-DataType">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Enumeration" name="Enumeration" superClass="Core-Constructs-DataType">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Enumeration-_ownedComment.0" annotatedElement="Core-Constructs-Enumeration">
         <body>An enumeration is a data type whose values are enumerated in the model as enumeration literals.</body>
       </ownedComment>
@@ -1056,8 +1056,8 @@
           <body>The ordered set of literals for this Enumeration.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-EnumerationLiteral" name="EnumerationLiteral" superClass="Core-Constructs-NamedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-EnumerationLiteral" name="EnumerationLiteral" superClass="Core-Constructs-NamedElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-EnumerationLiteral-_ownedComment.0" annotatedElement="Core-Constructs-EnumerationLiteral">
         <body>An enumeration literal is a user-defined data value for an enumeration.</body>
       </ownedComment>
@@ -1066,13 +1066,13 @@
           <body>The Enumeration that this EnumerationLiteral is a member of.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-PrimitiveType" name="PrimitiveType" superClass="Core-Constructs-DataType">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-PrimitiveType" name="PrimitiveType" superClass="Core-Constructs-DataType">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-PrimitiveType-_ownedComment.0" annotatedElement="Core-Constructs-PrimitiveType">
         <body>A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically.</body>
       </ownedComment>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Constraint" name="Constraint" superClass="Core-Constructs-PackageableElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Constraint" name="Constraint" superClass="Core-Constructs-PackageableElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Constraint-_ownedComment.0" annotatedElement="Core-Constructs-Constraint">
         <body>A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.</body>
       </ownedComment>
@@ -1105,8 +1105,8 @@
         </ownedComment>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Core-Constructs-Constraint-context" name="context" type="Core-Constructs-Namespace" lower="0" subsettedProperty="Core-Constructs-NamedElement-namespace" association="Core-Constructs-A_ownedRule_context"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-OpaqueExpression" name="OpaqueExpression" superClass="Core-Constructs-ValueSpecification">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-OpaqueExpression" name="OpaqueExpression" superClass="Core-Constructs-ValueSpecification">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-OpaqueExpression-_ownedComment.0" annotatedElement="Core-Constructs-OpaqueExpression">
         <body>An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.</body>
       </ownedComment>
@@ -1129,8 +1129,8 @@
           <body>Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Operation" name="Operation" superClass="Core-Constructs-BehavioralFeature">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Operation" name="Operation" superClass="Core-Constructs-BehavioralFeature">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Operation-_ownedComment.0" annotatedElement="Core-Constructs-Operation">
         <body>An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.</body>
       </ownedComment>
@@ -1298,8 +1298,8 @@
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Operation-returnResult-_ownedParameter.0" type="Core-Constructs-Parameter" upper="*" lower="0" direction="return"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Parameter" name="Parameter" superClass="Core-Constructs-TypedElement Core-Constructs-MultiplicityElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Parameter" name="Parameter" superClass="Core-Constructs-TypedElement Core-Constructs-MultiplicityElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Parameter-_ownedComment.0" annotatedElement="Core-Constructs-Parameter">
         <body>A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.</body>
       </ownedComment>
@@ -1318,8 +1318,8 @@
           <body>References the Operation owning this parameter.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-BehavioralFeature" name="BehavioralFeature" isAbstract="true" superClass="Core-Constructs-Feature Core-Constructs-Namespace">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-BehavioralFeature" name="BehavioralFeature" isAbstract="true" superClass="Core-Constructs-Feature Core-Constructs-Namespace">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-BehavioralFeature-_ownedComment.0" annotatedElement="Core-Constructs-BehavioralFeature">
         <body>A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.</body>
       </ownedComment>
@@ -1347,8 +1347,8 @@
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-BehavioralFeature-isDistinguishableFrom-n" name="n" type="Core-Constructs-NamedElement"/>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-BehavioralFeature-isDistinguishableFrom-ns" name="ns" type="Core-Constructs-Namespace"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-ElementImport" name="ElementImport" superClass="Core-Constructs-DirectedRelationship">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-ElementImport" name="ElementImport" superClass="Core-Constructs-DirectedRelationship">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-ElementImport-_ownedComment.0" annotatedElement="Core-Constructs-ElementImport">
         <body>An element import identifies an element in another package, and allows the element to be referenced using its name without a qualifier.</body>
       </ownedComment>
@@ -1402,8 +1402,8 @@
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-ElementImport-getName-_ownedParameter.0" type="Core-PrimitiveTypes-String" direction="return"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Package" name="Package" superClass="Core-Constructs-PackageableElement Core-Constructs-Namespace">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Package" name="Package" superClass="Core-Constructs-PackageableElement Core-Constructs-Namespace">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Package-_ownedComment.0" annotatedElement="Core-Constructs-Package">
         <body>A package is used to group elements, and provides a namespace for the grouped elements.</body>
       </ownedComment>
@@ -1484,8 +1484,8 @@
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Package-makesVisible-_ownedParameter.0" type="Core-PrimitiveTypes-Boolean" direction="return"/>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Package-makesVisible-el" name="el" type="Core-Constructs-NamedElement"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-PackageImport" name="PackageImport" superClass="Core-Constructs-DirectedRelationship">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-PackageImport" name="PackageImport" superClass="Core-Constructs-DirectedRelationship">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-PackageImport-_ownedComment.0" annotatedElement="Core-Constructs-PackageImport">
         <body>A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.</body>
       </ownedComment>
@@ -1513,8 +1513,8 @@
           <body>Specifies the Namespace that imports the members from a Package.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-PackageMerge" name="PackageMerge" superClass="Core-Constructs-DirectedRelationship">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-PackageMerge" name="PackageMerge" superClass="Core-Constructs-DirectedRelationship">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-PackageMerge-_ownedComment.0" annotatedElement="Core-Constructs-PackageMerge">
         <body>A package merge defines how the contents of one package are extended by the contents of another package.</body>
       </ownedComment>
@@ -1528,8 +1528,8 @@
           <body>References the Package that is to be merged with the receiving package of the PackageMerge.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Type" name="Type" isAbstract="true" superClass="Core-Constructs-NamedElement Core-Constructs-PackageableElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Type" name="Type" isAbstract="true" superClass="Core-Constructs-NamedElement Core-Constructs-PackageableElement">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Type-_ownedComment.0" annotatedElement="Core-Constructs-Type">
         <body>A type is a named element that is used as the type for a typed element. A type can be contained in a package.</body>
       </ownedComment>
@@ -1551,8 +1551,8 @@
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Type-conformsTo-_ownedParameter.0" type="Core-PrimitiveTypes-Boolean" direction="return"/>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-Type-conformsTo-other" name="other" type="Core-Constructs-Type"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-NamedElement" name="NamedElement" isAbstract="true" superClass="Core-Constructs-Element">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-NamedElement" name="NamedElement" isAbstract="true" superClass="Core-Constructs-Element">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-NamedElement-_ownedComment.0" annotatedElement="Core-Constructs-NamedElement">
         <body>A named element is an element in a model that may have a name.</body>
       </ownedComment>
@@ -1653,8 +1653,8 @@
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Core-Constructs-NamedElement-qualifiedName.1-_ownedParameter.0" type="Core-PrimitiveTypes-String" direction="return"/>
       </ownedOperation>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Expression" name="Expression" superClass="Core-Constructs-ValueSpecification">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Expression" name="Expression" superClass="Core-Constructs-ValueSpecification">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Expression-_ownedComment.0" annotatedElement="Core-Constructs-Expression">
         <body>An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.</body>
       </ownedComment>
@@ -1663,8 +1663,8 @@
           <body>Specifies a sequence of operands.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Class" xmi:id="Core-Constructs-Comment" name="Comment" superClass="Core-Constructs-Element">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Core-Constructs-Comment" name="Comment" superClass="Core-Constructs-Element">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Comment-_ownedComment.0" annotatedElement="Core-Constructs-Comment">
         <body>A comment is a textual annotation that can be attached to a set of elements.</body>
       </ownedComment>
@@ -1678,8 +1678,8 @@
           <body>References the Element(s) being commented.</body>
         </ownedComment>
       </ownedAttribute>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Enumeration" xmi:id="Core-Constructs-ParameterDirectionKind" name="ParameterDirectionKind">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Enumeration" xmi:id="Core-Constructs-ParameterDirectionKind" name="ParameterDirectionKind">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-ParameterDirectionKind-_ownedComment.0" annotatedElement="Core-Constructs-ParameterDirectionKind">
         <body>Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.</body>
       </ownedComment>
@@ -1703,8 +1703,8 @@
           <body>Indicates that parameter values are passed as return values from a behavioral element back to the caller.</body>
         </ownedComment>
       </ownedLiteral>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Enumeration" xmi:id="Core-Constructs-VisibilityKind" name="VisibilityKind">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Enumeration" xmi:id="Core-Constructs-VisibilityKind" name="VisibilityKind">
       <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-VisibilityKind-_ownedComment.0" annotatedElement="Core-Constructs-VisibilityKind">
         <body>VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.</body>
       </ownedComment>
@@ -1741,126 +1741,126 @@
           <body>A package element is owned by a namespace that is not a package, and is visible to elements that are in the same package as its owning namespace. Only named elements that are not owned by packages can be marked as having package visibility.  Any element marked as having package visibility is visible to all elements within the nearest enclosing package (given that other owning elements have proper visibility).  Outside the nearest enclosing package, an element marked as having package visibility is not visible.</body>
         </ownedComment>
       </ownedLiteral>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_type_typedElement" name="A_type_typedElement" memberEnd="Core-Constructs-TypedElement-type Core-Constructs-A_type_typedElement-typedElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_type_typedElement" name="A_type_typedElement" memberEnd="Core-Constructs-TypedElement-type Core-Constructs-A_type_typedElement-typedElement">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_type_typedElement-typedElement" name="typedElement" type="Core-Constructs-TypedElement" upper="*" lower="0" owningAssociation="Core-Constructs-A_type_typedElement" association="Core-Constructs-A_type_typedElement"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedAttribute_class" name="A_ownedAttribute_class" memberEnd="Core-Constructs-Class-ownedAttribute Core-Constructs-Property-class"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedOperation_class" name="A_ownedOperation_class" memberEnd="Core-Constructs-Class-ownedOperation Core-Constructs-Operation-class"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedEnd_owningAssociation" name="A_ownedEnd_owningAssociation" memberEnd="Core-Constructs-Association-ownedEnd Core-Constructs-Property-owningAssociation"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_attribute_classifier" name="A_attribute_classifier" memberEnd="Core-Constructs-Classifier-attribute Core-Constructs-A_attribute_classifier-classifier">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedAttribute_class" name="A_ownedAttribute_class" memberEnd="Core-Constructs-Class-ownedAttribute Core-Constructs-Property-class"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedOperation_class" name="A_ownedOperation_class" memberEnd="Core-Constructs-Class-ownedOperation Core-Constructs-Operation-class"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedEnd_owningAssociation" name="A_ownedEnd_owningAssociation" memberEnd="Core-Constructs-Association-ownedEnd Core-Constructs-Property-owningAssociation"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_attribute_classifier" name="A_attribute_classifier" memberEnd="Core-Constructs-Classifier-attribute Core-Constructs-A_attribute_classifier-classifier">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_attribute_classifier-classifier" name="classifier" type="Core-Constructs-Classifier" lower="0" owningAssociation="Core-Constructs-A_attribute_classifier" subsettedProperty="Core-Constructs-RedefinableElement-redefinitionContext" association="Core-Constructs-A_attribute_classifier"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_redefinedProperty_property" name="A_redefinedProperty_property" memberEnd="Core-Constructs-Property-redefinedProperty Core-Constructs-A_redefinedProperty_property-property">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_redefinedProperty_property" name="A_redefinedProperty_property" memberEnd="Core-Constructs-Property-redefinedProperty Core-Constructs-A_redefinedProperty_property-property">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_redefinedProperty_property-property" name="property" type="Core-Constructs-Property" upper="*" lower="0" owningAssociation="Core-Constructs-A_redefinedProperty_property" association="Core-Constructs-A_redefinedProperty_property"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_subsettedProperty_property" name="A_subsettedProperty_property" memberEnd="Core-Constructs-Property-subsettedProperty Core-Constructs-A_subsettedProperty_property-property">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_subsettedProperty_property" name="A_subsettedProperty_property" memberEnd="Core-Constructs-Property-subsettedProperty Core-Constructs-A_subsettedProperty_property-property">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_subsettedProperty_property-property" name="property" type="Core-Constructs-Property" upper="*" lower="0" owningAssociation="Core-Constructs-A_subsettedProperty_property" association="Core-Constructs-A_subsettedProperty_property"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_opposite_property" name="A_opposite_property" memberEnd="Core-Constructs-Property-opposite Core-Constructs-A_opposite_property-property">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_opposite_property" name="A_opposite_property" memberEnd="Core-Constructs-Property-opposite Core-Constructs-A_opposite_property-property">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_opposite_property-property" name="property" type="Core-Constructs-Property" lower="0" owningAssociation="Core-Constructs-A_opposite_property" association="Core-Constructs-A_opposite_property"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_superClass_class" name="A_superClass_class" memberEnd="Core-Constructs-Class-superClass Core-Constructs-A_superClass_class-class">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_superClass_class" name="A_superClass_class" memberEnd="Core-Constructs-Class-superClass Core-Constructs-A_superClass_class-class">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_superClass_class-class" name="class" type="Core-Constructs-Class" upper="*" lower="0" owningAssociation="Core-Constructs-A_superClass_class" association="Core-Constructs-A_superClass_class"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_endType_association" name="A_endType_association" memberEnd="Core-Constructs-Association-endType Core-Constructs-A_endType_association-association">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_endType_association" name="A_endType_association" memberEnd="Core-Constructs-Association-endType Core-Constructs-A_endType_association-association">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_endType_association-association" name="association" type="Core-Constructs-Association" upper="*" lower="0" owningAssociation="Core-Constructs-A_endType_association" association="Core-Constructs-A_endType_association"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedLiteral_enumeration" name="A_ownedLiteral_enumeration" memberEnd="Core-Constructs-Enumeration-ownedLiteral Core-Constructs-EnumerationLiteral-enumeration"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedAttribute_datatype" name="A_ownedAttribute_datatype" memberEnd="Core-Constructs-DataType-ownedAttribute Core-Constructs-Property-datatype"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedOperation_datatype" name="A_ownedOperation_datatype" memberEnd="Core-Constructs-DataType-ownedOperation Core-Constructs-Operation-datatype"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_raisedException_operation" name="A_raisedException_operation" memberEnd="Core-Constructs-Operation-raisedException Core-Constructs-A_raisedException_operation-operation">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedLiteral_enumeration" name="A_ownedLiteral_enumeration" memberEnd="Core-Constructs-Enumeration-ownedLiteral Core-Constructs-EnumerationLiteral-enumeration"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedAttribute_datatype" name="A_ownedAttribute_datatype" memberEnd="Core-Constructs-DataType-ownedAttribute Core-Constructs-Property-datatype"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedOperation_datatype" name="A_ownedOperation_datatype" memberEnd="Core-Constructs-DataType-ownedOperation Core-Constructs-Operation-datatype"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_raisedException_operation" name="A_raisedException_operation" memberEnd="Core-Constructs-Operation-raisedException Core-Constructs-A_raisedException_operation-operation">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_raisedException_operation-operation" name="operation" type="Core-Constructs-Operation" upper="*" lower="0" owningAssociation="Core-Constructs-A_raisedException_operation" association="Core-Constructs-A_raisedException_operation"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_redefinedOperation_operation" name="A_redefinedOperation_operation" memberEnd="Core-Constructs-Operation-redefinedOperation Core-Constructs-A_redefinedOperation_operation-operation">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_redefinedOperation_operation" name="A_redefinedOperation_operation" memberEnd="Core-Constructs-Operation-redefinedOperation Core-Constructs-A_redefinedOperation_operation-operation">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_redefinedOperation_operation-operation" name="operation" type="Core-Constructs-Operation" upper="*" lower="0" owningAssociation="Core-Constructs-A_redefinedOperation_operation" association="Core-Constructs-A_redefinedOperation_operation"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedParameter_ownerFormalParam" name="A_ownedParameter_ownerFormalParam" memberEnd="Core-Constructs-BehavioralFeature-ownedParameter Core-Constructs-A_ownedParameter_ownerFormalParam-ownerFormalParam">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedParameter_ownerFormalParam" name="A_ownedParameter_ownerFormalParam" memberEnd="Core-Constructs-BehavioralFeature-ownedParameter Core-Constructs-A_ownedParameter_ownerFormalParam-ownerFormalParam">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_ownedParameter_ownerFormalParam-ownerFormalParam" name="ownerFormalParam" type="Core-Constructs-BehavioralFeature" lower="0" owningAssociation="Core-Constructs-A_ownedParameter_ownerFormalParam" subsettedProperty="Core-Constructs-NamedElement-namespace" association="Core-Constructs-A_ownedParameter_ownerFormalParam"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_raisedException_behavioralFeature" name="A_raisedException_behavioralFeature" memberEnd="Core-Constructs-BehavioralFeature-raisedException Core-Constructs-A_raisedException_behavioralFeature-behavioralFeature">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_raisedException_behavioralFeature" name="A_raisedException_behavioralFeature" memberEnd="Core-Constructs-BehavioralFeature-raisedException Core-Constructs-A_raisedException_behavioralFeature-behavioralFeature">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_raisedException_behavioralFeature-behavioralFeature" name="behavioralFeature" type="Core-Constructs-BehavioralFeature" upper="*" lower="0" owningAssociation="Core-Constructs-A_raisedException_behavioralFeature" association="Core-Constructs-A_raisedException_behavioralFeature"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_importedMember_namespace" name="A_importedMember_namespace" memberEnd="Core-Constructs-Namespace-importedMember Core-Constructs-A_importedMember_namespace-namespace">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_importedMember_namespace" name="A_importedMember_namespace" memberEnd="Core-Constructs-Namespace-importedMember Core-Constructs-A_importedMember_namespace-namespace">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_importedMember_namespace-namespace" name="namespace" type="Core-Constructs-Namespace" upper="*" lower="0" owningAssociation="Core-Constructs-A_importedMember_namespace" association="Core-Constructs-A_importedMember_namespace"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_importedPackage_packageImport" name="A_importedPackage_packageImport" memberEnd="Core-Constructs-PackageImport-importedPackage Core-Constructs-A_importedPackage_packageImport-packageImport">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_importedPackage_packageImport" name="A_importedPackage_packageImport" memberEnd="Core-Constructs-PackageImport-importedPackage Core-Constructs-A_importedPackage_packageImport-packageImport">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_importedPackage_packageImport-packageImport" name="packageImport" type="Core-Constructs-PackageImport" upper="*" lower="0" owningAssociation="Core-Constructs-A_importedPackage_packageImport" association="Core-Constructs-A_importedPackage_packageImport"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_importedElement_elementImport" name="A_importedElement_elementImport" memberEnd="Core-Constructs-ElementImport-importedElement Core-Constructs-A_importedElement_elementImport-elementImport">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_importedElement_elementImport" name="A_importedElement_elementImport" memberEnd="Core-Constructs-ElementImport-importedElement Core-Constructs-A_importedElement_elementImport-elementImport">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_importedElement_elementImport-elementImport" name="elementImport" type="Core-Constructs-ElementImport" upper="*" lower="0" owningAssociation="Core-Constructs-A_importedElement_elementImport" association="Core-Constructs-A_importedElement_elementImport"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_elementImport_importingNamespace" name="A_elementImport_importingNamespace" memberEnd="Core-Constructs-Namespace-elementImport Core-Constructs-ElementImport-importingNamespace"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_packageImport_importingNamespace" name="A_packageImport_importingNamespace" memberEnd="Core-Constructs-Namespace-packageImport Core-Constructs-PackageImport-importingNamespace"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_packagedElement_owningPackage" name="A_packagedElement_owningPackage" memberEnd="Core-Constructs-Package-packagedElement Core-Constructs-A_packagedElement_owningPackage-owningPackage">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_elementImport_importingNamespace" name="A_elementImport_importingNamespace" memberEnd="Core-Constructs-Namespace-elementImport Core-Constructs-ElementImport-importingNamespace"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_packageImport_importingNamespace" name="A_packageImport_importingNamespace" memberEnd="Core-Constructs-Namespace-packageImport Core-Constructs-PackageImport-importingNamespace"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_packagedElement_owningPackage" name="A_packagedElement_owningPackage" memberEnd="Core-Constructs-Package-packagedElement Core-Constructs-A_packagedElement_owningPackage-owningPackage">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_packagedElement_owningPackage-owningPackage" name="owningPackage" type="Core-Constructs-Package" lower="0" owningAssociation="Core-Constructs-A_packagedElement_owningPackage" subsettedProperty="Core-Constructs-NamedElement-namespace" association="Core-Constructs-A_packagedElement_owningPackage"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedType_package" name="A_ownedType_package" memberEnd="Core-Constructs-Package-ownedType Core-Constructs-Type-package"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_memberEnd_association" name="A_memberEnd_association" memberEnd="Core-Constructs-Association-memberEnd Core-Constructs-Property-association"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_nestedPackage_nestingPackage" name="A_nestedPackage_nestingPackage" memberEnd="Core-Constructs-Package-nestedPackage Core-Constructs-Package-nestingPackage"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_type_operation" name="A_type_operation" memberEnd="Core-Constructs-Operation-type Core-Constructs-A_type_operation-operation">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedType_package" name="A_ownedType_package" memberEnd="Core-Constructs-Package-ownedType Core-Constructs-Type-package"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_memberEnd_association" name="A_memberEnd_association" memberEnd="Core-Constructs-Association-memberEnd Core-Constructs-Property-association"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_nestedPackage_nestingPackage" name="A_nestedPackage_nestingPackage" memberEnd="Core-Constructs-Package-nestedPackage Core-Constructs-Package-nestingPackage"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_type_operation" name="A_type_operation" memberEnd="Core-Constructs-Operation-type Core-Constructs-A_type_operation-operation">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_type_operation-operation" name="operation" type="Core-Constructs-Operation" upper="*" lower="0" owningAssociation="Core-Constructs-A_type_operation" association="Core-Constructs-A_type_operation"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_packageMerge_receivingPackage" name="A_packageMerge_receivingPackage" memberEnd="Core-Constructs-Package-packageMerge Core-Constructs-PackageMerge-receivingPackage"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_mergedPackage_packageMerge" name="A_mergedPackage_packageMerge" memberEnd="Core-Constructs-PackageMerge-mergedPackage Core-Constructs-A_mergedPackage_packageMerge-packageMerge">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_packageMerge_receivingPackage" name="A_packageMerge_receivingPackage" memberEnd="Core-Constructs-Package-packageMerge Core-Constructs-PackageMerge-receivingPackage"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_mergedPackage_packageMerge" name="A_mergedPackage_packageMerge" memberEnd="Core-Constructs-PackageMerge-mergedPackage Core-Constructs-A_mergedPackage_packageMerge-packageMerge">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_mergedPackage_packageMerge-packageMerge" name="packageMerge" type="Core-Constructs-PackageMerge" upper="*" lower="0" owningAssociation="Core-Constructs-A_mergedPackage_packageMerge" association="Core-Constructs-A_mergedPackage_packageMerge"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedElement_owner" name="A_ownedElement_owner" memberEnd="Core-Constructs-Element-ownedElement Core-Constructs-Element-owner"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_annotatedElement_comment" name="A_annotatedElement_comment" memberEnd="Core-Constructs-Comment-annotatedElement Core-Constructs-A_annotatedElement_comment-comment">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedElement_owner" name="A_ownedElement_owner" memberEnd="Core-Constructs-Element-ownedElement Core-Constructs-Element-owner"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_annotatedElement_comment" name="A_annotatedElement_comment" memberEnd="Core-Constructs-Comment-annotatedElement Core-Constructs-A_annotatedElement_comment-comment">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_annotatedElement_comment-comment" name="comment" type="Core-Constructs-Comment" upper="*" lower="0" owningAssociation="Core-Constructs-A_annotatedElement_comment" association="Core-Constructs-A_annotatedElement_comment"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_relatedElement_relationship" name="A_relatedElement_relationship" memberEnd="Core-Constructs-Relationship-relatedElement Core-Constructs-A_relatedElement_relationship-relationship">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_relatedElement_relationship" name="A_relatedElement_relationship" memberEnd="Core-Constructs-Relationship-relatedElement Core-Constructs-A_relatedElement_relationship-relationship">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_relatedElement_relationship-relationship" name="relationship" type="Core-Constructs-Relationship" upper="*" lower="0" owningAssociation="Core-Constructs-A_relatedElement_relationship" association="Core-Constructs-A_relatedElement_relationship"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_source_directedRelationship" name="A_source_directedRelationship" memberEnd="Core-Constructs-DirectedRelationship-source Core-Constructs-A_source_directedRelationship-directedRelationship">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_source_directedRelationship" name="A_source_directedRelationship" memberEnd="Core-Constructs-DirectedRelationship-source Core-Constructs-A_source_directedRelationship-directedRelationship">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_source_directedRelationship-directedRelationship" name="directedRelationship" type="Core-Constructs-DirectedRelationship" upper="*" lower="0" owningAssociation="Core-Constructs-A_source_directedRelationship" association="Core-Constructs-A_source_directedRelationship"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_target_directedRelationship" name="A_target_directedRelationship" memberEnd="Core-Constructs-DirectedRelationship-target Core-Constructs-A_target_directedRelationship-directedRelationship">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_target_directedRelationship" name="A_target_directedRelationship" memberEnd="Core-Constructs-DirectedRelationship-target Core-Constructs-A_target_directedRelationship-directedRelationship">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_target_directedRelationship-directedRelationship" name="directedRelationship" type="Core-Constructs-DirectedRelationship" upper="*" lower="0" owningAssociation="Core-Constructs-A_target_directedRelationship" association="Core-Constructs-A_target_directedRelationship"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_redefinitionContext_redefinableElement" name="A_redefinitionContext_redefinableElement" memberEnd="Core-Constructs-RedefinableElement-redefinitionContext Core-Constructs-A_redefinitionContext_redefinableElement-redefinableElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_redefinitionContext_redefinableElement" name="A_redefinitionContext_redefinableElement" memberEnd="Core-Constructs-RedefinableElement-redefinitionContext Core-Constructs-A_redefinitionContext_redefinableElement-redefinableElement">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_redefinitionContext_redefinableElement-redefinableElement" name="redefinableElement" type="Core-Constructs-RedefinableElement" upper="*" lower="0" owningAssociation="Core-Constructs-A_redefinitionContext_redefinableElement" association="Core-Constructs-A_redefinitionContext_redefinableElement"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_redefinedElement_redefinableElement" name="A_redefinedElement_redefinableElement" memberEnd="Core-Constructs-RedefinableElement-redefinedElement Core-Constructs-A_redefinedElement_redefinableElement-redefinableElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_redefinedElement_redefinableElement" name="A_redefinedElement_redefinableElement" memberEnd="Core-Constructs-RedefinableElement-redefinedElement Core-Constructs-A_redefinedElement_redefinableElement-redefinableElement">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_redefinedElement_redefinableElement-redefinableElement" name="redefinableElement" type="Core-Constructs-RedefinableElement" upper="*" lower="0" owningAssociation="Core-Constructs-A_redefinedElement_redefinableElement" association="Core-Constructs-A_redefinedElement_redefinableElement"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_feature_featuringClassifier" name="A_feature_featuringClassifier" memberEnd="Core-Constructs-Classifier-feature Core-Constructs-Feature-featuringClassifier"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_constrainedElement_constraint" name="A_constrainedElement_constraint" memberEnd="Core-Constructs-Constraint-constrainedElement Core-Constructs-A_constrainedElement_constraint-constraint">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_feature_featuringClassifier" name="A_feature_featuringClassifier" memberEnd="Core-Constructs-Classifier-feature Core-Constructs-Feature-featuringClassifier"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_constrainedElement_constraint" name="A_constrainedElement_constraint" memberEnd="Core-Constructs-Constraint-constrainedElement Core-Constructs-A_constrainedElement_constraint-constraint">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_constrainedElement_constraint-constraint" name="constraint" type="Core-Constructs-Constraint" upper="*" lower="0" owningAssociation="Core-Constructs-A_constrainedElement_constraint" association="Core-Constructs-A_constrainedElement_constraint"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_specification_owningConstraint" name="A_specification_owningConstraint" memberEnd="Core-Constructs-Constraint-specification Core-Constructs-A_specification_owningConstraint-owningConstraint">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_specification_owningConstraint" name="A_specification_owningConstraint" memberEnd="Core-Constructs-Constraint-specification Core-Constructs-A_specification_owningConstraint-owningConstraint">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_specification_owningConstraint-owningConstraint" name="owningConstraint" type="Core-Constructs-Constraint" lower="0" owningAssociation="Core-Constructs-A_specification_owningConstraint" subsettedProperty="Core-Constructs-Element-owner" association="Core-Constructs-A_specification_owningConstraint"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_general_classifier" name="A_general_classifier" memberEnd="Core-Constructs-Classifier-general Core-Constructs-A_general_classifier-classifier">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_general_classifier" name="A_general_classifier" memberEnd="Core-Constructs-Classifier-general Core-Constructs-A_general_classifier-classifier">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_general_classifier-classifier" name="classifier" type="Core-Constructs-Classifier" upper="*" lower="0" owningAssociation="Core-Constructs-A_general_classifier" association="Core-Constructs-A_general_classifier"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedMember_namespace" name="A_ownedMember_namespace" memberEnd="Core-Constructs-Namespace-ownedMember Core-Constructs-NamedElement-namespace"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_member_namespace" name="A_member_namespace" memberEnd="Core-Constructs-Namespace-member Core-Constructs-A_member_namespace-namespace">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedMember_namespace" name="A_ownedMember_namespace" memberEnd="Core-Constructs-Namespace-ownedMember Core-Constructs-NamedElement-namespace"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_member_namespace" name="A_member_namespace" memberEnd="Core-Constructs-Namespace-member Core-Constructs-A_member_namespace-namespace">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_member_namespace-namespace" name="namespace" type="Core-Constructs-Namespace" upper="*" lower="0" owningAssociation="Core-Constructs-A_member_namespace" association="Core-Constructs-A_member_namespace"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_operand_expression" name="A_operand_expression" memberEnd="Core-Constructs-Expression-operand Core-Constructs-A_operand_expression-expression">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_operand_expression" name="A_operand_expression" memberEnd="Core-Constructs-Expression-operand Core-Constructs-A_operand_expression-expression">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_operand_expression-expression" name="expression" type="Core-Constructs-Expression" lower="0" owningAssociation="Core-Constructs-A_operand_expression" subsettedProperty="Core-Constructs-Element-owner" association="Core-Constructs-A_operand_expression"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_navigableOwnedEnd_association" name="A_navigableOwnedEnd_association" memberEnd="Core-Constructs-Association-navigableOwnedEnd Core-Constructs-A_navigableOwnedEnd_association-association">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_navigableOwnedEnd_association" name="A_navigableOwnedEnd_association" memberEnd="Core-Constructs-Association-navigableOwnedEnd Core-Constructs-A_navigableOwnedEnd_association-association">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_navigableOwnedEnd_association-association" name="association" type="Core-Constructs-Association" lower="0" owningAssociation="Core-Constructs-A_navigableOwnedEnd_association" association="Core-Constructs-A_navigableOwnedEnd_association"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedParameter_operation" name="A_ownedParameter_operation" memberEnd="Core-Constructs-Operation-ownedParameter Core-Constructs-Parameter-operation"/>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedComment_owningElement" name="A_ownedComment_owningElement" memberEnd="Core-Constructs-Element-ownedComment Core-Constructs-A_ownedComment_owningElement-owningElement">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedParameter_operation" name="A_ownedParameter_operation" memberEnd="Core-Constructs-Operation-ownedParameter Core-Constructs-Parameter-operation"/>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedComment_owningElement" name="A_ownedComment_owningElement" memberEnd="Core-Constructs-Element-ownedComment Core-Constructs-A_ownedComment_owningElement-owningElement">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_ownedComment_owningElement-owningElement" name="owningElement" type="Core-Constructs-Element" lower="0" owningAssociation="Core-Constructs-A_ownedComment_owningElement" subsettedProperty="Core-Constructs-Element-owner" association="Core-Constructs-A_ownedComment_owningElement"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_inheritedMember_classifier" name="A_inheritedMember_classifier" memberEnd="Core-Constructs-Classifier-inheritedMember Core-Constructs-A_inheritedMember_classifier-classifier">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_inheritedMember_classifier" name="A_inheritedMember_classifier" memberEnd="Core-Constructs-Classifier-inheritedMember Core-Constructs-A_inheritedMember_classifier-classifier">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_inheritedMember_classifier-classifier" name="classifier" type="Core-Constructs-Classifier" upper="*" lower="0" owningAssociation="Core-Constructs-A_inheritedMember_classifier" association="Core-Constructs-A_inheritedMember_classifier"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_precondition_preContext" name="A_precondition_preContext" memberEnd="Core-Constructs-Operation-precondition Core-Constructs-A_precondition_preContext-preContext">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_precondition_preContext" name="A_precondition_preContext" memberEnd="Core-Constructs-Operation-precondition Core-Constructs-A_precondition_preContext-preContext">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_precondition_preContext-preContext" name="preContext" type="Core-Constructs-Operation" lower="0" owningAssociation="Core-Constructs-A_precondition_preContext" subsettedProperty="Core-Constructs-Constraint-context" association="Core-Constructs-A_precondition_preContext"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_postcondition_postContext" name="A_postcondition_postContext" memberEnd="Core-Constructs-Operation-postcondition Core-Constructs-A_postcondition_postContext-postContext">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_postcondition_postContext" name="A_postcondition_postContext" memberEnd="Core-Constructs-Operation-postcondition Core-Constructs-A_postcondition_postContext-postContext">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_postcondition_postContext-postContext" name="postContext" type="Core-Constructs-Operation" lower="0" owningAssociation="Core-Constructs-A_postcondition_postContext" subsettedProperty="Core-Constructs-Constraint-context" association="Core-Constructs-A_postcondition_postContext"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_bodyCondition_bodyContext" name="A_bodyCondition_bodyContext" memberEnd="Core-Constructs-Operation-bodyCondition Core-Constructs-A_bodyCondition_bodyContext-bodyContext">
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_bodyCondition_bodyContext" name="A_bodyCondition_bodyContext" memberEnd="Core-Constructs-Operation-bodyCondition Core-Constructs-A_bodyCondition_bodyContext-bodyContext">
       <ownedEnd xmi:type="cmof:Property" xmi:id="Core-Constructs-A_bodyCondition_bodyContext-bodyContext" name="bodyContext" type="Core-Constructs-Operation" lower="0" owningAssociation="Core-Constructs-A_bodyCondition_bodyContext" subsettedProperty="Core-Constructs-Constraint-context" association="Core-Constructs-A_bodyCondition_bodyContext"/>
-    </ownedMember>
-    <ownedMember xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedRule_context" name="A_ownedRule_context" memberEnd="Core-Constructs-Namespace-ownedRule Core-Constructs-Constraint-context"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="Core-Constructs-A_ownedRule_context" name="A_ownedRule_context" memberEnd="Core-Constructs-Namespace-ownedRule Core-Constructs-Constraint-context"/>
   </cmof:Package>
   <cmof:Tag xmi:id="_3" name="org.omg.xmi.nsPrefix" value="cmof" element="_0"/>
   <cmof:Tag xmi:id="_4" name="org.omg.xmi.nsURI" value="http://schema.omg.org/spec/MOF/2.0/cmof.xml" element="_0"/>
