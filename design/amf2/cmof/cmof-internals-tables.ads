@@ -6,6 +6,7 @@ private package Cmof.Internals.Tables is
 
    type Member_Kinds is
     (M_None,
+     M_Element,
      M_Collection_Of_Element,
      M_Boolean,
      M_Integer,
@@ -15,6 +16,9 @@ private package Cmof.Internals.Tables is
       case Kind is
          when M_None =>
             null;
+
+         when M_Element =>
+            Element : CMOF_Element;
 
          when M_Collection_Of_Element =>
             Collection : Collection_Of_CMOF_Element;
@@ -55,29 +59,52 @@ private package Cmof.Internals.Tables is
    --   - connection slot to connection slot
    --   - ? element and collection?
 
-   type Link_Kinds is (L_None, L_Slot_Slot, L_Slot_Collection, L_Collection_Slot, L_Collection_Collection);
+   type Link_Kinds is
+    (L_None,
+     L_Single_Single,
+     L_Single_Multiple,
+     L_Multiple_Single,
+     L_Multiple_Multiple);
 
    type Link_Record (Kind : Link_Kinds := L_None) is record
-      First_Element     : Cmof_Element;
-      First_Property    : Cmof_Element;
---      First_Collection  : Collection_Of_CMOF_Element;
-      Second_Element    : Cmof_Element;
-      Second_Property   : Cmof_Element;
---      Second_Collection : Collection_Of_CMOF_Element;
-
       case Kind is
          when L_None =>
             null;
 
-         when L_Slot_Slot | L_Slot_Collection =>
-            null;
-
-         when L_Collection_Slot | L_Collection_Collection =>
-            null;
---  First_Collection_Element  : Collection_Element_Identifier;
---  Second_Collection_Element : Collection_Element_Identifier;
+         when L_Single_Single
+           | L_Single_Multiple
+           | L_Multiple_Single
+           | L_Multiple_Multiple
+         =>
+            Association    : CMOF_Association;
+            First_Element  : CMOF_Element;
+            Second_Element : CMOF_Element;
       end case;
    end record;
+
+--   type Link_Kinds is (L_None, L_Slot_Slot, L_Slot_Collection, L_Collection_Slot, L_Collection_Collection);
+--
+--   type Link_Record (Kind : Link_Kinds := L_None) is record
+--      First_Element     : Cmof_Element;
+--      First_Property    : Cmof_Element;
+----      First_Collection  : Collection_Of_CMOF_Element;
+--      Second_Element    : Cmof_Element;
+--      Second_Property   : Cmof_Element;
+----      Second_Collection : Collection_Of_CMOF_Element;
+--
+--      case Kind is
+--         when L_None =>
+--            null;
+--
+--         when L_Slot_Slot | L_Slot_Collection =>
+--            null;
+--
+--         when L_Collection_Slot | L_Collection_Collection =>
+--            null;
+----  First_Collection_Element  : Collection_Element_Identifier;
+----  Second_Collection_Element : Collection_Element_Identifier;
+--      end case;
+--   end record;
 
    type Collection_Element_Identifier is new Natural;
 
@@ -97,7 +124,7 @@ private package Cmof.Internals.Tables is
 --   type Collection_Element_Kinds is (CE_None, 
 
    type Collection_Element_Record is record
-      Collection : Collection_Of_Cmof_Element;
+--      Collection : Collection_Of_Cmof_Element;
       Element    : CMOF_Element;
       Previous   : Collection_Element_Identifier;
       Next       : Collection_Element_Identifier;
@@ -138,5 +165,15 @@ private package Cmof.Internals.Tables is
    --  Allocates specified number of collections of CMOF::Element to manage
    --  slots for object's properties. It also initialize collection for
    --  'default' slot.
+
+   procedure Internal_Create_Link
+    (Association     : CMOF_Association;
+     First_Element   : CMOF_Element;
+     First_Property  : CMOF_Property;
+     Second_Element  : CMOF_Element;
+     Second_Property : CMOF_Property);
+   --  Creates link between two elements. It uses only Property::upper
+   --  attribute and intended to be used to construct initial CMOF
+   --  metametamodel only.
 
 end Cmof.Internals.Tables;
