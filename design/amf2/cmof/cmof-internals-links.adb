@@ -135,7 +135,7 @@ package body CMOF.Internals.Links is
             Elements.Table (First_Element).Member
              (Member_Offset
                (Elements.Table (First_Element).Kind,
-                Second_Property)).Element := Second_Element;
+                First_Property)).Element := Second_Element;
          end if;
 
          if Second_Property not in Cmof_Collection_Of_Element_Property then
@@ -175,7 +175,7 @@ package body CMOF.Internals.Links is
             Elements.Table (First_Element).Member
              (Member_Offset
                (Elements.Table (First_Element).Kind,
-                Second_Property)).Element := Second_Element;
+                First_Property)).Element := Second_Element;
          end if;
 
          if Second_Property not in Cmof_Non_Collection_Of_Element_Property then
