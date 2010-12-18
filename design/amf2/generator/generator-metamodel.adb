@@ -49,6 +49,9 @@ package body Generator.Metamodel is
       procedure Generate_Class_Class_Links (Position : Class_Sets.Cursor);
       --  Generates link establishment for class <-> class association.
 
+      procedure Generate_Package_Class_Links (Position : Class_Sets.Cursor);
+      --  Generates link establishment for package <-> class association.
+
       -----------------------------------------
       -- Generate_Association_Initialization --
       -----------------------------------------
@@ -235,6 +238,24 @@ package body Generator.Metamodel is
          Class.Properties.Iterate (Generate_Class_Property_Link'Access);
       end Generate_Class_Property_Links;
 
+      ----------------------------------
+      -- Generate_Package_Class_Links --
+      ----------------------------------
+
+      procedure Generate_Package_Class_Links (Position : Class_Sets.Cursor) is
+         Class : constant Class_Access := Class_Sets.Element (Position);
+
+      begin
+         --  Generates link between package and class.
+
+         Put_Line ("   Internal_Create_Link");
+         Put_Line ("    (MA_Cmof_Packaged_Element_Owning_Package,");
+         Put_Line ("     MM_CMOF,");
+         Put_Line ("     MP_Cmof_Package_Packaged_Element,");
+         Put_Line ("     " & Constant_Name_In_Metamodel (Class) & ",");
+         Put_Line ("     MP_Cmof_Packaged_Element_Owning_Package);");
+      end Generate_Package_Class_Links;
+
       --------------------------------------
       -- Generate_Property_Initialization --
       --------------------------------------
@@ -302,6 +323,13 @@ package body Generator.Metamodel is
       Put_Line ("begin");
       Put_Line ("   Elements.Set_Last (Last_Cmof_Metaelement);");
       New_Line;
+      Put_Line ("   --  Initialization of CMOF package.");
+      New_Line;
+      Put_Line ("   Initialize_Package (MM_CMOF);");
+      Put_Line
+       ("   Internal_Set_Name"
+          & " (MM_CMOF, League.Strings.To_Universal_String (""CMOF""));");
+      New_Line;
       Put_Line ("   --  Initialization of CMOF classes.");
       New_Line;
       Classes.Iterate (Generate_Class_Initialization'Access);
@@ -327,6 +355,10 @@ package body Generator.Metamodel is
       Put_Line ("   --  Link establishment for class <-> class");
       New_Line;
       Classes.Iterate (Generate_Class_Class_Links'Access);
+      New_Line;
+      Put_Line ("   --  Link establishment for package <-> class");
+      New_Line;
+      Classes.Iterate (Generate_Package_Class_Links'Access);
       Put_Line ("end Cmof.Internals.Setup;");
    end Generate_Metamodel_Implementation;
 
@@ -505,7 +537,7 @@ package body Generator.Metamodel is
          Put ("   MP_Cmof_" & To_String (Element));
          Set_Col (47);
          Put_Line
-           (" : constant Cmof_Property :="
+           (" : constant CMOF_Property :="
               & Positive'Image (Last_Cmof_Element)
               & ";");
       end Generate_Property;
@@ -515,10 +547,21 @@ package body Generator.Metamodel is
       Associations.Iterate (Analyze_Association'Access);
 
       New_Line;
-      Put_Line ("package Cmof.Internals.Metamodel is");
+      Put_Line ("package CMOF.Internals.Metamodel is");
 
       New_Line;
       Put_Line ("   pragma Pure;");
+
+      --  Merged CMOF model has only one package, it is hardcoded here.
+
+      New_Line;
+      Put_Line ("   --------------");
+      Put_Line ("   -- Packages --");
+      Put_Line ("   --------------");
+      New_Line;
+      Last_Cmof_Element := Last_Cmof_Element + 1;
+      Put_Line ("   MM_CMOF : constant CMOF_Package := 1;");
+
       New_Line;
       Put_Line ("   -------------");
       Put_Line ("   -- Classes --");
@@ -579,7 +622,7 @@ package body Generator.Metamodel is
            & Positive'Image (Last_Non_Collection_Of_Element)
            & ";");
       New_Line;
-      Put_Line ("end Cmof.Internals.Metamodel;");
+      Put_Line ("end CMOF.Internals.Metamodel;");
    end Generate_Metamodel_Specification;
 
 end Generator.Metamodel;
