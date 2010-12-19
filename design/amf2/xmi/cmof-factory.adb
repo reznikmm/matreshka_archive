@@ -103,6 +103,31 @@ package body CMOF.Factory is
       elsif Data_Type = MC_CMOF_String then
          return (AMF.Values.Value_String, Image);
 
+      elsif Data_Type = MC_CMOF_Parameter_Direction_Kind then
+         if Image = League.Strings.To_Universal_String ("in") then
+            return
+             (AMF.Values.Value_CMOF_Parameter_Direction_Kind,
+              CMOF.In_Direction);
+
+         elsif Image = League.Strings.To_Universal_String ("inout") then
+            return
+             (AMF.Values.Value_CMOF_Parameter_Direction_Kind,
+              CMOF.In_Out_Direction);
+
+         elsif Image = League.Strings.To_Universal_String ("out") then
+            return
+             (AMF.Values.Value_CMOF_Parameter_Direction_Kind,
+              CMOF.Out_Direction);
+
+         elsif Image = League.Strings.To_Universal_String ("return") then
+            return
+             (AMF.Values.Value_CMOF_Parameter_Direction_Kind,
+              CMOF.Return_Direction);
+
+         else
+            raise Constraint_Error;
+         end if;
+
       else
          raise Program_Error with "Unknown CMOF data type";
       end if;

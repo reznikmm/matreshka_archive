@@ -1,3 +1,4 @@
+with AMF.Values;
 
 package CMOF.Internals.Reflection is
 
@@ -6,5 +7,10 @@ package CMOF.Internals.Reflection is
 --   function Get
 --    (Self     : CMOF_Element;
 --     Property : CMOF_Property) return Collection_Of_CMOF_Element;
+
+   procedure Set
+    (Self     : CMOF_Element;
+     Property : CMOF_Property;
+     Value    : AMF.Values.Value);
 
 end CMOF.Internals.Reflection;

@@ -2,6 +2,7 @@
 
 with Ada.Wide_Wide_Text_IO;
 
+with AMF.Values;
 with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;
@@ -9,6 +10,7 @@ with CMOF.Factory;
 with CMOF.Named_Elements;
 with CMOF.Properties;
 with CMOF.Reflection;
+with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
 
 package body XMI.Handlers is
@@ -189,6 +191,7 @@ package body XMI.Handlers is
       use CMOF.Named_Elements;
       use CMOF.Properties;
       use CMOF.Reflection;
+      use CMOF.Typed_Elements;
 
       Name        : League.Strings.Universal_String;
       Meta        : CMOF.CMOF_Element;
@@ -197,6 +200,9 @@ package body XMI.Handlers is
       Association : CMOF_Association;
 
       procedure Dump (Class : CMOF_Class);
+
+      procedure Set_Attribute
+       (Property : CMOF_Property; Value : League.Strings.Universal_String);
 
       procedure Dump (Class : CMOF_Class) is
          P : constant Ordered_Set_Of_CMOF_Property
@@ -215,6 +221,31 @@ package body XMI.Handlers is
          end loop;
       end Dump;
 
+      -------------------
+      -- Set_Attribute --
+      -------------------
+
+      procedure Set_Attribute
+       (Property : CMOF_Property; Value : League.Strings.Universal_String) is
+      begin
+         if Property = Null_CMOF_Element then
+            raise Program_Error with "Unknown attribute";
+         end if;
+
+         if Get_Type (Property) = Null_CMOF_Element then
+            raise Program_Error with "Type not specified";
+         end if;
+
+         if CMOF.XMI_Helper.Is_Data_Type (Get_Type (Property)) then
+            Set
+             (Self.Current,
+              Property,
+              CMOF.Factory.Create_From_String (Get_Type (Property), Value));
+--         else
+--            Put_Line ("not supported");
+         end if;
+      end Set_Attribute;
+
    begin
       if Namespace_URI.Is_Empty then
          Put_Line (Qualified_Name.To_Wide_Wide_String);
@@ -225,57 +256,67 @@ package body XMI.Handlers is
            Resolve_Owned_Attribute
             (Get_Meta_Class (Self.Current), Qualified_Name);
 
-         if Property /= Null_CMOF_Element then
-            Association := Get_Association (Property);
+         if Property = Null_CMOF_Element then
+            raise Program_Error;
+         end if;
 
-            if Association /= Null_CMOF_Element then
-               if Attributes.Index (XMI_Namespace, Type_Name) /= 0 then
-                  Name := Attributes.Value (XMI_Namespace, Type_Name);
-                  Meta :=
-                    CMOF.XMI_Helper.Resolve
-                     (Name.Slice (Index (Name, ':') + 1, Name.Length));
+         Association := Get_Association (Property);
 
-                  if Meta = Null_CMOF_Element then
-                     raise Program_Error;
-                  end if;
+         if Association /= Null_CMOF_Element then
+            if Attributes.Index (XMI_Namespace, Type_Name) /= 0 then
+               Name := Attributes.Value (XMI_Namespace, Type_Name);
+               Meta :=
+                 CMOF.XMI_Helper.Resolve
+                  (Name.Slice (Index (Name, ':') + 1, Name.Length));
 
-               else
+               if Meta = Null_CMOF_Element then
                   raise Program_Error;
                end if;
 
-               New_Element := CMOF.Factory.Create (Meta);
+            else
+               raise Program_Error;
+            end if;
 
-               if Element (Get_Member_End (Association), 1) = Property then
-                  CMOF.Factory.Create_Link (Association, Self.Current, New_Element);
+            New_Element := CMOF.Factory.Create (Meta);
+
+            if Element (Get_Member_End (Association), 1) = Property then
+               CMOF.Factory.Create_Link (Association, Self.Current, New_Element);
+
+            else
+               CMOF.Factory.Create_Link (Association, New_Element, Self.Current);
+            end if;
+
+            Self.Stack.Append (Self.Current);
+            Self.Current := New_Element;
+
+            for J in 1 .. Attributes.Length loop
+               if Attributes.Namespace_URI (J).Is_Empty then
+                  Put_Line
+                   ("  "
+                      & Attributes.Qualified_Name (J).To_Wide_Wide_String
+                      & "  "
+                      & Attributes.Value (J).To_Wide_Wide_String);
+--                  Dump (Get_Meta_Class (Self.Current));
+                  Set_Attribute
+                   (CMOF.XMI_Helper.Resolve_Attribute
+                     (Meta, Attributes.Qualified_Name (J)),
+                    Attributes.Value (J));
+
+               elsif Attributes.Namespace_URI (J) = XMI_Namespace then
+                  null;
 
                else
-                  CMOF.Factory.Create_Link (Association, New_Element, Self.Current);
+                  Put_Line
+                   ("  "
+                      & Attributes.Namespace_URI (J).To_Wide_Wide_String
+                      & "  "
+                      & Attributes.Local_Name (J).To_Wide_Wide_String
+                      & "  "
+                      & Attributes.Value (J).To_Wide_Wide_String);
                end if;
-
-               Self.Stack.Append (Self.Current);
-               Self.Current := New_Element;
-
-               for J in 1 .. Attributes.Length loop
-                  if Attributes.Namespace_URI (J).Is_Empty then
-                     Put_Line
-                      ("  "
-                         & Attributes.Qualified_Name (J).To_Wide_Wide_String
-                         & "  "
-                         & Attributes.Value (J).To_Wide_Wide_String);
-
-                  else
-                     Put_Line
-                      ("  "
-                         & Attributes.Namespace_URI (J).To_Wide_Wide_String
-                         & "  "
-                         & Attributes.Local_Name (J).To_Wide_Wide_String
-                         & "  "
-                         & Attributes.Value (J).To_Wide_Wide_String);
-                  end if;
-               end loop;
-            else
-               Self.Skip := Self.Skip + 1;
-            end if;
+            end loop;
+         else
+            Self.Skip := Self.Skip + 1;
          end if;
 
       elsif Namespace_URI = CMOF_Namespace then
