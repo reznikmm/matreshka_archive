@@ -562,7 +562,7 @@ package body Generator.Attributes is
                        ("Is_"
                           & To_Ada_Identifier (Property.Owned_Class.Name)
                           & " (Self) then");
-                     Generate_Assignment_Statement (First_Property, 10);
+                     Generate_Assignment_Statement (Property, 10);
                      Property_Vectors.Next (Position);
                   end loop;
 
