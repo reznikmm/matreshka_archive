@@ -169,16 +169,16 @@ package body Cmof.Internals.Attributes is
           (Elements.Table (Self).Member
             (Member_Offset
               (Elements.Table (Self).Kind,
-               MP_Cmof_Comment_Body)).String_Value);
+               MP_Cmof_Opaque_Expression_Body)).String_Value);
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-               MP_Cmof_Comment_Body)).String_Value := League.Strings.Internals.Get_Shared (To);
+               MP_Cmof_Opaque_Expression_Body)).String_Value := League.Strings.Internals.Get_Shared (To);
          Matreshka.Internals.Strings.Reference
           (Elements.Table (Self).Member
             (Member_Offset
               (Elements.Table (Self).Kind,
-               MP_Cmof_Comment_Body)).String_Value);
+               MP_Cmof_Opaque_Expression_Body)).String_Value);
       end if;
    end Internal_Set_Body;
 
@@ -253,7 +253,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-             MP_Cmof_Operation_Class)).Element := To;
+             MP_Cmof_Property_Class)).Element := To;
       end if;
    end Internal_Set_Class;
 
@@ -344,7 +344,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-             MP_Cmof_Operation_Datatype)).Element := To;
+             MP_Cmof_Property_Datatype)).Element := To;
       end if;
    end Internal_Set_Datatype;
 
@@ -403,16 +403,16 @@ package body Cmof.Internals.Attributes is
           (Elements.Table (Self).Member
             (Member_Offset
               (Elements.Table (Self).Kind,
-               MP_Cmof_Parameter_Default)).String_Value);
+               MP_Cmof_Property_Default)).String_Value);
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-               MP_Cmof_Parameter_Default)).String_Value := League.Strings.Internals.Get_Shared (To);
+               MP_Cmof_Property_Default)).String_Value := League.Strings.Internals.Get_Shared (To);
          Matreshka.Internals.Strings.Reference
           (Elements.Table (Self).Member
             (Member_Offset
               (Elements.Table (Self).Kind,
-               MP_Cmof_Parameter_Default)).String_Value);
+               MP_Cmof_Property_Default)).String_Value);
       end if;
    end Internal_Set_Default;
 
@@ -664,7 +664,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-             MP_Cmof_Element_Import_Importing_Namespace)).Element := To;
+             MP_Cmof_Package_Import_Importing_Namespace)).Element := To;
       end if;
    end Internal_Set_Importing_Namespace;
 
@@ -784,7 +784,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-             MP_Cmof_Association_Is_Derived)).Boolean_Value := To;
+             MP_Cmof_Property_Is_Derived)).Boolean_Value := To;
       end if;
    end Internal_Set_Is_Derived;
 
@@ -917,7 +917,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-             MP_Cmof_Multiplicity_Element_Is_Ordered)).Boolean_Value := To;
+             MP_Cmof_Operation_Is_Ordered)).Boolean_Value := To;
       end if;
    end Internal_Set_Is_Ordered;
 
@@ -1021,7 +1021,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-             MP_Cmof_Multiplicity_Element_Is_Unique)).Boolean_Value := To;
+             MP_Cmof_Operation_Is_Unique)).Boolean_Value := To;
       end if;
    end Internal_Set_Is_Unique;
 
@@ -1079,7 +1079,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-             MP_Cmof_Multiplicity_Element_Lower)).Integer_Value := To;
+             MP_Cmof_Operation_Lower)).Integer_Value := To;
       end if;
    end Internal_Set_Lower;
 
@@ -1949,7 +1949,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-             MP_Cmof_Operation_Type)).Element := To;
+             MP_Cmof_Typed_Element_Type)).Element := To;
       end if;
    end Internal_Set_Type;
 
@@ -1995,7 +1995,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-             MP_Cmof_Multiplicity_Element_Upper)).Natural_Value := To;
+             MP_Cmof_Operation_Upper)).Natural_Value := To;
       end if;
    end Internal_Set_Upper;
 
