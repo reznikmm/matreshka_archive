@@ -95,14 +95,17 @@ package body CMOF.Internals.Reflection is
 
       procedure Set_CMOF_Primitive_Type;
 
-      -----------------------------
+      --------------------------
       -- Set_CMOF_Association --
-      -----------------------------
+      --------------------------
 
       procedure Set_CMOF_Association is
       begin
          if Property = MP_Cmof_Named_Element_Name then
             Internal_Set_Name (Self, Value.String_Value);
+
+         elsif Property = MP_Cmof_Association_Is_Derived then
+            Internal_Set_Is_Derived (Self, CMOF_Boolean (Value.Boolean_Value));
 
          else
             raise Program_Error
@@ -215,11 +218,16 @@ package body CMOF.Internals.Reflection is
 
       procedure Set_CMOF_Package is
       begin
+         if Property = MP_Cmof_Named_Element_Name then
+            Internal_Set_Name (Self, Value.String_Value);
+
+         else
             raise Program_Error
               with
                 Ada.Characters.Conversions.To_String (Internal_Get_Name (Get_Meta_Class (Self)).To_Wide_Wide_String)
                   & "::"
                   & Ada.Characters.Conversions.To_String (Internal_Get_Name (Property).To_Wide_Wide_String);
+         end if;
       end Set_CMOF_Package;
 
       ------------------------
@@ -316,6 +324,10 @@ package body CMOF.Internals.Reflection is
 
          elsif Property = MP_Cmof_Multiplicity_Element_Is_Unique then
             Internal_Set_Is_Unique (Self, CMOF_Boolean (Value.Boolean_Value));
+
+         elsif Property = MP_Cmof_Named_Element_Visibility then
+            null;
+            --  XXX Not supported by code generator.
 
          else
             raise Program_Error

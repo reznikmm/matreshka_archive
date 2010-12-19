@@ -128,6 +128,31 @@ package body CMOF.Factory is
             raise Constraint_Error;
          end if;
 
+      elsif Data_Type = MC_CMOF_Visibility_Kind then
+         if Image = League.Strings.To_Universal_String ("public") then
+            return
+             (AMF.Values.Value_CMOF_Visibility_Kind,
+              CMOF.Public_Visibility);
+
+         elsif Image = League.Strings.To_Universal_String ("private") then
+            return
+             (AMF.Values.Value_CMOF_Visibility_Kind,
+              CMOF.Private_Visibility);
+
+         elsif Image = League.Strings.To_Universal_String ("protected") then
+            return
+             (AMF.Values.Value_CMOF_Visibility_Kind,
+              CMOF.Protected_Visibility);
+
+         elsif Image = League.Strings.To_Universal_String ("package") then
+            return
+             (AMF.Values.Value_CMOF_Visibility_Kind,
+              CMOF.Package_Visibility);
+
+         else
+            raise Constraint_Error;
+         end if;
+
       else
          raise Program_Error with "Unknown CMOF data type";
       end if;

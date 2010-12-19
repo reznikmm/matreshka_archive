@@ -291,6 +291,7 @@ package body XMI.Handlers is
 
             for J in 1 .. Attributes.Length loop
                if Attributes.Namespace_URI (J).Is_Empty then
+                  if Attributes.Qualified_Name (J) /= League.Strings.To_Universal_String ("href") then
                   Put_Line
                    ("  "
                       & Attributes.Qualified_Name (J).To_Wide_Wide_String
@@ -301,6 +302,7 @@ package body XMI.Handlers is
                    (CMOF.XMI_Helper.Resolve_Attribute
                      (Meta, Attributes.Qualified_Name (J)),
                     Attributes.Value (J));
+                  end if;
 
                elsif Attributes.Namespace_URI (J) = XMI_Namespace then
                   null;
