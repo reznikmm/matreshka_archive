@@ -61,7 +61,9 @@ package AMF.Values is
      Value_Optional_Integer,
      Value_Optional_Unlimited_Natural,
      Value_Element,
-     Value_Collection_Of_Element);
+     Value_Collection_Of_Element,
+     Value_CMOF_Parameter_Direction_Kind,
+     Value_CMOF_Visibility_Kind);
 
    type Value (Kind : Value_Kinds := Value_None) is record
       case Kind is
@@ -97,6 +99,12 @@ package AMF.Values is
 
          when Value_Collection_Of_Element =>
             Collection_Value : CMOF.Collection_Of_CMOF_Element;
+
+         when Value_CMOF_Parameter_Direction_Kind =>
+            Parameter_Direction_Value : CMOF.CMOF_Parameter_Direction_Kind;
+
+         when Value_CMOF_Visibility_Kind =>
+            Visibility_Value : CMOF.CMOF_Visibility_Kind;
       end case;
    end record;
 

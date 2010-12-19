@@ -9,6 +9,18 @@ package Cmof is
      new Interfaces.Integer_32 range 0 .. Interfaces.Integer_32'Last;
    type Cmof_Boolean is new Boolean;
 
+   type CMOF_Parameter_Direction_Kind is
+    (In_Direction,
+     In_Out_Direction,
+     Out_Direction,
+     Return_Direction);
+
+   type CMOF_Visibility_Kind is
+    (Public_Visibility,
+     Private_Visibility,
+     Protected_Visibility,
+     Package_Visibility);
+
    type Collection_Of_CMOF_Element is private;
 
    subtype Set_Of_CMOF_Class is Collection_Of_CMOF_Element;
