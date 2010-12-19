@@ -263,6 +263,32 @@ package body Generator.Metamodel is
          Put_Line ("     MP_Cmof_Packaged_Element_Owning_Package);");
       end Generate_Package_Class_Links;
 
+      --------------------------------------------
+      -- Generate_Primitive_Type_Initialization --
+      --------------------------------------------
+
+      procedure Generate_Primitive_Type_Initialization
+       (Position : Primitive_Type_Sets.Cursor)
+      is
+         Primitive_Type : constant Primitive_Type_Access
+           := Primitive_Type_Sets.Element (Position);
+
+      begin
+         Put_Line
+          ("   Initialize_Primitive_Type ("
+             & Constant_Name_In_Metamodel (Primitive_Type)
+             & ");");
+         Put_Line ("   Internal_Set_Name");
+         Put_Line
+          ("    ("
+             & Constant_Name_In_Metamodel (Primitive_Type)
+             & ",");
+         Put_Line
+          ("     League.Strings.To_Universal_String ("""
+             & To_String (Primitive_Type.Name)
+             & """));");
+      end Generate_Primitive_Type_Initialization;
+
       --------------------------------------
       -- Generate_Property_Initialization --
       --------------------------------------
@@ -339,6 +365,10 @@ package body Generator.Metamodel is
        ("   Internal_Set_Name"
           & " (MM_CMOF, League.Strings.To_Universal_String (""CMOF""));");
       New_Line;
+      Put_Line ("   --  Initialization of CMOF primitive types.");
+      New_Line;
+      Primitive_Types.Iterate (Generate_Primitive_Type_Initialization'Access);
+      New_Line;
       Put_Line ("   --  Initialization of CMOF classes.");
       New_Line;
       Classes.Iterate (Generate_Class_Initialization'Access);
@@ -386,6 +416,9 @@ package body Generator.Metamodel is
       procedure Analyze_Class (Position : Class_Sets.Cursor);
       --  Compute maximum length of the class's name; compute set of
       --  properties.
+
+      procedure Generate_Primitive_Type
+       (Position : Primitive_Type_Sets.Cursor);
 
       Max_Class_Length                     : Ada.Text_IO.Count := 0;
       First_Collection_Of_Element          : Natural := 0;
@@ -533,6 +566,26 @@ package body Generator.Metamodel is
               & ";");
       end Generate_Class;
 
+      -----------------------------
+      -- Generate_Primitive_Type --
+      -----------------------------
+
+      procedure Generate_Primitive_Type
+       (Position : Primitive_Type_Sets.Cursor) is
+      begin
+         Last_Cmof_Element := Last_Cmof_Element + 1;
+         Put
+          ("   "
+             & Constant_Name_In_Metamodel
+                (Primitive_Type_Sets.Element (Position)));
+         Set_Col (29);
+--         Set_Col (Max_Primitive_Type_Length + 12);
+         Put_Line
+           (" : constant CMOF_Primitive_Type :="
+              & Positive'Image (Last_Cmof_Element)
+              & ";");
+      end Generate_Primitive_Type;
+
       -----------------------
       -- Generate_Property --
       -----------------------
@@ -570,6 +623,13 @@ package body Generator.Metamodel is
       New_Line;
       Last_Cmof_Element := Last_Cmof_Element + 1;
       Put_Line ("   MM_CMOF : constant CMOF_Package := 1;");
+
+      New_Line;
+      Put_Line ("   ---------------------");
+      Put_Line ("   -- Primitive types --");
+      Put_Line ("   ---------------------");
+      New_Line;
+      Primitive_Types.Iterate (Generate_Primitive_Type'Access);
 
       New_Line;
       Put_Line ("   -------------");

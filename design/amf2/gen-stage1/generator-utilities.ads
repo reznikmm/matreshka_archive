@@ -13,6 +13,10 @@ package Generator.Utilities is
     (Element : not null Property_Access) return String;
    --  Returns name of corresponding constant in meta model package.
 
+   function Constant_Name_In_Metamodel
+    (Element : not null Primitive_Type_Access) return String;
+   --  Returns name of corresponding constant in meta model package.
+
    function Has_Boolean_Type
     (Property : not null Property_Access) return Boolean;
 
