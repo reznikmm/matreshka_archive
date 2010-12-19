@@ -14,7 +14,7 @@ package body Cmof.Internals.Setup is
    use Cmof.Internals.Metamodel;
    use Cmof.Internals.Tables;
 
-   Last_Cmof_Metaelement : constant Cmof_Element := 215;
+   Last_Cmof_Metaelement : constant Cmof_Element := 219;
 
 begin
    Elements.Set_Last (Last_Cmof_Metaelement);
@@ -23,6 +23,25 @@ begin
 
    Initialize_Package (MM_CMOF);
    Internal_Set_Name (MM_CMOF, League.Strings.To_Universal_String ("CMOF"));
+
+   --  Initialization of CMOF primitive types.
+
+   Initialize_Primitive_Type (MC_CMOF_Boolean);
+   Internal_Set_Name
+    (MC_CMOF_Boolean,
+     League.Strings.To_Universal_String ("Boolean"));
+   Initialize_Primitive_Type (MC_CMOF_Integer);
+   Internal_Set_Name
+    (MC_CMOF_Integer,
+     League.Strings.To_Universal_String ("Integer"));
+   Initialize_Primitive_Type (MC_CMOF_String);
+   Internal_Set_Name
+    (MC_CMOF_String,
+     League.Strings.To_Universal_String ("String"));
+   Initialize_Primitive_Type (MC_CMOF_Unlimited_Natural);
+   Internal_Set_Name
+    (MC_CMOF_Unlimited_Natural,
+     League.Strings.To_Universal_String ("UnlimitedNatural"));
 
    --  Initialization of CMOF classes.
 
