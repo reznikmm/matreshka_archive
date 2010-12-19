@@ -1,3 +1,6 @@
+with League.Strings;
+
+with AMF.Values;
 
 package CMOF.Factory is
 
@@ -7,5 +10,9 @@ package CMOF.Factory is
     (Association    : CMOF_Association;
      First_Element  : CMOF_Element;
      Second_Element : CMOF_Element);
+
+   function Create_From_String
+    (Data_Type : CMOF_Data_Type;
+     Image     : League.Strings.Universal_String) return AMF.Values.Value;
 
 end CMOF.Factory;

@@ -69,6 +69,45 @@ package body CMOF.Factory is
       raise Program_Error with "Unknown CMOF class";
    end Create;
 
+   ------------------------
+   -- Create_From_String --
+   ------------------------
+
+   function Create_From_String
+    (Data_Type : CMOF_Data_Type;
+     Image     : League.Strings.Universal_String) return AMF.Values.Value
+   is
+      use type League.Strings.Universal_String;
+
+   begin
+      if Data_Type = MC_CMOF_Boolean then
+         return
+          (AMF.Values.Value_Boolean,
+           Boolean'Wide_Wide_Value (Image.To_Wide_Wide_String));
+
+      elsif Data_Type = MC_CMOF_Integer then
+         return
+          (AMF.Values.Value_Integer,
+           Integer'Wide_Wide_Value (Image.To_Wide_Wide_String));
+
+      elsif Data_Type = MC_CMOF_Unlimited_Natural then
+         if Image = League.Strings.To_Universal_String ("*") then
+            return (AMF.Values.Value_Unlimited_Natural, (Unlimited => True));
+
+         else
+            return
+             (AMF.Values.Value_Unlimited_Natural,
+              (False, Natural'Wide_Wide_Value (Image.To_Wide_Wide_String)));
+         end if;
+
+      elsif Data_Type = MC_CMOF_String then
+         return (AMF.Values.Value_String, Image);
+
+      else
+         raise Program_Error with "Unknown CMOF data type";
+      end if;
+   end Create_From_String;
+
    -----------------
    -- Create_Link --
    -----------------
