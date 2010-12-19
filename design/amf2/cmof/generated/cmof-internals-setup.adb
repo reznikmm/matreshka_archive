@@ -14,7 +14,7 @@ package body Cmof.Internals.Setup is
    use Cmof.Internals.Metamodel;
    use Cmof.Internals.Tables;
 
-   Last_Cmof_Metaelement : constant Cmof_Element := 219;
+   Last_Cmof_Metaelement : constant Cmof_Element := 221;
 
 begin
    Elements.Set_Last (Last_Cmof_Metaelement);
@@ -42,6 +42,17 @@ begin
    Internal_Set_Name
     (MC_CMOF_Unlimited_Natural,
      League.Strings.To_Universal_String ("UnlimitedNatural"));
+
+   --  Initialization of CMOF enumerations.
+
+   Initialize_Enumeration (MC_CMOF_Parameter_Direction_Kind);
+   Internal_Set_Name
+    (MC_CMOF_Parameter_Direction_Kind,
+     League.Strings.To_Universal_String ("ParameterDirectionKind"));
+   Initialize_Enumeration (MC_CMOF_Visibility_Kind);
+   Internal_Set_Name
+    (MC_CMOF_Visibility_Kind,
+     League.Strings.To_Universal_String ("VisibilityKind"));
 
    --  Initialization of CMOF classes.
 
@@ -1170,7 +1181,7 @@ begin
    Internal_Set_Lower (MP_Cmof_Type_Typed_Element, 0);
    Internal_Set_Upper (MP_Cmof_Type_Typed_Element, CMOF_Unlimited_Natural'Last);
 
-   --  Link establishment for class <-> property
+   --  Link establishment for class <-> property and propery <-> type
 
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
@@ -1179,11 +1190,23 @@ begin
      MP_Cmof_Association_End_Type,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Association_End_Type,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Type,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Association,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Association_Is_Derived,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Association_Is_Derived,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Association,
@@ -1191,17 +1214,35 @@ begin
      MP_Cmof_Association_Member_End,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Association_Member_End,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Property,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Association,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Association_Navigable_Owned_End,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Association_Navigable_Owned_End,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Property,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Association,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Association_Owned_End,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Property,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Behavioral_Feature,
@@ -1209,11 +1250,23 @@ begin
      MP_Cmof_Behavioral_Feature_Owned_Parameter,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Behavioral_Feature_Owned_Parameter,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Parameter,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Behavioral_Feature,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Behavioral_Feature_Raised_Exception,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Behavioral_Feature_Raised_Exception,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Type,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Class,
@@ -1221,11 +1274,23 @@ begin
      MP_Cmof_Class_Is_Abstract,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Class_Is_Abstract,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Class,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Class_Owned_Attribute,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Property,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Class,
@@ -1233,11 +1298,23 @@ begin
      MP_Cmof_Class_Owned_Operation,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Class_Owned_Operation,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Operation,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Class,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Class_Super_Class,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Class_Super_Class,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Class,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Classifier,
@@ -1245,11 +1322,23 @@ begin
      MP_Cmof_Classifier_Attribute,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Classifier_Attribute,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Property,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Classifier,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Classifier_Feature,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Classifier_Feature,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Feature,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Classifier,
@@ -1257,11 +1346,23 @@ begin
      MP_Cmof_Classifier_General,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Classifier_General,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Classifier,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Classifier,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Classifier_Inherited_Member,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Classifier_Inherited_Member,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Named_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Classifier,
@@ -1269,11 +1370,23 @@ begin
      MP_Cmof_Classifier_Is_Final_Specialization,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Classifier_Is_Final_Specialization,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Comment,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Comment_Annotated_Element,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Comment_Annotated_Element,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Comment,
@@ -1281,11 +1394,23 @@ begin
      MP_Cmof_Comment_Body,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Comment_Body,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_String,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Constraint,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Constraint_Constrained_Element,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Constraint_Constrained_Element,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Constraint,
@@ -1293,11 +1418,23 @@ begin
      MP_Cmof_Constraint_Context,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Constraint_Context,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Namespace,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Constraint,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Constraint_Specification,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Constraint_Specification,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Value_Specification,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Data_Type,
@@ -1305,11 +1442,23 @@ begin
      MP_Cmof_Data_Type_Owned_Attribute,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Data_Type_Owned_Attribute,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Property,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Data_Type,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Data_Type_Owned_Operation,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Data_Type_Owned_Operation,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Operation,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Directed_Relationship,
@@ -1317,11 +1466,23 @@ begin
      MP_Cmof_Directed_Relationship_Source,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Directed_Relationship_Source,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Element,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Directed_Relationship,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Directed_Relationship_Target,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Directed_Relationship_Target,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Element,
@@ -1329,11 +1490,23 @@ begin
      MP_Cmof_Element_Owned_Comment,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Element_Owned_Comment,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Comment,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Element,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Element_Owned_Element,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Element_Owned_Element,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Element,
@@ -1341,11 +1514,23 @@ begin
      MP_Cmof_Element_Owner,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Element_Owner,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Element,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Element_Import,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Element_Import_Alias,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Element_Import_Alias,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_String,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Element_Import,
@@ -1353,11 +1538,23 @@ begin
      MP_Cmof_Element_Import_Imported_Element,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Element_Import_Imported_Element,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Packageable_Element,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Element_Import,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Element_Import_Importing_Namespace,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Element_Import_Importing_Namespace,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Namespace,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Element_Import,
@@ -1365,11 +1562,23 @@ begin
      MP_Cmof_Element_Import_Visibility,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Element_Import_Visibility,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Visibility_Kind,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Enumeration,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Enumeration_Owned_Literal,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Enumeration_Owned_Literal,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Enumeration_Literal,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Enumeration_Literal,
@@ -1377,11 +1586,23 @@ begin
      MP_Cmof_Enumeration_Literal_Enumeration,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Enumeration_Literal_Enumeration,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Enumeration,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Expression,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Expression_Operand,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Expression_Operand,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Value_Specification,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Feature,
@@ -1389,11 +1610,23 @@ begin
      MP_Cmof_Feature_Featuring_Classifier,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Feature_Featuring_Classifier,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Classifier,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Multiplicity_Element,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Multiplicity_Element_Is_Ordered,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Multiplicity_Element_Is_Ordered,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Multiplicity_Element,
@@ -1401,11 +1634,23 @@ begin
      MP_Cmof_Multiplicity_Element_Is_Unique,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Multiplicity_Element_Is_Unique,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Multiplicity_Element,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Multiplicity_Element_Lower,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Multiplicity_Element_Lower,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Integer,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Multiplicity_Element,
@@ -1413,11 +1658,23 @@ begin
      MP_Cmof_Multiplicity_Element_Upper,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Multiplicity_Element_Upper,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Unlimited_Natural,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Named_Element,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Named_Element_Name,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Named_Element_Name,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_String,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Named_Element,
@@ -1425,11 +1682,23 @@ begin
      MP_Cmof_Named_Element_Namespace,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Named_Element_Namespace,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Namespace,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Named_Element,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Named_Element_Qualified_Name,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Named_Element_Qualified_Name,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_String,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Named_Element,
@@ -1437,11 +1706,23 @@ begin
      MP_Cmof_Named_Element_Visibility,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Named_Element_Visibility,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Visibility_Kind,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Namespace,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Namespace_Element_Import,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Namespace_Element_Import,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Element_Import,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Namespace,
@@ -1449,11 +1730,23 @@ begin
      MP_Cmof_Namespace_Imported_Member,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Namespace_Imported_Member,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Packageable_Element,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Namespace,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Namespace_Member,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Namespace_Member,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Named_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Namespace,
@@ -1461,11 +1754,23 @@ begin
      MP_Cmof_Namespace_Owned_Member,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Namespace_Owned_Member,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Named_Element,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Namespace,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Namespace_Owned_Rule,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Namespace_Owned_Rule,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Constraint,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Namespace,
@@ -1473,11 +1778,23 @@ begin
      MP_Cmof_Namespace_Package_Import,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Namespace_Package_Import,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Package_Import,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Opaque_Expression,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Opaque_Expression_Body,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Opaque_Expression_Body,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_String,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Opaque_Expression,
@@ -1485,11 +1802,23 @@ begin
      MP_Cmof_Opaque_Expression_Language,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Opaque_Expression_Language,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_String,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Operation_Body_Condition,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Body_Condition,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Constraint,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
@@ -1497,11 +1826,23 @@ begin
      MP_Cmof_Operation_Class,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Class,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Class,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Operation_Datatype,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Datatype,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Data_Type,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
@@ -1509,11 +1850,23 @@ begin
      MP_Cmof_Operation_Is_Ordered,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Is_Ordered,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Operation_Is_Query,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Is_Query,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
@@ -1521,11 +1874,23 @@ begin
      MP_Cmof_Operation_Is_Unique,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Is_Unique,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Operation_Lower,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Lower,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Integer,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
@@ -1533,11 +1898,23 @@ begin
      MP_Cmof_Operation_Owned_Parameter,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Owned_Parameter,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Parameter,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Operation_Postcondition,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Postcondition,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Constraint,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
@@ -1545,11 +1922,23 @@ begin
      MP_Cmof_Operation_Precondition,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Precondition,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Constraint,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Operation_Raised_Exception,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Raised_Exception,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Type,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
@@ -1557,11 +1946,23 @@ begin
      MP_Cmof_Operation_Redefined_Operation,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Redefined_Operation,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Operation,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Operation_Type,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Type,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Type,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Operation,
@@ -1569,11 +1970,23 @@ begin
      MP_Cmof_Operation_Upper,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operation_Upper,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Unlimited_Natural,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Package,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Package_Nested_Package,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Package_Nested_Package,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Package,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Package,
@@ -1581,11 +1994,23 @@ begin
      MP_Cmof_Package_Nesting_Package,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Package_Nesting_Package,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Package,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Package,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Package_Owned_Type,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Package_Owned_Type,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Type,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Package,
@@ -1593,11 +2018,23 @@ begin
      MP_Cmof_Package_Package_Merge,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Package_Package_Merge,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Package_Merge,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Package,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Package_Packaged_Element,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Package_Packaged_Element,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Packageable_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Package_Import,
@@ -1605,11 +2042,23 @@ begin
      MP_Cmof_Package_Import_Imported_Package,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Package_Import_Imported_Package,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Package,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Package_Import,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Package_Import_Importing_Namespace,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Package_Import_Importing_Namespace,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Namespace,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Package_Import,
@@ -1617,11 +2066,23 @@ begin
      MP_Cmof_Package_Import_Visibility,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Package_Import_Visibility,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Visibility_Kind,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Package_Merge,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Package_Merge_Merged_Package,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Package_Merge_Merged_Package,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Package,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Package_Merge,
@@ -1629,11 +2090,23 @@ begin
      MP_Cmof_Package_Merge_Receiving_Package,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Package_Merge_Receiving_Package,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Package,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Parameter,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Parameter_Default,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Parameter_Default,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_String,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Parameter,
@@ -1641,11 +2114,23 @@ begin
      MP_Cmof_Parameter_Direction,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Parameter_Direction,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Parameter_Direction_Kind,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Parameter,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Parameter_Operation,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Parameter_Operation,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Operation,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Property,
@@ -1653,11 +2138,23 @@ begin
      MP_Cmof_Property_Association,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Property_Association,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Association,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Property,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Property_Class,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Property_Class,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Class,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Property,
@@ -1665,11 +2162,23 @@ begin
      MP_Cmof_Property_Datatype,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Property_Datatype,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Data_Type,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Property,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Property_Default,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Property_Default,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_String,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Property,
@@ -1677,11 +2186,23 @@ begin
      MP_Cmof_Property_Is_Composite,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Property_Is_Composite,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Property,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Property_Is_Derived,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Property_Is_Derived,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Property,
@@ -1689,11 +2210,23 @@ begin
      MP_Cmof_Property_Is_Derived_Union,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Property_Is_Derived_Union,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Property,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Property_Is_Read_Only,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Property_Is_Read_Only,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Property,
@@ -1701,11 +2234,23 @@ begin
      MP_Cmof_Property_Opposite,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Property_Opposite,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Property,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Property,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Property_Owning_Association,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Property_Owning_Association,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Association,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Property,
@@ -1713,11 +2258,23 @@ begin
      MP_Cmof_Property_Redefined_Property,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Property_Redefined_Property,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Property,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Property,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Property_Subsetted_Property,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Property_Subsetted_Property,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Property,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Redefinable_Element,
@@ -1725,11 +2282,23 @@ begin
      MP_Cmof_Redefinable_Element_Is_Leaf,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Redefinable_Element_Is_Leaf,
+     MP_Cmof_Typed_Element_Type,
+     MC_CMOF_Boolean,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Redefinable_Element,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Redefinable_Element_Redefined_Element,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Redefinable_Element_Redefined_Element,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Redefinable_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Redefinable_Element,
@@ -1737,11 +2306,23 @@ begin
      MP_Cmof_Redefinable_Element_Redefinition_Context,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Redefinable_Element_Redefinition_Context,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Classifier,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Relationship,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Relationship_Related_Element,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Relationship_Related_Element,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Type,
@@ -1749,13 +2330,25 @@ begin
      MP_Cmof_Type_Package,
      MP_Cmof_Property_Class);
    Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Type_Package,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Package,
+     MP_Cmof_Type_Typed_Element);
+   Internal_Create_Link
     (MA_Cmof_Owned_Attribute_Class,
      MC_Cmof_Typed_Element,
      MP_Cmof_Class_Owned_Attribute,
      MP_Cmof_Typed_Element_Type,
      MP_Cmof_Property_Class);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Typed_Element_Type,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Type,
+     MP_Cmof_Type_Typed_Element);
 
-   --  Link establishment for association <-> property
+   --  Link establishment for association <-> property and property <-> type
 
    Internal_Create_Link
     (MA_Cmof_Owned_End_Owning_Association,
@@ -1763,6 +2356,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Annotated_Element_Comment,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Annotated_Element_Comment,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Comment,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Annotated_Element_Comment,
@@ -1781,6 +2380,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Attribute_Classifier,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Attribute_Classifier,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Classifier,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Attribute_Classifier,
@@ -1799,6 +2404,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Body_Condition_Body_Context,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Body_Condition_Body_Context,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Operation,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Body_Condition_Body_Context,
@@ -1817,6 +2428,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Constrained_Element_Constraint,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Constrained_Element_Constraint,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Constraint,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Constrained_Element_Constraint,
@@ -1847,6 +2464,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_End_Type_Association,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_End_Type_Association,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Association,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_End_Type_Association,
@@ -1877,6 +2500,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_General_Classifier,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_General_Classifier,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Classifier,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_General_Classifier,
@@ -1895,6 +2524,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Imported_Element_Element_Import,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Imported_Element_Element_Import,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Element_Import,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Imported_Element_Element_Import,
@@ -1913,6 +2548,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Imported_Member_Namespace,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Imported_Member_Namespace,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Namespace,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Imported_Member_Namespace,
@@ -1931,6 +2572,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Imported_Package_Package_Import,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Imported_Package_Package_Import,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Package_Import,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Imported_Package_Package_Import,
@@ -1949,6 +2596,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Inherited_Member_Classifier,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Inherited_Member_Classifier,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Classifier,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Inherited_Member_Classifier,
@@ -1979,6 +2632,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Member_Namespace,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Member_Namespace,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Namespace,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Member_Namespace,
@@ -1997,6 +2656,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Merged_Package_Package_Merge,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Merged_Package_Package_Merge,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Package_Merge,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Merged_Package_Package_Merge,
@@ -2015,6 +2680,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Navigable_Owned_End_Association,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Navigable_Owned_End_Association,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Association,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Navigable_Owned_End_Association,
@@ -2045,6 +2716,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Operand_Expression,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Operand_Expression,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Expression,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Operand_Expression,
@@ -2063,6 +2740,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Opposite_Property,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Opposite_Property,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Property,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Opposite_Property,
@@ -2105,6 +2788,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Owned_Comment_Owning_Element,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Owned_Comment_Owning_Element,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Owned_Comment_Owning_Element,
@@ -2207,6 +2896,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Owned_Parameter_Owner_Formal_Param,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Owned_Parameter_Owner_Formal_Param,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Behavioral_Feature,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Owned_Parameter_Owner_Formal_Param,
@@ -2273,6 +2968,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Packaged_Element_Owning_Package,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Packaged_Element_Owning_Package,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Package,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Packaged_Element_Owning_Package,
@@ -2291,6 +2992,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Postcondition_Post_Context,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Postcondition_Post_Context,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Operation,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Postcondition_Post_Context,
@@ -2309,6 +3016,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Precondition_Pre_Context,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Precondition_Pre_Context,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Operation,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Precondition_Pre_Context,
@@ -2327,6 +3040,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Raised_Exception_Behavioral_Feature,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Raised_Exception_Behavioral_Feature,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Behavioral_Feature,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Raised_Exception_Behavioral_Feature,
@@ -2345,6 +3064,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Raised_Exception_Operation,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Raised_Exception_Operation,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Operation,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Raised_Exception_Operation,
@@ -2363,6 +3088,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Redefined_Element_Redefinable_Element,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Redefined_Element_Redefinable_Element,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Redefinable_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Redefined_Element_Redefinable_Element,
@@ -2381,6 +3112,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Redefined_Operation_Operation,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Redefined_Operation_Operation,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Operation,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Redefined_Operation_Operation,
@@ -2399,6 +3136,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Redefined_Property_Property,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Redefined_Property_Property,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Property,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Redefined_Property_Property,
@@ -2417,6 +3160,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Redefinition_Context_Redefinable_Element,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Redefinition_Context_Redefinable_Element,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Redefinable_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Redefinition_Context_Redefinable_Element,
@@ -2435,6 +3184,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Related_Element_Relationship,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Related_Element_Relationship,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Relationship,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Related_Element_Relationship,
@@ -2453,6 +3208,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Source_Directed_Relationship,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Source_Directed_Relationship,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Directed_Relationship,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Source_Directed_Relationship,
@@ -2471,6 +3232,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Specification_Owning_Constraint,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Specification_Owning_Constraint,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Constraint,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Specification_Owning_Constraint,
@@ -2489,6 +3256,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Subsetted_Property_Property,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Subsetted_Property_Property,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Property,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Subsetted_Property_Property,
@@ -2507,6 +3280,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Super_Class_Class,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Super_Class_Class,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Class,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Super_Class_Class,
@@ -2525,6 +3304,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Target_Directed_Relationship,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Target_Directed_Relationship,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Directed_Relationship,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Target_Directed_Relationship,
@@ -2543,6 +3328,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Type_Operation,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Type_Operation,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Operation,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Type_Operation,
@@ -2561,6 +3352,12 @@ begin
      MP_Cmof_Association_Owned_End,
      MP_Cmof_Type_Typed_Element,
      MP_Cmof_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_Cmof_Type_Typed_Element,
+     MP_Cmof_Type_Typed_Element,
+     MP_Cmof_Typed_Element_Type,
+     MC_Cmof_Typed_Element,
+     MP_Cmof_Type_Typed_Element);
    Internal_Create_Link
     (MA_Cmof_Member_End_Association,
      MA_Cmof_Type_Typed_Element,
