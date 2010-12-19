@@ -59,6 +59,16 @@ package body Generator.Utilities is
    --------------------------------
 
    function Constant_Name_In_Metamodel
+    (Element : not null Enumeration_Access) return String is
+   begin
+      return "MC_CMOF_" & To_Ada_Identifier (Element.Name);
+   end Constant_Name_In_Metamodel;
+
+   --------------------------------
+   -- Constant_Name_In_Metamodel --
+   --------------------------------
+
+   function Constant_Name_In_Metamodel
     (Element : not null Primitive_Type_Access) return String is
    begin
       return "MC_CMOF_" & To_Ada_Identifier (Element.Name);

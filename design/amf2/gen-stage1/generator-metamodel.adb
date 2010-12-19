@@ -52,6 +52,12 @@ package body Generator.Metamodel is
       procedure Generate_Package_Class_Links (Position : Class_Sets.Cursor);
       --  Generates link establishment for package <-> class association.
 
+      procedure Generate_Primitive_Type_Initialization
+       (Position : Primitive_Type_Sets.Cursor);
+
+      procedure Generate_Enumeration_Initialization
+       (Position : Enumeration_Sets.Cursor);
+
       -----------------------------------------
       -- Generate_Association_Initialization --
       -----------------------------------------
@@ -102,6 +108,8 @@ package body Generator.Metamodel is
            := Property_Access (To_Element (Association.First_End));
          Second_End  : constant Property_Access
            := Property_Access (To_Element (Association.Second_End));
+         First_Type  : constant Element_Access := Get_Type (First_End);
+         Second_Type : constant Element_Access := Get_Type (Second_End);
 
       begin
          --  Generates ownership link.
@@ -113,6 +121,28 @@ package body Generator.Metamodel is
             Put_Line ("     MP_Cmof_Association_Owned_End,");
             Put_Line ("     " & Constant_Name_In_Metamodel (First_End) & ",");
             Put_Line ("     MP_Cmof_Property_Owning_Association);");
+
+            --  Generates link between property and type.
+
+            Put_Line ("   Internal_Create_Link");
+            Put_Line ("    (MA_Cmof_Type_Typed_Element,");
+            Put_Line ("     " & Constant_Name_In_Metamodel (First_End) & ",");
+            Put_Line ("     MP_Cmof_Typed_Element_Type,");
+
+            if First_Type.all in Class_Record'Class then
+               Put_Line
+                ("     " & Constant_Name_In_Metamodel (Class_Access (First_Type)) & ",");
+
+            elsif First_Type.all in Primitive_Type_Record'Class then
+               Put_Line
+                ("     " & Constant_Name_In_Metamodel (Primitive_Type_Access (First_Type)) & ",");
+
+            else
+               Put_Line
+                ("     " & Constant_Name_In_Metamodel (Enumeration_Access (First_Type)) & ",");
+            end if;
+
+            Put_Line ("     MP_Cmof_Type_Typed_Element);");
          end if;
 
          if Second_End.Owned_Association /= null then
@@ -122,6 +152,28 @@ package body Generator.Metamodel is
             Put_Line ("     MP_Cmof_Association_Owned_End,");
             Put_Line ("     " & Constant_Name_In_Metamodel (Second_End) & ",");
             Put_Line ("     MP_Cmof_Property_Owning_Association);");
+
+            --  Generates link between property and type.
+
+            Put_Line ("   Internal_Create_Link");
+            Put_Line ("    (MA_Cmof_Type_Typed_Element,");
+            Put_Line ("     " & Constant_Name_In_Metamodel (Second_End) & ",");
+            Put_Line ("     MP_Cmof_Typed_Element_Type,");
+
+            if Second_Type.all in Class_Record'Class then
+               Put_Line
+                ("     " & Constant_Name_In_Metamodel (Class_Access (Second_Type)) & ",");
+
+            elsif Second_Type.all in Primitive_Type_Record'Class then
+               Put_Line
+                ("     " & Constant_Name_In_Metamodel (Primitive_Type_Access (Second_Type)) & ",");
+
+            else
+               Put_Line
+                ("     " & Constant_Name_In_Metamodel (Enumeration_Access (Second_Type)) & ",");
+            end if;
+
+            Put_Line ("     MP_Cmof_Type_Typed_Element);");
          end if;
 
          --  Generates memberEnd link.
@@ -229,6 +281,7 @@ package body Generator.Metamodel is
          is
             Property : constant Property_Access
               := Property_Sets.Element (Position);
+            The_Type : constant Element_Access := Get_Type (Property);
 
          begin
             --  Generates link between class and property.
@@ -239,11 +292,59 @@ package body Generator.Metamodel is
             Put_Line ("     MP_Cmof_Class_Owned_Attribute,");
             Put_Line ("     " & Constant_Name_In_Metamodel (Property) & ",");
             Put_Line ("     MP_Cmof_Property_Class);");
+
+            --  Generates link between property and type.
+
+            Put_Line ("   Internal_Create_Link");
+            Put_Line ("    (MA_Cmof_Type_Typed_Element,");
+            Put_Line ("     " & Constant_Name_In_Metamodel (Property) & ",");
+            Put_Line ("     MP_Cmof_Typed_Element_Type,");
+
+            if The_Type.all in Class_Record'Class then
+               Put_Line
+                ("     " & Constant_Name_In_Metamodel (Class_Access (The_Type)) & ",");
+
+            elsif The_Type.all in Primitive_Type_Record'Class then
+               Put_Line
+                ("     " & Constant_Name_In_Metamodel (Primitive_Type_Access (The_Type)) & ",");
+
+            else
+               Put_Line
+                ("     " & Constant_Name_In_Metamodel (Enumeration_Access (The_Type)) & ",");
+            end if;
+
+            Put_Line ("     MP_Cmof_Type_Typed_Element);");
          end Generate_Class_Property_Link;
 
       begin
          Class.Properties.Iterate (Generate_Class_Property_Link'Access);
       end Generate_Class_Property_Links;
+
+      -----------------------------------------
+      -- Generate_Enumeration_Initialization --
+      -----------------------------------------
+
+      procedure Generate_Enumeration_Initialization
+       (Position : Enumeration_Sets.Cursor)
+      is
+         Enumeration : constant Enumeration_Access
+           := Enumeration_Sets.Element (Position);
+
+      begin
+         Put_Line
+          ("   Initialize_Enumeration ("
+             & Constant_Name_In_Metamodel (Enumeration)
+             & ");");
+         Put_Line ("   Internal_Set_Name");
+         Put_Line
+          ("    ("
+             & Constant_Name_In_Metamodel (Enumeration)
+             & ",");
+         Put_Line
+          ("     League.Strings.To_Universal_String ("""
+             & To_String (Enumeration.Name)
+             & """));");
+      end Generate_Enumeration_Initialization;
 
       ----------------------------------
       -- Generate_Package_Class_Links --
@@ -369,6 +470,10 @@ package body Generator.Metamodel is
       New_Line;
       Primitive_Types.Iterate (Generate_Primitive_Type_Initialization'Access);
       New_Line;
+      Put_Line ("   --  Initialization of CMOF enumerations.");
+      New_Line;
+      Enumerations.Iterate (Generate_Enumeration_Initialization'Access);
+      New_Line;
       Put_Line ("   --  Initialization of CMOF classes.");
       New_Line;
       Classes.Iterate (Generate_Class_Initialization'Access);
@@ -383,11 +488,11 @@ package body Generator.Metamodel is
       Associations.Iterate
        (Generate_Association_Property_Initialization'Access);
       New_Line;
-      Put_Line ("   --  Link establishment for class <-> property");
+      Put_Line ("   --  Link establishment for class <-> property and propery <-> type");
       New_Line;
       Classes.Iterate (Generate_Class_Property_Links'Access);
       New_Line;
-      Put_Line ("   --  Link establishment for association <-> property");
+      Put_Line ("   --  Link establishment for association <-> property and property <-> type");
       New_Line;
       Associations.Iterate (Generate_Association_Property_Links'Access);
       New_Line;
@@ -398,6 +503,12 @@ package body Generator.Metamodel is
       Put_Line ("   --  Link establishment for package <-> class");
       New_Line;
       Classes.Iterate (Generate_Package_Class_Links'Access);
+--      New_Line;
+--      Put_Line ("   --  Link establishment for property <-> type");
+--      New_Line;
+--      Classes.Iterate (Generate_Class_Property_Type_Initialization'Access);
+--      Associations.Iterate
+--       (Generate_Association_Property_Type_Initialization'Access);
       Put_Line ("end Cmof.Internals.Setup;");
    end Generate_Metamodel_Implementation;
 
@@ -419,6 +530,8 @@ package body Generator.Metamodel is
 
       procedure Generate_Primitive_Type
        (Position : Primitive_Type_Sets.Cursor);
+
+      procedure Generate_Enumeration (Position : Enumeration_Sets.Cursor);
 
       Max_Class_Length                     : Ada.Text_IO.Count := 0;
       First_Collection_Of_Element          : Natural := 0;
@@ -566,6 +679,25 @@ package body Generator.Metamodel is
               & ";");
       end Generate_Class;
 
+      --------------------------
+      -- Generate_Enumeration --
+      --------------------------
+
+      procedure Generate_Enumeration (Position : Enumeration_Sets.Cursor) is
+      begin
+         Last_Cmof_Element := Last_Cmof_Element + 1;
+         Put
+          ("   "
+             & Constant_Name_In_Metamodel
+                (Enumeration_Sets.Element (Position)));
+         Set_Col (29);
+--         Set_Col (Max_Enumeration_Length + 12);
+         Put_Line
+           (" : constant CMOF_Enumeration :="
+              & Positive'Image (Last_Cmof_Element)
+              & ";");
+      end Generate_Enumeration;
+
       -----------------------------
       -- Generate_Primitive_Type --
       -----------------------------
@@ -630,6 +762,13 @@ package body Generator.Metamodel is
       Put_Line ("   ---------------------");
       New_Line;
       Primitive_Types.Iterate (Generate_Primitive_Type'Access);
+
+      New_Line;
+      Put_Line ("   ------------------");
+      Put_Line ("   -- Enumerations --");
+      Put_Line ("   ------------------");
+      New_Line;
+      Enumerations.Iterate (Generate_Enumeration'Access);
 
       New_Line;
       Put_Line ("   -------------");
