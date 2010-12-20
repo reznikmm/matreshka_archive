@@ -1,0 +1,20 @@
+with "qt_gui.gpr";
+
+with "../xmi/xmi.gpr";
+
+project GUI is
+
+   for Main use ("main.adb");
+   for Source_Dirs use (".", ".amoc");
+   for Exec_Dir use "..";
+   for Object_Dir use ".objs";
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-g", "-gnat12");
+   end Compiler;
+
+   package Builder is
+      for Executable ("main.adb") use "demo-viewer";
+   end Builder;
+
+end GUI;
