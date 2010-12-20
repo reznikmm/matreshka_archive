@@ -41,7 +41,7 @@ package body Generator.Utilities is
          Append (Ada_Name, Second_Name);
       end if;
 
-      return "MA_Cmof_" & To_String (Ada_Name);
+      return "MA_CMOF_" & To_String (Ada_Name);
    end Constant_Name_In_Metamodel;
 
    --------------------------------
@@ -51,7 +51,7 @@ package body Generator.Utilities is
    function Constant_Name_In_Metamodel
     (Element : not null Class_Access) return String is
    begin
-      return "MC_Cmof_" & To_Ada_Identifier (Element.Name);
+      return "MC_CMOF_" & To_Ada_Identifier (Element.Name);
    end Constant_Name_In_Metamodel;
 
    --------------------------------
@@ -122,7 +122,7 @@ package body Generator.Utilities is
                & To_Ada_Identifier (Element.Name));
       end if;
 
-      return "MP_Cmof_" & To_String (Ada_Name);
+      return "MP_CMOF_" & To_String (Ada_Name);
    end Constant_Name_In_Metamodel;
 
    ----------------------

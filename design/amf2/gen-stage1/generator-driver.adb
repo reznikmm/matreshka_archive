@@ -14,6 +14,7 @@ with Analyzer;
 with Generator.Attributes;
 with Generator.Constructors;
 with Generator.Metamodel;
+with Generator.Reflection;
 with Generator.Subclassing;
 with Generator.Utilities;
 
@@ -28,6 +29,7 @@ procedure Generator.Driver is
    use Generator.Attributes;
    use Generator.Constructors;
    use Generator.Metamodel;
+   use Generator.Reflection;
    use Generator.Subclassing;
    use Generator.Utilities;
 
@@ -629,4 +631,5 @@ begin
    Generate_Attributes_Implementation;
    Generate_Constructors_Specification;
    Generate_Constructors_Implementation;
+   Generate_Reflection_Implementation;
 end Generator.Driver;
