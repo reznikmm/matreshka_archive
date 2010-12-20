@@ -1,3 +1,5 @@
+with Ada.Strings.Wide_Wide_Fixed;
+
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Collections;
 with CMOF.Internals.Constructors;
@@ -185,9 +187,32 @@ package body CMOF.Factory is
 
    function Convert_To_String
     (Data_Type : CMOF_Data_Type;
-     Value     : AMF.Values.Value) return League.Strings.Universal_String is
+     Value     : AMF.Values.Value) return League.Strings.Universal_String
+   is
+      use Ada.Strings;
+      use Ada.Strings.Wide_Wide_Fixed;
+
    begin
-      if Data_Type = MC_CMOF_String then
+      if Data_Type = MC_CMOF_Boolean then
+         if Value.Boolean_Value then
+            return League.Strings.To_Universal_String ("true");
+
+         else
+            return League.Strings.To_Universal_String ("false");
+         end if;
+
+      elsif Data_Type = MC_CMOF_Integer then
+         return League.Strings.To_Universal_String (Trim (Integer'Wide_Wide_Image (Value.Integer_Value), Both));
+
+      elsif Data_Type = MC_CMOF_Unlimited_Natural then
+         if Value.Unlimited_Natural_Value.Unlimited then
+            return League.Strings.To_Universal_String ("*");
+
+         else
+            return League.Strings.To_Universal_String (Trim (Integer'Wide_Wide_Image (Value.Unlimited_Natural_Value.Value), Both));
+         end if;
+
+      elsif Data_Type = MC_CMOF_String then
          return Value.String_Value;
 
       else
