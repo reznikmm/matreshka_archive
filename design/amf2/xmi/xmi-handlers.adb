@@ -236,6 +236,15 @@ package body XMI.Handlers is
       return Null_CMOF_Element;
    end Resolve_Owned_Attribute;
 
+   ----------
+   -- Root --
+   ----------
+
+   function Root (Self : XMI_Handler) return CMOF.CMOF_Element is
+   begin
+      return Self.Root;
+   end Root;
+
 --   overriding procedure Set_Document_Locator
 --    (Self    : in out XMI_Handler;
 --     Locator : XML.SAX.Locators.SAX_Locator) is null;
@@ -465,6 +474,7 @@ package body XMI.Handlers is
 
          Meta         := CMOF.XMI_Helper.Resolve (Local_Name);
          Self.Current := CMOF.Factory.Create (Meta);
+         Self.Root    := Self.Current;
          Self.Mapping.Insert
           (Attributes.Value (XMI_Namespace, Id_Name), Self.Current);
       end if;

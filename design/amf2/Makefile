@@ -3,7 +3,9 @@ all:
 	make -C ../..
 	gprbuild -p -Pcmof/cmof.gpr
 	gprbuild -p -Pxmi/xmi.gpr
-	./xmi-reader data/cmof.xml
+#	gprbuild -p -Pgui/gui_moc.gpr
+#	gprbuild -p -Pgui/gui.gpr
+	./demo-reader data/cmof.xml
 
 gen:
 	gprbuild -p -Pgen-stage1/generator.gpr
@@ -12,4 +14,4 @@ gen:
 	rm cmof/generated/sources.ada
 
 clean:
-	rm -rf cmof-internals-subclassing.ad[sb] cmof-internals-metamodel.ads cmof/.objs demo gen-stage1/.objs xmi/.objs
+	rm -rf cmof/.objs gen-stage1/.objs xmi/.objs gui/.objs gui/.amoc demo-cmof demo-reader demo-viewer

@@ -1,2 +1,3 @@
+with CMOF;
 
-procedure XMI.Reader;
+function XMI.Reader (File_Name : String) return CMOF.CMOF_Element;

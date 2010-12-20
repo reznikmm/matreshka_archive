@@ -5,12 +5,14 @@ private with League.Strings;
 private with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
 
-private with CMOF;
+with CMOF;
 
 package XMI.Handlers is
 
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler with private;
+
+   function Root (Self : XMI_Handler) return CMOF.CMOF_Element;
 
 private
 
@@ -46,6 +48,7 @@ private
       Collect_Text : Boolean := False;
       Mapping      : String_Element_Maps.Map;
       Postponed    : Postponed_Link_Vectors.Vector;
+      Root         : CMOF.CMOF_Element;
    end record;
 
    overriding procedure Characters
