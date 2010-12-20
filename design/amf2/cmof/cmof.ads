@@ -85,6 +85,7 @@ private
 
    type Cmof_Element is
      new Interfaces.Integer_32 range 0 .. Interfaces.Integer_32'Last;
+   for CMOF_Element'Size use Interfaces.Integer_32'Size;
    Null_Cmof_Element : constant Cmof_Element := 0;
 
    type Collection_Of_CMOF_Element is

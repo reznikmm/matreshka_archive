@@ -2,9 +2,16 @@ with CMOF.Internals.Reflection;
 
 package body CMOF.Reflection is
 
---   function Get
---    (Self     : CMOF_Element;
---     Property : CMOF_Property) return Collection_Of_CMOF_Element;
+   ---------
+   -- Get --
+   ---------
+
+   function Get
+    (Self     : CMOF_Element;
+     Property : CMOF_Property) return AMF.Values.Value is
+   begin
+      return CMOF.Internals.Reflection.Get (Self, Property);
+   end Get;
 
    --------------------
    -- Get_Meta_Class --
