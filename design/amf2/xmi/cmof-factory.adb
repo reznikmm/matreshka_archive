@@ -179,4 +179,20 @@ package body CMOF.Factory is
         CMOF.Internals.Collections.Element (Member_End, 2));
    end Create_Link;
 
+   -----------------------
+   -- Convert_To_String --
+   -----------------------
+
+   function Convert_To_String
+    (Data_Type : CMOF_Data_Type;
+     Value     : AMF.Values.Value) return League.Strings.Universal_String is
+   begin
+      if Data_Type = MC_CMOF_String then
+         return Value.String_Value;
+
+      else
+         return League.Strings.To_Universal_String ("Value must be here");
+      end if;
+   end Convert_To_String;
+
 end CMOF.Factory;

@@ -15,4 +15,8 @@ package CMOF.Factory is
     (Data_Type : CMOF_Data_Type;
      Image     : League.Strings.Universal_String) return AMF.Values.Value;
 
+   function Convert_To_String
+    (Data_Type : CMOF_Data_Type;
+     Value     : AMF.Values.Value) return League.Strings.Universal_String;
+
 end CMOF.Factory;
