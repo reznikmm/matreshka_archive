@@ -18,16 +18,18 @@ private
 
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler with record
-      Current : CMOF.CMOF_Element := CMOF.Null_CMOF_Element;
-      Stack   : Element_Vectors.Vector;
-      Skip    : Natural := 0;
+      Current      : CMOF.CMOF_Element := CMOF.Null_CMOF_Element;
+      Stack        : Element_Vectors.Vector;
+      Attribute    : CMOF.CMOF_Property := CMOF.Null_CMOF_Element;
+      Text         : League.Strings.Universal_String;
+      Collect_Text : Boolean := False;
    end record;
 
---   overriding procedure Characters
---    (Self    : in out XMI_Handler;
---     Text    : League.Strings.Universal_String;
---     Success : in out Boolean) is null;
---
+   overriding procedure Characters
+    (Self    : in out XMI_Handler;
+     Text    : League.Strings.Universal_String;
+     Success : in out Boolean);
+
 --   overriding procedure End_Document
 --    (Self    : in out XMI_Handler;
 --     Success : in out Boolean) is null;

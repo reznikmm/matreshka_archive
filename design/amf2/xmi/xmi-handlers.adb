@@ -7,6 +7,7 @@ with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Factory;
+with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
 with CMOF.Properties;
 with CMOF.Reflection;
@@ -16,6 +17,8 @@ with CMOF.XMI_Helper;
 package body XMI.Handlers is
 
    use Ada.Wide_Wide_Text_IO;
+   use CMOF.Reflection;
+   use CMOF.Typed_Elements;
 
    XMI_Namespace  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
@@ -37,11 +40,20 @@ package body XMI.Handlers is
     (String    : League.Strings.Universal_String;
      Character : Wide_Wide_Character) return Natural;
 
---   overriding procedure Characters
---    (Self    : in out XMI_Handler;
---     Text    : League.Strings.Universal_String;
---     Success : in out Boolean) is null;
---
+   ----------------
+   -- Characters --
+   ----------------
+
+   overriding procedure Characters
+    (Self    : in out XMI_Handler;
+     Text    : League.Strings.Universal_String;
+     Success : in out Boolean) is
+   begin
+      if Self.Collect_Text then
+         Self.Text.Append (Text);
+      end if;
+   end Characters;
+
 --   overriding procedure End_Document
 --    (Self    : in out XMI_Handler;
 --     Success : in out Boolean) is null;
@@ -57,10 +69,28 @@ package body XMI.Handlers is
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean)
    is
+      use CMOF.Multiplicity_Elements;
+
    begin
       if not Self.Stack.Is_Empty then
-         if Self.Skip /= 0 then
-            Self.Skip := Self.Skip - 1;
+         if Self.Collect_Text then
+            Self.Collect_Text := False;
+
+            if CMOF.XMI_Helper.Is_Data_Type (Get_Type (Self.Attribute)) then
+               if not Is_Multivalued (Self.Attribute) then
+                  Set
+                   (Self.Current,
+                    Self.Attribute,
+                    CMOF.Factory.Create_From_String
+                     (Get_Type (Self.Attribute), Self.Text));
+
+               else
+                  Put_Line ("Skip - multivalued");
+               end if;
+
+            else
+               Put_Line ("Skip - not DataType");
+            end if;
 
          else
             Self.Current := Self.Stack.Last_Element;
@@ -190,8 +220,6 @@ package body XMI.Handlers is
       use CMOF.Collections;
       use CMOF.Named_Elements;
       use CMOF.Properties;
-      use CMOF.Reflection;
-      use CMOF.Typed_Elements;
 
       Name        : League.Strings.Universal_String;
       Meta        : CMOF.CMOF_Element;
@@ -318,7 +346,9 @@ package body XMI.Handlers is
                end if;
             end loop;
          else
-            Self.Skip := Self.Skip + 1;
+            Self.Attribute := Property;
+            Self.Collect_Text := True;
+            Self.Text.Clear;
          end if;
 
       elsif Namespace_URI = CMOF_Namespace then

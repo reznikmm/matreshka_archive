@@ -137,6 +137,24 @@ package body CMOF.Internals.Reflection is
          end if;
       end Set_CMOF_Class;
 
+      ----------------------
+      -- Set_CMOF_Comment --
+      ----------------------
+
+      procedure Set_CMOF_Comment is
+      begin
+         if Property = MP_Cmof_Comment_Body then
+            Internal_Set_Body (Self, Value.String_Value);
+
+         else
+            raise Program_Error
+              with
+                Ada.Characters.Conversions.To_String (Internal_Get_Name (Get_Meta_Class (Self)).To_Wide_Wide_String)
+                  & "::"
+                  & Ada.Characters.Conversions.To_String (Internal_Get_Name (Property).To_Wide_Wide_String);
+         end if;
+      end Set_CMOF_Comment;
+
       -------------------------
       -- Set_CMOF_Constraint --
       -------------------------
@@ -349,8 +367,8 @@ package body CMOF.Internals.Reflection is
          when E_Class =>
             Set_CMOF_Class;
 
---         when E_Comment =>
---            return MC_CMOF_Comment;
+         when E_Comment =>
+            Set_CMOF_Comment;
 
          when E_Constraint =>
             Set_CMOF_Constraint;
