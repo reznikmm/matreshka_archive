@@ -2,6 +2,8 @@
 
 with Ada.Wide_Wide_Text_IO;
 
+with League.String_Vectors;
+
 with AMF.Values;
 with CMOF.Associations;
 with CMOF.Classes;
@@ -17,7 +19,12 @@ with CMOF.XMI_Helper;
 package body XMI.Handlers is
 
    use Ada.Wide_Wide_Text_IO;
+   use CMOF;
+   use CMOF.Associations;
+   use CMOF.Collections;
    use CMOF.Reflection;
+   use CMOF.Multiplicity_Elements;
+   use CMOF.Properties;
    use CMOF.Typed_Elements;
 
    XMI_Namespace  : constant League.Strings.Universal_String
@@ -28,6 +35,8 @@ package body XMI.Handlers is
          ("http://schema.omg.org/spec/MOF/2.0/cmof.xml");
    Tag_Class_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Tag");
+   Id_Name        : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("id");
    Type_Name      : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("type");
 
@@ -54,9 +63,44 @@ package body XMI.Handlers is
       end if;
    end Characters;
 
---   overriding procedure End_Document
---    (Self    : in out XMI_Handler;
---     Success : in out Boolean) is null;
+   ------------------
+   -- End_Document --
+   ------------------
+
+   overriding procedure End_Document
+    (Self    : in out XMI_Handler;
+     Success : in out Boolean)
+   is
+      procedure Establish_Link (Position : Postponed_Link_Vectors.Cursor);
+
+      --------------------
+      -- Establish_Link --
+      --------------------
+
+      procedure Establish_Link (Position : Postponed_Link_Vectors.Cursor) is
+         L           : constant Postponed_Link
+           := Postponed_Link_Vectors.Element (Position);
+         Association : constant CMOF_Association
+           := Get_Association (L.Attribute);
+
+      begin
+         if Element (Get_Member_End (Association), 1) = L.Attribute then
+            CMOF.Factory.Create_Link
+             (Association,
+              L.Element,
+              Self.Mapping.Element (L.Id));
+
+         else
+            CMOF.Factory.Create_Link
+             (Association,
+              Self.Mapping.Element (L.Id),
+              L.Element);
+         end if;
+      end Establish_Link;
+
+   begin
+      Self.Postponed.Iterate (Establish_Link'Access);
+   end End_Document;
 
    -----------------
    -- End_Element --
@@ -67,10 +111,7 @@ package body XMI.Handlers is
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
-     Success        : in out Boolean)
-   is
-      use CMOF.Multiplicity_Elements;
-
+     Success        : in out Boolean) is
    begin
       if not Self.Stack.Is_Empty then
          if Self.Collect_Text then
@@ -85,7 +126,7 @@ package body XMI.Handlers is
                      (Get_Type (Self.Attribute), Self.Text));
 
                else
-                  Put_Line ("Skip - multivalued");
+                  Put_Line ("Skip - multivalued attribute of DataType");
                end if;
 
             else
@@ -113,6 +154,16 @@ package body XMI.Handlers is
    begin
       return League.Strings.Empty_Universal_String;
    end Error_String;
+
+   ----------
+   -- Hash --
+   ----------
+
+   function Hash
+    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type is
+   begin
+      return Ada.Containers.Hash_Type (Item.Hash);
+   end Hash;
 
 --   overriding procedure Ignorable_Whitespace
 --    (Self    : in out XMI_Handler;
@@ -150,9 +201,7 @@ package body XMI.Handlers is
     (Class : CMOF.CMOF_Class;
      Name  : League.Strings.Universal_String) return CMOF.CMOF_Property
    is
-      use CMOF;
       use CMOF.Classes;
-      use CMOF.Collections;
       use CMOF.Named_Elements;
       use type League.Strings.Universal_String;
 
@@ -214,12 +263,8 @@ package body XMI.Handlers is
    is
       use type League.Strings.Universal_String;
 
-      use CMOF;
-      use CMOF.Associations;
       use CMOF.Classes;
-      use CMOF.Collections;
       use CMOF.Named_Elements;
-      use CMOF.Properties;
 
       Name        : League.Strings.Universal_String;
       Meta        : CMOF.CMOF_Element;
@@ -254,7 +299,10 @@ package body XMI.Handlers is
       -------------------
 
       procedure Set_Attribute
-       (Property : CMOF_Property; Value : League.Strings.Universal_String) is
+       (Property : CMOF_Property; Value : League.Strings.Universal_String)
+      is
+         Association : CMOF_Association;
+
       begin
          if Property = Null_CMOF_Element then
             raise Program_Error with "Unknown attribute";
@@ -269,14 +317,64 @@ package body XMI.Handlers is
              (Self.Current,
               Property,
               CMOF.Factory.Create_From_String (Get_Type (Property), Value));
---         else
---            Put_Line ("not supported");
+
+         else
+            Association := Get_Association (Property);
+
+            if Is_Multivalued (Property) then
+               declare
+                  Ids : constant League.String_Vectors.Universal_String_Vector
+                    := Value.Split (' ');
+
+               begin
+                  for J in 1 .. Ids.Length loop
+                     if Self.Mapping.Contains (Ids.Element (J)) then
+                        if Element (Get_Member_End (Association), 1) = Property then
+                           CMOF.Factory.Create_Link
+                            (Association,
+                             Self.Current,
+                             Self.Mapping.Element (Ids.Element (J)));
+
+                        else
+                           CMOF.Factory.Create_Link
+                            (Association,
+                             Self.Mapping.Element (Ids.Element (J)),
+                             Self.Current);
+                        end if;
+
+                     else
+                        Self.Postponed.Append
+                         ((Self.Current, Property, Ids.Element (J)));
+                     end if;
+                  end loop;
+               end;
+
+            else
+
+               if Self.Mapping.Contains (Value) then
+                  if Element (Get_Member_End (Association), 1) = Property then
+                     CMOF.Factory.Create_Link
+                      (Association,
+                       Self.Current,
+                       Self.Mapping.Element (Value));
+
+                  else
+                     CMOF.Factory.Create_Link
+                      (Association,
+                       Self.Mapping.Element (Value),
+                       Self.Current);
+                  end if;
+
+               else
+                  Self.Postponed.Append ((Self.Current, Property, Value));
+               end if;
+            end if;
          end if;
       end Set_Attribute;
 
    begin
       if Namespace_URI.Is_Empty then
-         Put_Line (Qualified_Name.To_Wide_Wide_String);
+--         Put_Line (Qualified_Name.To_Wide_Wide_String);
 
 --         Dump (Get_Meta_Class (Self.Current));
 
@@ -306,6 +404,8 @@ package body XMI.Handlers is
             end if;
 
             New_Element := CMOF.Factory.Create (Meta);
+            Self.Mapping.Insert
+             (Attributes.Value (XMI_Namespace, Id_Name), New_Element);
 
             if Element (Get_Member_End (Association), 1) = Property then
                CMOF.Factory.Create_Link (Association, Self.Current, New_Element);
@@ -320,11 +420,11 @@ package body XMI.Handlers is
             for J in 1 .. Attributes.Length loop
                if Attributes.Namespace_URI (J).Is_Empty then
                   if Attributes.Qualified_Name (J) /= League.Strings.To_Universal_String ("href") then
-                  Put_Line
-                   ("  "
-                      & Attributes.Qualified_Name (J).To_Wide_Wide_String
-                      & "  "
-                      & Attributes.Value (J).To_Wide_Wide_String);
+--                  Put_Line
+--                   ("  "
+--                      & Attributes.Qualified_Name (J).To_Wide_Wide_String
+--                      & "  "
+--                      & Attributes.Value (J).To_Wide_Wide_String);
 --                  Dump (Get_Meta_Class (Self.Current));
                   Set_Attribute
                    (CMOF.XMI_Helper.Resolve_Attribute
@@ -365,6 +465,8 @@ package body XMI.Handlers is
 
          Meta         := CMOF.XMI_Helper.Resolve (Local_Name);
          Self.Current := CMOF.Factory.Create (Meta);
+         Self.Mapping.Insert
+          (Attributes.Value (XMI_Namespace, Id_Name), Self.Current);
       end if;
    end Start_Element;
 

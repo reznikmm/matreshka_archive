@@ -1,4 +1,5 @@
 private with Ada.Containers.Vectors;
+private with Ada.Containers.Hashed_Maps;
 
 private with League.Strings;
 private with XML.SAX.Attributes;
@@ -16,6 +17,26 @@ private
    package Element_Vectors is
      new Ada.Containers.Vectors (Positive, CMOF.CMOF_Element, CMOF."=");
 
+   type Postponed_Link is record
+      Element   : CMOF.CMOF_Element;
+      Attribute : CMOF.CMOF_Property;
+      Id        : League.Strings.Universal_String;
+   end record;
+
+   package Postponed_Link_Vectors is
+     new Ada.Containers.Vectors (Positive, Postponed_Link);
+
+   function Hash
+    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
+
+   package String_Element_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           CMOF.CMOF_Element,
+           Hash,
+           League.Strings."=",
+           CMOF."=");
+
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler with record
       Current      : CMOF.CMOF_Element := CMOF.Null_CMOF_Element;
@@ -23,6 +44,8 @@ private
       Attribute    : CMOF.CMOF_Property := CMOF.Null_CMOF_Element;
       Text         : League.Strings.Universal_String;
       Collect_Text : Boolean := False;
+      Mapping      : String_Element_Maps.Map;
+      Postponed    : Postponed_Link_Vectors.Vector;
    end record;
 
    overriding procedure Characters
@@ -30,9 +53,9 @@ private
      Text    : League.Strings.Universal_String;
      Success : in out Boolean);
 
---   overriding procedure End_Document
---    (Self    : in out XMI_Handler;
---     Success : in out Boolean) is null;
+   overriding procedure End_Document
+    (Self    : in out XMI_Handler;
+     Success : in out Boolean);
 
    overriding procedure End_Element
     (Self           : in out XMI_Handler;
