@@ -90,7 +90,7 @@ package body CMOF.Factory is
       elsif Data_Type = MC_CMOF_Integer then
          return
           (AMF.Values.Value_Integer,
-           Integer'Wide_Wide_Value (Image.To_Wide_Wide_String));
+           AMF.AMF_Integer'Wide_Wide_Value (Image.To_Wide_Wide_String));
 
       elsif Data_Type = MC_CMOF_Unlimited_Natural then
          if Image = League.Strings.To_Universal_String ("*") then
@@ -202,7 +202,11 @@ package body CMOF.Factory is
          end if;
 
       elsif Data_Type = MC_CMOF_Integer then
-         return League.Strings.To_Universal_String (Trim (Integer'Wide_Wide_Image (Value.Integer_Value), Both));
+         return
+           League.Strings.To_Universal_String
+            (Ada.Strings.Wide_Wide_Fixed.Trim
+              (AMF.AMF_Integer'Wide_Wide_Image (Value.Integer_Value),
+               Ada.Strings.Both));
 
       elsif Data_Type = MC_CMOF_Unlimited_Natural then
          if Value.Unlimited_Natural_Value.Unlimited then

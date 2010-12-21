@@ -102,7 +102,7 @@ package body Generator.Reflection is
                elsif Has_Integer_Type (Property) then
                   Put_Line ("            return");
                   Put_Line ("             (AMF.Values.Value_Integer,");
-                  Put_Line ("              Integer (Internal_Get_" & To_Ada_Identifier (Property.Name) & " (Self)));");
+                  Put_Line ("              Internal_Get_" & To_Ada_Identifier (Property.Name) & " (Self));");
 
                elsif Has_Unlimited_Natural_Type (Property) then
                   Put_Line ("            if Internal_Get_" & To_Ada_Identifier (Property.Name) & " (Self) = CMOF_Unlimited_Natural'Last then");
@@ -262,7 +262,7 @@ package body Generator.Reflection is
                   Put_Line ("            Internal_Set_" & To_Ada_Identifier (Property.Name) & " (Self, CMOF_Boolean (Value.Boolean_Value));");
 
                elsif Has_Integer_Type (Property) then
-                  Put_Line ("            Internal_Set_" & To_Ada_Identifier (Property.Name) & " (Self, CMOF_Integer (Value.Integer_Value));");
+                  Put_Line ("            Internal_Set_" & To_Ada_Identifier (Property.Name) & " (Self, Value.Integer_Value);");
 
                elsif Has_Unlimited_Natural_Type (Property) then
                   Put_Line ("            if Value.Unlimited_Natural_Value.Unlimited then");

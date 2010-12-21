@@ -837,7 +837,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Operation_Lower then
             return
              (AMF.Values.Value_Integer,
-              Integer (Internal_Get_Lower (Self)));
+              Internal_Get_Lower (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
             return
@@ -1174,7 +1174,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             return
              (AMF.Values.Value_Integer,
-              Integer (Internal_Get_Lower (Self)));
+              Internal_Get_Lower (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             return
@@ -1411,7 +1411,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             return
              (AMF.Values.Value_Integer,
-              Integer (Internal_Get_Lower (Self)));
+              Internal_Get_Lower (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             return
@@ -1895,7 +1895,7 @@ package body CMOF.Internals.Reflection is
             Internal_Set_Is_Unique (Self, CMOF_Boolean (Value.Boolean_Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
-            Internal_Set_Lower (Self, CMOF_Integer (Value.Integer_Value));
+            Internal_Set_Lower (Self, Value.Integer_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             Internal_Set_Name (Self, Value.String_Value);
@@ -1977,7 +1977,7 @@ package body CMOF.Internals.Reflection is
             Internal_Set_Is_Unique (Self, CMOF_Boolean (Value.Boolean_Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
-            Internal_Set_Lower (Self, CMOF_Integer (Value.Integer_Value));
+            Internal_Set_Lower (Self, Value.Integer_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             Internal_Set_Name (Self, Value.String_Value);

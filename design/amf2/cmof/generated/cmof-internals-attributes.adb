@@ -1042,7 +1042,7 @@ package body Cmof.Internals.Attributes is
    ------------------------
 
    function Internal_Get_Lower
-     (Self : Cmof_Element) return Cmof_Integer
+     (Self : Cmof_Element) return AMF.AMF_Integer
    is
    begin
       if Is_Multiplicity_Element (Self) then
@@ -1067,7 +1067,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Lower
      (Self : CMOF_Element;
-      To   : CMOF_Integer) is
+      To   : AMF.AMF_Integer) is
    begin
       if Is_Multiplicity_Element (Self) then
          Elements.Table (Self).Member

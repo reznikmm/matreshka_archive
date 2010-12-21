@@ -1,7 +1,9 @@
 with GNAT.Table;
 
-with CMOF.Internals.Types;
 with Matreshka.Internals.Strings;
+
+with AMF;
+with CMOF.Internals.Types;
 
 private package CMOF.Internals.Tables is
 
@@ -29,7 +31,7 @@ private package CMOF.Internals.Tables is
             Boolean_Value : CMOF_Boolean;
 
          when M_Integer =>
-            Integer_Value : CMOF_Integer;
+            Integer_Value : AMF.AMF_Integer;
 
          when M_Unlimited_Natural =>
             Natural_Value : CMOF_Unlimited_Natural;

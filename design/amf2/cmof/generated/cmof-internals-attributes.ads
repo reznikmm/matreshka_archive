@@ -1,4 +1,5 @@
 with League.Strings;
+with AMF;
 
 package CMOF.Internals.Attributes is
 
@@ -197,11 +198,11 @@ package CMOF.Internals.Attributes is
      (Self : CMOF_Element) return Collection_Of_CMOF_String;
 
    function Internal_Get_Lower
-     (Self : Cmof_Element) return Cmof_Integer;
+     (Self : Cmof_Element) return AMF.AMF_Integer;
 
    procedure Internal_Set_Lower
      (Self : CMOF_Element;
-      To   : CMOF_Integer);
+      To   : AMF.AMF_Integer);
 
    function Internal_Get_Member
      (Self : Cmof_Element) return Collection_Of_Cmof_Element;

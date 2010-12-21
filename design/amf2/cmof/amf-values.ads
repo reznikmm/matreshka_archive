@@ -77,7 +77,7 @@ package AMF.Values is
             Boolean_Value : Boolean;
 
          when Value_Integer =>
-            Integer_Value : Integer;
+            Integer_Value : AMF_Integer;
 
          when Value_Unlimited_Natural =>
             Unlimited_Natural_Value : Unlimited_Natural;

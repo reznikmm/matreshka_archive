@@ -629,6 +629,7 @@ package body Generator.Attributes is
 
    begin
       Put_Line ("with League.Strings;");
+      Put_Line ("with AMF;");
       New_Line;
       Put_Line ("package CMOF.Internals.Attributes is");
 
@@ -764,7 +765,7 @@ package body Generator.Attributes is
             raise Program_Error;
 
          else
-            Put ("     (Self : Cmof_Element) return Cmof_Integer");
+            Put ("     (Self : Cmof_Element) return AMF.AMF_Integer");
          end if;
 
       elsif Has_Unlimited_Natural_Type (Property) then
@@ -915,7 +916,7 @@ package body Generator.Attributes is
          Put ("      To   : CMOF_Boolean)");
 
       elsif Has_Integer_Type (Property) then
-         Put ("      To   : CMOF_Integer)");
+         Put ("      To   : AMF.AMF_Integer)");
 
       elsif Has_Unlimited_Natural_Type (Property) then
          Put ("      To   : CMOF_Unlimited_Natural)");

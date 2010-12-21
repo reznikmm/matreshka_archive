@@ -1,10 +1,9 @@
 with Interfaces;
 
-package Cmof is
+package CMOF is
 
    pragma Pure;
 
-   type Cmof_Integer is new Interfaces.Integer_32;
    type Cmof_Unlimited_Natural is
      new Interfaces.Integer_32 range 0 .. Interfaces.Integer_32'Last;
    type Cmof_Boolean is new Boolean;

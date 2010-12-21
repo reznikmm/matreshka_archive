@@ -55,6 +55,7 @@
 --   - Integer is mapped to standard Integer.
 --
 ------------------------------------------------------------------------------
+with Interfaces;
 with League.Strings;
 
 package AMF is
@@ -64,6 +65,8 @@ package AMF is
    ---------------------
    -- Primitive types --
    ---------------------
+
+   type AMF_Integer is new Interfaces.Integer_32;
 
    type Unlimited_Natural (Unlimited : Boolean := False) is record
       case Unlimited is
