@@ -426,10 +426,10 @@ package body Generator.Metamodel is
              & ",");
 
          if Property.Upper = Integer'Last then
-            Put (" CMOF_Unlimited_Natural'Last");
+            Put (" (Unlimited => True)");
 
          else
-            Put (Integer'Image (Property.Upper));
+            Put (" (False, " & Integer'Image (Property.Upper) & ")");
          end if;
 
          Put_Line (");");

@@ -18,7 +18,7 @@ package body Cmof.Internals.Attributes is
    ------------------------
 
    function Internal_Get_Alias
-     (Self : CMOF_Element) return League.Strings.Universal_String
+     (Self : CMOF_Element) return AMF.AMF_String
    is
    begin
       return
@@ -35,7 +35,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Alias
      (Self : CMOF_Element;
-      To   : League.Strings.Universal_String) is
+      To   : AMF.AMF_String) is
    begin
       Matreshka.Internals.Strings.Dereference
        (Elements.Table (Self).Member
@@ -119,7 +119,7 @@ package body Cmof.Internals.Attributes is
    -----------------------
 
    function Internal_Get_Body
-     (Self : CMOF_Element) return League.Strings.Universal_String
+     (Self : CMOF_Element) return AMF.AMF_String
    is
    begin
       if Is_Comment (Self) then
@@ -146,7 +146,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Body
      (Self : CMOF_Element;
-      To   : League.Strings.Universal_String) is
+      To   : AMF.AMF_String) is
    begin
       if Is_Comment (Self) then
          Matreshka.Internals.Strings.Dereference
@@ -353,7 +353,7 @@ package body Cmof.Internals.Attributes is
    --------------------------
 
    function Internal_Get_Default
-     (Self : CMOF_Element) return League.Strings.Universal_String
+     (Self : CMOF_Element) return AMF.AMF_String
    is
    begin
       if Is_Parameter (Self) then
@@ -380,7 +380,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Default
      (Self : CMOF_Element;
-      To   : League.Strings.Universal_String) is
+      To   : AMF.AMF_String) is
    begin
       if Is_Parameter (Self) then
          Matreshka.Internals.Strings.Dereference
@@ -1149,7 +1149,7 @@ package body Cmof.Internals.Attributes is
    -----------------------
 
    function Internal_Get_Name
-     (Self : CMOF_Element) return League.Strings.Universal_String
+     (Self : CMOF_Element) return AMF.AMF_String
    is
    begin
       return
@@ -1166,7 +1166,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Name
      (Self : CMOF_Element;
-      To   : League.Strings.Universal_String) is
+      To   : AMF.AMF_String) is
    begin
       Matreshka.Internals.Strings.Dereference
        (Elements.Table (Self).Member
@@ -1668,7 +1668,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------------
 
    function Internal_Get_Qualified_Name
-     (Self : CMOF_Element) return League.Strings.Universal_String
+     (Self : CMOF_Element) return AMF.AMF_String
    is
    begin
       return
@@ -1958,7 +1958,7 @@ package body Cmof.Internals.Attributes is
    ------------------------
 
    function Internal_Get_Upper
-     (Self : Cmof_Element) return Cmof_Unlimited_Natural
+     (Self : Cmof_Element) return AMF.AMF_Unlimited_Natural
    is
    begin
       if Is_Multiplicity_Element (Self) then
@@ -1983,7 +1983,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Upper
      (Self : CMOF_Element;
-      To   : CMOF_Unlimited_Natural) is
+      To   : AMF.AMF_Unlimited_Natural) is
    begin
       if Is_Multiplicity_Element (Self) then
          Elements.Table (Self).Member

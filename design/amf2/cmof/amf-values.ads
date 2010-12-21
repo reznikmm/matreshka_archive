@@ -80,7 +80,7 @@ package AMF.Values is
             Integer_Value : AMF_Integer;
 
          when Value_Unlimited_Natural =>
-            Unlimited_Natural_Value : Unlimited_Natural;
+            Unlimited_Natural_Value : AMF_Unlimited_Natural;
 
          when Value_Optional_String =>
             Optional_String_Value : Optional_String;

@@ -111,16 +111,13 @@ package body Generator.Reflection is
                       & " (Self));");
 
                elsif Has_Unlimited_Natural_Type (Property) then
-                  Put_Line ("            if Internal_Get_" & To_Ada_Identifier (Property.Name) & " (Self) = CMOF_Unlimited_Natural'Last then");
-                  Put_Line ("               return");
-                  Put_Line ("                (AMF.Values.Value_Unlimited_Natural,");
-                  Put_Line ("                 (Unlimited => True));");
-                  New_Line;
-                  Put_Line ("            else");
-                  Put_Line ("               return");
-                  Put_Line ("                (AMF.Values.Value_Unlimited_Natural,");
-                  Put_Line ("                 (False, Natural (Internal_Get_" & To_Ada_Identifier (Property.Name) & " (Self))));");
-                  Put_Line ("            end if;");
+                  Put_Line ("            return");
+                  Put_Line
+                   ("             (AMF.Values.Value_Unlimited_Natural,");
+                  Put_Line
+                   ("              Internal_Get_"
+                      & To_Ada_Identifier (Property.Name)
+                      & " (Self));");
 
                elsif Has_String_Type (Property) then
                   if Is_Multivalued (Property) then
@@ -277,15 +274,16 @@ package body Generator.Reflection is
                       & " (Self, Value.Integer_Value);");
 
                elsif Has_Unlimited_Natural_Type (Property) then
-                  Put_Line ("            if Value.Unlimited_Natural_Value.Unlimited then");
-                  Put_Line ("               Internal_Set_" & To_Ada_Identifier (Property.Name) & " (Self, CMOF_Unlimited_Natural'Last);");
-                  New_Line;
-                  Put_Line ("            else");
-                  Put_Line ("               Internal_Set_" & To_Ada_Identifier (Property.Name) & " (Self, CMOF_Unlimited_Natural (Value.Unlimited_Natural_Value.Value));");
-                  Put_Line ("            end if;");
+                  Put_Line
+                   ("            Internal_Set_"
+                      & To_Ada_Identifier (Property.Name)
+                      & " (Self, Value.Unlimited_Natural_Value);");
 
                elsif Has_String_Type (Property) then
-                  Put_Line ("            Internal_Set_" & To_Ada_Identifier (Property.Name) & " (Self, Value.String_Value);");
+                  Put_Line
+                   ("            Internal_Set_"
+                      & To_Ada_Identifier (Property.Name)
+                      & " (Self, Value.String_Value);");
 
                else
                   Put_Line ("            null;");

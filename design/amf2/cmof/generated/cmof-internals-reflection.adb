@@ -940,16 +940,9 @@ package body CMOF.Internals.Reflection is
               Internal_Get_Type (Self));
 
          elsif Property = MP_CMOF_Operation_Upper then
-            if Internal_Get_Upper (Self) = CMOF_Unlimited_Natural'Last then
-               return
-                (AMF.Values.Value_Unlimited_Natural,
-                 (Unlimited => True));
-
-            else
-               return
-                (AMF.Values.Value_Unlimited_Natural,
-                 (False, Natural (Internal_Get_Upper (Self))));
-            end if;
+            return
+             (AMF.Values.Value_Unlimited_Natural,
+              Internal_Get_Upper (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             return (Kind => AMF.Values.Value_None);
@@ -1217,16 +1210,9 @@ package body CMOF.Internals.Reflection is
               Internal_Get_Type (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Upper then
-            if Internal_Get_Upper (Self) = CMOF_Unlimited_Natural'Last then
-               return
-                (AMF.Values.Value_Unlimited_Natural,
-                 (Unlimited => True));
-
-            else
-               return
-                (AMF.Values.Value_Unlimited_Natural,
-                 (False, Natural (Internal_Get_Upper (Self))));
-            end if;
+            return
+             (AMF.Values.Value_Unlimited_Natural,
+              Internal_Get_Upper (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             return (Kind => AMF.Values.Value_None);
@@ -1479,16 +1465,9 @@ package body CMOF.Internals.Reflection is
               Internal_Get_Type (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Upper then
-            if Internal_Get_Upper (Self) = CMOF_Unlimited_Natural'Last then
-               return
-                (AMF.Values.Value_Unlimited_Natural,
-                 (Unlimited => True));
-
-            else
-               return
-                (AMF.Values.Value_Unlimited_Natural,
-                 (False, Natural (Internal_Get_Upper (Self))));
-            end if;
+            return
+             (AMF.Values.Value_Unlimited_Natural,
+              Internal_Get_Upper (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             return (Kind => AMF.Values.Value_None);
@@ -1907,12 +1886,7 @@ package body CMOF.Internals.Reflection is
             Internal_Set_Type (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Upper then
-            if Value.Unlimited_Natural_Value.Unlimited then
-               Internal_Set_Upper (Self, CMOF_Unlimited_Natural'Last);
-
-            else
-               Internal_Set_Upper (Self, CMOF_Unlimited_Natural (Value.Unlimited_Natural_Value.Value));
-            end if;
+            Internal_Set_Upper (Self, Value.Unlimited_Natural_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             null;
@@ -1989,12 +1963,7 @@ package body CMOF.Internals.Reflection is
             Internal_Set_Type (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Upper then
-            if Value.Unlimited_Natural_Value.Unlimited then
-               Internal_Set_Upper (Self, CMOF_Unlimited_Natural'Last);
-
-            else
-               Internal_Set_Upper (Self, CMOF_Unlimited_Natural (Value.Unlimited_Natural_Value.Value));
-            end if;
+            Internal_Set_Upper (Self, Value.Unlimited_Natural_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             null;

@@ -609,7 +609,8 @@ package body Cmof.Internals.Constructors is
                    12     => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  qualifiedName
                    13     => (M_Element, 0),               --  type
-                   14     => (M_Unlimited_Natural, 1),     --  upper
+                   14     => (M_Unlimited_Natural, (False, 1)),
+                                                           --  upper
                    others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 16);
       Initialize_Set_Collection          --  elementImport
@@ -768,7 +769,8 @@ package body Cmof.Internals.Constructors is
                    10     => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  qualifiedName
                    11     => (M_Element, 0),               --  type
-                   12     => (M_Unlimited_Natural, 1),     --  upper
+                   12     => (M_Unlimited_Natural, (False, 1)),
+                                                           --  upper
                    others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 2);
       Initialize_Set_Collection          --  ownedComment
@@ -859,7 +861,8 @@ package body Cmof.Internals.Constructors is
                    18     => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  qualifiedName
                    19     => (M_Element, 0),               --  type
-                   20     => (M_Unlimited_Natural, 1),     --  upper
+                   20     => (M_Unlimited_Natural, (False, 1)),
+                                                           --  upper
                    others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 7);
       Initialize_Set_Collection          --  featuringClassifier

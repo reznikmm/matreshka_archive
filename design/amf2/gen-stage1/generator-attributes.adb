@@ -773,7 +773,8 @@ package body Generator.Attributes is
             raise Program_Error;
 
          else
-            Put ("     (Self : Cmof_Element) return Cmof_Unlimited_Natural");
+            Put
+             ("     (Self : Cmof_Element) return AMF.AMF_Unlimited_Natural");
          end if;
 
       elsif Has_String_Type (Property) then
@@ -783,7 +784,7 @@ package body Generator.Attributes is
                  & " return Collection_Of_CMOF_String");
 
          else
-            Put ("     (Self : CMOF_Element) return League.Strings.Universal_String");
+            Put ("     (Self : CMOF_Element) return AMF.AMF_String");
          end if;
 
       else
@@ -919,10 +920,10 @@ package body Generator.Attributes is
          Put ("      To   : AMF.AMF_Integer)");
 
       elsif Has_Unlimited_Natural_Type (Property) then
-         Put ("      To   : CMOF_Unlimited_Natural)");
+         Put ("      To   : AMF.AMF_Unlimited_Natural)");
 
       elsif Has_String_Type (Property) then
-         Put ("      To   : League.Strings.Universal_String)");
+         Put ("      To   : AMF.AMF_String)");
 
       else
          Put ("      To   : CMOF_Element)");

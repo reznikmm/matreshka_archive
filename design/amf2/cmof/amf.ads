@@ -44,15 +44,8 @@
 --  Root package of Ada Modeling Framework.
 --
 --  This package contains declarations of primitive types corresponding to
---  defined in PrimitiveTypes package and types to represent their optional
---  values (values with multiplicity 0..1). Some primitive types doesn't
---  declared here, because are mapped to another types:
---
---   - String is mapped to League.Strings.Universal_String;
---
---   - Boolean is mapped to standard Boolean;
---
---   - Integer is mapped to standard Integer.
+--  types defined in PrimitiveTypes package and types to represent their
+--  optional values (values with multiplicity 0..1).
 --
 ------------------------------------------------------------------------------
 with Interfaces;
@@ -69,11 +62,12 @@ package AMF is
    type AMF_Boolean is new Boolean;
 
    type AMF_Integer is new Interfaces.Integer_32;
+   subtype AMF_Natural is AMF_Integer range 0 .. AMF_Integer'Last;
 
-   type Unlimited_Natural (Unlimited : Boolean := False) is record
+   type AMF_Unlimited_Natural (Unlimited : Boolean := False) is record
       case Unlimited is
          when False =>
-            Value : Natural;
+            Value : AMF_Natural;
 
          when True =>
             null;
@@ -81,23 +75,37 @@ package AMF is
    end record;
 
    function "<"
-    (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean;
+    (Left  : AMF_Unlimited_Natural;
+     Right : AMF_Unlimited_Natural) return Boolean;
    function "<="
-    (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean;
+    (Left  : AMF_Unlimited_Natural;
+     Right : AMF_Unlimited_Natural) return Boolean;
    function ">"
-    (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean;
+    (Left  : AMF_Unlimited_Natural;
+     Right : AMF_Unlimited_Natural) return Boolean;
    function ">="
-    (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean;
+    (Left  : AMF_Unlimited_Natural;
+     Right : AMF_Unlimited_Natural) return Boolean;
 
-   function "<"  (Left : Unlimited_Natural; Right : Integer) return Boolean;
-   function "<=" (Left : Unlimited_Natural; Right : Integer) return Boolean;
-   function ">"  (Left : Unlimited_Natural; Right : Integer) return Boolean;
-   function ">=" (Left : Unlimited_Natural; Right : Integer) return Boolean;
+   function "<"
+    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean;
+   function "<="
+    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean;
+   function ">"
+    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean;
+   function ">="
+    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean;
 
-   function "<"  (Left : Integer; Right : Unlimited_Natural) return Boolean;
-   function "<=" (Left : Integer; Right : Unlimited_Natural) return Boolean;
-   function ">"  (Left : Integer; Right : Unlimited_Natural) return Boolean;
-   function ">=" (Left : Integer; Right : Unlimited_Natural) return Boolean;
+   function "<"
+    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean;
+   function "<="
+    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean;
+   function ">"
+    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean;
+   function ">="
+    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean;
+
+   subtype AMF_String is League.Strings.Universal_String;
 
    ----------------------------------------
    -- Optional values of primitive types --
@@ -139,7 +147,7 @@ package AMF is
             null;
 
          when True =>
-            Value : Unlimited_Natural;
+            Value : AMF_Unlimited_Natural;
       end case;
    end record;
 

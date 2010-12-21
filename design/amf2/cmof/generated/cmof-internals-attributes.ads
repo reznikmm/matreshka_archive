@@ -4,11 +4,11 @@ with AMF;
 package CMOF.Internals.Attributes is
 
    function Internal_Get_Alias
-     (Self : CMOF_Element) return League.Strings.Universal_String;
+     (Self : CMOF_Element) return AMF.AMF_String;
 
    procedure Internal_Set_Alias
      (Self : CMOF_Element;
-      To   : League.Strings.Universal_String);
+      To   : AMF.AMF_String);
 
    function Internal_Get_Annotated_Element
      (Self : Cmof_Element) return Collection_Of_Cmof_Element;
@@ -24,11 +24,11 @@ package CMOF.Internals.Attributes is
      (Self : Cmof_Element) return Collection_Of_Cmof_Element;
 
    function Internal_Get_Body
-     (Self : CMOF_Element) return League.Strings.Universal_String;
+     (Self : CMOF_Element) return AMF.AMF_String;
 
    procedure Internal_Set_Body
      (Self : CMOF_Element;
-      To   : League.Strings.Universal_String);
+      To   : AMF.AMF_String);
 
    function Internal_Get_Body_Condition
      (Self : Cmof_Element) return Cmof_Element;
@@ -62,11 +62,11 @@ package CMOF.Internals.Attributes is
       To   : CMOF_Element);
 
    function Internal_Get_Default
-     (Self : CMOF_Element) return League.Strings.Universal_String;
+     (Self : CMOF_Element) return AMF.AMF_String;
 
    procedure Internal_Set_Default
      (Self : CMOF_Element;
-      To   : League.Strings.Universal_String);
+      To   : AMF.AMF_String);
 
    function Internal_Get_Direction
      (Self : Cmof_Element) return Cmof_Element;
@@ -218,11 +218,11 @@ package CMOF.Internals.Attributes is
       To   : CMOF_Element);
 
    function Internal_Get_Name
-     (Self : CMOF_Element) return League.Strings.Universal_String;
+     (Self : CMOF_Element) return AMF.AMF_String;
 
    procedure Internal_Set_Name
      (Self : CMOF_Element;
-      To   : League.Strings.Universal_String);
+      To   : AMF.AMF_String);
 
    function Internal_Get_Namespace
      (Self : Cmof_Element) return Cmof_Element;
@@ -316,7 +316,7 @@ package CMOF.Internals.Attributes is
      (Self : Cmof_Element) return Collection_Of_Cmof_Element;
 
    function Internal_Get_Qualified_Name
-     (Self : CMOF_Element) return League.Strings.Universal_String;
+     (Self : CMOF_Element) return AMF.AMF_String;
 
    function Internal_Get_Raised_Exception
      (Self : Cmof_Element) return Collection_Of_Cmof_Element;
@@ -370,11 +370,11 @@ package CMOF.Internals.Attributes is
       To   : CMOF_Element);
 
    function Internal_Get_Upper
-     (Self : Cmof_Element) return Cmof_Unlimited_Natural;
+     (Self : Cmof_Element) return AMF.AMF_Unlimited_Natural;
 
    procedure Internal_Set_Upper
      (Self : CMOF_Element;
-      To   : CMOF_Unlimited_Natural);
+      To   : AMF.AMF_Unlimited_Natural);
 
    function Internal_Get_Visibility
      (Self : Cmof_Element) return Cmof_Element;
