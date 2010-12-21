@@ -1,5 +1,6 @@
 with Matreshka.Internals.Strings;
 
+with AMF;
 with Cmof.Internals.Attributes;
 with Cmof.Internals.Metamodel;
 with Cmof.Internals.Tables;
@@ -226,8 +227,8 @@ package body Cmof.Internals.Constructors is
        (Kind   => E_Association,
         Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
-                   1      => (M_Boolean, False),           --  isDerived
-                   2      => (M_Boolean, False),           --  isFinalSpecialization
+                   1      => (M_Boolean, AMF.False),       --  isDerived
+                   2      => (M_Boolean, AMF.False),       --  isFinalSpecialization
                    3      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
                    4      => (M_Element, 0),               --  namespace
@@ -283,8 +284,8 @@ package body Cmof.Internals.Constructors is
        (Kind   => E_Class,
         Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
-                   1      => (M_Boolean, False),           --  isAbstract
-                   2      => (M_Boolean, False),           --  isFinalSpecialization
+                   1      => (M_Boolean, AMF.False),       --  isAbstract
+                   2      => (M_Boolean, AMF.False),       --  isFinalSpecialization
                    3      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
                    4      => (M_Element, 0),               --  namespace
@@ -385,7 +386,7 @@ package body Cmof.Internals.Constructors is
        (Kind   => E_Data_Type,
         Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
-                   1      => (M_Boolean, False),           --  isFinalSpecialization
+                   1      => (M_Boolean, AMF.False),       --  isFinalSpecialization
                    2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
                    3      => (M_Element, 0),               --  namespace
@@ -464,7 +465,7 @@ package body Cmof.Internals.Constructors is
        (Kind   => E_Enumeration,
         Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
-                   1      => (M_Boolean, False),           --  isFinalSpecialization
+                   1      => (M_Boolean, AMF.False),       --  isFinalSpecialization
                    2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
                    3      => (M_Element, 0),               --  namespace
@@ -596,10 +597,10 @@ package body Cmof.Internals.Constructors is
                    1      => (M_Element, 0),               --  bodyCondition
                    2      => (M_Element, 0),               --  class
                    3      => (M_Element, 0),               --  datatype
-                   4      => (M_Boolean, False),           --  isLeaf
-                   5      => (M_Boolean, False),           --  isOrdered
-                   6      => (M_Boolean, False),           --  isQuery
-                   7      => (M_Boolean, True),            --  isUnique
+                   4      => (M_Boolean, AMF.False),       --  isLeaf
+                   5      => (M_Boolean, AMF.False),       --  isOrdered
+                   6      => (M_Boolean, AMF.False),       --  isQuery
+                   7      => (M_Boolean, AMF.True),        --  isUnique
                    8      => (M_Integer, 1),               --  lower
                    9      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
@@ -756,8 +757,8 @@ package body Cmof.Internals.Constructors is
         Member => (0      => (Kind => M_None),
                    1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  default
-                   3      => (M_Boolean, False),           --  isOrdered
-                   4      => (M_Boolean, True),            --  isUnique
+                   3      => (M_Boolean, AMF.False),       --  isOrdered
+                   4      => (M_Boolean, AMF.True),        --  isUnique
                    5      => (M_Integer, 1),               --  lower
                    6      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
@@ -786,7 +787,7 @@ package body Cmof.Internals.Constructors is
        (Kind   => E_Primitive_Type,
         Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
-                   1      => (M_Boolean, False),           --  isFinalSpecialization
+                   1      => (M_Boolean, AMF.False),       --  isFinalSpecialization
                    2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
                    3      => (M_Element, 0),               --  namespace
@@ -841,13 +842,13 @@ package body Cmof.Internals.Constructors is
                    3      => (M_Element, 0),               --  datatype
                    4      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  default
-                   5      => (M_Boolean, False),           --  isComposite
-                   6      => (M_Boolean, False),           --  isDerived
-                   7      => (M_Boolean, False),           --  isDerivedUnion
-                   8      => (M_Boolean, False),           --  isLeaf
-                   9      => (M_Boolean, False),           --  isOrdered
-                   10     => (M_Boolean, False),           --  isReadOnly
-                   11     => (M_Boolean, True),            --  isUnique
+                   5      => (M_Boolean, AMF.False),       --  isComposite
+                   6      => (M_Boolean, AMF.False),       --  isDerived
+                   7      => (M_Boolean, AMF.False),       --  isDerivedUnion
+                   8      => (M_Boolean, AMF.False),       --  isLeaf
+                   9      => (M_Boolean, AMF.False),       --  isOrdered
+                   10     => (M_Boolean, AMF.False),       --  isReadOnly
+                   11     => (M_Boolean, AMF.True),        --  isUnique
                    12     => (M_Integer, 1),               --  lower
                    13     => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name

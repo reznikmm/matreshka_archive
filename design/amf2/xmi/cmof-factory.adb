@@ -85,7 +85,7 @@ package body CMOF.Factory is
       if Data_Type = MC_CMOF_Boolean then
          return
           (AMF.Values.Value_Boolean,
-           Boolean'Wide_Wide_Value (Image.To_Wide_Wide_String));
+           AMF.AMF_Boolean'Wide_Wide_Value (Image.To_Wide_Wide_String));
 
       elsif Data_Type = MC_CMOF_Integer then
          return

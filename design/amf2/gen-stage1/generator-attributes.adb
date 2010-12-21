@@ -757,7 +757,7 @@ package body Generator.Attributes is
             raise Program_Error;
 
          else
-            Put ("     (Self : Cmof_Element) return Cmof_Boolean");
+            Put ("     (Self : Cmof_Element) return AMF.AMF_Boolean");
          end if;
 
       elsif Has_Integer_Type (Property) then
@@ -913,7 +913,7 @@ package body Generator.Attributes is
       Put_Line ("     (Self : CMOF_Element;");
 
       if Has_Boolean_Type (Property) then
-         Put ("      To   : CMOF_Boolean)");
+         Put ("      To   : AMF.AMF_Boolean)");
 
       elsif Has_Integer_Type (Property) then
          Put ("      To   : AMF.AMF_Integer)");

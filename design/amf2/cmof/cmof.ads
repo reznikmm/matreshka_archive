@@ -6,7 +6,6 @@ package CMOF is
 
    type Cmof_Unlimited_Natural is
      new Interfaces.Integer_32 range 0 .. Interfaces.Integer_32'Last;
-   type Cmof_Boolean is new Boolean;
 
    type CMOF_Parameter_Direction_Kind is
     (In_Direction,

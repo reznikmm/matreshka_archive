@@ -689,7 +689,7 @@ package body Cmof.Internals.Attributes is
    ------------------------------
 
    function Internal_Get_Is_Abstract
-     (Self : Cmof_Element) return Cmof_Boolean
+     (Self : Cmof_Element) return AMF.AMF_Boolean
    is
    begin
       return
@@ -705,7 +705,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Abstract
      (Self : CMOF_Element;
-      To   : CMOF_Boolean) is
+      To   : AMF.AMF_Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -718,7 +718,7 @@ package body Cmof.Internals.Attributes is
    -------------------------------
 
    function Internal_Get_Is_Composite
-     (Self : Cmof_Element) return Cmof_Boolean
+     (Self : Cmof_Element) return AMF.AMF_Boolean
    is
    begin
       return
@@ -734,7 +734,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Composite
      (Self : CMOF_Element;
-      To   : CMOF_Boolean) is
+      To   : AMF.AMF_Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -747,7 +747,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------
 
    function Internal_Get_Is_Derived
-     (Self : Cmof_Element) return Cmof_Boolean
+     (Self : Cmof_Element) return AMF.AMF_Boolean
    is
    begin
       if Is_Association (Self) then
@@ -772,7 +772,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Derived
      (Self : CMOF_Element;
-      To   : CMOF_Boolean) is
+      To   : AMF.AMF_Boolean) is
    begin
       if Is_Association (Self) then
          Elements.Table (Self).Member
@@ -793,7 +793,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------------
 
    function Internal_Get_Is_Derived_Union
-     (Self : Cmof_Element) return Cmof_Boolean
+     (Self : Cmof_Element) return AMF.AMF_Boolean
    is
    begin
       return
@@ -809,7 +809,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Derived_Union
      (Self : CMOF_Element;
-      To   : CMOF_Boolean) is
+      To   : AMF.AMF_Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -822,7 +822,7 @@ package body Cmof.Internals.Attributes is
    ------------------------------------------
 
    function Internal_Get_Is_Final_Specialization
-     (Self : Cmof_Element) return Cmof_Boolean
+     (Self : Cmof_Element) return AMF.AMF_Boolean
    is
    begin
       return
@@ -838,7 +838,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Final_Specialization
      (Self : CMOF_Element;
-      To   : CMOF_Boolean) is
+      To   : AMF.AMF_Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -851,7 +851,7 @@ package body Cmof.Internals.Attributes is
    --------------------------
 
    function Internal_Get_Is_Leaf
-     (Self : Cmof_Element) return Cmof_Boolean
+     (Self : Cmof_Element) return AMF.AMF_Boolean
    is
    begin
       return
@@ -867,7 +867,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Leaf
      (Self : CMOF_Element;
-      To   : CMOF_Boolean) is
+      To   : AMF.AMF_Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -880,7 +880,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------
 
    function Internal_Get_Is_Ordered
-     (Self : Cmof_Element) return Cmof_Boolean
+     (Self : Cmof_Element) return AMF.AMF_Boolean
    is
    begin
       if Is_Multiplicity_Element (Self) then
@@ -905,7 +905,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Ordered
      (Self : CMOF_Element;
-      To   : CMOF_Boolean) is
+      To   : AMF.AMF_Boolean) is
    begin
       if Is_Multiplicity_Element (Self) then
          Elements.Table (Self).Member
@@ -926,7 +926,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------
 
    function Internal_Get_Is_Query
-     (Self : Cmof_Element) return Cmof_Boolean
+     (Self : Cmof_Element) return AMF.AMF_Boolean
    is
    begin
       return
@@ -942,7 +942,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Query
      (Self : CMOF_Element;
-      To   : CMOF_Boolean) is
+      To   : AMF.AMF_Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -955,7 +955,7 @@ package body Cmof.Internals.Attributes is
    -------------------------------
 
    function Internal_Get_Is_Read_Only
-     (Self : Cmof_Element) return Cmof_Boolean
+     (Self : Cmof_Element) return AMF.AMF_Boolean
    is
    begin
       return
@@ -971,7 +971,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Read_Only
      (Self : CMOF_Element;
-      To   : CMOF_Boolean) is
+      To   : AMF.AMF_Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -984,7 +984,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------
 
    function Internal_Get_Is_Unique
-     (Self : Cmof_Element) return Cmof_Boolean
+     (Self : Cmof_Element) return AMF.AMF_Boolean
    is
    begin
       if Is_Multiplicity_Element (Self) then
@@ -1009,7 +1009,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Unique
      (Self : CMOF_Element;
-      To   : CMOF_Boolean) is
+      To   : AMF.AMF_Boolean) is
    begin
       if Is_Multiplicity_Element (Self) then
          Elements.Table (Self).Member

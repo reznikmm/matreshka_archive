@@ -59,12 +59,12 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Association_Is_Derived then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Derived (Self)));
+              Internal_Get_Is_Derived (Self));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Final_Specialization (Self)));
+              Internal_Get_Is_Final_Specialization (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
             return
@@ -184,12 +184,12 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Class_Is_Abstract then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Abstract (Self)));
+              Internal_Get_Is_Abstract (Self));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Final_Specialization (Self)));
+              Internal_Get_Is_Final_Specialization (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
             return
@@ -391,7 +391,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Final_Specialization (Self)));
+              Internal_Get_Is_Final_Specialization (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
             return
@@ -556,7 +556,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Final_Specialization (Self)));
+              Internal_Get_Is_Final_Specialization (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
             return
@@ -817,22 +817,22 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Leaf (Self)));
+              Internal_Get_Is_Leaf (Self));
 
          elsif Property = MP_CMOF_Operation_Is_Ordered then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Ordered (Self)));
+              Internal_Get_Is_Ordered (Self));
 
          elsif Property = MP_CMOF_Operation_Is_Query then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Query (Self)));
+              Internal_Get_Is_Query (Self));
 
          elsif Property = MP_CMOF_Operation_Is_Unique then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Unique (Self)));
+              Internal_Get_Is_Unique (Self));
 
          elsif Property = MP_CMOF_Operation_Lower then
             return
@@ -1164,12 +1164,12 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Ordered (Self)));
+              Internal_Get_Is_Ordered (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Unique (Self)));
+              Internal_Get_Is_Unique (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             return
@@ -1271,7 +1271,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Final_Specialization (Self)));
+              Internal_Get_Is_Final_Specialization (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
             return
@@ -1376,37 +1376,37 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Property_Is_Composite then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Composite (Self)));
+              Internal_Get_Is_Composite (Self));
 
          elsif Property = MP_CMOF_Property_Is_Derived then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Derived (Self)));
+              Internal_Get_Is_Derived (Self));
 
          elsif Property = MP_CMOF_Property_Is_Derived_Union then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Derived_Union (Self)));
+              Internal_Get_Is_Derived_Union (Self));
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Leaf (Self)));
+              Internal_Get_Is_Leaf (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Ordered (Self)));
+              Internal_Get_Is_Ordered (Self));
 
          elsif Property = MP_CMOF_Property_Is_Read_Only then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Read_Only (Self)));
+              Internal_Get_Is_Read_Only (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
             return
              (AMF.Values.Value_Boolean,
-              Boolean (Internal_Get_Is_Unique (Self)));
+              Internal_Get_Is_Unique (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             return
@@ -1632,10 +1632,10 @@ package body CMOF.Internals.Reflection is
       procedure Set_Association is
       begin
          if Property = MP_CMOF_Association_Is_Derived then
-            Internal_Set_Is_Derived (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Derived (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
-            Internal_Set_Is_Final_Specialization (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             Internal_Set_Name (Self, Value.String_Value);
@@ -1654,10 +1654,10 @@ package body CMOF.Internals.Reflection is
       procedure Set_Class is
       begin
          if Property = MP_CMOF_Class_Is_Abstract then
-            Internal_Set_Is_Abstract (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Abstract (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
-            Internal_Set_Is_Final_Specialization (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             Internal_Set_Name (Self, Value.String_Value);
@@ -1705,7 +1705,7 @@ package body CMOF.Internals.Reflection is
       procedure Set_Data_Type is
       begin
          if Property = MP_CMOF_Classifier_Is_Final_Specialization then
-            Internal_Set_Is_Final_Specialization (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             Internal_Set_Name (Self, Value.String_Value);
@@ -1743,7 +1743,7 @@ package body CMOF.Internals.Reflection is
       procedure Set_Enumeration is
       begin
          if Property = MP_CMOF_Classifier_Is_Final_Specialization then
-            Internal_Set_Is_Final_Specialization (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             Internal_Set_Name (Self, Value.String_Value);
@@ -1819,10 +1819,10 @@ package body CMOF.Internals.Reflection is
             Internal_Set_Datatype (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
-            Internal_Set_Is_Leaf (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Leaf (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Operation_Is_Query then
-            Internal_Set_Is_Query (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Query (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             Internal_Set_Name (Self, Value.String_Value);
@@ -1889,10 +1889,10 @@ package body CMOF.Internals.Reflection is
             null;
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
-            Internal_Set_Is_Ordered (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Ordered (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
-            Internal_Set_Is_Unique (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Unique (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             Internal_Set_Lower (Self, Value.Integer_Value);
@@ -1925,7 +1925,7 @@ package body CMOF.Internals.Reflection is
       procedure Set_Primitive_Type is
       begin
          if Property = MP_CMOF_Classifier_Is_Final_Specialization then
-            Internal_Set_Is_Final_Specialization (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             Internal_Set_Name (Self, Value.String_Value);
@@ -1956,25 +1956,25 @@ package body CMOF.Internals.Reflection is
             Internal_Set_Default (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Property_Is_Composite then
-            Internal_Set_Is_Composite (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Composite (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Property_Is_Derived then
-            Internal_Set_Is_Derived (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Derived (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Property_Is_Derived_Union then
-            Internal_Set_Is_Derived_Union (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Derived_Union (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
-            Internal_Set_Is_Leaf (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Leaf (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
-            Internal_Set_Is_Ordered (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Ordered (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Property_Is_Read_Only then
-            Internal_Set_Is_Read_Only (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Read_Only (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
-            Internal_Set_Is_Unique (Self, CMOF_Boolean (Value.Boolean_Value));
+            Internal_Set_Is_Unique (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             Internal_Set_Lower (Self, Value.Integer_Value);

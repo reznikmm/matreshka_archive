@@ -171,10 +171,10 @@ package body Generator.Constructors is
                      Put ("=> (M_Boolean, ");
 
                      if Property.Default_Boolean then
-                        Put ("True");
+                        Put ("AMF.True");
 
                      else
-                        Put ("False");
+                        Put ("AMF.False");
                      end if;
 
                      Put ("),");
@@ -269,6 +269,7 @@ package body Generator.Constructors is
    begin
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
+      Put_Line ("with AMF;");
       Put_Line ("with Cmof.Internals.Attributes;");
       Put_Line ("with Cmof.Internals.Metamodel;");
       Put_Line ("with Cmof.Internals.Tables;");

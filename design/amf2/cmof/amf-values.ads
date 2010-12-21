@@ -74,7 +74,7 @@ package AMF.Values is
             String_Value : League.Strings.Universal_String;
 
          when Value_Boolean =>
-            Boolean_Value : Boolean;
+            Boolean_Value : AMF_Boolean;
 
          when Value_Integer =>
             Integer_Value : AMF_Integer;

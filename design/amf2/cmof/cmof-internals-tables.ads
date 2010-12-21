@@ -28,7 +28,7 @@ private package CMOF.Internals.Tables is
             Collection : Collection_Of_CMOF_Element;
 
          when M_Boolean =>
-            Boolean_Value : CMOF_Boolean;
+            Boolean_Value : AMF.AMF_Boolean;
 
          when M_Integer =>
             Integer_Value : AMF.AMF_Integer;

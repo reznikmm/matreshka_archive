@@ -66,6 +66,8 @@ package AMF is
    -- Primitive types --
    ---------------------
 
+   type AMF_Boolean is new Boolean;
+
    type AMF_Integer is new Interfaces.Integer_32;
 
    type Unlimited_Natural (Unlimited : Boolean := False) is record
