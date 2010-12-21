@@ -111,17 +111,17 @@ package AMF is
    -- Optional values of primitive types --
    ----------------------------------------
 
-   type Optional_String (Is_Empty : Boolean := True) is record
+   type Optional_AMF_String (Is_Empty : Boolean := True) is record
       case Is_Empty is
          when False =>
             null;
 
          when True =>
-            Value : League.Strings.Universal_String;
+            Value : AMF_String;
       end case;
    end record;
 
-   type Optional_Boolean (Is_Empty : Boolean := True) is record
+   type Optional_AMF_Boolean (Is_Empty : Boolean := True) is record
       case Is_Empty is
          when False =>
             null;
@@ -131,7 +131,7 @@ package AMF is
       end case;
    end record;
 
-   type Optional_Integer (Is_Empty : Boolean := True) is record
+   type Optional_AMF_Integer (Is_Empty : Boolean := True) is record
       case Is_Empty is
          when False =>
             null;
@@ -141,7 +141,7 @@ package AMF is
       end case;
    end record;
 
-   type Optional_Unlimited_Natural (Is_Empty : Boolean := True) is record
+   type Optional_AMF_Unlimited_Natural (Is_Empty : Boolean := True) is record
       case Is_Empty is
          when False =>
             null;

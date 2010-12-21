@@ -71,7 +71,7 @@ package AMF.Values is
             null;
 
          when Value_String =>
-            String_Value : League.Strings.Universal_String;
+            String_Value : AMF_String;
 
          when Value_Boolean =>
             Boolean_Value : AMF_Boolean;
@@ -83,16 +83,16 @@ package AMF.Values is
             Unlimited_Natural_Value : AMF_Unlimited_Natural;
 
          when Value_Optional_String =>
-            Optional_String_Value : Optional_String;
+            Optional_String_Value : Optional_AMF_String;
 
          when Value_Optional_Boolean =>
-            Optional_Boolean_Value : Optional_Boolean;
+            Optional_Boolean_Value : Optional_AMF_Boolean;
 
          when Value_Optional_Integer =>
-            Optional_Integer_Value : Optional_Integer;
+            Optional_Integer_Value : Optional_AMF_Integer;
 
          when Value_Optional_Unlimited_Natural =>
-            Optional_Unlimited_Natural_Value : Optional_Unlimited_Natural;
+            Optional_Unlimited_Natural_Value : Optional_AMF_Unlimited_Natural;
 
          when Value_Element =>
             Element_Value : CMOF.CMOF_Element;
