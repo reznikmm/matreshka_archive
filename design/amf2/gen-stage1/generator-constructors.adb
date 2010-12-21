@@ -249,6 +249,8 @@ package body Generator.Constructors is
             Put_Line
              ("       (Kind   => E_" & To_Ada_Identifier (Class.Name) & ",");
             Put_Line
+             ("        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,");
+            Put_Line
              ("        Member => (0      => (Kind => M_None),");
             Class.All_Properties.Iterate
              (Generate_Member_Initialization'Access);

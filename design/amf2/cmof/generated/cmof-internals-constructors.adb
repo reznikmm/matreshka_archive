@@ -224,6 +224,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Association,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_Boolean, False),           --  isDerived
                    2      => (M_Boolean, False),           --  isFinalSpecialization
@@ -280,6 +281,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Class,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_Boolean, False),           --  isAbstract
                    2      => (M_Boolean, False),           --  isFinalSpecialization
@@ -330,6 +332,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Comment,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  body
@@ -352,6 +355,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Constraint,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_Element, 0),               --  context
                    2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
@@ -379,6 +383,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Data_Type,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_Boolean, False),           --  isFinalSpecialization
                    2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
@@ -428,6 +433,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Element_Import,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  alias
@@ -456,6 +462,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Enumeration,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_Boolean, False),           --  isFinalSpecialization
                    2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
@@ -507,6 +514,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Enumeration_Literal,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_Element, 0),               --  enumeration
                    2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
@@ -531,6 +539,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Expression,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
@@ -557,6 +566,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Opaque_Expression,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    3      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
@@ -581,6 +591,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Operation,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_Element, 0),               --  bodyCondition
                    2      => (M_Element, 0),               --  class
@@ -642,6 +653,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Package,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
@@ -686,6 +698,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Package_Import,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_Element, 0),               --  importedPackage
                    2      => (M_Element, 0),               --  importingNamespace
@@ -712,6 +725,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Package_Merge,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_Element, 0),               --  mergedPackage
                    2      => (M_Element, 0),               --  owner
@@ -738,6 +752,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Parameter,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  default
@@ -769,6 +784,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Primitive_Type,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_Boolean, False),           --  isFinalSpecialization
                    2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
@@ -818,6 +834,7 @@ package body Cmof.Internals.Constructors is
    begin
       Elements.Table (Self) :=
        (Kind   => E_Property,
+        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,
         Member => (0      => (Kind => M_None),
                    1      => (M_Element, 0),               --  association
                    2      => (M_Element, 0),               --  class

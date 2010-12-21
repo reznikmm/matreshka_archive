@@ -48,6 +48,8 @@ private package CMOF.Internals.Tables is
             null;
 
          when others =>
+            Id     : Matreshka.Internals.Strings.Shared_String_Access;
+            --  Internal identifier of element. Used as xmi:id.
             Member : Member_Array;
             --  First element (with index 0) contains index of first collection
             --  of class instance. To save space all class's collections have
