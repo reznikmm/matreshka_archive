@@ -1,5 +1,6 @@
 private with Ada.Containers.Vectors;
 private with Ada.Containers.Hashed_Maps;
+private with Ada.Containers.Hashed_Sets;
 
 private with League.Strings;
 private with XML.SAX.Attributes;
@@ -28,6 +29,16 @@ private
    package Postponed_Link_Vectors is
      new Ada.Containers.Vectors (Positive, Postponed_Link);
 
+   type Duplicate_Link is record
+      First  : League.Strings.Universal_String;
+      Second : League.Strings.Universal_String;
+   end record;
+
+   function Hash (Item : Duplicate_Link) return Ada.Containers.Hash_Type;
+
+   package Duplicate_Link_Sets is
+     new Ada.Containers.Hashed_Sets (Duplicate_Link, Hash, "=");
+
    function Hash
     (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
 
@@ -49,6 +60,7 @@ private
       Mapping      : String_Element_Maps.Map;
       Postponed    : Postponed_Link_Vectors.Vector;
       Root         : CMOF.CMOF_Element;
+      Duplicate    : Duplicate_Link_Sets.Set;
    end record;
 
    overriding procedure Characters

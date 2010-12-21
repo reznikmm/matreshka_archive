@@ -26,6 +26,7 @@ package body XMI.Handlers is
    use CMOF.Multiplicity_Elements;
    use CMOF.Properties;
    use CMOF.Typed_Elements;
+   use CMOF.XMI_Helper;
 
    XMI_Namespace  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
@@ -49,6 +50,16 @@ package body XMI.Handlers is
     (String    : League.Strings.Universal_String;
      Character : Wide_Wide_Character) return Natural;
 
+   procedure Establish_Link
+    (Self          : in out XMI_Handler;
+     Attribute     : CMOF.CMOF_Property;
+     One_Element   : CMOF.CMOF_Element;
+     Other_Element : CMOF.CMOF_Element);
+   --  Creates link between specified elements, but prevents to create
+   --  duplicate links. Duplicate links are created for association which
+   --  is not composition association, because opposite element referered
+   --  on both ends.
+
    ----------------
    -- Characters --
    ----------------
@@ -62,6 +73,41 @@ package body XMI.Handlers is
          Self.Text.Append (Text);
       end if;
    end Characters;
+
+   --------------------
+   -- Establish_Link --
+   --------------------
+
+   procedure Establish_Link
+    (Self          : in out XMI_Handler;
+     Attribute     : CMOF.CMOF_Property;
+     One_Element   : CMOF.CMOF_Element;
+     Other_Element : CMOF.CMOF_Element)
+   is
+      Association : constant CMOF_Association := Get_Association (Attribute);
+      E_Id        : constant League.Strings.Universal_String
+        := Get_Id (One_Element);
+      O_Id        : constant League.Strings.Universal_String
+        := Get_Id (Other_Element);
+
+   begin
+      if Self.Duplicate.Contains ((E_Id, O_Id)) then
+         Self.Duplicate.Delete ((E_Id, O_Id));
+
+      elsif Self.Duplicate.Contains ((O_Id, E_Id)) then
+         Self.Duplicate.Delete ((O_Id, E_Id));
+
+      else
+         Self.Duplicate.Insert ((E_Id, O_Id));
+
+         if Element (Get_Member_End (Association), 1) = Attribute then
+            CMOF.Factory.Create_Link (Association, One_Element, Other_Element);
+
+         else
+            CMOF.Factory.Create_Link (Association, Other_Element, One_Element);
+         end if;
+      end if;
+   end Establish_Link;
 
    ------------------
    -- End_Document --
@@ -78,24 +124,12 @@ package body XMI.Handlers is
       --------------------
 
       procedure Establish_Link (Position : Postponed_Link_Vectors.Cursor) is
-         L           : constant Postponed_Link
+         L : constant Postponed_Link
            := Postponed_Link_Vectors.Element (Position);
-         Association : constant CMOF_Association
-           := Get_Association (L.Attribute);
 
       begin
-         if Element (Get_Member_End (Association), 1) = L.Attribute then
-            CMOF.Factory.Create_Link
-             (Association,
-              L.Element,
-              Self.Mapping.Element (L.Id));
-
-         else
-            CMOF.Factory.Create_Link
-             (Association,
-              Self.Mapping.Element (L.Id),
-              L.Element);
-         end if;
+         Establish_Link
+          (Self, L.Attribute, L.Element, Self.Mapping.Element (L.Id));
       end Establish_Link;
 
    begin
@@ -154,6 +188,17 @@ package body XMI.Handlers is
    begin
       return League.Strings.Empty_Universal_String;
    end Error_String;
+
+   ----------
+   -- Hash --
+   ----------
+
+   function Hash (Item : Duplicate_Link) return Ada.Containers.Hash_Type is
+      use type League.Strings.Universal_String;
+
+   begin
+      return Hash (Item.First & Item.Second);
+   end Hash;
 
    ----------
    -- Hash --
@@ -338,18 +383,11 @@ package body XMI.Handlers is
                begin
                   for J in 1 .. Ids.Length loop
                      if Self.Mapping.Contains (Ids.Element (J)) then
-                        if Element (Get_Member_End (Association), 1) = Property then
-                           CMOF.Factory.Create_Link
-                            (Association,
-                             Self.Current,
-                             Self.Mapping.Element (Ids.Element (J)));
-
-                        else
-                           CMOF.Factory.Create_Link
-                            (Association,
-                             Self.Mapping.Element (Ids.Element (J)),
-                             Self.Current);
-                        end if;
+                        Establish_Link
+                         (Self,
+                          Property,
+                          Self.Current,
+                          Self.Mapping.Element (Ids.Element (J)));
 
                      else
                         Self.Postponed.Append
@@ -361,18 +399,11 @@ package body XMI.Handlers is
             else
 
                if Self.Mapping.Contains (Value) then
-                  if Element (Get_Member_End (Association), 1) = Property then
-                     CMOF.Factory.Create_Link
-                      (Association,
-                       Self.Current,
-                       Self.Mapping.Element (Value));
-
-                  else
-                     CMOF.Factory.Create_Link
-                      (Association,
-                       Self.Mapping.Element (Value),
-                       Self.Current);
-                  end if;
+                  Establish_Link
+                   (Self,
+                    Property,
+                    Self.Current,
+                    Self.Mapping.Element (Value));
 
                else
                   Self.Postponed.Append ((Self.Current, Property, Value));
@@ -413,6 +444,7 @@ package body XMI.Handlers is
             end if;
 
             New_Element := CMOF.Factory.Create (Meta);
+            Set_Id (New_Element, Attributes.Value (XMI_Namespace, Id_Name));
             Self.Mapping.Insert
              (Attributes.Value (XMI_Namespace, Id_Name), New_Element);
 
@@ -474,6 +506,7 @@ package body XMI.Handlers is
 
          Meta         := CMOF.XMI_Helper.Resolve (Local_Name);
          Self.Current := CMOF.Factory.Create (Meta);
+         Set_Id (Self.Current, Attributes.Value (XMI_Namespace, Id_Name));
          Self.Root    := Self.Current;
          Self.Mapping.Insert
           (Attributes.Value (XMI_Namespace, Id_Name), Self.Current);
