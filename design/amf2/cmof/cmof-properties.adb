@@ -54,4 +54,12 @@ package body CMOF.Properties is
       return CMOF.Internals.Attributes.Internal_Get_Association (Self);
    end Get_Association;
 
+   ----------------------------
+   -- Get_Redefined_Property --
+   ----------------------------
+
+   function Get_Redefined_Property
+    (Self : CMOF_Property) return Set_Of_CMOF_Property
+       renames CMOF.Internals.Attributes.Internal_Get_Redefined_Property;
+
 end CMOF.Properties;

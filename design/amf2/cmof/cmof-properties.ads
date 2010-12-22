@@ -46,4 +46,7 @@ package CMOF.Properties is
 
    function Get_Association (Self : CMOF_Property) return CMOF_Association;
 
+   function Get_Redefined_Property
+    (Self : CMOF_Property) return Set_Of_CMOF_Property;
+
 end CMOF.Properties;
