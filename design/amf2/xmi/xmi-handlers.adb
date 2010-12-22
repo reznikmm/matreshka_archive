@@ -51,6 +51,7 @@ with AMF.Values;
 with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;
+with CMOF.Extents;
 with CMOF.Factory;
 with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
@@ -328,9 +329,9 @@ package body XMI.Handlers is
    -- Root --
    ----------
 
-   function Root (Self : XMI_Handler) return CMOF.CMOF_Element is
+   function Root (Self : XMI_Handler) return CMOF.CMOF_Extent is
    begin
-      return Self.Root;
+      return Self.Extent;
    end Root;
 
 --   overriding procedure Set_Document_Locator
@@ -341,10 +342,17 @@ package body XMI.Handlers is
 --    (Self    : in out XMI_Handler;
 --     Name    : League.Strings.Universal_String;
 --     Success : in out Boolean) is null;
---
---   overriding procedure Start_Document
---    (Self    : in out XMI_Handler;
---     Success : in out Boolean) is null;
+
+   --------------------
+   -- Start_Document --
+   --------------------
+
+   overriding procedure Start_Document
+    (Self    : in out XMI_Handler;
+     Success : in out Boolean) is
+   begin
+      Self.Extent := CMOF.Extents.Create_Extent;
+   end Start_Document;
 
    -------------------
    -- Start_Element --
@@ -486,7 +494,7 @@ package body XMI.Handlers is
                raise Program_Error;
             end if;
 
-            New_Element := CMOF.Factory.Create (Meta);
+            New_Element := CMOF.Factory.Create (Self.Extent, Meta);
             Set_Id (New_Element, Attributes.Value (XMI_Namespace, Id_Name));
             Self.Mapping.Insert
              (Attributes.Value (XMI_Namespace, Id_Name), New_Element);
@@ -548,9 +556,8 @@ package body XMI.Handlers is
          end if;
 
          Meta         := CMOF.XMI_Helper.Resolve (Local_Name);
-         Self.Current := CMOF.Factory.Create (Meta);
+         Self.Current := CMOF.Factory.Create (Self.Extent, Meta);
          Set_Id (Self.Current, Attributes.Value (XMI_Namespace, Id_Name));
-         Self.Root    := Self.Current;
          Self.Mapping.Insert
           (Attributes.Value (XMI_Namespace, Id_Name), Self.Current);
       end if;
@@ -566,7 +573,11 @@ package body XMI.Handlers is
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean) is
    begin
-      Put_Line ("'" & Prefix.To_Wide_Wide_String & "' is mapped to " & Namespace_URI.To_Wide_Wide_String);
+      Put_Line
+       ("'"
+          & Prefix.To_Wide_Wide_String
+          & "' is mapped to "
+          & Namespace_URI.To_Wide_Wide_String);
    end Start_Prefix_Mapping;
 
 end XMI.Handlers;

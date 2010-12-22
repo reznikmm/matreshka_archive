@@ -46,7 +46,7 @@ with XML.SAX.Simple_Readers;
 
 with XMI.Handlers;
 
-function XMI.Reader (File_Name : String) return CMOF.CMOF_Element is
+function XMI.Reader (File_Name : String) return CMOF.CMOF_Extent is
    Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Input   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
    Handler : aliased XMI.Handlers.XMI_Handler;

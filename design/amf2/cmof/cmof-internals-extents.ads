@@ -4,7 +4,7 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                        Runtime Library Component                         --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,26 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
 
-with AMF.Values;
+package CMOF.Internals.Extents is
 
-package CMOF.Factory is
+   procedure Initialize_CMOF_Metamodel_Extent;
 
-   function Create
-    (Extent : CMOF_Extent; Meta_Class : CMOF_Class) return CMOF_Element;
+   procedure Internal_Append (Extent : CMOF_Extent; Element : CMOF_Element);
 
-   procedure Create_Link
-    (Association    : CMOF_Association;
-     First_Element  : CMOF_Element;
-     Second_Element : CMOF_Element);
+   function Create_Extent return CMOF_Extent;
 
-   function Create_From_String
-    (Data_Type : CMOF_Data_Type;
-     Image     : League.Strings.Universal_String) return AMF.Values.Value;
-
-   function Convert_To_String
-    (Data_Type : CMOF_Data_Type;
-     Value     : AMF.Values.Value) return League.Strings.Universal_String;
-
-end CMOF.Factory;
+end CMOF.Internals.Extents;

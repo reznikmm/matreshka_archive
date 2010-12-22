@@ -41,26 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
+with Ada.Containers.Hashed_Sets;
 
-with AMF.Values;
+package CMOF.Extents is
 
-package CMOF.Factory is
+   function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type;
 
-   function Create
-    (Extent : CMOF_Extent; Meta_Class : CMOF_Class) return CMOF_Element;
+   package CMOF_Element_Sets is
+     new Ada.Containers.Hashed_Sets (CMOF_Element, Hash, "=");
 
-   procedure Create_Link
-    (Association    : CMOF_Association;
-     First_Element  : CMOF_Element;
-     Second_Element : CMOF_Element);
+   function Create_Extent return CMOF_Extent;
 
-   function Create_From_String
-    (Data_Type : CMOF_Data_Type;
-     Image     : League.Strings.Universal_String) return AMF.Values.Value;
+   function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set;
 
-   function Convert_To_String
-    (Data_Type : CMOF_Data_Type;
-     Value     : AMF.Values.Value) return League.Strings.Universal_String;
-
-end CMOF.Factory;
+end CMOF.Extents;

@@ -72,7 +72,7 @@ package body Generator.Metamodel is
          Put_Line
           ("   Initialize_Association ("
              & Constant_Name_In_Metamodel (Association)
-             & ");");
+             & ", CMOF_Metamodel_Extent);");
          Put_Line ("   Internal_Set_Name");
          Put_Line
           ("    ("
@@ -237,7 +237,7 @@ package body Generator.Metamodel is
          Put_Line
           ("   Initialize_Class ("
              & Constant_Name_In_Metamodel (Class)
-             & ");");
+             & ", CMOF_Metamodel_Extent);");
          Put_Line ("   Internal_Set_Name");
          Put_Line
           ("    ("
@@ -334,7 +334,7 @@ package body Generator.Metamodel is
          Put_Line
           ("   Initialize_Enumeration ("
              & Constant_Name_In_Metamodel (Enumeration)
-             & ");");
+             & ", CMOF_Metamodel_Extent);");
          Put_Line ("   Internal_Set_Name");
          Put_Line
           ("    ("
@@ -378,7 +378,7 @@ package body Generator.Metamodel is
          Put_Line
           ("   Initialize_Primitive_Type ("
              & Constant_Name_In_Metamodel (Primitive_Type)
-             & ");");
+             & ", CMOF_Metamodel_Extent);");
          Put_Line ("   Internal_Set_Name");
          Put_Line
           ("    ("
@@ -404,7 +404,7 @@ package body Generator.Metamodel is
          Put_Line
           ("   Initialize_Property ("
              & Constant_Name_In_Metamodel (Property)
-             & ");");
+             & ", CMOF_Metamodel_Extent);");
          Put_Line ("   Internal_Set_Name");
          Put_Line
           ("    ("
@@ -440,6 +440,7 @@ package body Generator.Metamodel is
       New_Line;
       Put_Line ("with Cmof.Internals.Attributes;");
       Put_Line ("with Cmof.Internals.Constructors;");
+      Put_Line ("with Cmof.Internals.Extents;");
       Put_Line ("with Cmof.Internals.Links;");
       Put_Line ("with Cmof.Internals.Metamodel;");
       Put_Line ("with Cmof.Internals.Tables;");
@@ -448,6 +449,7 @@ package body Generator.Metamodel is
       New_Line;
       Put_Line ("   use Cmof.Internals.Attributes;");
       Put_Line ("   use Cmof.Internals.Constructors;");
+      Put_Line ("   use Cmof.Internals.Extents;");
       Put_Line ("   use Cmof.Internals.Links;");
       Put_Line ("   use Cmof.Internals.Metamodel;");
       Put_Line ("   use Cmof.Internals.Tables;");
@@ -459,9 +461,13 @@ package body Generator.Metamodel is
       Put_Line ("begin");
       Put_Line ("   Elements.Set_Last (Last_Cmof_Metaelement);");
       New_Line;
+      Put_Line ("   --  Initialization of CMOF metamodel extent.");
+      New_Line;
+      Put_Line ("   Initialize_CMOF_Metamodel_Extent;");
+      New_Line;
       Put_Line ("   --  Initialization of CMOF package.");
       New_Line;
-      Put_Line ("   Initialize_Package (MM_CMOF);");
+      Put_Line ("   Initialize_Package (MM_CMOF, CMOF_Metamodel_Extent);");
       Put_Line
        ("   Internal_Set_Name"
           & " (MM_CMOF, League.Strings.To_Universal_String (""CMOF""));");

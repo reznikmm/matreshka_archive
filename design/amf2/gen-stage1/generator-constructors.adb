@@ -89,15 +89,17 @@ package body Generator.Constructors is
             Put_Line ("   -- " & Constructor_Name & " --");
             Put_Line ("   ---" & (Constructor_Name'Length * '-') & "---");
             New_Line;
+            Put_Line ("   function " & Constructor_Name);
             Put_Line
-             ("   function "
-                & Constructor_Name
-                & " return Cmof_"
+             ("    (Extent : CMOF_Extent) return Cmof_"
                 & To_Ada_Identifier (Class.Name)
                 & " is");
             Put_Line ("   begin");
             Put_Line ("      Elements.Increment_Last;");
-            Put_Line ("      Initialize_" & To_Ada_Identifier (Class.Name) & " (Elements.Last);");
+            Put_Line
+             ("      Initialize_"
+                & To_Ada_Identifier (Class.Name)
+                & " (Elements.Last, Extent);");
             New_Line;
             Put_Line ("      return Elements.Last;");
             Put_Line ("   end " & Constructor_Name & ";");
@@ -209,8 +211,8 @@ package body Generator.Constructors is
                if not Is_Multivalued (Property) then
                   if Has_Boolean_Type (Property) then
                      Put
-                      ("                  " & Integer'Image (Property_Index));
-                     Set_Col (27);
+                      ("                    " & Integer'Image (Property_Index));
+                     Set_Col (29);
                      Put ("=> (M_Boolean, ");
 
                      if Property.Default_Boolean then
@@ -226,8 +228,8 @@ package body Generator.Constructors is
 
                   elsif Has_Integer_Type (Property) then
                      Put
-                      ("                  " & Integer'Image (Property_Index));
-                     Set_Col (27);
+                      ("                    " & Integer'Image (Property_Index));
+                     Set_Col (29);
                      Put
                       ("=> (M_Integer,"
                          & Integer'Image (Property.Default_Integer)
@@ -237,8 +239,8 @@ package body Generator.Constructors is
 
                   elsif Has_Unlimited_Natural_Type (Property) then
                      Put
-                      ("                  " & Integer'Image (Property_Index));
-                     Set_Col (27);
+                      ("                    " & Integer'Image (Property_Index));
+                     Set_Col (29);
                      Put ("=> (M_Unlimited_Natural,");
 
                      if Property.Default_Integer = Integer'Last then
@@ -257,8 +259,8 @@ package body Generator.Constructors is
 
                   elsif Has_String_Type (Property) then
                      Put
-                      ("                  " & Integer'Image (Property_Index));
-                     Set_Col (27);
+                      ("                    " & Integer'Image (Property_Index));
+                     Set_Col (29);
                      Put
                       ("=> (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),");
                      Set_Col (60);
@@ -266,8 +268,8 @@ package body Generator.Constructors is
 
                   elsif Get_Type (Property).all in Class_Record'Class then
                      Put
-                      ("                  " & Integer'Image (Property_Index));
-                     Set_Col (27);
+                      ("                    " & Integer'Image (Property_Index));
+                     Set_Col (29);
                      Put
                       ("=> (M_Element, 0),");
                      Set_Col (60);
@@ -285,22 +287,27 @@ package body Generator.Constructors is
             Put_Line ("   ---" & (Initializer_Name'Length * '-') & "---");
             New_Line;
             Put_Line
-             ("   procedure "
-                & Initializer_Name
-                & " (Self : CMOF_"
+             ("   procedure " & Initializer_Name);
+            Put_Line
+             ("    (Self   : CMOF_"
                 & To_Ada_Identifier (Class.Name)
-                & ") is");
+                & ";");
+            Put_Line ("     Extent : CMOF_Extent) is");
             Put_Line ("   begin");
             Put_Line ("      Elements.Table (Self) :=");
             Put_Line
-             ("       (Kind   => E_" & To_Ada_Identifier (Class.Name) & ",");
+             ("       (Kind     => E_" & To_Ada_Identifier (Class.Name) & ",");
             Put_Line
-             ("        Id     => Matreshka.Internals.Strings.Shared_Empty'Access,");
+             ("        Id       => Matreshka.Internals.Strings.Shared_Empty'Access,");
             Put_Line
-             ("        Member => (0      => (Kind => M_None),");
+             ("        Next     => 0,");
+            Put_Line
+             ("        Previous => 0,");
+            Put_Line
+             ("        Member   => (0      => (Kind => M_None),");
             Class.All_Properties.Iterate
              (Generate_Member_Initialization'Access);
-            Put_Line ("                   others => (Kind => M_None)));");
+            Put_Line ("                     others => (Kind => M_None)));");
             Put_Line
              ("      Allocate_Collection_Of_Cmof_Element_Slots"
                 & " (Self, "
@@ -308,6 +315,7 @@ package body Generator.Constructors is
                 & ");");
             Class.All_Properties.Iterate
              (Generate_Collection_Property_Initialization'Access);
+            Put_Line ("      Internal_Append (Extent, Self);");
             Put_Line ("   end " & Initializer_Name & ";");
          end if;
       end Generate_Initializer_Implementation;
@@ -317,6 +325,7 @@ package body Generator.Constructors is
       New_Line;
       Put_Line ("with AMF;");
       Put_Line ("with Cmof.Internals.Attributes;");
+      Put_Line ("with Cmof.Internals.Extents;");
       Put_Line ("with Cmof.Internals.Metamodel;");
       Put_Line ("with Cmof.Internals.Tables;");
       Put_Line ("with Cmof.Internals.Types;");
@@ -324,6 +333,7 @@ package body Generator.Constructors is
       Put_Line ("package body Cmof.Internals.Constructors is");
       New_Line;
       Put_Line ("   use Cmof.Internals.Attributes;");
+      Put_Line ("   use Cmof.Internals.Extents;");
       Put_Line ("   use Cmof.Internals.Metamodel;");
       Put_Line ("   use Cmof.Internals.Tables;");
       Put_Line ("   use Cmof.Internals.Types;");
@@ -363,10 +373,9 @@ package body Generator.Constructors is
       begin
          if not Class.Is_Abstract then
             New_Line;
+            Put_Line ("   function Create_" & To_Ada_Identifier (Class.Name));
             Put_Line
-             ("   function Create_"
-                & To_Ada_Identifier (Class.Name)
-                & " return Cmof_"
+             ("    (Extent : CMOF_Extent) return Cmof_"
                 & To_Ada_Identifier (Class.Name)
                 & ";");
          end if;
@@ -385,11 +394,10 @@ package body Generator.Constructors is
          if not Class.Is_Abstract then
             New_Line;
             Put_Line
-             ("   procedure Initialize_"
-                & To_Ada_Identifier (Class.Name)
-                & " (Self : Cmof_"
-                & To_Ada_Identifier (Class.Name)
-                & ");");
+             ("   procedure Initialize_" & To_Ada_Identifier (Class.Name));
+            Put_Line
+             ("    (Self   : Cmof_" & To_Ada_Identifier (Class.Name) & ";");
+            Put_Line ("     Extent : CMOF_Extent);");
          end if;
       end Generate_Initializer_Specification;
 

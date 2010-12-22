@@ -57,58 +57,59 @@ package body CMOF.Factory is
    -- Create --
    ------------
 
-   function Create (Meta_Class : CMOF_Class) return CMOF_Element is
+   function Create
+    (Extent : CMOF_Extent; Meta_Class : CMOF_Class) return CMOF_Element is
    begin
       if Meta_Class = MC_CMOF_Association then
-         return CMOF.Internals.Constructors.Create_Association;
+         return CMOF.Internals.Constructors.Create_Association (Extent);
 
       elsif Meta_Class = MC_CMOF_Class then
-         return CMOF.Internals.Constructors.Create_Class;
+         return CMOF.Internals.Constructors.Create_Class (Extent);
 
       elsif Meta_Class = MC_CMOF_Comment then
-         return CMOF.Internals.Constructors.Create_Comment;
+         return CMOF.Internals.Constructors.Create_Comment (Extent);
 
       elsif Meta_Class = MC_CMOF_Constraint then
-         return CMOF.Internals.Constructors.Create_Constraint;
+         return CMOF.Internals.Constructors.Create_Constraint (Extent);
 
       elsif Meta_Class = MC_CMOF_Data_Type then
-         return CMOF.Internals.Constructors.Create_Data_Type;
+         return CMOF.Internals.Constructors.Create_Data_Type (Extent);
 
       elsif Meta_Class = MC_CMOF_Element_Import then
-         return CMOF.Internals.Constructors.Create_Element_Import;
+         return CMOF.Internals.Constructors.Create_Element_Import (Extent);
 
       elsif Meta_Class = MC_CMOF_Enumeration then
-         return CMOF.Internals.Constructors.Create_Enumeration;
+         return CMOF.Internals.Constructors.Create_Enumeration (Extent);
 
       elsif Meta_Class = MC_CMOF_Enumeration_Literal then
-         return CMOF.Internals.Constructors.Create_Enumeration_Literal;
+         return CMOF.Internals.Constructors.Create_Enumeration_Literal (Extent);
 
       elsif Meta_Class = MC_CMOF_Expression then
-         return CMOF.Internals.Constructors.Create_Expression;
+         return CMOF.Internals.Constructors.Create_Expression (Extent);
 
       elsif Meta_Class = MC_CMOF_Opaque_Expression then
-         return CMOF.Internals.Constructors.Create_Opaque_Expression;
+         return CMOF.Internals.Constructors.Create_Opaque_Expression (Extent);
 
       elsif Meta_Class = MC_CMOF_Operation then
-         return CMOF.Internals.Constructors.Create_Operation;
+         return CMOF.Internals.Constructors.Create_Operation (Extent);
 
       elsif Meta_Class = MC_CMOF_Package then
-         return CMOF.Internals.Constructors.Create_Package;
+         return CMOF.Internals.Constructors.Create_Package (Extent);
 
       elsif Meta_Class = MC_CMOF_Package_Import then
-         return CMOF.Internals.Constructors.Create_Package_Import;
+         return CMOF.Internals.Constructors.Create_Package_Import (Extent);
 
       elsif Meta_Class = MC_CMOF_Package_Merge then
-         return CMOF.Internals.Constructors.Create_Package_Merge;
+         return CMOF.Internals.Constructors.Create_Package_Merge (Extent);
 
       elsif Meta_Class = MC_CMOF_Parameter then
-         return CMOF.Internals.Constructors.Create_Parameter;
+         return CMOF.Internals.Constructors.Create_Parameter (Extent);
 
       elsif Meta_Class = MC_CMOF_Primitive_Type then
-         return CMOF.Internals.Constructors.Create_Primitive_Type;
+         return CMOF.Internals.Constructors.Create_Primitive_Type (Extent);
 
       elsif Meta_Class = MC_CMOF_Property then
-         return CMOF.Internals.Constructors.Create_Property;
+         return CMOF.Internals.Constructors.Create_Property (Extent);
       end if;
 
       raise Program_Error with "Unknown CMOF class";

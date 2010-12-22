@@ -93,9 +93,12 @@ private package CMOF.Internals.Tables is
             null;
 
          when others =>
-            Id     : Matreshka.Internals.Strings.Shared_String_Access;
+            Id       : Matreshka.Internals.Strings.Shared_String_Access;
             --  Internal identifier of element. Used as xmi:id.
-            Member : Member_Array;
+            Next     : CMOF_Element;
+            Previous : CMOF_Element;
+            --  Doubly linked list of elements in the extent.
+            Member   : Member_Array;
             --  First element (with index 0) contains index of first collection
             --  of class instance. To save space all class's collections have
             --  sequential numbers, thus we need to store only first one. This
@@ -182,6 +185,11 @@ private package CMOF.Internals.Tables is
       Next       : Collection_Element_Identifier;
    end record;
 
+   type Extent_Record is record
+      Head : CMOF_Element;
+      Tail : CMOF_Element;
+   end record;
+
    package Links is new GNAT.Table (Link_Record, CMOF_Link, 1, 100, 100);
 
    package Elements is
@@ -194,6 +202,9 @@ private package CMOF.Internals.Tables is
    package Collection_Elements is
      new GNAT.Table
        (Collection_Element_Record, Collection_Element_Identifier, 1, 100, 100);
+
+   package Extents is
+     new GNAT.Table (Extent_Record, CMOF_Extent, 1, 100, 100);
 
    function Is_Null (Self : Cmof_Element) return Boolean;
    pragma Inline (Is_Null);

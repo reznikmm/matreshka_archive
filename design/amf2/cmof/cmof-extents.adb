@@ -41,26 +41,33 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
+with CMOF.Internals.Extents;
 
-with AMF.Values;
+package body CMOF.Extents is
 
-package CMOF.Factory is
+   -------------------
+   -- Create_Extent --
+   -------------------
 
-   function Create
-    (Extent : CMOF_Extent; Meta_Class : CMOF_Class) return CMOF_Element;
+   function Create_Extent return CMOF_Extent
+     renames CMOF.Internals.Extents.Create_Extent;
 
-   procedure Create_Link
-    (Association    : CMOF_Association;
-     First_Element  : CMOF_Element;
-     Second_Element : CMOF_Element);
+   --------------
+   -- Elements --
+   --------------
 
-   function Create_From_String
-    (Data_Type : CMOF_Data_Type;
-     Image     : League.Strings.Universal_String) return AMF.Values.Value;
+   function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set is
+   begin
+      return CMOF_Element_Sets.Empty_Set;
+   end Elements;
 
-   function Convert_To_String
-    (Data_Type : CMOF_Data_Type;
-     Value     : AMF.Values.Value) return League.Strings.Universal_String;
+   ----------
+   -- Hash --
+   ----------
 
-end CMOF.Factory;
+   function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type is
+   begin
+      return Ada.Containers.Hash_Type (Item);
+   end Hash;
+
+end CMOF.Extents;

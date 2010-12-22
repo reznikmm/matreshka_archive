@@ -56,7 +56,7 @@ package XMI.Handlers is
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler with private;
 
-   function Root (Self : XMI_Handler) return CMOF.CMOF_Element;
+   function Root (Self : XMI_Handler) return CMOF.CMOF_Extent;
 
 private
 
@@ -95,6 +95,7 @@ private
 
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler with record
+      Extent       : CMOF.CMOF_Extent;
       Current      : CMOF.CMOF_Element := CMOF.Null_CMOF_Element;
       Stack        : Element_Vectors.Vector;
       Attribute    : CMOF.CMOF_Property := CMOF.Null_CMOF_Element;
@@ -102,7 +103,6 @@ private
       Collect_Text : Boolean := False;
       Mapping      : String_Element_Maps.Map;
       Postponed    : Postponed_Link_Vectors.Vector;
-      Root         : CMOF.CMOF_Element;
       Duplicate    : Duplicate_Link_Sets.Set;
    end record;
 
@@ -149,10 +149,10 @@ private
 --    (Self    : in out XMI_Handler;
 --     Name    : League.Strings.Universal_String;
 --     Success : in out Boolean) is null;
---
---   overriding procedure Start_Document
---    (Self    : in out XMI_Handler;
---     Success : in out Boolean) is null;
+
+   overriding procedure Start_Document
+    (Self    : in out XMI_Handler;
+     Success : in out Boolean);
 
    overriding procedure Start_Element
     (Self           : in out XMI_Handler;

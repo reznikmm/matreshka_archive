@@ -4,7 +4,7 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                        Runtime Library Component                         --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,26 +41,64 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
+with CMOF.Internals.Tables;
 
-with AMF.Values;
+package body CMOF.Internals.Extents is
 
-package CMOF.Factory is
+   -------------------
+   -- Create_Extent --
+   -------------------
 
-   function Create
-    (Extent : CMOF_Extent; Meta_Class : CMOF_Class) return CMOF_Element;
+   function Create_Extent return CMOF_Extent is
+   begin
+      Tables.Extents.Increment_Last;
+      Tables.Extents.Table (Tables.Extents.Last) := (0, 0);
 
-   procedure Create_Link
-    (Association    : CMOF_Association;
-     First_Element  : CMOF_Element;
-     Second_Element : CMOF_Element);
+      return Tables.Extents.Last;
+   end Create_Extent;
 
-   function Create_From_String
-    (Data_Type : CMOF_Data_Type;
-     Image     : League.Strings.Universal_String) return AMF.Values.Value;
+   ---------------------
+   -- Internal_Append --
+   ---------------------
 
-   function Convert_To_String
-    (Data_Type : CMOF_Data_Type;
-     Value     : AMF.Values.Value) return League.Strings.Universal_String;
+   procedure Internal_Append
+    (Extent  : CMOF_Extent;
+     Element : CMOF_Element)
+   is
+      Head        : CMOF_Element := Tables.Extents.Table (Extent).Head;
+      Tail        : CMOF_Element := Tables.Extents.Table (Extent).Tail;
+      Previous    : CMOF_Element := Tables.Extents.Table (Extent).Tail;
+      Next        : CMOF_Element := 0;
 
-end CMOF.Factory;
+   begin
+      if Head = 0 then
+         --  List is empty.
+
+         Head := Element;
+         Tail := Element;
+
+         Tables.Extents.Table (Extent).Head := Head;
+         Tables.Extents.Table (Extent).Tail := Tail;
+
+      else
+         Tail := Element;
+
+         Tables.Extents.Table (Extent).Tail := Tail;
+         Tables.Elements.Table (Previous).Next := Element;
+      end if;
+
+      Tables.Elements.Table (Element).Previous := Previous;
+      Tables.Elements.Table (Element).Next     := Next;
+   end Internal_Append;
+
+   --------------------------------------
+   -- Initialize_CMOF_Metamodel_Extent --
+   --------------------------------------
+
+   procedure Initialize_CMOF_Metamodel_Extent is
+   begin
+      Tables.Extents.Set_Last (CMOF_Metamodel_Extent);
+      Tables.Extents.Table (CMOF_Metamodel_Extent) := (0, 0);
+   end Initialize_CMOF_Metamodel_Extent;
+
+end CMOF.Internals.Extents;
