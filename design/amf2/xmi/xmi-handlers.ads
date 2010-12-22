@@ -73,8 +73,9 @@ private
      new Ada.Containers.Vectors (Positive, Postponed_Link);
 
    type Duplicate_Link is record
-      First  : League.Strings.Universal_String;
-      Second : League.Strings.Universal_String;
+      Association : CMOF.CMOF_Association;
+      First       : League.Strings.Universal_String;
+      Second      : League.Strings.Universal_String;
    end record;
 
    function Hash (Item : Duplicate_Link) return Ada.Containers.Hash_Type;

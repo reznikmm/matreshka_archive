@@ -118,41 +118,6 @@ package body XMI.Handlers is
       end if;
    end Characters;
 
-   --------------------
-   -- Establish_Link --
-   --------------------
-
-   procedure Establish_Link
-    (Self          : in out XMI_Handler;
-     Attribute     : CMOF.CMOF_Property;
-     One_Element   : CMOF.CMOF_Element;
-     Other_Element : CMOF.CMOF_Element)
-   is
-      Association : constant CMOF_Association := Get_Association (Attribute);
-      E_Id        : constant League.Strings.Universal_String
-        := Get_Id (One_Element);
-      O_Id        : constant League.Strings.Universal_String
-        := Get_Id (Other_Element);
-
-   begin
-      if Self.Duplicate.Contains ((E_Id, O_Id)) then
-         Self.Duplicate.Delete ((E_Id, O_Id));
-
-      elsif Self.Duplicate.Contains ((O_Id, E_Id)) then
-         Self.Duplicate.Delete ((O_Id, E_Id));
-
-      else
-         Self.Duplicate.Insert ((E_Id, O_Id));
-
-         if Element (Get_Member_End (Association), 1) = Attribute then
-            CMOF.Factory.Create_Link (Association, One_Element, Other_Element);
-
-         else
-            CMOF.Factory.Create_Link (Association, Other_Element, One_Element);
-         end if;
-      end if;
-   end Establish_Link;
-
    ------------------
    -- End_Document --
    ------------------
@@ -232,6 +197,41 @@ package body XMI.Handlers is
    begin
       return League.Strings.Empty_Universal_String;
    end Error_String;
+
+   --------------------
+   -- Establish_Link --
+   --------------------
+
+   procedure Establish_Link
+    (Self          : in out XMI_Handler;
+     Attribute     : CMOF.CMOF_Property;
+     One_Element   : CMOF.CMOF_Element;
+     Other_Element : CMOF.CMOF_Element)
+   is
+      Association : constant CMOF_Association := Get_Association (Attribute);
+      E_Id        : constant League.Strings.Universal_String
+        := Get_Id (One_Element);
+      O_Id        : constant League.Strings.Universal_String
+        := Get_Id (Other_Element);
+
+   begin
+      if Self.Duplicate.Contains ((Association, E_Id, O_Id)) then
+         Self.Duplicate.Delete ((Association, E_Id, O_Id));
+
+      elsif Self.Duplicate.Contains ((Association, O_Id, E_Id)) then
+         Self.Duplicate.Delete ((Association, O_Id, E_Id));
+
+      else
+         Self.Duplicate.Insert ((Association, E_Id, O_Id));
+
+         if Element (Get_Member_End (Association), 1) = Attribute then
+            CMOF.Factory.Create_Link (Association, One_Element, Other_Element);
+
+         else
+            CMOF.Factory.Create_Link (Association, Other_Element, One_Element);
+         end if;
+      end if;
+   end Establish_Link;
 
    ----------
    -- Hash --
@@ -499,12 +499,18 @@ package body XMI.Handlers is
             Self.Mapping.Insert
              (Attributes.Value (XMI_Namespace, Id_Name), New_Element);
 
-            if Element (Get_Member_End (Association), 1) = Property then
-               CMOF.Factory.Create_Link (Association, Self.Current, New_Element);
+--            if Element (Get_Member_End (Association), 1) = Property then
+--               CMOF.Factory.Create_Link (Association, Self.Current, New_Element);
+--
+--            else
+--               CMOF.Factory.Create_Link (Association, New_Element, Self.Current);
+--            end if;
+            --  Some XMI files violate rule what other end of the composite
+            --  association is not serialized.
+            --
+            --  XXX More better method must be used here probably.
 
-            else
-               CMOF.Factory.Create_Link (Association, New_Element, Self.Current);
-            end if;
+            Establish_Link (Self, Property, Self.Current, New_Element);
 
             Self.Stack.Append (Self.Current);
             Self.Current := New_Element;
