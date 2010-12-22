@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This is merged by hand model to bootstrap CMOF library, it is LM.cmof model actually. -->
+<!-- This is merged by hand model to bootstrap CMOF library. It is based on LM.cmof model, and adds Package::uri -->
 <!-- MOF capabilities (one of important is MOF::Tag) should be added later. -->
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
   <cmof:Package xmi:id="_0" name="CMOF" uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
@@ -1439,6 +1439,11 @@
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Core-Constructs-Package-packageMerge" name="packageMerge" type="Core-Constructs-PackageMerge" upper="*" lower="0" isComposite="true" subsettedProperty="Core-Constructs-Element-ownedElement" association="Core-Constructs-A_packageMerge_receivingPackage">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Package-packageMerge-_ownedComment.0" annotatedElement="Core-Constructs-Package-packageMerge">
           <body>References the PackageMerges that are owned by this Package.</body>
+        </ownedComment>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Core-Constructs-Package-uri" name="uri" type="Core-PrimitiveTypes-String" lower="0">
+        <ownedComment xmi:type="cmof:Comment" xmi:id="Core-Constructs-Package-uri-_ownedComment.0" annotatedElement="Core-Constructs-Package-uri">
+          <body>Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt. UML 1.4 and MOF 1.4 were assigned URIs to their outermost package. The package URI appears in XMI files when instances of the package’s classes are serialized.</body>
         </ownedComment>
       </ownedAttribute>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Core-Constructs-Package-mustBeOwned" name="mustBeOwned" class="Core-Constructs-Package" isQuery="true" redefinedOperation="Core-Constructs-Element-mustBeOwned" bodyCondition="Core-Constructs-Package-mustBeOwned-spec">
