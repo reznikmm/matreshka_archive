@@ -431,6 +431,8 @@ procedure Generator.Driver is
         := Get_Attribute (N, "isOrdered", False);
       Is_Unique          : constant Boolean
         := Get_Attribute (N, "isUnique", True);
+      Is_Composite       : constant Boolean
+        := Get_Attribute (N, "isComposite", False);
       Default_Value      : constant String  := Get_Attribute (N, "default");
 
 --  subsettedProperty
@@ -474,6 +476,7 @@ procedure Generator.Driver is
                Is_Derived_Union      => Is_Derived_Union,
                Is_Ordered            => Is_Ordered,
                Is_Unique             => Is_Unique,
+               Is_Composite          => Is_Composite,
                Owned_Class           => Current_Class,
                Owned_Association     => Current_Association,
                Association           => Current_Association,

@@ -414,6 +414,25 @@ package body Generator.Metamodel is
           ("     League.Strings.To_Universal_String ("""
              & To_String (Property.Name)
              & """));");
+
+         --  isComposite
+
+         Put
+          ("   Internal_Set_Is_Composite ("
+             & Constant_Name_In_Metamodel (Property)
+             & ", ");
+
+         if Property.Is_Composite then
+            Put ("AMF.True");
+
+         else
+            Put ("AMF.False");
+         end if;
+
+         Put_Line (");");
+
+         --  isLower
+
          Put_Line
           ("   Internal_Set_Lower ("
              & Constant_Name_In_Metamodel (Property)
@@ -438,6 +457,7 @@ package body Generator.Metamodel is
    begin
       Put_Line ("with League.Strings;");
       New_Line;
+      Put_Line ("with AMF;");
       Put_Line ("with Cmof.Internals.Attributes;");
       Put_Line ("with Cmof.Internals.Constructors;");
       Put_Line ("with Cmof.Internals.Extents;");

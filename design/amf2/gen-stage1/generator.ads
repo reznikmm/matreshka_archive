@@ -129,6 +129,7 @@ package Generator is
       Is_Derived_Union      : Boolean;
       Is_Ordered            : Boolean;
       Is_Unique             : Boolean;
+      Is_Composite          : Boolean;
       Has_Default           : Boolean;
       Default_Boolean       : Boolean;
       Default_Integer       : Integer;
