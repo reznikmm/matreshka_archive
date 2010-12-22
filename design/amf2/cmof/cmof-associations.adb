@@ -50,9 +50,15 @@ package body CMOF.Associations is
    --------------------
 
    function Get_Member_End
-    (Self : CMOF_Association) return Ordered_Set_Of_CMOF_Property is
-   begin
-      return CMOF.Internals.Attributes.Internal_Get_Member_End (Self);
-   end Get_Member_End;
+    (Self : CMOF_Association) return Ordered_Set_Of_CMOF_Property
+       renames CMOF.Internals.Attributes.Internal_Get_Member_End;
+
+   -------------------
+   -- Get_Owned_End --
+   -------------------
+
+   function Get_Owned_End
+    (Self : CMOF_Association) return Ordered_Set_Of_CMOF_Property
+       renames CMOF.Internals.Attributes.Internal_Get_Owned_End;
 
 end CMOF.Associations;

@@ -54,6 +54,27 @@ package body CMOF.Properties is
       return CMOF.Internals.Attributes.Internal_Get_Association (Self);
    end Get_Association;
 
+   ---------------
+   -- Get_Class --
+   ---------------
+
+   function Get_Class (Self : CMOF_Property) return CMOF_Class
+     renames CMOF.Internals.Attributes.Internal_Get_Class;
+
+   ----------------------
+   -- Get_Is_Composite --
+   ----------------------
+
+   function Get_Is_Composite (Self : CMOF_Property) return AMF.AMF_Boolean
+     renames CMOF.Internals.Attributes.Internal_Get_Is_Composite;
+
+   ----------------------------
+   -- Get_Owning_Association --
+   ----------------------------
+
+   function Get_Owning_Association (Self : CMOF_Property) return CMOF_Association
+     renames CMOF.Internals.Attributes.Internal_Get_Owning_Association;
+
    ----------------------------
    -- Get_Redefined_Property --
    ----------------------------

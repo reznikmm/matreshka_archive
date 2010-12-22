@@ -52,7 +52,11 @@ package CMOF.XMI_Helper is
     (Class : CMOF_Class;
      Name  : League.Strings.Universal_String) return CMOF_Element;
 
+   function Is_Association (Element : CMOF_Element) return Boolean;
+
    function Is_Data_Type (Element : CMOF_Element) return Boolean;
+
+   function Is_Class (Element : CMOF_Element) return Boolean;
 
    function Get_Id
     (Element : CMOF_Element) return League.Strings.Universal_String;

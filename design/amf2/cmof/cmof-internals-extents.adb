@@ -57,6 +57,31 @@ package body CMOF.Internals.Extents is
       return Tables.Extents.Last;
    end Create_Extent;
 
+   -------------
+   -- Element --
+   -------------
+
+   function Element
+    (Self  : CMOF_Extent;
+     Index : Positive) return CMOF_Element
+   is
+      Current : CMOF_Element := Tables.Extents.Table (Self).Head;
+
+   begin
+      for J in 2 .. Index loop
+         exit when Current = 0;
+
+         Current := Tables.Elements.Table (Current).Next;
+      end loop;
+
+      if Current = 0 then
+         raise Constraint_Error;
+
+      else
+         return Current;
+      end if;
+   end Element;
+
    ---------------------
    -- Internal_Append --
    ---------------------
@@ -100,5 +125,22 @@ package body CMOF.Internals.Extents is
       Tables.Extents.Set_Last (CMOF_Metamodel_Extent);
       Tables.Extents.Table (CMOF_Metamodel_Extent) := (0, 0);
    end Initialize_CMOF_Metamodel_Extent;
+
+   ------------
+   -- Length --
+   ------------
+
+   function Length (Self : CMOF_Extent) return Natural is
+      Current : CMOF_Element := Tables.Extents.Table (Self).Head;
+      Aux     : Natural := 0;
+
+   begin
+      while Current /= 0 loop
+         Aux     := Aux + 1;
+         Current := Tables.Elements.Table (Current).Next;
+      end loop;
+
+      return Aux;
+   end Length;
 
 end CMOF.Internals.Extents;

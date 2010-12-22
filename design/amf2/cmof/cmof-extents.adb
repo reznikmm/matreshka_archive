@@ -57,8 +57,16 @@ package body CMOF.Extents is
    --------------
 
    function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set is
+      use CMOF.Internals.Extents;
+
+      Result : CMOF_Element_Sets.Set;
+
    begin
-      return CMOF_Element_Sets.Empty_Set;
+      for J in 1 .. Length (Extent) loop
+          Result.Insert (Element (Extent, J));
+      end loop;
+
+      return Result;
    end Elements;
 
    ----------

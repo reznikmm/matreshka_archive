@@ -48,6 +48,8 @@ package CMOF.Reflection is
 
    function Get_Meta_Class (Self : CMOF_Element) return CMOF_Class;
 
+   function Container (Self : CMOF_Element) return CMOF_Element;
+
    function Get
     (Self     : CMOF_Element;
      Property : CMOF_Property) return AMF.Values.Value;

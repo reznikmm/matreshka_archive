@@ -41,10 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF;
 
 package CMOF.Properties is
 
    function Get_Association (Self : CMOF_Property) return CMOF_Association;
+
+   function Get_Class (Self : CMOF_Property) return CMOF_Class;
+
+   function Get_Is_Composite (Self : CMOF_Property) return AMF.AMF_Boolean;
+
+   function Get_Owning_Association (Self : CMOF_Property) return CMOF_Association;
 
    function Get_Redefined_Property
     (Self : CMOF_Property) return Set_Of_CMOF_Property;

@@ -50,4 +50,8 @@ package CMOF.Internals.Extents is
 
    function Create_Extent return CMOF_Extent;
 
+   function Length (Self : CMOF_Extent) return Natural;
+
+   function Element (Self : CMOF_Extent; Index : Positive) return CMOF_Element;
+
 end CMOF.Internals.Extents;

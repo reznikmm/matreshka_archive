@@ -169,11 +169,13 @@ package body XMI.Handlers is
                      (Get_Type (Self.Attribute), Self.Text));
 
                else
-                  Put_Line ("Skip - multivalued attribute of DataType");
+                  Put_Line
+                   (Standard_Error,
+                    "Skip - multivalued attribute of DataType");
                end if;
 
             else
-               Put_Line ("Skip - not DataType");
+               Put_Line (Standard_Error, "Skip - not DataType");
             end if;
 
          else
@@ -388,10 +390,13 @@ package body XMI.Handlers is
          S : constant Set_Of_CMOF_Class := Get_Super_Class (Class);
 
       begin
-         Put_Line ("  " & Get_Name (Class).To_Wide_Wide_String);
+         Put_Line
+          (Standard_Error, "  " & Get_Name (Class).To_Wide_Wide_String);
 
          for J in 1 .. Length (P) loop
-            Put_Line ("    " & Get_Name (Element (P, J)).To_Wide_Wide_String);
+            Put_Line
+             (Standard_Error,
+              "    " & Get_Name (Element (P, J)).To_Wide_Wide_String);
          end loop;
 
          for J in 1 .. Length (S) loop
@@ -535,7 +540,8 @@ package body XMI.Handlers is
 
                else
                   Put_Line
-                   ("  "
+                   (Standard_Error,
+                    "  "
                       & Attributes.Namespace_URI (J).To_Wide_Wide_String
                       & "  "
                       & Attributes.Local_Name (J).To_Wide_Wide_String
@@ -580,7 +586,8 @@ package body XMI.Handlers is
      Success       : in out Boolean) is
    begin
       Put_Line
-       ("'"
+       (Standard_Error,
+        "'"
           & Prefix.To_Wide_Wide_String
           & "' is mapped to "
           & Namespace_URI.To_Wide_Wide_String);
