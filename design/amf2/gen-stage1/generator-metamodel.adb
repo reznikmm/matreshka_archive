@@ -1,3 +1,46 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--                          Ada Modeling Framework                          --
+--                                                                          --
+--                              Tools Component                             --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
 with Ada.Strings.Fixed;
 with Ada.Text_IO;
 
@@ -560,6 +603,8 @@ package body Generator.Metamodel is
       procedure Generate_Enumeration (Position : Enumeration_Sets.Cursor);
 
       Max_Class_Length                     : Ada.Text_IO.Count := 0;
+      First_Meta_Class                     : Natural := 0;
+      Last_Meta_Class                      : Natural := 0;
       First_Collection_Of_Element          : Natural := 0;
       Last_Collection_Of_Element           : Natural := 0;
       First_Non_Collection_Of_Element      : Natural := 0;
@@ -700,7 +745,7 @@ package body Generator.Metamodel is
          Put ("   " & Constant_Name_In_Metamodel (Class_Sets.Element (Position)));
          Set_Col (Max_Class_Length + 12);
          Put_Line
-           (" : constant Cmof_Class :="
+           (" : constant CMOF_Class :="
               & Positive'Image (Last_Cmof_Element)
               & ";");
       end Generate_Class;
@@ -801,7 +846,9 @@ package body Generator.Metamodel is
       Put_Line ("   -- Classes --");
       Put_Line ("   -------------");
       New_Line;
+      First_Meta_Class := Last_CMOF_Element + 1;
       Classes.Iterate (Generate_Class'Access);
+      Last_Meta_Class := Last_CMOF_Element;
 
       New_Line;
       Put_Line ("   ------------------");
@@ -839,6 +886,14 @@ package body Generator.Metamodel is
       New_Line;
       Association_Properties.Iterate (Generate_Property'Access);
 
+      New_Line;
+      Put_Line ("   subtype CMOF_Meta_Class is");
+      Put_Line
+        ("     CMOF_Class range"
+           & Positive'Image (First_Meta_Class)
+           & " .."
+           & Positive'Image (Last_Meta_Class)
+           & ";");
       New_Line;
       Put_Line ("   subtype Cmof_Collection_Of_Element_Property is");
       Put_Line

@@ -1,3 +1,46 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--                          Ada Modeling Framework                          --
+--                                                                          --
+--                              Tools Component                             --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
 with Ada.Strings.Fixed;
 with Ada.Text_IO;
 
@@ -42,14 +85,8 @@ package body Generator.Subclassing is
       --  Generates implementation of class membership check subprogram for
       --  the specified class.
 
-      procedure Generate_Is_Subclass_Declaration;
-      --  Generates declaration of the internal Is_Subclass function.
-
       procedure Generate_Is_Subclass_Implementation;
       --  Generates implementation of the internal Is_Subclass function.
-
-      procedure Generate_Element_Classes_Declaration;
-      --  Generates declaration of Element_Classes enumeration.
 
       procedure Generate_Class_Declaration;
       --  Generate declaration of Element_Kinds to Element_Classes conversion
@@ -117,7 +154,7 @@ package body Generator.Subclassing is
 
                Put ("E_" & Ada_Name);
                Set_Col (Offset + Max_Length);
-               Put (" => C_" & Ada_Name);
+               Put (" => MC_CMOF_" & Ada_Name);
             end if;
          end Generate_Kind_Class_Association;
 
@@ -163,75 +200,12 @@ package body Generator.Subclassing is
          end;
 
          New_Line;
---         Put_Line ("   Class : constant");
---         Put_Line ("     array (Class_Element_Kinds)");
---         Put_Line
---           ("     array (Element_Kinds range E_"
---              & To_Ada_Identifier (To_String (First_Non_Abstract.Name))
---              & " .. E_"
---              & To_Ada_Identifier (To_String (Last_Non_Abstract.Name))
---              & ")");
---         Put_Line ("       of Element_Classes :=");
-         Put_Line ("   Class : constant array (Class_Element_Kinds) of Element_Classes :=");
+         Put_Line ("   Class : constant array (Class_Element_Kinds) of CMOF_Meta_Class :=");
          Put ("     (");
          Offset := Col;
          Classes.Iterate (Generate_Kind_Class_Association'Access);
          Put_Line (");");
       end Generate_Class_Declaration;
-
-      ------------------------------------------
-      -- Generate_Element_Classes_Declaration --
-      ------------------------------------------
-
-      procedure Generate_Element_Classes_Declaration is
-
-         procedure Generate_Enumeration_Literal_Declaration
-           (Position : Class_Sets.Cursor);
-
-         First_Literal : Boolean := True;
-
-         ----------------------------------------------
-         -- Generate_Enumeration_Literal_Declaration --
-         ----------------------------------------------
-
-         procedure Generate_Enumeration_Literal_Declaration
-           (Position : Class_Sets.Cursor)
-         is
-            Element  : constant Class_Access := Class_Sets.Element (Position);
-            Ada_Name : constant String :=
-              "C_" & To_Ada_Identifier (To_String (Element.Name));
-
-         begin
-            if not First_Literal then
-               Put_Line (",");
-               Put ("      ");
-
-            else
-               First_Literal := False;
-            end if;
-
-            Put (Ada_Name);
-         end Generate_Enumeration_Literal_Declaration;
-
-      begin
-         New_Line;
-         Put_Line ("   type Element_Classes is");
-         Put ("     (");
-         Classes.Iterate (Generate_Enumeration_Literal_Declaration'Access);
-         Put_Line (");");
-      end Generate_Element_Classes_Declaration;
-
-      --------------------------------------
-      -- Generate_Is_Subclass_Declaration --
-      --------------------------------------
-
-      procedure Generate_Is_Subclass_Declaration is
-      begin
-         New_Line;
-         Put_Line ("   function Is_Subclass");
-         Put_Line ("     (Self       : Cmof_Element;");
-         Put_Line ("      Superclass : Element_Classes) return Boolean;");
-      end Generate_Is_Subclass_Declaration;
 
       -----------------------------------------
       -- Generate_Is_Subclass_Implementation --
@@ -247,7 +221,7 @@ package body Generator.Subclassing is
             New_Line;
             Put_Line ("   function Is_Subclass");
             Put_Line ("     (Self       : Cmof_Element;");
-            Put_Line ("      Superclass : Element_Classes) return Boolean");
+            Put_Line ("      Superclass : CMOF_Class) return Boolean");
             Put_Line ("   is");
             Put_Line ("      pragma Assert (not Is_Null (Self));");
             Put_Line ("      pragma Assert (Is_Valid (Self));");
@@ -292,7 +266,7 @@ package body Generator.Subclassing is
               & Ada_Name & " (Self : Cmof_Element) return Boolean is");
          Put_Line ("   begin");
          Put_Line
-           ("      return Is_Subclass (Self, C_"
+           ("      return Is_Subclass (Self, MC_CMOF_"
               & To_Ada_Identifier (To_String (Element.Name)) & ");");
          Put_Line ("   end " & Ada_Name & ";");
       end Generate_Subprogram_Implementation;
@@ -331,7 +305,7 @@ package body Generator.Subclassing is
                end if;
 
                Put
-                 ("C_"
+                 ("MC_CMOF_"
                     & To_Ada_Identifier
                         (To_String
                            (Unbounded_String_Sets.Element (Position))));
@@ -339,7 +313,7 @@ package body Generator.Subclassing is
 
             Element  : constant Class_Access := Class_Sets.Element (Position);
             Ada_Name : constant String :=
-              "C_" & To_Ada_Identifier (To_String (Element.Name));
+              "MC_CMOF_" & To_Ada_Identifier (To_String (Element.Name));
             Super    : Unbounded_String_Sets.Set :=
               All_Superclasses_Names (Element);
 
@@ -362,27 +336,27 @@ package body Generator.Subclassing is
       begin
          New_Line;
          Put_Line
-           ("   type Class_Bits is array (Element_Classes) of Boolean;");
+           ("   type Class_Bits is array (CMOF_Meta_Class) of Boolean;");
          Put_Line ("   pragma Pack (Class_Bits);");
          New_Line;
          Put_Line
-           ("   Tag : constant array (Element_Classes) of Class_Bits :=");
+           ("   Tag : constant array (CMOF_Meta_Class) of Class_Bits :=");
          Put ("     (");
          Classes.Iterate (Generate_Class_Association'Access);
          Put_Line (");");
       end Generate_Tag_Declaration;
 
    begin
+      Put_Line ("with Cmof.Internals.Metamodel;");
       Put_Line ("with Cmof.Internals.Tables;");
       Put_Line ("with Cmof.Internals.Types;");
       New_Line;
       Put_Line ("package body Cmof.Internals.Subclassing is");
       New_Line;
+      Put_Line ("   use Cmof.Internals.Metamodel;");
       Put_Line ("   use Cmof.Internals.Tables;");
       Put_Line ("   use Cmof.Internals.Types;");
 
-      Generate_Element_Classes_Declaration;
-      Generate_Is_Subclass_Declaration;
       Generate_Tag_Declaration;
       Generate_Class_Declaration;
       Classes.Iterate (Generate_Subprogram_Implementation'Access);
@@ -397,6 +371,9 @@ package body Generator.Subclassing is
    ----------------------------------------
 
    procedure Generate_Subclassing_Specification is
+
+      procedure Generate_Is_Subclass_Declaration;
+      --  Generates declaration of the internal Is_Subclass function.
 
       procedure Generate_Subprogram_Declaration (Position : Class_Sets.Cursor);
 
@@ -419,9 +396,22 @@ package body Generator.Subclassing is
          Put_Line ("   pragma Inline (" & Ada_Name & ");");
       end Generate_Subprogram_Declaration;
 
+      --------------------------------------
+      -- Generate_Is_Subclass_Declaration --
+      --------------------------------------
+
+      procedure Generate_Is_Subclass_Declaration is
+      begin
+         New_Line;
+         Put_Line ("   function Is_Subclass");
+         Put_Line ("     (Self       : Cmof_Element;");
+         Put_Line ("      Superclass : CMOF_Class) return Boolean;");
+      end Generate_Is_Subclass_Declaration;
+
    begin
       New_Line;
       Put_Line ("package Cmof.Internals.Subclassing is");
+      Generate_Is_Subclass_Declaration;
       Classes.Iterate (Generate_Subprogram_Declaration'Access);
       New_Line;
       Put_Line ("end Cmof.Internals.Subclassing;");
