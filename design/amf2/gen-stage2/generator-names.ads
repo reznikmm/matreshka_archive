@@ -41,28 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers.Hashed_Maps;
-with Ada.Containers.Ordered_Sets;
+with League.Strings;
 
-with CMOF.Extents;
+package Generator.Names is
 
-package Generator is
+   function To_Ada_Identifier
+    (Name : Wide_Wide_String) return Wide_Wide_String;
 
-   use CMOF;
+   function To_Ada_Identifier
+    (Name : League.Strings.Universal_String) return Wide_Wide_String;
 
-   function "<"
-    (Left  : CMOF.CMOF_Named_Element;
-     Right : CMOF.CMOF_Named_Element) return Boolean;
+   function Association_Constant_Name
+    (Association : CMOF_Association) return Wide_Wide_String;
 
-   package CMOF_Named_Element_Ordered_Sets is
-     new Ada.Containers.Ordered_Sets (CMOF.CMOF_Named_Element);
+   function Property_Constant_Name
+    (Property : CMOF_Property) return Wide_Wide_String;
 
-   package CMOF_Element_Number_Maps is
-     new Ada.Containers.Hashed_Maps
-          (CMOF.CMOF_Element, Positive, CMOF.Extents.Hash, "=");
-
-   function Sort
-    (Set : CMOF.Extents.CMOF_Element_Sets.Set)
-       return CMOF_Named_Element_Ordered_Sets.Set;
-
-end Generator;
+end Generator.Names;

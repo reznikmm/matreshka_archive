@@ -41,28 +41,55 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers.Hashed_Maps;
-with Ada.Containers.Ordered_Sets;
+with Ada.Unchecked_Conversion;
+with Interfaces;
 
-with CMOF.Extents;
+with AMF;
+with CMOF.Named_Elements;
 
-package Generator is
+package body Generator is
 
    use CMOF;
+   use CMOF.Named_Elements;
+
+   ---------
+   -- "<" --
+   ---------
 
    function "<"
-    (Left  : CMOF.CMOF_Named_Element;
-     Right : CMOF.CMOF_Named_Element) return Boolean;
+    (Left : CMOF_Named_Element; Right : CMOF_Named_Element) return Boolean
+   is
+      use type AMF.AMF_String;
+      use type Interfaces.Integer_32;
 
-   package CMOF_Named_Element_Ordered_Sets is
-     new Ada.Containers.Ordered_Sets (CMOF.CMOF_Named_Element);
+      function To_Integer_32 is
+        new Ada.Unchecked_Conversion (CMOF_Element, Interfaces.Integer_32);
 
-   package CMOF_Element_Number_Maps is
-     new Ada.Containers.Hashed_Maps
-          (CMOF.CMOF_Element, Positive, CMOF.Extents.Hash, "=");
+   begin
+      return
+        Get_Name (Left) < Get_Name (Right)
+          or (Get_Name (Left) = Get_Name (Right)
+                and To_Integer_32 (Left) < To_Integer_32 (Right));
+   end "<";
+
+   ----------
+   -- Sort --
+   ----------
 
    function Sort
     (Set : CMOF.Extents.CMOF_Element_Sets.Set)
-       return CMOF_Named_Element_Ordered_Sets.Set;
+       return CMOF_Named_Element_Ordered_Sets.Set
+   is
+      Result   : CMOF_Named_Element_Ordered_Sets.Set;
+      Position : CMOF.Extents.CMOF_Element_Sets.Cursor := Set.First;
+
+   begin
+      while CMOF.Extents.CMOF_Element_Sets.Has_Element (Position) loop
+         Result.Insert (CMOF.Extents.CMOF_Element_Sets.Element (Position));
+         CMOF.Extents.CMOF_Element_Sets.Next (Position);
+      end loop;
+
+      return Result;
+   end Sort;
 
 end Generator;

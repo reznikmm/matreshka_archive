@@ -41,28 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers.Hashed_Maps;
-with Ada.Containers.Ordered_Sets;
-
 with CMOF.Extents;
 
-package Generator is
+package Generator.Initialization is
 
-   use CMOF;
+   procedure Generate_Metamodel_Initialization_Implementation
+    (Elements : CMOF.Extents.CMOF_Element_Sets.Set;
+     Numbers  : CMOF_Element_Number_Maps.Map;
+     Total    : Positive);
+   --  Generates body of metamodel initialization package.
 
-   function "<"
-    (Left  : CMOF.CMOF_Named_Element;
-     Right : CMOF.CMOF_Named_Element) return Boolean;
-
-   package CMOF_Named_Element_Ordered_Sets is
-     new Ada.Containers.Ordered_Sets (CMOF.CMOF_Named_Element);
-
-   package CMOF_Element_Number_Maps is
-     new Ada.Containers.Hashed_Maps
-          (CMOF.CMOF_Element, Positive, CMOF.Extents.Hash, "=");
-
-   function Sort
-    (Set : CMOF.Extents.CMOF_Element_Sets.Set)
-       return CMOF_Named_Element_Ordered_Sets.Set;
-
-end Generator;
+end Generator.Initialization;
