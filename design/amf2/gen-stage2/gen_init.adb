@@ -93,8 +93,6 @@ procedure Gen_Init is
 
    type CMOF_Element_Array is array (Positive range <>) of CMOF_Element;
 
---   procedure Collect_Classes (Root : CMOF_Class);
-
    Extent : constant CMOF_Extent := XMI.Reader (Ada.Command_Line.Argument (1));
 
    All_Associations : CMOF_Element_Sets.Set;
@@ -109,7 +107,6 @@ procedure Gen_Init is
    Package_Constant_Name_Max     : Positive_Count := 1;
    Property_Constant_Name_Max    : Positive_Count := 43;
 
---   Expansions                     : CMOF_Element_Expansion_Maps.Map;
    Element_Numbers : CMOF_Element_Number_Maps.Map;
    --  Expansion information.
 
