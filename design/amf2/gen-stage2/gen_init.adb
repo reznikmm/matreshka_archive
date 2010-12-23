@@ -202,7 +202,7 @@ procedure Gen_Init is
    begin
       return
         Get_Name (Get_Type (Property))
-          = League.Strings.To_Universal_String ("Unlimited_Natural");
+          = League.Strings.To_Universal_String ("UnlimitedNatural");
    end Has_Unlimited_Natural_Type;
 
    ---------------------
