@@ -1,286 +1,250 @@
+with Cmof.Internals.Metamodel;
 with Cmof.Internals.Tables;
 with Cmof.Internals.Types;
 
 package body Cmof.Internals.Subclassing is
 
+   use Cmof.Internals.Metamodel;
    use Cmof.Internals.Tables;
    use Cmof.Internals.Types;
 
-   type Element_Classes is
-     (C_Association,
-      C_Behavioral_Feature,
-      C_Class,
-      C_Classifier,
-      C_Comment,
-      C_Constraint,
-      C_Data_Type,
-      C_Directed_Relationship,
-      C_Element,
-      C_Element_Import,
-      C_Enumeration,
-      C_Enumeration_Literal,
-      C_Expression,
-      C_Feature,
-      C_Multiplicity_Element,
-      C_Named_Element,
-      C_Namespace,
-      C_Opaque_Expression,
-      C_Operation,
-      C_Package,
-      C_Package_Import,
-      C_Package_Merge,
-      C_Packageable_Element,
-      C_Parameter,
-      C_Primitive_Type,
-      C_Property,
-      C_Redefinable_Element,
-      C_Relationship,
-      C_Structural_Feature,
-      C_Type,
-      C_Typed_Element,
-      C_Value_Specification);
-
-   function Is_Subclass
-     (Self       : Cmof_Element;
-      Superclass : Element_Classes) return Boolean;
-
-   type Class_Bits is array (Element_Classes) of Boolean;
+   type Class_Bits is array (CMOF_Meta_Class) of Boolean;
    pragma Pack (Class_Bits);
 
-   Tag : constant array (Element_Classes) of Class_Bits :=
-     (C_Association =>
-        (C_Association
-           | C_Classifier
-           | C_Element
-           | C_Named_Element
-           | C_Namespace
-           | C_Packageable_Element
-           | C_Relationship
-           | C_Type => True,
+   Tag : constant array (CMOF_Meta_Class) of Class_Bits :=
+     (MC_CMOF_Association =>
+        (MC_CMOF_Association
+           | MC_CMOF_Classifier
+           | MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Namespace
+           | MC_CMOF_Packageable_Element
+           | MC_CMOF_Relationship
+           | MC_CMOF_Type => True,
          others => False),
-      C_Behavioral_Feature =>
-        (C_Behavioral_Feature
-           | C_Element
-           | C_Feature
-           | C_Named_Element
-           | C_Namespace
-           | C_Redefinable_Element => True,
+      MC_CMOF_Behavioral_Feature =>
+        (MC_CMOF_Behavioral_Feature
+           | MC_CMOF_Element
+           | MC_CMOF_Feature
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Namespace
+           | MC_CMOF_Redefinable_Element => True,
          others => False),
-      C_Class =>
-        (C_Class
-           | C_Classifier
-           | C_Element
-           | C_Named_Element
-           | C_Namespace
-           | C_Packageable_Element
-           | C_Type => True,
+      MC_CMOF_Class =>
+        (MC_CMOF_Class
+           | MC_CMOF_Classifier
+           | MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Namespace
+           | MC_CMOF_Packageable_Element
+           | MC_CMOF_Type => True,
          others => False),
-      C_Classifier =>
-        (C_Classifier
-           | C_Element
-           | C_Named_Element
-           | C_Namespace
-           | C_Packageable_Element
-           | C_Type => True,
+      MC_CMOF_Classifier =>
+        (MC_CMOF_Classifier
+           | MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Namespace
+           | MC_CMOF_Packageable_Element
+           | MC_CMOF_Type => True,
          others => False),
-      C_Comment =>
-        (C_Comment
-           | C_Element => True,
+      MC_CMOF_Comment =>
+        (MC_CMOF_Comment
+           | MC_CMOF_Element => True,
          others => False),
-      C_Constraint =>
-        (C_Constraint
-           | C_Element
-           | C_Named_Element
-           | C_Packageable_Element => True,
+      MC_CMOF_Constraint =>
+        (MC_CMOF_Constraint
+           | MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Packageable_Element => True,
          others => False),
-      C_Data_Type =>
-        (C_Classifier
-           | C_Data_Type
-           | C_Element
-           | C_Named_Element
-           | C_Namespace
-           | C_Packageable_Element
-           | C_Type => True,
+      MC_CMOF_Data_Type =>
+        (MC_CMOF_Classifier
+           | MC_CMOF_Data_Type
+           | MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Namespace
+           | MC_CMOF_Packageable_Element
+           | MC_CMOF_Type => True,
          others => False),
-      C_Directed_Relationship =>
-        (C_Directed_Relationship
-           | C_Element
-           | C_Relationship => True,
+      MC_CMOF_Directed_Relationship =>
+        (MC_CMOF_Directed_Relationship
+           | MC_CMOF_Element
+           | MC_CMOF_Relationship => True,
          others => False),
-      C_Element =>
-        (C_Element => True,
+      MC_CMOF_Element =>
+        (MC_CMOF_Element => True,
          others => False),
-      C_Element_Import =>
-        (C_Directed_Relationship
-           | C_Element
-           | C_Element_Import
-           | C_Relationship => True,
+      MC_CMOF_Element_Import =>
+        (MC_CMOF_Directed_Relationship
+           | MC_CMOF_Element
+           | MC_CMOF_Element_Import
+           | MC_CMOF_Relationship => True,
          others => False),
-      C_Enumeration =>
-        (C_Classifier
-           | C_Data_Type
-           | C_Element
-           | C_Enumeration
-           | C_Named_Element
-           | C_Namespace
-           | C_Packageable_Element
-           | C_Type => True,
+      MC_CMOF_Enumeration =>
+        (MC_CMOF_Classifier
+           | MC_CMOF_Data_Type
+           | MC_CMOF_Element
+           | MC_CMOF_Enumeration
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Namespace
+           | MC_CMOF_Packageable_Element
+           | MC_CMOF_Type => True,
          others => False),
-      C_Enumeration_Literal =>
-        (C_Element
-           | C_Enumeration_Literal
-           | C_Named_Element => True,
+      MC_CMOF_Enumeration_Literal =>
+        (MC_CMOF_Element
+           | MC_CMOF_Enumeration_Literal
+           | MC_CMOF_Named_Element => True,
          others => False),
-      C_Expression =>
-        (C_Element
-           | C_Expression
-           | C_Named_Element
-           | C_Packageable_Element
-           | C_Typed_Element
-           | C_Value_Specification => True,
+      MC_CMOF_Expression =>
+        (MC_CMOF_Element
+           | MC_CMOF_Expression
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Packageable_Element
+           | MC_CMOF_Typed_Element
+           | MC_CMOF_Value_Specification => True,
          others => False),
-      C_Feature =>
-        (C_Element
-           | C_Feature
-           | C_Named_Element
-           | C_Redefinable_Element => True,
+      MC_CMOF_Feature =>
+        (MC_CMOF_Element
+           | MC_CMOF_Feature
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Redefinable_Element => True,
          others => False),
-      C_Multiplicity_Element =>
-        (C_Element
-           | C_Multiplicity_Element => True,
+      MC_CMOF_Multiplicity_Element =>
+        (MC_CMOF_Element
+           | MC_CMOF_Multiplicity_Element => True,
          others => False),
-      C_Named_Element =>
-        (C_Element
-           | C_Named_Element => True,
+      MC_CMOF_Named_Element =>
+        (MC_CMOF_Element
+           | MC_CMOF_Named_Element => True,
          others => False),
-      C_Namespace =>
-        (C_Element
-           | C_Named_Element
-           | C_Namespace => True,
+      MC_CMOF_Namespace =>
+        (MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Namespace => True,
          others => False),
-      C_Opaque_Expression =>
-        (C_Element
-           | C_Named_Element
-           | C_Opaque_Expression
-           | C_Packageable_Element
-           | C_Typed_Element
-           | C_Value_Specification => True,
+      MC_CMOF_Opaque_Expression =>
+        (MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Opaque_Expression
+           | MC_CMOF_Packageable_Element
+           | MC_CMOF_Typed_Element
+           | MC_CMOF_Value_Specification => True,
          others => False),
-      C_Operation =>
-        (C_Behavioral_Feature
-           | C_Element
-           | C_Feature
-           | C_Named_Element
-           | C_Namespace
-           | C_Operation
-           | C_Redefinable_Element => True,
+      MC_CMOF_Operation =>
+        (MC_CMOF_Behavioral_Feature
+           | MC_CMOF_Element
+           | MC_CMOF_Feature
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Namespace
+           | MC_CMOF_Operation
+           | MC_CMOF_Redefinable_Element => True,
          others => False),
-      C_Package =>
-        (C_Element
-           | C_Named_Element
-           | C_Namespace
-           | C_Package
-           | C_Packageable_Element => True,
+      MC_CMOF_Package =>
+        (MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Namespace
+           | MC_CMOF_Package
+           | MC_CMOF_Packageable_Element => True,
          others => False),
-      C_Package_Import =>
-        (C_Directed_Relationship
-           | C_Element
-           | C_Package_Import
-           | C_Relationship => True,
+      MC_CMOF_Package_Import =>
+        (MC_CMOF_Directed_Relationship
+           | MC_CMOF_Element
+           | MC_CMOF_Package_Import
+           | MC_CMOF_Relationship => True,
          others => False),
-      C_Package_Merge =>
-        (C_Directed_Relationship
-           | C_Element
-           | C_Package_Merge
-           | C_Relationship => True,
+      MC_CMOF_Package_Merge =>
+        (MC_CMOF_Directed_Relationship
+           | MC_CMOF_Element
+           | MC_CMOF_Package_Merge
+           | MC_CMOF_Relationship => True,
          others => False),
-      C_Packageable_Element =>
-        (C_Element
-           | C_Named_Element
-           | C_Packageable_Element => True,
+      MC_CMOF_Packageable_Element =>
+        (MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Packageable_Element => True,
          others => False),
-      C_Parameter =>
-        (C_Element
-           | C_Multiplicity_Element
-           | C_Named_Element
-           | C_Parameter
-           | C_Typed_Element => True,
+      MC_CMOF_Parameter =>
+        (MC_CMOF_Element
+           | MC_CMOF_Multiplicity_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Parameter
+           | MC_CMOF_Typed_Element => True,
          others => False),
-      C_Primitive_Type =>
-        (C_Classifier
-           | C_Data_Type
-           | C_Element
-           | C_Named_Element
-           | C_Namespace
-           | C_Packageable_Element
-           | C_Primitive_Type
-           | C_Type => True,
+      MC_CMOF_Primitive_Type =>
+        (MC_CMOF_Classifier
+           | MC_CMOF_Data_Type
+           | MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Namespace
+           | MC_CMOF_Packageable_Element
+           | MC_CMOF_Primitive_Type
+           | MC_CMOF_Type => True,
          others => False),
-      C_Property =>
-        (C_Element
-           | C_Feature
-           | C_Multiplicity_Element
-           | C_Named_Element
-           | C_Property
-           | C_Redefinable_Element
-           | C_Structural_Feature
-           | C_Typed_Element => True,
+      MC_CMOF_Property =>
+        (MC_CMOF_Element
+           | MC_CMOF_Feature
+           | MC_CMOF_Multiplicity_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Property
+           | MC_CMOF_Redefinable_Element
+           | MC_CMOF_Structural_Feature
+           | MC_CMOF_Typed_Element => True,
          others => False),
-      C_Redefinable_Element =>
-        (C_Element
-           | C_Named_Element
-           | C_Redefinable_Element => True,
+      MC_CMOF_Redefinable_Element =>
+        (MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Redefinable_Element => True,
          others => False),
-      C_Relationship =>
-        (C_Element
-           | C_Relationship => True,
+      MC_CMOF_Relationship =>
+        (MC_CMOF_Element
+           | MC_CMOF_Relationship => True,
          others => False),
-      C_Structural_Feature =>
-        (C_Element
-           | C_Feature
-           | C_Multiplicity_Element
-           | C_Named_Element
-           | C_Redefinable_Element
-           | C_Structural_Feature
-           | C_Typed_Element => True,
+      MC_CMOF_Structural_Feature =>
+        (MC_CMOF_Element
+           | MC_CMOF_Feature
+           | MC_CMOF_Multiplicity_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Redefinable_Element
+           | MC_CMOF_Structural_Feature
+           | MC_CMOF_Typed_Element => True,
          others => False),
-      C_Type =>
-        (C_Element
-           | C_Named_Element
-           | C_Packageable_Element
-           | C_Type => True,
+      MC_CMOF_Type =>
+        (MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Packageable_Element
+           | MC_CMOF_Type => True,
          others => False),
-      C_Typed_Element =>
-        (C_Element
-           | C_Named_Element
-           | C_Typed_Element => True,
+      MC_CMOF_Typed_Element =>
+        (MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Typed_Element => True,
          others => False),
-      C_Value_Specification =>
-        (C_Element
-           | C_Named_Element
-           | C_Packageable_Element
-           | C_Typed_Element
-           | C_Value_Specification => True,
+      MC_CMOF_Value_Specification =>
+        (MC_CMOF_Element
+           | MC_CMOF_Named_Element
+           | MC_CMOF_Packageable_Element
+           | MC_CMOF_Typed_Element
+           | MC_CMOF_Value_Specification => True,
          others => False));
 
-   Class : constant array (Class_Element_Kinds) of Element_Classes :=
-     (E_Association         => C_Association,
-      E_Class               => C_Class,
-      E_Comment             => C_Comment,
-      E_Constraint          => C_Constraint,
-      E_Data_Type           => C_Data_Type,
-      E_Element_Import      => C_Element_Import,
-      E_Enumeration         => C_Enumeration,
-      E_Enumeration_Literal => C_Enumeration_Literal,
-      E_Expression          => C_Expression,
-      E_Opaque_Expression   => C_Opaque_Expression,
-      E_Operation           => C_Operation,
-      E_Package             => C_Package,
-      E_Package_Import      => C_Package_Import,
-      E_Package_Merge       => C_Package_Merge,
-      E_Parameter           => C_Parameter,
-      E_Primitive_Type      => C_Primitive_Type,
-      E_Property            => C_Property);
+   Class : constant array (Class_Element_Kinds) of CMOF_Meta_Class :=
+     (E_Association         => MC_CMOF_Association,
+      E_Class               => MC_CMOF_Class,
+      E_Comment             => MC_CMOF_Comment,
+      E_Constraint          => MC_CMOF_Constraint,
+      E_Data_Type           => MC_CMOF_Data_Type,
+      E_Element_Import      => MC_CMOF_Element_Import,
+      E_Enumeration         => MC_CMOF_Enumeration,
+      E_Enumeration_Literal => MC_CMOF_Enumeration_Literal,
+      E_Expression          => MC_CMOF_Expression,
+      E_Opaque_Expression   => MC_CMOF_Opaque_Expression,
+      E_Operation           => MC_CMOF_Operation,
+      E_Package             => MC_CMOF_Package,
+      E_Package_Import      => MC_CMOF_Package_Import,
+      E_Package_Merge       => MC_CMOF_Package_Merge,
+      E_Parameter           => MC_CMOF_Parameter,
+      E_Primitive_Type      => MC_CMOF_Primitive_Type,
+      E_Property            => MC_CMOF_Property);
 
    --------------------
    -- Is_Association --
@@ -288,7 +252,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Association (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Association);
+      return Is_Subclass (Self, MC_CMOF_Association);
    end Is_Association;
 
    ---------------------------
@@ -297,7 +261,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Behavioral_Feature (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Behavioral_Feature);
+      return Is_Subclass (Self, MC_CMOF_Behavioral_Feature);
    end Is_Behavioral_Feature;
 
    --------------
@@ -306,7 +270,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Class (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Class);
+      return Is_Subclass (Self, MC_CMOF_Class);
    end Is_Class;
 
    -------------------
@@ -315,7 +279,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Classifier (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Classifier);
+      return Is_Subclass (Self, MC_CMOF_Classifier);
    end Is_Classifier;
 
    ----------------
@@ -324,7 +288,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Comment (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Comment);
+      return Is_Subclass (Self, MC_CMOF_Comment);
    end Is_Comment;
 
    -------------------
@@ -333,7 +297,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Constraint (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Constraint);
+      return Is_Subclass (Self, MC_CMOF_Constraint);
    end Is_Constraint;
 
    ------------------
@@ -342,7 +306,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Data_Type (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Data_Type);
+      return Is_Subclass (Self, MC_CMOF_Data_Type);
    end Is_Data_Type;
 
    ------------------------------
@@ -351,7 +315,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Directed_Relationship (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Directed_Relationship);
+      return Is_Subclass (Self, MC_CMOF_Directed_Relationship);
    end Is_Directed_Relationship;
 
    ----------------
@@ -360,7 +324,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Element (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Element);
+      return Is_Subclass (Self, MC_CMOF_Element);
    end Is_Element;
 
    -----------------------
@@ -369,7 +333,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Element_Import (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Element_Import);
+      return Is_Subclass (Self, MC_CMOF_Element_Import);
    end Is_Element_Import;
 
    --------------------
@@ -378,7 +342,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Enumeration (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Enumeration);
+      return Is_Subclass (Self, MC_CMOF_Enumeration);
    end Is_Enumeration;
 
    ----------------------------
@@ -387,7 +351,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Enumeration_Literal (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Enumeration_Literal);
+      return Is_Subclass (Self, MC_CMOF_Enumeration_Literal);
    end Is_Enumeration_Literal;
 
    -------------------
@@ -396,7 +360,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Expression (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Expression);
+      return Is_Subclass (Self, MC_CMOF_Expression);
    end Is_Expression;
 
    ----------------
@@ -405,7 +369,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Feature (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Feature);
+      return Is_Subclass (Self, MC_CMOF_Feature);
    end Is_Feature;
 
    -----------------------------
@@ -414,7 +378,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Multiplicity_Element (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Multiplicity_Element);
+      return Is_Subclass (Self, MC_CMOF_Multiplicity_Element);
    end Is_Multiplicity_Element;
 
    ----------------------
@@ -423,7 +387,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Named_Element (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Named_Element);
+      return Is_Subclass (Self, MC_CMOF_Named_Element);
    end Is_Named_Element;
 
    ------------------
@@ -432,7 +396,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Namespace (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Namespace);
+      return Is_Subclass (Self, MC_CMOF_Namespace);
    end Is_Namespace;
 
    --------------------------
@@ -441,7 +405,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Opaque_Expression (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Opaque_Expression);
+      return Is_Subclass (Self, MC_CMOF_Opaque_Expression);
    end Is_Opaque_Expression;
 
    ------------------
@@ -450,7 +414,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Operation (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Operation);
+      return Is_Subclass (Self, MC_CMOF_Operation);
    end Is_Operation;
 
    ----------------
@@ -459,7 +423,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Package (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Package);
+      return Is_Subclass (Self, MC_CMOF_Package);
    end Is_Package;
 
    -----------------------
@@ -468,7 +432,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Package_Import (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Package_Import);
+      return Is_Subclass (Self, MC_CMOF_Package_Import);
    end Is_Package_Import;
 
    ----------------------
@@ -477,7 +441,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Package_Merge (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Package_Merge);
+      return Is_Subclass (Self, MC_CMOF_Package_Merge);
    end Is_Package_Merge;
 
    ----------------------------
@@ -486,7 +450,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Packageable_Element (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Packageable_Element);
+      return Is_Subclass (Self, MC_CMOF_Packageable_Element);
    end Is_Packageable_Element;
 
    ------------------
@@ -495,7 +459,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Parameter (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Parameter);
+      return Is_Subclass (Self, MC_CMOF_Parameter);
    end Is_Parameter;
 
    -----------------------
@@ -504,7 +468,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Primitive_Type (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Primitive_Type);
+      return Is_Subclass (Self, MC_CMOF_Primitive_Type);
    end Is_Primitive_Type;
 
    -----------------
@@ -513,7 +477,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Property (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Property);
+      return Is_Subclass (Self, MC_CMOF_Property);
    end Is_Property;
 
    ----------------------------
@@ -522,7 +486,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Redefinable_Element (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Redefinable_Element);
+      return Is_Subclass (Self, MC_CMOF_Redefinable_Element);
    end Is_Redefinable_Element;
 
    ---------------------
@@ -531,7 +495,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Relationship (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Relationship);
+      return Is_Subclass (Self, MC_CMOF_Relationship);
    end Is_Relationship;
 
    ---------------------------
@@ -540,7 +504,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Structural_Feature (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Structural_Feature);
+      return Is_Subclass (Self, MC_CMOF_Structural_Feature);
    end Is_Structural_Feature;
 
    -----------------
@@ -549,7 +513,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Subclass
      (Self       : Cmof_Element;
-      Superclass : Element_Classes) return Boolean
+      Superclass : CMOF_Class) return Boolean
    is
       pragma Assert (not Is_Null (Self));
       pragma Assert (Is_Valid (Self));
@@ -566,7 +530,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Type (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Type);
+      return Is_Subclass (Self, MC_CMOF_Type);
    end Is_Type;
 
    ----------------------
@@ -575,7 +539,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Typed_Element (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Typed_Element);
+      return Is_Subclass (Self, MC_CMOF_Typed_Element);
    end Is_Typed_Element;
 
    ----------------------------
@@ -584,7 +548,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Value_Specification (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, C_Value_Specification);
+      return Is_Subclass (Self, MC_CMOF_Value_Specification);
    end Is_Value_Specification;
 
 end Cmof.Internals.Subclassing;

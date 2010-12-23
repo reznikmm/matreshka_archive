@@ -1,6 +1,10 @@
 
 package Cmof.Internals.Subclassing is
 
+   function Is_Subclass
+     (Self       : Cmof_Element;
+      Superclass : CMOF_Class) return Boolean;
+
    function Is_Association (Self : Cmof_Element) return Boolean;
    pragma Inline (Is_Association);
 

@@ -30,38 +30,38 @@ package CMOF.Internals.Metamodel is
    -- Classes --
    -------------
 
-   MC_CMOF_Association           : constant Cmof_Class := 8;
-   MC_CMOF_Behavioral_Feature    : constant Cmof_Class := 9;
-   MC_CMOF_Class                 : constant Cmof_Class := 10;
-   MC_CMOF_Classifier            : constant Cmof_Class := 11;
-   MC_CMOF_Comment               : constant Cmof_Class := 12;
-   MC_CMOF_Constraint            : constant Cmof_Class := 13;
-   MC_CMOF_Data_Type             : constant Cmof_Class := 14;
-   MC_CMOF_Directed_Relationship : constant Cmof_Class := 15;
-   MC_CMOF_Element               : constant Cmof_Class := 16;
-   MC_CMOF_Element_Import        : constant Cmof_Class := 17;
-   MC_CMOF_Enumeration           : constant Cmof_Class := 18;
-   MC_CMOF_Enumeration_Literal   : constant Cmof_Class := 19;
-   MC_CMOF_Expression            : constant Cmof_Class := 20;
-   MC_CMOF_Feature               : constant Cmof_Class := 21;
-   MC_CMOF_Multiplicity_Element  : constant Cmof_Class := 22;
-   MC_CMOF_Named_Element         : constant Cmof_Class := 23;
-   MC_CMOF_Namespace             : constant Cmof_Class := 24;
-   MC_CMOF_Opaque_Expression     : constant Cmof_Class := 25;
-   MC_CMOF_Operation             : constant Cmof_Class := 26;
-   MC_CMOF_Package               : constant Cmof_Class := 27;
-   MC_CMOF_Package_Import        : constant Cmof_Class := 28;
-   MC_CMOF_Package_Merge         : constant Cmof_Class := 29;
-   MC_CMOF_Packageable_Element   : constant Cmof_Class := 30;
-   MC_CMOF_Parameter             : constant Cmof_Class := 31;
-   MC_CMOF_Primitive_Type        : constant Cmof_Class := 32;
-   MC_CMOF_Property              : constant Cmof_Class := 33;
-   MC_CMOF_Redefinable_Element   : constant Cmof_Class := 34;
-   MC_CMOF_Relationship          : constant Cmof_Class := 35;
-   MC_CMOF_Structural_Feature    : constant Cmof_Class := 36;
-   MC_CMOF_Type                  : constant Cmof_Class := 37;
-   MC_CMOF_Typed_Element         : constant Cmof_Class := 38;
-   MC_CMOF_Value_Specification   : constant Cmof_Class := 39;
+   MC_CMOF_Association           : constant CMOF_Class := 8;
+   MC_CMOF_Behavioral_Feature    : constant CMOF_Class := 9;
+   MC_CMOF_Class                 : constant CMOF_Class := 10;
+   MC_CMOF_Classifier            : constant CMOF_Class := 11;
+   MC_CMOF_Comment               : constant CMOF_Class := 12;
+   MC_CMOF_Constraint            : constant CMOF_Class := 13;
+   MC_CMOF_Data_Type             : constant CMOF_Class := 14;
+   MC_CMOF_Directed_Relationship : constant CMOF_Class := 15;
+   MC_CMOF_Element               : constant CMOF_Class := 16;
+   MC_CMOF_Element_Import        : constant CMOF_Class := 17;
+   MC_CMOF_Enumeration           : constant CMOF_Class := 18;
+   MC_CMOF_Enumeration_Literal   : constant CMOF_Class := 19;
+   MC_CMOF_Expression            : constant CMOF_Class := 20;
+   MC_CMOF_Feature               : constant CMOF_Class := 21;
+   MC_CMOF_Multiplicity_Element  : constant CMOF_Class := 22;
+   MC_CMOF_Named_Element         : constant CMOF_Class := 23;
+   MC_CMOF_Namespace             : constant CMOF_Class := 24;
+   MC_CMOF_Opaque_Expression     : constant CMOF_Class := 25;
+   MC_CMOF_Operation             : constant CMOF_Class := 26;
+   MC_CMOF_Package               : constant CMOF_Class := 27;
+   MC_CMOF_Package_Import        : constant CMOF_Class := 28;
+   MC_CMOF_Package_Merge         : constant CMOF_Class := 29;
+   MC_CMOF_Packageable_Element   : constant CMOF_Class := 30;
+   MC_CMOF_Parameter             : constant CMOF_Class := 31;
+   MC_CMOF_Primitive_Type        : constant CMOF_Class := 32;
+   MC_CMOF_Property              : constant CMOF_Class := 33;
+   MC_CMOF_Redefinable_Element   : constant CMOF_Class := 34;
+   MC_CMOF_Relationship          : constant CMOF_Class := 35;
+   MC_CMOF_Structural_Feature    : constant CMOF_Class := 36;
+   MC_CMOF_Type                  : constant CMOF_Class := 37;
+   MC_CMOF_Typed_Element         : constant CMOF_Class := 38;
+   MC_CMOF_Value_Specification   : constant CMOF_Class := 39;
 
    ------------------
    -- Associations --
@@ -278,6 +278,9 @@ package CMOF.Internals.Metamodel is
    MP_Cmof_Target_Directed_Relationship        : constant CMOF_Property := 219;
    MP_Cmof_Type_Operation                      : constant CMOF_Property := 220;
    MP_Cmof_Type_Typed_Element                  : constant CMOF_Property := 221;
+
+   subtype CMOF_Meta_Class is
+     CMOF_Class range 8 .. 39;
 
    subtype Cmof_Collection_Of_Element_Property is
      CMOF_Property range 91 .. 134;
