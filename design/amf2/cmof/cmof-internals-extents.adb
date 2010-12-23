@@ -112,6 +112,7 @@ package body CMOF.Internals.Extents is
          Tables.Elements.Table (Previous).Next := Element;
       end if;
 
+      Tables.Elements.Table (Element).Extent   := Extent;
       Tables.Elements.Table (Element).Previous := Previous;
       Tables.Elements.Table (Element).Next     := Next;
    end Internal_Append;

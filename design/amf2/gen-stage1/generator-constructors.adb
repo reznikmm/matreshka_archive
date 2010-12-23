@@ -300,9 +300,11 @@ package body Generator.Constructors is
             Put_Line
              ("        Id       => Matreshka.Internals.Strings.Shared_Empty'Access,");
             Put_Line
-             ("        Next     => 0,");
+             ("        Extent   => 0,");
             Put_Line
              ("        Previous => 0,");
+            Put_Line
+             ("        Next     => 0,");
             Put_Line
              ("        Member   => (0      => (Kind => M_None),");
             Class.All_Properties.Iterate

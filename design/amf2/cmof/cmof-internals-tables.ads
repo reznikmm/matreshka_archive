@@ -95,6 +95,7 @@ private package CMOF.Internals.Tables is
          when others =>
             Id       : Matreshka.Internals.Strings.Shared_String_Access;
             --  Internal identifier of element. Used as xmi:id.
+            Extent   : CMOF_Extent;
             Next     : CMOF_Element;
             Previous : CMOF_Element;
             --  Doubly linked list of elements in the extent.
