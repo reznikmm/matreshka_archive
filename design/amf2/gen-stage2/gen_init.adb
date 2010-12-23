@@ -119,16 +119,24 @@ procedure Gen_Init is
 
    Extent : constant CMOF_Extent := XMI.Reader (Ada.Command_Line.Argument (1));
 
-   All_Classes      : CMOF_Element_Sets.Set;
    All_Associations : CMOF_Element_Sets.Set;
+   All_Classes      : CMOF_Element_Sets.Set;
+   All_Data_Types   : CMOF_Element_Sets.Set;
+   All_Packages     : CMOF_Element_Sets.Set;
    --  All classes and associations in the model correspondingly.
 
    Association_Constant_Name_Max : Positive_Count := 40;
    Class_Constant_Name_Max       : Positive_Count := 1;
+   Data_Type_Constant_Name_Max   : Positive_Count := 1;
+   Package_Constant_Name_Max     : Positive_Count := 1;
    Property_Constant_Name_Max    : Positive_Count := 43;
 
-   Expansions       : CMOF_Element_Expansion_Maps.Map;
+   Expansions                     : CMOF_Element_Expansion_Maps.Map;
    --  Expansion information.
+   First_Class_Property           : Positive;
+   Last_Class_Property            : Positive;
+   Last_Collection_Class_Property : Positive;
+   Last_Metamodel_Element         : Positive;
 
    function Property_Constant_Name
     (Property : CMOF_Property) return Wide_Wide_String;
@@ -146,6 +154,15 @@ procedure Gen_Init is
     (Property : CMOF_Property) return Boolean;
 
    function Has_String_Type (Property : CMOF_Property) return Boolean;
+
+   function Class_Constant_Name (Class : CMOF_Class) return Wide_Wide_String;
+
+   function Data_Type_Constant_Name
+    (Class : CMOF_Data_Type) return Wide_Wide_String
+       renames Class_Constant_Name;
+
+   function Package_Constant_Name
+    (Element : CMOF_Package) return Wide_Wide_String;
 
    ----------------------
    -- Has_Boolean_Type --
@@ -265,6 +282,17 @@ procedure Gen_Init is
    begin
       return "MC_CMOF_" & To_Ada_Identifier (Get_Name (Class));
    end Class_Constant_Name;
+
+   ---------------------------
+   -- Package_Constant_Name --
+   ---------------------------
+
+   function Package_Constant_Name
+    (Element : CMOF_Package) return Wide_Wide_String is
+   begin
+      return "MM_CMOF";
+--      return "MM_CMOF_" & To_Ada_Identifier (Get_Name (Class));
+   end Package_Constant_Name;
 
    -------------------------------
    -- Association_Constant_Name --
@@ -826,6 +854,20 @@ procedure Gen_Init is
             Class_Constant_Name_Max :=
               Positive_Count'Max
                (Class_Constant_Name_Max, Class_Constant_Name (Element)'Length);
+
+         elsif Is_Data_Type (Element) then
+            All_Data_Types.Insert (Element);
+            Data_Type_Constant_Name_Max :=
+              Positive_Count'Max
+               (Data_Type_Constant_Name_Max,
+                Data_Type_Constant_Name (Element)'Length);
+
+         elsif Is_Package (Element) then
+            All_Packages.Insert (Element);
+            Package_Constant_Name_Max :=
+              Positive_Count'Max
+               (Package_Constant_Name_Max,
+                Package_Constant_Name (Element)'Length);
          end if;
       end Classify;
 
@@ -837,8 +879,11 @@ procedure Gen_Init is
       --  Assign numbers for classes and their owned properties.
 
       Sort (All_Classes).Iterate (Assign_Ordered_Set'Access);
+      First_Class_Property := Last + 1;
       Sort (All_Classes).Iterate (Assign_Collection_Of_Element_Property'Access);
+      Last_Collection_Class_Property := Last;
       Sort (All_Classes).Iterate (Assign_Owned_By_Class_Property'Access);
+      Last_Class_Property := Last;
 
       --  Assign numbers for associations.
 
@@ -847,6 +892,7 @@ procedure Gen_Init is
       --  Assign numbers for other elements.
 
       Elements.Iterate (Assign_Set'Access);
+      Last_Metamodel_Element := Last;
    end Assign_Numbers;
 
    --------------------------------------
@@ -1051,12 +1097,54 @@ procedure Gen_Init is
              & ";");
       end Generate_Class_Constant;
 
+      ---------------------------------
+      -- Generate_Data_Type_Constant --
+      ---------------------------------
+
+      procedure Generate_Data_Type_Constant
+       (Position : CMOF_Named_Element_Ordered_Sets.Cursor)
+      is
+         Data_Type : constant CMOF_Data_Type
+           := CMOF_Named_Element_Ordered_Sets.Element (Position);
+
+      begin
+         Put ("   " & Data_Type_Constant_Name (Data_Type));
+         Set_Col (Data_Type_Constant_Name_Max + 5);
+         Put_Line
+          (": constant CMOF_Data_Type :="
+             & Integer'Wide_Wide_Image (Expansions.Element (Data_Type).Number)
+             & ";");
+      end Generate_Data_Type_Constant;
+
+      -------------------------------
+      -- Generate_Package_Constant --
+      -------------------------------
+
+      procedure Generate_Package_Constant
+       (Position : CMOF_Named_Element_Ordered_Sets.Cursor)
+      is
+         Element : constant CMOF_Package
+           := CMOF_Named_Element_Ordered_Sets.Element (Position);
+
+      begin
+         Put ("   " & Package_Constant_Name (Element));
+         Set_Col (Package_Constant_Name_Max + 5);
+         Put_Line
+          (": constant CMOF_Package :="
+             & Integer'Wide_Wide_Image (Expansions.Element (Element).Number)
+             & ";");
+      end Generate_Package_Constant;
+
    begin
       Put_Header;
       New_Line;
       Put_Line ("package CMOF.Internals.Metamodel is");
       New_Line;
       Put_Line ("   pragma Pure;");
+      New_Line;
+      Sort (All_Packages).Iterate (Generate_Package_Constant'Access);
+      New_Line;
+      Sort (All_Data_Types).Iterate (Generate_Data_Type_Constant'Access);
       New_Line;
       Sort (All_Classes).Iterate (Generate_Class_Constant'Access);
       New_Line;
@@ -1070,6 +1158,22 @@ procedure Gen_Init is
       --  suppressed.
       New_Line;
       All_Associations.Iterate (Generate_Association_Constant'Access);
+      New_Line;
+      Put_Line ("   subtype Cmof_Collection_Of_Element_Property is");
+      Put_Line
+       ("     CMOF_Property range"
+          & Natural'Wide_Wide_Image (First_Class_Property)
+          & " .."
+          & Natural'Wide_Wide_Image (Last_Collection_Class_Property)
+          & ";");
+      Put_Line
+       ("   subtype Cmof_Non_Collection_Of_Element_Property is");
+      Put_Line
+       ("     CMOF_Property range"
+          & Natural'Wide_Wide_Image (Last_Collection_Class_Property + 1)
+          & " .."
+          & Natural'Wide_Wide_Image (Last_Class_Property + 1)
+          & ";");
       New_Line;
       Put_Line ("end CMOF.Internals.Metamodel;");
    end Generate_Metamodel_Specification;
@@ -1228,19 +1332,28 @@ begin
    Put_Line ("with AMF;");
    Put_Line ("with CMOF.Internals.Attributes;");
    Put_Line ("with CMOF.Internals.Constructors;");
+   Put_Line ("with CMOF.Internals.Extents;");
    Put_Line ("with CMOF.Internals.Links;");
    Put_Line ("with CMOF.Internals.Metamodel;");
+   Put_Line ("with CMOF.Internals.Tables;");
    New_Line;
    Put_Line ("package body CMOF.Internals.Setup is");
    New_Line;
    Put_Line ("   use CMOF.Internals.Attributes;");
    Put_Line ("   use CMOF.Internals.Constructors;");
+   Put_Line ("   use CMOF.Internals.Extents;");
    Put_Line ("   use CMOF.Internals.Links;");
    Put_Line ("   use CMOF.Internals.Metamodel;");
    New_Line;
    Put_Line ("   Extent : constant CMOF_Extent := CMOF_Metamodel_Extent;");
    New_Line;
    Put_Line ("begin");
+   Put_Line
+    ("   Tables.Elements.Set_Last ("
+       & Trim (Integer'Wide_Wide_Image (Last_Metamodel_Element), Both)
+       & ");");
+   Put_Line ("   Initialize_CMOF_Metamodel_Extent;");
+   New_Line;
    Elements.Iterate (Dump'Access);
    New_Line;
    Put_Line ("end CMOF.Internals.Setup;");

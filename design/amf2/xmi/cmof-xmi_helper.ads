@@ -58,6 +58,8 @@ package CMOF.XMI_Helper is
 
    function Is_Class (Element : CMOF_Element) return Boolean;
 
+   function Is_Package (Element : CMOF_Element) return Boolean;
+
    function Get_Id
     (Element : CMOF_Element) return League.Strings.Universal_String;
 

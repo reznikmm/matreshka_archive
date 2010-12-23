@@ -80,6 +80,13 @@ package body CMOF.XMI_Helper is
    function Is_Class (Element : CMOF_Element) return Boolean
      renames CMOF.Internals.Subclassing.Is_Class;
 
+   ----------------
+   -- Is_Package --
+   ----------------
+
+   function Is_Package (Element : CMOF_Element) return Boolean
+     renames CMOF.Internals.Subclassing.Is_Package;
+
    -------------
    -- Resolve --
    -------------
