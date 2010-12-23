@@ -83,6 +83,7 @@ procedure Gen_Init is
    use CMOF.Named_Elements;
    use CMOF.Typed_Elements;
    use CMOF.XMI_Helper;
+   use type AMF.AMF_String;
 
    type CMOF_Element_Array is array (Positive range <>) of CMOF_Element;
 
@@ -543,7 +544,14 @@ procedure Gen_Init is
                end if;
 
             elsif Has_String_Type (Property) then
-               if Value.Kind /= AMF.Values.Value_String then
+               if Get_Name (Property)
+                    = League.Strings.To_Universal_String ("qualifiedName")
+               then
+                  --  XXX Special exception, must be configurable.
+
+                  null;
+
+               elsif Value.Kind /= AMF.Values.Value_String then
                   Put_Line (Standard_Error, "Invalid string value");
 
                elsif Is_Multivalued (Property) then
@@ -595,12 +603,6 @@ procedure Gen_Init is
       end Generate_Attribute_Initialization;
 
    begin
-      Put_Line
-       (Standard_Error,
-        Get_Name (Get_Meta_Class (Element)).To_Wide_Wide_String
-          & "  "
-          & Boolean'Wide_Wide_Image
-             (Container (Element) = Null_CMOF_Element));
       Put_Line
        ("   Initialize_"
           & To_Ada_Identifier (Get_Name (Meta_Class))
@@ -1054,6 +1056,8 @@ procedure Gen_Init is
       New_Line;
       Put_Line ("package CMOF.Internals.Metamodel is");
       New_Line;
+      Put_Line ("   pragma Pure;");
+      New_Line;
       Sort (All_Classes).Iterate (Generate_Class_Constant'Access);
       New_Line;
       Sort (All_Classes).Iterate
@@ -1219,8 +1223,22 @@ begin
    Generate_Metamodel_Specification;
 
    Put_Header;
+   Put_Line ("with League.Strings;");
+   New_Line;
+   Put_Line ("with AMF;");
+   Put_Line ("with CMOF.Internals.Attributes;");
+   Put_Line ("with CMOF.Internals.Constructors;");
+   Put_Line ("with CMOF.Internals.Links;");
+   Put_Line ("with CMOF.Internals.Metamodel;");
    New_Line;
    Put_Line ("package body CMOF.Internals.Setup is");
+   New_Line;
+   Put_Line ("   use CMOF.Internals.Attributes;");
+   Put_Line ("   use CMOF.Internals.Constructors;");
+   Put_Line ("   use CMOF.Internals.Links;");
+   Put_Line ("   use CMOF.Internals.Metamodel;");
+   New_Line;
+   Put_Line ("   Extent : constant CMOF_Extent := CMOF_Metamodel_Extent;");
    New_Line;
    Put_Line ("begin");
    Elements.Iterate (Dump'Access);
