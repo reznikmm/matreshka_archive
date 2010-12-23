@@ -608,35 +608,14 @@ procedure Gen_Init is
               := Collections.Element (Get_Member_End (Association), 2);
 
          begin
-            Put_Line ("   Internal_Create_Link");
-            Put_Line ("    (" & Association_Constant_Name (Association) & ",");
-
             if First_End = Property then
-               Put_Line
-                ("     "
-                   & Trim
-                      (Integer'Wide_Wide_Image
-                        (Expansions.Element (Element).Number),
-                       Both)
-                   & ",");
-               Put_Line ("     " & Property_Constant_Name (First_End) & ",");
-               Put_Line
-                ("     "
-                   & Trim
-                      (Integer'Wide_Wide_Image
-                        (Expansions.Element (Other).Number),
-                       Both)
-                   & ",");
+               --  Link is created only when specified property is a first
+               --  property in the Association::membrEnd. This allows to
+               --  suppress generation of duplicate links.
 
-            else
+               Put_Line ("   Internal_Create_Link");
                Put_Line
-                ("     "
-                   & Trim
-                      (Integer'Wide_Wide_Image
-                        (Expansions.Element (Other).Number),
-                       Both)
-                   & ",");
-               Put_Line ("     " & Property_Constant_Name (First_End) & ",");
+                ("    (" & Association_Constant_Name (Association) & ",");
                Put_Line
                 ("     "
                    & Trim
@@ -644,16 +623,21 @@ procedure Gen_Init is
                         (Expansions.Element (Element).Number),
                        Both)
                    & ",");
+               Put_Line ("     " & Property_Constant_Name (First_End) & ",");
+               Put_Line
+                ("     "
+                   & Trim
+                      (Integer'Wide_Wide_Image
+                        (Expansions.Element (Other).Number),
+                       Both)
+                   & ",");
+               Put_Line ("     " & Property_Constant_Name (Second_End) & ");");
             end if;
 
-            Put_Line ("     " & Property_Constant_Name (Second_End) & ");");
          end Establish_Link;
 
       begin
          if Is_Class (Get_Type (Property)) then
-            --  XXX Note: suppression of duplicate establishment of links
-            --  should be implemented.
-
             if Is_Multivalued (Property) then
                for J in 1 .. Length (Value.Collection_Value) loop
                   Establish_Link
