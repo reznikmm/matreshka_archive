@@ -190,18 +190,18 @@ private package CMOF.Internals.Tables is
       Tail : CMOF_Element;
    end record;
 
-   package Links is new GNAT.Table (Link_Record, CMOF_Link, 1, 100, 100);
+   package Links is new GNAT.Table (Link_Record, CMOF_Link, 1, 2_000, 100);
 
    package Elements is
-     new GNAT.Table (Element_Record, Cmof_Element, 1, 300, 100);
+     new GNAT.Table (Element_Record, Cmof_Element, 1, 1_000, 100);
 
    package Collections is
      new GNAT.Table
-       (Collection_Record, Collection_Of_CMOF_Element, 1, 2500, 100);
+       (Collection_Record, Collection_Of_CMOF_Element, 1, 5_500, 100);
 
    package Collection_Elements is
      new GNAT.Table
-       (Collection_Element_Record, Collection_Element_Identifier, 1, 100, 100);
+       (Collection_Element_Record, Collection_Element_Identifier, 1, 3_000, 100);
 
    package Extents is
      new GNAT.Table (Extent_Record, CMOF_Extent, 1, 100, 100);
