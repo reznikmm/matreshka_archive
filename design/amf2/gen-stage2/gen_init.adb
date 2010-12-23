@@ -429,11 +429,143 @@ procedure Gen_Init is
       return Result;
    end Class_Properties_Except_Redefined;
 
-   -----------------------------
-   -- Generate_Initialization --
-   -----------------------------
+   ----------------------------------------
+   -- Generate_Meta_Class_Initialization --
+   ----------------------------------------
 
-   procedure Generate_Initialization (Element : CMOF_Element) is
+   procedure Generate_Meta_Class_Initialization (Element : CMOF_Element) is
+
+      use type AMF.Values.Value_Kinds;
+
+      Meta_Class : constant CMOF_Class := Get_Meta_Class (Element);
+
+      procedure Generate_Attribute_Initialization
+       (Position : CMOF_Named_Element_Ordered_Sets.Cursor);
+
+      ---------------------------------------
+      -- Generate_Attribute_Initialization --
+      ---------------------------------------
+
+      procedure Generate_Attribute_Initialization
+       (Position : CMOF_Named_Element_Ordered_Sets.Cursor)
+      is
+         Property    : constant CMOF_Property
+           := CMOF_Named_Element_Ordered_Sets.Element (Position);
+         Association : constant CMOF_Association := Get_Association (Property);
+         Value       : constant AMF.Values.Value := Get (Element, Property);
+
+      begin
+         if Is_Data_Type (Get_Type (Property)) then
+            if Has_Boolean_Type (Property) then
+               Put
+                ("   Internal_Set_" & To_Ada_Identifier (Get_Name (Property))
+                   & " ("
+                   & Trim
+                      (Integer'Wide_Wide_Image
+                        (Expansions.Element (Element).Number),
+                       Both)
+                   & ", ");
+
+               if Value.Boolean_Value then
+                  Put_Line ("AMF.True);");
+
+               else
+                  Put_Line ("AMF.False);");
+               end if;
+--               if Is_Optional (Property) then
+--               end if;
+
+            elsif Has_Integer_Type (Property) then
+               Put_Line
+                ("   Internal_Set_" & To_Ada_Identifier (Get_Name (Property))
+                   & " ("
+                   & Trim
+                      (Integer'Wide_Wide_Image
+                        (Expansions.Element (Element).Number),
+                       Both)
+                   & ","
+                   & AMF.AMF_Integer'Wide_Wide_Image (Value.Integer_Value)
+                   & ");");
+
+            elsif Has_Unlimited_Natural_Type (Property) then
+               Put
+                ("   Internal_Set_" & To_Ada_Identifier (Get_Name (Property))
+                   & " ("
+                   & Trim
+                      (Integer'Wide_Wide_Image
+                        (Expansions.Element (Element).Number),
+                       Both)
+                   & ", ");
+
+               if Value.Unlimited_Natural_Value.Unlimited then
+                  Put_Line ("(Unlimited => True));");
+
+               else
+                  Put_Line
+                   ("(False,"
+                      & AMF.AMF_Integer'Wide_Wide_Image
+                         (Value.Unlimited_Natural_Value.Value)
+                      & "));");
+               end if;
+
+            elsif Has_String_Type (Property) then
+               if Get_Name (Property)
+                    = League.Strings.To_Universal_String ("qualifiedName")
+               then
+                  --  XXX Special exception, must be configurable.
+
+                  null;
+
+               elsif Value.Kind /= AMF.Values.Value_String then
+                  Put_Line (Standard_Error, "Invalid string value");
+
+               elsif Is_Multivalued (Property) then
+                  Put_Line (Standard_Error, "Multivalued string value");
+
+               else
+                  Put_Line
+                   ("   Internal_Set_"
+                      & To_Ada_Identifier (Get_Name (Property)));
+                  Put_Line
+                   ("    ("
+                      & Trim
+                         (Integer'Wide_Wide_Image
+                           (Expansions.Element (Element).Number),
+                          Both)
+                      & ",");
+                  Put_Line
+                   ("     League.Strings.To_Universal_String ("""
+                      & Value.String_Value.To_Wide_Wide_String
+                      & """));");
+               end if;
+
+            else
+               --  Enumeration
+
+               null;
+            end if;
+         end if;
+      end Generate_Attribute_Initialization;
+
+   begin
+      Put_Line
+       ("   Initialize_"
+          & To_Ada_Identifier (Get_Name (Meta_Class))
+          & " ("
+          & Trim
+             (Integer'Wide_Wide_Image (Expansions.Element (Element).Number),
+              Both)
+          & ", Extent);");
+      Sort
+       (Class_Properties_Except_Redefined (Meta_Class)).Iterate
+         (Generate_Attribute_Initialization'Access);
+   end Generate_Meta_Class_Initialization;
+
+   ----------------------------------
+   -- Generate_Link_Initialization --
+   ----------------------------------
+
+   procedure Generate_Link_Initialization (Element : CMOF_Element) is
 
       use type AMF.Values.Value_Kinds;
 
@@ -518,97 +650,7 @@ procedure Gen_Init is
          end Establish_Link;
 
       begin
-         if Is_Data_Type (Get_Type (Property)) then
-            if Has_Boolean_Type (Property) then
-               Put
-                ("   Internal_Set_" & To_Ada_Identifier (Get_Name (Property))
-                   & " ("
-                   & Trim
-                      (Integer'Wide_Wide_Image
-                        (Expansions.Element (Element).Number),
-                       Both)
-                   & ", ");
-
-               if Value.Boolean_Value then
-                  Put_Line ("AMF.True);");
-
-               else
-                  Put_Line ("AMF.False);");
-               end if;
---               if Is_Optional (Property) then
---               end if;
-
-            elsif Has_Integer_Type (Property) then
-               Put_Line
-                ("   Internal_Set_" & To_Ada_Identifier (Get_Name (Property))
-                   & " ("
-                   & Trim
-                      (Integer'Wide_Wide_Image
-                        (Expansions.Element (Element).Number),
-                       Both)
-                   & ","
-                   & AMF.AMF_Integer'Wide_Wide_Image (Value.Integer_Value)
-                   & ");");
-
-            elsif Has_Unlimited_Natural_Type (Property) then
-               Put
-                ("   Internal_Set_" & To_Ada_Identifier (Get_Name (Property))
-                   & " ("
-                   & Trim
-                      (Integer'Wide_Wide_Image
-                        (Expansions.Element (Element).Number),
-                       Both)
-                   & ", ");
-
-               if Value.Unlimited_Natural_Value.Unlimited then
-                  Put_Line ("(Unlimited => AMF.True));");
-
-               else
-                  Put_Line
-                   ("(AMF.False,"
-                      & AMF.AMF_Integer'Wide_Wide_Image
-                         (Value.Unlimited_Natural_Value.Value)
-                      & ");");
-               end if;
-
-            elsif Has_String_Type (Property) then
-               if Get_Name (Property)
-                    = League.Strings.To_Universal_String ("qualifiedName")
-               then
-                  --  XXX Special exception, must be configurable.
-
-                  null;
-
-               elsif Value.Kind /= AMF.Values.Value_String then
-                  Put_Line (Standard_Error, "Invalid string value");
-
-               elsif Is_Multivalued (Property) then
-                  Put_Line (Standard_Error, "Multivalued string value");
-
-               else
-                  Put_Line
-                   ("   Internal_Set_"
-                      & To_Ada_Identifier (Get_Name (Property)));
-                  Put_Line
-                   ("    ("
-                      & Trim
-                         (Integer'Wide_Wide_Image
-                           (Expansions.Element (Element).Number),
-                          Both)
-                      & ",");
-                  Put_Line
-                   ("     League.Strings.To_Universal_String ("""
-                      & Value.String_Value.To_Wide_Wide_String
-                      & """));");
-               end if;
-
-            else
-               --  Enumeration
-
-               null;
-            end if;
-
-         else
+         if Is_Class (Get_Type (Property)) then
             --  XXX Note: suppression of duplicate establishment of links
             --  should be implemented.
 
@@ -631,18 +673,10 @@ procedure Gen_Init is
       end Generate_Attribute_Initialization;
 
    begin
-      Put_Line
-       ("   Initialize_"
-          & To_Ada_Identifier (Get_Name (Meta_Class))
-          & " ("
-          & Trim
-             (Integer'Wide_Wide_Image (Expansions.Element (Element).Number),
-              Both)
-          & ", Extent);");
       Sort
        (Class_Properties_Except_Redefined (Meta_Class)).Iterate
          (Generate_Attribute_Initialization'Access);
-   end Generate_Initialization;
+   end Generate_Link_Initialization;
 
    ---------------------
    -- Collect_Classes --
@@ -654,7 +688,7 @@ procedure Gen_Init is
          Element    : constant CMOF_Element := CMOF_Element_Sets.Element (Position);
 
       begin
-         Generate_Initialization (Element);
+         Generate_Meta_Class_Initialization (Element);
 --         Meta_Class : constant CMOF_Class   := Get_Meta_Class (Element);
 --
 --         procedure Print (Position : CMOF_Named_Element_Ordered_Sets.Cursor) is
@@ -680,6 +714,14 @@ procedure Gen_Init is
 --         Sort
 --          (Class_Properties_Except_Redefined (Meta_Class)).Iterate (Print'Access);
       end Dump;
+
+      procedure Dump2 (Position : CMOF_Element_Sets.Cursor) is
+         Element : constant CMOF_Element
+           := CMOF_Element_Sets.Element (Position);
+
+      begin
+         Generate_Link_Initialization (Element);
+      end Dump2;
 
 --   begin
 --      Elements (Extent).Iterate (Dump'Access);
@@ -1355,6 +1397,7 @@ begin
    Put_Line ("   Initialize_CMOF_Metamodel_Extent;");
    New_Line;
    Elements.Iterate (Dump'Access);
+   Elements.Iterate (Dump2'Access);
    New_Line;
    Put_Line ("end CMOF.Internals.Setup;");
 end Gen_Init;
