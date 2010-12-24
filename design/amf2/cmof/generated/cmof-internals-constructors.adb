@@ -754,6 +754,8 @@ package body Cmof.Internals.Constructors is
                      4      => (M_Element, 0),             --  owner
                      5      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  qualifiedName
+                     7      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                                                           --  uri
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 12);
       Initialize_Set_Collection          --  elementImport

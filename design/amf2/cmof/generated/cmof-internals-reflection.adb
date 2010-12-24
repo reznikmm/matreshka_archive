@@ -1042,6 +1042,11 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Visibility then
             return (Kind => AMF.Values.Value_None);
 
+         elsif Property = MP_CMOF_Package_Uri then
+            return
+             (AMF.Values.Value_String,
+              Internal_Get_Uri (Self));
+
          else
             raise Program_Error;
          end if;
@@ -1824,6 +1829,9 @@ package body CMOF.Internals.Reflection is
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             null;
+
+         elsif Property = MP_CMOF_Package_Uri then
+            Internal_Set_Uri (Self, Value.String_Value);
 
          else
             raise Program_Error;

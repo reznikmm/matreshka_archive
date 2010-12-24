@@ -383,4 +383,11 @@ package CMOF.Internals.Attributes is
      (Self : CMOF_Element;
       To   : CMOF_Element);
 
+   function Internal_Get_Uri
+     (Self : CMOF_Element) return AMF.AMF_String;
+
+   procedure Internal_Set_Uri
+     (Self : CMOF_Element;
+      To   : AMF.AMF_String);
+
 end CMOF.Internals.Attributes;

@@ -2040,4 +2040,44 @@ package body Cmof.Internals.Attributes is
       end if;
    end Internal_Set_Visibility;
 
+   ----------------------
+   -- Internal_Get_Uri --
+   ----------------------
+
+   function Internal_Get_Uri
+     (Self : CMOF_Element) return AMF.AMF_String
+   is
+   begin
+      return
+        League.Strings.Internals.Create
+         (Elements.Table (Self).Member
+           (Member_Offset
+             (Elements.Table (Self).Kind,
+              MP_CMOF_Package_Uri)).String_Value);
+   end Internal_Get_Uri;
+
+   ----------------------
+   -- Internal_Set_Uri --
+   ----------------------
+
+   procedure Internal_Set_Uri
+     (Self : CMOF_Element;
+      To   : AMF.AMF_String) is
+   begin
+      Matreshka.Internals.Strings.Dereference
+       (Elements.Table (Self).Member
+         (Member_Offset
+           (Elements.Table (Self).Kind,
+            MP_CMOF_Package_Uri)).String_Value);
+      Elements.Table (Self).Member
+       (Member_Offset
+         (Elements.Table (Self).Kind,
+            MP_CMOF_Package_Uri)).String_Value := League.Strings.Internals.Get_Shared (To);
+      Matreshka.Internals.Strings.Reference
+       (Elements.Table (Self).Member
+         (Member_Offset
+           (Elements.Table (Self).Kind,
+            MP_CMOF_Package_Uri)).String_Value);
+   end Internal_Set_Uri;
+
 end Cmof.Internals.Attributes;

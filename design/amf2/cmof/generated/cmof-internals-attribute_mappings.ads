@@ -297,6 +297,7 @@ private package CMOF.Internals.Attribute_Mappings is
            Metamodel.MP_CMOF_Element_Owner                => 4,
            Metamodel.MP_CMOF_Named_Element_Qualified_Name => 5,
            Metamodel.MP_CMOF_Named_Element_Visibility     => 6,
+           Metamodel.MP_CMOF_Package_Uri                  => 7,
            others                                         => 0),
         Types.E_Package_Import =>
           (Metamodel.MP_CMOF_Package_Import_Imported_Package    => 1,
