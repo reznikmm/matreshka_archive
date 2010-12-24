@@ -1,6 +1,47 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--                          Ada Modeling Framework                          --
+--                                                                          --
+--                        Runtime Library Component                         --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
 with Ada.Containers.Ordered_Sets;
---with Ada.Containers.Hashed_Sets;
-with Ada.Wide_Wide_Text_IO;
 with Ada.Unchecked_Conversion;
 with Interfaces;
 
@@ -9,6 +50,7 @@ with League.Strings;
 
 with CMOF.Classes;
 with CMOF.Collections;
+with CMOF.Extents;
 with CMOF.Factory;
 with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
@@ -20,7 +62,6 @@ with CMOF_Tree_Models.Moc;
 
 package body CMOF_Tree_Models is
 
-   use Ada.Wide_Wide_Text_IO;
    use CMOF;
    use CMOF.Collections;
    use CMOF.Named_Elements;
@@ -42,24 +83,22 @@ package body CMOF_Tree_Models is
      Data   : Node_Access)
        return Qt4.Model_Indices.Q_Model_Index;
 
---   type CMOF_Element_Array is array (Positive range <>) of CMOF.CMOF_Element;
-
---   function Hash (Item : CMOF.CMOF_Element) return Ada.Containers.Hash_Type;
-
-   function "<" (Left : CMOF.CMOF_Element; Right : CMOF.CMOF_Element) return Boolean;
+   function "<"
+    (Left : CMOF.CMOF_Element; Right : CMOF.CMOF_Element) return Boolean;
 
    package CMOF_Property_Sets is
-     new Ada.Containers.Ordered_Sets (CMOF.CMOF_Element); -- , Hash, CMOF."=", CMOF."=");
---     new Ada.Containers.Hashed_Sets (CMOF.CMOF_Element, Hash, CMOF."=", CMOF."=");
+     new Ada.Containers.Ordered_Sets (CMOF.CMOF_Element);
 
-   function All_Attributes (Class : CMOF.CMOF_Class) return CMOF_Property_Sets.Set;
---   function All_Attributes (Class : CMOF.CMOF_Class) return CMOF_Element_Array;
+   function All_Attributes
+    (Class : CMOF.CMOF_Class) return CMOF_Property_Sets.Set;
 
    ---------
    -- "<" --
    ---------
 
-   function "<" (Left : CMOF.CMOF_Element; Right : CMOF.CMOF_Element) return Boolean is
+   function "<"
+    (Left : CMOF.CMOF_Element; Right : CMOF.CMOF_Element) return Boolean
+   is
       use type Interfaces.Integer_32;
       use type League.Strings.Universal_String;
 
@@ -231,7 +270,9 @@ package body CMOF_Tree_Models is
          when Qt4.Display_Role =>
             case Section is
                when 0 =>
-                  return Qt4.Variants.Create (Qt4.Strings.From_Utf_8 ("Node description"));
+                  return
+                    Qt4.Variants.Create
+                     (Qt4.Strings.From_Utf_8 ("Node description"));
 
                when others =>
                   return Qt4.Variants.Create;
@@ -318,7 +359,8 @@ package body CMOF_Tree_Models is
                     Qt4.Strings.From_Ucs_4
                      (CMOF.Factory.Convert_To_String
                        (Get_Type (Self.Attribute),
-                        Get (Self.Element, Self.Attribute)).To_Wide_Wide_String));
+                        Get
+                         (Self.Element, Self.Attribute)).To_Wide_Wide_String));
             Self.Children.Append (X);
 
          else
@@ -335,7 +377,9 @@ package body CMOF_Tree_Models is
                              Node_Vectors.Empty_Vector,
                              False,
                              Qt4.Strings.From_Ucs_4
-                              (Get_Name (Get_Meta_Class (Element (C, J))).To_Wide_Wide_String),
+                              (Get_Name
+                                (Get_Meta_Class
+                                  (Element (C, J))).To_Wide_Wide_String),
                              Element (C, J));
                      Self.Children.Append (X);
                   end loop;
@@ -363,7 +407,8 @@ package body CMOF_Tree_Models is
                              Node_Vectors.Empty_Vector,
                              False,
                              Qt4.Strings.From_Ucs_4
-                              (Get_Name (Get_Meta_Class (C)).To_Wide_Wide_String),
+                              (Get_Name
+                                (Get_Meta_Class (C)).To_Wide_Wide_String),
                              C);
                   end if;
 
@@ -416,7 +461,8 @@ package body CMOF_Tree_Models is
    begin
       if not Self.Is_Populated then
          Self.Is_Populated := True;
-         All_Attributes (Get_Meta_Class (Self.Element)).Iterate (Process_Property'Access);
+         All_Attributes
+          (Get_Meta_Class (Self.Element)).Iterate (Process_Property'Access);
       end if;
    end Populate;
 
@@ -455,6 +501,31 @@ package body CMOF_Tree_Models is
 
       return Qt4.Q_Integer (Parent_Node.Children.Length);
    end Row_Count;
+
+   ----------------
+   -- Set_Extent --
+   ----------------
+
+   procedure Set_Extent
+    (Self : not null access CMOF_Tree_Model'Class;
+     Root : CMOF.CMOF_Extent)
+   is
+      use CMOF.Extents;
+
+      procedure Dump (Position : CMOF_Element_Sets.Cursor);
+
+      procedure Dump (Position : CMOF_Element_Sets.Cursor) is
+         X : constant CMOF_Element := CMOF_Element_Sets.Element (Position);
+
+      begin
+         if Container (X) = Null_CMOF_Element then
+            Self.Set_Root (X);
+         end if;
+      end Dump;
+
+   begin
+      Elements (Root).Iterate (Dump'Access);
+   end Set_Extent;
 
    --------------
    -- Set_Root --

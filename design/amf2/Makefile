@@ -4,9 +4,9 @@ all:
 	gprbuild -p -Pcmof/cmof.gpr
 	gprbuild -p -Pxmi/xmi.gpr
 	gprbuild -p -Pgui/gui_moc.gpr
-#	gprbuild -p -Pgui/gui.gpr
-	./demo-reader data/cmof.xml
-#	./demo-viewer data/cmof.xml
+	gprbuild -p -Pgui/gui.gpr
+#	./demo-reader data/cmof.xml
+	./demo-viewer data/cmof.xml
 
 gen:
 	gprbuild -p -Pgen-stage1/generator.gpr
