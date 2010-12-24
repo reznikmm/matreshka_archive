@@ -220,8 +220,27 @@ package body Generator.Subclassing is
             Put_Line ("   -----------------");
             New_Line;
             Put_Line ("   function Is_Subclass");
-            Put_Line ("     (Self       : Cmof_Element;");
-            Put_Line ("      Superclass : CMOF_Class) return Boolean");
+            Put_Line ("     (Self       : CMOF_Meta_Class;");
+            Put_Line ("      Superclass : CMOF_Meta_Class) return Boolean");
+            Put_Line ("   is");
+            Put_Line ("      pragma Assert (not Is_Null (Self));");
+            Put_Line ("      pragma Assert (Is_Valid (Self));");
+            New_Line;
+            Put_Line ("   begin");
+            Put_Line ("      return");
+            Put_Line
+              ("        (Tag (Self) and Tag (Superclass))");
+            Put_Line ("           = Tag (Superclass);");
+            Put_Line ("   end Is_Subclass;");
+
+            New_Line;
+            Put_Line ("   ----------------------------");
+            Put_Line ("   -- Is_Subclass_Reflective --");
+            Put_Line ("   ----------------------------");
+            New_Line;
+            Put_Line ("   function Is_Subclass_Reflective");
+            Put_Line ("     (Self       : CMOF_Element;");
+            Put_Line ("      Superclass : CMOF_Meta_Class) return Boolean");
             Put_Line ("   is");
             Put_Line ("      pragma Assert (not Is_Null (Self));");
             Put_Line ("      pragma Assert (Is_Valid (Self));");
@@ -232,7 +251,7 @@ package body Generator.Subclassing is
               ("        (Tag (Class (Elements.Table (Self).Kind))"
                  & " and Tag (Superclass))");
             Put_Line ("           = Tag (Superclass);");
-            Put_Line ("   end Is_Subclass;");
+            Put_Line ("   end Is_Subclass_Reflective;");
 
             Is_Subclass_Generated := True;
          end if;
@@ -266,7 +285,7 @@ package body Generator.Subclassing is
               & Ada_Name & " (Self : Cmof_Element) return Boolean is");
          Put_Line ("   begin");
          Put_Line
-           ("      return Is_Subclass (Self, MC_CMOF_"
+           ("      return Is_Subclass_Reflective (Self, MC_CMOF_"
               & To_Ada_Identifier (To_String (Element.Name)) & ");");
          Put_Line ("   end " & Ada_Name & ";");
       end Generate_Subprogram_Implementation;
@@ -347,15 +366,14 @@ package body Generator.Subclassing is
       end Generate_Tag_Declaration;
 
    begin
-      Put_Line ("with Cmof.Internals.Metamodel;");
-      Put_Line ("with Cmof.Internals.Tables;");
-      Put_Line ("with Cmof.Internals.Types;");
+      Put_Line ("with CMOF.Internals.Tables;");
+      Put_Line ("with CMOF.Internals.Types;");
       New_Line;
-      Put_Line ("package body Cmof.Internals.Subclassing is");
+      Put_Line ("package body CMOF.Internals.Subclassing is");
       New_Line;
-      Put_Line ("   use Cmof.Internals.Metamodel;");
-      Put_Line ("   use Cmof.Internals.Tables;");
-      Put_Line ("   use Cmof.Internals.Types;");
+      Put_Line ("   use CMOF.Internals.Metamodel;");
+      Put_Line ("   use CMOF.Internals.Tables;");
+      Put_Line ("   use CMOF.Internals.Types;");
 
       Generate_Tag_Declaration;
       Generate_Class_Declaration;
@@ -363,7 +381,7 @@ package body Generator.Subclassing is
       Generate_Is_Subclass_Implementation;
 
       New_Line;
-      Put_Line ("end Cmof.Internals.Subclassing;");
+      Put_Line ("end CMOF.Internals.Subclassing;");
    end Generate_Subclassing_Implementation;
 
    ----------------------------------------
@@ -404,17 +422,22 @@ package body Generator.Subclassing is
       begin
          New_Line;
          Put_Line ("   function Is_Subclass");
-         Put_Line ("     (Self       : Cmof_Element;");
-         Put_Line ("      Superclass : CMOF_Class) return Boolean;");
+         Put_Line ("     (Self       : CMOF.Internals.Metamodel.CMOF_Meta_Class;");
+         Put_Line ("      Superclass : CMOF.Internals.Metamodel.CMOF_Meta_Class) return Boolean;");
+         New_Line;
+         Put_Line ("   function Is_Subclass_Reflective");
+         Put_Line ("     (Self       : CMOF_Element;");
+         Put_Line ("      Superclass : CMOF.Internals.Metamodel.CMOF_Meta_Class) return Boolean;");
       end Generate_Is_Subclass_Declaration;
 
    begin
+      Put_Line ("with CMOF.Internals.Metamodel;");
       New_Line;
-      Put_Line ("package Cmof.Internals.Subclassing is");
+      Put_Line ("package CMOF.Internals.Subclassing is");
       Generate_Is_Subclass_Declaration;
       Classes.Iterate (Generate_Subprogram_Declaration'Access);
       New_Line;
-      Put_Line ("end Cmof.Internals.Subclassing;");
+      Put_Line ("end CMOF.Internals.Subclassing;");
    end Generate_Subclassing_Specification;
 
 end Generator.Subclassing;
