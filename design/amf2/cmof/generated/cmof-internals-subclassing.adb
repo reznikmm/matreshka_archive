@@ -1,12 +1,11 @@
-with Cmof.Internals.Metamodel;
-with Cmof.Internals.Tables;
-with Cmof.Internals.Types;
+with CMOF.Internals.Tables;
+with CMOF.Internals.Types;
 
-package body Cmof.Internals.Subclassing is
+package body CMOF.Internals.Subclassing is
 
-   use Cmof.Internals.Metamodel;
-   use Cmof.Internals.Tables;
-   use Cmof.Internals.Types;
+   use CMOF.Internals.Metamodel;
+   use CMOF.Internals.Tables;
+   use CMOF.Internals.Types;
 
    type Class_Bits is array (CMOF_Meta_Class) of Boolean;
    pragma Pack (Class_Bits);
@@ -252,7 +251,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Association (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Association);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Association);
    end Is_Association;
 
    ---------------------------
@@ -261,7 +260,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Behavioral_Feature (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Behavioral_Feature);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Behavioral_Feature);
    end Is_Behavioral_Feature;
 
    --------------
@@ -270,7 +269,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Class (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Class);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Class);
    end Is_Class;
 
    -------------------
@@ -279,7 +278,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Classifier (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Classifier);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Classifier);
    end Is_Classifier;
 
    ----------------
@@ -288,7 +287,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Comment (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Comment);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Comment);
    end Is_Comment;
 
    -------------------
@@ -297,7 +296,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Constraint (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Constraint);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Constraint);
    end Is_Constraint;
 
    ------------------
@@ -306,7 +305,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Data_Type (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Data_Type);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Data_Type);
    end Is_Data_Type;
 
    ------------------------------
@@ -315,7 +314,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Directed_Relationship (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Directed_Relationship);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Directed_Relationship);
    end Is_Directed_Relationship;
 
    ----------------
@@ -324,7 +323,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Element (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Element);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Element);
    end Is_Element;
 
    -----------------------
@@ -333,7 +332,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Element_Import (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Element_Import);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Element_Import);
    end Is_Element_Import;
 
    --------------------
@@ -342,7 +341,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Enumeration (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Enumeration);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Enumeration);
    end Is_Enumeration;
 
    ----------------------------
@@ -351,7 +350,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Enumeration_Literal (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Enumeration_Literal);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Enumeration_Literal);
    end Is_Enumeration_Literal;
 
    -------------------
@@ -360,7 +359,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Expression (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Expression);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Expression);
    end Is_Expression;
 
    ----------------
@@ -369,7 +368,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Feature (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Feature);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Feature);
    end Is_Feature;
 
    -----------------------------
@@ -378,7 +377,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Multiplicity_Element (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Multiplicity_Element);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Multiplicity_Element);
    end Is_Multiplicity_Element;
 
    ----------------------
@@ -387,7 +386,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Named_Element (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Named_Element);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Named_Element);
    end Is_Named_Element;
 
    ------------------
@@ -396,7 +395,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Namespace (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Namespace);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Namespace);
    end Is_Namespace;
 
    --------------------------
@@ -405,7 +404,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Opaque_Expression (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Opaque_Expression);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Opaque_Expression);
    end Is_Opaque_Expression;
 
    ------------------
@@ -414,7 +413,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Operation (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Operation);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Operation);
    end Is_Operation;
 
    ----------------
@@ -423,7 +422,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Package (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Package);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Package);
    end Is_Package;
 
    -----------------------
@@ -432,7 +431,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Package_Import (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Package_Import);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Package_Import);
    end Is_Package_Import;
 
    ----------------------
@@ -441,7 +440,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Package_Merge (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Package_Merge);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Package_Merge);
    end Is_Package_Merge;
 
    ----------------------------
@@ -450,7 +449,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Packageable_Element (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Packageable_Element);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Packageable_Element);
    end Is_Packageable_Element;
 
    ------------------
@@ -459,7 +458,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Parameter (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Parameter);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Parameter);
    end Is_Parameter;
 
    -----------------------
@@ -468,7 +467,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Primitive_Type (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Primitive_Type);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Primitive_Type);
    end Is_Primitive_Type;
 
    -----------------
@@ -477,7 +476,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Property (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Property);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Property);
    end Is_Property;
 
    ----------------------------
@@ -486,7 +485,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Redefinable_Element (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Redefinable_Element);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Redefinable_Element);
    end Is_Redefinable_Element;
 
    ---------------------
@@ -495,7 +494,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Relationship (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Relationship);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Relationship);
    end Is_Relationship;
 
    ---------------------------
@@ -504,7 +503,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Structural_Feature (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Structural_Feature);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Structural_Feature);
    end Is_Structural_Feature;
 
    -----------------
@@ -512,8 +511,25 @@ package body Cmof.Internals.Subclassing is
    -----------------
 
    function Is_Subclass
-     (Self       : Cmof_Element;
-      Superclass : CMOF_Class) return Boolean
+     (Self       : CMOF_Meta_Class;
+      Superclass : CMOF_Meta_Class) return Boolean
+   is
+      pragma Assert (not Is_Null (Self));
+      pragma Assert (Is_Valid (Self));
+
+   begin
+      return
+        (Tag (Self) and Tag (Superclass))
+           = Tag (Superclass);
+   end Is_Subclass;
+
+   ----------------------------
+   -- Is_Subclass_Reflective --
+   ----------------------------
+
+   function Is_Subclass_Reflective
+     (Self       : CMOF_Element;
+      Superclass : CMOF_Meta_Class) return Boolean
    is
       pragma Assert (not Is_Null (Self));
       pragma Assert (Is_Valid (Self));
@@ -522,7 +538,7 @@ package body Cmof.Internals.Subclassing is
       return
         (Tag (Class (Elements.Table (Self).Kind)) and Tag (Superclass))
            = Tag (Superclass);
-   end Is_Subclass;
+   end Is_Subclass_Reflective;
 
    -------------
    -- Is_Type --
@@ -530,7 +546,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Type (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Type);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Type);
    end Is_Type;
 
    ----------------------
@@ -539,7 +555,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Typed_Element (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Typed_Element);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Typed_Element);
    end Is_Typed_Element;
 
    ----------------------------
@@ -548,7 +564,7 @@ package body Cmof.Internals.Subclassing is
 
    function Is_Value_Specification (Self : Cmof_Element) return Boolean is
    begin
-      return Is_Subclass (Self, MC_CMOF_Value_Specification);
+      return Is_Subclass_Reflective (Self, MC_CMOF_Value_Specification);
    end Is_Value_Specification;
 
-end Cmof.Internals.Subclassing;
+end CMOF.Internals.Subclassing;
