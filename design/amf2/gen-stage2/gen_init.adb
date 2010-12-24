@@ -110,6 +110,8 @@ procedure Gen_Init is
    Element_Numbers : CMOF_Element_Number_Maps.Map;
    --  Expansion information.
 
+   First_Class                    : Positive;
+   Last_Class                     : Positive;
    First_Class_Property           : Positive;
    Last_Class_Property            : Positive;
    Last_Collection_Class_Property : Positive;
@@ -274,7 +276,9 @@ procedure Gen_Init is
 
       --  Assign numbers for classes and their owned properties.
 
+      First_Class := Last + 1;
       Sort (All_Classes).Iterate (Assign_Ordered_Set'Access);
+      Last_Class := Last;
       First_Class_Property := Last + 1;
       Sort (All_Classes).Iterate (Assign_Collection_Of_Element_Property'Access);
       Last_Collection_Class_Property := Last;
@@ -555,7 +559,15 @@ procedure Gen_Init is
       New_Line;
       All_Associations.Iterate (Generate_Association_Constant'Access);
       New_Line;
-      Put_Line ("   subtype Cmof_Collection_Of_Element_Property is");
+      Put_Line ("   subtype CMOF_Meta_Class is");
+      Put_Line
+       ("     CMOF_Class range"
+          & Natural'Wide_Wide_Image (First_Class)
+          & " .."
+          & Natural'Wide_Wide_Image (Last_Class)
+          & ";");
+      New_Line;
+      Put_Line ("   subtype CMOF_Collection_Of_Element_Property is");
       Put_Line
        ("     CMOF_Property range"
           & Natural'Wide_Wide_Image (First_Class_Property)
@@ -563,7 +575,7 @@ procedure Gen_Init is
           & Natural'Wide_Wide_Image (Last_Collection_Class_Property)
           & ";");
       Put_Line
-       ("   subtype Cmof_Non_Collection_Of_Element_Property is");
+       ("   subtype CMOF_Non_Collection_Of_Element_Property is");
       Put_Line
        ("     CMOF_Property range"
           & Natural'Wide_Wide_Image (Last_Collection_Class_Property + 1)
