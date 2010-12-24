@@ -572,6 +572,36 @@ package body XMI.Handlers is
          Set_Id (Self.Current, Attributes.Value (XMI_Namespace, Id_Name));
          Self.Mapping.Insert
           (Attributes.Value (XMI_Namespace, Id_Name), Self.Current);
+
+            for J in 1 .. Attributes.Length loop
+               if Attributes.Namespace_URI (J).Is_Empty then
+                  if Attributes.Qualified_Name (J) /= League.Strings.To_Universal_String ("href") then
+--                  Put_Line
+--                   ("  "
+--                      & Attributes.Qualified_Name (J).To_Wide_Wide_String
+--                      & "  "
+--                      & Attributes.Value (J).To_Wide_Wide_String);
+--                  Dump (Get_Meta_Class (Self.Current));
+                  Set_Attribute
+                   (CMOF.XMI_Helper.Resolve_Attribute
+                     (Meta, Attributes.Qualified_Name (J)),
+                    Attributes.Value (J));
+                  end if;
+
+               elsif Attributes.Namespace_URI (J) = XMI_Namespace then
+                  null;
+
+               else
+                  Put_Line
+                   (Standard_Error,
+                    "  "
+                      & Attributes.Namespace_URI (J).To_Wide_Wide_String
+                      & "  "
+                      & Attributes.Local_Name (J).To_Wide_Wide_String
+                      & "  "
+                      & Attributes.Value (J).To_Wide_Wide_String);
+               end if;
+            end loop;
       end if;
    end Start_Element;
 
