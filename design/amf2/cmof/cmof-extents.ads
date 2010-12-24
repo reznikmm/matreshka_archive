@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with Ada.Containers.Hashed_Sets;
 
+with League.Strings;
+
 package CMOF.Extents is
 
    function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type;
@@ -53,5 +55,9 @@ package CMOF.Extents is
    function Create_Extent return CMOF_Extent;
 
    function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set;
+
+   function Object
+    (Self       : CMOF_Extent;
+     Identifier : League.Strings.Universal_String) return CMOF_Element;
 
 end CMOF.Extents;

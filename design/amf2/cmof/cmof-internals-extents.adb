@@ -42,6 +42,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Text_IO;
+
+with League.Strings.Internals;
+with Matreshka.Internals.Strings;
+
 with CMOF.Internals.Attribute_Mappings;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Collections;
@@ -51,105 +55,6 @@ with CMOF.Internals.Subclassing;
 with CMOF.Internals.Tables;
 
 package body CMOF.Internals.Extents is
-
-   -------------------
-   -- Create_Extent --
-   -------------------
-
-   function Create_Extent return CMOF_Extent is
-   begin
-      Tables.Extents.Increment_Last;
-      Tables.Extents.Table (Tables.Extents.Last) := (0, 0);
-
-      return Tables.Extents.Last;
-   end Create_Extent;
-
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Self  : CMOF_Extent;
-     Index : Positive) return CMOF_Element
-   is
-      Current : CMOF_Element := Tables.Extents.Table (Self).Head;
-
-   begin
-      for J in 2 .. Index loop
-         exit when Current = 0;
-
-         Current := Tables.Elements.Table (Current).Next;
-      end loop;
-
-      if Current = 0 then
-         raise Constraint_Error;
-
-      else
-         return Current;
-      end if;
-   end Element;
-
-   ---------------------
-   -- Internal_Append --
-   ---------------------
-
-   procedure Internal_Append
-    (Extent  : CMOF_Extent;
-     Element : CMOF_Element)
-   is
-      Head        : CMOF_Element := Tables.Extents.Table (Extent).Head;
-      Tail        : CMOF_Element := Tables.Extents.Table (Extent).Tail;
-      Previous    : CMOF_Element := Tables.Extents.Table (Extent).Tail;
-      Next        : CMOF_Element := 0;
-
-   begin
-      if Head = 0 then
-         --  List is empty.
-
-         Head := Element;
-         Tail := Element;
-
-         Tables.Extents.Table (Extent).Head := Head;
-         Tables.Extents.Table (Extent).Tail := Tail;
-
-      else
-         Tail := Element;
-
-         Tables.Extents.Table (Extent).Tail := Tail;
-         Tables.Elements.Table (Previous).Next := Element;
-      end if;
-
-      Tables.Elements.Table (Element).Extent   := Extent;
-      Tables.Elements.Table (Element).Previous := Previous;
-      Tables.Elements.Table (Element).Next     := Next;
-   end Internal_Append;
-
-   --------------------------------------
-   -- Initialize_CMOF_Metamodel_Extent --
-   --------------------------------------
-
-   procedure Initialize_CMOF_Metamodel_Extent is
-   begin
-      Tables.Extents.Set_Last (CMOF_Metamodel_Extent);
-      Tables.Extents.Table (CMOF_Metamodel_Extent) := (0, 0);
-   end Initialize_CMOF_Metamodel_Extent;
-
-   ------------
-   -- Length --
-   ------------
-
-   function Length (Self : CMOF_Extent) return Natural is
-      Current : CMOF_Element := Tables.Extents.Table (Self).Head;
-      Aux     : Natural := 0;
-
-   begin
-      while Current /= 0 loop
-         Aux     := Aux + 1;
-         Current := Tables.Elements.Table (Current).Next;
-      end loop;
-
-      return Aux;
-   end Length;
 
    ---------------
    -- Container --
@@ -267,5 +172,155 @@ package body CMOF.Internals.Extents is
 
       return Null_CMOF_Element;
    end Container;
+
+   -------------------
+   -- Create_Extent --
+   -------------------
+
+   function Create_Extent return CMOF_Extent is
+   begin
+      Tables.Extents.Increment_Last;
+      Tables.Extents.Table (Tables.Extents.Last) := (0, 0);
+
+      return Tables.Extents.Last;
+   end Create_Extent;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element
+    (Self  : CMOF_Extent;
+     Index : Positive) return CMOF_Element
+   is
+      Current : CMOF_Element := Tables.Extents.Table (Self).Head;
+
+   begin
+      for J in 2 .. Index loop
+         exit when Current = 0;
+
+         Current := Tables.Elements.Table (Current).Next;
+      end loop;
+
+      if Current = 0 then
+         raise Constraint_Error;
+
+      else
+         return Current;
+      end if;
+   end Element;
+
+   ------------
+   -- Get_Id --
+   ------------
+
+   function Get_Id
+    (Element : CMOF_Element) return League.Strings.Universal_String is
+   begin
+      return
+        League.Strings.Internals.Create (Tables.Elements.Table (Element).Id);
+   end Get_Id;
+
+   ---------------------
+   -- Internal_Append --
+   ---------------------
+
+   procedure Internal_Append
+    (Extent  : CMOF_Extent;
+     Element : CMOF_Element)
+   is
+      Head        : CMOF_Element := Tables.Extents.Table (Extent).Head;
+      Tail        : CMOF_Element := Tables.Extents.Table (Extent).Tail;
+      Previous    : CMOF_Element := Tables.Extents.Table (Extent).Tail;
+      Next        : CMOF_Element := 0;
+
+   begin
+      if Head = 0 then
+         --  List is empty.
+
+         Head := Element;
+         Tail := Element;
+
+         Tables.Extents.Table (Extent).Head := Head;
+         Tables.Extents.Table (Extent).Tail := Tail;
+
+      else
+         Tail := Element;
+
+         Tables.Extents.Table (Extent).Tail := Tail;
+         Tables.Elements.Table (Previous).Next := Element;
+      end if;
+
+      Tables.Elements.Table (Element).Extent   := Extent;
+      Tables.Elements.Table (Element).Previous := Previous;
+      Tables.Elements.Table (Element).Next     := Next;
+   end Internal_Append;
+
+   --------------------------------------
+   -- Initialize_CMOF_Metamodel_Extent --
+   --------------------------------------
+
+   procedure Initialize_CMOF_Metamodel_Extent is
+   begin
+      Tables.Extents.Set_Last (CMOF_Metamodel_Extent);
+      Tables.Extents.Table (CMOF_Metamodel_Extent) := (0, 0);
+   end Initialize_CMOF_Metamodel_Extent;
+
+   ------------
+   -- Length --
+   ------------
+
+   function Length (Self : CMOF_Extent) return Natural is
+      Current : CMOF_Element := Tables.Extents.Table (Self).Head;
+      Aux     : Natural := 0;
+
+   begin
+      while Current /= 0 loop
+         Aux     := Aux + 1;
+         Current := Tables.Elements.Table (Current).Next;
+      end loop;
+
+      return Aux;
+   end Length;
+
+   ------------
+   -- Object --
+   ------------
+
+   function Object
+    (Self       : CMOF_Extent;
+     Identifier : League.Strings.Universal_String) return CMOF_Element
+   is
+      use type League.Strings.Universal_String;
+
+      Current : CMOF_Element := Tables.Extents.Table (Self).Head;
+
+   begin
+      while Current /= Null_CMOF_Element loop
+         if Get_Id (Current) = Identifier then
+            return Current;
+         end if;
+
+         Current := Tables.Elements.Table (Current).Next;
+      end loop;
+
+      return Null_CMOF_Element;
+   end Object;
+
+   ------------
+   -- Set_Id --
+   ------------
+
+   procedure Set_Id
+    (Element : CMOF_Element;
+     Id      : League.Strings.Universal_String) is
+   begin
+      Matreshka.Internals.Strings.Dereference
+       (Tables.Elements.Table (Element).Id);
+      Tables.Elements.Table (Element).Id :=
+        League.Strings.Internals.Get_Shared (Id);
+      Matreshka.Internals.Strings.Reference
+       (Tables.Elements.Table (Element).Id);
+   end Set_Id;
 
 end CMOF.Internals.Extents;

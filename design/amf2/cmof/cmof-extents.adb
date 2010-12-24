@@ -78,4 +78,13 @@ package body CMOF.Extents is
       return Ada.Containers.Hash_Type (Item);
    end Hash;
 
+   ------------
+   -- Object --
+   ------------
+
+   function Object
+    (Self       : CMOF_Extent;
+     Identifier : League.Strings.Universal_String) return CMOF_Element
+       renames CMOF.Internals.Extents.Object;
+
 end CMOF.Extents;

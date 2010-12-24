@@ -96,15 +96,16 @@ private
 
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler with record
-      Extent       : CMOF.CMOF_Extent;
-      Current      : CMOF.CMOF_Element := CMOF.Null_CMOF_Element;
-      Stack        : Element_Vectors.Vector;
-      Attribute    : CMOF.CMOF_Property := CMOF.Null_CMOF_Element;
-      Text         : League.Strings.Universal_String;
-      Collect_Text : Boolean := False;
-      Mapping      : String_Element_Maps.Map;
-      Postponed    : Postponed_Link_Vectors.Vector;
-      Duplicate    : Duplicate_Link_Sets.Set;
+      Extent           : CMOF.CMOF_Extent;
+      Current          : CMOF.CMOF_Element := CMOF.Null_CMOF_Element;
+      Stack            : Element_Vectors.Vector;
+      Attribute        : CMOF.CMOF_Property := CMOF.Null_CMOF_Element;
+      Text             : League.Strings.Universal_String;
+      Collect_Text     : Boolean := False;
+      Mapping          : String_Element_Maps.Map;
+      Postponed        : Postponed_Link_Vectors.Vector;
+      Duplicate        : Duplicate_Link_Sets.Set;
+      Skip_End_Element : Natural := 0;
    end record;
 
    overriding procedure Characters

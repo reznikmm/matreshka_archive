@@ -43,9 +43,12 @@
 ------------------------------------------------------------------------------
 --  XXX XMI handler can process only CMOF models for now.
 
+with Ada.Characters.Conversions;
+with Ada.Containers.Hashed_Maps;
 with Ada.Wide_Wide_Text_IO;
 
 with League.String_Vectors;
+with XMI.Reader;
 
 with AMF.Values;
 with CMOF.Associations;
@@ -66,6 +69,7 @@ package body XMI.Handlers is
    use CMOF;
    use CMOF.Associations;
    use CMOF.Collections;
+   use CMOF.Extents;
    use CMOF.Reflection;
    use CMOF.Multiplicity_Elements;
    use CMOF.Properties;
@@ -84,6 +88,8 @@ package body XMI.Handlers is
      := League.Strings.To_Universal_String ("id");
    Type_Name      : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("type");
+   Href_Name      : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("href");
 
    function Resolve_Owned_Attribute
     (Class : CMOF.CMOF_Class;
@@ -103,6 +109,16 @@ package body XMI.Handlers is
    --  duplicate links. Duplicate links are created for association which
    --  is not composition association, because opposite element referered
    --  on both ends.
+
+   package Universal_String_Extent_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           CMOF_Extent,
+           Hash,
+           League.Strings."=");
+
+   Documents : Universal_String_Extent_Maps.Map;
+   --  Map file name of document to extent.
 
    ----------------
    -- Characters --
@@ -156,7 +172,10 @@ package body XMI.Handlers is
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean) is
    begin
-      if not Self.Stack.Is_Empty then
+      if Self.Skip_End_Element /= 0 then
+         Self.Skip_End_Element := Self.Skip_End_Element - 1;
+
+      elsif not Self.Stack.Is_Empty then
          if Self.Collect_Text then
             Self.Collect_Text := False;
 
@@ -470,6 +489,51 @@ package body XMI.Handlers is
 
    begin
       if Namespace_URI.Is_Empty then
+         if Attributes.Index (Href_Name) /= 0 then
+            --  Reference to element in another document.
+
+            declare
+               URI       : constant League.Strings.Universal_String
+                 := Attributes.Value (Href_Name);
+               Separator : constant Positive := Index (URI, '#');
+               File_Name : constant League.Strings.Universal_String
+                 := URI.Slice (1, Separator - 1);
+
+            begin
+               if not Documents.Contains (File_Name) then
+                  Documents.Insert
+                   (File_Name,
+                    XMI.Reader
+                     (Ada.Characters.Conversions.To_String
+                       (File_Name.To_Wide_Wide_String)));
+               end if;
+
+               New_Element :=
+                 Object
+                  (Documents.Element (File_Name),
+                   URI.Slice (Separator + 1, URI.Length));
+
+               if New_Element = Null_CMOF_Element then
+                  raise Program_Error;
+               end if;
+
+               Property :=
+                 Resolve_Owned_Attribute
+                  (Get_Meta_Class (Self.Current), Qualified_Name);
+
+               if Property = Null_CMOF_Element then
+                  raise Program_Error;
+               end if;
+
+               Establish_Link
+                (Self,
+                 Property,
+                 Self.Current,
+                 New_Element);
+               Self.Skip_End_Element := 1;
+            end;
+
+         else
 --         Put_Line (Qualified_Name.To_Wide_Wide_String);
 
 --         Dump (Get_Meta_Class (Self.Current));
@@ -522,7 +586,6 @@ package body XMI.Handlers is
 
             for J in 1 .. Attributes.Length loop
                if Attributes.Namespace_URI (J).Is_Empty then
-                  if Attributes.Qualified_Name (J) /= League.Strings.To_Universal_String ("href") then
 --                  Put_Line
 --                   ("  "
 --                      & Attributes.Qualified_Name (J).To_Wide_Wide_String
@@ -533,7 +596,6 @@ package body XMI.Handlers is
                    (CMOF.XMI_Helper.Resolve_Attribute
                      (Meta, Attributes.Qualified_Name (J)),
                     Attributes.Value (J));
-                  end if;
 
                elsif Attributes.Namespace_URI (J) = XMI_Namespace then
                   null;
@@ -553,6 +615,7 @@ package body XMI.Handlers is
             Self.Attribute := Property;
             Self.Collect_Text := True;
             Self.Text.Clear;
+         end if;
          end if;
 
       elsif Namespace_URI = CMOF_Namespace then

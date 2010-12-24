@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with CMOF.Classes;
 with CMOF.Collections;
-with CMOF.Internals.Ids;
+with CMOF.Internals.Extents;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Subclassing;
 with CMOF.Named_Elements;
@@ -57,7 +57,7 @@ package body CMOF.XMI_Helper is
 
    function Get_Id
     (Element : CMOF_Element) return League.Strings.Universal_String
-       renames CMOF.Internals.Ids.Get_Id;
+       renames CMOF.Internals.Extents.Get_Id;
 
    --------------------
    -- Is_Association --
@@ -156,6 +156,6 @@ package body CMOF.XMI_Helper is
    procedure Set_Id
     (Element : CMOF_Element;
      Id      : League.Strings.Universal_String)
-       renames CMOF.Internals.Ids.Set_Id;
+       renames CMOF.Internals.Extents.Set_Id;
 
 end CMOF.XMI_Helper;

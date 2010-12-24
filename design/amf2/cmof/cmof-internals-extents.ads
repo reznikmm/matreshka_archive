@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings;
 
 package CMOF.Internals.Extents is
 
@@ -54,6 +55,17 @@ package CMOF.Internals.Extents is
 
    function Element (Self : CMOF_Extent; Index : Positive) return CMOF_Element;
 
+   function Object
+    (Self       : CMOF_Extent;
+     Identifier : League.Strings.Universal_String) return CMOF_Element;
+
    function Container (Self : CMOF_Element) return CMOF_Element;
+
+   function Get_Id
+    (Element : CMOF_Element) return League.Strings.Universal_String;
+
+   procedure Set_Id
+    (Element : CMOF_Element;
+     Id      : League.Strings.Universal_String);
 
 end CMOF.Internals.Extents;
