@@ -41,6 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Text_IO;
+with CMOF.Internals.Attribute_Mappings;
+with CMOF.Internals.Attributes;
+with CMOF.Internals.Collections;
+with CMOF.Internals.Reflection;
+with CMOF.Internals.Metamodel;
+with CMOF.Internals.Subclassing;
 with CMOF.Internals.Tables;
 
 package body CMOF.Internals.Extents is
@@ -143,5 +150,122 @@ package body CMOF.Internals.Extents is
 
       return Aux;
    end Length;
+
+   ---------------
+   -- Container --
+   ---------------
+
+   function Container (Self : CMOF_Element) return CMOF_Element is
+
+      use CMOF.Internals.Attribute_Mappings;
+      use CMOF.Internals.Attributes;
+      use CMOF.Internals.Collections;
+      use CMOF.Internals.Reflection;
+      use CMOF.Internals.Metamodel;
+      use CMOF.Internals.Subclassing;
+      use type CMOF.Internals.Tables.Collection_Element_Identifier;
+
+      Meta_Class  : constant CMOF_Class := Reflection.Get_Meta_Class (Self);
+      Meta_Extent : constant CMOF_Extent
+        := Tables.Elements.Table (Meta_Class).Extent;
+      Current     : CMOF_Element := Tables.Extents.Table (Meta_Extent).Head;
+      Association : CMOF_Association;
+      Member_End  : Ordered_Set_Of_CMOF_Property;
+      Opposite    : CMOF_Property;
+      Collection  : Tables.Collection_Element_Identifier;
+      Owner       : CMOF_Element;
+      Link        : CMOF_Link;
+
+   begin
+      --  All properties must be traversed to detect containment.
+
+      while Current /= 0 loop
+         if Is_Property (Current)
+           and then Internal_Get_Type (Current) in CMOF_Meta_Class
+           and then Is_Subclass (Meta_Class, Internal_Get_Type (Current))
+           and then Boolean (Internal_Get_Is_Composite (Current))
+         then
+            --  Find opposite property, it is at the element's side of the
+            --  association.
+
+            Association := Internal_Get_Association (Current);
+            Member_End := Internal_Get_Member_End (Association);
+
+            if Element (Member_End, 1) = Current then
+               Opposite := Element (Member_End, 2);
+
+            else
+               Opposite := Element (Member_End, 1);
+            end if;
+
+            --  Depending of multiplicity and ownedship of property, locate
+            --  member or collection and check presence of link. Note: this
+            --  must be reflective operation, but now it is hardcoded at
+            --  CMOF level.
+
+            if Opposite in Cmof_Non_Collection_Of_Element_Property'Range then
+               if Member_Offset
+                   (Tables.Elements.Table (Self).Kind, Opposite) /= 0
+               then
+                  Owner :=
+                    Tables.Elements.Table (Self).Member
+                     (Member_Offset
+                       (Tables.Elements.Table (Self).Kind,
+                       Opposite)).Element;
+
+                  if Owner /= Null_CMOF_Element then
+                     return Owner;
+                  end if;
+
+               else
+               Collection :=
+                 Tables.Collections.Table
+                  (Tables.Elements.Table (Self).Member (0).Collection).Head;
+
+               while Collection /= 0 loop
+                  Link := Tables.Collection_Elements.Table (Collection).Link;
+
+                  if Tables.Links.Table (Link).Association = Association then
+                     if Tables.Links.Table (Link).First_Element = Self then
+                        return Tables.Links.Table (Link).Second_Element;
+
+                     else
+                        return Tables.Links.Table (Link).First_Element;
+                     end if;
+                  end if;
+
+                  Collection :=
+                    Tables.Collection_Elements.Table (Collection).Next;
+               end loop;
+               end if;
+
+            else
+               Collection :=
+                 Tables.Collections.Table
+                  (Tables.Elements.Table (Self).Member (0).Collection).Head;
+
+               while Collection /= 0 loop
+                  Link := Tables.Collection_Elements.Table (Collection).Link;
+
+                  if Tables.Links.Table (Link).Association = Association then
+                     if Tables.Links.Table (Link).First_Element = Self then
+                        return Tables.Links.Table (Link).Second_Element;
+
+                     else
+                        return Tables.Links.Table (Link).First_Element;
+                     end if;
+                  end if;
+
+                  Collection :=
+                    Tables.Collection_Elements.Table (Collection).Next;
+               end loop;
+            end if;
+         end if;
+
+         Current := Tables.Elements.Table (Current).Next;
+      end loop;
+
+      return Null_CMOF_Element;
+   end Container;
 
 end CMOF.Internals.Extents;

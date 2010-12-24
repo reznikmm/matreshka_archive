@@ -79,7 +79,8 @@ package body CMOF.Internals.Collections is
 
    procedure Internal_Append
     (Collection : Collection_Of_CMOF_Element;
-     Element    : CMOF_Element)
+     Element    : CMOF_Element;
+     Link       : CMOF_Link)
    is
       Head        : Collection_Element_Identifier
         := Tables.Collections.Table (Collection).Head;
@@ -110,7 +111,8 @@ package body CMOF.Internals.Collections is
          Collection_Elements.Table (Previous).Next := New_Element;
       end if;
 
-      Collection_Elements.Table (New_Element) := (Element, Previous, Next);
+      Collection_Elements.Table (New_Element) :=
+       (Element, Link, Previous, Next);
    end Internal_Append;
 
    ------------

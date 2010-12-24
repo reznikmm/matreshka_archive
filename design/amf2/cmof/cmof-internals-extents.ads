@@ -54,4 +54,6 @@ package CMOF.Internals.Extents is
 
    function Element (Self : CMOF_Extent; Index : Positive) return CMOF_Element;
 
+   function Container (Self : CMOF_Element) return CMOF_Element;
+
 end CMOF.Internals.Extents;

@@ -89,7 +89,8 @@ package body CMOF.Internals.Links is
          if First_Property not in Cmof_Collection_Of_Element_Property then
             Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
-              Second_Element);
+              Second_Element,
+              Tables.Links.Last);
 
          else
             Internal_Append
@@ -98,13 +99,15 @@ package body CMOF.Internals.Links is
                    (Collection_Offset
                      (Elements.Table (First_Element).Kind,
                       First_Property)),
-              Second_Element);
+              Second_Element,
+              Tables.Links.Last);
          end if;
 
          if Second_Property not in Cmof_Collection_Of_Element_Property then
             Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
-              First_Element);
+              First_Element,
+              Tables.Links.Last);
 
          else
             Internal_Append
@@ -113,7 +116,8 @@ package body CMOF.Internals.Links is
                    (Collection_Offset
                      (Elements.Table (Second_Element).Kind,
                       Second_Property)),
-              First_Element);
+              First_Element,
+              Tables.Links.Last);
          end if;
       end Create_Multiple_Multiple;
 
@@ -132,7 +136,8 @@ package body CMOF.Internals.Links is
          if First_Property not in Cmof_Collection_Of_Element_Property then
             Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
-              Second_Element);
+              Second_Element,
+              Tables.Links.Last);
 
          else
             Internal_Append
@@ -141,13 +146,15 @@ package body CMOF.Internals.Links is
                    (Collection_Offset
                      (Elements.Table (First_Element).Kind,
                       First_Property)),
-              Second_Element);
+              Second_Element,
+              Tables.Links.Last);
          end if;
 
          if Second_Property not in Cmof_Non_Collection_Of_Element_Property then
             Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
-              First_Element);
+              First_Element,
+              Tables.Links.Last);
 
          else
             Elements.Table (Second_Element).Member
@@ -172,7 +179,8 @@ package body CMOF.Internals.Links is
          if First_Property not in Cmof_Non_Collection_Of_Element_Property then
             Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
-              Second_Element);
+              Second_Element,
+              Tables.Links.Last);
 
          else
             Elements.Table (First_Element).Member
@@ -184,7 +192,8 @@ package body CMOF.Internals.Links is
          if Second_Property not in Cmof_Collection_Of_Element_Property then
             Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
-              First_Element);
+              First_Element,
+              Tables.Links.Last);
 
          else
             Internal_Append
@@ -193,7 +202,8 @@ package body CMOF.Internals.Links is
                    (Collection_Offset
                      (Elements.Table (Second_Element).Kind,
                       Second_Property)),
-              First_Element);
+              First_Element,
+              Tables.Links.Last);
          end if;
       end Create_Single_Multiple;
 
@@ -212,7 +222,8 @@ package body CMOF.Internals.Links is
          if First_Property not in Cmof_Non_Collection_Of_Element_Property then
             Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
-              Second_Element);
+              Second_Element,
+              Tables.Links.Last);
 
          else
             Elements.Table (First_Element).Member
@@ -224,7 +235,8 @@ package body CMOF.Internals.Links is
          if Second_Property not in Cmof_Non_Collection_Of_Element_Property then
             Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
-              First_Element);
+              First_Element,
+              Tables.Links.Last);
 
          else
             Elements.Table (Second_Element).Member

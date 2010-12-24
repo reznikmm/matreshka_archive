@@ -45,6 +45,7 @@ with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Extents;
+with CMOF.Internals.Extents;
 with CMOF.Internals.Reflection;
 with CMOF.Properties;
 
@@ -137,47 +138,8 @@ package body CMOF.Reflection is
    -- Container --
    ---------------
 
-   function Container (Self : CMOF_Element) return CMOF_Element is
-      Properties : CMOF_Element_Sets.Set
-        := All_Properties_Except_Redefined (Get_Meta_Class (Self));
-      --  XXX All_Properties_Except_Redefined doesn't include properties
-      --  which is owned by associations, so this function returns wrong
-      --  result.
-      Position   : CMOF_Element_Sets.Cursor := Properties.First;
-
-   begin
-      while CMOF_Element_Sets.Has_Element (Position) loop
-         declare
-            Property    : constant CMOF_Property
-              := CMOF_Element_Sets.Element (Position);
-            Association : constant CMOF_Property := Get_Association (Property);
-            Value       : AMF.Values.Value;
-            Other       : CMOF_Property;
-
-         begin
-            if Association /= Null_CMOF_Element then
-               if Element (Get_Member_End (Association), 1) = Property then
-                  Other := Element (Get_Member_End (Association), 2);
-
-               else
-                  Other := Element (Get_Member_End (Association), 1);
-               end if;
-
-               if Boolean (Get_Is_Composite (Other)) then
-                  Value := Get (Self, Property);
-
-                  if Value.Element_Value /= Null_CMOF_Element then
-                     return Value.Element_Value;
-                  end if;
-               end if;
-            end if;
-
-            CMOF_Element_Sets.Next (Position);
-         end;
-      end loop;
-
-      return Null_CMOF_Element;
-   end Container;
+   function Container (Self : CMOF_Element) return CMOF_Element
+     renames CMOF.Internals.Extents.Container;
 
    ---------
    -- Get --

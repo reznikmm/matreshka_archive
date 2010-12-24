@@ -182,6 +182,7 @@ private package CMOF.Internals.Tables is
    type Collection_Element_Record is record
 --      Collection : Collection_Of_Cmof_Element;
       Element    : CMOF_Element;
+      Link       : CMOF_Link;
       Previous   : Collection_Element_Identifier;
       Next       : Collection_Element_Identifier;
    end record;
