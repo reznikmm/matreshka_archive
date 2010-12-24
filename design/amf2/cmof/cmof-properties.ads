@@ -51,9 +51,19 @@ package CMOF.Properties is
 
    function Get_Is_Composite (Self : CMOF_Property) return AMF.AMF_Boolean;
 
-   function Get_Owning_Association (Self : CMOF_Property) return CMOF_Association;
+   function Get_Is_Derived (Self : CMOF_Property) return AMF.AMF_Boolean;
+
+   function Get_Is_Derived_Union (Self : CMOF_Property) return AMF.AMF_Boolean;
+
+   function Get_Is_Read_Only (Self : CMOF_Property) return AMF.AMF_Boolean;
+
+   function Get_Owning_Association
+    (Self : CMOF_Property) return CMOF_Association;
 
    function Get_Redefined_Property
+    (Self : CMOF_Property) return Set_Of_CMOF_Property;
+
+   function Get_Subsetted_Property
     (Self : CMOF_Property) return Set_Of_CMOF_Property;
 
 end CMOF.Properties;

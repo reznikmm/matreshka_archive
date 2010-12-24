@@ -74,6 +74,8 @@ package AMF is
       end case;
    end record;
 
+   Unlimited : constant AMF_Unlimited_Natural;
+
    function "<"
     (Left  : AMF_Unlimited_Natural;
      Right : AMF_Unlimited_Natural) return Boolean;
@@ -87,6 +89,8 @@ package AMF is
     (Left  : AMF_Unlimited_Natural;
      Right : AMF_Unlimited_Natural) return Boolean;
 
+   function "="
+    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean;
    function "<"
     (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean;
    function "<="
@@ -96,6 +100,8 @@ package AMF is
    function ">="
     (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean;
 
+   function "="
+    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean;
    function "<"
     (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean;
    function "<="
@@ -150,5 +156,9 @@ package AMF is
             Value : AMF_Unlimited_Natural;
       end case;
    end record;
+
+private
+
+   Unlimited : constant AMF_Unlimited_Natural := (Unlimited => True);
 
 end AMF;

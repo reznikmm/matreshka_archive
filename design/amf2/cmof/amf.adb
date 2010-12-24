@@ -143,6 +143,26 @@ package body AMF is
    end "<=";
 
    ---------
+   -- "=" --
+   ---------
+
+   function "="
+    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean is
+   begin
+      return not Left.Unlimited and then Left.Value = Right;
+   end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   function "="
+    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean is
+   begin
+      return not Right.Unlimited and then Left = Right.Value;
+   end "=";
+
+   ---------
    -- ">" --
    ---------
 

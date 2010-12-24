@@ -68,12 +68,34 @@ package body CMOF.Properties is
    function Get_Is_Composite (Self : CMOF_Property) return AMF.AMF_Boolean
      renames CMOF.Internals.Attributes.Internal_Get_Is_Composite;
 
+   --------------------
+   -- Get_Is_Derived --
+   --------------------
+
+   function Get_Is_Derived (Self : CMOF_Property) return AMF.AMF_Boolean
+     renames CMOF.Internals.Attributes.Internal_Get_Is_Derived;
+
+   --------------------------
+   -- Get_Is_Derived_Union --
+   --------------------------
+
+   function Get_Is_Derived_Union (Self : CMOF_Property) return AMF.AMF_Boolean
+     renames CMOF.Internals.Attributes.Internal_Get_Is_Derived_Union;
+
+   ----------------------
+   -- Get_Is_Read_Only --
+   ----------------------
+
+   function Get_Is_Read_Only (Self : CMOF_Property) return AMF.AMF_Boolean
+     renames CMOF.Internals.Attributes.Internal_Get_Is_Read_Only;
+
    ----------------------------
    -- Get_Owning_Association --
    ----------------------------
 
-   function Get_Owning_Association (Self : CMOF_Property) return CMOF_Association
-     renames CMOF.Internals.Attributes.Internal_Get_Owning_Association;
+   function Get_Owning_Association
+    (Self : CMOF_Property) return CMOF_Association
+       renames CMOF.Internals.Attributes.Internal_Get_Owning_Association;
 
    ----------------------------
    -- Get_Redefined_Property --
@@ -82,5 +104,13 @@ package body CMOF.Properties is
    function Get_Redefined_Property
     (Self : CMOF_Property) return Set_Of_CMOF_Property
        renames CMOF.Internals.Attributes.Internal_Get_Redefined_Property;
+
+   ----------------------------
+   -- Get_Subsetted_Property --
+   ----------------------------
+
+   function Get_Subsetted_Property
+    (Self : CMOF_Property) return Set_Of_CMOF_Property
+       renames CMOF.Internals.Attributes.Internal_Get_Subsetted_Property;
 
 end CMOF.Properties;

@@ -42,18 +42,21 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Containers.Ordered_Sets;
+with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Unchecked_Conversion;
 with Interfaces;
 
 with Qt_Ada.Generic_Model_Index_Data;
 with League.Strings;
 
+with AMF;
 with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Extents;
 with CMOF.Factory;
 with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
+with CMOF.Properties;
 with CMOF.Reflection;
 with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
@@ -435,23 +438,147 @@ package body CMOF_Tree_Models is
    --------------
 
    procedure Populate (Self : not null access Element_Node) is
+      use AMF;
       use CMOF.Classes;
+      use CMOF.Multiplicity_Elements;
+      use CMOF.Properties;
       use League.Strings;
 
       procedure Process_Property (Position : CMOF_Property_Sets.Cursor) is
          Property : CMOF_Property := CMOF_Property_Sets.Element (Position);
          X        : Node_Access;
+         Notation : League.Strings.Universal_String;
+         Modifier : Boolean := False;
+
+         procedure Append_Modifier (Text : Wide_Wide_String) is
+         begin
+            if Modifier then
+               Notation.Append (To_Universal_String (", " & Text));
+
+            else
+               Notation.Append (To_Universal_String (" {" & Text));
+               Modifier := True;
+            end if;
+         end Append_Modifier;
 
       begin
+         --  Construct property's notation.
+
+         --  Derived indicator
+
+         if Get_Is_Derived (Property) then
+            Notation.Append (League.Strings.To_Universal_String ("/ "));
+         end if;
+
+         --  Name and type
+
+         Notation.Append (Get_Name (Property));
+         Notation.Append (League.Strings.To_Universal_String (" : "));
+         Notation.Append (Get_Name (Get_Type (Property)));
+
+         --  Multiplicity
+
+         if Get_Lower (Property) /= 1 or Get_Upper (Property) /= 1 then
+            if Get_Lower (Property) = Get_Upper (Property) then
+               Notation.Append
+                (League.Strings.To_Universal_String
+                  (" ["
+                     & Ada.Strings.Wide_Wide_Fixed.Trim
+                        (AMF.AMF_Integer'Wide_Wide_Image (Get_Lower (Property)),
+                         Ada.Strings.Both)
+                     & "]"));
+
+            elsif Get_Lower (Property) = 0 and Get_Upper (Property) = Unlimited then
+               Notation.Append (League.Strings.To_Universal_String (" [*]"));
+
+            else
+               Notation.Append
+                (League.Strings.To_Universal_String
+                  (" ["
+                     & Ada.Strings.Wide_Wide_Fixed.Trim
+                        (AMF.AMF_Integer'Wide_Wide_Image (Get_Lower (Property)),
+                         Ada.Strings.Both)
+                     & ".."));
+
+               if Get_Upper (Property) = Unlimited then
+                  Notation.Append
+                   (League.Strings.To_Universal_String ("*]"));
+
+               else
+                  Notation.Append
+                   (League.Strings.To_Universal_String
+                     (Ada.Strings.Wide_Wide_Fixed.Trim
+                       (AMF.AMF_Integer'Wide_Wide_Image (Get_Upper (Property).Value),
+                        Ada.Strings.Both)
+                        & "]"));
+               end if;
+            end if;
+         end if;
+
+         --  Read only
+
+         if Get_Is_Read_Only (Property) then
+            Append_Modifier ("readOnly");
+         end if;
+
+         --  Union
+
+         if Get_Is_Derived_Union (Property) then
+            Append_Modifier ("union");
+         end if;
+
+         --  Subsets
+
+         declare
+            Subsetted_Property : constant Set_Of_CMOF_Property
+              := Get_Subsetted_Property (Property);
+
+         begin
+            for J in 1 .. Length (Subsetted_Property) loop
+               Append_Modifier
+                ("subsets "
+                   & Get_Name (Element (Subsetted_Property, J)).To_Wide_Wide_String);
+            end loop;
+         end;
+
+         --  Redefines
+
+         declare
+            Redefined_Property : constant Set_Of_CMOF_Property
+              := Get_Redefined_Property (Property);
+
+         begin
+            for J in 1 .. Length (Redefined_Property) loop
+               Append_Modifier
+                ("redefines "
+                   & Get_Name (Element (Redefined_Property, J)).To_Wide_Wide_String);
+            end loop;
+         end;
+
+         --  Ordered
+
+         if Get_Is_Ordered (Property) then
+            Append_Modifier ("ordered");
+         end if;
+
+         --  Unique
+
+         if Get_Is_Unique (Property) then
+            Append_Modifier ("unique");
+         end if;
+
+         --  Close modifier if necessary
+
+         if Modifier then
+            Notation.Append (To_Universal_String ("}"));
+         end if;
+
          X :=
            new Attribute_Node'
                 (Node_Access (Self),
                  Node_Vectors.Empty_Vector,
                  False,
-                 Qt4.Strings.From_Ucs_4
-                  ((Get_Name (Property).To_Wide_Wide_String
-                     & ": "
-                     & Get_Name (Get_Type (Property)).To_Wide_Wide_String)),
+                 Qt4.Strings.From_Ucs_4 (Notation.To_Wide_Wide_String),
                  Self.Element,
                  Property);
 
