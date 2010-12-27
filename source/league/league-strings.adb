@@ -45,6 +45,7 @@ with League.Strings.Internals;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Strings.Compare;
 with Matreshka.Internals.Strings.Operations;
+with Matreshka.Internals.Strings.Search;
 with Matreshka.Internals.Unicode.Casing;
 with Matreshka.Internals.Unicode.Collation;
 with Matreshka.Internals.Unicode.Normalization;
@@ -58,6 +59,7 @@ package body League.Strings is
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Strings.Compare;
    use Matreshka.Internals.Strings.Operations;
+   use Matreshka.Internals.Strings.Search;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Properties;
    use Matreshka.Internals.Utf16;
@@ -775,6 +777,24 @@ package body League.Strings is
    begin
       return Hash_Type (Hash (Self.Data));
    end Hash;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self      : Universal_String'Class;
+     Character : Universal_Character'Class) return Natural
+   is
+      Code : constant Code_Unit_32 := Character.Code;
+
+   begin
+      if not Is_Valid (Code) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      return Index (Self.Data, Code);
+   end Index;
 
    ----------------
    -- Initialize --

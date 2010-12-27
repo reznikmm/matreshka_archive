@@ -138,7 +138,7 @@ package League.Strings is
 
    function Element
     (Self  : Universal_String'Class;
-     Index : Positive)
+     ndex : Positive)
        return Universal_Character;
 
    function Element
@@ -238,6 +238,12 @@ package League.Strings is
    --  Splits the string into substrings wherever Separator occurs, and returns
    --  the list of those strings. If Separator does not match anywhere in the
    --  string, returns a single-element list containing this string.
+
+   function Index
+    (Self      : Universal_String'Class;
+     Character : Universal_Character'Class) return Natural;
+   --  Returns index of the first occurrence of the specified character in the
+   --  string, or zero if there are no occurrences.
 
    -----------------
    -- Conversions --
