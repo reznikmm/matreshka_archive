@@ -41,15 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
+with Matreshka.Internals.Unicode;
 
 package body XML.SAX.Pretty_Writers is
 
-   use type League.Strings.Universal_String;
+   use Matreshka.Internals.Unicode;
+   use League.Strings.Internals;
 
-   function Escape
-    (Text : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
-   --  Replaces special characters by their entity references.
+   use type League.Strings.Universal_String;
 
    ----------------
    -- Characters --
@@ -60,7 +60,7 @@ package body XML.SAX.Pretty_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      Self.Text.Append (Escape (Text));
+      Self.Text.Append (Self.Escape (Text));
    end Characters;
 
    -------------
@@ -96,7 +96,9 @@ package body XML.SAX.Pretty_Writers is
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean) is
    begin
-      null;
+      if Self.Nesting /= 0 then
+         Success := False;
+      end if;
    end End_Document;
 
    -------------
@@ -124,6 +126,7 @@ package body XML.SAX.Pretty_Writers is
       Self.Text.Append (League.Strings.To_Universal_String ("</"));
       Self.Text.Append (Qualified_Name);
       Self.Text.Append (League.Strings.To_Universal_String (">"));
+      Self.Nesting := Self.Nesting - 1;
    end End_Element;
 
    ----------------
@@ -168,30 +171,61 @@ package body XML.SAX.Pretty_Writers is
    ------------
 
    function Escape
-    (Text : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
+    (Self : SAX_Pretty_Writer;
+     Text : League.Strings.Universal_String)
+      return League.Strings.Universal_String is
+
+      Code : Code_Unit_32;
+
    begin
       return Result : League.Strings.Universal_String do
-         for J in 1 .. Text.Length loop
-            case Text.Element (J) is
-               when '&' =>
-                  Result := Result & "&amp;";
+        for J in 1 .. Text.Length loop
 
-               when ''' =>
-                  Result := Result & "&apos;";
+           Code := Get_Code (Text.Element (J));
+              case Text.Element (J) is
+                 when '&' =>
+                    Result := Result & "&amp;";
 
-               when '"' =>
-                  Result := Result & "&quot;";
+                 when ''' =>
+                    Result := Result & "&apos;";
 
-               when '>' =>
-                  Result := Result & "&gt;";
+                 when '"' =>
+                    Result := Result & "&quot;";
 
-               when '<' =>
-                  Result := Result & "&lt;";
+                 when '>' =>
+                    Result := Result & "&gt;";
 
-               when others =>
-                  Result.Append (Text.Element (J).To_Wide_Wide_Character);
-            end case;
+                 when '<' =>
+                    Result := Result & "&lt;";
+
+                 when others =>
+                    --  Add support of choosing of Hexademical
+                    --  or Digital representation of Character references
+                    --  XML_1_1 2.2 Characters
+                    if Self.Version = XML_1_1 then
+                      if Code in 16#1#  .. 16#8#
+                      or Code in 16#B#  .. 16#C#
+                      or Code in 16#E#  .. 16#1F#
+                      or Code in 16#7F# .. 16#84#
+                      or Code in 16#86# .. 16#9F# then
+
+                       declare
+                          Image : Wide_Wide_String :=
+                            Code_Unit_32'Wide_Wide_Image (Code);
+
+                       begin
+                          Result := Result
+                            & "&#"
+                            & Image (Image'First + 1 .. Image'Last)
+                            & ";";
+                       end;
+
+                      else
+                         Result.Append
+                          (Text.Element (J).To_Wide_Wide_Character);
+                      end if;
+                    end if;
+              end case;
          end loop;
       end return;
    end Escape;
@@ -252,7 +286,10 @@ package body XML.SAX.Pretty_Writers is
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean) is
    begin
-      null;
+      Self.Text.Append
+       (League.Strings.To_Universal_String
+          ("<?xml version=""1.0""?>"));
+      Self.Nesting := 0;
    end Start_Document;
 
    ---------------
@@ -293,6 +330,7 @@ package body XML.SAX.Pretty_Writers is
       end loop;
 
       Self.Text.Append (League.Strings.To_Universal_String (">"));
+      Self.Nesting := Self.Nesting + 1;
    end Start_Element;
 
    ------------------

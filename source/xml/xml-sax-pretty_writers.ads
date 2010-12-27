@@ -48,6 +48,8 @@ with XML.SAX.Lexical_Handlers;
 
 package XML.SAX.Pretty_Writers is
 
+   type XML_Version is (XML_1_0, XML_1_1, XML_1_X);
+
    type SAX_Pretty_Writer is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with private;
@@ -155,7 +157,16 @@ private
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with
    record
-      Text : League.Strings.Universal_String;
+      Text    : League.Strings.Universal_String;
+      Nesting : Natural;
+      Version : XML_Version := XML_1_0;
    end record;
+
+   function Escape
+    (Self : SAX_Pretty_Writer;
+     Text : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Replaces special characters by their entity references.
+
 
 end XML.SAX.Pretty_Writers;
