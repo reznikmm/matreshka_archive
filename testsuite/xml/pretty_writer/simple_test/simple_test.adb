@@ -70,7 +70,8 @@ begin
                          Attrs,
                          OK);
 
-   Writer.Characters (To_Universal_String ("""test"""), OK);
+   Writer.Characters
+     (To_Universal_String (Wide_Wide_Character'Val (16#2#) & """test"""), OK);
    Writer.End_Element (NS_URI,
                        Local_Name,
                        Qualified_Name,
