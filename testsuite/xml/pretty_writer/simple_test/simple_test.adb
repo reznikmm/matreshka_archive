@@ -63,6 +63,7 @@ begin
    --  Setting attributes
 
    --  Creating document
+   Writer.Set_Version (XML.SAX.Pretty_Writers.XML_1_1);
    Writer.Start_Document (OK);
    Writer.Start_Element (NS_URI,
                          Local_Name,
