@@ -138,7 +138,7 @@ package League.Strings is
 
    function Element
     (Self  : Universal_String'Class;
-     ndex : Positive)
+     Index : Positive)
        return Universal_Character;
 
    function Element
