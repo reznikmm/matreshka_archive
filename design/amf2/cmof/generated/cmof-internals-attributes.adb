@@ -18,7 +18,7 @@ package body Cmof.Internals.Attributes is
    ------------------------
 
    function Internal_Get_Alias
-     (Self : CMOF_Element) return AMF.AMF_String
+     (Self : CMOF_Element) return League.Strings.Universal_String
    is
    begin
       return
@@ -35,7 +35,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Alias
      (Self : CMOF_Element;
-      To   : AMF.AMF_String) is
+      To   : League.Strings.Universal_String) is
    begin
       Matreshka.Internals.Strings.Dereference
        (Elements.Table (Self).Member
@@ -58,7 +58,7 @@ package body Cmof.Internals.Attributes is
    ------------------------------------
 
    function Internal_Get_Annotated_Element
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -74,7 +74,7 @@ package body Cmof.Internals.Attributes is
    ------------------------------
 
    function Internal_Get_Association
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -103,7 +103,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------
 
    function Internal_Get_Attribute
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -119,7 +119,7 @@ package body Cmof.Internals.Attributes is
    -----------------------
 
    function Internal_Get_Body
-     (Self : CMOF_Element) return AMF.AMF_String
+     (Self : CMOF_Element) return League.Strings.Universal_String
    is
    begin
       if Is_Comment (Self) then
@@ -146,7 +146,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Body
      (Self : CMOF_Element;
-      To   : AMF.AMF_String) is
+      To   : League.Strings.Universal_String) is
    begin
       if Is_Comment (Self) then
          Matreshka.Internals.Strings.Dereference
@@ -187,7 +187,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------------
 
    function Internal_Get_Body_Condition
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -216,7 +216,7 @@ package body Cmof.Internals.Attributes is
    ------------------------
 
    function Internal_Get_Class
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       if Is_Operation (Self) then
@@ -262,7 +262,7 @@ package body Cmof.Internals.Attributes is
    --------------------------------------
 
    function Internal_Get_Constrained_Element
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -278,7 +278,7 @@ package body Cmof.Internals.Attributes is
    --------------------------
 
    function Internal_Get_Context
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -307,7 +307,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------
 
    function Internal_Get_Datatype
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       if Is_Operation (Self) then
@@ -353,7 +353,7 @@ package body Cmof.Internals.Attributes is
    --------------------------
 
    function Internal_Get_Default
-     (Self : CMOF_Element) return AMF.AMF_String
+     (Self : CMOF_Element) return League.Strings.Universal_String
    is
    begin
       if Is_Parameter (Self) then
@@ -380,7 +380,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Default
      (Self : CMOF_Element;
-      To   : AMF.AMF_String) is
+      To   : League.Strings.Universal_String) is
    begin
       if Is_Parameter (Self) then
          Matreshka.Internals.Strings.Dereference
@@ -421,7 +421,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------
 
    function Internal_Get_Direction
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -444,7 +444,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------------
 
    function Internal_Get_Element_Import
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -460,7 +460,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------
 
    function Internal_Get_End_Type
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -476,7 +476,7 @@ package body Cmof.Internals.Attributes is
    ------------------------------
 
    function Internal_Get_Enumeration
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -505,7 +505,7 @@ package body Cmof.Internals.Attributes is
    --------------------------
 
    function Internal_Get_Feature
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -521,7 +521,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------------------
 
    function Internal_Get_Featuring_Classifier
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -537,7 +537,7 @@ package body Cmof.Internals.Attributes is
    --------------------------
 
    function Internal_Get_General
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -553,7 +553,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------------
 
    function Internal_Get_Imported_Element
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -582,7 +582,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------------
 
    function Internal_Get_Imported_Member
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -598,7 +598,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------------
 
    function Internal_Get_Imported_Package
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -627,7 +627,7 @@ package body Cmof.Internals.Attributes is
    --------------------------------------
 
    function Internal_Get_Importing_Namespace
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       if Is_Element_Import (Self) then
@@ -673,7 +673,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------------
 
    function Internal_Get_Inherited_Member
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -689,7 +689,7 @@ package body Cmof.Internals.Attributes is
    ------------------------------
 
    function Internal_Get_Is_Abstract
-     (Self : Cmof_Element) return AMF.AMF_Boolean
+     (Self : CMOF_Element) return Boolean
    is
    begin
       return
@@ -705,7 +705,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Abstract
      (Self : CMOF_Element;
-      To   : AMF.AMF_Boolean) is
+      To   : Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -718,7 +718,7 @@ package body Cmof.Internals.Attributes is
    -------------------------------
 
    function Internal_Get_Is_Composite
-     (Self : Cmof_Element) return AMF.AMF_Boolean
+     (Self : CMOF_Element) return Boolean
    is
    begin
       return
@@ -734,7 +734,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Composite
      (Self : CMOF_Element;
-      To   : AMF.AMF_Boolean) is
+      To   : Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -747,7 +747,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------
 
    function Internal_Get_Is_Derived
-     (Self : Cmof_Element) return AMF.AMF_Boolean
+     (Self : CMOF_Element) return Boolean
    is
    begin
       if Is_Association (Self) then
@@ -772,7 +772,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Derived
      (Self : CMOF_Element;
-      To   : AMF.AMF_Boolean) is
+      To   : Boolean) is
    begin
       if Is_Association (Self) then
          Elements.Table (Self).Member
@@ -793,7 +793,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------------
 
    function Internal_Get_Is_Derived_Union
-     (Self : Cmof_Element) return AMF.AMF_Boolean
+     (Self : CMOF_Element) return Boolean
    is
    begin
       return
@@ -809,7 +809,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Derived_Union
      (Self : CMOF_Element;
-      To   : AMF.AMF_Boolean) is
+      To   : Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -822,7 +822,7 @@ package body Cmof.Internals.Attributes is
    ------------------------------------------
 
    function Internal_Get_Is_Final_Specialization
-     (Self : Cmof_Element) return AMF.AMF_Boolean
+     (Self : CMOF_Element) return Boolean
    is
    begin
       return
@@ -838,7 +838,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Final_Specialization
      (Self : CMOF_Element;
-      To   : AMF.AMF_Boolean) is
+      To   : Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -851,7 +851,7 @@ package body Cmof.Internals.Attributes is
    --------------------------
 
    function Internal_Get_Is_Leaf
-     (Self : Cmof_Element) return AMF.AMF_Boolean
+     (Self : CMOF_Element) return Boolean
    is
    begin
       return
@@ -867,7 +867,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Leaf
      (Self : CMOF_Element;
-      To   : AMF.AMF_Boolean) is
+      To   : Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -880,7 +880,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------
 
    function Internal_Get_Is_Ordered
-     (Self : Cmof_Element) return AMF.AMF_Boolean
+     (Self : CMOF_Element) return Boolean
    is
    begin
       if Is_Multiplicity_Element (Self) then
@@ -905,7 +905,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Ordered
      (Self : CMOF_Element;
-      To   : AMF.AMF_Boolean) is
+      To   : Boolean) is
    begin
       if Is_Multiplicity_Element (Self) then
          Elements.Table (Self).Member
@@ -926,7 +926,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------
 
    function Internal_Get_Is_Query
-     (Self : Cmof_Element) return AMF.AMF_Boolean
+     (Self : CMOF_Element) return Boolean
    is
    begin
       return
@@ -942,7 +942,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Query
      (Self : CMOF_Element;
-      To   : AMF.AMF_Boolean) is
+      To   : Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -955,7 +955,7 @@ package body Cmof.Internals.Attributes is
    -------------------------------
 
    function Internal_Get_Is_Read_Only
-     (Self : Cmof_Element) return AMF.AMF_Boolean
+     (Self : CMOF_Element) return Boolean
    is
    begin
       return
@@ -971,7 +971,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Read_Only
      (Self : CMOF_Element;
-      To   : AMF.AMF_Boolean) is
+      To   : Boolean) is
    begin
       Elements.Table (Self).Member
        (Member_Offset
@@ -984,7 +984,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------
 
    function Internal_Get_Is_Unique
-     (Self : Cmof_Element) return AMF.AMF_Boolean
+     (Self : CMOF_Element) return Boolean
    is
    begin
       if Is_Multiplicity_Element (Self) then
@@ -1009,7 +1009,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Is_Unique
      (Self : CMOF_Element;
-      To   : AMF.AMF_Boolean) is
+      To   : Boolean) is
    begin
       if Is_Multiplicity_Element (Self) then
          Elements.Table (Self).Member
@@ -1042,7 +1042,7 @@ package body Cmof.Internals.Attributes is
    ------------------------
 
    function Internal_Get_Lower
-     (Self : Cmof_Element) return AMF.AMF_Integer
+     (Self : CMOF_Element) return Integer
    is
    begin
       if Is_Multiplicity_Element (Self) then
@@ -1067,7 +1067,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Lower
      (Self : CMOF_Element;
-      To   : AMF.AMF_Integer) is
+      To   : Integer) is
    begin
       if Is_Multiplicity_Element (Self) then
          Elements.Table (Self).Member
@@ -1088,7 +1088,7 @@ package body Cmof.Internals.Attributes is
    -------------------------
 
    function Internal_Get_Member
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1104,7 +1104,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------
 
    function Internal_Get_Member_End
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1120,7 +1120,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------------
 
    function Internal_Get_Merged_Package
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -1149,7 +1149,7 @@ package body Cmof.Internals.Attributes is
    -----------------------
 
    function Internal_Get_Name
-     (Self : CMOF_Element) return AMF.AMF_String
+     (Self : CMOF_Element) return League.Strings.Universal_String
    is
    begin
       return
@@ -1166,7 +1166,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Name
      (Self : CMOF_Element;
-      To   : AMF.AMF_String) is
+      To   : League.Strings.Universal_String) is
    begin
       Matreshka.Internals.Strings.Dereference
        (Elements.Table (Self).Member
@@ -1189,7 +1189,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------
 
    function Internal_Get_Namespace
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -1204,7 +1204,7 @@ package body Cmof.Internals.Attributes is
    --------------------------------------
 
    function Internal_Get_Navigable_Owned_End
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1220,7 +1220,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------------
 
    function Internal_Get_Nested_Package
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1236,7 +1236,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------------
 
    function Internal_Get_Nesting_Package
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -1265,7 +1265,7 @@ package body Cmof.Internals.Attributes is
    --------------------------
 
    function Internal_Get_Operand
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1281,7 +1281,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------
 
    function Internal_Get_Operation
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -1310,7 +1310,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------
 
    function Internal_Get_Opposite
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -1325,7 +1325,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Attribute
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       if Is_Class (Self) then
@@ -1351,7 +1351,7 @@ package body Cmof.Internals.Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Comment
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1367,7 +1367,7 @@ package body Cmof.Internals.Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Element
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1383,7 +1383,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------
 
    function Internal_Get_Owned_End
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1399,7 +1399,7 @@ package body Cmof.Internals.Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Literal
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1415,7 +1415,7 @@ package body Cmof.Internals.Attributes is
    -------------------------------
 
    function Internal_Get_Owned_Member
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1431,7 +1431,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Operation
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       if Is_Class (Self) then
@@ -1457,7 +1457,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Parameter
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       if Is_Behavioral_Feature (Self) then
@@ -1483,7 +1483,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------
 
    function Internal_Get_Owned_Rule
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1499,7 +1499,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------
 
    function Internal_Get_Owned_Type
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1515,7 +1515,7 @@ package body Cmof.Internals.Attributes is
    ------------------------
 
    function Internal_Get_Owner
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -1530,7 +1530,7 @@ package body Cmof.Internals.Attributes is
    -------------------------------------
 
    function Internal_Get_Owning_Association
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -1559,7 +1559,7 @@ package body Cmof.Internals.Attributes is
    --------------------------
 
    function Internal_Get_Package
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -1588,7 +1588,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------------
 
    function Internal_Get_Package_Import
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1604,7 +1604,7 @@ package body Cmof.Internals.Attributes is
    --------------------------------
 
    function Internal_Get_Package_Merge
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1620,7 +1620,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------------
 
    function Internal_Get_Packaged_Element
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1636,7 +1636,7 @@ package body Cmof.Internals.Attributes is
    --------------------------------
 
    function Internal_Get_Postcondition
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1652,7 +1652,7 @@ package body Cmof.Internals.Attributes is
    -------------------------------
 
    function Internal_Get_Precondition
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1668,7 +1668,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------------
 
    function Internal_Get_Qualified_Name
-     (Self : CMOF_Element) return AMF.AMF_String
+     (Self : CMOF_Element) return League.Strings.Universal_String
    is
    begin
       return
@@ -1684,7 +1684,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------------
 
    function Internal_Get_Raised_Exception
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       if Is_Behavioral_Feature (Self) then
@@ -1710,7 +1710,7 @@ package body Cmof.Internals.Attributes is
    ------------------------------------
 
    function Internal_Get_Receiving_Package
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -1739,7 +1739,7 @@ package body Cmof.Internals.Attributes is
    ------------------------------------
 
    function Internal_Get_Redefined_Element
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1755,7 +1755,7 @@ package body Cmof.Internals.Attributes is
    --------------------------------------
 
    function Internal_Get_Redefined_Operation
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1771,7 +1771,7 @@ package body Cmof.Internals.Attributes is
    -------------------------------------
 
    function Internal_Get_Redefined_Property
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1787,7 +1787,7 @@ package body Cmof.Internals.Attributes is
    ---------------------------------------
 
    function Internal_Get_Redefinition_Context
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1803,7 +1803,7 @@ package body Cmof.Internals.Attributes is
    ----------------------------------
 
    function Internal_Get_Related_Element
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1819,7 +1819,7 @@ package body Cmof.Internals.Attributes is
    -------------------------
 
    function Internal_Get_Source
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1835,7 +1835,7 @@ package body Cmof.Internals.Attributes is
    --------------------------------
 
    function Internal_Get_Specification
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       return
@@ -1864,7 +1864,7 @@ package body Cmof.Internals.Attributes is
    -------------------------------------
 
    function Internal_Get_Subsetted_Property
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1880,7 +1880,7 @@ package body Cmof.Internals.Attributes is
    ------------------------------
 
    function Internal_Get_Super_Class
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1896,7 +1896,7 @@ package body Cmof.Internals.Attributes is
    -------------------------
 
    function Internal_Get_Target
-     (Self : Cmof_Element) return Collection_Of_Cmof_Element
+     (Self : CMOF_Element) return Collection_Of_CMOF_Element
    is
    begin
       return
@@ -1912,7 +1912,7 @@ package body Cmof.Internals.Attributes is
    -----------------------
 
    function Internal_Get_Type
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       if Is_Operation (Self) then
@@ -1958,7 +1958,7 @@ package body Cmof.Internals.Attributes is
    ------------------------
 
    function Internal_Get_Upper
-     (Self : Cmof_Element) return AMF.AMF_Unlimited_Natural
+     (Self : CMOF_Element) return AMF.Unlimited_Natural
    is
    begin
       if Is_Multiplicity_Element (Self) then
@@ -1983,7 +1983,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Upper
      (Self : CMOF_Element;
-      To   : AMF.AMF_Unlimited_Natural) is
+      To   : AMF.Unlimited_Natural) is
    begin
       if Is_Multiplicity_Element (Self) then
          Elements.Table (Self).Member
@@ -2004,7 +2004,7 @@ package body Cmof.Internals.Attributes is
    -----------------------------
 
    function Internal_Get_Visibility
-     (Self : Cmof_Element) return Cmof_Element
+     (Self : CMOF_Element) return CMOF_Element
    is
    begin
       if Is_Element_Import (Self) then
@@ -2045,7 +2045,7 @@ package body Cmof.Internals.Attributes is
    ----------------------
 
    function Internal_Get_Uri
-     (Self : CMOF_Element) return AMF.AMF_String
+     (Self : CMOF_Element) return League.Strings.Universal_String
    is
    begin
       return
@@ -2062,7 +2062,7 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Uri
      (Self : CMOF_Element;
-      To   : AMF.AMF_String) is
+      To   : League.Strings.Universal_String) is
    begin
       Matreshka.Internals.Strings.Dereference
        (Elements.Table (Self).Member

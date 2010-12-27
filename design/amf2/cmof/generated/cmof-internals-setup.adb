@@ -68,8 +68,8 @@ begin
    Initialize_CMOF_Metamodel_Extent;
 
    Initialize_Association (135, Extent);
-   Internal_Set_Is_Derived (135, AMF.False);
-   Internal_Set_Is_Final_Specialization (135, AMF.False);
+   Internal_Set_Is_Derived (135, False);
+   Internal_Set_Is_Final_Specialization (135, False);
    Internal_Set_Name
     (135,
      League.Strings.To_Universal_String ("A_relatedElement_relationship"));
@@ -77,21 +77,21 @@ begin
    Internal_Set_Default
     (182,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (182, AMF.False);
-   Internal_Set_Is_Derived (182, AMF.False);
-   Internal_Set_Is_Derived_Union (182, AMF.False);
-   Internal_Set_Is_Leaf (182, AMF.False);
-   Internal_Set_Is_Ordered (182, AMF.False);
-   Internal_Set_Is_Read_Only (182, AMF.False);
-   Internal_Set_Is_Unique (182, AMF.True);
+   Internal_Set_Is_Composite (182, False);
+   Internal_Set_Is_Derived (182, False);
+   Internal_Set_Is_Derived_Union (182, False);
+   Internal_Set_Is_Leaf (182, False);
+   Internal_Set_Is_Ordered (182, False);
+   Internal_Set_Is_Read_Only (182, False);
+   Internal_Set_Is_Unique (182, True);
    Internal_Set_Lower (
 182, 0);   Internal_Set_Name
     (182,
      League.Strings.To_Universal_String ("relationship"));
    Internal_Set_Upper (182, (Unlimited => True));
    Initialize_Association (136, Extent);
-   Internal_Set_Is_Derived (136, AMF.False);
-   Internal_Set_Is_Final_Specialization (136, AMF.False);
+   Internal_Set_Is_Derived (136, False);
+   Internal_Set_Is_Final_Specialization (136, False);
    Internal_Set_Name
     (136,
      League.Strings.To_Universal_String ("A_source_directedRelationship"));
@@ -99,21 +99,21 @@ begin
    Internal_Set_Default
     (183,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (183, AMF.False);
-   Internal_Set_Is_Derived (183, AMF.False);
-   Internal_Set_Is_Derived_Union (183, AMF.False);
-   Internal_Set_Is_Leaf (183, AMF.False);
-   Internal_Set_Is_Ordered (183, AMF.False);
-   Internal_Set_Is_Read_Only (183, AMF.False);
-   Internal_Set_Is_Unique (183, AMF.True);
+   Internal_Set_Is_Composite (183, False);
+   Internal_Set_Is_Derived (183, False);
+   Internal_Set_Is_Derived_Union (183, False);
+   Internal_Set_Is_Leaf (183, False);
+   Internal_Set_Is_Ordered (183, False);
+   Internal_Set_Is_Read_Only (183, False);
+   Internal_Set_Is_Unique (183, True);
    Internal_Set_Lower (
 183, 0);   Internal_Set_Name
     (183,
      League.Strings.To_Universal_String ("directedRelationship"));
    Internal_Set_Upper (183, (Unlimited => True));
    Initialize_Association (138, Extent);
-   Internal_Set_Is_Derived (138, AMF.False);
-   Internal_Set_Is_Final_Specialization (138, AMF.False);
+   Internal_Set_Is_Derived (138, False);
+   Internal_Set_Is_Final_Specialization (138, False);
    Internal_Set_Name
     (138,
      League.Strings.To_Universal_String ("A_target_directedRelationship"));
@@ -121,21 +121,21 @@ begin
    Internal_Set_Default
     (184,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (184, AMF.False);
-   Internal_Set_Is_Derived (184, AMF.False);
-   Internal_Set_Is_Derived_Union (184, AMF.False);
-   Internal_Set_Is_Leaf (184, AMF.False);
-   Internal_Set_Is_Ordered (184, AMF.False);
-   Internal_Set_Is_Read_Only (184, AMF.False);
-   Internal_Set_Is_Unique (184, AMF.True);
+   Internal_Set_Is_Composite (184, False);
+   Internal_Set_Is_Derived (184, False);
+   Internal_Set_Is_Derived_Union (184, False);
+   Internal_Set_Is_Leaf (184, False);
+   Internal_Set_Is_Ordered (184, False);
+   Internal_Set_Is_Read_Only (184, False);
+   Internal_Set_Is_Unique (184, True);
    Internal_Set_Lower (
 184, 0);   Internal_Set_Name
     (184,
      League.Strings.To_Universal_String ("directedRelationship"));
    Internal_Set_Upper (184, (Unlimited => True));
    Initialize_Association (140, Extent);
-   Internal_Set_Is_Derived (140, AMF.False);
-   Internal_Set_Is_Final_Specialization (140, AMF.False);
+   Internal_Set_Is_Derived (140, False);
+   Internal_Set_Is_Final_Specialization (140, False);
    Internal_Set_Name
     (140,
      League.Strings.To_Universal_String ("A_redefinitionContext_redefinableElement"));
@@ -143,21 +143,21 @@ begin
    Internal_Set_Default
     (185,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (185, AMF.False);
-   Internal_Set_Is_Derived (185, AMF.False);
-   Internal_Set_Is_Derived_Union (185, AMF.False);
-   Internal_Set_Is_Leaf (185, AMF.False);
-   Internal_Set_Is_Ordered (185, AMF.False);
-   Internal_Set_Is_Read_Only (185, AMF.False);
-   Internal_Set_Is_Unique (185, AMF.True);
+   Internal_Set_Is_Composite (185, False);
+   Internal_Set_Is_Derived (185, False);
+   Internal_Set_Is_Derived_Union (185, False);
+   Internal_Set_Is_Leaf (185, False);
+   Internal_Set_Is_Ordered (185, False);
+   Internal_Set_Is_Read_Only (185, False);
+   Internal_Set_Is_Unique (185, True);
    Internal_Set_Lower (
 185, 0);   Internal_Set_Name
     (185,
      League.Strings.To_Universal_String ("redefinableElement"));
    Internal_Set_Upper (185, (Unlimited => True));
    Initialize_Association (143, Extent);
-   Internal_Set_Is_Derived (143, AMF.False);
-   Internal_Set_Is_Final_Specialization (143, AMF.False);
+   Internal_Set_Is_Derived (143, False);
+   Internal_Set_Is_Final_Specialization (143, False);
    Internal_Set_Name
     (143,
      League.Strings.To_Universal_String ("A_redefinedElement_redefinableElement"));
@@ -165,27 +165,27 @@ begin
    Internal_Set_Default
     (186,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (186, AMF.False);
-   Internal_Set_Is_Derived (186, AMF.False);
-   Internal_Set_Is_Derived_Union (186, AMF.False);
-   Internal_Set_Is_Leaf (186, AMF.False);
-   Internal_Set_Is_Ordered (186, AMF.False);
-   Internal_Set_Is_Read_Only (186, AMF.False);
-   Internal_Set_Is_Unique (186, AMF.True);
+   Internal_Set_Is_Composite (186, False);
+   Internal_Set_Is_Derived (186, False);
+   Internal_Set_Is_Derived_Union (186, False);
+   Internal_Set_Is_Leaf (186, False);
+   Internal_Set_Is_Ordered (186, False);
+   Internal_Set_Is_Read_Only (186, False);
+   Internal_Set_Is_Unique (186, True);
    Internal_Set_Lower (
 186, 0);   Internal_Set_Name
     (186,
      League.Strings.To_Universal_String ("redefinableElement"));
    Internal_Set_Upper (186, (Unlimited => True));
    Initialize_Association (145, Extent);
-   Internal_Set_Is_Derived (145, AMF.False);
-   Internal_Set_Is_Final_Specialization (145, AMF.False);
+   Internal_Set_Is_Derived (145, False);
+   Internal_Set_Is_Final_Specialization (145, False);
    Internal_Set_Name
     (145,
      League.Strings.To_Universal_String ("A_feature_featuringClassifier"));
    Initialize_Association (147, Extent);
-   Internal_Set_Is_Derived (147, AMF.False);
-   Internal_Set_Is_Final_Specialization (147, AMF.False);
+   Internal_Set_Is_Derived (147, False);
+   Internal_Set_Is_Final_Specialization (147, False);
    Internal_Set_Name
     (147,
      League.Strings.To_Universal_String ("A_constrainedElement_constraint"));
@@ -193,21 +193,21 @@ begin
    Internal_Set_Default
     (187,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (187, AMF.False);
-   Internal_Set_Is_Derived (187, AMF.False);
-   Internal_Set_Is_Derived_Union (187, AMF.False);
-   Internal_Set_Is_Leaf (187, AMF.False);
-   Internal_Set_Is_Ordered (187, AMF.False);
-   Internal_Set_Is_Read_Only (187, AMF.False);
-   Internal_Set_Is_Unique (187, AMF.True);
+   Internal_Set_Is_Composite (187, False);
+   Internal_Set_Is_Derived (187, False);
+   Internal_Set_Is_Derived_Union (187, False);
+   Internal_Set_Is_Leaf (187, False);
+   Internal_Set_Is_Ordered (187, False);
+   Internal_Set_Is_Read_Only (187, False);
+   Internal_Set_Is_Unique (187, True);
    Internal_Set_Lower (
 187, 0);   Internal_Set_Name
     (187,
      League.Strings.To_Universal_String ("constraint"));
    Internal_Set_Upper (187, (Unlimited => True));
    Initialize_Association (149, Extent);
-   Internal_Set_Is_Derived (149, AMF.False);
-   Internal_Set_Is_Final_Specialization (149, AMF.False);
+   Internal_Set_Is_Derived (149, False);
+   Internal_Set_Is_Final_Specialization (149, False);
    Internal_Set_Name
     (149,
      League.Strings.To_Universal_String ("A_specification_owningConstraint"));
@@ -215,21 +215,21 @@ begin
    Internal_Set_Default
     (188,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (188, AMF.False);
-   Internal_Set_Is_Derived (188, AMF.False);
-   Internal_Set_Is_Derived_Union (188, AMF.False);
-   Internal_Set_Is_Leaf (188, AMF.False);
-   Internal_Set_Is_Ordered (188, AMF.False);
-   Internal_Set_Is_Read_Only (188, AMF.False);
-   Internal_Set_Is_Unique (188, AMF.True);
+   Internal_Set_Is_Composite (188, False);
+   Internal_Set_Is_Derived (188, False);
+   Internal_Set_Is_Derived_Union (188, False);
+   Internal_Set_Is_Leaf (188, False);
+   Internal_Set_Is_Ordered (188, False);
+   Internal_Set_Is_Read_Only (188, False);
+   Internal_Set_Is_Unique (188, True);
    Internal_Set_Lower (
 188, 0);   Internal_Set_Name
     (188,
      League.Strings.To_Universal_String ("owningConstraint"));
    Internal_Set_Upper (188, (False, 1));
    Initialize_Association (151, Extent);
-   Internal_Set_Is_Derived (151, AMF.False);
-   Internal_Set_Is_Final_Specialization (151, AMF.False);
+   Internal_Set_Is_Derived (151, False);
+   Internal_Set_Is_Final_Specialization (151, False);
    Internal_Set_Name
     (151,
      League.Strings.To_Universal_String ("A_general_classifier"));
@@ -237,27 +237,27 @@ begin
    Internal_Set_Default
     (189,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (189, AMF.False);
-   Internal_Set_Is_Derived (189, AMF.False);
-   Internal_Set_Is_Derived_Union (189, AMF.False);
-   Internal_Set_Is_Leaf (189, AMF.False);
-   Internal_Set_Is_Ordered (189, AMF.False);
-   Internal_Set_Is_Read_Only (189, AMF.False);
-   Internal_Set_Is_Unique (189, AMF.True);
+   Internal_Set_Is_Composite (189, False);
+   Internal_Set_Is_Derived (189, False);
+   Internal_Set_Is_Derived_Union (189, False);
+   Internal_Set_Is_Leaf (189, False);
+   Internal_Set_Is_Ordered (189, False);
+   Internal_Set_Is_Read_Only (189, False);
+   Internal_Set_Is_Unique (189, True);
    Internal_Set_Lower (
 189, 0);   Internal_Set_Name
     (189,
      League.Strings.To_Universal_String ("classifier"));
    Internal_Set_Upper (189, (Unlimited => True));
    Initialize_Association (153, Extent);
-   Internal_Set_Is_Derived (153, AMF.False);
-   Internal_Set_Is_Final_Specialization (153, AMF.False);
+   Internal_Set_Is_Derived (153, False);
+   Internal_Set_Is_Final_Specialization (153, False);
    Internal_Set_Name
     (153,
      League.Strings.To_Universal_String ("A_ownedMember_namespace"));
    Initialize_Association (154, Extent);
-   Internal_Set_Is_Derived (154, AMF.False);
-   Internal_Set_Is_Final_Specialization (154, AMF.False);
+   Internal_Set_Is_Derived (154, False);
+   Internal_Set_Is_Final_Specialization (154, False);
    Internal_Set_Name
     (154,
      League.Strings.To_Universal_String ("A_member_namespace"));
@@ -265,21 +265,21 @@ begin
    Internal_Set_Default
     (190,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (190, AMF.False);
-   Internal_Set_Is_Derived (190, AMF.False);
-   Internal_Set_Is_Derived_Union (190, AMF.False);
-   Internal_Set_Is_Leaf (190, AMF.False);
-   Internal_Set_Is_Ordered (190, AMF.False);
-   Internal_Set_Is_Read_Only (190, AMF.False);
-   Internal_Set_Is_Unique (190, AMF.True);
+   Internal_Set_Is_Composite (190, False);
+   Internal_Set_Is_Derived (190, False);
+   Internal_Set_Is_Derived_Union (190, False);
+   Internal_Set_Is_Leaf (190, False);
+   Internal_Set_Is_Ordered (190, False);
+   Internal_Set_Is_Read_Only (190, False);
+   Internal_Set_Is_Unique (190, True);
    Internal_Set_Lower (
 190, 0);   Internal_Set_Name
     (190,
      League.Strings.To_Universal_String ("namespace"));
    Internal_Set_Upper (190, (Unlimited => True));
    Initialize_Association (156, Extent);
-   Internal_Set_Is_Derived (156, AMF.False);
-   Internal_Set_Is_Final_Specialization (156, AMF.False);
+   Internal_Set_Is_Derived (156, False);
+   Internal_Set_Is_Final_Specialization (156, False);
    Internal_Set_Name
     (156,
      League.Strings.To_Universal_String ("A_operand_expression"));
@@ -287,21 +287,21 @@ begin
    Internal_Set_Default
     (191,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (191, AMF.False);
-   Internal_Set_Is_Derived (191, AMF.False);
-   Internal_Set_Is_Derived_Union (191, AMF.False);
-   Internal_Set_Is_Leaf (191, AMF.False);
-   Internal_Set_Is_Ordered (191, AMF.False);
-   Internal_Set_Is_Read_Only (191, AMF.False);
-   Internal_Set_Is_Unique (191, AMF.True);
+   Internal_Set_Is_Composite (191, False);
+   Internal_Set_Is_Derived (191, False);
+   Internal_Set_Is_Derived_Union (191, False);
+   Internal_Set_Is_Leaf (191, False);
+   Internal_Set_Is_Ordered (191, False);
+   Internal_Set_Is_Read_Only (191, False);
+   Internal_Set_Is_Unique (191, True);
    Internal_Set_Lower (
 191, 0);   Internal_Set_Name
     (191,
      League.Strings.To_Universal_String ("expression"));
    Internal_Set_Upper (191, (False, 1));
    Initialize_Association (159, Extent);
-   Internal_Set_Is_Derived (159, AMF.False);
-   Internal_Set_Is_Final_Specialization (159, AMF.False);
+   Internal_Set_Is_Derived (159, False);
+   Internal_Set_Is_Final_Specialization (159, False);
    Internal_Set_Name
     (159,
      League.Strings.To_Universal_String ("A_navigableOwnedEnd_association"));
@@ -309,27 +309,27 @@ begin
    Internal_Set_Default
     (192,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (192, AMF.False);
-   Internal_Set_Is_Derived (192, AMF.False);
-   Internal_Set_Is_Derived_Union (192, AMF.False);
-   Internal_Set_Is_Leaf (192, AMF.False);
-   Internal_Set_Is_Ordered (192, AMF.False);
-   Internal_Set_Is_Read_Only (192, AMF.False);
-   Internal_Set_Is_Unique (192, AMF.True);
+   Internal_Set_Is_Composite (192, False);
+   Internal_Set_Is_Derived (192, False);
+   Internal_Set_Is_Derived_Union (192, False);
+   Internal_Set_Is_Leaf (192, False);
+   Internal_Set_Is_Ordered (192, False);
+   Internal_Set_Is_Read_Only (192, False);
+   Internal_Set_Is_Unique (192, True);
    Internal_Set_Lower (
 192, 0);   Internal_Set_Name
     (192,
      League.Strings.To_Universal_String ("association"));
    Internal_Set_Upper (192, (False, 1));
    Initialize_Association (162, Extent);
-   Internal_Set_Is_Derived (162, AMF.False);
-   Internal_Set_Is_Final_Specialization (162, AMF.False);
+   Internal_Set_Is_Derived (162, False);
+   Internal_Set_Is_Final_Specialization (162, False);
    Internal_Set_Name
     (162,
      League.Strings.To_Universal_String ("A_ownedParameter_operation"));
    Initialize_Association (163, Extent);
-   Internal_Set_Is_Derived (163, AMF.False);
-   Internal_Set_Is_Final_Specialization (163, AMF.False);
+   Internal_Set_Is_Derived (163, False);
+   Internal_Set_Is_Final_Specialization (163, False);
    Internal_Set_Name
     (163,
      League.Strings.To_Universal_String ("A_ownedComment_owningElement"));
@@ -337,21 +337,21 @@ begin
    Internal_Set_Default
     (193,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (193, AMF.False);
-   Internal_Set_Is_Derived (193, AMF.False);
-   Internal_Set_Is_Derived_Union (193, AMF.False);
-   Internal_Set_Is_Leaf (193, AMF.False);
-   Internal_Set_Is_Ordered (193, AMF.False);
-   Internal_Set_Is_Read_Only (193, AMF.False);
-   Internal_Set_Is_Unique (193, AMF.True);
+   Internal_Set_Is_Composite (193, False);
+   Internal_Set_Is_Derived (193, False);
+   Internal_Set_Is_Derived_Union (193, False);
+   Internal_Set_Is_Leaf (193, False);
+   Internal_Set_Is_Ordered (193, False);
+   Internal_Set_Is_Read_Only (193, False);
+   Internal_Set_Is_Unique (193, True);
    Internal_Set_Lower (
 193, 0);   Internal_Set_Name
     (193,
      League.Strings.To_Universal_String ("owningElement"));
    Internal_Set_Upper (193, (False, 1));
    Initialize_Association (165, Extent);
-   Internal_Set_Is_Derived (165, AMF.False);
-   Internal_Set_Is_Final_Specialization (165, AMF.False);
+   Internal_Set_Is_Derived (165, False);
+   Internal_Set_Is_Final_Specialization (165, False);
    Internal_Set_Name
     (165,
      League.Strings.To_Universal_String ("A_inheritedMember_classifier"));
@@ -359,21 +359,21 @@ begin
    Internal_Set_Default
     (194,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (194, AMF.False);
-   Internal_Set_Is_Derived (194, AMF.False);
-   Internal_Set_Is_Derived_Union (194, AMF.False);
-   Internal_Set_Is_Leaf (194, AMF.False);
-   Internal_Set_Is_Ordered (194, AMF.False);
-   Internal_Set_Is_Read_Only (194, AMF.False);
-   Internal_Set_Is_Unique (194, AMF.True);
+   Internal_Set_Is_Composite (194, False);
+   Internal_Set_Is_Derived (194, False);
+   Internal_Set_Is_Derived_Union (194, False);
+   Internal_Set_Is_Leaf (194, False);
+   Internal_Set_Is_Ordered (194, False);
+   Internal_Set_Is_Read_Only (194, False);
+   Internal_Set_Is_Unique (194, True);
    Internal_Set_Lower (
 194, 0);   Internal_Set_Name
     (194,
      League.Strings.To_Universal_String ("classifier"));
    Internal_Set_Upper (194, (Unlimited => True));
    Initialize_Association (167, Extent);
-   Internal_Set_Is_Derived (167, AMF.False);
-   Internal_Set_Is_Final_Specialization (167, AMF.False);
+   Internal_Set_Is_Derived (167, False);
+   Internal_Set_Is_Final_Specialization (167, False);
    Internal_Set_Name
     (167,
      League.Strings.To_Universal_String ("A_precondition_preContext"));
@@ -381,21 +381,21 @@ begin
    Internal_Set_Default
     (195,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (195, AMF.False);
-   Internal_Set_Is_Derived (195, AMF.False);
-   Internal_Set_Is_Derived_Union (195, AMF.False);
-   Internal_Set_Is_Leaf (195, AMF.False);
-   Internal_Set_Is_Ordered (195, AMF.False);
-   Internal_Set_Is_Read_Only (195, AMF.False);
-   Internal_Set_Is_Unique (195, AMF.True);
+   Internal_Set_Is_Composite (195, False);
+   Internal_Set_Is_Derived (195, False);
+   Internal_Set_Is_Derived_Union (195, False);
+   Internal_Set_Is_Leaf (195, False);
+   Internal_Set_Is_Ordered (195, False);
+   Internal_Set_Is_Read_Only (195, False);
+   Internal_Set_Is_Unique (195, True);
    Internal_Set_Lower (
 195, 0);   Internal_Set_Name
     (195,
      League.Strings.To_Universal_String ("preContext"));
    Internal_Set_Upper (195, (False, 1));
    Initialize_Association (169, Extent);
-   Internal_Set_Is_Derived (169, AMF.False);
-   Internal_Set_Is_Final_Specialization (169, AMF.False);
+   Internal_Set_Is_Derived (169, False);
+   Internal_Set_Is_Final_Specialization (169, False);
    Internal_Set_Name
     (169,
      League.Strings.To_Universal_String ("A_postcondition_postContext"));
@@ -403,21 +403,21 @@ begin
    Internal_Set_Default
     (196,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (196, AMF.False);
-   Internal_Set_Is_Derived (196, AMF.False);
-   Internal_Set_Is_Derived_Union (196, AMF.False);
-   Internal_Set_Is_Leaf (196, AMF.False);
-   Internal_Set_Is_Ordered (196, AMF.False);
-   Internal_Set_Is_Read_Only (196, AMF.False);
-   Internal_Set_Is_Unique (196, AMF.True);
+   Internal_Set_Is_Composite (196, False);
+   Internal_Set_Is_Derived (196, False);
+   Internal_Set_Is_Derived_Union (196, False);
+   Internal_Set_Is_Leaf (196, False);
+   Internal_Set_Is_Ordered (196, False);
+   Internal_Set_Is_Read_Only (196, False);
+   Internal_Set_Is_Unique (196, True);
    Internal_Set_Lower (
 196, 0);   Internal_Set_Name
     (196,
      League.Strings.To_Universal_String ("postContext"));
    Internal_Set_Upper (196, (False, 1));
    Initialize_Association (171, Extent);
-   Internal_Set_Is_Derived (171, AMF.False);
-   Internal_Set_Is_Final_Specialization (171, AMF.False);
+   Internal_Set_Is_Derived (171, False);
+   Internal_Set_Is_Final_Specialization (171, False);
    Internal_Set_Name
     (171,
      League.Strings.To_Universal_String ("A_bodyCondition_bodyContext"));
@@ -425,21 +425,21 @@ begin
    Internal_Set_Default
     (197,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (197, AMF.False);
-   Internal_Set_Is_Derived (197, AMF.False);
-   Internal_Set_Is_Derived_Union (197, AMF.False);
-   Internal_Set_Is_Leaf (197, AMF.False);
-   Internal_Set_Is_Ordered (197, AMF.False);
-   Internal_Set_Is_Read_Only (197, AMF.False);
-   Internal_Set_Is_Unique (197, AMF.True);
+   Internal_Set_Is_Composite (197, False);
+   Internal_Set_Is_Derived (197, False);
+   Internal_Set_Is_Derived_Union (197, False);
+   Internal_Set_Is_Leaf (197, False);
+   Internal_Set_Is_Ordered (197, False);
+   Internal_Set_Is_Read_Only (197, False);
+   Internal_Set_Is_Unique (197, True);
    Internal_Set_Lower (
 197, 0);   Internal_Set_Name
     (197,
      League.Strings.To_Universal_String ("bodyContext"));
    Internal_Set_Upper (197, (False, 1));
    Initialize_Association (173, Extent);
-   Internal_Set_Is_Derived (173, AMF.False);
-   Internal_Set_Is_Final_Specialization (173, AMF.False);
+   Internal_Set_Is_Derived (173, False);
+   Internal_Set_Is_Final_Specialization (173, False);
    Internal_Set_Name
     (173,
      League.Strings.To_Universal_String ("A_ownedRule_context"));
@@ -451,7 +451,7 @@ begin
     (198,
      League.Strings.To_Universal_String ("http://schema.omg.org/spec/MOF/2.0/cmof.xml"));
    Initialize_Primitive_Type (199, Extent);
-   Internal_Set_Is_Final_Specialization (199, AMF.False);
+   Internal_Set_Is_Final_Specialization (199, False);
    Internal_Set_Name
     (199,
      League.Strings.To_Universal_String ("Integer"));
@@ -460,7 +460,7 @@ begin
     (200,
      League.Strings.To_Universal_String ("An integer is a primitive type representing integer values."));
    Initialize_Primitive_Type (201, Extent);
-   Internal_Set_Is_Final_Specialization (201, AMF.False);
+   Internal_Set_Is_Final_Specialization (201, False);
    Internal_Set_Name
     (201,
      League.Strings.To_Universal_String ("Boolean"));
@@ -469,7 +469,7 @@ begin
     (202,
      League.Strings.To_Universal_String ("A Boolean type is used for logical expression, consisting of the predefined values true and false."));
    Initialize_Primitive_Type (203, Extent);
-   Internal_Set_Is_Final_Specialization (203, AMF.False);
+   Internal_Set_Is_Final_Specialization (203, False);
    Internal_Set_Name
     (203,
      League.Strings.To_Universal_String ("String"));
@@ -478,7 +478,7 @@ begin
     (204,
      League.Strings.To_Universal_String ("A string is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters."));
    Initialize_Primitive_Type (205, Extent);
-   Internal_Set_Is_Final_Specialization (205, AMF.False);
+   Internal_Set_Is_Final_Specialization (205, False);
    Internal_Set_Name
     (205,
      League.Strings.To_Universal_String ("UnlimitedNatural"));
@@ -487,8 +487,8 @@ begin
     (206,
      League.Strings.To_Universal_String ("An unlimited natural is a primitive type representing unlimited natural values."));
    Initialize_Class (4, Extent);
-   Internal_Set_Is_Abstract (4, AMF.True);
-   Internal_Set_Is_Final_Specialization (4, AMF.False);
+   Internal_Set_Is_Abstract (4, True);
+   Internal_Set_Is_Final_Specialization (4, False);
    Internal_Set_Name
     (4,
      League.Strings.To_Universal_String ("Classifier"));
@@ -524,13 +524,13 @@ begin
    Internal_Set_Default
     (42,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (42, AMF.False);
-   Internal_Set_Is_Derived (42, AMF.True);
-   Internal_Set_Is_Derived_Union (42, AMF.True);
-   Internal_Set_Is_Leaf (42, AMF.False);
-   Internal_Set_Is_Ordered (42, AMF.False);
-   Internal_Set_Is_Read_Only (42, AMF.True);
-   Internal_Set_Is_Unique (42, AMF.True);
+   Internal_Set_Is_Composite (42, False);
+   Internal_Set_Is_Derived (42, True);
+   Internal_Set_Is_Derived_Union (42, True);
+   Internal_Set_Is_Leaf (42, False);
+   Internal_Set_Is_Ordered (42, False);
+   Internal_Set_Is_Read_Only (42, True);
+   Internal_Set_Is_Unique (42, True);
    Internal_Set_Lower (
 42, 0);   Internal_Set_Name
     (42,
@@ -544,13 +544,13 @@ begin
    Internal_Set_Default
     (43,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (43, AMF.False);
-   Internal_Set_Is_Derived (43, AMF.True);
-   Internal_Set_Is_Derived_Union (43, AMF.True);
-   Internal_Set_Is_Leaf (43, AMF.False);
-   Internal_Set_Is_Ordered (43, AMF.False);
-   Internal_Set_Is_Read_Only (43, AMF.True);
-   Internal_Set_Is_Unique (43, AMF.True);
+   Internal_Set_Is_Composite (43, False);
+   Internal_Set_Is_Derived (43, True);
+   Internal_Set_Is_Derived_Union (43, True);
+   Internal_Set_Is_Leaf (43, False);
+   Internal_Set_Is_Ordered (43, False);
+   Internal_Set_Is_Read_Only (43, True);
+   Internal_Set_Is_Unique (43, True);
    Internal_Set_Lower (
 43, 0);   Internal_Set_Name
     (43,
@@ -564,13 +564,13 @@ begin
    Internal_Set_Default
     (44,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (44, AMF.False);
-   Internal_Set_Is_Derived (44, AMF.False);
-   Internal_Set_Is_Derived_Union (44, AMF.False);
-   Internal_Set_Is_Leaf (44, AMF.False);
-   Internal_Set_Is_Ordered (44, AMF.False);
-   Internal_Set_Is_Read_Only (44, AMF.False);
-   Internal_Set_Is_Unique (44, AMF.True);
+   Internal_Set_Is_Composite (44, False);
+   Internal_Set_Is_Derived (44, False);
+   Internal_Set_Is_Derived_Union (44, False);
+   Internal_Set_Is_Leaf (44, False);
+   Internal_Set_Is_Ordered (44, False);
+   Internal_Set_Is_Read_Only (44, False);
+   Internal_Set_Is_Unique (44, True);
    Internal_Set_Lower (
 44, 0);   Internal_Set_Name
     (44,
@@ -584,13 +584,13 @@ begin
    Internal_Set_Default
     (45,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (45, AMF.False);
-   Internal_Set_Is_Derived (45, AMF.True);
-   Internal_Set_Is_Derived_Union (45, AMF.False);
-   Internal_Set_Is_Leaf (45, AMF.False);
-   Internal_Set_Is_Ordered (45, AMF.False);
-   Internal_Set_Is_Read_Only (45, AMF.True);
-   Internal_Set_Is_Unique (45, AMF.True);
+   Internal_Set_Is_Composite (45, False);
+   Internal_Set_Is_Derived (45, True);
+   Internal_Set_Is_Derived_Union (45, False);
+   Internal_Set_Is_Leaf (45, False);
+   Internal_Set_Is_Ordered (45, False);
+   Internal_Set_Is_Read_Only (45, True);
+   Internal_Set_Is_Unique (45, True);
    Internal_Set_Lower (
 45, 0);   Internal_Set_Name
     (45,
@@ -604,13 +604,13 @@ begin
    Internal_Set_Default
     (79,
      League.Strings.To_Universal_String ("false"));
-   Internal_Set_Is_Composite (79, AMF.False);
-   Internal_Set_Is_Derived (79, AMF.False);
-   Internal_Set_Is_Derived_Union (79, AMF.False);
-   Internal_Set_Is_Leaf (79, AMF.False);
-   Internal_Set_Is_Ordered (79, AMF.False);
-   Internal_Set_Is_Read_Only (79, AMF.False);
-   Internal_Set_Is_Unique (79, AMF.True);
+   Internal_Set_Is_Composite (79, False);
+   Internal_Set_Is_Derived (79, False);
+   Internal_Set_Is_Derived_Union (79, False);
+   Internal_Set_Is_Leaf (79, False);
+   Internal_Set_Is_Ordered (79, False);
+   Internal_Set_Is_Read_Only (79, False);
+   Internal_Set_Is_Unique (79, True);
    Internal_Set_Lower (
 79, 1);   Internal_Set_Name
     (79,
@@ -621,10 +621,10 @@ begin
     (218,
      League.Strings.To_Universal_String ("If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false."));
    Initialize_Operation (219, Extent);
-   Internal_Set_Is_Leaf (219, AMF.False);
-   Internal_Set_Is_Ordered (219, AMF.False);
-   Internal_Set_Is_Query (219, AMF.True);
-   Internal_Set_Is_Unique (219, AMF.True);
+   Internal_Set_Is_Leaf (219, False);
+   Internal_Set_Is_Ordered (219, False);
+   Internal_Set_Is_Query (219, True);
+   Internal_Set_Is_Unique (219, True);
    Internal_Set_Lower (
 219, 1);   Internal_Set_Name
     (219,
@@ -646,8 +646,8 @@ begin
    Internal_Set_Default
     (223,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (223, AMF.False);
-   Internal_Set_Is_Unique (223, AMF.True);
+   Internal_Set_Is_Ordered (223, False);
+   Internal_Set_Is_Unique (223, True);
    Internal_Set_Lower (
 223, 1);   Internal_Set_Name
     (223,
@@ -657,18 +657,18 @@ begin
    Internal_Set_Default
     (224,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (224, AMF.False);
-   Internal_Set_Is_Unique (224, AMF.True);
+   Internal_Set_Is_Ordered (224, False);
+   Internal_Set_Is_Unique (224, True);
    Internal_Set_Lower (
 224, 1);   Internal_Set_Name
     (224,
      League.Strings.To_Universal_String ("other"));
    Internal_Set_Upper (224, (False, 1));
    Initialize_Operation (225, Extent);
-   Internal_Set_Is_Leaf (225, AMF.False);
-   Internal_Set_Is_Ordered (225, AMF.False);
-   Internal_Set_Is_Query (225, AMF.True);
-   Internal_Set_Is_Unique (225, AMF.True);
+   Internal_Set_Is_Leaf (225, False);
+   Internal_Set_Is_Ordered (225, False);
+   Internal_Set_Is_Query (225, True);
+   Internal_Set_Is_Unique (225, True);
    Internal_Set_Lower (
 225, 1);   Internal_Set_Name
     (225,
@@ -690,18 +690,18 @@ begin
    Internal_Set_Default
     (229,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (229, AMF.False);
-   Internal_Set_Is_Unique (229, AMF.True);
+   Internal_Set_Is_Ordered (229, False);
+   Internal_Set_Is_Unique (229, True);
    Internal_Set_Lower (
 229, 0);   Internal_Set_Name
     (229,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (229, (Unlimited => True));
    Initialize_Operation (230, Extent);
-   Internal_Set_Is_Leaf (230, AMF.False);
-   Internal_Set_Is_Ordered (230, AMF.False);
-   Internal_Set_Is_Query (230, AMF.True);
-   Internal_Set_Is_Unique (230, AMF.True);
+   Internal_Set_Is_Leaf (230, False);
+   Internal_Set_Is_Ordered (230, False);
+   Internal_Set_Is_Query (230, True);
+   Internal_Set_Is_Unique (230, True);
    Internal_Set_Lower (
 230, 1);   Internal_Set_Name
     (230,
@@ -723,18 +723,18 @@ begin
    Internal_Set_Default
     (234,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (234, AMF.False);
-   Internal_Set_Is_Unique (234, AMF.True);
+   Internal_Set_Is_Ordered (234, False);
+   Internal_Set_Is_Unique (234, True);
    Internal_Set_Lower (
 234, 0);   Internal_Set_Name
     (234,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (234, (Unlimited => True));
    Initialize_Operation (235, Extent);
-   Internal_Set_Is_Leaf (235, AMF.False);
-   Internal_Set_Is_Ordered (235, AMF.False);
-   Internal_Set_Is_Query (235, AMF.True);
-   Internal_Set_Is_Unique (235, AMF.True);
+   Internal_Set_Is_Leaf (235, False);
+   Internal_Set_Is_Ordered (235, False);
+   Internal_Set_Is_Query (235, True);
+   Internal_Set_Is_Unique (235, True);
    Internal_Set_Lower (
 235, 1);   Internal_Set_Name
     (235,
@@ -756,18 +756,18 @@ begin
    Internal_Set_Default
     (239,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (239, AMF.False);
-   Internal_Set_Is_Unique (239, AMF.True);
+   Internal_Set_Is_Ordered (239, False);
+   Internal_Set_Is_Unique (239, True);
    Internal_Set_Lower (
 239, 0);   Internal_Set_Name
     (239,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (239, (Unlimited => True));
    Initialize_Operation (240, Extent);
-   Internal_Set_Is_Leaf (240, AMF.False);
-   Internal_Set_Is_Ordered (240, AMF.False);
-   Internal_Set_Is_Query (240, AMF.True);
-   Internal_Set_Is_Unique (240, AMF.True);
+   Internal_Set_Is_Leaf (240, False);
+   Internal_Set_Is_Ordered (240, False);
+   Internal_Set_Is_Query (240, True);
+   Internal_Set_Is_Unique (240, True);
    Internal_Set_Lower (
 240, 1);   Internal_Set_Name
     (240,
@@ -789,18 +789,18 @@ begin
    Internal_Set_Default
     (244,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (244, AMF.False);
-   Internal_Set_Is_Unique (244, AMF.True);
+   Internal_Set_Is_Ordered (244, False);
+   Internal_Set_Is_Unique (244, True);
    Internal_Set_Lower (
 244, 0);   Internal_Set_Name
     (244,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (244, (Unlimited => True));
    Initialize_Operation (245, Extent);
-   Internal_Set_Is_Leaf (245, AMF.False);
-   Internal_Set_Is_Ordered (245, AMF.False);
-   Internal_Set_Is_Query (245, AMF.True);
-   Internal_Set_Is_Unique (245, AMF.True);
+   Internal_Set_Is_Leaf (245, False);
+   Internal_Set_Is_Ordered (245, False);
+   Internal_Set_Is_Query (245, True);
+   Internal_Set_Is_Unique (245, True);
    Internal_Set_Lower (
 245, 1);   Internal_Set_Name
     (245,
@@ -822,18 +822,18 @@ begin
    Internal_Set_Default
     (249,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (249, AMF.False);
-   Internal_Set_Is_Unique (249, AMF.True);
+   Internal_Set_Is_Ordered (249, False);
+   Internal_Set_Is_Unique (249, True);
    Internal_Set_Lower (
 249, 0);   Internal_Set_Name
     (249,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (249, (Unlimited => True));
    Initialize_Operation (250, Extent);
-   Internal_Set_Is_Leaf (250, AMF.False);
-   Internal_Set_Is_Ordered (250, AMF.False);
-   Internal_Set_Is_Query (250, AMF.True);
-   Internal_Set_Is_Unique (250, AMF.True);
+   Internal_Set_Is_Leaf (250, False);
+   Internal_Set_Is_Ordered (250, False);
+   Internal_Set_Is_Query (250, True);
+   Internal_Set_Is_Unique (250, True);
    Internal_Set_Lower (
 250, 1);   Internal_Set_Name
     (250,
@@ -863,8 +863,8 @@ begin
    Internal_Set_Default
     (256,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (256, AMF.False);
-   Internal_Set_Is_Unique (256, AMF.True);
+   Internal_Set_Is_Ordered (256, False);
+   Internal_Set_Is_Unique (256, True);
    Internal_Set_Lower (
 256, 0);   Internal_Set_Name
     (256,
@@ -874,18 +874,18 @@ begin
    Internal_Set_Default
     (257,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (257, AMF.False);
-   Internal_Set_Is_Unique (257, AMF.True);
+   Internal_Set_Is_Ordered (257, False);
+   Internal_Set_Is_Unique (257, True);
    Internal_Set_Lower (
 257, 1);   Internal_Set_Name
     (257,
      League.Strings.To_Universal_String ("c"));
    Internal_Set_Upper (257, (False, 1));
    Initialize_Operation (258, Extent);
-   Internal_Set_Is_Leaf (258, AMF.False);
-   Internal_Set_Is_Ordered (258, AMF.False);
-   Internal_Set_Is_Query (258, AMF.True);
-   Internal_Set_Is_Unique (258, AMF.True);
+   Internal_Set_Is_Leaf (258, False);
+   Internal_Set_Is_Ordered (258, False);
+   Internal_Set_Is_Query (258, True);
+   Internal_Set_Is_Unique (258, True);
    Internal_Set_Lower (
 258, 1);   Internal_Set_Name
     (258,
@@ -915,8 +915,8 @@ begin
    Internal_Set_Default
     (264,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (264, AMF.False);
-   Internal_Set_Is_Unique (264, AMF.True);
+   Internal_Set_Is_Ordered (264, False);
+   Internal_Set_Is_Unique (264, True);
    Internal_Set_Lower (
 264, 1);   Internal_Set_Name
     (264,
@@ -926,18 +926,18 @@ begin
    Internal_Set_Default
     (265,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (265, AMF.False);
-   Internal_Set_Is_Unique (265, AMF.True);
+   Internal_Set_Is_Ordered (265, False);
+   Internal_Set_Is_Unique (265, True);
    Internal_Set_Lower (
 265, 1);   Internal_Set_Name
     (265,
      League.Strings.To_Universal_String ("n"));
    Internal_Set_Upper (265, (False, 1));
    Initialize_Operation (266, Extent);
-   Internal_Set_Is_Leaf (266, AMF.False);
-   Internal_Set_Is_Ordered (266, AMF.False);
-   Internal_Set_Is_Query (266, AMF.True);
-   Internal_Set_Is_Unique (266, AMF.True);
+   Internal_Set_Is_Leaf (266, False);
+   Internal_Set_Is_Ordered (266, False);
+   Internal_Set_Is_Query (266, True);
+   Internal_Set_Is_Unique (266, True);
    Internal_Set_Lower (
 266, 1);   Internal_Set_Name
     (266,
@@ -959,8 +959,8 @@ begin
    Internal_Set_Default
     (270,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (270, AMF.False);
-   Internal_Set_Is_Unique (270, AMF.True);
+   Internal_Set_Is_Ordered (270, False);
+   Internal_Set_Is_Unique (270, True);
    Internal_Set_Lower (
 270, 0);   Internal_Set_Name
     (270,
@@ -970,18 +970,18 @@ begin
    Internal_Set_Default
     (271,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (271, AMF.False);
-   Internal_Set_Is_Unique (271, AMF.True);
+   Internal_Set_Is_Ordered (271, False);
+   Internal_Set_Is_Unique (271, True);
    Internal_Set_Lower (
 271, 0);   Internal_Set_Name
     (271,
      League.Strings.To_Universal_String ("inhs"));
    Internal_Set_Upper (271, (Unlimited => True));
    Initialize_Operation (272, Extent);
-   Internal_Set_Is_Leaf (272, AMF.False);
-   Internal_Set_Is_Ordered (272, AMF.False);
-   Internal_Set_Is_Query (272, AMF.True);
-   Internal_Set_Is_Unique (272, AMF.True);
+   Internal_Set_Is_Leaf (272, False);
+   Internal_Set_Is_Ordered (272, False);
+   Internal_Set_Is_Query (272, True);
+   Internal_Set_Is_Unique (272, True);
    Internal_Set_Lower (
 272, 1);   Internal_Set_Name
     (272,
@@ -1003,8 +1003,8 @@ begin
    Internal_Set_Default
     (276,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (276, AMF.False);
-   Internal_Set_Is_Unique (276, AMF.True);
+   Internal_Set_Is_Ordered (276, False);
+   Internal_Set_Is_Unique (276, True);
    Internal_Set_Lower (
 276, 1);   Internal_Set_Name
     (276,
@@ -1014,16 +1014,16 @@ begin
    Internal_Set_Default
     (277,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (277, AMF.False);
-   Internal_Set_Is_Unique (277, AMF.True);
+   Internal_Set_Is_Ordered (277, False);
+   Internal_Set_Is_Unique (277, True);
    Internal_Set_Lower (
 277, 1);   Internal_Set_Name
     (277,
      League.Strings.To_Universal_String ("c"));
    Internal_Set_Upper (277, (False, 1));
    Initialize_Class (8, Extent);
-   Internal_Set_Is_Abstract (8, AMF.True);
-   Internal_Set_Is_Final_Specialization (8, AMF.False);
+   Internal_Set_Is_Abstract (8, True);
+   Internal_Set_Is_Final_Specialization (8, False);
    Internal_Set_Name
     (8,
      League.Strings.To_Universal_String ("DirectedRelationship"));
@@ -1035,13 +1035,13 @@ begin
    Internal_Set_Default
     (50,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (50, AMF.False);
-   Internal_Set_Is_Derived (50, AMF.True);
-   Internal_Set_Is_Derived_Union (50, AMF.True);
-   Internal_Set_Is_Leaf (50, AMF.False);
-   Internal_Set_Is_Ordered (50, AMF.False);
-   Internal_Set_Is_Read_Only (50, AMF.True);
-   Internal_Set_Is_Unique (50, AMF.True);
+   Internal_Set_Is_Composite (50, False);
+   Internal_Set_Is_Derived (50, True);
+   Internal_Set_Is_Derived_Union (50, True);
+   Internal_Set_Is_Leaf (50, False);
+   Internal_Set_Is_Ordered (50, False);
+   Internal_Set_Is_Read_Only (50, True);
+   Internal_Set_Is_Unique (50, True);
    Internal_Set_Lower (
 50, 1);   Internal_Set_Name
     (50,
@@ -1055,13 +1055,13 @@ begin
    Internal_Set_Default
     (51,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (51, AMF.False);
-   Internal_Set_Is_Derived (51, AMF.True);
-   Internal_Set_Is_Derived_Union (51, AMF.True);
-   Internal_Set_Is_Leaf (51, AMF.False);
-   Internal_Set_Is_Ordered (51, AMF.False);
-   Internal_Set_Is_Read_Only (51, AMF.True);
-   Internal_Set_Is_Unique (51, AMF.True);
+   Internal_Set_Is_Composite (51, False);
+   Internal_Set_Is_Derived (51, True);
+   Internal_Set_Is_Derived_Union (51, True);
+   Internal_Set_Is_Leaf (51, False);
+   Internal_Set_Is_Ordered (51, False);
+   Internal_Set_Is_Read_Only (51, True);
+   Internal_Set_Is_Unique (51, True);
    Internal_Set_Lower (
 51, 1);   Internal_Set_Name
     (51,
@@ -1072,8 +1072,8 @@ begin
     (280,
      League.Strings.To_Universal_String ("Specifies the targets of the DirectedRelationship."));
    Initialize_Class (9, Extent);
-   Internal_Set_Is_Abstract (9, AMF.True);
-   Internal_Set_Is_Final_Specialization (9, AMF.False);
+   Internal_Set_Is_Abstract (9, True);
+   Internal_Set_Is_Final_Specialization (9, False);
    Internal_Set_Name
     (9,
      League.Strings.To_Universal_String ("Element"));
@@ -1109,13 +1109,13 @@ begin
    Internal_Set_Default
     (53,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (53, AMF.True);
-   Internal_Set_Is_Derived (53, AMF.True);
-   Internal_Set_Is_Derived_Union (53, AMF.True);
-   Internal_Set_Is_Leaf (53, AMF.False);
-   Internal_Set_Is_Ordered (53, AMF.False);
-   Internal_Set_Is_Read_Only (53, AMF.True);
-   Internal_Set_Is_Unique (53, AMF.True);
+   Internal_Set_Is_Composite (53, True);
+   Internal_Set_Is_Derived (53, True);
+   Internal_Set_Is_Derived_Union (53, True);
+   Internal_Set_Is_Leaf (53, False);
+   Internal_Set_Is_Ordered (53, False);
+   Internal_Set_Is_Read_Only (53, True);
+   Internal_Set_Is_Unique (53, True);
    Internal_Set_Lower (
 53, 0);   Internal_Set_Name
     (53,
@@ -1129,13 +1129,13 @@ begin
    Internal_Set_Default
     (83,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (83, AMF.False);
-   Internal_Set_Is_Derived (83, AMF.True);
-   Internal_Set_Is_Derived_Union (83, AMF.True);
-   Internal_Set_Is_Leaf (83, AMF.False);
-   Internal_Set_Is_Ordered (83, AMF.False);
-   Internal_Set_Is_Read_Only (83, AMF.True);
-   Internal_Set_Is_Unique (83, AMF.True);
+   Internal_Set_Is_Composite (83, False);
+   Internal_Set_Is_Derived (83, True);
+   Internal_Set_Is_Derived_Union (83, True);
+   Internal_Set_Is_Leaf (83, False);
+   Internal_Set_Is_Ordered (83, False);
+   Internal_Set_Is_Read_Only (83, True);
+   Internal_Set_Is_Unique (83, True);
    Internal_Set_Lower (
 83, 0);   Internal_Set_Name
     (83,
@@ -1149,13 +1149,13 @@ begin
    Internal_Set_Default
     (52,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (52, AMF.True);
-   Internal_Set_Is_Derived (52, AMF.False);
-   Internal_Set_Is_Derived_Union (52, AMF.False);
-   Internal_Set_Is_Leaf (52, AMF.False);
-   Internal_Set_Is_Ordered (52, AMF.False);
-   Internal_Set_Is_Read_Only (52, AMF.False);
-   Internal_Set_Is_Unique (52, AMF.True);
+   Internal_Set_Is_Composite (52, True);
+   Internal_Set_Is_Derived (52, False);
+   Internal_Set_Is_Derived_Union (52, False);
+   Internal_Set_Is_Leaf (52, False);
+   Internal_Set_Is_Ordered (52, False);
+   Internal_Set_Is_Read_Only (52, False);
+   Internal_Set_Is_Unique (52, True);
    Internal_Set_Lower (
 52, 0);   Internal_Set_Name
     (52,
@@ -1166,10 +1166,10 @@ begin
     (290,
      League.Strings.To_Universal_String ("The Comments owned by this element."));
    Initialize_Operation (291, Extent);
-   Internal_Set_Is_Leaf (291, AMF.False);
-   Internal_Set_Is_Ordered (291, AMF.False);
-   Internal_Set_Is_Query (291, AMF.True);
-   Internal_Set_Is_Unique (291, AMF.True);
+   Internal_Set_Is_Leaf (291, False);
+   Internal_Set_Is_Ordered (291, False);
+   Internal_Set_Is_Query (291, True);
+   Internal_Set_Is_Unique (291, True);
    Internal_Set_Lower (
 291, 1);   Internal_Set_Name
     (291,
@@ -1191,18 +1191,18 @@ begin
    Internal_Set_Default
     (295,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (295, AMF.False);
-   Internal_Set_Is_Unique (295, AMF.True);
+   Internal_Set_Is_Ordered (295, False);
+   Internal_Set_Is_Unique (295, True);
    Internal_Set_Lower (
 295, 0);   Internal_Set_Name
     (295,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (295, (Unlimited => True));
    Initialize_Operation (296, Extent);
-   Internal_Set_Is_Leaf (296, AMF.False);
-   Internal_Set_Is_Ordered (296, AMF.False);
-   Internal_Set_Is_Query (296, AMF.True);
-   Internal_Set_Is_Unique (296, AMF.True);
+   Internal_Set_Is_Leaf (296, False);
+   Internal_Set_Is_Ordered (296, False);
+   Internal_Set_Is_Query (296, True);
+   Internal_Set_Is_Unique (296, True);
    Internal_Set_Lower (
 296, 1);   Internal_Set_Name
     (296,
@@ -1224,16 +1224,16 @@ begin
    Internal_Set_Default
     (300,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (300, AMF.False);
-   Internal_Set_Is_Unique (300, AMF.True);
+   Internal_Set_Is_Ordered (300, False);
+   Internal_Set_Is_Unique (300, True);
    Internal_Set_Lower (
 300, 1);   Internal_Set_Name
     (300,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (300, (False, 1));
    Initialize_Class (14, Extent);
-   Internal_Set_Is_Abstract (14, AMF.True);
-   Internal_Set_Is_Final_Specialization (14, AMF.False);
+   Internal_Set_Is_Abstract (14, True);
+   Internal_Set_Is_Final_Specialization (14, False);
    Internal_Set_Name
     (14,
      League.Strings.To_Universal_String ("Feature"));
@@ -1245,13 +1245,13 @@ begin
    Internal_Set_Default
     (56,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (56, AMF.False);
-   Internal_Set_Is_Derived (56, AMF.True);
-   Internal_Set_Is_Derived_Union (56, AMF.True);
-   Internal_Set_Is_Leaf (56, AMF.False);
-   Internal_Set_Is_Ordered (56, AMF.False);
-   Internal_Set_Is_Read_Only (56, AMF.True);
-   Internal_Set_Is_Unique (56, AMF.True);
+   Internal_Set_Is_Composite (56, False);
+   Internal_Set_Is_Derived (56, True);
+   Internal_Set_Is_Derived_Union (56, True);
+   Internal_Set_Is_Leaf (56, False);
+   Internal_Set_Is_Ordered (56, False);
+   Internal_Set_Is_Read_Only (56, True);
+   Internal_Set_Is_Unique (56, True);
    Internal_Set_Lower (
 56, 0);   Internal_Set_Name
     (56,
@@ -1262,8 +1262,8 @@ begin
     (302,
      League.Strings.To_Universal_String ("The Classifiers that have this Feature as a feature."));
    Initialize_Class (15, Extent);
-   Internal_Set_Is_Abstract (15, AMF.True);
-   Internal_Set_Is_Final_Specialization (15, AMF.False);
+   Internal_Set_Is_Abstract (15, True);
+   Internal_Set_Is_Final_Specialization (15, False);
    Internal_Set_Name
     (15,
      League.Strings.To_Universal_String ("MultiplicityElement"));
@@ -1299,13 +1299,13 @@ begin
    Internal_Set_Default
     (89,
      League.Strings.To_Universal_String ("false"));
-   Internal_Set_Is_Composite (89, AMF.False);
-   Internal_Set_Is_Derived (89, AMF.False);
-   Internal_Set_Is_Derived_Union (89, AMF.False);
-   Internal_Set_Is_Leaf (89, AMF.False);
-   Internal_Set_Is_Ordered (89, AMF.False);
-   Internal_Set_Is_Read_Only (89, AMF.False);
-   Internal_Set_Is_Unique (89, AMF.True);
+   Internal_Set_Is_Composite (89, False);
+   Internal_Set_Is_Derived (89, False);
+   Internal_Set_Is_Derived_Union (89, False);
+   Internal_Set_Is_Leaf (89, False);
+   Internal_Set_Is_Ordered (89, False);
+   Internal_Set_Is_Read_Only (89, False);
+   Internal_Set_Is_Unique (89, True);
    Internal_Set_Lower (
 89, 1);   Internal_Set_Name
     (89,
@@ -1319,13 +1319,13 @@ begin
    Internal_Set_Default
     (90,
      League.Strings.To_Universal_String ("true"));
-   Internal_Set_Is_Composite (90, AMF.False);
-   Internal_Set_Is_Derived (90, AMF.False);
-   Internal_Set_Is_Derived_Union (90, AMF.False);
-   Internal_Set_Is_Leaf (90, AMF.False);
-   Internal_Set_Is_Ordered (90, AMF.False);
-   Internal_Set_Is_Read_Only (90, AMF.False);
-   Internal_Set_Is_Unique (90, AMF.True);
+   Internal_Set_Is_Composite (90, False);
+   Internal_Set_Is_Derived (90, False);
+   Internal_Set_Is_Derived_Union (90, False);
+   Internal_Set_Is_Leaf (90, False);
+   Internal_Set_Is_Ordered (90, False);
+   Internal_Set_Is_Read_Only (90, False);
+   Internal_Set_Is_Unique (90, True);
    Internal_Set_Lower (
 90, 1);   Internal_Set_Name
     (90,
@@ -1339,13 +1339,13 @@ begin
    Internal_Set_Default
     (91,
      League.Strings.To_Universal_String ("1"));
-   Internal_Set_Is_Composite (91, AMF.False);
-   Internal_Set_Is_Derived (91, AMF.False);
-   Internal_Set_Is_Derived_Union (91, AMF.False);
-   Internal_Set_Is_Leaf (91, AMF.False);
-   Internal_Set_Is_Ordered (91, AMF.False);
-   Internal_Set_Is_Read_Only (91, AMF.False);
-   Internal_Set_Is_Unique (91, AMF.True);
+   Internal_Set_Is_Composite (91, False);
+   Internal_Set_Is_Derived (91, False);
+   Internal_Set_Is_Derived_Union (91, False);
+   Internal_Set_Is_Leaf (91, False);
+   Internal_Set_Is_Ordered (91, False);
+   Internal_Set_Is_Read_Only (91, False);
+   Internal_Set_Is_Unique (91, True);
    Internal_Set_Lower (
 91, 0);   Internal_Set_Name
     (91,
@@ -1359,13 +1359,13 @@ begin
    Internal_Set_Default
     (92,
      League.Strings.To_Universal_String ("1"));
-   Internal_Set_Is_Composite (92, AMF.False);
-   Internal_Set_Is_Derived (92, AMF.False);
-   Internal_Set_Is_Derived_Union (92, AMF.False);
-   Internal_Set_Is_Leaf (92, AMF.False);
-   Internal_Set_Is_Ordered (92, AMF.False);
-   Internal_Set_Is_Read_Only (92, AMF.False);
-   Internal_Set_Is_Unique (92, AMF.True);
+   Internal_Set_Is_Composite (92, False);
+   Internal_Set_Is_Derived (92, False);
+   Internal_Set_Is_Derived_Union (92, False);
+   Internal_Set_Is_Leaf (92, False);
+   Internal_Set_Is_Ordered (92, False);
+   Internal_Set_Is_Read_Only (92, False);
+   Internal_Set_Is_Unique (92, True);
    Internal_Set_Lower (
 92, 0);   Internal_Set_Name
     (92,
@@ -1376,10 +1376,10 @@ begin
     (313,
      League.Strings.To_Universal_String ("Specifies the upper bound of the multiplicity interval."));
    Initialize_Operation (314, Extent);
-   Internal_Set_Is_Leaf (314, AMF.False);
-   Internal_Set_Is_Ordered (314, AMF.False);
-   Internal_Set_Is_Query (314, AMF.True);
-   Internal_Set_Is_Unique (314, AMF.True);
+   Internal_Set_Is_Leaf (314, False);
+   Internal_Set_Is_Ordered (314, False);
+   Internal_Set_Is_Query (314, True);
+   Internal_Set_Is_Unique (314, True);
    Internal_Set_Lower (
 314, 1);   Internal_Set_Name
     (314,
@@ -1409,18 +1409,18 @@ begin
    Internal_Set_Default
     (320,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (320, AMF.False);
-   Internal_Set_Is_Unique (320, AMF.True);
+   Internal_Set_Is_Ordered (320, False);
+   Internal_Set_Is_Unique (320, True);
    Internal_Set_Lower (
 320, 1);   Internal_Set_Name
     (320,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (320, (False, 1));
    Initialize_Operation (321, Extent);
-   Internal_Set_Is_Leaf (321, AMF.False);
-   Internal_Set_Is_Ordered (321, AMF.False);
-   Internal_Set_Is_Query (321, AMF.True);
-   Internal_Set_Is_Unique (321, AMF.True);
+   Internal_Set_Is_Leaf (321, False);
+   Internal_Set_Is_Ordered (321, False);
+   Internal_Set_Is_Query (321, True);
+   Internal_Set_Is_Unique (321, True);
    Internal_Set_Lower (
 321, 1);   Internal_Set_Name
     (321,
@@ -1450,8 +1450,8 @@ begin
    Internal_Set_Default
     (327,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (327, AMF.False);
-   Internal_Set_Is_Unique (327, AMF.True);
+   Internal_Set_Is_Ordered (327, False);
+   Internal_Set_Is_Unique (327, True);
    Internal_Set_Lower (
 327, 1);   Internal_Set_Name
     (327,
@@ -1461,18 +1461,18 @@ begin
    Internal_Set_Default
     (328,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (328, AMF.False);
-   Internal_Set_Is_Unique (328, AMF.True);
+   Internal_Set_Is_Ordered (328, False);
+   Internal_Set_Is_Unique (328, True);
    Internal_Set_Lower (
 328, 1);   Internal_Set_Name
     (328,
      League.Strings.To_Universal_String ("M"));
    Internal_Set_Upper (328, (False, 1));
    Initialize_Operation (329, Extent);
-   Internal_Set_Is_Leaf (329, AMF.False);
-   Internal_Set_Is_Ordered (329, AMF.False);
-   Internal_Set_Is_Query (329, AMF.True);
-   Internal_Set_Is_Unique (329, AMF.True);
+   Internal_Set_Is_Leaf (329, False);
+   Internal_Set_Is_Ordered (329, False);
+   Internal_Set_Is_Query (329, True);
+   Internal_Set_Is_Unique (329, True);
    Internal_Set_Lower (
 329, 1);   Internal_Set_Name
     (329,
@@ -1502,8 +1502,8 @@ begin
    Internal_Set_Default
     (335,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (335, AMF.False);
-   Internal_Set_Is_Unique (335, AMF.True);
+   Internal_Set_Is_Ordered (335, False);
+   Internal_Set_Is_Unique (335, True);
    Internal_Set_Lower (
 335, 1);   Internal_Set_Name
     (335,
@@ -1513,18 +1513,18 @@ begin
    Internal_Set_Default
     (336,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (336, AMF.False);
-   Internal_Set_Is_Unique (336, AMF.True);
+   Internal_Set_Is_Ordered (336, False);
+   Internal_Set_Is_Unique (336, True);
    Internal_Set_Lower (
 336, 1);   Internal_Set_Name
     (336,
      League.Strings.To_Universal_String ("C"));
    Internal_Set_Upper (336, (False, 1));
    Initialize_Operation (337, Extent);
-   Internal_Set_Is_Leaf (337, AMF.False);
-   Internal_Set_Is_Ordered (337, AMF.False);
-   Internal_Set_Is_Query (337, AMF.True);
-   Internal_Set_Is_Unique (337, AMF.True);
+   Internal_Set_Is_Leaf (337, False);
+   Internal_Set_Is_Ordered (337, False);
+   Internal_Set_Is_Query (337, True);
+   Internal_Set_Is_Unique (337, True);
    Internal_Set_Lower (
 337, 1);   Internal_Set_Name
     (337,
@@ -1546,18 +1546,18 @@ begin
    Internal_Set_Default
     (341,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (341, AMF.False);
-   Internal_Set_Is_Unique (341, AMF.True);
+   Internal_Set_Is_Ordered (341, False);
+   Internal_Set_Is_Unique (341, True);
    Internal_Set_Lower (
 341, 1);   Internal_Set_Name
     (341,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (341, (False, 1));
    Initialize_Operation (342, Extent);
-   Internal_Set_Is_Leaf (342, AMF.False);
-   Internal_Set_Is_Ordered (342, AMF.False);
-   Internal_Set_Is_Query (342, AMF.True);
-   Internal_Set_Is_Unique (342, AMF.True);
+   Internal_Set_Is_Leaf (342, False);
+   Internal_Set_Is_Ordered (342, False);
+   Internal_Set_Is_Query (342, True);
+   Internal_Set_Is_Unique (342, True);
    Internal_Set_Lower (
 342, 1);   Internal_Set_Name
     (342,
@@ -1579,16 +1579,16 @@ begin
    Internal_Set_Default
     (346,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (346, AMF.False);
-   Internal_Set_Is_Unique (346, AMF.True);
+   Internal_Set_Is_Ordered (346, False);
+   Internal_Set_Is_Unique (346, True);
    Internal_Set_Lower (
 346, 1);   Internal_Set_Name
     (346,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (346, (False, 1));
    Initialize_Class (17, Extent);
-   Internal_Set_Is_Abstract (17, AMF.True);
-   Internal_Set_Is_Final_Specialization (17, AMF.False);
+   Internal_Set_Is_Abstract (17, True);
+   Internal_Set_Is_Final_Specialization (17, False);
    Internal_Set_Name
     (17,
      League.Strings.To_Universal_String ("Namespace"));
@@ -1612,13 +1612,13 @@ begin
    Internal_Set_Default
     (58,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (58, AMF.False);
-   Internal_Set_Is_Derived (58, AMF.True);
-   Internal_Set_Is_Derived_Union (58, AMF.False);
-   Internal_Set_Is_Leaf (58, AMF.False);
-   Internal_Set_Is_Ordered (58, AMF.False);
-   Internal_Set_Is_Read_Only (58, AMF.True);
-   Internal_Set_Is_Unique (58, AMF.True);
+   Internal_Set_Is_Composite (58, False);
+   Internal_Set_Is_Derived (58, True);
+   Internal_Set_Is_Derived_Union (58, False);
+   Internal_Set_Is_Leaf (58, False);
+   Internal_Set_Is_Ordered (58, False);
+   Internal_Set_Is_Read_Only (58, True);
+   Internal_Set_Is_Unique (58, True);
    Internal_Set_Lower (
 58, 0);   Internal_Set_Name
     (58,
@@ -1632,13 +1632,13 @@ begin
    Internal_Set_Default
     (57,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (57, AMF.True);
-   Internal_Set_Is_Derived (57, AMF.False);
-   Internal_Set_Is_Derived_Union (57, AMF.False);
-   Internal_Set_Is_Leaf (57, AMF.False);
-   Internal_Set_Is_Ordered (57, AMF.False);
-   Internal_Set_Is_Read_Only (57, AMF.False);
-   Internal_Set_Is_Unique (57, AMF.True);
+   Internal_Set_Is_Composite (57, True);
+   Internal_Set_Is_Derived (57, False);
+   Internal_Set_Is_Derived_Union (57, False);
+   Internal_Set_Is_Leaf (57, False);
+   Internal_Set_Is_Ordered (57, False);
+   Internal_Set_Is_Read_Only (57, False);
+   Internal_Set_Is_Unique (57, True);
    Internal_Set_Lower (
 57, 0);   Internal_Set_Name
     (57,
@@ -1652,13 +1652,13 @@ begin
    Internal_Set_Default
     (62,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (62, AMF.True);
-   Internal_Set_Is_Derived (62, AMF.False);
-   Internal_Set_Is_Derived_Union (62, AMF.False);
-   Internal_Set_Is_Leaf (62, AMF.False);
-   Internal_Set_Is_Ordered (62, AMF.False);
-   Internal_Set_Is_Read_Only (62, AMF.False);
-   Internal_Set_Is_Unique (62, AMF.True);
+   Internal_Set_Is_Composite (62, True);
+   Internal_Set_Is_Derived (62, False);
+   Internal_Set_Is_Derived_Union (62, False);
+   Internal_Set_Is_Leaf (62, False);
+   Internal_Set_Is_Ordered (62, False);
+   Internal_Set_Is_Read_Only (62, False);
+   Internal_Set_Is_Unique (62, True);
    Internal_Set_Lower (
 62, 0);   Internal_Set_Name
     (62,
@@ -1672,13 +1672,13 @@ begin
    Internal_Set_Default
     (60,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (60, AMF.True);
-   Internal_Set_Is_Derived (60, AMF.True);
-   Internal_Set_Is_Derived_Union (60, AMF.True);
-   Internal_Set_Is_Leaf (60, AMF.False);
-   Internal_Set_Is_Ordered (60, AMF.False);
-   Internal_Set_Is_Read_Only (60, AMF.True);
-   Internal_Set_Is_Unique (60, AMF.True);
+   Internal_Set_Is_Composite (60, True);
+   Internal_Set_Is_Derived (60, True);
+   Internal_Set_Is_Derived_Union (60, True);
+   Internal_Set_Is_Leaf (60, False);
+   Internal_Set_Is_Ordered (60, False);
+   Internal_Set_Is_Read_Only (60, True);
+   Internal_Set_Is_Unique (60, True);
    Internal_Set_Lower (
 60, 0);   Internal_Set_Name
     (60,
@@ -1692,13 +1692,13 @@ begin
    Internal_Set_Default
     (59,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (59, AMF.False);
-   Internal_Set_Is_Derived (59, AMF.True);
-   Internal_Set_Is_Derived_Union (59, AMF.True);
-   Internal_Set_Is_Leaf (59, AMF.False);
-   Internal_Set_Is_Ordered (59, AMF.False);
-   Internal_Set_Is_Read_Only (59, AMF.True);
-   Internal_Set_Is_Unique (59, AMF.True);
+   Internal_Set_Is_Composite (59, False);
+   Internal_Set_Is_Derived (59, True);
+   Internal_Set_Is_Derived_Union (59, True);
+   Internal_Set_Is_Leaf (59, False);
+   Internal_Set_Is_Ordered (59, False);
+   Internal_Set_Is_Read_Only (59, True);
+   Internal_Set_Is_Unique (59, True);
    Internal_Set_Lower (
 59, 0);   Internal_Set_Name
     (59,
@@ -1712,23 +1712,23 @@ begin
    Internal_Set_Default
     (61,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (61, AMF.True);
-   Internal_Set_Is_Derived (61, AMF.False);
-   Internal_Set_Is_Derived_Union (61, AMF.False);
-   Internal_Set_Is_Leaf (61, AMF.False);
-   Internal_Set_Is_Ordered (61, AMF.False);
-   Internal_Set_Is_Read_Only (61, AMF.False);
-   Internal_Set_Is_Unique (61, AMF.True);
+   Internal_Set_Is_Composite (61, True);
+   Internal_Set_Is_Derived (61, False);
+   Internal_Set_Is_Derived_Union (61, False);
+   Internal_Set_Is_Leaf (61, False);
+   Internal_Set_Is_Ordered (61, False);
+   Internal_Set_Is_Read_Only (61, False);
+   Internal_Set_Is_Unique (61, True);
    Internal_Set_Lower (
 61, 0);   Internal_Set_Name
     (61,
      League.Strings.To_Universal_String ("ownedRule"));
    Internal_Set_Upper (61, (Unlimited => True));
    Initialize_Operation (356, Extent);
-   Internal_Set_Is_Leaf (356, AMF.False);
-   Internal_Set_Is_Ordered (356, AMF.False);
-   Internal_Set_Is_Query (356, AMF.True);
-   Internal_Set_Is_Unique (356, AMF.True);
+   Internal_Set_Is_Leaf (356, False);
+   Internal_Set_Is_Ordered (356, False);
+   Internal_Set_Is_Query (356, True);
+   Internal_Set_Is_Unique (356, True);
    Internal_Set_Lower (
 356, 1);   Internal_Set_Name
     (356,
@@ -1750,18 +1750,18 @@ begin
    Internal_Set_Default
     (360,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (360, AMF.False);
-   Internal_Set_Is_Unique (360, AMF.True);
+   Internal_Set_Is_Ordered (360, False);
+   Internal_Set_Is_Unique (360, True);
    Internal_Set_Lower (
 360, 0);   Internal_Set_Name
     (360,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (360, (Unlimited => True));
    Initialize_Operation (361, Extent);
-   Internal_Set_Is_Leaf (361, AMF.False);
-   Internal_Set_Is_Ordered (361, AMF.False);
-   Internal_Set_Is_Query (361, AMF.True);
-   Internal_Set_Is_Unique (361, AMF.True);
+   Internal_Set_Is_Leaf (361, False);
+   Internal_Set_Is_Ordered (361, False);
+   Internal_Set_Is_Query (361, True);
+   Internal_Set_Is_Unique (361, True);
    Internal_Set_Lower (
 361, 1);   Internal_Set_Name
     (361,
@@ -1783,8 +1783,8 @@ begin
    Internal_Set_Default
     (365,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (365, AMF.False);
-   Internal_Set_Is_Unique (365, AMF.True);
+   Internal_Set_Is_Ordered (365, False);
+   Internal_Set_Is_Unique (365, True);
    Internal_Set_Lower (
 365, 0);   Internal_Set_Name
     (365,
@@ -1794,18 +1794,18 @@ begin
    Internal_Set_Default
     (366,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (366, AMF.False);
-   Internal_Set_Is_Unique (366, AMF.True);
+   Internal_Set_Is_Ordered (366, False);
+   Internal_Set_Is_Unique (366, True);
    Internal_Set_Lower (
 366, 1);   Internal_Set_Name
     (366,
      League.Strings.To_Universal_String ("element"));
    Internal_Set_Upper (366, (False, 1));
    Initialize_Operation (367, Extent);
-   Internal_Set_Is_Leaf (367, AMF.False);
-   Internal_Set_Is_Ordered (367, AMF.False);
-   Internal_Set_Is_Query (367, AMF.True);
-   Internal_Set_Is_Unique (367, AMF.True);
+   Internal_Set_Is_Leaf (367, False);
+   Internal_Set_Is_Ordered (367, False);
+   Internal_Set_Is_Query (367, True);
+   Internal_Set_Is_Unique (367, True);
    Internal_Set_Lower (
 367, 1);   Internal_Set_Name
     (367,
@@ -1827,8 +1827,8 @@ begin
    Internal_Set_Default
     (371,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (371, AMF.False);
-   Internal_Set_Is_Unique (371, AMF.True);
+   Internal_Set_Is_Ordered (371, False);
+   Internal_Set_Is_Unique (371, True);
    Internal_Set_Lower (
 371, 0);   Internal_Set_Name
     (371,
@@ -1838,18 +1838,18 @@ begin
    Internal_Set_Default
     (372,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (372, AMF.False);
-   Internal_Set_Is_Unique (372, AMF.True);
+   Internal_Set_Is_Ordered (372, False);
+   Internal_Set_Is_Unique (372, True);
    Internal_Set_Lower (
 372, 0);   Internal_Set_Name
     (372,
      League.Strings.To_Universal_String ("imps"));
    Internal_Set_Upper (372, (Unlimited => True));
    Initialize_Operation (373, Extent);
-   Internal_Set_Is_Leaf (373, AMF.False);
-   Internal_Set_Is_Ordered (373, AMF.False);
-   Internal_Set_Is_Query (373, AMF.True);
-   Internal_Set_Is_Unique (373, AMF.True);
+   Internal_Set_Is_Leaf (373, False);
+   Internal_Set_Is_Ordered (373, False);
+   Internal_Set_Is_Query (373, True);
+   Internal_Set_Is_Unique (373, True);
    Internal_Set_Lower (
 373, 1);   Internal_Set_Name
     (373,
@@ -1871,8 +1871,8 @@ begin
    Internal_Set_Default
     (377,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (377, AMF.False);
-   Internal_Set_Is_Unique (377, AMF.True);
+   Internal_Set_Is_Ordered (377, False);
+   Internal_Set_Is_Unique (377, True);
    Internal_Set_Lower (
 377, 0);   Internal_Set_Name
     (377,
@@ -1882,18 +1882,18 @@ begin
    Internal_Set_Default
     (378,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (378, AMF.False);
-   Internal_Set_Is_Unique (378, AMF.True);
+   Internal_Set_Is_Ordered (378, False);
+   Internal_Set_Is_Unique (378, True);
    Internal_Set_Lower (
 378, 0);   Internal_Set_Name
     (378,
      League.Strings.To_Universal_String ("imps"));
    Internal_Set_Upper (378, (Unlimited => True));
    Initialize_Operation (379, Extent);
-   Internal_Set_Is_Leaf (379, AMF.False);
-   Internal_Set_Is_Ordered (379, AMF.False);
-   Internal_Set_Is_Query (379, AMF.True);
-   Internal_Set_Is_Unique (379, AMF.True);
+   Internal_Set_Is_Leaf (379, False);
+   Internal_Set_Is_Ordered (379, False);
+   Internal_Set_Is_Query (379, True);
+   Internal_Set_Is_Unique (379, True);
    Internal_Set_Lower (
 379, 1);   Internal_Set_Name
     (379,
@@ -1915,16 +1915,16 @@ begin
    Internal_Set_Default
     (383,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (383, AMF.False);
-   Internal_Set_Is_Unique (383, AMF.True);
+   Internal_Set_Is_Ordered (383, False);
+   Internal_Set_Is_Unique (383, True);
    Internal_Set_Lower (
 383, 1);   Internal_Set_Name
     (383,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (383, (False, 1));
    Initialize_Class (23, Extent);
-   Internal_Set_Is_Abstract (23, AMF.True);
-   Internal_Set_Is_Final_Specialization (23, AMF.False);
+   Internal_Set_Is_Abstract (23, True);
+   Internal_Set_Is_Final_Specialization (23, False);
    Internal_Set_Name
     (23,
      League.Strings.To_Universal_String ("PackageableElement"));
@@ -1933,8 +1933,8 @@ begin
     (384,
      League.Strings.To_Universal_String ("A packageable element indicates a named element that may be owned directly by a package."));
    Initialize_Class (27, Extent);
-   Internal_Set_Is_Abstract (27, AMF.True);
-   Internal_Set_Is_Final_Specialization (27, AMF.False);
+   Internal_Set_Is_Abstract (27, True);
+   Internal_Set_Is_Final_Specialization (27, False);
    Internal_Set_Name
     (27,
      League.Strings.To_Universal_String ("RedefinableElement"));
@@ -1982,13 +1982,13 @@ begin
    Internal_Set_Default
     (75,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (75, AMF.False);
-   Internal_Set_Is_Derived (75, AMF.True);
-   Internal_Set_Is_Derived_Union (75, AMF.True);
-   Internal_Set_Is_Leaf (75, AMF.False);
-   Internal_Set_Is_Ordered (75, AMF.False);
-   Internal_Set_Is_Read_Only (75, AMF.True);
-   Internal_Set_Is_Unique (75, AMF.True);
+   Internal_Set_Is_Composite (75, False);
+   Internal_Set_Is_Derived (75, True);
+   Internal_Set_Is_Derived_Union (75, True);
+   Internal_Set_Is_Leaf (75, False);
+   Internal_Set_Is_Ordered (75, False);
+   Internal_Set_Is_Read_Only (75, True);
+   Internal_Set_Is_Unique (75, True);
    Internal_Set_Lower (
 75, 0);   Internal_Set_Name
     (75,
@@ -2002,13 +2002,13 @@ begin
    Internal_Set_Default
     (74,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (74, AMF.False);
-   Internal_Set_Is_Derived (74, AMF.True);
-   Internal_Set_Is_Derived_Union (74, AMF.True);
-   Internal_Set_Is_Leaf (74, AMF.False);
-   Internal_Set_Is_Ordered (74, AMF.False);
-   Internal_Set_Is_Read_Only (74, AMF.True);
-   Internal_Set_Is_Unique (74, AMF.True);
+   Internal_Set_Is_Composite (74, False);
+   Internal_Set_Is_Derived (74, True);
+   Internal_Set_Is_Derived_Union (74, True);
+   Internal_Set_Is_Leaf (74, False);
+   Internal_Set_Is_Ordered (74, False);
+   Internal_Set_Is_Read_Only (74, True);
+   Internal_Set_Is_Unique (74, True);
    Internal_Set_Lower (
 74, 0);   Internal_Set_Name
     (74,
@@ -2022,13 +2022,13 @@ begin
    Internal_Set_Default
     (128,
      League.Strings.To_Universal_String ("false"));
-   Internal_Set_Is_Composite (128, AMF.False);
-   Internal_Set_Is_Derived (128, AMF.False);
-   Internal_Set_Is_Derived_Union (128, AMF.False);
-   Internal_Set_Is_Leaf (128, AMF.False);
-   Internal_Set_Is_Ordered (128, AMF.False);
-   Internal_Set_Is_Read_Only (128, AMF.False);
-   Internal_Set_Is_Unique (128, AMF.True);
+   Internal_Set_Is_Composite (128, False);
+   Internal_Set_Is_Derived (128, False);
+   Internal_Set_Is_Derived_Union (128, False);
+   Internal_Set_Is_Leaf (128, False);
+   Internal_Set_Is_Ordered (128, False);
+   Internal_Set_Is_Read_Only (128, False);
+   Internal_Set_Is_Unique (128, True);
    Internal_Set_Lower (
 128, 1);   Internal_Set_Name
     (128,
@@ -2039,10 +2039,10 @@ begin
     (397,
      League.Strings.To_Universal_String ("Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false."));
    Initialize_Operation (398, Extent);
-   Internal_Set_Is_Leaf (398, AMF.False);
-   Internal_Set_Is_Ordered (398, AMF.False);
-   Internal_Set_Is_Query (398, AMF.True);
-   Internal_Set_Is_Unique (398, AMF.True);
+   Internal_Set_Is_Leaf (398, False);
+   Internal_Set_Is_Ordered (398, False);
+   Internal_Set_Is_Query (398, True);
+   Internal_Set_Is_Unique (398, True);
    Internal_Set_Lower (
 398, 1);   Internal_Set_Name
     (398,
@@ -2072,8 +2072,8 @@ begin
    Internal_Set_Default
     (404,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (404, AMF.False);
-   Internal_Set_Is_Unique (404, AMF.True);
+   Internal_Set_Is_Ordered (404, False);
+   Internal_Set_Is_Unique (404, True);
    Internal_Set_Lower (
 404, 1);   Internal_Set_Name
     (404,
@@ -2083,18 +2083,18 @@ begin
    Internal_Set_Default
     (405,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (405, AMF.False);
-   Internal_Set_Is_Unique (405, AMF.True);
+   Internal_Set_Is_Ordered (405, False);
+   Internal_Set_Is_Unique (405, True);
    Internal_Set_Lower (
 405, 1);   Internal_Set_Name
     (405,
      League.Strings.To_Universal_String ("redefinee"));
    Internal_Set_Upper (405, (False, 1));
    Initialize_Operation (406, Extent);
-   Internal_Set_Is_Leaf (406, AMF.False);
-   Internal_Set_Is_Ordered (406, AMF.False);
-   Internal_Set_Is_Query (406, AMF.True);
-   Internal_Set_Is_Unique (406, AMF.True);
+   Internal_Set_Is_Leaf (406, False);
+   Internal_Set_Is_Ordered (406, False);
+   Internal_Set_Is_Query (406, True);
+   Internal_Set_Is_Unique (406, True);
    Internal_Set_Lower (
 406, 1);   Internal_Set_Name
     (406,
@@ -2116,8 +2116,8 @@ begin
    Internal_Set_Default
     (410,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (410, AMF.False);
-   Internal_Set_Is_Unique (410, AMF.True);
+   Internal_Set_Is_Ordered (410, False);
+   Internal_Set_Is_Unique (410, True);
    Internal_Set_Lower (
 410, 1);   Internal_Set_Name
     (410,
@@ -2127,16 +2127,16 @@ begin
    Internal_Set_Default
     (411,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (411, AMF.False);
-   Internal_Set_Is_Unique (411, AMF.True);
+   Internal_Set_Is_Ordered (411, False);
+   Internal_Set_Is_Unique (411, True);
    Internal_Set_Lower (
 411, 1);   Internal_Set_Name
     (411,
      League.Strings.To_Universal_String ("redefined"));
    Internal_Set_Upper (411, (False, 1));
    Initialize_Class (28, Extent);
-   Internal_Set_Is_Abstract (28, AMF.True);
-   Internal_Set_Is_Final_Specialization (28, AMF.False);
+   Internal_Set_Is_Abstract (28, True);
+   Internal_Set_Is_Final_Specialization (28, False);
    Internal_Set_Name
     (28,
      League.Strings.To_Universal_String ("Relationship"));
@@ -2148,13 +2148,13 @@ begin
    Internal_Set_Default
     (76,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (76, AMF.False);
-   Internal_Set_Is_Derived (76, AMF.True);
-   Internal_Set_Is_Derived_Union (76, AMF.True);
-   Internal_Set_Is_Leaf (76, AMF.False);
-   Internal_Set_Is_Ordered (76, AMF.False);
-   Internal_Set_Is_Read_Only (76, AMF.True);
-   Internal_Set_Is_Unique (76, AMF.True);
+   Internal_Set_Is_Composite (76, False);
+   Internal_Set_Is_Derived (76, True);
+   Internal_Set_Is_Derived_Union (76, True);
+   Internal_Set_Is_Leaf (76, False);
+   Internal_Set_Is_Ordered (76, False);
+   Internal_Set_Is_Read_Only (76, True);
+   Internal_Set_Is_Unique (76, True);
    Internal_Set_Lower (
 76, 1);   Internal_Set_Name
     (76,
@@ -2165,8 +2165,8 @@ begin
     (413,
      League.Strings.To_Universal_String ("Specifies the elements related by the Relationship."));
    Initialize_Class (29, Extent);
-   Internal_Set_Is_Abstract (29, AMF.True);
-   Internal_Set_Is_Final_Specialization (29, AMF.False);
+   Internal_Set_Is_Abstract (29, True);
+   Internal_Set_Is_Final_Specialization (29, False);
    Internal_Set_Name
     (29,
      League.Strings.To_Universal_String ("StructuralFeature"));
@@ -2175,8 +2175,8 @@ begin
     (414,
      League.Strings.To_Universal_String ("A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier."));
    Initialize_Class (31, Extent);
-   Internal_Set_Is_Abstract (31, AMF.True);
-   Internal_Set_Is_Final_Specialization (31, AMF.False);
+   Internal_Set_Is_Abstract (31, True);
+   Internal_Set_Is_Final_Specialization (31, False);
    Internal_Set_Name
     (31,
      League.Strings.To_Universal_String ("TypedElement"));
@@ -2188,13 +2188,13 @@ begin
    Internal_Set_Default
     (130,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (130, AMF.False);
-   Internal_Set_Is_Derived (130, AMF.False);
-   Internal_Set_Is_Derived_Union (130, AMF.False);
-   Internal_Set_Is_Leaf (130, AMF.False);
-   Internal_Set_Is_Ordered (130, AMF.False);
-   Internal_Set_Is_Read_Only (130, AMF.False);
-   Internal_Set_Is_Unique (130, AMF.True);
+   Internal_Set_Is_Composite (130, False);
+   Internal_Set_Is_Derived (130, False);
+   Internal_Set_Is_Derived_Union (130, False);
+   Internal_Set_Is_Leaf (130, False);
+   Internal_Set_Is_Ordered (130, False);
+   Internal_Set_Is_Read_Only (130, False);
+   Internal_Set_Is_Unique (130, True);
    Internal_Set_Lower (
 130, 0);   Internal_Set_Name
     (130,
@@ -2205,8 +2205,8 @@ begin
     (416,
      League.Strings.To_Universal_String ("This information is derived from the return result for this Operation."));
    Initialize_Class (32, Extent);
-   Internal_Set_Is_Abstract (32, AMF.True);
-   Internal_Set_Is_Final_Specialization (32, AMF.False);
+   Internal_Set_Is_Abstract (32, True);
+   Internal_Set_Is_Final_Specialization (32, False);
    Internal_Set_Name
     (32,
      League.Strings.To_Universal_String ("ValueSpecification"));
@@ -2215,10 +2215,10 @@ begin
     (417,
      League.Strings.To_Universal_String ("A value specification is the specification of a (possibly empty) set of instances, including both objects and data values."));
    Initialize_Operation (418, Extent);
-   Internal_Set_Is_Leaf (418, AMF.False);
-   Internal_Set_Is_Ordered (418, AMF.False);
-   Internal_Set_Is_Query (418, AMF.True);
-   Internal_Set_Is_Unique (418, AMF.True);
+   Internal_Set_Is_Leaf (418, False);
+   Internal_Set_Is_Ordered (418, False);
+   Internal_Set_Is_Query (418, True);
+   Internal_Set_Is_Unique (418, True);
    Internal_Set_Lower (
 418, 1);   Internal_Set_Name
     (418,
@@ -2240,18 +2240,18 @@ begin
    Internal_Set_Default
     (422,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (422, AMF.False);
-   Internal_Set_Is_Unique (422, AMF.True);
+   Internal_Set_Is_Ordered (422, False);
+   Internal_Set_Is_Unique (422, True);
    Internal_Set_Lower (
 422, 1);   Internal_Set_Name
     (422,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (422, (False, 1));
    Initialize_Operation (423, Extent);
-   Internal_Set_Is_Leaf (423, AMF.False);
-   Internal_Set_Is_Ordered (423, AMF.False);
-   Internal_Set_Is_Query (423, AMF.True);
-   Internal_Set_Is_Unique (423, AMF.True);
+   Internal_Set_Is_Leaf (423, False);
+   Internal_Set_Is_Ordered (423, False);
+   Internal_Set_Is_Query (423, True);
+   Internal_Set_Is_Unique (423, True);
    Internal_Set_Lower (
 423, 1);   Internal_Set_Name
     (423,
@@ -2273,18 +2273,18 @@ begin
    Internal_Set_Default
     (427,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (427, AMF.False);
-   Internal_Set_Is_Unique (427, AMF.True);
+   Internal_Set_Is_Ordered (427, False);
+   Internal_Set_Is_Unique (427, True);
    Internal_Set_Lower (
 427, 1);   Internal_Set_Name
     (427,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (427, (False, 1));
    Initialize_Operation (428, Extent);
-   Internal_Set_Is_Leaf (428, AMF.False);
-   Internal_Set_Is_Ordered (428, AMF.False);
-   Internal_Set_Is_Query (428, AMF.True);
-   Internal_Set_Is_Unique (428, AMF.True);
+   Internal_Set_Is_Leaf (428, False);
+   Internal_Set_Is_Ordered (428, False);
+   Internal_Set_Is_Query (428, True);
+   Internal_Set_Is_Unique (428, True);
    Internal_Set_Lower (
 428, 1);   Internal_Set_Name
     (428,
@@ -2306,18 +2306,18 @@ begin
    Internal_Set_Default
     (432,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (432, AMF.False);
-   Internal_Set_Is_Unique (432, AMF.True);
+   Internal_Set_Is_Ordered (432, False);
+   Internal_Set_Is_Unique (432, True);
    Internal_Set_Lower (
 432, 1);   Internal_Set_Name
     (432,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (432, (False, 1));
    Initialize_Operation (433, Extent);
-   Internal_Set_Is_Leaf (433, AMF.False);
-   Internal_Set_Is_Ordered (433, AMF.False);
-   Internal_Set_Is_Query (433, AMF.True);
-   Internal_Set_Is_Unique (433, AMF.True);
+   Internal_Set_Is_Leaf (433, False);
+   Internal_Set_Is_Ordered (433, False);
+   Internal_Set_Is_Query (433, True);
+   Internal_Set_Is_Unique (433, True);
    Internal_Set_Lower (
 433, 1);   Internal_Set_Name
     (433,
@@ -2339,18 +2339,18 @@ begin
    Internal_Set_Default
     (437,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (437, AMF.False);
-   Internal_Set_Is_Unique (437, AMF.True);
+   Internal_Set_Is_Ordered (437, False);
+   Internal_Set_Is_Unique (437, True);
    Internal_Set_Lower (
 437, 1);   Internal_Set_Name
     (437,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (437, (False, 1));
    Initialize_Operation (438, Extent);
-   Internal_Set_Is_Leaf (438, AMF.False);
-   Internal_Set_Is_Ordered (438, AMF.False);
-   Internal_Set_Is_Query (438, AMF.True);
-   Internal_Set_Is_Unique (438, AMF.True);
+   Internal_Set_Is_Leaf (438, False);
+   Internal_Set_Is_Ordered (438, False);
+   Internal_Set_Is_Query (438, True);
+   Internal_Set_Is_Unique (438, True);
    Internal_Set_Lower (
 438, 1);   Internal_Set_Name
     (438,
@@ -2372,18 +2372,18 @@ begin
    Internal_Set_Default
     (442,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (442, AMF.False);
-   Internal_Set_Is_Unique (442, AMF.True);
+   Internal_Set_Is_Ordered (442, False);
+   Internal_Set_Is_Unique (442, True);
    Internal_Set_Lower (
 442, 1);   Internal_Set_Name
     (442,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (442, (False, 1));
    Initialize_Operation (443, Extent);
-   Internal_Set_Is_Leaf (443, AMF.False);
-   Internal_Set_Is_Ordered (443, AMF.False);
-   Internal_Set_Is_Query (443, AMF.True);
-   Internal_Set_Is_Unique (443, AMF.True);
+   Internal_Set_Is_Leaf (443, False);
+   Internal_Set_Is_Ordered (443, False);
+   Internal_Set_Is_Query (443, True);
+   Internal_Set_Is_Unique (443, True);
    Internal_Set_Lower (
 443, 1);   Internal_Set_Name
     (443,
@@ -2405,16 +2405,16 @@ begin
    Internal_Set_Default
     (447,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (447, AMF.False);
-   Internal_Set_Is_Unique (447, AMF.True);
+   Internal_Set_Is_Ordered (447, False);
+   Internal_Set_Is_Unique (447, True);
    Internal_Set_Lower (
 447, 1);   Internal_Set_Name
     (447,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (447, (False, 1));
    Initialize_Class (1, Extent);
-   Internal_Set_Is_Abstract (1, AMF.False);
-   Internal_Set_Is_Final_Specialization (1, AMF.False);
+   Internal_Set_Is_Abstract (1, False);
+   Internal_Set_Is_Final_Specialization (1, False);
    Internal_Set_Name
     (1,
      League.Strings.To_Universal_String ("Association"));
@@ -2474,13 +2474,13 @@ begin
    Internal_Set_Default
     (77,
      League.Strings.To_Universal_String ("false"));
-   Internal_Set_Is_Composite (77, AMF.False);
-   Internal_Set_Is_Derived (77, AMF.False);
-   Internal_Set_Is_Derived_Union (77, AMF.False);
-   Internal_Set_Is_Leaf (77, AMF.False);
-   Internal_Set_Is_Ordered (77, AMF.False);
-   Internal_Set_Is_Read_Only (77, AMF.False);
-   Internal_Set_Is_Unique (77, AMF.True);
+   Internal_Set_Is_Composite (77, False);
+   Internal_Set_Is_Derived (77, False);
+   Internal_Set_Is_Derived_Union (77, False);
+   Internal_Set_Is_Leaf (77, False);
+   Internal_Set_Is_Ordered (77, False);
+   Internal_Set_Is_Read_Only (77, False);
+   Internal_Set_Is_Unique (77, True);
    Internal_Set_Lower (
 77, 1);   Internal_Set_Name
     (77,
@@ -2494,13 +2494,13 @@ begin
    Internal_Set_Default
     (36,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (36, AMF.True);
-   Internal_Set_Is_Derived (36, AMF.False);
-   Internal_Set_Is_Derived_Union (36, AMF.False);
-   Internal_Set_Is_Leaf (36, AMF.False);
-   Internal_Set_Is_Ordered (36, AMF.True);
-   Internal_Set_Is_Read_Only (36, AMF.False);
-   Internal_Set_Is_Unique (36, AMF.True);
+   Internal_Set_Is_Composite (36, True);
+   Internal_Set_Is_Derived (36, False);
+   Internal_Set_Is_Derived_Union (36, False);
+   Internal_Set_Is_Leaf (36, False);
+   Internal_Set_Is_Ordered (36, True);
+   Internal_Set_Is_Read_Only (36, False);
+   Internal_Set_Is_Unique (36, True);
    Internal_Set_Lower (
 36, 0);   Internal_Set_Name
     (36,
@@ -2514,13 +2514,13 @@ begin
    Internal_Set_Default
     (33,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (33, AMF.False);
-   Internal_Set_Is_Derived (33, AMF.True);
-   Internal_Set_Is_Derived_Union (33, AMF.False);
-   Internal_Set_Is_Leaf (33, AMF.False);
-   Internal_Set_Is_Ordered (33, AMF.False);
-   Internal_Set_Is_Read_Only (33, AMF.True);
-   Internal_Set_Is_Unique (33, AMF.True);
+   Internal_Set_Is_Composite (33, False);
+   Internal_Set_Is_Derived (33, True);
+   Internal_Set_Is_Derived_Union (33, False);
+   Internal_Set_Is_Leaf (33, False);
+   Internal_Set_Is_Ordered (33, False);
+   Internal_Set_Is_Read_Only (33, True);
+   Internal_Set_Is_Unique (33, True);
    Internal_Set_Lower (
 33, 1);   Internal_Set_Name
     (33,
@@ -2534,13 +2534,13 @@ begin
    Internal_Set_Default
     (34,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (34, AMF.False);
-   Internal_Set_Is_Derived (34, AMF.False);
-   Internal_Set_Is_Derived_Union (34, AMF.False);
-   Internal_Set_Is_Leaf (34, AMF.False);
-   Internal_Set_Is_Ordered (34, AMF.True);
-   Internal_Set_Is_Read_Only (34, AMF.False);
-   Internal_Set_Is_Unique (34, AMF.True);
+   Internal_Set_Is_Composite (34, False);
+   Internal_Set_Is_Derived (34, False);
+   Internal_Set_Is_Derived_Union (34, False);
+   Internal_Set_Is_Leaf (34, False);
+   Internal_Set_Is_Ordered (34, True);
+   Internal_Set_Is_Read_Only (34, False);
+   Internal_Set_Is_Unique (34, True);
    Internal_Set_Lower (
 34, 2);   Internal_Set_Name
     (34,
@@ -2554,13 +2554,13 @@ begin
    Internal_Set_Default
     (35,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (35, AMF.False);
-   Internal_Set_Is_Derived (35, AMF.False);
-   Internal_Set_Is_Derived_Union (35, AMF.False);
-   Internal_Set_Is_Leaf (35, AMF.False);
-   Internal_Set_Is_Ordered (35, AMF.False);
-   Internal_Set_Is_Read_Only (35, AMF.False);
-   Internal_Set_Is_Unique (35, AMF.True);
+   Internal_Set_Is_Composite (35, False);
+   Internal_Set_Is_Derived (35, False);
+   Internal_Set_Is_Derived_Union (35, False);
+   Internal_Set_Is_Leaf (35, False);
+   Internal_Set_Is_Ordered (35, False);
+   Internal_Set_Is_Read_Only (35, False);
+   Internal_Set_Is_Unique (35, True);
    Internal_Set_Lower (
 35, 0);   Internal_Set_Name
     (35,
@@ -2571,10 +2571,10 @@ begin
     (465,
      League.Strings.To_Universal_String ("The navigable ends that are owned by the association itself."));
    Initialize_Operation (466, Extent);
-   Internal_Set_Is_Leaf (466, AMF.False);
-   Internal_Set_Is_Ordered (466, AMF.False);
-   Internal_Set_Is_Query (466, AMF.True);
-   Internal_Set_Is_Unique (466, AMF.True);
+   Internal_Set_Is_Leaf (466, False);
+   Internal_Set_Is_Ordered (466, False);
+   Internal_Set_Is_Query (466, True);
+   Internal_Set_Is_Unique (466, True);
    Internal_Set_Lower (
 466, 1);   Internal_Set_Name
     (466,
@@ -2596,16 +2596,16 @@ begin
    Internal_Set_Default
     (470,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (470, AMF.True);
-   Internal_Set_Is_Unique (470, AMF.True);
+   Internal_Set_Is_Ordered (470, True);
+   Internal_Set_Is_Unique (470, True);
    Internal_Set_Lower (
 470, 0);   Internal_Set_Name
     (470,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (470, (Unlimited => True));
    Initialize_Class (3, Extent);
-   Internal_Set_Is_Abstract (3, AMF.False);
-   Internal_Set_Is_Final_Specialization (3, AMF.False);
+   Internal_Set_Is_Abstract (3, False);
+   Internal_Set_Is_Final_Specialization (3, False);
    Internal_Set_Name
     (3,
      League.Strings.To_Universal_String ("Class"));
@@ -2617,13 +2617,13 @@ begin
    Internal_Set_Default
     (78,
      League.Strings.To_Universal_String ("false"));
-   Internal_Set_Is_Composite (78, AMF.False);
-   Internal_Set_Is_Derived (78, AMF.False);
-   Internal_Set_Is_Derived_Union (78, AMF.False);
-   Internal_Set_Is_Leaf (78, AMF.False);
-   Internal_Set_Is_Ordered (78, AMF.False);
-   Internal_Set_Is_Read_Only (78, AMF.False);
-   Internal_Set_Is_Unique (78, AMF.True);
+   Internal_Set_Is_Composite (78, False);
+   Internal_Set_Is_Derived (78, False);
+   Internal_Set_Is_Derived_Union (78, False);
+   Internal_Set_Is_Leaf (78, False);
+   Internal_Set_Is_Ordered (78, False);
+   Internal_Set_Is_Read_Only (78, False);
+   Internal_Set_Is_Unique (78, True);
    Internal_Set_Lower (
 78, 1);   Internal_Set_Name
     (78,
@@ -2637,13 +2637,13 @@ begin
    Internal_Set_Default
     (39,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (39, AMF.True);
-   Internal_Set_Is_Derived (39, AMF.False);
-   Internal_Set_Is_Derived_Union (39, AMF.False);
-   Internal_Set_Is_Leaf (39, AMF.False);
-   Internal_Set_Is_Ordered (39, AMF.True);
-   Internal_Set_Is_Read_Only (39, AMF.False);
-   Internal_Set_Is_Unique (39, AMF.True);
+   Internal_Set_Is_Composite (39, True);
+   Internal_Set_Is_Derived (39, False);
+   Internal_Set_Is_Derived_Union (39, False);
+   Internal_Set_Is_Leaf (39, False);
+   Internal_Set_Is_Ordered (39, True);
+   Internal_Set_Is_Read_Only (39, False);
+   Internal_Set_Is_Unique (39, True);
    Internal_Set_Lower (
 39, 0);   Internal_Set_Name
     (39,
@@ -2657,13 +2657,13 @@ begin
    Internal_Set_Default
     (40,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (40, AMF.True);
-   Internal_Set_Is_Derived (40, AMF.False);
-   Internal_Set_Is_Derived_Union (40, AMF.False);
-   Internal_Set_Is_Leaf (40, AMF.False);
-   Internal_Set_Is_Ordered (40, AMF.True);
-   Internal_Set_Is_Read_Only (40, AMF.False);
-   Internal_Set_Is_Unique (40, AMF.True);
+   Internal_Set_Is_Composite (40, True);
+   Internal_Set_Is_Derived (40, False);
+   Internal_Set_Is_Derived_Union (40, False);
+   Internal_Set_Is_Leaf (40, False);
+   Internal_Set_Is_Ordered (40, True);
+   Internal_Set_Is_Read_Only (40, False);
+   Internal_Set_Is_Unique (40, True);
    Internal_Set_Lower (
 40, 0);   Internal_Set_Name
     (40,
@@ -2677,13 +2677,13 @@ begin
    Internal_Set_Default
     (41,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (41, AMF.False);
-   Internal_Set_Is_Derived (41, AMF.False);
-   Internal_Set_Is_Derived_Union (41, AMF.False);
-   Internal_Set_Is_Leaf (41, AMF.False);
-   Internal_Set_Is_Ordered (41, AMF.False);
-   Internal_Set_Is_Read_Only (41, AMF.False);
-   Internal_Set_Is_Unique (41, AMF.True);
+   Internal_Set_Is_Composite (41, False);
+   Internal_Set_Is_Derived (41, False);
+   Internal_Set_Is_Derived_Union (41, False);
+   Internal_Set_Is_Leaf (41, False);
+   Internal_Set_Is_Ordered (41, False);
+   Internal_Set_Is_Read_Only (41, False);
+   Internal_Set_Is_Unique (41, True);
    Internal_Set_Lower (
 41, 0);   Internal_Set_Name
     (41,
@@ -2694,10 +2694,10 @@ begin
     (475,
      League.Strings.To_Universal_String ("This gives the superclasses of a class."));
    Initialize_Operation (476, Extent);
-   Internal_Set_Is_Leaf (476, AMF.False);
-   Internal_Set_Is_Ordered (476, AMF.False);
-   Internal_Set_Is_Query (476, AMF.True);
-   Internal_Set_Is_Unique (476, AMF.True);
+   Internal_Set_Is_Leaf (476, False);
+   Internal_Set_Is_Ordered (476, False);
+   Internal_Set_Is_Query (476, True);
+   Internal_Set_Is_Unique (476, True);
    Internal_Set_Lower (
 476, 1);   Internal_Set_Name
     (476,
@@ -2719,8 +2719,8 @@ begin
    Internal_Set_Default
     (480,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (480, AMF.False);
-   Internal_Set_Is_Unique (480, AMF.True);
+   Internal_Set_Is_Ordered (480, False);
+   Internal_Set_Is_Unique (480, True);
    Internal_Set_Lower (
 480, 0);   Internal_Set_Name
     (480,
@@ -2730,16 +2730,16 @@ begin
    Internal_Set_Default
     (481,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (481, AMF.False);
-   Internal_Set_Is_Unique (481, AMF.True);
+   Internal_Set_Is_Ordered (481, False);
+   Internal_Set_Is_Unique (481, True);
    Internal_Set_Lower (
 481, 0);   Internal_Set_Name
     (481,
      League.Strings.To_Universal_String ("inhs"));
    Internal_Set_Upper (481, (Unlimited => True));
    Initialize_Class (26, Extent);
-   Internal_Set_Is_Abstract (26, AMF.False);
-   Internal_Set_Is_Final_Specialization (26, AMF.False);
+   Internal_Set_Is_Abstract (26, False);
+   Internal_Set_Is_Final_Specialization (26, False);
    Internal_Set_Name
     (26,
      League.Strings.To_Universal_String ("Property"));
@@ -2835,13 +2835,13 @@ begin
    Internal_Set_Default
     (125,
      League.Strings.To_Universal_String ("false"));
-   Internal_Set_Is_Composite (125, AMF.False);
-   Internal_Set_Is_Derived (125, AMF.False);
-   Internal_Set_Is_Derived_Union (125, AMF.False);
-   Internal_Set_Is_Leaf (125, AMF.False);
-   Internal_Set_Is_Ordered (125, AMF.False);
-   Internal_Set_Is_Read_Only (125, AMF.False);
-   Internal_Set_Is_Unique (125, AMF.True);
+   Internal_Set_Is_Composite (125, False);
+   Internal_Set_Is_Derived (125, False);
+   Internal_Set_Is_Derived_Union (125, False);
+   Internal_Set_Is_Leaf (125, False);
+   Internal_Set_Is_Ordered (125, False);
+   Internal_Set_Is_Read_Only (125, False);
+   Internal_Set_Is_Unique (125, True);
    Internal_Set_Lower (
 125, 1);   Internal_Set_Name
     (125,
@@ -2855,13 +2855,13 @@ begin
    Internal_Set_Default
     (121,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (121, AMF.False);
-   Internal_Set_Is_Derived (121, AMF.False);
-   Internal_Set_Is_Derived_Union (121, AMF.False);
-   Internal_Set_Is_Leaf (121, AMF.False);
-   Internal_Set_Is_Ordered (121, AMF.False);
-   Internal_Set_Is_Read_Only (121, AMF.False);
-   Internal_Set_Is_Unique (121, AMF.True);
+   Internal_Set_Is_Composite (121, False);
+   Internal_Set_Is_Derived (121, False);
+   Internal_Set_Is_Derived_Union (121, False);
+   Internal_Set_Is_Leaf (121, False);
+   Internal_Set_Is_Ordered (121, False);
+   Internal_Set_Is_Read_Only (121, False);
+   Internal_Set_Is_Unique (121, True);
    Internal_Set_Lower (
 121, 0);   Internal_Set_Name
     (121,
@@ -2875,13 +2875,13 @@ begin
    Internal_Set_Default
     (122,
      League.Strings.To_Universal_String ("false"));
-   Internal_Set_Is_Composite (122, AMF.False);
-   Internal_Set_Is_Derived (122, AMF.False);
-   Internal_Set_Is_Derived_Union (122, AMF.False);
-   Internal_Set_Is_Leaf (122, AMF.False);
-   Internal_Set_Is_Ordered (122, AMF.False);
-   Internal_Set_Is_Read_Only (122, AMF.False);
-   Internal_Set_Is_Unique (122, AMF.True);
+   Internal_Set_Is_Composite (122, False);
+   Internal_Set_Is_Derived (122, False);
+   Internal_Set_Is_Derived_Union (122, False);
+   Internal_Set_Is_Leaf (122, False);
+   Internal_Set_Is_Ordered (122, False);
+   Internal_Set_Is_Read_Only (122, False);
+   Internal_Set_Is_Unique (122, True);
    Internal_Set_Lower (
 122, 1);   Internal_Set_Name
     (122,
@@ -2895,13 +2895,13 @@ begin
    Internal_Set_Default
     (123,
      League.Strings.To_Universal_String ("false"));
-   Internal_Set_Is_Composite (123, AMF.False);
-   Internal_Set_Is_Derived (123, AMF.False);
-   Internal_Set_Is_Derived_Union (123, AMF.False);
-   Internal_Set_Is_Leaf (123, AMF.False);
-   Internal_Set_Is_Ordered (123, AMF.False);
-   Internal_Set_Is_Read_Only (123, AMF.False);
-   Internal_Set_Is_Unique (123, AMF.True);
+   Internal_Set_Is_Composite (123, False);
+   Internal_Set_Is_Derived (123, False);
+   Internal_Set_Is_Derived_Union (123, False);
+   Internal_Set_Is_Leaf (123, False);
+   Internal_Set_Is_Ordered (123, False);
+   Internal_Set_Is_Read_Only (123, False);
+   Internal_Set_Is_Unique (123, True);
    Internal_Set_Lower (
 123, 1);   Internal_Set_Name
     (123,
@@ -2915,13 +2915,13 @@ begin
    Internal_Set_Default
     (124,
      League.Strings.To_Universal_String ("false"));
-   Internal_Set_Is_Composite (124, AMF.False);
-   Internal_Set_Is_Derived (124, AMF.False);
-   Internal_Set_Is_Derived_Union (124, AMF.False);
-   Internal_Set_Is_Leaf (124, AMF.False);
-   Internal_Set_Is_Ordered (124, AMF.False);
-   Internal_Set_Is_Read_Only (124, AMF.False);
-   Internal_Set_Is_Unique (124, AMF.True);
+   Internal_Set_Is_Composite (124, False);
+   Internal_Set_Is_Derived (124, False);
+   Internal_Set_Is_Derived_Union (124, False);
+   Internal_Set_Is_Leaf (124, False);
+   Internal_Set_Is_Ordered (124, False);
+   Internal_Set_Is_Read_Only (124, False);
+   Internal_Set_Is_Unique (124, True);
    Internal_Set_Lower (
 124, 1);   Internal_Set_Name
     (124,
@@ -2935,13 +2935,13 @@ begin
    Internal_Set_Default
     (119,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (119, AMF.False);
-   Internal_Set_Is_Derived (119, AMF.False);
-   Internal_Set_Is_Derived_Union (119, AMF.False);
-   Internal_Set_Is_Leaf (119, AMF.False);
-   Internal_Set_Is_Ordered (119, AMF.False);
-   Internal_Set_Is_Read_Only (119, AMF.False);
-   Internal_Set_Is_Unique (119, AMF.True);
+   Internal_Set_Is_Composite (119, False);
+   Internal_Set_Is_Derived (119, False);
+   Internal_Set_Is_Derived_Union (119, False);
+   Internal_Set_Is_Leaf (119, False);
+   Internal_Set_Is_Ordered (119, False);
+   Internal_Set_Is_Read_Only (119, False);
+   Internal_Set_Is_Unique (119, True);
    Internal_Set_Lower (
 119, 0);   Internal_Set_Name
     (119,
@@ -2955,13 +2955,13 @@ begin
    Internal_Set_Default
     (127,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (127, AMF.False);
-   Internal_Set_Is_Derived (127, AMF.False);
-   Internal_Set_Is_Derived_Union (127, AMF.False);
-   Internal_Set_Is_Leaf (127, AMF.False);
-   Internal_Set_Is_Ordered (127, AMF.False);
-   Internal_Set_Is_Read_Only (127, AMF.False);
-   Internal_Set_Is_Unique (127, AMF.True);
+   Internal_Set_Is_Composite (127, False);
+   Internal_Set_Is_Derived (127, False);
+   Internal_Set_Is_Derived_Union (127, False);
+   Internal_Set_Is_Leaf (127, False);
+   Internal_Set_Is_Ordered (127, False);
+   Internal_Set_Is_Read_Only (127, False);
+   Internal_Set_Is_Unique (127, True);
    Internal_Set_Lower (
 127, 0);   Internal_Set_Name
     (127,
@@ -2975,13 +2975,13 @@ begin
    Internal_Set_Default
     (72,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (72, AMF.False);
-   Internal_Set_Is_Derived (72, AMF.False);
-   Internal_Set_Is_Derived_Union (72, AMF.False);
-   Internal_Set_Is_Leaf (72, AMF.False);
-   Internal_Set_Is_Ordered (72, AMF.False);
-   Internal_Set_Is_Read_Only (72, AMF.False);
-   Internal_Set_Is_Unique (72, AMF.True);
+   Internal_Set_Is_Composite (72, False);
+   Internal_Set_Is_Derived (72, False);
+   Internal_Set_Is_Derived_Union (72, False);
+   Internal_Set_Is_Leaf (72, False);
+   Internal_Set_Is_Ordered (72, False);
+   Internal_Set_Is_Read_Only (72, False);
+   Internal_Set_Is_Unique (72, True);
    Internal_Set_Lower (
 72, 0);   Internal_Set_Name
     (72,
@@ -2995,13 +2995,13 @@ begin
    Internal_Set_Default
     (73,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (73, AMF.False);
-   Internal_Set_Is_Derived (73, AMF.False);
-   Internal_Set_Is_Derived_Union (73, AMF.False);
-   Internal_Set_Is_Leaf (73, AMF.False);
-   Internal_Set_Is_Ordered (73, AMF.False);
-   Internal_Set_Is_Read_Only (73, AMF.False);
-   Internal_Set_Is_Unique (73, AMF.True);
+   Internal_Set_Is_Composite (73, False);
+   Internal_Set_Is_Derived (73, False);
+   Internal_Set_Is_Derived_Union (73, False);
+   Internal_Set_Is_Leaf (73, False);
+   Internal_Set_Is_Ordered (73, False);
+   Internal_Set_Is_Read_Only (73, False);
+   Internal_Set_Is_Unique (73, True);
    Internal_Set_Lower (
 73, 0);   Internal_Set_Name
     (73,
@@ -3015,13 +3015,13 @@ begin
    Internal_Set_Default
     (126,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (126, AMF.False);
-   Internal_Set_Is_Derived (126, AMF.True);
-   Internal_Set_Is_Derived_Union (126, AMF.False);
-   Internal_Set_Is_Leaf (126, AMF.False);
-   Internal_Set_Is_Ordered (126, AMF.False);
-   Internal_Set_Is_Read_Only (126, AMF.False);
-   Internal_Set_Is_Unique (126, AMF.True);
+   Internal_Set_Is_Composite (126, False);
+   Internal_Set_Is_Derived (126, True);
+   Internal_Set_Is_Derived_Union (126, False);
+   Internal_Set_Is_Leaf (126, False);
+   Internal_Set_Is_Ordered (126, False);
+   Internal_Set_Is_Read_Only (126, False);
+   Internal_Set_Is_Unique (126, True);
    Internal_Set_Lower (
 126, 0);   Internal_Set_Name
     (126,
@@ -3035,13 +3035,13 @@ begin
    Internal_Set_Default
     (120,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (120, AMF.False);
-   Internal_Set_Is_Derived (120, AMF.False);
-   Internal_Set_Is_Derived_Union (120, AMF.False);
-   Internal_Set_Is_Leaf (120, AMF.False);
-   Internal_Set_Is_Ordered (120, AMF.False);
-   Internal_Set_Is_Read_Only (120, AMF.False);
-   Internal_Set_Is_Unique (120, AMF.True);
+   Internal_Set_Is_Composite (120, False);
+   Internal_Set_Is_Derived (120, False);
+   Internal_Set_Is_Derived_Union (120, False);
+   Internal_Set_Is_Leaf (120, False);
+   Internal_Set_Is_Ordered (120, False);
+   Internal_Set_Is_Read_Only (120, False);
+   Internal_Set_Is_Unique (120, True);
    Internal_Set_Lower (
 120, 0);   Internal_Set_Name
     (120,
@@ -3055,13 +3055,13 @@ begin
    Internal_Set_Default
     (118,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (118, AMF.False);
-   Internal_Set_Is_Derived (118, AMF.False);
-   Internal_Set_Is_Derived_Union (118, AMF.False);
-   Internal_Set_Is_Leaf (118, AMF.False);
-   Internal_Set_Is_Ordered (118, AMF.False);
-   Internal_Set_Is_Read_Only (118, AMF.False);
-   Internal_Set_Is_Unique (118, AMF.True);
+   Internal_Set_Is_Composite (118, False);
+   Internal_Set_Is_Derived (118, False);
+   Internal_Set_Is_Derived_Union (118, False);
+   Internal_Set_Is_Leaf (118, False);
+   Internal_Set_Is_Ordered (118, False);
+   Internal_Set_Is_Read_Only (118, False);
+   Internal_Set_Is_Unique (118, True);
    Internal_Set_Lower (
 118, 0);   Internal_Set_Name
     (118,
@@ -3072,10 +3072,10 @@ begin
     (515,
      League.Strings.To_Universal_String ("References the association of which this property is a member, if any."));
    Initialize_Operation (516, Extent);
-   Internal_Set_Is_Leaf (516, AMF.False);
-   Internal_Set_Is_Ordered (516, AMF.False);
-   Internal_Set_Is_Query (516, AMF.True);
-   Internal_Set_Is_Unique (516, AMF.True);
+   Internal_Set_Is_Leaf (516, False);
+   Internal_Set_Is_Ordered (516, False);
+   Internal_Set_Is_Query (516, True);
+   Internal_Set_Is_Unique (516, True);
    Internal_Set_Lower (
 516, 1);   Internal_Set_Name
     (516,
@@ -3097,18 +3097,18 @@ begin
    Internal_Set_Default
     (520,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (520, AMF.False);
-   Internal_Set_Is_Unique (520, AMF.True);
+   Internal_Set_Is_Ordered (520, False);
+   Internal_Set_Is_Unique (520, True);
    Internal_Set_Lower (
 520, 1);   Internal_Set_Name
     (520,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (520, (False, 1));
    Initialize_Operation (521, Extent);
-   Internal_Set_Is_Leaf (521, AMF.False);
-   Internal_Set_Is_Ordered (521, AMF.False);
-   Internal_Set_Is_Query (521, AMF.True);
-   Internal_Set_Is_Unique (521, AMF.True);
+   Internal_Set_Is_Leaf (521, False);
+   Internal_Set_Is_Ordered (521, False);
+   Internal_Set_Is_Query (521, True);
+   Internal_Set_Is_Unique (521, True);
    Internal_Set_Lower (
 521, 1);   Internal_Set_Name
     (521,
@@ -3138,8 +3138,8 @@ begin
    Internal_Set_Default
     (527,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (527, AMF.False);
-   Internal_Set_Is_Unique (527, AMF.True);
+   Internal_Set_Is_Ordered (527, False);
+   Internal_Set_Is_Unique (527, True);
    Internal_Set_Lower (
 527, 1);   Internal_Set_Name
     (527,
@@ -3149,18 +3149,18 @@ begin
    Internal_Set_Default
     (528,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (528, AMF.False);
-   Internal_Set_Is_Unique (528, AMF.True);
+   Internal_Set_Is_Ordered (528, False);
+   Internal_Set_Is_Unique (528, True);
    Internal_Set_Lower (
 528, 1);   Internal_Set_Name
     (528,
      League.Strings.To_Universal_String ("redefinee"));
    Internal_Set_Upper (528, (False, 1));
    Initialize_Operation (529, Extent);
-   Internal_Set_Is_Leaf (529, AMF.False);
-   Internal_Set_Is_Ordered (529, AMF.False);
-   Internal_Set_Is_Query (529, AMF.True);
-   Internal_Set_Is_Unique (529, AMF.True);
+   Internal_Set_Is_Leaf (529, False);
+   Internal_Set_Is_Ordered (529, False);
+   Internal_Set_Is_Query (529, True);
+   Internal_Set_Is_Unique (529, True);
    Internal_Set_Lower (
 529, 1);   Internal_Set_Name
     (529,
@@ -3182,18 +3182,18 @@ begin
    Internal_Set_Default
     (533,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (533, AMF.False);
-   Internal_Set_Is_Unique (533, AMF.True);
+   Internal_Set_Is_Ordered (533, False);
+   Internal_Set_Is_Unique (533, True);
    Internal_Set_Lower (
 533, 0);   Internal_Set_Name
     (533,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (533, (Unlimited => True));
    Initialize_Operation (534, Extent);
-   Internal_Set_Is_Leaf (534, AMF.False);
-   Internal_Set_Is_Ordered (534, AMF.False);
-   Internal_Set_Is_Query (534, AMF.True);
-   Internal_Set_Is_Unique (534, AMF.True);
+   Internal_Set_Is_Leaf (534, False);
+   Internal_Set_Is_Ordered (534, False);
+   Internal_Set_Is_Query (534, True);
+   Internal_Set_Is_Unique (534, True);
    Internal_Set_Lower (
 534, 1);   Internal_Set_Name
     (534,
@@ -3215,18 +3215,18 @@ begin
    Internal_Set_Default
     (538,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (538, AMF.False);
-   Internal_Set_Is_Unique (538, AMF.True);
+   Internal_Set_Is_Ordered (538, False);
+   Internal_Set_Is_Unique (538, True);
    Internal_Set_Lower (
 538, 1);   Internal_Set_Name
     (538,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (538, (False, 1));
    Initialize_Operation (539, Extent);
-   Internal_Set_Is_Leaf (539, AMF.False);
-   Internal_Set_Is_Ordered (539, AMF.False);
-   Internal_Set_Is_Query (539, AMF.True);
-   Internal_Set_Is_Unique (539, AMF.True);
+   Internal_Set_Is_Leaf (539, False);
+   Internal_Set_Is_Ordered (539, False);
+   Internal_Set_Is_Query (539, True);
+   Internal_Set_Is_Unique (539, True);
    Internal_Set_Lower (
 539, 1);   Internal_Set_Name
     (539,
@@ -3248,8 +3248,8 @@ begin
    Internal_Set_Default
     (543,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (543, AMF.False);
-   Internal_Set_Is_Unique (543, AMF.True);
+   Internal_Set_Is_Ordered (543, False);
+   Internal_Set_Is_Unique (543, True);
    Internal_Set_Lower (
 543, 1);   Internal_Set_Name
     (543,
@@ -3259,16 +3259,16 @@ begin
    Internal_Set_Default
     (544,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (544, AMF.False);
-   Internal_Set_Is_Unique (544, AMF.True);
+   Internal_Set_Is_Ordered (544, False);
+   Internal_Set_Is_Unique (544, True);
    Internal_Set_Lower (
 544, 1);   Internal_Set_Name
     (544,
      League.Strings.To_Universal_String ("p"));
    Internal_Set_Upper (544, (False, 1));
    Initialize_Class (7, Extent);
-   Internal_Set_Is_Abstract (7, AMF.False);
-   Internal_Set_Is_Final_Specialization (7, AMF.False);
+   Internal_Set_Is_Abstract (7, False);
+   Internal_Set_Is_Final_Specialization (7, False);
    Internal_Set_Name
     (7,
      League.Strings.To_Universal_String ("DataType"));
@@ -3280,13 +3280,13 @@ begin
    Internal_Set_Default
     (48,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (48, AMF.True);
-   Internal_Set_Is_Derived (48, AMF.False);
-   Internal_Set_Is_Derived_Union (48, AMF.False);
-   Internal_Set_Is_Leaf (48, AMF.False);
-   Internal_Set_Is_Ordered (48, AMF.True);
-   Internal_Set_Is_Read_Only (48, AMF.False);
-   Internal_Set_Is_Unique (48, AMF.True);
+   Internal_Set_Is_Composite (48, True);
+   Internal_Set_Is_Derived (48, False);
+   Internal_Set_Is_Derived_Union (48, False);
+   Internal_Set_Is_Leaf (48, False);
+   Internal_Set_Is_Ordered (48, True);
+   Internal_Set_Is_Read_Only (48, False);
+   Internal_Set_Is_Unique (48, True);
    Internal_Set_Lower (
 48, 0);   Internal_Set_Name
     (48,
@@ -3300,13 +3300,13 @@ begin
    Internal_Set_Default
     (49,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (49, AMF.True);
-   Internal_Set_Is_Derived (49, AMF.False);
-   Internal_Set_Is_Derived_Union (49, AMF.False);
-   Internal_Set_Is_Leaf (49, AMF.False);
-   Internal_Set_Is_Ordered (49, AMF.True);
-   Internal_Set_Is_Read_Only (49, AMF.False);
-   Internal_Set_Is_Unique (49, AMF.True);
+   Internal_Set_Is_Composite (49, True);
+   Internal_Set_Is_Derived (49, False);
+   Internal_Set_Is_Derived_Union (49, False);
+   Internal_Set_Is_Leaf (49, False);
+   Internal_Set_Is_Ordered (49, True);
+   Internal_Set_Is_Read_Only (49, False);
+   Internal_Set_Is_Unique (49, True);
    Internal_Set_Lower (
 49, 0);   Internal_Set_Name
     (49,
@@ -3317,10 +3317,10 @@ begin
     (547,
      League.Strings.To_Universal_String ("The Operations owned by the DataType."));
    Initialize_Operation (548, Extent);
-   Internal_Set_Is_Leaf (548, AMF.False);
-   Internal_Set_Is_Ordered (548, AMF.False);
-   Internal_Set_Is_Query (548, AMF.True);
-   Internal_Set_Is_Unique (548, AMF.True);
+   Internal_Set_Is_Leaf (548, False);
+   Internal_Set_Is_Ordered (548, False);
+   Internal_Set_Is_Query (548, True);
+   Internal_Set_Is_Unique (548, True);
    Internal_Set_Lower (
 548, 1);   Internal_Set_Name
     (548,
@@ -3342,8 +3342,8 @@ begin
    Internal_Set_Default
     (552,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (552, AMF.False);
-   Internal_Set_Is_Unique (552, AMF.True);
+   Internal_Set_Is_Ordered (552, False);
+   Internal_Set_Is_Unique (552, True);
    Internal_Set_Lower (
 552, 0);   Internal_Set_Name
     (552,
@@ -3353,16 +3353,16 @@ begin
    Internal_Set_Default
     (553,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (553, AMF.False);
-   Internal_Set_Is_Unique (553, AMF.True);
+   Internal_Set_Is_Ordered (553, False);
+   Internal_Set_Is_Unique (553, True);
    Internal_Set_Lower (
 553, 0);   Internal_Set_Name
     (553,
      League.Strings.To_Universal_String ("inhs"));
    Internal_Set_Upper (553, (Unlimited => True));
    Initialize_Class (11, Extent);
-   Internal_Set_Is_Abstract (11, AMF.False);
-   Internal_Set_Is_Final_Specialization (11, AMF.False);
+   Internal_Set_Is_Abstract (11, False);
+   Internal_Set_Is_Final_Specialization (11, False);
    Internal_Set_Name
     (11,
      League.Strings.To_Universal_String ("Enumeration"));
@@ -3374,13 +3374,13 @@ begin
    Internal_Set_Default
     (54,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (54, AMF.True);
-   Internal_Set_Is_Derived (54, AMF.False);
-   Internal_Set_Is_Derived_Union (54, AMF.False);
-   Internal_Set_Is_Leaf (54, AMF.False);
-   Internal_Set_Is_Ordered (54, AMF.True);
-   Internal_Set_Is_Read_Only (54, AMF.False);
-   Internal_Set_Is_Unique (54, AMF.True);
+   Internal_Set_Is_Composite (54, True);
+   Internal_Set_Is_Derived (54, False);
+   Internal_Set_Is_Derived_Union (54, False);
+   Internal_Set_Is_Leaf (54, False);
+   Internal_Set_Is_Ordered (54, True);
+   Internal_Set_Is_Read_Only (54, False);
+   Internal_Set_Is_Unique (54, True);
    Internal_Set_Lower (
 54, 0);   Internal_Set_Name
     (54,
@@ -3391,8 +3391,8 @@ begin
     (555,
      League.Strings.To_Universal_String ("The ordered set of literals for this Enumeration."));
    Initialize_Class (12, Extent);
-   Internal_Set_Is_Abstract (12, AMF.False);
-   Internal_Set_Is_Final_Specialization (12, AMF.False);
+   Internal_Set_Is_Abstract (12, False);
+   Internal_Set_Is_Final_Specialization (12, False);
    Internal_Set_Name
     (12,
      League.Strings.To_Universal_String ("EnumerationLiteral"));
@@ -3404,13 +3404,13 @@ begin
    Internal_Set_Default
     (88,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (88, AMF.False);
-   Internal_Set_Is_Derived (88, AMF.False);
-   Internal_Set_Is_Derived_Union (88, AMF.False);
-   Internal_Set_Is_Leaf (88, AMF.False);
-   Internal_Set_Is_Ordered (88, AMF.False);
-   Internal_Set_Is_Read_Only (88, AMF.False);
-   Internal_Set_Is_Unique (88, AMF.True);
+   Internal_Set_Is_Composite (88, False);
+   Internal_Set_Is_Derived (88, False);
+   Internal_Set_Is_Derived_Union (88, False);
+   Internal_Set_Is_Leaf (88, False);
+   Internal_Set_Is_Ordered (88, False);
+   Internal_Set_Is_Read_Only (88, False);
+   Internal_Set_Is_Unique (88, True);
    Internal_Set_Lower (
 88, 0);   Internal_Set_Name
     (88,
@@ -3421,8 +3421,8 @@ begin
     (557,
      League.Strings.To_Universal_String ("The Enumeration that this EnumerationLiteral is a member of."));
    Initialize_Class (25, Extent);
-   Internal_Set_Is_Abstract (25, AMF.False);
-   Internal_Set_Is_Final_Specialization (25, AMF.False);
+   Internal_Set_Is_Abstract (25, False);
+   Internal_Set_Is_Final_Specialization (25, False);
    Internal_Set_Name
     (25,
      League.Strings.To_Universal_String ("PrimitiveType"));
@@ -3431,8 +3431,8 @@ begin
     (558,
      League.Strings.To_Universal_String ("A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically."));
    Initialize_Class (6, Extent);
-   Internal_Set_Is_Abstract (6, AMF.False);
-   Internal_Set_Is_Final_Specialization (6, AMF.False);
+   Internal_Set_Is_Abstract (6, False);
+   Internal_Set_Is_Final_Specialization (6, False);
    Internal_Set_Name
     (6,
      League.Strings.To_Universal_String ("Constraint"));
@@ -3468,13 +3468,13 @@ begin
    Internal_Set_Default
     (47,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (47, AMF.False);
-   Internal_Set_Is_Derived (47, AMF.False);
-   Internal_Set_Is_Derived_Union (47, AMF.False);
-   Internal_Set_Is_Leaf (47, AMF.False);
-   Internal_Set_Is_Ordered (47, AMF.True);
-   Internal_Set_Is_Read_Only (47, AMF.False);
-   Internal_Set_Is_Unique (47, AMF.True);
+   Internal_Set_Is_Composite (47, False);
+   Internal_Set_Is_Derived (47, False);
+   Internal_Set_Is_Derived_Union (47, False);
+   Internal_Set_Is_Leaf (47, False);
+   Internal_Set_Is_Ordered (47, True);
+   Internal_Set_Is_Read_Only (47, False);
+   Internal_Set_Is_Unique (47, True);
    Internal_Set_Lower (
 47, 0);   Internal_Set_Name
     (47,
@@ -3488,13 +3488,13 @@ begin
    Internal_Set_Default
     (82,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (82, AMF.True);
-   Internal_Set_Is_Derived (82, AMF.False);
-   Internal_Set_Is_Derived_Union (82, AMF.False);
-   Internal_Set_Is_Leaf (82, AMF.False);
-   Internal_Set_Is_Ordered (82, AMF.False);
-   Internal_Set_Is_Read_Only (82, AMF.False);
-   Internal_Set_Is_Unique (82, AMF.True);
+   Internal_Set_Is_Composite (82, True);
+   Internal_Set_Is_Derived (82, False);
+   Internal_Set_Is_Derived_Union (82, False);
+   Internal_Set_Is_Leaf (82, False);
+   Internal_Set_Is_Ordered (82, False);
+   Internal_Set_Is_Read_Only (82, False);
+   Internal_Set_Is_Unique (82, True);
    Internal_Set_Lower (
 82, 1);   Internal_Set_Name
     (82,
@@ -3508,21 +3508,21 @@ begin
    Internal_Set_Default
     (81,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (81, AMF.False);
-   Internal_Set_Is_Derived (81, AMF.False);
-   Internal_Set_Is_Derived_Union (81, AMF.False);
-   Internal_Set_Is_Leaf (81, AMF.False);
-   Internal_Set_Is_Ordered (81, AMF.False);
-   Internal_Set_Is_Read_Only (81, AMF.False);
-   Internal_Set_Is_Unique (81, AMF.True);
+   Internal_Set_Is_Composite (81, False);
+   Internal_Set_Is_Derived (81, False);
+   Internal_Set_Is_Derived_Union (81, False);
+   Internal_Set_Is_Leaf (81, False);
+   Internal_Set_Is_Ordered (81, False);
+   Internal_Set_Is_Read_Only (81, False);
+   Internal_Set_Is_Unique (81, True);
    Internal_Set_Lower (
 81, 0);   Internal_Set_Name
     (81,
      League.Strings.To_Universal_String ("context"));
    Internal_Set_Upper (81, (False, 1));
    Initialize_Class (18, Extent);
-   Internal_Set_Is_Abstract (18, AMF.False);
-   Internal_Set_Is_Final_Specialization (18, AMF.False);
+   Internal_Set_Is_Abstract (18, False);
+   Internal_Set_Is_Final_Specialization (18, False);
    Internal_Set_Name
     (18,
      League.Strings.To_Universal_String ("OpaqueExpression"));
@@ -3546,13 +3546,13 @@ begin
    Internal_Set_Default
     (97,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (97, AMF.True);
-   Internal_Set_Is_Derived (97, AMF.False);
-   Internal_Set_Is_Derived_Union (97, AMF.False);
-   Internal_Set_Is_Leaf (97, AMF.False);
-   Internal_Set_Is_Ordered (97, AMF.True);
-   Internal_Set_Is_Read_Only (97, AMF.False);
-   Internal_Set_Is_Unique (97, AMF.False);
+   Internal_Set_Is_Composite (97, True);
+   Internal_Set_Is_Derived (97, False);
+   Internal_Set_Is_Derived_Union (97, False);
+   Internal_Set_Is_Leaf (97, False);
+   Internal_Set_Is_Ordered (97, True);
+   Internal_Set_Is_Read_Only (97, False);
+   Internal_Set_Is_Unique (97, False);
    Internal_Set_Lower (
 97, 0);   Internal_Set_Name
     (97,
@@ -3566,13 +3566,13 @@ begin
    Internal_Set_Default
     (98,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (98, AMF.True);
-   Internal_Set_Is_Derived (98, AMF.False);
-   Internal_Set_Is_Derived_Union (98, AMF.False);
-   Internal_Set_Is_Leaf (98, AMF.False);
-   Internal_Set_Is_Ordered (98, AMF.True);
-   Internal_Set_Is_Read_Only (98, AMF.False);
-   Internal_Set_Is_Unique (98, AMF.True);
+   Internal_Set_Is_Composite (98, True);
+   Internal_Set_Is_Derived (98, False);
+   Internal_Set_Is_Derived_Union (98, False);
+   Internal_Set_Is_Leaf (98, False);
+   Internal_Set_Is_Ordered (98, True);
+   Internal_Set_Is_Read_Only (98, False);
+   Internal_Set_Is_Unique (98, True);
    Internal_Set_Lower (
 98, 0);   Internal_Set_Name
     (98,
@@ -3583,8 +3583,8 @@ begin
     (573,
      League.Strings.To_Universal_String ("Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order."));
    Initialize_Class (19, Extent);
-   Internal_Set_Is_Abstract (19, AMF.False);
-   Internal_Set_Is_Final_Specialization (19, AMF.False);
+   Internal_Set_Is_Abstract (19, False);
+   Internal_Set_Is_Final_Specialization (19, False);
    Internal_Set_Name
     (19,
      League.Strings.To_Universal_String ("Operation"));
@@ -3620,13 +3620,13 @@ begin
    Internal_Set_Default
     (103,
      League.Strings.To_Universal_String ("false"));
-   Internal_Set_Is_Composite (103, AMF.False);
-   Internal_Set_Is_Derived (103, AMF.False);
-   Internal_Set_Is_Derived_Union (103, AMF.False);
-   Internal_Set_Is_Leaf (103, AMF.False);
-   Internal_Set_Is_Ordered (103, AMF.False);
-   Internal_Set_Is_Read_Only (103, AMF.False);
-   Internal_Set_Is_Unique (103, AMF.True);
+   Internal_Set_Is_Composite (103, False);
+   Internal_Set_Is_Derived (103, False);
+   Internal_Set_Is_Derived_Union (103, False);
+   Internal_Set_Is_Leaf (103, False);
+   Internal_Set_Is_Ordered (103, False);
+   Internal_Set_Is_Read_Only (103, False);
+   Internal_Set_Is_Unique (103, True);
    Internal_Set_Lower (
 103, 1);   Internal_Set_Name
     (103,
@@ -3640,13 +3640,13 @@ begin
    Internal_Set_Default
     (102,
      League.Strings.To_Universal_String ("false"));
-   Internal_Set_Is_Composite (102, AMF.False);
-   Internal_Set_Is_Derived (102, AMF.True);
-   Internal_Set_Is_Derived_Union (102, AMF.False);
-   Internal_Set_Is_Leaf (102, AMF.False);
-   Internal_Set_Is_Ordered (102, AMF.False);
-   Internal_Set_Is_Read_Only (102, AMF.False);
-   Internal_Set_Is_Unique (102, AMF.True);
+   Internal_Set_Is_Composite (102, False);
+   Internal_Set_Is_Derived (102, True);
+   Internal_Set_Is_Derived_Union (102, False);
+   Internal_Set_Is_Leaf (102, False);
+   Internal_Set_Is_Ordered (102, False);
+   Internal_Set_Is_Read_Only (102, False);
+   Internal_Set_Is_Unique (102, True);
    Internal_Set_Lower (
 102, 1);   Internal_Set_Name
     (102,
@@ -3660,13 +3660,13 @@ begin
    Internal_Set_Default
     (104,
      League.Strings.To_Universal_String ("true"));
-   Internal_Set_Is_Composite (104, AMF.False);
-   Internal_Set_Is_Derived (104, AMF.True);
-   Internal_Set_Is_Derived_Union (104, AMF.False);
-   Internal_Set_Is_Leaf (104, AMF.False);
-   Internal_Set_Is_Ordered (104, AMF.False);
-   Internal_Set_Is_Read_Only (104, AMF.False);
-   Internal_Set_Is_Unique (104, AMF.True);
+   Internal_Set_Is_Composite (104, False);
+   Internal_Set_Is_Derived (104, True);
+   Internal_Set_Is_Derived_Union (104, False);
+   Internal_Set_Is_Leaf (104, False);
+   Internal_Set_Is_Ordered (104, False);
+   Internal_Set_Is_Read_Only (104, False);
+   Internal_Set_Is_Unique (104, True);
    Internal_Set_Lower (
 104, 1);   Internal_Set_Name
     (104,
@@ -3680,13 +3680,13 @@ begin
    Internal_Set_Default
     (105,
      League.Strings.To_Universal_String ("1"));
-   Internal_Set_Is_Composite (105, AMF.False);
-   Internal_Set_Is_Derived (105, AMF.True);
-   Internal_Set_Is_Derived_Union (105, AMF.False);
-   Internal_Set_Is_Leaf (105, AMF.False);
-   Internal_Set_Is_Ordered (105, AMF.False);
-   Internal_Set_Is_Read_Only (105, AMF.False);
-   Internal_Set_Is_Unique (105, AMF.True);
+   Internal_Set_Is_Composite (105, False);
+   Internal_Set_Is_Derived (105, True);
+   Internal_Set_Is_Derived_Union (105, False);
+   Internal_Set_Is_Leaf (105, False);
+   Internal_Set_Is_Ordered (105, False);
+   Internal_Set_Is_Read_Only (105, False);
+   Internal_Set_Is_Unique (105, True);
    Internal_Set_Lower (
 105, 0);   Internal_Set_Name
     (105,
@@ -3700,13 +3700,13 @@ begin
    Internal_Set_Default
     (107,
      League.Strings.To_Universal_String ("1"));
-   Internal_Set_Is_Composite (107, AMF.False);
-   Internal_Set_Is_Derived (107, AMF.True);
-   Internal_Set_Is_Derived_Union (107, AMF.False);
-   Internal_Set_Is_Leaf (107, AMF.False);
-   Internal_Set_Is_Ordered (107, AMF.False);
-   Internal_Set_Is_Read_Only (107, AMF.False);
-   Internal_Set_Is_Unique (107, AMF.True);
+   Internal_Set_Is_Composite (107, False);
+   Internal_Set_Is_Derived (107, True);
+   Internal_Set_Is_Derived_Union (107, False);
+   Internal_Set_Is_Leaf (107, False);
+   Internal_Set_Is_Ordered (107, False);
+   Internal_Set_Is_Read_Only (107, False);
+   Internal_Set_Is_Unique (107, True);
    Internal_Set_Lower (
 107, 0);   Internal_Set_Name
     (107,
@@ -3720,13 +3720,13 @@ begin
    Internal_Set_Default
     (100,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (100, AMF.False);
-   Internal_Set_Is_Derived (100, AMF.False);
-   Internal_Set_Is_Derived_Union (100, AMF.False);
-   Internal_Set_Is_Leaf (100, AMF.False);
-   Internal_Set_Is_Ordered (100, AMF.False);
-   Internal_Set_Is_Read_Only (100, AMF.False);
-   Internal_Set_Is_Unique (100, AMF.True);
+   Internal_Set_Is_Composite (100, False);
+   Internal_Set_Is_Derived (100, False);
+   Internal_Set_Is_Derived_Union (100, False);
+   Internal_Set_Is_Leaf (100, False);
+   Internal_Set_Is_Ordered (100, False);
+   Internal_Set_Is_Read_Only (100, False);
+   Internal_Set_Is_Unique (100, True);
    Internal_Set_Lower (
 100, 0);   Internal_Set_Name
     (100,
@@ -3740,13 +3740,13 @@ begin
    Internal_Set_Default
     (101,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (101, AMF.False);
-   Internal_Set_Is_Derived (101, AMF.False);
-   Internal_Set_Is_Derived_Union (101, AMF.False);
-   Internal_Set_Is_Leaf (101, AMF.False);
-   Internal_Set_Is_Ordered (101, AMF.False);
-   Internal_Set_Is_Read_Only (101, AMF.False);
-   Internal_Set_Is_Unique (101, AMF.True);
+   Internal_Set_Is_Composite (101, False);
+   Internal_Set_Is_Derived (101, False);
+   Internal_Set_Is_Derived_Union (101, False);
+   Internal_Set_Is_Leaf (101, False);
+   Internal_Set_Is_Ordered (101, False);
+   Internal_Set_Is_Read_Only (101, False);
+   Internal_Set_Is_Unique (101, True);
    Internal_Set_Lower (
 101, 0);   Internal_Set_Name
     (101,
@@ -3760,13 +3760,13 @@ begin
    Internal_Set_Default
     (66,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (66, AMF.False);
-   Internal_Set_Is_Derived (66, AMF.False);
-   Internal_Set_Is_Derived_Union (66, AMF.False);
-   Internal_Set_Is_Leaf (66, AMF.False);
-   Internal_Set_Is_Ordered (66, AMF.False);
-   Internal_Set_Is_Read_Only (66, AMF.False);
-   Internal_Set_Is_Unique (66, AMF.True);
+   Internal_Set_Is_Composite (66, False);
+   Internal_Set_Is_Derived (66, False);
+   Internal_Set_Is_Derived_Union (66, False);
+   Internal_Set_Is_Leaf (66, False);
+   Internal_Set_Is_Ordered (66, False);
+   Internal_Set_Is_Read_Only (66, False);
+   Internal_Set_Is_Unique (66, True);
    Internal_Set_Lower (
 66, 0);   Internal_Set_Name
     (66,
@@ -3780,13 +3780,13 @@ begin
    Internal_Set_Default
     (67,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (67, AMF.False);
-   Internal_Set_Is_Derived (67, AMF.False);
-   Internal_Set_Is_Derived_Union (67, AMF.False);
-   Internal_Set_Is_Leaf (67, AMF.False);
-   Internal_Set_Is_Ordered (67, AMF.False);
-   Internal_Set_Is_Read_Only (67, AMF.False);
-   Internal_Set_Is_Unique (67, AMF.True);
+   Internal_Set_Is_Composite (67, False);
+   Internal_Set_Is_Derived (67, False);
+   Internal_Set_Is_Derived_Union (67, False);
+   Internal_Set_Is_Leaf (67, False);
+   Internal_Set_Is_Ordered (67, False);
+   Internal_Set_Is_Read_Only (67, False);
+   Internal_Set_Is_Unique (67, True);
    Internal_Set_Lower (
 67, 0);   Internal_Set_Name
     (67,
@@ -3800,13 +3800,13 @@ begin
    Internal_Set_Default
     (106,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (106, AMF.False);
-   Internal_Set_Is_Derived (106, AMF.True);
-   Internal_Set_Is_Derived_Union (106, AMF.False);
-   Internal_Set_Is_Leaf (106, AMF.False);
-   Internal_Set_Is_Ordered (106, AMF.False);
-   Internal_Set_Is_Read_Only (106, AMF.False);
-   Internal_Set_Is_Unique (106, AMF.True);
+   Internal_Set_Is_Composite (106, False);
+   Internal_Set_Is_Derived (106, True);
+   Internal_Set_Is_Derived_Union (106, False);
+   Internal_Set_Is_Leaf (106, False);
+   Internal_Set_Is_Ordered (106, False);
+   Internal_Set_Is_Read_Only (106, False);
+   Internal_Set_Is_Unique (106, True);
    Internal_Set_Lower (
 106, 0);   Internal_Set_Name
     (106,
@@ -3820,13 +3820,13 @@ begin
    Internal_Set_Default
     (63,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (63, AMF.True);
-   Internal_Set_Is_Derived (63, AMF.False);
-   Internal_Set_Is_Derived_Union (63, AMF.False);
-   Internal_Set_Is_Leaf (63, AMF.False);
-   Internal_Set_Is_Ordered (63, AMF.True);
-   Internal_Set_Is_Read_Only (63, AMF.False);
-   Internal_Set_Is_Unique (63, AMF.True);
+   Internal_Set_Is_Composite (63, True);
+   Internal_Set_Is_Derived (63, False);
+   Internal_Set_Is_Derived_Union (63, False);
+   Internal_Set_Is_Leaf (63, False);
+   Internal_Set_Is_Ordered (63, True);
+   Internal_Set_Is_Read_Only (63, False);
+   Internal_Set_Is_Unique (63, True);
    Internal_Set_Lower (
 63, 0);   Internal_Set_Name
     (63,
@@ -3840,13 +3840,13 @@ begin
    Internal_Set_Default
     (65,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (65, AMF.True);
-   Internal_Set_Is_Derived (65, AMF.False);
-   Internal_Set_Is_Derived_Union (65, AMF.False);
-   Internal_Set_Is_Leaf (65, AMF.False);
-   Internal_Set_Is_Ordered (65, AMF.False);
-   Internal_Set_Is_Read_Only (65, AMF.False);
-   Internal_Set_Is_Unique (65, AMF.True);
+   Internal_Set_Is_Composite (65, True);
+   Internal_Set_Is_Derived (65, False);
+   Internal_Set_Is_Derived_Union (65, False);
+   Internal_Set_Is_Leaf (65, False);
+   Internal_Set_Is_Ordered (65, False);
+   Internal_Set_Is_Read_Only (65, False);
+   Internal_Set_Is_Unique (65, True);
    Internal_Set_Lower (
 65, 0);   Internal_Set_Name
     (65,
@@ -3856,13 +3856,13 @@ begin
    Internal_Set_Default
     (64,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (64, AMF.True);
-   Internal_Set_Is_Derived (64, AMF.False);
-   Internal_Set_Is_Derived_Union (64, AMF.False);
-   Internal_Set_Is_Leaf (64, AMF.False);
-   Internal_Set_Is_Ordered (64, AMF.False);
-   Internal_Set_Is_Read_Only (64, AMF.False);
-   Internal_Set_Is_Unique (64, AMF.True);
+   Internal_Set_Is_Composite (64, True);
+   Internal_Set_Is_Derived (64, False);
+   Internal_Set_Is_Derived_Union (64, False);
+   Internal_Set_Is_Leaf (64, False);
+   Internal_Set_Is_Ordered (64, False);
+   Internal_Set_Is_Read_Only (64, False);
+   Internal_Set_Is_Unique (64, True);
    Internal_Set_Lower (
 64, 0);   Internal_Set_Name
     (64,
@@ -3872,23 +3872,23 @@ begin
    Internal_Set_Default
     (99,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (99, AMF.True);
-   Internal_Set_Is_Derived (99, AMF.False);
-   Internal_Set_Is_Derived_Union (99, AMF.False);
-   Internal_Set_Is_Leaf (99, AMF.False);
-   Internal_Set_Is_Ordered (99, AMF.False);
-   Internal_Set_Is_Read_Only (99, AMF.False);
-   Internal_Set_Is_Unique (99, AMF.True);
+   Internal_Set_Is_Composite (99, True);
+   Internal_Set_Is_Derived (99, False);
+   Internal_Set_Is_Derived_Union (99, False);
+   Internal_Set_Is_Leaf (99, False);
+   Internal_Set_Is_Ordered (99, False);
+   Internal_Set_Is_Read_Only (99, False);
+   Internal_Set_Is_Unique (99, True);
    Internal_Set_Lower (
 99, 0);   Internal_Set_Name
     (99,
      League.Strings.To_Universal_String ("bodyCondition"));
    Internal_Set_Upper (99, (False, 1));
    Initialize_Operation (592, Extent);
-   Internal_Set_Is_Leaf (592, AMF.False);
-   Internal_Set_Is_Ordered (592, AMF.False);
-   Internal_Set_Is_Query (592, AMF.True);
-   Internal_Set_Is_Unique (592, AMF.True);
+   Internal_Set_Is_Leaf (592, False);
+   Internal_Set_Is_Ordered (592, False);
+   Internal_Set_Is_Query (592, True);
+   Internal_Set_Is_Unique (592, True);
    Internal_Set_Lower (
 592, 1);   Internal_Set_Name
     (592,
@@ -3910,18 +3910,18 @@ begin
    Internal_Set_Default
     (596,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (596, AMF.False);
-   Internal_Set_Is_Unique (596, AMF.True);
+   Internal_Set_Is_Ordered (596, False);
+   Internal_Set_Is_Unique (596, True);
    Internal_Set_Lower (
 596, 1);   Internal_Set_Name
     (596,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (596, (False, 1));
    Initialize_Operation (597, Extent);
-   Internal_Set_Is_Leaf (597, AMF.False);
-   Internal_Set_Is_Ordered (597, AMF.False);
-   Internal_Set_Is_Query (597, AMF.True);
-   Internal_Set_Is_Unique (597, AMF.True);
+   Internal_Set_Is_Leaf (597, False);
+   Internal_Set_Is_Ordered (597, False);
+   Internal_Set_Is_Query (597, True);
+   Internal_Set_Is_Unique (597, True);
    Internal_Set_Lower (
 597, 1);   Internal_Set_Name
     (597,
@@ -3943,18 +3943,18 @@ begin
    Internal_Set_Default
     (601,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (601, AMF.False);
-   Internal_Set_Is_Unique (601, AMF.True);
+   Internal_Set_Is_Ordered (601, False);
+   Internal_Set_Is_Unique (601, True);
    Internal_Set_Lower (
 601, 1);   Internal_Set_Name
     (601,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (601, (False, 1));
    Initialize_Operation (602, Extent);
-   Internal_Set_Is_Leaf (602, AMF.False);
-   Internal_Set_Is_Ordered (602, AMF.False);
-   Internal_Set_Is_Query (602, AMF.True);
-   Internal_Set_Is_Unique (602, AMF.True);
+   Internal_Set_Is_Leaf (602, False);
+   Internal_Set_Is_Ordered (602, False);
+   Internal_Set_Is_Query (602, True);
+   Internal_Set_Is_Unique (602, True);
    Internal_Set_Lower (
 602, 1);   Internal_Set_Name
     (602,
@@ -3976,18 +3976,18 @@ begin
    Internal_Set_Default
     (606,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (606, AMF.False);
-   Internal_Set_Is_Unique (606, AMF.True);
+   Internal_Set_Is_Ordered (606, False);
+   Internal_Set_Is_Unique (606, True);
    Internal_Set_Lower (
 606, 1);   Internal_Set_Name
     (606,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (606, (False, 1));
    Initialize_Operation (607, Extent);
-   Internal_Set_Is_Leaf (607, AMF.False);
-   Internal_Set_Is_Ordered (607, AMF.False);
-   Internal_Set_Is_Query (607, AMF.True);
-   Internal_Set_Is_Unique (607, AMF.True);
+   Internal_Set_Is_Leaf (607, False);
+   Internal_Set_Is_Ordered (607, False);
+   Internal_Set_Is_Query (607, True);
+   Internal_Set_Is_Unique (607, True);
    Internal_Set_Lower (
 607, 1);   Internal_Set_Name
     (607,
@@ -4009,18 +4009,18 @@ begin
    Internal_Set_Default
     (611,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (611, AMF.False);
-   Internal_Set_Is_Unique (611, AMF.True);
+   Internal_Set_Is_Ordered (611, False);
+   Internal_Set_Is_Unique (611, True);
    Internal_Set_Lower (
 611, 1);   Internal_Set_Name
     (611,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (611, (False, 1));
    Initialize_Operation (612, Extent);
-   Internal_Set_Is_Leaf (612, AMF.False);
-   Internal_Set_Is_Ordered (612, AMF.False);
-   Internal_Set_Is_Query (612, AMF.True);
-   Internal_Set_Is_Unique (612, AMF.True);
+   Internal_Set_Is_Leaf (612, False);
+   Internal_Set_Is_Ordered (612, False);
+   Internal_Set_Is_Query (612, True);
+   Internal_Set_Is_Unique (612, True);
    Internal_Set_Lower (
 612, 1);   Internal_Set_Name
     (612,
@@ -4042,18 +4042,18 @@ begin
    Internal_Set_Default
     (616,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (616, AMF.False);
-   Internal_Set_Is_Unique (616, AMF.True);
+   Internal_Set_Is_Ordered (616, False);
+   Internal_Set_Is_Unique (616, True);
    Internal_Set_Lower (
 616, 1);   Internal_Set_Name
     (616,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (616, (False, 1));
    Initialize_Operation (617, Extent);
-   Internal_Set_Is_Leaf (617, AMF.False);
-   Internal_Set_Is_Ordered (617, AMF.False);
-   Internal_Set_Is_Query (617, AMF.True);
-   Internal_Set_Is_Unique (617, AMF.True);
+   Internal_Set_Is_Leaf (617, False);
+   Internal_Set_Is_Ordered (617, False);
+   Internal_Set_Is_Query (617, True);
+   Internal_Set_Is_Unique (617, True);
    Internal_Set_Lower (
 617, 1);   Internal_Set_Name
     (617,
@@ -4083,8 +4083,8 @@ begin
    Internal_Set_Default
     (623,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (623, AMF.False);
-   Internal_Set_Is_Unique (623, AMF.True);
+   Internal_Set_Is_Ordered (623, False);
+   Internal_Set_Is_Unique (623, True);
    Internal_Set_Lower (
 623, 1);   Internal_Set_Name
     (623,
@@ -4094,18 +4094,18 @@ begin
    Internal_Set_Default
     (624,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (624, AMF.False);
-   Internal_Set_Is_Unique (624, AMF.True);
+   Internal_Set_Is_Ordered (624, False);
+   Internal_Set_Is_Unique (624, True);
    Internal_Set_Lower (
 624, 1);   Internal_Set_Name
     (624,
      League.Strings.To_Universal_String ("redefinee"));
    Internal_Set_Upper (624, (False, 1));
    Initialize_Operation (625, Extent);
-   Internal_Set_Is_Leaf (625, AMF.False);
-   Internal_Set_Is_Ordered (625, AMF.False);
-   Internal_Set_Is_Query (625, AMF.True);
-   Internal_Set_Is_Unique (625, AMF.True);
+   Internal_Set_Is_Leaf (625, False);
+   Internal_Set_Is_Ordered (625, False);
+   Internal_Set_Is_Query (625, True);
+   Internal_Set_Is_Unique (625, True);
    Internal_Set_Lower (
 625, 1);   Internal_Set_Name
     (625,
@@ -4123,16 +4123,16 @@ begin
    Internal_Set_Default
     (628,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (628, AMF.False);
-   Internal_Set_Is_Unique (628, AMF.True);
+   Internal_Set_Is_Ordered (628, False);
+   Internal_Set_Is_Unique (628, True);
    Internal_Set_Lower (
 628, 0);   Internal_Set_Name
     (628,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (628, (Unlimited => True));
    Initialize_Class (24, Extent);
-   Internal_Set_Is_Abstract (24, AMF.False);
-   Internal_Set_Is_Final_Specialization (24, AMF.False);
+   Internal_Set_Is_Abstract (24, False);
+   Internal_Set_Is_Final_Specialization (24, False);
    Internal_Set_Name
     (24,
      League.Strings.To_Universal_String ("Parameter"));
@@ -4144,13 +4144,13 @@ begin
    Internal_Set_Default
     (115,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (115, AMF.False);
-   Internal_Set_Is_Derived (115, AMF.False);
-   Internal_Set_Is_Derived_Union (115, AMF.False);
-   Internal_Set_Is_Leaf (115, AMF.False);
-   Internal_Set_Is_Ordered (115, AMF.False);
-   Internal_Set_Is_Read_Only (115, AMF.False);
-   Internal_Set_Is_Unique (115, AMF.True);
+   Internal_Set_Is_Composite (115, False);
+   Internal_Set_Is_Derived (115, False);
+   Internal_Set_Is_Derived_Union (115, False);
+   Internal_Set_Is_Leaf (115, False);
+   Internal_Set_Is_Ordered (115, False);
+   Internal_Set_Is_Read_Only (115, False);
+   Internal_Set_Is_Unique (115, True);
    Internal_Set_Lower (
 115, 0);   Internal_Set_Name
     (115,
@@ -4164,13 +4164,13 @@ begin
    Internal_Set_Default
     (116,
      League.Strings.To_Universal_String ("in"));
-   Internal_Set_Is_Composite (116, AMF.False);
-   Internal_Set_Is_Derived (116, AMF.False);
-   Internal_Set_Is_Derived_Union (116, AMF.False);
-   Internal_Set_Is_Leaf (116, AMF.False);
-   Internal_Set_Is_Ordered (116, AMF.False);
-   Internal_Set_Is_Read_Only (116, AMF.False);
-   Internal_Set_Is_Unique (116, AMF.True);
+   Internal_Set_Is_Composite (116, False);
+   Internal_Set_Is_Derived (116, False);
+   Internal_Set_Is_Derived_Union (116, False);
+   Internal_Set_Is_Leaf (116, False);
+   Internal_Set_Is_Ordered (116, False);
+   Internal_Set_Is_Read_Only (116, False);
+   Internal_Set_Is_Unique (116, True);
    Internal_Set_Lower (
 116, 1);   Internal_Set_Name
     (116,
@@ -4184,13 +4184,13 @@ begin
    Internal_Set_Default
     (117,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (117, AMF.False);
-   Internal_Set_Is_Derived (117, AMF.False);
-   Internal_Set_Is_Derived_Union (117, AMF.False);
-   Internal_Set_Is_Leaf (117, AMF.False);
-   Internal_Set_Is_Ordered (117, AMF.False);
-   Internal_Set_Is_Read_Only (117, AMF.False);
-   Internal_Set_Is_Unique (117, AMF.True);
+   Internal_Set_Is_Composite (117, False);
+   Internal_Set_Is_Derived (117, False);
+   Internal_Set_Is_Derived_Union (117, False);
+   Internal_Set_Is_Leaf (117, False);
+   Internal_Set_Is_Ordered (117, False);
+   Internal_Set_Is_Read_Only (117, False);
+   Internal_Set_Is_Unique (117, True);
    Internal_Set_Lower (
 117, 0);   Internal_Set_Name
     (117,
@@ -4201,8 +4201,8 @@ begin
     (632,
      League.Strings.To_Universal_String ("References the Operation owning this parameter."));
    Initialize_Class (2, Extent);
-   Internal_Set_Is_Abstract (2, AMF.True);
-   Internal_Set_Is_Final_Specialization (2, AMF.False);
+   Internal_Set_Is_Abstract (2, True);
+   Internal_Set_Is_Final_Specialization (2, False);
    Internal_Set_Name
     (2,
      League.Strings.To_Universal_String ("BehavioralFeature"));
@@ -4214,13 +4214,13 @@ begin
    Internal_Set_Default
     (37,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (37, AMF.True);
-   Internal_Set_Is_Derived (37, AMF.False);
-   Internal_Set_Is_Derived_Union (37, AMF.False);
-   Internal_Set_Is_Leaf (37, AMF.False);
-   Internal_Set_Is_Ordered (37, AMF.True);
-   Internal_Set_Is_Read_Only (37, AMF.False);
-   Internal_Set_Is_Unique (37, AMF.True);
+   Internal_Set_Is_Composite (37, True);
+   Internal_Set_Is_Derived (37, False);
+   Internal_Set_Is_Derived_Union (37, False);
+   Internal_Set_Is_Leaf (37, False);
+   Internal_Set_Is_Ordered (37, True);
+   Internal_Set_Is_Read_Only (37, False);
+   Internal_Set_Is_Unique (37, True);
    Internal_Set_Lower (
 37, 0);   Internal_Set_Name
     (37,
@@ -4234,13 +4234,13 @@ begin
    Internal_Set_Default
     (38,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (38, AMF.False);
-   Internal_Set_Is_Derived (38, AMF.False);
-   Internal_Set_Is_Derived_Union (38, AMF.False);
-   Internal_Set_Is_Leaf (38, AMF.False);
-   Internal_Set_Is_Ordered (38, AMF.False);
-   Internal_Set_Is_Read_Only (38, AMF.False);
-   Internal_Set_Is_Unique (38, AMF.True);
+   Internal_Set_Is_Composite (38, False);
+   Internal_Set_Is_Derived (38, False);
+   Internal_Set_Is_Derived_Union (38, False);
+   Internal_Set_Is_Leaf (38, False);
+   Internal_Set_Is_Ordered (38, False);
+   Internal_Set_Is_Read_Only (38, False);
+   Internal_Set_Is_Unique (38, True);
    Internal_Set_Lower (
 38, 0);   Internal_Set_Name
     (38,
@@ -4251,10 +4251,10 @@ begin
     (635,
      League.Strings.To_Universal_String ("References the Types representing exceptions that may be raised during an invocation of this feature."));
    Initialize_Operation (636, Extent);
-   Internal_Set_Is_Leaf (636, AMF.False);
-   Internal_Set_Is_Ordered (636, AMF.False);
-   Internal_Set_Is_Query (636, AMF.True);
-   Internal_Set_Is_Unique (636, AMF.True);
+   Internal_Set_Is_Leaf (636, False);
+   Internal_Set_Is_Ordered (636, False);
+   Internal_Set_Is_Query (636, True);
+   Internal_Set_Is_Unique (636, True);
    Internal_Set_Lower (
 636, 1);   Internal_Set_Name
     (636,
@@ -4276,8 +4276,8 @@ begin
    Internal_Set_Default
     (640,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (640, AMF.False);
-   Internal_Set_Is_Unique (640, AMF.True);
+   Internal_Set_Is_Ordered (640, False);
+   Internal_Set_Is_Unique (640, True);
    Internal_Set_Lower (
 640, 1);   Internal_Set_Name
     (640,
@@ -4287,8 +4287,8 @@ begin
    Internal_Set_Default
     (641,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (641, AMF.False);
-   Internal_Set_Is_Unique (641, AMF.True);
+   Internal_Set_Is_Ordered (641, False);
+   Internal_Set_Is_Unique (641, True);
    Internal_Set_Lower (
 641, 1);   Internal_Set_Name
     (641,
@@ -4298,16 +4298,16 @@ begin
    Internal_Set_Default
     (642,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (642, AMF.False);
-   Internal_Set_Is_Unique (642, AMF.True);
+   Internal_Set_Is_Ordered (642, False);
+   Internal_Set_Is_Unique (642, True);
    Internal_Set_Lower (
 642, 1);   Internal_Set_Name
     (642,
      League.Strings.To_Universal_String ("ns"));
    Internal_Set_Upper (642, (False, 1));
    Initialize_Class (10, Extent);
-   Internal_Set_Is_Abstract (10, AMF.False);
-   Internal_Set_Is_Final_Specialization (10, AMF.False);
+   Internal_Set_Is_Abstract (10, False);
+   Internal_Set_Is_Final_Specialization (10, False);
    Internal_Set_Name
     (10,
      League.Strings.To_Universal_String ("ElementImport"));
@@ -4343,13 +4343,13 @@ begin
    Internal_Set_Default
     (87,
      League.Strings.To_Universal_String ("public"));
-   Internal_Set_Is_Composite (87, AMF.False);
-   Internal_Set_Is_Derived (87, AMF.False);
-   Internal_Set_Is_Derived_Union (87, AMF.False);
-   Internal_Set_Is_Leaf (87, AMF.False);
-   Internal_Set_Is_Ordered (87, AMF.False);
-   Internal_Set_Is_Read_Only (87, AMF.False);
-   Internal_Set_Is_Unique (87, AMF.True);
+   Internal_Set_Is_Composite (87, False);
+   Internal_Set_Is_Derived (87, False);
+   Internal_Set_Is_Derived_Union (87, False);
+   Internal_Set_Is_Leaf (87, False);
+   Internal_Set_Is_Ordered (87, False);
+   Internal_Set_Is_Read_Only (87, False);
+   Internal_Set_Is_Unique (87, True);
    Internal_Set_Lower (
 87, 1);   Internal_Set_Name
     (87,
@@ -4363,13 +4363,13 @@ begin
    Internal_Set_Default
     (84,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (84, AMF.False);
-   Internal_Set_Is_Derived (84, AMF.False);
-   Internal_Set_Is_Derived_Union (84, AMF.False);
-   Internal_Set_Is_Leaf (84, AMF.False);
-   Internal_Set_Is_Ordered (84, AMF.False);
-   Internal_Set_Is_Read_Only (84, AMF.False);
-   Internal_Set_Is_Unique (84, AMF.True);
+   Internal_Set_Is_Composite (84, False);
+   Internal_Set_Is_Derived (84, False);
+   Internal_Set_Is_Derived_Union (84, False);
+   Internal_Set_Is_Leaf (84, False);
+   Internal_Set_Is_Ordered (84, False);
+   Internal_Set_Is_Read_Only (84, False);
+   Internal_Set_Is_Unique (84, True);
    Internal_Set_Lower (
 84, 0);   Internal_Set_Name
     (84,
@@ -4383,13 +4383,13 @@ begin
    Internal_Set_Default
     (85,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (85, AMF.False);
-   Internal_Set_Is_Derived (85, AMF.False);
-   Internal_Set_Is_Derived_Union (85, AMF.False);
-   Internal_Set_Is_Leaf (85, AMF.False);
-   Internal_Set_Is_Ordered (85, AMF.False);
-   Internal_Set_Is_Read_Only (85, AMF.False);
-   Internal_Set_Is_Unique (85, AMF.True);
+   Internal_Set_Is_Composite (85, False);
+   Internal_Set_Is_Derived (85, False);
+   Internal_Set_Is_Derived_Union (85, False);
+   Internal_Set_Is_Leaf (85, False);
+   Internal_Set_Is_Ordered (85, False);
+   Internal_Set_Is_Read_Only (85, False);
+   Internal_Set_Is_Unique (85, True);
    Internal_Set_Lower (
 85, 1);   Internal_Set_Name
     (85,
@@ -4403,13 +4403,13 @@ begin
    Internal_Set_Default
     (86,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (86, AMF.False);
-   Internal_Set_Is_Derived (86, AMF.False);
-   Internal_Set_Is_Derived_Union (86, AMF.False);
-   Internal_Set_Is_Leaf (86, AMF.False);
-   Internal_Set_Is_Ordered (86, AMF.False);
-   Internal_Set_Is_Read_Only (86, AMF.False);
-   Internal_Set_Is_Unique (86, AMF.True);
+   Internal_Set_Is_Composite (86, False);
+   Internal_Set_Is_Derived (86, False);
+   Internal_Set_Is_Derived_Union (86, False);
+   Internal_Set_Is_Leaf (86, False);
+   Internal_Set_Is_Ordered (86, False);
+   Internal_Set_Is_Read_Only (86, False);
+   Internal_Set_Is_Unique (86, True);
    Internal_Set_Lower (
 86, 1);   Internal_Set_Name
     (86,
@@ -4420,10 +4420,10 @@ begin
     (653,
      League.Strings.To_Universal_String ("Specifies the Namespace that imports a PackageableElement from another Package."));
    Initialize_Operation (654, Extent);
-   Internal_Set_Is_Leaf (654, AMF.False);
-   Internal_Set_Is_Ordered (654, AMF.False);
-   Internal_Set_Is_Query (654, AMF.True);
-   Internal_Set_Is_Unique (654, AMF.True);
+   Internal_Set_Is_Leaf (654, False);
+   Internal_Set_Is_Ordered (654, False);
+   Internal_Set_Is_Query (654, True);
+   Internal_Set_Is_Unique (654, True);
    Internal_Set_Lower (
 654, 1);   Internal_Set_Name
     (654,
@@ -4445,16 +4445,16 @@ begin
    Internal_Set_Default
     (658,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (658, AMF.False);
-   Internal_Set_Is_Unique (658, AMF.True);
+   Internal_Set_Is_Ordered (658, False);
+   Internal_Set_Is_Unique (658, True);
    Internal_Set_Lower (
 658, 1);   Internal_Set_Name
     (658,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (658, (False, 1));
    Initialize_Class (20, Extent);
-   Internal_Set_Is_Abstract (20, AMF.False);
-   Internal_Set_Is_Final_Specialization (20, AMF.False);
+   Internal_Set_Is_Abstract (20, False);
+   Internal_Set_Is_Final_Specialization (20, False);
    Internal_Set_Name
     (20,
      League.Strings.To_Universal_String ("Package"));
@@ -4478,13 +4478,13 @@ begin
    Internal_Set_Default
     (71,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (71, AMF.True);
-   Internal_Set_Is_Derived (71, AMF.False);
-   Internal_Set_Is_Derived_Union (71, AMF.False);
-   Internal_Set_Is_Leaf (71, AMF.False);
-   Internal_Set_Is_Ordered (71, AMF.False);
-   Internal_Set_Is_Read_Only (71, AMF.False);
-   Internal_Set_Is_Unique (71, AMF.True);
+   Internal_Set_Is_Composite (71, True);
+   Internal_Set_Is_Derived (71, False);
+   Internal_Set_Is_Derived_Union (71, False);
+   Internal_Set_Is_Leaf (71, False);
+   Internal_Set_Is_Ordered (71, False);
+   Internal_Set_Is_Read_Only (71, False);
+   Internal_Set_Is_Unique (71, True);
    Internal_Set_Lower (
 71, 0);   Internal_Set_Name
     (71,
@@ -4498,13 +4498,13 @@ begin
    Internal_Set_Default
     (69,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (69, AMF.True);
-   Internal_Set_Is_Derived (69, AMF.True);
-   Internal_Set_Is_Derived_Union (69, AMF.False);
-   Internal_Set_Is_Leaf (69, AMF.False);
-   Internal_Set_Is_Ordered (69, AMF.False);
-   Internal_Set_Is_Read_Only (69, AMF.False);
-   Internal_Set_Is_Unique (69, AMF.True);
+   Internal_Set_Is_Composite (69, True);
+   Internal_Set_Is_Derived (69, True);
+   Internal_Set_Is_Derived_Union (69, False);
+   Internal_Set_Is_Leaf (69, False);
+   Internal_Set_Is_Ordered (69, False);
+   Internal_Set_Is_Read_Only (69, False);
+   Internal_Set_Is_Unique (69, True);
    Internal_Set_Lower (
 69, 0);   Internal_Set_Name
     (69,
@@ -4518,13 +4518,13 @@ begin
    Internal_Set_Default
     (68,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (68, AMF.True);
-   Internal_Set_Is_Derived (68, AMF.True);
-   Internal_Set_Is_Derived_Union (68, AMF.False);
-   Internal_Set_Is_Leaf (68, AMF.False);
-   Internal_Set_Is_Ordered (68, AMF.False);
-   Internal_Set_Is_Read_Only (68, AMF.False);
-   Internal_Set_Is_Unique (68, AMF.True);
+   Internal_Set_Is_Composite (68, True);
+   Internal_Set_Is_Derived (68, True);
+   Internal_Set_Is_Derived_Union (68, False);
+   Internal_Set_Is_Leaf (68, False);
+   Internal_Set_Is_Ordered (68, False);
+   Internal_Set_Is_Read_Only (68, False);
+   Internal_Set_Is_Unique (68, True);
    Internal_Set_Lower (
 68, 0);   Internal_Set_Name
     (68,
@@ -4538,13 +4538,13 @@ begin
    Internal_Set_Default
     (108,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (108, AMF.False);
-   Internal_Set_Is_Derived (108, AMF.False);
-   Internal_Set_Is_Derived_Union (108, AMF.False);
-   Internal_Set_Is_Leaf (108, AMF.False);
-   Internal_Set_Is_Ordered (108, AMF.False);
-   Internal_Set_Is_Read_Only (108, AMF.False);
-   Internal_Set_Is_Unique (108, AMF.True);
+   Internal_Set_Is_Composite (108, False);
+   Internal_Set_Is_Derived (108, False);
+   Internal_Set_Is_Derived_Union (108, False);
+   Internal_Set_Is_Leaf (108, False);
+   Internal_Set_Is_Ordered (108, False);
+   Internal_Set_Is_Read_Only (108, False);
+   Internal_Set_Is_Unique (108, True);
    Internal_Set_Lower (
 108, 0);   Internal_Set_Name
     (108,
@@ -4558,13 +4558,13 @@ begin
    Internal_Set_Default
     (70,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (70, AMF.True);
-   Internal_Set_Is_Derived (70, AMF.False);
-   Internal_Set_Is_Derived_Union (70, AMF.False);
-   Internal_Set_Is_Leaf (70, AMF.False);
-   Internal_Set_Is_Ordered (70, AMF.False);
-   Internal_Set_Is_Read_Only (70, AMF.False);
-   Internal_Set_Is_Unique (70, AMF.True);
+   Internal_Set_Is_Composite (70, True);
+   Internal_Set_Is_Derived (70, False);
+   Internal_Set_Is_Derived_Union (70, False);
+   Internal_Set_Is_Leaf (70, False);
+   Internal_Set_Is_Ordered (70, False);
+   Internal_Set_Is_Read_Only (70, False);
+   Internal_Set_Is_Unique (70, True);
    Internal_Set_Lower (
 70, 0);   Internal_Set_Name
     (70,
@@ -4578,13 +4578,13 @@ begin
    Internal_Set_Default
     (109,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (109, AMF.False);
-   Internal_Set_Is_Derived (109, AMF.False);
-   Internal_Set_Is_Derived_Union (109, AMF.False);
-   Internal_Set_Is_Leaf (109, AMF.False);
-   Internal_Set_Is_Ordered (109, AMF.False);
-   Internal_Set_Is_Read_Only (109, AMF.False);
-   Internal_Set_Is_Unique (109, AMF.True);
+   Internal_Set_Is_Composite (109, False);
+   Internal_Set_Is_Derived (109, False);
+   Internal_Set_Is_Derived_Union (109, False);
+   Internal_Set_Is_Leaf (109, False);
+   Internal_Set_Is_Ordered (109, False);
+   Internal_Set_Is_Read_Only (109, False);
+   Internal_Set_Is_Unique (109, True);
    Internal_Set_Lower (
 109, 0);   Internal_Set_Name
     (109,
@@ -4595,10 +4595,10 @@ begin
     (668,
      League.Strings.To_Universal_String ("Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt. UML 1.4 and MOF 1.4 were assigned URIs to their outermost package. The package URI appears in XMI files when instances of the package["2019"]s classes are serialized."));
    Initialize_Operation (669, Extent);
-   Internal_Set_Is_Leaf (669, AMF.False);
-   Internal_Set_Is_Ordered (669, AMF.False);
-   Internal_Set_Is_Query (669, AMF.True);
-   Internal_Set_Is_Unique (669, AMF.True);
+   Internal_Set_Is_Leaf (669, False);
+   Internal_Set_Is_Ordered (669, False);
+   Internal_Set_Is_Query (669, True);
+   Internal_Set_Is_Unique (669, True);
    Internal_Set_Lower (
 669, 1);   Internal_Set_Name
     (669,
@@ -4620,18 +4620,18 @@ begin
    Internal_Set_Default
     (673,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (673, AMF.False);
-   Internal_Set_Is_Unique (673, AMF.True);
+   Internal_Set_Is_Ordered (673, False);
+   Internal_Set_Is_Unique (673, True);
    Internal_Set_Lower (
 673, 1);   Internal_Set_Name
     (673,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (673, (False, 1));
    Initialize_Operation (674, Extent);
-   Internal_Set_Is_Leaf (674, AMF.False);
-   Internal_Set_Is_Ordered (674, AMF.False);
-   Internal_Set_Is_Query (674, AMF.True);
-   Internal_Set_Is_Unique (674, AMF.True);
+   Internal_Set_Is_Leaf (674, False);
+   Internal_Set_Is_Ordered (674, False);
+   Internal_Set_Is_Query (674, True);
+   Internal_Set_Is_Unique (674, True);
    Internal_Set_Lower (
 674, 1);   Internal_Set_Name
     (674,
@@ -4653,18 +4653,18 @@ begin
    Internal_Set_Default
     (678,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (678, AMF.False);
-   Internal_Set_Is_Unique (678, AMF.True);
+   Internal_Set_Is_Ordered (678, False);
+   Internal_Set_Is_Unique (678, True);
    Internal_Set_Lower (
 678, 0);   Internal_Set_Name
     (678,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (678, (Unlimited => True));
    Initialize_Operation (679, Extent);
-   Internal_Set_Is_Leaf (679, AMF.False);
-   Internal_Set_Is_Ordered (679, AMF.False);
-   Internal_Set_Is_Query (679, AMF.True);
-   Internal_Set_Is_Unique (679, AMF.True);
+   Internal_Set_Is_Leaf (679, False);
+   Internal_Set_Is_Ordered (679, False);
+   Internal_Set_Is_Query (679, True);
+   Internal_Set_Is_Unique (679, True);
    Internal_Set_Lower (
 679, 1);   Internal_Set_Name
     (679,
@@ -4694,8 +4694,8 @@ begin
    Internal_Set_Default
     (685,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (685, AMF.False);
-   Internal_Set_Is_Unique (685, AMF.True);
+   Internal_Set_Is_Ordered (685, False);
+   Internal_Set_Is_Unique (685, True);
    Internal_Set_Lower (
 685, 1);   Internal_Set_Name
     (685,
@@ -4705,16 +4705,16 @@ begin
    Internal_Set_Default
     (686,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (686, AMF.False);
-   Internal_Set_Is_Unique (686, AMF.True);
+   Internal_Set_Is_Ordered (686, False);
+   Internal_Set_Is_Unique (686, True);
    Internal_Set_Lower (
 686, 1);   Internal_Set_Name
     (686,
      League.Strings.To_Universal_String ("el"));
    Internal_Set_Upper (686, (False, 1));
    Initialize_Class (21, Extent);
-   Internal_Set_Is_Abstract (21, AMF.False);
-   Internal_Set_Is_Final_Specialization (21, AMF.False);
+   Internal_Set_Is_Abstract (21, False);
+   Internal_Set_Is_Final_Specialization (21, False);
    Internal_Set_Name
     (21,
      League.Strings.To_Universal_String ("PackageImport"));
@@ -4738,13 +4738,13 @@ begin
    Internal_Set_Default
     (112,
      League.Strings.To_Universal_String ("public"));
-   Internal_Set_Is_Composite (112, AMF.False);
-   Internal_Set_Is_Derived (112, AMF.False);
-   Internal_Set_Is_Derived_Union (112, AMF.False);
-   Internal_Set_Is_Leaf (112, AMF.False);
-   Internal_Set_Is_Ordered (112, AMF.False);
-   Internal_Set_Is_Read_Only (112, AMF.False);
-   Internal_Set_Is_Unique (112, AMF.True);
+   Internal_Set_Is_Composite (112, False);
+   Internal_Set_Is_Derived (112, False);
+   Internal_Set_Is_Derived_Union (112, False);
+   Internal_Set_Is_Leaf (112, False);
+   Internal_Set_Is_Ordered (112, False);
+   Internal_Set_Is_Read_Only (112, False);
+   Internal_Set_Is_Unique (112, True);
    Internal_Set_Lower (
 112, 1);   Internal_Set_Name
     (112,
@@ -4758,13 +4758,13 @@ begin
    Internal_Set_Default
     (110,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (110, AMF.False);
-   Internal_Set_Is_Derived (110, AMF.False);
-   Internal_Set_Is_Derived_Union (110, AMF.False);
-   Internal_Set_Is_Leaf (110, AMF.False);
-   Internal_Set_Is_Ordered (110, AMF.False);
-   Internal_Set_Is_Read_Only (110, AMF.False);
-   Internal_Set_Is_Unique (110, AMF.True);
+   Internal_Set_Is_Composite (110, False);
+   Internal_Set_Is_Derived (110, False);
+   Internal_Set_Is_Derived_Union (110, False);
+   Internal_Set_Is_Leaf (110, False);
+   Internal_Set_Is_Ordered (110, False);
+   Internal_Set_Is_Read_Only (110, False);
+   Internal_Set_Is_Unique (110, True);
    Internal_Set_Lower (
 110, 1);   Internal_Set_Name
     (110,
@@ -4778,13 +4778,13 @@ begin
    Internal_Set_Default
     (111,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (111, AMF.False);
-   Internal_Set_Is_Derived (111, AMF.False);
-   Internal_Set_Is_Derived_Union (111, AMF.False);
-   Internal_Set_Is_Leaf (111, AMF.False);
-   Internal_Set_Is_Ordered (111, AMF.False);
-   Internal_Set_Is_Read_Only (111, AMF.False);
-   Internal_Set_Is_Unique (111, AMF.True);
+   Internal_Set_Is_Composite (111, False);
+   Internal_Set_Is_Derived (111, False);
+   Internal_Set_Is_Derived_Union (111, False);
+   Internal_Set_Is_Leaf (111, False);
+   Internal_Set_Is_Ordered (111, False);
+   Internal_Set_Is_Read_Only (111, False);
+   Internal_Set_Is_Unique (111, True);
    Internal_Set_Lower (
 111, 1);   Internal_Set_Name
     (111,
@@ -4795,8 +4795,8 @@ begin
     (693,
      League.Strings.To_Universal_String ("Specifies the Namespace that imports the members from a Package."));
    Initialize_Class (22, Extent);
-   Internal_Set_Is_Abstract (22, AMF.False);
-   Internal_Set_Is_Final_Specialization (22, AMF.False);
+   Internal_Set_Is_Abstract (22, False);
+   Internal_Set_Is_Final_Specialization (22, False);
    Internal_Set_Name
     (22,
      League.Strings.To_Universal_String ("PackageMerge"));
@@ -4808,13 +4808,13 @@ begin
    Internal_Set_Default
     (114,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (114, AMF.False);
-   Internal_Set_Is_Derived (114, AMF.False);
-   Internal_Set_Is_Derived_Union (114, AMF.False);
-   Internal_Set_Is_Leaf (114, AMF.False);
-   Internal_Set_Is_Ordered (114, AMF.False);
-   Internal_Set_Is_Read_Only (114, AMF.False);
-   Internal_Set_Is_Unique (114, AMF.True);
+   Internal_Set_Is_Composite (114, False);
+   Internal_Set_Is_Derived (114, False);
+   Internal_Set_Is_Derived_Union (114, False);
+   Internal_Set_Is_Leaf (114, False);
+   Internal_Set_Is_Ordered (114, False);
+   Internal_Set_Is_Read_Only (114, False);
+   Internal_Set_Is_Unique (114, True);
    Internal_Set_Lower (
 114, 1);   Internal_Set_Name
     (114,
@@ -4828,13 +4828,13 @@ begin
    Internal_Set_Default
     (113,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (113, AMF.False);
-   Internal_Set_Is_Derived (113, AMF.False);
-   Internal_Set_Is_Derived_Union (113, AMF.False);
-   Internal_Set_Is_Leaf (113, AMF.False);
-   Internal_Set_Is_Ordered (113, AMF.False);
-   Internal_Set_Is_Read_Only (113, AMF.False);
-   Internal_Set_Is_Unique (113, AMF.True);
+   Internal_Set_Is_Composite (113, False);
+   Internal_Set_Is_Derived (113, False);
+   Internal_Set_Is_Derived_Union (113, False);
+   Internal_Set_Is_Leaf (113, False);
+   Internal_Set_Is_Ordered (113, False);
+   Internal_Set_Is_Read_Only (113, False);
+   Internal_Set_Is_Unique (113, True);
    Internal_Set_Lower (
 113, 1);   Internal_Set_Name
     (113,
@@ -4845,8 +4845,8 @@ begin
     (696,
      League.Strings.To_Universal_String ("References the Package that is to be merged with the receiving package of the PackageMerge."));
    Initialize_Class (30, Extent);
-   Internal_Set_Is_Abstract (30, AMF.True);
-   Internal_Set_Is_Final_Specialization (30, AMF.False);
+   Internal_Set_Is_Abstract (30, True);
+   Internal_Set_Is_Final_Specialization (30, False);
    Internal_Set_Name
     (30,
      League.Strings.To_Universal_String ("Type"));
@@ -4858,13 +4858,13 @@ begin
    Internal_Set_Default
     (129,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (129, AMF.False);
-   Internal_Set_Is_Derived (129, AMF.False);
-   Internal_Set_Is_Derived_Union (129, AMF.False);
-   Internal_Set_Is_Leaf (129, AMF.False);
-   Internal_Set_Is_Ordered (129, AMF.False);
-   Internal_Set_Is_Read_Only (129, AMF.False);
-   Internal_Set_Is_Unique (129, AMF.True);
+   Internal_Set_Is_Composite (129, False);
+   Internal_Set_Is_Derived (129, False);
+   Internal_Set_Is_Derived_Union (129, False);
+   Internal_Set_Is_Leaf (129, False);
+   Internal_Set_Is_Ordered (129, False);
+   Internal_Set_Is_Read_Only (129, False);
+   Internal_Set_Is_Unique (129, True);
    Internal_Set_Lower (
 129, 0);   Internal_Set_Name
     (129,
@@ -4875,10 +4875,10 @@ begin
     (698,
      League.Strings.To_Universal_String ("Specifies the owning package of this classifier, if any."));
    Initialize_Operation (699, Extent);
-   Internal_Set_Is_Leaf (699, AMF.False);
-   Internal_Set_Is_Ordered (699, AMF.False);
-   Internal_Set_Is_Query (699, AMF.True);
-   Internal_Set_Is_Unique (699, AMF.True);
+   Internal_Set_Is_Leaf (699, False);
+   Internal_Set_Is_Ordered (699, False);
+   Internal_Set_Is_Query (699, True);
+   Internal_Set_Is_Unique (699, True);
    Internal_Set_Lower (
 699, 1);   Internal_Set_Name
     (699,
@@ -4900,8 +4900,8 @@ begin
    Internal_Set_Default
     (703,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (703, AMF.False);
-   Internal_Set_Is_Unique (703, AMF.True);
+   Internal_Set_Is_Ordered (703, False);
+   Internal_Set_Is_Unique (703, True);
    Internal_Set_Lower (
 703, 1);   Internal_Set_Name
     (703,
@@ -4911,16 +4911,16 @@ begin
    Internal_Set_Default
     (704,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (704, AMF.False);
-   Internal_Set_Is_Unique (704, AMF.True);
+   Internal_Set_Is_Ordered (704, False);
+   Internal_Set_Is_Unique (704, True);
    Internal_Set_Lower (
 704, 1);   Internal_Set_Name
     (704,
      League.Strings.To_Universal_String ("other"));
    Internal_Set_Upper (704, (False, 1));
    Initialize_Class (16, Extent);
-   Internal_Set_Is_Abstract (16, AMF.True);
-   Internal_Set_Is_Final_Specialization (16, AMF.False);
+   Internal_Set_Is_Abstract (16, True);
+   Internal_Set_Is_Final_Specialization (16, False);
    Internal_Set_Name
     (16,
      League.Strings.To_Universal_String ("NamedElement"));
@@ -4968,13 +4968,13 @@ begin
    Internal_Set_Default
     (93,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (93, AMF.False);
-   Internal_Set_Is_Derived (93, AMF.False);
-   Internal_Set_Is_Derived_Union (93, AMF.False);
-   Internal_Set_Is_Leaf (93, AMF.False);
-   Internal_Set_Is_Ordered (93, AMF.False);
-   Internal_Set_Is_Read_Only (93, AMF.False);
-   Internal_Set_Is_Unique (93, AMF.True);
+   Internal_Set_Is_Composite (93, False);
+   Internal_Set_Is_Derived (93, False);
+   Internal_Set_Is_Derived_Union (93, False);
+   Internal_Set_Is_Leaf (93, False);
+   Internal_Set_Is_Ordered (93, False);
+   Internal_Set_Is_Read_Only (93, False);
+   Internal_Set_Is_Unique (93, True);
    Internal_Set_Lower (
 93, 0);   Internal_Set_Name
     (93,
@@ -4988,13 +4988,13 @@ begin
    Internal_Set_Default
     (96,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (96, AMF.False);
-   Internal_Set_Is_Derived (96, AMF.False);
-   Internal_Set_Is_Derived_Union (96, AMF.False);
-   Internal_Set_Is_Leaf (96, AMF.False);
-   Internal_Set_Is_Ordered (96, AMF.False);
-   Internal_Set_Is_Read_Only (96, AMF.False);
-   Internal_Set_Is_Unique (96, AMF.True);
+   Internal_Set_Is_Composite (96, False);
+   Internal_Set_Is_Derived (96, False);
+   Internal_Set_Is_Derived_Union (96, False);
+   Internal_Set_Is_Leaf (96, False);
+   Internal_Set_Is_Ordered (96, False);
+   Internal_Set_Is_Read_Only (96, False);
+   Internal_Set_Is_Unique (96, True);
    Internal_Set_Lower (
 96, 0);   Internal_Set_Name
     (96,
@@ -5008,13 +5008,13 @@ begin
    Internal_Set_Default
     (94,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (94, AMF.False);
-   Internal_Set_Is_Derived (94, AMF.True);
-   Internal_Set_Is_Derived_Union (94, AMF.True);
-   Internal_Set_Is_Leaf (94, AMF.False);
-   Internal_Set_Is_Ordered (94, AMF.False);
-   Internal_Set_Is_Read_Only (94, AMF.True);
-   Internal_Set_Is_Unique (94, AMF.True);
+   Internal_Set_Is_Composite (94, False);
+   Internal_Set_Is_Derived (94, True);
+   Internal_Set_Is_Derived_Union (94, True);
+   Internal_Set_Is_Leaf (94, False);
+   Internal_Set_Is_Ordered (94, False);
+   Internal_Set_Is_Read_Only (94, True);
+   Internal_Set_Is_Unique (94, True);
    Internal_Set_Lower (
 94, 0);   Internal_Set_Name
     (94,
@@ -5028,13 +5028,13 @@ begin
    Internal_Set_Default
     (95,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (95, AMF.False);
-   Internal_Set_Is_Derived (95, AMF.True);
-   Internal_Set_Is_Derived_Union (95, AMF.False);
-   Internal_Set_Is_Leaf (95, AMF.False);
-   Internal_Set_Is_Ordered (95, AMF.False);
-   Internal_Set_Is_Read_Only (95, AMF.True);
-   Internal_Set_Is_Unique (95, AMF.True);
+   Internal_Set_Is_Composite (95, False);
+   Internal_Set_Is_Derived (95, True);
+   Internal_Set_Is_Derived_Union (95, False);
+   Internal_Set_Is_Leaf (95, False);
+   Internal_Set_Is_Ordered (95, False);
+   Internal_Set_Is_Read_Only (95, True);
+   Internal_Set_Is_Unique (95, True);
    Internal_Set_Lower (
 95, 0);   Internal_Set_Name
     (95,
@@ -5045,10 +5045,10 @@ begin
     (718,
      League.Strings.To_Universal_String ("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself."));
    Initialize_Operation (719, Extent);
-   Internal_Set_Is_Leaf (719, AMF.False);
-   Internal_Set_Is_Ordered (719, AMF.False);
-   Internal_Set_Is_Query (719, AMF.True);
-   Internal_Set_Is_Unique (719, AMF.True);
+   Internal_Set_Is_Leaf (719, False);
+   Internal_Set_Is_Ordered (719, False);
+   Internal_Set_Is_Query (719, True);
+   Internal_Set_Is_Unique (719, True);
    Internal_Set_Lower (
 719, 1);   Internal_Set_Name
     (719,
@@ -5070,18 +5070,18 @@ begin
    Internal_Set_Default
     (723,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (723, AMF.True);
-   Internal_Set_Is_Unique (723, AMF.True);
+   Internal_Set_Is_Ordered (723, True);
+   Internal_Set_Is_Unique (723, True);
    Internal_Set_Lower (
 723, 0);   Internal_Set_Name
     (723,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (723, (Unlimited => True));
    Initialize_Operation (724, Extent);
-   Internal_Set_Is_Leaf (724, AMF.False);
-   Internal_Set_Is_Ordered (724, AMF.False);
-   Internal_Set_Is_Query (724, AMF.True);
-   Internal_Set_Is_Unique (724, AMF.True);
+   Internal_Set_Is_Leaf (724, False);
+   Internal_Set_Is_Ordered (724, False);
+   Internal_Set_Is_Query (724, True);
+   Internal_Set_Is_Unique (724, True);
    Internal_Set_Lower (
 724, 1);   Internal_Set_Name
     (724,
@@ -5103,8 +5103,8 @@ begin
    Internal_Set_Default
     (728,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (728, AMF.False);
-   Internal_Set_Is_Unique (728, AMF.True);
+   Internal_Set_Is_Ordered (728, False);
+   Internal_Set_Is_Unique (728, True);
    Internal_Set_Lower (
 728, 1);   Internal_Set_Name
     (728,
@@ -5114,8 +5114,8 @@ begin
    Internal_Set_Default
     (729,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (729, AMF.False);
-   Internal_Set_Is_Unique (729, AMF.True);
+   Internal_Set_Is_Ordered (729, False);
+   Internal_Set_Is_Unique (729, True);
    Internal_Set_Lower (
 729, 1);   Internal_Set_Name
     (729,
@@ -5125,18 +5125,18 @@ begin
    Internal_Set_Default
     (730,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (730, AMF.False);
-   Internal_Set_Is_Unique (730, AMF.True);
+   Internal_Set_Is_Ordered (730, False);
+   Internal_Set_Is_Unique (730, True);
    Internal_Set_Lower (
 730, 1);   Internal_Set_Name
     (730,
      League.Strings.To_Universal_String ("ns"));
    Internal_Set_Upper (730, (False, 1));
    Initialize_Operation (731, Extent);
-   Internal_Set_Is_Leaf (731, AMF.False);
-   Internal_Set_Is_Ordered (731, AMF.False);
-   Internal_Set_Is_Query (731, AMF.True);
-   Internal_Set_Is_Unique (731, AMF.True);
+   Internal_Set_Is_Leaf (731, False);
+   Internal_Set_Is_Ordered (731, False);
+   Internal_Set_Is_Query (731, True);
+   Internal_Set_Is_Unique (731, True);
    Internal_Set_Lower (
 731, 1);   Internal_Set_Name
     (731,
@@ -5158,18 +5158,18 @@ begin
    Internal_Set_Default
     (735,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (735, AMF.False);
-   Internal_Set_Is_Unique (735, AMF.True);
+   Internal_Set_Is_Ordered (735, False);
+   Internal_Set_Is_Unique (735, True);
    Internal_Set_Lower (
 735, 1);   Internal_Set_Name
     (735,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (735, (False, 1));
    Initialize_Operation (736, Extent);
-   Internal_Set_Is_Leaf (736, AMF.False);
-   Internal_Set_Is_Ordered (736, AMF.False);
-   Internal_Set_Is_Query (736, AMF.True);
-   Internal_Set_Is_Unique (736, AMF.True);
+   Internal_Set_Is_Leaf (736, False);
+   Internal_Set_Is_Ordered (736, False);
+   Internal_Set_Is_Query (736, True);
+   Internal_Set_Is_Unique (736, True);
    Internal_Set_Lower (
 736, 1);   Internal_Set_Name
     (736,
@@ -5191,16 +5191,16 @@ begin
    Internal_Set_Default
     (740,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (740, AMF.False);
-   Internal_Set_Is_Unique (740, AMF.True);
+   Internal_Set_Is_Ordered (740, False);
+   Internal_Set_Is_Unique (740, True);
    Internal_Set_Lower (
 740, 1);   Internal_Set_Name
     (740,
      League.Strings.To_Universal_String (""));
    Internal_Set_Upper (740, (False, 1));
    Initialize_Class (13, Extent);
-   Internal_Set_Is_Abstract (13, AMF.False);
-   Internal_Set_Is_Final_Specialization (13, AMF.False);
+   Internal_Set_Is_Abstract (13, False);
+   Internal_Set_Is_Final_Specialization (13, False);
    Internal_Set_Name
     (13,
      League.Strings.To_Universal_String ("Expression"));
@@ -5212,13 +5212,13 @@ begin
    Internal_Set_Default
     (55,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (55, AMF.True);
-   Internal_Set_Is_Derived (55, AMF.False);
-   Internal_Set_Is_Derived_Union (55, AMF.False);
-   Internal_Set_Is_Leaf (55, AMF.False);
-   Internal_Set_Is_Ordered (55, AMF.True);
-   Internal_Set_Is_Read_Only (55, AMF.False);
-   Internal_Set_Is_Unique (55, AMF.True);
+   Internal_Set_Is_Composite (55, True);
+   Internal_Set_Is_Derived (55, False);
+   Internal_Set_Is_Derived_Union (55, False);
+   Internal_Set_Is_Leaf (55, False);
+   Internal_Set_Is_Ordered (55, True);
+   Internal_Set_Is_Read_Only (55, False);
+   Internal_Set_Is_Unique (55, True);
    Internal_Set_Lower (
 55, 0);   Internal_Set_Name
     (55,
@@ -5229,8 +5229,8 @@ begin
     (742,
      League.Strings.To_Universal_String ("Specifies a sequence of operands."));
    Initialize_Class (5, Extent);
-   Internal_Set_Is_Abstract (5, AMF.False);
-   Internal_Set_Is_Final_Specialization (5, AMF.False);
+   Internal_Set_Is_Abstract (5, False);
+   Internal_Set_Is_Final_Specialization (5, False);
    Internal_Set_Name
     (5,
      League.Strings.To_Universal_String ("Comment"));
@@ -5242,13 +5242,13 @@ begin
    Internal_Set_Default
     (80,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (80, AMF.False);
-   Internal_Set_Is_Derived (80, AMF.False);
-   Internal_Set_Is_Derived_Union (80, AMF.False);
-   Internal_Set_Is_Leaf (80, AMF.False);
-   Internal_Set_Is_Ordered (80, AMF.False);
-   Internal_Set_Is_Read_Only (80, AMF.False);
-   Internal_Set_Is_Unique (80, AMF.True);
+   Internal_Set_Is_Composite (80, False);
+   Internal_Set_Is_Derived (80, False);
+   Internal_Set_Is_Derived_Union (80, False);
+   Internal_Set_Is_Leaf (80, False);
+   Internal_Set_Is_Ordered (80, False);
+   Internal_Set_Is_Read_Only (80, False);
+   Internal_Set_Is_Unique (80, True);
    Internal_Set_Lower (
 80, 0);   Internal_Set_Name
     (80,
@@ -5262,13 +5262,13 @@ begin
    Internal_Set_Default
     (46,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (46, AMF.False);
-   Internal_Set_Is_Derived (46, AMF.False);
-   Internal_Set_Is_Derived_Union (46, AMF.False);
-   Internal_Set_Is_Leaf (46, AMF.False);
-   Internal_Set_Is_Ordered (46, AMF.False);
-   Internal_Set_Is_Read_Only (46, AMF.False);
-   Internal_Set_Is_Unique (46, AMF.True);
+   Internal_Set_Is_Composite (46, False);
+   Internal_Set_Is_Derived (46, False);
+   Internal_Set_Is_Derived_Union (46, False);
+   Internal_Set_Is_Leaf (46, False);
+   Internal_Set_Is_Ordered (46, False);
+   Internal_Set_Is_Read_Only (46, False);
+   Internal_Set_Is_Unique (46, True);
    Internal_Set_Lower (
 46, 0);   Internal_Set_Name
     (46,
@@ -5279,7 +5279,7 @@ begin
     (745,
      League.Strings.To_Universal_String ("References the Element(s) being commented."));
    Initialize_Enumeration (746, Extent);
-   Internal_Set_Is_Final_Specialization (746, AMF.False);
+   Internal_Set_Is_Final_Specialization (746, False);
    Internal_Set_Name
     (746,
      League.Strings.To_Universal_String ("ParameterDirectionKind"));
@@ -5320,7 +5320,7 @@ begin
     (755,
      League.Strings.To_Universal_String ("Indicates that parameter values are passed as return values from a behavioral element back to the caller."));
    Initialize_Enumeration (756, Extent);
-   Internal_Set_Is_Final_Specialization (756, AMF.False);
+   Internal_Set_Is_Final_Specialization (756, False);
    Internal_Set_Name
     (756,
      League.Strings.To_Universal_String ("VisibilityKind"));
@@ -5329,10 +5329,10 @@ begin
     (757,
      League.Strings.To_Universal_String ("VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model."));
    Initialize_Operation (758, Extent);
-   Internal_Set_Is_Leaf (758, AMF.False);
-   Internal_Set_Is_Ordered (758, AMF.False);
-   Internal_Set_Is_Query (758, AMF.True);
-   Internal_Set_Is_Unique (758, AMF.True);
+   Internal_Set_Is_Leaf (758, False);
+   Internal_Set_Is_Ordered (758, False);
+   Internal_Set_Is_Query (758, True);
+   Internal_Set_Is_Unique (758, True);
    Internal_Set_Lower (
 758, 1);   Internal_Set_Name
     (758,
@@ -5354,8 +5354,8 @@ begin
    Internal_Set_Default
     (762,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (762, AMF.False);
-   Internal_Set_Is_Unique (762, AMF.True);
+   Internal_Set_Is_Ordered (762, False);
+   Internal_Set_Is_Unique (762, True);
    Internal_Set_Lower (
 762, 1);   Internal_Set_Name
     (762,
@@ -5365,8 +5365,8 @@ begin
    Internal_Set_Default
     (763,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Ordered (763, AMF.False);
-   Internal_Set_Is_Unique (763, AMF.True);
+   Internal_Set_Is_Ordered (763, False);
+   Internal_Set_Is_Unique (763, True);
    Internal_Set_Lower (
 763, 0);   Internal_Set_Name
     (763,
@@ -5405,8 +5405,8 @@ begin
     (771,
      League.Strings.To_Universal_String ("A package element is owned by a namespace that is not a package, and is visible to elements that are in the same package as its owning namespace. Only named elements that are not owned by packages can be marked as having package visibility.  Any element marked as having package visibility is visible to all elements within the nearest enclosing package (given that other owning elements have proper visibility).  Outside the nearest enclosing package, an element marked as having package visibility is not visible."));
    Initialize_Association (137, Extent);
-   Internal_Set_Is_Derived (137, AMF.False);
-   Internal_Set_Is_Final_Specialization (137, AMF.False);
+   Internal_Set_Is_Derived (137, False);
+   Internal_Set_Is_Final_Specialization (137, False);
    Internal_Set_Name
     (137,
      League.Strings.To_Universal_String ("A_type_typedElement"));
@@ -5414,39 +5414,39 @@ begin
    Internal_Set_Default
     (772,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (772, AMF.False);
-   Internal_Set_Is_Derived (772, AMF.False);
-   Internal_Set_Is_Derived_Union (772, AMF.False);
-   Internal_Set_Is_Leaf (772, AMF.False);
-   Internal_Set_Is_Ordered (772, AMF.False);
-   Internal_Set_Is_Read_Only (772, AMF.False);
-   Internal_Set_Is_Unique (772, AMF.True);
+   Internal_Set_Is_Composite (772, False);
+   Internal_Set_Is_Derived (772, False);
+   Internal_Set_Is_Derived_Union (772, False);
+   Internal_Set_Is_Leaf (772, False);
+   Internal_Set_Is_Ordered (772, False);
+   Internal_Set_Is_Read_Only (772, False);
+   Internal_Set_Is_Unique (772, True);
    Internal_Set_Lower (
 772, 0);   Internal_Set_Name
     (772,
      League.Strings.To_Universal_String ("typedElement"));
    Internal_Set_Upper (772, (Unlimited => True));
    Initialize_Association (139, Extent);
-   Internal_Set_Is_Derived (139, AMF.False);
-   Internal_Set_Is_Final_Specialization (139, AMF.False);
+   Internal_Set_Is_Derived (139, False);
+   Internal_Set_Is_Final_Specialization (139, False);
    Internal_Set_Name
     (139,
      League.Strings.To_Universal_String ("A_ownedAttribute_class"));
    Initialize_Association (141, Extent);
-   Internal_Set_Is_Derived (141, AMF.False);
-   Internal_Set_Is_Final_Specialization (141, AMF.False);
+   Internal_Set_Is_Derived (141, False);
+   Internal_Set_Is_Final_Specialization (141, False);
    Internal_Set_Name
     (141,
      League.Strings.To_Universal_String ("A_ownedOperation_class"));
    Initialize_Association (142, Extent);
-   Internal_Set_Is_Derived (142, AMF.False);
-   Internal_Set_Is_Final_Specialization (142, AMF.False);
+   Internal_Set_Is_Derived (142, False);
+   Internal_Set_Is_Final_Specialization (142, False);
    Internal_Set_Name
     (142,
      League.Strings.To_Universal_String ("A_ownedEnd_owningAssociation"));
    Initialize_Association (144, Extent);
-   Internal_Set_Is_Derived (144, AMF.False);
-   Internal_Set_Is_Final_Specialization (144, AMF.False);
+   Internal_Set_Is_Derived (144, False);
+   Internal_Set_Is_Final_Specialization (144, False);
    Internal_Set_Name
     (144,
      League.Strings.To_Universal_String ("A_attribute_classifier"));
@@ -5454,21 +5454,21 @@ begin
    Internal_Set_Default
     (773,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (773, AMF.False);
-   Internal_Set_Is_Derived (773, AMF.False);
-   Internal_Set_Is_Derived_Union (773, AMF.False);
-   Internal_Set_Is_Leaf (773, AMF.False);
-   Internal_Set_Is_Ordered (773, AMF.False);
-   Internal_Set_Is_Read_Only (773, AMF.False);
-   Internal_Set_Is_Unique (773, AMF.True);
+   Internal_Set_Is_Composite (773, False);
+   Internal_Set_Is_Derived (773, False);
+   Internal_Set_Is_Derived_Union (773, False);
+   Internal_Set_Is_Leaf (773, False);
+   Internal_Set_Is_Ordered (773, False);
+   Internal_Set_Is_Read_Only (773, False);
+   Internal_Set_Is_Unique (773, True);
    Internal_Set_Lower (
 773, 0);   Internal_Set_Name
     (773,
      League.Strings.To_Universal_String ("classifier"));
    Internal_Set_Upper (773, (False, 1));
    Initialize_Association (146, Extent);
-   Internal_Set_Is_Derived (146, AMF.False);
-   Internal_Set_Is_Final_Specialization (146, AMF.False);
+   Internal_Set_Is_Derived (146, False);
+   Internal_Set_Is_Final_Specialization (146, False);
    Internal_Set_Name
     (146,
      League.Strings.To_Universal_String ("A_redefinedProperty_property"));
@@ -5476,21 +5476,21 @@ begin
    Internal_Set_Default
     (774,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (774, AMF.False);
-   Internal_Set_Is_Derived (774, AMF.False);
-   Internal_Set_Is_Derived_Union (774, AMF.False);
-   Internal_Set_Is_Leaf (774, AMF.False);
-   Internal_Set_Is_Ordered (774, AMF.False);
-   Internal_Set_Is_Read_Only (774, AMF.False);
-   Internal_Set_Is_Unique (774, AMF.True);
+   Internal_Set_Is_Composite (774, False);
+   Internal_Set_Is_Derived (774, False);
+   Internal_Set_Is_Derived_Union (774, False);
+   Internal_Set_Is_Leaf (774, False);
+   Internal_Set_Is_Ordered (774, False);
+   Internal_Set_Is_Read_Only (774, False);
+   Internal_Set_Is_Unique (774, True);
    Internal_Set_Lower (
 774, 0);   Internal_Set_Name
     (774,
      League.Strings.To_Universal_String ("property"));
    Internal_Set_Upper (774, (Unlimited => True));
    Initialize_Association (148, Extent);
-   Internal_Set_Is_Derived (148, AMF.False);
-   Internal_Set_Is_Final_Specialization (148, AMF.False);
+   Internal_Set_Is_Derived (148, False);
+   Internal_Set_Is_Final_Specialization (148, False);
    Internal_Set_Name
     (148,
      League.Strings.To_Universal_String ("A_subsettedProperty_property"));
@@ -5498,21 +5498,21 @@ begin
    Internal_Set_Default
     (775,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (775, AMF.False);
-   Internal_Set_Is_Derived (775, AMF.False);
-   Internal_Set_Is_Derived_Union (775, AMF.False);
-   Internal_Set_Is_Leaf (775, AMF.False);
-   Internal_Set_Is_Ordered (775, AMF.False);
-   Internal_Set_Is_Read_Only (775, AMF.False);
-   Internal_Set_Is_Unique (775, AMF.True);
+   Internal_Set_Is_Composite (775, False);
+   Internal_Set_Is_Derived (775, False);
+   Internal_Set_Is_Derived_Union (775, False);
+   Internal_Set_Is_Leaf (775, False);
+   Internal_Set_Is_Ordered (775, False);
+   Internal_Set_Is_Read_Only (775, False);
+   Internal_Set_Is_Unique (775, True);
    Internal_Set_Lower (
 775, 0);   Internal_Set_Name
     (775,
      League.Strings.To_Universal_String ("property"));
    Internal_Set_Upper (775, (Unlimited => True));
    Initialize_Association (150, Extent);
-   Internal_Set_Is_Derived (150, AMF.False);
-   Internal_Set_Is_Final_Specialization (150, AMF.False);
+   Internal_Set_Is_Derived (150, False);
+   Internal_Set_Is_Final_Specialization (150, False);
    Internal_Set_Name
     (150,
      League.Strings.To_Universal_String ("A_opposite_property"));
@@ -5520,21 +5520,21 @@ begin
    Internal_Set_Default
     (776,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (776, AMF.False);
-   Internal_Set_Is_Derived (776, AMF.False);
-   Internal_Set_Is_Derived_Union (776, AMF.False);
-   Internal_Set_Is_Leaf (776, AMF.False);
-   Internal_Set_Is_Ordered (776, AMF.False);
-   Internal_Set_Is_Read_Only (776, AMF.False);
-   Internal_Set_Is_Unique (776, AMF.True);
+   Internal_Set_Is_Composite (776, False);
+   Internal_Set_Is_Derived (776, False);
+   Internal_Set_Is_Derived_Union (776, False);
+   Internal_Set_Is_Leaf (776, False);
+   Internal_Set_Is_Ordered (776, False);
+   Internal_Set_Is_Read_Only (776, False);
+   Internal_Set_Is_Unique (776, True);
    Internal_Set_Lower (
 776, 0);   Internal_Set_Name
     (776,
      League.Strings.To_Universal_String ("property"));
    Internal_Set_Upper (776, (False, 1));
    Initialize_Association (152, Extent);
-   Internal_Set_Is_Derived (152, AMF.False);
-   Internal_Set_Is_Final_Specialization (152, AMF.False);
+   Internal_Set_Is_Derived (152, False);
+   Internal_Set_Is_Final_Specialization (152, False);
    Internal_Set_Name
     (152,
      League.Strings.To_Universal_String ("A_superClass_class"));
@@ -5542,21 +5542,21 @@ begin
    Internal_Set_Default
     (777,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (777, AMF.False);
-   Internal_Set_Is_Derived (777, AMF.False);
-   Internal_Set_Is_Derived_Union (777, AMF.False);
-   Internal_Set_Is_Leaf (777, AMF.False);
-   Internal_Set_Is_Ordered (777, AMF.False);
-   Internal_Set_Is_Read_Only (777, AMF.False);
-   Internal_Set_Is_Unique (777, AMF.True);
+   Internal_Set_Is_Composite (777, False);
+   Internal_Set_Is_Derived (777, False);
+   Internal_Set_Is_Derived_Union (777, False);
+   Internal_Set_Is_Leaf (777, False);
+   Internal_Set_Is_Ordered (777, False);
+   Internal_Set_Is_Read_Only (777, False);
+   Internal_Set_Is_Unique (777, True);
    Internal_Set_Lower (
 777, 0);   Internal_Set_Name
     (777,
      League.Strings.To_Universal_String ("class"));
    Internal_Set_Upper (777, (Unlimited => True));
    Initialize_Association (155, Extent);
-   Internal_Set_Is_Derived (155, AMF.False);
-   Internal_Set_Is_Final_Specialization (155, AMF.False);
+   Internal_Set_Is_Derived (155, False);
+   Internal_Set_Is_Final_Specialization (155, False);
    Internal_Set_Name
     (155,
      League.Strings.To_Universal_String ("A_endType_association"));
@@ -5564,39 +5564,39 @@ begin
    Internal_Set_Default
     (778,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (778, AMF.False);
-   Internal_Set_Is_Derived (778, AMF.False);
-   Internal_Set_Is_Derived_Union (778, AMF.False);
-   Internal_Set_Is_Leaf (778, AMF.False);
-   Internal_Set_Is_Ordered (778, AMF.False);
-   Internal_Set_Is_Read_Only (778, AMF.False);
-   Internal_Set_Is_Unique (778, AMF.True);
+   Internal_Set_Is_Composite (778, False);
+   Internal_Set_Is_Derived (778, False);
+   Internal_Set_Is_Derived_Union (778, False);
+   Internal_Set_Is_Leaf (778, False);
+   Internal_Set_Is_Ordered (778, False);
+   Internal_Set_Is_Read_Only (778, False);
+   Internal_Set_Is_Unique (778, True);
    Internal_Set_Lower (
 778, 0);   Internal_Set_Name
     (778,
      League.Strings.To_Universal_String ("association"));
    Internal_Set_Upper (778, (Unlimited => True));
    Initialize_Association (157, Extent);
-   Internal_Set_Is_Derived (157, AMF.False);
-   Internal_Set_Is_Final_Specialization (157, AMF.False);
+   Internal_Set_Is_Derived (157, False);
+   Internal_Set_Is_Final_Specialization (157, False);
    Internal_Set_Name
     (157,
      League.Strings.To_Universal_String ("A_ownedLiteral_enumeration"));
    Initialize_Association (158, Extent);
-   Internal_Set_Is_Derived (158, AMF.False);
-   Internal_Set_Is_Final_Specialization (158, AMF.False);
+   Internal_Set_Is_Derived (158, False);
+   Internal_Set_Is_Final_Specialization (158, False);
    Internal_Set_Name
     (158,
      League.Strings.To_Universal_String ("A_ownedAttribute_datatype"));
    Initialize_Association (160, Extent);
-   Internal_Set_Is_Derived (160, AMF.False);
-   Internal_Set_Is_Final_Specialization (160, AMF.False);
+   Internal_Set_Is_Derived (160, False);
+   Internal_Set_Is_Final_Specialization (160, False);
    Internal_Set_Name
     (160,
      League.Strings.To_Universal_String ("A_ownedOperation_datatype"));
    Initialize_Association (161, Extent);
-   Internal_Set_Is_Derived (161, AMF.False);
-   Internal_Set_Is_Final_Specialization (161, AMF.False);
+   Internal_Set_Is_Derived (161, False);
+   Internal_Set_Is_Final_Specialization (161, False);
    Internal_Set_Name
     (161,
      League.Strings.To_Universal_String ("A_raisedException_operation"));
@@ -5604,21 +5604,21 @@ begin
    Internal_Set_Default
     (779,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (779, AMF.False);
-   Internal_Set_Is_Derived (779, AMF.False);
-   Internal_Set_Is_Derived_Union (779, AMF.False);
-   Internal_Set_Is_Leaf (779, AMF.False);
-   Internal_Set_Is_Ordered (779, AMF.False);
-   Internal_Set_Is_Read_Only (779, AMF.False);
-   Internal_Set_Is_Unique (779, AMF.True);
+   Internal_Set_Is_Composite (779, False);
+   Internal_Set_Is_Derived (779, False);
+   Internal_Set_Is_Derived_Union (779, False);
+   Internal_Set_Is_Leaf (779, False);
+   Internal_Set_Is_Ordered (779, False);
+   Internal_Set_Is_Read_Only (779, False);
+   Internal_Set_Is_Unique (779, True);
    Internal_Set_Lower (
 779, 0);   Internal_Set_Name
     (779,
      League.Strings.To_Universal_String ("operation"));
    Internal_Set_Upper (779, (Unlimited => True));
    Initialize_Association (164, Extent);
-   Internal_Set_Is_Derived (164, AMF.False);
-   Internal_Set_Is_Final_Specialization (164, AMF.False);
+   Internal_Set_Is_Derived (164, False);
+   Internal_Set_Is_Final_Specialization (164, False);
    Internal_Set_Name
     (164,
      League.Strings.To_Universal_String ("A_redefinedOperation_operation"));
@@ -5626,21 +5626,21 @@ begin
    Internal_Set_Default
     (780,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (780, AMF.False);
-   Internal_Set_Is_Derived (780, AMF.False);
-   Internal_Set_Is_Derived_Union (780, AMF.False);
-   Internal_Set_Is_Leaf (780, AMF.False);
-   Internal_Set_Is_Ordered (780, AMF.False);
-   Internal_Set_Is_Read_Only (780, AMF.False);
-   Internal_Set_Is_Unique (780, AMF.True);
+   Internal_Set_Is_Composite (780, False);
+   Internal_Set_Is_Derived (780, False);
+   Internal_Set_Is_Derived_Union (780, False);
+   Internal_Set_Is_Leaf (780, False);
+   Internal_Set_Is_Ordered (780, False);
+   Internal_Set_Is_Read_Only (780, False);
+   Internal_Set_Is_Unique (780, True);
    Internal_Set_Lower (
 780, 0);   Internal_Set_Name
     (780,
      League.Strings.To_Universal_String ("operation"));
    Internal_Set_Upper (780, (Unlimited => True));
    Initialize_Association (166, Extent);
-   Internal_Set_Is_Derived (166, AMF.False);
-   Internal_Set_Is_Final_Specialization (166, AMF.False);
+   Internal_Set_Is_Derived (166, False);
+   Internal_Set_Is_Final_Specialization (166, False);
    Internal_Set_Name
     (166,
      League.Strings.To_Universal_String ("A_ownedParameter_ownerFormalParam"));
@@ -5648,21 +5648,21 @@ begin
    Internal_Set_Default
     (781,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (781, AMF.False);
-   Internal_Set_Is_Derived (781, AMF.False);
-   Internal_Set_Is_Derived_Union (781, AMF.False);
-   Internal_Set_Is_Leaf (781, AMF.False);
-   Internal_Set_Is_Ordered (781, AMF.False);
-   Internal_Set_Is_Read_Only (781, AMF.False);
-   Internal_Set_Is_Unique (781, AMF.True);
+   Internal_Set_Is_Composite (781, False);
+   Internal_Set_Is_Derived (781, False);
+   Internal_Set_Is_Derived_Union (781, False);
+   Internal_Set_Is_Leaf (781, False);
+   Internal_Set_Is_Ordered (781, False);
+   Internal_Set_Is_Read_Only (781, False);
+   Internal_Set_Is_Unique (781, True);
    Internal_Set_Lower (
 781, 0);   Internal_Set_Name
     (781,
      League.Strings.To_Universal_String ("ownerFormalParam"));
    Internal_Set_Upper (781, (False, 1));
    Initialize_Association (168, Extent);
-   Internal_Set_Is_Derived (168, AMF.False);
-   Internal_Set_Is_Final_Specialization (168, AMF.False);
+   Internal_Set_Is_Derived (168, False);
+   Internal_Set_Is_Final_Specialization (168, False);
    Internal_Set_Name
     (168,
      League.Strings.To_Universal_String ("A_raisedException_behavioralFeature"));
@@ -5670,21 +5670,21 @@ begin
    Internal_Set_Default
     (782,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (782, AMF.False);
-   Internal_Set_Is_Derived (782, AMF.False);
-   Internal_Set_Is_Derived_Union (782, AMF.False);
-   Internal_Set_Is_Leaf (782, AMF.False);
-   Internal_Set_Is_Ordered (782, AMF.False);
-   Internal_Set_Is_Read_Only (782, AMF.False);
-   Internal_Set_Is_Unique (782, AMF.True);
+   Internal_Set_Is_Composite (782, False);
+   Internal_Set_Is_Derived (782, False);
+   Internal_Set_Is_Derived_Union (782, False);
+   Internal_Set_Is_Leaf (782, False);
+   Internal_Set_Is_Ordered (782, False);
+   Internal_Set_Is_Read_Only (782, False);
+   Internal_Set_Is_Unique (782, True);
    Internal_Set_Lower (
 782, 0);   Internal_Set_Name
     (782,
      League.Strings.To_Universal_String ("behavioralFeature"));
    Internal_Set_Upper (782, (Unlimited => True));
    Initialize_Association (170, Extent);
-   Internal_Set_Is_Derived (170, AMF.False);
-   Internal_Set_Is_Final_Specialization (170, AMF.False);
+   Internal_Set_Is_Derived (170, False);
+   Internal_Set_Is_Final_Specialization (170, False);
    Internal_Set_Name
     (170,
      League.Strings.To_Universal_String ("A_importedMember_namespace"));
@@ -5692,21 +5692,21 @@ begin
    Internal_Set_Default
     (783,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (783, AMF.False);
-   Internal_Set_Is_Derived (783, AMF.False);
-   Internal_Set_Is_Derived_Union (783, AMF.False);
-   Internal_Set_Is_Leaf (783, AMF.False);
-   Internal_Set_Is_Ordered (783, AMF.False);
-   Internal_Set_Is_Read_Only (783, AMF.False);
-   Internal_Set_Is_Unique (783, AMF.True);
+   Internal_Set_Is_Composite (783, False);
+   Internal_Set_Is_Derived (783, False);
+   Internal_Set_Is_Derived_Union (783, False);
+   Internal_Set_Is_Leaf (783, False);
+   Internal_Set_Is_Ordered (783, False);
+   Internal_Set_Is_Read_Only (783, False);
+   Internal_Set_Is_Unique (783, True);
    Internal_Set_Lower (
 783, 0);   Internal_Set_Name
     (783,
      League.Strings.To_Universal_String ("namespace"));
    Internal_Set_Upper (783, (Unlimited => True));
    Initialize_Association (172, Extent);
-   Internal_Set_Is_Derived (172, AMF.False);
-   Internal_Set_Is_Final_Specialization (172, AMF.False);
+   Internal_Set_Is_Derived (172, False);
+   Internal_Set_Is_Final_Specialization (172, False);
    Internal_Set_Name
     (172,
      League.Strings.To_Universal_String ("A_importedPackage_packageImport"));
@@ -5714,21 +5714,21 @@ begin
    Internal_Set_Default
     (784,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (784, AMF.False);
-   Internal_Set_Is_Derived (784, AMF.False);
-   Internal_Set_Is_Derived_Union (784, AMF.False);
-   Internal_Set_Is_Leaf (784, AMF.False);
-   Internal_Set_Is_Ordered (784, AMF.False);
-   Internal_Set_Is_Read_Only (784, AMF.False);
-   Internal_Set_Is_Unique (784, AMF.True);
+   Internal_Set_Is_Composite (784, False);
+   Internal_Set_Is_Derived (784, False);
+   Internal_Set_Is_Derived_Union (784, False);
+   Internal_Set_Is_Leaf (784, False);
+   Internal_Set_Is_Ordered (784, False);
+   Internal_Set_Is_Read_Only (784, False);
+   Internal_Set_Is_Unique (784, True);
    Internal_Set_Lower (
 784, 0);   Internal_Set_Name
     (784,
      League.Strings.To_Universal_String ("packageImport"));
    Internal_Set_Upper (784, (Unlimited => True));
    Initialize_Association (174, Extent);
-   Internal_Set_Is_Derived (174, AMF.False);
-   Internal_Set_Is_Final_Specialization (174, AMF.False);
+   Internal_Set_Is_Derived (174, False);
+   Internal_Set_Is_Final_Specialization (174, False);
    Internal_Set_Name
     (174,
      League.Strings.To_Universal_String ("A_importedElement_elementImport"));
@@ -5736,33 +5736,33 @@ begin
    Internal_Set_Default
     (785,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (785, AMF.False);
-   Internal_Set_Is_Derived (785, AMF.False);
-   Internal_Set_Is_Derived_Union (785, AMF.False);
-   Internal_Set_Is_Leaf (785, AMF.False);
-   Internal_Set_Is_Ordered (785, AMF.False);
-   Internal_Set_Is_Read_Only (785, AMF.False);
-   Internal_Set_Is_Unique (785, AMF.True);
+   Internal_Set_Is_Composite (785, False);
+   Internal_Set_Is_Derived (785, False);
+   Internal_Set_Is_Derived_Union (785, False);
+   Internal_Set_Is_Leaf (785, False);
+   Internal_Set_Is_Ordered (785, False);
+   Internal_Set_Is_Read_Only (785, False);
+   Internal_Set_Is_Unique (785, True);
    Internal_Set_Lower (
 785, 0);   Internal_Set_Name
     (785,
      League.Strings.To_Universal_String ("elementImport"));
    Internal_Set_Upper (785, (Unlimited => True));
    Initialize_Association (175, Extent);
-   Internal_Set_Is_Derived (175, AMF.False);
-   Internal_Set_Is_Final_Specialization (175, AMF.False);
+   Internal_Set_Is_Derived (175, False);
+   Internal_Set_Is_Final_Specialization (175, False);
    Internal_Set_Name
     (175,
      League.Strings.To_Universal_String ("A_elementImport_importingNamespace"));
    Initialize_Association (176, Extent);
-   Internal_Set_Is_Derived (176, AMF.False);
-   Internal_Set_Is_Final_Specialization (176, AMF.False);
+   Internal_Set_Is_Derived (176, False);
+   Internal_Set_Is_Final_Specialization (176, False);
    Internal_Set_Name
     (176,
      League.Strings.To_Universal_String ("A_packageImport_importingNamespace"));
    Initialize_Association (177, Extent);
-   Internal_Set_Is_Derived (177, AMF.False);
-   Internal_Set_Is_Final_Specialization (177, AMF.False);
+   Internal_Set_Is_Derived (177, False);
+   Internal_Set_Is_Final_Specialization (177, False);
    Internal_Set_Name
     (177,
      League.Strings.To_Universal_String ("A_packagedElement_owningPackage"));
@@ -5770,39 +5770,39 @@ begin
    Internal_Set_Default
     (786,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (786, AMF.False);
-   Internal_Set_Is_Derived (786, AMF.False);
-   Internal_Set_Is_Derived_Union (786, AMF.False);
-   Internal_Set_Is_Leaf (786, AMF.False);
-   Internal_Set_Is_Ordered (786, AMF.False);
-   Internal_Set_Is_Read_Only (786, AMF.False);
-   Internal_Set_Is_Unique (786, AMF.True);
+   Internal_Set_Is_Composite (786, False);
+   Internal_Set_Is_Derived (786, False);
+   Internal_Set_Is_Derived_Union (786, False);
+   Internal_Set_Is_Leaf (786, False);
+   Internal_Set_Is_Ordered (786, False);
+   Internal_Set_Is_Read_Only (786, False);
+   Internal_Set_Is_Unique (786, True);
    Internal_Set_Lower (
 786, 0);   Internal_Set_Name
     (786,
      League.Strings.To_Universal_String ("owningPackage"));
    Internal_Set_Upper (786, (False, 1));
    Initialize_Association (178, Extent);
-   Internal_Set_Is_Derived (178, AMF.False);
-   Internal_Set_Is_Final_Specialization (178, AMF.False);
+   Internal_Set_Is_Derived (178, False);
+   Internal_Set_Is_Final_Specialization (178, False);
    Internal_Set_Name
     (178,
      League.Strings.To_Universal_String ("A_ownedType_package"));
    Initialize_Association (179, Extent);
-   Internal_Set_Is_Derived (179, AMF.False);
-   Internal_Set_Is_Final_Specialization (179, AMF.False);
+   Internal_Set_Is_Derived (179, False);
+   Internal_Set_Is_Final_Specialization (179, False);
    Internal_Set_Name
     (179,
      League.Strings.To_Universal_String ("A_memberEnd_association"));
    Initialize_Association (180, Extent);
-   Internal_Set_Is_Derived (180, AMF.False);
-   Internal_Set_Is_Final_Specialization (180, AMF.False);
+   Internal_Set_Is_Derived (180, False);
+   Internal_Set_Is_Final_Specialization (180, False);
    Internal_Set_Name
     (180,
      League.Strings.To_Universal_String ("A_nestedPackage_nestingPackage"));
    Initialize_Association (181, Extent);
-   Internal_Set_Is_Derived (181, AMF.False);
-   Internal_Set_Is_Final_Specialization (181, AMF.False);
+   Internal_Set_Is_Derived (181, False);
+   Internal_Set_Is_Final_Specialization (181, False);
    Internal_Set_Name
     (181,
      League.Strings.To_Universal_String ("A_type_operation"));
@@ -5810,27 +5810,27 @@ begin
    Internal_Set_Default
     (787,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (787, AMF.False);
-   Internal_Set_Is_Derived (787, AMF.False);
-   Internal_Set_Is_Derived_Union (787, AMF.False);
-   Internal_Set_Is_Leaf (787, AMF.False);
-   Internal_Set_Is_Ordered (787, AMF.False);
-   Internal_Set_Is_Read_Only (787, AMF.False);
-   Internal_Set_Is_Unique (787, AMF.True);
+   Internal_Set_Is_Composite (787, False);
+   Internal_Set_Is_Derived (787, False);
+   Internal_Set_Is_Derived_Union (787, False);
+   Internal_Set_Is_Leaf (787, False);
+   Internal_Set_Is_Ordered (787, False);
+   Internal_Set_Is_Read_Only (787, False);
+   Internal_Set_Is_Unique (787, True);
    Internal_Set_Lower (
 787, 0);   Internal_Set_Name
     (787,
      League.Strings.To_Universal_String ("operation"));
    Internal_Set_Upper (787, (Unlimited => True));
    Initialize_Association (131, Extent);
-   Internal_Set_Is_Derived (131, AMF.False);
-   Internal_Set_Is_Final_Specialization (131, AMF.False);
+   Internal_Set_Is_Derived (131, False);
+   Internal_Set_Is_Final_Specialization (131, False);
    Internal_Set_Name
     (131,
      League.Strings.To_Universal_String ("A_packageMerge_receivingPackage"));
    Initialize_Association (132, Extent);
-   Internal_Set_Is_Derived (132, AMF.False);
-   Internal_Set_Is_Final_Specialization (132, AMF.False);
+   Internal_Set_Is_Derived (132, False);
+   Internal_Set_Is_Final_Specialization (132, False);
    Internal_Set_Name
     (132,
      League.Strings.To_Universal_String ("A_mergedPackage_packageMerge"));
@@ -5838,27 +5838,27 @@ begin
    Internal_Set_Default
     (788,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (788, AMF.False);
-   Internal_Set_Is_Derived (788, AMF.False);
-   Internal_Set_Is_Derived_Union (788, AMF.False);
-   Internal_Set_Is_Leaf (788, AMF.False);
-   Internal_Set_Is_Ordered (788, AMF.False);
-   Internal_Set_Is_Read_Only (788, AMF.False);
-   Internal_Set_Is_Unique (788, AMF.True);
+   Internal_Set_Is_Composite (788, False);
+   Internal_Set_Is_Derived (788, False);
+   Internal_Set_Is_Derived_Union (788, False);
+   Internal_Set_Is_Leaf (788, False);
+   Internal_Set_Is_Ordered (788, False);
+   Internal_Set_Is_Read_Only (788, False);
+   Internal_Set_Is_Unique (788, True);
    Internal_Set_Lower (
 788, 0);   Internal_Set_Name
     (788,
      League.Strings.To_Universal_String ("packageMerge"));
    Internal_Set_Upper (788, (Unlimited => True));
    Initialize_Association (133, Extent);
-   Internal_Set_Is_Derived (133, AMF.False);
-   Internal_Set_Is_Final_Specialization (133, AMF.False);
+   Internal_Set_Is_Derived (133, False);
+   Internal_Set_Is_Final_Specialization (133, False);
    Internal_Set_Name
     (133,
      League.Strings.To_Universal_String ("A_ownedElement_owner"));
    Initialize_Association (134, Extent);
-   Internal_Set_Is_Derived (134, AMF.False);
-   Internal_Set_Is_Final_Specialization (134, AMF.False);
+   Internal_Set_Is_Derived (134, False);
+   Internal_Set_Is_Final_Specialization (134, False);
    Internal_Set_Name
     (134,
      League.Strings.To_Universal_String ("A_annotatedElement_comment"));
@@ -5866,13 +5866,13 @@ begin
    Internal_Set_Default
     (789,
      League.Strings.To_Universal_String (""));
-   Internal_Set_Is_Composite (789, AMF.False);
-   Internal_Set_Is_Derived (789, AMF.False);
-   Internal_Set_Is_Derived_Union (789, AMF.False);
-   Internal_Set_Is_Leaf (789, AMF.False);
-   Internal_Set_Is_Ordered (789, AMF.False);
-   Internal_Set_Is_Read_Only (789, AMF.False);
-   Internal_Set_Is_Unique (789, AMF.True);
+   Internal_Set_Is_Composite (789, False);
+   Internal_Set_Is_Derived (789, False);
+   Internal_Set_Is_Derived_Union (789, False);
+   Internal_Set_Is_Leaf (789, False);
+   Internal_Set_Is_Ordered (789, False);
+   Internal_Set_Is_Read_Only (789, False);
+   Internal_Set_Is_Unique (789, True);
    Internal_Set_Lower (
 789, 0);   Internal_Set_Name
     (789,

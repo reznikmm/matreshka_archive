@@ -89,7 +89,7 @@ procedure Gen_Init is
    use Generator.Initialization;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
-   use type AMF.AMF_String;
+   use type League.Strings.Universal_String;
 
    type CMOF_Element_Array is array (Positive range <>) of CMOF_Element;
 

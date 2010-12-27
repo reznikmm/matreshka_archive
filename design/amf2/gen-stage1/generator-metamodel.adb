@@ -466,10 +466,10 @@ package body Generator.Metamodel is
              & ", ");
 
          if Property.Is_Composite then
-            Put ("AMF.True");
+            Put ("True");
 
          else
-            Put ("AMF.False");
+            Put ("False");
          end if;
 
          Put_Line (");");

@@ -129,12 +129,12 @@ package body CMOF.Factory is
       if Data_Type = MC_CMOF_Boolean then
          return
           (AMF.Values.Value_Boolean,
-           AMF.AMF_Boolean'Wide_Wide_Value (Image.To_Wide_Wide_String));
+           Boolean'Wide_Wide_Value (Image.To_Wide_Wide_String));
 
       elsif Data_Type = MC_CMOF_Integer then
          return
           (AMF.Values.Value_Integer,
-           AMF.AMF_Integer'Wide_Wide_Value (Image.To_Wide_Wide_String));
+           Integer'Wide_Wide_Value (Image.To_Wide_Wide_String));
 
       elsif Data_Type = MC_CMOF_Unlimited_Natural then
          if Image = League.Strings.To_Universal_String ("*") then
@@ -144,7 +144,7 @@ package body CMOF.Factory is
             return
              (AMF.Values.Value_Unlimited_Natural,
               (False,
-               AMF.AMF_Natural'Wide_Wide_Value (Image.To_Wide_Wide_String)));
+               Natural'Wide_Wide_Value (Image.To_Wide_Wide_String)));
          end if;
 
       elsif Data_Type = MC_CMOF_String then
@@ -250,7 +250,7 @@ package body CMOF.Factory is
          return
            League.Strings.To_Universal_String
             (Ada.Strings.Wide_Wide_Fixed.Trim
-              (AMF.AMF_Integer'Wide_Wide_Image (Value.Integer_Value),
+              (Integer'Wide_Wide_Image (Value.Integer_Value),
                Ada.Strings.Both));
 
       elsif Data_Type = MC_CMOF_Unlimited_Natural then
@@ -261,7 +261,7 @@ package body CMOF.Factory is
             return
               League.Strings.To_Universal_String
                (Ada.Strings.Wide_Wide_Fixed.Trim
-                 (AMF.AMF_Natural'Wide_Wide_Image
+                 (Natural'Wide_Wide_Image
                    (Value.Unlimited_Natural_Value.Value),
                   Ada.Strings.Both));
          end if;

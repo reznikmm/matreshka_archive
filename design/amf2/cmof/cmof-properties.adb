@@ -65,28 +65,28 @@ package body CMOF.Properties is
    -- Get_Is_Composite --
    ----------------------
 
-   function Get_Is_Composite (Self : CMOF_Property) return AMF.AMF_Boolean
+   function Get_Is_Composite (Self : CMOF_Property) return Boolean
      renames CMOF.Internals.Attributes.Internal_Get_Is_Composite;
 
    --------------------
    -- Get_Is_Derived --
    --------------------
 
-   function Get_Is_Derived (Self : CMOF_Property) return AMF.AMF_Boolean
+   function Get_Is_Derived (Self : CMOF_Property) return Boolean
      renames CMOF.Internals.Attributes.Internal_Get_Is_Derived;
 
    --------------------------
    -- Get_Is_Derived_Union --
    --------------------------
 
-   function Get_Is_Derived_Union (Self : CMOF_Property) return AMF.AMF_Boolean
+   function Get_Is_Derived_Union (Self : CMOF_Property) return Boolean
      renames CMOF.Internals.Attributes.Internal_Get_Is_Derived_Union;
 
    ----------------------
    -- Get_Is_Read_Only --
    ----------------------
 
-   function Get_Is_Read_Only (Self : CMOF_Property) return AMF.AMF_Boolean
+   function Get_Is_Read_Only (Self : CMOF_Property) return Boolean
      renames CMOF.Internals.Attributes.Internal_Get_Is_Read_Only;
 
    ----------------------------

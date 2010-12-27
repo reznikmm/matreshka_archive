@@ -49,8 +49,7 @@ package body AMF is
    ---------
 
    function "<"
-    (Left  : AMF_Unlimited_Natural;
-     Right : AMF_Unlimited_Natural) return Boolean is
+    (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean is
    begin
       if Left.Unlimited xor Right.Unlimited then
          return Left.Unlimited < Right.Unlimited;
@@ -67,8 +66,7 @@ package body AMF is
    -- "<" --
    ---------
 
-   function "<"
-    (Left  : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean is
+   function "<" (Left : Unlimited_Natural; Right : Integer) return Boolean is
    begin
       if Left.Unlimited then
          return False;
@@ -82,8 +80,7 @@ package body AMF is
    -- "<" --
    ---------
 
-   function "<"
-    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean is
+   function "<" (Left : Integer; Right : Unlimited_Natural) return Boolean is
    begin
       if Right.Unlimited then
          return True;
@@ -98,8 +95,7 @@ package body AMF is
    ----------
 
    function "<="
-    (Left  : AMF_Unlimited_Natural;
-     Right : AMF_Unlimited_Natural) return Boolean is
+    (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean is
    begin
       if Left.Unlimited xor Right.Unlimited then
          return Left.Unlimited < Right.Unlimited;
@@ -116,8 +112,7 @@ package body AMF is
    -- "<=" --
    ----------
 
-   function "<="
-    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean is
+   function "<=" (Left : Unlimited_Natural; Right : Integer) return Boolean is
    begin
       if Left.Unlimited then
          return False;
@@ -131,8 +126,7 @@ package body AMF is
    -- "<=" --
    ----------
 
-   function "<="
-    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean is
+   function "<=" (Left : Integer; Right : Unlimited_Natural) return Boolean is
    begin
       if Right.Unlimited then
          return True;
@@ -146,8 +140,7 @@ package body AMF is
    -- "=" --
    ---------
 
-   function "="
-    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean is
+   function "=" (Left : Unlimited_Natural; Right : Integer) return Boolean is
    begin
       return not Left.Unlimited and then Left.Value = Right;
    end "=";
@@ -156,8 +149,7 @@ package body AMF is
    -- "=" --
    ---------
 
-   function "="
-    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean is
+   function "=" (Left : Integer; Right : Unlimited_Natural) return Boolean is
    begin
       return not Right.Unlimited and then Left = Right.Value;
    end "=";
@@ -167,8 +159,7 @@ package body AMF is
    ---------
 
    function ">"
-    (Left  : AMF_Unlimited_Natural;
-     Right : AMF_Unlimited_Natural) return Boolean is
+    (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean is
    begin
       if Left.Unlimited xor Right.Unlimited then
          return Left.Unlimited > Right.Unlimited;
@@ -185,8 +176,7 @@ package body AMF is
    -- ">" --
    ---------
 
-   function ">"
-    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean is
+   function ">" (Left : Unlimited_Natural; Right : Integer) return Boolean is
    begin
       if Left.Unlimited then
          return True;
@@ -200,8 +190,7 @@ package body AMF is
    -- ">" --
    ---------
 
-   function ">"
-    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean is
+   function ">" (Left : Integer; Right : Unlimited_Natural) return Boolean is
    begin
       if Right.Unlimited then
          return False;
@@ -216,8 +205,7 @@ package body AMF is
    ----------
 
    function ">="
-    (Left  : AMF_Unlimited_Natural;
-     Right : AMF_Unlimited_Natural) return Boolean is
+    (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean is
    begin
       if Left.Unlimited xor Right.Unlimited then
          return Left.Unlimited > Right.Unlimited;
@@ -234,8 +222,7 @@ package body AMF is
    -- ">=" --
    ----------
 
-   function ">="
-    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean is
+   function ">=" (Left : Unlimited_Natural; Right : Integer) return Boolean is
    begin
       if Left.Unlimited then
          return True;
@@ -249,8 +236,7 @@ package body AMF is
    -- ">=" --
    ----------
 
-   function ">="
-    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean is
+   function ">=" (Left : Integer; Right : Unlimited_Natural) return Boolean is
    begin
       if Right.Unlimited then
          return False;

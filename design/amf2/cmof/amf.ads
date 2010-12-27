@@ -47,6 +47,14 @@
 --  types defined in PrimitiveTypes package and types to represent their
 --  optional values (values with multiplicity 0..1).
 --
+--  Some primitive types are mapped implicitly:
+--
+--   - PrimitiveTypes::Boolean is mapped to Standard.Boolean;
+--
+--   - PrimitiveTypes::Integer is mapped to Standard.Integer;
+--
+--   - PrimitiveTypes::String is mapped to League.Strings.Universal_String.
+--
 ------------------------------------------------------------------------------
 with Interfaces;
 with League.Strings;
@@ -59,75 +67,54 @@ package AMF is
    -- Primitive types --
    ---------------------
 
-   type AMF_Boolean is new Boolean;
-
-   type AMF_Integer is new Interfaces.Integer_32;
-   subtype AMF_Natural is AMF_Integer range 0 .. AMF_Integer'Last;
-
-   type AMF_Unlimited_Natural (Unlimited : Boolean := False) is record
+   type Unlimited_Natural (Unlimited : Boolean := False) is record
       case Unlimited is
          when False =>
-            Value : AMF_Natural;
+            Value : Natural;
 
          when True =>
             null;
       end case;
    end record;
 
-   Unlimited : constant AMF_Unlimited_Natural;
+   Unlimited : constant Unlimited_Natural;
 
    function "<"
-    (Left  : AMF_Unlimited_Natural;
-     Right : AMF_Unlimited_Natural) return Boolean;
+    (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean;
    function "<="
-    (Left  : AMF_Unlimited_Natural;
-     Right : AMF_Unlimited_Natural) return Boolean;
+    (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean;
    function ">"
-    (Left  : AMF_Unlimited_Natural;
-     Right : AMF_Unlimited_Natural) return Boolean;
+    (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean;
    function ">="
-    (Left  : AMF_Unlimited_Natural;
-     Right : AMF_Unlimited_Natural) return Boolean;
+    (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean;
 
-   function "="
-    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean;
-   function "<"
-    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean;
-   function "<="
-    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean;
-   function ">"
-    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean;
-   function ">="
-    (Left : AMF_Unlimited_Natural; Right : AMF_Integer) return Boolean;
+   function "="  (Left : Unlimited_Natural; Right : Integer) return Boolean;
+   function "<"  (Left : Unlimited_Natural; Right : Integer) return Boolean;
+   function "<=" (Left : Unlimited_Natural; Right : Integer) return Boolean;
+   function ">"  (Left : Unlimited_Natural; Right : Integer) return Boolean;
+   function ">=" (Left : Unlimited_Natural; Right : Integer) return Boolean;
 
-   function "="
-    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean;
-   function "<"
-    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean;
-   function "<="
-    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean;
-   function ">"
-    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean;
-   function ">="
-    (Left : AMF_Integer; Right : AMF_Unlimited_Natural) return Boolean;
-
-   subtype AMF_String is League.Strings.Universal_String;
+   function "="  (Left : Integer; Right : Unlimited_Natural) return Boolean;
+   function "<"  (Left : Integer; Right : Unlimited_Natural) return Boolean;
+   function "<=" (Left : Integer; Right : Unlimited_Natural) return Boolean;
+   function ">"  (Left : Integer; Right : Unlimited_Natural) return Boolean;
+   function ">=" (Left : Integer; Right : Unlimited_Natural) return Boolean;
 
    ----------------------------------------
    -- Optional values of primitive types --
    ----------------------------------------
 
-   type Optional_AMF_String (Is_Empty : Boolean := True) is record
+   type Optional_String (Is_Empty : Boolean := True) is record
       case Is_Empty is
          when False =>
             null;
 
          when True =>
-            Value : AMF_String;
+            Value : League.Strings.Universal_String;
       end case;
    end record;
 
-   type Optional_AMF_Boolean (Is_Empty : Boolean := True) is record
+   type Optional_Boolean (Is_Empty : Boolean := True) is record
       case Is_Empty is
          when False =>
             null;
@@ -137,7 +124,7 @@ package AMF is
       end case;
    end record;
 
-   type Optional_AMF_Integer (Is_Empty : Boolean := True) is record
+   type Optional_Integer (Is_Empty : Boolean := True) is record
       case Is_Empty is
          when False =>
             null;
@@ -147,18 +134,18 @@ package AMF is
       end case;
    end record;
 
-   type Optional_AMF_Unlimited_Natural (Is_Empty : Boolean := True) is record
+   type Optional_Unlimited_Natural (Is_Empty : Boolean := True) is record
       case Is_Empty is
          when False =>
             null;
 
          when True =>
-            Value : AMF_Unlimited_Natural;
+            Value : Unlimited_Natural;
       end case;
    end record;
 
 private
 
-   Unlimited : constant AMF_Unlimited_Natural := (Unlimited => True);
+   Unlimited : constant Unlimited_Natural := (Unlimited => True);
 
 end AMF;

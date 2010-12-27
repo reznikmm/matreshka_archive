@@ -44,6 +44,8 @@
 with Ada.Unchecked_Conversion;
 with Interfaces;
 
+with League.Strings;
+
 with AMF;
 with CMOF.Named_Elements;
 
@@ -59,7 +61,7 @@ package body Generator is
    function "<"
     (Left : CMOF_Named_Element; Right : CMOF_Named_Element) return Boolean
    is
-      use type AMF.AMF_String;
+      use type League.Strings.Universal_String;
       use type Interfaces.Integer_32;
 
       function To_Integer_32 is

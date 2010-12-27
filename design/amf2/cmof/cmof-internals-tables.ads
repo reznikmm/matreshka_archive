@@ -71,13 +71,13 @@ private package CMOF.Internals.Tables is
             Collection : Collection_Of_CMOF_Element;
 
          when M_Boolean =>
-            Boolean_Value : AMF.AMF_Boolean;
+            Boolean_Value : Boolean;
 
          when M_Integer =>
-            Integer_Value : AMF.AMF_Integer;
+            Integer_Value : Integer;
 
          when M_Unlimited_Natural =>
-            Natural_Value : AMF.AMF_Unlimited_Natural;
+            Natural_Value : AMF.Unlimited_Natural;
 
          when M_String =>
             String_Value : Matreshka.Internals.Strings.Shared_String_Access;

@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF;
 
 package CMOF.Properties is
 
@@ -49,13 +48,13 @@ package CMOF.Properties is
 
    function Get_Class (Self : CMOF_Property) return CMOF_Class;
 
-   function Get_Is_Composite (Self : CMOF_Property) return AMF.AMF_Boolean;
+   function Get_Is_Composite (Self : CMOF_Property) return Boolean;
 
-   function Get_Is_Derived (Self : CMOF_Property) return AMF.AMF_Boolean;
+   function Get_Is_Derived (Self : CMOF_Property) return Boolean;
 
-   function Get_Is_Derived_Union (Self : CMOF_Property) return AMF.AMF_Boolean;
+   function Get_Is_Derived_Union (Self : CMOF_Property) return Boolean;
 
-   function Get_Is_Read_Only (Self : CMOF_Property) return AMF.AMF_Boolean;
+   function Get_Is_Read_Only (Self : CMOF_Property) return Boolean;
 
    function Get_Owning_Association
     (Self : CMOF_Property) return CMOF_Association;

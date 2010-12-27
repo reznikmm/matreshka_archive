@@ -484,7 +484,7 @@ package body CMOF_Tree_Models is
                 (League.Strings.To_Universal_String
                   (" ["
                      & Ada.Strings.Wide_Wide_Fixed.Trim
-                        (AMF.AMF_Integer'Wide_Wide_Image (Get_Lower (Property)),
+                        (Integer'Wide_Wide_Image (Get_Lower (Property)),
                          Ada.Strings.Both)
                      & "]"));
 
@@ -496,7 +496,7 @@ package body CMOF_Tree_Models is
                 (League.Strings.To_Universal_String
                   (" ["
                      & Ada.Strings.Wide_Wide_Fixed.Trim
-                        (AMF.AMF_Integer'Wide_Wide_Image (Get_Lower (Property)),
+                        (Integer'Wide_Wide_Image (Get_Lower (Property)),
                          Ada.Strings.Both)
                      & ".."));
 
@@ -508,7 +508,7 @@ package body CMOF_Tree_Models is
                   Notation.Append
                    (League.Strings.To_Universal_String
                      (Ada.Strings.Wide_Wide_Fixed.Trim
-                       (AMF.AMF_Integer'Wide_Wide_Image (Get_Upper (Property).Value),
+                       (Integer'Wide_Wide_Image (Get_Upper (Property).Value),
                         Ada.Strings.Both)
                         & "]"));
                end if;

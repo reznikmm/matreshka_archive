@@ -76,7 +76,7 @@ package body Generator.Initialization is
    use CMOF.XMI_Helper;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
-   use type AMF.AMF_String;
+   use type League.Strings.Universal_String;
 
    procedure Generate_Metaclass_Initialization
     (Element : CMOF_Element;
@@ -210,10 +210,10 @@ package body Generator.Initialization is
                Put (", ");
 
                if Value.Boolean_Value then
-                  Put_Line ("AMF.True);");
+                  Put_Line ("True);");
 
                else
-                  Put_Line ("AMF.False);");
+                  Put_Line ("False);");
                end if;
 --               if Is_Optional (Property) then
 --               end if;
@@ -225,7 +225,7 @@ package body Generator.Initialization is
                Put (Numbers.Element (Element), Width => 0);
                Put
                 (","
-                   & AMF.AMF_Integer'Wide_Wide_Image (Value.Integer_Value)
+                   & Integer'Wide_Wide_Image (Value.Integer_Value)
                    & ");");
 
             elsif Has_Unlimited_Natural_Type (Property) then
@@ -241,7 +241,7 @@ package body Generator.Initialization is
                else
                   Put_Line
                    ("(False,"
-                      & AMF.AMF_Integer'Wide_Wide_Image
+                      & Integer'Wide_Wide_Image
                          (Value.Unlimited_Natural_Value.Value)
                       & "));");
                end if;

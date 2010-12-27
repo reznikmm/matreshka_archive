@@ -757,7 +757,7 @@ package body Generator.Attributes is
             raise Program_Error;
 
          else
-            Put ("     (Self : Cmof_Element) return AMF.AMF_Boolean");
+            Put ("     (Self : CMOF_Element) return Boolean");
          end if;
 
       elsif Has_Integer_Type (Property) then
@@ -765,7 +765,7 @@ package body Generator.Attributes is
             raise Program_Error;
 
          else
-            Put ("     (Self : Cmof_Element) return AMF.AMF_Integer");
+            Put ("     (Self : CMOF_Element) return Integer");
          end if;
 
       elsif Has_Unlimited_Natural_Type (Property) then
@@ -774,7 +774,7 @@ package body Generator.Attributes is
 
          else
             Put
-             ("     (Self : Cmof_Element) return AMF.AMF_Unlimited_Natural");
+             ("     (Self : CMOF_Element) return AMF.Unlimited_Natural");
          end if;
 
       elsif Has_String_Type (Property) then
@@ -784,17 +784,19 @@ package body Generator.Attributes is
                  & " return Collection_Of_CMOF_String");
 
          else
-            Put ("     (Self : CMOF_Element) return AMF.AMF_String");
+            Put
+             ("     (Self : CMOF_Element)"
+                & " return League.Strings.Universal_String");
          end if;
 
       else
          if Is_Multivalued (Property) then
             Put
-              ("     (Self : Cmof_Element)"
-                 & " return Collection_Of_Cmof_Element");
+              ("     (Self : CMOF_Element)"
+                 & " return Collection_Of_CMOF_Element");
 
          else
-            Put ("     (Self : Cmof_Element) return Cmof_Element");
+            Put ("     (Self : CMOF_Element) return CMOF_Element");
          end if;
       end if;
    end Generate_Getter_Specification;
@@ -914,16 +916,16 @@ package body Generator.Attributes is
       Put_Line ("     (Self : CMOF_Element;");
 
       if Has_Boolean_Type (Property) then
-         Put ("      To   : AMF.AMF_Boolean)");
+         Put ("      To   : Boolean)");
 
       elsif Has_Integer_Type (Property) then
-         Put ("      To   : AMF.AMF_Integer)");
+         Put ("      To   : Integer)");
 
       elsif Has_Unlimited_Natural_Type (Property) then
-         Put ("      To   : AMF.AMF_Unlimited_Natural)");
+         Put ("      To   : AMF.Unlimited_Natural)");
 
       elsif Has_String_Type (Property) then
-         Put ("      To   : AMF.AMF_String)");
+         Put ("      To   : League.Strings.Universal_String)");
 
       else
          Put ("      To   : CMOF_Element)");

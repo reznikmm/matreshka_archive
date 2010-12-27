@@ -216,10 +216,10 @@ package body Generator.Constructors is
                      Put ("=> (M_Boolean, ");
 
                      if Property.Default_Boolean then
-                        Put ("AMF.True");
+                        Put ("True");
 
                      else
-                        Put ("AMF.False");
+                        Put ("False");
                      end if;
 
                      Put ("),");

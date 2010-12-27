@@ -23,7 +23,7 @@ Index: cmof-internals-attributes.adb
 +   ----------------------
 +
 +   function Internal_Get_Uri
-+     (Self : CMOF_Element) return AMF.AMF_String
++     (Self : CMOF_Element) return League.Strings.Universal_String
 +   is
 +   begin
 +      return
@@ -40,7 +40,7 @@ Index: cmof-internals-attributes.adb
 +
 +   procedure Internal_Set_Uri
 +     (Self : CMOF_Element;
-+      To   : AMF.AMF_String) is
++      To   : League.Strings.Universal_String) is
 +   begin
 +      Matreshka.Internals.Strings.Dereference
 +       (Elements.Table (Self).Member
@@ -68,11 +68,11 @@ Index: cmof-internals-attributes.ads
        To   : CMOF_Element);
  
 +   function Internal_Get_Uri
-+     (Self : CMOF_Element) return AMF.AMF_String;
++     (Self : CMOF_Element) return League.Strings.Universal_String;
 +
 +   procedure Internal_Set_Uri
 +     (Self : CMOF_Element;
-+      To   : AMF.AMF_String);
++      To   : League.Strings.Universal_String);
 +
  end CMOF.Internals.Attributes;
 Index: cmof-internals-reflection.adb

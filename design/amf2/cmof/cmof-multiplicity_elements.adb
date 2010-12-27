@@ -52,30 +52,29 @@ package body CMOF.Multiplicity_Elements is
    -- Get_Is_Ordered --
    --------------------
 
-   function Get_Is_Ordered (Self : CMOF_Property) return AMF.AMF_Boolean
+   function Get_Is_Ordered (Self : CMOF_Property) return Boolean
      renames CMOF.Internals.Attributes.Internal_Get_Is_Ordered;
 
    -------------------
    -- Get_Is_Unique --
    -------------------
 
-   function Get_Is_Unique (Self : CMOF_Property) return AMF.AMF_Boolean
+   function Get_Is_Unique (Self : CMOF_Property) return Boolean
      renames CMOF.Internals.Attributes.Internal_Get_Is_Unique;
 
    ---------------
    -- Get_Lower --
    ---------------
 
-   function Get_Lower
-    (Self : CMOF_Multiplicity_Element) return AMF.AMF_Integer
-       renames Internal_Get_Lower;
+   function Get_Lower (Self : CMOF_Multiplicity_Element) return Integer
+     renames Internal_Get_Lower;
 
    ---------------
    -- Get_Upper --
    ---------------
 
    function Get_Upper
-    (Self : CMOF_Multiplicity_Element) return AMF.AMF_Unlimited_Natural
+    (Self : CMOF_Multiplicity_Element) return AMF.Unlimited_Natural
        renames Internal_Get_Upper;
 
    --------------------
