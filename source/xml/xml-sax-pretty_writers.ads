@@ -168,5 +168,4 @@ private
        return League.Strings.Universal_String;
    --  Replaces special characters by their entity references.
 
-
 end XML.SAX.Pretty_Writers;
