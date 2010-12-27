@@ -51,6 +51,8 @@ package body XML.SAX.Pretty_Writers is
 
    use type League.Strings.Universal_String;
 
+   function Image (X_V : XML_Version) return League.Strings.Universal_String;
+
    ----------------
    -- Characters --
    ----------------
@@ -242,6 +244,21 @@ package body XML.SAX.Pretty_Writers is
       null;
    end Ignorable_Whitespace;
 
+   -----------
+   -- Image --
+   -----------
+
+   function Image (X_V : XML_Version) return League.Strings.Universal_String is
+   begin
+      if X_V = XML_1_0 then
+         return League.Strings.To_Universal_String ("1.0");
+      elsif X_V = XML_1_1 then
+         return League.Strings.To_Universal_String ("1.1");
+      else
+         return League.Strings.To_Universal_String ("1.x");
+      end if;
+   end Image;
+
    ----------------------------
    -- Processing_Instruction --
    ----------------------------
@@ -254,6 +271,17 @@ package body XML.SAX.Pretty_Writers is
    begin
       null;
    end Processing_Instruction;
+
+   -----------------
+   -- Set_Version --
+   -----------------
+
+   procedure Set_Version
+     (Self    : in out SAX_Pretty_Writer;
+      Version : XML_Version) is
+   begin
+      Self.Version := Version;
+   end Set_Version;
 
    --------------------
    -- Skipped_Entity --
@@ -287,8 +315,9 @@ package body XML.SAX.Pretty_Writers is
      Success : in out Boolean) is
    begin
       Self.Text.Append
-       (League.Strings.To_Universal_String
-          ("<?xml version=""1.0""?>"));
+        (League.Strings.To_Universal_String ("<?xml version=""")
+           & Image (Self.Version)
+           & League.Strings.To_Universal_String ("""?>"));
       Self.Nesting := 0;
    end Start_Document;
 

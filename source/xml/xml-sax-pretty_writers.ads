@@ -151,6 +151,9 @@ package XML.SAX.Pretty_Writers is
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean);
 
+   procedure Set_Version (Self    : in out SAX_Pretty_Writer;
+                          Version : XML_Version);
+
 private
 
    type SAX_Pretty_Writer is
