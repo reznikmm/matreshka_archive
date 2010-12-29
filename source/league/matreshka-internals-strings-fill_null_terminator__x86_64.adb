@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SIMD.Intel;
+with Matreshka.Internals.SIMD.Intel.SSE2;
 with Matreshka.Internals.Strings.Constants;
 
 separate (Matreshka.Internals.Strings)
@@ -55,6 +55,7 @@ procedure Fill_Null_Terminator (Self : not null Shared_String_Access) is
    --  bug in the GNAT GPL 2010 compiler.
 
    use Matreshka.Internals.SIMD.Intel;
+   use Matreshka.Internals.SIMD.Intel.SSE2;
    use Matreshka.Internals.Strings.Constants;
 
    type v8hi_Unrestricted_Array is array (Utf16_String_Index) of v8hi;

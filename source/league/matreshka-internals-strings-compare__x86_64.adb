@@ -45,16 +45,18 @@
 --  platforms. It utilizes 128-bit instructions from SSE and SSE2 instructions
 --  sets which is known to be available on all x86_64 processors.
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Conversion;
 with Interfaces;
 with System.Address_To_Access_Conversions;
 with System.Storage_Elements;
 
-with Matreshka.Internals.SIMD.Intel;
+with Matreshka.Internals.SIMD.Intel.SSE2;
 
 package body Matreshka.Internals.Strings.Compare is
 
    use Interfaces;
    use Matreshka.Internals.SIMD.Intel;
+   use Matreshka.Internals.SIMD.Intel.SSE2;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
    use type System.Storage_Elements.Storage_Offset;
@@ -64,6 +66,10 @@ package body Matreshka.Internals.Strings.Compare is
 
    package v8hi_Conversions is new System.Address_To_Access_Conversions (v8hi);
    use v8hi_Conversions;
+
+   function To_Unsigned_32 is
+     new Ada.Unchecked_Conversion
+          (Interfaces.Integer_32, Interfaces.Unsigned_32);
 
    --------------
    -- Is_Equal --
@@ -138,9 +144,11 @@ package body Matreshka.Internals.Strings.Compare is
       begin
          loop
             M :=
-              mm_movemask_epi8
-               (To_v16qi
-                 (mm_cmpeq_epi16 (To_Pointer (LV).all, To_Pointer (RV).all)));
+              To_Unsigned_32
+               (mm_movemask_epi8
+                 (To_v16qi
+                   (mm_cmpeq_epi16
+                     (To_Pointer (LV).all, To_Pointer (RV).all))));
 
             if M /= 16#0000_FFFF# then
                Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
@@ -187,9 +195,11 @@ package body Matreshka.Internals.Strings.Compare is
       begin
          loop
             M :=
-              mm_movemask_epi8
-               (To_v16qi
-                 (mm_cmpeq_epi16 (To_Pointer (LV).all, To_Pointer (RV).all)));
+              To_Unsigned_32
+               (mm_movemask_epi8
+                 (To_v16qi
+                   (mm_cmpeq_epi16
+                     (To_Pointer (LV).all, To_Pointer (RV).all))));
 
             if M /= 16#0000_FFFF# then
                Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
@@ -236,9 +246,11 @@ package body Matreshka.Internals.Strings.Compare is
       begin
          loop
             M :=
-              mm_movemask_epi8
-               (To_v16qi
-                 (mm_cmpeq_epi16 (To_Pointer (LV).all, To_Pointer (RV).all)));
+              To_Unsigned_32
+               (mm_movemask_epi8
+                 (To_v16qi
+                   (mm_cmpeq_epi16
+                     (To_Pointer (LV).all, To_Pointer (RV).all))));
 
             if M /= 16#0000_FFFF# then
                Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
@@ -285,9 +297,11 @@ package body Matreshka.Internals.Strings.Compare is
       begin
          loop
             M :=
-              mm_movemask_epi8
-               (To_v16qi
-                 (mm_cmpeq_epi16 (To_Pointer (LV).all, To_Pointer (RV).all)));
+              To_Unsigned_32
+               (mm_movemask_epi8
+                 (To_v16qi
+                   (mm_cmpeq_epi16
+                     (To_Pointer (LV).all, To_Pointer (RV).all))));
 
             if M /= 16#0000_FFFF# then
                Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
