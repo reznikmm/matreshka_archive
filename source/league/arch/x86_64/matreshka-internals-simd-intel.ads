@@ -90,6 +90,9 @@ package Matreshka.Internals.SIMD.Intel is
    function mm_cmpeq_epi16 (Left : v8hi; Right : v8hi) return v8hi;
    pragma Import (Intrinsic, mm_cmpeq_epi16, "__builtin_ia32_pcmpeqw128");
 
+   function mm_cmpgt_epi16 (Left : v8hi; Right : v8hi) return v8hi;
+   pragma Import (Intrinsic, mm_cmpgt_epi16, "__builtin_ia32_pcmpgtw128");
+
    function mm_insert_epi16
     (A : v8hi;
      V : Interfaces.Integer_16;
