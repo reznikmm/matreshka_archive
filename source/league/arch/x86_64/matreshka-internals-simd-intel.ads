@@ -55,6 +55,8 @@ package Matreshka.Internals.SIMD.Intel is
 
    pragma Pure;
 
+   --  128-bit types
+
    type v16qi is array (1 .. 16) of Interfaces.Integer_8;
    pragma Machine_Attribute (v16qi, "vector_type");
    pragma Machine_Attribute (v16qi, "may_alias");
@@ -70,6 +72,32 @@ package Matreshka.Internals.SIMD.Intel is
    type v2di is array (1 .. 2) of Interfaces.Integer_64;
    pragma Machine_Attribute (v2di, "vector_type");
    pragma Machine_Attribute (v2di, "may_alias");
+
+   type v4sf is array (1 .. 4) of Interfaces.IEEE_Float_32;
+   pragma Machine_Attribute (v4sf, "vector_type");
+   pragma Machine_Attribute (v4sf, "may_alias");
+
+   type v2df is array (1 .. 2) of Interfaces.IEEE_Float_64;
+   pragma Machine_Attribute (v2df, "vector_type");
+   pragma Machine_Attribute (v2df, "may_alias");
+
+   --  64-bit types
+
+   type v8qi is array (1 .. 8) of Interfaces.Integer_8;
+   pragma Machine_Attribute (v8qi, "vector_type");
+   pragma Machine_Attribute (v8qi, "may_alias");
+
+   type v4hi is array (1 .. 4) of Interfaces.Integer_16;
+   pragma Machine_Attribute (v4hi, "vector_type");
+   pragma Machine_Attribute (v4hi, "may_alias");
+
+   type v2si is array (1 .. 2) of Interfaces.Integer_32;
+   pragma Machine_Attribute (v2si, "vector_type");
+   pragma Machine_Attribute (v2si, "may_alias");
+
+   type v1di is array (1 .. 1) of Interfaces.Integer_64;
+   pragma Machine_Attribute (v1di, "vector_type");
+   pragma Machine_Attribute (v1di, "may_alias");
 
    function To_v16qi is new Ada.Unchecked_Conversion (v8hi, v16qi);
    function To_v8hi is new Ada.Unchecked_Conversion (v4si, v8hi);
