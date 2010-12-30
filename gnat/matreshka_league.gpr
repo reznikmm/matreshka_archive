@@ -174,6 +174,8 @@ library project Matreshka_League is
               use "matreshka-internals-strings-compare__portable_32.adb";
             for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
               use "matreshka-internals-strings-fill_null_terminator__portable_32.adb";
+            for Implementation ("Matreshka.Internals.Strings.Search")
+              use "matreshka-internals-strings-search__portable.adb";
 
          when "portable_32_le" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
@@ -184,6 +186,8 @@ library project Matreshka_League is
               use "matreshka-internals-strings-compare__portable_32.adb";
             for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
               use "matreshka-internals-strings-fill_null_terminator__portable_32.adb";
+            for Implementation ("Matreshka.Internals.Strings.Search")
+              use "matreshka-internals-strings-search__portable.adb";
 
          when "portable_64_be" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
@@ -194,6 +198,8 @@ library project Matreshka_League is
               use "matreshka-internals-strings-compare__portable_64.adb";
             for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
               use "matreshka-internals-strings-fill_null_terminator__portable_64.adb";
+            for Implementation ("Matreshka.Internals.Strings.Search")
+              use "matreshka-internals-strings-search__portable.adb";
 
          when "portable_64_le" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
@@ -204,6 +210,8 @@ library project Matreshka_League is
               use "matreshka-internals-strings-compare__portable_64.adb";
             for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
               use "matreshka-internals-strings-fill_null_terminator__portable_64.adb";
+            for Implementation ("Matreshka.Internals.Strings.Search")
+              use "matreshka-internals-strings-search__portable.adb";
 
          when "x86" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
@@ -214,6 +222,8 @@ library project Matreshka_League is
               use "matreshka-internals-strings-compare__portable_32.adb";
             for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
               use "matreshka-internals-strings-fill_null_terminator__portable_32.adb";
+            for Implementation ("Matreshka.Internals.Strings.Search")
+              use "matreshka-internals-strings-search__portable.adb";
 
          when "x86_64" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
@@ -224,6 +234,8 @@ library project Matreshka_League is
               use "matreshka-internals-strings-compare__x86_64.adb";
             for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
               use "matreshka-internals-strings-fill_null_terminator__x86_64.adb";
+            for Implementation ("Matreshka.Internals.Strings.Search")
+              use "matreshka-internals-strings-search__x86_64.adb";
       end case;
 
       --  Matreshka.Internals.Host_Types

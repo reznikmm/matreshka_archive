@@ -67,4 +67,14 @@ private package Matreshka.Internals.Strings.Constants is
    --  This mask is used to set unused components of the element to zero on
    --  x86_64 platforms.
 
+   Surrogate_Kind_Mask_x86_64   : constant Matreshka.Internals.SIMD.Intel.v8hi
+     := (others =>  -1_024);  --  FC00
+   Masked_High_Surrogate_x86_64 : constant Matreshka.Internals.SIMD.Intel.v8hi
+     := (others => -10_240);  --  D800
+   Masked_Low_Surrogate_x86_64  : constant Matreshka.Internals.SIMD.Intel.v8hi
+     := (others =>  -9_216);  --  DC00
+   --  Mask and constants to detect surrogate characters in vector. To detect
+   --  surrogate mask should be applied to vector and result should be compared
+   --  with corresponding constant to detect high or low surrogates in vector.
+
 end Matreshka.Internals.Strings.Constants;
