@@ -41,77 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides set of Intel's specific data types for MMX/SSE
---  instruction sets. Children packages provide operations on this types,
---  one child package covers one instruction set. Types declarations are
---  specific for GNAT compiler. The way how subprograms are defined is also
---  GNAT specific, it allows to highly optimize code and replace one function
---  by one instruction in most cases.
-------------------------------------------------------------------------------
-with Ada.Unchecked_Conversion;
-with Interfaces;
 
-package Matreshka.Internals.SIMD.Intel is
+package body Matreshka.Internals.SIMD.Intel.MMX is
 
-   pragma Pure;
+   ---------------------
+   -- mm_setzero_si64 --
+   ---------------------
 
-   --  128-bit types
+   function mm_setzero_si64 return v2si is
+   begin
+      return (others => 0);
+   end mm_setzero_si64;
 
-   type v16qi is array (1 .. 16) of Interfaces.Integer_8;
-   pragma Machine_Attribute (v16qi, "vector_type");
-   pragma Machine_Attribute (v16qi, "may_alias");
-
-   type v8hi is array (1 .. 8) of Interfaces.Integer_16;
-   pragma Machine_Attribute (v8hi, "vector_type");
-   pragma Machine_Attribute (v8hi, "may_alias");
-
-   type v4si is array (1 .. 4) of Interfaces.Integer_32;
-   pragma Machine_Attribute (v4si, "vector_type");
-   pragma Machine_Attribute (v4si, "may_alias");
-
-   type v2di is array (1 .. 2) of Interfaces.Integer_64;
-   pragma Machine_Attribute (v2di, "vector_type");
-   pragma Machine_Attribute (v2di, "may_alias");
-
-   type v4sf is array (1 .. 4) of Interfaces.IEEE_Float_32;
-   pragma Machine_Attribute (v4sf, "vector_type");
-   pragma Machine_Attribute (v4sf, "may_alias");
-
-   type v2df is array (1 .. 2) of Interfaces.IEEE_Float_64;
-   pragma Machine_Attribute (v2df, "vector_type");
-   pragma Machine_Attribute (v2df, "may_alias");
-
-   --  64-bit types
-
-   type v8qi is array (1 .. 8) of Interfaces.Integer_8;
-   pragma Machine_Attribute (v8qi, "vector_type");
-   pragma Machine_Attribute (v8qi, "may_alias");
-
-   type v4hi is array (1 .. 4) of Interfaces.Integer_16;
-   pragma Machine_Attribute (v4hi, "vector_type");
-   pragma Machine_Attribute (v4hi, "may_alias");
-
-   type v2si is array (1 .. 2) of Interfaces.Integer_32;
-   pragma Machine_Attribute (v2si, "vector_type");
-   pragma Machine_Attribute (v2si, "may_alias");
-
-   type v1di is array (1 .. 1) of Interfaces.Integer_64;
-   pragma Machine_Attribute (v1di, "vector_type");
-   pragma Machine_Attribute (v1di, "may_alias");
-
-   --  Type conversion operations.
-
-   function To_v16qi is new Ada.Unchecked_Conversion (v8hi, v16qi);
-   function To_v8hi is new Ada.Unchecked_Conversion (v4si, v8hi);
-   function To_v8hi is new Ada.Unchecked_Conversion (v2di, v8hi);
-   function To_v4si is new Ada.Unchecked_Conversion (v8hi, v4si);
-   function To_v2di is new Ada.Unchecked_Conversion (v4si, v2di);
-   function To_v2di is new Ada.Unchecked_Conversion (v8hi, v2di);
-
-   function To_v8qi is new Ada.Unchecked_Conversion (v2si, v8qi);
-   function To_v4hi is new Ada.Unchecked_Conversion (v8qi, v4hi);
-   function To_v4hi is new Ada.Unchecked_Conversion (v2si, v4hi);
-   function To_v2si is new Ada.Unchecked_Conversion (v4hi, v2si);
-   function To_v2si is new Ada.Unchecked_Conversion (v8qi, v2si);
-
-end Matreshka.Internals.SIMD.Intel;
+end Matreshka.Internals.SIMD.Intel.MMX;

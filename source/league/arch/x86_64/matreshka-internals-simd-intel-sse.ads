@@ -48,7 +48,8 @@ package Matreshka.Internals.SIMD.Intel.SSE is
 
    pragma Pure;
 
---  _mm_setzero_ps
+   function mm_setzero_ps return v4sf;
+   pragma Inline_Always (mm_setzero_ps);
 
    function mm_add_ss (A : v4sf; B : v4sf) return v4sf;
    pragma Import (Intrinsic, mm_add_ss, "__builtin_ia32_addss");
@@ -125,9 +126,11 @@ package Matreshka.Internals.SIMD.Intel.SSE is
    function mm_cmple_ss (A : v4sf; B : v4sf) return v4sf;
    pragma Import (Intrinsic, mm_cmple_ss, "__builtin_ia32_cmpless");
 
---   function mm_cmpgt_ss (A : v4sf; B : v4sf) return v4sf;
+   function mm_cmpgt_ss (A : v4sf; B : v4sf) return v4sf;
+   pragma Inline_Always (mm_cmpgt_ss);
 
---   function mm_cmpge_ss (A : v4sf; B : v4sf) return v4sf;
+   function mm_cmpge_ss (A : v4sf; B : v4sf) return v4sf;
+   pragma Inline_Always (mm_cmpge_ss);
 
    function mm_cmpneq_ss (A : v4sf; B : v4sf) return v4sf;
    pragma Import (Intrinsic, mm_cmpneq_ss, "__builtin_ia32_cmpneqss");
@@ -138,9 +141,11 @@ package Matreshka.Internals.SIMD.Intel.SSE is
    function mm_cmpnle_ss (A : v4sf; B : v4sf) return v4sf;
    pragma Import (Intrinsic, mm_cmpnle_ss, "__builtin_ia32_cmpnless");
 
---   function mm_cmpngt_ss (A : v4sf; B : v4sf) return v4sf;
+   function mm_cmpngt_ss (A : v4sf; B : v4sf) return v4sf;
+   pragma Inline_Always (mm_cmpngt_ss);
 
---   function mm_cmpnge_ss (A : v4sf; B : v4sf) return v4sf;
+   function mm_cmpnge_ss (A : v4sf; B : v4sf) return v4sf;
+   pragma Inline_Always (mm_cmpnge_ss);
 
    function mm_cmpord_ss (A : v4sf; B : v4sf) return v4sf;
    pragma Import (Intrinsic, mm_cmpord_ss, "__builtin_ia32_cmpordss");
@@ -280,21 +285,29 @@ package Matreshka.Internals.SIMD.Intel.SSE is
    function mm_cvt_pi2ps (A : v4sf; B : v2si) return v4sf;
    pragma Import (Intrinsic, mm_cvt_pi2ps, "__builtin_ia32_cvtpi2ps");
 
---   function mm_cvtpi16_ps (A : v2si) return v4sf;
+   function mm_cvtpi16_ps (A : v4hi) return v4sf;
+   pragma Inline_Always (mm_cvtpi16_ps);
 
---   function mm_cvtpu16_ps (A : v2si) return v4sf;
+   function mm_cvtpu16_ps (A : v4hi) return v4sf;
+   pragma Inline_Always (mm_cvtpu16_ps);
 
---   function mm_cvtpi8_ps (A : v2si) return v4sf;
+   function mm_cvtpi8_ps (A : v8qi) return v4sf;
+   pragma Inline_Always (mm_cvtpi8_ps);
 
---   function mm_cvtpu8_ps (A : v2si) return v4sf;
+   function mm_cvtpu8_ps (A : v8qi) return v4sf;
+   pragma Inline_Always (mm_cvtpu8_ps);
 
---  _mm_cvtpi32x2_ps
+   function mm_cvtpi32x2_ps (A : v2si; B : v2si) return v4sf;
+   pragma Inline_Always (mm_cvtpi32x2_ps);
 
---  _mm_cvtps_pi16
+   function mm_cvtps_pi16 (A : v4sf) return v4hi;
+   pragma Inline_Always (mm_cvtps_pi16);
 
---  _mm_cvtps_pi8
+   function mm_cvtps_pi8 (A : v4sf) return v8qi;
+   pragma Inline_Always (mm_cvtps_pi8);
 
-   function mm_shuffle_ps (A : v4sf; B : v4sf; Mask : Interfaces.Integer_32) return v4sf;
+   function mm_shuffle_ps
+    (A : v4sf; B : v4sf; Mask : Interfaces.Integer_32) return v4sf;
    pragma Import (Intrinsic, mm_shuffle_ps, "__builtin_ia32_shufps");
 
    function mm_unpackhi_ps (A : v4sf; B : v4sf) return v4sf;
@@ -429,7 +442,8 @@ package Matreshka.Internals.SIMD.Intel.SSE is
 
 --  _mm_prefetch
 
-   procedure mm_stream_pi (P : access Interfaces.Integer_64; A : Interfaces.Integer_64);
+   procedure mm_stream_pi
+    (P : access Interfaces.Integer_64; A : Interfaces.Integer_64);
    pragma Import (Intrinsic, mm_stream_pi, "__builtin_ia32_movntq");
 
    procedure mm_stream_ps (P : access Interfaces.IEEE_Float_32; A : v4sf);

@@ -394,10 +394,12 @@ package Matreshka.Internals.SIMD.Intel.SSE2 is
    function mm_unpacklo_pd (A : v2df; B : v2df) return v2df;
    pragma Import (Intrinsic, mm_unpacklo_pd, "__builtin_ia32_unpcklpd");
 
-   function mm_loadh_pd (A : v2df; B : access Interfaces.IEEE_Float_64) return v2df;
+   function mm_loadh_pd
+    (A : v2df; B : access Interfaces.IEEE_Float_64) return v2df;
    pragma Import (Intrinsic, mm_loadh_pd, "__builtin_ia32_loadhpd");
 
-   function mm_loadl_pd (A : v2df; B : access Interfaces.IEEE_Float_64) return v2df;
+   function mm_loadl_pd
+    (A : v2df; B : access Interfaces.IEEE_Float_64) return v2df;
    pragma Import (Intrinsic, mm_loadl_pd, "__builtin_ia32_loadlpd");
 
    function mm_movemask_pd (A : v2df) return Interfaces.Integer_32;
@@ -422,7 +424,8 @@ package Matreshka.Internals.SIMD.Intel.SSE2 is
    pragma Import (Intrinsic, mm_unpackhi_epi32, "__builtin_ia32_punpckhdq128");
 
    function mm_unpackhi_epi64 (A : v2di; B : v2di) return v2di;
-   pragma Import (Intrinsic, mm_unpackhi_epi64, "__builtin_ia32_punpckhqdq128");
+   pragma Import
+           (Intrinsic, mm_unpackhi_epi64, "__builtin_ia32_punpckhqdq128");
 
    function mm_unpacklo_epi8 (A : v16qi; B : v16qi) return v16qi;
    pragma Import (Intrinsic, mm_unpacklo_epi8, "__builtin_ia32_punpcklbw128");
@@ -434,7 +437,8 @@ package Matreshka.Internals.SIMD.Intel.SSE2 is
    pragma Import (Intrinsic, mm_unpacklo_epi32, "__builtin_ia32_punpckldq128");
 
    function mm_unpacklo_epi64 (A : v2di; B : v2di) return v2di;
-   pragma Import (Intrinsic, mm_unpacklo_epi64, "__builtin_ia32_punpcklqdq128");
+   pragma Import
+           (Intrinsic, mm_unpacklo_epi64, "__builtin_ia32_punpcklqdq128");
 
    function mm_add_epi8 (A : v16qi; B : v16qi) return v16qi;
    pragma Import (Intrinsic, mm_add_epi8, "__builtin_ia32_paddb128");
@@ -615,16 +619,20 @@ package Matreshka.Internals.SIMD.Intel.SSE2 is
    function mm_mulhi_epu16 (A : v8hi; B : v8hi) return v8hi;
    pragma Import (Intrinsic, mm_mulhi_epu16, "__builtin_ia32_pmulhuw128");
 
-   function mm_shufflehi_epi16 (A : v8hi; Mask : Interfaces.Integer_32) return v8hi;
+   function mm_shufflehi_epi16
+    (A : v8hi; Mask : Interfaces.Integer_32) return v8hi;
    pragma Import (Intrinsic, mm_shufflehi_epi16, "__builtin_ia32_pshufhw");
 
-   function mm_shufflelo_epi16 (A : v8hi; Mask : Interfaces.Integer_32) return v8hi;
+   function mm_shufflelo_epi16
+    (A : v8hi; Mask : Interfaces.Integer_32) return v8hi;
    pragma Import (Intrinsic, mm_shufflelo_epi16, "__builtin_ia32_pshuflw");
 
-   function mm_shuffle_epi32 (A : v4si; Mask : Interfaces.Integer_32) return v4si;
+   function mm_shuffle_epi32
+    (A : v4si; Mask : Interfaces.Integer_32) return v4si;
    pragma Import (Intrinsic, mm_shuffle_epi32, "__builtin_ia32_pshufd");
 
-   procedure mm_maskmoveu_si128 (A : v16qi; B : v16qi; C : access Interfaces.Integer_8);
+   procedure mm_maskmoveu_si128
+    (A : v16qi; B : v16qi; C : access Interfaces.Integer_8);
    pragma Import (Intrinsic, mm_maskmoveu_si128, "__builtin_ia32_maskmovdqu");
 
    function mm_avg_epu8 (A : v16qi; B : v16qi) return v16qi;
