@@ -65,6 +65,7 @@ begin
    --  Creating document
    Writer.Set_Version (XML.SAX.Pretty_Writers.XML_1_1);
    Writer.Start_Document (OK);
+
    Writer.Start_Element (NS_URI,
                          Local_Name,
                          Qualified_Name,
@@ -77,6 +78,26 @@ begin
                        Local_Name,
                        Qualified_Name,
                        OK);
+
+   Writer.Start_Prefix_Mapping
+     (To_Universal_String ("xmi"),
+      To_Universal_String ("http://www.xmi.org/xmi_prefix"),
+      OK);
+
+   Writer.Start_Element (To_Universal_String ("urn:test:xxx"),
+                         To_Universal_String ("XXX"),
+                         To_Universal_String (""),
+                         Attrs,
+                         OK);
+
+   Writer.Characters (To_Universal_String ("sdfsdf"), OK);
+
+   Writer.End_Element (To_Universal_String ("urn:test:xxx"),
+                       To_Universal_String ("XXX"),
+                       To_Universal_String (""),
+                       OK);
+
+   Writer.End_Prefix_Mapping (To_Universal_String ("xmi"), OK);
 
    Writer.End_Document (OK);
 
