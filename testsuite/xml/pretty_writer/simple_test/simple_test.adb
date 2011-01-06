@@ -80,11 +80,11 @@ begin
                        OK);
 
    Writer.Start_Prefix_Mapping
-     (To_Universal_String ("xmi"),
-      To_Universal_String ("http://www.xmi.org/xmi_prefix"),
+     (To_Universal_String (""),
+      To_Universal_String ("org:xmi_prefix:xmi"),
       OK);
 
-   Writer.Start_Element (To_Universal_String ("urn:test:xxx"),
+   Writer.Start_Element (To_Universal_String ("org:xmi_prefix:xmi"),
                          To_Universal_String ("XXX"),
                          To_Universal_String (""),
                          Attrs,
@@ -92,12 +92,12 @@ begin
 
    Writer.Characters (To_Universal_String ("sdfsdf"), OK);
 
-   Writer.End_Element (To_Universal_String ("urn:test:xxx"),
+   Writer.End_Element (To_Universal_String ("org:xmi_prefix:xmi"),
                        To_Universal_String ("XXX"),
                        To_Universal_String (""),
                        OK);
 
-   Writer.End_Prefix_Mapping (To_Universal_String ("xmi"), OK);
+   Writer.End_Prefix_Mapping (To_Universal_String (""), OK);
 
    Writer.End_Document (OK);
 
