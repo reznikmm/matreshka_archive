@@ -126,7 +126,15 @@ package body XML.SAX.Pretty_Writers is
      Success        : in out Boolean) is
    begin
       Self.Text.Append (League.Strings.To_Universal_String ("</"));
-      Self.Text.Append (Qualified_Name);
+
+      if not Self.Prefix.Is_Empty then
+         Self.Text.Append (Self.Prefix);
+         Self.Text.Append (League.Strings.To_Universal_String (":"));
+         Self.Text.Append (Local_Name);
+      else
+         Self.Text.Append (Qualified_Name);
+      end if;
+
       Self.Text.Append (League.Strings.To_Universal_String (">"));
       Self.Nesting := Self.Nesting - 1;
    end End_Element;
@@ -152,7 +160,8 @@ package body XML.SAX.Pretty_Writers is
      Prefix  : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      null;
+      Self.Prefix := League.Strings.Empty_Universal_String;
+      Self.Namespace_URI := League.Strings.Empty_Universal_String;
    end End_Prefix_Mapping;
 
    ------------------
@@ -348,7 +357,28 @@ package body XML.SAX.Pretty_Writers is
      Success        : in out Boolean) is
    begin
       Self.Text.Append (League.Strings.To_Universal_String ("<"));
-      Self.Text.Append (Qualified_Name);
+
+      if not Self.Prefix.Is_Empty then
+         Self.Text.Append (Self.Prefix);
+         Self.Text.Append (League.Strings.To_Universal_String (":"));
+         Self.Text.Append (Local_Name);
+
+         if not Self.Namespace_URI.Is_Empty then
+            Self.Text.Append (League.Strings.To_Universal_String (" xmlns:"));
+            Self.Text.Append (Self.Prefix);
+            Self.Text.Append (League.Strings.To_Universal_String ("="""));
+            Self.Text.Append (Self.Namespace_URI);
+            Self.Text.Append (League.Strings.To_Universal_String (""""));
+         end if;
+      else
+         Self.Text.Append (Qualified_Name);
+      end if;
+
+      if not Namespace_URI.Is_Empty then
+         Self.Text.Append (League.Strings.To_Universal_String (" xmlns="""));
+         Self.Text.Append (Namespace_URI);
+         Self.Text.Append (League.Strings.To_Universal_String (""""));
+      end if;
 
       for J in 1 .. Attributes.Length loop
          Self.Text.Append (League.Strings.To_Universal_String (" "));
@@ -384,7 +414,8 @@ package body XML.SAX.Pretty_Writers is
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean) is
    begin
-      null;
+      Self.Prefix := Prefix;
+      Self.Namespace_URI := Namespace_URI;
    end Start_Prefix_Mapping;
 
    ----------

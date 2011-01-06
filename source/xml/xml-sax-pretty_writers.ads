@@ -160,9 +160,11 @@ private
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with
    record
-      Text    : League.Strings.Universal_String;
-      Nesting : Natural;
-      Version : XML_Version := XML_1_0;
+      Text          : League.Strings.Universal_String;
+      Nesting       : Natural;
+      Version       : XML_Version := XML_1_0;
+      Prefix        : League.Strings.Universal_String;
+      Namespace_URI : League.Strings.Universal_String;
    end record;
 
    function Escape
