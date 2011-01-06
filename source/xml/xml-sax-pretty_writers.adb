@@ -127,12 +127,31 @@ package body XML.SAX.Pretty_Writers is
    begin
       Self.Text.Append (League.Strings.To_Universal_String ("</"));
 
-      if not Self.Prefix.Is_Empty then
-         Self.Text.Append (Self.Prefix);
-         Self.Text.Append (League.Strings.To_Universal_String (":"));
+      if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
+         --  XXX error should be reported
+         null;
+      end if;
+
+      if not Local_Name.Is_Empty then
+
+         if Namespace_URI.Is_Empty then
+            --  XXX error should be reported
+            null;
+         end if;
+
+         if not Self.Prefix.Is_Empty then
+            Self.Text.Append (Self.Prefix);
+            Self.Text.Append (League.Strings.To_Universal_String (":"));
+         end if;
+
          Self.Text.Append (Local_Name);
-      else
+
+      elsif not Qualified_Name.Is_Empty then
          Self.Text.Append (Qualified_Name);
+
+      else
+         --  XXX error should be reported
+         null;
       end if;
 
       Self.Text.Append (League.Strings.To_Universal_String (">"));
@@ -358,26 +377,38 @@ package body XML.SAX.Pretty_Writers is
    begin
       Self.Text.Append (League.Strings.To_Universal_String ("<"));
 
-      if not Self.Prefix.Is_Empty then
-         Self.Text.Append (Self.Prefix);
-         Self.Text.Append (League.Strings.To_Universal_String (":"));
-         Self.Text.Append (Local_Name);
-
-         if not Self.Namespace_URI.Is_Empty then
-            Self.Text.Append (League.Strings.To_Universal_String (" xmlns:"));
-            Self.Text.Append (Self.Prefix);
-            Self.Text.Append (League.Strings.To_Universal_String ("="""));
-            Self.Text.Append (Self.Namespace_URI);
-            Self.Text.Append (League.Strings.To_Universal_String (""""));
-         end if;
-      else
-         Self.Text.Append (Qualified_Name);
+      if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
+         --  XXX error should be reported
+         null;
       end if;
 
-      if not Namespace_URI.Is_Empty then
-         Self.Text.Append (League.Strings.To_Universal_String (" xmlns="""));
-         Self.Text.Append (Namespace_URI);
+      if not Local_Name.Is_Empty then
+
+         if Namespace_URI.Is_Empty then
+            --  XXX error should be reported
+            null;
+         end if;
+
+         if not Self.Prefix.Is_Empty then
+            Self.Text.Append (Self.Prefix);
+            Self.Text.Append (League.Strings.To_Universal_String (":"));
+         end if;
+
+         Self.Text.Append (Local_Name);
+
+         Self.Text.Append (League.Strings.To_Universal_String (" xmlns"));
+
+         if not Self.Prefix.Is_Empty then
+           Self.Text.Append (League.Strings.To_Universal_String (":"));
+           Self.Text.Append (Self.Prefix);
+         end if;
+
+         Self.Text.Append (League.Strings.To_Universal_String ("="""));
+         Self.Text.Append (Self.Namespace_URI);
          Self.Text.Append (League.Strings.To_Universal_String (""""));
+
+      elsif not Qualified_Name.Is_Empty then
+         Self.Text.Append (Qualified_Name);
       end if;
 
       for J in 1 .. Attributes.Length loop
@@ -414,7 +445,13 @@ package body XML.SAX.Pretty_Writers is
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean) is
    begin
+      if Namespace_URI.Is_Empty then
+         --  XXX error should be reported
+         null;
+      end if;
+
       Self.Prefix := Prefix;
+
       Self.Namespace_URI := Namespace_URI;
    end Start_Prefix_Mapping;
 
