@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Containers.Hashed_Maps;
+
 with League.Strings;
 with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
@@ -156,15 +158,26 @@ package XML.SAX.Pretty_Writers is
 
 private
 
+   use type League.Strings.Universal_String;
+
+   function Hash
+    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
+
+   package Universal_String_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           League.Strings.Universal_String,
+           Hash,
+           League.Strings."=");
+
    type SAX_Pretty_Writer is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with
    record
-      Text          : League.Strings.Universal_String;
-      Nesting       : Natural;
-      Version       : XML_Version := XML_1_0;
-      Prefix        : League.Strings.Universal_String;
-      Namespace_URI : League.Strings.Universal_String;
+      Text       : League.Strings.Universal_String;
+      Nesting    : Natural;
+      Version    : XML_Version := XML_1_0;
+      Prefix_Map : Universal_String_Maps.Map;
    end record;
 
    function Escape

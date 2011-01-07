@@ -50,6 +50,7 @@ package body XML.SAX.Pretty_Writers is
    use League.Strings.Internals;
 
    use type League.Strings.Universal_String;
+   use type Universal_String_Maps.Cursor;
 
    function Image (X_V : XML_Version) return League.Strings.Universal_String;
 
@@ -124,6 +125,9 @@ package body XML.SAX.Pretty_Writers is
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean) is
+
+      C      : Universal_String_Maps.Cursor;
+
    begin
       Self.Text.Append (League.Strings.To_Universal_String ("</"));
 
@@ -139,12 +143,26 @@ package body XML.SAX.Pretty_Writers is
             null;
          end if;
 
-         if not Self.Prefix.Is_Empty then
-            Self.Text.Append (Self.Prefix);
-            Self.Text.Append (League.Strings.To_Universal_String (":"));
-         end if;
+         C := Self.Prefix_Map.Find (Namespace_URI);
 
-         Self.Text.Append (Local_Name);
+         if C /= Universal_String_Maps.No_Element then
+
+            declare
+               Prefix : League.Strings.Universal_String
+                 := Universal_String_Maps.Element (C);
+
+            begin
+               if not Prefix.Is_Empty then
+                  Self.Text.Append (Prefix);
+                  Self.Text.Append (League.Strings.To_Universal_String (":"));
+               end if;
+
+               Self.Text.Append (Local_Name);
+            end;
+         else
+            --  XXX: Error should be reported
+            null;
+         end if;
 
       elsif not Qualified_Name.Is_Empty then
          Self.Text.Append (Qualified_Name);
@@ -178,9 +196,22 @@ package body XML.SAX.Pretty_Writers is
     (Self    : in out SAX_Pretty_Writer;
      Prefix  : League.Strings.Universal_String;
      Success : in out Boolean) is
+
+      C : Universal_String_Maps.Cursor;
+
    begin
-      Self.Prefix := League.Strings.Empty_Universal_String;
-      Self.Namespace_URI := League.Strings.Empty_Universal_String;
+      C := Self.Prefix_Map.First;
+
+      while C /= Universal_String_Maps.No_Element loop
+         if not Universal_String_Maps.Element (C).Is_Empty then
+            if Universal_String_Maps.Element (C) = Prefix then
+              Self.Prefix_Map.Delete (C);
+            end if;
+         end if;
+
+         Universal_String_Maps.Next (C);
+      end loop;
+
    end End_Prefix_Mapping;
 
    ------------------
@@ -259,6 +290,16 @@ package body XML.SAX.Pretty_Writers is
          end loop;
       end return;
    end Escape;
+
+   ----------
+   -- Hash --
+   ----------
+
+   function Hash
+    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type is
+   begin
+      return Ada.Containers.Hash_Type (Item.Hash);
+   end Hash;
 
    --------------------------
    -- Ignorable_Whitespace --
@@ -374,6 +415,9 @@ package body XML.SAX.Pretty_Writers is
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean) is
+
+      C : Universal_String_Maps.Cursor;
+
    begin
       Self.Text.Append (League.Strings.To_Universal_String ("<"));
 
@@ -389,23 +433,38 @@ package body XML.SAX.Pretty_Writers is
             null;
          end if;
 
-         if not Self.Prefix.Is_Empty then
-            Self.Text.Append (Self.Prefix);
-            Self.Text.Append (League.Strings.To_Universal_String (":"));
+         C := Self.Prefix_Map.Find (Namespace_URI);
+
+         if C /= Universal_String_Maps.No_Element then
+            if not Universal_String_Maps.Element (C).Is_Empty then
+               Self.Text.Append (Universal_String_Maps.Element (C));
+               Self.Text.Append (League.Strings.To_Universal_String (":"));
+            end if;
+
+            Self.Text.Append (Local_Name);
+
+            C := Self.Prefix_Map.First;
+
+            while C /= Universal_String_Maps.No_Element loop
+               Self.Text.Append
+                (League.Strings.To_Universal_String (" xmlns"));
+
+               if not Universal_String_Maps.Element (C).Is_Empty then
+                  Self.Text.Append (League.Strings.To_Universal_String (":"));
+                  Self.Text.Append (Universal_String_Maps.Element (C));
+               end if;
+
+               Self.Text.Append (League.Strings.To_Universal_String ("="""));
+               Self.Text.Append (Universal_String_Maps.Key (C));
+               Self.Text.Append (League.Strings.To_Universal_String (""""));
+
+               Universal_String_Maps.Next (C);
+            end loop;
+
+         else
+            --  XXX: Error should be reported
+            null;
          end if;
-
-         Self.Text.Append (Local_Name);
-
-         Self.Text.Append (League.Strings.To_Universal_String (" xmlns"));
-
-         if not Self.Prefix.Is_Empty then
-           Self.Text.Append (League.Strings.To_Universal_String (":"));
-           Self.Text.Append (Self.Prefix);
-         end if;
-
-         Self.Text.Append (League.Strings.To_Universal_String ("="""));
-         Self.Text.Append (Self.Namespace_URI);
-         Self.Text.Append (League.Strings.To_Universal_String (""""));
 
       elsif not Qualified_Name.Is_Empty then
          Self.Text.Append (Qualified_Name);
@@ -450,9 +509,8 @@ package body XML.SAX.Pretty_Writers is
          null;
       end if;
 
-      Self.Prefix := Prefix;
-
-      Self.Namespace_URI := Namespace_URI;
+      Self.Prefix_Map.Insert (Key => Namespace_URI,
+                              New_Item => Prefix);
    end Start_Prefix_Mapping;
 
    ----------
