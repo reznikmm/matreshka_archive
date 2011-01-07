@@ -105,6 +105,48 @@ package body XML.SAX.Attributes is
       end if;
    end Dereference;
 
+   ------------
+   -- Detach --
+   ------------
+
+   procedure Detach (Self : in out Shared_Attributes_Access; Size : Natural) is
+   begin
+      --  Reallocate shared object when necessary.
+
+      if not Can_Be_Reused (Self)
+         --  Object can't be mutated because someone else use it. Allocate
+         --  new shared object and copy data.
+        or else Self.Last < Size
+         --  There are no enought space to store new attribute. Reallocate new
+         --  object and copy data.
+      then
+         declare
+            Aux : constant Shared_Attributes_Access
+              := new Shared_Attributes ((Size + 8) / 8 * 8);
+
+         begin
+            Aux.Values (1 .. Self.Length) := Self.Values (1 .. Self.Length);
+            Aux.Length := Self.Length;
+
+            for J in 1 .. Aux.Length loop
+               Matreshka.Internals.Strings.Reference
+                (Aux.Values (J).Namespace_URI);
+               Matreshka.Internals.Strings.Reference
+                (Aux.Values (J).Local_Name);
+               Matreshka.Internals.Strings.Reference
+                (Aux.Values (J).Qualified_Name);
+               Matreshka.Internals.Strings.Reference
+                (Aux.Values (J).Value);
+               Matreshka.Internals.Strings.Reference
+                (Aux.Values (J).Value_Type);
+            end loop;
+
+            Dereference (Self);
+            Self := Aux;
+         end;
+      end if;
+   end Detach;
+
    --------------
    -- Finalize --
    --------------
@@ -302,48 +344,6 @@ package body XML.SAX.Attributes is
 
       return Create (Self.Data.Values (Index).Local_Name);
    end Local_Name;
-
-   ------------
-   -- Detach --
-   ------------
-
-   procedure Detach (Self : in out Shared_Attributes_Access; Size : Natural) is
-   begin
-      --  Reallocate shared object when necessary.
-
-      if not Can_Be_Reused (Self)
-         --  Object can't be mutated because someone else use it. Allocate
-         --  new shared object and copy data.
-        or else Self.Last < Size
-         --  There are no enought space to store new attribute. Reallocate new
-         --  object and copy data.
-      then
-         declare
-            Aux : constant Shared_Attributes_Access
-              := new Shared_Attributes ((Size + 8) / 8 * 8);
-
-         begin
-            Aux.Values (1 .. Self.Length) := Self.Values (1 .. Self.Length);
-            Aux.Length := Self.Length;
-
-            for J in 1 .. Aux.Length loop
-               Matreshka.Internals.Strings.Reference
-                (Aux.Values (J).Namespace_URI);
-               Matreshka.Internals.Strings.Reference
-                (Aux.Values (J).Local_Name);
-               Matreshka.Internals.Strings.Reference
-                (Aux.Values (J).Qualified_Name);
-               Matreshka.Internals.Strings.Reference
-                (Aux.Values (J).Value);
-               Matreshka.Internals.Strings.Reference
-                (Aux.Values (J).Value_Type);
-            end loop;
-
-            Dereference (Self);
-            Self := Aux;
-         end;
-      end if;
-   end Detach;
 
    -------------------
    -- Namespace_URI --
