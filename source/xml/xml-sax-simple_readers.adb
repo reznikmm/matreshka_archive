@@ -52,12 +52,8 @@ package body XML.SAX.Simple_Readers is
    use Matreshka.Internals.Strings;
    use XML.SAX.Readers;
 
-   procedure Reset
-    (Self        : not null access SAX_Simple_Reader;
-     Source      :
-       not null access XML.SAX.Input_Sources.SAX_Input_Source'Class;
-     Incremental : Boolean);
-   --  Resets reader to start to read data from the specified input source.
+   procedure Reset (Self : not null access SAX_Simple_Reader);
+   --  Resets reader to start to read data from new input source.
 
    -----------
    -- Clear --
@@ -232,9 +228,9 @@ package body XML.SAX.Simple_Readers is
     (Self   : not null access SAX_Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class) is
    begin
-      Reset (Self, Source, False);
-      Parser.YYParse (Self);
-      Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
+      Self.Set_Input_Source (Source);
+      Self.Configuration.Incremental := False;
+      Self.Parse;
    end Parse;
 
    -----------
@@ -243,6 +239,10 @@ package body XML.SAX.Simple_Readers is
 
    not overriding procedure Parse (Self : not null access SAX_Simple_Reader) is
    begin
+      if Self.Configuration.Reset then
+         Reset (Self);
+      end if;
+
       Parser.YYParse (Self);
       Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
    end Parse;
@@ -251,12 +251,7 @@ package body XML.SAX.Simple_Readers is
    -- Reset --
    -----------
 
-   procedure Reset
-    (Self        : not null access SAX_Simple_Reader;
-     Source      :
-       not null access XML.SAX.Input_Sources.SAX_Input_Source'Class;
-     Incremental : Boolean)
-   is
+   procedure Reset (Self : not null access SAX_Simple_Reader) is
       use Matreshka.Internals.XML;
       use Matreshka.Internals.XML.Entity_Tables;
 
@@ -272,27 +267,32 @@ package body XML.SAX.Simple_Readers is
       Matreshka.Internals.XML.Symbol_Tables.Reset (Self.Symbols);
       Matreshka.Internals.XML.Notation_Tables.Reset (Self.Notations);
 
+      Self.Namespaces.Enabled := Self.Configuration.Enable_Namespaces;
+
       Callbacks.Call_Set_Document_Locator (Self.all, Self.Locator);
       Self.Version := XML_1_0;
       New_Document_Entity
        (Self.Entities,
-        Source.Public_Id,
-        Source.System_Id,
-        Source.System_Id,
+        Self.Configuration.Source.Public_Id,
+        Self.Configuration.Source.System_Id,
+        Self.Configuration.Source.System_Id,
         Entity);
       Self.Scanner_State :=
        (Entity      => Entity,
-        Source      => Source.all'Unchecked_Access,
+        Source      => Self.Configuration.Source,
         Data        => Matreshka.Internals.Strings.Shared_Empty'Access,
-        Incremental => Incremental,
+        Incremental => Self.Configuration.Incremental,
         Base        =>
           Matreshka.Internals.URI_Utilities.Directory_Name
-           (Source.System_Id),
+           (Self.Configuration.Source.System_Id),
         others      => <>);
       Self.Parser_State.TOS        := 0;
       Self.Parser_State.Look_Ahead := True;
       Self.Parser_State.Error      := False;
       Scanner.Initialize (Self.all);
+
+      Self.Configuration.Reset := False;
+      Self.Configuration.Source := null;
    end Reset;
 
    -------------------------
@@ -351,7 +351,7 @@ package body XML.SAX.Simple_Readers is
     (Self    : not null access SAX_Simple_Reader;
      Enabled : Boolean) is
    begin
-      Self.Namespaces.Enabled := Enabled;
+      Self.Configuration.Enable_Namespaces := Enabled;
    end Set_Enable_Namespaces;
 
    -------------------------
@@ -389,7 +389,9 @@ package body XML.SAX.Simple_Readers is
     (Self   : not null access SAX_Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class) is
    begin
-      Reset (Self, Source, True);
+      Self.Configuration.Source := Source.all'Unchecked_Access;
+      Self.Configuration.Incremental := True;
+      Self.Configuration.Reset := True;
    end Set_Input_Source;
 
    -------------------------

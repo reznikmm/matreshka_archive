@@ -341,6 +341,13 @@ private
       Enabled : Boolean := False;
    end record;
 
+   type Configuration_Information is record
+      Reset             : Boolean := True;
+      Source            : XML.SAX.Input_Sources.SAX_Input_Source_Access;
+      Incremental       : Boolean := False;
+      Enable_Namespaces : Boolean := True;
+   end record;
+
    type SAX_Simple_Reader is new Ada.Finalization.Limited_Controlled
      and XML.SAX.Readers.SAX_Reader with
    record
@@ -357,6 +364,10 @@ private
       Lexical_Handler        : XML.SAX.Readers.SAX_Lexical_Handler_Access
         := Default_Handler'Access;
       Entity_Resolver        : XML.SAX.Readers.SAX_Entity_Resolver_Access;
+
+      --  Configuration, it is used to initialize state of the reader.
+
+      Configuration          : Configuration_Information;
 
       --  Scanner state
 
