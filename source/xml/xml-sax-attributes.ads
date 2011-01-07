@@ -203,6 +203,17 @@ package XML.SAX.Attributes is
      Local_Name    : League.Strings.Universal_String)
        return League.Strings.Universal_String;
 
+   procedure Set_Value
+    (Self           : in out SAX_Attributes;
+     Qualified_Name : League.Strings.Universal_String;
+     Value          : League.Strings.Universal_String);
+
+   procedure Set_Value
+    (Self          : in out SAX_Attributes;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String;
+     Value         : League.Strings.Universal_String);
+
 private
 
    --  Representation of one attribute and its value.

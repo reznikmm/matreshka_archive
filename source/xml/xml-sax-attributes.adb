@@ -386,6 +386,104 @@ package body XML.SAX.Attributes is
       end if;
    end Reference;
 
+   ---------------
+   -- Set_Value --
+   ---------------
+
+   procedure Set_Value
+    (Self           : in out SAX_Attributes;
+     Qualified_Name : League.Strings.Universal_String;
+     Value          : League.Strings.Universal_String)
+   is
+      use type Matreshka.Internals.Strings.Shared_String_Access;
+
+      Shared_Value : constant Matreshka.Internals.Strings.Shared_String_Access
+        := Get_Shared (Value);
+      Index        : constant Natural := Self.Index (Qualified_Name);
+      CDATA_Name   : constant Universal_String
+        := To_Universal_String ("CDATA");
+
+   begin
+      if Index = 0 then
+         Detach (Self.Data, Self.Data.Length + 1);
+
+         Self.Data.Length := Self.Data.Length + 1;
+         Self.Data.Values (Self.Data.Length) :=
+          (Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
+           Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
+           Qualified_Name => Get_Shared (Qualified_Name),
+           Value          => Get_Shared (Value),
+           Value_Type     => Get_Shared (CDATA_Name));
+         Matreshka.Internals.Strings.Reference
+          (Self.Data.Values (Self.Data.Length).Qualified_Name);
+         Matreshka.Internals.Strings.Reference
+          (Self.Data.Values (Self.Data.Length).Value);
+         Matreshka.Internals.Strings.Reference
+          (Self.Data.Values (Self.Data.Length).Value_Type);
+
+      else
+         Detach (Self.Data, Self.Data.Length);
+
+         if Shared_Value /= Self.Data.Values (Index).Value then
+            Matreshka.Internals.Strings.Dereference
+             (Self.Data.Values (Index).Value);
+            Matreshka.Internals.Strings.Reference (Shared_Value);
+            Self.Data.Values (Index).Value := Shared_Value;
+         end if;
+      end if;
+   end Set_Value;
+
+   ---------------
+   -- Set_Value --
+   ---------------
+
+   procedure Set_Value
+    (Self          : in out SAX_Attributes;
+     Namespace_URI : League.Strings.Universal_String;
+     Local_Name    : League.Strings.Universal_String;
+     Value         : League.Strings.Universal_String)
+   is
+      use type Matreshka.Internals.Strings.Shared_String_Access;
+
+      Shared_Value : constant Matreshka.Internals.Strings.Shared_String_Access
+        := Get_Shared (Value);
+      Index        : constant Natural
+        := Self.Index (Namespace_URI, Local_Name);
+      CDATA_Name   : constant Universal_String
+        := To_Universal_String ("CDATA");
+
+   begin
+      if Index = 0 then
+         Detach (Self.Data, Self.Data.Length + 1);
+
+         Self.Data.Length := Self.Data.Length + 1;
+         Self.Data.Values (Self.Data.Length) :=
+          (Namespace_URI  => Get_Shared (Namespace_URI),
+           Local_Name     => Get_Shared (Local_Name),
+           Qualified_Name => Matreshka.Internals.Strings.Shared_Empty'Access,
+           Value          => Get_Shared (Value),
+           Value_Type     => Get_Shared (CDATA_Name));
+         Matreshka.Internals.Strings.Reference
+          (Self.Data.Values (Self.Data.Length).Namespace_URI);
+         Matreshka.Internals.Strings.Reference
+          (Self.Data.Values (Self.Data.Length).Local_Name);
+         Matreshka.Internals.Strings.Reference
+          (Self.Data.Values (Self.Data.Length).Value);
+         Matreshka.Internals.Strings.Reference
+          (Self.Data.Values (Self.Data.Length).Value_Type);
+
+      else
+         Detach (Self.Data, Self.Data.Length);
+
+         if Shared_Value /= Self.Data.Values (Index).Value then
+            Matreshka.Internals.Strings.Dereference
+             (Self.Data.Values (Index).Value);
+            Matreshka.Internals.Strings.Reference (Shared_Value);
+            Self.Data.Values (Index).Value := Shared_Value;
+         end if;
+      end if;
+   end Set_Value;
+
    -----------
    -- Value --
    -----------
