@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -126,11 +126,13 @@ package Matreshka.Internals.SIMD.Intel.SSE is
    function mm_cmple_ss (A : v4sf; B : v4sf) return v4sf;
    pragma Import (Intrinsic, mm_cmple_ss, "__builtin_ia32_cmpless");
 
-   function mm_cmpgt_ss (A : v4sf; B : v4sf) return v4sf;
-   pragma Inline_Always (mm_cmpgt_ss);
+--   function mm_cmpgt_ss (A : v4sf; B : v4sf) return v4sf;
+--   pragma Inline_Always (mm_cmpgt_ss);
+--  GNAT GPL 2010 crash on body
 
-   function mm_cmpge_ss (A : v4sf; B : v4sf) return v4sf;
-   pragma Inline_Always (mm_cmpge_ss);
+--   function mm_cmpge_ss (A : v4sf; B : v4sf) return v4sf;
+--   pragma Inline_Always (mm_cmpge_ss);
+--  GNAT GPL 2010 crash on body
 
    function mm_cmpneq_ss (A : v4sf; B : v4sf) return v4sf;
    pragma Import (Intrinsic, mm_cmpneq_ss, "__builtin_ia32_cmpneqss");
@@ -141,11 +143,13 @@ package Matreshka.Internals.SIMD.Intel.SSE is
    function mm_cmpnle_ss (A : v4sf; B : v4sf) return v4sf;
    pragma Import (Intrinsic, mm_cmpnle_ss, "__builtin_ia32_cmpnless");
 
-   function mm_cmpngt_ss (A : v4sf; B : v4sf) return v4sf;
-   pragma Inline_Always (mm_cmpngt_ss);
+--   function mm_cmpngt_ss (A : v4sf; B : v4sf) return v4sf;
+--   pragma Inline_Always (mm_cmpngt_ss);
+--  GNAT GPL 2010 crash on body
 
-   function mm_cmpnge_ss (A : v4sf; B : v4sf) return v4sf;
-   pragma Inline_Always (mm_cmpnge_ss);
+--   function mm_cmpnge_ss (A : v4sf; B : v4sf) return v4sf;
+--   pragma Inline_Always (mm_cmpnge_ss);
+--  GNAT GPL 2010 crash on body
 
    function mm_cmpord_ss (A : v4sf; B : v4sf) return v4sf;
    pragma Import (Intrinsic, mm_cmpord_ss, "__builtin_ia32_cmpordss");

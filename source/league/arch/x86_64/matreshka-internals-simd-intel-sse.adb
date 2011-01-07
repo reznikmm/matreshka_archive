@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,37 +51,37 @@ package body Matreshka.Internals.SIMD.Intel.SSE is
    -- mm_cmpge_ss --
    -----------------
 
-   function mm_cmpge_ss (A : v4sf; B : v4sf) return v4sf is
-   begin
-      return mm_move_ss (A, mm_cmple_ss (B, A));
-   end mm_cmpge_ss;
+--   function mm_cmpge_ss (A : v4sf; B : v4sf) return v4sf is
+--   begin
+--      return mm_move_ss (A, mm_cmple_ss (B, A));
+--   end mm_cmpge_ss;
 
    -----------------
    -- mm_cmpgt_ss --
    -----------------
 
-   function mm_cmpgt_ss (A : v4sf; B : v4sf) return v4sf is
-   begin
-      return mm_move_ss (A, mm_cmplt_ss (B, A));
-   end mm_cmpgt_ss;
+--   function mm_cmpgt_ss (A : v4sf; B : v4sf) return v4sf is
+--   begin
+--      return mm_move_ss (A, mm_cmplt_ss (B, A));
+--   end mm_cmpgt_ss;
 
    ------------------
    -- mm_cmpnge_ss --
    ------------------
 
-   function mm_cmpnge_ss (A : v4sf; B : v4sf) return v4sf is
-   begin
-      return mm_move_ss (A, mm_cmpnle_ss (B, A));
-   end mm_cmpnge_ss;
+--   function mm_cmpnge_ss (A : v4sf; B : v4sf) return v4sf is
+--   begin
+--      return mm_move_ss (A, mm_cmpnle_ss (B, A));
+--   end mm_cmpnge_ss;
 
    ------------------
    -- mm_cmpngt_ss --
    ------------------
 
-   function mm_cmpngt_ss (A : v4sf; B : v4sf) return v4sf is
-   begin
-      return mm_move_ss (A, mm_cmpnlt_ss (B, A));
-   end mm_cmpngt_ss;
+--   function mm_cmpngt_ss (A : v4sf; B : v4sf) return v4sf is
+--   begin
+--      return mm_move_ss (A, mm_cmpnlt_ss (B, A));
+--   end mm_cmpngt_ss;
 
    -------------------
    -- mm_cvtpi16_ps --
