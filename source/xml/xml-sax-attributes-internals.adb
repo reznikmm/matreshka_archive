@@ -109,7 +109,9 @@ package body XML.SAX.Attributes.Internals is
         Local_Name     => Local_Name,
         Qualified_Name => Qualified_Name,
         Value          => Value,
-        Value_Type     => Value_Type);
+        Value_Type     => Value_Type,
+        Is_Declared    => False,
+        Is_Specified   => True);
    end Unchecked_Append;
 
 end XML.SAX.Attributes.Internals;

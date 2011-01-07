@@ -211,8 +211,7 @@ package body XML.SAX.Attributes is
          raise Constraint_Error;
       end if;
 
-      return False;
-      --  XXX Not supported.
+      return Self.Data.Values (Index).Is_Declared;
    end Is_Declared;
 
    -----------------
@@ -222,14 +221,17 @@ package body XML.SAX.Attributes is
    function Is_Declared
     (Self           : SAX_Attributes'Class;
      Qualified_Name : League.Strings.Universal_String)
-       return Boolean
-   is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Qualified_Name);
-
+       return Boolean is
    begin
+      for J in 1 .. Self.Data.Length loop
+         if Is_Equal
+             (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
+         then
+            return Self.Data.Values (J).Is_Declared;
+         end if;
+      end loop;
+
       return False;
-      --  XXX Not supported.
    end Is_Declared;
 
    -----------------
@@ -240,15 +242,19 @@ package body XML.SAX.Attributes is
     (Self          : SAX_Attributes'Class;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
-       return Boolean
-   is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Namespace_URI);
-      pragma Unreferenced (Local_Name);
-
+       return Boolean is
    begin
+      for J in 1 .. Self.Data.Length loop
+         if Is_Equal
+             (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
+           and Is_Equal
+                (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
+         then
+            return Self.Data.Values (J).Is_Declared;
+         end if;
+      end loop;
+
       return False;
-      --  XXX Not supported.
    end Is_Declared;
 
    --------------
@@ -272,8 +278,7 @@ package body XML.SAX.Attributes is
          raise Constraint_Error;
       end if;
 
-      return True;
-      --  XXX Not supported.
+      return Self.Data.Values (Index).Is_Specified;
    end Is_Specified;
 
    ------------------
@@ -289,8 +294,7 @@ package body XML.SAX.Attributes is
          if Is_Equal
              (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
          then
-            return True;
-            --  XXX Not supported.
+            return Self.Data.Values (J).Is_Specified;
          end if;
       end loop;
 
@@ -313,8 +317,7 @@ package body XML.SAX.Attributes is
            and Is_Equal
                 (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
          then
-            return True;
-            --  XXX Not supported.
+            return Self.Data.Values (J).Is_Specified;
          end if;
       end loop;
 
@@ -413,7 +416,9 @@ package body XML.SAX.Attributes is
            Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
            Qualified_Name => Get_Shared (Qualified_Name),
            Value          => Get_Shared (Value),
-           Value_Type     => Get_Shared (CDATA_Name));
+           Value_Type     => Get_Shared (CDATA_Name),
+           Is_Declared    => False,
+           Is_Specified   => True);
          Matreshka.Internals.Strings.Reference
           (Self.Data.Values (Self.Data.Length).Qualified_Name);
          Matreshka.Internals.Strings.Reference
@@ -462,7 +467,9 @@ package body XML.SAX.Attributes is
            Local_Name     => Get_Shared (Local_Name),
            Qualified_Name => Matreshka.Internals.Strings.Shared_Empty'Access,
            Value          => Get_Shared (Value),
-           Value_Type     => Get_Shared (CDATA_Name));
+           Value_Type     => Get_Shared (CDATA_Name),
+           Is_Declared    => False,
+           Is_Specified   => True);
          Matreshka.Internals.Strings.Reference
           (Self.Data.Values (Self.Data.Length).Namespace_URI);
          Matreshka.Internals.Strings.Reference

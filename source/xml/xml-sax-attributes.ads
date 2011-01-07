@@ -229,6 +229,8 @@ private
         := Matreshka.Internals.Strings.Shared_Empty'Access;
       Value_Type     : Matreshka.Internals.Strings.Shared_String_Access
         := Matreshka.Internals.Strings.Shared_Empty'Access;
+      Is_Declared    : Boolean;
+      Is_Specified   : Boolean;
    end record;
 
    --  Set attributes and its values shared between SAX_Attributes instances.
