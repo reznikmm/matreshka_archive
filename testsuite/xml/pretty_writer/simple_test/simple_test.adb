@@ -84,13 +84,9 @@ begin
 
    --  Adding Second Tag
 
-   --  XML.SAX.Attributes.Internals.Unchecked_Append
-   --   (Attrs,
-   --    To_Universal_String ("org:simple:ns"),
-   --    To_Universal_String ("attr"),
-   --    To_Universal_String (""),
-   --    To_Universal_String ("value"),
-   --    To_Universal_String (""));
+   Attrs.Set_Value (To_Universal_String ("org:simple:ns"),
+                    To_Universal_String ("attr"),
+                    To_Universal_String ("value"));
 
    Writer.Start_Prefix_Mapping
      (To_Universal_String (""),
