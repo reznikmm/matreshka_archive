@@ -89,7 +89,9 @@ package body XML.SAX.Attributes.Internals is
      Value          :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Value_Type     :
-       not null Matreshka.Internals.Strings.Shared_String_Access) is
+       not null Matreshka.Internals.Strings.Shared_String_Access;
+     Is_Declared    : Boolean;
+     Is_Specified   : Boolean) is
    begin
       --  Detach and reallocate shared object when necessary.
 
@@ -110,8 +112,8 @@ package body XML.SAX.Attributes.Internals is
         Qualified_Name => Qualified_Name,
         Value          => Value,
         Value_Type     => Value_Type,
-        Is_Declared    => False,
-        Is_Specified   => True);
+        Is_Declared    => Is_Declared,
+        Is_Specified   => Is_Specified);
    end Unchecked_Append;
 
 end XML.SAX.Attributes.Internals;

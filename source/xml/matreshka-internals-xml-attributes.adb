@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -90,6 +90,7 @@ package body Matreshka.Internals.XML.Attributes is
      Value          :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Type_Name      : Symbol_Identifier;
+     Is_Specified   : Boolean;
      Inserted       : out Boolean) is
    begin
       for J in Self.Attributes'First .. Self.Last loop
@@ -119,8 +120,32 @@ package body Matreshka.Internals.XML.Attributes is
        (Namespace_URI  => No_Symbol,
         Qualified_Name => Qualified_Name,
         Value          => Value,
-        Type_Name      => Type_Name);
+        Type_Name      => Type_Name,
+        Is_Declared    => False,
+        Is_Specified   => Is_Specified);
    end Insert;
+
+   -----------------
+   -- Is_Declared --
+   -----------------
+
+   function Is_Declared
+    (Self  : Attribute_Set;
+     Index : Positive) return Boolean is
+   begin
+      return Self.Attributes (Index).Is_Declared;
+   end Is_Declared;
+
+   ------------------
+   -- Is_Specified --
+   ------------------
+
+   function Is_Specified
+    (Self  : Attribute_Set;
+     Index : Positive) return Boolean is
+   begin
+      return Self.Attributes (Index).Is_Specified;
+   end Is_Specified;
 
    ------------
    -- Length --
@@ -152,6 +177,17 @@ package body Matreshka.Internals.XML.Attributes is
    begin
       return Self.Attributes (Index).Qualified_Name;
    end Qualified_Name;
+
+   ---------------------
+   -- Set_Is_Declared --
+   ---------------------
+
+   procedure Set_Is_Declared
+    (Self  : in out Attribute_Set;
+     Index : Positive) is
+   begin
+      Self.Attributes (Index).Is_Declared := True;
+   end Set_Is_Declared;
 
    -----------------------
    -- Set_Namespace_URI --

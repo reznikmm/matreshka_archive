@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -235,7 +235,8 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
    begin
       if Self.Current_Attribute = No_Attribute then
-         Insert (Self.Attribute_Set, Symbol, Value, Symbol_CDATA, Inserted);
+         Insert
+          (Self.Attribute_Set, Symbol, Value, Symbol_CDATA, True, Inserted);
 
       else
          Insert
@@ -243,6 +244,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
            Symbol,
            Value,
            Symbol_Of_Type_Name (Self.Attributes, Self.Current_Attribute),
+           True,
            Inserted);
       end if;
 
@@ -1009,7 +1011,9 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                     Local_Name (Self.Symbols, Qname),
                     Name (Self.Symbols, Qname),
                     Value (Self.Attribute_Set, J),
-                    Name (Self.Symbols, Type_Name (Self.Attribute_Set, J)));
+                    Name (Self.Symbols, Type_Name (Self.Attribute_Set, J)),
+                    Is_Declared (Self.Attribute_Set, J),
+                    Is_Specified (Self.Attribute_Set, J));
                end if;
             end;
          end loop;
@@ -1053,6 +1057,8 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       Self.Current_Element :=
         Element (Self.Symbols, Self.Current_Element_Name);
 
+      --  Append attributes with default values and mark declared attributes.
+
       if Self.Current_Element /= No_Element then
          declare
             Current  : Attribute_Identifier
@@ -1068,8 +1074,19 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                     Name (Self.Attributes, Current),
                     Default (Self.Attributes, Current),
                     Symbol_Of_Type_Name (Self.Attributes, Current),
+                    False,
                     Inserted);
                end if;
+
+               for J in 1 .. Length (Self.Attribute_Set) loop
+                  if Qualified_Name (Self.Attribute_Set, J)
+                       = Name (Self.Attributes, Current)
+                  then
+                     Set_Is_Declared (Self.Attribute_Set, J);
+
+                     exit;
+                  end if;
+               end loop;
 
                Current := Next (Self.Attributes, Current);
             end loop;
