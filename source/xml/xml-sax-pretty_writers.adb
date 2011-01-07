@@ -470,12 +470,47 @@ package body XML.SAX.Pretty_Writers is
          Self.Text.Append (Qualified_Name);
       end if;
 
+      --  Setting attributes
+
       for J in 1 .. Attributes.Length loop
-         Self.Text.Append (League.Strings.To_Universal_String (" "));
-         Self.Text.Append (Attributes.Local_Name (J));
-         Self.Text.Append (League.Strings.To_Universal_String ("="""));
-         Self.Text.Append (Attributes.Value (J));
-         Self.Text.Append (League.Strings.To_Universal_String (""""));
+
+         if not Attributes.Local_Name (J).Is_Empty then
+            if not Attributes.Namespace_URI (J).Is_Empty then
+               Self.Text.Append (League.Strings.To_Universal_String (" "));
+
+               C := Self.Prefix_Map.Find (Namespace_URI);
+
+               if C /= Universal_String_Maps.No_Element then
+
+                  if not Universal_String_Maps.Element (C).Is_Empty then
+                     Self.Text.Append (Universal_String_Maps.Element (C));
+                     Self.Text.Append
+                      (League.Strings.To_Universal_String (":"));
+                  end if;
+               end if;
+
+               Self.Text.Append (Attributes.Local_Name (J));
+               Self.Text.Append (League.Strings.To_Universal_String ("="""));
+               Self.Text.Append (Attributes.Value (J));
+               Self.Text.Append (League.Strings.To_Universal_String (""""));
+
+            else
+               --  XXX: Error should be reported
+               Success := False;
+            end if;
+
+         elsif not Attributes.Qualified_Name (J).Is_Empty then
+            Self.Text.Append (League.Strings.To_Universal_String (" "));
+            Self.Text.Append (Attributes.Qualified_Name (J));
+            Self.Text.Append (League.Strings.To_Universal_String ("="""));
+            Self.Text.Append (Attributes.Value (J));
+            Self.Text.Append (League.Strings.To_Universal_String (""""));
+
+         else
+            --  XXX: Error should be reported
+            Success := False;
+         end if;
+
       end loop;
 
       Self.Text.Append (League.Strings.To_Universal_String (">"));
