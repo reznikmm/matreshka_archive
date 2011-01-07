@@ -133,14 +133,14 @@ package body XML.SAX.Pretty_Writers is
 
       if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
          --  XXX error should be reported
-         null;
+         Success := False;
       end if;
 
       if not Local_Name.Is_Empty then
 
          if Namespace_URI.Is_Empty then
             --  XXX error should be reported
-            null;
+            Success := False;
          end if;
 
          C := Self.Prefix_Map.Find (Namespace_URI);
@@ -161,7 +161,7 @@ package body XML.SAX.Pretty_Writers is
             end;
          else
             --  XXX: Error should be reported
-            null;
+            Success := False;
          end if;
 
       elsif not Qualified_Name.Is_Empty then
@@ -169,7 +169,7 @@ package body XML.SAX.Pretty_Writers is
 
       else
          --  XXX error should be reported
-         null;
+         Success :=  False;
       end if;
 
       Self.Text.Append (League.Strings.To_Universal_String (">"));
@@ -423,14 +423,14 @@ package body XML.SAX.Pretty_Writers is
 
       if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
          --  XXX error should be reported
-         null;
+         Success := False;
       end if;
 
       if not Local_Name.Is_Empty then
 
          if Namespace_URI.Is_Empty then
             --  XXX error should be reported
-            null;
+            Success := False;
          end if;
 
          C := Self.Prefix_Map.Find (Namespace_URI);
@@ -463,7 +463,7 @@ package body XML.SAX.Pretty_Writers is
 
          else
             --  XXX: Error should be reported
-            null;
+            Success := False;
          end if;
 
       elsif not Qualified_Name.Is_Empty then
@@ -506,7 +506,7 @@ package body XML.SAX.Pretty_Writers is
    begin
       if Namespace_URI.Is_Empty then
          --  XXX error should be reported
-         null;
+         Success := False;
       end if;
 
       Self.Prefix_Map.Insert (Key => Namespace_URI,
