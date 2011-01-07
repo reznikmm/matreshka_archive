@@ -216,10 +216,8 @@ package body XML.SAX.Pretty_Writers is
       C := Self.Prefix_Map.First;
 
       while C /= Universal_String_Maps.No_Element loop
-         if not Universal_String_Maps.Element (C).Is_Empty then
-            if Universal_String_Maps.Element (C) = Prefix then
-              Self.Prefix_Map.Delete (C);
-            end if;
+         if Universal_String_Maps.Element (C) = Prefix then
+            Self.Prefix_Map.Delete (C);
          end if;
 
          Universal_String_Maps.Next (C);
@@ -497,7 +495,7 @@ package body XML.SAX.Pretty_Writers is
             if not Attributes.Namespace_URI (J).Is_Empty then
                Self.Text.Append (League.Strings.To_Universal_String (" "));
 
-               C := Self.Prefix_Map.Find (Namespace_URI);
+               C := Self.Prefix_Map.Find (Attributes.Namespace_URI (J));
 
                if C /= Universal_String_Maps.No_Element then
 
