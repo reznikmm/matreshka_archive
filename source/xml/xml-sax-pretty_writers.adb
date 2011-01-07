@@ -63,6 +63,11 @@ package body XML.SAX.Pretty_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
+      if Self.Tag_Opened then
+         Self.Text.Append (League.Strings.To_Universal_String (">"));
+         Self.Tag_Opened := False;
+      end if;
+
       Self.Text.Append (Self.Escape (Text));
    end Characters;
 
@@ -129,51 +134,59 @@ package body XML.SAX.Pretty_Writers is
       C      : Universal_String_Maps.Cursor;
 
    begin
-      Self.Text.Append (League.Strings.To_Universal_String ("</"));
+      if Self.Tag_Opened then
+         Self.Text.Append (League.Strings.To_Universal_String ("/>"));
+         Self.Tag_Opened := False;
+      else
+         Self.Text.Append (League.Strings.To_Universal_String ("</"));
 
-      if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
-         --  XXX error should be reported
-         Success := False;
-      end if;
-
-      if not Local_Name.Is_Empty then
-
-         if Namespace_URI.Is_Empty then
+         if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
             --  XXX error should be reported
             Success := False;
          end if;
 
-         C := Self.Prefix_Map.Find (Namespace_URI);
+         if not Local_Name.Is_Empty then
 
-         if C /= Universal_String_Maps.No_Element then
+            if Namespace_URI.Is_Empty then
+               --  XXX error should be reported
+               Success := False;
+            end if;
 
-            declare
-               Prefix : League.Strings.Universal_String
-                 := Universal_String_Maps.Element (C);
+            C := Self.Prefix_Map.Find (Namespace_URI);
 
-            begin
-               if not Prefix.Is_Empty then
-                  Self.Text.Append (Prefix);
-                  Self.Text.Append (League.Strings.To_Universal_String (":"));
-               end if;
+            if C /= Universal_String_Maps.No_Element then
 
-               Self.Text.Append (Local_Name);
-            end;
+               declare
+                  Prefix : League.Strings.Universal_String
+                    := Universal_String_Maps.Element (C);
+
+               begin
+                  if not Prefix.Is_Empty then
+                     Self.Text.Append (Prefix);
+                     Self.Text.Append
+                      (League.Strings.To_Universal_String (":"));
+                  end if;
+
+                  Self.Text.Append (Local_Name);
+               end;
+            else
+               --  XXX: Error should be reported
+               Success := False;
+            end if;
+
+         elsif not Qualified_Name.Is_Empty then
+            Self.Text.Append (Qualified_Name);
+
          else
-            --  XXX: Error should be reported
-            Success := False;
+            --  XXX error should be reported
+            Success :=  False;
          end if;
 
-      elsif not Qualified_Name.Is_Empty then
-         Self.Text.Append (Qualified_Name);
-
-      else
-         --  XXX error should be reported
-         Success :=  False;
+         Self.Text.Append (League.Strings.To_Universal_String (">"));
       end if;
 
-      Self.Text.Append (League.Strings.To_Universal_String (">"));
       Self.Nesting := Self.Nesting - 1;
+      Success := True;
    end End_Element;
 
    ----------------
@@ -419,6 +432,12 @@ package body XML.SAX.Pretty_Writers is
       C : Universal_String_Maps.Cursor;
 
    begin
+      --  Closing Tag, which was opened before.
+      if Self.Tag_Opened then
+         Self.Text.Append (League.Strings.To_Universal_String (">"));
+         Self.Tag_Opened := False;
+      end if;
+
       Self.Text.Append (League.Strings.To_Universal_String ("<"));
 
       if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
@@ -513,8 +532,9 @@ package body XML.SAX.Pretty_Writers is
 
       end loop;
 
-      Self.Text.Append (League.Strings.To_Universal_String (">"));
       Self.Nesting := Self.Nesting + 1;
+      Self.Tag_Opened := True;
+      Success := True;
    end Start_Element;
 
    ------------------

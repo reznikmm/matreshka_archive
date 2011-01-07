@@ -178,6 +178,7 @@ private
       Nesting    : Natural;
       Version    : XML_Version := XML_1_0;
       Prefix_Map : Universal_String_Maps.Map;
+      Tag_Opened : Boolean := False;
    end record;
 
    function Escape
