@@ -120,9 +120,45 @@ begin
                        To_Universal_String (""),
                        OK);
 
+
+   Writer.Start_Element (To_Universal_String ("org:test:qwe"),
+                         To_Universal_String ("C"),
+                         To_Universal_String (""),
+                         Attrs,
+                         OK);
+
+   Writer.Start_Element (To_Universal_String ("org:test:qwe"),
+                         To_Universal_String ("D"),
+                         To_Universal_String (""),
+                         Attrs,
+                         OK);
+
+   Writer.End_Element (To_Universal_String ("org:test:qwe"),
+                       To_Universal_String ("D"),
+                       To_Universal_String (""),
+                       OK);
+
+   Writer.End_Element (To_Universal_String ("org:test:qwe"),
+                       To_Universal_String ("C"),
+                       To_Universal_String (""),
+                       OK);
+
    Writer.End_Prefix_Mapping (To_Universal_String ("zz"), OK);
    Writer.End_Prefix_Mapping (To_Universal_String ("ss"), OK);
    Writer.End_Prefix_Mapping (To_Universal_String (""), OK);
+
+   --  Checking for empty tag processing
+
+   Writer.Start_Element (To_Universal_String (""),
+                         To_Universal_String (""),
+                         To_Universal_String ("B"),
+                         Attrs,
+                         OK);
+
+   Writer.End_Element (To_Universal_String (""),
+                       To_Universal_String (""),
+                       To_Universal_String ("B"),
+                       OK);
 
    Writer.End_Document (OK);
 
