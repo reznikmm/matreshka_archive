@@ -46,6 +46,7 @@ with Ada.Wide_Wide_Text_IO;
 with League.Strings;
 
 with XML.SAX.Attributes;
+with XML.SAX.Attributes.Internals;
 with XML.SAX.Pretty_Writers;
 
 use League.Strings;
@@ -64,6 +65,8 @@ begin
 
    --  Creating document
    Writer.Set_Version (XML.SAX.Pretty_Writers.XML_1_1);
+
+   --  Adding first tag
    Writer.Start_Document (OK);
 
    Writer.Start_Element (NS_URI,
@@ -79,6 +82,16 @@ begin
                        Qualified_Name,
                        OK);
 
+   --  Adding Second Tag
+
+   --  XML.SAX.Attributes.Internals.Unchecked_Append
+   --   (Attrs,
+   --    To_Universal_String ("org:simple:ns"),
+   --    To_Universal_String ("attr"),
+   --    To_Universal_String (""),
+   --    To_Universal_String ("value"),
+   --    To_Universal_String (""));
+
    Writer.Start_Prefix_Mapping
      (To_Universal_String (""),
       To_Universal_String ("org:xmi_prefix:xmi"),
@@ -87,6 +100,11 @@ begin
    Writer.Start_Prefix_Mapping
      (To_Universal_String ("ss"),
       To_Universal_String ("org:test:qwe"),
+      OK);
+
+   Writer.Start_Prefix_Mapping
+     (To_Universal_String ("zz"),
+      To_Universal_String ("org:simple:ns"),
       OK);
 
    Writer.Start_Element (To_Universal_String ("org:test:qwe"),
@@ -102,8 +120,9 @@ begin
                        To_Universal_String (""),
                        OK);
 
-   Writer.End_Prefix_Mapping (To_Universal_String (""), OK);
+   Writer.End_Prefix_Mapping (To_Universal_String ("zz"), OK);
    Writer.End_Prefix_Mapping (To_Universal_String ("ss"), OK);
+   Writer.End_Prefix_Mapping (To_Universal_String (""), OK);
 
    Writer.End_Document (OK);
 
