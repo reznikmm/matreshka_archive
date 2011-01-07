@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -243,6 +243,11 @@ private
    --  Returns True when the counter is equal to one, thus there are no other
    --  reference to this shared object and it can be mutated instead of
    --  allocation of new shared object.
+
+   procedure Detach (Self : in out Shared_Attributes_Access; Size : Natural);
+   --  Checks whether specified set of attributes can be reused to store data
+   --  of the specified size and prepare it to be changed; otherwise allocates
+   --  new set of attributes and copy data.
 
    Shared_Empty : aliased Shared_Attributes (0);
    --  Globals shared object. It is used to represent empty set of attributes

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -91,41 +91,9 @@ package body XML.SAX.Attributes.Internals is
      Value_Type     :
        not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
-      --  Reallocate shared object when necessary.
+      --  Detach and reallocate shared object when necessary.
 
-      if not Can_Be_Reused (Self.Data)
-         --  Object can't be mutated because someone else use it. Allocate
-         --  new shared object and copy data.
-        or else Self.Data.Length = Self.Data.Last
-         --  There are no enought space to store new attribute. Reallocate new
-         --  object and copy data.
-      then
-         declare
-            Aux : constant Shared_Attributes_Access
-              := new Shared_Attributes ((Self.Data.Length + 8) / 8 * 8);
-
-         begin
-            Aux.Values (1 .. Self.Data.Length) :=
-              Self.Data.Values (1 .. Self.Data.Length);
-            Aux.Length := Self.Data.Length;
-
-            for J in 1 .. Aux.Length loop
-               Matreshka.Internals.Strings.Reference
-                (Aux.Values (J).Namespace_URI);
-               Matreshka.Internals.Strings.Reference
-                (Aux.Values (J).Local_Name);
-               Matreshka.Internals.Strings.Reference
-                (Aux.Values (J).Qualified_Name);
-               Matreshka.Internals.Strings.Reference
-                (Aux.Values (J).Value);
-               Matreshka.Internals.Strings.Reference
-                (Aux.Values (J).Value_Type);
-            end loop;
-
-            Dereference (Self.Data);
-            Self.Data := Aux;
-         end;
-      end if;
+      Detach (Self.Data, Self.Data.Length + 1);
 
       --  Add attribute.
 
