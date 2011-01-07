@@ -98,6 +98,9 @@ package XML.SAX.Attributes is
    --  name has no namespace URI, Local_Name specifies the attribute's local
    --  name.
 
+   function Is_Empty (Self : SAX_Attributes'Class) return Boolean;
+   --  Returns True when there are no attributes available.
+
    function Is_Specified
     (Self  : SAX_Attributes'Class;
      Index : Positive) return Boolean;
@@ -105,9 +108,6 @@ package XML.SAX.Attributes is
    --  found in the XML text, False if the value was provided by the DTD
    --  defaulting. The index must be valid position, otherwise Constraint_Error
    --  is raised.
-
-   function Is_Empty (Self : SAX_Attributes'Class) return Boolean;
-   --  Returns True when there are no attributes available.
 
    function Is_Specified
     (Self           : SAX_Attributes'Class;
