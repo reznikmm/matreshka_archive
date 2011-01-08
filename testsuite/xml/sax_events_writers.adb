@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -584,6 +584,28 @@ package body SAX_Events_Writers is
 
             Self.Add_Line
              ("        <type>" & Attributes.Value_Type (Index) & "</type>");
+
+            if Attributes.Is_Declared (Index) then
+               Self.Add_Line
+                (To_Universal_String
+                  ("        <isDeclared>true</isDeclared>"));
+
+            else
+               Self.Add_Line
+                (To_Universal_String
+                  ("        <isDeclared>false</isDeclared>"));
+            end if;
+
+            if Attributes.Is_Specified (Index) then
+               Self.Add_Line
+                (To_Universal_String
+                  ("        <isSpecified>true</isSpecified>"));
+
+            else
+               Self.Add_Line
+                (To_Universal_String
+                  ("        <isSpecified>false</isSpecified>"));
+            end if;
 
             Self.Add_Line (To_Universal_String ("      </attribute>"));
 
