@@ -12,6 +12,8 @@
         <qualifiedName>xml:lang</qualifiedName>
         <value/>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

@@ -89,6 +89,8 @@
         <qualifiedName>attr1</qualifiedName>
         <value>value1</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -124,6 +126,8 @@
         <qualifiedName>attr1</qualifiedName>
         <value>value1</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -131,6 +135,8 @@
         <qualifiedName>attr2</qualifiedName>
         <value>value2</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -138,6 +144,8 @@
         <qualifiedName>attr3</qualifiedName>
         <value>value3</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

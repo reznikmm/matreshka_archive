@@ -22,6 +22,8 @@
         <qualifiedName>att2</qualifiedName>
         <value>second&#x20;declaration&#x20;is&#x20;OK</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>false</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -41,6 +43,8 @@
         <qualifiedName>att2</qualifiedName>
         <value>test</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

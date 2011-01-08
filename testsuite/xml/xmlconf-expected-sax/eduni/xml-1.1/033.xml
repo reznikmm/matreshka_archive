@@ -12,6 +12,8 @@
         <qualifiedName>bar</qualifiedName>
         <value>abc&#x20;def</value>
         <type>NMTOKENS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

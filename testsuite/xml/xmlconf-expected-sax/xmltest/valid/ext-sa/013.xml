@@ -21,6 +21,8 @@
         <qualifiedName>a1</qualifiedName>
         <value>a1&#x20;default</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>false</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -28,6 +30,8 @@
         <qualifiedName>a2</qualifiedName>
         <value>a2&#x20;default</value>
         <type>NMTOKENS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>false</isSpecified>
       </attribute>
     </attributes>
   </startElement>

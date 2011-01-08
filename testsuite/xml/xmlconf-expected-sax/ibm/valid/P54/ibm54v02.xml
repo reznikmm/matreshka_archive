@@ -19,6 +19,8 @@
         <qualifiedName>attr</qualifiedName>
         <value>Madhu</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -39,6 +41,8 @@
         <qualifiedName>attr</qualifiedName>
         <value>1.a.name.token.but.not.a.name</value>
         <type>NMTOKENS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

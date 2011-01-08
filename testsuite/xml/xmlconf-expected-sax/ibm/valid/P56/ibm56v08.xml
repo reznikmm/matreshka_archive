@@ -28,6 +28,8 @@
         <qualifiedName>sun</qualifiedName>
         <value>image</value>
         <type>ENTITY</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

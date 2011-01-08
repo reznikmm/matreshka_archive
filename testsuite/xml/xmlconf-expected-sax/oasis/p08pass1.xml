@@ -19,6 +19,8 @@
         <qualifiedName>att</qualifiedName>
         <value>abc</value>
         <type>NMTOKENS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -38,6 +40,8 @@
         <qualifiedName>att</qualifiedName>
         <value>abc&#x20;def&#x20;.&#x20;:</value>
         <type>NMTOKENS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -57,6 +61,8 @@
         <qualifiedName>att</qualifiedName>
         <value>abc&#x20;def</value>
         <type>NMTOKENS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

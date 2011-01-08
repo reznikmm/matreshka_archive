@@ -12,6 +12,8 @@
         <qualifiedName>xml:lang</qualifiedName>
         <value>nds</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -28,6 +30,8 @@
         <qualifiedName>xml:lang</qualifiedName>
         <value>art-lojban</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

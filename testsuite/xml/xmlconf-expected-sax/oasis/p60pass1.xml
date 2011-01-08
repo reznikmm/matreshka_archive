@@ -18,6 +18,8 @@
         <qualifiedName>att</qualifiedName>
         <value>value</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>false</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -37,6 +39,8 @@
         <qualifiedName>att</qualifiedName>
         <value>value</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

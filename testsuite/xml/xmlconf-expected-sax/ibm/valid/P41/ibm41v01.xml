@@ -23,6 +23,8 @@
         <qualifiedName>attr1</qualifiedName>
         <value>value1</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -30,6 +32,8 @@
         <qualifiedName>attr2</qualifiedName>
         <value>def</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -37,6 +41,8 @@
         <qualifiedName>attr3</qualifiedName>
         <value>fixed</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

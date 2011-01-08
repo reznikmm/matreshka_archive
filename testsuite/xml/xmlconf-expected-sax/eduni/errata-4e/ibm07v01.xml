@@ -49,6 +49,8 @@
         <qualifiedName>thistoken0</qualifiedName>
         <value>:</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -56,6 +58,8 @@
         <qualifiedName>thistoken1</qualifiedName>
         <value>À</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -63,6 +67,8 @@
         <qualifiedName>thistoken10</qualifiedName>
         <value>ͼ</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -70,6 +76,8 @@
         <qualifiedName>thistoken11</qualifiedName>
         <value>ͽ</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -77,6 +85,8 @@
         <qualifiedName>thistoken12</qualifiedName>
         <value>Ϳ</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -84,6 +94,8 @@
         <qualifiedName>thistoken13</qualifiedName>
         <value>΀</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -91,6 +103,8 @@
         <qualifiedName>thistoken14</qualifiedName>
         <value>῾</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -98,6 +112,8 @@
         <qualifiedName>thistoken15</qualifiedName>
         <value>῿</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -105,6 +121,8 @@
         <qualifiedName>thistoken16</qualifiedName>
         <value>‌</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -112,6 +130,8 @@
         <qualifiedName>thistoken17</qualifiedName>
         <value>‍</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -119,6 +139,8 @@
         <qualifiedName>thistoken18</qualifiedName>
         <value>⁰</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -126,6 +148,8 @@
         <qualifiedName>thistoken19</qualifiedName>
         <value>ⁱ</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -133,6 +157,8 @@
         <qualifiedName>thistoken2</qualifiedName>
         <value>Á</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -140,6 +166,8 @@
         <qualifiedName>thistoken20</qualifiedName>
         <value>↎</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -147,6 +175,8 @@
         <qualifiedName>thistoken21</qualifiedName>
         <value>↏</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -154,6 +184,8 @@
         <qualifiedName>thistoken22</qualifiedName>
         <value>Ⰰ</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -161,6 +193,8 @@
         <qualifiedName>thistoken23</qualifiedName>
         <value>Ⰱ</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -168,6 +202,8 @@
         <qualifiedName>thistoken24</qualifiedName>
         <value>⿮</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -175,6 +211,8 @@
         <qualifiedName>thistoken25</qualifiedName>
         <value>⿯</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -182,6 +220,8 @@
         <qualifiedName>thistoken26</qualifiedName>
         <value>、</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -189,6 +229,8 @@
         <qualifiedName>thistoken27</qualifiedName>
         <value>。</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -196,6 +238,8 @@
         <qualifiedName>thistoken28</qualifiedName>
         <value>퟾</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -203,6 +247,8 @@
         <qualifiedName>thistoken29</qualifiedName>
         <value>퟿</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -210,6 +256,8 @@
         <qualifiedName>thistoken3</qualifiedName>
         <value>˾</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -217,6 +265,8 @@
         <qualifiedName>thistoken30</qualifiedName>
         <value>豈</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -224,6 +274,8 @@
         <qualifiedName>thistoken31</qualifiedName>
         <value>更</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -231,6 +283,8 @@
         <qualifiedName>thistoken32</qualifiedName>
         <value>_</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -238,6 +292,8 @@
         <qualifiedName>thistoken33</qualifiedName>
         <value>.</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -245,6 +301,8 @@
         <qualifiedName>thistoken34</qualifiedName>
         <value>0</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -252,6 +310,8 @@
         <qualifiedName>thistoken35</qualifiedName>
         <value>·</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -259,6 +319,8 @@
         <qualifiedName>thistoken36</qualifiedName>
         <value>À</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -266,6 +328,8 @@
         <qualifiedName>thistoken37</qualifiedName>
         <value>ͼ</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -273,6 +337,8 @@
         <qualifiedName>thistoken4</qualifiedName>
         <value>À</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -280,6 +346,8 @@
         <qualifiedName>thistoken5</qualifiedName>
         <value>Á</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -287,6 +355,8 @@
         <qualifiedName>thistoken6</qualifiedName>
         <value>˾</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -294,6 +364,8 @@
         <qualifiedName>thistoken7</qualifiedName>
         <value>˿</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -301,6 +373,8 @@
         <qualifiedName>thistoken8</qualifiedName>
         <value>Ͱ</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -308,6 +382,8 @@
         <qualifiedName>thistoken9</qualifiedName>
         <value>ͱ</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

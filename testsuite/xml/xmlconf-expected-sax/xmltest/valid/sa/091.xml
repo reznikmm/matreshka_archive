@@ -21,6 +21,8 @@
         <qualifiedName>a</qualifiedName>
         <value>e</value>
         <type>ENTITY</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>false</isSpecified>
       </attribute>
     </attributes>
   </startElement>

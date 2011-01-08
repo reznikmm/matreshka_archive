@@ -26,6 +26,8 @@
         <qualifiedName>att2</qualifiedName>
         <value>any</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

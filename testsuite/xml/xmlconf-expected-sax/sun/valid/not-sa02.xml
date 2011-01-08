@@ -40,6 +40,8 @@
         <qualifiedName>cdata</qualifiedName>
         <value>nothing&#x20;happens&#x20;to&#x20;this&#x20;one!</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -47,6 +49,8 @@
         <qualifiedName>entities</qualifiedName>
         <value>unparsed-1&#x20;unparsed-2</value>
         <type>ENTITIES</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -54,6 +58,8 @@
         <qualifiedName>entity</qualifiedName>
         <value>unparsed-1</value>
         <type>ENTITY</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -61,6 +67,8 @@
         <qualifiedName>id</qualifiedName>
         <value>number99</value>
         <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -68,6 +76,8 @@
         <qualifiedName>idref</qualifiedName>
         <value>number99</value>
         <type>IDREF</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -75,6 +85,8 @@
         <qualifiedName>idrefs</qualifiedName>
         <value>number99&#x20;number99&#x20;number99</value>
         <type>IDREFS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -82,6 +94,8 @@
         <qualifiedName>nmtoken</qualifiedName>
         <value>this-gets-normalized</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -89,6 +103,8 @@
         <qualifiedName>nmtokens</qualifiedName>
         <value>this&#x20;also&#x20;gets&#x20;normalized</value>
         <type>NMTOKENS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -96,6 +112,8 @@
         <qualifiedName>notation</qualifiedName>
         <value>nonce</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -103,6 +121,8 @@
         <qualifiedName>token</qualifiedName>
         <value>a</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>false</isSpecified>
       </attribute>
     </attributes>
   </startElement>

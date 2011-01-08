@@ -22,6 +22,8 @@
         <qualifiedName>entatt1</qualifiedName>
         <value>unparsed1</value>
         <type>ENTITY</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

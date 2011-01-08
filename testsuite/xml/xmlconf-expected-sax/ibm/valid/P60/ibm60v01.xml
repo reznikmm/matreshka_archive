@@ -18,6 +18,8 @@
         <qualifiedName>chapter</qualifiedName>
         <value>Introduction</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -39,6 +41,8 @@
         <qualifiedName>chapter</qualifiedName>
         <value>JavaBeans</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

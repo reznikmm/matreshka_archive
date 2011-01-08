@@ -13,6 +13,8 @@
         <qualifiedName>a1</qualifiedName>
         <value>foo&#x20;bar</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

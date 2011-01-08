@@ -31,6 +31,8 @@
         <qualifiedName>content-encoding</qualifiedName>
         <value>base64</value>
         <type>NOTATION</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

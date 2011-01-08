@@ -19,6 +19,8 @@
         <qualifiedName>thistoken</qualifiedName>
         <value>x:lang&#x20;y:country</value>
         <type>NMTOKENS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

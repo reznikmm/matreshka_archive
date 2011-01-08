@@ -19,6 +19,8 @@
         <qualifiedName>id</qualifiedName>
         <value>A1</value>
         <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -38,6 +40,8 @@
         <qualifiedName>id</qualifiedName>
         <value>A2</value>
         <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -57,6 +61,8 @@
         <qualifiedName>id</qualifiedName>
         <value>A3</value>
         <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -77,6 +83,8 @@
         <qualifiedName>refs</qualifiedName>
         <value>A1&#x20;A2&#x20;A3</value>
         <type>IDREFS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -97,6 +105,8 @@
         <qualifiedName>refs</qualifiedName>
         <value>A1&#x20;A2&#x20;A3</value>
         <type>IDREFS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -117,6 +127,8 @@
         <qualifiedName>refs</qualifiedName>
         <value>A1</value>
         <type>IDREFS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

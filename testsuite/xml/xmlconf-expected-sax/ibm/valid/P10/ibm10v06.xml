@@ -12,6 +12,8 @@
         <qualifiedName>first</qualifiedName>
         <value>Snow</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -19,6 +21,8 @@
         <qualifiedName>last</qualifiedName>
         <value>Snow&#x20;Man</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

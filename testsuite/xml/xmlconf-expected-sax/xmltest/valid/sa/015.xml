@@ -12,6 +12,8 @@
         <qualifiedName>ABCDEFGHIJKLMNOPQRSTUVWXYZ</qualifiedName>
         <value>v1</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

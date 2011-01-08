@@ -19,6 +19,8 @@
         <qualifiedName>thistoken</qualifiedName>
         <value>x:image</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

@@ -41,6 +41,8 @@
         <qualifiedName>attr1</qualifiedName>
         <value>xyz</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

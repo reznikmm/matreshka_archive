@@ -12,6 +12,8 @@
         <qualifiedName>UniqueName</qualifiedName>
         <value>Ac999</value>
         <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -27,6 +29,8 @@
         <qualifiedName>attr</qualifiedName>
         <value>BC999</value>
         <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

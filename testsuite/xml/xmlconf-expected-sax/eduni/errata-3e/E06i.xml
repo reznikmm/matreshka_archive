@@ -23,6 +23,8 @@
         <qualifiedName>ent</qualifiedName>
         <value>ent</value>
         <type>ENTITY</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -30,6 +32,8 @@
         <qualifiedName>id</qualifiedName>
         <value>g0034</value>
         <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -37,6 +41,8 @@
         <qualifiedName>ref</qualifiedName>
         <value>g0034</value>
         <type>IDREF</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

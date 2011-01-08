@@ -15,6 +15,8 @@
         <qualifiedName>evil</qualifiedName>
         <value>doctor</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>false</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -22,6 +24,8 @@
         <qualifiedName>something</qualifiedName>
         <value>%not-pe;</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>false</isSpecified>
       </attribute>
     </attributes>
   </startElement>

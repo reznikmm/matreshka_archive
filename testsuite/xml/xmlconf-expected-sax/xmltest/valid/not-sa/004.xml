@@ -18,6 +18,8 @@
         <qualifiedName>a1</qualifiedName>
         <value>value</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>false</isSpecified>
       </attribute>
     </attributes>
   </startElement>

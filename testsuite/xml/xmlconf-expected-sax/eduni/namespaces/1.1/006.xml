@@ -32,6 +32,8 @@
         <qualifiedName>a:attr</qualifiedName>
         <value>1</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI>http://example.org/Ő</namespaceURI>
@@ -39,6 +41,8 @@
         <qualifiedName>b:attr</qualifiedName>
         <value>2</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI>http://example.org/ɐ</namespaceURI>
@@ -46,6 +50,8 @@
         <qualifiedName>c:attr</qualifiedName>
         <value>3</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

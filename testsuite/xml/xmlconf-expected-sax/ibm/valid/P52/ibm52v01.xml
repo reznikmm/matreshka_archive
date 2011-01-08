@@ -53,6 +53,8 @@
         <qualifiedName>battr1</qualifiedName>
         <value>anyvalue</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -60,6 +62,8 @@
         <qualifiedName>battr3</qualifiedName>
         <value>fixedvalue</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -67,6 +71,8 @@
         <qualifiedName>battr4</qualifiedName>
         <value>def</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

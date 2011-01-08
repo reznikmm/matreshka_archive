@@ -19,6 +19,8 @@
         <qualifiedName>UniqueName</qualifiedName>
         <value>AC456</value>
         <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -39,6 +41,8 @@
         <qualifiedName>UName</qualifiedName>
         <value>Q123</value>
         <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -59,6 +63,8 @@
         <qualifiedName>reference</qualifiedName>
         <value>AC456&#x20;Q123</value>
         <type>IDREFS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

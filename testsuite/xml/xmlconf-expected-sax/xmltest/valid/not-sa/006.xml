@@ -18,6 +18,8 @@
         <qualifiedName>a1</qualifiedName>
         <value>v1</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>false</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -25,6 +27,8 @@
         <qualifiedName>a2</qualifiedName>
         <value>w2</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>false</isSpecified>
       </attribute>
     </attributes>
   </startElement>

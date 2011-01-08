@@ -20,6 +20,8 @@
         <qualifiedName>from</qualifiedName>
         <value>jabber.ru</value>
         <type>CDATA</type>
+        <isDeclared>false</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -27,6 +29,8 @@
         <qualifiedName>id</qualifiedName>
         <value>2626941369</value>
         <type>CDATA</type>
+        <isDeclared>false</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -34,6 +38,8 @@
         <qualifiedName>version</qualifiedName>
         <value>1.0</value>
         <type>CDATA</type>
+        <isDeclared>false</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI>http://www.w3.org/XML/1998/namespace</namespaceURI>
@@ -41,6 +47,8 @@
         <qualifiedName>xml:lang</qualifiedName>
         <value>ru</value>
         <type>CDATA</type>
+        <isDeclared>false</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

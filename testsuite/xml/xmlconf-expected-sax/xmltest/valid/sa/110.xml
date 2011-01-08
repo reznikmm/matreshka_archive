@@ -12,6 +12,8 @@
         <qualifiedName>a</qualifiedName>
         <value>x&#x20;&#x20;y</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

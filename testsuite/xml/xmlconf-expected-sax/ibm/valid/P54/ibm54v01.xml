@@ -39,6 +39,8 @@
         <qualifiedName>aattr1</qualifiedName>
         <value>a1</value>
         <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -77,6 +79,8 @@
         <qualifiedName>battr1</qualifiedName>
         <value>anyvalue</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -84,6 +88,8 @@
         <qualifiedName>battr2</qualifiedName>
         <value>good</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -91,6 +97,8 @@
         <qualifiedName>battr3</qualifiedName>
         <value>b1</value>
         <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -129,6 +137,8 @@
         <qualifiedName>c_reference</qualifiedName>
         <value>b1</value>
         <type>IDREF</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -167,6 +177,8 @@
         <qualifiedName>d_reference</qualifiedName>
         <value>a1&#x20;b1</value>
         <type>IDREFS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -205,6 +217,8 @@
         <qualifiedName>eattr1</qualifiedName>
         <value>xmltech</value>
         <type>ENTITY</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -243,6 +257,8 @@
         <qualifiedName>fattr1</qualifiedName>
         <value>xmltech&#x20;IBMlogo</value>
         <type>ENTITIES</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -281,6 +297,8 @@
         <qualifiedName>gattr1</qualifiedName>
         <value>xml4j3_0_0_EA3</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -319,6 +337,8 @@
         <qualifiedName>hattr1</qualifiedName>
         <value>xml4j3_0_0_EA3&#x20;Xerces-J_1_0_1</value>
         <type>NMTOKENS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -357,6 +377,8 @@
         <qualifiedName>iattr1</qualifiedName>
         <value>UTF-8</value>
         <type>NOTATION</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -395,6 +417,8 @@
         <qualifiedName>jattr1</qualifiedName>
         <value>anyvalue</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -402,6 +426,8 @@
         <qualifiedName>jattr2</qualifiedName>
         <value>good</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
       <attribute>
         <namespaceURI/>
@@ -409,6 +435,8 @@
         <qualifiedName>jattr3</qualifiedName>
         <value>fixed</value>
         <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

@@ -13,6 +13,8 @@
         <qualifiedName>a1</qualifiedName>
         <value>1&#x20;2</value>
         <type>NMTOKENS</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

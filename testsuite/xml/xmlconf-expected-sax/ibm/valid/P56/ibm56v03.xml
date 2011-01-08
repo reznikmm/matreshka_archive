@@ -12,6 +12,8 @@
         <qualifiedName>UniqueName</qualifiedName>
         <value>AC1999</value>
         <type>ID</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

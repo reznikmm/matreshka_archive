@@ -19,6 +19,8 @@
         <qualifiedName>value</qualifiedName>
         <value>one</value>
         <type>NMTOKEN</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>

@@ -12,6 +12,8 @@
         <qualifiedName>x</qualifiedName>
         <value>y</value>
         <type>CDATA</type>
+        <isDeclared>false</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
@@ -41,6 +43,8 @@
         <qualifiedName>z</qualifiedName>
         <value>q</value>
         <type>CDATA</type>
+        <isDeclared>false</isDeclared>
+        <isSpecified>true</isSpecified>
       </attribute>
     </attributes>
   </startElement>
