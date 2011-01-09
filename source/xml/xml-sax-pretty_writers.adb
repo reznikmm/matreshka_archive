@@ -129,9 +129,9 @@ package body XML.SAX.Pretty_Writers is
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
-     Success        : in out Boolean) is
-
-      C      : Universal_String_Maps.Cursor;
+     Success        : in out Boolean)
+   is
+      C : Universal_String_Maps.Cursor;
 
    begin
       if Self.Tag_Opened then
@@ -146,7 +146,6 @@ package body XML.SAX.Pretty_Writers is
          end if;
 
          if not Local_Name.Is_Empty then
-
             if Namespace_URI.Is_Empty then
                --  XXX error should be reported
                Success := False;
@@ -155,9 +154,8 @@ package body XML.SAX.Pretty_Writers is
             C := Self.Prefix_Map.Find (Namespace_URI);
 
             if C /= Universal_String_Maps.No_Element then
-
                declare
-                  Prefix : League.Strings.Universal_String
+                  Prefix : constant League.Strings.Universal_String
                     := Universal_String_Maps.Element (C);
 
                begin
@@ -169,6 +167,7 @@ package body XML.SAX.Pretty_Writers is
 
                   Self.Text.Append (Local_Name);
                end;
+
             else
                --  XXX: Error should be reported
                Success := False;
@@ -208,8 +207,8 @@ package body XML.SAX.Pretty_Writers is
    overriding procedure End_Prefix_Mapping
     (Self    : in out SAX_Pretty_Writer;
      Prefix  : League.Strings.Universal_String;
-     Success : in out Boolean) is
-
+     Success : in out Boolean)
+   is
       C : Universal_String_Maps.Cursor;
 
    begin
@@ -222,7 +221,6 @@ package body XML.SAX.Pretty_Writers is
 
          Universal_String_Maps.Next (C);
       end loop;
-
    end End_Prefix_Mapping;
 
    ------------------
@@ -245,59 +243,60 @@ package body XML.SAX.Pretty_Writers is
    function Escape
     (Self : SAX_Pretty_Writer;
      Text : League.Strings.Universal_String)
-      return League.Strings.Universal_String is
-
-      Code : Code_Unit_32;
+      return League.Strings.Universal_String
+   is
+      Code : Code_Point;
 
    begin
       return Result : League.Strings.Universal_String do
-        for J in 1 .. Text.Length loop
+         for J in 1 .. Text.Length loop
+            Code := Get_Code (Text.Element (J));
 
-           Code := Get_Code (Text.Element (J));
-              case Text.Element (J) is
-                 when '&' =>
-                    Result := Result & "&amp;";
+            case Text.Element (J) is
+               when '&' =>
+                  Result := Result & "&amp;";
 
-                 when ''' =>
-                    Result := Result & "&apos;";
+               when ''' =>
+                  Result := Result & "&apos;";
 
-                 when '"' =>
-                    Result := Result & "&quot;";
+               when '"' =>
+                  Result := Result & "&quot;";
 
-                 when '>' =>
-                    Result := Result & "&gt;";
+               when '>' =>
+                  Result := Result & "&gt;";
 
-                 when '<' =>
-                    Result := Result & "&lt;";
+               when '<' =>
+                  Result := Result & "&lt;";
 
-                 when others =>
-                    --  Add support of choosing of Hexademical
-                    --  or Digital representation of Character references
-                    --  XML_1_1 2.2 Characters
-                    if Self.Version = XML_1_1 then
-                      if Code in 16#1#  .. 16#8#
-                      or Code in 16#B#  .. 16#C#
-                      or Code in 16#E#  .. 16#1F#
-                      or Code in 16#7F# .. 16#84#
-                      or Code in 16#86# .. 16#9F# then
+               when others =>
+                  --  Add support of choosing of Hexademical
+                  --  or Digital representation of Character references
+                  --  XML_1_1 2.2 Characters
 
-                       declare
-                          Image : Wide_Wide_String :=
-                            Code_Unit_32'Wide_Wide_Image (Code);
+                  if Self.Version = XML_1_1 then
+                     if Code in 16#1#  .. 16#8#
+                       or Code in 16#B#  .. 16#C#
+                       or Code in 16#E#  .. 16#1F#
+                       or Code in 16#7F# .. 16#84#
+                       or Code in 16#86# .. 16#9F#
+                     then
+                        declare
+                           Image : constant Wide_Wide_String :=
+                             Code_Unit_32'Wide_Wide_Image (Code);
 
-                       begin
-                          Result := Result
-                            & "&#"
-                            & Image (Image'First + 1 .. Image'Last)
-                            & ";";
-                       end;
+                        begin
+                           Result := Result
+                             & "&#"
+                             & Image (Image'First + 1 .. Image'Last)
+                             & ";";
+                        end;
 
-                      else
-                         Result.Append
-                          (Text.Element (J).To_Wide_Wide_Character);
-                      end if;
-                    end if;
-              end case;
+                     else
+                        Result.Append
+                         (Text.Element (J).To_Wide_Wide_Character);
+                     end if;
+                  end if;
+            end case;
          end loop;
       end return;
    end Escape;
@@ -330,13 +329,13 @@ package body XML.SAX.Pretty_Writers is
 
    function Image (X_V : XML_Version) return League.Strings.Universal_String is
    begin
-      if X_V = XML_1_0 then
-         return League.Strings.To_Universal_String ("1.0");
-      elsif X_V = XML_1_1 then
-         return League.Strings.To_Universal_String ("1.1");
-      else
-         return League.Strings.To_Universal_String ("1.x");
-      end if;
+      case X_V is
+         when XML_1_0 =>
+            return League.Strings.To_Universal_String ("1.0");
+
+         when XML_1_1 =>
+            return League.Strings.To_Universal_String ("1.1");
+      end case;
    end Image;
 
    ----------------------------
@@ -425,12 +424,13 @@ package body XML.SAX.Pretty_Writers is
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
-     Success        : in out Boolean) is
-
+     Success        : in out Boolean)
+   is
       C : Universal_String_Maps.Cursor;
 
    begin
       --  Closing Tag, which was opened before.
+
       if Self.Tag_Opened then
          Self.Text.Append (League.Strings.To_Universal_String (">"));
          Self.Tag_Opened := False;
@@ -444,7 +444,6 @@ package body XML.SAX.Pretty_Writers is
       end if;
 
       if not Local_Name.Is_Empty then
-
          if Namespace_URI.Is_Empty then
             --  XXX error should be reported
             Success := False;
@@ -490,7 +489,6 @@ package body XML.SAX.Pretty_Writers is
       --  Setting attributes
 
       for J in 1 .. Attributes.Length loop
-
          if not Attributes.Local_Name (J).Is_Empty then
             if not Attributes.Namespace_URI (J).Is_Empty then
                Self.Text.Append (League.Strings.To_Universal_String (" "));
@@ -562,8 +560,7 @@ package body XML.SAX.Pretty_Writers is
          Success := False;
       end if;
 
-      Self.Prefix_Map.Insert (Key => Namespace_URI,
-                              New_Item => Prefix);
+      Self.Prefix_Map.Insert (Namespace_URI, Prefix);
    end Start_Prefix_Mapping;
 
    ----------

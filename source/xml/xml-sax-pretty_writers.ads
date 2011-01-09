@@ -50,7 +50,7 @@ with XML.SAX.Lexical_Handlers;
 
 package XML.SAX.Pretty_Writers is
 
-   type XML_Version is (XML_1_0, XML_1_1, XML_1_X);
+   type XML_Version is (XML_1_0, XML_1_1);
 
    type SAX_Pretty_Writer is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
@@ -60,6 +60,10 @@ package XML.SAX.Pretty_Writers is
 
    not overriding function Text
     (Self : SAX_Pretty_Writer) return League.Strings.Universal_String;
+
+   not overriding procedure Set_Version
+    (Self    : in out SAX_Pretty_Writer;
+     Version : XML_Version);
 
    overriding procedure Characters
     (Self    : in out SAX_Pretty_Writer;
@@ -153,12 +157,7 @@ package XML.SAX.Pretty_Writers is
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean);
 
-   procedure Set_Version (Self    : in out SAX_Pretty_Writer;
-                          Version : XML_Version);
-
 private
-
-   use type League.Strings.Universal_String;
 
    function Hash
     (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
@@ -168,6 +167,7 @@ private
           (League.Strings.Universal_String,
            League.Strings.Universal_String,
            Hash,
+           League.Strings."=",
            League.Strings."=");
 
    type SAX_Pretty_Writer is
