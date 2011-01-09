@@ -134,7 +134,7 @@ package XML.SAX.Attributes is
    --  name.
 
    function Local_Name
-    (Self  : SAX_Attributes;
+    (Self  : SAX_Attributes'Class;
      Index : Positive) return League.Strings.Universal_String;
    --  Returns an attribute's local name for the attribute at the specified
    --  position. If no namespace processing is done, the local name is an empty
@@ -142,7 +142,7 @@ package XML.SAX.Attributes is
    --  raised.
 
    function Namespace_URI
-    (Self  : SAX_Attributes;
+    (Self  : SAX_Attributes'Class;
      Index : Positive) return League.Strings.Universal_String;
    --  Returns an attribute's namespace URI for the attribute at the specified
    --  position. If no namespace processing is done or if the attribute has no
@@ -150,14 +150,14 @@ package XML.SAX.Attributes is
    --  position, otherwise Constraint_Error is raised.
 
    function Qualified_Name
-    (Self  : SAX_Attributes;
+    (Self  : SAX_Attributes'Class;
      Index : Positive) return League.Strings.Universal_String;
    --  Returns an attribute's qualified name for the attribute at the specified
    --  position. The index must be valid position, otherwise Constraint_Error
    --  is raised.
 
    function Value
-    (Self  : SAX_Attributes;
+    (Self  : SAX_Attributes'Class;
      Index : Positive) return League.Strings.Universal_String;
    --  Returns an attribute's value for the attribute at the specified
    --  position. The index must be valid position, otherwise Constraint_Error
@@ -168,7 +168,7 @@ package XML.SAX.Attributes is
    --  each token separated by a single space.
 
    function Value
-    (Self           : SAX_Attributes;
+    (Self           : SAX_Attributes'Class;
      Qualified_Name : League.Strings.Universal_String)
        return League.Strings.Universal_String;
    --  Looks up an attribute's value for the qualified name, or an empty
@@ -179,7 +179,7 @@ package XML.SAX.Attributes is
    --  each token separated by a single space.
 
    function Value
-    (Self          : SAX_Attributes;
+    (Self          : SAX_Attributes'Class;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
        return League.Strings.Universal_String;
@@ -192,7 +192,7 @@ package XML.SAX.Attributes is
    --  each token separated by a single space.
 
    function Value_Type
-    (Self  : SAX_Attributes;
+    (Self  : SAX_Attributes'Class;
      Index : Positive) return League.Strings.Universal_String;
    --  Looks up an attribute's type for the attribute at position Index.
    --
@@ -209,7 +209,7 @@ package XML.SAX.Attributes is
    --  report the type as "NMTOKEN".
 
    function Value_Type
-    (Self           : SAX_Attributes;
+    (Self           : SAX_Attributes'Class;
      Qualified_Name : League.Strings.Universal_String)
        return League.Strings.Universal_String;
    --  Looks up an attribute's type for the qualified name Qualified_Name.
@@ -227,7 +227,7 @@ package XML.SAX.Attributes is
    --  report the type as "NMTOKEN".
 
    function Value_Type
-    (Self          : SAX_Attributes;
+    (Self          : SAX_Attributes'Class;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
        return League.Strings.Universal_String;
@@ -250,7 +250,7 @@ package XML.SAX.Attributes is
    --  report the type as "NMTOKEN".
 
    procedure Set_Value
-    (Self           : in out SAX_Attributes;
+    (Self           : in out SAX_Attributes'Class;
      Qualified_Name : League.Strings.Universal_String;
      Value          : League.Strings.Universal_String);
    --  Sets value of attribute specified by its qualified name Qualified_Name.
@@ -259,7 +259,7 @@ package XML.SAX.Attributes is
    --  new attribute is added to the set.
 
    procedure Set_Value
-    (Self          : in out SAX_Attributes;
+    (Self          : in out SAX_Attributes'Class;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String;
      Value         : League.Strings.Universal_String);

@@ -366,7 +366,7 @@ package body XML.SAX.Attributes is
    ----------------
 
    function Local_Name
-    (Self  : SAX_Attributes;
+    (Self  : SAX_Attributes'Class;
      Index : Positive) return League.Strings.Universal_String is
    begin
       if Index > Self.Data.Length then
@@ -381,7 +381,7 @@ package body XML.SAX.Attributes is
    -------------------
 
    function Namespace_URI
-    (Self  : SAX_Attributes;
+    (Self  : SAX_Attributes'Class;
      Index : Positive) return League.Strings.Universal_String is
    begin
       if Index > Self.Data.Length then
@@ -396,7 +396,7 @@ package body XML.SAX.Attributes is
    --------------------
 
    function Qualified_Name
-    (Self  : SAX_Attributes;
+    (Self  : SAX_Attributes'Class;
      Index : Positive) return League.Strings.Universal_String is
    begin
       if Index > Self.Data.Length then
@@ -422,7 +422,7 @@ package body XML.SAX.Attributes is
    ---------------
 
    procedure Set_Value
-    (Self           : in out SAX_Attributes;
+    (Self           : in out SAX_Attributes'Class;
      Qualified_Name : League.Strings.Universal_String;
      Value          : League.Strings.Universal_String)
    is
@@ -471,7 +471,7 @@ package body XML.SAX.Attributes is
    ---------------
 
    procedure Set_Value
-    (Self          : in out SAX_Attributes;
+    (Self          : in out SAX_Attributes'Class;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String;
      Value         : League.Strings.Universal_String)
@@ -524,7 +524,7 @@ package body XML.SAX.Attributes is
    -----------
 
    function Value
-    (Self  : SAX_Attributes;
+    (Self  : SAX_Attributes'Class;
      Index : Positive) return League.Strings.Universal_String is
    begin
       if Index > Self.Data.Length then
@@ -539,7 +539,7 @@ package body XML.SAX.Attributes is
    -----------
 
    function Value
-    (Self           : SAX_Attributes;
+    (Self           : SAX_Attributes'Class;
      Qualified_Name : League.Strings.Universal_String)
        return League.Strings.Universal_String is
    begin
@@ -559,7 +559,7 @@ package body XML.SAX.Attributes is
    -----------
 
    function Value
-    (Self          : SAX_Attributes;
+    (Self          : SAX_Attributes'Class;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
        return League.Strings.Universal_String is
@@ -582,7 +582,7 @@ package body XML.SAX.Attributes is
    ----------------
 
    function Value_Type
-    (Self  : SAX_Attributes;
+    (Self  : SAX_Attributes'Class;
      Index : Positive) return League.Strings.Universal_String is
    begin
       if Index > Self.Data.Length then
@@ -597,7 +597,7 @@ package body XML.SAX.Attributes is
    ----------------
 
    function Value_Type
-    (Self           : SAX_Attributes;
+    (Self           : SAX_Attributes'Class;
      Qualified_Name : League.Strings.Universal_String)
        return League.Strings.Universal_String is
    begin
@@ -617,7 +617,7 @@ package body XML.SAX.Attributes is
    ----------------
 
    function Value_Type
-    (Self          : SAX_Attributes;
+    (Self          : SAX_Attributes'Class;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
        return League.Strings.Universal_String is
