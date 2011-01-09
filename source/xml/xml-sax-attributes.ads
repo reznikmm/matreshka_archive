@@ -191,28 +191,83 @@ package XML.SAX.Attributes is
    function Value_Type
     (Self  : SAX_Attributes;
      Index : Positive) return League.Strings.Universal_String;
+   --  Looks up an attribute's type for the attribute at position Index.
+   --
+   --  The attribute type is one of the strings "CDATA", "ID", "IDREF",
+   --  "IDREFS", "NMTOKEN", "NMTOKENS", "ENTITY", "ENTITIES", or "NOTATION"
+   --  (always in upper case).
+   --
+   --  If the parser has not read a declaration for the attribute, or if the
+   --  parser does not report attribute types, then it must return the value
+   --  "CDATA" as stated in the XML 1.0 Recommendation (clause 3.3.3,
+   --  "Attribute-Value Normalization").
+   --
+   --  For an enumerated attribute that is not a notation, the parser will
+   --  report the type as "NMTOKEN".
 
    function Value_Type
     (Self           : SAX_Attributes;
      Qualified_Name : League.Strings.Universal_String)
        return League.Strings.Universal_String;
+   --  Looks up an attribute's type for the qualified name Qualified_Name.
+   --
+   --  The attribute type is one of the strings "CDATA", "ID", "IDREF",
+   --  "IDREFS", "NMTOKEN", "NMTOKENS", "ENTITY", "ENTITIES", or "NOTATION"
+   --  (always in upper case).
+   --
+   --  If the parser has not read a declaration for the attribute, or if the
+   --  parser does not report attribute types, then it must return the value
+   --  "CDATA" as stated in the XML 1.0 Recommendation (clause 3.3.3,
+   --  "Attribute-Value Normalization").
+   --
+   --  For an enumerated attribute that is not a notation, the parser will
+   --  report the type as "NMTOKEN".
 
    function Value_Type
     (Self          : SAX_Attributes;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
        return League.Strings.Universal_String;
+   --  Looks up an attribute's type by namespace name.
+   --
+   --  Namespace_URI specifies the namespace URI and Local_Name specifies the
+   --  local name. If the name has no namespace URI, use an empty string for
+   --  Namespace_URI.
+   --
+   --  The attribute type is one of the strings "CDATA", "ID", "IDREF",
+   --  "IDREFS", "NMTOKEN", "NMTOKENS", "ENTITY", "ENTITIES", or "NOTATION"
+   --  (always in upper case).
+   --
+   --  If the parser has not read a declaration for the attribute, or if the
+   --  parser does not report attribute types, then it must return the value
+   --  "CDATA" as stated in the XML 1.0 Recommendation (clause 3.3.3,
+   --  "Attribute-Value Normalization").
+   --
+   --  For an enumerated attribute that is not a notation, the parser will
+   --  report the type as "NMTOKEN".
 
    procedure Set_Value
     (Self           : in out SAX_Attributes;
      Qualified_Name : League.Strings.Universal_String;
      Value          : League.Strings.Universal_String);
+   --  Sets value of attribute specified by its qualified name Qualified_Name.
+   --
+   --  If attribute is present in the set its value is changed, otherwise
+   --  new attribute is added to the set.
 
    procedure Set_Value
     (Self          : in out SAX_Attributes;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String;
      Value         : League.Strings.Universal_String);
+   --  Sets value of attribute specified by the namespace name.
+   --
+   --  Namespace_URI specifies the namespace URI and Local_Name specifies the
+   --  local name. If the name has no namespace URI, use an empty string for
+   --  Namespace_URI.
+   --
+   --  If attribute is present in the set its value is changed, otherwise
+   --  new attribute is added to the set.
 
 private
 
