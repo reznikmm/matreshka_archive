@@ -1458,7 +1458,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       end if;
 
       Clear (Self.Attribute_Set);
-      XML.SAX.Attributes.Internals.Clear (Self.SAX_Attributes);
+      Self.SAX_Attributes.Clear;
    end On_Start_Tag;
 
    -------------------------

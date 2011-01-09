@@ -57,6 +57,12 @@ package XML.SAX.Attributes is
 
    type SAX_Attributes is tagged private;
 
+   function Length (Self : SAX_Attributes'Class) return Natural;
+   --  Returns the number of attributes in the list.
+
+   procedure Clear (Self : in out SAX_Attributes'Class);
+   --  Removes all attributes from the set.
+
    function Index
     (Self           : SAX_Attributes'Class;
      Qualified_Name : League.Strings.Universal_String)
@@ -126,9 +132,6 @@ package XML.SAX.Attributes is
    --  Namespace_URI specifies the namespace URI, or an empty string if the
    --  name has no namespace URI, Local_Name specifies the attribute's local
    --  name.
-
-   function Length (Self : SAX_Attributes'Class) return Natural;
-   --  Returns the number of attributes in the list.
 
    function Local_Name
     (Self  : SAX_Attributes;

@@ -46,34 +46,6 @@
 
 package body XML.SAX.Attributes.Internals is
 
-   -----------
-   -- Clear --
-   -----------
-
-   procedure Clear (Self : in out SAX_Attributes'Class) is
-   begin
-      if Can_Be_Reused (Self.Data) then
-         for J in 1 .. Self.Data.Length loop
-            Matreshka.Internals.Strings.Dereference
-             (Self.Data.Values (J).Namespace_URI);
-            Matreshka.Internals.Strings.Dereference
-             (Self.Data.Values (J).Local_Name);
-            Matreshka.Internals.Strings.Dereference
-             (Self.Data.Values (J).Qualified_Name);
-            Matreshka.Internals.Strings.Dereference
-             (Self.Data.Values (J).Value);
-            Matreshka.Internals.Strings.Dereference
-             (Self.Data.Values (J).Value_Type);
-         end loop;
-
-         Self.Data.Length := 0;
-
-      else
-         Dereference (Self.Data);
-         Self.Data := new Shared_Attributes (8);
-      end if;
-   end Clear;
-
    ----------------------
    -- Unchecked_Append --
    ----------------------

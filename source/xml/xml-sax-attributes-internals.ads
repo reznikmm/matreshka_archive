@@ -64,6 +64,4 @@ package XML.SAX.Attributes.Internals is
      Is_Declared    : Boolean;
      Is_Specified   : Boolean);
 
-   procedure Clear (Self : in out SAX_Attributes'Class);
-
 end XML.SAX.Attributes.Internals;
