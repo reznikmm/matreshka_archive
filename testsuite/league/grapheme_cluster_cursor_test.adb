@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,6 +45,7 @@ with Ada.Command_Line;
 with Ada.Unchecked_Deallocation;
 with Ada.Wide_Wide_Text_IO;
 
+with League.Application;
 with League.Strings.Cursors.Grapheme_Clusters;
 
 procedure Grapheme_Cluster_Cursor_Test is

@@ -44,6 +44,7 @@
 with Ada.Calendar;
 with Ada.Text_IO;
 
+with League.Application;
 with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
 
