@@ -99,14 +99,14 @@ library project Matreshka_League is
          Platform_Ada_Switches := ("-march=i686");
          for Source_Dirs
            use Common_Source_Dirs
-                 & ("../source/league/arch/x86_64",
+                 & ("../source/league/arch/x86",
                     "../source/league/portable_32",
                     "../source/league/x86");
 
       when "x86_64" =>
          for Source_Dirs
            use Common_Source_Dirs
-                 & ("../source/league/arch/x86_64",
+                 & ("../source/league/arch/x86",
                     "../source/league/portable_64",
                     "../source/league/x86_64");
    end case;
@@ -241,7 +241,7 @@ library project Matreshka_League is
             for Specification ("Matreshka.Internals.Strings.Configuration")
               use "matreshka-internals-strings-configuration__x86.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
-              use "matreshka-internals-strings-constants__x86_64.ads";
+              use "matreshka-internals-strings-constants__x86.ads";
 
          when "x86_64" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
@@ -249,7 +249,7 @@ library project Matreshka_League is
             for Specification ("Matreshka.Internals.Strings.Configuration")
               use "matreshka-internals-strings-configuration__x86_64.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
-              use "matreshka-internals-strings-constants__x86_64.ads";
+              use "matreshka-internals-strings-constants__x86.ads";
       end case;
 
       --  Matreshka.Internals.Host_Types
