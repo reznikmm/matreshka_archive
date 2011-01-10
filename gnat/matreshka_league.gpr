@@ -161,6 +161,10 @@ library project Matreshka_League is
 
       case Matreshka_Config.Architecture is
          when "x86" =>
+            for Switches ("matreshka-internals-strings-configuration__x86.adb") use
+              Common_Ada_Switches
+                & Platform_Ada_Switches
+                & Debug_Ada_Switches;
             for Switches ("matreshka-internals-simd-intel-sse.adb") use
               Common_Ada_Switches
                 & Platform_Ada_Switches
