@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
-with Matreshka.Internals.Strings.Compare;
+with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Text_Codecs.IANA_Registry;
 with Matreshka.Internals.Text_Codecs.ISO88591;
 with Matreshka.Internals.Text_Codecs.SHIFTJIS;
@@ -55,7 +55,7 @@ with Matreshka.Internals.Utf16;
 package body Matreshka.Internals.Text_Codecs is
 
    use League.Strings.Internals;
-   use Matreshka.Internals.Strings.Compare;
+   use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Text_Codecs.IANA_Registry;
    use Matreshka.Internals.Unicode.Characters.General_Punctuation;
    use Matreshka.Internals.Unicode.Characters.Latin;
@@ -133,7 +133,7 @@ package body Matreshka.Internals.Text_Codecs is
       --  Lookup MIB.
 
       for J in To_MIB'Range loop
-         if Is_Equal (Get_Shared (Name), To_MIB (J).Name) then
+         if Handler.Is_Equal (Get_Shared (Name), To_MIB (J).Name) then
             return To_MIB (J).MIB;
          end if;
       end loop;

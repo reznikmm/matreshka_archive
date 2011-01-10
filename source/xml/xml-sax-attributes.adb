@@ -44,13 +44,13 @@
 with Ada.Unchecked_Deallocation;
 
 with League.Strings.Internals;
-with Matreshka.Internals.Strings.Compare;
+with Matreshka.Internals.Strings.Configuration;
 
 package body XML.SAX.Attributes is
 
    use League.Strings;
    use League.Strings.Internals;
-   use Matreshka.Internals.Strings.Compare;
+   use Matreshka.Internals.Strings.Configuration;
 
    procedure Free is
      new Ada.Unchecked_Deallocation
@@ -195,7 +195,7 @@ package body XML.SAX.Attributes is
      Qualified_Name : League.Strings.Universal_String) return Natural is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Is_Equal
+         if Handler.Is_Equal
              (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
          then
             return J;
@@ -215,9 +215,9 @@ package body XML.SAX.Attributes is
      Local_Name    : League.Strings.Universal_String) return Natural is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Is_Equal
+         if Handler.Is_Equal
              (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
-           and Is_Equal
+           and Handler.Is_Equal
                 (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
          then
             return J;
@@ -252,7 +252,7 @@ package body XML.SAX.Attributes is
        return Boolean is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Is_Equal
+         if Handler.Is_Equal
              (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
          then
             return Self.Data.Values (J).Is_Declared;
@@ -273,9 +273,9 @@ package body XML.SAX.Attributes is
        return Boolean is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Is_Equal
+         if Handler.Is_Equal
              (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
-           and Is_Equal
+           and Handler.Is_Equal
                 (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
          then
             return Self.Data.Values (J).Is_Declared;
@@ -319,7 +319,7 @@ package body XML.SAX.Attributes is
        return Boolean is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Is_Equal
+         if Handler.Is_Equal
              (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
          then
             return Self.Data.Values (J).Is_Specified;
@@ -340,9 +340,9 @@ package body XML.SAX.Attributes is
        return Boolean is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Is_Equal
+         if Handler.Is_Equal
              (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
-           and Is_Equal
+           and Handler.Is_Equal
                 (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
          then
             return Self.Data.Values (J).Is_Specified;
@@ -544,7 +544,7 @@ package body XML.SAX.Attributes is
        return League.Strings.Universal_String is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Is_Equal
+         if Handler.Is_Equal
              (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
          then
             return Create (Self.Data.Values (J).Value);
@@ -565,9 +565,9 @@ package body XML.SAX.Attributes is
        return League.Strings.Universal_String is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Is_Equal
+         if Handler.Is_Equal
              (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
-           and Is_Equal
+           and Handler.Is_Equal
                 (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
          then
             return Create (Self.Data.Values (J).Value);
@@ -602,7 +602,7 @@ package body XML.SAX.Attributes is
        return League.Strings.Universal_String is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Is_Equal
+         if Handler.Is_Equal
              (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
          then
             return Create (Self.Data.Values (J).Value_Type);
@@ -623,9 +623,9 @@ package body XML.SAX.Attributes is
        return League.Strings.Universal_String is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Is_Equal
+         if Handler.Is_Equal
              (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
-           and Is_Equal
+           and Handler.Is_Equal
                 (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
          then
             return Create (Self.Data.Values (J).Value_Type);

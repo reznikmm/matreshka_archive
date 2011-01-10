@@ -57,6 +57,31 @@ package Matreshka.Internals.Strings.Handlers.X86_64 is
     (Self : X86_64_String_Handler;
      Item : not null Shared_String_Access);
 
+   overriding function Is_Equal
+    (Self  : X86_64_String_Handler;
+     Left  : not null Shared_String_Access;
+     Right : not null Shared_String_Access) return Boolean;
+
+   overriding function Is_Less
+    (Self  : X86_64_String_Handler;
+     Left  : not null Shared_String_Access;
+     Right : not null Shared_String_Access) return Boolean;
+
+   overriding function Is_Greater
+    (Self  : X86_64_String_Handler;
+     Left  : not null Shared_String_Access;
+     Right : not null Shared_String_Access) return Boolean;
+
+   overriding function Is_Less_Or_Equal
+    (Self  : X86_64_String_Handler;
+     Left  : not null Shared_String_Access;
+     Right : not null Shared_String_Access) return Boolean;
+
+   overriding function Is_Greater_Or_Equal
+    (Self  : X86_64_String_Handler;
+     Left  : not null Shared_String_Access;
+     Right : not null Shared_String_Access) return Boolean;
+
    Handler : aliased X86_64_String_Handler;
 
 end Matreshka.Internals.Strings.Handlers.X86_64;

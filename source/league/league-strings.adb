@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 with Matreshka.Internals.Locales;
-with Matreshka.Internals.Strings.Compare;
 with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Strings.Search;
@@ -58,7 +57,6 @@ package body League.Strings is
    use League.Strings.Internals;
    use Matreshka.Internals.String_Vectors;
    use Matreshka.Internals.Strings;
-   use Matreshka.Internals.Strings.Compare;
    use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Strings.Operations;
    use Matreshka.Internals.Strings.Search;
@@ -248,7 +246,7 @@ package body League.Strings is
       R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
-      return Is_Less (L_D, R_D);
+      return Handler.Is_Less (L_D, R_D);
    end "<";
 
    ---------
@@ -277,7 +275,7 @@ package body League.Strings is
       R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
-      return Is_Less_Or_Equal (L_D, R_D);
+      return Handler.Is_Less_Or_Equal (L_D, R_D);
    end "<=";
 
    ----------
@@ -307,7 +305,7 @@ package body League.Strings is
       R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
-      return Is_Equal (L_D, R_D);
+      return Handler.Is_Equal (L_D, R_D);
    end "=";
 
    ---------
@@ -338,7 +336,7 @@ package body League.Strings is
       R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
-      return Is_Greater (L_D, R_D);
+      return Handler.Is_Greater (L_D, R_D);
    end ">";
 
    ---------
@@ -367,7 +365,7 @@ package body League.Strings is
       R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
-      return Is_Greater_Or_Equal (L_D, R_D);
+      return Handler.Is_Greater_Or_Equal (L_D, R_D);
    end ">=";
 
    ----------

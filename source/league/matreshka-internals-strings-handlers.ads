@@ -41,6 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package declare interface to platform specific string handling
+--  operations. Several children units provides platform specific
+--  implementations.
+------------------------------------------------------------------------------
 
 package Matreshka.Internals.Strings.Handlers is
 
@@ -56,5 +60,28 @@ package Matreshka.Internals.Strings.Handlers is
    --  vector where null terminator must be filled. This allows to simplify
    --  and speedup comparison operations becase where are no need to pay
    --  attention to the unused elements in the last used vector.
+
+   not overriding function Is_Equal
+     (Self  : Abstract_String_Handler;
+      Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean is abstract;
+   not overriding function Is_Less
+     (Self  : Abstract_String_Handler;
+      Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean is abstract;
+   not overriding function Is_Greater
+     (Self  : Abstract_String_Handler;
+      Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean is abstract;
+   not overriding function Is_Less_Or_Equal
+     (Self  : Abstract_String_Handler;
+      Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean is abstract;
+   not overriding function Is_Greater_Or_Equal
+     (Self  : Abstract_String_Handler;
+      Left  : not null Shared_String_Access;
+      Right : not null Shared_String_Access) return Boolean is abstract;
+   --  Set of compare operations. All operations compare in code point order
+   --  (they are handle UTF-16 surrogate pairs as one code point).
 
 end Matreshka.Internals.Strings.Handlers;

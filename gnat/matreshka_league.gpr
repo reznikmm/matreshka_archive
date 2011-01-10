@@ -185,8 +185,6 @@ library project Matreshka_League is
               use "matreshka-internals-strings-configuration__portable_32.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__be.ads";
-            for Implementation ("Matreshka.Internals.Strings.Compare")
-              use "matreshka-internals-strings-compare__portable_32.adb";
             for Implementation ("Matreshka.Internals.Strings.Search")
               use "matreshka-internals-strings-search__portable.adb";
 
@@ -197,8 +195,6 @@ library project Matreshka_League is
               use "matreshka-internals-strings-configuration__portable_32.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__le.ads";
-            for Implementation ("Matreshka.Internals.Strings.Compare")
-              use "matreshka-internals-strings-compare__portable_32.adb";
             for Implementation ("Matreshka.Internals.Strings.Search")
               use "matreshka-internals-strings-search__portable.adb";
 
@@ -209,8 +205,6 @@ library project Matreshka_League is
               use "matreshka-internals-strings-configuration__portable_64.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__be.ads";
-            for Implementation ("Matreshka.Internals.Strings.Compare")
-              use "matreshka-internals-strings-compare__portable_64.adb";
             for Implementation ("Matreshka.Internals.Strings.Search")
               use "matreshka-internals-strings-search__portable.adb";
 
@@ -221,8 +215,6 @@ library project Matreshka_League is
               use "matreshka-internals-strings-configuration__portable_64.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__le.ads";
-            for Implementation ("Matreshka.Internals.Strings.Compare")
-              use "matreshka-internals-strings-compare__portable_64.adb";
             for Implementation ("Matreshka.Internals.Strings.Search")
               use "matreshka-internals-strings-search__portable.adb";
 
@@ -233,8 +225,6 @@ library project Matreshka_League is
               use "matreshka-internals-strings-configuration__x86_32.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__le.ads";
-            for Implementation ("Matreshka.Internals.Strings.Compare")
-              use "matreshka-internals-strings-compare__portable_32.adb";
             for Implementation ("Matreshka.Internals.Strings.Search")
               use "matreshka-internals-strings-search__portable.adb";
 
@@ -245,8 +235,6 @@ library project Matreshka_League is
               use "matreshka-internals-strings-configuration__x86_64.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__x86_64.ads";
-            for Implementation ("Matreshka.Internals.Strings.Compare")
-              use "matreshka-internals-strings-compare__x86_64.adb";
             for Implementation ("Matreshka.Internals.Strings.Search")
               use "matreshka-internals-strings-search__x86_64.adb";
       end case;
