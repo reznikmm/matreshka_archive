@@ -44,6 +44,7 @@
 with League.Strings.Internals;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Strings.Compare;
+with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Strings.Search;
 with Matreshka.Internals.Unicode.Casing;
@@ -58,6 +59,7 @@ package body League.Strings is
    use Matreshka.Internals.String_Vectors;
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Strings.Compare;
+   use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Strings.Operations;
    use Matreshka.Internals.Strings.Search;
    use Matreshka.Internals.Unicode;
@@ -105,7 +107,7 @@ package body League.Strings is
               R_D.Value (0 .. R_D.Unused - 1);
             D.Unused := L_D.Unused + R_D.Unused;
             D.Length := L_D.Length + R_D.Length;
-            Fill_Null_Terminator (D);
+            Handler.Fill_Null_Terminator (D);
 
             return Wrap (D);
          end;
@@ -167,7 +169,7 @@ package body League.Strings is
          Unchecked_Store (D.Value, P, Wide_Wide_Character'Pos (Right));
          D.Unused := P;
          D.Length := L_D.Length + 1;
-         Fill_Null_Terminator (D);
+         Handler.Fill_Null_Terminator (D);
 
          return Wrap (D);
       end;
@@ -204,7 +206,7 @@ package body League.Strings is
 
          D.Unused := P + R_D.Unused;
          D.Length := R_D.Length + 1;
-         Fill_Null_Terminator (D);
+         Handler.Fill_Null_Terminator (D);
 
          return Wrap (D);
       end;
@@ -894,7 +896,7 @@ package body League.Strings is
       Utf16_String'Read (Stream, Item.Data.Value);
       Item.Data.Unused := Unused;
       Item.Data.Length := Length;
-      Fill_Null_Terminator (Item.Data);
+      Handler.Fill_Null_Terminator (Item.Data);
    end Read;
 
    -------------
@@ -1305,7 +1307,7 @@ package body League.Strings is
 --              Source'Last - J);
          end loop;
 
-         Fill_Null_Terminator (Destination);
+         Handler.Fill_Null_Terminator (Destination);
       end if;
 
    exception

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode.Characters.Latin;
 with XML.SAX.Simple_Readers.Callbacks;
@@ -343,7 +344,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             Self.Character_Data.Unused := Self.Character_Data.Unused - 1;
          end if;
 
-         Matreshka.Internals.Strings.Fill_Null_Terminator
+         Matreshka.Internals.Strings.Configuration.Handler.Fill_Null_Terminator
           (Self.Character_Data);
          Matreshka.Internals.Strings.Reference (Self.Character_Data);
          Set_String_Internal
@@ -1900,7 +1901,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Self.Character_Data.Unused := Self.Character_Data.Unused - 1;
       end if;
 
-      Matreshka.Internals.Strings.Fill_Null_Terminator
+      Matreshka.Internals.Strings.Configuration.Handler.Fill_Null_Terminator
        (Self.Character_Data);
       Matreshka.Internals.Strings.Reference (Self.Character_Data);
       Set_String_Internal

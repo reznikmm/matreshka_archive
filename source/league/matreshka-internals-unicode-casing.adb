@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,12 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Unicode.Casing is
 
    use Matreshka.Internals.Strings;
+   use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Strings.Operations;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Ucd;
@@ -344,7 +346,7 @@ package body Matreshka.Internals.Unicode.Casing is
          end if;
       end loop;
 
-      Fill_Null_Terminator (Destination);
+      Handler.Fill_Null_Terminator (Destination);
    end Convert_Case;
 
 end Matreshka.Internals.Unicode.Casing;

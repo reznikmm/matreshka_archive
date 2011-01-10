@@ -53,6 +53,7 @@
 --  	Copyright (C) 2006, 2009 Project X0213, All Rights Reserved.
 --  	You can use, modify, distribute this table freely.
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Text_Codecs.SHIFTJIS.Tables;
 with Matreshka.Internals.Utf16;
 
@@ -124,7 +125,8 @@ package body Matreshka.Internals.Text_Codecs.SHIFTJIS is
 
       Self.State := Current_State;
       Self.First := Current_First;
-      Matreshka.Internals.Strings.Fill_Null_Terminator (String);
+      Matreshka.Internals.Strings.Configuration.Handler.Fill_Null_Terminator
+       (String);
    end Decode_Append;
 
    -------------

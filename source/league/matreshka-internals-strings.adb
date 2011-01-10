@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,6 +44,7 @@
 with Ada.Unchecked_Deallocation;
 
 with Matreshka.Internals.Atomics.Generic_Test_And_Set;
+with Matreshka.Internals.Strings.Configuration;
 
 package body Matreshka.Internals.Strings is
 
@@ -215,13 +216,6 @@ package body Matreshka.Internals.Strings is
       Self := null;
    end Dereference;
 
-   --------------------------
-   -- Fill_Null_Terminator --
-   --------------------------
-
-   procedure Fill_Null_Terminator
-     (Self : not null Shared_String_Access) is separate;
-
    ----------
    -- Hash --
    ----------
@@ -282,7 +276,7 @@ package body Matreshka.Internals.Strings is
             Self.Value (0 .. Old.Unused) := Old.Value (0 .. Old.Unused);
             Self.Unused := Old.Unused;
             Self.Length := Old.Length;
-            Fill_Null_Terminator (Self);
+            Configuration.Handler.Fill_Null_Terminator (Self);
             Dereference (Old);
          end;
 

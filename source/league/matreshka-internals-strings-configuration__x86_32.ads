@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,50 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides several constants for x86_64 platform.
+--  This is x86_32 specific version of the package.
 ------------------------------------------------------------------------------
-with Interfaces;
-with Matreshka.Internals.SIMD.Intel;
-with Matreshka.Internals.Utf16;
+with Matreshka.Internals.Strings.Handlers.X86_32;
 
-private package Matreshka.Internals.Strings.Constants is
+package Matreshka.Internals.Strings.Configuration is
 
    pragma Preelaborate;
 
-   use type Interfaces.Integer_16;
+   Handler : not null access
+     Matreshka.Internals.Strings.Handlers.Abstract_String_Handler'Class
+       := Matreshka.Internals.Strings.Handlers.X86_32.Handler'Access;
+   --  Platform dependent strings handler to be used for operations on strings.
 
-   Terminator_Mask_64 : constant
-     array (Matreshka.Internals.Utf16.Utf16_String_Index range 0 .. 3)
-       of Interfaces.Unsigned_64
-         := (0 => 16#0000_0000_0000_0000#,
-             1 => 16#0000_0000_0000_FFFF#,
-             2 => 16#0000_0000_FFFF_FFFF#,
-             3 => 16#0000_FFFF_FFFF_FFFF#);
-   --  This mask is used to set unused components of the element to zero on
-   --  64-bits platforms.
-
-   Terminator_Mask_x86_64 : constant
-     array (Matreshka.Internals.Utf16.Utf16_String_Index range 0 .. 7)
-       of Matreshka.Internals.SIMD.Intel.v8hi
-         := (0 => (              others => 0),
-             1 => (1      => -1, others => 0),
-             2 => (1 .. 2 => -1, others => 0),
-             3 => (1 .. 3 => -1, others => 0),
-             4 => (1 .. 4 => -1, others => 0),
-             5 => (1 .. 5 => -1, others => 0),
-             6 => (1 .. 6 => -1, others => 0),
-             7 => (1 .. 7 => -1, others => 0));
-   --  This mask is used to set unused components of the element to zero on
-   --  x86_64 platforms.
-
-   Surrogate_Kind_Mask_x86_64   : constant Matreshka.Internals.SIMD.Intel.v8hi
-     := (others =>  -1_024);  --  FC00
-   Masked_High_Surrogate_x86_64 : constant Matreshka.Internals.SIMD.Intel.v8hi
-     := (others => -10_240);  --  D800
-   Masked_Low_Surrogate_x86_64  : constant Matreshka.Internals.SIMD.Intel.v8hi
-     := (others =>  -9_216);  --  DC00
-   --  Mask and constants to detect surrogate characters in vector. To detect
-   --  surrogate mask should be applied to vector and result should be compared
-   --  with corresponding constant to detect high or low surrogates in vector.
-
-end Matreshka.Internals.Strings.Constants;
+end Matreshka.Internals.Strings.Configuration;

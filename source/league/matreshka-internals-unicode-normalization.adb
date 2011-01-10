@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode.Ucd.Core;
 with Matreshka.Internals.Unicode.Ucd.Norms;
@@ -49,6 +50,7 @@ with Matreshka.Internals.Utf16;
 package body Matreshka.Internals.Unicode.Normalization is
 
    use Matreshka.Internals.Strings;
+   use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Strings.Operations;
    use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Utf16;
@@ -421,7 +423,7 @@ package body Matreshka.Internals.Unicode.Normalization is
          end;
       end loop;
 
-      Fill_Null_Terminator (Destination);
+      Handler.Fill_Null_Terminator (Destination);
    end Generic_Decomposition;
 
    ---------------------------------------
@@ -660,7 +662,7 @@ package body Matreshka.Internals.Unicode.Normalization is
          Compose (Destination, Starter.D_Index, D_Index, Composed);
       end;
 
-      Fill_Null_Terminator (Destination);
+      Handler.Fill_Null_Terminator (Destination);
    end Generic_Decomposition_Composition;
 
    --------------

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,15 +45,6 @@ with "matreshka_config";
 
 library project Matreshka_League is
 
-   for Source_Dirs use
-    ("../source/league",
-     "../source/league/codecs",
-     "../source/league/codecs/tables",
-     "../source/league/iana",
-     "../source/league/regexp",
-     "../source/league/ucd",
-     "../source/xml",
-     "../source/xml/xml");
    for Object_Dir use "../.objs";
    for Library_Kind use "dynamic";
    for Library_Name use "league";
@@ -77,24 +68,46 @@ library project Matreshka_League is
    Debug_Ada_Switches := ();
    --  Switches to be used in debug mode.
 
+   Common_Source_Dirs :=
+    ("../source/league",
+     "../source/league/codecs",
+     "../source/league/codecs/tables",
+     "../source/league/iana",
+     "../source/league/regexp",
+     "../source/league/ucd",
+     "../source/xml",
+     "../source/xml/xml");
+
    case Matreshka_Config.Architecture is
+      when "portable_32_be" =>
+         for Source_Dirs
+           use Common_Source_Dirs & ("../source/league/portable_32");
+
+      when "portable_32_le" =>
+         for Source_Dirs
+           use Common_Source_Dirs & ("../source/league/portable_32");
+
+      when "portable_64_be" =>
+         for Source_Dirs
+           use Common_Source_Dirs & ("../source/league/portable_64");
+
+      when "portable_64_le" =>
+         for Source_Dirs
+           use Common_Source_Dirs & ("../source/league/portable_64");
+
       when "x86" =>
          Platform_Ada_Switches := ("-march=i686");
+         for Source_Dirs
+           use Common_Source_Dirs
+                 & ("../source/league/portable_32",
+                    "../source/league/x86_32");
 
       when "x86_64" =>
-         for Source_Dirs use
-          ("../source/league",
-           "../source/league/codecs",
-           "../source/league/codecs/tables",
-           "../source/league/iana",
-           "../source/league/ucd",
-           "../source/league/regexp",
-           "../source/league/arch/x86_64",
-           "../source/xml",
-           "../source/xml/xml");
-
-      when others =>
-         null;
+         for Source_Dirs
+           use Common_Source_Dirs
+                 & ("../source/league/arch/x86_64",
+                    "../source/league/portable_64",
+                    "../source/league/x86_64");
    end case;
 
    case Matreshka_Config.Build is
@@ -168,72 +181,72 @@ library project Matreshka_League is
          when "portable_32_be" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
+            for Specification ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__portable_32.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__be.ads";
             for Implementation ("Matreshka.Internals.Strings.Compare")
               use "matreshka-internals-strings-compare__portable_32.adb";
-            for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
-              use "matreshka-internals-strings-fill_null_terminator__portable_32.adb";
             for Implementation ("Matreshka.Internals.Strings.Search")
               use "matreshka-internals-strings-search__portable.adb";
 
          when "portable_32_le" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
+            for Specification ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__portable_32.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__le.ads";
             for Implementation ("Matreshka.Internals.Strings.Compare")
               use "matreshka-internals-strings-compare__portable_32.adb";
-            for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
-              use "matreshka-internals-strings-fill_null_terminator__portable_32.adb";
             for Implementation ("Matreshka.Internals.Strings.Search")
               use "matreshka-internals-strings-search__portable.adb";
 
          when "portable_64_be" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+            for Specification ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__portable_64.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__be.ads";
             for Implementation ("Matreshka.Internals.Strings.Compare")
               use "matreshka-internals-strings-compare__portable_64.adb";
-            for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
-              use "matreshka-internals-strings-fill_null_terminator__portable_64.adb";
             for Implementation ("Matreshka.Internals.Strings.Search")
               use "matreshka-internals-strings-search__portable.adb";
 
          when "portable_64_le" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+            for Specification ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__portable_64.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__le.ads";
             for Implementation ("Matreshka.Internals.Strings.Compare")
               use "matreshka-internals-strings-compare__portable_64.adb";
-            for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
-              use "matreshka-internals-strings-fill_null_terminator__portable_64.adb";
             for Implementation ("Matreshka.Internals.Strings.Search")
               use "matreshka-internals-strings-search__portable.adb";
 
          when "x86" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
+            for Specification ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__x86_32.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__le.ads";
             for Implementation ("Matreshka.Internals.Strings.Compare")
               use "matreshka-internals-strings-compare__portable_32.adb";
-            for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
-              use "matreshka-internals-strings-fill_null_terminator__portable_32.adb";
             for Implementation ("Matreshka.Internals.Strings.Search")
               use "matreshka-internals-strings-search__portable.adb";
 
          when "x86_64" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
+            for Specification ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__x86_64.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__x86_64.ads";
             for Implementation ("Matreshka.Internals.Strings.Compare")
               use "matreshka-internals-strings-compare__x86_64.adb";
-            for Implementation ("Matreshka.Internals.Strings.Fill_Null_Terminator")
-              use "matreshka-internals-strings-fill_null_terminator__x86_64.adb";
             for Implementation ("Matreshka.Internals.Strings.Search")
               use "matreshka-internals-strings-search__x86_64.adb";
       end case;

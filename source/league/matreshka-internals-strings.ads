@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -168,15 +168,6 @@ package Matreshka.Internals.Strings is
      return Internal_Hash_Type;
    --  Returns hash value for the string. MurmurHash2, by Austin Appleby is
    --  used.
-
-   procedure Fill_Null_Terminator (Self : not null Shared_String_Access);
-   pragma Inline (Fill_Null_Terminator);
-   pragma Inline_Always (Fill_Null_Terminator);
-   --  Fill null terminator after last used code point. On platforms where
-   --  SIMD operations are supported it fills all unused elements in the
-   --  vector where null terminator must be filled. This allows to simplify
-   --  and speedup comparison operations becase where are no need to pay
-   --  attention to the unused elements in the last used vector.
 
    type Sort_Key_Array is
      array (Positive range <>)

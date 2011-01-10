@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Text_Codecs.UTF16 is
@@ -195,7 +196,8 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
       Self.State := Current_State;
       Self.Code  := Current_Code;
       Self.Low   := Current_Low;
-      Matreshka.Internals.Strings.Fill_Null_Terminator (String);
+      Matreshka.Internals.Strings.Configuration.Handler.Fill_Null_Terminator
+       (String);
    end Decode_Append;
 
    -------------------
@@ -252,7 +254,8 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
       Self.State := Current_State;
       Self.Code  := Current_Code;
       Self.Low   := Current_Low;
-      Matreshka.Internals.Strings.Fill_Null_Terminator (String);
+      Matreshka.Internals.Strings.Configuration.Handler.Fill_Null_Terminator
+       (String);
    end Decode_Append;
 
    --------------

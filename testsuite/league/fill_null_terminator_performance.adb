@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,6 +44,7 @@
 with Ada.Calendar;
 with Ada.Text_IO;
 
+with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
 
 procedure Fill_Null_Terminator_Performance is
@@ -51,6 +52,7 @@ procedure Fill_Null_Terminator_Performance is
    use Ada.Calendar;
    use Ada.Text_IO;
    use Matreshka.Internals.Strings;
+   use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Strings.Operations;
 
    S     : array (1 .. 1_000_000) of Shared_String_Access;
@@ -65,7 +67,7 @@ begin
 
    for J in 1 .. 250 loop
       for K in S'Range loop
-         Fill_Null_Terminator (S (K));
+         Handler.Fill_Null_Terminator (S (K));
       end loop;
    end loop;
 
