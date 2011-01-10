@@ -48,18 +48,18 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Strings.Handlers.Portable_32;
 
-package Matreshka.Internals.Strings.Handlers.X86_32 is
+package Matreshka.Internals.Strings.Handlers.X86 is
 
    pragma Preelaborate;
 
-   type X86_32_String_Handler is
+   type X86_String_Handler is
      new Matreshka.Internals.Strings.Handlers.Portable_32.Portable_32_String_Handler
        with null record;
 
    overriding procedure Fill_Null_Terminator
-    (Self : X86_32_String_Handler;
+    (Self : X86_String_Handler;
      Item : not null Shared_String_Access);
 
-   Handler : aliased X86_32_String_Handler;
+   Handler : aliased X86_String_Handler;
 
-end Matreshka.Internals.Strings.Handlers.X86_32;
+end Matreshka.Internals.Strings.Handlers.X86;

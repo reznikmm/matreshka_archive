@@ -42,14 +42,14 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body Matreshka.Internals.Strings.Handlers.X86_32 is
+package body Matreshka.Internals.Strings.Handlers.X86 is
 
    --------------------------
    -- Fill_Null_Terminator --
    --------------------------
 
    overriding procedure Fill_Null_Terminator
-    (Self : X86_32_String_Handler;
+    (Self : X86_String_Handler;
      Item : not null Shared_String_Access) is
    begin
       Portable_32.Portable_32_String_Handler
@@ -58,4 +58,4 @@ package body Matreshka.Internals.Strings.Handlers.X86_32 is
       --  full SSE vector to compatibility with optimized SSE version.
    end Fill_Null_Terminator;
 
-end Matreshka.Internals.Strings.Handlers.X86_32;
+end Matreshka.Internals.Strings.Handlers.X86;

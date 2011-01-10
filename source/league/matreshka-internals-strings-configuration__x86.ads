@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 --  This is x86_32 specific version of the package.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings.Handlers.X86_32;
+with Matreshka.Internals.Strings.Handlers.X86;
 
 package Matreshka.Internals.Strings.Configuration is
 
@@ -51,7 +51,7 @@ package Matreshka.Internals.Strings.Configuration is
 
    Handler : not null access
      Matreshka.Internals.Strings.Handlers.Abstract_String_Handler'Class
-       := Matreshka.Internals.Strings.Handlers.X86_32.Handler'Access;
+       := Matreshka.Internals.Strings.Handlers.X86.Handler'Access;
    --  Platform dependent strings handler to be used for operations on strings.
 
 end Matreshka.Internals.Strings.Configuration;

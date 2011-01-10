@@ -100,7 +100,7 @@ library project Matreshka_League is
          for Source_Dirs
            use Common_Source_Dirs
                  & ("../source/league/portable_32",
-                    "../source/league/x86_32");
+                    "../source/league/x86");
 
       when "x86_64" =>
          for Source_Dirs
@@ -222,7 +222,7 @@ library project Matreshka_League is
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
             for Specification ("Matreshka.Internals.Strings.Configuration")
-              use "matreshka-internals-strings-configuration__x86_32.ads";
+              use "matreshka-internals-strings-configuration__x86.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__le.ads";
             for Implementation ("Matreshka.Internals.Strings.Search")
