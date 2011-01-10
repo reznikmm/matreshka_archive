@@ -99,7 +99,8 @@ library project Matreshka_League is
          Platform_Ada_Switches := ("-march=i686");
          for Source_Dirs
            use Common_Source_Dirs
-                 & ("../source/league/portable_32",
+                 & ("../source/league/arch/x86_64",
+                    "../source/league/portable_32",
                     "../source/league/x86");
 
       when "x86_64" =>
@@ -158,6 +159,18 @@ library project Matreshka_League is
           & Platform_Ada_Switches
           & Debug_Ada_Switches;
 
+      case Matreshka_Config.Architecture is
+         when "x86" =>
+            for Switches ("matreshka-internals-strings-handlers-x86-sse2.adb") use
+              Common_Ada_Switches
+                & Platform_Ada_Switches
+                & ("-msse2")
+                & Optimization_Ada_Switches
+                & Debug_Ada_Switches;
+
+         when others =>
+            null;
+      end case;
    end Compiler;
 
    ------------
@@ -216,7 +229,7 @@ library project Matreshka_League is
             for Specification ("Matreshka.Internals.Strings.Configuration")
               use "matreshka-internals-strings-configuration__x86.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
-              use "matreshka-internals-strings-constants__le.ads";
+              use "matreshka-internals-strings-constants__x86_64.ads";
 
          when "x86_64" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
