@@ -118,7 +118,7 @@ procedure String_Performance is
      (Name   : String;
       Result : Result_Type_Array)
    is
-      type Speedup is delta 0.01 range 0.0 .. 100.0;
+      type Speedup is delta 0.01 range 0.0 .. 1000.0;
 
    begin
       Put (Name & " (");
@@ -395,6 +395,76 @@ procedure String_Performance is
         Result_Type'(Ada_Duration, League_Duration, Passes));
    end Test_Copy_Of_Empty_String;
 
+   ----------------
+   -- Test_Index --
+   ----------------
+
+   procedure Test_Index is
+
+      ----------
+      -- Test --
+      ----------
+
+      procedure Test
+       (Size   : Positive;
+        Passes : Positive;
+        Result : out Result_Type)
+      is
+         Start : Time;
+         Y     : Natural;
+
+      begin
+         declare
+            S : Unbounded_Wide_String :=
+              To_Unbounded_Wide_String (Size * ' ' & '1');
+            C : Wide_String := "1";
+
+         begin
+            Start := Clock;
+
+            for J in 1 .. Passes loop
+               Y := Index (S, C);
+            end loop;
+
+            Result.Ada_Duration := Clock - Start;
+         end;
+
+         declare
+            S : Universal_String :=
+              To_Universal_String (Size * ' ' & '1');
+            C : Universal_Character := To_Universal_Character ('1');
+
+         begin
+            Start := Clock;
+
+            for J in 1 .. Passes loop
+               Y := Index (S, C);
+--Put_Line (Integer'Image (Y));
+--if Y /= S.Length then
+--raise Program_Error;
+--end if;
+            end loop;
+
+            Result.League_Duration := Clock - Start;
+         end;
+
+         Result.Passes := Passes;
+      end Test;
+
+--      Index_Passes : constant := 1000;
+      Index_Passes : constant := 1_000_000;
+
+      Result : Result_Type_Array (1 .. 5);
+
+   begin
+      Test (1, Index_Passes, Result (1));
+      Test (10, Index_Passes, Result (2));
+      Test (100, Index_Passes / 2, Result (3));
+      Test (1000, Index_Passes / 10, Result (4));
+      Test (10000, Index_Passes / 50, Result (5));
+      Results ("Index", Result);
+   end Test_Index;
+
    -------------------------
    -- Test_Initialization --
    -------------------------
@@ -456,4 +526,5 @@ begin
    Test_Copy;
    Test_Compare;
    Test_Append;
+   Test_Index;
 end String_Performance;
