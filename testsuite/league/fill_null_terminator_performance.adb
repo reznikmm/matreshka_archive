@@ -67,7 +67,7 @@ begin
 
    for J in 1 .. 250 loop
       for K in S'Range loop
-         Handler.Fill_Null_Terminator (S (K));
+         String_Handler.Fill_Null_Terminator (S (K));
       end loop;
    end loop;
 

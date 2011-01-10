@@ -49,7 +49,7 @@ package Matreshka.Internals.Strings.Configuration is
 
    pragma Preelaborate;
 
-   Handler : not null access
+   String_Handler : not null access
      Matreshka.Internals.Strings.Handlers.Abstract_String_Handler'Class
        := Matreshka.Internals.Strings.Handlers.X86_64.Handler'Access;
    --  Platform dependent strings handler to be used for operations on strings.

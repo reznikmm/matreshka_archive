@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -58,6 +58,8 @@ with Matreshka.Internals.Text_Codecs.SHIFTJIS.Tables;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Text_Codecs.SHIFTJIS is
+
+   use Matreshka.Internals.Strings.Configuration;
 
    Accept_Single_State : constant SHIFTJIS_DFA_State := 0;
    Accept_Double_State : constant SHIFTJIS_DFA_State := 1;
@@ -125,8 +127,7 @@ package body Matreshka.Internals.Text_Codecs.SHIFTJIS is
 
       Self.State := Current_State;
       Self.First := Current_First;
-      Matreshka.Internals.Strings.Configuration.Handler.Fill_Null_Terminator
-       (String);
+      String_Handler.Fill_Null_Terminator (String);
    end Decode_Append;
 
    -------------

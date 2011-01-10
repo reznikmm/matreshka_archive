@@ -346,7 +346,7 @@ package body Matreshka.Internals.Unicode.Casing is
          end if;
       end loop;
 
-      Handler.Fill_Null_Terminator (Destination);
+      String_Handler.Fill_Null_Terminator (Destination);
    end Convert_Case;
 
 end Matreshka.Internals.Unicode.Casing;

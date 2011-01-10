@@ -105,7 +105,7 @@ package body League.Strings is
               R_D.Value (0 .. R_D.Unused - 1);
             D.Unused := L_D.Unused + R_D.Unused;
             D.Length := L_D.Length + R_D.Length;
-            Handler.Fill_Null_Terminator (D);
+            String_Handler.Fill_Null_Terminator (D);
 
             return Wrap (D);
          end;
@@ -167,7 +167,7 @@ package body League.Strings is
          Unchecked_Store (D.Value, P, Wide_Wide_Character'Pos (Right));
          D.Unused := P;
          D.Length := L_D.Length + 1;
-         Handler.Fill_Null_Terminator (D);
+         String_Handler.Fill_Null_Terminator (D);
 
          return Wrap (D);
       end;
@@ -204,7 +204,7 @@ package body League.Strings is
 
          D.Unused := P + R_D.Unused;
          D.Length := R_D.Length + 1;
-         Handler.Fill_Null_Terminator (D);
+         String_Handler.Fill_Null_Terminator (D);
 
          return Wrap (D);
       end;
@@ -246,7 +246,7 @@ package body League.Strings is
       R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
-      return Handler.Is_Less (L_D, R_D);
+      return String_Handler.Is_Less (L_D, R_D);
    end "<";
 
    ---------
@@ -275,7 +275,7 @@ package body League.Strings is
       R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
-      return Handler.Is_Less_Or_Equal (L_D, R_D);
+      return String_Handler.Is_Less_Or_Equal (L_D, R_D);
    end "<=";
 
    ----------
@@ -305,7 +305,7 @@ package body League.Strings is
       R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
-      return Handler.Is_Equal (L_D, R_D);
+      return String_Handler.Is_Equal (L_D, R_D);
    end "=";
 
    ---------
@@ -336,7 +336,7 @@ package body League.Strings is
       R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
-      return Handler.Is_Greater (L_D, R_D);
+      return String_Handler.Is_Greater (L_D, R_D);
    end ">";
 
    ---------
@@ -365,7 +365,7 @@ package body League.Strings is
       R_D : constant not null Shared_String_Access := Right.Data;
 
    begin
-      return Handler.Is_Greater_Or_Equal (L_D, R_D);
+      return String_Handler.Is_Greater_Or_Equal (L_D, R_D);
    end ">=";
 
    ----------
@@ -894,7 +894,7 @@ package body League.Strings is
       Utf16_String'Read (Stream, Item.Data.Value);
       Item.Data.Unused := Unused;
       Item.Data.Length := Length;
-      Handler.Fill_Null_Terminator (Item.Data);
+      String_Handler.Fill_Null_Terminator (Item.Data);
    end Read;
 
    -------------
@@ -1305,7 +1305,7 @@ package body League.Strings is
 --              Source'Last - J);
          end loop;
 
-         Handler.Fill_Null_Terminator (Destination);
+         String_Handler.Fill_Null_Terminator (Destination);
       end if;
 
    exception

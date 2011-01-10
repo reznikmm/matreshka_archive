@@ -71,6 +71,7 @@ with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Text_Codecs.UTF8 is
 
+   use Matreshka.Internals.Strings.Configuration;
    use type Matreshka.Internals.Unicode.Code_Unit_32;
    use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
@@ -151,8 +152,7 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
 
       Self.State := Current_State;
       Self.Code  := Current_Code;
-      Matreshka.Internals.Strings.Configuration.Handler.Fill_Null_Terminator
-       (String);
+      String_Handler.Fill_Null_Terminator (String);
    end Decode_Append;
 
    -------------

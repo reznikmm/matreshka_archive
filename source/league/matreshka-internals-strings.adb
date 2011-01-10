@@ -48,6 +48,7 @@ with Matreshka.Internals.Strings.Configuration;
 
 package body Matreshka.Internals.Strings is
 
+   use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Utf16;
    use Matreshka.Internals.Unicode;
 
@@ -276,7 +277,7 @@ package body Matreshka.Internals.Strings is
             Self.Value (0 .. Old.Unused) := Old.Value (0 .. Old.Unused);
             Self.Unused := Old.Unused;
             Self.Length := Old.Length;
-            Configuration.Handler.Fill_Null_Terminator (Self);
+            String_Handler.Fill_Null_Terminator (Self);
             Dereference (Old);
          end;
 

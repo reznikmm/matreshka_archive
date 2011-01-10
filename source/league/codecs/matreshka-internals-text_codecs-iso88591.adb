@@ -46,6 +46,7 @@ with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Text_Codecs.ISO88591 is
 
+   use Matreshka.Internals.Strings.Configuration;
    use type Matreshka.Internals.Unicode.Code_Unit_32;
    use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
@@ -67,8 +68,7 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
            Matreshka.Internals.Unicode.Code_Point (Data (J)));
       end loop;
 
-      Matreshka.Internals.Strings.Configuration.Handler.Fill_Null_Terminator
-       (String);
+      String_Handler.Fill_Null_Terminator (String);
    end Decode_Append;
 
    -------------

@@ -133,7 +133,7 @@ package body Matreshka.Internals.Text_Codecs is
       --  Lookup MIB.
 
       for J in To_MIB'Range loop
-         if Handler.Is_Equal (Get_Shared (Name), To_MIB (J).Name) then
+         if String_Handler.Is_Equal (Get_Shared (Name), To_MIB (J).Name) then
             return To_MIB (J).MIB;
          end if;
       end loop;

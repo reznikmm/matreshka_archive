@@ -49,6 +49,7 @@ with XML.SAX.Simple_Readers.Scanner.Tables;
 
 package body XML.SAX.Simple_Readers.Scanner.Actions is
 
+   use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Characters.Latin;
    use Matreshka.Internals.Utf16;
@@ -344,8 +345,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             Self.Character_Data.Unused := Self.Character_Data.Unused - 1;
          end if;
 
-         Matreshka.Internals.Strings.Configuration.Handler.Fill_Null_Terminator
-          (Self.Character_Data);
+         String_Handler.Fill_Null_Terminator (Self.Character_Data);
          Matreshka.Internals.Strings.Reference (Self.Character_Data);
          Set_String_Internal
           (Item          => Self.YYLVal,
@@ -1901,8 +1901,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Self.Character_Data.Unused := Self.Character_Data.Unused - 1;
       end if;
 
-      Matreshka.Internals.Strings.Configuration.Handler.Fill_Null_Terminator
-       (Self.Character_Data);
+      String_Handler.Fill_Null_Terminator (Self.Character_Data);
       Matreshka.Internals.Strings.Reference (Self.Character_Data);
       Set_String_Internal
        (Item          => Self.YYLVal,

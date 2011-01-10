@@ -423,7 +423,7 @@ package body Matreshka.Internals.Unicode.Normalization is
          end;
       end loop;
 
-      Handler.Fill_Null_Terminator (Destination);
+      String_Handler.Fill_Null_Terminator (Destination);
    end Generic_Decomposition;
 
    ---------------------------------------
@@ -662,7 +662,7 @@ package body Matreshka.Internals.Unicode.Normalization is
          Compose (Destination, Starter.D_Index, D_Index, Composed);
       end;
 
-      Handler.Fill_Null_Terminator (Destination);
+      String_Handler.Fill_Null_Terminator (Destination);
    end Generic_Decomposition_Composition;
 
    --------------

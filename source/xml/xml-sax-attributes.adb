@@ -195,7 +195,7 @@ package body XML.SAX.Attributes is
      Qualified_Name : League.Strings.Universal_String) return Natural is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Handler.Is_Equal
+         if String_Handler.Is_Equal
              (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
          then
             return J;
@@ -215,9 +215,9 @@ package body XML.SAX.Attributes is
      Local_Name    : League.Strings.Universal_String) return Natural is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Handler.Is_Equal
+         if String_Handler.Is_Equal
              (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
-           and Handler.Is_Equal
+           and String_Handler.Is_Equal
                 (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
          then
             return J;
@@ -252,7 +252,7 @@ package body XML.SAX.Attributes is
        return Boolean is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Handler.Is_Equal
+         if String_Handler.Is_Equal
              (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
          then
             return Self.Data.Values (J).Is_Declared;
@@ -273,9 +273,9 @@ package body XML.SAX.Attributes is
        return Boolean is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Handler.Is_Equal
+         if String_Handler.Is_Equal
              (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
-           and Handler.Is_Equal
+           and String_Handler.Is_Equal
                 (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
          then
             return Self.Data.Values (J).Is_Declared;
@@ -319,7 +319,7 @@ package body XML.SAX.Attributes is
        return Boolean is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Handler.Is_Equal
+         if String_Handler.Is_Equal
              (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
          then
             return Self.Data.Values (J).Is_Specified;
@@ -340,9 +340,9 @@ package body XML.SAX.Attributes is
        return Boolean is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Handler.Is_Equal
+         if String_Handler.Is_Equal
              (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
-           and Handler.Is_Equal
+           and String_Handler.Is_Equal
                 (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
          then
             return Self.Data.Values (J).Is_Specified;
@@ -544,7 +544,7 @@ package body XML.SAX.Attributes is
        return League.Strings.Universal_String is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Handler.Is_Equal
+         if String_Handler.Is_Equal
              (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
          then
             return Create (Self.Data.Values (J).Value);
@@ -565,9 +565,9 @@ package body XML.SAX.Attributes is
        return League.Strings.Universal_String is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Handler.Is_Equal
+         if String_Handler.Is_Equal
              (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
-           and Handler.Is_Equal
+           and String_Handler.Is_Equal
                 (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
          then
             return Create (Self.Data.Values (J).Value);
@@ -602,7 +602,7 @@ package body XML.SAX.Attributes is
        return League.Strings.Universal_String is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Handler.Is_Equal
+         if String_Handler.Is_Equal
              (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
          then
             return Create (Self.Data.Values (J).Value_Type);
@@ -623,9 +623,9 @@ package body XML.SAX.Attributes is
        return League.Strings.Universal_String is
    begin
       for J in 1 .. Self.Data.Length loop
-         if Handler.Is_Equal
+         if String_Handler.Is_Equal
              (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
-           and Handler.Is_Equal
+           and String_Handler.Is_Equal
                 (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
          then
             return Create (Self.Data.Values (J).Value_Type);

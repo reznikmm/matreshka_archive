@@ -100,7 +100,7 @@ package body Matreshka.Internals.Strings.Operations is
 
       Self.Length := Self.Length + 1;
       Unchecked_Store (Self.Value, Self.Unused, Code);
-      Handler.Fill_Null_Terminator (Self);
+      String_Handler.Fill_Null_Terminator (Self);
    end Append;
 
    ------------
@@ -145,7 +145,7 @@ package body Matreshka.Internals.Strings.Operations is
          Self.Unused := Size;
          Self.Length := Source.Length + Item.Length;
          Free (Self.Index_Map);
-         Handler.Fill_Null_Terminator (Self);
+         String_Handler.Fill_Null_Terminator (Self);
 
          if Self /= Source then
             Self.Value (0 .. Source.Unused - 1) :=
@@ -190,7 +190,7 @@ package body Matreshka.Internals.Strings.Operations is
            Source.Value (First .. First + Size - 1);
          Self.Unused := Size;
          Self.Length := Length;
-         Handler.Fill_Null_Terminator (Self);
+         String_Handler.Fill_Null_Terminator (Self);
       end if;
    end Copy_Slice;
 
@@ -242,7 +242,7 @@ package body Matreshka.Internals.Strings.Operations is
 
          Destination.Unused := New_Size;
          Destination.Length := New_Length;
-         Handler.Fill_Null_Terminator (Destination);
+         String_Handler.Fill_Null_Terminator (Destination);
 
          if Source /= Destination then
             if First /= 0 then
@@ -265,7 +265,7 @@ package body Matreshka.Internals.Strings.Operations is
          Free (Self.Index_Map);
          Self.Unused := 0;
          Self.Length := 0;
-         Handler.Fill_Null_Terminator (Self);
+         String_Handler.Fill_Null_Terminator (Self);
 
       else
          Dereference (Self);
@@ -311,7 +311,7 @@ package body Matreshka.Internals.Strings.Operations is
               Source.Value (First .. First + Size - 1);
             Destination.Unused := Size;
             Destination.Length := Length;
-            Handler.Fill_Null_Terminator (Destination);
+            String_Handler.Fill_Null_Terminator (Destination);
          end return;
       end if;
    end Slice;
@@ -357,7 +357,7 @@ package body Matreshka.Internals.Strings.Operations is
            Source.Value (First .. First + Size - 1);
          Destination.Unused := Size;
          Destination.Length := Length;
-         Handler.Fill_Null_Terminator (Destination);
+         String_Handler.Fill_Null_Terminator (Destination);
 
          if Source /= Destination then
             Dereference (Source);

@@ -46,6 +46,7 @@ with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Text_Codecs.UTF16 is
 
+   use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
 
@@ -196,8 +197,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
       Self.State := Current_State;
       Self.Code  := Current_Code;
       Self.Low   := Current_Low;
-      Matreshka.Internals.Strings.Configuration.Handler.Fill_Null_Terminator
-       (String);
+      String_Handler.Fill_Null_Terminator (String);
    end Decode_Append;
 
    -------------------
@@ -254,8 +254,7 @@ package body Matreshka.Internals.Text_Codecs.UTF16 is
       Self.State := Current_State;
       Self.Code  := Current_Code;
       Self.Low   := Current_Low;
-      Matreshka.Internals.Strings.Configuration.Handler.Fill_Null_Terminator
-       (String);
+      String_Handler.Fill_Null_Terminator (String);
    end Decode_Append;
 
    --------------
