@@ -54,4 +54,7 @@ package Matreshka.Internals.Strings.Configuration is
        := Matreshka.Internals.Strings.Handlers.Portable_32.Handler'Access;
    --  Platform dependent strings handler to be used for operations on strings.
 
+   procedure Initialize is null;
+   --  Setup most optimal string handler.
+
 end Matreshka.Internals.Strings.Configuration;

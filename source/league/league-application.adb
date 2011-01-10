@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings.Configuration;
 
 package body League.Application is
 
@@ -137,4 +138,8 @@ package body League.Application is
       null;
    end Set_Organization_Name;
 
+begin
+   --  Setup most optimal string handler.
+
+   Matreshka.Internals.Strings.Configuration.Initialize;
 end League.Application;

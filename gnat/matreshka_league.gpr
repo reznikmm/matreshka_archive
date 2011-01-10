@@ -240,6 +240,8 @@ library project Matreshka_League is
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
             for Specification ("Matreshka.Internals.Strings.Configuration")
               use "matreshka-internals-strings-configuration__x86.ads";
+            for Implementation ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__x86.adb";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__x86.ads";
 
