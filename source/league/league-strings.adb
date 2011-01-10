@@ -45,7 +45,6 @@ with League.Strings.Internals;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
-with Matreshka.Internals.Strings.Search;
 with Matreshka.Internals.Unicode.Casing;
 with Matreshka.Internals.Unicode.Collation;
 with Matreshka.Internals.Unicode.Normalization;
@@ -59,7 +58,6 @@ package body League.Strings is
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Strings.Operations;
-   use Matreshka.Internals.Strings.Search;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Properties;
    use Matreshka.Internals.Utf16;
@@ -793,7 +791,7 @@ package body League.Strings is
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
-      return Index (Self.Data, Code);
+      return String_Handler.Index (Self.Data, Code);
    end Index;
 
    ----------------

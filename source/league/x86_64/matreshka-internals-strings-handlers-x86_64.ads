@@ -82,6 +82,12 @@ package Matreshka.Internals.Strings.Handlers.X86_64 is
      Left  : not null Shared_String_Access;
      Right : not null Shared_String_Access) return Boolean;
 
+   overriding function Index
+    (Self : X86_64_String_Handler;
+     Item : Matreshka.Internals.Strings.Shared_String_Access;
+     Code : Matreshka.Internals.Unicode.Code_Point)
+       return Natural;
+
    Handler : aliased X86_64_String_Handler;
 
 end Matreshka.Internals.Strings.Handlers.X86_64;

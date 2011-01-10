@@ -62,26 +62,34 @@ package Matreshka.Internals.Strings.Handlers is
    --  attention to the unused elements in the last used vector.
 
    not overriding function Is_Equal
-     (Self  : Abstract_String_Handler;
-      Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is abstract;
+    (Self  : Abstract_String_Handler;
+     Left  : not null Shared_String_Access;
+     Right : not null Shared_String_Access) return Boolean is abstract;
    not overriding function Is_Less
-     (Self  : Abstract_String_Handler;
-      Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is abstract;
+    (Self  : Abstract_String_Handler;
+     Left  : not null Shared_String_Access;
+     Right : not null Shared_String_Access) return Boolean is abstract;
    not overriding function Is_Greater
-     (Self  : Abstract_String_Handler;
-      Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is abstract;
+    (Self  : Abstract_String_Handler;
+     Left  : not null Shared_String_Access;
+     Right : not null Shared_String_Access) return Boolean is abstract;
    not overriding function Is_Less_Or_Equal
-     (Self  : Abstract_String_Handler;
-      Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is abstract;
+    (Self  : Abstract_String_Handler;
+     Left  : not null Shared_String_Access;
+     Right : not null Shared_String_Access) return Boolean is abstract;
    not overriding function Is_Greater_Or_Equal
-     (Self  : Abstract_String_Handler;
-      Left  : not null Shared_String_Access;
-      Right : not null Shared_String_Access) return Boolean is abstract;
+    (Self  : Abstract_String_Handler;
+     Left  : not null Shared_String_Access;
+     Right : not null Shared_String_Access) return Boolean is abstract;
    --  Set of compare operations. All operations compare in code point order
    --  (they are handle UTF-16 surrogate pairs as one code point).
+
+   not overriding function Index
+    (Self : Abstract_String_Handler;
+     Item : Matreshka.Internals.Strings.Shared_String_Access;
+     Code : Matreshka.Internals.Unicode.Code_Point)
+       return Natural;
+   --  Returns index of first occurrence of the specified character in the
+   --  string.
 
 end Matreshka.Internals.Strings.Handlers;
