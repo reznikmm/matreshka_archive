@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -71,15 +71,15 @@ procedure Configure.Architecture is
    --  Detects architecture by analizing output of gcc -v and doing additional
    --  checks for capabilities.
 
-   function Check_x86_64 return Boolean;
-   --  Check compiler's capabilities for x86_64 architecture. Compiler must
-   --  support import of SSE builtins.
+   function Check_x86_SSE return Boolean;
+   --  Check compiler's capabilities for x86 SSE instructions set. Compiler
+   --  can support import of SSE builtins.
 
-   ------------------
-   -- Check_x86_64 --
-   ------------------
+   -------------------
+   -- Check_x86_SSE --
+   -------------------
 
-   function Check_x86_64 return Boolean is
+   function Check_x86_SSE return Boolean is
 
       use Ada.Directories;
       use Ada.Text_IO;
@@ -122,6 +122,9 @@ procedure Configure.Architecture is
          Create (File, Out_File, "check.gpr");
          Put_Line (File, "project Check is");
          Put_Line (File, "   for Main use (""check.adb"");");
+         Put_Line (File, "   package Compiler is");
+         Put_Line (File, "      for Default_Switches (""Ada"") use (""-msse2"");");
+         Put_Line (File, "   end Compiler;");
          Put_Line (File, "end Check;");
          Close (File);
       end Create_Check_Project;
@@ -169,7 +172,7 @@ procedure Configure.Architecture is
       Delete_Tree (Config);
 
       return Result;
-   end Check_x86_64;
+   end Check_x86_SSE;
 
    ----------------
    -- Detect_GCC --
@@ -190,10 +193,12 @@ procedure Configure.Architecture is
       Close (GCC_Process);
 
       if Match (+Arch, Compile ("i[3456]86")) then
-         Substitutions.Replace (Architecture_Name, +"x86");
+         if Check_x86_SSE then
+            Substitutions.Replace (Architecture_Name, +"x86");
+         end if;
 
       elsif Arch = "x86_64" then
-         if Check_x86_64 then
+         if Check_x86_SSE then
             Substitutions.Replace (Architecture_Name, +"x86_64");
          end if;
       end if;
