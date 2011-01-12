@@ -477,6 +477,18 @@ package body League.Strings is
    end Append;
 
    ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self : in out Universal_String_Vector'Class;
+     Item : League.Strings.Universal_String'Class) is
+   begin
+      Append (Self.Data, Item.Data);
+      Reference (Item.Data);
+   end Append;
+
+   ------------
    -- Attach --
    ------------
 

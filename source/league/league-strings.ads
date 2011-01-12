@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -330,6 +330,10 @@ package League.Strings is
    function Element
     (Self  : Universal_String_Vector'Class;
      Index : Positive) return League.Strings.Universal_String;
+
+   procedure Append
+    (Self : in out Universal_String_Vector'Class;
+     Item : League.Strings.Universal_String'Class);
 
 private
 
