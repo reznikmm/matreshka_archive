@@ -63,4 +63,8 @@ begin
    for J in 1 .. Args.Length loop
       Ada.Wide_Wide_Text_IO.Put_Line (Args.Element (J).To_Wide_Wide_String);
    end loop;
+
+   Ada.Wide_Wide_Text_IO.Put_Line
+    (League.Application.Environment.Value
+      (League.Strings.To_Universal_String ("PATH")).To_Wide_Wide_String);
 end Arguments_Environment_Test;
