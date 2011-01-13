@@ -4,11 +4,11 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,35 +41,26 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_league";
+--  Test program to help to test access to arguments and environment.
+------------------------------------------------------------------------------
+with Ada.Wide_Wide_Text_IO;
 
-project Matreshka_League_Tests is
+with League.Application;
+with League.Strings;
+with League.String_Vectors;
 
-   for Main use
-    ("string_hash_test.adb",
-     "character_cursor_test.adb",
-     "grapheme_cluster_cursor_test.adb",
-     "case_conversion_test.adb",
-     "case_folding_test.adb",
-     "normalization_test.adb",
-     "additional_normalization_test.adb",
-     "collation_test.adb",
-     "string_performance.adb",
-     "fill_null_terminator_performance.adb",
-     "string_operations_test.adb",
-     "string_compare_test.adb",
-     "library_level_test.adb",
-     "regexp_ataresearch.adb",
-     "test_35.adb",
-     "arguments_environment_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/league",
-     "../testsuite/league/TN-35",
-     "../tools");
+procedure Arguments_Environment_Test is
+   use League.Strings;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8", "-O2", "-gnatn");
-   end Compiler;
+   Args : constant League.String_Vectors.Universal_String_Vector
+     := League.Application.Arguments;
 
-end Matreshka_League_Tests;
+begin
+   if Args.Element (1) /= To_Universal_String ("проверка") then
+      raise Program_Error;
+   end if;
+
+   for J in 1 .. Args.Length loop
+      Ada.Wide_Wide_Text_IO.Put_Line (Args.Element (J).To_Wide_Wide_String);
+   end loop;
+end Arguments_Environment_Test;
