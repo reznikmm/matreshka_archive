@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,118 +41,31 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings.Configuration;
+--  This version is for POSIX operating systems.
+------------------------------------------------------------------------------
 
-package body League.Application is
+separate (League.Application)
+procedure Initialize_Arguments_Environment is
 
-   procedure Initialize_Arguments_Environment;
-   --  Initialize arguments list and process environment.
-
-   ----------------------
-   -- Application_Name --
-   ----------------------
-
-   function Application_Name return League.Strings.Universal_String is
-   begin
-      return League.Strings.Empty_Universal_String;
-   end Application_Name;
-
-   -------------------------
-   -- Application_Version --
-   -------------------------
-
-   function Application_Version return League.Strings.Universal_String is
-   begin
-      return League.Strings.Empty_Universal_String;
-   end Application_Version;
-
-   ---------------
-   -- Arguments --
-   ---------------
-
-   function Arguments return League.String_Vectors.Universal_String_Vector is
-   begin
-      return X : League.String_Vectors.Universal_String_Vector;
-   end Arguments;
-
-   -----------------
-   -- Environment --
-   -----------------
-
-   function Environment
-     return League.Environment_Variables.Environment_Variable_Set is
-   begin
-      return X : League.Environment_Variables.Environment_Variable_Set;
-   end Environment;
-
-   --------------------------------------
-   -- Initialize_Arguments_Environment --
-   --------------------------------------
-
-   procedure Initialize_Arguments_Environment is separate;
-
-   -------------------------
-   -- Organization_Domain --
-   -------------------------
-
-   function Organization_Domain return League.Strings.Universal_String is
-   begin
-      return League.Strings.Empty_Universal_String;
-   end Organization_Domain;
-
-   -----------------------
-   -- Organization_Name --
-   -----------------------
-
-   function Organization_Name return League.Strings.Universal_String is
-   begin
-      return League.Strings.Empty_Universal_String;
-   end Organization_Name;
-
-   --------------------------
-   -- Set_Application_Name --
-   --------------------------
-
-   procedure Set_Application_Name (Name : League.Strings.Universal_String) is
-   begin
-      null;
-   end Set_Application_Name;
+   procedure Initialize_System_Codec;
+   --  Setup system codec for application. This codec is for internal use
+   --  only, It is needed to encode/decode command line arguments and
+   --  environment variables on POSIX systems.
 
    -----------------------------
-   -- Set_Application_Version --
+   -- Initialize_System_Codec --
    -----------------------------
 
-   procedure Set_Application_Version
-    (Name : League.Strings.Universal_String) is
+   procedure Initialize_System_Codec is
+      --  Analyze LC_CTYPE, LC_ALL, LANG for codeset part, use first found,
+      --  otherwise fallback to ISO-8858-1.
+      --
+      --  language[_territory][.codeset][@variant]
+
    begin
       null;
-   end Set_Application_Version;
-
-   -----------------------------
-   -- Set_Organization_Domain --
-   -----------------------------
-
-   procedure Set_Organization_Domain
-    (Name : League.Strings.Universal_String) is
-   begin
-      null;
-   end Set_Organization_Domain;
-
-   ---------------------------
-   -- Set_Organization_Name --
-   ---------------------------
-
-   procedure Set_Organization_Name (Name : League.Strings.Universal_String) is
-   begin
-      null;
-   end Set_Organization_Name;
+   end Initialize_System_Codec;
 
 begin
-   --  Setup most optimal string handler.
-
-   Matreshka.Internals.Strings.Configuration.Initialize;
-
-   --  Initialize arguments and environment.
-
-   Initialize_Arguments_Environment;
-end League.Application;
+   null;
+end Initialize_Arguments_Environment;

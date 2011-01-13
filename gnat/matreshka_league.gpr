@@ -258,6 +258,16 @@ library project Matreshka_League is
               use "matreshka-internals-strings-constants__x86.ads";
       end case;
 
+      case Matreshka_Config.Operating_System is
+         when "POSIX" =>
+            for Implementation ("League.Application.Initialize_Arguments_Environment")
+              use "league-application-initialize_arguments_environment__posix.adb";
+
+         when "Windows" =>
+            for Implementation ("League.Application.Initialize_Arguments_Environment")
+              use "league-application-initialize_arguments_environment__windows.adb";
+      end case;
+
       --  Matreshka.Internals.Host_Types
 
 --      for Implementation ("Matreshka.Internals.Host_Types")
