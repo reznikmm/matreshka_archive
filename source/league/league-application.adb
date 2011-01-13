@@ -48,6 +48,9 @@ package body League.Application is
    procedure Initialize_Arguments_Environment;
    --  Initialize arguments list and process environment.
 
+   Args : League.Strings.Universal_String_Vector;
+   Env  : League.Environment_Variables.Environment_Variable_Set;
+
    ----------------------
    -- Application_Name --
    ----------------------
@@ -72,7 +75,7 @@ package body League.Application is
 
    function Arguments return League.String_Vectors.Universal_String_Vector is
    begin
-      return X : League.String_Vectors.Universal_String_Vector;
+      return Args;
    end Arguments;
 
    -----------------
@@ -82,7 +85,7 @@ package body League.Application is
    function Environment
      return League.Environment_Variables.Environment_Variable_Set is
    begin
-      return X : League.Environment_Variables.Environment_Variable_Set;
+      return Env;
    end Environment;
 
    --------------------------------------
