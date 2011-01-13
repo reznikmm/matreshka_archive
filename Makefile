@@ -1,7 +1,7 @@
 
 UNIDATA = unicode/6.0.0/ucd
 UCADATA = unicode/UCA/6.0.0
-CLDR = unicode/cldr/1.8.1
+CLDR = unicode/cldr/1.9.0
 
 GPRBUILD_FLAGS = -p
 
