@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,41 +41,38 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-with Ada.Directories;
-with Ada.Strings.Unbounded.Text_IO;
-with Ada.Text_IO;
+--  This procedure detects operating system.
+with GNAT.Regexp;
 
-with Configure.Architecture;
-with Configure.Instantiate;
-with Configure.Operating_System;
+procedure Configure.Operating_System is
 
-procedure Configure.Driver is
-begin
-   Configure.Architecture;
-   Configure.Operating_System;
+   use Ada.Strings.Unbounded;
+   use GNAT.Regexp;
 
-   declare
-      use Ada.Command_Line;
-      use Ada.Directories;
-      use Ada.Strings.Unbounded.Text_IO;
-      use Ada.Text_IO;
-      use Maps;
+   function "+" (Item : String) return Unbounded_String
+     renames To_Unbounded_String;
 
-      P : Cursor := Substitutions.First;
+   function "+" (Item : Unbounded_String) return String renames To_String;
 
+   procedure Detect_Operating_System;
+   --  Detects operating system by analyzing target triplet.
+
+   -----------------------------
+   -- Detect_Operating_System --
+   -----------------------------
+
+   procedure Detect_Operating_System is
    begin
-      while Has_Element (P) loop
-         Put (Simple_Name (Command_Name));
-         Put (": ");
-         Put (Key (P));
-         Put (" => ");
-         Put (Element (P));
-         New_Line;
+      if Match
+          (+Target_Triplet, Compile ("[a-zA-Z0-9_]*-[a-zA-Z0-9_]*-mingw.*"))
+      then
+         Substitutions.Insert (Operating_System_Name, +"Windows");
 
-         Next (P);
-      end loop;
-   end;
+      else
+         Substitutions.Insert (Operating_System_Name, +"POSIX");
+      end if;
+   end Detect_Operating_System;
 
-   Configure.Instantiate ("gnat/matreshka_config.gpr");
-end Configure.Driver;
+begin
+   Detect_Operating_System;
+end Configure.Operating_System;

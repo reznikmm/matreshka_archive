@@ -45,13 +45,17 @@
 abstract project Matreshka_Config is
 
    type Architectures is
-     ("portable_32_be",
-      "portable_32_le",
-      "portable_64_be",
-      "portable_64_le",
-      "x86",
-      "x86_64");
+    ("portable_32_be",
+     "portable_32_le",
+     "portable_64_be",
+     "portable_64_le",
+     "x86",
+     "x86_64");
    Architecture : Architectures := external ("ARCHITECTURE", "@ARCHITECTURE@");
+
+   type Operating_Systems is ("POSIX", "Windows");
+   Operating_System : Operating_Systems
+     := external ("OPERATING_SYSTEM", "@OPERATING_SYSTEM@");
 
    type Build_Type is ("RELEASE", "DEBUG");
    Build : Build_Type := external ("BUILD", "RELEASE");

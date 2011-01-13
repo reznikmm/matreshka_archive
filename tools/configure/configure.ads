@@ -57,7 +57,15 @@ package Configure is
 
    Substitutions : Maps.Map;
 
-   Architecture_Name : constant Ada.Strings.Unbounded.Unbounded_String
+   --  Names of variables in matreshka_config.gpr.in
+
+   Architecture_Name     : constant Ada.Strings.Unbounded.Unbounded_String
      := Ada.Strings.Unbounded.To_Unbounded_String ("ARCHITECTURE");
+   Operating_System_Name : constant Ada.Strings.Unbounded.Unbounded_String
+     := Ada.Strings.Unbounded.To_Unbounded_String ("OPERATING_SYSTEM");
+
+   --  Internal variables to pass values between test subprogram.
+
+   Target_Triplet : Ada.Strings.Unbounded.Unbounded_String;
 
 end Configure;

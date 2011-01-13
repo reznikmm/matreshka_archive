@@ -187,10 +187,14 @@ procedure Configure.Architecture is
    begin
       Non_Blocking_Spawn
        (GCC_Process, "gcc", (1 => new String'("-v")), 4096, True);
-      Expect (GCC_Process, Result, "Target: ([a-zA-Z0-9_]*)-", Matches);
-      Arch :=
+      Expect (GCC_Process, Result, "Target: ([-a-zA-Z0-9_]*)", Matches);
+      Target_Triplet :=
         +Expect_Out (GCC_Process) (Matches (1).First .. Matches (1).Last);
       Close (GCC_Process);
+
+      Match ("([a-zA-Z0-9_]*)-.*", +Target_Triplet, Matches);
+      Arch :=
+        Unbounded_Slice (Target_Triplet, Matches (1).First, Matches (1).Last);
 
       if Match (+Arch, Compile ("i[3456]86")) then
          if Check_x86_SSE then
