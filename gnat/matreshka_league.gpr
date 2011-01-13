@@ -262,10 +262,14 @@ library project Matreshka_League is
          when "POSIX" =>
             for Implementation ("League.Application.Initialize_Arguments_Environment")
               use "league-application-initialize_arguments_environment__posix.adb";
+            for Implementation ("League.Environment_Variables.To_Key")
+              use "league-environment_variables-to_key__posix.adb";
 
          when "Windows" =>
             for Implementation ("League.Application.Initialize_Arguments_Environment")
               use "league-application-initialize_arguments_environment__windows.adb";
+            for Implementation ("League.Environment_Variables.To_Key")
+              use "league-environment_variables-to_key__windows.adb";
       end case;
 
       --  Matreshka.Internals.Host_Types

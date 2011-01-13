@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,6 +44,11 @@
 
 package body League.Environment_Variables is
 
+   function To_Key (Item : League.Strings.Universal_String) return Key_Type;
+   --  Converts name of environment variable into key of hash table. Where
+   --  environment variables is case sensitive, it converts name into upper
+   --  case; otherwise do nothing.
+
    ---------
    -- "=" --
    ---------
@@ -52,11 +57,11 @@ package body League.Environment_Variables is
     (Left  : Environment_Variable_Set;
      Right : Environment_Variable_Set) return Boolean
    is
-      pragma Unreferenced (Left);
-      pragma Unreferenced (Right);
+      use type Universal_String_Maps.Map;
 
    begin
-      return False;
+      return
+        Universal_String_Maps.Map (Left) = Universal_String_Maps.Map (Right);
    end "=";
 
    -----------
@@ -65,7 +70,7 @@ package body League.Environment_Variables is
 
    procedure Clear (Self : in out Environment_Variable_Set'Class) is
    begin
-      null;
+      Universal_String_Maps.Map (Self).Clear;
    end Clear;
 
    --------------
@@ -76,12 +81,22 @@ package body League.Environment_Variables is
     (Self : Environment_Variable_Set'Class;
      Name : League.Strings.Universal_String) return Boolean
    is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Name);
+      Key      : constant Key_Type := To_Key (Name);
+      Position : constant Universal_String_Maps.Cursor := Self.Find (Key);
 
    begin
-      return False;
+      return Universal_String_Maps.Has_Element (Position);
    end Contains;
+
+   ----------
+   -- Hash --
+   ----------
+
+   function Hash (Item : Key_Type) return Ada.Containers.Hash_Type is
+   begin
+      return
+        Ada.Containers.Hash_Type (League.Strings.Universal_String (Item).Hash);
+   end Hash;
 
    ------------
    -- Insert --
@@ -90,9 +105,18 @@ package body League.Environment_Variables is
    procedure Insert
     (Self  : in out Environment_Variable_Set'Class;
      Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String) is
+     Value : League.Strings.Universal_String)
+   is
+      Key      : constant Key_Type := To_Key (Name);
+      Position : constant Universal_String_Maps.Cursor := Self.Find (Key);
+
    begin
-      null;
+      if Universal_String_Maps.Has_Element (Position) then
+         Self.Replace_Element (Position, Value);
+
+      else
+         Self.Insert (Key, Value);
+      end if;
    end Insert;
 
    ------------
@@ -101,10 +125,23 @@ package body League.Environment_Variables is
 
    procedure Remove
     (Self  : in out Environment_Variable_Set'Class;
-     Name  : League.Strings.Universal_String) is
+     Name  : League.Strings.Universal_String)
+   is
+      Key      : constant Key_Type := To_Key (Name);
+      Position : Universal_String_Maps.Cursor := Self.Find (Key);
+
    begin
-      null;
+      if Universal_String_Maps.Has_Element (Position) then
+         Self.Delete (Position);
+      end if;
    end Remove;
+
+   ------------
+   -- To_Key --
+   ------------
+
+   function To_Key
+    (Item : League.Strings.Universal_String) return Key_Type is separate;
 
    -----------
    -- Value --
@@ -117,11 +154,16 @@ package body League.Environment_Variables is
        := League.Strings.Empty_Universal_String)
          return League.Strings.Universal_String
    is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Name);
+      Key      : constant Key_Type := To_Key (Name);
+      Position : Universal_String_Maps.Cursor := Self.Find (Key);
 
    begin
-      return Default_Value;
+      if Universal_String_Maps.Has_Element (Position) then
+         return Universal_String_Maps.Element (Position);
+
+      else
+         return Default_Value;
+      end if;
    end Value;
 
 end League.Environment_Variables;

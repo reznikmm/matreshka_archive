@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,55 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Containers.Hashed_Maps;
 
-with League.Strings;
-
-package League.Environment_Variables is
-
-   type Environment_Variable_Set is tagged private;
-
-   procedure Clear (Self : in out Environment_Variable_Set'Class);
-
-   function Contains
-    (Self : Environment_Variable_Set'Class;
-     Name : League.Strings.Universal_String) return Boolean;
-
-   procedure Insert
-    (Self  : in out Environment_Variable_Set'Class;
-     Name  : League.Strings.Universal_String;
-     Value : League.Strings.Universal_String);
-
-   procedure Remove
-    (Self  : in out Environment_Variable_Set'Class;
-     Name  : League.Strings.Universal_String);
-
-   function Value
-    (Self          : Environment_Variable_Set'Class;
-     Name          : League.Strings.Universal_String;
-     Default_Value : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String)
-       return League.Strings.Universal_String;
-
-   overriding function "="
-    (Left  : Environment_Variable_Set;
-     Right : Environment_Variable_Set) return Boolean;
-
-private
-
-   type Key_Type is new League.Strings.Universal_String with null record;
-
-   function Hash (Item : Key_Type) return Ada.Containers.Hash_Type;
-
-   package Universal_String_Maps is
-     new Ada.Containers.Hashed_Maps
-          (Key_Type,
-           League.Strings.Universal_String,
-           Hash,
-           "=",
-           League.Strings."=");
-
-   type Environment_Variable_Set is
-     new Universal_String_Maps.Map with null record;
-
-end League.Environment_Variables;
+separate (League.Environment_Variables)
+function To_Key (Item : League.Strings.Universal_String) return Key_Type is
+begin
+   return Key_Type'(Item with null record);
+end To_Key;
