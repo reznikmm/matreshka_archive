@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -63,5 +63,17 @@ package body Matreshka.Internals.Unicode.Properties is
          (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
            (Matreshka.Internals.Unicode.Ucd.Noncharacter_Code_Point);
    end Is_Noncharacter_Code_Point;
+
+   --------------------------
+   -- Is_Unified_Ideograph --
+   --------------------------
+
+   function Is_Unified_Ideograph (Code : Code_Point) return Boolean is
+   begin
+      return
+        Element
+         (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
+           (Matreshka.Internals.Unicode.Ucd.Unified_Ideograph);
+   end Is_Unified_Ideograph;
 
 end Matreshka.Internals.Unicode.Properties;

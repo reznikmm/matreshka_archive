@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -150,21 +150,17 @@ package body Matreshka.Internals.Unicode.Collation is
                  := Collation_Weight (Code mod 16#8000#) or 16#8000#;
 
             begin
-               if Code in CJK_Ideograph_First .. CJK_Ideograph_Last then
-                  Base := 16#FB40#;
+               if Is_Unified_Ideograph (Code) then
+                  if Code in CJK_Unified_Ideographs_First
+                               .. CJK_Unified_Ideographs_Last
+                    or Code in CJK_Compatibility_Ideographs_First
+                                 .. CJK_Compatibility_Ideographs_Last
+                  then
+                     Base := 16#FB40#;
 
-               elsif Code in CJK_Ideograph_A_First .. CJK_Ideograph_A_Last
-                 or else Code
-                           in CJK_Ideograph_B_First .. CJK_Ideograph_B_Last
-               then
-                  Base := 16#FB80#;
-
-               elsif Is_Noncharacter_Code_Point (Code) then
-                  --  All noncharacter code points are invalid for collation
-                  --  and represented as [.0000.0000.0000] collation element,
-                  --  thus they are ignored.
-
-                  return;
+                  else
+                     Base := 16#FB80#;
+                  end if;
                end if;
 
                Append (Collation_Array, (Base + Aaaa, 16#0020#, 16#0002#));

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -89,13 +89,11 @@ package Matreshka.Internals.Unicode is
    N_Count : constant := V_Count * T_Count;  --  588
    S_Count : constant := L_Count * N_Count;  --  11172
 
-   --  CJK Ideographs costants.
+   --  CJK Ideographs constants, used by collation algoriphm.
 
-   CJK_Ideograph_First   : constant := 16#4E00#;
-   CJK_Ideograph_Last    : constant := 16#9FC3#;
-   CJK_Ideograph_A_First : constant := 16#3400#;
-   CJK_Ideograph_A_Last  : constant := 16#4DB5#;
-   CJK_Ideograph_B_First : constant := 16#20000#;
-   CJK_Ideograph_B_Last  : constant := 16#2A6D6#;
+   CJK_Unified_Ideographs_First       : constant := 16#4E00#;
+   CJK_Unified_Ideographs_Last        : constant := 16#9FFF#;
+   CJK_Compatibility_Ideographs_First : constant := 16#F900#;
+   CJK_Compatibility_Ideographs_Last  : constant := 16#FAFF#;
 
 end Matreshka.Internals.Unicode;
