@@ -54,11 +54,15 @@ separate (League.Application)
 procedure Initialize_Arguments_Environment is
 
    use type Interfaces.C.size_t;
+   use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
+--     use type Matreshka.Internals.Unicode.Code_Point;
 
-   type LPWSTR is access all Matreshka.Internals.Unicode.Code_Unit_16;
+   type LPWSTR is access all Matreshka.Internals.Utf16.Utf16_Code_Unit;
    pragma Convention (C, LPWSTR);
 
-   type LPCWSTR is access constant Matreshka.Internals.Unicode.Code_Unit_16;
+   subtype LPWCH is LPWSTR;
+
+   type LPCWSTR is access constant Matreshka.Internals.Utf16.Utf16_Code_Unit;
    pragma Convention (C, LPCWSTR);
 
    type LPWSTR_Array is
@@ -68,6 +72,14 @@ procedure Initialize_Arguments_Environment is
      new Interfaces.C.Pointers
           (Interfaces.C.size_t, LPWSTR, LPWSTR_Array, null);
    use type LPWSTR_Pointers.Pointer;
+
+   package WCHAR_Pointers is
+     new Interfaces.C.Pointers
+          (Matreshka.Internals.Utf16.Utf16_String_Index,
+           Matreshka.Internals.Utf16.Utf16_Code_Unit,
+           Matreshka.Internals.Utf16.Unaligned_Utf16_String,
+           0);
+   use type WCHAR_Pointers.Pointer;
 
    function GetCommandLine return LPWSTR;
    pragma Import (Stdcall, GetCommandLine, "GetCommandLineW");
@@ -83,6 +95,12 @@ procedure Initialize_Arguments_Environment is
 
    function wcslen (str : LPWSTR) return Interfaces.C.size_t;
    pragma Import (C, wcslen);
+
+   function GetEnvironmentStrings return LPWCH;
+   pragma Import (Stdcall, GetEnvironmentStrings, "GetEnvironmentStringsW");
+
+   procedure FreeEnvironmentStrings (lpszEnvironmentBlock : LPWCH);
+   pragma Import (Stdcall, FreeEnvironmentStrings, "FreeEnvironmentStringsW");
 
    function To_Universal_String
      (Item : LPWSTR) return League.Strings.Universal_String;
@@ -128,9 +146,11 @@ procedure Initialize_Arguments_Environment is
    Win_Argc : aliased Interfaces.C.int;
    Win_Argv : LPWSTR_Pointers.Pointer
      := CommandLineToArgv (LPCWSTR (GetCommandLine), Win_Argc'Access);
+   Win_Envp : LPWCH := GetEnvironmentStrings;
+   Envp     : LPWCH := Win_Envp;
 
 begin
-   --  Initialize command line arguments.
+   --  Convert command line arguments.
 
    if Win_Argv /= null then
       declare
@@ -145,5 +165,29 @@ begin
 
          LocalFree (Win_Argv);
       end;
+   end if;
+
+   --  Convert environment variables.
+
+   if Win_Envp /= null then
+      while Envp.all /= 0 loop
+         declare
+            Pair  : constant League.Strings.Universal_String
+              := To_Universal_String (Envp);
+            Index : constant Natural
+              := Pair.Index (League.Strings.To_Universal_Character ('='));
+
+         begin
+            Env.Insert
+              (Pair.Slice (1, Index - 1),
+               Pair.Slice (Index + 1, Pair.Length));
+            Envp :=
+              LPWCH
+               (WCHAR_Pointers.Pointer (Envp)
+                  + Interfaces.C.ptrdiff_t (wcslen (Envp) + 1));
+         end;
+      end loop;
+
+      FreeEnvironmentStrings (Win_Envp);
    end if;
 end Initialize_Arguments_Environment;
