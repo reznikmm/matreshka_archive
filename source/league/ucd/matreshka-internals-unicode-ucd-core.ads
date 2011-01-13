@@ -5529,6 +5529,24 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
+         16#65#           =>  --  0265
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
          16#68#           =>  --  0268
           (Lowercase_Letter, 0,
            Other, A_Letter, Lower, Alphabetic,
@@ -10069,7 +10087,25 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         16#26# .. 16#30# =>  --  0526 .. 0530
+         16#27#           =>  --  0527
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#28# .. 16#30# =>  --  0528 .. 0530
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
@@ -10786,11 +10822,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
-         16#20#           =>  --  0620
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
          16#22# .. 16#26# =>  --  0622 .. 0626
           (Other_Letter, 0,
            Other, A_Letter, O_Letter, Alphabetic,
@@ -11002,10 +11033,16 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | XID_Continue => True,
             others => False)),
          16#5F#           =>  --  065F
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
+          (Nonspacing_Mark, 220,
+           Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
-           (others => False)),
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          16#60# .. 16#69# =>  --  0660 .. 0669
           (Decimal_Number, 0,
            Other, Numeric, Numeric, Numeric,
@@ -11048,6 +11085,18 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Grapheme_Extend
               | ID_Continue
               | XID_Continue => True,
+            others => False)),
+         16#73#           =>  --  0673
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Deprecated
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
             others => False)),
          16#75# .. 16#78# =>  --  0675 .. 0678
           (Other_Letter, 0,
@@ -11127,11 +11176,10 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Case_Ignorable => True,
             others => False)),
          16#DE#           =>  --  06DE
-          (Enclosing_Mark, 0,
-           Extend, Extend, Extend, Combining_Mark,
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
-           (Case_Ignorable
-              | Grapheme_Extend => True,
+           (Grapheme_Base => True,
             others => False)),
          16#DF# .. 16#E0# =>  --  06DF .. 06E0
           (Nonspacing_Mark, 230,
@@ -11790,6 +11838,33 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
+         16#40# .. 16#58# =>  --  0840 .. 0858
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#59# .. 16#5B# =>  --  0859 .. 085B
+          (Nonspacing_Mark, 220,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#5E#           =>  --  085E
+          (Other_Punctuation, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
+            others => False)),
          others           =>
           (Unassigned, 0,
            Other, Other, Other, Unknown,
@@ -11857,11 +11932,27 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Expands_On_NFD
               | Expands_On_NFKD => True,
             others => False)),
-         16#3A# .. 16#3B# =>  --  093A .. 093B
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
+         16#3A#           =>  --  093A
+          (Nonspacing_Mark, 0,
+           Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
-           (others => False)),
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#3B#           =>  --  093B
+          (Spacing_Mark, 0,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          16#3C#           =>  --  093C
           (Nonspacing_Mark, 7,
            Extend, Extend, Extend, Combining_Mark,
@@ -11914,7 +12005,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#4E#           =>  --  094E
+         16#4E# .. 16#4F# =>  --  094E .. 094F
           (Spacing_Mark, 0,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
@@ -11924,11 +12015,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#4F#           =>  --  094F
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
          16#51#           =>  --  0951
           (Nonspacing_Mark, 230,
            Extend, Extend, Extend, Combining_Mark,
@@ -11959,7 +12045,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#55#           =>  --  0955
+         16#55# .. 16#57# =>  --  0955 .. 0957
           (Nonspacing_Mark, 0,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
@@ -11970,11 +12056,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#56# .. 16#57# =>  --  0956 .. 0957
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
          16#58# .. 16#5F# =>  --  0958 .. 095F
           (Other_Letter, 0,
            Other, A_Letter, O_Letter, Alphabetic,
@@ -12038,7 +12119,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#73# .. 16#78# =>  --  0973 .. 0978
+         16#78#           =>  --  0978
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
@@ -13084,6 +13165,12 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
+         16#72# .. 16#77# =>  --  0B72 .. 0B77
+          (Other_Number, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
          16#82#           =>  --  0B82
           (Nonspacing_Mark, 0,
            Extend, Extend, Extend, Combining_Mark,
@@ -13806,12 +13893,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
-         16#F1# .. 16#F2# =>  --  0CF1 .. 0CF2
-          (Other_Symbol, 0,
-           Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
-            others => False)),
          16#F3# .. 16#FF# =>  --  0CF3 .. 0CFF
           (Unassigned, 0,
            Other, Other, Other, Unknown,
@@ -13860,12 +13941,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
-         16#29#           =>  --  0D29
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (others => False)),
-         16#3A# .. 16#3C# =>  --  0D3A .. 0D3C
+         16#3B# .. 16#3C# =>  --  0D3B .. 0D3C
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
@@ -13945,7 +14021,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#4E# .. 16#56# =>  --  0D4E .. 0D56
+         16#4F# .. 16#56# =>  --  0D4F .. 0D56
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
@@ -14228,7 +14304,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
             others => False)),
          16#30#           =>  --  0E30
           (Other_Letter, 0,
-           Extend, Other, O_Letter, Complex_Context,
+           Spacing_Mark, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -14250,7 +14326,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
             others => False)),
          16#32#           =>  --  0E32
           (Other_Letter, 0,
-           Extend, Other, O_Letter, Complex_Context,
+           Spacing_Mark, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -14261,7 +14337,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
             others => False)),
          16#33#           =>  --  0E33
           (Other_Letter, 0,
-           Extend, Other, O_Letter, Complex_Context,
+           Spacing_Mark, Other, O_Letter, Complex_Context,
            (Yes, Yes, No, No), Compat,
            (Alphabetic
               | Grapheme_Base
@@ -14325,7 +14401,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
             others => False)),
          16#45#           =>  --  0E45
           (Other_Letter, 0,
-           Extend, Other, O_Letter, Complex_Context,
+           Spacing_Mark, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -14553,7 +14629,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
             others => False)),
          16#B0#           =>  --  0EB0
           (Other_Letter, 0,
-           Extend, Other, O_Letter, Complex_Context,
+           Spacing_Mark, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -14575,7 +14651,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
             others => False)),
          16#B2#           =>  --  0EB2
           (Other_Letter, 0,
-           Extend, Other, O_Letter, Complex_Context,
+           Spacing_Mark, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -14586,7 +14662,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
             others => False)),
          16#B3#           =>  --  0EB3
           (Other_Letter, 0,
-           Extend, Other, O_Letter, Complex_Context,
+           Spacing_Mark, Other, O_Letter, Complex_Context,
            (Yes, Yes, No, No), Compat,
            (Alphabetic
               | Grapheme_Base
@@ -15341,7 +15417,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#88# .. 16#8B# =>  --  0F88 .. 0F8B
+         16#88# .. 16#8C# =>  --  0F88 .. 0F8C
           (Other_Letter, 0,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
@@ -15352,7 +15428,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#90# .. 16#92# =>  --  0F90 .. 0F92
+         16#8D# .. 16#92# =>  --  0F8D .. 0F92
           (Nonspacing_Mark, 0,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
@@ -15603,6 +15679,12 @@ package Matreshka.Internals.Unicode.Ucd.Core is
          16#D5# .. 16#D8# =>  --  0FD5 .. 0FD8
           (Other_Symbol, 0,
            Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
+         16#D9# .. 16#DA# =>  --  0FD9 .. 0FDA
+          (Other_Punctuation, 0,
+           Other, Other, Other, Glue,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
@@ -16192,11 +16274,20 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
-         16#5B# .. 16#5E# =>  --  135B .. 135E
+         16#5B# .. 16#5C# =>  --  135B .. 135C
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
+         16#5D# .. 16#5E# =>  --  135D .. 135E
+          (Nonspacing_Mark, 230,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          16#5F#           =>  --  135F
           (Nonspacing_Mark, 230,
            Extend, Extend, Extend, Combining_Mark,
@@ -16455,9 +16546,10 @@ package Matreshka.Internals.Unicode.Ucd.Core is
             others => False)),
          16#35# .. 16#36# =>  --  1735 .. 1736
           (Other_Punctuation, 0,
-           Other, Other, Other, Break_After,
+           Other, Other, S_Term, Break_After,
            (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
+           (STerm
+              | Grapheme_Base => True,
             others => False)),
          16#37# .. 16#3F# =>  --  1737 .. 173F
           (Unassigned, 0,
@@ -17093,11 +17185,20 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
-         16#D0# .. 16#DA# =>  --  19D0 .. 19DA
+         16#D0# .. 16#D9# =>  --  19D0 .. 19D9
           (Decimal_Number, 0,
            Other, Numeric, Numeric, Numeric,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#DA#           =>  --  19DA
+          (Other_Number, 0,
+           Other, Other, Other, Complex_Context,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_ID_Continue
+              | Grapheme_Base
               | ID_Continue
               | XID_Continue => True,
             others => False)),
@@ -17107,7 +17208,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#DE# .. 16#DF# =>  --  19DE .. 19DF
-          (Other_Punctuation, 0,
+          (Other_Symbol, 0,
            Other, Other, Other, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
@@ -17363,9 +17464,10 @@ package Matreshka.Internals.Unicode.Ucd.Core is
             others => False)),
          16#A8# .. 16#AB# =>  --  1AA8 .. 1AAB
           (Other_Punctuation, 0,
-           Other, Other, Other, Complex_Context,
+           Other, Other, S_Term, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
-           (Terminal_Punctuation
+           (STerm
+              | Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#AC# .. 16#AD# =>  --  1AAC .. 1AAD
@@ -17782,11 +17884,103 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#BA# .. 16#FF# =>  --  1BBA .. 1BFF
+         16#BA# .. 16#BF# =>  --  1BBA .. 1BBF
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
+         16#E6#           =>  --  1BE6
+          (Nonspacing_Mark, 7,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#E7#           =>  --  1BE7
+          (Spacing_Mark, 0,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#E8# .. 16#E9# =>  --  1BE8 .. 1BE9
+          (Nonspacing_Mark, 0,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#EA# .. 16#EC# =>  --  1BEA .. 1BEC
+          (Spacing_Mark, 0,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#ED#           =>  --  1BED
+          (Nonspacing_Mark, 0,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#EE#           =>  --  1BEE
+          (Spacing_Mark, 0,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#EF# .. 16#F1# =>  --  1BEF .. 1BF1
+          (Nonspacing_Mark, 0,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F2# .. 16#F3# =>  --  1BF2 .. 1BF3
+          (Spacing_Mark, 9,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base
+              | Grapheme_Link
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F4# .. 16#FB# =>  --  1BF4 .. 1BFB
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#FC# .. 16#FF# =>  --  1BFC .. 1BFF
+          (Other_Punctuation, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
          others           =>
           (Other_Letter, 0,
            Other, A_Letter, O_Letter, Alphabetic,
@@ -18499,11 +18693,20 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#E7# .. 16#FC# =>  --  1DE7 .. 1DFC
+         16#E7# .. 16#FB# =>  --  1DE7 .. 1DFB
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
+         16#FC#           =>  --  1DFC
+          (Nonspacing_Mark, 233,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          16#FD#           =>  --  1DFD
           (Nonspacing_Mark, 220,
            Extend, Extend, Extend, Combining_Mark,
@@ -23458,6 +23661,19 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | XID_Start
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
+         16#95# .. 16#9C# =>  --  2095 .. 209C
+          (Modifier_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, No, No), Sub,
+           (Alphabetic
+              | Case_Ignorable
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
          16#A0# .. 16#A6# =>  --  20A0 .. 20A6
           (Currency_Symbol, 0,
            Other, Other, Other, Prefix_Numeric,
@@ -23490,7 +23706,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
-         16#B7# .. 16#B8# =>  --  20B7 .. 20B8
+         16#B7# .. 16#B9# =>  --  20B7 .. 20B9
           (Currency_Symbol, 0,
            Other, Other, Other, Prefix_Numeric,
            (Yes, Yes, Yes, Yes), None,
@@ -23719,11 +23935,13 @@ package Matreshka.Internals.Unicode.Ucd.Core is
           (Uppercase_Letter, 0,
            Other, A_Letter, Upper, Alphabetic,
            (Yes, Yes, No, No), Compat,
-           (Alphabetic
+           (Other_Math
+              | Alphabetic
               | Cased
               | Grapheme_Base
               | ID_Continue
               | ID_Start
+              | Math
               | Uppercase
               | XID_Continue
               | XID_Start
@@ -23860,13 +24078,14 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Grapheme_Base => True,
             others => False)),
          16#18#           =>  --  2118
-          (Other_Symbol, 0,
+          (Math_Symbol, 0,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Other_ID_Start
               | Grapheme_Base
               | ID_Continue
               | ID_Start
+              | Math
               | XID_Continue
               | XID_Start => True,
             others => False)),
@@ -25503,7 +25722,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Grapheme_Base
               | Math => True,
             others => False)),
-         16#E9# .. 16#FF# =>  --  23E9 .. 23FF
+         16#F4# .. 16#FF# =>  --  23F4 .. 23FF
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
@@ -26055,12 +26274,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#CE#           =>  --  26CE
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
          16#CF# .. 16#E1# =>  --  26CF .. 26E1
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
@@ -26068,24 +26281,12 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#E2#           =>  --  26E2
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
          16#E3#           =>  --  26E3
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
-            others => False)),
-         16#E4# .. 16#E7# =>  --  26E4 .. 26E7
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
             others => False)),
          16#E8# .. 16#FF# =>  --  26E8 .. 26FF
           (Other_Symbol, 0,
@@ -26109,42 +26310,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax => True,
             others => False)),
-         16#05#           =>  --  2705
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
-         16#0A# .. 16#0B# =>  --  270A .. 270B
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
-         16#28#           =>  --  2728
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
-         16#4C#           =>  --  274C
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
-         16#4E#           =>  --  274E
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
-         16#53# .. 16#55# =>  --  2753 .. 2755
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
          16#57#           =>  --  2757
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
@@ -26158,12 +26323,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
-            others => False)),
-         16#5F# .. 16#60# =>  --  275F .. 2760
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
             others => False)),
          16#62# .. 16#63# =>  --  2762 .. 2763
           (Other_Symbol, 0,
@@ -26276,24 +26435,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
-         16#95# .. 16#97# =>  --  2795 .. 2797
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
-         16#B0#           =>  --  27B0
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
-         16#BF#           =>  --  27BF
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
-           (Pattern_Syntax => True,
-            others => False)),
          16#C0# .. 16#C4# =>  --  27C0 .. 27C4
           (Math_Symbol, 0,
            Other, Other, Other, Alphabetic,
@@ -26342,13 +26483,13 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Grapheme_Base
               | Math => True,
             others => False)),
-         16#CD# .. 16#CF# =>  --  27CD .. 27CF
+         16#CD#           =>  --  27CD
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax => True,
             others => False)),
-         16#D0# .. 16#E5# =>  --  27D0 .. 27E5
+         16#CE# .. 16#E5# =>  --  27CE .. 27E5
           (Math_Symbol, 0,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
@@ -28116,11 +28257,27 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | XID_Start
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#70# .. 16#7F# =>  --  2D70 .. 2D7F
+         16#70#           =>  --  2D70
+          (Other_Punctuation, 0,
+           Other, Other, Other, Break_After,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
+         16#71# .. 16#7E# =>  --  2D71 .. 2D7E
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
+         16#7F#           =>  --  2D7F
+          (Nonspacing_Mark, 9,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Case_Ignorable
+              | Grapheme_Extend
+              | Grapheme_Link
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          16#97# .. 16#9F# =>  --  2D97 .. 2D9F
           (Unassigned, 0,
            Other, Other, Other, Unknown,
@@ -30248,7 +30405,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#A0# .. 16#B7# =>  --  31A0 .. 31B7
+         16#A0# .. 16#BA# =>  --  31A0 .. 31BA
           (Other_Letter, 0,
            Other, A_Letter, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
@@ -30259,7 +30416,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#B8# .. 16#BF# =>  --  31B8 .. 31BF
+         16#BB# .. 16#BF# =>  --  31BB .. 31BF
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
@@ -31257,11 +31414,43 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
-         16#60# .. 16#61# =>  --  A660 .. A661
-          (Unassigned, 0,
-           Other, Other, Other, Unknown,
+         16#60#           =>  --  A660
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
-           (others => False)),
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#61#           =>  --  A661
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
          16#62#           =>  --  A662
           (Uppercase_Letter, 0,
            Other, A_Letter, Upper, Alphabetic,
@@ -33850,6 +34039,273 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Has_Uppercase_Mapping
               | Has_Titlecase_Mapping => True,
             others => False)),
+         16#8D#           =>  --  A78D
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#8E#           =>  --  A78E
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#90#           =>  --  A790
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#91#           =>  --  A791
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#A0#           =>  --  A7A0
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#A1#           =>  --  A7A1
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#A2#           =>  --  A7A2
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#A3#           =>  --  A7A3
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#A4#           =>  --  A7A4
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#A5#           =>  --  A7A5
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#A6#           =>  --  A7A6
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#A7#           =>  --  A7A7
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#A8#           =>  --  A7A8
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded
+              | Has_Lowercase_Mapping
+              | Has_Case_Folding => True,
+            others => False)),
+         16#A9#           =>  --  A7A9
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Has_Uppercase_Mapping
+              | Has_Titlecase_Mapping => True,
+            others => False)),
+         16#FA#           =>  --  A7FA
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Cased
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
          16#FB# .. 16#FF# =>  --  A7FB .. A7FF
           (Other_Letter, 0,
            Other, A_Letter, O_Letter, Alphabetic,
@@ -34205,8 +34661,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
-              | Other_Alphabetic
-              | Alphabetic
               | Case_Ignorable
               | Grapheme_Extend
               | ID_Continue
@@ -34728,7 +35182,62 @@ package Matreshka.Internals.Unicode.Ucd.Core is
             others => False)));
 
    Group_00AB : aliased constant Core_Second_Stage
-     := (16#C0# .. 16#E2# =>  --  ABC0 .. ABE2
+     := (16#01# .. 16#06# =>  --  AB01 .. AB06
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#09# .. 16#0E# =>  --  AB09 .. AB0E
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#11# .. 16#16# =>  --  AB11 .. AB16
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#20# .. 16#26# =>  --  AB20 .. AB26
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#28# .. 16#2E# =>  --  AB28 .. AB2E
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#C0# .. 16#E2# =>  --  ABC0 .. ABE2
           (Other_Letter, 0,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
@@ -37444,6 +37953,13 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | XID_Start
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#B2# .. 16#C1# =>  --  FBB2 .. FBC1
+          (Modifier_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Case_Ignorable
+              | Grapheme_Base => True,
             others => False)),
          16#D3#           =>  --  FBD3
           (Other_Letter, 0,
@@ -41598,11 +42114,18 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
-         16#50# .. 16#57# =>  --  010A50 .. 010A57
+         16#50# .. 16#55# =>  --  010A50 .. 010A55
           (Other_Punctuation, 0,
            Other, Other, Other, Break_After,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
+            others => False)),
+         16#56# .. 16#57# =>  --  010A56 .. 010A57
+          (Other_Punctuation, 0,
+           Other, Other, S_Term, Break_After,
+           (Yes, Yes, Yes, Yes), None,
+           (STerm
+              | Grapheme_Base => True,
             others => False)),
          16#58#           =>  --  010A58
           (Other_Punctuation, 0,
@@ -41736,7 +42259,98 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (others => False)));
 
    Group_0110 : aliased constant Core_Second_Stage
-     := (16#80# .. 16#81# =>  --  011080 .. 011081
+     := (16#00#           =>  --  011000
+          (Spacing_Mark, 0,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#01#           =>  --  011001
+          (Nonspacing_Mark, 0,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#02#           =>  --  011002
+          (Spacing_Mark, 0,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#38# .. 16#45# =>  --  011038 .. 011045
+          (Nonspacing_Mark, 0,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#46#           =>  --  011046
+          (Nonspacing_Mark, 9,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Case_Ignorable
+              | Grapheme_Extend
+              | Grapheme_Link
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#47# .. 16#48# =>  --  011047 .. 011048
+          (Other_Punctuation, 0,
+           Other, Other, S_Term, Break_After,
+           (Yes, Yes, Yes, Yes), None,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
+            others => False)),
+         16#49# .. 16#4D# =>  --  011049 .. 01104D
+          (Other_Punctuation, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
+            others => False)),
+         16#4E# .. 16#51# =>  --  01104E .. 011051
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#52# .. 16#65# =>  --  011052 .. 011065
+          (Other_Number, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
+         16#66# .. 16#6F# =>  --  011066 .. 01106F
+          (Decimal_Number, 0,
+           Other, Numeric, Numeric, Numeric,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#70# .. 16#7F# =>  --  011070 .. 01107F
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#80# .. 16#81# =>  --  011080 .. 011081
           (Nonspacing_Mark, 0,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
@@ -41755,17 +42369,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#83# .. 16#99# =>  --  011083 .. 011099
-          (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
          16#9A#           =>  --  01109A
           (Other_Letter, 0,
            Other, A_Letter, O_Letter, Alphabetic,
@@ -41778,17 +42381,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD => True,
-            others => False)),
-         16#9B#           =>  --  01109B
-          (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
             others => False)),
          16#9C#           =>  --  01109C
           (Other_Letter, 0,
@@ -41803,17 +42395,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Expands_On_NFD
               | Expands_On_NFKD => True,
             others => False)),
-         16#9D# .. 16#AA# =>  --  01109D .. 0110AA
-          (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
          16#AB#           =>  --  0110AB
           (Other_Letter, 0,
            Other, A_Letter, O_Letter, Alphabetic,
@@ -41826,17 +42407,6 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD => True,
-            others => False)),
-         16#AC# .. 16#AF# =>  --  0110AC .. 0110AF
-          (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
             others => False)),
          16#B0# .. 16#B2# =>  --  0110B0 .. 0110B2
           (Spacing_Mark, 0,
@@ -41910,11 +42480,22 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
-         others           =>
+         16#C2# .. 16#FF# =>  --  0110C2 .. 0110FF
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
-           (others => False)));
+           (others => False)),
+         others           =>
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
    Group_0123 : aliased constant Core_Second_Stage
      := (16#00# .. 16#6E# =>  --  012300 .. 01236E
@@ -42088,6 +42669,53 @@ package Matreshka.Internals.Unicode.Ucd.Core is
      := (16#00# .. 16#2E# =>  --  013400 .. 01342E
           (Other_Letter, 0,
            Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         others           =>
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)));
+
+   Group_016A : aliased constant Core_Second_Stage
+     := (16#00# .. 16#38# =>  --  016A00 .. 016A38
+          (Other_Letter, 0,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         others           =>
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)));
+
+   Group_01B0 : aliased constant Core_Second_Stage
+     := (16#00#           =>  --  01B000
+          (Other_Letter, 0,
+           Other, Katakana, O_Letter, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#01#           =>  --  01B001
+          (Other_Letter, 0,
+           Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -43396,7 +44024,27 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
-         16#94# .. 16#FF# =>  --  01F094 .. 01F0FF
+         16#94# .. 16#9F# =>  --  01F094 .. 01F09F
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#AF# .. 16#B0# =>  --  01F0AF .. 01F0B0
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#BF# .. 16#C0# =>  --  01F0BF .. 01F0C0
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#D0#           =>  --  01F0D0
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#E0# .. 16#FF# =>  --  01F0E0 .. 01F0FF
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
@@ -43448,42 +44096,14 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#31#           =>  --  01F131
+         16#30# .. 16#49# =>  --  01F130 .. 01F149
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, No, No), Square,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#3D#           =>  --  01F13D
-          (Other_Symbol, 0,
-           Other, Other, Other, Ambiguous,
-           (Yes, Yes, No, No), Square,
-           (Grapheme_Base
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#3F#           =>  --  01F13F
-          (Other_Symbol, 0,
-           Other, Other, Other, Ambiguous,
-           (Yes, Yes, No, No), Square,
-           (Grapheme_Base
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#42#           =>  --  01F142
-          (Other_Symbol, 0,
-           Other, Other, Other, Ambiguous,
-           (Yes, Yes, No, No), Square,
-           (Grapheme_Base
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#46#           =>  --  01F146
-          (Other_Symbol, 0,
-           Other, Other, Other, Ambiguous,
-           (Yes, Yes, No, No), Square,
-           (Grapheme_Base
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#4A# .. 16#4E# =>  --  01F14A .. 01F14E
+         16#4A# .. 16#4F# =>  --  01F14A .. 01F14F
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, No, No), Square,
@@ -43491,37 +44111,13 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#57#           =>  --  01F157
+         16#50# .. 16#69# =>  --  01F150 .. 01F169
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
-         16#5F#           =>  --  01F15F
-          (Other_Symbol, 0,
-           Other, Other, Other, Ambiguous,
-           (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
-            others => False)),
-         16#79#           =>  --  01F179
-          (Other_Symbol, 0,
-           Other, Other, Other, Ambiguous,
-           (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
-            others => False)),
-         16#7B# .. 16#7C# =>  --  01F17B .. 01F17C
-          (Other_Symbol, 0,
-           Other, Other, Other, Ambiguous,
-           (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
-            others => False)),
-         16#7F#           =>  --  01F17F
-          (Other_Symbol, 0,
-           Other, Other, Other, Ambiguous,
-           (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
-            others => False)),
-         16#8A# .. 16#8D# =>  --  01F18A .. 01F18D
+         16#70# .. 16#8F# =>  --  01F170 .. 01F18F
           (Other_Symbol, 0,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
@@ -43535,6 +44131,18 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
+         16#91# .. 16#9A# =>  --  01F191 .. 01F19A
+          (Other_Symbol, 0,
+           Other, Other, Other, Ambiguous,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
+         16#E6# .. 16#FF# =>  --  01F1E6 .. 01F1FF
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
          others           =>
           (Unassigned, 0,
            Other, Other, Other, Unknown,
@@ -43542,12 +44150,19 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (others => False)));
 
    Group_01F2 : aliased constant Core_Second_Stage
-     := (16#00#           =>  --  01F200
+     := (16#00# .. 16#01# =>  --  01F200 .. 01F201
           (Other_Symbol, 0,
            Other, Other, Other, Ideographic,
            (Yes, Yes, No, No), Square,
            (Grapheme_Base
               | Expands_On_NFKD
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#02#           =>  --  01F202
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, No, No), Square,
+           (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#10# .. 16#12# =>  --  01F210 .. 01F212
@@ -43565,7 +44180,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#14# .. 16#31# =>  --  01F214 .. 01F231
+         16#14# .. 16#3A# =>  --  01F214 .. 01F23A
           (Other_Symbol, 0,
            Other, Other, Other, Ideographic,
            (Yes, Yes, No, No), Square,
@@ -43579,6 +44194,200 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#50# .. 16#51# =>  --  01F250 .. 01F251
+          (Other_Symbol, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, No, No), Circle,
+           (Grapheme_Base
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         others           =>
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)));
+
+   Group_01F3 : aliased constant Core_Second_Stage
+     := (16#21# .. 16#2F# =>  --  01F321 .. 01F32F
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#36#           =>  --  01F336
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#7D# .. 16#7F# =>  --  01F37D .. 01F37F
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#94# .. 16#9F# =>  --  01F394 .. 01F39F
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#C5#           =>  --  01F3C5
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#CB# .. 16#DF# =>  --  01F3CB .. 01F3DF
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#F1# .. 16#FF# =>  --  01F3F1 .. 01F3FF
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         others           =>
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)));
+
+   Group_01F4 : aliased constant Core_Second_Stage
+     := (16#3F#           =>  --  01F43F
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#41#           =>  --  01F441
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#F8#           =>  --  01F4F8
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#FD# .. 16#FF# =>  --  01F4FD .. 01F4FF
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         others           =>
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)));
+
+   Group_01F5 : aliased constant Core_Second_Stage
+     := (16#00# .. 16#3D# =>  --  01F500 .. 01F53D
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
+         16#50# .. 16#67# =>  --  01F550 .. 01F567
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
+         16#FB# .. 16#FF# =>  --  01F5FB .. 01F5FF
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)),
+         others           =>
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)));
+
+   Group_01F6 : aliased constant Core_Second_Stage
+     := (16#00#           =>  --  01F600
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#11#           =>  --  01F611
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#15#           =>  --  01F615
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#17#           =>  --  01F617
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#19#           =>  --  01F619
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#1B#           =>  --  01F61B
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#1F#           =>  --  01F61F
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#26# .. 16#27# =>  --  01F626 .. 01F627
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#2C#           =>  --  01F62C
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#2E# .. 16#2F# =>  --  01F62E .. 01F62F
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#34#           =>  --  01F634
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#41# .. 16#44# =>  --  01F641 .. 01F644
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#50# .. 16#7F# =>  --  01F650 .. 01F67F
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         16#C6# .. 16#FF# =>  --  01F6C6 .. 01F6FF
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         others           =>
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)));
+
+   Group_01F7 : aliased constant Core_Second_Stage
+     := (16#00# .. 16#73# =>  --  01F700 .. 01F773
+          (Other_Symbol, 0,
+           Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
             others => False)),
          others           =>
           (Unassigned, 0,
@@ -43620,7 +44429,27 @@ package Matreshka.Internals.Unicode.Ucd.Core is
             others => False)));
 
    Group_02B7 : aliased constant Core_Second_Stage
-     := (16#00# .. 16#34# =>  --  02B700 .. 02B734
+     := (16#35# .. 16#3F# =>  --  02B735 .. 02B73F
+          (Unassigned, 0,
+           Other, Other, Other, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
+         others           =>
+          (Other_Letter, 0,
+           Other, Other, O_Letter, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Ideographic
+              | Unified_Ideograph
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
+
+   Group_02B8 : aliased constant Core_Second_Stage
+     := (16#00# .. 16#1D# =>  --  02B800 .. 02B81D
           (Other_Letter, 0,
            Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
@@ -43639,7 +44468,7 @@ package Matreshka.Internals.Unicode.Ucd.Core is
            (Yes, Yes, Yes, Yes), None,
            (others => False)));
 
-   Group_02B8 : aliased constant Core_Second_Stage
+   Group_02B9 : aliased constant Core_Second_Stage
      := (others           =>
           (Unassigned, 0,
            Other, Other, Other, Ideographic,
@@ -43893,537 +44722,542 @@ package Matreshka.Internals.Unicode.Ucd.Core is
          16#0124# => Group_0124'Access, 16#0130# => Group_0015'Access,
          16#0131# => Group_0015'Access, 16#0132# => Group_0132'Access,
          16#0133# => Group_0133'Access, 16#0134# => Group_0134'Access,
+         16#0168# => Group_0015'Access, 16#0169# => Group_0015'Access,
+         16#016A# => Group_016A'Access, 16#01B0# => Group_01B0'Access,
          16#01D0# => Group_01D0'Access, 16#01D1# => Group_01D1'Access,
          16#01D2# => Group_01D2'Access, 16#01D3# => Group_01D3'Access,
          16#01D4# => Group_01D4'Access, 16#01D5# => Group_01D5'Access,
          16#01D6# => Group_01D6'Access, 16#01D7# => Group_01D7'Access,
          16#01F0# => Group_01F0'Access, 16#01F1# => Group_01F1'Access,
-         16#01F2# => Group_01F2'Access, 16#01FF# => Group_01FF'Access,
-         16#0200# => Group_0034'Access, 16#0201# => Group_0034'Access,
-         16#0202# => Group_0034'Access, 16#0203# => Group_0034'Access,
-         16#0204# => Group_0034'Access, 16#0205# => Group_0034'Access,
-         16#0206# => Group_0034'Access, 16#0207# => Group_0034'Access,
-         16#0208# => Group_0034'Access, 16#0209# => Group_0034'Access,
-         16#020A# => Group_0034'Access, 16#020B# => Group_0034'Access,
-         16#020C# => Group_0034'Access, 16#020D# => Group_0034'Access,
-         16#020E# => Group_0034'Access, 16#020F# => Group_0034'Access,
-         16#0210# => Group_0034'Access, 16#0211# => Group_0034'Access,
-         16#0212# => Group_0034'Access, 16#0213# => Group_0034'Access,
-         16#0214# => Group_0034'Access, 16#0215# => Group_0034'Access,
-         16#0216# => Group_0034'Access, 16#0217# => Group_0034'Access,
-         16#0218# => Group_0034'Access, 16#0219# => Group_0034'Access,
-         16#021A# => Group_0034'Access, 16#021B# => Group_0034'Access,
-         16#021C# => Group_0034'Access, 16#021D# => Group_0034'Access,
-         16#021E# => Group_0034'Access, 16#021F# => Group_0034'Access,
-         16#0220# => Group_0034'Access, 16#0221# => Group_0034'Access,
-         16#0222# => Group_0034'Access, 16#0223# => Group_0034'Access,
-         16#0224# => Group_0034'Access, 16#0225# => Group_0034'Access,
-         16#0226# => Group_0034'Access, 16#0227# => Group_0034'Access,
-         16#0228# => Group_0034'Access, 16#0229# => Group_0034'Access,
-         16#022A# => Group_0034'Access, 16#022B# => Group_0034'Access,
-         16#022C# => Group_0034'Access, 16#022D# => Group_0034'Access,
-         16#022E# => Group_0034'Access, 16#022F# => Group_0034'Access,
-         16#0230# => Group_0034'Access, 16#0231# => Group_0034'Access,
-         16#0232# => Group_0034'Access, 16#0233# => Group_0034'Access,
-         16#0234# => Group_0034'Access, 16#0235# => Group_0034'Access,
-         16#0236# => Group_0034'Access, 16#0237# => Group_0034'Access,
-         16#0238# => Group_0034'Access, 16#0239# => Group_0034'Access,
-         16#023A# => Group_0034'Access, 16#023B# => Group_0034'Access,
-         16#023C# => Group_0034'Access, 16#023D# => Group_0034'Access,
-         16#023E# => Group_0034'Access, 16#023F# => Group_0034'Access,
-         16#0240# => Group_0034'Access, 16#0241# => Group_0034'Access,
-         16#0242# => Group_0034'Access, 16#0243# => Group_0034'Access,
-         16#0244# => Group_0034'Access, 16#0245# => Group_0034'Access,
-         16#0246# => Group_0034'Access, 16#0247# => Group_0034'Access,
-         16#0248# => Group_0034'Access, 16#0249# => Group_0034'Access,
-         16#024A# => Group_0034'Access, 16#024B# => Group_0034'Access,
-         16#024C# => Group_0034'Access, 16#024D# => Group_0034'Access,
-         16#024E# => Group_0034'Access, 16#024F# => Group_0034'Access,
-         16#0250# => Group_0034'Access, 16#0251# => Group_0034'Access,
-         16#0252# => Group_0034'Access, 16#0253# => Group_0034'Access,
-         16#0254# => Group_0034'Access, 16#0255# => Group_0034'Access,
-         16#0256# => Group_0034'Access, 16#0257# => Group_0034'Access,
-         16#0258# => Group_0034'Access, 16#0259# => Group_0034'Access,
-         16#025A# => Group_0034'Access, 16#025B# => Group_0034'Access,
-         16#025C# => Group_0034'Access, 16#025D# => Group_0034'Access,
-         16#025E# => Group_0034'Access, 16#025F# => Group_0034'Access,
-         16#0260# => Group_0034'Access, 16#0261# => Group_0034'Access,
-         16#0262# => Group_0034'Access, 16#0263# => Group_0034'Access,
-         16#0264# => Group_0034'Access, 16#0265# => Group_0034'Access,
-         16#0266# => Group_0034'Access, 16#0267# => Group_0034'Access,
-         16#0268# => Group_0034'Access, 16#0269# => Group_0034'Access,
-         16#026A# => Group_0034'Access, 16#026B# => Group_0034'Access,
-         16#026C# => Group_0034'Access, 16#026D# => Group_0034'Access,
-         16#026E# => Group_0034'Access, 16#026F# => Group_0034'Access,
-         16#0270# => Group_0034'Access, 16#0271# => Group_0034'Access,
-         16#0272# => Group_0034'Access, 16#0273# => Group_0034'Access,
-         16#0274# => Group_0034'Access, 16#0275# => Group_0034'Access,
-         16#0276# => Group_0034'Access, 16#0277# => Group_0034'Access,
-         16#0278# => Group_0034'Access, 16#0279# => Group_0034'Access,
-         16#027A# => Group_0034'Access, 16#027B# => Group_0034'Access,
-         16#027C# => Group_0034'Access, 16#027D# => Group_0034'Access,
-         16#027E# => Group_0034'Access, 16#027F# => Group_0034'Access,
-         16#0280# => Group_0034'Access, 16#0281# => Group_0034'Access,
-         16#0282# => Group_0034'Access, 16#0283# => Group_0034'Access,
-         16#0284# => Group_0034'Access, 16#0285# => Group_0034'Access,
-         16#0286# => Group_0034'Access, 16#0287# => Group_0034'Access,
-         16#0288# => Group_0034'Access, 16#0289# => Group_0034'Access,
-         16#028A# => Group_0034'Access, 16#028B# => Group_0034'Access,
-         16#028C# => Group_0034'Access, 16#028D# => Group_0034'Access,
-         16#028E# => Group_0034'Access, 16#028F# => Group_0034'Access,
-         16#0290# => Group_0034'Access, 16#0291# => Group_0034'Access,
-         16#0292# => Group_0034'Access, 16#0293# => Group_0034'Access,
-         16#0294# => Group_0034'Access, 16#0295# => Group_0034'Access,
-         16#0296# => Group_0034'Access, 16#0297# => Group_0034'Access,
-         16#0298# => Group_0034'Access, 16#0299# => Group_0034'Access,
-         16#029A# => Group_0034'Access, 16#029B# => Group_0034'Access,
-         16#029C# => Group_0034'Access, 16#029D# => Group_0034'Access,
-         16#029E# => Group_0034'Access, 16#029F# => Group_0034'Access,
-         16#02A0# => Group_0034'Access, 16#02A1# => Group_0034'Access,
-         16#02A2# => Group_0034'Access, 16#02A3# => Group_0034'Access,
-         16#02A4# => Group_0034'Access, 16#02A5# => Group_0034'Access,
-         16#02A6# => Group_02A6'Access, 16#02A7# => Group_0034'Access,
-         16#02A8# => Group_0034'Access, 16#02A9# => Group_0034'Access,
-         16#02AA# => Group_0034'Access, 16#02AB# => Group_0034'Access,
-         16#02AC# => Group_0034'Access, 16#02AD# => Group_0034'Access,
-         16#02AE# => Group_0034'Access, 16#02AF# => Group_0034'Access,
-         16#02B0# => Group_0034'Access, 16#02B1# => Group_0034'Access,
-         16#02B2# => Group_0034'Access, 16#02B3# => Group_0034'Access,
-         16#02B4# => Group_0034'Access, 16#02B5# => Group_0034'Access,
-         16#02B6# => Group_0034'Access, 16#02B7# => Group_02B7'Access,
-         16#02B8# => Group_02B8'Access, 16#02B9# => Group_02B8'Access,
-         16#02BA# => Group_02B8'Access, 16#02BB# => Group_02B8'Access,
-         16#02BC# => Group_02B8'Access, 16#02BD# => Group_02B8'Access,
-         16#02BE# => Group_02B8'Access, 16#02BF# => Group_02B8'Access,
-         16#02C0# => Group_02B8'Access, 16#02C1# => Group_02B8'Access,
-         16#02C2# => Group_02B8'Access, 16#02C3# => Group_02B8'Access,
-         16#02C4# => Group_02B8'Access, 16#02C5# => Group_02B8'Access,
-         16#02C6# => Group_02B8'Access, 16#02C7# => Group_02B8'Access,
-         16#02C8# => Group_02B8'Access, 16#02C9# => Group_02B8'Access,
-         16#02CA# => Group_02B8'Access, 16#02CB# => Group_02B8'Access,
-         16#02CC# => Group_02B8'Access, 16#02CD# => Group_02B8'Access,
-         16#02CE# => Group_02B8'Access, 16#02CF# => Group_02B8'Access,
-         16#02D0# => Group_02B8'Access, 16#02D1# => Group_02B8'Access,
-         16#02D2# => Group_02B8'Access, 16#02D3# => Group_02B8'Access,
-         16#02D4# => Group_02B8'Access, 16#02D5# => Group_02B8'Access,
-         16#02D6# => Group_02B8'Access, 16#02D7# => Group_02B8'Access,
-         16#02D8# => Group_02B8'Access, 16#02D9# => Group_02B8'Access,
-         16#02DA# => Group_02B8'Access, 16#02DB# => Group_02B8'Access,
-         16#02DC# => Group_02B8'Access, 16#02DD# => Group_02B8'Access,
-         16#02DE# => Group_02B8'Access, 16#02DF# => Group_02B8'Access,
-         16#02E0# => Group_02B8'Access, 16#02E1# => Group_02B8'Access,
-         16#02E2# => Group_02B8'Access, 16#02E3# => Group_02B8'Access,
-         16#02E4# => Group_02B8'Access, 16#02E5# => Group_02B8'Access,
-         16#02E6# => Group_02B8'Access, 16#02E7# => Group_02B8'Access,
-         16#02E8# => Group_02B8'Access, 16#02E9# => Group_02B8'Access,
-         16#02EA# => Group_02B8'Access, 16#02EB# => Group_02B8'Access,
-         16#02EC# => Group_02B8'Access, 16#02ED# => Group_02B8'Access,
-         16#02EE# => Group_02B8'Access, 16#02EF# => Group_02B8'Access,
-         16#02F0# => Group_02B8'Access, 16#02F1# => Group_02B8'Access,
-         16#02F2# => Group_02B8'Access, 16#02F3# => Group_02B8'Access,
-         16#02F4# => Group_02B8'Access, 16#02F5# => Group_02B8'Access,
-         16#02F6# => Group_02B8'Access, 16#02F7# => Group_02B8'Access,
-         16#02F8# => Group_00F9'Access, 16#02F9# => Group_00F9'Access,
-         16#02FA# => Group_02FA'Access, 16#02FB# => Group_02B8'Access,
-         16#02FC# => Group_02B8'Access, 16#02FD# => Group_02B8'Access,
-         16#02FE# => Group_02B8'Access, 16#02FF# => Group_02FF'Access,
-         16#0300# => Group_02B8'Access, 16#0301# => Group_02B8'Access,
-         16#0302# => Group_02B8'Access, 16#0303# => Group_02B8'Access,
-         16#0304# => Group_02B8'Access, 16#0305# => Group_02B8'Access,
-         16#0306# => Group_02B8'Access, 16#0307# => Group_02B8'Access,
-         16#0308# => Group_02B8'Access, 16#0309# => Group_02B8'Access,
-         16#030A# => Group_02B8'Access, 16#030B# => Group_02B8'Access,
-         16#030C# => Group_02B8'Access, 16#030D# => Group_02B8'Access,
-         16#030E# => Group_02B8'Access, 16#030F# => Group_02B8'Access,
-         16#0310# => Group_02B8'Access, 16#0311# => Group_02B8'Access,
-         16#0312# => Group_02B8'Access, 16#0313# => Group_02B8'Access,
-         16#0314# => Group_02B8'Access, 16#0315# => Group_02B8'Access,
-         16#0316# => Group_02B8'Access, 16#0317# => Group_02B8'Access,
-         16#0318# => Group_02B8'Access, 16#0319# => Group_02B8'Access,
-         16#031A# => Group_02B8'Access, 16#031B# => Group_02B8'Access,
-         16#031C# => Group_02B8'Access, 16#031D# => Group_02B8'Access,
-         16#031E# => Group_02B8'Access, 16#031F# => Group_02B8'Access,
-         16#0320# => Group_02B8'Access, 16#0321# => Group_02B8'Access,
-         16#0322# => Group_02B8'Access, 16#0323# => Group_02B8'Access,
-         16#0324# => Group_02B8'Access, 16#0325# => Group_02B8'Access,
-         16#0326# => Group_02B8'Access, 16#0327# => Group_02B8'Access,
-         16#0328# => Group_02B8'Access, 16#0329# => Group_02B8'Access,
-         16#032A# => Group_02B8'Access, 16#032B# => Group_02B8'Access,
-         16#032C# => Group_02B8'Access, 16#032D# => Group_02B8'Access,
-         16#032E# => Group_02B8'Access, 16#032F# => Group_02B8'Access,
-         16#0330# => Group_02B8'Access, 16#0331# => Group_02B8'Access,
-         16#0332# => Group_02B8'Access, 16#0333# => Group_02B8'Access,
-         16#0334# => Group_02B8'Access, 16#0335# => Group_02B8'Access,
-         16#0336# => Group_02B8'Access, 16#0337# => Group_02B8'Access,
-         16#0338# => Group_02B8'Access, 16#0339# => Group_02B8'Access,
-         16#033A# => Group_02B8'Access, 16#033B# => Group_02B8'Access,
-         16#033C# => Group_02B8'Access, 16#033D# => Group_02B8'Access,
-         16#033E# => Group_02B8'Access, 16#033F# => Group_02B8'Access,
-         16#0340# => Group_02B8'Access, 16#0341# => Group_02B8'Access,
-         16#0342# => Group_02B8'Access, 16#0343# => Group_02B8'Access,
-         16#0344# => Group_02B8'Access, 16#0345# => Group_02B8'Access,
-         16#0346# => Group_02B8'Access, 16#0347# => Group_02B8'Access,
-         16#0348# => Group_02B8'Access, 16#0349# => Group_02B8'Access,
-         16#034A# => Group_02B8'Access, 16#034B# => Group_02B8'Access,
-         16#034C# => Group_02B8'Access, 16#034D# => Group_02B8'Access,
-         16#034E# => Group_02B8'Access, 16#034F# => Group_02B8'Access,
-         16#0350# => Group_02B8'Access, 16#0351# => Group_02B8'Access,
-         16#0352# => Group_02B8'Access, 16#0353# => Group_02B8'Access,
-         16#0354# => Group_02B8'Access, 16#0355# => Group_02B8'Access,
-         16#0356# => Group_02B8'Access, 16#0357# => Group_02B8'Access,
-         16#0358# => Group_02B8'Access, 16#0359# => Group_02B8'Access,
-         16#035A# => Group_02B8'Access, 16#035B# => Group_02B8'Access,
-         16#035C# => Group_02B8'Access, 16#035D# => Group_02B8'Access,
-         16#035E# => Group_02B8'Access, 16#035F# => Group_02B8'Access,
-         16#0360# => Group_02B8'Access, 16#0361# => Group_02B8'Access,
-         16#0362# => Group_02B8'Access, 16#0363# => Group_02B8'Access,
-         16#0364# => Group_02B8'Access, 16#0365# => Group_02B8'Access,
-         16#0366# => Group_02B8'Access, 16#0367# => Group_02B8'Access,
-         16#0368# => Group_02B8'Access, 16#0369# => Group_02B8'Access,
-         16#036A# => Group_02B8'Access, 16#036B# => Group_02B8'Access,
-         16#036C# => Group_02B8'Access, 16#036D# => Group_02B8'Access,
-         16#036E# => Group_02B8'Access, 16#036F# => Group_02B8'Access,
-         16#0370# => Group_02B8'Access, 16#0371# => Group_02B8'Access,
-         16#0372# => Group_02B8'Access, 16#0373# => Group_02B8'Access,
-         16#0374# => Group_02B8'Access, 16#0375# => Group_02B8'Access,
-         16#0376# => Group_02B8'Access, 16#0377# => Group_02B8'Access,
-         16#0378# => Group_02B8'Access, 16#0379# => Group_02B8'Access,
-         16#037A# => Group_02B8'Access, 16#037B# => Group_02B8'Access,
-         16#037C# => Group_02B8'Access, 16#037D# => Group_02B8'Access,
-         16#037E# => Group_02B8'Access, 16#037F# => Group_02B8'Access,
-         16#0380# => Group_02B8'Access, 16#0381# => Group_02B8'Access,
-         16#0382# => Group_02B8'Access, 16#0383# => Group_02B8'Access,
-         16#0384# => Group_02B8'Access, 16#0385# => Group_02B8'Access,
-         16#0386# => Group_02B8'Access, 16#0387# => Group_02B8'Access,
-         16#0388# => Group_02B8'Access, 16#0389# => Group_02B8'Access,
-         16#038A# => Group_02B8'Access, 16#038B# => Group_02B8'Access,
-         16#038C# => Group_02B8'Access, 16#038D# => Group_02B8'Access,
-         16#038E# => Group_02B8'Access, 16#038F# => Group_02B8'Access,
-         16#0390# => Group_02B8'Access, 16#0391# => Group_02B8'Access,
-         16#0392# => Group_02B8'Access, 16#0393# => Group_02B8'Access,
-         16#0394# => Group_02B8'Access, 16#0395# => Group_02B8'Access,
-         16#0396# => Group_02B8'Access, 16#0397# => Group_02B8'Access,
-         16#0398# => Group_02B8'Access, 16#0399# => Group_02B8'Access,
-         16#039A# => Group_02B8'Access, 16#039B# => Group_02B8'Access,
-         16#039C# => Group_02B8'Access, 16#039D# => Group_02B8'Access,
-         16#039E# => Group_02B8'Access, 16#039F# => Group_02B8'Access,
-         16#03A0# => Group_02B8'Access, 16#03A1# => Group_02B8'Access,
-         16#03A2# => Group_02B8'Access, 16#03A3# => Group_02B8'Access,
-         16#03A4# => Group_02B8'Access, 16#03A5# => Group_02B8'Access,
-         16#03A6# => Group_02B8'Access, 16#03A7# => Group_02B8'Access,
-         16#03A8# => Group_02B8'Access, 16#03A9# => Group_02B8'Access,
-         16#03AA# => Group_02B8'Access, 16#03AB# => Group_02B8'Access,
-         16#03AC# => Group_02B8'Access, 16#03AD# => Group_02B8'Access,
-         16#03AE# => Group_02B8'Access, 16#03AF# => Group_02B8'Access,
-         16#03B0# => Group_02B8'Access, 16#03B1# => Group_02B8'Access,
-         16#03B2# => Group_02B8'Access, 16#03B3# => Group_02B8'Access,
-         16#03B4# => Group_02B8'Access, 16#03B5# => Group_02B8'Access,
-         16#03B6# => Group_02B8'Access, 16#03B7# => Group_02B8'Access,
-         16#03B8# => Group_02B8'Access, 16#03B9# => Group_02B8'Access,
-         16#03BA# => Group_02B8'Access, 16#03BB# => Group_02B8'Access,
-         16#03BC# => Group_02B8'Access, 16#03BD# => Group_02B8'Access,
-         16#03BE# => Group_02B8'Access, 16#03BF# => Group_02B8'Access,
-         16#03C0# => Group_02B8'Access, 16#03C1# => Group_02B8'Access,
-         16#03C2# => Group_02B8'Access, 16#03C3# => Group_02B8'Access,
-         16#03C4# => Group_02B8'Access, 16#03C5# => Group_02B8'Access,
-         16#03C6# => Group_02B8'Access, 16#03C7# => Group_02B8'Access,
-         16#03C8# => Group_02B8'Access, 16#03C9# => Group_02B8'Access,
-         16#03CA# => Group_02B8'Access, 16#03CB# => Group_02B8'Access,
-         16#03CC# => Group_02B8'Access, 16#03CD# => Group_02B8'Access,
-         16#03CE# => Group_02B8'Access, 16#03CF# => Group_02B8'Access,
-         16#03D0# => Group_02B8'Access, 16#03D1# => Group_02B8'Access,
-         16#03D2# => Group_02B8'Access, 16#03D3# => Group_02B8'Access,
-         16#03D4# => Group_02B8'Access, 16#03D5# => Group_02B8'Access,
-         16#03D6# => Group_02B8'Access, 16#03D7# => Group_02B8'Access,
-         16#03D8# => Group_02B8'Access, 16#03D9# => Group_02B8'Access,
-         16#03DA# => Group_02B8'Access, 16#03DB# => Group_02B8'Access,
-         16#03DC# => Group_02B8'Access, 16#03DD# => Group_02B8'Access,
-         16#03DE# => Group_02B8'Access, 16#03DF# => Group_02B8'Access,
-         16#03E0# => Group_02B8'Access, 16#03E1# => Group_02B8'Access,
-         16#03E2# => Group_02B8'Access, 16#03E3# => Group_02B8'Access,
-         16#03E4# => Group_02B8'Access, 16#03E5# => Group_02B8'Access,
-         16#03E6# => Group_02B8'Access, 16#03E7# => Group_02B8'Access,
-         16#03E8# => Group_02B8'Access, 16#03E9# => Group_02B8'Access,
-         16#03EA# => Group_02B8'Access, 16#03EB# => Group_02B8'Access,
-         16#03EC# => Group_02B8'Access, 16#03ED# => Group_02B8'Access,
-         16#03EE# => Group_02B8'Access, 16#03EF# => Group_02B8'Access,
-         16#03F0# => Group_02B8'Access, 16#03F1# => Group_02B8'Access,
-         16#03F2# => Group_02B8'Access, 16#03F3# => Group_02B8'Access,
-         16#03F4# => Group_02B8'Access, 16#03F5# => Group_02B8'Access,
-         16#03F6# => Group_02B8'Access, 16#03F7# => Group_02B8'Access,
-         16#03F8# => Group_02B8'Access, 16#03F9# => Group_02B8'Access,
-         16#03FA# => Group_02B8'Access, 16#03FB# => Group_02B8'Access,
-         16#03FC# => Group_02B8'Access, 16#03FD# => Group_02B8'Access,
-         16#03FE# => Group_02B8'Access, 16#03FF# => Group_02FF'Access,
-         16#04FF# => Group_01FF'Access, 16#05FF# => Group_01FF'Access,
-         16#06FF# => Group_01FF'Access, 16#07FF# => Group_01FF'Access,
-         16#08FF# => Group_01FF'Access, 16#09FF# => Group_01FF'Access,
-         16#0AFF# => Group_01FF'Access, 16#0BFF# => Group_01FF'Access,
-         16#0CFF# => Group_01FF'Access, 16#0DFF# => Group_01FF'Access,
-         16#0E00# => Group_0E00'Access, 16#0E01# => Group_0E01'Access,
-         16#0E02# => Group_0E02'Access, 16#0E03# => Group_0E02'Access,
-         16#0E04# => Group_0E02'Access, 16#0E05# => Group_0E02'Access,
-         16#0E06# => Group_0E02'Access, 16#0E07# => Group_0E02'Access,
-         16#0E08# => Group_0E02'Access, 16#0E09# => Group_0E02'Access,
-         16#0E0A# => Group_0E02'Access, 16#0E0B# => Group_0E02'Access,
-         16#0E0C# => Group_0E02'Access, 16#0E0D# => Group_0E02'Access,
-         16#0E0E# => Group_0E02'Access, 16#0E0F# => Group_0E02'Access,
-         16#0EFF# => Group_01FF'Access, 16#0F00# => Group_00E0'Access,
-         16#0F01# => Group_00E0'Access, 16#0F02# => Group_00E0'Access,
-         16#0F03# => Group_00E0'Access, 16#0F04# => Group_00E0'Access,
-         16#0F05# => Group_00E0'Access, 16#0F06# => Group_00E0'Access,
-         16#0F07# => Group_00E0'Access, 16#0F08# => Group_00E0'Access,
-         16#0F09# => Group_00E0'Access, 16#0F0A# => Group_00E0'Access,
-         16#0F0B# => Group_00E0'Access, 16#0F0C# => Group_00E0'Access,
-         16#0F0D# => Group_00E0'Access, 16#0F0E# => Group_00E0'Access,
-         16#0F0F# => Group_00E0'Access, 16#0F10# => Group_00E0'Access,
-         16#0F11# => Group_00E0'Access, 16#0F12# => Group_00E0'Access,
-         16#0F13# => Group_00E0'Access, 16#0F14# => Group_00E0'Access,
-         16#0F15# => Group_00E0'Access, 16#0F16# => Group_00E0'Access,
-         16#0F17# => Group_00E0'Access, 16#0F18# => Group_00E0'Access,
-         16#0F19# => Group_00E0'Access, 16#0F1A# => Group_00E0'Access,
-         16#0F1B# => Group_00E0'Access, 16#0F1C# => Group_00E0'Access,
-         16#0F1D# => Group_00E0'Access, 16#0F1E# => Group_00E0'Access,
-         16#0F1F# => Group_00E0'Access, 16#0F20# => Group_00E0'Access,
-         16#0F21# => Group_00E0'Access, 16#0F22# => Group_00E0'Access,
-         16#0F23# => Group_00E0'Access, 16#0F24# => Group_00E0'Access,
-         16#0F25# => Group_00E0'Access, 16#0F26# => Group_00E0'Access,
-         16#0F27# => Group_00E0'Access, 16#0F28# => Group_00E0'Access,
-         16#0F29# => Group_00E0'Access, 16#0F2A# => Group_00E0'Access,
-         16#0F2B# => Group_00E0'Access, 16#0F2C# => Group_00E0'Access,
-         16#0F2D# => Group_00E0'Access, 16#0F2E# => Group_00E0'Access,
-         16#0F2F# => Group_00E0'Access, 16#0F30# => Group_00E0'Access,
-         16#0F31# => Group_00E0'Access, 16#0F32# => Group_00E0'Access,
-         16#0F33# => Group_00E0'Access, 16#0F34# => Group_00E0'Access,
-         16#0F35# => Group_00E0'Access, 16#0F36# => Group_00E0'Access,
-         16#0F37# => Group_00E0'Access, 16#0F38# => Group_00E0'Access,
-         16#0F39# => Group_00E0'Access, 16#0F3A# => Group_00E0'Access,
-         16#0F3B# => Group_00E0'Access, 16#0F3C# => Group_00E0'Access,
-         16#0F3D# => Group_00E0'Access, 16#0F3E# => Group_00E0'Access,
-         16#0F3F# => Group_00E0'Access, 16#0F40# => Group_00E0'Access,
-         16#0F41# => Group_00E0'Access, 16#0F42# => Group_00E0'Access,
-         16#0F43# => Group_00E0'Access, 16#0F44# => Group_00E0'Access,
-         16#0F45# => Group_00E0'Access, 16#0F46# => Group_00E0'Access,
-         16#0F47# => Group_00E0'Access, 16#0F48# => Group_00E0'Access,
-         16#0F49# => Group_00E0'Access, 16#0F4A# => Group_00E0'Access,
-         16#0F4B# => Group_00E0'Access, 16#0F4C# => Group_00E0'Access,
-         16#0F4D# => Group_00E0'Access, 16#0F4E# => Group_00E0'Access,
-         16#0F4F# => Group_00E0'Access, 16#0F50# => Group_00E0'Access,
-         16#0F51# => Group_00E0'Access, 16#0F52# => Group_00E0'Access,
-         16#0F53# => Group_00E0'Access, 16#0F54# => Group_00E0'Access,
-         16#0F55# => Group_00E0'Access, 16#0F56# => Group_00E0'Access,
-         16#0F57# => Group_00E0'Access, 16#0F58# => Group_00E0'Access,
-         16#0F59# => Group_00E0'Access, 16#0F5A# => Group_00E0'Access,
-         16#0F5B# => Group_00E0'Access, 16#0F5C# => Group_00E0'Access,
-         16#0F5D# => Group_00E0'Access, 16#0F5E# => Group_00E0'Access,
-         16#0F5F# => Group_00E0'Access, 16#0F60# => Group_00E0'Access,
-         16#0F61# => Group_00E0'Access, 16#0F62# => Group_00E0'Access,
-         16#0F63# => Group_00E0'Access, 16#0F64# => Group_00E0'Access,
-         16#0F65# => Group_00E0'Access, 16#0F66# => Group_00E0'Access,
-         16#0F67# => Group_00E0'Access, 16#0F68# => Group_00E0'Access,
-         16#0F69# => Group_00E0'Access, 16#0F6A# => Group_00E0'Access,
-         16#0F6B# => Group_00E0'Access, 16#0F6C# => Group_00E0'Access,
-         16#0F6D# => Group_00E0'Access, 16#0F6E# => Group_00E0'Access,
-         16#0F6F# => Group_00E0'Access, 16#0F70# => Group_00E0'Access,
-         16#0F71# => Group_00E0'Access, 16#0F72# => Group_00E0'Access,
-         16#0F73# => Group_00E0'Access, 16#0F74# => Group_00E0'Access,
-         16#0F75# => Group_00E0'Access, 16#0F76# => Group_00E0'Access,
-         16#0F77# => Group_00E0'Access, 16#0F78# => Group_00E0'Access,
-         16#0F79# => Group_00E0'Access, 16#0F7A# => Group_00E0'Access,
-         16#0F7B# => Group_00E0'Access, 16#0F7C# => Group_00E0'Access,
-         16#0F7D# => Group_00E0'Access, 16#0F7E# => Group_00E0'Access,
-         16#0F7F# => Group_00E0'Access, 16#0F80# => Group_00E0'Access,
-         16#0F81# => Group_00E0'Access, 16#0F82# => Group_00E0'Access,
-         16#0F83# => Group_00E0'Access, 16#0F84# => Group_00E0'Access,
-         16#0F85# => Group_00E0'Access, 16#0F86# => Group_00E0'Access,
-         16#0F87# => Group_00E0'Access, 16#0F88# => Group_00E0'Access,
-         16#0F89# => Group_00E0'Access, 16#0F8A# => Group_00E0'Access,
-         16#0F8B# => Group_00E0'Access, 16#0F8C# => Group_00E0'Access,
-         16#0F8D# => Group_00E0'Access, 16#0F8E# => Group_00E0'Access,
-         16#0F8F# => Group_00E0'Access, 16#0F90# => Group_00E0'Access,
-         16#0F91# => Group_00E0'Access, 16#0F92# => Group_00E0'Access,
-         16#0F93# => Group_00E0'Access, 16#0F94# => Group_00E0'Access,
-         16#0F95# => Group_00E0'Access, 16#0F96# => Group_00E0'Access,
-         16#0F97# => Group_00E0'Access, 16#0F98# => Group_00E0'Access,
-         16#0F99# => Group_00E0'Access, 16#0F9A# => Group_00E0'Access,
-         16#0F9B# => Group_00E0'Access, 16#0F9C# => Group_00E0'Access,
-         16#0F9D# => Group_00E0'Access, 16#0F9E# => Group_00E0'Access,
-         16#0F9F# => Group_00E0'Access, 16#0FA0# => Group_00E0'Access,
-         16#0FA1# => Group_00E0'Access, 16#0FA2# => Group_00E0'Access,
-         16#0FA3# => Group_00E0'Access, 16#0FA4# => Group_00E0'Access,
-         16#0FA5# => Group_00E0'Access, 16#0FA6# => Group_00E0'Access,
-         16#0FA7# => Group_00E0'Access, 16#0FA8# => Group_00E0'Access,
-         16#0FA9# => Group_00E0'Access, 16#0FAA# => Group_00E0'Access,
-         16#0FAB# => Group_00E0'Access, 16#0FAC# => Group_00E0'Access,
-         16#0FAD# => Group_00E0'Access, 16#0FAE# => Group_00E0'Access,
-         16#0FAF# => Group_00E0'Access, 16#0FB0# => Group_00E0'Access,
-         16#0FB1# => Group_00E0'Access, 16#0FB2# => Group_00E0'Access,
-         16#0FB3# => Group_00E0'Access, 16#0FB4# => Group_00E0'Access,
-         16#0FB5# => Group_00E0'Access, 16#0FB6# => Group_00E0'Access,
-         16#0FB7# => Group_00E0'Access, 16#0FB8# => Group_00E0'Access,
-         16#0FB9# => Group_00E0'Access, 16#0FBA# => Group_00E0'Access,
-         16#0FBB# => Group_00E0'Access, 16#0FBC# => Group_00E0'Access,
-         16#0FBD# => Group_00E0'Access, 16#0FBE# => Group_00E0'Access,
-         16#0FBF# => Group_00E0'Access, 16#0FC0# => Group_00E0'Access,
-         16#0FC1# => Group_00E0'Access, 16#0FC2# => Group_00E0'Access,
-         16#0FC3# => Group_00E0'Access, 16#0FC4# => Group_00E0'Access,
-         16#0FC5# => Group_00E0'Access, 16#0FC6# => Group_00E0'Access,
-         16#0FC7# => Group_00E0'Access, 16#0FC8# => Group_00E0'Access,
-         16#0FC9# => Group_00E0'Access, 16#0FCA# => Group_00E0'Access,
-         16#0FCB# => Group_00E0'Access, 16#0FCC# => Group_00E0'Access,
-         16#0FCD# => Group_00E0'Access, 16#0FCE# => Group_00E0'Access,
-         16#0FCF# => Group_00E0'Access, 16#0FD0# => Group_00E0'Access,
-         16#0FD1# => Group_00E0'Access, 16#0FD2# => Group_00E0'Access,
-         16#0FD3# => Group_00E0'Access, 16#0FD4# => Group_00E0'Access,
-         16#0FD5# => Group_00E0'Access, 16#0FD6# => Group_00E0'Access,
-         16#0FD7# => Group_00E0'Access, 16#0FD8# => Group_00E0'Access,
-         16#0FD9# => Group_00E0'Access, 16#0FDA# => Group_00E0'Access,
-         16#0FDB# => Group_00E0'Access, 16#0FDC# => Group_00E0'Access,
-         16#0FDD# => Group_00E0'Access, 16#0FDE# => Group_00E0'Access,
-         16#0FDF# => Group_00E0'Access, 16#0FE0# => Group_00E0'Access,
-         16#0FE1# => Group_00E0'Access, 16#0FE2# => Group_00E0'Access,
-         16#0FE3# => Group_00E0'Access, 16#0FE4# => Group_00E0'Access,
-         16#0FE5# => Group_00E0'Access, 16#0FE6# => Group_00E0'Access,
-         16#0FE7# => Group_00E0'Access, 16#0FE8# => Group_00E0'Access,
-         16#0FE9# => Group_00E0'Access, 16#0FEA# => Group_00E0'Access,
-         16#0FEB# => Group_00E0'Access, 16#0FEC# => Group_00E0'Access,
-         16#0FED# => Group_00E0'Access, 16#0FEE# => Group_00E0'Access,
-         16#0FEF# => Group_00E0'Access, 16#0FF0# => Group_00E0'Access,
-         16#0FF1# => Group_00E0'Access, 16#0FF2# => Group_00E0'Access,
-         16#0FF3# => Group_00E0'Access, 16#0FF4# => Group_00E0'Access,
-         16#0FF5# => Group_00E0'Access, 16#0FF6# => Group_00E0'Access,
-         16#0FF7# => Group_00E0'Access, 16#0FF8# => Group_00E0'Access,
-         16#0FF9# => Group_00E0'Access, 16#0FFA# => Group_00E0'Access,
-         16#0FFB# => Group_00E0'Access, 16#0FFC# => Group_00E0'Access,
-         16#0FFD# => Group_00E0'Access, 16#0FFE# => Group_00E0'Access,
-         16#0FFF# => Group_0FFF'Access, 16#1000# => Group_00E0'Access,
-         16#1001# => Group_00E0'Access, 16#1002# => Group_00E0'Access,
-         16#1003# => Group_00E0'Access, 16#1004# => Group_00E0'Access,
-         16#1005# => Group_00E0'Access, 16#1006# => Group_00E0'Access,
-         16#1007# => Group_00E0'Access, 16#1008# => Group_00E0'Access,
-         16#1009# => Group_00E0'Access, 16#100A# => Group_00E0'Access,
-         16#100B# => Group_00E0'Access, 16#100C# => Group_00E0'Access,
-         16#100D# => Group_00E0'Access, 16#100E# => Group_00E0'Access,
-         16#100F# => Group_00E0'Access, 16#1010# => Group_00E0'Access,
-         16#1011# => Group_00E0'Access, 16#1012# => Group_00E0'Access,
-         16#1013# => Group_00E0'Access, 16#1014# => Group_00E0'Access,
-         16#1015# => Group_00E0'Access, 16#1016# => Group_00E0'Access,
-         16#1017# => Group_00E0'Access, 16#1018# => Group_00E0'Access,
-         16#1019# => Group_00E0'Access, 16#101A# => Group_00E0'Access,
-         16#101B# => Group_00E0'Access, 16#101C# => Group_00E0'Access,
-         16#101D# => Group_00E0'Access, 16#101E# => Group_00E0'Access,
-         16#101F# => Group_00E0'Access, 16#1020# => Group_00E0'Access,
-         16#1021# => Group_00E0'Access, 16#1022# => Group_00E0'Access,
-         16#1023# => Group_00E0'Access, 16#1024# => Group_00E0'Access,
-         16#1025# => Group_00E0'Access, 16#1026# => Group_00E0'Access,
-         16#1027# => Group_00E0'Access, 16#1028# => Group_00E0'Access,
-         16#1029# => Group_00E0'Access, 16#102A# => Group_00E0'Access,
-         16#102B# => Group_00E0'Access, 16#102C# => Group_00E0'Access,
-         16#102D# => Group_00E0'Access, 16#102E# => Group_00E0'Access,
-         16#102F# => Group_00E0'Access, 16#1030# => Group_00E0'Access,
-         16#1031# => Group_00E0'Access, 16#1032# => Group_00E0'Access,
-         16#1033# => Group_00E0'Access, 16#1034# => Group_00E0'Access,
-         16#1035# => Group_00E0'Access, 16#1036# => Group_00E0'Access,
-         16#1037# => Group_00E0'Access, 16#1038# => Group_00E0'Access,
-         16#1039# => Group_00E0'Access, 16#103A# => Group_00E0'Access,
-         16#103B# => Group_00E0'Access, 16#103C# => Group_00E0'Access,
-         16#103D# => Group_00E0'Access, 16#103E# => Group_00E0'Access,
-         16#103F# => Group_00E0'Access, 16#1040# => Group_00E0'Access,
-         16#1041# => Group_00E0'Access, 16#1042# => Group_00E0'Access,
-         16#1043# => Group_00E0'Access, 16#1044# => Group_00E0'Access,
-         16#1045# => Group_00E0'Access, 16#1046# => Group_00E0'Access,
-         16#1047# => Group_00E0'Access, 16#1048# => Group_00E0'Access,
-         16#1049# => Group_00E0'Access, 16#104A# => Group_00E0'Access,
-         16#104B# => Group_00E0'Access, 16#104C# => Group_00E0'Access,
-         16#104D# => Group_00E0'Access, 16#104E# => Group_00E0'Access,
-         16#104F# => Group_00E0'Access, 16#1050# => Group_00E0'Access,
-         16#1051# => Group_00E0'Access, 16#1052# => Group_00E0'Access,
-         16#1053# => Group_00E0'Access, 16#1054# => Group_00E0'Access,
-         16#1055# => Group_00E0'Access, 16#1056# => Group_00E0'Access,
-         16#1057# => Group_00E0'Access, 16#1058# => Group_00E0'Access,
-         16#1059# => Group_00E0'Access, 16#105A# => Group_00E0'Access,
-         16#105B# => Group_00E0'Access, 16#105C# => Group_00E0'Access,
-         16#105D# => Group_00E0'Access, 16#105E# => Group_00E0'Access,
-         16#105F# => Group_00E0'Access, 16#1060# => Group_00E0'Access,
-         16#1061# => Group_00E0'Access, 16#1062# => Group_00E0'Access,
-         16#1063# => Group_00E0'Access, 16#1064# => Group_00E0'Access,
-         16#1065# => Group_00E0'Access, 16#1066# => Group_00E0'Access,
-         16#1067# => Group_00E0'Access, 16#1068# => Group_00E0'Access,
-         16#1069# => Group_00E0'Access, 16#106A# => Group_00E0'Access,
-         16#106B# => Group_00E0'Access, 16#106C# => Group_00E0'Access,
-         16#106D# => Group_00E0'Access, 16#106E# => Group_00E0'Access,
-         16#106F# => Group_00E0'Access, 16#1070# => Group_00E0'Access,
-         16#1071# => Group_00E0'Access, 16#1072# => Group_00E0'Access,
-         16#1073# => Group_00E0'Access, 16#1074# => Group_00E0'Access,
-         16#1075# => Group_00E0'Access, 16#1076# => Group_00E0'Access,
-         16#1077# => Group_00E0'Access, 16#1078# => Group_00E0'Access,
-         16#1079# => Group_00E0'Access, 16#107A# => Group_00E0'Access,
-         16#107B# => Group_00E0'Access, 16#107C# => Group_00E0'Access,
-         16#107D# => Group_00E0'Access, 16#107E# => Group_00E0'Access,
-         16#107F# => Group_00E0'Access, 16#1080# => Group_00E0'Access,
-         16#1081# => Group_00E0'Access, 16#1082# => Group_00E0'Access,
-         16#1083# => Group_00E0'Access, 16#1084# => Group_00E0'Access,
-         16#1085# => Group_00E0'Access, 16#1086# => Group_00E0'Access,
-         16#1087# => Group_00E0'Access, 16#1088# => Group_00E0'Access,
-         16#1089# => Group_00E0'Access, 16#108A# => Group_00E0'Access,
-         16#108B# => Group_00E0'Access, 16#108C# => Group_00E0'Access,
-         16#108D# => Group_00E0'Access, 16#108E# => Group_00E0'Access,
-         16#108F# => Group_00E0'Access, 16#1090# => Group_00E0'Access,
-         16#1091# => Group_00E0'Access, 16#1092# => Group_00E0'Access,
-         16#1093# => Group_00E0'Access, 16#1094# => Group_00E0'Access,
-         16#1095# => Group_00E0'Access, 16#1096# => Group_00E0'Access,
-         16#1097# => Group_00E0'Access, 16#1098# => Group_00E0'Access,
-         16#1099# => Group_00E0'Access, 16#109A# => Group_00E0'Access,
-         16#109B# => Group_00E0'Access, 16#109C# => Group_00E0'Access,
-         16#109D# => Group_00E0'Access, 16#109E# => Group_00E0'Access,
-         16#109F# => Group_00E0'Access, 16#10A0# => Group_00E0'Access,
-         16#10A1# => Group_00E0'Access, 16#10A2# => Group_00E0'Access,
-         16#10A3# => Group_00E0'Access, 16#10A4# => Group_00E0'Access,
-         16#10A5# => Group_00E0'Access, 16#10A6# => Group_00E0'Access,
-         16#10A7# => Group_00E0'Access, 16#10A8# => Group_00E0'Access,
-         16#10A9# => Group_00E0'Access, 16#10AA# => Group_00E0'Access,
-         16#10AB# => Group_00E0'Access, 16#10AC# => Group_00E0'Access,
-         16#10AD# => Group_00E0'Access, 16#10AE# => Group_00E0'Access,
-         16#10AF# => Group_00E0'Access, 16#10B0# => Group_00E0'Access,
-         16#10B1# => Group_00E0'Access, 16#10B2# => Group_00E0'Access,
-         16#10B3# => Group_00E0'Access, 16#10B4# => Group_00E0'Access,
-         16#10B5# => Group_00E0'Access, 16#10B6# => Group_00E0'Access,
-         16#10B7# => Group_00E0'Access, 16#10B8# => Group_00E0'Access,
-         16#10B9# => Group_00E0'Access, 16#10BA# => Group_00E0'Access,
-         16#10BB# => Group_00E0'Access, 16#10BC# => Group_00E0'Access,
-         16#10BD# => Group_00E0'Access, 16#10BE# => Group_00E0'Access,
-         16#10BF# => Group_00E0'Access, 16#10C0# => Group_00E0'Access,
-         16#10C1# => Group_00E0'Access, 16#10C2# => Group_00E0'Access,
-         16#10C3# => Group_00E0'Access, 16#10C4# => Group_00E0'Access,
-         16#10C5# => Group_00E0'Access, 16#10C6# => Group_00E0'Access,
-         16#10C7# => Group_00E0'Access, 16#10C8# => Group_00E0'Access,
-         16#10C9# => Group_00E0'Access, 16#10CA# => Group_00E0'Access,
-         16#10CB# => Group_00E0'Access, 16#10CC# => Group_00E0'Access,
-         16#10CD# => Group_00E0'Access, 16#10CE# => Group_00E0'Access,
-         16#10CF# => Group_00E0'Access, 16#10D0# => Group_00E0'Access,
-         16#10D1# => Group_00E0'Access, 16#10D2# => Group_00E0'Access,
-         16#10D3# => Group_00E0'Access, 16#10D4# => Group_00E0'Access,
-         16#10D5# => Group_00E0'Access, 16#10D6# => Group_00E0'Access,
-         16#10D7# => Group_00E0'Access, 16#10D8# => Group_00E0'Access,
-         16#10D9# => Group_00E0'Access, 16#10DA# => Group_00E0'Access,
-         16#10DB# => Group_00E0'Access, 16#10DC# => Group_00E0'Access,
-         16#10DD# => Group_00E0'Access, 16#10DE# => Group_00E0'Access,
-         16#10DF# => Group_00E0'Access, 16#10E0# => Group_00E0'Access,
-         16#10E1# => Group_00E0'Access, 16#10E2# => Group_00E0'Access,
-         16#10E3# => Group_00E0'Access, 16#10E4# => Group_00E0'Access,
-         16#10E5# => Group_00E0'Access, 16#10E6# => Group_00E0'Access,
-         16#10E7# => Group_00E0'Access, 16#10E8# => Group_00E0'Access,
-         16#10E9# => Group_00E0'Access, 16#10EA# => Group_00E0'Access,
-         16#10EB# => Group_00E0'Access, 16#10EC# => Group_00E0'Access,
-         16#10ED# => Group_00E0'Access, 16#10EE# => Group_00E0'Access,
-         16#10EF# => Group_00E0'Access, 16#10F0# => Group_00E0'Access,
-         16#10F1# => Group_00E0'Access, 16#10F2# => Group_00E0'Access,
-         16#10F3# => Group_00E0'Access, 16#10F4# => Group_00E0'Access,
-         16#10F5# => Group_00E0'Access, 16#10F6# => Group_00E0'Access,
-         16#10F7# => Group_00E0'Access, 16#10F8# => Group_00E0'Access,
-         16#10F9# => Group_00E0'Access, 16#10FA# => Group_00E0'Access,
-         16#10FB# => Group_00E0'Access, 16#10FC# => Group_00E0'Access,
-         16#10FD# => Group_00E0'Access, 16#10FE# => Group_00E0'Access,
-         16#10FF# => Group_0FFF'Access, others   => Group_0105'Access);
+         16#01F2# => Group_01F2'Access, 16#01F3# => Group_01F3'Access,
+         16#01F4# => Group_01F4'Access, 16#01F5# => Group_01F5'Access,
+         16#01F6# => Group_01F6'Access, 16#01F7# => Group_01F7'Access,
+         16#01FF# => Group_01FF'Access, 16#0200# => Group_0034'Access,
+         16#0201# => Group_0034'Access, 16#0202# => Group_0034'Access,
+         16#0203# => Group_0034'Access, 16#0204# => Group_0034'Access,
+         16#0205# => Group_0034'Access, 16#0206# => Group_0034'Access,
+         16#0207# => Group_0034'Access, 16#0208# => Group_0034'Access,
+         16#0209# => Group_0034'Access, 16#020A# => Group_0034'Access,
+         16#020B# => Group_0034'Access, 16#020C# => Group_0034'Access,
+         16#020D# => Group_0034'Access, 16#020E# => Group_0034'Access,
+         16#020F# => Group_0034'Access, 16#0210# => Group_0034'Access,
+         16#0211# => Group_0034'Access, 16#0212# => Group_0034'Access,
+         16#0213# => Group_0034'Access, 16#0214# => Group_0034'Access,
+         16#0215# => Group_0034'Access, 16#0216# => Group_0034'Access,
+         16#0217# => Group_0034'Access, 16#0218# => Group_0034'Access,
+         16#0219# => Group_0034'Access, 16#021A# => Group_0034'Access,
+         16#021B# => Group_0034'Access, 16#021C# => Group_0034'Access,
+         16#021D# => Group_0034'Access, 16#021E# => Group_0034'Access,
+         16#021F# => Group_0034'Access, 16#0220# => Group_0034'Access,
+         16#0221# => Group_0034'Access, 16#0222# => Group_0034'Access,
+         16#0223# => Group_0034'Access, 16#0224# => Group_0034'Access,
+         16#0225# => Group_0034'Access, 16#0226# => Group_0034'Access,
+         16#0227# => Group_0034'Access, 16#0228# => Group_0034'Access,
+         16#0229# => Group_0034'Access, 16#022A# => Group_0034'Access,
+         16#022B# => Group_0034'Access, 16#022C# => Group_0034'Access,
+         16#022D# => Group_0034'Access, 16#022E# => Group_0034'Access,
+         16#022F# => Group_0034'Access, 16#0230# => Group_0034'Access,
+         16#0231# => Group_0034'Access, 16#0232# => Group_0034'Access,
+         16#0233# => Group_0034'Access, 16#0234# => Group_0034'Access,
+         16#0235# => Group_0034'Access, 16#0236# => Group_0034'Access,
+         16#0237# => Group_0034'Access, 16#0238# => Group_0034'Access,
+         16#0239# => Group_0034'Access, 16#023A# => Group_0034'Access,
+         16#023B# => Group_0034'Access, 16#023C# => Group_0034'Access,
+         16#023D# => Group_0034'Access, 16#023E# => Group_0034'Access,
+         16#023F# => Group_0034'Access, 16#0240# => Group_0034'Access,
+         16#0241# => Group_0034'Access, 16#0242# => Group_0034'Access,
+         16#0243# => Group_0034'Access, 16#0244# => Group_0034'Access,
+         16#0245# => Group_0034'Access, 16#0246# => Group_0034'Access,
+         16#0247# => Group_0034'Access, 16#0248# => Group_0034'Access,
+         16#0249# => Group_0034'Access, 16#024A# => Group_0034'Access,
+         16#024B# => Group_0034'Access, 16#024C# => Group_0034'Access,
+         16#024D# => Group_0034'Access, 16#024E# => Group_0034'Access,
+         16#024F# => Group_0034'Access, 16#0250# => Group_0034'Access,
+         16#0251# => Group_0034'Access, 16#0252# => Group_0034'Access,
+         16#0253# => Group_0034'Access, 16#0254# => Group_0034'Access,
+         16#0255# => Group_0034'Access, 16#0256# => Group_0034'Access,
+         16#0257# => Group_0034'Access, 16#0258# => Group_0034'Access,
+         16#0259# => Group_0034'Access, 16#025A# => Group_0034'Access,
+         16#025B# => Group_0034'Access, 16#025C# => Group_0034'Access,
+         16#025D# => Group_0034'Access, 16#025E# => Group_0034'Access,
+         16#025F# => Group_0034'Access, 16#0260# => Group_0034'Access,
+         16#0261# => Group_0034'Access, 16#0262# => Group_0034'Access,
+         16#0263# => Group_0034'Access, 16#0264# => Group_0034'Access,
+         16#0265# => Group_0034'Access, 16#0266# => Group_0034'Access,
+         16#0267# => Group_0034'Access, 16#0268# => Group_0034'Access,
+         16#0269# => Group_0034'Access, 16#026A# => Group_0034'Access,
+         16#026B# => Group_0034'Access, 16#026C# => Group_0034'Access,
+         16#026D# => Group_0034'Access, 16#026E# => Group_0034'Access,
+         16#026F# => Group_0034'Access, 16#0270# => Group_0034'Access,
+         16#0271# => Group_0034'Access, 16#0272# => Group_0034'Access,
+         16#0273# => Group_0034'Access, 16#0274# => Group_0034'Access,
+         16#0275# => Group_0034'Access, 16#0276# => Group_0034'Access,
+         16#0277# => Group_0034'Access, 16#0278# => Group_0034'Access,
+         16#0279# => Group_0034'Access, 16#027A# => Group_0034'Access,
+         16#027B# => Group_0034'Access, 16#027C# => Group_0034'Access,
+         16#027D# => Group_0034'Access, 16#027E# => Group_0034'Access,
+         16#027F# => Group_0034'Access, 16#0280# => Group_0034'Access,
+         16#0281# => Group_0034'Access, 16#0282# => Group_0034'Access,
+         16#0283# => Group_0034'Access, 16#0284# => Group_0034'Access,
+         16#0285# => Group_0034'Access, 16#0286# => Group_0034'Access,
+         16#0287# => Group_0034'Access, 16#0288# => Group_0034'Access,
+         16#0289# => Group_0034'Access, 16#028A# => Group_0034'Access,
+         16#028B# => Group_0034'Access, 16#028C# => Group_0034'Access,
+         16#028D# => Group_0034'Access, 16#028E# => Group_0034'Access,
+         16#028F# => Group_0034'Access, 16#0290# => Group_0034'Access,
+         16#0291# => Group_0034'Access, 16#0292# => Group_0034'Access,
+         16#0293# => Group_0034'Access, 16#0294# => Group_0034'Access,
+         16#0295# => Group_0034'Access, 16#0296# => Group_0034'Access,
+         16#0297# => Group_0034'Access, 16#0298# => Group_0034'Access,
+         16#0299# => Group_0034'Access, 16#029A# => Group_0034'Access,
+         16#029B# => Group_0034'Access, 16#029C# => Group_0034'Access,
+         16#029D# => Group_0034'Access, 16#029E# => Group_0034'Access,
+         16#029F# => Group_0034'Access, 16#02A0# => Group_0034'Access,
+         16#02A1# => Group_0034'Access, 16#02A2# => Group_0034'Access,
+         16#02A3# => Group_0034'Access, 16#02A4# => Group_0034'Access,
+         16#02A5# => Group_0034'Access, 16#02A6# => Group_02A6'Access,
+         16#02A7# => Group_0034'Access, 16#02A8# => Group_0034'Access,
+         16#02A9# => Group_0034'Access, 16#02AA# => Group_0034'Access,
+         16#02AB# => Group_0034'Access, 16#02AC# => Group_0034'Access,
+         16#02AD# => Group_0034'Access, 16#02AE# => Group_0034'Access,
+         16#02AF# => Group_0034'Access, 16#02B0# => Group_0034'Access,
+         16#02B1# => Group_0034'Access, 16#02B2# => Group_0034'Access,
+         16#02B3# => Group_0034'Access, 16#02B4# => Group_0034'Access,
+         16#02B5# => Group_0034'Access, 16#02B6# => Group_0034'Access,
+         16#02B7# => Group_02B7'Access, 16#02B8# => Group_02B8'Access,
+         16#02B9# => Group_02B9'Access, 16#02BA# => Group_02B9'Access,
+         16#02BB# => Group_02B9'Access, 16#02BC# => Group_02B9'Access,
+         16#02BD# => Group_02B9'Access, 16#02BE# => Group_02B9'Access,
+         16#02BF# => Group_02B9'Access, 16#02C0# => Group_02B9'Access,
+         16#02C1# => Group_02B9'Access, 16#02C2# => Group_02B9'Access,
+         16#02C3# => Group_02B9'Access, 16#02C4# => Group_02B9'Access,
+         16#02C5# => Group_02B9'Access, 16#02C6# => Group_02B9'Access,
+         16#02C7# => Group_02B9'Access, 16#02C8# => Group_02B9'Access,
+         16#02C9# => Group_02B9'Access, 16#02CA# => Group_02B9'Access,
+         16#02CB# => Group_02B9'Access, 16#02CC# => Group_02B9'Access,
+         16#02CD# => Group_02B9'Access, 16#02CE# => Group_02B9'Access,
+         16#02CF# => Group_02B9'Access, 16#02D0# => Group_02B9'Access,
+         16#02D1# => Group_02B9'Access, 16#02D2# => Group_02B9'Access,
+         16#02D3# => Group_02B9'Access, 16#02D4# => Group_02B9'Access,
+         16#02D5# => Group_02B9'Access, 16#02D6# => Group_02B9'Access,
+         16#02D7# => Group_02B9'Access, 16#02D8# => Group_02B9'Access,
+         16#02D9# => Group_02B9'Access, 16#02DA# => Group_02B9'Access,
+         16#02DB# => Group_02B9'Access, 16#02DC# => Group_02B9'Access,
+         16#02DD# => Group_02B9'Access, 16#02DE# => Group_02B9'Access,
+         16#02DF# => Group_02B9'Access, 16#02E0# => Group_02B9'Access,
+         16#02E1# => Group_02B9'Access, 16#02E2# => Group_02B9'Access,
+         16#02E3# => Group_02B9'Access, 16#02E4# => Group_02B9'Access,
+         16#02E5# => Group_02B9'Access, 16#02E6# => Group_02B9'Access,
+         16#02E7# => Group_02B9'Access, 16#02E8# => Group_02B9'Access,
+         16#02E9# => Group_02B9'Access, 16#02EA# => Group_02B9'Access,
+         16#02EB# => Group_02B9'Access, 16#02EC# => Group_02B9'Access,
+         16#02ED# => Group_02B9'Access, 16#02EE# => Group_02B9'Access,
+         16#02EF# => Group_02B9'Access, 16#02F0# => Group_02B9'Access,
+         16#02F1# => Group_02B9'Access, 16#02F2# => Group_02B9'Access,
+         16#02F3# => Group_02B9'Access, 16#02F4# => Group_02B9'Access,
+         16#02F5# => Group_02B9'Access, 16#02F6# => Group_02B9'Access,
+         16#02F7# => Group_02B9'Access, 16#02F8# => Group_00F9'Access,
+         16#02F9# => Group_00F9'Access, 16#02FA# => Group_02FA'Access,
+         16#02FB# => Group_02B9'Access, 16#02FC# => Group_02B9'Access,
+         16#02FD# => Group_02B9'Access, 16#02FE# => Group_02B9'Access,
+         16#02FF# => Group_02FF'Access, 16#0300# => Group_02B9'Access,
+         16#0301# => Group_02B9'Access, 16#0302# => Group_02B9'Access,
+         16#0303# => Group_02B9'Access, 16#0304# => Group_02B9'Access,
+         16#0305# => Group_02B9'Access, 16#0306# => Group_02B9'Access,
+         16#0307# => Group_02B9'Access, 16#0308# => Group_02B9'Access,
+         16#0309# => Group_02B9'Access, 16#030A# => Group_02B9'Access,
+         16#030B# => Group_02B9'Access, 16#030C# => Group_02B9'Access,
+         16#030D# => Group_02B9'Access, 16#030E# => Group_02B9'Access,
+         16#030F# => Group_02B9'Access, 16#0310# => Group_02B9'Access,
+         16#0311# => Group_02B9'Access, 16#0312# => Group_02B9'Access,
+         16#0313# => Group_02B9'Access, 16#0314# => Group_02B9'Access,
+         16#0315# => Group_02B9'Access, 16#0316# => Group_02B9'Access,
+         16#0317# => Group_02B9'Access, 16#0318# => Group_02B9'Access,
+         16#0319# => Group_02B9'Access, 16#031A# => Group_02B9'Access,
+         16#031B# => Group_02B9'Access, 16#031C# => Group_02B9'Access,
+         16#031D# => Group_02B9'Access, 16#031E# => Group_02B9'Access,
+         16#031F# => Group_02B9'Access, 16#0320# => Group_02B9'Access,
+         16#0321# => Group_02B9'Access, 16#0322# => Group_02B9'Access,
+         16#0323# => Group_02B9'Access, 16#0324# => Group_02B9'Access,
+         16#0325# => Group_02B9'Access, 16#0326# => Group_02B9'Access,
+         16#0327# => Group_02B9'Access, 16#0328# => Group_02B9'Access,
+         16#0329# => Group_02B9'Access, 16#032A# => Group_02B9'Access,
+         16#032B# => Group_02B9'Access, 16#032C# => Group_02B9'Access,
+         16#032D# => Group_02B9'Access, 16#032E# => Group_02B9'Access,
+         16#032F# => Group_02B9'Access, 16#0330# => Group_02B9'Access,
+         16#0331# => Group_02B9'Access, 16#0332# => Group_02B9'Access,
+         16#0333# => Group_02B9'Access, 16#0334# => Group_02B9'Access,
+         16#0335# => Group_02B9'Access, 16#0336# => Group_02B9'Access,
+         16#0337# => Group_02B9'Access, 16#0338# => Group_02B9'Access,
+         16#0339# => Group_02B9'Access, 16#033A# => Group_02B9'Access,
+         16#033B# => Group_02B9'Access, 16#033C# => Group_02B9'Access,
+         16#033D# => Group_02B9'Access, 16#033E# => Group_02B9'Access,
+         16#033F# => Group_02B9'Access, 16#0340# => Group_02B9'Access,
+         16#0341# => Group_02B9'Access, 16#0342# => Group_02B9'Access,
+         16#0343# => Group_02B9'Access, 16#0344# => Group_02B9'Access,
+         16#0345# => Group_02B9'Access, 16#0346# => Group_02B9'Access,
+         16#0347# => Group_02B9'Access, 16#0348# => Group_02B9'Access,
+         16#0349# => Group_02B9'Access, 16#034A# => Group_02B9'Access,
+         16#034B# => Group_02B9'Access, 16#034C# => Group_02B9'Access,
+         16#034D# => Group_02B9'Access, 16#034E# => Group_02B9'Access,
+         16#034F# => Group_02B9'Access, 16#0350# => Group_02B9'Access,
+         16#0351# => Group_02B9'Access, 16#0352# => Group_02B9'Access,
+         16#0353# => Group_02B9'Access, 16#0354# => Group_02B9'Access,
+         16#0355# => Group_02B9'Access, 16#0356# => Group_02B9'Access,
+         16#0357# => Group_02B9'Access, 16#0358# => Group_02B9'Access,
+         16#0359# => Group_02B9'Access, 16#035A# => Group_02B9'Access,
+         16#035B# => Group_02B9'Access, 16#035C# => Group_02B9'Access,
+         16#035D# => Group_02B9'Access, 16#035E# => Group_02B9'Access,
+         16#035F# => Group_02B9'Access, 16#0360# => Group_02B9'Access,
+         16#0361# => Group_02B9'Access, 16#0362# => Group_02B9'Access,
+         16#0363# => Group_02B9'Access, 16#0364# => Group_02B9'Access,
+         16#0365# => Group_02B9'Access, 16#0366# => Group_02B9'Access,
+         16#0367# => Group_02B9'Access, 16#0368# => Group_02B9'Access,
+         16#0369# => Group_02B9'Access, 16#036A# => Group_02B9'Access,
+         16#036B# => Group_02B9'Access, 16#036C# => Group_02B9'Access,
+         16#036D# => Group_02B9'Access, 16#036E# => Group_02B9'Access,
+         16#036F# => Group_02B9'Access, 16#0370# => Group_02B9'Access,
+         16#0371# => Group_02B9'Access, 16#0372# => Group_02B9'Access,
+         16#0373# => Group_02B9'Access, 16#0374# => Group_02B9'Access,
+         16#0375# => Group_02B9'Access, 16#0376# => Group_02B9'Access,
+         16#0377# => Group_02B9'Access, 16#0378# => Group_02B9'Access,
+         16#0379# => Group_02B9'Access, 16#037A# => Group_02B9'Access,
+         16#037B# => Group_02B9'Access, 16#037C# => Group_02B9'Access,
+         16#037D# => Group_02B9'Access, 16#037E# => Group_02B9'Access,
+         16#037F# => Group_02B9'Access, 16#0380# => Group_02B9'Access,
+         16#0381# => Group_02B9'Access, 16#0382# => Group_02B9'Access,
+         16#0383# => Group_02B9'Access, 16#0384# => Group_02B9'Access,
+         16#0385# => Group_02B9'Access, 16#0386# => Group_02B9'Access,
+         16#0387# => Group_02B9'Access, 16#0388# => Group_02B9'Access,
+         16#0389# => Group_02B9'Access, 16#038A# => Group_02B9'Access,
+         16#038B# => Group_02B9'Access, 16#038C# => Group_02B9'Access,
+         16#038D# => Group_02B9'Access, 16#038E# => Group_02B9'Access,
+         16#038F# => Group_02B9'Access, 16#0390# => Group_02B9'Access,
+         16#0391# => Group_02B9'Access, 16#0392# => Group_02B9'Access,
+         16#0393# => Group_02B9'Access, 16#0394# => Group_02B9'Access,
+         16#0395# => Group_02B9'Access, 16#0396# => Group_02B9'Access,
+         16#0397# => Group_02B9'Access, 16#0398# => Group_02B9'Access,
+         16#0399# => Group_02B9'Access, 16#039A# => Group_02B9'Access,
+         16#039B# => Group_02B9'Access, 16#039C# => Group_02B9'Access,
+         16#039D# => Group_02B9'Access, 16#039E# => Group_02B9'Access,
+         16#039F# => Group_02B9'Access, 16#03A0# => Group_02B9'Access,
+         16#03A1# => Group_02B9'Access, 16#03A2# => Group_02B9'Access,
+         16#03A3# => Group_02B9'Access, 16#03A4# => Group_02B9'Access,
+         16#03A5# => Group_02B9'Access, 16#03A6# => Group_02B9'Access,
+         16#03A7# => Group_02B9'Access, 16#03A8# => Group_02B9'Access,
+         16#03A9# => Group_02B9'Access, 16#03AA# => Group_02B9'Access,
+         16#03AB# => Group_02B9'Access, 16#03AC# => Group_02B9'Access,
+         16#03AD# => Group_02B9'Access, 16#03AE# => Group_02B9'Access,
+         16#03AF# => Group_02B9'Access, 16#03B0# => Group_02B9'Access,
+         16#03B1# => Group_02B9'Access, 16#03B2# => Group_02B9'Access,
+         16#03B3# => Group_02B9'Access, 16#03B4# => Group_02B9'Access,
+         16#03B5# => Group_02B9'Access, 16#03B6# => Group_02B9'Access,
+         16#03B7# => Group_02B9'Access, 16#03B8# => Group_02B9'Access,
+         16#03B9# => Group_02B9'Access, 16#03BA# => Group_02B9'Access,
+         16#03BB# => Group_02B9'Access, 16#03BC# => Group_02B9'Access,
+         16#03BD# => Group_02B9'Access, 16#03BE# => Group_02B9'Access,
+         16#03BF# => Group_02B9'Access, 16#03C0# => Group_02B9'Access,
+         16#03C1# => Group_02B9'Access, 16#03C2# => Group_02B9'Access,
+         16#03C3# => Group_02B9'Access, 16#03C4# => Group_02B9'Access,
+         16#03C5# => Group_02B9'Access, 16#03C6# => Group_02B9'Access,
+         16#03C7# => Group_02B9'Access, 16#03C8# => Group_02B9'Access,
+         16#03C9# => Group_02B9'Access, 16#03CA# => Group_02B9'Access,
+         16#03CB# => Group_02B9'Access, 16#03CC# => Group_02B9'Access,
+         16#03CD# => Group_02B9'Access, 16#03CE# => Group_02B9'Access,
+         16#03CF# => Group_02B9'Access, 16#03D0# => Group_02B9'Access,
+         16#03D1# => Group_02B9'Access, 16#03D2# => Group_02B9'Access,
+         16#03D3# => Group_02B9'Access, 16#03D4# => Group_02B9'Access,
+         16#03D5# => Group_02B9'Access, 16#03D6# => Group_02B9'Access,
+         16#03D7# => Group_02B9'Access, 16#03D8# => Group_02B9'Access,
+         16#03D9# => Group_02B9'Access, 16#03DA# => Group_02B9'Access,
+         16#03DB# => Group_02B9'Access, 16#03DC# => Group_02B9'Access,
+         16#03DD# => Group_02B9'Access, 16#03DE# => Group_02B9'Access,
+         16#03DF# => Group_02B9'Access, 16#03E0# => Group_02B9'Access,
+         16#03E1# => Group_02B9'Access, 16#03E2# => Group_02B9'Access,
+         16#03E3# => Group_02B9'Access, 16#03E4# => Group_02B9'Access,
+         16#03E5# => Group_02B9'Access, 16#03E6# => Group_02B9'Access,
+         16#03E7# => Group_02B9'Access, 16#03E8# => Group_02B9'Access,
+         16#03E9# => Group_02B9'Access, 16#03EA# => Group_02B9'Access,
+         16#03EB# => Group_02B9'Access, 16#03EC# => Group_02B9'Access,
+         16#03ED# => Group_02B9'Access, 16#03EE# => Group_02B9'Access,
+         16#03EF# => Group_02B9'Access, 16#03F0# => Group_02B9'Access,
+         16#03F1# => Group_02B9'Access, 16#03F2# => Group_02B9'Access,
+         16#03F3# => Group_02B9'Access, 16#03F4# => Group_02B9'Access,
+         16#03F5# => Group_02B9'Access, 16#03F6# => Group_02B9'Access,
+         16#03F7# => Group_02B9'Access, 16#03F8# => Group_02B9'Access,
+         16#03F9# => Group_02B9'Access, 16#03FA# => Group_02B9'Access,
+         16#03FB# => Group_02B9'Access, 16#03FC# => Group_02B9'Access,
+         16#03FD# => Group_02B9'Access, 16#03FE# => Group_02B9'Access,
+         16#03FF# => Group_02FF'Access, 16#04FF# => Group_01FF'Access,
+         16#05FF# => Group_01FF'Access, 16#06FF# => Group_01FF'Access,
+         16#07FF# => Group_01FF'Access, 16#08FF# => Group_01FF'Access,
+         16#09FF# => Group_01FF'Access, 16#0AFF# => Group_01FF'Access,
+         16#0BFF# => Group_01FF'Access, 16#0CFF# => Group_01FF'Access,
+         16#0DFF# => Group_01FF'Access, 16#0E00# => Group_0E00'Access,
+         16#0E01# => Group_0E01'Access, 16#0E02# => Group_0E02'Access,
+         16#0E03# => Group_0E02'Access, 16#0E04# => Group_0E02'Access,
+         16#0E05# => Group_0E02'Access, 16#0E06# => Group_0E02'Access,
+         16#0E07# => Group_0E02'Access, 16#0E08# => Group_0E02'Access,
+         16#0E09# => Group_0E02'Access, 16#0E0A# => Group_0E02'Access,
+         16#0E0B# => Group_0E02'Access, 16#0E0C# => Group_0E02'Access,
+         16#0E0D# => Group_0E02'Access, 16#0E0E# => Group_0E02'Access,
+         16#0E0F# => Group_0E02'Access, 16#0EFF# => Group_01FF'Access,
+         16#0F00# => Group_00E0'Access, 16#0F01# => Group_00E0'Access,
+         16#0F02# => Group_00E0'Access, 16#0F03# => Group_00E0'Access,
+         16#0F04# => Group_00E0'Access, 16#0F05# => Group_00E0'Access,
+         16#0F06# => Group_00E0'Access, 16#0F07# => Group_00E0'Access,
+         16#0F08# => Group_00E0'Access, 16#0F09# => Group_00E0'Access,
+         16#0F0A# => Group_00E0'Access, 16#0F0B# => Group_00E0'Access,
+         16#0F0C# => Group_00E0'Access, 16#0F0D# => Group_00E0'Access,
+         16#0F0E# => Group_00E0'Access, 16#0F0F# => Group_00E0'Access,
+         16#0F10# => Group_00E0'Access, 16#0F11# => Group_00E0'Access,
+         16#0F12# => Group_00E0'Access, 16#0F13# => Group_00E0'Access,
+         16#0F14# => Group_00E0'Access, 16#0F15# => Group_00E0'Access,
+         16#0F16# => Group_00E0'Access, 16#0F17# => Group_00E0'Access,
+         16#0F18# => Group_00E0'Access, 16#0F19# => Group_00E0'Access,
+         16#0F1A# => Group_00E0'Access, 16#0F1B# => Group_00E0'Access,
+         16#0F1C# => Group_00E0'Access, 16#0F1D# => Group_00E0'Access,
+         16#0F1E# => Group_00E0'Access, 16#0F1F# => Group_00E0'Access,
+         16#0F20# => Group_00E0'Access, 16#0F21# => Group_00E0'Access,
+         16#0F22# => Group_00E0'Access, 16#0F23# => Group_00E0'Access,
+         16#0F24# => Group_00E0'Access, 16#0F25# => Group_00E0'Access,
+         16#0F26# => Group_00E0'Access, 16#0F27# => Group_00E0'Access,
+         16#0F28# => Group_00E0'Access, 16#0F29# => Group_00E0'Access,
+         16#0F2A# => Group_00E0'Access, 16#0F2B# => Group_00E0'Access,
+         16#0F2C# => Group_00E0'Access, 16#0F2D# => Group_00E0'Access,
+         16#0F2E# => Group_00E0'Access, 16#0F2F# => Group_00E0'Access,
+         16#0F30# => Group_00E0'Access, 16#0F31# => Group_00E0'Access,
+         16#0F32# => Group_00E0'Access, 16#0F33# => Group_00E0'Access,
+         16#0F34# => Group_00E0'Access, 16#0F35# => Group_00E0'Access,
+         16#0F36# => Group_00E0'Access, 16#0F37# => Group_00E0'Access,
+         16#0F38# => Group_00E0'Access, 16#0F39# => Group_00E0'Access,
+         16#0F3A# => Group_00E0'Access, 16#0F3B# => Group_00E0'Access,
+         16#0F3C# => Group_00E0'Access, 16#0F3D# => Group_00E0'Access,
+         16#0F3E# => Group_00E0'Access, 16#0F3F# => Group_00E0'Access,
+         16#0F40# => Group_00E0'Access, 16#0F41# => Group_00E0'Access,
+         16#0F42# => Group_00E0'Access, 16#0F43# => Group_00E0'Access,
+         16#0F44# => Group_00E0'Access, 16#0F45# => Group_00E0'Access,
+         16#0F46# => Group_00E0'Access, 16#0F47# => Group_00E0'Access,
+         16#0F48# => Group_00E0'Access, 16#0F49# => Group_00E0'Access,
+         16#0F4A# => Group_00E0'Access, 16#0F4B# => Group_00E0'Access,
+         16#0F4C# => Group_00E0'Access, 16#0F4D# => Group_00E0'Access,
+         16#0F4E# => Group_00E0'Access, 16#0F4F# => Group_00E0'Access,
+         16#0F50# => Group_00E0'Access, 16#0F51# => Group_00E0'Access,
+         16#0F52# => Group_00E0'Access, 16#0F53# => Group_00E0'Access,
+         16#0F54# => Group_00E0'Access, 16#0F55# => Group_00E0'Access,
+         16#0F56# => Group_00E0'Access, 16#0F57# => Group_00E0'Access,
+         16#0F58# => Group_00E0'Access, 16#0F59# => Group_00E0'Access,
+         16#0F5A# => Group_00E0'Access, 16#0F5B# => Group_00E0'Access,
+         16#0F5C# => Group_00E0'Access, 16#0F5D# => Group_00E0'Access,
+         16#0F5E# => Group_00E0'Access, 16#0F5F# => Group_00E0'Access,
+         16#0F60# => Group_00E0'Access, 16#0F61# => Group_00E0'Access,
+         16#0F62# => Group_00E0'Access, 16#0F63# => Group_00E0'Access,
+         16#0F64# => Group_00E0'Access, 16#0F65# => Group_00E0'Access,
+         16#0F66# => Group_00E0'Access, 16#0F67# => Group_00E0'Access,
+         16#0F68# => Group_00E0'Access, 16#0F69# => Group_00E0'Access,
+         16#0F6A# => Group_00E0'Access, 16#0F6B# => Group_00E0'Access,
+         16#0F6C# => Group_00E0'Access, 16#0F6D# => Group_00E0'Access,
+         16#0F6E# => Group_00E0'Access, 16#0F6F# => Group_00E0'Access,
+         16#0F70# => Group_00E0'Access, 16#0F71# => Group_00E0'Access,
+         16#0F72# => Group_00E0'Access, 16#0F73# => Group_00E0'Access,
+         16#0F74# => Group_00E0'Access, 16#0F75# => Group_00E0'Access,
+         16#0F76# => Group_00E0'Access, 16#0F77# => Group_00E0'Access,
+         16#0F78# => Group_00E0'Access, 16#0F79# => Group_00E0'Access,
+         16#0F7A# => Group_00E0'Access, 16#0F7B# => Group_00E0'Access,
+         16#0F7C# => Group_00E0'Access, 16#0F7D# => Group_00E0'Access,
+         16#0F7E# => Group_00E0'Access, 16#0F7F# => Group_00E0'Access,
+         16#0F80# => Group_00E0'Access, 16#0F81# => Group_00E0'Access,
+         16#0F82# => Group_00E0'Access, 16#0F83# => Group_00E0'Access,
+         16#0F84# => Group_00E0'Access, 16#0F85# => Group_00E0'Access,
+         16#0F86# => Group_00E0'Access, 16#0F87# => Group_00E0'Access,
+         16#0F88# => Group_00E0'Access, 16#0F89# => Group_00E0'Access,
+         16#0F8A# => Group_00E0'Access, 16#0F8B# => Group_00E0'Access,
+         16#0F8C# => Group_00E0'Access, 16#0F8D# => Group_00E0'Access,
+         16#0F8E# => Group_00E0'Access, 16#0F8F# => Group_00E0'Access,
+         16#0F90# => Group_00E0'Access, 16#0F91# => Group_00E0'Access,
+         16#0F92# => Group_00E0'Access, 16#0F93# => Group_00E0'Access,
+         16#0F94# => Group_00E0'Access, 16#0F95# => Group_00E0'Access,
+         16#0F96# => Group_00E0'Access, 16#0F97# => Group_00E0'Access,
+         16#0F98# => Group_00E0'Access, 16#0F99# => Group_00E0'Access,
+         16#0F9A# => Group_00E0'Access, 16#0F9B# => Group_00E0'Access,
+         16#0F9C# => Group_00E0'Access, 16#0F9D# => Group_00E0'Access,
+         16#0F9E# => Group_00E0'Access, 16#0F9F# => Group_00E0'Access,
+         16#0FA0# => Group_00E0'Access, 16#0FA1# => Group_00E0'Access,
+         16#0FA2# => Group_00E0'Access, 16#0FA3# => Group_00E0'Access,
+         16#0FA4# => Group_00E0'Access, 16#0FA5# => Group_00E0'Access,
+         16#0FA6# => Group_00E0'Access, 16#0FA7# => Group_00E0'Access,
+         16#0FA8# => Group_00E0'Access, 16#0FA9# => Group_00E0'Access,
+         16#0FAA# => Group_00E0'Access, 16#0FAB# => Group_00E0'Access,
+         16#0FAC# => Group_00E0'Access, 16#0FAD# => Group_00E0'Access,
+         16#0FAE# => Group_00E0'Access, 16#0FAF# => Group_00E0'Access,
+         16#0FB0# => Group_00E0'Access, 16#0FB1# => Group_00E0'Access,
+         16#0FB2# => Group_00E0'Access, 16#0FB3# => Group_00E0'Access,
+         16#0FB4# => Group_00E0'Access, 16#0FB5# => Group_00E0'Access,
+         16#0FB6# => Group_00E0'Access, 16#0FB7# => Group_00E0'Access,
+         16#0FB8# => Group_00E0'Access, 16#0FB9# => Group_00E0'Access,
+         16#0FBA# => Group_00E0'Access, 16#0FBB# => Group_00E0'Access,
+         16#0FBC# => Group_00E0'Access, 16#0FBD# => Group_00E0'Access,
+         16#0FBE# => Group_00E0'Access, 16#0FBF# => Group_00E0'Access,
+         16#0FC0# => Group_00E0'Access, 16#0FC1# => Group_00E0'Access,
+         16#0FC2# => Group_00E0'Access, 16#0FC3# => Group_00E0'Access,
+         16#0FC4# => Group_00E0'Access, 16#0FC5# => Group_00E0'Access,
+         16#0FC6# => Group_00E0'Access, 16#0FC7# => Group_00E0'Access,
+         16#0FC8# => Group_00E0'Access, 16#0FC9# => Group_00E0'Access,
+         16#0FCA# => Group_00E0'Access, 16#0FCB# => Group_00E0'Access,
+         16#0FCC# => Group_00E0'Access, 16#0FCD# => Group_00E0'Access,
+         16#0FCE# => Group_00E0'Access, 16#0FCF# => Group_00E0'Access,
+         16#0FD0# => Group_00E0'Access, 16#0FD1# => Group_00E0'Access,
+         16#0FD2# => Group_00E0'Access, 16#0FD3# => Group_00E0'Access,
+         16#0FD4# => Group_00E0'Access, 16#0FD5# => Group_00E0'Access,
+         16#0FD6# => Group_00E0'Access, 16#0FD7# => Group_00E0'Access,
+         16#0FD8# => Group_00E0'Access, 16#0FD9# => Group_00E0'Access,
+         16#0FDA# => Group_00E0'Access, 16#0FDB# => Group_00E0'Access,
+         16#0FDC# => Group_00E0'Access, 16#0FDD# => Group_00E0'Access,
+         16#0FDE# => Group_00E0'Access, 16#0FDF# => Group_00E0'Access,
+         16#0FE0# => Group_00E0'Access, 16#0FE1# => Group_00E0'Access,
+         16#0FE2# => Group_00E0'Access, 16#0FE3# => Group_00E0'Access,
+         16#0FE4# => Group_00E0'Access, 16#0FE5# => Group_00E0'Access,
+         16#0FE6# => Group_00E0'Access, 16#0FE7# => Group_00E0'Access,
+         16#0FE8# => Group_00E0'Access, 16#0FE9# => Group_00E0'Access,
+         16#0FEA# => Group_00E0'Access, 16#0FEB# => Group_00E0'Access,
+         16#0FEC# => Group_00E0'Access, 16#0FED# => Group_00E0'Access,
+         16#0FEE# => Group_00E0'Access, 16#0FEF# => Group_00E0'Access,
+         16#0FF0# => Group_00E0'Access, 16#0FF1# => Group_00E0'Access,
+         16#0FF2# => Group_00E0'Access, 16#0FF3# => Group_00E0'Access,
+         16#0FF4# => Group_00E0'Access, 16#0FF5# => Group_00E0'Access,
+         16#0FF6# => Group_00E0'Access, 16#0FF7# => Group_00E0'Access,
+         16#0FF8# => Group_00E0'Access, 16#0FF9# => Group_00E0'Access,
+         16#0FFA# => Group_00E0'Access, 16#0FFB# => Group_00E0'Access,
+         16#0FFC# => Group_00E0'Access, 16#0FFD# => Group_00E0'Access,
+         16#0FFE# => Group_00E0'Access, 16#0FFF# => Group_0FFF'Access,
+         16#1000# => Group_00E0'Access, 16#1001# => Group_00E0'Access,
+         16#1002# => Group_00E0'Access, 16#1003# => Group_00E0'Access,
+         16#1004# => Group_00E0'Access, 16#1005# => Group_00E0'Access,
+         16#1006# => Group_00E0'Access, 16#1007# => Group_00E0'Access,
+         16#1008# => Group_00E0'Access, 16#1009# => Group_00E0'Access,
+         16#100A# => Group_00E0'Access, 16#100B# => Group_00E0'Access,
+         16#100C# => Group_00E0'Access, 16#100D# => Group_00E0'Access,
+         16#100E# => Group_00E0'Access, 16#100F# => Group_00E0'Access,
+         16#1010# => Group_00E0'Access, 16#1011# => Group_00E0'Access,
+         16#1012# => Group_00E0'Access, 16#1013# => Group_00E0'Access,
+         16#1014# => Group_00E0'Access, 16#1015# => Group_00E0'Access,
+         16#1016# => Group_00E0'Access, 16#1017# => Group_00E0'Access,
+         16#1018# => Group_00E0'Access, 16#1019# => Group_00E0'Access,
+         16#101A# => Group_00E0'Access, 16#101B# => Group_00E0'Access,
+         16#101C# => Group_00E0'Access, 16#101D# => Group_00E0'Access,
+         16#101E# => Group_00E0'Access, 16#101F# => Group_00E0'Access,
+         16#1020# => Group_00E0'Access, 16#1021# => Group_00E0'Access,
+         16#1022# => Group_00E0'Access, 16#1023# => Group_00E0'Access,
+         16#1024# => Group_00E0'Access, 16#1025# => Group_00E0'Access,
+         16#1026# => Group_00E0'Access, 16#1027# => Group_00E0'Access,
+         16#1028# => Group_00E0'Access, 16#1029# => Group_00E0'Access,
+         16#102A# => Group_00E0'Access, 16#102B# => Group_00E0'Access,
+         16#102C# => Group_00E0'Access, 16#102D# => Group_00E0'Access,
+         16#102E# => Group_00E0'Access, 16#102F# => Group_00E0'Access,
+         16#1030# => Group_00E0'Access, 16#1031# => Group_00E0'Access,
+         16#1032# => Group_00E0'Access, 16#1033# => Group_00E0'Access,
+         16#1034# => Group_00E0'Access, 16#1035# => Group_00E0'Access,
+         16#1036# => Group_00E0'Access, 16#1037# => Group_00E0'Access,
+         16#1038# => Group_00E0'Access, 16#1039# => Group_00E0'Access,
+         16#103A# => Group_00E0'Access, 16#103B# => Group_00E0'Access,
+         16#103C# => Group_00E0'Access, 16#103D# => Group_00E0'Access,
+         16#103E# => Group_00E0'Access, 16#103F# => Group_00E0'Access,
+         16#1040# => Group_00E0'Access, 16#1041# => Group_00E0'Access,
+         16#1042# => Group_00E0'Access, 16#1043# => Group_00E0'Access,
+         16#1044# => Group_00E0'Access, 16#1045# => Group_00E0'Access,
+         16#1046# => Group_00E0'Access, 16#1047# => Group_00E0'Access,
+         16#1048# => Group_00E0'Access, 16#1049# => Group_00E0'Access,
+         16#104A# => Group_00E0'Access, 16#104B# => Group_00E0'Access,
+         16#104C# => Group_00E0'Access, 16#104D# => Group_00E0'Access,
+         16#104E# => Group_00E0'Access, 16#104F# => Group_00E0'Access,
+         16#1050# => Group_00E0'Access, 16#1051# => Group_00E0'Access,
+         16#1052# => Group_00E0'Access, 16#1053# => Group_00E0'Access,
+         16#1054# => Group_00E0'Access, 16#1055# => Group_00E0'Access,
+         16#1056# => Group_00E0'Access, 16#1057# => Group_00E0'Access,
+         16#1058# => Group_00E0'Access, 16#1059# => Group_00E0'Access,
+         16#105A# => Group_00E0'Access, 16#105B# => Group_00E0'Access,
+         16#105C# => Group_00E0'Access, 16#105D# => Group_00E0'Access,
+         16#105E# => Group_00E0'Access, 16#105F# => Group_00E0'Access,
+         16#1060# => Group_00E0'Access, 16#1061# => Group_00E0'Access,
+         16#1062# => Group_00E0'Access, 16#1063# => Group_00E0'Access,
+         16#1064# => Group_00E0'Access, 16#1065# => Group_00E0'Access,
+         16#1066# => Group_00E0'Access, 16#1067# => Group_00E0'Access,
+         16#1068# => Group_00E0'Access, 16#1069# => Group_00E0'Access,
+         16#106A# => Group_00E0'Access, 16#106B# => Group_00E0'Access,
+         16#106C# => Group_00E0'Access, 16#106D# => Group_00E0'Access,
+         16#106E# => Group_00E0'Access, 16#106F# => Group_00E0'Access,
+         16#1070# => Group_00E0'Access, 16#1071# => Group_00E0'Access,
+         16#1072# => Group_00E0'Access, 16#1073# => Group_00E0'Access,
+         16#1074# => Group_00E0'Access, 16#1075# => Group_00E0'Access,
+         16#1076# => Group_00E0'Access, 16#1077# => Group_00E0'Access,
+         16#1078# => Group_00E0'Access, 16#1079# => Group_00E0'Access,
+         16#107A# => Group_00E0'Access, 16#107B# => Group_00E0'Access,
+         16#107C# => Group_00E0'Access, 16#107D# => Group_00E0'Access,
+         16#107E# => Group_00E0'Access, 16#107F# => Group_00E0'Access,
+         16#1080# => Group_00E0'Access, 16#1081# => Group_00E0'Access,
+         16#1082# => Group_00E0'Access, 16#1083# => Group_00E0'Access,
+         16#1084# => Group_00E0'Access, 16#1085# => Group_00E0'Access,
+         16#1086# => Group_00E0'Access, 16#1087# => Group_00E0'Access,
+         16#1088# => Group_00E0'Access, 16#1089# => Group_00E0'Access,
+         16#108A# => Group_00E0'Access, 16#108B# => Group_00E0'Access,
+         16#108C# => Group_00E0'Access, 16#108D# => Group_00E0'Access,
+         16#108E# => Group_00E0'Access, 16#108F# => Group_00E0'Access,
+         16#1090# => Group_00E0'Access, 16#1091# => Group_00E0'Access,
+         16#1092# => Group_00E0'Access, 16#1093# => Group_00E0'Access,
+         16#1094# => Group_00E0'Access, 16#1095# => Group_00E0'Access,
+         16#1096# => Group_00E0'Access, 16#1097# => Group_00E0'Access,
+         16#1098# => Group_00E0'Access, 16#1099# => Group_00E0'Access,
+         16#109A# => Group_00E0'Access, 16#109B# => Group_00E0'Access,
+         16#109C# => Group_00E0'Access, 16#109D# => Group_00E0'Access,
+         16#109E# => Group_00E0'Access, 16#109F# => Group_00E0'Access,
+         16#10A0# => Group_00E0'Access, 16#10A1# => Group_00E0'Access,
+         16#10A2# => Group_00E0'Access, 16#10A3# => Group_00E0'Access,
+         16#10A4# => Group_00E0'Access, 16#10A5# => Group_00E0'Access,
+         16#10A6# => Group_00E0'Access, 16#10A7# => Group_00E0'Access,
+         16#10A8# => Group_00E0'Access, 16#10A9# => Group_00E0'Access,
+         16#10AA# => Group_00E0'Access, 16#10AB# => Group_00E0'Access,
+         16#10AC# => Group_00E0'Access, 16#10AD# => Group_00E0'Access,
+         16#10AE# => Group_00E0'Access, 16#10AF# => Group_00E0'Access,
+         16#10B0# => Group_00E0'Access, 16#10B1# => Group_00E0'Access,
+         16#10B2# => Group_00E0'Access, 16#10B3# => Group_00E0'Access,
+         16#10B4# => Group_00E0'Access, 16#10B5# => Group_00E0'Access,
+         16#10B6# => Group_00E0'Access, 16#10B7# => Group_00E0'Access,
+         16#10B8# => Group_00E0'Access, 16#10B9# => Group_00E0'Access,
+         16#10BA# => Group_00E0'Access, 16#10BB# => Group_00E0'Access,
+         16#10BC# => Group_00E0'Access, 16#10BD# => Group_00E0'Access,
+         16#10BE# => Group_00E0'Access, 16#10BF# => Group_00E0'Access,
+         16#10C0# => Group_00E0'Access, 16#10C1# => Group_00E0'Access,
+         16#10C2# => Group_00E0'Access, 16#10C3# => Group_00E0'Access,
+         16#10C4# => Group_00E0'Access, 16#10C5# => Group_00E0'Access,
+         16#10C6# => Group_00E0'Access, 16#10C7# => Group_00E0'Access,
+         16#10C8# => Group_00E0'Access, 16#10C9# => Group_00E0'Access,
+         16#10CA# => Group_00E0'Access, 16#10CB# => Group_00E0'Access,
+         16#10CC# => Group_00E0'Access, 16#10CD# => Group_00E0'Access,
+         16#10CE# => Group_00E0'Access, 16#10CF# => Group_00E0'Access,
+         16#10D0# => Group_00E0'Access, 16#10D1# => Group_00E0'Access,
+         16#10D2# => Group_00E0'Access, 16#10D3# => Group_00E0'Access,
+         16#10D4# => Group_00E0'Access, 16#10D5# => Group_00E0'Access,
+         16#10D6# => Group_00E0'Access, 16#10D7# => Group_00E0'Access,
+         16#10D8# => Group_00E0'Access, 16#10D9# => Group_00E0'Access,
+         16#10DA# => Group_00E0'Access, 16#10DB# => Group_00E0'Access,
+         16#10DC# => Group_00E0'Access, 16#10DD# => Group_00E0'Access,
+         16#10DE# => Group_00E0'Access, 16#10DF# => Group_00E0'Access,
+         16#10E0# => Group_00E0'Access, 16#10E1# => Group_00E0'Access,
+         16#10E2# => Group_00E0'Access, 16#10E3# => Group_00E0'Access,
+         16#10E4# => Group_00E0'Access, 16#10E5# => Group_00E0'Access,
+         16#10E6# => Group_00E0'Access, 16#10E7# => Group_00E0'Access,
+         16#10E8# => Group_00E0'Access, 16#10E9# => Group_00E0'Access,
+         16#10EA# => Group_00E0'Access, 16#10EB# => Group_00E0'Access,
+         16#10EC# => Group_00E0'Access, 16#10ED# => Group_00E0'Access,
+         16#10EE# => Group_00E0'Access, 16#10EF# => Group_00E0'Access,
+         16#10F0# => Group_00E0'Access, 16#10F1# => Group_00E0'Access,
+         16#10F2# => Group_00E0'Access, 16#10F3# => Group_00E0'Access,
+         16#10F4# => Group_00E0'Access, 16#10F5# => Group_00E0'Access,
+         16#10F6# => Group_00E0'Access, 16#10F7# => Group_00E0'Access,
+         16#10F8# => Group_00E0'Access, 16#10F9# => Group_00E0'Access,
+         16#10FA# => Group_00E0'Access, 16#10FB# => Group_00E0'Access,
+         16#10FC# => Group_00E0'Access, 16#10FD# => Group_00E0'Access,
+         16#10FE# => Group_00E0'Access, 16#10FF# => Group_0FFF'Access,
+         others   => Group_0105'Access);
 
 end Matreshka.Internals.Unicode.Ucd.Core;
