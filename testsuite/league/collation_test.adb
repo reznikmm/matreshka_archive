@@ -58,9 +58,10 @@ procedure Collation_Test is
 
    Unidata_Directory          : constant String
      := Ada.Command_Line.Argument (1);
-   CollationTest_SHIFTED_Name : constant String := "CollationTest_SHIFTED.txt";
+   CollationTest_SHIFTED_Name : constant String
+     := "CollationAuxiliary/CollationTest_CLDR_SHIFTED.txt";
    CollationTest_NON_IGNORABLE_Name : constant String
-     := "CollationTest_NON_IGNORABLE.txt";
+     := "CollationAuxiliary/CollationTest_CLDR_NON_IGNORABLE.txt";
 
    type Parser is
      new Unicode_Data_File_Parsers.Unicode_Data_File_Parser with

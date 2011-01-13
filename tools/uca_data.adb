@@ -53,7 +53,7 @@ package body Uca_Data is
    use Matreshka.Internals.Unicode.Ucd;
    use Utils;
 
-   All_Keys_Name : constant String := "allkeys.txt";
+   All_Keys_Name : constant String := "CollationAuxiliary/allkeys_CLDR.txt";
 
    type All_Keys_Parser is
      new Unicode_Data_File_Parsers.Unicode_Data_File_Parser with null record;
