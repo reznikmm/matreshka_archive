@@ -93,7 +93,7 @@ package Matreshka.Internals.Utf16 is
    --  Internal representation of UTF-16 encoded string.
 
    type Unaligned_Utf16_String is
-     array (Utf16_String_Index range <>) of Utf16_Code_Unit;
+     array (Utf16_String_Index range <>) of aliased Utf16_Code_Unit;
    for Unaligned_Utf16_String'Alignment use Utf16_Code_Unit'Alignment;
    pragma Pack (Unaligned_Utf16_String);
    --  Unaligned UTF-16 encoded string, intended to be used to interface with
