@@ -56,6 +56,8 @@ with League.Text_Codecs;
 separate (League.Application)
 procedure Initialize_Arguments_Environment is
 
+   use type Interfaces.C.size_t;
+
    package chars_ptr_Pointers is
      new Interfaces.C.Pointers
           (Interfaces.C.size_t,
@@ -206,8 +208,6 @@ begin
    --  Convert arguments.
 
    declare
-      use type Interfaces.C.size_t;
-
       Argv : constant Interfaces.C.Strings.chars_ptr_array
         := chars_ptr_Pointers.Value
             (chars_ptr_Pointers.Pointer
@@ -224,5 +224,25 @@ begin
 
    --  Convert process environment.
 
-   --  XXX Not implemented.
+   declare
+      Envp : constant Interfaces.C.Strings.chars_ptr_array
+        := chars_ptr_Pointers.Value
+            (chars_ptr_Pointers.Pointer
+              (chars_ptr_Conversions.To_Pointer (GNAT_Envp)));
+
+   begin
+      for J in Envp'First .. Envp'Last - 1 loop
+         declare
+            Pair  : constant String := Interfaces.C.Strings.Value (Envp (J));
+            Index : constant Natural := Ada.Strings.Fixed.Index (Pair, "=");
+
+         begin
+            Env.Insert
+             (Codec.Decode
+               (To_Stream_Element_Array (Pair (Pair'First .. Index - 1))),
+              Codec.Decode
+               (To_Stream_Element_Array (Pair (Index + 1 .. Pair'Last))));
+         end;
+      end loop;
+   end;
 end Initialize_Arguments_Environment;
