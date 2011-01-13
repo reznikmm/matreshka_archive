@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -92,6 +92,13 @@ package Matreshka.Internals.Utf16 is
    pragma Pack (Utf16_String);
    --  Internal representation of UTF-16 encoded string.
 
+   type Unaligned_Utf16_String is
+     array (Utf16_String_Index range <>) of Utf16_Code_Unit;
+   for Unaligned_Utf16_String'Alignment use Utf16_Code_Unit'Alignment;
+   pragma Pack (Unaligned_Utf16_String);
+   --  Unaligned UTF-16 encoded string, intended to be used to interface with
+   --  external libraries.
+
    function Unchecked_To_Code_Point
     (Item     : Utf16_String;
      Position : Utf16_String_Index)
@@ -102,6 +109,14 @@ package Matreshka.Internals.Utf16 is
 
    procedure Unchecked_Next
     (Item     : Utf16_String;
+     Position : in out Utf16_String_Index;
+     Code     : out Matreshka.Internals.Unicode.Code_Point);
+   pragma Inline (Unchecked_Next);
+   --  Convert character or surrogate pair at the specified position in the
+   --  the Unicode code point and moves position to the next character.
+
+   procedure Unchecked_Next
+    (Item     : Unaligned_Utf16_String;
      Position : in out Utf16_String_Index;
      Code     : out Matreshka.Internals.Unicode.Code_Point);
    pragma Inline (Unchecked_Next);

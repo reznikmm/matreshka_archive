@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -117,6 +117,40 @@ package body Matreshka.Internals.Utf16 is
 
    procedure Unchecked_Next
     (Item     : Utf16_String;
+     Position : in out Utf16_String_Index;
+     Code     : out Matreshka.Internals.Unicode.Code_Point)
+   is
+      pragma Assert
+       ((Position <= Item'Last
+           and then Item (Position)
+                      not in High_Surrogate_First .. High_Surrogate_Last)
+         or (Position + 1 <= Item'Last
+               and then Item (Position)
+                          in High_Surrogate_First .. High_Surrogate_Last
+               and then Item (Position + 1)
+                          in Low_Surrogate_First .. Low_Surrogate_Last));
+      pragma Suppress (Index_Check);
+      pragma Suppress (Range_Check);
+      --  Assertion checks both range and validity of source data; this check
+      --  is stronger then run time checks.
+
+   begin
+      Code := Code_Point (Item (Position));
+      Position := Position + 1;
+
+      if (Code and Surrogate_Kind_Mask) = Masked_High_Surrogate then
+         Code :=
+           Code * 16#400# + Code_Point (Item (Position)) - UCS4_Fixup;
+         Position := Position + 1;
+      end if;
+   end Unchecked_Next;
+
+   --------------------
+   -- Unchecked_Next --
+   --------------------
+
+   procedure Unchecked_Next
+    (Item     : Unaligned_Utf16_String;
      Position : in out Utf16_String_Index;
      Code     : out Matreshka.Internals.Unicode.Code_Point)
    is
