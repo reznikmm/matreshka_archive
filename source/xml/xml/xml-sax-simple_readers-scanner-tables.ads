@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -60,7 +60,7 @@ private package XML.SAX.Simple_Readers.Scanner.Tables is
      not null access constant YY_Secondary_Array;
 
    YY_End_Of_Buffer  : constant := 111;
-   YY_Jam_State      : constant := 546;
+   YY_Jam_Base       : constant := 4158;
    YY_First_Template : constant := 547;
 
    INITIAL               : constant := 0;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -726,17 +726,10 @@ package body XML.SAX.Simple_Readers.Scanner is
             Self.Scanner_State.YY_Current_Skip_LF  := YY_Next_Skip_LF;
             YY_Current_State := YY_Nxt (YY_Base (YY_Current_State) + YY_C);
 
-            exit when YY_Current_State = YY_Jam_State;
+            exit when YY_Base (YY_Current_State) = YY_Jam_Base;
          end loop;
 
          --  Return back to last accepting state.
-
-         Self.Scanner_State.YY_Current_Position := YY_Last_Accepting_Position;
-         Self.Scanner_State.YY_Current_Index    := YY_Last_Accepting_Index;
-         Self.Scanner_State.YY_Current_Line     := YY_Last_Accepting_Line;
-         Self.Scanner_State.YY_Current_Column   := YY_Last_Accepting_Column;
-         Self.Scanner_State.YY_Current_Skip_LF  := YY_Last_Accepting_Skip_LF;
-         YY_Current_State                       := YY_Last_Accepting_State;
 
    <<Next_Action>>
          YY_Action := YY_Accept (YY_Current_State);
@@ -1541,33 +1534,6 @@ package body XML.SAX.Simple_Readers.Scanner is
 
                      elsif Self.Scanner_State.Incremental then
                         YY_End_Of_Buffer_Action := YY_End_Of_Chunk;
-
-                        --  In incremental mode, when element tag is processed
-                        --  and buffer ends on '>' or '/>' processing of last
-                        --  matched pattern is forced to prevent waiting till
-                        --  next portion of data is readed. This allows to
-                        --  applications to process start/end/empty tags
-                        --  immidiately, which is implicitly expected by
-                        --  users.
-
-                        if Start_Condition (Self) = Element_Start then
-                           if ((Self.Scanner_State.YY_Current_Position
-                                  - Self.Scanner_State.YY_Base_Position) = 1
-                                 and then Self.Scanner_State.Data.Value
-                                  (Self.Scanner_State.YY_Base_Position)
-                                     = Greater_Than_Sign)
-                             or ((Self.Scanner_State.YY_Current_Position
-                                    - Self.Scanner_State.YY_Base_Position) = 2
-                                 and then Self.Scanner_State.Data.Value
-                                  (Self.Scanner_State.YY_Base_Position)
-                                     = Solidus
-                                 and then Self.Scanner_State.Data.Value
-                                  (Self.Scanner_State.YY_Base_Position + 1)
-                                     = Greater_Than_Sign)
-                           then
-                              YY_End_Of_Buffer_Action := YY_Accept_Last_Match;
-                           end if;
-                        end if;
                      end if;
                   end if;
 

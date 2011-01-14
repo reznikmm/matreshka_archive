@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -277,7 +277,7 @@ package body Scanner_Generator is
              (Output,
               "XML Processor",
               2010,
-              2010);
+              2011);
       end case;
 
       Put_Line (Output, "pragma Style_Checks (""-t"");");
@@ -333,9 +333,19 @@ package body Scanner_Generator is
       Put (Output, "   YY_End_Of_Buffer  : constant := ");
       Put (Output, YY_End_Of_Buffer, 0);
       Put_Line (Output, ";");
-      Put (Output, "   YY_Jam_State      : constant := ");
-      Put (Output, YY_Jam_State, 0);
-      Put_Line (Output, ";");
+
+      if YY_Jam_State /= -1 then
+         Put (Output, "   YY_Jam_State      : constant := ");
+         Put (Output, YY_Jam_State, 0);
+         Put_Line (Output, ";");
+      end if;
+
+      if YY_Jam_Base /= -1 then
+         Put (Output, "   YY_Jam_Base       : constant := ");
+         Put (Output, YY_Jam_Base, 0);
+         Put_Line (Output, ";");
+      end if;
+
       Put (Output, "   YY_First_Template : constant := ");
       Put (Output, YY_First_Template, 0);
       Put_Line (Output, ";");
