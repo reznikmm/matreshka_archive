@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -69,10 +69,6 @@ package CMOF_Tree_Models is
 
 private
 
-   procedure Set_Root
-    (Self : not null access CMOF_Tree_Model'Class;
-     Root : CMOF.CMOF_Element);
-
    type Abstract_Node is tagged;
    type Node_Access is access all Abstract_Node'Class;
 
@@ -82,6 +78,7 @@ private
    type Abstract_Node is abstract tagged limited record
       Parent       : Node_Access;
       Children     : Node_Vectors.Vector;
+      Extent       : CMOF.CMOF_Extent;
       Is_Populated : Boolean := False;
       Name         : Qt4.Strings.Q_String;
    end record;

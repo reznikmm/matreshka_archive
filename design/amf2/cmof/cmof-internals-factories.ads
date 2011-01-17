@@ -41,30 +41,36 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers.Hashed_Sets;
-
-with AMF.Factories;
+--  Factory for CMOF classes.
+------------------------------------------------------------------------------
 with League.Strings;
 
-package CMOF.Extents is
+with AMF.Factories;
+with AMF.Values;
 
-   function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type;
+package CMOF.Internals.Factories is
 
-   package CMOF_Element_Sets is
-     new Ada.Containers.Hashed_Sets (CMOF_Element, Hash, "=");
+   type CMOF_Factory is limited new AMF.Factories.AMF_Factory with null record;
 
-   function Create_Extent return CMOF_Extent;
+   overriding function Create
+    (Self       : not null access CMOF_Factory;
+     Extent     : CMOF_Extent;
+     Meta_Class : CMOF_Class) return CMOF_Element;
 
-   function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set;
+   overriding procedure Create_Link
+    (Self           : not null access CMOF_Factory;
+     Association    : CMOF_Association;
+     First_Element  : CMOF_Element;
+     Second_Element : CMOF_Element);
 
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String) return CMOF_Element;
+   overriding function Create_From_String
+    (Self      : not null access CMOF_Factory;
+     Data_Type : CMOF_Data_Type;
+     Image     : League.Strings.Universal_String) return AMF.Values.Value;
 
-   function Factory
-    (Self : CMOF_Extent) return AMF.Factories.AMF_Factory_Access;
-   --  CMOF::Store class will be provided in the future, and it will implement
-   --  CMOF::Extent and CMOF::Factory. But for now, this subprogram is
-   --  provided to return factory.
+   overriding function Convert_To_String
+    (Self      : not null access CMOF_Factory;
+     Data_Type : CMOF_Data_Type;
+     Value     : AMF.Values.Value) return League.Strings.Universal_String;
 
-end CMOF.Extents;
+end CMOF.Internals.Factories;

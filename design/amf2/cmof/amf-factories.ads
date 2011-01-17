@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,23 +44,37 @@
 with League.Strings;
 
 with AMF.Values;
+with CMOF;
 
-package CMOF.Factory is
+package AMF.Factories is
 
-   function Create
-    (Extent : CMOF_Extent; Meta_Class : CMOF_Class) return CMOF_Element;
+   pragma Preelaborate;
 
-   procedure Create_Link
-    (Association    : CMOF_Association;
-     First_Element  : CMOF_Element;
-     Second_Element : CMOF_Element);
+   type AMF_Factory is limited interface;
 
-   function Create_From_String
-    (Data_Type : CMOF_Data_Type;
-     Image     : League.Strings.Universal_String) return AMF.Values.Value;
+   type AMF_Factory_Access is access all AMF_Factory'Class;
 
-   function Convert_To_String
-    (Data_Type : CMOF_Data_Type;
-     Value     : AMF.Values.Value) return League.Strings.Universal_String;
+   not overriding function Create
+    (Self       : not null access AMF_Factory;
+     Extent     : CMOF.CMOF_Extent;
+     Meta_Class : CMOF.CMOF_Class) return CMOF.CMOF_Element is abstract;
 
-end CMOF.Factory;
+   not overriding procedure Create_Link
+    (Self           : not null access AMF_Factory;
+     Association    : CMOF.CMOF_Association;
+     First_Element  : CMOF.CMOF_Element;
+     Second_Element : CMOF.CMOF_Element) is abstract;
+
+   not overriding function Create_From_String
+    (Self      : not null access AMF_Factory;
+     Data_Type : CMOF.CMOF_Data_Type;
+     Image     : League.Strings.Universal_String)
+       return AMF.Values.Value is abstract;
+
+   not overriding function Convert_To_String
+    (Self      : not null access AMF_Factory;
+     Data_Type : CMOF.CMOF_Data_Type;
+     Value     : AMF.Values.Value)
+       return League.Strings.Universal_String is abstract;
+
+end AMF.Factories;

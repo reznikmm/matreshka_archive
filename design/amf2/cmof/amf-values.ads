@@ -50,6 +50,8 @@ with CMOF;
 
 package AMF.Values is
 
+   pragma Preelaborate;
+
    type Value_Kinds is
     (Value_None,
      Value_String,

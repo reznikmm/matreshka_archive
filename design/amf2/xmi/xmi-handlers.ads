@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,6 +45,7 @@ private with Ada.Containers.Vectors;
 private with Ada.Containers.Hashed_Maps;
 private with Ada.Containers.Hashed_Sets;
 
+private with AMF.Factories;
 private with League.Strings;
 private with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
@@ -97,6 +98,7 @@ private
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler with record
       Extent           : CMOF.CMOF_Extent;
+      Factory          : AMF.Factories.AMF_Factory_Access;
       Current          : CMOF.CMOF_Element := CMOF.Null_CMOF_Element;
       Stack            : Element_Vectors.Vector;
       Attribute        : CMOF.CMOF_Property := CMOF.Null_CMOF_Element;

@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  XXX XMI handler can process only CMOF models for now.
-
 with Ada.Characters.Conversions;
 with Ada.Containers.Hashed_Maps;
 with Ada.Wide_Wide_Text_IO;
@@ -50,12 +48,12 @@ with Ada.Wide_Wide_Text_IO;
 with League.String_Vectors;
 with XMI.Reader;
 
+with AMF.Factories.Registry;
 with AMF.Values;
 with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Extents;
-with CMOF.Factory;
 with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
 with CMOF.Properties;
@@ -75,6 +73,7 @@ package body XMI.Handlers is
    use CMOF.Properties;
    use CMOF.Typed_Elements;
    use CMOF.XMI_Helper;
+   use type League.Strings.Universal_String;
 
    XMI_Namespace  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
@@ -184,7 +183,7 @@ package body XMI.Handlers is
                   Set
                    (Self.Current,
                     Self.Attribute,
-                    CMOF.Factory.Create_From_String
+                    Self.Factory.Create_From_String
                      (Get_Type (Self.Attribute), Self.Text));
 
                else
@@ -246,10 +245,10 @@ package body XMI.Handlers is
          Self.Duplicate.Insert ((Association, E_Id, O_Id));
 
          if Element (Get_Member_End (Association), 1) = Attribute then
-            CMOF.Factory.Create_Link (Association, One_Element, Other_Element);
+            Self.Factory.Create_Link (Association, One_Element, Other_Element);
 
          else
-            CMOF.Factory.Create_Link (Association, Other_Element, One_Element);
+            Self.Factory.Create_Link (Association, Other_Element, One_Element);
          end if;
       end if;
    end Establish_Link;
@@ -259,8 +258,6 @@ package body XMI.Handlers is
    ----------
 
    function Hash (Item : Duplicate_Link) return Ada.Containers.Hash_Type is
-      use type League.Strings.Universal_String;
-
    begin
       return Hash (Item.First & Item.Second);
    end Hash;
@@ -313,7 +310,6 @@ package body XMI.Handlers is
    is
       use CMOF.Classes;
       use CMOF.Named_Elements;
-      use type League.Strings.Universal_String;
 
       Attributes    : constant Ordered_Set_Of_CMOF_Property
         := Get_Owned_Attribute (Class);
@@ -387,8 +383,6 @@ package body XMI.Handlers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean)
    is
-      use type League.Strings.Universal_String;
-
       use CMOF.Classes;
       use CMOF.Named_Elements;
 
@@ -445,7 +439,7 @@ package body XMI.Handlers is
             Set
              (Self.Current,
               Property,
-              CMOF.Factory.Create_From_String (Get_Type (Property), Value));
+              Self.Factory.Create_From_String (Get_Type (Property), Value));
 
          else
             Association := Get_Association (Property);
@@ -563,7 +557,7 @@ package body XMI.Handlers is
                raise Program_Error;
             end if;
 
-            New_Element := CMOF.Factory.Create (Self.Extent, Meta);
+            New_Element := Self.Factory.Create (Self.Extent, Meta);
             Set_Id (New_Element, Attributes.Value (XMI_Namespace, Id_Name));
             Self.Mapping.Insert
              (Attributes.Value (XMI_Namespace, Id_Name), New_Element);
@@ -631,7 +625,7 @@ package body XMI.Handlers is
          end if;
 
          Meta         := CMOF.XMI_Helper.Resolve (Local_Name);
-         Self.Current := CMOF.Factory.Create (Self.Extent, Meta);
+         Self.Current := Self.Factory.Create (Self.Extent, Meta);
          Set_Id (Self.Current, Attributes.Value (XMI_Namespace, Id_Name));
          Self.Mapping.Insert
           (Attributes.Value (XMI_Namespace, Id_Name), Self.Current);
@@ -678,12 +672,15 @@ package body XMI.Handlers is
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean) is
    begin
-      Put_Line
-       (Standard_Error,
-        "'"
-          & Prefix.To_Wide_Wide_String
-          & "' is mapped to "
-          & Namespace_URI.To_Wide_Wide_String);
+      if Namespace_URI /= XMI_Namespace then
+         Put_Line
+          (Standard_Error,
+           "'"
+             & Prefix.To_Wide_Wide_String
+             & "' is mapped to "
+             & Namespace_URI.To_Wide_Wide_String);
+         Self.Factory := AMF.Factories.Registry.Resolve (Namespace_URI);
+      end if;
    end Start_Prefix_Mapping;
 
 end XMI.Handlers;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,13 +43,14 @@
 ------------------------------------------------------------------------------
 with Ada.Strings.Wide_Wide_Fixed;
 
+with AMF.Factories.Registry;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Collections;
 with CMOF.Internals.Constructors;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Links;
 
-package body CMOF.Factory is
+package body CMOF.Internals.Factories is
 
    use CMOF.Internals.Metamodel;
 
@@ -57,8 +58,10 @@ package body CMOF.Factory is
    -- Create --
    ------------
 
-   function Create
-    (Extent : CMOF_Extent; Meta_Class : CMOF_Class) return CMOF_Element is
+   overriding function Create
+    (Self       : not null access CMOF_Factory;
+     Extent     : CMOF_Extent;
+     Meta_Class : CMOF_Class) return CMOF_Element is
    begin
       if Meta_Class = MC_CMOF_Association then
          return CMOF.Internals.Constructors.Create_Association (Extent);
@@ -120,7 +123,8 @@ package body CMOF.Factory is
    ------------------------
 
    function Create_From_String
-    (Data_Type : CMOF_Data_Type;
+    (Self      : not null access CMOF_Factory;
+     Data_Type : CMOF_Data_Type;
      Image     : League.Strings.Universal_String) return AMF.Values.Value
    is
       use type League.Strings.Universal_String;
@@ -210,7 +214,8 @@ package body CMOF.Factory is
    -----------------
 
    procedure Create_Link
-    (Association    : CMOF_Association;
+    (Self           : not null access CMOF_Factory;
+     Association    : CMOF_Association;
      First_Element  : CMOF_Element;
      Second_Element : CMOF_Element)
    is
@@ -231,7 +236,8 @@ package body CMOF.Factory is
    -----------------------
 
    function Convert_To_String
-    (Data_Type : CMOF_Data_Type;
+    (Self      : not null access CMOF_Factory;
+     Data_Type : CMOF_Data_Type;
      Value     : AMF.Values.Value) return League.Strings.Universal_String
    is
       use Ada.Strings;
@@ -274,4 +280,11 @@ package body CMOF.Factory is
       end if;
    end Convert_To_String;
 
-end CMOF.Factory;
+   Factory : aliased CMOF_Factory;
+
+begin
+   AMF.Factories.Registry.Register
+    (League.Strings.To_Universal_String
+      ("http://schema.omg.org/spec/MOF/2.0/cmof.xml"),
+     Factory'Access);
+end CMOF.Internals.Factories;

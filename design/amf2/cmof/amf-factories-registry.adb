@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,30 +41,54 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers.Hashed_Sets;
+--  Registry of factories for all known meta models.
+------------------------------------------------------------------------------
+with Ada.Containers.Hashed_Maps;
 
-with AMF.Factories;
-with League.Strings;
+package body AMF.Factories.Registry is
 
-package CMOF.Extents is
+   function Hash
+    (Item : League.Strings.Universal_String) return Ada.Containers.hash_Type;
 
-   function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type;
+   package Factory_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           AMF_Factory_Access,
+           Hash,
+           League.Strings."=");
 
-   package CMOF_Element_Sets is
-     new Ada.Containers.Hashed_Sets (CMOF_Element, Hash, "=");
+   Map : Factory_Maps.Map;
 
-   function Create_Extent return CMOF_Extent;
+   ----------
+   -- Hash --
+   ----------
 
-   function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set;
+   function Hash
+    (Item : League.Strings.Universal_String) return Ada.Containers.hash_Type is
+   begin
+      return Ada.Containers.Hash_Type (Item.Hash);
+   end Hash;
 
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String) return CMOF_Element;
+   --------------
+   -- Register --
+   --------------
 
-   function Factory
-    (Self : CMOF_Extent) return AMF.Factories.AMF_Factory_Access;
-   --  CMOF::Store class will be provided in the future, and it will implement
-   --  CMOF::Extent and CMOF::Factory. But for now, this subprogram is
-   --  provided to return factory.
+   procedure Register
+    (URI     : League.Strings.Universal_String;
+     Factory : not null AMF_Factory_Access) is
+   begin
+      Map.Insert (URI, Factory);
+   end Register;
 
-end CMOF.Extents;
+   -------------
+   -- Resolve --
+   -------------
+
+   function Resolve
+    (URI : League.Strings.Universal_String)
+       return not null AMF_Factory_Access is
+   begin
+      return Map.Element (URI);
+   end Resolve;
+
+end AMF.Factories.Registry;

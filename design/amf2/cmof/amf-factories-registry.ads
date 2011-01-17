@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,30 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers.Hashed_Sets;
+--  Registry of factories for all known meta models.
+------------------------------------------------------------------------------
 
-with AMF.Factories;
-with League.Strings;
+package AMF.Factories.Registry is
 
-package CMOF.Extents is
+   procedure Register
+    (URI     : League.Strings.Universal_String;
+     Factory : not null AMF_Factory_Access);
 
-   function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type;
+   function Resolve
+    (URI : League.Strings.Universal_String)
+       return not null AMF_Factory_Access;
 
-   package CMOF_Element_Sets is
-     new Ada.Containers.Hashed_Sets (CMOF_Element, Hash, "=");
-
-   function Create_Extent return CMOF_Extent;
-
-   function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set;
-
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String) return CMOF_Element;
-
-   function Factory
-    (Self : CMOF_Extent) return AMF.Factories.AMF_Factory_Access;
-   --  CMOF::Store class will be provided in the future, and it will implement
-   --  CMOF::Extent and CMOF::Factory. But for now, this subprogram is
-   --  provided to return factory.
-
-end CMOF.Extents;
+end AMF.Factories.Registry;

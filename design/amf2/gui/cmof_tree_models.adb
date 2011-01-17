@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -53,7 +53,6 @@ with AMF;
 with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Extents;
-with CMOF.Factory;
 with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
 with CMOF.Properties;
@@ -358,9 +357,10 @@ package body CMOF_Tree_Models is
               new Attribute_Value_Node'
                    (Node_Access (Self),
                     Node_Vectors.Empty_Vector,
+                    Self.Extent,
                     True,
                     Qt4.Strings.From_Ucs_4
-                     (CMOF.Factory.Convert_To_String
+                     (CMOF.Extents.Factory (Self.Extent).Convert_To_String
                        (Get_Type (Self.Attribute),
                         Get
                          (Self.Element, Self.Attribute)).To_Wide_Wide_String));
@@ -378,6 +378,7 @@ package body CMOF_Tree_Models is
                        new Element_Node'
                             (Node_Access (Self),
                              Node_Vectors.Empty_Vector,
+                             Self.Extent,
                              False,
                              Qt4.Strings.From_Ucs_4
                               (Get_Name
@@ -399,6 +400,7 @@ package body CMOF_Tree_Models is
                        new Element_Node'
                             (Node_Access (Self),
                              Node_Vectors.Empty_Vector,
+                             Self.Extent,
                              True,
                              Qt4.Strings.From_Utf_8 ("<null>"),
                              Null_CMOF_Element);
@@ -408,6 +410,7 @@ package body CMOF_Tree_Models is
                        new Element_Node'
                             (Node_Access (Self),
                              Node_Vectors.Empty_Vector,
+                             Self.Extent,
                              False,
                              Qt4.Strings.From_Ucs_4
                               (Get_Name
@@ -577,6 +580,7 @@ package body CMOF_Tree_Models is
            new Attribute_Node'
                 (Node_Access (Self),
                  Node_Vectors.Empty_Vector,
+                 Self.Extent,
                  False,
                  Qt4.Strings.From_Ucs_4 (Notation.To_Wide_Wide_String),
                  Self.Element,
@@ -605,6 +609,7 @@ package body CMOF_Tree_Models is
         new Element_Node'
              (Node_Access (Self),
               Node_Vectors.Empty_Vector,
+              Self.Extent,
               False,
               Qt4.Strings.From_Ucs_4
                (Get_Name (Get_Meta_Class (Self.Element)).To_Wide_Wide_String),
@@ -646,29 +651,19 @@ package body CMOF_Tree_Models is
 
       begin
          if Container (X) = Null_CMOF_Element then
-            Self.Set_Root (X);
+            Self.Root :=
+              new Root_Node'
+                   (null,
+                    Node_Vectors.Empty_Vector,
+                    Root,
+                    False,
+                    Qt4.Strings.Create,
+                    X);
          end if;
       end Dump;
 
    begin
       Elements (Root).Iterate (Dump'Access);
    end Set_Extent;
-
-   --------------
-   -- Set_Root --
-   --------------
-
-   procedure Set_Root
-    (Self : not null access CMOF_Tree_Model'Class;
-     Root : CMOF.CMOF_Element) is
-   begin
-      Self.Root :=
-        new Root_Node'
-             (null,
-              Node_Vectors.Empty_Vector,
-              False,
-              Qt4.Strings.Create,
-              Root);
-   end Set_Root;
 
 end CMOF_Tree_Models;

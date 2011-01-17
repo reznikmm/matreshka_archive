@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Factories.Registry;
 with CMOF.Internals.Extents;
 
 package body CMOF.Extents is
@@ -68,6 +69,19 @@ package body CMOF.Extents is
 
       return Result;
    end Elements;
+
+   -------------
+   -- Factory --
+   -------------
+
+   function Factory
+    (Self : CMOF_Extent) return AMF.Factories.AMF_Factory_Access is
+   begin
+      return
+        AMF.Factories.Registry.Resolve
+         (League.Strings.To_Universal_String
+           ("http://schema.omg.org/spec/MOF/2.0/cmof.xml"));
+   end Factory;
 
    ----------
    -- Hash --
