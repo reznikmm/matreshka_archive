@@ -41,46 +41,78 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-
-with Qt_Ada.Application;
-with Qt4.Core_Applications;
+with Qt4.Settings.Constructors;
 with Qt4.Strings;
-with Qt4.Tree_Views.Constructors;
+with Qt4.Variants;
 
-with CMOF;
-with CMOF.Extents;
-with XMI.Reader;
+with Main_Windows.Moc;
 
-with CMOF_Tree_Models;
-with Main_Windows;
+package body Main_Windows is
 
-procedure Main is
    function "+" (Item : String) return Qt4.Strings.Q_String
      renames Qt4.Strings.From_Utf_8;
 
-   Window : Main_Windows.Main_Window_Access;
-   Model  : CMOF_Tree_Models.CMOF_Tree_Model_Access;
-   View   : Qt4.Tree_Views.Q_Tree_View_Access;
-   Root   : CMOF.CMOF_Extent := XMI.Reader (Ada.Command_Line.Argument (1));
+   -----------------
+   -- Close_Event --
+   -----------------
 
-begin
-   Qt_Ada.Application.Initialize;
-   Qt4.Core_Applications.Set_Organization_Name (+"Vadim Godunko");
-   Qt4.Core_Applications.Set_Organization_Domain (+"qtada.com");
-   Qt4.Core_Applications.Set_Application_Name (+"Matreshka Model Viewer");
-   Qt4.Core_Applications.Set_Application_Version (+"0.0.6");
+   overriding procedure Close_Event
+     (Self  : not null access Main_Window;
+      Event : not null access Qt4.Close_Events.Q_Close_Event'Class)
+   is
+      Settings : constant not null Qt4.Settings.Q_Settings_Access :=
+        Qt4.Settings.Constructors.Create;
 
-   Model := CMOF_Tree_Models.Constructors.Create;
-   Model.Set_Extent (Root);
+   begin
+      Settings.Begin_Group (+"MainWindow");
+      Settings.Set_Value (+"size", Qt4.Variants.Create (Self.Size));
+      Settings.End_Group;
+      Settings.Sync;
+      Settings.Delete_Later;
+   end Close_Event;
 
-   View := Qt4.Tree_Views.Constructors.Create;
-   View.Set_Model (Model);
+   ------------------
+   -- Constructors --
+   ------------------
 
-   Window := Main_Windows.Constructors.Create;
-   Window.Set_Central_Widget (View);
-   Window.Show;
+   package body Constructors is
 
-   Qt_Ada.Application.Execute;
-   Qt_Ada.Application.Finalize;
-end Main;
+      procedure Initialize (Self : not null access Main_Window'Class);
+
+      ------------
+      -- Create --
+      ------------
+
+      function Create return not null Main_Window_Access is
+      begin
+         return Self : constant not null Main_Window_Access
+           := new Main_Window
+         do
+            Initialize (Self);
+         end return;
+      end Create;
+
+      ----------------
+      -- Initialize --
+      ----------------
+
+      procedure Initialize (Self : not null access Main_Window'Class) is
+         Settings : constant not null Qt4.Settings.Q_Settings_Access :=
+           Qt4.Settings.Constructors.Create;
+
+      begin
+         Qt4.Main_Windows.Directors.Constructors.Initialize (Self);
+
+         Settings.Begin_Group (+"MainWindow");
+
+         if Settings.Contains (+"size") then
+            Self.Resize (Settings.Value (+"size").To_Size);
+         end if;
+
+         Settings.End_Group;
+         Settings.Delete_Later;
+      end Initialize;
+
+   end Constructors;
+
+end Main_Windows;

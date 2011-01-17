@@ -41,46 +41,30 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
+private with Qt4.Close_Events;
+with Qt4.Main_Windows;
+private with Qt4.Main_Windows.Directors;
 
-with Qt_Ada.Application;
-with Qt4.Core_Applications;
-with Qt4.Strings;
-with Qt4.Tree_Views.Constructors;
+package Main_Windows is
 
-with CMOF;
-with CMOF.Extents;
-with XMI.Reader;
+   type Main_Window is limited new Qt4.Main_Windows.Q_Main_Window with private;
 
-with CMOF_Tree_Models;
-with Main_Windows;
+   type Main_Window_Access is access all Main_Window'Class;
 
-procedure Main is
-   function "+" (Item : String) return Qt4.Strings.Q_String
-     renames Qt4.Strings.From_Utf_8;
+   package Constructors is
 
-   Window : Main_Windows.Main_Window_Access;
-   Model  : CMOF_Tree_Models.CMOF_Tree_Model_Access;
-   View   : Qt4.Tree_Views.Q_Tree_View_Access;
-   Root   : CMOF.CMOF_Extent := XMI.Reader (Ada.Command_Line.Argument (1));
+      function Create return not null Main_Window_Access;
 
-begin
-   Qt_Ada.Application.Initialize;
-   Qt4.Core_Applications.Set_Organization_Name (+"Vadim Godunko");
-   Qt4.Core_Applications.Set_Organization_Domain (+"qtada.com");
-   Qt4.Core_Applications.Set_Application_Name (+"Matreshka Model Viewer");
-   Qt4.Core_Applications.Set_Application_Version (+"0.0.6");
+   end Constructors;
 
-   Model := CMOF_Tree_Models.Constructors.Create;
-   Model.Set_Extent (Root);
+private
 
-   View := Qt4.Tree_Views.Constructors.Create;
-   View.Set_Model (Model);
+   type Main_Window is
+     limited new Qt4.Main_Windows.Directors.Q_Main_Window_Director
+       with null record;
 
-   Window := Main_Windows.Constructors.Create;
-   Window.Set_Central_Widget (View);
-   Window.Show;
+   overriding procedure Close_Event
+     (Self  : not null access Main_Window;
+      Event : not null access Qt4.Close_Events.Q_Close_Event'Class);
 
-   Qt_Ada.Application.Execute;
-   Qt_Ada.Application.Finalize;
-end Main;
+end Main_Windows;

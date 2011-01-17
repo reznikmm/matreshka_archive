@@ -7,6 +7,6 @@ project GUI is
    for Languages use ("Amoc");
    for Source_Dirs use (".");
    for Object_Dir use ".amoc";
-   for Source_Files use ("cmof_tree_models.ads");
+   for Source_Files use ("cmof_tree_models.ads", "main_windows.ads");
 
 end GUI;
