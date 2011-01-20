@@ -48,6 +48,8 @@ with Ada.Wide_Wide_Text_IO;
 
 with CMOF.Classes;
 with CMOF.Collections;
+with CMOF.Comments;
+with CMOF.Elements;
 with CMOF.Extents;
 with CMOF.Properties;
 with CMOF.Reflection;
@@ -67,6 +69,8 @@ procedure Gen_API is
    use CMOF;
    use CMOF.Classes;
    use CMOF.Collections;
+   use CMOF.Comments;
+   use CMOF.Elements;
    use CMOF.Properties;
    use CMOF.Reflection;
    use CMOF.Multiplicity_Elements;
@@ -87,6 +91,9 @@ procedure Gen_API is
           (League.Strings.Universal_String,
            League.Strings."<",
            League.Strings."=");
+
+   function Split_Text
+    (Text : Universal_String; Width : Positive) return Universal_String_Vector;
 
    --------------------
    -- Generate_Class --
@@ -346,6 +353,27 @@ procedure Gen_API is
              & "_Interface)");
          Put_Line ("       return " & Type_Qualified_Name & " is abstract;");
 
+         --  Generate comment.
+
+         --  XXX Here is good opportunity to use line break cursor to format
+         --  text.
+
+         declare
+            Owned_Comments : constant Set_Of_CMOF_Comment
+              := Get_Owned_Comment (Attribute);
+            Lines          : Universal_String_Vector;
+
+         begin
+            for J in 1 .. Length (Owned_Comments) loop
+               Lines :=
+                 Split_Text (Get_Body (Element (Owned_Comments, J)), 71);
+
+               for J in 1 .. Lines.Length loop
+                  Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
+               end loop;
+            end loop;
+         end;
+
          --  Generate setters for attributes which can be modified by
          --  application and which is not a collections (because changes of
          --  collection, which is returned by getter automatically applied to
@@ -466,6 +494,37 @@ procedure Gen_API is
          Generate_Class (Element);
       end if;
    end Generate_Element;
+
+   ----------------
+   -- Split_Text --
+   ----------------
+
+   function Split_Text
+    (Text : Universal_String; Width : Positive) return Universal_String_Vector
+   is
+      --  XXX It would be interesting to use line break iterator here to
+      --  look for places of potencial line breaks.
+
+      Result : Universal_String_Vector;
+      First  : Positive := 1;
+      Last   : Natural  := 0;
+
+   begin
+      while First <= Text.Length loop
+         Last := Integer'Min (First + Width, Text.Length);
+
+         if Last /= Text.Length then
+            while Text.Element (Last) /= ' ' loop
+               Last := Last - 1;
+            end loop;
+         end if;
+
+         Result.Append (Text.Slice (First, Last));
+         First := Last + 1;
+      end loop;
+
+      return Result;
+   end Split_Text;
 
    Extent   : constant CMOF.CMOF_Extent
      := XMI.Reader (Ada.Command_Line.Argument (1));
