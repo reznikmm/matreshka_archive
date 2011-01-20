@@ -64,6 +64,8 @@ package AMF.CMOF.Parameters is
    not overriding function Get_Default
     (Self : not null access constant CMOF_Parameter_Interface)
        return Optional_String is abstract;
+   --  Specifies a String that represents a value to be used when no argument 
+   --  is supplied for the Parameter.
 
    not overriding procedure Set_Default
     (Self : not null access CMOF_Parameter_Interface;
@@ -72,6 +74,8 @@ package AMF.CMOF.Parameters is
    not overriding function Get_Direction
     (Self : not null access constant CMOF_Parameter_Interface)
        return CMOF_Parameter_Direction_Kind is abstract;
+   --  Indicates whether a parameter is being sent into or out of a behavioral 
+   --  element.
 
    not overriding procedure Set_Direction
     (Self : not null access CMOF_Parameter_Interface;
@@ -80,6 +84,7 @@ package AMF.CMOF.Parameters is
    not overriding function Get_Operation
     (Self : not null access constant CMOF_Parameter_Interface)
        return AMF.CMOF.Operations.CMOF_Operation is abstract;
+   --  References the Operation owning this parameter.
 
    not overriding procedure Set_Operation
     (Self : not null access CMOF_Parameter_Interface;

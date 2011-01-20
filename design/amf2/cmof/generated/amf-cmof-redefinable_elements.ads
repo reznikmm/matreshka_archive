@@ -62,14 +62,25 @@ package AMF.CMOF.Redefinable_Elements is
    not overriding function Get_Redefinition_Context
     (Self : not null access constant CMOF_Redefinable_Element_Interface)
        return AMF.CMOF.Classifiers.Set_Of_CMOF_Classifier is abstract;
+   --  References the contexts that this element may be redefined from.
 
    not overriding function Get_Redefined_Element
     (Self : not null access constant CMOF_Redefinable_Element_Interface)
        return AMF.CMOF.Redefinable_Elements.Set_Of_CMOF_Redefinable_Element is abstract;
+   --  The redefinable element that is being redefined by this element.
 
    not overriding function Get_Is_Leaf
     (Self : not null access constant CMOF_Redefinable_Element_Interface)
        return Boolean is abstract;
+   --  Indicates whether it is possible to further redefine a 
+   --  RedefinableElement. If the value is true, then it is not possible to 
+   --  further redefine the RedefinableElement. Note that this property is 
+   --  preserved through package merge operations; that is, the capability to 
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
+   --  the resulting RedefinableElement of a package merge operation where a 
+   --  RedefinableElement with isLeaf=false is merged with a matching 
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  will have isLeaf=false. Default value is false.
 
    not overriding procedure Set_Is_Leaf
     (Self : not null access CMOF_Redefinable_Element_Interface;

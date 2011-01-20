@@ -64,10 +64,13 @@ package AMF.CMOF.Constraints is
    not overriding function Get_Constrained_Element
     (Self : not null access constant CMOF_Constraint_Interface)
        return AMF.CMOF.Elements.Ordered_Set_Of_CMOF_Element is abstract;
+   --  The ordered set of Elements referenced by this Constraint.
 
    not overriding function Get_Specification
     (Self : not null access constant CMOF_Constraint_Interface)
        return AMF.CMOF.Value_Specifications.CMOF_Value_Specification is abstract;
+   --  A condition that must be true when evaluated in order for the 
+   --  constraint to be satisfied.
 
    not overriding procedure Set_Specification
     (Self : not null access CMOF_Constraint_Interface;

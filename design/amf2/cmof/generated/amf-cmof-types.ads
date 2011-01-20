@@ -64,6 +64,7 @@ package AMF.CMOF.Types is
    not overriding function Get_Package
     (Self : not null access constant CMOF_Type_Interface)
        return AMF.CMOF.Packages.CMOF_Package is abstract;
+   --  Specifies the owning package of this classifier, if any.
 
    not overriding procedure Set_Package
     (Self : not null access CMOF_Type_Interface;

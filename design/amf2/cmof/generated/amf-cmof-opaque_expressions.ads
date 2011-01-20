@@ -61,9 +61,14 @@ package AMF.CMOF.Opaque_Expressions is
    not overriding function Get_Body
     (Self : not null access constant CMOF_Opaque_Expression_Interface)
        return Sequence_Of_String is abstract;
+   --  The text of the expression, possibly in multiple languages.
 
    not overriding function Get_Language
     (Self : not null access constant CMOF_Opaque_Expression_Interface)
        return Ordered_Set_Of_String is abstract;
+   --  Specifies the languages in which the expression is stated. The 
+   --  interpretation of the expression body depends on the languages. If the 
+   --  languages are unspecified, they might be implicit from the expression 
+   --  body or the context. Languages are matched to body strings by order.
 
 end AMF.CMOF.Opaque_Expressions;

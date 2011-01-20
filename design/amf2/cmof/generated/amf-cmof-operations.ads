@@ -66,6 +66,9 @@ package AMF.CMOF.Operations is
    not overriding function Get_Is_Query
     (Self : not null access constant CMOF_Operation_Interface)
        return Boolean is abstract;
+   --  Specifies whether an execution of the BehavioralFeature leaves the 
+   --  state of the system unchanged (isQuery=true) or whether side effects 
+   --  may occur (isQuery=false).
 
    not overriding procedure Set_Is_Query
     (Self : not null access CMOF_Operation_Interface;
@@ -74,6 +77,7 @@ package AMF.CMOF.Operations is
    not overriding function Get_Is_Ordered
     (Self : not null access constant CMOF_Operation_Interface)
        return Boolean is abstract;
+   --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Is_Ordered
     (Self : not null access CMOF_Operation_Interface;
@@ -82,6 +86,7 @@ package AMF.CMOF.Operations is
    not overriding function Get_Is_Unique
     (Self : not null access constant CMOF_Operation_Interface)
        return Boolean is abstract;
+   --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Is_Unique
     (Self : not null access CMOF_Operation_Interface;
@@ -90,6 +95,7 @@ package AMF.CMOF.Operations is
    not overriding function Get_Lower
     (Self : not null access constant CMOF_Operation_Interface)
        return Optional_Integer is abstract;
+   --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Lower
     (Self : not null access CMOF_Operation_Interface;
@@ -98,6 +104,7 @@ package AMF.CMOF.Operations is
    not overriding function Get_Upper
     (Self : not null access constant CMOF_Operation_Interface)
        return Optional_Unlimited_Natural is abstract;
+   --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Upper
     (Self : not null access CMOF_Operation_Interface;
@@ -106,6 +113,7 @@ package AMF.CMOF.Operations is
    not overriding function Get_Class
     (Self : not null access constant CMOF_Operation_Interface)
        return AMF.CMOF.Classes.CMOF_Class is abstract;
+   --  The class that owns the operation.
 
    not overriding procedure Set_Class
     (Self : not null access CMOF_Operation_Interface;
@@ -114,6 +122,7 @@ package AMF.CMOF.Operations is
    not overriding function Get_Datatype
     (Self : not null access constant CMOF_Operation_Interface)
        return AMF.CMOF.Data_Types.CMOF_Data_Type is abstract;
+   --  The DataType that owns this Operation.
 
    not overriding procedure Set_Datatype
     (Self : not null access CMOF_Operation_Interface;
@@ -122,14 +131,18 @@ package AMF.CMOF.Operations is
    overriding function Get_Raised_Exception
     (Self : not null access constant CMOF_Operation_Interface)
        return AMF.CMOF.Types.Set_Of_CMOF_Type is abstract;
+   --  References the Types representing exceptions that may be raised during 
+   --  an invocation of this operation.
 
    not overriding function Get_Redefined_Operation
     (Self : not null access constant CMOF_Operation_Interface)
        return AMF.CMOF.Operations.Set_Of_CMOF_Operation is abstract;
+   --  References the Operations that are redefined by this Operation.
 
    not overriding function Get_Type
     (Self : not null access constant CMOF_Operation_Interface)
        return AMF.CMOF.Types.CMOF_Type is abstract;
+   --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Type
     (Self : not null access CMOF_Operation_Interface;
@@ -138,6 +151,8 @@ package AMF.CMOF.Operations is
    overriding function Get_Owned_Parameter
     (Self : not null access constant CMOF_Operation_Interface)
        return AMF.CMOF.Parameters.Ordered_Set_Of_CMOF_Parameter is abstract;
+   --  Specifies the ordered set of formal parameters of this 
+   --  BehavioralFeature.
 
    not overriding function Get_Precondition
     (Self : not null access constant CMOF_Operation_Interface)

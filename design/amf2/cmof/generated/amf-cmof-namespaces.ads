@@ -65,22 +65,29 @@ package AMF.CMOF.Namespaces is
    not overriding function Get_Imported_Member
     (Self : not null access constant CMOF_Namespace_Interface)
        return AMF.CMOF.Packageable_Elements.Set_Of_CMOF_Packageable_Element is abstract;
+   --  References the PackageableElements that are members of this Namespace 
+   --  as a result of either PackageImports or ElementImports.
 
    not overriding function Get_Element_Import
     (Self : not null access constant CMOF_Namespace_Interface)
        return AMF.CMOF.Element_Imports.Set_Of_CMOF_Element_Import is abstract;
+   --  References the ElementImports owned by the Namespace.
 
    not overriding function Get_Package_Import
     (Self : not null access constant CMOF_Namespace_Interface)
        return AMF.CMOF.Package_Imports.Set_Of_CMOF_Package_Import is abstract;
+   --  References the PackageImports owned by the Namespace.
 
    not overriding function Get_Owned_Member
     (Self : not null access constant CMOF_Namespace_Interface)
        return AMF.CMOF.Named_Elements.Set_Of_CMOF_Named_Element is abstract;
+   --  A collection of NamedElements owned by the Namespace.
 
    not overriding function Get_Member
     (Self : not null access constant CMOF_Namespace_Interface)
        return AMF.CMOF.Named_Elements.Set_Of_CMOF_Named_Element is abstract;
+   --  A collection of NamedElements identifiable within the Namespace, either 
+   --  by being owned or by being introduced by importing or inheritance.
 
    not overriding function Get_Owned_Rule
     (Self : not null access constant CMOF_Namespace_Interface)

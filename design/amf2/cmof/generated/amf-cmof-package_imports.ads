@@ -63,6 +63,12 @@ package AMF.CMOF.Package_Imports is
    not overriding function Get_Visibility
     (Self : not null access constant CMOF_Package_Import_Interface)
        return CMOF_Visibility_Kind is abstract;
+   --  Specifies the visibility of the imported PackageableElements within the 
+   --  importing Namespace, i.e., whether imported elements will in turn be 
+   --  visible to other packages that use that importingPackage as an 
+   --  importedPackage. If the PackageImport is public, the imported elements 
+   --  will be visible outside the package, while if it is private they will 
+   --  not.
 
    not overriding procedure Set_Visibility
     (Self : not null access CMOF_Package_Import_Interface;
@@ -71,6 +77,7 @@ package AMF.CMOF.Package_Imports is
    not overriding function Get_Imported_Package
     (Self : not null access constant CMOF_Package_Import_Interface)
        return AMF.CMOF.Packages.CMOF_Package is abstract;
+   --  Specifies the Package whose members are imported into a Namespace.
 
    not overriding procedure Set_Imported_Package
     (Self : not null access CMOF_Package_Import_Interface;
@@ -79,6 +86,7 @@ package AMF.CMOF.Package_Imports is
    not overriding function Get_Importing_Namespace
     (Self : not null access constant CMOF_Package_Import_Interface)
        return AMF.CMOF.Namespaces.CMOF_Namespace is abstract;
+   --  Specifies the Namespace that imports the members from a Package.
 
    not overriding procedure Set_Importing_Namespace
     (Self : not null access CMOF_Package_Import_Interface;

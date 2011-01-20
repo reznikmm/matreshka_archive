@@ -66,22 +66,38 @@ package AMF.CMOF.Classifiers is
    not overriding function Get_Attribute
     (Self : not null access constant CMOF_Classifier_Interface)
        return AMF.CMOF.Properties.Set_Of_CMOF_Property is abstract;
+   --  Refers to all of the Properties that are direct (i.e. not inherited or 
+   --  imported) attributes of the classifier.
 
    not overriding function Get_Feature
     (Self : not null access constant CMOF_Classifier_Interface)
        return AMF.CMOF.Features.Set_Of_CMOF_Feature is abstract;
+   --  Note that there may be members of the Classifier that are of the type 
+   --  Feature but are not included in this association, e.g. inherited 
+   --  features.
 
    not overriding function Get_General
     (Self : not null access constant CMOF_Classifier_Interface)
        return AMF.CMOF.Classifiers.Set_Of_CMOF_Classifier is abstract;
+   --  References the general classifier in the Generalization relationship.
 
    not overriding function Get_Inherited_Member
     (Self : not null access constant CMOF_Classifier_Interface)
        return AMF.CMOF.Named_Elements.Set_Of_CMOF_Named_Element is abstract;
+   --  Specifies all elements inherited by this classifier from the general 
+   --  classifiers.
 
    not overriding function Get_Is_Final_Specialization
     (Self : not null access constant CMOF_Classifier_Interface)
        return Boolean is abstract;
+   --  If true, the Classifier cannot be specialized by generalization. Note 
+   --  that this property is preserved through package merge operations; that 
+   --  is, the capability to specialize a Classifier (i.e., 
+   --  isFinalSpecialization =false) must be preserved in the resulting 
+   --  Classifier of a package merge operation where a Classifier with 
+   --  isFinalSpecialization =false is merged with a matching Classifier with 
+   --  isFinalSpecialization =true: the resulting Classifier will have 
+   --  isFinalSpecialization =false.
 
    not overriding procedure Set_Is_Final_Specialization
     (Self : not null access CMOF_Classifier_Interface;

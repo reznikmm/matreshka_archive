@@ -63,6 +63,10 @@ package AMF.CMOF.Element_Imports is
    not overriding function Get_Visibility
     (Self : not null access constant CMOF_Element_Import_Interface)
        return CMOF_Visibility_Kind is abstract;
+   --  Specifies the visibility of the imported PackageableElement within the 
+   --  importing Package. The default visibility is the same as that of the 
+   --  imported element. If the imported element does not have a visibility, 
+   --  it is possible to add visibility to the element import.
 
    not overriding procedure Set_Visibility
     (Self : not null access CMOF_Element_Import_Interface;
@@ -71,6 +75,10 @@ package AMF.CMOF.Element_Imports is
    not overriding function Get_Alias
     (Self : not null access constant CMOF_Element_Import_Interface)
        return Optional_String is abstract;
+   --  Specifies the name that should be added to the namespace of the 
+   --  importing package in lieu of the name of the imported packagable 
+   --  element. The aliased name must not clash with any other member name in 
+   --  the importing package. By default, no alias is used.
 
    not overriding procedure Set_Alias
     (Self : not null access CMOF_Element_Import_Interface;
@@ -79,6 +87,8 @@ package AMF.CMOF.Element_Imports is
    not overriding function Get_Imported_Element
     (Self : not null access constant CMOF_Element_Import_Interface)
        return AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element is abstract;
+   --  Specifies the PackageableElement whose name is to be added to a 
+   --  Namespace.
 
    not overriding procedure Set_Imported_Element
     (Self : not null access CMOF_Element_Import_Interface;
@@ -87,6 +97,8 @@ package AMF.CMOF.Element_Imports is
    not overriding function Get_Importing_Namespace
     (Self : not null access constant CMOF_Element_Import_Interface)
        return AMF.CMOF.Namespaces.CMOF_Namespace is abstract;
+   --  Specifies the Namespace that imports a PackageableElement from another 
+   --  Package.
 
    not overriding procedure Set_Importing_Namespace
     (Self : not null access CMOF_Element_Import_Interface;

@@ -63,6 +63,7 @@ package AMF.CMOF.Classes is
    not overriding function Get_Is_Abstract
     (Self : not null access constant CMOF_Class_Interface)
        return Boolean is abstract;
+   --  True when a class is abstract.
 
    not overriding procedure Set_Is_Abstract
     (Self : not null access CMOF_Class_Interface;
@@ -71,13 +72,16 @@ package AMF.CMOF.Classes is
    not overriding function Get_Owned_Attribute
     (Self : not null access constant CMOF_Class_Interface)
        return AMF.CMOF.Properties.Ordered_Set_Of_CMOF_Property is abstract;
+   --  The attributes (i.e. the properties) owned by the class.
 
    not overriding function Get_Owned_Operation
     (Self : not null access constant CMOF_Class_Interface)
        return AMF.CMOF.Operations.Ordered_Set_Of_CMOF_Operation is abstract;
+   --  The operations owned by the class.
 
    not overriding function Get_Super_Class
     (Self : not null access constant CMOF_Class_Interface)
        return AMF.CMOF.Classes.Set_Of_CMOF_Class is abstract;
+   --  This gives the superclasses of a class.
 
 end AMF.CMOF.Classes;

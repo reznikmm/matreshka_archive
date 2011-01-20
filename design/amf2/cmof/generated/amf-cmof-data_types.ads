@@ -63,9 +63,11 @@ package AMF.CMOF.Data_Types is
    not overriding function Get_Owned_Attribute
     (Self : not null access constant CMOF_Data_Type_Interface)
        return AMF.CMOF.Properties.Ordered_Set_Of_CMOF_Property is abstract;
+   --  The Attributes owned by the DataType.
 
    not overriding function Get_Owned_Operation
     (Self : not null access constant CMOF_Data_Type_Interface)
        return AMF.CMOF.Operations.Ordered_Set_Of_CMOF_Operation is abstract;
+   --  The Operations owned by the DataType.
 
 end AMF.CMOF.Data_Types;

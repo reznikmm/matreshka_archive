@@ -64,6 +64,8 @@ package AMF.CMOF.Properties is
    not overriding function Get_Is_Read_Only
     (Self : not null access constant CMOF_Property_Interface)
        return Boolean is abstract;
+   --  If isReadOnly is true, the attribute may not be written to after 
+   --  initialization.
 
    not overriding procedure Set_Is_Read_Only
     (Self : not null access CMOF_Property_Interface;
@@ -72,6 +74,8 @@ package AMF.CMOF.Properties is
    not overriding function Get_Default
     (Self : not null access constant CMOF_Property_Interface)
        return Optional_String is abstract;
+   --  Specifies a String that represents a value to be used when no argument 
+   --  is supplied for the Property.
 
    not overriding procedure Set_Default
     (Self : not null access CMOF_Property_Interface;
@@ -80,6 +84,8 @@ package AMF.CMOF.Properties is
    not overriding function Get_Is_Composite
     (Self : not null access constant CMOF_Property_Interface)
        return Boolean is abstract;
+   --  If isComposite is true, the object containing the attribute is a 
+   --  container for the object or value contained in the attribute.
 
    not overriding procedure Set_Is_Composite
     (Self : not null access CMOF_Property_Interface;
@@ -88,6 +94,8 @@ package AMF.CMOF.Properties is
    not overriding function Get_Is_Derived
     (Self : not null access constant CMOF_Property_Interface)
        return Boolean is abstract;
+   --  If isDerived is true, the value of the attribute is derived from 
+   --  information elsewhere.
 
    not overriding procedure Set_Is_Derived
     (Self : not null access CMOF_Property_Interface;
@@ -96,6 +104,8 @@ package AMF.CMOF.Properties is
    not overriding function Get_Is_Derived_Union
     (Self : not null access constant CMOF_Property_Interface)
        return Boolean is abstract;
+   --  Specifies whether the property is derived as the union of all of the 
+   --  properties that are constrained to subset it.
 
    not overriding procedure Set_Is_Derived_Union
     (Self : not null access CMOF_Property_Interface;
@@ -104,6 +114,7 @@ package AMF.CMOF.Properties is
    not overriding function Get_Class
     (Self : not null access constant CMOF_Property_Interface)
        return AMF.CMOF.Classes.CMOF_Class is abstract;
+   --  References the Class that owns the Property.
 
    not overriding procedure Set_Class
     (Self : not null access CMOF_Property_Interface;
@@ -112,6 +123,7 @@ package AMF.CMOF.Properties is
    not overriding function Get_Owning_Association
     (Self : not null access constant CMOF_Property_Interface)
        return AMF.CMOF.Associations.CMOF_Association is abstract;
+   --  References the owning association of this property, if any.
 
    not overriding procedure Set_Owning_Association
     (Self : not null access CMOF_Property_Interface;
@@ -120,14 +132,19 @@ package AMF.CMOF.Properties is
    not overriding function Get_Redefined_Property
     (Self : not null access constant CMOF_Property_Interface)
        return AMF.CMOF.Properties.Set_Of_CMOF_Property is abstract;
+   --  References the properties that are redefined by this property.
 
    not overriding function Get_Subsetted_Property
     (Self : not null access constant CMOF_Property_Interface)
        return AMF.CMOF.Properties.Set_Of_CMOF_Property is abstract;
+   --  References the properties of which this property is constrained to be a 
+   --  subset.
 
    not overriding function Get_Opposite
     (Self : not null access constant CMOF_Property_Interface)
        return AMF.CMOF.Properties.CMOF_Property is abstract;
+   --  In the case where the property is one navigable end of a binary 
+   --  association with both ends navigable, this gives the other end.
 
    not overriding procedure Set_Opposite
     (Self : not null access CMOF_Property_Interface;
@@ -136,6 +153,7 @@ package AMF.CMOF.Properties is
    not overriding function Get_Datatype
     (Self : not null access constant CMOF_Property_Interface)
        return AMF.CMOF.Data_Types.CMOF_Data_Type is abstract;
+   --  The DataType that owns this Property.
 
    not overriding procedure Set_Datatype
     (Self : not null access CMOF_Property_Interface;
@@ -144,6 +162,7 @@ package AMF.CMOF.Properties is
    not overriding function Get_Association
     (Self : not null access constant CMOF_Property_Interface)
        return AMF.CMOF.Associations.CMOF_Association is abstract;
+   --  References the association of which this property is a member, if any.
 
    not overriding procedure Set_Association
     (Self : not null access CMOF_Property_Interface;

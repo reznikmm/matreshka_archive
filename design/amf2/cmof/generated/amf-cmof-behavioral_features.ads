@@ -65,9 +65,13 @@ package AMF.CMOF.Behavioral_Features is
    not overriding function Get_Owned_Parameter
     (Self : not null access constant CMOF_Behavioral_Feature_Interface)
        return AMF.CMOF.Parameters.Ordered_Set_Of_CMOF_Parameter is abstract;
+   --  Specifies the ordered set of formal parameters of this 
+   --  BehavioralFeature.
 
    not overriding function Get_Raised_Exception
     (Self : not null access constant CMOF_Behavioral_Feature_Interface)
        return AMF.CMOF.Types.Set_Of_CMOF_Type is abstract;
+   --  References the Types representing exceptions that may be raised during 
+   --  an invocation of this feature.
 
 end AMF.CMOF.Behavioral_Features;

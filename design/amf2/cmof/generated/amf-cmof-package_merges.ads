@@ -62,6 +62,8 @@ package AMF.CMOF.Package_Merges is
    not overriding function Get_Receiving_Package
     (Self : not null access constant CMOF_Package_Merge_Interface)
        return AMF.CMOF.Packages.CMOF_Package is abstract;
+   --  References the Package that is being extended with the contents of the 
+   --  merged package of the PackageMerge.
 
    not overriding procedure Set_Receiving_Package
     (Self : not null access CMOF_Package_Merge_Interface;
@@ -70,6 +72,8 @@ package AMF.CMOF.Package_Merges is
    not overriding function Get_Merged_Package
     (Self : not null access constant CMOF_Package_Merge_Interface)
        return AMF.CMOF.Packages.CMOF_Package is abstract;
+   --  References the Package that is to be merged with the receiving package 
+   --  of the PackageMerge.
 
    not overriding procedure Set_Merged_Package
     (Self : not null access CMOF_Package_Merge_Interface;

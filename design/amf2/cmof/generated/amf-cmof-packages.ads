@@ -65,18 +65,22 @@ package AMF.CMOF.Packages is
    not overriding function Get_Packaged_Element
     (Self : not null access constant CMOF_Package_Interface)
        return AMF.CMOF.Packageable_Elements.Set_Of_CMOF_Packageable_Element is abstract;
+   --  Specifies the packageable elements that are owned by this Package.
 
    not overriding function Get_Owned_Type
     (Self : not null access constant CMOF_Package_Interface)
        return AMF.CMOF.Types.Set_Of_CMOF_Type is abstract;
+   --  References the packaged elements that are Types.
 
    not overriding function Get_Nested_Package
     (Self : not null access constant CMOF_Package_Interface)
        return AMF.CMOF.Packages.Set_Of_CMOF_Package is abstract;
+   --  References the packaged elements that are Packages.
 
    not overriding function Get_Nesting_Package
     (Self : not null access constant CMOF_Package_Interface)
        return AMF.CMOF.Packages.CMOF_Package is abstract;
+   --  References the Package that owns this Package.
 
    not overriding procedure Set_Nesting_Package
     (Self : not null access CMOF_Package_Interface;
@@ -85,10 +89,17 @@ package AMF.CMOF.Packages is
    not overriding function Get_Package_Merge
     (Self : not null access constant CMOF_Package_Interface)
        return AMF.CMOF.Package_Merges.Set_Of_CMOF_Package_Merge is abstract;
+   --  References the PackageMerges that are owned by this Package.
 
    not overriding function Get_Uri
     (Self : not null access constant CMOF_Package_Interface)
        return Optional_String is abstract;
+   --  Provides an identifier for the package that can be used for many 
+   --  purposes. A URI is the universally unique identification of the package 
+   --  following the IETF URI specification, RFC 2396 
+   --  http://www.ietf.org/rfc/rfc2396.txt. UML 1.4 and MOF 1.4 were assigned 
+   --  URIs to their outermost package. The package URI appears in XMI files 
+   --  when instances of the package["2019"]s classes are serialized.
 
    not overriding procedure Set_Uri
     (Self : not null access CMOF_Package_Interface;

@@ -62,6 +62,7 @@ package AMF.CMOF.Named_Elements is
    not overriding function Get_Name
     (Self : not null access constant CMOF_Named_Element_Interface)
        return Optional_String is abstract;
+   --  The name of the NamedElement.
 
    not overriding procedure Set_Name
     (Self : not null access CMOF_Named_Element_Interface;
@@ -70,6 +71,8 @@ package AMF.CMOF.Named_Elements is
    not overriding function Get_Visibility
     (Self : not null access constant CMOF_Named_Element_Interface)
        return Optional_CMOF_Visibility_Kind is abstract;
+   --  Determines where the NamedElement appears within different Namespaces 
+   --  within the overall model, and its accessibility.
 
    not overriding procedure Set_Visibility
     (Self : not null access CMOF_Named_Element_Interface;
@@ -78,9 +81,14 @@ package AMF.CMOF.Named_Elements is
    not overriding function Get_Namespace
     (Self : not null access constant CMOF_Named_Element_Interface)
        return AMF.CMOF.Namespaces.CMOF_Namespace is abstract;
+   --  Specifies the namespace that owns the NamedElement.
 
    not overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Named_Element_Interface)
        return Optional_String is abstract;
+   --  A name which allows the NamedElement to be identified within a 
+   --  hierarchy of nested Namespaces. It is constructed from the names of the 
+   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  with the name of the NamedElement itself.
 
 end AMF.CMOF.Named_Elements;

@@ -61,6 +61,8 @@ package AMF.CMOF.Multiplicity_Elements is
    not overriding function Get_Is_Ordered
     (Self : not null access constant CMOF_Multiplicity_Element_Interface)
        return Boolean is abstract;
+   --  For a multivalued multiplicity, this attribute specifies whether the 
+   --  values in an instantiation of this element are sequentially ordered.
 
    not overriding procedure Set_Is_Ordered
     (Self : not null access CMOF_Multiplicity_Element_Interface;
@@ -69,6 +71,8 @@ package AMF.CMOF.Multiplicity_Elements is
    not overriding function Get_Is_Unique
     (Self : not null access constant CMOF_Multiplicity_Element_Interface)
        return Boolean is abstract;
+   --  For a multivalued multiplicity, this attributes specifies whether the 
+   --  values in an instantiation of this element are unique.
 
    not overriding procedure Set_Is_Unique
     (Self : not null access CMOF_Multiplicity_Element_Interface;
@@ -77,6 +81,7 @@ package AMF.CMOF.Multiplicity_Elements is
    not overriding function Get_Lower
     (Self : not null access constant CMOF_Multiplicity_Element_Interface)
        return Optional_Integer is abstract;
+   --  Specifies the lower bound of the multiplicity interval.
 
    not overriding procedure Set_Lower
     (Self : not null access CMOF_Multiplicity_Element_Interface;
@@ -85,6 +90,7 @@ package AMF.CMOF.Multiplicity_Elements is
    not overriding function Get_Upper
     (Self : not null access constant CMOF_Multiplicity_Element_Interface)
        return Optional_Unlimited_Natural is abstract;
+   --  Specifies the upper bound of the multiplicity interval.
 
    not overriding procedure Set_Upper
     (Self : not null access CMOF_Multiplicity_Element_Interface;

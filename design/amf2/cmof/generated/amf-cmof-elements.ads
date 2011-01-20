@@ -60,13 +60,16 @@ package AMF.CMOF.Elements is
    not overriding function Get_Owned_Element
     (Self : not null access constant CMOF_Element_Interface)
        return AMF.CMOF.Elements.Set_Of_CMOF_Element is abstract;
+   --  The Elements owned by this element.
 
    not overriding function Get_Owner
     (Self : not null access constant CMOF_Element_Interface)
        return AMF.CMOF.Elements.CMOF_Element is abstract;
+   --  The Element that owns this element.
 
    not overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Element_Interface)
        return AMF.CMOF.Comments.Set_Of_CMOF_Comment is abstract;
+   --  The Comments owned by this element.
 
 end AMF.CMOF.Elements;

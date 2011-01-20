@@ -65,6 +65,8 @@ package AMF.CMOF.Associations is
    not overriding function Get_Is_Derived
     (Self : not null access constant CMOF_Association_Interface)
        return Boolean is abstract;
+   --  Specifies whether the association is derived from other model elements 
+   --  such as other associations or constraints.
 
    not overriding procedure Set_Is_Derived
     (Self : not null access CMOF_Association_Interface;
@@ -73,17 +75,23 @@ package AMF.CMOF.Associations is
    not overriding function Get_Owned_End
     (Self : not null access constant CMOF_Association_Interface)
        return AMF.CMOF.Properties.Ordered_Set_Of_CMOF_Property is abstract;
+   --  The ends that are owned by the association itself.
 
    not overriding function Get_End_Type
     (Self : not null access constant CMOF_Association_Interface)
        return AMF.CMOF.Types.Set_Of_CMOF_Type is abstract;
+   --  References the classifiers that are used as types of the ends of the 
+   --  association.
 
    not overriding function Get_Member_End
     (Self : not null access constant CMOF_Association_Interface)
        return AMF.CMOF.Properties.Ordered_Set_Of_CMOF_Property is abstract;
+   --  Each end represents participation of instances of the classifier 
+   --  connected to the end in links of the association.
 
    not overriding function Get_Navigable_Owned_End
     (Self : not null access constant CMOF_Association_Interface)
        return AMF.CMOF.Properties.Set_Of_CMOF_Property is abstract;
+   --  The navigable ends that are owned by the association itself.
 
 end AMF.CMOF.Associations;
