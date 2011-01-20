@@ -44,6 +44,7 @@
 --  Generates public API of the model.
 with Ada.Command_Line;
 with Ada.Containers.Ordered_Sets;
+with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
 
 with CMOF.Classes;
@@ -65,6 +66,7 @@ with Generator.Wide_Wide_Text_IO;
 
 procedure Gen_API is
 
+   use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
    use CMOF;
    use CMOF.Classes;
@@ -437,12 +439,14 @@ procedure Gen_API is
       begin
          for J in 1 .. Length (Owned_Comments) loop
             Lines :=
-              Split_Text (Get_Body (Element (Owned_Comments, J)), 71);
+              Split_Text (Get_Body (Element (Owned_Comments, J)), 74);
 
             for J in 1 .. Lines.Length loop
-               Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
+               Put_Line ("--  " & Lines.Element (J).To_Wide_Wide_String);
             end loop;
          end loop;
+
+         Put_Line (78 * Wide_Wide_String'("-"));
       end;
 
       All_With.Iterate (Generate_With_Clause'Access);
