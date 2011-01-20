@@ -43,8 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  Relationship is an abstract concept that specifies some kind of 
-   --  relationship between elements.
+--  Relationship is an abstract concept that specifies some kind of 
+--  relationship between elements.
+------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
 
 package AMF.CMOF.Relationships is

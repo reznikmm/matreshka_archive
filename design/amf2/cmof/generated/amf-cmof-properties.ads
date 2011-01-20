@@ -43,14 +43,15 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  A property is a structural feature of a classifier that characterizes 
-   --  instances of the classifier. A property related by ownedAttribute to a 
-   --  classifier (other than an association) represents an attribute and 
-   --  might also represent an association end. It relates an instance of the 
-   --  class to a value or set of values of the type of the attribute. A 
-   --  property related by memberEnd or its specializations to an association 
-   --  represents an end of the association. The type of the property is the 
-   --  type of the end of the association.
+--  A property is a structural feature of a classifier that characterizes 
+--  instances of the classifier. A property related by ownedAttribute to a 
+--  classifier (other than an association) represents an attribute and might 
+--  also represent an association end. It relates an instance of the class to 
+--  a value or set of values of the type of the attribute. A property related 
+--  by memberEnd or its specializations to an association represents an end of 
+--  the association. The type of the property is the type of the end of the 
+--  association.
+------------------------------------------------------------------------------
 limited with AMF.CMOF.Associations;
 limited with AMF.CMOF.Classes;
 limited with AMF.CMOF.Data_Types;

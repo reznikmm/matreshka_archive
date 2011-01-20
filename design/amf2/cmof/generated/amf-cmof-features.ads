@@ -43,8 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  A feature declares a behavioral or structural characteristic of 
-   --  instances of classifiers.
+--  A feature declares a behavioral or structural characteristic of instances 
+--  of classifiers.
+------------------------------------------------------------------------------
 limited with AMF.CMOF.Classifiers;
 with AMF.CMOF.Redefinable_Elements;
 

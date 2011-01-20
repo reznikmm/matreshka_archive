@@ -43,9 +43,10 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  A data type is a type whose instances are identified only by their 
-   --  value. A data type may contain attributes to support the modeling of 
-   --  structured data types.
+--  A data type is a type whose instances are identified only by their value. 
+--  A data type may contain attributes to support the modeling of structured 
+--  data types.
+------------------------------------------------------------------------------
 with AMF.CMOF.Classifiers;
 limited with AMF.CMOF.Operations;
 limited with AMF.CMOF.Properties;

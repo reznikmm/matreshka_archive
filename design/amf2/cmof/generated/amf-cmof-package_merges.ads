@@ -43,8 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  A package merge defines how the contents of one package are extended by 
-   --  the contents of another package.
+--  A package merge defines how the contents of one package are extended by 
+--  the contents of another package.
+------------------------------------------------------------------------------
 with AMF.CMOF.Directed_Relationships;
 limited with AMF.CMOF.Packages;
 

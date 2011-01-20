@@ -43,8 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  An opaque expression is an uninterpreted textual statement that denotes 
-   --  a (possibly empty) set of values when evaluated in a context.
+--  An opaque expression is an uninterpreted textual statement that denotes a 
+--  (possibly empty) set of values when evaluated in a context.
+------------------------------------------------------------------------------
 with AMF.CMOF.Value_Specifications;
 
 package AMF.CMOF.Opaque_Expressions is

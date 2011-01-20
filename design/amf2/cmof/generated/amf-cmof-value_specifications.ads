@@ -43,8 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  A value specification is the specification of a (possibly empty) set of 
-   --  instances, including both objects and data values.
+--  A value specification is the specification of a (possibly empty) set of 
+--  instances, including both objects and data values.
+------------------------------------------------------------------------------
 with AMF.CMOF.Packageable_Elements;
 with AMF.CMOF.Typed_Elements;
 

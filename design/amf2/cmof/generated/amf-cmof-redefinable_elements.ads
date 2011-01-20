@@ -43,10 +43,11 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  A redefinable element is an element that, when defined in the context 
-   --  of a classifier, can be redefined more specifically or differently in 
-   --  the context of another classifier that specializes (directly or 
-   --  indirectly) the context classifier.
+--  A redefinable element is an element that, when defined in the context of a 
+--  classifier, can be redefined more specifically or differently in the 
+--  context of another classifier that specializes (directly or indirectly) 
+--  the context classifier.
+------------------------------------------------------------------------------
 limited with AMF.CMOF.Classifiers;
 with AMF.CMOF.Named_Elements;
 

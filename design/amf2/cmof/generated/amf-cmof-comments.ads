@@ -43,8 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  A comment is a textual annotation that can be attached to a set of 
-   --  elements.
+--  A comment is a textual annotation that can be attached to a set of 
+--  elements.
+------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
 
 package AMF.CMOF.Comments is

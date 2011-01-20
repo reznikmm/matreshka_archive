@@ -43,9 +43,10 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  A constraint is a condition or restriction expressed in natural 
-   --  language text or in a machine readable language for the purpose of 
-   --  declaring some of the semantics of an element.
+--  A constraint is a condition or restriction expressed in natural language 
+--  text or in a machine readable language for the purpose of declaring some 
+--  of the semantics of an element.
+------------------------------------------------------------------------------
 limited with AMF.CMOF.Elements;
 limited with AMF.CMOF.Namespaces;
 with AMF.CMOF.Packageable_Elements;

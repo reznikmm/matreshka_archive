@@ -43,9 +43,10 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  An operation is a behavioral feature of a classifier that specifies the 
-   --  name, type, parameters, and constraints for invoking an associated 
-   --  behavior.
+--  An operation is a behavioral feature of a classifier that specifies the 
+--  name, type, parameters, and constraints for invoking an associated 
+--  behavior.
+------------------------------------------------------------------------------
 with AMF.CMOF.Behavioral_Features;
 limited with AMF.CMOF.Classes;
 limited with AMF.CMOF.Constraints;

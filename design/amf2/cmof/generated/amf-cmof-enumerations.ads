@@ -43,8 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  An enumeration is a data type whose values are enumerated in the model 
-   --  as enumeration literals.
+--  An enumeration is a data type whose values are enumerated in the model as 
+--  enumeration literals.
+------------------------------------------------------------------------------
 with AMF.CMOF.Data_Types;
 limited with AMF.CMOF.Enumeration_Literals;
 

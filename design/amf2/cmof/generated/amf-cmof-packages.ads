@@ -43,8 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  A package is used to group elements, and provides a namespace for the 
-   --  grouped elements.
+--  A package is used to group elements, and provides a namespace for the 
+--  grouped elements.
+------------------------------------------------------------------------------
 with AMF.CMOF.Namespaces;
 limited with AMF.CMOF.Package_Merges;
 with AMF.CMOF.Packageable_Elements;

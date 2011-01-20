@@ -43,8 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  A parameter is a specification of an argument used to pass information 
-   --  into or out of an invocation of a behavioral feature.
+--  A parameter is a specification of an argument used to pass information 
+--  into or out of an invocation of a behavioral feature.
+------------------------------------------------------------------------------
 with AMF.CMOF.Multiplicity_Elements;
 limited with AMF.CMOF.Operations;
 with AMF.CMOF.Typed_Elements;

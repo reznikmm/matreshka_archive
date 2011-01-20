@@ -43,7 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  An enumeration literal is a user-defined data value for an enumeration.
+--  An enumeration literal is a user-defined data value for an enumeration.
+------------------------------------------------------------------------------
 limited with AMF.CMOF.Enumerations;
 with AMF.CMOF.Named_Elements;
 

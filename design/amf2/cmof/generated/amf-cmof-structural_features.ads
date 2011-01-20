@@ -43,8 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  A structural feature is a typed feature of a classifier that specifies 
-   --  the structure of instances of the classifier.
+--  A structural feature is a typed feature of a classifier that specifies the 
+--  structure of instances of the classifier.
+------------------------------------------------------------------------------
 with AMF.CMOF.Features;
 with AMF.CMOF.Multiplicity_Elements;
 with AMF.CMOF.Typed_Elements;

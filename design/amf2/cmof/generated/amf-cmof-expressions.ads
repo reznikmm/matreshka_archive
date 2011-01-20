@@ -43,8 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-   --  An expression is a structured tree of symbols that denotes a (possibly 
-   --  empty) set of values when evaluated in a context.
+--  An expression is a structured tree of symbols that denotes a (possibly 
+--  empty) set of values when evaluated in a context.
+------------------------------------------------------------------------------
 with AMF.CMOF.Value_Specifications;
 
 package AMF.CMOF.Expressions is
