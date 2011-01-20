@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+   --  A typed element is a kind of named element that represents an element 
+   --  with a type.
 with AMF.CMOF.Named_Elements;
 limited with AMF.CMOF.Types;
 

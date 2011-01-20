@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+   --  A type is a named element that is used as the type for a typed element. 
+   --  A type can be contained in a package.
 with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Packageable_Elements;
 limited with AMF.CMOF.Packages;

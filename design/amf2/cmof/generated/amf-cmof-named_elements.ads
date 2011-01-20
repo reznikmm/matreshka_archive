@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+   --  A named element is an element in a model that may have a name.
 with AMF.CMOF.Elements;
 limited with AMF.CMOF.Namespaces;
 

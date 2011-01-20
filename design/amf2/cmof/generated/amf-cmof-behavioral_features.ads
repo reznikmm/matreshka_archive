@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+   --  A behavioral feature is a feature of a classifier that specifies an 
+   --  aspect of the behavior of its instances.
 with AMF.CMOF.Features;
 with AMF.CMOF.Namespaces;
 limited with AMF.CMOF.Parameters;

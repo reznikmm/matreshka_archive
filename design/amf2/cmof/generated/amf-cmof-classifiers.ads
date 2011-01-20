@@ -43,6 +43,9 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+   --  A classifier is a classification of instances - it describes a set of 
+   --  instances that have features in common. A classifier can specify a 
+   --  generalization hierarchy by referencing its general classifiers.
 limited with AMF.CMOF.Features;
 limited with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces;

@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+   --  A class describes a set of objects that share the same specifications 
+   --  of features, constraints, and semantics.
 with AMF.CMOF.Classifiers;
 limited with AMF.CMOF.Operations;
 limited with AMF.CMOF.Properties;

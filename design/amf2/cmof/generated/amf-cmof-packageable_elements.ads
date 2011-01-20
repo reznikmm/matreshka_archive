@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+   --  A packageable element indicates a named element that may be owned 
+   --  directly by a package.
 with AMF.CMOF.Named_Elements;
 
 package AMF.CMOF.Packageable_Elements is

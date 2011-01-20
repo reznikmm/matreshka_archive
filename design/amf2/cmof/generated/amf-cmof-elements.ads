@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+   --  An element is a constituent of a model. As such, it has the capability 
+   --  of owning other elements.
 limited with AMF.CMOF.Comments;
 
 package AMF.CMOF.Elements is

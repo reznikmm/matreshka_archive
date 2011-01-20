@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+   --  A namespace is an element in a model that contains a set of named 
+   --  elements that can be identified by name.
 limited with AMF.CMOF.Constraints;
 limited with AMF.CMOF.Element_Imports;
 with AMF.CMOF.Named_Elements;

@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+   --  A directed relationship represents a relationship between a collection 
+   --  of source model elements and a collection of target model elements.
 limited with AMF.CMOF.Elements;
 with AMF.CMOF.Relationships;
 
