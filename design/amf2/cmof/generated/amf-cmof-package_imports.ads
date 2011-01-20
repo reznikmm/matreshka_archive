@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,47 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.CMOF.Directed_Relationships;
+limited with AMF.CMOF.Namespaces;
+limited with AMF.CMOF.Packages;
 
-project Gens is
+package AMF.CMOF.Package_Imports is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Package_Import_Interface is limited interface
+     and AMF.CMOF.Directed_Relationships.CMOF_Directed_Relationship_Interface;
 
-end Gens;
+   type CMOF_Package_Import is
+     access all CMOF_Package_Import_Interface'Class;
+
+   type Set_Of_CMOF_Package_Import is null record;
+   type Ordered_Set_Of_CMOF_Package_Import is null record;
+
+   not overriding function Get_Visibility
+    (Self : not null access constant CMOF_Package_Import_Interface)
+       return CMOF_Visibility_Kind is abstract;
+
+   not overriding procedure Set_Visibility
+    (Self : not null access CMOF_Package_Import_Interface;
+     To   : CMOF_Visibility_Kind) is abstract;
+
+   not overriding function Get_Imported_Package
+    (Self : not null access constant CMOF_Package_Import_Interface)
+       return AMF.CMOF.Packages.CMOF_Package is abstract;
+
+   not overriding procedure Set_Imported_Package
+    (Self : not null access CMOF_Package_Import_Interface;
+     To   : AMF.CMOF.Packages.CMOF_Package) is abstract;
+
+   not overriding function Get_Importing_Namespace
+    (Self : not null access constant CMOF_Package_Import_Interface)
+       return AMF.CMOF.Namespaces.CMOF_Namespace is abstract;
+
+   not overriding procedure Set_Importing_Namespace
+    (Self : not null access CMOF_Package_Import_Interface;
+     To   : AMF.CMOF.Namespaces.CMOF_Namespace) is abstract;
+
+end AMF.CMOF.Package_Imports;

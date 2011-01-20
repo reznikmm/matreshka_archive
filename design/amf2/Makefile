@@ -21,5 +21,11 @@ gen2:
 	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
 	rm cmof/generated/sources.ada
 
+gen2-api:
+	gprbuild -p -Pgen-stage2/gens.gpr
+	./gen-stage2/.obj/gen_api data/cmof.xml > cmof/generated/sources.ada
+	gnatchop -gnat12 -w cmof/generated/sources.ada cmof/generated
+	rm cmof/generated/sources.ada
+
 clean:
 	rm -rf cmof/.objs gen-stage1/.objs gen-stage2/.obj xmi/.objs gui/.objs gui/.amoc demo-cmof demo-reader demo-viewer

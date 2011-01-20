@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,53 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.CMOF.Elements;
 
-project Gens is
+package AMF.CMOF.Multiplicity_Elements is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Multiplicity_Element_Interface is limited interface
+     and AMF.CMOF.Elements.CMOF_Element_Interface;
 
-end Gens;
+   type CMOF_Multiplicity_Element is
+     access all CMOF_Multiplicity_Element_Interface'Class;
+
+   type Set_Of_CMOF_Multiplicity_Element is null record;
+   type Ordered_Set_Of_CMOF_Multiplicity_Element is null record;
+
+   not overriding function Get_Is_Ordered
+    (Self : not null access constant CMOF_Multiplicity_Element_Interface)
+       return Boolean is abstract;
+
+   not overriding procedure Set_Is_Ordered
+    (Self : not null access CMOF_Multiplicity_Element_Interface;
+     To   : Boolean) is abstract;
+
+   not overriding function Get_Is_Unique
+    (Self : not null access constant CMOF_Multiplicity_Element_Interface)
+       return Boolean is abstract;
+
+   not overriding procedure Set_Is_Unique
+    (Self : not null access CMOF_Multiplicity_Element_Interface;
+     To   : Boolean) is abstract;
+
+   not overriding function Get_Lower
+    (Self : not null access constant CMOF_Multiplicity_Element_Interface)
+       return Optional_Integer is abstract;
+
+   not overriding procedure Set_Lower
+    (Self : not null access CMOF_Multiplicity_Element_Interface;
+     To   : Optional_Integer) is abstract;
+
+   not overriding function Get_Upper
+    (Self : not null access constant CMOF_Multiplicity_Element_Interface)
+       return Optional_Unlimited_Natural is abstract;
+
+   not overriding procedure Set_Upper
+    (Self : not null access CMOF_Multiplicity_Element_Interface;
+     To   : Optional_Unlimited_Natural) is abstract;
+
+end AMF.CMOF.Multiplicity_Elements;

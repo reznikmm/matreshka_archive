@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -56,5 +56,7 @@ package Generator.Names is
 
    function Property_Constant_Name
     (Property : CMOF_Property) return Wide_Wide_String;
+
+   function Plural (Name : Wide_Wide_String) return Wide_Wide_String;
 
 end Generator.Names;

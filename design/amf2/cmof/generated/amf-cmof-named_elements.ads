@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,46 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.CMOF.Elements;
+limited with AMF.CMOF.Namespaces;
 
-project Gens is
+package AMF.CMOF.Named_Elements is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Named_Element_Interface is limited interface
+     and AMF.CMOF.Elements.CMOF_Element_Interface;
 
-end Gens;
+   type CMOF_Named_Element is
+     access all CMOF_Named_Element_Interface'Class;
+
+   type Set_Of_CMOF_Named_Element is null record;
+   type Ordered_Set_Of_CMOF_Named_Element is null record;
+
+   not overriding function Get_Name
+    (Self : not null access constant CMOF_Named_Element_Interface)
+       return Optional_String is abstract;
+
+   not overriding procedure Set_Name
+    (Self : not null access CMOF_Named_Element_Interface;
+     To   : Optional_String) is abstract;
+
+   not overriding function Get_Visibility
+    (Self : not null access constant CMOF_Named_Element_Interface)
+       return Optional_CMOF_Visibility_Kind is abstract;
+
+   not overriding procedure Set_Visibility
+    (Self : not null access CMOF_Named_Element_Interface;
+     To   : Optional_CMOF_Visibility_Kind) is abstract;
+
+   not overriding function Get_Namespace
+    (Self : not null access constant CMOF_Named_Element_Interface)
+       return AMF.CMOF.Namespaces.CMOF_Namespace is abstract;
+
+   not overriding function Get_Qualified_Name
+    (Self : not null access constant CMOF_Named_Element_Interface)
+       return Optional_String is abstract;
+
+end AMF.CMOF.Named_Elements;

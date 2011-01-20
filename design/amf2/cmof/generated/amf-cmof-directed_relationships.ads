@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,30 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+limited with AMF.CMOF.Elements;
+with AMF.CMOF.Relationships;
 
-project Gens is
+package AMF.CMOF.Directed_Relationships is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Directed_Relationship_Interface is limited interface
+     and AMF.CMOF.Relationships.CMOF_Relationship_Interface;
 
-end Gens;
+   type CMOF_Directed_Relationship is
+     access all CMOF_Directed_Relationship_Interface'Class;
+
+   type Set_Of_CMOF_Directed_Relationship is null record;
+   type Ordered_Set_Of_CMOF_Directed_Relationship is null record;
+
+   not overriding function Get_Source
+    (Self : not null access constant CMOF_Directed_Relationship_Interface)
+       return AMF.CMOF.Elements.Set_Of_CMOF_Element is abstract;
+
+   not overriding function Get_Target
+    (Self : not null access constant CMOF_Directed_Relationship_Interface)
+       return AMF.CMOF.Elements.Set_Of_CMOF_Element is abstract;
+
+end AMF.CMOF.Directed_Relationships;

@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,32 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+limited with AMF.CMOF.Comments;
 
-project Gens is
+package AMF.CMOF.Elements is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Element_Interface is limited interface;
 
-end Gens;
+   type CMOF_Element is
+     access all CMOF_Element_Interface'Class;
+
+   type Set_Of_CMOF_Element is null record;
+   type Ordered_Set_Of_CMOF_Element is null record;
+
+   not overriding function Get_Owned_Element
+    (Self : not null access constant CMOF_Element_Interface)
+       return AMF.CMOF.Elements.Set_Of_CMOF_Element is abstract;
+
+   not overriding function Get_Owner
+    (Self : not null access constant CMOF_Element_Interface)
+       return AMF.CMOF.Elements.CMOF_Element is abstract;
+
+   not overriding function Get_Owned_Comment
+    (Self : not null access constant CMOF_Element_Interface)
+       return AMF.CMOF.Comments.Set_Of_CMOF_Comment is abstract;
+
+end AMF.CMOF.Elements;

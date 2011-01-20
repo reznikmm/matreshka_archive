@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -100,6 +100,23 @@ package body Generator.Names is
 
       return "MA_CMOF_" & Ada_Name.To_Wide_Wide_String;
    end Association_Constant_Name;
+
+   ------------
+   -- Plural --
+   ------------
+
+   function Plural (Name : Wide_Wide_String) return Wide_Wide_String is
+   begin
+      if Name (Name'Last) = 'y' then
+         return Name (Name'First .. Name'Last - 1) & "ies";
+
+      elsif Name (Name'Last) = 's' then
+         return Name & "es";
+
+      else
+         return Name & "s";
+      end if;
+   end Plural;
 
    ----------------------------
    -- Property_Constant_Name --

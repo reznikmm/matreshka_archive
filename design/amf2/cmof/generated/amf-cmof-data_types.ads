@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,31 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.CMOF.Classifiers;
+limited with AMF.CMOF.Operations;
+limited with AMF.CMOF.Properties;
 
-project Gens is
+package AMF.CMOF.Data_Types is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Data_Type_Interface is limited interface
+     and AMF.CMOF.Classifiers.CMOF_Classifier_Interface;
 
-end Gens;
+   type CMOF_Data_Type is
+     access all CMOF_Data_Type_Interface'Class;
+
+   type Set_Of_CMOF_Data_Type is null record;
+   type Ordered_Set_Of_CMOF_Data_Type is null record;
+
+   not overriding function Get_Owned_Attribute
+    (Self : not null access constant CMOF_Data_Type_Interface)
+       return AMF.CMOF.Properties.Ordered_Set_Of_CMOF_Property is abstract;
+
+   not overriding function Get_Owned_Operation
+    (Self : not null access constant CMOF_Data_Type_Interface)
+       return AMF.CMOF.Operations.Ordered_Set_Of_CMOF_Operation is abstract;
+
+end AMF.CMOF.Data_Types;

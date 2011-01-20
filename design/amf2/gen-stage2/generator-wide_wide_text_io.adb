@@ -53,7 +53,7 @@ package body Generator.Wide_Wide_Text_IO is
    -- Put_Header --
    ----------------
 
-   procedure Put_Header is
+   procedure Put_Header (Year_2010 : Boolean := True) is
    begin
       Put_Line
        ("--------------------------------------------------------------------"
@@ -85,9 +85,18 @@ package body Generator.Wide_Wide_Text_IO is
       Put_Line
        ("--                                                                  "
           & "        --");
-      Put_Line
-       ("-- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>             "
-          & "        --");
+
+      if Year_2010 then
+         Put_Line
+          ("-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>     "
+             & "           --");
+
+      else
+         Put_Line
+          ("-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>          "
+             & "           --");
+      end if;
+
       Put_Line
        ("-- All rights reserved.                                             "
           & "        --");

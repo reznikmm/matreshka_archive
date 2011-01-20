@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,33 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.CMOF.Features;
+with AMF.CMOF.Namespaces;
+limited with AMF.CMOF.Parameters;
+limited with AMF.CMOF.Types;
 
-project Gens is
+package AMF.CMOF.Behavioral_Features is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Behavioral_Feature_Interface is limited interface
+     and AMF.CMOF.Features.CMOF_Feature_Interface
+     and AMF.CMOF.Namespaces.CMOF_Namespace_Interface;
 
-end Gens;
+   type CMOF_Behavioral_Feature is
+     access all CMOF_Behavioral_Feature_Interface'Class;
+
+   type Set_Of_CMOF_Behavioral_Feature is null record;
+   type Ordered_Set_Of_CMOF_Behavioral_Feature is null record;
+
+   not overriding function Get_Owned_Parameter
+    (Self : not null access constant CMOF_Behavioral_Feature_Interface)
+       return AMF.CMOF.Parameters.Ordered_Set_Of_CMOF_Parameter is abstract;
+
+   not overriding function Get_Raised_Exception
+    (Self : not null access constant CMOF_Behavioral_Feature_Interface)
+       return AMF.CMOF.Types.Set_Of_CMOF_Type is abstract;
+
+end AMF.CMOF.Behavioral_Features;

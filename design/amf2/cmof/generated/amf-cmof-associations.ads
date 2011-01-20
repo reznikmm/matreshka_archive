@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,49 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.CMOF.Classifiers;
+limited with AMF.CMOF.Properties;
+with AMF.CMOF.Relationships;
+limited with AMF.CMOF.Types;
 
-project Gens is
+package AMF.CMOF.Associations is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Association_Interface is limited interface
+     and AMF.CMOF.Classifiers.CMOF_Classifier_Interface
+     and AMF.CMOF.Relationships.CMOF_Relationship_Interface;
 
-end Gens;
+   type CMOF_Association is
+     access all CMOF_Association_Interface'Class;
+
+   type Set_Of_CMOF_Association is null record;
+   type Ordered_Set_Of_CMOF_Association is null record;
+
+   not overriding function Get_Is_Derived
+    (Self : not null access constant CMOF_Association_Interface)
+       return Boolean is abstract;
+
+   not overriding procedure Set_Is_Derived
+    (Self : not null access CMOF_Association_Interface;
+     To   : Boolean) is abstract;
+
+   not overriding function Get_Owned_End
+    (Self : not null access constant CMOF_Association_Interface)
+       return AMF.CMOF.Properties.Ordered_Set_Of_CMOF_Property is abstract;
+
+   not overriding function Get_End_Type
+    (Self : not null access constant CMOF_Association_Interface)
+       return AMF.CMOF.Types.Set_Of_CMOF_Type is abstract;
+
+   not overriding function Get_Member_End
+    (Self : not null access constant CMOF_Association_Interface)
+       return AMF.CMOF.Properties.Ordered_Set_Of_CMOF_Property is abstract;
+
+   not overriding function Get_Navigable_Owned_End
+    (Self : not null access constant CMOF_Association_Interface)
+       return AMF.CMOF.Properties.Set_Of_CMOF_Property is abstract;
+
+end AMF.CMOF.Associations;

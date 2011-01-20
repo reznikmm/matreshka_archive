@@ -46,6 +46,6 @@
 
 package Generator.Wide_Wide_Text_IO is
 
-   procedure Put_Header;
+   procedure Put_Header (Year_2010 : Boolean := True);
 
 end Generator.Wide_Wide_Text_IO;

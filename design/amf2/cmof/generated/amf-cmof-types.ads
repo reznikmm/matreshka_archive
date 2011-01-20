@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,32 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.CMOF.Named_Elements;
+with AMF.CMOF.Packageable_Elements;
+limited with AMF.CMOF.Packages;
 
-project Gens is
+package AMF.CMOF.Types is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Type_Interface is limited interface
+     and AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element_Interface
+     and AMF.CMOF.Named_Elements.CMOF_Named_Element_Interface;
 
-end Gens;
+   type CMOF_Type is
+     access all CMOF_Type_Interface'Class;
+
+   type Set_Of_CMOF_Type is null record;
+   type Ordered_Set_Of_CMOF_Type is null record;
+
+   not overriding function Get_Package
+    (Self : not null access constant CMOF_Type_Interface)
+       return AMF.CMOF.Packages.CMOF_Package is abstract;
+
+   not overriding procedure Set_Package
+    (Self : not null access CMOF_Type_Interface;
+     To   : AMF.CMOF.Packages.CMOF_Package) is abstract;
+
+end AMF.CMOF.Types;

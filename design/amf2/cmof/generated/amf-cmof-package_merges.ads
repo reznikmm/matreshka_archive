@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,38 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.CMOF.Directed_Relationships;
+limited with AMF.CMOF.Packages;
 
-project Gens is
+package AMF.CMOF.Package_Merges is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Package_Merge_Interface is limited interface
+     and AMF.CMOF.Directed_Relationships.CMOF_Directed_Relationship_Interface;
 
-end Gens;
+   type CMOF_Package_Merge is
+     access all CMOF_Package_Merge_Interface'Class;
+
+   type Set_Of_CMOF_Package_Merge is null record;
+   type Ordered_Set_Of_CMOF_Package_Merge is null record;
+
+   not overriding function Get_Receiving_Package
+    (Self : not null access constant CMOF_Package_Merge_Interface)
+       return AMF.CMOF.Packages.CMOF_Package is abstract;
+
+   not overriding procedure Set_Receiving_Package
+    (Self : not null access CMOF_Package_Merge_Interface;
+     To   : AMF.CMOF.Packages.CMOF_Package) is abstract;
+
+   not overriding function Get_Merged_Package
+    (Self : not null access constant CMOF_Package_Merge_Interface)
+       return AMF.CMOF.Packages.CMOF_Package is abstract;
+
+   not overriding procedure Set_Merged_Package
+    (Self : not null access CMOF_Package_Merge_Interface;
+     To   : AMF.CMOF.Packages.CMOF_Package) is abstract;
+
+end AMF.CMOF.Package_Merges;

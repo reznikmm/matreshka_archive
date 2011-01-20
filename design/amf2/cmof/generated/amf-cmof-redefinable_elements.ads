@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,38 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+limited with AMF.CMOF.Classifiers;
+with AMF.CMOF.Named_Elements;
 
-project Gens is
+package AMF.CMOF.Redefinable_Elements is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Redefinable_Element_Interface is limited interface
+     and AMF.CMOF.Named_Elements.CMOF_Named_Element_Interface;
 
-end Gens;
+   type CMOF_Redefinable_Element is
+     access all CMOF_Redefinable_Element_Interface'Class;
+
+   type Set_Of_CMOF_Redefinable_Element is null record;
+   type Ordered_Set_Of_CMOF_Redefinable_Element is null record;
+
+   not overriding function Get_Redefinition_Context
+    (Self : not null access constant CMOF_Redefinable_Element_Interface)
+       return AMF.CMOF.Classifiers.Set_Of_CMOF_Classifier is abstract;
+
+   not overriding function Get_Redefined_Element
+    (Self : not null access constant CMOF_Redefinable_Element_Interface)
+       return AMF.CMOF.Redefinable_Elements.Set_Of_CMOF_Redefinable_Element is abstract;
+
+   not overriding function Get_Is_Leaf
+    (Self : not null access constant CMOF_Redefinable_Element_Interface)
+       return Boolean is abstract;
+
+   not overriding procedure Set_Is_Leaf
+    (Self : not null access CMOF_Redefinable_Element_Interface;
+     To   : Boolean) is abstract;
+
+end AMF.CMOF.Redefinable_Elements;

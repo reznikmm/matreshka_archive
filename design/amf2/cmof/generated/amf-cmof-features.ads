@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,26 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+limited with AMF.CMOF.Classifiers;
+with AMF.CMOF.Redefinable_Elements;
 
-project Gens is
+package AMF.CMOF.Features is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Feature_Interface is limited interface
+     and AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element_Interface;
 
-end Gens;
+   type CMOF_Feature is
+     access all CMOF_Feature_Interface'Class;
+
+   type Set_Of_CMOF_Feature is null record;
+   type Ordered_Set_Of_CMOF_Feature is null record;
+
+   not overriding function Get_Featuring_Classifier
+    (Self : not null access constant CMOF_Feature_Interface)
+       return AMF.CMOF.Classifiers.Set_Of_CMOF_Classifier is abstract;
+
+end AMF.CMOF.Features;

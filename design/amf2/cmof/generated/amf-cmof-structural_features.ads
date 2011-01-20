@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.CMOF.Features;
+with AMF.CMOF.Multiplicity_Elements;
+with AMF.CMOF.Typed_Elements;
 
-project Gens is
+package AMF.CMOF.Structural_Features is
 
-   for Main use ("gen_api.adb", "gen_init.adb");
-   for Object_Dir use ".obj";
+   pragma Preelaborate;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
-   end Compiler;
+   type CMOF_Structural_Feature_Interface is limited interface
+     and AMF.CMOF.Features.CMOF_Feature_Interface
+     and AMF.CMOF.Multiplicity_Elements.CMOF_Multiplicity_Element_Interface
+     and AMF.CMOF.Typed_Elements.CMOF_Typed_Element_Interface;
 
-end Gens;
+   type CMOF_Structural_Feature is
+     access all CMOF_Structural_Feature_Interface'Class;
+
+   type Set_Of_CMOF_Structural_Feature is null record;
+   type Ordered_Set_Of_CMOF_Structural_Feature is null record;
+
+end AMF.CMOF.Structural_Features;
