@@ -355,9 +355,6 @@ procedure Gen_API is
 
          --  Generate comment.
 
-         --  XXX Here is good opportunity to use line break cursor to format
-         --  text.
-
          declare
             Owned_Comments : constant Set_Of_CMOF_Comment
               := Get_Owned_Comment (Attribute);
@@ -429,6 +426,25 @@ procedure Gen_API is
       Put_Line (Standard_Error, Get_Name (Class).To_Wide_Wide_String);
 
       Put_Header (Year_2010 => False);
+
+      --  Generate comment.
+
+      declare
+         Owned_Comments : constant Set_Of_CMOF_Comment
+           := Get_Owned_Comment (Class);
+         Lines          : Universal_String_Vector;
+
+      begin
+         for J in 1 .. Length (Owned_Comments) loop
+            Lines :=
+              Split_Text (Get_Body (Element (Owned_Comments, J)), 71);
+
+            for J in 1 .. Lines.Length loop
+               Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
+            end loop;
+         end loop;
+      end;
+
       All_With.Iterate (Generate_With_Clause'Access);
 
       New_Line;
