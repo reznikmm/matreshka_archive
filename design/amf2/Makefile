@@ -13,9 +13,13 @@ gen:
 	./gen-stage1/.objs/gen data/Infrastructure.cmof > cmof/generated/sources.ada
 	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
 	rm cmof/generated/sources.ada
-#	(cd cmof/generated && patch < uri-1.patch)
+	(cd cmof/generated && patch < uri-1.patch)
 
 gen2:
+	gprbuild -p -Pgen-stage2/gens.gpr
+	./gen-stage2/.obj/gen_init data/cmof-bootstrap.xml > cmof/generated/sources.ada
+	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
+	rm cmof/generated/sources.ada
 	gprbuild -p -Pgen-stage2/gens.gpr
 	./gen-stage2/.obj/gen_init data/cmof.xml > cmof/generated/sources.ada
 	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
