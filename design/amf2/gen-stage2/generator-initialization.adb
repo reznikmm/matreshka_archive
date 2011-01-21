@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -85,6 +85,9 @@ package body Generator.Initialization is
    procedure Generate_Link_Initialization
     (Element : CMOF_Element;
      Numbers : CMOF_Element_Number_Maps.Map);
+
+   function Has_Parameter_Direction_Kind_Type
+    (Property : CMOF_Property) return Boolean;
 
    function Has_Boolean_Type (Property : CMOF_Property) return Boolean;
 
@@ -273,6 +276,26 @@ package body Generator.Initialization is
                       & """));");
                end if;
 
+            elsif Has_Parameter_Direction_Kind_Type (Property) then
+               Put
+                ("   Internal_Set_" & To_Ada_Identifier (Get_Name (Property))
+                   & " (");
+               Put (Numbers.Element (Element), Width => 0);
+               Put (", ");
+
+               case Value.Parameter_Direction_Value is
+                  when In_Direction =>
+                     Put_Line ("In_Direction);");
+
+                  when Out_Direction =>
+                     Put_Line ("Out_Direction);");
+
+                  when In_Out_Direction =>
+                     Put_Line ("In_Out_Direction);");
+
+                  when Return_Direction =>
+                     Put_Line ("Return_Direction);");
+               end case;
             else
                --  Enumeration
 
@@ -492,6 +515,18 @@ package body Generator.Initialization is
         Get_Name (Get_Type (Property))
           = League.Strings.To_Universal_String ("Integer");
    end Has_Integer_Type;
+
+   ---------------------------------------
+   -- Has_Parameter_Direction_Kind_Type --
+   ---------------------------------------
+
+   function Has_Parameter_Direction_Kind_Type
+    (Property : CMOF_Property) return Boolean is
+   begin
+      return
+        Get_Name (Get_Type (Property))
+          = League.Strings.To_Universal_String ("ParameterDirectionKind");
+   end Has_Parameter_Direction_Kind_Type;
 
    --------------------------------
    -- Has_Unlimited_Natural_Type --
