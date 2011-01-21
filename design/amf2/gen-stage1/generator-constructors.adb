@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -209,7 +209,19 @@ package body Generator.Constructors is
          begin
             if not Is_Collection_Of_Element (Property) then
                if not Is_Multivalued (Property) then
-                  if Has_Boolean_Type (Property) then
+                  if Property.Type_Id
+                       = "Core-Constructs-ParameterDirectionKind"
+                  then
+                     Put
+                      ("                    " & Integer'Image (Property_Index));
+                     Set_Col (29);
+                     Put ("=> (M_Parameter_Direction_Kind, ");
+                     Put ("In_Direction");
+                     Put ("),");
+                     Set_Col (60);
+                     Put_Line ("--  " & To_String (Property.Name));
+
+                  elsif Has_Boolean_Type (Property) then
                      Put
                       ("                    " & Integer'Image (Property_Index));
                      Set_Col (29);

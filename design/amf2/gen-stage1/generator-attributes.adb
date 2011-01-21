@@ -1,3 +1,46 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--                          Ada Modeling Framework                          --
+--                                                                          --
+--                              Tools Component                             --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
 with Ada.Strings.Fixed;
 with Ada.Text_IO;
 
@@ -237,7 +280,21 @@ package body Generator.Attributes is
           (Property : Property_Access;
            Indent   : Ada.Text_IO.Positive_Count) is
          begin
-            if Has_Boolean_Type (Property) then
+            if Property.Type_Id = "Core-Constructs-ParameterDirectionKind" then
+               Set_Col (Indent);
+               Put_Line ("Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line (" (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("   (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("    "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").Parameter_Direction_Value := To;");
+
+            elsif Has_Boolean_Type (Property) then
                Set_Col (Indent);
                Put_Line ("Elements.Table (Self).Member");
                Set_Col (Indent);
@@ -366,6 +423,22 @@ package body Generator.Attributes is
                  ("          "
                     & Constant_Name_In_Metamodel (Property)
                     & "));");
+
+            elsif Property.Type_Id
+                    = "Core-Constructs-ParameterDirectionKind"
+            then
+               Set_Col (Indent);
+               Put_Line ("  Elements.Table (Self).Member");
+               Set_Col (Indent);
+               Put_Line ("   (Member_Offset");
+               Set_Col (Indent);
+               Put_Line ("     (Elements.Table (Self).Kind,");
+               Set_Col (Indent);
+               Put_Line
+                ("      "
+                   & Constant_Name_In_Metamodel (Property)
+                   & ")"
+                   & ").Parameter_Direction_Value;");
 
             elsif Has_Boolean_Type (Property) then
                Set_Col (Indent);
@@ -752,7 +825,17 @@ package body Generator.Attributes is
       Put_Line
        ("   function Internal_Get_" & To_Ada_Identifier (Property.Name));
 
-      if Has_Boolean_Type (Property) then
+      if Property.Type_Id = "Core-Constructs-ParameterDirectionKind" then
+         if Is_Multivalued (Property) then
+            raise Program_Error;
+
+         else
+            Put
+             ("     (Self : CMOF_Element)"
+                & " return CMOF_Parameter_Direction_Kind");
+         end if;
+
+      elsif Has_Boolean_Type (Property) then
          if Is_Multivalued (Property) then
             raise Program_Error;
 
@@ -915,7 +998,10 @@ package body Generator.Attributes is
        ("   procedure Internal_Set_" & To_Ada_Identifier (Property.Name));
       Put_Line ("     (Self : CMOF_Element;");
 
-      if Has_Boolean_Type (Property) then
+      if Property.Type_Id = "Core-Constructs-ParameterDirectionKind" then
+         Put ("      To   : CMOF_Parameter_Direction_Kind)");
+
+      elsif Has_Boolean_Type (Property) then
          Put ("      To   : Boolean)");
 
       elsif Has_Integer_Type (Property) then
