@@ -1157,7 +1157,9 @@ package body CMOF.Internals.Reflection is
               Internal_Get_Default (Self));
 
          elsif Property = MP_CMOF_Parameter_Direction then
-            return (Kind => AMF.Values.Value_None);
+            return
+             (AMF.Values.Value_CMOF_Parameter_Direction_Kind,
+              Internal_Get_Direction (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             return
@@ -1873,7 +1875,7 @@ package body CMOF.Internals.Reflection is
             Internal_Set_Default (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Parameter_Direction then
-            null;
+            Internal_Set_Direction (Self, Value.Parameter_Direction_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             Internal_Set_Is_Ordered (Self, Value.Boolean_Value);

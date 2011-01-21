@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -646,6 +646,7 @@ begin
    Internal_Set_Default
     (223,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (223, Return_Direction);
    Internal_Set_Is_Ordered (223, False);
    Internal_Set_Is_Unique (223, True);
    Internal_Set_Lower (
@@ -657,6 +658,7 @@ begin
    Internal_Set_Default
     (224,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (224, In_Direction);
    Internal_Set_Is_Ordered (224, False);
    Internal_Set_Is_Unique (224, True);
    Internal_Set_Lower (
@@ -690,6 +692,7 @@ begin
    Internal_Set_Default
     (229,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (229, Return_Direction);
    Internal_Set_Is_Ordered (229, False);
    Internal_Set_Is_Unique (229, True);
    Internal_Set_Lower (
@@ -723,6 +726,7 @@ begin
    Internal_Set_Default
     (234,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (234, Return_Direction);
    Internal_Set_Is_Ordered (234, False);
    Internal_Set_Is_Unique (234, True);
    Internal_Set_Lower (
@@ -756,6 +760,7 @@ begin
    Internal_Set_Default
     (239,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (239, Return_Direction);
    Internal_Set_Is_Ordered (239, False);
    Internal_Set_Is_Unique (239, True);
    Internal_Set_Lower (
@@ -789,6 +794,7 @@ begin
    Internal_Set_Default
     (244,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (244, Return_Direction);
    Internal_Set_Is_Ordered (244, False);
    Internal_Set_Is_Unique (244, True);
    Internal_Set_Lower (
@@ -822,6 +828,7 @@ begin
    Internal_Set_Default
     (249,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (249, Return_Direction);
    Internal_Set_Is_Ordered (249, False);
    Internal_Set_Is_Unique (249, True);
    Internal_Set_Lower (
@@ -863,6 +870,7 @@ begin
    Internal_Set_Default
     (256,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (256, Return_Direction);
    Internal_Set_Is_Ordered (256, False);
    Internal_Set_Is_Unique (256, True);
    Internal_Set_Lower (
@@ -874,6 +882,7 @@ begin
    Internal_Set_Default
     (257,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (257, In_Direction);
    Internal_Set_Is_Ordered (257, False);
    Internal_Set_Is_Unique (257, True);
    Internal_Set_Lower (
@@ -915,6 +924,7 @@ begin
    Internal_Set_Default
     (264,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (264, Return_Direction);
    Internal_Set_Is_Ordered (264, False);
    Internal_Set_Is_Unique (264, True);
    Internal_Set_Lower (
@@ -926,6 +936,7 @@ begin
    Internal_Set_Default
     (265,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (265, In_Direction);
    Internal_Set_Is_Ordered (265, False);
    Internal_Set_Is_Unique (265, True);
    Internal_Set_Lower (
@@ -959,6 +970,7 @@ begin
    Internal_Set_Default
     (270,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (270, Return_Direction);
    Internal_Set_Is_Ordered (270, False);
    Internal_Set_Is_Unique (270, True);
    Internal_Set_Lower (
@@ -970,6 +982,7 @@ begin
    Internal_Set_Default
     (271,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (271, In_Direction);
    Internal_Set_Is_Ordered (271, False);
    Internal_Set_Is_Unique (271, True);
    Internal_Set_Lower (
@@ -1003,6 +1016,7 @@ begin
    Internal_Set_Default
     (276,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (276, Return_Direction);
    Internal_Set_Is_Ordered (276, False);
    Internal_Set_Is_Unique (276, True);
    Internal_Set_Lower (
@@ -1014,6 +1028,7 @@ begin
    Internal_Set_Default
     (277,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (277, In_Direction);
    Internal_Set_Is_Ordered (277, False);
    Internal_Set_Is_Unique (277, True);
    Internal_Set_Lower (
@@ -1191,6 +1206,7 @@ begin
    Internal_Set_Default
     (295,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (295, Return_Direction);
    Internal_Set_Is_Ordered (295, False);
    Internal_Set_Is_Unique (295, True);
    Internal_Set_Lower (
@@ -1224,6 +1240,7 @@ begin
    Internal_Set_Default
     (300,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (300, Return_Direction);
    Internal_Set_Is_Ordered (300, False);
    Internal_Set_Is_Unique (300, True);
    Internal_Set_Lower (
@@ -1409,6 +1426,7 @@ begin
    Internal_Set_Default
     (320,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (320, Return_Direction);
    Internal_Set_Is_Ordered (320, False);
    Internal_Set_Is_Unique (320, True);
    Internal_Set_Lower (
@@ -1450,6 +1468,7 @@ begin
    Internal_Set_Default
     (327,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (327, Return_Direction);
    Internal_Set_Is_Ordered (327, False);
    Internal_Set_Is_Unique (327, True);
    Internal_Set_Lower (
@@ -1461,6 +1480,7 @@ begin
    Internal_Set_Default
     (328,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (328, In_Direction);
    Internal_Set_Is_Ordered (328, False);
    Internal_Set_Is_Unique (328, True);
    Internal_Set_Lower (
@@ -1502,6 +1522,7 @@ begin
    Internal_Set_Default
     (335,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (335, Return_Direction);
    Internal_Set_Is_Ordered (335, False);
    Internal_Set_Is_Unique (335, True);
    Internal_Set_Lower (
@@ -1513,6 +1534,7 @@ begin
    Internal_Set_Default
     (336,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (336, In_Direction);
    Internal_Set_Is_Ordered (336, False);
    Internal_Set_Is_Unique (336, True);
    Internal_Set_Lower (
@@ -1546,6 +1568,7 @@ begin
    Internal_Set_Default
     (341,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (341, Return_Direction);
    Internal_Set_Is_Ordered (341, False);
    Internal_Set_Is_Unique (341, True);
    Internal_Set_Lower (
@@ -1579,6 +1602,7 @@ begin
    Internal_Set_Default
     (346,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (346, Return_Direction);
    Internal_Set_Is_Ordered (346, False);
    Internal_Set_Is_Unique (346, True);
    Internal_Set_Lower (
@@ -1750,6 +1774,7 @@ begin
    Internal_Set_Default
     (360,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (360, Return_Direction);
    Internal_Set_Is_Ordered (360, False);
    Internal_Set_Is_Unique (360, True);
    Internal_Set_Lower (
@@ -1783,6 +1808,7 @@ begin
    Internal_Set_Default
     (365,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (365, Return_Direction);
    Internal_Set_Is_Ordered (365, False);
    Internal_Set_Is_Unique (365, True);
    Internal_Set_Lower (
@@ -1794,6 +1820,7 @@ begin
    Internal_Set_Default
     (366,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (366, In_Direction);
    Internal_Set_Is_Ordered (366, False);
    Internal_Set_Is_Unique (366, True);
    Internal_Set_Lower (
@@ -1827,6 +1854,7 @@ begin
    Internal_Set_Default
     (371,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (371, Return_Direction);
    Internal_Set_Is_Ordered (371, False);
    Internal_Set_Is_Unique (371, True);
    Internal_Set_Lower (
@@ -1838,6 +1866,7 @@ begin
    Internal_Set_Default
     (372,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (372, In_Direction);
    Internal_Set_Is_Ordered (372, False);
    Internal_Set_Is_Unique (372, True);
    Internal_Set_Lower (
@@ -1871,6 +1900,7 @@ begin
    Internal_Set_Default
     (377,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (377, Return_Direction);
    Internal_Set_Is_Ordered (377, False);
    Internal_Set_Is_Unique (377, True);
    Internal_Set_Lower (
@@ -1882,6 +1912,7 @@ begin
    Internal_Set_Default
     (378,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (378, In_Direction);
    Internal_Set_Is_Ordered (378, False);
    Internal_Set_Is_Unique (378, True);
    Internal_Set_Lower (
@@ -1915,6 +1946,7 @@ begin
    Internal_Set_Default
     (383,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (383, Return_Direction);
    Internal_Set_Is_Ordered (383, False);
    Internal_Set_Is_Unique (383, True);
    Internal_Set_Lower (
@@ -2072,6 +2104,7 @@ begin
    Internal_Set_Default
     (404,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (404, Return_Direction);
    Internal_Set_Is_Ordered (404, False);
    Internal_Set_Is_Unique (404, True);
    Internal_Set_Lower (
@@ -2083,6 +2116,7 @@ begin
    Internal_Set_Default
     (405,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (405, In_Direction);
    Internal_Set_Is_Ordered (405, False);
    Internal_Set_Is_Unique (405, True);
    Internal_Set_Lower (
@@ -2116,6 +2150,7 @@ begin
    Internal_Set_Default
     (410,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (410, Return_Direction);
    Internal_Set_Is_Ordered (410, False);
    Internal_Set_Is_Unique (410, True);
    Internal_Set_Lower (
@@ -2127,6 +2162,7 @@ begin
    Internal_Set_Default
     (411,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (411, In_Direction);
    Internal_Set_Is_Ordered (411, False);
    Internal_Set_Is_Unique (411, True);
    Internal_Set_Lower (
@@ -2240,6 +2276,7 @@ begin
    Internal_Set_Default
     (422,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (422, Return_Direction);
    Internal_Set_Is_Ordered (422, False);
    Internal_Set_Is_Unique (422, True);
    Internal_Set_Lower (
@@ -2273,6 +2310,7 @@ begin
    Internal_Set_Default
     (427,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (427, Return_Direction);
    Internal_Set_Is_Ordered (427, False);
    Internal_Set_Is_Unique (427, True);
    Internal_Set_Lower (
@@ -2306,6 +2344,7 @@ begin
    Internal_Set_Default
     (432,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (432, Return_Direction);
    Internal_Set_Is_Ordered (432, False);
    Internal_Set_Is_Unique (432, True);
    Internal_Set_Lower (
@@ -2339,6 +2378,7 @@ begin
    Internal_Set_Default
     (437,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (437, Return_Direction);
    Internal_Set_Is_Ordered (437, False);
    Internal_Set_Is_Unique (437, True);
    Internal_Set_Lower (
@@ -2372,6 +2412,7 @@ begin
    Internal_Set_Default
     (442,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (442, Return_Direction);
    Internal_Set_Is_Ordered (442, False);
    Internal_Set_Is_Unique (442, True);
    Internal_Set_Lower (
@@ -2405,6 +2446,7 @@ begin
    Internal_Set_Default
     (447,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (447, Return_Direction);
    Internal_Set_Is_Ordered (447, False);
    Internal_Set_Is_Unique (447, True);
    Internal_Set_Lower (
@@ -2596,6 +2638,7 @@ begin
    Internal_Set_Default
     (470,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (470, Return_Direction);
    Internal_Set_Is_Ordered (470, True);
    Internal_Set_Is_Unique (470, True);
    Internal_Set_Lower (
@@ -2719,6 +2762,7 @@ begin
    Internal_Set_Default
     (480,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (480, Return_Direction);
    Internal_Set_Is_Ordered (480, False);
    Internal_Set_Is_Unique (480, True);
    Internal_Set_Lower (
@@ -2730,6 +2774,7 @@ begin
    Internal_Set_Default
     (481,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (481, In_Direction);
    Internal_Set_Is_Ordered (481, False);
    Internal_Set_Is_Unique (481, True);
    Internal_Set_Lower (
@@ -3097,6 +3142,7 @@ begin
    Internal_Set_Default
     (520,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (520, Return_Direction);
    Internal_Set_Is_Ordered (520, False);
    Internal_Set_Is_Unique (520, True);
    Internal_Set_Lower (
@@ -3138,6 +3184,7 @@ begin
    Internal_Set_Default
     (527,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (527, Return_Direction);
    Internal_Set_Is_Ordered (527, False);
    Internal_Set_Is_Unique (527, True);
    Internal_Set_Lower (
@@ -3149,6 +3196,7 @@ begin
    Internal_Set_Default
     (528,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (528, In_Direction);
    Internal_Set_Is_Ordered (528, False);
    Internal_Set_Is_Unique (528, True);
    Internal_Set_Lower (
@@ -3182,6 +3230,7 @@ begin
    Internal_Set_Default
     (533,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (533, Return_Direction);
    Internal_Set_Is_Ordered (533, False);
    Internal_Set_Is_Unique (533, True);
    Internal_Set_Lower (
@@ -3215,6 +3264,7 @@ begin
    Internal_Set_Default
     (538,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (538, Return_Direction);
    Internal_Set_Is_Ordered (538, False);
    Internal_Set_Is_Unique (538, True);
    Internal_Set_Lower (
@@ -3248,6 +3298,7 @@ begin
    Internal_Set_Default
     (543,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (543, Return_Direction);
    Internal_Set_Is_Ordered (543, False);
    Internal_Set_Is_Unique (543, True);
    Internal_Set_Lower (
@@ -3259,6 +3310,7 @@ begin
    Internal_Set_Default
     (544,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (544, In_Direction);
    Internal_Set_Is_Ordered (544, False);
    Internal_Set_Is_Unique (544, True);
    Internal_Set_Lower (
@@ -3342,6 +3394,7 @@ begin
    Internal_Set_Default
     (552,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (552, Return_Direction);
    Internal_Set_Is_Ordered (552, False);
    Internal_Set_Is_Unique (552, True);
    Internal_Set_Lower (
@@ -3353,6 +3406,7 @@ begin
    Internal_Set_Default
     (553,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (553, In_Direction);
    Internal_Set_Is_Ordered (553, False);
    Internal_Set_Is_Unique (553, True);
    Internal_Set_Lower (
@@ -3910,6 +3964,7 @@ begin
    Internal_Set_Default
     (596,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (596, Return_Direction);
    Internal_Set_Is_Ordered (596, False);
    Internal_Set_Is_Unique (596, True);
    Internal_Set_Lower (
@@ -3943,6 +3998,7 @@ begin
    Internal_Set_Default
     (601,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (601, Return_Direction);
    Internal_Set_Is_Ordered (601, False);
    Internal_Set_Is_Unique (601, True);
    Internal_Set_Lower (
@@ -3976,6 +4032,7 @@ begin
    Internal_Set_Default
     (606,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (606, Return_Direction);
    Internal_Set_Is_Ordered (606, False);
    Internal_Set_Is_Unique (606, True);
    Internal_Set_Lower (
@@ -4009,6 +4066,7 @@ begin
    Internal_Set_Default
     (611,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (611, Return_Direction);
    Internal_Set_Is_Ordered (611, False);
    Internal_Set_Is_Unique (611, True);
    Internal_Set_Lower (
@@ -4042,6 +4100,7 @@ begin
    Internal_Set_Default
     (616,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (616, Return_Direction);
    Internal_Set_Is_Ordered (616, False);
    Internal_Set_Is_Unique (616, True);
    Internal_Set_Lower (
@@ -4083,6 +4142,7 @@ begin
    Internal_Set_Default
     (623,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (623, Return_Direction);
    Internal_Set_Is_Ordered (623, False);
    Internal_Set_Is_Unique (623, True);
    Internal_Set_Lower (
@@ -4094,6 +4154,7 @@ begin
    Internal_Set_Default
     (624,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (624, In_Direction);
    Internal_Set_Is_Ordered (624, False);
    Internal_Set_Is_Unique (624, True);
    Internal_Set_Lower (
@@ -4123,6 +4184,7 @@ begin
    Internal_Set_Default
     (628,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (628, Return_Direction);
    Internal_Set_Is_Ordered (628, False);
    Internal_Set_Is_Unique (628, True);
    Internal_Set_Lower (
@@ -4276,6 +4338,7 @@ begin
    Internal_Set_Default
     (640,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (640, Return_Direction);
    Internal_Set_Is_Ordered (640, False);
    Internal_Set_Is_Unique (640, True);
    Internal_Set_Lower (
@@ -4287,6 +4350,7 @@ begin
    Internal_Set_Default
     (641,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (641, In_Direction);
    Internal_Set_Is_Ordered (641, False);
    Internal_Set_Is_Unique (641, True);
    Internal_Set_Lower (
@@ -4298,6 +4362,7 @@ begin
    Internal_Set_Default
     (642,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (642, In_Direction);
    Internal_Set_Is_Ordered (642, False);
    Internal_Set_Is_Unique (642, True);
    Internal_Set_Lower (
@@ -4445,6 +4510,7 @@ begin
    Internal_Set_Default
     (658,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (658, Return_Direction);
    Internal_Set_Is_Ordered (658, False);
    Internal_Set_Is_Unique (658, True);
    Internal_Set_Lower (
@@ -4620,6 +4686,7 @@ begin
    Internal_Set_Default
     (673,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (673, Return_Direction);
    Internal_Set_Is_Ordered (673, False);
    Internal_Set_Is_Unique (673, True);
    Internal_Set_Lower (
@@ -4653,6 +4720,7 @@ begin
    Internal_Set_Default
     (678,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (678, Return_Direction);
    Internal_Set_Is_Ordered (678, False);
    Internal_Set_Is_Unique (678, True);
    Internal_Set_Lower (
@@ -4694,6 +4762,7 @@ begin
    Internal_Set_Default
     (685,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (685, Return_Direction);
    Internal_Set_Is_Ordered (685, False);
    Internal_Set_Is_Unique (685, True);
    Internal_Set_Lower (
@@ -4705,6 +4774,7 @@ begin
    Internal_Set_Default
     (686,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (686, In_Direction);
    Internal_Set_Is_Ordered (686, False);
    Internal_Set_Is_Unique (686, True);
    Internal_Set_Lower (
@@ -4900,6 +4970,7 @@ begin
    Internal_Set_Default
     (703,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (703, Return_Direction);
    Internal_Set_Is_Ordered (703, False);
    Internal_Set_Is_Unique (703, True);
    Internal_Set_Lower (
@@ -4911,6 +4982,7 @@ begin
    Internal_Set_Default
     (704,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (704, In_Direction);
    Internal_Set_Is_Ordered (704, False);
    Internal_Set_Is_Unique (704, True);
    Internal_Set_Lower (
@@ -5070,6 +5142,7 @@ begin
    Internal_Set_Default
     (723,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (723, Return_Direction);
    Internal_Set_Is_Ordered (723, True);
    Internal_Set_Is_Unique (723, True);
    Internal_Set_Lower (
@@ -5103,6 +5176,7 @@ begin
    Internal_Set_Default
     (728,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (728, Return_Direction);
    Internal_Set_Is_Ordered (728, False);
    Internal_Set_Is_Unique (728, True);
    Internal_Set_Lower (
@@ -5114,6 +5188,7 @@ begin
    Internal_Set_Default
     (729,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (729, In_Direction);
    Internal_Set_Is_Ordered (729, False);
    Internal_Set_Is_Unique (729, True);
    Internal_Set_Lower (
@@ -5125,6 +5200,7 @@ begin
    Internal_Set_Default
     (730,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (730, In_Direction);
    Internal_Set_Is_Ordered (730, False);
    Internal_Set_Is_Unique (730, True);
    Internal_Set_Lower (
@@ -5158,6 +5234,7 @@ begin
    Internal_Set_Default
     (735,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (735, Return_Direction);
    Internal_Set_Is_Ordered (735, False);
    Internal_Set_Is_Unique (735, True);
    Internal_Set_Lower (
@@ -5191,6 +5268,7 @@ begin
    Internal_Set_Default
     (740,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (740, Return_Direction);
    Internal_Set_Is_Ordered (740, False);
    Internal_Set_Is_Unique (740, True);
    Internal_Set_Lower (
@@ -5354,6 +5432,7 @@ begin
    Internal_Set_Default
     (762,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (762, Return_Direction);
    Internal_Set_Is_Ordered (762, False);
    Internal_Set_Is_Unique (762, True);
    Internal_Set_Lower (
@@ -5365,6 +5444,7 @@ begin
    Internal_Set_Default
     (763,
      League.Strings.To_Universal_String (""));
+   Internal_Set_Direction (763, In_Direction);
    Internal_Set_Is_Ordered (763, False);
    Internal_Set_Is_Unique (763, True);
    Internal_Set_Lower (

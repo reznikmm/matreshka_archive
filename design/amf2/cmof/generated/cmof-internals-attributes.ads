@@ -69,11 +69,11 @@ package CMOF.Internals.Attributes is
       To   : League.Strings.Universal_String);
 
    function Internal_Get_Direction
-     (Self : CMOF_Element) return CMOF_Element;
+     (Self : CMOF_Element) return CMOF_Parameter_Direction_Kind;
 
    procedure Internal_Set_Direction
      (Self : CMOF_Element;
-      To   : CMOF_Element);
+      To   : CMOF_Parameter_Direction_Kind);
 
    function Internal_Get_Element_Import
      (Self : CMOF_Element) return Collection_Of_CMOF_Element;

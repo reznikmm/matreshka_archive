@@ -421,11 +421,14 @@ package body Cmof.Internals.Attributes is
    ----------------------------
 
    function Internal_Get_Direction
-     (Self : CMOF_Element) return CMOF_Element
+     (Self : CMOF_Element) return CMOF_Parameter_Direction_Kind
    is
    begin
       return
-        0;
+        Elements.Table (Self).Member
+         (Member_Offset
+           (Elements.Table (Self).Kind,
+            MP_CMOF_Parameter_Direction)).Parameter_Direction_Value;
    end Internal_Get_Direction;
 
    ----------------------------
@@ -434,9 +437,12 @@ package body Cmof.Internals.Attributes is
 
    procedure Internal_Set_Direction
      (Self : CMOF_Element;
-      To   : CMOF_Element) is
+      To   : CMOF_Parameter_Direction_Kind) is
    begin
-      null;
+      Elements.Table (Self).Member
+       (Member_Offset
+         (Elements.Table (Self).Kind,
+          MP_CMOF_Parameter_Direction)).Parameter_Direction_Value := To;
    end Internal_Set_Direction;
 
    ---------------------------------

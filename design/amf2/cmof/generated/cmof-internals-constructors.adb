@@ -868,6 +868,8 @@ package body Cmof.Internals.Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  default
+                     2      => (M_Parameter_Direction_Kind, In_Direction),
+                                                           --  direction
                      3      => (M_Boolean, False),         --  isOrdered
                      4      => (M_Boolean, True),          --  isUnique
                      5      => (M_Integer, 1),             --  lower
