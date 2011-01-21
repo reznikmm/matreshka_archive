@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,7 +57,8 @@ private package CMOF.Internals.Tables is
      M_Boolean,
      M_Integer,
      M_Unlimited_Natural,
-     M_String);
+     M_String,
+     M_Parameter_Direction_Kind);
 
    type Member_Record (Kind : Member_Kinds := M_None) is record
       case Kind is
@@ -81,6 +82,9 @@ private package CMOF.Internals.Tables is
 
          when M_String =>
             String_Value : Matreshka.Internals.Strings.Shared_String_Access;
+
+         when M_Parameter_Direction_Kind =>
+            Parameter_Direction_Value : CMOF_Parameter_Direction_Kind;
       end case;
    end record;
 
