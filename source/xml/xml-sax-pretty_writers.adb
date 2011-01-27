@@ -41,6 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Characters.Conversions;
+--  Use of this unit must be replaced to use of Text_Codec for application's
+--  locale.
+
 with League.Strings.Internals;
 with Matreshka.Internals.Unicode;
 
@@ -53,6 +57,30 @@ package body XML.SAX.Pretty_Writers is
    use type Universal_String_Maps.Cursor;
 
    function Image (X_V : XML_Version) return League.Strings.Universal_String;
+
+   function To_Application_Locale_8_Bit_String
+    (Item : League.Strings.Universal_String) return String;
+   --  Converts Universal_String into standard String recoding it to encoding
+   --  of application's locale (not the current locale of the thread).
+
+   ----------------
+   -- Characters --
+   ----------------
+
+   procedure Characters
+    (Self : in out SAX_Pretty_Writer'Class;
+     Text : League.Strings.Universal_String)
+   is
+      Success : Boolean := True;
+
+   begin
+      Self.Characters (Text, Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end Characters;
 
    ----------------
    -- Characters --
@@ -75,6 +103,25 @@ package body XML.SAX.Pretty_Writers is
    -- Comment --
    -------------
 
+   procedure Comment
+    (Self : in out SAX_Pretty_Writer'Class;
+     Text : League.Strings.Universal_String)
+   is
+      Success : Boolean := True;
+
+   begin
+      Self.Comment (Text, Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end Comment;
+
+   -------------
+   -- Comment --
+   -------------
+
    overriding procedure Comment
     (Self    : in out SAX_Pretty_Writer;
      Text    : League.Strings.Universal_String;
@@ -89,12 +136,44 @@ package body XML.SAX.Pretty_Writers is
    -- End_CDATA --
    ---------------
 
+   procedure End_CDATA (Self : in out SAX_Pretty_Writer'Class) is
+      Success : Boolean := True;
+
+   begin
+      Self.End_CDATA (Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end End_CDATA;
+
+   ---------------
+   -- End_CDATA --
+   ---------------
+
    overriding procedure End_CDATA
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean) is
    begin
       null;
    end End_CDATA;
+
+   ------------------
+   -- End_Document --
+   ------------------
+
+   procedure End_Document (Self : in out SAX_Pretty_Writer'Class) is
+      Success : Boolean := True;
+
+   begin
+      Self.End_Document (Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end End_Document;
 
    ------------------
    -- End_Document --
@@ -113,12 +192,52 @@ package body XML.SAX.Pretty_Writers is
    -- End_DTD --
    -------------
 
+   procedure End_DTD (Self : in out SAX_Pretty_Writer'Class) is
+      Success : Boolean := True;
+
+   begin
+      Self.End_DTD (Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end End_DTD;
+
+   -------------
+   -- End_DTD --
+   -------------
+
    overriding procedure End_DTD
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean) is
    begin
       null;
    end End_DTD;
+
+   -----------------
+   -- End_Element --
+   -----------------
+
+   procedure End_Element
+    (Self           : in out SAX_Pretty_Writer'Class;
+     Namespace_URI  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Local_Name     : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Qualified_Name : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
+   is
+      Success : Boolean := True;
+
+   begin
+      Self.End_Element (Namespace_URI, Local_Name, Qualified_Name, Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end End_Element;
 
    -----------------
    -- End_Element --
@@ -195,6 +314,25 @@ package body XML.SAX.Pretty_Writers is
    -- End_Entity --
    ----------------
 
+   procedure End_Entity
+    (Self : in out SAX_Pretty_Writer'Class;
+     Name : League.Strings.Universal_String)
+   is
+      Success : Boolean := True;
+
+   begin
+      Self.End_Entity (Name, Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end End_Entity;
+
+   ----------------
+   -- End_Entity --
+   ----------------
+
    overriding procedure End_Entity
     (Self    : in out SAX_Pretty_Writer;
      Name    : League.Strings.Universal_String;
@@ -202,6 +340,25 @@ package body XML.SAX.Pretty_Writers is
    begin
       null;
    end End_Entity;
+
+   ------------------------
+   -- End_Prefix_Mapping --
+   ------------------------
+
+   procedure End_Prefix_Mapping
+    (Self   : in out SAX_Pretty_Writer'Class;
+     Prefix : League.Strings.Universal_String)
+   is
+      Success : Boolean := True;
+
+   begin
+      Self.End_Entity (Prefix, Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end End_Prefix_Mapping;
 
    ------------------------
    -- End_Prefix_Mapping --
@@ -318,6 +475,25 @@ package body XML.SAX.Pretty_Writers is
    -- Ignorable_Whitespace --
    --------------------------
 
+   procedure Ignorable_Whitespace
+    (Self : in out SAX_Pretty_Writer'Class;
+     Text : League.Strings.Universal_String)
+   is
+      Success : Boolean := True;
+
+   begin
+      Self.Ignorable_Whitespace (Text, Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end Ignorable_Whitespace;
+
+   --------------------------
+   -- Ignorable_Whitespace --
+   --------------------------
+
    overriding procedure Ignorable_Whitespace
     (Self    : in out SAX_Pretty_Writer;
      Text    : League.Strings.Universal_String;
@@ -340,6 +516,27 @@ package body XML.SAX.Pretty_Writers is
             return League.Strings.To_Universal_String ("1.1");
       end case;
    end Image;
+
+   ----------------------------
+   -- Processing_Instruction --
+   ----------------------------
+
+   procedure Processing_Instruction
+    (Self   : in out SAX_Pretty_Writer'Class;
+     Target : League.Strings.Universal_String;
+     Data   : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
+   is
+      Success : Boolean := True;
+
+   begin
+      Self.Processing_Instruction (Target, Data, Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end Processing_Instruction;
 
    ----------------------------
    -- Processing_Instruction --
@@ -370,6 +567,25 @@ package body XML.SAX.Pretty_Writers is
    -- Skipped_Entity --
    --------------------
 
+   procedure Skipped_Entity
+    (Self : in out SAX_Pretty_Writer'Class;
+     Name : League.Strings.Universal_String)
+   is
+      Success : Boolean := True;
+
+   begin
+      Self.Skipped_Entity (Name, Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end Skipped_Entity;
+
+   --------------------
+   -- Skipped_Entity --
+   --------------------
+
    overriding procedure Skipped_Entity
     (Self    : in out SAX_Pretty_Writer;
      Name    : League.Strings.Universal_String;
@@ -382,12 +598,44 @@ package body XML.SAX.Pretty_Writers is
    -- Start_CDATA --
    -----------------
 
+   procedure Start_CDATA (Self : in out SAX_Pretty_Writer'Class) is
+      Success : Boolean := True;
+
+   begin
+      Self.Start_CDATA (Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end Start_CDATA;
+
+   -----------------
+   -- Start_CDATA --
+   -----------------
+
    overriding procedure Start_CDATA
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean) is
    begin
       null;
    end Start_CDATA;
+
+   --------------------
+   -- Start_Document --
+   --------------------
+
+   procedure Start_Document (Self : in out SAX_Pretty_Writer'Class) is
+      Success : Boolean := True;
+
+   begin
+      Self.Start_Document (Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end Start_Document;
 
    --------------------
    -- Start_Document --
@@ -408,6 +656,29 @@ package body XML.SAX.Pretty_Writers is
    -- Start_DTD --
    ---------------
 
+   procedure Start_DTD
+    (Self      : in out SAX_Pretty_Writer'Class;
+     Name      : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     System_Id : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
+   is
+      Success : Boolean := True;
+
+   begin
+      Self.Start_DTD (Name, Public_Id, System_Id, Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end Start_DTD;
+
+   ---------------
+   -- Start_DTD --
+   ---------------
+
    overriding procedure Start_DTD
     (Self      : in out SAX_Pretty_Writer;
      Name      : League.Strings.Universal_String;
@@ -419,6 +690,33 @@ package body XML.SAX.Pretty_Writers is
    begin
       null;
    end Start_DTD;
+
+   -------------------
+   -- Start_Element --
+   -------------------
+
+   procedure Start_Element
+    (Self           : in out SAX_Pretty_Writer'Class;
+     Namespace_URI  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Local_Name     : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Qualified_Name : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes
+       := XML.SAX.Attributes.Empty_SAX_Attributes)
+   is
+      Success : Boolean := True;
+
+   begin
+      Self.Start_Element
+       (Namespace_URI, Local_Name, Qualified_Name, Attributes, Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end Start_Element;
 
    -------------------
    -- Start_Element --
@@ -547,6 +845,25 @@ package body XML.SAX.Pretty_Writers is
    -- Start_Entity --
    ------------------
 
+   procedure Start_Entity
+    (Self : in out SAX_Pretty_Writer'Class;
+     Name : League.Strings.Universal_String)
+   is
+      Success : Boolean := True;
+
+   begin
+      Self.Start_Entity (Name, Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end Start_Entity;
+
+   ------------------
+   -- Start_Entity --
+   ------------------
+
    overriding procedure Start_Entity
     (Self    : in out SAX_Pretty_Writer;
      Name    : League.Strings.Universal_String;
@@ -554,6 +871,27 @@ package body XML.SAX.Pretty_Writers is
    begin
       null;
    end Start_Entity;
+
+   --------------------------
+   -- Start_Prefix_Mapping --
+   --------------------------
+
+   procedure Start_Prefix_Mapping
+    (Self          : in out SAX_Pretty_Writer'Class;
+     Prefix        : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Namespace_URI : League.Strings.Universal_String)
+   is
+      Success : Boolean := True;
+
+   begin
+      Self.Start_Prefix_Mapping (Prefix, Namespace_URI, Success);
+
+      if not Success then
+         raise Constraint_Error
+           with To_Application_Locale_8_Bit_String (Self.Error_String);
+      end if;
+   end Start_Prefix_Mapping;
 
    --------------------------
    -- Start_Prefix_Mapping --
@@ -583,5 +921,17 @@ package body XML.SAX.Pretty_Writers is
    begin
       return Self.Text;
    end Text;
+
+   ----------------------------------------
+   -- To_Application_Locale_8_Bit_String --
+   ----------------------------------------
+
+   function To_Application_Locale_8_Bit_String
+    (Item : League.Strings.Universal_String) return String is
+   begin
+      return Ada.Characters.Conversions.To_String (Item.To_Wide_Wide_String);
+      --  XXX This is stub, encoding of actual application's locale must be
+      --  used here.
+   end To_Application_Locale_8_Bit_String;
 
 end XML.SAX.Pretty_Writers;

@@ -70,22 +70,46 @@ package XML.SAX.Pretty_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean);
 
+   procedure Characters
+    (Self : in out SAX_Pretty_Writer'Class;
+     Text : League.Strings.Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Characters sets Success to False.
+
    overriding procedure Comment
     (Self    : in out SAX_Pretty_Writer;
      Text    : League.Strings.Universal_String;
      Success : in out Boolean);
 
+   procedure Comment
+    (Self : in out SAX_Pretty_Writer'Class;
+     Text : League.Strings.Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Comment sets Success to False.
+
    overriding procedure End_CDATA
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean);
+
+   procedure End_CDATA (Self : in out SAX_Pretty_Writer'Class);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when End_CDATA sets Success to False.
 
    overriding procedure End_Document
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean);
 
+   procedure End_Document (Self : in out SAX_Pretty_Writer'Class);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when End_Document sets Success to False.
+
    overriding procedure End_DTD
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean);
+
+   procedure End_DTD (Self : in out SAX_Pretty_Writer'Class);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when End_DTD sets Success to False.
 
    overriding procedure End_Element
     (Self           : in out SAX_Pretty_Writer;
@@ -97,15 +121,38 @@ package XML.SAX.Pretty_Writers is
        := League.Strings.Empty_Universal_String;
      Success        : in out Boolean);
 
+   procedure End_Element
+    (Self           : in out SAX_Pretty_Writer'Class;
+     Namespace_URI  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Local_Name     : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Qualified_Name : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when End_Element sets Success to False.
+
    overriding procedure End_Entity
     (Self    : in out SAX_Pretty_Writer;
      Name    : League.Strings.Universal_String;
      Success : in out Boolean);
 
+   procedure End_Entity
+    (Self : in out SAX_Pretty_Writer'Class;
+     Name : League.Strings.Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when End_Entity sets Success to False.
+
    overriding procedure End_Prefix_Mapping
     (Self    : in out SAX_Pretty_Writer;
      Prefix  : League.Strings.Universal_String;
      Success : in out Boolean);
+
+   procedure End_Prefix_Mapping
+    (Self   : in out SAX_Pretty_Writer'Class;
+     Prefix : League.Strings.Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when End_Prefix_Mapping sets Success to False.
 
    overriding function Error_String
     (Self : SAX_Pretty_Writer) return League.Strings.Universal_String;
@@ -115,6 +162,12 @@ package XML.SAX.Pretty_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean);
 
+   procedure Ignorable_Whitespace
+    (Self : in out SAX_Pretty_Writer'Class;
+     Text : League.Strings.Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Ignorable_Whitespace sets Success to False.
+
    overriding procedure Processing_Instruction
     (Self    : in out SAX_Pretty_Writer;
      Target  : League.Strings.Universal_String;
@@ -122,18 +175,40 @@ package XML.SAX.Pretty_Writers is
        := League.Strings.Empty_Universal_String;
      Success : in out Boolean);
 
+   procedure Processing_Instruction
+    (Self   : in out SAX_Pretty_Writer'Class;
+     Target : League.Strings.Universal_String;
+     Data   : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Processing_Instruction sets Success to False.
+
    overriding procedure Skipped_Entity
     (Self    : in out SAX_Pretty_Writer;
      Name    : League.Strings.Universal_String;
      Success : in out Boolean);
 
+   procedure Skipped_Entity
+    (Self : in out SAX_Pretty_Writer'Class;
+     Name : League.Strings.Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Skipped_Entity sets Success to False.
+
    overriding procedure Start_CDATA
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean);
 
+   procedure Start_CDATA (Self : in out SAX_Pretty_Writer'Class);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Start_CDATA sets Success to False.
+
    overriding procedure Start_Document
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean);
+
+   procedure Start_Document (Self : in out SAX_Pretty_Writer'Class);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Start_Document sets Success to False.
 
    overriding procedure Start_DTD
     (Self      : in out SAX_Pretty_Writer;
@@ -143,6 +218,16 @@ package XML.SAX.Pretty_Writers is
      System_Id : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String;
      Success   : in out Boolean);
+
+   procedure Start_DTD
+    (Self      : in out SAX_Pretty_Writer'Class;
+     Name      : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     System_Id : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Start_DTD sets Success to False.
 
    overriding procedure Start_Element
     (Self           : in out SAX_Pretty_Writer;
@@ -156,10 +241,29 @@ package XML.SAX.Pretty_Writers is
        := XML.SAX.Attributes.Empty_SAX_Attributes;
      Success        : in out Boolean);
 
+   procedure Start_Element
+    (Self           : in out SAX_Pretty_Writer'Class;
+     Namespace_URI  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Local_Name     : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Qualified_Name : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes
+       := XML.SAX.Attributes.Empty_SAX_Attributes);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Start_Element sets Success to False.
+
    overriding procedure Start_Entity
     (Self    : in out SAX_Pretty_Writer;
      Name    : League.Strings.Universal_String;
      Success : in out Boolean);
+
+   procedure Start_Entity
+    (Self : in out SAX_Pretty_Writer'Class;
+     Name : League.Strings.Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Start_Entity sets Success to False.
 
    overriding procedure Start_Prefix_Mapping
     (Self          : in out SAX_Pretty_Writer;
@@ -167,6 +271,14 @@ package XML.SAX.Pretty_Writers is
        := League.Strings.Empty_Universal_String;
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean);
+
+   procedure Start_Prefix_Mapping
+    (Self          : in out SAX_Pretty_Writer'Class;
+     Prefix        : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Namespace_URI : League.Strings.Universal_String);
+   --  Overloaded subprogram for convenience. Raises Constraint_Error with
+   --  Error_String when Start_Prefix_Mapping sets Success to False.
 
 private
 
