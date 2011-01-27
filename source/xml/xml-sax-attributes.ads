@@ -57,6 +57,8 @@ package XML.SAX.Attributes is
 
    type SAX_Attributes is tagged private;
 
+   Empty_SAX_Attributes : constant SAX_Attributes;
+
    function Length (Self : SAX_Attributes'Class) return Natural;
    --  Returns the number of attributes in the list.
 
@@ -336,6 +338,9 @@ private
    overriding procedure Adjust (Self : in out SAX_Attributes);
 
    overriding procedure Finalize (Self : in out SAX_Attributes);
+
+   Empty_SAX_Attributes : constant SAX_Attributes
+     := (Ada.Finalization.Controlled with Data => Shared_Empty'Access);
 
    pragma Inline (Is_Empty);
    pragma Inline (Length);

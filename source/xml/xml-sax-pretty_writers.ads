@@ -89,9 +89,12 @@ package XML.SAX.Pretty_Writers is
 
    overriding procedure End_Element
     (Self           : in out SAX_Pretty_Writer;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String;
+     Namespace_URI  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Local_Name     : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Qualified_Name : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
      Success        : in out Boolean);
 
    overriding procedure End_Entity
@@ -115,7 +118,8 @@ package XML.SAX.Pretty_Writers is
    overriding procedure Processing_Instruction
     (Self    : in out SAX_Pretty_Writer;
      Target  : League.Strings.Universal_String;
-     Data    : League.Strings.Universal_String;
+     Data    : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
      Success : in out Boolean);
 
    overriding procedure Skipped_Entity
@@ -134,16 +138,22 @@ package XML.SAX.Pretty_Writers is
    overriding procedure Start_DTD
     (Self      : in out SAX_Pretty_Writer;
      Name      : League.Strings.Universal_String;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
+     Public_Id : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     System_Id : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
      Success   : in out Boolean);
 
    overriding procedure Start_Element
     (Self           : in out SAX_Pretty_Writer;
-     Namespace_URI  : League.Strings.Universal_String;
-     Local_Name     : League.Strings.Universal_String;
-     Qualified_Name : League.Strings.Universal_String;
-     Attributes     : XML.SAX.Attributes.SAX_Attributes;
+     Namespace_URI  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Local_Name     : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Qualified_Name : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes
+       := XML.SAX.Attributes.Empty_SAX_Attributes;
      Success        : in out Boolean);
 
    overriding procedure Start_Entity
@@ -153,7 +163,8 @@ package XML.SAX.Pretty_Writers is
 
    overriding procedure Start_Prefix_Mapping
     (Self          : in out SAX_Pretty_Writer;
-     Prefix        : League.Strings.Universal_String;
+     Prefix        : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean);
 
