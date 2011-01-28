@@ -2,6 +2,7 @@
 <SAXEvents>
   <startDocument/>
   <resolveEntity>
+    <name>%pe1</name>
     <systemID>ibm69v02.ent</systemID>
   </resolveEntity>
   <startElement>

@@ -2,6 +2,7 @@
 <SAXEvents>
   <startDocument/>
   <resolveEntity>
+    <name>[dtd]</name>
     <systemID>ibm51v02.dtd</systemID>
   </resolveEntity>
   <startElement>

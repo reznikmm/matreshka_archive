@@ -10,6 +10,7 @@
     <data>&quot;This&#x20;is&#x20;a&#x20;PI&quot;&#x20;</data>
   </processingInstruction>
   <resolveEntity>
+    <name>[dtd]</name>
     <systemID>ibm28v02.dtd</systemID>
   </resolveEntity>
   <startElement>

@@ -9,6 +9,7 @@
   </startElement>
   <ignorableWhitespace>&#x20;</ignorableWhitespace>
   <resolveEntity>
+    <name>utf16b</name>
     <systemID>../invalid/utf16b.xml</systemID>
   </resolveEntity>
   <ignorableWhitespace>&#xA;</ignorableWhitespace>
@@ -26,6 +27,7 @@
   <ignorableWhitespace>&#xA;</ignorableWhitespace>
   <ignorableWhitespace>&#x20;</ignorableWhitespace>
   <resolveEntity>
+    <name>utf16l</name>
     <systemID>../invalid/utf16l.xml</systemID>
   </resolveEntity>
   <ignorableWhitespace>&#xA;</ignorableWhitespace>

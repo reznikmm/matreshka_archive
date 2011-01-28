@@ -2,9 +2,11 @@
 <SAXEvents>
   <startDocument/>
   <resolveEntity>
+    <name>[dtd]</name>
     <systemID>005-1.ent</systemID>
   </resolveEntity>
   <resolveEntity>
+    <name>%e</name>
     <systemID>005-2.ent</systemID>
   </resolveEntity>
   <startElement>

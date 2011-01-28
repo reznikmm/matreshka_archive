@@ -2,6 +2,7 @@
 <SAXEvents>
   <startDocument/>
   <resolveEntity>
+    <name>[dtd]</name>
     <systemID>025.ent</systemID>
   </resolveEntity>
   <warning/>

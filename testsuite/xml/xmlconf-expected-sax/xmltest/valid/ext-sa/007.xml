@@ -9,6 +9,7 @@
   </startElement>
   <characters>X</characters>
   <resolveEntity>
+    <name>e</name>
     <systemID>007.ent</systemID>
   </resolveEntity>
   <characters>Y</characters>

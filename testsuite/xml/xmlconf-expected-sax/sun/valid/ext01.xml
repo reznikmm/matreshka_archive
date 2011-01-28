@@ -9,6 +9,7 @@
   </startElement>
   <characters>&#x20;</characters>
   <resolveEntity>
+    <name>root</name>
     <systemID>ext01.ent</systemID>
   </resolveEntity>
   <characters>&#xA;</characters>
@@ -168,6 +169,7 @@
   <characters>&#xA;</characters>
   <characters>&#x20;</characters>
   <resolveEntity>
+    <name>null</name>
     <systemID>null.ent</systemID>
   </resolveEntity>
   <characters>&#x20;</characters>

@@ -8,10 +8,12 @@
     <attributes/>
   </startElement>
   <resolveEntity>
+    <name>ent1</name>
     <systemID>006_1.ent</systemID>
   </resolveEntity>
   <characters>&#xA;</characters>
   <resolveEntity>
+    <name>ent2</name>
     <systemID>006_2.ent</systemID>
   </resolveEntity>
   <characters>&#xA;</characters>

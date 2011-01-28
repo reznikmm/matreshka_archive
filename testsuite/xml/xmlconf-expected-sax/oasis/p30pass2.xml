@@ -2,6 +2,7 @@
 <SAXEvents>
   <startDocument/>
   <resolveEntity>
+    <name>[dtd]</name>
     <systemID>p30pass2.dtd</systemID>
   </resolveEntity>
   <startElement>

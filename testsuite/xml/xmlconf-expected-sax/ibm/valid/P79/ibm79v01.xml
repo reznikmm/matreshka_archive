@@ -3,6 +3,7 @@
   <startDocument/>
   <warning/>
   <resolveEntity>
+    <name>%epe</name>
     <systemID>ibm79v01.ent</systemID>
   </resolveEntity>
   <startElement>

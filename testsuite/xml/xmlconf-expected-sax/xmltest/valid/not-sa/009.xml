@@ -3,6 +3,7 @@
   <startDocument/>
   <warning/>
   <resolveEntity>
+    <name>[dtd]</name>
     <publicID>whatever</publicID>
     <systemID>009.ent</systemID>
   </resolveEntity>

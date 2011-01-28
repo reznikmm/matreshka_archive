@@ -7,6 +7,7 @@
     <notation>GIF</notation>
   </unparsedEntity>
   <resolveEntity>
+    <name>[dtd]</name>
     <systemID>notation01.dtd</systemID>
   </resolveEntity>
   <notation>

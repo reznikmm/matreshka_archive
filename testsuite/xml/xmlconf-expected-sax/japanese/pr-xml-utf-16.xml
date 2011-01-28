@@ -11,6 +11,7 @@
   <warning/>
   <warning/>
   <resolveEntity>
+    <name>[dtd]</name>
     <systemID>spec.dtd</systemID>
   </resolveEntity>
   <warning/>

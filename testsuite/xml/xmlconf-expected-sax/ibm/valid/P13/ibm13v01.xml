@@ -2,6 +2,7 @@
 <SAXEvents>
   <startDocument/>
   <resolveEntity>
+    <name>[dtd]</name>
     <publicID>#x20&#x20;#xD&#x20;#xA&#x20;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#x20;-&apos;()+,./:=?;!*#@$_%</publicID>
     <systemID>student.dtd</systemID>
   </resolveEntity>

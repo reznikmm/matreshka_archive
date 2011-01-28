@@ -8,6 +8,7 @@
     <attributes/>
   </startElement>
   <resolveEntity>
+    <name>e</name>
     <systemID>ibm03v03.ent</systemID>
   </resolveEntity>
   <characters>&#xA;</characters>

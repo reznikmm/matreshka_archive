@@ -8,6 +8,7 @@
     <attributes/>
   </startElement>
   <resolveEntity>
+    <name>epe1</name>
     <systemID>ibm78v01.ent</systemID>
   </resolveEntity>
   <characters>&#xA;</characters>
@@ -69,6 +70,7 @@
   <characters>8</characters>
   <characters>0</characters>
   <resolveEntity>
+    <name>epe2</name>
     <systemID>ibm78v02.ent</systemID>
   </resolveEntity>
   <characters>&#xA;</characters>
@@ -122,6 +124,7 @@
   <characters>7</characters>
   <characters>7</characters>
   <resolveEntity>
+    <name>epe3</name>
     <systemID>ibm78v03.ent</systemID>
   </resolveEntity>
   <characters>a</characters>

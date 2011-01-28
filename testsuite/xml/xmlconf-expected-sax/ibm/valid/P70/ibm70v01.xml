@@ -12,6 +12,7 @@
     <notation>JPGformat</notation>
   </unparsedEntity>
   <resolveEntity>
+    <name>%pe2</name>
     <publicID>-//w3c//any</publicID>
     <systemID>ibm70v01.ent</systemID>
   </resolveEntity>

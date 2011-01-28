@@ -8,6 +8,7 @@
     <attributes/>
   </startElement>
   <resolveEntity>
+    <name>e</name>
     <publicID>a&#x20;not&#x20;very&#x20;interesting&#x20;file</publicID>
     <systemID>011.ent</systemID>
   </resolveEntity>
