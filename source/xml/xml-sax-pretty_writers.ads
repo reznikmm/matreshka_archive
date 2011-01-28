@@ -104,7 +104,8 @@ package XML.SAX.Pretty_Writers is
 
    overriding procedure End_Prefix_Mapping
     (Self    : in out SAX_Pretty_Writer;
-     Prefix  : League.Strings.Universal_String;
+     Prefix  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
      Success : in out Boolean);
 
    overriding function Error_String

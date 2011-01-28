@@ -187,7 +187,8 @@ package body XML.SAX.Writers is
 
    procedure End_Prefix_Mapping
     (Self   : in out SAX_Writer'Class;
-     Prefix : League.Strings.Universal_String)
+     Prefix : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
    is
       Success : Boolean := True;
 

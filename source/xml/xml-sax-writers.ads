@@ -98,7 +98,8 @@ package XML.SAX.Writers is
 
    procedure End_Prefix_Mapping
     (Self   : in out SAX_Writer'Class;
-     Prefix : League.Strings.Universal_String);
+     Prefix : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String);
    --  Overloaded subprogram for convenience. Raises Constraint_Error with
    --  Error_String when End_Prefix_Mapping sets Success to False.
 
