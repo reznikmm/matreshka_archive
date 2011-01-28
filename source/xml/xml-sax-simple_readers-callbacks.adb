@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -413,7 +413,9 @@ package body XML.SAX.Simple_Readers.Callbacks is
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access) is
    begin
       Self.Entity_Resolver.Resolve_Entity
-       (Public_Id => Public_Id,
+       (Name      => League.Strings.Empty_Universal_String,
+        Public_Id => Public_Id,
+        Base_URI  => League.Strings.Empty_Universal_String,
         System_Id => System_Id,
         Source    => Source,
         Success   => Self.Continue);

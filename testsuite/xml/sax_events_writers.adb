@@ -417,7 +417,9 @@ package body SAX_Events_Writers is
 
    overriding procedure Resolve_Entity
     (Self      : in out SAX_Events_Writer;
+     Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
+     Base_URI  : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
      Success   : in out Boolean)

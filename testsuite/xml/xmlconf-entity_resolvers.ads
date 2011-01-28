@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,7 +57,9 @@ package XMLConf.Entity_Resolvers is
 
    overriding procedure Resolve_Entity
     (Self      : in out Entity_Resolver;
+     Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
+     Base_URI  : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
      Success   : in out Boolean);
