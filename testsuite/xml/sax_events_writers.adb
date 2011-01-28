@@ -428,6 +428,7 @@ package body SAX_Events_Writers is
 
    begin
       Self.Add_Line (To_Universal_String ("  <resolveEntity>"));
+      Self.Add_Line ("    <name>" & Escape_String (Name) & "</name>");
 
       if not Public_Id.Is_Empty then
          Self.Add_Line
