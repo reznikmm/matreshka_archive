@@ -203,6 +203,22 @@ package League.Strings is
     (Self : in out Universal_String'Class;
      Item : Wide_Wide_Character);
 
+--   procedure Prepend
+--    (Self : in out Universal_String'Class;
+--     Item : Universal_String'Class);
+--
+--   procedure Prepend
+--    (Self : in out Universal_String'Class;
+--     Item : Universal_Character'Class);
+--
+--   procedure Prepend
+--    (Self : in out Universal_String'Class;
+--     Item : Wide_Wide_String);
+
+   procedure Prepend
+    (Self : in out Universal_String'Class;
+     Item : Wide_Wide_Character);
+
 --   procedure Replace
 --    (Self  : in out Universal_String'Class;
 --     Index : Positive;

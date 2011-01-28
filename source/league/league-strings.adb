@@ -488,6 +488,24 @@ package body League.Strings is
       Reference (Item.Data);
    end Append;
 
+   -------------
+   -- Prepend --
+   -------------
+
+   procedure Prepend
+    (Self : in out Universal_String'Class;
+     Item : Wide_Wide_Character)
+   is
+      Aux : Universal_String := Wide_Wide_String'(1 => Item) & Self;
+
+   begin
+      --  XXX Inefficient implementation.
+
+      Dereference (Self.Data);
+      Reference (Aux.Data);
+      Self.Data := Aux.Data;
+   end Prepend;
+
    ------------
    -- Attach --
    ------------
