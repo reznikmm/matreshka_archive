@@ -57,7 +57,9 @@ procedure SAX_Writer is
    function "+" (Item : Wide_Wide_String) return Universal_String
      renames To_Universal_String;
 
-   Lang_Attribute      : constant Universal_String := +"xml:lang";
+   XML_URI             : constant Universal_String
+     := +"http://www.w3.org/XML/1998/namespace";
+   Lang_Attribute      : constant Universal_String := +"lang";
    Stream_URI          : constant Universal_String
      := +"http://etherx.jabber.org/streams";
    Stream_Prefix       : constant Universal_String := +"stream";
@@ -88,7 +90,8 @@ begin
    Attributes.Set_Value
      (Qualified_Name => From_Attribute, Value => +"jabber.ru");
    Attributes.Set_Value (Qualified_Name => Version_Attribute, Value => +"1.0");
-   Attributes.Set_Value (Qualified_Name => Lang_Attribute, Value => +"ru");
+   Attributes.Set_Value
+     (Namespace_URI => XML_URI, Local_Name => Lang_Attribute, Value => +"ru");
    Writer.Start_Element
      (Namespace_URI => Stream_URI,
       Local_Name    => Stream_Element,
