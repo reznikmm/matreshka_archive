@@ -54,6 +54,25 @@ package XML.SAX.Entity_Resolvers is
     (Self : SAX_Entity_Resolver)
        return League.Strings.Universal_String is abstract;
 
+   not overriding procedure Get_External_Subset
+    (Self      : in out SAX_Entity_Resolver;
+     Name      : League.Strings.Universal_String;
+     Base_URI  : League.Strings.Universal_String;
+     Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
+     Success   : in out Boolean) is null;
+   --  The reader calls this function to allow applications to provide an
+   --  external subset for documents that don't explicitly define one.
+   --
+   --  The parameter Name is a name of the document root element. This name
+   --  comes from a DOCTYPE declaration (where available) or from the actual
+   --  root element. The parameter Base_URI is the document's base URI, serving
+   --  as an additional hint for selecting the external subset. Source is
+   --  the return value.
+   --
+   --  If this subprogram sets Success to False the reader stops parsing and
+   --  reports an error. The reader uses the function Error_String to get the
+   --  error message.
+
    not overriding procedure Resolve_Entity
     (Self      : in out SAX_Entity_Resolver;
      Name      : League.Strings.Universal_String;
@@ -62,5 +81,26 @@ package XML.SAX.Entity_Resolvers is
      System_Id : League.Strings.Universal_String;
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
      Success   : in out Boolean) is null;
+   --  The reader calls this function before it opens any external entity,
+   --  except the top-level document entity. The application may request the
+   --  reader to resolve the entity itself (by setting Source to null) or to
+   --  use an entirely different input source (by setting Source to the input
+   --  source).
+   --
+   --  The reader deletes the input source Source when it no longer needs it,
+   --  so you should allocate it on the heap with new.
+   --
+   --  The argument Name is a name of the entity. "[dtd]" is used as for name
+   --  of the external subset; names of parameter entities start with '%'.
+   --  The argument Public_Id is the public identifier of the external entity.
+   --  Base_URI is the URI with respect to which relative System_IDs are
+   --  interpreted. System_Id is the system identifier of the external entity.
+   --  Source is the return value. If Source is null the reader should resolve
+   --  the entity itself, if it is non-zero it must point to an input source
+   --  which the reader uses instead.
+   --
+   --  If this subprogram sets Success to False the reader stops parsing and
+   --  reports an error. The reader uses the function Error_String to get the
+   --  error message.
 
 end XML.SAX.Entity_Resolvers;
