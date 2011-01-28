@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -53,6 +53,7 @@ package Matreshka.Internals.XML.Entity_Tables is
 
    procedure New_Internal_Parameter_Entity
     (Self             : in out Entity_Table;
+     Name             : Matreshka.Internals.XML.Symbol_Identifier;
      Replacement_Text :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Entity           : out Entity_Identifier);
@@ -61,6 +62,7 @@ package Matreshka.Internals.XML.Entity_Tables is
 
    procedure New_External_Parameter_Entity
     (Self      : in out Entity_Table;
+     Name      : Matreshka.Internals.XML.Symbol_Identifier;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
      Base      : League.Strings.Universal_String;
@@ -70,6 +72,7 @@ package Matreshka.Internals.XML.Entity_Tables is
 
    procedure New_Internal_General_Entity
     (Self             : in out Entity_Table;
+     Name             : Matreshka.Internals.XML.Symbol_Identifier;
      Replacement_Text :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Entity           : out Entity_Identifier);
@@ -78,6 +81,7 @@ package Matreshka.Internals.XML.Entity_Tables is
 
    procedure New_External_Parsed_General_Entity
     (Self      : in out Entity_Table;
+     Name      : Matreshka.Internals.XML.Symbol_Identifier;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
      Base      : League.Strings.Universal_String;
@@ -87,6 +91,7 @@ package Matreshka.Internals.XML.Entity_Tables is
 
    procedure New_External_Unparsed_General_Entity
     (Self     : in out Entity_Table;
+     Name     : Matreshka.Internals.XML.Symbol_Identifier;
      Notation : Symbol_Identifier;
      Entity   : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
@@ -115,6 +120,11 @@ package Matreshka.Internals.XML.Entity_Tables is
      Entity : Entity_Identifier) return Boolean;
    --  Returns True when entity is document entity.
 
+   function Is_External_Subset
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier) return Boolean;
+   --  Returns True when entity is enternal subset of the DTD.
+
    function Is_Parameter_Entity
     (Self   : Entity_Table;
      Entity : Entity_Identifier) return Boolean;
@@ -134,6 +144,11 @@ package Matreshka.Internals.XML.Entity_Tables is
     (Self   : Entity_Table;
      Entity : Entity_Identifier) return Boolean;
    --  Returns True when entity is external unparsed general entity.
+
+   function Name
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
+       return Matreshka.Internals.XML.Symbol_Identifier;
 
    function Public_Id
     (Self   : Entity_Table;
@@ -210,6 +225,7 @@ private
 
    type Entity_Record is record
       Kind             : Entity_Kinds;
+      Name             : Symbol_Identifier;
       Notation         : Symbol_Identifier;
       Public_Id        : Matreshka.Internals.Strings.Shared_String_Access;
       System_Id        : Matreshka.Internals.Strings.Shared_String_Access;
@@ -229,7 +245,10 @@ private
    end record;
 
    pragma Inline (Is_Document_Entity);
-   pragma Inline (Is_External_Unparsed_General_Entity);
+   pragma Inline (Is_External_Subset);
+   pragma Inline (Is_Parameter_Entity);
    pragma Inline (Is_Internal_General_Entity);
+   pragma Inline (Is_External_Parsed_General_Entity);
+   pragma Inline (Is_External_Unparsed_General_Entity);
 
 end Matreshka.Internals.XML.Entity_Tables;

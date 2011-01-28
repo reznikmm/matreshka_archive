@@ -490,6 +490,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          if Notation = No_Symbol then
             New_External_Parsed_General_Entity
              (Self.Entities,
+              Symbol,
               Self.Public_Id,
               Self.System_Id,
               Self.Scanner_State.Base,
@@ -500,7 +501,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
          else
             New_External_Unparsed_General_Entity
-             (Self.Entities, Notation, Entity);
+             (Self.Entities, Symbol, Notation, Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
             Callbacks.Call_Unparsed_Entity_Declaration
              (Self.all,
@@ -518,7 +519,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          begin
             A := League.Strings.Internals.Get_Shared (Value);
             Matreshka.Internals.Strings.Reference (A);
-            New_Internal_General_Entity (Self.Entities, A, Entity);
+            New_Internal_General_Entity (Self.Entities, Symbol, A, Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
             Callbacks.Call_Internal_Entity_Declaration (Self.all, Name, Value);
          end;
@@ -738,6 +739,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       if Is_External then
          New_External_Parameter_Entity
           (Self.Entities,
+           Symbol,
            Self.Public_Id,
            Self.System_Id,
            Self.Scanner_State.Base,
@@ -751,7 +753,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          begin
             A := League.Strings.Internals.Get_Shared (Value);
             Matreshka.Internals.Strings.Reference (A);
-            New_Internal_Parameter_Entity (Self.Entities, A, Entity);
+            New_Internal_Parameter_Entity (Self.Entities, Symbol, A, Entity);
             Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
          end;
       end if;

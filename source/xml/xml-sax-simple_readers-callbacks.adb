@@ -408,14 +408,38 @@ package body XML.SAX.Simple_Readers.Callbacks is
 
    procedure Call_Resolve_Entity
     (Self      : in out SAX_Simple_Reader'Class;
+     Entity    : Matreshka.Internals.XML.Entity_Identifier;
      Public_Id : League.Strings.Universal_String;
+     Base_URI  : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
-     Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access) is
+     Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access)
+   is
+      Name : League.Strings.Universal_String
+        := Matreshka.Internals.XML.Symbol_Tables.Name
+            (Self.Symbols,
+             Matreshka.Internals.XML.Entity_Tables.Name
+              (Self.Entities, Entity));
+
    begin
+      if Matreshka.Internals.XML.Entity_Tables.Is_External_Subset
+          (Self.Entities, Entity)
+      then
+         --  Name of external subset must be "[dtd]" always.
+
+         Name := League.Strings.To_Universal_String ("[dtd]");
+
+      elsif Matreshka.Internals.XML.Entity_Tables.Is_Parameter_Entity
+          (Self.Entities, Entity)
+      then
+         --  Name of parameter entity must start from '%'.
+
+         Name.Prepend ('%');
+      end if;
+
       Self.Entity_Resolver.Resolve_Entity
-       (Name      => League.Strings.Empty_Universal_String,
+       (Name      => Name,
         Public_Id => Public_Id,
-        Base_URI  => League.Strings.Empty_Universal_String,
+        Base_URI  => Base_URI,
         System_Id => System_Id,
         Source    => Source,
         Success   => Self.Continue);

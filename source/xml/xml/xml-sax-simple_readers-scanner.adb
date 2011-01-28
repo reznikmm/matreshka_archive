@@ -171,8 +171,10 @@ package body XML.SAX.Simple_Readers.Scanner is
       if not Is_Resolved (Self.Entities, Entity) then
          Callbacks.Call_Resolve_Entity
           (Self.all,
+           Entity,
            League.Strings.Internals.Create
             (Public_Id (Self.Entities, Entity)),
+           League.Strings.Empty_Universal_String,
            Matreshka.Internals.URI_Utilities.Construct_System_Id
             (League.Strings.Internals.Create
               (Base (Self.Entities, Entity)),
