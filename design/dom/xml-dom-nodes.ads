@@ -51,6 +51,8 @@ with XML.DOM.Node_Lists;
 
 package XML.DOM.Nodes is
 
+   pragma Preelaborate;
+
    type DOM_Node is tagged private;
    Null_Node : constant DOM_Node;
 
