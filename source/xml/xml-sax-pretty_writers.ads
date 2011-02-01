@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Containers.Hashed_Maps;
+private with Ada.Containers.Vectors;
 
 with League.Strings;
 with XML.SAX.Attributes;
@@ -55,8 +55,6 @@ package XML.SAX.Pretty_Writers is
 
    type SAX_Pretty_Writer is
      limited new XML.SAX.Writers.SAX_Writer with private;
-
-   type SAX_Pretty_Writer_Access is access all SAX_Pretty_Writer'Class;
 
    not overriding function Text
     (Self : SAX_Pretty_Writer) return League.Strings.Universal_String;
@@ -171,16 +169,27 @@ package XML.SAX.Pretty_Writers is
 
 private
 
-   function Hash
-    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
+   type Mapping_Record is record
+      Prefix        : League.Strings.Universal_String;
+      Namespace_URI : League.Strings.Universal_String;
+   end record;
 
-   package Universal_String_Maps is
-     new Ada.Containers.Hashed_Maps
-          (League.Strings.Universal_String,
-           League.Strings.Universal_String,
-           Hash,
-           League.Strings."=",
-           League.Strings."=");
+   package Mapping_Vectors is
+      new Ada.Containers.Vectors (Natural, Mapping_Record);
+
+   type Mapping_Scope is record
+      Mapping : Mapping_Vectors.Vector;
+      Tag     : League.Strings.Universal_String;
+   end record;
+
+   package Mapping_Stacks is
+      new Ada.Containers.Vectors (Natural, Mapping_Scope);
+
+   Stack : Mapping_Stacks.Vector;
+
+   procedure Push (Scope : Mapping_Scope);
+
+   procedure Pop (Scope : out Mapping_Scope);
 
    type SAX_Pretty_Writer is
      limited new XML.SAX.Writers.SAX_Writer with
@@ -188,7 +197,6 @@ private
       Text       : League.Strings.Universal_String;
       Nesting    : Natural;
       Version    : XML_Version := XML_1_0;
-      Prefix_Map : Universal_String_Maps.Map;
       Tag_Opened : Boolean := False;
    end record;
 
