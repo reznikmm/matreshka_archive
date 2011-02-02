@@ -179,7 +179,13 @@ library project Matreshka_League is
                 & ("-msse2")
                 & Optimization_Ada_Switches
                 & Debug_Ada_Switches;
-            for Switches ("matreshka-internals-strings-handlers-x86-sse2.adb") use
+            for Switches ("matreshka-internals-strings-handlers-x86-sse2.ads") use
+              Common_Ada_Switches
+                & Platform_Ada_Switches
+                & ("-msse2")
+                & Optimization_Ada_Switches
+                & Debug_Ada_Switches;
+            for Switches ("matreshka-internals-strings-handlers-generic_x86_sse2.adb") use
               Common_Ada_Switches
                 & Platform_Ada_Switches
                 & ("-msse2")
