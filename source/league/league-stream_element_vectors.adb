@@ -57,9 +57,13 @@ package body League.Stream_Element_Vectors is
      Right : Stream_Element_Vector) return Boolean is
    begin
       return
-        Left.Data.Last = Right.Data.Last
-          and then Left.Data.Value (Left.Data.Value'First .. Left.Data.Last)
-            = Right.Data.Value (Right.Data.Value'First .. Right.Data.Last);
+        Left.Data = Right.Data
+          or else
+           (Left.Data.Last = Right.Data.Last
+              and then
+                Left.Data.Value (Left.Data.Value'First .. Left.Data.Last)
+                  = Right.Data.Value
+                     (Right.Data.Value'First .. Right.Data.Last));
    end "=";
 
    ---------
