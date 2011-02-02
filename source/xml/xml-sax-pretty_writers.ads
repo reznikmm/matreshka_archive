@@ -185,11 +185,11 @@ private
    package Mapping_Stacks is
       new Ada.Containers.Vectors (Natural, Mapping_Scope);
 
-   Stack : Mapping_Stacks.Vector;
+   procedure Push (Self  : in out SAX_Pretty_Writer;
+                   Scope : Mapping_Scope);
 
-   procedure Push (Scope : Mapping_Scope);
-
-   procedure Pop (Scope : out Mapping_Scope);
+   procedure Pop (Self  : in out SAX_Pretty_Writer;
+                  Scope : out Mapping_Scope);
 
    type SAX_Pretty_Writer is
      limited new XML.SAX.Writers.SAX_Writer with
@@ -199,6 +199,7 @@ private
       Version    : XML_Version := XML_1_0;
       Tag_Opened : Boolean := False;
       Scope      : Mapping_Scope; --  Mapping for current element
+      Stack      : Mapping_Stacks.Vector;
    end record;
 
    function Escape

@@ -168,7 +168,7 @@ package body XML.SAX.Pretty_Writers is
                return;
             end if;
 
-            Pop (Self.Scope);
+            Self.Pop (Self.Scope);
 
             for J in 0 .. Integer (Self.Scope.Mapping.Length) - 1 loop
                if Self.Scope.Mapping.Element (J).Namespace_URI
@@ -183,7 +183,7 @@ package body XML.SAX.Pretty_Writers is
             Self.Text.Append (Local_Name);
 
             if Self.Scope.Tag = Local_Name then
-               Stack.Delete_Last;
+               Self.Stack.Delete_Last;
             end if;
 
             Self.Scope.Mapping.Clear;
@@ -346,9 +346,10 @@ package body XML.SAX.Pretty_Writers is
    ---------
    -- Pop --
    ---------
-   procedure Pop (Scope : out Mapping_Scope) is
+   procedure Pop (Self  : in out SAX_Pretty_Writer;
+                  Scope : out Mapping_Scope) is
    begin
-      Scope := Stack.Last_Element;
+      Scope := Self.Stack.Last_Element;
    end Pop;
 
    ----------------------------
@@ -368,9 +369,10 @@ package body XML.SAX.Pretty_Writers is
    ----------
    -- Push --
    ----------
-   procedure Push (Scope : Mapping_Scope) is
+   procedure Push (Self  : in out SAX_Pretty_Writer;
+                   Scope : Mapping_Scope) is
    begin
-      Stack.Append (Scope);
+      Self.Stack.Append (Scope);
    end Push;
 
    -----------------
@@ -465,8 +467,8 @@ package body XML.SAX.Pretty_Writers is
 
       --  Push to stack namspaces scope, formed during S_Prefix_Mapping
       if not Tmp_Mapping.Is_Empty then
-         Push ((Mapping => Tmp_Mapping,
-                Tag     => Local_Name));
+         Self.Push ((Mapping => Tmp_Mapping,
+                     Tag     => Local_Name));
       end if;
 
       Self.Text.Append (+"<");
@@ -482,7 +484,7 @@ package body XML.SAX.Pretty_Writers is
             return;
          end if;
 
-         Pop (Self.Scope);
+         Self.Pop (Self.Scope);
 
          for J in 0 .. Integer (Self.Scope.Mapping.Length) - 1 loop
 
