@@ -8,7 +8,7 @@ project FastCGI is
    for Exec_Dir use ".";
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05");
+      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8");
    end Compiler;
 
    package Builder is
