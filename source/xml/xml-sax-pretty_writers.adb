@@ -306,16 +306,6 @@ package body XML.SAX.Pretty_Writers is
       end return;
    end Escape;
 
-   ----------
-   -- Hash --
-   ----------
-
-   function Hash
-    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type is
-   begin
-      return Ada.Containers.Hash_Type (Item.Hash);
-   end Hash;
-
    --------------------------
    -- Ignorable_Whitespace --
    --------------------------
