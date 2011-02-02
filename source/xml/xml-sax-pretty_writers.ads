@@ -198,6 +198,7 @@ private
       Nesting    : Natural;
       Version    : XML_Version := XML_1_0;
       Tag_Opened : Boolean := False;
+      Scope      : Mapping_Scope; --  Mapping for current element
    end record;
 
    function Escape

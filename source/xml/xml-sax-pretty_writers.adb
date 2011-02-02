@@ -148,7 +148,6 @@ package body XML.SAX.Pretty_Writers is
        := League.Strings.Empty_Universal_String;
      Success        : in out Boolean)
    is
-
    begin
       if Self.Tag_Opened then
          Self.Text.Append (+"/>");
@@ -169,28 +168,26 @@ package body XML.SAX.Pretty_Writers is
                return;
             end if;
 
-            declare
-               Scope : Mapping_Scope;
+            Pop (Self.Scope);
 
-            begin
-               Pop (Scope);
-
-               for J in 0 .. Integer (Scope.Mapping.Length) - 1 loop
-                  if Scope.Mapping.Element (J).Namespace_URI
-                    = Namespace_URI then
-                     if not Scope.Mapping.Element (J).Prefix.Is_Empty then
-                        Self.Text.Append
-                          (Scope.Mapping.Element (J).Prefix & ":");
-                     end if;
+            for J in 0 .. Integer (Self.Scope.Mapping.Length) - 1 loop
+               if Self.Scope.Mapping.Element (J).Namespace_URI
+                 = Namespace_URI then
+                  if not Self.Scope.Mapping.Element (J).Prefix.Is_Empty then
+                     Self.Text.Append
+                      (Self.Scope.Mapping.Element (J).Prefix & ":");
                   end if;
-               end loop;
-
-               Self.Text.Append (Local_Name);
-
-               if Scope.Tag = Local_Name then
-                  Stack.Delete_Last;
                end if;
-            end;
+            end loop;
+
+            Self.Text.Append (Local_Name);
+
+            if Self.Scope.Tag = Local_Name then
+               Stack.Delete_Last;
+            end if;
+
+            Self.Scope.Mapping.Clear;
+            Self.Scope.Tag := League.Strings.Empty_Universal_String;
 
          elsif not Qualified_Name.Is_Empty then
             Self.Text.Append (Qualified_Name);
@@ -457,6 +454,8 @@ package body XML.SAX.Pretty_Writers is
        := XML.SAX.Attributes.Empty_SAX_Attributes;
      Success        : in out Boolean)
    is
+      NS    : League.Strings.Universal_String;
+
    begin
       --  Closing Tag, which was opened before.
       if Self.Tag_Opened then
@@ -483,42 +482,37 @@ package body XML.SAX.Pretty_Writers is
             return;
          end if;
 
-         declare
-            Scope : Mapping_Scope;
-            NS    : League.Strings.Universal_String;
+         Pop (Self.Scope);
 
-         begin
-            Pop (Scope);
+         for J in 0 .. Integer (Self.Scope.Mapping.Length) - 1 loop
 
-            for J in 0 .. Integer (Scope.Mapping.Length) - 1 loop
+            --  If adding namespaces for the first element,
+            --  than we should add all of them
+            if not Tmp_Mapping.Is_Empty then
+               NS := NS & " xmlns";
 
-               --  If adding namespaces for the first element,
-               --  than we should add all of them
-               if not Tmp_Mapping.Is_Empty then
-                  NS := NS & " xmlns";
-
-                  if not Scope.Mapping.Element (J).Prefix.Is_Empty then
-                     --  Adding prefix to xmlns attribute
-                     NS.Append (":" & Scope.Mapping.Element (J).Prefix);
-                  end if;
-
-                  NS.Append ("="""
-                               & Scope.Mapping.Element (J).Namespace_URI
-                               & """");
+               if not Self.Scope.Mapping.Element (J).Prefix.Is_Empty then
+                  --  Adding prefix to xmlns attribute
+                  NS.Append (":" & Self.Scope.Mapping.Element (J).Prefix);
                end if;
 
-                --  Adding prefix to tag
-               if Scope.Mapping.Element (J).Namespace_URI = Namespace_URI then
-                  if not Scope.Mapping.Element (J).Prefix.Is_Empty then
-                     Self.Text.Append (Scope.Mapping.Element (J).Prefix & ":");
-                  end if;
+               NS.Append ("="""
+                            & Self.Scope.Mapping.Element (J).Namespace_URI
+                            & """");
+            end if;
+
+            --  Adding prefix to tag
+            if Self.Scope.Mapping.Element (J).Namespace_URI = Namespace_URI then
+               if not Self.Scope.Mapping.Element (J).Prefix.Is_Empty then
+                  Self.Text.Append
+                   (Self.Scope.Mapping.Element (J).Prefix & ":");
                end if;
-            end loop;
+            end if;
+         end loop;
 
-            Self.Text.Append (Local_Name);
+         Self.Text.Append (Local_Name);
 
-            Self.Text.Append (NS);
-         end;
+         Self.Text.Append (NS);
 
       elsif not Qualified_Name.Is_Empty then
          Self.Text.Append (Qualified_Name);
@@ -536,23 +530,17 @@ package body XML.SAX.Pretty_Writers is
                   Self.Text.Append (Default_Mapping.Prefix);
                   Self.Text.Append (+":");
                else
-                  declare
-                     Scope : Mapping_Scope;
-
-                  begin
-                     Pop (Scope);
-
-                     for X in 0 .. Integer (Scope.Mapping.Length) - 1 loop
-                        if Attributes.Namespace_URI (J)
-                          = Scope.Mapping.Element (X).Namespace_URI then
-                           if not Scope.Mapping.Element (X).Prefix.Is_Empty then
-                              Self.Text.Append
-                               (Scope.Mapping.Element (X).Prefix);
-                              Self.Text.Append (+":");
-                           end if;
+                  for X in 0 .. Integer (Self.Scope.Mapping.Length) - 1 loop
+                     if Attributes.Namespace_URI (J)
+                       = Self.Scope.Mapping.Element (X).Namespace_URI then
+                        if not
+                          Self.Scope.Mapping.Element (X).Prefix.Is_Empty then
+                           Self.Text.Append
+                             (Self.Scope.Mapping.Element (X).Prefix);
+                           Self.Text.Append (+":");
                         end if;
-                     end loop;
-                  end;
+                     end if;
+                  end loop;
                end if;
 
                Self.Text.Append (Attributes.Local_Name (J));
