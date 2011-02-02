@@ -65,6 +65,7 @@
 --  iterators - character, grapheme cluster, word, sentence, line breaks.
 --  See these packages for detailed information.
 ------------------------------------------------------------------------------
+with Ada.Containers;
 private with Ada.Finalization;
 private with Ada.Streams;
 
@@ -92,8 +93,6 @@ package League.Strings is
 
    type Sort_Key is private;
    pragma Preelaborable_Initialization (Sort_Key);
-
-   type Hash_Type is mod 2 ** 32;
 
    Empty_Universal_String        : constant Universal_String;
    Empty_Universal_String_Vector : constant Universal_String_Vector;
@@ -128,7 +127,8 @@ package League.Strings is
    function To_Wide_Wide_String (Self : Universal_String'Class)
      return Wide_Wide_String;
 
-   function Hash (Self : Universal_String'Class) return Hash_Type;
+   function Hash
+    (Self : Universal_String'Class) return Ada.Containers.Hash_Type;
 
    function Length (Self : Universal_String'Class) return Natural;
 
