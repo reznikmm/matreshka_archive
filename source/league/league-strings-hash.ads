@@ -47,3 +47,4 @@ with Ada.Containers;
 
 function League.Strings.Hash
  (Item : Universal_String) return Ada.Containers.Hash_Type;
+pragma Preelaborate (League.Strings.Hash);
