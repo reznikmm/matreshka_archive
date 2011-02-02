@@ -45,7 +45,7 @@
 ------------------------------------------------------------------------------
 with Ada.Containers;
 
-procedure League.Strings.Hash
+function League.Strings.Hash
  (Item : Universal_String) return Ada.Containers.Hash_Type is
 begin
    return Ada.Containers.Hash_Type (Self.Hash);
