@@ -41,53 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides string handler optimized for x86_64.
-------------------------------------------------------------------------------
 with Matreshka.Internals.Strings.Handlers.Portable_64;
+with Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2;
 
 package Matreshka.Internals.Strings.Handlers.X86_64 is
-
-   pragma Preelaborate;
-
-   type X86_64_String_Handler is
-     new Matreshka.Internals.Strings.Handlers.Portable_64.Portable_64_String_Handler
-       with null record;
-
-   overriding procedure Fill_Null_Terminator
-    (Self : X86_64_String_Handler;
-     Item : not null Shared_String_Access);
-
-   overriding function Is_Equal
-    (Self  : X86_64_String_Handler;
-     Left  : not null Shared_String_Access;
-     Right : not null Shared_String_Access) return Boolean;
-
-   overriding function Is_Less
-    (Self  : X86_64_String_Handler;
-     Left  : not null Shared_String_Access;
-     Right : not null Shared_String_Access) return Boolean;
-
-   overriding function Is_Greater
-    (Self  : X86_64_String_Handler;
-     Left  : not null Shared_String_Access;
-     Right : not null Shared_String_Access) return Boolean;
-
-   overriding function Is_Less_Or_Equal
-    (Self  : X86_64_String_Handler;
-     Left  : not null Shared_String_Access;
-     Right : not null Shared_String_Access) return Boolean;
-
-   overriding function Is_Greater_Or_Equal
-    (Self  : X86_64_String_Handler;
-     Left  : not null Shared_String_Access;
-     Right : not null Shared_String_Access) return Boolean;
-
-   overriding function Index
-    (Self : X86_64_String_Handler;
-     Item : Matreshka.Internals.Strings.Shared_String_Access;
-     Code : Matreshka.Internals.Unicode.Code_Point)
-       return Natural;
-
-   Handler : aliased X86_64_String_Handler;
-
-end Matreshka.Internals.Strings.Handlers.X86_64;
+  new Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2
+       (Matreshka.Internals.Strings.Handlers.Portable_64.Portable_64_String_Handler);
+pragma Preelaborate (Matreshka.Internals.Strings.Handlers.X86_64);

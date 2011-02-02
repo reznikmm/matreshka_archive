@@ -101,6 +101,7 @@ library project Matreshka_League is
            use Common_Source_Dirs
                  & ("../source/league/arch/x86",
                     "../source/league/portable_32",
+                    "../source/league/x86_generic",
                     "../source/league/x86");
 
       when "x86_64" =>
@@ -108,6 +109,7 @@ library project Matreshka_League is
            use Common_Source_Dirs
                  & ("../source/league/arch/x86",
                     "../source/league/portable_64",
+                    "../source/league/x86_generic",
                     "../source/league/x86_64");
    end case;
 

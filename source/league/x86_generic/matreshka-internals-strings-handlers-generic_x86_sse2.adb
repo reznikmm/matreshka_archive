@@ -49,7 +49,7 @@ with System.Storage_Elements;
 with Matreshka.Internals.SIMD.Intel.SSE2;
 with Matreshka.Internals.Strings.Constants;
 
-package body Matreshka.Internals.Strings.Handlers.X86_64 is
+package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
    use Interfaces;
    use Matreshka.Internals.SIMD.Intel;
@@ -76,7 +76,7 @@ package body Matreshka.Internals.Strings.Handlers.X86_64 is
    --------------------------
 
    overriding procedure Fill_Null_Terminator
-    (Self : X86_64_String_Handler;
+    (Self : X86_SSE2_String_Handler;
      Item : not null Shared_String_Access)
    is
       pragma Unreferenced (Self);
@@ -106,7 +106,7 @@ package body Matreshka.Internals.Strings.Handlers.X86_64 is
    -----------
 
    overriding function Index
-    (Self : X86_64_String_Handler;
+    (Self : X86_SSE2_String_Handler;
      Item : Matreshka.Internals.Strings.Shared_String_Access;
      Code : Matreshka.Internals.Unicode.Code_Point)
        return Natural
@@ -300,8 +300,7 @@ package body Matreshka.Internals.Strings.Handlers.X86_64 is
          return Index_16;
 
       else
-         return
-           Portable_64.Portable_64_String_Handler (Self).Index (Item, Code);
+         return Base_String_Handler (Self).Index (Item, Code);
       end if;
    end Index;
 
@@ -310,7 +309,7 @@ package body Matreshka.Internals.Strings.Handlers.X86_64 is
    --------------
 
    overriding function Is_Equal
-    (Self  : X86_64_String_Handler;
+    (Self  : X86_SSE2_String_Handler;
      Left  : not null Shared_String_Access;
      Right : not null Shared_String_Access) return Boolean
    is
@@ -358,7 +357,7 @@ package body Matreshka.Internals.Strings.Handlers.X86_64 is
    ----------------
 
    overriding function Is_Greater
-    (Self  : X86_64_String_Handler;
+    (Self  : X86_SSE2_String_Handler;
      Left  : not null Shared_String_Access;
      Right : not null Shared_String_Access) return Boolean
    is
@@ -412,7 +411,7 @@ package body Matreshka.Internals.Strings.Handlers.X86_64 is
    -------------------------
 
    overriding function Is_Greater_Or_Equal
-    (Self  : X86_64_String_Handler;
+    (Self  : X86_SSE2_String_Handler;
      Left  : not null Shared_String_Access;
      Right : not null Shared_String_Access) return Boolean
    is
@@ -466,7 +465,7 @@ package body Matreshka.Internals.Strings.Handlers.X86_64 is
    -------------
 
    overriding function Is_Less
-    (Self  : X86_64_String_Handler;
+    (Self  : X86_SSE2_String_Handler;
      Left  : not null Shared_String_Access;
      Right : not null Shared_String_Access) return Boolean
    is
@@ -520,7 +519,7 @@ package body Matreshka.Internals.Strings.Handlers.X86_64 is
    ----------------------
 
    overriding function Is_Less_Or_Equal
-    (Self  : X86_64_String_Handler;
+    (Self  : X86_SSE2_String_Handler;
      Left  : not null Shared_String_Access;
      Right : not null Shared_String_Access) return Boolean
    is
@@ -569,4 +568,4 @@ package body Matreshka.Internals.Strings.Handlers.X86_64 is
       return Left.Unused <= Right.Unused;
    end Is_Less_Or_Equal;
 
-end Matreshka.Internals.Strings.Handlers.X86_64;
+end Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2;
