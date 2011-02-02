@@ -55,9 +55,17 @@ package body XML.SAX.Pretty_Writers is
 
    use type League.Strings.Universal_String;
 
+   function "+" (Item : Wide_Wide_String)
+     return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
+
    Tmp_Mapping : Mapping_Vectors.Vector;
 
    function Image (X_V : XML_Version) return League.Strings.Universal_String;
+
+   Default_Mapping : constant Mapping_Record
+     := (Prefix => +"xml",
+         Namespace_URI => +"http://www.w3.org/XML/1998/namespace");
 
    ----------------
    -- Characters --
@@ -69,7 +77,7 @@ package body XML.SAX.Pretty_Writers is
      Success : in out Boolean) is
    begin
       if Self.Tag_Opened then
-         Self.Text.Append (League.Strings.To_Universal_String (">"));
+         Self.Text.Append (+">");
          Self.Tag_Opened := False;
       end if;
 
@@ -85,9 +93,9 @@ package body XML.SAX.Pretty_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      Self.Text.Append (League.Strings.To_Universal_String ("<!-- "));
+      Self.Text.Append (+"<!-- ");
       Self.Text.Append (Text);
-      Self.Text.Append (League.Strings.To_Universal_String (" -->"));
+      Self.Text.Append (+" -->");
    end Comment;
 
    ---------------
@@ -143,10 +151,10 @@ package body XML.SAX.Pretty_Writers is
 
    begin
       if Self.Tag_Opened then
-         Self.Text.Append (League.Strings.To_Universal_String ("/>"));
+         Self.Text.Append (+"/>");
          Self.Tag_Opened := False;
       else
-         Self.Text.Append (League.Strings.To_Universal_String ("</"));
+         Self.Text.Append (+"</");
 
          if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
             --  XXX error should be reported
@@ -192,7 +200,7 @@ package body XML.SAX.Pretty_Writers is
             Success :=  False;
          end if;
 
-         Self.Text.Append (League.Strings.To_Universal_String (">"));
+         Self.Text.Append (+">");
       end if;
 
       Self.Nesting := Self.Nesting - 1;
@@ -331,10 +339,10 @@ package body XML.SAX.Pretty_Writers is
    begin
       case X_V is
          when XML_1_0 =>
-            return League.Strings.To_Universal_String ("1.0");
+            return +"1.0";
 
          when XML_1_1 =>
-            return League.Strings.To_Universal_String ("1.1");
+            return +"1.1";
       end case;
    end Image;
 
@@ -411,9 +419,9 @@ package body XML.SAX.Pretty_Writers is
      Success : in out Boolean) is
    begin
       Self.Text.Append
-        (League.Strings.To_Universal_String ("<?xml version=""")
+        (+"<?xml version="""
            & Image (Self.Version)
-           & League.Strings.To_Universal_String ("""?>"));
+           & (+"""?>"));
       Self.Nesting := 0;
    end Start_Document;
 
@@ -452,7 +460,7 @@ package body XML.SAX.Pretty_Writers is
    begin
       --  Closing Tag, which was opened before.
       if Self.Tag_Opened then
-         Self.Text.Append (League.Strings.To_Universal_String (">"));
+         Self.Text.Append (+">");
          Self.Tag_Opened := False;
       end if;
 
@@ -462,7 +470,7 @@ package body XML.SAX.Pretty_Writers is
                 Tag     => Local_Name));
       end if;
 
-      Self.Text.Append (League.Strings.To_Universal_String ("<"));
+      Self.Text.Append (+"<");
 
       if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
          Success := False;
@@ -499,7 +507,7 @@ package body XML.SAX.Pretty_Writers is
                                & """");
                end if;
 
-               --  Adding prefix to tag
+                --  Adding prefix to tag
                if Scope.Mapping.Element (J).Namespace_URI = Namespace_URI then
                   if not Scope.Mapping.Element (J).Prefix.Is_Empty then
                      Self.Text.Append (Scope.Mapping.Element (J).Prefix & ":");
@@ -518,47 +526,60 @@ package body XML.SAX.Pretty_Writers is
 
       --  Setting attributes
 
-      --  for J in 1 .. Attributes.Length loop
-      --     if not Attributes.Local_Name (J).Is_Empty then
-      --        if not Attributes.Namespace_URI (J).Is_Empty then
-      --           Self.Text.Append (League.Strings.To_Universal_String (" "));
+      for J in 1 .. Attributes.Length loop
+         if not Attributes.Local_Name (J).Is_Empty then
+            if not Attributes.Namespace_URI (J).Is_Empty then
+               Self.Text.Append (+" ");
 
-      --           C := Self.Prefix_Map.Find (Attributes.Namespace_URI (J));
+               if Attributes.Namespace_URI (J)
+                 = Default_Mapping.Namespace_URI then
+                  Self.Text.Append (Default_Mapping.Prefix);
+                  Self.Text.Append (+":");
+               else
+                  declare
+                     Scope : Mapping_Scope;
 
-      --           if C /= Universal_String_Maps.No_Element then
+                  begin
+                     Pop (Scope);
 
-      --              if not Universal_String_Maps.Element (C).Is_Empty then
-      --                 Self.Text.Append (Universal_String_Maps.Element (C));
-      --                 Self.Text.Append
-      --                  (League.Strings.To_Universal_String (":"));
-      --              end if;
-      --           end if;
+                     for X in 0 .. Integer (Scope.Mapping.Length) - 1 loop
+                        if Attributes.Namespace_URI (J)
+                          = Scope.Mapping.Element (X).Namespace_URI then
+                           if not Scope.Mapping.Element (X).Prefix.Is_Empty then
+                              Self.Text.Append
+                               (Scope.Mapping.Element (X).Prefix);
+                              Self.Text.Append (+":");
+                           end if;
+                        end if;
+                     end loop;
+                  end;
+               end if;
 
-      --           Self.Text.Append (Attributes.Local_Name (J));
-      --           Self.Text.Append (League.Strings.To_Universal_String ("="""));
-      --           Self.Text.Append (Attributes.Value (J));
-      --           Self.Text.Append (League.Strings.To_Universal_String (""""));
+               Self.Text.Append (Attributes.Local_Name (J));
+               Self.Text.Append (+"=""");
+               Self.Text.Append (Attributes.Value (J));
+               Self.Text.Append (+"""");
 
-      --        else
-      --           --  XXX: Error should be reported
-      --           Success := False;
-      --           return;
-      --        end if;
+            else
+               --  XXX: Error should be reported
+               Success := False;
+               return;
+            end if;
 
-      --     elsif not Attributes.Qualified_Name (J).Is_Empty then
-      --        Self.Text.Append (League.Strings.To_Universal_String (" "));
-      --        Self.Text.Append (Attributes.Qualified_Name (J));
-      --        Self.Text.Append (League.Strings.To_Universal_String ("="""));
-      --        Self.Text.Append (Attributes.Value (J));
-      --        Self.Text.Append (League.Strings.To_Universal_String (""""));
+         elsif not Attributes.Qualified_Name (J).Is_Empty then
+            Self.Text.Append (+" ");
+            Self.Text.Append (Attributes.Qualified_Name (J));
+            Self.Text.Append (+"=""");
+            Self.Text.Append (Attributes.Value (J));
+            Self.Text.Append (+"""");
 
-      --     else
-      --        --  XXX: Error should be reported
-      --        Success := False;
-      --        return;
-      --     end if;
+         else
+            --  XXX: Error should be reported
+            Success := False;
+            return;
+         end if;
 
-      --  end loop;
+      end loop;
 
       Self.Nesting := Self.Nesting + 1;
       Self.Tag_Opened := True;
