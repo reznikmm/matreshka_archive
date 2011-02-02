@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -53,7 +53,7 @@ package body FastCGI.Requests is
      Name : League.Stream_Element_Vectors.Stream_Element_Vector)
        return Boolean is
    begin
-      return False;
+      return Self.Descriptor.Request_Headers.Contains (Name);
    end Has_Raw_Header;
 
    ----------------
@@ -65,8 +65,25 @@ package body FastCGI.Requests is
      Name : League.Stream_Element_Vectors.Stream_Element_Vector)
        return League.Stream_Element_Vectors.Stream_Element_Vector is
    begin
-      return League.Stream_Element_Vectors.Empty_Stream_Element_Vector;
+      return Self.Descriptor.Request_Headers.Element (Name);
    end Raw_Header;
+
+   ----------
+   -- Read --
+   ----------
+
+   overriding procedure Read
+    (Self : in out Input_Stream;
+     Item : out Ada.Streams.Stream_Element_Array;
+     Last : out Ada.Streams.Stream_Element_Offset)
+   is
+      use type Ada.Streams.Stream_Element_Offset;
+
+   begin
+      Item (Item'First .. Item'First + Self.Descriptor.Stdin.Length - 1) :=
+        Self.Descriptor.Stdin.To_Stream_Element_Array;
+      Last := Item'First + Self.Descriptor.Stdin.Length - 1;
+   end Read;
 
    ------------
    -- Stream --
@@ -76,7 +93,18 @@ package body FastCGI.Requests is
     (Self : Request)
        return not null access Ada.Streams.Root_Stream_Type'Class is
    begin
-      return null;
+      return Self.In_Stream;
    end Stream;
+
+   -----------
+   -- Write --
+   -----------
+
+   overriding procedure Write
+    (Self : in out Input_Stream;
+     Item : Ada.Streams.Stream_Element_Array) is
+   begin
+      raise Program_Error;
+   end Write;
 
 end FastCGI.Requests;

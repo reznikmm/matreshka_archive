@@ -63,6 +63,16 @@ package FastCGI.Requests is
      Name : League.Stream_Element_Vectors.Stream_Element_Vector)
        return League.Stream_Element_Vectors.Stream_Element_Vector;
 
+--   function Has_Parameter
+--    (Self : Request;
+--     Name : League.Strings.Universal_String)
+--       return Boolean;
+--
+--   function Parameter
+--    (Self : Request;
+--     Name : League.Strings.Universal_String)
+--       return League.Values.Value;
+
    function Stream
     (Self : Request)
        return not null access Ada.Streams.Root_Stream_Type'Class;
@@ -70,8 +80,24 @@ package FastCGI.Requests is
 
 private
 
+   type Input_Stream is new Ada.Streams.Root_Stream_Type with record
+      Descriptor : Matreshka.FastCGI.Descriptor_Access;
+   end record;
+
+   type Input_Stream_Access is access all Input_Stream;
+
+   overriding procedure Read
+    (Self : in out Input_Stream;
+     Item : out Ada.Streams.Stream_Element_Array;
+     Last : out Ada.Streams.Stream_Element_Offset);
+
+   overriding procedure Write
+    (Self : in out Input_Stream;
+     Item : Ada.Streams.Stream_Element_Array);
+
    type Request is tagged limited record
       Descriptor : Matreshka.FastCGI.Descriptor_Access;
+      In_Stream  : Input_Stream_Access;
    end record;
 
 end FastCGI.Requests;

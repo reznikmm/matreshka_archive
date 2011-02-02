@@ -52,7 +52,11 @@ package body FastCGI.Requests.Internals is
     (Descriptor : Matreshka.FastCGI.Descriptor_Access)
        return Request is
    begin
-      return (Descriptor => Descriptor);
+      return
+       (Descriptor => Descriptor,
+        In_Stream  =>
+          new Input_Stream'
+               (Ada.Streams.Root_Stream_Type with Descriptor => Descriptor));
    end Create;
 
 end FastCGI.Requests.Internals;
