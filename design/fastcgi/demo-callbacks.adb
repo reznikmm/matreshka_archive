@@ -97,6 +97,10 @@ package body Demo.Callbacks is
          is
             Percent : constant Ada.Streams.Stream_Element
               := Ada.Streams.Stream_Element'Val (Character'Pos ('%'));
+            Plus    : constant Ada.Streams.Stream_Element
+              := Ada.Streams.Stream_Element'Val (Character'Pos ('+'));
+            Space   : constant Ada.Streams.Stream_Element
+              := Ada.Streams.Stream_Element'Val (Character'Pos (' '));
             Current : Ada.Streams.Stream_Element_Offset := Item'First;
             Result  : Ada.Streams.Stream_Element_Array (1 .. Item'Length);
             Last    : Ada.Streams.Stream_Element_Offset := Result'First - 1;
@@ -144,6 +148,11 @@ package body Demo.Callbacks is
                   Last := Last + 1;
                   Result (Last) := Aux;
                   Current := Current + 3;
+
+               elsif Item (Current) = Plus then
+                  Last := Last + 1;
+                  Result (Last) := Space;
+                  Current := Current + 1;
 
                else
                   Last := Last + 1;
