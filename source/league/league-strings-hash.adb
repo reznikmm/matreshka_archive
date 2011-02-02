@@ -48,5 +48,5 @@ with Ada.Containers;
 function League.Strings.Hash
  (Item : Universal_String) return Ada.Containers.Hash_Type is
 begin
-   return Ada.Containers.Hash_Type (Self.Hash);
+   return Ada.Containers.Hash_Type (Item.Hash);
 end League.Strings.Hash;
