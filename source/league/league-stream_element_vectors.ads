@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -70,6 +70,9 @@ package League.Stream_Element_Vectors is
 
    procedure Clear (Self : in out Stream_Element_Vector);
 
+   overriding function "="
+    (Left  : Stream_Element_Vector;
+     Right : Stream_Element_Vector) return Boolean;
    not overriding function "="
     (Left  : Stream_Element_Vector;
      Right : Ada.Streams.Stream_Element_Array) return Boolean;

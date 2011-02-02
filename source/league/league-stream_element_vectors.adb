@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,6 +47,20 @@ package body League.Stream_Element_Vectors is
    use type Ada.Streams.Stream_Element_Array;
    use type Ada.Streams.Stream_Element_Offset;
    use Matreshka.Internals.Stream_Element_Vectors;
+
+   ---------
+   -- "=" --
+   ---------
+
+   overriding function "="
+    (Left  : Stream_Element_Vector;
+     Right : Stream_Element_Vector) return Boolean is
+   begin
+      return
+        Left.Data.Last = Right.Data.Last
+          and then Left.Data.Value (Left.Data.Value'First .. Left.Data.Last)
+            = Right.Data.Value (Right.Data.Value'First .. Right.Data.Last);
+   end "=";
 
    ---------
    -- "=" --
