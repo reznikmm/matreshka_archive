@@ -581,7 +581,13 @@ package body Matreshka.FastCGI.Server is
      Request_Id : FCGI_Request_Identifier;
      Buffer     : Stream_Element_Array) is
    begin
-      null;
+      if Dsc.Request_Id /= Request_Id then
+         raise Program_Error;
+      end if;
+
+      Dsc.Stdin :=
+        League.Stream_Element_Vectors.To_Stream_Element_Vector
+         (Dsc.Stdin.To_Stream_Element_Array & Buffer);
    end Process_Stdin;
 
    ----------------------
