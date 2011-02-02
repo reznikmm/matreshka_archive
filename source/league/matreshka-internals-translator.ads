@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 private with Ada.Containers.Hashed_Maps;
 
-with League.Strings;
+with League.Strings.Hash;
 
 package Matreshka.Internals.Translator is
 
@@ -60,14 +60,11 @@ private
 
    use type League.Strings.Universal_String;
 
-   function Hash
-    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
-
    package Universal_String_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
            League.Strings.Universal_String,
-           Hash,
+           League.Strings.Hash,
            League.Strings."=");
 
    type Context_Record is record
@@ -81,7 +78,7 @@ private
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
            Context_Access,
-           Hash,
+           League.Strings.Hash,
            League.Strings."=");
 
    Translations : Context_Maps.Map;

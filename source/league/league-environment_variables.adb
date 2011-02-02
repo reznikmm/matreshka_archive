@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Hash;
 
 package body League.Environment_Variables is
 
@@ -94,8 +95,7 @@ package body League.Environment_Variables is
 
    function Hash (Item : Key_Type) return Ada.Containers.Hash_Type is
    begin
-      return
-        Ada.Containers.Hash_Type (League.Strings.Universal_String (Item).Hash);
+      return League.Strings.Hash (League.Strings.Universal_String (Item));
    end Hash;
 
    ------------
