@@ -48,10 +48,9 @@ with League.Strings;
 
 procedure String_Hash_Test is
 
-   use type Ada.Containers.Hash_Type;
    use League.Strings;
 
-   V : array (1 .. 6) of Ada.Containers.Hash_Type
+   V : array (1 .. 6) of Hash_Type
      := (To_Universal_String ("A").Hash,
          To_Universal_String ("B").Hash,
          To_Universal_String ("AA").Hash,
