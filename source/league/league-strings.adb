@@ -801,10 +801,9 @@ package body League.Strings is
    -- Hash --
    ----------
 
-   function Hash
-    (Self : Universal_String'Class) return Ada.Containers.Hash_Type is
+   function Hash (Self : Universal_String'Class) return Hash_Type is
    begin
-      return Ada.Containers.Hash_Type (Hash (Self.Data));
+      return Hash_Type (Hash (Self.Data));
    end Hash;
 
    -----------
