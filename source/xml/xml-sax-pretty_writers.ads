@@ -41,9 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Containers.Hashed_Maps;
+private with Ada.Containers.Ordered_Maps;
 private with Ada.Containers.Vectors;
 
-with League.Strings;
+with League.Strings.Hash;
 with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
 with XML.SAX.Lexical_Handlers;
@@ -169,27 +171,41 @@ package XML.SAX.Pretty_Writers is
 
 private
 
-   type Mapping_Record is record
-      Prefix        : League.Strings.Universal_String;
-      Namespace_URI : League.Strings.Universal_String;
+   package Mappings is
+      new Ada.Containers.Hashed_Maps
+           (League.Strings.Universal_String,
+            League.Strings.Universal_String,
+            League.Strings.Hash,
+            League.Strings."=",
+            League.Strings."=");
+
+   package Banks is
+      new Ada.Containers.Ordered_Maps
+           (League.Strings.Universal_String,
+            League.Strings.Universal_String,
+            League.Strings."<",
+            League.Strings."=");
+
+   type Stack_Obj is record
+      Tag : League.Strings.Universal_String
+        := League.Strings.Empty_Universal_String;
+      Mapping : Mappings.Map;
    end record;
 
-   package Mapping_Vectors is
-      new Ada.Containers.Vectors (Natural, Mapping_Record);
-
-   type Mapping_Scope is record
-      Mapping : Mapping_Vectors.Vector;
-      Tag     : League.Strings.Universal_String;
-   end record;
-
-   package Mapping_Stacks is
-      new Ada.Containers.Vectors (Natural, Mapping_Scope);
+   package Stacks is
+      new Ada.Containers.Vectors (Natural, Stack_Obj);
 
    procedure Push (Self  : in out SAX_Pretty_Writer;
-                   Scope : Mapping_Scope);
+                   Scope : Mappings.Map;
+                   Tag   : League.Strings.Universal_String);
 
    procedure Pop (Self  : in out SAX_Pretty_Writer;
-                  Scope : out Mapping_Scope);
+                  Scope : out Mappings.Map;
+                  Tag   : League.Strings.Universal_String);
+
+   procedure Merge (Self    : in out SAX_Pretty_Writer;
+                    Current : in out Mappings.Map;
+                    Bank    : in Banks.Map);
 
    type SAX_Pretty_Writer is
      limited new XML.SAX.Writers.SAX_Writer with
@@ -198,8 +214,10 @@ private
       Nesting    : Natural;
       Version    : XML_Version := XML_1_0;
       Tag_Opened : Boolean := False;
-      Scope      : Mapping_Scope; --  Mapping for current element
-      Stack      : Mapping_Stacks.Vector;
+      Bank       : Banks.Map;
+      Current    : Mappings.Map; --  Mapping for current element
+      Stack      : Stacks.Vector;
+      Error      : League.Strings.Universal_String;
    end record;
 
    function Escape
