@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -67,6 +67,7 @@ package Matreshka.FastCGI is
       Request_Id      : FCGI_Request_Identifier;
       Request_Headers : Maps.Map;
       Stdin           : League.Stream_Element_Vectors.Stream_Element_Vector;
+      Parameters      : Maps.Map;
       Reply_Headers   : Maps.Map;
       Stdout          : League.Stream_Element_Vectors.Stream_Element_Vector;
       Stderr          : League.Stream_Element_Vectors.Stream_Element_Vector;

@@ -56,6 +56,18 @@ package body FastCGI.Requests is
       return Self.Descriptor.Request_Headers.Contains (Name);
    end Has_Raw_Header;
 
+   -----------------------
+   -- Has_Raw_Parameter --
+   -----------------------
+
+   function Has_Raw_Parameter
+    (Self : Request;
+     Name : League.Stream_Element_Vectors.Stream_Element_Vector)
+       return Boolean is
+   begin
+      return Self.Descriptor.Parameters.Contains (Name);
+   end Has_Raw_Parameter;
+
    ----------------
    -- Raw_Header --
    ----------------
@@ -67,6 +79,18 @@ package body FastCGI.Requests is
    begin
       return Self.Descriptor.Request_Headers.Element (Name);
    end Raw_Header;
+
+   -------------------
+   -- Raw_Parameter --
+   -------------------
+
+   function Raw_Parameter
+    (Self : Request;
+     Name : League.Stream_Element_Vectors.Stream_Element_Vector)
+       return League.Stream_Element_Vectors.Stream_Element_Vector is
+   begin
+      return Self.Descriptor.Parameters.Element (Name);
+   end Raw_Parameter;
 
    ----------
    -- Read --

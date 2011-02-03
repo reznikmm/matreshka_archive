@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,6 +46,7 @@ with Ada.Unchecked_Conversion;
 with GNAT.Sockets;
 
 with Matreshka.Internals.Unicode.Characters.Latin;
+with Matreshka.FastCGI.Query_Parameters;
 with FastCGI.Requests.Internals;
 with FastCGI.Replies.Internals;
 
@@ -351,6 +352,10 @@ package body Matreshka.FastCGI.Server is
       Status : Integer;
 
    begin
+      --  Prepare query parameters.
+
+      Query_Parameters.Decode_Query_Parameters (Dsc);
+
       --  Execute callback.
 
       Handler (Request, Reply, Status);

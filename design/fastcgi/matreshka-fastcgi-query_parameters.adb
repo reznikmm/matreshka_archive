@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,73 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Streams;
 
-with League.Stream_Element_Vectors;
+package body Matreshka.FastCGI.Query_Parameters is
 
-private with Matreshka.FastCGI;
+   -----------------------------
+   -- Decode_Query_Parameters --
+   -----------------------------
 
-package FastCGI.Requests is
+   procedure Decode_Query_Parameters
+    (Descriptor : in out FastCGI.Descriptor) is
+   begin
+      null;
+   end Decode_Query_Parameters;
 
-   pragma Preelaborate;
-
-   type Request is tagged limited private;
-
-   function Has_Raw_Header
-    (Self : Request;
-     Name : League.Stream_Element_Vectors.Stream_Element_Vector)
-       return Boolean;
-
-   function Raw_Header
-    (Self : Request;
-     Name : League.Stream_Element_Vectors.Stream_Element_Vector)
-       return League.Stream_Element_Vectors.Stream_Element_Vector;
-
-   function Has_Raw_Parameter
-    (Self : Request;
-     Name : League.Stream_Element_Vectors.Stream_Element_Vector)
-       return Boolean;
-
-   function Raw_Parameter
-    (Self : Request;
-     Name : League.Stream_Element_Vectors.Stream_Element_Vector)
-       return League.Stream_Element_Vectors.Stream_Element_Vector;
-
---   function Has_Parameter
---    (Self : Request;
---     Name : League.Strings.Universal_String)
---       return Boolean;
---
---   function Parameter
---    (Self : Request;
---     Name : League.Strings.Universal_String)
---       return League.Values.Value;
-
-   function Stream
-    (Self : Request)
-       return not null access Ada.Streams.Root_Stream_Type'Class;
-   --  Returns stream to read request's data from server.
-
-private
-
-   type Input_Stream is new Ada.Streams.Root_Stream_Type with record
-      Descriptor : Matreshka.FastCGI.Descriptor_Access;
-   end record;
-
-   type Input_Stream_Access is access all Input_Stream;
-
-   overriding procedure Read
-    (Self : in out Input_Stream;
-     Item : out Ada.Streams.Stream_Element_Array;
-     Last : out Ada.Streams.Stream_Element_Offset);
-
-   overriding procedure Write
-    (Self : in out Input_Stream;
-     Item : Ada.Streams.Stream_Element_Array);
-
-   type Request is tagged limited record
-      Descriptor : Matreshka.FastCGI.Descriptor_Access;
-      In_Stream  : Input_Stream_Access;
-   end record;
-
-end FastCGI.Requests;
+end Matreshka.FastCGI.Query_Parameters;
