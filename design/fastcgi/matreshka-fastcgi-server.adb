@@ -382,6 +382,7 @@ package body Matreshka.FastCGI.Server is
 
       Dsc.Request_Id := 0;
       Dsc.Request_Headers.Clear;
+      Dsc.Parameters.Clear;
       Dsc.Reply_Headers.Clear;
       Dsc.Stdin.Clear;
       Dsc.Stdout.Clear;
