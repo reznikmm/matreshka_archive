@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -58,8 +58,11 @@ package Matreshka.Internals.Unicode.Characters.Latin is
    Quotation_Mark         : constant := 16#0022#;
    Number_Sign            : constant := 16#0023#;
 
+   Percent_Sign           : constant := 16#0025#;
    Ampersand              : constant := 16#0026#;
    Apostrophe             : constant := 16#0027#;
+
+   Plus_Sign              : constant := 16#002B#;
 
    Hyphen_Minus           : constant := 16#002D#;
    Full_Stop              : constant := 16#002E#;
