@@ -16,6 +16,9 @@ all: gnat/matreshka_config.gpr
 	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
 #	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml.gpr
 
+fastcgi: all
+	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_fastcgi.gpr
+
 check: all
 	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr
 	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml_tests.gpr
