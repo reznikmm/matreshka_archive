@@ -68,137 +68,6 @@ package body Demo.Callbacks is
        (Item : String)
           return League.Stream_Element_Vectors.Stream_Element_Vector;
 
-      function Extract_String
-       (Query : Ada.Streams.Stream_Element_Array)
-          return League.Strings.Universal_String;
-
-      --------------------
-      -- Extract_String --
-      --------------------
-
-      function Extract_String
-       (Query : Ada.Streams.Stream_Element_Array)
-          return League.Strings.Universal_String
-      is
-         use type Ada.Streams.Stream_Element;
-         use type Ada.Streams.Stream_Element_Offset;
-
-         function From_Percent_Encoding
-          (Item : Ada.Streams.Stream_Element_Array)
-             return Ada.Streams.Stream_Element_Array;
-
-         ---------------------------
-         -- From_Percent_Encoding --
-         ---------------------------
-
-         function From_Percent_Encoding
-          (Item : Ada.Streams.Stream_Element_Array)
-             return Ada.Streams.Stream_Element_Array
-         is
-            Percent : constant Ada.Streams.Stream_Element
-              := Ada.Streams.Stream_Element'Val (Character'Pos ('%'));
-            Plus    : constant Ada.Streams.Stream_Element
-              := Ada.Streams.Stream_Element'Val (Character'Pos ('+'));
-            Space   : constant Ada.Streams.Stream_Element
-              := Ada.Streams.Stream_Element'Val (Character'Pos (' '));
-            Current : Ada.Streams.Stream_Element_Offset := Item'First;
-            Result  : Ada.Streams.Stream_Element_Array (1 .. Item'Length);
-            Last    : Ada.Streams.Stream_Element_Offset := Result'First - 1;
-            Aux     : Ada.Streams.Stream_Element;
-
-         begin
-            while Current <= Item'Last loop
-               if Item (Current) = Percent then
-                  if Item (Current + 1)
-                       in Character'Pos ('0') .. Character'Pos ('9')
-                  then
-                     Aux := Item (Current + 1) - Character'Pos ('0');
-
-                  elsif Item (Current + 1)
-                       in Character'Pos ('A') .. Character'Pos ('F')
-                  then
-                     Aux := Item (Current + 1) - Character'Pos ('A') + 10;
-
-                  elsif Item (Current + 1)
-                       in Character'Pos ('a') .. Character'Pos ('f')
-                  then
-                     Aux := Item (Current + 1) - Character'Pos ('a') + 10;
-                  end if;
-
-                  Aux := Aux * 16;
-
-                  if Item (Current + 2)
-                       in Character'Pos ('0') .. Character'Pos ('9')
-                  then
-                     Aux := Aux + Item (Current + 2) - Character'Pos ('0');
-
-                  elsif Item (Current + 2)
-                       in Character'Pos ('A') .. Character'Pos ('F')
-                  then
-                     Aux :=
-                       Aux + Item (Current + 2) - Character'Pos ('A') + 10;
-
-                  elsif Item (Current + 2)
-                       in Character'Pos ('a') .. Character'Pos ('f')
-                  then
-                     Aux :=
-                       Aux + Item (Current + 2) - Character'Pos ('a') + 10;
-                  end if;
-
-                  Last := Last + 1;
-                  Result (Last) := Aux;
-                  Current := Current + 3;
-
-               elsif Item (Current) = Plus then
-                  Last := Last + 1;
-                  Result (Last) := Space;
-                  Current := Current + 1;
-
-               else
-                  Last := Last + 1;
-                  Result (Last) := Item (Current);
-                  Current := Current + 1;
-               end if;
-            end loop;
-
-            return Result (1 .. Last);
-         end From_Percent_Encoding;
-
-         Equal     : constant Ada.Streams.Stream_Element
-           := Ada.Streams.Stream_Element'Val (Character'Pos ('='));
-         Ampersand : constant Ada.Streams.Stream_Element
-           := Ada.Streams.Stream_Element'Val (Character'Pos ('&'));
-         First     : Ada.Streams.Stream_Element_Offset := Query'First;
-         Last      : Ada.Streams.Stream_Element_Offset := Query'First;
-
-      begin
-         --  Looking for '&' separator.
-
-         while Last <= Query'Last loop
-            if Query (Last) = Ampersand then
-               exit;
-            end if;
-
-            Last := Last + 1;
-         end loop;
-
-         Last := Last - 1;
-
-         --  Looking for '=' separator.
-
-         while First <= Last loop
-            if Query (First) = Equal then
-               exit;
-            end if;
-
-            First := First + 1;
-         end loop;
-
-         First := First + 1;
-
-         return Codec.Decode (From_Percent_Encoding (Query (First .. Last)));
-      end Extract_String;
-
       ------------
       -- Output --
       ------------
@@ -229,32 +98,19 @@ package body Demo.Callbacks is
          return League.Stream_Element_Vectors.To_Stream_Element_Vector (Aux);
       end To_Raw;
 
-      Content_Type_Header :
+      String_Parameter :
         constant League.Stream_Element_Vectors.Stream_Element_Vector
-          := To_Raw ("CONTENT_TYPE");
-      Content_Length_Header :
-        constant League.Stream_Element_Vectors.Stream_Element_Vector
-          := To_Raw ("CONTENT_LENGTH");
-      Request_Method_Header :
-        constant League.Stream_Element_Vectors.Stream_Element_Vector
-          := To_Raw ("REQUEST_METHOD");
+          := To_Raw ("string");
       Script_Name_Header :
         constant League.Stream_Element_Vectors.Stream_Element_Vector
           := To_Raw ("SCRIPT_NAME");
 
    begin
-      if Request.Raw_Header (Request_Method_Header) = To_Raw ("POST")
-        and then Request.Raw_Header (Content_Type_Header)
-                   = To_Raw ("application/x-www-form-urlencoded")
-      then
-         declare
-            Buffer : Ada.Streams.Stream_Element_Array (1 .. 1024);
-            Last   : Ada.Streams.Stream_Element_Offset;
-
-         begin
-            Request.Stream.Read (Buffer, Last);
-            Strings.Include (Extract_String (Buffer (1 .. Last)));
-         end;
+      if Request.Has_Raw_Parameter (String_Parameter) then
+         Strings.Include
+          (Codec.Decode
+            (Request.Raw_Parameter
+              (String_Parameter).To_Stream_Element_Array));
       end if;
 
       Reply.Set_Content_Type
