@@ -63,12 +63,12 @@ package FastCGI.Requests is
      Name : League.Stream_Element_Vectors.Stream_Element_Vector)
        return League.Stream_Element_Vectors.Stream_Element_Vector;
 
-   function Has_Raw_Parameter
+   function Has_Raw_Query_Item
     (Self : Request;
      Name : League.Stream_Element_Vectors.Stream_Element_Vector)
        return Boolean;
 
-   function Raw_Parameter
+   function Raw_Query_Item
     (Self : Request;
      Name : League.Stream_Element_Vectors.Stream_Element_Vector)
        return League.Stream_Element_Vectors.Stream_Element_Vector;

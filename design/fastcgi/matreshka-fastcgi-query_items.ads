@@ -44,9 +44,9 @@
 --  This package provides subprogram to construct set of parameters.
 ------------------------------------------------------------------------------
 
-package Matreshka.FastCGI.Query_Parameters is
+package Matreshka.FastCGI.Query_Items is
 
-   procedure Decode_Query_Parameters (Descriptor : in out FastCGI.Descriptor);
+   procedure Decode_Query_Items (Descriptor : in out FastCGI.Descriptor);
    --  Decodes request's parameters, depending from request method and
    --  serialization format.
    --
@@ -59,4 +59,4 @@ package Matreshka.FastCGI.Query_Parameters is
    --  format is specified by CONTENT_TYPE header. Only
    --  "application/x-www-form-urlencoded" format is supported.
 
-end Matreshka.FastCGI.Query_Parameters;
+end Matreshka.FastCGI.Query_Items;

@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Unicode.Characters.Latin;
 
-package body Matreshka.FastCGI.Query_Parameters is
+package body Matreshka.FastCGI.Query_Items is
 
    use Ada.Streams;
    use League.Stream_Element_Vectors;
@@ -100,13 +100,11 @@ package body Matreshka.FastCGI.Query_Parameters is
    URL_Encoded_Format    : constant Stream_Element_Vector
      := To_Stream_Element_Vector ("application/x-www-form-urlencoded");
 
-   -----------------------------
-   -- Decode_Query_Parameters --
-   -----------------------------
+   ------------------------
+   -- Decode_Query_Items --
+   ------------------------
 
-   procedure Decode_Query_Parameters
-    (Descriptor : in out FastCGI.Descriptor)
-   is
+   procedure Decode_Query_Items (Descriptor : in out FastCGI.Descriptor) is
       Request_Method : constant Stream_Element_Vector
         := Descriptor.Request_Headers.Element (Request_Method_Header);
 
@@ -136,7 +134,7 @@ package body Matreshka.FastCGI.Query_Parameters is
               Descriptor.Stdin.To_Stream_Element_Array);
          end if;
       end if;
-   end Decode_Query_Parameters;
+   end Decode_Query_Items;
 
    -----------------------------------
    -- Decode_URL_Encoded_Parameters --
@@ -183,7 +181,7 @@ package body Matreshka.FastCGI.Query_Parameters is
          --  Convert name/value pair from percent encoding and add to the set
          --  of parameters.
 
-         Descriptor.Parameters.Insert
+         Descriptor.Query_Items.Insert
           (From_Percent_Encoding (Data (Name_First .. Name_Last)),
            From_Percent_Encoding (Data (Value_First .. Value_Last)));
 
@@ -250,4 +248,4 @@ package body Matreshka.FastCGI.Query_Parameters is
       return To_Stream_Element_Vector (Aux (Aux'First .. Last));
    end From_Percent_Encoding;
 
-end Matreshka.FastCGI.Query_Parameters;
+end Matreshka.FastCGI.Query_Items;

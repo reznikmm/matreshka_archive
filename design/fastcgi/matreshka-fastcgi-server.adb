@@ -46,7 +46,7 @@ with Ada.Unchecked_Conversion;
 with GNAT.Sockets;
 
 with Matreshka.Internals.Unicode.Characters.Latin;
-with Matreshka.FastCGI.Query_Parameters;
+with Matreshka.FastCGI.Query_Items;
 with FastCGI.Requests.Internals;
 with FastCGI.Replies.Internals;
 
@@ -354,7 +354,7 @@ package body Matreshka.FastCGI.Server is
    begin
       --  Prepare query parameters.
 
-      Query_Parameters.Decode_Query_Parameters (Dsc);
+      Query_Items.Decode_Query_Items (Dsc);
 
       --  Execute callback.
 
@@ -382,7 +382,7 @@ package body Matreshka.FastCGI.Server is
 
       Dsc.Request_Id := 0;
       Dsc.Request_Headers.Clear;
-      Dsc.Parameters.Clear;
+      Dsc.Query_Items.Clear;
       Dsc.Reply_Headers.Clear;
       Dsc.Stdin.Clear;
       Dsc.Stdout.Clear;

@@ -106,10 +106,10 @@ package body Demo.Callbacks is
           := To_Raw ("SCRIPT_NAME");
 
    begin
-      if Request.Has_Raw_Parameter (String_Parameter) then
+      if Request.Has_Raw_Query_Item (String_Parameter) then
          Strings.Include
           (Codec.Decode
-            (Request.Raw_Parameter
+            (Request.Raw_Query_Item
               (String_Parameter).To_Stream_Element_Array));
       end if;
 

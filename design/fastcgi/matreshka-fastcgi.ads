@@ -67,7 +67,7 @@ package Matreshka.FastCGI is
       Request_Id      : FCGI_Request_Identifier;
       Request_Headers : Maps.Map;
       Stdin           : League.Stream_Element_Vectors.Stream_Element_Vector;
-      Parameters      : Maps.Map;
+      Query_Items     : Maps.Map;
       Reply_Headers   : Maps.Map;
       Stdout          : League.Stream_Element_Vectors.Stream_Element_Vector;
       Stderr          : League.Stream_Element_Vectors.Stream_Element_Vector;
