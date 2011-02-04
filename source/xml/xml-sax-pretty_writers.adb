@@ -72,7 +72,7 @@ package body XML.SAX.Pretty_Writers is
      Success : in out Boolean) is
    begin
       if Self.Tag_Opened then
-         Self.Text.Append (+">");
+         Self.Text.Append ('>');
          Self.Tag_Opened := False;
       end if;
 
@@ -175,7 +175,7 @@ package body XML.SAX.Pretty_Writers is
 
             if C /= Mappings.No_Element then
                if not Mappings.Element (C).Is_Empty then
-                  Self.Text.Append (Mappings.Element (C) & ":");
+                  Self.Text.Append (Mappings.Element (C) & ':');
                end if;
 
             else
@@ -201,7 +201,7 @@ package body XML.SAX.Pretty_Writers is
             return;
          end if;
 
-         Self.Text.Append (+">");
+         Self.Text.Append ('>');
       end if;
 
       Self.Nesting := Self.Nesting - 1;
@@ -481,7 +481,7 @@ package body XML.SAX.Pretty_Writers is
       --  Closing Tag, which was opened before.
 
       if Self.Tag_Opened then
-         Self.Text.Append (+">");
+         Self.Text.Append ('>');
          Self.Tag_Opened := False;
       end if;
 
@@ -495,7 +495,7 @@ package body XML.SAX.Pretty_Writers is
          Self.Merge (Self.Current, Self.Bank);
       end if;
 
-      Self.Text.Append (+"<");
+      Self.Text.Append ('<');
 
       if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
          Success := False;
@@ -522,11 +522,11 @@ package body XML.SAX.Pretty_Writers is
                   if not Banks.Element (C).Is_Empty then
                      --  Adding prefix to xmlns attribute
 
-                     NS.Append (":" & Banks.Element (C));
+                     NS.Append (':' & Banks.Element (C));
 
                      --  Adding prefix to tag
 
-                     Self.Text.Append (Banks.Element (C) & ":");
+                     Self.Text.Append (Banks.Element (C) & ':');
                   end if;
 
                   --  Adding URI of namespace
@@ -546,7 +546,7 @@ package body XML.SAX.Pretty_Writers is
                   if not Mappings.Element (C).Is_Empty then
                      --  Adding prefix to tag
 
-                     Self.Text.Append (Mappings.Element (C) & ":");
+                     Self.Text.Append (Mappings.Element (C) & ':');
                   end if;
 
                else
@@ -572,7 +572,7 @@ package body XML.SAX.Pretty_Writers is
       for J in 1 .. Attributes.Length loop
          if not Attributes.Local_Name (J).Is_Empty then
             if not Attributes.Namespace_URI (J).Is_Empty then
-               Self.Text.Append (+" ");
+               Self.Text.Append (' ');
 
                if Attributes.Namespace_URI (J) = XML_NS then
                   Self.Text.Append (+"xml:");
@@ -586,7 +586,7 @@ package body XML.SAX.Pretty_Writers is
                      if C /= Mappings.No_Element then
                         if not Mappings.Element (C).Is_Empty then
                            Self.Text.Append (Mappings.Element (C));
-                           Self.Text.Append (+":");
+                           Self.Text.Append (':');
                         end if;
                      end if;
                   end;
@@ -595,7 +595,7 @@ package body XML.SAX.Pretty_Writers is
                Self.Text.Append (Attributes.Local_Name (J));
                Self.Text.Append (+"=""");
                Self.Text.Append (Attributes.Value (J));
-               Self.Text.Append (+"""");
+               Self.Text.Append ('"');
 
             else
                --  XXX: Error should be reported
@@ -604,11 +604,11 @@ package body XML.SAX.Pretty_Writers is
             end if;
 
          elsif not Attributes.Qualified_Name (J).Is_Empty then
-            Self.Text.Append (+" ");
+            Self.Text.Append (' ');
             Self.Text.Append (Attributes.Qualified_Name (J));
             Self.Text.Append (+"=""");
             Self.Text.Append (Attributes.Value (J));
-            Self.Text.Append (+"""");
+            Self.Text.Append ('"');
 
          else
             --  XXX: Error should be reported
