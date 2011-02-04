@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-VERSION=0.0.5
+VERSION=0.0.6
 
 svn export svn://adaforge.qtada.com/matreshka/trunk/matreshka matreshka-$VERSION
 # full distribution
@@ -11,7 +11,7 @@ tar cf matreshka-$VERSION.tar matreshka-$VERSION
 gzip -9 matreshka-$VERSION.tar
 # sources only
 (cd matreshka-$VERSION
- rm -rf unicode testsuite tools/*.ad[sb] tools/aflex tools/ayacc tools/parser_transformer tools/scanner_transformer tools/token_transformer)
+ rm -rf unicode testsuite tools/*.ad[sb] tools/aflex tools/ayacc tools/parser_transformer tools/scanner_transformer tools/token_transformer tools/iana tools/shiftjis)
 tar cf matreshka-source-$VERSION.tar matreshka-$VERSION
 gzip -9 matreshka-source-$VERSION.tar
 
