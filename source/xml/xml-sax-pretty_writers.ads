@@ -187,7 +187,7 @@ private
             League.Strings."=");
 
    type Stack_Obj is record
-      Tag : League.Strings.Universal_String
+      Tag     : League.Strings.Universal_String
         := League.Strings.Empty_Universal_String;
       Mapping : Mappings.Map;
    end record;
@@ -195,17 +195,20 @@ private
    package Stacks is
       new Ada.Containers.Vectors (Natural, Stack_Obj);
 
-   procedure Push (Self  : in out SAX_Pretty_Writer;
-                   Scope : Mappings.Map;
-                   Tag   : League.Strings.Universal_String);
+   procedure Push
+    (Self  : in out SAX_Pretty_Writer;
+     Scope : Mappings.Map;
+     Tag   : League.Strings.Universal_String);
 
-   procedure Pop (Self  : in out SAX_Pretty_Writer;
-                  Scope : out Mappings.Map;
-                  Tag   : League.Strings.Universal_String);
+   procedure Pop
+    (Self  : in out SAX_Pretty_Writer;
+     Scope : out Mappings.Map;
+     Tag   : League.Strings.Universal_String);
 
-   procedure Merge (Self    : in out SAX_Pretty_Writer;
-                    Current : in out Mappings.Map;
-                    Bank    : in Banks.Map);
+   procedure Merge
+    (Self    : in out SAX_Pretty_Writer;
+     Current : in out Mappings.Map;
+     Bank    : in Banks.Map);
 
    type SAX_Pretty_Writer is
      limited new XML.SAX.Writers.SAX_Writer with

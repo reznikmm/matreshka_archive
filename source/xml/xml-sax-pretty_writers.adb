@@ -48,7 +48,6 @@ package body XML.SAX.Pretty_Writers is
 
    use Matreshka.Internals.Unicode;
    use League.Strings.Internals;
-   -- use type Ada.Containers.Count_Type;
    use type Mappings.Cursor;
    use type Banks.Cursor;
 
@@ -59,8 +58,6 @@ package body XML.SAX.Pretty_Writers is
        renames League.Strings.To_Universal_String;
 
    function Image (X_V : XML_Version) return League.Strings.Universal_String;
-
-   --  procedure Dump (M : Mappings.Map);
 
    XML_NS : constant League.Strings.Universal_String
      := +"http://www.w3.org/XML/1998/namespace";
@@ -95,21 +92,6 @@ package body XML.SAX.Pretty_Writers is
       Self.Text.Append (Text);
       Self.Text.Append (+" -->");
    end Comment;
-
-   --  procedure Dump (M : Mappings.Map) is
-   --     C : Mappings.Cursor := M.First;
-
-   --  begin
-   --     while C /= Mappings.No_Element loop
-
-   --        Ada.Wide_Wide_Text_IO.Put_Line
-   --          (Mappings.Key (C).To_Wide_Wide_String
-   --             & " | "
-   --             & Mappings.Element (C).To_Wide_Wide_String);
-
-   --        Mappings.Next (C);
-   --     end loop;
-   --  end Dump;
 
    ---------------
    -- End_CDATA --
@@ -167,6 +149,7 @@ package body XML.SAX.Pretty_Writers is
       if Self.Tag_Opened then
          Self.Text.Append (+"/>");
          Self.Tag_Opened := False;
+
       else
          Self.Text.Append (+"</");
 
@@ -207,6 +190,7 @@ package body XML.SAX.Pretty_Writers is
             Self.Text.Append (Local_Name);
 
             Self.Pop (Self.Current, Local_Name);
+
          elsif not Qualified_Name.Is_Empty then
             Self.Text.Append (Qualified_Name);
 
@@ -255,8 +239,7 @@ package body XML.SAX.Pretty_Writers is
    ------------------
 
    overriding function Error_String
-    (Self : SAX_Pretty_Writer) return League.Strings.Universal_String
-   is
+    (Self : SAX_Pretty_Writer) return League.Strings.Universal_String is
    begin
       return Self.Error;
    end Error_String;
@@ -268,7 +251,7 @@ package body XML.SAX.Pretty_Writers is
    function Escape
     (Self : SAX_Pretty_Writer;
      Text : League.Strings.Universal_String)
-      return League.Strings.Universal_String
+       return League.Strings.Universal_String
    is
       Code : Code_Point;
 
@@ -316,6 +299,7 @@ package body XML.SAX.Pretty_Writers is
                              & ";";
                         end;
                      end if;
+
                   else
                      Result.Append (Text.Element (J).To_Wide_Wide_Character);
                   end if;
@@ -354,19 +338,17 @@ package body XML.SAX.Pretty_Writers is
    -----------
    -- Merge --
    -----------
-   procedure Merge (Self    : in out SAX_Pretty_Writer;
-                    Current : in out Mappings.Map;
-                    Bank    : in Banks.Map) is
 
-      use type Banks.Cursor;
-
+   procedure Merge
+    (Self    : in out SAX_Pretty_Writer;
+     Current : in out Mappings.Map;
+     Bank    : in Banks.Map)
+   is
       C : Banks.Cursor := Banks.First (Bank);
 
    begin
-      while C /= Banks.No_Element loop
-         Mappings.Include (Current,
-                           Banks.Key (C),
-                           Banks.Element (C));
+      while Banks.Has_Element (C) loop
+         Mappings.Include (Current, Banks.Key (C), Banks.Element (C));
          Banks.Next (C);
       end loop;
    end Merge;
@@ -374,13 +356,14 @@ package body XML.SAX.Pretty_Writers is
    ---------
    -- Pop --
    ---------
-   procedure Pop (Self  : in out SAX_Pretty_Writer;
-                  Scope : out Mappings.Map;
-                  Tag   : League.Strings.Universal_String) is
+
+   procedure Pop
+    (Self  : in out SAX_Pretty_Writer;
+     Scope : out Mappings.Map;
+     Tag   : League.Strings.Universal_String) is
    begin
       if Self.Stack.Last_Element.Tag = Tag then
          Scope := Self.Stack.Last_Element.Mapping;
-         --  Dump (Scope);
          Self.Stack.Delete_Last;
       end if;
    end Pop;
@@ -402,13 +385,13 @@ package body XML.SAX.Pretty_Writers is
    ----------
    -- Push --
    ----------
-   procedure Push (Self  : in out SAX_Pretty_Writer;
-                   Scope : Mappings.Map;
-                   Tag   : League.Strings.Universal_String) is
+
+   procedure Push
+    (Self  : in out SAX_Pretty_Writer;
+     Scope : Mappings.Map;
+     Tag   : League.Strings.Universal_String) is
    begin
-      Self.Stack.Append ((Tag => Tag,
-                          Mapping => Scope));
-      --  Dump (Scope);
+      Self.Stack.Append ((Tag => Tag, Mapping => Scope));
    end Push;
 
    -----------------
@@ -416,8 +399,8 @@ package body XML.SAX.Pretty_Writers is
    -----------------
 
    procedure Set_Version
-     (Self    : in out SAX_Pretty_Writer;
-      Version : XML_Version) is
+    (Self    : in out SAX_Pretty_Writer;
+     Version : XML_Version) is
    begin
       Self.Version := Version;
    end Set_Version;
@@ -496,19 +479,20 @@ package body XML.SAX.Pretty_Writers is
 
    begin
       --  Closing Tag, which was opened before.
+
       if Self.Tag_Opened then
          Self.Text.Append (+">");
          Self.Tag_Opened := False;
       end if;
 
       if not Self.Bank.Is_Empty then
-
          --  Push to stack current namspaces scope
+
          Self.Push (Self.Current, Local_Name);
 
          --  Append Bank and Current namespaces.
+
          Self.Merge (Self.Current, Self.Bank);
-         --  Dump (Self.Current);
       end if;
 
       Self.Text.Append (+"<");
@@ -526,28 +510,33 @@ package body XML.SAX.Pretty_Writers is
 
          --  If namespaces was not defined for current element, than it was
          --  defined by previous.
+
          if not Self.Bank.Is_Empty then
             declare
                C  : Banks.Cursor := Self.Bank.First;
 
             begin
-               while C /= Banks.No_Element loop
+               while Banks.Has_Element (C) loop
                   NS := NS & " xmlns";
 
                   if not Banks.Element (C).Is_Empty then
                      --  Adding prefix to xmlns attribute
+
                      NS.Append (":" & Banks.Element (C));
 
                      --  Adding prefix to tag
+
                      Self.Text.Append (Banks.Element (C) & ":");
                   end if;
 
                   --  Adding URI of namespace
+
                   NS.Append ("=""" & Banks.Key (C) & """");
 
                   Banks.Next (C);
                end loop;
             end;
+
          else
             declare
                C  : Mappings.Cursor := Self.Current.Find (Namespace_URI);
@@ -556,10 +545,13 @@ package body XML.SAX.Pretty_Writers is
                if C /= Mappings.No_Element then
                   if not Mappings.Element (C).Is_Empty then
                      --  Adding prefix to tag
+
                      Self.Text.Append (Mappings.Element (C) & ":");
                   end if;
-                  --  If we did not find appropriate namespace, return error
+
                else
+                  --  If we did not find appropriate namespace, return error
+
                   Success := False;
                   return;
                end if;
@@ -570,6 +562,7 @@ package body XML.SAX.Pretty_Writers is
          Self.Text.Append (NS);
 
          Self.Bank.Clear;
+
       elsif not Qualified_Name.Is_Empty then
          Self.Text.Append (Qualified_Name);
       end if;
@@ -588,6 +581,7 @@ package body XML.SAX.Pretty_Writers is
                   declare
                      C : Mappings.Cursor
                        := Self.Current.Find (Attributes.Namespace_URI (J));
+
                   begin
                      if C /= Mappings.No_Element then
                         if not Mappings.Element (C).Is_Empty then
@@ -660,6 +654,7 @@ package body XML.SAX.Pretty_Writers is
       end if;
 
       --  Append prefix mapping, to temp set of mapping scope
+
       Self.Bank.Insert (Namespace_URI, Prefix);
    end Start_Prefix_Mapping;
 
