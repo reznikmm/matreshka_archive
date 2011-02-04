@@ -21,6 +21,11 @@ package body Demo.Callbacks is
            Less,
            League.Strings."=");
 
+   procedure Put
+    (Reply : in out FastCGI.Replies.Reply;
+     Item  : League.Strings.Universal_String);
+   --  Outputs string into standard output stream of reply.
+
    Page_Top : constant League.Strings.Universal_String
      := +("<?xml version='1.1' encoding='utf-8'?>"
             & "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>"
@@ -58,7 +63,8 @@ package body Demo.Callbacks is
      constant League.Stream_Element_Vectors.Stream_Element_Vector
        := Codec.Encode (+"SCRIPT_NAME");
 
-   Strings          : Sets.Set;
+   Strings : Sets.Set;
+   --  Set of strings. Strings are ordered in collation order.
 
    -------------
    -- Handler --
@@ -69,11 +75,8 @@ package body Demo.Callbacks is
      Reply   : out FastCGI.Replies.Reply;
      Status  : out Integer)
    is
-      use type League.Stream_Element_Vectors.Stream_Element_Vector;
-
       procedure Output (Position : Sets.Cursor);
-
-      procedure Put (Item : League.Strings.Universal_String);
+      --  Outputs string pointed by Position.
 
       ------------
       -- Output --
@@ -84,23 +87,14 @@ package body Demo.Callbacks is
            := Sets.Element (Position);
 
       begin
-         Put (+"<tr><td>");
-         Put (Element);
-         Put (+"<td></tr>");
+         Put (Reply, +"<tr><td>");
+         Put (Reply, Element);
+         Put (Reply, +"<td></tr>");
       end Output;
 
-      ---------
-      -- Put --
-      ---------
-
-      procedure Put (Item : League.Strings.Universal_String) is
-      begin
-         Ada.Streams.Stream_Element_Array'Write
-          (Reply.Stream,
-           Codec.Encode (Item).To_Stream_Element_Array);
-      end Put;
-
    begin
+      --  Process form parameters, if any.
+
       if Request.Has_Raw_Query_Item (String_Parameter) then
          Strings.Include
           (Codec.Decode
@@ -108,16 +102,18 @@ package body Demo.Callbacks is
               (String_Parameter).To_Stream_Element_Array));
       end if;
 
-      Reply.Set_Content_Type
-       (League.Strings.To_Universal_String ("text/html"));
-      Put (Page_Top);
+      --  Prepare output.
+
+      Reply.Set_Content_Type (+"text/html");
+      Put (Reply, Page_Top);
       Strings.Iterate (Output'Access);
-      Put (Page_Middle);
+      Put (Reply, Page_Middle);
       Put
-       (Codec.Decode
+       (Reply,
+        Codec.Decode
          (Request.Raw_Header (Script_Name_Header).To_Stream_Element_Array));
-      Put (Page_Bottom);
-      Put (Page_Done);
+      Put (Reply, Page_Bottom);
+      Put (Reply, Page_Done);
       Status := 0;
    end Handler;
 
@@ -134,6 +130,19 @@ package body Demo.Callbacks is
    begin
       return Left.Collation < Right.Collation;
    end Less;
+
+   ---------
+   -- Put --
+   ---------
+
+   procedure Put
+    (Reply : in out FastCGI.Replies.Reply;
+     Item  : League.Strings.Universal_String) is
+   begin
+      Ada.Streams.Stream_Element_Array'Write
+       (Reply.Stream,
+        Codec.Encode (Item).To_Stream_Element_Array);
+   end Put;
 
 begin
    --  Turkish
