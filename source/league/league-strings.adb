@@ -463,6 +463,17 @@ package body League.Strings is
 
    procedure Append
     (Self : in out Universal_String'Class;
+     Item : Wide_Wide_String) is
+   begin
+      Self.Append (To_Universal_String (Item));
+   end Append;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self : in out Universal_String'Class;
      Item : Wide_Wide_Character)
    is
       P : constant Utf16_String_Index := Self.Data.Unused;

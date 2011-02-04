@@ -195,9 +195,9 @@ package League.Strings is
     (Self : in out Universal_String'Class;
      Item : Universal_Character'Class);
 
---   procedure Append
---    (Self : in out Universal_String'Class;
---     Item : Wide_Wide_String);
+   procedure Append
+    (Self : in out Universal_String'Class;
+     Item : Wide_Wide_String);
 
    procedure Append
     (Self : in out Universal_String'Class;
