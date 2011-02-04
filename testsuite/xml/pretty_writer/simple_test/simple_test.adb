@@ -52,12 +52,11 @@ with XML.SAX.Pretty_Writers;
 use League.Strings;
 
 procedure Simple_Test is
-   Writer     : XML.SAX.Pretty_Writers.SAX_Pretty_Writer_Access
-     := new XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
-   OK         : Boolean := False;
-   Attrs      : XML.SAX.Attributes.SAX_Attributes;
-   NS_URI     : Universal_String := To_Universal_String ("");
-   Local_Name : Universal_String := To_Universal_String ("");
+   Writer         : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
+   OK             : Boolean := False;
+   Attrs          : XML.SAX.Attributes.SAX_Attributes;
+   NS_URI         : Universal_String := To_Universal_String ("");
+   Local_Name     : Universal_String := To_Universal_String ("");
    Qualified_Name : Universal_String := To_Universal_String ("A");
 
 begin
