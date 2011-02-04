@@ -88,9 +88,9 @@ package body XML.SAX.Pretty_Writers is
      Text    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      Self.Text.Append (+"<!-- ");
+      Self.Text.Append ("<!-- ");
       Self.Text.Append (Text);
-      Self.Text.Append (+" -->");
+      Self.Text.Append (" -->");
    end Comment;
 
    ---------------
@@ -147,11 +147,11 @@ package body XML.SAX.Pretty_Writers is
 
    begin
       if Self.Tag_Opened then
-         Self.Text.Append (+"/>");
+         Self.Text.Append ("/>");
          Self.Tag_Opened := False;
 
       else
-         Self.Text.Append (+"</");
+         Self.Text.Append ("</");
 
          if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
             --  XXX error should be reported
@@ -175,7 +175,8 @@ package body XML.SAX.Pretty_Writers is
 
             if C /= Mappings.No_Element then
                if not Mappings.Element (C).Is_Empty then
-                  Self.Text.Append (Mappings.Element (C) & ':');
+                  Self.Text.Append (Mappings.Element (C));
+                  Self.Text.Append (':');
                end if;
 
             else
@@ -228,8 +229,7 @@ package body XML.SAX.Pretty_Writers is
     (Self    : in out SAX_Pretty_Writer;
      Prefix  : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String;
-     Success : in out Boolean)
-   is
+     Success : in out Boolean) is
    begin
       null;
    end End_Prefix_Mapping;
@@ -262,19 +262,19 @@ package body XML.SAX.Pretty_Writers is
 
             case Text.Element (J) is
                when '&' =>
-                  Result := Result & "&amp;";
+                  Result.Append ("&amp;");
 
                when ''' =>
-                  Result := Result & "&apos;";
+                  Result.Append ("&apos;");
 
                when '"' =>
-                  Result := Result & "&quot;";
+                  Result.Append ("&quot;");
 
                when '>' =>
-                  Result := Result & "&gt;";
+                  Result.Append ("&gt;");
 
                when '<' =>
-                  Result := Result & "&lt;";
+                  Result.Append ("&lt;");
 
                when others =>
                   --  Add support of choosing of Hexademical
@@ -436,10 +436,7 @@ package body XML.SAX.Pretty_Writers is
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean) is
    begin
-      Self.Text.Append
-        (+"<?xml version="""
-           & Image (Self.Version)
-           & (+"""?>"));
+      Self.Text.Append ("<?xml version=""" & Image (Self.Version) & """?>");
       Self.Nesting := 0;
    end Start_Document;
 
@@ -517,7 +514,7 @@ package body XML.SAX.Pretty_Writers is
 
             begin
                while Banks.Has_Element (C) loop
-                  NS := NS & " xmlns";
+                  NS.Append (" xmlns");
 
                   if not Banks.Element (C).Is_Empty then
                      --  Adding prefix to xmlns attribute
@@ -575,7 +572,7 @@ package body XML.SAX.Pretty_Writers is
                Self.Text.Append (' ');
 
                if Attributes.Namespace_URI (J) = XML_NS then
-                  Self.Text.Append (+"xml:");
+                  Self.Text.Append ("xml:");
 
                else
                   declare
@@ -593,7 +590,7 @@ package body XML.SAX.Pretty_Writers is
                end if;
 
                Self.Text.Append (Attributes.Local_Name (J));
-               Self.Text.Append (+"=""");
+               Self.Text.Append ("=""");
                Self.Text.Append (Attributes.Value (J));
                Self.Text.Append ('"');
 
@@ -606,7 +603,7 @@ package body XML.SAX.Pretty_Writers is
          elsif not Attributes.Qualified_Name (J).Is_Empty then
             Self.Text.Append (' ');
             Self.Text.Append (Attributes.Qualified_Name (J));
-            Self.Text.Append (+"=""");
+            Self.Text.Append ("=""");
             Self.Text.Append (Attributes.Value (J));
             Self.Text.Append ('"');
 
