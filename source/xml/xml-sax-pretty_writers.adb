@@ -59,8 +59,23 @@ package body XML.SAX.Pretty_Writers is
 
    function Image (X_V : XML_Version) return League.Strings.Universal_String;
 
-   XML_NS : constant League.Strings.Universal_String
-     := +"http://www.w3.org/XML/1998/namespace";
+   XML_Namespace         : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("http://www.w3.org/XML/1998/namespace");
+   XML_Prefix            : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("xml:");
+   XMLNS_Prefix          : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String (" xmlns");
+   Amp_Entity_Reference  : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("&amp;");
+   Apos_Entity_Reference : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("&apos;");
+   Quot_Entity_Reference : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("&quot;");
+   Gt_Entity_Reference   : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("&gt;");
+   Lt_Entity_Reference   : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("&lt;");
 
    ----------------
    -- Characters --
@@ -262,19 +277,19 @@ package body XML.SAX.Pretty_Writers is
 
             case Text.Element (J) is
                when '&' =>
-                  Result.Append ("&amp;");
+                  Result.Append (Amp_Entity_Reference);
 
                when ''' =>
-                  Result.Append ("&apos;");
+                  Result.Append (Apos_Entity_Reference);
 
                when '"' =>
-                  Result.Append ("&quot;");
+                  Result.Append (Quot_Entity_Reference);
 
                when '>' =>
-                  Result.Append ("&gt;");
+                  Result.Append (Gt_Entity_Reference);
 
                when '<' =>
-                  Result.Append ("&lt;");
+                  Result.Append (Lt_Entity_Reference);
 
                when others =>
                   --  Add support of choosing of Hexademical
@@ -514,7 +529,7 @@ package body XML.SAX.Pretty_Writers is
 
             begin
                while Banks.Has_Element (C) loop
-                  NS.Append (" xmlns");
+                  NS.Append (XMLNS_Prefix);
 
                   if not Banks.Element (C).Is_Empty then
                      --  Adding prefix to xmlns attribute
@@ -571,8 +586,8 @@ package body XML.SAX.Pretty_Writers is
             if not Attributes.Namespace_URI (J).Is_Empty then
                Self.Text.Append (' ');
 
-               if Attributes.Namespace_URI (J) = XML_NS then
-                  Self.Text.Append ("xml:");
+               if Attributes.Namespace_URI (J) = XML_Namespace then
+                  Self.Text.Append (XML_Prefix);
 
                else
                   declare
