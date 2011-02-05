@@ -64,6 +64,8 @@ with XML.DOM.Documents;
 with XML.DOM.Named_Node_Maps;
 with XML.DOM.Node_Lists;
 
+private with Matreshka.XML.DOM_Nodes;
+
 package XML.DOM.Nodes is
 
    pragma Preelaborate;
@@ -568,13 +570,15 @@ package XML.DOM.Nodes is
 
 private
 
-   type DOM_Node is new Ada.Finalization.Controlled with null record;
+   type DOM_Node is new Ada.Finalization.Controlled with record
+      Node : Matreshka.XML.DOM_Nodes.Node_Access;
+   end record;
 
    overriding procedure Adjust (Self : in out DOM_Node);
 
    overriding procedure Finalize (Self : in out DOM_Node);
 
    Null_Node : constant DOM_Node
-     := (Ada.Finalization.Controlled with null record);
+     := (Ada.Finalization.Controlled with Node => null);
 
 end XML.DOM.Nodes;
