@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Finalization;
+with Ada.Finalization;
 with Ada.Streams;
 
 private with Matreshka.Internals.Text_Codecs;
@@ -52,7 +52,12 @@ package XML.SAX.Input_Sources.Streams is
 
    type Stream_Access is access all Ada.Streams.Root_Stream_Type'Class;
 
-   type Stream_Input_Source is limited new SAX_Input_Source with private;
+   type Stream_Input_Source is
+     limited new Ada.Finalization.Limited_Controlled
+       and SAX_Input_Source with private;
+--   type Stream_Input_Source is limited new SAX_Input_Source with private;
+--  GNAT GCC 4.5 bug: derive from Limited_Controlled should be hidden in
+--  private part.
 
    not overriding procedure Set_Stream
     (Self   : in out Stream_Input_Source;
@@ -111,6 +116,9 @@ package XML.SAX.Input_Sources.Streams is
    --  encoding detection and text decoding code in every implementation of
    --  input source.
 
+   overriding procedure Finalize (Self : in out Stream_Input_Source);
+   --  GNAT GCC 4.5 bug: this subprogram must be moved into private part.
+
 private
 
    use type Ada.Streams.Stream_Element_Offset;
@@ -118,7 +126,7 @@ private
    type Stream_Element_Array_Access is access Ada.Streams.Stream_Element_Array;
 
    type Stream_Input_Source is
-     new Ada.Finalization.Limited_Controlled
+     limited new Ada.Finalization.Limited_Controlled
        and SAX_Input_Source with
    record
       Buffer       : Stream_Element_Array_Access
@@ -148,7 +156,5 @@ private
    --  Resets internal state to initial. It can be used by derived types to
    --  reset state to start to receive new stream using the same input
    --  source object.
-
-   overriding procedure Finalize (Self : in out Stream_Input_Source);
 
 end XML.SAX.Input_Sources.Streams;

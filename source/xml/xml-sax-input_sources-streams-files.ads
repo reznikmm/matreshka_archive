@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,12 +51,13 @@ package XML.SAX.Input_Sources.Streams.Files is
     (Self : in out File_Input_Source;
      Name : String);
 
+   overriding procedure Finalize (Self : in out File_Input_Source);
+   --  GNAT GCC 4.5 bug: this subprogram must be moved into private part.
+
 private
 
    type File_Input_Source is new Stream_Input_Source with record
       File : Ada.Streams.Stream_IO.File_Type;
    end record;
-
-   overriding procedure Finalize (Self : in out File_Input_Source);
 
 end XML.SAX.Input_Sources.Streams.Files;
