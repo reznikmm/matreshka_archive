@@ -1,6 +1,7 @@
-PREFIX = /usr
+PREFIX = /usr/local
 DESTDIR ?=
 INSTALL = install
+INSTALL_INCLUDE_DIR = $(DESTDIR)$(PREFIX)/include/matreshka
 INSTALL_PROJECT_DIR = $(DESTDIR)$(PREFIX)/lib/gnat
 
 UNIDATA = unicode/6.0.0/ucd
@@ -49,6 +50,10 @@ install:
 	$(INSTALL) gnat/install/config.gpr $(INSTALL_PROJECT_DIR)/matreshka/config.gpr
 	$(INSTALL) gnat/install/league.gpr $(INSTALL_PROJECT_DIR)/league.gpr
 	$(INSTALL) gnat/install/fastcgi.gpr $(INSTALL_PROJECT_DIR)/fastcgi.gpr
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/league
+	gnat ls -s -P gnat/matreshka_league.gpr | xargs -I sources $(INSTALL) sources $(INSTALL_INCLUDE_DIR)/league
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/fastcgi
+	gnat ls -s -P gnat/matreshka_fastcgi.gpr | xargs -I sources $(INSTALL) sources $(INSTALL_INCLUDE_DIR)/fastcgi
 
 ucd:
 	$(GPRBUILD) -p -Pgnat/tools.gpr
