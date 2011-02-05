@@ -43,10 +43,12 @@
 ------------------------------------------------------------------------------
 with "matreshka/config.gpr";
 
-library project Matreshka_League is
+library project League is
+
+   Library_Name := "league" & Config.RTL_Version_Suffix;
 
    for Library_Kind use "dynamic";
-   for Library_Name use "league";
+   for Library_Name use Library_Name;
    for Source_Dir use "../../include/matreshka/league";
    for Library_Dir use "../../lib";
    for Library_ALI_Dir use "../../lib/matreshka";
@@ -63,7 +65,7 @@ library project Matreshka_League is
       for Implementation ("Matreshka.Internals.Atomics.Counters")
         use "matreshka-internals-atomics-counters__gcc.adb";
 
-      case Matreshka_Config.Architecture is
+      case Config.Architecture is
          when "portable_32_be" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
@@ -115,7 +117,7 @@ library project Matreshka_League is
               use "matreshka-internals-strings-constants__x86.ads";
       end case;
 
-      case Matreshka_Config.Operating_System is
+      case Config.Operating_System is
          when "POSIX" =>
             for Implementation ("League.Application.Initialize_Arguments_Environment")
               use "league-application-initialize_arguments_environment__posix.adb";

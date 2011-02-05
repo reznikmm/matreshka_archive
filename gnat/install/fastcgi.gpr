@@ -46,8 +46,10 @@ with "league.gpr";
 
 library project FastCGI is
 
+   Library_Name := "matreshka-fastcgi" & Config.RTL_Version_Suffix;
+
    for Library_Kind use "dynamic";
-   for Library_Name use "matreshka-fastcgi";
+   for Library_Name use Library_Name;
    for Source_Dir use "../../include/matreshka/fastcgi";
    for Library_Dir use "../../lib";
    for Library_ALI_Dir use "../../lib/matreshka";

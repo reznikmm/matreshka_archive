@@ -44,6 +44,10 @@
 
 abstract project Config is
 
+   Version := "0.0.7";
+
+   RTL_Version_Suffix := "";
+
    type Architectures is
     ("portable_32_be",
      "portable_32_le",
