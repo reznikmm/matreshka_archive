@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
---with XML.DOM.Attributes;
+--limited with XML.DOM.Attributes;
 with XML.DOM.Documents;
 --with XML.DOM.Elements;
 with XML.DOM.Named_Node_Maps;
@@ -71,10 +71,10 @@ package XML.DOM.Nodes is
    Document_Fragment_Node      : constant DOM_Node_Type := 11;
    Notation_Node               : constant DOM_Node_Type := 12;
 
-   function Get_Node_Name (Self : DOM_Node'Class) return DOM_String;
+   function Node_Name (Self : DOM_Node'Class) return DOM_String;
    --  The name of this node, depending on its type.
 
-   function Get_Node_Value (Self : DOM_Node'Class) return DOM_String;
+   function Node_Value (Self : DOM_Node'Class) return DOM_String;
    --  The value of this node, depending on its type.
 
    procedure Set_Node_Value (Self : in out DOM_Node'Class; To : DOM_String);
@@ -84,42 +84,42 @@ package XML.DOM.Nodes is
    --  Raises DOM_Exception with NO_MODIFICATION_ALLOWED_ERR when the node is
    --  readonly and if it is not defined to be null.
 
-   function Get_Node_Type (Self : DOM_Node'Class) return DOM_Node_Type;
+   function Node_Type (Self : DOM_Node'Class) return DOM_Node_Type;
    --  A code representing the type of the underlying object.
 
-   function Get_Parent_Node (Self : DOM_Node'Class) return DOM_Node;
+   function Parent_Node (Self : DOM_Node'Class) return DOM_Node;
    --  The parent of this node. All nodes, except Attr, Document,
    --  DocumentFragment, Entity, and Notation may have a parent. However, if a
    --  node has just been created and not yet added to the tree, or if it has
    --  been removed from the tree, this is null. 
 
-   function Get_Child_Nodes
+   function Child_Nodes
     (Self : DOM_Node'Class) return XML.DOM.Node_Lists.DOM_Node_List;
    --  A NodeList that contains all children of this node. If there are no
    --  children, this is a NodeList containing no nodes.
 
-   function Get_First_Child (Self : DOM_Node'Class) return DOM_Node;
+   function First_Child (Self : DOM_Node'Class) return DOM_Node;
    --  The first child of this node. If there is no such node, this returns
    --  null.
 
-   function Get_Last_Child (Self : DOM_Node'Class) return DOM_Node;
+   function Last_Child (Self : DOM_Node'Class) return DOM_Node;
    --  The last child of this node. If there is no such node, this returns
    --  null.
 
-   function Get_Previous_Sibling (Self : DOM_Node'Class) return DOM_Node;
+   function Previous_Sibling (Self : DOM_Node'Class) return DOM_Node;
    --  The node immediately preceding this node. If there is no such node, this
    --  returns null.
 
-   function Get_Next_Sibling (Self : DOM_Node'Class) return DOM_Node;
+   function Next_Sibling (Self : DOM_Node'Class) return DOM_Node;
    --  The node immediately following this node. If there is no such node, this
    --  returns null.
 
-   function Get_Attributes
+   function Attributes
     (Self : DOM_Node'Class) return XML.DOM.Named_Node_Maps.DOM_Named_Node_Map;
    --  A NamedNodeMap containing the attributes of this node (if it is an
    --  Element) or null otherwise.
 
-   function Get_Owner_Document
+   function Owner_Document
     (Self : DOM_Node'Class) return XML.DOM.Documents.DOM_Document;
    --  The Document object associated with this node. This is also the Document
    --  object used to create new nodes. When this node is a Document or a
@@ -295,7 +295,7 @@ package XML.DOM.Nodes is
    --  Returns true if the specified feature is supported on this node, false
    --  otherwise.
 
-   function Get_Namespace_URI (Self : DOM_Node'Class) return DOM_String;
+   function Namespace_URI (Self : DOM_Node'Class) return DOM_String;
    --  The namespace URI of this node, or null if it is unspecified (see XML
    --  Namespaces).
    --
@@ -312,7 +312,7 @@ package XML.DOM.Nodes is
    --  to. If an attribute is not explicitly given a namespace, it simply has
    --  no namespace.
 
-   function Get_Prefix (Self : DOM_Node'Class) return DOM_String;
+   function Prefix (Self : DOM_Node'Class) return DOM_String;
    --  The namespace prefix of this node, or null if it is unspecified.
 
    procedure Set_Prefix (Self : in out DOM_Node'Class; To : DOM_String);
@@ -353,7 +353,7 @@ package XML.DOM.Nodes is
    --     "http://www.w3.org/2000/xmlns/", or if this node is an attribute and
    --     the qualifiedName of this node is "xmlns" [XML Namespaces].
 
-   function Get_Local_Name (Self : DOM_Node'Class) return DOM_String;
+   function Local_Name (Self : DOM_Node'Class) return DOM_String;
    --  Returns the local part of the qualified name of this node.
    --
    --  For nodes of any type other than ELEMENT_NODE and ATTRIBUTE_NODE and
@@ -364,7 +364,7 @@ package XML.DOM.Nodes is
    --  Returns whether this node (if it is an element) has any attributes.
    --  Returns True if this node has any attributes, False otherwise.
 
-   function Get_Base_URI (Self : DOM_Node'Class) return DOM_String;
+   function Base_URI (Self : DOM_Node'Class) return DOM_String;
    --  The absolute base URI of this node or null if the implementation wasn't
    --  able to obtain an absolute URI. This value is computed as described in
    --  Base URIs. However, when the Document supports the feature "HTML" [DOM
@@ -384,7 +384,7 @@ package XML.DOM.Nodes is
 --    unsigned short     compareDocumentPosition(in Node other)
 --                                        raises(DOMException);
 
-   function Get_Text_Content (Self : DOM_Node'Class) return DOM_String;
+   function Text_Content (Self : DOM_Node'Class) return DOM_String;
    --  This attribute returns the text content of this node and its descendants.
 
    procedure Set_Text_Content (Self : in out DOM_Node'Class; To : DOM_String);
@@ -446,8 +446,6 @@ package XML.DOM.Nodes is
 
    function Is_Equal_Node
     (Self : DOM_Node'Class; Arg : DOM_Node'Class) return Boolean;
---    // Introduced in DOM Level 3:
---    boolean            isEqualNode(in Node arg);
    --  Tests whether two nodes are equal. Returns True if the nodes are equal,
    --  False otherwise.
    --

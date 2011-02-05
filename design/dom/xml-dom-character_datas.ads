@@ -49,7 +49,7 @@ package XML.DOM.Character_Datas is
 
    type DOM_Character_Data is new XML.DOM.Nodes.DOM_Node with null record;
 
-   function Get_Data (Self : DOM_Character_Data'Class) return DOM_String;
+   function Data (Self : DOM_Character_Data'Class) return DOM_String;
    --  The character data of the node that implements this interface. The DOM
    --  implementation may not put arbitrary limits on the amount of data that
    --  may be stored in a CharacterData node. However, implementation limits
@@ -70,7 +70,7 @@ package XML.DOM.Character_Datas is
    --
    --   - NO_MODIFICATION_ALLOWED_ERR: Raised when the node is readonly.
 
-   function Get_Length (Self : DOM_Character_Data'Class) return Natural;
+   function Length (Self : DOM_Character_Data'Class) return Natural;
    --  The number of Unicode characters that are available through data and the
    --  substringData method below. This may have the value zero, i.e.,
    --  CharacterData nodes may be empty.
