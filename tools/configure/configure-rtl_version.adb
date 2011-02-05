@@ -4,11 +4,11 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                        Runtime Library Component                         --
+--                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,27 +41,76 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This procedure detects version of compiler and construct RTL's version
+--  suffux.
+------------------------------------------------------------------------------
+with GNAT.Expect;
+with GNAT.Regpat;
 
-abstract project Matreshka_Config is
+procedure Configure.RTL_Version is
 
-   Version := "0.0.7";
+   use Ada.Strings.Unbounded;
+   use GNAT.Expect;
+   use GNAT.Regpat;
 
-   RTL_Version_Suffix := "@RTL_VERSION_SUFFIX@";
+   function "+" (Item : String) return Unbounded_String
+     renames To_Unbounded_String;
 
-   type Architectures is
-    ("portable_32_be",
-     "portable_32_le",
-     "portable_64_be",
-     "portable_64_le",
-     "x86",
-     "x86_64");
-   Architecture : Architectures := external ("ARCHITECTURE", "@ARCHITECTURE@");
+   ------------------------
+   -- Detect_RTL_Version --
+   ------------------------
 
-   type Operating_Systems is ("POSIX", "Windows");
-   Operating_System : Operating_Systems
-     := external ("OPERATING_SYSTEM", "@OPERATING_SYSTEM@");
+   procedure Detect_RTL_Version is
+      GCC_Process : Process_Descriptor;
+      Result      : Expect_Match;
+      Matches     : Match_Array (0 .. 8);
+      GCC_Version : Unbounded_String;
+      Pro_Version : Unbounded_String;
+      GPL_Version : Unbounded_String;
 
-   type Build_Type is ("RELEASE", "DEBUG");
-   Build : Build_Type := external ("BUILD", "RELEASE");
+   begin
+      Non_Blocking_Spawn
+       (GCC_Process, "gcc", (1 => new String'("-v")), 4096, True);
+      Expect
+       (GCC_Process,
+        Result,
+        "gcc version ([0-9]*)\.([0-9]*)\.([0-9]*).*(GNAT Pro ([0-9]*)\.([0-9]*)\.([0-9]*)w?|GNAT GPL ([0-9][0-9][0-9][0-9]))",
+         Matches);
+      GCC_Version :=
+        +Expect_Out (GCC_Process) (Matches (1).First .. Matches (1).Last)
+          & '.'
+          & Expect_Out (GCC_Process) (Matches (2).First .. Matches (2).Last)
+          & '.'
+          & Expect_Out (GCC_Process) (Matches (3).First .. Matches (3).Last);
 
-end Matreshka_Config;
+      if Matches (4) /= No_Match then
+         if Matches (8) /= No_Match then
+            GPL_Version :=
+              +Expect_Out (GCC_Process) (Matches (8).First .. Matches (8).Last);
+
+         else
+            Pro_Version :=
+              +Expect_Out (GCC_Process) (Matches (5).First .. Matches (5).Last)
+                & '.'
+                & Expect_Out (GCC_Process) (Matches (6).First .. Matches (6).Last)
+                & '.'
+                & Expect_Out (GCC_Process) (Matches (7).First .. Matches (7).Last);
+         end if;
+      end if;
+
+      Close (GCC_Process);
+
+      if Pro_Version /= Null_Unbounded_String then
+         Substitutions.Insert (RTL_Version_Suffix_Name, '-' & Pro_Version);
+
+      elsif GPL_Version /= Null_Unbounded_String then
+         Substitutions.Insert (RTL_Version_Suffix_Name, '-' & GPL_Version);
+
+      else
+         Substitutions.Insert (RTL_Version_Suffix_Name, '-' & GCC_Version);
+      end if;
+   end Detect_RTL_Version;
+
+begin
+   Detect_RTL_Version;
+end Configure.RTL_Version;

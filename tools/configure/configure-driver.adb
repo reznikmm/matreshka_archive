@@ -49,11 +49,13 @@ with Ada.Text_IO;
 with Configure.Architecture;
 with Configure.Instantiate;
 with Configure.Operating_System;
+with Configure.RTL_Version;
 
 procedure Configure.Driver is
 begin
    Configure.Architecture;
    Configure.Operating_System;
+   Configure.RTL_Version;
 
    declare
       use Ada.Command_Line;
