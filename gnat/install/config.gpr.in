@@ -4,11 +4,11 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,42 +41,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-with Ada.Directories;
-with Ada.Strings.Unbounded.Text_IO;
-with Ada.Text_IO;
 
-with Configure.Architecture;
-with Configure.Instantiate;
-with Configure.Operating_System;
+abstract project Config is
 
-procedure Configure.Driver is
-begin
-   Configure.Architecture;
-   Configure.Operating_System;
+   type Architectures is
+    ("portable_32_be",
+     "portable_32_le",
+     "portable_64_be",
+     "portable_64_le",
+     "x86",
+     "x86_64");
+   Architecture : Architectures := external ("ARCHITECTURE", "@ARCHITECTURE@");
 
-   declare
-      use Ada.Command_Line;
-      use Ada.Directories;
-      use Ada.Strings.Unbounded.Text_IO;
-      use Ada.Text_IO;
-      use Maps;
+   type Operating_Systems is ("POSIX", "Windows");
+   Operating_System : Operating_Systems
+     := external ("OPERATING_SYSTEM", "@OPERATING_SYSTEM@");
 
-      P : Cursor := Substitutions.First;
+   type Build_Type is ("RELEASE", "DEBUG");
+   Build : Build_Type := external ("BUILD", "RELEASE");
 
-   begin
-      while Has_Element (P) loop
-         Put (Simple_Name (Command_Name));
-         Put (": ");
-         Put (Key (P));
-         Put (" => ");
-         Put (Element (P));
-         New_Line;
-
-         Next (P);
-      end loop;
-   end;
-
-   Configure.Instantiate ("gnat/install/config.gpr");
-   Configure.Instantiate ("gnat/matreshka_config.gpr");
-end Configure.Driver;
+end Config;

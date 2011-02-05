@@ -1,3 +1,6 @@
+PREFIX = /usr
+INSTALL = install
+INSTALL_PROJECT_DIR = $(DESTDIR)$(PREFIX)/lib/gnat
 
 UNIDATA = unicode/6.0.0/ucd
 UCADATA = unicode/UCA/6.0.0
@@ -39,6 +42,12 @@ check: all
 	.objs/test_20 testsuite/xml/TN-20/
 	.objs/test_26 testsuite/xml/TN-26/26-expected.xml
 	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --valid
+
+install:
+	$(INSTALL) -d $(INSTALL_PROJECT_DIR)/matreshka
+	$(INSTALL) gnat/install/config.gpr $(INSTALL_PROJECT_DIR)/matreshka/config.gpr
+	$(INSTALL) gnat/install/league.gpr $(INSTALL_PROJECT_DIR)/league.gpr
+#	$(INSTALL) gnat/install/fastcgi.gpr $(INSTALL_PROJECT_DIR)/fastcgi.gpr
 
 ucd:
 	$(GPRBUILD) -p -Pgnat/tools.gpr
