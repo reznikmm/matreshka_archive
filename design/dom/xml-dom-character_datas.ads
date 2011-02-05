@@ -41,6 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  The CharacterData interface extends Node with a set of attributes and
+--  methods for accessing character data in the DOM. For clarity this set is
+--  defined here rather than on each object that uses these attributes and
+--  methods. No DOM objects correspond directly to CharacterData, though Text
+--  and others do inherit the interface from it. All offsets in this interface
+--  start from 0.
+------------------------------------------------------------------------------
 with XML.DOM.Nodes;
 
 package XML.DOM.Character_Datas is
