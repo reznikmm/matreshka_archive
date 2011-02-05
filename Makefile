@@ -47,7 +47,7 @@ install:
 	$(INSTALL) -d $(INSTALL_PROJECT_DIR)/matreshka
 	$(INSTALL) gnat/install/config.gpr $(INSTALL_PROJECT_DIR)/matreshka/config.gpr
 	$(INSTALL) gnat/install/league.gpr $(INSTALL_PROJECT_DIR)/league.gpr
-#	$(INSTALL) gnat/install/fastcgi.gpr $(INSTALL_PROJECT_DIR)/fastcgi.gpr
+	$(INSTALL) gnat/install/fastcgi.gpr $(INSTALL_PROJECT_DIR)/fastcgi.gpr
 
 ucd:
 	$(GPRBUILD) -p -Pgnat/tools.gpr
