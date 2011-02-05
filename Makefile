@@ -1,4 +1,5 @@
 PREFIX = /usr
+DESTDIR ?=
 INSTALL = install
 INSTALL_PROJECT_DIR = $(DESTDIR)$(PREFIX)/lib/gnat
 
