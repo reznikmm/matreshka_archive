@@ -74,7 +74,7 @@ procedure Configure.RTL_Version is
       Expect
        (GCC_Process,
         Result,
-        "gcc version ([0-9]*)\.([0-9]*)\.([0-9]*).*(GNAT Pro ([0-9]*)\.([0-9]*)\.([0-9]*)w?|GNAT GPL ([0-9][0-9][0-9][0-9]))",
+        "gcc \S+ ([0-9]+)\.([0-9]+)\.([0-9]+).*(GNAT Pro ([0-9]+)\.([0-9]+)\.([0-9]+)w?|GNAT GPL ([0-9][0-9][0-9][0-9]))?",
          Matches);
       GCC_Version :=
         +Expect_Out (GCC_Process) (Matches (1).First .. Matches (1).Last)
