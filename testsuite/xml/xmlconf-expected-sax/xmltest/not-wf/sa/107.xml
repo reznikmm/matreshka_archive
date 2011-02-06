@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
-  <fatalError/>
+  <fatalError>[XML&#x20;[28b],&#x20;[31]]&#x20;conditional&#x20;sections&#x20;may&#x20;only&#x20;appear&#x20;in&#x20;the&#x20;external&#x20;DTD&#x20;subset</fatalError>
   <endDocument/>
 </SAXEvents>

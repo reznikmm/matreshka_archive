@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <unparsedEntity>
+    <name>e</name>
+    <systemID>nul</systemID>
+    <notation>n</notation>
+  </unparsedEntity>
+  <fatalError>[XML1.1&#x20;4.1&#x20;WFC:&#x20;Entity&#x20;Declared]&#x20;an&#x20;entity&#x20;reference&#x20;must&#x20;not&#x20;contain&#x20;the&#x20;name&#x20;of&#x20;an&#x20;unparsed&#x20;entity</fatalError>
+  <endDocument/>
+</SAXEvents>

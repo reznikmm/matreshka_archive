@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
-  <fatalError/>
+  <fatalError>[XML1.1&#x20;3.1&#x20;WFC:&#x20;No&#x20;External&#x20;Entity&#x20;References]&#x20;attribute&#x20;value&#x20;must&#x20;not&#x20;contain&#x20;entity&#x20;reference&#x20;to&#x20;external&#x20;entity</fatalError>
   <endDocument/>
 </SAXEvents>

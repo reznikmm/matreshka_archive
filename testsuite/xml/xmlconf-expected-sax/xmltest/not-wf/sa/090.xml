@@ -7,6 +7,6 @@
     <qualifiedName>doc</qualifiedName>
     <attributes/>
   </startElement>
-  <fatalError/>
+  <fatalError>[3.1&#x20;WFC:&#x20;No&#x20;&lt;&#x20;in&#x20;Attribute&#x20;Values]&#x20;&apos;&lt;&apos;&#x20;can&apos;t&#x20;be&#x20;used&#x20;in&#x20;attribute&#x20;value</fatalError>
   <endDocument/>
 </SAXEvents>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
-  <fatalError/>
+  <fatalError>[XML1.1&#x20;4.1&#x20;WFC:&#x20;No&#x20;Recursion]&#x20;parsed&#x20;entity&#x20;must&#x20;not&#x20;containt&#x20;a&#x20;indirect&#x20;recursive&#x20;reference&#x20;to&#x20;itself</fatalError>
   <endDocument/>
 </SAXEvents>

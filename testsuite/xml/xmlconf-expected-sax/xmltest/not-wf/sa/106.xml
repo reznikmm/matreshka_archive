@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <processingInstruction>
-        <target>pi</target>
-        <data>data</data>
-    </processingInstruction>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <processingInstruction>
+    <target>pi</target>
+    <data>data</data>
+  </processingInstruction>
+  <fatalError>syntax&#x20;error</fatalError>
+  <endDocument/>
+</SAXEvents>
