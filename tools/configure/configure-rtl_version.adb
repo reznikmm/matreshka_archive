@@ -69,36 +69,44 @@ procedure Configure.RTL_Version is
       GPL_Version : Unbounded_String;
 
    begin
+      --  Looking for GNAT Pro or GNAT GPL sinature.
+
       Non_Blocking_Spawn
        (GCC_Process, "gcc", (1 => new String'("-v")), 4096, True);
       Expect
        (GCC_Process,
         Result,
-        "gcc \S+ ([0-9]+)\.([0-9]+)\.([0-9]+).*(GNAT Pro ([0-9]+)\.([0-9]+)\.([0-9]+)w?|GNAT GPL ([0-9][0-9][0-9][0-9]))?",
+        "gcc \S+ [0-9]+\.[0-9]+\.[0-9]+.*(GNAT Pro ([0-9]+\.[0-9]+)\.[0-9]+w?|GNAT GPL ([0-9][0-9][0-9][0-9]))",
          Matches);
-      GCC_Version :=
-        +Expect_Out (GCC_Process) (Matches (1).First .. Matches (1).Last)
-          & '.'
-          & Expect_Out (GCC_Process) (Matches (2).First .. Matches (2).Last)
-          & '.'
-          & Expect_Out (GCC_Process) (Matches (3).First .. Matches (3).Last);
 
-      if Matches (4) /= No_Match then
-         if Matches (8) /= No_Match then
+      if Matches (1) /= No_Match then
+         if Matches (3) /= No_Match then
             GPL_Version :=
-              +Expect_Out (GCC_Process) (Matches (8).First .. Matches (8).Last);
+              +Expect_Out (GCC_Process) (Matches (3).First .. Matches (3).Last);
 
          else
             Pro_Version :=
-              +Expect_Out (GCC_Process) (Matches (5).First .. Matches (5).Last)
-                & '.'
-                & Expect_Out (GCC_Process) (Matches (6).First .. Matches (6).Last)
-                & '.'
-                & Expect_Out (GCC_Process) (Matches (7).First .. Matches (7).Last);
+              +Expect_Out (GCC_Process) (Matches (2).First .. Matches (2).Last);
          end if;
       end if;
 
       Close (GCC_Process);
+
+      --  Looking for GCC version.
+
+      Non_Blocking_Spawn
+       (GCC_Process, "gcc", (1 => new String'("-v")), 4096, True);
+      Expect
+       (GCC_Process,
+        Result,
+        "gcc \S+ ([0-9]+\.[0-9]+\.[0-9]+)",
+         Matches);
+      GCC_Version :=
+        +Expect_Out (GCC_Process) (Matches (1).First .. Matches (1).Last);
+      Close (GCC_Process);
+
+      --  Select most appropriate version. For GNAT Pro and GNAT GPL it is
+      --  vendor's version, for FSF GCC it is version of GCC core.
 
       if Pro_Version /= Null_Unbounded_String then
          Substitutions.Insert (RTL_Version_Suffix_Name, '-' & Pro_Version);
