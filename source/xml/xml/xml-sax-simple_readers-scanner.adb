@@ -1227,65 +1227,47 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 72 =>
                --  CDATA keyword, rule [55].
 
-               Reset_Whitespace_Matched (Self);
-
-               return Token_CData;
+               return Actions.On_Attribute_Type (Self, Token_CData);
 
             when 73 =>
                --  ID keyword, rule [56].
 
-               Reset_Whitespace_Matched (Self);
-
-               return Token_Id;
+               return Actions.On_Attribute_Type (Self, Token_Id);
 
             when 74 =>
                --  IDREF keyword, rule [56].
 
-               Reset_Whitespace_Matched (Self);
-
-               return Token_IdRef;
+               return Actions.On_Attribute_Type (Self, Token_IdRef);
 
             when 75 =>
                --  IDREFS keyword, rule [56].
 
-               Reset_Whitespace_Matched (Self);
-
-               return Token_IdRefs;
+               return Actions.On_Attribute_Type (Self, Token_IdRefs);
 
             when 76 =>
                --  ENTITY keyword, rule [56].
 
-               Reset_Whitespace_Matched (Self);
-
-               return Token_Entity;
+               return Actions.On_Attribute_Type (Self, Token_Entity);
 
             when 77 =>
                --  ENTITIES keyword, rule [56].
 
-               Reset_Whitespace_Matched (Self);
-
-               return Token_Entities;
+               return Actions.On_Attribute_Type (Self, Token_Entities);
 
             when 78 =>
                --  NMTOKEN keyword, rule [56].
 
-               Reset_Whitespace_Matched (Self);
-
-               return Token_NmToken;
+               return Actions.On_Attribute_Type (Self, Token_NmToken);
 
             when 79 =>
                --  NMTOKENS keyword, rule [56].
 
-               Reset_Whitespace_Matched (Self);
-
-               return Token_NmTokens;
+               return Actions.On_Attribute_Type (Self, Token_NmTokens);
 
             when 80 =>
                --  NOTATION keyword, rule [58].
 
-               Reset_Whitespace_Matched (Self);
-
-               return Token_Notation;
+               return Actions.On_Attribute_Type (Self, Token_Notation);
 
             when 81 =>
                --  #REQUIRED keyword, rule [60].
@@ -1311,7 +1293,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 84 =>
                --  Open parenthesis, rules [58], [59].
 
-               return Token_Open_Parenthesis;
+               return Actions.On_Attribute_Type (Self, Token_Open_Parenthesis);
 
             when 85 =>
                --  Close parenthesis, rules [58], [59].

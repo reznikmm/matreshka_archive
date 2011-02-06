@@ -253,6 +253,22 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qname_Error : Boolean;
 
    begin
+      --  [53] AttDef ::= S Name S AttType S DefaultDecl 
+      --
+      --  Checks whitespace before the attribute name is present.
+
+      if not Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML [53] AttDef]"
+               & " no whitespace before attribute name"));
+
+         return Error;
+      end if;
+
+      Self.Whitespace_Matched := False;
+
       Resolve_Symbol
        (Self, 0, 0, False, True, False, Qname_Error, Self.YYLVal.Symbol);
 
@@ -265,6 +281,33 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          return Token_Name;
       end if;
    end On_Attribute_Name_In_Attribute_List_Declaration;
+
+   -----------------------
+   -- On_Attribute_Type --
+   -----------------------
+
+   function On_Attribute_Type
+    (Self       : not null access SAX_Simple_Reader'Class;
+     Type_Token : Token) return Token is
+   begin
+      --  Checks ithat whitespace before attribute type keyword is detected
+      --  and report error when check fail.
+
+      if not Self.Whitespace_Matched then
+         --  XXX This is recoverable error.
+
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("whitespace required before attribute type"));
+
+         return Error;
+      end if;
+
+      Self.Whitespace_Matched := False;
+
+      return Type_Token;
+   end On_Attribute_Type;
 
    ---------------------------------------
    -- On_Attribute_Value_Character_Data --
@@ -860,6 +903,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
          return Error;
       end if;
+
+      Self.Whitespace_Matched := False;
 
       Resolve_Symbol
        (Self, 0, 0, False, True, False, Qname_Error, Self.YYLVal.Symbol);

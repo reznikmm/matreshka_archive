@@ -50,6 +50,13 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles name of the attribute in the attribute list declaration.
 
+   function On_Attribute_Type
+    (Self       : not null access SAX_Simple_Reader'Class;
+     Type_Token : Token) return Token;
+   --  Handles attribute type in attribute type declaration. Checks whether
+   --  whitespace is present before type keyword and resets whitespace flag.
+   --  Returns Type_Token on success, otherwise return Error.
+
    procedure On_Attribute_Value_Character_Data
     (Self  : not null access SAX_Simple_Reader'Class);
    --  Handles character data in the attribute value.
