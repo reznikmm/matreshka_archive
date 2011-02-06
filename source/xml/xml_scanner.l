@@ -741,11 +741,15 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ATTLIST_TYPE>"CDATA" {
    --  CDATA keyword, rule [55].
 
+   Reset_Whitespace_Matched (Self);
+
    return Token_CData;
 }
 
 <ATTLIST_TYPE>"ID" {
    --  ID keyword, rule [56].
+
+   Reset_Whitespace_Matched (Self);
 
    return Token_Id;
 }
@@ -753,11 +757,15 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ATTLIST_TYPE>"IDREF" {
    --  IDREF keyword, rule [56].
 
+   Reset_Whitespace_Matched (Self);
+
    return Token_IdRef;
 }
 
 <ATTLIST_TYPE>"IDREFS" {
    --  IDREFS keyword, rule [56].
+
+   Reset_Whitespace_Matched (Self);
 
    return Token_IdRefs;
 }
@@ -765,11 +773,15 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ATTLIST_TYPE>"ENTITY" {
    --  ENTITY keyword, rule [56].
 
+   Reset_Whitespace_Matched (Self);
+
    return Token_Entity;
 }
 
 <ATTLIST_TYPE>"ENTITIES" {
    --  ENTITIES keyword, rule [56].
+
+   Reset_Whitespace_Matched (Self);
 
    return Token_Entities;
 }
@@ -777,17 +789,23 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ATTLIST_TYPE>"NMTOKEN" {
    --  NMTOKEN keyword, rule [56].
 
+   Reset_Whitespace_Matched (Self);
+
    return Token_NmToken;
 }
 
 <ATTLIST_TYPE>"NMTOKENS" {
    --  NMTOKENS keyword, rule [56].
 
+   Reset_Whitespace_Matched (Self);
+
    return Token_NmTokens;
 }
 
 <ATTLIST_TYPE>"NOTATION" {
    --  NOTATION keyword, rule [58].
+
+   Reset_Whitespace_Matched (Self);
 
    return Token_Notation;
 }
@@ -810,6 +828,8 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 
 <ATTLIST_TYPE>"#FIXED" {
    --  #FIXED keyword, rule [60].
+
+   Reset_Whitespace_Matched (Self);
 
    return Token_Fixed;
 }
@@ -854,7 +874,9 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ATTLIST_TYPE>['"] {
    --  Open delimiter of attribute value, rule [10].
 
-   Actions.On_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL);
+   if not Actions.On_Attribute_Value_Open_Delimiter (Self, ATTLIST_DECL) then
+      return Error;
+   end if;
 }
 
 <ATTLIST_DECL,ATTLIST_NAME,ATTLIST_TYPE,ELEMENT_NAME,ELEMENT_DECL,ELEMENT_CHILDREN,CONDITIONAL_DIRECTIVE>"%"{NAME}";" {
@@ -866,7 +888,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    end if;
 }
 
-<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_TYPE,CONDITIONAL_DIRECTIVE>{WHITE_SPACE} {
+<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,CONDITIONAL_DIRECTIVE>{WHITE_SPACE} {
    --  All white spaces from rules [28] are ignored.
    --  Whitespace before name in rule [76] is ignored.
 
@@ -903,7 +925,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    null;
 }
 
-<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,NOTATION_DECL,ELEMENT_START,ATTLIST_NAME,ELEMENT_NAME>{WHITE_SPACE} {
+<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,NOTATION_DECL,ELEMENT_START,ATTLIST_NAME,ATTLIST_TYPE,ELEMENT_NAME>{WHITE_SPACE} {
    --  White spaces in entity declaration are not optional, rules [71], [72],
    --  [75], [76].
    --
@@ -1175,6 +1197,10 @@ with Matreshka.Internals.Strings;
         Hex  : Boolean) return Boolean;
 
       procedure On_Attribute_Value_Character_Data (Self : access Integer);
+
+      function On_Attribute_Value_Open_Delimiter
+       (Self  : access Integer;
+        State : Integer) return Boolean;
 
       procedure On_Attribute_Value_Open_Delimiter
        (Self  : access Integer;

@@ -363,6 +363,30 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -- On_Attribute_Value_Open_Delimiter --
    ---------------------------------------
 
+   function On_Attribute_Value_Open_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     State : Interfaces.Unsigned_32) return Boolean is
+   begin
+      if not Self.Whitespace_Matched then
+         --  XXX This is recoverable error.
+
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("whitespace required before default value"));
+
+         return False;
+      end if;
+
+      On_Attribute_Value_Open_Delimiter (Self, State);
+
+      return True;
+   end On_Attribute_Value_Open_Delimiter;
+
+   ---------------------------------------
+   -- On_Attribute_Value_Open_Delimiter --
+   ---------------------------------------
+
    procedure On_Attribute_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
      State : Interfaces.Unsigned_32) is

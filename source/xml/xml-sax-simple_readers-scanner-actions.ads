@@ -59,10 +59,17 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    --  Process close delimiter of attribute value. Returns True when
    --  attribute's value is closed.
 
+   function On_Attribute_Value_Open_Delimiter
+    (Self  : not null access SAX_Simple_Reader'Class;
+     State : Interfaces.Unsigned_32) return Boolean;
+   --  Process open delimiter of attribute value. Returns True on success,
+   --  otherwise returns False.
+
    procedure On_Attribute_Value_Open_Delimiter
     (Self  : not null access SAX_Simple_Reader'Class;
      State : Interfaces.Unsigned_32);
-   --  Process open delimiter of attribute value.
+   --  Process open delimiter of attribute value. Same as before, but doesn't
+   --  check presence of whitespace before delimiter.
 
    function On_Character_Data
     (Self : not null access SAX_Simple_Reader'Class) return Token;
