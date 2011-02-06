@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -204,9 +204,10 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles open of attribute list declaration.
 
-   procedure On_Open_Of_Conditional_Section
-    (Self : not null access SAX_Simple_Reader'Class);
-   --  Handles open of conditional section.
+   function On_Open_Of_Conditional_Section
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
+   --  Handles open of conditional section. Returns True on success, False
+   --  otherwise.
 
    procedure On_Open_Of_Conditional_Section_Content
     (Self : not null access SAX_Simple_Reader'Class);

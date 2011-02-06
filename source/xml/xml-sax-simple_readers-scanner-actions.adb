@@ -1481,9 +1481,23 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -- On_Open_Of_Conditional_Section --
    ------------------------------------
 
-   procedure On_Open_Of_Conditional_Section
-    (Self : not null access SAX_Simple_Reader'Class) is
+   function On_Open_Of_Conditional_Section
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean is
    begin
+      --  [XML [28b], [31]] Conditional section can be present only in external
+      --  subset of DTD.
+
+      if Is_Document_Entity (Self.Entities, Self.Scanner_State.Entity) then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML [28b], [31]]"
+               & " conditional sections may only appear in the external"
+               & " DTD subset"));
+
+         return False;
+      end if;
+
       if Self.Ignore_Depth = 0 then
          Enter_Start_Condition (Self, Tables.CONDITIONAL_DIRECTIVE);
 
@@ -1491,6 +1505,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Self.Conditional_Depth := Self.Conditional_Depth + 1;
          Self.Ignore_Depth := Self.Ignore_Depth + 1;
       end if;
+
+      return True;
    end On_Open_Of_Conditional_Section;
 
    --------------------------------------------

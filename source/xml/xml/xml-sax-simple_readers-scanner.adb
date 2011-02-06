@@ -1013,7 +1013,9 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 38 =>
                --  Start of conditional section.
 
-               Actions.On_Open_Of_Conditional_Section (Self);
+               if not Actions.On_Open_Of_Conditional_Section (Self) then
+                  return Error;
+               end if;
 
             when 39 =>
                --  Close of conditional section.

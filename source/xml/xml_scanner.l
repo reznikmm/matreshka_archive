@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -493,7 +493,9 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,CONDITIONAL_IGNORE_10,CONDITIONAL_IGNORE_11>"<![" {
    --  Start of conditional section.
 
-   Actions.On_Open_Of_Conditional_Section (Self);
+   if not Actions.On_Open_Of_Conditional_Section (Self) then
+      return Error;
+   end if;
 }
 
 <DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,CONDITIONAL_IGNORE_10,CONDITIONAL_IGNORE_11>"]]>" {
@@ -1184,7 +1186,8 @@ with Matreshka.Internals.Strings;
       function On_Close_Of_Document_Type_Declaration
        (Self  : access Integer) return Boolean;
 
-      procedure On_Open_Of_Conditional_Section (Self : access Integer);
+      function On_Open_Of_Conditional_Section
+       (Self : access Integer) return Boolean;
 
       procedure On_Conditional_Section_Directive
        (Self    : access Integer;
