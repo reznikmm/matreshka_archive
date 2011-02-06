@@ -3,18 +3,19 @@ LIBDIR ?= /usr/local/lib
 PREFIX ?= /usr/local
 INSTALL_PROJECT_DIR = $(DESTDIR)${LIBDIR}/gnat
 INSTALL_INCLUDE_DIR = $(DESTDIR)$(PREFIX)/include/matreshka
-INSTALL=/usr/bin/install -c
-CHMOD=chmod
-LN_S=ln -s
-MKDIR=mkdir -p 
+INSTALL = /usr/bin/install -c
+CHMOD = chmod
+LN_S = ln -s
+MKDIR = mkdir -p 
 
-LIBEXT=so
+LIBEXT = so
 matlib = ${LIBDIR}/matreshka/
 VERSION = 0.0.6
 UNIDATA = unicode/6.0.0/ucd
 UCADATA = unicode/UCA/6.0.0
 CLDR = unicode/cldr/1.9.0
 
+GPRBUILD = gnatmake
 GPRBUILD_FLAGS = -p
 
 CPP = cpp -undef -nostdinc -fdirectives-only -P -E
@@ -25,15 +26,15 @@ PARSER_TRANSFORMER = ../../../tools/parser_transformer/parser_transformer
 SCANNER_TRANSFORMER = ../../../tools/scanner_transformer/scanner_transformer
 
 all: gnat/matreshka_config.gpr
-	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
-#	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
+#	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml.gpr
 
 fastcgi: all
-	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_fastcgi.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_fastcgi.gpr
 
 check: all
-	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr
-	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml_tests.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml_tests.gpr
 #	valgrind .objs/library_level_test
 	.objs/string_hash_test
 	.objs/string_operations_test
@@ -52,7 +53,7 @@ check: all
 	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --valid
 
 ucd:
-	gprbuild -p -Pgnat/tools.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools.gpr
 	.objs/tools/gen_ucd $(UNIDATA) $(UCADATA) source/league/ucd
 #	.objs/tools/gen_segments $(CLDR)
 
@@ -83,11 +84,11 @@ xml:	yy_tools .gens-xml
 	mkdir .gens-xml
 
 yy_tools:
-	gprbuild -p -Pgnat/tools_aflex.gpr
-	gprbuild -p -Pgnat/tools_ayacc.gpr
-	gprbuild -p -Pgnat/tools_token_transformer.gpr
-	gprbuild -p -Pgnat/tools_parser_transformer.gpr
-	gprbuild -p -Pgnat/tools_scanner_transformer.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_aflex.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_ayacc.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_token_transformer.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_parser_transformer.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_scanner_transformer.gpr
 
 #all:
 #	gprbuild -p -Pmatreshka
@@ -100,12 +101,12 @@ clean:
 	rm -rf .objs .libs .gens-regexp .gens-xml
 
 gnat/matreshka_config.gpr:
-	gprbuild -p -Pgnat/tools_configure.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_configure.gpr
 	./configure
 
 config:
-	gprbuild -p -Pgnat/tools_configure.gpr
-	./configurea
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_configure.gpr
+	./configure
 
 install: install_dirs install_libs install_gpr
 

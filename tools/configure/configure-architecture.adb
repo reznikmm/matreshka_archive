@@ -101,7 +101,7 @@ procedure Configure.Architecture is
          Status : aliased Integer;
          Output : constant String :=
            Get_Command_Output
-            ("gprbuild",
+            ("gnatmake",
              (1 => new String'("-Pcheck.gpr")),
              "",
              Status'Access,
