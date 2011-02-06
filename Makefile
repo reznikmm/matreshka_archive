@@ -1,16 +1,22 @@
 DESTDIR ?=
-LIBDIR ?= /usr/local/lib
 PREFIX ?= /usr/local
-INSTALL_PROJECT_DIR = $(DESTDIR)${LIBDIR}/gnat
+LIBDIR ?= $(PREFIX)/lib
+INSTALL_PROJECT_DIR = $(DESTDIR)${PREFIX}/lib/gnat
 INSTALL_INCLUDE_DIR = $(DESTDIR)$(PREFIX)/include/matreshka
+INSTALL_LIBRARY_DIR = $(DESTDIR)$(PREFIX)/lib
+INSTALL_ALI_DIR = $(DESTDIR)$(PREFIX)/lib/matreshka
 INSTALL = /usr/bin/install -c
+INSTALL_ali = $(INSTALL) -m 444
+INSTALL_project = $(INSTALL) -m 644
+INSTALL_source = $(INSTALL) -m 644
 CHMOD = chmod
 LN_S = ln -s
 MKDIR = mkdir -p 
-
 LIBEXT = so
 matlib = ${LIBDIR}/matreshka/
-VERSION = 0.0.6
+VERSION = 0.0.7
+RTL_VERSION = -6.5
+
 UNIDATA = unicode/6.0.0/ucd
 UCADATA = unicode/UCA/6.0.0
 CLDR = unicode/cldr/1.9.0
@@ -111,29 +117,29 @@ config:
 install: install_dirs install_libs install_gpr
 
 install_dirs:
-	${MKDIR} ${DESTDIR}/${LIBDIR}/matreshka/
-	${MKDIR} ${DESTDIR}/${INCLUDEDIR}/matreshka/
-	${MKDIR} ${DESTDIR}/${LIBDIR}/gnat/matreshka/
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/league
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/fastcgi
+	$(INSTALL) -d ${INSTALL_PROJECT_DIR}/matreshka
+	$(INSTALL) -d ${INSTALL_ALI_DIR}
 
 install_libs:
-	mv .libs/libleague.${LIBEXT} .libs/libleague.${LIBEXT}.${VERSION}
-	${INSTALL} .libs/libleague.${LIBEXT}.${VERSION} ${DESTDIR}/${matlib}
-	cd ${DESTDIR}/${matlib}; ${LN_S} libleague.${LIBEXT}.${VERSION} libleague.${LIBEXT}
-	cd ${DESTDIR}/${matlib}; ${LN_S} libleague.${LIBEXT}.${VERSION} libleague.${LIBEXT}.${basename ${VERSION}}
-	cd ${DESTDIR}/${LIBDIR}; ${LN_S} matreshka/libleague.${LIBEXT}.${VERSION} libleague.${LIBEXT}.${VERSION}
-	cd ${DESTDIR}/${LIBDIR}; ${LN_S} matreshka/libleague.${LIBEXT}.${VERSION} libleague.${LIBEXT}.${basename ${VERSION}}
-	cd ${DESTDIR}/${LIBDIR}; ${LN_S} libleague.${LIBEXT}.${VERSION} libleague.${LIBEXT}
-	mv .libs/libmatreshka-fastcgi.${LIBEXT} .libs/libmatreshka-fastcgi.${LIBEXT}.${VERSION}
-	${INSTALL} .libs/libmatreshka-fastcgi.${LIBEXT}.${VERSION} ${DESTDIR}/${matlib}
-	cd ${DESTDIR}/${matlib}; ${LN_S} libmatreshka-fastcgi.${LIBEXT}.${VERSION} libmatreshka-fastcgi.${LIBEXT}
-	cd ${DESTDIR}/${matlib}; ${LN_S} libmatreshka-fastcgi.${LIBEXT}.${VERSION} libmatreshka-fastcgi.${LIBEXT}.${basename ${VERSION}}
-	cd ${DESTDIR}/${LIBDIR}; ${LN_S} matreshka/libmatreshka-fastcgi.${LIBEXT}.${VERSION} libmatreshka-fastcgi.${LIBEXT}.${basename ${VERSION}}
-	cd ${DESTDIR}/${LIBDIR}; ${LN_S} matreshka/libmatreshka-fastcgi.${LIBEXT}.${VERSION} libmatreshka-fastcgi.${LIBEXT}.${VERSION}
-	${INSTALL} .libs/* ${DESTDIR}/${matlib}
+	gnat ls -o -P gnat/matreshka_league.gpr | sort | uniq | sed -e 's/.o$$/.ali/' > league-ali.lst
+	gnat ls -o -P gnat/matreshka_fastcgi.gpr | sort | uniq | sed -e 's/.o$$/.ali/' > fastcgi-ali.lst
+	cat league-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	cat fastcgi-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	rm -f league-ali.lst fastcgi-ali.lst
+	$(INSTALL) .libs/libleague$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libleague$(RTL_VERSION).$(LIBEXT).$(VERSION)
+	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libleague$(RTL_VERSION).$(LIBEXT).$(VERSION) libleague$(RTL_VERSION).$(LIBEXT)
+	$(INSTALL) .libs/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION)
+	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT)
+
 install_gpr:
-	$(INSTALL) gnat/matreshka_config.gpr  $(INSTALL_PROJECT_DIR)/matreshka_config.gpr
-	$(INSTALL) gnat/matreshka_league.gpr  $(INSTALL_PROJECT_DIR)/matreshka_league.gpr
-	$(INSTALL) gnat/matreshka_fastcgi.gpr $(INSTALL_PROJECT_DIR)/matreshka_fastcgi.gpr
-	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/league
-	gnat ls -s -P gnat/matreshka_league.gpr | xargs -I sources $(INSTALL) sources $(INSTALL_INCLUDE_DIR)/league
-	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/fastcgi
+	$(INSTALL_project) gnat/install/config.gpr  $(INSTALL_PROJECT_DIR)/matreshka/config.gpr
+	$(INSTALL_project) gnat/install/league.gpr  $(INSTALL_PROJECT_DIR)/league.gpr
+	$(INSTALL_project) gnat/install/fastcgi.gpr $(INSTALL_PROJECT_DIR)/fastcgi.gpr
+	gnat ls -d -s -P gnat/matreshka_league.gpr | sort | uniq > league-src.lst
+	gnat ls -d -s -P gnat/matreshka_fastcgi.gpr | sort | uniq > fastcgi-src.aux
+	diff -u league-src.lst fastcgi-src.aux | tail +3 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > fastcgi-src.lst
+	cat league-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/league
+	cat fastcgi-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/fastcgi
+	rm -f league-src.lst fastcgi-src.aux fastcgi-src.lst
