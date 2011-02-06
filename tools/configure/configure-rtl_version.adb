@@ -63,7 +63,7 @@ procedure Configure.RTL_Version is
    procedure Detect_RTL_Version is
       GCC_Process : Process_Descriptor;
       Result      : Expect_Match;
-      Matches     : Match_Array (0 .. 8);
+      Matches     : Match_Array (0 .. 3);
       GCC_Version : Unbounded_String;
       Pro_Version : Unbounded_String;
       GPL_Version : Unbounded_String;
@@ -73,22 +73,33 @@ procedure Configure.RTL_Version is
 
       Non_Blocking_Spawn
        (GCC_Process, "gcc", (1 => new String'("-v")), 4096, True);
-      Expect
-       (GCC_Process,
-        Result,
-        "gcc \S+ [0-9]+\.[0-9]+\.[0-9]+.*(GNAT Pro ([0-9]+\.[0-9]+)\.[0-9]+w?|GNAT GPL ([0-9][0-9][0-9][0-9]))",
-         Matches);
 
-      if Matches (1) /= No_Match then
-         if Matches (3) /= No_Match then
-            GPL_Version :=
-              +Expect_Out (GCC_Process) (Matches (3).First .. Matches (3).Last);
+      begin
+         Expect
+          (GCC_Process,
+           Result,
+           "gcc \S+ [0-9]+\.[0-9]+\.[0-9]+.*(GNAT Pro ([0-9]+\.[0-9]+)\.[0-9]+w?|GNAT GPL ([0-9][0-9][0-9][0-9]))",
+            Matches);
 
-         else
-            Pro_Version :=
-              +Expect_Out (GCC_Process) (Matches (2).First .. Matches (2).Last);
+         if Matches (1) /= No_Match then
+            if Matches (3) /= No_Match then
+               GPL_Version :=
+                 +Expect_Out (GCC_Process) (Matches (3).First .. Matches (3).Last);
+
+            else
+               Pro_Version :=
+                 +Expect_Out (GCC_Process) (Matches (2).First .. Matches (2).Last);
+            end if;
          end if;
-      end if;
+
+      exception
+         when GNAT.Expect.Process_Died =>
+            --  This exception is raised when there is no match found in the
+            --  process's output, so when GNAT compiler doesn't output GNAT
+            --  Pro or GNAT GPL signature.
+
+            null;
+      end;
 
       Close (GCC_Process);
 
