@@ -117,9 +117,6 @@ package XML.SAX.Writers is
    --  Overloaded subprogram for convenience. Raises Constraint_Error with
    --  Error_String when Processing_Instruction sets Success to False.
 
-   procedure Reset (Self : in out SAX_Writer'Class);
-   --  Reset writers state: cleanups internal xml buffer.
-
    procedure Skipped_Entity
     (Self : in out SAX_Writer'Class;
      Name : League.Strings.Universal_String);

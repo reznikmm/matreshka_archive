@@ -241,15 +241,6 @@ package body XML.SAX.Writers is
       end if;
    end Processing_Instruction;
 
-   -----------
-   -- Reset --
-   -----------
-
-   procedure Reset (Self : in out SAX_Writer'Class) is
-   begin
-      Self.Reset;
-   end Reset;
-
    --------------------
    -- Skipped_Entity --
    --------------------

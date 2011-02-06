@@ -170,6 +170,7 @@ package XML.SAX.Pretty_Writers is
      Success       : in out Boolean);
 
    not overriding procedure Reset (Self : in out SAX_Pretty_Writer);
+   --  Reset writers state: cleanups internal xml buffer.
 
 private
 
