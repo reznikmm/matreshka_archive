@@ -137,6 +137,15 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class);
    --  Handles content of ignore conditional section.
 
+   function On_Default_Declaration
+    (Self          : not null access SAX_Simple_Reader'Class;
+     State         : Interfaces.Unsigned_32;
+     Default_Token : Token) return Token;
+   --  Handles default declaration of attribute definition. Checks for
+   --  whitespace before the token and returns Error when this check fail,
+   --  otherwise returns Default_Token. Resets whitespace detection flag and
+   --  enter specified start condition.
+
    function On_Element_Name_In_Attribute_List_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles element's name in attribute list declaration.

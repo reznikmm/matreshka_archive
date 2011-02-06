@@ -795,25 +795,19 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ATTLIST_TYPE>"#REQUIRED" {
    --  #REQUIRED keyword, rule [60].
 
-   Enter_Start_Condition (Self, ATTLIST_DECL);
-
-   return Token_Required;
+   return Actions.On_Default_Declaration (Self, ATTLIST_DECL, Token_Required);
 }
 
 <ATTLIST_TYPE>"#IMPLIED" {
    --  #IMPLIED keyword, rule [60].
 
-   Enter_Start_Condition (Self, ATTLIST_DECL);
-
-   return Token_Implied;
+   return Actions.On_Default_Declaration (Self, ATTLIST_DECL, Token_Implied);
 }
 
 <ATTLIST_TYPE>"#FIXED" {
    --  #FIXED keyword, rule [60].
 
-   Reset_Whitespace_Matched (Self);
-
-   return Token_Fixed;
+   return Actions.On_Default_Declaration (Self, ATTLIST_TYPE, Token_Fixed);
 }
 
 <ATTLIST_TYPE>"(" {
@@ -1180,6 +1174,11 @@ with Matreshka.Internals.Strings;
 
       function On_Attribute_Type
        (Self       : access Integer;
+        Type_Token : Token) return Token;
+
+      function On_Default_Declaration
+       (Self       : access Integer;
+        State      : Integer;
         Type_Token : Token) return Token;
 
       procedure On_Attribute_Value_Character_Data (Self : access Integer);

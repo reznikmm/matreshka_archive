@@ -1272,23 +1272,17 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 81 =>
                --  #REQUIRED keyword, rule [60].
 
-               Enter_Start_Condition (Self, ATTLIST_DECL);
-
-               return Token_Required;
+               return Actions.On_Default_Declaration (Self, ATTLIST_DECL, Token_Required);
 
             when 82 =>
                --  #IMPLIED keyword, rule [60].
 
-               Enter_Start_Condition (Self, ATTLIST_DECL);
-
-               return Token_Implied;
+               return Actions.On_Default_Declaration (Self, ATTLIST_DECL, Token_Implied);
 
             when 83 =>
                --  #FIXED keyword, rule [60].
 
-               Reset_Whitespace_Matched (Self);
-
-               return Token_Fixed;
+               return Actions.On_Default_Declaration (Self, ATTLIST_TYPE, Token_Fixed);
 
             when 84 =>
                --  Open parenthesis, rules [58], [59].

@@ -880,6 +880,35 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       YY_Move_Backward (Self);
    end On_Content_Of_Ignore_Conditional_Section;
 
+   ----------------------------
+   -- On_Default_Declaration --
+   ----------------------------
+
+   function On_Default_Declaration
+    (Self          : not null access SAX_Simple_Reader'Class;
+     State         : Interfaces.Unsigned_32;
+     Default_Token : Token) return Token is
+   begin
+      --  Checks ithat whitespace before attribute type keyword is detected
+      --  and report error when check fail.
+
+      if not Self.Whitespace_Matched then
+         --  XXX This is recoverable error.
+
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("whitespace required before default declaration"));
+
+         return Error;
+      end if;
+
+      Self.Whitespace_Matched := False;
+      Enter_Start_Condition (Self, State);
+
+      return Default_Token;
+   end On_Default_Declaration;
+
    ---------------------------------------------------
    -- On_Element_Name_In_Attribute_List_Declaration --
    ---------------------------------------------------
