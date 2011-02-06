@@ -1,14 +1,20 @@
-PREFIX = /usr/local
 DESTDIR ?=
-INSTALL = install
+LIBDIR ?= /usr/local/lib
+PREFIX ?= /usr/local
+INSTALL_PROJECT_DIR = $(DESTDIR)${LIBDIR}/gnat
 INSTALL_INCLUDE_DIR = $(DESTDIR)$(PREFIX)/include/matreshka
-INSTALL_PROJECT_DIR = $(DESTDIR)$(PREFIX)/lib/gnat
+INSTALL=/usr/bin/install -c
+CHMOD=chmod
+LN_S=ln -s
+MKDIR=mkdir -p 
 
+LIBEXT=so
+matlib = ${LIBDIR}/matreshka/
+VERSION = 0.0.6
 UNIDATA = unicode/6.0.0/ucd
 UCADATA = unicode/UCA/6.0.0
 CLDR = unicode/cldr/1.9.0
 
-GPRBUILD = gnatmake
 GPRBUILD_FLAGS = -p
 
 CPP = cpp -undef -nostdinc -fdirectives-only -P -E
@@ -19,15 +25,15 @@ PARSER_TRANSFORMER = ../../../tools/parser_transformer/parser_transformer
 SCANNER_TRANSFORMER = ../../../tools/scanner_transformer/scanner_transformer
 
 all: gnat/matreshka_config.gpr
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
-#	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml.gpr
+	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
+#	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml.gpr
 
 fastcgi: all
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_fastcgi.gpr
+	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_fastcgi.gpr
 
 check: all
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml_tests.gpr
+	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr
+	gprbuild $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml_tests.gpr
 #	valgrind .objs/library_level_test
 	.objs/string_hash_test
 	.objs/string_operations_test
@@ -45,18 +51,8 @@ check: all
 	.objs/test_26 testsuite/xml/TN-26/26-expected.xml
 	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --valid
 
-install:
-	$(INSTALL) -d $(INSTALL_PROJECT_DIR)/matreshka
-	$(INSTALL) gnat/install/config.gpr $(INSTALL_PROJECT_DIR)/matreshka/config.gpr
-	$(INSTALL) gnat/install/league.gpr $(INSTALL_PROJECT_DIR)/league.gpr
-	$(INSTALL) gnat/install/fastcgi.gpr $(INSTALL_PROJECT_DIR)/fastcgi.gpr
-	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/league
-	gnat ls -s -P gnat/matreshka_league.gpr | xargs -I sources $(INSTALL) sources $(INSTALL_INCLUDE_DIR)/league
-	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/fastcgi
-	gnat ls -s -P gnat/matreshka_fastcgi.gpr | xargs -I sources $(INSTALL) sources $(INSTALL_INCLUDE_DIR)/fastcgi
-
 ucd:
-	$(GPRBUILD) -p -Pgnat/tools.gpr
+	gprbuild -p -Pgnat/tools.gpr
 	.objs/tools/gen_ucd $(UNIDATA) $(UCADATA) source/league/ucd
 #	.objs/tools/gen_segments $(CLDR)
 
@@ -87,11 +83,11 @@ xml:	yy_tools .gens-xml
 	mkdir .gens-xml
 
 yy_tools:
-	$(GPRBUILD) -p -Pgnat/tools_aflex.gpr
-	$(GPRBUILD) -p -Pgnat/tools_ayacc.gpr
-	$(GPRBUILD) -p -Pgnat/tools_token_transformer.gpr
-	$(GPRBUILD) -p -Pgnat/tools_parser_transformer.gpr
-	$(GPRBUILD) -p -Pgnat/tools_scanner_transformer.gpr
+	gprbuild -p -Pgnat/tools_aflex.gpr
+	gprbuild -p -Pgnat/tools_ayacc.gpr
+	gprbuild -p -Pgnat/tools_token_transformer.gpr
+	gprbuild -p -Pgnat/tools_parser_transformer.gpr
+	gprbuild -p -Pgnat/tools_scanner_transformer.gpr
 
 #all:
 #	gprbuild -p -Pmatreshka
@@ -104,9 +100,39 @@ clean:
 	rm -rf .objs .libs .gens-regexp .gens-xml
 
 gnat/matreshka_config.gpr:
-	$(GPRBUILD) -p -Pgnat/tools_configure.gpr
+	gprbuild -p -Pgnat/tools_configure.gpr
 	./configure
 
 config:
-	$(GPRBUILD) -p -Pgnat/tools_configure.gpr
-	./configure
+	gprbuild -p -Pgnat/tools_configure.gpr
+	./configurea
+
+install: install_dirs install_libs install_gpr
+
+install_dirs:
+	${MKDIR} ${DESTDIR}/${LIBDIR}/matreshka/
+	${MKDIR} ${DESTDIR}/${INCLUDEDIR}/matreshka/
+	${MKDIR} ${DESTDIR}/${LIBDIR}/gnat/matreshka/
+
+install_libs:
+	mv .libs/libleague.${LIBEXT} .libs/libleague.${LIBEXT}.${VERSION}
+	${INSTALL} .libs/libleague.${LIBEXT}.${VERSION} ${DESTDIR}/${matlib}
+	cd ${DESTDIR}/${matlib}; ${LN_S} libleague.${LIBEXT}.${VERSION} libleague.${LIBEXT}
+	cd ${DESTDIR}/${matlib}; ${LN_S} libleague.${LIBEXT}.${VERSION} libleague.${LIBEXT}.${basename ${VERSION}}
+	cd ${DESTDIR}/${LIBDIR}; ${LN_S} matreshka/libleague.${LIBEXT}.${VERSION} libleague.${LIBEXT}.${VERSION}
+	cd ${DESTDIR}/${LIBDIR}; ${LN_S} matreshka/libleague.${LIBEXT}.${VERSION} libleague.${LIBEXT}.${basename ${VERSION}}
+	cd ${DESTDIR}/${LIBDIR}; ${LN_S} libleague.${LIBEXT}.${VERSION} libleague.${LIBEXT}
+	mv .libs/libmatreshka-fastcgi.${LIBEXT} .libs/libmatreshka-fastcgi.${LIBEXT}.${VERSION}
+	${INSTALL} .libs/libmatreshka-fastcgi.${LIBEXT}.${VERSION} ${DESTDIR}/${matlib}
+	cd ${DESTDIR}/${matlib}; ${LN_S} libmatreshka-fastcgi.${LIBEXT}.${VERSION} libmatreshka-fastcgi.${LIBEXT}
+	cd ${DESTDIR}/${matlib}; ${LN_S} libmatreshka-fastcgi.${LIBEXT}.${VERSION} libmatreshka-fastcgi.${LIBEXT}.${basename ${VERSION}}
+	cd ${DESTDIR}/${LIBDIR}; ${LN_S} matreshka/libmatreshka-fastcgi.${LIBEXT}.${VERSION} libmatreshka-fastcgi.${LIBEXT}.${basename ${VERSION}}
+	cd ${DESTDIR}/${LIBDIR}; ${LN_S} matreshka/libmatreshka-fastcgi.${LIBEXT}.${VERSION} libmatreshka-fastcgi.${LIBEXT}.${VERSION}
+	${INSTALL} .libs/* ${DESTDIR}/${matlib}
+install_gpr:
+	$(INSTALL) gnat/matreshka_config.gpr  $(INSTALL_PROJECT_DIR)/matreshka_config.gpr
+	$(INSTALL) gnat/matreshka_league.gpr  $(INSTALL_PROJECT_DIR)/matreshka_league.gpr
+	$(INSTALL) gnat/matreshka_fastcgi.gpr $(INSTALL_PROJECT_DIR)/matreshka_fastcgi.gpr
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/league
+	gnat ls -s -P gnat/matreshka_league.gpr | xargs -I sources $(INSTALL) sources $(INSTALL_INCLUDE_DIR)/league
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/fastcgi
