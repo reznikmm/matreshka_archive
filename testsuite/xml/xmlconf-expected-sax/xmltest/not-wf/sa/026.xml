@@ -8,6 +8,6 @@
     <attributes/>
   </startElement>
   <characters>]</characters>
-  <fatalError/>
+  <fatalError>[[14]&#x20;CharData]&#x20;Text&#x20;may&#x20;not&#x20;contain&#x20;a&#x20;literal&#x20;&apos;]]&gt;&apos;&#x20;sequence</fatalError>
   <endDocument/>
 </SAXEvents>

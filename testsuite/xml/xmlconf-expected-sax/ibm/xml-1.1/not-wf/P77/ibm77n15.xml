@@ -2,6 +2,7 @@
 <SAXEvents>
   <startDocument/>
   <resolveEntity>
+    <name>[dtd]</name>
     <systemID>ibm77n15.dtd</systemID>
   </resolveEntity>
   <startElement>
@@ -11,6 +12,7 @@
     <attributes/>
   </startElement>
   <resolveEntity>
+    <name>e</name>
     <systemID>ibm77n15.ent</systemID>
   </resolveEntity>
   <characters>&#xA;</characters>

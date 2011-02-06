@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
-  <fatalError/>
+  <fatalError>syntax&#x20;error</fatalError>
   <endDocument/>
 </SAXEvents>

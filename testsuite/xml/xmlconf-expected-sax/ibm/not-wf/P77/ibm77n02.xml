@@ -8,6 +8,7 @@
     <attributes/>
   </startElement>
   <resolveEntity>
+    <name>aExternal</name>
     <systemID>ibm77n02.ent</systemID>
   </resolveEntity>
   <fatalError>name&#x20;is&#x20;reserved&#x20;for&#x20;future&#x20;standardization</fatalError>

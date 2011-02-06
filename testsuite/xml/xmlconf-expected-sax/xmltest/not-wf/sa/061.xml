@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
-  <fatalError/>
+  <fatalError>[[75]&#x20;ExternalID]&#x20;whitespace&#x20;is&#x20;required&#x20;before&#x20;system&#x20;literal</fatalError>
   <endDocument/>
 </SAXEvents>

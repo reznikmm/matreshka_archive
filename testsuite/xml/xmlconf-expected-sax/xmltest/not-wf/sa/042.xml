@@ -12,6 +12,6 @@
     <localName>doc</localName>
     <qualifiedName>doc</qualifiedName>
   </endElement>
-  <fatalError/>
+  <fatalError>syntax&#x20;error</fatalError>
   <endDocument/>
 </SAXEvents>

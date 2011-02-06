@@ -20,6 +20,6 @@
   <characters>d</characters>
   <characters>&#x20;</characters>
   <characters>(</characters>
-  <fatalError/>
+  <fatalError>unexpected&#x20;character</fatalError>
   <endDocument/>
 </SAXEvents>

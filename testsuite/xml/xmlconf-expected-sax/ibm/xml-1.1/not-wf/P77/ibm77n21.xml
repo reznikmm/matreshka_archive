@@ -2,9 +2,11 @@
 <SAXEvents>
   <startDocument/>
   <resolveEntity>
+    <name>[dtd]</name>
     <systemID>ibm77n21.dtd</systemID>
   </resolveEntity>
   <resolveEntity>
+    <name>%e</name>
     <systemID>ibm77n21.ent</systemID>
   </resolveEntity>
   <fatalError>unexpected&#x20;character</fatalError>

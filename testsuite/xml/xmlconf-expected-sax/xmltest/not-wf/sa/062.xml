@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
-  <fatalError/>
+  <fatalError>[[71]&#x20;GEDecl,&#x20;[72]&#x20;PEDecl]&#x20;no&#x20;whitespace&#x20;before&#x20;entity&#x20;value</fatalError>
   <endDocument/>
 </SAXEvents>

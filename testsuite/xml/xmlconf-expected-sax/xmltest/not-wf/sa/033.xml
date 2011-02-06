@@ -10,6 +10,6 @@
   <characters>a</characters>
   <characters>b</characters>
   <characters>c</characters>
-  <fatalError/>
+  <fatalError>unexpected&#x20;character</fatalError>
   <endDocument/>
 </SAXEvents>

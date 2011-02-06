@@ -12,6 +12,6 @@
     <localName>doc</localName>
     <qualifiedName>doc</qualifiedName>
   </endElement>
-  <fatalError/>
+  <fatalError>Text&#x20;may&#x20;not&#x20;appear&#x20;after&#x20;the&#x20;root&#x20;element</fatalError>
   <endDocument/>
 </SAXEvents>

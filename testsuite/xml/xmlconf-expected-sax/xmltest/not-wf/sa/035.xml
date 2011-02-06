@@ -9,6 +9,6 @@
   </startElement>
   <characters>1</characters>
   <characters>&#x20;</characters>
-  <fatalError/>
+  <fatalError>unexpected&#x20;character</fatalError>
   <endDocument/>
 </SAXEvents>
