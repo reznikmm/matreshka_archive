@@ -169,6 +169,8 @@ package XML.SAX.Pretty_Writers is
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean);
 
+   not overriding procedure Reset (Self : in out SAX_Pretty_Writer);
+
 private
 
    package Mappings is

@@ -409,6 +409,16 @@ package body XML.SAX.Pretty_Writers is
       Self.Stack.Append ((Tag => Tag, Mapping => Scope));
    end Push;
 
+   -----------
+   -- Reset --
+   -----------
+
+   not overriding procedure Reset
+    (Self : in out SAX_Pretty_Writer) is
+   begin
+      Self.Text.Clear;
+   end Reset;
+
    -----------------
    -- Set_Version --
    -----------------
