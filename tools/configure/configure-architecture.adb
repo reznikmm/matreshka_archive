@@ -199,6 +199,14 @@ procedure Configure.Architecture is
       if Match (+Arch, Compile ("i[3456]86")) then
          if Check_x86_SSE then
             Substitutions.Replace (Architecture_Name, +"x86");
+
+         else
+            --  On x86 when compiler doesn't support SSE builtins there is no
+            --  way to build project, because special switch is needed to
+            --  enable use of i486 instructions to generate code for atomic
+            --  increment/decrement operations.
+
+            Fatal_Error ("compiler doesn't support SSE builtins");
          end if;
 
       elsif Arch = "x86_64" then

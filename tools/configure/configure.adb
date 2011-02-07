@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,40 +41,26 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers.Hashed_Maps;
-with Ada.Strings.Unbounded.Hash;
+with Ada.Command_Line;
+with Ada.Directories;
+with Ada.Text_IO;
 
-package Configure is
+package body Configure is
 
-   use type Ada.Strings.Unbounded.Unbounded_String;
+   use Ada.Command_Line;
+   use Ada.Directories;
+   use Ada.Text_IO;
 
-   package Maps is
-     new Ada.Containers.Hashed_Maps
-          (Ada.Strings.Unbounded.Unbounded_String,
-           Ada.Strings.Unbounded.Unbounded_String,
-           Ada.Strings.Unbounded.Hash,
-           Ada.Strings.Unbounded."=");
+   -----------------
+   -- Fatal_Error --
+   -----------------
 
-   Substitutions : Maps.Map;
+   procedure Fatal_Error (Message : String) is
+   begin
+      Put_Line
+       (Standard_Error, Simple_Name (Command_Name) & ": (fatal) " & Message);
 
-   --  Names of variables in matreshka_config.gpr.in
-
-   Architecture_Name     : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String ("ARCHITECTURE");
-   Operating_System_Name : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String ("OPERATING_SYSTEM");
-   RTL_Version_Suffix_Name : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String ("RTL_VERSION_SUFFIX");
-
-   --  Internal variables to pass values between test subprogram.
-
-   Target_Triplet : Ada.Strings.Unbounded.Unbounded_String;
-
-   --  Fatal error handling.
-
-   procedure Fatal_Error (Message : String);
-   --  Outputs fatal message error and raises Internal_Error exception.
-
-   Internal_Error : exception;
+      raise Internal_Error;
+   end Fatal_Error;
 
 end Configure;

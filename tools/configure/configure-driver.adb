@@ -52,13 +52,14 @@ with Configure.Operating_System;
 with Configure.RTL_Version;
 
 procedure Configure.Driver is
+   use Ada.Command_Line;
+
 begin
    Configure.Architecture;
    Configure.Operating_System;
    Configure.RTL_Version;
 
    declare
-      use Ada.Command_Line;
       use Ada.Directories;
       use Ada.Strings.Unbounded.Text_IO;
       use Ada.Text_IO;
@@ -82,4 +83,8 @@ begin
    Configure.Instantiate ("Makefile.install");
    Configure.Instantiate ("gnat/install/config.gpr");
    Configure.Instantiate ("gnat/matreshka_config.gpr");
+
+exception
+   when Internal_Error =>
+      Set_Exit_Status (Failure);
 end Configure.Driver;
