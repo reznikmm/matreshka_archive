@@ -79,6 +79,7 @@ begin
       end loop;
    end;
 
+   Configure.Instantiate ("Makefile.install");
    Configure.Instantiate ("gnat/install/config.gpr");
    Configure.Instantiate ("gnat/matreshka_config.gpr");
 end Configure.Driver;
