@@ -16,8 +16,6 @@ SCANNER_TRANSFORMER = ../../../tools/scanner_transformer/scanner_transformer
 all: gnat/matreshka_config.gpr
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
 #	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml.gpr
-
-fastcgi: all
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_fastcgi.gpr
 
 check: all
