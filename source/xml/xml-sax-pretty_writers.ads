@@ -61,6 +61,9 @@ package XML.SAX.Pretty_Writers is
    not overriding function Text
     (Self : SAX_Pretty_Writer) return League.Strings.Universal_String;
 
+   not overriding procedure Reset (Self : in out SAX_Pretty_Writer);
+   --  Reset writers state: cleanups internal xml buffer.
+
    not overriding procedure Set_Version
     (Self    : in out SAX_Pretty_Writer;
      Version : XML_Version);
@@ -168,9 +171,6 @@ package XML.SAX.Pretty_Writers is
        := League.Strings.Empty_Universal_String;
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean);
-
-   not overriding procedure Reset (Self : in out SAX_Pretty_Writer);
-   --  Reset writers state: cleanups internal xml buffer.
 
 private
 
