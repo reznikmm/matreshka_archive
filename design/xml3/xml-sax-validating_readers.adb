@@ -724,64 +724,69 @@ package body XML.SAX.Validating_Readers is
       -- Parse_Attribute_Value --
       ---------------------------
 
+      type Attribute_Value_States is
+       (State_Initial,
+        State_Quotation_Mark_Open,
+        State_Quotation_Mark_Character,
+        State_Apostrophe_Open,
+        State_Apostrophe_Character,
+        State_Done,
+        State_Invalid);
+
+      type Attribute_Value_Inputs is
+       (Input_Quotation_Mark,
+        Input_Apostrophe,
+        Input_Ampersand,
+        Input_Less_Than_Sign,
+        Input_Character,
+        Input_Unknown);
+
+      Attribute_Value_Transition :
+        constant array (Attribute_Value_States, Attribute_Value_Inputs)
+          of Attribute_Value_States
+            := (State_Initial =>
+                 (Input_Quotation_Mark => State_Quotation_Mark_Open,
+                  Input_Apostrophe     => State_Apostrophe_Open,
+                  Input_Ampersand      => State_Invalid,
+                  Input_Less_Than_Sign => State_Invalid,
+                  Input_Character      => State_Invalid,
+                  Input_Unknown        => State_Invalid),
+                State_Quotation_Mark_Open =>
+                 (Input_Quotation_Mark => State_Done,
+                  Input_Apostrophe     => State_Quotation_Mark_Character,
+                  Input_Ampersand      => State_Invalid,
+                  Input_Less_Than_Sign => State_Invalid,
+                  Input_Character      => State_Quotation_Mark_Character,
+                  Input_Unknown        => State_Invalid),
+                State_Apostrophe_Open =>
+                 (Input_Quotation_Mark => State_Apostrophe_Character,
+                  Input_Apostrophe     => State_Done,
+                  Input_Ampersand      => State_Invalid,
+                  Input_Less_Than_Sign => State_Invalid,
+                  Input_Character      => State_Apostrophe_Character,
+                  Input_Unknown        => State_Invalid),
+                State_Quotation_Mark_Character =>
+                 (Input_Quotation_Mark => State_Done,
+                  Input_Apostrophe     => State_Quotation_Mark_Character,
+                  Input_Ampersand      => State_Invalid,
+                  Input_Less_Than_Sign => State_Invalid,
+                  Input_Character      => State_Quotation_Mark_Character,
+                  Input_Unknown        => State_Invalid),
+                State_Apostrophe_Character =>
+                 (Input_Quotation_Mark => State_Apostrophe_Character,
+                  Input_Apostrophe     => State_Done,
+                  Input_Ampersand      => State_Invalid,
+                  Input_Less_Than_Sign => State_Invalid,
+                  Input_Character      => State_Apostrophe_Character,
+                  Input_Unknown        => State_Invalid),
+                State_Done => (others => State_Invalid),
+                State_Invalid => (others => State_Invalid));
+
       procedure Parse_Attribute_Value
        (Self : in out SAX_Validating_Reader'Class)
       is
-         type States is
-          (State_Initial,
-           State_Quotation_Mark_Open,
-           State_Quotation_Mark_Character,
-           State_Apostrophe_Open,
-           State_Apostrophe_Character,
-           State_Done,
-           State_Invalid);
-
-         type Inputs is
-          (Input_Quotation_Mark,
-           Input_Apostrophe,
-           Input_Ampersand,
-           Input_Less_Than_Sign,
-           Input_Character,
-           Input_Unknown);
-
-         Transition : constant array (States, Inputs) of States
-           := (State_Initial =>
-                (Input_Quotation_Mark => State_Quotation_Mark_Open,
-                 Input_Apostrophe     => State_Apostrophe_Open,
-                 Input_Ampersand      => State_Invalid,
-                 Input_Less_Than_Sign => State_Invalid,
-                 Input_Character      => State_Invalid,
-                 Input_Unknown        => State_Invalid),
-               State_Quotation_Mark_Open =>
-                (Input_Quotation_Mark => State_Done,
-                 Input_Apostrophe     => State_Quotation_Mark_Character,
-                 Input_Ampersand      => State_Invalid,
-                 Input_Less_Than_Sign => State_Invalid,
-                 Input_Character      => State_Quotation_Mark_Character,
-                 Input_Unknown        => State_Invalid),
-               State_Apostrophe_Open =>
-                (Input_Quotation_Mark => State_Apostrophe_Character,
-                 Input_Apostrophe     => State_Done,
-                 Input_Ampersand      => State_Invalid,
-                 Input_Less_Than_Sign => State_Invalid,
-                 Input_Character      => State_Apostrophe_Character,
-                 Input_Unknown        => State_Invalid),
-               State_Quotation_Mark_Character =>
-                (Input_Quotation_Mark => State_Done,
-                 Input_Apostrophe     => State_Quotation_Mark_Character,
-                 Input_Ampersand      => State_Invalid,
-                 Input_Less_Than_Sign => State_Invalid,
-                 Input_Character      => State_Quotation_Mark_Character,
-                 Input_Unknown        => State_Invalid),
-               State_Apostrophe_Character =>
-                (Input_Quotation_Mark => State_Apostrophe_Character,
-                 Input_Apostrophe     => State_Done,
-                 Input_Ampersand      => State_Invalid,
-                 Input_Less_Than_Sign => State_Invalid,
-                 Input_Character      => State_Apostrophe_Character,
-                 Input_Unknown        => State_Invalid),
-               State_Done => (others => State_Invalid),
-               State_Invalid => (others => State_Invalid));
+         subtype States is Attribute_Value_States;
+         subtype Inputs is Attribute_Value_Inputs;
 
          State : States;
          Input : Inputs;
@@ -824,7 +829,7 @@ package body XML.SAX.Validating_Readers is
                Input := Input_Unknown;
             end if;
 
-            State := Transition (State, Input);
+            State := Attribute_Value_Transition (State, Input);
 
             case State is
                when State_Initial =>
@@ -869,57 +874,62 @@ package body XML.SAX.Validating_Readers is
       -- Parse_Character_Data --
       --------------------------
 
+      type Character_Data_States is
+       (State_Initial,
+        State_Character_Data,
+        State_Right_Square_Bracket_1,
+        State_Right_Square_Bracket_2,
+        State_Done,
+        State_Invalid);
+
+      type Character_Data_Inputs is
+       (Input_Less_Than_Sign,
+        Input_Ampersand,
+        Input_Right_Square_Bracket,
+        Input_Greater_Than_Sign,
+        Input_Character,
+        Input_Unknown);
+
+      Character_Data_Transition :
+        constant array (Character_Data_States, Character_Data_Inputs)
+          of Character_Data_States
+            := (State_Initial =>
+                 (Input_Less_Than_Sign       => State_Invalid,
+                  Input_Ampersand            => State_Invalid,
+                  Input_Right_Square_Bracket => State_Right_Square_Bracket_1,
+                  Input_Greater_Than_Sign    => State_Character_Data,
+                  Input_Character            => State_Character_Data,
+                  Input_Unknown              => State_Invalid),
+                State_Character_Data =>
+                 (Input_Less_Than_Sign       => State_Done,
+                  Input_Ampersand            => State_Done,
+                  Input_Right_Square_Bracket => State_Right_Square_Bracket_1,
+                  Input_Greater_Than_Sign    => State_Character_Data,
+                  Input_Character            => State_Character_Data,
+                  Input_Unknown              => State_Invalid),
+                State_Right_Square_Bracket_1 =>
+                 (Input_Less_Than_Sign       => State_Done,
+                  Input_Ampersand            => State_Done,
+                  Input_Right_Square_Bracket => State_Right_Square_Bracket_2,
+                  Input_Greater_Than_Sign    => State_Character_Data,
+                  Input_Character            => State_Character_Data,
+                  Input_Unknown              => State_Invalid),
+                State_Right_Square_Bracket_2 =>
+                 (Input_Less_Than_Sign       => State_Done,
+                  Input_Ampersand            => State_Done,
+                  Input_Right_Square_Bracket => State_Right_Square_Bracket_2,
+                  Input_Greater_Than_Sign    => State_Invalid,
+                  Input_Character            => State_Character_Data,
+                  Input_Unknown              => State_Invalid),
+                State_Done => (others => State_Invalid),
+                State_Invalid => (others => State_Invalid));
+
       procedure Parse_Character_Data
        (Self : in out SAX_Validating_Reader'Class)
       is
 
-         type States is
-          (State_Initial,
-           State_Character_Data,
-           State_Right_Square_Bracket_1,
-           State_Right_Square_Bracket_2,
-           State_Done,
-           State_Invalid);
-
-         type Inputs is
-          (Input_Less_Than_Sign,
-           Input_Ampersand,
-           Input_Right_Square_Bracket,
-           Input_Greater_Than_Sign,
-           Input_Character,
-           Input_Unknown);
-
-         Transition : constant array (States, Inputs) of States
-           := (State_Initial =>
-                (Input_Less_Than_Sign       => State_Invalid,
-                 Input_Ampersand            => State_Invalid,
-                 Input_Right_Square_Bracket => State_Right_Square_Bracket_1,
-                 Input_Greater_Than_Sign    => State_Character_Data,
-                 Input_Character            => State_Character_Data,
-                 Input_Unknown              => State_Invalid),
-               State_Character_Data =>
-                (Input_Less_Than_Sign       => State_Done,
-                 Input_Ampersand            => State_Done,
-                 Input_Right_Square_Bracket => State_Right_Square_Bracket_1,
-                 Input_Greater_Than_Sign    => State_Character_Data,
-                 Input_Character            => State_Character_Data,
-                 Input_Unknown              => State_Invalid),
-               State_Right_Square_Bracket_1 =>
-                (Input_Less_Than_Sign       => State_Done,
-                 Input_Ampersand            => State_Done,
-                 Input_Right_Square_Bracket => State_Right_Square_Bracket_2,
-                 Input_Greater_Than_Sign    => State_Character_Data,
-                 Input_Character            => State_Character_Data,
-                 Input_Unknown              => State_Invalid),
-               State_Right_Square_Bracket_2 =>
-                (Input_Less_Than_Sign       => State_Done,
-                 Input_Ampersand            => State_Done,
-                 Input_Right_Square_Bracket => State_Right_Square_Bracket_2,
-                 Input_Greater_Than_Sign    => State_Invalid,
-                 Input_Character            => State_Character_Data,
-                 Input_Unknown              => State_Invalid),
-               State_Done => (others => State_Invalid),
-               State_Invalid => (others => State_Invalid));
+         subtype States is Character_Data_States;
+         subtype Inputs is Character_Data_Inputs;
 
          State : States;
          Input : Inputs;
@@ -964,7 +974,7 @@ package body XML.SAX.Validating_Readers is
                Input := Input_Unknown;
             end if;
 
-            State := Transition (State, Input);
+            State := Character_Data_Transition (State, Input);
 
             case State is
                when State_Initial =>
@@ -1778,96 +1788,100 @@ package body XML.SAX.Validating_Readers is
       -- Parse_Reference --
       ---------------------
 
+      type Reference_States is
+       (State_Initial,
+        State_Ampersand,
+        State_Name,
+        State_Entity_Reference_Done,
+        State_Number_Sign,
+        State_Decimal_Character_Reference,
+        State_Hex_Character_Reference,
+        State_Character_Reference_Done,
+        State_Invalid);
+
+      type Reference_Inputs is
+       (Input_Ampersand,
+        Input_Name_Start_Character,
+        Input_Number_Sign,
+        Input_Latin_Small_Letter_X,
+        Input_Decimal_Digit,
+        Input_Capital_Hex_Digit,
+        Input_Small_Hex_Digit,
+        Input_Semicolon,
+        Input_Unknown);
+
+      Reference_Transition :
+        constant array (Reference_States, Reference_Inputs) of Reference_States
+          := (State_Initial =>
+               (Input_Ampersand            => State_Ampersand,
+                Input_Name_Start_Character => State_Invalid,
+                Input_Number_Sign          => State_Invalid,
+                Input_Latin_Small_Letter_X => State_Invalid,
+                Input_Decimal_Digit        => State_Invalid,
+                Input_Capital_Hex_Digit    => State_Invalid,
+                Input_Small_Hex_Digit      => State_Invalid,
+                Input_Semicolon            => State_Invalid,
+                Input_Unknown              => State_Invalid),
+              State_Ampersand =>
+               (Input_Ampersand            => State_Invalid,
+                Input_Name_Start_Character => State_Name,
+                Input_Number_Sign          => State_Number_Sign,
+                Input_Latin_Small_Letter_X => State_Invalid,
+                Input_Decimal_Digit        => State_Invalid,
+                Input_Capital_Hex_Digit    => State_Name,
+                Input_Small_Hex_Digit      => State_Name,
+                Input_Semicolon            => State_Invalid,
+                Input_Unknown              => State_Invalid),
+              State_Name =>
+               (Input_Ampersand            => State_Invalid,
+                Input_Name_Start_Character => State_Invalid,
+                Input_Number_Sign          => State_Invalid,
+                Input_Latin_Small_Letter_X => State_Invalid,
+                Input_Decimal_Digit        => State_Invalid,
+                Input_Capital_Hex_Digit    => State_Invalid,
+                Input_Small_Hex_Digit      => State_Invalid,
+                Input_Semicolon            => State_Entity_Reference_Done,
+                Input_Unknown              => State_Invalid),
+              State_Number_Sign =>
+               (Input_Ampersand            => State_Invalid,
+                Input_Name_Start_Character => State_Invalid,
+                Input_Number_Sign          => State_Invalid,
+                Input_Latin_Small_Letter_X => State_Hex_Character_Reference,
+                Input_Decimal_Digit        =>
+                  State_Decimal_Character_Reference,
+                Input_Capital_Hex_Digit    => State_Invalid,
+                Input_Small_Hex_Digit      => State_Invalid,
+                Input_Semicolon            => State_Invalid,
+                Input_Unknown              => State_Invalid),
+              State_Decimal_Character_Reference =>
+               (Input_Ampersand            => State_Invalid,
+                Input_Name_Start_Character => State_Invalid,
+                Input_Number_Sign          => State_Invalid,
+                Input_Latin_Small_Letter_X => State_Invalid,
+                Input_Decimal_Digit        =>
+                  State_Decimal_Character_Reference,
+                Input_Capital_Hex_Digit    => State_Invalid,
+                Input_Small_Hex_Digit      => State_Invalid,
+                Input_Semicolon            => State_Character_Reference_Done,
+                Input_Unknown              => State_Invalid),
+              State_Hex_Character_Reference =>
+               (Input_Ampersand            => State_Invalid,
+                Input_Name_Start_Character => State_Invalid,
+                Input_Number_Sign          => State_Invalid,
+                Input_Latin_Small_Letter_X => State_Invalid,
+                Input_Decimal_Digit        => State_Hex_Character_Reference,
+                Input_Capital_Hex_Digit    => State_Hex_Character_Reference,
+                Input_Small_Hex_Digit      => State_Hex_Character_Reference,
+                Input_Semicolon            => State_Character_Reference_Done,
+                Input_Unknown              => State_Invalid),
+              State_Entity_Reference_Done => (others => State_Invalid),
+              State_Character_Reference_Done => (others => State_Invalid),
+              State_Invalid => (others => State_Invalid));
+
       procedure Parse_Reference (Self : in out SAX_Validating_Reader'Class) is
 
-         type States is
-          (State_Initial,
-           State_Ampersand,
-           State_Name,
-           State_Entity_Reference_Done,
-           State_Number_Sign,
-           State_Decimal_Character_Reference,
-           State_Hex_Character_Reference,
-           State_Character_Reference_Done,
-           State_Invalid);
-
-         type Inputs is
-          (Input_Ampersand,
-           Input_Name_Start_Character,
-           Input_Number_Sign,
-           Input_Latin_Small_Letter_X,
-           Input_Decimal_Digit,
-           Input_Capital_Hex_Digit,
-           Input_Small_Hex_Digit,
-           Input_Semicolon,
-           Input_Unknown);
-
-         Transition : constant array (States, Inputs) of States
-           := (State_Initial =>
-                (Input_Ampersand            => State_Ampersand,
-                 Input_Name_Start_Character => State_Invalid,
-                 Input_Number_Sign          => State_Invalid,
-                 Input_Latin_Small_Letter_X => State_Invalid,
-                 Input_Decimal_Digit        => State_Invalid,
-                 Input_Capital_Hex_Digit    => State_Invalid,
-                 Input_Small_Hex_Digit      => State_Invalid,
-                 Input_Semicolon            => State_Invalid,
-                 Input_Unknown              => State_Invalid),
-               State_Ampersand =>
-                (Input_Ampersand            => State_Invalid,
-                 Input_Name_Start_Character => State_Name,
-                 Input_Number_Sign          => State_Number_Sign,
-                 Input_Latin_Small_Letter_X => State_Invalid,
-                 Input_Decimal_Digit        => State_Invalid,
-                 Input_Capital_Hex_Digit    => State_Name,
-                 Input_Small_Hex_Digit      => State_Name,
-                 Input_Semicolon            => State_Invalid,
-                 Input_Unknown              => State_Invalid),
-               State_Name =>
-                (Input_Ampersand            => State_Invalid,
-                 Input_Name_Start_Character => State_Invalid,
-                 Input_Number_Sign          => State_Invalid,
-                 Input_Latin_Small_Letter_X => State_Invalid,
-                 Input_Decimal_Digit        => State_Invalid,
-                 Input_Capital_Hex_Digit    => State_Invalid,
-                 Input_Small_Hex_Digit      => State_Invalid,
-                 Input_Semicolon            => State_Entity_Reference_Done,
-                 Input_Unknown              => State_Invalid),
-               State_Number_Sign =>
-                (Input_Ampersand            => State_Invalid,
-                 Input_Name_Start_Character => State_Invalid,
-                 Input_Number_Sign          => State_Invalid,
-                 Input_Latin_Small_Letter_X => State_Hex_Character_Reference,
-                 Input_Decimal_Digit        =>
-                   State_Decimal_Character_Reference,
-                 Input_Capital_Hex_Digit    => State_Invalid,
-                 Input_Small_Hex_Digit      => State_Invalid,
-                 Input_Semicolon            => State_Invalid,
-                 Input_Unknown              => State_Invalid),
-               State_Decimal_Character_Reference =>
-                (Input_Ampersand            => State_Invalid,
-                 Input_Name_Start_Character => State_Invalid,
-                 Input_Number_Sign          => State_Invalid,
-                 Input_Latin_Small_Letter_X => State_Invalid,
-                 Input_Decimal_Digit        =>
-                   State_Decimal_Character_Reference,
-                 Input_Capital_Hex_Digit    => State_Invalid,
-                 Input_Small_Hex_Digit      => State_Invalid,
-                 Input_Semicolon            => State_Character_Reference_Done,
-                 Input_Unknown              => State_Invalid),
-               State_Hex_Character_Reference =>
-                (Input_Ampersand            => State_Invalid,
-                 Input_Name_Start_Character => State_Invalid,
-                 Input_Number_Sign          => State_Invalid,
-                 Input_Latin_Small_Letter_X => State_Invalid,
-                 Input_Decimal_Digit        => State_Hex_Character_Reference,
-                 Input_Capital_Hex_Digit    => State_Hex_Character_Reference,
-                 Input_Small_Hex_Digit      => State_Hex_Character_Reference,
-                 Input_Semicolon            => State_Character_Reference_Done,
-                 Input_Unknown              => State_Invalid),
-               State_Entity_Reference_Done => (others => State_Invalid),
-               State_Character_Reference_Done => (others => State_Invalid),
-               State_Invalid => (others => State_Invalid));
+         subtype States is Reference_States;
+         subtype Inputs is Reference_Inputs;
 
          State : States;
          Input : Inputs;
@@ -1923,7 +1937,7 @@ package body XML.SAX.Validating_Readers is
                Input := Input_Unknown;
             end if;
 
-            State := Transition (State, Input);
+            State := Reference_Transition (State, Input);
 
             case State is
                when State_Initial =>
