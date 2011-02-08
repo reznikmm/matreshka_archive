@@ -97,6 +97,11 @@ package XML.SAX.Simple_Readers is
      Enabled : Boolean);
    --  Enables/disables namespace processing.
 
+   not overriding procedure Set_Enable_Validation
+    (Self    : not null access SAX_Simple_Reader;
+     Enabled : Boolean);
+   --  Enables/disables document validation.
+
    Put_Line : access procedure (Item : League.Strings.Universal_String);
 
    --  GNAT GPL 2009/GNAT FSF 4.4: compiler's bug doesn't allow to declare
@@ -291,6 +296,7 @@ private
       Source            : XML.SAX.Input_Sources.SAX_Input_Source_Access;
       Incremental       : Boolean := False;
       Enable_Namespaces : Boolean := True;
+      Enable_Validation : Boolean := False;
    end record;
 
    type SAX_Simple_Reader is new Ada.Finalization.Limited_Controlled

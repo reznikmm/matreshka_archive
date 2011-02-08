@@ -268,6 +268,7 @@ package body XML.SAX.Simple_Readers is
       Matreshka.Internals.XML.Notation_Tables.Reset (Self.Notations);
 
       Self.Namespaces.Enabled := Self.Configuration.Enable_Namespaces;
+      Self.Validation.Enabled := Self.Configuration.Enable_Validation;
 
       Callbacks.Call_Set_Document_Locator (Self.all, Self.Locator);
       Self.Version := XML_1_0;
@@ -355,6 +356,17 @@ package body XML.SAX.Simple_Readers is
    begin
       Self.Configuration.Enable_Namespaces := Enabled;
    end Set_Enable_Namespaces;
+
+   ---------------------------
+   -- Set_Enable_Validation --
+   ---------------------------
+
+   not overriding procedure Set_Enable_Validation
+    (Self    : not null access SAX_Simple_Reader;
+     Enabled : Boolean) is
+   begin
+      Self.Configuration.Enable_Validation := Enabled;
+   end Set_Enable_Validation;
 
    -------------------------
    -- Set_Entity_Resolver --
