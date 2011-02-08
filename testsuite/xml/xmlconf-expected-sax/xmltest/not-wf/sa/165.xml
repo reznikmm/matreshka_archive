@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <fatalError>no&#x20;whitespace&#x20;before&#x20;percent</fatalError>
+  <endDocument/>
+</SAXEvents>

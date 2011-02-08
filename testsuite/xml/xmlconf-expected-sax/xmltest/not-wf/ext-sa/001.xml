@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-        <attributes/>
-    </startElement>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/xmltest/not-wf/ext-sa/001.ent</systemID>
-    </resolveEntity>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <resolveEntity>
+    <name>e</name>
+    <systemID>001.ent</systemID>
+  </resolveEntity>
+  <fatalError>[XML1.1&#x20;4.1&#x20;WFC:&#x20;No&#x20;Recursion]&#x20;parsed&#x20;entity&#x20;must&#x20;not&#x20;containt&#x20;a&#x20;direct&#x20;recursive&#x20;reference&#x20;to&#x20;itself</fatalError>
+  <endDocument/>
+</SAXEvents>

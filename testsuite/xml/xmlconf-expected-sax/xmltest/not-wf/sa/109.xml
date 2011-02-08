@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <fatalError>entity&#x20;reference&#x20;must&#x20;be&#x20;in&#x20;content&#x20;of&#x20;element</fatalError>
+  <endDocument/>
+</SAXEvents>

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-        <attributes/>
-    </startElement>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/xmltest/not-wf/ext-sa/003.ent</systemID>
-    </resolveEntity>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <resolveEntity>
+    <name>e</name>
+    <systemID>003.ent</systemID>
+  </resolveEntity>
+  <fatalError>text&#x20;declaration&#x20;must&#x20;not&#x20;occur&#x20;other&#x20;than&#x20;at&#x20;the&#x20;beginning&#x20;of&#x20;external&#x20;entity</fatalError>
+  <endDocument/>
+</SAXEvents>

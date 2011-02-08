@@ -13,6 +13,6 @@
     <qualifiedName>foo</qualifiedName>
     <attributes/>
   </startElement>
-  <fatalError>[3&#x20;WFC:&#x20;Element&#x20;Type&#x20;Match]&#x20;end&#x20;tag&#x20;name&#x20;must&#x20;match&#x20;start&#x20;tag&#x20;name</fatalError>
+  <fatalError>syntax&#x20;error</fatalError>
   <endDocument/>
 </SAXEvents>

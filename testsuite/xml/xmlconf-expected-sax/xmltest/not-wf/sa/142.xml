@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-        <attributes/>
-    </startElement>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <fatalError>[XML&#x20;4.1&#x20;WFC:&#x20;Legal&#x20;Character]&#x20;character&#x20;reference&#x20;refers&#x20;to&#x20;invalid&#x20;character</fatalError>
+  <endDocument/>
+</SAXEvents>
