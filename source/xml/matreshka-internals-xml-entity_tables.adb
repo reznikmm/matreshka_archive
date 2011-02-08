@@ -85,6 +85,15 @@ package body Matreshka.Internals.XML.Entity_Tables is
       Free (Self.Data);
    end Finalize;
 
+   ------------------
+   -- First_Entity --
+   ------------------
+
+   function First_Entity (Self : Entity_Table) return Entity_Identifier is
+   begin
+      return No_Entity + 1;
+   end First_Entity;
+
    --------------------
    -- First_Position --
    --------------------
@@ -490,6 +499,34 @@ package body Matreshka.Internals.XML.Entity_Tables is
         Replacement_Text => Replacement_Text,
         First_Position   => 0);
    end New_Internal_Parameter_Entity;
+
+   -----------------
+   -- Next_Entity --
+   -----------------
+
+   procedure Next_Entity
+    (Self   : Entity_Table;
+     Entity : in out Entity_Identifier) is
+   begin
+      if Entity = Self.Last then
+         Entity := No_Entity;
+
+      else
+         Entity := Entity + 1;
+      end if;
+   end Next_Entity;
+
+   --------------
+   -- Notation --
+   --------------
+
+   function Notation
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
+       return Matreshka.Internals.XML.Symbol_Identifier is
+   begin
+      return Self.Data (Entity).Notation;
+   end Notation;
 
    ---------------
    -- Public_Id --

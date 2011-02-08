@@ -166,6 +166,13 @@ package Matreshka.Internals.XML.Entity_Tables is
      Entity : Entity_Identifier)
        return not null Matreshka.Internals.Strings.Shared_String_Access;
 
+   function Notation
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
+       return Matreshka.Internals.XML.Symbol_Identifier;
+   --  Returns identifier of notation of the entity for unparsed entity and
+   --  No_Symbol for others.
+
    function Base
     (Self   : Entity_Table;
      Entity : Entity_Identifier)
@@ -218,6 +225,14 @@ package Matreshka.Internals.XML.Entity_Tables is
    procedure Reset (Self : in out Entity_Table);
    --  Resets internal structures to initial state.
 
+   function First_Entity (Self : Entity_Table) return Entity_Identifier;
+   --  Returns first entity.
+
+   procedure Next_Entity
+    (Self   : Entity_Table;
+     Entity : in out Entity_Identifier);
+   --  Sets Entity to next entity identifier or to No_Entity.
+
 private
 
    type Entity_Kinds is
@@ -250,11 +265,13 @@ private
       Last : Entity_Identifier := 0;
    end record;
 
+   pragma Inline (First_Entity);
    pragma Inline (Is_Document_Entity);
    pragma Inline (Is_External_Subset);
    pragma Inline (Is_Parameter_Entity);
    pragma Inline (Is_Internal_General_Entity);
    pragma Inline (Is_External_Parsed_General_Entity);
    pragma Inline (Is_External_Unparsed_General_Entity);
+   pragma Inline (Next_Entity);
 
 end Matreshka.Internals.XML.Entity_Tables;
