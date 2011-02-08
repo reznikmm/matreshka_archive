@@ -1202,6 +1202,26 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          return Error;
       end if;
 
+      --  [1] document ::=
+      --       ( prolog element Misc* ) - ( Char* RestrictedChar Char* )
+      --
+      --  [39] element ::= EmptyElemTag | STag content ETag
+      --
+      --  [43] content ::=
+      --         CharData?
+      --         ((element | Reference | CDSect | PI | Comment) CharData?)*
+      --
+      --  Check that entity is referenced inside element content.
+
+      if Self.Element_Names.Is_Empty then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("entity reference must be in content of element"));
+
+         return Error;
+      end if;
+
       Entity := General_Entity (Self.Symbols, Qualified_Name);
 
       --  [XML1.1 4.1 WFC: Entity Declared]
