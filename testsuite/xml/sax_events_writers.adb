@@ -182,7 +182,9 @@ package body SAX_Events_Writers is
      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
      Success    : in out Boolean) is
    begin
-      Self.Add_Line (To_Universal_String ("  <error/>"));
+      Self.Errors := True;
+      Self.Add_Line
+       ("  <error>" & Escape_String (Occurrence.Message) & "</error>");
    end Error;
 
    ------------------
