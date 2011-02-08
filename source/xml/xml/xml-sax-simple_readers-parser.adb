@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -427,7 +427,7 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 24 =>
-               null;
+               Actions.On_No_Document_Type_Declaration (Self);
 
             when 25 =>
                --  ExternalID specified by SYSTEM, rule [75].
@@ -925,26 +925,31 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 151 =>
-               Actions.On_Element_Attribute_Name (Self, YY.Value_Stack (YY.TOS).Symbol);
+               --  Synthetic rule to check validity of entity boundaries.
+
+               null;
 
             when 152 =>
+               Actions.On_Element_Attribute_Name (Self, YY.Value_Stack (YY.TOS).Symbol);
+
+            when 153 =>
                Actions.On_Element_Attribute
                 (Self,
                  YY.Value_Stack (YY.TOS -  3).Symbol,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 153 =>
+            when 154 =>
                Actions.On_Element_Attribute_Name
                 (Self,
                  YY.Value_Stack (YY.TOS).Symbol);
 
-            when 154 =>
+            when 155 =>
                Actions.On_Element_Attribute
                 (Self,
                  YY.Value_Stack (YY.TOS -  3).Symbol,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 155 =>
+            when 156 =>
                null;
                when others =>
                   raise Program_Error

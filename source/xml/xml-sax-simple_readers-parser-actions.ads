@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -155,6 +155,10 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Process attribute declaration of CDATA type.
+
+   procedure On_No_Document_Type_Declaration
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles case when document type declaration is missing.
 
    procedure On_Notation_Attribute_Declaration
     (Self   : not null access SAX_Simple_Reader'Class;

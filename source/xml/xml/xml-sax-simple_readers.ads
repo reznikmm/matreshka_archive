@@ -207,7 +207,9 @@ private
      Token_Notation,
      Token_Required,
      Token_Implied,
-     Token_Fixed);
+     Token_Fixed,
+     Token_Entity_Start,
+     Token_Entity_End);
 
    type YYSType is limited record
       String        : Matreshka.Internals.Strings.Shared_String_Access;
@@ -413,6 +415,7 @@ private
       --  Used to check whether whitespace is used to separate tokens. For
       --  example, '%' must be separated by whitespace from '<!ENTITY' and
       --  following name.
+      In_Document_Content    : Boolean := False;
 
       Entities               :
         Matreshka.Internals.XML.Entity_Tables.Entity_Table;

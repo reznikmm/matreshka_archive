@@ -358,6 +358,7 @@ private
       --  Used to check whether whitespace is used to separate tokens. For
       --  example, '%' must be separated by whitespace from '<!ENTITY' and
       --  following name.
+      In_Document_Content    : Boolean := False;
 
       Entities               :
         Matreshka.Internals.XML.Entity_Tables.Entity_Table;

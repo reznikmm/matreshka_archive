@@ -125,11 +125,6 @@ package Matreshka.Internals.XML.Entity_Tables is
      Entity : Entity_Identifier) return Boolean;
    --  Returns True when entity is enternal subset of the DTD.
 
-   function Is_Parameter_Entity
-    (Self   : Entity_Table;
-     Entity : Entity_Identifier) return Boolean;
-   --  Returns True when entity is parameter entity (internal or external).
-
    function Is_Internal_General_Entity
     (Self   : Entity_Table;
      Entity : Entity_Identifier) return Boolean;
@@ -144,6 +139,17 @@ package Matreshka.Internals.XML.Entity_Tables is
     (Self   : Entity_Table;
      Entity : Entity_Identifier) return Boolean;
    --  Returns True when entity is external unparsed general entity.
+
+   function Is_Parameter_Entity
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier) return Boolean;
+   --  Returns True when entity is parameter entity (internal or external).
+
+   function Is_Parsed_General_Entity
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier) return Boolean;
+   --  Returns True when entity is parsed general entity (internal or
+   --  external).
 
    function Name
     (Self   : Entity_Table;

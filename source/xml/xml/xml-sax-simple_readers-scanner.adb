@@ -481,6 +481,7 @@ package body XML.SAX.Simple_Readers.Scanner is
        (YY_Continue_Scan,      --  Continue scanning from the current position.
                                --  It is used to continue processing after pop
                                --  up of entity from the scanner's stack.
+        YY_Report_Entity_End,  --  Return end of entity mark.
         YY_Restart_Scan,       --  Restart scanning from the base position.
         YY_Accept_Last_Match,  --  Accept last matched action.
         YY_End_Of_Chunk,       --  End of chunk of data is reached.
@@ -844,11 +845,19 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 14 =>
                --  General entity reference rule [68] in document content.
 
-               if not Actions.On_General_Entity_Reference_In_Document_Content (Self) then
-                  --  Error is detected during handling, return error token to parser.
+               declare
+                  Aux : constant Token
+                    := Actions.On_General_Entity_Reference_In_Document_Content (Self);
 
-                  return Error;
-               end if;
+               begin
+                  --  By convention, End_Of_Input means that replacement text of the
+                  --  referenced entity is empty and it is not pushed into the scanner
+                  --  stack.
+
+                  if Aux /= End_Of_Input then
+                     return Aux;
+                  end if;
+               end;
 
             when 15 =>
                --  [24] VersionInfo
@@ -1609,14 +1618,27 @@ package body XML.SAX.Simple_Readers.Scanner is
 
                            Self.Whitespace_Matched := True;
 
+                           YY_End_Of_Buffer_Action := YY_Continue_Scan;
+
+                        elsif Self.In_Document_Content
+                          and not Self.Scanner_State.In_Literal
+                        then
+                           --  For entity references in the document content
+                           --  we need to track start/end of entity.
+
+                           Free (Self.Scanner_State.Source);
+                           Self.Scanner_State :=
+                             Self.Scanner_Stack.Last_Element;
+                           Self.Scanner_Stack.Delete_Last;
+                           YY_End_Of_Buffer_Action := YY_Report_Entity_End;
+
                         else
                            Free (Self.Scanner_State.Source);
                            Self.Scanner_State :=
                              Self.Scanner_Stack.Last_Element;
                            Self.Scanner_Stack.Delete_Last;
+                           YY_End_Of_Buffer_Action := YY_Continue_Scan;
                         end if;
-
-                        YY_End_Of_Buffer_Action := YY_Continue_Scan;
 
                      else
                         YY_End_Of_Buffer_Action := YY_End_Of_Input;
@@ -1627,6 +1649,9 @@ package body XML.SAX.Simple_Readers.Scanner is
                case YY_End_Of_Buffer_Action is
                   when YY_Continue_Scan =>
                      null;
+
+                  when YY_Report_Entity_End =>
+                     return Token_Entity_End;
 
                   when YY_Restart_Scan | YY_End_Of_Chunk =>
                      --  Back current position to base position.

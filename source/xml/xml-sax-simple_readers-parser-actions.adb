@@ -331,7 +331,18 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    begin
       Analyzer.Analyze_Document_Type_Declaration (Self);
       Callbacks.Call_End_DTD (Self.all);
+      Self.In_Document_Content := True;
    end On_End_Of_Document_Type_Declaration;
+
+   -------------------------------------
+   -- On_No_Document_Type_Declaration --
+   -------------------------------------
+
+   procedure On_No_Document_Type_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Self.In_Document_Content := True;
+   end On_No_Document_Type_Declaration;
 
    ----------------
    -- On_End_Tag --

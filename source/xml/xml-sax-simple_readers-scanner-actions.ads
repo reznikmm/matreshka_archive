@@ -165,8 +165,12 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    --  Handles general entity reference in attribute value.
 
    function On_General_Entity_Reference_In_Document_Content
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
-   --  Handles general entity reference in document content.
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles general entity reference in document content. Do several checks
+   --  and push entity contents into the scanner's stack. Returns
+   --  Token_Entity_Start on success when replacement text is pushed in stack;
+   --  End_Of_Input when replacement text is empty and doesn't pushed into the
+   --  stack; and returns Error on any error.
 
    function On_General_Entity_Reference_In_Entity_Value
     (Self : not null access SAX_Simple_Reader'Class) return Token;

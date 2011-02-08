@@ -293,6 +293,8 @@ package body XML.SAX.Simple_Readers is
 
       Self.Configuration.Reset := False;
       Self.Configuration.Source := null;
+
+      Self.In_Document_Content := False;
    end Reset;
 
    -------------------------

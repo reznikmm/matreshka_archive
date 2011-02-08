@@ -1186,19 +1186,20 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------------------
 
    function On_General_Entity_Reference_In_Document_Content
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+    (Self : not null access SAX_Simple_Reader'Class) return Token
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
       Entity         : Entity_Identifier;
       State          : Scanner_State_Information;
+      Deep           : Natural;
 
    begin
       Resolve_Symbol
        (Self, 1, 1, False, False, False, Qname_Error, Qualified_Name);
 
       if Qname_Error then
-         return False;
+         return Error;
       end if;
 
       Entity := General_Entity (Self.Symbols, Qualified_Name);
@@ -1235,7 +1236,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
             ("[XML1.1 4.1 WFC: Entity Declared]"
                & " general entity must be declared"));
 
-         return False;
+         return Error;
       end if;
 
       --  [XML1.1 4.1 WFC: Parsed Entity]
@@ -1255,7 +1256,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                & " an entity reference must not contain the name of an"
                & " unparsed entity"));
 
-         return False;
+         return Error;
       end if;
 
       --  [XML1.1 4.1 WFC: No Recursion]
@@ -1274,7 +1275,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                & " parsed entity must not containt a direct recursive"
                & " reference to itself"));
 
-         return False;
+         return Error;
       end if;
 
       for J in 1 .. Integer (Self.Scanner_Stack.Length) loop
@@ -1288,16 +1289,29 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                   & " parsed entity must not containt a indirect recursive"
                   & " reference to itself"));
 
-            return False;
+            return Error;
          end if;
       end loop;
 
-      return
-        Push_Entity
-         (Self             => Self,
-          Entity           => Entity,
-          In_Document_Type => False,
-          In_Literal       => False);
+      Deep := Integer (Self.Scanner_Stack.Length);
+
+      if not Push_Entity
+              (Self             => Self,
+               Entity           => Entity,
+               In_Document_Type => False,
+               In_Literal       => False)
+      then
+         return Error;
+
+      elsif Deep = Integer (Self.Scanner_Stack.Length) then
+         --  Entity doesn't pushed in stack because its replacement text
+         --  is empty.
+
+         return End_Of_Input;
+
+      else
+         return Token_Entity_Start;
+      end if;
    end On_General_Entity_Reference_In_Document_Content;
 
    -------------------------------------------------

@@ -300,11 +300,19 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <DOCUMENT_10,DOCUMENT_11,DOCUMENT_U11>"&"{NAME}";" {
    --  General entity reference rule [68] in document content.
 
-   if not Actions.On_General_Entity_Reference_In_Document_Content (Self) then
-      --  Error is detected during handling, return error token to parser.
+   declare
+      Aux : constant Token
+        := Actions.On_General_Entity_Reference_In_Document_Content (Self);
 
-      return Error;
-   end if;
+   begin
+      --  By convention, End_Of_Input means that replacement text of the
+      --  referenced entity is empty and it is not pushed into the scanner
+      --  stack.
+
+      if Aux /= End_Of_Input then
+         return Aux;
+      end if;
+   end;
 }
 
 <XML_DECL>version {
@@ -1107,7 +1115,7 @@ with Matreshka.Internals.Strings;
        (Self : access Integer) return Boolean;
 
       function On_General_Entity_Reference_In_Document_Content
-       (Self : access Integer) return Boolean;
+       (Self : access Integer) return Token;
 
       function On_General_Entity_Reference_In_Entity_Value
        (Self : access Integer) return Token;
