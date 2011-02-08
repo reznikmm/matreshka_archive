@@ -62,7 +62,7 @@ limited with XML.DOM.Nodes.Attrs;
 with XML.DOM.Documents;
 limited with XML.DOM.Nodes.Elements;
 with XML.DOM.Named_Node_Maps;
-with XML.DOM.Node_Lists;
+limited with XML.DOM.Node_Lists;
 
 private with Matreshka.XML.DOM_Nodes;
 
