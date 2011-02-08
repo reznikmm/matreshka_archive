@@ -60,7 +60,7 @@ private with Ada.Finalization;
 
 limited with XML.DOM.Attributes;
 with XML.DOM.Documents;
---with XML.DOM.Elements;
+limited with XML.DOM.Nodes.Elements;
 with XML.DOM.Named_Node_Maps;
 with XML.DOM.Node_Lists;
 
@@ -540,8 +540,8 @@ package XML.DOM.Nodes is
    function Is_Document_Fragment (Self : DOM_Node'Class) return Boolean;
    function Is_Notation (Self : DOM_Node'Class) return Boolean;
 
---   function To_Element
---    (Self : DOM_Node'Class) return XML.DOM.Elements.DOM_Element;
+   function To_Element
+    (Self : DOM_Node'Class) return XML.DOM.Nodes.Elements.DOM_Element;
    function To_Attribute
     (Self : DOM_Node'Class) return XML.DOM.Attributes.DOM_Attribute;
 --   function To_Text

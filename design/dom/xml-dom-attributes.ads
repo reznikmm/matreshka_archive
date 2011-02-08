@@ -104,7 +104,7 @@
 --  specialized DOM implementations, such as SVG DOM implementations, which
 --  store attribute values in an internal form different from a string.
 ------------------------------------------------------------------------------
-with XML.DOM.Elements;
+limited with XML.DOM.Nodes.Elements;
 with XML.DOM.Nodes;
 with XML.DOM.Type_Infos;
 
@@ -147,7 +147,7 @@ package XML.DOM.Attributes is
    --   - NO_MODIFICATION_ALLOWED_ERR: Raised when the node is readonly.
 
    function Owner_Element
-    (Self : DOM_Attribute'Class) return XML.DOM.Elements.DOM_Element;
+    (Self : DOM_Attribute'Class) return XML.DOM.Nodes.Elements.DOM_Element;
    --  The Element node this attribute is attached to or null if this attribute
    --  is not in use.
 
