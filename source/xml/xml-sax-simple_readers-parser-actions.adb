@@ -1047,9 +1047,10 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                --  associated document type declaration and if the document
                --  complies with the constraints expressed in it.]"
 
-               raise Program_Error
-                 with "Document doen't have document type declaration";
-               --  Error
+               Callbacks.Call_Error
+                (Self.all,
+                 League.Strings.To_Universal_String
+                  ("Document doen't have document type declaration"));
 
             elsif Self.Root_Symbol /= Self.Current_Element_Name then
                --  [2.8 VC: Root Element Type]
@@ -1057,10 +1058,10 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                --  "The Name in the document type declaration MUST match the
                --  element type of the root element."
 
-               raise Program_Error
-                 with "[2.8 VC: Root Element Type]"
-                        & " Root element has wrong name";
-               --  Error
+               Callbacks.Call_Error
+                (Self.all,
+                 League.Strings.To_Universal_String
+                  ("[2.8 VC: Root Element Type] Root element has wrong name"));
             end if;
          end if;
       end if;
