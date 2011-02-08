@@ -48,9 +48,8 @@
 --  and others do inherit the interface from it. All offsets in this interface
 --  start from 0.
 ------------------------------------------------------------------------------
-with XML.DOM.Nodes;
 
-package XML.DOM.Character_Datas is
+package XML.DOM.Nodes.Character_Datas is
 
    pragma Preelaborate;
 
@@ -157,4 +156,4 @@ package XML.DOM.Character_Datas is
    --
    --   - NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
 
-end XML.DOM.Character_Datas;
+end XML.DOM.Nodes.Character_Datas;

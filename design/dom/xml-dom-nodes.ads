@@ -58,7 +58,7 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
-limited with XML.DOM.Attributes;
+limited with XML.DOM.Nodes.Attrs;
 with XML.DOM.Documents;
 limited with XML.DOM.Nodes.Elements;
 with XML.DOM.Named_Node_Maps;
@@ -543,7 +543,7 @@ package XML.DOM.Nodes is
    function To_Element
     (Self : DOM_Node'Class) return XML.DOM.Nodes.Elements.DOM_Element;
    function To_Attribute
-    (Self : DOM_Node'Class) return XML.DOM.Attributes.DOM_Attribute;
+    (Self : DOM_Node'Class) return XML.DOM.Nodes.Attrs.DOM_Attribute;
 --   function To_Text
 --    (Self : DOM_Node'Class) return XML.DOM.Texts.DOM_Text;
 --   function To_CDATA_Section

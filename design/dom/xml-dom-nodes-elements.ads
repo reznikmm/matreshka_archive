@@ -56,7 +56,7 @@
 --  Note: In DOM Level 2, the method normalize is inherited from the Node
 --  interface where it was moved.
 ------------------------------------------------------------------------------
-limited with XML.DOM.Attributes;
+limited with XML.DOM.Nodes.Attrs;
 with XML.DOM.Node_Lists;
 with XML.DOM.Nodes;
 with XML.DOM.Type_Infos;
@@ -121,7 +121,7 @@ package XML.DOM.Nodes.Elements is
 
    function Get_Attribute_Node
     (Self : DOM_Element'Class; Name : DOM_String)
-       return XML.DOM.Attributes.DOM_Attribute;
+       return XML.DOM.Nodes.Attrs.DOM_Attribute;
    --  Retrieves an attribute node by name. Returns The Attr node with the
    --  specified name (nodeName) or null if there is no such attribute.
    --
@@ -130,8 +130,8 @@ package XML.DOM.Nodes.Elements is
 
    function Set_Attribute_Node
     (Self : in out DOM_Element'Class;
-     Attr : XML.DOM.Attributes.DOM_Attribute)
-       return XML.DOM.Attributes.DOM_Attribute;
+     Attr : XML.DOM.Nodes.Attrs.DOM_Attribute)
+       return XML.DOM.Nodes.Attrs.DOM_Attribute;
    --  Adds a new attribute node. If an attribute with that name (nodeName) is
    --  already present in the element, it is replaced by the new one. Replacing
    --  an attribute node by itself has no effect. If the newAttr attribute
@@ -154,8 +154,8 @@ package XML.DOM.Nodes.Elements is
 
    function Remove_Attribute_Node
     (Self     : in out DOM_Element'Class;
-     Old_Attr : XML.DOM.Attributes.DOM_Attribute)
-       return XML.DOM.Attributes.DOM_Attribute;
+     Old_Attr : XML.DOM.Nodes.Attrs.DOM_Attribute)
+       return XML.DOM.Nodes.Attrs.DOM_Attribute;
    --  Removes the specified attribute node. If a default value for the removed
    --  Attr node is defined in the DTD, a new node immediately appears with the
    --  default value as well as the corresponding namespace URI, local name,
@@ -266,7 +266,7 @@ package XML.DOM.Nodes.Elements is
     (Self          : DOM_Element'Class;
      Namespace_URI : DOM_String;
      Local_Name    : DOM_String)
-       return XML.DOM.Attributes.DOM_Attribute;
+       return XML.DOM.Nodes.Attrs.DOM_Attribute;
    --  Retrieves an Attr node by local name and namespace URI. Returns the Attr
    --  node with the specified attribute local name and namespace URI or null
    --  if there is no such attribute.
@@ -282,8 +282,8 @@ package XML.DOM.Nodes.Elements is
 
    function Set_Attribute_Node_NS
     (Self : in out DOM_Element'Class;
-     Attr : XML.DOM.Attributes.DOM_Attribute)
-       return XML.DOM.Attributes.DOM_Attribute;
+     Attr : XML.DOM.Nodes.Attrs.DOM_Attribute)
+       return XML.DOM.Nodes.Attrs.DOM_Attribute;
    --  Adds a new attribute. If an attribute with that local name and that
    --  namespace URI is already present in the element, it is replaced by the
    --  new one. Replacing an attribute node by itself has no effect.
@@ -397,7 +397,7 @@ package XML.DOM.Nodes.Elements is
 
    procedure Set_Id_Attribute_Node
     (Self  : in out DOM_Element'Class;
-     Attr  : XML.DOM.Attributes.DOM_Attribute)
+     Attr  : XML.DOM.Nodes.Attrs.DOM_Attribute;
      Is_Id : Boolean);
    --  If the parameter Is_Id is True, this method declares the specified
    --  attribute to be a user-determined ID attribute. This affects the value
