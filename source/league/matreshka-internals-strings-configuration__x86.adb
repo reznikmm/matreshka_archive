@@ -218,7 +218,7 @@ package body Matreshka.Internals.Strings.Configuration is
       use type Interfaces.Unsigned_32;
 
    begin
-      if not Has_CPUID or Maximum_Value < 1 then
+      if not Has_CPUID or else Maximum_Value < 1 then
          --  CPU doesn't has CPUID instruction or doesn't support getting of
          --  features sets.
 
