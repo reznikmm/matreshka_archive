@@ -418,6 +418,17 @@ package body XML.SAX.Pretty_Writers is
       Self.Text.Clear;
    end Reset;
 
+   ---------------------
+   -- Set_Destination --
+   ---------------------
+
+   overriding procedure Set_Destination
+    (Self        : in out SAX_Pretty_Writer;
+     Destination : not null XML.SAX.Writers.SAX_Output_Destination_Access) is
+   begin
+      Self.Destination := Destination;
+   end Set_Destination;
+
    -----------------
    -- Set_Version --
    -----------------

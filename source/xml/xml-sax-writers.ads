@@ -48,12 +48,23 @@ with League.Strings;
 with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
 with XML.SAX.Lexical_Handlers;
+with XML.SAX.Output_Destinations;
 
 package XML.SAX.Writers is
+
+   pragma Preelaborate;
+
+   type SAX_Output_Destination_Access is
+     access all XML.SAX.Output_Destinations.SAX_Output_Destination'Class;
 
    type SAX_Writer is limited interface
      and XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler;
+
+   procedure Set_Destination
+    (Self        : in out SAX_Writer;
+     Destination : not null SAX_Output_Destination_Access) is abstract;
+   --  Sets output destination to be used to output generated XML stream.
 
    procedure Characters
     (Self : in out SAX_Writer'Class;

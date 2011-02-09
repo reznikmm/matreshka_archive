@@ -68,6 +68,11 @@ package XML.SAX.Pretty_Writers is
     (Self    : in out SAX_Pretty_Writer;
      Version : XML_Version);
 
+   overriding procedure Set_Destination
+    (Self        : in out SAX_Pretty_Writer;
+     Destination : not null XML.SAX.Writers.SAX_Output_Destination_Access);
+   --  Sets output destination to be used to output generated stream.
+
    overriding procedure Characters
     (Self    : in out SAX_Pretty_Writer;
      Text    : League.Strings.Universal_String;
@@ -216,14 +221,15 @@ private
    type SAX_Pretty_Writer is
      limited new XML.SAX.Writers.SAX_Writer with
    record
-      Text       : League.Strings.Universal_String;
-      Nesting    : Natural;
-      Version    : XML_Version := XML_1_0;
-      Tag_Opened : Boolean := False;
-      Bank       : Banks.Map;
-      Current    : Mappings.Map; --  Mapping for current element
-      Stack      : Stacks.Vector;
-      Error      : League.Strings.Universal_String;
+      Text        : League.Strings.Universal_String;
+      Nesting     : Natural;
+      Version     : XML_Version := XML_1_0;
+      Tag_Opened  : Boolean := False;
+      Bank        : Banks.Map;
+      Current     : Mappings.Map; --  Mapping for current element
+      Stack       : Stacks.Vector;
+      Error       : League.Strings.Universal_String;
+      Destination : XML.SAX.Writers.SAX_Output_Destination_Access;
    end record;
 
    function Escape
