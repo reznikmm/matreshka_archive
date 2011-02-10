@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
+  <notation>
+    <name>JPGformat</name>
+    <systemID>JPGFormat</systemID>
+  </notation>
   <fatalError>unexpected&#x20;character</fatalError>
   <endDocument/>
 </SAXEvents>

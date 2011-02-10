@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <fatalError>[[75]&#x20;ExternalID,&#x20;[83]&#x20;PublicID]&#x20;whitespace&#x20;is&#x20;required&#x20;before&#x20;pubid&#x20;literal</fatalError>
+  <endDocument/>
+</SAXEvents>

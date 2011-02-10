@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>html</localName>
-        <qualifiedName>html</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>\n</char>
-    <char>\s</char>
-    <char>\s</char>
-    <char>\s</char>
-    <char>\s</char>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>html</localName>
+    <qualifiedName>html</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>&#xA;</characters>
+  <characters>&#x20;</characters>
+  <characters>&#x20;</characters>
+  <characters>&#x20;</characters>
+  <characters>&#x20;</characters>
+  <fatalError>unexpected&#x20;character</fatalError>
+  <endDocument/>
+</SAXEvents>
