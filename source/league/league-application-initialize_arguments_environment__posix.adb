@@ -175,7 +175,7 @@ procedure Initialize_Arguments_Environment is
 
    begin
       --  Analyze LC_CTYPE, LC_ALL, LANG for codeset part, use first found,
-      --  otherwise fallback to ISO-8858-1.
+      --  otherwise fallback to ISO-8859-1.
 
       if not LC_CTYPE_Encoding.Is_Empty then
          return League.Text_Codecs.Codec (LC_CTYPE_Encoding);
