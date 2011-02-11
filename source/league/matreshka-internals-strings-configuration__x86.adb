@@ -45,7 +45,7 @@ with Ada.Characters.Latin_1;
 with Interfaces;
 with System.Machine_Code;
 
-with Matreshka.Internals.Strings.Handlers.Portable_32;
+with Matreshka.Internals.Strings.Handlers.Portable;
 with Matreshka.Internals.Strings.Handlers.X86.SSE2;
 
 package body Matreshka.Internals.Strings.Configuration is
@@ -222,7 +222,7 @@ package body Matreshka.Internals.Strings.Configuration is
          --  CPU doesn't has CPUID instruction or doesn't support getting of
          --  features sets.
 
-         String_Handler := Handlers.Portable_32.Handler'Access;
+         String_Handler := Handlers.Portable.Handler'Access;
 
       elsif Has_SSE2 then
          --  CPU supports SSE2 instructions set.
@@ -232,7 +232,7 @@ package body Matreshka.Internals.Strings.Configuration is
       else
          --  CPU doesn't supports SSE2 instructions set.
 
-         String_Handler := Handlers.Portable_32.Handler'Access;
+         String_Handler := Handlers.Portable.Handler'Access;
       end if;
    end Initialize;
 
