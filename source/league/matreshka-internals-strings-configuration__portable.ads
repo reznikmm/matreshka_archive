@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 --  This is portable version of the package for 32-bit platforms.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings.Handlers.Portable_32;
+with Matreshka.Internals.Strings.Handlers.Portable;
 
 package Matreshka.Internals.Strings.Configuration is
 
@@ -51,7 +51,7 @@ package Matreshka.Internals.Strings.Configuration is
 
    String_Handler : not null access
      Matreshka.Internals.Strings.Handlers.Abstract_String_Handler'Class
-       := Matreshka.Internals.Strings.Handlers.Portable_32.Handler'Access;
+       := Matreshka.Internals.Strings.Handlers.Portable.Handler'Access;
    --  Platform dependent strings handler to be used for operations on strings.
 
    procedure Initialize is null;

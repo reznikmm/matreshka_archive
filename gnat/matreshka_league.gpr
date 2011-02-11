@@ -83,27 +83,22 @@ library project Matreshka_League is
 
    case Matreshka_Config.Architecture is
       when "portable_32_be" =>
-         for Source_Dirs
-           use Common_Source_Dirs & ("../source/league/portable_32");
+         for Source_Dirs use Common_Source_Dirs;
 
       when "portable_32_le" =>
-         for Source_Dirs
-           use Common_Source_Dirs & ("../source/league/portable_32");
+         for Source_Dirs use Common_Source_Dirs;
 
       when "portable_64_be" =>
-         for Source_Dirs
-           use Common_Source_Dirs & ("../source/league/portable_64");
+         for Source_Dirs use Common_Source_Dirs;
 
       when "portable_64_le" =>
-         for Source_Dirs
-           use Common_Source_Dirs & ("../source/league/portable_64");
+         for Source_Dirs use Common_Source_Dirs;
 
       when "x86" =>
          Platform_Ada_Switches := ("-march=i686");
          for Source_Dirs
            use Common_Source_Dirs
                  & ("../source/league/arch/x86",
-                    "../source/league/portable_32",
                     "../source/league/x86_generic",
                     "../source/league/x86");
 
@@ -111,7 +106,6 @@ library project Matreshka_League is
          for Source_Dirs
            use Common_Source_Dirs
                  & ("../source/league/arch/x86",
-                    "../source/league/portable_64",
                     "../source/league/x86_generic",
                     "../source/league/x86_64");
    end case;
@@ -218,33 +212,41 @@ library project Matreshka_League is
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
             for Specification ("Matreshka.Internals.Strings.Configuration")
-              use "matreshka-internals-strings-configuration__portable_32.ads";
+              use "matreshka-internals-strings-configuration__portable.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__be.ads";
+            for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
+              use "matreshka-internals-strings-handlers-portable__32.adb";
 
          when "portable_32_le" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
             for Specification ("Matreshka.Internals.Strings.Configuration")
-              use "matreshka-internals-strings-configuration__portable_32.ads";
+              use "matreshka-internals-strings-configuration__portable.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__le.ads";
+            for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
+              use "matreshka-internals-strings-handlers-portable__32.adb";
 
          when "portable_64_be" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
             for Specification ("Matreshka.Internals.Strings.Configuration")
-              use "matreshka-internals-strings-configuration__portable_64.ads";
+              use "matreshka-internals-strings-configuration__portable.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__be.ads";
+            for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
+              use "matreshka-internals-strings-handlers-portable__64.adb";
 
          when "portable_64_le" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
             for Specification ("Matreshka.Internals.Strings.Configuration")
-              use "matreshka-internals-strings-configuration__portable_64.ads";
+              use "matreshka-internals-strings-configuration__portable.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__le.ads";
+            for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
+              use "matreshka-internals-strings-handlers-portable__64.adb";
 
          when "x86" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
@@ -255,6 +257,8 @@ library project Matreshka_League is
               use "matreshka-internals-strings-configuration__x86.adb";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__x86.ads";
+            for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
+              use "matreshka-internals-strings-handlers-portable__32.adb";
 
          when "x86_64" =>
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
@@ -263,6 +267,8 @@ library project Matreshka_League is
               use "matreshka-internals-strings-configuration__x86_64.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__x86.ads";
+            for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
+              use "matreshka-internals-strings-handlers-portable__64.adb";
       end case;
 
       case Matreshka_Config.Operating_System is

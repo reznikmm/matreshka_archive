@@ -46,14 +46,14 @@
 --  at application elaboration, it is intended to be replaced by more optimized
 --  version after determination of CPU capabilities.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings.Handlers.Portable_32;
+with Matreshka.Internals.Strings.Handlers.Portable;
 
 package Matreshka.Internals.Strings.Handlers.X86 is
 
    pragma Preelaborate;
 
    type X86_String_Handler is
-     new Matreshka.Internals.Strings.Handlers.Portable_32.Portable_32_String_Handler
+     new Matreshka.Internals.Strings.Handlers.Portable.Portable_String_Handler
        with null record;
 
    overriding procedure Fill_Null_Terminator

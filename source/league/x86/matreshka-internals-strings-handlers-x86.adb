@@ -52,7 +52,7 @@ package body Matreshka.Internals.Strings.Handlers.X86 is
     (Self : X86_String_Handler;
      Item : not null Shared_String_Access) is
    begin
-      Portable_32.Portable_32_String_Handler
+      Portable.Portable_String_Handler
        (Self).Fill_Null_Terminator (Item);
       --  XXX This must be replaced by actual implementation which must fill
       --  full SSE vector to compatibility with optimized SSE version.

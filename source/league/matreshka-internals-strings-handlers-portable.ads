@@ -42,45 +42,46 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --  This package provides implementation of string handling subprograms for
---  generic 64-bit platform.
+--  generic platform. Package has two implementations: for 32-bit and for
+--  64-bit platform.
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.Strings.Handlers.Portable_64 is
+package Matreshka.Internals.Strings.Handlers.Portable is
 
    pragma Preelaborate;
 
-   type Portable_64_String_Handler is
+   type Portable_String_Handler is
      new Abstract_String_Handler with null record;
 
    overriding procedure Fill_Null_Terminator
-    (Self : Portable_64_String_Handler;
+    (Self : Portable_String_Handler;
      Item : not null Shared_String_Access);
 
    overriding function Is_Equal
-    (Self  : Portable_64_String_Handler;
+    (Self  : Portable_String_Handler;
      Left  : not null Shared_String_Access;
      Right : not null Shared_String_Access) return Boolean;
 
    overriding function Is_Less
-    (Self  : Portable_64_String_Handler;
+    (Self  : Portable_String_Handler;
      Left  : not null Shared_String_Access;
      Right : not null Shared_String_Access) return Boolean;
 
    overriding function Is_Greater
-    (Self  : Portable_64_String_Handler;
+    (Self  : Portable_String_Handler;
      Left  : not null Shared_String_Access;
      Right : not null Shared_String_Access) return Boolean;
 
    overriding function Is_Less_Or_Equal
-    (Self  : Portable_64_String_Handler;
+    (Self  : Portable_String_Handler;
      Left  : not null Shared_String_Access;
      Right : not null Shared_String_Access) return Boolean;
 
    overriding function Is_Greater_Or_Equal
-    (Self  : Portable_64_String_Handler;
+    (Self  : Portable_String_Handler;
      Left  : not null Shared_String_Access;
      Right : not null Shared_String_Access) return Boolean;
 
-   Handler : aliased Portable_64_String_Handler;
+   Handler : aliased Portable_String_Handler;
 
-end Matreshka.Internals.Strings.Handlers.Portable_64;
+end Matreshka.Internals.Strings.Handlers.Portable;
