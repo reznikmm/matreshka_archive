@@ -98,16 +98,14 @@ library project Matreshka_League is
          Platform_Ada_Switches := ("-march=i686");
          for Source_Dirs
            use Common_Source_Dirs
-                 & ("../source/league/arch/x86",
-                    "../source/league/x86_generic",
-                    "../source/league/x86");
+                 & ("../source/league/arch/x86_generic",
+                    "../source/league/arch/x86");
 
       when "x86_64" =>
          for Source_Dirs
            use Common_Source_Dirs
-                 & ("../source/league/arch/x86",
-                    "../source/league/x86_generic",
-                    "../source/league/x86_64");
+                 & ("../source/league/arch/x86_generic",
+                    "../source/league/arch/x86_64");
    end case;
 
    case Matreshka_Config.Build is
