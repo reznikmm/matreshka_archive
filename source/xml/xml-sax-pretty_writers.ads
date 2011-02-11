@@ -70,7 +70,7 @@ package XML.SAX.Pretty_Writers is
 
    overriding procedure Set_Destination
     (Self        : in out SAX_Pretty_Writer;
-     Destination : not null XML.SAX.Writers.SAX_Output_Destination_Access);
+     Destination : XML.SAX.Writers.SAX_Output_Destination_Access);
    --  Sets output destination to be used to output generated stream.
 
    overriding procedure Characters

@@ -63,7 +63,9 @@ package XML.SAX.Writers is
 
    procedure Set_Destination
     (Self        : in out SAX_Writer;
-     Destination : not null SAX_Output_Destination_Access) is abstract;
+     Destination : SAX_Output_Destination_Access) is abstract;
+--     Destination : not null SAX_Output_Destination_Access) is abstract;
+--  GNAT GPL 2010: crash when 'not null' is specified.
    --  Sets output destination to be used to output generated XML stream.
 
    procedure Characters
