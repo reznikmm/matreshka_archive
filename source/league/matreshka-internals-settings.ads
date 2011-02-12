@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,89 +41,26 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Finalization;
+with Matreshka.Internals.Atomics.Counters;
 
-with League.String_Vectors;
-with League.Strings;
-with League.Values;
-private with Matreshka.Internals.Settings;
-
-package League.Settings is
+package Matreshka.Internals.Settings is
 
    pragma Preelaborate;
 
-   type Formats is (Native, Ini);
-
-   type Scopes is (User, System);
-
-   type Statuses is (No_Error, Access_Error, Format_Error);
-
-   type Settings is tagged limited private;
-
-   function All_Keys
-    (Self : Settings) return League.String_Vectors.Universal_String_Vector;
-
-   function Application_Name
-    (Self : Settings) return League.Strings.Universal_String;
-
-   procedure Begin_Group
-    (Self   : in out Settings;
-     Prefix : League.Strings.Universal_String);
-
-   function Child_Groups
-    (Self : Settings) return League.String_Vectors.Universal_String_Vector;
-
-   function Child_Keys
-    (Self : Settings) return League.String_Vectors.Universal_String_Vector;
-
-   procedure Clear (Self : in out Settings);
-
-   function Contains
-    (Self : Settings;
-     Key  : League.Strings.Universal_String) return Boolean;
-
-   procedure End_Group (Self : in out Settings);
-
-   function Fallbacks_Enabled (Self : Settings) return Boolean;
-
-   function File_Name (Self : Settings) return League.Strings.Universal_String;
-
-   function Format (Self : Settings) return Formats;
-
-   function Group (Self : Settings) return League.Strings.Universal_String;
-
-   function Is_Writeable (Self : Settings) return Boolean;
-
-   function Organization_Name
-    (Self : Settings) return League.Strings.Universal_String;
-
-   procedure Remove
-    (Self : in out Settings;
-     Key  : League.Strings.Universal_String);
-
-   function Scope (Self : Settings) return Scopes;
-
-   procedure Set_Fallbacks_Enables (Self : in out Settings; Enabled : Boolean);
-
-   procedure Set_Value
-    (Self  : in out Settings;
-     Key   : League.Strings.Universal_String;
-     Value : League.Values.Value);
-
-   function Status (Self : Settings) return Statuses;
-
-   procedure Sync (Self : in out Settings);
-
-   function Value
-    (Self : Settings;
-     Key  : League.Strings.Universal_String) return League.Values.Value;
-
-private
-
-   type Settings is new Ada.Finalization.Limited_Controlled with record
-      Data : Matreshka.Internals.Settings.Settings_Access;
+   type Abstract_Settings is abstract tagged limited record
+      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
    end record;
 
-   overriding procedure Finalize (Self : in out Settings);
+   type Settings_Access is access all Abstract_Settings'Class;
 
-end League.Settings;
+   not overriding procedure Finalize
+    (Self : not null access Abstract_Settings) is null;
+
+   procedure Reference (Self : not null Settings_Access);
+   --  Increments reference counter.
+
+   procedure Dereference (Self : in out Settings_Access);
+   --  Decrements reference counter. Call Finalize and deallocate memory when
+   --  reference counter reach zero. Always sets Self to null.
+
+end Matreshka.Internals.Settings;

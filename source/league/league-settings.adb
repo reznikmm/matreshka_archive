@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -163,6 +163,19 @@ package body League.Settings is
    begin
       return League.Strings.Empty_Universal_String;
    end File_Name;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize (Self : in out Settings) is
+      use type Matreshka.Internals.Settings.Settings_Access;
+
+   begin
+      if Self.Data /= null then
+         Matreshka.Internals.Settings.Dereference (Self.Data);
+      end if;
+   end Finalize;
 
    ------------
    -- Format --
