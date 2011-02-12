@@ -218,53 +218,53 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
             if Code <= 16#00_007F# then
                --  One byte sequence: 0xxxxxxx
 
-               Buffer.Last := Buffer.Last + 1;
-               Buffer.Value (Buffer.Last) := Ada.Streams.Stream_Element (Code);
+               Buffer.Value (Buffer.Length) := Ada.Streams.Stream_Element (Code);
+               Buffer.Length := Buffer.Length + 1;
 
             elsif Code <= 16#00_07FF# then
                --  Two bytes sequence: 110xxxxx 10xxxxxx
 
-               Buffer.Last := Buffer.Last + 1;
-               Buffer.Value (Buffer.Last) :=
+               Buffer.Value (Buffer.Length) :=
                  Ada.Streams.Stream_Element (2#11000000# or (Code / 16#40#));
-               Buffer.Last := Buffer.Last + 1;
-               Buffer.Value (Buffer.Last) :=
+               Buffer.Length := Buffer.Length + 1;
+               Buffer.Value (Buffer.Length) :=
                  Ada.Streams.Stream_Element
                   (2#10000000# or (Code and 2#00111111#));
+               Buffer.Length := Buffer.Length + 1;
 
             elsif Code <= 16#00_FFFF# then
                --  Three bytes sequence: 1110xxxx 10xxxxxx 10xxxxxx
 
-               Buffer.Last := Buffer.Last + 1;
-               Buffer.Value (Buffer.Last) :=
+               Buffer.Value (Buffer.Length) :=
                  Ada.Streams.Stream_Element (2#11100000# or (Code / 16#1000#));
-               Buffer.Last := Buffer.Last + 1;
-               Buffer.Value (Buffer.Last) :=
+               Buffer.Length := Buffer.Length + 1;
+               Buffer.Value (Buffer.Length) :=
                  Ada.Streams.Stream_Element
                   (2#10000000# or ((Code / 16#40#) and 2#00111111#));
-               Buffer.Last := Buffer.Last + 1;
-               Buffer.Value (Buffer.Last) :=
+               Buffer.Length := Buffer.Length + 1;
+               Buffer.Value (Buffer.Length) :=
                  Ada.Streams.Stream_Element
                   (2#10000000# or (Code and 2#00111111#));
+               Buffer.Length := Buffer.Length + 1;
 
             else
                --  Four bytes sequence: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
 
-               Buffer.Last := Buffer.Last + 1;
-               Buffer.Value (Buffer.Last) :=
+               Buffer.Value (Buffer.Length) :=
                  Ada.Streams.Stream_Element (2#11110000# or (Code / 16#40000#));
-               Buffer.Last := Buffer.Last + 1;
-               Buffer.Value (Buffer.Last) :=
+               Buffer.Length := Buffer.Length + 1;
+               Buffer.Value (Buffer.Length) :=
                  Ada.Streams.Stream_Element
                   (2#11000000# or ((Code / 16#1000#) and 2#00111111#));
-               Buffer.Last := Buffer.Last + 1;
-               Buffer.Value (Buffer.Last) :=
+               Buffer.Length := Buffer.Length + 1;
+               Buffer.Value (Buffer.Length) :=
                  Ada.Streams.Stream_Element
                   (2#10000000# or ((Code / 16#40#) and 2#00111111#));
-               Buffer.Last := Buffer.Last + 1;
-               Buffer.Value (Buffer.Last) :=
+               Buffer.Length := Buffer.Length + 1;
+               Buffer.Value (Buffer.Length) :=
                  Ada.Streams.Stream_Element
                   (2#10000000# or (Code and 2#00111111#));
+               Buffer.Length := Buffer.Length + 1;
             end if;
          end loop;
       end if;

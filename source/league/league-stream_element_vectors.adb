@@ -59,11 +59,10 @@ package body League.Stream_Element_Vectors is
       return
         Left.Data = Right.Data
           or else
-           (Left.Data.Last = Right.Data.Last
+           (Left.Data.Length = Right.Data.Length
               and then
-                Left.Data.Value (Left.Data.Value'First .. Left.Data.Last)
-                  = Right.Data.Value
-                     (Right.Data.Value'First .. Right.Data.Last));
+                Left.Data.Value (0 .. Left.Data.Length - 1)
+                  = Right.Data.Value (0 .. Right.Data.Length - 1));
    end "=";
 
    ---------
@@ -74,9 +73,9 @@ package body League.Stream_Element_Vectors is
     (Left  : Stream_Element_Vector;
      Right : Ada.Streams.Stream_Element_Array) return Boolean is
    begin
-      if Left.Data.Last = Right'Length then
+      if Left.Data.Length = Right'Length then
          return
-           Left.Data.Value (Left.Data.Value'First .. Left.Data.Last) = Right;
+           Left.Data.Value (0 .. Left.Data.Length - 1) = Right;
 
       else
          return False;
@@ -123,7 +122,7 @@ package body League.Stream_Element_Vectors is
 
    function Is_Empty (Self : Stream_Element_Vector) return Boolean is
    begin
-      return Self.Data.Last = 0;
+      return Self.Data.Length = 0;
    end Is_Empty;
 
    ------------
@@ -133,7 +132,7 @@ package body League.Stream_Element_Vectors is
    function Length
     (Self : Stream_Element_Vector) return Ada.Streams.Stream_Element_Offset is
    begin
-      return Self.Data.Last;
+      return Self.Data.Length;
    end Length;
 
    -----------------------------
@@ -143,7 +142,7 @@ package body League.Stream_Element_Vectors is
    function To_Stream_Element_Array
     (Item : Stream_Element_Vector) return Ada.Streams.Stream_Element_Array is
    begin
-      return Item.Data.Value (Item.Data.Value'First .. Item.Data.Last);
+      return Item.Data.Value (0 .. Item.Data.Length - 1);
    end To_Stream_Element_Array;
 
    ------------------------------
@@ -153,11 +152,11 @@ package body League.Stream_Element_Vectors is
    function To_Stream_Element_Vector
     (Item : Ada.Streams.Stream_Element_Array) return Stream_Element_Vector
    is
-      Data : Shared_Stream_Element_Vector_Access := Allocate (Item'Length);
+      Data : Shared_Stream_Element_Vector_Access := Allocate (Item'Length - 1);
 
    begin
-      Data.Last := Item'Length;
-      Data.Value (Data.Value'First .. Data.Last) := Item;
+      Data.Length := Item'Length;
+      Data.Value (0 .. Data.Length - 1) := Item;
 
       return (Ada.Finalization.Controlled with Data => Data);
    end To_Stream_Element_Vector;
