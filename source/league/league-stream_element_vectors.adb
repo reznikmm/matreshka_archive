@@ -91,6 +91,26 @@ package body League.Stream_Element_Vectors is
       Reference (Self.Data);
    end Adjust;
 
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self : in out Stream_Element_Vector;
+     Item : Ada.Streams.Stream_Element_Array)
+   is
+      Data : constant Shared_Stream_Element_Vector_Access
+        := Allocate (Self.Data.Length + Item'Length);
+
+   begin
+      Data.Length := Self.Data.Length + Item'Length;
+      Data.Value (0 .. Self.Data.Length - 1) :=
+        Self.Data.Value (0 .. Self.Data.Length - 1);
+      Data.Value (Self.Data.Length .. Data.Length - 1) := Item;
+      Dereference (Self.Data);
+      Self.Data := Data;
+   end Append;
+
    -----------
    -- Clear --
    -----------
@@ -152,7 +172,7 @@ package body League.Stream_Element_Vectors is
    function To_Stream_Element_Vector
     (Item : Ada.Streams.Stream_Element_Array) return Stream_Element_Vector
    is
-      Data : Shared_Stream_Element_Vector_Access := Allocate (Item'Length - 1);
+      Data : Shared_Stream_Element_Vector_Access := Allocate (Item'Length);
 
    begin
       Data.Length := Item'Length;

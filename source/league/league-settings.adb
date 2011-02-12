@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Settings.Configuration_Files;
 
 package body League.Settings is
 
@@ -210,6 +211,23 @@ package body League.Settings is
       return False;
    end Is_Writeable;
 
+   ----------
+   -- Load --
+   ----------
+
+   procedure Load (Self : in out Settings; File_Name : String) is
+      use Matreshka.Internals.Settings.Configuration_Files;
+      use type Matreshka.Internals.Settings.Settings_Access;
+
+   begin
+      if Self.Data /= null then
+         Matreshka.Internals.Settings.Dereference (Self.Data);
+      end if;
+
+      Self.Data := new Configuration_File_Settings;
+      Load (Configuration_File_Settings'Class (Self.Data.all), File_Name);
+   end Load;
+
    -----------------------
    -- Organization_Name --
    -----------------------
@@ -294,13 +312,9 @@ package body League.Settings is
 
    function Value
     (Self : Settings;
-     Key  : League.Strings.Universal_String) return League.Values.Value
-   is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Key);
-
+     Key  : League.Strings.Universal_String) return League.Values.Value is
    begin
-      return X : League.Values.Value;
+      return Self.Data.Value (Key);
    end Value;
 
 end League.Settings;

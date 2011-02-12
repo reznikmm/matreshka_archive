@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings;
+with League.Values;
 with Matreshka.Internals.Atomics.Counters;
 
 package Matreshka.Internals.Settings is
@@ -50,6 +52,11 @@ package Matreshka.Internals.Settings is
    type Abstract_Settings is abstract tagged limited record
       Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
    end record;
+
+   not overriding function Value
+    (Self : Abstract_Settings;
+     Key  : League.Strings.Universal_String)
+       return League.Values.Value is abstract;
 
    type Settings_Access is access all Abstract_Settings'Class;
 

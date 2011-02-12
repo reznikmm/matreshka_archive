@@ -50,8 +50,6 @@ private with Matreshka.Internals.Settings;
 
 package League.Settings is
 
-   pragma Preelaborate;
-
    type Formats is (Native, Ini);
 
    type Scopes is (User, System);
@@ -117,6 +115,10 @@ package League.Settings is
    function Value
     (Self : Settings;
      Key  : League.Strings.Universal_String) return League.Values.Value;
+
+   --  This subprogram is added temporary.
+
+   procedure Load (Self : in out Settings; File_Name : String);
 
 private
 

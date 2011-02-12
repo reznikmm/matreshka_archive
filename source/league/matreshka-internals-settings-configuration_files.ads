@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,30 +41,32 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Containers.Hashed_Maps;
 
-package body League.Stream_Element_Vectors.Internals is
+with League.Stream_Element_Vectors;
+with League.Strings.Hash;
 
-   --------------
-   -- Internal --
-   --------------
+package Matreshka.Internals.Settings.Configuration_Files is
 
-   function Internal
-    (Item : Stream_Element_Vector)
-       return MISEV.Shared_Stream_Element_Vector_Access is
-   begin
-      return Item.Data;
-   end Internal;
+   package Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           League.Stream_Element_Vectors.Stream_Element_Vector,
+           League.Strings.Hash,
+           League.Strings."=",
+           League.Stream_Element_Vectors."=");
 
-   ----------
-   -- Wrap --
-   ----------
+   type Configuration_File_Settings is new Abstract_Settings with record
+      Values : Maps.Map;
+   end record;
 
-   function Wrap
-    (Item : not null MISEV.Shared_Stream_Element_Vector_Access)
-       return Stream_Element_Vector is
-   begin
-      return
-        Stream_Element_Vector'(Ada.Finalization.Controlled with Data => Item);
-   end Wrap;
+   procedure Load
+    (Self      : in out Configuration_File_Settings;
+     File_Name : String);
 
-end League.Stream_Element_Vectors.Internals;
+   overriding function Value
+    (Self : Configuration_File_Settings;
+     Key  : League.Strings.Universal_String)
+       return League.Values.Value;
+
+end Matreshka.Internals.Settings.Configuration_Files;

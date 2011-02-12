@@ -70,6 +70,10 @@ package League.Stream_Element_Vectors is
 
    procedure Clear (Self : in out Stream_Element_Vector);
 
+   procedure Append
+    (Self : in out Stream_Element_Vector;
+     Item : Ada.Streams.Stream_Element_Array);
+
    overriding function "="
     (Left  : Stream_Element_Vector;
      Right : Stream_Element_Vector) return Boolean;

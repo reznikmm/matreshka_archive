@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -55,5 +55,10 @@ package League.Stream_Element_Vectors.Internals is
        return Stream_Element_Vector;
    --  Creates Stream_Element_Vector as wrapper for the specified shared data.
    --  Reference counter is not changed.
+
+   function Internal
+    (Item : Stream_Element_Vector)
+       return MISEV.Shared_Stream_Element_Vector_Access;
+   --  Returns internal shared segment of stream element vector.
 
 end League.Stream_Element_Vectors.Internals;
