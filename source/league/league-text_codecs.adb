@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,6 +50,20 @@ package body League.Text_Codecs is
 
    use Matreshka.Internals.Stream_Element_Vectors;
    use Matreshka.Internals.Text_Codecs;
+
+   procedure Initialize;
+   --  Initialize application locale codec.
+
+   Locale_Codec : Text_Codec;
+
+   ----------------------------------
+   -- Codec_For_Application_Locale --
+   ----------------------------------
+
+   function Codec_For_Application_Locale return Text_Codec is
+   begin
+      return Locale_Codec;
+   end Codec_For_Application_Locale;
 
    -----------
    -- Codec --
@@ -115,4 +129,12 @@ package body League.Text_Codecs is
       return League.Stream_Element_Vectors.Internals.Wrap (Result);
    end Encode;
 
+   ----------------
+   -- Initialize --
+   ----------------
+
+   procedure Initialize is separate;
+
+begin
+   Initialize;
 end League.Text_Codecs;

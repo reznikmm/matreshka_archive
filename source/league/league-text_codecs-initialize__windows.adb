@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,42 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Streams;
+--  This version of subprogram for Windows.
+------------------------------------------------------------------------------
 
-with League.Stream_Element_Vectors;
-with League.Strings;
-private with Matreshka.Internals.Text_Codecs;
-
-package League.Text_Codecs is
-
-   type Text_Codec (<>) is tagged private;
-
-   function Decode
-    (Self : Text_Codec;
-     Data : Ada.Streams.Stream_Element_Array)
-       return League.Strings.Universal_String;
-   --  Decodes data. Raises Constraint_Error when data is mailformed.
-
-   function Encode
-    (Self : Text_Codec;
-     Data : League.Strings.Universal_String)
-       return League.Stream_Element_Vectors.Stream_Element_Vector;
-   --  Encodes data. Raises Constraint_Error when data can't encoded.
-
-   function Codec
-    (Encoding_Name : League.Strings.Universal_String) return Text_Codec;
-   --  Returns codec for the specified encoding name.
-
-   function Codec_For_Application_Locale return Text_Codec;
-   --  Returns codec for application locale. This codec is intended to be used
-   --  to convert Universal_String into form applicable for interaction with
-   --  8-bit API of operating system.
-
-private
-
-   type Text_Codec is tagged record
-      Decoder : Matreshka.Internals.Text_Codecs.Decoder_Factory;
-      Encoder : Matreshka.Internals.Text_Codecs.Encoder_Factory;
-   end record;
-
-end League.Text_Codecs;
+separate (League.Text_Codecs)
+procedure Initialize is
+begin
+   null;
+end Initialize;
