@@ -118,9 +118,13 @@ package League.Settings is
 
    --  This subprogram is added temporary.
 
-   procedure Load (Self : in out Settings; File_Name : String);
+   procedure Load
+    (Self      : in out Settings;
+     File_Name : League.Strings.Universal_String);
 
-   procedure Save (Self : Settings; File_Name : String);
+   procedure Save
+    (Self      : Settings;
+     File_Name : League.Strings.Universal_String);
 
 private
 

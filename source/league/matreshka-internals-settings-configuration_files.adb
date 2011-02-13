@@ -44,6 +44,7 @@
 with Ada.Streams.Stream_IO;
 
 with League.Stream_Element_Vectors.Internals;
+with League.Text_Codecs;
 with League.Values.Strings;
 with Matreshka.Internals.Stream_Element_Vectors;
 with Matreshka.Internals.Unicode.Characters.Latin;
@@ -69,6 +70,11 @@ package body Matreshka.Internals.Settings.Configuration_Files is
 --   Line_Delimiter : constant Stream_Element_Array
 --     := (0 => Carriage_Return, 1 => Line_Feed);
    --  Operating system dependent delimiter of lines in the text file.
+
+   function To_Locale_String
+    (Item : League.Strings.Universal_String) return String;
+   --  Converts Universal_String to locale 8-bit string to use as file name for
+   --  standard Ada library subprograms.
 
    procedure Parse
     (Self : in out Configuration_File_Settings;
@@ -276,7 +282,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
 
    procedure Load
     (Self      : in out Configuration_File_Settings;
-     File_Name : String)
+     File_Name : League.Strings.Universal_String)
    is
       use Ada.Streams.Stream_IO;
 
@@ -288,7 +294,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    begin
       --  Load content of the file.
 
-      Open (File, In_File, File_Name);
+      Open (File, In_File, To_Locale_String (File_Name));
 
       loop
          Read (File, Buffer, Last);
@@ -486,7 +492,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
 
    procedure Save
     (Self      : in out Configuration_File_Settings;
-     File_Name : String)
+     File_Name : League.Strings.Universal_String)
    is
       use Ada.Streams.Stream_IO;
       use League.Stream_Element_Vectors.Internals;
@@ -501,7 +507,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
 
       --  Writes data into file.
 
-      Create (File, Out_File, File_Name);
+      Create (File, Out_File, To_Locale_String (File_Name));
       Write (File, Internal (Data).Value (0 .. Internal (Data).Length - 1));
       Close (File);
    end Save;
@@ -640,6 +646,24 @@ package body Matreshka.Internals.Settings.Configuration_Files is
       Self.Values.Include
        (Key, Encode_Value (League.Values.Strings.Get (Value)));
    end Set_Value;
+
+   ----------------------
+   -- To_Locale_String --
+   ----------------------
+
+   function To_Locale_String
+    (Item : League.Strings.Universal_String) return String
+   is
+      Aux : constant Stream_Element_Array
+       := League.Text_Codecs.Codec_For_Application_Locale.Encode
+           (Item).To_Stream_Element_Array;
+      Str : String (1 .. Aux'Length);
+      for Str'Address use Aux'Address;
+      pragma Import (Ada, Str);
+
+   begin
+      return Str;
+   end To_Locale_String;
 
    -----------
    -- Value --

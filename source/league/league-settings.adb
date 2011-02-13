@@ -215,7 +215,10 @@ package body League.Settings is
    -- Load --
    ----------
 
-   procedure Load (Self : in out Settings; File_Name : String) is
+   procedure Load
+    (Self      : in out Settings;
+     File_Name : League.Strings.Universal_String)
+   is
       use Matreshka.Internals.Settings.Configuration_Files;
       use type Matreshka.Internals.Settings.Settings_Access;
 
@@ -256,7 +259,10 @@ package body League.Settings is
    -- Save --
    ----------
 
-   procedure Save (Self : Settings; File_Name : String) is
+   procedure Save
+    (Self      : Settings;
+     File_Name : League.Strings.Universal_String)
+   is
       use Matreshka.Internals.Settings.Configuration_Files;
       use type Matreshka.Internals.Settings.Settings_Access;
 
