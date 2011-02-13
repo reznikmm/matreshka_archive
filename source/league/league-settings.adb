@@ -45,125 +45,125 @@ with Matreshka.Internals.Settings.Configuration_Files;
 
 package body League.Settings is
 
-   --------------
-   -- All_Keys --
-   --------------
-
-   function All_Keys
-    (Self : Settings) return League.String_Vectors.Universal_String_Vector
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return X : League.String_Vectors.Universal_String_Vector;
-   end All_Keys;
-
-   ----------------------
-   -- Application_Name --
-   ----------------------
-
-   function Application_Name
-    (Self : Settings) return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return League.Strings.Empty_Universal_String;
-   end Application_Name;
-
-   -----------------
-   -- Begin_Group --
-   -----------------
-
-   procedure Begin_Group
-    (Self   : in out Settings;
-     Prefix : League.Strings.Universal_String) is
-   begin
-      null;
-   end Begin_Group;
-
-   ------------------
-   -- Child_Groups --
-   ------------------
-
-   function Child_Groups
-    (Self : Settings) return League.String_Vectors.Universal_String_Vector
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return X : League.String_Vectors.Universal_String_Vector;
-   end Child_Groups;
-
-   ----------------
-   -- Child_Keys --
-   ----------------
-
-   function Child_Keys
-    (Self : Settings) return League.String_Vectors.Universal_String_Vector
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return X : League.String_Vectors.Universal_String_Vector;
-   end Child_Keys;
-
-   -----------
-   -- Clear --
-   -----------
-
-   procedure Clear (Self : in out Settings) is
-   begin
-      null;
-   end Clear;
-
-   --------------
-   -- Contains --
-   --------------
-
-   function Contains
-    (Self : Settings;
-     Key  : League.Strings.Universal_String) return Boolean
-   is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Key);
-
-   begin
-      return False;
-   end Contains;
-
-   ---------------
-   -- End_Group --
-   ---------------
-
-   procedure End_Group (Self : in out Settings) is
-   begin
-      null;
-   end End_Group;
-
-   -----------------------
-   -- Fallbacks_Enabled --
-   -----------------------
-
-   function Fallbacks_Enabled (Self : Settings) return Boolean is
-      pragma Unreferenced (Self);
-
-   begin
-      return False;
-   end Fallbacks_Enabled;
-
-   ---------------
-   -- File_Name --
-   ---------------
-
-   function File_Name
-    (Self : Settings) return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return League.Strings.Empty_Universal_String;
-   end File_Name;
+--   --------------
+--   -- All_Keys --
+--   --------------
+--
+--   function All_Keys
+--    (Self : Settings) return League.String_Vectors.Universal_String_Vector
+--   is
+--      pragma Unreferenced (Self);
+--
+--   begin
+--      return X : League.String_Vectors.Universal_String_Vector;
+--   end All_Keys;
+--
+--   ----------------------
+--   -- Application_Name --
+--   ----------------------
+--
+--   function Application_Name
+--    (Self : Settings) return League.Strings.Universal_String
+--   is
+--      pragma Unreferenced (Self);
+--
+--   begin
+--      return League.Strings.Empty_Universal_String;
+--   end Application_Name;
+--
+--   -----------------
+--   -- Begin_Group --
+--   -----------------
+--
+--   procedure Begin_Group
+--    (Self   : in out Settings;
+--     Prefix : League.Strings.Universal_String) is
+--   begin
+--      null;
+--   end Begin_Group;
+--
+--   ------------------
+--   -- Child_Groups --
+--   ------------------
+--
+--   function Child_Groups
+--    (Self : Settings) return League.String_Vectors.Universal_String_Vector
+--   is
+--      pragma Unreferenced (Self);
+--
+--   begin
+--      return X : League.String_Vectors.Universal_String_Vector;
+--   end Child_Groups;
+--
+--   ----------------
+--   -- Child_Keys --
+--   ----------------
+--
+--   function Child_Keys
+--    (Self : Settings) return League.String_Vectors.Universal_String_Vector
+--   is
+--      pragma Unreferenced (Self);
+--
+--   begin
+--      return X : League.String_Vectors.Universal_String_Vector;
+--   end Child_Keys;
+--
+--   -----------
+--   -- Clear --
+--   -----------
+--
+--   procedure Clear (Self : in out Settings) is
+--   begin
+--      null;
+--   end Clear;
+--
+--   --------------
+--   -- Contains --
+--   --------------
+--
+--   function Contains
+--    (Self : Settings;
+--     Key  : League.Strings.Universal_String) return Boolean
+--   is
+--      pragma Unreferenced (Self);
+--      pragma Unreferenced (Key);
+--
+--   begin
+--      return False;
+--   end Contains;
+--
+--   ---------------
+--   -- End_Group --
+--   ---------------
+--
+--   procedure End_Group (Self : in out Settings) is
+--   begin
+--      null;
+--   end End_Group;
+--
+--   -----------------------
+--   -- Fallbacks_Enabled --
+--   -----------------------
+--
+--   function Fallbacks_Enabled (Self : Settings) return Boolean is
+--      pragma Unreferenced (Self);
+--
+--   begin
+--      return False;
+--   end Fallbacks_Enabled;
+--
+--   ---------------
+--   -- File_Name --
+--   ---------------
+--
+--   function File_Name
+--    (Self : Settings) return League.Strings.Universal_String
+--   is
+--      pragma Unreferenced (Self);
+--
+--   begin
+--      return League.Strings.Empty_Universal_String;
+--   end File_Name;
 
    --------------
    -- Finalize --
@@ -178,38 +178,38 @@ package body League.Settings is
       end if;
    end Finalize;
 
-   ------------
-   -- Format --
-   ------------
-
-   function Format (Self : Settings) return Formats is
-      pragma Unreferenced (Self);
-
-   begin
-      return Native;
-   end Format;
-
-   -----------
-   -- Group --
-   -----------
-
-   function Group (Self : Settings) return League.Strings.Universal_String is
-      pragma Unreferenced (Self);
-
-   begin
-      return League.Strings.Empty_Universal_String;
-   end Group;
-
-   ------------------
-   -- Is_Writeable --
-   ------------------
-
-   function Is_Writeable (Self : Settings) return Boolean is
-      pragma Unreferenced (Self);
-
-   begin
-      return False;
-   end Is_Writeable;
+--   ------------
+--   -- Format --
+--   ------------
+--
+--   function Format (Self : Settings) return Formats is
+--      pragma Unreferenced (Self);
+--
+--   begin
+--      return Native;
+--   end Format;
+--
+--   -----------
+--   -- Group --
+--   -----------
+--
+--   function Group (Self : Settings) return League.Strings.Universal_String is
+--      pragma Unreferenced (Self);
+--
+--   begin
+--      return League.Strings.Empty_Universal_String;
+--   end Group;
+--
+--   ------------------
+--   -- Is_Writeable --
+--   ------------------
+--
+--   function Is_Writeable (Self : Settings) return Boolean is
+--      pragma Unreferenced (Self);
+--
+--   begin
+--      return False;
+--   end Is_Writeable;
 
    ----------
    -- Load --
@@ -228,29 +228,29 @@ package body League.Settings is
       Load (Configuration_File_Settings'Class (Self.Data.all), File_Name);
    end Load;
 
-   -----------------------
-   -- Organization_Name --
-   -----------------------
-
-   function Organization_Name
-    (Self : Settings) return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return League.Strings.Empty_Universal_String;
-   end Organization_Name;
-
-   ------------
-   -- Remove --
-   ------------
-
-   procedure Remove
-    (Self : in out Settings;
-     Key  : League.Strings.Universal_String) is
-   begin
-      null;
-   end Remove;
+--   -----------------------
+--   -- Organization_Name --
+--   -----------------------
+--
+--   function Organization_Name
+--    (Self : Settings) return League.Strings.Universal_String
+--   is
+--      pragma Unreferenced (Self);
+--
+--   begin
+--      return League.Strings.Empty_Universal_String;
+--   end Organization_Name;
+--
+--   ------------
+--   -- Remove --
+--   ------------
+--
+--   procedure Remove
+--    (Self : in out Settings;
+--     Key  : League.Strings.Universal_String) is
+--   begin
+--      null;
+--   end Remove;
 
    ----------
    -- Save --
@@ -266,66 +266,66 @@ package body League.Settings is
       end if;
    end Save;
 
-   -----------
-   -- Scope --
-   -----------
-
-   function Scope (Self : Settings) return Scopes is
-      pragma Unreferenced (Self);
-
-   begin
-      return System;
-   end Scope;
-
-   ---------------------------
-   -- Set_Fallbacks_Enables --
-   ---------------------------
-
-   procedure Set_Fallbacks_Enables
-    (Self    : in out Settings;
-     Enabled : Boolean) is
-   begin
-      null;
-   end Set_Fallbacks_Enables;
+--   -----------
+--   -- Scope --
+--   -----------
+--
+--   function Scope (Self : Settings) return Scopes is
+--      pragma Unreferenced (Self);
+--
+--   begin
+--      return System;
+--   end Scope;
+--
+--   ---------------------------
+--   -- Set_Fallbacks_Enables --
+--   ---------------------------
+--
+--   procedure Set_Fallbacks_Enables
+--    (Self    : in out Settings;
+--     Enabled : Boolean) is
+--   begin
+--      null;
+--   end Set_Fallbacks_Enables;
 
    ---------------
    -- Set_Value --
    ---------------
 
    procedure Set_Value
-    (Self  : in out Settings;
+    (Self  : in out Settings'Class;
      Key   : League.Strings.Universal_String;
      Value : League.Values.Value) is
    begin
       Self.Data.Set_Value (Key, Value);
    end Set_Value;
 
-   ------------
-   -- Status --
-   ------------
-
-   function Status (Self : Settings) return Statuses is
-      pragma Unreferenced (Self);
-
-   begin
-      return No_Error;
-   end Status;
-
-   ----------
-   -- Sync --
-   ----------
-
-   procedure Sync (Self : in out Settings) is
-   begin
-      null;
-   end Sync;
+--   ------------
+--   -- Status --
+--   ------------
+--
+--   function Status (Self : Settings) return Statuses is
+--      pragma Unreferenced (Self);
+--
+--   begin
+--      return No_Error;
+--   end Status;
+--
+--   ----------
+--   -- Sync --
+--   ----------
+--
+--   procedure Sync (Self : in out Settings) is
+--   begin
+--      null;
+--   end Sync;
 
    -----------
    -- Value --
    -----------
 
    function Value
-    (Self : Settings;
+    (Self : Settings'Class;
      Key  : League.Strings.Universal_String) return League.Values.Value is
    begin
       return Self.Data.Value (Key);

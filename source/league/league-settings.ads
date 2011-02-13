@@ -50,70 +50,70 @@ private with Matreshka.Internals.Settings;
 
 package League.Settings is
 
-   type Formats is (Native, Ini);
-
-   type Scopes is (User, System);
-
-   type Statuses is (No_Error, Access_Error, Format_Error);
+--   type Formats is (Native, Ini);
+--
+--   type Scopes is (User, System);
+--
+--   type Statuses is (No_Error, Access_Error, Format_Error);
 
    type Settings is tagged limited private;
 
-   function All_Keys
-    (Self : Settings) return League.String_Vectors.Universal_String_Vector;
-
-   function Application_Name
-    (Self : Settings) return League.Strings.Universal_String;
-
-   procedure Begin_Group
-    (Self   : in out Settings;
-     Prefix : League.Strings.Universal_String);
-
-   function Child_Groups
-    (Self : Settings) return League.String_Vectors.Universal_String_Vector;
-
-   function Child_Keys
-    (Self : Settings) return League.String_Vectors.Universal_String_Vector;
-
-   procedure Clear (Self : in out Settings);
-
-   function Contains
-    (Self : Settings;
-     Key  : League.Strings.Universal_String) return Boolean;
-
-   procedure End_Group (Self : in out Settings);
-
-   function Fallbacks_Enabled (Self : Settings) return Boolean;
-
-   function File_Name (Self : Settings) return League.Strings.Universal_String;
-
-   function Format (Self : Settings) return Formats;
-
-   function Group (Self : Settings) return League.Strings.Universal_String;
-
-   function Is_Writeable (Self : Settings) return Boolean;
-
-   function Organization_Name
-    (Self : Settings) return League.Strings.Universal_String;
-
-   procedure Remove
-    (Self : in out Settings;
-     Key  : League.Strings.Universal_String);
-
-   function Scope (Self : Settings) return Scopes;
-
-   procedure Set_Fallbacks_Enables (Self : in out Settings; Enabled : Boolean);
+--   function All_Keys
+--    (Self : Settings) return League.String_Vectors.Universal_String_Vector;
+--
+--   function Application_Name
+--    (Self : Settings) return League.Strings.Universal_String;
+--
+--   procedure Begin_Group
+--    (Self   : in out Settings;
+--     Prefix : League.Strings.Universal_String);
+--
+--   function Child_Groups
+--    (Self : Settings) return League.String_Vectors.Universal_String_Vector;
+--
+--   function Child_Keys
+--    (Self : Settings) return League.String_Vectors.Universal_String_Vector;
+--
+--   procedure Clear (Self : in out Settings);
+--
+--   function Contains
+--    (Self : Settings;
+--     Key  : League.Strings.Universal_String) return Boolean;
+--
+--   procedure End_Group (Self : in out Settings);
+--
+--   function Fallbacks_Enabled (Self : Settings) return Boolean;
+--
+--   function File_Name (Self : Settings) return League.Strings.Universal_String;
+--
+--   function Format (Self : Settings) return Formats;
+--
+--   function Group (Self : Settings) return League.Strings.Universal_String;
+--
+--   function Is_Writeable (Self : Settings) return Boolean;
+--
+--   function Organization_Name
+--    (Self : Settings) return League.Strings.Universal_String;
+--
+--   procedure Remove
+--    (Self : in out Settings;
+--     Key  : League.Strings.Universal_String);
+--
+--   function Scope (Self : Settings) return Scopes;
+--
+--   procedure Set_Fallbacks_Enables (Self : in out Settings; Enabled : Boolean);
 
    procedure Set_Value
-    (Self  : in out Settings;
+    (Self  : in out Settings'Class;
      Key   : League.Strings.Universal_String;
      Value : League.Values.Value);
 
-   function Status (Self : Settings) return Statuses;
-
-   procedure Sync (Self : in out Settings);
+--   function Status (Self : Settings) return Statuses;
+--
+--   procedure Sync (Self : in out Settings);
 
    function Value
-    (Self : Settings;
+    (Self : Settings'Class;
      Key  : League.Strings.Universal_String) return League.Values.Value;
 
    --  This subprogram is added temporary.
