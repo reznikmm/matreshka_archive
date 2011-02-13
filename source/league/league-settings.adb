@@ -252,6 +252,20 @@ package body League.Settings is
       null;
    end Remove;
 
+   ----------
+   -- Save --
+   ----------
+
+   procedure Save (Self : Settings; File_Name : String) is
+      use Matreshka.Internals.Settings.Configuration_Files;
+      use type Matreshka.Internals.Settings.Settings_Access;
+
+   begin
+      if Self.Data /= null then
+         Save (Configuration_File_Settings'Class (Self.Data.all), File_Name);
+      end if;
+   end Save;
+
    -----------
    -- Scope --
    -----------
@@ -283,7 +297,7 @@ package body League.Settings is
      Key   : League.Strings.Universal_String;
      Value : League.Values.Value) is
    begin
-      null;
+      Self.Data.Set_Value (Key, Value);
    end Set_Value;
 
    ------------

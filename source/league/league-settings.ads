@@ -120,6 +120,8 @@ package League.Settings is
 
    procedure Load (Self : in out Settings; File_Name : String);
 
+   procedure Save (Self : Settings; File_Name : String);
+
 private
 
    type Settings is new Ada.Finalization.Limited_Controlled with record

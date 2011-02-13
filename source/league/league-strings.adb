@@ -835,6 +835,24 @@ package body League.Strings is
       return String_Handler.Index (Self.Data, Code);
    end Index;
 
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self      : Universal_String'Class;
+     Character : Wide_Wide_Character) return Natural
+   is
+      Code : constant Code_Unit_32 := Wide_Wide_Character'Pos (Character);
+
+   begin
+      if not Is_Valid (Code) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      return String_Handler.Index (Self.Data, Code);
+   end Index;
+
    ----------------
    -- Initialize --
    ----------------

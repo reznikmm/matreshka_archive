@@ -70,7 +70,12 @@ package Matreshka.Internals.Unicode.Characters.Latin is
    Digit_Zero             : constant := 16#0030#;
    Digit_One              : constant := 16#0031#;
    Digit_Two              : constant := 16#0032#;
-
+   Digit_Three            : constant := 16#0033#;
+   Digit_Four             : constant := 16#0034#;
+   Digit_Five             : constant := 16#0035#;
+   Digit_Six              : constant := 16#0036#;
+   Digit_Seven            : constant := 16#0037#;
+   Digit_Eight            : constant := 16#0038#;
    Digit_Nine             : constant := 16#0039#;
    Colon                  : constant := 16#003A#;
    Semicolon              : constant := 16#003B#;
@@ -80,7 +85,10 @@ package Matreshka.Internals.Unicode.Characters.Latin is
    Question_Mark          : constant := 16#003F#;
 
    Latin_Capital_Letter_A : constant := 16#0041#;
-
+   Latin_Capital_Letter_B : constant := 16#0042#;
+   Latin_Capital_Letter_C : constant := 16#0043#;
+   Latin_Capital_Letter_D : constant := 16#0044#;
+   Latin_Capital_Letter_E : constant := 16#0045#;
    Latin_Capital_Letter_F : constant := 16#0046#;
 
    Latin_Capital_Letter_L : constant := 16#004C#;
@@ -109,6 +117,8 @@ package Matreshka.Internals.Unicode.Characters.Latin is
    Latin_Small_Letter_X   : constant := 16#0078#;
 
    Latin_Small_Letter_Z   : constant := 16#007A#;
+
+   Tilde                  : constant := 16#007E#;
 
    --  C1 Controls and Latin-1 Supplement
 

@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Streams.Stream_IO;
-with Ada.Wide_Wide_Text_IO;
 
 with League.Stream_Element_Vectors.Internals;
 with League.Values.Strings;
@@ -57,10 +56,29 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Characters.Latin;
 
+   package Section_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           Maps.Map,
+           League.Strings.Hash,
+           League.Strings."=",
+           Maps."=");
+   --  This map is used to group key/value pairs in sections for serialization.
+
+   Line_Delimiter : constant Stream_Element_Array := (0 => Line_Feed);
+--   Line_Delimiter : constant Stream_Element_Array
+--     := (0 => Carriage_Return, 1 => Line_Feed);
+   --  Operating system dependent delimiter of lines in the text file.
+
    procedure Parse
     (Self : in out Configuration_File_Settings;
      Data : League.Stream_Element_Vectors.Stream_Element_Vector);
    --  Parses data.
+
+   function Serialize
+    (Self : Configuration_File_Settings)
+       return League.Stream_Element_Vectors.Stream_Element_Vector;
+   --  Serializes data.
 
    function Decode_Key
     (Data : Ada.Streams.Stream_Element_Array)
@@ -71,6 +89,17 @@ package body Matreshka.Internals.Settings.Configuration_Files is
     (Data : Ada.Streams.Stream_Element_Array)
        return League.Strings.Universal_String renames Decode_Key;
    --  Decodes value representation in the file into Universal_String.
+
+   function Encode_Key
+    (Key : League.Strings.Universal_String)
+       return League.Stream_Element_Vectors.Stream_Element_Vector;
+   --  Encodes key to representation in the file.
+
+   function Encode_Value
+    (Key : League.Strings.Universal_String)
+       return League.Stream_Element_Vectors.Stream_Element_Vector
+         renames Encode_Key;
+   --  Encodes value to representation in the file.
 
    function From_Hex
     (Image : Ada.Streams.Stream_Element_Array)
@@ -135,6 +164,66 @@ package body Matreshka.Internals.Settings.Configuration_Files is
 
       return Key;
    end Decode_Key;
+
+   ----------------
+   -- Encode_Key --
+   ----------------
+
+   function Encode_Key
+    (Key : League.Strings.Universal_String)
+       return League.Stream_Element_Vectors.Stream_Element_Vector
+   is
+      Aux  : Stream_Element_Vector;
+      Code : Code_Point;
+
+      To_Hex : constant array (Code_Unit_32 range 0 .. 15) of Stream_Element
+        := (Digit_Zero, Digit_One, Digit_Two, Digit_Three,
+            Digit_Four, Digit_Five, Digit_Six, Digit_Seven,
+            Digit_Eight, Digit_Nine, Latin_Capital_Letter_A,
+            Latin_Capital_Letter_B, Latin_Capital_Letter_C,
+            Latin_Capital_Letter_D, Latin_Capital_Letter_E,
+            Latin_Capital_Letter_F);
+
+   begin
+      for J in 1 .. Key.Length loop
+         Code := Wide_Wide_Character'Pos (Key.Element (J));
+
+         if Code in Space .. Tilde then
+            Aux.Append (Stream_Element (Code));
+
+         elsif Code <= 16#FF# then
+            --  Two digits format.
+
+            Aux.Append (Percent_Sign);
+            Aux.Append (To_Hex ((Code / 16) mod 16));
+            Aux.Append (To_Hex (Code mod 16));
+
+         elsif Code <= 16#FFFF# then
+            --  Short Unicode form.
+
+            Aux.Append (Percent_Sign);
+            Aux.Append (Latin_Small_Letter_U);
+            Aux.Append (To_Hex ((Code / 4096) mod 16));
+            Aux.Append (To_Hex ((Code / 256) mod 16));
+            Aux.Append (To_Hex ((Code / 16) mod 16));
+            Aux.Append (To_Hex (Code mod 16));
+
+         else
+            --  Long Unicode form.
+
+            Aux.Append (Percent_Sign);
+            Aux.Append (Latin_Capital_Letter_U);
+            Aux.Append (To_Hex ((Code / 1048576) mod 16));
+            Aux.Append (To_Hex ((Code / 65536) mod 16));
+            Aux.Append (To_Hex ((Code / 4096) mod 16));
+            Aux.Append (To_Hex ((Code / 256) mod 16));
+            Aux.Append (To_Hex ((Code / 16) mod 16));
+            Aux.Append (To_Hex (Code mod 16));
+         end if;
+      end loop;
+
+      return Aux;
+   end Encode_Key;
 
    --------------
    -- From_Hex --
@@ -377,7 +466,6 @@ package body Matreshka.Internals.Settings.Configuration_Files is
             Key.Append (Decode_Key (Buffer.Value (Line_First .. Key_Last)));
 
             if not Self.Values.Contains (Key) then
-               Ada.Wide_Wide_Text_IO.Put_Line (Key.To_Wide_Wide_String);
                Self.Values.Insert
                 (Key,
                  To_Stream_Element_Vector
@@ -391,6 +479,167 @@ package body Matreshka.Internals.Settings.Configuration_Files is
          end if;
       end loop;
    end Parse;
+
+   ----------
+   -- Save --
+   ----------
+
+   procedure Save
+    (Self      : in out Configuration_File_Settings;
+     File_Name : String)
+   is
+      use Ada.Streams.Stream_IO;
+      use League.Stream_Element_Vectors.Internals;
+
+      File : File_Type;
+      Data : Stream_Element_Vector;
+
+   begin
+      --  Serialize data.
+
+      Data := Serialize (Self);
+
+      --  Writes data into file.
+
+      Create (File, Out_File, File_Name);
+      Write (File, Internal (Data).Value (0 .. Internal (Data).Length - 1));
+      Close (File);
+   end Save;
+
+   ---------------
+   -- Serialize --
+   ---------------
+
+   function Serialize
+    (Self : Configuration_File_Settings)
+       return League.Stream_Element_Vectors.Stream_Element_Vector
+   is
+      procedure Group_Pair (Position : Maps.Cursor);
+      --  Add pair into sections map.
+
+      procedure Serialize_Section (Position : Section_Maps.Cursor);
+      --  Serialize specified section and its key/value pairs.
+
+      procedure Serialize_Pair (Position : Maps.Cursor);
+      --  Serialize specified key/value pair.
+
+      Aux      : League.Stream_Element_Vectors.Stream_Element_Vector;
+      Sections : Section_Maps.Map;
+
+      ----------------
+      -- Group_Pair --
+      ----------------
+
+      procedure Group_Pair (Position : Maps.Cursor) is
+
+         procedure Insert_Pair
+          (Section_Key    : Universal_String;
+           Section_Values : in out Maps.Map);
+         --  Insert current key/value pair into the specified section. It
+         --  removes first component of key name.
+
+         Key              : constant Universal_String := Maps.Key (Position);
+         Value            : constant Stream_Element_Vector
+           := Maps.Element (Position);
+         Index            : constant Natural          := Key.Index ('/');
+         Section_Position : Section_Maps.Cursor;
+
+         -----------------
+         -- Insert_Pair --
+         -----------------
+
+         procedure Insert_Pair
+          (Section_Key    : Universal_String;
+           Section_Values : in out Maps.Map) is
+         begin
+            if Index = 0 then
+               Section_Values.Insert (Key, Value);
+
+            else
+               Section_Values.Insert
+                (Key.Slice (Index + 1, Key.Length), Value);
+            end if;
+         end Insert_Pair;
+
+      begin
+         if Index = 0 then
+            Section_Position := Sections.Find (Empty_Universal_String);
+
+            if not Section_Maps.Has_Element (Section_Position) then
+               Sections.Insert (Empty_Universal_String, Maps.Empty_Map);
+               Section_Position := Sections.Find (Empty_Universal_String);
+            end if;
+
+         else
+            Section_Position := Sections.Find (Key.Slice (1, Index - 1));
+
+            if not Section_Maps.Has_Element (Section_Position) then
+               Sections.Insert (Key.Slice (1, Index - 1), Maps.Empty_Map);
+               Section_Position := Sections.Find (Key.Slice (1, Index - 1));
+            end if;
+         end if;
+
+         Sections.Update_Element (Section_Position, Insert_Pair'Access);
+      end Group_Pair;
+
+      --------------------
+      -- Serialize_Pair --
+      --------------------
+
+      procedure Serialize_Pair (Position : Maps.Cursor) is
+         Key   : constant Universal_String      := Maps.Key (Position);
+         Value : constant Stream_Element_Vector := Maps.Element (Position);
+
+      begin
+         Aux.Append (Encode_Key (Key));
+         Aux.Append (Equals_Sign);
+         Aux.Append (Value);
+         Aux.Append (Line_Delimiter);
+      end Serialize_Pair;
+
+      -----------------------
+      -- Serialize_Section --
+      -----------------------
+
+      procedure Serialize_Section (Position : Section_Maps.Cursor) is
+         Section : constant Universal_String := Section_Maps.Key (Position);
+         Values  : constant Maps.Map := Section_Maps.Element (Position);
+
+      begin
+         Aux.Append (Left_Square_Bracket);
+         Aux.Append (Encode_Key (Section));
+         Aux.Append (Right_Square_Bracket);
+         Aux.Append (Line_Delimiter);
+
+         Values.Iterate (Serialize_Pair'Access);
+
+         Aux.Append (Line_Delimiter);
+      end Serialize_Section;
+
+   begin
+      --  Group key/value pair into sections.
+
+      Self.Values.Iterate (Group_Pair'Access);
+
+      --  Serialize sections and their key/value pairs.
+
+      Sections.Iterate (Serialize_Section'Access);
+
+      return Aux;
+   end Serialize;
+
+   ---------------
+   -- Set_Value --
+   ---------------
+
+   overriding procedure Set_Value
+    (Self  : in out Configuration_File_Settings;
+     Key   : League.Strings.Universal_String;
+     Value : League.Values.Value) is
+   begin
+      Self.Values.Include
+       (Key, Encode_Value (League.Values.Strings.Get (Value)));
+   end Set_Value;
 
    -----------
    -- Value --

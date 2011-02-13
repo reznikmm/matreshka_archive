@@ -53,6 +53,11 @@ package Matreshka.Internals.Settings is
       Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
    end record;
 
+   not overriding procedure Set_Value
+    (Self  : in out Abstract_Settings;
+     Key   : League.Strings.Universal_String;
+     Value : League.Values.Value) is abstract;
+
    not overriding function Value
     (Self : Abstract_Settings;
      Key  : League.Strings.Universal_String)

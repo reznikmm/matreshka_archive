@@ -64,6 +64,15 @@ package Matreshka.Internals.Settings.Configuration_Files is
     (Self      : in out Configuration_File_Settings;
      File_Name : String);
 
+   procedure Save
+    (Self      : in out Configuration_File_Settings;
+     File_Name : String);
+
+   overriding procedure Set_Value
+    (Self  : in out Configuration_File_Settings;
+     Key   : League.Strings.Universal_String;
+     Value : League.Values.Value);
+
    overriding function Value
     (Self : Configuration_File_Settings;
      Key  : League.Strings.Universal_String)

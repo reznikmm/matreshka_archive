@@ -96,7 +96,27 @@ package body League.Stream_Element_Vectors is
    ------------
 
    procedure Append
-    (Self : in out Stream_Element_Vector;
+    (Self : in out Stream_Element_Vector'Class;
+     Item : Ada.Streams.Stream_Element)
+   is
+      Data : constant Shared_Stream_Element_Vector_Access
+        := Allocate (Self.Data.Length + 1);
+
+   begin
+      Data.Length := Self.Data.Length + 1;
+      Data.Value (0 .. Self.Data.Length - 1) :=
+        Self.Data.Value (0 .. Self.Data.Length - 1);
+      Data.Value (Data.Length - 1) := Item;
+      Dereference (Self.Data);
+      Self.Data := Data;
+   end Append;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self : in out Stream_Element_Vector'Class;
      Item : Ada.Streams.Stream_Element_Array)
    is
       Data : constant Shared_Stream_Element_Vector_Access
@@ -107,6 +127,27 @@ package body League.Stream_Element_Vectors is
       Data.Value (0 .. Self.Data.Length - 1) :=
         Self.Data.Value (0 .. Self.Data.Length - 1);
       Data.Value (Self.Data.Length .. Data.Length - 1) := Item;
+      Dereference (Self.Data);
+      Self.Data := Data;
+   end Append;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self : in out Stream_Element_Vector'Class;
+     Item : Stream_Element_Vector'Class)
+   is
+      Data : constant Shared_Stream_Element_Vector_Access
+        := Allocate (Self.Data.Length + Item.Data.Length);
+
+   begin
+      Data.Length := Self.Data.Length + Item.Data.Length;
+      Data.Value (0 .. Self.Data.Length - 1) :=
+        Self.Data.Value (0 .. Self.Data.Length - 1);
+      Data.Value (Self.Data.Length .. Data.Length - 1) :=
+        Item.Data.Value (0 .. Item.Data.Length - 1);
       Dereference (Self.Data);
       Self.Data := Data;
    end Append;
