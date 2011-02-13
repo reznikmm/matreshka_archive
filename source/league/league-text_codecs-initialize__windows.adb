@@ -43,9 +43,80 @@
 ------------------------------------------------------------------------------
 --  This version of subprogram for Windows.
 ------------------------------------------------------------------------------
+with Interfaces.C;
 
 separate (League.Text_Codecs)
 procedure Initialize is
+
+   function GetACP return Interfaces.C.unsigned;
+   pragma Import (Stdcall, GetACP, "GetACP");
+
+   function Determine_Encoding return League.Strings.Universal_String;
+   --  Determines system locale code page and returns name of the character
+   --  encoding.
+
+   ------------------------
+   -- Determine_Encoding --
+   ------------------------
+
+   function Determine_Encoding return League.Strings.Universal_String is
+   begin
+      case GetACP is
+         when 1250 =>
+            --  ANSI Central European; Central European (Windows)
+
+            return League.Strings.To_Universal_String ("windows-1250");
+
+         when 1251 =>
+            --  ANSI Cyrillic; Cyrillic (Windows)
+
+            return League.Strings.To_Universal_String ("windows-1251");
+
+         when 1252 =>
+            --  ANSI Latin 1; Western European (Windows)
+
+            return League.Strings.To_Universal_String ("windows-1252");
+
+         when 1253 =>
+            --  ANSI Greek; Greek (Windows)
+
+            return League.Strings.To_Universal_String ("windows-1253");
+
+         when 1254 =>
+            --  ANSI Turkish; Turkish (Windows)
+
+            return League.Strings.To_Universal_String ("windows-1254");
+
+         when 1255 =>
+            --  ANSI Hebrew; Hebrew (Windows)
+
+            return League.Strings.To_Universal_String ("windows-1255");
+
+         when 1256 =>
+            --  ANSI Arabic; Arabic (Windows)
+
+            return League.Strings.To_Universal_String ("windows-1256");
+
+         when 1257 =>
+            --  ANSI Baltic; Baltic (Windows)
+
+            return League.Strings.To_Universal_String ("windows-1257");
+
+         when 1258 =>
+            --  ANSI/OEM Vietnamese; Vietnamese (Windows)
+
+            return League.Strings.To_Universal_String ("windows-1258");
+
+         when others =>
+            return League.Strings.Empty_Universal_String;
+      end case;
+   end Determine_Encoding;
+
 begin
-   null;
+   --  XXX It would be nice to develop special coder and decoder which use
+   --  Windows API functions MultiByteToWideChar and WideCharToMultiByte to
+   --  convert data. It allows to support any character encoding, not only
+   --  known.
+
+   Locale_Codec := Codec (Determine_Encoding);
 end Initialize;
