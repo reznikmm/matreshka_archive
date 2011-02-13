@@ -48,6 +48,7 @@ with Matreshka.Internals.Text_Codecs.ISO88591;
 with Matreshka.Internals.Text_Codecs.SHIFTJIS;
 with Matreshka.Internals.Text_Codecs.UTF16;
 with Matreshka.Internals.Text_Codecs.UTF8;
+with Matreshka.Internals.Text_Codecs.Windows1251;
 with Matreshka.Internals.Unicode.Characters.General_Punctuation;
 with Matreshka.Internals.Unicode.Characters.Latin;
 with Matreshka.Internals.Utf16;
@@ -61,20 +62,23 @@ package body Matreshka.Internals.Text_Codecs is
    use Matreshka.Internals.Unicode.Characters.Latin;
    use type Matreshka.Internals.Unicode.Code_Unit_32;
 
-   MIB_ISO88591 : constant Character_Set := 4;
-   MIB_SHIFTJIS : constant Character_Set := 17;
+   MIB_ISO88591    : constant Character_Set := 4;
+   MIB_SHIFTJIS    : constant Character_Set := 17;
+   MIB_WINDOWS1251 : constant Character_Set := 2251;
 
    Decoders : constant array (Character_Set) of Decoder_Factory
-     := (MIB_ISO88591 => ISO88591.Decoder'Access,
-         MIB_SHIFTJIS => SHIFTJIS.Decoder'Access,
-         MIB_UTF8     => UTF8.Decoder'Access,
-         MIB_UTF16BE  => UTF16.BE_Decoder'Access,
-         MIB_UTF16LE  => UTF16.LE_Decoder'Access,
-         others       => null);
+     := (MIB_ISO88591    => ISO88591.Decoder'Access,
+         MIB_SHIFTJIS    => SHIFTJIS.Decoder'Access,
+         MIB_UTF8        => UTF8.Decoder'Access,
+         MIB_UTF16BE     => UTF16.BE_Decoder'Access,
+         MIB_UTF16LE     => UTF16.LE_Decoder'Access,
+         MIB_WINDOWS1251 => Windows1251.Decoder'Access,
+         others          => null);
 
    Encoders : constant array (Character_Set) of Encoder_Factory
-     := (MIB_UTF8 => UTF8.Encoder'Access,
-         others   => null);
+     := (MIB_UTF8        => UTF8.Encoder'Access,
+         MIB_WINDOWS1251 => Windows1251.Encoder'Access,
+         others          => null);
 
    ------------
    -- Decode --
