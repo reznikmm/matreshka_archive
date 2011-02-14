@@ -226,6 +226,17 @@ package body Matreshka.Internals.Settings.Fallbacks is
 
    package body Paths is separate;
 
+   ------------
+   -- Remove --
+   ------------
+
+   overriding procedure Remove
+    (Self : in out Fallback_Settings;
+     Key  : League.Strings.Universal_String) is
+   begin
+      Self.Storages.First_Element.Remove (Key);
+   end Remove;
+
    ---------------
    -- Set_Value --
    ---------------

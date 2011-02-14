@@ -534,6 +534,20 @@ package body Matreshka.Internals.Settings.Configuration_Files is
       end loop;
    end Parse;
 
+   ------------
+   -- Remove --
+   ------------
+
+   overriding procedure Remove
+    (Self : in out Configuration_File_Settings;
+     Key  : League.Strings.Universal_String) is
+   begin
+      if Self.Values.Contains (Key) then
+         Self.Values.Delete (Key);
+         Self.Modified := True;
+      end if;
+   end Remove;
+
    ---------------
    -- Serialize --
    ---------------

@@ -48,6 +48,16 @@ with League.Strings.Hash;
 
 package Matreshka.Internals.Settings.Configuration_Files is
 
+   type Configuration_File_Settings is new Abstract_Settings with private;
+
+   function Create
+    (File_Name : League.Strings.Universal_String)
+       return not null Settings_Access;
+   --  Creates settings storage object and loads data from the file when it is
+   --  available.
+
+private
+
    package Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
@@ -62,18 +72,16 @@ package Matreshka.Internals.Settings.Configuration_Files is
       Values    : Maps.Map;
    end record;
 
-   function Create
-    (File_Name : League.Strings.Universal_String)
-       return not null Settings_Access;
-   --  Creates settings storage object and loads data from the file when it is
-   --  available.
-
    overriding function Contains
     (Self : Configuration_File_Settings;
      Key  : League.Strings.Universal_String) return Boolean;
 
    overriding procedure Finalize
     (Self : not null access Configuration_File_Settings);
+
+   overriding procedure Remove
+    (Self : in out Configuration_File_Settings;
+     Key  : League.Strings.Universal_String);
 
    overriding procedure Set_Value
     (Self  : in out Configuration_File_Settings;

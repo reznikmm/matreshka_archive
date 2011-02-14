@@ -243,17 +243,17 @@ package body League.Settings is
 --   begin
 --      return League.Strings.Empty_Universal_String;
 --   end Organization_Name;
---
---   ------------
---   -- Remove --
---   ------------
---
---   procedure Remove
---    (Self : in out Settings;
---     Key  : League.Strings.Universal_String) is
---   begin
---      null;
---   end Remove;
+
+   ------------
+   -- Remove --
+   ------------
+
+   procedure Remove
+    (Self : in out Settings;
+     Key  : League.Strings.Universal_String) is
+   begin
+      Self.Data.Remove (Key);
+   end Remove;
 
 --   -----------
 --   -- Scope --

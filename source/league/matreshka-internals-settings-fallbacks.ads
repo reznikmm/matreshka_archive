@@ -65,6 +65,10 @@ private
    overriding procedure Finalize
     (Self : not null access Fallback_Settings);
 
+   overriding procedure Remove
+    (Self : in out Fallback_Settings;
+     Key  : League.Strings.Universal_String);
+
    overriding procedure Set_Value
     (Self  : in out Fallback_Settings;
      Key   : League.Strings.Universal_String;

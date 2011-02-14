@@ -60,6 +60,10 @@ package Matreshka.Internals.Settings is
    not overriding procedure Finalize
     (Self : not null access Abstract_Settings) is null;
 
+   not overriding procedure Remove
+    (Self : in out Abstract_Settings;
+     Key  : League.Strings.Universal_String) is abstract;
+
    not overriding procedure Set_Value
     (Self  : in out Abstract_Settings;
      Key   : League.Strings.Universal_String;

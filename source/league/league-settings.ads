@@ -42,6 +42,22 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --  This package provides persistent platform-independent application settings.
+--
+--  When Settings object is initialized implicitly, it provides access to
+--  settings of the application and organization set previously with a call to
+--  League.Application.Set_Organization_Name,
+--  League.Application.Set_Organization_Domain and
+--  League.Application.Set_Application_Name. Fallback mechanism allows to
+--  retrieve settings from several locations:
+--
+--   - a user-specific location for the application
+--
+--   - a user-specific location for all applications by organization
+--
+--   - a system-wide location for the application
+--
+--   - a system-wide location for all applications by organization
+--
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
@@ -86,6 +102,11 @@ package League.Settings is
    function Contains
     (Self : Settings;
      Key  : League.Strings.Universal_String) return Boolean;
+   --  Returns True if there exists a setting called key; returns False
+   --  otherwise.
+   --
+   --  If a group is set using Begin_Group, key is taken to be relative to that
+   --  group.
 
 --   procedure End_Group (Self : in out Settings);
 --
@@ -101,11 +122,20 @@ package League.Settings is
 --
 --   function Organization_Name
 --    (Self : Settings) return League.Strings.Universal_String;
---
---   procedure Remove
---    (Self : in out Settings;
---     Key  : League.Strings.Universal_String);
---
+
+   procedure Remove
+    (Self : in out Settings;
+     Key  : League.Strings.Universal_String);
+   --  Removes the setting key and any sub-settings of key.
+   --
+   --  If a group is set using Begin_Group, key is taken to be relative to that
+   --  group.
+   --
+   --  If Key is an empty string, all keys in the current Group are removed.
+   --
+   --  Be aware that if one of the fallback locations contains a setting with
+   --  the same key, that setting will be visible after calling Remove.
+
 --   function Scope (Self : Settings) return Scopes;
 --
 --   procedure Set_Fallbacks_Enables (Self : in out Settings; Enabled : Boolean);
@@ -114,14 +144,28 @@ package League.Settings is
     (Self  : in out Settings'Class;
      Key   : League.Strings.Universal_String;
      Value : League.Values.Value);
+   --  Sets the value of setting key to value. If the key already exists, the
+   --  previous value is overwritten.
+   --
+   --  If a group is set using Begin_Group, key is taken to be relative to that
+   --  group.
 
 --   function Status (Self : Settings) return Statuses;
 
    procedure Sync (Self : in out Settings);
+   --  Writes any unsaved changes to permanent storage, and reloads any
+   --  settings that have been changed in the meantime by another application.
 
    function Value
     (Self : Settings'Class;
      Key  : League.Strings.Universal_String) return League.Values.Value;
+   --  Returns the value for setting key. If the setting doesn't exist, returns
+   --  Default_Value.
+   --
+   --  If no default value is specified, an Empty_Value is returned.
+   --
+   --  If a group is set using Begin_Group, key is taken to be relative to that
+   --  group.
 
 private
 
