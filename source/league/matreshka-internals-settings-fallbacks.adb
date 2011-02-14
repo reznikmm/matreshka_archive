@@ -97,17 +97,17 @@ package body Matreshka.Internals.Settings.Fallbacks is
 
    function Create return not null Settings_Access is
    begin
-      return Aux : constant not null Settings_Access
-        := new Fallback_Settings'
-                (Abstract_Settings with
-                   Matreshka.Internals.Settings.Configuration_Files.Create
-                    (User_Application_File),
-                   Matreshka.Internals.Settings.Configuration_Files.Create
-                    (User_Organization_File),
-                   Matreshka.Internals.Settings.Configuration_Files.Create
-                    (System_Application_File),
-                   Matreshka.Internals.Settings.Configuration_Files.Create
-                    (System_Organization_File));
+      return 
+        new Fallback_Settings'
+             (Abstract_Settings with
+                Matreshka.Internals.Settings.Configuration_Files.Create
+                 (User_Application_File),
+                Matreshka.Internals.Settings.Configuration_Files.Create
+                 (User_Organization_File),
+                Matreshka.Internals.Settings.Configuration_Files.Create
+                 (System_Application_File),
+                Matreshka.Internals.Settings.Configuration_Files.Create
+                 (System_Organization_File));
    end Create;
 
    ---------------
