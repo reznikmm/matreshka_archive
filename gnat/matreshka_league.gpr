@@ -81,6 +81,17 @@ library project Matreshka_League is
      "../source/xml",
      "../source/xml/xml");
 
+   Operating_System_Dirs := ();
+
+   case Matreshka_Config.Operating_System is
+      when "POSIX" =>
+         null;
+
+      when "Windows" =>
+         Operating_System_Dirs :=
+          ("../source/league/os/windows");
+   end case;
+
    case Matreshka_Config.Architecture is
       when "portable_32_be" =>
          for Source_Dirs use Common_Source_Dirs;
@@ -98,12 +109,14 @@ library project Matreshka_League is
          Platform_Ada_Switches := ("-march=i686");
          for Source_Dirs
            use Common_Source_Dirs
+                 & Operating_System_Dirs
                  & ("../source/league/arch/x86_generic",
                     "../source/league/arch/x86");
 
       when "x86_64" =>
          for Source_Dirs
            use Common_Source_Dirs
+                 & Operating_System_Dirs
                  & ("../source/league/arch/x86_generic",
                     "../source/league/arch/x86_64");
    end case;

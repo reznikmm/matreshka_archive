@@ -45,9 +45,6 @@
 ------------------------------------------------------------------------------
 with Interfaces.C.Pointers;
 
-with League.Strings.Internals;
-with Matreshka.Internals.Strings.Configuration;
-with Matreshka.Internals.Unicode;
 with Matreshka.Internals.Utf16;
 with Matreshka.Internals.Windows;
 
@@ -57,11 +54,6 @@ procedure Initialize_Arguments_Environment is
    use Matreshka.Internals.Windows;
    use type Interfaces.C.size_t;
    use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
-
-   type LPWSTR is access all Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPWSTR);
-
-   subtype LPWCH is LPWSTR;
 
    type LPCWSTR is access constant Matreshka.Internals.Utf16.Utf16_Code_Unit;
    pragma Convention (C, LPCWSTR);
@@ -74,12 +66,6 @@ procedure Initialize_Arguments_Environment is
           (Interfaces.C.size_t, LPWSTR, LPWSTR_Array, null);
    use type LPWSTR_Pointers.Pointer;
 
-   package WCHAR_Pointers is
-     new Interfaces.C.Pointers
-          (Matreshka.Internals.Utf16.Utf16_String_Index,
-           Matreshka.Internals.Utf16.Utf16_Code_Unit,
-           Matreshka.Internals.Utf16.Unaligned_Utf16_String,
-           0);
    use type WCHAR_Pointers.Pointer;
 
    function GetCommandLine return LPWSTR;

@@ -43,18 +43,21 @@
 ------------------------------------------------------------------------------
 --  This version of package intended to be used on Windows systems.
 ------------------------------------------------------------------------------
+with Interfaces.C;
 with System;
 
+with Matreshka.Internals.Utf16;
 with Matreshka.Internals.Windows;
 
 separate (Matreshka.Internals.Settings.Fallbacks)
 package body Paths is
 
    use Matreshka.Internals.Windows;
+   use type League.Strings.Universal_String;
 
    type HWND is new System.Address;
 
-   type BOOL in new Interfaces.C.int;
+   type BOOL is new Interfaces.C.int;
 
    MAX_PATH : constant := 260;
 
@@ -79,15 +82,18 @@ package body Paths is
    function Get_Special_Folder
     (CSIDL : Interfaces.C.int) return League.Strings.Universal_String
    is
-      Buffer : aliased Matreshka.Internals.Utf16.Utf16_String (1 .. MAX_PATH);
+      Buffer : array (1 .. MAX_PATH)
+        of aliased Matreshka.Internals.Utf16.Utf16_Code_Unit;
 
    begin
-      if SHGetSpecialFolderPath (Null_Address, Buffer'Access, CSIDL, 0) = 0
+      if SHGetSpecialFolderPath
+          (HWND (System.Null_Address), Buffer (1)'Unchecked_Access, CSIDL, 0)
+             = 0
       then
          raise Program_Error;
       end if;
 
-      return To_Universal_String (Buffer'Access);
+      return To_Universal_String (Buffer (1)'Unchecked_Access);
    end Get_Special_Folder;
 
    ------------------
@@ -98,7 +104,7 @@ package body Paths is
       Paths : League.Strings.Universal_String_Vector;
 
    begin
-      Paths.Append (Get_Special_Folder (CSIDL_COMMON_APPDATA));
+      Paths.Append (Get_Special_Folder (CSIDL_COMMON_APPDATA) & '/');
 
       return Paths;
    end System_Paths;
@@ -109,7 +115,7 @@ package body Paths is
 
    function User_Path return League.Strings.Universal_String is
    begin
-      return Get_Special_Folder (CSIDL_APPDATA);
+      return Get_Special_Folder (CSIDL_APPDATA) & '/';
    end User_Path;
 
 end Paths;

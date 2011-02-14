@@ -43,6 +43,9 @@
 ------------------------------------------------------------------------------
 --  This package provides binding to subset of Windows API.
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
+with Matreshka.Internals.Strings.Configuration;
+with Matreshka.Internals.Unicode;
 
 package body Matreshka.Internals.Windows is
 

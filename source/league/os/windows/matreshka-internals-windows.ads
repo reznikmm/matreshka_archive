@@ -43,6 +43,9 @@
 ------------------------------------------------------------------------------
 --  This package provides binding to subset of Windows API.
 ------------------------------------------------------------------------------
+with Interfaces.C.Pointers;
+
+with League.Strings;
 with Matreshka.Internals.Utf16;
 
 package Matreshka.Internals.Windows is
@@ -60,5 +63,16 @@ package Matreshka.Internals.Windows is
    function To_Universal_String
      (Item : LPWSTR) return League.Strings.Universal_String;
    --  Converts Windows Unicode string from into Universal_String.
+
+   -----------------------------------------------------------
+   --  Used in command line/environment conversion package  --
+   -----------------------------------------------------------
+
+   package WCHAR_Pointers is
+     new Interfaces.C.Pointers
+          (Matreshka.Internals.Utf16.Utf16_String_Index,
+           Matreshka.Internals.Utf16.Utf16_Code_Unit,
+           Matreshka.Internals.Utf16.Unaligned_Utf16_String,
+           0);
 
 end Matreshka.Internals.Windows;
