@@ -872,6 +872,15 @@ package body League.Strings is
       return Self.Data.Length = 0;
    end Is_Empty;
 
+   --------------
+   -- Is_Empty --
+   --------------
+
+   function Is_Empty (Self : Universal_String_Vector'Class) return Boolean is
+   begin
+      return Self.Data.Length = 0;
+   end Is_Empty;
+
    --------------------------------
    -- Is_Noncharacter_Code_Point --
    --------------------------------
@@ -1080,7 +1089,9 @@ package body League.Strings is
 
    function Split
     (Self      : Universal_String'Class;
-     Separator : Wide_Wide_Character) return Universal_String_Vector is
+     Separator : Wide_Wide_Character;
+     Behavior  : Split_Behavior := Keep_Empty)
+       return Universal_String_Vector is
    begin
       return Split (Self, To_Universal_Character (Separator));
    end Split;
@@ -1090,8 +1101,9 @@ package body League.Strings is
    -----------
 
    function Split
-    (Self      : Universal_String'Class;
-     Separator : Universal_Character'Class) return Universal_String_Vector
+    (Self       : Universal_String'Class;
+     Separator  : Universal_Character'Class;
+     Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector
    is
       D : constant not null Shared_String_Access := Self.Data;
       C : constant Code_Unit_32                  := Separator.Code;
@@ -1122,26 +1134,31 @@ package body League.Strings is
          Current_Index := Current_Index + 1;
 
          if Code = C then
-            S :=
-              Slice
-               (D,
-                First_Position,
-                Last_Position - First_Position,
-                Last_Index - First_Index);
-            Append (R, S);
+            if Behavior = Keep_Empty or Last_Index - First_Index /= 0 then
+               S :=
+                 Slice
+                  (D,
+                   First_Position,
+                   Last_Position - First_Position,
+                   Last_Index - First_Index);
+               Append (R, S);
+            end if;
+
             First_Position := Current_Position;
             First_Index    := Current_Index;
          end if;
       end loop;
 
       if First_Position <= D.Unused then
-         S :=
-           Slice
-            (D,
-             First_Position,
-             D.Unused - First_Position,
-             D.Length - First_Index + 1);
-         Append (R, S);
+         if Behavior = Keep_Empty or D.Length - First_Index + 1 /= 0 then
+            S :=
+              Slice
+               (D,
+                First_Position,
+                D.Unused - First_Position,
+                D.Length - First_Index + 1);
+            Append (R, S);
+         end if;
       end if;
 
       return (Ada.Finalization.Controlled with Data => R);

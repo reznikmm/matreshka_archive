@@ -80,6 +80,8 @@ package League.Strings is
    pragma Preelaborate;
 --   pragma Remote_Types;
 
+   type Split_Behavior is (Keep_Empty, Skip_Empty);
+
    type Universal_Character is tagged private;
    pragma Preelaborable_Initialization (Universal_Character);
 
@@ -243,14 +245,16 @@ package League.Strings is
 
    function Split
     (Self      : Universal_String'Class;
-     Separator : Universal_Character'Class) return Universal_String_Vector;
+     Separator : Universal_Character'Class;
+     Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector;
    --  Splits the string into substrings wherever Separator occurs, and returns
    --  the list of those strings. If Separator does not match anywhere in the
    --  string, returns a single-element list containing this string.
 
    function Split
     (Self      : Universal_String'Class;
-     Separator : Wide_Wide_Character) return Universal_String_Vector;
+     Separator : Wide_Wide_Character;
+     Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector;
    --  Splits the string into substrings wherever Separator occurs, and returns
    --  the list of those strings. If Separator does not match anywhere in the
    --  string, returns a single-element list containing this string.
@@ -346,6 +350,8 @@ package League.Strings is
    -----------------------------
    -- Universal_String_Vector --
    -----------------------------
+
+   function Is_Empty (Self : Universal_String_Vector'Class) return Boolean;
 
    function Length (Self : Universal_String_Vector'Class) return Natural;
 

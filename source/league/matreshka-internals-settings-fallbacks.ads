@@ -41,17 +41,22 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Containers.Vectors;
 
 package Matreshka.Internals.Settings.Fallbacks is
 
-   type Fallback_Settings is new Abstract_Settings with record
-      User_Application    : Settings_Access;
-      User_Organization   : Settings_Access;
-      System_Application  : Settings_Access;
-      System_Organization : Settings_Access;
-   end record;
+   type Fallback_Settings is new Abstract_Settings with private;
 
    function Create return not null Settings_Access;
+
+private
+
+   package Vectors is
+     new Ada.Containers.Vectors (Positive, Settings_Access);
+
+   type Fallback_Settings is new Abstract_Settings with record
+      Storages : Vectors.Vector;
+   end record;
 
    overriding function Contains
     (Self : Fallback_Settings;
