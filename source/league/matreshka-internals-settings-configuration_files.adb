@@ -232,6 +232,16 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    end Encode_Key;
 
    --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize
+    (Self : not null access Configuration_File_Settings) is
+   begin
+      Self.Sync;
+   end Finalize;
+
+   --------------
    -- From_Hex --
    --------------
 
@@ -292,6 +302,8 @@ package body Matreshka.Internals.Settings.Configuration_Files is
       Last   : Stream_Element_Offset;
 
    begin
+      Self.File_Name := File_Name;
+
       --  Load content of the file.
 
       Open (File, In_File, To_Locale_String (File_Name));
@@ -305,6 +317,8 @@ package body Matreshka.Internals.Settings.Configuration_Files is
       end loop;
 
       Close (File);
+
+      --  Parse.
 
       Parse (Self, Data);
    end Load;
@@ -486,32 +500,6 @@ package body Matreshka.Internals.Settings.Configuration_Files is
       end loop;
    end Parse;
 
-   ----------
-   -- Save --
-   ----------
-
-   procedure Save
-    (Self      : in out Configuration_File_Settings;
-     File_Name : League.Strings.Universal_String)
-   is
-      use Ada.Streams.Stream_IO;
-      use League.Stream_Element_Vectors.Internals;
-
-      File : File_Type;
-      Data : Stream_Element_Vector;
-
-   begin
-      --  Serialize data.
-
-      Data := Serialize (Self);
-
-      --  Writes data into file.
-
-      Create (File, Out_File, To_Locale_String (File_Name));
-      Write (File, Internal (Data).Value (0 .. Internal (Data).Length - 1));
-      Close (File);
-   end Save;
-
    ---------------
    -- Serialize --
    ---------------
@@ -646,6 +634,29 @@ package body Matreshka.Internals.Settings.Configuration_Files is
       Self.Values.Include
        (Key, Encode_Value (League.Values.Strings.Get (Value)));
    end Set_Value;
+
+   ----------
+   -- Sync --
+   ----------
+
+   overriding procedure Sync (Self : in out Configuration_File_Settings) is
+      use Ada.Streams.Stream_IO;
+      use League.Stream_Element_Vectors.Internals;
+
+      File : File_Type;
+      Data : Stream_Element_Vector;
+
+   begin
+      --  Serialize data.
+
+      Data := Serialize (Self);
+
+      --  Writes data into file.
+
+      Create (File, Out_File, To_Locale_String (Self.File_Name));
+      Write (File, Internal (Data).Value (0 .. Internal (Data).Length - 1));
+      Close (File);
+   end Sync;
 
    ----------------------
    -- To_Locale_String --

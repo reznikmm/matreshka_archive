@@ -255,23 +255,6 @@ package body League.Settings is
 --      null;
 --   end Remove;
 
-   ----------
-   -- Save --
-   ----------
-
-   procedure Save
-    (Self      : Settings;
-     File_Name : League.Strings.Universal_String)
-   is
-      use Matreshka.Internals.Settings.Configuration_Files;
-      use type Matreshka.Internals.Settings.Settings_Access;
-
-   begin
-      if Self.Data /= null then
-         Save (Configuration_File_Settings'Class (Self.Data.all), File_Name);
-      end if;
-   end Save;
-
 --   -----------
 --   -- Scope --
 --   -----------
@@ -316,15 +299,15 @@ package body League.Settings is
 --   begin
 --      return No_Error;
 --   end Status;
---
---   ----------
---   -- Sync --
---   ----------
---
---   procedure Sync (Self : in out Settings) is
---   begin
---      null;
---   end Sync;
+
+   ----------
+   -- Sync --
+   ----------
+
+   procedure Sync (Self : in out Settings) is
+   begin
+      Self.Data.Sync;
+   end Sync;
 
    -----------
    -- Value --

@@ -53,10 +53,15 @@ package Matreshka.Internals.Settings is
       Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
    end record;
 
+   not overriding procedure Finalize
+    (Self : not null access Abstract_Settings) is null;
+
    not overriding procedure Set_Value
     (Self  : in out Abstract_Settings;
      Key   : League.Strings.Universal_String;
      Value : League.Values.Value) is abstract;
+
+   not overriding procedure Sync (Self : in out Abstract_Settings) is abstract;
 
    not overriding function Value
     (Self : Abstract_Settings;
@@ -64,9 +69,6 @@ package Matreshka.Internals.Settings is
        return League.Values.Value is abstract;
 
    type Settings_Access is access all Abstract_Settings'Class;
-
-   not overriding procedure Finalize
-    (Self : not null access Abstract_Settings) is null;
 
    procedure Reference (Self : not null Settings_Access);
    --  Increments reference counter.

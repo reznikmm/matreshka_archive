@@ -57,14 +57,14 @@ package Matreshka.Internals.Settings.Configuration_Files is
            League.Stream_Element_Vectors."=");
 
    type Configuration_File_Settings is new Abstract_Settings with record
-      Values : Maps.Map;
+      File_Name : League.Strings.Universal_String;
+      Values    : Maps.Map;
    end record;
 
-   procedure Load
-    (Self      : in out Configuration_File_Settings;
-     File_Name : League.Strings.Universal_String);
+   overriding procedure Finalize
+    (Self : not null access Configuration_File_Settings);
 
-   procedure Save
+   procedure Load
     (Self      : in out Configuration_File_Settings;
      File_Name : League.Strings.Universal_String);
 
@@ -72,6 +72,8 @@ package Matreshka.Internals.Settings.Configuration_Files is
     (Self  : in out Configuration_File_Settings;
      Key   : League.Strings.Universal_String;
      Value : League.Values.Value);
+
+   overriding procedure Sync (Self : in out Configuration_File_Settings);
 
    overriding function Value
     (Self : Configuration_File_Settings;

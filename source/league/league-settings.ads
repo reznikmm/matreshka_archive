@@ -109,8 +109,8 @@ package League.Settings is
      Value : League.Values.Value);
 
 --   function Status (Self : Settings) return Statuses;
---
---   procedure Sync (Self : in out Settings);
+
+   procedure Sync (Self : in out Settings);
 
    function Value
     (Self : Settings'Class;
@@ -120,10 +120,6 @@ package League.Settings is
 
    procedure Load
     (Self      : in out Settings;
-     File_Name : League.Strings.Universal_String);
-
-   procedure Save
-    (Self      : Settings;
      File_Name : League.Strings.Universal_String);
 
 private
