@@ -77,8 +77,11 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    --  Converts Universal_String to locale 8-bit string to use as file name for
    --  standard Ada library subprograms.
 
+   procedure Load (Self : in out Configuration_File_Settings'Class);
+   --  Loads data from the file.
+
    procedure Parse
-    (Self : in out Configuration_File_Settings;
+    (Self : in out Configuration_File_Settings'Class;
      Data : League.Stream_Element_Vectors.Stream_Element_Vector);
    --  Parses data.
 
@@ -142,7 +145,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
               renames Configuration_File_Settings'Class (Aux.all);
 
          begin
-            Load (Self, Self.File_Name);
+            Self.Load;
          end;
       end return;
    end Create;
@@ -324,10 +327,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    -- Load --
    ----------
 
-   procedure Load
-    (Self      : in out Configuration_File_Settings;
-     File_Name : League.Strings.Universal_String)
-   is
+   procedure Load (Self : in out Configuration_File_Settings'Class) is
       use Ada.Streams.Stream_IO;
 
       File   : File_Type;
@@ -336,12 +336,10 @@ package body Matreshka.Internals.Settings.Configuration_Files is
       Last   : Stream_Element_Offset;
 
    begin
-      Self.File_Name := File_Name;
-
       if Ada.Directories.Exists (To_Locale_String (Self.File_Name)) then
          --  Load content of the file.
 
-         Open (File, In_File, To_Locale_String (File_Name));
+         Open (File, In_File, To_Locale_String (Self.File_Name));
 
          loop
             Read (File, Buffer, Last);
@@ -355,7 +353,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
 
          --  Parse.
 
-         Parse (Self, Data);
+         Self.Parse (Data);
       end if;
    end Load;
 
@@ -364,7 +362,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    -----------
 
    procedure Parse
-    (Self : in out Configuration_File_Settings;
+    (Self : in out Configuration_File_Settings'Class;
      Data : League.Stream_Element_Vectors.Stream_Element_Vector)
    is
       use Matreshka.Internals.Stream_Element_Vectors;

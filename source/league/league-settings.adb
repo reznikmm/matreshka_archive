@@ -129,6 +129,20 @@ package body League.Settings is
       return Self.Data.Contains (Key);
    end Contains;
 
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (File_Name : League.Strings.Universal_String) return Settings is
+   begin
+      return
+        Settings'
+         (Ada.Finalization.Limited_Controlled with
+            Matreshka.Internals.Settings.Configuration_Files.Create
+             (File_Name));
+   end Create;
+
 --   ---------------
 --   -- End_Group --
 --   ---------------
@@ -216,26 +230,6 @@ package body League.Settings is
 --   begin
 --      return False;
 --   end Is_Writeable;
-
-   ----------
-   -- Load --
-   ----------
-
-   procedure Load
-    (Self      : in out Settings;
-     File_Name : League.Strings.Universal_String)
-   is
-      use Matreshka.Internals.Settings.Configuration_Files;
-      use type Matreshka.Internals.Settings.Settings_Access;
-
-   begin
-      if Self.Data /= null then
-         Matreshka.Internals.Settings.Dereference (Self.Data);
-      end if;
-
-      Self.Data := new Configuration_File_Settings;
-      Load (Configuration_File_Settings'Class (Self.Data.all), File_Name);
-   end Load;
 
 --   -----------------------
 --   -- Organization_Name --

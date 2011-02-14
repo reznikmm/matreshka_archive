@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package provides persistent platform-independent application settings.
+------------------------------------------------------------------------------
 private with Ada.Finalization;
 
 with League.String_Vectors;
@@ -57,6 +59,11 @@ package League.Settings is
 --   type Statuses is (No_Error, Access_Error, Format_Error);
 
    type Settings is tagged limited private;
+
+   function Create
+    (File_Name : League.Strings.Universal_String) return Settings;
+   --  Constructs a Settings object for accessing the settings stored in the
+   --  file called File_Name. If the file doesn't already exist, it is created.
 
 --   function All_Keys
 --    (Self : Settings) return League.String_Vectors.Universal_String_Vector;
@@ -115,12 +122,6 @@ package League.Settings is
    function Value
     (Self : Settings'Class;
      Key  : League.Strings.Universal_String) return League.Values.Value;
-
-   --  This subprogram is added temporary.
-
-   procedure Load
-    (Self      : in out Settings;
-     File_Name : League.Strings.Universal_String);
 
 private
 
