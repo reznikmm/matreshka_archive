@@ -48,13 +48,17 @@ package body Matreshka.Internals.Settings.Fallbacks is
 
    use type League.Strings.Universal_String;
 
-   function User_Path return League.Strings.Universal_String;
-   --  Returns path where user's settings are stored. Returned path has
-   --  trailing path separator.
+   package Paths is
 
-   function System_Paths return League.Strings.Universal_String_Vector;
-   --  Returns paths where system settings are stored. Returned path has
-   --  trailing path separator.
+      function User_Path return League.Strings.Universal_String;
+      --  Returns path where user's settings are stored. Returned path has
+      --  trailing path separator.
+
+      function System_Paths return League.Strings.Universal_String_Vector;
+      --  Returns paths where system settings are stored. Returned path has
+      --  trailing path separator.
+
+   end Paths;
 
    function Extension return League.Strings.Universal_String;
    --  Returns configuration file extention.
@@ -73,12 +77,6 @@ package body Matreshka.Internals.Settings.Fallbacks is
 
    Unknown_Organization : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Unknown Organization");
-   HOME                 : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("HOME");
-   XDG_CONFIG_HOME      : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("XDG_CONFIG_HOME");
-   XDG_CONFIG_DIRS      : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("XDG_CONFIG_DIRS");
 
    ---------------------------
    -- Application_File_Name --
@@ -141,21 +139,21 @@ package body Matreshka.Internals.Settings.Fallbacks is
             Self  : Fallback_Settings'Class
               renames Fallback_Settings'Class (Aux.all);
             Paths : constant League.Strings.Universal_String_Vector
-              := System_Paths;
+              := Fallbacks.Paths.System_Paths;
 
          begin
             --  Append user's application and organization files.
 
             Self.Storages.Append
              (Matreshka.Internals.Settings.Configuration_Files.Create
-               (Application_File_Name (User_Path)));
+               (Application_File_Name (Fallbacks.Paths.User_Path)));
 
-            if Organization_File_Name (User_Path)
-                 /= Application_File_Name (User_Path)
+            if Organization_File_Name (Fallbacks.Paths.User_Path)
+                 /= Application_File_Name (Fallbacks.Paths.User_Path)
             then
                Self.Storages.Append
                 (Matreshka.Internals.Settings.Configuration_Files.Create
-                  (Organization_File_Name (User_Path)));
+                  (Organization_File_Name (Fallbacks.Paths.User_Path)));
             end if;
 
             --  Append system's application and organization files for every
@@ -222,6 +220,12 @@ package body Matreshka.Internals.Settings.Fallbacks is
       end if;
    end Organization_File_Name;
 
+   -----------
+   -- Paths --
+   -----------
+
+   package body Paths is separate;
+
    ---------------
    -- Set_Value --
    ---------------
@@ -242,90 +246,6 @@ package body Matreshka.Internals.Settings.Fallbacks is
    begin
       Self.Storages.First_Element.Sync;
    end Sync;
-
-   ------------------
-   -- System_Paths --
-   ------------------
-
-   function System_Paths return League.Strings.Universal_String_Vector is
-      Dirs  : League.Strings.Universal_String_Vector;
-      Path  : League.Strings.Universal_String;
-      Paths : League.Strings.Universal_String_Vector;
-
-   begin
-      --  Looking for XDG_CONFIG_DIRS environment variable and construct list
-      --  directories from its value.
-
-      if League.Application.Environment.Contains (XDG_CONFIG_DIRS) then
-         Dirs :=
-           League.Application.Environment.Value
-            (XDG_CONFIG_DIRS).Split (':', League.Strings.Skip_Empty);
-
-         for J in 1 .. Dirs.Length loop
-            Path := Dirs.Element (J);
-
-            --  Resolve relative paths relativealy home directory.
-
-            if Path.Element (1) /= '/' then
-               Path :=
-                 League.Application.Environment.Value (HOME) & '/' & Path;
-            end if;
-
-            --  Check for trailing path separator and add it when necessary.
-
-            if Path.Element (Path.Length) /= '/' then
-               Path.Append ('/');
-            end if;
-
-            Paths.Append (Path);
-         end loop;
-      end if;
-
-      --  Use default directory when directories list is not constructed.
-
-      if Paths.Is_Empty then
-         Paths.Append (League.Strings.To_Universal_String ("/etc/xdg/"));
-      end if;
-
-      return Paths;
-   end System_Paths;
-
-   ---------------
-   -- User_Path --
-   ---------------
-
-   function User_Path return League.Strings.Universal_String is
-      Path : League.Strings.Universal_String;
-
-   begin
-      --  First, looking for XDG_CONFIG_HOME environment variable, it overrides
-      --  default path.
-
-      if League.Application.Environment.Contains (XDG_CONFIG_HOME) then
-         Path := League.Application.Environment.Value (XDG_CONFIG_HOME);
-      end if;
-
-      --  When XDG_CONFIG_HOME environment variable is not defined, use
-      --  $HOME/.config directory.
-
-      if Path.Is_Empty then
-         Path := League.Application.Environment.Value (HOME) & '/' & ".config";
-
-      --  Otherwise, when XDG_CONFIG_HOME is relative path, construct full
-      --  path as $HOME/$XDG_CONFIG_HOME.
-
-      elsif Path.Element (1).To_Wide_Wide_Character /= '/' then
-         Path := League.Application.Environment.Value (HOME) & '/' & Path;
-      end if;
-
-      --  Check for trailing path separator and add it when necessary.
-
-      if Path.Element (Path.Length) /= '/' then
-         Path.Append ('/');
-      end if;
-
-      return Path;
-   end User_Path;
 
    -----------
    -- Value --

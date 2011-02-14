@@ -277,6 +277,8 @@ library project Matreshka_League is
               use "league-environment_variables-to_key__posix.adb";
             for Implementation ("League.Text_Codecs.Initialize")
               use "league-text_codecs-initialize__posix.adb";
+            for Implementation ("Matreshka.Internals.Settings.Fallbacks.Paths")
+              use "matreshka-internals-settings-fallbacks-paths__posix.adb";
 
          when "Windows" =>
             for Implementation ("League.Application.Initialize_Arguments_Environment")
@@ -285,6 +287,8 @@ library project Matreshka_League is
               use "league-environment_variables-to_key__windows.adb";
             for Implementation ("League.Text_Codecs.Initialize")
               use "league-text_codecs-initialize__windows.adb";
+            for Implementation ("Matreshka.Internals.Settings.Fallbacks.Paths")
+              use "matreshka-internals-settings-fallbacks-paths__windows.adb";
       end case;
 
       --  Matreshka.Internals.Host_Types

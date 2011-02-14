@@ -41,110 +41,46 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This version is for Windows operating systems.
+--  This package provides binding to subset of Windows API.
 ------------------------------------------------------------------------------
-with Interfaces.C.Pointers;
 
-with League.Strings.Internals;
-with Matreshka.Internals.Strings.Configuration;
-with Matreshka.Internals.Unicode;
-with Matreshka.Internals.Utf16;
-with Matreshka.Internals.Windows;
+package body Matreshka.Internals.Windows is
 
-separate (League.Application)
-procedure Initialize_Arguments_Environment is
+   -------------------------
+   -- To_Universal_String --
+   -------------------------
 
-   use Matreshka.Internals.Windows;
-   use type Interfaces.C.size_t;
-   use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
+   function To_Universal_String
+     (Item : LPWSTR) return League.Strings.Universal_String
+   is
+      use Matreshka.Internals.Strings.Configuration;
+      use Matreshka.Internals.Unicode;
+      use Matreshka.Internals.Utf16;
 
-   type LPWSTR is access all Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPWSTR);
+      Source      : constant Unaligned_Utf16_String (Utf16_String_Index);
+      for Source'Address use Item.all'Address;
+      pragma Import (Ada, Source);
 
-   subtype LPWCH is LPWSTR;
+      Destination : constant Matreshka.Internals.Strings.Shared_String_Access
+        := Matreshka.Internals.Strings.Allocate
+            (Matreshka.Internals.Utf16.Utf16_String_Index (wcslen (Item)));
 
-   type LPCWSTR is access constant Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPCWSTR);
+      Position : Utf16_String_Index := 0;
+      Code     : Code_Point;
 
-   type LPWSTR_Array is
-     array (Interfaces.C.size_t range <>) of aliased LPWSTR;
+   begin
+      loop
+         Unchecked_Next (Source, Position, Code);
 
-   package LPWSTR_Pointers is
-     new Interfaces.C.Pointers
-          (Interfaces.C.size_t, LPWSTR, LPWSTR_Array, null);
-   use type LPWSTR_Pointers.Pointer;
+         exit when Code = 0;
 
-   package WCHAR_Pointers is
-     new Interfaces.C.Pointers
-          (Matreshka.Internals.Utf16.Utf16_String_Index,
-           Matreshka.Internals.Utf16.Utf16_Code_Unit,
-           Matreshka.Internals.Utf16.Unaligned_Utf16_String,
-           0);
-   use type WCHAR_Pointers.Pointer;
-
-   function GetCommandLine return LPWSTR;
-   pragma Import (Stdcall, GetCommandLine, "GetCommandLineW");
-
-   function CommandLineToArgv
-    (lpCmdLine : LPCWSTR;
-     pNumArgs  : not null access Interfaces.C.int)
-       return LPWSTR_Pointers.Pointer;
-   pragma Import (Stdcall, CommandLineToArgv, "CommandLineToArgvW");
-
-   procedure LocalFree (X : LPWSTR_Pointers.Pointer);
-   pragma Import (Stdcall, LocalFree, "LocalFree");
-
-   function GetEnvironmentStrings return LPWCH;
-   pragma Import (Stdcall, GetEnvironmentStrings, "GetEnvironmentStringsW");
-
-   procedure FreeEnvironmentStrings (lpszEnvironmentBlock : LPWCH);
-   pragma Import (Stdcall, FreeEnvironmentStrings, "FreeEnvironmentStringsW");
-
-   Win_Argc : aliased Interfaces.C.int;
-   Win_Argv : LPWSTR_Pointers.Pointer
-     := CommandLineToArgv (LPCWSTR (GetCommandLine), Win_Argc'Access);
-   Win_Envp : LPWCH := GetEnvironmentStrings;
-   Envp     : LPWCH := Win_Envp;
-
-begin
-   --  Convert command line arguments.
-
-   if Win_Argv /= null then
-      declare
-         Argv : constant LPWSTR_Array
-           := LPWSTR_Pointers.Value
-               (Win_Argv, Interfaces.C.ptrdiff_t (Win_Argc));
-
-      begin
-         for J in Argv'First + 1 .. Argv'Last loop
-            Args.Append (To_Universal_String (Argv (J)));
-         end loop;
-
-         LocalFree (Win_Argv);
-      end;
-   end if;
-
-   --  Convert environment variables.
-
-   if Win_Envp /= null then
-      while Envp.all /= 0 loop
-         declare
-            Pair  : constant League.Strings.Universal_String
-              := To_Universal_String (Envp);
-            Index : constant Natural
-              := Pair.Index (League.Strings.To_Universal_Character ('='));
-
-         begin
-            Env.Insert
-              (Pair.Slice (1, Index - 1),
-               Pair.Slice (Index + 1, Pair.Length));
-            Envp :=
-              LPWCH
-               (WCHAR_Pointers.Pointer (Envp)
-                  + Interfaces.C.ptrdiff_t (wcslen (Envp) + 1));
-         end;
+         Unchecked_Store (Destination.Value, Destination.Unused, Code);
+         Destination.Length := Destination.Length + 1;
       end loop;
 
-      FreeEnvironmentStrings (Win_Envp);
-   end if;
-end Initialize_Arguments_Environment;
+      String_Handler.Fill_Null_Terminator (Destination);
+
+      return League.Strings.Internals.Wrap (Destination);
+   end To_Universal_String;
+
+end Matreshka.Internals.Windows;

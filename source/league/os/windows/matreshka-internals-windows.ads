@@ -41,110 +41,24 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This version is for Windows operating systems.
+--  This package provides binding to subset of Windows API.
 ------------------------------------------------------------------------------
-with Interfaces.C.Pointers;
-
-with League.Strings.Internals;
-with Matreshka.Internals.Strings.Configuration;
-with Matreshka.Internals.Unicode;
 with Matreshka.Internals.Utf16;
-with Matreshka.Internals.Windows;
 
-separate (League.Application)
-procedure Initialize_Arguments_Environment is
+package Matreshka.Internals.Windows is
 
-   use Matreshka.Internals.Windows;
-   use type Interfaces.C.size_t;
-   use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
+   pragma Preelaborate;
 
    type LPWSTR is access all Matreshka.Internals.Utf16.Utf16_Code_Unit;
    pragma Convention (C, LPWSTR);
 
    subtype LPWCH is LPWSTR;
 
-   type LPCWSTR is access constant Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPCWSTR);
+   function wcslen (str : LPWSTR) return Interfaces.C.size_t;
+   pragma Import (C, wcslen);
 
-   type LPWSTR_Array is
-     array (Interfaces.C.size_t range <>) of aliased LPWSTR;
+   function To_Universal_String
+     (Item : LPWSTR) return League.Strings.Universal_String;
+   --  Converts Windows Unicode string from into Universal_String.
 
-   package LPWSTR_Pointers is
-     new Interfaces.C.Pointers
-          (Interfaces.C.size_t, LPWSTR, LPWSTR_Array, null);
-   use type LPWSTR_Pointers.Pointer;
-
-   package WCHAR_Pointers is
-     new Interfaces.C.Pointers
-          (Matreshka.Internals.Utf16.Utf16_String_Index,
-           Matreshka.Internals.Utf16.Utf16_Code_Unit,
-           Matreshka.Internals.Utf16.Unaligned_Utf16_String,
-           0);
-   use type WCHAR_Pointers.Pointer;
-
-   function GetCommandLine return LPWSTR;
-   pragma Import (Stdcall, GetCommandLine, "GetCommandLineW");
-
-   function CommandLineToArgv
-    (lpCmdLine : LPCWSTR;
-     pNumArgs  : not null access Interfaces.C.int)
-       return LPWSTR_Pointers.Pointer;
-   pragma Import (Stdcall, CommandLineToArgv, "CommandLineToArgvW");
-
-   procedure LocalFree (X : LPWSTR_Pointers.Pointer);
-   pragma Import (Stdcall, LocalFree, "LocalFree");
-
-   function GetEnvironmentStrings return LPWCH;
-   pragma Import (Stdcall, GetEnvironmentStrings, "GetEnvironmentStringsW");
-
-   procedure FreeEnvironmentStrings (lpszEnvironmentBlock : LPWCH);
-   pragma Import (Stdcall, FreeEnvironmentStrings, "FreeEnvironmentStringsW");
-
-   Win_Argc : aliased Interfaces.C.int;
-   Win_Argv : LPWSTR_Pointers.Pointer
-     := CommandLineToArgv (LPCWSTR (GetCommandLine), Win_Argc'Access);
-   Win_Envp : LPWCH := GetEnvironmentStrings;
-   Envp     : LPWCH := Win_Envp;
-
-begin
-   --  Convert command line arguments.
-
-   if Win_Argv /= null then
-      declare
-         Argv : constant LPWSTR_Array
-           := LPWSTR_Pointers.Value
-               (Win_Argv, Interfaces.C.ptrdiff_t (Win_Argc));
-
-      begin
-         for J in Argv'First + 1 .. Argv'Last loop
-            Args.Append (To_Universal_String (Argv (J)));
-         end loop;
-
-         LocalFree (Win_Argv);
-      end;
-   end if;
-
-   --  Convert environment variables.
-
-   if Win_Envp /= null then
-      while Envp.all /= 0 loop
-         declare
-            Pair  : constant League.Strings.Universal_String
-              := To_Universal_String (Envp);
-            Index : constant Natural
-              := Pair.Index (League.Strings.To_Universal_Character ('='));
-
-         begin
-            Env.Insert
-              (Pair.Slice (1, Index - 1),
-               Pair.Slice (Index + 1, Pair.Length));
-            Envp :=
-              LPWCH
-               (WCHAR_Pointers.Pointer (Envp)
-                  + Interfaces.C.ptrdiff_t (wcslen (Envp) + 1));
-         end;
-      end loop;
-
-      FreeEnvironmentStrings (Win_Envp);
-   end if;
-end Initialize_Arguments_Environment;
+end Matreshka.Internals.Windows;

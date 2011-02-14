@@ -41,110 +41,103 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This version is for Windows operating systems.
+--  This version of package intended to be used on POSIX systems.
+--
+--  This package is conformant to "XDG Base Directory Specification".
 ------------------------------------------------------------------------------
-with Interfaces.C.Pointers;
 
-with League.Strings.Internals;
-with Matreshka.Internals.Strings.Configuration;
-with Matreshka.Internals.Unicode;
-with Matreshka.Internals.Utf16;
-with Matreshka.Internals.Windows;
+separate (Matreshka.Internals.Settings.Fallbacks)
+package body Paths is
 
-separate (League.Application)
-procedure Initialize_Arguments_Environment is
+   HOME                 : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("HOME");
+   XDG_CONFIG_HOME      : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("XDG_CONFIG_HOME");
+   XDG_CONFIG_DIRS      : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("XDG_CONFIG_DIRS");
 
-   use Matreshka.Internals.Windows;
-   use type Interfaces.C.size_t;
-   use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
+   ------------------
+   -- System_Paths --
+   ------------------
 
-   type LPWSTR is access all Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPWSTR);
+   function System_Paths return League.Strings.Universal_String_Vector is
+      Dirs  : League.Strings.Universal_String_Vector;
+      Path  : League.Strings.Universal_String;
+      Paths : League.Strings.Universal_String_Vector;
 
-   subtype LPWCH is LPWSTR;
+   begin
+      --  Looking for XDG_CONFIG_DIRS environment variable and construct list
+      --  directories from its value.
 
-   type LPCWSTR is access constant Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPCWSTR);
+      if League.Application.Environment.Contains (XDG_CONFIG_DIRS) then
+         Dirs :=
+           League.Application.Environment.Value
+            (XDG_CONFIG_DIRS).Split (':', League.Strings.Skip_Empty);
 
-   type LPWSTR_Array is
-     array (Interfaces.C.size_t range <>) of aliased LPWSTR;
+         for J in 1 .. Dirs.Length loop
+            Path := Dirs.Element (J);
 
-   package LPWSTR_Pointers is
-     new Interfaces.C.Pointers
-          (Interfaces.C.size_t, LPWSTR, LPWSTR_Array, null);
-   use type LPWSTR_Pointers.Pointer;
+            --  Resolve relative paths relativealy home directory.
 
-   package WCHAR_Pointers is
-     new Interfaces.C.Pointers
-          (Matreshka.Internals.Utf16.Utf16_String_Index,
-           Matreshka.Internals.Utf16.Utf16_Code_Unit,
-           Matreshka.Internals.Utf16.Unaligned_Utf16_String,
-           0);
-   use type WCHAR_Pointers.Pointer;
+            if Path.Element (1) /= '/' then
+               Path :=
+                 League.Application.Environment.Value (HOME) & '/' & Path;
+            end if;
 
-   function GetCommandLine return LPWSTR;
-   pragma Import (Stdcall, GetCommandLine, "GetCommandLineW");
+            --  Check for trailing path separator and add it when necessary.
 
-   function CommandLineToArgv
-    (lpCmdLine : LPCWSTR;
-     pNumArgs  : not null access Interfaces.C.int)
-       return LPWSTR_Pointers.Pointer;
-   pragma Import (Stdcall, CommandLineToArgv, "CommandLineToArgvW");
+            if Path.Element (Path.Length) /= '/' then
+               Path.Append ('/');
+            end if;
 
-   procedure LocalFree (X : LPWSTR_Pointers.Pointer);
-   pragma Import (Stdcall, LocalFree, "LocalFree");
-
-   function GetEnvironmentStrings return LPWCH;
-   pragma Import (Stdcall, GetEnvironmentStrings, "GetEnvironmentStringsW");
-
-   procedure FreeEnvironmentStrings (lpszEnvironmentBlock : LPWCH);
-   pragma Import (Stdcall, FreeEnvironmentStrings, "FreeEnvironmentStringsW");
-
-   Win_Argc : aliased Interfaces.C.int;
-   Win_Argv : LPWSTR_Pointers.Pointer
-     := CommandLineToArgv (LPCWSTR (GetCommandLine), Win_Argc'Access);
-   Win_Envp : LPWCH := GetEnvironmentStrings;
-   Envp     : LPWCH := Win_Envp;
-
-begin
-   --  Convert command line arguments.
-
-   if Win_Argv /= null then
-      declare
-         Argv : constant LPWSTR_Array
-           := LPWSTR_Pointers.Value
-               (Win_Argv, Interfaces.C.ptrdiff_t (Win_Argc));
-
-      begin
-         for J in Argv'First + 1 .. Argv'Last loop
-            Args.Append (To_Universal_String (Argv (J)));
+            Paths.Append (Path);
          end loop;
+      end if;
 
-         LocalFree (Win_Argv);
-      end;
-   end if;
+      --  Use default directory when directories list is not constructed.
 
-   --  Convert environment variables.
+      if Paths.Is_Empty then
+         Paths.Append (League.Strings.To_Universal_String ("/etc/xdg/"));
+      end if;
 
-   if Win_Envp /= null then
-      while Envp.all /= 0 loop
-         declare
-            Pair  : constant League.Strings.Universal_String
-              := To_Universal_String (Envp);
-            Index : constant Natural
-              := Pair.Index (League.Strings.To_Universal_Character ('='));
+      return Paths;
+   end System_Paths;
 
-         begin
-            Env.Insert
-              (Pair.Slice (1, Index - 1),
-               Pair.Slice (Index + 1, Pair.Length));
-            Envp :=
-              LPWCH
-               (WCHAR_Pointers.Pointer (Envp)
-                  + Interfaces.C.ptrdiff_t (wcslen (Envp) + 1));
-         end;
-      end loop;
+   ---------------
+   -- User_Path --
+   ---------------
 
-      FreeEnvironmentStrings (Win_Envp);
-   end if;
-end Initialize_Arguments_Environment;
+   function User_Path return League.Strings.Universal_String is
+      Path : League.Strings.Universal_String;
+
+   begin
+      --  First, looking for XDG_CONFIG_HOME environment variable, it overrides
+      --  default path.
+
+      if League.Application.Environment.Contains (XDG_CONFIG_HOME) then
+         Path := League.Application.Environment.Value (XDG_CONFIG_HOME);
+      end if;
+
+      --  When XDG_CONFIG_HOME environment variable is not defined, use
+      --  $HOME/.config directory.
+
+      if Path.Is_Empty then
+         Path := League.Application.Environment.Value (HOME) & '/' & ".config";
+
+      --  Otherwise, when XDG_CONFIG_HOME is relative path, construct full
+      --  path as $HOME/$XDG_CONFIG_HOME.
+
+      elsif Path.Element (1).To_Wide_Wide_Character /= '/' then
+         Path := League.Application.Environment.Value (HOME) & '/' & Path;
+      end if;
+
+      --  Check for trailing path separator and add it when necessary.
+
+      if Path.Element (Path.Length) /= '/' then
+         Path.Append ('/');
+      end if;
+
+      return Path;
+   end User_Path;
+
+end Paths;

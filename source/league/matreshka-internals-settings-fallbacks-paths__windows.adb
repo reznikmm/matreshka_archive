@@ -41,110 +41,75 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This version is for Windows operating systems.
+--  This version of package intended to be used on Windows systems.
 ------------------------------------------------------------------------------
-with Interfaces.C.Pointers;
+with System;
 
-with League.Strings.Internals;
-with Matreshka.Internals.Strings.Configuration;
-with Matreshka.Internals.Unicode;
-with Matreshka.Internals.Utf16;
 with Matreshka.Internals.Windows;
 
-separate (League.Application)
-procedure Initialize_Arguments_Environment is
+separate (Matreshka.Internals.Settings.Fallbacks)
+package body Paths is
 
    use Matreshka.Internals.Windows;
-   use type Interfaces.C.size_t;
-   use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
 
-   type LPWSTR is access all Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPWSTR);
+   type HWND is new System.Address;
 
-   subtype LPWCH is LPWSTR;
+   type BOOL in new Interfaces.C.int;
 
-   type LPCWSTR is access constant Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPCWSTR);
+   MAX_PATH : constant := 260;
 
-   type LPWSTR_Array is
-     array (Interfaces.C.size_t range <>) of aliased LPWSTR;
+   CSIDL_APPDATA        : constant := 26;
+   CSIDL_COMMON_APPDATA : constant := 35;
 
-   package LPWSTR_Pointers is
-     new Interfaces.C.Pointers
-          (Interfaces.C.size_t, LPWSTR, LPWSTR_Array, null);
-   use type LPWSTR_Pointers.Pointer;
+   function SHGetSpecialFolderPath
+    (hwndOwner : HWND;
+     lpszPath  : LPWSTR;
+     csidl     : Interfaces.C.int;
+     fCreate   : BOOL) return BOOL;
+   pragma Import (Stdcall, SHGetSpecialFolderPath, "SHGetSpecialFolderPathW");
 
-   package WCHAR_Pointers is
-     new Interfaces.C.Pointers
-          (Matreshka.Internals.Utf16.Utf16_String_Index,
-           Matreshka.Internals.Utf16.Utf16_Code_Unit,
-           Matreshka.Internals.Utf16.Unaligned_Utf16_String,
-           0);
-   use type WCHAR_Pointers.Pointer;
+   function Get_Special_Folder
+    (CSIDL : Interfaces.C.int) return League.Strings.Universal_String;
+   --  Returns path of the specified special folder.
 
-   function GetCommandLine return LPWSTR;
-   pragma Import (Stdcall, GetCommandLine, "GetCommandLineW");
+   ------------------------
+   -- Get_Special_Folder --
+   ------------------------
 
-   function CommandLineToArgv
-    (lpCmdLine : LPCWSTR;
-     pNumArgs  : not null access Interfaces.C.int)
-       return LPWSTR_Pointers.Pointer;
-   pragma Import (Stdcall, CommandLineToArgv, "CommandLineToArgvW");
+   function Get_Special_Folder
+    (CSIDL : Interfaces.C.int) return League.Strings.Universal_String
+   is
+      Buffer : aliased Matreshka.Internals.Utf16.Utf16_String (1 .. MAX_PATH);
 
-   procedure LocalFree (X : LPWSTR_Pointers.Pointer);
-   pragma Import (Stdcall, LocalFree, "LocalFree");
+   begin
+      if SHGetSpecialFolderPath (Null_Address, Buffer'Access, CSIDL, 0) = 0
+      then
+         raise Program_Error;
+      end if;
 
-   function GetEnvironmentStrings return LPWCH;
-   pragma Import (Stdcall, GetEnvironmentStrings, "GetEnvironmentStringsW");
+      return To_Universal_String (Buffer'Access);
+   end Get_Special_Folder;
 
-   procedure FreeEnvironmentStrings (lpszEnvironmentBlock : LPWCH);
-   pragma Import (Stdcall, FreeEnvironmentStrings, "FreeEnvironmentStringsW");
+   ------------------
+   -- System_Paths --
+   ------------------
 
-   Win_Argc : aliased Interfaces.C.int;
-   Win_Argv : LPWSTR_Pointers.Pointer
-     := CommandLineToArgv (LPCWSTR (GetCommandLine), Win_Argc'Access);
-   Win_Envp : LPWCH := GetEnvironmentStrings;
-   Envp     : LPWCH := Win_Envp;
+   function System_Paths return League.Strings.Universal_String_Vector is
+      Paths : League.Strings.Universal_String_Vector;
 
-begin
-   --  Convert command line arguments.
+   begin
+      Paths.Append (Get_Special_Folder (CSIDL_COMMON_APPDATA));
 
-   if Win_Argv /= null then
-      declare
-         Argv : constant LPWSTR_Array
-           := LPWSTR_Pointers.Value
-               (Win_Argv, Interfaces.C.ptrdiff_t (Win_Argc));
+      return Paths;
+   end System_Paths;
 
-      begin
-         for J in Argv'First + 1 .. Argv'Last loop
-            Args.Append (To_Universal_String (Argv (J)));
-         end loop;
+   ---------------
+   -- User_Path --
+   ---------------
 
-         LocalFree (Win_Argv);
-      end;
-   end if;
+   function User_Path return League.Strings.Universal_String is
+   begin
+      return Get_Special_Folder (CSIDL_APPDATA);
+   end User_Path;
 
-   --  Convert environment variables.
-
-   if Win_Envp /= null then
-      while Envp.all /= 0 loop
-         declare
-            Pair  : constant League.Strings.Universal_String
-              := To_Universal_String (Envp);
-            Index : constant Natural
-              := Pair.Index (League.Strings.To_Universal_Character ('='));
-
-         begin
-            Env.Insert
-              (Pair.Slice (1, Index - 1),
-               Pair.Slice (Index + 1, Pair.Length));
-            Envp :=
-              LPWCH
-               (WCHAR_Pointers.Pointer (Envp)
-                  + Interfaces.C.ptrdiff_t (wcslen (Envp) + 1));
-         end;
-      end loop;
-
-      FreeEnvironmentStrings (Win_Envp);
-   end if;
-end Initialize_Arguments_Environment;
+end Paths;
