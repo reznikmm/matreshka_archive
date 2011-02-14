@@ -58,8 +58,19 @@ package Matreshka.Internals.Settings.Configuration_Files is
 
    type Configuration_File_Settings is new Abstract_Settings with record
       File_Name : League.Strings.Universal_String;
+      Modified  : Boolean;
       Values    : Maps.Map;
    end record;
+
+   function Create
+    (File_Name : League.Strings.Universal_String)
+       return not null Settings_Access;
+   --  Creates settings storage object and loads data from the file when it is
+   --  available.
+
+   overriding function Contains
+    (Self : Configuration_File_Settings;
+     Key  : League.Strings.Universal_String) return Boolean;
 
    overriding procedure Finalize
     (Self : not null access Configuration_File_Settings);

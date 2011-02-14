@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Settings.Configuration_Files;
+with Matreshka.Internals.Settings.Fallbacks;
 
 package body League.Settings is
 
@@ -116,22 +117,18 @@ package body League.Settings is
 --   begin
 --      null;
 --   end Clear;
---
---   --------------
---   -- Contains --
---   --------------
---
---   function Contains
---    (Self : Settings;
---     Key  : League.Strings.Universal_String) return Boolean
---   is
---      pragma Unreferenced (Self);
---      pragma Unreferenced (Key);
---
---   begin
---      return False;
---   end Contains;
---
+
+   --------------
+   -- Contains --
+   --------------
+
+   function Contains
+    (Self : Settings;
+     Key  : League.Strings.Universal_String) return Boolean is
+   begin
+      return Self.Data.Contains (Key);
+   end Contains;
+
 --   ---------------
 --   -- End_Group --
 --   ---------------
@@ -199,7 +196,16 @@ package body League.Settings is
 --   begin
 --      return League.Strings.Empty_Universal_String;
 --   end Group;
---
+
+   ----------------
+   -- Initialize --
+   ----------------
+
+   overriding procedure Initialize (Self : in out Settings) is
+   begin
+      Self.Data := Matreshka.Internals.Settings.Fallbacks.Create;
+   end Initialize;
+
 --   ------------------
 --   -- Is_Writeable --
 --   ------------------

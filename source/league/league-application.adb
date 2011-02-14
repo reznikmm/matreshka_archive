@@ -48,8 +48,12 @@ package body League.Application is
    procedure Initialize_Arguments_Environment;
    --  Initialize arguments list and process environment.
 
-   Args : League.Strings.Universal_String_Vector;
-   Env  : League.Environment_Variables.Environment_Variable_Set;
+   Args        : League.Strings.Universal_String_Vector;
+   Env         : League.Environment_Variables.Environment_Variable_Set;
+   App_Name    : League.Strings.Universal_String;
+   App_Version : League.Strings.Universal_String;
+   Org_Name    : League.Strings.Universal_String;
+   Org_Domain  : League.Strings.Universal_String;
 
    ----------------------
    -- Application_Name --
@@ -57,7 +61,7 @@ package body League.Application is
 
    function Application_Name return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_Universal_String;
+      return App_Name;
    end Application_Name;
 
    -------------------------
@@ -66,7 +70,7 @@ package body League.Application is
 
    function Application_Version return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_Universal_String;
+      return App_Version;
    end Application_Version;
 
    ---------------
@@ -100,7 +104,7 @@ package body League.Application is
 
    function Organization_Domain return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_Universal_String;
+      return Org_Domain;
    end Organization_Domain;
 
    -----------------------
@@ -109,7 +113,7 @@ package body League.Application is
 
    function Organization_Name return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_Universal_String;
+      return Org_Name;
    end Organization_Name;
 
    --------------------------
@@ -118,7 +122,7 @@ package body League.Application is
 
    procedure Set_Application_Name (Name : League.Strings.Universal_String) is
    begin
-      null;
+      App_Name := Name;
    end Set_Application_Name;
 
    -----------------------------
@@ -128,7 +132,7 @@ package body League.Application is
    procedure Set_Application_Version
     (Name : League.Strings.Universal_String) is
    begin
-      null;
+      App_Version := Name;
    end Set_Application_Version;
 
    -----------------------------
@@ -138,7 +142,7 @@ package body League.Application is
    procedure Set_Organization_Domain
     (Name : League.Strings.Universal_String) is
    begin
-      null;
+      Org_Domain := Name;
    end Set_Organization_Domain;
 
    ---------------------------
@@ -147,7 +151,7 @@ package body League.Application is
 
    procedure Set_Organization_Name (Name : League.Strings.Universal_String) is
    begin
-      null;
+      Org_Name := Name;
    end Set_Organization_Name;
 
 begin

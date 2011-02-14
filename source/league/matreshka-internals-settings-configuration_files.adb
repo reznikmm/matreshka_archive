@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Directories;
 with Ada.Streams.Stream_IO;
 
 with League.Stream_Element_Vectors.Internals;
@@ -112,6 +113,39 @@ package body Matreshka.Internals.Settings.Configuration_Files is
        return Matreshka.Internals.Unicode.Code_Unit_32;
    --  Constructs Unicode code point from hexadecimal image. Returns
    --  Code_Unit_32'Last when conversion failed.
+
+   --------------
+   -- Contains --
+   --------------
+
+   overriding function Contains
+    (Self : Configuration_File_Settings;
+     Key  : League.Strings.Universal_String) return Boolean is
+   begin
+      return Self.Values.Contains (Key);
+   end Contains;
+
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (File_Name : League.Strings.Universal_String)
+       return not null Settings_Access is
+   begin
+      return Aux : constant not null Settings_Access
+        := new Configuration_File_Settings'
+                (Abstract_Settings with File_Name, False, Maps.Empty_Map)
+      do
+         declare
+            Self : Configuration_File_Settings'Class
+              renames Configuration_File_Settings'Class (Aux.all);
+
+         begin
+            Load (Self, Self.File_Name);
+         end;
+      end return;
+   end Create;
 
    ----------------
    -- Decode_Key --
@@ -304,23 +338,25 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    begin
       Self.File_Name := File_Name;
 
-      --  Load content of the file.
+      if Ada.Directories.Exists (To_Locale_String (Self.File_Name)) then
+         --  Load content of the file.
 
-      Open (File, In_File, To_Locale_String (File_Name));
+         Open (File, In_File, To_Locale_String (File_Name));
 
-      loop
-         Read (File, Buffer, Last);
+         loop
+            Read (File, Buffer, Last);
 
-         exit when Last < Buffer'First;
+            exit when Last < Buffer'First;
 
-         Data.Append (Buffer (Buffer'First .. Last));
-      end loop;
+            Data.Append (Buffer (Buffer'First .. Last));
+         end loop;
 
-      Close (File);
+         Close (File);
 
-      --  Parse.
+         --  Parse.
 
-      Parse (Self, Data);
+         Parse (Self, Data);
+      end if;
    end Load;
 
    -----------
@@ -631,6 +667,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
      Key   : League.Strings.Universal_String;
      Value : League.Values.Value) is
    begin
+      Self.Modified := True;
       Self.Values.Include
        (Key, Encode_Value (League.Values.Strings.Get (Value)));
    end Set_Value;
@@ -643,19 +680,29 @@ package body Matreshka.Internals.Settings.Configuration_Files is
       use Ada.Streams.Stream_IO;
       use League.Stream_Element_Vectors.Internals;
 
+      Name : constant String := To_Locale_String (Self.File_Name);
       File : File_Type;
       Data : Stream_Element_Vector;
 
    begin
-      --  Serialize data.
+      if Self.Modified then
+         --  Serialize data.
 
-      Data := Serialize (Self);
+         Data := Serialize (Self);
 
-      --  Writes data into file.
+         --  Creates directory when necessary.
 
-      Create (File, Out_File, To_Locale_String (Self.File_Name));
-      Write (File, Internal (Data).Value (0 .. Internal (Data).Length - 1));
-      Close (File);
+         Ada.Directories.Create_Path
+          (Ada.Directories.Containing_Directory (Name));
+
+         --  Writes data into file.
+
+         Create (File, Out_File, Name);
+         Write (File, Internal (Data).Value (0 .. Internal (Data).Length - 1));
+         Close (File);
+
+         Self.Modified := False;
+      end if;
    end Sync;
 
    ----------------------
