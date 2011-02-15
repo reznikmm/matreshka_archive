@@ -41,25 +41,43 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This is Windows specific version of the package specification.
-------------------------------------------------------------------------------
-with League.Settings;
-private with Matreshka.Internals.Settings.Registry_Managers;
-private with Matreshka.Internals.Settings.Ini_Managers;
 
-package Matreshka.Internals.Settings.Configuration is
+package body Matreshka.Internals.Settings.Registry_Managers is
 
-   type Managers is array (League.Settings.Formats) of Manager_Access;
+   ------------
+   -- Create --
+   ------------
 
-   Manager : constant Managers;
+   overriding function Create
+    (Self : not null access Registry_Manager)
+       return not null Settings_Access is
+   begin
+      return null;
+   end Create;
 
-private
+   ------------
+   -- Create --
+   ------------
 
-   Native_Manager :
-     aliased Matreshka.Internals.Settings.Ini_Managers.Ini_File_Manager;
-   Ini_Manager    :
-     aliased Matreshka.Internals.Settings.Ini_Managers.Ini_File_Manager;
+   overriding function Create
+    (Self      : not null access Registry_Manager;
+     File_Name : League.Strings.Universal_String)
+       return not null Settings_Access is
+   begin
+      return null;
+   end Create;
 
-   Manager : constant Managers := (Native_Manager'Access, Ini_Manager'Access);
+   ------------
+   -- Create --
+   ------------
 
-end Matreshka.Internals.Settings.Configuration;
+   overriding function Create
+    (Self         : not null access Registry_Manager;
+     Organization : League.Strings.Universal_String;
+     Application  : League.Strings.Universal_String)
+       return not null Settings_Access is
+   begin
+      return null;
+   end Create;
+
+end Matreshka.Internals.Settings.Registry_Managers;

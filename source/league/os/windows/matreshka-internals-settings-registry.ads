@@ -41,25 +41,46 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This is Windows specific version of the package specification.
+--  This package provides storage implementation for Windows Registry.
 ------------------------------------------------------------------------------
-with League.Settings;
-private with Matreshka.Internals.Settings.Registry_Managers;
-private with Matreshka.Internals.Settings.Ini_Managers;
 
-package Matreshka.Internals.Settings.Configuration is
+package Matreshka.Internals.Settings.Registry is
 
-   type Managers is array (League.Settings.Formats) of Manager_Access;
-
-   Manager : constant Managers;
+   type Registry_Settings is new Abstract_Settings with private;
 
 private
 
-   Native_Manager :
-     aliased Matreshka.Internals.Settings.Ini_Managers.Ini_File_Manager;
-   Ini_Manager    :
-     aliased Matreshka.Internals.Settings.Ini_Managers.Ini_File_Manager;
+   type Registry_Settings is new Abstract_Settings with record
+      null;
+   end record;
 
-   Manager : constant Managers := (Native_Manager'Access, Ini_Manager'Access);
+   overriding function Contains
+    (Self : Registry_Settings;
+     Key  : League.Strings.Universal_String) return Boolean;
 
-end Matreshka.Internals.Settings.Configuration;
+   overriding procedure Finalize
+    (Self : not null access Registry_Settings);
+
+   overriding function Name
+    (Self : not null access Registry_Settings)
+       return League.Strings.Universal_String;
+   --  Returns name of the storage. For Windows Registry storage it is system
+   --  registry path.
+
+   overriding procedure Remove
+    (Self : in out Registry_Settings;
+     Key  : League.Strings.Universal_String);
+
+   overriding procedure Set_Value
+    (Self  : in out Registry_Settings;
+     Key   : League.Strings.Universal_String;
+     Value : League.Values.Value);
+
+   overriding procedure Sync (Self : in out Registry_Settings);
+
+   overriding function Value
+    (Self : Registry_Settings;
+     Key  : League.Strings.Universal_String)
+       return League.Values.Value;
+
+end Matreshka.Internals.Settings.Registry;
