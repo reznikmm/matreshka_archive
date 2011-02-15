@@ -1,3 +1,4 @@
+with Ada.Calendar;
 with Ada.Containers.Ordered_Sets;
 with Ada.Streams;
 
@@ -25,6 +26,8 @@ package body Demo.Callbacks is
     (Reply : in out FastCGI.Replies.Reply;
      Item  : League.Strings.Universal_String);
    --  Outputs string into standard output stream of reply.
+
+   Startup  : constant Ada.Calendar.Time := Ada.Calendar.Clock;
 
    Page_Top : constant League.Strings.Universal_String
      := +("<?xml version='1.1' encoding='utf-8'?>"
@@ -75,6 +78,8 @@ package body Demo.Callbacks is
      Reply   : out FastCGI.Replies.Reply;
      Status  : out Integer)
    is
+      use type Ada.Calendar.Time;
+
       procedure Output (Position : Sets.Cursor);
       --  Outputs string pointed by Position.
 
@@ -113,6 +118,12 @@ package body Demo.Callbacks is
         Codec.Decode
          (Request.Raw_Header (Script_Name_Header).To_Stream_Element_Array));
       Put (Reply, Page_Bottom);
+      Put
+       (Reply,
+        League.Strings.To_Universal_String
+         ("<p>Uptime:"
+            & Duration'Wide_Wide_Image (Ada.Calendar.Clock - Startup)
+            & "</p>"));
       Put (Reply, Page_Done);
       Status := 0;
    end Handler;
