@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package provides proxy settings storage which implements fallbacks
+--  mechanism on top of several underling settings storages.
+------------------------------------------------------------------------------
 private with Ada.Containers.Vectors;
 
 package Matreshka.Internals.Settings.Fallbacks is
@@ -50,6 +53,13 @@ package Matreshka.Internals.Settings.Fallbacks is
    function Create
     (Manager : not null access Abstract_Manager'Class)
        return not null Settings_Access;
+   --  Creates fallbacks proxy.
+
+   procedure Add
+    (Self    : not null access Fallback_Settings'Class;
+     Storage : not null Settings_Access);
+   --  Adds specified settings storage to be used to retrieve settings. First
+   --  added storage is used to modify settings also.
 
 private
 

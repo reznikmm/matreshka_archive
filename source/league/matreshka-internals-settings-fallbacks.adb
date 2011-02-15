@@ -41,73 +41,19 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Application;
-with Matreshka.Internals.Settings.Configuration_Files;
 
 package body Matreshka.Internals.Settings.Fallbacks is
 
-   use type League.Strings.Universal_String;
+   ---------
+   -- Add --
+   ---------
 
-   package Paths is
-
-      function User_Path return League.Strings.Universal_String;
-      --  Returns path where user's settings are stored. Returned path has
-      --  trailing path separator.
-
-      function System_Paths return League.Strings.Universal_String_Vector;
-      --  Returns paths where system settings are stored. Returned path has
-      --  trailing path separator.
-
-   end Paths;
-
-   function Extension return League.Strings.Universal_String;
-   --  Returns configuration file extention.
-   --  XXX .conf and .ini are used depending of platform and format, but not
-   --  yet implemented.
-
-   function Application_File_Name
-    (Path : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
-   --  Constructs file name of application's settings file.
-
-   function Organization_File_Name
-    (Path : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
-   --  Constructs file name of organization's settings file.
-
-   Unknown_Organization : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("Unknown Organization");
-
-   ---------------------------
-   -- Application_File_Name --
-   ---------------------------
-
-   function Application_File_Name
-    (Path : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
+   procedure Add
+    (Self    : not null access Fallback_Settings'Class;
+     Storage : not null Settings_Access) is
    begin
-      if League.Application.Application_Name.Is_Empty then
-         return Organization_File_Name (Path);
-
-      else
-         if League.Application.Organization_Name.Is_Empty then
-            return
-              Path
-                & Unknown_Organization
-                & '/'
-                & League.Application.Application_Name
-                & Extension;
-
-         else
-            return
-              Path
-                & League.Application.Organization_Name
-                & '/'
-                & League.Application.Application_Name
-                & Extension;
-         end if;
-      end if;
-   end Application_File_Name;
+      Self.Storages.Append (Storage);
+   end Add;
 
    --------------
    -- Contains --
@@ -134,59 +80,12 @@ package body Matreshka.Internals.Settings.Fallbacks is
     (Manager : not null access Abstract_Manager'Class)
        return not null Settings_Access is
    begin
-      return Aux : constant not null Settings_Access
-        := new Fallback_Settings (Manager)
-      do
-         declare
-            Self  : Fallback_Settings'Class
-              renames Fallback_Settings'Class (Aux.all);
-            Paths : constant League.Strings.Universal_String_Vector
-              := Fallbacks.Paths.System_Paths;
-
-         begin
-            --  Append user's application and organization files.
-
-            Self.Storages.Append
-             (Matreshka.Internals.Settings.Configuration_Files.Create
-               (Manager, Application_File_Name (Fallbacks.Paths.User_Path)));
-
-            if Organization_File_Name (Fallbacks.Paths.User_Path)
-                 /= Application_File_Name (Fallbacks.Paths.User_Path)
-            then
-               Self.Storages.Append
-                (Matreshka.Internals.Settings.Configuration_Files.Create
-                  (Manager,
-                   Organization_File_Name (Fallbacks.Paths.User_Path)));
-            end if;
-
-            --  Append system's application and organization files for every
-            --  system configuration directory.
-
-            for J in 1 .. Paths.Length loop
-               Self.Storages.Append
-                (Matreshka.Internals.Settings.Configuration_Files.Create
-                  (Manager, Application_File_Name (Paths.Element (J))));
-
-               if Organization_File_Name (Paths.Element (J))
-                    /= Application_File_Name (Paths.Element (J))
-               then
-                  Self.Storages.Append
-                   (Matreshka.Internals.Settings.Configuration_Files.Create
-                     (Manager, Organization_File_Name (Paths.Element (J))));
-               end if;
-            end loop;
-         end;
-      end return;
+      return
+        new Fallback_Settings'
+             (Counter  => <>,
+              Manager  => Manager,
+              Storages => Vectors.Empty_Vector);
    end Create;
-
-   ---------------
-   -- Extension --
-   ---------------
-
-   function Extension return League.Strings.Universal_String is
-   begin
-      return League.Strings.To_Universal_String (".conf");
-   end Extension;
 
    --------------
    -- Finalize --
@@ -206,28 +105,6 @@ package body Matreshka.Internals.Settings.Fallbacks is
 
       Self.Storages.Clear;
    end Finalize;
-
-   ----------------------------
-   -- Organization_File_Name --
-   ----------------------------
-
-   function Organization_File_Name
-    (Path : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
-   begin
-      if League.Application.Organization_Name.Is_Empty then
-         return Path & Unknown_Organization & Extension;
-
-      else
-         return Path & League.Application.Organization_Name & Extension;
-      end if;
-   end Organization_File_Name;
-
-   -----------
-   -- Paths --
-   -----------
-
-   package body Paths is separate;
 
    ------------
    -- Remove --
