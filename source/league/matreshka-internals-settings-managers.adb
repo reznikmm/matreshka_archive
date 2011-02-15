@@ -61,15 +61,15 @@ package body Matreshka.Internals.Settings.Managers is
 
    end Paths;
 
-   function Application_File_Name
-    (Path : League.Strings.Universal_String)
+   function Ini_File_Name
+    (Path         : League.Strings.Universal_String;
+     Organization : League.Strings.Universal_String;
+     Application  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
        return League.Strings.Universal_String;
-   --  Constructs file name of application's settings file.
-
-   function Organization_File_Name
-    (Path : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
-   --  Constructs file name of organization's settings file.
+   --  Constructs file name of settings file. When Appllication is not empty
+   --  this is application settings file, otherwise it is name of organization
+   --  settings file.
 
    function Extension return League.Strings.Universal_String;
    --  Returns configuration file extention.
@@ -79,36 +79,34 @@ package body Matreshka.Internals.Settings.Managers is
    Unknown_Organization : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Unknown Organization");
 
-   ---------------------------
-   -- Application_File_Name --
-   ---------------------------
+   -------------------
+   -- Ini_File_Name --
+   -------------------
 
-   function Application_File_Name
-    (Path : League.Strings.Universal_String)
+   function Ini_File_Name
+    (Path         : League.Strings.Universal_String;
+     Organization : League.Strings.Universal_String;
+     Application  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
        return League.Strings.Universal_String is
    begin
-      if League.Application.Application_Name.Is_Empty then
-         return Organization_File_Name (Path);
-
-      else
-         if League.Application.Organization_Name.Is_Empty then
-            return
-              Path
-                & Unknown_Organization
-                & '/'
-                & League.Application.Application_Name
-                & Extension;
+      if Application.Is_Empty then
+         if Organization.Is_Empty then
+            return Path & Unknown_Organization & Extension;
 
          else
-            return
-              Path
-                & League.Application.Organization_Name
-                & '/'
-                & League.Application.Application_Name
-                & Extension;
+            return Path & Organization & Extension;
+         end if;
+
+      else
+         if Organization.Is_Empty then
+            return Path & Unknown_Organization & '/' & Application & Extension;
+
+         else
+            return Path & Organization & '/' & Application & Extension;
          end if;
       end if;
-   end Application_File_Name;
+   end Ini_File_Name;
 
    ------------
    -- Create --
@@ -130,13 +128,24 @@ package body Matreshka.Internals.Settings.Managers is
          begin
             --  Append user's application and organization files.
 
-            Proxy.Add (Self.Create (Application_File_Name (Paths.User_Path)));
+            Proxy.Add
+             (Self.Create
+               (Ini_File_Name
+                 (Paths.User_Path,
+                  League.Application.Organization_Name,
+                  League.Application.Application_Name)));
 
-            if Organization_File_Name (Paths.User_Path)
-                 /= Application_File_Name (Paths.User_Path)
+            if Ini_File_Name
+                (Paths.User_Path, League.Application.Organization_Name)
+                 /= Ini_File_Name
+                     (Paths.User_Path,
+                      League.Application.Organization_Name,
+                      League.Application.Application_Name)
             then
                Proxy.Add
-                (Self.Create (Organization_File_Name (Paths.User_Path)));
+                (Self.Create
+                  (Ini_File_Name
+                    (Paths.User_Path, League.Application.Organization_Name)));
             end if;
 
             --  Append system's application and organization files for every
@@ -145,14 +154,24 @@ package body Matreshka.Internals.Settings.Managers is
             for J in 1 .. System_Paths.Length loop
                Proxy.Add
                 (Self.Create
-                  (Application_File_Name (System_Paths.Element (J))));
+                  (Ini_File_Name
+                     (System_Paths.Element (J),
+                      League.Application.Organization_Name,
+                      League.Application.Application_Name)));
 
-               if Organization_File_Name (System_Paths.Element (J))
-                    /= Application_File_Name (System_Paths.Element (J))
+               if Ini_File_Name
+                   (System_Paths.Element (J),
+                    League.Application.Organization_Name)
+                    /= Ini_File_Name
+                        (System_Paths.Element (J),
+                         League.Application.Organization_Name,
+                         League.Application.Application_Name)
                then
                   Proxy.Add
                    (Self.Create
-                     (Organization_File_Name (System_Paths.Element (J))));
+                     (Ini_File_Name
+                       (System_Paths.Element (J),
+                        League.Application.Organization_Name)));
                end if;
             end loop;
          end;
@@ -183,7 +202,9 @@ package body Matreshka.Internals.Settings.Managers is
      Application  : League.Strings.Universal_String)
        return not null Settings_Access is
    begin
-      return null;
+      return
+        Matreshka.Internals.Settings.Configuration_Files.Create
+         (Self, Ini_File_Name (Paths.User_Path, Organization, Application));
    end Create;
 
    ---------------
@@ -194,22 +215,6 @@ package body Matreshka.Internals.Settings.Managers is
    begin
       return League.Strings.To_Universal_String (".conf");
    end Extension;
-
-   ----------------------------
-   -- Organization_File_Name --
-   ----------------------------
-
-   function Organization_File_Name
-    (Path : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
-   begin
-      if League.Application.Organization_Name.Is_Empty then
-         return Path & Unknown_Organization & Extension;
-
-      else
-         return Path & League.Application.Organization_Name & Extension;
-      end if;
-   end Organization_File_Name;
 
    -----------
    -- Paths --
