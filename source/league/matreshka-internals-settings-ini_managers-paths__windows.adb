@@ -41,64 +41,70 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This version of package intended to be used on POSIX systems.
---
---  This package is conformant to "XDG Base Directory Specification".
+--  This version of package intended to be used on Windows systems.
 ------------------------------------------------------------------------------
+with Interfaces.C;
+with System;
 
-separate (Matreshka.Internals.Settings.Managers)
+with Matreshka.Internals.Utf16;
+with Matreshka.Internals.Windows;
+
+separate (Matreshka.Internals.Settings.Ini_Managers)
 package body Paths is
 
-   HOME                 : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("HOME");
-   XDG_CONFIG_HOME      : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("XDG_CONFIG_HOME");
-   XDG_CONFIG_DIRS      : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("XDG_CONFIG_DIRS");
+   use Matreshka.Internals.Windows;
+   use type League.Strings.Universal_String;
+
+   type HWND is new System.Address;
+
+   type BOOL is new Interfaces.C.int;
+
+   MAX_PATH : constant := 260;
+
+   CSIDL_APPDATA        : constant := 26;
+   CSIDL_COMMON_APPDATA : constant := 35;
+
+   function SHGetSpecialFolderPath
+    (hwndOwner : HWND;
+     lpszPath  : LPWSTR;
+     csidl     : Interfaces.C.int;
+     fCreate   : BOOL) return BOOL;
+   pragma Import (Stdcall, SHGetSpecialFolderPath, "SHGetSpecialFolderPathW");
+
+   function Get_Special_Folder
+    (CSIDL : Interfaces.C.int) return League.Strings.Universal_String;
+   --  Returns path of the specified special folder.
+
+   ------------------------
+   -- Get_Special_Folder --
+   ------------------------
+
+   function Get_Special_Folder
+    (CSIDL : Interfaces.C.int) return League.Strings.Universal_String
+   is
+      Buffer : array (1 .. MAX_PATH)
+        of aliased Matreshka.Internals.Utf16.Utf16_Code_Unit;
+
+   begin
+      if SHGetSpecialFolderPath
+          (HWND (System.Null_Address), Buffer (1)'Unchecked_Access, CSIDL, 0)
+             = 0
+      then
+         raise Program_Error;
+      end if;
+
+      return To_Universal_String (Buffer (1)'Unchecked_Access);
+   end Get_Special_Folder;
 
    ------------------
    -- System_Paths --
    ------------------
 
    function System_Paths return League.Strings.Universal_String_Vector is
-      Dirs  : League.Strings.Universal_String_Vector;
-      Path  : League.Strings.Universal_String;
       Paths : League.Strings.Universal_String_Vector;
 
    begin
-      --  Looking for XDG_CONFIG_DIRS environment variable and construct list
-      --  directories from its value.
-
-      if League.Application.Environment.Contains (XDG_CONFIG_DIRS) then
-         Dirs :=
-           League.Application.Environment.Value
-            (XDG_CONFIG_DIRS).Split (':', League.Strings.Skip_Empty);
-
-         for J in 1 .. Dirs.Length loop
-            Path := Dirs.Element (J);
-
-            --  Resolve relative paths relativealy home directory.
-
-            if Path.Element (1) /= '/' then
-               Path :=
-                 League.Application.Environment.Value (HOME) & '/' & Path;
-            end if;
-
-            --  Check for trailing path separator and add it when necessary.
-
-            if Path.Element (Path.Length) /= '/' then
-               Path.Append ('/');
-            end if;
-
-            Paths.Append (Path);
-         end loop;
-      end if;
-
-      --  Use default directory when directories list is not constructed.
-
-      if Paths.Is_Empty then
-         Paths.Append (League.Strings.To_Universal_String ("/etc/xdg/"));
-      end if;
+      Paths.Append (Get_Special_Folder (CSIDL_COMMON_APPDATA) & '/');
 
       return Paths;
    end System_Paths;
@@ -108,36 +114,8 @@ package body Paths is
    ---------------
 
    function User_Path return League.Strings.Universal_String is
-      Path : League.Strings.Universal_String;
-
    begin
-      --  First, looking for XDG_CONFIG_HOME environment variable, it overrides
-      --  default path.
-
-      if League.Application.Environment.Contains (XDG_CONFIG_HOME) then
-         Path := League.Application.Environment.Value (XDG_CONFIG_HOME);
-      end if;
-
-      --  When XDG_CONFIG_HOME environment variable is not defined, use
-      --  $HOME/.config directory.
-
-      if Path.Is_Empty then
-         Path := League.Application.Environment.Value (HOME) & '/' & ".config";
-
-      --  Otherwise, when XDG_CONFIG_HOME is relative path, construct full
-      --  path as $HOME/$XDG_CONFIG_HOME.
-
-      elsif Path.Element (1).To_Wide_Wide_Character /= '/' then
-         Path := League.Application.Environment.Value (HOME) & '/' & Path;
-      end if;
-
-      --  Check for trailing path separator and add it when necessary.
-
-      if Path.Element (Path.Length) /= '/' then
-         Path.Append ('/');
-      end if;
-
-      return Path;
+      return Get_Special_Folder (CSIDL_APPDATA) & '/';
    end User_Path;
 
 end Paths;

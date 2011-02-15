@@ -41,30 +41,67 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Settings manager for INI files.
+--  This package contains implementation of INI files storage for settings
+--  manager.
 ------------------------------------------------------------------------------
+with Ada.Containers.Hashed_Maps;
 
-package Matreshka.Internals.Settings.Managers is
+with League.Stream_Element_Vectors;
+with League.Strings.Hash;
 
-   type Ini_File_Manager is new Abstract_Manager with null record;
+package Matreshka.Internals.Settings.Ini_Files is
 
-   overriding function Create
-    (Self : not null access Ini_File_Manager) return not null Settings_Access;
-   --  Creates fallbacks proxy and set of underling settings storages.
+   type Ini_File_Settings is new Abstract_Settings with private;
 
-   overriding function Create
-    (Self      : not null access Ini_File_Manager;
+   function Create
+    (Manager   : not null access Abstract_Manager'Class;
      File_Name : League.Strings.Universal_String)
        return not null Settings_Access;
-   --  Creates settings storage for the specified file.
+   --  Creates settings storage object and loads data from the file when it is
+   --  available.
 
-   overriding function Create
-    (Self         : not null access Ini_File_Manager;
-     Organization : League.Strings.Universal_String;
-     Application  : League.Strings.Universal_String)
-       return not null Settings_Access;
-   --  Creates settings storage for the specified organization and application.
+private
 
-   Manager : aliased Ini_File_Manager;
+   package Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           League.Stream_Element_Vectors.Stream_Element_Vector,
+           League.Strings.Hash,
+           League.Strings."=",
+           League.Stream_Element_Vectors."=");
 
-end Matreshka.Internals.Settings.Managers;
+   type Ini_File_Settings is new Abstract_Settings with record
+      File_Name : League.Strings.Universal_String;
+      Modified  : Boolean;
+      Values    : Maps.Map;
+   end record;
+
+   overriding function Contains
+    (Self : Ini_File_Settings;
+     Key  : League.Strings.Universal_String) return Boolean;
+
+   overriding procedure Finalize
+    (Self : not null access Ini_File_Settings);
+
+   overriding function Name
+    (Self : not null access Ini_File_Settings)
+       return League.Strings.Universal_String;
+   --  Returns name of the storage's file.
+
+   overriding procedure Remove
+    (Self : in out Ini_File_Settings;
+     Key  : League.Strings.Universal_String);
+
+   overriding procedure Set_Value
+    (Self  : in out Ini_File_Settings;
+     Key   : League.Strings.Universal_String;
+     Value : League.Values.Value);
+
+   overriding procedure Sync (Self : in out Ini_File_Settings);
+
+   overriding function Value
+    (Self : Ini_File_Settings;
+     Key  : League.Strings.Universal_String)
+       return League.Values.Value;
+
+end Matreshka.Internals.Settings.Ini_Files;

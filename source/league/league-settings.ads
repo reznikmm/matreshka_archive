@@ -68,8 +68,8 @@ private with Matreshka.Internals.Settings;
 
 package League.Settings is
 
---   type Formats is (Native, Ini);
---
+   type Formats is (Native, Ini);
+
 --   type Scopes is (User, System);
 --
 --   type Statuses is (No_Error, Access_Error, Format_Error);

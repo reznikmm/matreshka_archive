@@ -42,10 +42,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Application;
-with Matreshka.Internals.Settings.Configuration_Files;
+with Matreshka.Internals.Settings.Ini_Files;
 with Matreshka.Internals.Settings.Fallbacks;
 
-package body Matreshka.Internals.Settings.Managers is
+package body Matreshka.Internals.Settings.Ini_Managers is
 
    use type League.Strings.Universal_String;
 
@@ -187,9 +187,7 @@ package body Matreshka.Internals.Settings.Managers is
      File_Name : League.Strings.Universal_String)
        return not null Settings_Access is
    begin
-      return
-        Matreshka.Internals.Settings.Configuration_Files.Create
-         (Self, File_Name);
+      return Matreshka.Internals.Settings.Ini_Files.Create (Self, File_Name);
    end Create;
 
    ------------
@@ -203,7 +201,7 @@ package body Matreshka.Internals.Settings.Managers is
        return not null Settings_Access is
    begin
       return
-        Matreshka.Internals.Settings.Configuration_Files.Create
+        Matreshka.Internals.Settings.Ini_Files.Create
          (Self, Ini_File_Name (Paths.User_Path, Organization, Application));
    end Create;
 
@@ -222,4 +220,4 @@ package body Matreshka.Internals.Settings.Managers is
 
    package body Paths is separate;
 
-end Matreshka.Internals.Settings.Managers;
+end Matreshka.Internals.Settings.Ini_Managers;

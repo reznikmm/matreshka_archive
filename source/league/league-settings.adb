@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Settings.Managers;
+with Matreshka.Internals.Settings.Configuration;
 
 package body League.Settings is
 
@@ -138,7 +138,7 @@ package body League.Settings is
       return
         Settings'
          (Ada.Finalization.Limited_Controlled with
-            Matreshka.Internals.Settings.Managers.Manager.Create
+            Matreshka.Internals.Settings.Configuration.Manager (Native).Create
              (File_Name));
    end Create;
 
@@ -154,7 +154,7 @@ package body League.Settings is
       return
         Settings'
          (Ada.Finalization.Limited_Controlled with
-            Matreshka.Internals.Settings.Managers.Manager.Create
+            Matreshka.Internals.Settings.Configuration.Manager (Native).Create
              (Organization, Application));
    end Create;
 
@@ -232,7 +232,8 @@ package body League.Settings is
 
    overriding procedure Initialize (Self : in out Settings) is
    begin
-      Self.Data := Matreshka.Internals.Settings.Managers.Manager.Create;
+      Self.Data :=
+        Matreshka.Internals.Settings.Configuration.Manager (Native).Create;
    end Initialize;
 
 --   ------------------

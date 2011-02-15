@@ -50,7 +50,7 @@ with League.Values.Strings;
 with Matreshka.Internals.Stream_Element_Vectors;
 with Matreshka.Internals.Unicode.Characters.Latin;
 
-package body Matreshka.Internals.Settings.Configuration_Files is
+package body Matreshka.Internals.Settings.Ini_Files is
 
    use Ada.Streams;
    use League.Stream_Element_Vectors;
@@ -77,16 +77,16 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    --  Converts Universal_String to locale 8-bit string to use as file name for
    --  standard Ada library subprograms.
 
-   procedure Load (Self : in out Configuration_File_Settings'Class);
+   procedure Load (Self : in out Ini_File_Settings'Class);
    --  Loads data from the file.
 
    procedure Parse
-    (Self : in out Configuration_File_Settings'Class;
+    (Self : in out Ini_File_Settings'Class;
      Data : League.Stream_Element_Vectors.Stream_Element_Vector);
    --  Parses data.
 
    function Serialize
-    (Self : Configuration_File_Settings)
+    (Self : Ini_File_Settings)
        return League.Stream_Element_Vectors.Stream_Element_Vector;
    --  Serializes data.
 
@@ -122,7 +122,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    --------------
 
    overriding function Contains
-    (Self : Configuration_File_Settings;
+    (Self : Ini_File_Settings;
      Key  : League.Strings.Universal_String) return Boolean is
    begin
       return Self.Values.Contains (Key);
@@ -138,7 +138,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
        return not null Settings_Access is
    begin
       return Aux : constant not null Settings_Access
-        := new Configuration_File_Settings'
+        := new Ini_File_Settings'
                 (Counter   => <>,
                  Manager   => Manager,
                  File_Name => File_Name,
@@ -146,8 +146,8 @@ package body Matreshka.Internals.Settings.Configuration_Files is
                  Values    => Maps.Empty_Map)
       do
          declare
-            Self : Configuration_File_Settings'Class
-              renames Configuration_File_Settings'Class (Aux.all);
+            Self : Ini_File_Settings'Class
+              renames Ini_File_Settings'Class (Aux.all);
 
          begin
             Self.Load;
@@ -278,7 +278,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    --------------
 
    overriding procedure Finalize
-    (Self : not null access Configuration_File_Settings) is
+    (Self : not null access Ini_File_Settings) is
    begin
       Self.Sync;
    end Finalize;
@@ -332,7 +332,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    -- Load --
    ----------
 
-   procedure Load (Self : in out Configuration_File_Settings'Class) is
+   procedure Load (Self : in out Ini_File_Settings'Class) is
       use Ada.Streams.Stream_IO;
 
       File   : File_Type;
@@ -367,7 +367,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    ----------
 
    overriding function Name
-    (Self : not null access Configuration_File_Settings)
+    (Self : not null access Ini_File_Settings)
        return League.Strings.Universal_String is
    begin
       return Self.File_Name;
@@ -378,7 +378,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    -----------
 
    procedure Parse
-    (Self : in out Configuration_File_Settings'Class;
+    (Self : in out Ini_File_Settings'Class;
      Data : League.Stream_Element_Vectors.Stream_Element_Vector)
    is
       use Matreshka.Internals.Stream_Element_Vectors;
@@ -555,7 +555,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    ------------
 
    overriding procedure Remove
-    (Self : in out Configuration_File_Settings;
+    (Self : in out Ini_File_Settings;
      Key  : League.Strings.Universal_String) is
    begin
       if Self.Values.Contains (Key) then
@@ -569,7 +569,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    ---------------
 
    function Serialize
-    (Self : Configuration_File_Settings)
+    (Self : Ini_File_Settings)
        return League.Stream_Element_Vectors.Stream_Element_Vector
    is
       procedure Group_Pair (Position : Maps.Cursor);
@@ -691,7 +691,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    ---------------
 
    overriding procedure Set_Value
-    (Self  : in out Configuration_File_Settings;
+    (Self  : in out Ini_File_Settings;
      Key   : League.Strings.Universal_String;
      Value : League.Values.Value) is
    begin
@@ -704,7 +704,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    -- Sync --
    ----------
 
-   overriding procedure Sync (Self : in out Configuration_File_Settings) is
+   overriding procedure Sync (Self : in out Ini_File_Settings) is
       use Ada.Streams.Stream_IO;
       use League.Stream_Element_Vectors.Internals;
 
@@ -756,7 +756,7 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    -----------
 
    overriding function Value
-    (Self : Configuration_File_Settings;
+    (Self : Ini_File_Settings;
      Key  : League.Strings.Universal_String)
        return League.Values.Value is
    begin
@@ -770,4 +770,4 @@ package body Matreshka.Internals.Settings.Configuration_Files is
       end return;
    end Value;
 
-end Matreshka.Internals.Settings.Configuration_Files;
+end Matreshka.Internals.Settings.Ini_Files;
