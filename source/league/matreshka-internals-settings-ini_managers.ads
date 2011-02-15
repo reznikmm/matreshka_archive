@@ -46,6 +46,10 @@
 
 package Matreshka.Internals.Settings.Ini_Managers is
 
+   type Ini_File_Manager is new Abstract_Manager with private;
+
+private
+
    type Ini_File_Manager is new Abstract_Manager with null record;
 
    overriding function Create
@@ -64,7 +68,5 @@ package Matreshka.Internals.Settings.Ini_Managers is
      Application  : League.Strings.Universal_String)
        return not null Settings_Access;
    --  Creates settings storage for the specified organization and application.
-
-   Manager : aliased Ini_File_Manager;
 
 end Matreshka.Internals.Settings.Ini_Managers;
