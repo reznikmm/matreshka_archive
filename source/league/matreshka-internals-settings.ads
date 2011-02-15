@@ -49,7 +49,13 @@ package Matreshka.Internals.Settings is
 
    pragma Preelaborate;
 
-   type Abstract_Settings is abstract tagged limited record
+   type Abstract_Manager is abstract tagged limited null record;
+
+   type Manager_Access is access all Abstract_Manager'Class;
+
+   type Abstract_Settings (Manager : not null access Abstract_Manager'Class) is
+     abstract tagged limited
+   record
       Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
    end record;
 
@@ -84,5 +90,27 @@ package Matreshka.Internals.Settings is
    procedure Dereference (Self : in out Settings_Access);
    --  Decrements reference counter. Call Finalize and deallocate memory when
    --  reference counter reach zero. Always sets Self to null.
+
+   ----------------------
+   -- Abstract_Manager --
+   ----------------------
+
+   not overriding function Create
+    (Self : not null access Abstract_Manager)
+       return not null Settings_Access is abstract;
+   --  Creates fallbacks proxy and set of underling settings storages.
+
+   not overriding function Create
+    (Self      : not null access Abstract_Manager;
+     File_Name : League.Strings.Universal_String)
+       return not null Settings_Access is abstract;
+   --  Creates settings storage for the specified file.
+
+   not overriding function Create
+    (Self         : not null access Abstract_Manager;
+     Organization : League.Strings.Universal_String;
+     Application  : League.Strings.Universal_String)
+       return not null Settings_Access is abstract;
+   --  Creates settings storage for the specified organization and application.
 
 end Matreshka.Internals.Settings;

@@ -41,8 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Settings.Configuration_Files;
-with Matreshka.Internals.Settings.Fallbacks;
+with Matreshka.Internals.Settings.Managers;
 
 package body League.Settings is
 
@@ -139,8 +138,24 @@ package body League.Settings is
       return
         Settings'
          (Ada.Finalization.Limited_Controlled with
-            Matreshka.Internals.Settings.Configuration_Files.Create
+            Matreshka.Internals.Settings.Managers.Manager.Create
              (File_Name));
+   end Create;
+
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (Organization : League.Strings.Universal_String;
+     Application  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String) return Settings is
+   begin
+      return
+        Settings'
+         (Ada.Finalization.Limited_Controlled with
+            Matreshka.Internals.Settings.Managers.Manager.Create
+             (Organization, Application));
    end Create;
 
 --   ---------------
@@ -217,7 +232,7 @@ package body League.Settings is
 
    overriding procedure Initialize (Self : in out Settings) is
    begin
-      Self.Data := Matreshka.Internals.Settings.Fallbacks.Create;
+      Self.Data := Matreshka.Internals.Settings.Managers.Manager.Create;
    end Initialize;
 
 --   ------------------

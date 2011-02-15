@@ -133,12 +133,17 @@ package body Matreshka.Internals.Settings.Configuration_Files is
    ------------
 
    function Create
-    (File_Name : League.Strings.Universal_String)
+    (Manager   : not null access Abstract_Manager'Class;
+     File_Name : League.Strings.Universal_String)
        return not null Settings_Access is
    begin
       return Aux : constant not null Settings_Access
         := new Configuration_File_Settings'
-                (Abstract_Settings with File_Name, False, Maps.Empty_Map)
+                (Counter   => <>,
+                 Manager   => Manager,
+                 File_Name => File_Name,
+                 Modified  => False,
+                 Values    => Maps.Empty_Map)
       do
          declare
             Self : Configuration_File_Settings'Class

@@ -41,46 +41,47 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Containers.Vectors;
+with Matreshka.Internals.Settings.Configuration_Files;
+with Matreshka.Internals.Settings.Fallbacks;
 
-package Matreshka.Internals.Settings.Fallbacks is
+package body Matreshka.Internals.Settings.Managers is
 
-   type Fallback_Settings is new Abstract_Settings with private;
+   ------------
+   -- Create --
+   ------------
 
-   function Create
-    (Manager : not null access Abstract_Manager'Class)
-       return not null Settings_Access;
+   overriding function Create
+    (Self : not null access Ini_File_Manager)
+       return not null Settings_Access is
+   begin
+      return Matreshka.Internals.Settings.Fallbacks.Create (Self);
+   end Create;
 
-private
+   ------------
+   -- Create --
+   ------------
 
-   package Vectors is
-     new Ada.Containers.Vectors (Positive, Settings_Access);
+   overriding function Create
+    (Self      : not null access Ini_File_Manager;
+     File_Name : League.Strings.Universal_String)
+       return not null Settings_Access is
+   begin
+      return
+        Matreshka.Internals.Settings.Configuration_Files.Create
+         (Self, File_Name);
+   end Create;
 
-   type Fallback_Settings is new Abstract_Settings with record
-      Storages : Vectors.Vector;
-   end record;
+   ------------
+   -- Create --
+   ------------
 
-   overriding function Contains
-    (Self : Fallback_Settings;
-     Key  : League.Strings.Universal_String) return Boolean;
+   overriding function Create
+    (Self         : not null access Ini_File_Manager;
+     Organization : League.Strings.Universal_String;
+     Application  : League.Strings.Universal_String)
+       return not null Settings_Access is
+   begin
+      return null;
+   end Create;
 
-   overriding procedure Finalize
-    (Self : not null access Fallback_Settings);
-
-   overriding procedure Remove
-    (Self : in out Fallback_Settings;
-     Key  : League.Strings.Universal_String);
-
-   overriding procedure Set_Value
-    (Self  : in out Fallback_Settings;
-     Key   : League.Strings.Universal_String;
-     Value : League.Values.Value);
-
-   overriding procedure Sync (Self : in out Fallback_Settings);
-
-   overriding function Value
-    (Self : Fallback_Settings;
-     Key  : League.Strings.Universal_String)
-       return League.Values.Value;
-
-end Matreshka.Internals.Settings.Fallbacks;
+end Matreshka.Internals.Settings.Managers;

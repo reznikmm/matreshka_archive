@@ -81,6 +81,13 @@ package League.Settings is
    --  Constructs a Settings object for accessing the settings stored in the
    --  file called File_Name. If the file doesn't already exist, it is created.
 
+   function Create
+    (Organization : League.Strings.Universal_String;
+     Application  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String) return Settings;
+   --  Constructs a Settings object for accessing settings of the application
+   --  called Application from the organization called Organization.
+
 --   function All_Keys
 --    (Self : Settings) return League.String_Vectors.Universal_String_Vector;
 --

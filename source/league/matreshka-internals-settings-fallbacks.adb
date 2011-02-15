@@ -130,10 +130,12 @@ package body Matreshka.Internals.Settings.Fallbacks is
    -- Create --
    ------------
 
-   function Create return not null Settings_Access is
+   function Create
+    (Manager : not null access Abstract_Manager'Class)
+       return not null Settings_Access is
    begin
       return Aux : constant not null Settings_Access
-        := new Fallback_Settings
+        := new Fallback_Settings (Manager)
       do
          declare
             Self  : Fallback_Settings'Class
@@ -146,14 +148,15 @@ package body Matreshka.Internals.Settings.Fallbacks is
 
             Self.Storages.Append
              (Matreshka.Internals.Settings.Configuration_Files.Create
-               (Application_File_Name (Fallbacks.Paths.User_Path)));
+               (Manager, Application_File_Name (Fallbacks.Paths.User_Path)));
 
             if Organization_File_Name (Fallbacks.Paths.User_Path)
                  /= Application_File_Name (Fallbacks.Paths.User_Path)
             then
                Self.Storages.Append
                 (Matreshka.Internals.Settings.Configuration_Files.Create
-                  (Organization_File_Name (Fallbacks.Paths.User_Path)));
+                  (Manager,
+                   Organization_File_Name (Fallbacks.Paths.User_Path)));
             end if;
 
             --  Append system's application and organization files for every
@@ -162,14 +165,14 @@ package body Matreshka.Internals.Settings.Fallbacks is
             for J in 1 .. Paths.Length loop
                Self.Storages.Append
                 (Matreshka.Internals.Settings.Configuration_Files.Create
-                  (Application_File_Name (Paths.Element (J))));
+                  (Manager, Application_File_Name (Paths.Element (J))));
 
                if Organization_File_Name (Paths.Element (J))
                     /= Application_File_Name (Paths.Element (J))
                then
                   Self.Storages.Append
                    (Matreshka.Internals.Settings.Configuration_Files.Create
-                     (Organization_File_Name (Paths.Element (J))));
+                     (Manager, Organization_File_Name (Paths.Element (J))));
                end if;
             end loop;
          end;
