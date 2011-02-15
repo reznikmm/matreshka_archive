@@ -77,6 +77,11 @@ private
    overriding procedure Finalize
     (Self : not null access Fallback_Settings);
 
+   overriding function Name
+    (Self : not null access Fallback_Settings)
+       return League.Strings.Universal_String;
+   --  Returns name of the first underling settings storage.
+
    overriding procedure Remove
     (Self : in out Fallback_Settings;
      Key  : League.Strings.Universal_String);

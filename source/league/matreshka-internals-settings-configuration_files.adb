@@ -362,6 +362,17 @@ package body Matreshka.Internals.Settings.Configuration_Files is
       end if;
    end Load;
 
+   ----------
+   -- Name --
+   ----------
+
+   overriding function Name
+    (Self : not null access Configuration_File_Settings)
+       return League.Strings.Universal_String is
+   begin
+      return Self.File_Name;
+   end Name;
+
    -----------
    -- Parse --
    -----------

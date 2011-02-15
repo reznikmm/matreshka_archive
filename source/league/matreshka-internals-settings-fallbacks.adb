@@ -106,6 +106,17 @@ package body Matreshka.Internals.Settings.Fallbacks is
       Self.Storages.Clear;
    end Finalize;
 
+   ----------
+   -- Name --
+   ----------
+
+   overriding function Name
+    (Self : not null access Fallback_Settings)
+       return League.Strings.Universal_String is
+   begin
+      return Self.Storages.First_Element.Name;
+   end Name;
+
    ------------
    -- Remove --
    ------------

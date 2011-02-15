@@ -66,6 +66,12 @@ package Matreshka.Internals.Settings is
    not overriding procedure Finalize
     (Self : not null access Abstract_Settings) is null;
 
+   not overriding function Name
+    (Self : not null access Abstract_Settings)
+       return League.Strings.Universal_String is abstract;
+   --  Returns name of the storage. For INI file storage it is name of the
+   --  file, for Windows Registry storage it is system registry path.
+
    not overriding procedure Remove
     (Self : in out Abstract_Settings;
      Key  : League.Strings.Universal_String) is abstract;

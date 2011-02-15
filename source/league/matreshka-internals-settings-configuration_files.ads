@@ -80,6 +80,11 @@ private
    overriding procedure Finalize
     (Self : not null access Configuration_File_Settings);
 
+   overriding function Name
+    (Self : not null access Configuration_File_Settings)
+       return League.Strings.Universal_String;
+   --  Returns name of the storage's file.
+
    overriding procedure Remove
     (Self : in out Configuration_File_Settings;
      Key  : League.Strings.Universal_String);
