@@ -44,7 +44,7 @@
 --  This is Windows specific version of the package specification.
 ------------------------------------------------------------------------------
 with League.Settings;
-with Matreshka.Internals.Settings.Ini_Managers;
+private with Matreshka.Internals.Settings.Ini_Managers;
 
 package Matreshka.Internals.Settings.Configuration is
 
