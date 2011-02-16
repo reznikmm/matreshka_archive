@@ -133,12 +133,13 @@ package body League.Settings is
    ------------
 
    function Create
-    (File_Name : League.Strings.Universal_String) return Settings is
+    (File_Name : League.Strings.Universal_String;
+     Format    : Formats := Native) return Settings is
    begin
       return
         Settings'
          (Ada.Finalization.Limited_Controlled with
-            Matreshka.Internals.Settings.Configuration.Manager (Native).Create
+            Matreshka.Internals.Settings.Configuration.Manager (Format).Create
              (File_Name));
    end Create;
 
@@ -150,12 +151,13 @@ package body League.Settings is
     (Organization_Name   : League.Strings.Universal_String;
      Organization_Domain : League.Strings.Universal_String;
      Application_Name    : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String) return Settings is
+       := League.Strings.Empty_Universal_String;
+     Format              : Formats := Native) return Settings is
    begin
       return
         Settings'
          (Ada.Finalization.Limited_Controlled with
-            Matreshka.Internals.Settings.Configuration.Manager (Native).Create
+            Matreshka.Internals.Settings.Configuration.Manager (Format).Create
              (Organization_Name, Organization_Domain, Application_Name));
    end Create;
 

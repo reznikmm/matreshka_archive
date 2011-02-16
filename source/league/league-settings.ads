@@ -77,7 +77,8 @@ package League.Settings is
    type Settings is tagged limited private;
 
    function Create
-    (File_Name : League.Strings.Universal_String) return Settings;
+    (File_Name : League.Strings.Universal_String;
+     Format    : Formats := Native) return Settings;
    --  Constructs a Settings object for accessing the settings stored in the
    --  file called File_Name. If the file doesn't already exist, it is created.
 
@@ -85,7 +86,8 @@ package League.Settings is
     (Organization_Name   : League.Strings.Universal_String;
      Organization_Domain : League.Strings.Universal_String;
      Application_Name    : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String) return Settings;
+       := League.Strings.Empty_Universal_String;
+     Format              : Formats := Native) return Settings;
    --  Constructs a Settings object for accessing settings of the application
    --  called Application from the organization called Organization.
 
