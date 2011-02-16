@@ -147,15 +147,16 @@ package body League.Settings is
    ------------
 
    function Create
-    (Organization : League.Strings.Universal_String;
-     Application  : League.Strings.Universal_String
+    (Organization_Name   : League.Strings.Universal_String;
+     Organization_Domain : League.Strings.Universal_String;
+     Application_Name    : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String) return Settings is
    begin
       return
         Settings'
          (Ada.Finalization.Limited_Controlled with
             Matreshka.Internals.Settings.Configuration.Manager (Native).Create
-             (Organization, Application));
+             (Organization_Name, Organization_Domain, Application_Name));
    end Create;
 
 --   ---------------

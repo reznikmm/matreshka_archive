@@ -72,10 +72,14 @@ package body Matreshka.Internals.Settings.Registry_Managers is
    ------------
 
    overriding function Create
-    (Self         : not null access Registry_Manager;
-     Organization : League.Strings.Universal_String;
-     Application  : League.Strings.Universal_String)
-       return not null Settings_Access is
+    (Self                : not null access Registry_Manager;
+     Organization_Name   : League.Strings.Universal_String;
+     Organization_Domain : League.Strings.Universal_String;
+     Application_Name    : League.Strings.Universal_String)
+       return not null Settings_Access
+   is
+      pragma Unreferenced (Organization_Domain);
+
    begin
       return null;
    end Create;

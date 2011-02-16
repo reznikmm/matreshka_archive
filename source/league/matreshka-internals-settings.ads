@@ -113,9 +113,10 @@ package Matreshka.Internals.Settings is
    --  Creates settings storage for the specified file.
 
    not overriding function Create
-    (Self         : not null access Abstract_Manager;
-     Organization : League.Strings.Universal_String;
-     Application  : League.Strings.Universal_String)
+    (Self                : not null access Abstract_Manager;
+     Organization_Name   : League.Strings.Universal_String;
+     Organization_Domain : League.Strings.Universal_String;
+     Application         : League.Strings.Universal_String)
        return not null Settings_Access is abstract;
    --  Creates settings storage for the specified organization and application.
 

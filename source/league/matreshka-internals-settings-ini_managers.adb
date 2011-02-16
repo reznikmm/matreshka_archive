@@ -195,14 +195,20 @@ package body Matreshka.Internals.Settings.Ini_Managers is
    ------------
 
    overriding function Create
-    (Self         : not null access Ini_File_Manager;
-     Organization : League.Strings.Universal_String;
-     Application  : League.Strings.Universal_String)
-       return not null Settings_Access is
+    (Self                : not null access Ini_File_Manager;
+     Organization_Name   : League.Strings.Universal_String;
+     Organization_Domain : League.Strings.Universal_String;
+     Application_Name    : League.Strings.Universal_String)
+       return not null Settings_Access
+   is
+      pragma Unreferenced (Organization_Domain);
+
    begin
       return
         Matreshka.Internals.Settings.Ini_Files.Create
-         (Self, Ini_File_Name (Paths.User_Path, Organization, Application));
+         (Self,
+          Ini_File_Name
+           (Paths.User_Path, Organization_Name, Application_Name));
    end Create;
 
    ---------------
