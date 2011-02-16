@@ -437,7 +437,7 @@ package body XML.SAX.Simple_Readers is
       pragma Assert (Item.String = null);
 
    begin
-      Item.String        := League.Strings.Internals.Get_Shared (String);
+      Item.String        := League.Strings.Internals.Internal (String);
       Item.Is_Whitespace := Is_Whitespace;
       Item.Is_CData      := Is_CData;
       Item.Symbol        := Matreshka.Internals.XML.No_Symbol;

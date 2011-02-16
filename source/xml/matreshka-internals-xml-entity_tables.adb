@@ -126,7 +126,7 @@ package body Matreshka.Internals.XML.Entity_Tables is
         Text : League.Strings.Universal_String)
       is
          T : constant Matreshka.Internals.Strings.Shared_String_Access
-           := League.Strings.Internals.Get_Shared (Text);
+           := League.Strings.Internals.Internal (Text);
          E : Entity_Identifier;
 
       begin
@@ -266,11 +266,11 @@ package body Matreshka.Internals.XML.Entity_Tables is
      Entity    : out Entity_Identifier)
    is
       P : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (Public_Id);
+        := League.Strings.Internals.Internal (Public_Id);
       S : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (System_Id);
+        := League.Strings.Internals.Internal (System_Id);
       B : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (Base);
+        := League.Strings.Internals.Internal (Base);
 
    begin
       New_Entity (Self, Entity);
@@ -326,11 +326,11 @@ package body Matreshka.Internals.XML.Entity_Tables is
      Entity    : out Entity_Identifier)
    is
       P : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (Public_Id);
+        := League.Strings.Internals.Internal (Public_Id);
       S : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (System_Id);
+        := League.Strings.Internals.Internal (System_Id);
       B : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (Base);
+        := League.Strings.Internals.Internal (Base);
 
    begin
       New_Entity (Self, Entity);
@@ -364,11 +364,11 @@ package body Matreshka.Internals.XML.Entity_Tables is
      Entity    : out Entity_Identifier)
    is
       P : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (Public_Id);
+        := League.Strings.Internals.Internal (Public_Id);
       S : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (System_Id);
+        := League.Strings.Internals.Internal (System_Id);
       B : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (Base);
+        := League.Strings.Internals.Internal (Base);
 
    begin
       New_Entity (Self, Entity);
@@ -401,11 +401,11 @@ package body Matreshka.Internals.XML.Entity_Tables is
      Entity    : out Entity_Identifier)
    is
       P : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (Public_Id);
+        := League.Strings.Internals.Internal (Public_Id);
       S : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (System_Id);
+        := League.Strings.Internals.Internal (System_Id);
       B : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Get_Shared (Base);
+        := League.Strings.Internals.Internal (Base);
 
    begin
       New_Entity (Self, Entity);

@@ -55,7 +55,6 @@ with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Text_Codecs is
 
-   use League.Strings.Internals;
    use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Text_Codecs.IANA_Registry;
    use Matreshka.Internals.Unicode.Characters.General_Punctuation;
@@ -137,7 +136,9 @@ package body Matreshka.Internals.Text_Codecs is
       --  Lookup MIB.
 
       for J in To_MIB'Range loop
-         if String_Handler.Is_Equal (Get_Shared (Name), To_MIB (J).Name) then
+         if String_Handler.Is_Equal
+             (League.Strings.Internals.Internal (Name), To_MIB (J).Name)
+         then
             return To_MIB (J).MIB;
          end if;
       end loop;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -124,7 +124,7 @@ package body League.Regexps is
          (Ada.Finalization.Controlled with
             Shared =>
               Matreshka.Internals.Regexps.Compiler.Compile
-               (League.Strings.Internals.Get_Shared (Expression)));
+               (League.Strings.Internals.Internal (Expression)));
    end Compile;
 
    --------------
@@ -173,7 +173,7 @@ package body League.Regexps is
               Matreshka.Internals.Regexps.Engine.Pike.Execute
                (Matreshka.Internals.Regexps.Compiler.Generator.Generate
                  (Self.Shared),
-                League.Strings.Internals.Get_Shared (String)));
+                League.Strings.Internals.Internal (String)));
    end Find_Match;
 
    -----------------

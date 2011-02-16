@@ -67,15 +67,15 @@ package body League.Strings.Internals is
       return Item.Code;
    end Get_Code;
 
-   ----------------
-   -- Get_Shared --
-   ----------------
+   --------------
+   -- Internal --
+   --------------
 
-   function Get_Shared (Item : Universal_String'Class)
+   function Internal (Item : Universal_String'Class)
      return not null Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return Item.Data;
-   end Get_Shared;
+   end Internal;
 
    ----------
    -- Wrap --

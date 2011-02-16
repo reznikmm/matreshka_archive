@@ -49,7 +49,6 @@ with Matreshka.Internals.Strings.Configuration;
 package body XML.SAX.Attributes is
 
    use League.Strings;
-   use League.Strings.Internals;
    use Matreshka.Internals.Strings.Configuration;
 
    procedure Free is
@@ -196,7 +195,8 @@ package body XML.SAX.Attributes is
    begin
       for J in 1 .. Self.Data.Length loop
          if String_Handler.Is_Equal
-             (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
+             (Self.Data.Values (J).Qualified_Name,
+              League.Strings.Internals.Internal (Qualified_Name))
          then
             return J;
          end if;
@@ -216,9 +216,11 @@ package body XML.SAX.Attributes is
    begin
       for J in 1 .. Self.Data.Length loop
          if String_Handler.Is_Equal
-             (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
+             (Self.Data.Values (J).Namespace_URI,
+              League.Strings.Internals.Internal (Namespace_URI))
            and String_Handler.Is_Equal
-                (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
+                (Self.Data.Values (J).Local_Name,
+                 League.Strings.Internals.Internal (Local_Name))
          then
             return J;
          end if;
@@ -253,7 +255,8 @@ package body XML.SAX.Attributes is
    begin
       for J in 1 .. Self.Data.Length loop
          if String_Handler.Is_Equal
-             (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
+             (Self.Data.Values (J).Qualified_Name,
+              League.Strings.Internals.Internal (Qualified_Name))
          then
             return Self.Data.Values (J).Is_Declared;
          end if;
@@ -274,9 +277,11 @@ package body XML.SAX.Attributes is
    begin
       for J in 1 .. Self.Data.Length loop
          if String_Handler.Is_Equal
-             (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
+             (Self.Data.Values (J).Namespace_URI,
+              League.Strings.Internals.Internal (Namespace_URI))
            and String_Handler.Is_Equal
-                (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
+                (Self.Data.Values (J).Local_Name,
+                 League.Strings.Internals.Internal (Local_Name))
          then
             return Self.Data.Values (J).Is_Declared;
          end if;
@@ -320,7 +325,8 @@ package body XML.SAX.Attributes is
    begin
       for J in 1 .. Self.Data.Length loop
          if String_Handler.Is_Equal
-             (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
+             (Self.Data.Values (J).Qualified_Name,
+              League.Strings.Internals.Internal (Qualified_Name))
          then
             return Self.Data.Values (J).Is_Specified;
          end if;
@@ -341,9 +347,11 @@ package body XML.SAX.Attributes is
    begin
       for J in 1 .. Self.Data.Length loop
          if String_Handler.Is_Equal
-             (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
+             (Self.Data.Values (J).Namespace_URI,
+              League.Strings.Internals.Internal (Namespace_URI))
            and String_Handler.Is_Equal
-                (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
+                (Self.Data.Values (J).Local_Name,
+                 League.Strings.Internals.Internal (Local_Name))
          then
             return Self.Data.Values (J).Is_Specified;
          end if;
@@ -373,7 +381,8 @@ package body XML.SAX.Attributes is
          raise Constraint_Error;
       end if;
 
-      return Create (Self.Data.Values (Index).Local_Name);
+      return
+        League.Strings.Internals.Create (Self.Data.Values (Index).Local_Name);
    end Local_Name;
 
    -------------------
@@ -388,7 +397,9 @@ package body XML.SAX.Attributes is
          raise Constraint_Error;
       end if;
 
-      return Create (Self.Data.Values (Index).Namespace_URI);
+      return
+        League.Strings.Internals.Create
+         (Self.Data.Values (Index).Namespace_URI);
    end Namespace_URI;
 
    --------------------
@@ -403,7 +414,9 @@ package body XML.SAX.Attributes is
          raise Constraint_Error;
       end if;
 
-      return Create (Self.Data.Values (Index).Qualified_Name);
+      return
+         League.Strings.Internals.Create
+          (Self.Data.Values (Index).Qualified_Name);
    end Qualified_Name;
 
    ---------------
@@ -429,7 +442,7 @@ package body XML.SAX.Attributes is
       use type Matreshka.Internals.Strings.Shared_String_Access;
 
       Shared_Value : constant Matreshka.Internals.Strings.Shared_String_Access
-        := Get_Shared (Value);
+        := League.Strings.Internals.Internal (Value);
       Index        : constant Natural := Self.Index (Qualified_Name);
       CDATA_Name   : constant Universal_String
         := To_Universal_String ("CDATA");
@@ -442,9 +455,10 @@ package body XML.SAX.Attributes is
          Self.Data.Values (Self.Data.Length) :=
           (Namespace_URI  => Matreshka.Internals.Strings.Shared_Empty'Access,
            Local_Name     => Matreshka.Internals.Strings.Shared_Empty'Access,
-           Qualified_Name => Get_Shared (Qualified_Name),
-           Value          => Get_Shared (Value),
-           Value_Type     => Get_Shared (CDATA_Name),
+           Qualified_Name =>
+             League.Strings.Internals.Internal (Qualified_Name),
+           Value          => League.Strings.Internals.Internal (Value),
+           Value_Type     => League.Strings.Internals.Internal (CDATA_Name),
            Is_Declared    => False,
            Is_Specified   => True);
          Matreshka.Internals.Strings.Reference
@@ -479,7 +493,7 @@ package body XML.SAX.Attributes is
       use type Matreshka.Internals.Strings.Shared_String_Access;
 
       Shared_Value : constant Matreshka.Internals.Strings.Shared_String_Access
-        := Get_Shared (Value);
+        := League.Strings.Internals.Internal (Value);
       Index        : constant Natural
         := Self.Index (Namespace_URI, Local_Name);
       CDATA_Name   : constant Universal_String
@@ -491,11 +505,11 @@ package body XML.SAX.Attributes is
 
          Self.Data.Length := Self.Data.Length + 1;
          Self.Data.Values (Self.Data.Length) :=
-          (Namespace_URI  => Get_Shared (Namespace_URI),
-           Local_Name     => Get_Shared (Local_Name),
+          (Namespace_URI  => League.Strings.Internals.Internal (Namespace_URI),
+           Local_Name     => League.Strings.Internals.Internal (Local_Name),
            Qualified_Name => Matreshka.Internals.Strings.Shared_Empty'Access,
-           Value          => Get_Shared (Value),
-           Value_Type     => Get_Shared (CDATA_Name),
+           Value          => League.Strings.Internals.Internal (Value),
+           Value_Type     => League.Strings.Internals.Internal (CDATA_Name),
            Is_Declared    => False,
            Is_Specified   => True);
          Matreshka.Internals.Strings.Reference
@@ -531,7 +545,7 @@ package body XML.SAX.Attributes is
          raise Constraint_Error;
       end if;
 
-      return Create (Self.Data.Values (Index).Value);
+      return League.Strings.Internals.Create (Self.Data.Values (Index).Value);
    end Value;
 
    -----------
@@ -545,9 +559,11 @@ package body XML.SAX.Attributes is
    begin
       for J in 1 .. Self.Data.Length loop
          if String_Handler.Is_Equal
-             (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
+             (Self.Data.Values (J).Qualified_Name,
+              League.Strings.Internals.Internal (Qualified_Name))
          then
-            return Create (Self.Data.Values (J).Value);
+            return
+              League.Strings.Internals.Create (Self.Data.Values (J).Value);
          end if;
       end loop;
 
@@ -566,11 +582,14 @@ package body XML.SAX.Attributes is
    begin
       for J in 1 .. Self.Data.Length loop
          if String_Handler.Is_Equal
-             (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
+             (Self.Data.Values (J).Namespace_URI,
+              League.Strings.Internals.Internal (Namespace_URI))
            and String_Handler.Is_Equal
-                (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
+                (Self.Data.Values (J).Local_Name,
+                 League.Strings.Internals.Internal (Local_Name))
          then
-            return Create (Self.Data.Values (J).Value);
+            return
+              League.Strings.Internals.Create (Self.Data.Values (J).Value);
          end if;
       end loop;
 
@@ -589,7 +608,8 @@ package body XML.SAX.Attributes is
          raise Constraint_Error;
       end if;
 
-      return Create (Self.Data.Values (Index).Value_Type);
+      return
+        League.Strings.Internals.Create (Self.Data.Values (Index).Value_Type);
    end Value_Type;
 
    ----------------
@@ -603,9 +623,12 @@ package body XML.SAX.Attributes is
    begin
       for J in 1 .. Self.Data.Length loop
          if String_Handler.Is_Equal
-             (Self.Data.Values (J).Qualified_Name, Get_Shared (Qualified_Name))
+             (Self.Data.Values (J).Qualified_Name,
+              League.Strings.Internals.Internal (Qualified_Name))
          then
-            return Create (Self.Data.Values (J).Value_Type);
+            return
+              League.Strings.Internals.Create
+               (Self.Data.Values (J).Value_Type);
          end if;
       end loop;
 
@@ -624,11 +647,15 @@ package body XML.SAX.Attributes is
    begin
       for J in 1 .. Self.Data.Length loop
          if String_Handler.Is_Equal
-             (Self.Data.Values (J).Namespace_URI, Get_Shared (Namespace_URI))
+             (Self.Data.Values (J).Namespace_URI,
+              League.Strings.Internals.Internal (Namespace_URI))
            and String_Handler.Is_Equal
-                (Self.Data.Values (J).Local_Name, Get_Shared (Local_Name))
+                (Self.Data.Values (J).Local_Name,
+                 League.Strings.Internals.Internal (Local_Name))
          then
-            return Create (Self.Data.Values (J).Value_Type);
+            return
+              League.Strings.Internals.Create
+               (Self.Data.Values (J).Value_Type);
          end if;
       end loop;
 

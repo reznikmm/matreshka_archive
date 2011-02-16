@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,8 +57,7 @@ package body XML.SAX.Input_Sources.Strings is
      End_Of_Data : out Boolean) is
    begin
       Matreshka.Internals.Strings.Operations.Append
-       (Buffer,
-        League.Strings.Internals.Get_Shared (Self.String));
+       (Buffer, League.Strings.Internals.Internal (Self.String));
       Self.String.Clear;
       End_Of_Data := True;
    end Next;

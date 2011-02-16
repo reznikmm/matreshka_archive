@@ -528,7 +528,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             A : Matreshka.Internals.Strings.Shared_String_Access;
 
          begin
-            A := League.Strings.Internals.Get_Shared (Value);
+            A := League.Strings.Internals.Internal (Value);
             Matreshka.Internals.Strings.Reference (A);
             New_Internal_General_Entity (Self.Entities, Symbol, A, Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
@@ -762,7 +762,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             A : Matreshka.Internals.Strings.Shared_String_Access;
 
          begin
-            A := League.Strings.Internals.Get_Shared (Value);
+            A := League.Strings.Internals.Internal (Value);
             Matreshka.Internals.Strings.Reference (A);
             New_Internal_Parameter_Entity (Self.Entities, Symbol, A, Entity);
             Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
@@ -944,8 +944,8 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          Callbacks.Call_Start_DTD
           (Self.all,
            Name,
-           League.Strings.Internals.Get_Shared (Self.Public_Id),
-           League.Strings.Internals.Get_Shared (Self.System_Id));
+           League.Strings.Internals.Internal (Self.Public_Id),
+           League.Strings.Internals.Internal (Self.System_Id));
 
       else
          Callbacks.Call_Start_DTD

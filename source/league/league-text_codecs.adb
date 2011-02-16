@@ -124,7 +124,7 @@ package body League.Text_Codecs is
       --  XXX Implementation assumes that there are no errors can be detected
       --  during encoding, which is wrong assumption.
 
-      Encoder.Encode (League.Strings.Internals.Get_Shared (Data), Result);
+      Encoder.Encode (League.Strings.Internals.Internal (Data), Result);
 
       return League.Stream_Element_Vectors.Internals.Wrap (Result);
    end Encode;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -122,7 +122,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
         Entity : Entity_Identifier)
       is
          N : constant Matreshka.Internals.Strings.Shared_String_Access
-           := League.Strings.Internals.Get_Shared (Name);
+           := League.Strings.Internals.Internal (Name);
 
       begin
          Matreshka.Internals.Strings.Reference (N);
@@ -145,7 +145,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
 
       procedure Register_Symbol (Name : League.Strings.Universal_String) is
          N : constant Matreshka.Internals.Strings.Shared_String_Access
-           := League.Strings.Internals.Get_Shared (Name);
+           := League.Strings.Internals.Internal (Name);
 
       begin
          Matreshka.Internals.Strings.Reference (N);
