@@ -87,14 +87,18 @@ package Matreshka.Internals.Utf16 is
 
    type Utf16_String_Index is mod 2 ** 32;
 
-   type Utf16_String is array (Utf16_String_Index range <>) of Utf16_Code_Unit;
+   type Utf16_String is
+     array (Utf16_String_Index range <>) of aliased Utf16_Code_Unit;
    for Utf16_String'Alignment use Standard'Maximum_Alignment;
+   for Utf16_String'Component_Size use Utf16_Code_Unit'Size;
    pragma Pack (Utf16_String);
-   --  Internal representation of UTF-16 encoded string.
+   --  Internal representation of UTF-16 encoded string. Type has aliased
+   --  components to simplify interfacing with Windows API.
 
    type Unaligned_Utf16_String is
      array (Utf16_String_Index range <>) of aliased Utf16_Code_Unit;
    for Unaligned_Utf16_String'Alignment use Utf16_Code_Unit'Alignment;
+   for Unaligned_Utf16_String'Component_Size use Utf16_Code_Unit'Size;
    pragma Pack (Unaligned_Utf16_String);
    --  Unaligned UTF-16 encoded string, intended to be used to interface with
    --  external libraries.
