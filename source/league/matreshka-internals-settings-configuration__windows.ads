@@ -56,7 +56,7 @@ package Matreshka.Internals.Settings.Configuration is
 private
 
    Native_Manager :
-     aliased Matreshka.Internals.Settings.Ini_Managers.Ini_File_Manager;
+     aliased Matreshka.Internals.Settings.Registry_Managers.Registry_Manager;
    Ini_Manager    :
      aliased Matreshka.Internals.Settings.Ini_Managers.Ini_File_Manager;
 

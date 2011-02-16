@@ -55,9 +55,6 @@ procedure Initialize_Arguments_Environment is
    use type Interfaces.C.size_t;
    use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
 
-   type LPCWSTR is access constant Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPCWSTR);
-
    type LPWSTR_Array is
      array (Interfaces.C.size_t range <>) of aliased LPWSTR;
 

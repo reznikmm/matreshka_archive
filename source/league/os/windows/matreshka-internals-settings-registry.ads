@@ -43,15 +43,29 @@
 ------------------------------------------------------------------------------
 --  This package provides storage implementation for Windows Registry.
 ------------------------------------------------------------------------------
+private with System;
 
 package Matreshka.Internals.Settings.Registry is
 
    type Registry_Settings is new Abstract_Settings with private;
 
+   function Create
+    (Manager   : not null access Abstract_Manager'Class;
+     Key       : League.Strings.Universal_String;
+     Read_Only : Boolean) return not null Settings_Access;
+   --  Creates registry storage pointing to specified key. When Read_Only is
+   --  True no modifications are allowed.
+
 private
 
+   type HANDLER is new System.Address;
+
+   type HKEY is new HANDLER;
+
    type Registry_Settings is new Abstract_Settings with record
-      null;
+      Name      : League.Strings.Universal_String;
+      Handler   : aliased HKEY;
+      Read_Only : Boolean;
    end record;
 
    overriding function Contains

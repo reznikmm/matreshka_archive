@@ -41,8 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Application;
+with Matreshka.Internals.Settings.Fallbacks;
+with Matreshka.Internals.Settings.Registry;
 
 package body Matreshka.Internals.Settings.Registry_Managers is
+
+   Unknown_Organization      : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("\Unknown Organization");
+   Organization_Defaults     : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("\OrganizationDefaults");
+   HKEY_CURRENT_USER_Prefix  : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("\HKEY_CURRENT_USER");
+   HKEY_LOCAL_MACHINE_Prefix : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("\HKEY_LOCAL_MACHINE");
 
    ------------
    -- Create --
@@ -50,9 +62,62 @@ package body Matreshka.Internals.Settings.Registry_Managers is
 
    overriding function Create
     (Self : not null access Registry_Manager)
-       return not null Settings_Access is
+       return not null Settings_Access
+   is
+      use type League.Strings.Universal_String;
+
+      Prefix            : League.Strings.Universal_String
+        := League.Strings.To_Universal_String ("\Software");
+      Organization_Path : League.Strings.Universal_String;
+      Application_Path  : League.Strings.Universal_String;
+
    begin
-      return null;
+      if League.Application.Organization_Name.Is_Empty then
+         Prefix.Append (Unknown_Organization);
+
+      else
+         Prefix.Append ('\');
+         Prefix.Append (League.Application.Organization_Name);
+      end if;
+
+      Organization_Path := Prefix;
+      Organization_Path.Append (Organization_Defaults);
+
+      Application_Path := Prefix;
+      Application_Path.Append ('\');
+      Application_Path.Append (League.Application.Application_Name);
+
+      return Aux : constant not null Settings_Access
+        := Matreshka.Internals.Settings.Fallbacks.Create (Self)
+      do
+         declare
+            Proxy : Fallbacks.Fallback_Settings'Class
+              renames Fallbacks.Fallback_Settings'Class (Aux.all);
+
+         begin
+            if not League.Application.Application_Name.Is_Empty then
+               Proxy.Add
+                (Matreshka.Internals.Settings.Registry.Create
+                  (Self, HKEY_CURRENT_USER_Prefix & Application_Path, False));
+            end if;
+
+            Proxy.Add
+             (Matreshka.Internals.Settings.Registry.Create
+               (Self, HKEY_CURRENT_USER_Prefix & Organization_Path, True));
+
+            if not League.Application.Application_Name.Is_Empty then
+               Proxy.Add
+                (Matreshka.Internals.Settings.Registry.Create
+                  (Self,
+                   HKEY_LOCAL_MACHINE_Prefix & Application_Path,
+                   True));
+            end if;
+
+            Proxy.Add
+             (Matreshka.Internals.Settings.Registry.Create
+               (Self, HKEY_LOCAL_MACHINE_Prefix & Organization_Path, True));
+         end;
+      end return;
    end Create;
 
    ------------
@@ -64,7 +129,8 @@ package body Matreshka.Internals.Settings.Registry_Managers is
      File_Name : League.Strings.Universal_String)
        return not null Settings_Access is
    begin
-      return null;
+      return
+        Matreshka.Internals.Settings.Registry.Create (Self, File_Name, True);
    end Create;
 
    ------------

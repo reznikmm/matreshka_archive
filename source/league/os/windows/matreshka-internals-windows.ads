@@ -57,6 +57,9 @@ package Matreshka.Internals.Windows is
 
    subtype LPWCH is LPWSTR;
 
+   type LPCWSTR is access constant Matreshka.Internals.Utf16.Utf16_Code_Unit;
+   pragma Convention (C, LPCWSTR);
+
    function wcslen (str : LPWSTR) return Interfaces.C.size_t;
    pragma Import (C, wcslen);
 
