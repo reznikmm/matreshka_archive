@@ -51,6 +51,12 @@ with Matreshka.Internals.Windows;
 
 package body Matreshka.Internals.Settings.Registry is
 
+   use type League.Strings.Universal_Character;
+
+   -----------------
+   -- Windows API --
+   -----------------
+
    type ACCESS_MASK is new Interfaces.C.unsigned_long;
 
    type REGSAM is new ACCESS_MASK;
