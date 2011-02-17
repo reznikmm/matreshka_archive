@@ -62,7 +62,8 @@ package body Matreshka.Internals.Settings.Ini_Managers is
    end Paths;
 
    function Ini_File_Name
-    (Path         : League.Strings.Universal_String;
+    (Self         : not null access Ini_File_Manager'Class;
+     Path         : League.Strings.Universal_String;
      Organization : League.Strings.Universal_String;
      Application  : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String)
@@ -71,7 +72,9 @@ package body Matreshka.Internals.Settings.Ini_Managers is
    --  this is application settings file, otherwise it is name of organization
    --  settings file.
 
-   function Extension return League.Strings.Universal_String;
+   function Extension
+    (Self : not null access Ini_File_Manager'Class)
+       return League.Strings.Universal_String;
    --  Returns configuration file extention.
    --  XXX .conf and .ini are used depending of platform and format, but not
    --  yet implemented.
@@ -84,7 +87,8 @@ package body Matreshka.Internals.Settings.Ini_Managers is
    -------------------
 
    function Ini_File_Name
-    (Path         : League.Strings.Universal_String;
+    (Self         : not null access Ini_File_Manager'Class;
+     Path         : League.Strings.Universal_String;
      Organization : League.Strings.Universal_String;
      Application  : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String)
@@ -92,18 +96,19 @@ package body Matreshka.Internals.Settings.Ini_Managers is
    begin
       if Application.Is_Empty then
          if Organization.Is_Empty then
-            return Path & Unknown_Organization & Extension;
+            return Path & Unknown_Organization & Self.Extension;
 
          else
-            return Path & Organization & Extension;
+            return Path & Organization & Self.Extension;
          end if;
 
       else
          if Organization.Is_Empty then
-            return Path & Unknown_Organization & '/' & Application & Extension;
+            return
+              Path & Unknown_Organization & '/' & Application & Self.Extension;
 
          else
-            return Path & Organization & '/' & Application & Extension;
+            return Path & Organization & '/' & Application & Self.Extension;
          end if;
       end if;
    end Ini_File_Name;
@@ -130,21 +135,21 @@ package body Matreshka.Internals.Settings.Ini_Managers is
 
             Proxy.Add
              (Self.Create
-               (Ini_File_Name
+               (Self.Ini_File_Name
                  (Paths.User_Path,
                   League.Application.Organization_Name,
                   League.Application.Application_Name)));
 
-            if Ini_File_Name
+            if Self.Ini_File_Name
                 (Paths.User_Path, League.Application.Organization_Name)
-                 /= Ini_File_Name
+                 /= Self.Ini_File_Name
                      (Paths.User_Path,
                       League.Application.Organization_Name,
                       League.Application.Application_Name)
             then
                Proxy.Add
                 (Self.Create
-                  (Ini_File_Name
+                  (Self.Ini_File_Name
                     (Paths.User_Path, League.Application.Organization_Name)));
             end if;
 
@@ -154,22 +159,22 @@ package body Matreshka.Internals.Settings.Ini_Managers is
             for J in 1 .. System_Paths.Length loop
                Proxy.Add
                 (Self.Create
-                  (Ini_File_Name
+                  (Self.Ini_File_Name
                      (System_Paths.Element (J),
                       League.Application.Organization_Name,
                       League.Application.Application_Name)));
 
-               if Ini_File_Name
+               if Self.Ini_File_Name
                    (System_Paths.Element (J),
                     League.Application.Organization_Name)
-                    /= Ini_File_Name
+                    /= Self.Ini_File_Name
                         (System_Paths.Element (J),
                          League.Application.Organization_Name,
                          League.Application.Application_Name)
                then
                   Proxy.Add
                    (Self.Create
-                     (Ini_File_Name
+                     (Self.Ini_File_Name
                        (System_Paths.Element (J),
                         League.Application.Organization_Name)));
                end if;
@@ -207,7 +212,7 @@ package body Matreshka.Internals.Settings.Ini_Managers is
       return
         Matreshka.Internals.Settings.Ini_Files.Create
          (Self,
-          Ini_File_Name
+          Self.Ini_File_Name
            (Paths.User_Path, Organization_Name, Application_Name));
    end Create;
 
@@ -215,9 +220,16 @@ package body Matreshka.Internals.Settings.Ini_Managers is
    -- Extension --
    ---------------
 
-   function Extension return League.Strings.Universal_String is
+   function Extension
+    (Self : not null access Ini_File_Manager'Class)
+       return League.Strings.Universal_String is
    begin
-      return League.Strings.To_Universal_String (".conf");
+      if Self.Native then
+         return League.Strings.To_Universal_String (".conf");
+
+      else
+         return League.Strings.To_Universal_String (".ini");
+      end if;
    end Extension;
 
    -----------

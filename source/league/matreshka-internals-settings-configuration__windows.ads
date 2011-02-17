@@ -58,7 +58,8 @@ private
    Native_Manager :
      aliased Matreshka.Internals.Settings.Registry_Managers.Registry_Manager;
    Ini_Manager    :
-     aliased Matreshka.Internals.Settings.Ini_Managers.Ini_File_Manager;
+     aliased
+       Matreshka.Internals.Settings.Ini_Managers.Ini_File_Manager (False);
 
    Manager : constant Managers := (Native_Manager'Access, Ini_Manager'Access);
 
