@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -110,5 +110,19 @@ package body League.Values.Strings is
    begin
       Set_Type (Self, Type_Of_Value);
    end Set_Type;
+
+   --------------
+   -- To_Value --
+   --------------
+
+   function To_Value (Item : League.Strings.Universal_String) return Value is
+   begin
+      return
+        Value'(Ada.Finalization.Controlled with
+                 Tag  => String_Container'Tag,
+                 Data =>
+                   new String_Container'
+                        (Abstract_Container with Value => Item));
+   end To_Value;
 
 end League.Values.Strings;

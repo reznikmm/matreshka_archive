@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,6 +57,13 @@ package League.Values.Strings is
     (Self : in out Value;
      To   : League.Strings.Universal_String);
    --  Set contained value to specified value.
+
+   function To_Value (Item : League.Strings.Universal_String) return Value;
+   --  Creates value which contains specified string.
+
+   function To_Universal_String
+    (Self : Value) return League.Strings.Universal_String
+       renames Get;
 
    procedure Set_Type (Self : in out Value);
 
