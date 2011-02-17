@@ -191,7 +191,7 @@ package body Matreshka.Internals.Text_Codecs is
 
    begin
       for J in 1 .. Source.Length loop
-         C := Source.Element (J);
+         C := Source.Element (J).To_Wide_Wide_Character;
 
          case C is
             when 'a' .. 'z' =>

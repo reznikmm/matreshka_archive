@@ -234,7 +234,8 @@ package body Matreshka.Internals.Settings.Ini_Files is
 
    begin
       for J in 1 .. Key.Length loop
-         Code := Wide_Wide_Character'Pos (Key.Element (J));
+         Code :=
+           Wide_Wide_Character'Pos (Key.Element (J).To_Wide_Wide_Character);
 
          if Code in Space .. Tilde then
             Aux.Append (Stream_Element (Code));

@@ -275,7 +275,7 @@ package body XML.SAX.Pretty_Writers is
          for J in 1 .. Text.Length loop
             Code := Get_Code (Text.Element (J));
 
-            case Text.Element (J) is
+            case Text.Element (J).To_Wide_Wide_Character is
                when '&' =>
                   Result.Append (Amp_Entity_Reference);
 

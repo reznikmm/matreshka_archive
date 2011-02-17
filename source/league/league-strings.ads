@@ -120,6 +120,14 @@ package League.Strings is
     (Self : Universal_Character'Class) return Boolean;
    --  Code points permanently reserved for internal use.
 
+   overriding function "="
+    (Left : Universal_Character; Right : Universal_Character) return Boolean;
+   not overriding function "="
+    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean;
+   not overriding function "="
+    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean;
+   --  Compare subprograms.
+
    ----------------------
    -- Universal_String --
    ----------------------
@@ -142,11 +150,6 @@ package League.Strings is
     (Self  : Universal_String'Class;
      Index : Positive)
        return Universal_Character;
-
-   function Element
-    (Self  : Universal_String'Class;
-     Index : Positive)
-       return Wide_Wide_Character;
 
    function Slice
     (Self : Universal_String'Class;

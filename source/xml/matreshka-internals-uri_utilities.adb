@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -95,7 +95,10 @@ package body Matreshka.Internals.URI_Utilities is
 
    function Directory_Name
     (Base : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      use type League.Strings.Universal_Character;
+
    begin
       for J in reverse 1 .. Base.Length loop
          if Base.Element (J) = '/' then

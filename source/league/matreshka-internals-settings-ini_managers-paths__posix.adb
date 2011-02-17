@@ -49,6 +49,8 @@
 separate (Matreshka.Internals.Settings.Ini_Managers)
 package body Paths is
 
+   use type League.Strings.Universal_Character;
+
    HOME                 : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("HOME");
    XDG_CONFIG_HOME      : constant League.Strings.Universal_String

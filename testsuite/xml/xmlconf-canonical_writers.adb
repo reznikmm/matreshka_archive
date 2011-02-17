@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -179,7 +179,7 @@ package body XMLConf.Canonical_Writers is
 
    begin
       for J in reverse 1 .. Item.Length loop
-         C := Result.Element (J);
+         C := Result.Element (J).To_Wide_Wide_Character;
 
          if C = '&' then
             Result.Replace (J, J, "&amp;");

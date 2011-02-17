@@ -295,6 +295,26 @@ package body League.Strings is
    ---------
 
    overriding function "="
+    (Left : Universal_Character; Right : Universal_Character) return Boolean is
+   begin
+      return Left.Code = Right.Code;
+   end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   not overriding function "="
+    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean is
+   begin
+      return Left.Code = Wide_Wide_Character'Pos (Right);
+   end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   overriding function "="
     (Left  : Universal_String;
      Right : Universal_String)
        return Boolean
@@ -304,6 +324,16 @@ package body League.Strings is
 
    begin
       return String_Handler.Is_Equal (L_D, R_D);
+   end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   not overriding function "="
+    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean is
+   begin
+      return Wide_Wide_Character'Pos (Left) = Right.Code;
    end "=";
 
    ---------
@@ -499,24 +529,6 @@ package body League.Strings is
       Reference (Item.Data);
    end Append;
 
-   -------------
-   -- Prepend --
-   -------------
-
-   procedure Prepend
-    (Self : in out Universal_String'Class;
-     Item : Wide_Wide_Character)
-   is
-      Aux : Universal_String := Wide_Wide_String'(1 => Item) & Self;
-
-   begin
-      --  XXX Inefficient implementation.
-
-      Dereference (Self.Data);
-      Reference (Aux.Data);
-      Self.Data := Aux.Data;
-   end Prepend;
-
    ------------
    -- Attach --
    ------------
@@ -634,19 +646,8 @@ package body League.Strings is
      Index : Positive)
        return Universal_Character
    is
-   begin
-      return To_Universal_Character (Self.Element (Index));
-   end Element;
-
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Self  : Universal_String'Class;
-     Index : Positive)
-       return Wide_Wide_Character
-   is
+--   begin
+--      return To_Universal_Character (Self.Element (Index));
       D : constant Shared_String_Access := Self.Data;
 
    begin
@@ -656,13 +657,14 @@ package body League.Strings is
 
       if D.Unused = Utf16_String_Index (D.Length) then
          return
-           Wide_Wide_Character'Val (D.Value (Utf16_String_Index (Index - 1)));
+           Universal_Character'
+            (Code => Code_Unit_32 (D.Value (Utf16_String_Index (Index - 1))));
 
       elsif D.Unused = Utf16_String_Index (D.Length) * 2 then
          return
-           Wide_Wide_Character'Val
-            (Unchecked_To_Code_Point
-              (D.Value, Utf16_String_Index (Index - 1) * 2));
+           Universal_Character'
+            (Code => Unchecked_To_Code_Point
+                      (D.Value, Utf16_String_Index (Index - 1) * 2));
 
       else
          declare
@@ -677,9 +679,9 @@ package body League.Strings is
             end if;
 
             return
-              Wide_Wide_Character'Val
-               (Unchecked_To_Code_Point
-                 (D.Value, M.Map (Utf16_String_Index (Index - 1))));
+              Universal_Character'
+               (Code => Unchecked_To_Code_Point
+                         (D.Value, M.Map (Utf16_String_Index (Index - 1))));
          end;
       end if;
    end Element;
@@ -935,6 +937,24 @@ package body League.Strings is
    begin
       Detach (Self.all);
    end On_Changed;
+
+   -------------
+   -- Prepend --
+   -------------
+
+   procedure Prepend
+    (Self : in out Universal_String'Class;
+     Item : Wide_Wide_Character)
+   is
+      Aux : Universal_String := Wide_Wide_String'(1 => Item) & Self;
+
+   begin
+      --  XXX Inefficient implementation.
+
+      Dereference (Self.Data);
+      Reference (Aux.Data);
+      Self.Data := Aux.Data;
+   end Prepend;
 
    ----------
    -- Read --

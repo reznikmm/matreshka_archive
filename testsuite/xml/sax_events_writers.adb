@@ -57,7 +57,8 @@ package body SAX_Events_Writers is
           (League.Strings.Universal_String, Positive);
 
    function Escape_Character
-    (Item : Wide_Wide_Character) return League.Strings.Universal_String;
+    (Item : League.Strings.Universal_Character)
+       return League.Strings.Universal_String;
    --  Escapes control and special characters.
 
    function Escape_String
@@ -203,7 +204,8 @@ package body SAX_Events_Writers is
    ----------------------
 
    function Escape_Character
-    (Item : Wide_Wide_Character) return League.Strings.Universal_String
+    (Item : League.Strings.Universal_Character)
+       return League.Strings.Universal_String
    is
       function Image (Item : Wide_Wide_Character)
         return League.Strings.Universal_String;
@@ -235,9 +237,9 @@ package body SAX_Events_Writers is
       end Image;
 
    begin
-      case Item is
+      case Item.To_Wide_Wide_Character is
          when NUL .. ' ' | DEL .. APC =>
-            return Image (Item);
+            return Image (Item.To_Wide_Wide_Character);
 
          when '&' =>
             return To_Universal_String ("&amp;");
@@ -249,7 +251,9 @@ package body SAX_Events_Writers is
             return To_Universal_String ("&gt;");
 
          when others =>
-            return To_Universal_String (Wide_Wide_String'(1 => Item));
+            return
+              To_Universal_String
+               (Wide_Wide_String'(1 => Item.To_Wide_Wide_Character));
       end case;
    end Escape_Character;
 
@@ -265,7 +269,7 @@ package body SAX_Events_Writers is
 
    begin
       for J in reverse 1 .. Item.Length loop
-         case Result.Element (J) is
+         case Result.Element (J).To_Wide_Wide_Character is
             when HT =>
                Result.Replace (J, J, "&#x9;");
 

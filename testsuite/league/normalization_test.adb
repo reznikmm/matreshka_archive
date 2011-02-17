@@ -202,7 +202,9 @@ procedure Normalization_Test is
             raise Program_Error;
          end if;
 
-         Self.Chars (Wide_Wide_Character'Pos (C1.Element (1))) := True;
+         Self.Chars
+          (Wide_Wide_Character'Pos (C1.Element (1).To_Wide_Wide_Character)) :=
+             True;
       end if;
    end Data;
 
