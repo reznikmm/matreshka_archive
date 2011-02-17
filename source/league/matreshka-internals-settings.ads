@@ -120,4 +120,11 @@ package Matreshka.Internals.Settings is
        return not null Settings_Access is abstract;
    --  Creates settings storage for the specified organization and application.
 
+   not overriding function To_Storage_Key
+    (Self : not null access Abstract_Manager;
+     Key  : League.Strings.Universal_String)
+       return League.Strings.Universal_String is abstract;
+   --  Converts specified key from user's representation into storage specific
+   --  representation.
+
 end Matreshka.Internals.Settings;

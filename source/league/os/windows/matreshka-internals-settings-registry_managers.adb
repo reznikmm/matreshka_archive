@@ -150,4 +150,38 @@ package body Matreshka.Internals.Settings.Registry_Managers is
       return null;
    end Create;
 
+   --------------------
+   -- To_Storage_Key --
+   --------------------
+
+   overriding function To_Storage_Key
+    (Self : not null access Registry_Manager;
+     Key  : League.Strings.Universal_String)
+       return League.Strings.Universal_String
+   is
+      use type League.Strings.Universal_Character;
+
+      Backslash : Boolean := False;
+
+   begin
+      return Result : League.Strings.Universal_String do
+         for J in 1 .. Key.Length loop
+            if Key.Element (J) = '/' or Key.Element (J) = '\' then
+               Backslash := True;
+
+            else
+               if Backslash then
+                  if not Result.Is_Empty then
+                     Result.Append ('\');
+                  end if;
+
+                  Backslash := False;
+               end if;
+
+               Result.Append (Key.Element (J));
+            end if;
+         end loop;
+      end return;
+   end To_Storage_Key;
+
 end Matreshka.Internals.Settings.Registry_Managers;

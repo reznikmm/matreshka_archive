@@ -125,7 +125,7 @@ package body League.Settings is
     (Self : Settings;
      Key  : League.Strings.Universal_String) return Boolean is
    begin
-      return Self.Data.Contains (Key);
+      return Self.Data.Contains (Self.Data.Manager.To_Storage_Key (Key));
    end Contains;
 
    ------------
@@ -271,7 +271,7 @@ package body League.Settings is
     (Self : in out Settings;
      Key  : League.Strings.Universal_String) is
    begin
-      Self.Data.Remove (Key);
+      Self.Data.Remove (Self.Data.Manager.To_Storage_Key (Key));
    end Remove;
 
 --   -----------
@@ -305,7 +305,7 @@ package body League.Settings is
      Key   : League.Strings.Universal_String;
      Value : League.Values.Value) is
    begin
-      Self.Data.Set_Value (Key, Value);
+      Self.Data.Set_Value (Self.Data.Manager.To_Storage_Key (Key), Value);
    end Set_Value;
 
 --   ------------
@@ -336,7 +336,7 @@ package body League.Settings is
     (Self : Settings'Class;
      Key  : League.Strings.Universal_String) return League.Values.Value is
    begin
-      return Self.Data.Value (Key);
+      return Self.Data.Value (Self.Data.Manager.To_Storage_Key (Key));
    end Value;
 
 end League.Settings;

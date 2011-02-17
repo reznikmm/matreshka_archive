@@ -226,4 +226,38 @@ package body Matreshka.Internals.Settings.Ini_Managers is
 
    package body Paths is separate;
 
+   --------------------
+   -- To_Storage_Key --
+   --------------------
+
+   overriding function To_Storage_Key
+    (Self : not null access Ini_File_Manager;
+     Key  : League.Strings.Universal_String)
+       return League.Strings.Universal_String
+   is
+      use type League.Strings.Universal_Character;
+
+      Slash : Boolean := False;
+
+   begin
+      return Result : League.Strings.Universal_String do
+         for J in 1 .. Key.Length loop
+            if Key.Element (J) = '/' or Key.Element (J) = '\' then
+               Slash := True;
+
+            else
+               if Slash then
+                  if not Result.Is_Empty then
+                     Result.Append ('/');
+                  end if;
+
+                  Slash := False;
+               end if;
+
+               Result.Append (Key.Element (J));
+            end if;
+         end loop;
+      end return;
+   end To_Storage_Key;
+
 end Matreshka.Internals.Settings.Ini_Managers;

@@ -70,4 +70,11 @@ private
        return not null Settings_Access;
    --  Creates settings storage for the specified organization and application.
 
+   overriding function To_Storage_Key
+    (Self : not null access Ini_File_Manager;
+     Key  : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Converts specified key from user's representation into storage specific
+   --  representation.
+
 end Matreshka.Internals.Settings.Ini_Managers;
