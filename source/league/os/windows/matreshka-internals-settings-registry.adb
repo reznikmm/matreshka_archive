@@ -146,6 +146,22 @@ package body Matreshka.Internals.Settings.Registry is
    --  Creates storage pointing to specified root and key. Read_Only means
    --  that subtree is opened for reading only.
 
+   procedure Split_Path_Name
+    (Key  : League.Strings.Universal_String;
+     Path : out League.Strings.Universal_String;
+     Name : out League.Strings.Universal_String);
+   --  Split key into path and name parts.
+
+   function Open_Or_Create
+    (Parent : HKEY;
+     Path   : League.Strings.Universal_String) return HKEY;
+   --  Opens existing path or create new path and returns its handler.
+
+   function Open
+    (Parent : HKEY;
+     Path   : League.Strings.Universal_String) return HKEY;
+   --  Opens existing path in read-only mode and returns its handler.
+
    HKEY_CURRENT_USER_Name  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("HKEY_CURRENT_USER");
    HKEY_LOCAL_MACHINE_Name : constant League.Strings.Universal_String
@@ -163,49 +179,39 @@ package body Matreshka.Internals.Settings.Registry is
     (Self : Registry_Settings;
      Key  : League.Strings.Universal_String) return Boolean
    is
-      Handler : aliased HKEY;
+      Handler : HKEY;
       Path    : League.Strings.Universal_String;
-      Name    : League.Strings.Universal_String := Key;
+      Name    : League.Strings.Universal_String;
       Found   : Boolean := True;
 
    begin
       --  Compute path to open
 
-      for J in 1 .. Key.Length loop
-         if Key.Element (J) = '\' then
-            Path := Key.Slice (1, J - 1);
-            Name := Key.Slice (J + 1, Key.Length);
-
-            exit;
-         end if;
-      end loop;
+      Split_Path_Name (Key, Path, Name);
 
       --  Try to open path
 
-      if RegOpenKeyEx
-          (Self.Handler,
-           League.Strings.Internals.Internal (Path).Value (0)'Access,
-           0,
-           KEY_READ,
-           Handler'Unchecked_Access) /= 0
-      then
-         return False;
-      end if;
+      Handler := Open (Self.Handler, Path);
 
-      --  Try to retrieve value
+      if Handler /= No_HKEY then
+         --  Try to retrieve value
 
-      if RegQueryValueEx
-          (Handler,
-           League.Strings.Internals.Internal (Name).Value (0)'Access,
-           null,
-           null,
-           System.Null_Address,
-           null) /= 0
-      then
+         if RegQueryValueEx
+             (Handler,
+              League.Strings.Internals.Internal (Name).Value (0)'Access,
+              null,
+              null,
+              System.Null_Address,
+              null) /= 0
+         then
+            Found := False;
+         end if;
+
+         RegCloseKey (Handler);
+
+      else
          Found := False;
       end if;
-
-      RegCloseKey (Handler);
 
       return Found;
    end Contains;
@@ -313,55 +319,18 @@ package body Matreshka.Internals.Settings.Registry is
             if Self.Read_Only then
                --  Open registry to read when Read_Only mode is specified.
 
-               if RegOpenKeyEx
-                   (Root,
-                    League.Strings.Internals.Internal (Key).Value (0)'Access,
-                    0,
-                    KEY_READ,
-                    Self.Handler'Access) /= 0
-               then
-                  Self.Handler := No_HKEY;
-               end if;
+               Self.Handler := Open (Root, Key);
 
             else
                --  In Read_Write mode, try to open first.
 
-               if RegOpenKeyEx
-                   (Root,
-                    League.Strings.Internals.Internal (Key).Value (0)'Access,
-                    0,
-                    KEY_READ or KEY_WRITE,
-                    Self.Handler'Access) /= 0
-               then
-                  --  Try to create it.
+               Self.Handler := Open_Or_Create (Root, Key);
 
-                  if RegCreateKeyEx
-                      (Root,
-                       League.Strings.Internals.Internal
-                        (Key).Value (0)'Access,
-                       0,
-                       null,
-                       REG_OPTION_NON_VOLATILE,
-                       KEY_READ or KEY_WRITE,
-                       null,
-                       Self.Handler'Access,
-                       null) /= 0
-                  then
-                     --  Fallback to read-only mode and try to open it to read.
+               if Self.Handler = No_HKEY then
+                  --  Fallback to read-only mode and try to open it to read.
 
-                     Self.Read_Only := True;
-
-                     if RegOpenKeyEx
-                         (Root,
-                          League.Strings.Internals.Internal
-                           (Key).Value (0)'Access,
-                          0,
-                          KEY_READ,
-                          Self.Handler'Access) /= 0
-                     then
-                        Self.Handler := No_HKEY;
-                     end if;
-                  end if;
+                  Self.Read_Only := True;
+                  Self.Handler := Open (Root, Key);
                end if;
             end if;
          end;
@@ -392,6 +361,70 @@ package body Matreshka.Internals.Settings.Registry is
       return Self.Name;
    end Name;
 
+   ----------
+   -- Open --
+   ----------
+
+   function Open
+    (Parent : HKEY;
+     Path   : League.Strings.Universal_String) return HKEY
+   is
+      Handler : aliased HKEY;
+
+   begin
+      if RegOpenKeyEx
+          (Parent,
+           League.Strings.Internals.Internal (Path).Value (0)'Access,
+           0,
+           KEY_READ,
+           Handler'Unchecked_Access) /= 0
+      then
+         Handler := No_HKEY;
+      end if;
+
+      return Handler;
+   end Open;
+
+   --------------------
+   -- Open_Or_Create --
+   --------------------
+
+   function Open_Or_Create
+    (Parent : HKEY;
+     Path   : League.Strings.Universal_String) return HKEY
+   is
+      Handler : aliased HKEY;
+
+   begin
+      if RegOpenKeyEx
+          (Parent,
+           League.Strings.Internals.Internal (Path).Value (0)'Access,
+           0,
+           KEY_READ or KEY_WRITE,
+           Handler'Unchecked_Access) /= 0
+      then
+         --  Try to create path
+
+         if RegCreateKeyEx
+             (Parent,
+              League.Strings.Internals.Internal (Path).Value (0)'Access,
+              0,
+              null,
+              REG_OPTION_NON_VOLATILE,
+              KEY_READ or KEY_WRITE,
+              null,
+              Handler'Unchecked_Access,
+              null) /= 0
+         then
+            --  Operation failed.
+
+            Handler := No_HKEY;
+         end if;
+      end if;
+
+      return Handler;
+   end Open_Or_Create;
+
    ------------
    -- Remove --
    ------------
@@ -416,7 +449,7 @@ package body Matreshka.Internals.Settings.Registry is
 
       Handler : aliased HKEY;
       Path    : League.Strings.Universal_String;
-      Name    : League.Strings.Universal_String := Key;
+      Name    : League.Strings.Universal_String;
       V       : League.Strings.Universal_String;
 
    begin
@@ -428,41 +461,16 @@ package body Matreshka.Internals.Settings.Registry is
 
       --  Compute path to open
 
-      for J in 1 .. Key.Length loop
-         if Key.Element (J) = '\' then
-            Path := Key.Slice (1, J - 1);
-            Name := Key.Slice (J + 1, Key.Length);
-
-            exit;
-         end if;
-      end loop;
+      Split_Path_Name (Key, Path, Name);
 
       --  Try to open path
 
-      if RegOpenKeyEx
-          (Self.Handler,
-           League.Strings.Internals.Internal (Path).Value (0)'Access,
-           0,
-           KEY_READ or KEY_WRITE,
-           Handler'Unchecked_Access) /= 0
-      then
-         --  Try to create path
+      Handler := Open_Or_Create (Self.Handler, Path);
 
-         if RegCreateKeyEx
-             (Self.Handler,
-              League.Strings.Internals.Internal (Path).Value (0)'Access,
-              0,
-              null,
-              REG_OPTION_NON_VOLATILE,
-              KEY_READ or KEY_WRITE,
-              null,
-              Handler'Unchecked_Access,
-              null) /= 0
-         then
-            --  Operation failed, return.
+      if Handler = No_HKEY then
+         --  Operation failed, return.
 
-            return;
-         end if;
+         return;
       end if;
 
       --  Extract value.
@@ -484,6 +492,28 @@ package body Matreshka.Internals.Settings.Registry is
 
       RegCloseKey (Handler);
    end Set_Value;
+
+   ---------------------
+   -- Split_Path_Name --
+   ---------------------
+
+   procedure Split_Path_Name
+    (Key  : League.Strings.Universal_String;
+     Path : out League.Strings.Universal_String;
+     Name : out League.Strings.Universal_String) is
+   begin
+      Path := League.Strings.Empty_Universal_String;
+      Name := Key;
+
+      for J in 1 .. Key.Length loop
+         if Key.Element (J) = '\' then
+            Path := Key.Slice (1, J - 1);
+            Name := Key.Slice (J + 1, Key.Length);
+
+            exit;
+         end if;
+      end loop;
+   end Split_Path_Name;
 
    ----------
    -- Sync --
@@ -511,9 +541,9 @@ package body Matreshka.Internals.Settings.Registry is
       use Matreshka.Internals.Utf16;
       use type DWORD;
 
-      Handler : aliased HKEY;
+      Handler : HKEY;
       Path    : League.Strings.Universal_String;
-      Name    : League.Strings.Universal_String := Key;
+      Name    : League.Strings.Universal_String;
       V_Type  : aliased DWORD;
       V_Size  : aliased DWORD;
       Value   : League.Values.Value;
@@ -521,25 +551,14 @@ package body Matreshka.Internals.Settings.Registry is
    begin
       --  Compute path to open
 
-      for J in 1 .. Key.Length loop
-         if Key.Element (J) = '\' then
-            Path := Key.Slice (1, J - 1);
-            Name := Key.Slice (J + 1, Key.Length);
-
-            exit;
-         end if;
-      end loop;
+      Split_Path_Name (Key, Path, Name);
 
       --  Try to open path
 
-      if RegOpenKeyEx
-          (Self.Handler,
-           League.Strings.Internals.Internal (Path).Value (0)'Access,
-           0,
-           KEY_READ,
-           Handler'Unchecked_Access) /= 0
-      then
-         return X : League.Values.Value;
+      Handler := Open (Self.Handler, Path);
+
+      if Handler = No_HKEY then
+         return Value;
       end if;
 
       --  Try to retrieve value
