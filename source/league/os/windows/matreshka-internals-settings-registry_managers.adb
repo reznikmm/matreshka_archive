@@ -146,8 +146,39 @@ package body Matreshka.Internals.Settings.Registry_Managers is
    is
       pragma Unreferenced (Organization_Domain);
 
+      use type League.Strings.Universal_String;
+
+      Prefix            : League.Strings.Universal_String
+        := League.Strings.To_Universal_String ("\Software");
+      Organization_Path : League.Strings.Universal_String;
+      Application_Path  : League.Strings.Universal_String;
+
    begin
-      return null;
+      if Organization_Name.Is_Empty then
+         Prefix.Append (Unknown_Organization);
+
+      else
+         Prefix.Append ('\');
+         Prefix.Append (Organization_Name);
+      end if;
+
+      Organization_Path := Prefix;
+      Organization_Path.Append (Organization_Defaults);
+
+      Application_Path := Prefix;
+      Application_Path.Append ('\');
+      Application_Path.Append (Application_Name);
+
+      if not Application_Name.Is_Empty then
+         return
+           Matreshka.Internals.Settings.Registry.Create
+            (Self, HKEY_CURRENT_USER_Prefix & Application_Path, False);
+
+      else
+         return
+           Matreshka.Internals.Settings.Registry.Create
+            (Self, HKEY_CURRENT_USER_Prefix & Organization_Path, False);
+      end if;
    end Create;
 
    --------------------
