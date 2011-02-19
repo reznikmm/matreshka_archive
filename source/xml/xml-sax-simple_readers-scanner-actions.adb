@@ -253,7 +253,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qname_Error : Boolean;
 
    begin
-      --  [53] AttDef ::= S Name S AttType S DefaultDecl 
+      --  [53] AttDef ::= S Name S AttType S DefaultDecl
       --
       --  Checks whitespace before the attribute name is present.
 
@@ -320,40 +320,79 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Code : Code_Point;
 
    begin
-      --  XXX Can be optimized by adding special operation Append_Slice.
+      --  Allocates buffer of necessary size to avoid memory reallocation. It
+      --  can be larger when needed if attribute value normalization is
+      --  activated, but usually not too large.
 
-      while Next /= Self.Scanner_State.YY_Current_Position loop
-         Unchecked_Next (Self.Scanner_State.Data.Value, Next, Code);
+      Matreshka.Internals.Strings.Mutate
+       (Self.Character_Data,
+        Self.Character_Data.Unused
+          + Self.Scanner_State.YY_Current_Position
+          - Self.Scanner_State.YY_Base_Position
+          + 1);
 
-         --  It can be reasonable to implement this step of normalization on
-         --  SIMD.
+      --  Two mostly equivalent paths are separated, because they are on the
+      --  performance critical path.
 
-         if Code = Character_Tabulation
-           or Code = Line_Feed
-           or Code = Carriage_Return
-         then
-            Code := Space;
-         end if;
+      if Self.Normalize_Value then
+         --  Normalization is required for attribute's value.
 
-         if Self.Normalize_Value then
+         while Next /= Self.Scanner_State.YY_Current_Position loop
+            Unchecked_Next (Self.Scanner_State.Data.Value, Next, Code);
+
+            --  It can be reasonable to implement this step of normalization
+            --  on SIMD.
+
+            if Code = Character_Tabulation
+              or Code = Line_Feed
+              or Code = Carriage_Return
+            then
+               Code := Space;
+            end if;
+
             if Code = Space then
                if not Self.Space_Before then
-                  Matreshka.Internals.Strings.Operations.Unterminated_Append
-                   (Self.Character_Data, Code);
+                  Unchecked_Store
+                   (Self.Character_Data.Value,
+                    Self.Character_Data.Unused,
+                    Code);
+                  Self.Character_Data.Length := Self.Character_Data.Length + 1;
                   Self.Space_Before := True;
                end if;
 
             else
-               Matreshka.Internals.Strings.Operations.Unterminated_Append
-                (Self.Character_Data, Code);
+               Unchecked_Store
+                (Self.Character_Data.Value,
+                 Self.Character_Data.Unused,
+                 Code);
+               Self.Character_Data.Length := Self.Character_Data.Length + 1;
                Self.Space_Before := False;
             end if;
+         end loop;
 
-         else
-            Matreshka.Internals.Strings.Operations.Unterminated_Append
-             (Self.Character_Data, Code);
-         end if;
-      end loop;
+      else
+         --  XXX Can be optimized by adding special operation Append_Slice.
+
+         while Next /= Self.Scanner_State.YY_Current_Position loop
+            Unchecked_Next (Self.Scanner_State.Data.Value, Next, Code);
+
+            --  It can be reasonable to implement this step of normalization
+            --  on SIMD.
+
+            if Code = Character_Tabulation
+              or Code = Line_Feed
+              or Code = Carriage_Return
+            then
+               Code := Space;
+            end if;
+
+            Unchecked_Store
+             (Self.Character_Data.Value,
+              Self.Character_Data.Unused,
+              Code);
+            Self.Character_Data.Length := Self.Character_Data.Length + 1;
+         end loop;
+      end if;
    end On_Attribute_Value_Character_Data;
 
    ----------------------------------------
