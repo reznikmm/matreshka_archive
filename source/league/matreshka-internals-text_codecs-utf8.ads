@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -80,11 +80,10 @@ private package Matreshka.Internals.Text_Codecs.UTF8 is
 
 private
 
-   type UTF8_Meta_Class is mod 2 ** 8;
-   type UTF8_DFA_State is mod 2 ** 8;
+   type UTF8_State is mod 2 ** 8;
 
    type UTF8_Decoder is new Abstract_Decoder with record
-      State : UTF8_DFA_State;
+      State : UTF8_State;
       Code  : Matreshka.Internals.Unicode.Code_Unit_32;
    end record;
 
