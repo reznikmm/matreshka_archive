@@ -61,6 +61,7 @@ package Matreshka.Internals.Unicode is
    --  way of it declaration.
 
    function Is_Valid (Code : Code_Unit_32) return Boolean;
+   pragma Inline (Is_Valid);
    --  Returns True when specified code is valid Unicode scalar value (it
    --  is in range of Code_Point and not in surrogate block.
 
