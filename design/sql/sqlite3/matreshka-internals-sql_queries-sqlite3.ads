@@ -41,11 +41,32 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Matreshka.Internals.SQLite3;
+with Matreshka.Internals.SQL_Databases.SQLite3;
 
-package SQL is
+package Matreshka.Internals.SQL_Queries.SQLite3 is
 
-   pragma Pure;
+   pragma Preelaborate;
 
-   SQL_Error : exception;
+   type SQLite3_Query
+    (Database : not null access SQL_Databases.SQLite3.SQLite3_Database'Class)
+       is new Abstract_Query with private;
 
-end SQL;
+private
+
+   type SQLite3_Query
+    (Database : not null access SQL_Databases.SQLite3.SQLite3_Database'Class)
+       is new Abstract_Query (Database) with
+   record
+      Handle : Matreshka.Internals.SQLite3.sqlite3_stmt_Access;
+   end record;
+
+   overriding procedure Execute (Self : not null access SQLite3_Query);
+
+   overriding procedure Finalize (Self : not null access SQLite3_Query);
+
+   overriding procedure Prepare
+    (Self  : not null access SQLite3_Query;
+     Query : League.Strings.Universal_String);
+
+end Matreshka.Internals.SQL_Queries.SQLite3;

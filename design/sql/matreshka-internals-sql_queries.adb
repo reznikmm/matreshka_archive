@@ -41,11 +41,45 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Deallocation;
 
-package SQL is
+with Matreshka.Internals.SQL_Queries.Dummy;
 
-   pragma Pure;
+package body Matreshka.Internals.SQL_Queries is
 
-   SQL_Error : exception;
+   -----------------
+   -- Dereference --
+   -----------------
 
-end SQL;
+   procedure Dereference (Self : in out Query_Access) is
+
+      procedure Free is
+        new Ada.Unchecked_Deallocation (Abstract_Query'Class, Query_Access);
+
+   begin
+      if Self /= Matreshka.Internals.SQL_Queries.Dummy.Empty_Query'Access
+        and then Matreshka.Internals.Atomics.Counters.Decrement
+                  (Self.Counter'Access)
+      then
+         Self.Finalize;
+         Free (Self);
+
+      else
+         Self := null;
+      end if;
+   end Dereference;
+
+   ---------------
+   -- Reference --
+   ---------------
+
+   procedure Reference (Self : not null Query_Access) is
+   begin
+      if Self
+           /= Matreshka.Internals.SQL_Queries.Dummy.Empty_Query'Access
+      then
+         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+      end if;
+   end Reference;
+
+end Matreshka.Internals.SQL_Queries;

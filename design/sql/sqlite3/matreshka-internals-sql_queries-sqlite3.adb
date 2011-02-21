@@ -41,11 +41,86 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Interfaces.C;
 
-package SQL is
+with League.Strings.Internals;
+with Matreshka.Internals.Utf16;
+with SQL;
 
-   pragma Pure;
+package body Matreshka.Internals.SQL_Queries.SQLite3 is
 
-   SQL_Error : exception;
+   use type Interfaces.C.int;
+   use type Matreshka.Internals.SQLite3.sqlite3_stmt_Access;
 
-end SQL;
+--   procedure puts (Item : String);
+--   pragma Import (C, puts);
+
+   -------------
+   -- Execute --
+   -------------
+
+   overriding procedure Execute (Self : not null access SQLite3_Query) is
+   begin
+      if Self.Handle /= null then
+         if Matreshka.Internals.SQLite3.sqlite3_step (Self.Handle)
+              /= Matreshka.Internals.SQLite3.SQLITE_DONE
+         then
+            raise SQL.SQL_Error;
+         end if;
+      end if;
+   end Execute;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize (Self : not null access SQLite3_Query) is
+   begin
+      if Self.Handle /= null then
+         if Matreshka.Internals.SQLite3.sqlite3_finalize (Self.Handle)
+              /= 0
+         then
+            raise SQL.SQL_Error;
+         end if;
+
+         Self.Handle := null;
+      end if;
+   end Finalize;
+
+   -------------
+   -- Prepare --
+   -------------
+
+   overriding procedure Prepare
+    (Self  : not null access SQLite3_Query;
+     Query : League.Strings.Universal_String)
+   is
+      use type Matreshka.Internals.Utf16.Utf16_String_Index;
+
+      Aux : Matreshka.Internals.SQLite3.Utf16_Code_Unit_Access;
+
+   begin
+      if Self.Handle = null then
+         --  Note: http://www.sqlite.org/c3ref/prepare.html
+         --
+         --  "If the caller knows that the supplied string is nul-terminated,
+         --  then there is a small performance advantage to be gained by
+         --  passing an nByte parameter that is equal to the number of bytes in
+         --  the input string including the nul-terminator bytes."
+         --
+         --  And it's exactly our case.
+
+         if Matreshka.Internals.SQLite3.sqlite3_prepare16_v2
+             (Self.Database.Database_Handle,
+              League.Strings.Internals.Internal (Query).Value,
+              Interfaces.C.int
+               ((League.Strings.Internals.Internal (Query).Unused + 1) * 2),
+              Self.Handle,
+              Aux) /= 0
+         then
+            raise SQL.SQL_Error;
+         end if;
+      end if;
+   end Prepare;
+
+end Matreshka.Internals.SQL_Queries.SQLite3;

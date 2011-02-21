@@ -41,11 +41,81 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.SQL_Databases.SQLite3;
 
-package SQL is
+package body SQL.Databases is
 
-   pragma Pure;
+--   ------------
+--   -- Adjust --
+--   ------------
+--
+--   overriding procedure Adjust (Self : in out SQL_Database) is
+--   begin
+--      Matreshka.Internals.SQL_Databases.Reference (Self.Data);
+--   end Adjust;
 
-   SQL_Error : exception;
+   -----------
+   -- Close --
+   -----------
 
-end SQL;
+   procedure Close (Self : in out SQL_Database) is
+   begin
+      null;
+   end Close;
+
+   ------------
+   -- Commit --
+   ------------
+
+   procedure Commit (Self : in out SQL_Database) is
+   begin
+      Self.Data.Commit;
+   end Commit;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize (Self : in out SQL_Database) is
+      use type Matreshka.Internals.SQL_Databases.Database_Access;
+
+   begin
+      --  Finalize must be idempotent according to language rules.
+
+      if Self.Data /= null then
+         Matreshka.Internals.SQL_Databases.Dereference (Self.Data);
+      end if;
+   end Finalize;
+
+   ----------
+   -- Open --
+   ----------
+
+   procedure Open (Self : in out SQL_Database) is
+   begin
+      Matreshka.Internals.SQL_Databases.Dereference (Self.Data);
+
+      Self.Data :=
+        new Matreshka.Internals.SQL_Databases.SQLite3.SQLite3_Database;
+      Self.Data.Open;
+   end Open;
+
+   --------------
+   -- Rollback --
+   --------------
+
+   procedure Rollback (Self : in out SQL_Database) is
+   begin
+      null;
+   end Rollback;
+
+   -----------------
+   -- Transaction --
+   -----------------
+
+   procedure Transaction (Self : in out SQL_Database) is
+   begin
+      null;
+   end Transaction;
+
+end SQL.Databases;

@@ -41,11 +41,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package for internal use only.
+------------------------------------------------------------------------------
+with Matreshka.Internals.SQL_Databases;
 
-package SQL is
+package SQL.Databases.Internals is
 
-   pragma Pure;
+   pragma Preelaborate;
 
-   SQL_Error : exception;
+   function Internal
+    (Self : SQL_Database'Class)
+       return Matreshka.Internals.SQL_Databases.Database_Access;
+   pragma Inline (Internal);
+   --  Returns internal object. Reference counter is untouched.
 
-end SQL;
+end SQL.Databases.Internals;

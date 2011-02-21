@@ -42,10 +42,17 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package SQL is
+package body Matreshka.Internals.SQL_Databases.Dummy is
 
-   pragma Pure;
+   ------------------
+   -- Create_Query --
+   ------------------
 
-   SQL_Error : exception;
+   overriding function Create_Query
+    (Self : not null access Dummy_Database)
+       return not null Matreshka.Internals.SQL_Queries.Query_Access is
+   begin
+      return null;
+   end Create_Query;
 
-end SQL;
+end Matreshka.Internals.SQL_Databases.Dummy;

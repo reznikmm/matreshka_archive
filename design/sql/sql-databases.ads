@@ -43,11 +43,13 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
+private with Matreshka.Internals.SQL_Databases.Dummy;
+
 package SQL.Databases is
 
    pragma Preelaborate;
 
-   type SQL_Database is tagged private;
+   type SQL_Database is tagged limited private;
 
    procedure Open (Self : in out SQL_Database);
 
@@ -61,6 +63,15 @@ package SQL.Databases is
 
 private
 
-   type SQL_Database is new Ada.Finalization.Controlled with null record;
+   type SQL_Database is new Ada.Finalization.Limited_Controlled with record
+      Data : Matreshka.Internals.SQL_Databases.Database_Access
+        := Matreshka.Internals.SQL_Databases.Dummy.Empty_Database'Access;
+   end record;
+
+--   overriding procedure Adjust (Self : in out SQL_Database);
+   --  Increments reference counter of shared object.
+
+   overriding procedure Finalize (Self : in out SQL_Database);
+   --  Decrements reference counter of shared object.
 
 end SQL.Databases;

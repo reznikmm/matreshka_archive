@@ -41,11 +41,42 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  Implementation of SQL_Database type for SQLite3 database.
+------------------------------------------------------------------------------
+with Matreshka.Internals.SQLite3;
 
-package SQL is
+package Matreshka.Internals.SQL_Databases.SQLite3 is
 
-   pragma Pure;
+   pragma Preelaborate;
 
-   SQL_Error : exception;
+   ----------------------
+   -- SQLite3_Database --
+   ----------------------
 
-end SQL;
+   type SQLite3_Database is new Abstract_Database with private;
+
+   function Database_Handle
+    (Self : not null access constant SQLite3_Database'Class)
+       return Matreshka.Internals.SQLite3.sqlite3_Access;
+   pragma Inline (Database_Handle);
+   --  Returns database handle for SQLite3 library API.
+
+private
+
+   type SQLite3_Database is new Abstract_Database with record
+      Handle : Matreshka.Internals.SQLite3.sqlite3_Access;
+   end record;
+
+   overriding procedure Close (Self : not null access SQLite3_Database);
+
+   overriding procedure Commit (Self : not null access SQLite3_Database);
+
+   overriding function Create_Query
+    (Self : not null access SQLite3_Database)
+       return not null Matreshka.Internals.SQL_Queries.Query_Access;
+
+   overriding procedure Finalize (Self : not null access SQLite3_Database);
+
+   overriding procedure Open (Self : not null access SQLite3_Database);
+
+end Matreshka.Internals.SQL_Databases.SQLite3;

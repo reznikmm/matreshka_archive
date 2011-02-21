@@ -41,11 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.SQL_Databases.Dummy;
 
-package SQL is
+package Matreshka.Internals.SQL_Queries.Dummy is
 
-   pragma Pure;
+   pragma Preelaborate;
 
-   SQL_Error : exception;
+   type Dummy_Query is new Abstract_Query with null record;
 
-end SQL;
+   overriding procedure Execute (Self : not null access Dummy_Query) is null;
+
+   overriding procedure Prepare
+    (Self  : not null access Dummy_Query;
+     Query : League.Strings.Universal_String) is null;
+
+   Empty_Query : aliased
+     Dummy_Query (SQL_Databases.Dummy.Empty_Database'Access);
+
+end Matreshka.Internals.SQL_Queries.Dummy;

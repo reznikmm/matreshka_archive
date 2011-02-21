@@ -41,11 +41,51 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Matreshka.Internals.Atomics.Counters;
 
-package SQL is
+with Matreshka.Internals.SQL_Queries;
 
-   pragma Pure;
+package Matreshka.Internals.SQL_Databases is
 
-   SQL_Error : exception;
+   pragma Preelaborate;
 
-end SQL;
+   type Abstract_Database is abstract tagged limited private;
+
+   not overriding procedure Finalize
+    (Self : not null access Abstract_Database) is null;
+   --  Release all used resources.
+
+   not overriding procedure Open
+    (Self : not null access Abstract_Database) is abstract;
+   --  Opens database.
+
+   not overriding procedure Close
+    (Self : not null access Abstract_Database) is abstract;
+   --  Closes database.
+
+   not overriding procedure Commit
+    (Self : not null access Abstract_Database) is abstract;
+   --  Commits active transaction.
+
+   not overriding function Create_Query
+    (Self : not null access Abstract_Database)
+       return not null Matreshka.Internals.SQL_Queries.Query_Access
+         is abstract;
+
+   type Database_Access is access all Abstract_Database'Class;
+
+   procedure Reference (Self : not null Database_Access);
+   pragma Inline (Reference);
+   --  Increments internal reference counter.
+
+   procedure Dereference (Self : in out Database_Access);
+   --  Decrements internal reference counter and deallocates object when there
+   --  are no reference to it any more. Sets Self to null always.
+
+private
+
+   type Abstract_Database is abstract tagged limited record
+      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+   end record;
+
+end Matreshka.Internals.SQL_Databases;

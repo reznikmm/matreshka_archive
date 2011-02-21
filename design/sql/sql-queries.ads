@@ -45,6 +45,7 @@ private with Ada.Finalization;
 
 with League.Strings;
 with League.Values;
+private with Matreshka.Internals.SQL_Queries.Dummy;
 with SQL.Databases;
 
 package SQL.Queries is
@@ -69,19 +70,21 @@ package SQL.Queries is
      Direction : Parameter_Directions := In_Parameter);
 
    function Bound_Value
-    (Self : in out SQL_Query'Class;
+    (Self : SQL_Query'Class;
      Name : League.Strings.Universal_String) return League.Values.Value;
 
    procedure Execute (Self : in out SQL_Query'Class);
 
    procedure Finish (Self : in out SQL_Query'Class);
 
-   function Next (Self : in out SQL_Query'Class) return Boolean;
+--   function Next (Self : in out SQL_Query'Class) return Boolean;
+   procedure Next (Self : in out SQL_Query'Class);
 
    procedure Prepare
     (Self : in out SQL_Query'Class; Query : League.Strings.Universal_String);
 
-   function Previous (Self : in out SQL_Query'Class) return Boolean;
+--   function Previous (Self : in out SQL_Query'Class) return Boolean;
+   procedure Previous (Self : in out SQL_Query'Class);
 
    function Value
     (Self  : SQL_Query'Class;
@@ -89,6 +92,13 @@ package SQL.Queries is
 
 private
 
-   type SQL_Query is new Ada.Finalization.Controlled with null record;
-   
+   type SQL_Query is new Ada.Finalization.Controlled with record
+      Data : Matreshka.Internals.SQL_Queries.Query_Access
+        := Matreshka.Internals.SQL_Queries.Dummy.Empty_Query'Access;
+   end record;
+
+   overriding procedure Adjust (Self : in out SQL_Query);
+
+   overriding procedure Finalize (Self : in out SQL_Query);
+
 end SQL.Queries;

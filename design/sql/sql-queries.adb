@@ -41,11 +41,139 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with SQL.Databases.Internals;
 
-package SQL is
+package body SQL.Queries is
 
-   pragma Pure;
+   ------------
+   -- Adjust --
+   ------------
 
-   SQL_Error : exception;
+   overriding procedure Adjust (Self : in out SQL_Query) is
+   begin
+      Matreshka.Internals.SQL_Queries.Reference (Self.Data);
+   end Adjust;
 
-end SQL;
+   ----------------
+   -- Bind_Value --
+   ----------------
+
+   procedure Bind_Value
+    (Self      : in out SQL_Query'Class;
+     Name      : League.Strings.Universal_String;
+     Value     : League.Values.Value;
+     Direction : Parameter_Directions := In_Parameter) is
+   begin
+      null;
+   end Bind_Value;
+
+   -----------------
+   -- Bound_Value --
+   -----------------
+
+   function Bound_Value
+    (Self : SQL_Query'Class;
+     Name : League.Strings.Universal_String) return League.Values.Value is
+   begin
+      return X : League.Values.Value;
+   end Bound_Value;
+
+   ------------
+   -- Create --
+   ------------
+
+   function Create (Database : SQL.Databases.SQL_Database) return SQL_Query is
+   begin
+      return
+       (Ada.Finalization.Controlled with
+          Data => SQL.Databases.Internals.Internal (Database).Create_Query);
+   end Create;
+
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (Database : SQL.Databases.SQL_Database;
+     Query    : League.Strings.Universal_String) return SQL_Query is
+   begin
+      return Self : SQL_Query := Create (Database) do
+         Self.Prepare (Query);
+      end return;
+   end Create;
+
+   -------------
+   -- Execute --
+   -------------
+
+   procedure Execute (Self : in out SQL_Query'Class) is
+   begin
+      Self.Data.Execute;
+   end Execute;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize (Self : in out SQL_Query) is
+      use type Matreshka.Internals.SQL_Queries.Query_Access;
+
+   begin
+      --  Finalize must be idempotent according to language rules.
+
+      if Self.Data /= null then
+         Matreshka.Internals.SQL_Queries.Dereference (Self.Data);
+      end if;
+   end Finalize;
+
+   ------------
+   -- Finish --
+   ------------
+
+   procedure Finish (Self : in out SQL_Query'Class) is
+   begin
+      null;
+   end Finish;
+
+   ----------
+   -- Next --
+   ----------
+
+--   function Next (Self : in out SQL_Query'Class) return Boolean;
+   procedure Next (Self : in out SQL_Query'Class) is
+   begin
+      null;
+   end Next;
+
+   -------------
+   -- Prepare --
+   -------------
+
+   procedure Prepare
+    (Self : in out SQL_Query'Class; Query : League.Strings.Universal_String) is
+   begin
+      Self.Data.Prepare (Query);
+   end Prepare;
+
+   --------------
+   -- Previous --
+   --------------
+
+--   function Previous (Self : in out SQL_Query'Class) return Boolean;
+   procedure Previous (Self : in out SQL_Query'Class) is
+   begin
+      null;
+   end Previous;
+
+   -----------
+   -- Value --
+   -----------
+
+   function Value
+    (Self  : SQL_Query'Class;
+     Index : Positive) return League.Values.Value is
+   begin
+      return X : League.Values.Value;
+   end Value;
+
+end SQL.Queries;

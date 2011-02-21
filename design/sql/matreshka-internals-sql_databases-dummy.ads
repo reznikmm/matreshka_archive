@@ -41,11 +41,26 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package provides dummy implementation of Abstract_Database to be used
+--  as empty value.
+------------------------------------------------------------------------------
 
-package SQL is
+package Matreshka.Internals.SQL_Databases.Dummy is
 
-   pragma Pure;
+   pragma Preelaborate;
 
-   SQL_Error : exception;
+   type Dummy_Database is new Abstract_Database with null record;
 
-end SQL;
+   overriding procedure Open (Self : not null access Dummy_Database) is null;
+
+   overriding procedure Close (Self : not null access Dummy_Database) is null;
+
+   overriding procedure Commit (Self : not null access Dummy_Database) is null;
+
+   overriding function Create_Query
+    (Self : not null access Dummy_Database)
+       return not null Matreshka.Internals.SQL_Queries.Query_Access;
+
+   Empty_Database : aliased Dummy_Database;
+
+end Matreshka.Internals.SQL_Databases.Dummy;

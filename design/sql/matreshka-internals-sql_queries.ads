@@ -41,11 +41,44 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings;
+private with Matreshka.Internals.Atomics.Counters;
+limited with Matreshka.Internals.SQL_Databases;
 
-package SQL is
+package Matreshka.Internals.SQL_Queries is
 
-   pragma Pure;
+   pragma Preelaborate;
 
-   SQL_Error : exception;
+   type Abstract_Query
+         (Database : not null access SQL_Databases.Abstract_Database'Class)
+     is abstract tagged limited private;
 
-end SQL;
+   not overriding procedure Finalize
+    (Self : not null access Abstract_Query) is null;
+
+   not overriding procedure Prepare
+    (Self  : not null access Abstract_Query;
+     Query : League.Strings.Universal_String) is abstract;
+
+   not overriding procedure Execute
+    (Self : not null access Abstract_Query) is abstract;
+
+   type Query_Access is access all Abstract_Query'Class;
+
+   procedure Reference (Self : not null Query_Access);
+   pragma Inline (Reference);
+   --  Increments internal reference counter.
+
+   procedure Dereference (Self : in out Query_Access);
+   --  Decrements internal reference counter and deallocates object when there
+   --  are no reference to it any more. Sets Self to null always.
+
+private
+
+   type Abstract_Query
+         (Database : not null access SQL_Databases.Abstract_Database'Class)
+     is abstract tagged limited record
+      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+   end record;
+
+end Matreshka.Internals.SQL_Queries;
