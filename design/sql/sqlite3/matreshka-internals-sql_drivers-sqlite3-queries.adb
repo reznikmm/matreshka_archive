@@ -110,7 +110,12 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
     (Self : not null access SQLite3_Query)
        return League.Strings.Universal_String is
    begin
-      return Self.Error;
+      if Self.Is_Valid then
+         return Self.Error;
+
+      else
+         return League.Strings.To_Universal_String ("object was invalidated");
+      end if;
    end Error_Message;
 
    -------------
@@ -120,12 +125,21 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
    overriding function Execute
     (Self : not null access SQLite3_Query) return Boolean is
    begin
+      if not Self.Is_Valid then
+         --  Returns immidiatly when query was invalidated.
+
+         return False;
+      end if;
+
       if Self.Handle /= null then
          Self.Call (sqlite3_step (Self.Handle));
          Self.Skip_Step := Self.Has_Row;
-      end if;
 
-      return Self.Success;
+         return Self.Success;
+
+      else
+         return False;
+      end if;
    end Execute;
 
    ----------------
@@ -164,6 +178,12 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
    overriding function Next
     (Self : not null access SQLite3_Query) return Boolean is
    begin
+      if not Self.Is_Valid then
+         --  Returns immidiatly when query was invalidated.
+
+         return False;
+      end if;
+
       if Self.Skip_Step then
          Self.Skip_Step := False;
 
@@ -185,6 +205,12 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       Aux : aliased Utf16_Code_Unit_Access;
 
    begin
+      if not Self.Is_Valid then
+         --  Returns immidiatly when query was invalidated.
+
+         return False;
+      end if;
+
       if Self.Handle = null then
          --  Note: http://www.sqlite.org/c3ref/prepare.html
          --
@@ -251,6 +277,12 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       Value  : League.Values.Value;
 
    begin
+      if not Self.Is_Valid then
+         --  Returns immidiatly when query was invalidated.
+
+         return Value;
+      end if;
+
       Text :=
         sqlite3_column_text16 (Self.Handle, Interfaces.C.int (Index - 1));
       Length :=

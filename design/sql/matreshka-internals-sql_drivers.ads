@@ -120,6 +120,10 @@ package Matreshka.Internals.SQL_Drivers is
    --  database object and dereference database object. Database drivers should
    --  release other resources before call to this inherited procedure.
 
+   function Is_Valid
+    (Self : not null access Abstract_Query'Class) return Boolean;
+   --  Returns True when query is valid.
+
    not overriding function Prepare
     (Self  : not null access Abstract_Query;
      Query : League.Strings.Universal_String) return Boolean is abstract;

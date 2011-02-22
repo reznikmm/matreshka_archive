@@ -180,6 +180,16 @@ package body Matreshka.Internals.SQL_Drivers is
       end loop;
    end Invalidate_Queries;
 
+   --------------
+   -- Is_Valid --
+   --------------
+
+   function Is_Valid
+    (Self : not null access Abstract_Query'Class) return Boolean is
+   begin
+      return Self.Database /= null;
+   end Is_Valid;
+
    ---------------
    -- Reference --
    ---------------
