@@ -78,7 +78,7 @@ package SQL.Queries is
    procedure Finish (Self : in out SQL_Query'Class);
 
 --   function Next (Self : in out SQL_Query'Class) return Boolean;
-   procedure Next (Self : in out SQL_Query'Class);
+   function Next (Self : not null access SQL_Query'Class) return Boolean;
 
    procedure Prepare
     (Self : in out SQL_Query'Class; Query : League.Strings.Universal_String);

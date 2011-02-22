@@ -1,4 +1,7 @@
+with Ada.Wide_Wide_Text_IO;
+
 with League.Strings;
+with League.Values.Strings;
 with SQL.Databases;
 with SQL.Queries;
 
@@ -17,9 +20,33 @@ begin
       Q : SQL.Queries.SQL_Query := SQL.Queries.Create (D);
 
    begin
-      Q.Prepare (+"CREATE TABLE point (x INTEGER, y INTEGER)");
+      Q.Prepare
+       (+"CREATE TABLE point (x CHARACTER VARYING, y CHARACTER VARYING)");
       Q.Execute;
    end;
 
---   D.Commit;
+   declare
+      Q : SQL.Queries.SQL_Query := SQL.Queries.Create (D);
+
+   begin
+      Q.Prepare (+"INSERT INTO point (x, y) VALUES ('a', 'b')");
+      Q.Execute;
+   end;
+
+   declare
+      Q : aliased SQL.Queries.SQL_Query := SQL.Queries.Create (D);
+
+   begin
+      Q.Prepare (+"SELECT x, y FROM point");
+      Q.Execute;
+
+      while Q.Next loop
+         Ada.Wide_Wide_Text_IO.Put_Line
+          (League.Values.Strings.To_Universal_String
+            (Q.Value (1)).To_Wide_Wide_String
+             & ":"
+             & League.Values.Strings.To_Universal_String
+                (Q.Value (2)).To_Wide_Wide_String);
+      end loop;
+   end;
 end Main;

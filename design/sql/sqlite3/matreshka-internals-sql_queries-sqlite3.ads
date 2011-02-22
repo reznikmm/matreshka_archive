@@ -58,15 +58,24 @@ private
     (Database : not null access SQL_Databases.SQLite3.SQLite3_Database'Class)
        is new Abstract_Query (Database) with
    record
-      Handle : aliased Matreshka.Internals.SQLite3.sqlite3_stmt_Access;
+      Handle    : aliased Matreshka.Internals.SQLite3.sqlite3_stmt_Access;
+      Has_Row   : Boolean;
+      Skip_Step : Boolean;
    end record;
 
    overriding procedure Execute (Self : not null access SQLite3_Query);
 
    overriding procedure Finalize (Self : not null access SQLite3_Query);
 
+   overriding function Next
+    (Self : not null access SQLite3_Query) return Boolean;
+
    overriding procedure Prepare
     (Self  : not null access SQLite3_Query;
      Query : League.Strings.Universal_String);
+
+   overriding function Value
+    (Self  : not null access SQLite3_Query;
+     Index : Positive) return League.Values.Value;
 
 end Matreshka.Internals.SQL_Queries.SQLite3;

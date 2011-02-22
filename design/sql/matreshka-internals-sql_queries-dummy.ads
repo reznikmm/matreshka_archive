@@ -55,6 +55,13 @@ package Matreshka.Internals.SQL_Queries.Dummy is
     (Self  : not null access Dummy_Query;
      Query : League.Strings.Universal_String) is null;
 
+   overriding function Next
+    (Self : not null access Dummy_Query) return Boolean;
+
+   overriding function Value
+    (Self  : not null access Dummy_Query;
+     Index : Positive) return League.Values.Value;
+
    Empty_Query : aliased
      Dummy_Query (SQL_Databases.Dummy.Empty_Database'Access);
 

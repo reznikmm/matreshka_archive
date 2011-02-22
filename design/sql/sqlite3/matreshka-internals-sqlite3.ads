@@ -100,7 +100,8 @@ package Matreshka.Internals.SQLite3 is
 --#define SQLITE_FORMAT      24   /* Auxiliary database format error */
 --#define SQLITE_RANGE       25   /* 2nd parameter to sqlite3_bind out of range */
 --#define SQLITE_NOTADB      26   /* File opened that is not a database file */
---#define SQLITE_ROW         100  /* sqlite3_step() has another row ready */
+   SQLITE_ROW        : constant := 100;  --  sqlite3_step() has another row
+                                         --  ready
    SQLITE_DONE       : constant := 101;  --  sqlite3_step() has finished
                                          --  executing
 
@@ -111,6 +112,16 @@ package Matreshka.Internals.SQLite3 is
 
    function sqlite3_close (Handle : sqlite3_Access) return Interfaces.C.int;
    pragma Import (C, sqlite3_close);
+
+   function sqlite3_column_bytes16
+    (Handle : sqlite3_stmt_Access;
+     iCol   : Interfaces.C.int) return Interfaces.C.int;
+   pragma Import (C, sqlite3_column_bytes16);
+
+   function sqlite3_column_text16
+    (Handle : sqlite3_stmt_Access;
+     iCol   : Interfaces.C.int) return Utf16_Code_Unit_Access;
+   pragma Import (C, sqlite3_column_text16);
 
    function sqlite3_finalize
     (Handle : sqlite3_stmt_Access) return Interfaces.C.int;

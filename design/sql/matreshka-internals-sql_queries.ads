@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings;
+with League.Values;
 private with Matreshka.Internals.Atomics.Counters;
 limited with Matreshka.Internals.SQL_Databases;
 
@@ -62,6 +63,13 @@ package Matreshka.Internals.SQL_Queries is
 
    not overriding procedure Execute
     (Self : not null access Abstract_Query) is abstract;
+
+   not overriding function Next
+    (Self : not null access Abstract_Query) return Boolean is abstract;
+
+   not overriding function Value
+    (Self  : not null access Abstract_Query;
+     Index : Positive) return League.Values.Value is abstract;
 
    type Query_Access is access all Abstract_Query'Class;
 
