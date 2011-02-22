@@ -51,11 +51,17 @@ package Matreshka.Internals.SQL_Databases.Dummy is
 
    type Dummy_Database is new Abstract_Database with null record;
 
-   overriding procedure Open (Self : not null access Dummy_Database) is null;
+   overriding function Open
+    (Self    : not null access Dummy_Database;
+     Options : League.Strings.Universal_String) return Boolean;
 
    overriding procedure Close (Self : not null access Dummy_Database) is null;
 
    overriding procedure Commit (Self : not null access Dummy_Database) is null;
+
+   overriding function Error_Message
+    (Self : not null access Dummy_Database)
+       return League.Strings.Universal_String;
 
    overriding function Query
     (Self : not null access Dummy_Database)

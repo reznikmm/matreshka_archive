@@ -45,6 +45,28 @@ with Matreshka.Internals.SQL_Queries.Dummy;
 
 package body Matreshka.Internals.SQL_Databases.Dummy is
 
+   -------------------
+   -- Error_Message --
+   -------------------
+
+   overriding function Error_Message
+    (Self : not null access Dummy_Database)
+       return League.Strings.Universal_String is
+   begin
+      return League.Strings.Empty_Universal_String;
+   end Error_Message;
+
+   ----------
+   -- Open --
+   ----------
+
+   overriding function Open
+    (Self    : not null access Dummy_Database;
+     Options : League.Strings.Universal_String) return Boolean is
+   begin
+      return False;
+   end Open;
+
    -----------
    -- Query --
    -----------

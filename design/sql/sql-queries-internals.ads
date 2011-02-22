@@ -47,7 +47,7 @@ with Matreshka.Internals.SQL_Queries;
 
 package SQL.Queries.Internals is
 
-   pragma Preelaborate;
+--   pragma Preelaborate;
 
 --   function Internal
 --    (Self : SQL_Query'Class)

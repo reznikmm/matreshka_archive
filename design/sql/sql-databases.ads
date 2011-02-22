@@ -49,19 +49,25 @@ with SQL.Queries;
 
 package SQL.Databases is
 
-   pragma Preelaborate;
+--   pragma Preelaborate;
 
    type SQL_Database is tagged limited private;
 
    procedure Open (Self : in out SQL_Database'Class);
 
    procedure Close (Self : in out SQL_Database'Class);
+   --  Closes the database connection, freeing any resources acquired, and
+   --  invalidating any existing QSqlQuery objects that are used with the
+   --  database.
 
    procedure Commit (Self : in out SQL_Database'Class);
 
    procedure Rollback (Self : in out SQL_Database'Class);
 
    procedure Transaction (Self : in out SQL_Database'Class);
+
+   function Error_Message
+    (Self : SQL_Database'Class) return League.Strings.Universal_String;
 
    function Query
     (Self : in out SQL_Database'Class) return SQL.Queries.SQL_Query;

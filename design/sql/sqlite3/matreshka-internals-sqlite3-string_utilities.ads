@@ -41,33 +41,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SQL_Databases.Dummy;
+--  This package provides utilities to interface Ada and C.
+------------------------------------------------------------------------------
+with League.Strings;
 
-package Matreshka.Internals.SQL_Queries.Dummy is
+package Matreshka.Internals.SQLite3.String_Utilities is
 
    pragma Preelaborate;
 
-   type Dummy_Query is new Abstract_Query with null record;
-
-   overriding function Error_Message
-    (Self : not null access Dummy_Query)
+   function To_Universal_String
+    (Text : Matreshka.Internals.SQLite3.Utf16_Code_Unit_Access)
        return League.Strings.Universal_String;
+   --  Converts null-terminated text segment starting at specified position
+   --  into Universal_String.
 
-   overriding function Execute
-    (Self : not null access Dummy_Query) return Boolean;
-
-   overriding function Prepare
-    (Self  : not null access Dummy_Query;
-     Query : League.Strings.Universal_String) return Boolean;
-
-   overriding function Next
-    (Self : not null access Dummy_Query) return Boolean;
-
-   overriding function Value
-    (Self  : not null access Dummy_Query;
-     Index : Positive) return League.Values.Value;
-
-   Empty_Query : aliased
-     Dummy_Query (SQL_Databases.Dummy.Empty_Database'Access);
-
-end Matreshka.Internals.SQL_Queries.Dummy;
+end Matreshka.Internals.SQLite3.String_Utilities;

@@ -41,9 +41,19 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Streams;
+
+with League.Text_Codecs;
 with SQL.Databases.Internals;
 
 package body SQL.Queries is
+
+   procedure Raise_SQL_Error
+    (Self : in out SQL_Query'Class; Success : Boolean);
+   --  Raises SQL_Error when Success is not equal to True. Constructs exception
+   --  message from Error_Message of query.
+
+   function To_String (Item : League.Strings.Universal_String) return String;
 
    ------------
    -- Adjust --
@@ -78,13 +88,32 @@ package body SQL.Queries is
       return X : League.Values.Value;
    end Bound_Value;
 
+   -------------------
+   -- Error_Message --
+   -------------------
+
+   function Error_Message
+    (Self : SQL_Query'Class) return League.Strings.Universal_String is
+   begin
+      return Self.Data.Error_Message;
+   end Error_Message;
+
+   -------------
+   -- Execute --
+   -------------
+
+   function Execute (Self : not null access SQL_Query'Class) return Boolean is
+   begin
+      return Self.Data.Execute;
+   end Execute;
+
    -------------
    -- Execute --
    -------------
 
    procedure Execute (Self : in out SQL_Query'Class) is
    begin
-      Self.Data.Execute;
+      Self.Raise_SQL_Error (Self.Data.Execute);
    end Execute;
 
    --------------
@@ -125,10 +154,21 @@ package body SQL.Queries is
    -- Prepare --
    -------------
 
+   function Prepare
+    (Self  : in out SQL_Query'Class;
+     Query : League.Strings.Universal_String) return Boolean is
+   begin
+      return Self.Data.Prepare (Query);
+   end Prepare;
+
+   -------------
+   -- Prepare --
+   -------------
+
    procedure Prepare
     (Self : in out SQL_Query'Class; Query : League.Strings.Universal_String) is
    begin
-      Self.Data.Prepare (Query);
+      Self.Raise_SQL_Error (Self.Data.Prepare (Query));
    end Prepare;
 
    --------------
@@ -140,6 +180,34 @@ package body SQL.Queries is
    begin
       null;
    end Previous;
+
+   ---------------------
+   -- Raise_SQL_Error --
+   ---------------------
+
+   procedure Raise_SQL_Error
+    (Self : in out SQL_Query'Class; Success : Boolean) is
+   begin
+      if not Success then
+         raise SQL_Error with To_String (Self.Error_Message);
+      end if;
+   end Raise_SQL_Error;
+
+   ---------------
+   -- To_String --
+   ---------------
+
+   function To_String (Item : League.Strings.Universal_String) return String is
+      Stream : constant Ada.Streams.Stream_Element_Array
+        := League.Text_Codecs.Codec_For_Application_Locale.Encode
+            (Item).To_Stream_Element_Array;
+      Result : String (1 .. Stream'Length);
+      for Result'Address use Stream'Address;
+      pragma Import (Ada, Result);
+
+   begin
+      return Result;
+   end To_String;
 
    -----------
    -- Value --

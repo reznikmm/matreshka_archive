@@ -123,6 +123,10 @@ package Matreshka.Internals.SQLite3 is
      iCol   : Interfaces.C.int) return Utf16_Code_Unit_Access;
    pragma Import (C, sqlite3_column_text16);
 
+   function sqlite3_errmsg16
+    (db : sqlite3_Access) return Utf16_Code_Unit_Access;
+   pragma Import (C, sqlite3_errmsg16);
+
    function sqlite3_finalize
     (Handle : sqlite3_stmt_Access) return Interfaces.C.int;
    pragma Import (C, sqlite3_finalize);

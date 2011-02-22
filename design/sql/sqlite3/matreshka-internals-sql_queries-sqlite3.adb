@@ -42,49 +42,91 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Interfaces.C;
---with Interfaces.C.Pointers;
 
 with League.Strings.Internals;
 with League.Values.Strings;
 with Matreshka.Internals.Strings;
 with Matreshka.Internals.Unicode;
 with Matreshka.Internals.Utf16;
-with SQL;
+with Matreshka.Internals.SQLite3.String_Utilities;
 
 package body Matreshka.Internals.SQL_Queries.SQLite3 is
 
    use type Interfaces.C.int;
    use type Matreshka.Internals.SQLite3.sqlite3_stmt_Access;
+   use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
 --   procedure puts (Item : String);
 --   pragma Import (C, puts);
 
---   package Utf16_Code_Unit_Pointers is
---     new Interfaces.C.Pointers
---          (Matreshka.Internals.Utf16.Utf16_String_Index,
---           Matreshka.Internals.Utf16.Utf16_Code_Unit,
---           Matreshka.Internals.Utf16.Unaligned_Utf16_String,
---           0);
+   procedure Call
+    (Self : not null access SQLite3_Query'Class;
+     Code : Interfaces.C.int);
+   --  Process return code, constructs error message when code is error.
+
+   function To_Universal_String
+    (Text   : Matreshka.Internals.SQLite3.Utf16_Code_Unit_Access;
+     Length : Matreshka.Internals.Utf16.Utf16_String_Index)
+       return League.Strings.Universal_String;
+   --  Converts text starting at specified position with specified length into
+   --  Universal_String.
+
+   ----------
+   -- Call --
+   ----------
+
+   procedure Call
+    (Self : not null access SQLite3_Query'Class;
+     Code : Interfaces.C.int) is
+   begin
+      --  Clear previous error state.
+
+      Self.Success := True;
+      Self.Error.Clear;
+
+      case Code is
+         when Matreshka.Internals.SQLite3.SQLITE_OK =>
+            null;
+
+         when Matreshka.Internals.SQLite3.SQLITE_DONE =>
+            Self.Has_Row := False;
+
+         when Matreshka.Internals.SQLite3.SQLITE_ROW =>
+            Self.Has_Row := True;
+
+         when others =>
+            Self.Success := False;
+            Self.Error :=
+              Matreshka.Internals.SQLite3.String_Utilities.To_Universal_String
+               (Matreshka.Internals.SQLite3.sqlite3_errmsg16
+                 (Self.Database.Database_Handle));
+      end case;
+   end Call;
+
+   -------------------
+   -- Error_Message --
+   -------------------
+
+   overriding function Error_Message
+    (Self : not null access SQLite3_Query)
+       return League.Strings.Universal_String is
+   begin
+      return Self.Error;
+   end Error_Message;
 
    -------------
    -- Execute --
    -------------
 
-   overriding procedure Execute (Self : not null access SQLite3_Query) is
+   overriding function Execute
+    (Self : not null access SQLite3_Query) return Boolean is
    begin
       if Self.Handle /= null then
-         case Matreshka.Internals.SQLite3.sqlite3_step (Self.Handle) is
-            when Matreshka.Internals.SQLite3.SQLITE_DONE =>
-               Self.Has_Row := False;
-
-            when Matreshka.Internals.SQLite3.SQLITE_ROW =>
-               Self.Has_Row := True;
-               Self.Skip_Step := True;
-
-            when others =>
-               raise SQL.SQL_Error;
-         end case;
+         Self.Call (Matreshka.Internals.SQLite3.sqlite3_step (Self.Handle));
+         Self.Skip_Step := Self.Has_Row;
       end if;
+
+      return Self.Success;
    end Execute;
 
    --------------
@@ -94,12 +136,8 @@ package body Matreshka.Internals.SQL_Queries.SQLite3 is
    overriding procedure Finalize (Self : not null access SQLite3_Query) is
    begin
       if Self.Handle /= null then
-         if Matreshka.Internals.SQLite3.sqlite3_finalize (Self.Handle)
-              /= 0
-         then
-            raise SQL.SQL_Error;
-         end if;
-
+         Self.Call
+          (Matreshka.Internals.SQLite3.sqlite3_finalize (Self.Handle));
          Self.Handle := null;
       end if;
    end Finalize;
@@ -115,16 +153,7 @@ package body Matreshka.Internals.SQL_Queries.SQLite3 is
          Self.Skip_Step := False;
 
       elsif Self.Has_Row then
-         case Matreshka.Internals.SQLite3.sqlite3_step (Self.Handle) is
-            when Matreshka.Internals.SQLite3.SQLITE_DONE =>
-               Self.Has_Row := False;
-
-            when Matreshka.Internals.SQLite3.SQLITE_ROW =>
-               Self.Has_Row := True;
-
-            when others =>
-               raise SQL.SQL_Error;
-         end case;
+         Self.Call (Matreshka.Internals.SQLite3.sqlite3_step (Self.Handle));
       end if;
 
       return Self.Has_Row;
@@ -134,12 +163,10 @@ package body Matreshka.Internals.SQL_Queries.SQLite3 is
    -- Prepare --
    -------------
 
-   overriding procedure Prepare
+   overriding function Prepare
     (Self  : not null access SQLite3_Query;
-     Query : League.Strings.Universal_String)
+     Query : League.Strings.Universal_String) return Boolean
    is
-      use type Matreshka.Internals.Utf16.Utf16_String_Index;
-
       Aux : aliased Matreshka.Internals.SQLite3.Utf16_Code_Unit_Access;
 
    begin
@@ -153,18 +180,47 @@ package body Matreshka.Internals.SQL_Queries.SQLite3 is
          --
          --  And it's exactly our case.
 
-         if Matreshka.Internals.SQLite3.sqlite3_prepare16_v2
-             (Self.Database.Database_Handle,
-              League.Strings.Internals.Internal (Query).Value,
-              Interfaces.C.int
-               ((League.Strings.Internals.Internal (Query).Unused + 1) * 2),
-              Self.Handle'Unchecked_Access,
-              Aux'Unchecked_Access) /= 0
-         then
-            raise SQL.SQL_Error;
-         end if;
+         Self.Call
+          (Matreshka.Internals.SQLite3.sqlite3_prepare16_v2
+            (Self.Database.Database_Handle,
+             League.Strings.Internals.Internal (Query).Value,
+             Interfaces.C.int
+              ((League.Strings.Internals.Internal (Query).Unused + 1) * 2),
+             Self.Handle'Unchecked_Access,
+             Aux'Unchecked_Access));
       end if;
+
+      return Self.Success;
    end Prepare;
+
+   -------------------------
+   -- To_Universal_String --
+   -------------------------
+
+   function To_Universal_String
+    (Text   : Matreshka.Internals.SQLite3.Utf16_Code_Unit_Access;
+     Length : Matreshka.Internals.Utf16.Utf16_String_Index)
+       return League.Strings.Universal_String
+   is
+      Source   :
+        Matreshka.Internals.Utf16.Unaligned_Utf16_String (0 .. Length - 1);
+      for Source'Address use Text.all'Address;
+      pragma Import (Ada, Source);
+      Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+      Code     : Matreshka.Internals.Unicode.Code_Point;
+      Aux      : Matreshka.Internals.Strings.Shared_String_Access
+        := Matreshka.Internals.Strings.Allocate (Length);
+
+   begin
+      while Position <= Source'Last loop
+         Matreshka.Internals.Utf16.Unchecked_Next (Source, Position, Code);
+         Matreshka.Internals.Utf16.Unchecked_Store
+          (Aux.Value, Aux.Unused, Code);
+         Aux.Length := Aux.Length + 1;
+      end loop;
+
+      return League.Strings.Internals.Wrap (Aux);
+   end To_Universal_String;
 
    -----------
    -- Value --
@@ -178,34 +234,6 @@ package body Matreshka.Internals.SQL_Queries.SQLite3 is
       Length : Matreshka.Internals.Utf16.Utf16_String_Index;
       Value  : League.Values.Value;
 
-      function To_Universal_String return League.Strings.Universal_String;
-
-      -------------------------
-      -- To_Universal_String --
-      -------------------------
-
-      function To_Universal_String return League.Strings.Universal_String is
-         use type Matreshka.Internals.Utf16.Utf16_String_Index;
-
-         Source   : Matreshka.Internals.Utf16.Unaligned_Utf16_String (0 .. Length - 1);
-         for Source'Address use Text.all'Address;
-         pragma Import (Ada, Source);
-         Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
-         Code     : Matreshka.Internals.Unicode.Code_Point;
-         Aux      : Matreshka.Internals.Strings.Shared_String_Access
-           := Matreshka.Internals.Strings.Allocate (Length);
-
-      begin
-         while Position <= Source'Last loop
-            Matreshka.Internals.Utf16.Unchecked_Next (Source, Position, Code);
-            Matreshka.Internals.Utf16.Unchecked_Store
-             (Aux.Value, Aux.Unused, Code);
-            Aux.Length := Aux.Length + 1;
-         end loop;
-
-         return League.Strings.Internals.Wrap (Aux);
-      end To_Universal_String;
-
    begin
       Text :=
         Matreshka.Internals.SQLite3.sqlite3_column_text16
@@ -215,7 +243,8 @@ package body Matreshka.Internals.SQL_Queries.SQLite3 is
          (Matreshka.Internals.SQLite3.sqlite3_column_bytes16
            (Self.Handle, Interfaces.C.int (Index - 1)));
 
-      League.Values.Strings.Set (Value, To_Universal_String);
+      League.Values.Strings.Set
+       (Value, To_Universal_String (Text, Length / 2));
 
       return Value;
    end Value;

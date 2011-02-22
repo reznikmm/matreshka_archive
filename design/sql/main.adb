@@ -29,7 +29,7 @@ begin
       Q : SQL.Queries.SQL_Query := D.Query;
 
    begin
-      Q.Prepare (+"INSERT INTO point (x, y) VALUES ('a', 'b')");
+      Q.Prepare (+"INSERT INTO point (x, y) VALUES ('abc', 'xyz')");
       Q.Execute;
    end;
 
@@ -46,7 +46,13 @@ begin
             (Q.Value (1)).To_Wide_Wide_String
              & ":"
              & League.Values.Strings.To_Universal_String
-                (Q.Value (2)).To_Wide_Wide_String);
+                (Q.Value (2)).To_Wide_Wide_String
+             & Integer'Wide_Wide_Image
+                (League.Values.Strings.To_Universal_String
+                  (Q.Value (1)).Length)
+             & Integer'Wide_Wide_Image
+                (League.Values.Strings.To_Universal_String
+                  (Q.Value (2)).Length));
       end loop;
    end;
 end Main;

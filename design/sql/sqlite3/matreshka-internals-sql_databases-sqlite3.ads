@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 --  Implementation of SQL_Database type for SQLite3 database.
 ------------------------------------------------------------------------------
+private with League.Strings;
 with Matreshka.Internals.SQLite3;
 
 package Matreshka.Internals.SQL_Databases.SQLite3 is
@@ -64,12 +65,18 @@ package Matreshka.Internals.SQL_Databases.SQLite3 is
 private
 
    type SQLite3_Database is new Abstract_Database with record
-      Handle : aliased Matreshka.Internals.SQLite3.sqlite3_Access;
+      Handle  : aliased Matreshka.Internals.SQLite3.sqlite3_Access;
+      Error   : League.Strings.Universal_String;
+      Success : Boolean := True;
    end record;
 
    overriding procedure Close (Self : not null access SQLite3_Database);
 
    overriding procedure Commit (Self : not null access SQLite3_Database);
+
+   overriding function Error_Message
+    (Self : not null access SQLite3_Database)
+       return League.Strings.Universal_String;
 
    overriding function Query
     (Self : not null access SQLite3_Database)
@@ -77,6 +84,8 @@ private
 
    overriding procedure Finalize (Self : not null access SQLite3_Database);
 
-   overriding procedure Open (Self : not null access SQLite3_Database);
+   overriding function Open
+    (Self    : not null access SQLite3_Database;
+     Options : League.Strings.Universal_String) return Boolean;
 
 end Matreshka.Internals.SQL_Databases.SQLite3;

@@ -49,7 +49,7 @@ private with Matreshka.Internals.SQL_Queries.Dummy;
 
 package SQL.Queries is
 
-   pragma Preelaborate;
+--   pragma Preelaborate;
 
    type Parameter_Directions is
     (In_Parameter, Out_Parameter, In_Out_Parameter);
@@ -66,15 +66,60 @@ package SQL.Queries is
     (Self : SQL_Query'Class;
      Name : League.Strings.Universal_String) return League.Values.Value;
 
+   function Error_Message
+    (Self : SQL_Query'Class) return League.Strings.Universal_String;
+
+--   function Execute (Self : in out SQL_Query'Class) return Boolean;
+   --  Executes a previously prepared SQL query. Returns True if the query
+   --  executed successfully; otherwise returns False.
+   --
+   --  After the query is executed, the query is positioned on an invalid
+   --  record and must be navigated to a valid record before data values can be
+   --  retrieved.
+   --
+   --  Note that the last error for this query is reset when Execute is called.
+
    procedure Execute (Self : in out SQL_Query'Class);
+   --  Executes a previously prepared SQL query. Raises SQL_Error when query
+   --  is not executed successfully.
+   --
+   --  After the query is executed, the query is positioned on an invalid
+   --  record and must be navigated to a valid record before data values can be
+   --  retrieved.
+   --
+   --  Note that the last error for this query is reset when Execute is called.
 
    procedure Finish (Self : in out SQL_Query'Class);
 
 --   function Next (Self : in out SQL_Query'Class) return Boolean;
    function Next (Self : not null access SQL_Query'Class) return Boolean;
 
+--   function Prepare
+--    (Self  : in out SQL_Query'Class;
+--     Query : League.Strings.Universal_String) return Boolean;
+   --  Prepares the SQL query query for execution. Returns True if the query is
+   --  prepared successfully; otherwise returns False.
+   --
+   --  The query may contain placeholders for binding values. Both Oracle style
+   --  colon-name (e.g., :surname), and ODBC style (?) placeholders are
+   --  supported; but they cannot be mixed in the same query.
+   --
+   --  Portability note: Some databases choose to delay preparing a query until
+   --  it is executed the first time. In this case, preparing a syntactically
+   --  wrong query succeeds, but every consecutive Execute will fail.
+
    procedure Prepare
     (Self : in out SQL_Query'Class; Query : League.Strings.Universal_String);
+   --  Prepares the SQL query query for execution. Raises SQL_Error if query is
+   --  not prepared successfully.
+   --
+   --  The query may contain placeholders for binding values. Both Oracle style
+   --  colon-name (e.g., :surname), and ODBC style (?) placeholders are
+   --  supported; but they cannot be mixed in the same query.
+   --
+   --  Portability note: Some databases choose to delay preparing a query until
+   --  it is executed the first time. In this case, preparing a syntactically
+   --  wrong query succeeds, but every consecutive Execute will fail.
 
 --   function Previous (Self : in out SQL_Query'Class) return Boolean;
    procedure Previous (Self : in out SQL_Query'Class);

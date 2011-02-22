@@ -44,6 +44,27 @@
 
 package body Matreshka.Internals.SQL_Queries.Dummy is
 
+   -------------------
+   -- Error_Message --
+   -------------------
+
+   overriding function Error_Message
+    (Self : not null access Dummy_Query)
+       return League.Strings.Universal_String is
+   begin
+      return League.Strings.Empty_Universal_String;
+   end Error_Message;
+
+   -------------
+   -- Execute --
+   -------------
+
+   overriding function Execute
+    (Self : not null access Dummy_Query) return Boolean is
+   begin
+      return False;
+   end Execute;
+
    ----------
    -- Next --
    ----------
@@ -53,6 +74,17 @@ package body Matreshka.Internals.SQL_Queries.Dummy is
    begin
       return False;
    end Next;
+
+   -------------
+   -- Prepare --
+   -------------
+
+   overriding function Prepare
+    (Self  : not null access Dummy_Query;
+     Query : League.Strings.Universal_String) return Boolean is
+   begin
+      return False;
+   end Prepare;
 
    -----------
    -- Value --

@@ -41,10 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Streams;
+
+with League.Text_Codecs;
 with Matreshka.Internals.SQL_Databases.SQLite3;
 with SQL.Queries.Internals;
 
 package body SQL.Databases is
+
+   function To_String (Item : League.Strings.Universal_String) return String;
+
+   procedure Raise_SQL_Error
+    (Self : in out SQL_Database'Class; Success : Boolean);
+   --  Raises SQL_Error when Success is not equal to True. Constructs exception
+   --  message from Error_Message of query.
 
 --   ------------
 --   -- Adjust --
@@ -73,6 +83,16 @@ package body SQL.Databases is
       Self.Data.Commit;
    end Commit;
 
+   -------------------
+   -- Error_Message --
+   -------------------
+
+   function Error_Message
+    (Self : SQL_Database'Class) return League.Strings.Universal_String is
+   begin
+      return Self.Data.Error_Message;
+   end Error_Message;
+
    --------------
    -- Finalize --
    --------------
@@ -98,7 +118,8 @@ package body SQL.Databases is
 
       Self.Data :=
         new Matreshka.Internals.SQL_Databases.SQLite3.SQLite3_Database;
-      Self.Data.Open;
+      Self.Raise_SQL_Error
+       (Self.Data.Open (League.Strings.Empty_Universal_String));
    end Open;
 
    -----------
@@ -124,6 +145,18 @@ package body SQL.Databases is
       end return;
    end Query;
 
+   ---------------------
+   -- Raise_SQL_Error --
+   ---------------------
+
+   procedure Raise_SQL_Error
+    (Self : in out SQL_Database'Class; Success : Boolean) is
+   begin
+      if not Success then
+         raise SQL_Error with To_String (Self.Error_Message);
+      end if;
+   end Raise_SQL_Error;
+
    --------------
    -- Rollback --
    --------------
@@ -132,6 +165,22 @@ package body SQL.Databases is
    begin
       null;
    end Rollback;
+
+   ---------------
+   -- To_String --
+   ---------------
+
+   function To_String (Item : League.Strings.Universal_String) return String is
+      Stream : constant Ada.Streams.Stream_Element_Array
+        := League.Text_Codecs.Codec_For_Application_Locale.Encode
+            (Item).To_Stream_Element_Array;
+      Result : String (1 .. Stream'Length);
+      for Result'Address use Stream'Address;
+      pragma Import (Ada, Result);
+
+   begin
+      return Result;
+   end To_String;
 
    -----------------
    -- Transaction --

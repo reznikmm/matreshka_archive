@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 private with Matreshka.Internals.Atomics.Counters;
 
+with League.Strings;
 with Matreshka.Internals.SQL_Queries;
 
 package Matreshka.Internals.SQL_Databases is
@@ -55,13 +56,18 @@ package Matreshka.Internals.SQL_Databases is
     (Self : not null access Abstract_Database) is null;
    --  Release all used resources.
 
-   not overriding procedure Open
-    (Self : not null access Abstract_Database) is abstract;
-   --  Opens database.
+   not overriding function Open
+    (Self    : not null access Abstract_Database;
+     Options : League.Strings.Universal_String) return Boolean is abstract;
+   --  Opens database connection using specified options.
+   --
+   --  The function must return True on success and False on failure.
 
    not overriding procedure Close
     (Self : not null access Abstract_Database) is abstract;
-   --  Closes database.
+   --  Closes the database connection, freeing any resources acquired, and
+   --  invalidating any existing QSqlQuery objects that are used with the
+   --  database.
 
    not overriding procedure Commit
     (Self : not null access Abstract_Database) is abstract;
@@ -71,6 +77,10 @@ package Matreshka.Internals.SQL_Databases is
     (Self : not null access Abstract_Database)
        return not null Matreshka.Internals.SQL_Queries.Query_Access
          is abstract;
+
+   not overriding function Error_Message
+    (Self : not null access Abstract_Database)
+       return League.Strings.Universal_String is abstract;
 
    type Database_Access is access all Abstract_Database'Class;
 
