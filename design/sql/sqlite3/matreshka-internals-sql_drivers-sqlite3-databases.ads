@@ -77,8 +77,7 @@ private
        return League.Strings.Universal_String;
 
    overriding function Query
-    (Self : not null access SQLite3_Database)
-       return not null Matreshka.Internals.SQL_Drivers.Query_Access;
+    (Self : not null access SQLite3_Database) return not null Query_Access;
 
    overriding procedure Finalize (Self : not null access SQLite3_Database);
 

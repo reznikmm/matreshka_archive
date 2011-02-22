@@ -61,7 +61,7 @@ package Matreshka.Internals.SQL_Drivers is
 
    type Database_Access is access all Abstract_Database'Class;
 
-   type Abstract_Query (Database : not null access Abstract_Database'Class)
+   type Abstract_Query
      is abstract tagged limited private;
 
    type Query_Access is access all Abstract_Query'Class;
@@ -99,6 +99,10 @@ package Matreshka.Internals.SQL_Drivers is
     (Self : not null access Abstract_Database)
        return League.Strings.Universal_String is abstract;
 
+   procedure Invalidate_Queries
+    (Self : not null access Abstract_Database'Class);
+   --  Invalidates all queries.
+
    --------------------
    -- Abstract_Query --
    --------------------
@@ -107,9 +111,14 @@ package Matreshka.Internals.SQL_Drivers is
     (Self : not null access Abstract_Query)
        return League.Strings.Universal_String is abstract;
 
-   not overriding procedure Finalize
-    (Self : not null access Abstract_Query) is null;
-   --  Called before memory deallocation.
+   not overriding procedure Finalize (Self : not null access Abstract_Query);
+   --  Called before memory deallocation. At Abstract_Query level it
+   --  invalidates query object.
+
+   not overriding procedure Invalidate (Self : not null access Abstract_Query);
+   --  Invalidates object. At Abstract_Query level it detachs query object from
+   --  database object and dereference database object. Database drivers should
+   --  release other resources before call to this inherited procedure.
 
    not overriding function Prepare
     (Self  : not null access Abstract_Query;
@@ -165,18 +174,23 @@ package Matreshka.Internals.SQL_Drivers is
 
 private
 
-   type Abstract_Query (Database : not null access Abstract_Database'Class)
-     is abstract tagged limited
-   record
-      Counter  : aliased Matreshka.Internals.Atomics.Counters.Counter;
-      Next     : Query_Access;
-      Previous : Query_Access;
-   end record;
-
    type Abstract_Database is abstract tagged limited record
       Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
       Head    : Query_Access;
       Tail    : Query_Access;
    end record;
+
+   type Abstract_Query is abstract tagged limited record
+      Counter  : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Database : Database_Access;
+      Next     : Query_Access;
+      Previous : Query_Access;
+   end record;
+
+   procedure Initialize
+    (Self     : not null access Abstract_Query'Class;
+     Database : not null Database_Access);
+   --  Initializes new object of Abstract_Query type. It inserts object into
+   --  the list of query objects of database.
 
 end Matreshka.Internals.SQL_Drivers;

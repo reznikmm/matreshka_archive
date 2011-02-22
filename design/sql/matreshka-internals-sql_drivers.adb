@@ -92,6 +92,94 @@ package body Matreshka.Internals.SQL_Drivers is
       end if;
    end Dereference;
 
+   --------------
+   -- Finalize --
+   --------------
+
+   not overriding procedure Finalize (Self : not null access Abstract_Query) is
+   begin
+      Abstract_Query'Class (Self.all).Invalidate;
+   end Finalize;
+
+   ----------------
+   -- Initialize --
+   ----------------
+
+   procedure Initialize
+    (Self     : not null access Abstract_Query'Class;
+     Database : not null Database_Access) is
+   begin
+      Self.Database := Database;
+      Reference (Self.Database);
+
+      if Self.Database.Head = null then
+         --  Insert first item into the list.
+
+         Self.Previous      := null;
+         Self.Next          := null;
+         Self.Database.Head := Query_Access (Self);
+         Self.Database.Tail := Query_Access (Self);
+
+      else
+         --  Insert into the not empty list.
+
+         Self.Previous               := Self.Database.Tail;
+         Self.Next                   := null;
+         Self.Database.Tail.Next     := Query_Access (Self);
+         Self.Database.Tail          := Query_Access (Self);
+      end if;
+   end Initialize;
+
+   ----------------
+   -- Invalidate --
+   ----------------
+
+   not overriding procedure Invalidate
+    (Self : not null access Abstract_Query) is
+   begin
+      if Self.Database /= null then
+         if Self.Database.Head = Self then
+            --  Correct list's head.
+
+            Self.Database.Head := Self.Next;
+         end if;
+
+         if Self.Database.Tail = Self then
+            --  Correct list's tail.
+
+            Self.Database.Tail := Self.Previous;
+         end if;
+
+         if Self.Previous /= null then
+            --  Fix Next member of previous element.
+
+            Self.Previous.Next := Self.Next;
+         end if;
+
+         if Self.Next /= null then
+            --  Fix Previous member of next element.
+
+            Self.Next.Previous := Self.Previous;
+         end if;
+
+         --  Release database object.
+
+         Dereference (Self.Database);
+      end if;
+   end Invalidate;
+
+   ------------------------
+   -- Invalidate_Queries --
+   ------------------------
+
+   procedure Invalidate_Queries
+    (Self : not null access Abstract_Database'Class) is
+   begin
+      while Self.Head /= null loop
+         Self.Head.Invalidate;
+      end loop;
+   end Invalidate_Queries;
+
    ---------------
    -- Reference --
    ---------------

@@ -96,7 +96,9 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
             Self.Success := False;
             Self.Error :=
               String_Utilities.To_Universal_String
-               (sqlite3_errmsg16 (Self.Database.Database_Handle));
+               (sqlite3_errmsg16
+                 (Databases.SQLite3_Database'Class
+                   (Self.Database.all).Database_Handle));
       end case;
    end Call;
 
@@ -126,17 +128,34 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       return Self.Success;
    end Execute;
 
-   --------------
-   -- Finalize --
-   --------------
+   ----------------
+   -- Initialize --
+   ----------------
 
-   overriding procedure Finalize (Self : not null access SQLite3_Query) is
+   procedure Initialize
+    (Self     : not null access SQLite3_Query'Class;
+     Database : not null access Databases.SQLite3_Database'Class) is
    begin
-      if Self.Handle /= null then
-         Self.Call (sqlite3_finalize (Self.Handle));
-         Self.Handle := null;
+      SQL_Drivers.Initialize (Self, Database_Access (Database));
+   end Initialize;
+
+   ----------------
+   -- Invalidate --
+   ----------------
+
+   overriding procedure Invalidate (Self : not null access SQLite3_Query) is
+   begin
+      if Self.Database /= null then
+         if Self.Handle /= null then
+            Self.Call (sqlite3_finalize (Self.Handle));
+            Self.Handle := null;
+         end if;
       end if;
-   end Finalize;
+
+      --  Call Invalidate of parent tagged type.
+
+      Abstract_Query (Self.all).Invalidate;
+   end Invalidate;
 
    ----------
    -- Next --
@@ -178,7 +197,8 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
          Self.Call
           (sqlite3_prepare16_v2
-            (Self.Database.Database_Handle,
+            (Databases.SQLite3_Database'Class
+              (Self.Database.all).Database_Handle,
              League.Strings.Internals.Internal (Query).Value,
              Interfaces.C.int
               ((League.Strings.Internals.Internal (Query).Unused + 1) * 2),

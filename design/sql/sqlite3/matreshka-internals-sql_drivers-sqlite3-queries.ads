@@ -47,16 +47,15 @@ package Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
    pragma Preelaborate;
 
-   type SQLite3_Query
-    (Database : not null access Databases.SQLite3_Database'Class)
-       is new Abstract_Query with private;
+   type SQLite3_Query is new Abstract_Query with private;
+
+   procedure Initialize
+    (Self     : not null access SQLite3_Query'Class;
+     Database : not null access Databases.SQLite3_Database'Class);
 
 private
 
-   type SQLite3_Query
-    (Database : not null access Databases.SQLite3_Database'Class)
-       is new Abstract_Query (Database) with
-   record
+   type SQLite3_Query is new Abstract_Query with record
       Handle    : aliased sqlite3_stmt_Access;
       Has_Row   : Boolean := False;
       Skip_Step : Boolean := False;
@@ -71,7 +70,7 @@ private
    overriding function Execute
     (Self : not null access SQLite3_Query) return Boolean;
 
-   overriding procedure Finalize (Self : not null access SQLite3_Query);
+   overriding procedure Invalidate (Self : not null access SQLite3_Query);
 
    overriding function Next
     (Self : not null access SQLite3_Query) return Boolean;

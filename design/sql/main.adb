@@ -55,4 +55,6 @@ begin
                   (Q.Value (2)).Length));
       end loop;
    end;
+
+   D.Close;
 end Main;

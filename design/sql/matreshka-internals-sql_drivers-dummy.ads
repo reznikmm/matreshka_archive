@@ -87,6 +87,6 @@ package Matreshka.Internals.SQL_Drivers.Dummy is
      Index : Positive) return League.Values.Value;
 
    Empty_Database : aliased Dummy_Database;
-   Empty_Query    : aliased Dummy_Query (Empty_Database'Access);
+   Empty_Query    : aliased Dummy_Query;
 
 end Matreshka.Internals.SQL_Drivers.Dummy;

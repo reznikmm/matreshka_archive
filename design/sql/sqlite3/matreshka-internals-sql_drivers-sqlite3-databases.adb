@@ -91,6 +91,8 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Databases is
 
    overriding procedure Close (Self : not null access SQLite3_Database) is
    begin
+      Self.Invalidate_Queries;
+
       if Self.Handle /= null then
          Self.Call (sqlite3_close (Self.Handle));
          Self.Handle := null;
@@ -187,10 +189,14 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Databases is
    -----------
 
    overriding function Query
-    (Self : not null access SQLite3_Database)
-       return not null Matreshka.Internals.SQL_Drivers.Query_Access is
+    (Self : not null access SQLite3_Database) return not null Query_Access is
    begin
-      return new Queries.SQLite3_Query (Self);
+      return Aux : constant not null Query_Access
+        := new Queries.SQLite3_Query
+      do
+         Queries.Initialize
+          (Queries.SQLite3_Query'Class (Aux.all)'Access, Self);
+      end return;
    end Query;
 
 end Matreshka.Internals.SQL_Drivers.SQLite3.Databases;
