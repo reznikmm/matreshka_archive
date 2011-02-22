@@ -44,7 +44,7 @@
 with Ada.Streams;
 
 with League.Text_Codecs;
-with Matreshka.Internals.SQL_Databases.SQLite3;
+with Matreshka.Internals.SQL_Drivers.SQLite3.Databases;
 with SQL.Queries.Internals;
 
 package body SQL.Databases is
@@ -117,7 +117,7 @@ package body SQL.Databases is
       Matreshka.Internals.SQL_Drivers.Dereference (Self.Data);
 
       Self.Data :=
-        new Matreshka.Internals.SQL_Databases.SQLite3.SQLite3_Database;
+        new Matreshka.Internals.SQL_Drivers.SQLite3.Databases.SQLite3_Database;
       Self.Raise_SQL_Error
        (Self.Data.Open (League.Strings.Empty_Universal_String));
    end Open;

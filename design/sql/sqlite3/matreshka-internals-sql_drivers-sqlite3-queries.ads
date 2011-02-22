@@ -41,53 +41,47 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Interfaces.C.Pointers;
+with Matreshka.Internals.SQL_Drivers.SQLite3.Databases;
 
-with League.Strings.Internals;
-with Matreshka.Internals.Strings;
-with Matreshka.Internals.Unicode;
+package Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
-package body Matreshka.Internals.SQLite3.String_Utilities is
+   pragma Preelaborate;
 
-   use type Matreshka.Internals.Utf16.Utf16_String_Index;
+   type SQLite3_Query
+    (Database : not null access Databases.SQLite3_Database'Class)
+       is new Abstract_Query with private;
 
-   package Utf16_Code_Unit_Pointers is
-     new Interfaces.C.Pointers
-          (Matreshka.Internals.Utf16.Utf16_String_Index,
-           Matreshka.Internals.Utf16.Utf16_Code_Unit,
-           Matreshka.Internals.Utf16.Unaligned_Utf16_String,
-           0);
+private
 
-   -------------------------
-   -- To_Universal_String --
-   -------------------------
+   type SQLite3_Query
+    (Database : not null access Databases.SQLite3_Database'Class)
+       is new Abstract_Query (Database) with
+   record
+      Handle    : aliased sqlite3_stmt_Access;
+      Has_Row   : Boolean := False;
+      Skip_Step : Boolean := False;
+      Error     : League.Strings.Universal_String;
+      Success   : Boolean := True;
+   end record;
 
-   function To_Universal_String
-    (Text : Matreshka.Internals.SQLite3.Utf16_Code_Unit_Access)
-       return League.Strings.Universal_String
-   is
-      Length   : Matreshka.Internals.Utf16.Utf16_String_Index
-        := Matreshka.Internals.Utf16.Utf16_String_Index
-            (Utf16_Code_Unit_Pointers.Virtual_Length
-              (Utf16_Code_Unit_Pointers.Pointer (Text)));
-      Source   :
-        Matreshka.Internals.Utf16.Unaligned_Utf16_String (0 .. Length - 1);
-      for Source'Address use Text.all'Address;
-      pragma Import (Ada, Source);
-      Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
-      Code     : Matreshka.Internals.Unicode.Code_Point;
-      Aux      : Matreshka.Internals.Strings.Shared_String_Access
-        := Matreshka.Internals.Strings.Allocate (Length);
+   overriding function Error_Message
+    (Self : not null access SQLite3_Query)
+       return League.Strings.Universal_String;
 
-   begin
-      while Position <= Source'Last loop
-         Matreshka.Internals.Utf16.Unchecked_Next (Source, Position, Code);
-         Matreshka.Internals.Utf16.Unchecked_Store
-          (Aux.Value, Aux.Unused, Code);
-         Aux.Length := Aux.Length + 1;
-      end loop;
+   overriding function Execute
+    (Self : not null access SQLite3_Query) return Boolean;
 
-      return League.Strings.Internals.Wrap (Aux);
-   end To_Universal_String;
+   overriding procedure Finalize (Self : not null access SQLite3_Query);
 
-end Matreshka.Internals.SQLite3.String_Utilities;
+   overriding function Next
+    (Self : not null access SQLite3_Query) return Boolean;
+
+   overriding function Prepare
+    (Self  : not null access SQLite3_Query;
+     Query : League.Strings.Universal_String) return Boolean;
+
+   overriding function Value
+    (Self  : not null access SQLite3_Query;
+     Index : Positive) return League.Values.Value;
+
+end Matreshka.Internals.SQL_Drivers.SQLite3.Queries;

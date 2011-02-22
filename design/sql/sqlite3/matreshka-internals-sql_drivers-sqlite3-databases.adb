@@ -44,15 +44,13 @@
 with Interfaces.C;
 
 with League.Strings.Internals;
-with Matreshka.Internals.SQL_Queries.SQLite3;
-with Matreshka.Internals.SQLite3.String_Utilities;
+with Matreshka.Internals.SQL_Drivers.SQLite3.Queries;
+with Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities;
 with Matreshka.Internals.Utf16;
-with SQL;
 
-package body Matreshka.Internals.SQL_Databases.SQLite3 is
+package body Matreshka.Internals.SQL_Drivers.SQLite3.Databases is
 
    use type Interfaces.C.int;
-   use type Matreshka.Internals.SQLite3.sqlite3_Access;
 
 --   procedure puts (Item : String);
 --   pragma Import (C, puts);
@@ -76,14 +74,14 @@ package body Matreshka.Internals.SQL_Databases.SQLite3 is
       Self.Error.Clear;
 
       case Code is
-         when Matreshka.Internals.SQLite3.SQLITE_OK =>
+         when SQLITE_OK =>
             null;
 
          when others =>
             Self.Success := False;
             Self.Error :=
-              Matreshka.Internals.SQLite3.String_Utilities.To_Universal_String
-               (Matreshka.Internals.SQLite3.sqlite3_errmsg16 (Self.Handle));
+              String_Utilities.To_Universal_String
+               (sqlite3_errmsg16 (Self.Handle));
       end case;
    end Call;
 
@@ -94,7 +92,7 @@ package body Matreshka.Internals.SQL_Databases.SQLite3 is
    overriding procedure Close (Self : not null access SQLite3_Database) is
    begin
       if Self.Handle /= null then
-         Self.Call (Matreshka.Internals.SQLite3.sqlite3_close (Self.Handle));
+         Self.Call (sqlite3_close (Self.Handle));
          Self.Handle := null;
       end if;
    end Close;
@@ -132,7 +130,7 @@ package body Matreshka.Internals.SQL_Databases.SQLite3 is
 
    function Database_Handle
     (Self : not null access constant SQLite3_Database'Class)
-       return Matreshka.Internals.SQLite3.sqlite3_Access is
+       return sqlite3_Access is
    begin
       return Self.Handle;
    end Database_Handle;
@@ -173,7 +171,7 @@ package body Matreshka.Internals.SQL_Databases.SQLite3 is
    begin
       if Self.Handle = null then
          Self.Call
-          (Matreshka.Internals.SQLite3.sqlite3_open16
+          (sqlite3_open16
             (League.Strings.Internals.Internal (Name).Value,
              Self.Handle'Unchecked_Access));
 
@@ -192,7 +190,7 @@ package body Matreshka.Internals.SQL_Databases.SQLite3 is
     (Self : not null access SQLite3_Database)
        return not null Matreshka.Internals.SQL_Drivers.Query_Access is
    begin
-      return new Matreshka.Internals.SQL_Queries.SQLite3.SQLite3_Query (Self);
+      return new Queries.SQLite3_Query (Self);
    end Query;
 
-end Matreshka.Internals.SQL_Databases.SQLite3;
+end Matreshka.Internals.SQL_Drivers.SQLite3.Databases;

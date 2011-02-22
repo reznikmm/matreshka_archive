@@ -41,12 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Implementation of SQL_Database type for SQLite3 database.
+--  Implementation of Abstract_Database type for SQLite3 database.
 ------------------------------------------------------------------------------
-private with League.Strings;
-with Matreshka.Internals.SQLite3;
 
-package Matreshka.Internals.SQL_Databases.SQLite3 is
+package Matreshka.Internals.SQL_Drivers.SQLite3.Databases is
 
    pragma Preelaborate;
 
@@ -58,14 +56,14 @@ package Matreshka.Internals.SQL_Databases.SQLite3 is
 
    function Database_Handle
     (Self : not null access constant SQLite3_Database'Class)
-       return Matreshka.Internals.SQLite3.sqlite3_Access;
+       return sqlite3_Access;
    pragma Inline (Database_Handle);
    --  Returns database handle for SQLite3 library API.
 
 private
 
    type SQLite3_Database is new Abstract_Database with record
-      Handle  : aliased Matreshka.Internals.SQLite3.sqlite3_Access;
+      Handle  : aliased sqlite3_Access;
       Error   : League.Strings.Universal_String;
       Success : Boolean := True;
    end record;
@@ -88,4 +86,4 @@ private
     (Self    : not null access SQLite3_Database;
      Options : League.Strings.Universal_String) return Boolean;
 
-end Matreshka.Internals.SQL_Databases.SQLite3;
+end Matreshka.Internals.SQL_Drivers.SQLite3.Databases;

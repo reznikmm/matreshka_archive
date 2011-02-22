@@ -47,7 +47,7 @@ with Interfaces.C;
 
 with Matreshka.Internals.Utf16;
 
-package Matreshka.Internals.SQLite3 is
+package Matreshka.Internals.SQL_Drivers.SQLite3 is
 
    pragma Preelaborate;
 
@@ -157,4 +157,4 @@ private
 
    type sqlite3_stmt is null record;
 
-end Matreshka.Internals.SQLite3;
+end Matreshka.Internals.SQL_Drivers.SQLite3;

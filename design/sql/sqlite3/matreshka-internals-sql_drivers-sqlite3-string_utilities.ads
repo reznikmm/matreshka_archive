@@ -41,50 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with League.Strings;
-private with League.Values;
-private with Matreshka.Internals.SQLite3;
-with Matreshka.Internals.SQL_Databases.SQLite3;
+--  This package provides utilities to interface Ada and C.
+------------------------------------------------------------------------------
 
-package Matreshka.Internals.SQL_Queries.SQLite3 is
+package Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities is
 
    pragma Preelaborate;
 
-   type SQLite3_Query
-    (Database : not null access SQL_Databases.SQLite3.SQLite3_Database'Class)
-       is new Abstract_Query with private;
+   function To_Universal_String
+    (Text : Utf16_Code_Unit_Access) return League.Strings.Universal_String;
+   --  Converts null-terminated text segment starting at specified position
+   --  into Universal_String.
 
-private
-
-   type SQLite3_Query
-    (Database : not null access SQL_Databases.SQLite3.SQLite3_Database'Class)
-       is new Abstract_Query (Database) with
-   record
-      Handle    : aliased Matreshka.Internals.SQLite3.sqlite3_stmt_Access;
-      Has_Row   : Boolean := False;
-      Skip_Step : Boolean := False;
-      Error     : League.Strings.Universal_String;
-      Success   : Boolean := True;
-   end record;
-
-   overriding function Error_Message
-    (Self : not null access SQLite3_Query)
-       return League.Strings.Universal_String;
-
-   overriding function Execute
-    (Self : not null access SQLite3_Query) return Boolean;
-
-   overriding procedure Finalize (Self : not null access SQLite3_Query);
-
-   overriding function Next
-    (Self : not null access SQLite3_Query) return Boolean;
-
-   overriding function Prepare
-    (Self  : not null access SQLite3_Query;
-     Query : League.Strings.Universal_String) return Boolean;
-
-   overriding function Value
-    (Self  : not null access SQLite3_Query;
-     Index : Positive) return League.Values.Value;
-
-end Matreshka.Internals.SQL_Queries.SQLite3;
+end Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities;
