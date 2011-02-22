@@ -155,7 +155,8 @@ package body SQL.Queries is
    -------------
 
    function Prepare
-    (Self  : in out SQL_Query'Class;
+--    (Self  : in out SQL_Query'Class;
+    (Self  : not null access SQL_Query'Class;
      Query : League.Strings.Universal_String) return Boolean is
    begin
       return Self.Data.Prepare (Query);

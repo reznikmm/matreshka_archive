@@ -68,12 +68,14 @@ package SQL.Databases is
     (Self : SQL_Database'Class) return League.Strings.Universal_String;
 
    function Query
-    (Self : in out SQL_Database'Class) return SQL.Queries.SQL_Query;
+--    (Self : in out SQL_Database'Class) return SQL.Queries.SQL_Query;
+    (Self : not null access SQL_Database'Class) return SQL.Queries.SQL_Query;
    --  Creates SQL_Query object to execute statements in the specified
    --  database.
 
    function Query
-    (Self  : in out SQL_Database'Class;
+--    (Self  : in out SQL_Database'Class;
+    (Self  : not null access SQL_Database'Class;
      Query : League.Strings.Universal_String) return SQL.Queries.SQL_Query;
    --  Creates SQL_Query object to execute statements in the specified
    --  database and prepare specified statement for execution.
