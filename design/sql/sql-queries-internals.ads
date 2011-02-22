@@ -43,11 +43,9 @@
 ------------------------------------------------------------------------------
 --  This package for internal use only.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SQL_Queries;
+with Matreshka.Internals.SQL_Drivers;
 
 package SQL.Queries.Internals is
-
---   pragma Preelaborate;
 
 --   function Internal
 --    (Self : SQL_Query'Class)
@@ -56,7 +54,7 @@ package SQL.Queries.Internals is
    --  Returns internal object. Reference counter is untouched.
 
    function Wrap
-    (Data : not null Matreshka.Internals.SQL_Queries.Query_Access)
+    (Data : not null Matreshka.Internals.SQL_Drivers.Query_Access)
        return SQL_Query;
    --  Wrap specified internal object into user's object. Reference counter is
    --  untouched.

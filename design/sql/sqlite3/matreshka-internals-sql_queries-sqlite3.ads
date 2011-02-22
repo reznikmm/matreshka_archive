@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with League.Strings;
+private with League.Values;
 private with Matreshka.Internals.SQLite3;
 with Matreshka.Internals.SQL_Databases.SQLite3;
 

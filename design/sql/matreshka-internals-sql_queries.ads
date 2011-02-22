@@ -49,71 +49,12 @@
 --  reports failures of operations in specified way and be ready to provide
 --  diagnosis message in Error_Message function.
 ------------------------------------------------------------------------------
-with League.Strings;
-with League.Values;
-private with Matreshka.Internals.Atomics.Counters;
-limited with Matreshka.Internals.SQL_Databases;
+with Matreshka.Internals.SQL_Drivers;
 
 package Matreshka.Internals.SQL_Queries is
 
    pragma Preelaborate;
 
-   type Abstract_Query
-         (Database : not null access SQL_Databases.Abstract_Database'Class)
-     is abstract tagged limited private;
-
-   not overriding function Error_Message
-    (Self : not null access Abstract_Query)
-       return League.Strings.Universal_String is abstract;
-
-   not overriding procedure Finalize
-    (Self : not null access Abstract_Query) is null;
-   --  Called before memory deallocation.
-
-   not overriding function Prepare
-    (Self  : not null access Abstract_Query;
-     Query : League.Strings.Universal_String) return Boolean is abstract;
-   --  Prepares the SQL query query for execution. Returns True if the query is
-   --  prepared successfully; otherwise returns False.
-   --
-   --  The query may contain placeholders for binding values. Both Oracle style
-   --  colon-name (e.g., :surname), and ODBC style (?) placeholders are
-   --  supported; but they cannot be mixed in the same query.
-
-   not overriding function Execute
-    (Self : not null access Abstract_Query) return Boolean is abstract;
-   --  Executes a previously prepared SQL query. Returns True if the query
-   --  executed successfully; otherwise returns False.
-   --
-   --  After the query is executed, the query is positioned on an invalid
-   --  record and must be navigated to a valid record before data values can be
-   --  retrieved.
-   --
-   --  Note that the last error for this query is reset when Execute is called.
-
-   not overriding function Next
-    (Self : not null access Abstract_Query) return Boolean is abstract;
-
-   not overriding function Value
-    (Self  : not null access Abstract_Query;
-     Index : Positive) return League.Values.Value is abstract;
-
-   type Query_Access is access all Abstract_Query'Class;
-
-   procedure Reference (Self : not null Query_Access);
-   pragma Inline (Reference);
-   --  Increments internal reference counter.
-
-   procedure Dereference (Self : in out Query_Access);
-   --  Decrements internal reference counter and deallocates object when there
-   --  are no reference to it any more. Sets Self to null always.
-
-private
-
-   type Abstract_Query
-         (Database : not null access SQL_Databases.Abstract_Database'Class)
-     is abstract tagged limited record
-      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
-   end record;
+   subtype Abstract_Query is Matreshka.Internals.SQL_Drivers.Abstract_Query;
 
 end Matreshka.Internals.SQL_Queries;

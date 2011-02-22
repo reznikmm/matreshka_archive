@@ -80,7 +80,7 @@ private
 
    overriding function Query
     (Self : not null access SQLite3_Database)
-       return not null Matreshka.Internals.SQL_Queries.Query_Access;
+       return not null Matreshka.Internals.SQL_Drivers.Query_Access;
 
    overriding procedure Finalize (Self : not null access SQLite3_Database);
 

@@ -41,46 +41,92 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.SQL_Databases.Dummy;
+package body Matreshka.Internals.SQL_Drivers.Dummy is
 
-package body Matreshka.Internals.SQL_Databases is
+   -------------------
+   -- Error_Message --
+   -------------------
 
-   -----------------
-   -- Dereference --
-   -----------------
-
-   procedure Dereference (Self : in out Database_Access) is
-
-      procedure Free is
-        new Ada.Unchecked_Deallocation
-             (Abstract_Database'Class, Database_Access);
-
+   overriding function Error_Message
+    (Self : not null access Dummy_Database)
+       return League.Strings.Universal_String is
    begin
-      if Self /= Matreshka.Internals.SQL_Databases.Dummy.Empty_Database'Access
-        and then Matreshka.Internals.Atomics.Counters.Decrement
-                  (Self.Counter'Access)
-      then
-         Self.Finalize;
-         Free (Self);
+      return League.Strings.Empty_Universal_String;
+   end Error_Message;
 
-      else
-         Self := null;
-      end if;
-   end Dereference;
+   -------------------
+   -- Error_Message --
+   -------------------
 
-   ---------------
-   -- Reference --
-   ---------------
-
-   procedure Reference (Self : not null Database_Access) is
+   overriding function Error_Message
+    (Self : not null access Dummy_Query)
+       return League.Strings.Universal_String is
    begin
-      if Self
-           /= Matreshka.Internals.SQL_Databases.Dummy.Empty_Database'Access
-      then
-         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
-      end if;
-   end Reference;
+      return League.Strings.Empty_Universal_String;
+   end Error_Message;
 
-end Matreshka.Internals.SQL_Databases;
+   -------------
+   -- Execute --
+   -------------
+
+   overriding function Execute
+    (Self : not null access Dummy_Query) return Boolean is
+   begin
+      return False;
+   end Execute;
+
+   ----------
+   -- Next --
+   ----------
+
+   overriding function Next
+    (Self : not null access Dummy_Query) return Boolean is
+   begin
+      return False;
+   end Next;
+
+   ----------
+   -- Open --
+   ----------
+
+   overriding function Open
+    (Self    : not null access Dummy_Database;
+     Options : League.Strings.Universal_String) return Boolean is
+   begin
+      return False;
+   end Open;
+
+   -------------
+   -- Prepare --
+   -------------
+
+   overriding function Prepare
+    (Self  : not null access Dummy_Query;
+     Query : League.Strings.Universal_String) return Boolean is
+   begin
+      return False;
+   end Prepare;
+
+   -----------
+   -- Query --
+   -----------
+
+   overriding function Query
+    (Self : not null access Dummy_Database) return not null Query_Access is
+   begin
+      return Empty_Query'Access;
+   end Query;
+
+   -----------
+   -- Value --
+   -----------
+
+   overriding function Value
+    (Self  : not null access Dummy_Query;
+     Index : Positive) return League.Values.Value is
+   begin
+      return V : League.Values.Value;
+   end Value;
+
+end Matreshka.Internals.SQL_Drivers.Dummy;

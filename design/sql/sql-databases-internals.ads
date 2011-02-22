@@ -43,15 +43,13 @@
 ------------------------------------------------------------------------------
 --  This package for internal use only.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SQL_Databases;
+with Matreshka.Internals.SQL_Drivers;
 
 package SQL.Databases.Internals is
 
---   pragma Preelaborate;
-
    function Internal
     (Self : SQL_Database'Class)
-       return Matreshka.Internals.SQL_Databases.Database_Access;
+       return Matreshka.Internals.SQL_Drivers.Database_Access;
    pragma Inline (Internal);
    --  Returns internal object. Reference counter is untouched.
 

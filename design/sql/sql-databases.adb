@@ -98,13 +98,13 @@ package body SQL.Databases is
    --------------
 
    overriding procedure Finalize (Self : in out SQL_Database) is
-      use type Matreshka.Internals.SQL_Databases.Database_Access;
+      use type Matreshka.Internals.SQL_Drivers.Database_Access;
 
    begin
       --  Finalize must be idempotent according to language rules.
 
       if Self.Data /= null then
-         Matreshka.Internals.SQL_Databases.Dereference (Self.Data);
+         Matreshka.Internals.SQL_Drivers.Dereference (Self.Data);
       end if;
    end Finalize;
 
@@ -114,7 +114,7 @@ package body SQL.Databases is
 
    procedure Open (Self : in out SQL_Database'Class) is
    begin
-      Matreshka.Internals.SQL_Databases.Dereference (Self.Data);
+      Matreshka.Internals.SQL_Drivers.Dereference (Self.Data);
 
       Self.Data :=
         new Matreshka.Internals.SQL_Databases.SQLite3.SQLite3_Database;

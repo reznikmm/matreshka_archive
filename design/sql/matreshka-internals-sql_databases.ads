@@ -41,61 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Matreshka.Internals.Atomics.Counters;
-
-with League.Strings;
-with Matreshka.Internals.SQL_Queries;
+with Matreshka.Internals.SQL_Drivers;
 
 package Matreshka.Internals.SQL_Databases is
 
    pragma Preelaborate;
 
-   type Abstract_Database is abstract tagged limited private;
-
-   not overriding procedure Finalize
-    (Self : not null access Abstract_Database) is null;
-   --  Release all used resources.
-
-   not overriding function Open
-    (Self    : not null access Abstract_Database;
-     Options : League.Strings.Universal_String) return Boolean is abstract;
-   --  Opens database connection using specified options.
-   --
-   --  The function must return True on success and False on failure.
-
-   not overriding procedure Close
-    (Self : not null access Abstract_Database) is abstract;
-   --  Closes the database connection, freeing any resources acquired, and
-   --  invalidating any existing QSqlQuery objects that are used with the
-   --  database.
-
-   not overriding procedure Commit
-    (Self : not null access Abstract_Database) is abstract;
-   --  Commits active transaction.
-
-   not overriding function Query
-    (Self : not null access Abstract_Database)
-       return not null Matreshka.Internals.SQL_Queries.Query_Access
-         is abstract;
-
-   not overriding function Error_Message
-    (Self : not null access Abstract_Database)
-       return League.Strings.Universal_String is abstract;
-
-   type Database_Access is access all Abstract_Database'Class;
-
-   procedure Reference (Self : not null Database_Access);
-   pragma Inline (Reference);
-   --  Increments internal reference counter.
-
-   procedure Dereference (Self : in out Database_Access);
-   --  Decrements internal reference counter and deallocates object when there
-   --  are no reference to it any more. Sets Self to null always.
-
-private
-
-   type Abstract_Database is abstract tagged limited record
-      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
-   end record;
+   subtype Abstract_Database is
+     Matreshka.Internals.SQL_Drivers.Abstract_Database;
 
 end Matreshka.Internals.SQL_Databases;

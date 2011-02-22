@@ -41,41 +41,52 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SQL_Queries.Dummy;
+--  This package provides dummy implementation of Abstract_Database and
+--  Abstract_Query to be used as empty value.
+------------------------------------------------------------------------------
 
-package body Matreshka.Internals.SQL_Databases.Dummy is
+package Matreshka.Internals.SQL_Drivers.Dummy is
 
-   -------------------
-   -- Error_Message --
-   -------------------
+   pragma Preelaborate;
 
-   overriding function Error_Message
-    (Self : not null access Dummy_Database)
-       return League.Strings.Universal_String is
-   begin
-      return League.Strings.Empty_Universal_String;
-   end Error_Message;
-
-   ----------
-   -- Open --
-   ----------
+   type Dummy_Database is new Abstract_Database with null record;
 
    overriding function Open
     (Self    : not null access Dummy_Database;
-     Options : League.Strings.Universal_String) return Boolean is
-   begin
-      return False;
-   end Open;
+     Options : League.Strings.Universal_String) return Boolean;
 
-   -----------
-   -- Query --
-   -----------
+   overriding procedure Close (Self : not null access Dummy_Database) is null;
+
+   overriding procedure Commit (Self : not null access Dummy_Database) is null;
+
+   overriding function Error_Message
+    (Self : not null access Dummy_Database)
+       return League.Strings.Universal_String;
 
    overriding function Query
-    (Self : not null access Dummy_Database)
-       return not null Matreshka.Internals.SQL_Queries.Query_Access is
-   begin
-      return Matreshka.Internals.SQL_Queries.Dummy.Empty_Query'Access;
-   end Query;
+    (Self : not null access Dummy_Database) return not null Query_Access;
 
-end Matreshka.Internals.SQL_Databases.Dummy;
+   type Dummy_Query is new Abstract_Query with null record;
+
+   overriding function Error_Message
+    (Self : not null access Dummy_Query)
+       return League.Strings.Universal_String;
+
+   overriding function Execute
+    (Self : not null access Dummy_Query) return Boolean;
+
+   overriding function Prepare
+    (Self  : not null access Dummy_Query;
+     Query : League.Strings.Universal_String) return Boolean;
+
+   overriding function Next
+    (Self : not null access Dummy_Query) return Boolean;
+
+   overriding function Value
+    (Self  : not null access Dummy_Query;
+     Index : Positive) return League.Values.Value;
+
+   Empty_Database : aliased Dummy_Database;
+   Empty_Query    : aliased Dummy_Query (Empty_Database'Access);
+
+end Matreshka.Internals.SQL_Drivers.Dummy;

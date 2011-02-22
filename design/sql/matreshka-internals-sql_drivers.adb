@@ -41,33 +41,77 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SQL_Databases.Dummy;
+with Ada.Unchecked_Deallocation;
 
-package Matreshka.Internals.SQL_Queries.Dummy is
+with Matreshka.Internals.SQL_Drivers.Dummy;
 
-   pragma Preelaborate;
+package body Matreshka.Internals.SQL_Drivers is
 
-   type Dummy_Query is new Abstract_Query with null record;
+   -----------------
+   -- Dereference --
+   -----------------
 
-   overriding function Error_Message
-    (Self : not null access Dummy_Query)
-       return League.Strings.Universal_String;
+   procedure Dereference (Self : in out Database_Access) is
 
-   overriding function Execute
-    (Self : not null access Dummy_Query) return Boolean;
+      procedure Free is
+        new Ada.Unchecked_Deallocation
+             (Abstract_Database'Class, Database_Access);
 
-   overriding function Prepare
-    (Self  : not null access Dummy_Query;
-     Query : League.Strings.Universal_String) return Boolean;
+   begin
+      if Self /= Dummy.Empty_Database'Access
+        and then Matreshka.Internals.Atomics.Counters.Decrement
+                  (Self.Counter'Access)
+      then
+         Self.Finalize;
+         Free (Self);
 
-   overriding function Next
-    (Self : not null access Dummy_Query) return Boolean;
+      else
+         Self := null;
+      end if;
+   end Dereference;
 
-   overriding function Value
-    (Self  : not null access Dummy_Query;
-     Index : Positive) return League.Values.Value;
+   -----------------
+   -- Dereference --
+   -----------------
 
-   Empty_Query : aliased
-     Dummy_Query (SQL_Databases.Dummy.Empty_Database'Access);
+   procedure Dereference (Self : in out Query_Access) is
 
-end Matreshka.Internals.SQL_Queries.Dummy;
+      procedure Free is
+        new Ada.Unchecked_Deallocation (Abstract_Query'Class, Query_Access);
+
+   begin
+      if Self /= Dummy.Empty_Query'Access
+        and then Matreshka.Internals.Atomics.Counters.Decrement
+                  (Self.Counter'Access)
+      then
+         Self.Finalize;
+         Free (Self);
+
+      else
+         Self := null;
+      end if;
+   end Dereference;
+
+   ---------------
+   -- Reference --
+   ---------------
+
+   procedure Reference (Self : not null Database_Access) is
+   begin
+      if Self /= Dummy.Empty_Database'Access then
+         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+      end if;
+   end Reference;
+
+   ---------------
+   -- Reference --
+   ---------------
+
+   procedure Reference (Self : not null Query_Access) is
+   begin
+      if Self /= Dummy.Empty_Query'Access then
+         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+      end if;
+   end Reference;
+
+end Matreshka.Internals.SQL_Drivers;

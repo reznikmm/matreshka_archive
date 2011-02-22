@@ -61,7 +61,7 @@ package body SQL.Queries is
 
    overriding procedure Adjust (Self : in out SQL_Query) is
    begin
-      Matreshka.Internals.SQL_Queries.Reference (Self.Data);
+      Matreshka.Internals.SQL_Drivers.Reference (Self.Data);
    end Adjust;
 
    ----------------
@@ -121,13 +121,13 @@ package body SQL.Queries is
    --------------
 
    overriding procedure Finalize (Self : in out SQL_Query) is
-      use type Matreshka.Internals.SQL_Queries.Query_Access;
+      use type Matreshka.Internals.SQL_Drivers.Query_Access;
 
    begin
       --  Finalize must be idempotent according to language rules.
 
       if Self.Data /= null then
-         Matreshka.Internals.SQL_Queries.Dereference (Self.Data);
+         Matreshka.Internals.SQL_Drivers.Dereference (Self.Data);
       end if;
    end Finalize;
 

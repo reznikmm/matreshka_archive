@@ -107,7 +107,7 @@ package body Matreshka.Internals.SQL_Databases.SQLite3 is
    begin
       if Self.Handle /= null then
          declare
-            Query : Matreshka.Internals.SQL_Queries.Query_Access := Self.Query;
+            Query : Matreshka.Internals.SQL_Drivers.Query_Access := Self.Query;
 
          begin
             if not Query.Prepare
@@ -121,7 +121,7 @@ package body Matreshka.Internals.SQL_Databases.SQLite3 is
                Self.Error := Query.Error_Message;
             end if;
 
-            Matreshka.Internals.SQL_Queries.Dereference (Query);
+            Matreshka.Internals.SQL_Drivers.Dereference (Query);
          end;
       end if;
    end Commit;
@@ -190,7 +190,7 @@ package body Matreshka.Internals.SQL_Databases.SQLite3 is
 
    overriding function Query
     (Self : not null access SQLite3_Database)
-       return not null Matreshka.Internals.SQL_Queries.Query_Access is
+       return not null Matreshka.Internals.SQL_Drivers.Query_Access is
    begin
       return new Matreshka.Internals.SQL_Queries.SQLite3.SQLite3_Query (Self);
    end Query;

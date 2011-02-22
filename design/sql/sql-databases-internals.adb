@@ -50,7 +50,7 @@ package body SQL.Databases.Internals is
 
    function Internal
     (Self : SQL_Database'Class)
-       return Matreshka.Internals.SQL_Databases.Database_Access is
+       return Matreshka.Internals.SQL_Drivers.Database_Access is
    begin
       return Self.Data;
    end Internal;

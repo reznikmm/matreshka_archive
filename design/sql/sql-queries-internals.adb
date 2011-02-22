@@ -60,7 +60,7 @@ package body SQL.Queries.Internals is
    ----------
 
    function Wrap
-    (Data : not null Matreshka.Internals.SQL_Queries.Query_Access)
+    (Data : not null Matreshka.Internals.SQL_Drivers.Query_Access)
        return SQL_Query is
    begin
       return (Ada.Finalization.Controlled with Data => Data);

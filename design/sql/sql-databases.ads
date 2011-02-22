@@ -44,12 +44,10 @@
 private with Ada.Finalization;
 
 with League.Strings;
-private with Matreshka.Internals.SQL_Databases.Dummy;
+private with Matreshka.Internals.SQL_Drivers.Dummy;
 with SQL.Queries;
 
 package SQL.Databases is
-
---   pragma Preelaborate;
 
    type SQL_Database is tagged limited private;
 
@@ -83,8 +81,8 @@ package SQL.Databases is
 private
 
    type SQL_Database is new Ada.Finalization.Limited_Controlled with record
-      Data : Matreshka.Internals.SQL_Databases.Database_Access
-        := Matreshka.Internals.SQL_Databases.Dummy.Empty_Database'Access;
+      Data : Matreshka.Internals.SQL_Drivers.Database_Access
+        := Matreshka.Internals.SQL_Drivers.Dummy.Empty_Database'Access;
    end record;
 
 --   overriding procedure Adjust (Self : in out SQL_Database);

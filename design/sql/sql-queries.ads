@@ -45,11 +45,9 @@ private with Ada.Finalization;
 
 with League.Strings;
 with League.Values;
-private with Matreshka.Internals.SQL_Queries.Dummy;
+private with Matreshka.Internals.SQL_Drivers.Dummy;
 
 package SQL.Queries is
-
---   pragma Preelaborate;
 
    type Parameter_Directions is
     (In_Parameter, Out_Parameter, In_Out_Parameter);
@@ -131,8 +129,8 @@ package SQL.Queries is
 private
 
    type SQL_Query is new Ada.Finalization.Controlled with record
-      Data : Matreshka.Internals.SQL_Queries.Query_Access
-        := Matreshka.Internals.SQL_Queries.Dummy.Empty_Query'Access;
+      Data : Matreshka.Internals.SQL_Drivers.Query_Access
+        := Matreshka.Internals.SQL_Drivers.Dummy.Empty_Query'Access;
    end record;
 
    overriding procedure Adjust (Self : in out SQL_Query);
