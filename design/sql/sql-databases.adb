@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.SQL_Databases.SQLite3;
+with SQL.Queries.Internals;
 
 package body SQL.Databases is
 
@@ -58,7 +59,7 @@ package body SQL.Databases is
    -- Close --
    -----------
 
-   procedure Close (Self : in out SQL_Database) is
+   procedure Close (Self : in out SQL_Database'Class) is
    begin
       null;
    end Close;
@@ -67,7 +68,7 @@ package body SQL.Databases is
    -- Commit --
    ------------
 
-   procedure Commit (Self : in out SQL_Database) is
+   procedure Commit (Self : in out SQL_Database'Class) is
    begin
       Self.Data.Commit;
    end Commit;
@@ -91,7 +92,7 @@ package body SQL.Databases is
    -- Open --
    ----------
 
-   procedure Open (Self : in out SQL_Database) is
+   procedure Open (Self : in out SQL_Database'Class) is
    begin
       Matreshka.Internals.SQL_Databases.Dereference (Self.Data);
 
@@ -100,11 +101,34 @@ package body SQL.Databases is
       Self.Data.Open;
    end Open;
 
+   -----------
+   -- Query --
+   -----------
+
+   function Query
+    (Self : in out SQL_Database'Class) return SQL.Queries.SQL_Query is
+   begin
+      return SQL.Queries.Internals.Wrap (Self.Data.Query);
+   end Query;
+
+   -----------
+   -- Query --
+   -----------
+
+   function Query
+    (Self  : in out SQL_Database'Class;
+     Query : League.Strings.Universal_String) return SQL.Queries.SQL_Query is
+   begin
+      return Aux : SQL.Queries.SQL_Query := Self.Query do
+         Aux.Prepare (Query);
+      end return;
+   end Query;
+
    --------------
    -- Rollback --
    --------------
 
-   procedure Rollback (Self : in out SQL_Database) is
+   procedure Rollback (Self : in out SQL_Database'Class) is
    begin
       null;
    end Rollback;
@@ -113,7 +137,7 @@ package body SQL.Databases is
    -- Transaction --
    -----------------
 
-   procedure Transaction (Self : in out SQL_Database) is
+   procedure Transaction (Self : in out SQL_Database'Class) is
    begin
       null;
    end Transaction;

@@ -46,7 +46,6 @@ private with Ada.Finalization;
 with League.Strings;
 with League.Values;
 private with Matreshka.Internals.SQL_Queries.Dummy;
-with SQL.Databases;
 
 package SQL.Queries is
 
@@ -55,13 +54,7 @@ package SQL.Queries is
    type Parameter_Directions is
     (In_Parameter, Out_Parameter, In_Out_Parameter);
 
-   type SQL_Query (<>) is tagged private;
-
-   function Create (Database : SQL.Databases.SQL_Database) return SQL_Query;
-
-   function Create
-    (Database : SQL.Databases.SQL_Database;
-     Query    : League.Strings.Universal_String) return SQL_Query;
+   type SQL_Query is tagged private;
 
    procedure Bind_Value
     (Self      : in out SQL_Query'Class;

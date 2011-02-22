@@ -67,7 +67,7 @@ package Matreshka.Internals.SQL_Databases is
     (Self : not null access Abstract_Database) is abstract;
    --  Commits active transaction.
 
-   not overriding function Create_Query
+   not overriding function Query
     (Self : not null access Abstract_Database)
        return not null Matreshka.Internals.SQL_Queries.Query_Access
          is abstract;

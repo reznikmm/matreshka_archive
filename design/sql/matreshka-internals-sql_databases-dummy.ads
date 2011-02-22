@@ -57,7 +57,7 @@ package Matreshka.Internals.SQL_Databases.Dummy is
 
    overriding procedure Commit (Self : not null access Dummy_Database) is null;
 
-   overriding function Create_Query
+   overriding function Query
     (Self : not null access Dummy_Database)
        return not null Matreshka.Internals.SQL_Queries.Query_Access;
 

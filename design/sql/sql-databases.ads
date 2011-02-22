@@ -43,7 +43,9 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
+with League.Strings;
 private with Matreshka.Internals.SQL_Databases.Dummy;
+with SQL.Queries;
 
 package SQL.Databases is
 
@@ -51,15 +53,26 @@ package SQL.Databases is
 
    type SQL_Database is tagged limited private;
 
-   procedure Open (Self : in out SQL_Database);
+   procedure Open (Self : in out SQL_Database'Class);
 
-   procedure Close (Self : in out SQL_Database);
+   procedure Close (Self : in out SQL_Database'Class);
 
-   procedure Commit (Self : in out SQL_Database);
+   procedure Commit (Self : in out SQL_Database'Class);
 
-   procedure Rollback (Self : in out SQL_Database);
+   procedure Rollback (Self : in out SQL_Database'Class);
 
-   procedure Transaction (Self : in out SQL_Database);
+   procedure Transaction (Self : in out SQL_Database'Class);
+
+   function Query
+    (Self : in out SQL_Database'Class) return SQL.Queries.SQL_Query;
+   --  Creates SQL_Query object to execute statements in the specified
+   --  database.
+
+   function Query
+    (Self  : in out SQL_Database'Class;
+     Query : League.Strings.Universal_String) return SQL.Queries.SQL_Query;
+   --  Creates SQL_Query object to execute statements in the specified
+   --  database and prepare specified statement for execution.
 
 private
 

@@ -41,104 +41,29 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Interfaces.C;
 
-with League.Strings.Internals;
-with Matreshka.Internals.SQL_Queries.SQLite3;
-with Matreshka.Internals.Utf16;
-with SQL;
-
-package body Matreshka.Internals.SQL_Databases.SQLite3 is
-
-   use type Interfaces.C.int;
-   use type Matreshka.Internals.SQLite3.sqlite3_Access;
-
---   procedure puts (Item : String);
---   pragma Import (C, puts);
-
-   -----------
-   -- Close --
-   -----------
-
-   overriding procedure Close (Self : not null access SQLite3_Database) is
-   begin
-      if Self.Handle /= null then
-         if Matreshka.Internals.SQLite3.sqlite3_close (Self.Handle) /= 0 then
-            raise SQL.SQL_Error;
-         end if;
-
-         Self.Handle := null;
-      end if;
-   end Close;
-
-   ------------
-   -- Commit --
-   ------------
-
-   overriding procedure Commit (Self : not null access SQLite3_Database) is
-   begin
-      if Self.Handle /= null then
-         declare
-            Query : Matreshka.Internals.SQL_Queries.Query_Access := Self.Query;
-
-         begin
-            Query.Prepare (League.Strings.To_Universal_String ("COMMIT"));
-            Query.Execute;
-            Matreshka.Internals.SQL_Queries.Dereference (Query);
-         end;
-      end if;
-   end Commit;
-
-   ---------------------
-   -- Database_Handle --
-   ---------------------
-
-   function Database_Handle
-    (Self : not null access constant SQLite3_Database'Class)
-       return Matreshka.Internals.SQLite3.sqlite3_Access is
-   begin
-      return Self.Handle;
-   end Database_Handle;
+package body SQL.Queries.Internals is
 
    --------------
-   -- Finalize --
+   -- Internal --
    --------------
 
-   overriding procedure Finalize (Self : not null access SQLite3_Database) is
-   begin
-      if Self.Handle /= null then
-         Self.Close;
-      end if;
-   end Finalize;
+--   function Internal
+--    (Self : SQL_Database'Class)
+--       return Matreshka.Internals.SQL_Databases.Database_Access is
+--   begin
+--      return Self.Data;
+--   end Internal;
 
    ----------
-   -- Open --
+   -- Wrap --
    ----------
 
-   overriding procedure Open (Self : not null access SQLite3_Database) is
-      Name : constant League.Strings.Universal_String
-        := League.Strings.To_Universal_String ("test.db");
-
+   function Wrap
+    (Data : not null Matreshka.Internals.SQL_Queries.Query_Access)
+       return SQL_Query is
    begin
-      if Self.Handle = null then
-         if Matreshka.Internals.SQLite3.sqlite3_open16
-             (League.Strings.Internals.Internal (Name).Value,
-              Self.Handle'Unchecked_Access) /= 0
-         then
-            raise SQL.SQL_Error;
-         end if;
-      end if;
-   end Open;
+      return (Ada.Finalization.Controlled with Data => Data);
+   end Wrap;
 
-   -----------
-   -- Query --
-   -----------
-
-   overriding function Query
-    (Self : not null access SQLite3_Database)
-       return not null Matreshka.Internals.SQL_Queries.Query_Access is
-   begin
-      return new Matreshka.Internals.SQL_Queries.SQLite3.SQLite3_Query (Self);
-   end Query;
-
-end Matreshka.Internals.SQL_Databases.SQLite3;
+end SQL.Queries.Internals;

@@ -17,7 +17,7 @@ begin
    D.Open;
 
    declare
-      Q : SQL.Queries.SQL_Query := SQL.Queries.Create (D);
+      Q : SQL.Queries.SQL_Query := D.Query;
 
    begin
       Q.Prepare
@@ -26,7 +26,7 @@ begin
    end;
 
    declare
-      Q : SQL.Queries.SQL_Query := SQL.Queries.Create (D);
+      Q : SQL.Queries.SQL_Query := D.Query;
 
    begin
       Q.Prepare (+"INSERT INTO point (x, y) VALUES ('a', 'b')");
@@ -34,7 +34,7 @@ begin
    end;
 
    declare
-      Q : aliased SQL.Queries.SQL_Query := SQL.Queries.Create (D);
+      Q : aliased SQL.Queries.SQL_Query := D.Query;
 
    begin
       Q.Prepare (+"SELECT x, y FROM point");

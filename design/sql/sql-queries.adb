@@ -78,30 +78,6 @@ package body SQL.Queries is
       return X : League.Values.Value;
    end Bound_Value;
 
-   ------------
-   -- Create --
-   ------------
-
-   function Create (Database : SQL.Databases.SQL_Database) return SQL_Query is
-   begin
-      return
-       (Ada.Finalization.Controlled with
-          Data => SQL.Databases.Internals.Internal (Database).Create_Query);
-   end Create;
-
-   ------------
-   -- Create --
-   ------------
-
-   function Create
-    (Database : SQL.Databases.SQL_Database;
-     Query    : League.Strings.Universal_String) return SQL_Query is
-   begin
-      return Self : SQL_Query := Create (Database) do
-         Self.Prepare (Query);
-      end return;
-   end Create;
-
    -------------
    -- Execute --
    -------------

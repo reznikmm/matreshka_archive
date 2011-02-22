@@ -41,18 +41,19 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.SQL_Queries.Dummy;
 
 package body Matreshka.Internals.SQL_Databases.Dummy is
 
-   ------------------
-   -- Create_Query --
-   ------------------
+   -----------
+   -- Query --
+   -----------
 
-   overriding function Create_Query
+   overriding function Query
     (Self : not null access Dummy_Database)
        return not null Matreshka.Internals.SQL_Queries.Query_Access is
    begin
-      return null;
-   end Create_Query;
+      return Matreshka.Internals.SQL_Queries.Dummy.Empty_Query'Access;
+   end Query;
 
 end Matreshka.Internals.SQL_Databases.Dummy;

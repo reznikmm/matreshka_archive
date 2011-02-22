@@ -71,7 +71,7 @@ private
 
    overriding procedure Commit (Self : not null access SQLite3_Database);
 
-   overriding function Create_Query
+   overriding function Query
     (Self : not null access SQLite3_Database)
        return not null Matreshka.Internals.SQL_Queries.Query_Access;
 
