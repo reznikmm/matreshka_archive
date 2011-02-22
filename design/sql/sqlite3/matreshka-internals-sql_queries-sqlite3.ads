@@ -58,7 +58,7 @@ private
     (Database : not null access SQL_Databases.SQLite3.SQLite3_Database'Class)
        is new Abstract_Query (Database) with
    record
-      Handle : Matreshka.Internals.SQLite3.sqlite3_stmt_Access;
+      Handle : aliased Matreshka.Internals.SQLite3.sqlite3_stmt_Access;
    end record;
 
    overriding procedure Execute (Self : not null access SQLite3_Query);

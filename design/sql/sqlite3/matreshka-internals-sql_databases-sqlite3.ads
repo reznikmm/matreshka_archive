@@ -64,7 +64,7 @@ package Matreshka.Internals.SQL_Databases.SQLite3 is
 private
 
    type SQLite3_Database is new Abstract_Database with record
-      Handle : Matreshka.Internals.SQLite3.sqlite3_Access;
+      Handle : aliased Matreshka.Internals.SQLite3.sqlite3_Access;
    end record;
 
    overriding procedure Close (Self : not null access SQLite3_Database);

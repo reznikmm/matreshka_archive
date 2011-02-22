@@ -97,7 +97,7 @@ package body Matreshka.Internals.SQL_Queries.SQLite3 is
    is
       use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
-      Aux : Matreshka.Internals.SQLite3.Utf16_Code_Unit_Access;
+      Aux : aliased Matreshka.Internals.SQLite3.Utf16_Code_Unit_Access;
 
    begin
       if Self.Handle = null then
@@ -115,8 +115,8 @@ package body Matreshka.Internals.SQL_Queries.SQLite3 is
               League.Strings.Internals.Internal (Query).Value,
               Interfaces.C.int
                ((League.Strings.Internals.Internal (Query).Unused + 1) * 2),
-              Self.Handle,
-              Aux) /= 0
+              Self.Handle'Unchecked_Access,
+              Aux'Unchecked_Access) /= 0
          then
             raise SQL.SQL_Error;
          end if;

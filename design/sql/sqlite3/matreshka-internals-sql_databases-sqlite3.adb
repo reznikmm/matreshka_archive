@@ -135,7 +135,7 @@ package body Matreshka.Internals.SQL_Databases.SQLite3 is
       if Self.Handle = null then
          if Matreshka.Internals.SQLite3.sqlite3_open16
              (League.Strings.Internals.Internal (Name).Value,
-              Self.Handle) /= 0
+              Self.Handle'Unchecked_Access) /= 0
          then
             raise SQL.SQL_Error;
          end if;

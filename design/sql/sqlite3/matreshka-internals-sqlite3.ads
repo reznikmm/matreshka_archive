@@ -118,15 +118,18 @@ package Matreshka.Internals.SQLite3 is
 
    function sqlite3_open16
     (File_Name : Matreshka.Internals.Utf16.Utf16_String;
-     Handle    : out sqlite3_Access) return Interfaces.C.int;
+--     Handle    : out sqlite3_Access) return Interfaces.C.int;
+     Handle    : not null access sqlite3_Access) return Interfaces.C.int;
    pragma Import (C, sqlite3_open16);
 
    function sqlite3_prepare16_v2
     (db     : sqlite3_Access;
      zSql   : Matreshka.Internals.Utf16.Utf16_String;
      nByte  : Interfaces.C.int;
-     ppStmt : out sqlite3_stmt_Access;
-     pzTail : out Utf16_Code_Unit_Access) return Interfaces.C.int;
+--     ppStmt : out sqlite3_stmt_Access;
+--     pzTail : out Utf16_Code_Unit_Access) return Interfaces.C.int;
+     ppStmt : not null access sqlite3_stmt_Access;
+     pzTail : not null access Utf16_Code_Unit_Access) return Interfaces.C.int;
    pragma Import (C, sqlite3_prepare16_v2);
 
    function sqlite3_step
