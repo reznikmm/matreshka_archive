@@ -43,17 +43,19 @@
 ------------------------------------------------------------------------------
 with "matreshka_config";
 with "matreshka_league";
+with "matreshka_sql";
 
-library project Matreshka_SQL is
+library project Matreshka_SQL_SQLite3 is
 
-   Library_Name := "matreshka-sql" & Matreshka_Config.RTL_Version_Suffix;
+   Library_Name := "matreshka-sql-sqlite3" & Matreshka_Config.RTL_Version_Suffix;
 
-   for Source_Dirs use ("../source/sql");
+   for Source_Dirs use ("../source/sql/sqlite3");
    for Object_Dir use "../.objs";
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
    for Library_Dir use "../.libs";
    for Library_Version use "lib" & Library_Name & ".so." & Matreshka_Config.Version;
+   for Library_Options use Matreshka_Config.SQLite3_Library_Options;
 
    Common_Ada_Switches :=
     ("-g",
@@ -122,4 +124,4 @@ library project Matreshka_SQL is
 
    end Compiler;
 
-end Matreshka_SQL;
+end Matreshka_SQL_SQLite3;

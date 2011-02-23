@@ -2,6 +2,7 @@ with Ada.Wide_Wide_Text_IO;
 
 with League.Strings;
 with League.Values.Strings;
+with Matreshka.Internals.SQL_Drivers.SQLite3.Factory;
 with SQL.Databases;
 with SQL.Queries;
 
