@@ -59,12 +59,14 @@ package Configure is
 
    --  Names of variables in matreshka_config.gpr.in
 
-   Architecture_Name     : constant Ada.Strings.Unbounded.Unbounded_String
+   Architecture_Name       : constant Ada.Strings.Unbounded.Unbounded_String
      := Ada.Strings.Unbounded.To_Unbounded_String ("ARCHITECTURE");
-   Operating_System_Name : constant Ada.Strings.Unbounded.Unbounded_String
+   Operating_System_Name   : constant Ada.Strings.Unbounded.Unbounded_String
      := Ada.Strings.Unbounded.To_Unbounded_String ("OPERATING_SYSTEM");
    RTL_Version_Suffix_Name : constant Ada.Strings.Unbounded.Unbounded_String
      := Ada.Strings.Unbounded.To_Unbounded_String ("RTL_VERSION_SUFFIX");
+   SQLite3_Library_Options : constant Ada.Strings.Unbounded.Unbounded_String
+     := Ada.Strings.Unbounded.To_Unbounded_String ("SQLITE3_LIBRARY_OPTIONS");
 
    --  Internal variables to pass values between test subprogram.
 

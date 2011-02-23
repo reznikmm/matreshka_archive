@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,52 +41,74 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-with Ada.Directories;
-with Ada.Strings.Unbounded.Text_IO;
-with Ada.Text_IO;
 
-with Configure.Architecture;
-with Configure.Instantiate;
-with Configure.Operating_System;
-with Configure.RTL_Version;
-with Configure.SQLite3;
+with GNAT.Expect;
+--with GNAT.Regexp;
+--with GNAT.Regpat;
 
-procedure Configure.Driver is
-   use Ada.Command_Line;
+package body Configure.Pkg_Config is
 
-begin
-   Configure.Architecture;
-   Configure.Operating_System;
-   Configure.RTL_Version;
-   Configure.SQLite3;
+   use GNAT.Expect;
 
-   declare
-      use Ada.Directories;
-      use Ada.Strings.Unbounded.Text_IO;
-      use Ada.Text_IO;
-      use Maps;
+   -----------------
+   -- Has_Package --
+   -----------------
 
-      P : Cursor := Substitutions.First;
+   function Has_Package (Package_Name : String) return Boolean is
+      Status : aliased Integer;
+      Output : constant String :=
+        Get_Command_Output
+         ("pkg-config",
+          (1 => new String'("--exists"),
+           2 => new String'(Package_Name)),
+          "",
+          Status'Access,
+          True);
 
    begin
-      while Has_Element (P) loop
-         Put (Simple_Name (Command_Name));
-         Put (": ");
-         Put (Key (P));
-         Put (" => ");
-         Put (Element (P));
-         New_Line;
+      return Status = 0;
+   end Has_Package;
 
-         Next (P);
-      end loop;
-   end;
+   --------------------
+   -- Has_Pkg_Config --
+   --------------------
 
-   Configure.Instantiate ("Makefile.install");
-   Configure.Instantiate ("gnat/install/config.gpr");
-   Configure.Instantiate ("gnat/matreshka_config.gpr");
+   function Has_Pkg_Config return Boolean is
+      Status : aliased Integer;
+      Output : constant String :=
+        Get_Command_Output
+         ("pkg-config",
+          (1 => new String'("--version")),
+          "",
+          Status'Access,
+          True);
 
-exception
-   when Internal_Error =>
-      Set_Exit_Status (Failure);
-end Configure.Driver;
+   begin
+      return Status = 0;
+   end Has_Pkg_Config;
+
+   ------------------
+   -- Package_Libs --
+   ------------------
+
+   function Package_Libs (Package_Name : String) return String is
+      Status : aliased Integer;
+      Output : constant String :=
+        Get_Command_Output
+         ("pkg-config",
+          (1 => new String'("--libs"),
+           2 => new String'(Package_Name)),
+          "",
+          Status'Access,
+          True);
+
+   begin
+      if Status = 0 then
+         return Output;
+
+      else
+         return "";
+      end if;
+   end Package_Libs;
+
+end Configure.Pkg_Config;

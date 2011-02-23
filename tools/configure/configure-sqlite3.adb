@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,52 +41,36 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-with Ada.Directories;
-with Ada.Strings.Unbounded.Text_IO;
+--  This procedure detects parameters to link with SQLite3 library.
+------------------------------------------------------------------------------
+with Ada.Strings.Fixed;
 with Ada.Text_IO;
 
-with Configure.Architecture;
-with Configure.Instantiate;
-with Configure.Operating_System;
-with Configure.RTL_Version;
-with Configure.SQLite3;
+with Configure.Pkg_Config;
 
-procedure Configure.Driver is
-   use Ada.Command_Line;
+procedure Configure.SQLite3 is
+
+   use Ada.Strings;
+   use Ada.Strings.Fixed;
+   use Ada.Strings.Unbounded;
+
+   SQLite3_Package_Name : constant String := "sqlite3";
 
 begin
-   Configure.Architecture;
-   Configure.Operating_System;
-   Configure.RTL_Version;
-   Configure.SQLite3;
+   --  When pkg-config is installed, it is used to check whether SQLite3 is
+   --  installed and to retrieve linker switches to link with it.
 
-   declare
-      use Ada.Directories;
-      use Ada.Strings.Unbounded.Text_IO;
-      use Ada.Text_IO;
-      use Maps;
-
-      P : Cursor := Substitutions.First;
-
-   begin
-      while Has_Element (P) loop
-         Put (Simple_Name (Command_Name));
-         Put (": ");
-         Put (Key (P));
-         Put (" => ");
-         Put (Element (P));
-         New_Line;
-
-         Next (P);
-      end loop;
-   end;
-
-   Configure.Instantiate ("Makefile.install");
-   Configure.Instantiate ("gnat/install/config.gpr");
-   Configure.Instantiate ("gnat/matreshka_config.gpr");
-
-exception
-   when Internal_Error =>
-      Set_Exit_Status (Failure);
-end Configure.Driver;
+   if Configure.Pkg_Config.Has_Pkg_Config then
+      if Configure.Pkg_Config.Has_Package (SQLite3_Package_Name) then
+         Substitutions.Insert
+          (SQLite3_Library_Options,
+           To_Unbounded_String
+            ('"'
+               & Trim
+                  (Configure.Pkg_Config.Package_Libs (SQLite3_Package_Name),
+                   Both)
+               & '"'));
+         null;
+      end if;
+   end if;
+end Configure.SQLite3;

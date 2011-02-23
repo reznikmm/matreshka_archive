@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,52 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-with Ada.Directories;
-with Ada.Strings.Unbounded.Text_IO;
-with Ada.Text_IO;
 
-with Configure.Architecture;
-with Configure.Instantiate;
-with Configure.Operating_System;
-with Configure.RTL_Version;
-with Configure.SQLite3;
+package Configure.Pkg_Config is
 
-procedure Configure.Driver is
-   use Ada.Command_Line;
+   function Has_Pkg_Config return Boolean;
+   --  Returns True when pkg-config is found.
 
-begin
-   Configure.Architecture;
-   Configure.Operating_System;
-   Configure.RTL_Version;
-   Configure.SQLite3;
+   function Has_Package (Package_Name : String) return Boolean;
+   --  Returns True when specified package is installed.
 
-   declare
-      use Ada.Directories;
-      use Ada.Strings.Unbounded.Text_IO;
-      use Ada.Text_IO;
-      use Maps;
+   function Package_Libs (Package_Name : String) return String;
+   --  Returns command line switches for linker.
 
-      P : Cursor := Substitutions.First;
-
-   begin
-      while Has_Element (P) loop
-         Put (Simple_Name (Command_Name));
-         Put (": ");
-         Put (Key (P));
-         Put (" => ");
-         Put (Element (P));
-         New_Line;
-
-         Next (P);
-      end loop;
-   end;
-
-   Configure.Instantiate ("Makefile.install");
-   Configure.Instantiate ("gnat/install/config.gpr");
-   Configure.Instantiate ("gnat/matreshka_config.gpr");
-
-exception
-   when Internal_Error =>
-      Set_Exit_Status (Failure);
-end Configure.Driver;
+end Configure.Pkg_Config;
