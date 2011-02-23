@@ -11,7 +11,11 @@ procedure Main is
     (Item : Wide_Wide_String) return League.Strings.Universal_String
        renames League.Strings.To_Universal_String;
 
-   D : aliased SQL.Databases.SQL_Database;
+   DB_Type : constant League.Strings.Universal_String := +"SQLITE3";
+   DB_Name : constant League.Strings.Universal_String := +"test.db";
+
+   D : aliased SQL.Databases.SQL_Database
+     := SQL.Databases.Create (DB_Type, DB_Name);
 
 begin
    D.Open;

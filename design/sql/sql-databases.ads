@@ -51,6 +51,10 @@ package SQL.Databases is
 
    type SQL_Database is tagged limited private;
 
+   function Create
+    (Driver  : League.Strings.Universal_String;
+     Options : League.Strings.Universal_String) return SQL_Database;
+
    procedure Open (Self : in out SQL_Database'Class);
 
    procedure Close (Self : in out SQL_Database'Class);
@@ -83,8 +87,9 @@ package SQL.Databases is
 private
 
    type SQL_Database is new Ada.Finalization.Limited_Controlled with record
-      Data : Matreshka.Internals.SQL_Drivers.Database_Access
+      Data    : Matreshka.Internals.SQL_Drivers.Database_Access
         := Matreshka.Internals.SQL_Drivers.Dummy.Empty_Database'Access;
+      Options : League.Strings.Universal_String;
    end record;
 
 --   overriding procedure Adjust (Self : in out SQL_Database);

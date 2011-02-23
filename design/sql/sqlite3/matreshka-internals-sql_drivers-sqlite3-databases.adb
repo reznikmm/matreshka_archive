@@ -165,16 +165,12 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Databases is
 
    overriding function Open
     (Self    : not null access SQLite3_Database;
-     Options : League.Strings.Universal_String) return Boolean
-   is
-      Name : constant League.Strings.Universal_String
-        := League.Strings.To_Universal_String ("test.db");
-
+     Options : League.Strings.Universal_String) return Boolean is
    begin
       if Self.Handle = null then
          Self.Call
           (sqlite3_open16
-            (League.Strings.Internals.Internal (Name).Value,
+            (League.Strings.Internals.Internal (Options).Value,
              Self.Handle'Unchecked_Access));
 
       else

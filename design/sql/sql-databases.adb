@@ -83,6 +83,20 @@ package body SQL.Databases is
       Self.Data.Commit;
    end Commit;
 
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (Driver  : League.Strings.Universal_String;
+     Options : League.Strings.Universal_String) return SQL_Database is
+   begin
+      return
+       (Ada.Finalization.Limited_Controlled with
+          new Matreshka.Internals.SQL_Drivers.SQLite3.Databases.SQLite3_Database,
+          Options);
+   end Create;
+
    -------------------
    -- Error_Message --
    -------------------
@@ -114,12 +128,7 @@ package body SQL.Databases is
 
    procedure Open (Self : in out SQL_Database'Class) is
    begin
-      Matreshka.Internals.SQL_Drivers.Dereference (Self.Data);
-
-      Self.Data :=
-        new Matreshka.Internals.SQL_Drivers.SQLite3.Databases.SQLite3_Database;
-      Self.Raise_SQL_Error
-       (Self.Data.Open (League.Strings.Empty_Universal_String));
+      Self.Raise_SQL_Error (Self.Data.Open (Self.Options));
    end Open;
 
    -----------
