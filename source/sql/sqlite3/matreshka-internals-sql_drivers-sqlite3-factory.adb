@@ -60,8 +60,17 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Factory is
       return new Databases.SQLite3_Database;
    end Create;
 
+   use type Interfaces.C.int;
+
    Factory : aliased SQLite3_Factory;
 
 begin
+   --  Initialize threadsafety.
+
+   if sqlite3_config (SQLITE_CONFIG_SERIALIZED) /= SQLITE_OK then
+      raise Program_Error
+        with "SQLite3 doesn't support serialized threading mode";
+   end if;
+
    Register (League.Strings.To_Universal_String ("SQLITE3"), Factory'Access);
 end Matreshka.Internals.SQL_Drivers.SQLite3.Factory;

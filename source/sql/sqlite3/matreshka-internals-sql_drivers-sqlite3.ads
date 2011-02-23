@@ -109,6 +109,23 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
    SQLITE_DONE       : constant := 101;  --  sqlite3_step() has finished
                                          --  executing
 
+   SQLITE_CONFIG_SINGLETHREAD : constant := 1;  --  nil
+   SQLITE_CONFIG_MULTITHREAD  : constant := 2;  --  nil
+   SQLITE_CONFIG_SERIALIZED   : constant := 3;  --  nil
+--#define SQLITE_CONFIG_MALLOC        4  /* sqlite3_mem_methods* */
+--#define SQLITE_CONFIG_GETMALLOC     5  /* sqlite3_mem_methods* */
+--#define SQLITE_CONFIG_SCRATCH       6  /* void*, int sz, int N */
+--#define SQLITE_CONFIG_PAGECACHE     7  /* void*, int sz, int N */
+--#define SQLITE_CONFIG_HEAP          8  /* void*, int nByte, int min */
+--#define SQLITE_CONFIG_MEMSTATUS     9  /* boolean */
+--#define SQLITE_CONFIG_MUTEX        10  /* sqlite3_mutex_methods* */
+--#define SQLITE_CONFIG_GETMUTEX     11  /* sqlite3_mutex_methods* */
+--/* previously SQLITE_CONFIG_CHUNKALLOC 12 which is now unused. */ 
+--#define SQLITE_CONFIG_LOOKASIDE    13  /* int int */
+--#define SQLITE_CONFIG_PCACHE       14  /* sqlite3_pcache_methods* */
+--#define SQLITE_CONFIG_GETPCACHE    15  /* sqlite3_pcache_methods* */
+--#define SQLITE_CONFIG_LOG          16  /* xFunc, void* */
+
    ---------------
    -- Functions --
    ---------------
@@ -142,6 +159,9 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
     (Handle : sqlite3_stmt_Access;
      iCol   : Interfaces.C.int) return Utf16_Code_Unit_Access;
    pragma Import (C, sqlite3_column_text16);
+
+   function sqlite3_config (Option : Interfaces.C.int) return Interfaces.C.int;
+   pragma Import (C, sqlite3_config);
 
    function sqlite3_errmsg16
     (db : sqlite3_Access) return Utf16_Code_Unit_Access;
