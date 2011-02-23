@@ -64,4 +64,6 @@ abstract project Config is
    type Build_Type is ("RELEASE", "DEBUG");
    Build : Build_Type := external ("BUILD", "RELEASE");
 
+   SQLite3_Library_Options := (@SQLITE3_LIBRARY_OPTIONS@);
+
 end Config;

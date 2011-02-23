@@ -2,13 +2,13 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---         Localization, Internationalization, Globalization for Ada        --
+--                           SQL Database Access                            --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,29 +41,86 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with "matreshka_config";
+with "matreshka_league";
 
-abstract project Matreshka_Config is
+library project Matreshka_SQL is
 
-   Version := "0.0.7";
+   Library_Name := "matreshka-sql" & Matreshka_Config.RTL_Version_Suffix;
 
-   RTL_Version_Suffix := "@RTL_VERSION_SUFFIX@";
+   for Source_Dirs use ("../source/sql", "../source/sql/sqlite3");
+   for Object_Dir use "../.objs";
+   for Library_Kind use "dynamic";
+   for Library_Name use Library_Name;
+   for Library_Dir use "../.libs";
+   for Library_Version use "lib" & Library_Name & ".so." & Matreshka_Config.Version;
+   for Library_Options use Matreshka_Config.SQLite3_Library_Options;
 
-   type Architectures is
-    ("portable_32_be",
-     "portable_32_le",
-     "portable_64_be",
-     "portable_64_le",
-     "x86",
-     "x86_64");
-   Architecture : Architectures := external ("ARCHITECTURE", "@ARCHITECTURE@");
+   Common_Ada_Switches :=
+    ("-g",
+     "-gnat05",
+     "-gnatn");
+   --  Common switches to be used for every unit.
 
-   type Operating_Systems is ("POSIX", "Windows");
-   Operating_System : Operating_Systems
-     := external ("OPERATING_SYSTEM", "@OPERATING_SYSTEM@");
+   Optimization_Ada_Switches :=
+    ("-O2");
+   --  Optimization switches. Optimization is not used for several units, thus
+   --  optimization switches are declared by the separate variable.
 
-   type Build_Type is ("RELEASE", "DEBUG");
-   Build : Build_Type := external ("BUILD", "RELEASE");
+   Platform_Ada_Switches := ();
+   --  Set of platform specific switches. Needed for example on x86 to upgrade
+   --  default instructions set to i486 which includes atomic operations.
 
-   SQLite3_Library_Options := (@SQLITE3_LIBRARY_OPTIONS@);
+   Debug_Ada_Switches := ();
+   --  Switches to be used in debug mode.
 
-end Matreshka_Config;
+   case Matreshka_Config.Architecture is
+      when "x86" =>
+         Platform_Ada_Switches := ("-march=i686");
+
+      when others =>
+         null;
+   end case;
+
+   case Matreshka_Config.Build is
+      when "RELEASE" =>
+         null;
+
+      when "DEBUG" =>
+         Debug_Ada_Switches :=
+          ("-gnatwa", "-gnatyaAbcdefhiIkmnoOprsStux", "-gnato", "-fstack-check");
+   end case;
+
+   -------------
+   -- Builder --
+   -------------
+
+   package Builder is
+
+      case Matreshka_Config.Build is
+         when "RELEASE" =>
+            for Global_Configuration_Pragmas
+              use "matreshka_league__release.adc";
+
+         when "DEBUG" =>
+            for Global_Configuration_Pragmas
+              use "matreshka_league__debug.adc";
+      end case;
+
+   end Builder;
+
+   --------------
+   -- Compiler --
+   --------------
+
+   package Compiler is
+
+      for Default_Switches ("Ada") use
+        Common_Ada_Switches
+          & Platform_Ada_Switches
+          & Optimization_Ada_Switches
+          & Debug_Ada_Switches;
+
+   end Compiler;
+
+end Matreshka_SQL;

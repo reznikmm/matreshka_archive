@@ -1,4 +1,4 @@
-with "../../gnat/matreshka_league.gpr";
+with "../../gnat/matreshka_sql.gpr";
 
 project SQL is
 
@@ -10,8 +10,8 @@ project SQL is
       for Default_Switches ("Ada") use ("-g", "-gnat12");
    end Compiler;
 
-   package Linker is
-      for Default_Switches ("Ada") use ("-lsqlite3");
-   end Linker;
+--   package Linker is
+--      for Default_Switches ("Ada") use ("-lsqlite3");
+--   end Linker;
 
 end SQL;
