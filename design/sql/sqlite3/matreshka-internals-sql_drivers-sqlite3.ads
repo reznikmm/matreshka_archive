@@ -68,6 +68,10 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
    type Utf16_Code_Unit_Access is
      access all Matreshka.Internals.Utf16.Utf16_Code_Unit;
 
+   type Utf16_Code_Unit_Access_Destructor is
+     access procedure (Text : Utf16_Code_Unit_Access);
+   pragma Convention (C, Utf16_Code_Unit_Access_Destructor);
+
    ---------------
    -- Constants --
    ---------------
@@ -105,10 +109,25 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
    SQLITE_DONE       : constant := 101;  --  sqlite3_step() has finished
                                          --  executing
 
-
    ---------------
    -- Functions --
    ---------------
+
+   function sqlite3_bind_parameter_count
+    (Handle : sqlite3_stmt_Access) return Interfaces.C.int;
+   pragma Import (C, sqlite3_bind_parameter_count);
+
+   function sqlite3_bind_parameter_index
+    (Handle : sqlite3_stmt_Access;
+     Name   : Interfaces.C.char_array) return Interfaces.C.int;
+   pragma Import (C, sqlite3_bind_parameter_index);
+
+   function sqlite3_bind_text16
+    (Handle     : sqlite3_stmt_Access;
+     Index      : Interfaces.C.int;
+     Text       : Utf16_Code_Unit_Access;
+     Destructor : Utf16_Code_Unit_Access_Destructor) return Interfaces.C.int;
+   pragma Import (C, sqlite3_bind_text16);
 
    function sqlite3_close (Handle : sqlite3_Access) return Interfaces.C.int;
    pragma Import (C, sqlite3_close);
@@ -146,6 +165,10 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
      ppStmt : not null access sqlite3_stmt_Access;
      pzTail : not null access Utf16_Code_Unit_Access) return Interfaces.C.int;
    pragma Import (C, sqlite3_prepare16_v2);
+
+   function sqlite3_reset
+    (pStmt : sqlite3_stmt_Access) return Interfaces.C.int;
+   pragma Import (C, sqlite3_reset);
 
    function sqlite3_step
     (Handle : sqlite3_stmt_Access) return Interfaces.C.int;

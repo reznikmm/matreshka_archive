@@ -74,7 +74,13 @@ package body SQL.Queries is
      Value     : League.Values.Value;
      Direction : Parameter_Directions := In_Parameter) is
    begin
-      null;
+      if not Self.Data.Is_Valid then
+         --  Returns when internal object was invalidated.
+
+         return;
+      end if;
+
+      Self.Data.Bind_Value (Name, Value, Direction);
    end Bind_Value;
 
    -----------------
@@ -85,6 +91,12 @@ package body SQL.Queries is
     (Self : SQL_Query'Class;
      Name : League.Strings.Universal_String) return League.Values.Value is
    begin
+      if not Self.Data.Is_Valid then
+         --  Returns when internal object was invalidated.
+
+         return X : League.Values.Value;
+      end if;
+
       return X : League.Values.Value;
    end Bound_Value;
 
@@ -95,6 +107,12 @@ package body SQL.Queries is
    function Error_Message
     (Self : SQL_Query'Class) return League.Strings.Universal_String is
    begin
+      if not Self.Data.Is_Valid then
+         --  Returns when internal object was invalidated.
+
+         return League.Strings.To_Universal_String ("object was invalidated");
+      end if;
+
       return Self.Data.Error_Message;
    end Error_Message;
 
@@ -104,6 +122,12 @@ package body SQL.Queries is
 
    function Execute (Self : not null access SQL_Query'Class) return Boolean is
    begin
+      if not Self.Data.Is_Valid then
+         --  Returns when internal object was invalidated.
+
+         return False;
+      end if;
+
       return Self.Data.Execute;
    end Execute;
 
@@ -113,7 +137,7 @@ package body SQL.Queries is
 
    procedure Execute (Self : in out SQL_Query'Class) is
    begin
-      Self.Raise_SQL_Error (Self.Data.Execute);
+      Self.Raise_SQL_Error (Self.Execute);
    end Execute;
 
    --------------
@@ -137,8 +161,29 @@ package body SQL.Queries is
 
    procedure Finish (Self : in out SQL_Query'Class) is
    begin
-      null;
+      if not Self.Data.Is_Valid then
+         --  Returns when internal object was invalidated.
+
+         return;
+      end if;
+
+      Self.Data.Finish;
    end Finish;
+
+   ---------------
+   -- Is_Active --
+   ---------------
+
+   function Is_Active (Self : in out SQL_Query'Class) return Boolean is
+   begin
+      if not Self.Data.Is_Valid then
+         --  Returns when internal object was invalidated.
+
+         return False;
+      end if;
+
+      return Self.Data.Is_Active;
+   end Is_Active;
 
    ----------
    -- Next --
@@ -147,6 +192,12 @@ package body SQL.Queries is
 --   function Next (Self : in out SQL_Query'Class) return Boolean;
    function Next (Self : not null access SQL_Query'Class) return Boolean is
    begin
+      if not Self.Data.Is_Valid then
+         --  Returns when internal object was invalidated.
+
+         return False;
+      end if;
+
       return Self.Data.Next;
    end Next;
 
@@ -159,6 +210,12 @@ package body SQL.Queries is
     (Self  : not null access SQL_Query'Class;
      Query : League.Strings.Universal_String) return Boolean is
    begin
+      if not Self.Data.Is_Valid then
+         --  Returns when internal object was invalidated.
+
+         return False;
+      end if;
+
       return Self.Data.Prepare (Query);
    end Prepare;
 
@@ -169,7 +226,7 @@ package body SQL.Queries is
    procedure Prepare
     (Self : in out SQL_Query'Class; Query : League.Strings.Universal_String) is
    begin
-      Self.Raise_SQL_Error (Self.Data.Prepare (Query));
+      Self.Raise_SQL_Error (Self.Prepare (Query));
    end Prepare;
 
    --------------
@@ -179,7 +236,11 @@ package body SQL.Queries is
 --   function Previous (Self : in out SQL_Query'Class) return Boolean;
    procedure Previous (Self : in out SQL_Query'Class) is
    begin
-      null;
+      if not Self.Data.Is_Valid then
+         --  Returns when internal object was invalidated.
+
+         return;
+      end if;
    end Previous;
 
    ---------------------
@@ -218,6 +279,12 @@ package body SQL.Queries is
     (Self  : SQL_Query'Class;
      Index : Positive) return League.Values.Value is
    begin
+      if not Self.Data.Is_Valid then
+         --  Returns when internal object was invalidated.
+
+         return X : League.Values.Value;
+      end if;
+
       return Self.Data.Value (Index);
    end Value;
 

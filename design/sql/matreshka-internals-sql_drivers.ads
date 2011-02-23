@@ -48,10 +48,14 @@
 --  Note: database driver should avoid raising of exceptions, instead it should
 --  reports failures of operations in specified way and be ready to provide
 --  diagnosis message in Error_Message function.
+--
+--  Note: all operations except Is_Valid on Abstract_Query are called only
+--  when query is valid, so database drivers should use this to optimize code.
 ------------------------------------------------------------------------------
 with League.Strings;
 with League.Values;
 private with Matreshka.Internals.Atomics.Counters;
+with SQL;
 
 package Matreshka.Internals.SQL_Drivers is
 
@@ -107,6 +111,12 @@ package Matreshka.Internals.SQL_Drivers is
    -- Abstract_Query --
    --------------------
 
+   not overriding procedure Bind_Value
+    (Self      : not null access Abstract_Query;
+     Name      : League.Strings.Universal_String;
+     Value     : League.Values.Value;
+     Direction : SQL.Parameter_Directions) is abstract;
+
    not overriding function Error_Message
     (Self : not null access Abstract_Query)
        return League.Strings.Universal_String is abstract;
@@ -114,6 +124,15 @@ package Matreshka.Internals.SQL_Drivers is
    not overriding procedure Finalize (Self : not null access Abstract_Query);
    --  Called before memory deallocation. At Abstract_Query level it
    --  invalidates query object.
+
+   not overriding procedure Finish
+    (Self : not null access Abstract_Query) is abstract;
+   --  Instruct the database driver that no more data will be fetched from this
+   --  query until it is re-executed. There is normally no need to call this
+   --  function, but it may be helpful in order to free resources such as locks
+   --  or cursors if you intend to re-use the query at a later time.
+   --
+   --  Sets the query to inactive. Bound values retain their values.
 
    not overriding procedure Invalidate (Self : not null access Abstract_Query);
    --  Invalidates object. At Abstract_Query level it detachs query object from
@@ -123,6 +142,11 @@ package Matreshka.Internals.SQL_Drivers is
    function Is_Valid
     (Self : not null access Abstract_Query'Class) return Boolean;
    --  Returns True when query is valid.
+
+   not overriding function Is_Active
+    (Self : not null access Abstract_Query) return Boolean is abstract;
+   --  Returns True when prepared statement is active, so was executed but not
+   --  finished.
 
    not overriding function Prepare
     (Self  : not null access Abstract_Query;
@@ -185,10 +209,10 @@ private
    end record;
 
    type Abstract_Query is abstract tagged limited record
-      Counter  : aliased Matreshka.Internals.Atomics.Counters.Counter;
-      Database : Database_Access;
-      Next     : Query_Access;
-      Previous : Query_Access;
+      Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Database  : Database_Access;
+      Next      : Query_Access;
+      Previous  : Query_Access;
    end record;
 
    procedure Initialize

@@ -41,11 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Containers.Hashed_Maps;
+
+private with League.Strings.Hash;
 with Matreshka.Internals.SQL_Drivers.SQLite3.Databases;
 
 package Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
-
-   pragma Preelaborate;
 
    type SQLite3_Query is new Abstract_Query with private;
 
@@ -55,13 +56,29 @@ package Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
 private
 
+   package Parameter_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           League.Values.Value,
+           League.Strings.Hash,
+           League.Strings."=",
+           League.Values."=");
+
    type SQLite3_Query is new Abstract_Query with record
-      Handle    : aliased sqlite3_stmt_Access;
-      Has_Row   : Boolean := False;
-      Skip_Step : Boolean := False;
-      Error     : League.Strings.Universal_String;
-      Success   : Boolean := True;
+      Handle     : aliased sqlite3_stmt_Access;
+      Is_Active  : Boolean := False;
+      Has_Row    : Boolean := False;
+      Skip_Step  : Boolean := False;
+      Error      : League.Strings.Universal_String;
+      Success    : Boolean := True;
+      Parameters : Parameter_Maps.Map;
    end record;
+
+   overriding procedure Bind_Value
+    (Self      : not null access SQLite3_Query;
+     Name      : League.Strings.Universal_String;
+     Value     : League.Values.Value;
+     Direction : SQL.Parameter_Directions);
 
    overriding function Error_Message
     (Self : not null access SQLite3_Query)
@@ -70,7 +87,12 @@ private
    overriding function Execute
     (Self : not null access SQLite3_Query) return Boolean;
 
+   overriding procedure Finish (Self : not null access SQLite3_Query);
+
    overriding procedure Invalidate (Self : not null access SQLite3_Query);
+
+   overriding function Is_Active
+    (Self : not null access SQLite3_Query) return Boolean;
 
    overriding function Next
     (Self : not null access SQLite3_Query) return Boolean;

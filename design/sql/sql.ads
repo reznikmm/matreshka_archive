@@ -48,4 +48,7 @@ package SQL is
 
    SQL_Error : exception;
 
+   type Parameter_Directions is
+    (In_Parameter, Out_Parameter, In_Out_Parameter);
+
 end SQL;

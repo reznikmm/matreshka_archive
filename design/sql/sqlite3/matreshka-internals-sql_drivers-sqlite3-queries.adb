@@ -41,9 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Streams;
 with Interfaces.C;
 
 with League.Strings.Internals;
+with League.Text_Codecs;
 with League.Values.Strings;
 with Matreshka.Internals.Strings;
 with Matreshka.Internals.Unicode;
@@ -53,9 +55,6 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
    use type Interfaces.C.int;
    use type Matreshka.Internals.Utf16.Utf16_String_Index;
-
---   procedure puts (Item : String);
---   pragma Import (C, puts);
 
    procedure Call
     (Self : not null access SQLite3_Query'Class;
@@ -68,6 +67,59 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
        return League.Strings.Universal_String;
    --  Converts text starting at specified position with specified length into
    --  Universal_String.
+
+   Codec : constant League.Text_Codecs.Text_Codec
+     := League.Text_Codecs.Codec
+         (League.Strings.To_Universal_String ("utf-8"));
+   --  Codec to convert Universal_String into UTF-8 encoding. It is used to
+   --  convert parameter name. Unfortunately, SQLite3 doesn't provide relevant
+   --  UTF-16 version of function.
+
+   ----------------
+   -- Bind_Value --
+   ----------------
+
+   overriding procedure Bind_Value
+    (Self      : not null access SQLite3_Query;
+     Name      : League.Strings.Universal_String;
+     Value     : League.Values.Value;
+     Direction : SQL.Parameter_Directions)
+   is
+      use type Ada.Streams.Stream_Element_Array;
+
+      U_Name : constant Ada.Streams.Stream_Element_Array
+        := Codec.Encode (Name).To_Stream_Element_Array & 0;
+      C_Name : Interfaces.C.char_array (1 .. U_Name'Length);
+      for C_Name'Address use U_Name'Address;
+      pragma Import (Ada, C_Name);
+      Index  : Interfaces.C.int;
+
+   begin
+      if Self.Handle = null then
+         --  Statement was not prepared.
+
+         return;
+      end if;
+
+      Index := sqlite3_bind_parameter_index (Self.Handle, C_Name);
+
+      if Index = 0 then
+         return;
+      end if;
+
+      Self.Parameters.Include (Name, Value);
+
+      Self.Call
+       (sqlite3_bind_text16
+         (Self.Handle,
+          Index,
+          League.Strings.Internals.Internal
+           (League.Values.Strings.Get (Value)).Value (0)'Access,
+          null));
+      --  Copy of string value is stored in the parameters map, so provides
+      --  warranty that it will not be deallocated/modified till another value
+      --  will be bind. As result, copy of string data is not needed.
+   end Bind_Value;
 
    ----------
    -- Call --
@@ -110,12 +162,7 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
     (Self : not null access SQLite3_Query)
        return League.Strings.Universal_String is
    begin
-      if Self.Is_Valid then
-         return Self.Error;
-
-      else
-         return League.Strings.To_Universal_String ("object was invalidated");
-      end if;
+      return Self.Error;
    end Error_Message;
 
    -------------
@@ -125,22 +172,43 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
    overriding function Execute
     (Self : not null access SQLite3_Query) return Boolean is
    begin
-      if not Self.Is_Valid then
-         --  Returns immidiatly when query was invalidated.
+      if Self.Handle = null then
+         --  Statement was not prepared.
 
          return False;
       end if;
 
-      if Self.Handle /= null then
-         Self.Call (sqlite3_step (Self.Handle));
-         Self.Skip_Step := Self.Has_Row;
+      if Self.Is_Active then
+         --  Finish execution of the current statement when it is active.
 
-         return Self.Success;
-
-      else
-         return False;
+         Self.Finish;
       end if;
+
+      Self.Call (sqlite3_step (Self.Handle));
+      Self.Skip_Step := Self.Has_Row;
+
+      if Self.Success then
+         Self.Is_Active := True;
+      end if;
+
+      return Self.Success;
    end Execute;
+
+   ------------
+   -- Finish --
+   ------------
+
+   overriding procedure Finish (Self : not null access SQLite3_Query) is
+   begin
+      if not Self.Is_Active then
+         --  Returns when query is not active.
+
+         return;
+      end if;
+
+      Self.Call (sqlite3_reset (Self.Handle));
+      Self.Is_Active := False;
+   end Finish;
 
    ----------------
    -- Initialize --
@@ -171,6 +239,16 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       Abstract_Query (Self.all).Invalidate;
    end Invalidate;
 
+   ---------------
+   -- Is_Active --
+   ---------------
+
+   overriding function Is_Active
+    (Self : not null access SQLite3_Query) return Boolean is
+   begin
+      return Self.Is_Active;
+   end Is_Active;
+
    ----------
    -- Next --
    ----------
@@ -178,8 +256,8 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
    overriding function Next
     (Self : not null access SQLite3_Query) return Boolean is
    begin
-      if not Self.Is_Valid then
-         --  Returns immidiatly when query was invalidated.
+      if not Self.Is_Active then
+         --  Returns immidiatly when statement is not active.
 
          return False;
       end if;
@@ -205,32 +283,31 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       Aux : aliased Utf16_Code_Unit_Access;
 
    begin
-      if not Self.Is_Valid then
-         --  Returns immidiatly when query was invalidated.
+      if Self.Handle /= null then
+         --  Release existing handle.
 
-         return False;
+         Self.Call (sqlite3_finalize (Self.Handle));
+         Self.Handle := null;
       end if;
 
-      if Self.Handle = null then
-         --  Note: http://www.sqlite.org/c3ref/prepare.html
-         --
-         --  "If the caller knows that the supplied string is nul-terminated,
-         --  then there is a small performance advantage to be gained by
-         --  passing an nByte parameter that is equal to the number of bytes in
-         --  the input string including the nul-terminator bytes."
-         --
-         --  And it's exactly our case.
+      --  Note: http://www.sqlite.org/c3ref/prepare.html
+      --
+      --  "If the caller knows that the supplied string is nul-terminated, then
+      --  there is a small performance advantage to be gained by passing an
+      --  nByte parameter that is equal to the number of bytes in the input
+      --  string including the nul-terminator bytes."
+      --
+      --  And it's exactly our case.
 
-         Self.Call
-          (sqlite3_prepare16_v2
-            (Databases.SQLite3_Database'Class
-              (Self.Database.all).Database_Handle,
-             League.Strings.Internals.Internal (Query).Value,
-             Interfaces.C.int
-              ((League.Strings.Internals.Internal (Query).Unused + 1) * 2),
-             Self.Handle'Unchecked_Access,
-             Aux'Unchecked_Access));
-      end if;
+      Self.Call
+       (sqlite3_prepare16_v2
+         (Databases.SQLite3_Database'Class (Self.Database.all).Database_Handle,
+          League.Strings.Internals.Internal (Query).Value,
+          Interfaces.C.int
+           ((League.Strings.Internals.Internal (Query).Unused + 1) * 2),
+          Self.Handle'Unchecked_Access,
+          Aux'Unchecked_Access));
+      Self.Is_Active := False;
 
       return Self.Success;
    end Prepare;
@@ -277,20 +354,26 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       Value  : League.Values.Value;
 
    begin
-      if not Self.Is_Valid then
-         --  Returns immidiatly when query was invalidated.
+      if not Self.Is_Active then
+         --  Returns immidiately when query is not active.
 
          return Value;
       end if;
 
       Text :=
         sqlite3_column_text16 (Self.Handle, Interfaces.C.int (Index - 1));
-      Length :=
-        Matreshka.Internals.Utf16.Utf16_String_Index
-         (sqlite3_column_bytes16 (Self.Handle, Interfaces.C.int (Index - 1)));
 
-      League.Values.Strings.Set
-       (Value, To_Universal_String (Text, Length / 2));
+      if Text /= null then
+         Length :=
+           Matreshka.Internals.Utf16.Utf16_String_Index
+            (sqlite3_column_bytes16
+              (Self.Handle, Interfaces.C.int (Index - 1)));
+         League.Values.Strings.Set
+          (Value, To_Universal_String (Text, Length / 2));
+
+      else
+         League.Values.Set_Type (Value, League.Values.Strings.Type_Of_Value);
+      end if;
 
       return Value;
    end Value;

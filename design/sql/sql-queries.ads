@@ -49,9 +49,6 @@ private with Matreshka.Internals.SQL_Drivers.Dummy;
 
 package SQL.Queries is
 
-   type Parameter_Directions is
-    (In_Parameter, Out_Parameter, In_Out_Parameter);
-
    type SQL_Query is tagged private;
 
    procedure Bind_Value
@@ -59,6 +56,10 @@ package SQL.Queries is
      Name      : League.Strings.Universal_String;
      Value     : League.Values.Value;
      Direction : Parameter_Directions := In_Parameter);
+   --  Set the placeholder Name to be bound to value Value in the prepared
+   --  statement.
+   --
+   --  XXX Add description of Direction and how to set value to NULL.
 
    function Bound_Value
     (Self : SQL_Query'Class;
@@ -88,6 +89,24 @@ package SQL.Queries is
    --  Note that the last error for this query is reset when Execute is called.
 
    procedure Finish (Self : in out SQL_Query'Class);
+   --  Instruct the database driver that no more data will be fetched from this
+   --  query until it is re-executed. There is normally no need to call this
+   --  function, but it may be helpful in order to free resources such as locks
+   --  or cursors if you intend to re-use the query at a later time.
+   --
+   --  Sets the query to inactive. Bound values retain their values.
+
+   function Is_Active (Self : in out SQL_Query'Class) return Boolean;
+   --  Returns True if the query is active. An active SQL_Query is one that has
+   --  been executed successfully but not yet finished with. When you are
+   --  finished with an active query, you can make make the query inactive by
+   --  calling Finish, or you can delete the SQL_Query instance.
+   --
+   --  Note: Of particular interest is an active query that is a SELECT
+   --  statement. For some databases that support transactions, an active query
+   --  that is a SELECT statement can cause a Commit or a Rollback to fail, so
+   --  before committing or rolling back, you should make your active SELECT
+   --  statement query inactive using one of the ways listed above.
 
 --   function Next (Self : in out SQL_Query'Class) return Boolean;
    function Next (Self : not null access SQL_Query'Class) return Boolean;
@@ -120,7 +139,7 @@ package SQL.Queries is
    --  wrong query succeeds, but every consecutive Execute will fail.
 
 --   function Previous (Self : in out SQL_Query'Class) return Boolean;
-   procedure Previous (Self : in out SQL_Query'Class);
+--   procedure Previous (Self : in out SQL_Query'Class);
 
    function Value
     (Self  : SQL_Query'Class;

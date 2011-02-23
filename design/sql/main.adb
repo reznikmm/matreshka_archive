@@ -29,7 +29,9 @@ begin
       Q : SQL.Queries.SQL_Query := D.Query;
 
    begin
-      Q.Prepare (+"INSERT INTO point (x, y) VALUES ('abc', 'xyz')");
+      Q.Prepare (+"INSERT INTO point (x, y) VALUES (:x, :y)");
+      Q.Bind_Value (+":y", League.Values.Strings.To_Value (+"xyz"));
+      Q.Bind_Value (+":x", League.Values.Strings.To_Value (+"abc"));
       Q.Execute;
    end;
 

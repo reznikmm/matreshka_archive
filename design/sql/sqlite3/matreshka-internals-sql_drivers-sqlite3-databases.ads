@@ -46,8 +46,6 @@
 
 package Matreshka.Internals.SQL_Drivers.SQLite3.Databases is
 
-   pragma Preelaborate;
-
    ----------------------
    -- SQLite3_Database --
    ----------------------

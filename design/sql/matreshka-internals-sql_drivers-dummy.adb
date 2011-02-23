@@ -76,6 +76,16 @@ package body Matreshka.Internals.SQL_Drivers.Dummy is
       return False;
    end Execute;
 
+   ---------------
+   -- Is_Active --
+   ---------------
+
+   overriding function Is_Active
+    (Self : not null access Dummy_Query) return Boolean is
+   begin
+      return False;
+   end Is_Active;
+
    ----------
    -- Next --
    ----------

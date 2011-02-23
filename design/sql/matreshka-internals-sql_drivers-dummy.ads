@@ -68,11 +68,22 @@ package Matreshka.Internals.SQL_Drivers.Dummy is
 
    type Dummy_Query is new Abstract_Query with null record;
 
+   overriding procedure Bind_Value
+    (Self      : not null access Dummy_Query;
+     Name      : League.Strings.Universal_String;
+     Value     : League.Values.Value;
+     Direction : SQL.Parameter_Directions) is null;
+
    overriding function Error_Message
     (Self : not null access Dummy_Query)
        return League.Strings.Universal_String;
 
    overriding function Execute
+    (Self : not null access Dummy_Query) return Boolean;
+
+   overriding procedure Finish (Self : not null access Dummy_Query) is null;
+
+   overriding function Is_Active
     (Self : not null access Dummy_Query) return Boolean;
 
    overriding function Prepare
