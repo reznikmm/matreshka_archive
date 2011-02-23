@@ -10,8 +10,4 @@ project SQL is
       for Default_Switches ("Ada") use ("-g", "-gnat12");
    end Compiler;
 
---   package Linker is
---      for Default_Switches ("Ada") use ("-lsqlite3");
---   end Linker;
-
 end SQL;
