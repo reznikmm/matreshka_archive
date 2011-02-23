@@ -174,7 +174,7 @@ package body SQL.Queries is
    -- Is_Active --
    ---------------
 
-   function Is_Active (Self : in out SQL_Query'Class) return Boolean is
+   function Is_Active (Self : SQL_Query'Class) return Boolean is
    begin
       if not Self.Data.Is_Valid then
          --  Returns when internal object was invalidated.

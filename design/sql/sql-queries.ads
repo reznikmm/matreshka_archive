@@ -96,7 +96,7 @@ package SQL.Queries is
    --
    --  Sets the query to inactive. Bound values retain their values.
 
-   function Is_Active (Self : in out SQL_Query'Class) return Boolean;
+   function Is_Active (Self : SQL_Query'Class) return Boolean;
    --  Returns True if the query is active. An active SQL_Query is one that has
    --  been executed successfully but not yet finished with. When you are
    --  finished with an active query, you can make make the query inactive by
