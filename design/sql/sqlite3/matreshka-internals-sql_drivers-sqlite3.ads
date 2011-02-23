@@ -126,6 +126,7 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
     (Handle     : sqlite3_stmt_Access;
      Index      : Interfaces.C.int;
      Text       : Utf16_Code_Unit_Access;
+     nBytes     : Interfaces.C.int;
      Destructor : Utf16_Code_Unit_Access_Destructor) return Interfaces.C.int;
    pragma Import (C, sqlite3_bind_text16);
 

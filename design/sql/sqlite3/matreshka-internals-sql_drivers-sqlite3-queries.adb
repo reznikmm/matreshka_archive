@@ -115,6 +115,9 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
           Index,
           League.Strings.Internals.Internal
            (League.Values.Strings.Get (Value)).Value (0)'Access,
+          Interfaces.C.int
+           (League.Strings.Internals.Internal
+             (League.Values.Strings.Get (Value)).Unused * 2),
           null));
       --  Copy of string value is stored in the parameters map, so provides
       --  warranty that it will not be deallocated/modified till another value
