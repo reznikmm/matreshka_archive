@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 --  This package provides abstract types to define database and query
 --  abstractions for databases. Database drivers should provide implementation
---  of both abstrations.
+--  of both abstractions.
 --
 --  Note: database driver should avoid raising of exceptions, instead it should
 --  reports failures of operations in specified way and be ready to provide
@@ -81,7 +81,7 @@ package Matreshka.Internals.SQL_Drivers is
    not overriding function Open
     (Self    : not null access Abstract_Database;
      Options : League.Strings.Universal_String) return Boolean is abstract;
-   --  Opens database connection using specified options.
+   --  Opens database connection.
    --
    --  The function must return True on success and False on failure.
 
@@ -200,6 +200,15 @@ package Matreshka.Internals.SQL_Drivers is
    --  Decrements internal reference counter and deallocates object when there
    --  are no reference to it any more. Sets Self to null always.
 
+   -------------
+   -- Factory --
+   -------------
+
+   function Create
+    (Driver : League.Strings.Universal_String) return not null Database_Access;
+   --  Creates new database object using registered factory. Returns reference
+   --  to dummy database object when driver is not registered.
+
 private
 
    type Abstract_Database is abstract tagged limited record
@@ -220,5 +229,20 @@ private
      Database : not null Database_Access);
    --  Initializes new object of Abstract_Query type. It inserts object into
    --  the list of query objects of database.
+
+   type Abstract_Factory is abstract tagged limited null record;
+
+   type Factory_Access is access all Abstract_Factory'Class;
+
+   not overriding function Create
+    (Self : not null access Abstract_Factory)
+       return not null Database_Access is abstract;
+   --  Creates new database object.
+
+   procedure Register
+    (Name    : League.Strings.Universal_String;
+     Factory : not null Factory_Access);
+   --  Register factory. Factory is never deallocated and can be allocated
+   --  statically.
 
 end Matreshka.Internals.SQL_Drivers;

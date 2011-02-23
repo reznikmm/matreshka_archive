@@ -44,7 +44,6 @@
 with Ada.Streams;
 
 with League.Text_Codecs;
-with Matreshka.Internals.SQL_Drivers.SQLite3.Databases;
 with SQL.Queries.Internals;
 
 package body SQL.Databases is
@@ -93,7 +92,7 @@ package body SQL.Databases is
    begin
       return
        (Ada.Finalization.Limited_Controlled with
-          new Matreshka.Internals.SQL_Drivers.SQLite3.Databases.SQLite3_Database,
+          Matreshka.Internals.SQL_Drivers.Create (Driver),
           Options);
    end Create;
 

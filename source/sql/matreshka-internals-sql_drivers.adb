@@ -41,11 +41,38 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Containers.Hashed_Maps;
 with Ada.Unchecked_Deallocation;
 
+with League.Strings.Hash;
 with Matreshka.Internals.SQL_Drivers.Dummy;
 
 package body Matreshka.Internals.SQL_Drivers is
+
+   package Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           Factory_Access,
+           League.Strings.Hash,
+           League.Strings."=");
+
+   Factories : Maps.Map;
+
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (Driver : League.Strings.Universal_String)
+       return not null Database_Access is
+   begin
+      if Factories.Contains (Driver) then
+         return Factories.Element (Driver).Create;
+
+      else
+         return Dummy.Empty_Database'Access;
+      end if;
+   end Create;
 
    -----------------
    -- Dereference --
@@ -211,5 +238,16 @@ package body Matreshka.Internals.SQL_Drivers is
          Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
       end if;
    end Reference;
+
+   --------------
+   -- Register --
+   --------------
+
+   procedure Register
+    (Name    : League.Strings.Universal_String;
+     Factory : not null Factory_Access) is
+   begin
+      Factories.Insert (Name, Factory);
+   end Register;
 
 end Matreshka.Internals.SQL_Drivers;
