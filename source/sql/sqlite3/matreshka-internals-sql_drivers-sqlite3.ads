@@ -126,9 +126,32 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
 --#define SQLITE_CONFIG_GETPCACHE    15  /* sqlite3_pcache_methods* */
 --#define SQLITE_CONFIG_LOG          16  /* xFunc, void* */
 
+   SQLITE_INTEGER : constant := 1;
+   SQLITE_FLOAT   : constant := 2;
+   SQLITE_TEXT    : constant := 3;
+   SQLITE_BLOB    : constant := 4;
+   SQLITE_NULL    : constant := 5;
+
    ---------------
    -- Functions --
    ---------------
+
+   function sqlite3_bind_double
+    (Handle : sqlite3_stmt_Access;
+     Index  : Interfaces.C.int;
+     Value  : Interfaces.C.double) return Interfaces.C.int;
+   pragma Import (C, sqlite3_bind_double);
+
+   function sqlite3_bind_int64
+    (Handle : sqlite3_stmt_Access;
+     Index  : Interfaces.C.int;
+     Value  : Interfaces.Integer_64) return Interfaces.C.int;
+   pragma Import (C, sqlite3_bind_int64);
+
+   function sqlite3_bind_null
+    (Handle : sqlite3_stmt_Access;
+     Index  : Interfaces.C.int) return Interfaces.C.int;
+   pragma Import (C, sqlite3_bind_null);
 
    function sqlite3_bind_parameter_count
     (Handle : sqlite3_stmt_Access) return Interfaces.C.int;
@@ -155,10 +178,25 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
      iCol   : Interfaces.C.int) return Interfaces.C.int;
    pragma Import (C, sqlite3_column_bytes16);
 
+   function sqlite3_column_double
+    (Handle : sqlite3_stmt_Access;
+     iCol   : Interfaces.C.int) return Interfaces.C.double;
+   pragma Import (C, sqlite3_column_double);
+
+   function sqlite3_column_int64
+    (Handle : sqlite3_stmt_Access;
+     iCol   : Interfaces.C.int) return Interfaces.Integer_64;
+   pragma Import (C, sqlite3_column_int64);
+
    function sqlite3_column_text16
     (Handle : sqlite3_stmt_Access;
      iCol   : Interfaces.C.int) return Utf16_Code_Unit_Access;
    pragma Import (C, sqlite3_column_text16);
+
+   function sqlite3_column_type
+    (Handle : sqlite3_stmt_Access;
+     iCol   : Interfaces.C.int) return Interfaces.C.int;
+   pragma Import (C, sqlite3_column_type);
 
    function sqlite3_config (Option : Interfaces.C.int) return Interfaces.C.int;
    pragma Import (C, sqlite3_config);

@@ -103,24 +103,52 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       Index := sqlite3_bind_parameter_index (Self.Handle, C_Name);
 
       if Index = 0 then
+         --  There is no parameter with specified name.
+
          return;
       end if;
 
       Self.Parameters.Include (Name, Value);
 
-      Self.Call
-       (sqlite3_bind_text16
-         (Self.Handle,
-          Index,
-          League.Strings.Internals.Internal
-           (League.Values.Get (Value)).Value (0)'Access,
-          Interfaces.C.int
-           (League.Strings.Internals.Internal
-             (League.Values.Get (Value)).Unused * 2),
-          null));
-      --  Copy of string value is stored in the parameters map, so provides
-      --  warranty that it will not be deallocated/modified till another value
-      --  will be bind. As result, copy of string data is not needed.
+      if League.Values.Is_Empty (Value) then
+         --  Bind NULL value of any type (SQLite3 doesn't distinguish type of
+         --  NULL value).
+
+         Self.Call (sqlite3_bind_null (Self.Handle, Index));
+
+      elsif League.Values.Is_Universal_String (Value) then
+         --  Bind text value.
+
+         Self.Call
+          (sqlite3_bind_text16
+            (Self.Handle,
+             Index,
+             League.Strings.Internals.Internal
+              (League.Values.Get (Value)).Value (0)'Access,
+             Interfaces.C.int
+              (League.Strings.Internals.Internal
+                (League.Values.Get (Value)).Unused * 2),
+             null));
+         --  Copy of string value is stored in the parameters map, so provides
+	 --  warranty that it will not be deallocated/modified till another
+         --  value will be bind. As result, copy of string data is not needed.
+
+      elsif League.Values.Is_Abstract_Integer (Value) then
+         --  Bind integer value.
+
+         Self.Call
+          (sqlite3_bind_int64 (Self.Handle, Index, League.Values.Get (Value)));
+
+      elsif League.Values.Is_Abstract_Float (Value) then
+         --  Bind float value.
+
+         Self.Call
+          (sqlite3_bind_double
+            (Self.Handle,
+             Index,
+             Interfaces.C.double
+              (League.Values.Universal_Float'(League.Values.Get (Value)))));
+      end if;
    end Bind_Value;
 
    ----------
@@ -138,15 +166,25 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
       case Code is
          when SQLITE_OK =>
+            --  Operation executed successfully.
+
             null;
 
          when SQLITE_DONE =>
+            --  When operation can retrieve row this reasult means that there
+            --  is no row retrived.
+
             Self.Has_Row := False;
 
          when SQLITE_ROW =>
+            --  When operation can retrieve row this reasult means that there
+            --  is row retrived.
+
             Self.Has_Row := True;
 
          when others =>
+            --  All others return codes are errors.
+
             Self.Success := False;
             Self.Error :=
               String_Utilities.To_Universal_String
@@ -362,18 +400,53 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
          return Value;
       end if;
 
-      Text :=
-        sqlite3_column_text16 (Self.Handle, Interfaces.C.int (Index - 1));
+      case sqlite3_column_type (Self.Handle, Interfaces.C.int (Index - 1)) is
+         when SQLITE_INTEGER =>
+            --  Create universal integer value.
 
-      League.Values.Set_Tag (Value, League.Values.Universal_String_Tag);
+            League.Values.Set_Tag (Value, League.Values.Universal_Integer_Tag);
+            League.Values.Set
+             (Value,
+              sqlite3_column_int64
+               (Self.Handle, Interfaces.C.int (Index - 1)));
 
-      if Text /= null then
-         Length :=
-           Matreshka.Internals.Utf16.Utf16_String_Index
-            (sqlite3_column_bytes16
-              (Self.Handle, Interfaces.C.int (Index - 1)));
-         League.Values.Set (Value, To_Universal_String (Text, Length / 2));
-      end if;
+         when SQLITE_FLOAT =>
+            --  Create universal float value.
+
+            League.Values.Set_Tag (Value, League.Values.Universal_Float_Tag);
+            League.Values.Set
+             (Value,
+              League.Values.Universal_Float
+               (sqlite3_column_double
+                 (Self.Handle, Interfaces.C.int (Index - 1))));
+
+         when SQLITE_TEXT =>
+            --  Create universal string value.
+
+            Text :=
+              sqlite3_column_text16
+               (Self.Handle, Interfaces.C.int (Index - 1));
+            Length :=
+              Matreshka.Internals.Utf16.Utf16_String_Index
+               (sqlite3_column_bytes16
+                 (Self.Handle, Interfaces.C.int (Index - 1)));
+
+            League.Values.Set_Tag (Value, League.Values.Universal_String_Tag);
+            League.Values.Set (Value, To_Universal_String (Text, Length / 2));
+
+         when SQLITE_BLOB =>
+            --  Not supported yet.
+
+            null;
+
+         when SQLITE_NULL =>
+            --  Value is initialized to be empty by default.
+
+            null;
+
+         when others =>
+            null;
+      end case;
 
       return Value;
    end Value;
