@@ -99,6 +99,22 @@ package body League.Values is
    -----------------
 
    overriding function Constructor
+    (Is_Empty : not null access Boolean) return Universal_Float_Container
+   is
+      pragma Assert (Is_Empty.all);
+
+   begin
+      return
+       (Counter  => <>,
+        Is_Empty => Is_Empty.all,
+        Value    => <>);
+   end Constructor;
+
+   -----------------
+   -- Constructor --
+   -----------------
+
+   overriding function Constructor
     (Is_Empty : not null access Boolean) return Universal_Integer_Container
    is
       pragma Assert (Is_Empty.all);
@@ -177,6 +193,21 @@ package body League.Values is
    -----------
 
    overriding function First
+    (Self : not null access constant Universal_Float_Container)
+       return Universal_Float
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return Universal_Float'First;
+   end First;
+
+
+   -----------
+   -- First --
+   -----------
+
+   overriding function First
     (Self : not null access constant Universal_Integer_Container)
        return Universal_Integer
    is
@@ -184,6 +215,19 @@ package body League.Values is
 
    begin
       return Universal_Integer'First;
+   end First;
+
+   -----------
+   -- First --
+   -----------
+
+   function First (Self : Value) return Universal_Float is
+   begin
+      if Self.Data.all not in Abstract_Float_Container'Class then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      return Abstract_Float_Container'Class (Self.Data.all).First;
    end First;
 
    -----------
@@ -198,6 +242,17 @@ package body League.Values is
 
       return Abstract_Integer_Container'Class (Self.Data.all).First;
    end First;
+
+   ---------
+   -- Get --
+   ---------
+
+   overriding function Get
+    (Self : not null access constant Universal_Float_Container)
+       return Universal_Float is
+   begin
+      return Self.Value;
+   end Get;
 
    ---------
    -- Get --
@@ -233,6 +288,23 @@ package body League.Values is
    -- Get --
    ---------
 
+   function Get (Self : Value) return Universal_Float is
+   begin
+      if Self.Data.all not in Abstract_Float_Container'Class then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      return Abstract_Float_Container'Class (Self.Data.all).Get;
+   end Get;
+
+   ---------
+   -- Get --
+   ---------
+
    function Get (Self : Value) return Universal_Integer is
    begin
       if Self.Data.all not in Abstract_Integer_Container'Class then
@@ -254,6 +326,15 @@ package body League.Values is
    begin
       return Tag (Self.Data'Tag);
    end Get_Tag;
+
+   -----------------------
+   -- Is_Abstract_Float --
+   -----------------------
+
+   function Is_Abstract_Float (Self : Value) return Boolean is
+   begin
+      return Self.Data.all in Abstract_Float_Container'Class;
+   end Is_Abstract_Float;
 
    --------------------------
    -- Is_Abstract_Integer --
@@ -287,6 +368,20 @@ package body League.Values is
    ----------
 
    overriding function Last
+    (Self : not null access constant Universal_Float_Container)
+       return Universal_Float
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return Universal_Float'Last;
+   end Last;
+
+   ----------
+   -- Last --
+   ----------
+
+   overriding function Last
     (Self : not null access constant Universal_Integer_Container)
        return Universal_Integer
    is
@@ -300,7 +395,20 @@ package body League.Values is
    -- Last --
    ----------
 
-   function Last (Self : Value) return Interfaces.Integer_64 is
+   function Last (Self : Value) return Universal_Float is
+   begin
+      if Self.Data.all not in Abstract_Float_Container'Class then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      return Abstract_Float_Container'Class (Self.Data.all).Last;
+   end Last;
+
+   ----------
+   -- Last --
+   ----------
+
+   function Last (Self : Value) return Universal_Integer is
    begin
       if Self.Data.all not in Abstract_Integer_Container'Class then
          raise Constraint_Error with "invalid type of value";
@@ -325,8 +433,8 @@ package body League.Values is
    ---------
 
    overriding procedure Set
-    (Self : not null access Universal_Integer_Container;
-     To   : Universal_Integer) is
+    (Self : not null access Universal_Float_Container;
+     To   : Universal_Float) is
    begin
       Self.Is_Empty := False;
       Self.Value    := To;
@@ -336,23 +444,12 @@ package body League.Values is
    -- Set --
    ---------
 
-   procedure Set (Self : in out Value; To : Universal_Integer) is
-      Tag      : constant Ada.Tags.Tag := Self.Data'Tag;
-      Aux      : aliased Interfaces.Integer_64 := To;
-      Is_Empty : aliased Boolean := True;
-
+   overriding procedure Set
+    (Self : not null access Universal_Integer_Container;
+     To   : Universal_Integer) is
    begin
-      if Self.Data.all not in Abstract_Integer_Container'Class then
-         raise Constraint_Error with "invalid type of value";
-      end if;
-
-      --  XXX This subprogram can be improved to reuse shared segment when
-      --  possible.
-
-      Dereference (Self.Data);
-      Self.Data :=
-        new Abstract_Container'Class'(Create (Tag, Is_Empty'Access));
-      Abstract_Integer_Container'Class (Self.Data.all).Set (To);
+      Self.Is_Empty := False;
+      Self.Value    := To;
    end Set;
 
    ---------
@@ -376,6 +473,50 @@ package body League.Values is
       Self.Data :=
         new Universal_String_Container'
              (Counter => <>, Is_Empty => False, Value => Aux);
+   end Set;
+
+   ---------
+   -- Set --
+   ---------
+
+   procedure Set (Self : in out Value; To : Universal_Float) is
+      Tag      : constant Ada.Tags.Tag := Self.Data'Tag;
+      Is_Empty : aliased Boolean := True;
+
+   begin
+      if Self.Data.all not in Abstract_Float_Container'Class then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      --  XXX This subprogram can be improved to reuse shared segment when
+      --  possible.
+
+      Dereference (Self.Data);
+      Self.Data :=
+        new Abstract_Container'Class'(Create (Tag, Is_Empty'Access));
+      Abstract_Float_Container'Class (Self.Data.all).Set (To);
+   end Set;
+
+   ---------
+   -- Set --
+   ---------
+
+   procedure Set (Self : in out Value; To : Universal_Integer) is
+      Tag      : constant Ada.Tags.Tag := Self.Data'Tag;
+      Is_Empty : aliased Boolean := True;
+
+   begin
+      if Self.Data.all not in Abstract_Integer_Container'Class then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      --  XXX This subprogram can be improved to reuse shared segment when
+      --  possible.
+
+      Dereference (Self.Data);
+      Self.Data :=
+        new Abstract_Container'Class'(Create (Tag, Is_Empty'Access));
+      Abstract_Integer_Container'Class (Self.Data.all).Set (To);
    end Set;
 
    -------------

@@ -62,6 +62,7 @@ package League.Values is
    type Tag (<>) is private;
 
    Universal_Integer_Tag : constant Tag;
+   Universal_Float_Tag   : constant Tag;
    Universal_String_Tag  : constant Tag;
 
    ---------------------------------
@@ -120,6 +121,32 @@ package League.Values is
    --  Returns minimal value of the range of valid values.
 
    function Last (Self : Value) return Universal_Integer;
+   --  Returns maximum value of the range of valid values.
+
+   --------------------------------
+   -- Universal Float Operations --
+   --------------------------------
+
+   subtype Universal_Float is Interfaces.IEEE_Float_64;
+   --  Largest supported float type.
+
+   function Is_Abstract_Float (Self : Value) return Boolean;
+   --  Returns True if contained value has any float type.
+
+   function Get (Self : Value) return Universal_Float;
+   --  Returns internal value as a longest supported float.
+
+   procedure Set (Self : in out Value; To : Universal_Float);
+   --  Set value from a longest supported float. Raises Contraint_Error if
+   --  value is outside of the range of valid values for actual float type.
+
+--   function Get_Digits (Self : Value) return Universal_Float;
+--   --  Returns number of digits.
+
+   function First (Self : Value) return Universal_Float;
+   --  Returns minimal value of the range of valid values.
+
+   function Last (Self : Value) return Universal_Float;
    --  Returns maximum value of the range of valid values.
 
 private
@@ -265,5 +292,69 @@ private
 
    Universal_Integer_Tag : constant Tag
      := Tag (Universal_Integer_Container'Tag);
+
+   --------------------------------
+   -- Abstract_Float_Container --
+   --------------------------------
+
+   --  Abstract_Float_Container is root container type to store float values.
+   --  There are two types which is derived from it: one to store "universal"
+   --  float, and other one to store value of named float type.
+
+   type Abstract_Float_Container is
+     abstract new Abstract_Container with null record;
+
+   not overriding function Get
+    (Self : not null access constant Abstract_Float_Container)
+       return Universal_Float is abstract;
+
+   not overriding procedure Set
+    (Self : not null access Abstract_Float_Container;
+     To   : Universal_Float) is abstract;
+
+   not overriding function First
+    (Self : not null access constant Abstract_Float_Container)
+       return Universal_Float is abstract;
+   --  Returns value of 'First attribute of type of stored value.
+
+   not overriding function Last
+    (Self : not null access constant Abstract_Float_Container)
+       return Universal_Float is abstract;
+   --  Returns value of 'Last attribute of type of stored value.
+
+   -------------------------------
+   -- Universal_Float_Container --
+   -------------------------------
+
+   --  Universal_Float_Container is container for value of "universal"
+   --  float type. This type is compatible with any float types and used
+   --  when there are no additional information is available.
+
+   type Universal_Float_Container is
+     new Abstract_Float_Container with
+   record
+      Value : Universal_Float;
+   end record;
+
+   overriding function Constructor
+    (Is_Empty : not null access Boolean) return Universal_Float_Container;
+
+   overriding function Get
+    (Self : not null access constant Universal_Float_Container)
+       return Universal_Float;
+
+   overriding procedure Set
+    (Self : not null access Universal_Float_Container;
+     To   : Universal_Float);
+
+   overriding function First
+    (Self : not null access constant Universal_Float_Container)
+       return Universal_Float;
+
+   overriding function Last
+    (Self : not null access constant Universal_Float_Container)
+       return Universal_Float;
+
+   Universal_Float_Tag : constant Tag := Tag (Universal_Float_Container'Tag);
 
 end League.Values;
