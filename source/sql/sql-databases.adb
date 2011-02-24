@@ -41,14 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Streams;
-
 with League.Text_Codecs;
 with SQL.Queries.Internals;
 
 package body SQL.Databases is
-
-   function To_String (Item : League.Strings.Universal_String) return String;
 
    procedure Raise_SQL_Error
     (Self : in out SQL_Database'Class; Success : Boolean);
@@ -163,7 +159,8 @@ package body SQL.Databases is
     (Self : in out SQL_Database'Class; Success : Boolean) is
    begin
       if not Success then
-         raise SQL_Error with To_String (Self.Error_Message);
+         raise SQL_Error
+           with League.Text_Codecs.To_Exception_Message (Self.Error_Message);
       end if;
    end Raise_SQL_Error;
 
@@ -175,22 +172,6 @@ package body SQL.Databases is
    begin
       null;
    end Rollback;
-
-   ---------------
-   -- To_String --
-   ---------------
-
-   function To_String (Item : League.Strings.Universal_String) return String is
-      Stream : constant Ada.Streams.Stream_Element_Array
-        := League.Text_Codecs.Codec_For_Application_Locale.Encode
-            (Item).To_Stream_Element_Array;
-      Result : String (1 .. Stream'Length);
-      for Result'Address use Stream'Address;
-      pragma Import (Ada, Result);
-
-   begin
-      return Result;
-   end To_String;
 
    -----------------
    -- Transaction --

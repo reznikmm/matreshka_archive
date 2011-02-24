@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Streams;
-
 with League.Text_Codecs;
 with SQL.Databases.Internals;
 
@@ -52,8 +50,6 @@ package body SQL.Queries is
     (Self : in out SQL_Query'Class; Success : Boolean);
    --  Raises SQL_Error when Success is not equal to True. Constructs exception
    --  message from Error_Message of query.
-
-   function To_String (Item : League.Strings.Universal_String) return String;
 
    ------------
    -- Adjust --
@@ -251,25 +247,10 @@ package body SQL.Queries is
     (Self : in out SQL_Query'Class; Success : Boolean) is
    begin
       if not Success then
-         raise SQL_Error with To_String (Self.Error_Message);
+         raise SQL_Error
+           with League.Text_Codecs.To_Exception_Message (Self.Error_Message);
       end if;
    end Raise_SQL_Error;
-
-   ---------------
-   -- To_String --
-   ---------------
-
-   function To_String (Item : League.Strings.Universal_String) return String is
-      Stream : constant Ada.Streams.Stream_Element_Array
-        := League.Text_Codecs.Codec_For_Application_Locale.Encode
-            (Item).To_Stream_Element_Array;
-      Result : String (1 .. Stream'Length);
-      for Result'Address use Stream'Address;
-      pragma Import (Ada, Result);
-
-   begin
-      return Result;
-   end To_String;
 
    -----------
    -- Value --

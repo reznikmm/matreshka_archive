@@ -135,6 +135,24 @@ package body League.Text_Codecs is
 
    procedure Initialize is separate;
 
+   --------------------------
+   -- To_Exception_Message --
+   --------------------------
+
+   function To_Exception_Message
+    (Item : League.Strings.Universal_String) return String
+   is
+      Stream : constant Ada.Streams.Stream_Element_Array
+        := League.Text_Codecs.Locale_Codec.Encode
+            (Item).To_Stream_Element_Array;
+      Result : String (1 .. Stream'Length);
+      for Result'Address use Stream'Address;
+      pragma Import (Ada, Result);
+
+   begin
+      return Result;
+   end To_Exception_Message;
+
 begin
    Initialize;
 end League.Text_Codecs;

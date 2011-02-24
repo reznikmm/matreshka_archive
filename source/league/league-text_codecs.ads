@@ -72,6 +72,14 @@ package League.Text_Codecs is
    --  to convert Universal_String into form applicable for interaction with
    --  8-bit API of operating system.
 
+   function To_Exception_Message
+    (Item : League.Strings.Universal_String) return String;
+   --  Converts text into the form suitable to be used with raise statement
+   --  and Ada.Exceptions.Raise_Exception procedure.
+   --
+   --  Note: character encoding for exception's message is compiler dependent,
+   --  thus this function must not be used for other purpose.
+
 private
 
    type Text_Codec is tagged record
