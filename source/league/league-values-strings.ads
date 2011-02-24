@@ -75,10 +75,9 @@ private
       Value : League.Strings.Universal_String;
    end record;
 
-   overriding function Allocate (Self : not null access String_Container)
---     return not null Container_Access;
---  XXX GNAT 20090503 bug
-     return Container_Access;
+   overriding function Allocate
+    (Self : not null access String_Container)
+       return not null Container_Access;
 
    Type_Of_Value : constant Value_Type := Value_Type (String_Container'Tag);
 

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -71,10 +71,9 @@ private
       Value : Num;
    end record;
 
-   overriding function Allocate (Self : not null access Integer_Container)
---     return not null Container_Access;
---  XXX GNAT 20090503 bug
-     return Container_Access;
+   overriding function Allocate
+    (Self : not null access Integer_Container)
+       return not null Container_Access;
 
    overriding function Constructor
     (Value : not null access Matreshka.Internals.Host_Types.Longest_Integer)

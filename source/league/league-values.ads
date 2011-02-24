@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -80,11 +80,9 @@ private
    not overriding procedure Finalize
     (Self : not null access Abstract_Container) is null;
 
-   not overriding function Allocate (Self : not null access Abstract_Container)
---     return not null Container_Access
---  XXX GNAT 20090503 bug
-     return Container_Access
-       is abstract;
+   not overriding function Allocate
+    (Self : not null access Abstract_Container)
+       return not null Container_Access is abstract;
    --  Allocates a new container. Initial value of reference counter must be
    --  initialized to one (it is done automatically).
 

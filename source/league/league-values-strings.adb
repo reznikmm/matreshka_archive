@@ -48,10 +48,8 @@ package body League.Values.Strings is
    -- Allocate --
    --------------
 
-   overriding function Allocate (Self : not null access String_Container)
---     return not null Container_Access
---  XXX GNAT 20090503 bug
-     return Container_Access
+   overriding function Allocate
+    (Self : not null access String_Container) return not null Container_Access
    is
       pragma Unreferenced (Self);
 
