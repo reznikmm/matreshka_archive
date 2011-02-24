@@ -59,6 +59,20 @@ package body League.Values is
       Reference (Self.Data);
    end Adjust;
 
+   --------------
+   -- Allocate --
+   --------------
+
+   overriding function Allocate
+    (Self : not null access Universal_String_Container)
+       return not null Container_Access
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return new Universal_String_Container;
+   end Allocate;
+
    ---------------------------
    -- Check_Is_Derived_Type --
    ---------------------------
@@ -172,14 +186,25 @@ package body League.Values is
       Dereference (Self.Data);
    end Finalize;
 
-   --------------
-   -- Get_Type --
-   --------------
+   ---------
+   -- Get --
+   ---------
 
-   function Get_Type (Self : Value) return Value_Type is
+   function Get (Self : Value) return League.Strings.Universal_String is
    begin
-      return Value_Type (Self.Tag);
-   end Get_Type;
+      Check_Is_Type (Self, Universal_String_Container'Tag);
+
+      return Universal_String_Container'Class (Self.Data.all).Value;
+   end Get;
+
+   -------------
+   -- Get_Tag --
+   -------------
+
+   function Get_Tag (Self : Value) return Tag is
+   begin
+      return Tag (Self.Tag);
+   end Get_Tag;
 
    ---------------------
    -- Is_Derived_Type --
@@ -212,6 +237,15 @@ package body League.Values is
    begin
       return Self.Data = null;
    end Is_Empty;
+
+   -------------------------
+   -- Is_Universal_String --
+   -------------------------
+
+   function Is_Universal_String (Self : Value) return Boolean is
+   begin
+      return Self.Is_Derived_Type (Universal_String_Container'Tag);
+   end Is_Universal_String;
 
    -------------
    -- Is_Type --
@@ -256,17 +290,51 @@ package body League.Values is
       end if;
    end Reference;
 
-   --------------
-   -- Set_Type --
-   --------------
+   ---------
+   -- Set --
+   ---------
 
-   procedure Set_Type
+   procedure Set (Self : in out Value; To : League.Strings.Universal_String) is
+   begin
+      Check_Is_Untyped_Or_Is_Type (Self, Universal_String_Container'Tag);
+
+      if Self.Data = null then
+         Self.Data :=
+           new Universal_String_Container'
+                (Abstract_Container with Value => To);
+
+      else
+         Mutate (Self.Data);
+         Universal_String_Container (Self.Data.all).Value := To;
+      end if;
+
+      Self.Tag := Universal_String_Container'Tag;
+   end Set;
+
+   -------------
+   -- Set_Tag --
+   -------------
+
+   procedure Set_Tag
     (Self : in out Value;
-     To   : Value_Type)
-   is
+     To   : Tag) is
    begin
       Dereference (Self.Data);
       Self.Tag := Ada.Tags.Tag (To);
-   end Set_Type;
+   end Set_Tag;
+
+   --------------
+   -- To_Value --
+   --------------
+
+   function To_Value (Item : League.Strings.Universal_String) return Value is
+   begin
+      return
+        Value'(Ada.Finalization.Controlled with
+                 Tag  => Universal_String_Container'Tag,
+                 Data =>
+                   new Universal_String_Container'
+                        (Abstract_Container with Value => Item));
+   end To_Value;
 
 end League.Values;

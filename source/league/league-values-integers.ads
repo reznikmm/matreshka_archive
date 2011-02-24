@@ -70,7 +70,7 @@ package League.Values.Integers is
 
    procedure Set
     (Self      : in out Value;
-     Type_Hint : Value_Type;
+     Type_Hint : Tag;
      To        : Matreshka.Internals.Host_Types.Longest_Integer);
    --  Set value from a longest supported integer. Type_Hint represents
    --  expected type of the value. Raises Contraint_Error if value is outside

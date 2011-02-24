@@ -46,7 +46,6 @@ with Ada.Streams.Stream_IO;
 
 with League.Stream_Element_Vectors.Internals;
 with League.Text_Codecs;
-with League.Values.Strings;
 with Matreshka.Internals.Stream_Element_Vectors;
 with Matreshka.Internals.Unicode.Characters.Latin;
 
@@ -697,8 +696,7 @@ package body Matreshka.Internals.Settings.Ini_Files is
      Value : League.Values.Value) is
    begin
       Self.Modified := True;
-      Self.Values.Include
-       (Key, Encode_Value (League.Values.Strings.Get (Value)));
+      Self.Values.Include (Key, Encode_Value (League.Values.Get (Value)));
    end Set_Value;
 
    ----------
@@ -761,14 +759,14 @@ package body Matreshka.Internals.Settings.Ini_Files is
      Key  : League.Strings.Universal_String)
        return League.Values.Value is
    begin
-      return Aux : League.Values.Value do
-         if Self.Values.Contains (Key) then
-            League.Values.Strings.Set
-             (Aux,
-              Decode_Value
-               (Self.Values.Element (Key).To_Stream_Element_Array));
-         end if;
-      end return;
+      if Self.Values.Contains (Key) then
+         return
+           League.Values.To_Value
+            (Decode_Value (Self.Values.Element (Key).To_Stream_Element_Array));
+
+      else
+         return Aux : League.Values.Value;
+      end if;
    end Value;
 
 end Matreshka.Internals.Settings.Ini_Files;

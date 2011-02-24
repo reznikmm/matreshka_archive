@@ -63,7 +63,7 @@ package League.Values.Integers.Generic_Integers is
 
    procedure Set_Type (Self : in out Value);
 
-   Type_Of_Value : constant Value_Type;
+   Integer_Tag : constant Tag;
 
 private
 
@@ -92,6 +92,6 @@ private
    overriding function Last (Self : not null access Integer_Container)
      return Matreshka.Internals.Host_Types.Longest_Integer;
 
-   Type_Of_Value : constant Value_Type := Value_Type (Integer_Container'Tag);
+   Integer_Tag : constant Tag := Tag (Integer_Container'Tag);
 
 end League.Values.Integers.Generic_Integers;

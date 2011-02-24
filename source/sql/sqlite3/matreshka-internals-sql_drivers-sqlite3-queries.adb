@@ -46,7 +46,6 @@ with Interfaces.C;
 
 with League.Strings.Internals;
 with League.Text_Codecs;
-with League.Values.Strings;
 with Matreshka.Internals.Strings;
 with Matreshka.Internals.Unicode;
 with Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities;
@@ -114,10 +113,10 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
          (Self.Handle,
           Index,
           League.Strings.Internals.Internal
-           (League.Values.Strings.Get (Value)).Value (0)'Access,
+           (League.Values.Get (Value)).Value (0)'Access,
           Interfaces.C.int
            (League.Strings.Internals.Internal
-             (League.Values.Strings.Get (Value)).Unused * 2),
+             (League.Values.Get (Value)).Unused * 2),
           null));
       --  Copy of string value is stored in the parameters map, so provides
       --  warranty that it will not be deallocated/modified till another value
@@ -371,11 +370,10 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
            Matreshka.Internals.Utf16.Utf16_String_Index
             (sqlite3_column_bytes16
               (Self.Handle, Interfaces.C.int (Index - 1)));
-         League.Values.Strings.Set
-          (Value, To_Universal_String (Text, Length / 2));
+         League.Values.Set (Value, To_Universal_String (Text, Length / 2));
 
       else
-         League.Values.Set_Type (Value, League.Values.Strings.Type_Of_Value);
+         League.Values.Set_Tag (Value, League.Values.Universal_String_Tag);
       end if;
 
       return Value;

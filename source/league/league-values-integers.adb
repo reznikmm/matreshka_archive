@@ -111,7 +111,7 @@ package body League.Values.Integers is
    begin
       Check_Is_Derived_Type (Self, Abstract_Integer_Container'Tag);
 
-      Set (Self, Value_Type (Self.Tag), To);
+      Set (Self, Tag (Self.Tag), To);
    end Set;
 
    ---------
@@ -120,7 +120,7 @@ package body League.Values.Integers is
 
    procedure Set
     (Self      : in out Value;
-     Type_Hint : Value_Type;
+     Type_Hint : Tag;
      To        : Matreshka.Internals.Host_Types.Longest_Integer)
    is
       Aux : aliased Matreshka.Internals.Host_Types.Longest_Integer := To;

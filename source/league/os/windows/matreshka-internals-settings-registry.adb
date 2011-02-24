@@ -45,7 +45,6 @@ with Ada.Unchecked_Conversion;
 with Interfaces.C;
 
 with League.Strings.Internals;
-with League.Values.Strings;
 with Matreshka.Internals.Utf16;
 with Matreshka.Internals.Windows;
 
@@ -475,7 +474,7 @@ package body Matreshka.Internals.Settings.Registry is
 
       --  Extract value.
 
-      V := League.Values.Strings.Get (Value);
+      V := League.Values.Get (Value);
 
       --  Store string.
 
@@ -588,7 +587,7 @@ package body Matreshka.Internals.Settings.Registry is
                     V_Size'Unchecked_Access) = 0
                then
                   V (V'Last) := 0;
-                  League.Values.Strings.Set
+                  League.Values.Set
                    (Value,
                     Matreshka.Internals.Windows.To_Universal_String
                      (V (0)'Unchecked_Access));

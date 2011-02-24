@@ -1,7 +1,7 @@
 with Ada.Wide_Wide_Text_IO;
 
 with League.Strings;
-with League.Values.Strings;
+with League.Values;
 with Matreshka.Internals.SQL_Drivers.SQLite3.Factory;
 with SQL.Databases;
 with SQL.Queries;
@@ -35,8 +35,8 @@ begin
 
    begin
       Q.Prepare (+"INSERT INTO point (x, y) VALUES (:x, :y)");
-      Q.Bind_Value (+":y", League.Values.Strings.To_Value (+"xyz"));
-      Q.Bind_Value (+":x", League.Values.Strings.To_Value (+"abc"));
+      Q.Bind_Value (+":y", League.Values.To_Value (+"xyz"));
+      Q.Bind_Value (+":x", League.Values.To_Value (+"abc"));
       Q.Execute;
    end;
 
@@ -49,17 +49,12 @@ begin
 
       while Q.Next loop
          Ada.Wide_Wide_Text_IO.Put_Line
-          (League.Values.Strings.To_Universal_String
-            (Q.Value (1)).To_Wide_Wide_String
+          (League.Values.Get (Q.Value (1)).To_Wide_Wide_String
              & ":"
-             & League.Values.Strings.To_Universal_String
-                (Q.Value (2)).To_Wide_Wide_String
+             & League.Values.Get (Q.Value (2)).To_Wide_Wide_String
+             & Integer'Wide_Wide_Image (League.Values.Get (Q.Value (1)).Length)
              & Integer'Wide_Wide_Image
-                (League.Values.Strings.To_Universal_String
-                  (Q.Value (1)).Length)
-             & Integer'Wide_Wide_Image
-                (League.Values.Strings.To_Universal_String
-                  (Q.Value (2)).Length));
+                (League.Values.Get (Q.Value (2)).Length));
       end loop;
    end;
 

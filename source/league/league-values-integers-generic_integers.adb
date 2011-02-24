@@ -147,7 +147,7 @@ package body League.Values.Integers.Generic_Integers is
    begin
       Set
        (Self,
-        Value_Type (Integer_Container'Tag),
+        Tag (Integer_Container'Tag),
         Matreshka.Internals.Host_Types.Longest_Integer (To));
    end Set;
 
@@ -157,7 +157,7 @@ package body League.Values.Integers.Generic_Integers is
 
    procedure Set_Type (Self : in out Value) is
    begin
-      Set_Type (Self, Type_Of_Value);
+      Set_Tag (Self, Integer_Tag);
    end Set_Type;
 
 end League.Values.Integers.Generic_Integers;

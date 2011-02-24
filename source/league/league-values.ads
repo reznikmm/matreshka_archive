@@ -41,9 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  Values is generic mechanism to pass value of arbitrary type. This package
+--  provides generic interface for Value objects, and subprograms to manipulate
+--  most common data types. Non-empty object of Value type always has
+--  associated Tag, which desribes type of the value.
+------------------------------------------------------------------------------
 private with Ada.Finalization;
 private with Ada.Tags;
 
+with League.Strings;
 private with Matreshka.Internals.Atomics.Counters;
 
 package League.Values is
@@ -52,14 +58,21 @@ package League.Values is
 
    type Value is private;
 
-   type Value_Type (<>) is private;
+   type Tag (<>) is private;
 
-   function Get_Type (Self : Value) return Value_Type;
-   --  Returns current type of the value.
+--   Universal_Integer_Tag : constant Tag;
+--   Universal_Modular_Tag : constant Tag;
+--   Universal_Float_Tag   : constant Tag;
+   Universal_String_Tag  : constant Tag;
 
-   procedure Set_Type
-    (Self : in out Value;
-     To   : Value_Type);
+   ---------------------------------
+   -- Generic operations on Value --
+   ---------------------------------
+
+   function Get_Tag (Self : Value) return Tag;
+   --  Returns current tag of the value.
+
+   procedure Set_Tag (Self : in out Value; To : Tag);
    --  Sets type of the value. Free previous value and set current value to
    --  null.
 
@@ -69,7 +82,29 @@ package League.Values is
    procedure Clear (Self : in out Value);
    --  Reset Value to contain no value.
 
+   ---------------------------------
+   -- Universal String Operations --
+   ---------------------------------
+
+   function Is_Universal_String (Self : Value) return Boolean;
+   --  Returns True if contained value is string.
+
+   function Get (Self : Value) return League.Strings.Universal_String;
+   --  Returns contained value.
+
+   procedure Set
+    (Self : in out Value;
+     To   : League.Strings.Universal_String);
+   --  Set contained value to specified value.
+
+   function To_Value (Item : League.Strings.Universal_String) return Value;
+   --  Creates value which contains specified string.
+
 private
+
+   ------------------------
+   -- Abstract_Container --
+   ------------------------
 
    type Abstract_Container is abstract tagged limited record
       Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
@@ -92,7 +127,11 @@ private
 
    procedure Dereference (Self : in out Container_Access);
 
-   type Value_Type is new Ada.Tags.Tag;
+   -------------------
+   -- Value and Tag --
+   -------------------
+
+   type Tag is new Ada.Tags.Tag;
 
    type Value is new Ada.Finalization.Controlled with record
       Tag  : Ada.Tags.Tag     := Ada.Tags.No_Tag;
@@ -130,5 +169,19 @@ private
    function Is_Type (Self : Value'Class; Known_Tag : Ada.Tags.Tag)
      return Boolean;
    --  Returns True if actual type is specified known type.
+
+   ----------------------
+   -- Universal_String --
+   ----------------------
+
+   type Universal_String_Container is new Abstract_Container with record
+      Value : League.Strings.Universal_String;
+   end record;
+
+   overriding function Allocate
+    (Self : not null access Universal_String_Container)
+       return not null Container_Access;
+
+   Universal_String_Tag : constant Tag := Tag (Universal_String_Container'Tag);
 
 end League.Values;
