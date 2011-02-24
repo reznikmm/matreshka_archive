@@ -92,7 +92,7 @@ package body League.Values.Generic_Integers is
    function Get (Self : Value) return Num is
    begin
       if Self.Data.all not in Integer_Container
-        or Self.Data.all not in Universal_Integer_Container
+        and Self.Data.all not in Universal_Integer_Container
       then
          raise Constraint_Error with "invalid type of value";
       end if;
@@ -141,7 +141,7 @@ package body League.Values.Generic_Integers is
    procedure Set (Self : in out Value; To : Num) is
    begin
       if Self.Data.all not in Integer_Container
-        or Self.Data.all not in Universal_Integer_Container
+        and Self.Data.all not in Universal_Integer_Container
       then
          raise Constraint_Error with "invalid type of value";
       end if;
