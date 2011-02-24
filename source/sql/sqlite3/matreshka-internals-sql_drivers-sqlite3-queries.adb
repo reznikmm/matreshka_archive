@@ -365,15 +365,14 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       Text :=
         sqlite3_column_text16 (Self.Handle, Interfaces.C.int (Index - 1));
 
+      League.Values.Set_Tag (Value, League.Values.Universal_String_Tag);
+
       if Text /= null then
          Length :=
            Matreshka.Internals.Utf16.Utf16_String_Index
             (sqlite3_column_bytes16
               (Self.Handle, Interfaces.C.int (Index - 1)));
          League.Values.Set (Value, To_Universal_String (Text, Length / 2));
-
-      else
-         League.Values.Set_Tag (Value, League.Values.Universal_String_Tag);
       end if;
 
       return Value;

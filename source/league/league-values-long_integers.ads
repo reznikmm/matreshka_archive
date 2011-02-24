@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,8 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Values.Integers.Generic_Integers;
+with League.Values.Generic_Integers;
 
-package League.Values.Integer_Values is
-  new League.Values.Integers.Generic_Integers (Integer);
-pragma Preelaborate (League.Values.Integer_Values);
+package League.Values.Long_Integers is
+  new League.Values.Generic_Integers (Long_Integer);
+pragma Preelaborate (League.Values.Long_Integers);

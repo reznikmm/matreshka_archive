@@ -41,29 +41,27 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This generic package allows to store value of arbitrary integer type in
+--  the Value.
+------------------------------------------------------------------------------
 
 generic
    type Num is range <>;
 
-package League.Values.Integers.Generic_Integers is
+package League.Values.Generic_Integers is
 
    pragma Preelaborate;
 
-   function Is_Integer (Self : Value) return Boolean;
-   --  Returns True if contained value has integer type.
+   Integer_Tag : constant Tag;
 
    function Get (Self : Value) return Num;
    --  Returns internal value.
 
-   procedure Set
-    (Self : in out Value;
-     To   : Num);
-   --  Set value. Associate the type with value if Value is empty, otherwise
-   --  check integer type and raise Constraint_Error if value has wrong type.
+   procedure Set (Self : in out Value; To : Num);
+   --  Set value. Tag of the value must be set before this call.
 
-   procedure Set_Type (Self : in out Value);
-
-   Integer_Tag : constant Tag;
+   function To_Value (Item : Num) return Value;
+   --  Creates new Value from specified value.
 
 private
 
@@ -71,27 +69,24 @@ private
       Value : Num;
    end record;
 
-   overriding function Allocate
-    (Self : not null access Integer_Container)
-       return not null Container_Access;
-
    overriding function Constructor
-    (Value : not null access Matreshka.Internals.Host_Types.Longest_Integer)
-       return Integer_Container;
+    (Is_Empty : not null access Boolean) return Integer_Container;
 
-   overriding function Get (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer;
+   overriding function Get
+    (Self : not null access constant Integer_Container)
+       return Universal_Integer;
 
    overriding procedure Set
-    (Self : not null access Integer_Container;
-     To   : Matreshka.Internals.Host_Types.Longest_Integer);
+    (Self : not null access Integer_Container; To : Universal_Integer);
 
-   overriding function First (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer;
+   overriding function First
+    (Self : not null access constant Integer_Container)
+       return Universal_Integer;
 
-   overriding function Last (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer;
+   overriding function Last
+    (Self : not null access constant Integer_Container)
+       return Universal_Integer;
 
    Integer_Tag : constant Tag := Tag (Integer_Container'Tag);
 
-end League.Values.Integers.Generic_Integers;
+end League.Values.Generic_Integers;

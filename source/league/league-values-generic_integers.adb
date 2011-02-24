@@ -42,54 +42,47 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body League.Values.Integers.Generic_Integers is
-
-   --------------
-   -- Allocate --
-   --------------
-
-   overriding function Allocate
-    (Self : not null access Integer_Container) return not null Container_Access
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return new Integer_Container;
-   end Allocate;
+package body League.Values.Generic_Integers is
 
    -----------------
    -- Constructor --
    -----------------
 
    overriding function Constructor
-    (Value : not null access Matreshka.Internals.Host_Types.Longest_Integer)
-       return Integer_Container is
+    (Is_Empty : not null access Boolean) return Integer_Container
+   is
+      pragma Assert (Is_Empty.all);
+
    begin
       return
-        Integer_Container'(Abstract_Container with Value => Num (Value.all));
+       (Counter  => <>,
+        Is_Empty => Is_Empty.all,
+        Value    => <>);
    end Constructor;
 
    -----------
    -- First --
    -----------
 
-   overriding function First (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer
+   overriding function First
+    (Self : not null access constant Integer_Container)
+       return Universal_Integer
    is
       pragma Unreferenced (Self);
 
    begin
-      return Matreshka.Internals.Host_Types.Longest_Integer (Num'First);
+      return Universal_Integer (Num'First);
    end First;
 
    ---------
    -- Get --
    ---------
 
-   overriding function Get (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer is
+   overriding function Get
+    (Self : not null access constant Integer_Container)
+       return Universal_Integer is
    begin
-      return Matreshka.Internals.Host_Types.Longest_Integer (Self.Value);
+      return Universal_Integer (Self.Value);
    end Get;
 
    ---------
@@ -98,32 +91,36 @@ package body League.Values.Integers.Generic_Integers is
 
    function Get (Self : Value) return Num is
    begin
-      Check_Is_Type (Self, Integer_Container'Tag);
-      Check_Is_Not_Null (Self);
+      if Self.Data.all not in Integer_Container
+        or Self.Data.all not in Universal_Integer_Container
+      then
+         raise Constraint_Error with "invalid type of value";
+      end if;
 
-      return Integer_Container'Class (Self.Data.all).Value;
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      if Self.Data.all in Universal_Integer_Container then
+         return Num (Universal_Integer_Container'Class (Self.Data.all).Value);
+
+      else
+         return Integer_Container'Class (Self.Data.all).Value;
+      end if;
    end Get;
-
-   ----------------
-   -- Is_Integer --
-   ----------------
-
-   function Is_Integer (Self : Value) return Boolean is
-   begin
-      return Self.Is_Type (Integer_Container'Tag);
-   end Is_Integer;
 
    ----------
    -- Last --
    ----------
 
-   overriding function Last (Self : not null access Integer_Container)
-     return Matreshka.Internals.Host_Types.Longest_Integer
+   overriding function Last
+    (Self : not null access constant Integer_Container)
+       return Universal_Integer
    is
       pragma Unreferenced (Self);
 
    begin
-      return Matreshka.Internals.Host_Types.Longest_Integer (Num'Last);
+      return Universal_Integer (Num'Last);
    end Last;
 
    ---------
@@ -131,33 +128,53 @@ package body League.Values.Integers.Generic_Integers is
    ---------
 
    overriding procedure Set
-    (Self : not null access Integer_Container;
-     To   : Matreshka.Internals.Host_Types.Longest_Integer) is
+    (Self : not null access Integer_Container; To : Universal_Integer) is
    begin
-      Self.Value := Num (To);
+      Self.Is_Empty := False;
+      Self.Value    := Num (To);
    end Set;
 
    ---------
    -- Set --
    ---------
 
-   procedure Set
-    (Self : in out Value;
-     To   : Num) is
+   procedure Set (Self : in out Value; To : Num) is
    begin
-      Set
-       (Self,
-        Tag (Integer_Container'Tag),
-        Matreshka.Internals.Host_Types.Longest_Integer (To));
+      if Self.Data.all not in Integer_Container
+        or Self.Data.all not in Universal_Integer_Container
+      then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      --  XXX This subprogram can be improved to reuse shared segment when
+      --  possible.
+
+      if Self.Data.all in Universal_Integer_Container then
+         Dereference (Self.Data);
+         Self.Data :=
+           new Universal_Integer_Container'
+                (Counter  => <>,
+                 Is_Empty => False,
+                 Value    => Universal_Integer (To));
+
+      else
+         Dereference (Self.Data);
+         Self.Data :=
+           new Integer_Container'
+                (Counter => <>, Is_Empty => False, Value => To);
+      end if;
    end Set;
 
    --------------
-   -- Set_Type --
+   -- To_Value --
    --------------
 
-   procedure Set_Type (Self : in out Value) is
+   function To_Value (Item : Num) return Value is
    begin
-      Set_Tag (Self, Integer_Tag);
-   end Set_Type;
+      return
+       (Ada.Finalization.Controlled with
+          new Integer_Container'
+               (Counter => <>, Is_Empty => False, Value => Item));
+   end To_Value;
 
-end League.Values.Integers.Generic_Integers;
+end League.Values.Generic_Integers;
