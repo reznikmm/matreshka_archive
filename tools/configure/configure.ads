@@ -72,6 +72,9 @@ package Configure is
 
    Target_Triplet : Ada.Strings.Unbounded.Unbounded_String;
 
+   procedure Information (Message : String);
+   --  Outputs information message.
+
    --  Fatal error handling.
 
    procedure Fatal_Error (Message : String);

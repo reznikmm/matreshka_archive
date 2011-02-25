@@ -73,4 +73,9 @@ begin
          null;
       end if;
    end if;
+
+   if not Substitutions.Contains (SQLite3_Library_Options) then
+      Information ("SQLite3 driver module is disabled");
+      Substitutions.Insert (SQLite3_Library_Options, Null_Unbounded_String);
+   end if;
 end Configure.SQLite3;

@@ -52,6 +52,16 @@ package body Configure is
    use Ada.Text_IO;
 
    -----------------
+   -- Information --
+   -----------------
+
+   procedure Information (Message : String) is
+   begin
+      Put_Line
+       (Standard_Error, Simple_Name (Command_Name) & ": (info) " & Message);
+   end Information;
+
+   -----------------
    -- Fatal_Error --
    -----------------
 
