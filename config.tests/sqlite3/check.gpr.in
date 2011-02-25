@@ -2,13 +2,13 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---         Localization, Internationalization, Globalization for Ada        --
+--                           SQL Database Access                            --
 --                                                                          --
 --                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,73 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-with Ada.Directories;
-with Ada.Strings.Unbounded.Text_IO;
-with Ada.Text_IO;
 
-with GNAT.Regpat;
+project Check is
 
-procedure Configure.Instantiate
- (Configuration_File_Name : String;
-  Suppress_Message        : Boolean := False)
-is
+   for Main use ("main.adb");
+   for Object_Dir use "_build";
 
-   use Ada.Command_Line;
-   use Ada.Directories;
-   use Ada.Strings.Unbounded;
-   use Ada.Strings.Unbounded.Text_IO;
-   use Ada.Text_IO;
-   use GNAT.Regpat;
+   package Linker is
+      for Default_Switches ("Ada") use (@SQLITE3_LIBRARY_OPTIONS@);
+   end Linker;
 
-   function "+" (Item : Unbounded_String) return String renames To_String;
-
-   Template_File      : File_Type;
-   Configuration_File : File_Type;
-   Line               : Unbounded_String;
-   Replacement        : Unbounded_String;
-   Pattern            : Pattern_Matcher := Compile ("(@(.+?)@)");
-   Matches            : Match_Array (0 .. 2);
-
-begin
-   if not Suppress_Message then
-      Put_Line
-       (Simple_Name (Command_Name) & ": creating " & Configuration_File_Name);
-   end if;
-
-   Open (Template_File, In_File, Configuration_File_Name & ".in");
-   Create (Configuration_File, Out_File, Configuration_File_Name);
-
-   while not End_Of_File (Template_File) loop
-      Line := Get_Line (Template_File);
-
-      loop
-         Match (Pattern, +Line, Matches);
-
-         exit when Matches (0) = No_Match;
-
-         if Substitutions.Contains
-             (Unbounded_Slice (Line, Matches (2).First, Matches (2).Last))
-         then
-            Replacement :=
-              Substitutions.Element
-               (Unbounded_Slice (Line, Matches (2).First, Matches (2).Last));
-
-         else
-            Warning
-             ("substitution '"
-                & Slice (Line, Matches (2).First, Matches (2).Last)
-                & "' is not defined");
-            Replacement := Null_Unbounded_String;
-         end if;
-
-         Replace_Slice
-          (Line, Matches (1).First, Matches (1).Last, +Replacement);
-      end loop;
-
-      Put_Line (Configuration_File, Line);
-   end loop;
-
-   Close (Configuration_File);
-   Close (Template_File);
-end Configure.Instantiate;
+end Check;

@@ -43,16 +43,49 @@
 ------------------------------------------------------------------------------
 --  This procedure detects parameters to link with SQLite3 library.
 ------------------------------------------------------------------------------
+with Ada.Directories;
 with Ada.Strings.Fixed;
-with Ada.Text_IO;
+
+with GNAT.Expect;
 
 with Configure.Pkg_Config;
+with Configure.Instantiate;
 
 procedure Configure.SQLite3 is
 
    use Ada.Strings;
    use Ada.Strings.Fixed;
    use Ada.Strings.Unbounded;
+   use GNAT.Expect;
+
+   function Build_Check return Boolean;
+   --  Runs gnatmake to build project, returns True on success.
+
+   -----------------
+   -- Build_Check --
+   -----------------
+
+   function Build_Check return Boolean is
+   begin
+      declare
+         Status : aliased Integer;
+         Output : constant String :=
+           Get_Command_Output
+            ("gnatmake",
+             (1 => new String'("-p"),
+              2 => new String'("-Pconfig.tests/sqlite3/check.gpr")),
+             "",
+             Status'Access,
+             True);
+
+      begin
+         return Status = 0;
+      end;
+
+   exception
+      when GNAT.Expect.Invalid_Process =>
+         return False;
+   end Build_Check;
 
    SQLite3_Package_Name : constant String := "sqlite3";
 
@@ -82,6 +115,29 @@ begin
                & '"'));
       end if;
    end if;
+
+   --  Check that SQLite3 application can be linked with specified/detected
+   --  set of options.
+
+   if Substitutions.Contains (SQLite3_Library_Options) then
+      Configure.Instantiate ("config.tests/sqlite3/check.gpr", True);
+
+      if not Build_Check then
+         --  Switches don't allow to build application, remove them.
+
+         Substitutions.Delete (SQLite3_Library_Options);
+      end if;
+
+      if Ada.Directories.Exists ("config.tests/sqlite3/_build") then
+         Ada.Directories.Delete_Tree ("config.tests/sqlite3/_build");
+      end if;
+
+      Ada.Directories.Delete_File ("config.tests/sqlite3/check.gpr");
+
+   end if;
+
+   --  Insert empty value for substitution variable when SQLite3 driver module
+   --  is disabled.
 
    if not Substitutions.Contains (SQLite3_Library_Options) then
       Information ("SQLite3 driver module is disabled");
