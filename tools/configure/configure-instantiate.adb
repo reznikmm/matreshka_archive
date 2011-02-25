@@ -62,6 +62,7 @@ procedure Configure.Instantiate (Configuration_File_Name : String) is
    Template_File      : File_Type;
    Configuration_File : File_Type;
    Line               : Unbounded_String;
+   Replacement        : Unbounded_String;
    Pattern            : Pattern_Matcher := Compile ("(@(.+?)@)");
    Matches            : Match_Array (0 .. 2);
 
@@ -79,11 +80,19 @@ begin
 
          exit when Matches (0) = No_Match;
 
+         if Substitutions.Contains
+             (Unbounded_Slice (Line, Matches (2).First, Matches (2).Last))
+         then
+            Replacement :=
+              Substitutions.Element
+               (Unbounded_Slice (Line, Matches (2).First, Matches (2).Last));
+
+         else
+            Replacement := Null_Unbounded_String;
+         end if;
+
          Replace_Slice
-          (Line,
-           Matches (1).First, Matches (1).Last,
-           +Substitutions.Element
-             (Unbounded_Slice (Line, Matches (2).First, Matches (2).Last)));
+          (Line, Matches (1).First, Matches (1).Last, +Replacement);
       end loop;
 
       Put_Line (Configuration_File, Line);
