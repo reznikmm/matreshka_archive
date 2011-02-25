@@ -65,17 +65,49 @@ package body League.Values is
    -- Clear --
    -----------
 
+   not overriding procedure Clear
+    (Self : not null access Abstract_Container) is
+   begin
+      Self.Is_Empty := True;
+   end Clear;
+
+   -----------
+   -- Clear --
+   -----------
+
+   overriding procedure Clear
+    (Self : not null access Universal_String_Container) is
+   begin
+      Self.Is_Empty := True;
+      Matreshka.Internals.Strings.Dereference (Self.Value);
+      Self.Value := Matreshka.Internals.Strings.Shared_Empty'Access;
+   end Clear;
+
+   -----------
+   -- Clear --
+   -----------
+
    procedure Clear (Self : in out Value) is
       Tag      : constant Ada.Tags.Tag := Self.Data'Tag;
       Is_Empty : aliased Boolean := True;
 
    begin
-      --  XXX This subprogram can be improved to reuse shared segment when
-      --  possible.
+      if not Self.Data.Is_Empty then
+         if not Matreshka.Internals.Atomics.Counters.Is_One
+                 (Self.Data.Counter'Access)
+         then
+            --  Internal object is shared, allocate new own.
 
-      Dereference (Self.Data);
-      Self.Data :=
-        new Abstract_Container'Class'(Create (Tag, Is_Empty'Access));
+            Dereference (Self.Data);
+            Self.Data :=
+              new Abstract_Container'Class'(Create (Tag, Is_Empty'Access));
+
+         else
+            --  Otherwise just clear it.
+
+            Self.Data.Clear;
+         end if;
+      end if;
    end Clear;
 
    -----------------
@@ -465,14 +497,24 @@ package body League.Values is
          raise Constraint_Error with "invalid type of value";
       end if;
 
-      --  XXX This subprogram can be improved to reuse shared segment when
-      --  possible.
-
-      Dereference (Self.Data);
       Matreshka.Internals.Strings.Reference (Aux);
-      Self.Data :=
-        new Universal_String_Container'
-             (Counter => <>, Is_Empty => False, Value => Aux);
+
+      --  Create new shared object when existing one can't be reused.
+
+      if not Matreshka.Internals.Atomics.Counters.Is_One
+              (Self.Data.Counter'Access)
+      then
+         Dereference (Self.Data);
+         Self.Data :=
+           new Universal_String_Container'
+                (Counter => <>, Is_Empty => False, Value => Aux);
+
+      else
+         Matreshka.Internals.Strings.Dereference
+          (Universal_String_Container'Class (Self.Data.all).Value);
+         Universal_String_Container'Class (Self.Data.all).Is_Empty := False;
+         Universal_String_Container'Class (Self.Data.all).Value    := Aux;
+      end if;
    end Set;
 
    ---------
@@ -488,12 +530,16 @@ package body League.Values is
          raise Constraint_Error with "invalid type of value";
       end if;
 
-      --  XXX This subprogram can be improved to reuse shared segment when
-      --  possible.
+      --  Create new shared object when existing one can't be reused.
 
-      Dereference (Self.Data);
-      Self.Data :=
-        new Abstract_Container'Class'(Create (Tag, Is_Empty'Access));
+      if not Matreshka.Internals.Atomics.Counters.Is_One
+              (Self.Data.Counter'Access)
+      then
+         Dereference (Self.Data);
+         Self.Data :=
+           new Abstract_Container'Class'(Create (Tag, Is_Empty'Access));
+      end if;
+
       Abstract_Float_Container'Class (Self.Data.all).Set (To);
    end Set;
 
@@ -510,12 +556,18 @@ package body League.Values is
          raise Constraint_Error with "invalid type of value";
       end if;
 
-      --  XXX This subprogram can be improved to reuse shared segment when
-      --  possible.
+      --  Create new shared object when existing one can't be reused.
 
-      Dereference (Self.Data);
-      Self.Data :=
-        new Abstract_Container'Class'(Create (Tag, Is_Empty'Access));
+      if not Matreshka.Internals.Atomics.Counters.Is_One
+              (Self.Data.Counter'Access)
+      then
+         Dereference (Self.Data);
+         Self.Data :=
+           new Abstract_Container'Class'(Create (Tag, Is_Empty'Access));
+      end if;
+
+      --  Set value.
+
       Abstract_Integer_Container'Class (Self.Data.all).Set (To);
    end Set;
 
@@ -524,16 +576,29 @@ package body League.Values is
    -------------
 
    procedure Set_Tag (Self : in out Value; To : Tag) is
+
+      use type Ada.Tags.Tag;
+
       Is_Empty : aliased Boolean := True;
 
    begin
-      --  XXX This subprogram can be improved to reuse shared segment when
-      --  possible.
+      if Self.Data'Tag /= Ada.Tags.Tag (To)
+        or else not Matreshka.Internals.Atomics.Counters.Is_One
+                     (Self.Data.Counter'Access)
+      then
+	 --  Tag of the value is changed, or value is shared, dereference
+         --  shared object and allocate new one.
 
-      Dereference (Self.Data);
-      Self.Data :=
-        new Abstract_Container'Class'
-             (Create (Ada.Tags.Tag (To), Is_Empty'Access));
+         Dereference (Self.Data);
+         Self.Data :=
+           new Abstract_Container'Class'
+                (Create (Ada.Tags.Tag (To), Is_Empty'Access));
+
+      else
+         --  Otherwise just clear value.
+
+         Self.Data.Clear;
+      end if;
    end Set_Tag;
 
    --------------

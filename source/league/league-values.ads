@@ -174,6 +174,9 @@ private
    not overriding procedure Finalize
     (Self : not null access Abstract_Container) is null;
 
+   not overriding procedure Clear (Self : not null access Abstract_Container);
+   --  Sets Is_Empty to True, derived types should override it to do cleanup.
+
    ----------------------
    -- Container_Access --
    ----------------------
@@ -224,6 +227,9 @@ private
     (Is_Empty : not null access Boolean) return Universal_String_Container;
 
    overriding procedure Finalize
+    (Self : not null access Universal_String_Container);
+
+   overriding procedure Clear
     (Self : not null access Universal_String_Container);
 
    Universal_String_Tag : constant Tag := Tag (Universal_String_Container'Tag);
