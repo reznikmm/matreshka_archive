@@ -46,6 +46,10 @@ with Ada.Streams;
 with League.Stream_Element_Vectors;
 with League.Strings;
 private with Matreshka.Internals.Text_Codecs;
+pragma Elaborate_All (Matreshka.Internals.Text_Codecs);
+--  GCC 4.5: binder generates wrong elaboration order, as result IANA
+--  database is not elaborated at the time of application locale codec
+--  lookup.
 
 package League.Text_Codecs is
 
