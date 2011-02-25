@@ -57,10 +57,20 @@ procedure Configure.SQLite3 is
    SQLite3_Package_Name : constant String := "sqlite3";
 
 begin
+   --  Command line parameter has preference other automatic detection.
+
+   if Has_Parameter ("--with-sqlite3-libdir") then
+      Substitutions.Insert
+       (SQLite3_Library_Options,
+        To_Unbounded_String
+         ("""-L"
+            & Parameter_Value ("--with-sqlite3-libdir")
+            & """, ""-lsqlite3"""));
+
    --  When pkg-config is installed, it is used to check whether SQLite3 is
    --  installed and to retrieve linker switches to link with it.
 
-   if Configure.Pkg_Config.Has_Pkg_Config then
+   elsif Configure.Pkg_Config.Has_Pkg_Config then
       if Configure.Pkg_Config.Has_Package (SQLite3_Package_Name) then
          Substitutions.Insert
           (SQLite3_Library_Options,
@@ -70,7 +80,6 @@ begin
                   (Configure.Pkg_Config.Package_Libs (SQLite3_Package_Name),
                    Both)
                & '"'));
-         null;
       end if;
    end if;
 

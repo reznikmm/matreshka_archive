@@ -52,16 +52,6 @@ package body Configure is
    use Ada.Text_IO;
 
    -----------------
-   -- Information --
-   -----------------
-
-   procedure Information (Message : String) is
-   begin
-      Put_Line
-       (Standard_Error, Simple_Name (Command_Name) & ": (info) " & Message);
-   end Information;
-
-   -----------------
    -- Fatal_Error --
    -----------------
 
@@ -72,6 +62,60 @@ package body Configure is
 
       raise Internal_Error;
    end Fatal_Error;
+
+   -------------------
+   -- Has_Parameter --
+   -------------------
+
+   function Has_Parameter (Name : String) return Boolean is
+   begin
+      for J in 1 .. Ada.Command_Line.Argument_Count loop
+         declare
+            Arg : constant String := Ada.Command_Line.Argument (J);
+
+         begin
+            if Arg'Length > Name'Length then
+               if Arg (Arg'First .. Arg'First + Name'Length) = Name & '=' then
+                  return True;
+               end if;
+            end if;
+         end;
+      end loop;
+
+      return False;
+   end Has_Parameter;
+
+   -----------------
+   -- Information --
+   -----------------
+
+   procedure Information (Message : String) is
+   begin
+      Put_Line
+       (Standard_Error, Simple_Name (Command_Name) & ": (info) " & Message);
+   end Information;
+
+   ---------------------
+   -- Parameter_Value --
+   ---------------------
+
+   function Parameter_Value (Name : String) return String is
+   begin
+      for J in 1 .. Ada.Command_Line.Argument_Count loop
+         declare
+            Arg : constant String := Ada.Command_Line.Argument (J);
+
+         begin
+            if Arg'Length > Name'Length then
+               if Arg (Arg'First .. Arg'First + Name'Length) = Name & '=' then
+                  return Arg (Arg'First + Name'Length + 1 .. Arg'Last);
+               end if;
+            end if;
+         end;
+      end loop;
+
+      return "";
+   end Parameter_Value;
 
    -------------
    -- Warning --

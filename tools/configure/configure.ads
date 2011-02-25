@@ -72,13 +72,21 @@ package Configure is
 
    Target_Triplet : Ada.Strings.Unbounded.Unbounded_String;
 
+   --  Command line parameters handling.
+
+   function Has_Parameter (Name : String) return Boolean;
+   --  Returns True when parameter's value is specified in command line.
+
+   function Parameter_Value (Name : String) return String;
+   --  Returns value of the parameter specified in command line.
+
+   --  Output and fatal error handling.
+
    procedure Information (Message : String);
    --  Outputs information message.
 
    procedure Warning (Message : String);
    --  Outputs warning message.
-
-   --  Fatal error handling.
 
    procedure Fatal_Error (Message : String);
    --  Outputs fatal message error and raises Internal_Error exception.
