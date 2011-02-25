@@ -73,4 +73,14 @@ package body Configure is
       raise Internal_Error;
    end Fatal_Error;
 
+   -------------
+   -- Warning --
+   -------------
+
+   procedure Warning (Message : String) is
+   begin
+      Put_Line
+       (Standard_Error, Simple_Name (Command_Name) & ": (warning) " & Message);
+   end Warning;
+
 end Configure;

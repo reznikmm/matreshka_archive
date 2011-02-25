@@ -75,6 +75,9 @@ package Configure is
    procedure Information (Message : String);
    --  Outputs information message.
 
+   procedure Warning (Message : String);
+   --  Outputs warning message.
+
    --  Fatal error handling.
 
    procedure Fatal_Error (Message : String);

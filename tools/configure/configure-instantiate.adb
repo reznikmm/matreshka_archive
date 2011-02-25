@@ -88,6 +88,10 @@ begin
                (Unbounded_Slice (Line, Matches (2).First, Matches (2).Last));
 
          else
+            Warning
+             ("substitution '"
+                & Slice (Line, Matches (2).First, Matches (2).Last)
+                & "' is not defined");
             Replacement := Null_Unbounded_String;
          end if;
 
