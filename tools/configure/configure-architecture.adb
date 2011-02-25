@@ -193,8 +193,8 @@ procedure Configure.Architecture is
 
    begin
       Non_Blocking_Spawn
-       (GCC_Process, "gcc", (1 => new String'("-v")), 4096, True);
-      Expect (GCC_Process, Result, "Target: ([-a-zA-Z0-9_]*)", Matches);
+       (GCC_Process, "gcc", (1 => new String'("-dumpmachine")), 4096, True);
+      Expect (GCC_Process, Result, "([-a-zA-Z0-9_]*)", Matches);
       Target_Triplet :=
         +Expect_Out (GCC_Process) (Matches (1).First .. Matches (1).Last);
       Close (GCC_Process);
