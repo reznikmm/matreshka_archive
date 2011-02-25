@@ -98,17 +98,24 @@ procedure Configure.Architecture is
       -----------------
 
       function Build_Check return Boolean is
-         Status : aliased Integer;
-         Output : constant String :=
-           Get_Command_Output
-            ("gnatmake",
-             (1 => new String'("-Pcheck.gpr")),
-             "",
-             Status'Access,
-             True);
-
       begin
-         return Status = 0;
+         declare
+            Status : aliased Integer;
+            Output : constant String :=
+              Get_Command_Output
+               ("gnatmake",
+                (1 => new String'("-Pcheck.gpr")),
+                "",
+                Status'Access,
+                True);
+
+         begin
+            return Status = 0;
+         end;
+
+      exception
+         when GNAT.Expect.Invalid_Process =>
+            return False;
       end Build_Check;
 
       --------------------------

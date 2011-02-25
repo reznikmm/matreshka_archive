@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 
 with GNAT.Expect;
---with GNAT.Regexp;
---with GNAT.Regpat;
 
 package body Configure.Pkg_Config is
 
@@ -55,18 +53,25 @@ package body Configure.Pkg_Config is
    -----------------
 
    function Has_Package (Package_Name : String) return Boolean is
-      Status : aliased Integer;
-      Output : constant String :=
-        Get_Command_Output
-         ("pkg-config",
-          (1 => new String'("--exists"),
-           2 => new String'(Package_Name)),
-          "",
-          Status'Access,
-          True);
-
    begin
-      return Status = 0;
+      declare
+         Status : aliased Integer;
+         Output : constant String :=
+           Get_Command_Output
+            ("pkg-config",
+             (1 => new String'("--exists"),
+              2 => new String'(Package_Name)),
+             "",
+             Status'Access,
+             True);
+
+      begin
+         return Status = 0;
+      end;
+
+   exception
+      when GNAT.Expect.Invalid_Process =>
+         return False;
    end Has_Package;
 
    --------------------
@@ -74,17 +79,24 @@ package body Configure.Pkg_Config is
    --------------------
 
    function Has_Pkg_Config return Boolean is
-      Status : aliased Integer;
-      Output : constant String :=
-        Get_Command_Output
-         ("pkg-config",
-          (1 => new String'("--version")),
-          "",
-          Status'Access,
-          True);
-
    begin
-      return Status = 0;
+      declare
+         Status : aliased Integer;
+         Output : constant String :=
+           Get_Command_Output
+            ("pkg-config",
+             (1 => new String'("--version")),
+             "",
+             Status'Access,
+             True);
+
+      begin
+         return Status = 0;
+      end;
+
+   exception
+      when GNAT.Expect.Invalid_Process =>
+         return False;
    end Has_Pkg_Config;
 
    ------------------
