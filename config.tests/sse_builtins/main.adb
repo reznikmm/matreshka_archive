@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,109 +41,28 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This procedure detects architecture.
+--  This procedure uses SSE builtins of GCC compiler, and used to check whether
+--  current compiler supports them.
 ------------------------------------------------------------------------------
-with System;
+with Interfaces;
 
-with GNAT.Expect;
-with GNAT.Regexp;
-with GNAT.Regpat;
+procedure Main is
 
-with Configure.Builder;
+   use Interfaces;
 
-procedure Configure.Architecture is
+   type v2di is array (1 .. 2) of Unsigned_64;
+   pragma Machine_Attribute (v2di, "vector_type");
+   pragma Machine_Attribute (v2di, "may_alias");
 
-   use Ada.Strings.Unbounded;
-   use GNAT.Expect;
-   use GNAT.Regexp;
-   use GNAT.Regpat;
-   use System;
+   function mm_and_si128 (A : v2di; B : v2di) return v2di;
+   pragma Import (Intrinsic, mm_and_si128, "__builtin_ia32_pand128");
 
-   function "+" (Item : String) return Unbounded_String
-     renames To_Unbounded_String;
-
-   function "+" (Item : Unbounded_String) return String renames To_String;
-
-   procedure Detect_Portable;
-   --  Detects "portable" architecture.
-
-   procedure Detect_GCC;
-   --  Detects architecture by analizing output of gcc -v and doing additional
-   --  checks for capabilities.
-
-   ----------------
-   -- Detect_GCC --
-   ----------------
-
-   procedure Detect_Gcc is
-      GCC_Process : Process_Descriptor;
-      Result      : Expect_Match;
-      Matches     : Match_Array (0 .. 1);
-      Arch        : Unbounded_String;
-
-   begin
-      Non_Blocking_Spawn
-       (GCC_Process, "gcc", (1 => new String'("-dumpmachine")), 4096, True);
-      Expect (GCC_Process, Result, "([-a-zA-Z0-9_]*)", Matches);
-      Target_Triplet :=
-        +Expect_Out (GCC_Process) (Matches (1).First .. Matches (1).Last);
-      Close (GCC_Process);
-
-      Match ("([a-zA-Z0-9_]*)-.*", +Target_Triplet, Matches);
-      Arch :=
-        Unbounded_Slice (Target_Triplet, Matches (1).First, Matches (1).Last);
-
-      if Match (+Arch, Compile ("i[3456]86")) then
-         if Configure.Builder.Build ("config.tests/sse_builtins/") then
-            Substitutions.Replace (Architecture_Name, +"x86");
-
-         else
-            --  On x86 when compiler doesn't support SSE builtins there is no
-            --  way to build project, because special switch is needed to
-            --  enable use of i486 instructions to generate code for atomic
-            --  increment/decrement operations.
-
-            Fatal_Error ("compiler doesn't support SSE builtins");
-         end if;
-
-      elsif Arch = "x86_64" then
-         if Configure.Builder.Build ("config.tests/sse_builtins/") then
-            Substitutions.Replace (Architecture_Name, +"x86_64");
-         end if;
-      end if;
-   end Detect_GCC;
-
-   ---------------------
-   -- Detect_Portable --
-   ---------------------
-
-   procedure Detect_Portable is
-   begin
-      if Address'Size = 32 then
-         if Default_Bit_Order = High_Order_First then
-            Substitutions.Insert (Architecture_Name, +"portable_32_be");
-
-         else
-            Substitutions.Insert (Architecture_Name, +"portable_32_le");
-         end if;
-
-      elsif Address'Size = 64 then
-         if Default_Bit_Order = High_Order_First then
-            Substitutions.Insert (Architecture_Name, +"portable_64_be");
-
-         else
-            Substitutions.Insert (Architecture_Name, +"portable_64_le");
-         end if;
-
-      else
-         raise Program_Error;
-      end if;
-   end Detect_Portable;
+   A : v2di := (0, 0);
+   B : v2di := (0, 0);
+   C : v2di;
+   pragma Volatile (C);
+   --  When C is not declared as volatile, compiler optimize out all code.
 
 begin
-   --  Detect "portable" architecture first, it is suitable default value.
-   --  This value can be overwritten later by another detection methods.
-
-   Detect_Portable;
-   Detect_GCC;
-end Configure.Architecture;
+   C := mm_and_si128 (A, B);
+end Main;
