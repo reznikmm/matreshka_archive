@@ -41,64 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This procedure detects parameters to link with SQLite3 library.
-------------------------------------------------------------------------------
-with Ada.Strings.Fixed;
 
-with Configure.Builder;
-with Configure.Pkg_Config;
+package Configure.Builder is
 
-procedure Configure.SQLite3 is
+   function Build (Directory : String) return Boolean;
+   --  Build project check.gpr in the specified directory. Returns True if
+   --  build is successful, False on any error.
 
-   use Ada.Strings;
-   use Ada.Strings.Fixed;
-   use Ada.Strings.Unbounded;
-
-   SQLite3_Package_Name : constant String := "sqlite3";
-
-begin
-   --  Command line parameter has preference other automatic detection.
-
-   if Has_Parameter ("--with-sqlite3-libdir") then
-      Substitutions.Insert
-       (SQLite3_Library_Options,
-        To_Unbounded_String
-         ("""-L"
-            & Parameter_Value ("--with-sqlite3-libdir")
-            & """, ""-lsqlite3"""));
-
-   --  When pkg-config is installed, it is used to check whether SQLite3 is
-   --  installed and to retrieve linker switches to link with it.
-
-   elsif Configure.Pkg_Config.Has_Pkg_Config then
-      if Configure.Pkg_Config.Has_Package (SQLite3_Package_Name) then
-         Substitutions.Insert
-          (SQLite3_Library_Options,
-           To_Unbounded_String
-            ('"'
-               & Trim
-                  (Configure.Pkg_Config.Package_Libs (SQLite3_Package_Name),
-                   Both)
-               & '"'));
-      end if;
-   end if;
-
-   --  Check that SQLite3 application can be linked with specified/detected
-   --  set of options.
-
-   if Substitutions.Contains (SQLite3_Library_Options) then
-      if not Configure.Builder.Build ("config.tests/sqlite3/") then
-         --  Switches don't allow to build application, remove them.
-
-         Substitutions.Delete (SQLite3_Library_Options);
-      end if;
-   end if;
-
-   --  Insert empty value for substitution variable when SQLite3 driver module
-   --  is disabled.
-
-   if not Substitutions.Contains (SQLite3_Library_Options) then
-      Information ("SQLite3 driver module is disabled");
-      Substitutions.Insert (SQLite3_Library_Options, Null_Unbounded_String);
-   end if;
-end Configure.SQLite3;
+end Configure.Builder;
