@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -213,7 +213,9 @@ re : re Token_Alternation series
 {
    --  Alternation
 
-   $$ := (AST_Node, Process_Alternation (Pattern, $1.Node, $3.Node));
+   $$ :=
+    (AST_Node,
+     Process_Alternation (Pattern, $1.Node, $3.Node));
 }
   | series
 {
@@ -223,7 +225,8 @@ re : re Token_Alternation series
 
 series : series singleton
 {
-   Matreshka.Internals.Regexps.Compiler.Attach (Pattern.all, $1.Node, $2.Node);
+   Matreshka.Internals.Regexps.Compiler.Attach
+    (Pattern.all, $1.Node, $2.Node);
    $$ := $1;
 }
   | singleton
@@ -272,49 +275,105 @@ singleton : singleton Token_Optional_Greedy
 {
    --  Multiplicity range, greedy
 
-   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, $5.Value, True));
+   $$ :=
+    (AST_Node,
+     Process_Multiplicity
+      (Pattern,
+       $1.Node,
+       $3.Value,
+       $5.Value,
+       True));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_Number Token_Multiplicity_End_Lazy
 {
    --  Multiplicity range, lazy
 
-   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, $5.Value, False));
+   $$ :=
+    (AST_Node,
+     Process_Multiplicity
+      (Pattern,
+       $1.Node,
+       $3.Value,
+       $5.Value,
+       False));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Comma Token_Multiplicity_Number Token_Multiplicity_End_Greedy
 {
    --  Multiplicity zero .. upper, greedy
 
-   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, 0, $4.Value, True));
+   $$ :=
+    (AST_Node,
+     Process_Multiplicity
+      (Pattern,
+       $1.Node,
+       0,
+       $4.Value,
+       True));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Comma Token_Multiplicity_Number Token_Multiplicity_End_Lazy
 {
    --  Multiplicity zero .. upper, lazy
 
-   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, 0, $4.Value, False));
+   $$ :=
+    (AST_Node,
+     Process_Multiplicity
+      (Pattern,
+       $1.Node,
+       0,
+       $4.Value,
+       False));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_End_Greedy
 {
    --  Multiplicity lower .. infinity, greedy
 
-   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, Integer'Last, True));
+   $$ :=
+    (AST_Node,
+     Process_Multiplicity
+      (Pattern,
+       $1.Node,
+       $3.Value,
+       Integer'Last,
+       True));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_Comma Token_Multiplicity_End_Lazy
 {
    --  Multiplicity lower .. infinity, lazy
 
-   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, Integer'Last, False));
+   $$ :=
+    (AST_Node,
+     Process_Multiplicity
+      (Pattern,
+       $1.Node,
+       $3.Value,
+       Integer'Last,
+       False));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_End_Greedy
 {
    --  Multiplicity, greedy
 
-   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, $3.Value, True));
+   $$ :=
+    (AST_Node,
+     Process_Multiplicity
+      (Pattern,
+       $1.Node,
+       $3.Value,
+       $3.Value,
+       True));
 }
   | singleton Token_Multiplicity_Begin Token_Multiplicity_Number Token_Multiplicity_End_Lazy
 {
    --  Multiplicity, lazy
 
-   $$ := (AST_Node, Process_Multiplicity (Pattern, $1.Node, $3.Value, $3.Value, False));
+   $$ :=
+    (AST_Node,
+     Process_Multiplicity
+      (Pattern,
+       $1.Node,
+       $3.Value,
+       $3.Value,
+       False));
 }
   | Token_Subexpression_Capture_Begin re Token_Subexpression_End
 {
@@ -382,25 +441,37 @@ character_class_content : character_class_content Token_Code_Point Token_Charact
 {
    --  Add range of code points to character class
 
-   $$ := (AST_Node, Process_Character_Class_Range (Pattern, $1.Node, $2.Code, $4.Code));
+   $$ :=
+    (AST_Node,
+     Process_Character_Class_Range
+      (Pattern, $1.Node, $2.Code, $4.Code));
 }
   | character_class_content Token_Code_Point
 {
    --  Add code point to character class
 
-   $$ := (AST_Node, Process_Character_Class_Code_Point (Pattern, $1.Node, $2.Code));
+   $$ :=
+    (AST_Node,
+     Process_Character_Class_Code_Point
+      (Pattern, $1.Node, $2.Code));
 }
   | character_class_content Token_Property_Begin_Positive Token_Property_Keyword Token_Property_End
 {
    --  Character with binary property
 
-   $$ := (AST_Node, Process_Character_Class_Binary_Property (Pattern, $1.Node, $3.Keyword, False));
+   $$ :=
+    (AST_Node,
+     Process_Character_Class_Binary_Property
+      (Pattern, $1.Node, $3.Keyword, False));
 }
   | character_class_content Token_Property_Begin_Negative Token_Property_Keyword Token_Property_End
 {
    --  Character with binary property, negative
 
-   $$ := (AST_Node, Process_Character_Class_Binary_Property (Pattern, $1.Node, $3.Keyword, True));
+   $$ :=
+    (AST_Node,
+     Process_Character_Class_Binary_Property
+      (Pattern, $1.Node, $3.Keyword, True));
 }
   |
 {

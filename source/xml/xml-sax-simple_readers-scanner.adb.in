@@ -66,14 +66,21 @@ package body XML.SAX.Simple_Readers.Scanner is
     (Self : not null access SAX_Simple_Reader'Class);
    --  Sets "whitespace matched" flag.
 
-   function Get_Whitespace_Matched
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
-   --  Returns value of "whitespace matched" flag.
-
    procedure Free is
      new Ada.Unchecked_Deallocation
           (XML.SAX.Input_Sources.SAX_Input_Source'Class,
            XML.SAX.Input_Sources.SAX_Input_Source_Access);
+
+   ---------------------------
+   -- Enter_Start_Condition --
+   ---------------------------
+
+   procedure Enter_Start_Condition
+    (Self  : not null access SAX_Simple_Reader'Class;
+     State : Interfaces.Unsigned_32) is
+   begin
+      Self.Scanner_State.YY_Start_State := State * 2 + 1;
+   end Enter_Start_Condition;
 
    --------------
    -- Finalize --
@@ -102,42 +109,6 @@ package body XML.SAX.Simple_Readers.Scanner is
       Self.Scanner_State.Start_Condition_Stack.Append (Tables.DOCUMENT_10);
    end Initialize;
 
-   ----------------------
-   -- YY_Move_Backward --
-   ----------------------
-
-   procedure YY_Move_Backward
-    (Self : not null access SAX_Simple_Reader'Class) is
-   begin
-      Self.Scanner_State.YY_Current_Position :=
-        Self.Scanner_State.YY_Current_Position - 1;
-      Self.Scanner_State.YY_Current_Index    :=
-        Self.Scanner_State.YY_Current_Index - 1;
-      Self.Scanner_State.YY_Current_Column   :=
-        Self.Scanner_State.YY_Current_Column - 1;
-   end YY_Move_Backward;
-
-   ---------------------------
-   -- Enter_Start_Condition --
-   ---------------------------
-
-   procedure Enter_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
-     State : Interfaces.Unsigned_32) is
-   begin
-      Self.Scanner_State.YY_Start_State := State * 2 + 1;
-   end Enter_Start_Condition;
-
-   ----------------------------
-   -- Get_Whitespace_Matched --
-   ----------------------------
-
-   function Get_Whitespace_Matched
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean is
-   begin
-      return Self.Whitespace_Matched;
-   end Get_Whitespace_Matched;
-
    -------------------------
    -- Pop_Start_Condition --
    -------------------------
@@ -149,6 +120,31 @@ package body XML.SAX.Simple_Readers.Scanner is
        (Self, Self.Scanner_State.Start_Condition_Stack.Last_Element);
       Self.Scanner_State.Start_Condition_Stack.Delete_Last;
    end Pop_Start_Condition;
+
+   ------------------------------------
+   -- Push_And_Enter_Start_Condition --
+   ------------------------------------
+
+   procedure Push_And_Enter_Start_Condition
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Push  : Interfaces.Unsigned_32;
+     Enter : Interfaces.Unsigned_32) is
+   begin
+      Self.Scanner_State.Start_Condition_Stack.Append (Push);
+      Self.Scanner_State.YY_Start_State := 1 + 2 * Enter;
+   end Push_And_Enter_Start_Condition;
+
+   --------------------------------------------
+   -- Push_Current_And_Enter_Start_Condition --
+   --------------------------------------------
+
+   procedure Push_Current_And_Enter_Start_Condition
+    (Self  : not null access SAX_Simple_Reader'Class;
+     Enter : Interfaces.Unsigned_32) is
+   begin
+      Self.Scanner_State.Start_Condition_Stack.Append (Start_Condition (Self));
+      Self.Scanner_State.YY_Start_State := 1 + 2 * Enter;
+   end Push_Current_And_Enter_Start_Condition;
 
    -----------------
    -- Push_Entity --
@@ -339,31 +335,6 @@ package body XML.SAX.Simple_Readers.Scanner is
       Self.Whitespace_Matched := False;
    end Reset_Whitespace_Matched;
 
-   --------------------------------------------
-   -- Push_Current_And_Enter_Start_Condition --
-   --------------------------------------------
-
-   procedure Push_Current_And_Enter_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Enter : Interfaces.Unsigned_32) is
-   begin
-      Self.Scanner_State.Start_Condition_Stack.Append (Start_Condition (Self));
-      Self.Scanner_State.YY_Start_State := 1 + 2 * Enter;
-   end Push_Current_And_Enter_Start_Condition;
-
-   ------------------------------------
-   -- Push_And_Enter_Start_Condition --
-   ------------------------------------
-
-   procedure Push_And_Enter_Start_Condition
-    (Self  : not null access SAX_Simple_Reader'Class;
-     Push  : Interfaces.Unsigned_32;
-     Enter : Interfaces.Unsigned_32) is
-   begin
-      Self.Scanner_State.Start_Condition_Stack.Append (Push);
-      Self.Scanner_State.YY_Start_State := 1 + 2 * Enter;
-   end Push_And_Enter_Start_Condition;
-
    ---------------------------------------
    -- Set_Document_Version_And_Encoding --
    ---------------------------------------
@@ -468,6 +439,67 @@ package body XML.SAX.Simple_Readers.Scanner is
       return (Self.Scanner_State.YY_Start_State - 1) / 2;
    end Start_Condition;
 
+   ----------------------
+   -- YY_Move_Backward --
+   ----------------------
+
+   procedure YY_Move_Backward
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Self.Scanner_State.YY_Current_Position :=
+        Self.Scanner_State.YY_Current_Position - 1;
+      Self.Scanner_State.YY_Current_Index    :=
+        Self.Scanner_State.YY_Current_Index - 1;
+      Self.Scanner_State.YY_Current_Column   :=
+        Self.Scanner_State.YY_Current_Column - 1;
+   end YY_Move_Backward;
+
+   -------------
+   -- YY_Text --
+   -------------
+
+   function YY_Text
+    (Self            : not null access SAX_Simple_Reader'Class;
+     Trim_Left       : Natural := 0;
+     Trim_Right      : Natural := 0;
+     Trim_Whitespace : Boolean := False)
+       return Matreshka.Internals.Strings.Shared_String_Access
+   is
+      --  Trailing and leading character as well as whitespace characters
+      --  belongs to BMP and don't require expensive UTF-16 decoding.
+
+      FP : Utf16_String_Index
+        := Self.Scanner_State.YY_Base_Position
+             + Utf16_String_Index (Trim_Left);
+      FI : Positive := Self.Scanner_State.YY_Base_Index + Trim_Left;
+      LP : constant Utf16_String_Index
+        := Self.Scanner_State.YY_Current_Position
+             - Utf16_String_Index (Trim_Right);
+      LI : constant Positive
+        := Self.Scanner_State.YY_Current_Index - Trim_Right;
+      C  : Code_Point;
+
+   begin
+      if Trim_Whitespace then
+         loop
+            C := Code_Point (Self.Scanner_State.Data.Value (FP));
+
+            exit when
+              C /= Space
+                and then C /= Character_Tabulation
+                and then C /= Carriage_Return
+                and then C /= Line_Feed;
+
+            FP := FP + 1;
+            FI := FI + 1;
+         end loop;
+      end if;
+
+      return
+        Matreshka.Internals.Strings.Operations.Slice
+         (Self.Scanner_State.Data, FP, LP - FP, LI - FI);
+   end YY_Text;
+
    -----------
    -- YYLex --
    -----------
@@ -515,63 +547,11 @@ package body XML.SAX.Simple_Readers.Scanner is
       YY_Index_Offset            : Natural;
       YY_Start_Condition         : Interfaces.Unsigned_32;
 
-      function YY_Text
-       (Trim_Left       : Natural := 0;
-        Trim_Right      : Natural := 0;
-        Trim_Whitespace : Boolean := False)
-          return League.Strings.Universal_String;
-
       function YY_Text_Internal
        (Trim_Left       : Natural := 0;
         Trim_Right      : Natural := 0;
         Trim_Whitespace : Boolean := False)
           return Matreshka.Internals.Strings.Shared_String_Access;
-
-      -------------
-      -- YY_Text --
-      -------------
-
-      function YY_Text
-       (Trim_Left       : Natural := 0;
-        Trim_Right      : Natural := 0;
-        Trim_Whitespace : Boolean := False)
-          return League.Strings.Universal_String
-      is
-         --  Trailing and leading character as well as whitespace characters
-         --  belongs to BMP and don't require expensive UTF-16 decoding.
-
-         FP : Utf16_String_Index
-          := Self.Scanner_State.YY_Base_Position
-               + Utf16_String_Index (Trim_Left);
-         FI : Positive := Self.Scanner_State.YY_Base_Index + Trim_Left;
-         LP : constant Utf16_String_Index
-          := Self.Scanner_State.YY_Current_Position
-               - Utf16_String_Index (Trim_Right);
-         LI : constant Positive
-           := Self.Scanner_State.YY_Current_Index - Trim_Right;
-         C  : Code_Point;
-
-      begin
-         if Trim_Whitespace then
-            loop
-               C := Code_Point (Self.Scanner_State.Data.Value (FP));
-
-               exit when
-                 C /= Space
-                   and then C /= Character_Tabulation
-                   and then C /= Carriage_Return
-                   and then C /= Line_Feed;
-
-               FP := FP + 1;
-               FI := FI + 1;
-            end loop;
-         end if;
-
-         return
-           League.Strings.Internals.Wrap
-            (Matreshka.Internals.Strings.Operations.Slice
-              (Self.Scanner_State.Data, FP, LP - FP, LI - FI));
-      end YY_Text;
 
       ----------------------
       -- YY_Text_Internal --
@@ -753,8 +733,10 @@ package body XML.SAX.Simple_Readers.Scanner is
                else
                   raise Program_Error;
                end if;
+         pragma Style_Checks ("M127");
 %%
---            when YY_END_OF_BUFFER + INITIAL + 1 
+         pragma Style_Checks ("M79");
+--            when YY_END_OF_BUFFER + INITIAL + 1
 --            =>
 --               return End_Of_Input;
 --
@@ -887,7 +869,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                            --  in the initial state and actual state must be
                            --  retrieved from the state stack.
 
-                           if YY_Start_Condition = Initial then
+                           if YY_Start_Condition = INITIAL then
                               Pop_Start_Condition (Self);
                               YY_Start_Condition := Start_Condition (Self);
                            end if;
@@ -1007,51 +989,5 @@ package body XML.SAX.Simple_Readers.Scanner is
          end case;
       end loop;  --  end of loop waiting for end of file
    end YYLex;
-
-   -------------
-   -- YY_Text --
-   -------------
-
-   function YY_Text
-    (Self            : not null access SAX_Simple_Reader'Class;
-     Trim_Left       : Natural := 0;
-     Trim_Right      : Natural := 0;
-     Trim_Whitespace : Boolean := False)
-       return Matreshka.Internals.Strings.Shared_String_Access
-   is
-      --  Trailing and leading character as well as whitespace characters
-      --  belongs to BMP and don't require expensive UTF-16 decoding.
-
-      FP : Utf16_String_Index
-        := Self.Scanner_State.YY_Base_Position
-             + Utf16_String_Index (Trim_Left);
-      FI : Positive := Self.Scanner_State.YY_Base_Index + Trim_Left;
-      LP : constant Utf16_String_Index
-        := Self.Scanner_State.YY_Current_Position
-             - Utf16_String_Index (Trim_Right);
-      LI : constant Positive
-        := Self.Scanner_State.YY_Current_Index - Trim_Right;
-      C  : Code_Point;
-
-   begin
-      if Trim_Whitespace then
-         loop
-            C := Code_Point (Self.Scanner_State.Data.Value (FP));
-
-            exit when
-              C /= Space
-                and then C /= Character_Tabulation
-                and then C /= Carriage_Return
-                and then C /= Line_Feed;
-
-            FP := FP + 1;
-            FI := FI + 1;
-         end loop;
-      end if;
-
-      return
-        Matreshka.Internals.Strings.Operations.Slice
-         (Self.Scanner_State.Data, FP, LP - FP, LI - FI);
-   end YY_Text;
 
 end XML.SAX.Simple_Readers.Scanner;

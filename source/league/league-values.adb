@@ -234,7 +234,6 @@ package body League.Values is
       return Universal_Float'First;
    end First;
 
-
    -----------
    -- First --
    -----------
@@ -586,7 +585,7 @@ package body League.Values is
         or else not Matreshka.Internals.Atomics.Counters.Is_One
                      (Self.Data.Counter'Access)
       then
-	 --  Tag of the value is changed, or value is shared, dereference
+         --  Tag of the value is changed, or value is shared, dereference
          --  shared object and allocate new one.
 
          Dereference (Self.Data);

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010 Vadim Godunko <vgodunko@gmail.com>                      --
+-- Copyright © 2010-2011 Vadim Godunko <vgodunko@gmail.com>                 --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -48,8 +48,6 @@ package body Matreshka.Internals.Regexps.Engine.Debug is
       SS : Regexps.Slice_Array (0 .. 9);
    end record;
 
-   type State_Array is array (Positive range <>) of State;
-
    ----------
    -- Dump --
    ----------
@@ -68,7 +66,8 @@ package body Matreshka.Internals.Regexps.Engine.Debug is
          declare
             Address_Image  : constant String := Trim (Integer'Image (J), Both);
             Address_Buffer : String (1 .. 4) := (others => ' ');
-            Instruction    : Engine.Instruction := Program.Instructions (J);
+            Instruction    : constant Engine.Instruction
+              := Program.Instructions (J);
 
          begin
             Address_Buffer (4 - Address_Image'Length + 1 .. 4) :=

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -77,7 +77,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
    function YY_EOF_State
     (Self : not null access Compiler_State) return Integer is
    begin
-     return YY_END_OF_BUFFER + (Self.YY_Start_State - 1) / 2 + 1;
+     return YY_End_Of_Buffer + (Self.YY_Start_State - 1) / 2 + 1;
    end YY_EOF_State;
 
    -----------
@@ -119,7 +119,7 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             Result (Last) := Wide_Wide_Character'Val (Code);
          end loop;
 
-         return Result (1 .. Last); 
+         return Result (1 .. Last);
       end YYText;
 
       YYLVal : YYSType renames Self.YYLVal;
@@ -192,7 +192,6 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             YY_Action := YY_Accept (YY_Current_State);
          end if;
 
-<<Do_Action>>  --  This label is used only to access EOF actions
          case YY_Action is
             when 0 =>
                --  Backtrack
@@ -200,7 +199,10 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                Self.YY_Current_Position := YY_Last_Accepting_Position;
                Self.YY_Current_Index    := YY_Last_Accepting_Index;
                YY_Current_State         := YY_Last_Accepting_State;
+
+         pragma Style_Checks ("M127");
 %%
+         pragma Style_Checks ("M79");
 
             when others =>
                raise Program_Error

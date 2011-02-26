@@ -441,7 +441,7 @@ package body Matreshka.Internals.Settings.Ini_Files is
 
          Line_Last := Line_Last - 1;
 
-         -- Remove trailing whitespaces.
+         --  Remove trailing whitespaces.
 
          loop
             exit when

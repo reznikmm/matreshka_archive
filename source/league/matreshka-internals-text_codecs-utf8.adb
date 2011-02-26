@@ -213,6 +213,8 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
      String : not null Matreshka.Internals.Strings.Shared_String_Access;
      Buffer : out MISEV.Shared_Stream_Element_Vector_Access)
    is
+      pragma Unreferenced (Self);
+
       use Matreshka.Internals.Stream_Element_Vectors;
       use type Ada.Streams.Stream_Element_Offset;
 
@@ -234,7 +236,8 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
             if Code <= 16#00_007F# then
                --  One byte sequence: 0xxxxxxx
 
-               Buffer.Value (Buffer.Length) := Ada.Streams.Stream_Element (Code);
+               Buffer.Value (Buffer.Length) :=
+                 Ada.Streams.Stream_Element (Code);
                Buffer.Length := Buffer.Length + 1;
 
             elsif Code <= 16#00_07FF# then
@@ -267,7 +270,8 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
                --  Four bytes sequence: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
 
                Buffer.Value (Buffer.Length) :=
-                 Ada.Streams.Stream_Element (2#11110000# or (Code / 16#40000#));
+                 Ada.Streams.Stream_Element
+                   (2#11110000# or (Code / 16#40000#));
                Buffer.Length := Buffer.Length + 1;
                Buffer.Value (Buffer.Length) :=
                  Ada.Streams.Stream_Element
@@ -291,6 +295,8 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
    -------------
 
    function Encoder (Dummy : Boolean) return Abstract_Encoder'Class is
+      pragma Unreferenced (Dummy);
+
    begin
       return UTF8_Encoder'(null record);
    end Encoder;

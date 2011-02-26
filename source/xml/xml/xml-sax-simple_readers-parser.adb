@@ -158,8 +158,8 @@ package body XML.SAX.Simple_Readers.Parser is
       procedure Handle_Error;
       --  Handles error state.
 
-      procedure On_Fatal_Error;
-      --  Handles fatal error.
+--      procedure On_Fatal_Error;
+--      --  Handles fatal error.
 
       ------------------
       -- Handle_Error --
@@ -235,16 +235,16 @@ package body XML.SAX.Simple_Readers.Parser is
 --       yy.look_ahead := true;
 --   end yyclearin;
 
-      --------------------
-      -- On_Fatal_Error --
-      --------------------
-
-      procedure On_Fatal_Error is
-      begin
-         YY.Input_Symbol := End_Of_Input;
-         YY.Look_Ahead := False;
-         YY.Error := False;
-      end On_Fatal_Error;
+--      --------------------
+--      -- On_Fatal_Error --
+--      --------------------
+--
+--      procedure On_Fatal_Error is
+--      begin
+--         YY.Input_Symbol := End_Of_Input;
+--         YY.Look_Ahead := False;
+--         YY.Error := False;
+--      end On_Fatal_Error;
 
       YY_Action  : Integer;
       YY_Rule_Id : Integer;
@@ -317,6 +317,7 @@ package body XML.SAX.Simple_Readers.Parser is
             --  Execute User Action.
 
             case YY_Rule_Id is
+               pragma Style_Checks ("M127");
 
             when 1 =>
                Actions.On_Start_Of_Document (Self);
@@ -396,7 +397,7 @@ package body XML.SAX.Simple_Readers.Parser is
 
             when 18 =>
                --  Document type declaration, rule [28]. Once external identifier are
-               --  recognized external document type declaration subset need to be parsed 
+               --  recognized external document type declaration subset need to be parsed
                --  after processing of internal subset. External subset is inserted
                --  immediately after the internal subset. Thus original rule [28] is
                --  rewritten and extended to reflect this inclusion.
@@ -951,6 +952,8 @@ package body XML.SAX.Simple_Readers.Parser is
 
             when 156 =>
                null;
+               pragma Style_Checks ("M79");
+
                when others =>
                   raise Program_Error
                     with "Unhandled state"

@@ -84,7 +84,10 @@ package body XML.SAX.Pretty_Writers is
    overriding procedure Characters
     (Self    : in out SAX_Pretty_Writer;
      Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       if Self.Tag_Opened then
          Self.Text.Append ('>');
@@ -101,7 +104,10 @@ package body XML.SAX.Pretty_Writers is
    overriding procedure Comment
     (Self    : in out SAX_Pretty_Writer;
      Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Text.Append ("<!-- ");
       Self.Text.Append (Text);
@@ -357,7 +363,7 @@ package body XML.SAX.Pretty_Writers is
    procedure Merge
     (Self    : in out SAX_Pretty_Writer;
      Current : in out Mappings.Map;
-     Bank    : in Banks.Map)
+     Bank    : Banks.Map)
    is
       C : Banks.Cursor := Banks.First (Bank);
 
@@ -469,7 +475,10 @@ package body XML.SAX.Pretty_Writers is
 
    overriding procedure Start_Document
     (Self    : in out SAX_Pretty_Writer;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Text.Append ("<?xml version=""" & Image (Self.Version) & """?>");
       Self.Nesting := 0;
@@ -571,7 +580,8 @@ package body XML.SAX.Pretty_Writers is
 
          else
             declare
-               C  : Mappings.Cursor := Self.Current.Find (Namespace_URI);
+               C  : constant Mappings.Cursor
+                 := Self.Current.Find (Namespace_URI);
 
             begin
                if C /= Mappings.No_Element then
@@ -611,7 +621,7 @@ package body XML.SAX.Pretty_Writers is
 
                else
                   declare
-                     C : Mappings.Cursor
+                     C : constant Mappings.Cursor
                        := Self.Current.Find (Attributes.Namespace_URI (J));
 
                   begin

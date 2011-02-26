@@ -90,6 +90,8 @@ package body Matreshka.Internals.XML.Entity_Tables is
    ------------------
 
    function First_Entity (Self : Entity_Table) return Entity_Identifier is
+      pragma Unreferenced (Self);
+
    begin
       return No_Entity + 1;
    end First_Entity;

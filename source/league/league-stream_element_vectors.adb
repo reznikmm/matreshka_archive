@@ -213,7 +213,8 @@ package body League.Stream_Element_Vectors is
    function To_Stream_Element_Vector
     (Item : Ada.Streams.Stream_Element_Array) return Stream_Element_Vector
    is
-      Data : Shared_Stream_Element_Vector_Access := Allocate (Item'Length);
+      Data : constant Shared_Stream_Element_Vector_Access
+        := Allocate (Item'Length);
 
    begin
       Data.Length := Item'Length;

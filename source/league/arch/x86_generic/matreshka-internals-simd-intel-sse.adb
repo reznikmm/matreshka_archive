@@ -208,7 +208,7 @@ package body Matreshka.Internals.SIMD.Intel.SSE is
 
       Zero := mm_setzero_ps;
       Ra   := mm_cvtpi32_ps (Zero, LoSi);
-      Rb   := mm_cvtpi32_ps (Ra, Hisi);
+      Rb   := mm_cvtpi32_ps (Ra, HiSi);
 
       return mm_movelh_ps (Ra, Rb);
    end mm_cvtpu16_ps;

@@ -291,6 +291,8 @@ package body Matreshka.Internals.Text_Codecs.Windows1251 is
      String : not null Matreshka.Internals.Strings.Shared_String_Access;
      Buffer : out MISEV.Shared_Stream_Element_Vector_Access)
    is
+      pragma Unreferenced (Self);
+
       use Matreshka.Internals.Stream_Element_Vectors;
       use Ada.Streams;
 
@@ -372,6 +374,8 @@ package body Matreshka.Internals.Text_Codecs.Windows1251 is
    -------------
 
    function Encoder (Dummy : Boolean) return Abstract_Encoder'Class is
+      pragma Unreferenced (Dummy);
+
    begin
       return Windows1251_Encoder'(null record);
    end Encoder;
@@ -381,6 +385,8 @@ package body Matreshka.Internals.Text_Codecs.Windows1251 is
    --------------
 
    overriding function Is_Error (Self : Windows1251_Decoder) return Boolean is
+      pragma Unreferenced (Self);
+
    begin
       return False;
    end Is_Error;
@@ -390,7 +396,10 @@ package body Matreshka.Internals.Text_Codecs.Windows1251 is
    -------------------
 
    overriding function Is_Mailformed
-    (Self : Windows1251_Decoder) return Boolean is
+    (Self : Windows1251_Decoder) return Boolean
+   is
+      pragma Unreferenced (Self);
+
    begin
       return False;
    end Is_Mailformed;

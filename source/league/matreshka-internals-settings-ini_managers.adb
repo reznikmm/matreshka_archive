@@ -82,37 +82,6 @@ package body Matreshka.Internals.Settings.Ini_Managers is
    Unknown_Organization : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Unknown Organization");
 
-   -------------------
-   -- Ini_File_Name --
-   -------------------
-
-   function Ini_File_Name
-    (Self         : not null access Ini_File_Manager'Class;
-     Path         : League.Strings.Universal_String;
-     Organization : League.Strings.Universal_String;
-     Application  : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String)
-       return League.Strings.Universal_String is
-   begin
-      if Application.Is_Empty then
-         if Organization.Is_Empty then
-            return Path & Unknown_Organization & Self.Extension;
-
-         else
-            return Path & Organization & Self.Extension;
-         end if;
-
-      else
-         if Organization.Is_Empty then
-            return
-              Path & Unknown_Organization & '/' & Application & Self.Extension;
-
-         else
-            return Path & Organization & '/' & Application & Self.Extension;
-         end if;
-      end if;
-   end Ini_File_Name;
-
    ------------
    -- Create --
    ------------
@@ -232,6 +201,37 @@ package body Matreshka.Internals.Settings.Ini_Managers is
       end if;
    end Extension;
 
+   -------------------
+   -- Ini_File_Name --
+   -------------------
+
+   function Ini_File_Name
+    (Self         : not null access Ini_File_Manager'Class;
+     Path         : League.Strings.Universal_String;
+     Organization : League.Strings.Universal_String;
+     Application  : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
+       return League.Strings.Universal_String is
+   begin
+      if Application.Is_Empty then
+         if Organization.Is_Empty then
+            return Path & Unknown_Organization & Self.Extension;
+
+         else
+            return Path & Organization & Self.Extension;
+         end if;
+
+      else
+         if Organization.Is_Empty then
+            return
+              Path & Unknown_Organization & '/' & Application & Self.Extension;
+
+         else
+            return Path & Organization & '/' & Application & Self.Extension;
+         end if;
+      end if;
+   end Ini_File_Name;
+
    -----------
    -- Paths --
    -----------
@@ -247,6 +247,8 @@ package body Matreshka.Internals.Settings.Ini_Managers is
      Key  : League.Strings.Universal_String)
        return League.Strings.Universal_String
    is
+      pragma Unreferenced (Self);
+
       use type League.Strings.Universal_Character;
 
       Slash : Boolean := False;

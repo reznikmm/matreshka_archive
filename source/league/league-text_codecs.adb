@@ -56,15 +56,6 @@ package body League.Text_Codecs is
 
    Locale_Codec : Text_Codec;
 
-   ----------------------------------
-   -- Codec_For_Application_Locale --
-   ----------------------------------
-
-   function Codec_For_Application_Locale return Text_Codec is
-   begin
-      return Locale_Codec;
-   end Codec_For_Application_Locale;
-
    -----------
    -- Codec --
    -----------
@@ -83,6 +74,15 @@ package body League.Text_Codecs is
        (Decoder => Decoder (Set),
         Encoder => Encoder (Set));
    end Codec;
+
+   ----------------------------------
+   -- Codec_For_Application_Locale --
+   ----------------------------------
+
+   function Codec_For_Application_Locale return Text_Codec is
+   begin
+      return Locale_Codec;
+   end Codec_For_Application_Locale;
 
    ------------
    -- Decode --

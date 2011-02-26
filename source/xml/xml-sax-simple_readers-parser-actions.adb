@@ -334,16 +334,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       Self.In_Document_Content := True;
    end On_End_Of_Document_Type_Declaration;
 
-   -------------------------------------
-   -- On_No_Document_Type_Declaration --
-   -------------------------------------
-
-   procedure On_No_Document_Type_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) is
-   begin
-      Self.In_Document_Content := True;
-   end On_No_Document_Type_Declaration;
-
    ----------------
    -- On_End_Tag --
    ----------------
@@ -651,6 +641,16 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       Analyze_Attribute_Declaration
        (Self, Symbol, New_NmTokens_Attribute'Access);
    end On_NmTokens_Attribute_Declaration;
+
+   -------------------------------------
+   -- On_No_Document_Type_Declaration --
+   -------------------------------------
+
+   procedure On_No_Document_Type_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Self.In_Document_Content := True;
+   end On_No_Document_Type_Declaration;
 
    ---------------------------------------
    -- On_Notation_Attribute_Declaration --
@@ -1490,7 +1490,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       Encoding_Name  : constant League.Strings.Universal_String
         := Matreshka.Internals.Text_Codecs.Transform_Character_Set_Name
             (League.Strings.Internals.Create (Encoding));
-      Entity_Version : XML_Version := To_XML_Version (Version);
+      Entity_Version : constant XML_Version := To_XML_Version (Version);
 
    begin
       --  [XML1.1 4.3.4]

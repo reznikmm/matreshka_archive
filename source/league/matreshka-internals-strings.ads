@@ -125,7 +125,6 @@ package Matreshka.Internals.Strings is
 
    procedure Reference (Self : Shared_String_Access);
    pragma Inline (Reference);
-   pragma Inline_Always (Reference);
    --  Increment reference counter. Change of reference counter of Shared_Empty
    --  object is prevented to provide speedup and to allow to use it to
    --  initialize components of Preelaborateable_Initialization types.
@@ -148,7 +147,6 @@ package Matreshka.Internals.Strings is
     (Self : not null Shared_String_Access;
      Size : Matreshka.Internals.Utf16.Utf16_String_Index) return Boolean;
    pragma Inline (Can_Be_Reused);
-   pragma Inline_Always (Can_Be_Reused);
    --  Returns True when specified shared string can be reused safely. There
    --  are two criteria: reference counter must be one (it means this object
    --  is not used anywhere); and size of the object is sufficient to store

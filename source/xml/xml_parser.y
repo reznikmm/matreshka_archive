@@ -149,11 +149,13 @@ document :
 XMLDecl :
   Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment Token_Encoding Token_Equal Token_String_Segment SDDecl_optional Token_PI_Close
    {
-      Actions.On_XML_Declaration (Self, $4.String, $7.String);
+      Actions.On_XML_Declaration
+       (Self, $4.String, $7.String);
    }
 | Token_Xml_Decl_Open Token_Version Token_Equal Token_String_Segment SDDecl_optional Token_PI_Close
    {
-      Actions.On_XML_Declaration (Self, $4.String, Matreshka.Internals.Strings.Shared_Empty'Access);
+      Actions.On_XML_Declaration
+       (Self, $4.String, Matreshka.Internals.Strings.Shared_Empty'Access);
    }
 ;
 
@@ -241,7 +243,7 @@ doctypedecl_optional:
   Token_Doctype_Decl_Open ExternalID
    {
       --  Document type declaration, rule [28]. Once external identifier are
-      --  recognized external document type declaration subset need to be parsed 
+      --  recognized external document type declaration subset need to be parsed
       --  after processing of internal subset. External subset is inserted
       --  immediately after the internal subset. Thus original rule [28] is
       --  rewritten and extended to reflect this inclusion.
@@ -268,7 +270,7 @@ doctypedecl_optional:
    }
   internal_subset_optional Token_Close
    {
-      --  Document type declaration, rule [28]. 
+      --  Document type declaration, rule [28].
 
       Actions.On_End_Of_Document_Type_Declaration (Self);
    }
@@ -1209,8 +1211,6 @@ with Matreshka.Internals.XML.Symbol_Tables;
    package body Actions is separate;
 
    procedure Handle_Error is separate;
-
-   procedure On_Fatal_Error is separate;
 
    procedure Parse is
 ##

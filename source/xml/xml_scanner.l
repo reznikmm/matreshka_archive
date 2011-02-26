@@ -717,7 +717,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ELEMENT_CHILDREN>"#PCDATA" {
    --  #PCDATA in rule [51].
 
-   return Token_PCData;
+   return Token_Pcdata;
 }
 
 <ELEMENT_CHILDREN>{NAME} {
@@ -749,7 +749,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ATTLIST_TYPE>"CDATA" {
    --  CDATA keyword, rule [55].
 
-   return Actions.On_Attribute_Type (Self, Token_CData);
+   return Actions.On_Attribute_Type (Self, Token_Cdata);
 }
 
 <ATTLIST_TYPE>"ID" {
@@ -761,13 +761,13 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ATTLIST_TYPE>"IDREF" {
    --  IDREF keyword, rule [56].
 
-   return Actions.On_Attribute_Type (Self, Token_IdRef);
+   return Actions.On_Attribute_Type (Self, Token_Idref);
 }
 
 <ATTLIST_TYPE>"IDREFS" {
    --  IDREFS keyword, rule [56].
 
-   return Actions.On_Attribute_Type (Self, Token_IdRefs);
+   return Actions.On_Attribute_Type (Self, Token_Idrefs);
 }
 
 <ATTLIST_TYPE>"ENTITY" {
@@ -785,13 +785,13 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ATTLIST_TYPE>"NMTOKEN" {
    --  NMTOKEN keyword, rule [56].
 
-   return Actions.On_Attribute_Type (Self, Token_NmToken);
+   return Actions.On_Attribute_Type (Self, Token_Nmtoken);
 }
 
 <ATTLIST_TYPE>"NMTOKENS" {
    --  NMTOKENS keyword, rule [56].
 
-   return Actions.On_Attribute_Type (Self, Token_NmTokens);
+   return Actions.On_Attribute_Type (Self, Token_Nmtokens);
 }
 
 <ATTLIST_TYPE>"NOTATION" {

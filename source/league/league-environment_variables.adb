@@ -154,8 +154,8 @@ package body League.Environment_Variables is
        := League.Strings.Empty_Universal_String)
          return League.Strings.Universal_String
    is
-      Key      : constant Key_Type := To_Key (Name);
-      Position : Universal_String_Maps.Cursor := Self.Find (Key);
+      Key      : constant Key_Type                     := To_Key (Name);
+      Position : constant Universal_String_Maps.Cursor := Self.Find (Key);
 
    begin
       if Universal_String_Maps.Has_Element (Position) then

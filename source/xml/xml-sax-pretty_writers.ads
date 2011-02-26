@@ -47,8 +47,6 @@ private with Ada.Containers.Vectors;
 
 with League.Strings.Hash;
 with XML.SAX.Attributes;
-with XML.SAX.Content_Handlers;
-with XML.SAX.Lexical_Handlers;
 with XML.SAX.Writers;
 
 package XML.SAX.Pretty_Writers is
@@ -216,7 +214,7 @@ private
    procedure Merge
     (Self    : in out SAX_Pretty_Writer;
      Current : in out Mappings.Map;
-     Bank    : in Banks.Map);
+     Bank    : Banks.Map);
 
    type SAX_Pretty_Writer is
      limited new XML.SAX.Writers.SAX_Writer with

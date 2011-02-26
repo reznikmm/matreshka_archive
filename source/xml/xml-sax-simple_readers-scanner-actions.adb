@@ -217,32 +217,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
    end Character_Reference_To_Code_Point;
 
-   --------------
-   -- On_NDATA --
-   --------------
-
-   function On_NDATA
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
-   begin
-      if not Self.Whitespace_Matched then
-         --  XXX This is recoverable error.
-
-         Callbacks.Call_Fatal_Error
-          (Self.all,
-           League.Strings.To_Universal_String
-            ("whitespace required before NDATA"));
-         Self.Error_Reported := True;
-
-         return Error;
-
-      else
-         Self.Whitespace_Matched := False;
-         Enter_Start_Condition (Self, Tables.ENTITY_NDATA);
-
-         return Token_NData;
-      end if;
-   end On_NDATA;
-
    -----------------------------------------------------
    -- On_Attribute_Name_In_Attribute_List_Declaration --
    -----------------------------------------------------
@@ -1620,6 +1594,32 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
    end On_Name_In_Entity_Declaration_Notation;
 
+   --------------
+   -- On_NDATA --
+   --------------
+
+   function On_NDATA
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      if not Self.Whitespace_Matched then
+         --  XXX This is recoverable error.
+
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("whitespace required before NDATA"));
+         Self.Error_Reported := True;
+
+         return Error;
+
+      else
+         Self.Whitespace_Matched := False;
+         Enter_Start_Condition (Self, Tables.ENTITY_NDATA);
+
+         return Token_Ndata;
+      end if;
+   end On_NDATA;
+
    ---------------------------
    -- On_No_XML_Declaration --
    ---------------------------
@@ -2008,6 +2008,30 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
    end On_Parameter_Entity_Reference_In_Markup_Declaration;
 
+   ---------------------
+   -- On_Percent_Sign --
+   ---------------------
+
+   function On_Percent_Sign
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      if not Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("no whitespace before percent"));
+         Self.Error_Reported := True;
+         --  XXX This is recoverable error.
+
+         return Error;
+
+      else
+         Self.Whitespace_Matched := False;
+
+         return Token_Percent;
+      end if;
+   end On_Percent_Sign;
+
    -----------------------
    -- On_Public_Literal --
    -----------------------
@@ -2120,30 +2144,6 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          return Token_Standalone;
       end if;
    end On_Standalone_Keyword;
-
-   ---------------------
-   -- On_Percent_Sign --
-   ---------------------
-
-   function On_Percent_Sign
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
-   begin
-      if not Self.Whitespace_Matched then
-         Callbacks.Call_Fatal_Error
-          (Self.all,
-           League.Strings.To_Universal_String
-            ("no whitespace before percent"));
-         Self.Error_Reported := True;
-         --  XXX This is recoverable error.
-
-         return Error;
-
-      else
-         Self.Whitespace_Matched := False;
-
-         return Token_Percent;
-      end if;
-   end On_Percent_Sign;
 
    -----------------------
    -- On_System_Literal --

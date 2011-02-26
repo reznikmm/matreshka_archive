@@ -45,7 +45,7 @@
 --  construct conversion tables:
 --
 --  Shift_JIS-2004 (JIS X 0213:2004 Appendix 1) vs Unicode mapping table
---  
+--
 --  Date: 3 May 2009
 --  License:
 --  	Copyright (C) 2001 earthian@tama.or.jp, All Rights Reserved.
@@ -176,7 +176,8 @@ package body Matreshka.Internals.Text_Codecs.SHIFTJIS is
    -- Is_Mailformed --
    -------------------
 
-   overriding function Is_Mailformed (Self : SHIFTJIS_Decoder) return Boolean is
+   overriding function Is_Mailformed
+    (Self : SHIFTJIS_Decoder) return Boolean is
    begin
       return Self.State not in Accept_Single_State .. Accept_Double_State;
    end Is_Mailformed;

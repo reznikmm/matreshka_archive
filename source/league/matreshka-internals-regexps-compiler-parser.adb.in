@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -275,7 +275,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
          return
            Create_Match_Property (Pattern, Binary_To_Ucd (Keyword), Negative);
 
-      elsif Keyword in GC_To_UCD'Range then
+      elsif Keyword in GC_To_Ucd'Range then
          return Create_Match_Property (Pattern, GC_To_Ucd (Keyword), Negative);
 
       else
@@ -297,7 +297,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
          Create_Member_Property
           (Pattern, Class, Binary_To_Ucd (Keyword), Negative);
 
-      elsif Keyword in GC_To_UCD'Range then
+      elsif Keyword in GC_To_Ucd'Range then
          Create_Member_Property
           (Pattern, Class, GC_To_Ucd (Keyword), Negative);
 
@@ -460,7 +460,7 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
        return not null Shared_Pattern_Access
    is
 
-      -- The size of the value and state stacks
+      --  The size of the value and state stacks
 
       YY_Stack_Size : constant Natural := 300;
 
@@ -483,7 +483,8 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
       YY_Rule_Id : Integer;
       YY_Index   : Integer;
       Pattern    : Shared_Pattern_Access
-        := new Shared_Pattern (Self.Data.Length, Node_List_Count (Self.Data.Length));
+        := new Shared_Pattern
+                (Self.Data.Length, Node_List_Count (Self.Data.Length));
 
    begin
       YY.TOS := 0;
@@ -549,7 +550,10 @@ package body Matreshka.Internals.Regexps.Compiler.Parser is
             --  Execute User Action
 
             case YY_Rule_Id is
+               pragma Style_Checks ("M127");
 %%
+               pragma Style_Checks ("M79");
+
                when others =>
                   Dereference (Pattern);
 

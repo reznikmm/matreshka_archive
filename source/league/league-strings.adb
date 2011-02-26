@@ -946,7 +946,7 @@ package body League.Strings is
     (Self : in out Universal_String'Class;
      Item : Wide_Wide_Character)
    is
-      Aux : Universal_String := Wide_Wide_String'(1 => Item) & Self;
+      Aux : constant Universal_String := Wide_Wide_String'(1 => Item) & Self;
 
    begin
       --  XXX Inefficient implementation.
@@ -1113,7 +1113,7 @@ package body League.Strings is
      Behavior  : Split_Behavior := Keep_Empty)
        return Universal_String_Vector is
    begin
-      return Split (Self, To_Universal_Character (Separator));
+      return Split (Self, To_Universal_Character (Separator), Behavior);
    end Split;
 
    -----------

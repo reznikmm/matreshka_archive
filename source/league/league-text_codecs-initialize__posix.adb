@@ -65,6 +65,36 @@ procedure Initialize is
    --  if variable is not defined.
 
    ------------------------
+   -- Determine_Encoding --
+   ------------------------
+
+   function Determine_Encoding return League.Strings.Universal_String is
+      LC_CTYPE_Encoding : constant League.Strings.Universal_String
+        := Encoding_Component (Get_Environment_Variable ("LC_TYPE"));
+      LC_ALL_Encoding   : constant League.Strings.Universal_String
+        := Encoding_Component (Get_Environment_Variable ("LC_ALL"));
+      LANG_Encoding     : constant League.Strings.Universal_String
+        := Encoding_Component (Get_Environment_Variable ("LANG"));
+
+   begin
+      --  Analyze LC_CTYPE, LC_ALL, LANG for codeset part, use first found,
+      --  otherwise fallback to ISO-8859-1.
+
+      if not LC_CTYPE_Encoding.Is_Empty then
+         return LC_CTYPE_Encoding;
+
+      elsif not LC_ALL_Encoding.Is_Empty then
+         return LC_ALL_Encoding;
+
+      elsif not LANG_Encoding.Is_Empty then
+         return LANG_Encoding;
+
+      else
+         return League.Strings.To_Universal_String ("ISO-8859-1");
+      end if;
+   end Determine_Encoding;
+
+   ------------------------
    -- Encoding_Component --
    ------------------------
 
@@ -120,36 +150,6 @@ procedure Initialize is
          return Interfaces.C.Strings.Value (C_Value);
       end if;
    end Get_Environment_Variable;
-
-   ------------------------
-   -- Determine_Encoding --
-   ------------------------
-
-   function Determine_Encoding return League.Strings.Universal_String is
-      LC_CTYPE_Encoding : constant League.Strings.Universal_String
-        := Encoding_Component (Get_Environment_Variable ("LC_TYPE"));
-      LC_ALL_Encoding   : constant League.Strings.Universal_String
-        := Encoding_Component (Get_Environment_Variable ("LC_ALL"));
-      LANG_Encoding     : constant League.Strings.Universal_String
-        := Encoding_Component (Get_Environment_Variable ("LANG"));
-
-   begin
-      --  Analyze LC_CTYPE, LC_ALL, LANG for codeset part, use first found,
-      --  otherwise fallback to ISO-8859-1.
-
-      if not LC_CTYPE_Encoding.Is_Empty then
-         return LC_CTYPE_Encoding;
-
-      elsif not LC_ALL_Encoding.Is_Empty then
-         return LC_ALL_Encoding;
-
-      elsif not LANG_Encoding.Is_Empty then
-         return LANG_Encoding;
-
-      else
-         return League.Strings.To_Universal_String ("ISO-8859-1");
-      end if;
-   end Determine_Encoding;
 
 begin
    Locale_Codec := Codec (Determine_Encoding);

@@ -158,8 +158,8 @@ package body XML.SAX.Simple_Readers.Parser is
       procedure Handle_Error;
       --  Handles error state.
 
-      procedure On_Fatal_Error;
-      --  Handles fatal error.
+--      procedure On_Fatal_Error;
+--      --  Handles fatal error.
 
       ------------------
       -- Handle_Error --
@@ -235,16 +235,16 @@ package body XML.SAX.Simple_Readers.Parser is
 --       yy.look_ahead := true;
 --   end yyclearin;
 
-      --------------------
-      -- On_Fatal_Error --
-      --------------------
-
-      procedure On_Fatal_Error is
-      begin
-         YY.Input_Symbol := End_Of_Input;
-         YY.Look_Ahead := False;
-         YY.Error := False;
-      end On_Fatal_Error;
+--      --------------------
+--      -- On_Fatal_Error --
+--      --------------------
+--
+--      procedure On_Fatal_Error is
+--      begin
+--         YY.Input_Symbol := End_Of_Input;
+--         YY.Look_Ahead := False;
+--         YY.Error := False;
+--      end On_Fatal_Error;
 
       YY_Action  : Integer;
       YY_Rule_Id : Integer;
@@ -317,7 +317,10 @@ package body XML.SAX.Simple_Readers.Parser is
             --  Execute User Action.
 
             case YY_Rule_Id is
+               pragma Style_Checks ("M127");
 %%
+               pragma Style_Checks ("M79");
+
                when others =>
                   raise Program_Error
                     with "Unhandled state"

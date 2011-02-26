@@ -61,7 +61,6 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
-with League.String_Vectors;
 with League.Strings;
 with League.Values;
 private with Matreshka.Internals.Settings;

@@ -67,7 +67,6 @@ package Matreshka.Internals.Stream_Element_Vectors is
 
    procedure Reference (Item : Shared_Stream_Element_Vector_Access);
    pragma Inline (Reference);
-   pragma Inline_Always (Reference);
    --  Increment reference counter. Change of reference counter of
    --  Empty_Shared_Stream_Element_Vector object is prevented to provide
    --  speedup and to allow to use it to initialize components of
