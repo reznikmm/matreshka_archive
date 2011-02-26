@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>u</char>
-    <char>n</char>
-    <char>d</char>
-    <char>e</char>
-    <char>f</char>
-    <char>i</char>
-    <char>n</char>
-    <char>e</char>
-    <char>d</char>
-    <char>\s</char>
-    <char>e</char>
-    <char>n</char>
-    <char>t</char>
-    <char>i</char>
-    <char>t</char>
-    <char>i</char>
-    <char>y</char>
-    <char>\s</char>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>u</characters>
+  <characters>n</characters>
+  <characters>d</characters>
+  <characters>e</characters>
+  <characters>f</characters>
+  <characters>i</characters>
+  <characters>n</characters>
+  <characters>e</characters>
+  <characters>d</characters>
+  <characters>&#x20;</characters>
+  <characters>e</characters>
+  <characters>n</characters>
+  <characters>t</characters>
+  <characters>i</characters>
+  <characters>t</characters>
+  <characters>i</characters>
+  <characters>y</characters>
+  <characters>&#x20;</characters>
+  <fatalError>[XML1.1&#x20;4.1&#x20;WFC:&#x20;Entity&#x20;Declared]&#x20;general&#x20;entity&#x20;must&#x20;be&#x20;declared</fatalError>
+  <endDocument/>
+</SAXEvents>
