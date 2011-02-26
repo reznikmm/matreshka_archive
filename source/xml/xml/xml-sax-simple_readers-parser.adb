@@ -335,10 +335,12 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 6 =>
-               Actions.On_XML_Declaration (Self, YY.Value_Stack (YY.TOS -  5).String, YY.Value_Stack (YY.TOS -  2).String);
+               Actions.On_XML_Declaration
+                (Self, YY.Value_Stack (YY.TOS -  5).String, YY.Value_Stack (YY.TOS -  2).String);
 
             when 7 =>
-               Actions.On_XML_Declaration (Self, YY.Value_Stack (YY.TOS -  2).String, Matreshka.Internals.Strings.Shared_Empty'Access);
+               Actions.On_XML_Declaration
+                (Self, YY.Value_Stack (YY.TOS -  2).String, Matreshka.Internals.Strings.Shared_Empty'Access);
 
             when 8 =>
                --  [XML1.0 2.8]
@@ -420,7 +422,7 @@ package body XML.SAX.Simple_Readers.Parser is
                  False);
 
             when 22 =>
-               --  Document type declaration, rule [28]. 
+               --  Document type declaration, rule [28].
 
                Actions.On_End_Of_Document_Type_Declaration (Self);
 

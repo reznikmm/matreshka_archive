@@ -467,6 +467,36 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end case;
    end On_Attribute_Value_Open_Delimiter;
 
+   --------------
+   -- On_CDATA --
+   --------------
+
+   function On_CDATA
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      --  Segment of CDATA, rules [18], [19], [20], [21]. First nine characters
+      --  are "<![CDATA[" and last three characters are "]]>", they are
+      --  ignored when token's value is constructed.
+
+      Matreshka.Internals.Strings.Operations.Copy_Slice
+       (Self.Character_Data,
+        Self.Scanner_State.Data,
+        Self.Scanner_State.YY_Base_Position + 9,
+        Self.Scanner_State.YY_Current_Position
+          - Self.Scanner_State.YY_Base_Position - 12,
+        Self.Scanner_State.YY_Current_Index
+          - Self.Scanner_State.YY_Base_Index - 12);
+
+      Matreshka.Internals.Strings.Reference (Self.Character_Data);
+      Set_String_Internal
+       (Item          => Self.YYLVal,
+        String        => Self.Character_Data,
+        Is_Whitespace => False,
+        Is_CData      => False);
+
+      return Token_String_Segment;
+   end On_CDATA;
+
    -----------------------
    -- On_Character_Data --
    -----------------------
@@ -1374,6 +1404,37 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          return Token_String_Segment;
       end if;
    end On_General_Entity_Reference_In_Entity_Value;
+
+   -------------------------
+   -- On_Incomplete_CDATA --
+   -------------------------
+
+   function On_Incomplete_CDATA
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      --  Incomplete segment of CDATA, rules [18], [19], [20], [21].
+
+      YY_Move_Backward (Self);
+      --  Last character is invalid, move backward.
+
+      Matreshka.Internals.Strings.Operations.Copy_Slice
+       (Self.Character_Data,
+        Self.Scanner_State.Data,
+        Self.Scanner_State.YY_Base_Position + 9,
+        Self.Scanner_State.YY_Current_Position
+          - Self.Scanner_State.YY_Base_Position - 9,
+        Self.Scanner_State.YY_Current_Index
+          - Self.Scanner_State.YY_Base_Index - 9);
+
+      Matreshka.Internals.Strings.Reference (Self.Character_Data);
+      Set_String_Internal
+       (Item          => Self.YYLVal,
+        String        => Self.Character_Data,
+        Is_Whitespace => False,
+        Is_CData      => False);
+
+      return Token_String_Segment;
+   end On_Incomplete_CDATA;
 
    ------------------------------------------
    -- On_Less_Than_Sign_In_Attribute_Value --

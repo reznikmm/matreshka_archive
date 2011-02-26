@@ -103,7 +103,10 @@ XMLDECL_ATTRIBUTE_CHAR [A-Za-z0-9._-]
 --  Negative form: [^\u0001-\u0008\u000B\u000C\u000E-\u001F\u007F-\u0084\u0086-\u009F\uD800-\uDFFF\uFFFE\uFFFF]
 --
 CHAR10							[^\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
+ICHAR10							[\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
 CHAR11							[^\u0001-\u0008\u000B\u000C\u000E-\u001F\u007F-\u0084\u0086-\u009F\uD800-\uDFFF\uFFFE\uFFFF]
+ICHAR11							[\u0001-\u0008\u000B\u000C\u000E-\u001F\u007F-\u0084\u0086-\u009F\uD800-\uDFFF\uFFFE\uFFFF]
+ICHARU11						[\uD800-\uDFFF\uFFFE\uFFFF]
 --  [^"%&']
 CHAR10_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[^\u0022\u0025\u0026\u0027\u0001-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]
 CHAR11_NO_QUOTATION_PERCENT_AMPERSAND_APOSTROPHE	[^\u0022\u0025\u0026\u0027\u0001-\u0008\u000B\u000C\u000E-\u001F\u007F-\u0084\u0086-\u009F\uD800-\uDFFF\uFFFE\uFFFF]
@@ -264,37 +267,37 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <DOCUMENT_10>"<![CDATA["{CHAR10_NO_RIGHT_SQUARE}*"]"({CHAR10_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR10_NO_GREATER_RIGHT_SQUARE}{CHAR10_NO_RIGHT_SQUARE}*"]"({CHAR10_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
    --  Segment of CDATA, rules [18], [19], [20], [21].
 
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal (9, 3),
-     Is_Whitespace => False,
-     Is_CData      => True);
+   return Actions.On_CDATA (Self);
+}
 
-   return Token_String_Segment;
+<DOCUMENT_10>"<![CDATA["(({CHAR10_NO_RIGHT_SQUARE}+("]"{CHAR10_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR10_NO_GREATER_RIGHT_SQUARE}+)*"]"*)|(("]"{CHAR10_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR10_NO_GREATER_RIGHT_SQUARE}+)+"]"*)|("]"+))?{ICHAR10} {
+   --  Incomplete segment of CDATA, rules [18], [19], [20], [21].
+
+   return Actions.On_Incomplete_CDATA (Self);
 }
 
 <DOCUMENT_11>"<![CDATA["{CHAR11_NO_RIGHT_SQUARE}*"]"({CHAR11_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR11_NO_GREATER_RIGHT_SQUARE}{CHAR11_NO_RIGHT_SQUARE}*"]"({CHAR11_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
    --  Segment of CDATA, rules [18], [19], [20], [21].
 
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal (9, 3),
-     Is_Whitespace => False,
-     Is_CData      => True);
+   return Actions.On_CDATA (Self);
+}
 
-   return Token_String_Segment;
+<DOCUMENT_11>"<![CDATA["(({CHAR11_NO_RIGHT_SQUARE}+("]"{CHAR11_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR11_NO_GREATER_RIGHT_SQUARE}+)*"]"*)|(("]"{CHAR11_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR11_NO_GREATER_RIGHT_SQUARE}+)+"]"*)|("]"+))?{ICHAR11} {
+   --  Incomplete segment of CDATA, rules [18], [19], [20], [21].
+
+   return Actions.On_Incomplete_CDATA (Self);
 }
 
 <DOCUMENT_U11>"<![CDATA["{CHARU11_NO_RIGHT_SQUARE}*"]"({CHARU11_NO_RIGHT_SQUARE}+"]")*"]"+({CHARU11_NO_GREATER_RIGHT_SQUARE}{CHARU11_NO_RIGHT_SQUARE}*"]"({CHARU11_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
    --  Segment of CDATA, rules [18], [19], [20], [21].
 
-   Set_String_Internal
-    (Item          => YYLVal,
-     String        => YY_Text_Internal (9, 3),
-     Is_Whitespace => False,
-     Is_CData      => True);
+   return Actions.On_CDATA (Self);
+}
 
-   return Token_String_Segment;
+<DOCUMENT_U11>"<![CDATA["(({CHARU11_NO_RIGHT_SQUARE}+("]"{CHARU11_NO_RIGHT_SQUARE}+|"]"{2,}{CHARU11_NO_GREATER_RIGHT_SQUARE}+)*"]"*)|(("]"{CHARU11_NO_RIGHT_SQUARE}+|"]"{2,}{CHARU11_NO_GREATER_RIGHT_SQUARE}+)+"]"*)|("]"+))?{ICHARU11} {
+   --  Incomplete segment of CDATA, rules [18], [19], [20], [21].
+
+   return Actions.On_Incomplete_CDATA (Self);
 }
 
 <DOCUMENT_10,DOCUMENT_11,DOCUMENT_U11>"&"{NAME}";" {
@@ -1040,12 +1043,6 @@ with Matreshka.Internals.Strings;
 
    procedure Reset_Whitespace_Matched (Self : access Integer) is separate;
 
-   function YY_Text
-    (Trim_Left       : Natural := 0;
-     Trim_Right      : Natural := 0;
-     Trim_Whitespace : Boolean := False)
-       return League.Strings.Universal_String is separate;
-
    function YY_Text_Internal
     (Trim_Left       : Natural := 0;
      Trim_Right      : Natural := 0;
@@ -1227,6 +1224,10 @@ with Matreshka.Internals.Strings;
       function On_Standalone_Keyword (Self : access Integer) return Token;
 
       function On_Percent_Sign (Self : access Integer) return Token;
+
+      function On_CDATA (Self : access Integer) return Token;
+
+      function On_Incomplete_CDATA (Self : access Integer) return Token;
 
    end Actions;
 
