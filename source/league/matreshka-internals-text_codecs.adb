@@ -91,12 +91,19 @@ package body Matreshka.Internals.Text_Codecs is
       use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
    begin
-      String := Matreshka.Internals.Strings.Allocate (Data'Length);
-      Self.Decode_Append (Data, String);
+      if Data'Length = 0 then
+         --  Returns shared empty string object when source data is empty.
 
-      if String.Unused = 0 then
-         Matreshka.Internals.Strings.Dereference (String);
          String := Matreshka.Internals.Strings.Shared_Empty'Access;
+
+      else
+         String := Matreshka.Internals.Strings.Allocate (Data'Length);
+         Self.Decode_Append (Data, String);
+
+         if String.Unused = 0 then
+            Matreshka.Internals.Strings.Dereference (String);
+            String := Matreshka.Internals.Strings.Shared_Empty'Access;
+         end if;
       end if;
    end Decode;
 
