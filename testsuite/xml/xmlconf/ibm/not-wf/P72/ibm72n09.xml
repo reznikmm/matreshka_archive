@@ -3,7 +3,7 @@
 <!ELEMENT root (#PCDATA)>
 <!ATTLIST root att CDATA #IMPLIED>
 <!--* wrong closing sequence: extra exclamation mark *-->
-<!ENTITY% paaa "<!-- comments -->" !>
+<!ENTITY % paaa "<!-- comments -->" !>
 %paaa;
 ]>
 <root/>
