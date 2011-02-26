@@ -47,5 +47,12 @@ package Configure.Builder is
    function Build (Directory : String) return Boolean;
    --  Build project check.gpr in the specified directory. Returns True if
    --  build is successful, False on any error.
+   --
+   --  When check.gpr.in file is found in the directory, it is used to generate
+   --  check.gpr file, by substitution of variables. Generated file is removed
+   --  before return.
+   --
+   --  By convention, check.gpr should use _build directory to place all
+   --  generated files. This directory is removed before return.
 
 end Configure.Builder;
