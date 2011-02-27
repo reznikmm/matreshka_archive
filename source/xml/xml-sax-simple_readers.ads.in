@@ -344,6 +344,9 @@ private
       --  previous processed character was space.
       Version                : Supported_XML_Version := XML_1_0;
       --  XML version of document entity.
+      Conditional_Directive  : Boolean;
+      --  True when conditional directive is parsed or not needed to be checked
+      --  (for nested conditional sections).
       Conditional_Depth      : Natural := 0;
       --  Depth of conditional sections.
       Ignore_Depth           : Natural := 0;

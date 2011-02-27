@@ -1007,7 +1007,9 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 42 =>
                --  Close of conditional section.
 
-               Actions.On_Close_Of_Conditional_Section (Self);
+               if not Actions.On_Close_Of_Conditional_Section (Self) then
+                  return Error;
+               end if;
 
             when 43 =>
                --  Close of notation declaration, production [82].
@@ -1337,7 +1339,9 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 97 =>
                --  Start of content of conditional section.
 
-               Actions.On_Open_Of_Conditional_Section_Content (Self);
+               if not Actions.On_Open_Of_Conditional_Section_Content (Self) then
+                  return Error;
+               end if;
 
             when 98 =>
                --  Content of ignore conditional section. It ends with "]]>" or "<![".

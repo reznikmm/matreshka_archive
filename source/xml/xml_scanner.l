@@ -512,7 +512,9 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,CONDITIONAL_IGNORE_10,CONDITIONAL_IGNORE_11>"]]>" {
    --  Close of conditional section.
 
-   Actions.On_Close_Of_Conditional_Section (Self);
+   if not Actions.On_Close_Of_Conditional_Section (Self) then
+      return Error;
+   end if;
 }
 
 <NOTATION_DECL>">" {
@@ -897,7 +899,9 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <CONDITIONAL_DIRECTIVE>"[" {
    --  Start of content of conditional section.
 
-   Actions.On_Open_Of_Conditional_Section_Content (Self);
+   if not Actions.On_Open_Of_Conditional_Section_Content (Self) then
+      return Error;
+   end if;
 }
 
 <CONDITIONAL_IGNORE_10>{CHAR10_NO_LESS_RIGHT_SQUARE}+|"<"|"<!"|"]" {
@@ -1209,11 +1213,14 @@ with Matreshka.Internals.Strings;
        (Self    : access Integer;
         Include : Boolean);
 
-      procedure On_Open_Of_Conditional_Section_Content (Self : access Integer);
+      function On_Open_Of_Conditional_Section_Content
+       (Self : access Integer) return Boolean;
 
-      procedure On_Close_Of_Conditional_Section (Self : access Integer);
+      function On_Close_Of_Conditional_Section
+       (Self : access Integer) return Boolean;
 
-      procedure On_Content_Of_Ignore_Conditional_Section (Self : access Integer);
+      procedure On_Content_Of_Ignore_Conditional_Section
+       (Self : access Integer);
 
       function On_NDATA (Self : access Integer) return Token;
 

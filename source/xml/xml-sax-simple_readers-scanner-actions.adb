@@ -679,9 +679,18 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -- On_Close_Of_Conditional_Section --
    -------------------------------------
 
-   procedure On_Close_Of_Conditional_Section
-    (Self : not null access SAX_Simple_Reader'Class) is
+   function On_Close_Of_Conditional_Section
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean is
    begin
+      if Self.Conditional_Depth = 0 then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("']]>' doesn't close conditional section"));
+
+         return False;
+      end if;
+
       Self.Conditional_Depth := Self.Conditional_Depth - 1;
 
       if Self.Ignore_Depth /= 0 then
@@ -706,6 +715,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
          end case;
       end if;
+
+      return True;
    end On_Close_Of_Conditional_Section;
 
    -----------------------------
@@ -904,6 +915,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    begin
       --  XXX Syntax check must be added!
 
+      Self.Conditional_Directive := True;
       Self.Conditional_Depth := Self.Conditional_Depth + 1;
 
       if Self.Ignore_Depth /= 0 or not Include then
@@ -1732,10 +1744,12 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       if Self.Ignore_Depth = 0 then
          Enter_Start_Condition (Self, Tables.CONDITIONAL_DIRECTIVE);
+         Self.Conditional_Directive := False;
 
       else
          Self.Conditional_Depth := Self.Conditional_Depth + 1;
          Self.Ignore_Depth := Self.Ignore_Depth + 1;
+         Self.Conditional_Directive := True;
       end if;
 
       return True;
@@ -1745,10 +1759,19 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -- On_Open_Of_Conditional_Section_Content --
    --------------------------------------------
 
-   procedure On_Open_Of_Conditional_Section_Content
-    (Self : not null access SAX_Simple_Reader'Class) is
+   function  On_Open_Of_Conditional_Section_Content
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean is
    begin
       --  XXX Syntax rules must be checked!
+
+      if not Self.Conditional_Directive then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("conditional directive is missing"));
+
+         return False;
+      end if;
 
       if Self.Ignore_Depth /= 0 then
          case Self.Version is
@@ -1768,6 +1791,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                Enter_Start_Condition (Self, Tables.DOCTYPE_INTSUBSET_11);
          end case;
       end if;
+
+      return True;
    end On_Open_Of_Conditional_Section_Content;
 
    ------------------------------------------

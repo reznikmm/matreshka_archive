@@ -95,8 +95,8 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    --  Processes character reference in attribute value. Returns False when
    --  error was detected and reported to application.
 
-   procedure On_Close_Of_Conditional_Section
-    (Self : not null access SAX_Simple_Reader'Class);
+   function On_Close_Of_Conditional_Section
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Handles close of conditional section.
 
    function On_Close_Of_Declaration
@@ -236,8 +236,8 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    --  Handles open of conditional section. Returns True on success, False
    --  otherwise.
 
-   procedure On_Open_Of_Conditional_Section_Content
-    (Self : not null access SAX_Simple_Reader'Class);
+   function On_Open_Of_Conditional_Section_Content
+    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
    --  Handles open of content of conditional section.
 
    function On_Open_Of_Document_Type_Declaration
