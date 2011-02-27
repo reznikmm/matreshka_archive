@@ -62,16 +62,17 @@ procedure XMLConf_Test is
 
    type Percent is delta 0.01 range 0.00 .. 100.00;
 
-   Cwd      : constant String := Ada.Directories.Current_Directory;
-   Data     : constant String := Ada.Command_Line.Argument (1);
-   Dwd      : constant String := Ada.Directories.Containing_Directory (Data);
-   Source   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-   Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-   Resolver : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
-   Handler  : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
-   Enabled  : Test_Flags := (others => True);
-   Passed   : Natural;
-   Failed   : Natural;
+   Cwd        : constant String := Ada.Directories.Current_Directory;
+   Data       : constant String := Ada.Command_Line.Argument (1);
+   Dwd        : constant String := Ada.Directories.Containing_Directory (Data);
+   Source     : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+   Reader     : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Resolver   : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
+   Handler    : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
+   Enabled    : Test_Flags := (others => True);
+   Passed     : Natural;
+   Failed     : Natural;
+   Suppressed : Natural;
 
 begin
    if Ada.Command_Line.Argument_Count > 1 then
@@ -98,6 +99,11 @@ begin
 
    XML.SAX.Simple_Readers.Put_Line := Put_Line'Access;
 
+   --  Load set of suppressed tests.
+
+   Handler.Read_Suppressed
+    (Ada.Directories.Containing_Directory (Dwd) & "/suppressed.lst");
+
    --  Because of limitations of current implementation in tracking relative
    --  paths for entities the current working directory is changed to the
    --  containing directory of the testsuite description file.
@@ -121,18 +127,24 @@ begin
        + Handler.Results (Invalid).Failed
        + Handler.Results (Not_Wellformed).Failed
        + Handler.Results (Error).Failed;
+   Suppressed :=
+     Handler.Results (Valid).Suppressed
+       + Handler.Results (Invalid).Suppressed
+       + Handler.Results (Not_Wellformed).Suppressed
+       + Handler.Results (Error).Suppressed;
 
    if Failed = 0 then
       return;
    end if;
 
-   Put_Line (" Group  Passed Failed  Crash Output   SAX");
-   Put_Line ("------- ------ ------ ------ ------ ------");
+   Put_Line (" Group  Passed Failed  Supp   Crash Output   SAX");
+   Put_Line ("------- ------ ------ ------ ------ ------ ------");
 
    if Enabled (Valid) then
       Put ("valid  ");
       Put (Handler.Results (Valid).Passed, 7);
       Put (Handler.Results (Valid).Failed, 7);
+      Put (Handler.Results (Valid).Suppressed, 7);
       Put (Handler.Results (Valid).Crash, 7);
       Put (Handler.Results (Valid).Output, 7);
       Put (Handler.Results (Valid).SAX, 7);
@@ -143,6 +155,7 @@ begin
       Put ("invalid");
       Put (Handler.Results (Invalid).Passed, 7);
       Put (Handler.Results (Invalid).Failed, 7);
+      Put (Handler.Results (Invalid).Suppressed, 7);
       Put (Handler.Results (Invalid).Crash, 7);
       Put (Handler.Results (Invalid).Output, 7);
       Put (Handler.Results (Invalid).SAX, 7);
@@ -153,6 +166,7 @@ begin
       Put ("not-wf ");
       Put (Handler.Results (Not_Wellformed).Passed, 7);
       Put (Handler.Results (Not_Wellformed).Failed, 7);
+      Put (Handler.Results (Not_Wellformed).Suppressed, 7);
       Put (Handler.Results (Not_Wellformed).Crash, 7);
       Put (Handler.Results (Not_Wellformed).Output, 7);
       Put (Handler.Results (Not_Wellformed).SAX, 7);
@@ -163,13 +177,14 @@ begin
       Put ("error  ");
       Put (Handler.Results (Error).Passed, 7);
       Put (Handler.Results (Error).Failed, 7);
+      Put (Handler.Results (Error).Suppressed, 7);
       Put (Handler.Results (Error).Crash, 7);
       Put (Handler.Results (Error).Output, 7);
       Put (Handler.Results (Error).SAX, 7);
       New_Line;
    end if;
 
-   Put_Line ("        ------ ------ ------ ------ ------");
+   Put_Line ("        ------ ------ ------ ------ ------ ------");
    Put ("       ");
    Put
     (Handler.Results (Valid).Passed
@@ -182,6 +197,12 @@ begin
        + Handler.Results (Invalid).Failed
        + Handler.Results (Not_Wellformed).Failed
        + Handler.Results (Error).Failed,
+     7);
+   Put
+    (Handler.Results (Valid).Suppressed
+       + Handler.Results (Invalid).Suppressed
+       + Handler.Results (Not_Wellformed).Suppressed
+       + Handler.Results (Error).Suppressed,
      7);
    Put
     (Handler.Results (Valid).Crash
@@ -207,7 +228,8 @@ begin
    Put_Line
     ("Status:"
        & Percent'Image
-          (Percent (Float (Passed) / Float (Passed + Failed) * 100.0))
+          (Percent
+            (Float (Passed) / Float (Passed + Failed + Suppressed) * 100.0))
        & "% passed");
 
    if Handler.Results (Valid).Crash /= 0

@@ -44,6 +44,7 @@
 with Ada.Characters.Conversions;
 with Ada.Directories;
 with Ada.Exceptions;
+with Ada.Wide_Wide_Text_IO;
 
 with Put_Line;
 with Read_File;
@@ -121,6 +122,14 @@ package body XMLConf.Testsuite_Handlers is
       Failed : Boolean := False;
 
    begin
+      --  Skip suppressed tests.
+
+      if Self.Suppressed.Contains (Id) then
+         Self.Results (Kind).Suppressed := Self.Results (Kind).Suppressed + 1;
+
+         return;
+      end if;
+
       --  SAX test.
 
       declare
@@ -319,6 +328,33 @@ package body XMLConf.Testsuite_Handlers is
    begin
       Put_Line ("FATAL ERROR: " & Occurrence.Message);
    end Fatal_Error;
+
+   ---------------------
+   -- Read_Suppressed --
+   ---------------------
+
+   procedure Read_Suppressed
+    (Self : in out Testsuite_Handler; File_Name : String)
+   is
+      File   : Ada.Wide_Wide_Text_IO.File_Type;
+      Buffer : Wide_Wide_String (1 .. 128);
+      Last   : Natural;
+
+   begin
+      Ada.Wide_Wide_Text_IO.Open
+       (File, Ada.Wide_Wide_Text_IO.In_File, File_Name);
+
+      while not Ada.Wide_Wide_Text_IO.End_Of_File (File) loop
+         Ada.Wide_Wide_Text_IO.Get_Line (File, Buffer, Last);
+
+         if Last < 1 or else Buffer (1 .. 2) /= "--" then
+            Self.Suppressed.Insert
+             (League.Strings.To_Universal_String (Buffer (1 .. Last)));
+         end if;
+      end loop;
+
+      Ada.Wide_Wide_Text_IO.Close (File);
+   end Read_Suppressed;
 
    -------------------
    -- Start_Element --

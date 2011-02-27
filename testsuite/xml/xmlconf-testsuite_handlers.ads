@@ -41,7 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
+with Ada.Containers.Hashed_Sets;
+
+with League.Strings.Hash;
 with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
 with XML.SAX.Error_Handlers;
@@ -50,24 +52,37 @@ with XML.SAX.Parse_Exceptions;
 package XMLConf.Testsuite_Handlers is
 
    type Result_Record is record
-      Passed : Natural := 0;
-      Failed : Natural := 0;
-      Crash  : Natural := 0;
-      Output : Natural := 0;
-      SAX    : Natural := 0;
+      Passed     : Natural := 0;
+      Failed     : Natural := 0;
+      Crash      : Natural := 0;
+      Output     : Natural := 0;
+      SAX        : Natural := 0;
+      Suppressed : Natural := 0;
    end record;
 
    type Result_Array is array (Test_Kinds) of Result_Record;
+
+   package Universal_String_Sets is
+     new Ada.Containers.Hashed_Sets
+          (League.Strings.Universal_String,
+           League.Strings.Hash,
+           League.Strings."=",
+           League.Strings."=");
 
    type Testsuite_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Error_Handlers.SAX_Error_Handler
    with record
-      Enabled : Test_Flags;
-      Base    : League.Strings.Universal_String;
+      Enabled    : Test_Flags;
+      Base       : League.Strings.Universal_String;
       --  Base path to tests' data.
-      Results : Result_Array;
+      Results    : Result_Array;
+      Suppressed : Universal_String_Sets.Set;
    end record;
+
+   procedure Read_Suppressed
+    (Self : in out Testsuite_Handler; File_Name : String);
+   --  Reads list of suppressed tests.
 
    overriding function Error_String
     (Self : Testsuite_Handler)
