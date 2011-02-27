@@ -1159,22 +1159,22 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 64 =>
                --  Close parenthesis, rules [49], [50], [51].
 
-               return Token_Close_Parenthesis;
+               return Actions.On_Close_Parenthesis_In_Content_Declaration (Self);
 
             when 65 =>
                --  Question mark in rules [47], [48].
 
-               return Token_Question;
+               return Actions.On_Question_Mark_In_Content_Declaration  (Self);
 
             when 66 =>
-               --  Asterisk in rules [47], [48].
+               --  Asterisk in rules [47], [48], [51].
 
-               return Token_Asterisk;
+               return Actions.On_Asterisk_In_Content_Declaration (Self);
 
             when 67 =>
                --  Plus sign in rules [47], [48].
 
-               return Token_Plus;
+               return Actions.On_Plus_In_Content_Declaration (Self);
 
             when 68 =>
                --  Vertical bar in rule [49].
@@ -1364,6 +1364,9 @@ package body XML.SAX.Simple_Readers.Scanner is
                --  All white spaces from rules [23], [24], [25], [32], [80], [82] are
                --  ignored, but white space between attribute value and name of the
                --  next attribute are must be present.
+               --
+               --  Productions [47], [48] don't allow spaces before multiplicity
+               --  indicator.
 
                Set_Whitespace_Matched (Self);
 

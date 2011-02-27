@@ -217,6 +217,26 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
    end Character_Reference_To_Code_Point;
 
+   ----------------------------------------
+   -- On_Asterisk_In_Content_Declaration --
+   ----------------------------------------
+
+   function On_Asterisk_In_Content_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      if Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML [47], [48], [51]] illegal whitespace before asterisk"));
+
+         return Error;
+
+      else
+         return Token_Asterisk;
+      end if;
+   end On_Asterisk_In_Content_Declaration;
+
    -----------------------------------------------------
    -- On_Attribute_Name_In_Attribute_List_Declaration --
    -----------------------------------------------------
@@ -905,6 +925,21 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       return Token_Pi_Close;
    end On_Close_Of_XML_Or_Text_Declaration;
 
+   -------------------------------------------------
+   -- On_Close_Parenthesis_In_Content_Declaration --
+   -------------------------------------------------
+
+   function On_Close_Parenthesis_In_Content_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      --  Whitespace can't be present between close parenthesis and
+      --  multiplicity indicator if any, so reset whitespace matching flag.
+
+      Self.Whitespace_Matched := False;
+
+      return Token_Close_Parenthesis;
+   end On_Close_Parenthesis_In_Content_Declaration;
+
    --------------------------------------
    -- On_Conditional_Section_Directive --
    --------------------------------------
@@ -1543,6 +1578,12 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qname_Error : Boolean;
 
    begin
+      --  Production [48] checks that no whitespace separates Name from
+      --  following multiplicity indicator, so whitespace indicator must be
+      --  reset here.
+
+      Self.Whitespace_Matched := False;
+
       Resolve_Symbol
        (Self, 0, 0, False, True, False, Qname_Error, Self.YYLVal.Symbol);
 
@@ -2118,6 +2159,26 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       end if;
    end On_Percent_Sign;
 
+   ------------------------------------
+   -- On_Plus_In_Content_Declaration --
+   ------------------------------------
+
+   function On_Plus_In_Content_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      if Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML [47], [48]] illegal whitespace before plus"));
+
+         return Error;
+
+      else
+         return Token_Plus;
+      end if;
+   end On_Plus_In_Content_Declaration;
+
    -----------------------
    -- On_Public_Literal --
    -----------------------
@@ -2208,6 +2269,26 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       return Token_Public_Literal;
    end On_Public_Literal;
+
+   ---------------------------------------------
+   -- On_Question_Mark_In_Content_Declaration --
+   ---------------------------------------------
+
+   function On_Question_Mark_In_Content_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      if Self.Whitespace_Matched then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML [47], [48]] illegal whitespace before question mark"));
+
+         return Error;
+
+      else
+         return Token_Question;
+      end if;
+   end On_Question_Mark_In_Content_Declaration;
 
    ---------------------------
    -- On_Standalone_Keyword --
