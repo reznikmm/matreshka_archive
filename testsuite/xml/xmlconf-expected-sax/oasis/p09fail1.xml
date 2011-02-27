@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/oasis/p09fail1.dtd</systemID>
-    </resolveEntity>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <resolveEntity>
+    <name>[dtd]</name>
+    <systemID>p09fail1.dtd</systemID>
+  </resolveEntity>
+  <fatalError>unexpected&#x20;character</fatalError>
+  <endDocument/>
+</SAXEvents>

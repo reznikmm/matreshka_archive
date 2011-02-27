@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>a</char>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>a</characters>
+  <fatalError>[[14]&#x20;CharData]&#x20;Text&#x20;may&#x20;not&#x20;contain&#x20;a&#x20;literal&#x20;&apos;]]&gt;&apos;&#x20;sequence</fatalError>
+  <endDocument/>
+</SAXEvents>

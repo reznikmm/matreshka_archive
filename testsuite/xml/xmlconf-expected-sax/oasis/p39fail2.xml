@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>doc</localName>
-        <qualifiedName>doc</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>c</char>
-    <char>o</char>
-    <char>n</char>
-    <char>t</char>
-    <char>e</char>
-    <char>n</char>
-    <char>t</char>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>doc</localName>
+    <qualifiedName>doc</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>c</characters>
+  <characters>o</characters>
+  <characters>n</characters>
+  <characters>t</characters>
+  <characters>e</characters>
+  <characters>n</characters>
+  <characters>t</characters>
+  <fatalError>[3&#x20;WFC:&#x20;Element&#x20;Type&#x20;Match]&#x20;end&#x20;tag&#x20;name&#x20;must&#x20;match&#x20;start&#x20;tag&#x20;name</fatalError>
+  <endDocument/>
+</SAXEvents>

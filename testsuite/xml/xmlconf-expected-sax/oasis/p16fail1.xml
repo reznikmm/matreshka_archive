@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <processingInstruction>
-        <target>pitarget</target>
-        <data/>
-    </processingInstruction>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <processingInstruction>
+    <target>pitarget</target>
+    <data/>
+  </processingInstruction>
+  <fatalError>XML&#x20;declaration&#x20;must&#x20;not&#x20;occur&#x20;other&#x20;than&#x20;at&#x20;the&#x20;beginning&#x20;of&#x20;document&#x20;entity</fatalError>
+  <endDocument/>
+</SAXEvents>

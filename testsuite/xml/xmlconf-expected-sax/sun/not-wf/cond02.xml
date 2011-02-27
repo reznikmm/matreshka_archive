@@ -2,9 +2,10 @@
 <SAXEvents>
   <startDocument/>
   <resolveEntity>
+    <name>[dtd]</name>
     <systemID>cond.dtd</systemID>
   </resolveEntity>
   <warning/>
-  <fatalError>unexpected&#x20;character</fatalError>
+  <fatalError>conditional&#x20;directive&#x20;is&#x20;missing</fatalError>
   <endDocument/>
 </SAXEvents>
