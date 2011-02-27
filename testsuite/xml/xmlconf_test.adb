@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -137,14 +137,15 @@ begin
       return;
    end if;
 
-   Put_Line (" Group  Passed Failed  Supp   Crash Output   SAX");
-   Put_Line ("------- ------ ------ ------ ------ ------ ------");
+   Put_Line (" Group  Passed Failed Skiped |  Crash Output   SAX");
+   Put_Line ("------- ------ ------ ------ | ------ ------ ------");
 
    if Enabled (Valid) then
       Put ("valid  ");
       Put (Handler.Results (Valid).Passed, 7);
       Put (Handler.Results (Valid).Failed, 7);
       Put (Handler.Results (Valid).Suppressed, 7);
+      Put (" |");
       Put (Handler.Results (Valid).Crash, 7);
       Put (Handler.Results (Valid).Output, 7);
       Put (Handler.Results (Valid).SAX, 7);
@@ -156,6 +157,7 @@ begin
       Put (Handler.Results (Invalid).Passed, 7);
       Put (Handler.Results (Invalid).Failed, 7);
       Put (Handler.Results (Invalid).Suppressed, 7);
+      Put (" |");
       Put (Handler.Results (Invalid).Crash, 7);
       Put (Handler.Results (Invalid).Output, 7);
       Put (Handler.Results (Invalid).SAX, 7);
@@ -167,6 +169,7 @@ begin
       Put (Handler.Results (Not_Wellformed).Passed, 7);
       Put (Handler.Results (Not_Wellformed).Failed, 7);
       Put (Handler.Results (Not_Wellformed).Suppressed, 7);
+      Put (" |");
       Put (Handler.Results (Not_Wellformed).Crash, 7);
       Put (Handler.Results (Not_Wellformed).Output, 7);
       Put (Handler.Results (Not_Wellformed).SAX, 7);
@@ -178,13 +181,14 @@ begin
       Put (Handler.Results (Error).Passed, 7);
       Put (Handler.Results (Error).Failed, 7);
       Put (Handler.Results (Error).Suppressed, 7);
+      Put (" |");
       Put (Handler.Results (Error).Crash, 7);
       Put (Handler.Results (Error).Output, 7);
       Put (Handler.Results (Error).SAX, 7);
       New_Line;
    end if;
 
-   Put_Line ("        ------ ------ ------ ------ ------ ------");
+   Put_Line ("        ------ ------ ------ | ------ ------ ------");
    Put ("       ");
    Put
     (Handler.Results (Valid).Passed
@@ -204,6 +208,7 @@ begin
        + Handler.Results (Not_Wellformed).Suppressed
        + Handler.Results (Error).Suppressed,
      7);
+   Put (" |");
    Put
     (Handler.Results (Valid).Crash
        + Handler.Results (Invalid).Crash
