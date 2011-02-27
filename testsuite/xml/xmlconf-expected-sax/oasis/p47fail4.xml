@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <fatalError>[XML&#x20;[47],&#x20;[48]]&#x20;illegal&#x20;whitespace&#x20;before&#x20;question&#x20;mark</fatalError>
+  <endDocument/>
+</SAXEvents>

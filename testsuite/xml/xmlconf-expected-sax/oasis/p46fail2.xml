@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAXEvents>
   <startDocument/>
-  <fatalError>syntax&#x20;error</fatalError>
+  <fatalError>[XML&#x20;[47],&#x20;[48]]&#x20;illegal&#x20;whitespace&#x20;before&#x20;plus</fatalError>
   <endDocument/>
 </SAXEvents>

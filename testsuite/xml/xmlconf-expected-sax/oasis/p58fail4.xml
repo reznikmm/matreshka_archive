@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <notation>
+    <name>a</name>
+    <systemID>a</systemID>
+  </notation>
+  <notation>
+    <name>b</name>
+    <systemID>b</systemID>
+  </notation>
+  <fatalError>syntax&#x20;error</fatalError>
+  <endDocument/>
+</SAXEvents>
