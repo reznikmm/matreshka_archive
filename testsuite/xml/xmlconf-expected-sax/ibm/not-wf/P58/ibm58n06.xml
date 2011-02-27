@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <notation>
+    <name>this</name>
+    <systemID>alpha</systemID>
+  </notation>
+  <notation>
+    <name>that</name>
+    <systemID>beta</systemID>
+  </notation>
+  <warning/>
+  <fatalError>unexpected&#x20;character</fatalError>
+  <endDocument/>
+</SAXEvents>

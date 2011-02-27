@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <notation>
+    <name>this</name>
+    <systemID>alpha</systemID>
+  </notation>
+  <warning/>
+  <fatalError>whitespace&#x20;required&#x20;before&#x20;attribute&#x20;type</fatalError>
+  <endDocument/>
+</SAXEvents>
