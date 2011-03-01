@@ -883,6 +883,28 @@ package body League.Strings is
       return Self.Data.Length = 0;
    end Is_Empty;
 
+   --------------------
+   -- Is_ID_Continue --
+   --------------------
+
+   function Is_ID_Continue (Self : Universal_Character'Class) return Boolean is
+   begin
+      return
+        Self.Code in Code_Point
+          and then Is_ID_Continue (Self.Code);
+   end Is_ID_Continue;
+
+   -----------------
+   -- Is_ID_Start --
+   -----------------
+
+   function Is_ID_Start (Self : Universal_Character'Class) return Boolean is
+   begin
+      return
+        Self.Code in Code_Point
+          and then Is_ID_Start (Self.Code);
+   end Is_ID_Start;
+
    --------------------------------
    -- Is_Noncharacter_Code_Point --
    --------------------------------

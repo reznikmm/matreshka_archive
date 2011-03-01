@@ -52,6 +52,30 @@ package body Matreshka.Internals.Unicode.Properties is
            Matreshka.Internals.Unicode.Ucd.Core_Second_Stage_Access,
            Matreshka.Internals.Unicode.Ucd.Core_First_Stage);
 
+   --------------------
+   -- Is_ID_Continue --
+   --------------------
+
+   function Is_ID_Continue (Code : Code_Point) return Boolean is
+   begin
+      return
+        Element
+         (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
+           (Matreshka.Internals.Unicode.Ucd.ID_Continue);
+   end Is_ID_Continue;
+
+   -----------------
+   -- Is_ID_Start --
+   -----------------
+
+   function Is_ID_Start (Code : Code_Point) return Boolean is
+   begin
+      return
+        Element
+         (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
+           (Matreshka.Internals.Unicode.Ucd.ID_Start);
+   end Is_ID_Start;
+
    --------------------------------
    -- Is_Noncharacter_Code_Point --
    --------------------------------

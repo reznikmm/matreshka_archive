@@ -54,4 +54,12 @@ package Matreshka.Internals.Unicode.Properties is
    pragma Inline (Is_Noncharacter_Code_Point);
    --  Code points permanently reserved for internal use.
 
+   function Is_ID_Start (Code : Code_Point) return Boolean;
+   pragma Inline (Is_ID_Start);
+   --  Code points which can start identifier.
+
+   function Is_ID_Continue (Code : Code_Point) return Boolean;
+   pragma Inline (Is_ID_Continue);
+   --  Code points which continue identifier.
+
 end Matreshka.Internals.Unicode.Properties;
