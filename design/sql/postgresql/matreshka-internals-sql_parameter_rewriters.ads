@@ -41,56 +41,39 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides implementation of Query abstraction for PostgreSQL.
+--  This package provides base implementation of SQL statement parameter
+--  rewriter, which converts :name style parameter placeholders into database
+--  specific representation.
+--
+--  It supports rewriting for PostgreSQL only for now: every :name parameter
+--  placeholder is replaced by $N parameter placeholder. Duplicate names are
+--  replaced by the same parameter placeholder.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases;
-private with Matreshka.Internals.SQL_Parameter_Sets;
+with League.Strings;
+with Matreshka.Internals.SQL_Parameter_Sets;
 
-package Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
+package Matreshka.Internals.SQL_Parameter_Rewriters is
 
-   type PostgreSQL_Query is new Abstract_Query with private;
+   type Parameter_Rewriter is tagged limited private;
 
-   procedure Initialize
-    (Self     : not null access PostgreSQL_Query'Class;
-     Database : not null access Databases.PostgreSQL_Database'Class);
+   procedure Rewrite
+    (Self       : Parameter_Rewriter'Class;
+     Source     : League.Strings.Universal_String;
+     Rewritten  : out League.Strings.Universal_String;
+     Parameters : out SQL_Parameter_Sets.Parameter_Set);
+
+   not overriding procedure Database_Placeholder
+    (Self        : Parameter_Rewriter;
+     Name        : League.Strings.Universal_String;
+     Number      : Positive;
+     Placeholder : out League.Strings.Universal_String;
+     Parameters  : in out SQL_Parameter_Sets.Parameter_Set);
+   --  Sets Placeholder to database specific placeholder for parameter with
+   --  Name and number Number. Implementation must modify Parameters
+   --  accordingly.
 
 private
 
-   type PostgreSQL_Query is new Abstract_Query with record
-      Name       : Interfaces.C.Strings.chars_ptr;
-      Error      : League.Strings.Universal_String;
-      Parameters : Matreshka.Internals.SQL_Parameter_Sets.Parameter_Set;
-   end record;
+   type Parameter_Rewriter is tagged limited null record;
 
-   overriding procedure Bind_Value
-    (Self      : not null access PostgreSQL_Query;
-     Name      : League.Strings.Universal_String;
-     Value     : League.Values.Value;
-     Direction : SQL.Parameter_Directions);
-
-   overriding function Error_Message
-    (Self : not null access PostgreSQL_Query)
-       return League.Strings.Universal_String;
-
-   overriding function Execute
-    (Self : not null access PostgreSQL_Query) return Boolean;
-
-   overriding procedure Finish (Self : not null access PostgreSQL_Query);
-
-   overriding procedure Invalidate (Self : not null access PostgreSQL_Query);
-
-   overriding function Is_Active
-    (Self : not null access PostgreSQL_Query) return Boolean;
-
-   overriding function Next
-    (Self : not null access PostgreSQL_Query) return Boolean;
-
-   overriding function Prepare
-    (Self  : not null access PostgreSQL_Query;
-     Query : League.Strings.Universal_String) return Boolean;
-
-   overriding function Value
-    (Self  : not null access PostgreSQL_Query;
-     Index : Positive) return League.Values.Value;
-
-end Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries;
+end Matreshka.Internals.SQL_Parameter_Rewriters;

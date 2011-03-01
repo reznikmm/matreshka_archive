@@ -42,9 +42,9 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Streams;
-with Ada.Wide_Wide_Text_IO;
 
 with League.Text_Codecs;
+with Matreshka.Internals.SQL_Parameter_Rewriters;
 
 package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
 
@@ -199,17 +199,31 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
     (Self  : not null access PostgreSQL_Query;
      Query : League.Strings.Universal_String) return Boolean
    is
-      V_Query : constant Ada.Streams.Stream_Element_Array
-        := Codec.Encode (Query).To_Stream_Element_Array;
-      S_Query : String (1 .. V_Query'Length);
-      for S_Query'Address use V_Query'Address;
-      pragma Import (Ada, S_Query);
-      C_Query : Interfaces.C.Strings.chars_ptr
-        := Interfaces.C.Strings.New_String (S_Query);
-
-      Result : PGresult_Access;
+      Rewriter  : SQL_Parameter_Rewriters.Parameter_Rewriter;
+      Rewritten : League.Strings.Universal_String;
+      C_Query   : Interfaces.C.Strings.chars_ptr;
+      Result    : PGresult_Access;
 
    begin
+      --  Rewrite statement and prepare set of parameters.
+
+      Rewriter.Rewrite (Query, Rewritten, Self.Parameters);
+
+      --  Convert rewrittent statement into string in client library format.
+
+      declare
+         V_Query : constant Ada.Streams.Stream_Element_Array
+           := Codec.Encode (Rewritten).To_Stream_Element_Array;
+         S_Query : String (1 .. V_Query'Length);
+         for S_Query'Address use V_Query'Address;
+         pragma Import (Ada, S_Query);
+
+      begin
+         C_Query := Interfaces.C.Strings.New_String (S_Query);
+      end;
+
+      --  Allocates name for the statement.
+
       Self.Name :=
         Databases.PostgreSQL_Database'Class
          (Self.Database.all).Allocate_Statement_Name;

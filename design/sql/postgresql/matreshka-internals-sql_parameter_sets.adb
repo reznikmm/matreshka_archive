@@ -41,56 +41,86 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides implementation of Query abstraction for PostgreSQL.
-------------------------------------------------------------------------------
-with Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases;
-private with Matreshka.Internals.SQL_Parameter_Sets;
 
-package Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
+package body Matreshka.Internals.SQL_Parameter_Sets is
 
-   type PostgreSQL_Query is new Abstract_Query with private;
+   -----------
+   -- Alias --
+   -----------
 
-   procedure Initialize
-    (Self     : not null access PostgreSQL_Query'Class;
-     Database : not null access Databases.PostgreSQL_Database'Class);
+   procedure Alias
+    (Self : in out Parameter_Set;
+     Name : League.Strings.Universal_String) is
+   begin
+      raise Program_Error;
+   end Alias;
 
-private
+   ------------
+   -- Append --
+   ------------
 
-   type PostgreSQL_Query is new Abstract_Query with record
-      Name       : Interfaces.C.Strings.chars_ptr;
-      Error      : League.Strings.Universal_String;
-      Parameters : Matreshka.Internals.SQL_Parameter_Sets.Parameter_Set;
-   end record;
+   procedure Append
+    (Self : in out Parameter_Set;
+     Name : League.Strings.Universal_String)
+   is
+      Value : League.Values.Value;
 
-   overriding procedure Bind_Value
-    (Self      : not null access PostgreSQL_Query;
-     Name      : League.Strings.Universal_String;
-     Value     : League.Values.Value;
-     Direction : SQL.Parameter_Directions);
+   begin
+      Self.Names.Insert (Integer (Self.Names.Length) + 1, Name);
+      Self.Values.Insert (Name, Value);
+   end Append;
 
-   overriding function Error_Message
-    (Self : not null access PostgreSQL_Query)
-       return League.Strings.Universal_String;
+   -----------
+   -- Clear --
+   -----------
 
-   overriding function Execute
-    (Self : not null access PostgreSQL_Query) return Boolean;
+   procedure Clear (Self : in out Parameter_Set) is
+   begin
+      null;
+   end Clear;
 
-   overriding procedure Finish (Self : not null access PostgreSQL_Query);
+   -------------------
+   -- Has_Parameter --
+   -------------------
 
-   overriding procedure Invalidate (Self : not null access PostgreSQL_Query);
+   function Has_Parameter
+    (Self : Parameter_Set;
+     Name : League.Strings.Universal_String) return Boolean is
+   begin
+      return Self.Values.Contains (Name);
+   end Has_Parameter;
 
-   overriding function Is_Active
-    (Self : not null access PostgreSQL_Query) return Boolean;
+   ----------
+   -- Hash --
+   ----------
 
-   overriding function Next
-    (Self : not null access PostgreSQL_Query) return Boolean;
+   function Hash (Item : Positive) return Ada.Containers.Hash_Type is
+   begin
+      return Ada.Containers.Hash_Type (Item);
+   end Hash;
 
-   overriding function Prepare
-    (Self  : not null access PostgreSQL_Query;
-     Query : League.Strings.Universal_String) return Boolean;
+   -----------
+   -- Index --
+   -----------
 
-   overriding function Value
-    (Self  : not null access PostgreSQL_Query;
-     Index : Positive) return League.Values.Value;
+   function Index
+    (Self : Parameter_Set;
+     Name : League.Strings.Universal_String) return Integer
+   is
+      use type League.Strings.Universal_String;
 
-end Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries;
+      Position : Integer_Maps.Cursor := Self.Names.First;
+
+   begin
+      while Integer_Maps.Has_Element (Position) loop
+         if Integer_Maps.Element (Position) = Name then
+            return Integer_Maps.Key (Position);
+         end if;
+
+         Integer_Maps.Next (Position);
+      end loop;
+
+      raise Program_Error;
+   end Index;
+
+end Matreshka.Internals.SQL_Parameter_Sets;
