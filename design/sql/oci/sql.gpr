@@ -1,0 +1,15 @@
+with "matreshka_league";
+with "matreshka_sql";
+--with "matreshka_sql_sqlite3";
+
+project SQL is
+
+   for Main use ("main.adb");
+   for Source_Dirs use (".", "/home/max/cvs_root/matreshka/source/sql/sqlite3");
+   for Object_Dir use ".obj";
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-g", "-gnat12");
+   end Compiler;
+
+end SQL;
