@@ -209,17 +209,48 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases is
       return Self.Handle;
    end Handle;
 
+   ----------------
+   -- New_String --
+   ----------------
+
+   function New_String
+    (Item : League.Strings.Universal_String)
+       return Interfaces.C.Strings.chars_ptr
+   is
+      --  XXX This subprogram can be optimized by direct access to
+      --  Stream_Element_Vector internal storage. This storage can be renamed
+      --  to S_Item object, thus there is no copy of data needed.
+
+      V_Item : constant Ada.Streams.Stream_Element_Array
+        := UTF8_Codec.Encode (Item).To_Stream_Element_Array;
+      S_Item : String (1 .. V_Item'Length);
+      for S_Item'Address use V_Item'Address;
+      pragma Import (Ada, S_Item);
+
+   begin
+      return Interfaces.C.Strings.New_String (S_Item);
+   end New_String;
+
    ----------
    -- Open --
    ----------
 
    overriding function Open
     (Self    : not null access PostgreSQL_Database;
-     Options : League.Strings.Universal_String) return Boolean is
+     Options : League.Strings.Universal_String) return Boolean
+   is
+      C_Options : Interfaces.C.Strings.chars_ptr := New_String (Options);
+
    begin
       --  Establish connection.
 
-      Self.Handle := PQconnectdb (Interfaces.C.Strings.New_String (""));
+      Self.Handle := PQconnectdb (C_Options);
+
+      --  Cleanup.
+
+      Interfaces.C.Strings.Free (C_Options);
+
+      --  Handle fatal error.
 
       if Self.Handle = null then
          --  PQconnectdb can return null when it unable to allocate memory.

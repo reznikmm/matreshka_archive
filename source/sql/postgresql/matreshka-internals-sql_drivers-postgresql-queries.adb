@@ -60,12 +60,6 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
    Rewriter : SQL_Parameter_Rewriters.PostgreSQL.PostgreSQL_Parameter_Rewriter;
    --  SQL statement parameter rewriter.
 
-   function New_String
-    (Item : League.Strings.Universal_String)
-       return Interfaces.C.Strings.chars_ptr;
-   --  Converts Universal_String into client encoding, allocates and returns C
-   --  style string. Returned object must be dellocated by caller.
-
    ----------------
    -- Bind_Value --
    ----------------
@@ -112,7 +106,7 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
             Params (J) := Interfaces.C.Strings.Null_Ptr;
 
          elsif League.Values.Is_Universal_String (Value) then
-            Params (J) := New_String (League.Values.Get (Value));
+            Params (J) := Databases.New_String (League.Values.Get (Value));
 
          elsif League.Values.Is_Abstract_Integer (Value) then
             Params (J) :=
@@ -258,28 +252,6 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
       end if;
    end Next;
 
-   ----------------
-   -- New_String --
-   ----------------
-
-   function New_String
-    (Item : League.Strings.Universal_String)
-       return Interfaces.C.Strings.chars_ptr
-   is
-      --  XXX This subprogram can be optimized by direct access to
-      --  Stream_Element_Vector internal storage. This storage can be renamed
-      --  to S_Item object, thus there is no copy of data needed.
-
-      V_Item : constant Ada.Streams.Stream_Element_Array
-        := Codec.Encode (Item).To_Stream_Element_Array;
-      S_Item : String (1 .. V_Item'Length);
-      for S_Item'Address use V_Item'Address;
-      pragma Import (Ada, S_Item);
-
-   begin
-      return Interfaces.C.Strings.New_String (S_Item);
-   end New_String;
-
    -------------
    -- Prepare --
    -------------
@@ -308,7 +280,7 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
 
       --  Convert rewrittent statement into string in client library format.
 
-      C_Query := New_String (Rewritten);
+      C_Query := Databases.New_String (Rewritten);
 
       --  Allocates name for the statement when it is not allocated.
 

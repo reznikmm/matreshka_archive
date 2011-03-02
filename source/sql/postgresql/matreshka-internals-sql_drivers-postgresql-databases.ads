@@ -71,6 +71,12 @@ package Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases is
      Type_Oid : Oid) return Data_Types;
    --  Returns base type of the type with specified Oid.
 
+   function New_String
+    (Item : League.Strings.Universal_String)
+       return Interfaces.C.Strings.chars_ptr;
+   --  Converts Universal_String into client encoding, allocates and returns C
+   --  style string. Returned object must be dellocated by caller.
+
 private
 
    package Maps is new Ada.Containers.Ordered_Maps (Oid, Data_Types);
