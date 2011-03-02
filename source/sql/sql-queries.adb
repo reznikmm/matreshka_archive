@@ -260,8 +260,11 @@ package body SQL.Queries is
     (Self  : SQL_Query'Class;
      Index : Positive) return League.Values.Value is
    begin
-      if not Self.Data.Is_Valid then
-         --  Returns when internal object was invalidated.
+      if not Self.Data.Is_Valid
+        or else not Self.Data.Is_Active
+      then
+	 --  Returns when internal object was invalidated or not in active
+         --  state.
 
          return X : League.Values.Value;
       end if;

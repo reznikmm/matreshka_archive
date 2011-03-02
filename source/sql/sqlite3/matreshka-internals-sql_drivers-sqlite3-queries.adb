@@ -394,12 +394,6 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       Value  : League.Values.Value;
 
    begin
-      if not Self.Is_Active then
-         --  Returns immidiately when query is not active.
-
-         return Value;
-      end if;
-
       case sqlite3_column_type (Self.Handle, Interfaces.C.int (Index - 1)) is
          when SQLITE_INTEGER =>
             --  Create universal integer value.
