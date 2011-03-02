@@ -46,10 +46,6 @@
 
 package Matreshka.Internals.SQL_Drivers.SQLite3.Databases is
 
-   ----------------------
-   -- SQLite3_Database --
-   ----------------------
-
    type SQLite3_Database is new Abstract_Database with private;
 
    function Database_Handle
@@ -74,13 +70,13 @@ private
     (Self : not null access SQLite3_Database)
        return League.Strings.Universal_String;
 
-   overriding function Query
-    (Self : not null access SQLite3_Database) return not null Query_Access;
-
    overriding procedure Finalize (Self : not null access SQLite3_Database);
 
    overriding function Open
     (Self    : not null access SQLite3_Database;
      Options : League.Strings.Universal_String) return Boolean;
+
+   overriding function Query
+    (Self : not null access SQLite3_Database) return not null Query_Access;
 
 end Matreshka.Internals.SQL_Drivers.SQLite3.Databases;

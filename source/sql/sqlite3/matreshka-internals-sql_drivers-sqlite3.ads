@@ -55,12 +55,12 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
    -- Data types --
    ----------------
 
-   type sqlite3 is private;
+   type sqlite3 is limited private;
 
    type sqlite3_Access is access all sqlite3;
    pragma Convention (C, sqlite3_Access);
 
-   type sqlite3_stmt is private;
+   type sqlite3_stmt is limited private;
 
    type sqlite3_stmt_Access is access all sqlite3_stmt;
    pragma Convention (C, sqlite3_stmt_Access);
@@ -235,8 +235,8 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
 
 private
 
-   type sqlite3 is null record;
+   type sqlite3 is limited null record;
 
-   type sqlite3_stmt is null record;
+   type sqlite3_stmt is limited null record;
 
 end Matreshka.Internals.SQL_Drivers.SQLite3;
