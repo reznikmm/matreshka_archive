@@ -42,7 +42,10 @@ install_gpr:
 	$(INSTALL_project) gnat/install/fastcgi.gpr $(INSTALL_PROJECT_DIR)/fastcgi.gpr
 	gnat ls -d -s -P gnat/matreshka_league.gpr | sort | uniq > league-src.lst
 	gnat ls -d -s -P gnat/matreshka_fastcgi.gpr | sort | uniq > fastcgi-src.aux
+	gnat ls -d -s -P gnat/matreshka_sql.gpr | sort | uniq > sql-src.aux
 	diff -u league-src.lst fastcgi-src.aux | tail +3 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > fastcgi-src.lst
+	diff -u league-src.lst sql-src.aux | tail +3 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql-src.lst
 	cat league-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/league
 	cat fastcgi-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/fastcgi
-	rm -f league-src.lst fastcgi-src.aux fastcgi-src.lst
+	cat sql-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql
+	rm -f league-src.lst fastcgi-src.aux fastcgi-src.lst sql-src.aux
