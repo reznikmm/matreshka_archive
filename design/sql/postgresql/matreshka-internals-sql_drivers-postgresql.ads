@@ -127,11 +127,17 @@ package Matreshka.Internals.SQL_Drivers.PostgreSQL is
     (conn : PGconn_Access) return Interfaces.C.Strings.chars_ptr;
    pragma Import (C, PQerrorMessage, "PQerrorMessage");
 
+   function PQexec
+    (conn    : PGconn_Access;
+     command : Interfaces.C.Strings.chars_ptr) return PGresult_Access;
+   pragma Import (C, PQexec, "PQexec");
+
    function PQexecPrepared
     (conn         : PGconn_Access;
      stmtName     : Interfaces.C.Strings.chars_ptr;
      nParams      : Interfaces.C.int;
-     paramValues  : chars_ptr_Access;
+--     paramValues  : chars_ptr_Access;
+     paramValues  : Interfaces.C.Strings.chars_ptr_array;
      paramLengths : int_Access;
      paramFormats : int_Access;
      resultFormat : Interfaces.C.int) return PGresult_Access;
@@ -140,8 +146,33 @@ package Matreshka.Internals.SQL_Drivers.PostgreSQL is
    procedure PQfinish (conn : PGconn_Access);
    pragma Import (C, PQfinish, "PQfinish");
 
+   function PQftype
+    (res : PGresult_Access; column_number : Interfaces.C.int) return Oid;
+   pragma Import (C, PQftype, "PQftype");
+
+   function PQgetisnull
+    (res           : PGresult_Access;
+     row_number    : Interfaces.C.int;
+     column_number : Interfaces.C.int) return Interfaces.C.int;
+   pragma Import (C, PQgetisnull, "PQgetisnull");
+
+   function PQgetlength
+    (res           : PGresult_Access;
+     row_number    : Interfaces.C.int;
+     column_number : Interfaces.C.int) return Interfaces.C.int;
+   pragma Import (C, PQgetlength, "PQgetlength");
+
+   function PQgetvalue
+    (res           : PGresult_Access;
+     row_number    : Interfaces.C.int;
+     column_number : Interfaces.C.int) return Interfaces.C.Strings.chars_ptr;
+   pragma Import (C, PQgetvalue, "PQgetvalue");
+
    function PQisthreadsafe return Interfaces.C.int;
    pragma Import (C, PQisthreadsafe, "PQisthreadsafe");
+
+   function PQntuples (res : PGresult_Access) return Interfaces.C.int;
+   pragma Import (C, PQntuples, "PQntuples");
 
    function PQprepare
     (conn       : PGconn_Access;

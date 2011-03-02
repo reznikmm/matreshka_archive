@@ -42,11 +42,15 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Streams;
+with Ada.Unchecked_Conversion;
+with System;
 
 with League.Text_Codecs;
 with Matreshka.Internals.SQL_Parameter_Rewriters.PostgreSQL;
 
 package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
+
+   use type Interfaces.C.int;
 
    Codec    : constant League.Text_Codecs.Text_Codec
      := League.Text_Codecs.Codec
@@ -55,6 +59,12 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
    --  responsible to set client encodings to UTF-8.
    Rewriter : SQL_Parameter_Rewriters.PostgreSQL.PostgreSQL_Parameter_Rewriter;
    --  SQL statement parameter rewriter.
+
+   function New_String
+    (Item : League.Strings.Universal_String)
+       return Interfaces.C.Strings.chars_ptr;
+   --  Converts Universal_String into client encoding, allocates and returns C
+   --  style string. Returned object must be dellocated by caller.
 
    ----------------
    -- Bind_Value --
@@ -66,7 +76,7 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
      Value     : League.Values.Value;
      Direction : SQL.Parameter_Directions) is
    begin
-      raise Program_Error;
+      Self.Parameters.Set_Value (Name, Value);
    end Bind_Value;
 
    -------------------
@@ -87,18 +97,54 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
    overriding function Execute
     (Self : not null access PostgreSQL_Query) return Boolean
    is
-      Result : PGresult_Access;
+      Value  : League.Values.Value;
+      Params : Interfaces.C.Strings.chars_ptr_array
+                (1 .. Interfaces.C.size_t
+                       (Self.Parameters.Number_Of_Positional));
 
    begin
-      Result :=
+      --  Prepare parameter values.
+
+      for J in Params'Range loop
+         Value := Self.Parameters.Value (Positive (J));
+
+         if League.Values.Is_Empty (Value) then
+            Params (J) := Interfaces.C.Strings.Null_Ptr;
+
+         elsif League.Values.Is_Universal_String (Value) then
+            Params (J) := New_String (League.Values.Get (Value));
+
+         elsif League.Values.Is_Abstract_Integer (Value) then
+            Params (J) :=
+              Interfaces.C.Strings.New_String
+               (League.Values.Universal_Integer'Image
+                 (League.Values.Get (Value)));
+
+         elsif League.Values.Is_Abstract_Float (Value) then
+            Params (J) :=
+              Interfaces.C.Strings.New_String
+               (League.Values.Universal_Float'Image
+                 (League.Values.Get (Value)));
+         end if;
+      end loop;
+
+      --  Execute statement with prepared parameters.
+
+      Self.Result :=
         PQexecPrepared
          (Databases.PostgreSQL_Database'Class (Self.Database.all).Handle,
           Self.Name,
-          0,
-          null,
+          Params'Length,
+          Params,
           null,
           null,
           0);
+
+      --  Release parameter values.
+
+      for J in Params'Range loop
+         Interfaces.C.Strings.Free (Params (J));
+      end loop;
 
       --  "The result is a PGresult pointer or possibly a null pointer. A
       --  non-null pointer will generally be returned except in out-of-memory
@@ -109,7 +155,7 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
 
       --  Handle fatal error.
 
-      if Result = null then
+      if Self.Result = null then
          --  Obtain current error message.
 
          Self.Error :=
@@ -121,19 +167,26 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
 
       --  Handle non-fatal errors.
 
-      if PQresultStatus (Result) /= PGRES_COMMAND_OK then
-         --  Obtain error message.
+      case PQresultStatus (Self.Result) is
+         when PGRES_COMMAND_OK
+           | PGRES_TUPLES_OK
+         =>
+            Self.Row := -1;
 
-         Self.Error :=
-           Databases.PostgreSQL_Database'Class
-            (Self.Database.all).Get_Error_Message;
+         when others =>
+            --  Obtain error message.
 
-         --  Cleanup.
+            Self.Error :=
+              Databases.PostgreSQL_Database'Class
+               (Self.Database.all).Get_Error_Message;
 
-         PQclear (Result);
+            --  Cleanup.
 
-         return False;
-      end if;
+            PQclear (Self.Result);
+            Self.Result := null;
+
+            return False;
+      end case;
 
       return True;
    end Execute;
@@ -166,6 +219,11 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
    begin
       if Self.Database /= null then
          Interfaces.C.Strings.Free (Self.Name);
+
+         if Self.Result /= null then
+            PQclear (Self.Result);
+            Self.Result := null;
+         end if;
       end if;
 
       --  Call Invalidate of parent tagged type.
@@ -180,7 +238,7 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
    overriding function Is_Active
     (Self : not null access PostgreSQL_Query) return Boolean is
    begin
-      return False;
+      return Self.Result /= null;
    end Is_Active;
 
    ----------
@@ -190,8 +248,37 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
    overriding function Next
     (Self : not null access PostgreSQL_Query) return Boolean is
    begin
-      return False;
+      if Self.Row + 1 < PQntuples (Self.Result) then
+         Self.Row := Self.Row + 1;
+
+         return True;
+
+      else
+         return False;
+      end if;
    end Next;
+
+   ----------------
+   -- New_String --
+   ----------------
+
+   function New_String
+    (Item : League.Strings.Universal_String)
+       return Interfaces.C.Strings.chars_ptr
+   is
+      --  XXX This subprogram can be optimized by direct access to
+      --  Stream_Element_Vector internal storage. This storage can be renamed
+      --  to S_Item object, thus there is no copy of data needed.
+
+      V_Item : constant Ada.Streams.Stream_Element_Array
+        := Codec.Encode (Item).To_Stream_Element_Array;
+      S_Item : String (1 .. V_Item'Length);
+      for S_Item'Address use V_Item'Address;
+      pragma Import (Ada, S_Item);
+
+   begin
+      return Interfaces.C.Strings.New_String (S_Item);
+   end New_String;
 
    -------------
    -- Prepare --
@@ -201,33 +288,35 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
     (Self  : not null access PostgreSQL_Query;
      Query : League.Strings.Universal_String) return Boolean
    is
+      use type Interfaces.C.Strings.chars_ptr;
+
       Rewritten : League.Strings.Universal_String;
       C_Query   : Interfaces.C.Strings.chars_ptr;
       Result    : PGresult_Access;
 
    begin
+      --  Clear existing result set.
+
+      if Self.Result /= null then
+         PQclear (Self.Result);
+         Self.Result := null;
+      end if;
+
       --  Rewrite statement and prepare set of parameters.
 
       Rewriter.Rewrite (Query, Rewritten, Self.Parameters);
 
       --  Convert rewrittent statement into string in client library format.
 
-      declare
-         V_Query : constant Ada.Streams.Stream_Element_Array
-           := Codec.Encode (Rewritten).To_Stream_Element_Array;
-         S_Query : String (1 .. V_Query'Length);
-         for S_Query'Address use V_Query'Address;
-         pragma Import (Ada, S_Query);
+      C_Query := New_String (Rewritten);
 
-      begin
-         C_Query := Interfaces.C.Strings.New_String (S_Query);
-      end;
+      --  Allocates name for the statement when it is not allocated.
 
-      --  Allocates name for the statement.
-
-      Self.Name :=
-        Databases.PostgreSQL_Database'Class
-         (Self.Database.all).Allocate_Statement_Name;
+      if Self.Name = Interfaces.C.Strings.Null_Ptr then
+         Self.Name :=
+           Databases.PostgreSQL_Database'Class
+            (Self.Database.all).Allocate_Statement_Name;
+      end if;
 
       --  Prepare statement and let server to handle parameters' types.
 
@@ -290,9 +379,74 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
 
    overriding function Value
     (Self  : not null access PostgreSQL_Query;
-     Index : Positive) return League.Values.Value is
+     Index : Positive) return League.Values.Value
+   is
+      Column : constant Interfaces.C.int := Interfaces.C.int (Index - 1);
+      Value  : League.Values.Value;
+
    begin
-      return X : League.Values.Value;
+      case Databases.PostgreSQL_Database'Class
+            (Self.Database.all).Get_Type (PQftype (Self.Result, Column))
+      is
+         when Databases.Text_Data =>
+            --  Process text data.
+
+            League.Values.Set_Tag (Value, League.Values.Universal_String_Tag);
+
+            if PQgetisnull (Self.Result, Self.Row, Column) = 0 then
+               declare
+                  function To_Address is
+                    new Ada.Unchecked_Conversion
+                         (Interfaces.C.Strings.chars_ptr, System.Address);
+
+                  S : Ada.Streams.Stream_Element_Array
+                       (1 .. Ada.Streams.Stream_Element_Offset
+                              (PQgetlength (Self.Result, Self.Row, Column)));
+                  for S'Address use
+                    To_Address (PQgetvalue (Self.Result, Self.Row, Column));
+                  pragma Import (Ada, S);
+
+               begin
+                  League.Values.Set (Value, Codec.Decode (S));
+               end;
+            end if;
+
+         when Databases.Integer_Data =>
+            --  Process integer data.
+
+            League.Values.Set_Tag (Value, League.Values.Universal_Integer_Tag);
+
+            if PQgetisnull (Self.Result, Self.Row, Column) = 0 then
+               declare
+                  Image : constant String
+                    := Interfaces.C.Strings.Value
+                        (PQgetvalue (Self.Result, Self.Row, Column));
+
+               begin
+                  League.Values.Set
+                   (Value, League.Values.Universal_Integer'Value (Image));
+               end;
+            end if;
+
+         when Databases.Float_Data =>
+            --  Process float data.
+
+            League.Values.Set_Tag (Value, League.Values.Universal_Float_Tag);
+
+            if PQgetisnull (Self.Result, Self.Row, Column) = 0 then
+               declare
+                  Image : constant String
+                    := Interfaces.C.Strings.Value
+                        (PQgetvalue (Self.Result, Self.Row, Column));
+
+               begin
+                  League.Values.Set
+                   (Value, League.Values.Universal_Float'Value (Image));
+               end;
+            end if;
+      end case;
+
+      return Value;
    end Value;
 
 end Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries;

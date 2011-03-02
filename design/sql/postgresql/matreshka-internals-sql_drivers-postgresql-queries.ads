@@ -57,9 +57,12 @@ package Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
 private
 
    type PostgreSQL_Query is new Abstract_Query with record
-      Name       : Interfaces.C.Strings.chars_ptr;
+      Name       : Interfaces.C.Strings.chars_ptr
+        := Interfaces.C.Strings.Null_Ptr;
       Error      : League.Strings.Universal_String;
       Parameters : Matreshka.Internals.SQL_Parameter_Sets.Parameter_Set;
+      Result     : PGresult_Access;
+      Row        : Interfaces.C.int;
    end record;
 
    overriding procedure Bind_Value

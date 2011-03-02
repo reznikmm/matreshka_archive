@@ -57,6 +57,12 @@ package Matreshka.Internals.SQL_Parameter_Sets is
    procedure Clear (Self : in out Parameter_Set);
    --  Clears set of parameters.
 
+   function Number_Of_Named (Self : Parameter_Set) return Natural;
+   --  Returns number of named parameters.
+
+   function Number_Of_Positional (Self : Parameter_Set) return Natural;
+   --  Returns number of positional parameters.
+
    function Has_Parameter
     (Self : Parameter_Set;
      Name : League.Strings.Universal_String) return Boolean;
@@ -77,6 +83,17 @@ package Matreshka.Internals.SQL_Parameter_Sets is
      Name : League.Strings.Universal_String);
    --  Creates alias for parameter with specified name and assign next index
    --  to it.
+
+   procedure Set_Value
+    (Self  : in out Parameter_Set;
+     Name  : League.Strings.Universal_String;
+     Value : League.Values.Value);
+   --  Sets value of the specified parameter. Do nothing when parameter are not
+   --  registered.
+
+   function Value
+    (Self : Parameter_Set; Index : Positive) return League.Values.Value;
+   --  Returns value of the specified positional parameter.
 
 private
 

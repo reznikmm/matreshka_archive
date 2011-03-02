@@ -123,4 +123,46 @@ package body Matreshka.Internals.SQL_Parameter_Sets is
       raise Program_Error;
    end Index;
 
+   ---------------------
+   -- Number_Of_Named --
+   ---------------------
+
+   function Number_Of_Named (Self : Parameter_Set) return Natural is
+   begin
+      return Natural (Self.Values.Length);
+   end Number_Of_Named;
+
+   --------------------------
+   -- Number_Of_Positional --
+   --------------------------
+
+   function Number_Of_Positional (Self : Parameter_Set) return Natural is
+   begin
+      return Natural (Self.Names.Length);
+   end Number_Of_Positional;
+
+   ---------------
+   -- Set_Value --
+   ---------------
+
+   procedure Set_Value
+    (Self  : in out Parameter_Set;
+     Name  : League.Strings.Universal_String;
+     Value : League.Values.Value) is
+   begin
+      if Self.Values.Contains (Name) then
+         Self.Values.Replace (Name, Value);
+      end if;
+   end Set_Value;
+
+   -----------
+   -- Value --
+   -----------
+
+   function Value
+    (Self  : Parameter_Set; Index : Positive) return League.Values.Value is
+   begin
+      return Self.Values.Element (Self.Names.Element (Index));
+   end Value;
+
 end Matreshka.Internals.SQL_Parameter_Sets;

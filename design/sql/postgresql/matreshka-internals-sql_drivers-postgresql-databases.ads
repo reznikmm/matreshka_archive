@@ -43,10 +43,13 @@
 ------------------------------------------------------------------------------
 --  Implementation of database abstraction for PostgreSQL.
 ------------------------------------------------------------------------------
+private with Ada.Containers.Ordered_Maps;
 
 package Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases is
 
    type PostgreSQL_Database is new Abstract_Database with private;
+
+   type Data_Types is (Text_Data, Integer_Data, Float_Data);
 
    function Allocate_Statement_Name
     (Self : not null access PostgreSQL_Database'Class)
@@ -63,12 +66,20 @@ package Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases is
        return League.Strings.Universal_String;
    --  Returns current error message.
 
+   function Get_Type
+    (Self     : not null access PostgreSQL_Database'Class;
+     Type_Oid : Oid) return Data_Types;
+   --  Returns base type of the type with specified Oid.
+
 private
+
+   package Maps is new Ada.Containers.Ordered_Maps (Oid, Data_Types);
 
    type PostgreSQL_Database is new Abstract_Database with record
       Handle    : PGconn_Access;
       Error     : League.Strings.Universal_String;
       Statement : Natural;
+      Type_Map  : Maps.Map;
    end record;
 
    overriding procedure Close (Self : not null access PostgreSQL_Database);

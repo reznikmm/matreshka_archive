@@ -156,6 +156,48 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases is
       return League.Text_Codecs.Codec (Encoding).Decode (Source);
    end Get_Error_Message;
 
+   --------------
+   -- Get_Type --
+   --------------
+
+   function Get_Type
+    (Self     : not null access PostgreSQL_Database'Class;
+     Type_Oid : Oid) return Data_Types is
+   begin
+      if not Self.Type_Map.Contains (Type_Oid) then
+         --  Retrieve type name from database and use it to guess data type,
+         --  when type is not in the cache. Store guessed type in cache.
+
+         declare
+            Query  : Interfaces.C.Strings.chars_ptr
+              := Interfaces.C.Strings.New_String
+                  ("SELECT typname FROM pg_type WHERE oid ="
+                     & Oid'Image (Type_Oid));
+            Result : PGresult_Access := PQexec (Self.Handle, Query);
+            Name   : constant String
+              := Interfaces.C.Strings.Value (PQgetvalue (Result, 0, 0));
+
+         begin
+            Interfaces.C.Strings.Free (Query);
+            PQclear (Result);
+
+            if Name = "int4" then
+               Self.Type_Map.Insert (Type_Oid, Integer_Data);
+
+            elsif Name = "float8" then
+               Self.Type_Map.Insert (Type_Oid, Float_Data);
+
+            elsif Name = "varchar" then
+               Self.Type_Map.Insert (Type_Oid, Text_Data);
+
+            else
+               Self.Type_Map.Insert (Type_Oid, Text_Data);
+            end if;
+         end;
+      end if;
+
+      return Self.Type_Map.Element (Type_Oid);
+   end Get_Type;
 
    ------------
    -- Handle --
