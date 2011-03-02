@@ -3,6 +3,7 @@ with Ada.Wide_Wide_Text_IO;
 with League.Strings;
 with League.Values.Floats;
 with League.Values.Integers;
+with Matreshka.Internals.SQL_Drivers.PostgreSQL.Factory;
 with Matreshka.Internals.SQL_Drivers.SQLite3.Factory;
 with SQL.Databases;
 with SQL.Queries;
@@ -13,8 +14,11 @@ procedure Main is
     (Item : Wide_Wide_String) return League.Strings.Universal_String
        renames League.Strings.To_Universal_String;
 
-   DB_Type : constant League.Strings.Universal_String := +"SQLITE3";
-   DB_Name : constant League.Strings.Universal_String := +"test.db";
+   DB_Type : constant League.Strings.Universal_String := +"POSTGRESQL";
+   DB_Name : constant League.Strings.Universal_String := +"";
+
+--   DB_Type : constant League.Strings.Universal_String := +"SQLITE3";
+--   DB_Name : constant League.Strings.Universal_String := +"test.db";
 
    D : aliased SQL.Databases.SQL_Database
      := SQL.Databases.Create (DB_Type, DB_Name);

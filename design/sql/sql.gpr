@@ -1,3 +1,4 @@
+with "../../gnat/matreshka_sql_postgresql.gpr";
 with "../../gnat/matreshka_sql_sqlite3.gpr";
 
 project SQL is
@@ -7,7 +8,7 @@ project SQL is
    for Object_Dir use ".obj";
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
+      for Default_Switches ("Ada") use ("-g", "-gnat05");
    end Compiler;
 
 end SQL;
