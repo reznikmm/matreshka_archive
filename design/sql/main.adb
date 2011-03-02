@@ -14,14 +14,19 @@ procedure Main is
     (Item : Wide_Wide_String) return League.Strings.Universal_String
        renames League.Strings.To_Universal_String;
 
-   DB_Type : constant League.Strings.Universal_String := +"POSTGRESQL";
-   DB_Name : constant League.Strings.Universal_String := +"";
+   --  PostgreSQL
 
---   DB_Type : constant League.Strings.Universal_String := +"SQLITE3";
---   DB_Name : constant League.Strings.Universal_String := +"test.db";
+   DB_Driver  : constant League.Strings.Universal_String := +"POSTGRESQL";
+   DB_Options : constant League.Strings.Universal_String := +"";
+   --  Example: +"user='me' password='my' dbname='db'"
+
+   --  SQLite3
+
+--   DB_Driver  : constant League.Strings.Universal_String := +"SQLITE3";
+--   DB_Options : constant League.Strings.Universal_String := +"test.db";
 
    D : aliased SQL.Databases.SQL_Database
-     := SQL.Databases.Create (DB_Type, DB_Name);
+     := SQL.Databases.Create (DB_Driver, DB_Options);
 
 begin
    D.Open;
