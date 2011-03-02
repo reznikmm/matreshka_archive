@@ -76,7 +76,7 @@ package body SQL.Queries is
          return;
       end if;
 
-      Self.Data.Bind_Value (Name, Value, Direction);
+      Self.Data.Bind_Value (Name.To_Casefold, Value, Direction);
    end Bind_Value;
 
    -----------------
