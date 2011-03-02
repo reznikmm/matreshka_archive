@@ -52,7 +52,6 @@ procedure Main is
    pragma Import (C, PQisthreadsafe, "PQisthreadsafe");
 
    Aux : Interfaces.C.int;
-   pragma Volatile (Aux);
 
 begin
    Aux := PQisthreadsafe;
