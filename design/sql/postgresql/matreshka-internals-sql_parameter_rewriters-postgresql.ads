@@ -41,33 +41,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides base implementation of SQL statement parameter
---  rewriter, which converts :name style parameter placeholders into database
---  specific representation.
+--  This package provides implementation of SQL statement parameter rewriter
+--  for PostgreSQL: every :name parameter placeholder is replaced by $N
+--  parameter placeholder. Duplicate names are replaced by the same parameter
+--  placeholder.
 ------------------------------------------------------------------------------
-with League.Strings;
-with Matreshka.Internals.SQL_Parameter_Sets;
 
-package Matreshka.Internals.SQL_Parameter_Rewriters is
+package Matreshka.Internals.SQL_Parameter_Rewriters.PostgreSQL is
 
-   type Abstract_Parameter_Rewriter is abstract tagged limited null record;
+   type PostgreSQL_Parameter_Rewriter is
+     new Abstract_Parameter_Rewriter with null record;
 
-   procedure Rewrite
-    (Self       : Abstract_Parameter_Rewriter'Class;
-     Source     : League.Strings.Universal_String;
-     Rewritten  : out League.Strings.Universal_String;
-     Parameters : out SQL_Parameter_Sets.Parameter_Set);
-   --  Parses SQL statement Source, rewrites parameter placeholders to
-   --  database specific format and prepare set of parameters object.
-
-   not overriding procedure Database_Placeholder
-    (Self        : Abstract_Parameter_Rewriter;
+   overriding procedure Database_Placeholder
+    (Self        : PostgreSQL_Parameter_Rewriter;
      Name        : League.Strings.Universal_String;
      Number      : Positive;
      Placeholder : out League.Strings.Universal_String;
-     Parameters  : in out SQL_Parameter_Sets.Parameter_Set) is abstract;
+     Parameters  : in out SQL_Parameter_Sets.Parameter_Set);
    --  Sets Placeholder to database specific placeholder for parameter with
    --  Name and number Number. Implementation must modify Parameters
    --  accordingly.
 
-end Matreshka.Internals.SQL_Parameter_Rewriters;
+end Matreshka.Internals.SQL_Parameter_Rewriters.PostgreSQL;

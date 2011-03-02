@@ -44,15 +44,17 @@
 with Ada.Streams;
 
 with League.Text_Codecs;
-with Matreshka.Internals.SQL_Parameter_Rewriters;
+with Matreshka.Internals.SQL_Parameter_Rewriters.PostgreSQL;
 
 package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
 
-   Codec : constant League.Text_Codecs.Text_Codec
+   Codec    : constant League.Text_Codecs.Text_Codec
      := League.Text_Codecs.Codec
          (League.Strings.To_Universal_String ("UTF-8"));
    --  It is used everywhere to convert text data, PostgreSQL_Database is
    --  responsible to set client encodings to UTF-8.
+   Rewriter : SQL_Parameter_Rewriters.PostgreSQL.PostgreSQL_Parameter_Rewriter;
+   --  SQL statement parameter rewriter.
 
    ----------------
    -- Bind_Value --
@@ -199,7 +201,6 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
     (Self  : not null access PostgreSQL_Query;
      Query : League.Strings.Universal_String) return Boolean
    is
-      Rewriter  : SQL_Parameter_Rewriters.Parameter_Rewriter;
       Rewritten : League.Strings.Universal_String;
       C_Query   : Interfaces.C.Strings.chars_ptr;
       Result    : PGresult_Access;

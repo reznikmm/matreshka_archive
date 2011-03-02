@@ -41,33 +41,46 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides base implementation of SQL statement parameter
---  rewriter, which converts :name style parameter placeholders into database
---  specific representation.
-------------------------------------------------------------------------------
-with League.Strings;
-with Matreshka.Internals.SQL_Parameter_Sets;
 
-package Matreshka.Internals.SQL_Parameter_Rewriters is
+package body Matreshka.Internals.SQL_Parameter_Rewriters.PostgreSQL is
 
-   type Abstract_Parameter_Rewriter is abstract tagged limited null record;
+   function Image (Item : Positive) return League.Strings.Universal_String;
+   --  Returns text representation of the specified integer number. Text
+   --  representation doesn't contain any leading or trailing spaces.
 
-   procedure Rewrite
-    (Self       : Abstract_Parameter_Rewriter'Class;
-     Source     : League.Strings.Universal_String;
-     Rewritten  : out League.Strings.Universal_String;
-     Parameters : out SQL_Parameter_Sets.Parameter_Set);
-   --  Parses SQL statement Source, rewrites parameter placeholders to
-   --  database specific format and prepare set of parameters object.
+   -----------
+   -- Image --
+   -----------
 
-   not overriding procedure Database_Placeholder
-    (Self        : Abstract_Parameter_Rewriter;
+   function Image (Item : Positive) return League.Strings.Universal_String is
+      Aux : constant Wide_Wide_String := Integer'Wide_Wide_Image (Item);
+
+   begin
+      return
+        League.Strings.To_Universal_String (Aux (Aux'First + 1 .. Aux'Last));
+   end Image;
+
+   --------------------------
+   -- Database_Placeholder --
+   --------------------------
+
+   overriding procedure Database_Placeholder
+    (Self        : PostgreSQL_Parameter_Rewriter;
      Name        : League.Strings.Universal_String;
      Number      : Positive;
      Placeholder : out League.Strings.Universal_String;
-     Parameters  : in out SQL_Parameter_Sets.Parameter_Set) is abstract;
-   --  Sets Placeholder to database specific placeholder for parameter with
-   --  Name and number Number. Implementation must modify Parameters
-   --  accordingly.
+     Parameters  : in out SQL_Parameter_Sets.Parameter_Set)
+   is
+      use type League.Strings.Universal_String;
 
-end Matreshka.Internals.SQL_Parameter_Rewriters;
+   begin
+      if not Parameters.Has_Parameter (Name) then
+         --  Parameter is new, register it.
+
+         Parameters.Append (Name);
+      end if;
+
+      Placeholder := '$' & Image (Parameters.Index (Name));
+   end Database_Placeholder;
+
+end Matreshka.Internals.SQL_Parameter_Rewriters.PostgreSQL;

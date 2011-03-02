@@ -45,51 +45,12 @@ with Ada.Characters.Wide_Wide_Latin_1;
 
 package body Matreshka.Internals.SQL_Parameter_Rewriters is
 
-   function Image (Item : Positive) return League.Strings.Universal_String;
-   --  Returns text representation of the specified integer number. Text
-   --  representation doesn't contain any leading or trailing spaces.
-
-   -----------
-   -- Image --
-   -----------
-
-   function Image (Item : Positive) return League.Strings.Universal_String is
-      Aux : constant Wide_Wide_String := Integer'Wide_Wide_Image (Item);
-
-   begin
-      return
-        League.Strings.To_Universal_String (Aux (Aux'First + 1 .. Aux'Last));
-   end Image;
-
-   --------------------------
-   -- Database_Placeholder --
-   --------------------------
-
-   not overriding procedure Database_Placeholder
-    (Self        : Parameter_Rewriter;
-     Name        : League.Strings.Universal_String;
-     Number      : Positive;
-     Placeholder : out League.Strings.Universal_String;
-     Parameters  : in out SQL_Parameter_Sets.Parameter_Set)
-   is
-      use type League.Strings.Universal_String;
-
-   begin
-      if not Parameters.Has_Parameter (Name) then
-         --  Parameter is new, register it.
-
-         Parameters.Append (Name);
-      end if;
-
-      Placeholder := '$' & Image (Parameters.Index (Name));
-   end Database_Placeholder;
-
    -------------
    -- Rewrite --
    -------------
 
    procedure Rewrite
-    (Self       : Parameter_Rewriter'Class;
+    (Self       : Abstract_Parameter_Rewriter'Class;
      Source     : League.Strings.Universal_String;
      Rewritten  : out League.Strings.Universal_String;
      Parameters : out SQL_Parameter_Sets.Parameter_Set)
