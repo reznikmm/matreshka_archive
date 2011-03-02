@@ -328,6 +328,10 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
           0,
           null);
 
+      --  Cleanup.
+
+      Interfaces.C.Strings.Free (C_Query);
+
       --  "The result is normally a PGresult object whose contents indicate
       --  server-side success or failure. A null result indicates out-of-memory
       --  or inability to send the command at all. Use PQerrorMessage to get
