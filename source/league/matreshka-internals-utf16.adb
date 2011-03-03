@@ -357,4 +357,43 @@ package body Matreshka.Internals.Utf16 is
       end if;
    end Unchecked_To_Code_Point;
 
+   -----------------------------
+   -- Unchecked_Validate_Next --
+   -----------------------------
+
+   procedure Unchecked_Validate_Next
+    (Item     : Utf16_String;
+     Position : in out Utf16_String_Index;
+     Valid    : out Boolean)
+   is
+      pragma Assert
+       ((Position <= Item'Last
+           and then Item (Position)
+                      not in High_Surrogate_First .. High_Surrogate_Last)
+         or (Position + 1 <= Item'Last
+               and then Item (Position)
+                          in High_Surrogate_First .. High_Surrogate_Last
+               and then Item (Position + 1)
+                          in Low_Surrogate_First .. Low_Surrogate_Last));
+      pragma Suppress (Index_Check);
+      --  Assertion checks range.
+
+   begin
+      if (Item (Position) and Surrogate_Kind_Mask) = Masked_High_Surrogate then
+         if (Item (Position + 1) and Surrogate_Kind_Mask)
+               = Masked_Low_Surrogate
+         then
+            Valid    := True;
+            Position := Position + 2;
+
+         else
+            Valid := False;
+         end if;
+
+      else
+         Valid    := True;
+         Position := Position + 1;
+      end if;
+   end Unchecked_Validate_Next;
+
 end Matreshka.Internals.Utf16;

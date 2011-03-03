@@ -161,4 +161,13 @@ package Matreshka.Internals.Utf16 is
    pragma Inline (Unchecked_Surrogate_Pair_To_Code_Point);
    --  Converts surrogate pair into the code point.
 
+   procedure Unchecked_Validate_Next
+    (Item     : Utf16_String;
+     Position : in out Utf16_String_Index;
+     Valid    : out Boolean);
+   pragma Inline (Unchecked_Validate_Next);
+   --  Validates next character or surrogate pair at the specified position.
+   --  Sets Valid to True and moves Position if character of surrogate pair is
+   --  valid; otherwise sets Valid to False and don't change Position.
+
 end Matreshka.Internals.Utf16;
