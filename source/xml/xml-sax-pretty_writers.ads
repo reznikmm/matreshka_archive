@@ -220,7 +220,7 @@ private
      limited new XML.SAX.Writers.SAX_Writer with
    record
       Text        : League.Strings.Universal_String;
-      Nesting     : Natural;
+      Nesting     : Natural := 0;
       Version     : XML_Version := XML_1_0;
       Tag_Opened  : Boolean := False;
       Bank        : Banks.Map;
