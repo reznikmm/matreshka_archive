@@ -60,6 +60,7 @@ private
       Value   : League.Values.Value;
       Is_Null : aliased Sb2;
       Int     : aliased League.Values.Universal_Integer;
+      Float   : aliased League.Values.Universal_Float;
    end record;
 
    type Bound_Value_Access is access Bound_Value;
@@ -71,15 +72,30 @@ private
            League.Strings.Hash,
            League.Strings."=");
 
+   type Defined_Value is limited record
+      Define  : aliased OCI.Define;
+      Is_Null : aliased Sb2;
+      Int     : aliased League.Values.Universal_Integer;
+      Float   : aliased League.Values.Universal_Float;
+      String  : League.Strings.Universal_String;
+   end record;
+
+   type Defined_Value_Array is array (Positive range <>) of Defined_Value;
+
+   type Defined_Value_Array_Access is access Defined_Value_Array;
+
+
    type OCI_Query  (DB : not null access Databases.OCI_Database) is
      new Abstract_Query with record
-        Handle      : aliased Statement_Handle;
-        Is_Prepared : Boolean := False;
-        Is_Active   : Boolean := False;
-        Has_Row     : Boolean := False;
-        Skip_Step   : Boolean := False;
-        Error       : League.Strings.Universal_String;
-        Parameters  : Parameter_Maps.Map;
+        Handle       : aliased Statement_Handle;
+        Count        : aliased Ub4;
+        Is_Described : Boolean := False;
+        Is_Active    : Boolean := False;
+        Has_Row      : Boolean := False;
+        Skip_Step    : Boolean := False;
+        Error        : League.Strings.Universal_String;
+        Parameters   : Parameter_Maps.Map;
+        Columns      : Defined_Value_Array_Access;
    end record;
 
    overriding procedure Bind_Value

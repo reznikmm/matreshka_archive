@@ -28,7 +28,7 @@ begin
    begin
       Q.Prepare
        (+"CREATE TABLE point (x INTEGER, y CHARACTER VARYING (20), z FLOAT)");
-      Q.Execute;
+--      Q.Execute;
    end;
 
    declare
@@ -44,28 +44,30 @@ begin
    end;
 
    D.Commit;
-   return;
 
    declare
       Q : aliased SQL.Queries.SQL_Query := D.Query;
 
    begin
-      Q.Prepare (+"SELECT x, y, z FROM point");
+      Q.Prepare (+"SELECT y FROM point");
       Q.Execute;
 
       while Q.Next loop
          Ada.Wide_Wide_Text_IO.Put_Line
-          (Integer'Wide_Wide_Image
-            (League.Values.Integers.Get (Q.Value (1)))
-             & ":"
-             & League.Values.Get (Q.Value (2)).To_Wide_Wide_String
-             & ":"
-             & Float'Wide_Wide_Image
-                (League.Values.Floats.Get (Q.Value (3)))
-             & " (string length =>"
-             & Integer'Wide_Wide_Image
-                (League.Values.Get (Q.Value (2)).Length)
-             & ")");
+          (League.Values.Get (Q.Value (1)).To_Wide_Wide_String);
+
+--         Ada.Wide_Wide_Text_IO.Put_Line
+--          (Integer'Wide_Wide_Image
+--            (League.Values.Integers.Get (Q.Value (1)))
+--             & ":"
+--             & League.Values.Get (Q.Value (2)).To_Wide_Wide_String
+--             & ":"
+--             & Float'Wide_Wide_Image
+--                (League.Values.Floats.Get (Q.Value (3)))
+--             & " (string length =>"
+--             & Integer'Wide_Wide_Image
+--                (League.Values.Get (Q.Value (2)).Length)
+--             & ")");
       end loop;
    end;
 

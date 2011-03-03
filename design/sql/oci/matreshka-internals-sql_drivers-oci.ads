@@ -90,6 +90,8 @@ package Matreshka.Internals.SQL_Drivers.OCI is
    SQLT_CHR      : constant Data_Type := 1;
    SQLT_NUM      : constant Data_Type := 2;
    SQLT_INT      : constant Data_Type := 3;
+   SQLT_FLT      : constant Data_Type := 4;
+   SQLT_STR      : constant Data_Type := 5;
    SQLT_VNU      : constant Data_Type := 6;
    SQLT_VCS      : constant Data_Type := 9;
    SQLT_DAT      : constant Data_Type := 12;
@@ -157,6 +159,7 @@ package Matreshka.Internals.SQL_Drivers.OCI is
    Attr_Param_Count    : constant Ub4 := 18;
    Attr_Stmt_Type      : constant Ub4 := 24;
    Attr_Charset_Id     : constant Ub4 := 31;
+   Attr_Param_Type     : constant Ub4 := 123;
    Attr_NCharset_Id    : constant Ub4 := 262;
    Attr_Char_Used      : constant Ub4 := 285;
    Attr_Char_Size      : constant Ub4 := 286;

@@ -43,7 +43,13 @@
 ------------------------------------------------------------------------------
 
 with League.Strings.Internals;
+with Matreshka.Internals.Strings;
+with Matreshka.Internals.Utf16;
+with Matreshka.Internals.Strings.Handlers;
+with Matreshka.Internals.Strings.Configuration;
+with Matreshka.Internals.Strings.Fixups;
 with Ada.Unchecked_Deallocation;
+with Ada.Wide_Wide_Text_IO;
 
 package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
@@ -115,6 +121,21 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                Item.Is_Null'Access);
 
             Item.Int := League.Values.Get (Value);
+         elsif League.Values.Is_Abstract_Float (Value) then
+
+            Code := Bind_By_Name
+              (Self.Handle,
+               Item.Bind'Access,
+               Self.DB.Error,
+               League.Strings.Internals.Internal (Name).Value,
+               Ub4 (League.Strings.Internals.Internal (Name).Unused) * 2,
+               Item.Float'Address,
+               Item.Float'Size / 8,
+               SQLT_FLT,
+               Item.Is_Null'Access);
+
+            Item.Float := League.Values.Get (Value);
+
          else
             Free (Item);
             return;
@@ -125,6 +146,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
             return;
          end if;
 
+         Item.Value := Value;
          Item.Is_Null := -Boolean'Pos (League.Values.Is_Empty (Value));
       end Bind;
 
@@ -152,6 +174,9 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
    overriding function Execute
      (Self : not null access OCI_Query) return Boolean
    is
+      procedure Free is new Ada.Unchecked_Deallocation
+        (Defined_Value_Array, Defined_Value_Array_Access);
+
       Code : Error_Code;
    begin
       if Self.Handle = null then
@@ -177,6 +202,110 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
       Self.Is_Active := True;
 
+      if Self.Has_Row and not Self.Is_Described then
+         Code := Attr_Get
+           (Target      => Self.Handle,
+            Target_Type => HT_Statament,
+            Buffer      => Self.Count'Address,
+            Length      => null,
+            Attr        => Attr_Param_Count,
+            Error       => Self.DB.Error);
+
+         if Databases.Check_Error (Self.DB, Code) then
+            return False;
+         end if;
+
+         if Self.Columns /= null and then Self.Columns'Length < Self.Count then
+            Free (Self.Columns);
+         end if;
+
+         if Self.Columns = null then
+            Self.Columns :=
+              new Defined_Value_Array (1 .. Positive (Self.Count));
+         end if;
+
+         for J in 1 .. Positive (Self.Count) loop
+            declare
+               Param       : aliased Parameter;
+               Column_Type : aliased Data_Type;
+               Size        : aliased Ub2;
+            begin
+               Code := Param_Get
+                 (Self.Handle,
+                  HT_Statament,
+                  Self.DB.Error,
+                  Param'Access,
+                  Ub4 (J));
+
+               if Databases.Check_Error (Self.DB, Code) then
+                  return False;
+               end if;
+
+               Code := Attr_Get
+                 (Param,
+                  DT_Parameter,
+                  Column_Type'Address,
+                  null,
+                  Attr_Data_Type,
+                  Self.DB.Error);
+
+Ada.Wide_Wide_Text_IO.Put_Line ("type=" & Data_Type'Wide_Wide_Image (Column_Type));
+               if Databases.Check_Error (Self.DB, Code) then
+                  return False;
+               end if;
+
+               Code := Attr_Get
+                 (Param,
+                  DT_Parameter,
+                  Size'Address,
+                  null,
+                  Attr_Data_Size,
+                  Self.DB.Error);
+
+Ada.Wide_Wide_Text_IO.Put_Line ("size=" & Ub2'Wide_Wide_Image (Size));
+
+               if Databases.Check_Error (Self.DB, Code) then
+                  return False;
+               end if;
+
+               Code := Descriptor_Free (Param, DT_Parameter);
+
+               if Databases.Check_Error (Self.DB, Code) then
+                  return False;
+               end if;
+
+               if Column_Type = SQLT_CHR then
+                  declare
+                     Ptr : Matreshka.Internals.Strings.Shared_String_Access :=
+                       Matreshka.Internals.Strings.Allocate
+                         (Size => Utf16.Utf16_String_Index (Size + 2));
+
+                     String : League.Strings.Universal_String;
+                  begin
+                     Self.Columns (J).String :=
+                       League.Strings.Internals.Wrap (Ptr);
+
+                     Code := Define_By_Pos
+                       (Stmt         => Self.Handle,
+                        Target       => Self.Columns (J).Define'Access,
+                        Error        => Self.DB.Error,
+                        Position     => Ub4 (J),
+                        Value        => Ptr.Value (0)'Address,
+                        Value_Length => Ptr.Value'Length * 2,
+                        Value_Type   => SQLT_STR,
+                        Indicator    => Self.Columns (J).Is_Null'Access);
+
+                     if Databases.Check_Error (Self.DB, Code) then
+                        return False;
+                     end if;
+                  end;
+               end if;
+            end;
+         end loop;
+
+         Self.Is_Described := True;
+      end if;
+
       return True;
    end Execute;
 
@@ -199,17 +328,50 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
       return Self.Is_Active;
    end Is_Active;
 
+   ----------
+   -- Next --
+   ----------
+
    overriding function Next
-    (Self : not null access OCI_Query) return Boolean is
+     (Self : not null access OCI_Query)
+     return Boolean
+   is
+      Code : Error_Code;
    begin
-      if not Self.Is_Active then
+      if not Self.Is_Active or not Self.Has_Row then
          --  Returns immidiatly when statement is not active.
 
          return False;
       end if;
 
-      return False;
-   end ;
+      Code := Stmt_Fetch (Self.Handle, Self.DB.Error);
+
+      if Databases.Check_Error (Self.DB, Code) then
+         return False;
+      end if;
+
+      Self.Has_Row := Code /= Call_No_Data;
+
+      if Self.Has_Row then
+         for J in 1 .. Positive (Self.Count) loop
+            declare
+               use Matreshka.Internals.Strings.Configuration;
+
+               use type Matreshka.Internals.Utf16.Utf16_String_Index;
+               Ok  : Boolean;
+               Ptr : Matreshka.Internals.Strings.Shared_String_Access :=
+                 League.Strings.Internals.Internal (Self.Columns (J).String);
+            begin
+               Matreshka.Internals.Strings.Fixups.Validate_And_Fixup
+                 (Ptr, Ok);
+
+               Self.Columns (J).String := League.Strings.Internals.Create (Ptr);
+            end;
+         end loop;
+      end if;
+
+      return Self.Has_Row;
+   end Next;
 
    -------------
    -- Prepare --
@@ -219,6 +381,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
     (Self  : not null access OCI_Query;
      Query : League.Strings.Universal_String) return Boolean
    is
+      Select_Statement : constant := 1;
       Code : Error_Code;
       Kind : aliased Ub2;
    begin
@@ -253,7 +416,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
          return False;
       end if;
 
-      Self.Has_Row := Kind = 1;
+      Self.Has_Row := Kind = Select_Statement;
 
       Self.Is_Active := False;
       return True;
@@ -261,9 +424,17 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
    overriding function Value
     (Self  : not null access OCI_Query;
-     Index : Positive) return League.Values.Value is
+     Index : Positive) return League.Values.Value
+  is
+      Value : League.Values.Value;
    begin
-      return V : League.Values.Value;
-   end ;
+      League.Values.Set_Tag
+        (Value,
+         League.Values.Universal_String_Tag);
+
+      League.Values.Set (Value, Self.Columns (Index).String);
+
+      return Value;
+   end Value;
 
 end Matreshka.Internals.SQL_Drivers.OCI.Queries;
