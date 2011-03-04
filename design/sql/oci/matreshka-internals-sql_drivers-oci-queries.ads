@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 
 with Matreshka.Internals.SQL_Drivers.OCI.Databases;
+with Matreshka.Internals.Strings;
 with Ada.Containers.Hashed_Maps;
 with League.Strings.Hash;
 
@@ -72,12 +73,16 @@ private
            League.Strings.Hash,
            League.Strings."=");
 
+   type Column_Types is (String_Column, Integer_Column, Decimal_Column);
+
    type Defined_Value is limited record
+      Column_Type : Column_Types;
       Define  : aliased OCI.Define;
       Is_Null : aliased Sb2;
+      Size    : Utf16.Utf16_String_Index;
+      String  : Matreshka.Internals.Strings.Shared_String_Access;
       Int     : aliased League.Values.Universal_Integer;
       Float   : aliased League.Values.Universal_Float;
-      String  : League.Strings.Universal_String;
    end record;
 
    type Defined_Value_Array is array (Positive range <>) of Defined_Value;

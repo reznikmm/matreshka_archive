@@ -229,6 +229,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                Param       : aliased Parameter;
                Column_Type : aliased Data_Type;
                Size        : aliased Ub2;
+               Scale       : aliased Sb1;
             begin
                Code := Param_Get
                  (Self.Handle,
@@ -254,36 +255,30 @@ Ada.Wide_Wide_Text_IO.Put_Line ("type=" & Data_Type'Wide_Wide_Image (Column_Type
                   return False;
                end if;
 
-               Code := Attr_Get
-                 (Param,
-                  DT_Parameter,
-                  Size'Address,
-                  null,
-                  Attr_Data_Size,
-                  Self.DB.Error);
+               if Column_Type = SQLT_CHR or Column_Type = SQLT_AFC then
+                  Code := Attr_Get
+                    (Param,
+                     DT_Parameter,
+                     Size'Address,
+                     null,
+                     Attr_Data_Size,
+                     Self.DB.Error);
 
 Ada.Wide_Wide_Text_IO.Put_Line ("size=" & Ub2'Wide_Wide_Image (Size));
 
-               if Databases.Check_Error (Self.DB, Code) then
-                  return False;
-               end if;
+                  if Databases.Check_Error (Self.DB, Code) then
+                     return False;
+                  end if;
 
-               Code := Descriptor_Free (Param, DT_Parameter);
+                  Self.Columns (J).Size := Utf16.Utf16_String_Index (Size + 1);
 
-               if Databases.Check_Error (Self.DB, Code) then
-                  return False;
-               end if;
-
-               if Column_Type = SQLT_CHR then
                   declare
                      Ptr : Matreshka.Internals.Strings.Shared_String_Access :=
                        Matreshka.Internals.Strings.Allocate
-                         (Size => Utf16.Utf16_String_Index (Size + 2));
-
-                     String : League.Strings.Universal_String;
+                         (Self.Columns (J).Size);
                   begin
-                     Self.Columns (J).String :=
-                       League.Strings.Internals.Wrap (Ptr);
+                     Self.Columns (J).Column_Type := String_Column;
+                     Self.Columns (J).String      := Ptr;
 
                      Code := Define_By_Pos
                        (Stmt         => Self.Handle,
@@ -299,6 +294,64 @@ Ada.Wide_Wide_Text_IO.Put_Line ("size=" & Ub2'Wide_Wide_Image (Size));
                         return False;
                      end if;
                   end;
+               elsif Column_Type = SQLT_NUM or
+                 Column_Type = SQLT_IBFLOAT or
+                 Column_Type = SQLT_IBDOUBLE
+               then
+                  Code := Attr_Get
+                    (Param,
+                     DT_Parameter,
+                     Scale'Address,
+                     null,
+                     Attr_Data_Scale,
+                     Self.DB.Error);
+
+Ada.Wide_Wide_Text_IO.Put_Line ("scale=" & Sb1'Wide_Wide_Image (Scale));
+                  if Databases.Check_Error (Self.DB, Code) then
+                     return False;
+                  end if;
+
+                  if Column_Type = SQLT_NUM and Scale = 0 then
+                     Self.Columns (J).Column_Type := Integer_Column;
+
+                     Code := Define_By_Pos
+                       (Stmt         => Self.Handle,
+                        Target       => Self.Columns (J).Define'Access,
+                        Error        => Self.DB.Error,
+                        Position     => Ub4 (J),
+                        Value        => Self.Columns (J).Int'Address,
+                        Value_Length => Self.Columns (J).Int'Size / 8,
+                        Value_Type   => SQLT_INT,
+                        Indicator    => Self.Columns (J).Is_Null'Access);
+
+                     if Databases.Check_Error (Self.DB, Code) then
+                        return False;
+                     end if;
+                  else
+                     Self.Columns (J).Column_Type := Decimal_Column;
+
+                     Code := Define_By_Pos
+                       (Stmt         => Self.Handle,
+                        Target       => Self.Columns (J).Define'Access,
+                        Error        => Self.DB.Error,
+                        Position     => Ub4 (J),
+                        Value        => Self.Columns (J).Float'Address,
+                        Value_Length => Self.Columns (J).Float'Size / 8,
+                        Value_Type   => SQLT_FLT,
+                        Indicator    => Self.Columns (J).Is_Null'Access);
+
+                     if Databases.Check_Error (Self.DB, Code) then
+                        return False;
+                     end if;
+                  end if;
+               else
+                  raise Constraint_Error with "Unsupported type";
+               end if;
+
+               Code := Descriptor_Free (Param, DT_Parameter);
+
+               if Databases.Check_Error (Self.DB, Code) then
+                  return False;
                end if;
             end;
          end loop;
@@ -336,6 +389,7 @@ Ada.Wide_Wide_Text_IO.Put_Line ("size=" & Ub2'Wide_Wide_Image (Size));
      (Self : not null access OCI_Query)
      return Boolean
    is
+      use Matreshka.Internals.Strings;
       Code : Error_Code;
    begin
       if not Self.Is_Active or not Self.Has_Row then
@@ -343,6 +397,31 @@ Ada.Wide_Wide_Text_IO.Put_Line ("size=" & Ub2'Wide_Wide_Image (Size));
 
          return False;
       end if;
+
+      --  Rebind used strings columns
+      for J in 1 .. Positive (Self.Count) loop
+         if Self.Columns (J).Column_Type = String_Column and then
+           not Can_Be_Reused (Self.Columns (J).String, Self.Columns (J).Size)
+         then
+            Dereference (Self.Columns (J).String);
+            Self.Columns (J).String := Allocate (Self.Columns (J).Size);
+
+            Code := Define_By_Pos
+              (Stmt         => Self.Handle,
+               Target       => Self.Columns (J).Define'Access,
+               Error        => Self.DB.Error,
+               Position     => Ub4 (J),
+               Value        => Self.Columns (J).String.Value (0)'Address,
+               Value_Length => Self.Columns (J).String.Value'Length * 2,
+               Value_Type   => SQLT_STR,
+               Indicator    => Self.Columns (J).Is_Null'Access);
+
+            if Databases.Check_Error (Self.DB, Code) then
+               return False;
+            end if;
+
+         end if;
+      end loop;
 
       Code := Stmt_Fetch (Self.Handle, Self.DB.Error);
 
@@ -354,19 +433,18 @@ Ada.Wide_Wide_Text_IO.Put_Line ("size=" & Ub2'Wide_Wide_Image (Size));
 
       if Self.Has_Row then
          for J in 1 .. Positive (Self.Count) loop
-            declare
-               use Matreshka.Internals.Strings.Configuration;
+            if Self.Columns (J).Column_Type = String_Column then
+               declare
+                  use type Sb2;
+                  Ok  : Boolean;
+               begin
+                  Fixups.Validate_And_Fixup (Self.Columns (J).String, Ok);
 
-               use type Matreshka.Internals.Utf16.Utf16_String_Index;
-               Ok  : Boolean;
-               Ptr : Matreshka.Internals.Strings.Shared_String_Access :=
-                 League.Strings.Internals.Internal (Self.Columns (J).String);
-            begin
-               Matreshka.Internals.Strings.Fixups.Validate_And_Fixup
-                 (Ptr, Ok);
-
-               Self.Columns (J).String := League.Strings.Internals.Create (Ptr);
-            end;
+                  if not Ok then
+                     Self.Columns (J).Is_Null := -1;
+                  end if;
+               end;
+            end if;
          end loop;
       end if;
 
@@ -425,14 +503,30 @@ Ada.Wide_Wide_Text_IO.Put_Line ("size=" & Ub2'Wide_Wide_Image (Size));
    overriding function Value
     (Self  : not null access OCI_Query;
      Index : Positive) return League.Values.Value
-  is
+   is
+      use type Sb2;
       Value : League.Values.Value;
    begin
-      League.Values.Set_Tag
-        (Value,
-         League.Values.Universal_String_Tag);
+      if Self.Columns (Index).Is_Null /= 0 then
+         return Value;
+      elsif Self.Columns (Index).Column_Type = String_Column then
+         League.Values.Set_Tag
+           (Value, League.Values.Universal_String_Tag);
 
-      League.Values.Set (Value, Self.Columns (Index).String);
+         League.Values.Set
+           (Value,
+            League.Strings.Internals.Create (Self.Columns (Index).String));
+      elsif Self.Columns (Index).Column_Type = Integer_Column then
+         League.Values.Set_Tag
+           (Value, League.Values.Universal_Integer_Tag);
+
+         League.Values.Set (Value, Self.Columns (Index).Int);
+      elsif Self.Columns (Index).Column_Type = Decimal_Column then
+         League.Values.Set_Tag
+           (Value, League.Values.Universal_Float_Tag);
+
+         League.Values.Set (Value, Self.Columns (Index).Float);
+      end if;
 
       return Value;
    end Value;
