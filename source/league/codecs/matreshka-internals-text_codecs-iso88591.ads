@@ -41,12 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Decoder of ISO-8859-1.
+--  Decoder and encoder of ISO-8859-1.
 ------------------------------------------------------------------------------
 
 private package Matreshka.Internals.Text_Codecs.ISO88591 is
 
    pragma Preelaborate;
+
+   ----------------------
+   -- ISO88591_Decoder --
+   ----------------------
 
    type ISO88591_Decoder is new Abstract_Decoder with private;
 
@@ -61,8 +65,23 @@ private package Matreshka.Internals.Text_Codecs.ISO88591 is
 
    function Decoder (Mode : Decoder_Mode) return Abstract_Decoder'Class;
 
+   ----------------------
+   -- ISO88591_Encoder --
+   ----------------------
+
+   type ISO88591_Encoder is new Abstract_Encoder with private;
+
+   overriding procedure Encode
+    (Self   : in out ISO88591_Encoder;
+     String : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Buffer : out MISEV.Shared_Stream_Element_Vector_Access);
+
+   function Encoder (Dummy : Boolean) return Abstract_Encoder'Class;
+
 private
 
    type ISO88591_Decoder is new Abstract_Decoder with null record;
+
+   type ISO88591_Encoder is new Abstract_Encoder with null record;
 
 end Matreshka.Internals.Text_Codecs.ISO88591;

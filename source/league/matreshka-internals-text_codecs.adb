@@ -75,7 +75,8 @@ package body Matreshka.Internals.Text_Codecs is
          others          => null);
 
    Encoders : constant array (Character_Set) of Encoder_Factory
-     := (MIB_UTF8        => UTF8.Encoder'Access,
+     := (MIB_ISO88591    => ISO88591.Encoder'Access,
+         MIB_UTF8        => UTF8.Encoder'Access,
          MIB_WINDOWS1251 => Windows1251.Encoder'Access,
          others          => null);
 

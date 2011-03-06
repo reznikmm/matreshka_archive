@@ -42,11 +42,13 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Strings.Configuration;
+with Matreshka.Internals.Unicode.Characters.Latin;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Text_Codecs.ISO88591 is
 
    use Matreshka.Internals.Strings.Configuration;
+   use Matreshka.Internals.Unicode.Characters.Latin;
    use type Matreshka.Internals.Unicode.Code_Unit_32;
    use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
@@ -97,6 +99,63 @@ package body Matreshka.Internals.Text_Codecs.ISO88591 is
                 Unchecked_Append => Unchecked_Append_XML11'Access);
       end case;
    end Decoder;
+
+   ------------
+   -- Encode --
+   ------------
+
+   overriding procedure Encode
+    (Self   : in out ISO88591_Encoder;
+     String : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Buffer : out MISEV.Shared_Stream_Element_Vector_Access)
+   is
+      pragma Unreferenced (Self);
+
+      use Matreshka.Internals.Stream_Element_Vectors;
+      use Ada.Streams;
+
+      Code     : Matreshka.Internals.Unicode.Code_Point;
+      Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+      Element  : Ada.Streams.Stream_Element;
+
+   begin
+      null;
+      if String.Unused = 0 then
+         Buffer := Empty_Shared_Stream_Element_Vector'Access;
+
+      else
+         Buffer :=
+           Allocate (Ada.Streams.Stream_Element_Offset (String.Unused));
+
+         while Position < String.Unused loop
+            Matreshka.Internals.Utf16.Unchecked_Next
+             (String.Value, Position, Code);
+
+            if Code in 16#0000# .. 16#00FF# then
+               --  Direct mapping.
+
+               Element := Stream_Element (Code);
+
+            else
+               Element := Question_Mark;
+            end if;
+
+            Buffer.Value (Buffer.Length) := Element;
+            Buffer.Length := Buffer.Length + 1;
+         end loop;
+      end if;
+   end Encode;
+
+   -------------
+   -- Encoder --
+   -------------
+
+   function Encoder (Dummy : Boolean) return Abstract_Encoder'Class is
+      pragma Unreferenced (Dummy);
+
+   begin
+      return ISO88591_Encoder'(null record);
+   end Encoder;
 
    --------------
    -- Is_Error --
