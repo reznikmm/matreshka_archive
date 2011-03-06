@@ -57,6 +57,12 @@ package League.Text_Codecs is
 
    function Decode
     (Self : Text_Codec;
+     Data : League.Stream_Element_Vectors.Stream_Element_Vector)
+       return League.Strings.Universal_String;
+   --  Decodes data. Raises Constraint_Error when data is mailformed.
+
+   function Decode
+    (Self : Text_Codec;
      Data : Ada.Streams.Stream_Element_Array)
        return League.Strings.Universal_String;
    --  Decodes data. Raises Constraint_Error when data is mailformed.

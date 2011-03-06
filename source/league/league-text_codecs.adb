@@ -90,6 +90,31 @@ package body League.Text_Codecs is
 
    function Decode
     (Self : Text_Codec;
+     Data : League.Stream_Element_Vectors.Stream_Element_Vector)
+       return League.Strings.Universal_String
+   is
+      State  : Abstract_Decoder'Class := Self.Decoder (Raw);
+      Result : Matreshka.Internals.Strings.Shared_String_Access;
+
+   begin
+      State.Decode
+       (League.Stream_Element_Vectors.Internals.Internal (Data).Value, Result);
+
+      if State.Is_Mailformed then
+         Matreshka.Internals.Strings.Dereference (Result);
+
+         raise Constraint_Error with "Mailformed data";
+      end if;
+
+      return League.Strings.Internals.Wrap (Result);
+   end Decode;
+
+   ------------
+   -- Decode --
+   ------------
+
+   function Decode
+    (Self : Text_Codec;
      Data : Ada.Streams.Stream_Element_Array)
        return League.Strings.Universal_String
    is
