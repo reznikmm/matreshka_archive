@@ -378,8 +378,10 @@ package body Matreshka.Internals.Utf16 is
       pragma Suppress (Index_Check);
       --  Assertion checks range.
 
+      Code : constant Code_Point := Code_Point (Item (Position));
+
    begin
-      if (Item (Position) and Surrogate_Kind_Mask) = Masked_High_Surrogate then
+      if (Code and Surrogate_Kind_Mask) = Masked_High_Surrogate then
          if (Item (Position + 1) and Surrogate_Kind_Mask)
                = Masked_Low_Surrogate
          then
@@ -389,6 +391,9 @@ package body Matreshka.Internals.Utf16 is
          else
             Valid := False;
          end if;
+
+      elsif (Code and Surrogate_Kind_Mask) = Masked_Low_Surrogate then
+         Valid := False;
 
       else
          Valid    := True;
@@ -433,6 +438,9 @@ package body Matreshka.Internals.Utf16 is
          else
             Valid := False;
          end if;
+
+      elsif (Code and Surrogate_Kind_Mask) = Masked_Low_Surrogate then
+         Valid := False;
 
       else
          Valid    := True;
