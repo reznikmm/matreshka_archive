@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               XML Processor                              --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,31 +41,89 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common";
-with "matreshka_config";
-with "matreshka_league";
+--  Most common stuff to share between all modules.
+------------------------------------------------------------------------------
+with "matreshka_config.gpr";
 
-library project Matreshka_FastCGI is
+abstract project Matreshka_Common is
 
-   Library_Name := "matreshka-fastcgi" & Matreshka_Config.RTL_Version_Suffix;
+   Common_Ada_Switches :=
+    ("-g",
+     "-gnat05");
+   --  Common switches to be used for every unit.
 
-   for Source_Dirs use ("../source/web/fastcgi");
-   for Object_Dir use "../.objs";
-   for Library_Kind use "dynamic";
-   for Library_Name use Library_Name;
-   for Library_Dir use "../.libs";
-   for Library_Version use "lib" & Library_Name & ".so." & Matreshka_Config.Version;
+   Optimization_Ada_Switches :=
+    ("-O2",
+     "-gnatn");
+   --  Optimization switches. Optimization is not used for several units, thus
+   --  optimization switches are declared by the separate variable.
 
-   -------------
-   -- Builder --
-   -------------
+   Platform_Ada_Switches := ();
+   --  Set of platform specific switches. Needed for example on x86 to upgrade
+   --  default instructions set to i486 which includes atomic operations.
 
-   package Builder renames Matreshka_Common.Builder;
+   Debug_Ada_Switches := ();
+   --  Switches to be used in debug mode.
+
+   case Matreshka_Config.Architecture is
+      when "portable_32_be" =>
+         null;
+
+      when "portable_32_le" =>
+         null;
+
+      when "portable_64_be" =>
+         null;
+
+      when "portable_64_le" =>
+         null;
+
+      when "x86" =>
+         Platform_Ada_Switches := ("-march=i686");
+
+      when "x86_64" =>
+         null;
+   end case;
+
+   case Matreshka_Config.Build is
+      when "RELEASE" =>
+         null;
+
+      when "DEBUG" =>
+         Debug_Ada_Switches :=
+          ("-gnatwa", "-gnatyaAbcdefhiIkmnoOprsStux", "-gnato", "-fstack-check");
+   end case;
 
    --------------
    -- Compiler --
    --------------
 
-   package Compiler renames Matreshka_Common.Compiler;
+   package Compiler is
 
-end Matreshka_FastCGI;
+      for Default_Switches ("Ada") use
+        Common_Ada_Switches
+          & Platform_Ada_Switches
+          & Optimization_Ada_Switches
+          & Debug_Ada_Switches;
+
+   end Compiler;
+
+   -------------
+   -- Builder --
+   -------------
+
+   package Builder is
+
+      case Matreshka_Config.Build is
+         when "RELEASE" =>
+            for Global_Configuration_Pragmas
+              use "matreshka_league__release.adc";
+
+         when "DEBUG" =>
+            for Global_Configuration_Pragmas
+              use "matreshka_league__debug.adc";
+      end case;
+
+   end Builder;
+
+end Matreshka_Common;
