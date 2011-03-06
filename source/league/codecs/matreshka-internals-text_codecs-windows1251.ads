@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  private with Matreshka.Internals.Unicode;
 
 private package Matreshka.Internals.Text_Codecs.Windows1251 is
 

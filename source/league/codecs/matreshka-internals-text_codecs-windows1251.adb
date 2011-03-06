@@ -149,7 +149,7 @@ package body Matreshka.Internals.Text_Codecs.Windows1251 is
              16#00B7# => 16#B7#,   --  MIDDLE DOT
              16#00BB# => 16#BB#,   --  RIGHT-POINTING DOUBLE ANGLE QUOTATION
                                    --  MARK
-             others   => Quotation_Mark);
+             others   => Question_Mark);
 
    Encode_Table_04a : constant
      array (Matreshka.Internals.Unicode.Code_Point range 16#0400# .. 16#040F#)
@@ -169,7 +169,7 @@ package body Matreshka.Internals.Text_Codecs.Windows1251 is
              16#040C# => 16#8D#,   --  CYRILLIC CAPITAL LETTER KJE
              16#040E# => 16#A1#,   --  CYRILLIC CAPITAL LETTER SHORT U
              16#040F# => 16#8F#,   --  CYRILLIC CAPITAL LETTER DZHE
-             others   => Quotation_Mark);
+             others   => Question_Mark);
 
    Encode_Table_04b : constant
      array (Matreshka.Internals.Unicode.Code_Point range 16#0450# .. 16#049F#)
@@ -191,7 +191,7 @@ package body Matreshka.Internals.Text_Codecs.Windows1251 is
              16#045F# => 16#9F#,   --  CYRILLIC SMALL LETTER DZHE
              16#0490# => 16#A5#,   --  CYRILLIC CAPITAL LETTER GHE WITH UPTURN
              16#0491# => 16#B4#,   --  CYRILLIC SMALL LETTER GHE WITH UPTURN
-             others   => Quotation_Mark);
+             others   => Question_Mark);
 
    Encode_Table_20 : constant
      array (Matreshka.Internals.Unicode.Code_Point range 16#2010# .. 16#203F#)
@@ -213,7 +213,7 @@ package body Matreshka.Internals.Text_Codecs.Windows1251 is
                                    --  MARK
              16#203A# => 16#9B#,   --  SINGLE RIGHT-POINTING ANGLE QUOTATION
                                    --  MARK
-             others   => Quotation_Mark);
+             others   => Question_Mark);
 
    -------------------
    -- Decode_Append --
@@ -301,7 +301,6 @@ package body Matreshka.Internals.Text_Codecs.Windows1251 is
       Element  : Ada.Streams.Stream_Element;
 
    begin
-      null;
       if String.Unused = 0 then
          Buffer := Empty_Shared_Stream_Element_Vector'Access;
 
@@ -359,8 +358,7 @@ package body Matreshka.Internals.Text_Codecs.Windows1251 is
                Element := 16#99#;
 
             else
-               Buffer.Value (Buffer.Length) := Quotation_Mark;
-               Buffer.Length := Buffer.Length + 1;
+               Element := Question_Mark;
             end if;
 
             Buffer.Value (Buffer.Length) := Element;
