@@ -45,7 +45,7 @@
 with Ada.Characters.Conversions;
 
 with League.Strings.Internals;
-with Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities;
+with Matreshka.Internals.Strings.C;
 with Matreshka.Internals.SQL_Drivers.OCI.Queries;
 
 with Ada.Wide_Wide_Text_IO;
@@ -106,8 +106,8 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
                                   H_Type      => HT_Error);
 
                Self.Error_Text :=
-                 Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities.
-                   To_Universal_String (Buffer (0)'Unchecked_Access);
+                 Matreshka.Internals.Strings.C.To_Valid_Universal_String
+                  (Buffer (0)'Unchecked_Access);
 Ada.Wide_Wide_Text_IO.Put_Line (Self.Error_Text.To_Wide_Wide_String);
 
                return True;
