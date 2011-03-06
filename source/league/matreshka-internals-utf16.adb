@@ -372,9 +372,7 @@ package body Matreshka.Internals.Utf16 is
                       not in High_Surrogate_First .. High_Surrogate_Last)
          or (Position + 1 <= Item'Last
                and then Item (Position)
-                          in High_Surrogate_First .. High_Surrogate_Last
-               and then Item (Position + 1)
-                          in Low_Surrogate_First .. Low_Surrogate_Last));
+                          in High_Surrogate_First .. High_Surrogate_Last));
       pragma Suppress (Index_Check);
       --  Assertion checks range.
 
@@ -417,9 +415,7 @@ package body Matreshka.Internals.Utf16 is
                       not in High_Surrogate_First .. High_Surrogate_Last)
          or (Position + 1 <= Item'Last
                and then Item (Position)
-                          in High_Surrogate_First .. High_Surrogate_Last
-               and then Item (Position + 1)
-                          in Low_Surrogate_First .. Low_Surrogate_Last));
+                          in High_Surrogate_First .. High_Surrogate_Last));
       pragma Suppress (Index_Check);
       --  Assertion checks range.
 
