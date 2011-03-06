@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 with Interfaces.C.Pointers;
 
+with Matreshka.Internals.Strings.C;
 with Matreshka.Internals.Utf16;
 with Matreshka.Internals.Windows;
 
@@ -53,6 +54,7 @@ procedure Initialize_Arguments_Environment is
 
    use Matreshka.Internals.Windows;
    use type Interfaces.C.size_t;
+   use type Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
    use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
 
    type LPWSTR_Array is
@@ -100,7 +102,9 @@ begin
 
       begin
          for J in Argv'First + 1 .. Argv'Last loop
-            Args.Append (To_Universal_String (Argv (J)));
+            Args.Append
+             (Matreshka.Internals.Strings.C.To_Valid_Universal_String
+               (Argv (J)));
          end loop;
 
          LocalFree (Win_Argv);
@@ -113,7 +117,8 @@ begin
       while Envp.all /= 0 loop
          declare
             Pair  : constant League.Strings.Universal_String
-              := To_Universal_String (Envp);
+              := Matreshka.Internals.Strings.C.To_Valid_Universal_String
+                  (Envp);
             Index : constant Natural
               := Pair.Index (League.Strings.To_Universal_Character ('='));
 

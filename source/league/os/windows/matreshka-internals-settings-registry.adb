@@ -45,6 +45,7 @@ with Ada.Unchecked_Conversion;
 with Interfaces.C;
 
 with League.Strings.Internals;
+with Matreshka.Internals.Strings.C;
 with Matreshka.Internals.Utf16;
 with Matreshka.Internals.Windows;
 
@@ -589,7 +590,7 @@ package body Matreshka.Internals.Settings.Registry is
                   V (V'Last) := 0;
                   League.Values.Set
                    (Value,
-                    Matreshka.Internals.Windows.To_Universal_String
+                    Matreshka.Internals.Strings.C.To_Valid_Universal_String
                      (V (0)'Unchecked_Access));
                end if;
             end;

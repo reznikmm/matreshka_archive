@@ -45,15 +45,14 @@
 ------------------------------------------------------------------------------
 with Interfaces.C.Pointers;
 
-with League.Strings;
+with Matreshka.Internals.Strings.C;
 with Matreshka.Internals.Utf16;
 
 package Matreshka.Internals.Windows is
 
    pragma Preelaborate;
 
-   type LPWSTR is access all Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPWSTR);
+   subtype LPWSTR is Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
 
    subtype LPWCH is LPWSTR;
 
@@ -62,10 +61,6 @@ package Matreshka.Internals.Windows is
 
    function wcslen (str : LPWSTR) return Interfaces.C.size_t;
    pragma Import (C, wcslen);
-
-   function To_Universal_String
-     (Item : LPWSTR) return League.Strings.Universal_String;
-   --  Converts Windows Unicode string from into Universal_String.
 
    -----------------------------------------------------------
    --  Used in command line/environment conversion package  --

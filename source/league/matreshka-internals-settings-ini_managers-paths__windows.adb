@@ -46,6 +46,7 @@
 with Interfaces.C;
 with System;
 
+with Matreshka.Internals.Strings.C;
 with Matreshka.Internals.Utf16;
 with Matreshka.Internals.Windows;
 
@@ -93,7 +94,9 @@ package body Paths is
          raise Program_Error;
       end if;
 
-      return To_Universal_String (Buffer (1)'Unchecked_Access);
+      return
+        Matreshka.Internals.Strings.C.To_Valid_Universal_String
+         (Buffer (1)'Unchecked_Access);
    end Get_Special_Folder;
 
    ------------------
