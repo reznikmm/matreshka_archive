@@ -122,4 +122,119 @@ package body Matreshka.Internals.Strings.C is
       return League.Strings.Internals.Wrap (Destination);
    end To_Valid_Universal_String;
 
+   ------------------------
+   -- Validate_And_Fixup --
+   ------------------------
+
+   procedure Validate_And_Fixup
+    (String : in out Shared_String_Access;
+     Valid  : out Boolean)
+   is
+      use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
+
+      pragma Assert (String /= null);
+      pragma Suppress (Access_Check);
+
+   begin
+      String.Unused := 0;
+      String.Length := 0;
+      Valid         := True;
+
+      --  Look for null terminator and validate data. Note, last code unit is
+      --  not checked (it assumed to be null if reached), but this allows to
+      --  suppress range check for surrogate pair. Check for unterminated
+      --  string which ends by surrogate pair is done after loop below.
+
+      while Valid and String.Unused < String.Size loop
+         exit when String.Value (String.Unused) = 0;
+
+         Matreshka.Internals.Utf16.Unchecked_Validate_Next
+          (String.Value, String.Unused, Valid);
+         String.Length := String.Length + 1;
+      end loop;
+
+      --  Check whether string is properly terminated.
+
+      if String.Unused > String.Size then
+         --  String is not terminated properly and last character is
+         --  represented by surrogate pair.
+
+         String.Length := String.Length - 1;
+         String.Unused := String.Unused - 2;
+         Valid         := False;
+
+      elsif String.Value (String.Unused) /= 0 then
+         --  This covers two cases: invalid surrogate pair inside the string
+         --  and incorrectly terminated string. In both cases data it truncated
+         --  to pointed position (so, invalid surrogate pair or last code unit
+         --  is filled by terminator).
+
+         Valid := False;
+      end if;
+
+      --  Check whether result string is empty or not.
+
+      if String.Unused = 0 then
+         --  Dereference existing string and replace it by shared empty object.
+
+         Dereference (String);
+         String := Shared_Empty'Access;
+
+      else
+         --  Fill null terminator for not empty string.
+
+         String_Handler.Fill_Null_Terminator (String);
+      end if;
+   end Validate_And_Fixup;
+
+   ------------------------
+   -- Validate_And_Fixup --
+   ------------------------
+
+   procedure Validate_And_Fixup
+    (String : in out Shared_String_Access;
+     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Valid  : out Boolean)
+   is
+      pragma Assert (String.Size < Size);
+      pragma Assert (String /= null);
+      pragma Suppress (Access_Check);
+
+   begin
+      --  Fill null terminator, this allows to suppress additional checks for
+      --  invalid surrogate pair at the end of string, because ordinary check
+      --  fails on null terminator.
+
+      String.Unused := Size;
+      String_Handler.Fill_Null_Terminator (String);
+
+      --  Reset state.
+
+      String.Unused := 0;
+      String.Length := 0;
+      Valid         := True;
+
+      --  Validate data.
+
+      while Valid and String.Unused < Size loop
+         Matreshka.Internals.Utf16.Unchecked_Validate_Next
+          (String.Value, String.Unused, Valid);
+         String.Length := String.Length + 1;
+      end loop;
+
+      --  Check whether result string is empty or not.
+
+      if String.Unused = 0 then
+         --  Dereference existing string and replace it by shared empty object.
+
+         Dereference (String);
+         String := Shared_Empty'Access;
+
+      else
+         --  Fill null terminator for not empty string.
+
+         String_Handler.Fill_Null_Terminator (String);
+      end if;
+   end Validate_And_Fixup;
+
 end Matreshka.Internals.Strings.C;

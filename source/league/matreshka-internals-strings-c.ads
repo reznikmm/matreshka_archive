@@ -60,4 +60,22 @@ package Matreshka.Internals.Strings.C is
    --  Converts null-terminated text segment starting at specified position
    --  into Universal_String. String is trimed when invalid data is found.
 
+   procedure Validate_And_Fixup
+    (String : in out Shared_String_Access;
+     Valid  : out Boolean);
+   --  Validates data in the specified null-terminated string to be valid
+   --  UTF-16, fixup Unused and Length and writes null terminator. Sets Valid
+   --  to True when data is valid UTF-16, and to False otherwise. Invalid
+   --  string is truncated to be valid, empty string is replaced by empty
+   --  shared string.
+
+   procedure Validate_And_Fixup
+    (String : in out Shared_String_Access;
+     Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Valid  : out Boolean);
+   --  Validates data in the specified string of size Size to be valid UTF-16,
+   --  fixup Length and write null terminator. Sets Valid to True when data is
+   --  valid UTF-16, and to False otherwise. Invalid string is truncated to be
+   --  valid, empty string is replaced by empty shared string.
+
 end Matreshka.Internals.Strings.C;
