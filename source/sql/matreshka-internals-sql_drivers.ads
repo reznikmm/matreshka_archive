@@ -65,8 +65,7 @@ package Matreshka.Internals.SQL_Drivers is
 
    type Database_Access is access all Abstract_Database'Class;
 
-   type Abstract_Query
-     is abstract tagged limited private;
+   type Abstract_Query is abstract tagged limited private;
 
    type Query_Access is access all Abstract_Query'Class;
 

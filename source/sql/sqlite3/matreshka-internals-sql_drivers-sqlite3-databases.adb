@@ -45,7 +45,7 @@ with Interfaces.C;
 
 with League.Strings.Internals;
 with Matreshka.Internals.SQL_Drivers.SQLite3.Queries;
-with Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities;
+with Matreshka.Internals.Strings.C;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.SQL_Drivers.SQLite3.Databases is
@@ -80,7 +80,7 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Databases is
          when others =>
             Self.Success := False;
             Self.Error :=
-              String_Utilities.To_Universal_String
+              Matreshka.Internals.Strings.C.To_Valid_Universal_String
                (sqlite3_errmsg16 (Self.Handle));
       end case;
    end Call;

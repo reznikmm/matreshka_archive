@@ -170,4 +170,15 @@ package Matreshka.Internals.Utf16 is
    --  Sets Valid to True and moves Position if character of surrogate pair is
    --  valid; otherwise sets Valid to False and don't change Position.
 
+   procedure Unchecked_Validate_Next
+    (Item     : Unaligned_Utf16_String;
+     Position : in out Utf16_String_Index;
+     Code     : out Matreshka.Internals.Unicode.Code_Point;
+     Valid    : out Boolean);
+   pragma Inline (Unchecked_Validate_Next);
+   --  Validates next character or surrogate pair at the specified position.
+   --  Sets Valid to True, moves Position and sets Code to character's code
+   --  if code unit or surrogate pair is valid; otherwise sets Valid to False
+   --  and don't change Position.
+
 end Matreshka.Internals.Utf16;

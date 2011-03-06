@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                           SQL Database Access                            --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,16 +41,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides utilities to interface Ada and C.
+--  This package provides UTF-16 encoded string utilities to interface Ada and
+--  C. It is used by Oracle database driver, SQLite3 database driver and on
+--  Windows.
 ------------------------------------------------------------------------------
+with League.Strings;
 
-package Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities is
+package Matreshka.Internals.Strings.C is
 
    pragma Preelaborate;
 
-   function To_Universal_String
+   type Utf16_Code_Unit_Access is
+     access all Matreshka.Internals.Utf16.Utf16_Code_Unit;
+   pragma Convention (C, Utf16_Code_Unit_Access);
+
+   function To_Valid_Universal_String
     (Text : Utf16_Code_Unit_Access) return League.Strings.Universal_String;
    --  Converts null-terminated text segment starting at specified position
-   --  into Universal_String.
+   --  into Universal_String. String is trimed when invalid data is found.
 
-end Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities;
+end Matreshka.Internals.Strings.C;

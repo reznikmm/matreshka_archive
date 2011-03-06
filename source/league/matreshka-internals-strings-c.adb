@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                           SQL Database Access                            --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -44,11 +44,12 @@
 with Interfaces.C.Pointers;
 
 with League.Strings.Internals;
-with Matreshka.Internals.Strings;
+with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Unicode;
 
-package body Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities is
+package body Matreshka.Internals.Strings.C is
 
+   use Matreshka.Internals.Strings.Configuration;
    use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
    package Utf16_Code_Unit_Pointers is
@@ -58,35 +59,67 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities is
            Matreshka.Internals.Utf16.Unaligned_Utf16_String,
            0);
 
-   -------------------------
-   -- To_Universal_String --
-   -------------------------
+   -------------------------------
+   -- To_Valid_Universal_String --
+   -------------------------------
 
-   function To_Universal_String
+   function To_Valid_Universal_String
     (Text : Utf16_Code_Unit_Access) return League.Strings.Universal_String
    is
-      Length   : Matreshka.Internals.Utf16.Utf16_String_Index
+      Size        : Matreshka.Internals.Utf16.Utf16_String_Index
         := Matreshka.Internals.Utf16.Utf16_String_Index
             (Utf16_Code_Unit_Pointers.Virtual_Length
               (Utf16_Code_Unit_Pointers.Pointer (Text)));
-      Source   :
-        Matreshka.Internals.Utf16.Unaligned_Utf16_String (0 .. Length - 1);
+      Source      :
+        Matreshka.Internals.Utf16.Unaligned_Utf16_String (0 .. Size);
       for Source'Address use Text.all'Address;
       pragma Import (Ada, Source);
-      Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
-      Code     : Matreshka.Internals.Unicode.Code_Point;
-      Aux      : Matreshka.Internals.Strings.Shared_String_Access
-        := Matreshka.Internals.Strings.Allocate (Length);
+      --  Map Source to Text. Note, null terminator is part of the array.
+      Position    : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+      Code        : Matreshka.Internals.Unicode.Code_Point;
+      Destination : Matreshka.Internals.Strings.Shared_String_Access;
+      Valid       : Boolean;
 
    begin
-      while Position <= Source'Last loop
-         Matreshka.Internals.Utf16.Unchecked_Next (Source, Position, Code);
-         Matreshka.Internals.Utf16.Unchecked_Store
-          (Aux.Value, Aux.Unused, Code);
-         Aux.Length := Aux.Length + 1;
-      end loop;
+      if Size = 0 then
+         Destination := Shared_Empty'Access;
 
-      return League.Strings.Internals.Wrap (Aux);
-   end To_Universal_String;
+      else
+         Destination := Matreshka.Internals.Strings.Allocate (Size);
 
-end Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities;
+         --  Look for null terminator and validate data. Note, last code unit
+         --  is not checked (it is null by convention), but this allows to
+         --  suppress range check for surrogate pair. Check just fail when
+         --  string ends by unpaired surrogate character.
+
+         while Destination.Unused < Size loop
+            Matreshka.Internals.Utf16.Unchecked_Validate_Next
+             (Source, Position, Code, Valid);
+
+            exit when not Valid;
+
+            Matreshka.Internals.Utf16.Unchecked_Store
+             (Destination.Value, Destination.Unused, Code);
+            Destination.Length := Destination.Length + 1;
+         end loop;
+
+         --  Check whether result string is empty or not.
+
+         if Destination.Unused = 0 then
+            --  Dereference existing string and replace it by shared empty
+            --  object.
+
+            Dereference (Destination);
+            Destination := Shared_Empty'Access;
+
+         else
+            --  Fill null terminator for not empty string.
+
+            String_Handler.Fill_Null_Terminator (Destination);
+         end if;
+      end if;
+
+      return League.Strings.Internals.Wrap (Destination);
+   end To_Valid_Universal_String;
+
+end Matreshka.Internals.Strings.C;

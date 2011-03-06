@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 with Interfaces.C;
 
+with Matreshka.Internals.Strings.C;
 with Matreshka.Internals.Utf16;
 
 package Matreshka.Internals.SQL_Drivers.SQLite3 is
@@ -65,11 +66,9 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
    type sqlite3_stmt_Access is access all sqlite3_stmt;
    pragma Convention (C, sqlite3_stmt_Access);
 
-   type Utf16_Code_Unit_Access is
-     access all Matreshka.Internals.Utf16.Utf16_Code_Unit;
-
    type Utf16_Code_Unit_Access_Destructor is
-     access procedure (Text : Utf16_Code_Unit_Access);
+     access procedure
+      (Text : Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access);
    pragma Convention (C, Utf16_Code_Unit_Access_Destructor);
 
    ---------------
@@ -165,7 +164,7 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
    function sqlite3_bind_text16
     (Handle     : sqlite3_stmt_Access;
      Index      : Interfaces.C.int;
-     Text       : Utf16_Code_Unit_Access;
+     Text       : Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
      nBytes     : Interfaces.C.int;
      Destructor : Utf16_Code_Unit_Access_Destructor) return Interfaces.C.int;
    pragma Import (C, sqlite3_bind_text16);
@@ -190,7 +189,8 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
 
    function sqlite3_column_text16
     (Handle : sqlite3_stmt_Access;
-     iCol   : Interfaces.C.int) return Utf16_Code_Unit_Access;
+     iCol   : Interfaces.C.int)
+       return Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
    pragma Import (C, sqlite3_column_text16);
 
    function sqlite3_column_type
@@ -202,7 +202,8 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
    pragma Import (C, sqlite3_config);
 
    function sqlite3_errmsg16
-    (db : sqlite3_Access) return Utf16_Code_Unit_Access;
+    (db : sqlite3_Access)
+       return Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
    pragma Import (C, sqlite3_errmsg16);
 
    function sqlite3_finalize
@@ -222,7 +223,9 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
 --     ppStmt : out sqlite3_stmt_Access;
 --     pzTail : out Utf16_Code_Unit_Access) return Interfaces.C.int;
      ppStmt : not null access sqlite3_stmt_Access;
-     pzTail : not null access Utf16_Code_Unit_Access) return Interfaces.C.int;
+     pzTail :
+       not null access Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access)
+       return Interfaces.C.int;
    pragma Import (C, sqlite3_prepare16_v2);
 
    function sqlite3_reset

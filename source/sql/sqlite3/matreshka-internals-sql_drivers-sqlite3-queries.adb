@@ -48,7 +48,7 @@ with League.Strings.Internals;
 with League.Text_Codecs;
 with Matreshka.Internals.Strings;
 with Matreshka.Internals.Unicode;
-with Matreshka.Internals.SQL_Drivers.SQLite3.String_Utilities;
+with Matreshka.Internals.Strings.C;
 
 package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
@@ -61,7 +61,7 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
    --  Process return code, constructs error message when code is error.
 
    function To_Universal_String
-    (Text   : Utf16_Code_Unit_Access;
+    (Text   : Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
      Length : Matreshka.Internals.Utf16.Utf16_String_Index)
        return League.Strings.Universal_String;
    --  Converts text starting at specified position with specified length into
@@ -187,7 +187,7 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
             Self.Success := False;
             Self.Error :=
-              String_Utilities.To_Universal_String
+              Matreshka.Internals.Strings.C.To_Valid_Universal_String
                (sqlite3_errmsg16
                  (Databases.SQLite3_Database'Class
                    (Self.Database.all).Database_Handle));
@@ -320,7 +320,7 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
     (Self  : not null access SQLite3_Query;
      Query : League.Strings.Universal_String) return Boolean
    is
-      Aux : aliased Utf16_Code_Unit_Access;
+      Aux : aliased Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
 
    begin
       if Self.Handle /= null then
@@ -357,7 +357,7 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
    -------------------------
 
    function To_Universal_String
-    (Text   : Utf16_Code_Unit_Access;
+    (Text   : Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
      Length : Matreshka.Internals.Utf16.Utf16_String_Index)
        return League.Strings.Universal_String
    is
@@ -389,7 +389,7 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
     (Self  : not null access SQLite3_Query;
      Index : Positive) return League.Values.Value
    is
-      Text   : Utf16_Code_Unit_Access;
+      Text   : Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
       Length : Matreshka.Internals.Utf16.Utf16_String_Index;
       Value  : League.Values.Value;
 
