@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-VERSION=0.0.6
+VERSION=0.1.0
 
 svn export svn://adaforge.qtada.com/matreshka/trunk/matreshka matreshka-$VERSION
 # full distribution
