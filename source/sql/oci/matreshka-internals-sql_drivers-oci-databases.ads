@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Maxim Reznik <reznikmm@gmail.com>                      --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,31 +41,44 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SQL_Drivers.OCI.Databases;
+--  Implementation of Abstract_Database type for Orecale database.
+------------------------------------------------------------------------------
 
-package body Matreshka.Internals.SQL_Drivers.OCI.Factory is
+with Matreshka.Internals.Strings;
 
-   type OCI_Factory is new Abstract_Factory with null record;
+package Matreshka.Internals.SQL_Drivers.OCI.Databases is
 
-   overriding function Create
-    (Self : not null access OCI_Factory) return not null Database_Access;
+   ------------------
+   -- OCI_Database --
+   ------------------
 
-   ------------
-   -- Create --
-   ------------
+   type OCI_Database is new Abstract_Database with record
+      Error      : aliased Error_Handle;
+      Service    : aliased Service_Handle;
+      Error_Text : Matreshka.Internals.Strings.Shared_String_Access;
+   end record;
 
-   overriding function Create
-    (Self : not null access OCI_Factory) return not null Database_Access is
-   begin
-      return new Databases.OCI_Database;
-   end Create;
+   overriding procedure Close (Self : not null access OCI_Database);
 
-   use type Interfaces.C.int;
+   overriding procedure Commit (Self : not null access OCI_Database);
 
-   Factory : aliased OCI_Factory;
+   overriding function Error_Message
+    (Self : not null access OCI_Database)
+       return League.Strings.Universal_String;
 
-begin
-   --  Initialize threadsafety.
+   overriding function Query
+    (Self : not null access OCI_Database) return not null Query_Access;
 
-   Register (League.Strings.To_Universal_String ("OCI"), Factory'Access);
-end Matreshka.Internals.SQL_Drivers.OCI.Factory;
+   overriding procedure Finalize (Self : not null access OCI_Database);
+
+   overriding function Open
+    (Self    : not null access OCI_Database;
+     Options : League.Strings.Universal_String) return Boolean;
+
+   Env : aliased Environment;
+
+   function Check_Error
+     (Self : not null access OCI_Database;
+      Code : Error_Code) return Boolean;
+
+end Matreshka.Internals.SQL_Drivers.OCI.Databases;

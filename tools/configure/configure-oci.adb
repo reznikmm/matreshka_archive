@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Maxim Reznik <reznikmm@gmail.com>                      --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,38 +41,65 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This procedure detects operating system.
-with GNAT.Regexp;
+--  This procedure detects parameters to link with OCI (Oracle Call interface)
+------------------------------------------------------------------------------
+with Ada.Strings.Fixed;
 
-procedure Configure.Operating_System is
+with Configure.Builder;
+with Ada.Environment_Variables;
 
+procedure Configure.OCI is
+
+   use Ada.Strings;
+   use Ada.Strings.Fixed;
    use Ada.Strings.Unbounded;
-   use GNAT.Regexp;
 
-   function "+" (Item : String) return Unbounded_String
-     renames To_Unbounded_String;
+   function Library_Name return String;
 
-   function "+" (Item : Unbounded_String) return String renames To_String;
-
-   procedure Detect_Operating_System;
-   --  Detects operating system by analyzing target triplet.
-
-   -----------------------------
-   -- Detect_Operating_System --
-   -----------------------------
-
-   procedure Detect_Operating_System is
+   function Library_Name return String is
    begin
-      if Match
-          (+Target_Triplet, Compile ("[a-zA-Z0-9_]*-[a-zA-Z0-9_]*-mingw.*"))
-      then
-         Substitutions.Insert (Operating_System_Name, +"Windows");
-         Is_Windows := True;
+      if Is_Windows then
+         return "oci";
       else
-         Substitutions.Insert (Operating_System_Name, +"POSIX");
+         return "clntsh";
       end if;
-   end Detect_Operating_System;
+   end Library_Name;
 
 begin
-   Detect_Operating_System;
-end Configure.Operating_System;
+   --  Command line parameter has preference other automatic detection.
+
+   if Has_Parameter ("--with-oci-libdir") then
+      Substitutions.Insert
+       (OCI_Library_Options,
+        To_Unbounded_String
+         ("""-L"
+            & Parameter_Value ("--with-oci-libdir")
+            & """, ""-l" & Library_Name & '"'));
+   elsif Ada.Environment_Variables.Exists ("ORACLE_HOME") then
+      Substitutions.Insert
+       (OCI_Library_Options,
+        To_Unbounded_String
+         ("""-L"
+            & Ada.Environment_Variables.Value ("ORACLE_HOME")
+            & "/lib"", ""-l" & Library_Name & '"'));
+   end if;
+
+   --  Check that oci application can be linked with specified/detected
+   --  set of options.
+
+   if Substitutions.Contains (OCI_Library_Options) then
+      if not Configure.Builder.Build ("config.tests/oci/") then
+         --  Switches don't allow to build application, remove them.
+
+         Substitutions.Delete (OCI_Library_Options);
+      end if;
+   end if;
+
+   --  Insert empty value for substitution variable when SQLite3 driver module
+   --  is disabled.
+
+   if not Substitutions.Contains (OCI_Library_Options) then
+      Information ("OCI driver module is disabled");
+      Substitutions.Insert (OCI_Library_Options, Null_Unbounded_String);
+   end if;
+end Configure.OCI;

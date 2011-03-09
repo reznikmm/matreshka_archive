@@ -48,6 +48,7 @@ with Ada.Text_IO;
 
 with Configure.Architecture;
 with Configure.Instantiate;
+with Configure.OCI;
 with Configure.Operating_System;
 with Configure.PostgreSQL;
 with Configure.RTL_Version;
@@ -62,6 +63,7 @@ begin
    Configure.RTL_Version;
    Configure.SQLite3;
    Configure.PostgreSQL;
+   Configure.OCI;
 
    declare
       use Ada.Directories;

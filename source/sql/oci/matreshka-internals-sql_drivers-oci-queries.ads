@@ -42,10 +42,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-with Matreshka.Internals.SQL_Drivers.OCI.Databases;
-with Matreshka.Internals.Strings;
 with Ada.Containers.Hashed_Maps;
 with League.Strings.Hash;
+with Matreshka.Internals.SQL_Drivers.OCI.Databases;
+with Matreshka.Internals.Strings;
 
 package Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
@@ -58,8 +58,8 @@ private
 
    type Bound_Value is limited record
       Bind    : aliased OCI.Bind;
-      Value   : League.Values.Value;
       Is_Null : aliased Sb2;
+      String  : League.Strings.Universal_String;
       Int     : aliased League.Values.Universal_Integer;
       Float   : aliased League.Values.Universal_Float;
    end record;
@@ -73,7 +73,7 @@ private
            League.Strings.Hash,
            League.Strings."=");
 
-   type Column_Types is (String_Column, Integer_Column, Decimal_Column);
+   type Column_Types is (String_Column, Integer_Column, Float_Column);
 
    type Defined_Value is limited record
       Column_Type : Column_Types;
@@ -89,16 +89,19 @@ private
 
    type Defined_Value_Array_Access is access Defined_Value_Array;
 
+   type Query_States is (Created, Prepared, Executed, Has_Row, No_More_Rows);
+
+   subtype Active   is Query_States range Executed .. No_More_Rows;
+   subtype Fetching is Query_States range Executed .. Has_Row;
+   subtype Ready    is Query_States range Prepared .. No_More_Rows;
 
    type OCI_Query  (DB : not null access Databases.OCI_Database) is
      new Abstract_Query with record
         Handle       : aliased Statement_Handle;
-        Count        : aliased Ub4;
+        Column_Count : Natural := 0;
+        State        : Query_States := Created;
         Is_Described : Boolean := False;
-        Is_Active    : Boolean := False;
-        Has_Row      : Boolean := False;
-        Skip_Step    : Boolean := False;
-        Error        : League.Strings.Universal_String;
+        Is_Select    : Boolean := False;
         Parameters   : Parameter_Maps.Map;
         Columns      : Defined_Value_Array_Access;
    end record;
@@ -118,7 +121,7 @@ private
 
    overriding procedure Finish (Self : not null access OCI_Query);
 
-   overriding procedure Invalidate (Self : not null access OCI_Query) is null;
+   overriding procedure Invalidate (Self : not null access OCI_Query);
 
    overriding function Is_Active
     (Self : not null access OCI_Query) return Boolean;

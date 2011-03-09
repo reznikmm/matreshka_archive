@@ -2,13 +2,13 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---         Localization, Internationalization, Globalization for Ada        --
+--                           SQL Database Access                            --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Maxim Reznik <reznikmm@gmail.com>                      --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,38 +41,33 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This procedure detects operating system.
-with GNAT.Regexp;
+with "matreshka_common";
+with "matreshka_config";
+with "matreshka_league";
+with "matreshka_sql";
 
-procedure Configure.Operating_System is
+library project Matreshka_SQL_OCI is
 
-   use Ada.Strings.Unbounded;
-   use GNAT.Regexp;
+   Library_Name := "matreshka-sql-oci" & Matreshka_Config.RTL_Version_Suffix;
 
-   function "+" (Item : String) return Unbounded_String
-     renames To_Unbounded_String;
+   for Source_Dirs use ("../source/sql/oci");
+   for Object_Dir use "../.objs";
+   for Library_Kind use "dynamic";
+   for Library_Name use Library_Name;
+   for Library_Dir use "../.libs";
+   for Library_Version use "lib" & Library_Name & ".so." & Matreshka_Config.Version;
+   for Library_Options use Matreshka_Config.OCI_Library_Options;
 
-   function "+" (Item : Unbounded_String) return String renames To_String;
+   -------------
+   -- Builder --
+   -------------
 
-   procedure Detect_Operating_System;
-   --  Detects operating system by analyzing target triplet.
+   package Builder renames Matreshka_Common.Builder;
 
-   -----------------------------
-   -- Detect_Operating_System --
-   -----------------------------
+   --------------
+   -- Compiler --
+   --------------
 
-   procedure Detect_Operating_System is
-   begin
-      if Match
-          (+Target_Triplet, Compile ("[a-zA-Z0-9_]*-[a-zA-Z0-9_]*-mingw.*"))
-      then
-         Substitutions.Insert (Operating_System_Name, +"Windows");
-         Is_Windows := True;
-      else
-         Substitutions.Insert (Operating_System_Name, +"POSIX");
-      end if;
-   end Detect_Operating_System;
+   package Compiler renames Matreshka_Common.Compiler;
 
-begin
-   Detect_Operating_System;
-end Configure.Operating_System;
+end Matreshka_SQL_OCI;

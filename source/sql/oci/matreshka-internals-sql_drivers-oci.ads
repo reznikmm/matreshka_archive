@@ -59,7 +59,7 @@ package Matreshka.Internals.SQL_Drivers.OCI is
    subtype Ub2 is Unsigned_16;
    subtype Ub1 is Unsigned_8;
    subtype Sb1 is Integer_8;
-   subtype Sb2 is C.Short;
+   subtype Sb2 is C.short;
 
    subtype Ora_Text is C.char_array;
 
@@ -120,35 +120,35 @@ package Matreshka.Internals.SQL_Drivers.OCI is
    pragma Convention (C, Environment);
 
    function Handle_Alloc
-     (Parent      : in     Environment;
+     (Parent      : Environment;
       Target      : access Handle;
-      Target_Type : in     Handle_Type;
-      Extra_Sz    : in     Size_T :=0;
-      Extra_Ptr   : in     Address := Null_Address)
+      Target_Type : Handle_Type;
+      Extra_Sz    : Size_T := 0;
+      Extra_Ptr   : Address := Null_Address)
      return Error_Code;
 
    function Handle_Free
-     (Target      : in     Handle;
-      Target_Type : in     Handle_Type)
+     (Target      : Handle;
+      Target_Type : Handle_Type)
      return Error_Code;
 
    function Descriptor_Alloc
-     (Parent      : in     Environment;
+     (Parent      : Environment;
       Target      : access Handle;
-      Target_Type : in     Handle_Type;
-      Extra_Sz    : in     Size_T :=0;
-      Extra_Ptr   : in     Address := Null_Address)
+      Target_Type : Handle_Type;
+      Extra_Sz    : Size_T := 0;
+      Extra_Ptr   : Address := Null_Address)
      return Error_Code;
 
    type Error_Handle is new Handle;
 
    function Attr_Get
-     (Target      : in     Handle;
-      Target_Type : in     Handle_Type;
-      Buffer      : in     Address;
-      Length      : in     Ub4_Ptr;
-      Attr        : in     Ub4;
-      Error       : in     Error_Handle)
+     (Target      : Handle;
+      Target_Type : Handle_Type;
+      Buffer      : Address;
+      Length      : Ub4_Ptr;
+      Attr        : Ub4;
+      Error       : Error_Handle)
      return Error_Code;
 
    Attr_Data_Size      : constant Ub4 := 1;
@@ -165,18 +165,18 @@ package Matreshka.Internals.SQL_Drivers.OCI is
    Attr_Char_Size      : constant Ub4 := 286;
 
    function Descriptor_Free
-     (Target      : in     Handle;
-      Target_Type : in     Handle_Type)
+     (Target      : Handle;
+      Target_Type : Handle_Type)
      return Error_Code;
 
    type Parameter        is new Handle;
 
    function Param_Get
-     (Target      : in     Handle;
-      Target_Type : in     Handle_Type;
-      Error       : in     Error_Handle;
+     (Target      : Handle;
+      Target_Type : Handle_Type;
+      Error       : Error_Handle;
       Result      : access Parameter;
-      Position    : in     Ub4)
+      Position    : Ub4)
      return Error_Code;
 
    type Service_Handle   is new Handle;
@@ -184,172 +184,172 @@ package Matreshka.Internals.SQL_Drivers.OCI is
 
    type Env_Mode is new Ub4;
 
-   Default  : constant          :=16#000#;
-   Threaded : constant Env_Mode :=16#001#;
-   Object   : constant Env_Mode :=16#002#;
-   Events   : constant Env_Mode :=16#004#;
-   Shared   : constant Env_Mode :=16#010#;
+   Default  : constant          := 16#000#;
+   Threaded : constant Env_Mode := 16#001#;
+   Object   : constant Env_Mode := 16#002#;
+   Events   : constant Env_Mode := 16#004#;
+   Shared   : constant Env_Mode := 16#010#;
 
    OCI_UTF16ID : constant := 1000;
 
    function Env_NLS_Create
      (Target    : access Environment;
-      Mode      : in     Env_Mode;
-      Ctxp      : in     Address := Null_Address;
-      Malocfp   : in     Address := Null_Address;
-      Ralocfp   : in     Address := Null_Address;
-      Mfreefp   : in     Address := Null_Address;
-      Extra_Sz  : in     Size_T := 0;
-      Extra_Ptr : in     Address := Null_Address;
-      Charset   : in     Ub2 := OCI_UTF16ID;
-      N_Charset : in     Ub2 := OCI_UTF16ID)
+      Mode      : Env_Mode;
+      Ctxp      : Address := Null_Address;
+      Malocfp   : Address := Null_Address;
+      Ralocfp   : Address := Null_Address;
+      Mfreefp   : Address := Null_Address;
+      Extra_Sz  : Size_T := 0;
+      Extra_Ptr : Address := Null_Address;
+      Charset   : Ub2 := OCI_UTF16ID;
+      N_Charset : Ub2 := OCI_UTF16ID)
      return Error_Code;
 
    function Logon
-     (Env          : in     Environment;
-      Error        : in     Error_Handle;
+     (Env          : Environment;
+      Error        : Error_Handle;
       Target       : access Service_Handle;
-      Username     : in     Matreshka.Internals.Utf16.Utf16_String;
-      Username_Len : in     Ub4;
-      Password     : in     Matreshka.Internals.Utf16.Utf16_String;
-      Passwd_Len   : in     Ub4;
-      Dbname       : in     Matreshka.Internals.Utf16.Utf16_String;
-      Dbname_Len   : in     Ub4)
+      Username     : Matreshka.Internals.Utf16.Utf16_String;
+      Username_Len : Ub4;
+      Password     : Matreshka.Internals.Utf16.Utf16_String;
+      Passwd_Len   : Ub4;
+      Dbname       : Matreshka.Internals.Utf16.Utf16_String;
+      Dbname_Len   : Ub4)
      return Error_Code;
 
    function Logoff
-     (Target       : in     Service_Handle;
-      Error        : in     Error_Handle)
+     (Target       : Service_Handle;
+      Error        : Error_Handle)
      return Error_Code;
 
    function Commit
-     (Target       : in     Service_Handle;
-      Error        : in     Error_Handle;
-      Flags        : in     Ub4 := Default)
+     (Target       : Service_Handle;
+      Error        : Error_Handle;
+      Flags        : Ub4 := Default)
      return Error_Code;
 
    function Rollback
-     (Target       : in     Service_Handle;
-      Error        : in     Error_Handle;
-      Flags        : in     Ub4 := Default)
+     (Target       : Service_Handle;
+      Error        : Error_Handle;
+      Flags        : Ub4 := Default)
      return Error_Code;
 
    function Error_Get
-     (Error       : in     Error_Handle;
-      Record_No   : in     Ub4;
-      Sql_State   : in     Address := Null_Address;
+     (Error       : Error_Handle;
+      Record_No   : Ub4;
+      Sql_State   : Address := Null_Address;
       Ora_Code    : access Ub4;
-      Buffer      : in     Matreshka.Internals.Utf16.Unaligned_Utf16_String;
-      Buffer_Size : in     Ub4;
-      H_Type      : in     Handle_Type := HT_Error)
+      Buffer      : Matreshka.Internals.Utf16.Utf16_String;
+      Buffer_Size : Ub4;
+      H_Type      : Handle_Type := HT_Error)
      return Error_Code;
 
    function Stmt_Prepare
-     (Stmt         : in     Statement_Handle;
-      Error        : in     Error_Handle;
-      Text         : in     Matreshka.Internals.Utf16.Utf16_String;
-      Text_Length  : in     Ub4;
-      Language     : in     Ub4 := 1;
-      Mode         : in     Ub4 := 0)
+     (Stmt         : Statement_Handle;
+      Error        : Error_Handle;
+      Text         : Matreshka.Internals.Utf16.Utf16_String;
+      Text_Length  : Ub4;
+      Language     : Ub4 := 1;
+      Mode         : Ub4 := 0)
      return Error_Code;
 
    function Stmt_Execute
-     (Service      : in     Service_Handle;
-      Stmt         : in     Statement_Handle;
-      Errhp        : in     Error_Handle;
-      Iters        : in     Ub4;
-      Row_Off      : in     Ub4 := 0;
-      Snap_In      : in     Address := Null_Address;
-      Snap_Out     : in     Address := Null_Address;
-      Mode         : in     Ub4 := 0)
+     (Service      : Service_Handle;
+      Stmt         : Statement_Handle;
+      Errhp        : Error_Handle;
+      Iters        : Ub4;
+      Row_Off      : Ub4 := 0;
+      Snap_In      : Address := Null_Address;
+      Snap_Out     : Address := Null_Address;
+      Mode         : Ub4 := 0)
      return Error_Code;
 
    function Stmt_Fetch
-     (Stmt         : in     Statement_Handle;
-      Error        : in     Error_Handle;
-      Rows         : in     Ub4 := 1;
-      Orientation  : in     Ub2 := Default;
-      Offset       : in     Ub4 := 0;
-      Mode         : in     Ub4 := Default)
+     (Stmt         : Statement_Handle;
+      Error        : Error_Handle;
+      Rows         : Ub4 := 1;
+      Orientation  : Ub2 := Default;
+      Offset       : Ub4 := 0;
+      Mode         : Ub4 := Default)
      return Error_Code;
 
    function Bind_By_Name
-     (Stmt         : in     Statement_Handle;
+     (Stmt         : Statement_Handle;
       Target       : access Bind;
-      Error        : in     Error_Handle;
-      Place        : in     Matreshka.Internals.Utf16.Utf16_String;
-      Place_Length : in     Ub4;
-      Value        : in     Address;
-      Value_Length : in     Ub4;
-      Value_Type   : in     Data_Type;
+      Error        : Error_Handle;
+      Place        : Matreshka.Internals.Utf16.Utf16_String;
+      Place_Length : Ub4;
+      Value        : Address;
+      Value_Length : Ub4;
+      Value_Type   : Data_Type;
       Indicator    : access Sb2;
-      Array_Length : in     Address := Null_Address;
-      Rcodep       : in     Address := Null_Address;
-      Max_Array    : in     Ub4 := 0;
-      Curelep      : in     Address := Null_Address;
-      Mode         : in     Ub4 := 0)
+      Array_Length : Address := Null_Address;
+      Rcodep       : Address := Null_Address;
+      Max_Array    : Ub4 := 0;
+      Curelep      : Address := Null_Address;
+      Mode         : Ub4 := 0)
      return Error_Code;
 
    function Bind_By_Pos
-     (Stmt         : in     Statement_Handle;
+     (Stmt         : Statement_Handle;
       Target       : access Bind;
-      Error        : in     Error_Handle;
-      Position     : in     Ub4;
-      Value        : in     Address;
-      Value_Length : in     Ub4;
-      Value_Type   : in     Data_Type;
+      Error        : Error_Handle;
+      Position     : Ub4;
+      Value        : Address;
+      Value_Length : Ub4;
+      Value_Type   : Data_Type;
       Indicator    : access Sb2;
-      Array_Length : in     Address := Null_Address;
-      Rcodep       : in     Address := Null_Address;
-      Max_Array    : in     Ub4 := 0;
-      Curelep      : in     Address := Null_Address;
-      Mode         : in     Ub4 := 0)
+      Array_Length : Address := Null_Address;
+      Rcodep       : Address := Null_Address;
+      Max_Array    : Ub4 := 0;
+      Curelep      : Address := Null_Address;
+      Mode         : Ub4 := 0)
      return Error_Code;
 
    function Define_By_Pos
-     (Stmt         : in     Statement_Handle;
+     (Stmt         : Statement_Handle;
       Target       : access Define;
-      Error        : in     Error_Handle;
-      Position     : in     Ub4;
-      Value        : in     Address;
-      Value_Length : in     Ub4;
-      Value_Type   : in     Data_Type;
+      Error        : Error_Handle;
+      Position     : Ub4;
+      Value        : Address;
+      Value_Length : Ub4;
+      Value_Type   : Data_Type;
       Indicator    : access Sb2;
-      Array_Length : in     Address := Null_Address;
-      Rcodep       : in     Address := Null_Address;
-      Mode         : in     Ub4 := 0)
+      Array_Length : Address := Null_Address;
+      Rcodep       : Address := Null_Address;
+      Mode         : Ub4 := 0)
      return Error_Code;
 
    function Charset_Id_To_Name
-     (Env          : in     Environment;
-      Buffer       : in     Ora_Text;
-      Buffer_Len   : in     Size_T;
-      Id           : in     Ub2)
+     (Env          : Environment;
+      Buffer       : Ora_Text;
+      Buffer_Len   : Size_T;
+      Id           : Ub2)
      return Error_Code;
 
    function Name_Map
-     (Env          : in     Environment;
-      Buffer       : in     Ora_Text;
-      Buffer_Len   : in     Size_T;
-      Source       : in     Ora_Text;
-      Flag         : in     Sword)
+     (Env          : Environment;
+      Buffer       : Ora_Text;
+      Buffer_Len   : Size_T;
+      Source       : Ora_Text;
+      Flag         : Sword)
      return Error_Code;
 
    type Date_Time is new Handle;
 
    function Get_Date
-     (Env   : in     Environment;
-      Error : in     Error_Handle;
-      Date  : in     Date_Time;
+     (Env   : Environment;
+      Error : Error_Handle;
+      Date  : Date_Time;
       Year  : access Sb2;
       Month : access Ub1;
       Day   : access Ub1)
      return Error_Code;
 
    function Get_Time
-     (Env   : in     Environment;
-      Error : in     Error_Handle;
-      Date  : in     Date_Time;
+     (Env   : Environment;
+      Error : Error_Handle;
+      Date  : Date_Time;
       Hour  : access Ub1;
       Min   : access Ub1;
       Sec   : access Ub1;
@@ -357,18 +357,18 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      return Error_Code;
 
    function Construct
-     (Env    : in     Environment;
-      Error  : in     Error_Handle;
-      Date   : in     Date_Time;
-      Year   : in     Sb2;
-      Month  : in     Ub1;
-      Day    : in     Ub1;
-      Hour   : in     Ub1;
-      Min    : in     Ub1;
-      Sec    : in     Ub1;
-      Fract  : in     Ub4;
-      TZ     : in     Address := Null_Address;
-      TZ_Len : in     Size_T := 0)
+     (Env    : Environment;
+      Error  : Error_Handle;
+      Date   : Date_Time;
+      Year   : Sb2;
+      Month  : Ub1;
+      Day    : Ub1;
+      Hour   : Ub1;
+      Min    : Ub1;
+      Sec    : Ub1;
+      Fract  : Ub4;
+      TZ     : Address := Null_Address;
+      TZ_Len : Size_T := 0)
      return Error_Code;
 
 private
@@ -399,6 +399,5 @@ private
    pragma Import (C, Charset_Id_To_Name, "OCINlsCharSetIdToName");
    pragma Import (C, Descriptor_Free,    "OCIDescriptorFree");
    pragma Import (C, Descriptor_Alloc,   "OCIDescriptorAlloc");
-
 
 end Matreshka.Internals.SQL_Drivers.OCI;

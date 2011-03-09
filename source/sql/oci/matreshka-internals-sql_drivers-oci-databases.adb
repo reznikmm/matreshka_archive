@@ -42,17 +42,20 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-with Ada.Characters.Conversions;
 
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.C;
 with Matreshka.Internals.SQL_Drivers.OCI.Queries;
 
-with Ada.Wide_Wide_Text_IO;
-
 package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
 
-   procedure Create_Environment (Error : out League.Strings.Universal_String);
+   use type Matreshka.Internals.Strings.Shared_String_Access;
+
+   procedure Create_Environment (Self : not null access OCI_Database);
+
+   procedure Set_Error
+     (Self : not null access OCI_Database;
+      Text : Wide_Wide_String);
 
    protected Env_Lock is
       procedure Set_Env
@@ -94,62 +97,58 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
             null;
          when Call_Success_With_Info | Call_Error =>
             declare
+               use Matreshka.Internals.Strings;
+               use type Utf16.Utf16_String_Index;
+
+               Ok     : Boolean;
+               Size   : Utf16.Utf16_String_Index := 512;
+
                Next   : Error_Code;
-               Buffer : Matreshka.Internals.Utf16.Unaligned_Utf16_String
-                 (0 .. 512) := (others => <>);
-               Result : aliased Ub4;
+               Error  : aliased Ub4;
             begin
-               Next := Error_Get (Self.Error, 1,
-                                  Ora_Code    => Result'Access,
-                                  Buffer      => Buffer,
-                                  Buffer_Size => Buffer'Length * 2,
-                                  H_Type      => HT_Error);
+               for J in 1 .. 10 loop
+                  if Self.Error_Text = null then
+                     Self.Error_Text := Allocate (Size);
+                  elsif not Can_Be_Reused (Self.Error_Text, Size) then
+                     Dereference (Self.Error_Text);
+                     Self.Error_Text := Allocate (Size);
+                  end if;
 
-               Self.Error_Text :=
-                 Matreshka.Internals.Strings.C.To_Valid_Universal_String
-                  (Buffer (0)'Unchecked_Access);
-Ada.Wide_Wide_Text_IO.Put_Line (Self.Error_Text.To_Wide_Wide_String);
+                  Next := Error_Get
+                    (Self.Error, 1,
+                     Ora_Code    => Error'Access,
+                     Buffer      => Self.Error_Text.Value,
+                     Buffer_Size => Self.Error_Text.Value'Length * 2,
+                     H_Type      => HT_Error);
 
+                  if Next = Call_Success then
+                     Matreshka.Internals.Strings.C.Validate_And_Fixup
+                       (Self.Error_Text, Ok);
+                     return True;
+                  else
+                     Size := 2 * Size;
+                  end if;
+               end loop;
+
+               Dereference (Self.Error_Text);
+               Self.Error_Text := Shared_Empty'Access;
                return True;
             end;
          when Call_Invalid_Handle =>
-            Self.Error_Text :=
-              League.Strings.To_Universal_String ("Invalid Handle");
+            Set_Error (Self, "Invalid Handle");
             return True;
          when Call_Still_Executing =>
             null;
          when Call_Continue =>
             null;
          when others =>
-            Self.Error_Text := League.Strings.To_Universal_String
-              ("Unexpected code" & Error_Code'Wide_Wide_Image (Code));
+            Set_Error
+              (Self, "Unexpected code" & Error_Code'Wide_Wide_Image (Code));
             return True;
       end case;
 
       return False;
    end Check_Error;
-
-   ------------------------
-   -- Create_Environment --
-   ------------------------
-
-   procedure Create_Environment
-     (Error : out League.Strings.Universal_String)
-   is
-      Created : aliased Environment;
-      Code    : Error_Code := Env_NLS_Create (Created'Access, Threaded);
-      Success : Boolean;
-   begin
-      if Code = Call_Success then
-         Env_Lock.Set_Env (Created, Success);
-
-         if not Success then
-            Code := Handle_Free (Handle (Created), HT_Environment);
-         end if;
-      else
-         Error := League.Strings.To_Universal_String ("OCIEnvNlsCreate fails");
-      end if;
-   end Create_Environment;
 
    -----------
    -- Close --
@@ -158,14 +157,13 @@ Ada.Wide_Wide_Text_IO.Put_Line (Self.Error_Text.To_Wide_Wide_String);
    overriding procedure Close (Self : not null access OCI_Database) is
      Code : Error_Code;
    begin
-      Self.Invalidate_Queries;
-
       if Self.Service /= null then
+         Self.Invalidate_Queries;
 
          Code := Logoff (Self.Service, Self.Error);
 
          if Check_Error (Self, Code) then
-            null;
+            null;  --  How to report errors?
          end if;
 
          Self.Service := null;
@@ -177,12 +175,36 @@ Ada.Wide_Wide_Text_IO.Put_Line (Self.Error_Text.To_Wide_Wide_String);
    ------------
 
    overriding procedure Commit (Self : not null access OCI_Database) is
-      Code : constant Error_Code := OCI.Commit (Self.Service, Self.Error);
+      Code : Error_Code;
    begin
-      if Check_Error (Self, Code) then
-         null;
+      if Self.Service /= null then
+         Code := OCI.Commit (Self.Service, Self.Error);
+
+         if Check_Error (Self, Code) then
+            null;  --  How to report errors?
+         end if;
       end if;
    end Commit;
+
+   ------------------------
+   -- Create_Environment --
+   ------------------------
+
+   procedure Create_Environment (Self : not null access OCI_Database) is
+      Created : aliased Environment;
+      Code    : Error_Code := Env_NLS_Create (Created'Access, Threaded);
+      Success : Boolean;
+   begin
+      if Code = Call_Success then
+         Env_Lock.Set_Env (Created, Success);
+
+         if not Success then
+            Code := Handle_Free (Handle (Created), HT_Environment);
+         end if;
+      else
+         Set_Error (Self, "OCIEnvNlsCreate fails");
+      end if;
+   end Create_Environment;
 
    -------------------
    -- Error_Message --
@@ -192,7 +214,11 @@ Ada.Wide_Wide_Text_IO.Put_Line (Self.Error_Text.To_Wide_Wide_String);
     (Self : not null access OCI_Database)
     return League.Strings.Universal_String is
    begin
-      return Self.Error_Text;
+      if Self.Error_Text = null then
+         return League.Strings.Empty_Universal_String;
+      else
+         return League.Strings.Internals.Create (Self.Error_Text);
+      end if;
    end Error_Message;
 
    --------------
@@ -204,21 +230,12 @@ Ada.Wide_Wide_Text_IO.Put_Line (Self.Error_Text.To_Wide_Wide_String);
       if Self.Service /= null then
          Self.Close;
       end if;
+
+      if Self.Error_Text /= null then
+         Matreshka.Internals.Strings.Dereference (Self.Error_Text);
+         Self.Error_Text := null;
+      end if;
    end Finalize;
-
-   -----------
-   -- Query --
-   -----------
-
-   overriding function Query
-     (Self : not null access OCI_Database) return not null Query_Access is
-   begin
-      return Aux : constant not null Query_Access
-        := new Queries.OCI_Query (Self)
-      do
-         Aux.Initialize (Database_Access (Self));
-      end return;
-   end Query;
 
    ----------
    -- Open --
@@ -229,63 +246,80 @@ Ada.Wide_Wide_Text_IO.Put_Line (Self.Error_Text.To_Wide_Wide_String);
      Options : League.Strings.Universal_String) return Boolean
    is
 
-     function Get_User return League.Strings.Universal_String;
-     function Get_Password return League.Strings.Universal_String;
-     function Get_Database return League.Strings.Universal_String;
+      function Get_User return League.Strings.Universal_String;
+      function Get_Password return League.Strings.Universal_String;
+      function Get_Database return League.Strings.Universal_String;
 
-     Pwd : constant Natural := Options.Index ('/');
-     DB  : constant Natural := Options.Index ('@');
+      Pwd : constant Natural := Options.Index ('/');
+      DB  : constant Natural := Options.Index ('@');
 
-     function Get_User return League.Strings.Universal_String is
-     begin
-        if Pwd /= 0 then
-           return Options.Slice (1, Pwd - 1);
-        elsif DB /= 0 then
-           return Options.Slice (1, DB - 1);
-        else
-           return Options;
-        end if;
-     end Get_User;
+      ------------------
+      -- Get_Database --
+      ------------------
 
-     function Get_Password return League.Strings.Universal_String is
-     begin
-        if Pwd /= 0 then
-           if DB /= 0 then
-              return Options.Slice (Pwd + 1, DB - 1);
-           else
-              return Options.Slice (Pwd + 1, Options.Length);
-           end if;
-        else
-           return League.Strings.Empty_Universal_String;
-        end if;
-     end Get_Password;
+      function Get_Database return League.Strings.Universal_String is
+      begin
+         if DB /= 0 then
+            return Options.Slice (DB + 1, Options.Length);
+         else
+            return League.Strings.Empty_Universal_String;
+         end if;
+      end Get_Database;
 
-     function Get_Database return League.Strings.Universal_String is
-     begin
-        if DB /= 0 then
-           return Options.Slice (DB + 1, Options.Length);
-        else
-           return League.Strings.Empty_Universal_String;
-        end if;
-     end Get_Database;
+      ------------------
+      -- Get_Password --
+      ------------------
 
-     Code : Error_Code;
+      function Get_Password return League.Strings.Universal_String is
+      begin
+         if Pwd /= 0 then
+            if DB /= 0 then
+               return Options.Slice (Pwd + 1, DB - 1);
+            else
+               return Options.Slice (Pwd + 1, Options.Length);
+            end if;
+         else
+            return League.Strings.Empty_Universal_String;
+         end if;
+      end Get_Password;
+
+      --------------
+      -- Get_User --
+      --------------
+
+      function Get_User return League.Strings.Universal_String is
+      begin
+         if Pwd /= 0 then
+            return Options.Slice (1, Pwd - 1);
+         elsif DB /= 0 then
+            return Options.Slice (1, DB - 1);
+         else
+            return Options;
+         end if;
+      end Get_User;
+
+      Code : Error_Code;
    begin
+      if Self.Service /= null then
+         Self.Close;
+      end if;
+
       if Env = null then
-         Create_Environment (Self.Error_Text);
+         Create_Environment (Self);
 
          if Env = null then
             return False;
          end if;
       end if;
 
-      Code := Handle_Alloc (Env, Self.Error'Access, HT_Error);
+      if Self.Error = null then
+         Code := Handle_Alloc (Env, Self.Error'Access, HT_Error);
 
-      if Code /= Call_Success then
-         Self.Error_Text := League.Strings.To_Universal_String
-           ("OCIHandleAlloc fails");
+         if Code /= Call_Success then
+            Set_Error (Self, "OCIHandleAlloc fails");
 
-         return False;
+            return False;
+         end if;
       end if;
 
       declare
@@ -309,5 +343,38 @@ Ada.Wide_Wide_Text_IO.Put_Line (Self.Error_Text.To_Wide_Wide_String);
 
       return True;
    end Open;
+
+   -----------
+   -- Query --
+   -----------
+
+   overriding function Query
+     (Self : not null access OCI_Database) return not null Query_Access is
+   begin
+      return Aux : constant not null Query_Access
+        := new Queries.OCI_Query (Self)
+      do
+         Aux.Initialize (Database_Access (Self));
+      end return;
+   end Query;
+
+   ---------------
+   -- Set_Error --
+   ---------------
+
+   procedure Set_Error
+     (Self : not null access OCI_Database;
+      Text : Wide_Wide_String)
+   is
+      String : constant League.Strings.Universal_String :=
+        League.Strings.To_Universal_String (Text);
+   begin
+      if Self.Error_Text /= null then
+         Matreshka.Internals.Strings.Dereference (Self.Error_Text);
+      end if;
+
+      Self.Error_Text := League.Strings.Internals.Internal (String);
+      Matreshka.Internals.Strings.Reference (Self.Error_Text);
+   end Set_Error;
 
 end Matreshka.Internals.SQL_Drivers.OCI.Databases;

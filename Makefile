@@ -25,6 +25,10 @@ sqlite3: all
 postgresql: all
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_postgresql.gpr
 
+oci: all
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_oci.gpr
+
+
 check: all
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml_tests.gpr

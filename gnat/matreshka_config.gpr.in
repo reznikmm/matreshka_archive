@@ -70,4 +70,6 @@ abstract project Matreshka_Config is
 
    PostgreSQL_Library_Options := (@POSTGRESQL_LIBRARY_OPTIONS@);
 
+   OCI_Library_Options := (@OCI_LIBRARY_OPTIONS@);
+
 end Matreshka_Config;

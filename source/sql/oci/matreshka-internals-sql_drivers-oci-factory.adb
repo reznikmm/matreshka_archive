@@ -2,13 +2,13 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---         Localization, Internationalization, Globalization for Ada        --
+--                           SQL Database Access                            --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Maxim Reznik <reznikmm@gmail.com>                      --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,38 +41,31 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This procedure detects operating system.
-with GNAT.Regexp;
+with Matreshka.Internals.SQL_Drivers.OCI.Databases;
 
-procedure Configure.Operating_System is
+package body Matreshka.Internals.SQL_Drivers.OCI.Factory is
 
-   use Ada.Strings.Unbounded;
-   use GNAT.Regexp;
+   type OCI_Factory is new Abstract_Factory with null record;
 
-   function "+" (Item : String) return Unbounded_String
-     renames To_Unbounded_String;
+   overriding function Create
+    (Self : not null access OCI_Factory) return not null Database_Access;
 
-   function "+" (Item : Unbounded_String) return String renames To_String;
+   ------------
+   -- Create --
+   ------------
 
-   procedure Detect_Operating_System;
-   --  Detects operating system by analyzing target triplet.
-
-   -----------------------------
-   -- Detect_Operating_System --
-   -----------------------------
-
-   procedure Detect_Operating_System is
+   overriding function Create
+     (Self : not null access OCI_Factory) return not null Database_Access
+   is
+      pragma Unreferenced (Self);
    begin
-      if Match
-          (+Target_Triplet, Compile ("[a-zA-Z0-9_]*-[a-zA-Z0-9_]*-mingw.*"))
-      then
-         Substitutions.Insert (Operating_System_Name, +"Windows");
-         Is_Windows := True;
-      else
-         Substitutions.Insert (Operating_System_Name, +"POSIX");
-      end if;
-   end Detect_Operating_System;
+      return new Databases.OCI_Database;
+   end Create;
+
+   use type Interfaces.C.int;
+
+   Factory : aliased OCI_Factory;
 
 begin
-   Detect_Operating_System;
-end Configure.Operating_System;
+   Register (League.Strings.To_Universal_String ("OCI"), Factory'Access);
+end Matreshka.Internals.SQL_Drivers.OCI.Factory;

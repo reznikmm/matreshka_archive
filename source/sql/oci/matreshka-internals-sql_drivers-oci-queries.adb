@@ -43,15 +43,17 @@
 ------------------------------------------------------------------------------
 
 with League.Strings.Internals;
-with Matreshka.Internals.Strings;
 with Matreshka.Internals.Utf16;
-with Matreshka.Internals.Strings.Handlers;
-with Matreshka.Internals.Strings.Configuration;
-with Matreshka.Internals.Strings.Fixups;
+with Matreshka.Internals.Strings.C;
 with Ada.Unchecked_Deallocation;
-with Ada.Wide_Wide_Text_IO;
 
 package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
+
+   procedure Free is new Ada.Unchecked_Deallocation
+     (Bound_Value, Bound_Value_Access);
+
+   procedure Free is new Ada.Unchecked_Deallocation
+     (Defined_Value_Array, Defined_Value_Array_Access);
 
    ----------------
    -- Bind_Value --
@@ -63,12 +65,18 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
       Value     : League.Values.Value;
       Direction : SQL.Parameter_Directions)
    is
+      pragma Unreferenced (Direction);
+
       Code : Error_Code;
       Pos  : Parameter_Maps.Cursor;
       Ok   : Boolean;
 
-      procedure Free is new Ada.Unchecked_Deallocation
-        (Bound_Value, Bound_Value_Access);
+      procedure Bind (Name : League.Strings.Universal_String;
+                      Item : in out Bound_Value_Access);
+
+      ----------
+      -- Bind --
+      ----------
 
       procedure Bind (Name : League.Strings.Universal_String;
                       Item : in out Bound_Value_Access)
@@ -94,6 +102,10 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
          elsif League.Values.Is_Universal_String (Value) then
 
+            --  Protect string from deallocation by saving in Item
+
+            Item.String := League.Values.Get (Value);
+
             Code := Bind_By_Name
               (Self.Handle,
                Item.Bind'Access,
@@ -101,9 +113,9 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                League.Strings.Internals.Internal (Name).Value,
                Ub4 (League.Strings.Internals.Internal (Name).Unused) * 2,
                League.Strings.Internals.Internal
-                 (League.Values.Get (Value)).Value'Address,
+                 (Item.String).Value'Address,
                Ub4 (League.Strings.Internals.Internal
-                      (League.Values.Get (Value)).Unused) * 2,
+                      (Item.String).Unused) * 2,
                SQLT_CHR,
                Item.Is_Null'Access);
 
@@ -143,17 +155,18 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
          if Databases.Check_Error (Self.DB, Code) then
             Free (Item);
-            return;
+            return;  --  How to report errors?
          end if;
 
-         Item.Value := Value;
          Item.Is_Null := -Boolean'Pos (League.Values.Is_Empty (Value));
       end Bind;
 
    begin
-      Self.Parameters.Insert (Name, null, Pos, Ok);
+      if Self.State = Prepared then
+         Self.Parameters.Insert (Name, null, Pos, Ok);
 
-      Self.Parameters.Update_Element (Pos, Bind'Access);
+         Self.Parameters.Update_Element (Pos, Bind'Access);
+      end if;
    end Bind_Value;
 
    -------------------
@@ -164,7 +177,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
     (Self : not null access OCI_Query)
     return League.Strings.Universal_String is
    begin
-      return Self.DB.Error_Text;
+      return Self.DB.Error_Message;
    end Error_Message;
 
    -------------
@@ -174,39 +187,31 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
    overriding function Execute
      (Self : not null access OCI_Query) return Boolean
    is
-      procedure Free is new Ada.Unchecked_Deallocation
-        (Defined_Value_Array, Defined_Value_Array_Access);
 
-      Code : Error_Code;
+      Count : aliased Ub4;
+      Code  : Error_Code;
    begin
-      if Self.Handle = null then
-         --  Statement was not prepared.
-
+      if Self.State not in Ready then
          return False;
-      end if;
-
-      if Self.Is_Active then
-         --  Finish execution of the current statement when it is active.
-
-         Self.Finish;
       end if;
 
       Code := Stmt_Execute (Self.DB.Service,
                             Self.Handle,
                             Self.DB.Error,
-                            Iters => Boolean'Pos (not Self.Has_Row));
+                            Iters => Boolean'Pos (not Self.Is_Select));
 
       if Databases.Check_Error (Self.DB, Code) then
          return False;
       end if;
 
-      Self.Is_Active := True;
+      if Self.Is_Select and not Self.Is_Described then
+         Self.Is_Described := True;
+         Self.Column_Count := 0;
 
-      if Self.Has_Row and not Self.Is_Described then
          Code := Attr_Get
            (Target      => Self.Handle,
             Target_Type => HT_Statament,
-            Buffer      => Self.Count'Address,
+            Buffer      => Count'Address,
             Length      => null,
             Attr        => Attr_Param_Count,
             Error       => Self.DB.Error);
@@ -215,16 +220,15 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
             return False;
          end if;
 
-         if Self.Columns /= null and then Self.Columns'Length < Self.Count then
+         if Self.Columns /= null and then Self.Columns'Length < Count then
             Free (Self.Columns);
          end if;
 
-         if Self.Columns = null then
-            Self.Columns :=
-              new Defined_Value_Array (1 .. Positive (Self.Count));
+         if Self.Columns = null and Count > 0 then
+            Self.Columns := new Defined_Value_Array (1 .. Positive (Count));
          end if;
 
-         for J in 1 .. Positive (Self.Count) loop
+         for J in 1 .. Natural (Count) loop
             declare
                Param       : aliased Parameter;
                Column_Type : aliased Data_Type;
@@ -250,7 +254,6 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                   Attr_Data_Type,
                   Self.DB.Error);
 
-Ada.Wide_Wide_Text_IO.Put_Line ("type=" & Data_Type'Wide_Wide_Image (Column_Type));
                if Databases.Check_Error (Self.DB, Code) then
                   return False;
                end if;
@@ -264,21 +267,24 @@ Ada.Wide_Wide_Text_IO.Put_Line ("type=" & Data_Type'Wide_Wide_Image (Column_Type
                      Attr_Data_Size,
                      Self.DB.Error);
 
-Ada.Wide_Wide_Text_IO.Put_Line ("size=" & Ub2'Wide_Wide_Image (Size));
-
                   if Databases.Check_Error (Self.DB, Code) then
                      return False;
                   end if;
 
+                  Self.Columns (J).Column_Type := String_Column;
                   Self.Columns (J).Size := Utf16.Utf16_String_Index (Size + 1);
 
                   declare
-                     Ptr : Matreshka.Internals.Strings.Shared_String_Access :=
-                       Matreshka.Internals.Strings.Allocate
-                         (Self.Columns (J).Size);
+                     use Matreshka.Internals.Strings;
+                     Ptr : Shared_String_Access renames
+                       Self.Columns (J).String;
                   begin
-                     Self.Columns (J).Column_Type := String_Column;
-                     Self.Columns (J).String      := Ptr;
+                     if Ptr = null then
+                        Ptr := Allocate (Self.Columns (J).Size);
+                     elsif not Can_Be_Reused (Ptr, Self.Columns (J).Size) then
+                        Dereference (Ptr);
+                        Ptr := Allocate (Self.Columns (J).Size);
+                     end if;
 
                      Code := Define_By_Pos
                        (Stmt         => Self.Handle,
@@ -306,7 +312,6 @@ Ada.Wide_Wide_Text_IO.Put_Line ("size=" & Ub2'Wide_Wide_Image (Size));
                      Attr_Data_Scale,
                      Self.DB.Error);
 
-Ada.Wide_Wide_Text_IO.Put_Line ("scale=" & Sb1'Wide_Wide_Image (Scale));
                   if Databases.Check_Error (Self.DB, Code) then
                      return False;
                   end if;
@@ -328,7 +333,7 @@ Ada.Wide_Wide_Text_IO.Put_Line ("scale=" & Sb1'Wide_Wide_Image (Scale));
                         return False;
                      end if;
                   else
-                     Self.Columns (J).Column_Type := Decimal_Column;
+                     Self.Columns (J).Column_Type := Float_Column;
 
                      Code := Define_By_Pos
                        (Stmt         => Self.Handle,
@@ -345,7 +350,8 @@ Ada.Wide_Wide_Text_IO.Put_Line ("scale=" & Sb1'Wide_Wide_Image (Scale));
                      end if;
                   end if;
                else
-                  raise Constraint_Error with "Unsupported type";
+                  exit;
+                  --  raise Constraint_Error with "Unsupported type";
                end if;
 
                Code := Descriptor_Free (Param, DT_Parameter);
@@ -354,31 +360,98 @@ Ada.Wide_Wide_Text_IO.Put_Line ("scale=" & Sb1'Wide_Wide_Image (Scale));
                   return False;
                end if;
             end;
-         end loop;
 
-         Self.Is_Described := True;
+            Self.Column_Count := J;
+         end loop;
+      end if;
+
+      if Self.Is_Select then
+         Self.State := Executed;
+      else
+         Self.State:= No_More_Rows;
       end if;
 
       return True;
    end Execute;
 
+   ------------
+   -- Finish --
+   ------------
+
    overriding procedure Finish (Self : not null access OCI_Query) is
+      Code  : Error_Code;
    begin
-      if not Self.Is_Active then
-         --  Returns when query is not active.
+      if Self.State in Active then
 
-         return;
+         if Self.State in Fetching then
+            --  Cancel cursor by fetching no rows
+            Code := Stmt_Fetch (Self.Handle, Self.DB.Error, Rows => 0);
+
+            if Databases.Check_Error (Self.DB, Code) then
+               null;  --  How to report errors?
+            end if;
+         end if;
+
+         Self.State := Prepared;
       end if;
-
-      Self.Is_Active := False;
    end Finish;
 
---   overriding procedure Invalidate (Self : not null access OCI_Query);
+   ----------------
+   -- Invalidate --
+   ----------------
+
+   overriding procedure Invalidate (Self : not null access OCI_Query) is
+
+      procedure Drop (Pos : Parameter_Maps.Cursor);
+
+      ----------
+      -- Drop --
+      ----------
+
+      procedure Drop (Pos : Parameter_Maps.Cursor) is
+         Item : Bound_Value_Access := Parameter_Maps.Element (Pos);
+      begin
+         Free (Item);
+         Self.Parameters.Replace_Element (Pos, null);
+      end Drop;
+
+      Code  : Error_Code;
+   begin
+      if Self.Handle /= null then
+         Code := Handle_Free (Self.Handle, HT_Statament);
+
+         if Databases.Check_Error (Self.DB, Code) then
+            null;  --  How to report errors?
+         end if;
+
+         Self.Handle := null;
+      end if;
+
+      Self.Parameters.Iterate (Drop'Access);
+
+      if Self.Columns /= null then
+         declare
+            use Matreshka.Internals.Strings;
+         begin
+            for J in Self.Columns'Range loop
+               if Self.Columns (J).String /= null then
+                  Dereference (Self.Columns (J).String);
+               end if;
+            end loop;
+
+            Free (Self.Columns);
+         end;
+      end if;
+   end Invalidate;
+
+   ---------------
+   -- Is_Active --
+   ---------------
 
    overriding function Is_Active
     (Self : not null access OCI_Query) return Boolean is
    begin
-      return Self.Is_Active;
+      return Self.State in Active;
    end Is_Active;
 
    ----------
@@ -390,16 +463,16 @@ Ada.Wide_Wide_Text_IO.Put_Line ("scale=" & Sb1'Wide_Wide_Image (Scale));
      return Boolean
    is
       use Matreshka.Internals.Strings;
+      use type Sb2;
+      Ok   : Boolean;
       Code : Error_Code;
    begin
-      if not Self.Is_Active or not Self.Has_Row then
-         --  Returns immidiatly when statement is not active.
-
+      if Self.State not in Fetching then
          return False;
       end if;
 
       --  Rebind used strings columns
-      for J in 1 .. Positive (Self.Count) loop
+      for J in 1 .. Self.Column_Count loop
          if Self.Columns (J).Column_Type = String_Column and then
            not Can_Be_Reused (Self.Columns (J).String, Self.Columns (J).Size)
          then
@@ -417,6 +490,7 @@ Ada.Wide_Wide_Text_IO.Put_Line ("scale=" & Sb1'Wide_Wide_Image (Scale));
                Indicator    => Self.Columns (J).Is_Null'Access);
 
             if Databases.Check_Error (Self.DB, Code) then
+               Self.State := No_More_Rows;
                return False;
             end if;
 
@@ -425,30 +499,23 @@ Ada.Wide_Wide_Text_IO.Put_Line ("scale=" & Sb1'Wide_Wide_Image (Scale));
 
       Code := Stmt_Fetch (Self.Handle, Self.DB.Error);
 
-      if Databases.Check_Error (Self.DB, Code) then
-         return False;
-      end if;
+      if Databases.Check_Error (Self.DB, Code) or Code = Call_No_Data then
+         Self.State := No_More_Rows;
+      else
+         Self.State := Has_Row;
 
-      Self.Has_Row := Code /= Call_No_Data;
-
-      if Self.Has_Row then
-         for J in 1 .. Positive (Self.Count) loop
-            if Self.Columns (J).Column_Type = String_Column then
-               declare
-                  use type Sb2;
-                  Ok  : Boolean;
-               begin
-                  Fixups.Validate_And_Fixup (Self.Columns (J).String, Ok);
-
-                  if not Ok then
-                     Self.Columns (J).Is_Null := -1;
-                  end if;
-               end;
+         --  validate not null string columns
+         for J in 1 .. Self.Column_Count loop
+            if Self.Columns (J).Column_Type = String_Column and
+              Self.Columns (J).Is_Null = 0
+            then
+               Matreshka.Internals.Strings.C.Validate_And_Fixup
+                 (Self.Columns (J).String, Ok);
             end if;
          end loop;
       end if;
 
-      return Self.Has_Row;
+      return Self.State = Has_Row;
    end Next;
 
    -------------
@@ -460,8 +527,9 @@ Ada.Wide_Wide_Text_IO.Put_Line ("scale=" & Sb1'Wide_Wide_Image (Scale));
      Query : League.Strings.Universal_String) return Boolean
    is
       Select_Statement : constant := 1;
-      Code : Error_Code;
+
       Kind : aliased Ub2;
+      Code : Error_Code;
    begin
       if Self.Handle = null then
          Code := Handle_Alloc
@@ -494,11 +562,16 @@ Ada.Wide_Wide_Text_IO.Put_Line ("scale=" & Sb1'Wide_Wide_Image (Scale));
          return False;
       end if;
 
-      Self.Has_Row := Kind = Select_Statement;
+      Self.Is_Described := False;
+      Self.Is_Select := Kind = Select_Statement;
+      Self.State := Prepared;
 
-      Self.Is_Active := False;
       return True;
    end Prepare;
+
+   -----------
+   -- Value --
+   -----------
 
    overriding function Value
     (Self  : not null access OCI_Query;
@@ -507,25 +580,31 @@ Ada.Wide_Wide_Text_IO.Put_Line ("scale=" & Sb1'Wide_Wide_Image (Scale));
       use type Sb2;
       Value : League.Values.Value;
    begin
-      if Self.Columns (Index).Is_Null /= 0 then
+      if Self.State /= Has_Row or else Index > Self.Column_Count then
          return Value;
       elsif Self.Columns (Index).Column_Type = String_Column then
          League.Values.Set_Tag
            (Value, League.Values.Universal_String_Tag);
 
-         League.Values.Set
-           (Value,
-            League.Strings.Internals.Create (Self.Columns (Index).String));
+         if Self.Columns (Index).Is_Null = 0 then
+            League.Values.Set
+              (Value,
+               League.Strings.Internals.Create (Self.Columns (Index).String));
+         end if;
       elsif Self.Columns (Index).Column_Type = Integer_Column then
          League.Values.Set_Tag
            (Value, League.Values.Universal_Integer_Tag);
 
-         League.Values.Set (Value, Self.Columns (Index).Int);
-      elsif Self.Columns (Index).Column_Type = Decimal_Column then
+         if Self.Columns (Index).Is_Null = 0 then
+            League.Values.Set (Value, Self.Columns (Index).Int);
+         end if;
+      elsif Self.Columns (Index).Column_Type = Float_Column then
          League.Values.Set_Tag
            (Value, League.Values.Universal_Float_Tag);
 
-         League.Values.Set (Value, Self.Columns (Index).Float);
+         if Self.Columns (Index).Is_Null = 0 then
+            League.Values.Set (Value, Self.Columns (Index).Float);
+         end if;
       end if;
 
       return Value;

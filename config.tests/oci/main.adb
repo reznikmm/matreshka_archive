@@ -4,7 +4,7 @@
 --                                                                          --
 --                           SQL Database Access                            --
 --                                                                          --
---                        Runtime Library Component                         --
+--                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,42 +41,40 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Implementation of Abstract_Database type for Orecale database.
+--  This procedure import OCIEnvNlsCreate and contains call to it.
+--  If OCI is not available this result linker error.
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.SQL_Drivers.OCI.Databases is
+with Interfaces.C;
+with System;
 
-   ------------------
-   -- OCI_Database --
-   ------------------
+procedure Main is
 
-   type OCI_Database is new Abstract_Database with record
-      Error      : aliased Error_Handle;
-      Service    : aliased Service_Handle;
-      Error_Text : League.Strings.Universal_String;
-   end record;
+   use Interfaces;
 
-   overriding procedure Close (Self : not null access OCI_Database);
+   subtype Sword is C.int;
 
-   overriding procedure Commit (Self : not null access OCI_Database);
+   type Handle is access all Unsigned_32;
 
-   overriding function Error_Message
-    (Self : not null access OCI_Database)
-       return League.Strings.Universal_String;
+   function Env_NLS_Create
+     (Target    : access Handle;
+      Mode      : Unsigned_32;
+      Ctxp      : System.Address := System.Null_Address;
+      Malocfp   : System.Address := System.Null_Address;
+      Ralocfp   : System.Address := System.Null_Address;
+      Mfreefp   : System.Address := System.Null_Address;
+      Extra_Sz  : C.size_t := 0;
+      Extra_Ptr : System.Address := System.Null_Address;
+      Charset   : Unsigned_16 := 1000;
+      N_Charset : Unsigned_16 := 1000)
+     return Sword;
 
-   overriding function Query
-    (Self : not null access OCI_Database) return not null Query_Access;
+   pragma Import (C, Env_NLS_Create,    "OCIEnvNlsCreate");
 
-   overriding procedure Finalize (Self : not null access OCI_Database);
 
-   overriding function Open
-    (Self    : not null access OCI_Database;
-     Options : League.Strings.Universal_String) return Boolean;
+   Code : Sword;
+   Env  : aliased Handle;
 
-   Env : aliased Environment;
-
-   function Check_Error
-     (Self : not null access OCI_Database;
-      Code : Error_Code) return Boolean;
-
-end Matreshka.Internals.SQL_Drivers.OCI.Databases;
+begin
+   Code := Env_NLS_Create (Env'Access, 1);
+end Main;

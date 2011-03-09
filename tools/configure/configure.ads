@@ -70,6 +70,9 @@ package Configure is
    PostgreSQL_Library_Options : constant Ada.Strings.Unbounded.Unbounded_String
      := Ada.Strings.Unbounded.To_Unbounded_String
          ("POSTGRESQL_LIBRARY_OPTIONS");
+   OCI_Library_Options : constant Ada.Strings.Unbounded.Unbounded_String
+     := Ada.Strings.Unbounded.To_Unbounded_String
+         ("OCI_LIBRARY_OPTIONS");
 
    --  Internal variables to pass values between test subprogram.
 
@@ -93,6 +96,8 @@ package Configure is
 
    procedure Fatal_Error (Message : String);
    --  Outputs fatal message error and raises Internal_Error exception.
+
+   Is_Windows : Boolean := False;
 
    Internal_Error : exception;
 
