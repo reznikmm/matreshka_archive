@@ -101,7 +101,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
                   end if;
 
                   Next :=
-                    Error_Get
+                    OCIErrorGet
                      (Self.Error, 1,
                       Ora_Code    => Error'Access,
                       Buffer      => Self.Error_Text.Value,
@@ -157,7 +157,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
       if Self.Service /= null then
          Self.Invalidate_Queries;
 
-         Code := Logoff (Self.Service, Self.Error);
+         Code := OCILogoff (Self.Service, Self.Error);
 
          if Check_Error (Self, Code) then
             null;  --  How to report errors?
@@ -176,7 +176,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
 
    begin
       if Self.Service /= null then
-         Code := OCI.Commit (Self.Service, Self.Error);
+         Code := OCITransCommit (Self.Service, Self.Error);
 
          if Check_Error (Self, Code) then
             null;  --  How to report errors?
@@ -190,7 +190,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
 
    procedure Create_Environment (Self : not null access OCI_Database) is
       Created : aliased Environment;
-      Code    : Error_Code := Env_NLS_Create (Created'Access, Threaded);
+      Code    : Error_Code := OCIEnvNlsCreate (Created'Access, Threaded);
       Success : Boolean;
 
    begin
@@ -198,7 +198,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
          Env_Lock.Set_Env (Created, Success);
 
          if not Success then
-            Code := Handle_Free (Handle (Created), HT_Environment);
+            Code := OCIHandleFree (Handle (Created), HT_Environment);
          end if;
 
       else
@@ -338,7 +338,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
       end if;
 
       if Self.Error = null then
-         Code := Handle_Alloc (Env, Self.Error'Access, HT_Error);
+         Code := OCIHandleAlloc (Env, Self.Error'Access, HT_Error);
 
          if Code /= Call_Success then
             Set_Error (Self, "OCIHandleAlloc fails");
@@ -354,7 +354,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
 
       begin
          Code :=
-           Logon
+           OCILogon
             (Env, Self.Error, Self.Service'Access,
              League.Strings.Internals.Internal (User).Value,
              Ub4 (League.Strings.Internals.Internal (User).Unused) * 2,

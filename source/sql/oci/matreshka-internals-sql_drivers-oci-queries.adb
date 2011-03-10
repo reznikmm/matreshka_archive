@@ -97,7 +97,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
          if League.Values.Is_Empty (Value) then
             Code :=
-              Bind_By_Name
+              OCIBindByName
                (Self.Handle,
                 Item.Bind'Access,
                 Self.DB.Error,
@@ -113,7 +113,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
             --  Protect string from deallocation by saving in Item
 
             Code :=
-              Bind_By_Name
+              OCIBindByName
                (Self.Handle,
                 Item.Bind'Access,
                 Self.DB.Error,
@@ -127,7 +127,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
          elsif League.Values.Is_Abstract_Integer (Value) then
             Code :=
-              Bind_By_Name
+              OCIBindByName
                (Self.Handle,
                 Item.Bind'Access,
                 Self.DB.Error,
@@ -142,7 +142,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
          elsif League.Values.Is_Abstract_Float (Value) then
             Code :=
-              Bind_By_Name
+              OCIBindByName
                (Self.Handle,
                 Item.Bind'Access,
                 Self.DB.Error,
@@ -204,7 +204,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
       end if;
 
       Code :=
-        Stmt_Execute
+        OCIStmtExecute
          (Self.DB.Service,
           Self.Handle,
           Self.DB.Error,
@@ -219,7 +219,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
          Self.Column_Count := 0;
 
          Code :=
-           Attr_Get
+           OCIAttrGet
             (Target      => Self.Handle,
              Target_Type => HT_Statament,
              Buffer      => Count'Address,
@@ -248,7 +248,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
             begin
                Code :=
-                 Param_Get
+                 OCIParamGet
                   (Self.Handle,
                    HT_Statament,
                    Self.DB.Error,
@@ -260,7 +260,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                end if;
 
                Code :=
-                 Attr_Get
+                 OCIAttrGet
                   (Param,
                    DT_Parameter,
                    Column_Type'Address,
@@ -274,7 +274,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
                if Column_Type = SQLT_CHR or Column_Type = SQLT_AFC then
                   Code :=
-                    Attr_Get
+                    OCIAttrGet
                      (Param,
                       DT_Parameter,
                       Size'Address,
@@ -305,7 +305,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                      end if;
 
                      Code :=
-                       Define_By_Pos
+                       OCIDefineByPos
                         (Stmt         => Self.Handle,
                          Target       => Self.Columns (J).Define'Access,
                          Error        => Self.DB.Error,
@@ -325,7 +325,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                  or Column_Type = SQLT_IBDOUBLE
                then
                   Code :=
-                    Attr_Get
+                    OCIAttrGet
                      (Param,
                       DT_Parameter,
                       Scale'Address,
@@ -340,7 +340,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                   if Column_Type = SQLT_NUM and Scale = 0 then
                      Self.Columns (J).Column_Type := Integer_Column;
                      Code :=
-                       Define_By_Pos
+                       OCIDefineByPos
                         (Stmt         => Self.Handle,
                          Target       => Self.Columns (J).Define'Access,
                          Error        => Self.DB.Error,
@@ -358,7 +358,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                      Self.Columns (J).Column_Type := Float_Column;
 
                      Code :=
-                       Define_By_Pos
+                       OCIDefineByPos
                         (Stmt         => Self.Handle,
                          Target       => Self.Columns (J).Define'Access,
                          Error        => Self.DB.Error,
@@ -378,7 +378,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                   --  raise Constraint_Error with "Unsupported type";
                end if;
 
-               Code := Descriptor_Free (Param, DT_Parameter);
+               Code := OCIDescriptorFree (Param, DT_Parameter);
 
                if Databases.Check_Error (Self.DB, Code) then
                   return False;
@@ -411,7 +411,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
          if Self.State in Fetching then
             --  Cancel cursor by fetching no rows
 
-            Code := Stmt_Fetch (Self.Handle, Self.DB.Error, Rows => 0);
+            Code := OCIStmtFetch2 (Self.Handle, Self.DB.Error, Rows => 0);
 
             if Databases.Check_Error (Self.DB, Code) then
                null;  --  How to report errors?
@@ -446,7 +446,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
    begin
       if Self.Handle /= null then
-         Code := Handle_Free (Self.Handle, HT_Statament);
+         Code := OCIHandleFree (Self.Handle, HT_Statament);
 
          if Databases.Check_Error (Self.DB, Code) then
             null;  --  How to report errors?
@@ -512,7 +512,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
             Self.Columns (J).String := Allocate (Self.Columns (J).Size);
 
             Code :=
-              Define_By_Pos
+              OCIDefineByPos
                (Stmt         => Self.Handle,
                 Target       => Self.Columns (J).Define'Access,
                 Error        => Self.DB.Error,
@@ -530,7 +530,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
          end if;
       end loop;
 
-      Code := Stmt_Fetch (Self.Handle, Self.DB.Error);
+      Code := OCIStmtFetch2 (Self.Handle, Self.DB.Error);
 
       if Databases.Check_Error (Self.DB, Code) or Code = Call_No_Data then
          Self.State := No_More_Rows;
@@ -570,7 +570,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
    begin
       if Self.Handle = null then
          Code :=
-           Handle_Alloc (Databases.Env, Self.Handle'Access, HT_Statament);
+           OCIHandleAlloc (Databases.Env, Self.Handle'Access, HT_Statament);
 
          if Databases.Check_Error (Self.DB, Code) then
             return False;
@@ -578,7 +578,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
       end if;
 
       Code :=
-        Stmt_Prepare
+        OCIStmtPrepare
          (Self.Handle,
           Self.DB.Error,
           League.Strings.Internals.Internal (Query).Value,
@@ -589,7 +589,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
       end if;
 
       Code :=
-        Attr_Get
+        OCIAttrGet
          (Target      => Self.Handle,
           Target_Type => HT_Statament,
           Buffer      => Kind'Address,

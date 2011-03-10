@@ -146,50 +146,50 @@ package Matreshka.Internals.SQL_Drivers.OCI is
 
    OCI_UTF16ID : constant := 1000;
 
-   function Handle_Alloc
+   function OCIHandleAlloc
     (Parent      : Environment;
      Target      : access Handle;
      Target_Type : Handle_Type;
      Extra_Sz    : Size_T := 0;
      Extra_Ptr   : Address := Null_Address) return Error_Code;
-   pragma Import (C, Handle_Alloc, "OCIHandleAlloc");
+   pragma Import (C, OCIHandleAlloc, "OCIHandleAlloc");
 
-   function Handle_Free
+   function OCIHandleFree
     (Target      : Handle;
      Target_Type : Handle_Type) return Error_Code;
-   pragma Import (C, Handle_Free, "OCIHandleFree");
+   pragma Import (C, OCIHandleFree, "OCIHandleFree");
 
-   function Descriptor_Alloc
+   function OCIDescriptorAlloc
     (Parent      : Environment;
      Target      : access Handle;
      Target_Type : Handle_Type;
      Extra_Sz    : Size_T := 0;
      Extra_Ptr   : Address := Null_Address) return Error_Code;
-   pragma Import (C, Descriptor_Alloc, "OCIDescriptorAlloc");
+   pragma Import (C, OCIDescriptorAlloc, "OCIDescriptorAlloc");
 
-   function Attr_Get
+   function OCIAttrGet
     (Target      : Handle;
      Target_Type : Handle_Type;
      Buffer      : Address;
      Length      : Ub4_Ptr;
      Attr        : Ub4;
      Error       : Error_Handle) return Error_Code;
-   pragma Import (C, Attr_Get, "OCIAttrGet");
+   pragma Import (C, OCIAttrGet, "OCIAttrGet");
 
-   function Descriptor_Free
+   function OCIDescriptorFree
     (Target      : Handle;
      Target_Type : Handle_Type) return Error_Code;
-   pragma Import (C, Descriptor_Free, "OCIDescriptorFree");
+   pragma Import (C, OCIDescriptorFree, "OCIDescriptorFree");
 
-   function Param_Get
+   function OCIParamGet
     (Target      : Handle;
      Target_Type : Handle_Type;
      Error       : Error_Handle;
      Result      : access Parameter;
      Position    : Ub4) return Error_Code;
-   pragma Import (C, Param_Get, "OCIParamGet");
+   pragma Import (C, OCIParamGet, "OCIParamGet");
 
-   function Env_NLS_Create
+   function OCIEnvNlsCreate
     (Target    : access Environment;
      Mode      : Env_Mode;
      Ctxp      : Address := Null_Address;
@@ -200,9 +200,9 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      Extra_Ptr : Address := Null_Address;
      Charset   : Ub2 := OCI_UTF16ID;
      N_Charset : Ub2 := OCI_UTF16ID) return Error_Code;
-   pragma Import (C, Env_NLS_Create, "OCIEnvNlsCreate");
+   pragma Import (C, OCIEnvNlsCreate, "OCIEnvNlsCreate");
 
-   function Logon
+   function OCILogon
     (Env          : Environment;
      Error        : Error_Handle;
      Target       : access Service_Handle;
@@ -212,25 +212,25 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      Passwd_Len   : Ub4;
      Dbname       : Matreshka.Internals.Utf16.Utf16_String;
      Dbname_Len   : Ub4) return Error_Code;
-   pragma Import (C, Logon, "OCILogon");
+   pragma Import (C, OCILogon, "OCILogon");
 
-   function Logoff
+   function OCILogoff
     (Target : Service_Handle; Error : Error_Handle) return Error_Code;
-   pragma Import (C, Logoff, "OCILogoff");
+   pragma Import (C, OCILogoff, "OCILogoff");
 
-   function Commit
+   function OCITransCommit
     (Target : Service_Handle;
      Error  : Error_Handle;
      Flags  : Ub4 := Default) return Error_Code;
-   pragma Import (C, Commit, "OCITransCommit");
+   pragma Import (C, OCITransCommit, "OCITransCommit");
 
-   function Rollback
+   function OCITransRollback
     (Target : Service_Handle;
      Error  : Error_Handle;
      Flags  : Ub4 := Default) return Error_Code;
-   pragma Import (C, Rollback, "OCITransRollback");
+   pragma Import (C, OCITransRollback, "OCITransRollback");
 
-   function Error_Get
+   function OCIErrorGet
     (Error       : Error_Handle;
      Record_No   : Ub4;
      Sql_State   : Address := Null_Address;
@@ -238,18 +238,18 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      Buffer      : Matreshka.Internals.Utf16.Utf16_String;
      Buffer_Size : Ub4;
      H_Type      : Handle_Type := HT_Error) return Error_Code;
-   pragma Import (C, Error_Get, "OCIErrorGet");
+   pragma Import (C, OCIErrorGet, "OCIErrorGet");
 
-   function Stmt_Prepare
+   function OCIStmtPrepare
     (Stmt        : Statement_Handle;
      Error       : Error_Handle;
      Text        : Matreshka.Internals.Utf16.Utf16_String;
      Text_Length : Ub4;
      Language    : Ub4 := 1;
      Mode        : Ub4 := 0) return Error_Code;
-   pragma Import (C, Stmt_Prepare, "OCIStmtPrepare");
+   pragma Import (C, OCIStmtPrepare, "OCIStmtPrepare");
 
-   function Stmt_Execute
+   function OCIStmtExecute
     (Service  : Service_Handle;
      Stmt     : Statement_Handle;
      Errhp    : Error_Handle;
@@ -258,18 +258,18 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      Snap_In  : Address := Null_Address;
      Snap_Out : Address := Null_Address;
      Mode     : Ub4 := 0) return Error_Code;
-   pragma Import (C, Stmt_Execute, "OCIStmtExecute");
+   pragma Import (C, OCIStmtExecute, "OCIStmtExecute");
 
-   function Stmt_Fetch
+   function OCIStmtFetch2
     (Stmt        : Statement_Handle;
      Error       : Error_Handle;
      Rows        : Ub4 := 1;
      Orientation : Ub2 := Default;
      Offset      : Ub4 := 0;
      Mode        : Ub4 := Default) return Error_Code;
-   pragma Import (C, Stmt_Fetch,    "OCIStmtFetch2");
+   pragma Import (C, OCIStmtFetch2,    "OCIStmtFetch2");
 
-   function Bind_By_Name
+   function OCIBindByName
     (Stmt         : Statement_Handle;
      Target       : access Bind;
      Error        : Error_Handle;
@@ -284,9 +284,9 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      Max_Array    : Ub4 := 0;
      Curelep      : Address := Null_Address;
      Mode         : Ub4 := 0) return Error_Code;
-   pragma Import (C, Bind_By_Name,  "OCIBindByName");
+   pragma Import (C, OCIBindByName,  "OCIBindByName");
 
-   function Bind_By_Pos
+   function OCIBindByPos
     (Stmt         : Statement_Handle;
      Target       : access Bind;
      Error        : Error_Handle;
@@ -300,9 +300,9 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      Max_Array    : Ub4 := 0;
      Curelep      : Address := Null_Address;
      Mode         : Ub4 := 0) return Error_Code;
-   pragma Import (C, Bind_By_Pos, "OCIBindByPos");
+   pragma Import (C, OCIBindByPos, "OCIBindByPos");
 
-   function Define_By_Pos
+   function OCIDefineByPos
     (Stmt         : Statement_Handle;
      Target       : access Define;
      Error        : Error_Handle;
@@ -314,33 +314,33 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      Array_Length : Address := Null_Address;
      Rcodep       : Address := Null_Address;
      Mode         : Ub4 := 0) return Error_Code;
-   pragma Import (C, Define_By_Pos, "OCIDefineByPos");
+   pragma Import (C, OCIDefineByPos, "OCIDefineByPos");
 
-   function Charset_Id_To_Name
+   function OCINlsCharSetIdToName
     (Env        : Environment;
      Buffer     : Ora_Text;
      Buffer_Len : Size_T;
      Id         : Ub2) return Error_Code;
-   pragma Import (C, Charset_Id_To_Name, "OCINlsCharSetIdToName");
+   pragma Import (C, OCINlsCharSetIdToName, "OCINlsCharSetIdToName");
 
-   function Name_Map
+   function OCINlsNameMap
     (Env        : Environment;
      Buffer     : Ora_Text;
      Buffer_Len : Size_T;
      Source     : Ora_Text;
      Flag       : Sword) return Error_Code;
-   pragma Import (C, Name_Map, "OCINlsNameMap");
+   pragma Import (C, OCINlsNameMap, "OCINlsNameMap");
 
-   function Get_Date
+   function OCIDateTimeGetDate
     (Env   : Environment;
      Error : Error_Handle;
      Date  : Date_Time;
      Year  : access Sb2;
      Month : access Ub1;
      Day   : access Ub1) return Error_Code;
-   pragma Import (C, Get_Date, "OCIDateTimeGetDate");
+   pragma Import (C, OCIDateTimeGetDate, "OCIDateTimeGetDate");
 
-   function Get_Time
+   function OCIDateTimeGetTime
     (Env   : Environment;
      Error : Error_Handle;
      Date  : Date_Time;
@@ -348,9 +348,9 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      Min   : access Ub1;
      Sec   : access Ub1;
      Fract : access Ub4) return Error_Code;
-   pragma Import (C, Get_Time, "OCIDateTimeGetTime");
+   pragma Import (C, OCIDateTimeGetTime, "OCIDateTimeGetTime");
 
-   function Construct
+   function OCIDateTimeConstruct
     (Env    : Environment;
      Error  : Error_Handle;
      Date   : Date_Time;
@@ -363,7 +363,7 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      Fract  : Ub4;
      TZ     : Address := Null_Address;
      TZ_Len : Size_T := 0) return Error_Code;
-   pragma Import (C, Construct, "OCIDateTimeConstruct");
+   pragma Import (C, OCIDateTimeConstruct, "OCIDateTimeConstruct");
 
 private
 
