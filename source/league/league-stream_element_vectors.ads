@@ -41,12 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Finalization;
+private with Ada.Finalization;
 with Ada.Streams;
 
-with Matreshka.Internals.Stream_Element_Vectors;
---  GNAT GPL 2009/GNAT FSF 4.4: private with clause make package invisible
---  in children packages.
+private with Matreshka.Internals.Stream_Element_Vectors;
 
 package League.Stream_Element_Vectors is
 

@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
 with Matreshka.Internals.Stream_Element_Vectors;
 
 package League.Stream_Element_Vectors.Internals is
