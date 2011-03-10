@@ -41,16 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Implementation of Abstract_Database type for Orecale database.
+--  Implementation of Abstract_Database type for Oracle database.
 ------------------------------------------------------------------------------
-
 with Matreshka.Internals.Strings;
 
 package Matreshka.Internals.SQL_Drivers.OCI.Databases is
-
-   ------------------
-   -- OCI_Database --
-   ------------------
 
    type OCI_Database is new Abstract_Database with record
       Error      : aliased Error_Handle;
@@ -75,10 +70,12 @@ package Matreshka.Internals.SQL_Drivers.OCI.Databases is
     (Self    : not null access OCI_Database;
      Options : League.Strings.Universal_String) return Boolean;
 
-   Env : aliased Environment;
-
    function Check_Error
      (Self : not null access OCI_Database;
       Code : Error_Code) return Boolean;
+
+   Env : aliased Environment;
+   --  XXX Reasons of use of global object must be here, as well as all kind of
+   --  considerations of its use.
 
 end Matreshka.Internals.SQL_Drivers.OCI.Databases;

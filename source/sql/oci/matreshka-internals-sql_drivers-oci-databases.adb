@@ -41,43 +41,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
-
 with League.Strings.Internals;
-with Matreshka.Internals.Strings.C;
 with Matreshka.Internals.SQL_Drivers.OCI.Queries;
+with Matreshka.Internals.Strings.C;
 
 package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
 
+   use type Interfaces.Unsigned_32;
    use type Matreshka.Internals.Strings.Shared_String_Access;
 
    procedure Create_Environment (Self : not null access OCI_Database);
 
    procedure Set_Error
-     (Self : not null access OCI_Database;
-      Text : Wide_Wide_String);
+    (Self : not null access OCI_Database;
+     Text : Wide_Wide_String);
 
    protected Env_Lock is
-      procedure Set_Env
-        (Value   : Environment;
-         Success : out Boolean);
-   end Env_Lock;
 
-   --------------
-   -- Env_Lock --
-   --------------
+      procedure Set_Env (Value : Environment; Success : out Boolean);
 
-   protected body Env_Lock is
-      procedure Set_Env
-        (Value   : Environment;
-         Success : out Boolean) is
-      begin
-         Success := Env = null;
-
-         if Success then
-            Env := Value;
-         end if;
-      end Set_Env;
    end Env_Lock;
 
    -----------------
@@ -85,46 +67,53 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
    -----------------
 
    function Check_Error
-     (Self : not null access OCI_Database;
-      Code : Error_Code) return Boolean is
+    (Self : not null access OCI_Database;
+     Code : Error_Code) return Boolean is
    begin
       case Code is
          when Call_Success =>
             null;
+
          when Call_Need_Data =>
             null;
+
          when Call_No_Data =>
             null;
+
          when Call_Success_With_Info | Call_Error =>
             declare
                use Matreshka.Internals.Strings;
                use type Utf16.Utf16_String_Index;
 
-               Ok     : Boolean;
-               Size   : Utf16.Utf16_String_Index := 512;
+               Ok    : Boolean;
+               Size  : Utf16.Utf16_String_Index := 512;
+               Next  : Error_Code;
+               Error : aliased Ub4;
 
-               Next   : Error_Code;
-               Error  : aliased Ub4;
             begin
                for J in 1 .. 10 loop
                   if Self.Error_Text = null then
                      Self.Error_Text := Allocate (Size);
+
                   elsif not Can_Be_Reused (Self.Error_Text, Size) then
                      Dereference (Self.Error_Text);
                      Self.Error_Text := Allocate (Size);
                   end if;
 
-                  Next := Error_Get
-                    (Self.Error, 1,
-                     Ora_Code    => Error'Access,
-                     Buffer      => Self.Error_Text.Value,
-                     Buffer_Size => Self.Error_Text.Value'Length * 2,
-                     H_Type      => HT_Error);
+                  Next :=
+                    Error_Get
+                     (Self.Error, 1,
+                      Ora_Code    => Error'Access,
+                      Buffer      => Self.Error_Text.Value,
+                      Buffer_Size => Self.Error_Text.Value'Length * 2,
+                      H_Type      => HT_Error);
 
                   if Next = Call_Success then
                      Matreshka.Internals.Strings.C.Validate_And_Fixup
-                       (Self.Error_Text, Ok);
+                      (Self.Error_Text, Ok);
+
                      return True;
+
                   else
                      Size := 2 * Size;
                   end if;
@@ -132,18 +121,25 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
 
                Dereference (Self.Error_Text);
                Self.Error_Text := Shared_Empty'Access;
+
                return True;
             end;
+
          when Call_Invalid_Handle =>
             Set_Error (Self, "Invalid Handle");
+
             return True;
+
          when Call_Still_Executing =>
             null;
+
          when Call_Continue =>
             null;
+
          when others =>
             Set_Error
-              (Self, "Unexpected code" & Error_Code'Wide_Wide_Image (Code));
+             (Self, "Unexpected code" & Error_Code'Wide_Wide_Image (Code));
+
             return True;
       end case;
 
@@ -155,7 +151,8 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
    -----------
 
    overriding procedure Close (Self : not null access OCI_Database) is
-     Code : Error_Code;
+      Code : Error_Code;
+
    begin
       if Self.Service /= null then
          Self.Invalidate_Queries;
@@ -176,6 +173,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
 
    overriding procedure Commit (Self : not null access OCI_Database) is
       Code : Error_Code;
+
    begin
       if Self.Service /= null then
          Code := OCI.Commit (Self.Service, Self.Error);
@@ -194,6 +192,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
       Created : aliased Environment;
       Code    : Error_Code := Env_NLS_Create (Created'Access, Threaded);
       Success : Boolean;
+
    begin
       if Code = Call_Success then
          Env_Lock.Set_Env (Created, Success);
@@ -201,10 +200,34 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
          if not Success then
             Code := Handle_Free (Handle (Created), HT_Environment);
          end if;
+
       else
          Set_Error (Self, "OCIEnvNlsCreate fails");
       end if;
    end Create_Environment;
+
+   --------------
+   -- Env_Lock --
+   --------------
+
+   protected body Env_Lock is
+
+      -------------
+      -- Set_Env --
+      -------------
+
+      procedure Set_Env
+       (Value   : Environment;
+        Success : out Boolean) is
+      begin
+         Success := Env = null;
+
+         if Success then
+            Env := Value;
+         end if;
+      end Set_Env;
+
+   end Env_Lock;
 
    -------------------
    -- Error_Message --
@@ -212,10 +235,11 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
 
    overriding function Error_Message
     (Self : not null access OCI_Database)
-    return League.Strings.Universal_String is
+       return League.Strings.Universal_String is
    begin
       if Self.Error_Text = null then
          return League.Strings.Empty_Universal_String;
+
       else
          return League.Strings.Internals.Create (Self.Error_Text);
       end if;
@@ -299,6 +323,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
       end Get_User;
 
       Code : Error_Code;
+
    begin
       if Self.Service /= null then
          Self.Close;
@@ -326,15 +351,17 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
          User : constant League.Strings.Universal_String := Get_User;
          Pwd  : constant League.Strings.Universal_String := Get_Password;
          DB   : constant League.Strings.Universal_String := Get_Database;
+
       begin
-         Code := Logon
-           (Env, Self.Error, Self.Service'Access,
-            League.Strings.Internals.Internal (User).Value,
-            Ub4 (League.Strings.Internals.Internal (User).Unused) * 2,
-            League.Strings.Internals.Internal (Pwd).Value,
-            Ub4 (League.Strings.Internals.Internal (Pwd).Unused) * 2,
-            League.Strings.Internals.Internal (DB).Value,
-            Ub4 (League.Strings.Internals.Internal (DB).Unused) * 2);
+         Code :=
+           Logon
+            (Env, Self.Error, Self.Service'Access,
+             League.Strings.Internals.Internal (User).Value,
+             Ub4 (League.Strings.Internals.Internal (User).Unused) * 2,
+             League.Strings.Internals.Internal (Pwd).Value,
+             Ub4 (League.Strings.Internals.Internal (Pwd).Unused) * 2,
+             League.Strings.Internals.Internal (DB).Value,
+             Ub4 (League.Strings.Internals.Internal (DB).Unused) * 2);
 
          if Check_Error (Self, Code) then
             return False;
@@ -349,7 +376,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
    -----------
 
    overriding function Query
-     (Self : not null access OCI_Database) return not null Query_Access is
+    (Self : not null access OCI_Database) return not null Query_Access is
    begin
       return Aux : constant not null Query_Access
         := new Queries.OCI_Query (Self)
@@ -363,11 +390,12 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
    ---------------
 
    procedure Set_Error
-     (Self : not null access OCI_Database;
-      Text : Wide_Wide_String)
+    (Self : not null access OCI_Database;
+     Text : Wide_Wide_String)
    is
-      String : constant League.Strings.Universal_String :=
-        League.Strings.To_Universal_String (Text);
+      String : constant League.Strings.Universal_String
+        := League.Strings.To_Universal_String (Text);
+
    begin
       if Self.Error_Text /= null then
          Matreshka.Internals.Strings.Dereference (Self.Error_Text);

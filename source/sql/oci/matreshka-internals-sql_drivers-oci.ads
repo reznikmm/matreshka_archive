@@ -41,9 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
+with Interfaces.C;
 with System;
-with Interfaces.C;        use Interfaces;
 
 with Matreshka.Internals.Utf16;
 
@@ -52,16 +51,16 @@ package Matreshka.Internals.SQL_Drivers.OCI is
    subtype Address is System.Address;
    Null_Address : constant Address := System.Null_Address;
 
-   subtype Size_T is C.size_t;
+   subtype Size_T is Interfaces.C.size_t;
 
-   subtype Sword is C.int;
-   subtype Ub4 is Unsigned_32;
-   subtype Ub2 is Unsigned_16;
-   subtype Ub1 is Unsigned_8;
-   subtype Sb1 is Integer_8;
-   subtype Sb2 is C.short;
+   subtype Sword is Interfaces.C.int;
+   subtype Ub4 is Interfaces.Unsigned_32;
+   subtype Ub2 is Interfaces.Unsigned_16;
+   subtype Ub1 is Interfaces.Unsigned_8;
+   subtype Sb1 is Interfaces.Integer_8;
+   subtype Sb2 is Interfaces.C.short;
 
-   subtype Ora_Text is C.char_array;
+   subtype Ora_Text is Interfaces.C.char_array;
 
    type Ub4_Ptr is access all Ub4;
 
@@ -87,69 +86,42 @@ package Matreshka.Internals.SQL_Drivers.OCI is
 
    type Data_Type is new Ub2;
 
-   SQLT_CHR      : constant Data_Type := 1;
-   SQLT_NUM      : constant Data_Type := 2;
-   SQLT_INT      : constant Data_Type := 3;
-   SQLT_FLT      : constant Data_Type := 4;
-   SQLT_STR      : constant Data_Type := 5;
-   SQLT_VNU      : constant Data_Type := 6;
-   SQLT_VCS      : constant Data_Type := 9;
-   SQLT_DAT      : constant Data_Type := 12;
-   SQLT_BFLOAT   : constant Data_Type := 21;
-   SQLT_BDOUBLE  : constant Data_Type := 22;
-   SQLT_AFC      : constant Data_Type := 96;
-   SQLT_IBFLOAT  : constant Data_Type := 100;
-   SQLT_IBDOUBLE : constant Data_Type := 101;
+   SQLT_CHR           : constant Data_Type := 1;
+   SQLT_NUM           : constant Data_Type := 2;
+   SQLT_INT           : constant Data_Type := 3;
+   SQLT_FLT           : constant Data_Type := 4;
+   SQLT_STR           : constant Data_Type := 5;
+   SQLT_VNU           : constant Data_Type := 6;
+   SQLT_VCS           : constant Data_Type := 9;
+   SQLT_DAT           : constant Data_Type := 12;
+   SQLT_BFLOAT        : constant Data_Type := 21;
+   SQLT_BDOUBLE       : constant Data_Type := 22;
+   SQLT_AFC           : constant Data_Type := 96;
+   SQLT_IBFLOAT       : constant Data_Type := 100;
+   SQLT_IBDOUBLE      : constant Data_Type := 101;
    SQLT_TIMESTAMP     : constant Data_Type := 187;
    SQLT_TIMESTAMP_TZ  : constant Data_Type := 188;
    SQLT_INTERVAL_YM   : constant Data_Type := 189;
    SQLT_INTERVAL_DS   : constant Data_Type := 190;
    SQLT_TIMESTAMP_LTZ : constant Data_Type := 232;
 
-   type Internal is private;
+   type Internal is limited private;
 
-   type Handle       is access all Internal;
-   type Bind         is access all Internal;
-   type Define       is access all Internal;
-
+   type Handle is access all Internal;
    pragma Convention (C, Handle);
+
+   subtype Environment      is Handle;
+   subtype Error_Handle     is Handle;
+   subtype Parameter        is Handle;
+   subtype Date_Time        is Handle;
+   subtype Service_Handle   is Handle;
+   subtype Statement_Handle is Handle;
+
+   type Bind is access all Internal;
    pragma Convention (C, Bind);
+
+   type Define is access all Internal;
    pragma Convention (C, Define);
-
-   type Environment  is new Handle;
-   pragma Convention (C, Environment);
-
-   function Handle_Alloc
-     (Parent      : Environment;
-      Target      : access Handle;
-      Target_Type : Handle_Type;
-      Extra_Sz    : Size_T := 0;
-      Extra_Ptr   : Address := Null_Address)
-     return Error_Code;
-
-   function Handle_Free
-     (Target      : Handle;
-      Target_Type : Handle_Type)
-     return Error_Code;
-
-   function Descriptor_Alloc
-     (Parent      : Environment;
-      Target      : access Handle;
-      Target_Type : Handle_Type;
-      Extra_Sz    : Size_T := 0;
-      Extra_Ptr   : Address := Null_Address)
-     return Error_Code;
-
-   type Error_Handle is new Handle;
-
-   function Attr_Get
-     (Target      : Handle;
-      Target_Type : Handle_Type;
-      Buffer      : Address;
-      Length      : Ub4_Ptr;
-      Attr        : Ub4;
-      Error       : Error_Handle)
-     return Error_Code;
 
    Attr_Data_Size      : constant Ub4 := 1;
    Attr_Data_Type      : constant Ub4 := 2;
@@ -164,24 +136,6 @@ package Matreshka.Internals.SQL_Drivers.OCI is
    Attr_Char_Used      : constant Ub4 := 285;
    Attr_Char_Size      : constant Ub4 := 286;
 
-   function Descriptor_Free
-     (Target      : Handle;
-      Target_Type : Handle_Type)
-     return Error_Code;
-
-   type Parameter        is new Handle;
-
-   function Param_Get
-     (Target      : Handle;
-      Target_Type : Handle_Type;
-      Error       : Error_Handle;
-      Result      : access Parameter;
-      Position    : Ub4)
-     return Error_Code;
-
-   type Service_Handle   is new Handle;
-   type Statement_Handle is new Handle;
-
    type Env_Mode is new Ub4;
 
    Default  : constant          := 16#000#;
@@ -192,212 +146,227 @@ package Matreshka.Internals.SQL_Drivers.OCI is
 
    OCI_UTF16ID : constant := 1000;
 
+   function Handle_Alloc
+    (Parent      : Environment;
+     Target      : access Handle;
+     Target_Type : Handle_Type;
+     Extra_Sz    : Size_T := 0;
+     Extra_Ptr   : Address := Null_Address) return Error_Code;
+   pragma Import (C, Handle_Alloc, "OCIHandleAlloc");
+
+   function Handle_Free
+    (Target      : Handle;
+     Target_Type : Handle_Type) return Error_Code;
+   pragma Import (C, Handle_Free, "OCIHandleFree");
+
+   function Descriptor_Alloc
+    (Parent      : Environment;
+     Target      : access Handle;
+     Target_Type : Handle_Type;
+     Extra_Sz    : Size_T := 0;
+     Extra_Ptr   : Address := Null_Address) return Error_Code;
+   pragma Import (C, Descriptor_Alloc, "OCIDescriptorAlloc");
+
+   function Attr_Get
+    (Target      : Handle;
+     Target_Type : Handle_Type;
+     Buffer      : Address;
+     Length      : Ub4_Ptr;
+     Attr        : Ub4;
+     Error       : Error_Handle) return Error_Code;
+   pragma Import (C, Attr_Get, "OCIAttrGet");
+
+   function Descriptor_Free
+    (Target      : Handle;
+     Target_Type : Handle_Type) return Error_Code;
+   pragma Import (C, Descriptor_Free, "OCIDescriptorFree");
+
+   function Param_Get
+    (Target      : Handle;
+     Target_Type : Handle_Type;
+     Error       : Error_Handle;
+     Result      : access Parameter;
+     Position    : Ub4) return Error_Code;
+   pragma Import (C, Param_Get, "OCIParamGet");
+
    function Env_NLS_Create
-     (Target    : access Environment;
-      Mode      : Env_Mode;
-      Ctxp      : Address := Null_Address;
-      Malocfp   : Address := Null_Address;
-      Ralocfp   : Address := Null_Address;
-      Mfreefp   : Address := Null_Address;
-      Extra_Sz  : Size_T := 0;
-      Extra_Ptr : Address := Null_Address;
-      Charset   : Ub2 := OCI_UTF16ID;
-      N_Charset : Ub2 := OCI_UTF16ID)
-     return Error_Code;
+    (Target    : access Environment;
+     Mode      : Env_Mode;
+     Ctxp      : Address := Null_Address;
+     Malocfp   : Address := Null_Address;
+     Ralocfp   : Address := Null_Address;
+     Mfreefp   : Address := Null_Address;
+     Extra_Sz  : Size_T := 0;
+     Extra_Ptr : Address := Null_Address;
+     Charset   : Ub2 := OCI_UTF16ID;
+     N_Charset : Ub2 := OCI_UTF16ID) return Error_Code;
+   pragma Import (C, Env_NLS_Create, "OCIEnvNlsCreate");
 
    function Logon
-     (Env          : Environment;
-      Error        : Error_Handle;
-      Target       : access Service_Handle;
-      Username     : Matreshka.Internals.Utf16.Utf16_String;
-      Username_Len : Ub4;
-      Password     : Matreshka.Internals.Utf16.Utf16_String;
-      Passwd_Len   : Ub4;
-      Dbname       : Matreshka.Internals.Utf16.Utf16_String;
-      Dbname_Len   : Ub4)
-     return Error_Code;
+    (Env          : Environment;
+     Error        : Error_Handle;
+     Target       : access Service_Handle;
+     Username     : Matreshka.Internals.Utf16.Utf16_String;
+     Username_Len : Ub4;
+     Password     : Matreshka.Internals.Utf16.Utf16_String;
+     Passwd_Len   : Ub4;
+     Dbname       : Matreshka.Internals.Utf16.Utf16_String;
+     Dbname_Len   : Ub4) return Error_Code;
+   pragma Import (C, Logon, "OCILogon");
 
    function Logoff
-     (Target       : Service_Handle;
-      Error        : Error_Handle)
-     return Error_Code;
+    (Target : Service_Handle; Error : Error_Handle) return Error_Code;
+   pragma Import (C, Logoff, "OCILogoff");
 
    function Commit
-     (Target       : Service_Handle;
-      Error        : Error_Handle;
-      Flags        : Ub4 := Default)
-     return Error_Code;
+    (Target : Service_Handle;
+     Error  : Error_Handle;
+     Flags  : Ub4 := Default) return Error_Code;
+   pragma Import (C, Commit, "OCITransCommit");
 
    function Rollback
-     (Target       : Service_Handle;
-      Error        : Error_Handle;
-      Flags        : Ub4 := Default)
-     return Error_Code;
+    (Target : Service_Handle;
+     Error  : Error_Handle;
+     Flags  : Ub4 := Default) return Error_Code;
+   pragma Import (C, Rollback, "OCITransRollback");
 
    function Error_Get
-     (Error       : Error_Handle;
-      Record_No   : Ub4;
-      Sql_State   : Address := Null_Address;
-      Ora_Code    : access Ub4;
-      Buffer      : Matreshka.Internals.Utf16.Utf16_String;
-      Buffer_Size : Ub4;
-      H_Type      : Handle_Type := HT_Error)
-     return Error_Code;
+    (Error       : Error_Handle;
+     Record_No   : Ub4;
+     Sql_State   : Address := Null_Address;
+     Ora_Code    : access Ub4;
+     Buffer      : Matreshka.Internals.Utf16.Utf16_String;
+     Buffer_Size : Ub4;
+     H_Type      : Handle_Type := HT_Error) return Error_Code;
+   pragma Import (C, Error_Get, "OCIErrorGet");
 
    function Stmt_Prepare
-     (Stmt         : Statement_Handle;
-      Error        : Error_Handle;
-      Text         : Matreshka.Internals.Utf16.Utf16_String;
-      Text_Length  : Ub4;
-      Language     : Ub4 := 1;
-      Mode         : Ub4 := 0)
-     return Error_Code;
+    (Stmt        : Statement_Handle;
+     Error       : Error_Handle;
+     Text        : Matreshka.Internals.Utf16.Utf16_String;
+     Text_Length : Ub4;
+     Language    : Ub4 := 1;
+     Mode        : Ub4 := 0) return Error_Code;
+   pragma Import (C, Stmt_Prepare, "OCIStmtPrepare");
 
    function Stmt_Execute
-     (Service      : Service_Handle;
-      Stmt         : Statement_Handle;
-      Errhp        : Error_Handle;
-      Iters        : Ub4;
-      Row_Off      : Ub4 := 0;
-      Snap_In      : Address := Null_Address;
-      Snap_Out     : Address := Null_Address;
-      Mode         : Ub4 := 0)
-     return Error_Code;
+    (Service  : Service_Handle;
+     Stmt     : Statement_Handle;
+     Errhp    : Error_Handle;
+     Iters    : Ub4;
+     Row_Off  : Ub4 := 0;
+     Snap_In  : Address := Null_Address;
+     Snap_Out : Address := Null_Address;
+     Mode     : Ub4 := 0) return Error_Code;
+   pragma Import (C, Stmt_Execute, "OCIStmtExecute");
 
    function Stmt_Fetch
-     (Stmt         : Statement_Handle;
-      Error        : Error_Handle;
-      Rows         : Ub4 := 1;
-      Orientation  : Ub2 := Default;
-      Offset       : Ub4 := 0;
-      Mode         : Ub4 := Default)
-     return Error_Code;
+    (Stmt        : Statement_Handle;
+     Error       : Error_Handle;
+     Rows        : Ub4 := 1;
+     Orientation : Ub2 := Default;
+     Offset      : Ub4 := 0;
+     Mode        : Ub4 := Default) return Error_Code;
+   pragma Import (C, Stmt_Fetch,    "OCIStmtFetch2");
 
    function Bind_By_Name
-     (Stmt         : Statement_Handle;
-      Target       : access Bind;
-      Error        : Error_Handle;
-      Place        : Matreshka.Internals.Utf16.Utf16_String;
-      Place_Length : Ub4;
-      Value        : Address;
-      Value_Length : Ub4;
-      Value_Type   : Data_Type;
-      Indicator    : access Sb2;
-      Array_Length : Address := Null_Address;
-      Rcodep       : Address := Null_Address;
-      Max_Array    : Ub4 := 0;
-      Curelep      : Address := Null_Address;
-      Mode         : Ub4 := 0)
-     return Error_Code;
+    (Stmt         : Statement_Handle;
+     Target       : access Bind;
+     Error        : Error_Handle;
+     Place        : Matreshka.Internals.Utf16.Utf16_String;
+     Place_Length : Ub4;
+     Value        : Address;
+     Value_Length : Ub4;
+     Value_Type   : Data_Type;
+     Indicator    : access Sb2;
+     Array_Length : Address := Null_Address;
+     Rcodep       : Address := Null_Address;
+     Max_Array    : Ub4 := 0;
+     Curelep      : Address := Null_Address;
+     Mode         : Ub4 := 0) return Error_Code;
+   pragma Import (C, Bind_By_Name,  "OCIBindByName");
 
    function Bind_By_Pos
-     (Stmt         : Statement_Handle;
-      Target       : access Bind;
-      Error        : Error_Handle;
-      Position     : Ub4;
-      Value        : Address;
-      Value_Length : Ub4;
-      Value_Type   : Data_Type;
-      Indicator    : access Sb2;
-      Array_Length : Address := Null_Address;
-      Rcodep       : Address := Null_Address;
-      Max_Array    : Ub4 := 0;
-      Curelep      : Address := Null_Address;
-      Mode         : Ub4 := 0)
-     return Error_Code;
+    (Stmt         : Statement_Handle;
+     Target       : access Bind;
+     Error        : Error_Handle;
+     Position     : Ub4;
+     Value        : Address;
+     Value_Length : Ub4;
+     Value_Type   : Data_Type;
+     Indicator    : access Sb2;
+     Array_Length : Address := Null_Address;
+     Rcodep       : Address := Null_Address;
+     Max_Array    : Ub4 := 0;
+     Curelep      : Address := Null_Address;
+     Mode         : Ub4 := 0) return Error_Code;
+   pragma Import (C, Bind_By_Pos, "OCIBindByPos");
 
    function Define_By_Pos
-     (Stmt         : Statement_Handle;
-      Target       : access Define;
-      Error        : Error_Handle;
-      Position     : Ub4;
-      Value        : Address;
-      Value_Length : Ub4;
-      Value_Type   : Data_Type;
-      Indicator    : access Sb2;
-      Array_Length : Address := Null_Address;
-      Rcodep       : Address := Null_Address;
-      Mode         : Ub4 := 0)
-     return Error_Code;
+    (Stmt         : Statement_Handle;
+     Target       : access Define;
+     Error        : Error_Handle;
+     Position     : Ub4;
+     Value        : Address;
+     Value_Length : Ub4;
+     Value_Type   : Data_Type;
+     Indicator    : access Sb2;
+     Array_Length : Address := Null_Address;
+     Rcodep       : Address := Null_Address;
+     Mode         : Ub4 := 0) return Error_Code;
+   pragma Import (C, Define_By_Pos, "OCIDefineByPos");
 
    function Charset_Id_To_Name
-     (Env          : Environment;
-      Buffer       : Ora_Text;
-      Buffer_Len   : Size_T;
-      Id           : Ub2)
-     return Error_Code;
+    (Env        : Environment;
+     Buffer     : Ora_Text;
+     Buffer_Len : Size_T;
+     Id         : Ub2) return Error_Code;
+   pragma Import (C, Charset_Id_To_Name, "OCINlsCharSetIdToName");
 
    function Name_Map
-     (Env          : Environment;
-      Buffer       : Ora_Text;
-      Buffer_Len   : Size_T;
-      Source       : Ora_Text;
-      Flag         : Sword)
-     return Error_Code;
-
-   type Date_Time is new Handle;
+    (Env        : Environment;
+     Buffer     : Ora_Text;
+     Buffer_Len : Size_T;
+     Source     : Ora_Text;
+     Flag       : Sword) return Error_Code;
+   pragma Import (C, Name_Map, "OCINlsNameMap");
 
    function Get_Date
-     (Env   : Environment;
-      Error : Error_Handle;
-      Date  : Date_Time;
-      Year  : access Sb2;
-      Month : access Ub1;
-      Day   : access Ub1)
-     return Error_Code;
+    (Env   : Environment;
+     Error : Error_Handle;
+     Date  : Date_Time;
+     Year  : access Sb2;
+     Month : access Ub1;
+     Day   : access Ub1) return Error_Code;
+   pragma Import (C, Get_Date, "OCIDateTimeGetDate");
 
    function Get_Time
-     (Env   : Environment;
-      Error : Error_Handle;
-      Date  : Date_Time;
-      Hour  : access Ub1;
-      Min   : access Ub1;
-      Sec   : access Ub1;
-      Fract : access Ub4)
-     return Error_Code;
+    (Env   : Environment;
+     Error : Error_Handle;
+     Date  : Date_Time;
+     Hour  : access Ub1;
+     Min   : access Ub1;
+     Sec   : access Ub1;
+     Fract : access Ub4) return Error_Code;
+   pragma Import (C, Get_Time, "OCIDateTimeGetTime");
 
    function Construct
-     (Env    : Environment;
-      Error  : Error_Handle;
-      Date   : Date_Time;
-      Year   : Sb2;
-      Month  : Ub1;
-      Day    : Ub1;
-      Hour   : Ub1;
-      Min    : Ub1;
-      Sec    : Ub1;
-      Fract  : Ub4;
-      TZ     : Address := Null_Address;
-      TZ_Len : Size_T := 0)
-     return Error_Code;
+    (Env    : Environment;
+     Error  : Error_Handle;
+     Date   : Date_Time;
+     Year   : Sb2;
+     Month  : Ub1;
+     Day    : Ub1;
+     Hour   : Ub1;
+     Min    : Ub1;
+     Sec    : Ub1;
+     Fract  : Ub4;
+     TZ     : Address := Null_Address;
+     TZ_Len : Size_T := 0) return Error_Code;
+   pragma Import (C, Construct, "OCIDateTimeConstruct");
 
 private
 
-   type Internal is new Integer;
-
-   pragma Import (C, Env_NLS_Create,    "OCIEnvNlsCreate");
-   pragma Import (C, Handle_Alloc,  "OCIHandleAlloc");
-   pragma Import (C, Handle_Free,   "OCIHandleFree");
-   pragma Import (C, Logon,         "OCILogon");
-   pragma Import (C, Logoff,        "OCILogoff");
-   pragma Import (C, Error_Get,     "OCIErrorGet");
-   pragma Import (C, Stmt_Prepare,  "OCIStmtPrepare");
-   pragma Import (C, Bind_By_Name,  "OCIBindByName");
-   pragma Import (C, Bind_By_Pos,   "OCIBindByPos");
-   pragma Import (C, Define_By_Pos, "OCIDefineByPos");
-   pragma Import (C, Stmt_Execute,  "OCIStmtExecute");
-   pragma Import (C, Attr_Get,      "OCIAttrGet");
-   pragma Import (C, Stmt_Fetch,    "OCIStmtFetch2");
-   pragma Import (C, Commit,        "OCITransCommit");
-   pragma Import (C, Rollback,      "OCITransRollback");
-   pragma Import (C, Param_Get,     "OCIParamGet");
-   pragma Import (C, Name_Map,      "OCINlsNameMap");
-   pragma Import (C, Get_Date,      "OCIDateTimeGetDate");
-   pragma Import (C, Get_Time,      "OCIDateTimeGetTime");
-   pragma Import (C, Construct,     "OCIDateTimeConstruct");
-
-   pragma Import (C, Charset_Id_To_Name, "OCINlsCharSetIdToName");
-   pragma Import (C, Descriptor_Free,    "OCIDescriptorFree");
-   pragma Import (C, Descriptor_Alloc,   "OCIDescriptorAlloc");
+   type Internal is limited null record;
 
 end Matreshka.Internals.SQL_Drivers.OCI;

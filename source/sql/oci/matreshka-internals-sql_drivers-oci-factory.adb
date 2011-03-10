@@ -58,6 +58,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Factory is
      (Self : not null access OCI_Factory) return not null Database_Access
    is
       pragma Unreferenced (Self);
+
    begin
       return new Databases.OCI_Database;
    end Create;
