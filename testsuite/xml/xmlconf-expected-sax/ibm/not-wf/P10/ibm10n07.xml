@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <fatalError>whitespace&#x20;is&#x20;missing&#x20;before&#x20;attribute&#x20;name</fatalError>
+  <endDocument/>
+</SAXEvents>

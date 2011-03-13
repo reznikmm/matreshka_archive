@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <fatalError>[XML&#x20;[52]&#x20;AttlistDecl]&#x20;no&#x20;whitespace&#x20;before&#x20;element&apos;s&#x20;name</fatalError>
+  <endDocument/>
+</SAXEvents>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/oasis/p64fail1.dtd</systemID>
-    </resolveEntity>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <resolveEntity>
+    <name>[dtd]</name>
+    <systemID>p64fail1.dtd</systemID>
+  </resolveEntity>
+  <fatalError>&apos;]]&gt;&apos;&#x20;doesn&apos;t&#x20;close&#x20;conditional&#x20;section</fatalError>
+  <endDocument/>
+</SAXEvents>

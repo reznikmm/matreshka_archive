@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <warning/>
+  <fatalError>[3.1&#x20;WFC:&#x20;Unique&#x20;Att&#x20;Spec]&#x20;an&#x20;attribute&#x20;name&#x20;must&#x20;not&#x20;appear&#x20;more&#x20;than&#x20;once&#x20;in&#x20;the&#x20;same&#x20;tag</fatalError>
+  <endDocument/>
+</SAXEvents>

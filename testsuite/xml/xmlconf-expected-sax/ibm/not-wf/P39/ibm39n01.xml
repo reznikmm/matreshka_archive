@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
-        <namespaceURI/>
-        <localName>root</localName>
-        <qualifiedName>root</qualifiedName>
-        <attributes/>
-    </startElement>
-    <char>m</char>
-    <char>i</char>
-    <char>s</char>
-    <char>s</char>
-    <char>i</char>
-    <char>n</char>
-    <char>g</char>
-    <char>\s</char>
-    <char>e</char>
-    <char>n</char>
-    <char>d</char>
-    <char>\s</char>
-    <char>t</char>
-    <char>a</char>
-    <char>g</char>
-    <char>\n</char>
-    <char>\n</char>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>root</localName>
+    <qualifiedName>root</qualifiedName>
+    <attributes/>
+  </startElement>
+  <characters>m</characters>
+  <characters>i</characters>
+  <characters>s</characters>
+  <characters>s</characters>
+  <characters>i</characters>
+  <characters>n</characters>
+  <characters>g</characters>
+  <characters>&#x20;</characters>
+  <characters>e</characters>
+  <characters>n</characters>
+  <characters>d</characters>
+  <characters>&#x20;</characters>
+  <characters>t</characters>
+  <characters>a</characters>
+  <characters>g</characters>
+  <characters>&#xA;</characters>
+  <characters>&#xA;</characters>
+  <fatalError>syntax&#x20;error</fatalError>
+  <endDocument/>
+</SAXEvents>

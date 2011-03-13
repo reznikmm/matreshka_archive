@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <fatalError>[XML&#x20;[45]]&#x20;no&#x20;whitespace&#x20;after&#x20;name</fatalError>
+  <endDocument/>
+</SAXEvents>

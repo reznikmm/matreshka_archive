@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <startElement>
+<SAXEvents>
+  <startDocument/>
+  <startElement>
+    <namespaceURI/>
+    <localName>student</localName>
+    <qualifiedName>student</qualifiedName>
+    <attributes>
+      <attribute>
         <namespaceURI/>
-        <localName>student</localName>
-        <qualifiedName>student</qualifiedName>
-        <attributes>
-            <attribute>
-                <namespaceURI/>
-                <localName>first</localName>
-                <qualifiedName>first</qualifiedName>
-                <value>Snow</value>
-                <type>CDATA</type>
-            </attribute>
-        </attributes>
-    </startElement>
-    <char>M</char>
-    <char>y</char>
-    <char>\s</char>
-    <char>n</char>
-    <char>a</char>
-    <char>m</char>
-    <char>e</char>
-    <char>\s</char>
-    <char>i</char>
-    <char>s</char>
-    <char>\s</char>
-    <char>S</char>
-    <char>n</char>
-    <char>o</char>
-    <char>w</char>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+        <localName>first</localName>
+        <qualifiedName>first</qualifiedName>
+        <value>Snow</value>
+        <type>CDATA</type>
+        <isDeclared>true</isDeclared>
+        <isSpecified>true</isSpecified>
+      </attribute>
+    </attributes>
+  </startElement>
+  <characters>M</characters>
+  <characters>y</characters>
+  <characters>&#x20;</characters>
+  <characters>n</characters>
+  <characters>a</characters>
+  <characters>m</characters>
+  <characters>e</characters>
+  <characters>&#x20;</characters>
+  <characters>i</characters>
+  <characters>s</characters>
+  <characters>&#x20;</characters>
+  <characters>S</characters>
+  <characters>n</characters>
+  <characters>o</characters>
+  <characters>w</characters>
+  <fatalError>unexpected&#x20;character</fatalError>
+  <endDocument/>
+</SAXEvents>
