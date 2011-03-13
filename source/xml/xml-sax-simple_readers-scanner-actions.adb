@@ -2021,7 +2021,8 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          if not Self.Whitespace_Matched then
             Callbacks.Call_Fatal_Error
              (Self.all,
-              League.Strings.To_Universal_String ("no whitespace after name"));
+              League.Strings.To_Universal_String
+               ("[XML [45]] no whitespace after name"));
 
             return Error;
          end if;
