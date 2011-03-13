@@ -678,9 +678,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ELEMENT_DECL,ELEMENT_CHILDREN>"(" {
    --  Open parenthesis, rules [49], [50], [51].
 
-   Enter_Start_Condition (Self, ELEMENT_CHILDREN);
-
-   return Token_Open_Parenthesis;
+   return Actions.On_Open_Parenthesis_In_Content_Declaration (Self);
 }
 
 <ELEMENT_CHILDREN>")" {
@@ -877,7 +875,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    end if;
 }
 
-<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,ELEMENT_DECL,CONDITIONAL_DIRECTIVE>{WHITE_SPACE} {
+<DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,CONDITIONAL_DIRECTIVE>{WHITE_SPACE} {
    --  All white spaces from rules [28] are ignored.
    --  Whitespace before name in rule [76] is ignored.
 
@@ -916,7 +914,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    null;
 }
 
-<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,NOTATION_DECL,ELEMENT_START,ATTLIST_NAME,ATTLIST_DECL,ATTLIST_TYPE,ELEMENT_NAME,ELEMENT_CHILDREN>{WHITE_SPACE} {
+<XML_DECL,EXTERNAL_ID_PUB,EXTERNAL_ID_SYS,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,NOTATION_DECL,ELEMENT_START,ATTLIST_NAME,ATTLIST_DECL,ATTLIST_TYPE,ELEMENT_NAME,ELEMENT_DECL,ELEMENT_CHILDREN>{WHITE_SPACE} {
    --  White spaces in entity declaration are not optional, rules [71], [72],
    --  [75], [76].
    --
@@ -927,6 +925,9 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    --  All white spaces from rules [23], [24], [25], [32], [80], [82] are
    --  ignored, but white space between attribute value and name of the
    --  next attribute are must be present.
+   --
+   --  Production [45] requires whitespace after the name and before
+   --  content specification.
    --
    --  Productions [47], [48] don't allow spaces before multiplicity
    --  indicator.
@@ -1238,6 +1239,9 @@ with Matreshka.Internals.Strings;
       function On_CDATA (Self : access Integer) return Token;
 
       function On_Incomplete_CDATA (Self : access Integer) return Token;
+
+      function On_Open_Parenthesis_In_Content_Declaration
+       (Self : access Integer) return Token;
 
       function On_Close_Parenthesis_In_Content_Declaration
        (Self : access Integer) return Token;

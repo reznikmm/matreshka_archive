@@ -325,6 +325,11 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    --  Handles close parenthesis in element content model and mixed content
    --  declaration, productions [49], [50], [51].
 
+   function On_Open_Parenthesis_In_Content_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open parenthesis in element content model and mixed content
+   --  declaration, productions [49], [50], [51].
+
    function On_Question_Mark_In_Content_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles question mark in element content model, productions [47], [48].

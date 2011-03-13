@@ -1152,9 +1152,7 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 63 =>
                --  Open parenthesis, rules [49], [50], [51].
 
-               Enter_Start_Condition (Self, ELEMENT_CHILDREN);
-
-               return Token_Open_Parenthesis;
+               return Actions.On_Open_Parenthesis_In_Content_Declaration (Self);
 
             when 64 =>
                --  Close parenthesis, rules [49], [50], [51].
@@ -1364,6 +1362,9 @@ package body XML.SAX.Simple_Readers.Scanner is
                --  All white spaces from rules [23], [24], [25], [32], [80], [82] are
                --  ignored, but white space between attribute value and name of the
                --  next attribute are must be present.
+               --
+               --  Production [45] requires whitespace after the name and before
+               --  content specification.
                --
                --  Productions [47], [48] don't allow spaces before multiplicity
                --  indicator.

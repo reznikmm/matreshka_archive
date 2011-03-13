@@ -1555,6 +1555,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Qname_Error : Boolean;
 
    begin
+      --  Production [45] requires whitespace after name and before content
+      --  specification, so whitespace indicator is reset here.
+
+      Self.Whitespace_Matched := False;
+
       Resolve_Symbol
        (Self, 0, 0, False, True, False, Qname_Error, Self.YYLVal.Symbol);
 
@@ -1997,6 +2002,35 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       return Token_Xml_Decl_Open;
    end On_Open_Of_XML_Or_Text_Declaration;
+
+   ------------------------------------------------
+   -- On_Open_Parenthesis_In_Content_Declaration --
+   ------------------------------------------------
+
+   function On_Open_Parenthesis_In_Content_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) return Token
+   is
+      use type Interfaces.Unsigned_32;
+
+   begin
+      if Start_Condition (Self) = Tables.ELEMENT_DECL then
+         --  Check whitespace from rule [45] elementdecl. This subprogram
+         --  changes scanner's start condition, so handing of nested
+         --  declarations skip check below.
+
+         if not Self.Whitespace_Matched then
+            Callbacks.Call_Fatal_Error
+             (Self.all,
+              League.Strings.To_Universal_String ("no whitespace after name"));
+
+            return Error;
+         end if;
+
+         Enter_Start_Condition (Self, Tables.ELEMENT_CHILDREN);
+      end if;
+
+      return Token_Open_Parenthesis;
+   end On_Open_Parenthesis_In_Content_Declaration;
 
    -----------------------------------------------------------
    -- On_Parameter_Entity_Reference_In_Document_Declaration --
