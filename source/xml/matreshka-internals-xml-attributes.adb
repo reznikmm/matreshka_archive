@@ -67,6 +67,7 @@ package body Matreshka.Internals.XML.Attributes is
 
    procedure Finalize (Self : in out Attribute_Set) is
    begin
+      Clear (Self);
       Free (Self.Attributes);
    end Finalize;
 
