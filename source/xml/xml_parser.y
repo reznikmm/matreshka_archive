@@ -181,11 +181,17 @@ TextDecl :
       --  However, in such a case the rules of XML 1.1 are applied to the
       --  entire document."
 
-      Actions.On_Text_Declaration (Self, $4.String, $7.String);
+      Actions.On_Text_Declaration
+       (Self,
+        $4.String,
+        $7.String);
    }
 | Token_Xml_Decl_Open Token_Encoding Token_Equal Token_String_Segment Token_PI_Close
    {
-      Actions.On_Text_Declaration (Self, Matreshka.Internals.Strings.Shared_Empty'Access, $4.String);
+      Actions.On_Text_Declaration
+       (Self,
+        Matreshka.Internals.Strings.Shared_Empty'Access,
+        $4.String);
    }
 ;
 
