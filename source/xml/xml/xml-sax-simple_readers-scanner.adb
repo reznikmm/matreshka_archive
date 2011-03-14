@@ -88,11 +88,19 @@ package body XML.SAX.Simple_Readers.Scanner is
 
    procedure Finalize (Self : in out SAX_Simple_Reader'Class) is
    begin
+      --  Unwind entity stack and release all input sources owned by the
+      --  reader.
+
       while not Self.Scanner_Stack.Is_Empty loop
          Free (Self.Scanner_State.Source);
          Self.Scanner_State := Self.Scanner_Stack.Last_Element;
          Self.Scanner_Stack.Delete_Last;
       end loop;
+
+      --  Release last token, it can be unused by the parser when fatal error
+      --  occured.
+
+      Clear (Self.YYLVal);
 
       --  Release shared string when scanner's stack is empty, because it is
       --  buffer for document entity.
