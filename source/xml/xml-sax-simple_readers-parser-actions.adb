@@ -714,11 +714,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
       Self.Current_Element_Name := Symbol;
       Self.Current_Element := Element (Self.Symbols, Symbol);
-
-      --  Clear attributes set
-
-      Clear (Self.Attribute_Set);
-      Self.SAX_Attributes.Clear;
    end On_Open_Of_Tag;
 
    -------------------------------------
@@ -1477,6 +1472,14 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
               (Self.Symbols, Self.Current_Element_Name),
            Attributes     => Self.SAX_Attributes);
       end if;
+
+      --  Clear set of attributes. It is slightly more efficient to do here,
+      --  then postpone to open of tag because occupied resources are not
+      --  used longer and some of them (character data buffer for example) can
+      --  be reused for other purpose.
+
+      Clear (Self.Attribute_Set);
+      Self.SAX_Attributes.Clear;
    end On_Start_Tag;
 
    -------------------------
