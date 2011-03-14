@@ -210,6 +210,10 @@ package body XML.SAX.Simple_Readers.Parser is
             end if;
 
             if YY.TOS > 0 then
+               --  Clear top element on the value stack.
+
+               Clear (YY.Value_Stack (YY.TOS));
+
                YY.TOS := YY.TOS - 1;
             end if;
 
@@ -334,6 +338,8 @@ package body XML.SAX.Simple_Readers.Parser is
             YY.State_Stack (YY.TOS) :=
               YY_Goto_State
                (YY.State_Stack (YY.TOS - 1), YY_Get_LHS_Rule (YY_Rule_Id));
+
+            --  Clear poped elements of the value stack.
 
             for J in YY.TOS .. YY_TOS_Old loop
                Clear (YY.Value_Stack (J));
