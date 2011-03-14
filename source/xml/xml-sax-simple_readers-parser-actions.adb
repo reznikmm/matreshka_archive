@@ -710,8 +710,15 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
     (Self   : not null access SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
+      --  Save name of element and resolve it.
+
       Self.Current_Element_Name := Symbol;
       Self.Current_Element := Element (Self.Symbols, Symbol);
+
+      --  Clear attributes set
+
+      Clear (Self.Attribute_Set);
+      Self.SAX_Attributes.Clear;
    end On_Open_Of_Tag;
 
    -------------------------------------
@@ -1470,9 +1477,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
               (Self.Symbols, Self.Current_Element_Name),
            Attributes     => Self.SAX_Attributes);
       end if;
-
-      Clear (Self.Attribute_Set);
-      Self.SAX_Attributes.Clear;
    end On_Start_Tag;
 
    -------------------------
