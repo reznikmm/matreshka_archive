@@ -87,12 +87,21 @@ package body XML.SAX.Simple_Readers.Scanner is
    --------------
 
    procedure Finalize (Self : in out SAX_Simple_Reader'Class) is
+      use type XML.SAX.Input_Sources.SAX_Input_Source_Access;
+
    begin
       --  Unwind entity stack and release all input sources owned by the
       --  reader.
 
       while not Self.Scanner_Stack.Is_Empty loop
-         Free (Self.Scanner_State.Source);
+         if Self.Scanner_State.Source /= null then
+            --  Deallocate input source and replacement text data, because
+            --  it was not yet saved in the entities table.
+
+            Free (Self.Scanner_State.Source);
+            Matreshka.Internals.Strings.Dereference (Self.Scanner_State.Data);
+         end if;
+
          Self.Scanner_State := Self.Scanner_Stack.Last_Element;
          Self.Scanner_Stack.Delete_Last;
       end loop;
