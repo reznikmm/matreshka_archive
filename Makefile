@@ -47,6 +47,7 @@ check: all
 	.objs/test_35
 	.objs/test_20 testsuite/xml/TN-20/
 	.objs/test_26 testsuite/xml/TN-26/26-expected.xml
+	.objs/test_99
 	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --valid --not-wellformed
 
 ucd:

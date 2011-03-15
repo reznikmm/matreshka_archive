@@ -213,7 +213,8 @@ private
 
    type Scanner_State_Information is record
       Source               : XML.SAX.Input_Sources.SAX_Input_Source_Access;
-      Data                 : Matreshka.Internals.Strings.Shared_String_Access;
+      Data                 : Matreshka.Internals.Strings.Shared_String_Access
+        := Matreshka.Internals.Strings.Shared_Empty'Access;
       YY_Base_Position     : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
       YY_Base_Index        : Positive := 1;
       YY_Base_Line         : Natural := 1;
