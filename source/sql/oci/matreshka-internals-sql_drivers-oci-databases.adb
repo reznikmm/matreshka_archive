@@ -71,16 +71,16 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
      Code : Error_Code) return Boolean is
    begin
       case Code is
-         when Call_Success =>
+         when OCI_SUCCESS =>
             null;
 
-         when Call_Need_Data =>
+         when OCI_NEED_DATA =>
             null;
 
-         when Call_No_Data =>
+         when OCI_NO_DATA =>
             null;
 
-         when Call_Success_With_Info | Call_Error =>
+         when OCI_SUCCESS_WITH_INFO | OCI_ERROR =>
             declare
                use Matreshka.Internals.Strings;
                use type Utf16.Utf16_String_Index;
@@ -106,9 +106,9 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
                       Ora_Code    => Error'Access,
                       Buffer      => Self.Error_Text.Value,
                       Buffer_Size => Self.Error_Text.Value'Length * 2,
-                      H_Type      => HT_Error);
+                      H_Type      => OCI_HTYPE_ERROR);
 
-                  if Next = Call_Success then
+                  if Next = OCI_SUCCESS then
                      Matreshka.Internals.Strings.C.Validate_And_Fixup
                       (Self.Error_Text, Ok);
 
@@ -125,15 +125,15 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
                return True;
             end;
 
-         when Call_Invalid_Handle =>
+         when OCI_INVALID_HANDLE =>
             Set_Error (Self, "Invalid Handle");
 
             return True;
 
-         when Call_Still_Executing =>
+         when OCI_STILL_EXECUTING =>
             null;
 
-         when Call_Continue =>
+         when OCI_CONTINUE =>
             null;
 
          when others =>
@@ -190,15 +190,15 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
 
    procedure Create_Environment (Self : not null access OCI_Database) is
       Created : aliased Environment;
-      Code    : Error_Code := OCIEnvNlsCreate (Created'Access, Threaded);
+      Code    : Error_Code := OCIEnvNlsCreate (Created'Access, OCI_THREADED);
       Success : Boolean;
 
    begin
-      if Code = Call_Success then
+      if Code = OCI_SUCCESS then
          Env_Lock.Set_Env (Created, Success);
 
          if not Success then
-            Code := OCIHandleFree (Handle (Created), HT_Environment);
+            Code := OCIHandleFree (Handle (Created), OCI_HTYPE_ENV);
          end if;
 
       else
@@ -338,9 +338,9 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
       end if;
 
       if Self.Error = null then
-         Code := OCIHandleAlloc (Env, Self.Error'Access, HT_Error);
+         Code := OCIHandleAlloc (Env, Self.Error'Access, OCI_HTYPE_ERROR);
 
-         if Code /= Call_Success then
+         if Code /= OCI_SUCCESS then
             Set_Error (Self, "OCIHandleAlloc fails");
 
             return False;

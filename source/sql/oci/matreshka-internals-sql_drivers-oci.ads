@@ -66,23 +66,22 @@ package Matreshka.Internals.SQL_Drivers.OCI is
 
    type Error_Code is new Sword;
 
-   Call_Success           : constant Error_Code := 0;
-   Call_Success_With_Info : constant Error_Code := 1;
-   Call_Need_Data         : constant Error_Code := 99;
-   Call_No_Data           : constant Error_Code := 100;
-   Call_Error             : constant Error_Code := -1;
-   Call_Invalid_Handle    : constant Error_Code := -2;
-   Call_Still_Executing   : constant Error_Code := -3123;
-   Call_Continue          : constant Error_Code := -24200;
+   OCI_SUCCESS           : constant Error_Code := 0;
+   OCI_SUCCESS_WITH_INFO : constant Error_Code := 1;
+   OCI_NEED_DATA         : constant Error_Code := 99;
+   OCI_NO_DATA           : constant Error_Code := 100;
+   OCI_ERROR             : constant Error_Code := -1;
+   OCI_INVALID_HANDLE    : constant Error_Code := -2;
+   OCI_STILL_EXECUTING   : constant Error_Code := -3123;
+   OCI_CONTINUE          : constant Error_Code := -24200;
 
    type Handle_Type is new Ub4;
 
-   HT_Environment : constant Handle_Type := 1;
-   HT_Error       : constant Handle_Type := 2;
-   HT_Service     : constant Handle_Type := 3;
-   HT_Statament   : constant Handle_Type := 4;
-   DT_Parameter   : constant Handle_Type := 53;
-   DT_Time_LTZ    : constant Handle_Type := 70;
+   OCI_HTYPE_ENV     : constant Handle_Type := 1;
+   OCI_HTYPE_ERROR   : constant Handle_Type := 2;
+   OCI_HTYPE_SVCCTX  : constant Handle_Type := 3;
+   OCI_HTYPE_STMT    : constant Handle_Type := 4;
+   OCI_DTYPE_PARAM   : constant Handle_Type := 53;
 
    type Data_Type is new Ub2;
 
@@ -123,28 +122,39 @@ package Matreshka.Internals.SQL_Drivers.OCI is
    type Define is access all Internal;
    pragma Convention (C, Define);
 
-   Attr_Data_Size      : constant Ub4 := 1;
-   Attr_Data_Type      : constant Ub4 := 2;
-   Attr_Name           : constant Ub4 := 4;
-   Attr_Data_Precision : constant Ub4 := 5;
-   Attr_Data_Scale     : constant Ub4 := 6;
-   Attr_Param_Count    : constant Ub4 := 18;
-   Attr_Stmt_Type      : constant Ub4 := 24;
-   Attr_Charset_Id     : constant Ub4 := 31;
-   Attr_Param_Type     : constant Ub4 := 123;
-   Attr_NCharset_Id    : constant Ub4 := 262;
-   Attr_Char_Used      : constant Ub4 := 285;
-   Attr_Char_Size      : constant Ub4 := 286;
+   OCI_ATTR_DATA_SIZE      : constant Ub4 := 1;
+   OCI_ATTR_DATA_TYPE      : constant Ub4 := 2;
+   OCI_ATTR_NAME           : constant Ub4 := 4;
+   OCI_ATTR_PRECISION      : constant Ub4 := 5;
+   OCI_ATTR_SCALE          : constant Ub4 := 6;
+   OCI_ATTR_PARAM_COUNT    : constant Ub4 := 18;
+   OCI_ATTR_STMT_TYPE      : constant Ub4 := 24;
+   OCI_ATTR_CHARSET_ID     : constant Ub4 := 31;
+   OCI_ATTR_PTYPE          : constant Ub4 := 123;
+   OCI_ATTR_CHAR_USED      : constant Ub4 := 285;
+   OCI_ATTR_CHAR_SIZE      : constant Ub4 := 286;
 
    type Env_Mode is new Ub4;
 
-   Default  : constant          := 16#000#;
-   Threaded : constant Env_Mode := 16#001#;
-   Object   : constant Env_Mode := 16#002#;
-   Events   : constant Env_Mode := 16#004#;
-   Shared   : constant Env_Mode := 16#010#;
+   OCI_DEFAULT  : constant          := 16#000#;
+   OCI_THREADED : constant Env_Mode := 16#001#;
+   OCI_OBJECT   : constant Env_Mode := 16#002#;
+   OCI_EVENTS   : constant Env_Mode := 16#004#;
+   OCI_SHARED   : constant Env_Mode := 16#010#;
 
    OCI_UTF16ID : constant := 1000;
+
+   OCI_STMT_UNKNOWN : constant Ub2 := 0;   --  Unknown statement
+   OCI_STMT_SELECT  : constant Ub2 := 1;   --  select statement
+   OCI_STMT_UPDATE  : constant Ub2 := 2;   --  update statement
+   OCI_STMT_DELETE  : constant Ub2 := 3;   --  delete statement
+   OCI_STMT_INSERT  : constant Ub2 := 4;   --  Insert Statement
+   OCI_STMT_CREATE  : constant Ub2 := 5;   --  create statement
+   OCI_STMT_DROP    : constant Ub2 := 6;   --  drop statement
+   OCI_STMT_ALTER   : constant Ub2 := 7;   --  alter statement
+   OCI_STMT_BEGIN   : constant Ub2 := 8;   --  begin ... (pl/sql statement)
+   OCI_STMT_DECLARE : constant Ub2 := 9;   --  declare .. (pl/sql statement)
+   OCI_STMT_CALL    : constant Ub2 := 10;  --  corresponds to kpu call
 
    function OCIHandleAlloc
     (Parent      : Environment;
@@ -221,13 +231,13 @@ package Matreshka.Internals.SQL_Drivers.OCI is
    function OCITransCommit
     (Target : Service_Handle;
      Error  : Error_Handle;
-     Flags  : Ub4 := Default) return Error_Code;
+     Flags  : Ub4 := OCI_DEFAULT) return Error_Code;
    pragma Import (C, OCITransCommit, "OCITransCommit");
 
    function OCITransRollback
     (Target : Service_Handle;
      Error  : Error_Handle;
-     Flags  : Ub4 := Default) return Error_Code;
+     Flags  : Ub4 := OCI_DEFAULT) return Error_Code;
    pragma Import (C, OCITransRollback, "OCITransRollback");
 
    function OCIErrorGet
@@ -237,7 +247,7 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      Ora_Code    : access Ub4;
      Buffer      : Matreshka.Internals.Utf16.Utf16_String;
      Buffer_Size : Ub4;
-     H_Type      : Handle_Type := HT_Error) return Error_Code;
+     H_Type      : Handle_Type := OCI_HTYPE_ERROR) return Error_Code;
    pragma Import (C, OCIErrorGet, "OCIErrorGet");
 
    function OCIStmtPrepare
@@ -264,9 +274,9 @@ package Matreshka.Internals.SQL_Drivers.OCI is
     (Stmt        : Statement_Handle;
      Error       : Error_Handle;
      Rows        : Ub4 := 1;
-     Orientation : Ub2 := Default;
+     Orientation : Ub2 := OCI_DEFAULT;
      Offset      : Ub4 := 0;
-     Mode        : Ub4 := Default) return Error_Code;
+     Mode        : Ub4 := OCI_DEFAULT) return Error_Code;
    pragma Import (C, OCIStmtFetch2,    "OCIStmtFetch2");
 
    function OCIBindByName

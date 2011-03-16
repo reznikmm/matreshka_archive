@@ -221,10 +221,10 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
          Code :=
            OCIAttrGet
             (Target      => Self.Handle,
-             Target_Type => HT_Statament,
+             Target_Type => OCI_HTYPE_STMT,
              Buffer      => Count'Address,
              Length      => null,
-             Attr        => Attr_Param_Count,
+             Attr        => OCI_ATTR_PARAM_COUNT,
              Error       => Self.DB.Error);
 
          if Databases.Check_Error (Self.DB, Code) then
@@ -250,7 +250,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                Code :=
                  OCIParamGet
                   (Self.Handle,
-                   HT_Statament,
+                   OCI_HTYPE_STMT,
                    Self.DB.Error,
                    Param'Access,
                    Ub4 (J));
@@ -262,10 +262,10 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                Code :=
                  OCIAttrGet
                   (Param,
-                   DT_Parameter,
+                   OCI_DTYPE_PARAM,
                    Column_Type'Address,
                    null,
-                   Attr_Data_Type,
+                   OCI_ATTR_DATA_TYPE,
                    Self.DB.Error);
 
                if Databases.Check_Error (Self.DB, Code) then
@@ -276,10 +276,10 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                   Code :=
                     OCIAttrGet
                      (Param,
-                      DT_Parameter,
+                      OCI_DTYPE_PARAM,
                       Size'Address,
                       null,
-                      Attr_Data_Size,
+                      OCI_ATTR_DATA_SIZE,
                       Self.DB.Error);
 
                   if Databases.Check_Error (Self.DB, Code) then
@@ -327,10 +327,10 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                   Code :=
                     OCIAttrGet
                      (Param,
-                      DT_Parameter,
+                      OCI_DTYPE_PARAM,
                       Scale'Address,
                       null,
-                      Attr_Data_Scale,
+                      OCI_ATTR_SCALE,
                       Self.DB.Error);
 
                   if Databases.Check_Error (Self.DB, Code) then
@@ -378,7 +378,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                   --  raise Constraint_Error with "Unsupported type";
                end if;
 
-               Code := OCIDescriptorFree (Param, DT_Parameter);
+               Code := OCIDescriptorFree (Param, OCI_DTYPE_PARAM);
 
                if Databases.Check_Error (Self.DB, Code) then
                   return False;
@@ -446,7 +446,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
    begin
       if Self.Handle /= null then
-         Code := OCIHandleFree (Self.Handle, HT_Statament);
+         Code := OCIHandleFree (Self.Handle, OCI_HTYPE_STMT);
 
          if Databases.Check_Error (Self.DB, Code) then
             null;  --  How to report errors?
@@ -532,7 +532,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
       Code := OCIStmtFetch2 (Self.Handle, Self.DB.Error);
 
-      if Databases.Check_Error (Self.DB, Code) or Code = Call_No_Data then
+      if Databases.Check_Error (Self.DB, Code) or Code = OCI_NO_DATA then
          Self.State := No_More_Rows;
 
       else
@@ -561,16 +561,13 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
     (Self  : not null access OCI_Query;
      Query : League.Strings.Universal_String) return Boolean
    is
-      Select_Statement : constant := 1;
-      --  XXX Should be moved to OCI package specification.
-
       Kind : aliased Ub2;
       Code : Error_Code;
 
    begin
       if Self.Handle = null then
          Code :=
-           OCIHandleAlloc (Databases.Env, Self.Handle'Access, HT_Statament);
+           OCIHandleAlloc (Databases.Env, Self.Handle'Access, OCI_HTYPE_STMT);
 
          if Databases.Check_Error (Self.DB, Code) then
             return False;
@@ -591,10 +588,10 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
       Code :=
         OCIAttrGet
          (Target      => Self.Handle,
-          Target_Type => HT_Statament,
+          Target_Type => OCI_HTYPE_STMT,
           Buffer      => Kind'Address,
           Length      => null,
-          Attr        => Attr_Stmt_Type,
+          Attr        => OCI_ATTR_STMT_TYPE,
           Error       => Self.DB.Error);
 
       if Databases.Check_Error (Self.DB, Code) then
@@ -602,7 +599,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
       end if;
 
       Self.Is_Described := False;
-      Self.Is_Select := Kind = Select_Statement;
+      Self.Is_Select := Kind = OCI_STMT_SELECT;
       Self.State := Prepared;
 
       return True;
