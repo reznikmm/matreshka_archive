@@ -75,6 +75,10 @@ package Matreshka.Internals.SQL_Drivers.OCI.Databases is
       Code : Error_Code) return Boolean;
 
    Env : aliased Environment;
+   --  This is an OCI environment shared between all connections.
+   --  Because the environment initialized in thread mode, all threads
+   --  can safely use it.
+
    --  XXX Reasons of use of global object must be here, as well as all kind of
    --  considerations of its use.
 
