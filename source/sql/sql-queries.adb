@@ -93,7 +93,7 @@ package body SQL.Queries is
          return X : League.Values.Value;
       end if;
 
-      return X : League.Values.Value;
+      return Self.Data.Bound_Value (Name.To_Casefold);
    end Bound_Value;
 
    -------------------
@@ -263,7 +263,7 @@ package body SQL.Queries is
       if not Self.Data.Is_Valid
         or else not Self.Data.Is_Active
       then
-	 --  Returns when internal object was invalidated or not in active
+         --  Returns when internal object was invalidated or not in active
          --  state.
 
          return X : League.Values.Value;

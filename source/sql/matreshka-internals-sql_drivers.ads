@@ -116,6 +116,12 @@ package Matreshka.Internals.SQL_Drivers is
      Value     : League.Values.Value;
      Direction : SQL.Parameter_Directions) is abstract;
 
+   not overriding function Bound_Value
+    (Self : not null access Abstract_Query;
+     Name : League.Strings.Universal_String)
+       return League.Values.Value is abstract;
+   --  XXX
+
    not overriding function Error_Message
     (Self : not null access Abstract_Query)
        return League.Strings.Universal_String is abstract;

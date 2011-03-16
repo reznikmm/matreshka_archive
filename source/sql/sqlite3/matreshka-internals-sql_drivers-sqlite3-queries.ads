@@ -80,6 +80,11 @@ private
      Value     : League.Values.Value;
      Direction : SQL.Parameter_Directions);
 
+   overriding function Bound_Value
+    (Self : not null access SQLite3_Query;
+     Name : League.Strings.Universal_String)
+       return League.Values.Value;
+
    overriding function Error_Message
     (Self : not null access SQLite3_Query)
        return League.Strings.Universal_String;

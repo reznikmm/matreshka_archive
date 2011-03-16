@@ -73,6 +73,18 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
       Self.Parameters.Set_Value (Name, Value);
    end Bind_Value;
 
+   -----------------
+   -- Bound_Value --
+   -----------------
+
+   overriding function Bound_Value
+    (Self : not null access PostgreSQL_Query;
+     Name : League.Strings.Universal_String)
+       return League.Values.Value is
+   begin
+      return X : League.Values.Value;
+   end Bound_Value;
+
    -------------------
    -- Error_Message --
    -------------------

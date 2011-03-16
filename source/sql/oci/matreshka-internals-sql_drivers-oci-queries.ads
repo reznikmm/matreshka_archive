@@ -56,7 +56,7 @@ package Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
 private
 
-   type Bound_Value is limited record
+   type Bound_Value_Node is limited record
       Bind    : aliased OCI.Bind;
       Is_Null : aliased Sb2;
       String  : League.Strings.Universal_String;
@@ -64,7 +64,7 @@ private
       Float   : aliased League.Values.Universal_Float;
    end record;
 
-   type Bound_Value_Access is access Bound_Value;
+   type Bound_Value_Access is access Bound_Value_Node;
 
    package Parameter_Maps is
      new Ada.Containers.Hashed_Maps
@@ -114,6 +114,11 @@ private
      Name      : League.Strings.Universal_String;
      Value     : League.Values.Value;
      Direction : SQL.Parameter_Directions);
+
+   overriding function Bound_Value
+    (Self : not null access OCI_Query;
+     Name : League.Strings.Universal_String)
+       return League.Values.Value;
 
    overriding function Error_Message
     (Self : not null access OCI_Query) return League.Strings.Universal_String;

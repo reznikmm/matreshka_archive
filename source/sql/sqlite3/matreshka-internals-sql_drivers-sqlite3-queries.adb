@@ -130,7 +130,7 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
                 (League.Values.Get (Value)).Unused * 2),
              null));
          --  Copy of string value is stored in the parameters map, so provides
-	 --  warranty that it will not be deallocated/modified till another
+         --  warranty that it will not be deallocated/modified till another
          --  value will be bind. As result, copy of string data is not needed.
 
       elsif League.Values.Is_Abstract_Integer (Value) then
@@ -150,6 +150,18 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
               (League.Values.Universal_Float'(League.Values.Get (Value)))));
       end if;
    end Bind_Value;
+
+   -----------------
+   -- Bound_Value --
+   -----------------
+
+   overriding function Bound_Value
+    (Self : not null access SQLite3_Query;
+     Name : League.Strings.Universal_String)
+       return League.Values.Value is
+   begin
+      return X : League.Values.Value;
+   end Bound_Value;
 
    ----------
    -- Call --

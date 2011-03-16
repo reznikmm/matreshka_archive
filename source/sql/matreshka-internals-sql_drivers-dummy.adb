@@ -44,6 +44,18 @@
 
 package body Matreshka.Internals.SQL_Drivers.Dummy is
 
+   -----------------
+   -- Bound_Value --
+   -----------------
+
+   overriding function Bound_Value
+    (Self : not null access Dummy_Query;
+     Name : League.Strings.Universal_String)
+       return League.Values.Value is
+   begin
+      return X : League.Values.Value;
+   end Bound_Value;
+
    -------------------
    -- Error_Message --
    -------------------

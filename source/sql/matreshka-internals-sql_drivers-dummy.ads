@@ -74,6 +74,11 @@ package Matreshka.Internals.SQL_Drivers.Dummy is
      Value     : League.Values.Value;
      Direction : SQL.Parameter_Directions) is null;
 
+   overriding function Bound_Value
+    (Self : not null access Dummy_Query;
+     Name : League.Strings.Universal_String)
+       return League.Values.Value;
+
    overriding function Error_Message
     (Self : not null access Dummy_Query)
        return League.Strings.Universal_String;

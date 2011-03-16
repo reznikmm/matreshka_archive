@@ -54,7 +54,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
    use type Interfaces.Integer_8;
 
    procedure Free is
-     new Ada.Unchecked_Deallocation (Bound_Value, Bound_Value_Access);
+     new Ada.Unchecked_Deallocation (Bound_Value_Node, Bound_Value_Access);
 
    procedure Free is
      new Ada.Unchecked_Deallocation
@@ -92,7 +92,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
       begin
          if Item = null then
-            Item := new Bound_Value;
+            Item := new Bound_Value_Node;
          end if;
 
          if League.Values.Is_Empty (Value) then
@@ -176,6 +176,18 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
          Self.Parameters.Update_Element (Pos, Bind'Access);
       end if;
    end Bind_Value;
+
+   -----------------
+   -- Bound_Value --
+   -----------------
+
+   overriding function Bound_Value
+    (Self : not null access OCI_Query;
+     Name : League.Strings.Universal_String)
+       return League.Values.Value is
+   begin
+      return X : League.Values.Value;
+   end Bound_Value;
 
    -------------------
    -- Error_Message --
