@@ -52,8 +52,9 @@
 --  Type Time_Zone represents time zone.
 --
 --  Type Abstract_Calendar supports date/time operations on Date and Date_Time.
---  It take in sence Time_Zone also. There are several children packages
---  provides implementations of different calendars.
+--  There are several children packages provides implementations of different
+--  calendars. All calendar operations which doesn't have time zone parameter
+--  operates in "current" time zone.
 ------------------------------------------------------------------------------
 private with Interfaces;
 
@@ -86,9 +87,6 @@ package League.Calendars is
    ----------
    -- Date --
    ----------
-
-   function "+" (Left : Date; Right : Time) return Date_Time;
-   function "-" (Left : Date; Right : Time) return Date_Time;
 
    function "="  (Left : Date; Right : Date) return Boolean;
    function "<"  (Left : Date; Right : Date) return Boolean;

@@ -66,55 +66,25 @@ package League.Calendars.ISO_8601 is
     (Self  : ISO_8601_Calendar'Class;
      Stamp : Date) return Year_Number;
 
-   function Year
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date;
-     Zone  : Time_Zone) return Year_Number;
-
    function Month
     (Self  : ISO_8601_Calendar'Class;
      Stamp : Date) return Month_Number;
-
-   function Month
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date;
-     Zone  : Time_Zone) return Month_Number;
 
    function Day
     (Self  : ISO_8601_Calendar'Class;
      Stamp : Date) return Day_Number;
 
-   function Day
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date;
-     Zone  : Time_Zone) return Day_Number;
-
    function Day_Of_Week
     (Self  : ISO_8601_Calendar'Class;
      Stamp : Date) return Day_Of_Week_Number;
-
-   function Day_Of_Week
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date;
-     Zone  : Time_Zone) return Day_Of_Week_Number;
 
    function Day_Of_Year
     (Self  : ISO_8601_Calendar'Class;
      Stamp : Date) return Day_Of_Year_Number;
 
-   function Day_Of_Year
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date;
-     Zone  : Time_Zone) return Day_Of_Year_Number;
-
    function Week_Of_Year
     (Self  : ISO_8601_Calendar'Class;
      Stamp : Date) return Week_Of_Year_Number;
-
-   function Week_Of_Year
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date;
-     Zone  : Time_Zone) return Week_Of_Year_Number;
 
    function Add_Days
     (Self  : ISO_8601_Calendar'Class;
@@ -240,26 +210,35 @@ package League.Calendars.ISO_8601 is
 
    function Year (Stamp : Date_Time) return Year_Number;
 
+   function Year (Stamp : Date_Time; Zone : Time_Zone) return Year_Number;
+
    function Month (Stamp : Date) return Month_Number;
 
    function Month (Stamp : Date_Time) return Month_Number;
+
+   function Month (Stamp : Date_Time; Zone : Time_Zone) return Month_Number;
 
    function Day (Stamp : Date) return Day_Number;
 
    function Day (Stamp : Date_Time) return Day_Number;
 
+   function Day (Stamp : Date_Time; Zone : Time_Zone) return Day_Number;
+
    function Day_Of_Week (Stamp : Date) return Day_Of_Week_Number;
 
    function Day_Of_Week (Stamp : Date_Time) return Day_Of_Week_Number;
+
+   function Day_Of_Week
+    (Stamp : Date_Time; Zone : Time_Zone) return Day_Of_Week_Number;
 
    function Day_Of_Year (Stamp : Date) return Day_Of_Year_Number;
 
    function Day_Of_Year (Stamp : Date_Time) return Day_Of_Year_Number;
 
-   function Week_Of_Year (Stamp : Date) return Week_Of_Year_Number;
+   function Day_Of_Year
+    (Stamp : Date_Time; Zone : Time_Zone) return Day_Of_Year_Number;
 
-   function Week_Of_Year
-    (Stamp : Date; Zone  : Time_Zone) return Week_Of_Year_Number;
+   function Week_Of_Year (Stamp : Date) return Week_Of_Year_Number;
 
    function Week_Of_Year (Stamp : Date_Time) return Week_Of_Year_Number;
 
@@ -274,9 +253,17 @@ package League.Calendars.ISO_8601 is
 
    procedure Add_Days (Stamp : in out Date_Time; Days : Integer);
 
-   function Add_Months (Stamp : Date_Time; Months : Integer) return Date;
+   function Add_Months (Stamp : Date; Months : Integer) return Date;
+
+   procedure Add_Months (Stamp : in out Date; Months : Integer);
+
+   function Add_Months (Stamp : Date_Time; Months : Integer) return Date_Time;
 
    procedure Add_Months (Stamp : in out Date_Time; Months : Integer);
+
+   function Add_Years (Stamp : Date; Years : Integer) return Date;
+
+   procedure Add_Years (Stamp : in out Date; Years : Integer);
 
    function Add_Years (Stamp : Date_Time; Years : Integer) return Date_Time;
 
