@@ -54,13 +54,17 @@
 --  Type Abstract_Calendar supports date/time operations on Date and Date_Time.
 --  There are several children packages provides implementations of different
 --  calendars. All calendar operations which doesn't have time zone parameter
---  operates in "current" time zone.
+--  operates in current time zone (specified for thread or for application).
 ------------------------------------------------------------------------------
 private with Interfaces;
 
 package League.Calendars is
 
    pragma Preelaborate;
+   pragma Remote_Types;
+   --  XXX Abstract_Calendar type must be moved outside of this package if it
+   --  is remote types package, there is not plan to share it objects across
+   --  partitions and there is no such requirement.
 
    type Time is private;
 
@@ -122,8 +126,8 @@ private
    --
    --     Approximate range   AD 30,000
    --
-   --  UTC time in this service specification always refers to time in
-   --  Greenwich Time Zone.
+   --  UTC time in this implementation always refers to time in Greenwich Time
+   --  Zone.
    --
    --  The corresponding internal representations of relative time is the same
    --  one as for absolute time, and hence with similar characteristics:
