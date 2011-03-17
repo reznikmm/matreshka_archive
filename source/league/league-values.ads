@@ -49,6 +49,7 @@ private with Ada.Finalization;
 private with Ada.Tags;
 with Interfaces;
 
+with League.Calendars;
 with League.Strings;
 private with Matreshka.Internals.Atomics.Counters;
 private with Matreshka.Internals.Strings;
@@ -64,6 +65,9 @@ package League.Values is
    Universal_Integer_Tag : constant Tag;
    Universal_Float_Tag   : constant Tag;
    Universal_String_Tag  : constant Tag;
+   Time_Tag              : constant Tag;
+   Date_Tag              : constant Tag;
+   Date_Time_Tag         : constant Tag;
 
    ---------------------------------
    -- Generic operations on Value --
@@ -148,6 +152,46 @@ package League.Values is
 
    function Last (Self : Value) return Universal_Float;
    --  Returns maximum value of the range of valid values.
+
+   --------------------------
+   -- Date/Time Operations --
+   --------------------------
+
+   function Is_Time (Self : Value) return Boolean;
+   --  Returns True when contained value is Time.
+
+   function Is_Date (Self : Value) return Boolean;
+   --  Returns True when contained value is Date.
+
+   function Is_Date_Time (Self : Value) return Boolean;
+   --  Returns True when contained value is Date_Time.
+
+   function Get (Self : Value) return League.Calendars.Time;
+   --  Returns contained value of type Time.
+
+   function Get (Self : Value) return League.Calendars.Date;
+   --  Returns contained value of type Date.
+
+   function Get (Self : Value) return League.Calendars.Date_Time;
+   --  Returns contained value of type Date_Time.
+
+   procedure Set (Self : in out Value; To : League.Calendars.Time);
+   --  Sets contained value of type Time to specified value.
+
+   procedure Set (Self : in out Value; To : League.Calendars.Date);
+   --  Sets contained value of type Date to specified value.
+
+   procedure Set (Self : in out Value; To : League.Calendars.Date_Time);
+   --  Sets contained value of type Date_Time to specified value.
+
+   function To_Value (Item : League.Calendars.Time) return Value;
+   --  Constructs value object of type Time with specified value.
+
+   function To_Value (Item : League.Calendars.Date) return Value;
+   --  Constructs value object of type Date with specified value.
+
+   function To_Value (Item : League.Calendars.Date_Time) return Value;
+   --  Constructs value object of type Date_Time with specified value.
 
 private
 
@@ -362,5 +406,50 @@ private
        return Universal_Float;
 
    Universal_Float_Tag : constant Tag := Tag (Universal_Float_Container'Tag);
+
+   --------------------
+   -- Time_Container --
+   --------------------
+
+   --  Time_Container is container for value of type Time.
+
+   type Time_Container is new Abstract_Container with record
+      Value : League.Calendars.Time;
+   end record;
+
+   overriding function Constructor
+    (Is_Empty : not null access Boolean) return Time_Container;
+
+   Time_Tag : constant Tag := Tag (Time_Container'Tag);
+
+   --------------------
+   -- Date_Container --
+   --------------------
+
+   --  Date_Container is container for value of type Time.
+
+   type Date_Container is new Abstract_Container with record
+      Value : League.Calendars.Date;
+   end record;
+
+   overriding function Constructor
+    (Is_Empty : not null access Boolean) return Date_Container;
+
+   Date_Tag : constant Tag := Tag (Date_Container'Tag);
+
+   -------------------------
+   -- Date_Time_Container --
+   -------------------------
+
+   --  Date_Time_Container is container for value of type Date_Time.
+
+   type Date_Time_Container is new Abstract_Container with record
+      Value : League.Calendars.Date_Time;
+   end record;
+
+   overriding function Constructor
+    (Is_Empty : not null access Boolean) return Date_Time_Container;
+
+   Date_Time_Tag : constant Tag := Tag (Date_Time_Container'Tag);
 
 end League.Values;

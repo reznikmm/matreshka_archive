@@ -115,6 +115,38 @@ package body League.Values is
    -----------------
 
    overriding function Constructor
+    (Is_Empty : not null access Boolean) return Date_Container
+   is
+      pragma Assert (Is_Empty.all);
+
+   begin
+      return
+       (Counter  => <>,
+        Is_Empty => Is_Empty.all,
+        Value    => <>);
+   end Constructor;
+
+   -----------------
+   -- Constructor --
+   -----------------
+
+   overriding function Constructor
+    (Is_Empty : not null access Boolean) return Date_Time_Container
+   is
+      pragma Assert (Is_Empty.all);
+
+   begin
+      return
+       (Counter  => <>,
+        Is_Empty => Is_Empty.all,
+        Value    => <>);
+   end Constructor;
+
+   -----------------
+   -- Constructor --
+   -----------------
+
+   overriding function Constructor
     (Is_Empty : not null access Boolean) return Empty_Container
    is
       pragma Assert (Is_Empty.all);
@@ -124,6 +156,22 @@ package body League.Values is
 
       raise Program_Error;
       return (Counter => <>, Is_Empty => Is_Empty.all);
+   end Constructor;
+
+   -----------------
+   -- Constructor --
+   -----------------
+
+   overriding function Constructor
+    (Is_Empty : not null access Boolean) return Time_Container
+   is
+      pragma Assert (Is_Empty.all);
+
+   begin
+      return
+       (Counter  => <>,
+        Is_Empty => Is_Empty.all,
+        Value    => <>);
    end Constructor;
 
    -----------------
@@ -300,6 +348,57 @@ package body League.Values is
    -- Get --
    ---------
 
+   function Get (Self : Value) return League.Calendars.Date is
+   begin
+      if Self.Data.all not in Date_Container then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      return Date_Container (Self.Data.all).Value;
+   end Get;
+
+   ---------
+   -- Get --
+   ---------
+
+   function Get (Self : Value) return League.Calendars.Date_Time is
+   begin
+      if Self.Data.all not in Date_Time_Container then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      return Date_Time_Container (Self.Data.all).Value;
+   end Get;
+
+   ---------
+   -- Get --
+   ---------
+
+   function Get (Self : Value) return League.Calendars.Time is
+   begin
+      if Self.Data.all not in Time_Container then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      return Time_Container (Self.Data.all).Value;
+   end Get;
+
+   ---------
+   -- Get --
+   ---------
+
    function Get (Self : Value) return League.Strings.Universal_String is
    begin
       if Self.Data.all not in Universal_String_Container then
@@ -376,6 +475,24 @@ package body League.Values is
       return Self.Data.all in Abstract_Integer_Container'Class;
    end Is_Abstract_Integer;
 
+   -------------
+   -- Is_Date --
+   -------------
+
+   function Is_Date (Self : Value) return Boolean is
+   begin
+      return Self.Data.all in Date_Container;
+   end Is_Date;
+
+   ------------------
+   -- Is_Date_Time --
+   ------------------
+
+   function Is_Date_Time (Self : Value) return Boolean is
+   begin
+      return Self.Data.all in Date_Time_Container;
+   end Is_Date_Time;
+
    --------------
    -- Is_Empty --
    --------------
@@ -384,6 +501,15 @@ package body League.Values is
    begin
       return Self.Data.Is_Empty;
    end Is_Empty;
+
+   -------------
+   -- Is_Time --
+   -------------
+
+   function Is_Time (Self : Value) return Boolean is
+   begin
+      return Self.Data.all in Time_Container;
+   end Is_Time;
 
    -------------------------
    -- Is_Universal_String --
@@ -481,6 +607,82 @@ package body League.Values is
    begin
       Self.Is_Empty := False;
       Self.Value    := To;
+   end Set;
+
+   ---------
+   -- Set --
+   ---------
+
+   procedure Set (Self : in out Value; To : League.Calendars.Date) is
+   begin
+      if Self.Data.all not in Date_Container then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      --  Create new shared object when existing one can't be reused.
+
+      if not Matreshka.Internals.Atomics.Counters.Is_One
+              (Self.Data.Counter'Access)
+      then
+         Dereference (Self.Data);
+         Self.Data :=
+           new Date_Container'(Counter => <>, Is_Empty => False, Value => To);
+
+      else
+         Date_Container'Class (Self.Data.all).Is_Empty := False;
+         Date_Container'Class (Self.Data.all).Value    := To;
+      end if;
+   end Set;
+
+   ---------
+   -- Set --
+   ---------
+
+   procedure Set (Self : in out Value; To : League.Calendars.Date_Time) is
+   begin
+      if Self.Data.all not in Date_Time_Container then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      --  Create new shared object when existing one can't be reused.
+
+      if not Matreshka.Internals.Atomics.Counters.Is_One
+              (Self.Data.Counter'Access)
+      then
+         Dereference (Self.Data);
+         Self.Data :=
+           new Date_Time_Container'
+                (Counter => <>, Is_Empty => False, Value => To);
+
+      else
+         Date_Time_Container'Class (Self.Data.all).Is_Empty := False;
+         Date_Time_Container'Class (Self.Data.all).Value    := To;
+      end if;
+   end Set;
+
+   ---------
+   -- Set --
+   ---------
+
+   procedure Set (Self : in out Value; To : League.Calendars.Time) is
+   begin
+      if Self.Data.all not in Time_Container then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      --  Create new shared object when existing one can't be reused.
+
+      if not Matreshka.Internals.Atomics.Counters.Is_One
+              (Self.Data.Counter'Access)
+      then
+         Dereference (Self.Data);
+         Self.Data :=
+           new Time_Container'(Counter => <>, Is_Empty => False, Value => To);
+
+      else
+         Time_Container'Class (Self.Data.all).Is_Empty := False;
+         Time_Container'Class (Self.Data.all).Value    := To;
+      end if;
    end Set;
 
    ---------
@@ -599,6 +801,42 @@ package body League.Values is
          Self.Data.Clear;
       end if;
    end Set_Tag;
+
+   --------------
+   -- To_Value --
+   --------------
+
+   function To_Value (Item : League.Calendars.Date) return Value is
+   begin
+      return
+       (Ada.Finalization.Controlled with
+          new Date_Container'
+               (Counter => <>, Is_Empty => False, Value => Item));
+   end To_Value;
+
+   --------------
+   -- To_Value --
+   --------------
+
+   function To_Value (Item : League.Calendars.Date_Time) return Value is
+   begin
+      return
+       (Ada.Finalization.Controlled with
+          new Date_Time_Container'
+               (Counter => <>, Is_Empty => False, Value => Item));
+   end To_Value;
+
+   --------------
+   -- To_Value --
+   --------------
+
+   function To_Value (Item : League.Calendars.Time) return Value is
+   begin
+      return
+       (Ada.Finalization.Controlled with
+          new Time_Container'
+               (Counter => <>, Is_Empty => False, Value => Item));
+   end To_Value;
 
    --------------
    -- To_Value --
