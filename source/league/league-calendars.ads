@@ -142,4 +142,12 @@ private
 
    type Abstract_Calendar is abstract tagged null record;
 
+   pragma Inline ("+");
+   pragma Inline ("-");
+   pragma Inline ("=");
+   pragma Inline ("<");
+   pragma Inline (">");
+   pragma Inline ("<=");
+   pragma Inline (">=");
+
 end League.Calendars;
