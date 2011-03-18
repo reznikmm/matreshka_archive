@@ -58,273 +58,347 @@ package League.Calendars.ISO_8601 is
 
    type ISO_8601_Calendar is new Abstract_Calendar with private;
 
-   function Is_Leap_Year
-    (Self : ISO_8601_Calendar'Class;
-     Year : Year_Number) return Boolean;
-
    ----------
    -- Date --
    ----------
 
-   function To_Julian_Day
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date) return Integer;
-
-   function From_Julian_Day
-    (Self : ISO_8601_Calendar'Class;
-     Day  : Integer) return Date;
-
+   function Year
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Year_Number;
+   function Year
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Year_Number;
    function Year
     (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date) return Year_Number;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Year_Number;
+   --  Returns the year of this date. Negative numbers indicate years before
+   --  1 A.D.
 
    function Month
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Month_Number;
+   function Month
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Month_Number;
+   function Month
     (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date) return Month_Number;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Month_Number;
+   --  Returns the number corresponding to the month of this date.
 
    function Day
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Day_Number;
+   function Day
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Day_Number;
+   function Day
     (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date) return Day_Number;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Day_Number;
+   --  Returns the day of the month of this date.
 
    function Day_Of_Week
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Day_Of_Week_Number;
+   function Day_Of_Week
     (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date) return Day_Of_Week_Number;
+     Stamp : Date_Time) return Day_Of_Week_Number;
+   function Day_Of_Week
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Day_Of_Week_Number;
+   --  Returns the weekday for this date.
 
    function Day_Of_Year
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Day_Of_Year_Number;
+   function Day_Of_Year
     (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date) return Day_Of_Year_Number;
+     Stamp : Date_Time) return Day_Of_Year_Number;
+   function Day_Of_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Day_Of_Year_Number;
+   --  Returns the day of the year (1 to 365 or 366 on leap years) for this
+   --  date.
 
    function Week_Of_Year
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Week_Of_Year_Number;
+   function Week_Of_Year
     (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date) return Week_Of_Year_Number;
-
-   function Days_To
+     Stamp : Date_Time) return Week_Of_Year_Number;
+   function Week_Of_Year
     (Self  : ISO_8601_Calendar'Class;
-     From  : Date;
-     To    : Date) return Integer;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Week_Of_Year_Number;
+   --  Returns the week number (1 to 53).
+   --
+   --  In accordance with ISO 8601, weeks start on Monday and the first
+   --  Thursday of a year is always in week 1 of that year. Most years have 52
+   --  weeks, but some have 53.
 
-   function Add_Days
+   procedure Week_Of_Year
     (Self  : ISO_8601_Calendar'Class;
      Stamp : Date;
-     Days  : Integer) return Date;
+     Week  : out Week_Of_Year_Number;
+     Year  : out Year_Number);
+   procedure Week_Of_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Week  : out Week_Of_Year_Number;
+     Year  : out Year_Number);
+   procedure Week_Of_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone;
+     Week  : out Week_Of_Year_Number;
+     Year  : out Year_Number);
+   --  Sets Week to the week number (1 to 53) and Year to year number.
+   --
+   --  In accordance with ISO 8601, weeks start on Monday and the first
+   --  Thursday of a year is always in week 1 of that year. Most years have 52
+   --  weeks, but some have 53.
+   --
+   --  Year is not always the same as Calendar.Year. For example, 1 January
+   --  2000 has week number 52 in the year 1999, and 31 December 2002 has week
+   --  number 1 in the year 2003.
+
+   function Days_To
+    (Self : ISO_8601_Calendar'Class; From : Date; To : Date) return Integer;
+   --  Returns the number of days from date From to date To (which is negative
+   --  if To is earlier than From date).
+
+   function Is_Leap_Year
+    (Self : ISO_8601_Calendar'Class; Year : Year_Number) return Boolean;
+   function Is_Leap_Year
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Boolean;
+   function Is_Leap_Year
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Boolean;
+   function Is_Leap_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Boolean;
+   --  Returns True if the specified year is a leap year; otherwise returns
+   --  False.
+
+   function Add_Days
+    (Self : ISO_8601_Calendar'Class; Stamp : Date; Days : Integer) return Date;
+   function Add_Days
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Days  : Integer) return Date_Time;
+   --  Returns a date containing a date Days later than the date of Stamp (or
+   --  earlier if Days is negative).
 
    procedure Add_Days
+    (Self : ISO_8601_Calendar'Class; Stamp : in out Date; Days : Integer);
+   procedure Add_Days
     (Self  : ISO_8601_Calendar'Class;
-     Stamp : in out Date;
+     Stamp : in out Date_Time;
      Days  : Integer);
+   --  Sets Stamp to a date Days later than the date of Stamp (or earlier if
+   --  Days is negative).
 
    function Add_Months
     (Self   : ISO_8601_Calendar'Class;
      Stamp  : Date;
      Months : Integer) return Date;
+   function Add_Months
+    (Self   : ISO_8601_Calendar'Class;
+     Stamp  : Date_Time;
+     Months : Integer) return Date_Time;
+   --  Returns a date containing a date Months later than the date of Stamp (or
+   --  earlier if Months is negative).
+   --
+   --  Note: If the ending day/month combination does not exist in the
+   --  resulting month/year, this function will return a date that is the
+   --  latest valid date.
 
    procedure Add_Months
+    (Self : ISO_8601_Calendar'Class; Stamp : in out Date; Months : Integer);
+   procedure Add_Months
     (Self   : ISO_8601_Calendar'Class;
-     Stamp  : in out Date;
+     Stamp  : in out Date_Time;
      Months : Integer);
+   --  Sets Stamp to a date Months later than the date of Stamp (or earlier if
+   --  Months is negative).
+   --
+   --  Note: If the ending day/month combination does not exist in the
+   --  resulting month/year, this function will return a date that is the
+   --  latest valid date.
 
    function Add_Years
     (Self  : ISO_8601_Calendar'Class;
      Stamp : Date;
      Years : Integer) return Date;
+   function Add_Years
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Years : Integer) return Date_Time;
+   --  Returns a date Years later than the date of Stamp (or earlier if Years
+   --  is negative).
+   --
+   --  Note: If the ending day/month combination does not exist in the
+   --  resulting year (i.e., if the date was Feb 29 and the final year is not
+   --  a leap year), this function will return a date that is the latest valid
+   --  date (that is, Feb 28).
 
    procedure Add_Years
     (Self  : ISO_8601_Calendar'Class;
      Stamp : in out Date;
      Years : Integer);
-
-   function Is_Leap_Year
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date) return Boolean;
-
-   ---------------
-   -- Date_Time --
-   ---------------
-
-   function To_Julian_Day
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time) return Integer;
-
-   function To_Julian_Day
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time;
-     Zone  : Time_Zone) return Integer;
-
-   function Year
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time) return Year_Number;
-
-   function Year
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time;
-     Zone  : Time_Zone) return Year_Number;
-
-   function Month
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time) return Month_Number;
-
-   function Month
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time;
-     Zone  : Time_Zone) return Month_Number;
-
-   function Day
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time) return Day_Number;
-
-   function Day
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time;
-     Zone  : Time_Zone) return Day_Number;
-
-   function Day_Of_Week
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time) return Day_Of_Week_Number;
-
-   function Day_Of_Week
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time;
-     Zone  : Time_Zone) return Day_Of_Week_Number;
-
-   function Day_Of_Year
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time) return Day_Of_Year_Number;
-
-   function Day_Of_Year
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time;
-     Zone  : Time_Zone) return Day_Of_Year_Number;
-
-   function Week_Of_Year
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time) return Week_Of_Year_Number;
-
-   function Week_Of_Year
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time;
-     Zone  : Time_Zone) return Week_Of_Year_Number;
-
-   function Add_Days
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time;
-     Days  : Integer) return Date_Time;
-
-   procedure Add_Days
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : in out Date_Time;
-     Days  : Integer);
-
-   function Add_Months
-    (Self   : ISO_8601_Calendar'Class;
-     Stamp  : Date_Time;
-     Months : Integer) return Date_Time;
-
-   procedure Add_Months
-    (Self   : ISO_8601_Calendar'Class;
-     Stamp  : in out Date_Time;
-     Months : Integer);
-
-   function Add_Years
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time;
-     Years : Integer) return Date_Time;
-
    procedure Add_Years
     (Self  : ISO_8601_Calendar'Class;
      Stamp : in out Date_Time;
      Years : Integer);
+   --  Sets Stamp to a date Years later than the date of Stamp (or earlier if
+   --  Years is negative).
+   --
+   --  Note: If the ending day/month combination does not exist in the
+   --  resulting year (i.e., if the date was Feb 29 and the final year is not
+   --  a leap year), this function will return a date that is the latest valid
+   --  date (that is, Feb 28).
 
-   function Is_Leap_Year
-    (Self  : ISO_8601_Calendar'Class;
-     Stamp : Date_Time) return Boolean;
-
-   function Is_Leap_Year
+   function To_Julian_Day
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Integer;
+   function To_Julian_Day
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Integer;
+   function To_Julian_Day
     (Self  : ISO_8601_Calendar'Class;
      Stamp : Date_Time;
-     Zone  : Time_Zone) return Boolean;
+     Zone  : Time_Zone) return Integer;
+   --  Converts the date to a Julian day.
+
+   function From_Julian_Day
+    (Self : ISO_8601_Calendar'Class;
+     Day  : Integer) return Date;
+   --  Converts the Julian day Day to a date.
 
    --  Subprograms below don't have calendar parameter for convenience.
 
-   function To_Julian_Day (Stamp : Date) return Integer;
-
-   function To_Julian_Day (Stamp : Date_Time) return Integer;
-
-   function To_Julian_Day
-    (Stamp : Date_Time;
-     Zone  : Time_Zone) return Integer;
-
-   function Is_Leap_Year (Year : Year_Number) return Boolean;
-
-   function Is_Leap_Year (Stamp : Date) return Boolean;
-
-   function Is_Leap_Year (Stamp : Date_Time) return Boolean;
-
-   function Is_Leap_Year (Stamp : Date_Time; Zone : Time_Zone) return Boolean;
-
    function Year (Stamp : Date) return Year_Number;
-
    function Year (Stamp : Date_Time) return Year_Number;
-
    function Year (Stamp : Date_Time; Zone : Time_Zone) return Year_Number;
+   --  Returns the year of this date. Negative numbers indicate years before
+   --  1 A.D.
 
    function Month (Stamp : Date) return Month_Number;
-
    function Month (Stamp : Date_Time) return Month_Number;
-
    function Month (Stamp : Date_Time; Zone : Time_Zone) return Month_Number;
+   --  Returns the number corresponding to the month of this date.
 
    function Day (Stamp : Date) return Day_Number;
-
    function Day (Stamp : Date_Time) return Day_Number;
-
    function Day (Stamp : Date_Time; Zone : Time_Zone) return Day_Number;
+   --  Returns the day of the month of this date.
 
    function Day_Of_Week (Stamp : Date) return Day_Of_Week_Number;
-
    function Day_Of_Week (Stamp : Date_Time) return Day_Of_Week_Number;
-
    function Day_Of_Week
     (Stamp : Date_Time; Zone : Time_Zone) return Day_Of_Week_Number;
+   --  Returns the day of the year (1 to 365 or 366 on leap years) for this
+   --  date.
 
    function Day_Of_Year (Stamp : Date) return Day_Of_Year_Number;
-
    function Day_Of_Year (Stamp : Date_Time) return Day_Of_Year_Number;
-
    function Day_Of_Year
     (Stamp : Date_Time; Zone : Time_Zone) return Day_Of_Year_Number;
+   --  Returns the day of the year (1 to 365 or 366 on leap years) for this
+   --  date.
 
    function Week_Of_Year (Stamp : Date) return Week_Of_Year_Number;
-
    function Week_Of_Year (Stamp : Date_Time) return Week_Of_Year_Number;
-
    function Week_Of_Year
     (Stamp : Date_Time; Zone  : Time_Zone) return Week_Of_Year_Number;
+   --  Returns the week number (1 to 53).
+   --
+   --  In accordance with ISO 8601, weeks start on Monday and the first
+   --  Thursday of a year is always in week 1 of that year. Most years have 52
+   --  weeks, but some have 53.
+
+   procedure Week_Of_Year
+    (Stamp : Date;
+     Week  : out Week_Of_Year_Number;
+     Year  : out Year_Number);
+   procedure Week_Of_Year
+    (Stamp : Date_Time;
+     Week  : out Week_Of_Year_Number;
+     Year  : out Year_Number);
+   procedure Week_Of_Year
+    (Stamp : Date_Time;
+     Zone  : Time_Zone;
+     Week  : out Week_Of_Year_Number;
+     Year  : out Year_Number);
+   --  Sets Week to the week number (1 to 53) and Year to year number.
+   --
+   --  In accordance with ISO 8601, weeks start on Monday and the first
+   --  Thursday of a year is always in week 1 of that year. Most years have 52
+   --  weeks, but some have 53.
+   --
+   --  Year is not always the same as Calendar.Year. For example, 1 January
+   --  2000 has week number 52 in the year 1999, and 31 December 2002 has week
+   --  number 1 in the year 2003.
 
    function Days_To (From : Date; To : Date) return Integer;
+   --  Returns the number of days from date From to date To (which is negative
+   --  if To is earlier than From date).
+
+   function Is_Leap_Year (Year : Year_Number) return Boolean;
+   function Is_Leap_Year (Stamp : Date) return Boolean;
+   function Is_Leap_Year (Stamp : Date_Time) return Boolean;
+   function Is_Leap_Year (Stamp : Date_Time; Zone : Time_Zone) return Boolean;
+   --  Returns True if the specified year is a leap year; otherwise returns
+   --  False.
 
    function Add_Days (Stamp : Date; Days : Integer) return Date;
+   function Add_Days (Stamp : Date_Time; Days : Integer) return Date_Time;
+   --  Returns a date containing a date Days later than the date of Stamp (or
+   --  earlier if Days is negative).
 
    procedure Add_Days (Stamp : in out Date; Days : Integer);
-
-   function Add_Days (Stamp : Date_Time; Days : Integer) return Date_Time;
-
    procedure Add_Days (Stamp : in out Date_Time; Days : Integer);
+   --  Sets Stamp to a date Days later than the date of Stamp (or earlier if
+   --  Days is negative).
 
    function Add_Months (Stamp : Date; Months : Integer) return Date;
+   function Add_Months (Stamp : Date_Time; Months : Integer) return Date_Time;
+   --  Returns a date containing a date Months later than the date of Stamp (or
+   --  earlier if Months is negative).
+   --
+   --  Note: If the ending day/month combination does not exist in the
+   --  resulting month/year, this function will return a date that is the
+   --  latest valid date.
 
    procedure Add_Months (Stamp : in out Date; Months : Integer);
-
-   function Add_Months (Stamp : Date_Time; Months : Integer) return Date_Time;
-
    procedure Add_Months (Stamp : in out Date_Time; Months : Integer);
+   --  Sets Stamp to a date Months later than the date of Stamp (or earlier if
+   --  Months is negative).
+   --
+   --  Note: If the ending day/month combination does not exist in the
+   --  resulting month/year, this function will return a date that is the
+   --  latest valid date.
 
    function Add_Years (Stamp : Date; Years : Integer) return Date;
+   function Add_Years (Stamp : Date_Time; Years : Integer) return Date_Time;
+   --  Returns a date Years later than the date of Stamp (or earlier if Years
+   --  is negative).
+   --
+   --  Note: If the ending day/month combination does not exist in the
+   --  resulting year (i.e., if the date was Feb 29 and the final year is not
+   --  a leap year), this function will return a date that is the latest valid
+   --  date (that is, Feb 28).
 
    procedure Add_Years (Stamp : in out Date; Years : Integer);
-
-   function Add_Years (Stamp : Date_Time; Years : Integer) return Date_Time;
-
    procedure Add_Years (Stamp : in out Date_Time; Years : Integer);
+   --  Sets Stamp to a date Years later than the date of Stamp (or earlier if
+   --  Years is negative).
+   --
+   --  Note: If the ending day/month combination does not exist in the
+   --  resulting year (i.e., if the date was Feb 29 and the final year is not
+   --  a leap year), this function will return a date that is the latest valid
+   --  date (that is, Feb 28).
+
+   function To_Julian_Day (Stamp : Date) return Integer;
+   function To_Julian_Day (Stamp : Date_Time) return Integer;
+   function To_Julian_Day (Stamp : Date_Time; Zone : Time_Zone) return Integer;
+   --  Converts the date to a Julian day.
+
+   function From_Julian_Day (Day : Integer) return Date;
+   --  Converts the Julian day Day to a date.
 
 private
 

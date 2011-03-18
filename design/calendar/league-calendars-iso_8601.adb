@@ -942,6 +942,49 @@ package body League.Calendars.ISO_8601 is
    -- Week_Of_Year --
    ------------------
 
+   procedure Week_Of_Year
+    (Stamp : Date;
+     Week  : out Week_Of_Year_Number;
+     Year  : out Year_Number) is
+   begin
+--      Calendar.Week_Of_Year (Stamp, Week, Year);
+--  XXX GNAT GPL 2010 unable to resolve procedure
+      Week_Of_Year (Calendar, Stamp, Week, Year);
+   end Week_Of_Year;
+
+   ------------------
+   -- Week_Of_Year --
+   ------------------
+
+   procedure Week_Of_Year
+    (Stamp : Date_Time;
+     Week  : out Week_Of_Year_Number;
+     Year  : out Year_Number) is
+   begin
+--      Calendar.Week_Of_Year (Stamp, Week, Year);
+--  XXX GNAT GPL 2010 unable to resolve procedure
+      Week_Of_Year (Calendar, Stamp, Week, Year);
+   end Week_Of_Year;
+
+   ------------------
+   -- Week_Of_Year --
+   ------------------
+
+   procedure Week_Of_Year
+    (Stamp : Date_Time;
+     Zone  : Time_Zone;
+     Week  : out Week_Of_Year_Number;
+     Year  : out Year_Number) is
+   begin
+--      Calendar.Week_Of_Year (Stamp, Zone, Week, Year);
+--  XXX GNAT GPL 2010 unable to resolve procedure
+      Week_Of_Year (Calendar, Stamp, Zone, Week, Year);
+   end Week_Of_Year;
+
+   ------------------
+   -- Week_Of_Year --
+   ------------------
+
    function Week_Of_Year (Stamp : Date_Time) return Week_Of_Year_Number is
    begin
       return Calendar.Week_Of_Year (Stamp);
@@ -978,6 +1021,24 @@ package body League.Calendars.ISO_8601 is
    -- Week_Of_Year --
    ------------------
 
+   procedure Week_Of_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date;
+     Week  : out Week_Of_Year_Number;
+     Year  : out Year_Number)
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+   end Week_Of_Year;
+
+   ------------------
+   -- Week_Of_Year --
+   ------------------
+
    function Week_Of_Year
     (Self  : ISO_8601_Calendar'Class;
      Stamp : Date_Time) return Week_Of_Year_Number
@@ -989,6 +1050,24 @@ package body League.Calendars.ISO_8601 is
 
       raise Program_Error;
       return 1;
+   end Week_Of_Year;
+
+   ------------------
+   -- Week_Of_Year --
+   ------------------
+
+   procedure Week_Of_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Week  : out Week_Of_Year_Number;
+     Year  : out Year_Number)
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
    end Week_Of_Year;
 
    ------------------
@@ -1007,6 +1086,25 @@ package body League.Calendars.ISO_8601 is
 
       raise Program_Error;
       return 1;
+   end Week_Of_Year;
+
+   ------------------
+   -- Week_Of_Year --
+   ------------------
+
+   procedure Week_Of_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone;
+     Week  : out Week_Of_Year_Number;
+     Year  : out Year_Number)
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
    end Week_Of_Year;
 
    ----------
