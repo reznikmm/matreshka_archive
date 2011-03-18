@@ -251,6 +251,8 @@ library project Matreshka_League is
               use "league-environment_variables-to_key__posix.adb";
             for Implementation ("League.Text_Codecs.Initialize")
               use "league-text_codecs-initialize__posix.adb";
+            for Implementation ("Matreshka.Internals.Calendars.Clocks")
+              use "matreshka-internals-calendars-clocks__posix.adb";
             for Specification ("Matreshka.Internals.Settings.Configuration")
               use "matreshka-internals-settings-configuration__posix.ads";
             for Implementation ("Matreshka.Internals.Settings.Ini_Managers.Paths")
@@ -263,6 +265,8 @@ library project Matreshka_League is
               use "league-environment_variables-to_key__windows.adb";
             for Implementation ("League.Text_Codecs.Initialize")
               use "league-text_codecs-initialize__windows.adb";
+            for Implementation ("Matreshka.Internals.Calendars.Clocks")
+              use "matreshka-internals-calendars-clocks__windows.adb";
             for Specification ("Matreshka.Internals.Settings.Configuration")
               use "matreshka-internals-settings-configuration__windows.ads";
             for Implementation ("Matreshka.Internals.Settings.Ini_Managers.Paths")

@@ -41,98 +41,81 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides generic types to operate on time and date.
---
---  Type Time represents some period of time.
---
---  Type Date represents day of the calendar.
---
---  Type Date_Time represents day of the calendar and time inside this day.
---
---  Type Time_Zone represents time zone.
---
---  Type Abstract_Calendar supports date/time operations on Date and Date_Time.
---  There are several children packages provides implementations of different
---  calendars. All calendar operations which doesn't have time zone parameter
---  operates in current time zone (specified for thread or for application).
+--  This is implementation for POSIX operation systems.
 ------------------------------------------------------------------------------
-private with Matreshka.Internals.Calendars;
+with Interfaces.C;
 
-package League.Calendars is
+with Matreshka.Internals.Calendars.Gregorian;
 
-   pragma Preelaborate;
-   pragma Remote_Types;
-   --  XXX Abstract_Calendar type must be moved outside of this package if it
-   --  is remote types package, there is not plan to share it objects across
-   --  partitions and there is no such requirement.
+package body Matreshka.Internals.Calendars.Clocks is
 
-   type Time is private;
+   type time_t is new Interfaces.C.long;
 
-   type Date is private;
+   type suseconds_t is new Interfaces.C.long;
 
-   type Date_Time is private;
+   type timeval is record
+      tv_sec  : aliased time_t;
+      tv_usec : suseconds_t;
+   end record;
+   pragma Convention (C, timeval);
 
-   ----------
-   -- Time --
-   ----------
+   type timezone is record
+      tz_minuteswest : Interfaces.C.int;
+      tz_dsttime     : Interfaces.C.int;
+   end record;
+   pragma Convention (C, timezone);
 
-   function "+" (Right : Time) return Time;
-   function "-" (Right : Time) return Time;
+   type tm is record
+      tm_sec   : Interfaces.C.int;
+      tm_min   : Interfaces.C.int;
+      tm_hour  : Interfaces.C.int;
+      tm_mday  : Interfaces.C.int;
+      tm_mon   : Interfaces.C.int;
+      tm_year  : Interfaces.C.int;
+      tm_wday  : Interfaces.C.int;
+      tm_yday  : Interfaces.C.int;
+      tm_isdst : Interfaces.C.int;
+   end record;
+   pragma Convention (C, tm);
 
-   function "+" (Left : Time; Right : Time) return Time;
-   function "-" (Left : Time; Right : Time) return Time;
+   function gettimeofday
+    (tv : not null access timeval;
+     tz : access timezone) return Interfaces.C.int;
+   pragma Import (C, gettimeofday);
 
-   function "="  (Left : Time; Right : Time) return Boolean;
-   function "<"  (Left : Time; Right : Time) return Boolean;
-   function "<=" (Left : Time; Right : Time) return Boolean;
-   function ">"  (Left : Time; Right : Time) return Boolean;
-   function ">=" (Left : Time; Right : Time) return Boolean;
+   function gmtime_r
+    (timep  : not null access constant time_t;
+     result : not null access tm) return access tm;
+   pragma Import (C, gmtime_r);
 
-   ----------
-   -- Date --
-   ----------
+   -----------
+   -- Clock --
+   -----------
 
-   function "="  (Left : Date; Right : Date) return Boolean;
-   function "<"  (Left : Date; Right : Date) return Boolean;
-   function "<=" (Left : Date; Right : Date) return Boolean;
-   function ">"  (Left : Date; Right : Date) return Boolean;
-   function ">=" (Left : Date; Right : Date) return Boolean;
+   function Clock return X_Open_Time is
+      use type Interfaces.C.int;
 
-   ---------------
-   -- Date_Time --
-   ---------------
+      Current_Time : aliased timeval;
+      Break_Down   : aliased tm;
 
-   function "+" (Left : Date_Time; Right : Time) return Date_Time;
-   function "-" (Left : Date_Time; Right : Time) return Date_Time;
+   begin
+      if gettimeofday (Current_Time'Access, null) /= 0 then
+         return 0;
+      end if;
 
-   function "="  (Left : Date_Time; Right : Date_Time) return Boolean;
-   function "<"  (Left : Date_Time; Right : Date_Time) return Boolean;
-   function "<=" (Left : Date_Time; Right : Date_Time) return Boolean;
-   function ">"  (Left : Date_Time; Right : Date_Time) return Boolean;
-   function ">=" (Left : Date_Time; Right : Date_Time) return Boolean;
+      if gmtime_r (Current_Time.tv_sec'Access, Break_Down'Access) = null then
+         return 0;
+      end if;
 
-   type Time_Zone is tagged private;
+      return
+        Gregorian.Create
+         (Integer (Break_Down.tm_year) + 1_900,
+          Integer (Break_Down.tm_mon) + 1,
+          Integer (Break_Down.tm_mday),
+          Integer (Break_Down.tm_hour),
+          Integer (Break_Down.tm_min),
+          Integer (Break_Down.tm_sec),
+          Integer (Current_Time.tv_usec) * 10);
+   end Clock;
 
-   type Abstract_Calendar is abstract tagged private;
-
-private
-
-   type Time is new Matreshka.Internals.Calendars.X_Open_Time;
-
-   type Date is new Matreshka.Internals.Calendars.X_Open_Time;
-
-   type Date_Time is new Matreshka.Internals.Calendars.X_Open_Time;
-
-   type Time_Zone is tagged null record;
-
-   type Abstract_Calendar is abstract tagged null record;
-
-   pragma Inline ("+");
-   pragma Inline ("-");
-   pragma Inline ("=");
-   pragma Inline ("<");
-   pragma Inline (">");
-   pragma Inline ("<=");
-   pragma Inline (">=");
-
-end League.Calendars;
+end Matreshka.Internals.Calendars.Clocks;

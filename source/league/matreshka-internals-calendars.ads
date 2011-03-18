@@ -41,98 +41,31 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides generic types to operate on time and date.
---
---  Type Time represents some period of time.
---
---  Type Date represents day of the calendar.
---
---  Type Date_Time represents day of the calendar and time inside this day.
---
---  Type Time_Zone represents time zone.
---
---  Type Abstract_Calendar supports date/time operations on Date and Date_Time.
---  There are several children packages provides implementations of different
---  calendars. All calendar operations which doesn't have time zone parameter
---  operates in current time zone (specified for thread or for application).
-------------------------------------------------------------------------------
-private with Matreshka.Internals.Calendars;
+with Interfaces;
 
-package League.Calendars is
+package Matreshka.Internals.Calendars is
 
-   pragma Preelaborate;
-   pragma Remote_Types;
-   --  XXX Abstract_Calendar type must be moved outside of this package if it
-   --  is remote types package, there is not plan to share it objects across
-   --  partitions and there is no such requirement.
+   pragma Pure;
 
-   type Time is private;
+   --  Universal Time Coordinated (UTC) representation from the X/Open DCE Time
+   --  Service is used as internal representation. It is defined as follows:
+   --
+   --     Time units          100 nanoseconds (10-7 seconds)
+   --
+   --     Base time           15 October 1582 00:00:00.
+   --
+   --     Approximate range   AD 30,000
+   --
+   --  UTC time in this implementation always refers to time in Greenwich Time
+   --  Zone.
+   --
+   --  The corresponding internal representations of relative time is the same
+   --  one as for absolute time, and hence with similar characteristics:
+   --
+   --     Time units          100 nanoseconds (10-7 seconds)
+   --
+   --     Approximate range   +/- 30,000 years
 
-   type Date is private;
+   type X_Open_Time is new Interfaces.Integer_64;
 
-   type Date_Time is private;
-
-   ----------
-   -- Time --
-   ----------
-
-   function "+" (Right : Time) return Time;
-   function "-" (Right : Time) return Time;
-
-   function "+" (Left : Time; Right : Time) return Time;
-   function "-" (Left : Time; Right : Time) return Time;
-
-   function "="  (Left : Time; Right : Time) return Boolean;
-   function "<"  (Left : Time; Right : Time) return Boolean;
-   function "<=" (Left : Time; Right : Time) return Boolean;
-   function ">"  (Left : Time; Right : Time) return Boolean;
-   function ">=" (Left : Time; Right : Time) return Boolean;
-
-   ----------
-   -- Date --
-   ----------
-
-   function "="  (Left : Date; Right : Date) return Boolean;
-   function "<"  (Left : Date; Right : Date) return Boolean;
-   function "<=" (Left : Date; Right : Date) return Boolean;
-   function ">"  (Left : Date; Right : Date) return Boolean;
-   function ">=" (Left : Date; Right : Date) return Boolean;
-
-   ---------------
-   -- Date_Time --
-   ---------------
-
-   function "+" (Left : Date_Time; Right : Time) return Date_Time;
-   function "-" (Left : Date_Time; Right : Time) return Date_Time;
-
-   function "="  (Left : Date_Time; Right : Date_Time) return Boolean;
-   function "<"  (Left : Date_Time; Right : Date_Time) return Boolean;
-   function "<=" (Left : Date_Time; Right : Date_Time) return Boolean;
-   function ">"  (Left : Date_Time; Right : Date_Time) return Boolean;
-   function ">=" (Left : Date_Time; Right : Date_Time) return Boolean;
-
-   type Time_Zone is tagged private;
-
-   type Abstract_Calendar is abstract tagged private;
-
-private
-
-   type Time is new Matreshka.Internals.Calendars.X_Open_Time;
-
-   type Date is new Matreshka.Internals.Calendars.X_Open_Time;
-
-   type Date_Time is new Matreshka.Internals.Calendars.X_Open_Time;
-
-   type Time_Zone is tagged null record;
-
-   type Abstract_Calendar is abstract tagged null record;
-
-   pragma Inline ("+");
-   pragma Inline ("-");
-   pragma Inline ("=");
-   pragma Inline ("<");
-   pragma Inline (">");
-   pragma Inline ("<=");
-   pragma Inline (">=");
-
-end League.Calendars;
+end Matreshka.Internals.Calendars;

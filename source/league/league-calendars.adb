@@ -44,7 +44,7 @@
 
 package body League.Calendars is
 
-   use type Interfaces.Integer_64;
+   use Matreshka.Internals.Calendars;
 
    ---------
    -- "+" --
@@ -61,8 +61,7 @@ package body League.Calendars is
 
    function "+" (Left : Time; Right : Time) return Time is
    begin
-      return
-        Time (Interfaces.Integer_64 (Left) + Interfaces.Integer_64 (Right));
+      return Time (X_Open_Time (Left) + X_Open_Time (Right));
    end "+";
 
    ---------
@@ -71,9 +70,7 @@ package body League.Calendars is
 
    function "+" (Left : Date_Time; Right : Time) return Date_Time is
    begin
-      return
-        Date_Time
-         (Interfaces.Integer_64 (Left) + Interfaces.Integer_64 (Right));
+      return Date_Time (X_Open_Time (Left) + X_Open_Time (Right));
    end "+";
 
    ---------
@@ -82,7 +79,7 @@ package body League.Calendars is
 
    function "-" (Right : Time) return Time is
    begin
-      return Time (-Interfaces.Integer_64 (Right));
+      return Time (-X_Open_Time (Right));
    end "-";
 
    ---------
@@ -91,8 +88,7 @@ package body League.Calendars is
 
    function "-" (Left : Time; Right : Time) return Time is
    begin
-      return
-        Time (Interfaces.Integer_64 (Left) - Interfaces.Integer_64 (Right));
+      return Time (X_Open_Time (Left) - X_Open_Time (Right));
    end "-";
 
    ---------
@@ -101,9 +97,7 @@ package body League.Calendars is
 
    function "-" (Left : Date_Time; Right : Time) return Date_Time is
    begin
-      return
-        Date_Time
-         (Interfaces.Integer_64 (Left) - Interfaces.Integer_64 (Right));
+      return Date_Time (X_Open_Time (Left) - X_Open_Time (Right));
    end "-";
 
    ---------
@@ -112,7 +106,7 @@ package body League.Calendars is
 
    function "<"  (Left : Time; Right : Time) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) < Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) < X_Open_Time (Right);
    end "<";
 
    ---------
@@ -121,7 +115,7 @@ package body League.Calendars is
 
    function "<"  (Left : Date; Right : Date) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) < Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) < X_Open_Time (Right);
    end "<";
 
    ---------
@@ -130,7 +124,7 @@ package body League.Calendars is
 
    function "<"  (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) < Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) < X_Open_Time (Right);
    end "<";
 
    ----------
@@ -139,7 +133,7 @@ package body League.Calendars is
 
    function "<="  (Left : Time; Right : Time) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) <= Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) <= X_Open_Time (Right);
    end "<=";
 
    ----------
@@ -148,7 +142,7 @@ package body League.Calendars is
 
    function "<="  (Left : Date; Right : Date) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) <= Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) <= X_Open_Time (Right);
    end "<=";
 
    ----------
@@ -157,7 +151,7 @@ package body League.Calendars is
 
    function "<="  (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) <= Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) <= X_Open_Time (Right);
    end "<=";
 
    ---------
@@ -166,7 +160,7 @@ package body League.Calendars is
 
    function "="  (Left : Time; Right : Time) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) = Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) = X_Open_Time (Right);
    end "=";
 
    ---------
@@ -175,7 +169,7 @@ package body League.Calendars is
 
    function "="  (Left : Date; Right : Date) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) = Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) = X_Open_Time (Right);
    end "=";
 
    ---------
@@ -184,7 +178,7 @@ package body League.Calendars is
 
    function "="  (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) = Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) = X_Open_Time (Right);
    end "=";
 
    ---------
@@ -193,7 +187,7 @@ package body League.Calendars is
 
    function ">"  (Left : Time; Right : Time) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) > Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) > X_Open_Time (Right);
    end ">";
 
    ---------
@@ -202,7 +196,7 @@ package body League.Calendars is
 
    function ">"  (Left : Date; Right : Date) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) > Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) > X_Open_Time (Right);
    end ">";
 
    ---------
@@ -211,7 +205,7 @@ package body League.Calendars is
 
    function ">"  (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) > Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) > X_Open_Time (Right);
    end ">";
 
    ----------
@@ -220,7 +214,7 @@ package body League.Calendars is
 
    function ">="  (Left : Time; Right : Time) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) >= Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) >= X_Open_Time (Right);
    end ">=";
 
    ----------
@@ -229,7 +223,7 @@ package body League.Calendars is
 
    function ">="  (Left : Date; Right : Date) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) >= Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) >= X_Open_Time (Right);
    end ">=";
 
    ----------
@@ -238,7 +232,7 @@ package body League.Calendars is
 
    function ">="  (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
-      return Interfaces.Integer_64 (Left) >= Interfaces.Integer_64 (Right);
+      return X_Open_Time (Left) >= X_Open_Time (Right);
    end ">=";
 
 end League.Calendars;
