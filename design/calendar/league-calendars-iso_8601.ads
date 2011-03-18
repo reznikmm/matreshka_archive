@@ -157,6 +157,34 @@ package League.Calendars.ISO_8601 is
    --  2000 has week number 52 in the year 1999, and 31 December 2002 has week
    --  number 1 in the year 2003.
 
+   function Days_In_Year
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Day_Of_Year_Number;
+   function Days_In_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time) return Day_Of_Year_Number;
+   function Days_In_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Day_Of_Year_Number;
+   function Days_In_Year
+    (Self : ISO_8601_Calendar'Class;
+     Year : Year_Number) return Day_Of_Year_Number;
+   --  Returns the number of days in the year (365 or 366) for this date.
+
+   function Days_In_Month
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Day_Number;
+   function Days_In_Month
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Day_Number;
+   function Days_In_Month
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Day_Number;
+   function Days_In_Month
+    (Self  : ISO_8601_Calendar'Class;
+     Year  : Year_Number;
+     Month : Month_Number) return Day_Number;
+   --  Returns the number of days in the month (28 to 31) for this date.
+
    function Days_To
     (Self : ISO_8601_Calendar'Class; From : Date; To : Date) return Integer;
    --  Returns the number of days from date From to date To (which is negative
@@ -253,6 +281,60 @@ package League.Calendars.ISO_8601 is
    --  a leap year), this function will return a date that is the latest valid
    --  date (that is, Feb 28).
 
+   function Is_Valid
+    (Self  : ISO_8601_Calendar'Class;
+     Year  : Year_Number;
+     Month : Month_Number;
+     Day   : Day_Number) return Boolean;
+   --  Returns True if the specified date (Year, Month, and Day) is valid;
+   --  otherwise returns False.
+
+   procedure Split
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date;
+     Year  : out Year_Number;
+     Month : out Month_Number;
+     Day   : out Day_Number);
+   procedure Split
+    (Self    : ISO_8601_Calendar'Class;
+     Stamp   : Date_Time;
+     Year    : out Year_Number;
+     Month   : out Month_Number;
+     Day     : out Day_Number;
+     Seconds : out Time);
+   procedure Split
+    (Self    : ISO_8601_Calendar'Class;
+     Stamp   : Date_Time;
+     Zone    : Time_Zone;
+     Year    : out Year_Number;
+     Month   : out Month_Number;
+     Day     : out Day_Number;
+     Seconds : out Time);
+   --  Extracts the date's year, month, day, and time, and assigns them to
+   --  Year, Month, Day, and Seconds.
+
+   function Create
+    (Self  : ISO_8601_Calendar'Class;
+     Year  : Year_Number;
+     Month : Month_Number;
+     Day   : Day_Number) return Date;
+   function Create
+    (Self    : ISO_8601_Calendar'Class;
+     Year    : Year_Number;
+     Month   : Month_Number;
+     Day     : Day_Number;
+     Seconds : Time) return Date_Time;
+   function Create
+    (Self    : ISO_8601_Calendar'Class;
+     Year    : Year_Number;
+     Month   : Month_Number;
+     Day     : Day_Number;
+     Seconds : Time;
+     Zone    : Time_Zone) return Date_Time;
+   --  Constructs a date with Year, Month, Day and time Seconds.
+   --
+   --  If the specified date is invalid, Constraint_Error is raised.
+
    function To_Julian_Day
     (Self : ISO_8601_Calendar'Class; Stamp : Date) return Integer;
    function To_Julian_Day
@@ -268,7 +350,9 @@ package League.Calendars.ISO_8601 is
      Day  : Integer) return Date;
    --  Converts the Julian day Day to a date.
 
-   --  Subprograms below don't have calendar parameter for convenience.
+   -----------------------------------------------------------------------
+   --  Subprograms below don't have calendar parameter for convenience. --
+   -----------------------------------------------------------------------
 
    function Year (Stamp : Date) return Year_Number;
    function Year (Stamp : Date_Time) return Year_Number;
@@ -337,6 +421,21 @@ package League.Calendars.ISO_8601 is
    --  Returns the number of days from date From to date To (which is negative
    --  if To is earlier than From date).
 
+   function Days_In_Year (Stamp : Date) return Day_Of_Year_Number;
+   function Days_In_Year (Stamp : Date_Time) return Day_Of_Year_Number;
+   function Days_In_Year
+    (Stamp : Date_Time; Zone : Time_Zone) return Day_Of_Year_Number;
+   function Days_In_Year (Year : Year_Number) return Day_Of_Year_Number;
+   --  Returns the number of days in the year (365 or 366) for this date.
+
+   function Days_In_Month (Stamp : Date) return Day_Number;
+   function Days_In_Month (Stamp : Date_Time) return Day_Number;
+   function Days_In_Month
+    (Stamp : Date_Time; Zone : Time_Zone) return Day_Number;
+   function Days_In_Month
+    (Year : Year_Number; Month : Month_Number) return Day_Number;
+   --  Returns the number of days in the month (28 to 31) for this date.
+
    function Is_Leap_Year (Year : Year_Number) return Boolean;
    function Is_Leap_Year (Stamp : Date) return Boolean;
    function Is_Leap_Year (Stamp : Date_Time) return Boolean;
@@ -391,6 +490,53 @@ package League.Calendars.ISO_8601 is
    --  resulting year (i.e., if the date was Feb 29 and the final year is not
    --  a leap year), this function will return a date that is the latest valid
    --  date (that is, Feb 28).
+
+   function Is_Valid
+    (Year  : Year_Number;
+     Month : Month_Number;
+     Day   : Day_Number) return Boolean;
+   --  Returns True if the specified date (Year, Month, and Day) is valid;
+   --  otherwise returns False.
+
+   procedure Split
+    (Stamp : Date;
+     Year  : out Year_Number;
+     Month : out Month_Number;
+     Day   : out Day_Number);
+   procedure Split
+    (Stamp   : Date_Time;
+     Year    : out Year_Number;
+     Month   : out Month_Number;
+     Day     : out Day_Number;
+     Seconds : out Time);
+   procedure Split
+    (Stamp   : Date_Time;
+     Zone    : Time_Zone;
+     Year    : out Year_Number;
+     Month   : out Month_Number;
+     Day     : out Day_Number;
+     Seconds : out Time);
+   --  Extracts the date's year, month, day, and time, and assigns them to
+   --  Year, Month, Day, and Seconds.
+
+   function Create
+    (Year  : Year_Number;
+     Month : Month_Number;
+     Day   : Day_Number) return Date;
+   function Create
+    (Year    : Year_Number;
+     Month   : Month_Number;
+     Day     : Day_Number;
+     Seconds : Time) return Date_Time;
+   function Create
+    (Year    : Year_Number;
+     Month   : Month_Number;
+     Day     : Day_Number;
+     Seconds : Time;
+     Zone    : Time_Zone) return Date_Time;
+   --  Constructs a date with Year, Month, Day and time Seconds.
+   --
+   --  If the specified date is invalid, Constraint_Error is raised.
 
    function To_Julian_Day (Stamp : Date) return Integer;
    function To_Julian_Day (Stamp : Date_Time) return Integer;

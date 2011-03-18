@@ -378,6 +378,105 @@ package body League.Calendars.ISO_8601 is
       raise Program_Error;
    end Add_Years;
 
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (Year  : Year_Number;
+     Month : Month_Number;
+     Day   : Day_Number) return Date is
+   begin
+      return Calendar.Create (Year, Month, Day);
+   end Create;
+
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (Year    : Year_Number;
+     Month   : Month_Number;
+     Day     : Day_Number;
+     Seconds : Time) return Date_Time is
+   begin
+      return Calendar.Create (Year, Month, Day, Seconds);
+   end Create;
+
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (Year    : Year_Number;
+     Month   : Month_Number;
+     Day     : Day_Number;
+     Seconds : Time;
+     Zone    : Time_Zone) return Date_Time is
+   begin
+      return Calendar.Create (Year, Month, Day, Seconds, Zone);
+   end Create;
+
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (Self  : ISO_8601_Calendar'Class;
+     Year  : Year_Number;
+     Month : Month_Number;
+     Day   : Day_Number) return Date
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return Dummy : Date;
+   end Create;
+
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (Self    : ISO_8601_Calendar'Class;
+     Year    : Year_Number;
+     Month   : Month_Number;
+     Day     : Day_Number;
+     Seconds : Time) return Date_Time
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return Dummy : Date_Time;
+   end Create;
+
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (Self    : ISO_8601_Calendar'Class;
+     Year    : Year_Number;
+     Month   : Month_Number;
+     Day     : Day_Number;
+     Seconds : Time;
+     Zone    : Time_Zone) return Date_Time
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return Dummy : Date_Time;
+   end Create;
+
    ---------
    -- Day --
    ---------
@@ -617,6 +716,217 @@ package body League.Calendars.ISO_8601 is
       return 1;
    end Day_Of_Year;
 
+   -------------------
+   -- Days_In_Month --
+   -------------------
+
+   function Days_In_Month (Stamp : Date) return Day_Number is
+   begin
+      return Calendar.Days_In_Month (Stamp);
+   end Days_In_Month;
+
+   -------------------
+   -- Days_In_Month --
+   -------------------
+
+   function Days_In_Month (Stamp : Date_Time) return Day_Number is
+   begin
+      return Calendar.Days_In_Month (Stamp);
+   end Days_In_Month;
+
+   -------------------
+   -- Days_In_Month --
+   -------------------
+
+   function Days_In_Month
+    (Stamp : Date_Time; Zone : Time_Zone) return Day_Number is
+   begin
+      return Calendar.Days_In_Month (Stamp, Zone);
+   end Days_In_Month;
+
+   -------------------
+   -- Days_In_Month --
+   -------------------
+
+   function Days_In_Month
+    (Year : Year_Number; Month : Month_Number) return Day_Number is
+   begin
+      return Calendar.Days_In_Month (Year, Month);
+   end Days_In_Month;
+
+   -------------------
+   -- Days_In_Month --
+   -------------------
+
+   function Days_In_Month
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Day_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 1;
+   end Days_In_Month;
+
+   -------------------
+   -- Days_In_Month --
+   -------------------
+
+   function Days_In_Month
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Day_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 1;
+   end Days_In_Month;
+
+   -------------------
+   -- Days_In_Month --
+   -------------------
+
+   function Days_In_Month
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Day_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 1;
+   end Days_In_Month;
+
+   -------------------
+   -- Days_In_Month --
+   -------------------
+
+   function Days_In_Month
+    (Self  : ISO_8601_Calendar'Class;
+     Year  : Year_Number;
+     Month : Month_Number) return Day_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 1;
+   end Days_In_Month;
+
+   ------------------
+   -- Days_In_Year --
+   ------------------
+
+   function Days_In_Year (Stamp : Date) return Day_Of_Year_Number is
+   begin
+      return Calendar.Days_In_Year (Stamp);
+   end Days_In_Year;
+
+   ------------------
+   -- Days_In_Year --
+   ------------------
+
+   function Days_In_Year (Stamp : Date_Time) return Day_Of_Year_Number is
+   begin
+      return Calendar.Days_In_Year (Stamp);
+   end Days_In_Year;
+
+   ------------------
+   -- Days_In_Year --
+   ------------------
+
+   function Days_In_Year
+    (Stamp : Date_Time; Zone : Time_Zone) return Day_Of_Year_Number is
+   begin
+      return Calendar.Days_In_Year (Stamp, Zone);
+   end Days_In_Year;
+
+   ------------------
+   -- Days_In_Year --
+   ------------------
+
+   function Days_In_Year (Year : Year_Number) return Day_Of_Year_Number is
+   begin
+      return Calendar.Days_In_Year (Year);
+   end Days_In_Year;
+
+   ------------------
+   -- Days_In_Year --
+   ------------------
+
+   function Days_In_Year
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Day_Of_Year_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 1;
+   end Days_In_Year;
+
+   ------------------
+   -- Days_In_Year --
+   ------------------
+
+   function Days_In_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time) return Day_Of_Year_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 1;
+   end Days_In_Year;
+
+   ------------------
+   -- Days_In_Year --
+   ------------------
+
+   function Days_In_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Day_Of_Year_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 1;
+   end Days_In_Year;
+
+   ------------------
+   -- Days_In_Year --
+   ------------------
+
+   function Days_In_Year
+    (Self : ISO_8601_Calendar'Class;
+     Year : Year_Number) return Day_Of_Year_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 1;
+   end Days_In_Year;
+
    -------------
    -- Days_To --
    -------------
@@ -664,7 +974,7 @@ package body League.Calendars.ISO_8601 is
       --  XXX Not yet implemented.
 
       raise Program_Error;
-      return Aux : Date;
+      return Dummy : Date;
    end From_Julian_Day;
 
    ------------------
@@ -770,6 +1080,37 @@ package body League.Calendars.ISO_8601 is
       return False;
    end Is_Leap_Year;
 
+   --------------
+   -- Is_Valid --
+   --------------
+
+   function Is_Valid
+    (Year  : Year_Number;
+     Month : Month_Number;
+     Day   : Day_Number) return Boolean is
+   begin
+      return Calendar.Is_Valid (Year, Month, Day);
+   end Is_Valid;
+
+   --------------
+   -- Is_Valid --
+   --------------
+
+   function Is_Valid
+    (Self  : ISO_8601_Calendar'Class;
+     Year  : Year_Number;
+     Month : Month_Number;
+     Day   : Day_Number) return Boolean
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return False;
+   end Is_Valid;
+
    -----------
    -- Month --
    -----------
@@ -848,6 +1189,114 @@ package body League.Calendars.ISO_8601 is
       raise Program_Error;
       return 1;
    end Month;
+
+   -----------
+   -- Split --
+   -----------
+
+   procedure Split
+    (Stamp : Date;
+     Year  : out Year_Number;
+     Month : out Month_Number;
+     Day   : out Day_Number) is
+   begin
+--      Calendar.Split (Stamp, Year, Month, Day);
+--  XXX GNAT GPL 2010 unable to resolve procedure
+      Split (Calendar, Stamp, Year, Month, Day);
+   end Split;
+
+   -----------
+   -- Split --
+   -----------
+
+   procedure Split
+    (Stamp   : Date_Time;
+     Year    : out Year_Number;
+     Month   : out Month_Number;
+     Day     : out Day_Number;
+     Seconds : out Time) is
+   begin
+--      Calendar.Split (Stamp, Year, Month, Day, Seconds);
+--  XXX GNAT GPL 2010 unable to resolve procedure
+      Split (Calendar, Stamp, Year, Month, Day, Seconds);
+   end Split;
+
+   -----------
+   -- Split --
+   -----------
+
+   procedure Split
+    (Stamp   : Date_Time;
+     Zone    : Time_Zone;
+     Year    : out Year_Number;
+     Month   : out Month_Number;
+     Day     : out Day_Number;
+     Seconds : out Time) is
+   begin
+--      Calendar.Split (Stamp, Zone, Year, Month, Day, Seconds);
+--  XXX GNAT GPL 2010 unable to resolve procedure
+      Split (Calendar, Stamp, Zone, Year, Month, Day, Seconds);
+   end Split;
+
+   -----------
+   -- Split --
+   -----------
+
+   procedure Split
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date;
+     Year  : out Year_Number;
+     Month : out Month_Number;
+     Day   : out Day_Number)
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+   end Split;
+
+   -----------
+   -- Split --
+   -----------
+
+   procedure Split
+    (Self    : ISO_8601_Calendar'Class;
+     Stamp   : Date_Time;
+     Year    : out Year_Number;
+     Month   : out Month_Number;
+     Day     : out Day_Number;
+     Seconds : out Time)
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+   end Split;
+
+   -----------
+   -- Split --
+   -----------
+
+   procedure Split
+    (Self    : ISO_8601_Calendar'Class;
+     Stamp   : Date_Time;
+     Zone    : Time_Zone;
+     Year    : out Year_Number;
+     Month   : out Month_Number;
+     Day     : out Day_Number;
+     Seconds : out Time)
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+   end Split;
 
    -------------------
    -- To_Julian_Day --
