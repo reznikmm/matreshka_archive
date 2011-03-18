@@ -58,9 +58,21 @@ package League.Calendars.ISO_8601 is
 
    type ISO_8601_Calendar is new Abstract_Calendar with private;
 
+   function Is_Leap_Year
+    (Self : ISO_8601_Calendar'Class;
+     Year : Year_Number) return Boolean;
+
    ----------
    -- Date --
    ----------
+
+   function To_Julian_Day
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date) return Integer;
+
+   function From_Julian_Day
+    (Self : ISO_8601_Calendar'Class;
+     Day  : Integer) return Date;
 
    function Year
     (Self  : ISO_8601_Calendar'Class;
@@ -85,6 +97,11 @@ package League.Calendars.ISO_8601 is
    function Week_Of_Year
     (Self  : ISO_8601_Calendar'Class;
      Stamp : Date) return Week_Of_Year_Number;
+
+   function Days_To
+    (Self  : ISO_8601_Calendar'Class;
+     From  : Date;
+     To    : Date) return Integer;
 
    function Add_Days
     (Self  : ISO_8601_Calendar'Class;
@@ -116,9 +133,22 @@ package League.Calendars.ISO_8601 is
      Stamp : in out Date;
      Years : Integer);
 
+   function Is_Leap_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date) return Boolean;
+
    ---------------
    -- Date_Time --
    ---------------
+
+   function To_Julian_Day
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time) return Integer;
+
+   function To_Julian_Day
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Integer;
 
    function Year
     (Self  : ISO_8601_Calendar'Class;
@@ -187,7 +217,7 @@ package League.Calendars.ISO_8601 is
    function Add_Months
     (Self   : ISO_8601_Calendar'Class;
      Stamp  : Date_Time;
-     Months : Integer) return Date;
+     Months : Integer) return Date_Time;
 
    procedure Add_Months
     (Self   : ISO_8601_Calendar'Class;
@@ -204,7 +234,32 @@ package League.Calendars.ISO_8601 is
      Stamp : in out Date_Time;
      Years : Integer);
 
+   function Is_Leap_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time) return Boolean;
+
+   function Is_Leap_Year
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Boolean;
+
    --  Subprograms below don't have calendar parameter for convenience.
+
+   function To_Julian_Day (Stamp : Date) return Integer;
+
+   function To_Julian_Day (Stamp : Date_Time) return Integer;
+
+   function To_Julian_Day
+    (Stamp : Date_Time;
+     Zone  : Time_Zone) return Integer;
+
+   function Is_Leap_Year (Year : Year_Number) return Boolean;
+
+   function Is_Leap_Year (Stamp : Date) return Boolean;
+
+   function Is_Leap_Year (Stamp : Date_Time) return Boolean;
+
+   function Is_Leap_Year (Stamp : Date_Time; Zone : Time_Zone) return Boolean;
 
    function Year (Stamp : Date) return Year_Number;
 
@@ -245,7 +300,9 @@ package League.Calendars.ISO_8601 is
    function Week_Of_Year
     (Stamp : Date_Time; Zone  : Time_Zone) return Week_Of_Year_Number;
 
-   function Add_Days (Stamp : Date; Days : Integer) return Date_Time;
+   function Days_To (From : Date; To : Date) return Integer;
+
+   function Add_Days (Stamp : Date; Days : Integer) return Date;
 
    procedure Add_Days (Stamp : in out Date; Days : Integer);
 
