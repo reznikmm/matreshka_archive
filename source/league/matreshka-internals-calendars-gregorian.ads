@@ -49,19 +49,20 @@ package Matreshka.Internals.Calendars.Gregorian is
 
    pragma Preelaborate;
 
-   function Create
-    (Year     : Integer;
-     Month    : Integer;
-     Day      : Integer;
-     Hour     : Integer;
-     Minute   : Integer;
-     Second   : Integer;
-     Second_7 : Integer) return X_Open_Time;
-   --  Creates X/Open time from the specified components. Raises
-   --  Constraint_Error when specified components doesn't refer to valid date.
-   --
-   --  XXX This function is used to construct time from system clock. It
-   --  includes time components, which is violation of boundary of this
-   --  package, it should operates on dates only.
+   subtype Year_Number is Integer range -9_999 .. 9_999;
+   subtype Month_Number is Integer range 1 .. 12;
+   subtype Day_Number is Integer range 1 .. 31;
+   subtype Day_Of_Week_Number is Integer range 1 .. 7;
+   subtype Day_Of_Year_Number is Integer range 1 .. 366;
+   subtype Week_Of_Year_Number is Integer range 1 .. 53;
+
+   function Is_Leap_Year (Year : Year_Number) return Boolean;
+   --  Returns True when year is a leap year.
+
+   function Julian_Day
+    (Year  : Year_Number;
+     Month : Month_Number;
+     Day   : Day_Number) return Julian_Day_Number;
+   --  Returns Juliad Day of the specified date.
 
 end Matreshka.Internals.Calendars.Gregorian;

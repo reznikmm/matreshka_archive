@@ -58,7 +58,9 @@ package Matreshka.Internals.Calendars is
    --
    --  UTC time in this implementation always refers to time in Greenwich Time
    --  Zone.
-   --
+
+   type Absolute_Time is new Interfaces.Integer_64;
+
    --  The corresponding internal representations of relative time is the same
    --  one as for absolute time, and hence with similar characteristics:
    --
@@ -66,6 +68,8 @@ package Matreshka.Internals.Calendars is
    --
    --     Approximate range   +/- 30,000 years
 
-   type X_Open_Time is new Interfaces.Integer_64;
+   type Relative_Time is new Interfaces.Integer_64;
+
+   type Julian_Day_Number is new Interfaces.Integer_32;
 
 end Matreshka.Internals.Calendars;

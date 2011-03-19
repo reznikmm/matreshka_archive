@@ -43,9 +43,10 @@
 ------------------------------------------------------------------------------
 --  This is implementation for POSIX operation systems.
 ------------------------------------------------------------------------------
-with Interfaces.C;
+with Interfaces.C.Strings;
 
 with Matreshka.Internals.Calendars.Gregorian;
+with Matreshka.Internals.Calendars.Times;
 
 package body Matreshka.Internals.Calendars.Clocks is
 
@@ -66,15 +67,17 @@ package body Matreshka.Internals.Calendars.Clocks is
    pragma Convention (C, timezone);
 
    type tm is record
-      tm_sec   : Interfaces.C.int;
-      tm_min   : Interfaces.C.int;
-      tm_hour  : Interfaces.C.int;
-      tm_mday  : Interfaces.C.int;
-      tm_mon   : Interfaces.C.int;
-      tm_year  : Interfaces.C.int;
-      tm_wday  : Interfaces.C.int;
-      tm_yday  : Interfaces.C.int;
-      tm_isdst : Interfaces.C.int;
+      tm_sec    : Interfaces.C.int;
+      tm_min    : Interfaces.C.int;
+      tm_hour   : Interfaces.C.int;
+      tm_mday   : Interfaces.C.int;
+      tm_mon    : Interfaces.C.int;
+      tm_year   : Interfaces.C.int;
+      tm_wday   : Interfaces.C.int;
+      tm_yday   : Interfaces.C.int;
+      tm_isdst  : Interfaces.C.int;
+      tm_gmtoff : Interfaces.C.long;
+      tm_zone   : Interfaces.C.Strings.chars_ptr;
    end record;
    pragma Convention (C, tm);
 
@@ -92,7 +95,7 @@ package body Matreshka.Internals.Calendars.Clocks is
    -- Clock --
    -----------
 
-   function Clock return X_Open_Time is
+   function Clock return Absolute_Time is
       use type Interfaces.C.int;
 
       Current_Time : aliased timeval;
@@ -108,14 +111,23 @@ package body Matreshka.Internals.Calendars.Clocks is
       end if;
 
       return
-        Gregorian.Create
-         (Integer (Break_Down.tm_year) + 1_900,
-          Integer (Break_Down.tm_mon) + 1,
-          Integer (Break_Down.tm_mday),
+        Times.Create
+         (Gregorian.Julian_Day
+           (Integer (Break_Down.tm_year) + 1_900,
+            Integer (Break_Down.tm_mon) + 1,
+            Integer (Break_Down.tm_mday)),
           Integer (Break_Down.tm_hour),
           Integer (Break_Down.tm_min),
           Integer (Break_Down.tm_sec),
           Integer (Current_Time.tv_usec) * 10);
+--        Gregorian.Create
+--         (Integer (Break_Down.tm_year) + 1_900,
+--          Integer (Break_Down.tm_mon) + 1,
+--          Integer (Break_Down.tm_mday),
+--          Integer (Break_Down.tm_hour),
+--          Integer (Break_Down.tm_min),
+--          Integer (Break_Down.tm_sec),
+--          Integer (Current_Time.tv_usec) * 10);
    end Clock;
 
 end Matreshka.Internals.Calendars.Clocks;

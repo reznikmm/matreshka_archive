@@ -46,7 +46,7 @@ package Matreshka.Internals.Calendars.Clocks is
 
    pragma Preelaborate;
 
-   function Clock return X_Open_Time;
+   function Clock return Absolute_Time;
    --  Returns current time.
 
 end Matreshka.Internals.Calendars.Clocks;

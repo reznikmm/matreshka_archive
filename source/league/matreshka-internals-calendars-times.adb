@@ -41,101 +41,32 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides generic types to operate on time and date.
---
---  Type Time represents some period of time.
---
---  Type Date represents day of the calendar.
---
---  Type Date_Time represents day of the calendar and time inside this day.
---
---  Type Time_Zone represents time zone.
---
---  Type Abstract_Calendar supports date/time operations on Date and Date_Time.
---  There are several children packages provides implementations of different
---  calendars. All calendar operations which doesn't have time zone parameter
---  operates in current time zone (specified for thread or for application).
-------------------------------------------------------------------------------
-private with Matreshka.Internals.Calendars;
 
-package League.Calendars is
+package body Matreshka.Internals.Calendars.Times is
 
-   pragma Preelaborate;
-   pragma Remote_Types;
-   --  XXX Abstract_Calendar type must be moved outside of this package if it
-   --  is remote types package, there is not plan to share it objects across
-   --  partitions and there is no such requirement.
+   --  XXX Leap seconds not handled now.
 
-   type Time is private;
+   X_Open_Epoch : constant := 2_299_161;
+   --  Julian day number of start of X/Open representation
+   --  October, 15, 1582
 
-   type Date is private;
+   ------------
+   -- Create --
+   ------------
 
-   type Date_Time is private;
+   function Create
+    (Julian_Day : Julian_Day_Number;
+     Hour       : Hour_Number;
+     Minute     : Minute_Number;
+     Second     : Second_Number;
+     Nano_100   : Nano_Second_100_Number) return Absolute_Time is
+   begin
+      return
+        Absolute_Time (Julian_Day - X_Open_Epoch) * 24 * 60 * 60 * 10_000_000
+          + Absolute_Time (Hour) * 60 * 60 * 10_000_000
+          + Absolute_Time (Minute) * 60 * 10_000_000
+          + Absolute_Time (Second) * 10_000_000
+          + Absolute_Time (Nano_100);
+   end Create;
 
-   ----------
-   -- Time --
-   ----------
-
-   function "+" (Right : Time) return Time;
-   function "-" (Right : Time) return Time;
-
-   function "+" (Left : Time; Right : Time) return Time;
-   function "-" (Left : Time; Right : Time) return Time;
-
-   function "="  (Left : Time; Right : Time) return Boolean;
-   function "<"  (Left : Time; Right : Time) return Boolean;
-   function "<=" (Left : Time; Right : Time) return Boolean;
-   function ">"  (Left : Time; Right : Time) return Boolean;
-   function ">=" (Left : Time; Right : Time) return Boolean;
-
-   ----------
-   -- Date --
-   ----------
-
-   function "="  (Left : Date; Right : Date) return Boolean;
-   function "<"  (Left : Date; Right : Date) return Boolean;
-   function "<=" (Left : Date; Right : Date) return Boolean;
-   function ">"  (Left : Date; Right : Date) return Boolean;
-   function ">=" (Left : Date; Right : Date) return Boolean;
-
-   ---------------
-   -- Date_Time --
-   ---------------
-
-   function Clock return Date_Time;
-   --  Returns current date and time.
-
-   function "+" (Left : Date_Time; Right : Time) return Date_Time;
-   function "-" (Left : Date_Time; Right : Time) return Date_Time;
-
-   function "="  (Left : Date_Time; Right : Date_Time) return Boolean;
-   function "<"  (Left : Date_Time; Right : Date_Time) return Boolean;
-   function "<=" (Left : Date_Time; Right : Date_Time) return Boolean;
-   function ">"  (Left : Date_Time; Right : Date_Time) return Boolean;
-   function ">=" (Left : Date_Time; Right : Date_Time) return Boolean;
-
-   type Time_Zone is tagged private;
-
-   type Abstract_Calendar is abstract tagged private;
-
-private
-
-   type Time is new Matreshka.Internals.Calendars.Relative_Time;
-
-   type Date is new Matreshka.Internals.Calendars.Julian_Day_Number;
-
-   type Date_Time is new Matreshka.Internals.Calendars.Absolute_Time;
-
-   type Time_Zone is tagged null record;
-
-   type Abstract_Calendar is abstract tagged null record;
-
-   pragma Inline ("+");
-   pragma Inline ("-");
-   pragma Inline ("=");
-   pragma Inline ("<");
-   pragma Inline (">");
-   pragma Inline ("<=");
-   pragma Inline (">=");
-
-end League.Calendars;
+end Matreshka.Internals.Calendars.Times;

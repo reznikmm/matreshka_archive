@@ -44,23 +44,30 @@
 
 package body Matreshka.Internals.Calendars.Gregorian is
 
-   ------------
-   -- Create --
-   ------------
+   Gregorian_Epoch : constant := 1_721_426;
 
-   function Create
-    (Year     : Integer;
-     Month    : Integer;
-     Day      : Integer;
-     Hour     : Integer;
-     Minute   : Integer;
-     Second   : Integer;
-     Second_7 : Integer) return X_Open_Time is
+   ------------------
+   -- Is_Leap_Year --
+   ------------------
+
+   function Is_Leap_Year (Year : Year_Number) return Boolean is
+   begin
+      return Year mod 4 = 0 and (Year mod 100 /= 0 or Year mod 400 = 0);
+   end Is_Leap_Year;
+
+   ----------------
+   -- Julian_Day --
+   ----------------
+
+   function Julian_Day
+    (Year  : Year_Number;
+     Month : Month_Number;
+     Day   : Day_Number) return Julian_Day_Number is
    begin
       --  XXX Not yet implemented.
 
       raise Program_Error;
       return 0;
-   end Create;
+   end Julian_Day;
 
 end Matreshka.Internals.Calendars.Gregorian;

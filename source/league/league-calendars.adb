@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Calendars.Clocks;
 
 package body League.Calendars is
 
@@ -61,7 +62,7 @@ package body League.Calendars is
 
    function "+" (Left : Time; Right : Time) return Time is
    begin
-      return Time (X_Open_Time (Left) + X_Open_Time (Right));
+      return Time (Relative_Time (Left) + Relative_Time (Right));
    end "+";
 
    ---------
@@ -70,7 +71,7 @@ package body League.Calendars is
 
    function "+" (Left : Date_Time; Right : Time) return Date_Time is
    begin
-      return Date_Time (X_Open_Time (Left) + X_Open_Time (Right));
+      return Date_Time (Absolute_Time (Left) + Absolute_Time (Right));
    end "+";
 
    ---------
@@ -79,7 +80,7 @@ package body League.Calendars is
 
    function "-" (Right : Time) return Time is
    begin
-      return Time (-X_Open_Time (Right));
+      return Time (-Relative_Time (Right));
    end "-";
 
    ---------
@@ -88,7 +89,7 @@ package body League.Calendars is
 
    function "-" (Left : Time; Right : Time) return Time is
    begin
-      return Time (X_Open_Time (Left) - X_Open_Time (Right));
+      return Time (Relative_Time (Left) - Relative_Time (Right));
    end "-";
 
    ---------
@@ -97,7 +98,7 @@ package body League.Calendars is
 
    function "-" (Left : Date_Time; Right : Time) return Date_Time is
    begin
-      return Date_Time (X_Open_Time (Left) - X_Open_Time (Right));
+      return Date_Time (Absolute_Time (Left) - Absolute_Time (Right));
    end "-";
 
    ---------
@@ -106,7 +107,7 @@ package body League.Calendars is
 
    function "<"  (Left : Time; Right : Time) return Boolean is
    begin
-      return X_Open_Time (Left) < X_Open_Time (Right);
+      return Relative_Time (Left) < Relative_Time (Right);
    end "<";
 
    ---------
@@ -115,7 +116,7 @@ package body League.Calendars is
 
    function "<"  (Left : Date; Right : Date) return Boolean is
    begin
-      return X_Open_Time (Left) < X_Open_Time (Right);
+      return Julian_Day_Number (Left) < Julian_Day_Number (Right);
    end "<";
 
    ---------
@@ -124,7 +125,7 @@ package body League.Calendars is
 
    function "<"  (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
-      return X_Open_Time (Left) < X_Open_Time (Right);
+      return Absolute_Time (Left) < Absolute_Time (Right);
    end "<";
 
    ----------
@@ -133,7 +134,7 @@ package body League.Calendars is
 
    function "<="  (Left : Time; Right : Time) return Boolean is
    begin
-      return X_Open_Time (Left) <= X_Open_Time (Right);
+      return Relative_Time (Left) <= Relative_Time (Right);
    end "<=";
 
    ----------
@@ -142,7 +143,7 @@ package body League.Calendars is
 
    function "<="  (Left : Date; Right : Date) return Boolean is
    begin
-      return X_Open_Time (Left) <= X_Open_Time (Right);
+      return Julian_Day_Number (Left) <= Julian_Day_Number (Right);
    end "<=";
 
    ----------
@@ -151,7 +152,7 @@ package body League.Calendars is
 
    function "<="  (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
-      return X_Open_Time (Left) <= X_Open_Time (Right);
+      return Absolute_Time (Left) <= Absolute_Time (Right);
    end "<=";
 
    ---------
@@ -160,7 +161,7 @@ package body League.Calendars is
 
    function "="  (Left : Time; Right : Time) return Boolean is
    begin
-      return X_Open_Time (Left) = X_Open_Time (Right);
+      return Relative_Time (Left) = Relative_Time (Right);
    end "=";
 
    ---------
@@ -169,7 +170,7 @@ package body League.Calendars is
 
    function "="  (Left : Date; Right : Date) return Boolean is
    begin
-      return X_Open_Time (Left) = X_Open_Time (Right);
+      return Julian_Day_Number (Left) = Julian_Day_Number (Right);
    end "=";
 
    ---------
@@ -178,7 +179,7 @@ package body League.Calendars is
 
    function "="  (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
-      return X_Open_Time (Left) = X_Open_Time (Right);
+      return Absolute_Time (Left) = Absolute_Time (Right);
    end "=";
 
    ---------
@@ -187,7 +188,7 @@ package body League.Calendars is
 
    function ">"  (Left : Time; Right : Time) return Boolean is
    begin
-      return X_Open_Time (Left) > X_Open_Time (Right);
+      return Relative_Time (Left) > Relative_Time (Right);
    end ">";
 
    ---------
@@ -196,7 +197,7 @@ package body League.Calendars is
 
    function ">"  (Left : Date; Right : Date) return Boolean is
    begin
-      return X_Open_Time (Left) > X_Open_Time (Right);
+      return Julian_Day_Number (Left) > Julian_Day_Number (Right);
    end ">";
 
    ---------
@@ -205,7 +206,7 @@ package body League.Calendars is
 
    function ">"  (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
-      return X_Open_Time (Left) > X_Open_Time (Right);
+      return Absolute_Time (Left) > Absolute_Time (Right);
    end ">";
 
    ----------
@@ -214,7 +215,7 @@ package body League.Calendars is
 
    function ">="  (Left : Time; Right : Time) return Boolean is
    begin
-      return X_Open_Time (Left) >= X_Open_Time (Right);
+      return Relative_Time (Left) >= Relative_Time (Right);
    end ">=";
 
    ----------
@@ -223,7 +224,7 @@ package body League.Calendars is
 
    function ">="  (Left : Date; Right : Date) return Boolean is
    begin
-      return X_Open_Time (Left) >= X_Open_Time (Right);
+      return Julian_Day_Number (Left) >= Julian_Day_Number (Right);
    end ">=";
 
    ----------
@@ -232,7 +233,16 @@ package body League.Calendars is
 
    function ">="  (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
-      return X_Open_Time (Left) >= X_Open_Time (Right);
+      return Absolute_Time (Left) >= Absolute_Time (Right);
    end ">=";
+
+   -----------
+   -- Clock --
+   -----------
+
+   function Clock return Date_Time is
+   begin
+      return Date_Time (Matreshka.Internals.Calendars.Clocks.Clock);
+   end Clock;
 
 end League.Calendars;
