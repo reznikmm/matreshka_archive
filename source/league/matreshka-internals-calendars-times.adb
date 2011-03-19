@@ -69,4 +69,45 @@ package body Matreshka.Internals.Calendars.Times is
           + Absolute_Time (Nano_100);
    end Create;
 
+   ----------
+   -- Hour --
+   ----------
+
+   function Hour (Time : Absolute_Time) return Hour_Number is
+   begin
+      return
+        Hour_Number
+         (Time mod (24 * 60 * 60 * 10_000_000) / (60 * 60 * 10_000_000));
+   end Hour;
+
+   ----------------
+   -- Julian_Day --
+   ----------------
+
+   function Julian_Day (Time : Absolute_Time) return Julian_Day_Number is
+   begin
+      return
+        Julian_Day_Number (Time / (24 * 60 * 60 * 10_000_000)) + X_Open_Epoch;
+   end Julian_Day;
+
+   ------------
+   -- Minute --
+   ------------
+
+   function Minute (Time : Absolute_Time) return Minute_Number is
+   begin
+      return
+        Minute_Number (Time mod (60 * 60 * 10_000_000) / (60 * 10_000_000));
+   end Minute;
+
+   ------------
+   -- Second --
+   ------------
+
+   function Second (Time : Absolute_Time) return Second_Number is
+   begin
+      return
+        Second_Number (Time mod (60 * 10_000_000) / (10_000_000));
+   end Second;
+
 end Matreshka.Internals.Calendars.Times;

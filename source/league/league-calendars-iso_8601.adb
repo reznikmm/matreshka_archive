@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Calendars.Gregorian;
+with Matreshka.Internals.Calendars.Times;
 
 package body League.Calendars.ISO_8601 is
 
@@ -532,10 +534,13 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
+      --  XXX Time zone not yet implemented.
 
-      raise Program_Error;
-      return 1;
+      return
+        Day_Number
+         (Matreshka.Internals.Calendars.Gregorian.Day
+           (Matreshka.Internals.Calendars.Times.Julian_Day
+             (Matreshka.Internals.Calendars.Absolute_Time (Stamp))));
    end Day;
 
    ---------
@@ -977,6 +982,85 @@ package body League.Calendars.ISO_8601 is
       return Dummy : Date;
    end From_Julian_Day;
 
+   ----------
+   -- Hour --
+   ----------
+
+   function Hour (Stamp : Time) return Hour_Number is
+   begin
+      return Calendar.Hour (Stamp);
+   end Hour;
+
+   ----------
+   -- Hour --
+   ----------
+
+   function Hour (Stamp : Date_Time) return Hour_Number is
+   begin
+      return Calendar.Hour (Stamp);
+   end Hour;
+
+   ----------
+   -- Hour --
+   ----------
+
+   function Hour (Stamp : Date_Time; Zone : Time_Zone) return Hour_Number is
+   begin
+      return Calendar.Hour (Stamp, Zone);
+   end Hour;
+
+   ----------
+   -- Hour --
+   ----------
+
+   function Hour
+    (Self : ISO_8601_Calendar'Class; Stamp : Time) return Hour_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 0;
+   end Hour;
+
+   ----------
+   -- Hour --
+   ----------
+
+   function Hour
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Hour_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Time zone not yet implemented.
+
+      return
+        Hour_Number
+         (Matreshka.Internals.Calendars.Times.Hour
+           (Matreshka.Internals.Calendars.Absolute_Time (Stamp)));
+   end Hour;
+
+   ----------
+   -- Hour --
+   ----------
+
+   function Hour
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Hour_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 0;
+   end Hour;
+
    ------------------
    -- Is_Leap_Year --
    ------------------
@@ -1111,6 +1195,86 @@ package body League.Calendars.ISO_8601 is
       return False;
    end Is_Valid;
 
+   ------------
+   -- Minute --
+   ------------
+
+   function Minute (Stamp : Time) return Minute_Number is
+   begin
+      return Calendar.Minute (Stamp);
+   end Minute;
+
+   ------------
+   -- Minute --
+   ------------
+
+   function Minute (Stamp : Date_Time) return Minute_Number is
+   begin
+      return Calendar.Minute (Stamp);
+   end Minute;
+
+   ------------
+   -- Minute --
+   ------------
+
+   function Minute
+    (Stamp : Date_Time; Zone : Time_Zone) return Minute_Number is
+   begin
+      return Calendar.Minute (Stamp, Zone);
+   end Minute;
+
+   ------------
+   -- Minute --
+   ------------
+
+   function Minute
+    (Self : ISO_8601_Calendar'Class; Stamp : Time) return Minute_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 0;
+   end Minute;
+
+   ------------
+   -- Minute --
+   ------------
+
+   function Minute
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Minute_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Time zone not yet implemented.
+
+      return
+        Minute_Number
+         (Matreshka.Internals.Calendars.Times.Minute
+           (Matreshka.Internals.Calendars.Absolute_Time (Stamp)));
+   end Minute;
+
+   ------------
+   -- Minute --
+   ------------
+
+   function Minute
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Minute_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 0;
+   end Minute;
+
    -----------
    -- Month --
    -----------
@@ -1166,10 +1330,13 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
+      --  XXX Time zone not yet implemented.
 
-      raise Program_Error;
-      return 1;
+      return
+        Month_Number
+         (Matreshka.Internals.Calendars.Gregorian.Month
+           (Matreshka.Internals.Calendars.Times.Julian_Day
+             (Matreshka.Internals.Calendars.Absolute_Time (Stamp))));
    end Month;
 
    -----------
@@ -1189,6 +1356,86 @@ package body League.Calendars.ISO_8601 is
       raise Program_Error;
       return 1;
    end Month;
+
+   ------------
+   -- Second --
+   ------------
+
+   function Second (Stamp : Time) return Second_Number is
+   begin
+      return Calendar.Second (Stamp);
+   end Second;
+
+   ------------
+   -- Second --
+   ------------
+
+   function Second (Stamp : Date_Time) return Second_Number is
+   begin
+      return Calendar.Second (Stamp);
+   end Second;
+
+   ------------
+   -- Second --
+   ------------
+
+   function Second
+    (Stamp : Date_Time; Zone : Time_Zone) return Second_Number is
+   begin
+      return Calendar.Second (Stamp, Zone);
+   end Second;
+
+   ------------
+   -- Second --
+   ------------
+
+   function Second
+    (Self : ISO_8601_Calendar'Class; Stamp : Time) return Second_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 0;
+   end Second;
+
+   ------------
+   -- Second --
+   ------------
+
+   function Second
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Second_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Time zone not yet implemented.
+
+      return
+        Second_Number
+         (Matreshka.Internals.Calendars.Times.Second
+           (Matreshka.Internals.Calendars.Absolute_Time (Stamp)));
+   end Second;
+
+   ------------
+   -- Second --
+   ------------
+
+   function Second
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Second_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 0;
+   end Second;
 
    -----------
    -- Split --
@@ -1611,10 +1858,13 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
+      --  XXX Time zone not yet implemented.
 
-      raise Program_Error;
-      return 1;
+      return
+        Year_Number
+         (Matreshka.Internals.Calendars.Gregorian.Year
+           (Matreshka.Internals.Calendars.Times.Julian_Day
+             (Matreshka.Internals.Calendars.Absolute_Time (Stamp))));
    end Year;
 
    ----------

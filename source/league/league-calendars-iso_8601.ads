@@ -52,15 +52,15 @@ package League.Calendars.ISO_8601 is
    type Year_Number is range -9_999 .. 9_999;
    type Month_Number is range 1 .. 12;
    type Day_Number is range 1 .. 31;
+   type Hour_Number is range 0 .. 23;
+   type Minute_Number is range 0 .. 59;
+   type Second_Number is range 0 .. 60;
+   type Nano_Second_100_Number is range 0 .. 9_999_999;
    type Day_Of_Week_Number is range 1 .. 7;  -- XXX Does it depend from locale?
    type Day_Of_Year_Number is range 1 .. 366;
    type Week_Of_Year_Number is range 1 .. 53;
 
    type ISO_8601_Calendar is new Abstract_Calendar with private;
-
-   ----------
-   -- Date --
-   ----------
 
    function Year
     (Self : ISO_8601_Calendar'Class; Stamp : Date) return Year_Number;
@@ -92,6 +92,36 @@ package League.Calendars.ISO_8601 is
      Stamp : Date_Time;
      Zone  : Time_Zone) return Day_Number;
    --  Returns the day of the month of this date.
+
+   function Hour
+    (Self : ISO_8601_Calendar'Class; Stamp : Time) return Hour_Number;
+   function Hour
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Hour_Number;
+   function Hour
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Hour_Number;
+   --  Returns the hour part (0 to 23) of the time.
+
+   function Minute
+    (Self : ISO_8601_Calendar'Class; Stamp : Time) return Minute_Number;
+   function Minute
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Minute_Number;
+   function Minute
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Minute_Number;
+   --  Returns the minute part (0 to 59) of the time.
+
+   function Second
+    (Self : ISO_8601_Calendar'Class; Stamp : Time) return Second_Number;
+   function Second
+    (Self : ISO_8601_Calendar'Class; Stamp : Date_Time) return Second_Number;
+   function Second
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Second_Number;
+   --  Returns the second part (0 to 60) of the time.
 
    function Day_Of_Week
     (Self : ISO_8601_Calendar'Class; Stamp : Date) return Day_Of_Week_Number;
@@ -369,6 +399,21 @@ package League.Calendars.ISO_8601 is
    function Day (Stamp : Date_Time) return Day_Number;
    function Day (Stamp : Date_Time; Zone : Time_Zone) return Day_Number;
    --  Returns the day of the month of this date.
+
+   function Hour (Stamp : Time) return Hour_Number;
+   function Hour (Stamp : Date_Time) return Hour_Number;
+   function Hour (Stamp : Date_Time; Zone : Time_Zone) return Hour_Number;
+   --  Returns the hour part (0 to 23) of the time.
+
+   function Minute (Stamp : Time) return Minute_Number;
+   function Minute (Stamp : Date_Time) return Minute_Number;
+   function Minute (Stamp : Date_Time; Zone : Time_Zone) return Minute_Number;
+   --  Returns the minute part (0 to 59) of the time.
+
+   function Second (Stamp : Time) return Second_Number;
+   function Second (Stamp : Date_Time) return Second_Number;
+   function Second (Stamp : Date_Time; Zone : Time_Zone) return Second_Number;
+   --  Returns the second part (0 to 60) of the time.
 
    function Day_Of_Week (Stamp : Date) return Day_Of_Week_Number;
    function Day_Of_Week (Stamp : Date_Time) return Day_Of_Week_Number;

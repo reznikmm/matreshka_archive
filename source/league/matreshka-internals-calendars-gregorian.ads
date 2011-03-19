@@ -65,4 +65,13 @@ package Matreshka.Internals.Calendars.Gregorian is
      Day   : Day_Number) return Julian_Day_Number;
    --  Returns Juliad Day of the specified date.
 
+   function Year (Julian_Day : Julian_Day_Number) return Year_Number;
+   --  Returns year of the specified julian day.
+
+   function Month (Julian_Day : Julian_Day_Number) return Month_Number;
+   --  Returns month of the specified julian day.
+
+   function Day (Julian_Day : Julian_Day_Number) return Day_Number;
+   --  Returns day of the specified julian day.
+
 end Matreshka.Internals.Calendars.Gregorian;

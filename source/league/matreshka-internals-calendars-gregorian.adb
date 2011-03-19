@@ -46,6 +46,18 @@ package body Matreshka.Internals.Calendars.Gregorian is
 
    Gregorian_Epoch : constant := 1_721_426;
 
+   ---------
+   -- Day --
+   ---------
+
+   function Day (Julian_Day : Julian_Day_Number) return Day_Number is
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 1;
+   end Day;
+
    ------------------
    -- Is_Leap_Year --
    ------------------
@@ -69,5 +81,29 @@ package body Matreshka.Internals.Calendars.Gregorian is
       raise Program_Error;
       return 0;
    end Julian_Day;
+
+   -----------
+   -- Month --
+   -----------
+
+   function Month (Julian_Day : Julian_Day_Number) return Month_Number is
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 1;
+   end Month;
+
+   ----------
+   -- Year --
+   ----------
+
+   function Year (Julian_Day : Julian_Day_Number) return Year_Number is
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 0;
+   end Year;
 
 end Matreshka.Internals.Calendars.Gregorian;
