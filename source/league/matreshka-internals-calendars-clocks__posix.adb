@@ -120,14 +120,6 @@ package body Matreshka.Internals.Calendars.Clocks is
           Integer (Break_Down.tm_min),
           Integer (Break_Down.tm_sec),
           Integer (Current_Time.tv_usec) * 10);
---        Gregorian.Create
---         (Integer (Break_Down.tm_year) + 1_900,
---          Integer (Break_Down.tm_mon) + 1,
---          Integer (Break_Down.tm_mday),
---          Integer (Break_Down.tm_hour),
---          Integer (Break_Down.tm_min),
---          Integer (Break_Down.tm_sec),
---          Integer (Current_Time.tv_usec) * 10);
    end Clock;
 
 end Matreshka.Internals.Calendars.Clocks;
