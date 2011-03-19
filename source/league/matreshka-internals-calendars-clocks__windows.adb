@@ -43,19 +43,50 @@
 ------------------------------------------------------------------------------
 --  This is implementation of the package for Windows operation system.
 ------------------------------------------------------------------------------
+with Interfaces.C;
+
+with Matreshka.Internals.Calendars.Gregorian;
+with Matreshka.Internals.Calendars.Times;
 
 package body Matreshka.Internals.Calendars.Clocks is
+
+   type WORD is new Interfaces.C.unsigned_short;
+
+   type SYSTEMTIME is record
+      wYear         : WORD;
+      wMonth        : WORD;
+      wDayOfWeek    : WORD;
+      wDay          : WORD;
+      wHour         : WORD;
+      wMinute       : WORD;
+      wSecond       : WORD;
+      wMilliseconds : WORD;
+   end record;
+   pragma Convention (C, SYSTEMTIME);
+
+   procedure GetSystemTime (lpSystemTime : not null access SYSTEMTIME);
+   pragma Import (Stdcall, GetSystemTime, "GetSystemTime");
 
    -----------
    -- Clock --
    -----------
 
-   function Clock return X_Open_Time is
-   begin
-      --  XXX Not yet implemented.
+   function Clock return Absolute_Time is
+      Current_Time : aliased SYSTEMTIME;
 
-      raise Program_Error;
-      return 0;
+   begin
+      GetSystemTime (Current_Time'Access);
+
+      return
+        Times.Create
+         (Gregorian.Julian_Day
+           (Integer (Current_Time.wYear),
+            Integer (Current_Time.wMonth),
+            Integer (Current_Time.wDay)),
+          Integer (Current_Time.wHour),
+          Integer (Current_Time.wMinute),
+          Integer (Current_Time.wSecond),
+          Integer (Current_Time.wMilliseconds) * 10_000);
    end Clock;
 
 end Matreshka.Internals.Calendars.Clocks;
