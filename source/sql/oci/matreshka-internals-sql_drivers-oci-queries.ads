@@ -57,11 +57,13 @@ package Matreshka.Internals.SQL_Drivers.OCI.Queries is
 private
 
    type Bound_Value_Node is limited record
-      Bind    : aliased OCI.Bind;
-      Is_Null : aliased Sb2;
-      String  : League.Strings.Universal_String;
-      Int     : aliased League.Values.Universal_Integer;
-      Float   : aliased League.Values.Universal_Float;
+      Value       : League.Values.Value;
+      Bind        : aliased OCI.Bind;
+      Is_Null     : aliased Sb2;
+      String_Size : aliased Ub4;
+      String      : Matreshka.Internals.Strings.Shared_String_Access;
+      Int         : aliased League.Values.Universal_Integer;
+      Float       : aliased League.Values.Universal_Float;
    end record;
 
    type Bound_Value_Access is access Bound_Value_Node;

@@ -52,6 +52,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
    use type Interfaces.Unsigned_32;
    use type Interfaces.Unsigned_16;
    use type Interfaces.Integer_8;
+   use type Sb2;
 
    procedure Free is
      new Ada.Unchecked_Deallocation (Bound_Value_Node, Bound_Value_Access);
@@ -59,6 +60,53 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
    procedure Free is
      new Ada.Unchecked_Deallocation
           (Defined_Value_Array, Defined_Value_Array_Access);
+
+   type Utf16_Code_Unit_Access is
+     access all Matreshka.Internals.Utf16.Utf16_Code_Unit;
+
+   function OCICallbackInBind
+     (ictxp  : Bound_Value_Access;
+      bindp  : OCI.Bind;
+      iter   : Ub4;
+      index  : Ub4;
+      bufpp  : access Utf16_Code_Unit_Access;
+      alenp  : access Ub4;
+      piecep : access Ub1;
+      indp   : access Sb2_Ptr)
+     return Error_Code;
+
+   pragma Convention (C, OCICallbackInBind);
+
+   function OCICallbackOutBind
+     (octxp   : Bound_Value_Access;
+      bindp   : OCI.Bind;
+      iter    : Ub4;
+      index   : Ub4;
+      bufpp   : access Utf16_Code_Unit_Access;
+      alenp   : access Ub4_Ptr;
+      piecep  : access Ub1;
+      indp    : access Sb2_Ptr;
+      rcodepp : access Sb2_Ptr)
+     return Error_Code;
+
+   pragma Convention (C, OCICallbackOutBind);
+
+   function "+"
+     (Left  : Matreshka.Internals.Utf16.Utf16_String_Index;
+      Right : Ub4) return Matreshka.Internals.Utf16.Utf16_String_Index;
+
+   ---------
+   -- "+" --
+   ---------
+
+   function "+"
+     (Left  : Matreshka.Internals.Utf16.Utf16_String_Index;
+      Right : Ub4) return Matreshka.Internals.Utf16.Utf16_String_Index
+   is
+      use type Matreshka.Internals.Utf16.Utf16_String_Index;
+   begin
+      return Left + Matreshka.Internals.Utf16.Utf16_String_Index (Right) / 2;
+   end "+";
 
    ----------------
    -- Bind_Value --
@@ -70,7 +118,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
      Value     : League.Values.Value;
      Direction : SQL.Parameter_Directions)
    is
-      pragma Unreferenced (Direction);
+      use type SQL.Parameter_Directions;
 
       Code : Error_Code;
       Pos  : Parameter_Maps.Cursor;
@@ -88,43 +136,53 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
        (Name : League.Strings.Universal_String;
         Item : in out Bound_Value_Access)
       is
-         use type Sb2;
-
+         Length : Ub4;
       begin
          if Item = null then
             Item := new Bound_Value_Node;
          end if;
 
-         if League.Values.Is_Empty (Value) then
+         Item.Value := Value;
+
+         if League.Values.Is_Universal_String (Value) then
+            Length := 64 * 1024;  --  64kbyte max length of out string param
+
+            if Direction = SQL.In_Parameter then
+               if League.Values.Is_Empty (Value) then
+                  Length := 2;
+               else
+                  Length := Ub4 (League.Strings.Internals.Internal
+                                   (League.Values.Get (Value)).Unused) * 2 + 2;
+               end if;
+            end if;
+
             Code :=
               OCIBindByName
-               (Self.Handle,
+                (Self.Handle,
                 Item.Bind'Access,
                 Self.DB.Error,
                 League.Strings.Internals.Internal (Name).Value,
                 Ub4 (League.Strings.Internals.Internal (Name).Unused) * 2,
-                Item.Int'Address,
-                Item.Int'Size / 8,
-                SQLT_INT,
-                Item.Is_Null'Access);
+                Value_Length => Length,
+                Value_Type   => SQLT_STR,
+                Mode         => OCI_DATA_AT_EXEC);
 
-         elsif League.Values.Is_Universal_String (Value) then
-            Item.String := League.Values.Get (Value);
-            --  Protect string from deallocation by saving in Item
+            if Databases.Check_Error (Self.DB, Code) then
+               Free (Item);
+
+               return;  --  How to report errors?
+            end if;
 
             Code :=
-              OCIBindByName
-               (Self.Handle,
-                Item.Bind'Access,
+              OCIBindDynamic
+               (Item.Bind,
                 Self.DB.Error,
-                League.Strings.Internals.Internal (Name).Value,
-                Ub4 (League.Strings.Internals.Internal (Name).Unused) * 2,
-                League.Strings.Internals.Internal (Item.String).Value'Address,
-                Ub4 (League.Strings.Internals.Internal (Item.String).Unused)
-                  * 2,
-                SQLT_CHR,
-                Item.Is_Null'Access);
+                Item.all'Address,
+                OCICallbackInBind'Address,
+                Item.all'Address,
+                OCICallbackOutBind'Address);
 
+            Item.String_Size := 0;
          elsif League.Values.Is_Abstract_Integer (Value) then
             Code :=
               OCIBindByName
@@ -138,7 +196,9 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                 SQLT_INT,
                 Item.Is_Null'Access);
 
-            Item.Int := League.Values.Get (Value);
+            if not League.Values.Is_Empty (Value) then
+               Item.Int := League.Values.Get (Value);
+            end if;
 
          elsif League.Values.Is_Abstract_Float (Value) then
             Code :=
@@ -153,7 +213,22 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
                 SQLT_FLT,
                 Item.Is_Null'Access);
 
-            Item.Float := League.Values.Get (Value);
+            if not League.Values.Is_Empty (Value) then
+               Item.Float := League.Values.Get (Value);
+            end if;
+
+         elsif League.Values.Is_Empty (Value) then
+            Code :=
+              OCIBindByName
+               (Self.Handle,
+                Item.Bind'Access,
+                Self.DB.Error,
+                League.Strings.Internals.Internal (Name).Value,
+                Ub4 (League.Strings.Internals.Internal (Name).Unused) * 2,
+                Item.Int'Address,
+                Item.Int'Size / 8,
+                SQLT_INT,
+                Item.Is_Null'Access);
 
          else
             Free (Item);
@@ -167,7 +242,8 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
             return;  --  How to report errors?
          end if;
 
-         Item.Is_Null := -Boolean'Pos (League.Values.Is_Empty (Value));
+         Item.Is_Null := -Boolean'Pos
+           (League.Values.Is_Empty (Value) or Direction = SQL.Out_Parameter);
       end Bind;
 
    begin
@@ -184,9 +260,21 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
    overriding function Bound_Value
     (Self : not null access OCI_Query;
      Name : League.Strings.Universal_String)
-       return League.Values.Value is
+      return League.Values.Value
+   is
+      Empty : League.Values.Value;
+      Pos   : constant Parameter_Maps.Cursor := Self.Parameters.Find (Name);
+      Item  : Bound_Value_Access;
    begin
-      return X : League.Values.Value;
+      if Parameter_Maps.Has_Element (Pos) then
+         Item := Parameter_Maps.Element (Pos);
+      end if;
+
+      if Item = null then
+         return Empty;
+      else
+         return Item.Value;
+      end if;
    end Bound_Value;
 
    -------------------
@@ -207,10 +295,59 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
    overriding function Execute
      (Self : not null access OCI_Query) return Boolean
    is
+
+      procedure Fixup_Parameter (Position : Parameter_Maps.Cursor);
+
+      ---------------------
+      -- Fixup_Parameter --
+      ---------------------
+
+      procedure Fixup_Parameter (Position : Parameter_Maps.Cursor) is
+         use type Matreshka.Internals.Strings.Shared_String_Access;
+
+         Ok   : Boolean;
+         Item : constant Bound_Value_Access :=
+           Parameter_Maps.Element (Position);
+      begin
+         if Item = null then
+            return;
+         elsif Item.String /= null then
+            Item.String.Unused := Item.String.Unused + Item.String_Size;
+
+            Matreshka.Internals.Strings.C.Validate_And_Fixup
+              (Item.String, Item.String.Unused, Ok);
+
+            League.Values.Set
+              (Item.Value,
+               League.Strings.Internals.Wrap (Item.String));
+
+            Item.String := null;
+            Item.String_Size := 0;
+
+            if Item.Is_Null = -1 then
+               League.Values.Clear (Item.Value);
+            end if;
+         elsif League.Values.Is_Abstract_Integer (Item.Value) then
+            if Item.Is_Null = 0 then
+               League.Values.Set (Item.Value, Item.Int);
+            else
+               League.Values.Clear (Item.Value);
+            end if;
+         elsif League.Values.Is_Abstract_Float (Item.Value) then
+            if Item.Is_Null = 0 then
+               League.Values.Set (Item.Value, Item.Float);
+            else
+               League.Values.Clear (Item.Value);
+            end if;
+         elsif Item.Is_Null /= 0 then
+            League.Values.Clear (Item.Value);
+         end if;
+      end Fixup_Parameter;
+
       Count : aliased Ub4;
       Code  : Error_Code;
 
-   begin
+   begin  --  Execute
       if Self.State not in Ready then
          return False;
       end if;
@@ -225,6 +362,8 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
       if Databases.Check_Error (Self.DB, Code) then
          return False;
       end if;
+
+      Self.Parameters.Iterate (Fixup_Parameter'Access);
 
       if Self.Is_Select and not Self.Is_Described then
          Self.Is_Described := True;
@@ -503,8 +642,6 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
     (Self : not null access OCI_Query) return Boolean
    is
       use Matreshka.Internals.Strings;
-      use type Sb2;
-
       Ok   : Boolean;
       Code : Error_Code;
 
@@ -564,6 +701,106 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
       return Self.State = Has_Row;
    end Next;
+
+   -----------------------
+   -- OCICallbackInBind --
+   -----------------------
+
+   function OCICallbackInBind
+     (ictxp  : Bound_Value_Access;
+      bindp  : OCI.Bind;
+      iter   : Ub4;
+      index  : Ub4;
+      bufpp  : access Utf16_Code_Unit_Access;
+      alenp  : access Ub4;
+      piecep : access Ub1;
+      indp   : access Sb2_Ptr)
+     return Error_Code
+   is
+      pragma Unreferenced (bindp);
+      pragma Unreferenced (iter);
+      pragma Unreferenced (index);
+   begin
+      piecep.all := OCI_ONE_PIECE;
+      indp.all := ictxp.Is_Null'Access;
+
+      if ictxp.Is_Null = -1 then
+         bufpp.all := null;
+         alenp.all := 0;
+         return OCI_CONTINUE;
+      end if;
+
+      alenp.all := Ub4 (League.Strings.Internals.Internal
+                          (League.Values.Get (ictxp.Value)).Unused) * 2 + 2;
+
+      bufpp.all := League.Strings.Internals.Internal
+        (League.Values.Get (ictxp.Value)).Value (0)'Access;
+
+      return OCI_CONTINUE;
+   end OCICallbackInBind;
+
+   ------------------------
+   -- OCICallbackOutBind --
+   ------------------------
+
+   function OCICallbackOutBind
+     (octxp   : Bound_Value_Access;
+      bindp   : OCI.Bind;
+      iter    : Ub4;
+      index   : Ub4;
+      bufpp   : access Utf16_Code_Unit_Access;
+      alenp   : access Ub4_Ptr;
+      piecep  : access Ub1;
+      indp    : access Sb2_Ptr;
+      rcodepp : access Sb2_Ptr)
+     return Error_Code
+   is
+      pragma Unreferenced (bindp);
+      pragma Unreferenced (iter);
+      pragma Unreferenced (index);
+      pragma Unreferenced (Rcodepp);
+      
+      use Matreshka.Internals.Strings;
+      use type Ub1;
+      use type Matreshka.Internals.Utf16.Utf16_String_Index;
+
+   begin
+      if piecep.all = OCI_ONE_PIECE then
+         piecep.all := OCI_FIRST_PIECE;
+
+         if not League.Values.Is_Empty (octxp.Value) then
+            octxp.String := League.Strings.Internals.Internal
+              (League.Values.Get (octxp.Value));
+         else
+            octxp.String := null;
+         end if;
+
+         if octxp.String /= null and then
+           Can_Be_Reused (octxp.String, octxp.String.Size - 1)
+         then
+            Reference (octxp.String);
+
+            League.Values.Set
+              (octxp.Value, League.Strings.Empty_Universal_String);
+         else
+            octxp.String := Allocate (64);  --  Some initial size
+         end if;
+
+         octxp.String.Unused := 0;
+      else
+         piecep.all := OCI_NEXT_PIECE;
+         octxp.String.Unused := octxp.String.Unused + octxp.String_Size;
+         Mutate (octxp.String, 8 * octxp.String.Size);
+      end if;
+
+      octxp.String_Size := Ub4 ((octxp.String.Size - octxp.String.Unused) * 2);
+
+      bufpp.all := octxp.String.Value (octxp.String.Unused)'Access;
+      alenp.all := octxp.String_Size'Access;
+      indp.all := octxp.Is_Null'Access;
+
+      return OCI_CONTINUE;
+   end OCICallbackOutBind;
 
    -------------
    -- Prepare --
@@ -625,8 +862,6 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
     (Self  : not null access OCI_Query;
      Index : Positive) return League.Values.Value
    is
-      use type Sb2;
-
       Value : League.Values.Value;
 
    begin

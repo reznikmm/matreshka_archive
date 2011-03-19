@@ -63,6 +63,7 @@ package Matreshka.Internals.SQL_Drivers.OCI is
    subtype Ora_Text is Interfaces.C.char_array;
 
    type Ub4_Ptr is access all Ub4;
+   type Sb2_Ptr is access all Sb2;
 
    type Error_Code is new Sword;
 
@@ -155,7 +156,9 @@ package Matreshka.Internals.SQL_Drivers.OCI is
    OCI_STMT_BEGIN   : constant Ub2 := 8;   --  begin ... (pl/sql statement)
    OCI_STMT_DECLARE : constant Ub2 := 9;   --  declare .. (pl/sql statement)
    OCI_STMT_CALL    : constant Ub2 := 10;  --  corresponds to kpu call
-
+   
+   OCI_DATA_AT_EXEC : constant Ub4 := 2;  --  data at execute time
+   
    function OCIHandleAlloc
     (Parent      : Environment;
      Target      : access Handle;
@@ -285,10 +288,10 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      Error        : Error_Handle;
      Place        : Matreshka.Internals.Utf16.Utf16_String;
      Place_Length : Ub4;
-     Value        : Address;
+     Value        : Address := Null_Address;
      Value_Length : Ub4;
      Value_Type   : Data_Type;
-     Indicator    : access Sb2;
+     Indicator    : Sb2_Ptr := null;
      Array_Length : Address := Null_Address;
      Rcodep       : Address := Null_Address;
      Max_Array    : Ub4 := 0;
@@ -301,10 +304,10 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      Target       : access Bind;
      Error        : Error_Handle;
      Position     : Ub4;
-     Value        : Address;
+     Value        : Address := Null_Address;
      Value_Length : Ub4;
      Value_Type   : Data_Type;
-     Indicator    : access Sb2;
+     Indicator    : Sb2_Ptr := null;
      Array_Length : Address := Null_Address;
      Rcodep       : Address := Null_Address;
      Max_Array    : Ub4 := 0;
@@ -374,6 +377,21 @@ package Matreshka.Internals.SQL_Drivers.OCI is
      TZ     : Address := Null_Address;
      TZ_Len : Size_T := 0) return Error_Code;
    pragma Import (C, OCIDateTimeConstruct, "OCIDateTimeConstruct");
+
+
+   OCI_ONE_PIECE   : constant Ub1 := 0;
+   OCI_FIRST_PIECE : constant Ub1 := 1;
+   OCI_NEXT_PIECE  : constant Ub1 := 2;
+   OCI_LAST_PIECE  : constant Ub1 := 3;
+
+   function OCIBindDynamic
+     (bindp : Bind;
+      Error : Error_Handle;
+      ictxp : Address;
+      icbfp : Address;
+      octxp : Address;
+      ocbfp : Address) return Error_Code;
+   pragma Import (C, OCIBindDynamic, "OCIBindDynamic");
 
 private
 
