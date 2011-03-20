@@ -48,7 +48,12 @@ package body League.Calendars.ISO_8601 is
 
    Calendar : ISO_8601_Calendar;
    --  This global object is used in convenient subprograms as calendar.
-
+   
+   package Gregorian renames Matreshka.Internals.Calendars.Gregorian;
+   
+   subtype Julian_Day_Number is
+     Matreshka.Internals.Calendars.Julian_Day_Number;
+   
    --------------
    -- Add_Days --
    --------------
@@ -101,10 +106,7 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return Stamp;
+      return Stamp + Date (Days);
    end Add_Days;
 
    --------------
@@ -119,9 +121,7 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
+       Stamp := Stamp + Date (Days);
    end Add_Days;
 
    --------------
@@ -209,13 +209,19 @@ package body League.Calendars.ISO_8601 is
      Stamp  : Date;
      Months : Integer) return Date
    is
-      pragma Unreferenced (Self);
-
+      Year  : Year_Number;
+      Month : Month_Number;
+      Day   : Day_Number;
+      Total : Integer;
    begin
-      --  XXX Not yet implemented.
+      Split (Self, Stamp, Year, Month, Day);
+      
+      Total := Integer (Year * 12) + Integer (Month - 1) + Months;
+      Year  := Year_Number (Total / 12);
+      Month := Month_Number ((Total mod 12) + 1);
+      Day   := Day_Number'Min (Day, Days_In_Month (Self, Year, Month));
 
-      raise Program_Error;
-      return Stamp;
+      return Create (Self, Year, Month, Day);
    end Add_Months;
 
    ----------------
@@ -225,14 +231,9 @@ package body League.Calendars.ISO_8601 is
    procedure Add_Months
     (Self   : ISO_8601_Calendar'Class;
      Stamp  : in out Date;
-     Months : Integer)
-   is
-      pragma Unreferenced (Self);
-
+     Months : Integer) is
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
+      Stamp := Add_Months (Self, Stamp, Months);
    end Add_Months;
 
    ----------------
@@ -317,15 +318,9 @@ package body League.Calendars.ISO_8601 is
    function Add_Years
     (Self  : ISO_8601_Calendar'Class;
      Stamp : Date;
-     Years : Integer) return Date
-   is
-      pragma Unreferenced (Self);
-
+     Years : Integer) return Date is
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return Stamp;
+      return Add_Months (Self, Stamp, Years * 12);
    end Add_Years;
 
    ---------------
@@ -335,14 +330,9 @@ package body League.Calendars.ISO_8601 is
    procedure Add_Years
     (Self  : ISO_8601_Calendar'Class;
      Stamp : in out Date;
-     Years : Integer)
-   is
-      pragma Unreferenced (Self);
-
+     Years : Integer) is
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
+      Add_Months (Self, Stamp, Years * 12);
    end Add_Years;
 
    ---------------
@@ -432,10 +422,10 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return Dummy : Date;
+      return Date (Gregorian.Julian_Day
+                     (Year  => Gregorian.Year_Number (Year),
+                      Month => Gregorian.Month_Number (Year),
+                      Day   => Gregorian.Day_Number (Year)));
    end Create;
 
    ------------
@@ -517,10 +507,7 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return Day_Number (Gregorian.Day (Julian_Day_Number (Stamp)));
    end Day;
 
    ---------
@@ -538,7 +525,7 @@ package body League.Calendars.ISO_8601 is
 
       return
         Day_Number
-         (Matreshka.Internals.Calendars.Gregorian.Day
+         (Gregorian.Day
            (Matreshka.Internals.Calendars.Times.Julian_Day
              (Matreshka.Internals.Calendars.Absolute_Time (Stamp))));
    end Day;
@@ -600,10 +587,8 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return Day_Of_Week_Number
+        (Gregorian.Day_Of_Week (Julian_Day_Number (Stamp)));
    end Day_Of_Week;
 
    -----------------
@@ -680,10 +665,8 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return Day_Of_Year_Number
+        (Gregorian.Day_Of_Year (Julian_Day_Number (Stamp)));
    end Day_Of_Year;
 
    -----------------
@@ -766,13 +749,13 @@ package body League.Calendars.ISO_8601 is
    function Days_In_Month
     (Self : ISO_8601_Calendar'Class; Stamp : Date) return Day_Number
    is
-      pragma Unreferenced (Self);
-
+      Year  : Year_Number;
+      Month : Month_Number;
+      Day   : Day_Number;
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      Split (Self, Stamp, Year, Month, Day);
+      
+      return Days_In_Month (Self, Year, Month);
    end Days_In_Month;
 
    -------------------
@@ -816,15 +799,16 @@ package body League.Calendars.ISO_8601 is
    function Days_In_Month
     (Self  : ISO_8601_Calendar'Class;
      Year  : Year_Number;
-     Month : Month_Number) return Day_Number
-   is
-      pragma Unreferenced (Self);
-
+     Month : Month_Number) return Day_Number is
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      case Month is
+         when 1 | 3 | 5 | 7 | 8 | 10 | 12 =>
+            return 31;
+         when 4 | 6 | 9 | 11 =>
+            return 30;
+         when 2 =>
+            return 28 + Boolean'Pos (Is_Leap_Year (Self, Year));
+      end case;
    end Days_In_Month;
 
    ------------------
@@ -869,15 +853,9 @@ package body League.Calendars.ISO_8601 is
    ------------------
 
    function Days_In_Year
-    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Day_Of_Year_Number
-   is
-      pragma Unreferenced (Self);
-
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Day_Of_Year_Number is
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return Days_In_Year (Self, Year (Self, Stamp));
    end Days_In_Year;
 
    ------------------
@@ -921,15 +899,9 @@ package body League.Calendars.ISO_8601 is
 
    function Days_In_Year
     (Self : ISO_8601_Calendar'Class;
-     Year : Year_Number) return Day_Of_Year_Number
-   is
-      pragma Unreferenced (Self);
-
+     Year : Year_Number) return Day_Of_Year_Number is
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return 365 + Boolean'Pos (Is_Leap_Year (Self, Year));
    end Days_In_Year;
 
    -------------
@@ -950,10 +922,7 @@ package body League.Calendars.ISO_8601 is
      From  : Date;
      To    : Date) return Integer is
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 0;
+      return Integer (To - From);
    end Days_To;
 
    ---------------------
@@ -976,10 +945,7 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return Dummy : Date;
+      return Date (Day);
    end From_Julian_Day;
 
    ----------
@@ -1103,15 +1069,9 @@ package body League.Calendars.ISO_8601 is
    ------------------
 
    function Is_Leap_Year
-    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Boolean
-   is
-      pragma Unreferenced (Self);
-
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Boolean is
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return False;
+      return Is_Leap_Year (Self, Year (Self, Stamp));
    end Is_Leap_Year;
 
    ------------------
@@ -1158,10 +1118,7 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return False;
+      return Gregorian.Is_Leap_Year (Gregorian.Year_Number (Year));
    end Is_Leap_Year;
 
    --------------
@@ -1184,15 +1141,9 @@ package body League.Calendars.ISO_8601 is
     (Self  : ISO_8601_Calendar'Class;
      Year  : Year_Number;
      Month : Month_Number;
-     Day   : Day_Number) return Boolean
-   is
-      pragma Unreferenced (Self);
-
+     Day   : Day_Number) return Boolean is
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return False;
+      return Day <= Days_In_Month (Self, Year, Month);
    end Is_Valid;
 
    ------------
@@ -1313,10 +1264,7 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return Month_Number (Gregorian.Month (Julian_Day_Number (Stamp)));
    end Month;
 
    -----------
@@ -1334,7 +1282,7 @@ package body League.Calendars.ISO_8601 is
 
       return
         Month_Number
-         (Matreshka.Internals.Calendars.Gregorian.Month
+         (Gregorian.Month
            (Matreshka.Internals.Calendars.Times.Julian_Day
              (Matreshka.Internals.Calendars.Absolute_Time (Stamp))));
    end Month;
@@ -1497,11 +1445,12 @@ package body League.Calendars.ISO_8601 is
      Day   : out Day_Number)
    is
       pragma Unreferenced (Self);
-
+      
+      X : constant Julian_Day_Number := Julian_Day_Number (Stamp);
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
+      Year  := Year_Number (Gregorian.Year (X));
+      Month := Month_Number (Gregorian.Month (X));
+      Day   := Day_Number (Gregorian.Day (X));
    end Split;
 
    -----------
@@ -1584,10 +1533,7 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 0;
+      return Integer (Stamp);
    end To_Julian_Day;
 
    -------------------
@@ -1841,10 +1787,7 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return Year_Number (Gregorian.Year (Julian_Day_Number (Stamp)));
    end Year;
 
    ----------
@@ -1862,7 +1805,7 @@ package body League.Calendars.ISO_8601 is
 
       return
         Year_Number
-         (Matreshka.Internals.Calendars.Gregorian.Year
+         (Gregorian.Year
            (Matreshka.Internals.Calendars.Times.Julian_Day
              (Matreshka.Internals.Calendars.Absolute_Time (Stamp))));
    end Year;

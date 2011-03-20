@@ -75,7 +75,34 @@ package body Matreshka.Internals.Calendars.Gregorian is
       
       return Day_Number (Days - (153 * Shifted_Month + 2) / 5 + 1);
    end Day;
-
+   
+   -----------------
+   -- Day_Of_Week --
+   -----------------
+   
+   function Day_Of_Week
+     (Julian_Day : Julian_Day_Number)
+     return Day_Of_Week_Number is
+   begin
+      return Day_Of_Week_Number ((Julian_Day mod 7) + 1);
+   end Day_Of_Week;
+   
+   -----------------
+   -- Day_Of_Year --
+   -----------------
+   
+   function Day_Of_Year
+     (Julian_Day : Julian_Day_Number)
+     return Day_Of_Year_Number
+   is
+      Days          : Julian_Day_Number;
+      Years         : Julian_Day_Number;
+   begin
+      Split (Julian_Day, Shifted_Year => Years, Day_In_Year => Days);
+      
+      return Day_Of_Year_Number (Days + 1);
+   end Day_Of_Year;
+   
    ------------------
    -- Is_Leap_Year --
    ------------------
