@@ -56,9 +56,9 @@ package body Matreshka.Internals.Calendars.Gregorian is
    Days_In_400_Years : constant := ((365 * 4 + 1) * 25 - 1) * 4 + 1;
    
    procedure Split
-     (Julian_Day   : Julian_Day_Number;
-      Shifted_Year : out Julian_Day_Number;
-      Day_In_Year  : out Julian_Day_Number);
+    (Julian_Day   : Julian_Day_Number;
+     Shifted_Year : out Julian_Day_Number;
+     Day_In_Year  : out Julian_Day_Number);
       
    ---------
    -- Day --
@@ -68,6 +68,7 @@ package body Matreshka.Internals.Calendars.Gregorian is
       Days          : Julian_Day_Number;
       Years         : Julian_Day_Number;
       Shifted_Month : Julian_Day_Number;
+
    begin
       Split (Julian_Day, Shifted_Year => Years, Day_In_Year => Days);
       
@@ -157,9 +158,9 @@ package body Matreshka.Internals.Calendars.Gregorian is
    -----------
    
    procedure Split
-     (Julian_Day   : Julian_Day_Number;
-      Shifted_Year : out Julian_Day_Number;
-      Day_In_Year  : out Julian_Day_Number)
+    (Julian_Day   : Julian_Day_Number;
+     Shifted_Year : out Julian_Day_Number;
+     Day_In_Year  : out Julian_Day_Number)
    is
       Days       : Julian_Day_Number := Julian_Day + Julian_Epoch;
       Years      : Julian_Day_Number;
