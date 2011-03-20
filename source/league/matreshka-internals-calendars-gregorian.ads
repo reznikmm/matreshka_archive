@@ -75,11 +75,12 @@ package Matreshka.Internals.Calendars.Gregorian is
    --  Returns day of the specified julian day.
    
    function Day_Of_Week
-     (Julian_Day : Julian_Day_Number)
-     return Day_Of_Week_Number;
+    (Julian_Day : Julian_Day_Number) return Day_Of_Week_Number;
+   --  Returns the weekday for this julian day. First day is Monday.
    
    function Day_Of_Year
-     (Julian_Day : Julian_Day_Number)
-     return Day_Of_Year_Number;
+    (Julian_Day : Julian_Day_Number) return Day_Of_Year_Number;
+   --  Returns the day of the year (1 to 365 or 366 on leap years) for this
+   --  julian day.
    
 end Matreshka.Internals.Calendars.Gregorian;

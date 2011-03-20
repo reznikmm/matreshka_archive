@@ -81,8 +81,7 @@ package body Matreshka.Internals.Calendars.Gregorian is
    -----------------
    
    function Day_Of_Week
-     (Julian_Day : Julian_Day_Number)
-     return Day_Of_Week_Number is
+    (Julian_Day : Julian_Day_Number) return Day_Of_Week_Number is
    begin
       return Day_Of_Week_Number ((Julian_Day mod 7) + 1);
    end Day_Of_Week;
@@ -92,11 +91,11 @@ package body Matreshka.Internals.Calendars.Gregorian is
    -----------------
    
    function Day_Of_Year
-     (Julian_Day : Julian_Day_Number)
-     return Day_Of_Year_Number
+     (Julian_Day : Julian_Day_Number) return Day_Of_Year_Number
    is
-      Days          : Julian_Day_Number;
-      Years         : Julian_Day_Number;
+      Days  : Julian_Day_Number;
+      Years : Julian_Day_Number;
+
    begin
       Split (Julian_Day, Shifted_Year => Years, Day_In_Year => Days);
       
@@ -121,18 +120,20 @@ package body Matreshka.Internals.Calendars.Gregorian is
      Month : Month_Number;
      Day   : Day_Number) return Julian_Day_Number
    is
-      Shifted_Year  : constant Julian_Day_Number :=
-        Julian_Day_Number (Year - Min_Year) - Boolean'Pos (Month <= 2);
-      Shifted_Month : constant Julian_Day_Number :=
-        Julian_Day_Number (Month - 3) mod 12;
+      Shifted_Year  : constant Julian_Day_Number
+        := Julian_Day_Number (Year - Min_Year) - Boolean'Pos (Month <= 2);
+      Shifted_Month : constant Julian_Day_Number
+        := Julian_Day_Number (Month - 3) mod 12;
+
    begin
-      return Julian_Day_Number (Day - 1)
-        + (153 * Shifted_Month + 2) / 5   --  first day of year for month
-        + 365 * Shifted_Year
-        + Shifted_Year / 4    --  number of leap years
-        - Shifted_Year / 100  --  excluding 100
-        + Shifted_Year / 400  --  includeing 400
-        + Julian_Epoch;       --  days from Min_Year to zero julian day
+      return
+        Julian_Day_Number (Day - 1)
+          + (153 * Shifted_Month + 2) / 5   --  first day of year for month
+          + 365 * Shifted_Year
+          + Shifted_Year / 4    --  number of leap years
+          - Shifted_Year / 100  --  excluding 100
+          + Shifted_Year / 400  --  includeing 400
+          + Julian_Epoch;       --  days from Min_Year to zero julian day
    end Julian_Day;
 
    -----------
@@ -143,10 +144,11 @@ package body Matreshka.Internals.Calendars.Gregorian is
       Days          : Julian_Day_Number;
       Years         : Julian_Day_Number;
       Shifted_Month : Julian_Day_Number;
+
    begin
       Split (Julian_Day, Shifted_Year => Years, Day_In_Year => Days);
-      
       Shifted_Month := (5 * Days) + 2 / 153;
+
       return Month_Number (((Shifted_Month + 2) mod 12) + 1);
    end Month;
    
@@ -161,8 +163,9 @@ package body Matreshka.Internals.Calendars.Gregorian is
    is
       Days       : Julian_Day_Number := Julian_Day + Julian_Epoch;
       Years      : Julian_Day_Number;
-      Centuries  : constant Julian_Day_Number :=
-        (4 * Days + 3) / Days_In_400_Years;
+      Centuries  : constant Julian_Day_Number
+        := (4 * Days + 3) / Days_In_400_Years;
+
    begin
       Days         := Days - Centuries * Days_In_400_Years / 4;
       Years        := (Days * 4 + 3) / Days_In_4_Years;
@@ -175,8 +178,9 @@ package body Matreshka.Internals.Calendars.Gregorian is
    ----------
 
    function Year (Julian_Day : Julian_Day_Number) return Year_Number is
-      Days       : Julian_Day_Number;
-      Years      : Julian_Day_Number;
+      Days  : Julian_Day_Number;
+      Years : Julian_Day_Number;
+
    begin
       Split (Julian_Day, Shifted_Year => Years, Day_In_Year => Days);
       
