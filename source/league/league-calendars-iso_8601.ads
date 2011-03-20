@@ -44,6 +44,7 @@
 --  Calendar operations according to ISO-8601 standard. It is based on
 --  proleptic Gregorian calendar with astronomical year numbering.
 ------------------------------------------------------------------------------
+with League.Strings;
 
 package League.Calendars.ISO_8601 is
 
@@ -380,6 +381,11 @@ package League.Calendars.ISO_8601 is
      Day  : Integer) return Date;
    --  Converts the Julian day Day to a date.
 
+   function Image
+    (Self    : ISO_8601_Calendar'Class;
+     Pattern : League.Strings.Universal_String;
+     Stamp   : Date_Time) return League.Strings.Universal_String;
+
    -----------------------------------------------------------------------
    --  Subprograms below don't have calendar parameter for convenience. --
    -----------------------------------------------------------------------
@@ -590,6 +596,10 @@ package League.Calendars.ISO_8601 is
 
    function From_Julian_Day (Day : Integer) return Date;
    --  Converts the Julian day Day to a date.
+
+   function Image
+    (Pattern : League.Strings.Universal_String;
+     Stamp   : Date_Time) return League.Strings.Universal_String;
 
 private
 
