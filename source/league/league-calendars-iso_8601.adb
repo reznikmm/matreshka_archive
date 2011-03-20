@@ -49,12 +49,12 @@ package body League.Calendars.ISO_8601 is
 
    Calendar : ISO_8601_Calendar;
    --  This global object is used in convenient subprograms as calendar.
-   
+
    package Gregorian renames Matreshka.Internals.Calendars.Gregorian;
-   
+
    subtype Julian_Day_Number is
      Matreshka.Internals.Calendars.Julian_Day_Number;
-   
+
    --------------
    -- Add_Days --
    --------------
@@ -216,7 +216,7 @@ package body League.Calendars.ISO_8601 is
       Total : Integer;
    begin
       Split (Self, Stamp, Year, Month, Day);
-      
+
       Total := Integer (Year * 12) + Integer (Month - 1) + Months;
       Year  := Year_Number (Total / 12);
       Month := Month_Number ((Total mod 12) + 1);
@@ -425,8 +425,8 @@ package body League.Calendars.ISO_8601 is
    begin
       return Date (Gregorian.Julian_Day
                      (Year  => Gregorian.Year_Number (Year),
-                      Month => Gregorian.Month_Number (Year),
-                      Day   => Gregorian.Day_Number (Year)));
+                      Month => Gregorian.Month_Number (Month),
+                      Day   => Gregorian.Day_Number (Day)));
    end Create;
 
    ------------
@@ -755,7 +755,7 @@ package body League.Calendars.ISO_8601 is
       Day   : Day_Number;
    begin
       Split (Self, Stamp, Year, Month, Day);
-      
+
       return Days_In_Month (Self, Year, Month);
    end Days_In_Month;
 
@@ -1479,7 +1479,7 @@ package body League.Calendars.ISO_8601 is
      Day   : out Day_Number)
    is
       pragma Unreferenced (Self);
-      
+
       X : constant Julian_Day_Number := Julian_Day_Number (Stamp);
    begin
       Year  := Year_Number (Gregorian.Year (X));

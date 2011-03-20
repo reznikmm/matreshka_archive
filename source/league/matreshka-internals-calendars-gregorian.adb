@@ -43,23 +43,23 @@
 ------------------------------------------------------------------------------
 
 package body Matreshka.Internals.Calendars.Gregorian is
-   
+
    use type Julian_Day_Number;
-   
+
    --  Gregorian_Epoch : constant := 1_721_426;
-   
+
    Min_Year          : constant := -10_000;
    Julian_Epoch      : constant := 1_931_305;
    --  days from Min_Year to zero julian day
-   
+
    Days_In_4_Years   : constant := 365 * 4 + 1;
    Days_In_400_Years : constant := ((365 * 4 + 1) * 25 - 1) * 4 + 1;
-   
+
    procedure Split
     (Julian_Day   : Julian_Day_Number;
      Shifted_Year : out Julian_Day_Number;
      Day_In_Year  : out Julian_Day_Number);
-      
+
    ---------
    -- Day --
    ---------
@@ -71,38 +71,37 @@ package body Matreshka.Internals.Calendars.Gregorian is
 
    begin
       Split (Julian_Day, Shifted_Year => Years, Day_In_Year => Days);
-      
       Shifted_Month := (5 * Days) + 2 / 153;
-      
+
       return Day_Number (Days - (153 * Shifted_Month + 2) / 5 + 1);
    end Day;
-   
+
    -----------------
    -- Day_Of_Week --
    -----------------
-   
+
    function Day_Of_Week
     (Julian_Day : Julian_Day_Number) return Day_Of_Week_Number is
    begin
       return Day_Of_Week_Number ((Julian_Day mod 7) + 1);
    end Day_Of_Week;
-   
+
    -----------------
    -- Day_Of_Year --
    -----------------
-   
+
    function Day_Of_Year
-     (Julian_Day : Julian_Day_Number) return Day_Of_Year_Number
+    (Julian_Day : Julian_Day_Number) return Day_Of_Year_Number
    is
       Days  : Julian_Day_Number;
       Years : Julian_Day_Number;
 
    begin
       Split (Julian_Day, Shifted_Year => Years, Day_In_Year => Days);
-      
+
       return Day_Of_Year_Number (Days + 1);
    end Day_Of_Year;
-   
+
    ------------------
    -- Is_Leap_Year --
    ------------------
@@ -152,11 +151,11 @@ package body Matreshka.Internals.Calendars.Gregorian is
 
       return Month_Number (((Shifted_Month + 2) mod 12) + 1);
    end Month;
-   
+
    -----------
    -- Split --
    -----------
-   
+
    procedure Split
     (Julian_Day   : Julian_Day_Number;
      Shifted_Year : out Julian_Day_Number;
@@ -173,7 +172,7 @@ package body Matreshka.Internals.Calendars.Gregorian is
       Day_In_Year  := Days - Years * Days_In_4_Years / 4;
       Shifted_Year := 100 * Centuries + Years;
    end Split;
-   
+
    ----------
    -- Year --
    ----------
@@ -184,7 +183,7 @@ package body Matreshka.Internals.Calendars.Gregorian is
 
    begin
       Split (Julian_Day, Shifted_Year => Years, Day_In_Year => Days);
-      
+
       return Year_Number (Years + Boolean'Pos (Days > 305) + Min_Year);
    end Year;
 

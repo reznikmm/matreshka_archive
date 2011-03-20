@@ -82,7 +82,7 @@ package League.Calendars is
    function "+" (Left : Time; Right : Time) return Time;
    function "-" (Left : Time; Right : Time) return Time;
 
-   function "="  (Left : Time; Right : Time) return Boolean;
+   overriding function "=" (Left : Time; Right : Time) return Boolean;
    function "<"  (Left : Time; Right : Time) return Boolean;
    function "<=" (Left : Time; Right : Time) return Boolean;
    function ">"  (Left : Time; Right : Time) return Boolean;
@@ -92,7 +92,7 @@ package League.Calendars is
    -- Date --
    ----------
 
-   function "="  (Left : Date; Right : Date) return Boolean;
+   overriding function "=" (Left : Date; Right : Date) return Boolean;
    function "<"  (Left : Date; Right : Date) return Boolean;
    function "<=" (Left : Date; Right : Date) return Boolean;
    function ">"  (Left : Date; Right : Date) return Boolean;
@@ -108,7 +108,8 @@ package League.Calendars is
    function "+" (Left : Date_Time; Right : Time) return Date_Time;
    function "-" (Left : Date_Time; Right : Time) return Date_Time;
 
-   function "="  (Left : Date_Time; Right : Date_Time) return Boolean;
+   overriding function "="
+    (Left : Date_Time; Right : Date_Time) return Boolean;
    function "<"  (Left : Date_Time; Right : Date_Time) return Boolean;
    function "<=" (Left : Date_Time; Right : Date_Time) return Boolean;
    function ">"  (Left : Date_Time; Right : Date_Time) return Boolean;

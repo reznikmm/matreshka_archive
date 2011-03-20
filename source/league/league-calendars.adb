@@ -51,7 +51,7 @@ package body League.Calendars is
    -- "+" --
    ---------
 
-   function "+" (Right : Time) return Time is
+   overriding function "+" (Right : Time) return Time is
    begin
       return Right;
    end "+";
@@ -60,7 +60,7 @@ package body League.Calendars is
    -- "+" --
    ---------
 
-   function "+" (Left : Time; Right : Time) return Time is
+   overriding function "+" (Left : Time; Right : Time) return Time is
    begin
       return Time (Relative_Time (Left) + Relative_Time (Right));
    end "+";
@@ -78,7 +78,7 @@ package body League.Calendars is
    -- "-" --
    ---------
 
-   function "-" (Right : Time) return Time is
+   overriding function "-" (Right : Time) return Time is
    begin
       return Time (-Relative_Time (Right));
    end "-";
@@ -87,7 +87,7 @@ package body League.Calendars is
    -- "-" --
    ---------
 
-   function "-" (Left : Time; Right : Time) return Time is
+   overriding function "-" (Left : Time; Right : Time) return Time is
    begin
       return Time (Relative_Time (Left) - Relative_Time (Right));
    end "-";
@@ -105,7 +105,7 @@ package body League.Calendars is
    -- "<" --
    ---------
 
-   function "<"  (Left : Time; Right : Time) return Boolean is
+   overriding function "<" (Left : Time; Right : Time) return Boolean is
    begin
       return Relative_Time (Left) < Relative_Time (Right);
    end "<";
@@ -114,7 +114,7 @@ package body League.Calendars is
    -- "<" --
    ---------
 
-   function "<"  (Left : Date; Right : Date) return Boolean is
+   overriding function "<" (Left : Date; Right : Date) return Boolean is
    begin
       return Julian_Day_Number (Left) < Julian_Day_Number (Right);
    end "<";
@@ -123,7 +123,8 @@ package body League.Calendars is
    -- "<" --
    ---------
 
-   function "<"  (Left : Date_Time; Right : Date_Time) return Boolean is
+   overriding function "<"
+    (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
       return Absolute_Time (Left) < Absolute_Time (Right);
    end "<";
@@ -132,7 +133,7 @@ package body League.Calendars is
    -- "<=" --
    ----------
 
-   function "<="  (Left : Time; Right : Time) return Boolean is
+   overriding function "<=" (Left : Time; Right : Time) return Boolean is
    begin
       return Relative_Time (Left) <= Relative_Time (Right);
    end "<=";
@@ -141,7 +142,7 @@ package body League.Calendars is
    -- "<=" --
    ----------
 
-   function "<="  (Left : Date; Right : Date) return Boolean is
+   overriding function "<=" (Left : Date; Right : Date) return Boolean is
    begin
       return Julian_Day_Number (Left) <= Julian_Day_Number (Right);
    end "<=";
@@ -150,7 +151,8 @@ package body League.Calendars is
    -- "<=" --
    ----------
 
-   function "<="  (Left : Date_Time; Right : Date_Time) return Boolean is
+   overriding function "<="
+    (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
       return Absolute_Time (Left) <= Absolute_Time (Right);
    end "<=";
@@ -159,7 +161,7 @@ package body League.Calendars is
    -- "=" --
    ---------
 
-   function "="  (Left : Time; Right : Time) return Boolean is
+   overriding function "=" (Left : Time; Right : Time) return Boolean is
    begin
       return Relative_Time (Left) = Relative_Time (Right);
    end "=";
@@ -168,7 +170,7 @@ package body League.Calendars is
    -- "=" --
    ---------
 
-   function "="  (Left : Date; Right : Date) return Boolean is
+   overriding function "=" (Left : Date; Right : Date) return Boolean is
    begin
       return Julian_Day_Number (Left) = Julian_Day_Number (Right);
    end "=";
@@ -177,7 +179,8 @@ package body League.Calendars is
    -- "=" --
    ---------
 
-   function "="  (Left : Date_Time; Right : Date_Time) return Boolean is
+   overriding function "="
+     (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
       return Absolute_Time (Left) = Absolute_Time (Right);
    end "=";
@@ -186,7 +189,7 @@ package body League.Calendars is
    -- ">" --
    ---------
 
-   function ">"  (Left : Time; Right : Time) return Boolean is
+   overriding function ">" (Left : Time; Right : Time) return Boolean is
    begin
       return Relative_Time (Left) > Relative_Time (Right);
    end ">";
@@ -195,7 +198,7 @@ package body League.Calendars is
    -- ">" --
    ---------
 
-   function ">"  (Left : Date; Right : Date) return Boolean is
+   overriding function ">" (Left : Date; Right : Date) return Boolean is
    begin
       return Julian_Day_Number (Left) > Julian_Day_Number (Right);
    end ">";
@@ -204,7 +207,8 @@ package body League.Calendars is
    -- ">" --
    ---------
 
-   function ">"  (Left : Date_Time; Right : Date_Time) return Boolean is
+   overriding function ">"
+    (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
       return Absolute_Time (Left) > Absolute_Time (Right);
    end ">";
@@ -213,7 +217,7 @@ package body League.Calendars is
    -- ">=" --
    ----------
 
-   function ">="  (Left : Time; Right : Time) return Boolean is
+   overriding function ">=" (Left : Time; Right : Time) return Boolean is
    begin
       return Relative_Time (Left) >= Relative_Time (Right);
    end ">=";
@@ -222,7 +226,7 @@ package body League.Calendars is
    -- ">=" --
    ----------
 
-   function ">="  (Left : Date; Right : Date) return Boolean is
+   overriding function ">=" (Left : Date; Right : Date) return Boolean is
    begin
       return Julian_Day_Number (Left) >= Julian_Day_Number (Right);
    end ">=";
@@ -231,7 +235,8 @@ package body League.Calendars is
    -- ">=" --
    ----------
 
-   function ">="  (Left : Date_Time; Right : Date_Time) return Boolean is
+   overriding function ">="
+    (Left : Date_Time; Right : Date_Time) return Boolean is
    begin
       return Absolute_Time (Left) >= Absolute_Time (Right);
    end ">=";

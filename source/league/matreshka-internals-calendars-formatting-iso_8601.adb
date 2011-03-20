@@ -142,8 +142,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
       Append
        (Output,
         Matreshka.Internals.Calendars.Gregorian.Day
-         (Matreshka.Internals.Calendars.Times.Julian_Day
-           (Matreshka.Internals.Calendars.Absolute_Time (Stamp))),
+         (Matreshka.Internals.Calendars.Times.Julian_Day (Stamp)),
         Padding);
    end Append_Day_Of_Month;
 
@@ -219,8 +218,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    begin
       Append
        (Output,
-        Matreshka.Internals.Calendars.Times.Hour
-         (Matreshka.Internals.Calendars.Absolute_Time (Stamp)),
+        Matreshka.Internals.Calendars.Times.Hour (Stamp),
         Padding);
    end Append_Full_Day_Hour;
 
@@ -341,8 +339,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    begin
       Append
        (Output,
-        Matreshka.Internals.Calendars.Times.Minute
-         (Matreshka.Internals.Calendars.Absolute_Time (Stamp)),
+        Matreshka.Internals.Calendars.Times.Minute (Stamp),
         Padding);
    end Append_Minute;
 
@@ -420,8 +417,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
       Append
        (Output,
         Matreshka.Internals.Calendars.Gregorian.Month
-         (Matreshka.Internals.Calendars.Times.Julian_Day
-           (Matreshka.Internals.Calendars.Absolute_Time (Stamp))),
+         (Matreshka.Internals.Calendars.Times.Julian_Day (Stamp)),
         Padding);
    end Append_Numerical_Month;
 
@@ -467,8 +463,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    begin
       Append
        (Output,
-        Matreshka.Internals.Calendars.Times.Second
-         (Matreshka.Internals.Calendars.Absolute_Time (Stamp)),
+        Matreshka.Internals.Calendars.Times.Second (Stamp),
         Padding);
    end Append_Second;
 
@@ -530,8 +525,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
       Append
        (Output,
         Matreshka.Internals.Calendars.Gregorian.Year
-         (Matreshka.Internals.Calendars.Times.Julian_Day
-           (Matreshka.Internals.Calendars.Absolute_Time (Stamp))),
+         (Matreshka.Internals.Calendars.Times.Julian_Day (Stamp)),
         Padding);
    end Append_Year;
 
