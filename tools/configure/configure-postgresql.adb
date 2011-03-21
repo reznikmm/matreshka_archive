@@ -72,6 +72,9 @@ procedure Configure.PostgreSQL is
    function Pg_Libs return Unbounded_String_Vectors.Vector;
    --  Returns command line switches for linker.
 
+   function Pg_Libdir return String;
+   --  Returns library directory as reported by pg_config.
+
    -------------------
    -- Has_Pg_Config --
    -------------------
@@ -97,6 +100,31 @@ procedure Configure.PostgreSQL is
          return False;
    end Has_Pg_Config;
 
+   ---------------
+   -- Pg_Libdir --
+   ---------------
+
+   function Pg_Libdir return String is
+      Status : aliased Integer;
+      Output : constant String :=
+        Trim
+         (Get_Command_Output
+           ("pg_config",
+             (1 => new String'("--libdir")),
+              "",
+              Status'Access,
+              True),
+          Both);
+
+   begin
+      if Status = 0 then
+         return Output;
+
+      else
+         return "";
+      end if;
+   end Pg_Libdir;
+
    -------------
    -- Pg_Libs --
    -------------
@@ -107,10 +135,10 @@ procedure Configure.PostgreSQL is
         Trim
          (Get_Command_Output
            ("pg_config",
-            (1 => new String'("--libs")),
-            "",
-            Status'Access,
-            True),
+             (1 => new String'("--libs")),
+              "",
+              Status'Access,
+              True),
           Both);
       Aux    : Unbounded_String_Vectors.Vector;
       First  : Positive;
@@ -162,25 +190,9 @@ begin
    --  installed and to retrieve linker switches to link with it.
 
    elsif Has_Pg_Config then
-      declare
-         Switches : Unbounded_String_Vectors.Vector := Pg_Libs;
-         Aux      : Unbounded_String;
-
-      begin
-         --  PostgreSQL client library is not part of pg_config --libs, so add
-         --  it first.
-
-         Append (Aux, """-lpq""");
-
-         for J in Switches.First_Index .. Switches.Last_Index loop
-            Append (Aux, ", ");
-            Append (Aux, '"');
-            Append (Aux, Switches.Element (J));
-            Append (Aux, '"');
-         end loop;
-
-         Substitutions.Insert (PostgreSQL_Library_Options, Aux);
-      end;
+      Substitutions.Insert
+       (PostgreSQL_Library_Options,
+        To_Unbounded_String ("""-L" & Pg_Libdir & """, ""-lpq"""));
    end if;
 
    --  Check that PostgreSQL application can be linked with specified/detected
