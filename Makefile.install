@@ -1,3 +1,5 @@
+include Makefile.config
+
 DESTDIR ?=
 PREFIX ?= /usr/local
 LIBDIR ?= $(PREFIX)/lib
@@ -14,8 +16,6 @@ LN_S = ln -sf
 MKDIR = mkdir -p 
 LIBEXT = so
 matlib = ${LIBDIR}/matreshka/
-VERSION = 0.0.7
-RTL_VERSION = @RTL_VERSION_SUFFIX@
 
 install: install_dirs install_libs install_gpr
 

@@ -1,6 +1,4 @@
-HAS_SQLITE3 = @HAS_SQLITE3@
-HAS_POSTGRESQL = @HAS_POSTGRESQL@
-HAS_OCI = @HAS_OCI@
+include Makefile.config
 
 GPRBUILD = gnatmake
 GPRBUILD_FLAGS = -p
@@ -8,15 +6,15 @@ GPRBUILD_FLAGS = -p
 ALL_TARGETS = league fastcgi sql
 
 ifdef HAS_OCI
-	ALL_TARGETS += oci
+ALL_TARGETS += oci
 endif
 
 ifdef HAS_POSTGRESQL
-	ALL_TARGETS += postgresql
+ALL_TARGETS += postgresql
 endif
 
 ifdef HAS_SQLITE3
-	ALL_TARGETS += sqlite3
+ALL_TARGETS += sqlite3
 endif
 
 all: $(ALL_TARGETS)
