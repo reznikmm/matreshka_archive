@@ -442,7 +442,10 @@ package body League.Calendars.ISO_8601 is
    is
       --  XXX fix me
       Stamp : constant Date := Create (Self, Year, Month, Day);
+
    begin
+      --  XXX Time zone not yet implemented.
+
       return  Date_Time (Matreshka.Internals.Calendars.Times.Create
                            (Julian_Day_Number (Stamp), 0, 0, 0, 0)) +
         Date_Time (Seconds);

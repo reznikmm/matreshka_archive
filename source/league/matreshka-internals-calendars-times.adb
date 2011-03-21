@@ -54,40 +54,40 @@ package body Matreshka.Internals.Calendars.Times is
       
       use Matreshka.Internals.Calendars.Gregorian.Constants;
       
-      List : constant array (0 ..  24) of Julian_Day_Number :=
-        (Julian_Day_Number'First,
-         Year_1972 + Jun_30,
-         Year_1972 + Dec_31,
-         Year_1973 + Dec_31,
-         Year_1974 + Dec_31,
-         Year_1975 + Dec_31,
-         Year_1976 + Dec_31,
-         Year_1977 + Dec_31,
-         Year_1978 + Dec_31,
-         Year_1979 + Dec_31,
-         Year_1981 + Jun_30,
-         Year_1982 + Jun_30,
-         Year_1983 + Jun_30,
-         Year_1985 + Jun_30,
-         Year_1987 + Dec_31,
-         Year_1989 + Dec_31,
-         Year_1990 + Dec_31,
-         Year_1992 + Jun_30,
-         Year_1993 + Jun_30,
-         Year_1994 + Jun_30,
-         Year_1995 + Dec_31,
-         Year_1997 + Jun_30,
-         Year_1998 + Dec_31,
-         Year_2005 + Dec_31,
-         Year_2008 + Dec_31);
+      List : constant array (0 ..  24) of Julian_Day_Number
+        := (Julian_Day_Number'First,
+            Year_1972 + Jun_30,
+            Year_1972 + Dec_31,
+            Year_1973 + Dec_31,
+            Year_1974 + Dec_31,
+            Year_1975 + Dec_31,
+            Year_1976 + Dec_31,
+            Year_1977 + Dec_31,
+            Year_1978 + Dec_31,
+            Year_1979 + Dec_31,
+            Year_1981 + Jun_30,
+            Year_1982 + Jun_30,
+            Year_1983 + Jun_30,
+            Year_1985 + Jun_30,
+            Year_1987 + Dec_31,
+            Year_1989 + Dec_31,
+            Year_1990 + Dec_31,
+            Year_1992 + Jun_30,
+            Year_1993 + Jun_30,
+            Year_1994 + Jun_30,
+            Year_1995 + Dec_31,
+            Year_1997 + Jun_30,
+            Year_1998 + Dec_31,
+            Year_2005 + Dec_31,
+            Year_2008 + Dec_31);
       
       function Find (Value : Julian_Day_Number) return Natural;
       --  Find max index in List less then Value
       
       procedure Remove
-        (Time           : Absolute_Time;
-         Result         : out Absolute_Time;
-         Is_Leap_Second : out Boolean);
+       (Time           : Absolute_Time;
+        Result         : out Absolute_Time;
+        Is_Leap_Second : out Boolean);
       --  Decrease Time by number of leap seconds and return in Result.
       --  Set Is_Leap_Second if Time is leap second
         
@@ -99,6 +99,10 @@ package body Matreshka.Internals.Calendars.Times is
    
    package body Leap_Seconds is
       
+      ----------
+      -- Find --
+      ----------
+
       function Find (Value : Julian_Day_Number) return Natural is
       begin
          for J in reverse List'Range loop
@@ -115,23 +119,26 @@ package body Matreshka.Internals.Calendars.Times is
       ------------
       
       procedure Remove
-        (Time           : Absolute_Time;
-         Result         : out Absolute_Time;
-         Is_Leap_Second : out Boolean)
+       (Time           : Absolute_Time;
+        Result         : out Absolute_Time;
+        Is_Leap_Second : out Boolean)
       is
          Second   : constant Absolute_Time := 10_000_000;
          Day      : constant Absolute_Time := 24 * 60 * 60 * Second;
          Midnight : constant := Day - Second;
-         X : Absolute_Time;
+         X        : Absolute_Time;
+
       begin
          for J in reverse 1 .. List'Last loop
-            X := Absolute_Time (List (J) - X_Open_Epoch) * Day +
-              Midnight +
-              Absolute_Time (J) * Second;
+            X :=
+              Absolute_Time (List (J) - X_Open_Epoch) * Day
+                + Midnight
+                + Absolute_Time (J) * Second;
             
             if X <= Time then
                Result := Time - Absolute_Time (J) * Second;
                Is_Leap_Second := (X = Time);
+
                return;
             end if;
          end loop;
@@ -154,6 +161,7 @@ package body Matreshka.Internals.Calendars.Times is
      Nano_100   : Nano_Second_100_Number) return Absolute_Time
    is
       Leaps : constant Natural := Leap_Seconds.Find (Julian_Day);
+
    begin
       if Second = 60 then
          if not (Leaps < Leap_Seconds.List'Last and then
