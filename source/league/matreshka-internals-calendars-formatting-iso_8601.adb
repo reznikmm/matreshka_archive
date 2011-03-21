@@ -48,7 +48,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
 
    procedure Append
     (Result  : in out League.Strings.Universal_String;
-     Value   : Positive;
+     Value   : Natural;
      Padding : Positive);
 
    ------------
@@ -57,7 +57,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
 
    procedure Append
     (Result  : in out League.Strings.Universal_String;
-     Value   : Positive;
+     Value   : Natural;
      Padding : Positive)
    is
       Image : constant Wide_Wide_String := Integer'Wide_Wide_Image (Value);

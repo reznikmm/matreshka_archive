@@ -440,13 +440,12 @@ package body League.Calendars.ISO_8601 is
      Day     : Day_Number;
      Seconds : Time) return Date_Time
    is
-      pragma Unreferenced (Self);
-
+      --  XXX fix me
+      Stamp : constant Date := Create (Self, Year, Month, Day);
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return Dummy : Date_Time;
+      return  Date_Time (Matreshka.Internals.Calendars.Times.Create
+                           (Julian_Day_Number (Stamp), 0, 0, 0, 0)) +
+        Date_Time (Seconds);
    end Create;
 
    ------------
