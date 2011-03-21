@@ -56,6 +56,11 @@ procedure Configure.SQLite3 is
 
    SQLite3_Package_Name : constant String := "sqlite3";
 
+   SQLite3_Library_Options : constant Ada.Strings.Unbounded.Unbounded_String
+     := Ada.Strings.Unbounded.To_Unbounded_String ("SQLITE3_LIBRARY_OPTIONS");
+   Has_SQLite3             : constant Ada.Strings.Unbounded.Unbounded_String
+     := Ada.Strings.Unbounded.To_Unbounded_String ("HAS_SQLITE3");
+
 begin
    --  Command line parameter has preference other automatic detection.
 
@@ -91,6 +96,7 @@ begin
          --  Switches don't allow to build application, remove them.
 
          Substitutions.Delete (SQLite3_Library_Options);
+         Substitutions.Delete (Has_SQLite3);
       end if;
    end if;
 
@@ -100,5 +106,9 @@ begin
    if not Substitutions.Contains (SQLite3_Library_Options) then
       Information ("SQLite3 driver module is disabled");
       Substitutions.Insert (SQLite3_Library_Options, Null_Unbounded_String);
+      Substitutions.Insert (Has_SQLite3, Null_Unbounded_String);
+
+   else
+      Substitutions.Insert (Has_SQLite3, To_Unbounded_String ("true"));
    end if;
 end Configure.SQLite3;

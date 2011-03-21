@@ -1,0 +1,43 @@
+HAS_SQLITE3 = @HAS_SQLITE3@
+HAS_POSTGRESQL = @HAS_POSTGRESQL@
+HAS_OCI = @HAS_OCI@
+
+GPRBUILD = gnatmake
+GPRBUILD_FLAGS = -p
+
+ALL_TARGETS = league fastcgi sql
+
+ifdef HAS_OCI
+	ALL_TARGETS += oci
+endif
+
+ifdef HAS_POSTGRESQL
+	ALL_TARGETS += postgresql
+endif
+
+ifdef HAS_SQLITE3
+	ALL_TARGETS += sqlite3
+endif
+
+all: $(ALL_TARGETS)
+
+league:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
+
+xml:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml.gpr
+
+fastcgi:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_fastcgi.gpr
+
+sql:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql.gpr
+
+sqlite3:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3.gpr
+
+postgresql:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_postgresql.gpr
+
+oci:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_oci.gpr

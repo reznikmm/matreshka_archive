@@ -14,20 +14,7 @@ PARSER_TRANSFORMER = ../../../tools/parser_transformer/parser_transformer
 SCANNER_TRANSFORMER = ../../../tools/scanner_transformer/scanner_transformer
 
 all: gnat/matreshka_config.gpr
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league.gpr
-#	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml.gpr
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_fastcgi.gpr
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql.gpr
-
-sqlite3: all
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3.gpr
-
-postgresql: all
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_postgresql.gpr
-
-oci: all
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_oci.gpr
-
+	make -f Makefile.build
 
 check: all
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr

@@ -57,6 +57,12 @@ procedure Configure.PostgreSQL is
    use Ada.Strings.Unbounded;
    use GNAT.Expect;
 
+   PostgreSQL_Library_Options : constant Ada.Strings.Unbounded.Unbounded_String
+     := Ada.Strings.Unbounded.To_Unbounded_String
+         ("POSTGRESQL_LIBRARY_OPTIONS");
+   Has_PostgreSQL             : constant Ada.Strings.Unbounded.Unbounded_String
+     := Ada.Strings.Unbounded.To_Unbounded_String ("HAS_POSTGRESQL");
+
    package Unbounded_String_Vectors is
      new Ada.Containers.Vectors (Positive, Unbounded_String);
 
@@ -194,5 +200,9 @@ begin
    if not Substitutions.Contains (PostgreSQL_Library_Options) then
       Information ("PostgreSQL driver module is disabled");
       Substitutions.Insert (PostgreSQL_Library_Options, Null_Unbounded_String);
+      Substitutions.Insert (Has_PostgreSQL, Null_Unbounded_String);
+
+   else
+      Substitutions.Insert (Has_PostgreSQL, To_Unbounded_String ("true"));
    end if;
 end Configure.PostgreSQL;

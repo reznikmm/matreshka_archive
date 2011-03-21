@@ -65,14 +65,6 @@ package Configure is
      := Ada.Strings.Unbounded.To_Unbounded_String ("OPERATING_SYSTEM");
    RTL_Version_Suffix_Name    : constant Ada.Strings.Unbounded.Unbounded_String
      := Ada.Strings.Unbounded.To_Unbounded_String ("RTL_VERSION_SUFFIX");
-   SQLite3_Library_Options    : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String ("SQLITE3_LIBRARY_OPTIONS");
-   PostgreSQL_Library_Options : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String
-         ("POSTGRESQL_LIBRARY_OPTIONS");
-   OCI_Library_Options : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String
-         ("OCI_LIBRARY_OPTIONS");
 
    --  Internal variables to pass values between test subprogram.
 
