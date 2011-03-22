@@ -1341,6 +1341,86 @@ package body League.Calendars.ISO_8601 is
       return 1;
    end Month;
 
+   --------------------
+   -- Nanosecond_100 --
+   --------------------
+
+   function Nanosecond_100 (Stamp : Time) return Nanosecond_100_Number is
+   begin
+      return Calendar.Nanosecond_100 (Stamp);
+   end Nanosecond_100;
+
+   --------------------
+   -- Nanosecond_100 --
+   --------------------
+
+   function Nanosecond_100 (Stamp : Date_Time) return Nanosecond_100_Number is
+   begin
+      return Calendar.Nanosecond_100 (Stamp);
+   end Nanosecond_100;
+
+   --------------------
+   -- Nanosecond_100 --
+   --------------------
+
+   function Nanosecond_100
+    (Stamp : Date_Time; Zone : Time_Zone) return Nanosecond_100_Number is
+   begin
+      return Calendar.Nanosecond_100 (Stamp, Zone);
+   end Nanosecond_100;
+
+   --------------------
+   -- Nanosecond_100 --
+   --------------------
+
+   function Nanosecond_100
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Time) return Nanosecond_100_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 0;
+   end Nanosecond_100;
+
+   --------------------
+   -- Nanosecond_100 --
+   --------------------
+
+   function Nanosecond_100
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time) return Nanosecond_100_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 0;
+   end Nanosecond_100;
+
+   --------------------
+   -- Nanosecond_100 --
+   --------------------
+
+   function Nanosecond_100
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Nanosecond_100_Number
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      --  XXX Not yet implemented.
+
+      raise Program_Error;
+      return 0;
+   end Nanosecond_100;
+
    ------------
    -- Second --
    ------------

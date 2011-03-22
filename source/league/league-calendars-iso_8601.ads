@@ -56,7 +56,7 @@ package League.Calendars.ISO_8601 is
    type Hour_Number is range 0 .. 23;
    type Minute_Number is range 0 .. 59;
    type Second_Number is range 0 .. 60;
-   type Nano_Second_100_Number is range 0 .. 9_999_999;
+   type Nanosecond_100_Number is range 0 .. 9_999_999;
    type Day_Of_Week_Number is range 1 .. 7;  -- XXX Does it depend from locale?
    type Day_Of_Year_Number is range 1 .. 366;
    type Week_Of_Year_Number is range 1 .. 53;
@@ -123,6 +123,19 @@ package League.Calendars.ISO_8601 is
      Stamp : Date_Time;
      Zone  : Time_Zone) return Second_Number;
    --  Returns the second part (0 to 60) of the time.
+
+   function Nanosecond_100
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Time) return Nanosecond_100_Number;
+   function Nanosecond_100
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time) return Nanosecond_100_Number;
+   function Nanosecond_100
+    (Self  : ISO_8601_Calendar'Class;
+     Stamp : Date_Time;
+     Zone  : Time_Zone) return Nanosecond_100_Number;
+   --  Returns the fractional part of second in 100th nanoseconds (0 to
+   --  9999999) of the time.
 
    function Day_Of_Week
     (Self : ISO_8601_Calendar'Class; Stamp : Date) return Day_Of_Week_Number;
@@ -420,6 +433,13 @@ package League.Calendars.ISO_8601 is
    function Second (Stamp : Date_Time) return Second_Number;
    function Second (Stamp : Date_Time; Zone : Time_Zone) return Second_Number;
    --  Returns the second part (0 to 60) of the time.
+
+   function Nanosecond_100 (Stamp : Time) return Nanosecond_100_Number;
+   function Nanosecond_100 (Stamp : Date_Time) return Nanosecond_100_Number;
+   function Nanosecond_100
+    (Stamp : Date_Time; Zone : Time_Zone) return Nanosecond_100_Number;
+   --  Returns the fractional part of second in 100th nanoseconds (0 to
+   --  9999999) of the time.
 
    function Day_Of_Week (Stamp : Date) return Day_Of_Week_Number;
    function Day_Of_Week (Stamp : Date_Time) return Day_Of_Week_Number;
