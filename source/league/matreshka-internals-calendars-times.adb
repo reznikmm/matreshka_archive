@@ -194,7 +194,7 @@ package body Matreshka.Internals.Calendars.Times is
       
       return
         Hour_Number
-         (Value mod (24 * 60 * 60 * 10_000_000) / (24 * 60 * 60 * 10_000_000));
+         (Value mod (24 * 60 * 60 * 10_000_000) / (60 * 60 * 10_000_000));
    end Hour;
 
    ----------------
