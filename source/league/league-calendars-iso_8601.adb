@@ -1903,7 +1903,10 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      return Year_Number (Gregorian.Year (Julian_Day_Number (Stamp)));
+      return
+        Year_Number
+         (Matreshka.Internals.Calendars.Gregorian.Year
+           (Julian_Day_Number (Stamp)));
    end Year;
 
    ----------
@@ -1921,7 +1924,7 @@ package body League.Calendars.ISO_8601 is
 
       return
         Year_Number
-         (Gregorian.Year
+         (Matreshka.Internals.Calendars.Gregorian.Year
            (Matreshka.Internals.Calendars.Times.Julian_Day
              (Matreshka.Internals.Calendars.Absolute_Time (Stamp))));
    end Year;
