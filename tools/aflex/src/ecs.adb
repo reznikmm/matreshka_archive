@@ -21,7 +21,7 @@
 -- DESCRIPTION finds equivalence classes so DFA will be smaller
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/ecsB.a,v 1.7 90/01/12 15:19:54 self Exp Locker: self $
 
-with MISC;
+with Misc;
 with Unicode;
 
 package body ECS is
@@ -62,9 +62,10 @@ package body ECS is
   --  is the backward linked-list, and num is the number of class members.
   --  Returned is the number of classes.
 
-  procedure CRE8ECS(FWD, BCK : in out C_SIZE_ARRAY;
-                    NUM      : in INTEGER;
-                    RESULT   : out INTEGER) is
+  procedure CRE8ECS(FWD    : C_SIZE_ARRAY;
+                    BCK    : in out C_SIZE_ARRAY;
+                    NUM    : INTEGER;
+                    RESULT : out INTEGER) is
     J, NUMCL : INTEGER;
   begin
     NUMCL := 0;
@@ -95,13 +96,11 @@ package body ECS is
   -- characters, bck is the backward link-list, and llsiz size of the link-list
 
    procedure MKECCL
-    (CCLS     : in out Unicode_Character_Array;
+    (CCLS     : Unicode_Character_Array;
      LENCCL   : Integer;
      FWD, BCK : in out UNBOUNDED_INT_ARRAY;
      LLSIZ    : Integer)
    is
-      use MISC;
-
     CCLP, OLDEC, NEWEC, CCLM, I, J : INTEGER;
     PROC_ARRAY                     : BOOLEAN_PTR;
   begin

@@ -25,12 +25,13 @@ with MISC_DEFS; use MISC_DEFS;
 
 package ECS is
   procedure CCL2ECL;
-  procedure CRE8ECS(FWD, BCK : in out C_SIZE_ARRAY;
-                    NUM      : in INTEGER;
-                    RESULT   : out INTEGER);
+  procedure CRE8ECS(FWD    : C_SIZE_ARRAY;
+                    BCK    : in out C_SIZE_ARRAY;
+                    NUM    : INTEGER;
+                    RESULT : out INTEGER);
 
    procedure MKECCL
-     (CCLS     : in out Unicode_Character_Array;
+     (CCLS     : Unicode_Character_Array;
       LENCCL   : Integer;
       FWD, BCK : in out UNBOUNDED_INT_ARRAY;
       LLSIZ    : Integer);

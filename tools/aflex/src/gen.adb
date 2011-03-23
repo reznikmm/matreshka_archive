@@ -187,8 +187,7 @@ package body Gen is
             Put_Line ("    (");
 
             for K in Secondary_Stage_Index'Range loop
-               Misc.MKDATA
-                 (Integer (ECGROUP (Integer (J) * 256 + Integer (K))));
+               Misc.MKDATA (ECGROUP (Integer (J) * 256 + Integer (K)));
             end loop;
 
             Misc.DATAEND;
@@ -664,14 +663,16 @@ package body Gen is
       PUT_LINE (STR);
    end INDENT_PUTS;
 
-  -- do_sect3_out - dumps section 3.
+   -- do_sect3_out - dumps section 3.
 
-  procedure DO_SECT3_OUT is
-    GARBAGE : TOKEN;
-  begin
-    Scanner.CALL_YYLEX := TRUE;
-    GARBAGE := Scanner.YYLex;
-  end DO_SECT3_OUT;
+   procedure DO_SECT3_OUT is
+      GARBAGE : TOKEN;
+      pragma Unreferenced (GARBAGE);
+
+   begin
+      Scanner.CALL_YYLEX := TRUE;
+      GARBAGE := Scanner.YYLex;
+   end DO_SECT3_OUT;
 
   -- make_tables - generate transition tables
   --
@@ -707,9 +708,8 @@ package body Gen is
    end Body_Header;
 
   procedure MAKE_TABLES is
-    DID_EOF_RULE      : BOOLEAN := FALSE;
-    TOTAL_TABLE_SIZE  : INTEGER := TBLEND + NUMECS + 1;
-    BUF               : Unbounded_Wide_Wide_String;
+    DID_EOF_RULE : BOOLEAN := FALSE;
+    BUF          : Unbounded_Wide_Wide_String;
 
   begin
     if (not FULLTBL) then

@@ -21,14 +21,12 @@
 -- DESCRIPTION implements only a simple symbol table using open hashing
 -- NOTES could be faster, but it isn't used much
 -- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/symS.a,v 1.4 90/01/12 15:20:42 self Exp Locker: self $
-with Ada.Strings.Unbounded;
 with Ada.Strings.Wide_Wide_Unbounded;
 
 with MISC_DEFS;
 
 package SYM is
 
-   use Ada.Strings.Unbounded;
   use MISC_DEFS;
 
    procedure ADDSYM

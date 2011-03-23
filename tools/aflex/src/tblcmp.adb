@@ -271,7 +271,7 @@ package body TBLCMP is
   -- expand_nxt_chk - expand the next check arrays
 
   procedure EXPAND_NXT_CHK is
-    OLD_MAX : INTEGER := CURRENT_MAX_XPAIRS;
+    OLD_MAX : constant INTEGER := CURRENT_MAX_XPAIRS;
   begin
     CURRENT_MAX_XPAIRS := CURRENT_MAX_XPAIRS + MAX_XPAIRS_INCREMENT;
 
@@ -302,9 +302,8 @@ package body TBLCMP is
   -- firstfree is the position of the first possible occurrence of two
   -- consecutive unused records in the chk and nxt arrays
 
-    I                                              : INTEGER;
-    STATE_PTR, CHK_PTR, PTR_TO_LAST_ENTRY_IN_STATE : INT_PTR;
-    CNT, SCNT                                      : INTEGER;
+    I         : INTEGER;
+    CNT, SCNT : INTEGER;
     -- if there are too many out-transitions, put the state at the end of
     -- nxt and chk
   begin
@@ -760,7 +759,7 @@ package body TBLCMP is
   procedure PLACE_STATE(STATE              : in UNBOUNDED_INT_ARRAY;
                         STATENUM, TRANSNUM : in INTEGER) is
     I        : INTEGER;
-    POSITION : INTEGER := FIND_TABLE_SPACE(STATE, TRANSNUM);
+    POSITION : constant INTEGER := FIND_TABLE_SPACE(STATE, TRANSNUM);
   begin
 
     -- base is the table of start positions

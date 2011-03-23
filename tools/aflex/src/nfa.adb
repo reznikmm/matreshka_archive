@@ -283,8 +283,6 @@ package body NFA is
             MARK_BEGINNING_AS_NORMAL(TRANS2(MACH));
           end if;
         end if;
-      when others =>
-        Misc.Aflex_Error ("bad state type in mark_beginning_as_normal()");
     end case;
   end MARK_BEGINNING_AS_NORMAL;
 
