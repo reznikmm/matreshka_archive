@@ -120,12 +120,12 @@ package body Matreshka.Internals.Calendars.Formatting is
       Index  : Positive := 1;
       Count  : Positive;
       Result : League.Strings.Universal_String;
-      Day    : Julian_Day_Number;
+      Date   : Julian_Day_Number;
       Time   : Relative_Time;
       Leap   : Relative_Time;
 
    begin
-      Times.Split (Stamp, Day, Time, Leap);
+      Times.Split (Stamp, Date, Time, Leap);
 
       while Index <= Pattern.Length loop
          case Pattern.Element (Index).To_Wide_Wide_Character is
@@ -142,13 +142,13 @@ package body Matreshka.Internals.Calendars.Formatting is
 
                case Count is
                   when 1 .. 3 =>
-                     Printer.Append_Abbreviated_Era (Result, Stamp, Count);
+                     Printer.Append_Abbreviated_Era (Result, Date, Count);
 
                   when 4 =>
-                     Printer.Append_Long_Era (Result, Stamp);
+                     Printer.Append_Long_Era (Result, Date);
 
                   when 5 =>
-                     Printer.Append_Narrow_Era (Result, Stamp);
+                     Printer.Append_Narrow_Era (Result, Date);
 
                   when others =>
                      --  Must never be happen.
@@ -163,7 +163,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  letters it also specifies the maximum length.
 
                Parse_Field (Index, Count);
-               Printer.Append_Year (Result, Stamp, Count);
+               Printer.Append_Year (Result, Date, Count);
 
             when 'Y' =>
                --  Y  1..n
@@ -175,7 +175,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  always be the same value as calendar year.
 
                Parse_Field (Index, Count);
-               Printer.Append_Year_Week (Result, Stamp, Count);
+               Printer.Append_Year_Week (Result, Date, Count);
 
             when 'u' =>
                --  u  1..n
@@ -189,7 +189,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  being year 0.
 
                Parse_Field (Index, Count);
-               Printer.Append_Extended_Year (Result, Stamp, Count);
+               Printer.Append_Extended_Year (Result, Date, Count);
 
             when 'Q' =>
                --  Q  1..2
@@ -204,14 +204,13 @@ package body Matreshka.Internals.Calendars.Formatting is
                case Count is
                   when 1 .. 2 =>
                      Printer.Append_Numerical_Quarter
-                      (Result, Stamp, Count, False);
+                      (Result, Date, Count, False);
 
                   when 3 =>
-                     Printer.Append_Abbreviated_Quarter
-                      (Result, Stamp, False);
+                     Printer.Append_Abbreviated_Quarter (Result, Date, False);
 
                   when 4 =>
-                     Printer.Append_Full_Quarter (Result, Stamp, False);
+                     Printer.Append_Full_Quarter (Result, Date, False);
 
                   when others =>
                      --  Must never be happen.
@@ -233,13 +232,13 @@ package body Matreshka.Internals.Calendars.Formatting is
                case Count is
                   when 1 .. 2 =>
                      Printer.Append_Numerical_Quarter
-                      (Result, Stamp, Count, True);
+                      (Result, Date, Count, True);
 
                   when 3 =>
-                     Printer.Append_Abbreviated_Quarter (Result, Stamp, True);
+                     Printer.Append_Abbreviated_Quarter (Result, Date, True);
 
                   when 4 =>
-                     Printer.Append_Full_Quarter (Result, Stamp, True);
+                     Printer.Append_Full_Quarter (Result, Date, True);
 
                   when others =>
                      --  Must never be happen.
@@ -262,16 +261,16 @@ package body Matreshka.Internals.Calendars.Formatting is
                case Count is
                   when 1 .. 2 =>
                      Printer.Append_Numerical_Month
-                      (Result, Stamp, Count, False);
+                      (Result, Date, Count, False);
 
                   when 3 =>
-                     Printer.Append_Abbreviated_Month (Result, Stamp, False);
+                     Printer.Append_Abbreviated_Month (Result, Date, False);
 
                   when 4 =>
-                     Printer.Append_Full_Month (Result, Stamp, False);
+                     Printer.Append_Full_Month (Result, Date, False);
 
                   when 5 =>
-                     Printer.Append_Narrow_Month (Result, Stamp, False);
+                     Printer.Append_Narrow_Month (Result, Date, False);
 
                   when others =>
                      --  Must never be happen.
@@ -294,16 +293,16 @@ package body Matreshka.Internals.Calendars.Formatting is
                case Count is
                   when 1 .. 2 =>
                      Printer.Append_Numerical_Month
-                      (Result, Stamp, Count, True);
+                      (Result, Date, Count, True);
 
                   when 3 =>
-                     Printer.Append_Abbreviated_Month (Result, Stamp, True);
+                     Printer.Append_Abbreviated_Month (Result, Date, True);
 
                   when 4 =>
-                     Printer.Append_Full_Month (Result, Stamp, True);
+                     Printer.Append_Full_Month (Result, Date, True);
 
                   when 5 =>
-                     Printer.Append_Narrow_Month (Result, Stamp, True);
+                     Printer.Append_Narrow_Month (Result, Date, True);
 
                   when others =>
                      --  Must never be happen.
@@ -317,7 +316,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  Special symbol for Chinese leap month, used in combination
                --  with M. Only used with the Chinese calendar.
 
-               Printer.Append_Chinese_Leap_Month (Result, Stamp);
+               Printer.Append_Chinese_Leap_Month (Result, Date);
 
             when 'w' =>
                --  w  1..2
@@ -325,14 +324,14 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  Week of Year.
 
                Parse_Field (2, Index, Count);
-               Printer.Append_Week_Of_Year (Result, Stamp, Count);
+               Printer.Append_Week_Of_Year (Result, Date, Count);
 
             when 'W' =>
                --  W  1
                --
                --  Week of Month.
 
-               Printer.Append_Week_Of_Month (Result, Stamp);
+               Printer.Append_Week_Of_Month (Result, Date);
 
             when 'd' =>
                --  d  1..2
@@ -340,7 +339,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  Date - Day of the month.
 
                Parse_Field (2, Index, Count);
-               Printer.Append_Day_Of_Month (Result, Stamp, Count);
+               Printer.Append_Day_Of_Month (Result, Date, Count);
 
             when 'D' =>
                --  D  1..3
@@ -348,14 +347,14 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  Day of year.
 
                Parse_Field (3, Index, Count);
-               Printer.Append_Day_Of_Year (Result, Stamp, Count);
+               Printer.Append_Day_Of_Year (Result, Date, Count);
 
             when 'F' =>
                --  F  1
                --
                --  Day of Week in Month.
 
-               Printer.Append_Day_Of_Week_In_Month (Result, Stamp);
+               Printer.Append_Day_Of_Week_In_Month (Result, Date);
 
             when 'g' =>
                --  g  1..n
@@ -368,7 +367,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  the date-related fields.
 
                Parse_Field (Index, Count);
-               Printer.Append_Julian_Day (Result, Stamp, Count);
+               Printer.Append_Julian_Day (Result, Date, Count);
 
             when 'E' =>
                --  E  1..3
@@ -383,15 +382,13 @@ package body Matreshka.Internals.Calendars.Formatting is
                case Count is
                   when 1 .. 3 =>
                      Printer.Append_Short_Day_Of_Week
-                      (Result, Stamp, Count, False);
+                      (Result, Date, Count, False);
 
                   when 4 =>
-                     Printer.Append_Full_Day_Of_Week
-                      (Result, Stamp, False);
+                     Printer.Append_Full_Day_Of_Week (Result, Date, False);
 
                   when 5 =>
-                     Printer.Append_Narrow_Day_Of_Week
-                      (Result, Stamp, False);
+                     Printer.Append_Narrow_Day_Of_Week (Result, Date, False);
 
                   when others =>
                      --  Must never be happen.
@@ -414,17 +411,16 @@ package body Matreshka.Internals.Calendars.Formatting is
                case Count is
                   when 1 .. 2 =>
                      Printer.Append_Numerical_Day_Of_Week
-                      (Result, Stamp, Count, False);
+                      (Result, Date, Count, False);
 
                   when 3 =>
-                     Printer.Append_Short_Day_Of_Week
-                      (Result, Stamp, 3, False);
+                     Printer.Append_Short_Day_Of_Week (Result, Date, 3, False);
 
                   when 4 =>
-                     Printer.Append_Full_Day_Of_Week (Result, Stamp, False);
+                     Printer.Append_Full_Day_Of_Week (Result, Date, False);
 
                   when 5 =>
-                     Printer.Append_Narrow_Day_Of_Week (Result, Stamp, False);
+                     Printer.Append_Narrow_Day_Of_Week (Result, Date, False);
 
                   when others =>
                      --  Must never be happen.
@@ -447,17 +443,16 @@ package body Matreshka.Internals.Calendars.Formatting is
                case Count is
                   when 1 =>
                      Printer.Append_Numerical_Day_Of_Week
-                      (Result, Stamp, Count, True);
+                      (Result, Date, Count, True);
 
                   when 3 =>
-                     Printer.Append_Short_Day_Of_Week
-                      (Result, Stamp, 3, True);
+                     Printer.Append_Short_Day_Of_Week (Result, Date, 3, True);
 
                   when 4 =>
-                     Printer.Append_Full_Day_Of_Week (Result, Stamp, True);
+                     Printer.Append_Full_Day_Of_Week (Result, Date, True);
 
                   when 5 =>
-                     Printer.Append_Narrow_Day_Of_Week (Result, Stamp, True);
+                     Printer.Append_Narrow_Day_Of_Week (Result, Date, True);
 
                   when others =>
                      --  Must never be happen.

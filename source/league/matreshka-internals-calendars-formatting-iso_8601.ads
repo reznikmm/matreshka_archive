@@ -51,144 +51,144 @@ package Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Abbreviated_Era
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Era_Padding);
 
    overriding procedure Append_Long_Era
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time);
+     Date    : Julian_Day_Number);
 
    overriding procedure Append_Narrow_Era
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time);
+     Date    : Julian_Day_Number);
 
    overriding procedure Append_Year
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive);
 
    overriding procedure Append_Year_Week
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive);
 
    overriding procedure Append_Extended_Year
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive);
 
    overriding procedure Append_Numerical_Quarter
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Padding        : Positive;
      Is_Stand_Alone : Boolean);
 
    overriding procedure Append_Abbreviated_Quarter
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean);
 
    overriding procedure Append_Full_Quarter
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean);
 
    overriding procedure Append_Numerical_Month
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Padding        : Positive;
      Is_Stand_Alone : Boolean);
 
    overriding procedure Append_Abbreviated_Month
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean);
 
    overriding procedure Append_Full_Month
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean);
 
    overriding procedure Append_Narrow_Month
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean);
 
    overriding procedure Append_Chinese_Leap_Month
     (Self   : ISO_8601_Printer;
      Output : in out League.Strings.Universal_String;
-     Stamp  : Absolute_Time);
+     Date   : Julian_Day_Number);
 
    overriding procedure Append_Week_Of_Year
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive);
 
    overriding procedure Append_Week_Of_Month
     (Self   : ISO_8601_Printer;
      Output : in out League.Strings.Universal_String;
-     Stamp  : Absolute_Time);
+     Date   : Julian_Day_Number);
 
    overriding procedure Append_Day_Of_Month
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive);
 
    overriding procedure Append_Day_Of_Year
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive);
 
    overriding procedure Append_Day_Of_Week_In_Month
     (Self   : ISO_8601_Printer;
      Output : in out League.Strings.Universal_String;
-     Stamp  : Absolute_Time);
+     Date   : Julian_Day_Number);
 
    overriding procedure Append_Julian_Day
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive);
 
    overriding procedure Append_Numerical_Day_Of_Week
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Padding        : Positive;
      Is_Stand_Alone : Boolean);
 
    overriding procedure Append_Short_Day_Of_Week
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Padding        : Positive;
      Is_Stand_Alone : Boolean);
 
    overriding procedure Append_Full_Day_Of_Week
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean);
 
    overriding procedure Append_Narrow_Day_Of_Week
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean);
 
 end Matreshka.Internals.Calendars.Formatting.ISO_8601;

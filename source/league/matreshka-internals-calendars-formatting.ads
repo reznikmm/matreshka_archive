@@ -56,144 +56,144 @@ package Matreshka.Internals.Calendars.Formatting is
    not overriding procedure Append_Abbreviated_Era
     (Self    : Abstract_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Era_Padding) is abstract;
 
    not overriding procedure Append_Long_Era
     (Self    : Abstract_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time) is abstract;
+     Date    : Julian_Day_Number) is abstract;
 
    not overriding procedure Append_Narrow_Era
     (Self    : Abstract_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time) is abstract;
+     Date    : Julian_Day_Number) is abstract;
 
    not overriding procedure Append_Year
     (Self    : Abstract_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is abstract;
 
    not overriding procedure Append_Year_Week
     (Self    : Abstract_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is abstract;
 
    not overriding procedure Append_Extended_Year
     (Self    : Abstract_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is abstract;
 
    not overriding procedure Append_Numerical_Quarter
     (Self           : Abstract_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Padding        : Positive;
      Is_Stand_Alone : Boolean) is abstract;
 
    not overriding procedure Append_Abbreviated_Quarter
     (Self           : Abstract_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is abstract;
 
    not overriding procedure Append_Full_Quarter
     (Self           : Abstract_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is abstract;
 
    not overriding procedure Append_Numerical_Month
     (Self           : Abstract_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Padding        : Positive;
      Is_Stand_Alone : Boolean) is abstract;
 
    not overriding procedure Append_Abbreviated_Month
     (Self           : Abstract_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is abstract;
 
    not overriding procedure Append_Full_Month
     (Self           : Abstract_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is abstract;
 
    not overriding procedure Append_Narrow_Month
     (Self           : Abstract_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is abstract;
 
    not overriding procedure Append_Chinese_Leap_Month
     (Self   : Abstract_Printer;
      Output : in out League.Strings.Universal_String;
-     Stamp  : Absolute_Time) is abstract;
+     Date   : Julian_Day_Number) is abstract;
 
    not overriding procedure Append_Week_Of_Year
     (Self    : Abstract_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is abstract;
 
    not overriding procedure Append_Week_Of_Month
     (Self   : Abstract_Printer;
      Output : in out League.Strings.Universal_String;
-     Stamp  : Absolute_Time) is abstract;
+     Date   : Julian_Day_Number) is abstract;
 
    not overriding procedure Append_Day_Of_Month
     (Self    : Abstract_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is abstract;
 
    not overriding procedure Append_Day_Of_Year
     (Self    : Abstract_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is abstract;
 
    not overriding procedure Append_Day_Of_Week_In_Month
     (Self   : Abstract_Printer;
      Output : in out League.Strings.Universal_String;
-     Stamp  : Absolute_Time) is abstract;
+     Date   : Julian_Day_Number) is abstract;
 
    not overriding procedure Append_Julian_Day
     (Self    : Abstract_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is abstract;
 
    not overriding procedure Append_Numerical_Day_Of_Week
     (Self           : Abstract_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Padding        : Positive;
      Is_Stand_Alone : Boolean) is abstract;
 
    not overriding procedure Append_Short_Day_Of_Week
     (Self           : Abstract_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Padding        : Positive;
      Is_Stand_Alone : Boolean) is abstract;
 
    not overriding procedure Append_Full_Day_Of_Week
     (Self           : Abstract_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is abstract;
 
    not overriding procedure Append_Narrow_Day_Of_Week
     (Self           : Abstract_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is abstract;
 
    type Abstract_Time_Printer is abstract tagged limited null record;

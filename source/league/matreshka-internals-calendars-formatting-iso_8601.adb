@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Calendars.Gregorian;
-with Matreshka.Internals.Calendars.Times;
 
 package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
 
@@ -77,7 +76,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Abbreviated_Era
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Era_Padding) is
    begin
       --  XXX Not yet implemented.
@@ -92,7 +91,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Abbreviated_Month
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is
    begin
       --  XXX Not yet implemented.
@@ -107,7 +106,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Abbreviated_Quarter
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is
    begin
       --  XXX Not yet implemented.
@@ -122,7 +121,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Chinese_Leap_Month
     (Self   : ISO_8601_Printer;
      Output : in out League.Strings.Universal_String;
-     Stamp  : Absolute_Time) is
+     Date   : Julian_Day_Number) is
    begin
       --  XXX Not yet implemented.
 
@@ -136,13 +135,12 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Day_Of_Month
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is
    begin
       Append
        (Output,
-        Matreshka.Internals.Calendars.Gregorian.Day
-         (Matreshka.Internals.Calendars.Times.Julian_Day (Stamp)),
+        Matreshka.Internals.Calendars.Gregorian.Day (Date),
         Padding);
    end Append_Day_Of_Month;
 
@@ -153,7 +151,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Day_Of_Week_In_Month
     (Self   : ISO_8601_Printer;
      Output : in out League.Strings.Universal_String;
-     Stamp  : Absolute_Time) is
+     Date   : Julian_Day_Number) is
    begin
       --  XXX Not yet implemented.
 
@@ -167,7 +165,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Day_Of_Year
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is
    begin
       --  XXX Not yet implemented.
@@ -182,7 +180,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Extended_Year
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is
    begin
       --  XXX Not yet implemented.
@@ -197,7 +195,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Full_Day_Of_Week
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is
    begin
       --  XXX Not yet implemented.
@@ -212,7 +210,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Full_Month
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is
    begin
       --  XXX Not yet implemented.
@@ -227,7 +225,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Full_Quarter
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is
    begin
       --  XXX Not yet implemented.
@@ -242,7 +240,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Julian_Day
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is
    begin
       --  XXX Not yet implemented.
@@ -257,7 +255,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Long_Era
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time) is
+     Date    : Julian_Day_Number) is
    begin
       --  XXX Not yet implemented.
 
@@ -271,7 +269,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Narrow_Day_Of_Week
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is
    begin
       --  XXX Not yet implemented.
@@ -286,7 +284,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Narrow_Era
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time) is
+     Date    : Julian_Day_Number) is
    begin
       --  XXX Not yet implemented.
 
@@ -300,7 +298,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Narrow_Month
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Is_Stand_Alone : Boolean) is
    begin
       --  XXX Not yet implemented.
@@ -315,7 +313,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Numerical_Day_Of_Week
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Padding        : Positive;
      Is_Stand_Alone : Boolean) is
    begin
@@ -331,14 +329,13 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Numerical_Month
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Padding        : Positive;
      Is_Stand_Alone : Boolean) is
    begin
       Append
        (Output,
-        Matreshka.Internals.Calendars.Gregorian.Month
-         (Matreshka.Internals.Calendars.Times.Julian_Day (Stamp)),
+        Matreshka.Internals.Calendars.Gregorian.Month (Date),
         Padding);
    end Append_Numerical_Month;
 
@@ -349,7 +346,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Numerical_Quarter
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Padding        : Positive;
      Is_Stand_Alone : Boolean) is
    begin
@@ -365,7 +362,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Short_Day_Of_Week
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
-     Stamp          : Absolute_Time;
+     Date           : Julian_Day_Number;
      Padding        : Positive;
      Is_Stand_Alone : Boolean) is
    begin
@@ -381,7 +378,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Week_Of_Month
     (Self   : ISO_8601_Printer;
      Output : in out League.Strings.Universal_String;
-     Stamp  : Absolute_Time) is
+     Date   : Julian_Day_Number) is
    begin
       --  XXX Not yet implemented.
 
@@ -395,7 +392,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Week_Of_Year
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is
    begin
       --  XXX Not yet implemented.
@@ -410,13 +407,12 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Year
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is
    begin
       Append
        (Output,
-        Matreshka.Internals.Calendars.Gregorian.Year
-         (Matreshka.Internals.Calendars.Times.Julian_Day (Stamp)),
+        Matreshka.Internals.Calendars.Gregorian.Year (Date),
         Padding);
    end Append_Year;
 
@@ -427,7 +423,7 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
    overriding procedure Append_Year_Week
     (Self    : ISO_8601_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Date    : Julian_Day_Number;
      Padding : Positive) is
    begin
       --  XXX Not yet implemented.
