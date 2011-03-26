@@ -234,6 +234,20 @@ package body Matreshka.Internals.Calendars.Times is
             mod Ticks_In_Second);
    end Nanosecond_100;
 
+   --------------------
+   -- Nanosecond_100 --
+   --------------------
+
+   function Nanosecond_100
+    (Time : Relative_Time;
+     Leap : Relative_Time) return Nano_Second_100_Number is
+   begin
+      return
+        Nano_Second_100_Number
+         ((Time mod Ticks_In_Minute + Leap mod Ticks_In_Minute)
+            mod Ticks_In_Second);
+   end Nanosecond_100;
+
    ------------
    -- Second --
    ------------

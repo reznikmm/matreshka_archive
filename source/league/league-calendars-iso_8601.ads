@@ -398,6 +398,11 @@ package League.Calendars.ISO_8601 is
     (Self    : ISO_8601_Calendar'Class;
      Pattern : League.Strings.Universal_String;
      Stamp   : Date_Time) return League.Strings.Universal_String;
+   function Image
+    (Self    : ISO_8601_Calendar'Class;
+     Pattern : League.Strings.Universal_String;
+     Stamp   : Date_Time;
+     Zone    : Time_Zone) return League.Strings.Universal_String;
 
    -----------------------------------------------------------------------
    --  Subprograms below don't have calendar parameter for convenience. --
@@ -620,6 +625,10 @@ package League.Calendars.ISO_8601 is
    function Image
     (Pattern : League.Strings.Universal_String;
      Stamp   : Date_Time) return League.Strings.Universal_String;
+   function Image
+    (Pattern : League.Strings.Universal_String;
+     Stamp   : Date_Time;
+     Zone    : Time_Zone) return League.Strings.Universal_String;
 
 private
 

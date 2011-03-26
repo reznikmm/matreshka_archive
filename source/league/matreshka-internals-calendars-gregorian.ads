@@ -56,6 +56,7 @@ package Matreshka.Internals.Calendars.Gregorian is
    subtype Day_Of_Year_Number is Integer range 1 .. 366;
    subtype Week_Of_Year_Number is Integer range 1 .. 53;
 
+   function Is_Leap_Year (Date : Julian_Day_Number) return Boolean;
    function Is_Leap_Year (Year : Year_Number) return Boolean;
    --  Returns True when year is a leap year.
 
@@ -82,5 +83,14 @@ package Matreshka.Internals.Calendars.Gregorian is
     (Julian_Day : Julian_Day_Number) return Day_Of_Year_Number;
    --  Returns the day of the year (1 to 365 or 366 on leap years) for this
    --  julian day.
-   
+
+   function Days_In_Month (Date : Julian_Day_Number) return Day_Number;
+   function Days_In_Month
+    (Year : Year_Number; Month : Year_Number) return Day_Number;
+   --  Returns number of days in the specified month of the specified year.
+
+   function Days_In_Year (Date : Julian_Day_Number) return Day_Number;
+   function Days_In_Year (Year : Year_Number) return Day_Number;
+   --  Returns number of days in the specified year.
+
 end Matreshka.Internals.Calendars.Gregorian;

@@ -92,6 +92,8 @@ package Matreshka.Internals.Calendars.Times is
    --  Returns the second part (0 to 60) of the time.
 
    function Nanosecond_100
+    (Time : Relative_Time; Leap : Relative_Time) return Nano_Second_100_Number;
+   function Nanosecond_100
     (Stamp : Absolute_Time;
      Zone  : not null Time_Zone_Access) return Nano_Second_100_Number;
    --  Returns the second fraction part (0 to 9_999_999) of the time.

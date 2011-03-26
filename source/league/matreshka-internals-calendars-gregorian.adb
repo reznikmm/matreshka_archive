@@ -102,6 +102,97 @@ package body Matreshka.Internals.Calendars.Gregorian is
       return Day_Of_Year_Number (Days + 1);
    end Day_Of_Year;
 
+   -------------------
+   -- Days_In_Month --
+   -------------------
+
+   function Days_In_Month (Date : Julian_Day_Number) return Day_Number is
+   begin
+      return Days_In_Month (Year (Date), Month (Date));
+   end Days_In_Month;
+
+   -------------------
+   -- Days_In_Month --
+   -------------------
+
+   function Days_In_Month
+    (Year : Year_Number; Month : Year_Number) return Day_Number
+   is
+      --  Length of months has some kind of regularity and circularity:
+      --
+      --  12  31       7  31
+      --   1  31       8  31
+      --   2  28/29    9  30
+      --   3  31      10  31
+      --   4  30      11  30
+      --   5  31
+      --   6  30
+      --
+      --  To make December be first month the reminder of 12 of Month is
+      --  computed. Reminder of 7 is used to compute number of month in cycle.
+      --  Now, base number of days can be computed as:
+      --
+      --    Base := 30 + Month_In_Cycle mod 2
+      --
+      --  Later, correction is computed:
+      --
+      --    +1, then month_in_cycle = 0, so, for July and December.
+      --    -1, then Month = 2 and Is_Leap_Year (Year), so for February of leap
+      --             year
+      --    -2, then Month = 2 and not Is_Leap_Year (Year), so for February of
+      --             non leap year.
+      --    0, otherwise
+
+      Month_In_Cycle : constant Integer := (Month mod 12) mod 7;
+      Base           : Integer := 30 + (Month_In_Cycle mod 2);
+
+   begin
+      if Month_In_Cycle = 0 then
+         Base := Base + 1;
+
+      elsif Month = 2 then
+         Base := Base - 1;
+
+         if not Is_Leap_Year (Year) then
+            Base := Base - 1;
+         end if;
+      end if;
+
+      return Base;
+   end Days_In_Month;
+
+   ------------------
+   -- Days_In_Year --
+   ------------------
+
+   function Days_In_Year (Date : Julian_Day_Number) return Day_Number is
+   begin
+      return Days_In_Year (Year (Date));
+   end Days_In_Year;
+
+   ------------------
+   -- Days_In_Year --
+   ------------------
+
+   function Days_In_Year (Year : Year_Number) return Day_Number is
+   begin
+      if Is_Leap_Year (Year) then
+         return 366;
+
+      else
+         return 365;
+      end if;
+   end Days_In_Year;
+
+   ------------------
+   -- Is_Leap_Year --
+   ------------------
+
+   function Is_Leap_Year (Date : Julian_Day_Number) return Boolean is
+   begin
+      return Is_Leap_Year (Year (Date));
+   end Is_Leap_Year;
+
    ------------------
    -- Is_Leap_Year --
    ------------------
