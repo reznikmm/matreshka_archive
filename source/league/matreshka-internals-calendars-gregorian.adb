@@ -165,7 +165,8 @@ package body Matreshka.Internals.Calendars.Gregorian is
    -- Days_In_Year --
    ------------------
 
-   function Days_In_Year (Date : Julian_Day_Number) return Day_Number is
+   function Days_In_Year
+    (Date : Julian_Day_Number) return Day_Of_Year_Number is
    begin
       return Days_In_Year (Year (Date));
    end Days_In_Year;
@@ -174,7 +175,7 @@ package body Matreshka.Internals.Calendars.Gregorian is
    -- Days_In_Year --
    ------------------
 
-   function Days_In_Year (Year : Year_Number) return Day_Number is
+   function Days_In_Year (Year : Year_Number) return Day_Of_Year_Number is
    begin
       if Is_Leap_Year (Year) then
          return 366;

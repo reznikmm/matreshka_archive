@@ -89,8 +89,8 @@ package Matreshka.Internals.Calendars.Gregorian is
     (Year : Year_Number; Month : Year_Number) return Day_Number;
    --  Returns number of days in the specified month of the specified year.
 
-   function Days_In_Year (Date : Julian_Day_Number) return Day_Number;
-   function Days_In_Year (Year : Year_Number) return Day_Number;
+   function Days_In_Year (Date : Julian_Day_Number) return Day_Of_Year_Number;
+   function Days_In_Year (Year : Year_Number) return Day_Of_Year_Number;
    --  Returns number of days in the specified year.
 
 end Matreshka.Internals.Calendars.Gregorian;
