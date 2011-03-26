@@ -104,7 +104,7 @@ sqlite3:
 cleanup:
 	rm -f league-src.lst league-ali.lst
 	rm -f fastcgi-src.lst fastcgi-ali.lst fastcgi-src.aux
-	rm -f sql-src.aux sql-ali.lst sql-src.aux
-	rm -f sql_oci-src.aux sql_oci-ali.lst sql_oci-src.aux
-	rm -f sql_postgresql-src.aux sql_postgresql-ali.lst sql_postgresql-src.aux
-	rm -f sql_sqlite3-src.aux sql_sqlite3-ali.lst sql_sqlite3-src.aux
+	rm -f sql-src.lst sql-ali.lst sql-src.aux
+	rm -f sql_oci-src.lst sql_oci-ali.lst sql_oci-src.aux
+	rm -f sql_postgresql-src.lst sql_postgresql-ali.lst sql_postgresql-src.aux
+	rm -f sql_sqlite3-src.lst sql_sqlite3-ali.lst sql_sqlite3-src.aux
