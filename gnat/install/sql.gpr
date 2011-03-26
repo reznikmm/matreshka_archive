@@ -50,7 +50,7 @@ library project SQL is
 
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
-   for Source_Dir use "../../include/matreshka/sql";
+   for Source_Dirs use ("../../include/matreshka/sql");
    for Library_Dir use "../../lib";
    for Library_ALI_Dir use "../../lib/matreshka";
    for Externally_Built use "True";
