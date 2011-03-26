@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Calendars.Times;
 
 package body Matreshka.Internals.Calendars.Formatting is
 
@@ -49,9 +50,10 @@ package body Matreshka.Internals.Calendars.Formatting is
    -----------
 
    function Image
-    (Pattern : League.Strings.Universal_String;
-     Printer : Abstract_Printer'Class;
-     Stamp   : Absolute_Time) return League.Strings.Universal_String
+    (Pattern      : League.Strings.Universal_String;
+     Printer      : Abstract_Printer'Class;
+     Time_Printer : Abstract_Time_Printer'Class;
+     Stamp        : Absolute_Time) return League.Strings.Universal_String
    is
       use type League.Strings.Universal_Character;
 
@@ -118,8 +120,13 @@ package body Matreshka.Internals.Calendars.Formatting is
       Index  : Positive := 1;
       Count  : Positive;
       Result : League.Strings.Universal_String;
+      Day    : Julian_Day_Number;
+      Time   : Relative_Time;
+      Leap   : Relative_Time;
 
    begin
+      Times.Split (Stamp, Day, Time, Leap);
+
       while Index <= Pattern.Length loop
          case Pattern.Element (Index).To_Wide_Wide_Character is
             when 'G' =>
@@ -463,7 +470,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --
                --  AM or PM
 
-               Printer.Append_Period (Result, Stamp);
+               Time_Printer.Append_Period (Result, Time);
 
             when 'h' =>
                --  h  1..2
@@ -471,7 +478,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  Hour [1-12].
 
                Parse_Field (2, Index, Count);
-               Printer.Append_Half_Day_Hour (Result, Stamp, Count, False);
+               Time_Printer.Append_Half_Day_Hour (Result, Time, Count, False);
 
             when 'H' =>
                --  H  1..2
@@ -479,7 +486,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  Hour [0-23].
 
                Parse_Field (2, Index, Count);
-               Printer.Append_Full_Day_Hour (Result, Stamp, Count, True);
+               Time_Printer.Append_Full_Day_Hour (Result, Time, Count, True);
 
             when 'K' =>
                --  K  1..2
@@ -487,7 +494,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  Hour [0-11].
 
                Parse_Field (2, Index, Count);
-               Printer.Append_Half_Day_Hour (Result, Stamp, Count, True);
+               Time_Printer.Append_Half_Day_Hour (Result, Time, Count, True);
 
             when 'k' =>
                --  k  1..2
@@ -495,7 +502,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  Hour [1-24].
 
                Parse_Field (2, Index, Count);
-               Printer.Append_Full_Day_Hour (Result, Stamp, Count, False);
+               Time_Printer.Append_Full_Day_Hour (Result, Time, Count, False);
 
             when 'j' =>
                --  j  1..2
@@ -518,7 +525,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  Minute. Use one or two for zero padding.
 
                Parse_Field (2, Index, Count);
-               Printer.Append_Minute (Result, Stamp, Count);
+               Time_Printer.Append_Minute (Result, Time, Count);
 
             when 's' =>
                --  s  1..2
@@ -526,7 +533,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  Second. Use one or two for zero padding.
 
                Parse_Field (2, Index, Count);
-               Printer.Append_Second (Result, Stamp, Count);
+               Time_Printer.Append_Second (Result, Time, Leap, Count);
 
             when 'S' =>
                --  S  1..n
@@ -535,7 +542,8 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  the count of letters.
 
                Parse_Field (2, Index, Count);
-               Printer.Append_Fractional_Second (Result, Stamp, Count);
+               Time_Printer.Append_Fractional_Second
+                (Result, Time, Leap, Count);
 
             when 'A' =>
                --  A  1..n
@@ -549,7 +557,8 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  with the offset field to obtain a unique local time value.
 
                Parse_Field (Index, Count);
-               Printer.Append_Milliseconds_In_Day (Result, Stamp, Count);
+               Time_Printer.Append_Milliseconds_In_Day
+                (Result, Time, Leap, Count);
 
             when 'z' =>
                null;

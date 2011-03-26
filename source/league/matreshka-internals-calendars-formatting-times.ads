@@ -41,58 +41,59 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides subprograms to extract julian day number and time
---  inside day from X/Open representation and to construct X/Open
---  representation from julian day number and time inside day.
---
---  Subprograms in this package handles leap seconds also.
---
---  Note: for convenience, julian day starts at midnight, not noon.
+--  This package provides time printer.
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.Calendars.Times is
+package Matreshka.Internals.Calendars.Formatting.Times is
 
    pragma Preelaborate;
 
-   subtype Hour_Number is Integer range 0 .. 23;
-   subtype Minute_Number is Integer range 0 .. 59;
-   subtype Second_Number is Integer range 0 .. 60;
-   subtype Nano_Second_100_Number is Integer range 0 .. 9_999_999;
+   type Time_Printer is new Abstract_Time_Printer with null record;
 
-   function Create
-    (Julian_Day : Julian_Day_Number;
-     Hour       : Hour_Number;
-     Minute     : Minute_Number;
-     Second     : Second_Number;
-     Nano_100   : Nano_Second_100_Number) return Absolute_Time;
-   --  Creates absolute time from giving components.
+   overriding procedure Append_Period
+    (Self   : Time_Printer;
+     Output : in out League.Strings.Universal_String;
+     Time   : Relative_Time);
 
-   function Julian_Day (Stamp : Absolute_Time) return Julian_Day_Number;
-   --  Returns julian day number of the specified X/Open time.
+   overriding procedure Append_Half_Day_Hour
+    (Self       : Time_Printer;
+     Output     : in out League.Strings.Universal_String;
+     Time       : Relative_Time;
+     Padding    : Positive;
+     Zero_Based : Boolean);
 
-   function Hour (Stamp : Absolute_Time) return Hour_Number;
-   function Hour (Time : Relative_Time) return Hour_Number;
-   --  Returns the hour part (0 to 23) of the time.
+   overriding procedure Append_Full_Day_Hour
+    (Self       : Time_Printer;
+     Output     : in out League.Strings.Universal_String;
+     Time       : Relative_Time;
+     Padding    : Positive;
+     Zero_Based : Boolean);
 
-   function Minute (Stamp : Absolute_Time) return Minute_Number;
-   function Minute (Time : Relative_Time) return Minute_Number;
-   --  Returns the minute part (0 to 59) of the time.
+   overriding procedure Append_Minute
+    (Self    : Time_Printer;
+     Output  : in out League.Strings.Universal_String;
+     Time    : Relative_Time;
+     Padding : Positive);
 
-   function Second (Stamp : Absolute_Time) return Second_Number;
-   function Second
-    (Time : Relative_Time; Leap : Relative_Time) return Second_Number;
-   --  Returns the second part (0 to 60) of the time.
+   overriding procedure Append_Second
+    (Self    : Time_Printer;
+     Output  : in out League.Strings.Universal_String;
+     Time    : Relative_Time;
+     Leap    : Relative_Time;
+     Padding : Positive);
 
-   function Nanosecond_100
-    (Stamp : Absolute_Time) return Nano_Second_100_Number;
-   --  Returns the second fraction part (0 to 9_999_999) of the time.
+   overriding procedure Append_Fractional_Second
+    (Self    : Time_Printer;
+     Output  : in out League.Strings.Universal_String;
+     Time    : Relative_Time;
+     Leap    : Relative_Time;
+     Padding : Positive);
 
-   procedure Split
-    (Stamp      : Absolute_Time;
-     Julian_Day : out Julian_Day_Number;
-     Time       : out Relative_Time;
-     Leap       : out Relative_Time);
-   --  Splits stamp onto juliad day number, relative time and leap second
-   --  fraction.
+   overriding procedure Append_Milliseconds_In_Day
+    (Self    : Time_Printer;
+     Output  : in out League.Strings.Universal_String;
+     Time    : Relative_Time;
+     Leap    : Relative_Time;
+     Padding : Positive);
 
-end Matreshka.Internals.Calendars.Times;
+end Matreshka.Internals.Calendars.Formatting.Times;

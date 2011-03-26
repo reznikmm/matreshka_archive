@@ -190,38 +190,6 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
       null;
    end Append_Extended_Year;
 
-   ------------------------------
-   -- Append_Fractional_Second --
-   ------------------------------
-
-   overriding procedure Append_Fractional_Second
-    (Self    : ISO_8601_Printer;
-     Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
-     Padding : Positive) is
-   begin
-      --  XXX Not yet implemented.
-
-      null;
-   end Append_Fractional_Second;
-
-   --------------------------
-   -- Append_Full_Day_Hour --
-   --------------------------
-
-   overriding procedure Append_Full_Day_Hour
-    (Self       : ISO_8601_Printer;
-     Output     : in out League.Strings.Universal_String;
-     Stamp      : Absolute_Time;
-     Padding    : Positive;
-     Zero_Based : Boolean) is
-   begin
-      Append
-       (Output,
-        Matreshka.Internals.Calendars.Times.Hour (Stamp),
-        Padding);
-   end Append_Full_Day_Hour;
-
    -----------------------------
    -- Append_Full_Day_Of_Week --
    -----------------------------
@@ -267,22 +235,6 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
       null;
    end Append_Full_Quarter;
 
-   --------------------------
-   -- Append_Half_Day_Hour --
-   --------------------------
-
-   overriding procedure Append_Half_Day_Hour
-    (Self       : ISO_8601_Printer;
-     Output     : in out League.Strings.Universal_String;
-     Stamp      : Absolute_Time;
-     Padding    : Positive;
-     Zero_Based : Boolean) is
-   begin
-      --  XXX Not yet implemented.
-
-      null;
-   end Append_Half_Day_Hour;
-
    -----------------------
    -- Append_Julian_Day --
    -----------------------
@@ -311,37 +263,6 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
 
       null;
    end Append_Long_Era;
-
-   --------------------------------
-   -- Append_Milliseconds_In_Day --
-   --------------------------------
-
-   overriding procedure Append_Milliseconds_In_Day
-    (Self    : ISO_8601_Printer;
-     Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
-     Padding : Positive) is
-   begin
-      --  XXX Not yet implemented.
-
-      null;
-   end Append_Milliseconds_In_Day;
-
-   -------------------
-   -- Append_Minute --
-   -------------------
-
-   overriding procedure Append_Minute
-    (Self    : ISO_8601_Printer;
-     Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
-     Padding : Positive) is
-   begin
-      Append
-       (Output,
-        Matreshka.Internals.Calendars.Times.Minute (Stamp),
-        Padding);
-   end Append_Minute;
 
    -------------------------------
    -- Append_Narrow_Day_Of_Week --
@@ -436,36 +357,6 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
 
       null;
    end Append_Numerical_Quarter;
-
-   -------------------
-   -- Append_Period --
-   -------------------
-
-   overriding procedure Append_Period
-    (Self   : ISO_8601_Printer;
-     Output : in out League.Strings.Universal_String;
-     Stamp  : Absolute_Time) is
-   begin
-      --  XXX Not yet implemented.
-
-      null;
-   end Append_Period;
-
-   -------------------
-   -- Append_Second --
-   -------------------
-
-   overriding procedure Append_Second
-    (Self    : ISO_8601_Printer;
-     Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
-     Padding : Positive) is
-   begin
-      Append
-       (Output,
-        Matreshka.Internals.Calendars.Times.Second (Stamp),
-        Padding);
-   end Append_Second;
 
    ------------------------------
    -- Append_Short_Day_Of_Week --

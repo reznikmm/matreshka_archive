@@ -196,52 +196,58 @@ package Matreshka.Internals.Calendars.Formatting is
      Stamp          : Absolute_Time;
      Is_Stand_Alone : Boolean) is abstract;
 
+   type Abstract_Time_Printer is abstract tagged limited null record;
+
    not overriding procedure Append_Period
-    (Self   : Abstract_Printer;
+    (Self   : Abstract_Time_Printer;
      Output : in out League.Strings.Universal_String;
-     Stamp  : Absolute_Time) is abstract;
+     Stamp  : Relative_Time) is abstract;
 
    not overriding procedure Append_Half_Day_Hour
-    (Self       : Abstract_Printer;
+    (Self       : Abstract_Time_Printer;
      Output     : in out League.Strings.Universal_String;
-     Stamp      : Absolute_Time;
+     Stamp      : Relative_Time;
      Padding    : Positive;
      Zero_Based : Boolean) is abstract;
 
    not overriding procedure Append_Full_Day_Hour
-    (Self       : Abstract_Printer;
+    (Self       : Abstract_Time_Printer;
      Output     : in out League.Strings.Universal_String;
-     Stamp      : Absolute_Time;
+     Stamp      : Relative_Time;
      Padding    : Positive;
      Zero_Based : Boolean) is abstract;
 
    not overriding procedure Append_Minute
-    (Self    : Abstract_Printer;
+    (Self    : Abstract_Time_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Stamp   : Relative_Time;
      Padding : Positive) is abstract;
 
    not overriding procedure Append_Second
-    (Self    : Abstract_Printer;
+    (Self    : Abstract_Time_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Time    : Relative_Time;
+     Leap    : Relative_Time;
      Padding : Positive) is abstract;
 
    not overriding procedure Append_Fractional_Second
-    (Self    : Abstract_Printer;
+    (Self    : Abstract_Time_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Time    : Relative_Time;
+     Leap    : Relative_Time;
      Padding : Positive) is abstract;
 
    not overriding procedure Append_Milliseconds_In_Day
-    (Self    : Abstract_Printer;
+    (Self    : Abstract_Time_Printer;
      Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
+     Time    : Relative_Time;
+     Leap    : Relative_Time;
      Padding : Positive) is abstract;
 
    function Image
-    (Pattern : League.Strings.Universal_String;
-     Printer : Abstract_Printer'Class;
-     Stamp   : Absolute_Time) return League.Strings.Universal_String;
+    (Pattern      : League.Strings.Universal_String;
+     Printer      : Abstract_Printer'Class;
+     Time_Printer : Abstract_Time_Printer'Class;
+     Stamp        : Absolute_Time) return League.Strings.Universal_String;
 
 end Matreshka.Internals.Calendars.Formatting;

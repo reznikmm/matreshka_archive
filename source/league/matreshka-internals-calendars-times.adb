@@ -86,14 +86,6 @@ package body Matreshka.Internals.Calendars.Times is
          (2441683, 123139872010000000,  20000000),   --  1972-12-31
          (2441499, 122980896000000000,  10000000));  --  1972-06-30
 
-   procedure Split
-    (Stamp      : Absolute_Time;
-     Julian_Day : out Julian_Day_Number;
-     Time       : out Relative_Time;
-     Leap       : out Relative_Time);
-   --  Splits stamp onto juliad day number, relative time and leap second
-   --  fraction.
-
    ------------
    -- Create --
    ------------
@@ -164,6 +156,15 @@ package body Matreshka.Internals.Calendars.Times is
       return Hour_Number (Time / Ticks_In_Hour);
    end Hour;
 
+   ----------
+   -- Hour --
+   ----------
+
+   function Hour (Time : Relative_Time) return Hour_Number is
+   begin
+      return Hour_Number (Time / Ticks_In_Hour);
+   end Hour;
+
    ----------------
    -- Julian_Day --
    ----------------
@@ -191,6 +192,15 @@ package body Matreshka.Internals.Calendars.Times is
    begin
       Split (Stamp, Julian_Day, Time, Leap);
 
+      return Minute_Number ((Time mod Ticks_In_Hour) / Ticks_In_Minute);
+   end Minute;
+
+   ------------
+   -- Minute --
+   ------------
+
+   function Minute (Time : Relative_Time) return Minute_Number is
+   begin
       return Minute_Number ((Time mod Ticks_In_Hour) / Ticks_In_Minute);
    end Minute;
 
@@ -226,6 +236,19 @@ package body Matreshka.Internals.Calendars.Times is
    begin
       Split (Stamp, Julian_Day, Time, Leap);
 
+      return
+        Second_Number
+         ((Time mod Ticks_In_Minute + Leap mod Ticks_In_Minute)
+            / Ticks_In_Second);
+   end Second;
+
+   ------------
+   -- Second --
+   ------------
+
+   function Second
+    (Time : Relative_Time; Leap : Relative_Time) return Second_Number is
+   begin
       return
         Second_Number
          ((Time mod Ticks_In_Minute + Leap mod Ticks_In_Minute)

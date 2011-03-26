@@ -191,47 +191,4 @@ package Matreshka.Internals.Calendars.Formatting.ISO_8601 is
      Stamp          : Absolute_Time;
      Is_Stand_Alone : Boolean);
 
-   overriding procedure Append_Period
-    (Self   : ISO_8601_Printer;
-     Output : in out League.Strings.Universal_String;
-     Stamp  : Absolute_Time);
-
-   overriding procedure Append_Half_Day_Hour
-    (Self       : ISO_8601_Printer;
-     Output     : in out League.Strings.Universal_String;
-     Stamp      : Absolute_Time;
-     Padding    : Positive;
-     Zero_Based : Boolean);
-
-   overriding procedure Append_Full_Day_Hour
-    (Self       : ISO_8601_Printer;
-     Output     : in out League.Strings.Universal_String;
-     Stamp      : Absolute_Time;
-     Padding    : Positive;
-     Zero_Based : Boolean);
-
-   overriding procedure Append_Minute
-    (Self    : ISO_8601_Printer;
-     Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
-     Padding : Positive);
-
-   overriding procedure Append_Second
-    (Self    : ISO_8601_Printer;
-     Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
-     Padding : Positive);
-
-   overriding procedure Append_Fractional_Second
-    (Self    : ISO_8601_Printer;
-     Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
-     Padding : Positive);
-
-   overriding procedure Append_Milliseconds_In_Day
-    (Self    : ISO_8601_Printer;
-     Output  : in out League.Strings.Universal_String;
-     Stamp   : Absolute_Time;
-     Padding : Positive);
-
 end Matreshka.Internals.Calendars.Formatting.ISO_8601;

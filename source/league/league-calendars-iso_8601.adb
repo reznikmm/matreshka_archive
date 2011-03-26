@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Calendars.Formatting.ISO_8601;
+with Matreshka.Internals.Calendars.Formatting.Times;
 with Matreshka.Internals.Calendars.Gregorian;
 with Matreshka.Internals.Calendars.Times;
 
@@ -1052,14 +1053,17 @@ package body League.Calendars.ISO_8601 is
    is
       pragma Unreferenced (Self);
 
-      Printer :
+      Printer      :
         Matreshka.Internals.Calendars.Formatting.ISO_8601.ISO_8601_Printer;
+      Time_Printer :
+        Matreshka.Internals.Calendars.Formatting.Times.Time_Printer;
 
    begin
       return
         Matreshka.Internals.Calendars.Formatting.Image
          (Pattern,
           Printer,
+          Time_Printer,
           Matreshka.Internals.Calendars.Absolute_Time (Stamp));
    end Image;
 
