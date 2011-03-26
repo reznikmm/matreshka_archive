@@ -56,6 +56,8 @@
 --  calendars. All calendar operations which doesn't have time zone parameter
 --  operates in current time zone (specified for thread or for application).
 ------------------------------------------------------------------------------
+private with Ada.Streams;
+
 private with Matreshka.Internals.Calendars;
 
 package League.Calendars is
@@ -115,7 +117,7 @@ package League.Calendars is
    function ">"  (Left : Date_Time; Right : Date_Time) return Boolean;
    function ">=" (Left : Date_Time; Right : Date_Time) return Boolean;
 
-   type Time_Zone is tagged private;
+   type Time_Zone is private;
 
    type Abstract_Calendar is abstract tagged private;
 
@@ -127,7 +129,19 @@ private
 
    type Date_Time is new Matreshka.Internals.Calendars.Absolute_Time;
 
-   type Time_Zone is tagged null record;
+   procedure Read
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : out Time_Zone);
+
+   procedure Write
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : Time_Zone);
+
+   type Time_Zone is record
+      Description : Matreshka.Internals.Calendars.Time_Zone_Access;
+   end record;
+   for Time_Zone'Read use Read;
+   for Time_Zone'Write use Write;
 
    type Abstract_Calendar is abstract tagged null record;
 

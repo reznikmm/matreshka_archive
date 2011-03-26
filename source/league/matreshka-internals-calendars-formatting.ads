@@ -248,6 +248,8 @@ package Matreshka.Internals.Calendars.Formatting is
     (Pattern      : League.Strings.Universal_String;
      Printer      : Abstract_Printer'Class;
      Time_Printer : Abstract_Time_Printer'Class;
-     Stamp        : Absolute_Time) return League.Strings.Universal_String;
+     Stamp        : Absolute_Time;
+     Zone         : not null Time_Zone_Access)
+       return League.Strings.Universal_String;
 
 end Matreshka.Internals.Calendars.Formatting;

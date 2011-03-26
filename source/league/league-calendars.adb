@@ -250,4 +250,26 @@ package body League.Calendars is
       return Date_Time (Matreshka.Internals.Calendars.Clocks.Clock);
    end Clock;
 
+   ----------
+   -- Read --
+   ----------
+
+   procedure Read
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : out Time_Zone) is
+   begin
+      raise Program_Error;
+   end Read;
+
+   -----------
+   -- Write --
+   -----------
+
+   procedure Write
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : Time_Zone) is
+   begin
+      raise Program_Error;
+   end Write;
+
 end League.Calendars;

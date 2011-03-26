@@ -45,7 +45,7 @@ with Interfaces;
 
 package Matreshka.Internals.Calendars is
 
-   pragma Pure;
+   pragma Preelaborate;
 
    --  Universal Time Coordinated (UTC) representation from the X/Open DCE Time
    --  Service is used as internal representation. It is defined as follows:
@@ -71,5 +71,12 @@ package Matreshka.Internals.Calendars is
    type Relative_Time is new Interfaces.Integer_64;
 
    type Julian_Day_Number is new Interfaces.Integer_32;
+
+   type Internal_Time_Zone is null record;
+
+   type Time_Zone_Access is access all Internal_Time_Zone;
+   for Time_Zone_Access'Storage_Size use 0;
+
+   UTC_Time_Zone : aliased Internal_Time_Zone;
 
 end Matreshka.Internals.Calendars;

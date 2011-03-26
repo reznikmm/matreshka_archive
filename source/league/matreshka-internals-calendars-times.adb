@@ -145,13 +145,16 @@ package body Matreshka.Internals.Calendars.Times is
    -- Hour --
    ----------
 
-   function Hour (Stamp : Absolute_Time) return Hour_Number is
+   function Hour
+    (Stamp : Absolute_Time;
+     Zone  : not null Time_Zone_Access) return Hour_Number
+   is
       Julian_Day : Julian_Day_Number;
       Time       : Relative_Time;
       Leap       : Relative_Time;
 
    begin
-      Split (Stamp, Julian_Day, Time, Leap);
+      Split (Stamp, Zone, Julian_Day, Time, Leap);
 
       return Hour_Number (Time / Ticks_In_Hour);
    end Hour;
@@ -169,13 +172,16 @@ package body Matreshka.Internals.Calendars.Times is
    -- Julian_Day --
    ----------------
 
-   function Julian_Day (Stamp : Absolute_Time) return Julian_Day_Number is
+   function Julian_Day
+    (Stamp : Absolute_Time;
+     Zone  : not null Time_Zone_Access) return Julian_Day_Number
+   is
       Julian_Day : Julian_Day_Number;
       Time       : Relative_Time;
       Leap       : Relative_Time;
 
    begin
-      Split (Stamp, Julian_Day, Time, Leap);
+      Split (Stamp, Zone, Julian_Day, Time, Leap);
 
       return Julian_Day;
    end Julian_Day;
@@ -184,13 +190,16 @@ package body Matreshka.Internals.Calendars.Times is
    -- Minute --
    ------------
 
-   function Minute (Stamp : Absolute_Time) return Minute_Number is
+   function Minute
+    (Stamp : Absolute_Time;
+     Zone  : not null Time_Zone_Access) return Minute_Number
+   is
       Julian_Day : Julian_Day_Number;
       Time       : Relative_Time;
       Leap       : Relative_Time;
 
    begin
-      Split (Stamp, Julian_Day, Time, Leap);
+      Split (Stamp, Zone, Julian_Day, Time, Leap);
 
       return Minute_Number ((Time mod Ticks_In_Hour) / Ticks_In_Minute);
    end Minute;
@@ -209,14 +218,15 @@ package body Matreshka.Internals.Calendars.Times is
    --------------------
 
    function Nanosecond_100
-    (Stamp : Absolute_Time) return Nano_Second_100_Number
+    (Stamp : Absolute_Time;
+     Zone  : not null Time_Zone_Access) return Nano_Second_100_Number
    is
       Julian_Day : Julian_Day_Number;
       Time       : Relative_Time;
       Leap       : Relative_Time;
 
    begin
-      Split (Stamp, Julian_Day, Time, Leap);
+      Split (Stamp, Zone, Julian_Day, Time, Leap);
 
       return
         Nano_Second_100_Number
@@ -228,13 +238,16 @@ package body Matreshka.Internals.Calendars.Times is
    -- Second --
    ------------
 
-   function Second (Stamp : Absolute_Time) return Second_Number is
+   function Second
+    (Stamp : Absolute_Time;
+     Zone  : not null Time_Zone_Access) return Second_Number
+   is
       Julian_Day : Julian_Day_Number;
       Time       : Relative_Time;
       Leap       : Relative_Time;
 
    begin
-      Split (Stamp, Julian_Day, Time, Leap);
+      Split (Stamp, Zone, Julian_Day, Time, Leap);
 
       return
         Second_Number
@@ -261,6 +274,7 @@ package body Matreshka.Internals.Calendars.Times is
 
    procedure Split
     (Stamp      : Absolute_Time;
+     Zone       : not null Time_Zone_Access;
      Julian_Day : out Julian_Day_Number;
      Time       : out Relative_Time;
      Leap       : out Relative_Time)

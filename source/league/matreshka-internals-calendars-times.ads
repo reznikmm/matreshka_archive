@@ -67,28 +67,38 @@ package Matreshka.Internals.Calendars.Times is
      Nano_100   : Nano_Second_100_Number) return Absolute_Time;
    --  Creates absolute time from giving components.
 
-   function Julian_Day (Stamp : Absolute_Time) return Julian_Day_Number;
+   function Julian_Day
+    (Stamp : Absolute_Time;
+     Zone  : not null Time_Zone_Access) return Julian_Day_Number;
    --  Returns julian day number of the specified X/Open time.
 
-   function Hour (Stamp : Absolute_Time) return Hour_Number;
+   function Hour
+    (Stamp : Absolute_Time;
+     Zone  : not null Time_Zone_Access) return Hour_Number;
    function Hour (Time : Relative_Time) return Hour_Number;
    --  Returns the hour part (0 to 23) of the time.
 
-   function Minute (Stamp : Absolute_Time) return Minute_Number;
+   function Minute
+    (Stamp : Absolute_Time;
+     Zone  : not null Time_Zone_Access) return Minute_Number;
    function Minute (Time : Relative_Time) return Minute_Number;
    --  Returns the minute part (0 to 59) of the time.
 
-   function Second (Stamp : Absolute_Time) return Second_Number;
+   function Second
+    (Stamp : Absolute_Time;
+     Zone  : not null Time_Zone_Access) return Second_Number;
    function Second
     (Time : Relative_Time; Leap : Relative_Time) return Second_Number;
    --  Returns the second part (0 to 60) of the time.
 
    function Nanosecond_100
-    (Stamp : Absolute_Time) return Nano_Second_100_Number;
+    (Stamp : Absolute_Time;
+     Zone  : not null Time_Zone_Access) return Nano_Second_100_Number;
    --  Returns the second fraction part (0 to 9_999_999) of the time.
 
    procedure Split
     (Stamp      : Absolute_Time;
+     Zone       : not null Time_Zone_Access;
      Julian_Day : out Julian_Day_Number;
      Time       : out Relative_Time;
      Leap       : out Relative_Time);

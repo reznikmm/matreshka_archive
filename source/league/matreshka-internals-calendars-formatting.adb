@@ -53,7 +53,9 @@ package body Matreshka.Internals.Calendars.Formatting is
     (Pattern      : League.Strings.Universal_String;
      Printer      : Abstract_Printer'Class;
      Time_Printer : Abstract_Time_Printer'Class;
-     Stamp        : Absolute_Time) return League.Strings.Universal_String
+     Stamp        : Absolute_Time;
+     Zone         : not null Time_Zone_Access)
+       return League.Strings.Universal_String
    is
       use type League.Strings.Universal_Character;
 
@@ -125,7 +127,7 @@ package body Matreshka.Internals.Calendars.Formatting is
       Leap   : Relative_Time;
 
    begin
-      Times.Split (Stamp, Date, Time, Leap);
+      Times.Split (Stamp, Zone, Date, Time, Leap);
 
       while Index <= Pattern.Length loop
          case Pattern.Element (Index).To_Wide_Wide_Character is
