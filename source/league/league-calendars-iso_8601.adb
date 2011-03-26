@@ -617,10 +617,12 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return
+        Day_Of_Week_Number
+         (Matreshka.Internals.Calendars.Gregorian.Day_Of_Week
+           (Matreshka.Internals.Calendars.Times.Julian_Day
+             (Matreshka.Internals.Calendars.Absolute_Time (Stamp),
+              Local_Time_Zone)));
    end Day_Of_Week;
 
    -----------------
@@ -635,10 +637,12 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return
+        Day_Of_Week_Number
+         (Matreshka.Internals.Calendars.Gregorian.Day_Of_Week
+           (Matreshka.Internals.Calendars.Times.Julian_Day
+             (Matreshka.Internals.Calendars.Absolute_Time (Stamp),
+              Zone.Description)));
    end Day_Of_Week;
 
    -----------------
@@ -697,10 +701,12 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return
+        Day_Of_Year_Number
+         (Matreshka.Internals.Calendars.Gregorian.Day_Of_Year
+           (Matreshka.Internals.Calendars.Times.Julian_Day
+             (Matreshka.Internals.Calendars.Absolute_Time (Stamp),
+              Local_Time_Zone)));
    end Day_Of_Year;
 
    -----------------
@@ -715,10 +721,12 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return
+        Day_Of_Year_Number
+         (Matreshka.Internals.Calendars.Gregorian.Day_Of_Year
+           (Matreshka.Internals.Calendars.Times.Julian_Day
+             (Matreshka.Internals.Calendars.Absolute_Time (Stamp),
+              Zone.Description)));
    end Day_Of_Year;
 
    -------------------
@@ -1002,10 +1010,10 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 0;
+      return
+        Hour_Number
+         (Matreshka.Internals.Calendars.Times.Hour
+           (Matreshka.Internals.Calendars.Relative_Time (Stamp)));
    end Hour;
 
    ----------
@@ -1037,10 +1045,11 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 0;
+      return
+        Hour_Number
+         (Matreshka.Internals.Calendars.Times.Hour
+           (Matreshka.Internals.Calendars.Absolute_Time (Stamp),
+            Zone.Description));
    end Hour;
 
    -----------
@@ -1122,9 +1131,15 @@ package body League.Calendars.ISO_8601 is
    ------------------
 
    function Is_Leap_Year
-    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Boolean is
+    (Self : ISO_8601_Calendar'Class; Stamp : Date) return Boolean
+   is
+      pragma Unreferenced (Self);
+
    begin
-      return Is_Leap_Year (Self, Year (Self, Stamp));
+      return
+        Matreshka.Internals.Calendars.Gregorian.Is_Leap_Year
+         (Matreshka.Internals.Calendars.Gregorian.Year
+           (Matreshka.Internals.Calendars.Julian_Day_Number (Stamp)));
    end Is_Leap_Year;
 
    ------------------
@@ -1137,10 +1152,12 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return False;
+      return
+        Matreshka.Internals.Calendars.Gregorian.Is_Leap_Year
+         (Matreshka.Internals.Calendars.Gregorian.Year
+           (Matreshka.Internals.Calendars.Times.Julian_Day
+             (Matreshka.Internals.Calendars.Absolute_Time (Stamp),
+              Local_Time_Zone)));
    end Is_Leap_Year;
 
    ------------------
@@ -1155,10 +1172,12 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return False;
+      return
+        Matreshka.Internals.Calendars.Gregorian.Is_Leap_Year
+         (Matreshka.Internals.Calendars.Gregorian.Year
+           (Matreshka.Internals.Calendars.Times.Julian_Day
+             (Matreshka.Internals.Calendars.Absolute_Time (Stamp),
+              Zone.Description)));
    end Is_Leap_Year;
 
    ------------------
@@ -1249,10 +1268,10 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 0;
+      return
+        Minute_Number
+         (Matreshka.Internals.Calendars.Times.Minute
+           (Matreshka.Internals.Calendars.Relative_Time (Stamp)));
    end Minute;
 
    ------------
@@ -1346,8 +1365,6 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Time zone not yet implemented.
-
       return
         Month_Number
          (Matreshka.Internals.Calendars.Gregorian.Month
@@ -1368,10 +1385,12 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return
+        Month_Number
+         (Matreshka.Internals.Calendars.Gregorian.Month
+           (Matreshka.Internals.Calendars.Times.Julian_Day
+             (Matreshka.Internals.Calendars.Absolute_Time (Stamp),
+              Zone.Description)));
    end Month;
 
    --------------------
@@ -1492,10 +1511,11 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 0;
+      return
+        Second_Number
+         (Matreshka.Internals.Calendars.Times.Second
+           (Matreshka.Internals.Calendars.Relative_Time (Stamp), 0));
+      --  XXX Doesn't handle leap seconds, must be reviewed.
    end Second;
 
    ------------
@@ -1958,8 +1978,6 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Time zone not yet implemented.
-
       return
         Year_Number
          (Matreshka.Internals.Calendars.Gregorian.Year
@@ -1980,10 +1998,12 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return 1;
+      return
+        Year_Number
+         (Matreshka.Internals.Calendars.Gregorian.Year
+           (Matreshka.Internals.Calendars.Times.Julian_Day
+             (Matreshka.Internals.Calendars.Absolute_Time (Stamp),
+              Zone.Description)));
    end Year;
 
 end League.Calendars.ISO_8601;
