@@ -1203,7 +1203,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Callbacks.Call_Fatal_Error
           (Self.all,
            League.Strings.To_Universal_String
-            ("[XML1.1 4.1 WFC: Entity Declared]"
+            ("[XML1.1 4.1 WFC: Parsed Entity]"
                & " an entity reference must not contain the name of an"
                & " unparsed entity"));
 
@@ -1362,7 +1362,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Callbacks.Call_Fatal_Error
           (Self.all,
            League.Strings.To_Universal_String
-            ("[XML1.1 4.1 WFC: Entity Declared]"
+            ("[XML1.1 4.1 WFC: Parsed Entity]"
                & " an entity reference must not contain the name of an"
                & " unparsed entity"));
 
