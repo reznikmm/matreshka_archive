@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/not-wf/P32/ibm32n09.dtd</systemID>
-    </resolveEntity>
-    <startElement>
-        <namespaceURI/>
-        <localName>animal</localName>
-        <qualifiedName>animal</qualifiedName>
-        <attributes/>
-    </startElement>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <resolveEntity>
+    <name>[dtd]</name>
+    <systemID>ibm32n09.dtd</systemID>
+  </resolveEntity>
+  <startElement>
+    <namespaceURI/>
+    <localName>animal</localName>
+    <qualifiedName>animal</qualifiedName>
+    <attributes/>
+  </startElement>
+  <fatalError>[XML1.1&#x20;4.1&#x20;WFC:&#x20;Entity&#x20;Declared]&#x20;general&#x20;entity&#x20;must&#x20;not&#x20;be&#x20;declared&#x20;externally</fatalError>
+  <endDocument/>
+</SAXEvents>

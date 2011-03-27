@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/sun/valid/sa.dtd</systemID>
-    </resolveEntity>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <resolveEntity>
+    <name>[dtd]</name>
+    <systemID>../valid/sa.dtd</systemID>
+  </resolveEntity>
+  <notation>
+    <name>nonce</name>
+    <systemID>file:/dev/null</systemID>
+  </notation>
+  <notation>
+    <name>foo</name>
+    <publicID>-//public&#x20;id//foo</publicID>
+    <systemID>file:/dev/null</systemID>
+  </notation>
+  <notation>
+    <name>bar</name>
+    <systemID>file:/dev/tty</systemID>
+  </notation>
+  <unparsedEntity>
+    <name>unparsed-1</name>
+    <publicID>-//some&#x20;public//ID</publicID>
+    <systemID>file:/dev/console</systemID>
+    <notation>nonce</notation>
+  </unparsedEntity>
+  <unparsedEntity>
+    <name>unparsed-2</name>
+    <systemID>scheme://host/data</systemID>
+    <notation>foo</notation>
+  </unparsedEntity>
+  <fatalError>[XML1.1&#x20;4.1&#x20;WFC:&#x20;Entity&#x20;Declared]&#x20;general&#x20;entity&#x20;must&#x20;not&#x20;be&#x20;declared&#x20;externally</fatalError>
+  <endDocument/>
+</SAXEvents>
