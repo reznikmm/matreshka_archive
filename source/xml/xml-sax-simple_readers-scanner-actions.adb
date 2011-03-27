@@ -1161,7 +1161,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       --  DTD subset which contains no parameter entity references, or a
       --  document with "standalone='yes'", for an entity reference that
       --  does not occur within the external subset or a parameter entity,
-      --  the Name given in the entity reference MUST  match that in an
+      --  the Name given in the entity reference MUST match that in an
       --  entity declaration that does not occur within the external subset
       --  or a parameter entity, except that well-formed documents need not
       --  declare any of the following entities: amp, lt, gt, apos, quot.
@@ -1186,6 +1186,25 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
            League.Strings.To_Universal_String
             ("[XML1.1 4.1 WFC: Entity Declared]"
                & " general entity must be declared"));
+
+         return False;
+
+      elsif Enclosing_Entity (Self.Entities, Entity) = No_Entity then
+         --  All predefined entities doesn't have enclosing entity.
+
+         null;
+
+      elsif Self.Is_Standalone
+        and not Is_Parameter_Entity (Self.Entities, Self.Scanner_State.Entity)
+        and not Is_External_Subset (Self.Entities, Self.Scanner_State.Entity)
+        and not Is_Document_Entity
+                 (Self.Entities, Enclosing_Entity (Self.Entities, Entity))
+      then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML1.1 4.1 WFC: Entity Declared]"
+               & " general entity must not be declared externally"));
 
          return False;
       end if;
@@ -1345,6 +1364,25 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
            League.Strings.To_Universal_String
             ("[XML1.1 4.1 WFC: Entity Declared]"
                & " general entity must be declared"));
+
+         return Error;
+
+      elsif Enclosing_Entity (Self.Entities, Entity) = No_Entity then
+         --  All predefined entities doesn't have enclosing entity.
+
+         null;
+
+      elsif Self.Is_Standalone
+        and not Is_Parameter_Entity (Self.Entities, Self.Scanner_State.Entity)
+        and not Is_External_Subset (Self.Entities, Self.Scanner_State.Entity)
+        and not Is_Document_Entity
+                 (Self.Entities, Enclosing_Entity (Self.Entities, Entity))
+      then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML1.1 4.1 WFC: Entity Declared]"
+               & " general entity must not be declared externally"));
 
          return Error;
       end if;

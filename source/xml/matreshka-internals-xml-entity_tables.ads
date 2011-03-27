@@ -53,6 +53,7 @@ package Matreshka.Internals.XML.Entity_Tables is
 
    procedure New_Internal_Parameter_Entity
     (Self             : in out Entity_Table;
+     Enclosing_Entity : Entity_Identifier;
      Name             : Matreshka.Internals.XML.Symbol_Identifier;
      Replacement_Text :
        not null Matreshka.Internals.Strings.Shared_String_Access;
@@ -61,17 +62,19 @@ package Matreshka.Internals.XML.Entity_Tables is
    --  entity.
 
    procedure New_External_Parameter_Entity
-    (Self      : in out Entity_Table;
-     Name      : Matreshka.Internals.XML.Symbol_Identifier;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Base      : League.Strings.Universal_String;
-     Entity    : out Entity_Identifier);
+    (Self             : in out Entity_Table;
+     Enclosing_Entity : Entity_Identifier;
+     Name             : Matreshka.Internals.XML.Symbol_Identifier;
+     Public_Id        : League.Strings.Universal_String;
+     System_Id        : League.Strings.Universal_String;
+     Base             : League.Strings.Universal_String;
+     Entity           : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
 
    procedure New_Internal_General_Entity
     (Self             : in out Entity_Table;
+     Enclosing_Entity : Entity_Identifier;
      Name             : Matreshka.Internals.XML.Symbol_Identifier;
      Replacement_Text :
        not null Matreshka.Internals.Strings.Shared_String_Access;
@@ -80,20 +83,22 @@ package Matreshka.Internals.XML.Entity_Tables is
    --  entity.
 
    procedure New_External_Parsed_General_Entity
-    (Self      : in out Entity_Table;
-     Name      : Matreshka.Internals.XML.Symbol_Identifier;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Base      : League.Strings.Universal_String;
-     Entity    : out Entity_Identifier);
+    (Self             : in out Entity_Table;
+     Enclosing_Entity : Entity_Identifier;
+     Name             : Matreshka.Internals.XML.Symbol_Identifier;
+     Public_Id        : League.Strings.Universal_String;
+     System_Id        : League.Strings.Universal_String;
+     Base             : League.Strings.Universal_String;
+     Entity           : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
 
    procedure New_External_Unparsed_General_Entity
-    (Self     : in out Entity_Table;
-     Name     : Matreshka.Internals.XML.Symbol_Identifier;
-     Notation : Symbol_Identifier;
-     Entity   : out Entity_Identifier);
+    (Self             : in out Entity_Table;
+     Enclosing_Entity : Entity_Identifier;
+     Name             : Matreshka.Internals.XML.Symbol_Identifier;
+     Notation         : Symbol_Identifier;
+     Entity           : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
 
@@ -107,11 +112,12 @@ package Matreshka.Internals.XML.Entity_Tables is
    --  entity.
 
    procedure New_External_Subset_Entity
-    (Self      : in out Entity_Table;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Base      : League.Strings.Universal_String;
-     Entity    : out Entity_Identifier);
+    (Self             : in out Entity_Table;
+     Enclosing_Entity : Entity_Identifier;
+     Public_Id        : League.Strings.Universal_String;
+     System_Id        : League.Strings.Universal_String;
+     Base             : League.Strings.Universal_String;
+     Entity           : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
 
@@ -155,6 +161,12 @@ package Matreshka.Internals.XML.Entity_Tables is
     (Self   : Entity_Table;
      Entity : Entity_Identifier)
        return Matreshka.Internals.XML.Symbol_Identifier;
+
+   function Enclosing_Entity
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
+       return Matreshka.Internals.XML.Entity_Identifier;
+   --  Returns entity which contains declaration of the entity.
 
    function Public_Id
     (Self   : Entity_Table;
@@ -246,6 +258,7 @@ private
 
    type Entity_Record is record
       Kind             : Entity_Kinds;
+      Enclosing        : Entity_Identifier;
       Name             : Symbol_Identifier;
       Notation         : Symbol_Identifier;
       Public_Id        : Matreshka.Internals.Strings.Shared_String_Access;
