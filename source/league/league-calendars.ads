@@ -63,7 +63,8 @@ private with Matreshka.Internals.Calendars;
 package League.Calendars is
 
    pragma Preelaborate;
-   pragma Remote_Types;
+--   pragma Remote_Types;
+   --  XXX GNAT GPL 2010 doesn't contains this extension.
    --  XXX Abstract_Calendar type must be moved outside of this package if it
    --  is remote types package, there is not plan to share it objects across
    --  partitions and there is no such requirement.
