@@ -2093,6 +2093,44 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       else
          Entity := Parameter_Entity (Self.Symbols, Qualified_Name);
 
+         --  XML WFC: PEs in Internal Subset
+         --
+         --  "In the internal DTD subset, parameter-entity references MUST NOT
+         --  occur within markup declarations; they may occur where markup
+         --  declarations can occur. (This does not apply to references that
+         --  occur in external parameter entities or to the external subset.)"
+         --
+         --  Check whether parameter entity reference doesn't occure in the
+         --  entity value of the entity declared in internal subset.
+
+         if Is_Document_Entity (Self.Entities, Self.Scanner_State.Entity) then
+            Callbacks.Call_Fatal_Error
+             (Self.all,
+              League.Strings.To_Universal_String
+               ("[XML 2.8 WFC: PEs in Internal Subset]"
+                  & " parameter-entity reference in internal subset must not"
+                  & " occur within markup declaration"));
+
+            return False;
+         end if;
+
+         --  XML VC: Entity Declared
+         --
+         --  "In a document with an external subset or parameter entity
+         --  references with "standalone='no'", the Name given in the entity
+         --  reference MUST match that in an entity declaration. For
+         --  interoperability, valid documents SHOULD declare the entities amp,
+         --  lt, gt, apos, quot, in the form specified in 4.6 Predefined
+         --  Entities. The declaration of a parameter entity MUST precede any
+         --  reference to it. Similarly, the declaration of a general entity
+         --  MUST precede any attribute-list declaration containing a default
+         --  value with a direct or indirect reference to that general entity."
+         --
+         --  XXX Parameter entity must not be declared at the point of
+         --  reference, except in some conditions in validating mode; so,
+         --  check below must be improved, as well as behavior in
+         --  non-validating mode must be checked.
+
          if Entity = No_Entity then
             Callbacks.Call_Fatal_Error
              (Self.all,
