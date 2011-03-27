@@ -60,6 +60,9 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    use Matreshka.Internals.XML.Namespace_Scopes;
    use Matreshka.Internals.XML.Notation_Tables;
    use Matreshka.Internals.XML.Symbol_Tables;
+   use type Matreshka.Internals.Unicode.Code_Unit_16;
+   use type Matreshka.Internals.Utf16.Utf16_String_Index;
+
 
    procedure Analyze_Attribute_Declaration
     (Self        : not null access SAX_Simple_Reader'Class;
@@ -781,9 +784,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
      Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
-      use type Matreshka.Internals.Unicode.Code_Unit_16;
-      use type Matreshka.Internals.Utf16.Utf16_String_Index;
-
       Target_Name :
         constant not null Matreshka.Internals.Strings.Shared_String_Access
           := Name (Self.Symbols, Target);
@@ -852,6 +852,35 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
          Set_Is_Required (Self.Attributes, Self.Current_Attribute, True);
       end if;
    end On_Required_Attribute_Default_Declaration;
+
+   -------------------
+   -- On_Standalone --
+   -------------------
+
+   procedure On_Standalone
+    (Self : not null access SAX_Simple_Reader'Class;
+     Text : not null Matreshka.Internals.Strings.Shared_String_Access) is
+   begin
+      if Text.Unused = 2
+        and then Text.Value (0) = Latin_Small_Letter_N
+        and then Text.Value (1) = Latin_Small_Letter_O
+      then
+         Self.Is_Standalone := False;
+
+      elsif Text.Unused = 3
+        and then Text.Value (0) = Latin_Small_Letter_Y
+        and then Text.Value (1) = Latin_Small_Letter_E
+        and then Text.Value (2) = Latin_Small_Letter_S
+      then
+         Self.Is_Standalone := True;
+
+      else
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML [32]] valid values for standalone are 'yes' or 'no'"));
+      end if;
+   end On_Standalone;
 
    --------------------------------------------
    -- On_Start_Of_Attribute_List_Declaration --
@@ -1492,7 +1521,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
      Encoding : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
       use type Matreshka.Internals.Text_Codecs.Character_Set;
-      use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
       Encoding_Name  : constant League.Strings.Universal_String
         := Matreshka.Internals.Text_Codecs.Transform_Character_Set_Name
@@ -1560,7 +1588,6 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
      Encoding : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
       use type Matreshka.Internals.Text_Codecs.Character_Set;
-      use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
       Encoding_Name  : constant League.Strings.Universal_String
         := Matreshka.Internals.Text_Codecs.Transform_Character_Set_Name
@@ -1620,11 +1647,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
    function To_XML_Version
     (Version : not null Matreshka.Internals.Strings.Shared_String_Access)
-       return XML_Version
-   is
-      use type Matreshka.Internals.Unicode.Code_Unit_16;
-      use type Matreshka.Internals.Utf16.Utf16_String_Index;
-
+       return XML_Version is
    begin
       --  XML declaration can contains only BMP characters, so we don't need to
       --  use expensive UTF-16 decoding here.

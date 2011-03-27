@@ -296,6 +296,7 @@ package body XML.SAX.Simple_Readers is
       Self.Configuration.Source := null;
 
       Self.In_Document_Content := False;
+      Self.Is_Standalone := False;
    end Reset;
 
    -------------------------

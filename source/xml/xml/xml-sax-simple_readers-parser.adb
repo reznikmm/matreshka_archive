@@ -378,7 +378,7 @@ package body XML.SAX.Simple_Readers.Parser is
                  YY.Value_Stack (YY.TOS -  1).String);
 
             when 10 =>
-               null;
+               Actions.On_Standalone (Self, YY.Value_Stack (YY.TOS).String);
 
             when 11 =>
                null;

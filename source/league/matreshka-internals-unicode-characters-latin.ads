@@ -107,15 +107,20 @@ package Matreshka.Internals.Unicode.Characters.Latin is
 
    Latin_Small_Letter_A   : constant := 16#0061#;
 
+   Latin_Small_Letter_E   : constant := 16#0065#;
    Latin_Small_Letter_F   : constant := 16#0066#;
 
    Latin_Small_Letter_L   : constant := 16#006C#;
    Latin_Small_Letter_M   : constant := 16#006D#;
+   Latin_Small_Letter_N   : constant := 16#006E#;
+   Latin_Small_Letter_O   : constant := 16#006F#;
+
+   Latin_Small_Letter_S   : constant := 16#0073#;
 
    Latin_Small_Letter_U   : constant := 16#0075#;
 
    Latin_Small_Letter_X   : constant := 16#0078#;
-
+   Latin_Small_Letter_Y   : constant := 16#0079#;
    Latin_Small_Letter_Z   : constant := 16#007A#;
 
    Tilde                  : constant := 16#007E#;

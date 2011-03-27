@@ -318,6 +318,7 @@ private
       --  example, '%' must be separated by whitespace from '<!ENTITY' and
       --  following name.
       In_Document_Content    : Boolean := False;
+      Is_Standalone          : Boolean := False;
 
       Entities               :
         Matreshka.Internals.XML.Entity_Tables.Entity_Table;

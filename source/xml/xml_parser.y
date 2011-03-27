@@ -198,7 +198,7 @@ TextDecl :
 SDDecl_optional :
   Token_Standalone Token_Equal Token_String_Segment
    {
-      null;
+      Actions.On_Standalone (Self, $3.String);
    }
 |
    {
@@ -1080,6 +1080,10 @@ with Matreshka.Internals.XML.Symbol_Tables;
        (Self     : access Integer;
         Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
         Encoding : not null Matreshka.Internals.Strings.Shared_String_Access);
+
+      procedure On_Standalone
+       (Self : access Integer;
+        Text : not null Matreshka.Internals.Strings.Shared_String_Access);
 
       procedure On_Character_Data
        (Self          : access Integer;
