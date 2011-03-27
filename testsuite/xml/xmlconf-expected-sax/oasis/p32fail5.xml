@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <fatalError>[XML&#x20;[32]]&#x20;valid&#x20;values&#x20;for&#x20;standalone&#x20;are&#x20;&apos;yes&apos;&#x20;or&#x20;&apos;no&apos;</fatalError>
+  <endDocument/>
+</SAXEvents>
