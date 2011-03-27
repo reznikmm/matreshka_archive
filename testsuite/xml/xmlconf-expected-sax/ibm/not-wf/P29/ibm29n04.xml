@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <fatalError>[XML&#x20;2.8&#x20;WFC:&#x20;PEs&#x20;in&#x20;Internal&#x20;Subset]&#x20;parameter-entity&#x20;reference&#x20;in&#x20;internal&#x20;subset&#x20;must&#x20;not&#x20;occur&#x20;within&#x20;markup&#x20;declaration</fatalError>
+  <endDocument/>
+</SAXEvents>
