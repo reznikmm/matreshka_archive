@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/xmltest/not-wf/not-sa/003.ent</systemID>
-    </resolveEntity>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <resolveEntity>
+    <name>[dtd]</name>
+    <systemID>003.ent</systemID>
+  </resolveEntity>
+  <fatalError>syntax&#x20;error</fatalError>
+  <endDocument/>
+</SAXEvents>
