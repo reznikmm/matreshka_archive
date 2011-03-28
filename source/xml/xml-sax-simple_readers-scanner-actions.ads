@@ -96,7 +96,7 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    --  error was detected and reported to application.
 
    function On_Close_Of_Conditional_Section
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles close of conditional section.
 
    function On_Close_Of_Declaration
@@ -232,9 +232,9 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    --  Handles open of attribute list declaration.
 
    function On_Open_Of_Conditional_Section
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
-   --  Handles open of conditional section. Returns True on success, False
-   --  otherwise.
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open of conditional section. Returns Token_Conditional_Open on
+   --  success, Error otherwise.
 
    function On_Open_Of_Conditional_Section_Content
     (Self : not null access SAX_Simple_Reader'Class) return Boolean;

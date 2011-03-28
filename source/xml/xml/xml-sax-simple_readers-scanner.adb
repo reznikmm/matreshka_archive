@@ -1017,16 +1017,12 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 41 =>
                --  Start of conditional section.
 
-               if not Actions.On_Open_Of_Conditional_Section (Self) then
-                  return Error;
-               end if;
+               return Actions.On_Open_Of_Conditional_Section (Self);
 
             when 42 =>
                --  Close of conditional section.
 
-               if not Actions.On_Close_Of_Conditional_Section (Self) then
-                  return Error;
-               end if;
+               return Actions.On_Close_Of_Conditional_Section (Self);
 
             when 43 =>
                --  Close of notation declaration, production [82].

@@ -700,7 +700,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------
 
    function On_Close_Of_Conditional_Section
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean is
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
    begin
       if Self.Conditional_Depth = 0 then
          Callbacks.Call_Fatal_Error
@@ -708,7 +708,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
            League.Strings.To_Universal_String
             ("']]>' doesn't close conditional section"));
 
-         return False;
+         return Error;
       end if;
 
       Self.Conditional_Depth := Self.Conditional_Depth - 1;
@@ -736,7 +736,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          end case;
       end if;
 
-      return True;
+      return Token_Conditional_Close;
    end On_Close_Of_Conditional_Section;
 
    -----------------------------
@@ -1810,7 +1810,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------
 
    function On_Open_Of_Conditional_Section
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean is
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
    begin
       --  [XML [28b], [31]] Conditional section can be present only in external
       --  subset of DTD.
@@ -1823,7 +1823,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
                & " conditional sections may only appear in the external"
                & " DTD subset"));
 
-         return False;
+         return Error;
       end if;
 
       if Self.Ignore_Depth = 0 then
@@ -1836,7 +1836,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Self.Conditional_Directive := True;
       end if;
 
-      return True;
+      return Token_Conditional_Open;
    end On_Open_Of_Conditional_Section;
 
    --------------------------------------------

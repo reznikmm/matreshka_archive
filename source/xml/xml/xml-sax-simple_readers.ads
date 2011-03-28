@@ -163,7 +163,9 @@ private
      Token_Implied,
      Token_Fixed,
      Token_Entity_Start,
-     Token_Entity_End);
+     Token_Entity_End,
+     Token_Conditional_Open,
+     Token_Conditional_Close);
 
    type YYSType is limited record
       String        : Matreshka.Internals.Strings.Shared_String_Access;

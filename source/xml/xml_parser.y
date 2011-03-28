@@ -103,6 +103,8 @@
 --  to do check in parser during analisys.
 %token Token_Entity_Start
 %token Token_Entity_End
+%token Token_Conditional_Open
+%token Token_Conditional_Close
 
 %with Matreshka.Internals.Strings
 %with Matreshka.Internals.XML.Symbol_Tables;
@@ -378,6 +380,15 @@ intSubset:
 | TextDecl
    {
       --  Text declaration comes from external subset or external entity.
+
+      null;
+   }
+| Token_Conditional_Open external_subset_optional Token_Conditional_Close
+   {
+      --  Conditional sections can be used in external entities only, but
+      --  external paramete entity reference can insert conditional sections
+      --  from external entity into the internal subset. This situation is
+      --  handled by the scanner.
 
       null;
    }
