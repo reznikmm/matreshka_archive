@@ -101,6 +101,17 @@ package body Matreshka.Internals.XML.Element_Tables is
       return Self.Table (Element).Is_Declared;
    end Is_Declared;
 
+   --------------
+   -- Is_Empty --
+   --------------
+
+   function Is_Empty
+    (Self    : Element_Table;
+     Element : Element_Identifier) return Boolean is
+   begin
+      return Self.Table (Element).Is_Empty;
+   end Is_Empty;
+
    ----------------------
    -- Is_Mixed_Content --
    ----------------------
@@ -138,6 +149,7 @@ package body Matreshka.Internals.XML.Element_Tables is
        (Attributes             => No_Attribute,
         Is_Declared            => False,
         Is_Attributes_Declared => False,
+        Is_Empty               => False,
         Is_Any                 => False,
         Is_Mixed_Content       => False);
    end New_Element;
@@ -198,6 +210,18 @@ package body Matreshka.Internals.XML.Element_Tables is
    begin
       Self.Table (Element).Is_Declared := Declared;
    end Set_Is_Declared;
+
+   ------------------
+   -- Set_Is_Empty --
+   ------------------
+
+   procedure Set_Is_Empty
+    (Self    : in out Element_Table;
+     Element : Element_Identifier;
+     Value   : Boolean) is
+   begin
+      Self.Table (Element).Is_Empty := Value;
+   end Set_Is_Empty;
 
    --------------------------
    -- Set_Is_Mixed_Content --

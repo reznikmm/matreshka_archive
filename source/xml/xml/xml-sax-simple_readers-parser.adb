@@ -613,7 +613,7 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 55 =>
-               null;
+               Actions.On_Empty_Declaration (Self);
 
             when 56 =>
                Actions.On_Any_Declaration (Self);

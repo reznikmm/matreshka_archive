@@ -525,7 +525,7 @@ elementdecl:
 contentspec:
   Token_Empty
    {
-      null;
+      Actions.On_Empty_Declaration (Self);
    }
 | Token_Any
    {
@@ -1205,6 +1205,8 @@ with Matreshka.Internals.XML.Symbol_Tables;
         Is_External : Boolean;
         Value       : League.Strings.Universal_String;
         Notation    : Matreshka.Internals.XML.Symbol_Identifier);
+
+      procedure On_Empty_Declaration (Self : access Integer);
 
       procedure On_Any_Declaration (Self : access Integer);
 

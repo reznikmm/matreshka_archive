@@ -95,6 +95,15 @@ package Matreshka.Internals.XML.Element_Tables is
      Element : Element_Identifier;
      Value   : Boolean);
 
+   function Is_Empty
+    (Self    : Element_Table;
+     Element : Element_Identifier) return Boolean;
+
+   procedure Set_Is_Empty
+    (Self    : in out Element_Table;
+     Element : Element_Identifier;
+     Value   : Boolean);
+
    function Is_Any
     (Self    : Element_Table;
      Element : Element_Identifier) return Boolean;
@@ -116,6 +125,7 @@ private
       Attributes             : Attribute_Identifier;
       Is_Declared            : Boolean;
       Is_Attributes_Declared : Boolean;
+      Is_Empty               : Boolean;
       Is_Any                 : Boolean;
       Is_Mixed_Content       : Boolean;
    end record;
