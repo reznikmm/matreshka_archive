@@ -666,15 +666,15 @@ cp:
 Mixed:
   Token_Open_Parenthesis Token_PCData Mixed_content Token_Close_Parenthesis Token_Asterisk
    {
-      Actions.On_Mixed_Content_Declaration (Self);
+      Actions.On_Mixed_Content_Declaration (Self, True);
    }
 | Token_Open_Parenthesis Token_PCData Mixed_content Token_Close_Parenthesis
    {
-      --  XXX Mixed_content is invalid here, but added to allow ayacc generates
-      --  useful parser. Without it generated parser doesn't recognize
-      --  Token_Asterisk when Mixed_content is empty.
+      --  Mixed_content is added here to allow ayacc to generate usable code.
+      --  Asterisk can be omitted only when Mixed_content is empty, this check
+      --  is done in handling subprogram.
 
-      Actions.On_Mixed_Content_Declaration (Self);
+      Actions.On_Mixed_Content_Declaration (Self, False);
    }
 ;
 
@@ -685,7 +685,7 @@ Mixed_content:
    }
 | Token_Vertical_Bar Token_Name
    {
-      null;
+      Actions.On_Name_In_Mixed_Content_Declaration (Self);
    }
 |
    {
@@ -1224,7 +1224,8 @@ with Matreshka.Internals.XML.Symbol_Tables;
 
       procedure On_Any_Declaration (Self : access Integer);
 
-      procedure On_Mixed_Content_Declaration (Self : access Integer);
+      procedure On_Mixed_Content_Declaration
+       (Self : access Integer; Is_Any : Boolean);
 
       procedure On_Parameter_Entity_Declaration
        (Self        : access Integer;
@@ -1242,6 +1243,9 @@ with Matreshka.Internals.XML.Symbol_Tables;
        (Self   : access Integer;
         Symbol : Matreshka.Internals.XML.Symbol_Identifier;
         Data   : not null Matreshka.Internals.Strings.Shared_String_Access);
+
+      procedure On_Name_In_Mixed_Content_Declaration
+       (Self   : access Integer);
 
    end Actions;
 

@@ -113,6 +113,21 @@ package Matreshka.Internals.XML.Element_Tables is
      Element : Element_Identifier;
      Value   : Boolean);
 
+   function Has_Children
+    (Self    : Element_Table;
+     Element : Element_Identifier) return Boolean;
+   --  XXX This subprogram is used to check syntax of the mixed content
+   --  declaration temporary. It probably should be removed after
+   --  implementation of DTD validation.
+
+   procedure Set_Has_Children
+    (Self    : in out Element_Table;
+     Element : Element_Identifier;
+     Value   : Boolean);
+   --  XXX This subprogram is used to check syntax of the mixed content
+   --  declaration temporary. It probably should be removed after
+   --  implementation of DTD validation.
+
    procedure Reset (Self : in out Element_Table);
    --  Resets internal structures to initial state.
 
@@ -128,6 +143,7 @@ private
       Is_Empty               : Boolean;
       Is_Any                 : Boolean;
       Is_Mixed_Content       : Boolean;
+      Has_Children           : Boolean;
    end record;
 
    type Element_Array is array (Element_Identifier range <>) of Element_Record;

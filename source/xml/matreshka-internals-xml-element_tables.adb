@@ -68,6 +68,17 @@ package body Matreshka.Internals.XML.Element_Tables is
       Free (Self.Table);
    end Finalize;
 
+   ------------------
+   -- Has_Children --
+   ------------------
+
+   function Has_Children
+    (Self    : Element_Table;
+     Element : Element_Identifier) return Boolean is
+   begin
+      return Self.Table (Element).Has_Children;
+   end Has_Children;
+
    ------------
    -- Is_Any --
    ------------
@@ -151,7 +162,8 @@ package body Matreshka.Internals.XML.Element_Tables is
         Is_Attributes_Declared => False,
         Is_Empty               => False,
         Is_Any                 => False,
-        Is_Mixed_Content       => False);
+        Is_Mixed_Content       => False,
+        Has_Children           => False);
    end New_Element;
 
    -----------
@@ -174,6 +186,18 @@ package body Matreshka.Internals.XML.Element_Tables is
    begin
       Self.Table (Element).Attributes := Attribute;
    end Set_Attributes;
+
+   ----------------------
+   -- Set_Has_Children --
+   ----------------------
+
+   procedure Set_Has_Children
+    (Self    : in out Element_Table;
+     Element : Element_Identifier;
+     Value   : Boolean) is
+   begin
+      Self.Table (Element).Has_Children := Value;
+   end Set_Has_Children;
 
    ----------------
    -- Set_Is_Any --

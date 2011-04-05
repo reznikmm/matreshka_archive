@@ -638,10 +638,39 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ----------------------------------
 
    procedure On_Mixed_Content_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) is
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Is_Any : Boolean) is
    begin
       Set_Is_Mixed_Content (Self.Elements, Self.Current_Element, True);
+
+      --  [XML]
+      --
+      --  [51] Mixed ::= '(' S? '#PCDATA' (S? '|' S? Name)* S? ')*'
+      --                   | '(' S? '#PCDATA' S? ')' 
+      --
+      --  Check whether asterisk is present when content has children elements.
+
+      if not Is_Any
+        and Has_Children (Self.Elements, Self.Current_Element)
+      then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("[XML [51]] asterisk must be present after close parenthesis"));
+
+         return;
+      end if;
    end On_Mixed_Content_Declaration;
+
+   ------------------------------------------
+   -- On_Name_In_Mixed_Content_Declaration --
+   ------------------------------------------
+
+   procedure On_Name_In_Mixed_Content_Declaration
+    (Self : not null access SAX_Simple_Reader'Class) is
+   begin
+      Set_Has_Children (Self.Elements, Self.Current_Element, True);
+   end On_Name_In_Mixed_Content_Declaration;
 
    --------------------------------------
    -- On_NmToken_Attribute_Declaration --

@@ -147,8 +147,14 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
    --  Handles declaration of any of the element.
 
    procedure On_Mixed_Content_Declaration
-    (Self : not null access SAX_Simple_Reader'Class);
+    (Self   : not null access SAX_Simple_Reader'Class;
+     Is_Any : Boolean);
    --  Handles declaration of mixed content of the element.
+
+   procedure On_Name_In_Mixed_Content_Declaration
+    (Self : not null access SAX_Simple_Reader'Class);
+   --  Handles element name in the list of children element in mixed content
+   --  declration.
 
    procedure On_NmToken_Attribute_Declaration
     (Self   : not null access SAX_Simple_Reader'Class;

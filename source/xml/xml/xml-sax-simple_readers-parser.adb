@@ -702,20 +702,20 @@ package body XML.SAX.Simple_Readers.Parser is
                null;
 
             when 85 =>
-               Actions.On_Mixed_Content_Declaration (Self);
+               Actions.On_Mixed_Content_Declaration (Self, True);
 
             when 86 =>
-               --  XXX Mixed_content is invalid here, but added to allow ayacc generates
-               --  useful parser. Without it generated parser doesn't recognize
-               --  Token_Asterisk when Mixed_content is empty.
+               --  Mixed_content is added here to allow ayacc to generate usable code.
+               --  Asterisk can be omitted only when Mixed_content is empty, this check
+               --  is done in handling subprogram.
 
-               Actions.On_Mixed_Content_Declaration (Self);
+               Actions.On_Mixed_Content_Declaration (Self, False);
 
             when 87 =>
                null;
 
             when 88 =>
-               null;
+               Actions.On_Name_In_Mixed_Content_Declaration (Self);
 
             when 89 =>
                null;
