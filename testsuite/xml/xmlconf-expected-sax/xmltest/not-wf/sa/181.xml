@@ -7,6 +7,6 @@
     <qualifiedName>doc</qualifiedName>
     <attributes/>
   </startElement>
-  <fatalError>unexpected&#x20;character</fatalError>
+  <fatalError>syntax&#x20;error</fatalError>
   <endDocument/>
 </SAXEvents>
