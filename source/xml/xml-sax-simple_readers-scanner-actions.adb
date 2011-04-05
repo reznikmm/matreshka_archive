@@ -956,6 +956,20 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       return Token_Close_Parenthesis;
    end On_Close_Parenthesis_In_Content_Declaration;
 
+   ------------------------------------------------
+   -- On_Close_Parenthesis_In_Notation_Attribute --
+   ------------------------------------------------
+
+   function On_Close_Parenthesis_In_Notation_Attribute
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      --  Resets whitespace matching flag.
+
+      Self.Whitespace_Matched := False;
+
+      return Token_Close_Parenthesis;
+   end On_Close_Parenthesis_In_Notation_Attribute;
+
    --------------------------------------
    -- On_Conditional_Section_Directive --
    --------------------------------------
@@ -2053,6 +2067,30 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
       return Token_Open_Parenthesis;
    end On_Open_Parenthesis_In_Content_Declaration;
+
+   -----------------------------------------------
+   -- On_Open_Parenthesis_In_Notation_Attribute --
+   -----------------------------------------------
+
+   function On_Open_Parenthesis_In_Notation_Attribute
+    (Self : not null access SAX_Simple_Reader'Class) return Token is
+   begin
+      --  Checks ithat whitespace before open parenthesis is detected
+      --  and report error when check fail.
+
+      if not Self.Whitespace_Matched then
+         --  XXX This is recoverable error.
+
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("whitespace required before open parenthesis"));
+
+         return Error;
+      end if;
+
+      return Token_Open_Parenthesis;
+   end On_Open_Parenthesis_In_Notation_Attribute;
 
    -----------------------------------------------------------
    -- On_Parameter_Entity_Reference_In_Document_Declaration --

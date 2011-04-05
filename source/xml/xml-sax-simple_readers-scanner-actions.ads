@@ -57,6 +57,18 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    --  whitespace is present before type keyword and resets whitespace flag.
    --  Returns Type_Token on success, otherwise return Error.
 
+   function On_Open_Parenthesis_In_Notation_Attribute
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles open parenthesis in notation attribute delaration. Checks
+   --  whether whitespace is present before open parenthesis. Returns
+   --  Token_Open_Parenthesis on success and reports error and returns Error
+   --  othewise.
+
+   function On_Close_Parenthesis_In_Notation_Attribute
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
+   --  Handles close parenthesis in notation attribute delaration. Resets
+   --  whitespace matching flag. Returns Token_Close_Parenthesis.
+
    procedure On_Attribute_Value_Character_Data
     (Self  : not null access SAX_Simple_Reader'Class);
    --  Handles character data in the attribute value.

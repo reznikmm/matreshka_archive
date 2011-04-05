@@ -1309,12 +1309,12 @@ package body XML.SAX.Simple_Readers.Scanner is
             when 90 =>
                --  Open parenthesis, rules [58], [59].
 
-               return Actions.On_Attribute_Type (Self, Token_Open_Parenthesis);
+               return Actions.On_Open_Parenthesis_In_Notation_Attribute (Self);
 
             when 91 =>
                --  Close parenthesis, rules [58], [59].
 
-               return Token_Close_Parenthesis;
+               return Actions.On_Close_Parenthesis_In_Notation_Attribute (Self);
 
             when 92 =>
                --  Vertical bar, rules [58], [59].

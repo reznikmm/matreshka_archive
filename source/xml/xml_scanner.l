@@ -848,13 +848,13 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <ATTLIST_TYPE>"(" {
    --  Open parenthesis, rules [58], [59].
 
-   return Actions.On_Attribute_Type (Self, Token_Open_Parenthesis);
+   return Actions.On_Open_Parenthesis_In_Notation_Attribute (Self);
 }
 
 <ATTLIST_TYPE>")" {
    --  Close parenthesis, rules [58], [59].
 
-   return Token_Close_Parenthesis;
+   return Actions.On_Close_Parenthesis_In_Notation_Attribute (Self);
 }
 
 <ATTLIST_TYPE>"|" {
@@ -1273,6 +1273,12 @@ with Matreshka.Internals.Strings;
        (Self : access Integer) return Token;
 
       function On_Asterisk_In_Content_Declaration
+       (Self : access Integer) return Token;
+
+      function On_Open_Parenthesis_In_Notation_Attribute
+       (Self : access Integer) return Token;
+
+      function On_Close_Parenthesis_In_Notation_Attribute
        (Self : access Integer) return Token;
 
    end Actions;
