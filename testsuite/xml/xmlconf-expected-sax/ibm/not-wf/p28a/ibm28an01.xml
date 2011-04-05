@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <processingInstruction>
-        <target>sound</target>
-        <data>"This\sis\sa\sPI"\s</data>
-    </processingInstruction>
-    <resolveEntity>
-        <systemID>file:/home/godunko/Matreshka/x/SAXTest/xmlconf/ibm/not-wf/p28a/ibm28an01.dtd</systemID>
-    </resolveEntity>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <notation>
+    <name>animal_class</name>
+    <systemID>ibm29v01.txt</systemID>
+  </notation>
+  <processingInstruction>
+    <target>sound</target>
+    <data>&quot;This&#x20;is&#x20;a&#x20;PI&quot;&#x20;</data>
+  </processingInstruction>
+  <resolveEntity>
+    <name>[dtd]</name>
+    <systemID>ibm28an01.dtd</systemID>
+  </resolveEntity>
+  <fatalError>syntax&#x20;error</fatalError>
+  <endDocument/>
+</SAXEvents>
