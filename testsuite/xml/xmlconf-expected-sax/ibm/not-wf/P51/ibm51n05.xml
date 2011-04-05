@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConformanceResults>
-    <startDocument/>
-    <fatalError/>
-    <endDocument/>
-</ConformanceResults>
+<SAXEvents>
+  <startDocument/>
+  <fatalError>[XML&#x20;[51]]&#x20;asterisk&#x20;must&#x20;be&#x20;present&#x20;after&#x20;close&#x20;parenthesis</fatalError>
+  <endDocument/>
+</SAXEvents>
