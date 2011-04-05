@@ -9,6 +9,6 @@
     <name>b</name>
     <systemID>b</systemID>
   </notation>
-  <fatalError>whitespace&#x20;required&#x20;before&#x20;attribute&#x20;type</fatalError>
+  <fatalError>whitespace&#x20;required&#x20;before&#x20;open&#x20;parenthesis</fatalError>
   <endDocument/>
 </SAXEvents>

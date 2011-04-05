@@ -5,6 +5,6 @@
     <name>a</name>
     <systemID>a</systemID>
   </notation>
-  <fatalError>whitespace&#x20;required&#x20;before&#x20;default&#x20;value</fatalError>
+  <fatalError>syntax&#x20;error</fatalError>
   <endDocument/>
 </SAXEvents>
