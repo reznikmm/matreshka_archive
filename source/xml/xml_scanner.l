@@ -499,9 +499,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 <DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"%"{NAME}";" {
    --  Parameter entity reference rule [69] in document type declaration.
 
-   if not Actions.On_Parameter_Entity_Reference_In_Document_Declaration (Self) then
-      return Error;
-   end if;
+   return Actions.On_Parameter_Entity_Reference_In_Document_Declaration (Self);
 }
 
 <DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11>"<!ENTITY" {
@@ -1154,7 +1152,7 @@ with Matreshka.Internals.Strings;
        (Self : access Integer) return Boolean;
 
       function On_Parameter_Entity_Reference_In_Document_Declaration
-       (Self : access Integer) return Boolean;
+       (Self : access Integer) return Token;
 
       function On_Open_Of_Element_Declaration
        (Self : access Integer) return Token;

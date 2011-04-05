@@ -919,7 +919,26 @@ package body XML.SAX.Simple_Readers.Scanner is
 
                            Self.Whitespace_Matched := True;
 
-                           YY_End_Of_Buffer_Action := YY_Continue_Scan;
+                           --  [XML WFC: PE Between Declarations]
+                           --
+                           --  "The replacement text of a parameter entity
+                           --  reference in a DeclSep MUST match the production
+                           --  extSubsetDecl."
+                           --
+                           --  To check this constraint special rule is added
+                           --  in parser. To pass this rule Token_Entity_End
+                           --  must be returned when handling of parameter
+                           --  entity reference between markup declaration is
+                           --  completed.
+
+                           if YY_Start_Condition = DOCTYPE_INTSUBSET_10
+                             or YY_Start_Condition = DOCTYPE_INTSUBSET_11
+                           then
+                              YY_End_Of_Buffer_Action := YY_Report_Entity_End;
+
+                           else
+                              YY_End_Of_Buffer_Action := YY_Continue_Scan;
+                           end if;
 
                         elsif Self.In_Document_Content
                           and not Self.Scanner_State.In_Literal

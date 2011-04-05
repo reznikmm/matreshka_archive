@@ -2097,37 +2097,51 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------------------------
 
    function On_Parameter_Entity_Reference_In_Document_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean
+    (Self : not null access SAX_Simple_Reader'Class) return Token
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
       Entity         : Entity_Identifier;
+      Deep           : Natural;
 
    begin
       Resolve_Symbol
        (Self, 1, 1, False, False, False, Qname_Error, Qualified_Name);
 
       if Qname_Error then
-         return False;
+         return Error;
+
+      end if;
+
+      Entity := Parameter_Entity (Self.Symbols, Qualified_Name);
+
+      if Entity = No_Entity then
+         Callbacks.Call_Fatal_Error
+          (Self.all,
+           League.Strings.To_Universal_String
+            ("parameter entity must be declared"));
+
+         return Error;
+      end if;
+
+      Deep := Integer (Self.Scanner_Stack.Length);
+
+      if not Push_Entity
+              (Self             => Self,
+               Entity           => Entity,
+               In_Document_Type => False,
+               In_Literal       => False)
+      then
+         return Error;
+
+      elsif Deep = Integer (Self.Scanner_Stack.Length) then
+         --  Entity doesn't pushed in stack because its replacement text
+         --  is empty.
+
+         return End_Of_Input;
 
       else
-         Entity := Parameter_Entity (Self.Symbols, Qualified_Name);
-
-         if Entity = No_Entity then
-            Callbacks.Call_Fatal_Error
-             (Self.all,
-              League.Strings.To_Universal_String
-               ("parameter entity must be declared"));
-
-            return False;
-         end if;
-
-         return
-           Push_Entity
-            (Self             => Self,
-             Entity           => Entity,
-             In_Document_Type => False,
-             In_Literal       => False);
+         return Token_Entity_Start;
       end if;
    end On_Parameter_Entity_Reference_In_Document_Declaration;
 

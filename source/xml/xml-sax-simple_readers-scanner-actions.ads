@@ -198,7 +198,7 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
    --  document type declaration.
 
    function On_Parameter_Entity_Reference_In_Document_Declaration
-    (Self : not null access SAX_Simple_Reader'Class) return Boolean;
+    (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles parameter entity reference outside of markup declaration in the
    --  document type declaration.
 

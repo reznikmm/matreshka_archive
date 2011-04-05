@@ -393,6 +393,17 @@ intSubset:
 
       null;
    }
+| Token_Entity_Start intSubset_any Token_Entity_End
+   {
+      --  [XML [WFC: PE Between Declarations]]
+      --
+      --  "The replacement text of a parameter entity reference in a DeclSep
+      --  MUST match the production extSubsetDecl."
+      --
+      --  This production is used to enforce this check.
+
+      null;
+   }
 ;
 
 NotationDecl:
