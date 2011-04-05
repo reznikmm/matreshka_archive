@@ -165,27 +165,26 @@ private
      Token_Entity_Start,
      Token_Entity_End,
      Token_Conditional_Open,
-     Token_Conditional_Close);
+     Token_Conditional_Close,
+     Token_Cdata_Open,
+     Token_Cdata_Close);
 
    type YYSType is limited record
       String        : Matreshka.Internals.Strings.Shared_String_Access;
       Symbol        : Matreshka.Internals.XML.Symbol_Identifier;
       Is_Whitespace : Boolean;
-      Is_CData      : Boolean;
    end record;
 
    procedure Set_String
     (Item          : in out YYSType;
      String        : League.Strings.Universal_String;
-     Is_Whitespace : Boolean;
-     Is_CData      : Boolean);
+     Is_Whitespace : Boolean);
    pragma Inline (Set_String);
 
    procedure Set_String_Internal
     (Item          : in out YYSType;
      String        : Matreshka.Internals.Strings.Shared_String_Access;
-     Is_Whitespace : Boolean;
-     Is_CData      : Boolean);
+     Is_Whitespace : Boolean);
    pragma Inline (Set_String_Internal);
 
    procedure Set_Symbol

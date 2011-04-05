@@ -315,11 +315,6 @@ private package XML.SAX.Simple_Readers.Scanner.Actions is
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles CDATA section.
 
-   function On_Incomplete_CDATA
-    (Self : not null access SAX_Simple_Reader'Class) return Token;
-   --  Handles incorrectly terminated CDATA section (when last character is
-   --  invalid).
-
    function On_Close_Parenthesis_In_Content_Declaration
     (Self : not null access SAX_Simple_Reader'Class) return Token;
    --  Handles close parenthesis in element content model and mixed content

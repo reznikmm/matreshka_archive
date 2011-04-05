@@ -105,6 +105,8 @@
 %token Token_Entity_End
 %token Token_Conditional_Open
 %token Token_Conditional_Close
+%token Token_CData_Open
+%token Token_CData_Close
 
 %with Matreshka.Internals.Strings
 %with Matreshka.Internals.XML.Symbol_Tables;
@@ -114,7 +116,6 @@
       String        : Matreshka.Internals.Strings.Shared_String_Access;
       Symbol        : Matreshka.Internals.XML.Symbol_Identifier;
       Is_Whitespace : Boolean;
-      Is_CData      : Boolean;
    end record;
 }
 
@@ -504,8 +505,7 @@ AttributeEntityValue_Content:
       Set_String
        (Item          => $$,
         String        => League.Strings.Empty_Universal_String,
-        Is_Whitespace => False,
-        Is_CData      => False);
+        Is_Whitespace => False);
    }
 ;
 
@@ -987,6 +987,21 @@ content_item :
         $1.String,
         $1.Is_Whitespace);
    }
+| Token_CData_Open Token_String_Segment
+   {
+      Actions.On_Character_Data
+       (Self,
+        $2.String,
+        $2.Is_Whitespace);
+   }
+  Token_CData_Close
+   {
+      null;
+   }
+| Token_CData_Open Token_CData_Close
+   {
+      null;
+   }
 | Token_Comment
    {
       Process_Comment
@@ -1075,8 +1090,7 @@ with Matreshka.Internals.XML.Symbol_Tables;
    procedure Set_String
      (Item          : in out YYSType;
       String        : League.Strings.Universal_String;
-      Is_Whitespace : Boolean;
-      Is_CData      : Boolean) is separate;
+      Is_Whitespace : Boolean) is separate;
 
    Self : access Integer;
 

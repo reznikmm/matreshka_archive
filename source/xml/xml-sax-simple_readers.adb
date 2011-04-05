@@ -67,7 +67,6 @@ package body XML.SAX.Simple_Readers is
       end if;
 
       Item.Is_Whitespace := False;
-      Item.Is_CData      := False;
       Item.Symbol        := Matreshka.Internals.XML.No_Symbol;
    end Clear;
 
@@ -211,12 +210,10 @@ package body XML.SAX.Simple_Readers is
    begin
       To.String        := From.String;
       To.Is_Whitespace := From.Is_Whitespace;
-      To.Is_CData      := From.Is_CData;
       To.Symbol        := From.Symbol;
 
       From.String        := null;
       From.Is_Whitespace := False;
-      From.Is_CData      := False;
       From.Symbol        := Matreshka.Internals.XML.No_Symbol;
    end Move;
 
@@ -432,15 +429,13 @@ package body XML.SAX.Simple_Readers is
    procedure Set_String
     (Item          : in out YYSType;
      String        : League.Strings.Universal_String;
-     Is_Whitespace : Boolean;
-     Is_CData      : Boolean)
+     Is_Whitespace : Boolean)
    is
       pragma Assert (Item.String = null);
 
    begin
       Item.String        := League.Strings.Internals.Internal (String);
       Item.Is_Whitespace := Is_Whitespace;
-      Item.Is_CData      := Is_CData;
       Item.Symbol        := Matreshka.Internals.XML.No_Symbol;
       Matreshka.Internals.Strings.Reference (Item.String);
    end Set_String;
@@ -452,15 +447,13 @@ package body XML.SAX.Simple_Readers is
    procedure Set_String_Internal
     (Item          : in out YYSType;
      String        : Matreshka.Internals.Strings.Shared_String_Access;
-     Is_Whitespace : Boolean;
-     Is_CData      : Boolean)
+     Is_Whitespace : Boolean)
    is
       pragma Assert (Item.String = null);
 
    begin
       Item.String        := String;
       Item.Is_Whitespace := Is_Whitespace;
-      Item.Is_CData      := Is_CData;
       Item.Symbol        := Matreshka.Internals.XML.No_Symbol;
    end Set_String_Internal;
 
@@ -477,7 +470,6 @@ package body XML.SAX.Simple_Readers is
    begin
       Item.String        := null;
       Item.Is_Whitespace := False;
-      Item.Is_CData      := False;
       Item.Symbol        := Symbol;
    end Set_Symbol;
 

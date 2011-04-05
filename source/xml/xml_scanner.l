@@ -146,6 +146,9 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
 %x DOCUMENT_10
 %x DOCUMENT_11
 %x DOCUMENT_U11
+%x CDATA_10
+%x CDATA_11
+%x CDATA_U11
 %x PI
 %x PI_DATA_10
 %x PI_DATA_11
@@ -264,40 +267,70 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    return Actions.On_Character_Data (Self);
 }
 
-<DOCUMENT_10>"<![CDATA["{CHAR10_NO_RIGHT_SQUARE}*"]"({CHAR10_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR10_NO_GREATER_RIGHT_SQUARE}{CHAR10_NO_RIGHT_SQUARE}*"]"({CHAR10_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
-   --  Segment of CDATA, rules [18], [19], [20], [21].
+<DOCUMENT_10>"<![CDATA[" {
+   --  Start of CDATA section, production [19].
+
+   Enter_Start_Condition (Self, CDATA_10);
+
+   return Token_CData_Open;
+}
+
+<DOCUMENT_11>"<![CDATA[" {
+   --  Start of CDATA section, production [19].
+
+   Enter_Start_Condition (Self, CDATA_11);
+
+   return Token_CData_Open;
+}
+
+<DOCUMENT_U11>"<![CDATA[" {
+   --  Start of CDATA section, production [19].
+
+   Enter_Start_Condition (Self, CDATA_U11);
+
+   return Token_CData_Open;
+}
+
+<CDATA_10>({CHAR10_NO_RIGHT_SQUARE}+("]"{CHAR10_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR10_NO_GREATER_RIGHT_SQUARE}+)*"]"*("]]>")?)|(("]"{CHAR10_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR10_NO_GREATER_RIGHT_SQUARE}+)+"]"*("]]>")?)|("]"+("]]>")?) {
+   --  Text data of CDATA section, production [20].
 
    return Actions.On_CDATA (Self);
 }
 
-<DOCUMENT_10>"<![CDATA["(({CHAR10_NO_RIGHT_SQUARE}+("]"{CHAR10_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR10_NO_GREATER_RIGHT_SQUARE}+)*"]"*)|(("]"{CHAR10_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR10_NO_GREATER_RIGHT_SQUARE}+)+"]"*)|("]"+))?{ICHAR10} {
-   --  Incomplete segment of CDATA, rules [18], [19], [20], [21].
-
-   return Actions.On_Incomplete_CDATA (Self);
-}
-
-<DOCUMENT_11>"<![CDATA["{CHAR11_NO_RIGHT_SQUARE}*"]"({CHAR11_NO_RIGHT_SQUARE}+"]")*"]"+({CHAR11_NO_GREATER_RIGHT_SQUARE}{CHAR11_NO_RIGHT_SQUARE}*"]"({CHAR11_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
-   --  Segment of CDATA, rules [18], [19], [20], [21].
+<CDATA_11>({CHAR11_NO_RIGHT_SQUARE}+("]"{CHAR11_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR11_NO_GREATER_RIGHT_SQUARE}+)*"]"*("]]>")?)|(("]"{CHAR11_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR11_NO_GREATER_RIGHT_SQUARE}+)+"]"*("]]>")?)|("]"+("]]>")?) {
+   --  Text data of CDATA section, production [20].
 
    return Actions.On_CDATA (Self);
 }
 
-<DOCUMENT_11>"<![CDATA["(({CHAR11_NO_RIGHT_SQUARE}+("]"{CHAR11_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR11_NO_GREATER_RIGHT_SQUARE}+)*"]"*)|(("]"{CHAR11_NO_RIGHT_SQUARE}+|"]"{2,}{CHAR11_NO_GREATER_RIGHT_SQUARE}+)+"]"*)|("]"+))?{ICHAR11} {
-   --  Incomplete segment of CDATA, rules [18], [19], [20], [21].
-
-   return Actions.On_Incomplete_CDATA (Self);
-}
-
-<DOCUMENT_U11>"<![CDATA["{CHARU11_NO_RIGHT_SQUARE}*"]"({CHARU11_NO_RIGHT_SQUARE}+"]")*"]"+({CHARU11_NO_GREATER_RIGHT_SQUARE}{CHARU11_NO_RIGHT_SQUARE}*"]"({CHARU11_NO_RIGHT_SQUARE}+"]")*"]"+)*">" {
-   --  Segment of CDATA, rules [18], [19], [20], [21].
+<CDATA_U11>({CHARU11_NO_RIGHT_SQUARE}+("]"{CHARU11_NO_RIGHT_SQUARE}+|"]"{2,}{CHARU11_NO_GREATER_RIGHT_SQUARE}+)*"]"*("]]>")?)|(("]"{CHARU11_NO_RIGHT_SQUARE}+|"]"{2,}{CHARU11_NO_GREATER_RIGHT_SQUARE}+)+"]"*("]]>")?)|("]"+("]]>")?) {
+   --  Text data of CDATA section, production [20].
 
    return Actions.On_CDATA (Self);
 }
 
-<DOCUMENT_U11>"<![CDATA["(({CHARU11_NO_RIGHT_SQUARE}+("]"{CHARU11_NO_RIGHT_SQUARE}+|"]"{2,}{CHARU11_NO_GREATER_RIGHT_SQUARE}+)*"]"*)|(("]"{CHARU11_NO_RIGHT_SQUARE}+|"]"{2,}{CHARU11_NO_GREATER_RIGHT_SQUARE}+)+"]"*)|("]"+))?{ICHARU11} {
-   --  Incomplete segment of CDATA, rules [18], [19], [20], [21].
+<CDATA_10>"]]>" {
+   --  End of CDATA section, production [21].
 
-   return Actions.On_Incomplete_CDATA (Self);
+   Enter_Start_Condition (Self, DOCUMENT_10);
+
+   return Token_CData_Close;
+}
+
+<CDATA_11>"]]>" {
+   --  End of CDATA section, production [21].
+
+   Enter_Start_Condition (Self, DOCUMENT_11);
+
+   return Token_CData_Close;
+}
+
+<CDATA_U11>"]]>" {
+   --  End of CDATA section, production [21].
+
+   Enter_Start_Condition (Self, DOCUMENT_U11);
+
+   return Token_CData_Close;
 }
 
 <DOCUMENT_10,DOCUMENT_11,DOCUMENT_U11>"&"{NAME}";" {
@@ -344,8 +377,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    Set_String_Internal
     (Item          => YYLVal,
      String        => YY_Text_Internal (1, 1),
-     Is_Whitespace => False,
-     Is_CData      => False);
+     Is_Whitespace => False);
    Reset_Whitespace_Matched (Self);
 
    return Token_String_Segment;
@@ -448,8 +480,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    Set_String_Internal
     (Item          => YYLVal,
      String        => YY_Text_Internal (4, 3),
-     Is_Whitespace => False,
-     Is_CData      => False);
+     Is_Whitespace => False);
 
    return Token_Comment;
 }
@@ -460,8 +491,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    Set_String_Internal
     (Item          => YYLVal,
      String        => YY_Text_Internal (4, 3),
-     Is_Whitespace => False,
-     Is_CData      => False);
+     Is_Whitespace => False);
 
    return Token_Comment;
 }
@@ -574,8 +604,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    Set_String_Internal
     (Item          => YYLVal,
      String        => YY_Text_Internal,
-     Is_Whitespace => False,
-     Is_CData      => False);
+     Is_Whitespace => False);
 
    return Token_String_Segment;
 }
@@ -584,8 +613,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    Set_String_Internal
     (Item          => YYLVal,
      String        => YY_Text_Internal,
-     Is_Whitespace => False,
-     Is_CData      => False);
+     Is_Whitespace => False);
 
    return Token_String_Segment;
 }
@@ -847,8 +875,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    Set_String_Internal
     (Item          => YYLVal,
      String        => YY_Text_Internal,
-     Is_Whitespace => False,
-     Is_CData      => False);
+     Is_Whitespace => False);
    --  XXX Need to add flag to mark Nmtoken.
 
    return Token_Name;
@@ -1005,7 +1032,7 @@ CHAR11_NO_LESS_RIGHT_SQUARE				[^\u003C\u005D\u0001-\u0008\u000B\u000C\u000E-\u0
    end if;
 }
 
-<XML_DECL,DOCUMENT_10,DOCUMENT_11,DOCUMENT_U11,PI,PI_DATA_10,PI_DATA_11,DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,ELEMENT_NAME,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_NAME,ATTLIST_TYPE,NOTATION_DECL,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,ENTITY_VALUE_10,ENTITY_VALUE_11,CONDITIONAL_DIRECTIVE,CONDITIONAL_IGNORE_10,CONDITIONAL_IGNORE_11,ELEMENT_START,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11,EXTERNAL_ID_SYS,EXTERNAL_ID_PUB>.|\n {
+<XML_DECL,DOCUMENT_10,DOCUMENT_11,DOCUMENT_U11,CDATA_10,CDATA_11,CDATA_U11,PI,PI_DATA_10,PI_DATA_11,DOCTYPE_EXTINT,DOCTYPE_INT,DOCTYPE_INTSUBSET_10,DOCTYPE_INTSUBSET_11,ELEMENT_NAME,ELEMENT_DECL,ELEMENT_CHILDREN,ATTLIST_DECL,ATTLIST_NAME,ATTLIST_TYPE,NOTATION_DECL,ENTITY_DECL,ENTITY_DEF,ENTITY_NDATA,ENTITY_VALUE_10,ENTITY_VALUE_11,CONDITIONAL_DIRECTIVE,CONDITIONAL_IGNORE_10,CONDITIONAL_IGNORE_11,ELEMENT_START,ATTRIBUTE_VALUE_10,ATTRIBUTE_VALUE_11,EXTERNAL_ID_SYS,EXTERNAL_ID_PUB>.|\n {
    --  Unexpected character.
 
    return Actions.On_Unexpected_Character (Self);
@@ -1065,8 +1092,7 @@ with Matreshka.Internals.Strings;
    procedure Set_String_Internal
     (Item          : in out YYSType;
      String        : Matreshka.Internals.Strings.Shared_String_Access;
-     Is_Whitespace : Boolean;
-     Is_CData      : Boolean) is separate;
+     Is_Whitespace : Boolean) is separate;
 
    package Actions is
 
@@ -1233,8 +1259,6 @@ with Matreshka.Internals.Strings;
       function On_Percent_Sign (Self : access Integer) return Token;
 
       function On_CDATA (Self : access Integer) return Token;
-
-      function On_Incomplete_CDATA (Self : access Integer) return Token;
 
       function On_Open_Parenthesis_In_Content_Declaration
        (Self : access Integer) return Token;

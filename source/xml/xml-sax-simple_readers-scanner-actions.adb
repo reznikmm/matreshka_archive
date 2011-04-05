@@ -426,8 +426,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Set_String_Internal
           (Item          => Self.YYLVal,
            String        => Self.Character_Data,
-           Is_Whitespace => False,
-           Is_CData      => False);
+           Is_Whitespace => False);
          Reset_Whitespace_Matched (Self);
          Pop_Start_Condition (Self);
 
@@ -494,25 +493,47 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    function On_CDATA
     (Self : not null access SAX_Simple_Reader'Class) return Token is
    begin
-      --  Segment of CDATA, rules [18], [19], [20], [21]. First nine characters
-      --  are "<![CDATA[" and last three characters are "]]>", they are
-      --  ignored when token's value is constructed.
+      --  Segment of CDATA section (production [20]) optionally terminated by
+      --  end of CDATA section mark (production [21]).
+
+      if Self.Scanner_State.YY_Current_Position
+           - Self.Scanner_State.YY_Base_Position >= 3
+        and then (Code_Point
+                   (Self.Scanner_State.Data.Value
+                     (Self.Scanner_State.YY_Current_Position - 1))
+                        = Greater_Than_Sign
+                    and Code_Point
+                         (Self.Scanner_State.Data.Value
+                           (Self.Scanner_State.YY_Current_Position - 2))
+                              = Right_Square_Bracket
+                    and Code_Point
+                         (Self.Scanner_State.Data.Value
+                           (Self.Scanner_State.YY_Current_Position - 3))
+                              = Right_Square_Bracket)
+      then
+         --  Character data ends with ']]>', move backward before end of CDATA
+         --  section literal. End of CDATA section literal will be processed
+         --  on next cycle.
+
+         YY_Move_Backward (Self);
+         YY_Move_Backward (Self);
+         YY_Move_Backward (Self);
+      end if;
 
       Matreshka.Internals.Strings.Operations.Copy_Slice
        (Self.Character_Data,
         Self.Scanner_State.Data,
-        Self.Scanner_State.YY_Base_Position + 9,
+        Self.Scanner_State.YY_Base_Position,
         Self.Scanner_State.YY_Current_Position
-          - Self.Scanner_State.YY_Base_Position - 12,
+          - Self.Scanner_State.YY_Base_Position,
         Self.Scanner_State.YY_Current_Index
-          - Self.Scanner_State.YY_Base_Index - 12);
+          - Self.Scanner_State.YY_Base_Index);
 
       Matreshka.Internals.Strings.Reference (Self.Character_Data);
       Set_String_Internal
        (Item          => Self.YYLVal,
         String        => Self.Character_Data,
-        Is_Whitespace => False,
-        Is_CData      => False);
+        Is_Whitespace => False);
 
       return Token_String_Segment;
    end On_CDATA;
@@ -600,8 +621,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Set_String_Internal
        (Item          => Self.YYLVal,
         String        => Self.Character_Data,
-        Is_Whitespace => False,
-        Is_CData      => False);
+        Is_Whitespace => False);
 
       return Token_String_Segment;
    end On_Character_Data;
@@ -649,8 +669,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Set_String_Internal
        (Item          => Self.YYLVal,
         String        => Self.Character_Buffer,
-        Is_Whitespace => False,
-        Is_CData      => False);
+        Is_Whitespace => False);
 
       return Token_String_Segment;
    end On_Character_Reference;
@@ -844,8 +863,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Set_String_Internal
           (Item          => Self.YYLVal,
            String        => Matreshka.Internals.Strings.Shared_Empty'Access,
-           Is_Whitespace => False,
-           Is_CData      => False);
+           Is_Whitespace => False);
 
       else
          if not Self.Whitespace_Matched then
@@ -857,8 +875,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Set_String_Internal
           (Item          => Self.YYLVal,
            String        => YY_Text (Self, 0, 2),
-           Is_Whitespace => False,
-           Is_CData      => False);
+           Is_Whitespace => False);
       end if;
 
       Pop_Start_Condition (Self);
@@ -906,8 +923,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Set_String_Internal
        (Item          => Self.YYLVal,
         String        => Matreshka.Internals.Strings.Shared_Empty'Access,
-        Is_Whitespace => False,
-        Is_CData      => False);
+        Is_Whitespace => False);
 
       if Self.Scanner_State.Entity /= No_Entity then
          --  End of text declaration of the external entity is reached,
@@ -1083,8 +1099,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Set_String_Internal
           (Item          => Self.YYLVal,
            String        => YY_Text (Self),
-           Is_Whitespace => False,
-           Is_CData      => False);
+           Is_Whitespace => False);
 
          return Token_String_Segment;
 
@@ -1483,43 +1498,11 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Set_String_Internal
           (Item          => Self.YYLVal,
            String        => YY_Text (Self),
-           Is_Whitespace => False,
-           Is_CData      => False);
+           Is_Whitespace => False);
 
          return Token_String_Segment;
       end if;
    end On_General_Entity_Reference_In_Entity_Value;
-
-   -------------------------
-   -- On_Incomplete_CDATA --
-   -------------------------
-
-   function On_Incomplete_CDATA
-    (Self : not null access SAX_Simple_Reader'Class) return Token is
-   begin
-      --  Incomplete segment of CDATA, rules [18], [19], [20], [21].
-
-      YY_Move_Backward (Self);
-      --  Last character is invalid, move backward.
-
-      Matreshka.Internals.Strings.Operations.Copy_Slice
-       (Self.Character_Data,
-        Self.Scanner_State.Data,
-        Self.Scanner_State.YY_Base_Position + 9,
-        Self.Scanner_State.YY_Current_Position
-          - Self.Scanner_State.YY_Base_Position - 9,
-        Self.Scanner_State.YY_Current_Index
-          - Self.Scanner_State.YY_Base_Index - 9);
-
-      Matreshka.Internals.Strings.Reference (Self.Character_Data);
-      Set_String_Internal
-       (Item          => Self.YYLVal,
-        String        => Self.Character_Data,
-        Is_Whitespace => False,
-        Is_CData      => False);
-
-      return Token_String_Segment;
-   end On_Incomplete_CDATA;
 
    ------------------------------------------
    -- On_Less_Than_Sign_In_Attribute_Value --
@@ -2375,8 +2358,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Set_String_Internal
        (Item          => Self.YYLVal,
         String        => Self.Character_Data,
-        Is_Whitespace => False,
-        Is_CData      => False);
+        Is_Whitespace => False);
 
       return Token_Public_Literal;
    end On_Public_Literal;
@@ -2445,8 +2427,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
       Set_String_Internal
        (Item          => Self.YYLVal,
         String        => YY_Text (Self, 1, 1),
-        Is_Whitespace => False,
-        Is_CData      => False);
+        Is_Whitespace => False);
 
       return Token_System_Literal;
    end On_System_Literal;
@@ -2526,8 +2507,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
          Set_String_Internal
           (Item          => Self.YYLVal,
            String        => Self.Character_Data,
-           Is_Whitespace => True,
-           Is_CData      => False);
+           Is_Whitespace => True);
 
          return True;
       end if;

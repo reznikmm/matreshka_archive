@@ -601,8 +601,7 @@ package body XML.SAX.Simple_Readers.Parser is
                Set_String
                 (Item          => YYVal,
                  String        => League.Strings.Empty_Universal_String,
-                 Is_Whitespace => False,
-                 Is_CData      => False);
+                 Is_Whitespace => False);
 
             when 53 =>
                Actions.On_Start_Of_Element_Declaration
@@ -932,45 +931,57 @@ package body XML.SAX.Simple_Readers.Parser is
                  YY.Value_Stack (YY.TOS).Is_Whitespace);
 
             when 149 =>
-               Process_Comment
+               Actions.On_Character_Data
                 (Self,
-                 League.Strings.Internals.Create
-                  (YY.Value_Stack (YY.TOS).String));
+                 YY.Value_Stack (YY.TOS).String,
+                 YY.Value_Stack (YY.TOS).Is_Whitespace);
 
             when 150 =>
                null;
 
             when 151 =>
+               null;
+
+            when 152 =>
+               Process_Comment
+                (Self,
+                 League.Strings.Internals.Create
+                  (YY.Value_Stack (YY.TOS).String));
+
+            when 153 =>
+               null;
+
+            when 154 =>
                --  TextDecl come from substitution of external parsed entities.
 
                null;
 
-            when 152 =>
+            when 155 =>
                --  Synthetic rule to check validity of entity boundaries.
 
                null;
 
-            when 153 =>
+            when 156 =>
                Actions.On_Element_Attribute_Name (Self, YY.Value_Stack (YY.TOS).Symbol);
 
-            when 154 =>
+            when 157 =>
                Actions.On_Element_Attribute
                 (Self,
                  YY.Value_Stack (YY.TOS -  3).Symbol,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 155 =>
+            when 158 =>
                Actions.On_Element_Attribute_Name
                 (Self,
                  YY.Value_Stack (YY.TOS).Symbol);
 
-            when 156 =>
+            when 159 =>
                Actions.On_Element_Attribute
                 (Self,
                  YY.Value_Stack (YY.TOS -  3).Symbol,
                  YY.Value_Stack (YY.TOS).String);
 
-            when 157 =>
+            when 160 =>
                null;
                pragma Style_Checks ("M79");
 
