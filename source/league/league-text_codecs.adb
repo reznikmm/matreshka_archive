@@ -93,12 +93,16 @@ package body League.Text_Codecs is
      Data : League.Stream_Element_Vectors.Stream_Element_Vector)
        return League.Strings.Universal_String
    is
+      package MISEV renames Matreshka.Internals.Stream_Element_Vectors;
+      use type Ada.Streams.Stream_Element_Offset;
+
       State  : Abstract_Decoder'Class := Self.Decoder (Raw);
       Result : Matreshka.Internals.Strings.Shared_String_Access;
+      Value  : constant MISEV.Shared_Stream_Element_Vector_Access
+        := League.Stream_Element_Vectors.Internals.Internal (Data);
 
    begin
-      State.Decode
-       (League.Stream_Element_Vectors.Internals.Internal (Data).Value, Result);
+      State.Decode (Value.Value (0 .. Value.Length - 1), Result);
 
       if State.Is_Mailformed then
          Matreshka.Internals.Strings.Dereference (Result);
