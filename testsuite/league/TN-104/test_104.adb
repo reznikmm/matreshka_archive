@@ -4,11 +4,11 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,37 +41,30 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_league";
+--  This test checks length of returned data. Initial bug was that longer
+--  stream was passed to decoder this results longer return string.
+------------------------------------------------------------------------------
+with League.Stream_Element_Vectors;
+with League.Strings;
+with League.Text_Codecs;
 
-project Matreshka_League_Tests is
+procedure Test_104 is
 
-   for Main use
-    ("string_hash_test.adb",
-     "character_cursor_test.adb",
-     "grapheme_cluster_cursor_test.adb",
-     "case_conversion_test.adb",
-     "case_folding_test.adb",
-     "normalization_test.adb",
-     "additional_normalization_test.adb",
-     "collation_test.adb",
-     "string_performance.adb",
-     "fill_null_terminator_performance.adb",
-     "string_operations_test.adb",
-     "string_compare_test.adb",
-     "library_level_test.adb",
-     "regexp_ataresearch.adb",
-     "test_35.adb",
-     "test_104.adb",
-     "arguments_environment_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/league",
-     "../testsuite/league/TN-35",
-     "../testsuite/league/TN-104",
-     "../tools");
+   use type League.Strings.Universal_String;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8", "-gnatn");
-   end Compiler;
+   Source   : constant League.Stream_Element_Vectors.Stream_Element_Vector
+     := League.Stream_Element_Vectors.To_Stream_Element_Vector
+         ((16#23#, 16#61#, 16#64#, 16#61#));
+   Codec    : constant League.Text_Codecs.Text_Codec
+     := League.Text_Codecs.Codec
+         (League.Strings.To_Universal_String ("windows-1251"));
+   Expected : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("#ada");
+   Result   : constant League.Strings.Universal_String
+     := Codec.Decode (Source);
 
-end Matreshka_League_Tests;
+begin
+   if Result /= Expected then
+      raise Program_Error;
+   end if;
+end Test_104;
