@@ -378,6 +378,8 @@ package League.Strings is
     (Self  : Universal_String_Vector'Class;
      Index : Positive) return League.Strings.Universal_String;
 
+   procedure Clear (Self : in out Universal_String_Vector'Class);
+
    procedure Append
     (Self : in out Universal_String_Vector'Class;
      Item : League.Strings.Universal_String'Class);
