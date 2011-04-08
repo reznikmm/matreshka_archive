@@ -981,18 +981,29 @@ package body League.Strings is
 
    begin
       Natural'Read (Stream, Length);
-      Utf16_String_Index'Read (Stream, Unused);
 
       --  XXX Value validation must be done before any other operations.
       --  XXX Object mutation can be used here.
 
       Dereference (Item.Data);
 
-      Item.Data := Allocate (Unused);
-      Utf16_String'Read (Stream, Item.Data.Value);
-      Item.Data.Unused := Unused;
-      Item.Data.Length := Length;
-      String_Handler.Fill_Null_Terminator (Item.Data);
+      if Length = 0 then
+         --  Empty string, resuse shared empty object.
+
+         Item.Data := Matreshka.Internals.Strings.Shared_Empty'Access;
+
+      else
+         --  Non-empty string, receive index of first unused code unit,
+         --  allocate new shared object and receive actual data.
+
+         Utf16_String_Index'Read (Stream, Unused);
+         Item.Data := Allocate (Unused);
+         Item.Data.Unused := Unused;
+         Item.Data.Length := Length;
+         Utf16_String'Read
+          (Stream, Item.Data.Value (0 .. Item.Data.Unused - 1));
+         String_Handler.Fill_Null_Terminator (Item.Data);
+      end if;
    end Read;
 
    -------------
@@ -1441,13 +1452,20 @@ package body League.Strings is
 
    procedure Write
     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-     Item   : Universal_String)
-   is
+     Item   : Universal_String) is
    begin
-      Integer'Write (Stream, Item.Data.Length);
-      Utf16_String_Index'Write (Stream, Item.Data.Unused);
-      Matreshka.Internals.Utf16.Utf16_String'Write
-       (Stream, Item.Data.Value (0 .. Item.Data.Unused - 1));
+      --  Write length of the string into the stream.
+
+      Natural'Write (Stream, Item.Data.Length);
+
+      --  For non-empty string writes index of first unused code unit and data
+      --  iteself.
+
+      if Item.Data.Length /= 0 then
+         Utf16_String_Index'Write (Stream, Item.Data.Unused);
+         Matreshka.Internals.Utf16.Utf16_String'Write
+          (Stream, Item.Data.Value (0 .. Item.Data.Unused - 1));
+      end if;
    end Write;
 
 end League.Strings;
