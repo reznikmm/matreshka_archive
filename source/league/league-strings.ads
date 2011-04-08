@@ -148,11 +148,11 @@ package League.Strings is
    -- Universal_String --
    ----------------------
 
-   function To_Universal_String (Item : Wide_Wide_String)
-     return Universal_String;
+   function To_Universal_String
+    (Item : Wide_Wide_String) return Universal_String;
 
-   function To_Wide_Wide_String (Self : Universal_String'Class)
-     return Wide_Wide_String;
+   function To_Wide_Wide_String
+    (Self : Universal_String'Class) return Wide_Wide_String;
 
    function Hash (Self : Universal_String'Class) return Hash_Type;
 
@@ -164,49 +164,40 @@ package League.Strings is
 
    function Element
     (Self  : Universal_String'Class;
-     Index : Positive)
-       return Universal_Character;
+     Index : Positive) return Universal_Character;
 
    function Slice
     (Self : Universal_String'Class;
      Low  : Positive;
-     High : Natural)
-       return Universal_String;
+     High : Natural) return Universal_String;
 
    function "&"
     (Left  : Universal_String'Class;
-     Right : Universal_String'Class)
-       return Universal_String;
+     Right : Universal_String'Class) return Universal_String;
 
    function "&"
     (Left  : Universal_String'Class;
-     Right : Universal_Character'Class)
-       return Universal_String;
+     Right : Universal_Character'Class) return Universal_String;
 
    function "&"
     (Left  : Universal_Character'Class;
-     Right : Universal_String'Class)
-       return Universal_String;
+     Right : Universal_String'Class) return Universal_String;
 
    function "&"
     (Left  : Universal_String'Class;
-     Right : Wide_Wide_Character)
-       return Universal_String;
+     Right : Wide_Wide_Character) return Universal_String;
 
    function "&"
     (Left  : Wide_Wide_Character;
-     Right : Universal_String'Class)
-       return Universal_String;
+     Right : Universal_String'Class) return Universal_String;
 
    function "&"
     (Left  : Universal_String'Class;
-     Right : Wide_Wide_String)
-       return Universal_String;
+     Right : Wide_Wide_String) return Universal_String;
 
    function "&"
     (Left  : Wide_Wide_String;
-     Right : Universal_String'Class)
-       return Universal_String;
+     Right : Universal_String'Class) return Universal_String;
 
    procedure Append
     (Self : in out Universal_String'Class;
@@ -294,41 +285,37 @@ package League.Strings is
    -- Conversions --
    -----------------
 
-   function To_Uppercase (Self : Universal_String'Class)
-     return Universal_String;
+   function To_Uppercase
+    (Self : Universal_String'Class) return Universal_String;
    --  Converts each character in the specified string to uppercase form using
    --  full case conversion (both context-dependent mappings and tailoring are
    --  used). Returns result string.
 
-   function To_Lowercase (Self : Universal_String'Class)
-     return Universal_String;
+   function To_Lowercase
+    (Self : Universal_String'Class) return Universal_String;
    --  Converts each character in the specified string to lowercase form using
    --  full case conversion (both context-dependent mappings and tailoring are
    --  used). Returns result string.
 
-   function To_Casefold (Self : Universal_String'Class)
-     return Universal_String;
+   function To_Casefold
+    (Self : Universal_String'Class) return Universal_String;
    --  Converts each character in the specified string to case folding form
    --  using full case conversion (only tailoring is used). Returns result
    --  string.
 
-   function To_NFC (Self : Universal_String'Class)
-     return Universal_String;
+   function To_NFC (Self : Universal_String'Class) return Universal_String;
    --  Returns specified string converted into Normalization Form C (canonical
    --  decomposition and cacnonical composition).
 
-   function To_NFD (Self : Universal_String'Class)
-     return Universal_String;
+   function To_NFD (Self : Universal_String'Class) return Universal_String;
    --  Returns specified string converted into Normalization Form D (canonical
    --  decomposition).
 
-   function To_NFKC (Self : Universal_String'Class)
-     return Universal_String;
+   function To_NFKC (Self : Universal_String'Class) return Universal_String;
    --  Returns specified string converted into Normalization Form KC
    --  (compatibility decomposition and canonical composition).
 
-   function To_NFKD (Self : Universal_String'Class)
-     return Universal_String;
+   function To_NFKD (Self : Universal_String'Class) return Universal_String;
    --  Returns specified string converted into Normalization Form KD
    --  (compatibility decomposition).
 
@@ -337,20 +324,15 @@ package League.Strings is
    --------------------------------------
 
    overriding function "="
-    (Left  : Universal_String;
-     Right : Universal_String) return Boolean;
+    (Left : Universal_String; Right : Universal_String) return Boolean;
    function "<"
-    (Left  : Universal_String;
-     Right : Universal_String) return Boolean;
+    (Left : Universal_String; Right : Universal_String) return Boolean;
    function ">"
-    (Left  : Universal_String;
-     Right : Universal_String) return Boolean;
+    (Left : Universal_String; Right : Universal_String) return Boolean;
    function "<="
-    (Left  : Universal_String;
-     Right : Universal_String) return Boolean;
+    (Left : Universal_String; Right : Universal_String) return Boolean;
    function ">="
-    (Left  : Universal_String;
-     Right : Universal_String) return Boolean;
+    (Left : Universal_String; Right : Universal_String) return Boolean;
    --  Compare two strings in binary order of Unicode Code Points.
 
    function Collation (Self : Universal_String'Class) return Sort_Key;
@@ -382,7 +364,7 @@ package League.Strings is
 
    procedure Append
     (Self : in out Universal_String_Vector'Class;
-     Item : League.Strings.Universal_String'Class);
+     Item : Universal_String'Class);
 
 private
 

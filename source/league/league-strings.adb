@@ -79,8 +79,7 @@ package body League.Strings is
 
    function "&"
     (Left  : Universal_String'Class;
-     Right : Universal_String'Class)
-       return Universal_String
+     Right : Universal_String'Class) return Universal_String
    is
       L_D : constant not null Shared_String_Access := Left.Data;
       R_D : constant not null Shared_String_Access := Right.Data;
@@ -116,8 +115,7 @@ package body League.Strings is
 
    function "&"
     (Left  : Universal_String'Class;
-     Right : Universal_Character'Class)
-       return Universal_String
+     Right : Universal_Character'Class) return Universal_String
    is
    begin
       return Left & Right.To_Wide_Wide_Character;
@@ -129,8 +127,7 @@ package body League.Strings is
 
    function "&"
     (Left  : Universal_Character'Class;
-     Right : Universal_String'Class)
-       return Universal_String
+     Right : Universal_String'Class) return Universal_String
    is
    begin
       return Left.To_Wide_Wide_Character & Right;
@@ -142,8 +139,7 @@ package body League.Strings is
 
    function "&"
     (Left  : Universal_String'Class;
-     Right : Wide_Wide_Character)
-       return Universal_String
+     Right : Wide_Wide_Character) return Universal_String
    is
       L_D : constant not null Shared_String_Access := Left.Data;
 
@@ -177,8 +173,7 @@ package body League.Strings is
 
    function "&"
     (Left  : Wide_Wide_Character;
-     Right : Universal_String'Class)
-       return Universal_String
+     Right : Universal_String'Class) return Universal_String
    is
       R_D : constant not null Shared_String_Access := Right.Data;
 
@@ -214,8 +209,7 @@ package body League.Strings is
 
    function "&"
     (Left  : Universal_String'Class;
-     Right : Wide_Wide_String)
-       return Universal_String is
+     Right : Wide_Wide_String) return Universal_String is
    begin
       return Left & To_Universal_String (Right);
    end "&";
@@ -226,8 +220,7 @@ package body League.Strings is
 
    function "&"
     (Left  : Wide_Wide_String;
-     Right : Universal_String'Class)
-       return Universal_String is
+     Right : Universal_String'Class) return Universal_String is
    begin
       return To_Universal_String (Left) & Right;
    end "&";
@@ -237,8 +230,7 @@ package body League.Strings is
    ---------
 
    function "<"
-    (Left  : Universal_String;
-     Right : Universal_String) return Boolean
+    (Left : Universal_String; Right : Universal_String) return Boolean
    is
       L_D : constant not null Shared_String_Access := Left.Data;
       R_D : constant not null Shared_String_Access := Right.Data;
@@ -266,8 +258,7 @@ package body League.Strings is
    ----------
 
    function "<="
-    (Left  : Universal_String;
-     Right : Universal_String) return Boolean
+    (Left : Universal_String; Right : Universal_String) return Boolean
    is
       L_D : constant not null Shared_String_Access := Left.Data;
       R_D : constant not null Shared_String_Access := Right.Data;
@@ -315,9 +306,7 @@ package body League.Strings is
    ---------
 
    overriding function "="
-    (Left  : Universal_String;
-     Right : Universal_String)
-       return Boolean
+    (Left : Universal_String; Right : Universal_String) return Boolean
    is
       L_D : constant not null Shared_String_Access := Left.Data;
       R_D : constant not null Shared_String_Access := Right.Data;
@@ -340,8 +329,8 @@ package body League.Strings is
    -- "=" --
    ---------
 
-   overriding function "=" (Left : Sort_Key; Right : Sort_Key)
-     return Boolean
+   overriding function "="
+    (Left : Sort_Key; Right : Sort_Key) return Boolean
    is
       L_D : constant Shared_Sort_Key_Access := Left.Data;
       R_D : constant Shared_Sort_Key_Access := Right.Data;
@@ -357,8 +346,7 @@ package body League.Strings is
    ---------
 
    function ">"
-    (Left  : Universal_String;
-     Right : Universal_String) return Boolean
+    (Left : Universal_String; Right : Universal_String) return Boolean
    is
       L_D : constant not null Shared_String_Access := Left.Data;
       R_D : constant not null Shared_String_Access := Right.Data;
@@ -386,8 +374,7 @@ package body League.Strings is
    ----------
 
    function ">="
-    (Left  : Universal_String;
-     Right : Universal_String) return Boolean
+    (Left : Universal_String; Right : Universal_String) return Boolean
    is
       L_D : constant not null Shared_String_Access := Left.Data;
       R_D : constant not null Shared_String_Access := Right.Data;
@@ -458,8 +445,7 @@ package body League.Strings is
    ------------
 
    procedure Append
-    (Self : in out Universal_String'Class;
-     Item : Universal_String'Class)
+    (Self : in out Universal_String'Class; Item : Universal_String'Class)
    is
       P : constant Utf16_String_Index := Self.Data.Unused;
 
@@ -473,8 +459,7 @@ package body League.Strings is
    ------------
 
    procedure Append
-    (Self : in out Universal_String'Class;
-     Item : Universal_Character'Class)
+    (Self : in out Universal_String'Class; Item : Universal_Character'Class)
    is
       P : constant Utf16_String_Index := Self.Data.Unused;
 
@@ -492,8 +477,7 @@ package body League.Strings is
    ------------
 
    procedure Append
-    (Self : in out Universal_String'Class;
-     Item : Wide_Wide_String) is
+    (Self : in out Universal_String'Class; Item : Wide_Wide_String) is
    begin
       Self.Append (To_Universal_String (Item));
    end Append;
@@ -503,8 +487,7 @@ package body League.Strings is
    ------------
 
    procedure Append
-    (Self : in out Universal_String'Class;
-     Item : Wide_Wide_Character)
+    (Self : in out Universal_String'Class; Item : Wide_Wide_Character)
    is
       P : constant Utf16_String_Index := Self.Data.Unused;
 
@@ -523,7 +506,7 @@ package body League.Strings is
 
    procedure Append
     (Self : in out Universal_String_Vector'Class;
-     Item : League.Strings.Universal_String'Class) is
+     Item : Universal_String'Class) is
    begin
       Append (Self.Data, Item.Data);
       Reference (Item.Data);
@@ -548,8 +531,7 @@ package body League.Strings is
    ------------
 
    procedure Attach
-    (Self : in out Abstract_Cursor'Class;
-     Item : in out Universal_String'Class)
+    (Self : in out Abstract_Cursor'Class; Item : in out Universal_String'Class)
    is
    begin
       if Self.Object /= Item'Unchecked_Access then
@@ -654,11 +636,8 @@ package body League.Strings is
 
    function Element
     (Self  : Universal_String'Class;
-     Index : Positive)
-       return Universal_Character
+     Index : Positive) return Universal_Character
    is
---   begin
---      return To_Universal_Character (Self.Element (Index));
       D : constant Shared_String_Access := Self.Data;
 
    begin
@@ -1143,8 +1122,8 @@ package body League.Strings is
    function Split
     (Self      : Universal_String'Class;
      Separator : Wide_Wide_Character;
-     Behavior  : Split_Behavior := Keep_Empty)
-       return Universal_String_Vector is
+     Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector
+   is
    begin
       return Split (Self, To_Universal_Character (Separator), Behavior);
    end Split;
@@ -1221,9 +1200,8 @@ package body League.Strings is
    -- To_Casefold --
    -----------------
 
-   function To_Casefold (Self : Universal_String'Class)
-     return Universal_String
-   is
+   function To_Casefold
+    (Self : Universal_String'Class) return Universal_String is
    begin
       if Self.Data.Length = 0 then
          return Universal_String (Self);
@@ -1251,9 +1229,8 @@ package body League.Strings is
    -- To_Lowercase --
    ------------------
 
-   function To_Lowercase (Self : Universal_String'Class)
-     return Universal_String
-   is
+   function To_Lowercase
+    (Self : Universal_String'Class) return Universal_String is
    begin
       if Self.Data.Length = 0 then
          return Universal_String (Self);
@@ -1281,9 +1258,7 @@ package body League.Strings is
    -- To_NFC --
    ------------
 
-   function To_NFC (Self : Universal_String'Class)
-     return Universal_String
-   is
+   function To_NFC (Self : Universal_String'Class) return Universal_String is
       Data : Shared_String_Access;
 
    begin
@@ -1296,9 +1271,7 @@ package body League.Strings is
    -- To_NFD --
    ------------
 
-   function To_NFD (Self : Universal_String'Class)
-     return Universal_String
-   is
+   function To_NFD (Self : Universal_String'Class) return Universal_String is
       Data : Shared_String_Access;
 
    begin
@@ -1311,9 +1284,7 @@ package body League.Strings is
    -- To_NFKC --
    -------------
 
-   function To_NFKC (Self : Universal_String'Class)
-     return Universal_String
-   is
+   function To_NFKC (Self : Universal_String'Class) return Universal_String is
       Data : Shared_String_Access;
 
    begin
@@ -1326,9 +1297,7 @@ package body League.Strings is
    -- To_NFKD --
    -------------
 
-   function To_NFKD (Self : Universal_String'Class)
-     return Universal_String
-   is
+   function To_NFKD (Self : Universal_String'Class) return Universal_String is
       Data : Shared_String_Access;
 
    begin
@@ -1342,9 +1311,7 @@ package body League.Strings is
    ----------------------------
 
    function To_Universal_Character
-    (Self : Wide_Wide_Character)
-       return Universal_Character
-   is
+    (Self : Wide_Wide_Character) return Universal_Character is
    begin
       return Universal_Character'(Code => Wide_Wide_Character'Pos (Self));
    end To_Universal_Character;
@@ -1353,8 +1320,8 @@ package body League.Strings is
    -- To_Universal_String --
    -------------------------
 
-   function To_Universal_String (Item : Wide_Wide_String)
-     return Universal_String
+   function To_Universal_String
+    (Item : Wide_Wide_String) return Universal_String
    is
       Data : Shared_String_Access;
 
@@ -1380,9 +1347,8 @@ package body League.Strings is
    -- To_Uppercase --
    ------------------
 
-   function To_Uppercase (Self : Universal_String'Class)
-     return Universal_String
-   is
+   function To_Uppercase
+    (Self : Universal_String'Class) return Universal_String is
    begin
       if Self.Data.Length = 0 then
          return Universal_String (Self);
@@ -1411,9 +1377,7 @@ package body League.Strings is
    ---------------------
 
    procedure To_Utf16_String
-    (Source      : Wide_Wide_String;
-     Destination : out Shared_String_Access)
-   is
+    (Source : Wide_Wide_String; Destination : out Shared_String_Access) is
    begin
       if Source'Length = 0 then
          Destination := Shared_Empty'Access;
@@ -1429,7 +1393,6 @@ package body League.Strings is
             end if;
 
             Append (Destination, Wide_Wide_Character'Pos (Source (J)));
---              Source'Last - J);
          end loop;
 
          String_Handler.Fill_Null_Terminator (Destination);
@@ -1447,9 +1410,7 @@ package body League.Strings is
    ----------------------------
 
    function To_Wide_Wide_Character
-    (Self : Universal_Character'Class)
-       return Wide_Wide_Character
-   is
+    (Self : Universal_Character'Class) return Wide_Wide_Character is
    begin
       return Wide_Wide_Character'Val (Self.Code);
    end To_Wide_Wide_Character;
@@ -1458,8 +1419,8 @@ package body League.Strings is
    -- To_Wide_Wide_String --
    -------------------------
 
-   function To_Wide_Wide_String (Self : Universal_String'Class)
-     return Wide_Wide_String
+   function To_Wide_Wide_String
+    (Self : Universal_String'Class) return Wide_Wide_String
    is
       Result  : Wide_Wide_String (1 .. Self.Data.Length);
       Current : Utf16_String_Index := 0;
