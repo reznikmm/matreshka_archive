@@ -974,12 +974,47 @@ package body League.Strings is
 
    procedure Read
     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : out Sort_Key)
+   is
+      Last : Natural;
+
+   begin
+      --  Read length of the data.
+
+      Natural'Read (Stream, Last);
+
+      --  XXX Object mutation can be used here.
+
+      Dereference (Item.Data);
+
+      if Last = 0 then
+         --  Empty sort key, reuse shared empty object.
+
+         Item.Data := Matreshka.Internals.Strings.Shared_Empty_Key'Access;
+
+      else
+         --  Non-empty sort key, allocate array and receive data.
+
+         Item.Data := new Matreshka.Internals.Strings.Shared_Sort_Key (Last);
+         Matreshka.Internals.Strings.Sort_Key_Array'Read
+          (Stream, Item.Data.Data);
+      end if;
+   end Read;
+
+   ----------
+   -- Read --
+   ----------
+
+   procedure Read
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
      Item   : out Universal_String)
    is
       Length : Natural;
       Unused : Utf16_String_Index;
 
    begin
+      --  Read length of the string.
+
       Natural'Read (Stream, Length);
 
       --  XXX Value validation must be done before any other operations.
@@ -1004,6 +1039,28 @@ package body League.Strings is
           (Stream, Item.Data.Value (0 .. Item.Data.Unused - 1));
          String_Handler.Fill_Null_Terminator (Item.Data);
       end if;
+   end Read;
+
+   ----------
+   -- Read --
+   ----------
+
+   procedure Read
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : out Universal_String_Vector)
+   is
+      Aux    : Universal_String;
+      Length : Natural;
+
+   begin
+      Natural'Read (Stream, Length);
+
+      Item.Clear;
+
+      for J in 1 .. Length loop
+         Universal_String'Read (Stream, Aux);
+         Item.Append (Aux);
+      end loop;
    end Read;
 
    -------------
@@ -1452,6 +1509,19 @@ package body League.Strings is
 
    procedure Write
     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : Sort_Key) is
+   begin
+      Natural'Write (Stream, Item.Data.Last);
+      Matreshka.Internals.Strings.Sort_Key_Array'Write
+       (Stream, Item.Data.Data (1 .. Item.Data.Last));
+   end Write;
+
+   -----------
+   -- Write --
+   -----------
+
+   procedure Write
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
      Item   : Universal_String) is
    begin
       --  Write length of the string into the stream.
@@ -1466,6 +1536,21 @@ package body League.Strings is
          Matreshka.Internals.Utf16.Utf16_String'Write
           (Stream, Item.Data.Value (0 .. Item.Data.Unused - 1));
       end if;
+   end Write;
+
+   -----------
+   -- Write --
+   -----------
+
+   procedure Write
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : Universal_String_Vector) is
+   begin
+      Natural'Write (Stream, Item.Data.Length);
+
+      for J in 1 .. Item.Length loop
+         Universal_String'Write (Stream, Item.Element (J));
+      end loop;
    end Write;
 
 end League.Strings;

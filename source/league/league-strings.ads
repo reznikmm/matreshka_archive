@@ -368,6 +368,9 @@ package League.Strings is
 
 private
 
+   type Abstract_Cursor is tagged;
+   type Cursor_Access is access all Abstract_Cursor'Class;
+
    -------------------------
    -- Universal_Character --
    -------------------------
@@ -387,9 +390,6 @@ private
    procedure Write
     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
      Item   : Universal_String);
-
-   type Abstract_Cursor is tagged;
-   type Cursor_Access is access all Abstract_Cursor'Class;
 
    procedure Emit_Changed
     (Self          : Universal_String'Class;
@@ -422,7 +422,6 @@ private
       --  List of cursors. This member is initialized to reference to List
       --  member.
    end record;
-
    for Universal_String'Read use Read;
    for Universal_String'Write use Write;
 
@@ -482,10 +481,20 @@ private
    -- Sort_Key --
    --------------
 
+   procedure Read
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : out Sort_Key);
+
+   procedure Write
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : Sort_Key);
+
    type Sort_Key is new Ada.Finalization.Controlled with record
       Data : Matreshka.Internals.Strings.Shared_Sort_Key_Access
         := Matreshka.Internals.Strings.Shared_Empty_Key'Access;
    end record;
+   for Sort_Key'Read use Read;
+   for Sort_Key'Write use Write;
 
    overriding procedure Adjust (Self : in out Sort_Key);
 
@@ -495,10 +504,20 @@ private
    -- Universal_String_Vector --
    -----------------------------
 
+   procedure Read
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : out Universal_String_Vector);
+
+   procedure Write
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : Universal_String_Vector);
+
    type Universal_String_Vector is new Ada.Finalization.Controlled with record
       Data : Matreshka.Internals.String_Vectors.Shared_String_Vector_Access
        := Matreshka.Internals.String_Vectors.Empty_Shared_String_Vector'Access;
    end record;
+   for Universal_String_Vector'Read use Read;
+   for Universal_String_Vector'Write use Write;
 
    overriding procedure Adjust (Self : in out Universal_String_Vector);
 
