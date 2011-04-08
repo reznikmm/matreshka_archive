@@ -4,11 +4,11 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,39 +41,57 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_league";
+--  This test checks implementation of 'Read and 'Write attributes for
+--  Universal_String type.
+------------------------------------------------------------------------------
+with Ada.Directories;
+with Ada.Streams.Stream_IO;
 
-project Matreshka_League_Tests is
+with League.Strings;
 
-   for Main use
-    ("string_hash_test.adb",
-     "character_cursor_test.adb",
-     "grapheme_cluster_cursor_test.adb",
-     "case_conversion_test.adb",
-     "case_folding_test.adb",
-     "normalization_test.adb",
-     "additional_normalization_test.adb",
-     "collation_test.adb",
-     "string_performance.adb",
-     "fill_null_terminator_performance.adb",
-     "string_operations_test.adb",
-     "string_compare_test.adb",
-     "library_level_test.adb",
-     "regexp_ataresearch.adb",
-     "test_35.adb",
-     "test_104.adb",
-     "test_106.adb",
-     "arguments_environment_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/league",
-     "../testsuite/league/TN-35",
-     "../testsuite/league/TN-104",
-     "../testsuite/league/TN-106",
-     "../tools");
+procedure Test_106 is
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8", "-gnatn");
-   end Compiler;
+   S1 : constant League.Strings.Universal_String
+     := League.Strings.Empty_Universal_String;
+   S2 : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("test");
 
-end Matreshka_League_Tests;
+   procedure Do_Test (Item : League.Strings.Universal_String);
+
+   -------------
+   -- Do_Test --
+   -------------
+
+   procedure Do_Test (Item : League.Strings.Universal_String) is
+      use type League.Strings.Universal_String;
+
+      File : Ada.Streams.Stream_IO.File_Type;
+      Aux  : League.Strings.Universal_String;
+
+   begin
+      Ada.Streams.Stream_IO.Create (File, Ada.Streams.Stream_IO.Out_File);
+
+      League.Strings.Universal_String'Write
+       (Ada.Streams.Stream_IO.Stream (File), Item);
+
+      Ada.Streams.Stream_IO.Reset (File, Ada.Streams.Stream_IO.In_File);
+
+      League.Strings.Universal_String'Read
+       (Ada.Streams.Stream_IO.Stream (File), Aux);
+
+      Ada.Streams.Stream_IO.Close (File);
+
+      if Aux /= Item then
+         raise Program_Error;
+      end if;
+   end Do_Test;
+
+begin
+   --  Check whether empty string is handled properly.
+
+   Do_Test (S1);
+
+   --  Check whether non-empty string is handled properly.
+
+   Do_Test (S2);
+end Test_106;
