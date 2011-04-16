@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -283,7 +283,10 @@ package body XMI.Handlers is
 
    function Index
     (String    : League.Strings.Universal_String;
-     Character : Wide_Wide_Character) return Natural is
+     Character : Wide_Wide_Character) return Natural
+   is
+      use type League.Strings.Universal_Character;
+
    begin
       for J in 1 .. String.Length loop
          if String.Element (J) = Character then

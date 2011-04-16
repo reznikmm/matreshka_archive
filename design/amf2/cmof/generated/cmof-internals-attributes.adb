@@ -45,7 +45,7 @@ package body Cmof.Internals.Attributes is
       Elements.Table (Self).Member
        (Member_Offset
          (Elements.Table (Self).Kind,
-            MP_CMOF_Element_Import_Alias)).String_Value := League.Strings.Internals.Get_Shared (To);
+            MP_CMOF_Element_Import_Alias)).String_Value := League.Strings.Internals.Internal (To);
       Matreshka.Internals.Strings.Reference
        (Elements.Table (Self).Member
          (Member_Offset
@@ -157,7 +157,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-               MP_CMOF_Comment_Body)).String_Value := League.Strings.Internals.Get_Shared (To);
+               MP_CMOF_Comment_Body)).String_Value := League.Strings.Internals.Internal (To);
          Matreshka.Internals.Strings.Reference
           (Elements.Table (Self).Member
             (Member_Offset
@@ -173,7 +173,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-               MP_CMOF_Opaque_Expression_Body)).String_Value := League.Strings.Internals.Get_Shared (To);
+               MP_CMOF_Opaque_Expression_Body)).String_Value := League.Strings.Internals.Internal (To);
          Matreshka.Internals.Strings.Reference
           (Elements.Table (Self).Member
             (Member_Offset
@@ -391,7 +391,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-               MP_CMOF_Parameter_Default)).String_Value := League.Strings.Internals.Get_Shared (To);
+               MP_CMOF_Parameter_Default)).String_Value := League.Strings.Internals.Internal (To);
          Matreshka.Internals.Strings.Reference
           (Elements.Table (Self).Member
             (Member_Offset
@@ -407,7 +407,7 @@ package body Cmof.Internals.Attributes is
          Elements.Table (Self).Member
           (Member_Offset
             (Elements.Table (Self).Kind,
-               MP_CMOF_Property_Default)).String_Value := League.Strings.Internals.Get_Shared (To);
+               MP_CMOF_Property_Default)).String_Value := League.Strings.Internals.Internal (To);
          Matreshka.Internals.Strings.Reference
           (Elements.Table (Self).Member
             (Member_Offset
@@ -1182,7 +1182,7 @@ package body Cmof.Internals.Attributes is
       Elements.Table (Self).Member
        (Member_Offset
          (Elements.Table (Self).Kind,
-            MP_CMOF_Named_Element_Name)).String_Value := League.Strings.Internals.Get_Shared (To);
+            MP_CMOF_Named_Element_Name)).String_Value := League.Strings.Internals.Internal (To);
       Matreshka.Internals.Strings.Reference
        (Elements.Table (Self).Member
          (Member_Offset
@@ -2078,7 +2078,7 @@ package body Cmof.Internals.Attributes is
       Elements.Table (Self).Member
        (Member_Offset
          (Elements.Table (Self).Kind,
-            MP_CMOF_Package_Uri)).String_Value := League.Strings.Internals.Get_Shared (To);
+            MP_CMOF_Package_Uri)).String_Value := League.Strings.Internals.Internal (To);
       Matreshka.Internals.Strings.Reference
        (Elements.Table (Self).Member
          (Member_Offset

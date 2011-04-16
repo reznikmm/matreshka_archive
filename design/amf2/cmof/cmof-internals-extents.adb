@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -318,7 +318,7 @@ package body CMOF.Internals.Extents is
       Matreshka.Internals.Strings.Dereference
        (Tables.Elements.Table (Element).Id);
       Tables.Elements.Table (Element).Id :=
-        League.Strings.Internals.Get_Shared (Id);
+        League.Strings.Internals.Internal (Id);
       Matreshka.Internals.Strings.Reference
        (Tables.Elements.Table (Element).Id);
    end Set_Id;
