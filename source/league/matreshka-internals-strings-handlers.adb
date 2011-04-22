@@ -44,6 +44,37 @@
 
 package body Matreshka.Internals.Strings.Handlers is
 
+   use Matreshka.Internals.Utf16;
+   use Matreshka.Internals.Unicode;
+
+   -----------
+   -- Count --
+   -----------
+
+   not overriding function Count
+    (Self : Abstract_String_Handler;
+     Item : Matreshka.Internals.Strings.Shared_String_Access;
+     Code : Matreshka.Internals.Unicode.Code_Point)
+       return Natural
+   is
+      pragma Unreferenced (Self);
+
+      Position : Utf16_String_Index := 0;
+      Count    : Natural            := 0;
+      C        : Code_Point;
+
+   begin
+      while Position < Item.Unused loop
+         Unchecked_Next (Item.Value, Position, C);
+
+         if C = Code then
+            Count := Count + 1;
+         end if;
+      end loop;
+
+      return Count;
+   end Count;
+
    -----------
    -- Index --
    -----------
@@ -55,9 +86,6 @@ package body Matreshka.Internals.Strings.Handlers is
        return Natural
    is
       pragma Unreferenced (Self);
-
-      use Matreshka.Internals.Utf16;
-      use Matreshka.Internals.Unicode;
 
       Position : Utf16_String_Index := 0;
       Index    : Natural            := 0;

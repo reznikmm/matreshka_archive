@@ -272,14 +272,19 @@ package League.Strings is
    function Index
     (Self      : Universal_String'Class;
      Character : Universal_Character'Class) return Natural;
-   --  Returns index of the first occurrence of the specified character in the
-   --  string, or zero if there are no occurrences.
-
    function Index
     (Self      : Universal_String'Class;
      Character : Wide_Wide_Character) return Natural;
    --  Returns index of the first occurrence of the specified character in the
    --  string, or zero if there are no occurrences.
+
+   function Count
+    (Self      : Universal_String'Class;
+     Character : Universal_Character'Class) return Natural;
+   function Count
+    (Self      : Universal_String'Class;
+     Character : Wide_Wide_Character) return Natural;
+   --  Returns the number of occurrences of the Character in this string.
 
    -----------------
    -- Conversions --

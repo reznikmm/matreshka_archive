@@ -606,6 +606,42 @@ package body League.Strings is
 --      end return;
 --   end Copy;
 
+   -----------
+   -- Count --
+   -----------
+
+   function Count
+    (Self      : Universal_String'Class;
+     Character : Universal_Character'Class) return Natural
+   is
+      Code : constant Code_Unit_32 := Character.Code;
+
+   begin
+      if not Is_Valid (Code) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      return String_Handler.Count (Self.Data, Code);
+   end Count;
+
+   -----------
+   -- Count --
+   -----------
+
+   function Count
+    (Self      : Universal_String'Class;
+     Character : Wide_Wide_Character) return Natural
+   is
+      Code : constant Code_Unit_32 := Wide_Wide_Character'Pos (Character);
+
+   begin
+      if not Is_Valid (Code) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      return String_Handler.Count (Self.Data, Code);
+   end Count;
+
    ------------
    -- Detach --
    ------------

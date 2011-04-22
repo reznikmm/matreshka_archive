@@ -92,4 +92,11 @@ package Matreshka.Internals.Strings.Handlers is
    --  Returns index of first occurrence of the specified character in the
    --  string.
 
+   not overriding function Count
+    (Self : Abstract_String_Handler;
+     Item : Matreshka.Internals.Strings.Shared_String_Access;
+     Code : Matreshka.Internals.Unicode.Code_Point)
+       return Natural;
+   --  Returns number of occurrences of Code in the string.
+
 end Matreshka.Internals.Strings.Handlers;
