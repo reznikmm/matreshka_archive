@@ -55,6 +55,7 @@ library project Matreshka_SQL_PostgreSQL is
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
    for Library_Dir use "../.libs";
+   for Library_ALI_Dir use "../.libs/matreshka";
    for Library_Version use "lib" & Library_Name & ".so." & Matreshka_Config.Version;
    for Library_Options use Matreshka_Config.PostgreSQL_Library_Options;
 

@@ -39,8 +39,6 @@ league:
 	$(INSTALL) -d ${INSTALL_ALI_DIR}
 	# GNATMAKE doesn't copy matreshka.ali and matreshka-internals.ali into
 	# .libs directory
-	test -f .libs/matreshka.ali || cp .objs/matreshka.ali .libs
-	test -f .libs/matreshka-internals.ali || cp .objs/matreshka-internals.ali .libs
 	gnat ls -d -s -P gnat/matreshka_league.gpr | sort | uniq > league-src.lst
 	gnat ls -o -P gnat/matreshka_league.gpr | sort | uniq | sed -e 's/.o$$/.ali/' > league-ali.lst
 	cat league-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/league
