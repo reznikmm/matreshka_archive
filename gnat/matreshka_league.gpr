@@ -48,7 +48,7 @@ library project Matreshka_League is
 
    Library_Name := "league" & Matreshka_Config.RTL_Version_Suffix;
 
-   for Object_Dir use "../.objs";
+   for Object_Dir use "../.objs/league";
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
    for Library_Dir use "../.libs";

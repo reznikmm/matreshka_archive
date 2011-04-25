@@ -51,7 +51,7 @@ library project Matreshka_SQL_OCI is
    Library_Name := "matreshka-sql-oci" & Matreshka_Config.RTL_Version_Suffix;
 
    for Source_Dirs use ("../source/sql/oci");
-   for Object_Dir use "../.objs";
+   for Object_Dir use "../.objs/sql/oci";
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
    for Library_Dir use "../.libs";

@@ -51,7 +51,7 @@ library project Matreshka_SQL_PostgreSQL is
    Library_Name := "matreshka-sql-postgresql" & Matreshka_Config.RTL_Version_Suffix;
 
    for Source_Dirs use ("../source/sql/postgresql");
-   for Object_Dir use "../.objs";
+   for Object_Dir use "../.objs/sql/postgresql";
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
    for Library_Dir use "../.libs";

@@ -50,7 +50,7 @@ library project Matreshka_SQL is
    Library_Name := "matreshka-sql" & Matreshka_Config.RTL_Version_Suffix;
 
    for Source_Dirs use ("../source/sql");
-   for Object_Dir use "../.objs";
+   for Object_Dir use "../.objs/sql";
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
    for Library_Dir use "../.libs";
