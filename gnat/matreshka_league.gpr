@@ -122,15 +122,6 @@ library project Matreshka_League is
           & Matreshka_Common.Optimization_Ada_Switches
           & Matreshka_Common.Debug_Ada_Switches;
 
-      for Switches ("matreshka-internals-unicode-ucd-colls.ads") use
-        Matreshka_Common.Common_Ada_Switches
-          & Matreshka_Common.Platform_Ada_Switches
-          & Matreshka_Common.Debug_Ada_Switches;
-      for Switches ("matreshka-internals-unicode-ucd-core.ads") use
-        Matreshka_Common.Common_Ada_Switches
-          & Matreshka_Common.Platform_Ada_Switches
-          & Matreshka_Common.Debug_Ada_Switches;
-
       case Matreshka_Config.Architecture is
          when "x86" =>
             for Switches ("matreshka-internals-simd-intel-sse.adb") use

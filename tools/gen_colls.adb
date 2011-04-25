@@ -356,6 +356,12 @@ begin
      2009,
      2011);
    Ada.Text_IO.New_Line (File);
+   Ada.Text_IO.Put_Line (File, "pragma Restrictions (No_Elaboration_Code);");
+   Ada.Text_IO.Put_Line
+    (File,
+     "--  GNAT: enforce generation of preinitialized data section instead of");
+   Ada.Text_IO.Put_Line (File, "--  generation of elaboration code.");
+   Ada.Text_IO.New_Line (File);
    Ada.Text_IO.Put_Line
     (File, "package Matreshka.Internals.Unicode.Ucd.Colls is");
    Ada.Text_IO.New_Line (File);
