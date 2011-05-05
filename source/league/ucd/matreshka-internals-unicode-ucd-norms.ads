@@ -42,10 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-pragma Restrictions (No_Elaboration_Code);
---  GNAT: enforce generation of preinitialized data section instead of
---  generation of elaboration code.
-
 package Matreshka.Internals.Unicode.Ucd.Norms is
 
    pragma Preelaborate;
