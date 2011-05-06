@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,12 +42,8 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package CMOF.Packages is
+package CMOF.Utilities is
 
-   function Get_Packaged_Element
-    (Self : CMOF_Package) return Set_Of_CMOF_Packageable_Element;
+   pragma Pure;
 
-   function Get_Package_Merge
-    (Self : CMOF_Package) return Set_Of_CMOF_Package_Merge;
-
-end CMOF.Packages;
+end CMOF.Utilities;

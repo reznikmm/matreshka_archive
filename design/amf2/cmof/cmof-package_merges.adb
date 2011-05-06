@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,13 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with CMOF.Internals.Attributes;
 
-package CMOF.Packages is
+package body CMOF.Package_Merges is
 
-   function Get_Packaged_Element
-    (Self : CMOF_Package) return Set_Of_CMOF_Packageable_Element;
+   ------------------------
+   -- Get_Merged_Package --
+   ------------------------
 
-   function Get_Package_Merge
-    (Self : CMOF_Package) return Set_Of_CMOF_Package_Merge;
+   function Get_Merged_Package (Self : CMOF_Package_Merge) return CMOF_Package
+     renames CMOF.Internals.Attributes.Internal_Get_Merged_Package;
 
-end CMOF.Packages;
+end CMOF.Package_Merges;

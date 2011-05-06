@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -67,6 +67,7 @@ package CMOF is
    subtype Set_Of_CMOF_Element is Collection_Of_CMOF_Element;
    subtype Set_Of_CMOF_Feature is Collection_Of_CMOF_Element;
    subtype Set_Of_CMOF_Named_Element is Collection_Of_CMOF_Element;
+   subtype Set_Of_CMOF_Package_Merge is Collection_Of_CMOF_Element;
    subtype Set_Of_CMOF_Packageable_Element is Collection_Of_CMOF_Element;
    subtype Set_Of_CMOF_Property is Collection_Of_CMOF_Element;
    subtype Ordered_Set_Of_CMOF_Element is Collection_Of_CMOF_Element;

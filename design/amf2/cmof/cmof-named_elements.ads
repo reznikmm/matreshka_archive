@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,5 +47,9 @@ package CMOF.Named_Elements is
 
    function Get_Name
     (Self : CMOF_Named_Element) return League.Strings.Universal_String;
+
+   procedure Set_Name
+    (Self : CMOF_Named_Element;
+     To   : League.Strings.Universal_String);
 
 end CMOF.Named_Elements;

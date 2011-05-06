@@ -31,5 +31,11 @@ gen2-api:
 	gnatchop -gnat12 -w cmof/generated/sources.ada cmof/generated
 	rm cmof/generated/sources.ada
 
+gen-uml:
+	gprbuild -p -Pgen-stage2/gens.gpr
+	(cd data && ../gen-stage2/.obj/gen_api LM.cmof) # > uml/generated/sources.ada
+#	(cd data && ../gen-stage2/.obj/gen_api L1.cmof) # > uml/generated/sources.ada
+#	(cd data && ../gen-stage2/.obj/gen_api L3.cmof) # > uml/generated/sources.ada
+
 clean:
 	rm -rf cmof/.objs gen-stage1/.objs gen-stage2/.obj xmi/.objs gui/.objs gui/.amoc demo-cmof demo-reader demo-viewer
