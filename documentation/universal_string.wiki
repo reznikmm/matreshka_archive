@@ -1,0 +1,386 @@
+[[PageOutline]]
+
+= Universal_String Reference =
+
+Universal_String is a base type to represent information in textual form as unbounded sequence of Unicode characters (Unicode code points).
+
+== Public Subprograms ==
+
+||=  Operation                               =||=  Description  =||
+|| [#concatenation "&"]                       || Concatenate strings and characters ||
+|| [#less "<"]                                || Compares two strings for binary less than ||
+|| [#lessequal "<="]                          || Compares two strings for binary less than or equal to ||
+|| [#equal "="]                               || Compares two strings for binary equal to ||
+|| [#greater ">"]                             || Compares two strings for binary greater than ||
+|| [#greaterequal ">="]                       || Compares two strings for binary greater than or equal to ||
+|| [#Append Append]                           || Appends string or character to the string ||
+|| [#Clear Clear]                             || Clears the string ||
+|| [#Count Count]                             || Returns number of occurrences of the character in the string ||
+|| [#Collation Collation]                     || Computes sort key for string collation ||
+|| [#Element Element]                         || Returns character at the specified position ||
+|| [#Hash Hash]                               || Computes hash value for the string ||
+|| [#Index Index]                             || Returns index of the first occurrence of the character in the string ||
+|| [#Is_Empty Is_Empty]                       || Returns whether string is empty or not ||
+|| [#Length Length]                           || Returns length of the string ||
+|| [#Prepend Prepend]                         || Prepends string or character to the string ||
+|| [#Replace Replace]                         || Replaces slice of the string by another string ||
+|| [#Slice Slice]                             || Returns slice of the string ||
+|| [#Split Split]                             || Splits tokens in the string into separate strings ||
+|| [#To_Casefold To_Casefold]                 || Converts string into case folding form ||
+|| [#To_Lowercase To_Lowercase]               || Converts string into lower case form ||
+|| [#To_NFC To_NFC]                           || Converts string into Normalization Form C ||
+|| [#To_NFD To_NFD]                           || Converts string into Normalization Form D ||
+|| [#To_NFKC To_NFKC]                         || Converts string into Normalization Form KC ||
+|| [#To_NFKD To_NFKD]                         || Converts string into Normalization Form KD ||
+|| [#To_Uppercase To_Uppercase]               || Converts string into upper case form ||
+|| [#To_Wide_Wide_String To_Wide_Wide_String] || Converts Universal_String into Wide_Wide_String ||
+
+== Related Subprograms ==
+
+||=  Operation                               =||=  Description  =||
+|| [#To_Universal_String To_Universal_String] || Converts Wide_Wide_String into Universal_String ||
+
+== Detailed Description ==
+
+Universal_String stores a string of valid Unicode characters (all Unicode characters in code point range 16!#0000# .. 16!#10_FFFF# except surrogate character range 16#D800# .. 16#DFFF#). Lower bound of string is 1 and upper bound may vary from 0 to Natural'Last.
+
+[http://www.unicode.org Unicode] is an international standard that supports most of the writing systems in use today.
+
+Several optimization techniques are used to optimize both space and performance characteristics, see [#OptimizationTechniques Optimization Techniques] section for more information.
+
+Universal_String is declared in package of category remote types and can be used in distributed application to interchange string data between partitions.
+
+=== Initializing of objects of Universal_String ===
+
+Objects of Universal_String is empty by default. Initialized objects can be constructed from wide wide string objects by [#To_Universal_String To_Universal_String] function.
+
+{{{
+   Hello : Universal_String := To_Universal_String ("Hello");
+}}}
+
+Another way to construct objects of Universal_String is to use text decoder to decode external representation of text data in form of sequence of stream elements.
+
+{{{
+function From_ISO_8859_1 (Item : Stream_Element_Array) return Universal_String is
+   Codec : Text_Codec := Codec (To_Universal_String ("iso-8859-1"));
+
+begin
+   return Codec.Decode (Item);
+end From_ISO_8859_1;
+}}}
+
+For more information about conversion of text data from/into external representation see [wiki:League/Text_Codec Text_Codec].
+
+=== Subprograms ===
+
+==== "&" ==== #concatenation
+
+{{{
+   function "&"
+    (Left  : Universal_String'Class;
+     Right : Universal_String'Class) return Universal_String;
+
+   function "&"
+    (Left  : Universal_String'Class;
+     Right : Universal_Character'Class) return Universal_String;
+
+   function "&"
+    (Left  : Universal_Character'Class;
+     Right : Universal_String'Class) return Universal_String;
+
+   function "&"
+    (Left  : Universal_String'Class;
+     Right : Wide_Wide_Character) return Universal_String;
+
+   function "&"
+    (Left  : Wide_Wide_Character;
+     Right : Universal_String'Class) return Universal_String;
+
+   function "&"
+    (Left  : Universal_String'Class;
+     Right : Wide_Wide_String) return Universal_String;
+
+   function "&"
+    (Left  : Wide_Wide_String;
+     Right : Universal_String'Class) return Universal_String;
+}}}
+
+Each of the "&" functions returns an Universal_String obtained by concatenating the string or character given or represented by one of the parameters, with the string or character given or represented by the other parameter.
+
+"&" functions with parameters of Wide_Wide_Character/Wide_Wide_String/Universal_Character types raises Constraint_Error when character is not valid Unicode character.
+
+==== "<" ==== #less
+
+{{{
+   function "<"
+    (Left  : Universal_String; Right : Universal_String) return Boolean;
+}}}
+
+Returns True if string Left is lexically less than string Right; otherwise returns False.
+
+The comparison is based exclusively on the numeric Unicode values of the characters and is very fast, but is not what a human would expect. Consider sorting user-interface strings using the [#Collation Collation] function.
+
+==== "<=" ==== #lessequal
+
+{{{
+   function "<="
+    (Left  : Universal_String; Right : Universal_String) return Boolean;
+}}}
+
+Returns True if string Left is lexically less than or equal to string Right; otherwise returns False.
+
+The comparison is based exclusively on the numeric Unicode values of the characters and is very fast, but is not what a human would expect. Consider sorting user-interface strings using the [#Collation Collation] function.
+
+==== "=" ==== #equal
+
+{{{
+   overriding function "="
+    (Left  : Universal_String; Right : Universal_String) return Boolean;
+}}}
+
+Returns True if string Left is lexically equal to string Right; otherwise returns False.
+
+The comparison is based exclusively on the numeric Unicode values of the characters and is very fast, but is not what a human would expect. Consider sorting user-interface strings using the [#Collation Collation] function.
+
+==== ">" ==== #greater
+
+{{{
+   function ">"
+    (Left  : Universal_String; Right : Universal_String) return Boolean;
+}}}
+
+Returns True if string Left is lexically greater than string Right; otherwise returns False.
+
+The comparison is based exclusively on the numeric Unicode values of the characters and is very fast, but is not what a human would expect. Consider sorting user-interface strings using the [#Collation Collation] function.
+
+==== ">=" ==== #greaterequal
+
+{{{
+   function ">="
+    (Left  : Universal_String; Right : Universal_String) return Boolean;
+}}}
+
+Returns True if string Left is lexically greater than or equal to string Right; otherwise returns False.
+
+The comparison is based exclusively on the numeric Unicode values of the characters and is very fast, but is not what a human would expect. Consider sorting user-interface strings using the [#Collation Collation] function.
+
+==== Append ====
+
+{{{
+   procedure Append
+    (Self : in out Universal_String'Class;
+     Item : Universal_String'Class);
+
+   procedure Append
+    (Self : in out Universal_String'Class;
+     Item : Universal_Character'Class);
+
+   procedure Append
+    (Self : in out Universal_String'Class;
+     Item : Wide_Wide_String);
+
+   procedure Append
+    (Self : in out Universal_String'Class;
+     Item : Wide_Wide_Character);
+}}}
+
+Appends the string or character Item onto the end of this string.
+
+The procedures that has parameter of type Wide_Wide_Character/Wide_Wide_String/Universal_Character raises Constraint_Error when character is not a valid Unicode character.
+
+The Append functions for characters, as well as for small strings are typically very fast (constant time), because Universal_String preallocates extra space at the end of the string data so it can grow without reallocating the entire string each time.
+
+==== Clear ====
+
+{{{
+   procedure Clear (Self : in out Universal_String'Class);
+}}}
+
+Clears the contents of the string and makes it empty.
+
+==== Count ====
+
+{{{
+   function Count
+    (Self      : Universal_String'Class;
+     Character : Universal_Character'Class) return Natural;
+   function Count
+    (Self      : Universal_String'Class;
+     Character : Wide_Wide_Character) return Natural;
+}}}
+
+Returns the number of occurrences of the Character in this string.
+
+==== Collation ====
+
+{{{
+   function Collation (Self : Universal_String'Class) return Sort_Key;
+}}}
+
+==== Element ====
+
+{{{
+   function Element
+    (Self  : Universal_String'Class;
+     Index : Positive) return Universal_Character;
+}}}
+
+==== Hash ====
+
+{{{
+   function Hash (Self : Universal_String'Class) return Hash_Type;
+}}}
+
+==== Index ====
+
+{{{
+   function Index
+    (Self      : Universal_String'Class;
+     Character : Universal_Character'Class) return Natural;
+
+   function Index
+    (Self      : Universal_String'Class;
+     Character : Wide_Wide_Character) return Natural;
+}}}
+
+==== Is_Empty ====
+
+{{{
+   function Is_Empty (Self : Universal_String'Class) return Boolean;
+}}}
+
+==== Length ====
+
+{{{
+   function Length (Self : Universal_String'Class) return Natural;
+}}}
+
+==== Prepend ====
+
+{{{
+   procedure Prepend
+    (Self : in out Universal_String'Class;
+     Item : Universal_String'Class);
+
+   procedure Prepend
+    (Self : in out Universal_String'Class;
+     Item : Universal_Character'Class);
+
+   procedure Prepend
+    (Self : in out Universal_String'Class;
+     Item : Wide_Wide_String);
+
+   procedure Prepend
+    (Self : in out Universal_String'Class;
+     Item : Wide_Wide_Character);
+}}}
+
+==== Replace ====
+
+{{{
+   procedure Replace
+    (Self : in out Universal_String'Class;
+     Low  : Positive;
+     High : Natural;
+     By   : Universal_String'Class);
+
+   procedure Replace
+    (Self : in out Universal_String'Class;
+     Low  : Positive;
+     High : Natural;
+     By   : Wide_Wide_String);
+}}}
+
+==== Slice ====
+
+{{{
+  function Slice
+    (Self : Universal_String'Class;
+     Low  : Positive;
+     High : Natural) return Universal_String;
+}}}
+
+==== Split ====
+
+{{{
+   function Split
+    (Self      : Universal_String'Class;
+     Separator : Universal_Character'Class;
+     Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector;
+
+   function Split
+    (Self      : Universal_String'Class;
+     Separator : Wide_Wide_Character;
+     Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector;
+}}}
+
+==== To_Casefold ====
+
+{{{
+   function To_Casefold
+    (Self : Universal_String'Class) return Universal_String;
+}}}
+
+==== To_Lowercase ====
+
+{{{
+   function To_Lowercase
+    (Self : Universal_String'Class) return Universal_String;
+}}}
+
+==== To_NFC ====
+
+{{{
+   function To_NFC (Self : Universal_String'Class) return Universal_String;
+}}}
+
+==== To_NFD ====
+
+{{{
+   function To_NFD (Self : Universal_String'Class) return Universal_String;
+}}}
+
+==== To_NFKC ====
+
+{{{
+   function To_NFKC (Self : Universal_String'Class) return Universal_String;
+}}}
+
+==== To_NFKD ====
+
+{{{
+   function To_NFKD (Self : Universal_String'Class) return Universal_String;
+}}}
+
+==== To_Universal_String ====
+
+{{{
+   function To_Universal_String 
+    (Item : Wide_Wide_String) return Universal_String;
+}}}
+
+==== To_Uppercase ====
+
+{{{
+   function To_Uppercase
+    (Self : Universal_String'Class) return Universal_String;
+}}}
+
+==== To_Wide_Wide_String ====
+
+{{{
+   function To_Wide_Wide_String 
+    (Self : Universal_String'Class) return Wide_Wide_String;
+}}}
+
+== Optimization Techniques == #OptimizationTechniques
+
+Textual representation of the information is used in applications widely, thus it is important to provide efficient implementation. Several optimization techniques are used for Universal_String implementation, below is the list of most important.
+
+1. Constant size of objects. Objects occupy constant size on the stack, independently of size of actual string data. This is very important for multitasking application where size of the stack of each task is limited; as well as don't require to use secondary stack to return objects.
+1. Copy-on-write. String data is shared between several objects till it is not modified. This makes assignment operation to be constant time operation and minimize memory usage.
+1. UTF-16 encoding. Internally, data stored using UTF-16 encoding, which provides balance between memory use and performance.
+1. SIMD optimization. On platforms where SIMD operations are available many string operations utilize special SIMD versions of algorithms. On platforms where SIMD operations are not available pseudo-vectorization technique is used to process several characters by one operation using 32-bit or 64-bit registers.
+1. Usage of flat arrays. Internally, string data stored in flat arrays indexed starting from 0. This slightly improves performance of string data traversing.
+1. Memory preallocation. Memory allocation for internal string data takes in sense memory allocation granularity. This significantly improves performance of operations like appending of character or small string, because memory reallocation is usually not needed in this cases.
+1. Null-termination. All internal data are null-terminated, even this is completely invisible for applications and doesn't exclude use of Unicode character with code point 0 in strings. But in some cases (like Microsoft Windows platform or SQLite database) this allows to pass internal data to external libraries directly without conversion. Null-termination also allows to optimize some operations by removing range checks for surrogate pairs handling, because last character and null-terminator forms (invalid surrogate) pair.
