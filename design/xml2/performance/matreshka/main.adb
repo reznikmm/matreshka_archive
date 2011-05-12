@@ -10,7 +10,7 @@ with Events_Printers;
 with Put_Line;
 with Read_File;
 
-procedure Performance is
+procedure Main is
    use type League.Strings.Universal_String;
    use type Ada.Calendar.Time;
 
@@ -52,4 +52,4 @@ begin
     ("Processing time:"
        & League.Strings.To_Universal_String
           (Duration'Wide_Wide_Image (Stop - Load_Start)));
-end Performance;
+end Main;

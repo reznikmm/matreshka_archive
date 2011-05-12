@@ -1,10 +1,10 @@
-with "../../gnat/matreshka_league.gpr";
-with "../../gnat/matreshka_xml.gpr";
+with "../../../../gnat/matreshka_league.gpr";
+with "../../../../gnat/matreshka_xml.gpr";
 
-project Demo is
+project Test is
    for Main use ("performance.adb");
    for Object_Dir use ".objs";
-   for Source_Dirs use (".", "../../examples/sax_events_printer");
+   for Source_Dirs use (".", "../../../../examples/sax_events_printer");
    for Exec_Dir use ".";
 
    package Compiler is
