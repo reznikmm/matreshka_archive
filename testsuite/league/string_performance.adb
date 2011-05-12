@@ -305,6 +305,61 @@ procedure String_Performance is
       Results ("Compare for less", Result);
    end Test_Compare;
 
+   -----------------
+   -- Test_Copy_2 --
+   -----------------
+
+   procedure Test_Copy_2 is
+      Passes          : constant := 4_000_000;
+      Ada_Duration    : Duration;
+      League_Duration : Duration;
+
+   begin
+      declare
+         Start : Time;
+
+      begin
+         Start := Clock;
+
+         for J in 1 .. Passes loop
+            declare
+               S1    : Unbounded_Wide_String :=
+                 To_Unbounded_Wide_String (" ");
+               S2    : Unbounded_Wide_String;
+
+            begin
+               S2 := S1;
+            end;
+         end loop;
+
+         Ada_Duration := Clock - Start;
+      end;
+
+      declare
+         Start : Time;
+
+      begin
+         Start := Clock;
+
+         for J in 1 .. Passes loop
+            declare
+               S1    : Universal_String :=
+                 To_Universal_String (" ");
+               S2    : Universal_String;
+
+            begin
+               S2 := S1;
+            end;
+         end loop;
+
+         League_Duration := Clock - Start;
+      end;
+
+      Results
+       ("Create/copy of non-empty string",
+        Result_Type'(Ada_Duration, League_Duration, Passes));
+   end Test_Copy_2;
+
    ---------------
    -- Test_Copy --
    ---------------
@@ -526,6 +581,7 @@ begin
    Test_Initialization;
    Test_Copy_Of_Empty_String;
    Test_Copy;
+   Test_Copy_2;
    Test_Compare;
    Test_Append;
    Test_Index;
