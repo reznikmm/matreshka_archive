@@ -207,6 +207,15 @@ procedure Gen_API is
             if Is_Multivalued (Attribute) then
                if Is_Data_Type (Get_Type (Attribute)) then
                   if Get_Name (Get_Type (Attribute))
+                       = To_Universal_String ("Boolean")
+                  then
+                     if not Get_Is_Ordered (Attribute)
+                       and Get_Is_Unique (Attribute)
+                     then
+                        return "Set_Of_Boolean";
+                     end if;
+
+                  elsif Get_Name (Get_Type (Attribute))
                        = To_Universal_String ("String")
                   then
                      if Get_Is_Ordered (Attribute)
