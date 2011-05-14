@@ -250,6 +250,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_Boolean, False),         --  isDerived
                      2      => (M_Boolean, False),         --  isFinalSpecialization
@@ -313,6 +314,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_Boolean, False),         --  isAbstract
                      2      => (M_Boolean, False),         --  isFinalSpecialization
@@ -370,6 +372,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  body
@@ -399,6 +402,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),             --  context
                      2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
@@ -433,6 +437,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_Boolean, False),         --  isFinalSpecialization
                      2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
@@ -489,6 +494,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  alias
@@ -524,6 +530,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_Boolean, False),         --  isFinalSpecialization
                      2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
@@ -582,6 +589,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),             --  enumeration
                      2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
@@ -613,6 +621,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
@@ -646,6 +655,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      3      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
@@ -677,6 +687,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),             --  bodyCondition
                      2      => (M_Element, 0),             --  class
@@ -746,6 +757,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
@@ -799,6 +811,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),             --  importedPackage
                      2      => (M_Element, 0),             --  importingNamespace
@@ -832,6 +845,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),             --  mergedPackage
                      2      => (M_Element, 0),             --  owner
@@ -865,6 +879,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  default
@@ -906,6 +921,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_Boolean, False),         --  isFinalSpecialization
                      2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
@@ -962,6 +978,7 @@ package body Cmof.Internals.Constructors is
         Extent   => 0,
         Previous => 0,
         Next     => 0,
+        Proxy    => null,
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),             --  association
                      2      => (M_Element, 0),             --  class

@@ -318,6 +318,8 @@ package body Generator.Constructors is
             Put_Line
              ("        Next     => 0,");
             Put_Line
+             ("        Proxy    => null,");
+            Put_Line
              ("        Member   => (0      => (Kind => M_None),");
             Class.All_Properties.Iterate
              (Generate_Member_Initialization'Access);
