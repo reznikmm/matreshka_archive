@@ -50,7 +50,7 @@ Index: cmof-internals-attributes.adb
 +      Elements.Table (Self).Member
 +       (Member_Offset
 +         (Elements.Table (Self).Kind,
-+            MP_CMOF_Package_Uri)).String_Value := League.Strings.Internals.Get_Shared (To);
++            MP_CMOF_Package_Uri)).String_Value := League.Strings.Internals.Internal (To);
 +      Matreshka.Internals.Strings.Reference
 +       (Elements.Table (Self).Member
 +         (Member_Offset

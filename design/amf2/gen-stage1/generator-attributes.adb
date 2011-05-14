@@ -362,7 +362,7 @@ package body Generator.Attributes is
                 ("      "
                    & Constant_Name_In_Metamodel (Property)
                    & ")"
-                   & ").String_Value := League.Strings.Internals.Get_Shared (To);");
+                   & ").String_Value := League.Strings.Internals.Internal (To);");
                Set_Col (Indent);
                Put_Line ("Matreshka.Internals.Strings.Reference");
                Set_Col (Indent);
