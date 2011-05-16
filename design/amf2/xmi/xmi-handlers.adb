@@ -258,6 +258,20 @@ package body XMI.Handlers is
       end if;
    end Establish_Link;
 
+   -----------------
+   -- Fatal_Error --
+   -----------------
+
+   overriding procedure Fatal_Error
+    (Self       : in out XMI_Handler;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean) is
+   begin
+      if Self.Diagnosis.Is_Empty then
+         Self.Diagnosis := "XML fatal error: " & Occurrence.Message;
+      end if;
+   end Fatal_Error;
+
    ----------
    -- Hash --
    ----------

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -54,6 +54,7 @@ function XMI.Reader (File_Name : String) return CMOF.CMOF_Extent is
 begin
    Input.Open (File_Name);
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
+   Reader.Set_Error_Handler (Handler'Unchecked_Access);
    Reader.Parse (Input'Unchecked_Access);
 
    return Handler.Root;

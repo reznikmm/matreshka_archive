@@ -49,13 +49,16 @@ private with AMF.Factories;
 private with League.Strings;
 private with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
+with XML.SAX.Error_Handlers;
+private with XML.SAX.Parse_Exceptions;
 
 with CMOF;
 
 package XMI.Handlers is
 
    type XMI_Handler is
-     limited new XML.SAX.Content_Handlers.SAX_Content_Handler with private;
+     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
+       and XML.SAX.Error_Handlers.SAX_Error_Handler with private;
 
    function Root (Self : XMI_Handler) return CMOF.CMOF_Extent;
 
@@ -96,7 +99,8 @@ private
            CMOF."=");
 
    type XMI_Handler is
-     limited new XML.SAX.Content_Handlers.SAX_Content_Handler with record
+     limited new XML.SAX.Content_Handlers.SAX_Content_Handler
+       and XML.SAX.Error_Handlers.SAX_Error_Handler with record
       Extent           : CMOF.CMOF_Extent;
       Factory          : AMF.Factories.AMF_Factory_Access;
       Current          : CMOF.CMOF_Element := CMOF.Null_CMOF_Element;
@@ -134,6 +138,11 @@ private
 
    overriding function Error_String
     (Self : XMI_Handler) return League.Strings.Universal_String;
+
+   overriding procedure Fatal_Error
+    (Self       : in out XMI_Handler;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean);
 
 --   overriding procedure Ignorable_Whitespace
 --    (Self    : in out XMI_Handler;
