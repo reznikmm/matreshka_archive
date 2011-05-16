@@ -58,6 +58,7 @@ with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
 with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
+with League.Application;
 with League.Strings;
 with XMI.Reader;
 
@@ -97,6 +98,9 @@ procedure Gen_API is
    function Split_Text
     (Text : Universal_String; Width : Positive) return Universal_String_Vector;
 
+   Model_Name : League.Strings.Universal_String
+     := League.Application.Arguments.Element (2);
+
    --------------------
    -- Generate_Class --
    --------------------
@@ -132,8 +136,10 @@ procedure Gen_API is
        (Element : CMOF_Class) return League.Strings.Universal_String is
       begin
          return
-           To_Universal_String
-            ("AMF.CMOF." & Plural (To_Ada_Identifier (Get_Name (Element))));
+           "AMF."
+             & Model_Name
+             & "."
+             & Plural (To_Ada_Identifier (Get_Name (Element)));
       end Ada_API_Package_Name;
 
       -----------------------
@@ -144,8 +150,7 @@ procedure Gen_API is
        (Element : CMOF_Class) return League.Strings.Universal_String is
       begin
          return
-           To_Universal_String
-            ("CMOF_" & To_Ada_Identifier (Get_Name (Element)));
+           Model_Name & "_" & To_Ada_Identifier (Get_Name (Element));
       end Ada_API_Type_Name;
 
       ---------------------------------
