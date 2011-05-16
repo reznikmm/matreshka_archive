@@ -157,7 +157,12 @@ package body XMI.Handlers is
       end Establish_Link;
 
    begin
-      Self.Postponed.Iterate (Establish_Link'Access);
+      if Self.Diagnosis.Is_Empty then
+         Self.Postponed.Iterate (Establish_Link'Access);
+
+      else
+         Put_Line (Standard_Error, Self.Diagnosis.To_Wide_Wide_String);
+      end if;
    end End_Document;
 
    -----------------
@@ -215,7 +220,7 @@ package body XMI.Handlers is
    overriding function Error_String
     (Self : XMI_Handler) return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_Universal_String;
+      return Self.Diagnosis;
    end Error_String;
 
    --------------------
@@ -531,16 +536,20 @@ package body XMI.Handlers is
             end;
 
          else
---         Put_Line (Qualified_Name.To_Wide_Wide_String);
-
---         Dump (Get_Meta_Class (Self.Current));
-
          Property :=
            Resolve_Owned_Attribute
             (Get_Meta_Class (Self.Current), Qualified_Name);
 
          if Property = Null_CMOF_Element then
-            raise Program_Error;
+            Self.Diagnosis :=
+              "Unknown property '"
+                & Get_Name (Get_Meta_Class (Self.Current))
+                & ":"
+                & Qualified_Name
+                & ''';
+            Success := False;
+
+            return;
          end if;
 
          Association := Get_Association (Property);
@@ -583,16 +592,29 @@ package body XMI.Handlers is
 
             for J in 1 .. Attributes.Length loop
                if Attributes.Namespace_URI (J).Is_Empty then
---                  Put_Line
---                   ("  "
---                      & Attributes.Qualified_Name (J).To_Wide_Wide_String
---                      & "  "
---                      & Attributes.Value (J).To_Wide_Wide_String);
---                  Dump (Get_Meta_Class (Self.Current));
-                  Set_Attribute
-                   (CMOF.XMI_Helper.Resolve_Attribute
-                     (Meta, Attributes.Qualified_Name (J)),
-                    Attributes.Value (J));
+                  declare
+                     Property : CMOF_Property
+                       := CMOF.XMI_Helper.Resolve_Attribute
+                           (Meta, Attributes.Qualified_Name (J));
+
+                  begin
+                     if Property = Null_CMOF_Element then
+                        Self.Diagnosis :=
+                          "Unknown property '"
+                            & Get_Name (Meta)
+                            & ":"
+                            & Attributes.Qualified_Name (J)
+                            & ''';
+                        Success := False;
+
+                        return;
+                     end if;
+
+                     Set_Attribute
+                      (CMOF.XMI_Helper.Resolve_Attribute
+                        (Meta, Attributes.Qualified_Name (J)),
+                       Attributes.Value (J));
+                  end;
 
                elsif Attributes.Namespace_URI (J) = XMI_Namespace then
                   null;

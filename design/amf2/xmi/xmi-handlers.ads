@@ -108,6 +108,7 @@ private
       Postponed        : Postponed_Link_Vectors.Vector;
       Duplicate        : Duplicate_Link_Sets.Set;
       Skip_End_Element : Natural := 0;
+      Diagnosis        : League.Strings.Universal_String;
    end record;
 
    overriding procedure Characters
