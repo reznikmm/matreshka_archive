@@ -5,8 +5,9 @@ all:
 	gprbuild -p -Pxmi/xmi.gpr
 	gprbuild -p -Pgui/gui_moc.gpr
 	gprbuild -p -Pgui/gui.gpr
-#	./demo-reader data/cmof.xml
-	./demo-viewer data/cmof.xml
+#	time ./demo-reader data/cmof.xml
+	(cd data/2.4 && ../../demo-viewer UML.cmof)
+#	./demo-viewer data/cmof.xml
 
 gen:
 	gprbuild -p -Pgen-stage1/generator.gpr
@@ -27,15 +28,16 @@ gen2:
 
 gen2-api:
 	gprbuild -p -Pgen-stage2/gens.gpr
-	./gen-stage2/.obj/gen_api data/cmof.xml > cmof/generated/sources.ada
+	./gen-stage2/.obj/gen_api data/cmof.xml CMOF > cmof/generated/sources.ada
 	gnatchop -gnat12 -w cmof/generated/sources.ada cmof/generated
 	rm cmof/generated/sources.ada
 
 gen-uml:
 	gprbuild -p -Pgen-stage2/gens.gpr
-	(cd data && ../gen-stage2/.obj/gen_api LM.cmof) # > uml/generated/sources.ada
-#	(cd data && ../gen-stage2/.obj/gen_api L1.cmof) # > uml/generated/sources.ada
-#	(cd data && ../gen-stage2/.obj/gen_api L3.cmof) # > uml/generated/sources.ada
+	(cd data/2.4 && ../../gen-stage2/.obj/gen_api UML.cmof UML) > uml/generated/sources.ada
+	gnatchop -gnat12 -w uml/generated/sources.ada uml/generated
+	rm uml/generated/sources.ada
+	gnatmake -p -Puml/uml.gpr
 
 clean:
 	rm -rf cmof/.objs gen-stage1/.objs gen-stage2/.obj xmi/.objs gui/.objs gui/.amoc demo-cmof demo-reader demo-viewer
