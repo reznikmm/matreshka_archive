@@ -358,7 +358,12 @@ procedure Gen_API is
       begin
          for J in 1 .. Length (Redefines) loop
             if Get_Name (Element (Redefines, J)) = Get_Name (Attribute) then
-               Ada_Overriding := True;
+               if Get_Type (Element (Redefines, J)) = Get_Type (Attribute)
+                 and then Get_Lower (Element (Redefines, J))
+                            = Get_Lower (Attribute)
+               then
+                  Ada_Overriding := True;
+               end if;
 
                exit;
             end if;
