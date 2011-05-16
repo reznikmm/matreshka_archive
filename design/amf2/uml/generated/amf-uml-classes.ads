@@ -1,0 +1,136 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--                          Ada Modeling Framework                          --
+--                                                                          --
+--                        Runtime Library Component                         --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+--  A class describes a set of objects that share the same specifications of 
+--  features, constraints, and semantics.
+--  A class has the capability to have an internal structure and ports.
+--  Class has derived association that indicates how it may be extended 
+--  through one or more stereotypes. Stereotype is the only kind of metaclass 
+--  that cannot be extended by stereotypes.
+--  A class may be designated as active (i.e., each of its instances having 
+--  its own thread of control) or passive (i.e., each of its instances 
+--  executing within the context of some other object). A class may also 
+--  specify which signals the instances of this class handle.
+------------------------------------------------------------------------------
+with AMF.UML.Behaviored_Classifiers;
+limited with AMF.UML.Classifiers;
+with AMF.UML.Encapsulated_Classifiers;
+limited with AMF.UML.Extensions;
+limited with AMF.UML.Operations;
+limited with AMF.UML.Properties;
+limited with AMF.UML.Receptions;
+
+package AMF.UML.Classes is
+
+   pragma Preelaborate;
+
+   type UML_Class_Interface is limited interface
+     and AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Interface
+     and AMF.UML.Encapsulated_Classifiers.UML_Encapsulated_Classifier_Interface;
+
+   type UML_Class is
+     access all UML_Class_Interface'Class;
+
+   type Set_Of_UML_Class is null record;
+   type Ordered_Set_Of_UML_Class is null record;
+
+   not overriding function Get_Extension
+    (Self : not null access constant UML_Class_Interface)
+       return AMF.UML.Extensions.Set_Of_UML_Extension is abstract;
+   --  References the Extensions that specify additional properties of the 
+   --  metaclass. The property is derived from the extensions whose memberEnds 
+   --  are typed by the Class.
+
+   overriding function Get_Is_Abstract
+    (Self : not null access constant UML_Class_Interface)
+       return Boolean is abstract;
+   --  True when a class is abstract.
+   --  If true, the Classifier does not provide a complete declaration and can 
+   --  typically not be instantiated. An abstract classifier is intended to be 
+   --  used by other classifiers e.g. as the target of general 
+   --  metarelationships or generalization relationships.
+
+   overriding procedure Set_Is_Abstract
+    (Self : not null access UML_Class_Interface;
+     To   : Boolean) is abstract;
+
+   not overriding function Get_Is_Active
+    (Self : not null access constant UML_Class_Interface)
+       return Boolean is abstract;
+   --  Determines whether an object specified by this class is active or not. 
+   --  If true, then the owning class is referred to as an active class. If 
+   --  false, then such a class is referred to as a passive class.
+
+   not overriding procedure Set_Is_Active
+    (Self : not null access UML_Class_Interface;
+     To   : Boolean) is abstract;
+
+   not overriding function Get_Nested_Classifier
+    (Self : not null access constant UML_Class_Interface)
+       return AMF.UML.Classifiers.Ordered_Set_Of_UML_Classifier is abstract;
+   --  References all the Classifiers that are defined (nested) within the 
+   --  Class.
+
+   overriding function Get_Owned_Attribute
+    (Self : not null access constant UML_Class_Interface)
+       return AMF.UML.Properties.Ordered_Set_Of_UML_Property is abstract;
+   --  The attributes (i.e. the properties) owned by the class.
+
+   not overriding function Get_Owned_Operation
+    (Self : not null access constant UML_Class_Interface)
+       return AMF.UML.Operations.Ordered_Set_Of_UML_Operation is abstract;
+   --  The operations owned by the class.
+
+   not overriding function Get_Owned_Reception
+    (Self : not null access constant UML_Class_Interface)
+       return AMF.UML.Receptions.Set_Of_UML_Reception is abstract;
+   --  Receptions that objects of this class are willing to accept.
+
+   not overriding function Get_Super_Class
+    (Self : not null access constant UML_Class_Interface)
+       return AMF.UML.Classes.Set_Of_UML_Class is abstract;
+   --  This gives the superclasses of a class.
+
+end AMF.UML.Classes;
