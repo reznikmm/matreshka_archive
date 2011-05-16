@@ -320,6 +320,16 @@ procedure Gen_API is
                         return "Universal_String";
                      end if;
 
+                  elsif Get_Name (Get_Type (Attribute))
+                       = To_Universal_String ("Real")
+                  then
+                     if Get_Lower (Attribute) = 0 then
+                        return "Optional_Real";
+
+                     else
+                        return "Real";
+                     end if;
+
                   else
                      if Get_Lower (Attribute) = 0 then
                         return
