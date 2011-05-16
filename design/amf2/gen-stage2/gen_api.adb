@@ -307,7 +307,7 @@ procedure Gen_API is
                         return "Optional_Unlimited_Natural";
 
                      else
-                        return "UnlimitedNatural";
+                        return "Unlimited_Natural";
                      end if;
 
                   elsif Get_Name (Get_Type (Attribute))
