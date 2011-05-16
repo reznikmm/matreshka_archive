@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,10 +47,6 @@ package CMOF.XMI_Helper is
 
    function Resolve
     (Name : League.Strings.Universal_String) return CMOF_Element;
-
-   function Resolve_Attribute
-    (Class : CMOF_Class;
-     Name  : League.Strings.Universal_String) return CMOF_Element;
 
    function Is_Association (Element : CMOF_Element) return Boolean;
 

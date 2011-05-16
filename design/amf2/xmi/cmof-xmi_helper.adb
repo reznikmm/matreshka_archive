@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -112,42 +112,6 @@ package body CMOF.XMI_Helper is
 
       raise Program_Error with "Unknown CMOF class";
    end Resolve;
-
-   -----------------------
-   -- Resolve_Attribute --
-   -----------------------
-
-   function Resolve_Attribute
-    (Class : CMOF_Class;
-     Name  : League.Strings.Universal_String) return CMOF_Element
-   is
-      use type League.Strings.Universal_String;
-
-      use CMOF.Classes;
-      use CMOF.Collections;
-      use CMOF.Named_Elements;
-
-      E : constant Ordered_Set_Of_CMOF_Property := Get_Owned_Attribute (Class);
-      S : constant Set_Of_CMOF_Class            := Get_Super_Class (Class);
-      A : CMOF_Element;
-
-   begin
-      for J in 1 .. Length (E) loop
-         if Get_Name (Element (E, J)) = Name then
-            return Element (E, J);
-         end if;
-      end loop;
-
-      for J in 1 .. Length (S) loop
-         A := Resolve_Attribute (Element (S, J), Name);
-
-         if A /= Null_CMOF_Element then
-            return A;
-         end if;
-      end loop;
-
-      return Null_CMOF_Element;
-   end Resolve_Attribute;
 
    ------------
    -- Set_Id --

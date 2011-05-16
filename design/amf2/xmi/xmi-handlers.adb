@@ -608,7 +608,7 @@ package body XMI.Handlers is
                if Attributes.Namespace_URI (J).Is_Empty then
                   declare
                      Property : CMOF_Property
-                       := CMOF.XMI_Helper.Resolve_Attribute
+                       := Resolve_Owned_Attribute
                            (Meta, Attributes.Qualified_Name (J));
 
                   begin
@@ -624,10 +624,7 @@ package body XMI.Handlers is
                         return;
                      end if;
 
-                     Set_Attribute
-                      (CMOF.XMI_Helper.Resolve_Attribute
-                        (Meta, Attributes.Qualified_Name (J)),
-                       Attributes.Value (J));
+                     Set_Attribute (Property, Attributes.Value (J));
                   end;
 
                elsif Attributes.Namespace_URI (J) = XMI_Namespace then
@@ -679,7 +676,7 @@ package body XMI.Handlers is
 --                      & Attributes.Value (J).To_Wide_Wide_String);
 --                  Dump (Get_Meta_Class (Self.Current));
                   Set_Attribute
-                   (CMOF.XMI_Helper.Resolve_Attribute
+                   (Resolve_Owned_Attribute
                      (Meta, Attributes.Qualified_Name (J)),
                     Attributes.Value (J));
                   end if;
