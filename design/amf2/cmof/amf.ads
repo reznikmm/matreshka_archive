@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -66,6 +66,8 @@ package AMF is
    ---------------------
    -- Primitive types --
    ---------------------
+
+   type Real is new Long_Float;
 
    type Unlimited_Natural (Unlimited : Boolean := False) is record
       case Unlimited is
