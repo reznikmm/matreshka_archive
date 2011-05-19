@@ -50,7 +50,7 @@ project Gens is
    for Object_Dir use ".obj";
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
+      for Default_Switches ("Ada") use ("-g", "-gnat12", "-gnatW8");
    end Compiler;
 
 end Gens;
