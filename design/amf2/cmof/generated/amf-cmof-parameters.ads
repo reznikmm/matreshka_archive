@@ -60,6 +60,7 @@ package AMF.CMOF.Parameters is
 
    type CMOF_Parameter is
      access all CMOF_Parameter_Interface'Class;
+   for CMOF_Parameter'Storage_Size use 0;
 
    type Set_Of_CMOF_Parameter is null record;
    type Ordered_Set_Of_CMOF_Parameter is null record;

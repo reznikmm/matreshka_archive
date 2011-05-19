@@ -57,6 +57,7 @@ package AMF.CMOF.Relationships is
 
    type CMOF_Relationship is
      access all CMOF_Relationship_Interface'Class;
+   for CMOF_Relationship'Storage_Size use 0;
 
    type Set_Of_CMOF_Relationship is null record;
    type Ordered_Set_Of_CMOF_Relationship is null record;

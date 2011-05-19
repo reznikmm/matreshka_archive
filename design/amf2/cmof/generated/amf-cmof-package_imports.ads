@@ -59,6 +59,7 @@ package AMF.CMOF.Package_Imports is
 
    type CMOF_Package_Import is
      access all CMOF_Package_Import_Interface'Class;
+   for CMOF_Package_Import'Storage_Size use 0;
 
    type Set_Of_CMOF_Package_Import is null record;
    type Ordered_Set_Of_CMOF_Package_Import is null record;

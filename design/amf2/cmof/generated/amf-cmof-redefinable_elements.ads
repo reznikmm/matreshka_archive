@@ -60,6 +60,7 @@ package AMF.CMOF.Redefinable_Elements is
 
    type CMOF_Redefinable_Element is
      access all CMOF_Redefinable_Element_Interface'Class;
+   for CMOF_Redefinable_Element'Storage_Size use 0;
 
    type Set_Of_CMOF_Redefinable_Element is null record;
    type Ordered_Set_Of_CMOF_Redefinable_Element is null record;

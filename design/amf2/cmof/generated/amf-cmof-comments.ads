@@ -57,6 +57,7 @@ package AMF.CMOF.Comments is
 
    type CMOF_Comment is
      access all CMOF_Comment_Interface'Class;
+   for CMOF_Comment'Storage_Size use 0;
 
    type Set_Of_CMOF_Comment is null record;
    type Ordered_Set_Of_CMOF_Comment is null record;

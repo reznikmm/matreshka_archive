@@ -63,6 +63,7 @@ package AMF.CMOF.Associations is
 
    type CMOF_Association is
      access all CMOF_Association_Interface'Class;
+   for CMOF_Association'Storage_Size use 0;
 
    type Set_Of_CMOF_Association is null record;
    type Ordered_Set_Of_CMOF_Association is null record;

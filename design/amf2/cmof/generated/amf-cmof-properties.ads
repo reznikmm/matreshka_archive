@@ -66,6 +66,7 @@ package AMF.CMOF.Properties is
 
    type CMOF_Property is
      access all CMOF_Property_Interface'Class;
+   for CMOF_Property'Storage_Size use 0;
 
    type Set_Of_CMOF_Property is null record;
    type Ordered_Set_Of_CMOF_Property is null record;

@@ -63,6 +63,7 @@ package AMF.CMOF.Classifiers is
 
    type CMOF_Classifier is
      access all CMOF_Classifier_Interface'Class;
+   for CMOF_Classifier'Storage_Size use 0;
 
    type Set_Of_CMOF_Classifier is null record;
    type Ordered_Set_Of_CMOF_Classifier is null record;

@@ -59,6 +59,7 @@ package AMF.CMOF.Element_Imports is
 
    type CMOF_Element_Import is
      access all CMOF_Element_Import_Interface'Class;
+   for CMOF_Element_Import'Storage_Size use 0;
 
    type Set_Of_CMOF_Element_Import is null record;
    type Ordered_Set_Of_CMOF_Element_Import is null record;

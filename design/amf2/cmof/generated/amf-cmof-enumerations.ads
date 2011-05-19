@@ -58,6 +58,7 @@ package AMF.CMOF.Enumerations is
 
    type CMOF_Enumeration is
      access all CMOF_Enumeration_Interface'Class;
+   for CMOF_Enumeration'Storage_Size use 0;
 
    type Set_Of_CMOF_Enumeration is null record;
    type Ordered_Set_Of_CMOF_Enumeration is null record;

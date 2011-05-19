@@ -57,6 +57,7 @@ package AMF.CMOF.Named_Elements is
 
    type CMOF_Named_Element is
      access all CMOF_Named_Element_Interface'Class;
+   for CMOF_Named_Element'Storage_Size use 0;
 
    type Set_Of_CMOF_Named_Element is null record;
    type Ordered_Set_Of_CMOF_Named_Element is null record;

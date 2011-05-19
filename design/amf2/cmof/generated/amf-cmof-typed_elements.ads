@@ -58,6 +58,7 @@ package AMF.CMOF.Typed_Elements is
 
    type CMOF_Typed_Element is
      access all CMOF_Typed_Element_Interface'Class;
+   for CMOF_Typed_Element'Storage_Size use 0;
 
    type Set_Of_CMOF_Typed_Element is null record;
    type Ordered_Set_Of_CMOF_Typed_Element is null record;

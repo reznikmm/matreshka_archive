@@ -63,6 +63,7 @@ package AMF.CMOF.Operations is
 
    type CMOF_Operation is
      access all CMOF_Operation_Interface'Class;
+   for CMOF_Operation'Storage_Size use 0;
 
    type Set_Of_CMOF_Operation is null record;
    type Ordered_Set_Of_CMOF_Operation is null record;

@@ -61,6 +61,7 @@ package AMF.CMOF.Namespaces is
 
    type CMOF_Namespace is
      access all CMOF_Namespace_Interface'Class;
+   for CMOF_Namespace'Storage_Size use 0;
 
    type Set_Of_CMOF_Namespace is null record;
    type Ordered_Set_Of_CMOF_Namespace is null record;

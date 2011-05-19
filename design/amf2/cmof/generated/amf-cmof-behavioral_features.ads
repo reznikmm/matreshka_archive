@@ -61,6 +61,7 @@ package AMF.CMOF.Behavioral_Features is
 
    type CMOF_Behavioral_Feature is
      access all CMOF_Behavioral_Feature_Interface'Class;
+   for CMOF_Behavioral_Feature'Storage_Size use 0;
 
    type Set_Of_CMOF_Behavioral_Feature is null record;
    type Ordered_Set_Of_CMOF_Behavioral_Feature is null record;

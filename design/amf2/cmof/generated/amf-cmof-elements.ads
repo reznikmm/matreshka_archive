@@ -56,6 +56,7 @@ package AMF.CMOF.Elements is
 
    type CMOF_Element is
      access all CMOF_Element_Interface'Class;
+   for CMOF_Element'Storage_Size use 0;
 
    type Set_Of_CMOF_Element is null record;
    type Ordered_Set_Of_CMOF_Element is null record;

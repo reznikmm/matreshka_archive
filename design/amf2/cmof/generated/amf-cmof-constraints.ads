@@ -61,6 +61,7 @@ package AMF.CMOF.Constraints is
 
    type CMOF_Constraint is
      access all CMOF_Constraint_Interface'Class;
+   for CMOF_Constraint'Storage_Size use 0;
 
    type Set_Of_CMOF_Constraint is null record;
    type Ordered_Set_Of_CMOF_Constraint is null record;

@@ -60,6 +60,7 @@ package AMF.CMOF.Types is
 
    type CMOF_Type is
      access all CMOF_Type_Interface'Class;
+   for CMOF_Type'Storage_Size use 0;
 
    type Set_Of_CMOF_Type is null record;
    type Ordered_Set_Of_CMOF_Type is null record;

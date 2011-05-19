@@ -58,6 +58,7 @@ package AMF.CMOF.Features is
 
    type CMOF_Feature is
      access all CMOF_Feature_Interface'Class;
+   for CMOF_Feature'Storage_Size use 0;
 
    type Set_Of_CMOF_Feature is null record;
    type Ordered_Set_Of_CMOF_Feature is null record;

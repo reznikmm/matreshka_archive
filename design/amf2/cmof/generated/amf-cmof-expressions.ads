@@ -57,6 +57,7 @@ package AMF.CMOF.Expressions is
 
    type CMOF_Expression is
      access all CMOF_Expression_Interface'Class;
+   for CMOF_Expression'Storage_Size use 0;
 
    type Set_Of_CMOF_Expression is null record;
    type Ordered_Set_Of_CMOF_Expression is null record;

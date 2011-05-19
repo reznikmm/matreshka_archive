@@ -59,6 +59,7 @@ package AMF.CMOF.Primitive_Types is
 
    type CMOF_Primitive_Type is
      access all CMOF_Primitive_Type_Interface'Class;
+   for CMOF_Primitive_Type'Storage_Size use 0;
 
    type Set_Of_CMOF_Primitive_Type is null record;
    type Ordered_Set_Of_CMOF_Primitive_Type is null record;

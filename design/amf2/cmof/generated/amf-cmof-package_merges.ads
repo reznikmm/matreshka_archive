@@ -58,6 +58,7 @@ package AMF.CMOF.Package_Merges is
 
    type CMOF_Package_Merge is
      access all CMOF_Package_Merge_Interface'Class;
+   for CMOF_Package_Merge'Storage_Size use 0;
 
    type Set_Of_CMOF_Package_Merge is null record;
    type Ordered_Set_Of_CMOF_Package_Merge is null record;
