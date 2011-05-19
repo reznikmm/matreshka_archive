@@ -219,7 +219,7 @@ package body CMOF.Internals.Factories is
      First_Element  : CMOF_Element;
      Second_Element : CMOF_Element)
    is
-      Member_End      : constant Ordered_Set_Of_CMOF_Property
+      Member_End : constant Ordered_Set_Of_CMOF_Property
         := CMOF.Internals.Attributes.Internal_Get_Member_End (Association);
 
    begin
