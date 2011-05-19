@@ -76,17 +76,6 @@ private
    package Postponed_Link_Vectors is
      new Ada.Containers.Vectors (Positive, Postponed_Link);
 
-   type Duplicate_Link is record
-      Association : CMOF.CMOF_Association;
-      First       : League.Strings.Universal_String;
-      Second      : League.Strings.Universal_String;
-   end record;
-
-   function Hash (Item : Duplicate_Link) return Ada.Containers.Hash_Type;
-
-   package Duplicate_Link_Sets is
-     new Ada.Containers.Hashed_Sets (Duplicate_Link, Hash, "=");
-
    function Hash
     (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
 
@@ -110,7 +99,6 @@ private
       Collect_Text     : Boolean := False;
       Mapping          : String_Element_Maps.Map;
       Postponed        : Postponed_Link_Vectors.Vector;
-      Duplicate        : Duplicate_Link_Sets.Set;
       Skip_End_Element : Natural := 0;
       Diagnosis        : League.Strings.Universal_String;
    end record;

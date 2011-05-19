@@ -234,26 +234,33 @@ package body XMI.Handlers is
      Other_Element : CMOF.CMOF_Element)
    is
       Association : constant CMOF_Association := Get_Association (Attribute);
-      E_Id        : constant League.Strings.Universal_String
-        := Get_Id (One_Element);
-      O_Id        : constant League.Strings.Universal_String
-        := Get_Id (Other_Element);
 
    begin
-      if Self.Duplicate.Contains ((Association, E_Id, O_Id)) then
-         Self.Duplicate.Delete ((Association, E_Id, O_Id));
+      --  This subprograms take in sense constraint of MOF meta models to
+      --  handle potentially duplicated links:
+      --
+      --  "[12] An Association has exactly 2 memberEnds, may never have a
+      --  navigableOwnedEnd (they will always be owned by Classes) and may have
+      --  at most one ownedEnd."
 
-      elsif Self.Duplicate.Contains ((Association, O_Id, E_Id)) then
-         Self.Duplicate.Delete ((Association, O_Id, E_Id));
-
-      else
-         Self.Duplicate.Insert ((Association, E_Id, O_Id));
+      if Length (Get_Owned_End (Association)) = 1 then
+         --  One of the ends is owned by association, link must be created
+         --  even when order of ends is reversed.
 
          if Element (Get_Member_End (Association), 1) = Attribute then
             Self.Factory.Create_Link (Association, One_Element, Other_Element);
 
          else
             Self.Factory.Create_Link (Association, Other_Element, One_Element);
+         end if;
+
+      else
+         --  None of ends are owned by association, link is created when
+         --  specified attribute is a first end of the association to prevent
+         --  duplicate links.
+
+         if Element (Get_Member_End (Association), 1) = Attribute then
+            Self.Factory.Create_Link (Association, One_Element, Other_Element);
          end if;
       end if;
    end Establish_Link;
@@ -271,15 +278,6 @@ package body XMI.Handlers is
          Self.Diagnosis := "XML fatal error: " & Occurrence.Message;
       end if;
    end Fatal_Error;
-
-   ----------
-   -- Hash --
-   ----------
-
-   function Hash (Item : Duplicate_Link) return Ada.Containers.Hash_Type is
-   begin
-      return Hash (Item.First & Item.Second);
-   end Hash;
 
    ----------
    -- Hash --
@@ -587,17 +585,6 @@ package body XMI.Handlers is
             Set_Id (New_Element, Attributes.Value (XMI_Namespace, Id_Name));
             Self.Mapping.Insert
              (Attributes.Value (XMI_Namespace, Id_Name), New_Element);
-
---            if Element (Get_Member_End (Association), 1) = Property then
---               CMOF.Factory.Create_Link (Association, Self.Current, New_Element);
---
---            else
---               CMOF.Factory.Create_Link (Association, New_Element, Self.Current);
---            end if;
-            --  Some XMI files violate rule what other end of the composite
-            --  association is not serialized.
-            --
-            --  XXX More better method must be used here probably.
 
             Establish_Link (Self, Property, Self.Current, New_Element);
 
