@@ -509,6 +509,7 @@ procedure Gen_API is
       New_Line;
       Put_Line ("   type " & Type_Name & " is");
       Put_Line ("     access all " & Type_Name & "_Interface'Class;");
+      Put_Line ("   for " & Type_Name & "'Storage_Size use 0;");
 
       --  Generate types foe collections.
       --
