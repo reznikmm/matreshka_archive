@@ -6,7 +6,7 @@ project Cmof is
    for Source_Dirs use (".", "generated");
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
+      for Default_Switches ("Ada") use ("-g", "-gnat12", "-gnatW8");
    end Compiler;
 
 end Cmof;

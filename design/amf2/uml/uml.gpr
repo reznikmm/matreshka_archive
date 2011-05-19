@@ -7,7 +7,7 @@ project UML is
    for Source_Dirs use (".", "generated");
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12");
+      for Default_Switches ("Ada") use ("-g", "-gnatW8", "-gnat12");
    end Compiler;
 
 end UML;
