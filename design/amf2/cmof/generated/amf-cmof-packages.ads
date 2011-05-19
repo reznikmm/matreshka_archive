@@ -102,7 +102,7 @@ package AMF.CMOF.Packages is
    --  following the IETF URI specification, RFC 2396 
    --  http://www.ietf.org/rfc/rfc2396.txt. UML 1.4 and MOF 1.4 were assigned 
    --  URIs to their outermost package. The package URI appears in XMI files 
-   --  when instances of the package["2019"]s classes are serialized.
+   --  when instances of the package’s classes are serialized.
 
    not overriding procedure Set_Uri
     (Self : not null access CMOF_Package_Interface;
