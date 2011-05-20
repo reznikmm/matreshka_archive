@@ -84,7 +84,23 @@ procedure Gen_API is
    use Generator.Wide_Wide_Text_IO;
    use League.Strings;
 
+   function Ada_API_Package_Name
+    (Element : CMOF_Class) return League.Strings.Universal_String;
+   --  Returns name of interface package.
+
+   function Ada_API_Collections_Package_Name
+    (Element : CMOF_Class) return League.Strings.Universal_String;
+   --  Returns name of collections package.
+
+   function Ada_API_Type_Name
+    (Element : CMOF_Class) return League.Strings.Universal_String;
+   --  Returns name of the type.
+
    procedure Generate_Class (Class : CMOF.CMOF_Element);
+   --  Generates specification of interface package.
+
+   procedure Generate_Collections (Class : CMOF.CMOF_Element);
+   --  Generates collections package.
 
    procedure Generate_Element
     (Position : CMOF.Extents.CMOF_Element_Sets.Cursor);
@@ -101,6 +117,46 @@ procedure Gen_API is
    Model_Name : League.Strings.Universal_String
      := League.Application.Arguments.Element (2);
 
+   --------------------------------------
+   -- Ada_API_Collections_Package_Name --
+   --------------------------------------
+
+   function Ada_API_Collections_Package_Name
+    (Element : CMOF_Class) return League.Strings.Universal_String is
+   begin
+      return
+        "AMF."
+          & Model_Name
+          & "."
+          & Plural (To_Ada_Identifier (Get_Name (Element)))
+          & ".Collections";
+   end Ada_API_Collections_Package_Name;
+
+   --------------------------
+   -- Ada_API_Package_Name --
+   --------------------------
+
+   function Ada_API_Package_Name
+    (Element : CMOF_Class) return League.Strings.Universal_String is
+   begin
+      return
+        "AMF."
+          & Model_Name
+          & "."
+          & Plural (To_Ada_Identifier (Get_Name (Element)));
+   end Ada_API_Package_Name;
+
+   -----------------------
+   -- Ada_API_Type_Name --
+   -----------------------
+
+   function Ada_API_Type_Name
+    (Element : CMOF_Class) return League.Strings.Universal_String is
+   begin
+      return
+        Model_Name & "_" & To_Ada_Identifier (Get_Name (Element));
+   end Ada_API_Type_Name;
+
    --------------------
    -- Generate_Class --
    --------------------
@@ -114,12 +170,6 @@ procedure Gen_API is
       Ordinary_With : Universal_String_Sets.Set;
       All_With      : Universal_String_Sets.Set;
 
-      function Ada_API_Package_Name
-       (Element : CMOF_Class) return League.Strings.Universal_String;
-
-      function Ada_API_Type_Name
-       (Element : CMOF_Class) return League.Strings.Universal_String;
-
       procedure Compute_With_For_Super_Classes;
 
       procedure Compute_With_For_Attributes;
@@ -127,31 +177,6 @@ procedure Gen_API is
       procedure Generate_With_Clause (Position : Universal_String_Sets.Cursor);
 
       procedure Generate_Attribute (Attribute : CMOF_Property);
-
-      --------------------------
-      -- Ada_API_Package_Name --
-      --------------------------
-
-      function Ada_API_Package_Name
-       (Element : CMOF_Class) return League.Strings.Universal_String is
-      begin
-         return
-           "AMF."
-             & Model_Name
-             & "."
-             & Plural (To_Ada_Identifier (Get_Name (Element)));
-      end Ada_API_Package_Name;
-
-      -----------------------
-      -- Ada_API_Type_Name --
-      -----------------------
-
-      function Ada_API_Type_Name
-       (Element : CMOF_Class) return League.Strings.Universal_String is
-      begin
-         return
-           Model_Name & "_" & To_Ada_Identifier (Get_Name (Element));
-      end Ada_API_Type_Name;
 
       ---------------------------------
       -- Compute_With_For_Attributes --
@@ -168,9 +193,25 @@ procedure Gen_API is
             The_Type := Get_Type (Attribute);
 
             if not Is_Data_Type (The_Type)
-              and The_Type /= Class
+              and (The_Type /= Class or Is_Multivalued (Attribute))
             then
-               Name := Ada_API_Package_Name (The_Type);
+               if Is_Multivalued (Attribute) then
+                  Name := Ada_API_Package_Name (The_Type);
+
+                  --  Remove with clause for interface package when it is not
+                  --  withed by ordinary with clause.
+
+                  if All_With.Contains (Name)
+                    and not Ordinary_With.Contains (Name)
+                  then
+                     All_With.Delete (Name);
+                  end if;
+
+                  Name := Ada_API_Collections_Package_Name (The_Type);
+
+               else
+                  Name := Ada_API_Package_Name (The_Type);
+               end if;
 
                if not All_With.Contains (Name) then
                   All_With.Insert (Name);
@@ -248,7 +289,7 @@ procedure Gen_API is
                      return
                        Ada_API_Package_Name
                         (Get_Type (Attribute)).To_Wide_Wide_String
-                         & ".Ordered_Set_Of_"
+                         & ".Collections.Ordered_Set_Of_"
                          & Ada_API_Type_Name
                             (Get_Type (Attribute)).To_Wide_Wide_String;
 
@@ -256,7 +297,7 @@ procedure Gen_API is
                      return
                        Ada_API_Package_Name
                         (Get_Type (Attribute)).To_Wide_Wide_String
-                         & ".Sequence_Of_"
+                         & ".Collections.Sequence_Of_"
                          & Ada_API_Type_Name
                             (Get_Type (Attribute)).To_Wide_Wide_String;
 
@@ -264,7 +305,7 @@ procedure Gen_API is
                      return
                        Ada_API_Package_Name
                         (Get_Type (Attribute)).To_Wide_Wide_String
-                         & ".Set_Of_"
+                         & ".Collections.Set_Of_"
                          & Ada_API_Type_Name
                             (Get_Type (Attribute)).To_Wide_Wide_String;
 
@@ -272,7 +313,7 @@ procedure Gen_API is
                      return
                        Ada_API_Package_Name
                         (Get_Type (Attribute)).To_Wide_Wide_String
-                         & ".Bag_Of_"
+                         & ".Collections.Bag_Of_"
                          & Ada_API_Type_Name
                             (Get_Type (Attribute)).To_Wide_Wide_String;
                   end if;
@@ -511,14 +552,6 @@ procedure Gen_API is
       Put_Line ("     access all " & Type_Name & "_Interface'Class;");
       Put_Line ("   for " & Type_Name & "'Storage_Size use 0;");
 
-      --  Generate types foe collections.
-      --
-      --  XXX Collections will be declared in own packages.
-
-      New_Line;
-      Put_Line ("   type Set_Of_" & Type_Name & " is null record;");
-      Put_Line ("   type Ordered_Set_Of_" & Type_Name & " is null record;");
-
       --  Generate setters and getters.
 
       for J in 1 .. Length (Attributes) loop
@@ -528,6 +561,49 @@ procedure Gen_API is
       New_Line;
       Put_Line ("end " & Package_Name & ";");
    end Generate_Class;
+
+   --------------------------
+   -- Generate_Collections --
+   --------------------------
+
+   procedure Generate_Collections (Class : CMOF.CMOF_Element) is
+      Package_Name  : constant Wide_Wide_String
+        := Ada_API_Package_Name (Class).To_Wide_Wide_String;
+      Type_Name     : constant Wide_Wide_String
+        := Ada_API_Type_Name (Class).To_Wide_Wide_String;
+
+   begin
+      Put_Header (Year_2010 => False);
+
+      Put_Line ("with AMF.Generic_Collections;");
+      New_Line;
+      Put_Line ("package " & Package_Name & ".Collections is");
+      New_Line;
+      Put_Line ("   pragma Preelaborate;");
+      New_Line;
+      Put_Line ("   package " & Type_Name & "_Collections is");
+      Put_Line ("     new AMF.Generic_Collections");
+      Put_Line ("          (" & Type_Name & "_Interface,");
+      Put_Line ("           " & Type_Name & ");");
+      New_Line;
+      Put_Line ("   type Set_Of_" & Type_Name & " is");
+      Put_Line
+       ("     new " & Type_Name & "_Collections.Set with null record;");
+      New_Line;
+      Put_Line ("   type Ordered_Set_Of_" & Type_Name & " is");
+      Put_Line
+       ("     new " & Type_Name & "_Collections.Ordered_Set with null record;");
+      New_Line;
+      Put_Line ("   type Bag_Of_" & Type_Name & " is");
+      Put_Line
+       ("     new " & Type_Name & "_Collections.Bag with null record;");
+      New_Line;
+      Put_Line ("   type Sequence_Of_" & Type_Name & " is");
+      Put_Line
+       ("     new " & Type_Name & "_Collections.Sequence with null record;");
+      New_Line;
+      Put_Line ("end " & Package_Name & ".Collections;");
+   end Generate_Collections;
 
    ----------------------
    -- Generate_Element --
@@ -542,6 +618,7 @@ procedure Gen_API is
    begin
       if Is_Class (Element) then
          Generate_Class (Element);
+         Generate_Collections (Element);
       end if;
    end Generate_Element;
 
