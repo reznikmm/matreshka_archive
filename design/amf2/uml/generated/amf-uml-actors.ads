@@ -57,8 +57,6 @@ package AMF.UML.Actors is
 
    type UML_Actor is
      access all UML_Actor_Interface'Class;
-
-   type Set_Of_UML_Actor is null record;
-   type Ordered_Set_Of_UML_Actor is null record;
+   for UML_Actor'Storage_Size use 0;
 
 end AMF.UML.Actors;

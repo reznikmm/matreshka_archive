@@ -47,13 +47,13 @@
 --  coordinated sequencing of subordinate units whose individual elements are 
 --  actions.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Activity_Edges;
-limited with AMF.UML.Activity_Groups;
-limited with AMF.UML.Activity_Nodes;
-limited with AMF.UML.Activity_Partitions;
+limited with AMF.UML.Activity_Edges.Collections;
+limited with AMF.UML.Activity_Groups.Collections;
+limited with AMF.UML.Activity_Nodes.Collections;
+limited with AMF.UML.Activity_Partitions.Collections;
 with AMF.UML.Behaviors;
-limited with AMF.UML.Structured_Activity_Nodes;
-limited with AMF.UML.Variables;
+limited with AMF.UML.Structured_Activity_Nodes.Collections;
+limited with AMF.UML.Variables.Collections;
 
 package AMF.UML.Activities is
 
@@ -64,18 +64,16 @@ package AMF.UML.Activities is
 
    type UML_Activity is
      access all UML_Activity_Interface'Class;
-
-   type Set_Of_UML_Activity is null record;
-   type Ordered_Set_Of_UML_Activity is null record;
+   for UML_Activity'Storage_Size use 0;
 
    not overriding function Get_Edge
     (Self : not null access constant UML_Activity_Interface)
-       return AMF.UML.Activity_Edges.Set_Of_UML_Activity_Edge is abstract;
+       return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  Edges expressing flow between nodes of the activity.
 
    not overriding function Get_Group
     (Self : not null access constant UML_Activity_Interface)
-       return AMF.UML.Activity_Groups.Set_Of_UML_Activity_Group is abstract;
+       return AMF.UML.Activity_Groups.Collections.Set_Of_UML_Activity_Group is abstract;
    --  Top-level groups in the activity.
 
    not overriding function Get_Is_Read_Only
@@ -104,22 +102,22 @@ package AMF.UML.Activities is
 
    not overriding function Get_Node
     (Self : not null access constant UML_Activity_Interface)
-       return AMF.UML.Activity_Nodes.Set_Of_UML_Activity_Node is abstract;
+       return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
    --  Nodes coordinated by the activity.
 
    not overriding function Get_Partition
     (Self : not null access constant UML_Activity_Interface)
-       return AMF.UML.Activity_Partitions.Set_Of_UML_Activity_Partition is abstract;
+       return AMF.UML.Activity_Partitions.Collections.Set_Of_UML_Activity_Partition is abstract;
    --  Top-level partitions in the activity.
 
    not overriding function Get_Structured_Node
     (Self : not null access constant UML_Activity_Interface)
-       return AMF.UML.Structured_Activity_Nodes.Set_Of_UML_Structured_Activity_Node is abstract;
+       return AMF.UML.Structured_Activity_Nodes.Collections.Set_Of_UML_Structured_Activity_Node is abstract;
    --  Top-level structured nodes in the activity.
 
    not overriding function Get_Variable
     (Self : not null access constant UML_Activity_Interface)
-       return AMF.UML.Variables.Set_Of_UML_Variable is abstract;
+       return AMF.UML.Variables.Collections.Set_Of_UML_Variable is abstract;
    --  Top-level variables in the activity.
 
 end AMF.UML.Activities;

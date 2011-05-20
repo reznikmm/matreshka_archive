@@ -64,9 +64,7 @@ package AMF.UML.Call_Behavior_Actions is
 
    type UML_Call_Behavior_Action is
      access all UML_Call_Behavior_Action_Interface'Class;
-
-   type Set_Of_UML_Call_Behavior_Action is null record;
-   type Ordered_Set_Of_UML_Call_Behavior_Action is null record;
+   for UML_Call_Behavior_Action'Storage_Size use 0;
 
    not overriding function Get_Behavior
     (Self : not null access constant UML_Call_Behavior_Action_Interface)

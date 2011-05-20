@@ -47,7 +47,7 @@
 --  collections of subsets of generalization relationships.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Classifiers;
-limited with AMF.UML.Generalizations;
+limited with AMF.UML.Generalizations.Collections;
 with AMF.UML.Packageable_Elements;
 
 package AMF.UML.Generalization_Sets is
@@ -59,13 +59,11 @@ package AMF.UML.Generalization_Sets is
 
    type UML_Generalization_Set is
      access all UML_Generalization_Set_Interface'Class;
-
-   type Set_Of_UML_Generalization_Set is null record;
-   type Ordered_Set_Of_UML_Generalization_Set is null record;
+   for UML_Generalization_Set'Storage_Size use 0;
 
    not overriding function Get_Generalization
     (Self : not null access constant UML_Generalization_Set_Interface)
-       return AMF.UML.Generalizations.Set_Of_UML_Generalization is abstract;
+       return AMF.UML.Generalizations.Collections.Set_Of_UML_Generalization is abstract;
    --  Designates the instances of Generalization which are members of a given 
    --  GeneralizationSet.
 

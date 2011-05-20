@@ -58,9 +58,7 @@ package AMF.UML.Operation_Template_Parameters is
 
    type UML_Operation_Template_Parameter is
      access all UML_Operation_Template_Parameter_Interface'Class;
-
-   type Set_Of_UML_Operation_Template_Parameter is null record;
-   type Ordered_Set_Of_UML_Operation_Template_Parameter is null record;
+   for UML_Operation_Template_Parameter'Storage_Size use 0;
 
    not overriding function Get_Parametered_Element
     (Self : not null access constant UML_Operation_Template_Parameter_Interface)

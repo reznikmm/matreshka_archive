@@ -47,8 +47,8 @@
 --  event meeting specified conditions.
 ------------------------------------------------------------------------------
 with AMF.UML.Actions;
-limited with AMF.UML.Output_Pins;
-limited with AMF.UML.Triggers;
+limited with AMF.UML.Output_Pins.Collections;
+limited with AMF.UML.Triggers.Collections;
 
 package AMF.UML.Accept_Event_Actions is
 
@@ -59,9 +59,7 @@ package AMF.UML.Accept_Event_Actions is
 
    type UML_Accept_Event_Action is
      access all UML_Accept_Event_Action_Interface'Class;
-
-   type Set_Of_UML_Accept_Event_Action is null record;
-   type Ordered_Set_Of_UML_Accept_Event_Action is null record;
+   for UML_Accept_Event_Action'Storage_Size use 0;
 
    not overriding function Get_Is_Unmarshall
     (Self : not null access constant UML_Accept_Event_Action_Interface)
@@ -75,14 +73,14 @@ package AMF.UML.Accept_Event_Actions is
 
    not overriding function Get_Result
     (Self : not null access constant UML_Accept_Event_Action_Interface)
-       return AMF.UML.Output_Pins.Set_Of_UML_Output_Pin is abstract;
+       return AMF.UML.Output_Pins.Collections.Set_Of_UML_Output_Pin is abstract;
    --  Pins holding the received event objects or their attributes. Event 
    --  objects may be copied in transmission, so identity might not be 
    --  preserved.
 
    not overriding function Get_Trigger
     (Self : not null access constant UML_Accept_Event_Action_Interface)
-       return AMF.UML.Triggers.Set_Of_UML_Trigger is abstract;
+       return AMF.UML.Triggers.Collections.Set_Of_UML_Trigger is abstract;
    --  The type of events accepted by the action, as specified by triggers. 
    --  For triggers with signal events, a signal of the specified type or any 
    --  subtype of the specified signal type is accepted.

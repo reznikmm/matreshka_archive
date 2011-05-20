@@ -57,9 +57,7 @@ package AMF.UML.Time_Constraints is
 
    type UML_Time_Constraint is
      access all UML_Time_Constraint_Interface'Class;
-
-   type Set_Of_UML_Time_Constraint is null record;
-   type Ordered_Set_Of_UML_Time_Constraint is null record;
+   for UML_Time_Constraint'Storage_Size use 0;
 
    not overriding function Get_First_Event
     (Self : not null access constant UML_Time_Constraint_Interface)

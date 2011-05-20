@@ -58,9 +58,7 @@ package AMF.UML.Activity_Parameter_Nodes is
 
    type UML_Activity_Parameter_Node is
      access all UML_Activity_Parameter_Node_Interface'Class;
-
-   type Set_Of_UML_Activity_Parameter_Node is null record;
-   type Ordered_Set_Of_UML_Activity_Parameter_Node is null record;
+   for UML_Activity_Parameter_Node'Storage_Size use 0;
 
    not overriding function Get_Parameter
     (Self : not null access constant UML_Activity_Parameter_Node_Interface)

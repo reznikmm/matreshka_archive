@@ -57,8 +57,6 @@ package AMF.UML.Observations is
 
    type UML_Observation is
      access all UML_Observation_Interface'Class;
-
-   type Set_Of_UML_Observation is null record;
-   type Ordered_Set_Of_UML_Observation is null record;
+   for UML_Observation'Storage_Size use 0;
 
 end AMF.UML.Observations;

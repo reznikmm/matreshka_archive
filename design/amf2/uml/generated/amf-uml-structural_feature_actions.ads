@@ -59,9 +59,7 @@ package AMF.UML.Structural_Feature_Actions is
 
    type UML_Structural_Feature_Action is
      access all UML_Structural_Feature_Action_Interface'Class;
-
-   type Set_Of_UML_Structural_Feature_Action is null record;
-   type Ordered_Set_Of_UML_Structural_Feature_Action is null record;
+   for UML_Structural_Feature_Action'Storage_Size use 0;
 
    not overriding function Get_Object
     (Self : not null access constant UML_Structural_Feature_Action_Interface)

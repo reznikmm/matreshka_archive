@@ -48,10 +48,10 @@
 --  more actors or other stakeholders of the system.
 ------------------------------------------------------------------------------
 with AMF.UML.Behaviored_Classifiers;
-limited with AMF.UML.Classifiers;
-limited with AMF.UML.Extends;
-limited with AMF.UML.Extension_Points;
-limited with AMF.UML.Includes;
+limited with AMF.UML.Classifiers.Collections;
+limited with AMF.UML.Extends.Collections;
+limited with AMF.UML.Extension_Points.Collections;
+limited with AMF.UML.Includes.Collections;
 
 package AMF.UML.Use_Cases is
 
@@ -62,28 +62,26 @@ package AMF.UML.Use_Cases is
 
    type UML_Use_Case is
      access all UML_Use_Case_Interface'Class;
-
-   type Set_Of_UML_Use_Case is null record;
-   type Ordered_Set_Of_UML_Use_Case is null record;
+   for UML_Use_Case'Storage_Size use 0;
 
    not overriding function Get_Extend
     (Self : not null access constant UML_Use_Case_Interface)
-       return AMF.UML.Extends.Set_Of_UML_Extend is abstract;
+       return AMF.UML.Extends.Collections.Set_Of_UML_Extend is abstract;
    --  References the Extend relationships owned by this use case.
 
    not overriding function Get_Extension_Point
     (Self : not null access constant UML_Use_Case_Interface)
-       return AMF.UML.Extension_Points.Set_Of_UML_Extension_Point is abstract;
+       return AMF.UML.Extension_Points.Collections.Set_Of_UML_Extension_Point is abstract;
    --  References the ExtensionPoints owned by the use case.
 
    not overriding function Get_Include
     (Self : not null access constant UML_Use_Case_Interface)
-       return AMF.UML.Includes.Set_Of_UML_Include is abstract;
+       return AMF.UML.Includes.Collections.Set_Of_UML_Include is abstract;
    --  References the Include relationships owned by this use case.
 
    not overriding function Get_Subject
     (Self : not null access constant UML_Use_Case_Interface)
-       return AMF.UML.Classifiers.Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  References the subjects to which this use case applies. The subject or 
    --  its parts realize all the use cases that apply to this subject. Use 
    --  cases need not be attached to any specific subject, however. The 

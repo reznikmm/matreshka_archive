@@ -47,7 +47,7 @@
 --  classify an object.
 ------------------------------------------------------------------------------
 with AMF.UML.Actions;
-limited with AMF.UML.Classifiers;
+limited with AMF.UML.Classifiers.Collections;
 limited with AMF.UML.Input_Pins;
 
 package AMF.UML.Reclassify_Object_Actions is
@@ -59,9 +59,7 @@ package AMF.UML.Reclassify_Object_Actions is
 
    type UML_Reclassify_Object_Action is
      access all UML_Reclassify_Object_Action_Interface'Class;
-
-   type Set_Of_UML_Reclassify_Object_Action is null record;
-   type Ordered_Set_Of_UML_Reclassify_Object_Action is null record;
+   for UML_Reclassify_Object_Action'Storage_Size use 0;
 
    not overriding function Get_Is_Replace_All
     (Self : not null access constant UML_Reclassify_Object_Action_Interface)
@@ -75,7 +73,7 @@ package AMF.UML.Reclassify_Object_Actions is
 
    not overriding function Get_New_Classifier
     (Self : not null access constant UML_Reclassify_Object_Action_Interface)
-       return AMF.UML.Classifiers.Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  A set of classifiers to be added to the classifiers of the object.
 
    not overriding function Get_Object
@@ -89,7 +87,7 @@ package AMF.UML.Reclassify_Object_Actions is
 
    not overriding function Get_Old_Classifier
     (Self : not null access constant UML_Reclassify_Object_Action_Interface)
-       return AMF.UML.Classifiers.Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  A set of classifiers to be removed from the classifiers of the object.
 
 end AMF.UML.Reclassify_Object_Actions;

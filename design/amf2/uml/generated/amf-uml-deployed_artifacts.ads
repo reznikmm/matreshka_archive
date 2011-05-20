@@ -57,8 +57,6 @@ package AMF.UML.Deployed_Artifacts is
 
    type UML_Deployed_Artifact is
      access all UML_Deployed_Artifact_Interface'Class;
-
-   type Set_Of_UML_Deployed_Artifact is null record;
-   type Ordered_Set_Of_UML_Deployed_Artifact is null record;
+   for UML_Deployed_Artifact'Storage_Size use 0;
 
 end AMF.UML.Deployed_Artifacts;

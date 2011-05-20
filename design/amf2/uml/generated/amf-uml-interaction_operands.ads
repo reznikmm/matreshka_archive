@@ -49,6 +49,7 @@
 ------------------------------------------------------------------------------
 limited with AMF.UML.Interaction_Constraints;
 with AMF.UML.Interaction_Fragments;
+limited with AMF.UML.Interaction_Fragments.Collections;
 with AMF.UML.Namespaces;
 
 package AMF.UML.Interaction_Operands is
@@ -61,13 +62,11 @@ package AMF.UML.Interaction_Operands is
 
    type UML_Interaction_Operand is
      access all UML_Interaction_Operand_Interface'Class;
-
-   type Set_Of_UML_Interaction_Operand is null record;
-   type Ordered_Set_Of_UML_Interaction_Operand is null record;
+   for UML_Interaction_Operand'Storage_Size use 0;
 
    not overriding function Get_Fragment
     (Self : not null access constant UML_Interaction_Operand_Interface)
-       return AMF.UML.Interaction_Fragments.Ordered_Set_Of_UML_Interaction_Fragment is abstract;
+       return AMF.UML.Interaction_Fragments.Collections.Ordered_Set_Of_UML_Interaction_Fragment is abstract;
    --  The fragments of the operand.
 
    not overriding function Get_Guard

@@ -49,7 +49,7 @@
 with AMF.UML.Elements;
 limited with AMF.UML.Instance_Specifications;
 limited with AMF.UML.Structural_Features;
-limited with AMF.UML.Value_Specifications;
+limited with AMF.UML.Value_Specifications.Collections;
 
 package AMF.UML.Slots is
 
@@ -60,9 +60,7 @@ package AMF.UML.Slots is
 
    type UML_Slot is
      access all UML_Slot_Interface'Class;
-
-   type Set_Of_UML_Slot is null record;
-   type Ordered_Set_Of_UML_Slot is null record;
+   for UML_Slot'Storage_Size use 0;
 
    not overriding function Get_Defining_Feature
     (Self : not null access constant UML_Slot_Interface)
@@ -85,7 +83,7 @@ package AMF.UML.Slots is
 
    not overriding function Get_Value
     (Self : not null access constant UML_Slot_Interface)
-       return AMF.UML.Value_Specifications.Ordered_Set_Of_UML_Value_Specification is abstract;
+       return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification is abstract;
    --  The value or values corresponding to the defining feature for the 
    --  owning instance specification.
 

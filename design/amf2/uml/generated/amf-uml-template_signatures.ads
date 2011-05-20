@@ -47,7 +47,7 @@
 --  templated element.
 ------------------------------------------------------------------------------
 with AMF.UML.Elements;
-limited with AMF.UML.Template_Parameters;
+limited with AMF.UML.Template_Parameters.Collections;
 limited with AMF.UML.Templateable_Elements;
 
 package AMF.UML.Template_Signatures is
@@ -59,19 +59,17 @@ package AMF.UML.Template_Signatures is
 
    type UML_Template_Signature is
      access all UML_Template_Signature_Interface'Class;
-
-   type Set_Of_UML_Template_Signature is null record;
-   type Ordered_Set_Of_UML_Template_Signature is null record;
+   for UML_Template_Signature'Storage_Size use 0;
 
    not overriding function Get_Owned_Parameter
     (Self : not null access constant UML_Template_Signature_Interface)
-       return AMF.UML.Template_Parameters.Ordered_Set_Of_UML_Template_Parameter is abstract;
+       return AMF.UML.Template_Parameters.Collections.Ordered_Set_Of_UML_Template_Parameter is abstract;
    --  The formal template parameters that are owned by this template 
    --  signature.
 
    not overriding function Get_Parameter
     (Self : not null access constant UML_Template_Signature_Interface)
-       return AMF.UML.Template_Parameters.Ordered_Set_Of_UML_Template_Parameter is abstract;
+       return AMF.UML.Template_Parameters.Collections.Ordered_Set_Of_UML_Template_Parameter is abstract;
    --  The ordered set of all formal template parameters for this template 
    --  signature.
 

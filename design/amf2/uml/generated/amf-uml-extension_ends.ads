@@ -59,9 +59,7 @@ package AMF.UML.Extension_Ends is
 
    type UML_Extension_End is
      access all UML_Extension_End_Interface'Class;
-
-   type Set_Of_UML_Extension_End is null record;
-   type Ordered_Set_Of_UML_Extension_End is null record;
+   for UML_Extension_End'Storage_Size use 0;
 
    overriding function Get_Lower
     (Self : not null access constant UML_Extension_End_Interface)

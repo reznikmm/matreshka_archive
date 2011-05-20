@@ -52,7 +52,7 @@
 --  behavior.
 ------------------------------------------------------------------------------
 with AMF.UML.Actions;
-limited with AMF.UML.Input_Pins;
+limited with AMF.UML.Input_Pins.Collections;
 limited with AMF.UML.Ports;
 
 package AMF.UML.Invocation_Actions is
@@ -64,13 +64,11 @@ package AMF.UML.Invocation_Actions is
 
    type UML_Invocation_Action is
      access all UML_Invocation_Action_Interface'Class;
-
-   type Set_Of_UML_Invocation_Action is null record;
-   type Ordered_Set_Of_UML_Invocation_Action is null record;
+   for UML_Invocation_Action'Storage_Size use 0;
 
    not overriding function Get_Argument
     (Self : not null access constant UML_Invocation_Action_Interface)
-       return AMF.UML.Input_Pins.Ordered_Set_Of_UML_Input_Pin is abstract;
+       return AMF.UML.Input_Pins.Collections.Ordered_Set_Of_UML_Input_Pin is abstract;
    --  Specification of the ordered set of argument values that appears during 
    --  execution.
 

@@ -50,11 +50,11 @@
 --  node. It is also has the capability of being a deployed artifact, if it is 
 --  an instance of an artifact.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Classifiers;
+limited with AMF.UML.Classifiers.Collections;
 with AMF.UML.Deployed_Artifacts;
 with AMF.UML.Deployment_Targets;
 with AMF.UML.Packageable_Elements;
-limited with AMF.UML.Slots;
+limited with AMF.UML.Slots.Collections;
 limited with AMF.UML.Value_Specifications;
 
 package AMF.UML.Instance_Specifications is
@@ -68,19 +68,17 @@ package AMF.UML.Instance_Specifications is
 
    type UML_Instance_Specification is
      access all UML_Instance_Specification_Interface'Class;
-
-   type Set_Of_UML_Instance_Specification is null record;
-   type Ordered_Set_Of_UML_Instance_Specification is null record;
+   for UML_Instance_Specification'Storage_Size use 0;
 
    not overriding function Get_Classifier
     (Self : not null access constant UML_Instance_Specification_Interface)
-       return AMF.UML.Classifiers.Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  The classifier or classifiers of the represented instance. If multiple 
    --  classifiers are specified, the instance is classified by all of them.
 
    not overriding function Get_Slot
     (Self : not null access constant UML_Instance_Specification_Interface)
-       return AMF.UML.Slots.Set_Of_UML_Slot is abstract;
+       return AMF.UML.Slots.Collections.Set_Of_UML_Slot is abstract;
    --  A slot giving the value or values of a structural feature of the 
    --  instance. An instance specification can have one slot per structural 
    --  feature of its classifiers, including inherited features. It is not 

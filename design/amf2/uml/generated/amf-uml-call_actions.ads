@@ -47,7 +47,7 @@
 --  receive return values.
 ------------------------------------------------------------------------------
 with AMF.UML.Invocation_Actions;
-limited with AMF.UML.Output_Pins;
+limited with AMF.UML.Output_Pins.Collections;
 
 package AMF.UML.Call_Actions is
 
@@ -58,9 +58,7 @@ package AMF.UML.Call_Actions is
 
    type UML_Call_Action is
      access all UML_Call_Action_Interface'Class;
-
-   type Set_Of_UML_Call_Action is null record;
-   type Ordered_Set_Of_UML_Call_Action is null record;
+   for UML_Call_Action'Storage_Size use 0;
 
    not overriding function Get_Is_Synchronous
     (Self : not null access constant UML_Call_Action_Interface)
@@ -75,7 +73,7 @@ package AMF.UML.Call_Actions is
 
    not overriding function Get_Result
     (Self : not null access constant UML_Call_Action_Interface)
-       return AMF.UML.Output_Pins.Ordered_Set_Of_UML_Output_Pin is abstract;
+       return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin is abstract;
    --  A list of output pins where the results of performing the invocation 
    --  are placed.
 

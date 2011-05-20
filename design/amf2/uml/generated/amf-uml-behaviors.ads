@@ -52,10 +52,11 @@
 ------------------------------------------------------------------------------
 limited with AMF.UML.Behavioral_Features;
 limited with AMF.UML.Behaviored_Classifiers;
+limited with AMF.UML.Behaviors.Collections;
 with AMF.UML.Classes;
-limited with AMF.UML.Constraints;
-limited with AMF.UML.Parameter_Sets;
-limited with AMF.UML.Parameters;
+limited with AMF.UML.Constraints.Collections;
+limited with AMF.UML.Parameter_Sets.Collections;
+limited with AMF.UML.Parameters.Collections;
 
 package AMF.UML.Behaviors is
 
@@ -66,9 +67,7 @@ package AMF.UML.Behaviors is
 
    type UML_Behavior is
      access all UML_Behavior_Interface'Class;
-
-   type Set_Of_UML_Behavior is null record;
-   type Ordered_Set_Of_UML_Behavior is null record;
+   for UML_Behavior'Storage_Size use 0;
 
    not overriding function Get_Context
     (Self : not null access constant UML_Behavior_Interface)
@@ -94,7 +93,7 @@ package AMF.UML.Behaviors is
 
    not overriding function Get_Owned_Parameter
     (Self : not null access constant UML_Behavior_Interface)
-       return AMF.UML.Parameters.Ordered_Set_Of_UML_Parameter is abstract;
+       return AMF.UML.Parameters.Collections.Ordered_Set_Of_UML_Parameter is abstract;
    --  References a list of parameters to the behavior which describes the 
    --  order and type of arguments that can be given when the behavior is 
    --  invoked and of the values which will be returned when the behavior 
@@ -102,25 +101,25 @@ package AMF.UML.Behaviors is
 
    not overriding function Get_Owned_Parameter_Set
     (Self : not null access constant UML_Behavior_Interface)
-       return AMF.UML.Parameter_Sets.Set_Of_UML_Parameter_Set is abstract;
+       return AMF.UML.Parameter_Sets.Collections.Set_Of_UML_Parameter_Set is abstract;
    --  The ParameterSets owned by this Behavior.
 
    not overriding function Get_Postcondition
     (Self : not null access constant UML_Behavior_Interface)
-       return AMF.UML.Constraints.Set_Of_UML_Constraint is abstract;
+       return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
    --  An optional set of Constraints specifying what is fulfilled after the 
    --  execution of the behavior is completed, if its precondition was 
    --  fulfilled before its invocation.
 
    not overriding function Get_Precondition
     (Self : not null access constant UML_Behavior_Interface)
-       return AMF.UML.Constraints.Set_Of_UML_Constraint is abstract;
+       return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
    --  An optional set of Constraints specifying what must be fulfilled when 
    --  the behavior is invoked.
 
    not overriding function Get_Redefined_Behavior
     (Self : not null access constant UML_Behavior_Interface)
-       return AMF.UML.Behaviors.Set_Of_UML_Behavior is abstract;
+       return AMF.UML.Behaviors.Collections.Set_Of_UML_Behavior is abstract;
    --  References a behavior that this behavior redefines. A subtype of 
    --  Behavior may redefine any other subtype of Behavior. If the behavior 
    --  implements a behavioral feature, it replaces the redefined behavior. If 

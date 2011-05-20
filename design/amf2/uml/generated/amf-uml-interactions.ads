@@ -46,12 +46,13 @@
 --  An interaction is a unit of behavior that focuses on the observable 
 --  exchange of information between connectable elements.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Actions;
+limited with AMF.UML.Actions.Collections;
 with AMF.UML.Behaviors;
-limited with AMF.UML.Gates;
+limited with AMF.UML.Gates.Collections;
 with AMF.UML.Interaction_Fragments;
-limited with AMF.UML.Lifelines;
-limited with AMF.UML.Messages;
+limited with AMF.UML.Interaction_Fragments.Collections;
+limited with AMF.UML.Lifelines.Collections;
+limited with AMF.UML.Messages.Collections;
 
 package AMF.UML.Interactions is
 
@@ -63,34 +64,32 @@ package AMF.UML.Interactions is
 
    type UML_Interaction is
      access all UML_Interaction_Interface'Class;
-
-   type Set_Of_UML_Interaction is null record;
-   type Ordered_Set_Of_UML_Interaction is null record;
+   for UML_Interaction'Storage_Size use 0;
 
    not overriding function Get_Action
     (Self : not null access constant UML_Interaction_Interface)
-       return AMF.UML.Actions.Set_Of_UML_Action is abstract;
+       return AMF.UML.Actions.Collections.Set_Of_UML_Action is abstract;
    --  Actions owned by the Interaction.
 
    not overriding function Get_Formal_Gate
     (Self : not null access constant UML_Interaction_Interface)
-       return AMF.UML.Gates.Set_Of_UML_Gate is abstract;
+       return AMF.UML.Gates.Collections.Set_Of_UML_Gate is abstract;
    --  Specifies the gates that form the message interface between this 
    --  Interaction and any InteractionUses which reference it.
 
    not overriding function Get_Fragment
     (Self : not null access constant UML_Interaction_Interface)
-       return AMF.UML.Interaction_Fragments.Ordered_Set_Of_UML_Interaction_Fragment is abstract;
+       return AMF.UML.Interaction_Fragments.Collections.Ordered_Set_Of_UML_Interaction_Fragment is abstract;
    --  The ordered set of fragments in the Interaction.
 
    not overriding function Get_Lifeline
     (Self : not null access constant UML_Interaction_Interface)
-       return AMF.UML.Lifelines.Set_Of_UML_Lifeline is abstract;
+       return AMF.UML.Lifelines.Collections.Set_Of_UML_Lifeline is abstract;
    --  Specifies the participants in this Interaction.
 
    not overriding function Get_Message
     (Self : not null access constant UML_Interaction_Interface)
-       return AMF.UML.Messages.Set_Of_UML_Message is abstract;
+       return AMF.UML.Messages.Collections.Set_Of_UML_Message is abstract;
    --  The Messages contained in this Interaction.
 
 end AMF.UML.Interactions;

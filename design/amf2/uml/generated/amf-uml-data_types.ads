@@ -48,8 +48,8 @@
 --  data types.
 ------------------------------------------------------------------------------
 with AMF.UML.Classifiers;
-limited with AMF.UML.Operations;
-limited with AMF.UML.Properties;
+limited with AMF.UML.Operations.Collections;
+limited with AMF.UML.Properties.Collections;
 
 package AMF.UML.Data_Types is
 
@@ -60,18 +60,16 @@ package AMF.UML.Data_Types is
 
    type UML_Data_Type is
      access all UML_Data_Type_Interface'Class;
-
-   type Set_Of_UML_Data_Type is null record;
-   type Ordered_Set_Of_UML_Data_Type is null record;
+   for UML_Data_Type'Storage_Size use 0;
 
    not overriding function Get_Owned_Attribute
     (Self : not null access constant UML_Data_Type_Interface)
-       return AMF.UML.Properties.Ordered_Set_Of_UML_Property is abstract;
+       return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  The Attributes owned by the DataType.
 
    not overriding function Get_Owned_Operation
     (Self : not null access constant UML_Data_Type_Interface)
-       return AMF.UML.Operations.Ordered_Set_Of_UML_Operation is abstract;
+       return AMF.UML.Operations.Collections.Ordered_Set_Of_UML_Operation is abstract;
    --  The Operations owned by the DataType.
 
 end AMF.UML.Data_Types;

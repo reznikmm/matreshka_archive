@@ -47,8 +47,9 @@
 --  an activity.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Activities;
-limited with AMF.UML.Activity_Edges;
-limited with AMF.UML.Activity_Nodes;
+limited with AMF.UML.Activity_Edges.Collections;
+limited with AMF.UML.Activity_Groups.Collections;
+limited with AMF.UML.Activity_Nodes.Collections;
 with AMF.UML.Named_Elements;
 
 package AMF.UML.Activity_Groups is
@@ -60,18 +61,16 @@ package AMF.UML.Activity_Groups is
 
    type UML_Activity_Group is
      access all UML_Activity_Group_Interface'Class;
-
-   type Set_Of_UML_Activity_Group is null record;
-   type Ordered_Set_Of_UML_Activity_Group is null record;
+   for UML_Activity_Group'Storage_Size use 0;
 
    not overriding function Get_Contained_Edge
     (Self : not null access constant UML_Activity_Group_Interface)
-       return AMF.UML.Activity_Edges.Set_Of_UML_Activity_Edge is abstract;
+       return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  Edges immediately contained in the group.
 
    not overriding function Get_Contained_Node
     (Self : not null access constant UML_Activity_Group_Interface)
-       return AMF.UML.Activity_Nodes.Set_Of_UML_Activity_Node is abstract;
+       return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
    --  Nodes immediately contained in the group.
 
    not overriding function Get_In_Activity
@@ -85,7 +84,7 @@ package AMF.UML.Activity_Groups is
 
    not overriding function Get_Subgroup
     (Self : not null access constant UML_Activity_Group_Interface)
-       return AMF.UML.Activity_Groups.Set_Of_UML_Activity_Group is abstract;
+       return AMF.UML.Activity_Groups.Collections.Set_Of_UML_Activity_Group is abstract;
    --  Groups immediately contained in the group.
 
    not overriding function Get_Super_Group

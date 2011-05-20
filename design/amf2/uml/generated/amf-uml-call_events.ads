@@ -58,9 +58,7 @@ package AMF.UML.Call_Events is
 
    type UML_Call_Event is
      access all UML_Call_Event_Interface'Class;
-
-   type Set_Of_UML_Call_Event is null record;
-   type Ordered_Set_Of_UML_Call_Event is null record;
+   for UML_Call_Event'Storage_Size use 0;
 
    not overriding function Get_Operation
     (Self : not null access constant UML_Call_Event_Interface)

@@ -57,8 +57,6 @@ package AMF.UML.Any_Receive_Events is
 
    type UML_Any_Receive_Event is
      access all UML_Any_Receive_Event_Interface'Class;
-
-   type Set_Of_UML_Any_Receive_Event is null record;
-   type Ordered_Set_Of_UML_Any_Receive_Event is null record;
+   for UML_Any_Receive_Event'Storage_Size use 0;
 
 end AMF.UML.Any_Receive_Events;

@@ -56,8 +56,6 @@ package AMF.UML.Activity_Final_Nodes is
 
    type UML_Activity_Final_Node is
      access all UML_Activity_Final_Node_Interface'Class;
-
-   type Set_Of_UML_Activity_Final_Node is null record;
-   type Ordered_Set_Of_UML_Activity_Final_Node is null record;
+   for UML_Activity_Final_Node'Storage_Size use 0;
 
 end AMF.UML.Activity_Final_Nodes;

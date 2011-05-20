@@ -51,7 +51,7 @@
 ------------------------------------------------------------------------------
 with AMF.UML.Activity_Nodes;
 limited with AMF.UML.Behaviors;
-limited with AMF.UML.States;
+limited with AMF.UML.States.Collections;
 with AMF.UML.Typed_Elements;
 limited with AMF.UML.Value_Specifications;
 
@@ -65,13 +65,11 @@ package AMF.UML.Object_Nodes is
 
    type UML_Object_Node is
      access all UML_Object_Node_Interface'Class;
-
-   type Set_Of_UML_Object_Node is null record;
-   type Ordered_Set_Of_UML_Object_Node is null record;
+   for UML_Object_Node'Storage_Size use 0;
 
    not overriding function Get_In_State
     (Self : not null access constant UML_Object_Node_Interface)
-       return AMF.UML.States.Set_Of_UML_State is abstract;
+       return AMF.UML.States.Collections.Set_Of_UML_State is abstract;
    --  The required states of the object available at this point in the 
    --  activity.
 

@@ -46,7 +46,7 @@
 --  A sequence node is a structured activity node that executes its actions in 
 --  order.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Executable_Nodes;
+limited with AMF.UML.Executable_Nodes.Collections;
 with AMF.UML.Structured_Activity_Nodes;
 
 package AMF.UML.Sequence_Nodes is
@@ -58,13 +58,11 @@ package AMF.UML.Sequence_Nodes is
 
    type UML_Sequence_Node is
      access all UML_Sequence_Node_Interface'Class;
-
-   type Set_Of_UML_Sequence_Node is null record;
-   type Ordered_Set_Of_UML_Sequence_Node is null record;
+   for UML_Sequence_Node'Storage_Size use 0;
 
    not overriding function Get_Executable_Node
     (Self : not null access constant UML_Sequence_Node_Interface)
-       return AMF.UML.Executable_Nodes.Ordered_Set_Of_UML_Executable_Node is abstract;
+       return AMF.UML.Executable_Nodes.Collections.Ordered_Set_Of_UML_Executable_Node is abstract;
    --  An ordered set of executable nodes.
 
 end AMF.UML.Sequence_Nodes;

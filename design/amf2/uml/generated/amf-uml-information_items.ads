@@ -49,6 +49,7 @@
 --  instantiated.
 ------------------------------------------------------------------------------
 with AMF.UML.Classifiers;
+limited with AMF.UML.Classifiers.Collections;
 
 package AMF.UML.Information_Items is
 
@@ -59,13 +60,11 @@ package AMF.UML.Information_Items is
 
    type UML_Information_Item is
      access all UML_Information_Item_Interface'Class;
-
-   type Set_Of_UML_Information_Item is null record;
-   type Ordered_Set_Of_UML_Information_Item is null record;
+   for UML_Information_Item'Storage_Size use 0;
 
    not overriding function Get_Represented
     (Self : not null access constant UML_Information_Item_Interface)
-       return AMF.UML.Classifiers.Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  Determines the classifiers that will specify the structure and nature 
    --  of the information. An information item represents all its represented 
    --  classifiers.

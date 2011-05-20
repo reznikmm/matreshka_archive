@@ -60,9 +60,7 @@ package AMF.UML.Interface_Realizations is
 
    type UML_Interface_Realization is
      access all UML_Interface_Realization_Interface'Class;
-
-   type Set_Of_UML_Interface_Realization is null record;
-   type Ordered_Set_Of_UML_Interface_Realization is null record;
+   for UML_Interface_Realization'Storage_Size use 0;
 
    not overriding function Get_Contract
     (Self : not null access constant UML_Interface_Realization_Interface)

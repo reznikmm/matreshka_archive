@@ -48,7 +48,7 @@
 ------------------------------------------------------------------------------
 with AMF.UML.Named_Elements;
 limited with AMF.UML.Regions;
-limited with AMF.UML.Transitions;
+limited with AMF.UML.Transitions.Collections;
 
 package AMF.UML.Vertexs is
 
@@ -59,9 +59,7 @@ package AMF.UML.Vertexs is
 
    type UML_Vertex is
      access all UML_Vertex_Interface'Class;
-
-   type Set_Of_UML_Vertex is null record;
-   type Ordered_Set_Of_UML_Vertex is null record;
+   for UML_Vertex'Storage_Size use 0;
 
    not overriding function Get_Container
     (Self : not null access constant UML_Vertex_Interface)
@@ -74,12 +72,12 @@ package AMF.UML.Vertexs is
 
    not overriding function Get_Incoming
     (Self : not null access constant UML_Vertex_Interface)
-       return AMF.UML.Transitions.Set_Of_UML_Transition is abstract;
+       return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
    --  Specifies the transitions entering this vertex.
 
    not overriding function Get_Outgoing
     (Self : not null access constant UML_Vertex_Interface)
-       return AMF.UML.Transitions.Set_Of_UML_Transition is abstract;
+       return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
    --  Specifies the transitions departing from this vertex.
 
 end AMF.UML.Vertexs;

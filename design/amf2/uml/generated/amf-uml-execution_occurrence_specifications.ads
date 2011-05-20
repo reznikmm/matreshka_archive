@@ -58,9 +58,7 @@ package AMF.UML.Execution_Occurrence_Specifications is
 
    type UML_Execution_Occurrence_Specification is
      access all UML_Execution_Occurrence_Specification_Interface'Class;
-
-   type Set_Of_UML_Execution_Occurrence_Specification is null record;
-   type Ordered_Set_Of_UML_Execution_Occurrence_Specification is null record;
+   for UML_Execution_Occurrence_Specification'Storage_Size use 0;
 
    not overriding function Get_Execution
     (Self : not null access constant UML_Execution_Occurrence_Specification_Interface)

@@ -48,6 +48,7 @@
 --  template parameters.
 ------------------------------------------------------------------------------
 with AMF.UML.Expressions;
+limited with AMF.UML.String_Expressions.Collections;
 with AMF.UML.Templateable_Elements;
 
 package AMF.UML.String_Expressions is
@@ -60,9 +61,7 @@ package AMF.UML.String_Expressions is
 
    type UML_String_Expression is
      access all UML_String_Expression_Interface'Class;
-
-   type Set_Of_UML_String_Expression is null record;
-   type Ordered_Set_Of_UML_String_Expression is null record;
+   for UML_String_Expression'Storage_Size use 0;
 
    not overriding function Get_Owning_Expression
     (Self : not null access constant UML_String_Expression_Interface)
@@ -75,7 +74,7 @@ package AMF.UML.String_Expressions is
 
    not overriding function Get_Sub_Expression
     (Self : not null access constant UML_String_Expression_Interface)
-       return AMF.UML.String_Expressions.Set_Of_UML_String_Expression is abstract;
+       return AMF.UML.String_Expressions.Collections.Set_Of_UML_String_Expression is abstract;
    --  The StringExpressions that constitute this StringExpression.
 
 end AMF.UML.String_Expressions;

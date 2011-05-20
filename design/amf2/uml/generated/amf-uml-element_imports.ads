@@ -59,9 +59,7 @@ package AMF.UML.Element_Imports is
 
    type UML_Element_Import is
      access all UML_Element_Import_Interface'Class;
-
-   type Set_Of_UML_Element_Import is null record;
-   type Ordered_Set_Of_UML_Element_Import is null record;
+   for UML_Element_Import'Storage_Size use 0;
 
    not overriding function Get_Alias
     (Self : not null access constant UML_Element_Import_Interface)

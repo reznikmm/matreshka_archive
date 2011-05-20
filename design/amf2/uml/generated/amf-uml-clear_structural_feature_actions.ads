@@ -58,9 +58,7 @@ package AMF.UML.Clear_Structural_Feature_Actions is
 
    type UML_Clear_Structural_Feature_Action is
      access all UML_Clear_Structural_Feature_Action_Interface'Class;
-
-   type Set_Of_UML_Clear_Structural_Feature_Action is null record;
-   type Ordered_Set_Of_UML_Clear_Structural_Feature_Action is null record;
+   for UML_Clear_Structural_Feature_Action'Storage_Size use 0;
 
    not overriding function Get_Result
     (Self : not null access constant UML_Clear_Structural_Feature_Action_Interface)

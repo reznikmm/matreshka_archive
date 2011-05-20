@@ -59,8 +59,6 @@ package AMF.UML.Final_States is
 
    type UML_Final_State is
      access all UML_Final_State_Interface'Class;
-
-   type Set_Of_UML_Final_State is null record;
-   type Ordered_Set_Of_UML_Final_State is null record;
+   for UML_Final_State'Storage_Size use 0;
 
 end AMF.UML.Final_States;

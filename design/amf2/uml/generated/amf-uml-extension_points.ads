@@ -59,9 +59,7 @@ package AMF.UML.Extension_Points is
 
    type UML_Extension_Point is
      access all UML_Extension_Point_Interface'Class;
-
-   type Set_Of_UML_Extension_Point is null record;
-   type Ordered_Set_Of_UML_Extension_Point is null record;
+   for UML_Extension_Point'Storage_Size use 0;
 
    not overriding function Get_Use_Case
     (Self : not null access constant UML_Extension_Point_Interface)

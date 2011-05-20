@@ -60,9 +60,7 @@ package AMF.UML.Reduce_Actions is
 
    type UML_Reduce_Action is
      access all UML_Reduce_Action_Interface'Class;
-
-   type Set_Of_UML_Reduce_Action is null record;
-   type Ordered_Set_Of_UML_Reduce_Action is null record;
+   for UML_Reduce_Action'Storage_Size use 0;
 
    not overriding function Get_Collection
     (Self : not null access constant UML_Reduce_Action_Interface)

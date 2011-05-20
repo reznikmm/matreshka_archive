@@ -60,9 +60,7 @@ package AMF.UML.Includes is
 
    type UML_Include is
      access all UML_Include_Interface'Class;
-
-   type Set_Of_UML_Include is null record;
-   type Ordered_Set_Of_UML_Include is null record;
+   for UML_Include'Storage_Size use 0;
 
    not overriding function Get_Addition
     (Self : not null access constant UML_Include_Interface)

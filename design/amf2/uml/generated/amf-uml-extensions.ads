@@ -60,9 +60,7 @@ package AMF.UML.Extensions is
 
    type UML_Extension is
      access all UML_Extension_Interface'Class;
-
-   type Set_Of_UML_Extension is null record;
-   type Ordered_Set_Of_UML_Extension is null record;
+   for UML_Extension'Storage_Size use 0;
 
    not overriding function Get_Is_Required
     (Self : not null access constant UML_Extension_Interface)

@@ -59,9 +59,7 @@ package AMF.UML.Qualifier_Values is
 
    type UML_Qualifier_Value is
      access all UML_Qualifier_Value_Interface'Class;
-
-   type Set_Of_UML_Qualifier_Value is null record;
-   type Ordered_Set_Of_UML_Qualifier_Value is null record;
+   for UML_Qualifier_Value'Storage_Size use 0;
 
    not overriding function Get_Qualifier
     (Self : not null access constant UML_Qualifier_Value_Interface)

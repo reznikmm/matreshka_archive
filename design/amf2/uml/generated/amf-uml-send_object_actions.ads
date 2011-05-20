@@ -62,9 +62,7 @@ package AMF.UML.Send_Object_Actions is
 
    type UML_Send_Object_Action is
      access all UML_Send_Object_Action_Interface'Class;
-
-   type Set_Of_UML_Send_Object_Action is null record;
-   type Ordered_Set_Of_UML_Send_Object_Action is null record;
+   for UML_Send_Object_Action'Storage_Size use 0;
 
    not overriding function Get_Request
     (Self : not null access constant UML_Send_Object_Action_Interface)

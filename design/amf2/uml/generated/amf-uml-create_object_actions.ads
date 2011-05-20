@@ -60,9 +60,7 @@ package AMF.UML.Create_Object_Actions is
 
    type UML_Create_Object_Action is
      access all UML_Create_Object_Action_Interface'Class;
-
-   type Set_Of_UML_Create_Object_Action is null record;
-   type Ordered_Set_Of_UML_Create_Object_Action is null record;
+   for UML_Create_Object_Action'Storage_Size use 0;
 
    not overriding function Get_Classifier
     (Self : not null access constant UML_Create_Object_Action_Interface)

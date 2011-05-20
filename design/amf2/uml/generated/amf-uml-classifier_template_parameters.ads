@@ -47,6 +47,7 @@
 --  parameter.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Classifiers;
+limited with AMF.UML.Classifiers.Collections;
 with AMF.UML.Template_Parameters;
 
 package AMF.UML.Classifier_Template_Parameters is
@@ -58,9 +59,7 @@ package AMF.UML.Classifier_Template_Parameters is
 
    type UML_Classifier_Template_Parameter is
      access all UML_Classifier_Template_Parameter_Interface'Class;
-
-   type Set_Of_UML_Classifier_Template_Parameter is null record;
-   type Ordered_Set_Of_UML_Classifier_Template_Parameter is null record;
+   for UML_Classifier_Template_Parameter'Storage_Size use 0;
 
    not overriding function Get_Allow_Substitutable
     (Self : not null access constant UML_Classifier_Template_Parameter_Interface)
@@ -74,7 +73,7 @@ package AMF.UML.Classifier_Template_Parameters is
 
    not overriding function Get_Constraining_Classifier
     (Self : not null access constant UML_Classifier_Template_Parameter_Interface)
-       return AMF.UML.Classifiers.Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  The classifiers that constrain the argument that can be used for the 
    --  parameter. If the allowSubstitutable attribute is true, then any 
    --  classifier that is compatible with this constraining classifier can be 

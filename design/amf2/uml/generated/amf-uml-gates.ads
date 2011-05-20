@@ -57,8 +57,6 @@ package AMF.UML.Gates is
 
    type UML_Gate is
      access all UML_Gate_Interface'Class;
-
-   type Set_Of_UML_Gate is null record;
-   type Ordered_Set_Of_UML_Gate is null record;
+   for UML_Gate'Storage_Size use 0;
 
 end AMF.UML.Gates;

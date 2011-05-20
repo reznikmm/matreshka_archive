@@ -48,7 +48,7 @@
 --  its provided and required interfaces. The component forms an abstraction 
 --  from these various classifiers.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Classifiers;
+limited with AMF.UML.Classifiers.Collections;
 limited with AMF.UML.Components;
 with AMF.UML.Realizations;
 
@@ -61,9 +61,7 @@ package AMF.UML.Component_Realizations is
 
    type UML_Component_Realization is
      access all UML_Component_Realization_Interface'Class;
-
-   type Set_Of_UML_Component_Realization is null record;
-   type Ordered_Set_Of_UML_Component_Realization is null record;
+   for UML_Component_Realization'Storage_Size use 0;
 
    not overriding function Get_Abstraction
     (Self : not null access constant UML_Component_Realization_Interface)
@@ -77,7 +75,7 @@ package AMF.UML.Component_Realizations is
 
    not overriding function Get_Realizing_Classifier
     (Self : not null access constant UML_Component_Realization_Interface)
-       return AMF.UML.Classifiers.Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  The classifiers that are involved in the implementation of the 
    --  Component that owns this Realization.
 

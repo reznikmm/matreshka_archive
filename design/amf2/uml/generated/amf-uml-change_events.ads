@@ -58,9 +58,7 @@ package AMF.UML.Change_Events is
 
    type UML_Change_Event is
      access all UML_Change_Event_Interface'Class;
-
-   type Set_Of_UML_Change_Event is null record;
-   type Ordered_Set_Of_UML_Change_Event is null record;
+   for UML_Change_Event'Storage_Size use 0;
 
    not overriding function Get_Change_Expression
     (Self : not null access constant UML_Change_Event_Interface)

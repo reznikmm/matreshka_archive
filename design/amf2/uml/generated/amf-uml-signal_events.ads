@@ -59,9 +59,7 @@ package AMF.UML.Signal_Events is
 
    type UML_Signal_Event is
      access all UML_Signal_Event_Interface'Class;
-
-   type Set_Of_UML_Signal_Event is null record;
-   type Ordered_Set_Of_UML_Signal_Event is null record;
+   for UML_Signal_Event'Storage_Size use 0;
 
    not overriding function Get_Signal
     (Self : not null access constant UML_Signal_Event_Interface)

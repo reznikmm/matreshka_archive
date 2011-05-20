@@ -57,8 +57,6 @@ package AMF.UML.Communication_Paths is
 
    type UML_Communication_Path is
      access all UML_Communication_Path_Interface'Class;
-
-   type Set_Of_UML_Communication_Path is null record;
-   type Ordered_Set_Of_UML_Communication_Path is null record;
+   for UML_Communication_Path'Storage_Size use 0;
 
 end AMF.UML.Communication_Paths;

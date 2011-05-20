@@ -59,9 +59,7 @@ package AMF.UML.Abstractions is
 
    type UML_Abstraction is
      access all UML_Abstraction_Interface'Class;
-
-   type Set_Of_UML_Abstraction is null record;
-   type Ordered_Set_Of_UML_Abstraction is null record;
+   for UML_Abstraction'Storage_Size use 0;
 
    not overriding function Get_Mapping
     (Self : not null access constant UML_Abstraction_Interface)

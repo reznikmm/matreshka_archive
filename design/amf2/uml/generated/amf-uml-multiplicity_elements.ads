@@ -60,9 +60,7 @@ package AMF.UML.Multiplicity_Elements is
 
    type UML_Multiplicity_Element is
      access all UML_Multiplicity_Element_Interface'Class;
-
-   type Set_Of_UML_Multiplicity_Element is null record;
-   type Ordered_Set_Of_UML_Multiplicity_Element is null record;
+   for UML_Multiplicity_Element'Storage_Size use 0;
 
    not overriding function Get_Is_Ordered
     (Self : not null access constant UML_Multiplicity_Element_Interface)

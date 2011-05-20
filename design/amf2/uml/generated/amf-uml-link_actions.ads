@@ -48,8 +48,8 @@
 --  ends of the links.
 ------------------------------------------------------------------------------
 with AMF.UML.Actions;
-limited with AMF.UML.Input_Pins;
-limited with AMF.UML.Link_End_Datas;
+limited with AMF.UML.Input_Pins.Collections;
+limited with AMF.UML.Link_End_Datas.Collections;
 
 package AMF.UML.Link_Actions is
 
@@ -60,19 +60,17 @@ package AMF.UML.Link_Actions is
 
    type UML_Link_Action is
      access all UML_Link_Action_Interface'Class;
-
-   type Set_Of_UML_Link_Action is null record;
-   type Ordered_Set_Of_UML_Link_Action is null record;
+   for UML_Link_Action'Storage_Size use 0;
 
    not overriding function Get_End_Data
     (Self : not null access constant UML_Link_Action_Interface)
-       return AMF.UML.Link_End_Datas.Set_Of_UML_Link_End_Data is abstract;
+       return AMF.UML.Link_End_Datas.Collections.Set_Of_UML_Link_End_Data is abstract;
    --  Data identifying one end of a link by the objects on its ends and 
    --  qualifiers.
 
    not overriding function Get_Input_Value
     (Self : not null access constant UML_Link_Action_Interface)
-       return AMF.UML.Input_Pins.Set_Of_UML_Input_Pin is abstract;
+       return AMF.UML.Input_Pins.Collections.Set_Of_UML_Input_Pin is abstract;
    --  Pins taking end objects and qualifier values as input.
 
 end AMF.UML.Link_Actions;

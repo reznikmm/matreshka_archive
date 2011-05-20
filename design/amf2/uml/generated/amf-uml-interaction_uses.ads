@@ -49,11 +49,12 @@
 --  substituting parameters with arguments and connect the formal gates with 
 --  the actual ones.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Gates;
+limited with AMF.UML.Gates.Collections;
 with AMF.UML.Interaction_Fragments;
 limited with AMF.UML.Interactions;
 limited with AMF.UML.Properties;
 limited with AMF.UML.Value_Specifications;
+limited with AMF.UML.Value_Specifications.Collections;
 
 package AMF.UML.Interaction_Uses is
 
@@ -64,18 +65,16 @@ package AMF.UML.Interaction_Uses is
 
    type UML_Interaction_Use is
      access all UML_Interaction_Use_Interface'Class;
-
-   type Set_Of_UML_Interaction_Use is null record;
-   type Ordered_Set_Of_UML_Interaction_Use is null record;
+   for UML_Interaction_Use'Storage_Size use 0;
 
    not overriding function Get_Actual_Gate
     (Self : not null access constant UML_Interaction_Use_Interface)
-       return AMF.UML.Gates.Set_Of_UML_Gate is abstract;
+       return AMF.UML.Gates.Collections.Set_Of_UML_Gate is abstract;
    --  The actual gates of the InteractionUse
 
    not overriding function Get_Argument
     (Self : not null access constant UML_Interaction_Use_Interface)
-       return AMF.UML.Value_Specifications.Ordered_Set_Of_UML_Value_Specification is abstract;
+       return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification is abstract;
    --  The actual arguments of the Interaction
 
    not overriding function Get_Refers_To

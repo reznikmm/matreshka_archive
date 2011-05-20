@@ -47,7 +47,7 @@
 --  text or in a machine readable language for the purpose of declaring some 
 --  of the semantics of an element.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Elements;
+limited with AMF.UML.Elements.Collections;
 limited with AMF.UML.Namespaces;
 with AMF.UML.Packageable_Elements;
 limited with AMF.UML.Value_Specifications;
@@ -61,13 +61,11 @@ package AMF.UML.Constraints is
 
    type UML_Constraint is
      access all UML_Constraint_Interface'Class;
-
-   type Set_Of_UML_Constraint is null record;
-   type Ordered_Set_Of_UML_Constraint is null record;
+   for UML_Constraint'Storage_Size use 0;
 
    not overriding function Get_Constrained_Element
     (Self : not null access constant UML_Constraint_Interface)
-       return AMF.UML.Elements.Ordered_Set_Of_UML_Element is abstract;
+       return AMF.UML.Elements.Collections.Ordered_Set_Of_UML_Element is abstract;
    --  The ordered set of Elements referenced by this Constraint.
 
    not overriding function Get_Context

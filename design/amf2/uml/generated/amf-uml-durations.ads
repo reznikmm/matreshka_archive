@@ -46,7 +46,7 @@
 --  Duration defines a value specification that specifies the temporal 
 --  distance between two time instants.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Observations;
+limited with AMF.UML.Observations.Collections;
 with AMF.UML.Value_Specifications;
 
 package AMF.UML.Durations is
@@ -58,9 +58,7 @@ package AMF.UML.Durations is
 
    type UML_Duration is
      access all UML_Duration_Interface'Class;
-
-   type Set_Of_UML_Duration is null record;
-   type Ordered_Set_Of_UML_Duration is null record;
+   for UML_Duration'Storage_Size use 0;
 
    not overriding function Get_Expr
     (Self : not null access constant UML_Duration_Interface)
@@ -73,7 +71,7 @@ package AMF.UML.Durations is
 
    not overriding function Get_Observation
     (Self : not null access constant UML_Duration_Interface)
-       return AMF.UML.Observations.Set_Of_UML_Observation is abstract;
+       return AMF.UML.Observations.Collections.Set_Of_UML_Observation is abstract;
    --  Refers to the time and duration observations that are involved in expr.
 
 end AMF.UML.Durations;

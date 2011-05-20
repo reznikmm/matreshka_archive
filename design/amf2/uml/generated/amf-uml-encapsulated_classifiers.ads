@@ -46,7 +46,7 @@
 --  A classifier has the ability to own ports as specific and type checked 
 --  interaction points.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Ports;
+limited with AMF.UML.Ports.Collections;
 with AMF.UML.Structured_Classifiers;
 
 package AMF.UML.Encapsulated_Classifiers is
@@ -58,13 +58,11 @@ package AMF.UML.Encapsulated_Classifiers is
 
    type UML_Encapsulated_Classifier is
      access all UML_Encapsulated_Classifier_Interface'Class;
-
-   type Set_Of_UML_Encapsulated_Classifier is null record;
-   type Ordered_Set_Of_UML_Encapsulated_Classifier is null record;
+   for UML_Encapsulated_Classifier'Storage_Size use 0;
 
    not overriding function Get_Owned_Port
     (Self : not null access constant UML_Encapsulated_Classifier_Interface)
-       return AMF.UML.Ports.Set_Of_UML_Port is abstract;
+       return AMF.UML.Ports.Collections.Set_Of_UML_Port is abstract;
    --  References a set of ports that an encapsulated classifier owns.
 
 end AMF.UML.Encapsulated_Classifiers;

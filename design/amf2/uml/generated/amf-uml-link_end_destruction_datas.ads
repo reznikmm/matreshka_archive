@@ -59,9 +59,7 @@ package AMF.UML.Link_End_Destruction_Datas is
 
    type UML_Link_End_Destruction_Data is
      access all UML_Link_End_Destruction_Data_Interface'Class;
-
-   type Set_Of_UML_Link_End_Destruction_Data is null record;
-   type Ordered_Set_Of_UML_Link_End_Destruction_Data is null record;
+   for UML_Link_End_Destruction_Data'Storage_Size use 0;
 
    not overriding function Get_Destroy_At
     (Self : not null access constant UML_Link_End_Destruction_Data_Interface)

@@ -56,8 +56,6 @@ package AMF.UML.Literal_Nulls is
 
    type UML_Literal_Null is
      access all UML_Literal_Null_Interface'Class;
-
-   type Set_Of_UML_Literal_Null is null record;
-   type Ordered_Set_Of_UML_Literal_Null is null record;
+   for UML_Literal_Null'Storage_Size use 0;
 
 end AMF.UML.Literal_Nulls;

@@ -57,9 +57,7 @@ package AMF.UML.Instance_Values is
 
    type UML_Instance_Value is
      access all UML_Instance_Value_Interface'Class;
-
-   type Set_Of_UML_Instance_Value is null record;
-   type Ordered_Set_Of_UML_Instance_Value is null record;
+   for UML_Instance_Value'Storage_Size use 0;
 
    not overriding function Get_Instance
     (Self : not null access constant UML_Instance_Value_Interface)

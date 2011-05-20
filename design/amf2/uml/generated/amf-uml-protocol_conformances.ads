@@ -61,9 +61,7 @@ package AMF.UML.Protocol_Conformances is
 
    type UML_Protocol_Conformance is
      access all UML_Protocol_Conformance_Interface'Class;
-
-   type Set_Of_UML_Protocol_Conformance is null record;
-   type Ordered_Set_Of_UML_Protocol_Conformance is null record;
+   for UML_Protocol_Conformance'Storage_Size use 0;
 
    not overriding function Get_General_Machine
     (Self : not null access constant UML_Protocol_Conformance_Interface)

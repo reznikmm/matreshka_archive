@@ -54,7 +54,7 @@
 --  activated and the states through which an instance progresses during its 
 --  existence.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Protocol_Conformances;
+limited with AMF.UML.Protocol_Conformances.Collections;
 with AMF.UML.State_Machines;
 
 package AMF.UML.Protocol_State_Machines is
@@ -66,13 +66,11 @@ package AMF.UML.Protocol_State_Machines is
 
    type UML_Protocol_State_Machine is
      access all UML_Protocol_State_Machine_Interface'Class;
-
-   type Set_Of_UML_Protocol_State_Machine is null record;
-   type Ordered_Set_Of_UML_Protocol_State_Machine is null record;
+   for UML_Protocol_State_Machine'Storage_Size use 0;
 
    not overriding function Get_Conformance
     (Self : not null access constant UML_Protocol_State_Machine_Interface)
-       return AMF.UML.Protocol_Conformances.Set_Of_UML_Protocol_Conformance is abstract;
+       return AMF.UML.Protocol_Conformances.Collections.Set_Of_UML_Protocol_Conformance is abstract;
    --  Conformance between protocol state machines.
 
 end AMF.UML.Protocol_State_Machines;

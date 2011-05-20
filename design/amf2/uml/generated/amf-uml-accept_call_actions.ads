@@ -63,9 +63,7 @@ package AMF.UML.Accept_Call_Actions is
 
    type UML_Accept_Call_Action is
      access all UML_Accept_Call_Action_Interface'Class;
-
-   type Set_Of_UML_Accept_Call_Action is null record;
-   type Ordered_Set_Of_UML_Accept_Call_Action is null record;
+   for UML_Accept_Call_Action'Storage_Size use 0;
 
    not overriding function Get_Return_Information
     (Self : not null access constant UML_Accept_Call_Action_Interface)

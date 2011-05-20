@@ -57,9 +57,7 @@ package AMF.UML.Literal_Unlimited_Naturals is
 
    type UML_Literal_Unlimited_Natural is
      access all UML_Literal_Unlimited_Natural_Interface'Class;
-
-   type Set_Of_UML_Literal_Unlimited_Natural is null record;
-   type Ordered_Set_Of_UML_Literal_Unlimited_Natural is null record;
+   for UML_Literal_Unlimited_Natural'Storage_Size use 0;
 
    not overriding function Get_Value
     (Self : not null access constant UML_Literal_Unlimited_Natural_Interface)

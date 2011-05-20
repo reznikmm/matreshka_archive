@@ -63,8 +63,9 @@
 --  connected parts only.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Associations;
-limited with AMF.UML.Behaviors;
-limited with AMF.UML.Connector_Ends;
+limited with AMF.UML.Behaviors.Collections;
+limited with AMF.UML.Connector_Ends.Collections;
+limited with AMF.UML.Connectors.Collections;
 with AMF.UML.Features;
 
 package AMF.UML.Connectors is
@@ -76,19 +77,17 @@ package AMF.UML.Connectors is
 
    type UML_Connector is
      access all UML_Connector_Interface'Class;
-
-   type Set_Of_UML_Connector is null record;
-   type Ordered_Set_Of_UML_Connector is null record;
+   for UML_Connector'Storage_Size use 0;
 
    not overriding function Get_Contract
     (Self : not null access constant UML_Connector_Interface)
-       return AMF.UML.Behaviors.Set_Of_UML_Behavior is abstract;
+       return AMF.UML.Behaviors.Collections.Set_Of_UML_Behavior is abstract;
    --  The set of Behaviors that specify the valid interaction patterns across 
    --  the connector.
 
    not overriding function Get_End
     (Self : not null access constant UML_Connector_Interface)
-       return AMF.UML.Connector_Ends.Ordered_Set_Of_UML_Connector_End is abstract;
+       return AMF.UML.Connector_Ends.Collections.Ordered_Set_Of_UML_Connector_End is abstract;
    --  A connector consists of at least two connector ends, each representing 
    --  the participation of instances of the classifiers typing the 
    --  connectable elements attached to this end. The set of connector ends is 
@@ -103,7 +102,7 @@ package AMF.UML.Connectors is
 
    not overriding function Get_Redefined_Connector
     (Self : not null access constant UML_Connector_Interface)
-       return AMF.UML.Connectors.Set_Of_UML_Connector is abstract;
+       return AMF.UML.Connectors.Collections.Set_Of_UML_Connector is abstract;
    --  A connector may be redefined when its containing classifier is 
    --  specialized. The redefining connector may have a type that specializes 
    --  the type of the redefined connector. The types of the connector ends of 

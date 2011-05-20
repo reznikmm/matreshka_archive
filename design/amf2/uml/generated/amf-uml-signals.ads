@@ -51,7 +51,7 @@
 --  independently of the classifiers handling the signal occurrence.
 ------------------------------------------------------------------------------
 with AMF.UML.Classifiers;
-limited with AMF.UML.Properties;
+limited with AMF.UML.Properties.Collections;
 
 package AMF.UML.Signals is
 
@@ -62,13 +62,11 @@ package AMF.UML.Signals is
 
    type UML_Signal is
      access all UML_Signal_Interface'Class;
-
-   type Set_Of_UML_Signal is null record;
-   type Ordered_Set_Of_UML_Signal is null record;
+   for UML_Signal'Storage_Size use 0;
 
    not overriding function Get_Owned_Attribute
     (Self : not null access constant UML_Signal_Interface)
-       return AMF.UML.Properties.Ordered_Set_Of_UML_Property is abstract;
+       return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  The attributes owned by the signal.
 
 end AMF.UML.Signals;

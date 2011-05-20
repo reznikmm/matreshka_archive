@@ -59,9 +59,7 @@ package AMF.UML.Clear_Association_Actions is
 
    type UML_Clear_Association_Action is
      access all UML_Clear_Association_Action_Interface'Class;
-
-   type Set_Of_UML_Clear_Association_Action is null record;
-   type Ordered_Set_Of_UML_Clear_Association_Action is null record;
+   for UML_Clear_Association_Action'Storage_Size use 0;
 
    not overriding function Get_Association
     (Self : not null access constant UML_Clear_Association_Action_Interface)

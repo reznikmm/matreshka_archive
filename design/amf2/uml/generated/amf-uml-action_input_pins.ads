@@ -58,9 +58,7 @@ package AMF.UML.Action_Input_Pins is
 
    type UML_Action_Input_Pin is
      access all UML_Action_Input_Pin_Interface'Class;
-
-   type Set_Of_UML_Action_Input_Pin is null record;
-   type Ordered_Set_Of_UML_Action_Input_Pin is null record;
+   for UML_Action_Input_Pin'Storage_Size use 0;
 
    not overriding function Get_From_Action
     (Self : not null access constant UML_Action_Input_Pin_Interface)

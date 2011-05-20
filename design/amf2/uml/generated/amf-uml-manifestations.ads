@@ -58,9 +58,7 @@ package AMF.UML.Manifestations is
 
    type UML_Manifestation is
      access all UML_Manifestation_Interface'Class;
-
-   type Set_Of_UML_Manifestation is null record;
-   type Ordered_Set_Of_UML_Manifestation is null record;
+   for UML_Manifestation'Storage_Size use 0;
 
    not overriding function Get_Utilized_Element
     (Self : not null access constant UML_Manifestation_Interface)

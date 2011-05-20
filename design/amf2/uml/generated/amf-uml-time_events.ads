@@ -60,9 +60,7 @@ package AMF.UML.Time_Events is
 
    type UML_Time_Event is
      access all UML_Time_Event_Interface'Class;
-
-   type Set_Of_UML_Time_Event is null record;
-   type Ordered_Set_Of_UML_Time_Event is null record;
+   for UML_Time_Event'Storage_Size use 0;
 
    not overriding function Get_Is_Relative
     (Self : not null access constant UML_Time_Event_Interface)

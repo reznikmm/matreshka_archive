@@ -57,8 +57,6 @@ package AMF.UML.Write_Link_Actions is
 
    type UML_Write_Link_Action is
      access all UML_Write_Link_Action_Interface'Class;
-
-   type Set_Of_UML_Write_Link_Action is null record;
-   type Ordered_Set_Of_UML_Write_Link_Action is null record;
+   for UML_Write_Link_Action'Storage_Size use 0;
 
 end AMF.UML.Write_Link_Actions;

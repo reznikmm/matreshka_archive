@@ -60,9 +60,7 @@ package AMF.UML.Packageable_Elements is
 
    type UML_Packageable_Element is
      access all UML_Packageable_Element_Interface'Class;
-
-   type Set_Of_UML_Packageable_Element is null record;
-   type Ordered_Set_Of_UML_Packageable_Element is null record;
+   for UML_Packageable_Element'Storage_Size use 0;
 
    not overriding function Get_Visibility
     (Self : not null access constant UML_Packageable_Element_Interface)

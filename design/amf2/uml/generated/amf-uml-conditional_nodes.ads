@@ -46,8 +46,8 @@
 --  A conditional node is a structured activity node that represents an 
 --  exclusive choice among some number of alternatives.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Clauses;
-limited with AMF.UML.Output_Pins;
+limited with AMF.UML.Clauses.Collections;
+limited with AMF.UML.Output_Pins.Collections;
 with AMF.UML.Structured_Activity_Nodes;
 
 package AMF.UML.Conditional_Nodes is
@@ -59,13 +59,11 @@ package AMF.UML.Conditional_Nodes is
 
    type UML_Conditional_Node is
      access all UML_Conditional_Node_Interface'Class;
-
-   type Set_Of_UML_Conditional_Node is null record;
-   type Ordered_Set_Of_UML_Conditional_Node is null record;
+   for UML_Conditional_Node'Storage_Size use 0;
 
    not overriding function Get_Clause
     (Self : not null access constant UML_Conditional_Node_Interface)
-       return AMF.UML.Clauses.Set_Of_UML_Clause is abstract;
+       return AMF.UML.Clauses.Collections.Set_Of_UML_Clause is abstract;
    --  Set of clauses composing the conditional.
 
    not overriding function Get_Is_Assured
@@ -88,7 +86,7 @@ package AMF.UML.Conditional_Nodes is
 
    not overriding function Get_Result
     (Self : not null access constant UML_Conditional_Node_Interface)
-       return AMF.UML.Output_Pins.Ordered_Set_Of_UML_Output_Pin is abstract;
+       return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin is abstract;
    --  A list of output pins that constitute the data flow outputs of the 
    --  conditional.
 

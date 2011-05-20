@@ -57,9 +57,7 @@ package AMF.UML.Destroy_Object_Actions is
 
    type UML_Destroy_Object_Action is
      access all UML_Destroy_Object_Action_Interface'Class;
-
-   type Set_Of_UML_Destroy_Object_Action is null record;
-   type Ordered_Set_Of_UML_Destroy_Object_Action is null record;
+   for UML_Destroy_Object_Action'Storage_Size use 0;
 
    not overriding function Get_Is_Destroy_Links
     (Self : not null access constant UML_Destroy_Object_Action_Interface)

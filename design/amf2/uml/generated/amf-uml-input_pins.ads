@@ -56,8 +56,6 @@ package AMF.UML.Input_Pins is
 
    type UML_Input_Pin is
      access all UML_Input_Pin_Interface'Class;
-
-   type Set_Of_UML_Input_Pin is null record;
-   type Ordered_Set_Of_UML_Input_Pin is null record;
+   for UML_Input_Pin'Storage_Size use 0;
 
 end AMF.UML.Input_Pins;

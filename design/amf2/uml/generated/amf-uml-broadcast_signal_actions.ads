@@ -63,9 +63,7 @@ package AMF.UML.Broadcast_Signal_Actions is
 
    type UML_Broadcast_Signal_Action is
      access all UML_Broadcast_Signal_Action_Interface'Class;
-
-   type Set_Of_UML_Broadcast_Signal_Action is null record;
-   type Ordered_Set_Of_UML_Broadcast_Signal_Action is null record;
+   for UML_Broadcast_Signal_Action'Storage_Size use 0;
 
    not overriding function Get_Signal
     (Self : not null access constant UML_Broadcast_Signal_Action_Interface)

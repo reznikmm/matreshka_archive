@@ -62,9 +62,7 @@ package AMF.UML.State_Invariants is
 
    type UML_State_Invariant is
      access all UML_State_Invariant_Interface'Class;
-
-   type Set_Of_UML_State_Invariant is null record;
-   type Ordered_Set_Of_UML_State_Invariant is null record;
+   for UML_State_Invariant'Storage_Size use 0;
 
    not overriding function Get_Covered
     (Self : not null access constant UML_State_Invariant_Interface)

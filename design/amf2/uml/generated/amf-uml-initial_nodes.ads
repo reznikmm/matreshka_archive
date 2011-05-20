@@ -57,8 +57,6 @@ package AMF.UML.Initial_Nodes is
 
    type UML_Initial_Node is
      access all UML_Initial_Node_Interface'Class;
-
-   type Set_Of_UML_Initial_Node is null record;
-   type Ordered_Set_Of_UML_Initial_Node is null record;
+   for UML_Initial_Node'Storage_Size use 0;
 
 end AMF.UML.Initial_Nodes;

@@ -46,9 +46,10 @@
 --  An activity partition is a kind of activity group for identifying actions 
 --  that have some characteristic in common.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Activity_Edges;
+limited with AMF.UML.Activity_Edges.Collections;
 with AMF.UML.Activity_Groups;
-limited with AMF.UML.Activity_Nodes;
+limited with AMF.UML.Activity_Nodes.Collections;
+limited with AMF.UML.Activity_Partitions.Collections;
 limited with AMF.UML.Elements;
 
 package AMF.UML.Activity_Partitions is
@@ -60,13 +61,11 @@ package AMF.UML.Activity_Partitions is
 
    type UML_Activity_Partition is
      access all UML_Activity_Partition_Interface'Class;
-
-   type Set_Of_UML_Activity_Partition is null record;
-   type Ordered_Set_Of_UML_Activity_Partition is null record;
+   for UML_Activity_Partition'Storage_Size use 0;
 
    not overriding function Get_Edge
     (Self : not null access constant UML_Activity_Partition_Interface)
-       return AMF.UML.Activity_Edges.Set_Of_UML_Activity_Edge is abstract;
+       return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  Edges immediately contained in the group.
 
    not overriding function Get_Is_Dimension
@@ -90,7 +89,7 @@ package AMF.UML.Activity_Partitions is
 
    not overriding function Get_Node
     (Self : not null access constant UML_Activity_Partition_Interface)
-       return AMF.UML.Activity_Nodes.Set_Of_UML_Activity_Node is abstract;
+       return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
    --  Nodes immediately contained in the group.
 
    not overriding function Get_Represents
@@ -104,7 +103,7 @@ package AMF.UML.Activity_Partitions is
 
    not overriding function Get_Subpartition
     (Self : not null access constant UML_Activity_Partition_Interface)
-       return AMF.UML.Activity_Partitions.Set_Of_UML_Activity_Partition is abstract;
+       return AMF.UML.Activity_Partitions.Collections.Set_Of_UML_Activity_Partition is abstract;
    --  Partitions immediately contained in the partition.
 
    not overriding function Get_Super_Partition

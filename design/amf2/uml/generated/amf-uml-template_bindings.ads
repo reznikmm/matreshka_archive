@@ -48,7 +48,7 @@
 --  actual parameters for the formal parameters of the template.
 ------------------------------------------------------------------------------
 with AMF.UML.Directed_Relationships;
-limited with AMF.UML.Template_Parameter_Substitutions;
+limited with AMF.UML.Template_Parameter_Substitutions.Collections;
 limited with AMF.UML.Template_Signatures;
 limited with AMF.UML.Templateable_Elements;
 
@@ -61,9 +61,7 @@ package AMF.UML.Template_Bindings is
 
    type UML_Template_Binding is
      access all UML_Template_Binding_Interface'Class;
-
-   type Set_Of_UML_Template_Binding is null record;
-   type Ordered_Set_Of_UML_Template_Binding is null record;
+   for UML_Template_Binding'Storage_Size use 0;
 
    not overriding function Get_Bound_Element
     (Self : not null access constant UML_Template_Binding_Interface)
@@ -76,7 +74,7 @@ package AMF.UML.Template_Bindings is
 
    not overriding function Get_Parameter_Substitution
     (Self : not null access constant UML_Template_Binding_Interface)
-       return AMF.UML.Template_Parameter_Substitutions.Set_Of_UML_Template_Parameter_Substitution is abstract;
+       return AMF.UML.Template_Parameter_Substitutions.Collections.Set_Of_UML_Template_Parameter_Substitution is abstract;
    --  The parameter substitutions owned by this template binding.
 
    not overriding function Get_Signature

@@ -56,9 +56,7 @@ package AMF.UML.Images is
 
    type UML_Image is
      access all UML_Image_Interface'Class;
-
-   type Set_Of_UML_Image is null record;
-   type Ordered_Set_Of_UML_Image is null record;
+   for UML_Image'Storage_Size use 0;
 
    not overriding function Get_Content
     (Self : not null access constant UML_Image_Interface)

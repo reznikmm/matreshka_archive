@@ -47,7 +47,7 @@
 --  It points out the element(s) in the model to observe and whether the 
 --  observations are when this model element is entered or when it is exited.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Named_Elements;
+limited with AMF.UML.Named_Elements.Collections;
 with AMF.UML.Observations;
 
 package AMF.UML.Duration_Observations is
@@ -59,13 +59,11 @@ package AMF.UML.Duration_Observations is
 
    type UML_Duration_Observation is
      access all UML_Duration_Observation_Interface'Class;
-
-   type Set_Of_UML_Duration_Observation is null record;
-   type Ordered_Set_Of_UML_Duration_Observation is null record;
+   for UML_Duration_Observation'Storage_Size use 0;
 
    not overriding function Get_Event
     (Self : not null access constant UML_Duration_Observation_Interface)
-       return AMF.UML.Named_Elements.Set_Of_UML_Named_Element is abstract;
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  The observation is determined by the entering or exiting of the event 
    --  element during execution.
 

@@ -55,7 +55,7 @@ limited with AMF.UML.Constraints;
 with AMF.UML.Namespaces;
 with AMF.UML.Redefinable_Elements;
 limited with AMF.UML.Regions;
-limited with AMF.UML.Triggers;
+limited with AMF.UML.Triggers.Collections;
 limited with AMF.UML.Vertexs;
 
 package AMF.UML.Transitions is
@@ -68,9 +68,7 @@ package AMF.UML.Transitions is
 
    type UML_Transition is
      access all UML_Transition_Interface'Class;
-
-   type Set_Of_UML_Transition is null record;
-   type Ordered_Set_Of_UML_Transition is null record;
+   for UML_Transition'Storage_Size use 0;
 
    not overriding function Get_Container
     (Self : not null access constant UML_Transition_Interface)
@@ -151,7 +149,7 @@ package AMF.UML.Transitions is
 
    not overriding function Get_Trigger
     (Self : not null access constant UML_Transition_Interface)
-       return AMF.UML.Triggers.Set_Of_UML_Trigger is abstract;
+       return AMF.UML.Triggers.Collections.Set_Of_UML_Trigger is abstract;
    --  Specifies the triggers that may fire the transition.
 
 end AMF.UML.Transitions;

@@ -48,7 +48,7 @@
 --  to be specified.
 ------------------------------------------------------------------------------
 with AMF.UML.Combined_Fragments;
-limited with AMF.UML.Named_Elements;
+limited with AMF.UML.Named_Elements.Collections;
 
 package AMF.UML.Consider_Ignore_Fragments is
 
@@ -59,13 +59,11 @@ package AMF.UML.Consider_Ignore_Fragments is
 
    type UML_Consider_Ignore_Fragment is
      access all UML_Consider_Ignore_Fragment_Interface'Class;
-
-   type Set_Of_UML_Consider_Ignore_Fragment is null record;
-   type Ordered_Set_Of_UML_Consider_Ignore_Fragment is null record;
+   for UML_Consider_Ignore_Fragment'Storage_Size use 0;
 
    not overriding function Get_Message
     (Self : not null access constant UML_Consider_Ignore_Fragment_Interface)
-       return AMF.UML.Named_Elements.Set_Of_UML_Named_Element is abstract;
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  The set of messages that apply to this fragment
 
 end AMF.UML.Consider_Ignore_Fragments;

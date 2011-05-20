@@ -56,8 +56,6 @@ package AMF.UML.Data_Store_Nodes is
 
    type UML_Data_Store_Node is
      access all UML_Data_Store_Node_Interface'Class;
-
-   type Set_Of_UML_Data_Store_Node is null record;
-   type Ordered_Set_Of_UML_Data_Store_Node is null record;
+   for UML_Data_Store_Node'Storage_Size use 0;
 
 end AMF.UML.Data_Store_Nodes;

@@ -57,8 +57,6 @@ package AMF.UML.Final_Nodes is
 
    type UML_Final_Node is
      access all UML_Final_Node_Interface'Class;
-
-   type Set_Of_UML_Final_Node is null record;
-   type Ordered_Set_Of_UML_Final_Node is null record;
+   for UML_Final_Node'Storage_Size use 0;
 
 end AMF.UML.Final_Nodes;

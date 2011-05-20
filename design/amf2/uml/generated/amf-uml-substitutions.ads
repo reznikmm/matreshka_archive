@@ -61,9 +61,7 @@ package AMF.UML.Substitutions is
 
    type UML_Substitution is
      access all UML_Substitution_Interface'Class;
-
-   type Set_Of_UML_Substitution is null record;
-   type Ordered_Set_Of_UML_Substitution is null record;
+   for UML_Substitution'Storage_Size use 0;
 
    not overriding function Get_Contract
     (Self : not null access constant UML_Substitution_Interface)

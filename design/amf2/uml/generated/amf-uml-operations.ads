@@ -56,14 +56,16 @@
 ------------------------------------------------------------------------------
 with AMF.UML.Behavioral_Features;
 limited with AMF.UML.Classes;
-limited with AMF.UML.Constraints;
+limited with AMF.UML.Constraints.Collections;
 limited with AMF.UML.Data_Types;
 limited with AMF.UML.Interfaces;
 limited with AMF.UML.Operation_Template_Parameters;
+limited with AMF.UML.Operations.Collections;
 with AMF.UML.Parameterable_Elements;
-limited with AMF.UML.Parameters;
+limited with AMF.UML.Parameters.Collections;
 with AMF.UML.Templateable_Elements;
 limited with AMF.UML.Types;
+limited with AMF.UML.Types.Collections;
 
 package AMF.UML.Operations is
 
@@ -76,9 +78,7 @@ package AMF.UML.Operations is
 
    type UML_Operation is
      access all UML_Operation_Interface'Class;
-
-   type Set_Of_UML_Operation is null record;
-   type Ordered_Set_Of_UML_Operation is null record;
+   for UML_Operation'Storage_Size use 0;
 
    not overriding function Get_Body_Condition
     (Self : not null access constant UML_Operation_Interface)
@@ -148,32 +148,32 @@ package AMF.UML.Operations is
 
    overriding function Get_Owned_Parameter
     (Self : not null access constant UML_Operation_Interface)
-       return AMF.UML.Parameters.Ordered_Set_Of_UML_Parameter is abstract;
+       return AMF.UML.Parameters.Collections.Ordered_Set_Of_UML_Parameter is abstract;
    --  Specifies the ordered set of formal parameters of this 
    --  BehavioralFeature.
    --  Specifies the parameters owned by this Operation.
 
    not overriding function Get_Postcondition
     (Self : not null access constant UML_Operation_Interface)
-       return AMF.UML.Constraints.Set_Of_UML_Constraint is abstract;
+       return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
    --  An optional set of Constraints specifying the state of the system when 
    --  the Operation is completed.
 
    not overriding function Get_Precondition
     (Self : not null access constant UML_Operation_Interface)
-       return AMF.UML.Constraints.Set_Of_UML_Constraint is abstract;
+       return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
    --  An optional set of Constraints on the state of the system when the 
    --  Operation is invoked.
 
    overriding function Get_Raised_Exception
     (Self : not null access constant UML_Operation_Interface)
-       return AMF.UML.Types.Set_Of_UML_Type is abstract;
+       return AMF.UML.Types.Collections.Set_Of_UML_Type is abstract;
    --  References the Types representing exceptions that may be raised during 
    --  an invocation of this operation.
 
    not overriding function Get_Redefined_Operation
     (Self : not null access constant UML_Operation_Interface)
-       return AMF.UML.Operations.Set_Of_UML_Operation is abstract;
+       return AMF.UML.Operations.Collections.Set_Of_UML_Operation is abstract;
    --  References the Operations that are redefined by this Operation.
 
    not overriding function Get_Template_Parameter

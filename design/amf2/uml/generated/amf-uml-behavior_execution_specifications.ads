@@ -58,9 +58,7 @@ package AMF.UML.Behavior_Execution_Specifications is
 
    type UML_Behavior_Execution_Specification is
      access all UML_Behavior_Execution_Specification_Interface'Class;
-
-   type Set_Of_UML_Behavior_Execution_Specification is null record;
-   type Ordered_Set_Of_UML_Behavior_Execution_Specification is null record;
+   for UML_Behavior_Execution_Specification'Storage_Size use 0;
 
    not overriding function Get_Behavior
     (Self : not null access constant UML_Behavior_Execution_Specification_Interface)

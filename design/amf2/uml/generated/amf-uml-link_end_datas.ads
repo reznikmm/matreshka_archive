@@ -56,7 +56,7 @@
 with AMF.UML.Elements;
 limited with AMF.UML.Input_Pins;
 limited with AMF.UML.Properties;
-limited with AMF.UML.Qualifier_Values;
+limited with AMF.UML.Qualifier_Values.Collections;
 
 package AMF.UML.Link_End_Datas is
 
@@ -67,14 +67,12 @@ package AMF.UML.Link_End_Datas is
 
    type UML_Link_End_Data is
      access all UML_Link_End_Data_Interface'Class;
-
-   type Set_Of_UML_Link_End_Data is null record;
-   type Ordered_Set_Of_UML_Link_End_Data is null record;
+   for UML_Link_End_Data'Storage_Size use 0;
 
    not overriding function Get_End
     (Self : not null access constant UML_Link_End_Data_Interface)
        return AMF.UML.Properties.UML_Property is abstract;
-   --  Association end for which this link-end data specifies values.
+   --  AssociationÂ endÂ forÂ whichÂ thisÂ link-endÂ dataÂ specifiesÂ values.
 
    not overriding procedure Set_End
     (Self : not null access UML_Link_End_Data_Interface;
@@ -82,7 +80,7 @@ package AMF.UML.Link_End_Datas is
 
    not overriding function Get_Qualifier
     (Self : not null access constant UML_Link_End_Data_Interface)
-       return AMF.UML.Qualifier_Values.Set_Of_UML_Qualifier_Value is abstract;
+       return AMF.UML.Qualifier_Values.Collections.Set_Of_UML_Qualifier_Value is abstract;
    --  List of qualifier values
 
    not overriding function Get_Value

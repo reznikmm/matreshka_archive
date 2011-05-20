@@ -59,8 +59,6 @@ package AMF.UML.Primitive_Types is
 
    type UML_Primitive_Type is
      access all UML_Primitive_Type_Interface'Class;
-
-   type Set_Of_UML_Primitive_Type is null record;
-   type Ordered_Set_Of_UML_Primitive_Type is null record;
+   for UML_Primitive_Type'Storage_Size use 0;
 
 end AMF.UML.Primitive_Types;

@@ -50,7 +50,7 @@
 ------------------------------------------------------------------------------
 limited with AMF.UML.Events;
 with AMF.UML.Named_Elements;
-limited with AMF.UML.Ports;
+limited with AMF.UML.Ports.Collections;
 
 package AMF.UML.Triggers is
 
@@ -61,9 +61,7 @@ package AMF.UML.Triggers is
 
    type UML_Trigger is
      access all UML_Trigger_Interface'Class;
-
-   type Set_Of_UML_Trigger is null record;
-   type Ordered_Set_Of_UML_Trigger is null record;
+   for UML_Trigger'Storage_Size use 0;
 
    not overriding function Get_Event
     (Self : not null access constant UML_Trigger_Interface)
@@ -76,7 +74,7 @@ package AMF.UML.Triggers is
 
    not overriding function Get_Port
     (Self : not null access constant UML_Trigger_Interface)
-       return AMF.UML.Ports.Set_Of_UML_Port is abstract;
+       return AMF.UML.Ports.Collections.Set_Of_UML_Port is abstract;
    --  A optional port of the receiver object on which the behavioral feature 
    --  is invoked.
 

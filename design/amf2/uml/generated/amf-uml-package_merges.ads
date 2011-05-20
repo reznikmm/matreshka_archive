@@ -58,9 +58,7 @@ package AMF.UML.Package_Merges is
 
    type UML_Package_Merge is
      access all UML_Package_Merge_Interface'Class;
-
-   type Set_Of_UML_Package_Merge is null record;
-   type Ordered_Set_Of_UML_Package_Merge is null record;
+   for UML_Package_Merge'Storage_Size use 0;
 
    not overriding function Get_Merged_Package
     (Self : not null access constant UML_Package_Merge_Interface)

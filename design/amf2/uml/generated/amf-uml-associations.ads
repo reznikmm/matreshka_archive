@@ -53,9 +53,9 @@
 --  an instance of the type of the end.
 ------------------------------------------------------------------------------
 with AMF.UML.Classifiers;
-limited with AMF.UML.Properties;
+limited with AMF.UML.Properties.Collections;
 with AMF.UML.Relationships;
-limited with AMF.UML.Types;
+limited with AMF.UML.Types.Collections;
 
 package AMF.UML.Associations is
 
@@ -67,13 +67,11 @@ package AMF.UML.Associations is
 
    type UML_Association is
      access all UML_Association_Interface'Class;
-
-   type Set_Of_UML_Association is null record;
-   type Ordered_Set_Of_UML_Association is null record;
+   for UML_Association'Storage_Size use 0;
 
    not overriding function Get_End_Type
     (Self : not null access constant UML_Association_Interface)
-       return AMF.UML.Types.Ordered_Set_Of_UML_Type is abstract;
+       return AMF.UML.Types.Collections.Ordered_Set_Of_UML_Type is abstract;
    --  References the classifiers that are used as types of the ends of the 
    --  association.
 
@@ -89,18 +87,18 @@ package AMF.UML.Associations is
 
    not overriding function Get_Member_End
     (Self : not null access constant UML_Association_Interface)
-       return AMF.UML.Properties.Ordered_Set_Of_UML_Property is abstract;
+       return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  Each end represents participation of instances of the classifier 
    --  connected to the end in links of the association.
 
    not overriding function Get_Navigable_Owned_End
     (Self : not null access constant UML_Association_Interface)
-       return AMF.UML.Properties.Set_Of_UML_Property is abstract;
+       return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
    --  The navigable ends that are owned by the association itself.
 
    not overriding function Get_Owned_End
     (Self : not null access constant UML_Association_Interface)
-       return AMF.UML.Properties.Ordered_Set_Of_UML_Property is abstract;
+       return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  The ends that are owned by the association itself.
 
 end AMF.UML.Associations;

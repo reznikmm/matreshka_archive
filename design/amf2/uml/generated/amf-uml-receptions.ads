@@ -61,9 +61,7 @@ package AMF.UML.Receptions is
 
    type UML_Reception is
      access all UML_Reception_Interface'Class;
-
-   type Set_Of_UML_Reception is null record;
-   type Ordered_Set_Of_UML_Reception is null record;
+   for UML_Reception'Storage_Size use 0;
 
    not overriding function Get_Signal
     (Self : not null access constant UML_Reception_Interface)

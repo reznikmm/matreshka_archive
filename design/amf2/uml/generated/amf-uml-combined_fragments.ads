@@ -48,9 +48,9 @@
 --  interaction operands. Through the use of combined fragments the user will 
 --  be able to describe a number of traces in a compact and concise manner.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Gates;
+limited with AMF.UML.Gates.Collections;
 with AMF.UML.Interaction_Fragments;
-limited with AMF.UML.Interaction_Operands;
+limited with AMF.UML.Interaction_Operands.Collections;
 
 package AMF.UML.Combined_Fragments is
 
@@ -61,13 +61,11 @@ package AMF.UML.Combined_Fragments is
 
    type UML_Combined_Fragment is
      access all UML_Combined_Fragment_Interface'Class;
-
-   type Set_Of_UML_Combined_Fragment is null record;
-   type Ordered_Set_Of_UML_Combined_Fragment is null record;
+   for UML_Combined_Fragment'Storage_Size use 0;
 
    not overriding function Get_Cfragment_Gate
     (Self : not null access constant UML_Combined_Fragment_Interface)
-       return AMF.UML.Gates.Set_Of_UML_Gate is abstract;
+       return AMF.UML.Gates.Collections.Set_Of_UML_Gate is abstract;
    --  Specifies the gates that form the interface between this 
    --  CombinedFragment and its surroundings
 
@@ -83,7 +81,7 @@ package AMF.UML.Combined_Fragments is
 
    not overriding function Get_Operand
     (Self : not null access constant UML_Combined_Fragment_Interface)
-       return AMF.UML.Interaction_Operands.Ordered_Set_Of_UML_Interaction_Operand is abstract;
+       return AMF.UML.Interaction_Operands.Collections.Ordered_Set_Of_UML_Interaction_Operand is abstract;
    --  The set of operands of the combined fragment.
 
 end AMF.UML.Combined_Fragments;

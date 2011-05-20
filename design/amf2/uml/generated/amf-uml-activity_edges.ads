@@ -48,9 +48,10 @@
 --  Activity edges can be contained in interruptible regions.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Activities;
-limited with AMF.UML.Activity_Groups;
+limited with AMF.UML.Activity_Edges.Collections;
+limited with AMF.UML.Activity_Groups.Collections;
 limited with AMF.UML.Activity_Nodes;
-limited with AMF.UML.Activity_Partitions;
+limited with AMF.UML.Activity_Partitions.Collections;
 limited with AMF.UML.Interruptible_Activity_Regions;
 with AMF.UML.Redefinable_Elements;
 limited with AMF.UML.Structured_Activity_Nodes;
@@ -65,9 +66,7 @@ package AMF.UML.Activity_Edges is
 
    type UML_Activity_Edge is
      access all UML_Activity_Edge_Interface'Class;
-
-   type Set_Of_UML_Activity_Edge is null record;
-   type Ordered_Set_Of_UML_Activity_Edge is null record;
+   for UML_Activity_Edge'Storage_Size use 0;
 
    not overriding function Get_Activity
     (Self : not null access constant UML_Activity_Edge_Interface)
@@ -90,12 +89,12 @@ package AMF.UML.Activity_Edges is
 
    not overriding function Get_In_Group
     (Self : not null access constant UML_Activity_Edge_Interface)
-       return AMF.UML.Activity_Groups.Set_Of_UML_Activity_Group is abstract;
+       return AMF.UML.Activity_Groups.Collections.Set_Of_UML_Activity_Group is abstract;
    --  Groups containing the edge.
 
    not overriding function Get_In_Partition
     (Self : not null access constant UML_Activity_Edge_Interface)
-       return AMF.UML.Activity_Partitions.Set_Of_UML_Activity_Partition is abstract;
+       return AMF.UML.Activity_Partitions.Collections.Set_Of_UML_Activity_Partition is abstract;
    --  Partitions containing the edge.
 
    not overriding function Get_In_Structured_Node
@@ -118,7 +117,7 @@ package AMF.UML.Activity_Edges is
 
    not overriding function Get_Redefined_Edge
     (Self : not null access constant UML_Activity_Edge_Interface)
-       return AMF.UML.Activity_Edges.Set_Of_UML_Activity_Edge is abstract;
+       return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  Inherited edges replaced by this edge in a specialization of the 
    --  activity.
 

@@ -49,6 +49,7 @@
 ------------------------------------------------------------------------------
 with AMF.UML.Classes;
 with AMF.UML.Deployment_Targets;
+limited with AMF.UML.Nodes.Collections;
 
 package AMF.UML.Nodes is
 
@@ -60,13 +61,11 @@ package AMF.UML.Nodes is
 
    type UML_Node is
      access all UML_Node_Interface'Class;
-
-   type Set_Of_UML_Node is null record;
-   type Ordered_Set_Of_UML_Node is null record;
+   for UML_Node'Storage_Size use 0;
 
    not overriding function Get_Nested_Node
     (Self : not null access constant UML_Node_Interface)
-       return AMF.UML.Nodes.Set_Of_UML_Node is abstract;
+       return AMF.UML.Nodes.Collections.Set_Of_UML_Node is abstract;
    --  The Nodes that are defined (nested) within the Node.
 
 end AMF.UML.Nodes;

@@ -50,7 +50,7 @@
 with AMF.UML.Actions;
 limited with AMF.UML.Classifiers;
 limited with AMF.UML.Input_Pins;
-limited with AMF.UML.Output_Pins;
+limited with AMF.UML.Output_Pins.Collections;
 
 package AMF.UML.Unmarshall_Actions is
 
@@ -61,9 +61,7 @@ package AMF.UML.Unmarshall_Actions is
 
    type UML_Unmarshall_Action is
      access all UML_Unmarshall_Action_Interface'Class;
-
-   type Set_Of_UML_Unmarshall_Action is null record;
-   type Ordered_Set_Of_UML_Unmarshall_Action is null record;
+   for UML_Unmarshall_Action'Storage_Size use 0;
 
    not overriding function Get_Object
     (Self : not null access constant UML_Unmarshall_Action_Interface)
@@ -76,7 +74,7 @@ package AMF.UML.Unmarshall_Actions is
 
    not overriding function Get_Result
     (Self : not null access constant UML_Unmarshall_Action_Interface)
-       return AMF.UML.Output_Pins.Set_Of_UML_Output_Pin is abstract;
+       return AMF.UML.Output_Pins.Collections.Set_Of_UML_Output_Pin is abstract;
    --  The values of the structural features of the input object.
 
    not overriding function Get_Unmarshall_Type

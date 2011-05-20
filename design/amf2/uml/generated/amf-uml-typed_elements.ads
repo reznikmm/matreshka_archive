@@ -59,9 +59,7 @@ package AMF.UML.Typed_Elements is
 
    type UML_Typed_Element is
      access all UML_Typed_Element_Interface'Class;
-
-   type Set_Of_UML_Typed_Element is null record;
-   type Ordered_Set_Of_UML_Typed_Element is null record;
+   for UML_Typed_Element'Storage_Size use 0;
 
    not overriding function Get_Type
     (Self : not null access constant UML_Typed_Element_Interface)

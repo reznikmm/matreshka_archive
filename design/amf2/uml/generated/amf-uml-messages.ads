@@ -50,7 +50,7 @@ limited with AMF.UML.Connectors;
 limited with AMF.UML.Interactions;
 limited with AMF.UML.Message_Ends;
 with AMF.UML.Named_Elements;
-limited with AMF.UML.Value_Specifications;
+limited with AMF.UML.Value_Specifications.Collections;
 
 package AMF.UML.Messages is
 
@@ -61,13 +61,11 @@ package AMF.UML.Messages is
 
    type UML_Message is
      access all UML_Message_Interface'Class;
-
-   type Set_Of_UML_Message is null record;
-   type Ordered_Set_Of_UML_Message is null record;
+   for UML_Message'Storage_Size use 0;
 
    not overriding function Get_Argument
     (Self : not null access constant UML_Message_Interface)
-       return AMF.UML.Value_Specifications.Ordered_Set_Of_UML_Value_Specification is abstract;
+       return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification is abstract;
    --  The arguments of the Message
 
    not overriding function Get_Connector

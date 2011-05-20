@@ -60,9 +60,7 @@ package AMF.UML.Object_Flows is
 
    type UML_Object_Flow is
      access all UML_Object_Flow_Interface'Class;
-
-   type Set_Of_UML_Object_Flow is null record;
-   type Ordered_Set_Of_UML_Object_Flow is null record;
+   for UML_Object_Flow'Storage_Size use 0;
 
    not overriding function Get_Is_Multicast
     (Self : not null access constant UML_Object_Flow_Interface)

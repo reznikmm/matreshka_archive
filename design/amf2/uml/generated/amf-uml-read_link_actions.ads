@@ -58,9 +58,7 @@ package AMF.UML.Read_Link_Actions is
 
    type UML_Read_Link_Action is
      access all UML_Read_Link_Action_Interface'Class;
-
-   type Set_Of_UML_Read_Link_Action is null record;
-   type Ordered_Set_Of_UML_Read_Link_Action is null record;
+   for UML_Read_Link_Action'Storage_Size use 0;
 
    not overriding function Get_Result
     (Self : not null access constant UML_Read_Link_Action_Interface)

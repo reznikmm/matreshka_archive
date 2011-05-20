@@ -58,9 +58,7 @@ package AMF.UML.Action_Execution_Specifications is
 
    type UML_Action_Execution_Specification is
      access all UML_Action_Execution_Specification_Interface'Class;
-
-   type Set_Of_UML_Action_Execution_Specification is null record;
-   type Ordered_Set_Of_UML_Action_Execution_Specification is null record;
+   for UML_Action_Execution_Specification'Storage_Size use 0;
 
    not overriding function Get_Action
     (Self : not null access constant UML_Action_Execution_Specification_Interface)

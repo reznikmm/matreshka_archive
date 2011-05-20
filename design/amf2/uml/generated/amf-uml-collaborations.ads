@@ -48,7 +48,7 @@
 --  instances playing the roles of the collaboration.
 ------------------------------------------------------------------------------
 with AMF.UML.Behaviored_Classifiers;
-limited with AMF.UML.Connectable_Elements;
+limited with AMF.UML.Connectable_Elements.Collections;
 with AMF.UML.Structured_Classifiers;
 
 package AMF.UML.Collaborations is
@@ -61,13 +61,11 @@ package AMF.UML.Collaborations is
 
    type UML_Collaboration is
      access all UML_Collaboration_Interface'Class;
-
-   type Set_Of_UML_Collaboration is null record;
-   type Ordered_Set_Of_UML_Collaboration is null record;
+   for UML_Collaboration'Storage_Size use 0;
 
    not overriding function Get_Collaboration_Role
     (Self : not null access constant UML_Collaboration_Interface)
-       return AMF.UML.Connectable_Elements.Set_Of_UML_Connectable_Element is abstract;
+       return AMF.UML.Connectable_Elements.Collections.Set_Of_UML_Connectable_Element is abstract;
    --  References connectable elements (possibly owned by other classifiers) 
    --  which represent roles that instances may play in this collaboration.
 

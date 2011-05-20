@@ -48,7 +48,8 @@
 ------------------------------------------------------------------------------
 limited with AMF.UML.Classifiers;
 with AMF.UML.Redefinable_Elements;
-limited with AMF.UML.Template_Parameters;
+limited with AMF.UML.Redefinable_Template_Signatures.Collections;
+limited with AMF.UML.Template_Parameters.Collections;
 with AMF.UML.Template_Signatures;
 
 package AMF.UML.Redefinable_Template_Signatures is
@@ -61,9 +62,7 @@ package AMF.UML.Redefinable_Template_Signatures is
 
    type UML_Redefinable_Template_Signature is
      access all UML_Redefinable_Template_Signature_Interface'Class;
-
-   type Set_Of_UML_Redefinable_Template_Signature is null record;
-   type Ordered_Set_Of_UML_Redefinable_Template_Signature is null record;
+   for UML_Redefinable_Template_Signature'Storage_Size use 0;
 
    not overriding function Get_Classifier
     (Self : not null access constant UML_Redefinable_Template_Signature_Interface)
@@ -76,12 +75,12 @@ package AMF.UML.Redefinable_Template_Signatures is
 
    not overriding function Get_Extended_Signature
     (Self : not null access constant UML_Redefinable_Template_Signature_Interface)
-       return AMF.UML.Redefinable_Template_Signatures.Set_Of_UML_Redefinable_Template_Signature is abstract;
+       return AMF.UML.Redefinable_Template_Signatures.Collections.Set_Of_UML_Redefinable_Template_Signature is abstract;
    --  The template signature that is extended by this template signature.
 
    not overriding function Get_Inherited_Parameter
     (Self : not null access constant UML_Redefinable_Template_Signature_Interface)
-       return AMF.UML.Template_Parameters.Set_Of_UML_Template_Parameter is abstract;
+       return AMF.UML.Template_Parameters.Collections.Set_Of_UML_Template_Parameter is abstract;
    --  The formal template parameters of the extendedSignature.
 
 end AMF.UML.Redefinable_Template_Signatures;

@@ -57,8 +57,6 @@ package AMF.UML.Function_Behaviors is
 
    type UML_Function_Behavior is
      access all UML_Function_Behavior_Interface'Class;
-
-   type Set_Of_UML_Function_Behavior is null record;
-   type Ordered_Set_Of_UML_Function_Behavior is null record;
+   for UML_Function_Behavior'Storage_Size use 0;
 
 end AMF.UML.Function_Behaviors;

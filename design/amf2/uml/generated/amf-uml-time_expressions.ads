@@ -46,7 +46,7 @@
 --  A time expression defines a value specification that represents a time 
 --  value.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Observations;
+limited with AMF.UML.Observations.Collections;
 with AMF.UML.Value_Specifications;
 
 package AMF.UML.Time_Expressions is
@@ -58,9 +58,7 @@ package AMF.UML.Time_Expressions is
 
    type UML_Time_Expression is
      access all UML_Time_Expression_Interface'Class;
-
-   type Set_Of_UML_Time_Expression is null record;
-   type Ordered_Set_Of_UML_Time_Expression is null record;
+   for UML_Time_Expression'Storage_Size use 0;
 
    not overriding function Get_Expr
     (Self : not null access constant UML_Time_Expression_Interface)
@@ -73,7 +71,7 @@ package AMF.UML.Time_Expressions is
 
    not overriding function Get_Observation
     (Self : not null access constant UML_Time_Expression_Interface)
-       return AMF.UML.Observations.Set_Of_UML_Observation is abstract;
+       return AMF.UML.Observations.Collections.Set_Of_UML_Observation is abstract;
    --  Refers to the time and duration observations that are involved in expr.
 
 end AMF.UML.Time_Expressions;

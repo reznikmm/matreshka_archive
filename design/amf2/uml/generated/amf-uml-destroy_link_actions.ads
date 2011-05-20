@@ -46,7 +46,7 @@
 --  A destroy link action is a write link action that destroys links and link 
 --  objects.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Link_End_Destruction_Datas;
+limited with AMF.UML.Link_End_Destruction_Datas.Collections;
 with AMF.UML.Write_Link_Actions;
 
 package AMF.UML.Destroy_Link_Actions is
@@ -58,13 +58,11 @@ package AMF.UML.Destroy_Link_Actions is
 
    type UML_Destroy_Link_Action is
      access all UML_Destroy_Link_Action_Interface'Class;
-
-   type Set_Of_UML_Destroy_Link_Action is null record;
-   type Ordered_Set_Of_UML_Destroy_Link_Action is null record;
+   for UML_Destroy_Link_Action'Storage_Size use 0;
 
    not overriding function Get_End_Data
     (Self : not null access constant UML_Destroy_Link_Action_Interface)
-       return AMF.UML.Link_End_Destruction_Datas.Set_Of_UML_Link_End_Destruction_Data is abstract;
+       return AMF.UML.Link_End_Destruction_Datas.Collections.Set_Of_UML_Link_End_Destruction_Data is abstract;
    --  Specifies ends of association and inputs.
 
 end AMF.UML.Destroy_Link_Actions;

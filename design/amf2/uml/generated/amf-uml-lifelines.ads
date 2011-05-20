@@ -48,7 +48,7 @@
 --  lifelines represent only one interacting entity.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Connectable_Elements;
-limited with AMF.UML.Interaction_Fragments;
+limited with AMF.UML.Interaction_Fragments.Collections;
 limited with AMF.UML.Interactions;
 with AMF.UML.Named_Elements;
 limited with AMF.UML.Part_Decompositions;
@@ -63,13 +63,11 @@ package AMF.UML.Lifelines is
 
    type UML_Lifeline is
      access all UML_Lifeline_Interface'Class;
-
-   type Set_Of_UML_Lifeline is null record;
-   type Ordered_Set_Of_UML_Lifeline is null record;
+   for UML_Lifeline'Storage_Size use 0;
 
    not overriding function Get_Covered_By
     (Self : not null access constant UML_Lifeline_Interface)
-       return AMF.UML.Interaction_Fragments.Set_Of_UML_Interaction_Fragment is abstract;
+       return AMF.UML.Interaction_Fragments.Collections.Set_Of_UML_Interaction_Fragment is abstract;
    --  References the InteractionFragments in which this Lifeline takes part.
 
    not overriding function Get_Decomposed_As

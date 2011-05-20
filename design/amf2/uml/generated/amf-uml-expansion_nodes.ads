@@ -61,9 +61,7 @@ package AMF.UML.Expansion_Nodes is
 
    type UML_Expansion_Node is
      access all UML_Expansion_Node_Interface'Class;
-
-   type Set_Of_UML_Expansion_Node is null record;
-   type Ordered_Set_Of_UML_Expansion_Node is null record;
+   for UML_Expansion_Node'Storage_Size use 0;
 
    not overriding function Get_Region_As_Input
     (Self : not null access constant UML_Expansion_Node_Interface)

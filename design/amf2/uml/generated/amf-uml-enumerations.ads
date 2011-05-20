@@ -47,7 +47,7 @@
 --  enumeration literals.
 ------------------------------------------------------------------------------
 with AMF.UML.Data_Types;
-limited with AMF.UML.Enumeration_Literals;
+limited with AMF.UML.Enumeration_Literals.Collections;
 
 package AMF.UML.Enumerations is
 
@@ -58,13 +58,11 @@ package AMF.UML.Enumerations is
 
    type UML_Enumeration is
      access all UML_Enumeration_Interface'Class;
-
-   type Set_Of_UML_Enumeration is null record;
-   type Ordered_Set_Of_UML_Enumeration is null record;
+   for UML_Enumeration'Storage_Size use 0;
 
    not overriding function Get_Owned_Literal
     (Self : not null access constant UML_Enumeration_Interface)
-       return AMF.UML.Enumeration_Literals.Ordered_Set_Of_UML_Enumeration_Literal is abstract;
+       return AMF.UML.Enumeration_Literals.Collections.Ordered_Set_Of_UML_Enumeration_Literal is abstract;
    --  The ordered set of literals for this Enumeration.
 
 end AMF.UML.Enumerations;

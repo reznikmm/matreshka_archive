@@ -58,8 +58,6 @@ package AMF.UML.Devices is
 
    type UML_Device is
      access all UML_Device_Interface'Class;
-
-   type Set_Of_UML_Device is null record;
-   type Ordered_Set_Of_UML_Device is null record;
+   for UML_Device'Storage_Size use 0;
 
 end AMF.UML.Devices;

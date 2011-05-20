@@ -58,8 +58,6 @@ package AMF.UML.Execution_Environments is
 
    type UML_Execution_Environment is
      access all UML_Execution_Environment_Interface'Class;
-
-   type Set_Of_UML_Execution_Environment is null record;
-   type Ordered_Set_Of_UML_Execution_Environment is null record;
+   for UML_Execution_Environment'Storage_Size use 0;
 
 end AMF.UML.Execution_Environments;

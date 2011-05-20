@@ -45,11 +45,11 @@
 ------------------------------------------------------------------------------
 --  An executable node is an abstract class for activity nodes that may be 
 --  executed. It is used as an attachment point for exception handlers.
---  An executable node is an abstract class for activity nodes that may be 
+--  An executableÂ node is an abstract class for activity nodes that may be 
 --  executed. It is used as an attachment point for exception handlers.
 ------------------------------------------------------------------------------
 with AMF.UML.Activity_Nodes;
-limited with AMF.UML.Exception_Handlers;
+limited with AMF.UML.Exception_Handlers.Collections;
 
 package AMF.UML.Executable_Nodes is
 
@@ -60,13 +60,11 @@ package AMF.UML.Executable_Nodes is
 
    type UML_Executable_Node is
      access all UML_Executable_Node_Interface'Class;
-
-   type Set_Of_UML_Executable_Node is null record;
-   type Ordered_Set_Of_UML_Executable_Node is null record;
+   for UML_Executable_Node'Storage_Size use 0;
 
    not overriding function Get_Handler
     (Self : not null access constant UML_Executable_Node_Interface)
-       return AMF.UML.Exception_Handlers.Set_Of_UML_Exception_Handler is abstract;
+       return AMF.UML.Exception_Handlers.Collections.Set_Of_UML_Exception_Handler is abstract;
    --  A set of exception handlers that are examined if an uncaught exception 
    --  propagates to the outer level of the executable node.
 

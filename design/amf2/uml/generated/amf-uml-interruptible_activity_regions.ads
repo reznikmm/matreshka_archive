@@ -46,9 +46,9 @@
 --  An interruptible activity region is an activity group that supports 
 --  termination of tokens flowing in the portions of an activity.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Activity_Edges;
+limited with AMF.UML.Activity_Edges.Collections;
 with AMF.UML.Activity_Groups;
-limited with AMF.UML.Activity_Nodes;
+limited with AMF.UML.Activity_Nodes.Collections;
 
 package AMF.UML.Interruptible_Activity_Regions is
 
@@ -59,19 +59,17 @@ package AMF.UML.Interruptible_Activity_Regions is
 
    type UML_Interruptible_Activity_Region is
      access all UML_Interruptible_Activity_Region_Interface'Class;
-
-   type Set_Of_UML_Interruptible_Activity_Region is null record;
-   type Ordered_Set_Of_UML_Interruptible_Activity_Region is null record;
+   for UML_Interruptible_Activity_Region'Storage_Size use 0;
 
    not overriding function Get_Interrupting_Edge
     (Self : not null access constant UML_Interruptible_Activity_Region_Interface)
-       return AMF.UML.Activity_Edges.Set_Of_UML_Activity_Edge is abstract;
+       return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  The edges leaving the region that will abort other tokens flowing in 
    --  the region.
 
    not overriding function Get_Node
     (Self : not null access constant UML_Interruptible_Activity_Region_Interface)
-       return AMF.UML.Activity_Nodes.Set_Of_UML_Activity_Node is abstract;
+       return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
    --  Nodes immediately contained in the group.
 
 end AMF.UML.Interruptible_Activity_Regions;

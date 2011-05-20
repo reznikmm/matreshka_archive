@@ -60,8 +60,6 @@ package AMF.UML.Realizations is
 
    type UML_Realization is
      access all UML_Realization_Interface'Class;
-
-   type Set_Of_UML_Realization is null record;
-   type Ordered_Set_Of_UML_Realization is null record;
+   for UML_Realization'Storage_Size use 0;
 
 end AMF.UML.Realizations;

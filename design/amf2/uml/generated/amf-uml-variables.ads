@@ -69,9 +69,7 @@ package AMF.UML.Variables is
 
    type UML_Variable is
      access all UML_Variable_Interface'Class;
-
-   type Set_Of_UML_Variable is null record;
-   type Ordered_Set_Of_UML_Variable is null record;
+   for UML_Variable'Storage_Size use 0;
 
    not overriding function Get_Activity_Scope
     (Self : not null access constant UML_Variable_Interface)

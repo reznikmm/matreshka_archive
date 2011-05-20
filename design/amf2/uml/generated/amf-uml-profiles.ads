@@ -46,8 +46,8 @@
 --  A profile defines limited extensions to a reference metamodel with the 
 --  purpose of adapting the metamodel to a specific platform or domain.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Element_Imports;
-limited with AMF.UML.Package_Imports;
+limited with AMF.UML.Element_Imports.Collections;
+limited with AMF.UML.Package_Imports.Collections;
 with AMF.UML.Packages;
 
 package AMF.UML.Profiles is
@@ -59,18 +59,16 @@ package AMF.UML.Profiles is
 
    type UML_Profile is
      access all UML_Profile_Interface'Class;
-
-   type Set_Of_UML_Profile is null record;
-   type Ordered_Set_Of_UML_Profile is null record;
+   for UML_Profile'Storage_Size use 0;
 
    not overriding function Get_Metaclass_Reference
     (Self : not null access constant UML_Profile_Interface)
-       return AMF.UML.Element_Imports.Set_Of_UML_Element_Import is abstract;
+       return AMF.UML.Element_Imports.Collections.Set_Of_UML_Element_Import is abstract;
    --  References a metaclass that may be extended.
 
    not overriding function Get_Metamodel_Reference
     (Self : not null access constant UML_Profile_Interface)
-       return AMF.UML.Package_Imports.Set_Of_UML_Package_Import is abstract;
+       return AMF.UML.Package_Imports.Collections.Set_Of_UML_Package_Import is abstract;
    --  References a package containing (directly or indirectly) metaclasses 
    --  that may be extended.
 

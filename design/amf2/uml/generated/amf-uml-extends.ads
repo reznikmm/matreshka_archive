@@ -49,7 +49,7 @@
 ------------------------------------------------------------------------------
 limited with AMF.UML.Constraints;
 with AMF.UML.Directed_Relationships;
-limited with AMF.UML.Extension_Points;
+limited with AMF.UML.Extension_Points.Collections;
 with AMF.UML.Named_Elements;
 limited with AMF.UML.Use_Cases;
 
@@ -63,9 +63,7 @@ package AMF.UML.Extends is
 
    type UML_Extend is
      access all UML_Extend_Interface'Class;
-
-   type Set_Of_UML_Extend is null record;
-   type Ordered_Set_Of_UML_Extend is null record;
+   for UML_Extend'Storage_Size use 0;
 
    not overriding function Get_Condition
     (Self : not null access constant UML_Extend_Interface)
@@ -99,7 +97,7 @@ package AMF.UML.Extends is
 
    not overriding function Get_Extension_Location
     (Self : not null access constant UML_Extend_Interface)
-       return AMF.UML.Extension_Points.Ordered_Set_Of_UML_Extension_Point is abstract;
+       return AMF.UML.Extension_Points.Collections.Ordered_Set_Of_UML_Extension_Point is abstract;
    --  An ordered list of extension points belonging to the extended use case, 
    --  specifying where the respective behavioral fragments of the extending 
    --  use case are to be inserted. The first fragment in the extending use 

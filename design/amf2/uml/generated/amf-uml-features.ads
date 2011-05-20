@@ -46,7 +46,7 @@
 --  A feature declares a behavioral or structural characteristic of instances 
 --  of classifiers.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Classifiers;
+limited with AMF.UML.Classifiers.Collections;
 with AMF.UML.Redefinable_Elements;
 
 package AMF.UML.Features is
@@ -58,13 +58,11 @@ package AMF.UML.Features is
 
    type UML_Feature is
      access all UML_Feature_Interface'Class;
-
-   type Set_Of_UML_Feature is null record;
-   type Ordered_Set_Of_UML_Feature is null record;
+   for UML_Feature'Storage_Size use 0;
 
    not overriding function Get_Featuring_Classifier
     (Self : not null access constant UML_Feature_Interface)
-       return AMF.UML.Classifiers.Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  The Classifiers that have this Feature as a feature.
 
    not overriding function Get_Is_Static

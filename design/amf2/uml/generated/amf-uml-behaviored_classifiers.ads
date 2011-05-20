@@ -47,9 +47,9 @@
 --  A classifier can have behavior specifications defined in its namespace. 
 --  One of these may specify the behavior of the classifier itself.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Behaviors;
+limited with AMF.UML.Behaviors.Collections;
 with AMF.UML.Classifiers;
-limited with AMF.UML.Interface_Realizations;
+limited with AMF.UML.Interface_Realizations.Collections;
 
 package AMF.UML.Behaviored_Classifiers is
 
@@ -60,9 +60,7 @@ package AMF.UML.Behaviored_Classifiers is
 
    type UML_Behaviored_Classifier is
      access all UML_Behaviored_Classifier_Interface'Class;
-
-   type Set_Of_UML_Behaviored_Classifier is null record;
-   type Ordered_Set_Of_UML_Behaviored_Classifier is null record;
+   for UML_Behaviored_Classifier'Storage_Size use 0;
 
    not overriding function Get_Classifier_Behavior
     (Self : not null access constant UML_Behaviored_Classifier_Interface)
@@ -76,14 +74,14 @@ package AMF.UML.Behaviored_Classifiers is
 
    not overriding function Get_Interface_Realization
     (Self : not null access constant UML_Behaviored_Classifier_Interface)
-       return AMF.UML.Interface_Realizations.Set_Of_UML_Interface_Realization is abstract;
+       return AMF.UML.Interface_Realizations.Collections.Set_Of_UML_Interface_Realization is abstract;
    --  The set of InterfaceRealizations owned by the BehavioredClassifier. 
    --  Interface realizations reference the Interfaces of which the 
    --  BehavioredClassifier is an implementation.
 
    not overriding function Get_Owned_Behavior
     (Self : not null access constant UML_Behaviored_Classifier_Interface)
-       return AMF.UML.Behaviors.Set_Of_UML_Behavior is abstract;
+       return AMF.UML.Behaviors.Collections.Set_Of_UML_Behavior is abstract;
    --  References behavior specifications owned by a classifier.
 
 end AMF.UML.Behaviored_Classifiers;

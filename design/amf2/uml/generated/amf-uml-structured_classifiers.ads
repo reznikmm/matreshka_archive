@@ -48,9 +48,9 @@
 --  collaboration of owned or referenced instances.
 ------------------------------------------------------------------------------
 with AMF.UML.Classifiers;
-limited with AMF.UML.Connectable_Elements;
-limited with AMF.UML.Connectors;
-limited with AMF.UML.Properties;
+limited with AMF.UML.Connectable_Elements.Collections;
+limited with AMF.UML.Connectors.Collections;
+limited with AMF.UML.Properties.Collections;
 
 package AMF.UML.Structured_Classifiers is
 
@@ -61,30 +61,28 @@ package AMF.UML.Structured_Classifiers is
 
    type UML_Structured_Classifier is
      access all UML_Structured_Classifier_Interface'Class;
-
-   type Set_Of_UML_Structured_Classifier is null record;
-   type Ordered_Set_Of_UML_Structured_Classifier is null record;
+   for UML_Structured_Classifier'Storage_Size use 0;
 
    not overriding function Get_Owned_Attribute
     (Self : not null access constant UML_Structured_Classifier_Interface)
-       return AMF.UML.Properties.Ordered_Set_Of_UML_Property is abstract;
+       return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  References the properties owned by the classifier.
 
    not overriding function Get_Owned_Connector
     (Self : not null access constant UML_Structured_Classifier_Interface)
-       return AMF.UML.Connectors.Set_Of_UML_Connector is abstract;
+       return AMF.UML.Connectors.Collections.Set_Of_UML_Connector is abstract;
    --  References the connectors owned by the classifier.
 
    not overriding function Get_Part
     (Self : not null access constant UML_Structured_Classifier_Interface)
-       return AMF.UML.Properties.Set_Of_UML_Property is abstract;
+       return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
    --  References the properties specifying instances that the classifier owns 
    --  by composition. This association is derived, selecting those owned 
    --  properties where isComposite is true.
 
    not overriding function Get_Role
     (Self : not null access constant UML_Structured_Classifier_Interface)
-       return AMF.UML.Connectable_Elements.Set_Of_UML_Connectable_Element is abstract;
+       return AMF.UML.Connectable_Elements.Collections.Set_Of_UML_Connectable_Element is abstract;
    --  References the roles that instances may play in this classifier.
 
 end AMF.UML.Structured_Classifiers;

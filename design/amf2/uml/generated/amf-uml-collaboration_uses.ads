@@ -58,7 +58,7 @@
 --  in the classifier plays which role in the collaboration.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Collaborations;
-limited with AMF.UML.Dependencies;
+limited with AMF.UML.Dependencies.Collections;
 with AMF.UML.Named_Elements;
 
 package AMF.UML.Collaboration_Uses is
@@ -70,13 +70,11 @@ package AMF.UML.Collaboration_Uses is
 
    type UML_Collaboration_Use is
      access all UML_Collaboration_Use_Interface'Class;
-
-   type Set_Of_UML_Collaboration_Use is null record;
-   type Ordered_Set_Of_UML_Collaboration_Use is null record;
+   for UML_Collaboration_Use'Storage_Size use 0;
 
    not overriding function Get_Role_Binding
     (Self : not null access constant UML_Collaboration_Use_Interface)
-       return AMF.UML.Dependencies.Set_Of_UML_Dependency is abstract;
+       return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency is abstract;
    --  A mapping between features of the collaboration type and features of 
    --  the owning classifier. This mapping indicates which connectable element 
    --  of the classifier plays which role(s) in the collaboration. A 

@@ -57,10 +57,12 @@
 --  the operations and receptions described by the interface.
 ------------------------------------------------------------------------------
 with AMF.UML.Classifiers;
-limited with AMF.UML.Operations;
-limited with AMF.UML.Properties;
+limited with AMF.UML.Classifiers.Collections;
+limited with AMF.UML.Interfaces.Collections;
+limited with AMF.UML.Operations.Collections;
+limited with AMF.UML.Properties.Collections;
 limited with AMF.UML.Protocol_State_Machines;
-limited with AMF.UML.Receptions;
+limited with AMF.UML.Receptions.Collections;
 
 package AMF.UML.Interfaces is
 
@@ -71,29 +73,27 @@ package AMF.UML.Interfaces is
 
    type UML_Interface is
      access all UML_Interface_Interface'Class;
-
-   type Set_Of_UML_Interface is null record;
-   type Ordered_Set_Of_UML_Interface is null record;
+   for UML_Interface'Storage_Size use 0;
 
    not overriding function Get_Nested_Classifier
     (Self : not null access constant UML_Interface_Interface)
-       return AMF.UML.Classifiers.Ordered_Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Ordered_Set_Of_UML_Classifier is abstract;
    --  References all the Classifiers that are defined (nested) within the 
    --  Class.
 
    not overriding function Get_Owned_Attribute
     (Self : not null access constant UML_Interface_Interface)
-       return AMF.UML.Properties.Ordered_Set_Of_UML_Property is abstract;
+       return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  The attributes (i.e. the properties) owned by the class.
 
    not overriding function Get_Owned_Operation
     (Self : not null access constant UML_Interface_Interface)
-       return AMF.UML.Operations.Ordered_Set_Of_UML_Operation is abstract;
+       return AMF.UML.Operations.Collections.Ordered_Set_Of_UML_Operation is abstract;
    --  The operations owned by the class.
 
    not overriding function Get_Owned_Reception
     (Self : not null access constant UML_Interface_Interface)
-       return AMF.UML.Receptions.Set_Of_UML_Reception is abstract;
+       return AMF.UML.Receptions.Collections.Set_Of_UML_Reception is abstract;
    --  Receptions that objects providing this interface are willing to accept.
 
    not overriding function Get_Protocol
@@ -108,7 +108,7 @@ package AMF.UML.Interfaces is
 
    not overriding function Get_Redefined_Interface
     (Self : not null access constant UML_Interface_Interface)
-       return AMF.UML.Interfaces.Set_Of_UML_Interface is abstract;
+       return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
    --  References all the Interfaces redefined by this Interface.
 
 end AMF.UML.Interfaces;

@@ -57,8 +57,6 @@ package AMF.UML.Control_Flows is
 
    type UML_Control_Flow is
      access all UML_Control_Flow_Interface'Class;
-
-   type Set_Of_UML_Control_Flow is null record;
-   type Ordered_Set_Of_UML_Control_Flow is null record;
+   for UML_Control_Flow'Storage_Size use 0;
 
 end AMF.UML.Control_Flows;

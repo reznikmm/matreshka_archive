@@ -61,9 +61,7 @@ package AMF.UML.Deployment_Specifications is
 
    type UML_Deployment_Specification is
      access all UML_Deployment_Specification_Interface'Class;
-
-   type Set_Of_UML_Deployment_Specification is null record;
-   type Ordered_Set_Of_UML_Deployment_Specification is null record;
+   for UML_Deployment_Specification'Storage_Size use 0;
 
    not overriding function Get_Deployment
     (Self : not null access constant UML_Deployment_Specification_Interface)

@@ -55,12 +55,13 @@
 --  specify which signals the instances of this class handle.
 ------------------------------------------------------------------------------
 with AMF.UML.Behaviored_Classifiers;
-limited with AMF.UML.Classifiers;
+limited with AMF.UML.Classes.Collections;
+limited with AMF.UML.Classifiers.Collections;
 with AMF.UML.Encapsulated_Classifiers;
-limited with AMF.UML.Extensions;
-limited with AMF.UML.Operations;
-limited with AMF.UML.Properties;
-limited with AMF.UML.Receptions;
+limited with AMF.UML.Extensions.Collections;
+limited with AMF.UML.Operations.Collections;
+limited with AMF.UML.Properties.Collections;
+limited with AMF.UML.Receptions.Collections;
 
 package AMF.UML.Classes is
 
@@ -72,13 +73,11 @@ package AMF.UML.Classes is
 
    type UML_Class is
      access all UML_Class_Interface'Class;
-
-   type Set_Of_UML_Class is null record;
-   type Ordered_Set_Of_UML_Class is null record;
+   for UML_Class'Storage_Size use 0;
 
    not overriding function Get_Extension
     (Self : not null access constant UML_Class_Interface)
-       return AMF.UML.Extensions.Set_Of_UML_Extension is abstract;
+       return AMF.UML.Extensions.Collections.Set_Of_UML_Extension is abstract;
    --  References the Extensions that specify additional properties of the 
    --  metaclass. The property is derived from the extensions whose memberEnds 
    --  are typed by the Class.
@@ -109,28 +108,28 @@ package AMF.UML.Classes is
 
    not overriding function Get_Nested_Classifier
     (Self : not null access constant UML_Class_Interface)
-       return AMF.UML.Classifiers.Ordered_Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Ordered_Set_Of_UML_Classifier is abstract;
    --  References all the Classifiers that are defined (nested) within the 
    --  Class.
 
    overriding function Get_Owned_Attribute
     (Self : not null access constant UML_Class_Interface)
-       return AMF.UML.Properties.Ordered_Set_Of_UML_Property is abstract;
+       return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  The attributes (i.e. the properties) owned by the class.
 
    not overriding function Get_Owned_Operation
     (Self : not null access constant UML_Class_Interface)
-       return AMF.UML.Operations.Ordered_Set_Of_UML_Operation is abstract;
+       return AMF.UML.Operations.Collections.Ordered_Set_Of_UML_Operation is abstract;
    --  The operations owned by the class.
 
    not overriding function Get_Owned_Reception
     (Self : not null access constant UML_Class_Interface)
-       return AMF.UML.Receptions.Set_Of_UML_Reception is abstract;
+       return AMF.UML.Receptions.Collections.Set_Of_UML_Reception is abstract;
    --  Receptions that objects of this class are willing to accept.
 
    not overriding function Get_Super_Class
     (Self : not null access constant UML_Class_Interface)
-       return AMF.UML.Classes.Set_Of_UML_Class is abstract;
+       return AMF.UML.Classes.Collections.Set_Of_UML_Class is abstract;
    --  This gives the superclasses of a class.
 
 end AMF.UML.Classes;

@@ -50,8 +50,8 @@
 --  deployment specification. Examples are executables and configuration files.
 ------------------------------------------------------------------------------
 with AMF.UML.Dependencies;
-limited with AMF.UML.Deployed_Artifacts;
-limited with AMF.UML.Deployment_Specifications;
+limited with AMF.UML.Deployed_Artifacts.Collections;
+limited with AMF.UML.Deployment_Specifications.Collections;
 limited with AMF.UML.Deployment_Targets;
 
 package AMF.UML.Deployments is
@@ -63,19 +63,17 @@ package AMF.UML.Deployments is
 
    type UML_Deployment is
      access all UML_Deployment_Interface'Class;
-
-   type Set_Of_UML_Deployment is null record;
-   type Ordered_Set_Of_UML_Deployment is null record;
+   for UML_Deployment'Storage_Size use 0;
 
    not overriding function Get_Configuration
     (Self : not null access constant UML_Deployment_Interface)
-       return AMF.UML.Deployment_Specifications.Set_Of_UML_Deployment_Specification is abstract;
+       return AMF.UML.Deployment_Specifications.Collections.Set_Of_UML_Deployment_Specification is abstract;
    --  The specification of properties that parameterize the deployment and 
    --  execution of one or more Artifacts.
 
    not overriding function Get_Deployed_Artifact
     (Self : not null access constant UML_Deployment_Interface)
-       return AMF.UML.Deployed_Artifacts.Set_Of_UML_Deployed_Artifact is abstract;
+       return AMF.UML.Deployed_Artifacts.Collections.Set_Of_UML_Deployed_Artifact is abstract;
    --  The Artifacts that are deployed onto a Node. This association 
    --  specializes the supplier association.
 

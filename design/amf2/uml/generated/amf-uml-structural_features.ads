@@ -64,9 +64,7 @@ package AMF.UML.Structural_Features is
 
    type UML_Structural_Feature is
      access all UML_Structural_Feature_Interface'Class;
-
-   type Set_Of_UML_Structural_Feature is null record;
-   type Ordered_Set_Of_UML_Structural_Feature is null record;
+   for UML_Structural_Feature'Storage_Size use 0;
 
    not overriding function Get_Is_Read_Only
     (Self : not null access constant UML_Structural_Feature_Interface)

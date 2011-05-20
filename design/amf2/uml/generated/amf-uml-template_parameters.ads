@@ -59,9 +59,7 @@ package AMF.UML.Template_Parameters is
 
    type UML_Template_Parameter is
      access all UML_Template_Parameter_Interface'Class;
-
-   type Set_Of_UML_Template_Parameter is null record;
-   type Ordered_Set_Of_UML_Template_Parameter is null record;
+   for UML_Template_Parameter'Storage_Size use 0;
 
    not overriding function Get_Default
     (Self : not null access constant UML_Template_Parameter_Interface)

@@ -47,7 +47,7 @@
 --  template and bound to other templates.
 ------------------------------------------------------------------------------
 with AMF.UML.Elements;
-limited with AMF.UML.Template_Bindings;
+limited with AMF.UML.Template_Bindings.Collections;
 limited with AMF.UML.Template_Signatures;
 
 package AMF.UML.Templateable_Elements is
@@ -59,9 +59,7 @@ package AMF.UML.Templateable_Elements is
 
    type UML_Templateable_Element is
      access all UML_Templateable_Element_Interface'Class;
-
-   type Set_Of_UML_Templateable_Element is null record;
-   type Ordered_Set_Of_UML_Templateable_Element is null record;
+   for UML_Templateable_Element'Storage_Size use 0;
 
    not overriding function Get_Owned_Template_Signature
     (Self : not null access constant UML_Templateable_Element_Interface)
@@ -75,7 +73,7 @@ package AMF.UML.Templateable_Elements is
 
    not overriding function Get_Template_Binding
     (Self : not null access constant UML_Templateable_Element_Interface)
-       return AMF.UML.Template_Bindings.Set_Of_UML_Template_Binding is abstract;
+       return AMF.UML.Template_Bindings.Collections.Set_Of_UML_Template_Binding is abstract;
    --  The optional bindings from this element to templates.
 
 end AMF.UML.Templateable_Elements;

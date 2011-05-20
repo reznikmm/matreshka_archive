@@ -53,14 +53,14 @@
 ------------------------------------------------------------------------------
 limited with AMF.UML.Behaviors;
 limited with AMF.UML.Classifiers;
-limited with AMF.UML.Connection_Point_References;
+limited with AMF.UML.Connection_Point_References.Collections;
 limited with AMF.UML.Constraints;
 with AMF.UML.Namespaces;
-limited with AMF.UML.Pseudostates;
+limited with AMF.UML.Pseudostates.Collections;
 with AMF.UML.Redefinable_Elements;
-limited with AMF.UML.Regions;
+limited with AMF.UML.Regions.Collections;
 limited with AMF.UML.State_Machines;
-limited with AMF.UML.Triggers;
+limited with AMF.UML.Triggers.Collections;
 with AMF.UML.Vertexs;
 
 package AMF.UML.States is
@@ -74,13 +74,11 @@ package AMF.UML.States is
 
    type UML_State is
      access all UML_State_Interface'Class;
-
-   type Set_Of_UML_State is null record;
-   type Ordered_Set_Of_UML_State is null record;
+   for UML_State'Storage_Size use 0;
 
    not overriding function Get_Connection
     (Self : not null access constant UML_State_Interface)
-       return AMF.UML.Connection_Point_References.Set_Of_UML_Connection_Point_Reference is abstract;
+       return AMF.UML.Connection_Point_References.Collections.Set_Of_UML_Connection_Point_Reference is abstract;
    --  The entry and exit connection points used in conjunction with this 
    --  (submachine) state, i.e. as targets and sources, respectively, in the 
    --  region with the submachine state. A connection point reference 
@@ -89,14 +87,14 @@ package AMF.UML.States is
 
    not overriding function Get_Connection_Point
     (Self : not null access constant UML_State_Interface)
-       return AMF.UML.Pseudostates.Set_Of_UML_Pseudostate is abstract;
+       return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate is abstract;
    --  The entry and exit pseudostates of a composite state. These can only be 
    --  entry or exit Pseudostates, and they must have different names. They 
    --  can only be defined for composite states.
 
    not overriding function Get_Deferrable_Trigger
     (Self : not null access constant UML_State_Interface)
-       return AMF.UML.Triggers.Set_Of_UML_Trigger is abstract;
+       return AMF.UML.Triggers.Collections.Set_Of_UML_Trigger is abstract;
    --  A list of triggers that are candidates to be retained by the state 
    --  machine if they trigger no transitions out of the state (not consumed). 
    --  A deferred trigger is retained until the state machine reaches a state 
@@ -179,7 +177,7 @@ package AMF.UML.States is
 
    not overriding function Get_Region
     (Self : not null access constant UML_State_Interface)
-       return AMF.UML.Regions.Set_Of_UML_Region is abstract;
+       return AMF.UML.Regions.Collections.Set_Of_UML_Region is abstract;
    --  The regions owned directly by the state.
 
    not overriding function Get_State_Invariant

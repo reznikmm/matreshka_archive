@@ -56,9 +56,7 @@ package AMF.UML.Literal_Strings is
 
    type UML_Literal_String is
      access all UML_Literal_String_Interface'Class;
-
-   type Set_Of_UML_Literal_String is null record;
-   type Ordered_Set_Of_UML_Literal_String is null record;
+   for UML_Literal_String'Storage_Size use 0;
 
    not overriding function Get_Value
     (Self : not null access constant UML_Literal_String_Interface)

@@ -57,8 +57,6 @@ package AMF.UML.Central_Buffer_Nodes is
 
    type UML_Central_Buffer_Node is
      access all UML_Central_Buffer_Node_Interface'Class;
-
-   type Set_Of_UML_Central_Buffer_Node is null record;
-   type Ordered_Set_Of_UML_Central_Buffer_Node is null record;
+   for UML_Central_Buffer_Node'Storage_Size use 0;
 
 end AMF.UML.Central_Buffer_Nodes;

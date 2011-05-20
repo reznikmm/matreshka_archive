@@ -56,8 +56,6 @@ package AMF.UML.Literal_Specifications is
 
    type UML_Literal_Specification is
      access all UML_Literal_Specification_Interface'Class;
-
-   type Set_Of_UML_Literal_Specification is null record;
-   type Ordered_Set_Of_UML_Literal_Specification is null record;
+   for UML_Literal_Specification'Storage_Size use 0;
 
 end AMF.UML.Literal_Specifications;

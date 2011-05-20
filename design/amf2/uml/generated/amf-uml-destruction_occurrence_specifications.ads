@@ -56,8 +56,6 @@ package AMF.UML.Destruction_Occurrence_Specifications is
 
    type UML_Destruction_Occurrence_Specification is
      access all UML_Destruction_Occurrence_Specification_Interface'Class;
-
-   type Set_Of_UML_Destruction_Occurrence_Specification is null record;
-   type Ordered_Set_Of_UML_Destruction_Occurrence_Specification is null record;
+   for UML_Destruction_Occurrence_Specification'Storage_Size use 0;
 
 end AMF.UML.Destruction_Occurrence_Specifications;

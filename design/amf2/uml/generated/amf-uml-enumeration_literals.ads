@@ -57,9 +57,7 @@ package AMF.UML.Enumeration_Literals is
 
    type UML_Enumeration_Literal is
      access all UML_Enumeration_Literal_Interface'Class;
-
-   type Set_Of_UML_Enumeration_Literal is null record;
-   type Ordered_Set_Of_UML_Enumeration_Literal is null record;
+   for UML_Enumeration_Literal'Storage_Size use 0;
 
    not overriding function Get_Classifier
     (Self : not null access constant UML_Enumeration_Literal_Interface)

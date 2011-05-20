@@ -53,7 +53,7 @@
 ------------------------------------------------------------------------------
 limited with AMF.UML.Classifiers;
 with AMF.UML.Directed_Relationships;
-limited with AMF.UML.Generalization_Sets;
+limited with AMF.UML.Generalization_Sets.Collections;
 
 package AMF.UML.Generalizations is
 
@@ -64,9 +64,7 @@ package AMF.UML.Generalizations is
 
    type UML_Generalization is
      access all UML_Generalization_Interface'Class;
-
-   type Set_Of_UML_Generalization is null record;
-   type Ordered_Set_Of_UML_Generalization is null record;
+   for UML_Generalization'Storage_Size use 0;
 
    not overriding function Get_General
     (Self : not null access constant UML_Generalization_Interface)
@@ -79,7 +77,7 @@ package AMF.UML.Generalizations is
 
    not overriding function Get_Generalization_Set
     (Self : not null access constant UML_Generalization_Interface)
-       return AMF.UML.Generalization_Sets.Set_Of_UML_Generalization_Set is abstract;
+       return AMF.UML.Generalization_Sets.Collections.Set_Of_UML_Generalization_Set is abstract;
    --  Designates a set in which instances of Generalization is considered 
    --  members.
 

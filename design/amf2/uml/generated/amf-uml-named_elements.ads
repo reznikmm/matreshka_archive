@@ -49,7 +49,7 @@
 --  sensible to do so (e.g., when a template is bound).
 --  A named element is an element in a model that may have a name.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Dependencies;
+limited with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements;
 limited with AMF.UML.Namespaces;
 limited with AMF.UML.String_Expressions;
@@ -63,13 +63,11 @@ package AMF.UML.Named_Elements is
 
    type UML_Named_Element is
      access all UML_Named_Element_Interface'Class;
-
-   type Set_Of_UML_Named_Element is null record;
-   type Ordered_Set_Of_UML_Named_Element is null record;
+   for UML_Named_Element'Storage_Size use 0;
 
    not overriding function Get_Client_Dependency
     (Self : not null access constant UML_Named_Element_Interface)
-       return AMF.UML.Dependencies.Set_Of_UML_Dependency is abstract;
+       return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency is abstract;
    --  Indicates the dependencies that reference the client.
 
    not overriding function Get_Name

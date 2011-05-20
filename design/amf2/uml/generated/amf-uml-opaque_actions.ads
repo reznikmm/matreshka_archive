@@ -46,8 +46,8 @@
 --  An action with implementation-specific semantics.
 ------------------------------------------------------------------------------
 with AMF.UML.Actions;
-limited with AMF.UML.Input_Pins;
-limited with AMF.UML.Output_Pins;
+limited with AMF.UML.Input_Pins.Collections;
+limited with AMF.UML.Output_Pins.Collections;
 
 package AMF.UML.Opaque_Actions is
 
@@ -58,9 +58,7 @@ package AMF.UML.Opaque_Actions is
 
    type UML_Opaque_Action is
      access all UML_Opaque_Action_Interface'Class;
-
-   type Set_Of_UML_Opaque_Action is null record;
-   type Ordered_Set_Of_UML_Opaque_Action is null record;
+   for UML_Opaque_Action'Storage_Size use 0;
 
    not overriding function Get_Body
     (Self : not null access constant UML_Opaque_Action_Interface)
@@ -69,7 +67,7 @@ package AMF.UML.Opaque_Actions is
 
    not overriding function Get_Input_Value
     (Self : not null access constant UML_Opaque_Action_Interface)
-       return AMF.UML.Input_Pins.Set_Of_UML_Input_Pin is abstract;
+       return AMF.UML.Input_Pins.Collections.Set_Of_UML_Input_Pin is abstract;
    --  Provides input to the action.
 
    not overriding function Get_Language
@@ -79,7 +77,7 @@ package AMF.UML.Opaque_Actions is
 
    not overriding function Get_Output_Value
     (Self : not null access constant UML_Opaque_Action_Interface)
-       return AMF.UML.Output_Pins.Set_Of_UML_Output_Pin is abstract;
+       return AMF.UML.Output_Pins.Collections.Set_Of_UML_Output_Pin is abstract;
    --  Takes output from the action.
 
 end AMF.UML.Opaque_Actions;

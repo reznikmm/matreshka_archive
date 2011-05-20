@@ -51,9 +51,10 @@
 --  elements of the state machine.
 ------------------------------------------------------------------------------
 with AMF.UML.Behaviors;
-limited with AMF.UML.Pseudostates;
-limited with AMF.UML.Regions;
-limited with AMF.UML.States;
+limited with AMF.UML.Pseudostates.Collections;
+limited with AMF.UML.Regions.Collections;
+limited with AMF.UML.State_Machines.Collections;
+limited with AMF.UML.States.Collections;
 
 package AMF.UML.State_Machines is
 
@@ -64,30 +65,28 @@ package AMF.UML.State_Machines is
 
    type UML_State_Machine is
      access all UML_State_Machine_Interface'Class;
-
-   type Set_Of_UML_State_Machine is null record;
-   type Ordered_Set_Of_UML_State_Machine is null record;
+   for UML_State_Machine'Storage_Size use 0;
 
    not overriding function Get_Connection_Point
     (Self : not null access constant UML_State_Machine_Interface)
-       return AMF.UML.Pseudostates.Set_Of_UML_Pseudostate is abstract;
+       return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate is abstract;
    --  The connection points defined for this state machine. They represent 
    --  the interface of the state machine when used as part of submachine 
    --  state.
 
    not overriding function Get_Extended_State_Machine
     (Self : not null access constant UML_State_Machine_Interface)
-       return AMF.UML.State_Machines.Set_Of_UML_State_Machine is abstract;
+       return AMF.UML.State_Machines.Collections.Set_Of_UML_State_Machine is abstract;
    --  The state machines of which this is an extension.
 
    not overriding function Get_Region
     (Self : not null access constant UML_State_Machine_Interface)
-       return AMF.UML.Regions.Set_Of_UML_Region is abstract;
+       return AMF.UML.Regions.Collections.Set_Of_UML_Region is abstract;
    --  The regions owned directly by the state machine.
 
    not overriding function Get_Submachine_State
     (Self : not null access constant UML_State_Machine_Interface)
-       return AMF.UML.States.Set_Of_UML_State is abstract;
+       return AMF.UML.States.Collections.Set_Of_UML_State is abstract;
    --  References the submachine(s) in case of a submachine state. Multiple 
    --  machines are referenced in case of a concurrent state.
 

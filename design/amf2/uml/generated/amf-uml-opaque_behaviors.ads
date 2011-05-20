@@ -56,9 +56,7 @@ package AMF.UML.Opaque_Behaviors is
 
    type UML_Opaque_Behavior is
      access all UML_Opaque_Behavior_Interface'Class;
-
-   type Set_Of_UML_Opaque_Behavior is null record;
-   type Ordered_Set_Of_UML_Opaque_Behavior is null record;
+   for UML_Opaque_Behavior'Storage_Size use 0;
 
    not overriding function Get_Body
     (Self : not null access constant UML_Opaque_Behavior_Interface)

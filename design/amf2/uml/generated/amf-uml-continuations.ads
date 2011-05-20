@@ -58,9 +58,7 @@ package AMF.UML.Continuations is
 
    type UML_Continuation is
      access all UML_Continuation_Interface'Class;
-
-   type Set_Of_UML_Continuation is null record;
-   type Ordered_Set_Of_UML_Continuation is null record;
+   for UML_Continuation'Storage_Size use 0;
 
    not overriding function Get_Setting
     (Self : not null access constant UML_Continuation_Interface)

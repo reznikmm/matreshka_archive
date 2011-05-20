@@ -46,9 +46,9 @@
 --  A parameter set is an element that provides alternative sets of inputs or 
 --  outputs that a behavior may use.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Constraints;
+limited with AMF.UML.Constraints.Collections;
 with AMF.UML.Named_Elements;
-limited with AMF.UML.Parameters;
+limited with AMF.UML.Parameters.Collections;
 
 package AMF.UML.Parameter_Sets is
 
@@ -59,13 +59,11 @@ package AMF.UML.Parameter_Sets is
 
    type UML_Parameter_Set is
      access all UML_Parameter_Set_Interface'Class;
-
-   type Set_Of_UML_Parameter_Set is null record;
-   type Ordered_Set_Of_UML_Parameter_Set is null record;
+   for UML_Parameter_Set'Storage_Size use 0;
 
    not overriding function Get_Condition
     (Self : not null access constant UML_Parameter_Set_Interface)
-       return AMF.UML.Constraints.Set_Of_UML_Constraint is abstract;
+       return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
    --  Constraint that should be satisfied for the owner of the parameters in 
    --  an input parameter set to start execution using the values provided for 
    --  those parameters, or the owner of the parameters in an output parameter 
@@ -74,7 +72,7 @@ package AMF.UML.Parameter_Sets is
 
    not overriding function Get_Parameter
     (Self : not null access constant UML_Parameter_Set_Interface)
-       return AMF.UML.Parameters.Set_Of_UML_Parameter is abstract;
+       return AMF.UML.Parameters.Collections.Set_Of_UML_Parameter is abstract;
    --  Parameters in the parameter set.
 
 end AMF.UML.Parameter_Sets;

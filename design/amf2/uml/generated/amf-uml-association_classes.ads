@@ -62,8 +62,6 @@ package AMF.UML.Association_Classes is
 
    type UML_Association_Class is
      access all UML_Association_Class_Interface'Class;
-
-   type Set_Of_UML_Association_Class is null record;
-   type Ordered_Set_Of_UML_Association_Class is null record;
+   for UML_Association_Class'Storage_Size use 0;
 
 end AMF.UML.Association_Classes;

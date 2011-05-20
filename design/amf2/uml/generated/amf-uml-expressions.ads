@@ -50,6 +50,7 @@
 --  empty) set of values when evaluated in a context.
 ------------------------------------------------------------------------------
 with AMF.UML.Value_Specifications;
+limited with AMF.UML.Value_Specifications.Collections;
 
 package AMF.UML.Expressions is
 
@@ -60,13 +61,11 @@ package AMF.UML.Expressions is
 
    type UML_Expression is
      access all UML_Expression_Interface'Class;
-
-   type Set_Of_UML_Expression is null record;
-   type Ordered_Set_Of_UML_Expression is null record;
+   for UML_Expression'Storage_Size use 0;
 
    not overriding function Get_Operand
     (Self : not null access constant UML_Expression_Interface)
-       return AMF.UML.Value_Specifications.Ordered_Set_Of_UML_Value_Specification is abstract;
+       return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification is abstract;
    --  Specifies a sequence of operands.
 
    not overriding function Get_Symbol

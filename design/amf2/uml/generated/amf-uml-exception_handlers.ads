@@ -47,7 +47,7 @@
 --  case the specified exception occurs during the execution of the protected 
 --  node.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Classifiers;
+limited with AMF.UML.Classifiers.Collections;
 with AMF.UML.Elements;
 limited with AMF.UML.Executable_Nodes;
 limited with AMF.UML.Object_Nodes;
@@ -61,9 +61,7 @@ package AMF.UML.Exception_Handlers is
 
    type UML_Exception_Handler is
      access all UML_Exception_Handler_Interface'Class;
-
-   type Set_Of_UML_Exception_Handler is null record;
-   type Ordered_Set_Of_UML_Exception_Handler is null record;
+   for UML_Exception_Handler'Storage_Size use 0;
 
    not overriding function Get_Exception_Input
     (Self : not null access constant UML_Exception_Handler_Interface)
@@ -78,7 +76,7 @@ package AMF.UML.Exception_Handlers is
 
    not overriding function Get_Exception_Type
     (Self : not null access constant UML_Exception_Handler_Interface)
-       return AMF.UML.Classifiers.Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  The kind of instances that the handler catches. If an exception occurs 
    --  whose type is any of the classifiers in the set, the handler catches 
    --  the exception and executes its body.

@@ -51,7 +51,7 @@
 --  parameter.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Connectable_Element_Template_Parameters;
-limited with AMF.UML.Connector_Ends;
+limited with AMF.UML.Connector_Ends.Collections;
 with AMF.UML.Parameterable_Elements;
 with AMF.UML.Typed_Elements;
 
@@ -65,13 +65,11 @@ package AMF.UML.Connectable_Elements is
 
    type UML_Connectable_Element is
      access all UML_Connectable_Element_Interface'Class;
-
-   type Set_Of_UML_Connectable_Element is null record;
-   type Ordered_Set_Of_UML_Connectable_Element is null record;
+   for UML_Connectable_Element'Storage_Size use 0;
 
    not overriding function Get_End
     (Self : not null access constant UML_Connectable_Element_Interface)
-       return AMF.UML.Connector_Ends.Ordered_Set_Of_UML_Connector_End is abstract;
+       return AMF.UML.Connector_Ends.Collections.Ordered_Set_Of_UML_Connector_End is abstract;
    --  Denotes a set of connector ends that attaches to this connectable 
    --  element.
 

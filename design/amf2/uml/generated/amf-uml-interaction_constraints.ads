@@ -58,9 +58,7 @@ package AMF.UML.Interaction_Constraints is
 
    type UML_Interaction_Constraint is
      access all UML_Interaction_Constraint_Interface'Class;
-
-   type Set_Of_UML_Interaction_Constraint is null record;
-   type Ordered_Set_Of_UML_Interaction_Constraint is null record;
+   for UML_Interaction_Constraint'Storage_Size use 0;
 
    not overriding function Get_Maxint
     (Self : not null access constant UML_Interaction_Constraint_Interface)

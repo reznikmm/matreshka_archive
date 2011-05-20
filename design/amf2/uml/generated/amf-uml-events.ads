@@ -57,8 +57,6 @@ package AMF.UML.Events is
 
    type UML_Event is
      access all UML_Event_Interface'Class;
-
-   type Set_Of_UML_Event is null record;
-   type Ordered_Set_Of_UML_Event is null record;
+   for UML_Event'Storage_Size use 0;
 
 end AMF.UML.Events;

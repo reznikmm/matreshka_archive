@@ -60,9 +60,7 @@ package AMF.UML.Pins is
 
    type UML_Pin is
      access all UML_Pin_Interface'Class;
-
-   type Set_Of_UML_Pin is null record;
-   type Ordered_Set_Of_UML_Pin is null record;
+   for UML_Pin'Storage_Size use 0;
 
    not overriding function Get_Is_Control
     (Self : not null access constant UML_Pin_Interface)

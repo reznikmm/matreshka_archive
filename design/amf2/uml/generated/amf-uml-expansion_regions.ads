@@ -46,7 +46,7 @@
 --  An expansion region is a structured activity region that executes multiple 
 --  times corresponding to elements of an input collection.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Expansion_Nodes;
+limited with AMF.UML.Expansion_Nodes.Collections;
 with AMF.UML.Structured_Activity_Nodes;
 
 package AMF.UML.Expansion_Regions is
@@ -58,13 +58,11 @@ package AMF.UML.Expansion_Regions is
 
    type UML_Expansion_Region is
      access all UML_Expansion_Region_Interface'Class;
-
-   type Set_Of_UML_Expansion_Region is null record;
-   type Ordered_Set_Of_UML_Expansion_Region is null record;
+   for UML_Expansion_Region'Storage_Size use 0;
 
    not overriding function Get_Input_Element
     (Self : not null access constant UML_Expansion_Region_Interface)
-       return AMF.UML.Expansion_Nodes.Set_Of_UML_Expansion_Node is abstract;
+       return AMF.UML.Expansion_Nodes.Collections.Set_Of_UML_Expansion_Node is abstract;
    --  An object node that holds a separate element of the input collection 
    --  during each of the multiple executions of the region.
 
@@ -81,7 +79,7 @@ package AMF.UML.Expansion_Regions is
 
    not overriding function Get_Output_Element
     (Self : not null access constant UML_Expansion_Region_Interface)
-       return AMF.UML.Expansion_Nodes.Set_Of_UML_Expansion_Node is abstract;
+       return AMF.UML.Expansion_Nodes.Collections.Set_Of_UML_Expansion_Node is abstract;
    --  An object node that accepts a separate element of the output collection 
    --  during each of the multiple executions of the region. The values are 
    --  formed into a collection that is available when the execution of the 

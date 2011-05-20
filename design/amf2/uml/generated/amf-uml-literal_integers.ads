@@ -56,9 +56,7 @@ package AMF.UML.Literal_Integers is
 
    type UML_Literal_Integer is
      access all UML_Literal_Integer_Interface'Class;
-
-   type Set_Of_UML_Literal_Integer is null record;
-   type Ordered_Set_Of_UML_Literal_Integer is null record;
+   for UML_Literal_Integer'Storage_Size use 0;
 
    not overriding function Get_Value
     (Self : not null access constant UML_Literal_Integer_Interface)

@@ -51,10 +51,10 @@
 --  is not further decomposed within the activity.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Classifiers;
-limited with AMF.UML.Constraints;
+limited with AMF.UML.Constraints.Collections;
 with AMF.UML.Executable_Nodes;
-limited with AMF.UML.Input_Pins;
-limited with AMF.UML.Output_Pins;
+limited with AMF.UML.Input_Pins.Collections;
+limited with AMF.UML.Output_Pins.Collections;
 
 package AMF.UML.Actions is
 
@@ -65,9 +65,7 @@ package AMF.UML.Actions is
 
    type UML_Action is
      access all UML_Action_Interface'Class;
-
-   type Set_Of_UML_Action is null record;
-   type Ordered_Set_Of_UML_Action is null record;
+   for UML_Action'Storage_Size use 0;
 
    not overriding function Get_Context
     (Self : not null access constant UML_Action_Interface)
@@ -76,7 +74,7 @@ package AMF.UML.Actions is
 
    not overriding function Get_Input
     (Self : not null access constant UML_Action_Interface)
-       return AMF.UML.Input_Pins.Ordered_Set_Of_UML_Input_Pin is abstract;
+       return AMF.UML.Input_Pins.Collections.Ordered_Set_Of_UML_Input_Pin is abstract;
    --  The ordered set of input pins connected to the Action. These are among 
    --  the total set of inputs.
 
@@ -94,17 +92,17 @@ package AMF.UML.Actions is
 
    not overriding function Get_Local_Postcondition
     (Self : not null access constant UML_Action_Interface)
-       return AMF.UML.Constraints.Set_Of_UML_Constraint is abstract;
+       return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
    --  Constraint that must be satisfied when executed is completed.
 
    not overriding function Get_Local_Precondition
     (Self : not null access constant UML_Action_Interface)
-       return AMF.UML.Constraints.Set_Of_UML_Constraint is abstract;
+       return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
    --  Constraint that must be satisfied when execution is started.
 
    not overriding function Get_Output
     (Self : not null access constant UML_Action_Interface)
-       return AMF.UML.Output_Pins.Ordered_Set_Of_UML_Output_Pin is abstract;
+       return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin is abstract;
    --  The ordered set of output pins connected to the Action. The action 
    --  places its results onto pins in this set.
 

@@ -59,9 +59,7 @@ package AMF.UML.Parameterable_Elements is
 
    type UML_Parameterable_Element is
      access all UML_Parameterable_Element_Interface'Class;
-
-   type Set_Of_UML_Parameterable_Element is null record;
-   type Ordered_Set_Of_UML_Parameterable_Element is null record;
+   for UML_Parameterable_Element'Storage_Size use 0;
 
    not overriding function Get_Owning_Template_Parameter
     (Self : not null access constant UML_Parameterable_Element_Interface)

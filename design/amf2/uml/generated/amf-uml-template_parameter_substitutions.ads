@@ -60,9 +60,7 @@ package AMF.UML.Template_Parameter_Substitutions is
 
    type UML_Template_Parameter_Substitution is
      access all UML_Template_Parameter_Substitution_Interface'Class;
-
-   type Set_Of_UML_Template_Parameter_Substitution is null record;
-   type Ordered_Set_Of_UML_Template_Parameter_Substitution is null record;
+   for UML_Template_Parameter_Substitution'Storage_Size use 0;
 
    not overriding function Get_Actual
     (Self : not null access constant UML_Template_Parameter_Substitution_Interface)

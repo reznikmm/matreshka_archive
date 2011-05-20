@@ -59,9 +59,7 @@ package AMF.UML.Package_Imports is
 
    type UML_Package_Import is
      access all UML_Package_Import_Interface'Class;
-
-   type Set_Of_UML_Package_Import is null record;
-   type Ordered_Set_Of_UML_Package_Import is null record;
+   for UML_Package_Import'Storage_Size use 0;
 
    not overriding function Get_Imported_Package
     (Self : not null access constant UML_Package_Import_Interface)

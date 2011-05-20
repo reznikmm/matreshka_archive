@@ -50,7 +50,7 @@
 --  definition of the supplier element(s).
 ------------------------------------------------------------------------------
 with AMF.UML.Directed_Relationships;
-limited with AMF.UML.Named_Elements;
+limited with AMF.UML.Named_Elements.Collections;
 with AMF.UML.Packageable_Elements;
 
 package AMF.UML.Dependencies is
@@ -63,13 +63,11 @@ package AMF.UML.Dependencies is
 
    type UML_Dependency is
      access all UML_Dependency_Interface'Class;
-
-   type Set_Of_UML_Dependency is null record;
-   type Ordered_Set_Of_UML_Dependency is null record;
+   for UML_Dependency'Storage_Size use 0;
 
    not overriding function Get_Client
     (Self : not null access constant UML_Dependency_Interface)
-       return AMF.UML.Named_Elements.Set_Of_UML_Named_Element is abstract;
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  The element(s) dependent on the supplier element(s). In some cases 
    --  (such as a Trace Abstraction) the assignment of direction (that is, the 
    --  designation of the client element) is at the discretion of the modeler, 
@@ -77,7 +75,7 @@ package AMF.UML.Dependencies is
 
    not overriding function Get_Supplier
     (Self : not null access constant UML_Dependency_Interface)
-       return AMF.UML.Named_Elements.Set_Of_UML_Named_Element is abstract;
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  The element(s) independent of the client element(s), in the same 
    --  respect and the same dependency relationship. In some directed 
    --  dependency relationships (such as Refinement Abstractions), a common 

@@ -74,6 +74,7 @@ with AMF.UML.Connectable_Elements;
 limited with AMF.UML.Data_Types;
 with AMF.UML.Deployment_Targets;
 limited with AMF.UML.Interfaces;
+limited with AMF.UML.Properties.Collections;
 with AMF.UML.Structural_Features;
 limited with AMF.UML.Value_Specifications;
 
@@ -88,9 +89,7 @@ package AMF.UML.Properties is
 
    type UML_Property is
      access all UML_Property_Interface'Class;
-
-   type Set_Of_UML_Property is null record;
-   type Ordered_Set_Of_UML_Property is null record;
+   for UML_Property'Storage_Size use 0;
 
    not overriding function Get_Aggregation
     (Self : not null access constant UML_Property_Interface)
@@ -123,7 +122,7 @@ package AMF.UML.Properties is
     (Self : not null access constant UML_Property_Interface)
        return AMF.UML.Classes.UML_Class is abstract;
    --  References the Class that owns the Property.
-   --  References the Class that owns the Property.
+   --  ReferencesÂ theÂ ClassÂ thatÂ ownsÂ theÂ Property.
 
    not overriding procedure Set_Class
     (Self : not null access UML_Property_Interface;
@@ -245,18 +244,18 @@ package AMF.UML.Properties is
 
    not overriding function Get_Qualifier
     (Self : not null access constant UML_Property_Interface)
-       return AMF.UML.Properties.Ordered_Set_Of_UML_Property is abstract;
+       return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  An optional list of ordered qualifier attributes for the end. If the 
    --  list is empty, then the Association is not qualified.
 
    not overriding function Get_Redefined_Property
     (Self : not null access constant UML_Property_Interface)
-       return AMF.UML.Properties.Set_Of_UML_Property is abstract;
+       return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
    --  References the properties that are redefined by this property.
 
    not overriding function Get_Subsetted_Property
     (Self : not null access constant UML_Property_Interface)
-       return AMF.UML.Properties.Set_Of_UML_Property is abstract;
+       return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
    --  References the properties of which this property is constrained to be a 
    --  subset.
 

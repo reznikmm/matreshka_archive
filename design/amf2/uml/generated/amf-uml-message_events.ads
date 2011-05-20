@@ -57,8 +57,6 @@ package AMF.UML.Message_Events is
 
    type UML_Message_Event is
      access all UML_Message_Event_Interface'Class;
-
-   type Set_Of_UML_Message_Event is null record;
-   type Ordered_Set_Of_UML_Message_Event is null record;
+   for UML_Message_Event'Storage_Size use 0;
 
 end AMF.UML.Message_Events;

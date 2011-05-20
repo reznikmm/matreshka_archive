@@ -58,8 +58,6 @@ package AMF.UML.Usages is
 
    type UML_Usage is
      access all UML_Usage_Interface'Class;
-
-   type Set_Of_UML_Usage is null record;
-   type Ordered_Set_Of_UML_Usage is null record;
+   for UML_Usage'Storage_Size use 0;
 
 end AMF.UML.Usages;

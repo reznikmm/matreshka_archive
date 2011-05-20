@@ -46,7 +46,8 @@
 --  An element is a constituent of a model. As such, it has the capability of 
 --  owning other elements.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Comments;
+limited with AMF.UML.Comments.Collections;
+limited with AMF.UML.Elements.Collections;
 
 package AMF.UML.Elements is
 
@@ -56,18 +57,16 @@ package AMF.UML.Elements is
 
    type UML_Element is
      access all UML_Element_Interface'Class;
-
-   type Set_Of_UML_Element is null record;
-   type Ordered_Set_Of_UML_Element is null record;
+   for UML_Element'Storage_Size use 0;
 
    not overriding function Get_Owned_Comment
     (Self : not null access constant UML_Element_Interface)
-       return AMF.UML.Comments.Set_Of_UML_Comment is abstract;
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment is abstract;
    --  The Comments owned by this element.
 
    not overriding function Get_Owned_Element
     (Self : not null access constant UML_Element_Interface)
-       return AMF.UML.Elements.Set_Of_UML_Element is abstract;
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
    --  The Elements owned by this element.
 
    not overriding function Get_Owner

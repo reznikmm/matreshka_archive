@@ -57,8 +57,6 @@ package AMF.UML.Part_Decompositions is
 
    type UML_Part_Decomposition is
      access all UML_Part_Decomposition_Interface'Class;
-
-   type Set_Of_UML_Part_Decomposition is null record;
-   type Ordered_Set_Of_UML_Part_Decomposition is null record;
+   for UML_Part_Decomposition'Storage_Size use 0;
 
 end AMF.UML.Part_Decompositions;

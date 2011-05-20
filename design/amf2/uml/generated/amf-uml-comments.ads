@@ -47,6 +47,7 @@
 --  elements.
 ------------------------------------------------------------------------------
 with AMF.UML.Elements;
+limited with AMF.UML.Elements.Collections;
 
 package AMF.UML.Comments is
 
@@ -57,13 +58,11 @@ package AMF.UML.Comments is
 
    type UML_Comment is
      access all UML_Comment_Interface'Class;
-
-   type Set_Of_UML_Comment is null record;
-   type Ordered_Set_Of_UML_Comment is null record;
+   for UML_Comment'Storage_Size use 0;
 
    not overriding function Get_Annotated_Element
     (Self : not null access constant UML_Comment_Interface)
-       return AMF.UML.Elements.Set_Of_UML_Element is abstract;
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
    --  References the Element(s) being commented.
 
    not overriding function Get_Body

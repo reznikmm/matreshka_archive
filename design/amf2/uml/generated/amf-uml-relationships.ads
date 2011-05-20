@@ -47,6 +47,7 @@
 --  relationship between elements.
 ------------------------------------------------------------------------------
 with AMF.UML.Elements;
+limited with AMF.UML.Elements.Collections;
 
 package AMF.UML.Relationships is
 
@@ -57,13 +58,11 @@ package AMF.UML.Relationships is
 
    type UML_Relationship is
      access all UML_Relationship_Interface'Class;
-
-   type Set_Of_UML_Relationship is null record;
-   type Ordered_Set_Of_UML_Relationship is null record;
+   for UML_Relationship'Storage_Size use 0;
 
    not overriding function Get_Related_Element
     (Self : not null access constant UML_Relationship_Interface)
-       return AMF.UML.Elements.Set_Of_UML_Element is abstract;
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
    --  Specifies the elements related by the Relationship.
 
 end AMF.UML.Relationships;

@@ -47,10 +47,10 @@
 --  unit. An interaction fragment is a piece of an interaction. Each 
 --  interaction fragment is conceptually like an interaction by itself.
 ------------------------------------------------------------------------------
-limited with AMF.UML.General_Orderings;
+limited with AMF.UML.General_Orderings.Collections;
 limited with AMF.UML.Interaction_Operands;
 limited with AMF.UML.Interactions;
-limited with AMF.UML.Lifelines;
+limited with AMF.UML.Lifelines.Collections;
 with AMF.UML.Named_Elements;
 
 package AMF.UML.Interaction_Fragments is
@@ -62,13 +62,11 @@ package AMF.UML.Interaction_Fragments is
 
    type UML_Interaction_Fragment is
      access all UML_Interaction_Fragment_Interface'Class;
-
-   type Set_Of_UML_Interaction_Fragment is null record;
-   type Ordered_Set_Of_UML_Interaction_Fragment is null record;
+   for UML_Interaction_Fragment'Storage_Size use 0;
 
    not overriding function Get_Covered
     (Self : not null access constant UML_Interaction_Fragment_Interface)
-       return AMF.UML.Lifelines.Set_Of_UML_Lifeline is abstract;
+       return AMF.UML.Lifelines.Collections.Set_Of_UML_Lifeline is abstract;
    --  References the Lifelines that the InteractionFragment involves.
 
    not overriding function Get_Enclosing_Interaction
@@ -92,7 +90,7 @@ package AMF.UML.Interaction_Fragments is
 
    not overriding function Get_General_Ordering
     (Self : not null access constant UML_Interaction_Fragment_Interface)
-       return AMF.UML.General_Orderings.Set_Of_UML_General_Ordering is abstract;
+       return AMF.UML.General_Orderings.Collections.Set_Of_UML_General_Ordering is abstract;
    --  The general ordering relationships contained in this fragment.
 
 end AMF.UML.Interaction_Fragments;

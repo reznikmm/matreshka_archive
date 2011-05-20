@@ -47,9 +47,11 @@
 --  construct, including a test and a body section. The body section is 
 --  executed only if (but not necessarily if) the test section evaluates true.
 ------------------------------------------------------------------------------
+limited with AMF.UML.Clauses.Collections;
 with AMF.UML.Elements;
-limited with AMF.UML.Executable_Nodes;
+limited with AMF.UML.Executable_Nodes.Collections;
 limited with AMF.UML.Output_Pins;
+limited with AMF.UML.Output_Pins.Collections;
 
 package AMF.UML.Clauses is
 
@@ -60,20 +62,18 @@ package AMF.UML.Clauses is
 
    type UML_Clause is
      access all UML_Clause_Interface'Class;
-
-   type Set_Of_UML_Clause is null record;
-   type Ordered_Set_Of_UML_Clause is null record;
+   for UML_Clause'Storage_Size use 0;
 
    not overriding function Get_Body
     (Self : not null access constant UML_Clause_Interface)
-       return AMF.UML.Executable_Nodes.Set_Of_UML_Executable_Node is abstract;
+       return AMF.UML.Executable_Nodes.Collections.Set_Of_UML_Executable_Node is abstract;
    --  A nested activity fragment that is executed if the test evaluates to 
    --  true and the clause is chosen over any concurrent clauses that also 
    --  evaluate to true.
 
    not overriding function Get_Body_Output
     (Self : not null access constant UML_Clause_Interface)
-       return AMF.UML.Output_Pins.Ordered_Set_Of_UML_Output_Pin is abstract;
+       return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin is abstract;
    --  A list of output pins within the body fragment whose values are moved 
    --  to the result pins of the containing conditional node after execution 
    --  of the clause body.
@@ -91,19 +91,19 @@ package AMF.UML.Clauses is
 
    not overriding function Get_Predecessor_Clause
     (Self : not null access constant UML_Clause_Interface)
-       return AMF.UML.Clauses.Set_Of_UML_Clause is abstract;
+       return AMF.UML.Clauses.Collections.Set_Of_UML_Clause is abstract;
    --  A set of clauses whose tests must all evaluate false before the current 
    --  clause can be tested.
 
    not overriding function Get_Successor_Clause
     (Self : not null access constant UML_Clause_Interface)
-       return AMF.UML.Clauses.Set_Of_UML_Clause is abstract;
+       return AMF.UML.Clauses.Collections.Set_Of_UML_Clause is abstract;
    --  A set of clauses which may not be tested unless the current clause 
    --  tests false.
 
    not overriding function Get_Test
     (Self : not null access constant UML_Clause_Interface)
-       return AMF.UML.Executable_Nodes.Set_Of_UML_Executable_Node is abstract;
+       return AMF.UML.Executable_Nodes.Collections.Set_Of_UML_Executable_Node is abstract;
    --  A nested activity fragment with a designated output pin that specifies 
    --  the result of the test.
 

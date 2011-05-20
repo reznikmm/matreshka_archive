@@ -58,9 +58,7 @@ package AMF.UML.Value_Pins is
 
    type UML_Value_Pin is
      access all UML_Value_Pin_Interface'Class;
-
-   type Set_Of_UML_Value_Pin is null record;
-   type Ordered_Set_Of_UML_Value_Pin is null record;
+   for UML_Value_Pin'Storage_Size use 0;
 
    not overriding function Get_Value
     (Self : not null access constant UML_Value_Pin_Interface)

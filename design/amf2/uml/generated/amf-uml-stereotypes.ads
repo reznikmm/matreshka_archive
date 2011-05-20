@@ -48,7 +48,7 @@
 --  place of, or in addition to, the ones used for the extended metaclass.
 ------------------------------------------------------------------------------
 with AMF.UML.Classes;
-limited with AMF.UML.Images;
+limited with AMF.UML.Images.Collections;
 limited with AMF.UML.Profiles;
 
 package AMF.UML.Stereotypes is
@@ -60,13 +60,11 @@ package AMF.UML.Stereotypes is
 
    type UML_Stereotype is
      access all UML_Stereotype_Interface'Class;
-
-   type Set_Of_UML_Stereotype is null record;
-   type Ordered_Set_Of_UML_Stereotype is null record;
+   for UML_Stereotype'Storage_Size use 0;
 
    not overriding function Get_Icon
     (Self : not null access constant UML_Stereotype_Interface)
-       return AMF.UML.Images.Set_Of_UML_Image is abstract;
+       return AMF.UML.Images.Collections.Set_Of_UML_Image is abstract;
    --  Stereotype can change the graphical appearance of the extended model 
    --  element by using attached icons. When this association is not null, it 
    --  references the location of the icon content to be displayed within 

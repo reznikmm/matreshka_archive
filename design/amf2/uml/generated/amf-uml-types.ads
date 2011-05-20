@@ -59,9 +59,7 @@ package AMF.UML.Types is
 
    type UML_Type is
      access all UML_Type_Interface'Class;
-
-   type Set_Of_UML_Type is null record;
-   type Ordered_Set_Of_UML_Type is null record;
+   for UML_Type'Storage_Size use 0;
 
    not overriding function Get_Package
     (Self : not null access constant UML_Type_Interface)

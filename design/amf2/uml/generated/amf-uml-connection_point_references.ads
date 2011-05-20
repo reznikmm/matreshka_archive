@@ -47,7 +47,7 @@
 --  state) of an entry/exit point defined in the statemachine reference by the 
 --  submachine state.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Pseudostates;
+limited with AMF.UML.Pseudostates.Collections;
 limited with AMF.UML.States;
 with AMF.UML.Vertexs;
 
@@ -60,19 +60,17 @@ package AMF.UML.Connection_Point_References is
 
    type UML_Connection_Point_Reference is
      access all UML_Connection_Point_Reference_Interface'Class;
-
-   type Set_Of_UML_Connection_Point_Reference is null record;
-   type Ordered_Set_Of_UML_Connection_Point_Reference is null record;
+   for UML_Connection_Point_Reference'Storage_Size use 0;
 
    not overriding function Get_Entry
     (Self : not null access constant UML_Connection_Point_Reference_Interface)
-       return AMF.UML.Pseudostates.Set_Of_UML_Pseudostate is abstract;
+       return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate is abstract;
    --  The entryPoint kind pseudo states corresponding to this connection 
    --  point.
 
    not overriding function Get_Exit
     (Self : not null access constant UML_Connection_Point_Reference_Interface)
-       return AMF.UML.Pseudostates.Set_Of_UML_Pseudostate is abstract;
+       return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate is abstract;
    --  The exitPoints kind pseudo states corresponding to this connection 
    --  point.
 

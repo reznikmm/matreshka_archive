@@ -57,9 +57,7 @@ package AMF.UML.Time_Intervals is
 
    type UML_Time_Interval is
      access all UML_Time_Interval_Interface'Class;
-
-   type Set_Of_UML_Time_Interval is null record;
-   type Ordered_Set_Of_UML_Time_Interval is null record;
+   for UML_Time_Interval'Storage_Size use 0;
 
    not overriding function Get_Max
     (Self : not null access constant UML_Time_Interval_Interface)

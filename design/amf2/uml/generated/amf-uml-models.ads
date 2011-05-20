@@ -60,9 +60,7 @@ package AMF.UML.Models is
 
    type UML_Model is
      access all UML_Model_Interface'Class;
-
-   type Set_Of_UML_Model is null record;
-   type Ordered_Set_Of_UML_Model is null record;
+   for UML_Model'Storage_Size use 0;
 
    not overriding function Get_Viewpoint
     (Self : not null access constant UML_Model_Interface)

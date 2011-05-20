@@ -57,9 +57,7 @@ package AMF.UML.Duration_Intervals is
 
    type UML_Duration_Interval is
      access all UML_Duration_Interval_Interface'Class;
-
-   type Set_Of_UML_Duration_Interval is null record;
-   type Ordered_Set_Of_UML_Duration_Interval is null record;
+   for UML_Duration_Interval'Storage_Size use 0;
 
    not overriding function Get_Max
     (Self : not null access constant UML_Duration_Interval_Interface)

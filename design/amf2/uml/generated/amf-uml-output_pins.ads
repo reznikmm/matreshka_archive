@@ -56,8 +56,6 @@ package AMF.UML.Output_Pins is
 
    type UML_Output_Pin is
      access all UML_Output_Pin_Interface'Class;
-
-   type Set_Of_UML_Output_Pin is null record;
-   type Ordered_Set_Of_UML_Output_Pin is null record;
+   for UML_Output_Pin'Storage_Size use 0;
 
 end AMF.UML.Output_Pins;

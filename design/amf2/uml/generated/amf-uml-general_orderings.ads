@@ -61,9 +61,7 @@ package AMF.UML.General_Orderings is
 
    type UML_General_Ordering is
      access all UML_General_Ordering_Interface'Class;
-
-   type Set_Of_UML_General_Ordering is null record;
-   type Ordered_Set_Of_UML_General_Ordering is null record;
+   for UML_General_Ordering'Storage_Size use 0;
 
    not overriding function Get_After
     (Self : not null access constant UML_General_Ordering_Interface)

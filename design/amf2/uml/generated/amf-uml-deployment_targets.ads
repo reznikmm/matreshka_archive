@@ -45,9 +45,9 @@
 ------------------------------------------------------------------------------
 --  A deployment target is the location for a deployed artifact.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Deployments;
+limited with AMF.UML.Deployments.Collections;
 with AMF.UML.Named_Elements;
-limited with AMF.UML.Packageable_Elements;
+limited with AMF.UML.Packageable_Elements.Collections;
 
 package AMF.UML.Deployment_Targets is
 
@@ -58,19 +58,17 @@ package AMF.UML.Deployment_Targets is
 
    type UML_Deployment_Target is
      access all UML_Deployment_Target_Interface'Class;
-
-   type Set_Of_UML_Deployment_Target is null record;
-   type Ordered_Set_Of_UML_Deployment_Target is null record;
+   for UML_Deployment_Target'Storage_Size use 0;
 
    not overriding function Get_Deployed_Element
     (Self : not null access constant UML_Deployment_Target_Interface)
-       return AMF.UML.Packageable_Elements.Set_Of_UML_Packageable_Element is abstract;
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
    --  The set of elements that are manifested in an Artifact that is involved 
    --  in Deployment to a DeploymentTarget.
 
    not overriding function Get_Deployment
     (Self : not null access constant UML_Deployment_Target_Interface)
-       return AMF.UML.Deployments.Set_Of_UML_Deployment is abstract;
+       return AMF.UML.Deployments.Collections.Set_Of_UML_Deployment is abstract;
    --  The set of Deployments for a DeploymentTarget.
 
 end AMF.UML.Deployment_Targets;

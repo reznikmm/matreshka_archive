@@ -46,7 +46,7 @@
 --  A directed relationship represents a relationship between a collection of 
 --  source model elements and a collection of target model elements.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Elements;
+limited with AMF.UML.Elements.Collections;
 with AMF.UML.Relationships;
 
 package AMF.UML.Directed_Relationships is
@@ -58,18 +58,16 @@ package AMF.UML.Directed_Relationships is
 
    type UML_Directed_Relationship is
      access all UML_Directed_Relationship_Interface'Class;
-
-   type Set_Of_UML_Directed_Relationship is null record;
-   type Ordered_Set_Of_UML_Directed_Relationship is null record;
+   for UML_Directed_Relationship'Storage_Size use 0;
 
    not overriding function Get_Source
     (Self : not null access constant UML_Directed_Relationship_Interface)
-       return AMF.UML.Elements.Set_Of_UML_Element is abstract;
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
    --  Specifies the sources of the DirectedRelationship.
 
    not overriding function Get_Target
     (Self : not null access constant UML_Directed_Relationship_Interface)
-       return AMF.UML.Elements.Set_Of_UML_Element is abstract;
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
    --  Specifies the targets of the DirectedRelationship.
 
 end AMF.UML.Directed_Relationships;

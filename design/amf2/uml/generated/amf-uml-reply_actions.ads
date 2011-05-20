@@ -50,6 +50,7 @@
 ------------------------------------------------------------------------------
 with AMF.UML.Actions;
 limited with AMF.UML.Input_Pins;
+limited with AMF.UML.Input_Pins.Collections;
 limited with AMF.UML.Triggers;
 
 package AMF.UML.Reply_Actions is
@@ -61,9 +62,7 @@ package AMF.UML.Reply_Actions is
 
    type UML_Reply_Action is
      access all UML_Reply_Action_Interface'Class;
-
-   type Set_Of_UML_Reply_Action is null record;
-   type Ordered_Set_Of_UML_Reply_Action is null record;
+   for UML_Reply_Action'Storage_Size use 0;
 
    not overriding function Get_Reply_To_Call
     (Self : not null access constant UML_Reply_Action_Interface)
@@ -76,7 +75,7 @@ package AMF.UML.Reply_Actions is
 
    not overriding function Get_Reply_Value
     (Self : not null access constant UML_Reply_Action_Interface)
-       return AMF.UML.Input_Pins.Set_Of_UML_Input_Pin is abstract;
+       return AMF.UML.Input_Pins.Collections.Set_Of_UML_Input_Pin is abstract;
    --  A list of pins containing the reply values of the operation. These 
    --  values are returned to the caller.
 

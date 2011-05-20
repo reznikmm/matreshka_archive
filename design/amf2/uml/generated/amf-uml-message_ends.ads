@@ -58,9 +58,7 @@ package AMF.UML.Message_Ends is
 
    type UML_Message_End is
      access all UML_Message_End_Interface'Class;
-
-   type Set_Of_UML_Message_End is null record;
-   type Ordered_Set_Of_UML_Message_End is null record;
+   for UML_Message_End'Storage_Size use 0;
 
    not overriding function Get_Message
     (Self : not null access constant UML_Message_End_Interface)

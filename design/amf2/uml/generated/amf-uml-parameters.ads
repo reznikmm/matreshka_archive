@@ -51,7 +51,7 @@
 with AMF.UML.Connectable_Elements;
 with AMF.UML.Multiplicity_Elements;
 limited with AMF.UML.Operations;
-limited with AMF.UML.Parameter_Sets;
+limited with AMF.UML.Parameter_Sets.Collections;
 limited with AMF.UML.Value_Specifications;
 
 package AMF.UML.Parameters is
@@ -64,9 +64,7 @@ package AMF.UML.Parameters is
 
    type UML_Parameter is
      access all UML_Parameter_Interface'Class;
-
-   type Set_Of_UML_Parameter is null record;
-   type Ordered_Set_Of_UML_Parameter is null record;
+   for UML_Parameter'Storage_Size use 0;
 
    not overriding function Get_Default
     (Self : not null access constant UML_Parameter_Interface)
@@ -140,7 +138,7 @@ package AMF.UML.Parameters is
 
    not overriding function Get_Parameter_Set
     (Self : not null access constant UML_Parameter_Interface)
-       return AMF.UML.Parameter_Sets.Set_Of_UML_Parameter_Set is abstract;
+       return AMF.UML.Parameter_Sets.Collections.Set_Of_UML_Parameter_Set is abstract;
    --  The parameter sets containing the parameter. See ParameterSet.
 
 end AMF.UML.Parameters;

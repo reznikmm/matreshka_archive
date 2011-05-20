@@ -48,8 +48,9 @@
 --  context of another classifier that specializes (directly or indirectly) 
 --  the context classifier.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Classifiers;
+limited with AMF.UML.Classifiers.Collections;
 with AMF.UML.Named_Elements;
+limited with AMF.UML.Redefinable_Elements.Collections;
 
 package AMF.UML.Redefinable_Elements is
 
@@ -60,9 +61,7 @@ package AMF.UML.Redefinable_Elements is
 
    type UML_Redefinable_Element is
      access all UML_Redefinable_Element_Interface'Class;
-
-   type Set_Of_UML_Redefinable_Element is null record;
-   type Ordered_Set_Of_UML_Redefinable_Element is null record;
+   for UML_Redefinable_Element'Storage_Size use 0;
 
    not overriding function Get_Is_Leaf
     (Self : not null access constant UML_Redefinable_Element_Interface)
@@ -83,12 +82,12 @@ package AMF.UML.Redefinable_Elements is
 
    not overriding function Get_Redefined_Element
     (Self : not null access constant UML_Redefinable_Element_Interface)
-       return AMF.UML.Redefinable_Elements.Set_Of_UML_Redefinable_Element is abstract;
+       return AMF.UML.Redefinable_Elements.Collections.Set_Of_UML_Redefinable_Element is abstract;
    --  The redefinable element that is being redefined by this element.
 
    not overriding function Get_Redefinition_Context
     (Self : not null access constant UML_Redefinable_Element_Interface)
-       return AMF.UML.Classifiers.Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  References the contexts that this element may be redefined from.
 
 end AMF.UML.Redefinable_Elements;

@@ -56,9 +56,7 @@ package AMF.UML.Intervals is
 
    type UML_Interval is
      access all UML_Interval_Interface'Class;
-
-   type Set_Of_UML_Interval is null record;
-   type Ordered_Set_Of_UML_Interval is null record;
+   for UML_Interval'Storage_Size use 0;
 
    not overriding function Get_Max
     (Self : not null access constant UML_Interval_Interface)

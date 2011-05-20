@@ -51,8 +51,8 @@ with AMF.UML.Namespaces;
 with AMF.UML.Redefinable_Elements;
 limited with AMF.UML.State_Machines;
 limited with AMF.UML.States;
-limited with AMF.UML.Transitions;
-limited with AMF.UML.Vertexs;
+limited with AMF.UML.Transitions.Collections;
+limited with AMF.UML.Vertexs.Collections;
 
 package AMF.UML.Regions is
 
@@ -64,9 +64,7 @@ package AMF.UML.Regions is
 
    type UML_Region is
      access all UML_Region_Interface'Class;
-
-   type Set_Of_UML_Region is null record;
-   type Ordered_Set_Of_UML_Region is null record;
+   for UML_Region'Storage_Size use 0;
 
    not overriding function Get_Extended_Region
     (Self : not null access constant UML_Region_Interface)
@@ -105,12 +103,12 @@ package AMF.UML.Regions is
 
    not overriding function Get_Subvertex
     (Self : not null access constant UML_Region_Interface)
-       return AMF.UML.Vertexs.Set_Of_UML_Vertex is abstract;
+       return AMF.UML.Vertexs.Collections.Set_Of_UML_Vertex is abstract;
    --  The set of vertices that are owned by this region.
 
    not overriding function Get_Transition
     (Self : not null access constant UML_Region_Interface)
-       return AMF.UML.Transitions.Set_Of_UML_Transition is abstract;
+       return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
    --  The set of transitions owned by the region.
 
 end AMF.UML.Regions;

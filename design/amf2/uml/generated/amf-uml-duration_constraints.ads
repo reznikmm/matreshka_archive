@@ -57,9 +57,7 @@ package AMF.UML.Duration_Constraints is
 
    type UML_Duration_Constraint is
      access all UML_Duration_Constraint_Interface'Class;
-
-   type Set_Of_UML_Duration_Constraint is null record;
-   type Ordered_Set_Of_UML_Duration_Constraint is null record;
+   for UML_Duration_Constraint'Storage_Size use 0;
 
    not overriding function Get_First_Event
     (Self : not null access constant UML_Duration_Constraint_Interface)

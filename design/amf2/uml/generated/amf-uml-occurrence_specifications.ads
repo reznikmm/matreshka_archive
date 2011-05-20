@@ -47,7 +47,7 @@
 --  The sequences of occurrences specified by them are the meanings of 
 --  interactions.
 ------------------------------------------------------------------------------
-limited with AMF.UML.General_Orderings;
+limited with AMF.UML.General_Orderings.Collections;
 with AMF.UML.Interaction_Fragments;
 limited with AMF.UML.Lifelines;
 
@@ -60,9 +60,7 @@ package AMF.UML.Occurrence_Specifications is
 
    type UML_Occurrence_Specification is
      access all UML_Occurrence_Specification_Interface'Class;
-
-   type Set_Of_UML_Occurrence_Specification is null record;
-   type Ordered_Set_Of_UML_Occurrence_Specification is null record;
+   for UML_Occurrence_Specification'Storage_Size use 0;
 
    not overriding function Get_Covered
     (Self : not null access constant UML_Occurrence_Specification_Interface)
@@ -75,13 +73,13 @@ package AMF.UML.Occurrence_Specifications is
 
    not overriding function Get_To_After
     (Self : not null access constant UML_Occurrence_Specification_Interface)
-       return AMF.UML.General_Orderings.Set_Of_UML_General_Ordering is abstract;
+       return AMF.UML.General_Orderings.Collections.Set_Of_UML_General_Ordering is abstract;
    --  References the GeneralOrderings that specify EventOcurrences that must 
    --  occur after this OccurrenceSpecification
 
    not overriding function Get_To_Before
     (Self : not null access constant UML_Occurrence_Specification_Interface)
-       return AMF.UML.General_Orderings.Set_Of_UML_General_Ordering is abstract;
+       return AMF.UML.General_Orderings.Collections.Set_Of_UML_General_Ordering is abstract;
    --  References the GeneralOrderings that specify EventOcurrences that must 
    --  occur before this OccurrenceSpecification
 

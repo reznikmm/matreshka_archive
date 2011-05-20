@@ -62,8 +62,6 @@ package AMF.UML.Value_Specifications is
 
    type UML_Value_Specification is
      access all UML_Value_Specification_Interface'Class;
-
-   type Set_Of_UML_Value_Specification is null record;
-   type Ordered_Set_Of_UML_Value_Specification is null record;
+   for UML_Value_Specification'Storage_Size use 0;
 
 end AMF.UML.Value_Specifications;

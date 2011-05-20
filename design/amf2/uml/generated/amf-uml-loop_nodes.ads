@@ -46,9 +46,9 @@
 --  A loop node is a structured activity node that represents a loop with 
 --  setup, test, and body sections.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Executable_Nodes;
-limited with AMF.UML.Input_Pins;
-limited with AMF.UML.Output_Pins;
+limited with AMF.UML.Executable_Nodes.Collections;
+limited with AMF.UML.Input_Pins.Collections;
+limited with AMF.UML.Output_Pins.Collections;
 with AMF.UML.Structured_Activity_Nodes;
 
 package AMF.UML.Loop_Nodes is
@@ -60,13 +60,11 @@ package AMF.UML.Loop_Nodes is
 
    type UML_Loop_Node is
      access all UML_Loop_Node_Interface'Class;
-
-   type Set_Of_UML_Loop_Node is null record;
-   type Ordered_Set_Of_UML_Loop_Node is null record;
+   for UML_Loop_Node'Storage_Size use 0;
 
    not overriding function Get_Body_Output
     (Self : not null access constant UML_Loop_Node_Interface)
-       return AMF.UML.Output_Pins.Ordered_Set_Of_UML_Output_Pin is abstract;
+       return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin is abstract;
    --  A list of output pins within the body fragment the values of which are 
    --  moved to the loop variable pins after completion of execution of the 
    --  body, before the next iteration of the loop begins or before the loop 
@@ -74,7 +72,7 @@ package AMF.UML.Loop_Nodes is
 
    not overriding function Get_Body_Part
     (Self : not null access constant UML_Loop_Node_Interface)
-       return AMF.UML.Executable_Nodes.Set_Of_UML_Executable_Node is abstract;
+       return AMF.UML.Executable_Nodes.Collections.Set_Of_UML_Executable_Node is abstract;
    --  The set of nodes and edges that perform the repetitive computations of 
    --  the loop. The body section is executed as long as the test section 
    --  produces a true value.
@@ -102,32 +100,32 @@ package AMF.UML.Loop_Nodes is
 
    not overriding function Get_Loop_Variable
     (Self : not null access constant UML_Loop_Node_Interface)
-       return AMF.UML.Output_Pins.Ordered_Set_Of_UML_Output_Pin is abstract;
+       return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin is abstract;
    --  A list of output pins that hold the values of the loop variables during 
    --  an execution of the loop. When the test fails, the values are movied to 
    --  the result pins of the loop.
 
    not overriding function Get_Loop_Variable_Input
     (Self : not null access constant UML_Loop_Node_Interface)
-       return AMF.UML.Input_Pins.Ordered_Set_Of_UML_Input_Pin is abstract;
+       return AMF.UML.Input_Pins.Collections.Ordered_Set_Of_UML_Input_Pin is abstract;
    --  A list of values that are moved into the loop variable pins before the 
    --  first iteration of the loop.
 
    not overriding function Get_Result
     (Self : not null access constant UML_Loop_Node_Interface)
-       return AMF.UML.Output_Pins.Ordered_Set_Of_UML_Output_Pin is abstract;
+       return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin is abstract;
    --  A list of output pins that constitute the data flow output of the 
    --  entire loop.
 
    not overriding function Get_Setup_Part
     (Self : not null access constant UML_Loop_Node_Interface)
-       return AMF.UML.Executable_Nodes.Set_Of_UML_Executable_Node is abstract;
+       return AMF.UML.Executable_Nodes.Collections.Set_Of_UML_Executable_Node is abstract;
    --  The set of nodes and edges that initialize values or perform other 
    --  setup computations for the loop.
 
    not overriding function Get_Test
     (Self : not null access constant UML_Loop_Node_Interface)
-       return AMF.UML.Executable_Nodes.Set_Of_UML_Executable_Node is abstract;
+       return AMF.UML.Executable_Nodes.Collections.Set_Of_UML_Executable_Node is abstract;
    --  The set of nodes, edges, and designated value that compute a Boolean 
    --  value to determine if another execution of the body will be performed.
 

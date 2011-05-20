@@ -59,9 +59,7 @@ package AMF.UML.Pseudostates is
 
    type UML_Pseudostate is
      access all UML_Pseudostate_Interface'Class;
-
-   type Set_Of_UML_Pseudostate is null record;
-   type Ordered_Set_Of_UML_Pseudostate is null record;
+   for UML_Pseudostate'Storage_Size use 0;
 
    not overriding function Get_Kind
     (Self : not null access constant UML_Pseudostate_Interface)

@@ -55,14 +55,14 @@
 --  target are objects (which are a kind of instance specification), they may 
 --  be represented by a link that joins the two, and so on.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Activity_Edges;
-limited with AMF.UML.Classifiers;
-limited with AMF.UML.Connectors;
+limited with AMF.UML.Activity_Edges.Collections;
+limited with AMF.UML.Classifiers.Collections;
+limited with AMF.UML.Connectors.Collections;
 with AMF.UML.Directed_Relationships;
-limited with AMF.UML.Messages;
-limited with AMF.UML.Named_Elements;
+limited with AMF.UML.Messages.Collections;
+limited with AMF.UML.Named_Elements.Collections;
 with AMF.UML.Packageable_Elements;
-limited with AMF.UML.Relationships;
+limited with AMF.UML.Relationships.Collections;
 
 package AMF.UML.Information_Flows is
 
@@ -74,44 +74,42 @@ package AMF.UML.Information_Flows is
 
    type UML_Information_Flow is
      access all UML_Information_Flow_Interface'Class;
-
-   type Set_Of_UML_Information_Flow is null record;
-   type Ordered_Set_Of_UML_Information_Flow is null record;
+   for UML_Information_Flow'Storage_Size use 0;
 
    not overriding function Get_Conveyed
     (Self : not null access constant UML_Information_Flow_Interface)
-       return AMF.UML.Classifiers.Set_Of_UML_Classifier is abstract;
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  Specifies the information items that may circulate on this information 
    --  flow.
 
    not overriding function Get_Information_Source
     (Self : not null access constant UML_Information_Flow_Interface)
-       return AMF.UML.Named_Elements.Set_Of_UML_Named_Element is abstract;
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  Defines from which source the conveyed InformationItems are initiated.
 
    not overriding function Get_Information_Target
     (Self : not null access constant UML_Information_Flow_Interface)
-       return AMF.UML.Named_Elements.Set_Of_UML_Named_Element is abstract;
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  Defines to which target the conveyed InformationItems are directed.
 
    not overriding function Get_Realization
     (Self : not null access constant UML_Information_Flow_Interface)
-       return AMF.UML.Relationships.Set_Of_UML_Relationship is abstract;
+       return AMF.UML.Relationships.Collections.Set_Of_UML_Relationship is abstract;
    --  Determines which Relationship will realize the specified flow
 
    not overriding function Get_Realizing_Activity_Edge
     (Self : not null access constant UML_Information_Flow_Interface)
-       return AMF.UML.Activity_Edges.Set_Of_UML_Activity_Edge is abstract;
+       return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  Determines which ActivityEdges will realize the specified flow.
 
    not overriding function Get_Realizing_Connector
     (Self : not null access constant UML_Information_Flow_Interface)
-       return AMF.UML.Connectors.Set_Of_UML_Connector is abstract;
+       return AMF.UML.Connectors.Collections.Set_Of_UML_Connector is abstract;
    --  Determines which Connectors will realize the specified flow.
 
    not overriding function Get_Realizing_Message
     (Self : not null access constant UML_Information_Flow_Interface)
-       return AMF.UML.Messages.Set_Of_UML_Message is abstract;
+       return AMF.UML.Messages.Collections.Set_Of_UML_Message is abstract;
    --  Determines which Messages will realize the specified flow.
 
 end AMF.UML.Information_Flows;

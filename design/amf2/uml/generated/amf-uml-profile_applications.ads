@@ -59,9 +59,7 @@ package AMF.UML.Profile_Applications is
 
    type UML_Profile_Application is
      access all UML_Profile_Application_Interface'Class;
-
-   type Set_Of_UML_Profile_Application is null record;
-   type Ordered_Set_Of_UML_Profile_Application is null record;
+   for UML_Profile_Application'Storage_Size use 0;
 
    not overriding function Get_Applied_Profile
     (Self : not null access constant UML_Profile_Application_Interface)

@@ -51,7 +51,7 @@
 --  state machine.
 ------------------------------------------------------------------------------
 limited with AMF.UML.Constraints;
-limited with AMF.UML.Operations;
+limited with AMF.UML.Operations.Collections;
 with AMF.UML.Transitions;
 
 package AMF.UML.Protocol_Transitions is
@@ -63,9 +63,7 @@ package AMF.UML.Protocol_Transitions is
 
    type UML_Protocol_Transition is
      access all UML_Protocol_Transition_Interface'Class;
-
-   type Set_Of_UML_Protocol_Transition is null record;
-   type Ordered_Set_Of_UML_Protocol_Transition is null record;
+   for UML_Protocol_Transition'Storage_Size use 0;
 
    not overriding function Get_Post_Condition
     (Self : not null access constant UML_Protocol_Transition_Interface)
@@ -94,7 +92,7 @@ package AMF.UML.Protocol_Transitions is
 
    not overriding function Get_Referred
     (Self : not null access constant UML_Protocol_Transition_Interface)
-       return AMF.UML.Operations.Set_Of_UML_Operation is abstract;
+       return AMF.UML.Operations.Collections.Set_Of_UML_Operation is abstract;
    --  This association refers to the associated operation. It is derived from 
    --  the operation of the call trigger when applicable.
 

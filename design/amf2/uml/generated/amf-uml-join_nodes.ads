@@ -60,9 +60,7 @@ package AMF.UML.Join_Nodes is
 
    type UML_Join_Node is
      access all UML_Join_Node_Interface'Class;
-
-   type Set_Of_UML_Join_Node is null record;
-   type Ordered_Set_Of_UML_Join_Node is null record;
+   for UML_Join_Node'Storage_Size use 0;
 
    not overriding function Get_Is_Combine_Duplicate
     (Self : not null access constant UML_Join_Node_Interface)
