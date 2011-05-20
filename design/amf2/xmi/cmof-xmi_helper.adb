@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.CMOF_Elements;
 with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Internals.Extents;
@@ -50,6 +51,18 @@ with CMOF.Named_Elements;
 with CMOF.Packages;
 
 package body CMOF.XMI_Helper is
+
+   ---------------------
+   -- CMOF_Element_Of --
+   ---------------------
+
+   function CMOF_Element_Of
+    (Element : not null access AMF.Elements.Abstract_Element'Class)
+       return CMOF_Element is
+   begin
+      return
+        AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Element.all).Id;
+   end CMOF_Element_Of;
 
    ------------
    -- Get_Id --
@@ -121,5 +134,16 @@ package body CMOF.XMI_Helper is
     (Element : CMOF_Element;
      Id      : League.Strings.Universal_String)
        renames CMOF.Internals.Extents.Set_Id;
+
+   ------------
+   -- Set_Id --
+   ------------
+
+   procedure Set_Id
+    (Element : not null access AMF.Elements.Abstract_Element'Class;
+     Id      : League.Strings.Universal_String) is
+   begin
+      Set_Id (CMOF_Element_Of (Element), Id);
+   end Set_Id;
 
 end CMOF.XMI_Helper;

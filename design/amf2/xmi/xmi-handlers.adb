@@ -102,8 +102,8 @@ package body XMI.Handlers is
    procedure Establish_Link
     (Self          : in out XMI_Handler;
      Attribute     : CMOF.CMOF_Property;
-     One_Element   : CMOF.CMOF_Element;
-     Other_Element : CMOF.CMOF_Element);
+     One_Element   : not null AMF.Elements.Element_Access;
+     Other_Element : not null AMF.Elements.Element_Access);
    --  Creates link between specified elements, but prevents to create
    --  duplicate links. Duplicate links are created for association which
    --  is not composition association, because opposite element referered
@@ -186,7 +186,7 @@ package body XMI.Handlers is
             if CMOF.XMI_Helper.Is_Data_Type (Get_Type (Self.Attribute)) then
                if not Is_Multivalued (Self.Attribute) then
                   Set
-                   (Self.Current,
+                   (CMOF_Element_Of (Self.Current),
                     Self.Attribute,
                     Self.Factory.Create_From_String
                      (Get_Type (Self.Attribute), Self.Text));
@@ -230,8 +230,8 @@ package body XMI.Handlers is
    procedure Establish_Link
     (Self          : in out XMI_Handler;
      Attribute     : CMOF.CMOF_Property;
-     One_Element   : CMOF.CMOF_Element;
-     Other_Element : CMOF.CMOF_Element)
+     One_Element   : not null AMF.Elements.Element_Access;
+     Other_Element : not null AMF.Elements.Element_Access)
    is
       Association : constant CMOF_Association := Get_Association (Attribute);
 
@@ -248,10 +248,16 @@ package body XMI.Handlers is
          --  even when order of ends is reversed.
 
          if Element (Get_Member_End (Association), 1) = Attribute then
-            Self.Factory.Create_Link (Association, One_Element, Other_Element);
+            Self.Factory.Create_Link
+             (Association,
+              CMOF_Element_Of (One_Element),
+              CMOF_Element_Of (Other_Element));
 
          else
-            Self.Factory.Create_Link (Association, Other_Element, One_Element);
+            Self.Factory.Create_Link
+             (Association,
+              CMOF_Element_Of (Other_Element),
+              CMOF_Element_Of (One_Element));
          end if;
 
       else
@@ -260,7 +266,10 @@ package body XMI.Handlers is
          --  duplicate links.
 
          if Element (Get_Member_End (Association), 1) = Attribute then
-            Self.Factory.Create_Link (Association, One_Element, Other_Element);
+            Self.Factory.Create_Link
+             (Association,
+              CMOF_Element_Of (One_Element),
+              CMOF_Element_Of (Other_Element));
          end if;
       end if;
    end Establish_Link;
@@ -398,7 +407,7 @@ package body XMI.Handlers is
 
       Name        : League.Strings.Universal_String;
       Meta        : CMOF.CMOF_Element;
-      New_Element : CMOF_Element;
+      New_Element : AMF.Elements.Element_Access;
       Property    : CMOF_Property;
       Association : CMOF_Association;
 
@@ -447,7 +456,7 @@ package body XMI.Handlers is
 
          if CMOF.XMI_Helper.Is_Data_Type (Get_Type (Property)) then
             Set
-             (Self.Current,
+             (CMOF_Element_Of (Self.Current),
               Property,
               Self.Factory.Create_From_String (Get_Type (Property), Value));
 
@@ -476,7 +485,6 @@ package body XMI.Handlers is
                end;
 
             else
-
                if Self.Mapping.Contains (Value) then
                   Establish_Link
                    (Self,
@@ -497,6 +505,8 @@ package body XMI.Handlers is
             --  Reference to element in another document.
 
             declare
+               use type AMF.Elements.Element_Access;
+
                URI       : constant League.Strings.Universal_String
                  := Attributes.Value (Href_Name);
                Separator : constant Positive := Index (URI, '#');
@@ -517,35 +527,32 @@ package body XMI.Handlers is
                   (Documents.Element (File_Name),
                    URI.Slice (Separator + 1, URI.Length));
 
-               if New_Element = Null_CMOF_Element then
+               if New_Element = null then
                   raise Program_Error;
                end if;
 
                Property :=
                  Resolve_Owned_Attribute
-                  (Get_Meta_Class (Self.Current), Qualified_Name);
+                  (Get_Meta_Class
+                    (CMOF_Element_Of (Self.Current)), Qualified_Name);
 
                if Property = Null_CMOF_Element then
                   raise Program_Error;
                end if;
 
-               Establish_Link
-                (Self,
-                 Property,
-                 Self.Current,
-                 New_Element);
+               Establish_Link (Self, Property, Self.Current, New_Element);
                Self.Skip_End_Element := 1;
             end;
 
          else
          Property :=
            Resolve_Owned_Attribute
-            (Get_Meta_Class (Self.Current), Qualified_Name);
+            (Get_Meta_Class (CMOF_Element_Of (Self.Current)), Qualified_Name);
 
          if Property = Null_CMOF_Element then
             Self.Diagnosis :=
               "Unknown property '"
-                & Get_Name (Get_Meta_Class (Self.Current))
+                & Get_Name (Get_Meta_Class (CMOF_Element_Of (Self.Current)))
                 & ":"
                 & Qualified_Name
                 & ''';
@@ -638,10 +645,11 @@ package body XMI.Handlers is
          end if;
 
          Meta         := CMOF.XMI_Helper.Resolve (Local_Name);
-         Self.Current := Self.Factory.Create (Self.Extent, Meta);
-         Set_Id (Self.Current, Attributes.Value (XMI_Namespace, Id_Name));
+         New_Element  := Self.Factory.Create (Self.Extent, Meta);
+         Set_Id (New_Element, Attributes.Value (XMI_Namespace, Id_Name));
+         Self.Current := New_Element;
          Self.Mapping.Insert
-          (Attributes.Value (XMI_Namespace, Id_Name), Self.Current);
+          (Attributes.Value (XMI_Namespace, Id_Name), New_Element);
 
             for J in 1 .. Attributes.Length loop
                if Attributes.Namespace_URI (J).Is_Empty then

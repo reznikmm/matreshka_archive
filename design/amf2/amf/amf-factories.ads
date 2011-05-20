@@ -58,11 +58,6 @@ package AMF.Factories is
    not overriding function Create
     (Self       : not null access AMF_Factory;
      Extent     : CMOF.CMOF_Extent;
-     Meta_Class : CMOF.CMOF_Class) return CMOF.CMOF_Element is abstract;
-
-   not overriding function Create
-    (Self       : not null access AMF_Factory;
-     Extent     : CMOF.CMOF_Extent;
      Meta_Class : CMOF.CMOF_Class)
        return not null AMF.Elements.Element_Access is abstract;
 

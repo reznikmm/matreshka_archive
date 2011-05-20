@@ -103,8 +103,8 @@ package body CMOF.Utilities.Merge is
     (Merged    : CMOF.CMOF_Package;
      Receiving : CMOF.CMOF_Package) return CMOF.CMOF_Package
    is
-      Resulting : CMOF.CMOF_Package
-        := Factory.Create (Extent, CMOF.Internals.Metamodel.MC_CMOF_Package);
+      Resulting : CMOF.CMOF_Package;
+--        := Factory.Create (Extent, CMOF.Internals.Metamodel.MC_CMOF_Package);
 
    begin
       Put_Line
@@ -113,7 +113,7 @@ package body CMOF.Utilities.Merge is
           & " -> "
           & Get_Name (Receiving).To_Wide_Wide_String);
 
-      Set_Name (Resulting, Get_Name (Receiving));
+--      Set_Name (Resulting, Get_Name (Receiving));
 
       return Resulting;
    end Do_Package_Merge;
@@ -237,7 +237,7 @@ package body CMOF.Utilities.Merge is
       --  Create resulting package and do minimal initialization to be able to
       --  merge it with receiving package.
 
-      Resulting := Factory.Create (Extent, CMOF.Internals.Metamodel.MC_CMOF_Package);
+--      Resulting := Factory.Create (Extent, CMOF.Internals.Metamodel.MC_CMOF_Package);
       Set_Name (Resulting, Get_Name (Source));
 --      Set_URI (Resulting, Get_URI (Source));
 

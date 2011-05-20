@@ -43,8 +43,8 @@
 ------------------------------------------------------------------------------
 private with Ada.Containers.Vectors;
 private with Ada.Containers.Hashed_Maps;
-private with Ada.Containers.Hashed_Sets;
 
+private with AMF.Elements;
 private with AMF.Factories;
 private with League.Strings.Hash;
 private with XML.SAX.Attributes;
@@ -65,10 +65,11 @@ package XMI.Handlers is
 private
 
    package Element_Vectors is
-     new Ada.Containers.Vectors (Positive, CMOF.CMOF_Element, CMOF."=");
+     new Ada.Containers.Vectors
+          (Positive, AMF.Elements.Element_Access, AMF.Elements."=");
 
    type Postponed_Link is record
-      Element   : CMOF.CMOF_Element;
+      Element   : AMF.Elements.Element_Access;
       Attribute : CMOF.CMOF_Property;
       Id        : League.Strings.Universal_String;
    end record;
@@ -79,17 +80,17 @@ private
    package String_Element_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           CMOF.CMOF_Element,
+           AMF.Elements.Element_Access,
            League.Strings.Hash,
            League.Strings."=",
-           CMOF."=");
+           AMF.Elements."=");
 
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Error_Handlers.SAX_Error_Handler with record
       Extent           : CMOF.CMOF_Extent;
       Factory          : AMF.Factories.AMF_Factory_Access;
-      Current          : CMOF.CMOF_Element := CMOF.Null_CMOF_Element;
+      Current          : AMF.Elements.Element_Access;
       Stack            : Element_Vectors.Vector;
       Attribute        : CMOF.CMOF_Property := CMOF.Null_CMOF_Element;
       Text             : League.Strings.Universal_String;

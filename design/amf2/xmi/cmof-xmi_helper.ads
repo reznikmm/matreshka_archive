@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
+with AMF.Elements;
+
 package CMOF.XMI_Helper is
 
    function Resolve
@@ -60,7 +62,11 @@ package CMOF.XMI_Helper is
     (Element : CMOF_Element) return League.Strings.Universal_String;
 
    procedure Set_Id
-    (Element : CMOF_Element;
+    (Element : not null access AMF.Elements.Abstract_Element'Class;
      Id      : League.Strings.Universal_String);
+
+   function CMOF_Element_Of
+    (Element : not null access AMF.Elements.Abstract_Element'Class)
+       return CMOF_Element;
 
 end CMOF.XMI_Helper;

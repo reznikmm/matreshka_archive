@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
+with AMF.Elements;
+
 package CMOF.Internals.Extents is
 
    procedure Initialize_CMOF_Metamodel_Extent;
@@ -58,6 +60,11 @@ package CMOF.Internals.Extents is
    function Object
     (Self       : CMOF_Extent;
      Identifier : League.Strings.Universal_String) return CMOF_Element;
+
+   function Object
+    (Self       : CMOF_Extent;
+     Identifier : League.Strings.Universal_String)
+       return AMF.Elements.Element_Access;
 
    function Container (Self : CMOF_Element) return CMOF_Element;
 

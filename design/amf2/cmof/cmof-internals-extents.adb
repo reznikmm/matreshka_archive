@@ -308,6 +308,18 @@ package body CMOF.Internals.Extents is
    end Object;
 
    ------------
+   -- Object --
+   ------------
+
+   function Object
+    (Self       : CMOF_Extent;
+     Identifier : League.Strings.Universal_String)
+       return AMF.Elements.Element_Access is
+   begin
+      return Tables.Elements.Table (Object (Self, Identifier)).Proxy;
+   end Object;
+
+   ------------
    -- Set_Id --
    ------------
 

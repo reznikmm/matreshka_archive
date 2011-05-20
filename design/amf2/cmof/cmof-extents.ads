@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Containers.Hashed_Sets;
 
+with AMF.Elements;
 with AMF.Factories;
 with League.Strings;
 
@@ -60,6 +61,11 @@ package CMOF.Extents is
    function Object
     (Self       : CMOF_Extent;
      Identifier : League.Strings.Universal_String) return CMOF_Element;
+
+   function Object
+    (Self       : CMOF_Extent;
+     Identifier : League.Strings.Universal_String)
+       return AMF.Elements.Element_Access;
 
    function Factory
     (Self : CMOF_Extent) return AMF.Factories.AMF_Factory_Access;
