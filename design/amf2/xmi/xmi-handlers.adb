@@ -113,7 +113,7 @@ package body XMI.Handlers is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
            CMOF_Extent,
-           Hash,
+           League.Strings.Hash,
            League.Strings."=");
 
    Documents : Universal_String_Extent_Maps.Map;
@@ -278,16 +278,6 @@ package body XMI.Handlers is
          Self.Diagnosis := "XML fatal error: " & Occurrence.Message;
       end if;
    end Fatal_Error;
-
-   ----------
-   -- Hash --
-   ----------
-
-   function Hash
-    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type is
-   begin
-      return Ada.Containers.Hash_Type (Item.Hash);
-   end Hash;
 
 --   overriding procedure Ignorable_Whitespace
 --    (Self    : in out XMI_Handler;

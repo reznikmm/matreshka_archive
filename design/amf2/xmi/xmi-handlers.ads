@@ -46,7 +46,7 @@ private with Ada.Containers.Hashed_Maps;
 private with Ada.Containers.Hashed_Sets;
 
 private with AMF.Factories;
-private with League.Strings;
+private with League.Strings.Hash;
 private with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
 with XML.SAX.Error_Handlers;
@@ -76,14 +76,11 @@ private
    package Postponed_Link_Vectors is
      new Ada.Containers.Vectors (Positive, Postponed_Link);
 
-   function Hash
-    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
-
    package String_Element_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
            CMOF.CMOF_Element,
-           Hash,
+           League.Strings.Hash,
            League.Strings."=",
            CMOF."=");
 
