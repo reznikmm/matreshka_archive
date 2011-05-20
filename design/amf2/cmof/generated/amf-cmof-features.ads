@@ -46,7 +46,7 @@
 --  A feature declares a behavioral or structural characteristic of instances 
 --  of classifiers.
 ------------------------------------------------------------------------------
-limited with AMF.CMOF.Classifiers;
+limited with AMF.CMOF.Classifiers.Collections;
 with AMF.CMOF.Redefinable_Elements;
 
 package AMF.CMOF.Features is
@@ -60,12 +60,9 @@ package AMF.CMOF.Features is
      access all CMOF_Feature_Interface'Class;
    for CMOF_Feature'Storage_Size use 0;
 
-   type Set_Of_CMOF_Feature is null record;
-   type Ordered_Set_Of_CMOF_Feature is null record;
-
    not overriding function Get_Featuring_Classifier
     (Self : not null access constant CMOF_Feature_Interface)
-       return AMF.CMOF.Classifiers.Set_Of_CMOF_Classifier is abstract;
+       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier is abstract;
    --  The Classifiers that have this Feature as a feature.
 
 end AMF.CMOF.Features;

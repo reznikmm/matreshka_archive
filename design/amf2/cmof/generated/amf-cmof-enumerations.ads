@@ -47,7 +47,7 @@
 --  enumeration literals.
 ------------------------------------------------------------------------------
 with AMF.CMOF.Data_Types;
-limited with AMF.CMOF.Enumeration_Literals;
+limited with AMF.CMOF.Enumeration_Literals.Collections;
 
 package AMF.CMOF.Enumerations is
 
@@ -60,12 +60,9 @@ package AMF.CMOF.Enumerations is
      access all CMOF_Enumeration_Interface'Class;
    for CMOF_Enumeration'Storage_Size use 0;
 
-   type Set_Of_CMOF_Enumeration is null record;
-   type Ordered_Set_Of_CMOF_Enumeration is null record;
-
    not overriding function Get_Owned_Literal
     (Self : not null access constant CMOF_Enumeration_Interface)
-       return AMF.CMOF.Enumeration_Literals.Ordered_Set_Of_CMOF_Enumeration_Literal is abstract;
+       return AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal is abstract;
    --  The ordered set of literals for this Enumeration.
 
 end AMF.CMOF.Enumerations;

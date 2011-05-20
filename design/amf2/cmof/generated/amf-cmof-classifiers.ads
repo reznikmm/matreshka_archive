@@ -47,10 +47,11 @@
 --  instances that have features in common. A classifier can specify a 
 --  generalization hierarchy by referencing its general classifiers.
 ------------------------------------------------------------------------------
-limited with AMF.CMOF.Features;
-limited with AMF.CMOF.Named_Elements;
+limited with AMF.CMOF.Classifiers.Collections;
+limited with AMF.CMOF.Features.Collections;
+limited with AMF.CMOF.Named_Elements.Collections;
 with AMF.CMOF.Namespaces;
-limited with AMF.CMOF.Properties;
+limited with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 
 package AMF.CMOF.Classifiers is
@@ -65,30 +66,27 @@ package AMF.CMOF.Classifiers is
      access all CMOF_Classifier_Interface'Class;
    for CMOF_Classifier'Storage_Size use 0;
 
-   type Set_Of_CMOF_Classifier is null record;
-   type Ordered_Set_Of_CMOF_Classifier is null record;
-
    not overriding function Get_Attribute
     (Self : not null access constant CMOF_Classifier_Interface)
-       return AMF.CMOF.Properties.Set_Of_CMOF_Property is abstract;
+       return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property is abstract;
    --  Refers to all of the Properties that are direct (i.e. not inherited or 
    --  imported) attributes of the classifier.
 
    not overriding function Get_Feature
     (Self : not null access constant CMOF_Classifier_Interface)
-       return AMF.CMOF.Features.Set_Of_CMOF_Feature is abstract;
+       return AMF.CMOF.Features.Collections.Set_Of_CMOF_Feature is abstract;
    --  Note that there may be members of the Classifier that are of the type 
    --  Feature but are not included in this association, e.g. inherited 
    --  features.
 
    not overriding function Get_General
     (Self : not null access constant CMOF_Classifier_Interface)
-       return AMF.CMOF.Classifiers.Set_Of_CMOF_Classifier is abstract;
+       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier is abstract;
    --  References the general classifier in the Generalization relationship.
 
    not overriding function Get_Inherited_Member
     (Self : not null access constant CMOF_Classifier_Interface)
-       return AMF.CMOF.Named_Elements.Set_Of_CMOF_Named_Element is abstract;
+       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is abstract;
    --  Specifies all elements inherited by this classifier from the general 
    --  classifiers.
 

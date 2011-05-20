@@ -47,6 +47,7 @@
 --  relationship between elements.
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
+limited with AMF.CMOF.Elements.Collections;
 
 package AMF.CMOF.Relationships is
 
@@ -59,12 +60,9 @@ package AMF.CMOF.Relationships is
      access all CMOF_Relationship_Interface'Class;
    for CMOF_Relationship'Storage_Size use 0;
 
-   type Set_Of_CMOF_Relationship is null record;
-   type Ordered_Set_Of_CMOF_Relationship is null record;
-
    not overriding function Get_Related_Element
     (Self : not null access constant CMOF_Relationship_Interface)
-       return AMF.CMOF.Elements.Set_Of_CMOF_Element is abstract;
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
    --  Specifies the elements related by the Relationship.
 
 end AMF.CMOF.Relationships;

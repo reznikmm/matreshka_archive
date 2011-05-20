@@ -47,7 +47,7 @@
 --  text or in a machine readable language for the purpose of declaring some 
 --  of the semantics of an element.
 ------------------------------------------------------------------------------
-limited with AMF.CMOF.Elements;
+limited with AMF.CMOF.Elements.Collections;
 limited with AMF.CMOF.Namespaces;
 with AMF.CMOF.Packageable_Elements;
 limited with AMF.CMOF.Value_Specifications;
@@ -63,12 +63,9 @@ package AMF.CMOF.Constraints is
      access all CMOF_Constraint_Interface'Class;
    for CMOF_Constraint'Storage_Size use 0;
 
-   type Set_Of_CMOF_Constraint is null record;
-   type Ordered_Set_Of_CMOF_Constraint is null record;
-
    not overriding function Get_Constrained_Element
     (Self : not null access constant CMOF_Constraint_Interface)
-       return AMF.CMOF.Elements.Ordered_Set_Of_CMOF_Element is abstract;
+       return AMF.CMOF.Elements.Collections.Ordered_Set_Of_CMOF_Element is abstract;
    --  The ordered set of Elements referenced by this Constraint.
 
    not overriding function Get_Specification

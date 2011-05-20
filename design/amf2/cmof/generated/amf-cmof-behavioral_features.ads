@@ -48,8 +48,8 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Features;
 with AMF.CMOF.Namespaces;
-limited with AMF.CMOF.Parameters;
-limited with AMF.CMOF.Types;
+limited with AMF.CMOF.Parameters.Collections;
+limited with AMF.CMOF.Types.Collections;
 
 package AMF.CMOF.Behavioral_Features is
 
@@ -63,18 +63,15 @@ package AMF.CMOF.Behavioral_Features is
      access all CMOF_Behavioral_Feature_Interface'Class;
    for CMOF_Behavioral_Feature'Storage_Size use 0;
 
-   type Set_Of_CMOF_Behavioral_Feature is null record;
-   type Ordered_Set_Of_CMOF_Behavioral_Feature is null record;
-
    not overriding function Get_Owned_Parameter
     (Self : not null access constant CMOF_Behavioral_Feature_Interface)
-       return AMF.CMOF.Parameters.Ordered_Set_Of_CMOF_Parameter is abstract;
+       return AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter is abstract;
    --  Specifies the ordered set of formal parameters of this 
    --  BehavioralFeature.
 
    not overriding function Get_Raised_Exception
     (Self : not null access constant CMOF_Behavioral_Feature_Interface)
-       return AMF.CMOF.Types.Set_Of_CMOF_Type is abstract;
+       return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is abstract;
    --  References the Types representing exceptions that may be raised during 
    --  an invocation of this feature.
 

@@ -59,9 +59,6 @@ package AMF.CMOF.Opaque_Expressions is
      access all CMOF_Opaque_Expression_Interface'Class;
    for CMOF_Opaque_Expression'Storage_Size use 0;
 
-   type Set_Of_CMOF_Opaque_Expression is null record;
-   type Ordered_Set_Of_CMOF_Opaque_Expression is null record;
-
    not overriding function Get_Body
     (Self : not null access constant CMOF_Opaque_Expression_Interface)
        return Sequence_Of_String is abstract;

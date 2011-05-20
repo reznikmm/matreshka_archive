@@ -62,9 +62,6 @@ package AMF.CMOF.Parameters is
      access all CMOF_Parameter_Interface'Class;
    for CMOF_Parameter'Storage_Size use 0;
 
-   type Set_Of_CMOF_Parameter is null record;
-   type Ordered_Set_Of_CMOF_Parameter is null record;
-
    not overriding function Get_Default
     (Self : not null access constant CMOF_Parameter_Interface)
        return Optional_String is abstract;

@@ -61,9 +61,6 @@ package AMF.CMOF.Multiplicity_Elements is
      access all CMOF_Multiplicity_Element_Interface'Class;
    for CMOF_Multiplicity_Element'Storage_Size use 0;
 
-   type Set_Of_CMOF_Multiplicity_Element is null record;
-   type Ordered_Set_Of_CMOF_Multiplicity_Element is null record;
-
    not overriding function Get_Is_Ordered
     (Self : not null access constant CMOF_Multiplicity_Element_Interface)
        return Boolean is abstract;

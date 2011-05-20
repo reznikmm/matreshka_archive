@@ -47,6 +47,7 @@
 --  elements.
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
+limited with AMF.CMOF.Elements.Collections;
 
 package AMF.CMOF.Comments is
 
@@ -59,9 +60,6 @@ package AMF.CMOF.Comments is
      access all CMOF_Comment_Interface'Class;
    for CMOF_Comment'Storage_Size use 0;
 
-   type Set_Of_CMOF_Comment is null record;
-   type Ordered_Set_Of_CMOF_Comment is null record;
-
    not overriding function Get_Body
     (Self : not null access constant CMOF_Comment_Interface)
        return Optional_String is abstract;
@@ -73,7 +71,7 @@ package AMF.CMOF.Comments is
 
    not overriding function Get_Annotated_Element
     (Self : not null access constant CMOF_Comment_Interface)
-       return AMF.CMOF.Elements.Set_Of_CMOF_Element is abstract;
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
    --  References the Element(s) being commented.
 
 end AMF.CMOF.Comments;

@@ -55,6 +55,7 @@
 limited with AMF.CMOF.Associations;
 limited with AMF.CMOF.Classes;
 limited with AMF.CMOF.Data_Types;
+limited with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Structural_Features;
 
 package AMF.CMOF.Properties is
@@ -67,9 +68,6 @@ package AMF.CMOF.Properties is
    type CMOF_Property is
      access all CMOF_Property_Interface'Class;
    for CMOF_Property'Storage_Size use 0;
-
-   type Set_Of_CMOF_Property is null record;
-   type Ordered_Set_Of_CMOF_Property is null record;
 
    not overriding function Get_Is_Read_Only
     (Self : not null access constant CMOF_Property_Interface)
@@ -141,12 +139,12 @@ package AMF.CMOF.Properties is
 
    not overriding function Get_Redefined_Property
     (Self : not null access constant CMOF_Property_Interface)
-       return AMF.CMOF.Properties.Set_Of_CMOF_Property is abstract;
+       return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property is abstract;
    --  References the properties that are redefined by this property.
 
    not overriding function Get_Subsetted_Property
     (Self : not null access constant CMOF_Property_Interface)
-       return AMF.CMOF.Properties.Set_Of_CMOF_Property is abstract;
+       return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property is abstract;
    --  References the properties of which this property is constrained to be a 
    --  subset.
 

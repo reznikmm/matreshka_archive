@@ -47,6 +47,7 @@
 --  empty) set of values when evaluated in a context.
 ------------------------------------------------------------------------------
 with AMF.CMOF.Value_Specifications;
+limited with AMF.CMOF.Value_Specifications.Collections;
 
 package AMF.CMOF.Expressions is
 
@@ -59,12 +60,9 @@ package AMF.CMOF.Expressions is
      access all CMOF_Expression_Interface'Class;
    for CMOF_Expression'Storage_Size use 0;
 
-   type Set_Of_CMOF_Expression is null record;
-   type Ordered_Set_Of_CMOF_Expression is null record;
-
    not overriding function Get_Operand
     (Self : not null access constant CMOF_Expression_Interface)
-       return AMF.CMOF.Value_Specifications.Ordered_Set_Of_CMOF_Value_Specification is abstract;
+       return AMF.CMOF.Value_Specifications.Collections.Ordered_Set_Of_CMOF_Value_Specification is abstract;
    --  Specifies a sequence of operands.
 
 end AMF.CMOF.Expressions;

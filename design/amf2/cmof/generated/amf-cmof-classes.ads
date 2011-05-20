@@ -46,9 +46,10 @@
 --  A class describes a set of objects that share the same specifications of 
 --  features, constraints, and semantics.
 ------------------------------------------------------------------------------
+limited with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Classifiers;
-limited with AMF.CMOF.Operations;
-limited with AMF.CMOF.Properties;
+limited with AMF.CMOF.Operations.Collections;
+limited with AMF.CMOF.Properties.Collections;
 
 package AMF.CMOF.Classes is
 
@@ -61,9 +62,6 @@ package AMF.CMOF.Classes is
      access all CMOF_Class_Interface'Class;
    for CMOF_Class'Storage_Size use 0;
 
-   type Set_Of_CMOF_Class is null record;
-   type Ordered_Set_Of_CMOF_Class is null record;
-
    not overriding function Get_Is_Abstract
     (Self : not null access constant CMOF_Class_Interface)
        return Boolean is abstract;
@@ -75,17 +73,17 @@ package AMF.CMOF.Classes is
 
    not overriding function Get_Owned_Attribute
     (Self : not null access constant CMOF_Class_Interface)
-       return AMF.CMOF.Properties.Ordered_Set_Of_CMOF_Property is abstract;
+       return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property is abstract;
    --  The attributes (i.e. the properties) owned by the class.
 
    not overriding function Get_Owned_Operation
     (Self : not null access constant CMOF_Class_Interface)
-       return AMF.CMOF.Operations.Ordered_Set_Of_CMOF_Operation is abstract;
+       return AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation is abstract;
    --  The operations owned by the class.
 
    not overriding function Get_Super_Class
     (Self : not null access constant CMOF_Class_Interface)
-       return AMF.CMOF.Classes.Set_Of_CMOF_Class is abstract;
+       return AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class is abstract;
    --  This gives the superclasses of a class.
 
 end AMF.CMOF.Classes;

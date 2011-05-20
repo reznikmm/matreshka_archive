@@ -50,9 +50,12 @@
 with AMF.CMOF.Behavioral_Features;
 limited with AMF.CMOF.Classes;
 limited with AMF.CMOF.Constraints;
+limited with AMF.CMOF.Constraints.Collections;
 limited with AMF.CMOF.Data_Types;
-limited with AMF.CMOF.Parameters;
+limited with AMF.CMOF.Operations.Collections;
+limited with AMF.CMOF.Parameters.Collections;
 limited with AMF.CMOF.Types;
+limited with AMF.CMOF.Types.Collections;
 
 package AMF.CMOF.Operations is
 
@@ -64,9 +67,6 @@ package AMF.CMOF.Operations is
    type CMOF_Operation is
      access all CMOF_Operation_Interface'Class;
    for CMOF_Operation'Storage_Size use 0;
-
-   type Set_Of_CMOF_Operation is null record;
-   type Ordered_Set_Of_CMOF_Operation is null record;
 
    not overriding function Get_Is_Query
     (Self : not null access constant CMOF_Operation_Interface)
@@ -135,13 +135,13 @@ package AMF.CMOF.Operations is
 
    overriding function Get_Raised_Exception
     (Self : not null access constant CMOF_Operation_Interface)
-       return AMF.CMOF.Types.Set_Of_CMOF_Type is abstract;
+       return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is abstract;
    --  References the Types representing exceptions that may be raised during 
    --  an invocation of this operation.
 
    not overriding function Get_Redefined_Operation
     (Self : not null access constant CMOF_Operation_Interface)
-       return AMF.CMOF.Operations.Set_Of_CMOF_Operation is abstract;
+       return AMF.CMOF.Operations.Collections.Set_Of_CMOF_Operation is abstract;
    --  References the Operations that are redefined by this Operation.
 
    not overriding function Get_Type
@@ -155,17 +155,17 @@ package AMF.CMOF.Operations is
 
    overriding function Get_Owned_Parameter
     (Self : not null access constant CMOF_Operation_Interface)
-       return AMF.CMOF.Parameters.Ordered_Set_Of_CMOF_Parameter is abstract;
+       return AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter is abstract;
    --  Specifies the ordered set of formal parameters of this 
    --  BehavioralFeature.
 
    not overriding function Get_Precondition
     (Self : not null access constant CMOF_Operation_Interface)
-       return AMF.CMOF.Constraints.Set_Of_CMOF_Constraint is abstract;
+       return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint is abstract;
 
    not overriding function Get_Postcondition
     (Self : not null access constant CMOF_Operation_Interface)
-       return AMF.CMOF.Constraints.Set_Of_CMOF_Constraint is abstract;
+       return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint is abstract;
 
    not overriding function Get_Body_Condition
     (Self : not null access constant CMOF_Operation_Interface)

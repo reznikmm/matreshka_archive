@@ -62,9 +62,6 @@ package AMF.CMOF.Types is
      access all CMOF_Type_Interface'Class;
    for CMOF_Type'Storage_Size use 0;
 
-   type Set_Of_CMOF_Type is null record;
-   type Ordered_Set_Of_CMOF_Type is null record;
-
    not overriding function Get_Package
     (Self : not null access constant CMOF_Type_Interface)
        return AMF.CMOF.Packages.CMOF_Package is abstract;

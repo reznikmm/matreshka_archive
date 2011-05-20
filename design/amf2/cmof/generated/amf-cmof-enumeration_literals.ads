@@ -59,9 +59,6 @@ package AMF.CMOF.Enumeration_Literals is
      access all CMOF_Enumeration_Literal_Interface'Class;
    for CMOF_Enumeration_Literal'Storage_Size use 0;
 
-   type Set_Of_CMOF_Enumeration_Literal is null record;
-   type Ordered_Set_Of_CMOF_Enumeration_Literal is null record;
-
    not overriding function Get_Enumeration
     (Self : not null access constant CMOF_Enumeration_Literal_Interface)
        return AMF.CMOF.Enumerations.CMOF_Enumeration is abstract;

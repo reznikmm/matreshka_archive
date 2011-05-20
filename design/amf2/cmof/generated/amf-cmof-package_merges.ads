@@ -60,9 +60,6 @@ package AMF.CMOF.Package_Merges is
      access all CMOF_Package_Merge_Interface'Class;
    for CMOF_Package_Merge'Storage_Size use 0;
 
-   type Set_Of_CMOF_Package_Merge is null record;
-   type Ordered_Set_Of_CMOF_Package_Merge is null record;
-
    not overriding function Get_Receiving_Package
     (Self : not null access constant CMOF_Package_Merge_Interface)
        return AMF.CMOF.Packages.CMOF_Package is abstract;

@@ -46,7 +46,7 @@
 --  A directed relationship represents a relationship between a collection of 
 --  source model elements and a collection of target model elements.
 ------------------------------------------------------------------------------
-limited with AMF.CMOF.Elements;
+limited with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Relationships;
 
 package AMF.CMOF.Directed_Relationships is
@@ -60,17 +60,14 @@ package AMF.CMOF.Directed_Relationships is
      access all CMOF_Directed_Relationship_Interface'Class;
    for CMOF_Directed_Relationship'Storage_Size use 0;
 
-   type Set_Of_CMOF_Directed_Relationship is null record;
-   type Ordered_Set_Of_CMOF_Directed_Relationship is null record;
-
    not overriding function Get_Source
     (Self : not null access constant CMOF_Directed_Relationship_Interface)
-       return AMF.CMOF.Elements.Set_Of_CMOF_Element is abstract;
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
    --  Specifies the sources of the DirectedRelationship.
 
    not overriding function Get_Target
     (Self : not null access constant CMOF_Directed_Relationship_Interface)
-       return AMF.CMOF.Elements.Set_Of_CMOF_Element is abstract;
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
    --  Specifies the targets of the DirectedRelationship.
 
 end AMF.CMOF.Directed_Relationships;

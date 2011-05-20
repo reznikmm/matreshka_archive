@@ -61,9 +61,6 @@ package AMF.CMOF.Package_Imports is
      access all CMOF_Package_Import_Interface'Class;
    for CMOF_Package_Import'Storage_Size use 0;
 
-   type Set_Of_CMOF_Package_Import is null record;
-   type Ordered_Set_Of_CMOF_Package_Import is null record;
-
    not overriding function Get_Visibility
     (Self : not null access constant CMOF_Package_Import_Interface)
        return CMOF_Visibility_Kind is abstract;

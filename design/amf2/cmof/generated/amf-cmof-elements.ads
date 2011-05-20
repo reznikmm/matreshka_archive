@@ -46,7 +46,8 @@
 --  An element is a constituent of a model. As such, it has the capability of 
 --  owning other elements.
 ------------------------------------------------------------------------------
-limited with AMF.CMOF.Comments;
+limited with AMF.CMOF.Comments.Collections;
+limited with AMF.CMOF.Elements.Collections;
 
 package AMF.CMOF.Elements is
 
@@ -58,12 +59,9 @@ package AMF.CMOF.Elements is
      access all CMOF_Element_Interface'Class;
    for CMOF_Element'Storage_Size use 0;
 
-   type Set_Of_CMOF_Element is null record;
-   type Ordered_Set_Of_CMOF_Element is null record;
-
    not overriding function Get_Owned_Element
     (Self : not null access constant CMOF_Element_Interface)
-       return AMF.CMOF.Elements.Set_Of_CMOF_Element is abstract;
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
    --  The Elements owned by this element.
 
    not overriding function Get_Owner
@@ -73,7 +71,7 @@ package AMF.CMOF.Elements is
 
    not overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Element_Interface)
-       return AMF.CMOF.Comments.Set_Of_CMOF_Comment is abstract;
+       return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment is abstract;
    --  The Comments owned by this element.
 
 end AMF.CMOF.Elements;

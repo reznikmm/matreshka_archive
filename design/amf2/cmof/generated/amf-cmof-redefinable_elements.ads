@@ -48,8 +48,9 @@
 --  context of another classifier that specializes (directly or indirectly) 
 --  the context classifier.
 ------------------------------------------------------------------------------
-limited with AMF.CMOF.Classifiers;
+limited with AMF.CMOF.Classifiers.Collections;
 with AMF.CMOF.Named_Elements;
+limited with AMF.CMOF.Redefinable_Elements.Collections;
 
 package AMF.CMOF.Redefinable_Elements is
 
@@ -62,17 +63,14 @@ package AMF.CMOF.Redefinable_Elements is
      access all CMOF_Redefinable_Element_Interface'Class;
    for CMOF_Redefinable_Element'Storage_Size use 0;
 
-   type Set_Of_CMOF_Redefinable_Element is null record;
-   type Ordered_Set_Of_CMOF_Redefinable_Element is null record;
-
    not overriding function Get_Redefinition_Context
     (Self : not null access constant CMOF_Redefinable_Element_Interface)
-       return AMF.CMOF.Classifiers.Set_Of_CMOF_Classifier is abstract;
+       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier is abstract;
    --  References the contexts that this element may be redefined from.
 
    not overriding function Get_Redefined_Element
     (Self : not null access constant CMOF_Redefinable_Element_Interface)
-       return AMF.CMOF.Redefinable_Elements.Set_Of_CMOF_Redefinable_Element is abstract;
+       return AMF.CMOF.Redefinable_Elements.Collections.Set_Of_CMOF_Redefinable_Element is abstract;
    --  The redefinable element that is being redefined by this element.
 
    not overriding function Get_Is_Leaf

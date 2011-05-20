@@ -63,7 +63,4 @@ package AMF.CMOF.Structural_Features is
      access all CMOF_Structural_Feature_Interface'Class;
    for CMOF_Structural_Feature'Storage_Size use 0;
 
-   type Set_Of_CMOF_Structural_Feature is null record;
-   type Ordered_Set_Of_CMOF_Structural_Feature is null record;
-
 end AMF.CMOF.Structural_Features;

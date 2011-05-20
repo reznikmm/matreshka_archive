@@ -59,7 +59,4 @@ package AMF.CMOF.Packageable_Elements is
      access all CMOF_Packageable_Element_Interface'Class;
    for CMOF_Packageable_Element'Storage_Size use 0;
 
-   type Set_Of_CMOF_Packageable_Element is null record;
-   type Ordered_Set_Of_CMOF_Packageable_Element is null record;
-
 end AMF.CMOF.Packageable_Elements;

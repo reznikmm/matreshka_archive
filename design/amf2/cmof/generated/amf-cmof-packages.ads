@@ -47,9 +47,11 @@
 --  grouped elements.
 ------------------------------------------------------------------------------
 with AMF.CMOF.Namespaces;
-limited with AMF.CMOF.Package_Merges;
+limited with AMF.CMOF.Package_Merges.Collections;
 with AMF.CMOF.Packageable_Elements;
-limited with AMF.CMOF.Types;
+limited with AMF.CMOF.Packageable_Elements.Collections;
+limited with AMF.CMOF.Packages.Collections;
+limited with AMF.CMOF.Types.Collections;
 
 package AMF.CMOF.Packages is
 
@@ -63,22 +65,19 @@ package AMF.CMOF.Packages is
      access all CMOF_Package_Interface'Class;
    for CMOF_Package'Storage_Size use 0;
 
-   type Set_Of_CMOF_Package is null record;
-   type Ordered_Set_Of_CMOF_Package is null record;
-
    not overriding function Get_Packaged_Element
     (Self : not null access constant CMOF_Package_Interface)
-       return AMF.CMOF.Packageable_Elements.Set_Of_CMOF_Packageable_Element is abstract;
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
    --  Specifies the packageable elements that are owned by this Package.
 
    not overriding function Get_Owned_Type
     (Self : not null access constant CMOF_Package_Interface)
-       return AMF.CMOF.Types.Set_Of_CMOF_Type is abstract;
+       return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is abstract;
    --  References the packaged elements that are Types.
 
    not overriding function Get_Nested_Package
     (Self : not null access constant CMOF_Package_Interface)
-       return AMF.CMOF.Packages.Set_Of_CMOF_Package is abstract;
+       return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package is abstract;
    --  References the packaged elements that are Packages.
 
    not overriding function Get_Nesting_Package
@@ -92,7 +91,7 @@ package AMF.CMOF.Packages is
 
    not overriding function Get_Package_Merge
     (Self : not null access constant CMOF_Package_Interface)
-       return AMF.CMOF.Package_Merges.Set_Of_CMOF_Package_Merge is abstract;
+       return AMF.CMOF.Package_Merges.Collections.Set_Of_CMOF_Package_Merge is abstract;
    --  References the PackageMerges that are owned by this Package.
 
    not overriding function Get_Uri

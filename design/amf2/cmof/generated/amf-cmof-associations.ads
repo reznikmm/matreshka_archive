@@ -49,9 +49,9 @@
 --  an instance of the type of the end.
 ------------------------------------------------------------------------------
 with AMF.CMOF.Classifiers;
-limited with AMF.CMOF.Properties;
+limited with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Relationships;
-limited with AMF.CMOF.Types;
+limited with AMF.CMOF.Types.Collections;
 
 package AMF.CMOF.Associations is
 
@@ -65,9 +65,6 @@ package AMF.CMOF.Associations is
      access all CMOF_Association_Interface'Class;
    for CMOF_Association'Storage_Size use 0;
 
-   type Set_Of_CMOF_Association is null record;
-   type Ordered_Set_Of_CMOF_Association is null record;
-
    not overriding function Get_Is_Derived
     (Self : not null access constant CMOF_Association_Interface)
        return Boolean is abstract;
@@ -80,24 +77,24 @@ package AMF.CMOF.Associations is
 
    not overriding function Get_Owned_End
     (Self : not null access constant CMOF_Association_Interface)
-       return AMF.CMOF.Properties.Ordered_Set_Of_CMOF_Property is abstract;
+       return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property is abstract;
    --  The ends that are owned by the association itself.
 
    not overriding function Get_End_Type
     (Self : not null access constant CMOF_Association_Interface)
-       return AMF.CMOF.Types.Set_Of_CMOF_Type is abstract;
+       return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is abstract;
    --  References the classifiers that are used as types of the ends of the 
    --  association.
 
    not overriding function Get_Member_End
     (Self : not null access constant CMOF_Association_Interface)
-       return AMF.CMOF.Properties.Ordered_Set_Of_CMOF_Property is abstract;
+       return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property is abstract;
    --  Each end represents participation of instances of the classifier 
    --  connected to the end in links of the association.
 
    not overriding function Get_Navigable_Owned_End
     (Self : not null access constant CMOF_Association_Interface)
-       return AMF.CMOF.Properties.Set_Of_CMOF_Property is abstract;
+       return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property is abstract;
    --  The navigable ends that are owned by the association itself.
 
 end AMF.CMOF.Associations;

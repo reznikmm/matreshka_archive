@@ -61,7 +61,4 @@ package AMF.CMOF.Value_Specifications is
      access all CMOF_Value_Specification_Interface'Class;
    for CMOF_Value_Specification'Storage_Size use 0;
 
-   type Set_Of_CMOF_Value_Specification is null record;
-   type Ordered_Set_Of_CMOF_Value_Specification is null record;
-
 end AMF.CMOF.Value_Specifications;
