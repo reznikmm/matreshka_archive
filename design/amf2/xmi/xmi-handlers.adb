@@ -68,6 +68,7 @@ package body XMI.Handlers is
    use CMOF.Collections;
    use CMOF.Extents;
    use CMOF.Multiplicity_Elements;
+   use CMOF.Named_Elements;
    use CMOF.Properties;
    use CMOF.Typed_Elements;
    use CMOF.XMI_Helper;
@@ -97,6 +98,17 @@ package body XMI.Handlers is
     (String    : League.Strings.Universal_String;
      Character : Wide_Wide_Character) return Natural;
 
+   procedure Analyze_Object_Element
+    (Self       : in out XMI_Handler;
+     Meta_Class : CMOF.CMOF_Class;
+     Attribute  : CMOF.CMOF_Property;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : out Boolean);
+   --  Analyze current XML element which represents AMF.Element: resolves
+   --  XLink reference or creates new element. For created elements analyze
+   --  XML attributes and set element's attributes or creates links. Creates
+   --  ownership link when current element is nested into another element.
+
    procedure Establish_Link
     (Self          : in out XMI_Handler;
      Attribute     : CMOF.CMOF_Property;
@@ -116,6 +128,193 @@ package body XMI.Handlers is
 
    Documents : Universal_String_Extent_Maps.Map;
    --  Map file name of document to extent.
+
+   ----------------------------
+   -- Analyze_Object_Element --
+   ----------------------------
+
+   procedure Analyze_Object_Element
+    (Self       : in out XMI_Handler;
+     Meta_Class : CMOF.CMOF_Class;
+     Attribute  : CMOF.CMOF_Property;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : out Boolean)
+   is
+      use type AMF.Elements.Element_Access;
+
+      procedure Set_Attribute
+       (Property : CMOF_Property; Value : League.Strings.Universal_String);
+
+      -------------------
+      -- Set_Attribute --
+      -------------------
+
+      procedure Set_Attribute
+       (Property : CMOF_Property; Value : League.Strings.Universal_String)
+      is
+         Association : CMOF_Association;
+
+      begin
+         if Property = Null_CMOF_Element then
+            raise Program_Error with "Unknown attribute";
+         end if;
+
+         if Get_Type (Property) = Null_CMOF_Element then
+            raise Program_Error with "Type not specified";
+         end if;
+
+         if CMOF.XMI_Helper.Is_Data_Type (Get_Type (Property)) then
+            Self.Current.Set
+             (Property,
+              Self.Factory.Create_From_String (Get_Type (Property), Value));
+
+         else
+            Association := Get_Association (Property);
+
+            if Is_Multivalued (Property) then
+               declare
+                  Ids : constant League.String_Vectors.Universal_String_Vector
+                    := Value.Split (' ');
+
+               begin
+                  for J in 1 .. Ids.Length loop
+                     if Self.Mapping.Contains (Ids.Element (J)) then
+                        Establish_Link
+                         (Self,
+                          Property,
+                          Self.Current,
+                          Self.Mapping.Element (Ids.Element (J)));
+
+                     else
+                        Self.Postponed.Append
+                         ((Self.Current, Property, Ids.Element (J)));
+                     end if;
+                  end loop;
+               end;
+
+            else
+               if Self.Mapping.Contains (Value) then
+                  Establish_Link
+                   (Self,
+                    Property,
+                    Self.Current,
+                    Self.Mapping.Element (Value));
+
+               else
+                  Self.Postponed.Append ((Self.Current, Property, Value));
+               end if;
+            end if;
+         end if;
+      end Set_Attribute;
+
+      Id         : constant League.Strings.Universal_String
+        := Attributes.Value (XMI_Namespace, Id_Name);
+      Href_Index : constant Natural := Attributes.Index (Href_Name);
+
+   begin
+      --  Set Success flag.
+
+      Success := True;
+
+      --  Push current element into the stack.
+
+      if Self.Current /= null then
+         Self.Stack.Append (Self.Current);
+      end if;
+
+      if Href_Index /= 0 then
+         --  Process XLink 'href' attribute if present.
+
+         declare
+            use type AMF.Elements.Element_Access;
+
+            URI       : constant League.Strings.Universal_String
+              := Attributes.Value (Href_Index);
+            Separator : constant Positive := Index (URI, '#');
+            File_Name : constant League.Strings.Universal_String
+              := URI.Slice (1, Separator - 1);
+            Name      : constant League.Strings.Universal_String
+              := URI.Slice (Separator + 1, URI.Length);
+
+         begin
+            if not Documents.Contains (File_Name) then
+               Documents.Insert
+                (File_Name,
+                 XMI.Reader
+                  (Ada.Characters.Conversions.To_String
+                    (File_Name.To_Wide_Wide_String)));
+            end if;
+
+            Self.Current := Object (Documents.Element (File_Name), Name);
+
+            if Self.Current = null then
+               raise Program_Error;
+            end if;
+         end;
+
+      else
+         --  Create new element.
+
+         Self.Current := Self.Factory.Create (Self.Extent, Meta_Class);
+         Set_Id (Self.Current, Id);
+         Self.Mapping.Insert (Id, Self.Current);
+      end if;
+
+      --  Establish ownership link.
+
+      if Attribute /= Null_CMOF_Element then
+         Establish_Link
+          (Self, Attribute, Self.Stack.Last_Element, Self.Current);
+      end if;
+
+      --  Process attributes.
+
+      for J in 1 .. Attributes.Length loop
+         if Attributes.Namespace_URI (J).Is_Empty then
+            if Attributes.Qualified_Name (J) /= Href_Name then
+               --  XLink 'href' handled outside of this subprogram.
+
+               declare
+                  Property : CMOF_Property
+                    := Resolve_Owned_Attribute
+                        (Meta_Class, Attributes.Qualified_Name (J));
+
+               begin
+                  if Property = Null_CMOF_Element then
+                     Self.Diagnosis :=
+                       "Unknown property '"
+                         & Get_Name (Meta_Class)
+                         & ":"
+                         & Attributes.Qualified_Name (J)
+                         & ''';
+                     Success := False;
+
+                     return;
+                  end if;
+
+                  Set_Attribute (Property, Attributes.Value (J));
+               end;
+            end if;
+
+         elsif Attributes.Namespace_URI (J) = XMI_Namespace then
+            --  XMI namespace is handled outside of this subprogram.
+
+            null;
+
+         else
+            --  XXX Is this format violation?
+
+            Put_Line
+             (Standard_Error,
+              "  "
+                & Attributes.Namespace_URI (J).To_Wide_Wide_String
+                & "  "
+                & Attributes.Local_Name (J).To_Wide_Wide_String
+                & "  "
+                & Attributes.Value (J).To_Wide_Wide_String);
+         end if;
+      end loop;
+   end Analyze_Object_Element;
 
    ----------------
    -- Characters --
@@ -391,165 +590,32 @@ package body XMI.Handlers is
      Success        : in out Boolean)
    is
       use CMOF.Classes;
-      use CMOF.Named_Elements;
 
-      Name        : League.Strings.Universal_String;
-      Meta        : CMOF.CMOF_Element;
-      New_Element : AMF.Elements.Element_Access;
-      Property    : CMOF_Property;
-      Association : CMOF_Association;
-
-      procedure Dump (Class : CMOF_Class);
-
-      procedure Set_Attribute
-       (Property : CMOF_Property; Value : League.Strings.Universal_String);
-
-      procedure Dump (Class : CMOF_Class) is
-         P : constant Ordered_Set_Of_CMOF_Property
-           := Get_Owned_Attribute (Class);
-         S : constant Set_Of_CMOF_Class := Get_Super_Class (Class);
-
-      begin
-         Put_Line
-          (Standard_Error, "  " & Get_Name (Class).To_Wide_Wide_String);
-
-         for J in 1 .. Length (P) loop
-            Put_Line
-             (Standard_Error,
-              "    " & Get_Name (Element (P, J)).To_Wide_Wide_String);
-         end loop;
-
-         for J in 1 .. Length (S) loop
-            Dump (Element (S, J));
-         end loop;
-      end Dump;
-
-      -------------------
-      -- Set_Attribute --
-      -------------------
-
-      procedure Set_Attribute
-       (Property : CMOF_Property; Value : League.Strings.Universal_String)
-      is
-         Association : CMOF_Association;
-
-      begin
-         if Property = Null_CMOF_Element then
-            raise Program_Error with "Unknown attribute";
-         end if;
-
-         if Get_Type (Property) = Null_CMOF_Element then
-            raise Program_Error with "Type not specified";
-         end if;
-
-         if CMOF.XMI_Helper.Is_Data_Type (Get_Type (Property)) then
-            Self.Current.Set
-             (Property,
-              Self.Factory.Create_From_String (Get_Type (Property), Value));
-
-         else
-            Association := Get_Association (Property);
-
-            if Is_Multivalued (Property) then
-               declare
-                  Ids : constant League.String_Vectors.Universal_String_Vector
-                    := Value.Split (' ');
-
-               begin
-                  for J in 1 .. Ids.Length loop
-                     if Self.Mapping.Contains (Ids.Element (J)) then
-                        Establish_Link
-                         (Self,
-                          Property,
-                          Self.Current,
-                          Self.Mapping.Element (Ids.Element (J)));
-
-                     else
-                        Self.Postponed.Append
-                         ((Self.Current, Property, Ids.Element (J)));
-                     end if;
-                  end loop;
-               end;
-
-            else
-               if Self.Mapping.Contains (Value) then
-                  Establish_Link
-                   (Self,
-                    Property,
-                    Self.Current,
-                    Self.Mapping.Element (Value));
-
-               else
-                  Self.Postponed.Append ((Self.Current, Property, Value));
-               end if;
-            end if;
-         end if;
-      end Set_Attribute;
+      Name     : League.Strings.Universal_String;
+      Meta     : CMOF.CMOF_Element;
+      Property : CMOF_Property;
 
    begin
       if Namespace_URI.Is_Empty then
-         if Attributes.Index (Href_Name) /= 0 then
-            --  Reference to element in another document.
+         --  Property of the element, resolve it.
 
-            declare
-               use type AMF.Elements.Element_Access;
+         Property :=
+           Resolve_Owned_Attribute
+            (Self.Current.Get_Meta_Class, Qualified_Name);
 
-               URI       : constant League.Strings.Universal_String
-                 := Attributes.Value (Href_Name);
-               Separator : constant Positive := Index (URI, '#');
-               File_Name : constant League.Strings.Universal_String
-                 := URI.Slice (1, Separator - 1);
+         if Property = Null_CMOF_Element then
+            Self.Diagnosis :=
+              "Unknown property '"
+                & Get_Name (Self.Current.Get_Meta_Class)
+                & ":"
+                & Qualified_Name
+                & ''';
+            Success := False;
 
-            begin
-               if not Documents.Contains (File_Name) then
-                  Documents.Insert
-                   (File_Name,
-                    XMI.Reader
-                     (Ada.Characters.Conversions.To_String
-                       (File_Name.To_Wide_Wide_String)));
-               end if;
+            return;
+         end if;
 
-               New_Element :=
-                 Object
-                  (Documents.Element (File_Name),
-                   URI.Slice (Separator + 1, URI.Length));
-
-               if New_Element = null then
-                  raise Program_Error;
-               end if;
-
-               Property :=
-                 Resolve_Owned_Attribute
-                  (Self.Current.Get_Meta_Class, Qualified_Name);
-
-               if Property = Null_CMOF_Element then
-                  raise Program_Error;
-               end if;
-
-               Establish_Link (Self, Property, Self.Current, New_Element);
-               Self.Skip_End_Element := 1;
-            end;
-
-         else
-            Property :=
-              Resolve_Owned_Attribute
-               (Self.Current.Get_Meta_Class, Qualified_Name);
-
-            if Property = Null_CMOF_Element then
-               Self.Diagnosis :=
-                 "Unknown property '"
-                   & Get_Name (Self.Current.Get_Meta_Class)
-                   & ":"
-                   & Qualified_Name
-                   & ''';
-               Success := False;
-
-               return;
-            end if;
-
-         Association := Get_Association (Property);
-
-         if Association /= Null_CMOF_Element then
+         if Get_Association (Property) /= Null_CMOF_Element then
             if Attributes.Index (XMI_Namespace, Type_Name) /= 0 then
                Name := Attributes.Value (XMI_Namespace, Type_Name);
                Meta :=
@@ -564,58 +630,13 @@ package body XMI.Handlers is
                raise Program_Error;
             end if;
 
-            New_Element := Self.Factory.Create (Self.Extent, Meta);
-            Set_Id (New_Element, Attributes.Value (XMI_Namespace, Id_Name));
-            Self.Mapping.Insert
-             (Attributes.Value (XMI_Namespace, Id_Name), New_Element);
+            Analyze_Object_Element
+             (Self, Meta, Property, Attributes, Success);
 
-            Establish_Link (Self, Property, Self.Current, New_Element);
-
-            Self.Stack.Append (Self.Current);
-            Self.Current := New_Element;
-
-            for J in 1 .. Attributes.Length loop
-               if Attributes.Namespace_URI (J).Is_Empty then
-                  declare
-                     Property : CMOF_Property
-                       := Resolve_Owned_Attribute
-                           (Meta, Attributes.Qualified_Name (J));
-
-                  begin
-                     if Property = Null_CMOF_Element then
-                        Self.Diagnosis :=
-                          "Unknown property '"
-                            & Get_Name (Meta)
-                            & ":"
-                            & Attributes.Qualified_Name (J)
-                            & ''';
-                        Success := False;
-
-                        return;
-                     end if;
-
-                     Set_Attribute (Property, Attributes.Value (J));
-                  end;
-
-               elsif Attributes.Namespace_URI (J) = XMI_Namespace then
-                  null;
-
-               else
-                  Put_Line
-                   (Standard_Error,
-                    "  "
-                      & Attributes.Namespace_URI (J).To_Wide_Wide_String
-                      & "  "
-                      & Attributes.Local_Name (J).To_Wide_Wide_String
-                      & "  "
-                      & Attributes.Value (J).To_Wide_Wide_String);
-               end if;
-            end loop;
          else
             Self.Attribute := Property;
             Self.Collect_Text := True;
             Self.Text.Clear;
-         end if;
          end if;
 
       elsif Namespace_URI = CMOF_Namespace then
@@ -630,42 +651,10 @@ package body XMI.Handlers is
             return;
          end if;
 
-         Meta         := CMOF.XMI_Helper.Resolve (Local_Name);
-         New_Element  := Self.Factory.Create (Self.Extent, Meta);
-         Set_Id (New_Element, Attributes.Value (XMI_Namespace, Id_Name));
-         Self.Current := New_Element;
-         Self.Mapping.Insert
-          (Attributes.Value (XMI_Namespace, Id_Name), New_Element);
+         Meta := CMOF.XMI_Helper.Resolve (Local_Name);
 
-            for J in 1 .. Attributes.Length loop
-               if Attributes.Namespace_URI (J).Is_Empty then
-                  if Attributes.Qualified_Name (J) /= League.Strings.To_Universal_String ("href") then
---                  Put_Line
---                   ("  "
---                      & Attributes.Qualified_Name (J).To_Wide_Wide_String
---                      & "  "
---                      & Attributes.Value (J).To_Wide_Wide_String);
---                  Dump (Get_Meta_Class (Self.Current));
-                  Set_Attribute
-                   (Resolve_Owned_Attribute
-                     (Meta, Attributes.Qualified_Name (J)),
-                    Attributes.Value (J));
-                  end if;
-
-               elsif Attributes.Namespace_URI (J) = XMI_Namespace then
-                  null;
-
-               else
-                  Put_Line
-                   (Standard_Error,
-                    "  "
-                      & Attributes.Namespace_URI (J).To_Wide_Wide_String
-                      & "  "
-                      & Attributes.Local_Name (J).To_Wide_Wide_String
-                      & "  "
-                      & Attributes.Value (J).To_Wide_Wide_String);
-               end if;
-            end loop;
+         Analyze_Object_Element
+          (Self, Meta, Null_CMOF_Element, Attributes, Success);
       end if;
    end Start_Element;
 
@@ -680,12 +669,6 @@ package body XMI.Handlers is
      Success       : in out Boolean) is
    begin
       if Namespace_URI /= XMI_Namespace then
-         Put_Line
-          (Standard_Error,
-           "'"
-             & Prefix.To_Wide_Wide_String
-             & "' is mapped to "
-             & Namespace_URI.To_Wide_Wide_String);
          Self.Factory := AMF.Factories.Registry.Resolve (Namespace_URI);
       end if;
    end Start_Prefix_Mapping;
